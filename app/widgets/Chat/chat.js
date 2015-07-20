@@ -6,7 +6,7 @@ var Chat = {
         var n = document.querySelector('#chat_textarea');
         n.value = n.value + element.dataset.emoji;
         n.focus();
-        Dialog.clear();    
+        Dialog.clear();
     },
     sendMessage: function(jid, muc)
     {
@@ -17,7 +17,7 @@ var Chat = {
         Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
     },
     appendTextarea: function(value)
-    { 
+    {
     },
     notify : function(title, body, image)
     {
@@ -95,11 +95,13 @@ var Chat = {
                 message.body = message.body.substr(4);
             }
 
-            bubble.querySelector('div.bubble div').innerHTML = message.body;
-            bubble.querySelector('div.bubble span.info').innerHTML = message.published;
+            if(bubble) {
+                bubble.querySelector('div.bubble div').innerHTML = message.body;
+                bubble.querySelector('div.bubble span.info').innerHTML = message.published;
 
-            movim_append(id, bubble.outerHTML);
-            bubble.querySelector('div.bubble').className = 'bubble';
+                movim_append(id, bubble.outerHTML);
+                bubble.querySelector('div.bubble').className = 'bubble';
+            }
         }
 
         MovimTpl.scrollPanel();

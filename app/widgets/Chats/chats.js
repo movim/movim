@@ -1,7 +1,11 @@
 var Chats = {
     refresh: function() {
+        var list = document.querySelector('#chats_widget_list');
+        list.innerHTML = list.innerHTML.trim();
+
         var items = document.querySelectorAll('ul#chats_widget_list li:not(.subheader)');
         var i = 0;
+
         while(i < items.length)
         {
             if(items[i].dataset.jid != null) {
@@ -31,8 +35,6 @@ var Chats = {
 
             i++;
         }
-
-        Notification_ajaxGet();
     },
 
     prepend: function(from, html) {
@@ -49,7 +51,7 @@ var Chats = {
     }
 }
 
-movim_add_onload(function(){    
+movim_add_onload(function(){
     Notification.current('chat');
 });
 

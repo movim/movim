@@ -1,0 +1,7 @@
+#chats_widget_list ~ .placeholder {
+    display: none;
+}
+
+#chats_widget_list:empty ~ .placeholder {
+    display: block;
+}
