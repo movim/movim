@@ -10,6 +10,7 @@ class Chats extends WidgetBase
 {
     function load()
     {
+        $this->addcss('chats.css');
         $this->addjs('chats.js');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
@@ -45,7 +46,7 @@ class Chats extends WidgetBase
         if($contacts != null){
             $c = $contacts[0];
             $chats = Cache::c('chats');
-            if(array_key_exists($c->jid, $chats)) {
+            if(is_array($chats) &&  array_key_exists($c->jid, $chats)) {
                 RPC::call('movim_replace', $c->jid.'_chat_item', $this->prepareChat($c->jid));
                 RPC::call('Chats.refresh');
 
@@ -84,18 +85,13 @@ class Chats extends WidgetBase
 
         unset($chats[$jid]);
 
-        if(!array_key_exists($jid, $chats)
-        && $jid != $this->user->getLogin()) {
+        if(/*!array_key_exists($jid, $chats)
+                && */$jid != $this->user->getLogin()) {
             $chats[$jid] = 1;
 
             if($history) $this->ajaxGetHistory($jid);
 
             Cache::c('chats', $chats);
-            /*
-            RPC::call('movim_delete', $jid.'_chat_item');
-
-            RPC::call('movim_prepend', 'chats_widget_list', $this->prepareChat($jid));
-            RPC::call('Chats.refresh');*/
             RPC::call('Chats.prepend', $jid, $this->prepareChat($jid));
         }
     }
@@ -123,8 +119,12 @@ class Chats extends WidgetBase
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
-        $view->assign('top', $cd->getTop(10));
+        $chats = Cache::c('chats');
 
+        if(!isset($chats)) $chats = array();
+
+        $view->assign('chats', array_keys($chats));
+        $view->assign('top', $cd->getTop(15));
         $view->assign('presencestxt', getPresencesTxt());
 
         Dialog::fill($view->draw('_chats_add', true), true);
@@ -148,9 +148,11 @@ class Chats extends WidgetBase
     {
         $chats = Cache::c('chats');
 
+        if(!isset($chats)) $chats = array();
+
         $view = $this->tpl();
         $view->assign('chats', array_reverse($chats));
-        
+
         return $view->draw('_chats', true);
     }
 
