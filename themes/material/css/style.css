@@ -8,8 +8,8 @@ dl, dt, dd, ol, ul, li,
 input, select, option,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
     margin: 0;
@@ -436,11 +436,21 @@ span.icon {
     text-align: center;
     margin-top: -2.5rem;
     background-size: cover;
+    background-position: center;
 }
 
 span.icon img {
     max-width: 100%;
     max-height: 100%;
+}
+
+span.icon.thumb {
+    left: 0;
+    width: 7rem;
+    top: 0;
+    height: 100%;
+    margin: 0;
+    line-height: 11rem;
 }
 
 li.oppose span.icon {
@@ -520,6 +530,15 @@ main ul li .control > i {
     max-width: 100%;
 }
 
+.card.shadow {
+    background-color: #EEE;
+}
+
+.card.shadow > * {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.16), 0px 2px 10px 0px rgba(0, 0, 0, 0.12);
+    border: none;
+}
+
 @media screen and (max-width: 1024px) {
     .card {
         padding: 1rem;
@@ -556,7 +575,7 @@ header.big p {
     margin-left: -25rem;
 
     overflow: hidden;
-    
+
     box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
     border-radius: 0.25rem;
     z-index: 3;
@@ -816,7 +835,7 @@ dl dd {
 
     .padded_top_bottom {
         padding: 0 2rem;
-        box-sizing: border-box;        
+        box-sizing: border-box;
     }
 }
 
@@ -869,7 +888,7 @@ dl dd {
     height: 3.5rem;
     margin: 1rem;
 }
- 
+
 .spinner:not(:required):before {
     content: '';
     border: 0.75rem solid transparent;
@@ -887,7 +906,7 @@ dl dd {
 @keyframes spinner {
     to {transform: rotate(360deg);}
 }
- 
+
 @-webkit-keyframes spinner {
     to {-webkit-transform: rotate(360deg);}
 }

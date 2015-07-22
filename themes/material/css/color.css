@@ -55,21 +55,32 @@ main > header a,
 
 /* Elements */
 
+.back.color,
 .bubble.color       , .icon.color          { color: white; background-color: #607D8B; border-color: #607D8B }
 span.icon.status.dnd:after,
+.back.color.red,
 .bubble.color.red   , .icon.color.red      { color: white; background-color: #F44336; border-color: #F44336 }
 span.icon.status.xa:after,
+.back.color.purple,
 .bubble.color.purple, .icon.color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
+.back.color.indigo,
 .bubble.color.indigo, .icon.color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
+.back.color.blue,
 .bubble.color.blue  , .icon.color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
 span.icon.status.chat:after,
-span.icon.status.online:after,
+span.icon.status.on.backne:after,
+.back.color.green,
 .bubble.color.green , .icon.color.green    { color: white; background-color: #689F38; border-color: #689F38 }
+.back.color.orange,
 .bubble.color.orange, .icon.color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
 span.icon.status.away:after,
+.back.color.yellow,
 .bubble.color.yellow, .icon.color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
+.back.color.brown,
 .bubble.color.brown , .icon.color.brown    { color: white; background-color: #795548; border-color: #795548 }
+.back.color.gray,
 .bubble.color.gray  , .icon.color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
+.back.color.black,
 .bubble.color.black , .icon.color.black    { color: white; background-color: #000;    border-color: #000 }
 
 label.red   , .icon.red   , span.user.red      { color: #F44336; }

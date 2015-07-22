@@ -7,7 +7,8 @@
     flex: 1 50%;
 }
 
-.flex .block.large {
+.flex .block.large,
+.flex.card .block.large {
     flex: 1 100%;
 }
 
@@ -25,6 +26,10 @@
 
 .flex.card .block:not(.condensed) {
     padding-top: 3rem;
+}
+
+.flex.stacked .block {
+    margin-bottom: 0;
 }
 
 @media screen and (max-width: 1024px) {

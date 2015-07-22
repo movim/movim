@@ -1,13 +1,13 @@
 {if="$items"}
     {if="$page == 0"}
         <div id="menu_refresh"></div>
-        <ul class="thick active divided spaced" id="menu_wrapper">
+        <ul class="card shadow active flex stacked" id="menu_wrapper">
     {/if}
 
     {loop="$items"}
         <li
             tabindex="{$page*$paging+$key+1}"
-            class="condensed"
+            class="block large condensed "
             data-id="{$value->nodeid}"
             data-server="{$value->origin}"
             data-node="{$value->node}"
@@ -18,44 +18,51 @@
             {/if}
         >
             {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                <span class="icon bubble color red tiny">
+                <span class="icon thumb color red tiny">
                     +18
                 </span>
             {elseif="$value->node == 'urn:xmpp:microblog:0'"}
-                {$url = $value->getContact()->getPhoto('s')}
+                {$url = $value->getContact()->getPhoto('l')}
                 {if="$url"}
-                    <span class="icon bubble">
-                        <img src="{$url}">
+                    <span class="icon thumb" style="background-image: url({$url});">
                     </span>
                 {else}
-                    <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
+                    <span class="icon thumb color {$value->getContact()->jid|stringToColor}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
             {else}
-                <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+                <span class="icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
             {/if}
-
             {if="$value->title != null"}
                 <span>{$value->title}</span>
             {else}
-                <span>{$value->getContact()->getTrueName()} - {$c->__('menu.contact_post')}</span>
+                <span>{$c->__('menu.contact_post')}</span>
             {/if}
+            <p>
+                {if="$value->node == 'urn:xmpp:microblog:0'"}
+                    <a href="{$c->route('contact', $value->getContact()->jid)}">
+                        <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
+                </a> –
+                {/if}
+                {if="$value->node != 'urn:xmpp:microblog:0'"}
+                    <a href="{$c->route('group', array($value->origin, $value->node))}">
+                        <i class="zmdi zmdi-pages"></i> {$value->node}
+                    </a> –
+                {/if}
+                {$value->published|strtotime|prepareDate}
+            </p>
+
             {if="$value->privacy"}
                 <span class="info" title="{$c->__('menu.public')}">
                     <i class="zmdi zmdi-portable-wifi"></i>
                 </span>
             {/if}
-            <span class="info">{$value->published|strtotime|prepareDate}</span>
-            <p class="more">
-                {if="current(explode('.', $value->origin)) != 'nsfw'"}
-                    {$value->contentcleaned|strip_tags:'<img><img/>'}
-                {/if}
-            </p>
+            <p class="more">{$value->contentcleaned|strip_tags}</p>
         </li>
     {/loop}
     {if="count($items) == $paging"}
-    <li id="history" onclick="{$history} this.parentNode.removeChild(this);">
+    <li id="history" class="block large" onclick="{$history} this.parentNode.removeChild(this);">
         <span class="icon"><i class="zmdi zmdi-time-restore"></i></span>
         {$c->__('post.older')}
     </li>
