@@ -298,15 +298,17 @@ input[type=button].flat:focus {
     width: 7rem;
     z-index: 1;
     font-size: 3.5rem;
-
+    transition: all 0.15s ease 0s;
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23), 0 0.5rem 1.25rem rgba(0, 0, 0, 0.16);
 }
 
 .button.action:hover {
+    transform: scale(1.1);
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 100%);
 }
 
 .button.action:active {
+    transform: scale(0.95);
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 100%);
 }
 
@@ -317,15 +319,13 @@ li.action div.action .button {
 
 header.big ~ .button.action {
     bottom: auto;
-    top: 16rem;
+    position: relative;
+    float: right;
+    top: -6rem;
 }
 
 @media screen and (min-width: 1025px) {
     main > section > div:first-child:nth-last-child(2) .button.action {
         right: calc(70% + 3rem);
-    }
-
-    header.big ~ .button.action {
-        top: 23rem;
     }
 }

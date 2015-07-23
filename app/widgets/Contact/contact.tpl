@@ -1,4 +1,4 @@
-<div class="tabelem" title="{$c->__('page.profile')}">
+<div title="{$c->__('page.profile')}">
     {$c->prepareEmpty()}
     {if="$jid"}
         <script type="text/javascript">

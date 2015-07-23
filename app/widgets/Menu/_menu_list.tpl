@@ -17,10 +17,13 @@
                 title="{$c->__('menu.contact_post')}"
             {/if}
         >
+            {$picture = $value->getPicture()}
             {if="current(explode('.', $value->origin)) == 'nsfw'"}
                 <span class="icon thumb color red tiny">
                     +18
                 </span>
+            {elseif="$picture != null"}
+                <span class="icon thumb" style="background-image: url({$picture});"></span>
             {elseif="$value->node == 'urn:xmpp:microblog:0'"}
                 {$url = $value->getContact()->getPhoto('l')}
                 {if="$url"}
@@ -43,9 +46,8 @@
                 {if="$value->node == 'urn:xmpp:microblog:0'"}
                     <a href="{$c->route('contact', $value->getContact()->jid)}">
                         <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
-                </a> –
-                {/if}
-                {if="$value->node != 'urn:xmpp:microblog:0'"}
+                    </a> –
+                {else}
                     <a href="{$c->route('group', array($value->origin, $value->node))}">
                         <i class="zmdi zmdi-pages"></i> {$value->node}
                     </a> –
@@ -58,13 +60,13 @@
                     <i class="zmdi zmdi-portable-wifi"></i>
                 </span>
             {/if}
-            <p class="more">{$value->contentcleaned|strip_tags}</p>
+            <p>{$value->contentcleaned|strip_tags}</p>
         </li>
     {/loop}
     {if="count($items) == $paging"}
     <li id="history" class="block large" onclick="{$history} this.parentNode.removeChild(this);">
         <span class="icon"><i class="zmdi zmdi-time-restore"></i></span>
-        {$c->__('post.older')}
+        <span>{$c->__('post.older')}</span>
     </li>
     {/if}
 

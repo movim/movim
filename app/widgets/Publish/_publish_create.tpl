@@ -1,4 +1,4 @@
-<form name="post" class="padded_top_bottom">
+<form name="post" class="block">
     <input type="hidden" name="to" value="{$to}">
     <input type="hidden" name="node" value="{$node}">
     <div>

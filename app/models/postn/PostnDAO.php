@@ -2,61 +2,61 @@
 
 namespace modl;
 
-class PostnDAO extends SQL {  
+class PostnDAO extends SQL {
     function set(Postn $post) {
         $this->_sql = '
             update postn
                 set aname           = :aname,
                     aid             = :aid,
                     aemail          = :aemail,
-                    
+
                     title           = :title,
                     content         = :content,
                     contentcleaned  = :contentcleaned,
-                    
+
                     commentplace    = :commentplace,
-                    
+
                     published       = :published,
                     updated         = :updated,
                     delay           = :delay,
-                    
+
                     lat             = :lat,
                     lon             = :lon,
-                    
+
                     links           = :links,
                     picture         = :picture,
                     tags            = :tags,
-                    
+
                     hash            = :hash
-                    
+
                 where origin = :origin
                     and node = :node
                     and nodeid = :nodeid';
 
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'aname'             => $post->aname,
                 'aid'               => $post->aid,
                 'aemail'            => $post->aemail,
-                        
+
                 'title'             => $post->title,
                 'content'           => $post->content,
                 'contentcleaned'    => $post->contentcleaned,
-                
+
                 'commentplace'      => $post->commentplace,
-                
+
                 'published'         => $post->published,
                 'updated'           => $post->updated,
                 'delay'             => $post->delay,
-                        
+
                 'lat'               => $post->lat,
                 'lon'               => $post->lon,
-                        
+
                 'links'             => $post->links,
                 'picture'           => $post->picture,
                 'tags'              => $post->tags,
-                        
+
                 'hash'              => $post->hash,
 
                 'origin'            => $post->origin,
@@ -64,8 +64,8 @@ class PostnDAO extends SQL {
                 'nodeid'            => $post->nodeid
             )
         );
-        
-        $this->run('Postn'); 
+
+        $this->run('Postn');
 
         if(!$this->_effective) {
             $this->_sql ='
@@ -74,91 +74,91 @@ class PostnDAO extends SQL {
                 origin,
                 node,
                 nodeid,
-                
+
                 aname,
                 aid,
                 aemail,
-                
+
                 title,
                 content,
                 contentcleaned,
-                
+
                 commentplace,
-                
+
                 published,
                 updated,
                 delay,
 
                 lat,
                 lon,
-                
+
                 links,
                 picture,
                 tags,
-                
+
                 hash)
-                values(                    
+                values(
                     :origin,
                     :node,
                     :nodeid,
-                    
+
                     :aname,
                     :aid,
                     :aemail,
-                    
+
                     :title,
                     :content,
                     :contentcleaned,
-                    
+
                     :commentplace,
-                    
+
                     :published,
                     :updated,
                     :delay,
 
                     :lat,
                     :lon,
-                    
+
                     :links,
                     :picture,
                     :tags,
-                    
+
                     :hash
                 )';
-                
+
             $this->prepare(
-                'Postn', 
+                'Postn',
                 array(
                     'aname'             => $post->aname,
                     'aid'               => $post->aid,
                     'aemail'            => $post->aemail,
-                    
+
                     'title'             => $post->title,
                     'content'           => $post->content,
                     'contentcleaned'    => $post->contentcleaned,
-                    
+
                     'commentplace'      => $post->commentplace,
-                    
+
                     'published'         => $post->published,
                     'updated'           => $post->updated,
                     'delay'             => $post->delay,
-                            
+
                     'lat'               => $post->lat,
                     'lon'               => $post->lon,
-                            
+
                     'links'             => $post->links,
                     'picture'           => $post->picture,
                     'tags'              => $post->tags,
-                            
+
                     'hash'              => $post->hash,
-                            
+
                     'origin'            => $post->origin,
                     'node'              => $post->node,
                     'nodeid'            => $post->nodeid
                 )
             );
-            
-            $this->run('Postn'); 
+
+            $this->run('Postn');
         }
     }
 
@@ -173,7 +173,7 @@ class PostnDAO extends SQL {
                 'nodeid' => $nodeid
             )
         );
-            
+
         return $this->run('Postn');
     }
 
@@ -190,10 +190,10 @@ class PostnDAO extends SQL {
                 'node' => $node
             )
         );
-            
+
         return $this->run('Postn');
     }
-    
+
     function getNode($from, $node, $limitf = false, $limitr = false) {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
@@ -205,18 +205,18 @@ class PostnDAO extends SQL {
                 and postn.node != \'urn:xmpp:microblog:0\'
             order by postn.published desc';
 
-        if($limitr) 
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'aid' => $this->_user, // TODO: Little hack to bypass the check, need to fix it in Modl
                 'origin' => $from,
                 'node' => $node
             )
         );
-        
+
         return $this->run('ContactPostn');
     }
 
@@ -229,17 +229,17 @@ class PostnDAO extends SQL {
                 and postn.node = :node
             order by postn.published desc';
 
-        if($limitr) 
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'origin' => $from,
                 'node' => $node
             )
         );
-        
+
         return $this->run('ContactPostn');
     }
 
@@ -252,15 +252,15 @@ class PostnDAO extends SQL {
                 and postn.origin = :aid
                 and postn.picture = 1
             order by postn.published desc';
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'origin' => $this->_user,
                 'aid' => $from // Another hack
             )
         );
-        
+
         return $this->run('ContactPostn');
     }
 
@@ -270,17 +270,17 @@ class PostnDAO extends SQL {
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
             where postn.nodeid = :nodeid';
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'nodeid' => $id
             )
         );
-        
+
         return $this->run('ContactPostn', 'item');
     }
-    
+
     function getAllPosts($jid = false, $limitf = false, $limitr = false) {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
@@ -296,19 +296,19 @@ class PostnDAO extends SQL {
             order by postn.published desc
             ';
 
-        if($limitr) 
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         if($jid == false)
             $jid = $this->_user;
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'origin' => $jid
             )
         );
-        
+
         return $this->run('ContactPostn');
     }
 
@@ -324,19 +324,19 @@ class PostnDAO extends SQL {
             order by postn.published desc
             ';
 
-        if($limitr) 
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'origin' => $this->_user
             )
         );
-        
+
         return $this->run('ContactPostn');
     }
-    
+
     function getNews($limitf = false, $limitr = false) {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
@@ -346,19 +346,19 @@ class PostnDAO extends SQL {
             order by postn.published desc
             ';
 
-        if($limitr) 
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'origin' => $this->_user
             )
         );
-        
+
         return $this->run('ContactPostn');
     }
-    
+
     function getPublic($origin, $node, $limitf = false, $limitr = false) {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
@@ -369,17 +369,17 @@ class PostnDAO extends SQL {
                 and privacy.value = 1
             order by postn.published desc';
 
-        if($limitr) 
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'origin' => $origin,
                 'node' => $node
             )
         );
-        
+
         return $this->run('ContactPostn');
     }
 
@@ -394,18 +394,18 @@ class PostnDAO extends SQL {
                 and postn.nodeid = :nodeid
             order by postn.published desc';
 
-        if($limitr) 
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'origin' => $origin,
                 'node' => $node,
                 'nodeid' => $nodeid,
             )
         );
-        
+
         return $this->run('ContactPostn');
     }
 
@@ -413,7 +413,7 @@ class PostnDAO extends SQL {
     function getComments($posts) {
         $commentsid = '';
         if(is_array($posts)) {
-            $i = 0;            
+            $i = 0;
             foreach($posts as $post) {
                 if($i == 0)
                     $commentsid = "'urn:xmpp:microblog:0:comments/".$post->nodeid."'";
@@ -433,14 +433,14 @@ class PostnDAO extends SQL {
             order by postn.published';
 
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
             )
         );
-            
-        return $this->run('ContactPostn'); 
+
+        return $this->run('ContactPostn');
     }
-    
+
     function clearPost() {
         $this->_sql = '
             delete from postn
@@ -452,26 +452,26 @@ class PostnDAO extends SQL {
                 'session' => $this->_user
             )
         );
-            
+
         return $this->run('Postn');
     }
 
     // TODO: fixme
     function getStatistics() {
         $this->_sql = '
-            select count(*) as count, extract(month from published) as month, extract(year from published) as year 
-            from postn 
+            select count(*) as count, extract(month from published) as month, extract(year from published) as year
+            from postn
             where session = :session
             group by month, year order by year desc, month desc';
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'session' => $this->_user
             )
         );
-        
-        return $this->run(null, 'array'); 
+
+        return $this->run(null, 'array');
     }
 
     function getCountSince($date) {
@@ -486,15 +486,15 @@ class PostnDAO extends SQL {
                 and postn.node not like \'urn:xmpp:inbox\'
                 and published > :published
                 ';
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'origin' => $this->_user,
                 'published' => $date
             )
         );
-        
+
         $arr = $this->run(null, 'array');
         if(is_array($arr) && isset($arr[0])) {
             $arr = array_values($arr[0]);
@@ -514,14 +514,14 @@ class PostnDAO extends SQL {
                 and postn.node not like \'urn:xmpp:inbox\'
             order by postn.published desc
             limit 1 offset 0';
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'origin' => $this->_user
             )
         );
-        
+
         $arr = $this->run(null, 'array');
         if(is_array($arr) && isset($arr[0]))
             return $arr[0]['published'];
@@ -530,20 +530,23 @@ class PostnDAO extends SQL {
     function getLastPublished($limitf = false, $limitr = false)
     {
         $this->_sql = '
-            select * from postn 
+            select * from postn
             where
                 node != \'urn:xmpp:microblog:0\'
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
+                and ((postn.origin, node) not in (select server, node from subscription where jid = :origin))
             order by published desc
             ';
 
-        if($limitr) 
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-        
+
         $this->prepare(
-            'Postn', 
-            array()
+            'Postn',
+            array(
+                'origin' => $this->_user
+            )
         );
 
         return $this->run('Postn');
@@ -554,9 +557,9 @@ class PostnDAO extends SQL {
             select count(*) from postn
             where postn.nodeid = :nodeid
             ';
-        
+
         $this->prepare(
-            'Postn', 
+            'Postn',
             array(
                 'nodeid'    => $id
             )

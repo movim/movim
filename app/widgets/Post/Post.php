@@ -48,7 +48,7 @@ class Post extends WidgetBase
 
     function onCommentPublished($packet)
     {
-        Notification::append(false, $this->__('post.comment_published'));        
+        Notification::append(false, $this->__('post.comment_published'));
         $this->onComments($packet);
     }
 
@@ -66,7 +66,7 @@ class Post extends WidgetBase
 
         $p = new \Modl\ContactPostn();
         $p->nodeid = $id;
-        
+
         $pd = new \Modl\PostnDAO();
         $comments = $pd->getComments($p);
 
@@ -98,7 +98,7 @@ class Post extends WidgetBase
     {
         $html = $this->preparePost($id);
         $header = $this->prepareHeader($id);
-        
+
         Header::fill($header);
         RPC::call('movim_fill', 'post_widget', $html);
     }
@@ -123,7 +123,7 @@ class Post extends WidgetBase
     }
 
     function ajaxGetComments($jid, $id)
-    {        
+    {
         $pd = new \Modl\PostnDAO();
         $pd->deleteNode($jid, "urn:xmpp:microblog:0:comments/".$id);
 
@@ -157,8 +157,8 @@ class Post extends WidgetBase
 
         $nd = new \modl\PostnDAO();
         $view = $this->tpl();
-        $view->assign('posts', $nd->getLastPublished(0, 10));
-        
+        $view->assign('posts', $nd->getLastPublished(0, 8));
+
         return $view->draw('_post_empty', true);
     }
 
@@ -210,10 +210,10 @@ class Post extends WidgetBase
 
     function ajaxTogglePrivacy($id) {
         $validate = Validator::string()->length(6, 128);
-        
+
         if(!$validate->validate($id))
             return;
-        
+
         $pd = new \Modl\PrivacyDAO();
         $p = $pd->get($id);
 

@@ -1,13 +1,12 @@
-{if="isset($attachements.pictures)"}
+<article class="block">
+    {if="isset($attachements.pictures)"}
     <header
         class="big"
         style="
-            background-image: url('{$attachements['pictures'][0]['href']}');">
-    </header>
-{/if}
-
-<article>
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachements['pictures'][0]['href']}');">
+    {else}
     <header>
+    {/if}
         <ul class="thick">
             <li class="condensed">
                 {if="$recycled"}
@@ -157,7 +156,7 @@
                             <i class="zmdi zmdi-loop"></i>
                         </span>
                     {/if}
-                    
+
                     <span>{$c->__('post.repost', $post->getContact()->getTrueName())}</span>
                     <p>{$c->__('post.repost_profile', $post->getContact()->getTrueName())}</p>
                 </li>

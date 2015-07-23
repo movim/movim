@@ -10,7 +10,7 @@
             <?php $this->widget('Notifs');?>
             <?php $this->widget('Roster');?>
         </div>
-        <div id="contact_widget">
+        <div id="contact_widget" class="card shadow">
             <?php $this->widget('Contact');?>
         </div>
     </section>

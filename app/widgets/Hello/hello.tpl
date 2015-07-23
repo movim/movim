@@ -40,8 +40,7 @@
         </a>
     </ul>
     {if="$c->supported('pubsub')"}
-        <ul id="news" class="flex thick active">
-            <li class="subheader block large">{$c->__('hello.news')}</li>
+        <ul id="news" class="card shadow flex active">
             {loop="$news"}
                 <li class="block condensed"
                     data-id="{$value->nodeid}"
@@ -52,24 +51,25 @@
                     {/if}
                     onclick="movim_reload('{$c->route('news', $value->nodeid)}')"
                 >
+                    {$picture = $value->getPicture()}
                     {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                        <span class="icon bubble color red tiny">
+                        <span class="icon thumb color red tiny">
                             +18
                         </span>
+                    {elseif="$picture != null"}
+                        <span class="icon thumb" style="background-image: url({$picture});"></span>
                     {elseif="$value->node == 'urn:xmpp:microblog:0'"}
-                        {$url = $value->getContact()->getPhoto('s')}
+                        {$url = $value->getContact()->getPhoto('l')}
                         {if="$url"}
-                            <span class="icon bubble">
-                                <img src="{$url}">
+                            <span class="icon thumb" style="background-image: url({$url});">
                             </span>
                         {else}
-                            <span
-                                class="icon bubble color {$value->getContact()->jid|stringToColor}">
+                            <span class="icon thumb color {$value->getContact()->jid|stringToColor}">
                                 <i class="zmdi zmdi-account"></i>
                             </span>
                         {/if}
                     {else}
-                        <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+                        <span class="icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
                     {/if}
 
                     {if="$value->title != null"}
@@ -87,7 +87,7 @@
                     </p>
                 </li>
             {/loop}
-            <a  class="block large" href="{$c->route('news')}">
+            <a href="{$c->route('news')}">
                 <li class="action">
                     <div class="action">
                         <i class="zmdi zmdi-chevron-right"></i>

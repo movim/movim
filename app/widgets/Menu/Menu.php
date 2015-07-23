@@ -5,12 +5,13 @@ use Moxl\Xec\Action\Pubsub\GetItems;
 class Menu extends WidgetBase
 {
     private $_paging = 15;
-    
+
     function load()
     {
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract');
         $this->addjs('menu.js');
+        $this->addcss('menu.css');
     }
 
     function onRetract($packet)
@@ -106,7 +107,7 @@ class Menu extends WidgetBase
         $view = $this->tpl();
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(Cache::c('since'));
-        
+
         // getting newer, not older
         if($page == 0 || $page == ""){
             $count = 0;

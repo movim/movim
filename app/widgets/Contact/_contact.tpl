@@ -1,6 +1,6 @@
 {if="$contact != null"}
     {$url = $contact->getPhoto('s')}
-
+<div class="block">
     <header class="big"
         {if="$url"}
             style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%), url('{$contact->getPhoto('xxl')}');"
@@ -47,7 +47,9 @@
             {/if}
         </ul>
     </header>
-    <br />
+    <a onclick="{$chat}" class="button action color red">
+        <i class="zmdi zmdi-comment-text-alt"></i>
+    </a>
 
     <ul class="flex">
         {if="$contact->delay != null"}
@@ -285,10 +287,10 @@
     {/if}
 
     {if="isset($gallery)"}
-        <br />
-        <h3 class="padded">{$c->__('page.gallery')}</h3>
-        <br />
-        <ul class="grid active">
+        <ul>
+            <li class="subheader">{$c->__('page.gallery')}</li>
+        </ul>
+        <ul class="grid active padded">
             {loop="$gallery"}
                 {$attachements = $value->getAttachements()}
                 <li style="background-image: url('{$attachements['pictures'][0]['href']}');"
@@ -340,10 +342,6 @@
             </ul>
         </div>
     {/if}
-
-    <a onclick="{$chat}" class="button action color red">
-        <i class="zmdi zmdi-comment-text-alt"></i>
-    </a>
 {else}
     <ul class="thick">
         <li>
@@ -351,5 +349,6 @@
             <h2>{$contactr->getTrueName()}</h2>
         </li>
     </ul>
+</div>
 {/if}
 <br />

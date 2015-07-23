@@ -1,11 +1,6 @@
-<!--<div class="placeholder icon newspaper">
-    <h1>{$c->__('post.news_feed')}</h1>
-    <h4>{$c->__('post.placeholder')}</h4>
-</div>-->
-<br/>
-<h2 class="padded_top_bottom">{$c->__('post.hot')}</h2>
-
-<ul class="flex card thick active">
+<h2 class="thin">{$c->__('post.hot')}</h2>
+<h4 class="gray">{$c->__('post.hot_text')}</h4><br />
+<ul class="flex card shadow active">
 {loop="$posts"}
     {if="!filter_var($value->origin, FILTER_VALIDATE_EMAIL)"}
         <li
@@ -13,12 +8,15 @@
             data-id="{$value->nodeid}"
             data-server="{$value->origin}"
             data-node="{$value->node}">
+            {$picture = $value->getPicture()}
             {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                <span class="icon bubble color red tiny">
+                <span class="icon thumb color red tiny">
                     +18
                 </span>
+            {elseif="$picture != null"}
+                <span class="icon thumb" style="background-image: url({$picture});"></span>
             {else}
-                <span class="icon bubble color {$value->node|stringToColor}">
+                <span class="icon thumb color {$value->node|stringToColor}">
                     {$value->node|firstLetterCapitalize}
                 </span>
             {/if}
@@ -29,13 +27,31 @@
                 {$value->node}
             {/if}
             </span>
-            <p class="more">
+            <p>
+                <a href="{$c->route('group', array($value->origin, $value->node))}">
+                    <i class="zmdi zmdi-pages"></i> {$value->node}
+                </a> –
+                {$value->published|strtotime|prepareDate}
+            </p>
+
+            <p>
                 {if="current(explode('.', $value->origin)) != 'nsfw'"}
-                    {$value->contentcleaned|strip_tags:'<img><img/>'}
+                    {$value->contentcleaned|strip_tags}
                 {/if}
             </p>
-            <span class="info">{$value->published|strtotime|prepareDate}</span>
         </li>
         {/if}
 {/loop}
 </ul>
+<ul class="active thick">
+    <a href="{$c->route('group')}">
+        <li class="action">
+            <div class="action">
+                <i class="zmdi zmdi-chevron-right"></i>
+            </div>
+            <span class="icon"><i class="zmdi zmdi-pages"></i></span>
+            <span>Discover more articles on the Groups page</span>
+        </li>
+    </a>
+</ul>
+

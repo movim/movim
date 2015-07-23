@@ -1,6 +1,6 @@
 var Group = {
     addLoad: function(id) {
-        document.querySelector('#group_widget').className = 'divided spinner';
+        document.querySelector('#group_widget').className = 'card shadow spinner';
         movim_add_class('#group_widget', 'on');
         movim_add_class('#group_widget', id);
     },

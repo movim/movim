@@ -1,6 +1,14 @@
 {loop="$posts"}
-    <article id="{$value->nodeid}">
+    {$attachements = $value->getAttachements()}
+    <article id="{$value->nodeid}" class="block">
+        {if="isset($attachements.pictures)"}
+        <header
+            class="big"
+            style="
+                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachements['pictures'][0]['href']}');">
+        {else}
         <header>
+        {/if}
             <ul class="thick">
                 <li class="condensed">
                     {$url = $value->getContact()->getPhoto('s')}
@@ -35,8 +43,8 @@
         </section>
         <footer>
             <ul class="thin">
-                {if="isset($value->getAttachements().links)"}
-                    {loop="$value->getAttachements().links"}
+                {if="isset($attachements.links)"}
+                    {loop="$attachements.links"}
                         {if="substr($value.href, 0, 5) != 'xmpp:'"}
                         <li>
                             <span class="icon small"><img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/></span>
@@ -47,8 +55,8 @@
                         {/if}
                     {/loop}
                 {/if}
-                {if="isset($value->getAttachements().files)"}
-                    {loop="$value->getAttachements().files"}
+                {if="isset($attachements.files)"}
+                    {loop="$attachements.files"}
                         <li>
                             <a
                                 href="{$value.href}"
@@ -64,9 +72,9 @@
                     {/loop}
                 {/if}
             </ul>
-            {if="isset($value->getAttachements().pictures)"}
+            {if="isset($attachements.pictures)"}
                 <ul class="flex middle">
-                {loop="$value->getAttachements().pictures"}
+                {loop="$attachements.pictures"}
                     <li class="block pic">
                         <span class="icon small gray">
                             <i class="zmdi zmdi-image"></i>

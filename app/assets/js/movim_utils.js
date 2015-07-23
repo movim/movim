@@ -1,9 +1,9 @@
 /**
  * Movim Utils
- * 
+ *
  * This file include some useful functions used quite everywhere in Movim
- */ 
- 
+ */
+
 function movim_check_string(str) {
     if (typeof str == 'object') {
         return str instanceof String;
@@ -29,7 +29,7 @@ function movim_disconnect()
 
 /**
  * @brief Force Movim to reload the page
- * @param string uri  
+ * @param string uri
  */
 function movim_reload(uri) {
     window.location.replace(uri);
@@ -37,7 +37,7 @@ function movim_reload(uri) {
 
 /**
  * @brief Force Movim to reload the current page
- * @param string error 
+ * @param string error
  */
 function movim_reload_this() {
     window.location.reload();
@@ -52,7 +52,7 @@ function movim_redirect(url) {
 }
 
 /**
- * @brief Return a hash (key->value) version of a form 
+ * @brief Return a hash (key->value) version of a form
  * @param string the name of the form
  * @return hash
  */
@@ -79,41 +79,41 @@ function movim_parse_form(formname) {
 }
 
 /**
- * @brief Return a JSON version of a form 
+ * @brief Return a JSON version of a form
  * @param string the name of the form
  * @return JSON
  */
 function movim_form_to_json(formname) {
     var form = document.forms[formname];
     if(!form)
-        return false;  
-        
+        return false;
+
     var json = {};
-        
+
     for(var i = 0; i < form.elements.length; i++) {
         json_att = {};
-        
+
         for(var j = 0; j < form.elements[i].attributes.length; j++) {
             json_att[form.elements[i].attributes[j].name] = form.elements[i].attributes[j].value;
         }
-         
+
         if(form.elements[i].name.length != 0) {
             if(form.elements[i].type == 'checkbox')
                 json[form.elements[i].name] = {'value' : form.elements[i].checked, 'attributes' : json_att};
             else if(form.elements[i].type == 'radio'
-                   && form.elements[i].checked ) 
+                   && form.elements[i].checked )
                 json[form.elements[i].name] = {'value' : form.elements[i].value, 'attributes' : json_att};
             else if(form.elements[i].type != 'radio')
                 json[form.elements[i].name] = {'value' : form.elements[i].value, 'attributes' : json_att};
         }
 	}
-    
+
     return json;
 }
 
 /**
  * @brief A magical function to autoresize textarea when typing
- * @param DOMElement textbox 
+ * @param DOMElement textbox
  */
 function movim_textarea_autoheight(textbox) {
     if(textbox != null ) {
@@ -129,7 +129,7 @@ function movim_textarea_autoheight(textbox) {
 /**
  * @brief Check if the element own the class
  * @param string the selector of the element (e.g '#myid', '.theclass')
- * @param string the class to check 
+ * @param string the class to check
  */
 function movim_has_class(element,classname) {
     var node = movim_get_node(element);
@@ -292,7 +292,7 @@ function accentsTidy(s){
     r = r.replace(new RegExp("ç", 'g'),"c");
     r = r.replace(new RegExp("[èéêë]", 'g'),"e");
     r = r.replace(new RegExp("[ìíîï]", 'g'),"i");
-    r = r.replace(new RegExp("ñ", 'g'),"n");                            
+    r = r.replace(new RegExp("ñ", 'g'),"n");
     r = r.replace(new RegExp("[òóôõö]", 'g'),"o");
     r = r.replace(new RegExp("œ", 'g'),"oe");
     r = r.replace(new RegExp("[ùúûü]", 'g'),"u");

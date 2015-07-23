@@ -1,8 +1,8 @@
 /* Article */
 
 article {
-    padding-bottom: 2rem;
     overflow: hidden;
+    padding-bottom: 2rem;
 }
 
 article header {
