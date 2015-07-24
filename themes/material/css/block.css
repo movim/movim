@@ -24,10 +24,6 @@
     padding-bottom: 1.5rem;
 }
 
-.flex.card .block:not(.condensed) {
-    padding-top: 3rem;
-}
-
 .flex.stacked .block {
     margin-bottom: 0;
 }

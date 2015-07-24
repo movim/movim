@@ -1,7 +1,8 @@
 var Chat = {
     left : null,
     right: null,
-    right: null,
+    room: null,
+    previous: null,
     addSmiley: function(element) {
         var n = document.querySelector('#chat_textarea');
         n.value = n.value + element.dataset.emoji;
@@ -83,10 +84,20 @@ var Chat = {
 	    bubble.querySelector('div').className = '';
         } else {
             if(message.session == message.jidfrom) {
-                bubble = Chat.right;
+                bubble = Chat.right.cloneNode(true);
+                if(Chat.previous == 'right') {
+                    bubble.className += ' same';
+                }
+
+                Chat.previous = 'right';
                 id = message.jidto + '_conversation';
             } else {
-                bubble = Chat.left;
+                bubble = Chat.left.cloneNode(true);
+                if(Chat.previous == 'left') {
+                    bubble.className += ' same';
+                }
+
+                Chat.previous = 'left';
                 id = message.jidfrom + '_conversation';
             }
 

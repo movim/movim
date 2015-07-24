@@ -247,19 +247,23 @@ ul li div.bubble:after {
      height: 0;
 }
 
-ul li div.bubble:before {
-   content: "";
-   position: absolute;
-   top: 0;
-   left: -1.5rem;
-   border-top: 1.5rem solid black;
-   border-top-color: inherit;
-   border-left: 1.5rem solid transparent;
-   border-right: 1.5rem solid transparent;
+ul li:not(.same) div.bubble:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1.5rem;
+    border-top: 1.5rem solid black;
+    border-top-color: inherit;
+    border-left: 1.5rem solid transparent;
+    border-right: 1.5rem solid transparent;
 }
 
-li.oppose div.bubble:before {
+ul li.oppose:not(.same) div.bubble:before {
     left: calc(100% - 1.5rem);
+}
+
+ul li.same span.icon {
+    display: none;
 }
 
 /* Tabs */

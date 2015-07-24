@@ -371,14 +371,22 @@ class ContactDAO extends SQL {
         $this->_sql =
             'select *, privacy.value as privacy from contact
             left outer join privacy
-                on contact.jid = privacy.pkey
+              on contact.jid = privacy.pkey
             where privacy.value = 1
-            order by updated desc';
+              and contact.jid not in (select jid from rosterlink where session = :jid)
+              and contact.jid != :jid
+            order by jid desc';
 
         if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
-        $this->prepare('Contact');
+        $this->prepare(
+            'Contact',
+            array(
+                'jid' => $this->_user
+            )
+        );
+
         return $this->run('Contact');
     }
 
@@ -386,10 +394,17 @@ class ContactDAO extends SQL {
         $this->_sql =
             'select count(*) from contact
             left outer join privacy
-                on contact.jid = privacy.pkey
-                where privacy.value = 1';
+                 on contact.jid = privacy.pkey
+            where privacy.value = 1
+              and contact.jid not in (select jid from rosterlink where session = :jid)
+              and contact.jid != :jid';
 
-        $this->prepare('Contact');
+        $this->prepare(
+            'Contact',
+            array(
+                'jid' => $this->_user
+            )
+        );
 
         $results = $this->run(null, 'array');
         $results = array_values($results[0]);
