@@ -12,7 +12,9 @@
     <ul class="divided spaced middle active">
         {loop="$subscriptions"}
             {if="$c->checkNewServer($value)"}
-                <li class="subheader">{$value->server}</li>
+                <li class="subheader">
+                    <a href="#" onclick="Groups_ajaxDisco('{$value->server}')">{$value->server}</a>
+                </li>
             {/if}
             <li
                 {if="$value->description"}class="condensed"{/if}

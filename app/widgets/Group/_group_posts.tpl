@@ -87,9 +87,51 @@
                 </ul>
             {/if}
         </footer>
+        {$comments = $c->getComments($value)}
+        {if="$comments"}
+            <ul class="divided spaced middle">
+                <li class="subheader">
+                    {$c->__('post.comments')}
+                    <span class="info">{$comments|count}</span>
+                </li>
+                {loop="$comments"}
+                    <li class="condensed">
+                        {$url = $value->getContact()->getPhoto('s')}
+                        {if="$url"}
+                            <span class="icon bubble">
+                                <img src="{$url}">
+                            </span>
+                        {else}
+                            <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
+                                <i class="zmdi zmdi-account"></i>
+                            </span>
+                        {/if}
+                        <span class="info">{$value->published|strtotime|prepareDate}</span>
+                        <span>
+                            {$value->getContact()->getTrueName()}
+                        </span>
+                        <p class="all">
+                            {$value->content}
+                        </p>
+                    </li>
+                {/loop}
+                <a href="{$c->route('news', $value->nodeid)}">
+                    <li class="action">
+                        <div class="action">
+                            <i class="zmdi zmdi-chevron-right"></i>
+                        </div>
+                        <span class="icon">
+                            <i class="zmdi zmdi-comment"></i>
+                        </span>
+                        <span>{$c->__('post.comment_add')}</span>
+                    </li>
+                </a>
+            </ul>
+        {/if}
+        <br />
     </article>
 {/loop}
-{if="$posts != null"}
+{if="$posts != null && count($posts) >= $paging-1"}
 <ul class="active thick">
     <li onclick="Group_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.parentNode.removeChild(this.parentNode);">
         <span class="icon">

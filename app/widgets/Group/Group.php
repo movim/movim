@@ -407,6 +407,7 @@ class Group extends WidgetBase
         $view->assign('node', $node);
         $view->assign('page', $page);
         $view->assign('posts', $posts);
+        $view->assign('paging', $this->_paging);
         $html = $view->draw('_group_posts', true);
 
         return $html;
@@ -421,6 +422,12 @@ class Group extends WidgetBase
         || !$validate_node->validate($node)
         ) return false;
         else return true;
+    }
+
+    function getComments($post)
+    {
+        $pd = new \Modl\PostnDAO();
+        return $pd->getComments($post);
     }
 
     function display()

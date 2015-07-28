@@ -170,8 +170,6 @@
         </ul>
     {/if}
 
-    <br />
-
     {if="$contact->tuneartist || $contact->tunetitle"}
     <ul class="flex">
         <li class="subheader block large">{$c->__('general.tune')}</li>
@@ -212,9 +210,7 @@
     </ul>
     {/if}
 
-    <div class="clear"></div>
     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
-    <br />
     <ul class="flex">
         <li class="subheader block large">{$c->__('position.legend')}</li>
 
@@ -351,4 +347,3 @@
     </ul>
 </div>
 {/if}
-<br />

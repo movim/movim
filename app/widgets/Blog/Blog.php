@@ -3,7 +3,7 @@
 class Blog extends WidgetBase {
     function load()
     {
-        
+
     }
 
     function display()
@@ -11,7 +11,7 @@ class Blog extends WidgetBase {
         if(!$this->get('f')) {
             return;
         }
-        
+
         $from = $this->get('f');
         if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
             $node = 'urn:xmpp:microblog:0';
@@ -22,7 +22,7 @@ class Blog extends WidgetBase {
         $cd = new \modl\ContactDAO();
         $c  = $cd->get($from, true);
         $this->view->assign('contact', $c);
-        
+
         $pd = new \modl\PostnDAO();
         if($id = $this->get('i')) {
             $messages = $pd->getPublicItem($from, $node, $id, 10, 0);
@@ -37,8 +37,5 @@ class Blog extends WidgetBase {
     {
         $pd = new \Modl\PostnDAO();
         return $pd->getComments($post);
-
-        //$view = $this->tpl();
-        //$view->assign('comments', $comments);
     }
 }

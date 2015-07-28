@@ -3,7 +3,8 @@
     <h4>{$c->__('group.empty_text')}</h4>
 </div>
 <br />
-<ul class="flex middle active">
+<h2>{$c->__('group.servers')}</h2>
+<ul class="flex card shadow active">
     {loop="$servers"}
         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
             <li class="block condensed" onclick="Groups_ajaxDisco('{$value->server}')">
@@ -13,4 +14,15 @@
             </li>
         {/if}
     {/loop}
+    <li class="block large">
+        <span class="icon">
+            <i class="zmdi zmdi-search-for"></i>
+        </span>
+        <form>
+            <div>
+                <input disabled placeholder="pubsub.server.com">
+                <label>{$c->__('group.search_server')}</label>
+            </div>
+        </form>
+    </li>
 </ul>
