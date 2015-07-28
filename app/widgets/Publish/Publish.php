@@ -41,9 +41,9 @@ class Publish extends WidgetBase
         RPC::call('Publish.enableSend');
 
         // Only for the microblog for the moment
-        if($node == 'urn:xmpp:microblog:0') {
+        //if($node == 'urn:xmpp:microblog:0') {
             $this->ajaxCreateComments($to, $id);
-        }
+        //}
     }
 
     function onTestPublish($packet)
