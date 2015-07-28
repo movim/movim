@@ -57,7 +57,7 @@ class Groups extends WidgetBase
 
     function onDiscoError($packet)
     {
-        // Display a nice error
+        Notification::append(null, $this->__('groups.disco_error'));
     }
 
     function onTestCreate($packet)
@@ -143,7 +143,7 @@ class Groups extends WidgetBase
 
     function checkNewServer($node) {
         $r = false;
-        
+
         if($this->_list_server != $node->server)
             $r = true;
 
