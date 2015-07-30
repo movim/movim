@@ -23,7 +23,7 @@ function systemErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = n
 class Bootstrap {
     function boot($light = false) {
         //define all needed constants
-        $this->setContants();
+        $this->setConstants();
         
         mb_internal_encoding("UTF-8");
 
@@ -95,7 +95,7 @@ class Bootstrap {
             throw new Exception(implode("\n<br />",$errors));
         }
     }
-    private function setContants() {
+    private function setConstants() {
         define('APP_TITLE',     'Movim');
         define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
