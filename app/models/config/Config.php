@@ -2,8 +2,7 @@
 
 namespace Modl;
 
-class Config extends Model {    
-    public $environment;
+class Config extends Model {
     public $description;
     public $theme;
     public $locale;
@@ -17,43 +16,40 @@ class Config extends Model {
     public $password;
     public $rewrite;
     public $sizelimit;
-    
+
     public function __construct() {
         $this->_struct = '
         {
-            "environment" : 
-                {"type":"string", "size":64, "mandatory":true },
-            "description" : 
+            "description" :
                 {"type":"text" },
-            "theme" : 
+            "theme" :
                 {"type":"string", "size":32, "mandatory":true },
-            "locale" : 
+            "locale" :
                 {"type":"string", "size":8, "mandatory":true  },
-            "maxusers" : 
+            "maxusers" :
                 {"type":"int", "size":16 },
-            "loglevel" : 
+            "loglevel" :
                 {"type":"string", "size":16, "mandatory":true  },
-            "timezone" : 
+            "timezone" :
                 {"type":"string", "size":16, "mandatory":true  },
-            "xmppwhitelist" : 
+            "xmppwhitelist" :
                 {"type":"text" },
-            "info" : 
+            "info" :
                 {"type":"text" },
-            "unregister" : 
+            "unregister" :
                 {"type":"int", "size":1 },
-            "username" : 
+            "username" :
                 {"type":"string", "size":32, "mandatory":true },
-            "password" : 
+            "password" :
                 {"type":"string", "size":64, "mandatory":true  },
-            "rewrite" : 
+            "rewrite" :
                 {"type":"int", "size":1 },
-            "sizelimit" : 
+            "sizelimit" :
                 {"type":"int", "size":16 }
         }';
-        
+
         parent::__construct();
 
-        $this->environment      = 'development';
         $this->description      = __('global.description');
         $this->theme            = 'material';
         $this->locale           = 'en';

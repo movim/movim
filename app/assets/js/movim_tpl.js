@@ -1,6 +1,6 @@
 /**
  * Movim Javascript Template functions
- * 
+ *
  * These are the default callback functions that users may (or may not) use.
  *
  * Note that all of them take only one parameter. Don't be fooled by this, the
@@ -116,8 +116,11 @@ var MovimTpl = {
             return;
         }
 
-        //if(!document.querySelector(element).contains(e.target)) 
+        //if(!document.querySelector(element).contains(e.target))
         movim_remove_class(element, classname);
+    },
+    toggleActionButton : function() {
+        movim_toggle_class('.button.action', 'active');
     },
     hideContextMenu : function() {
         movim_remove_class('ul.context_menu', 'shown');

@@ -9,12 +9,35 @@ use Monolog\Handler\SyslogHandler;
 /**
  * Error Handler...
  */
-function systemErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = null) 
+function systemErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = null)
 {
     $log = new Logger('movim');
     $log->pushHandler(new SyslogHandler('movim'));
     $log->addError($errstr);
     return false;
+}
+
+function fatalErrorShutdownHandler()
+{
+    $last_error = error_get_last();
+    if($last_error['type'] === E_ERROR) {
+        systemErrorHandler(
+            E_ERROR,
+            $last_error['message'],
+            $last_error['file'],
+            $last_error['line']);
+
+        if (ob_get_contents()) ob_clean();
+
+        ?>
+        <div style="font-family: Arial; text-align: center;">
+            <h2>Oops... something went wrong.</h2>
+            <p>But don't panic. The NSA is on the case.</p>
+        </div>
+        <?php
+
+        if (ob_get_contents()) ob_end_clean();
+    }
 }
 
 /**
@@ -24,22 +47,22 @@ class Bootstrap {
     function boot($light = false) {
         //define all needed constants
         $this->setConstants();
-        
+
         mb_internal_encoding("UTF-8");
 
         //First thing to do, define error management (in case of error forward)
         $this->setLogs();
-        
+
         //Check if vital system need is OK
         $this->checkSystem();
 
         if(!$light) $this->setBrowserSupport();
-        
+
         $this->loadSystem();
         $this->loadCommonLibraries();
         $this->loadDispatcher();
         $this->loadHelpers();
-        
+
         $loadmodlsuccess = $this->loadModl();
 
         $this->setTimezone();
@@ -59,7 +82,7 @@ class Bootstrap {
             DOCUMENT_ROOT.'/cache/test.tmp',
         );
         $errors=array();
-        
+
         if(!is_writable(DOCUMENT_ROOT))
             $errors[] = 'We\'re unable to write to folder '.DOCUMENT_ROOT.': check rights';
         else {
@@ -78,12 +101,12 @@ class Bootstrap {
                 touch(DOCUMENT_ROOT.'/users/index.html');
             }
         }
-        
+
         foreach($listWritableFile as $fileName) {
             if (!file_exists($fileName)) {
                 if (touch($fileName) !== true) {
                     $errors[] = 'We\'re unable to write to '.$fileName.': check rights';
-                } 
+                }
             }else if (is_writable($fileName) !== true) {
                 $errors[] = 'We\'re unable to write to file '.$fileName.': check rights';
             }
@@ -111,9 +134,9 @@ class Bootstrap {
 
         define('BASE_URI',      $this->getBaseUri());
         define('CACHE_URI',     $this->getBaseUri() . 'cache/');
-        
+
         define('SESSION_ID',    getenv('sid'));
-        
+
         define('THEMES_PATH',   DOCUMENT_ROOT . '/themes/');
         define('USERS_PATH',    DOCUMENT_ROOT . '/users/');
         define('APP_PATH',      DOCUMENT_ROOT . '/app/');
@@ -122,13 +145,13 @@ class Bootstrap {
         define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
         define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
         define('LOG_PATH',      DOCUMENT_ROOT . '/log/');
-        
+
         define('VIEWS_PATH',    DOCUMENT_ROOT . '/app/views/');
         define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
         define('WIDGETS_PATH',  DOCUMENT_ROOT . '/app/widgets/');
-        
+
         define('MOVIM_API',     'https://api.movim.eu/');
-        
+
         if (!defined('DOCTYPE')) {
             define('DOCTYPE','text/html');
         }
@@ -136,7 +159,7 @@ class Bootstrap {
 
     private function isServerSecured() {
         if((
-            isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "") 
+            isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "")
         || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == "https")) {
             return true;
         }
@@ -150,7 +173,7 @@ class Bootstrap {
             return trim(fgets($f));
         }
     }
-    
+
     private function getBaseUri() {
         $dirname = dirname($_SERVER['PHP_SELF']);
         $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname).'/';
@@ -175,7 +198,7 @@ class Bootstrap {
             return $uri;
         }
     }
-    
+
     private function loadSystem() {
         // Loads up all system libraries.
         require_once(SYSTEM_PATH . "/i18n/i18n.php");
@@ -191,11 +214,11 @@ class Bootstrap {
         require_once(SYSTEM_PATH . "User.php");
         require_once(SYSTEM_PATH . "Picture.php");
     }
-    
+
     private function loadCommonLibraries() {
         // XMPPtoForm lib
         require_once(LIB_PATH . "XMPPtoForm.php");
-        
+
         // SDPtoJingle and JingletoSDP lib :)
         require_once(LIB_PATH . "SDPtoJingle.php");
         require_once(LIB_PATH . "JingletoSDP.php");
@@ -206,7 +229,7 @@ class Bootstrap {
             require $file;
         }
     }
-    
+
     private function loadDispatcher() {
         require_once(SYSTEM_PATH . "template/TplPageBuilder.php");
         require_once(SYSTEM_PATH . "controllers/BaseController.php");
@@ -232,7 +255,7 @@ class Bootstrap {
 
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
-        
+
         if($user->isLogged()) {
             $lang = $user->getConfig('language');
             if(isset($lang)) {
@@ -249,41 +272,15 @@ class Bootstrap {
             loadLanguage($config->locale);
         }
     }
-    
+
     private function setLogs() {
-        /*$cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
-        
-        try {
-            define('ENVIRONMENT', $config->environment);
-        } catch (Exception $e) {
-            define('ENVIRONMENT','development');//default environment is production
-        }*/
-        define('ENVIRONMENT','development');//default environment is production
-        /**
-         * LOG_MANAGEMENT: define where logs are saved, prefer error_log, or log_folder if you use mutual server.
-         * 'error_log'  : save in file defined on your file server
-         * 'log_folder' : save in log folder, in DOCUMENT_ROOT.'/log'
-         * 'syslog'     : save in global system logs (not in file server logs)
-         */
-         
-        define('LOG_MANAGEMENT','log_folder');
-        if (ENVIRONMENT === 'development') {
-            ini_set('log_errors', 1);
-            ini_set('display_errors', 0);
-            ini_set('error_reporting', E_ALL );
-        
-        } else {
-            ini_set('log_errors', 1);
-            ini_set('display_errors', 0);
-            ini_set('error_reporting', E_ALL ^ E_DEPRECATED ^ E_NOTICE);
-        }
-        if (LOG_MANAGEMENT === 'log_folder') {
-            ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
-        }
+        ini_set('display_errors', 0);
+        ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
+
         set_error_handler('systemErrorHandler', E_ALL);
+        register_shutdown_function('fatalErrorShutdownHandler');
     }
-    
+
     private function setTimezone() {
         // We set the default timezone to the server timezone
         $cd = new \Modl\ConfigDAO();
@@ -291,7 +288,7 @@ class Bootstrap {
 
         // And we set a global offset
         define('TIMEZONE_OFFSET', getTimezoneOffset($config->timezone));
-        
+
         date_default_timezone_set($config->timezone);
     }
 
@@ -307,7 +304,7 @@ class Bootstrap {
         // We load Movim Data Layer
         $db = Modl\Modl::getInstance();
         $db->setModelsPath(APP_PATH.'models');
-        
+
         Modl\Utils::loadModel('Config');
         Modl\Utils::loadModel('Presence');
         Modl\Utils::loadModel('Contact');
@@ -327,13 +324,13 @@ class Bootstrap {
         } else {
             throw new MovimException('Cannot find config/db.inc.php file');
         }
-        
+
         $db->setConnectionArray($conf);
         $db->connect();
 
         return true;
     }
-    
+
     private function setBrowserSupport() {
         if(isset( $_SERVER['HTTP_USER_AGENT'])) {
             $useragent = $_SERVER['HTTP_USER_AGENT'];
@@ -366,7 +363,7 @@ class Bootstrap {
 
         switch($browser) {
             case 'Firefox':
-                if($browser_version > 3.5)
+                if($browser_version > 30.0)
                     $compatible = true;
             break;
             case 'IE':
@@ -385,7 +382,7 @@ class Bootstrap {
 
         define('BROWSER_COMP', $compatible);
     }
-    
+
     private function startingSession() {
         $s = \Sessionx::start();
         $s->load();

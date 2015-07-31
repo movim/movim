@@ -290,7 +290,6 @@ input[type=button].flat:focus {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    border-radius: 10rem;
     min-height: 0rem;
     min-width: 0rem;
     line-height: 7rem;
@@ -298,18 +297,32 @@ input[type=button].flat:focus {
     width: 7rem;
     z-index: 1;
     font-size: 3.5rem;
-    transition: all 0.15s ease 0s;
+}
+
+.button.action,
+.button.action .actions li {
+    border-radius: 10rem;
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.23), 0 0.5rem 1.25rem rgba(0, 0, 0, 0.16);
 }
 
 .button.action:hover {
-    transform: scale(1.1);
+    /*transform: scale(1.1);*/
     background-image: linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 100%);
 }
-
+/*
 .button.action:active {
     transform: scale(0.95);
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) 100%);
+}
+*/
+.button.action,
+.button.action .actions li,
+.button.action > i {
+    transition: all 0.15s ease 0s;
+}
+
+.button.action.active > i {
+    transform: rotate(135deg);
 }
 
 li.action div.action .button {
@@ -328,4 +341,35 @@ header.big ~ .button.action {
     main > section > div:first-child:nth-last-child(2) .button.action {
         right: calc(70% + 3rem);
     }
+}
+
+.button.action .actions {
+    position: absolute;
+    bottom: 7rem;
+    left: 0;
+    padding: 0;
+}
+
+.button.action .actions li {
+    background-color: white;
+    color: #888;
+    font-size: 3rem;
+    line-height: 6rem;
+    margin: -4rem 0.5rem;
+    width: 6rem;
+    height: 6rem;
+    padding: 0;
+    opacity: 0;
+    transition: all 0.15s ease 0s;
+    pointer-events: none;
+}
+
+.button.action.active .actions li {
+    opacity: 1;
+    pointer-events: auto;
+    margin: 2rem 0.5rem;
+}
+
+.button.action .actions li:hover {
+    background-color: white;
 }

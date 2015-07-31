@@ -47,6 +47,7 @@
                         </a> –
                     {/if}
                     {if="$post->node != 'urn:xmpp:microblog:0'"}
+                        {$post->origin} /
                         <a href="{$c->route('group', array($post->origin, $post->node))}">
                             <i class="zmdi zmdi-pages"></i> {$post->node}
                         </a> –

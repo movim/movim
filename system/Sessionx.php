@@ -21,7 +21,7 @@ class Sessionx {
     protected static $_instance;
     private         $_max_age = 86400; // 24hour
     private         $_timestamp;
-    
+
     private         $_rid;
     private         $_id;
 
@@ -49,8 +49,8 @@ class Sessionx {
             self::$_sessionid = $_COOKIE['MOVIM_SESSION_ID'];
         } elseif(SESSION_ID) {
             self::$_sessionid = SESSION_ID;
-        } else {
-            $key = generateKey(32); 
+        } elseif(!headers_sent()) {
+            $key = generateKey(32);
             setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/', false, APP_SECURED);
             self::$_sessionid = $key;
         }
@@ -85,11 +85,11 @@ class Sessionx {
         $s->rid         = $this->_rid;
         $s->sid         = $this->_sid;
         $s->id          = $this->_id;
-        $s->port        = $this->_port;    
-        $s->host        = $this->_host;    
-        $s->domain      = $this->_domain;  
-        $s->config      = serialize($this->_config);  
-        $s->active      = $this->_active;  
+        $s->port        = $this->_port;
+        $s->host        = $this->_host;
+        $s->domain      = $this->_domain;
+        $s->config      = serialize($this->_config);
+        $s->active      = $this->_active;
         $s->start       = $this->_start;
         $s->timestamp   = $this->_timestamp;
         $s->mechanism   = $this->_mechanism;
@@ -104,10 +104,10 @@ class Sessionx {
         $this->_password    = $pass;
         $this->_resource    = 'moxl'.\generateKey(6);
         $this->_start       = date(DATE_ISO8601);
-        
+
         $this->_rid = rand(1, 2048);
         $this->_id  = 0;
-        
+
         $sd = new modl\SessionxDAO();
         $s = $this->inject();
         $sd->init($s);
@@ -116,7 +116,7 @@ class Sessionx {
     public function load() {
         $sd = new modl\SessionxDAO();
         $session = $sd->get(self::$_sessionid);
-        
+
         if(isset($session)) {
             $this->_user        = $session->username;
             $this->_password    = $session->password;

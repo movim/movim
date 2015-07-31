@@ -1,8 +1,8 @@
-<?php 
+<?php
 class Route extends \BaseController {
     public $_routes;
     private $_page;
-    
+
     public function __construct() {
         $this->_routes = array(
                 'about'         => array('x'),
@@ -29,7 +29,7 @@ class Route extends \BaseController {
                 'visio'         => false
             );
     }
-    
+
     public function find() {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
@@ -43,13 +43,13 @@ class Route extends \BaseController {
 
             if(isset($this->_routes[$this->_page]))
                 $route = $this->_routes[$this->_page];
-            
+
             if(count($request) && isset($route)) {
                 $i = 0;
                 foreach($route as $key) {
                     if (isset($request[$i])) {
                         $_GET[$key] = $request[$i];
-                    } 
+                    }
                     $i++;
                 }
             }
@@ -65,7 +65,7 @@ class Route extends \BaseController {
 
         return $this->_page;
     }
-    
+
     public static function urlize($page, $params = false, $tab = false) {
         $r = new Route();
         $routes = $r->_routes;
@@ -75,8 +75,8 @@ class Route extends \BaseController {
 
         if($page === 'root')
             return BASE_URI;
-        
-        if(isset($routes[$page])) {        
+
+        if(isset($routes[$page])) {
             //if($params != false && count($routes[$page]) != count($params)) {
                 //throw new Exception(__('error.route', $page));
             //} else {
@@ -84,8 +84,8 @@ class Route extends \BaseController {
                     $tab = '#'.$tab;
                 // Here we got a beautiful rewriten URL !
                 if($config->rewrite == true
-                && isset($_SERVER['HTTP_MOD_REWRITE'])
-                && $_SERVER['HTTP_MOD_REWRITE']) {
+                /*&& isset($_SERVER['HTTP_MOD_REWRITE'])
+                && $_SERVER['HTTP_MOD_REWRITE']*/) {
                     $uri = BASE_URI . $page;
                     if($params != false && is_array($params))
                         foreach($params as $value)
@@ -96,7 +96,7 @@ class Route extends \BaseController {
                 //We construct a classic URL if the rewriting is disabled
                 else {
                     $uri = BASE_URI . '?q=' . $page;
-                    
+
                     if($params != false && is_array($params)) {
                         $i = 0;
                         foreach($params as $value) {

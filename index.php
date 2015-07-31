@@ -40,52 +40,13 @@
 define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
-use Monolog\Logger;
-use Monolog\Handler\SyslogHandler;
+$bootstrap = new Bootstrap();
 
-try {
-    if((isset($_GET['q']) && $_GET['q'] == 'admin') ||
-       (isset($_GET['query']) && $_GET['query'] == 'admin')
-      )
-        define('FAIL_SAFE', true);
-    else
-        define('FAIL_SAFE', false);
-    
-    $bootstrap = new Bootstrap();
-    
-    $bootstrap->boot();
+$bootstrap->boot();
 
-    $rqst = new FrontController();
-    $rqst->handle();
+$rqst = new FrontController();
+$rqst->handle();
 
-    WidgetWrapper::getInstance(false);
-    // Closing stuff
-    WidgetWrapper::destroyInstance();
-
-} catch (Exception $e) {
-    $log = new Logger('movim');
-    $log->pushHandler(new SyslogHandler('movim'));
-    $log->addInfo($e->getMessage());
-    
-    if (ENVIRONMENT === 'development' && !FAIL_SAFE) {
-        ?>
-            <div id="final_exception" class="error debug">
-                <h2>An error happened</h2>
-                <p><?php print $e->getMessage();?></p>
-            </div>
-        <?php
-    } elseif(!FAIL_SAFE) {
-        ?>
-        <div class="carreful">
-            <h2> Oops... something went wrong.</h2>
-            <p>But don't panic. The NSA is on the case.</p>
-        </div>
-        <?php
-    }
-    
-    if(FAIL_SAFE) {
-        $r = new Route;
-        $rqst = new FrontController();
-        $rqst->handle();
-    }
-} 
+WidgetWrapper::getInstance(false);
+// Closing stuff
+WidgetWrapper::destroyInstance();

@@ -37,6 +37,7 @@
             {else}
                 <span class="icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
             {/if}
+
             {if="$value->title != null"}
                 <span>{$value->title}</span>
             {else}
@@ -48,6 +49,7 @@
                         <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
                     </a> –
                 {else}
+                    {$value->origin} /
                     <a href="{$c->route('group', array($value->origin, $value->node))}">
                         <i class="zmdi zmdi-pages"></i> {$value->node}
                     </a> –

@@ -37,7 +37,7 @@
         <li class="subheader">
             {$c->__('compatibility.info')}
         </li>
-        
+
         {if="$dbconnected"}
             {if="$dbinfos > 0"}
                 <li>
@@ -57,21 +57,12 @@
 
         <li id="websocket_error">
             <span class="icon bubble color red">
-                <i class="zmdi zmdi-code-setting"></i> 
-            </span>
-            <span>
-                {$c->__('compatibility.websocket')}
-            </span> 
-        </li>
-        
-        <!--<li id="xmpp_websocket_error">
-            <span class="icon bubble color red">
                 <i class="zmdi zmdi-code-setting"></i>
             </span>
             <span>
-                {$c->__('compatibility.xmpp_websocket')} <code>{$websocketurl}</code>
+                {$c->__('compatibility.websocket')}
             </span>
-        </li>-->
+        </li>
 
         {if="!$c->version()"}
             <li class="condensed">
@@ -121,11 +112,10 @@
         {if="!$_SERVER['HTTP_MOD_REWRITE']"}
             <li>
                 <span class="icon bubble color orange">
-                    <i class="zmdi zmdi-mode-edit"></i>
+                    <i class="zmdi zmdi-edit"></i>
                 </span>
                 <span>{$c->__('compatibility.rewrite')}</span>
             </li>
         {/if}
     </ul>
-    <!--<script type="text/javascript">AdminTest.testXMPPWebsocket('{$websocketurl}');</script>-->
 </div>

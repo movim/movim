@@ -7,25 +7,9 @@
         <div class="select">
             <select id="locale" name="locale">
                 <option value="en">English (default)</option>';
-                {loop="$langs"}               
+                {loop="$langs"}
                     <option value="{$key}"
                     {if="$conf->locale == $key"}
-                        selected="selected"
-                    {/if}>
-                        {$value}
-                    </option>
-                {/loop}
-            </select>
-        </div>
-    </div>
-
-    <div>
-        <label for="da">{$c->__('general.environment')}</label>
-        <div class="select">
-            <select id="environment" name="environment">';
-                {loop="$envs"}               
-                    <option value="{$key}"
-                    {if="$conf->environment == $key"}
                         selected="selected"
                     {/if}>
                         {$value}
@@ -44,7 +28,7 @@
     <div>
         <div class="select">
             <select id="loglevel" name="loglevel">
-                {loop="$logs"}               
+                {loop="$logs"}
                     <option value="{$key}"
                     {if="$conf->loglevel == $key"}
                         selected="selected"
@@ -122,7 +106,7 @@
         <br />
         <h3>{$c->__('rewrite.title')}</h3>
 
-            
+
         <div>
             <ul class="thick simple">
                 <li class="action">
@@ -146,7 +130,7 @@
 
     <br />
     <h3>{$c->__('credentials.title')}</h3>
-        
+
     {if="$conf->user == 'admin' || $conf->pass == sha1('password')"}
         <div class="message error">
             {$c->__('credentials.info')}
@@ -158,19 +142,19 @@
         <input type="text" id="username" name="username" value="{$conf->username}"/>
     </div>
     <div class="clear"></div>
-    
+
     <div>
         <input type="password" id="password" name="password" value=""/>
         <label for="password">{$c->__('credentials.password')}</label>
-    </div>                            
+    </div>
     <div>
         <input type="password" id="repassword" name="repassword" value=""/>
         <label for="repassword">{$c->__('credentials.re_password')}</label>
     </div>
 
-    <input 
-    type="submit" 
-    class="button color green oppose" 
+    <input
+    type="submit"
+    class="button color green oppose"
     value="{$c->__('button.submit')}"/>
     <div class="clear"></div>
 </form>

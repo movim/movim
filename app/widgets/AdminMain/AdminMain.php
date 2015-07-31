@@ -14,7 +14,7 @@
  *
  * See COPYING for licensing information.
  */
- 
+
 class AdminMain extends WidgetBase
 {
     function load() {
@@ -46,7 +46,7 @@ class AdminMain extends WidgetBase
             }
 
             $cd->set($config);
-            
+
             //set timezone
             if(isset($form['timezone'])) {
                 date_default_timezone_set($form['timezone']);
@@ -71,18 +71,13 @@ class AdminMain extends WidgetBase
     {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
-        
+
         $this->view->assign('conf', $cd->get());
         $this->view->assign('logs',
             array(
                 0 => $this->__('log.empty'),
                 1 => $this->__('log.syslog'),
                 2 => $this->__('log.syslog_files'))
-        );
-        $this->view->assign('envs',
-            array(
-                'development' => 'Development',
-                'production'  => 'Production')
         );
 
         $this->view->assign('bosh_info4',
@@ -99,7 +94,7 @@ class AdminMain extends WidgetBase
         if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
             $this->view->assign('server_rewrite', true);
         }
-        
+
         $this->view->assign('timezones', getTimezoneList());
         $this->view->assign('langs', loadLangArray());
     }

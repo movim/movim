@@ -77,14 +77,27 @@
                     {else}
                         <span>{$c->__('hello.contact_post')}</span>
                     {/if}
-
-                    <span class="info">{$value->published|strtotime|prepareDate}</span>
-
-                    <p class="more">
-                        {if="current(explode('.', $value->origin)) != 'nsfw'"}
-                            {$value->contentcleaned|strip_tags:'<img><img/>'}
+                    <p>
+                        {if="$value->node == 'urn:xmpp:microblog:0'"}
+                            <a href="{$c->route('contact', $value->getContact()->jid)}">
+                                <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
+                            </a> –
+                        {else}
+                            {$value->origin} /
+                            <a href="{$c->route('group', array($value->origin, $value->node))}">
+                                <i class="zmdi zmdi-pages"></i> {$value->node}
+                            </a> –
                         {/if}
+                        {$value->published|strtotime|prepareDate}
                     </p>
+
+                    {if="$value->privacy"}
+                        <span class="info" title="{$c->__('menu.public')}">
+                            <i class="zmdi zmdi-portable-wifi"></i>
+                        </span>
+                    {/if}
+                    <p>{$value->contentcleaned|strip_tags}</p>
+
                 </li>
             {/loop}
             <a href="{$c->route('news')}">

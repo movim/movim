@@ -6,8 +6,7 @@ class ConfigDAO extends SQL {
     function set(Config $c) {
         $this->_sql = '
             update config
-            set environment   = :environment,  
-                description   = :description, 
+            set description   = :description,
                 theme         = :theme,
                 locale        = :locale,
                 maxusers      = :maxusers,
@@ -20,11 +19,10 @@ class ConfigDAO extends SQL {
                 password      = :password,
                 rewrite       = :rewrite,
                 sizelimit     = :sizelimit';
-        
+
         $this->prepare(
-            'Config', 
-            array(                
-                'environment'  => $c->environment,
+            'Config',
+            array(
                 'description'  => $c->description,
                 'theme'        => $c->theme,
                 'locale'       => $c->locale,
@@ -40,25 +38,24 @@ class ConfigDAO extends SQL {
                 'sizelimit'    => $c->sizelimit
             )
         );
-        
+
         $this->run('Config');
-        
+
         if(!$this->_effective) {
             $this->_sql = '
                 truncate table config;';
 
             $this->prepare(
-                'Config', 
+                'Config',
                 array(
                 )
             );
-            
+
             $this->run('Config');
-            
+
             $this->_sql = '
                 insert into config
                 (
-                    environment,
                     description,
                     theme,
                     locale,
@@ -75,7 +72,6 @@ class ConfigDAO extends SQL {
                 )
                 values
                 (
-                    :environment,
                     :description,
                     :theme,
                     :locale,
@@ -91,11 +87,10 @@ class ConfigDAO extends SQL {
                     :sizelimit
                 )
                 ';
-            
+
             $this->prepare(
-                'Config', 
+                'Config',
                 array(
-                    'environment'  => $c->environment,
                     'description'  => $c->description,
                     'theme'        => $c->theme,
                     'locale'       => $c->locale,
@@ -111,7 +106,7 @@ class ConfigDAO extends SQL {
                     'sizelimit'    => $c->sizelimit
                 )
             );
-            
+
             $this->run('Config');
         }
     }
@@ -121,7 +116,7 @@ class ConfigDAO extends SQL {
             select * from config';
 
         $this->prepare('Config', array());
-                
+
         $conf = $this->run('Config', 'item');
 
         if(!isset($conf))

@@ -14,7 +14,7 @@
  *
  * See COPYING for licensing information.
  */
- 
+
 class Api extends WidgetBase {
     function load()
     {
@@ -30,7 +30,7 @@ class Api extends WidgetBase {
                 '</a>',
                 '<a href="'.$this->route('pods').'">',
                 '</a>'));
-        
+
         $json = requestURL(MOVIM_API.'status', 1, array('uri' => BASE_URI));
         $json = json_decode($json);
 
@@ -55,10 +55,15 @@ class Api extends WidgetBase {
     function ajaxRegister()
     {
         $rewrite = false;
-        if(isset($_SERVER['HTTP_MOD_REWRITE']) && $_SERVER['HTTP_MOD_REWRITE']) {
+
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+
+        if($config->rewrite/*isset($_SERVER['HTTP_MOD_REWRITE'])
+            && $_SERVER['HTTP_MOD_REWRITE']*/) {
             $rewrite = true;
-        } 
-        
+        }
+
         $json = requestURL(
             MOVIM_API.'register',
             1,
@@ -78,7 +83,7 @@ class Api extends WidgetBase {
     {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
-        
+
         $config->unregister = !$config->unregister;
         $cd->set($config);
 

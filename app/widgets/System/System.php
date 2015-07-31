@@ -25,23 +25,18 @@ class System extends WidgetBase {
 
         $r = new Route;
         $this->view->assign('current_page', $r->find());
-        
+
         if(!isset($_SERVER['HTTP_MOD_REWRITE']) || !$_SERVER['HTTP_MOD_REWRITE'])
             $this->view->assign('page_key_uri', '?q=');
         else
             $this->view->assign('page_key_uri', '');
-
-        if(FAIL_SAFE != null)
-            $this->view->assign('fail_safe',    FAIL_SAFE);
-        else
-            $this->view->assign('fail_safe',    '');
 
         $this->view->assign('secure_websocket',    file_get_contents(CACHE_PATH.'websocket'));
 
         // And we load some public values of the system configuration
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
-        
+
         $public_conf = array(
             'bosh_url' => $config->boshurl,
             'timezone' => $config->timezone
