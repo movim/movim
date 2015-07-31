@@ -6,10 +6,10 @@
   <head>
     <meta charset="utf-8" />
     <title><?php $this->title();?></title>
-    
+
     <meta name="description" content="<?php echo $config->description; ?>" />
     <meta name="theme-color" content="#1C1D5B" />
-    
+
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
     <link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
     <script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
@@ -21,7 +21,7 @@
     <script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/eventemitter.js"></script>
     <script src="<?php echo BASE_URI; ?>app/assets/js/otr/otr.js"></script>
     <script src="<?php echo BASE_URI; ?>app/assets/js/cycle.js"></script>-->
-    
+
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
     <?php
@@ -55,7 +55,7 @@
         <?php $this->widget('Notification');?>
         <?php $this->content();?>
 
-        <?php 
+        <?php
             $this->displayFooterDebug();
         ?>
         <script type="text/javascript">movim_onload();</script>

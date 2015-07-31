@@ -20,7 +20,8 @@
         </span>
         <form>
             <div>
-                <input disabled placeholder="pubsub.server.com">
+                <input placeholder="pubsub.server.com" onkeypress="
+                    if(event.keyCode == 13) { Groups_ajaxDisco(this.value); return false; }" >
                 <label>{$c->__('group.search_server')}</label>
             </div>
         </form>

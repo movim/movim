@@ -208,6 +208,7 @@
             {/if}
         </li>
     </ul>
+    <br />
     {/if}
 
     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
@@ -233,6 +234,7 @@
         </li>
         {/if}
     </ul>
+    <br />
     {/if}
 
     <div class="clear"></div>
@@ -280,6 +282,7 @@
         </li>
         {/if}
     </ul>
+    <br />
     {/if}
 
     {if="isset($gallery)"}

@@ -36,18 +36,18 @@ class Roster extends WidgetBase
         $contacts = $packet->content;
         if($contacts != null){
             $c = $contacts[0];
-            
+
             if($c->groupname == '')
                 $c->groupname = $this->__('roster.ungrouped');
             else{
                 $c->groupname = htmlspecialchars_decode($c->groupname);
             }
             $c->rostername = htmlspecialchars_decode($c->rostername);
-            
+
             $ac = $c->toRoster();
             $this->prepareContact($ac, $c, $this->getCaps());
             $c = $ac;
-            
+
             RPC::call('updateContact', json_encode($c));
         }
     }
@@ -67,7 +67,7 @@ class Roster extends WidgetBase
     function onRoster()
     {
         $results = $this->prepareRoster();
-        
+
         RPC::call('initContacts', $results['contacts']);
         RPC::call('initGroups', $results['groups']);
     }
@@ -80,7 +80,7 @@ class Roster extends WidgetBase
     {
         $this->onRoster();
     }
-    
+
     /**
      * @brief Force the roster refresh
      * @returns
@@ -99,9 +99,9 @@ class Roster extends WidgetBase
         $view = $this->tpl();
 
         $view->assign('jid', $jid);
-        $view->assign('add', 
+        $view->assign('add',
             $this->call(
-                'ajaxAdd', 
+                'ajaxAdd',
                 "movim_parse_form('add')"));
         $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
 
@@ -146,7 +146,7 @@ class Roster extends WidgetBase
      * @brief Remove a contact to the roster and unsubscribe
      */
     function ajaxDelete($jid)
-    {    
+    {
         $r = new RemoveItem;
         $r->setTo($jid)
           ->request();
@@ -159,16 +159,16 @@ class Roster extends WidgetBase
     /**
      *  @brief Search for a contact to add
      */
-    function ajaxSearchContact($jid) 
+    function ajaxSearchContact($jid)
     {
         if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
             RPC::call('movim_redirect', Route::urlize('contact', $jid));
             RPC::commit();
-        } else 
+        } else
             Notification::append(null, $this->__('roster.jid_error'));
     }
 
-    private function getCaps() 
+    private function getCaps()
     {
         $capsdao = new \Modl\CapsDAO();
         $caps = $capsdao->getAll();
@@ -180,7 +180,7 @@ class Roster extends WidgetBase
 
         return $capsarr;
     }
-    
+
     /**
      * @brief Get data from database to pass it on to angular in JSON
      * @param
@@ -190,11 +190,11 @@ class Roster extends WidgetBase
         //Contacts
         $contactdao = new \Modl\ContactDAO();
         $contacts = $contactdao->getRoster();
-        
+
         $capsarr = $this->getCaps();
 
         $result = array();
-        
+
         $farray = array(); //final array
         if(isset($contacts)) {
             /* Init */
@@ -206,21 +206,21 @@ class Roster extends WidgetBase
             $groupname = $c->groupname;
             $ac = $c->toRoster();
             $this->prepareContact($ac, $c, $capsarr);
-            
+
             $garray = array(); //group array
             $garray['agroup'] = $groupname;
             $garray['tombstone'] = false;
             $garray['agroupitems'] = array(); //group array of jids
-            
+
             $jarray = array(); //jid array
             $jarray['ajid'] = $jid;
             $jarray['atruename'] = $ac['rosterview']['name'];
             $jarray['aval'] = $ac['value'];
             $jarray['tombstone'] = false;
             $jarray['ajiditems'] = $ac; //jid array of resources
-            
+
             array_push($garray['agroupitems'], $jarray);
-            
+
             foreach($contacts as &$c) {
                 /*jid has changed*/
                 if($jid != $c->jid){
@@ -229,7 +229,7 @@ class Roster extends WidgetBase
                     }
                     $ac = $c->toRoster();
                     $this->prepareContact($ac, $c, $capsarr);
-                    
+
                     if($groupname != $c->groupname && $c->groupname != ""){
                         //close group
                         array_push($farray, $garray);
@@ -255,7 +255,7 @@ class Roster extends WidgetBase
             }
         }
         $result['contacts'] = json_encode($farray);
-        
+
         //Groups
         $rd = new \Modl\RosterLinkDAO();
         $groups = $rd->getGroups();
@@ -264,7 +264,7 @@ class Roster extends WidgetBase
 
         $groups = array_flip($groups);
         $result['groups'] = json_encode($groups);
-        
+
         return $result;
     }
 
@@ -280,7 +280,7 @@ class Roster extends WidgetBase
         $jid = false;
 
         $presencestxt = getPresencesTxt();
-        
+
         // We add some basic information
         $c['rosterview']   = array();
         $c['rosterview']['avatar']   = $oc->getPhoto('s');
@@ -315,7 +315,7 @@ class Roster extends WidgetBase
         if($caps && isset($caps[$oc->node.'#'.$oc->ver])) {
             $cap  = $caps[$oc->node.'#'.$oc->ver];
             $c['rosterview']['type'] = $cap->type;
-            
+
             $client = $cap->name;
             $client = explode(' ',$client);
             $c['rosterview']['client'] = strtolower(preg_replace('/[^a-zA-Z0-9_ \-()\/%-&]/s', '', reset($client)));
@@ -335,8 +335,8 @@ class Roster extends WidgetBase
 
         // Tune
         $c['rosterview']['tune'] = false;
-        
-        if(($oc->tuneartist != null && $oc->tuneartist != '') 
+
+        if(($oc->tuneartist != null && $oc->tuneartist != '')
             || ($oc->tunetitle  != null && $oc->tunetitle  != ''))
             $c['rosterview']['tune'] = true;
     }

@@ -1,4 +1,4 @@
-<div id="roster" ng-controller="RosterController as rosterCtrl">  
+<div id="roster" ng-controller="RosterController as rosterCtrl">
     <ul id="rosterlist" class="{if="isset($conf) && $conf.roster == 'show'"}offlineshown{/if} active all">
         <div ng-if="contacts == null" class="empty placeholder icon contacts">
             <h1>{$c->__('roster.no_contacts_title')}</h1>
@@ -6,23 +6,23 @@
         </div>
 
         <li class="subheader search">{$c->__('roster.results')}</li>
-        
+
             <div id="spinner">
                 <img src="{$base_uri}/app/widgets/Roster/img/movim_cloud.svg"/>
             </div>
-            
+
         <div
             ng-if="contacts != null && !group.tombstone"
-            ng-repeat="group in contacts"
+            ng-repeat="group in contacts track by group.agroup"
             id="group{{::group.agroup}}"
             ng-class="{groupshown: rosterCtrl.groupIsShown(group.agroup)}" >
-            
+
             <li class="subheader" ng-click="rosterCtrl.showHideGroup(group.agroup)">
                 {{::group.agroup}}
                 <span class="info">{{rosterCtrl.getOnlineCount(group.agroupitems)}}/{{group.agroupitems.length}}</span>
             </li>
             <li
-                ng-repeat="myjid in group.agroupitems"
+                ng-repeat="myjid in group.agroupitems track by myjid.ajid"
                 ng-if="!myjid.tombstone"
                 id="{{::myjid.ajid}}"
                 class="{{myjid.ajiditems.rosterview.inactive}} action {{myjid.ajiditems.rosterview.presencetxt}}"
