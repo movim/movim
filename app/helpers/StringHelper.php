@@ -309,7 +309,7 @@ function stringToColor($string) {
 }
 
 /**
- * Return the first letter of a string
+ * Return the first two letters of a string
  * @param string
  * @return string
  */

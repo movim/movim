@@ -209,7 +209,6 @@ class Bootstrap {
         require_once(SYSTEM_PATH . "UtilsPicture.php");
         require_once(SYSTEM_PATH . "Cache.php");
         require_once(SYSTEM_PATH . "Event.php");
-        require_once(SYSTEM_PATH . "MovimException.php");
         require_once(SYSTEM_PATH . "RPC.php");
         require_once(SYSTEM_PATH . "User.php");
         require_once(SYSTEM_PATH . "Picture.php");

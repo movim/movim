@@ -1,19 +1,19 @@
 <?php
 /*
  * @file WidgetWraper.php
- * 
+ *
  * @brief Handle the Widgets
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
@@ -39,13 +39,13 @@ class WidgetWrapper
     public function registerAll($load = false)
     {
         $widgets_dir = scandir(APP_PATH ."widgets/");
-        
+
         foreach($widgets_dir as $widget_dir) {
-            if(is_dir(APP_PATH ."widgets/".$widget_dir) && 
+            if(is_dir(APP_PATH ."widgets/".$widget_dir) &&
                 $widget_dir != '..' &&
                 $widget_dir != '.') {
                 if($load) $this->loadWidget($widget_dir, true);
-                array_push($this->_widgets, $widget_dir);         
+                array_push($this->_widgets, $widget_dir);
             }
         }
     }
@@ -85,7 +85,7 @@ class WidgetWrapper
             $path = APP_PATH . "widgets/$name/$name.php";
         }
         else {
-            throw new MovimException(
+            throw new Exception(
                 __('error.widget_load_error', $name));
         }
 
@@ -136,7 +136,7 @@ class WidgetWrapper
 
         if(!is_array($params))
             $params = array();
-        
+
         $result = call_user_func_array(array($widget, $method), $params);
 
         $widget = $method = $params = null;
