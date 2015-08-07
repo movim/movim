@@ -32,7 +32,7 @@ class Utils {
     public static function displayXML($xml) {
         echo '<pre>'.htmlentities(Utils::cleanXML($xml), ENT_QUOTES, 'UTF-8').'</pre>';
     }
-    
+
     // A simple function which clean and reindent an XML string
     public static function cleanXML($xml) {
         if($xml != '') {
@@ -49,7 +49,7 @@ class Utils {
         $data = explode(',', $data);
         $pairs = array();
         $key = false;
-        
+
         foreach($data as $pair) {
             $dd = strpos($pair, '=');
             if($dd) {
@@ -61,8 +61,13 @@ class Utils {
                 continue;
             }
         }
-        
+
         return $pairs;
+    }
+
+    public static function resolveHost($host) {
+        $dns =  dns_get_record('_xmpp-client._tcp.'.$host);
+        if(!empty($dns)) return $dns;
     }
 
     public static function getDomain($host) {
@@ -125,7 +130,7 @@ class Utils {
             'urn:xmpp:jingle:transports:ice-udp:0',
             'urn:xmpp:jingle:transports:ice-udp:1',
             'urn:xmpp:jingle:apps:rtp:rtcp-fb:0',
-            
+
             'http://jabber.org/protocol/muc',
             'http://jabber.org/protocol/nick',
             'http://jabber.org/protocol/nick+notify',
@@ -151,7 +156,7 @@ class Utils {
         $s .= 'client/web//Movim<';
 
         $support = Utils::getSupportedServices();
-            
+
         asort($support);
         foreach($support as $sup ) {
             $s = $s.$sup.'<';
@@ -160,16 +165,16 @@ class Utils {
         return base64_encode(sha1(utf8_encode($s),true));
     }
 
-    public static function log($message, $priority = '') 
+    public static function log($message, $priority = '')
     {
         if(LOG_LEVEL != null && LOG_LEVEL > 0) {
             $log = new Logger('moxl');
 
             $handler = new SyslogHandler('moxl');
-            
+
             if(LOG_LEVEL > 1)
                 $log->pushHandler(new StreamHandler(LOG_PATH.'/xmpp.log', Logger::DEBUG));
-            
+
             $log->pushHandler($handler, Logger::DEBUG);
 
             $errlines = explode("\n",$message);
