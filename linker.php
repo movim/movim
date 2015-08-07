@@ -56,7 +56,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                     if(isset($dns[0]['target']) && $dns[0]['target'] != null) $msg->host = $dns[0]['target'];
                     if(isset($dns[0]['port']) && $dns[0]['port'] != null) $port = $dns[0]['port'];
                     #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-                    $connector->create($msg->resolveHost, $port)->then($xmpp_behaviour);
+                    $connector->create($msg->host, $port)->then($xmpp_behaviour);
                 }
             } else {
                 return;
