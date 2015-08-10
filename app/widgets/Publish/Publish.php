@@ -144,6 +144,7 @@ class Publish extends WidgetBase
             $p = new PostPublish;
             $p->setFrom($this->user->getLogin())
               ->setTo($form->to->value)
+              ->setContent($form->content->value)
               ->setNode($form->node->value);
               //->setLocation($geo)
               //->enableComments()
