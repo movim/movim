@@ -54,6 +54,8 @@ var Chat = {
         var bubble = null;
         var id = null;
 
+        var scrolled = MovimTpl.isPanelScrolled();
+
         if(message.type == 'groupchat') {
             bubble = Chat.room.cloneNode(true);
 
@@ -115,7 +117,7 @@ var Chat = {
             }
         }
 
-        MovimTpl.scrollPanel();
+        if(scrolled) MovimTpl.scrollPanel();
     }
 }
 

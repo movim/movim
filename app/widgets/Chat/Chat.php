@@ -75,7 +75,7 @@ class Chat extends WidgetBase
                 Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $avatar, 4);
             }
 
-            RPC::call('movim_fill', $from.'_state', '');
+            RPC::call('movim_fill', $from.'_state', $contact->jid);
         // If the message is from me
         } /*else {
             $from = $message->jidto;
@@ -90,7 +90,7 @@ class Chat extends WidgetBase
         if(!preg_match('#^\?OTR#', $message->body)) {
             RPC::call('Chat.appendMessage', $this->prepareMessage($message));
         }
-        RPC::call('MovimTpl.scrollPanel');
+        //RPC::call('MovimTpl.scrollPanel');
     }
 
     function onComposing($array)
@@ -154,7 +154,7 @@ class Chat extends WidgetBase
         $html = $view->draw('_chat_state', true);
 
         RPC::call('movim_fill', $jid.'_state', $html);
-        RPC::call('MovimTpl.scrollPanel');
+        //RPC::call('MovimTpl.scrollPanel');
     }
 
     /**

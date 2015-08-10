@@ -17,7 +17,7 @@
             </span>
         </li>
     </ul>
-    <div id="chat_header" class="return active r1" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();">
+    <div id="chat_header" class="return active r1 condensed" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();">
         <span id="back" class="icon"><i class="zmdi zmdi-arrow-back"></i></span>
         <h2>
             {if="$contact != null"}
@@ -26,5 +26,6 @@
                 {$jid|echapJS}
             {/if}
         </h2>
+        <h4 id="{$jid}_state"></h4>
     </h2>
 </div>

@@ -2,7 +2,6 @@
     <section id="{$jid}_messages">
         <ul class="{if="$muc"}thin simple{else}middle{/if}" id="{$jid}_conversation"></ul>
     </section>
-    <div id="{$jid}_state"></div>
 </div>
 <div class="chat_box">
     <ul class="thin">
@@ -15,7 +14,7 @@
             </div>
             <form>
                 <div>
-                     <textarea 
+                     <textarea
                         rows="1"
                         id="chat_textarea"
                         data-jid="{$jid}"
