@@ -59,7 +59,9 @@
     </header>
 
     <section>
-        {$post->contentcleaned}
+        <content>
+            {$post->contentcleaned}
+        </content>
     </section>
 
     <footer>

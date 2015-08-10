@@ -39,7 +39,9 @@
             </ul>
         </header>
         <section>
-            {$value->contentcleaned}
+            <content>
+                {$value->contentcleaned}
+            </content>
         </section>
         <footer>
             <ul class="thin">
