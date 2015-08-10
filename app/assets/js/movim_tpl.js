@@ -90,9 +90,6 @@ var MovimTpl = {
          var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
 
         if(selector != null) {
-            console.log(selector.scrollTop);
-            console.log(selector.scrollHeight);
-            console.log(selector.clientHeight);
             return (selector.scrollHeight - selector.scrollTop === selector.clientHeight);
         }
     },

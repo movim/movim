@@ -84,6 +84,24 @@ class Postn extends Model {
         parent::__construct();
     }
 
+    private function getContent($contents) {
+        $content = '';
+        foreach($contents as $c) {
+            switch($c->attributes()->type) {
+                case 'html':
+                case 'xhtml':
+                    return (string)$c->asXML();
+                    break;
+                case 'text':
+                default :
+                    $content = (string)$c;
+                    break;
+            }
+        }
+
+        return $content;
+    }
+
     public function set($item, $from, $delay = false, $node = false) {
         if($item->item)
             $entry = $item->item;
@@ -125,16 +143,7 @@ class Postn extends Model {
             $summary = '';
 
         if($entry->entry && $entry->entry->content) {
-            if((string)$entry->entry->content->attributes()->type == 'text')
-                $content = (string)$entry->entry->content;
-            elseif(
-                (string)$entry->entry->content->attributes()->type == ('html' || 'xhtml')
-                //&& $entry->entry->content->html
-                //&& $entry->entry->content->html->body
-                ) {
-                $content = (string)$entry->entry->content/*->html->body*/->asXML();
-            } else
-                $content = (string)$entry->entry->content;
+            $content = $this->getContent($entry->entry->content);
         } elseif($summary == '')
             $content = __('');
         else

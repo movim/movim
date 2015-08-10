@@ -26,6 +26,6 @@
                 {$jid|echapJS}
             {/if}
         </h2>
-        <h4 id="{$jid}_state"></h4>
+        <h4 id="{$jid}_state">{$contact->jid}</h4>
     </h2>
 </div>

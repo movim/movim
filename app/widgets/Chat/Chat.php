@@ -90,7 +90,6 @@ class Chat extends WidgetBase
         if(!preg_match('#^\?OTR#', $message->body)) {
             RPC::call('Chat.appendMessage', $this->prepareMessage($message));
         }
-        //RPC::call('MovimTpl.scrollPanel');
     }
 
     function onComposing($array)

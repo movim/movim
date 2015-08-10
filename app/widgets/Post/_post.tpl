@@ -128,7 +128,7 @@
                         </div>
                     </form>
                     <span class="icon gray">
-                        <i class="zmdi zmdi-public"></i>
+                        <i class="zmdi zmdi-portable-wifi"></i>
                     </span>
                     <span>
                         <a target="_blank" href="{$c->route('blog', array($post->origin))}">
