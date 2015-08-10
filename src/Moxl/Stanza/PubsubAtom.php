@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Moxl\Stanza;
 
@@ -17,7 +17,7 @@ class PubsubAtom {
 
     public $geo = false;
     public $comments = false;
-    
+
     public function __construct() {
         $this->id = md5(openssl_random_pseudo_bytes(5));
     }
@@ -25,7 +25,7 @@ class PubsubAtom {
     public function enableComments() {
         $this->comments = true;
     }
-    
+
     public function __toString() {
         $xml = '
             <entry xmlns="http://www.w3.org/2005/Atom">
@@ -41,23 +41,23 @@ class PubsubAtom {
                     <name>'.$this->name.'</name>
                     <uri>xmpp:'.$this->jid.'</uri>
                 </author>';
-        
+
         if($this->comments)
             $xml .= '
-                    <link 
-                        rel="replies" 
-                        title="comments" 
+                    <link
+                        rel="replies"
+                        title="comments"
                         href="xmpp:'.$this->jid.'?;node=urn:xmpp:microblog:0:comments/'.$this->id.'"/>';
 
         if($this->link)
             $xml .= '
-                    <link 
-                        rel="related" 
+                    <link
+                        rel="related"
                         href="'.htmlspecialchars($this->link).'"/>';
 
         if($this->image && is_array($this->image)) {
             $xml .= '
-                    <link 
+                    <link
                         rel="enclosure" ';
 
             if($this->image['type'] != null)
@@ -91,7 +91,7 @@ class PubsubAtom {
 
         if($this->contenthtml)
             $xml .= '
-                <content type="html">
+                <content type="xhtml">
                     <![CDATA[
                         <html xmlns="http://jabber.org/protocol/xhtml-im">
                             <body xmlns="http://www.w3.org/1999/xhtml">
@@ -100,15 +100,14 @@ class PubsubAtom {
                         </html>
                     ]]>
                 </content>';
-        else
-            $xml .= '
+        $xml .= '
                 <content type="text">'.$this->content.'</content>';
 
         $xml .= '
                 <link rel="alternate"
                     href="xmpp:'.htmlspecialchars($this->to).'?;node='.htmlspecialchars($this->node).';item='.htmlspecialchars($this->id).'"/>
 
-                <published>'.gmdate(DATE_ISO8601).'</published>  
+                <published>'.gmdate(DATE_ISO8601).'</published>
                 <updated>'.gmdate(DATE_ISO8601).'</updated>
             </entry>';
 
