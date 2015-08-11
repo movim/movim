@@ -16,7 +16,7 @@
                 </span>
             </li>
         </ul>
-        <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear('{$page}');">
+        <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear({$page});">
             <span id="back" class="icon" ><i class="zmdi zmdi-arrow-back"></i></span>
             <h2>{$contactr->getTrueName()}</h2>
         </div>
@@ -29,7 +29,7 @@
                     </span>
                 </li>
             </ul>
-            <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
+            <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear({$page});">
                 <span id="back" class="icon" ><i class="zmdi zmdi-arrow-back"></i></span>
                 <h2>{$contact->getTrueName()}</h2>
             </div>
@@ -41,7 +41,7 @@
                     </span>
                 </li>
             </ul>
-            <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear();">
+            <div class="return active r2" onclick="MovimTpl.hidePanel(); Contact_ajaxClear({$page});">
                 <span id="back" class="icon" ><i class="zmdi zmdi-arrow-back"></i></span>
                 <h2>{$jid}</h2>
             </div>
