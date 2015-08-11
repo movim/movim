@@ -10,7 +10,7 @@ class PubsubAtom {
     public $title;
     public $link;
     public $image;
-    public $contenthtml = false;
+    public $contentxhtml = false;
 
     public $to;
     public $node;
@@ -89,16 +89,12 @@ class PubsubAtom {
                     </geoloc>';
         }
 
-        if($this->contenthtml)
+        if($this->contentxhtml)
             $xml .= '
                 <content type="xhtml">
-                    <![CDATA[
-                        <html xmlns="http://jabber.org/protocol/xhtml-im">
-                            <body xmlns="http://www.w3.org/1999/xhtml">
-                                '.$this->contenthtml.'
-                            </body>
-                        </html>
-                    ]]>
+                    <div xmlns="http://www.w3.org/1999/xhtml">
+                        '.$this->contentxhtml.'
+                    </div>
                 </content>';
         $xml .= '
                 <content type="text">'.$this->content.'</content>';
