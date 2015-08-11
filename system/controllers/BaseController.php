@@ -58,7 +58,7 @@ class BaseController {
     }
 
     function redirect($page) {
-        $url = Route::urlize($page, array($this->fetchGet('err')));
+        $url = Route::urlize($page);
         header('Location: '. $url);
     }
 

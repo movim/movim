@@ -1,5 +1,5 @@
 {loop="$users"}
-    <li class="{if="$value->description != ''"}condensed{/if} block" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}');">
+    <li class="{if="$value->description != ''"}condensed{/if} block" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}', {$page});">
         {$url = $value->getPhoto('s')}
         {if="$url"}
             <span class="icon bubble">
@@ -10,26 +10,21 @@
                 <i class="zmdi zmdi-account"></i>
             </span>
         {/if}
-        
+
         <span>{$value->getTrueName()}</span>
-        
-            {if="$value->getAge()"}
-                <span class="info">{$c->__('age.years', $value->getAge())}</span>
-            {/if}
-            {if="$value->getGender()"}
-                <span class="info">{$value->getGender()}</span>
-            {/if}
-            <!--
-            {if="$value->getMarital()"}
-                <span class="info">{$value->getMarital()}</span>
-            {/if}
-            -->
-        
-            {if="$value->description != ''"}
-            <p>
-                {$value->description|strip_tags}
-            </p>
-            {/if}
+
+        {if="$value->getAge()"}
+            <span class="info">{$c->__('age.years', $value->getAge())}</span>
+        {/if}
+        {if="$value->getGender()"}
+            <span class="info">{$value->getGender()}</span>
+        {/if}
+
+        {if="$value->description != ''"}
+        <p>
+            {$value->description|strip_tags}
+        </p>
+        {/if}
     </li>
 {/loop}
 {if="$pages"}

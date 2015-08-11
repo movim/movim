@@ -1,9 +1,9 @@
-<div class="tabelem divided" title="{$c->__('page.feed')}" id="blog" >
-
+<div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
     <ul class="thick">
+        {if="$mode == 'blog'"}
         <li class="action">
             <div class="action">
-                <a 
+                <a
                     href="{$c->route('feed', array($contact->jid))}"
                     target="_blank"
                 >
@@ -13,26 +13,49 @@
             <span class="icon gray">
                 <i class="zmdi zmdi-edit"></i>
             </span>
-            <span>
-                {if="$contact"}
-                <h2>
-                    <a href="{$c->route('blog', array($contact->jid))}">
-                        {$c->__('blog.title', $contact->getTrueName())}
-                    </a>
-                </h2>
-                {else}
-                <h2>
-                    <a href="{$c->route('blog', array($contact->jid))}">
-                        {$c->__('page.blog')}
-                    </a>
-                </h2>
-                {/if}
-            </span>
+            {if="$contact"}
+            <h2>
+                <a href="{$c->route('blog', array($contact->jid))}">
+                    {$c->__('blog.title', $contact->getTrueName())}
+                </a>
+            </h2>
+            {else}
+            <h2>
+                <a href="{$c->route('blog', array($contact->jid))}">
+                    {$c->__('page.blog')}
+                </a>
+            </h2>
+            {/if}
         </li>
+        {else}
+        <li class="condensed">
+            <span class="icon gray">
+                <i class="zmdi zmdi-pages"></i>
+            </span>
+            <h2>
+                <a href="{$c->route('group', array($server, $node))}">
+                    {if="$item != null"}
+                        {if="$item->name"}
+                            {$item->name}
+                        {else}
+                            {$item->node}
+                        {/if}
+                    {/if}
+                </a>
+            </h2>
+            {if="$item->description"}
+                <h4 title="{$item->description|strip_tags}">
+                    {$item->description|strip_tags}
+                </h4>
+            {else}
+                <h4>{$item->server}</h4>
+            {/if}
+        </li>
+        {/if}
     </ul>
 
     {loop="$posts"}
-        <article>
+        <article class="block">
             <header>
                 <ul class="thick">
                     <li class="condensed">
@@ -47,7 +70,13 @@
                             </span>
                         {/if}
                         <h2>
-                            <a href="{$c->route('blog', array($value->origin, $value->nodeid))}">
+                            <a href="
+                                {if="$value->isMicroblog()"}
+                                    {$c->route('blog', array($value->origin, $value->nodeid))}
+                                {else}
+                                    {$c->route('group', array($value->origin, $value->node, $value->nodeid))}
+                                {/if}
+                                ">
                                 {if="$value->title != null"}
                                     {$value->title}
                                 {else}
@@ -56,8 +85,8 @@
                             </a>
                         </h2>
                         <p>
-                            {if="$value->node == 'urn:xmpp:microblog:0' && $value->getContact()->getTrueName() != ''"}
-                                {$value->getContact()->getTrueName()} - 
+                            {if="$value->getContact()->getTrueName() != ''"}
+                                <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()} –
                             {/if}
                             {$value->published|strtotime|prepareDate}
                         </p>
@@ -65,29 +94,36 @@
                 </ul>
             </header>
             <section>
-                {$value->contentcleaned}
+                <content>
+                    {$value->contentcleaned}
+                </content>
             </section>
             <footer>
-                <ul class="thin">
-                    {if="isset($value->getAttachements().links)"}
-                        {loop="$value->getAttachements().links"}
-                            <li>
-                                <span class="icon small"><img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/></span>
-                                <a href="{$value.href}" class="alternate" target="_blank">
-                                    <span>{$value.href|urldecode}</span>
-                                </a>
-                            </li>
+                {$attachements = $value->getAttachements()}
+                <ul class="middle divided spaced">
+                    {if="isset($attachements.links)"}
+                        {loop="$attachements.links"}
+                            {if="substr($value.href, 0, 5) != 'xmpp:'"}
+                                <li>
+                                    <span class="icon">
+                                        <img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
+                                    </span>
+                                    <a href="{$value.href}" class="alternate" target="_blank">
+                                        <span>{$value.href|urldecode}</span>
+                                    </a>
+                                </li>
+                            {/if}
                         {/loop}
                     {/if}
-                    {if="isset($value->getAttachements().files)"}
-                        {loop="$value->getAttachements().files"}
+                    {if="isset($attachements.files)"}
+                        {loop="$attachements.files"}
                             <li>
                                 <a
                                     href="{$value.href}"
                                     class="enclosure"
                                     type="{$value.type}"
                                     target="_blank">
-                                    <span class="icon small gray">
+                                    <span class="icon gray">
                                         <span class="zmdi zmdi-attachment-alt"></span>
                                     </span>
                                     <span>{$value.href|urldecode}</span>
@@ -96,6 +132,20 @@
                         {/loop}
                     {/if}
                 </ul>
+                {if="isset($attachements.pictures)"}
+                    <ul class="flex middle">
+                    {loop="$attachements.pictures"}
+                        <li class="block pic">
+                            <span class="icon gray">
+                                <i class="zmdi zmdi-image"></i>
+                            </span>
+                            <a href="{$value.href}" class="alternate" target="_blank">
+                                <img type="{$value.type}" src="{$value.href|urldecode}"/>
+                            </a>
+                        </li>
+                    {/loop}
+                    </ul>
+                {/if}
             </footer>
             {$comments = $c->getComments($value)}
             {if="$comments"}
@@ -127,6 +177,7 @@
                     {/loop}
                 </ul>
             {/if}
+            <br />
         </article>
 
     {/loop}
@@ -137,4 +188,15 @@
             </li>
         </ul>
     {/if}
+
+    <ul>
+        <li>
+            <a target="_blank" href="https://movim.eu">
+                <span class="icon">
+                    <i class="zmdi zmdi-cloud-outline"></i>
+                </span>
+                <span>Powered by Movim</span>
+            </a>
+        </li>
+    </ul>
 </div>

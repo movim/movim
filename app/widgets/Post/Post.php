@@ -220,12 +220,15 @@ class Post extends WidgetBase
         $pd = new \Modl\PostnDAO;
         $po  = $pd->getItem($id);
 
-        if($po->privacy == 1) {
-            Notification::append(false, $this->__('post.blog_remove'));
-            \Modl\Privacy::set($id, 0);
-        } if($po->privacy == 0) {
-            Notification::append(false, $this->__('post.blog_add'));
-            \Modl\Privacy::set($id, 1);
+        if($po->isMine()) {
+            if($po->privacy == 1) {
+                Notification::append(false, $this->__('post.blog_remove'));
+                \Modl\Privacy::set($id, 0);
+            }
+            if($po->privacy == 0) {
+                Notification::append(false, $this->__('post.blog_add'));
+                \Modl\Privacy::set($id, 1);
+            }
         }
     }
 

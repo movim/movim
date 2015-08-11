@@ -284,7 +284,8 @@ class Postn extends Model {
     public function isMine() {
         $user = new \User();
 
-        if($this->origin == $user->getLogin())
+        if($this->aid == $user->getLogin()
+        || $this->origin == $user->getLogin())
             return true;
         else
             return false;

@@ -133,7 +133,13 @@
                         <i class="zmdi zmdi-portable-wifi"></i>
                     </span>
                     <span>
-                        <a target="_blank" href="{$c->route('blog', array($post->origin))}">
+                        <a target="_blank" href="
+                            {if="$post->isMicroblog()"}
+                                {$c->route('blog', array($post->origin))}
+                            {else}
+                                {$c->route('grouppublic', array($post->origin, $post->node))}
+                            {/if}
+                            ">
                             {$c->__('post.public')}
                         </a>
                     </span>

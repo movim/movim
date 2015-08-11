@@ -27,18 +27,18 @@ class Contact extends WidgetBase
         Notification::append(null, $this->__('edit.updated'));
     }
 
-    function ajaxClear()
+    function ajaxClear($page = 0)
     {
-        $html = $this->prepareEmpty();
+        $html = $this->prepareEmpty($page);
         RPC::call('movim_fill', 'contact_widget', $html);
     }
 
-    function ajaxGetContact($jid)
+    function ajaxGetContact($jid, $page = 0)
     {
         if(!$this->validateJid($jid)) return;
 
         $html = $this->prepareContact($jid);
-        $header = $this->prepareHeader($jid);
+        $header = $this->prepareHeader($jid, $page);
 
         Header::fill($header);
         RPC::call('movim_fill', 'contact_widget', $html);
@@ -119,7 +119,7 @@ class Contact extends WidgetBase
         Dialog::fill($view->draw('_contact_delete', true));
     }
 
-    function prepareHeader($jid)
+    function prepareHeader($jid, $page = 0)
     {
         if(!$this->validateJid($jid)) return;
 
@@ -129,6 +129,7 @@ class Contact extends WidgetBase
         $view = $this->tpl();
 
         $view->assign('jid', echapJS($jid));
+        $view->assign('page', $page);
 
         if(isset($cr)) {
             $view->assign('contactr', $cr);
@@ -153,14 +154,14 @@ class Contact extends WidgetBase
         return $view->draw('_contact_header', true);
     }
 
-    function prepareEmpty($jid = null)
+    function prepareEmpty($page = 0, $jid = null)
     {
         if($jid == null) {
             $cd = new \modl\ContactDAO();
             $count = $cd->countAllPublic();
             if($count != 0){
                 $view = $this->tpl();
-                $view->assign('users', $this->preparePublic());
+                $view->assign('users', $this->preparePublic($page));
                 return $view->draw('_contact_explore', true);
             } else {
                 return '';
@@ -266,7 +267,7 @@ class Contact extends WidgetBase
 
             return $view->draw('_contact', true);
         } else {
-            return $this->prepareEmpty($jid);
+            return $this->prepareEmpty(0, $jid);
         }
     }
 
