@@ -69,7 +69,7 @@ class WidgetCommon extends WidgetBase {
               ->setNode($node)
               ->setLocation($geo)
               ->setTitle($title)
-              ->setContentHtml(rawurldecode($content))
+              ->setContentXhtml(rawurldecode($content))
               ->enableComments()
               ->request();
         }
