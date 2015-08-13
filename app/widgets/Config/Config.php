@@ -18,7 +18,6 @@
  * See COPYING for licensing information.
  */
 
-//use Moxl\Xec\Action\Storage\Get;
 use Moxl\Xec\Action\Storage\Set;
 
 class Config extends WidgetBase
@@ -40,19 +39,19 @@ class Config extends WidgetBase
         $view->assign('languages', loadLangArray());
         $view->assign('me',        $this->user->getLogin());
         $view->assign('conf',      $this->user->getConfig());
-        
-        $view->assign('submit',    
+
+        $view->assign('submit',
             $this->call(
-                'ajaxSubmit', 
+                'ajaxSubmit',
                 "movim_parse_form('general')"
             )
-                . "this.className='button color orange inactive oppose'; 
+                . "this.className='button color orange inactive oppose';
                     this.onclick=null;"
         );
-        
+
         return $view->draw('_config_form', true);
     }
-    
+
     function onConfig($package)
     {
         $data = (array)$package->content;
@@ -77,11 +76,6 @@ class Config extends WidgetBase
           ->request();
     }
 
-    /*function ajaxGet() {
-        $s = new Get;
-        $s->setXmlns('movim:prefs')
-          ->request();
-    }*/
     function display()
     {
         $this->view->assign('form', $this->prepareConfigForm());

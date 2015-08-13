@@ -13,7 +13,7 @@
         {loop="$subscriptions"}
             {if="$c->checkNewServer($value)"}
                 <li class="subheader">
-                    <a href="#" onclick="Groups_ajaxDisco('{$value->server}')">{$value->server}</a>
+                    <a href="#" onclick="Groups_ajaxDisco('{$value->server}')">{$value->server} - {$value->servicename}</a>
                 </li>
             {/if}
             <li

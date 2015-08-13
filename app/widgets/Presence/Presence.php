@@ -5,7 +5,7 @@
  *
  * @file Logout.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief The little logout widget.
  *
  * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
@@ -14,7 +14,7 @@
  * @date 20 October 2010
  *
  * Copyright (C)2010 MOVIM project
- * 
+ *
  * See COPYING for licensing information.
  */
 
@@ -29,14 +29,14 @@ use Moxl\Xec\Action\Storage\Get;
 
 class Presence extends WidgetBase
 {
-    
+
     function load()
     {
         $this->addcss('presence.css');
         $this->addjs('presence.js');
         $this->registerEvent('mypresence', 'onMyPresence');
     }
-    
+
     function onMyPresence($packet)
     {
         $html = $this->preparePresence();
@@ -71,29 +71,29 @@ class Presence extends WidgetBase
             $value = $form['value'];
         }
 
-        if(in_array($value, array('chat', 'away', 'dnd', 'xa'))) {            
+        if(in_array($value, array('chat', 'away', 'dnd', 'xa'))) {
             switch($value) {
                 case 'chat':
                     $p = new Chat;
                     $p->setStatus($status)->request();
-                    break;               
-                case 'away':             
-                    $p = new Away;       
+                    break;
+                case 'away':
+                    $p = new Away;
                     $p->setStatus($status)->request();
-                    break;               
-                case 'dnd':              
-                    $p = new DND;        
+                    break;
+                case 'dnd':
+                    $p = new DND;
                     $p->setStatus($status)->request();
-                    break;               
-                case 'xa':               
-                    $p = new XA;         
+                    break;
+                case 'xa':
+                    $p = new XA;
                     $p->setStatus($status)->request();
                     break;
             }
         }
 
         Cache::c(
-            'presence', 
+            'presence',
             array(
                 'status' => $status,
                 'show' => $value
@@ -104,7 +104,7 @@ class Presence extends WidgetBase
     function ajaxLogout()
     {
         $pd = new \Modl\PresenceDAO();
-        
+
         $session = \Sessionx::start();
         $pd->clearPresence($session->username.'@'.$session->host);
 
@@ -129,6 +129,15 @@ class Presence extends WidgetBase
     {
         $session = \Sessionx::start();
         $c = new \Moxl\Xec\Action\Disco\Request;
+        $c->setTo($session->host)
+          ->request();
+    }
+
+    // We discover the server services
+    function ajaxServerDisco()
+    {
+        $session = \Sessionx::start();
+        $c = new \Moxl\Xec\Action\Disco\Items;
         $c->setTo($session->host)
           ->request();
     }
@@ -170,12 +179,12 @@ class Presence extends WidgetBase
     {
         $cd = new \Modl\ContactDAO();
         $pd = new \Modl\PresenceDAO();
-        
+
         $session = \Sessionx::start();
         $presence = $pd->getPresence($this->user->getLogin(), $session->resource);
 
         $presencetpl = $this->tpl();
-        
+
         $contact = $cd->get();
         if($contact == null) {
             $contact = new \Modl\Contact;
@@ -194,14 +203,14 @@ class Presence extends WidgetBase
 
         return $html;
     }
-    
+
     function preparePresenceList()
     {
         $txt = getPresences();
         $txts = getPresencesTxt();
-    
+
         $session = \Sessionx::start();
-        
+
         $pd = new \Modl\PresenceDAO();
         $p = $pd->getPresence($this->user->getLogin(), $session->resource);
 
@@ -210,9 +219,9 @@ class Presence extends WidgetBase
         if($contact == null) {
             $contact = new \Modl\Contact;
         }
-       
+
         $presencetpl = $this->tpl();
-    
+
         $presencetpl->assign('contact', $contact);
         $presencetpl->assign('p', $p);
         $presencetpl->assign('txt', $txt);

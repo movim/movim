@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class ItemDAO extends SQL { 
+class ItemDAO extends SQL {
     function set(Item $item, $insert_only = false) {
         if(!$insert_only) {
             $this->_sql = '
@@ -15,9 +15,9 @@ class ItemDAO extends SQL {
                 where server = :server
                     and jid  = :jid
                     and node = :node';
-            
+
             $this->prepare(
-                'Item', 
+                'Item',
                 array(
                     'name'          => $item->name,
                     'created'       => $item->created,
@@ -29,10 +29,10 @@ class ItemDAO extends SQL {
                     'description'   => $item->description
                 )
             );
-            
+
             $this->run('Item');
         }
-        
+
         if(!$this->_effective || $insert_only) {
             $this->_sql = '
                 insert into item
@@ -55,9 +55,9 @@ class ItemDAO extends SQL {
                     :updated,
                     :description
                     )';
-            
+
             $this->prepare(
-                'Item', 
+                'Item',
                 array(
                     'name'          => $item->name,
                     'creator'       => $item->creator,
@@ -69,38 +69,38 @@ class ItemDAO extends SQL {
                     'description'   => $item->description
                 )
             );
-            
+
             $this->run('Item');
         }
     }
-    
+
     function getServers() {
         $this->_sql = '
-            select server, count(node) as number 
+            select server, count(node) as number
             from item
             where node not like :node
             group by server
             order by number desc';
-            
+
         $this->prepare(
             'Item',
             array(
                 'node' => 'urn:xmpp:microblog:0:comments%'
             )
         );
-            
-        return $this->run('Server'); 
+
+        return $this->run('Server');
     }
-    
+
     function getConferenceServers() {
         $this->_sql = '
-            select server, count(node) as number 
+            select server, count(node) as number
             from item
             where node not like :node
             and node = :name
             group by server
             order by number desc';
-            
+
         $this->prepare(
             'Item',
             array(
@@ -109,19 +109,20 @@ class ItemDAO extends SQL {
                 'name' => ''
             )
         );
-            
-        return $this->run('Server'); 
+
+        return $this->run('Server');
     }
-    
+
     function getGroupServers() {
         $this->_sql = '
-            select server, count(node) as number 
+            select server, count(item.node) as number, caps.name
             from item
-            where node not like :node
-            and node != :name
-            group by server
+            left outer join caps on caps.node = item.server
+            where item.node not like :node
+            and item.node != :name
+            group by server, caps.name
             order by number desc';
-            
+
         $this->prepare(
             'Item',
             array(
@@ -130,12 +131,12 @@ class ItemDAO extends SQL {
                 'name' => ''
             )
         );
-            
-        return $this->run('Server'); 
+
+        return $this->run('Server');
     }
-    
+
     function getItems($server) {
-        
+
         $this->_sql = '
             select * from item
             left outer join (
@@ -148,14 +149,14 @@ class ItemDAO extends SQL {
             where server = :server
             group by node) as sub
             on sub.node = item.node
-            left outer join (select server, node, subscription from subscription where jid = :node) 
-                as s on s.server = item.server 
+            left outer join (select server, node, subscription from subscription where jid = :node)
+                as s on s.server = item.server
                 and s.node = item.node
             where item.server = :server
               and item.node != \'\'
             order by name, item.node
             ';
-            
+
         $this->prepare(
             'Item',
             array(
@@ -164,8 +165,8 @@ class ItemDAO extends SQL {
                 'server' => $server
             )
         );
-            
-        return $this->run('Item'); 
+
+        return $this->run('Item');
     }
 
     function getUpdatedItems($limitf = false, $limitr = false) {
@@ -178,32 +179,32 @@ class ItemDAO extends SQL {
                 order by num desc
             ';
 
-        if($limitr) 
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-            
+
         $this->prepare(
             'Item',
             array(
                 'node'      => 'urn:xmpp:microblog%'
             )
         );
-            
-        return $this->run('Item'); 
+
+        return $this->run('Item');
     }
 
     function deleteItems($server) {
         $this->_sql = '
             delete from item
             where server= :server';
-            
+
         $this->prepare(
             'Item',
             array(
                 'server' => $server
             )
         );
-            
-        return $this->run('Item'); 
+
+        return $this->run('Item');
     }
 
     function deleteItem($server, $item) {
@@ -211,7 +212,7 @@ class ItemDAO extends SQL {
             delete from item
             where server = :server
                 and node = :node';
-            
+
         $this->prepare(
             'Item',
             array(
@@ -219,25 +220,25 @@ class ItemDAO extends SQL {
                 'node' => $item
             )
         );
-            
-        return $this->run('Item'); 
+
+        return $this->run('Item');
     }
-    
+
     function getItem($server, $item) {
         $this->_sql = '
             select * from item
-            where 
+            where
                 node = :node
                 and server = :server';
-        
+
         $this->prepare(
-            'Item', 
+            'Item',
             array(
                 'node' => $item,
                 'server' => $server
             )
         );
-        
+
         return $this->run('Item', 'item');
     }
 }

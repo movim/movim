@@ -90,7 +90,8 @@ class Postn extends Model {
             switch($c->attributes()->type) {
                 case 'html':
                 case 'xhtml':
-                    return (string)$c->asXML();
+                    if($c->getName() == 'content') return $c->children()->asXML();
+                    else return (string)$c->asXML();
                     break;
                 case 'text':
                 default :

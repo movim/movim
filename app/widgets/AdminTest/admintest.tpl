@@ -9,7 +9,7 @@
             <div id="browser-daemon" class="link horizontal error"><i class="zmdi zmdi-code-setting"></i></div>
             <div id="xmpp-daemon" class="link horizontal"><i class="zmdi zmdi-import-export"></i></div>
             <div id="movim-database" class="link vertical {if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
-                <i class="zmdi zmdi-data-usage"></i>
+                <i class="zmdi zmdi-swap"></i>
             </div>
             <div id="movim-api" class="link horizontal disabled"><i class="zmdi zmdi-cloud"></i></div>
             <div id="browser_block">

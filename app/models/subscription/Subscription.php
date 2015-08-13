@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class Subscription extends Model {    
+class Subscription extends Model {
     public $jid;
     public $server;
     public $node;
@@ -13,28 +13,29 @@ class Subscription extends Model {
     public $tags;
     public $timestamp;
     public $name;
-    
+    public $servicename;
+
     public function __construct() {
         $this->_struct = '
         {
-            "jid" : 
+            "jid" :
                 {"type":"string", "size":64, "mandatory":true, "key":true },
-            "server" : 
+            "server" :
                 {"type":"string", "size":64, "mandatory":true, "key":true },
-            "node" : 
+            "node" :
                 {"type":"string", "size":128, "mandatory":true, "key":true },
-            "subscription" : 
+            "subscription" :
                 {"type":"string", "size":128, "mandatory":true },
-            "subid" : 
+            "subid" :
                 {"type":"string", "size":128 },
-            "title" : 
+            "title" :
                 {"type":"string", "size":128 },
-            "tags" : 
+            "tags" :
                 {"type":"text" },
-            "timestamp" : 
+            "timestamp" :
                 {"type":"date" }
         }';
-        
+
         parent::__construct();
     }
 
@@ -46,7 +47,7 @@ class Subscription extends Model {
         $this->subscription = (string)$s->attributes()->subscription;
         $this->subid        = (string)$s->attributes()->subid;
         $this->tags         = serialize(array());
-        
+
         if($this->subid = '')
             $this->subid = 'default';
     }

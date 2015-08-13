@@ -9,7 +9,7 @@
         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
             <li class="block condensed" onclick="Groups_ajaxDisco('{$value->server}')">
                 <span class="icon bubble color {$value->server|stringToColor}">{$value->server|firstLetterCapitalize}</span>
-                <span>{$value->server}</span>
+                <span title="{$value->server} - {$value->name}">{$value->server} - {$value->name}</span>
                 <p>{$c->__('group.counter', $value->number)}</p>
             </li>
         {/if}

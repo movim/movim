@@ -14,28 +14,28 @@ class Item extends Model {
     public $subscription;
     public $num;
     public $sub;
-    
+
     public function __construct() {
         $this->_struct = '
         {
-            "server" : 
+            "server" :
                 {"type":"string", "size":64, "mandatory":true, "key":true },
-            "jid" : 
+            "jid" :
                 {"type":"string", "size":128, "mandatory":true, "key":true },
-            "node" : 
+            "node" :
                 {"type":"string", "size":128, "mandatory":true, "key":true },
-            "creator" : 
+            "creator" :
                 {"type":"string", "size":128 },
-            "name" : 
+            "name" :
                 {"type":"string", "size":128 },
-            "created" : 
+            "created" :
                 {"type":"date"},
-            "description" : 
+            "description" :
                 {"type":"text" },
-            "updated" : 
+            "updated" :
                 {"type":"date"}
         }';
-        
+
         parent::__construct();
     }
 
@@ -72,10 +72,10 @@ class Item extends Model {
                     break;
             }
         }
-        
+
         $this->updated  = date('Y-m-d H:i:s');
     }
-    
+
     public function getName() {
         if($this->name != null)
             return $this->name;
@@ -89,4 +89,5 @@ class Item extends Model {
 class Server extends Model {
     public $server;
     public $number;
+    public $name;
 }

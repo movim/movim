@@ -1,7 +1,7 @@
 <?php
 
 use Moxl\Xec\Action\Pubsub\GetItems;
-use Moxl\Xec\Action\Pubsub\DiscoItems;
+use Moxl\Xec\Action\Disco\Items;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\Create;
 use Moxl\Xec\Action\Pubsub\TestCreate;
@@ -12,8 +12,8 @@ class Groups extends WidgetBase
 
     function load()
     {
-        $this->registerEvent('pubsub_discoitems_handle', 'onDisco');
-        $this->registerEvent('pubsub_discoitems_error', 'onDiscoError');
+        $this->registerEvent('disco_items_handle', 'onDisco');
+        $this->registerEvent('disco_items_error', 'onDiscoError');
         $this->registerEvent('pubsub_create_handle', 'onCreate');
         $this->registerEvent('pubsub_testcreate_handle', 'onTestCreate');
         $this->registerEvent('pubsub_testcreate_error', 'onTestCreateError');
@@ -98,7 +98,7 @@ class Groups extends WidgetBase
     {
         if(!$this->validateServer($server)) return;
 
-        $r = new DiscoItems;
+        $r = new Items;
         $r->setTo($server)->request();
     }
 

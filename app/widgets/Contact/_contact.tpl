@@ -9,7 +9,7 @@
         {/if}
         >
         <ul class="thick">
-            <li>
+            <li class="condensed">
                 {if="$url"}
                     <span class="icon bubble">
                         <img src="{$url}">
@@ -22,6 +22,7 @@
                 <span>
                     <h2>{$contact->getTrueName()}</h2>
                 </span>
+                <p>{$contact->jid}</p>
             </li>
             {if="$caps"}
                 <li>

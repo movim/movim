@@ -8,7 +8,7 @@
                     <option value="Groups_ajaxSubscriptions" selected="selected">{$c->__('groups.subscriptions')}</option>
                     {loop="$servers"}
                         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
-                            <option value="Groups_ajaxDisco" data-server="{$value->server}">{$value->server} ({$value->number})</option>
+                            <option value="Groups_ajaxDisco" data-server="{$value->server}">{$value->server} - {$value->name} ({$value->number})</option>
                         {/if}
                     {/loop}
                 </select>
