@@ -167,7 +167,7 @@ class Publish extends WidgetBase
                 }
             }
 
-            $p->setContentHtml(rawurldecode($content))
+            $p->setContentXhtml(rawurldecode($content))
               ->request();
         } else {
             RPC::call('Publish.enableSend');
