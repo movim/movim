@@ -98,9 +98,9 @@ class PostPublish extends Errors
         return $this;
     }
 
-    public function setContentHtml($content)
+    public function setContentXhtml($content)
     {
-        $this->_atom->contenthtml = $content;
+        $this->_atom->contentxhtml = $content;
         return $this;
     }
 
