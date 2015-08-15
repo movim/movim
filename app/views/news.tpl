@@ -1,4 +1,5 @@
 <?php $this->widget('Init');?>
+<?php $this->widget('Upload');?>
 
 <nav class="color dark">
     <?php $this->widget('Navigation');?>

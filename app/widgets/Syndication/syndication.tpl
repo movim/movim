@@ -1,4 +1,4 @@
-{if="isset($contact)"}  
+{if="isset($contact)"}
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>{$c->__('feed.title', $contact->getTrueName())}</title>
@@ -15,7 +15,7 @@
     </generator>
 
     <id>urn:uuid:{$uuid}</id>
-     {if="!empty($messages)"}   
+     {if="!empty($messages)"}
     {loop="$messages"}
     <entry>
         <title>
@@ -39,5 +39,5 @@
     {/loop}
 </feed>
 {else}
-    {$c->__('feed.no_contact')}
+    {$c->__('feed.nope_contact')}
 {/if}

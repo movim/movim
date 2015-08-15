@@ -3,6 +3,7 @@
 use Moxl\Xec\Action\Register\ChangePassword;
 use Moxl\Xec\Action\Register\Remove;
 use Moxl\Xec\Action\Register\Get;
+use Moxl\Xec\Action\Register\Set;
 use Respect\Validation\Validator;
 
 class Account extends WidgetBase
@@ -12,7 +13,7 @@ class Account extends WidgetBase
         $this->addjs('account.js');
         $this->registerEvent('register_changepassword_handle', 'onPasswordChanged');
         $this->registerEvent('register_remove_handle', 'onRemoved');
-        //$this->registerEvent('register_get_handle', 'onRegister');
+        $this->registerEvent('register_get_handle', 'onRegister');
     }
 
     function onPasswordChanged()
@@ -41,6 +42,7 @@ class Account extends WidgetBase
             $form = $xml->getHTML($content->x->asXML());
 
             $view->assign('form', $form);
+            $view->assign('from', $package->from);
             $view->assign('attributes', $content->attributes());
             $view->assign('actions', null);
             if(isset($content->actions)) {
@@ -91,13 +93,22 @@ class Account extends WidgetBase
         $da->request();
     }
 
-    function ajaxRegister($server)
+    function ajaxGetRegistration($server)
     {
         if(!$this->validateServer($server)) return;
 
         $da = new Get;
         $da->setTo($server)
            ->request();
+    }
+
+    function ajaxRegister($server, $form)
+    {
+        if(!$this->validateServer($server)) return;
+        $s = new Set;
+        $s->setTo($server)
+          ->setData($form)
+          ->request();
     }
 
     private function validateServer($server)
@@ -109,5 +120,7 @@ class Account extends WidgetBase
 
     function display()
     {
+        $id = new \Modl\ItemDAO;
+        $this->view->assign('gateway', $id->getGateways($this->user->getServer()));
     }
 }

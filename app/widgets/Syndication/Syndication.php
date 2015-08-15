@@ -21,33 +21,33 @@ class Syndication extends WidgetBase
         } else {
             return;
         }
-        
+
         $pd = new \modl\PostnDAO();
         $cd = new \modl\ContactDAO();
 
         $this->view->assign('contact', $cd->get($from, true));
         $this->view->assign('uri',  Route::urlize('blog',array($from)));
-        
+
         if(isset($from) && isset($node)) {
             $messages = $pd->getPublic($from, $node, 10, 0);
             $this->view->assign('messages', $messages);
         }
-        
+
         if(isset($messages[0])) {
             header("Content-Type: application/atom+xml; charset=UTF-8");
 
             $this->view->assign('date', date('c'));
         }
     }
-    
+
     function prepareTitle($title)
     {
         if($title == null)
             return '...';
         else
-            return $this->prepareContent($title, true);     
+            return $this->prepareContent($title, true);
     }
-    
+
     function prepareContent($content, $title = false)
     {
         if($title)

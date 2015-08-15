@@ -136,7 +136,6 @@ class ItemDAO extends SQL {
     }
 
     function getItems($server) {
-
         $this->_sql = '
             select * from item
             left outer join (
@@ -167,6 +166,41 @@ class ItemDAO extends SQL {
         );
 
         return $this->run('Item');
+    }
+
+    function getGateways($server) {
+        $this->_sql = '
+            select * from item
+            left outer join caps on caps.node = item.jid
+            where server = :server
+            and category = \'gateway\'';
+
+        $this->prepare(
+            'Item',
+            array(
+                'server' => $server
+            )
+        );
+
+        return $this->run('Item');
+    }
+
+    function getUpload($server) {
+        $this->_sql = '
+            select * from item
+            left outer join caps on caps.node = item.jid
+            where server = :server
+            and category = \'store\'
+            and type = \'file\'';
+
+        $this->prepare(
+            'Item',
+            array(
+                'server' => $server
+            )
+        );
+
+        return $this->run('Item', 'item');
     }
 
     function getUpdatedItems($limitf = false, $limitr = false) {

@@ -121,4 +121,11 @@ var Chat = {
     }
 }
 
+Upload.attach(function() {
+    var textarea = document.querySelector('#chat_textarea');
+    textarea.value = Upload.get + ' ' + textarea.value;
+    textarea.focus();
+    movim_textarea_autoheight(textarea);
+});
+
 var state = 0;

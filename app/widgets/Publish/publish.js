@@ -57,6 +57,12 @@ var Publish = {
     }
 }
 
+Upload.attach(function() {
+    var embed = document.querySelector('input[name=embed]');
+    embed.value = Upload.get;
+    embed.onpaste();
+});
+
 MovimWebsocket.attach(function() {
     Publish.init();
 });

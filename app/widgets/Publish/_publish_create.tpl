@@ -27,6 +27,14 @@
     </div>
 
     <ul class="middle flex active">
+        {if="$c->supported('upload')"}
+        <li class="block large" onclick="Upload_ajaxRequest()">
+            <span class="icon">
+                <i class="zmdi zmdi-attachment-alt"></i>
+            </span>
+            <span>{$c->__('publish.attach')}</span>
+        </li>
+        {/if}
         <li class="subheader">{$c->__('post.embed_tip')}</li>
         <a class="block" target="_blank" href="http://imgur.com/">
             <li class="block action">

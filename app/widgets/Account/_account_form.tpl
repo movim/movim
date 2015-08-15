@@ -1,11 +1,14 @@
 <section class="scroll">
-    <form name="command" data-sessionid="{$attributes->sessionid}" data-node="{$attributes->node}">
+    <form name="register" data-sessionid="{$attributes->sessionid}" data-node="{$attributes->node}">
         {$form}
     </form>
 </section>
 <div>
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.close')}
+    </a>
+    <a onclick="Account_ajaxRegister('{$from}', movim_form_to_json('register')); Dialog.clear();" class="button flat">
+        {$c->__('button.submit')}
     </a>
     {if="$actions != null"}
         {if="isset($actions->next)"}

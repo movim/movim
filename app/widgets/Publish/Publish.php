@@ -158,12 +158,13 @@ class Publish extends WidgetBase
 
             if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
                 $embed = Embed\Embed::create($form->embed->value);
-                $content .= $this->prepareEmbed($embed);
                 $p->setLink($form->embed->value);
 
                 if($embed->type == 'photo') {
                     $key = key($embed->images);
                     $p->setImage($embed->images[0]['value'], $embed->title, $embed->images[0]['mime']);
+                } else {
+                    $content .= $this->prepareEmbed($embed);
                 }
             }
 
@@ -189,9 +190,11 @@ class Publish extends WidgetBase
 
         if($embed->type == 'photo') {
             RPC::call('movim_fill', 'gallery', $this->prepareGallery($embed));
+            RPC::call('movim_fill', 'preview', '');
+        } else {
+            RPC::call('movim_fill', 'preview', $html);
+            RPC::call('movim_fill', 'gallery', '');
         }
-
-        RPC::call('movim_fill', 'preview', $html);
     }
 
     function prepareEmbed($embed)

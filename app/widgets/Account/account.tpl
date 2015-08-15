@@ -1,4 +1,21 @@
-<div class="tabelem" title="{$c->__('account.title')}" id="account_widget" >
+<div class="tabelem" title="{$c->__('account.title')}" id="account_widget">
+    {if="isset($gateway)"}
+    <ul class="active middle divided">
+        <li class="subheader">{$c->__('account.gateway_title')}</li>
+        {loop="$gateway"}
+        <li class="condensed action" onclick="Account_ajaxGetRegistration('{$value->node}')">
+            <div class="action">
+                <i class="zmdi zmdi-chevron-right"></i>
+            </div>
+            <span class="icon">
+                <i class="zmdi zmdi-swap"></i>
+            </span>
+            <span>{$value->name}</span>
+            <p>{$value->node}</p>
+        </li>
+        {/loop}
+    </ul>
+    {/if}
     <ul class="middle active divided ">
         <li class="subheader">{$c->__('account.password_change_title')}</li>
         <li>
