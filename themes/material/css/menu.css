@@ -4,7 +4,8 @@ body > nav > ul span.icon {
     left: 1rem;
 }
 
-body > nav > ul:first-child > a:first-child > li {
+body > nav > ul:first-child > a:first-child > li,
+body > nav > ul:first-child > a:nth-child(2) > li {
     height: 7rem;
     line-height: 7rem;
 }

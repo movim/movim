@@ -1,15 +1,17 @@
 <ul class="active">
-    <a class="classic" href="#">
-        <li class="action on_mobile" onclick="MovimTpl.toggleMenu()">
+    <a class="classic on_mobile" href="#">
+        <li class="action" onclick="MovimTpl.toggleMenu()">
             <span class="icon bubble on_mobile"><i class="zmdi zmdi-menu"></i></span>
             <span>Movim</span>
         </li>
-        <li class="action on_desktop">
+    </a>
+    <a class="classic on_desktop" href="{$c->route('root')}">
+        <li class="action {if="$page == 'main'"}active{/if}">
             <span class="icon bubble"><i class="zmdi zmdi-cloud-outline"></i></span>
-            <span>Movim</span>
+            <span>{$c->__('page.home')}</span>
         </li>
     </a>
-    <a class="classic" href="{$c->route('root')}">
+    <a class="classic on_mobile" href="{$c->route('root')}">
         <li class="action {if="$page == 'main'"}active{/if}">
             <span class="icon bubble"><i class="zmdi zmdi-home"></i></span>
             <span>{$c->__('page.home')}</span>

@@ -2,9 +2,23 @@
     <h1>{$c->__('group.empty_title')}</h1>
     <h4>{$c->__('group.empty_text')}</h4>
 </div>
-<br />
+<ul class="card thick">
+    <li class="block">
+        <span class="icon gray">
+            <i class="zmdi zmdi-help"></i>
+        </span>
+        <p class="all">
+            {$c->__('group.help_info1')}<br />
+            <br />
+            {$c->___('group.help_info2', '<i class="zmdi zmdi-bookmark"></i>', '<i class="zmdi zmdi-plus"></i> ')}<br />
+            {$c->___('group.help_info3', '<i class="zmdi zmdi-edit"></i>')}<br />
+            <br />
+            {$c->___('group.help_info4', '<a href="'.$c->route('news').'">','</a>')}
+        </p>
+    </li>
+</ul>
 <h2>{$c->__('group.servers')}</h2>
-<ul class="flex card shadow active">
+<ul class="flex middle active">
     {loop="$servers"}
         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
             <li class="block condensed" onclick="Groups_ajaxDisco('{$value->server}')">

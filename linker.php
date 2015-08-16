@@ -65,12 +65,13 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             $rpc = new \RPC();
             $rpc->handle_json($msg);
 
-            $msg = json_encode(\RPC::commit());
+            $msg = \RPC::commit();
             \RPC::clear();
 
             if(!empty($msg)) {
-                echo base64_encode(gzcompress($msg, 9))."";
-                #fwrite(STDERR, colorize($msg, 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
+                //echo json_encode($msg)."";
+                echo base64_encode(gzcompress(json_encode($msg), 9))."";
+                //fwrite(STDERR, colorize(json_encode($msg), 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
             }
 
             $xml = \Moxl\API::commit();
@@ -136,8 +137,9 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             \RPC::clear();
 
             if(!empty($msg)) {
+                //[MaJ[MaJ[MaJ[MaI[MaI[MaI[MaI[MaI[MaI[MaI[MaI[MaIecho json_encode($msg)."";
                 echo base64_encode(gzcompress(json_encode($msg), 9))."";
-                #fwrite(STDERR, colorize($msg.' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
+                //fwrite(STDERR, colorize(json_encode($msg).' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
             }
 
             $xml = \Moxl\API::commit();
@@ -167,6 +169,9 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
     // And we say that we are ready !
     $obj = new \StdClass;
     $obj->func = 'registered';
+
+    //echo json_encode($obj)."";
+    //fwrite(STDERR, colorize(json_encode($obj).' '.strlen($obj), 'yellow')." : ".colorize('obj sent to browser', 'green')."\n");
 
     echo base64_encode(gzcompress(json_encode($obj), 9))."";
 };

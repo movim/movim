@@ -25,9 +25,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ConfigData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ConfigData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -45,9 +45,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Location/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/LoginAnonymous/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -77,11 +77,13 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Syndication/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Upload/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/VisioExt/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/VisioExt/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 #, fuzzy
@@ -89,7 +91,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-26 19:08+0200\n"
+"POT-Creation-Date: 2015-08-16 15:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,7 +174,11 @@ msgid ""
 msgstr ""
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it?"
+msgid "Are you sure that you want to delete it ?"
+msgstr ""
+
+#: [account]gateway_title
+msgid "Gateway"
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -183,7 +189,7 @@ msgstr ""
 msgid "No account creation form found on the server"
 msgstr ""
 
-#: [create]on
+#: [create]server_on
 msgid "on"
 msgstr ""
 
@@ -265,10 +271,6 @@ msgstr ""
 msgid "Default language"
 msgstr ""
 
-#: [general]environment
-msgid "Environment"
-msgstr ""
-
 #: [general]log_verbosity
 msgid "Log verbosity"
 msgstr ""
@@ -322,7 +324,7 @@ msgstr ""
 msgid ""
 "If you want to specify a list of authorized XMPP servers on your Movim pod "
 "and forbid the connection on all the others please put their domain name "
-"here, with comma (ex: movim.eu, jabber.fr)"
+"here, with comma (ex: movim.eu,jabber.fr)"
 msgstr ""
 
 #: [whitelist]info2
@@ -489,7 +491,7 @@ msgid "Webcam"
 msgstr ""
 
 #: [avatar]cheese
-msgid "Cheese!"
+msgid "Cheese !"
 msgstr ""
 
 #: [avatar]snapshot
@@ -538,7 +540,7 @@ msgid "Nickname"
 msgstr ""
 
 #: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room?"
+msgid "Do you want do join automaticaly this Chat Room ?"
 msgstr ""
 
 #: [chatroom]bad_id [chatrooms]bad_id
@@ -554,7 +556,7 @@ msgid "Bookmarks updated"
 msgstr ""
 
 #: [bookmarks]error
-msgid "An error occured:"
+msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
@@ -664,26 +666,6 @@ msgstr ""
 msgid "Load more contacts"
 msgstr ""
 
-#: [title]data
-msgid "Data"
-msgstr ""
-
-#: [title]cache
-msgid "Cache"
-msgstr ""
-
-#: [title]contacts [menu]contacts [page]contacts
-msgid "Contacts"
-msgstr ""
-
-#: [title]posts [page]posts
-msgid "Posts"
-msgstr ""
-
-#: [title]messages
-msgid "Messages"
-msgstr ""
-
 #: [config]general
 msgid "General"
 msgstr ""
@@ -718,6 +700,26 @@ msgstr ""
 
 #: [notifications]desktop
 msgid "Use desktop notifications"
+msgstr ""
+
+#: [title]data
+msgid "Data"
+msgstr ""
+
+#: [title]cache
+msgid "Cache"
+msgstr ""
+
+#: [title]contacts [menu]contacts [page]contacts
+msgid "Contacts"
+msgstr ""
+
+#: [title]posts [page]posts
+msgid "Posts"
+msgstr ""
+
+#: [title]messages
+msgid "Messages"
 msgstr ""
 
 #: [general]legend [general]general_title
@@ -938,6 +940,37 @@ msgstr ""
 msgid "Subscriptions"
 msgstr ""
 
+#: [group]servers
+msgid "Groups servers"
+msgstr ""
+
+#: [group]search_server
+msgid "Search for a new server"
+msgstr ""
+
+#: [group]help_info1
+msgid ""
+"Groups are the perfect way to share posts about topics that you like with "
+"all the other Movim's users."
+msgstr ""
+
+#: [group]help_info2
+msgid ""
+"Choose a server and a Group and subscribe to it using the %s button in the "
+"header. You can alse create a new one using the %s button."
+msgstr ""
+
+#: [group]help_info3
+msgid ""
+"Done? You can now publish a new post in the Group by using the %s button."
+msgstr ""
+
+#: [group]help_info4
+msgid ""
+"You will find a list of all your subscribed Groups in My Subscriptions and "
+"receive instantly all the new incoming posts in the %sNews%s page."
+msgstr ""
+
 #: [groups]empty_title
 msgid "Hello"
 msgstr ""
@@ -996,6 +1029,10 @@ msgstr ""
 msgid "%s posts"
 msgstr ""
 
+#: [groups]disco_error
+msgid "This server doesn't exists"
+msgstr ""
+
 #: [menu]all
 msgid "All"
 msgstr ""
@@ -1051,7 +1088,7 @@ msgid "Frequently Asked Questions"
 msgstr ""
 
 #: [banner]title
-msgid "What do the little banners refer to?"
+msgid "What do the little banners refer to ?"
 msgstr ""
 
 #: [banner]info1
@@ -1081,7 +1118,7 @@ msgid "Black, the whole Internet can see your information"
 msgstr ""
 
 #: [wiki]question
-msgid "Looking for some documentation?"
+msgid "Looking for some documentation ?"
 msgstr ""
 
 #: [wiki]button
@@ -1089,7 +1126,7 @@ msgid "Read the Wiki"
 msgstr ""
 
 #: [ml]question
-msgid "Talk with us by email?"
+msgid "Talk with us by email ?"
 msgstr ""
 
 #: [ml]button
@@ -1097,7 +1134,7 @@ msgid "Join the Mailing List"
 msgstr ""
 
 #: [chatroom]question
-msgid "Chat with the team?"
+msgid "Chat with the team ?"
 msgstr ""
 
 #: [chatroom]button
@@ -1144,10 +1181,6 @@ msgstr ""
 msgid "Update my position"
 msgstr ""
 
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr ""
@@ -1165,7 +1198,7 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: [error]data_missings
-msgid "Some data are missing!"
+msgid "Some data are missing !"
 msgstr ""
 
 #: [error]wrong_password
@@ -1253,7 +1286,7 @@ msgid "My address"
 msgstr ""
 
 #: [form]create_one
-msgid "Create one!"
+msgid "Create one !"
 msgstr ""
 
 #: [form]another_account
@@ -1261,7 +1294,7 @@ msgid "Another account"
 msgstr ""
 
 #: [form]no_account
-msgid "No account yet?"
+msgid "No account yet ?"
 msgstr ""
 
 #: [form]whitelist.info
@@ -1274,6 +1307,10 @@ msgstr ""
 
 #: [form]population
 msgid "Population"
+msgstr ""
+
+#: [login_anonymous]bad_username
+msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
 
 #: [menu]empty_title
@@ -1402,6 +1439,10 @@ msgstr ""
 msgid "What's Hot"
 msgstr ""
 
+#: [post]hot_text
+msgid "Posts recently published in Groups that you are not subscribed (yet)"
+msgstr ""
+
 #: [post]new [publish]new
 msgid "New post"
 msgstr ""
@@ -1421,7 +1462,7 @@ msgid "See %s profile"
 msgstr ""
 
 #: [post]public
-msgid "Publish this post on your public feed?"
+msgid "Publish this post publicly?"
 msgstr ""
 
 #: [post]blog_add
@@ -1453,7 +1494,7 @@ msgid "Disconnect"
 msgstr ""
 
 #: [status]here
-msgid "Your status here!"
+msgid "Your status here !"
 msgstr ""
 
 #: [status]updated
@@ -1476,13 +1517,17 @@ msgstr ""
 msgid "Publish"
 msgstr ""
 
+#: [publish]attach
+msgid "Add a file or a picture to your post"
+msgstr ""
+
 #: [publish]no_publication
 msgid "You cannot publish a post on this Group"
 msgstr ""
 
 #: [publish]form_filled
 msgid ""
-"Some fields have been filled in. Do you still want to go back and lose "
+"Some fields have been filled in. Do you still want to go back and loose "
 "their content?"
 msgstr ""
 
@@ -1572,10 +1617,12 @@ msgstr ""
 msgid "Please enter a valid Jabber ID"
 msgstr ""
 
-#: [roster]no_contacts
-msgid ""
-"No contacts ? You can add one using the + button bellow or going to the "
-"Explore page"
+#: [roster]no_contacts_title
+msgid "No contacts ?"
+msgstr ""
+
+#: [roster]no_contacts_text
+msgid "You can add one using the + button bellow"
 msgstr ""
 
 #: [roster]show_hide
@@ -1645,19 +1692,27 @@ msgid ""
 msgstr ""
 
 #: [subscribe]server_question
-msgid "Your server here?"
+msgid "Your server here ?"
 msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr ""
 
-#: [feed]no
+#: [feed]nope
 msgid "No public feed for this contact"
 msgstr ""
 
-#: [feed]no_contact
+#: [feed]nope_contact
 msgid "No contact specified"
+msgstr ""
+
+#: [upload]title
+msgid "Upload a file"
+msgstr ""
+
+#: [upload]choose
+msgid "Choose a file to upload"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -1711,7 +1766,7 @@ msgid "Privacy Level"
 msgstr ""
 
 #: [privacy]privacy_question
-msgid "Is this profile public?"
+msgid "Is this profile public ?"
 msgstr ""
 
 #: [privacy]privacy_info
@@ -1727,6 +1782,18 @@ msgstr ""
 
 #: [save]reset [button]reset
 msgid "Reset"
+msgstr ""
+
+#: [visio]call
+msgid "Call"
+msgstr ""
+
+#: [visio]hang_up
+msgid "Hang up"
+msgstr ""
+
+#: [visio]connection
+msgid "Connection"
 msgstr ""
 
 #: [visio]hung_up
@@ -1745,20 +1812,8 @@ msgstr ""
 msgid "Is calling you"
 msgstr ""
 
-#: [visio]call
-msgid "Call"
-msgstr ""
-
-#: [visio]hang_up
-msgid "Hang up"
-msgstr ""
-
-#: [visio]connection
-msgid "Connection"
-msgstr ""
-
 #: [global]no_js
-msgid "You don't have javascript enabled. Good luck with that."
+msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
 
 #: [global]description
@@ -2598,7 +2653,7 @@ msgid "day"
 msgstr ""
 
 #: [post]whats_new
-msgid "What's new?"
+msgid "What's new ?"
 msgstr ""
 
 #: [post]place

@@ -535,6 +535,7 @@ class PostnDAO extends SQL {
                 node != \'urn:xmpp:microblog:0\'
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
+                and postn.origin not like \'nsfw%\'
                 and ((postn.origin, node) not in (select server, node from subscription where jid = :origin))
             order by published desc
             ';

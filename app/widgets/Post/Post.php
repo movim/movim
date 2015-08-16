@@ -157,7 +157,7 @@ class Post extends WidgetBase
 
         $nd = new \modl\PostnDAO();
         $view = $this->tpl();
-        $view->assign('posts', $nd->getLastPublished(0, 8));
+        $view->assign('posts', $nd->getLastPublished(0, 10));
 
         return $view->draw('_post_empty', true);
     }

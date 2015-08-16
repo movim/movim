@@ -87,10 +87,6 @@ class WidgetBase
         $this->pure = false;
     }
 
-    function t() {
-        return call_user_func_array('t',func_get_args());
-    }
-
     function __() {
         $args = func_get_args();
         global $translationshash;
@@ -108,10 +104,14 @@ class WidgetBase
                 $args[0] = $vars[0];
             else
                 $args[0] = $vars;
-            return call_user_func_array(array(&$this, 't'), $args);
+            return call_user_func_array('t', $args);
+        } else {
+            return $args[0];
         }
+    }
 
-        return $args[0];
+    function ___() {
+        echo call_user_func_array(array(&$this, '__'), func_get_args());
     }
 
     function supported($key)

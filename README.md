@@ -3,7 +3,7 @@ Movim - Kickass Social Network
 
 Movim is a decentralized social network, written in PHP and HTML5 and based on the XMPP standard protocol.
 
-![movim logo](https://movim.eu/sites/default/files/mainc.png)
+![movim logo](https://movim.eu/sites/default/files/large_0.png)
 
 Installation
 ------------

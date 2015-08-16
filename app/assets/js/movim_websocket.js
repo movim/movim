@@ -1,8 +1,8 @@
 /**
  * Movim Websocket
- * 
+ *
  * This file define the websocket behaviour and handle its connection
- */ 
+ */
 
 WebSocket.prototype.unregister = function() {
     this.send(JSON.stringify({'func' : 'unregister'}));
@@ -18,7 +18,7 @@ WebSocket.prototype.admin = function(key) {
 
 /**
  * @brief Definition of the MovimWebsocket object
- * @param string error 
+ * @param string error
  */
 
 var MovimWebsocket = {
@@ -26,7 +26,7 @@ var MovimWebsocket = {
     attached: new Array(),
     registered: new Array(),
     unregistered: false,
-    
+
     launchAttached : function() {
         for(var i = 0; i < MovimWebsocket.attached.length; i++) {
             MovimWebsocket.attached[i]();
@@ -54,7 +54,9 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
+            //console.log(e.data);
             data = pako.ungzip(base64_decode(e.data), { to: 'string' });
+            //data = e.data;
 
             var obj = JSON.parse(data);
 
@@ -66,9 +68,10 @@ var MovimWebsocket = {
                 if(obj.func == 'disconnected') {
                     movim_disconnect();
                 }
+
+                MovimWebsocket.handle(obj);
             }
 
-            MovimWebsocket.handle(data);
         };
 
         this.connection.onclose = function(e) {
@@ -122,8 +125,8 @@ var MovimWebsocket = {
         this.attached = new Array();
     },
 
-    handle : function(json) {
-        var funcalls = JSON.parse(json);
+    handle : function(funcalls) {
+        //var funcalls = JSON.parse(json);
         if(funcalls != null) {
             for(h = 0; h < funcalls.length; h++) {
                 var funcall = funcalls[h];
