@@ -18,6 +18,13 @@
 </div>
 <div>
     <ul class="active">
+        {if="$c->supported('upload')"}
+        <li onclick="Upload_ajaxRequest()">
+            <span class="icon">
+                <i class="zmdi zmdi-attachment-alt"></i>
+            </span>
+        </li>
+        {/if}
         <li onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel(); {if="$anon"}Presence_ajaxLogout(){/if}">
             <span class="icon">
                 <i class="zmdi zmdi-close"></i>
@@ -30,7 +37,7 @@
         </li>
     </ul>
     <div
-        class="return {if="!$anon"}active{/if} r2 {if="$subject != null"}condensed{/if}"
+        class="return {if="!$anon"}active{/if} {if="$c->supported('upload')"}r3{else}r2{/if} {if="$subject != null"}condensed{/if}"
         {if="!$anon"}onclick="MovimTpl.hidePanel(); Chat_ajaxGet();"{/if}>
         <span id="back" class="icon" >
             {if="!$anon"}
