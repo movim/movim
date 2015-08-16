@@ -52,7 +52,7 @@ class Rooms extends WidgetBase
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
-        $view->assign('me', $cd->get());
+        $view->assign('username', $this->user->getUser());
 
         Dialog::fill($view->draw('_rooms_add', true));
     }
@@ -95,7 +95,7 @@ class Rooms extends WidgetBase
 
         $cd = new \modl\ConferenceDAO();
         $cd->deleteNode($room);
-        
+
         $this->setBookmark();
     }
 
@@ -151,7 +151,7 @@ class Rooms extends WidgetBase
     /**
      * @brief Confirm the room add
      */
-    function ajaxChatroomAdd($form) 
+    function ajaxChatroomAdd($form)
     {
         if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
             Notification::append(null, $this->__('chatrooms.bad_nickname'));
@@ -163,20 +163,20 @@ class Rooms extends WidgetBase
                     'name'      => $form['name'],
                     'autojoin'  => $form['autojoin'],
                     'nick'      => $form['nick'],
-                    'jid'       => $form['jid']);   
+                    'jid'       => $form['jid']);
             $this->setBookmark($item);
             RPC::call('Dialog.clear');
         }
     }
-    
-    public function setBookmark($item = false) 
+
+    public function setBookmark($item = false)
     {
         $arr = array();
 
         if($item) {
             array_push($arr, $item);
         }
-        
+
         $sd = new \modl\SubscriptionDAO();
         $cd = new \modl\ConferenceDAO();
 
@@ -188,7 +188,7 @@ class Rooms extends WidgetBase
                     'title'     => $s->title,
                     'subid'     => $s->subid,
                     'tags'      => unserialize($s->tags),
-                    'node'      => $s->node));   
+                    'node'      => $s->node));
         }
 
         foreach($cd->getAll() as $c) {
@@ -198,10 +198,10 @@ class Rooms extends WidgetBase
                     'name'      => $c->name,
                     'autojoin'  => $c->autojoin,
                     'nick'      => $c->nick,
-                    'jid'       => $c->conference)); 
+                    'jid'       => $c->conference));
         }
 
-        
+
         $b = new Set;
         $b->setArr($arr)
           ->setTo($this->user->getLogin())
@@ -243,7 +243,7 @@ class Rooms extends WidgetBase
     }
 
     /**
-     * @brief Validate the room 
+     * @brief Validate the room
      *
      * @param string $room
      */
@@ -255,7 +255,7 @@ class Rooms extends WidgetBase
     }
 
     /**
-     * @brief Validate the resource 
+     * @brief Validate the resource
      *
      * @param string $resource
      */

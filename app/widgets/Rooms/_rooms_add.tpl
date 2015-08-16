@@ -11,7 +11,7 @@
             <label>{$c->__('chatrooms.name')}</label>
         </div>
         <div>
-            <input name="nick" placeholder="{$me->getTrueName()}" value="{$me->getTrueName()}"/>
+            <input name="nick" placeholder="{$username}" value="{$username}"/>
             <label>{$c->__('chatrooms.nickname')}</label>
         </div>
         <!--

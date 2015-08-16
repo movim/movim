@@ -38,9 +38,6 @@ class User {
         if($session->active) {
             $this->username = $session->user.'@'.$session->host;
 
-            //$this->reload();
-            //$this->sizelimit = (int)$config->sizelimit;
-
             $this->userdir = DOCUMENT_ROOT.'/users/'.$this->username.'/';
             $this->useruri = BASE_URI.'users/'.$this->username.'/';
         }
@@ -142,6 +139,12 @@ class User {
     {
         $exp = explodeJid($this->username);
         return $exp['server'];
+    }
+
+    function getUser()
+    {
+        $exp = explodeJid($this->username);
+        return $exp['username'];
     }
 
     function getPass()
