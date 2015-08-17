@@ -4,37 +4,37 @@ namespace modl;
 
 class Contact extends Model {
     public $jid;
-    
+
     protected $fn;
     protected $name;
     protected $date;
     protected $url;
-    
+
     public    $email;
-    
+
     protected $adrlocality;
     protected $adrpostalcode;
     protected $adrcountry;
-    
+
     protected $gender;
     protected $marital;
-    
+
     protected $photobin;
-    
+
     protected $description;
-    
+
     protected $protected;
     protected $privacy;
-    
+
     // User Mood (contain serialized array) - XEP 0107
     protected $mood;
-    
+
     // User Activity (contain serialized array) - XEP 0108
     protected $activity;
-    
+
     // User Nickname - XEP 0172
     protected $nickname;
-    
+
     // User Tune - XEP 0118
     protected $tuneartist;
     protected $tunelenght;
@@ -42,8 +42,8 @@ class Contact extends Model {
     protected $tunesource;
     protected $tunetitle;
     protected $tunetrack;
-    
-    // User Location 
+
+    // User Location
     protected $loclatitude;
     protected $loclongitude;
     protected $localtitude;
@@ -68,98 +68,98 @@ class Contact extends Model {
     // Datetime
     public $created;
     public $updated;
-    
+
     public function __construct() {
         $this->_struct = '
         {
-            "jid" : 
+            "jid" :
                 {"type":"string", "size":128, "mandatory":true, "key":true },
-            "fn" : 
+            "fn" :
                 {"type":"string", "size":128 },
-            "name" : 
+            "name" :
                 {"type":"string", "size":128 },
-            "date" : 
+            "date" :
                 {"type":"date",   "size":11 },
-            "url" : 
+            "url" :
                 {"type":"string", "size":128 },
-            "email" : 
+            "email" :
                 {"type":"string", "size":128 },
-            "adrlocality" : 
+            "adrlocality" :
                 {"type":"string", "size":128 },
-            "adrpostalcode" : 
+            "adrpostalcode" :
                 {"type":"string", "size":128 },
-            "adrcountry" : 
+            "adrcountry" :
                 {"type":"string", "size":128 },
-            "gender" : 
+            "gender" :
                 {"type":"string", "size":1 },
-            "marital" : 
+            "marital" :
                 {"type":"string", "size":20 },
-            "description" : 
+            "description" :
                 {"type":"text"},
-            "mood" : 
+            "mood" :
                 {"type":"string", "size":128 },
-            "activity" : 
+            "activity" :
                 {"type":"string", "size":128 },
-            "nickname" : 
+            "nickname" :
                 {"type":"string", "size":128 },
-            "tuneartist" : 
+            "tuneartist" :
                 {"type":"string", "size":128 },
-            "tunelenght" : 
+            "tunelenght" :
                 {"type":"int",    "size":11 },
-            "tunerating" : 
+            "tunerating" :
                 {"type":"int",    "size":11 },
-            "tunesource" : 
+            "tunesource" :
                 {"type":"string", "size":128 },
-            "tunetitle" : 
+            "tunetitle" :
                 {"type":"string", "size":128 },
-            "tunetrack" : 
+            "tunetrack" :
                 {"type":"string", "size":128 },
-            "loclatitude" : 
+            "loclatitude" :
                 {"type":"string", "size":128 },
-            "loclongitude" : 
+            "loclongitude" :
                 {"type":"string", "size":128 },
-            "localtitude" : 
+            "localtitude" :
                 {"type":"int",    "size":11 },
-            "loccountry" : 
+            "loccountry" :
                 {"type":"string", "size":128 },
-            "loccountrycode" : 
+            "loccountrycode" :
                 {"type":"string", "size":128 },
-            "locregion" : 
+            "locregion" :
                 {"type":"string", "size":128 },
-            "locpostalcode" : 
+            "locpostalcode" :
                 {"type":"string", "size":128 },
-            "loclocality" : 
+            "loclocality" :
                 {"type":"string", "size":128 },
-            "locstreet" : 
+            "locstreet" :
                 {"type":"string", "size":128 },
-            "locbuilding" : 
+            "locbuilding" :
                 {"type":"string", "size":128 },
-            "loctext" : 
+            "loctext" :
                 {"type":"text" },
-            "locuri" : 
+            "locuri" :
                 {"type":"string", "size":128 },
-            "loctimestamp" : 
+            "loctimestamp" :
                 {"type":"date",   "size":11 },
-            "twitter" : 
+            "twitter" :
                 {"type":"string", "size":128 },
-            "skype" : 
+            "skype" :
                 {"type":"string", "size":128 },
-            "yahoo" : 
+            "yahoo" :
                 {"type":"string", "size":128 },
-            "avatarhash" : 
+            "avatarhash" :
                 {"type":"string", "size":128 },
-            "created" : 
+            "created" :
                 {"type":"date" },
-            "updated" : 
+            "updated" :
                 {"type":"date" }
         }';
 
         parent::__construct();
     }
-    
+
     public function set($vcard, $jid) {
         $this->jid = \echapJid($jid);
-        
+
         if(isset($vcard->vCard->BDAY)
         && (string)$vcard->vCard->BDAY != '')
             $this->date = (string)$vcard->vCard->BDAY;
@@ -167,7 +167,7 @@ class Contact extends Model {
             $this->date = null;
 
         $this->date = date(DATE_ISO8601, strtotime($this->date));
-        
+
         $this->name = (string)$vcard->vCard->NICKNAME;
         $this->fn = (string)$vcard->vCard->FN;
         $this->url = (string)$vcard->vCard->URL;
@@ -176,7 +176,7 @@ class Contact extends Model {
         $this->marital = (string)$vcard->vCard->MARITAL->STATUS;
 
         $this->email = (string)$vcard->vCard->EMAIL->USERID;
-        
+
         $this->adrlocality = (string)$vcard->vCard->ADR->LOCALITY;
         $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
         $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
@@ -187,7 +187,7 @@ class Contact extends Model {
         } else {
             $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
         }
-        
+
         $this->description = (string)$vcard->vCard->DESC;
     }
 
@@ -195,7 +195,7 @@ class Contact extends Model {
         $p = new \Picture;
         $p->fromBase($this->photobin);
         $p->set($this->jid);
-        
+
         if(isset($this->email)) {
             \createEmailPic(strtolower($this->jid), $this->email);
         }
@@ -230,7 +230,7 @@ class Contact extends Model {
             return $p->get($this->jid, $sizes[$size][0], $sizes[$size][1]);
         }
     }
-    
+
     public function setLocation($stanza) {
         $this->loclatitude      = (string)$stanza->items->item->geoloc->lat;
         $this->loclongitude     = (string)$stanza->items->item->geoloc->lon;
@@ -245,10 +245,10 @@ class Contact extends Model {
         $this->loctext          = (string)$stanza->items->item->geoloc->text;
         $this->locuri           = (string)$stanza->items->item->geoloc->uri;
         $this->loctimestamp = date(
-                            'Y-m-d H:i:s', 
+                            'Y-m-d H:i:s',
                             strtotime((string)$stanza->items->item->geoloc->timestamp));
     }
-    
+
     public function setTune($stanza) {
         $this->tuneartist = (string)$stanza->items->item->tune->artist;
         $this->tunelenght = (int)$stanza->items->item->tune->lenght;
@@ -257,25 +257,25 @@ class Contact extends Model {
         $this->tunetitle  = (string)$stanza->items->item->tune->title;
         $this->tunetrack  = (string)$stanza->items->item->tune->track;
     }
-    
+
     public function setVcard4($vcard) {
-        if(isset($vcard->bday->date))
-            $this->date    = $vcard->bday->date;
+        if(isset($vcard->bday->date) && !empty((string)$vcard->bday->date))
+            $this->date    = (string)$vcard->bday->date;
         else
             $this->date    = null;
-         
-        $this->name    = $vcard->nickname->text;
-        $this->fn      = $vcard->fn->text;
-        $this->url     = $vcard->url->uri;
+
+        $this->name    = (string)$vcard->nickname->text;
+        $this->fn      = (string)$vcard->fn->text;
+        $this->url     = (string)$vcard->url->uri;
 
         if(isset($vcard->gender))
-            $this->gender  = $vcard->gender->sex->text;
+            $this->gender  = (string)$vcard->gender->sex->text;
         if(isset($vcard->marital))
-            $this->marital = $vcard->marital->status->text;
-        
-        $this->adrlocality     = $vcard->adr->locality;
-        $this->adrcountry      = $vcard->adr->country;
-        $this->adrpostalcode   = $vcard->adr->code;
+            $this->marital = (string)$vcard->marital->status->text;
+
+        $this->adrlocality     = (string)$vcard->adr->locality;
+        $this->adrcountry      = (string)$vcard->adr->country;
+        $this->adrpostalcode   = (string)$vcard->adr->code;
 
         if(isset($vcard->impp)) {
             foreach($vcard->impp->children() as $c) {
@@ -286,25 +286,25 @@ class Contact extends Model {
                         $this->twitter = str_replace('@', '', $value);
                         break;
                     case 'skype' :
-                        $this->skype = $value;
+                        $this->skype = (string)$value;
                         break;
                     case 'ymsgr' :
-                        $this->yahoo = $value;
+                        $this->yahoo = (string)$value;
                         break;
                 }
             }
         }
 
-        $this->email           = $vcard->email->text;
-        
-        $this->description     = trim($vcard->note->text);
+        $this->email           = (string)$vcard->email->text;
+
+        $this->description     = trim((string)$vcard->note->text);
     }
 
     public function getPlace() {
         $place = null;
-        
+
         if($this->loctext != '')
-            $place .= $this->loctext.' '; 
+            $place .= $this->loctext.' ';
         else {
             if($this->locbuilding != '')
                 $place .= $this->locbuilding.' ';
@@ -319,18 +319,18 @@ class Contact extends Model {
             if($this->loccountry != '')
                 $place .= $this->loccountry;
         }
-        
+
         return $place;
     }
 
     public function getTrueName() {
         $truename = '';
-        
+
         if(isset($this->rostername))
             $rostername = str_replace('\40', '', $this->rostername);
         else
             $rostername = '';
-        
+
         if(
             isset($this->rostername)
             && $rostername != ''
@@ -363,7 +363,7 @@ class Contact extends Model {
 
     function getAge() {
         if(isset($this->date)
-            && $this->date != '0000-00-00T00:00:00+0000' 
+            && $this->date != '0000-00-00T00:00:00+0000'
             && $this->date != '1970-01-01 00:00:00'
             && $this->date != '1970-01-01 01:00:00'
             && $this->date != '1970-01-01T00:00:00+0000') {
@@ -383,7 +383,7 @@ class Contact extends Model {
 
     function getMarital() {
         $marital = getMarital();
-        
+
         if($this->marital != null && $this->marital != 'none') {
             return $marital[$this->marital];
         }
@@ -407,8 +407,6 @@ class Contact extends Model {
         && $this->date == null
         && $this->url == null
         && $this->email == null
-        && $this->created == null
-        && $this->updated == null
         && $this->description == null) {
             return true;
         } else {
@@ -439,14 +437,14 @@ class PresenceContact extends Contact {
     protected $value;
     protected $priority;
     protected $status;
-    
+
     // Client Informations
     protected $node;
     protected $ver;
-    
+
     // Delay - XEP 0203
     protected $delay;
-    
+
     // Last Activity - XEP 0256
     protected $last;
 
@@ -462,35 +460,35 @@ class PresenceContact extends Contact {
 
         $this->_struct = '
         {
-            "resource" : 
+            "resource" :
                 {"type":"string", "size":64, "key":true },
-            "value" : 
+            "value" :
                 {"type":"int",    "size":11, "mandatory":true },
-            "priority" : 
+            "priority" :
                 {"type":"int",    "size":11 },
-            "status" : 
+            "status" :
                 {"type":"text"},
-            "node" : 
+            "node" :
                 {"type":"string", "size":128 },
-            "ver" : 
+            "ver" :
                 {"type":"string", "size":128 },
-            "delay" : 
+            "delay" :
                 {"type":"date"},
-            "last" : 
+            "last" :
                 {"type":"int",    "size":11 },
-            "publickey" : 
+            "publickey" :
                 {"type":"text"},
-            "muc" : 
+            "muc" :
                 {"type":"int",    "size":1 },
-            "mucjid" : 
+            "mucjid" :
                 {"type":"string", "size":64 },
-            "mucaffiliation" : 
+            "mucaffiliation" :
                 {"type":"string", "size":32 },
-            "mucrole" : 
+            "mucrole" :
                 {"type":"string", "size":32 }
         }';
     }
-    
+
 }
 
 class RosterContact extends Contact {
@@ -510,46 +508,46 @@ class RosterContact extends Contact {
     protected $ver;
     protected $category;
     //protected $type;
-    
+
     public function __construct() {
         parent::__construct();
         $this->_struct = "
         {
-            'rostername' : 
+            'rostername' :
                 {'type':'string', 'size':128 },
-            'rosterask' : 
+            'rosterask' :
                 {'type':'string', 'size':128 },
-            'rostersubscription' : 
+            'rostersubscription' :
                 {'type':'string', 'size':8 },
-            'groupname' : 
+            'groupname' :
                 {'type':'string', 'size':128 },
-            'resource' : 
+            'resource' :
                 {'type':'string', 'size':128, 'key':true },
-            'value' : 
+            'value' :
                 {'type':'int',    'size':11, 'mandatory':true },
-            'chaton' : 
+            'chaton' :
                 {'type':'int',    'size':11 },
-            'status' : 
+            'status' :
                 {'type':'text'},
-            'node' : 
+            'node' :
                 {'type':'string', 'size':128 },
-            'ver' : 
+            'ver' :
                 {'type':'string', 'size':128 },
-            'delay' : 
+            'delay' :
                 {'type':'date'},
-            'last' : 
+            'last' :
                 {'type':'int',    'size':11 },
-            'publickey' : 
+            'publickey' :
                 {'type':'text'},
-            'muc' : 
+            'muc' :
                 {'type':'int',    'size':1 },
-            'mucaffiliation' : 
+            'mucaffiliation' :
                 {'type':'string', 'size':32 },
-            'mucrole' : 
+            'mucrole' :
                 {'type':'string', 'size':32 }
         }";
     }
-    
+
     // This method is only use on the connection
     public function setPresence($p) {
         $this->resource         = $p->resource;
