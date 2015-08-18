@@ -44,10 +44,15 @@ class Notifs extends WidgetBase
         RPC::call('Notifs.refresh');
     }
 
+    function ajaxGet()
+    {
+        $this->onNotifs();
+    }
+
     /*
      * Create the list of notifications
      * @return string
-     */  
+     */
     function prepareNotifs()
     {
         $cd = new \Modl\ContactDAO();
@@ -55,7 +60,8 @@ class Notifs extends WidgetBase
 
         $invitations = array();
 
-        $notifs = \Cache::c('activenotifs');
+        $session = \Session::start();
+        $notifs = $session->get('activenotifs');
         if(is_array($notifs)) {
             foreach($notifs as $key => $value) {
                 array_push($invitations, $cd->get($key));
@@ -106,27 +112,29 @@ class Notifs extends WidgetBase
           ->request();
 
         // TODO : move in Moxl
-        $notifs = Cache::c('activenotifs');
+        $session = \Session::start();
+        $notifs = $session->get('activenotifs');
 
         unset($notifs[$jid]);
-        
-        Cache::c('activenotifs', $notifs);
+
+        $session->set('activenotifs', $notifs);
     }
 
     function ajaxRefuse($jid)
     {
         $jid = echapJid($jid);
-        
+
         $p = new Unsubscribed;
         $p->setTo($jid)
           ->request();
 
         // TODO : move in Moxl
-        $notifs = Cache::c('activenotifs');
+        $session = \Session::start();
+        $notifs = $session->get('activenotifs');
 
         unset($notifs[$jid]);
-        
-        Cache::c('activenotifs', $notifs);
+
+        $session->set('activenotifs', $notifs);
 
         $this->onNotifs();
     }
