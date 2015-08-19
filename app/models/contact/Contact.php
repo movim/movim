@@ -259,9 +259,9 @@ class Contact extends Model {
     }
 
     public function setVcard4($vcard) {
-        if(isset($vcard->bday->date) && !empty((string)$vcard->bday->date))
+        if(isset($vcard->bday->date))
             $this->date    = (string)$vcard->bday->date;
-        else
+        if($empty($this->date))
             $this->date    = null;
 
         $this->name    = (string)$vcard->nickname->text;

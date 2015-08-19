@@ -200,6 +200,20 @@ body > nav li { /* Little hack for the navbar */
     }
 }
 
+@media screen and (min-width: 1680px) {
+    body > nav,
+    body > nav:hover {
+        width: 32rem;
+        box-shadow: none;
+    }
+
+    body > nav + main,
+    body > nav:hover + main {
+        opacity: 1;
+        width: calc(100% - 32rem);
+    }
+}
+
 body > nav.active:before,
 body > nav:hover:before {
     display: none;

@@ -76,11 +76,11 @@ var Notification = {
     },
     toast : function(html) {
         target = document.getElementById('toast');
-        
+
         if(target) {
             target.innerHTML = html;
         }
-        
+
         setTimeout(function() {
             target = document.getElementById('toast');
             target.innerHTML = '';
@@ -91,11 +91,11 @@ var Notification = {
         if(Notification.inhibed == true) return;
 
         target = document.getElementById('snackbar');
-        
+
         if(target) {
             target.innerHTML = html;
         }
-        
+
         setTimeout(function() {
             target = document.getElementById('snackbar');
             target.innerHTML = '';
@@ -105,7 +105,7 @@ var Notification = {
     desktop : function(title, body, picture) {
         if(Notification.inhibed == true
         || Notification.focused) return;
-
+console.log(DesktopNotification);
         var notification = new DesktopNotification(title, { icon: picture, body: body });
     }
 }
