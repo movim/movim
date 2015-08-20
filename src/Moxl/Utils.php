@@ -66,12 +66,12 @@ class Utils {
     }
 
     public static function resolveHost($host) {
-        $dns =  dns_get_record('_xmpp-client._tcp.'.$host);
+        $dns = dns_get_record('_xmpp-client._tcp.'.$host, DNS_SRV);
         if(!empty($dns)) return $dns;
     }
 
     public static function getDomain($host) {
-        $dns = dns_get_record('_xmpp-client._tcp.'.$host);
+        $dns = dns_get_record('_xmpp-client._tcp.'.$host, DNS_SRV);
 
         if(isset($dns[0]['target']) && $dns[0]['target'] != null)
             return $dns[0]['target'];
