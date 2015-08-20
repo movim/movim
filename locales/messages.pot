@@ -25,9 +25,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Config/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ConfigData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -45,9 +45,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Location/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Login/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -81,9 +81,9 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Visio/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/VisioExt/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 #, fuzzy
@@ -91,7 +91,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-16 15:40+0200\n"
+"POT-Creation-Date: 2015-08-20 15:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -584,11 +584,11 @@ msgstr ""
 msgid "Encrypted message"
 msgstr ""
 
-#: [message]composing
+#: [message]composing [chats]composing
 msgid "Composing..."
 msgstr ""
 
-#: [message]paused
+#: [message]paused [chats]paused
 msgid "Paused..."
 msgstr ""
 
@@ -666,6 +666,26 @@ msgstr ""
 msgid "Load more contacts"
 msgstr ""
 
+#: [title]data
+msgid "Data"
+msgstr ""
+
+#: [title]cache
+msgid "Cache"
+msgstr ""
+
+#: [title]contacts [menu]contacts [page]contacts
+msgid "Contacts"
+msgstr ""
+
+#: [title]posts [page]posts
+msgid "Posts"
+msgstr ""
+
+#: [title]messages
+msgid "Messages"
+msgstr ""
+
 #: [config]general
 msgid "General"
 msgstr ""
@@ -700,26 +720,6 @@ msgstr ""
 
 #: [notifications]desktop
 msgid "Use desktop notifications"
-msgstr ""
-
-#: [title]data
-msgid "Data"
-msgstr ""
-
-#: [title]cache
-msgid "Cache"
-msgstr ""
-
-#: [title]contacts [menu]contacts [page]contacts
-msgid "Contacts"
-msgstr ""
-
-#: [title]posts [page]posts
-msgid "Posts"
-msgstr ""
-
-#: [title]messages
-msgid "Messages"
 msgstr ""
 
 #: [general]legend [general]general_title
@@ -957,7 +957,7 @@ msgstr ""
 #: [group]help_info2
 msgid ""
 "Choose a server and a Group and subscribe to it using the %s button in the "
-"header. You can alse create a new one using the %s button."
+"header. You can also create a new one using the %s button."
 msgstr ""
 
 #: [group]help_info3
@@ -1181,6 +1181,10 @@ msgstr ""
 msgid "Update my position"
 msgstr ""
 
+#: [login_anonymous]bad_username
+msgid "Bad nickname (between 4 and 40 characters)"
+msgstr ""
+
 #: [error]username
 msgid "Wrong username"
 msgstr ""
@@ -1307,10 +1311,6 @@ msgstr ""
 
 #: [form]population
 msgid "Population"
-msgstr ""
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
 
 #: [menu]empty_title
@@ -1784,18 +1784,6 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
-#: [visio]call
-msgid "Call"
-msgstr ""
-
-#: [visio]hang_up
-msgid "Hang up"
-msgstr ""
-
-#: [visio]connection
-msgid "Connection"
-msgstr ""
-
 #: [visio]hung_up
 msgid "Hung up"
 msgstr ""
@@ -1810,6 +1798,18 @@ msgstr ""
 
 #: [visio]calling
 msgid "Is calling you"
+msgstr ""
+
+#: [visio]call
+msgid "Call"
+msgstr ""
+
+#: [visio]hang_up
+msgid "Hang up"
+msgstr ""
+
+#: [visio]connection
+msgid "Connection"
 msgstr ""
 
 #: [global]no_js

@@ -3,2616 +3,2774 @@
 # This file is distributed under the same license as the movim package.
 # Isratine Citizen <genghiskhan@gmx.ca>, 2012.
 #
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/About/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Account/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AccountNext/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdHoc/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdminDB/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdminMain/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdminTest/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Api/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Avatar/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Blog/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Chat/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Chats/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ConfigData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Config/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Contact/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Group/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Groups/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Header/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Hello/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Help/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Init/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Location/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/LoginAnonymous/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Login/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Menu/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/NodeAffiliations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/NodeSubscriptions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notifs/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Post/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Presence/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Publish/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PubsubSubscriptionConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Rooms/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Roster/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Statistics/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Subscribe/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Syndication/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Upload/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Vcard4/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/VisioExt/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-08 22:06+0200\n"
+"POT-Creation-Date: 2015-08-20 15:17+0200\n"
 "PO-Revision-Date: 2015-06-09 12:19+0000\n"
 "Last-Translator: GenghisKhan <genghiskhan@gmx.ca>\n"
 "Language-Team: Rahut <genghiskhan@gmx.ca>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
 "X-Generator: Launchpad (build 17570)\n"
-"Language: \n"
 "X-Poedit-Language: Hebrew\n"
 
-#: ../cache/locales.php:2
+#: [about]thanks
 msgid "Thanks"
 msgstr "תודות"
 
-#: ../cache/locales.php:3
+#: [about]developers
 msgid "Developers"
 msgstr "מפתחים"
 
-#: ../cache/locales.php:4
+#: [about]translators
 msgid "Translators"
 msgstr "מתרגמים"
 
-#: ../cache/locales.php:5
+#: [about]software
 msgid "Software"
 msgstr "תוכנה"
 
-#: ../cache/locales.php:6
+#: [about]resources
 msgid "Resources"
 msgstr "מקורות"
 
-#: ../cache/locales.php:7 ../cache/locales.php:83 ../cache/locales.php:85
+#: [about]api [schema]api [api]title
 msgid "API"
 msgstr "API"
 
-#: ../cache/locales.php:8
-msgid ""
-"Movim is an XMPP-based communication platform. All the project, except the "
-"following software and resources, is under"
-msgstr ""
-"Movim הינו פלטפורמת תקשורת מבוססת XMPP. כל הפרויקט, למעט התכנות והמקורות "
-"הבאים, רשוי תחת"
+#: [about]info
+msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
+msgstr "Movim הינו פלטפורמת תקשורת מבוססת XMPP. כל הפרויקט, למעט התכנות והמקורות הבאים, רשוי תחת"
 
-#: ../cache/locales.php:9
+#: [account]title
 msgid "Account"
 msgstr ""
 
-#: ../cache/locales.php:10
-msgid "The password has been updated"
-msgstr ""
+#: [account]password_change_title
+#, fuzzy
+msgid "Change my password"
+msgstr "סיסמה שגויה"
 
-#: ../cache/locales.php:11
-msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
-
-#: ../cache/locales.php:12
-msgid "The provided passwords are not the same"
-msgstr ""
-
-#: ../cache/locales.php:13
-msgid "Delete my account"
-msgstr ""
-
-#: ../cache/locales.php:14
-msgid ""
-"You will delete your XMPP account and all the relative information linked to "
-"it (profile, contacts and publications)."
-msgstr ""
-
-#: ../cache/locales.php:15
-msgid "Are you sure that you want to delete it ?"
-msgstr ""
-
-#: ../cache/locales.php:16 ../cache/locales.php:411
-msgid "Create a new account"
-msgstr "יצירת חשבון חדש"
-
-#: ../cache/locales.php:17
-msgid "No account creation form found on the server"
-msgstr "לא נמצא טופס יצירת חשבון על השרת"
-
-#: ../cache/locales.php:18 ../cache/locales.php:172
-msgid "on"
-msgstr "ביום"
-
-#: ../cache/locales.php:19
-msgid "Your acccount has been successfully registered"
-msgstr "חשבונך נרשם בהצלחה"
-
-#: ../cache/locales.php:20
-msgid "Loading"
-msgstr "כעת טוען"
-
-#: ../cache/locales.php:21
-msgid "Not Acceptable"
-msgstr "לא קביל"
-
-#: ../cache/locales.php:22
-msgid "The registration system of this server is currently unavailable"
-msgstr "מערכת הרשמה בשרת זה איננה זמינה בעת זו"
-
-#: ../cache/locales.php:23
-msgid ""
-"This server use an external system for the registration, please click on the "
-"following URL."
-msgstr ""
-
-#: ../cache/locales.php:24
-msgid "Actions"
-msgstr "פעולות"
-
-#: ../cache/locales.php:25 ../cache/locales.php:82
-msgid "Database"
-msgstr "מסד נתונים"
-
-#: ../cache/locales.php:26
-msgid "Modl wasn't able to connect to the database"
-msgstr "Modl לא היה מסוגל להתחבר אל מסד נתונים"
-
-#: ../cache/locales.php:27
-msgid "Movim is connected to the database"
-msgstr "Movim הינו מחובר אל מסד נתונים"
-
-#: ../cache/locales.php:28
-msgid "The database need to be updated"
-msgstr "על מסד נתונים להתעדכן"
-
-#: ../cache/locales.php:29
-msgid "Movim database is up to date"
-msgstr "מסד נתונים Movim הינו עדכני"
-
-#: ../cache/locales.php:30
-msgid "Database Type"
-msgstr "טיפוס מסד נתונים"
-
-#: ../cache/locales.php:31 ../cache/locales.php:50 ../cache/locales.php:540
-msgid "Username"
-msgstr "שם משתמש"
-
-#: ../cache/locales.php:32 ../cache/locales.php:51 ../cache/locales.php:282
-#: ../cache/locales.php:541
+#: [account]password [db]password [credentials]password [form]password
+#: [input]password
 msgid "Password"
 msgstr "סיסמה"
 
-#: ../cache/locales.php:33
+#: [account]password_confirmation
+#, fuzzy
+msgid "Password confirmation"
+msgstr "‏‏%s - תצורה"
+
+#: [account]password_changed
+msgid "The password has been updated"
+msgstr ""
+
+#: [account]password_not_valid
+msgid "Please provide a valid password (6 characters minimum)"
+msgstr ""
+
+#: [account]password_not_same
+msgid "The provided passwords are not the same"
+msgstr ""
+
+#: [account]delete_title
+msgid "Delete my account"
+msgstr ""
+
+#: [account]delete
+#, fuzzy
+msgid "Delete your account"
+msgstr "חשבון אחר"
+
+#: [account]delete_text
+msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
+msgstr ""
+
+#: [account]delete_text_confirm
+msgid "Are you sure that you want to delete it ?"
+msgstr ""
+
+#: [account]gateway_title
+msgid "Gateway"
+msgstr ""
+
+#: [create]title [subscribe]title
+msgid "Create a new account"
+msgstr "יצירת חשבון חדש"
+
+#: [create]notfound
+msgid "No account creation form found on the server"
+msgstr "לא נמצא טופס יצירת חשבון על השרת"
+
+#: [create]server_on
+msgid "on"
+msgstr "ביום"
+
+#: [create]successfull
+msgid "Your acccount has been successfully registered"
+msgstr "חשבונך נרשם בהצלחה"
+
+#: [create]loading
+msgid "Loading"
+msgstr "כעת טוען"
+
+#: [error]not_acceptable
+msgid "Not Acceptable"
+msgstr "לא קביל"
+
+#: [error]service_unavailable
+msgid "The registration system of this server is currently unavailable"
+msgstr "מערכת הרשמה בשרת זה איננה זמינה בעת זו"
+
+#: [oob]about
+msgid "This server use an external system for the registration, please click on the following URL."
+msgstr ""
+
+#: [adhoc]title
+msgid "Actions"
+msgstr "פעולות"
+
+#: [db]legend [schema]database
+msgid "Database"
+msgstr "מסד נתונים"
+
+#: [db]connect_error
+msgid "Modl wasn't able to connect to the database"
+msgstr "Modl לא היה מסוגל להתחבר אל מסד נתונים"
+
+#: [db]connect_success
+msgid "Movim is connected to the database"
+msgstr "Movim הינו מחובר אל מסד נתונים"
+
+#: [db]update
+msgid "The database need to be updated"
+msgstr "על מסד נתונים להתעדכן"
+
+#: [db]up_to_date
+msgid "Movim database is up to date"
+msgstr "מסד נתונים Movim הינו עדכני"
+
+#: [db]type
+msgid "Database Type"
+msgstr "טיפוס מסד נתונים"
+
+#: [db]username [credentials]username [input]username
+msgid "Username"
+msgstr "שם משתמש"
+
+#: [db]host
 msgid "Host"
 msgstr "מארח"
 
-#: ../cache/locales.php:34
+#: [db]port
 msgid "Port"
 msgstr "פורט"
 
-#: ../cache/locales.php:35
-msgid "Database Name"
+#: [db]name
+#, fuzzy
+msgid "Database sName"
 msgstr "שם מסד נתונים"
 
-#: ../cache/locales.php:36
+#: [admin]general
 msgid "General Settings"
 msgstr "הגדרות כלליות"
 
-#: ../cache/locales.php:37
+#: [general]theme
 msgid "Theme"
 msgstr "מוטיב"
 
-#: ../cache/locales.php:38
+#: [general]language
 msgid "Default language"
 msgstr "שפה משתמטת"
 
-#: ../cache/locales.php:39
-msgid "Environment"
-msgstr "סביבה"
-
-#: ../cache/locales.php:40
+#: [general]log_verbosity
 msgid "Log verbosity"
 msgstr "גיבוב רשומת יומן"
 
-#: ../cache/locales.php:41
+#: [general]timezone
 msgid "Server Timezone"
 msgstr "אזור זמן שרת"
 
-#: ../cache/locales.php:42
+#: [general]limit
 msgid "User folder size limit (in bytes)"
 msgstr "מגבלת גודל תיקיית משתמש (בתים)"
 
-#: ../cache/locales.php:43
+#: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "תצורת WebSocket"
 
-#: ../cache/locales.php:44
+#: [websocket]info
 msgid "Enter here a valid WebSocket URI in the form"
 msgstr ""
 
-#: ../cache/locales.php:45
+#: [websocket]label
 msgid "WebSocket URI"
 msgstr ""
 
-#: ../cache/locales.php:46
-msgid ""
-"If you change the URI, please restart the daemon to reload the configuration"
+#: [websocket]save_info
+msgid "If you change the URI, please restart the daemon to reload the configuration"
 msgstr ""
 
-#: ../cache/locales.php:47
+#: [websocket]publics
 msgid "Public WebSockets"
 msgstr "WebSocket פומבי"
 
-#: ../cache/locales.php:48
+#: [credentials]title
 msgid "Administration Credential"
 msgstr "נתוני התחברות מנהל"
 
-#: ../cache/locales.php:49
+#: [credentials]info
 msgid "Change the default credentials admin/password"
 msgstr "שנה נתוני התחברות מנהל/סיסמה"
 
-#: ../cache/locales.php:52
+#: [credentials]re_password
 msgid "Retype password"
 msgstr "הקלד סיסמה מחדש"
 
-#: ../cache/locales.php:53
+#: [whitelist]title
 msgid "Whitelist - XMPP Server"
 msgstr "רשימה לבנה - שרת XMPP"
 
-#: ../cache/locales.php:54
-msgid ""
-"If you want to specify a list of authorized XMPP servers on your Movim pod "
-"and forbid the connection on all the others please put their domain name "
-"here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
-"אם ברצונך לציין רשימה של שרתי XMPP מורשים בשרת Movim שלך ולאסור את החיבור "
-"בכל האחרים אנא השם כאן את שם המתחם שלהם, עם פסיק (דוגמא: movim.eu,jabber.fr)"
+#: [whitelist]info1
+msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
+msgstr "אם ברצונך לציין רשימה של שרתי XMPP מורשים בשרת Movim שלך ולאסור את החיבור בכל האחרים אנא השם כאן את שם המתחם שלהם, עם פסיק (דוגמא: movim.eu,jabber.fr)"
 
-#: ../cache/locales.php:55
-msgid ""
-"Leave this field blank if you allow the access to all the XMPP accounts."
+#: [whitelist]info2
+msgid "Leave this field blank if you allow the access to all the XMPP accounts."
 msgstr "השאר את שדה זה ריק אם ברצונך להתיר גישה אל כל החשבונות של XMPP."
 
-#: ../cache/locales.php:56
+#: [whitelist]label
 msgid "List of whitelisted XMPP servers"
 msgstr "רשימה של שרתי XMPP שמצויים תחת רשימה לבנה"
 
-#: ../cache/locales.php:57 ../cache/locales.php:61
+#: [information]title
+#, fuzzy
+msgctxt "[information]title"
 msgid "Information Message"
 msgstr "הודעת מידע"
 
-#: ../cache/locales.php:58
+#: [information]description
 msgid "Description"
 msgstr "תיאור"
 
-#: ../cache/locales.php:59
+#: [information]info1
 msgid "This message will be displayed on the login page"
 msgstr "הודעה זו תוצג בעמוד הכניסה"
 
-#: ../cache/locales.php:60
-msgid "Leave this field blank if you don't want to show any message."
+#: [information]info2
+#, fuzzy
+msgid "Leave this field blank if you dont want to show any message."
 msgstr "השאר את שדה זה ריק אם אין ברצונך להציג כל הודעה שהיא."
 
-#: ../cache/locales.php:62
+#: [information]label
+#, fuzzy
+msgctxt "[information]label"
+msgid "Information Message"
+msgstr "הודעת מידע"
+
+#: [log]empty
 msgid "Empty"
 msgstr "ריק"
 
-#: ../cache/locales.php:63
+#: [log]syslog
 msgid "Syslog"
 msgstr "יומן מערכת"
 
-#: ../cache/locales.php:64
+#: [log]syslog_files
 msgid "Syslog and files"
 msgstr "יומן מערכת וקבצים"
 
-#: ../cache/locales.php:65
+#: [rewrite]title
 msgid "URL Rewriting"
 msgstr ""
 
-#: ../cache/locales.php:66
+#: [rewrite]info
 msgid "The URL Rewriting can be enabled"
 msgstr ""
 
-#: ../cache/locales.php:67
+#: [admin]compatibility
 msgid "General Overview"
 msgstr "סקירה כללית"
 
-#: ../cache/locales.php:68
-msgid ""
-"Movim has found some issues or things that need to be fixed or improved"
+#: [compatibility]info
+msgid "Movim has found some issues or things that need to be fixed or improved"
 msgstr ""
 
-#: ../cache/locales.php:69
-#, php-format
+#: [compatibility]php1
 msgid "Update your PHP-Version: %s"
 msgstr "עדכן גרסת PHP שלך: %s"
 
-#: ../cache/locales.php:70
+#: [compatibility]php2
 msgid "Required: 5.3.0"
 msgstr "צריך: 5.3.0"
 
-#: ../cache/locales.php:71
+#: [compatibility]curl
 msgid "Install the php5-curl library"
 msgstr "התקן את הספרייה php5-curl"
 
-#: ../cache/locales.php:72
+#: [compatibility]imagick
 msgid "Install the php5-imagick library"
 msgstr ""
 
-#: ../cache/locales.php:73
+#: [compatibility]gd
 msgid "Install the php5-gd library"
 msgstr ""
 
-#: ../cache/locales.php:74
-msgid "Read and write rights for the webserver in Movim's root directory"
+#: [compatibility]rights
+#, fuzzy
+msgid "Read and write rights for the webserver in Movims root directory"
 msgstr "הרשאות קריאה וכתיבה עבור שרת הרשת במדור השורש (root) של Movim"
 
-#: ../cache/locales.php:75
+#: [compatibility]rewrite
 msgid "The URL Rewriting support is currently disabled"
 msgstr ""
 
-#: ../cache/locales.php:76
+#: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
 msgstr ""
 
-#: ../cache/locales.php:77
-msgid ""
-"WebSocket connection error, check if the Movim Daemon is running and is "
-"reacheable"
+#: [compatibility]websocket
+msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr ""
 
-#: ../cache/locales.php:78
-msgid ""
-"XMPP Websocket connection error, please check the validity of the URL given "
-"in the General Configuration"
+#: [compatibility]xmpp_websocket
+msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
 msgstr ""
 
-#: ../cache/locales.php:79
+#: [schema]browser
 msgid "Browser"
 msgstr ""
 
-#: ../cache/locales.php:80
+#: [schema]movim
 msgid "Movim Core"
 msgstr ""
 
-#: ../cache/locales.php:81
+#: [schema]daemon
 msgid "Movim Daemon"
 msgstr ""
 
-#: ../cache/locales.php:84
+#: [schema]xmpp
 msgid "XMPP"
 msgstr ""
 
-#: ../cache/locales.php:86
-#, php-format
-msgid ""
-"Here you can register your pod on the official %sMovim API%s and be listed "
-"on %sthe pods page%s."
-msgstr ""
-"באפשרותך לרשום כאן את השרת שלך בתוך %sMovim API%s הרשמי בו יהיה מנוי בתוך "
-"%sעמוד השרתים%s."
+#: [api]info
+msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
+msgstr "באפשרותך לרשום כאן את השרת שלך בתוך %sMovim API%s הרשמי בו יהיה מנוי בתוך %sעמוד השרתים%s."
 
-#: ../cache/locales.php:87
+#: [api]register
 msgid "Your pod is not registered on the API"
 msgstr "השרת שלך אינו רשום API"
 
-#: ../cache/locales.php:88
+#: [api]registered
 msgid "Your pod is registered on the API"
 msgstr "השרת שלך הינו רשום API"
 
-#: ../cache/locales.php:89
+#: [api]wait
 msgid "Your pod is not yet validated"
 msgstr "השרת שלך עדיין לא קיבל תוקף"
 
-#: ../cache/locales.php:90
+#: [api]validated
 msgid "Your pod is validated"
 msgstr "השרת שלך הינו תקף"
 
-#: ../cache/locales.php:91
-msgid ""
-"You asked to be removed from the API, this request will be processed in a "
-"couple of hours"
+#: [api]unregister
+msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
 msgstr ""
 
-#: ../cache/locales.php:92 ../cache/locales.php:147
+#: [api]conf_updated [config]updated
 msgid "Configuration updated"
 msgstr "תצורה עודכנה"
 
-#: ../cache/locales.php:93
+#: [avatar]file
 msgid "File"
 msgstr ""
 
-#: ../cache/locales.php:94
+#: [avatar]use_it
 msgid "Use it"
 msgstr ""
 
-#: ../cache/locales.php:95
+#: [avatar]webcam
 msgid "Webcam"
 msgstr "מצלמת רשת"
 
-#: ../cache/locales.php:96
+#: [avatar]cheese
 msgid "Cheese !"
 msgstr "חייכו !"
 
-#: ../cache/locales.php:97
+#: [avatar]snapshot
 msgid "Take a webcam snapshot"
 msgstr "קח תצלום בזק מתוך מצלמת רשת"
 
-#: ../cache/locales.php:98
+#: [avatar]updated
 msgid "Avatar Updated"
 msgstr "אווטאר עודכן"
 
-#: ../cache/locales.php:99
+#: [avatar]not_updated
 msgid "Avatar Not Updated"
 msgstr "אווטאר לא מעודכן"
 
-#: ../cache/locales.php:100 ../cache/locales.php:415
-#, php-format
+#: [blog]title [feed]title
 msgid "%s's feed"
 msgstr "הערוץ של %s"
 
-#: ../cache/locales.php:101
+#: [blog]empty
 msgid "This user has not posted anything right now"
 msgstr ""
 
-#: ../cache/locales.php:102
+#: [title]conferences
 msgid "Conferences"
 msgstr "ועידות"
 
-#: ../cache/locales.php:103 ../cache/locales.php:193 ../cache/locales.php:217
-#: ../cache/locales.php:468
+#: [title]groups [group]empty_title [menu]groups [page]groups
 msgid "Groups"
 msgstr "קבוצות"
 
-#: ../cache/locales.php:104
+#: [chatroom]add
 msgid "Add a new Chat Room"
 msgstr "הוסף חדר שיחה חדש"
 
-#: ../cache/locales.php:105 ../cache/locales.php:368
+#: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
 msgstr "מזהה חדר שיחה"
 
-#: ../cache/locales.php:106 ../cache/locales.php:116 ../cache/locales.php:156
-#: ../cache/locales.php:361 ../cache/locales.php:369 ../cache/locales.php:424
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
 msgid "Name"
 msgstr "שם"
 
-#: ../cache/locales.php:107 ../cache/locales.php:157 ../cache/locales.php:371
-#: ../cache/locales.php:425
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
 msgstr "שם כינוי"
 
-#: ../cache/locales.php:108
+#: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
 msgstr "האם ברצונך להצטרף אוטומטית אל שיחת חדר זו ?"
 
-#: ../cache/locales.php:109 ../cache/locales.php:372
+#: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
 msgstr "מזהה חדר שיחה רע"
 
-#: ../cache/locales.php:110 ../cache/locales.php:373
+#: [chatroom]empty_name [chatrooms]empty_name
 msgid "Empty name"
 msgstr "שם ריק"
 
-#: ../cache/locales.php:111 ../cache/locales.php:380
+#: [bookmarks]updated
 msgid "Bookmarks updated"
 msgstr "סימניות עודכנו"
 
-#: ../cache/locales.php:112
-msgid "An error occured : "
+#: [bookmarks]error
+#, fuzzy
+msgid "An error occured :"
 msgstr "ארעה שגיאה : "
 
-#: ../cache/locales.php:113
+#: [bookmarks]configure
 msgid "Configure"
 msgstr "הגדר"
 
-#: ../cache/locales.php:114
+#: [url]add
 msgid "Add a new URL"
 msgstr "הוסף URL חדש"
 
-#: ../cache/locales.php:115
+#: [url]url
 msgid "URL"
 msgstr "URL"
 
-#: ../cache/locales.php:117
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "שם"
+
+#: [message]published
 msgid "Message Published"
 msgstr "הודעה פורסמה"
 
-#: ../cache/locales.php:118 ../cache/locales.php:138
+#: [message]encrypted
 msgid "Encrypted message"
 msgstr "הודעה מוצפנת"
 
-#: ../cache/locales.php:119
+#: [message]composing [chats]composing
 msgid "Composing..."
 msgstr "מלחין כעת..."
 
-#: ../cache/locales.php:120
+#: [message]paused [chats]paused
 msgid "Paused..."
 msgstr "מושהה..."
 
-#: ../cache/locales.php:121
+#: [message]gone
 msgid "Contact gone"
 msgstr ""
 
-#: ../cache/locales.php:122
-#, php-format
+#: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s רוצה את צומת ליבך"
 
-#: ../cache/locales.php:123
+#: [chat]placeholder
 msgid "Your message here..."
 msgstr "הודעתך כאן..."
 
-#: ../cache/locales.php:124
+#: [chat]smileys
 msgid "Smileys"
 msgstr "סמיילים"
 
-#: ../cache/locales.php:125 ../cache/locales.php:139
+#: [chat]empty_title [button]chat
 msgid "Chat"
 msgstr "שיחה"
 
-#: ../cache/locales.php:126
+#: [chat]empty_text
 msgid "Discuss with your contacts"
 msgstr "שוחח עם האנשי קשר שלך"
 
-#: ../cache/locales.php:127
-msgid "Members"
-msgstr ""
-
-#: ../cache/locales.php:128 ../cache/locales.php:376
-msgid "Connected to the chatroom"
-msgstr "מחובר אל שיחת קבוצה"
-
-#: ../cache/locales.php:129 ../cache/locales.php:377
-msgid "Disconnected from the chatroom"
-msgstr "מנותק מתוך שיחת הקבוצה"
-
-#: ../cache/locales.php:130 ../cache/locales.php:200 ../cache/locales.php:469
-msgid "Configuration"
-msgstr "תצורה"
-
-#: ../cache/locales.php:131
-msgid "Configuration saved"
-msgstr ""
-
-#: ../cache/locales.php:132
-msgid "Subject"
-msgstr ""
-
-#: ../cache/locales.php:133
-msgid "Subject changed"
-msgstr ""
-
-#: ../cache/locales.php:134
-msgid "Open a new conversation by clicking on the plus button bellow"
-msgstr ""
-
-#: ../cache/locales.php:135
-msgid "Chat with a contact"
-msgstr "שיח עם איש קשר"
-
-#: ../cache/locales.php:136
+#: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr ""
 
-#: ../cache/locales.php:137
+#: [chatroom]members
+msgid "Members"
+msgstr ""
+
+#: [chatroom]connected [chatrooms]connected
+msgid "Connected to the chatroom"
+msgstr "מחובר אל שיחת קבוצה"
+
+#: [chatroom]disconnected [chatrooms]disconnected
+msgid "Disconnected from the chatroom"
+msgstr "מנותק מתוך שיחת הקבוצה"
+
+#: [chatroom]config [group]configuration [page]configuration
+msgid "Configuration"
+msgstr "תצורה"
+
+#: [chatroom]config_saved
+msgid "Configuration saved"
+msgstr ""
+
+#: [chatroom]subject
+msgid "Subject"
+msgstr ""
+
+#: [chatroom]subject_changed
+msgid "Subject changed"
+msgstr ""
+
+#: [chats]empty_title
+msgid "No chats yet..."
+msgstr ""
+
+#: [chats]empty
+msgid "Open a new conversation by clicking on the plus button bellow or visit the Contacts page."
+msgstr ""
+
+#: [chats]add
+msgid "Chat with a contact"
+msgstr "שיח עם איש קשר"
+
+#: [chats]more
 msgid "Load more contacts"
 msgstr ""
 
-#: ../cache/locales.php:140
-msgid "General"
-msgstr "כללי"
-
-#: ../cache/locales.php:141
-msgid "Language"
-msgstr "שפה"
-
-#: ../cache/locales.php:142
-msgid "Roster display"
-msgstr ""
-
-#: ../cache/locales.php:143
-msgid "Show the offline contacts"
-msgstr ""
-
-#: ../cache/locales.php:144
-msgid "Hide the offline contacts"
-msgstr ""
-
-#: ../cache/locales.php:145
-msgid "Appearence"
-msgstr "חזות"
-
-#: ../cache/locales.php:146
-msgid "This configuration is shared wherever you are connected !"
-msgstr "תצורה זו משותפת כבל מקום בו אנו מחוברים !"
-
-#: ../cache/locales.php:148
-msgid "Notify on incoming message"
-msgstr "התראה בעת הודעה נכנסת"
-
-#: ../cache/locales.php:149
-msgid "Use desktop notifications"
-msgstr "השתמש בהתראות שולחן עבודה"
-
-#: ../cache/locales.php:150
+#: [title]data
 msgid "Data"
 msgstr "נתונים"
 
-#: ../cache/locales.php:151
+#: [title]cache
 msgid "Cache"
 msgstr "מטמון"
 
-#: ../cache/locales.php:152 ../cache/locales.php:218 ../cache/locales.php:466
+#: [title]contacts [menu]contacts [page]contacts
 msgid "Contacts"
 msgstr "אנשי קשר"
 
-#: ../cache/locales.php:153 ../cache/locales.php:480
+#: [title]posts [page]posts
 msgid "Posts"
 msgstr "פרסומים"
 
-#: ../cache/locales.php:154
+#: [title]messages
 msgid "Messages"
 msgstr "הודעות"
 
+#: [config]general
+msgid "General"
+msgstr "כללי"
+
+#: [config]language
+msgid "Language"
+msgstr "שפה"
+
+#: [config]roster
+msgid "Roster display"
+msgstr ""
+
+#: [config]roster_show
+msgid "Show the offline contacts"
+msgstr ""
+
+#: [config]roster_hide
+msgid "Hide the offline contacts"
+msgstr ""
+
+#: [config]appearence
+msgid "Appearence"
+msgstr "חזות"
+
+#: [config]info
+#, fuzzy
+msgid "This configuration is shared wherever you are connected"
+msgstr "תצורה זו משותפת כבל מקום בו אנו מחוברים !"
+
+#: [notifications]message
+msgid "Notify on incoming message"
+msgstr "התראה בעת הודעה נכנסת"
+
+#: [notifications]desktop
+msgid "Use desktop notifications"
+msgstr "השתמש בהתראות שולחן עבודה"
+
 # BUG: Information(s)
-#: ../cache/locales.php:155 ../cache/locales.php:423
+#: [general]legend [general]general_title
 msgid "General Informations"
 msgstr "מידע כללי"
 
-#: ../cache/locales.php:158 ../cache/locales.php:427
+#: [general]name [public_groups]name [chatrooms]name
+msgid "Name"
+msgstr "שם"
+
+#: [general]date_of_birth
 msgid "Date of Birth"
 msgstr "תאריך לידה"
 
-#: ../cache/locales.php:159 ../cache/locales.php:428
+#: [general]gender
 msgid "Gender"
 msgstr "מין"
 
-#: ../cache/locales.php:160 ../cache/locales.php:429
+#: [general]marital
 msgid "Marital Status"
 msgstr "מצב משפחתי"
 
-#: ../cache/locales.php:161 ../cache/locales.php:426
+#: [general]email
 msgid "Email"
 msgstr "דוא״ל"
 
-#: ../cache/locales.php:162 ../cache/locales.php:430
+#: [general]website
 msgid "Website"
 msgstr "אתר רשת"
 
-#: ../cache/locales.php:163 ../cache/locales.php:431
+#: [general]about
 msgid "About Me"
 msgstr "אודותיי"
 
-#: ../cache/locales.php:164
+#: [general]accounts
 msgid "Other Accounts"
 msgstr "חשבונות אחרים"
 
-#: ../cache/locales.php:165
+#: [general]tune
 msgid "Is Listening"
 msgstr ""
 
-#: ../cache/locales.php:166 ../cache/locales.php:432
+#: [position]legend [position]position_title
 msgid "Geographic Position"
 msgstr "מיקום גאוגרפי"
 
-#: ../cache/locales.php:167 ../cache/locales.php:433
+#: [position]locality
 msgid "Locality"
 msgstr "מקומיות"
 
-#: ../cache/locales.php:168 ../cache/locales.php:434
+#: [position]country
 msgid "Country"
 msgstr "ארץ"
 
-#: ../cache/locales.php:169
+#: [mood]title
 msgid "Mood"
 msgstr "מצב רוח"
 
-#: ../cache/locales.php:170
+#: [mood]im
 msgid "I'm "
 msgstr "אני "
 
-#: ../cache/locales.php:171
+#: [listen]title
 msgid "Listening"
 msgstr "מאזין כעת"
 
-#: ../cache/locales.php:173
+#: [last]title
 msgid "Last seen"
 msgstr "נראה לאחרונה"
 
-#: ../cache/locales.php:174
+#: [client]title
 msgid "Client Informations"
 msgstr "מידע לקוח"
 
-#: ../cache/locales.php:175
+#: [explore]last_registered
 msgid "Last registered"
 msgstr "נרשמו לאחרונה"
 
-#: ../cache/locales.php:176
+#: [explore]explore
 msgid "Find some new friends"
 msgstr ""
 
-#: ../cache/locales.php:177 ../cache/locales.php:533
+#: [edit]title [button]edit
 msgid "Edit"
 msgstr "ערוך"
 
-#: ../cache/locales.php:178
+#: [edit]alias
 msgid "Alias"
 msgstr "כינוי"
 
-#: ../cache/locales.php:179
+#: [edit]group
 msgid "Group"
 msgstr "קבוצה"
 
-#: ../cache/locales.php:180 ../cache/locales.php:400
+#: [edit]updated [roster]updated
 msgid "Contact updated"
 msgstr "איש קשר עודכן"
 
-#: ../cache/locales.php:181
+#: [delete]title
 msgid "Are you sure?"
 msgstr "האם אתה בטוח?"
 
-#: ../cache/locales.php:182
-msgid ""
-"You are going to delete one of your contacts, please confirm your action"
+#: [delete]text
+msgid "You are going to delete one of your contacts, please confirm your action"
 msgstr ""
 
-#: ../cache/locales.php:183
-#, php-format
+#: [age]years
 msgid "%s years"
 msgstr ""
 
-#: ../cache/locales.php:184
+#: [blog]last
 msgid "Last public post"
 msgstr ""
 
-#: ../cache/locales.php:185
+#: [subscription]to
+#, fuzzy
+msgid "You can see this contact status"
+msgstr "אין ערוץ פומבי עבור איש קשר זה"
+
+#: [subscription]to_button
+msgid "Share my status"
+msgstr ""
+
+#: [subscription]to_text
+msgid "But this contact cannot see yours"
+msgstr ""
+
+#: [subscription]from
+#, fuzzy
+msgid "You are not subscribed to this contact"
+msgstr "אין ערוץ פומבי עבור איש קשר זה"
+
+#: [subscription]from_button
+#, fuzzy
+msgid "Ask to subscribe"
+msgstr "בטל הרשמה"
+
+#: [subscription]from_text
+msgid "But this contact can still see if you are online"
+msgstr ""
+
+#: [subscription]nil
+#, fuzzy
+msgid "No subscriptions"
+msgstr "הרשמות"
+
+#: [subscription]nil_button
+msgid "Invite"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
+msgstr ""
+
+#: [group]subscribe
 msgid "Subscribe"
 msgstr "הירשם"
 
-#: ../cache/locales.php:186
+#: [group]subscribed
 msgid "Subscribed"
 msgstr "מנוי"
 
-#: ../cache/locales.php:187
+#: [group]unsubscribe
 msgid "Unsubscribe"
 msgstr "בטל הרשמה"
 
-#: ../cache/locales.php:188
+#: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr ""
 
-#: ../cache/locales.php:189
+#: [group]unsubscribed
 msgid "Unsubscribed"
 msgstr ""
 
-#: ../cache/locales.php:190
+#: [group]share_label
 msgid "Make your membership to this group public to your friends"
 msgstr ""
 
-#: ../cache/locales.php:191
+#: [group]label_label
 msgid "Give a label for this group"
 msgstr ""
 
-#: ../cache/locales.php:192
+#: [group]sure
 msgid "Are you sure ?"
 msgstr "האם אתה בטוח ?"
 
-#: ../cache/locales.php:194
+#: [group]empty_text
 msgid "Discover, follow and share"
 msgstr ""
 
-#: ../cache/locales.php:195
+#: [group]empty
 msgid "Something bad happened to this group"
 msgstr ""
 
-#: ../cache/locales.php:196
+#: [group]config_saved
 msgid "Group configuration saved"
 msgstr "תצורת קבוצה נשמרה"
 
-#: ../cache/locales.php:197
+#: [group]delete_title
 msgid "Delete the group"
 msgstr ""
 
-#: ../cache/locales.php:198
-msgid ""
-"You are going to delete the following group. Please confirm your action."
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
 msgstr ""
 
-#: ../cache/locales.php:199
-msgid ""
-"It seems that this group doesn't exists anymore. Do you want to remove it "
-"from your subscriptions?"
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
-#: ../cache/locales.php:201 ../cache/locales.php:408
+#: [group]counter
+msgid "%s groups on this server"
+msgstr ""
+
+#: [group]subscriptions [statistics]subscriptions
 msgid "Subscriptions"
 msgstr "הרשמות"
 
-#: ../cache/locales.php:202 ../cache/locales.php:290
+#: [group]servers
+#, fuzzy
+msgid "Groups servers"
+msgstr "קבוצות"
+
+#: [group]search_server
+msgid "Search for a new server"
+msgstr ""
+
+#: [group]help_info1
+msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
+msgstr ""
+
+#: [group]help_info2
+msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
+msgstr ""
+
+#: [group]help_info3
+msgid "Done? You can now publish a new post in the Group by using the %s button."
+msgstr ""
+
+#: [group]help_info4
+msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
+msgstr ""
+
+#: [groups]empty_title
 msgid "Hello"
 msgstr "שלום"
 
-#: ../cache/locales.php:203 ../cache/locales.php:225 ../cache/locales.php:291
+#: [groups]contact_post [hello]contact_post [menu]contact_post
 msgid "Contact post"
 msgstr "פרסום איש קשר"
 
-#: ../cache/locales.php:204
-msgid ""
-"You don't have any subscriptions yet, select a group server above to start "
-"exploring."
+#: [groups]empty_text1
+msgid "You don't have any subscriptions yet, select a group server above to start exploring."
 msgstr ""
 
-#: ../cache/locales.php:205
+#: [groups]empty_text2
 msgid "Subscribe to your favorite feeds by bookmarking them."
 msgstr ""
 
-#: ../cache/locales.php:206
+#: [groups]subscriptions
 msgid "My Subscriptions"
 msgstr ""
 
-#: ../cache/locales.php:207
+#: [groups]add
 msgid "Create a new Group"
 msgstr ""
 
-#: ../cache/locales.php:208
+#: [groups]name
 msgid "Group name"
 msgstr ""
 
-#: ../cache/locales.php:209
+#: [groups]name_example
 msgid "My Little Pony - Fan Club"
 msgstr "אין כמו אבא שבעולם - מועדון מעריצים"
 
-#: ../cache/locales.php:210
+#: [groups]created
 msgid "Group created successfully"
 msgstr ""
 
-#: ../cache/locales.php:211
+#: [groups]deleted
 msgid "Group deleted successfully"
 msgstr ""
 
-#: ../cache/locales.php:212
+#: [groups]name_error
 msgid "Please provide a valid group name (4 characters minimum)"
 msgstr ""
 
-#: ../cache/locales.php:213
+#: [groups]no_creation
 msgid "You cannot create a new Group on this server"
 msgstr ""
 
-#: ../cache/locales.php:214
-#, php-format
+#: [groups]sub
 msgid "%s subscribers"
 msgstr ""
 
-#: ../cache/locales.php:215
-#, php-format
+#: [groups]num
 msgid "%s posts"
 msgstr ""
 
-#: ../cache/locales.php:216
+#: [groups]disco_error
+#, fuzzy
+msgid "This server doesn't exists"
+msgstr "שרת זה מארח %s חשבונות"
+
+#: [menu]all
 msgid "All"
 msgstr "הכל"
 
-#: ../cache/locales.php:219
+#: [menu]refresh
 msgid "Refresh all the streams"
 msgstr "רענון של כל הזרמים"
 
-#: ../cache/locales.php:220 ../cache/locales.php:402
-msgid "Search"
-msgstr "חיפוש"
+#: [roster]search
+#, fuzzy
+msgid "Search in your contacts"
+msgstr "שוחח עם האנשי קשר שלך"
 
-#: ../cache/locales.php:221
+#: [hello]active_contacts
+#, fuzzy
+msgid "Active contacts"
+msgstr "אנשי הקשר שלך"
+
+#: [hello]chat
 msgid "Go on the Chat page"
 msgstr ""
 
-#: ../cache/locales.php:222
+#: [hello]news [page]news
+msgid "News"
+msgstr "חדשות"
+
+#: [hello]news_page
 msgid "Read all theses articles on the News page"
 msgstr ""
 
-#: ../cache/locales.php:223
+#: [hello]blog_title
 msgid "Visit your public blog"
 msgstr ""
 
-#: ../cache/locales.php:224
+#: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
 msgstr ""
 
-#: ../cache/locales.php:226
+#: [hello]share_title
 msgid "Universal share button"
 msgstr ""
 
-#: ../cache/locales.php:227
-msgid ""
-"Bookmark or drag and drop the following button in your toolbar and use it on "
-"all the pages you want to share on Movim"
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
 msgstr ""
 
-#: ../cache/locales.php:228
+#: [hello]share_button
 msgid "Share on Movim"
 msgstr ""
 
-#: ../cache/locales.php:229
+#: [help]faq
 msgid "Frequently Asked Questions"
 msgstr "שאלות נפוצות"
 
-#: ../cache/locales.php:230
+#: [banner]title
 msgid "What do the little banners refer to ?"
 msgstr "מה כרזות קטנות אלו מייחסות ?"
 
-#: ../cache/locales.php:231
-msgid ""
-"Thanks to these five little banners, you can quickly identitfy the level of "
-"confdentiality applied to the information you provide."
-msgstr ""
-"הודות לחמשת כרזות אלו, באפשרותך לברר במהירות את רמת החיסיון שחלה על המידע "
-"אותו בחרת לספק."
+#: [banner]info1
+msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+msgstr "הודות לחמשת כרזות אלו, באפשרותך לברר במהירות את רמת החיסיון שחלה על המידע אותו בחרת לספק."
 
-#: ../cache/locales.php:232
+#: [banner]white
 msgid "White, only you can see the information"
 msgstr "לבן, רק לך האפשרות לראות את המידע"
 
-#: ../cache/locales.php:233
+#: [banner]green
 msgid "Green, you have chosen some contacts who can see your information"
 msgstr "ירוק, בחרת אנשי קשר מסוימים אשר יכולים לראות את המידע שלך"
 
 # רשימת אישי־הקשר
-#: ../cache/locales.php:234
+#: [banner]orange
 msgid "Orange, all your contact list can see your information"
 msgstr "כתום, כל רשימת הקשר שלך יכולה לראות את המידע שלך"
 
-#: ../cache/locales.php:235
+#: [banner]red
 msgid "Red, everybody in the XMPP network can see your information"
 msgstr "אדום, כל אחד ברשת התקשורת XMPP יכול לראות את המידע שלך"
 
 # כל האינטרנט יכול לראות
-#: ../cache/locales.php:236
+#: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "שחור, כל המרשתת יכולה לראות את המידע שלך"
 
-#: ../cache/locales.php:237
+#: [wiki]question
 msgid "Looking for some documentation ?"
 msgstr "מחפשים תיעוד ?"
 
-#: ../cache/locales.php:238
+#: [wiki]button
 msgid "Read the Wiki"
 msgstr "קרא את הויקי"
 
-#: ../cache/locales.php:239
+#: [ml]question
 msgid "Talk with us by email ?"
 msgstr "שוחח עמנו באמצעות דוא״ל ?"
 
-#: ../cache/locales.php:240
+#: [ml]button
 msgid "Join the Mailing List"
 msgstr "הצטרף לרשימת דיוור"
 
-#: ../cache/locales.php:241
+#: [chatroom]question
 msgid "Chat with the team ?"
 msgstr "שיחה עם הצוות ?"
 
-#: ../cache/locales.php:242
+#: [chatroom]button
 msgid "Join the Chatroom"
 msgstr "הצטרף לשיחת קבוצה"
 
-#: ../cache/locales.php:243
+#: [init]location
 msgid "Location node created"
 msgstr "צומת מיקום נוצר"
 
-#: ../cache/locales.php:244
+#: [init]bookmark
 msgid "Bookmark node created"
 msgstr "צומת סימנייה נוצר"
 
-#: ../cache/locales.php:245
+#: [init]vcard4
 msgid "Profile node created"
 msgstr "צומת דיוקן נוצר"
 
-#: ../cache/locales.php:246
+#: [init]avatar
 msgid "Avatar node created"
 msgstr "צומת אווטאר נוצר"
 
-#: ../cache/locales.php:247
+#: [init]subscriptions
 msgid "Subscriptions node created"
 msgstr "צומת הרשמות נוצר"
 
-#: ../cache/locales.php:248
+#: [init]microblog
 msgid "Microblog node created"
 msgstr "צומת מיקרו-בלוג נוצר"
 
-#: ../cache/locales.php:249
+#: [location]title
 msgid "Location"
 msgstr "מיקום"
 
-#: ../cache/locales.php:250
+#: [location]wrong_postition
 msgid "Wrong position"
 msgstr "מיקום שגוי"
 
-#: ../cache/locales.php:251
+#: [location]updated
 msgid "Location updated"
 msgstr "מיקום עודכן"
 
-#: ../cache/locales.php:252
+#: [location]update
 msgid "Update my position"
 msgstr "עדכן את המיקום שלי"
 
-#: ../cache/locales.php:253
+#: [login_anonymous]bad_username
+msgid "Bad nickname (between 4 and 40 characters)"
+msgstr ""
+
+#: [error]username
 msgid "Wrong username"
 msgstr "שם משתמש שגוי"
 
 # כתובת JID שגויה
-#: ../cache/locales.php:254
+#: [error]jid
 msgid "Invalid JID"
 msgstr "‫JID שגויה"
 
-#: ../cache/locales.php:255
+#: [error]empty_challenge
 msgid "Empty Challenge from the server"
 msgstr "רוקן הזמנה מן השרת"
 
-#: ../cache/locales.php:256
+#: [error]dns
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "שגיאת מתחם XMPP, חשבונך אינו כתובת JID תקינה"
 
-#: ../cache/locales.php:257
+#: [error]data_missings
 msgid "Some data are missing !"
 msgstr "חסר מידע מסוים !"
 
-#: ../cache/locales.php:258
+#: [error]wrong_password
 msgid "Wrong password"
 msgstr "סיסמה שגויה"
 
-#: ../cache/locales.php:259
+#: [error]internal
 msgid "Internal server error"
 msgstr "שגיאת שרת פנימית"
 
-#: ../cache/locales.php:260
+#: [error]session
 msgid "Session error"
 msgstr "שגיאת סשן"
 
-#: ../cache/locales.php:261
+#: [error]account_created
 msgid "Account successfully created"
 msgstr "חשבון נוצר בהצלחה"
 
-#: ../cache/locales.php:262 ../cache/locales.php:271
+#: [error]xmpp_unauthorized
+#, fuzzy
+msgctxt "[error]xmpp_unauthorized"
 msgid "Your XMPP server is unauthorized"
 msgstr "השרת של XMPP שלך אינו מורשה"
 
-#: ../cache/locales.php:263
+#: [error]mec_error
 msgid "The server takes too much time to respond"
 msgstr "לשרת לוקח יותר מדי זמן להגיב"
 
-#: ../cache/locales.php:264
+#: [error]too_old
 msgid "Your web browser is too old to use with Movim."
 msgstr "דפדפן הרשת שלך הינו ישן מידי בכדי לעשות שימוש עם Movim."
 
-#: ../cache/locales.php:265
-msgid ""
-"Movim cannot talk with the server, please try again later (Websocket "
-"connection error)"
+#: [error]websocket
+msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
 msgstr ""
 
-#: ../cache/locales.php:266
+#: [error]impossible
 msgid "Impossible login"
 msgstr ""
 
-#: ../cache/locales.php:267
+#: [error]title
 msgid "Oops!"
 msgstr "אופס!"
 
-#: ../cache/locales.php:268 ../cache/locales.php:449 ../cache/locales.php:455
+#: [error]default [visio]unknown_error
 msgid "Unknown error"
 msgstr "שגיאה לא ידועה"
 
-#: ../cache/locales.php:269
+#: [error]login_format
 msgid "Invalid username format"
 msgstr ""
 
-#: ../cache/locales.php:270
+#: [error]password_format
 msgid "Invalid password format"
 msgstr ""
 
-#: ../cache/locales.php:272
+#: [error]unauthorized
+#, fuzzy
+msgctxt "[error]unauthorized"
+msgid "Your XMPP server is unauthorized"
+msgstr "השרת של XMPP שלך אינו מורשה"
+
+#: [error]conflict
 msgid "A Movim session is already open on an other device"
 msgstr ""
 
-#: ../cache/locales.php:273
+#: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
 msgstr "‫Movim נכשלה לאמת. הזנת מידע שגוי"
 
-#: ../cache/locales.php:274
+#: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
 msgstr "מנגנון אימות לא נתמך על ידי Movim"
 
 # typo: authentication
-#: ../cache/locales.php:275
+#: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "אימות XMPP נכשל"
 
-#: ../cache/locales.php:276
-#, php-format
-msgid ""
-"You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s "
-"and your password"
-msgstr ""
-"באפשרותך להתחבר עם Facebook (צ׳אט בלבד) באמצעות "
-"%syour.id@chat.facebook.com%s וסיסמה"
-
-#: ../cache/locales.php:277
-#, php-format
-msgid "%sGmail accounts are also compatible%s but are not fully supported"
-msgstr "%sחשבונות Gmail מתאימים גם כן%s אך אינם נתמכים באופן מלא"
-
-#: ../cache/locales.php:278
-msgid "You can login using your favorite Jabber account"
-msgstr "באפשרותך להתחבר באמצעות חשבון Jabber המועדף עליך"
-
-#: ../cache/locales.php:279
-msgid "or with our demonstration account"
-msgstr "או בעזרת חשבון ניסיון שלנו"
-
-#: ../cache/locales.php:280 ../cache/locales.php:435
+#: [account]title [accounts]accounts_title
 msgid "Accounts"
 msgstr "חשבונות"
 
-#: ../cache/locales.php:281
+#: [form]username
 msgid "My address"
 msgstr "כתובת"
 
-#: ../cache/locales.php:283
+#: [form]create_one
 msgid "Create one !"
 msgstr "צור חשבון !"
 
-#: ../cache/locales.php:284
-msgid "No account yet ?"
-msgstr "אין חשבון עדיין ?"
-
-#: ../cache/locales.php:285
+#: [form]another_account
 msgid "Another account"
 msgstr "חשבון אחר"
 
-#: ../cache/locales.php:286
+#: [form]no_account
+msgid "No account yet ?"
+msgstr "אין חשבון עדיין ?"
+
+#: [form]whitelist.info
 msgid "You can login with accounts from theses servers"
 msgstr ""
 
-#: ../cache/locales.php:287
+#: [form]connected
 msgid "Connected"
 msgstr "מחובר"
 
-#: ../cache/locales.php:288
+#: [form]population
 msgid "Population"
 msgstr "אוכלוסיה"
 
-#: ../cache/locales.php:289
-msgid "Bad nickname (between 4 and 40 characters)"
+#: [menu]empty_title
+msgid "No news yet..."
 msgstr ""
 
-#: ../cache/locales.php:292
-msgid ""
-"Welcome on your news feed, here you will see all the posts published in the "
-"groups you have subscribed."
+#: [menu]empty
+msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
 msgstr ""
 
-#: ../cache/locales.php:293
+#: [menu]refresh
 msgid "Refreshing all the streams"
 msgstr "רענון של כל הזרמים"
 
-#: ../cache/locales.php:294
+#: [menu]public
 msgid "This post is public"
 msgstr ""
 
-#: ../cache/locales.php:295
+#: [affiliations]title
 msgid "Manage your members"
 msgstr "נהל את חבריך"
 
-#: ../cache/locales.php:296
+#: [affiliations]get
 msgid "Get the members"
 msgstr "השג את החברים"
 
-#: ../cache/locales.php:297
+#: [affiliations]saved
 msgid "Affiliations saved"
 msgstr "סינופים נשמרו"
 
-#: ../cache/locales.php:298
+#: [subscriptions]title
 msgid "Manage your subscriptions"
 msgstr "נהל את ההרשמות שלך"
 
-#: ../cache/locales.php:299
+#: [subscriptions]info
 msgid "Manage the subscriptions"
 msgstr "נהל את ההרשמות"
 
-#: ../cache/locales.php:300
+#: [subscriptions]get
 msgid "Get the subscriptions"
 msgstr "השג את ההרשמות"
 
-#: ../cache/locales.php:301
+#: [subscriptions]saved
 msgid "Subscriptions saved"
 msgstr "הרשמות נשמרו"
 
-#: ../cache/locales.php:302
+#: [notifs]title
 msgid "Pending Invitations"
 msgstr "הזמנות תלויות ועומדות"
 
-#: ../cache/locales.php:303
-#, php-format
+#: [notifs]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s רוצה לשוחח עמך"
 
-#: ../cache/locales.php:304
+#: [notifs]manage
 msgid "Manage"
 msgstr "נהל"
 
-#: ../cache/locales.php:305 ../cache/locales.php:338
+#: [post]news_feed
 msgid "News Feed"
 msgstr "הזנת חדשות"
 
-#: ../cache/locales.php:306 ../cache/locales.php:339
+#: [post]placeholder
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: ../cache/locales.php:307 ../cache/locales.php:340 ../cache/locales.php:482
+#: [post]preview [page]preview
 msgid "Preview"
 msgstr "תצוגה מקדימה"
 
-#: ../cache/locales.php:308 ../cache/locales.php:341 ../cache/locales.php:478
+#: [post]help [page]help
 msgid "Help"
 msgstr "עזרה"
 
-#: ../cache/locales.php:309 ../cache/locales.php:342
+#: [post]help_more
 msgid "More help"
 msgstr ""
 
-#: ../cache/locales.php:310 ../cache/locales.php:343
+#: [post]help_manual
 msgid "Markdown syntax manual"
 msgstr ""
 
-#: ../cache/locales.php:311 ../cache/locales.php:344 ../cache/locales.php:681
+#: [post]title
 msgid "Title"
 msgstr "כותרת"
 
-#: ../cache/locales.php:312 ../cache/locales.php:345
+#: [post]content
 msgid "Content"
 msgstr ""
 
-#: ../cache/locales.php:313 ../cache/locales.php:346
+#: [post]link
 msgid "Link"
 msgstr "קישור"
 
-#: ../cache/locales.php:314 ../cache/locales.php:347
+#: [post]tags
 msgid "Tags"
 msgstr ""
 
-#: ../cache/locales.php:315 ../cache/locales.php:348
+#: [post]valid_url [publish]valid_url
 msgid "Please enter a valid url"
 msgstr ""
 
-#: ../cache/locales.php:316 ../cache/locales.php:349
+#: [post]no_content_preview [publish]no_content_preview
 msgid "No content to preview"
 msgstr ""
 
-#: ../cache/locales.php:317 ../cache/locales.php:350 ../cache/locales.php:687
+#: [post]no_content [publish]no_content [post]empty
 msgid "No content"
 msgstr "אין איש קשר"
 
-#: ../cache/locales.php:318 ../cache/locales.php:351
+#: [post]published
 msgid "Post published"
 msgstr ""
 
-#: ../cache/locales.php:319 ../cache/locales.php:352
+#: [post]deleted
 msgid "Post deleted"
 msgstr ""
 
-#: ../cache/locales.php:320 ../cache/locales.php:353
+#: [post]gallery
 msgid "This picture will be added to your gallery"
 msgstr ""
 
-#: ../cache/locales.php:321 ../cache/locales.php:354
+#: [post]hot
 msgid "What's Hot"
 msgstr "מה חם"
 
-#: ../cache/locales.php:322 ../cache/locales.php:355
+#: [post]hot_text
+msgid "Posts recently published in Groups that you are not subscribed (yet)"
+msgstr ""
+
+#: [post]new [publish]new
 msgid "New post"
 msgstr ""
 
-#: ../cache/locales.php:323 ../cache/locales.php:357
-msgid ""
-"You can also use services like Imgur or Flickr to host your picture and "
-"paste the link here."
+#: [post]embed_tip
+msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
 msgstr ""
 
-#: ../cache/locales.php:324
-#, php-format
+#: [post]repost
 msgid "This is a re-post from %s"
 msgstr ""
 
-#: ../cache/locales.php:325
-#, php-format
+#: [post]repost_profile
 msgid "See %s profile"
 msgstr ""
 
-#: ../cache/locales.php:326
-msgid "Publish this post on your public feed?"
-msgstr ""
+#: [post]public
+#, fuzzy
+msgid "Publish this post publicly?"
+msgstr "האם דיוקן זה הינו פומבי ?"
 
-#: ../cache/locales.php:327
+#: [post]blog_add
 msgid "Post published on your blog"
 msgstr ""
 
-#: ../cache/locales.php:328
+#: [post]blog_remove
 msgid "Post removed from your blog"
 msgstr ""
 
-#: ../cache/locales.php:329 ../cache/locales.php:701
+#: [post]delete_title [post]delete
 msgid "Delete this post"
 msgstr "מחק את פרסום זה"
 
-#: ../cache/locales.php:330
+#: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr ""
 
-#: ../cache/locales.php:331
+#: [post]comments_disabled
 msgid "Comments disabled"
 msgstr ""
 
-#: ../cache/locales.php:332
+#: [post]comment_published
 msgid "Comment published"
 msgstr ""
 
-#: ../cache/locales.php:333
+#: [status]disconnect
 msgid "Disconnect"
 msgstr "התנתק"
 
-#: ../cache/locales.php:334
+#: [status]here
 msgid "Your status here !"
 msgstr "המצב שלך כאן !"
 
-#: ../cache/locales.php:335
+#: [status]updated
 msgid "Status updated"
 msgstr "מצב עודכן"
 
-#: ../cache/locales.php:336
+#: [status]status
 msgid "Status"
 msgstr "מצב"
 
-#: ../cache/locales.php:337
+#: [status]presence
 msgid "Presence"
 msgstr "נוכחות"
 
-#: ../cache/locales.php:356
+#: [status]online
+msgid "Online with Movim"
+msgstr ""
+
+#: [publish]title
 msgid "Publish"
 msgstr ""
 
-#: ../cache/locales.php:358
+#: [publish]attach
+msgid "Add a file or a picture to your post"
+msgstr ""
+
+#: [publish]no_publication
 msgid "You cannot publish a post on this Group"
 msgstr ""
 
-#: ../cache/locales.php:359
-msgid ""
-"Some fields have been filled in. Do you still want to go back and loose "
-"their content?"
+#: [publish]form_filled
+msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
 msgstr ""
 
-#: ../cache/locales.php:360
+#: [public_groups]shared
 msgid "Shared"
 msgstr "משותף"
 
-#: ../cache/locales.php:362
-#, php-format
+#: [public_groups]added
 msgid "%s has been added to your public groups"
 msgstr "%s התווסף אל הקבוצה הפומבית שלך"
 
-#: ../cache/locales.php:363
-#, php-format
-msgid "%s has been removed from your public groups"
-msgstr "%s הוסר/ה מן הקבוצות הפומביות שלך"
-
-#: ../cache/locales.php:364
+#: [rooms]add
 msgid "Add a chatroom"
 msgstr "הוסף חדר שיחה"
 
-#: ../cache/locales.php:365
+#: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
 msgstr ""
 
-#: ../cache/locales.php:366
+#: [rooms]empty_text2
 msgid "Add one by clicking on the add button in the header."
 msgstr ""
 
-#: ../cache/locales.php:367
+#: [chatrooms]title
 msgid "Chatrooms"
 msgstr "חדרי שיחה"
 
-#: ../cache/locales.php:370
+#: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "החדר המועדף עליי"
 
-#: ../cache/locales.php:374
-msgid "Remove a chatroom"
-msgstr "הסר חדר שיחה"
-
-#: ../cache/locales.php:375
-msgid ""
-"You are going to remove the following chatroom. Please confirm your action."
-msgstr ""
-
-#: ../cache/locales.php:378
+#: [chatrooms]users
 msgid "Users in the room"
 msgstr "משתמשים בתוך החדר"
 
-#: ../cache/locales.php:379
-msgid "Please enter a correct nickname (6 to 40 characters)"
+#: [chatrooms]bad_nickname
+msgid "Please enter a correct nickname (2 to 40 characters)"
 msgstr ""
 
-#: ../cache/locales.php:381
+#: [room]anonymous_title
 msgid "Public chatroom"
 msgstr ""
 
-#: ../cache/locales.php:382
+#: [room]no_room
 msgid "Please provide a room address"
 msgstr ""
 
-#: ../cache/locales.php:383
+#: [room]anonymous_text1
 msgid "You are currently logued as an anonymous user."
 msgstr ""
 
-#: ../cache/locales.php:384
-msgid ""
-"You can join using your own account or create one on the login page by "
-"loging out using the cross in the top-right corner."
+#: [room]anonymous_text2
+msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
 msgstr ""
 
-#: ../cache/locales.php:385
-#, php-format
+#: [room]anonymous_login
 msgid "Login on %s"
 msgstr ""
 
-#: ../cache/locales.php:386
+#: [room]nick
 msgid "Your nickname"
 msgstr ""
 
-#: ../cache/locales.php:387
+#: [roster]ungrouped
 msgid "Ungrouped"
 msgstr "ללא קבוצה"
 
-#: ../cache/locales.php:388
+#: [roster]show_disconnected
 msgid "Show disconnected contacts"
 msgstr "הצג אנשי קשר לא מחוברים"
 
-#: ../cache/locales.php:389
+#: [roster]hide_disconnected
 msgid "Hide disconnected contacts"
 msgstr "הסתר אנשי קשר לא מחוברים"
 
-#: ../cache/locales.php:390
-#, php-format
+#: [roster]show_group
 msgid "Show group %s"
 msgstr "הצג את קבוצה %s"
 
-#: ../cache/locales.php:391
-#, php-format
+#: [roster]hide_group
 msgid "Hide group %s"
 msgstr "הסתר את קבוצה %s"
 
-#: ../cache/locales.php:392
+#: [roster]jid_error
 msgid "Please enter a valid Jabber ID"
 msgstr "אנא הזן מזהה Jabber תקף"
 
-#: ../cache/locales.php:393
-msgid ""
-"No contacts ? You can add one using the + button bellow or going to the "
-"Explore page"
-msgstr ""
-"אין אנשי קשר ? באפשרותך להוסיף אחד באמצעות לחצן + מתחת או באמצעות מעבר אל "
-"עמוד גלה"
+#: [roster]no_contacts_title
+#, fuzzy
+msgid "No contacts ?"
+msgstr "אנשי הקשר שלך"
 
-#: ../cache/locales.php:394
+#: [roster]no_contacts_text
+#, fuzzy
+msgid "You can add one using the + button bellow"
+msgstr "אין אנשי קשר ? באפשרותך להוסיף אחד באמצעות לחצן + מתחת או באמצעות מעבר אל עמוד גלה"
+
+#: [roster]show_hide
 msgid "Show/Hide"
 msgstr "הצג/הסתר"
 
-#: ../cache/locales.php:395
+#: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
 msgstr "הזן מזהה Jabber של איש קשר."
 
-#: ../cache/locales.php:396
+#: [roster]add_contact_info2
 msgid "Press enter to validate."
 msgstr "לחץ Enter לשם וידוא"
 
-#: ../cache/locales.php:397
+#: [roster]jid
 msgid "JID"
 msgstr "JID"
 
-#: ../cache/locales.php:398
+#: [roster]results
 msgid "Results"
 msgstr "תוצאות"
 
-#: ../cache/locales.php:399
+#: [roster]added
 msgid "Contact added"
 msgstr "איש קשר התווסף"
 
-#: ../cache/locales.php:401
+#: [roster]deleted
 msgid "Contact deleted"
 msgstr "איש קשר נמחק"
 
-#: ../cache/locales.php:403
+#: [roster]search
+msgid "Search"
+msgstr "חיפוש"
+
+#: [share]error
 msgid "This is not a valid url"
 msgstr ""
 
-#: ../cache/locales.php:404
+#: [share]success
 msgid "Sharing the URL"
 msgstr ""
 
-#: ../cache/locales.php:405
+#: [statistics]title
 msgid "Statistics"
 msgstr "סטטיסטיקה"
 
-#: ../cache/locales.php:406
+#: [statistics]since
 msgid "Since"
 msgstr "מאז"
 
-#: ../cache/locales.php:407
+#: [statistics]sessions
 msgid "Sessions"
 msgstr "הפעלות"
 
-#: ../cache/locales.php:409
+#: [statistics]monthly_sub
 msgid "Monthly Subscriptions"
 msgstr "הרשמות חודשיות"
 
-#: ../cache/locales.php:410
+#: [statistics]monthly_sub_cum
 msgid "Monthly Subscriptions Cumulated"
 msgstr "הרשמות חודשיות שהצטברו"
 
-#: ../cache/locales.php:412
-msgid ""
-"Movim is a decentralized social network, before creating a new account you "
-"need to choose a server to register."
-msgstr ""
-"Movim הינה רשת חברתית מבוזרת (א-ריכוזית), טרם יצירת חשבון חדש עליך לבחור שרת "
-"להירשם אליו."
+#: [subscribe]info
+msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
+msgstr "Movim הינה רשת חברתית מבוזרת (א-ריכוזית), טרם יצירת חשבון חדש עליך לבחור שרת להירשם אליו."
 
-#: ../cache/locales.php:413
+#: [subscribe]server_question
 msgid "Your server here ?"
 msgstr "שרתך כאן ?"
 
-#: ../cache/locales.php:414
+#: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
 msgstr "צור עמנו קשר כדי להוסיף את שלך אל רשימת השרתים אשר נתמכת באופן רשמי"
 
-#: ../cache/locales.php:416
+#: [feed]nope
 msgid "No public feed for this contact"
 msgstr "אין ערוץ פומבי עבור איש קשר זה"
 
-#: ../cache/locales.php:417
+#: [feed]nope_contact
 msgid "No contact specified"
 msgstr "לא צוין איש קשר"
 
-#: ../cache/locales.php:418 ../cache/locales.php:473
+#: [upload]title
+#, fuzzy
+msgid "Upload a file"
+msgstr "העלאה"
+
+#: [upload]choose
+msgid "Choose a file to upload"
+msgstr ""
+
+#: [vcard]title [page]profile
 msgid "Profile"
 msgstr "דיוקן"
 
-#: ../cache/locales.php:419
+#: [vcard]updated
 msgid "Profile Updated"
 msgstr "דיוקן עודכן"
 
-#: ../cache/locales.php:420
+#: [vcard]not_updated
 msgid "Profile Not Updated"
 msgstr "דיוקן לא מעודכן"
 
-#: ../cache/locales.php:421
+#: [vcard]public
 msgid "Your profile is now public"
 msgstr "הדיוקן שלך הינו פומבי כעת"
 
-#: ../cache/locales.php:422
+#: [vcard]restricted
 msgid "Your profile is now restricted"
 msgstr "הדיוקן שלך הינו מוגבל כעת"
 
-#: ../cache/locales.php:436
+#: [general]nickname
+#, fuzzy
+msgctxt "[general]nickname"
+msgid "Nickname"
+msgstr "שם כינוי"
+
+#: [accounts]twitter
 msgid "Twitter"
 msgstr "Twitter"
 
-#: ../cache/locales.php:437
+#: [accounts]skype
 msgid "Skype"
 msgstr "Skype"
 
-#: ../cache/locales.php:438
+#: [accounts]yahoo
 msgid "Yahoo"
 msgstr "Yahoo"
 
-#: ../cache/locales.php:439
+#: [accounts]accounts_nickname
+#, fuzzy
+msgctxt "[accounts]accounts_nickname"
+msgid "Nickname"
+msgstr "שם כינוי"
+
+#: [accounts]accounts_yahoo
+#, fuzzy
+msgid "Yahoo Account"
+msgstr "חשבונות אחרים"
+
+#: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "רמת פרטיות"
 
-#: ../cache/locales.php:440
+#: [privacy]privacy_question
 msgid "Is this profile public ?"
 msgstr "האם דיוקן זה הינו פומבי ?"
 
-#: ../cache/locales.php:441
-msgid ""
-"Please pay attention ! By making your profile public, all the information "
-"listed above will be available for all the Movim users and on the whole "
-"Internet."
-msgstr ""
-"לצומת לבך ! בהופכך את דיוקנך לפומבי, כל המידע שמנוי מעלה יהיה זמין לכל "
-"המשתמשים של Movim וגם בכל המרשתת."
+#: [privacy]privacy_info
+msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+msgstr "לצומת לבך ! בהופכך את דיוקנך לפומבי, כל המידע שמנוי מעלה יהיה זמין לכל המשתמשים של Movim וגם בכל המרשתת."
 
-#: ../cache/locales.php:442
-msgid "Call"
-msgstr "צור קשר"
+#: [save]submit [button]submit
+msgid "Submit"
+msgstr "שלח"
 
-#: ../cache/locales.php:443
-msgid "Hang up"
-msgstr "נתק"
+#: [save]reset [button]reset
+msgid "Reset"
+msgstr "אפס"
 
-#: ../cache/locales.php:444
-msgid "Connection"
-msgstr "חיבור"
-
-#: ../cache/locales.php:445 ../cache/locales.php:451
+#: [visio]hung_up
 msgid "Hung up"
 msgstr "נותקה"
 
-#: ../cache/locales.php:446 ../cache/locales.php:452
+#: [visio]busy
 msgid "Your contact is busy"
 msgstr "איש הקשר שלך הינו עסוק"
 
-#: ../cache/locales.php:447 ../cache/locales.php:453
+#: [visio]declined
 msgid "Declined"
 msgstr "נדחתה"
 
-#: ../cache/locales.php:448 ../cache/locales.php:454
-msgid "Remote application incompatible"
-msgstr "יישום מרוחק לא תואם"
-
-#: ../cache/locales.php:450 ../cache/locales.php:456
+#: [visio]calling
 msgid "Is calling you"
 msgstr "מתקשר אליך"
 
-#: ../cache/locales.php:457
+#: [visio]call
+msgid "Call"
+msgstr "צור קשר"
+
+#: [visio]hang_up
+msgid "Hang up"
+msgstr "נתק"
+
+#: [visio]connection
+msgid "Connection"
+msgstr "חיבור"
+
+#: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
-msgstr ""
-"אין לך Javascript מאופשר.  עליך לאפשר Javascript בכדי להשתמש באתר זה."
+msgstr "אין לך Javascript מאופשר.  עליך לאפשר Javascript בכדי להשתמש באתר זה."
 
-#: ../cache/locales.php:458
-msgid ""
-"Movim is a kickass distributed social networking platform that protect your "
-"privacy an comes with a set of awesome features."
-msgstr ""
-"Movim היא פלטפורמת רשת חברתית מבוזרת אשר שומרת על הפרטיות שלך ומגיעה עם סט "
-"של תכונות נהדרות."
+#: [global]description
+msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgstr "Movim היא פלטפורמת רשת חברתית מבוזרת אשר שומרת על הפרטיות שלך ומגיעה עם סט של תכונות נהדרות."
 
-#: ../cache/locales.php:459
+#: [page]administration
 msgid "Administration"
 msgstr "ניהול"
 
-#: ../cache/locales.php:460
+#: [page]home
 msgid "Home"
 msgstr "בית"
 
-#: ../cache/locales.php:461
+#: [page]discover
 msgid "Discover"
 msgstr "גלה"
 
-#: ../cache/locales.php:462
+#: [page]explore
 msgid "Explore"
 msgstr "סייר"
 
-#: ../cache/locales.php:463
+#: [page]account_creation
 msgid "Account Creation"
 msgstr "יצירת חשבון"
 
-#: ../cache/locales.php:464
-msgid "News"
-msgstr "חדשות"
-
-#: ../cache/locales.php:465
+#: [page]avatar
 msgid "Avatar"
 msgstr "אווטאר"
 
-#: ../cache/locales.php:467
+#: [page]chats
 msgid "Chats"
 msgstr "שיחות"
 
-#: ../cache/locales.php:470
+#: [page]server
 msgid "Server"
 msgstr "שרת"
 
-#: ../cache/locales.php:471
+#: [page]public_groups
 msgid "Public Groups"
 msgstr "קבוצות פומביות"
 
-#: ../cache/locales.php:472
+#: [page]viewer
 msgid "Viewer"
 msgstr "צופה"
 
-#: ../cache/locales.php:474
+#: [page]media
 msgid "Media"
 msgstr "מדיה"
 
-#: ../cache/locales.php:475
+#: [page]blog
 msgid "Blog"
 msgstr "בלוג"
 
-#: ../cache/locales.php:476
+#: [page]about
 msgid "About"
 msgstr "אודות"
 
-#: ../cache/locales.php:477
+#: [page]login
 msgid "Login"
 msgstr "כניסה"
 
 # הזנה
-#: ../cache/locales.php:479
+#: [page]feed
 msgid "Feed"
 msgstr "ערוץ"
 
-#: ../cache/locales.php:481
+#: [page]gallery
 msgid "Gallery"
 msgstr "גלריה"
 
-#: ../cache/locales.php:483
+#: [page]visio
 msgid "Visio-conference"
 msgstr "ועידת וידאו"
 
-#: ../cache/locales.php:484
+#: [page]pods
 msgid "Pods"
 msgstr "שרתים"
 
-#: ../cache/locales.php:485
+#: [page]share
 msgid "Share"
 msgstr ""
 
-#: ../cache/locales.php:486
+#: [page]room
 msgid "Room"
 msgstr ""
 
-#: ../cache/locales.php:487
-#, php-format
+#: [error]error
 msgid "Error: %s"
 msgstr "שגיאה: %s"
 
-#: ../cache/locales.php:488
-#, php-format
+#: [error]cannot_load_file
 msgid "Cannot load file '%s'"
 msgstr "לא ניתן לטעון קובץ '%s'"
 
-#: ../cache/locales.php:489
-#, php-format
+#: [error]route
 msgid "Route error, please set all the parameters for the page %s"
 msgstr "שגיאת ניתוב, אנא הגדר את כל הפרמטרים עבור העמוד %s"
 
-#: ../cache/locales.php:490
-#, php-format
+#: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr "וידג׳ט מבוקש '%s' לא קיים."
 
-#: ../cache/locales.php:491
-#, php-format
+#: [error]widget_call_error
 msgid "Requested event '%s' not registered."
 msgstr "אירוע מבוקש '%s' לא רשום."
 
-#: ../cache/locales.php:492
+#: [error]whoops
 msgid "Whoops!"
 msgstr "אופס!"
 
-#: ../cache/locales.php:493
+#: [error]media_not_found
 msgid "It seem that you don't have any pictures here?"
 msgstr "נראה כי אין לך שום תמונה כאן?"
 
-#: ../cache/locales.php:494
+#: [error]media_ask_upload
 msgid "You can try to upload a couple by going to the Media page"
 msgstr ""
 
-#: ../cache/locales.php:495
-#, php-format
+#: [title]about
 msgid "%s - About"
 msgstr "%s - אודות"
 
-#: ../cache/locales.php:496
-#, php-format
+#: [title]account
 msgid "%s - Account"
 msgstr "%s - חשבון"
 
-#: ../cache/locales.php:497
-#, php-format
+#: [title]administration
 msgid "%s - Administration Panel"
 msgstr "%s - לוח ניהול"
 
-#: ../cache/locales.php:498
-#, php-format
+#: [title]blog
 msgid "%s - Blog"
 msgstr "%s - בלוג"
 
-#: ../cache/locales.php:499
-#, php-format
+#: [title]configuration
 msgid "%s - Configuration"
 msgstr "‏‏%s - תצורה"
 
-#: ../cache/locales.php:500
-#, php-format
+#: [title]discover
 msgid "%s - Discover"
 msgstr "%s - לגלות"
 
-#: ../cache/locales.php:501
-#, php-format
+#: [title]explore
 msgid "%s - Explore"
 msgstr "%s - סייר"
 
-#: ../cache/locales.php:502
-#, php-format
+#: [title]help
 msgid "%s - Help Page"
 msgstr "‏‏%s - עמוד עזרה"
 
-#: ../cache/locales.php:503
-#, php-format
+#: [title]login
 msgid "%s - Login to Movim"
 msgstr "‏‏%s - התחברות אל Movim"
 
-#: ../cache/locales.php:504
-#, php-format
+#: [title]main
 msgid "%s - Welcome to Movim"
 msgstr "‏‏%s - ברוך בואך אל Movim"
 
-#: ../cache/locales.php:505
-#, php-format
+#: [title]media
 msgid "%s - Media"
 msgstr "%s - מדיה"
 
-#: ../cache/locales.php:506
-#, php-format
+#: [title]news
 msgid "%s - News"
 msgstr "%s - חדשות"
 
-#: ../cache/locales.php:507
-#, php-format
+#: [title]node_configuration
 msgid "%s - Group Configuration"
 msgstr "%s - תצורת קבוצה"
 
-#: ../cache/locales.php:508
-#, php-format
+#: [title]node
 msgid "%s - Group"
 msgstr "%s - קבוצה"
 
-#: ../cache/locales.php:509
-#, php-format
+#: [title]not_found
 msgid "%s - 404"
 msgstr ""
 
-#: ../cache/locales.php:510
-#, php-format
+#: [title]profile
 msgid "%s - Profile"
 msgstr "‏‏%s - דיוקן"
 
-#: ../cache/locales.php:511
-#, php-format
+#: [title]server
 msgid "%s - Server"
 msgstr "%s - שרת"
 
-#: ../cache/locales.php:512
+#: [button]validate
 msgid "Validate"
 msgstr "מתן תוקף"
 
-#: ../cache/locales.php:513
+#: [button]refresh
 msgid "Refresh"
 msgstr "רענן"
 
-#: ../cache/locales.php:514
+#: [button]add
 msgid "Add"
 msgstr "הוסף"
 
-#: ../cache/locales.php:515
+#: [button]delete
 msgid "Delete"
 msgstr "מחק"
 
-#: ../cache/locales.php:516
-msgid "Remove"
-msgstr "הסר"
-
-#: ../cache/locales.php:517
+#: [button]cancel
 msgid "Cancel"
 msgstr "ביטול"
 
-#: ../cache/locales.php:518
+#: [button]close
 msgid "Close"
 msgstr "סגור"
 
-#: ../cache/locales.php:519
+#: [button]update
 msgid "Update"
 msgstr "עדכן"
 
-#: ../cache/locales.php:520
+#: [button]updating
 msgid "Updating"
 msgstr "מעדכן כעת"
 
-#: ../cache/locales.php:521
-msgid "Submit"
-msgstr "שלח"
-
-#: ../cache/locales.php:522
+#: [button]submitting
 msgid "Submitting"
 msgstr "שולח כעת"
 
-#: ../cache/locales.php:523
-msgid "Reset"
-msgstr "אפס"
-
-#: ../cache/locales.php:524
+#: [button]register
 msgid "Register"
 msgstr "הירשם"
 
-#: ../cache/locales.php:525
+#: [button]unregister
 msgid "Unregister"
 msgstr "בטל רישום"
 
-#: ../cache/locales.php:526
+#: [button]save
 msgid "Save"
 msgstr "שמור"
 
-#: ../cache/locales.php:527
+#: [button]clear
 msgid "Clear"
 msgstr "טהר"
 
-#: ../cache/locales.php:528
+#: [button]upload
 msgid "Upload"
 msgstr "העלאה"
 
 # היכנסו פנימה!
 # היכנס/י
-#: ../cache/locales.php:529
+#: [button]come_in
 msgid "Come in!"
 msgstr "כניסה!"
 
-#: ../cache/locales.php:530
+#: [button]connecting
 msgid "Connecting"
 msgstr "כעת מתחבר"
 
-#: ../cache/locales.php:531
+#: [button]bool_yes
 msgid "Yes"
 msgstr "כן"
 
-#: ../cache/locales.php:532
+#: [button]bool_no
 msgid "No"
 msgstr "לא"
 
-#: ../cache/locales.php:534
+#: [button]return
 msgid "Return"
 msgstr "חזור"
 
-#: ../cache/locales.php:535
+#: [button]accept
 msgid "Accept"
 msgstr "קבלה"
 
-#: ../cache/locales.php:536
+#: [button]refuse
 msgid "Refuse"
 msgstr ""
 
-#: ../cache/locales.php:537
+#: [button]next
 msgid "Next"
 msgstr ""
 
-#: ../cache/locales.php:538
+#: [button]previous
 msgid "Previous"
 msgstr ""
 
-#: ../cache/locales.php:539
-#, php-format
+#: [step]step
 msgid "Step %s"
 msgstr "צעד %s"
 
-#: ../cache/locales.php:542
+#: [day]title
 msgid "Day"
 msgstr "יום"
 
-#: ../cache/locales.php:543
+#: [day]monday
 msgid "Monday"
 msgstr "יום שני"
 
-#: ../cache/locales.php:544
+#: [day]tuesday
 msgid "Tuesday"
 msgstr "יום שלישי"
 
-#: ../cache/locales.php:545
+#: [day]wednesday
 msgid "Wednesday"
 msgstr "יום רביעי"
 
-#: ../cache/locales.php:546
+#: [day]thursday
 msgid "Thursday"
 msgstr "יום חמישי"
 
-#: ../cache/locales.php:547
+#: [day]friday
 msgid "Friday"
 msgstr "יום שישי"
 
-#: ../cache/locales.php:548
+#: [day]saturday
 msgid "Saturday"
 msgstr "יום שבת"
 
-#: ../cache/locales.php:549
+#: [day]sunday
 msgid "Sunday"
 msgstr "יום ראשון"
 
 # אין
-#: ../cache/locales.php:550 ../cache/locales.php:559
+#: [gender]nil
+#, fuzzy
+msgctxt "[gender]nil"
 msgid "None"
 msgstr "ללא"
 
-#: ../cache/locales.php:551
+#: [gender]male
 msgid "Male"
 msgstr "זכר"
 
-#: ../cache/locales.php:552
+#: [gender]female
 msgid "Female"
 msgstr "נקבה"
 
-#: ../cache/locales.php:553
+#: [gender]other
 msgid "Other"
 msgstr "אחר"
 
-#: ../cache/locales.php:554
+#: [client]bot
 msgid "Bot"
 msgstr "בוט"
 
-#: ../cache/locales.php:555
+#: [client]desktop
 msgid "Desktop"
 msgstr "שולחן עבודה"
 
-#: ../cache/locales.php:556
+#: [client]phone
 msgid "Phone"
 msgstr "טלפון"
 
-#: ../cache/locales.php:557
+#: [client]web
 msgid "Web"
 msgstr "רשת"
 
-#: ../cache/locales.php:558
+#: [client]registered
 msgid "Registered"
 msgstr "רשום"
 
-#: ../cache/locales.php:560
+# אין
+#: [marital]nil
+#, fuzzy
+msgctxt "[marital]nil"
+msgid "None"
+msgstr "ללא"
+
+#: [marital]single
 msgid "Single"
 msgstr "רווק/ה"
 
-#: ../cache/locales.php:561
+#: [marital]relationship
 msgid "In a relationship"
 msgstr "במערכת יחסים"
 
-#: ../cache/locales.php:562
+#: [marital]married
 msgid "Married"
 msgstr "נישואים"
 
-#: ../cache/locales.php:563
+#: [marital]divorced
 msgid "Divorced"
 msgstr "גרוש/ה"
 
-#: ../cache/locales.php:564
+#: [marital]widowed
 msgid "Widowed"
 msgstr "אלמן/ה"
 
-#: ../cache/locales.php:565
+#: [marital]cohabiting
 msgid "Cohabiting"
 msgstr "חיים במשותף"
 
 # שותפות אזרחית
-#: ../cache/locales.php:566
+#: [marital]union
 msgid "Civil Union"
 msgstr "נישואים אזרחיים"
 
-#: ../cache/locales.php:567
+#: [flag]white
 msgid "Not shared"
 msgstr "לא שותף"
 
-#: ../cache/locales.php:568
+#: [flag]green
 msgid "Shared with one contact"
 msgstr "שותף עם איש קשר אחד"
 
-#: ../cache/locales.php:569
+#: [flag]orange
 msgid "Shared with all contacts"
 msgstr "שותף עם כל אנשי הקשר"
 
-#: ../cache/locales.php:570
+#: [flag]red
 msgid "Shared with the XMPP network"
 msgstr "שותף עם רשת התקשורת XMPP"
 
-#: ../cache/locales.php:571
+#: [flag]black
 msgid "Shared with the whole Internet"
 msgstr "שותף עם כל המרשתת"
 
-#: ../cache/locales.php:572
+#: [presence]online
 msgid "Online"
 msgstr "מקוון"
 
-#: ../cache/locales.php:573
+#: [presence]away
 msgid "Away"
 msgstr "נעדר"
 
-#: ../cache/locales.php:574
+#: [presence]dnd
 msgid "Do Not Disturb"
 msgstr "נא לא להפריע"
 
-#: ../cache/locales.php:575
+#: [presence]xa
 msgid "Extended Away"
 msgstr "לא זמין"
 
-#: ../cache/locales.php:576
+#: [presence]offline
 msgid "Offline"
 msgstr "לא מקוון"
 
-#: ../cache/locales.php:577
+#: [presence]error
 msgid "Error"
 msgstr "שגיאה"
 
-#: ../cache/locales.php:578
+#: [mood]afraid
 msgid "afraid"
 msgstr "מפחד"
 
-#: ../cache/locales.php:579
+#: [mood]amazed
 msgid "amazed"
 msgstr "נדהם"
 
-#: ../cache/locales.php:580
+#: [mood]amorous
 msgid "amorous"
 msgstr "חושק"
 
-#: ../cache/locales.php:581
+#: [mood]angry
 msgid "angry"
 msgstr "כועס"
 
-#: ../cache/locales.php:582
+#: [mood]annoyed
 msgid "annoyed"
 msgstr "נרגז"
 
-#: ../cache/locales.php:583
+#: [mood]anxious
 msgid "anxious"
 msgstr "חרד"
 
-#: ../cache/locales.php:584
+#: [mood]aroused
 msgid "aroused"
 msgstr "מרוגש"
 
-#: ../cache/locales.php:585
+#: [mood]ashamed
 msgid "ashamed"
 msgstr "מתבייש"
 
-#: ../cache/locales.php:586
+#: [mood]bored
 msgid "bored"
 msgstr "משועמם"
 
-#: ../cache/locales.php:587
+#: [mood]brave
 msgid "brave"
 msgstr "אמיץ"
 
-#: ../cache/locales.php:588
+#: [mood]calm
 msgid "calm"
 msgstr "רגוע"
 
-#: ../cache/locales.php:589
+#: [mood]cautious
 msgid "cautious"
 msgstr "זהיר"
 
-#: ../cache/locales.php:590
+#: [mood]cold
 msgid "cold"
 msgstr "קר"
 
-#: ../cache/locales.php:591
+#: [mood]confident
 msgid "confident"
 msgstr "סמוך"
 
-#: ../cache/locales.php:592
+#: [mood]confused
 msgid "confused"
 msgstr "מבולבל"
 
-#: ../cache/locales.php:593
+#: [mood]contemplative
 msgid "contemplative"
 msgstr "ספקולטיבי"
 
-#: ../cache/locales.php:594
+#: [mood]contented
 msgid "contented"
 msgstr "מסופק"
 
-#: ../cache/locales.php:595
+#: [mood]cranky
 msgid "cranky"
 msgstr "נרגז"
 
-#: ../cache/locales.php:596
+#: [mood]crazy
 msgid "crazy"
 msgstr "מטורף"
 
-#: ../cache/locales.php:597
+#: [mood]creative
 msgid "creative"
 msgstr "יצירתי"
 
-#: ../cache/locales.php:598
+#: [mood]curious
 msgid "curious"
 msgstr "סקרן"
 
-#: ../cache/locales.php:599
+#: [mood]dejected
 msgid "dejected"
 msgstr "מיואש"
 
-#: ../cache/locales.php:600
+#: [mood]depressed
 msgid "depressed"
 msgstr "מדוכא"
 
-#: ../cache/locales.php:601
+#: [mood]disappointed
 msgid "disappointed"
 msgstr "מאוכזב"
 
-#: ../cache/locales.php:602
+#: [mood]disgusted
 msgid "disgusted"
 msgstr "נגעל"
 
-#: ../cache/locales.php:603
+#: [mood]dismayed
 msgid "dismayed"
 msgstr "נחרד"
 
-#: ../cache/locales.php:604
+#: [mood]distracted
 msgid "distracted"
 msgstr "טרוד"
 
-#: ../cache/locales.php:605
+#: [mood]embarrassed
 msgid "embarrassed"
 msgstr "נבוך"
 
-#: ../cache/locales.php:606
+#: [mood]envious
 msgid "envious"
 msgstr "מקנא"
 
-#: ../cache/locales.php:607
+#: [mood]excited
 msgid "excited"
 msgstr "נרגש"
 
-#: ../cache/locales.php:608
+#: [mood]flirtatious
 msgid "flirtatious"
 msgstr "פלרטטני"
 
-#: ../cache/locales.php:609
+#: [mood]frustated
 msgid "frustated"
 msgstr "מתוסכל"
 
-#: ../cache/locales.php:610
+#: [mood]grateful
 msgid "grateful"
 msgstr "נעים"
 
-#: ../cache/locales.php:611
+#: [mood]grieving
 msgid "grieving"
 msgstr "מתאבל"
 
-#: ../cache/locales.php:612
+#: [mood]grumpy
 msgid "grumpy"
 msgstr "זועף"
 
-#: ../cache/locales.php:613
+#: [mood]guilty
 msgid "guilty"
 msgstr "אשם"
 
-#: ../cache/locales.php:614
+#: [mood]happy
 msgid "happy"
 msgstr "שמח"
 
-#: ../cache/locales.php:615
+#: [mood]hopeful
 msgid "hopeful"
 msgstr "אופטימי"
 
-#: ../cache/locales.php:616
+#: [mood]hot
 msgid "hot"
 msgstr "לוהט"
 
-#: ../cache/locales.php:617
+#: [mood]humbled
 msgid "humbled"
 msgstr "מוכנע"
 
-#: ../cache/locales.php:618
+#: [mood]humiliated
 msgid "humiliated"
 msgstr "מושפל"
 
-#: ../cache/locales.php:619
+#: [mood]hungry
 msgid "hungry"
 msgstr "רעב"
 
-#: ../cache/locales.php:620
+#: [mood]hurt
 msgid "hurt"
 msgstr "פגוע"
 
-#: ../cache/locales.php:621
+#: [mood]impressed
 msgid "impressed"
 msgstr "מתפעל"
 
-#: ../cache/locales.php:622
+#: [mood]in_awe
 msgid "in awe"
 msgstr "מפוחד"
 
-#: ../cache/locales.php:623
+#: [mood]in_love
 msgid "in love"
 msgstr "מאוהב"
 
-#: ../cache/locales.php:624
+#: [mood]indignant
 msgid "indignant"
 msgstr "ממורמר"
 
-#: ../cache/locales.php:625
+#: [mood]interested
 msgid "interested"
 msgstr "מתעניין"
 
-#: ../cache/locales.php:626
+#: [mood]intoxicated
 msgid "intoxicated"
 msgstr "שיכור"
 
-#: ../cache/locales.php:627
+#: [mood]invincible
 msgid "invincible"
 msgstr "בלתי מנוצח"
 
-#: ../cache/locales.php:628
+#: [mood]jealous
 msgid "jealous"
 msgstr "מקנא"
 
-#: ../cache/locales.php:629
+#: [mood]lonely
 msgid "lonely"
 msgstr "בודד"
 
-#: ../cache/locales.php:630
+#: [mood]lost
 msgid "lost"
 msgstr "אבוד"
 
-#: ../cache/locales.php:631
+#: [mood]lucky
 msgid "lucky"
 msgstr "בר מזל"
 
-#: ../cache/locales.php:632
+#: [mood]mean
 msgid "mean"
 msgstr "דל"
 
-#: ../cache/locales.php:633
+#: [mood]moody
 msgid "moody"
 msgstr "מדוכדך"
 
-#: ../cache/locales.php:634
+#: [mood]nervous
 msgid "nervous"
 msgstr "עצבני"
 
-#: ../cache/locales.php:635
+#: [mood]neutral
 msgid "neutral"
 msgstr "אדיש"
 
-#: ../cache/locales.php:636
+#: [mood]offended
 msgid "offended"
 msgstr "נעלב"
 
-#: ../cache/locales.php:637
+#: [mood]outraged
 msgid "outraged"
 msgstr "מזועזע"
 
-#: ../cache/locales.php:638
+#: [mood]playful
 msgid "playful"
 msgstr "שובב"
 
-#: ../cache/locales.php:639
+#: [mood]proud
 msgid "proud"
 msgstr "יהיר"
 
-#: ../cache/locales.php:640
+#: [mood]relaxed
 msgid "relaxed"
 msgstr "רגוע"
 
-#: ../cache/locales.php:641
+#: [mood]relieved
 msgid "relieved"
 msgstr "משוחרר"
 
-#: ../cache/locales.php:642
-msgid "remorseful"
-msgstr "מתייסר"
-
-#: ../cache/locales.php:643
+#: [mood]restless
 msgid "restless"
 msgstr "חסר מנוחה"
 
-#: ../cache/locales.php:644
+#: [mood]sad
 msgid "sad"
 msgstr "עצוב"
 
-#: ../cache/locales.php:645
+#: [mood]sarcastic
 msgid "sarcastic"
 msgstr "עוקצני"
 
-#: ../cache/locales.php:646
+#: [mood]satisfied
 msgid "satisfied"
 msgstr "מרוצה"
 
-#: ../cache/locales.php:647
+#: [mood]serious
 msgid "serious"
 msgstr "רציני"
 
-#: ../cache/locales.php:648
+#: [mood]shocked
 msgid "shocked"
 msgstr "הלום"
 
-#: ../cache/locales.php:649
+#: [mood]shy
 msgid "shy"
 msgstr "ביישן"
 
-#: ../cache/locales.php:650
+#: [mood]sick
 msgid "sick"
 msgstr "חולה"
 
-#: ../cache/locales.php:651
+#: [mood]sleepy
 msgid "sleepy"
 msgstr "ישנוני"
 
-#: ../cache/locales.php:652
+#: [mood]spontaneous
 msgid "spontaneous"
 msgstr "ספונטני"
 
-#: ../cache/locales.php:653
+#: [mood]stressed
 msgid "stressed"
 msgstr "לחוץ"
 
-#: ../cache/locales.php:654
+#: [mood]strong
 msgid "strong"
 msgstr "חזק"
 
-#: ../cache/locales.php:655
+#: [mood]surprised
 msgid "surprised"
 msgstr "מופתע"
 
-#: ../cache/locales.php:656
+#: [mood]thankful
 msgid "thankful"
 msgstr "אסיר תודה"
 
-#: ../cache/locales.php:657
+#: [mood]thirsty
 msgid "thirsty"
 msgstr "צמא"
 
-#: ../cache/locales.php:658
+#: [mood]tired
 msgid "tired"
 msgstr "עייף"
 
-#: ../cache/locales.php:659
+#: [mood]undefined
 msgid "undefined"
 msgstr "מעורפל"
 
-#: ../cache/locales.php:660
+#: [mood]weak
 msgid "weak"
 msgstr "חלש"
 
-#: ../cache/locales.php:661
+#: [mood]worried
 msgid "worried"
 msgstr "מודאג"
 
-#: ../cache/locales.php:662
+#: [month]title
 msgid "Month"
 msgstr "חודש"
 
-#: ../cache/locales.php:663
+#: [month]january
 msgid "January"
 msgstr "ינואר"
 
-#: ../cache/locales.php:664
+#: [month]february
 msgid "February"
 msgstr "פברואר"
 
-#: ../cache/locales.php:665
+#: [month]march
 msgid "March"
 msgstr "מרץ"
 
-#: ../cache/locales.php:666
+#: [month]april
 msgid "April"
 msgstr "אפריל"
 
-#: ../cache/locales.php:667
+#: [month]may
 msgid "May"
 msgstr "מאי"
 
-#: ../cache/locales.php:668
+#: [month]june
 msgid "June"
 msgstr "יוני"
 
-#: ../cache/locales.php:669
+#: [month]july
 msgid "July"
 msgstr "יולי"
 
-#: ../cache/locales.php:670
+#: [month]august
 msgid "August"
 msgstr "אוגוסט"
 
-#: ../cache/locales.php:671
+#: [month]september
 msgid "September"
 msgstr "ספטמבר"
 
-#: ../cache/locales.php:672
+#: [month]october
 msgid "October"
 msgstr "אוקטובר"
 
-#: ../cache/locales.php:673
+#: [month]november
 msgid "November"
 msgstr "נובמבר"
 
-#: ../cache/locales.php:674
+#: [month]december
 msgid "December"
 msgstr "דצמבר"
 
-#: ../cache/locales.php:675
+#: [year]title
 msgid "Year"
 msgstr "שנה"
 
-#: ../cache/locales.php:676
+#: [date]today
 msgid "Today"
 msgstr "היום"
 
-#: ../cache/locales.php:677
+#: [date]tomorrow
 msgid "Tomorrow"
 msgstr "מחר"
 
-#: ../cache/locales.php:678
+#: [date]yesterday
 msgid "Yesterday"
 msgstr "אתמול"
 
-#: ../cache/locales.php:679
-#, php-format
-msgid " %d days ago"
+#: [date]ago
+#, fuzzy
+msgid "%d days ago"
 msgstr " לפני %d ימים"
 
-#: ../cache/locales.php:680
+#: [date]day
 msgid "day"
 msgstr "יום"
 
-#: ../cache/locales.php:682
+#: [post]whats_new
 msgid "What's new ?"
 msgstr "מה חדש ?"
 
-#: ../cache/locales.php:683
+#: [post]place
 msgid "Place"
 msgstr "מיקום"
 
-#: ../cache/locales.php:684
+#: [post]by
 msgid "by"
 msgstr "על ידי"
 
-#: ../cache/locales.php:685
+#: [post]geolocalisation
 msgid "Geolocalisation"
 msgstr ""
 
-#: ../cache/locales.php:686
+#: [post]email
 msgid "email"
 msgstr "דוא״ל"
 
-#: ../cache/locales.php:688
+#: [post]no_comments
 msgid "No comments yet"
 msgstr ""
 
-#: ../cache/locales.php:689
+#: [post]no_comments_stream
 msgid "No comments stream"
 msgstr "אין זרם תגובות"
 
-#: ../cache/locales.php:690
+#: [post]no_load
 msgid "Your feed cannot be loaded."
 msgstr "ערוצך לא יכול להיטען."
 
-#: ../cache/locales.php:691
+#: [post]older
 msgid "Get older posts"
 msgstr "השג רשומות נושנות"
 
-#: ../cache/locales.php:692
-#, php-format
+#: [post]new_items
 msgid "%s new items"
 msgstr "%s פריטים חדשים"
 
-#: ../cache/locales.php:693
+#: [post]comment_error
 msgid "Comment publication error"
 msgstr "שגיאת פרסום תגובה"
 
-#: ../cache/locales.php:694
+#: [post]comments_older
 msgid "Show the older comments"
 msgstr "הצג את התגובות הישנות יותר"
 
-#: ../cache/locales.php:695
-msgid "Loading comments ..."
+#: [post]comments_loading
+#, fuzzy
+msgid "Loading comments..."
 msgstr "כעת טוען תגובות ..."
 
-#: ../cache/locales.php:696
+#: [post]comments_get
 msgid "Get the comments"
 msgstr "השג תגובות"
 
-#: ../cache/locales.php:697
+#: [post]comment_add
 msgid "Add a comment"
 msgstr "הוסף תגובה"
 
-#: ../cache/locales.php:698
+#: [post]share
 msgid "Share with"
 msgstr "שתף בעזרת"
 
-#: ../cache/locales.php:699
+#: [post]share_everyone
 msgid "Everyone"
 msgstr "כולם"
 
-#: ../cache/locales.php:700
+#: [post]share_your_contacts
 msgid "Your contacts"
 msgstr "אנשי הקשר שלך"
 
-#: ../cache/locales.php:702
+#: [post]updated
 msgid "Updated"
 msgstr "עודכן"
 
-#: ../cache/locales.php:703
+#: [post]content_not_found
 msgid "Content not found"
 msgstr "תוכן לא נמצא"
 
-#: ../cache/locales.php:704
+#: [post]default_title
 msgid "Contact publication"
 msgstr "פרסום איש קשר"
 
-#: ../cache/locales.php:705
+#: [post]comments
 msgid "Comments"
 msgstr ""
 
-#: ../cache/locales.php:706
+#: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 
-#: ../cache/locales.php:707
+#: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Environment"
+#~ msgstr "סביבה"
+
+#~ msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
+#~ msgstr "באפשרותך להתחבר עם Facebook (צ׳אט בלבד) באמצעות %syour.id@chat.facebook.com%s וסיסמה"
+
+#~ msgid "%sGmail accounts are also compatible%s but are not fully supported"
+#~ msgstr "%sחשבונות Gmail מתאימים גם כן%s אך אינם נתמכים באופן מלא"
+
+#~ msgid "You can login using your favorite Jabber account"
+#~ msgstr "באפשרותך להתחבר באמצעות חשבון Jabber המועדף עליך"
+
+#~ msgid "or with our demonstration account"
+#~ msgstr "או בעזרת חשבון ניסיון שלנו"
+
+#~ msgid "%s has been removed from your public groups"
+#~ msgstr "%s הוסר/ה מן הקבוצות הפומביות שלך"
+
+#~ msgid "Remove a chatroom"
+#~ msgstr "הסר חדר שיחה"
+
+#~ msgid "Remote application incompatible"
+#~ msgstr "יישום מרוחק לא תואם"
+
+#~ msgid "Remove"
+#~ msgstr "הסר"
+
+#~ msgid "remorseful"
+#~ msgstr "מתייסר"
 
 #~ msgid "Actual version : "
 #~ msgstr "גרסה ממשית : "
@@ -2620,11 +2778,9 @@ msgstr ""
 #~ msgid "Update your PHP version or contact your server administrator"
 #~ msgstr "נא לעדכן גרסת PHP או ליצור קשר עם מנהל שרתך"
 
-#, php-format
 #~ msgid "Install %s and %s packages"
 #~ msgstr "התקנת %s וגם חבילות %s"
 
-#, php-format
 #~ msgid "Install the %s package"
 #~ msgstr "התקנת החבילה %s"
 
@@ -2638,23 +2794,18 @@ msgstr ""
 #~ msgid "or"
 #~ msgstr "או"
 
-#, php-format
 #~ msgid "Bosh connection failed with error '%s'"
 #~ msgstr "חיבור Bosh נכשל עם שגיאה '%s'"
 
-#, php-format
 #~ msgid "XMPP connection through Bosh failed with error '%s'"
 #~ msgstr "חיבור XMPP דרך Bosh נכשל עם שגיאה '%s'"
 
-#, php-format
 #~ msgid "Couldn't create directory '%s'."
 #~ msgstr "לא ניתן ליצור מדור '%s'."
 
-#, php-format
 #~ msgid "Couldn't create configuration file '%s'."
 #~ msgstr "לא ניתן ליצור קובץ תצורה '%s'."
 
-#, php-format
 #~ msgid "Database connection failed with error '%s'"
 #~ msgstr "חיבור מסד נתונים נכשל עם שגיאה '%s'"
 
@@ -2669,14 +2820,10 @@ msgstr ""
 #~ msgid "Compatibility Test"
 #~ msgstr "בדיקת תאימות"
 
-#~ msgid ""
-#~ "The following requirements were not met. Please make sure they are all "
-#~ "satisfied in order to install Movim."
+#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
 #~ msgstr "הדרישות הבאות לא סופקו. נא לוודא שכולן מסופקות בכדי להתקין את Movim."
 
-#~ msgid ""
-#~ "Some errors were detected. Please correct them for the installation to "
-#~ "proceed."
+#~ msgid "Some errors were detected. Please correct them for the installation to proceed."
 #~ msgstr "אותרו שגיאות מסוימות. נא לתקנן למען המשך ההתקנה."
 
 #~ msgid "XMPP Connection Preferences"
@@ -2703,15 +2850,12 @@ msgstr ""
 #~ msgid "JID not provided."
 #~ msgstr "לא סופקה כתובת JID."
 
-#, php-format
 #~ msgid "jid '%s' is incorrect"
 #~ msgstr "כתובת jid ‫'%s' שגויה"
 
-#, php-format
 #~ msgid "%s - Account Creation"
 #~ msgstr "‏‏%s - יצירת חשבון"
 
-#, php-format
 #~ msgid "%s - Add An Account"
 #~ msgstr "‏‏%s - הוספת חשבון"
 
@@ -2771,22 +2915,14 @@ msgstr ""
 #~ msgid "What is Movim?"
 #~ msgstr "מהי Movim?"
 
-#~ msgid ""
-#~ "Some features are missing/I can't do everything I used to do on other social "
-#~ "networks"
-#~ msgstr ""
-#~ "קיימות תכונות מסוימות שהינן חסרות/אין ביכולתי לעשות כל מה שנהגתי לעשות "
-#~ "ברשתות חברתיות אחרות"
+#~ msgid "Some features are missing/I can't do everything I used to do on other social networks"
+#~ msgstr "קיימות תכונות מסוימות שהינן חסרות/אין ביכולתי לעשות כל מה שנהגתי לעשות ברשתות חברתיות אחרות"
 
 #~ msgid "The current BOSH URL in invalid"
 #~ msgstr "כתובת BOSH URL נוכחית הינה שגויה"
 
 #~ msgid "Connecting..."
 #~ msgstr "מתחבר כעת..."
-
-#, php-format
-#~ msgid "This server hosts %s accounts"
-#~ msgstr "שרת זה מארח %s חשבונות"
 
 #~ msgid "Debug console"
 #~ msgstr "מסוף ניפוי שגיאות"
@@ -2808,49 +2944,35 @@ msgstr ""
 #~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
 #~ msgstr "גרסת PHP לא תואמת. Movim מצריכה PHP 5.3 לפחות."
 
-#, php-format
 #~ msgid "Movim requires the %s extension."
 #~ msgstr "‫Movim מצריכה את ההרחבות %s."
 
 # בטרם ברצונך ליהנות
 # רשת העבודה החברתית
-#~ msgid ""
-#~ "Before you enjoy your social network, a few adjustements are required."
+#~ msgid "Before you enjoy your social network, a few adjustements are required."
 #~ msgstr "לפני שיהיה ביכולתך ליהנות מן הרשת החברתית שלך, נדרשות התאמות מספר."
 
 # בכוח potentially
 # אפשרי שהשימוש בה עלול לסכן
 # handle (manage, touch)?
-#~ msgid ""
-#~ "Keep in mind that Movim is still under development and will handle many "
-#~ "personal details. Its use can potentially endanger your data. Always pay "
-#~ "attention to information that you submit."
-#~ msgstr ""
-#~ "לצומת לבך, Movim עדיין מצויה תחת פיתוח ותטפל בפרטים אישיים רבים. השימוש בה "
-#~ "עלול, באופן פוטנציאלי, לסכן את המידע שלך. יש להסב תמיד תשומת לב ולהבחין "
-#~ "במידע שנשלח על ידך."
+#~ msgid "Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit."
+#~ msgstr "לצומת לבך, Movim עדיין מצויה תחת פיתוח ותטפל בפרטים אישיים רבים. השימוש בה עלול, באופן פוטנציאלי, לסכן את המידע שלך. יש להסב תמיד תשומת לב ולהבחין במידע שנשלח על ידך."
 
 #~ msgid "Database Movim schema installed"
 #~ msgstr "סכימת מסד נתונים Movim מותקנת"
 
 # אלמנט
-#, php-format
 #~ msgid "Cannot load element value '%s'"
 #~ msgstr "לא ניתן לטעון ערך יסוד '%s'"
 
-#, php-format
 #~ msgid "Cannot open log file '%s'"
 #~ msgstr "לא ניתן לפתוח קובץ רשומת יומן '%s'"
 
 #~ msgid "Wrong ID"
 #~ msgstr "‏ID שגויה"
 
-#~ msgid ""
-#~ "Firstly fill in this blank with a brand new account ID, this address will "
-#~ "follow you on all the Movim network !"
-#~ msgstr ""
-#~ "ראשית נא למלא את חלל זה עם ID חדשה לגמרי, כתובת זו תעקוב אחריך לכל אורך רשת "
-#~ "Movim !"
+#~ msgid "Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !"
+#~ msgstr "ראשית נא למלא את חלל זה עם ID חדשה לגמרי, כתובת זו תעקוב אחריך לכל אורך רשת Movim !"
 
 #~ msgid "Only alphanumerics elements are authorized"
 #~ msgstr "יסודות אלפא-נומריות בלבד מותרות"
@@ -2861,16 +2983,9 @@ msgstr ""
 # typo X2 to the to the
 # Go to the %s to the Frequently Asked Questions %s
 # Go to the %s Frequently Asked Questions %s
-#, php-format
-#~ msgid ""
-#~ "Go to the %s to the Frequently Asked Questions %s or come ask your question "
-#~ "on the official chatroom %s or via our mailing-list (%s see the dedicated "
-#~ "page %s)."
-#~ msgstr ""
-#~ "עברו אל %s שאלות ותשובות נפוצות %s או לחלופין ניתן לגשת ולשאול את שאלתך בחדר "
-#~ "השיחה הרשמי %s או באמצעות רשימת הדיוור שלנו (%s ראו את העמוד המוקצה לכך %s)."
+#~ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
+#~ msgstr "עברו אל %s שאלות ותשובות נפוצות %s או לחלופין ניתן לגשת ולשאול את שאלתך בחדר השיחה הרשמי %s או באמצעות רשימת הדיוור שלנו (%s ראו את העמוד המוקצה לכך %s)."
 
-#, php-format
 #~ msgid "Contacts (%s)"
 #~ msgstr "אישי־קשר (%s)"
 
@@ -2886,7 +3001,6 @@ msgstr ""
 #~ msgstr "ערוץ איש־קשר נטען כעת ..."
 
 # you can replace the word instance with "server", "pod"
-#, php-format
 #~ msgid "You can now access your shiny Movim instance %sJump In !%s"
 #~ msgstr "כעת ביכולתך לגשת אל שרת ה־Movim המבריק שלך %sזנק/י פנימה !%s"
 
@@ -2896,20 +3010,14 @@ msgstr ""
 #~ msgid "Link my current account"
 #~ msgstr "קישור אל חשבוני הנוכחי"
 
-#, php-format
 #~ msgid "Please remove the %s folder in order to complete the installation"
 #~ msgstr "נא להסיר את התיקייה ‭%s‬ כדי לסיים את ההתקנה"
 
 #~ msgid "I can't find the answer to my question here"
 #~ msgstr "אין ביכולתי למצוא את התשובה לשאלתי כאן"
 
-#, php-format
-#~ msgid ""
-#~ "Visit the page %s What is Movim ? %s to know more about the project, its "
-#~ "aims and understand how it works."
-#~ msgstr ""
-#~ "ניתן לבקר בעמוד %s מה זה Movim ? %s כדי לדעת עוד אודות הפרויקט, מטרותיו וגם "
-#~ "כדי להבין כיצד הוא פועל."
+#~ msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
+#~ msgstr "ניתן לבקר בעמוד %s מה זה Movim ? %s כדי לדעת עוד אודות הפרויקט, מטרותיו וגם כדי להבין כיצד הוא פועל."
 
 #~ msgid "empty"
 #~ msgstr "ריק"
@@ -2938,28 +3046,14 @@ msgstr ""
 #~ msgid "Create my vCard"
 #~ msgstr "צור vCard"
 
-#, php-format
-#~ msgid ""
-#~ "Although Movim is evolving fast, many (many) features are missing. Be "
-#~ "patient ;). You can have a look %s at next versions's roadmaps %s to know if "
-#~ "the one you want is on its way."
-#~ msgstr ""
-#~ "אף על פי שהפלטפורמה Movim מתפתחת מהר, המון (המון) תכונות חסרות. עליך להיעזר "
-#~ "בסבלנות ;). באפשרותך להגניב הצצה %s במפות הדרכים של הגרסא הבאה %s כדי לדעת "
-#~ "אם התכונה שרצונך בה כבר בדרך."
+#~ msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
+#~ msgstr "אף על פי שהפלטפורמה Movim מתפתחת מהר, המון (המון) תכונות חסרות. עליך להיעזר בסבלנות ;). באפשרותך להגניב הצצה %s במפות הדרכים של הגרסא הבאה %s כדי לדעת אם התכונה שרצונך בה כבר בדרך."
 
-#, php-format
-#~ msgid ""
-#~ "Don't forget that Movim is an open source project, a helping hand is always "
-#~ "welcome (see %s Can I participate %s)"
-#~ msgstr ""
-#~ "נא לא לשכוח שהפלטפורמה Movim הינה פרויקט קוד פתוח, סיוע תמיד יתקבל באהדה "
-#~ "(ראו %s האם באפשרותי להשתתף %s)"
+#~ msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
+#~ msgstr "נא לא לשכוח שהפלטפורמה Movim הינה פרויקט קוד פתוח, סיוע תמיד יתקבל באהדה (ראו %s האם באפשרותי להשתתף %s)"
 
 #~ msgid "My Posts"
 #~ msgstr "הפרסומים שלי"
 
-#~ msgid ""
-#~ "Your server doesn't support post publication, you can only read contact's "
-#~ "feeds"
+#~ msgid "Your server doesn't support post publication, you can only read contact's feeds"
 #~ msgstr "השרת שלך לא תומך בפרסום רשומות, באפשרותך לקרוא ערוצי איש קשר בלבד"
