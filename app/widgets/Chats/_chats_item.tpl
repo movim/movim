@@ -26,12 +26,16 @@
         </span>
     {/if}
     <span>{$contact->getTrueName()}</span>
-    {if="isset($message)"}
-        <span class="info">{$message->published|strtotime|prepareDate}</span>
-        {if="preg_match('#^\?OTR#', $message->body)"}
-            <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
-        {else}
-            <p>{$message->body|prepareString|strip_tags}</p>
+    {if="isset($status)"}
+        <p>{$status}</p>
+    {else}
+        {if="isset($message)"}
+            <span class="info">{$message->published|strtotime|prepareDate}</span>
+            {if="preg_match('#^\?OTR#', $message->body)"}
+                <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
+            {else}
+                <p>{$message->body|prepareString|strip_tags}</p>
+            {/if}
         {/if}
     {/if}
 </li>

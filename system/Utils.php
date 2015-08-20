@@ -431,7 +431,7 @@ function getMood() {
         'envious'       => __('mood.envious'), // Feeling pain by the excellence or good fortune of another.
         'excited'       => __('mood.excited'), // Having great enthusiasm.
         'flirtatious'   => __('mood.flirtatious'), // In the mood for flirting.
-        'frustated'     => __('mood.frustrated'), // Suffering from frustration; dissatisfied, agitated, or discontented because one is unable to perform an action or fulfill a desire.
+        'frustrated'    => __('mood.frustrated'), // Suffering from frustration; dissatisfied, agitated, or discontented because one is unable to perform an action or fulfill a desire.
         'grateful'      => __('mood.grateful'), // Feeling appreciation or thanks.
         'grieving'      => __('mood.grieving'), // Feeling very sad about something, especially something lost; mournful; sorrowful.
         'grumpy'        => __('mood.grumpy'), // Unhappy and irritable.

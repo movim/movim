@@ -224,7 +224,12 @@ function cleanJid($jid)
  */
 function explodeJid($jid)
 {
-    list($jid, $resource) = explode('/', $jid);
+    $arr = explode('/', $jid);
+    $jid = $arr[0];
+
+    if(isset($arr[1])) $resource = $arr[1];
+    else $resource = null;
+
     list($username, $server) = explode('@', $jid);
 
     return array(

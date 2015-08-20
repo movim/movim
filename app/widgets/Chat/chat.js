@@ -121,6 +121,13 @@ var Chat = {
     }
 }
 
+MovimWebsocket.attach(function() {
+    var jid = document.querySelector('#chat_widget').dataset.jid;
+    if(jid) {
+        Chat_ajaxGet(jid);
+    }
+});
+
 Upload.attach(function() {
     var textarea = document.querySelector('#chat_textarea');
     textarea.value = Upload.get + ' ' + textarea.value;

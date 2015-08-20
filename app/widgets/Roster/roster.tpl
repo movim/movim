@@ -1,5 +1,5 @@
 <div id="roster" ng-controller="RosterController as rosterCtrl">
-    <ul id="rosterlist" class="{if="isset($conf) && $conf.roster == 'show'"}offlineshown{/if} active all">
+    <ul id="rosterlist" class="{if="isset($conf) && isset($conf.roster) && $conf.roster == 'show'"}offlineshown{/if} active all">
         <div ng-if="contacts == null" class="empty placeholder icon contacts">
             <h1>{$c->__('roster.no_contacts_title')}</h1>
             <h4>{$c->__('roster.no_contacts_text')}</h4>

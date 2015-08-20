@@ -1,7 +1,7 @@
 #chat_header.encrypted:after{
     content: "";
     display: inline-block;
-    font-family: "Material Design Iconic Font";    
+    font-family: "Material Design Iconic Font";
     content: "\f041";
     font-size: 2.5rem;
     margin-left: 1rem;
@@ -19,7 +19,7 @@
 #chat_widget .chat_box ul {
     margin: 0 auto;
     max-width: 100rem;
-    margin-left: calc(50% - 51rem);
+    margin-left: calc(45% - 49rem);
 }
 
 #chat_widget .chat_box form {

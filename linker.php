@@ -51,7 +51,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                     $config = $cd->get();
 
                     $port = 5222;
-
                     $dns = \Moxl\Utils::resolveHost($msg->host);
                     if(isset($dns[0]['target']) && $dns[0]['target'] != null) $msg->host = $dns[0]['target'];
                     if(isset($dns[0]['port']) && $dns[0]['port'] != null) $port = $dns[0]['port'];
@@ -111,6 +110,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             } elseif($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
                 stream_set_blocking($conn->stream, 1);
+                stream_context_set_option($conn->stream, 'ssl', 'allow_self_signed', true);
                 $out = stream_socket_enable_crypto($conn->stream, 1, STREAM_CRYPTO_METHOD_TLS_CLIENT);
 
                 $restart = true;
