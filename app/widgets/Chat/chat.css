@@ -61,10 +61,14 @@
     margin-top: 0.85rem;
 }
 
-#chat_widget li img {
+#chat_widget li img:not(.emoji) {
     max-height: 30rem;
     max-width: 100%;
     display: block;
+}
+
+#chat_widget li img.emoji {
+    padding: 0 0.25rem;
 }
 
 #chat_widget li.room {
