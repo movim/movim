@@ -27,7 +27,7 @@
     <a class="classic" href="{$c->route('contact')}">
         <li {if="$page == 'contact'"}class="active"{/if}>
             <span class="icon"><i class="zmdi zmdi-accounts"></i></span>
-            <span class="counter"></span>
+            <span data-key="invite" class="counter"></span>
             <span>{$c->__('page.contacts')}</span>
         </li>
     </a>

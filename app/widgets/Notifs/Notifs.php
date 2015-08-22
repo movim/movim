@@ -37,11 +37,20 @@ class Notifs extends WidgetBase
         $this->registerEvent('presence_subscribed_handle', 'onNotifs');
     }
 
-    function onNotifs($packet = false)
+    function onNotifs($from = false)
     {
         $html = $this->prepareNotifs();
         RPC::call('movim_fill', 'notifs_widget', $html);
         RPC::call('Notifs.refresh');
+
+        if(is_string($from)) {
+            $cd = new \Modl\ContactDAO;
+            $contact = $cd->get($from);
+
+            $avatar = $contact->getPhoto('s');
+            if($avatar == false) $avatar = null;
+            Notification::append('invite|'.$from, $contact->getTrueName(), $this->__('notifs.wants_to_talk', $contact->getTrueName()), $avatar, 4);
+        }
     }
 
     function ajaxGet()
@@ -118,6 +127,7 @@ class Notifs extends WidgetBase
         unset($notifs[$jid]);
 
         $session->set('activenotifs', $notifs);
+        Notification::ajaxClear('invite|'.$jid);
     }
 
     function ajaxRefuse($jid)
@@ -137,15 +147,6 @@ class Notifs extends WidgetBase
         $session->set('activenotifs', $notifs);
 
         $this->onNotifs();
-    }
-
-    function genCallAccept($jid)
-    {
-        return $this->call('ajaxAccept', "'".$jid."'");
-    }
-
-    function genCallRefuse($jid)
-    {
-        return $this->call('ajaxRefuse', "'".$jid."'");
+        Notification::ajaxClear('invite|'.$jid);
     }
 }
