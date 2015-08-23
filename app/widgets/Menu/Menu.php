@@ -75,6 +75,11 @@ class Menu extends WidgetBase
         $this->ajaxGet('node', $server, $node, $page);
     }
 
+    function ajaxGetMe($page = 0)
+    {
+        $this->ajaxGet('me', null, null, $page);
+    }
+
     function ajaxGet($type = 'all', $server = null, $node = null, $page = 0)
     {
         $html = $this->prepareList($type, $server, $node, $page);
@@ -128,6 +133,10 @@ class Menu extends WidgetBase
             case 'feed' :
                 $view->assign('history', $this->call('ajaxGetFeed', $next));
                 $items  = $pd->getFeed($page * $this->_paging + $count, $this->_paging);
+                break;
+            case 'me' :
+                $view->assign('history', $this->call('ajaxGetMe', $next));
+                $items  = $pd->getMe($page * $this->_paging + $count, $this->_paging);
                 break;
             case 'node' :
                 $view->assign('history', $this->call('ajaxGetNode', '"'.$server.'"', '"'.$node.'"', '"'.$next.'"'));

@@ -6,8 +6,9 @@
             <div class="select">
                 <select onchange="window[this.value].apply()" name="language" id="language">
                     <option value="Menu_ajaxGetAll" selected="selected">{$c->__('menu.all')}</option>
-                    <option value="Menu_ajaxGetNews" >{$c->__('menu.groups')}</option>
-                    <option value="Menu_ajaxGetFeed" >{$c->__('menu.contacts')}</option>
+                    <option value="Menu_ajaxGetNews">{$c->__('menu.groups')}</option>
+                    <option value="Menu_ajaxGetFeed">{$c->__('menu.contacts')}</option>
+                    <option value="Menu_ajaxGetMe">{$c->__('menu.me')}</option>
                 </select>
             </div>
         </div>
