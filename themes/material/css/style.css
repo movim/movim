@@ -512,7 +512,7 @@ span.icon.large {
 span.icon.small.bubble:first-letter,
 span.icon.small.bubble i {
     font-size: 2rem;
-    line-height: 0;
+    line-height: 1.5em;
     vertical-align: text-top;
 }
 

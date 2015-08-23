@@ -12,6 +12,7 @@ class Rooms extends WidgetBase
     function load()
     {
         $this->addjs('rooms.js');
+        $this->addcss('rooms.css');
         $this->registerEvent('bookmark_set_handle', 'onBookmark');
         $this->registerEvent('presence_muc_handle', 'onConnected');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected');
