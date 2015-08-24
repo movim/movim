@@ -9,12 +9,12 @@ class AccountNext extends WidgetBase {
     {
         $this->addjs('accountnext.js');
         $this->addcss('accountnext.css');
-        
+
         $this->registerEvent('register_get_handle', 'onForm');
         $this->registerEvent('register_set_handle', 'onRegistered');
-        $this->registerEvent('register_set_errorconflict', 'onRegisterError');
-        $this->registerEvent('register_set_errornotacceptable', 'onRegisterNotAcceptable');
-        $this->registerEvent('register_get_errorserviceunavailable', 'onServiceUnavailable');
+        $this->registerEvent('register_set_errorconflict', 'onRegisterError', 'accountnext');
+        $this->registerEvent('register_set_errornotacceptable', 'onRegisterNotAcceptable', 'accountnext');
+        $this->registerEvent('register_get_errorserviceunavailable', 'onServiceUnavailable', 'accountnext');
     }
 
     function display()
@@ -35,7 +35,7 @@ class AccountNext extends WidgetBase {
             switch($form->x->attributes()->xmlns) {
                 case 'jabber:x:data' :
                     $formview = $this->tpl();
-                    
+
                     $formh = $xtf->getHTML($form->x->asXML());
                     $formview->assign('submitdata', $this->call('ajaxRegister', "movim_form_to_json('data')"));
 
@@ -47,13 +47,13 @@ class AccountNext extends WidgetBase {
                 case 'jabber:x:oob' :
                     $oobview = $this->tpl();
                     $oobview->assign('url', (string)$form->x->url);
-                    
+
                     $html = $oobview->draw('_accountnext_oob', true);
-                    
+
                     RPC::call('movim_fill', 'subscription_form', $html);
                     break;
             }
-            
+
         } else{
             $formh = $xtf->getHTML($form->asXML());
         }
@@ -65,9 +65,9 @@ class AccountNext extends WidgetBase {
 
         $view = $this->tpl();
         $view->assign('url', (string)$form->x->url);
-        
+
         $html = $view->draw('_accountnext_registered', true);
-        
+
         RPC::call('movim_fill', 'subscription_form', $html);
         RPC::call('setUsername', $data->username->value);
     }
@@ -77,12 +77,12 @@ class AccountNext extends WidgetBase {
         $error = $package->content;
         Notification::append(null, $error);
     }
-    
+
     function onRegisterNotAcceptable()
     {
         Notification::append(null, $this->__('error.not_acceptable'));
     }
-    
+
     function onServiceUnavailable()
     {
         Notification::append(null, $this->__('error.service_unavailable'));

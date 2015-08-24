@@ -10,3 +10,7 @@ var Account = {
         Presence_ajaxLogout();
     }
 }
+
+MovimWebsocket.attach(function() {
+    Notification.current('account');
+});
