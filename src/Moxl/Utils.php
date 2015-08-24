@@ -66,15 +66,21 @@ class Utils {
     }
 
     public static function resolveHost($host) {
-        $dns = dns_get_record('_xmpp-client._tcp.'.$host, DNS_SRV);
-        if(!empty($dns)) return $dns;
+        $r = new \Net_DNS2_Resolver(array('timeout' => 1));
+        try {
+            $result = $r->query('_xmpp-client._tcp.'.$host, 'SRV');
+
+            if(!empty($result->answer[0])) return $result->answer[0];
+        } catch (\Net_DNS2_Exception $e) {
+            error_log($e->getMessage());
+        }
     }
 
     public static function getDomain($host) {
-        $dns = dns_get_record('_xmpp-client._tcp.'.$host, DNS_SRV);
+        $result = Utils::resolveHost($host);
 
-        if(isset($dns[0]['target']) && $dns[0]['target'] != null)
-            return $dns[0]['target'];
+        if(isset($result->target) && $result->target != null)
+            return $result->target;
         else {
             return $host;
         }
