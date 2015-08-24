@@ -52,8 +52,8 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
 
                     $port = 5222;
                     $dns = \Moxl\Utils::resolveHost($msg->host);
-                    if(isset($dns[0]['target']) && $dns[0]['target'] != null) $msg->host = $dns[0]['target'];
-                    if(isset($dns[0]['port']) && $dns[0]['port'] != null) $port = $dns[0]['port'];
+                    if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
+                    if(isset($dns->port) && $dns->port != null) $port = $dns->port;
                     #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
                     $connector->create($msg->host, $port)->then($xmpp_behaviour);
                 }
@@ -111,6 +111,8 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
                 stream_set_blocking($conn->stream, 1);
                 stream_context_set_option($conn->stream, 'ssl', 'allow_self_signed', true);
+                #stream_context_set_option($conn->stream, 'ssl', 'verify_peer_name', false);
+                #stream_context_set_option($conn->stream, 'ssl', 'verify_peer', false);
                 $out = stream_socket_enable_crypto($conn->stream, 1, STREAM_CRYPTO_METHOD_TLS_CLIENT);
 
                 $restart = true;
@@ -137,7 +139,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             \RPC::clear();
 
             if(!empty($msg)) {
-                //[MaJ[MaJ[MaJ[MaI[MaI[MaI[MaI[MaI[MaI[MaI[MaI[MaIecho json_encode($msg)."";
+                //echo json_encode($msg)."";
                 echo base64_encode(gzcompress(json_encode($msg), 9))."";
                 //fwrite(STDERR, colorize(json_encode($msg).' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
             }
