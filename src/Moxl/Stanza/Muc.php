@@ -2,15 +2,12 @@
 
 namespace Moxl\Stanza;
 
+use Moxl\Stanza\Message;
+
 class Muc {
     static function message($to, $content)
     {
-        $session = \Sessionx::start();
-        $xml = '
-            <message to="'.str_replace(' ', '\40', $to).'" type="groupchat" id="'.$session->id.'">
-                <body>'.$content.'</body>
-            </message>';
-        \Moxl\API::request($xml);
+        Message::maker($to, $content, false, 'groupchat');
     }
 
     static function setSubject($to, $subject)
@@ -25,9 +22,10 @@ class Muc {
 
     static function getConfig($to)
     {
-        $xml = '
-            <query xmlns="http://jabber.org/protocol/muc#owner"/>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
         \Moxl\API::request($xml);
     }
 

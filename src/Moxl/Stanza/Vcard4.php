@@ -5,25 +5,27 @@ namespace Moxl\Stanza;
 class Vcard4 {
     static function get($to)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <items node="urn:xmpp:vcard4"/>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $items = $dom->createElement('items');
+        $items->setAttribute('node', 'urn:xmpp:vcard4');
+        $query->appendChild($items);
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
         \Moxl\API::request($xml);
     }
 
     static function set($data)
     {
         $twitter = $yahoo = $skype = '';
-        
+
         if($data->twitter)
             $twitter = '<uri>twitter:'.$data->twitter.'</uri>';
         if($data->yahoo)
             $yahoo = '<uri>ymsgr:'.$data->yahoo.'</uri>';
         if($data->skype)
             $skype = '<uri>skype:'.$data->skype.'</uri>';
-        
+
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub">
                 <publish node="urn:xmpp:vcard4">
@@ -67,7 +69,7 @@ class Vcard4 {
                     </item>
                 </publish>
             </pubsub>';
-            
+
         $xml = \Moxl\API::iqWrapper($xml, false, 'set');
         \Moxl\API::request($xml);
     }

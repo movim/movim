@@ -5,23 +5,32 @@ namespace Moxl\Stanza;
 class Notification {
     static function get($to)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <items node="urn:xmpp:inbox"/>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $items = $dom->createElementNS('items');
+        $items->setAttribute('node', 'urn:xmpp:inbox');
+
+        $pubsub->appendChild($items);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
         \Moxl\API::request($xml);
     }
 
     static function itemDelete($to, $id)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <retract node="urn:xmpp:inbox" notify="true">
-                    <item id="'.$id.'"/>
-                </retract>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $retract = $dom->createElement('retract');
+        $retract->setAttribute('node', 'urn:xmpp:inbox');
+        $retract->setAttribute('notify', 'true');
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('id', $id);
+
+        $retract->appendChild($item);
+        $pubsub->appendChild($retract);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 }

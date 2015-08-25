@@ -5,24 +5,26 @@ namespace Moxl\Stanza;
 class Pubsub {
     static function create($to, $node)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <create node="'.$node.'"/>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $create = $dom->createElement('create');
+        $create->setAttribute('node', $node);
+        $pubsub->appendChild($create);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 
     static function delete($to, $node)
-    {   
+    {
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
                 <delete node="'.$node.'"/>
             </pubsub>';
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-        \Moxl\API::request($xml);    
+        \Moxl\API::request($xml);
     }
-    
+
     static function createPersistentStorage($to, $node)
     {
         $xml = '
@@ -70,7 +72,7 @@ class Pubsub {
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
         \Moxl\API::request($xml);
     }
-    
+
     static function subscribe($to, $from, $node)
     {
         $xml = '
@@ -80,7 +82,7 @@ class Pubsub {
                     jid="'.$from.'"/>
             </pubsub>
             ';
-            
+
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
         \Moxl\API::request($xml);
     }
@@ -95,10 +97,10 @@ class Pubsub {
                     node="'.$node.'"
                     jid="'.$from.'"
                     '.$subid.'/>
-            </pubsub>';      
-        
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');  
-            
+            </pubsub>';
+
+        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+
         \Moxl\API::request($xml);
     }
 
@@ -126,16 +128,16 @@ class Pubsub {
                 $subscriptions .= '
                     subscription="'.$subscription.'" />';
         }
-        
+
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
                 <subscriptions node="'.$node.'">
                 '.$subscriptions.'
                 </subscriptions>
             </pubsub>';
-        
+
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-        \Moxl\API::request($xml);  
+        \Moxl\API::request($xml);
     }
 
     static function getItems($to, $node)
@@ -166,7 +168,7 @@ class Pubsub {
                 </items>
             </pubsub>';
         $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml);        
+        \Moxl\API::request($xml);
     }
 
     static function postPublish($to, $node, $atom)
@@ -215,7 +217,7 @@ class Pubsub {
             <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
                 <configure node="'.$node.'"/>
             </pubsub>';
-        
+
         $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
         \Moxl\API::request($xml);
     }
@@ -241,9 +243,9 @@ class Pubsub {
             <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
                 <affiliations node="'.$node.'"/>
             </pubsub>';
-        
+
         $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml);  
+        \Moxl\API::request($xml);
     }
 
     static function getMetadata($to, $node)
@@ -252,9 +254,9 @@ class Pubsub {
             <query xmlns="http://jabber.org/protocol/disco#info"
             node="'.$node.'"/>
         ';
-        
+
         $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml);  
+        \Moxl\API::request($xml);
     }
 
     static function setAffiliations($to, $node, $data)
@@ -263,19 +265,19 @@ class Pubsub {
         foreach($data as $jid_subid => $affiliation){
             $split = split("_", $jid_subid);
             $affiliations .= '
-                <affiliation 
-                    jid="'.$split[0].'" 
-                    subid="'.$split[1].'" 
+                <affiliation
+                    jid="'.$split[0].'"
+                    subid="'.$split[1].'"
                     affiliation="'.$affiliation.'" />';
         }
-        
+
         $xml = '<pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
                 <affiliations node="'.$node.'">
                 '.$affiliations.'
                 </affiliations>
             </pubsub>';
-        
+
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-        \Moxl\API::request($xml);  
+        \Moxl\API::request($xml);
     }
 }

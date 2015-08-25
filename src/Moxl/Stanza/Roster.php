@@ -7,21 +7,21 @@ class Roster {
      * The roster builder
      */
     static function builder($xml, $to, $type)
-    {  
+    {
         $xml = '
             <query xmlns="jabber:iq:roster">
                 '.$xml.'
             </query>';
-            
+
         $xml = \Moxl\API::iqWrapper($xml, $to, $type);
         \Moxl\API::request($xml);
     }
 
     static function get()
     {
-        $xml = '<query xmlns="jabber:iq:roster"/>';
-        
-        $xml = \Moxl\API::iqWrapper($xml, false, 'get');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('jabber:iq:roster', 'query');
+        $xml = \Moxl\API::iqWrapper($query, false, 'get');
         \Moxl\API::request($xml);
     }
 
@@ -36,7 +36,7 @@ class Roster {
                 name="'.htmlspecialchars($name).'">
                 <group>'.htmlspecialchars($group).'</group>
             </item>';
-        
+
         $xml = self::builder($xml, false, 'set');
         \Moxl\API::request($xml);
     }
@@ -54,7 +54,7 @@ class Roster {
     {
         $xml = '
             <item jid="'.$to.'" subscription="remove"/>';
-            
+
         $xml = self::builder($xml, false, 'set');
         \Moxl\API::request($xml);
     }

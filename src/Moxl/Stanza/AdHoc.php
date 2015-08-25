@@ -5,20 +5,22 @@ namespace Moxl\Stanza;
 class AdHoc {
     static function get($to)
     {
-        $xml = '
-          <query xmlns="http://jabber.org/protocol/disco#items"
-                 node="http://jabber.org/protocol/commands"/>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/disco#items', 'query');
+        $query->setAttribute('node', 'http://jabber.org/protocol/commands');
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
         \Moxl\API::request($xml);
     }
 
     static function command($to, $node)
     {
-        $xml = '
-            <command xmlns="http://jabber.org/protocol/commands"
-                node="'.$node.'"
-                action="execute"/>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/commands', 'query');
+        $query->setAttribute('node', $node);
+        $query->setAttribute('action', 'execute');
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
         \Moxl\API::request($xml);
     }
 

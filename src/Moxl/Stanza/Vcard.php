@@ -5,8 +5,9 @@ namespace Moxl\Stanza;
 class Vcard {
     static function get($to)
     {
-        $xml = '<vCard xmlns="vcard-temp"/>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $vcard = $dom->createElementNS('vcard-temp', 'vCard');
+        $xml = \Moxl\API::iqWrapper($vcard, $to, 'get');
         \Moxl\API::request($xml);
     }
 

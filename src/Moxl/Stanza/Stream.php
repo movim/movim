@@ -23,19 +23,19 @@ class Stream {
 
     static function bindSet($resource)
     {
-        $xml = '
-            <bind xmlns="urn:ietf:params:xml:ns:xmpp-bind">
-                <resource>'.$resource.'</resource>
-            </bind>';
-        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
+        $dom = new \DOMDocument('1.0', 'utf-8');
+        $bind = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-bind', 'bind');
+        $bind->appendChild($dom->createElement('resource', $resource));
+
+        $xml = \Moxl\API::iqWrapper($bind, false, 'set');
         \Moxl\API::request($xml);
     }
-    
+
     static function sessionStart($to)
     {
-        $xml = '
-            <session xmlns="urn:ietf:params:xml:ns:xmpp-session"/>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $dom = new \DOMDocument('1.0', 'utf-8');
+        $session = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-session', 'session');
+        $xml = \Moxl\API::iqWrapper($session, $to, 'set');
         \Moxl\API::request($xml);
     }
 }

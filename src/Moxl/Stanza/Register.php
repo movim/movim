@@ -7,14 +7,15 @@ use Moxl\Stanza\Form;
 class Register {
     static function get($to = false)
     {
-        $xml = '<query xmlns="jabber:iq:register"/>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml);
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('jabber:iq:register', 'query');
+
+        \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
     }
     static function set($to = false, $data)
     {
         $form = new Form($data);
-        
+
         $xml = '
             <query xmlns="jabber:iq:register">
                 '.$form.'
@@ -26,22 +27,22 @@ class Register {
 
     static function remove()
     {
-        $xml = '
-            <query xmlns="jabber:iq:register">
-                <remove/>
-            </query>';
-        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('jabber:iq:register', 'query');
+        $query->appendChild($dom->createElement('remove'));
+
+        $xml = \Moxl\API::iqWrapper($query, false, 'set');
         \Moxl\API::request($xml);
     }
 
     static function changePassword($to, $username, $password)
     {
-        $xml = '
-            <query xmlns="jabber:iq:register">
-                <username>'.$username.'</username>
-                <password>'.$password.'</password>
-            </query>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('jabber:iq:register', 'query');
+        $query->appendChild($dom->createElement('username', $username));
+        $query->appendChild($dom->createElement('password', $password));
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
         \Moxl\API::request($xml);
     }
 }

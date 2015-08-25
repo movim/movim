@@ -5,49 +5,62 @@ namespace Moxl\Stanza;
 class Avatar {
     static function get($to)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <items node="urn:xmpp:avatar:data"/>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+
+        $items = $dom->createElement('items');
+        $items->setAttribute('node', 'urn:xmpp:avatar:data');
+        $pubsub->appendChild($items);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
         \Moxl\API::request($xml);
     }
 
     static function set($data)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <publish node="urn:xmpp:avatar:data">
-                    <item id="'.sha1($data).'">
-                        <data xmlns="urn:xmpp:avatar:data">'.$data.'</data>
-                    </item>
-                </publish>
-            </pubsub>
-        ';
-            
-        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+
+        $publish = $dom->createElement('publish');
+        $publish->setAttribute('node', 'urn:xmpp:avatar:data');
+        $pubsub->appendChild($publish);
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('id', sha1($data));
+        $publish->appendChild($item);
+
+        $data = $dom->createElementNS('urn:xmpp:avatar:data', 'data', $data);
+        $item->appendChild($data);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);
     }
 
     static function setMetadata($data)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <publish node="urn:xmpp:avatar:metadata">
-                    <item id="'.sha1($data).'">
-                        <metadata xmlns="urn:xmpp:avatar:metadata">
-                          <info bytes="'.strlen(base64_decode($data)).'"
-                                height="410"
-                                id="'.sha1($data).'"
-                                type="image/jpeg"
-                                width="410"/>
-                        </metadata>
-                    </item>
-                </publish>
-            </pubsub>
-        ';
-            
-        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+
+        $publish = $dom->createElement('publish');
+        $publish->setAttribute('node', 'urn:xmpp:avatar:metadata');
+        $pubsub->appendChild($publish);
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('id', sha1($data));
+        $publish->appendChild($item);
+
+        $metadata = $dom->createElementNS('urn:xmpp:avatar:data', 'metadata');
+        $item->appendChild($metadata);
+
+        $info = $dom->createElement('info');
+        $info->setAttribute('height', '410');
+        $info->setAttribute('width', '410');
+        $info->setAttribute('type', 'image/jpeg');
+        $info->setAttribute('id', sha1($data));
+        $info->setAttribute('bytes', strlen(base64_decode($data)));
+        $metadata->appendChild($info);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);
     }
 }

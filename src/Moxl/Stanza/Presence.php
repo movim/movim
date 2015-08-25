@@ -9,39 +9,45 @@ class Presence {
     static function maker($to = false, $status = false, $show = false, $priority = 0, $type = false)
     {
         $session = \Sessionx::start();
-        
-        $toxml = $typexml = $statusxml = $showxml = $priorityxml = '';
 
-        if($to != false)
-            $toxml = 'to="'.str_replace(' ', '\40', $to).'"';
-            
-        if($type != false)
-            $typexml = 'type="'.$type.'"';
-            
-        if($status != false)
-            $statusxml = '<status>'.$status.'</status>';
-            
-        if($show != false)
-            $showxml = '<show>'.$show.'</show>';
-            
-        if($priority != 0)
-            $priorityxml = '<priority>'.$priority.'</priority>';
-            
-        return '
-            <presence
-                '.$toxml.'
-                xmlns="jabber:client"
-                from="'.$session->user.'@'.$session->host.'/'.$session->resource.'" '.$typexml.'
-                id="'.$session->id.'">
-                '.$statusxml.'
-                '.$showxml.'
-                '.$priorityxml.'
-                <c xmlns="http://jabber.org/protocol/caps"
-                hash="sha-1"
-                ext="pmuc-v1 share-v1 voice-v1 video-v1 camera-v1"
-                node="http://moxl.movim.eu/"
-                ver="'.\Moxl\Utils::generateCaps().'" />
-            </presence>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $root = $dom->createElementNS('jabber:client', 'presence');
+        $dom->appendChild($root);
+
+        $root->setAttribute('from', $session->user.'@'.$session->host.'/'.$session->resource);
+        $root->setAttribute('id', $session->id);
+
+        if($to != false) {
+            $root->setAttribute('to', $to);
+        }
+
+        if($type != false) {
+            $root->setAttribute('type', $type);
+        }
+
+        if($status != false) {
+            $status = $dom->createElement('status', $status);
+            $root->appendChild($status);
+        }
+
+        if($show != false) {
+            $show = $dom->createElement('show', $show);
+            $root->appendChild($show);
+        }
+
+        if($priority != 0) {
+            $priority = $dom->createElement('priority', $priority);
+            $root->appendChild($priority);
+        }
+
+        $c = $dom->createElementNS('http://jabber.org/protocol/caps', 'c');
+        $c->setAttribute('hash', 'sha-1');
+        $c->setAttribute('node', 'http://moxl.movim.eu/');
+        $c->setAttribute('ext', 'pmuc-v1 share-v1 voice-v1 video-v1 camera-v1');
+        $c->setAttribute('ver', \Moxl\Utils::generateCaps());
+        $root->appendChild($c);
+
+        return $dom->saveXML($dom->documentElement);
     }
 
     /*
@@ -104,13 +110,13 @@ class Presence {
     static function muc($to, $nickname = false)
     {
         $session = \Sessionx::start();
-        
+
         if($nickname == false)
             $nickname = $session->user;
-        
+
         $xml = '
             <presence
-                from="'.$session->user.'@'.$session->host.'/'.$session->resource.'" 
+                from="'.$session->user.'@'.$session->host.'/'.$session->resource.'"
                 id="'.$session->id.'"
                 to="'.$to.'/'.$nickname.'">
                 <x xmlns="http://jabber.org/protocol/muc"/>
