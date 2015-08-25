@@ -6,9 +6,9 @@ class Message extends Model {
     public $session;
     public $jidto;
     public $jidfrom;
-    
+
     public $resource;
-    
+
     public $type;
 
     public $subject;
@@ -25,30 +25,30 @@ class Message extends Model {
     {
         $this->_struct = '
         {
-            "session" : 
+            "session" :
                 {"type":"string", "size":128, "mandatory":true },
-            "jidto" : 
+            "jidto" :
                 {"type":"string", "size":128, "mandatory":true },
-            "jidfrom" : 
+            "jidfrom" :
                 {"type":"string", "size":128, "mandatory":true },
-            "resource" : 
+            "resource" :
                 {"type":"string", "size":128 },
-            "type" : 
+            "type" :
                 {"type":"string", "size":20 },
-            "subject" : 
+            "subject" :
                 {"type":"text"},
-            "thread" : 
+            "thread" :
                 {"type":"string", "size":128 },
-            "body" : 
+            "body" :
                 {"type":"text"},
-            "html" : 
+            "html" :
                 {"type":"text"},
-            "published" : 
+            "published" :
                 {"type":"date"},
-            "delivered" : 
+            "delivered" :
                 {"type":"date"}
         }';
-        
+
         parent::__construct();
     }
 
@@ -83,9 +83,9 @@ class Message extends Model {
                 $this->html = \fixSelfClosing($this->html);
                 $this->html = \prepareString($this->html, false, $images);
             } else {*/
-                $this->html = \prepareString($this->body, false, $images);
+            //    $this->html = \prepareString($this->body, false, $images);
             //}
-            
+
             if($stanza->delay)
                 $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
             elseif($parent && $parent->delay)

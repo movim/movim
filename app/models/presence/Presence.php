@@ -4,23 +4,23 @@ namespace Modl;
 
 class Presence extends Model {
     protected $id;
-    
+
     protected $session;
     protected $jid;
-    
+
     // General presence informations
     protected $resource;
     protected $value;
     protected $priority;
     protected $status;
-    
+
     // Client Informations
     protected $node;
     protected $ver;
-    
+
     // Delay - XEP 0203
     protected $delay;
-    
+
     // Last Activity - XEP 0256
     protected $last;
 
@@ -33,50 +33,50 @@ class Presence extends Model {
 
     // vcard-temp:x:update, not saved in the DB
     public $photo = false;
-    
+
     public function __construct() {
         $this->_struct = '
         {
-            "id" : 
+            "id" :
                 {"type":"string", "size":128, "mandatory":true },
-            "session" : 
+            "session" :
                 {"type":"string", "size":64, "mandatory":true, "key":true },
-            "jid" : 
+            "jid" :
                 {"type":"string", "size":64, "mandatory":true, "key":true },
-            "resource" : 
+            "resource" :
                 {"type":"string", "size":64, "key":true },
-            "value" : 
+            "value" :
                 {"type":"int",    "size":11, "mandatory":true },
-            "priority" : 
+            "priority" :
                 {"type":"int",    "size":11 },
-            "status" : 
+            "status" :
                 {"type":"text"},
-            "node" : 
+            "node" :
                 {"type":"string", "size":128 },
-            "ver" : 
+            "ver" :
                 {"type":"string", "size":128 },
-            "delay" : 
+            "delay" :
                 {"type":"date"},
-            "last" : 
+            "last" :
                 {"type":"int",    "size":11 },
-            "publickey" : 
+            "publickey" :
                 {"type":"text"},
-            "muc" : 
+            "muc" :
                 {"type":"int",    "size":1 },
-            "mucjid" : 
+            "mucjid" :
                 {"type":"string", "size":64 },
-            "mucaffiliation" : 
+            "mucaffiliation" :
                 {"type":"string", "size":32 },
-            "mucrole" : 
+            "mucrole" :
                 {"type":"string", "size":32 }
         }';
-        
+
         parent::__construct();
     }
-    
+
     public function setPresence($stanza) {
         $jid = explode('/',(string)$stanza->attributes()->from);
-        
+
         if($stanza->attributes()->to)
             $to = current(explode('/',(string)$stanza->attributes()->to));
         else
@@ -88,19 +88,19 @@ class Presence extends Model {
             $this->resource = $jid[1];
         else
             $this->resource = 'default';
-            
+
         $this->status = (string)$stanza->status;
-        
+
         if($stanza->c) {
             $this->node = (string)$stanza->c->attributes()->node;
             $this->ver = (string)$stanza->c->attributes()->ver;
         }
-        
+
         if($stanza->priority)
             $this->priority = (string)$stanza->priority;
-        
+
         if((string)$stanza->attributes()->type == 'error') {
-            $this->value = 6;    
+            $this->value = 6;
         } elseif((string)$stanza->attributes()->type == 'unavailable') {
             $this->value = 5;
         } elseif((string)$stanza->show == 'away') {
@@ -136,23 +136,23 @@ class Presence extends Model {
                 }
             }
         }
-        
+
         if($stanza->delay) {
-            $this->delay = 
+            $this->delay =
                         gmdate(
-                            'Y-m-d H:i:s', 
+                            'Y-m-d H:i:s',
                             strtotime(
                                 (string)$stanza->delay->attributes()->stamp
                                 )
                             )
                         ;
         }
-        
+
         if($stanza->query) {
             $this->last = (int)$stanza->query->attributes()->seconds;
         }
     }
-    
+
     public function getPresence() {
         $txt = array(
                 1 => 'online',
@@ -162,7 +162,7 @@ class Presence extends Model {
                 5 => 'offline',
                 6 => 'server_error'
             );
-    
+
         $arr = array();
         $arr['jid'] = $this->jid;
         $arr['resource'] = $this->resource;
@@ -172,7 +172,7 @@ class Presence extends Model {
         $arr['status'] = $this->status;
         $arr['node'] = $this->node;
         $arr['ver'] = $this->ver;
-        
+
         return $arr;
     }
 

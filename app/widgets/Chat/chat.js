@@ -66,7 +66,7 @@ var Chat = {
                 message.body = message.body.substr(4);
             }
 
-            bubble.querySelector('div').innerHTML = message.body;
+            bubble.querySelector('div').appendChild(document.createTextNode(message.body));
             bubble.querySelector('span.info').innerHTML = message.published;
             bubble.querySelector('span.user').className = 'user ' + message.color;
 
@@ -76,8 +76,7 @@ var Chat = {
                 textarea.focus();
             };
 
-            bubble.querySelector('span.user').innerHTML = message.resource;
-
+            bubble.querySelector('span.user').appendChild(document.createTextNode(message.resource));
             var conversation = document.getElementById(id);
             if(conversation) {
 		conversation.appendChild(bubble);
@@ -109,7 +108,8 @@ var Chat = {
             }
 
             if(bubble) {
-                bubble.querySelector('div.bubble div').innerHTML = message.body;
+                bubble.querySelector('div.bubble div').appendChild(document.createTextNode(message.body));
+
                 bubble.querySelector('div.bubble span.info').innerHTML = message.published;
 
                 movim_append(id, bubble.outerHTML);
