@@ -85,7 +85,7 @@ class Parser {
         if(isset($this->handler)) {
             $this->handler[0] .= $data;
         }
-    } 
+    }
 
     public function getError()
     {

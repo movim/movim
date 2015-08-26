@@ -41,10 +41,14 @@ class Disco {
         \Moxl\API::request($xml);
     }
 
-    static function items($to)
+    static function items($to, $node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#items', 'query');
+
+        if($node != false) {
+            $query->setAttribute('node', $node);
+        }
 
         $xml = \Moxl\API::iqWrapper($query, $to, 'get');
         \Moxl\API::request($xml);

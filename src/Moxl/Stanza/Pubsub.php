@@ -17,11 +17,13 @@ class Pubsub {
 
     static function delete($to, $node)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
-                <delete node="'.$node.'"/>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
+        $delete = $dom->createElement('delete');
+        $delete->setAttribute('node', $node);
+        $pubsub->appendChild($delete);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 
@@ -75,15 +77,14 @@ class Pubsub {
 
     static function subscribe($to, $from, $node)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <subscribe
-                    node="'.$node.'"
-                    jid="'.$from.'"/>
-            </pubsub>
-            ';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $subscribe = $dom->createElement('subscribe');
+        $subscribe->setAttribute('node', $node);
+        $subscribe->setAttribute('jid', $from);
+        $pubsub->appendChild($subscribe);
 
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 
@@ -106,11 +107,13 @@ class Pubsub {
 
     static function getSubscriptions($to, $node)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
-                <subscriptions node="'.$node.'"/>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
+        $subscriptions = $dom->createElement('subscriptions');
+        $subscriptions->setAttribute('node', $node);
+        $pubsub->appendChild($subscriptions);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
         \Moxl\API::request($xml);
     }
 
@@ -142,32 +145,30 @@ class Pubsub {
 
     static function getItems($to, $node)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <items node="'.$node.'" max_items="40"/>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml);
-    }
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $items = $dom->createElement('items');
+        $items->setAttribute('node', $node);
+        $items->setAttribute('max_items', 40);
+        $pubsub->appendChild($items);
 
-    static function getItemsId($to, $node)
-    {
-        $xml = '
-            <query xmlns="http://jabber.org/protocol/disco#items"
-            node="'.$node.'"/>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
         \Moxl\API::request($xml);
     }
 
     static function getItem($to, $node, $id)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <items node="'.$node.'">
-                    <item id="'.$id.'"/>
-                </items>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $items = $dom->createElement('items');
+        $items->setAttribute('node', $node);
+        $pubsub->appendChild($items);
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('id', $id);
+        $items->appendChild($item);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
         \Moxl\API::request($xml);
     }
 
@@ -181,44 +182,56 @@ class Pubsub {
                 </item>
                 </publish>
             </pubsub>';
+
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
         \Moxl\API::request($xml);
     }
 
     static function testPostPublish($to, $node, $id)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <publish node="'.$node.'">
-                    <item id="'.$id.'">
-			<entry xmlns="http://www.w3.org/2005/Atom"/>
-                    </item>
-                </publish>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $publish = $dom->createElement('publish');
+        $publish->setAttribute('node', $node);
+        $pubsub->appendChild($publish);
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('id', $id);
+        $publish->appendChild($item);
+
+        $entry = $dom->createElementNS('http://www.w3.org/2005/Atom', 'entry');
+        $item->appendChild($entry);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 
     static function postDelete($to, $node, $id)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <retract node="'.$node.'" notify="true">
-                    <item id="'.$id.'"/>
-                </retract>
-            </pubsub>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $retract = $dom->createElement('retract');
+        $retract->setAttribute('node', $node);
+        $retract->setAttribute('notify', true);
+        $pubsub->appendChild($retract);
+
+        $item = $dom->createElement('item');
+        $item->setAttribute('id', $id);
+        $retract->appendChild($item);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 
     static function getConfig($to, $node)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
-                <configure node="'.$node.'"/>
-            </pubsub>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
+        $configure = $dom->createElement('configure');
+        $configure->setAttribute('node', $node);
+        $pubsub->appendChild($configure);
 
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
         \Moxl\API::request($xml);
     }
 
@@ -239,23 +252,13 @@ class Pubsub {
 
     static function getAffiliations($to, $node)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
-                <affiliations node="'.$node.'"/>
-            </pubsub>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
+        $affiliations = $dom->createElement('affiliations');
+        $affiliations->setAttribute('node', $node);
+        $pubsub->appendChild($affiliations);
 
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml);
-    }
-
-    static function getMetadata($to, $node)
-    {
-        $xml = '
-            <query xmlns="http://jabber.org/protocol/disco#info"
-            node="'.$node.'"/>
-        ';
-
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');
         \Moxl\API::request($xml);
     }
 

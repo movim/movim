@@ -27,33 +27,34 @@ class PubsubAtom {
     }
 
     public function __toString() {
-        $xml = '
-            <entry xmlns="http://www.w3.org/2005/Atom">
-                <id>'.$this->id.'</id>
-            ';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $entry = $dom->createElementNS('http://www.w3.org/2005/Atom', 'entry');
+        $dom->appendChild($entry);
+        $entry->appendChild($dom->createElement('id', $this->id));
 
-        if($this->title)
-            $xml .= '
-                <title><![CDATA['.$this->title.']]></title>';
+        if($this->title) {
+            $entry->appendChild($dom->createElement('title', $this->title));
+        }
 
-        $xml .= '
-                <author>
-                    <name>'.$this->name.'</name>
-                    <uri>xmpp:'.$this->jid.'</uri>
-                </author>';
+        $author = $dom->createElement('author');
+        $author->appendChild($dom->createElement('name', $this->name));
+        $author->appendChild($dom->createElement('uri', 'xmpp:'.$this->jid));
+        $entry->appendChild($author);
 
-        if($this->comments)
-            $xml .= '
-                    <link
-                        rel="replies"
-                        title="comments"
-                        href="xmpp:'.$this->jid.'?;node=urn:xmpp:microblog:0:comments/'.$this->id.'"/>';
+        if($this->comments) {
+            $link = $dom->createElement('link');
+            $link->setAttribute('rel', 'replies');
+            $link->setAttribute('title', 'comments');
+            $link->setAttribute('href', 'xmpp:'.$this->jid.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
+            $entry->appendChild($link);
+        }
 
-        if($this->link)
-            $xml .= '
-                    <link
-                        rel="related"
-                        href="'.htmlspecialchars($this->link).'"/>';
+        if($this->link) {
+            $link = $dom->createElement('link');
+            $link->setAttribute('rel', 'related');
+            $link->setAttribute('href', $this->link);
+            $entry->appendChild($link);
+        }
 
         if($this->image && is_array($this->image)) {
             $xml .= '
@@ -89,24 +90,28 @@ class PubsubAtom {
                     </geoloc>';
         }
 
-        if($this->contentxhtml)
-            $xml .= '
-                <content type="xhtml">
-                    <div xmlns="http://www.w3.org/1999/xhtml">
-                        '.$this->contentxhtml.'
-                    </div>
-                </content>';
-        $xml .= '
-                <content type="text">'.$this->content.'</content>';
+        $content = $dom->createElement('content');
+        $content->setAttribute('type', 'xhtml');
+        $div = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'div');
+        $content->appendChild($div);
+        $entry->appendChild($content);
 
-        $xml .= '
-                <link rel="alternate"
-                    href="xmpp:'.htmlspecialchars($this->to).'?;node='.htmlspecialchars($this->node).';item='.htmlspecialchars($this->id).'"/>
+        $f = $dom->createDocumentFragment();
+        $f->appendXML($this->contentxhtml);
+        $div->appendChild($f);
 
-                <published>'.gmdate(DATE_ISO8601).'</published>
-                <updated>'.gmdate(DATE_ISO8601).'</updated>
-            </entry>';
+        $content_raw = $dom->createElement('content', $this->content);
+        $content_raw->setAttribute('type', 'text');
+        $entry->appendChild($content_raw);
 
-        return $xml;
+        $link = $dom->createElement('link');
+        $link->setAttribute('rel', 'alternate');
+        $link->setAttribute('href', $this->to.'?;node='.$this->node.';item='.$this->id);
+        $entry->appendChild($link);
+
+        $entry->appendChild($dom->createElement('published', gmdate(DATE_ISO8601)));
+        $entry->appendChild($dom->createElement('updated', gmdate(DATE_ISO8601)));
+
+        return $dom->saveXML($dom->documentElement);
     }
 }

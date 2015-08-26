@@ -15,7 +15,7 @@ class Carbons {
 
     static function disable() {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $xml = $dom->createElementNS('urn:xmpp:carbon:2', 'disable');
+        $xml = $dom->createElementNS('urn:xmpp:carbons:2', 'disable');
 
         $xml = \Moxl\API::iqWrapper($xml, false, 'set');
         \Moxl\API::request($xml);

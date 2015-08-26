@@ -12,6 +12,7 @@ class Register {
 
         \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
     }
+
     static function set($to = false, $data)
     {
         $form = new Form($data);

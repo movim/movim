@@ -5,30 +5,19 @@ namespace Moxl\Stanza;
 class Bookmark {
     static function get()
     {
-        $xml = '
-        <pubsub xmlns="http://jabber.org/protocol/pubsub">
-            <items node="storage:bookmarks"/>
-        </pubsub>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
-        $xml = \Moxl\API::iqWrapper($xml, false, 'get');
+        $items = $dom->createElement('items');
+        $items->setAttribute('node', 'storage:bookmarks');
+        $pubsub->appendChild($items);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, false, 'get');
         \Moxl\API::request($xml);
     }
 
     static function set($arr)
     {
-        $xml = '';
-
-        /*
-        $xml = '
-        <pubsub xmlns="http://jabber.org/protocol/pubsub">
-            <publish node="storage:bookmarks">
-                <item id="current">
-                    <storage xmlns="storage:bookmarks">
-                        '.$xml.'
-                    </storage>
-                </item>
-            </publish>
-            </pubsub>';*/
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
@@ -46,12 +35,6 @@ class Bookmark {
         foreach($arr as $elt) {
             switch ($elt['type']) {
                 case 'conference':
-                    /*$xml .= '
-                        <conference name="'.$elt['name'].'"
-                                    autojoin="'.$elt['autojoin'].'"
-                                    jid="'.$elt['jid'].'">
-                            <nick>'.$elt['nick'].'</nick>
-                            </conference>';*/
                     $conference = $dom->createElement('conference');
                     $nick = $dom->createElement('nick', $elt['nick']);
                     $conference->appendChild($nick);
@@ -67,15 +50,6 @@ class Bookmark {
                              url="'.$elt['url'].'"/>';
                     break;*/
                 case 'subscription':
-                    /*
-                    $xml .= '
-                        <subscription
-                            xmlns="urn:xmpp:pubsub:subscription:0"
-                            server="'.$elt['server'].'"
-                            node="'.$elt['node'].'"
-                            subid="'.$elt['subid'].'">
-                            <title>'.$elt['title'].'</title>
-                            </subscription>';*/
                     $subscription = $dom->createElementNS('urn:xmpp:pubsub:subscription:0', 'subcription');
                     $title = $dom->createElement('title', $elt['title']);
                     $subscription->appendChild($title);
@@ -88,7 +62,6 @@ class Bookmark {
                     break;
             }
         }
-
 
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);
