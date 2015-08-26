@@ -7,14 +7,14 @@ class Message extends Model {
     public $jidto;
     public $jidfrom;
 
-    public $resource;
+    protected $resource;
 
     public $type;
 
-    public $subject;
-    public $thread;
-    public $body;
-    public $html;
+    protected $subject;
+    protected $thread;
+    protected $body;
+    protected $html;
 
     public $published;
     public $delivered;
@@ -66,15 +66,15 @@ class Message extends Model {
             $this->jidfrom    = $jid[0];
 
             if(isset($jid[1]))
-                $this->resource = $jid[1];
+                $this->__set('resource', $jid[1]);
 
             $this->type = 'chat';
             if($stanza->attributes()->type) {
                 $this->type    = (string)$stanza->attributes()->type;
             }
 
-            $this->body    = (string)$stanza->body;
-            $this->subject = (string)$stanza->subject;
+            $this->__set('body', (string)$stanza->body);
+            $this->__set('subject', (string)$stanza->subject);
 
             $images = (bool)($this->type == 'chat');
 

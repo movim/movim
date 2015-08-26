@@ -2,31 +2,31 @@
 
 namespace modl;
 
-class Conference extends Model {    
+class Conference extends Model {
     public $jid;
-    public $conference;
-    public $name;
-    public $nick;
+    protected $conference;
+    protected $name;
+    protected $nick;
     public $autojoin;
     public $status;
-    
+
     public function __construct() {
         $this->_struct = '
         {
-            "jid" : 
+            "jid" :
                 {"type":"string", "size":128, "mandatory":true, "key":true },
-            "conference" : 
+            "conference" :
                 {"type":"string", "size":128, "mandatory":true, "key":true },
-            "name" : 
+            "name" :
                 {"type":"string", "size":128, "mandatory":true },
-            "nick" : 
+            "nick" :
                 {"type":"string", "size":128 },
-            "autojoin" : 
+            "autojoin" :
                 {"type":"int", "size":1 },
-            "status" : 
+            "status" :
                 {"type":"int", "size":1 }
         }';
-        
+
         parent::__construct();
     }
 }

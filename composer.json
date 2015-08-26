@@ -22,6 +22,7 @@
         "react/socket-client": "0.4.*@dev",
 
         "forxer/Gravatar": "~1.2",
-        "respect/validation": "0.8.*"
+        "respect/validation": "0.8.*",
+        "ezyang/htmlpurifier": "^4.7"
     }
 }

@@ -2,56 +2,57 @@
 
 namespace modl;
 
-class RosterLink extends Model {    
+class RosterLink extends Model {
     public $session;
     public $jid;
-    
-    public $rostername;
+
+    protected $rostername;
     public $rosterask;
     public $rostersubscription;
-    
-    public $realname;
-    
-    public $groupname;
-    
+
+    protected $realname;
+
+    protected $groupname;
+
     public $chaton;
 
     public $publickey;
-    
+
     public function __construct() {
         $this->_struct = '
         {
-            "session" : 
+            "session" :
                 {"type":"string", "size":128, "mandatory":true, "key":true },
-            "jid" : 
+            "jid" :
                 {"type":"string", "size":128, "mandatory":true, "key":true },
-            "rostername" : 
+            "rostername" :
                 {"type":"string", "size":128 },
-            "rosterask" : 
+            "rosterask" :
                 {"type":"string", "size":128 },
-            "rostersubscription" : 
+            "rostersubscription" :
                 {"type":"string", "size":128 },
-            "realname" : 
+            "realname" :
                 {"type":"string", "size":128 },
-            "groupname" : 
+            "groupname" :
                 {"type":"string", "size":128 },
-            "chaton" : 
+            "chaton" :
                 {"type":"int", "size":11 }
         }';
-        
+
         parent::__construct();
     }
 
-    
+
     function set($stanza) {
         $this->jid = (string)$stanza->attributes()->jid;
-            
-        if(isset($stanza->attributes()->name) && (string)$stanza->attributes()->name != '')
-            $this->rostername = (string)$stanza->attributes()->name;
+
+        if(isset($stanza->attributes()->name)
+        && (string)$stanza->attributes()->name != '')
+            $this->__set('rostername', (string)$stanza->attributes()->name);
         else
-            $this->rostername = (string)$stanza->attributes()->jid;
-        $this->rosterask = (string)$stanza->attributes()->ask;
-        $this->rostersubscription = (string)$stanza->attributes()->subscription;
-        $this->groupname = (string)$stanza->group;
+            $this->__set('rostername',     (string)$stanza->attributes()->jid);
+        $this->__set('rosterask',          (string)$stanza->attributes()->ask);
+        $this->__set('rostersubscription', (string)$stanza->attributes()->subscription);
+        $this->__set('groupname',          (string)$stanza->group);
     }
 }

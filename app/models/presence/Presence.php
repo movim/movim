@@ -82,35 +82,35 @@ class Presence extends Model {
         else
             $to = $jid[0];
 
-        $this->session = $to;
-        $this->jid = $jid[0];
+        $this->__set('session', $to);
+        $this->__set('jid', $jid[0]);
         if(isset($jid[1]))
-            $this->resource = $jid[1];
+            $this->__set('resource', $jid[1]);
         else
-            $this->resource = 'default';
+            $this->__set('resource', 'default');
 
-        $this->status = (string)$stanza->status;
+        $this->__set('status', (string)$stanza->status);
 
         if($stanza->c) {
-            $this->node = (string)$stanza->c->attributes()->node;
-            $this->ver = (string)$stanza->c->attributes()->ver;
+            $this->__set('node', (string)$stanza->c->attributes()->node);
+            $this->__set('ver', (string)$stanza->c->attributes()->ver);
         }
 
         if($stanza->priority)
-            $this->priority = (string)$stanza->priority;
+            $this->__set('priority', (string)$stanza->priority);
 
         if((string)$stanza->attributes()->type == 'error') {
-            $this->value = 6;
+            $this->__set('value', 6);
         } elseif((string)$stanza->attributes()->type == 'unavailable') {
-            $this->value = 5;
+            $this->__set('value', 5);
         } elseif((string)$stanza->show == 'away') {
-            $this->value = 2;
+            $this->__set('value', 2);
         } elseif((string)$stanza->show == 'dnd') {
-            $this->value = 3;
+            $this->__set('value', 3);
         } elseif((string)$stanza->show == 'xa') {
-            $this->value = 4;
+            $this->__set('value', 4);
         } else {
-            $this->value = 1;
+            $this->__set('value', 1);
         }
 
         // Specific XEP
@@ -118,38 +118,38 @@ class Presence extends Model {
             foreach($stanza->children() as $name => $c) {
                 switch($c->attributes()->xmlns) {
                     case 'jabber:x:signed' :
-                        $this->publickey = (string)$c;
+                        $this->__set('publickey', (string)$c);
                         break;
                     case 'http://jabber.org/protocol/muc#user' :
-                        $this->muc             = true;
+                        $this->__set('muc            ', true);
                         if($c->item->attributes()->jid)
-                            $this->mucjid          = cleanJid((string)$c->item->attributes()->jid);
+                            $this->__set('mucjid', cleanJid((string)$c->item->attributes()->jid));
                         else
-                            $this->mucjid          = (string)$stanza->attributes()->from;
+                            $this->__set('mucjid', (string)$stanza->attributes()->from);
 
-                        $this->mucrole         = (string)$c->item->attributes()->role;
-                        $this->mucaffiliation  = (string)$c->item->attributes()->affiliation;
+                        $this->__set('mucrole', (string)$c->item->attributes()->role);
+                        $this->__set('mucaffiliation', (string)$c->item->attributes()->affiliation);
                         break;
                     case 'vcard-temp:x:update' :
-                        $this->photo = true;
+                        $this->__set('photo', true);
                         break;
                 }
             }
         }
 
         if($stanza->delay) {
-            $this->delay =
+            $this->__set('delay',
                         gmdate(
                             'Y-m-d H:i:s',
                             strtotime(
                                 (string)$stanza->delay->attributes()->stamp
                                 )
                             )
-                        ;
+                        );
         }
 
         if($stanza->query) {
-            $this->last = (int)$stanza->query->attributes()->seconds;
+            $this->__set('last', (int)$stanza->query->attributes()->seconds);
         }
     }
 

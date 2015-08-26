@@ -196,9 +196,9 @@ class Rooms extends WidgetBase
             array_push($arr,
                 array(
                     'type'      => 'conference',
-                    'name'      => $c->name,
+                    'name'      => htmlentities($c->name),
                     'autojoin'  => $c->autojoin,
-                    'nick'      => $c->nick,
+                    'nick'      => htmlentities($c->nick),
                     'jid'       => $c->conference));
         }
 

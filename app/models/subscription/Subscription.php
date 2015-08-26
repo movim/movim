@@ -4,11 +4,11 @@ namespace modl;
 
 class Subscription extends Model {
     public $jid;
-    public $server;
-    public $node;
-    public $subscription;
-    public $subid;
-    public $title;
+    protected $server;
+    protected $node;
+    protected $subscription;
+    protected $subid;
+    protected $title;
     public $description;
     public $tags;
     public $timestamp;
@@ -40,13 +40,13 @@ class Subscription extends Model {
     }
 
     function set($jid, $server, $node, $s) {
-        $this->jid          = $jid;
-        $this->server       = $server;
-        $this->node         = $node;
-        $this->jid          = (string)$s->attributes()->jid;
-        $this->subscription = (string)$s->attributes()->subscription;
-        $this->subid        = (string)$s->attributes()->subid;
-        $this->tags         = serialize(array());
+        $this->__set('jid',             $jid);
+        $this->__set('server',          $server);
+        $this->__set('node',            $node);
+        $this->__set('jid',             (string)$s->attributes()->jid);
+        $this->__set('subscription',    (string)$s->attributes()->subscription);
+        $this->__set('subid',           (string)$s->attributes()->subid);
+        $this->__set('tags', serialize(array()));
 
         if($this->subid = '')
             $this->subid = 'default';

@@ -158,37 +158,37 @@ class Contact extends Model {
     }
 
     public function set($vcard, $jid) {
-        $this->jid = \echapJid($jid);
+        $this->__set('jid', \echapJid($jid));
 
         if(isset($vcard->vCard->BDAY)
         && (string)$vcard->vCard->BDAY != '')
-            $this->date = (string)$vcard->vCard->BDAY;
+            $this->__set('date', (string)$vcard->vCard->BDAY);
         else
-            $this->date = null;
+            $this->__set('date', null);
 
-        $this->date = date(DATE_ISO8601, strtotime($this->date));
+        $this->__set('date', date(DATE_ISO8601, strtotime($this->date)));
 
-        $this->name = (string)$vcard->vCard->NICKNAME;
-        $this->fn = (string)$vcard->vCard->FN;
-        $this->url = (string)$vcard->vCard->URL;
+        $this->__set('name', (string)$vcard->vCard->NICKNAME);
+        $this->__set('fn', (string)$vcard->vCard->FN);
+        $this->__set('url', (string)$vcard->vCard->URL);
 
-        $this->gender = (string)$vcard->vCard->{'X-GENDER'};
-        $this->marital = (string)$vcard->vCard->MARITAL->STATUS;
+        $this->__set('gender', (string)$vcard->vCard->{'X-GENDER'});
+        $this->__set('marital', (string)$vcard->vCard->MARITAL->STATUS);
 
-        $this->email = (string)$vcard->vCard->EMAIL->USERID;
+        $this->__set('email', (string)$vcard->vCard->EMAIL->USERID);
 
-        $this->adrlocality = (string)$vcard->vCard->ADR->LOCALITY;
-        $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
-        $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
+        $this->__set('adrlocality', (string)$vcard->vCard->ADR->LOCALITY);
+        $this->__set('adrpostalcode', (string)$vcard->vCard->ADR->PCODE);
+        $this->__set('adrcountry', (string)$vcard->vCard->ADR->CTRY);
 
         if(filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
-            $this->photobin = base64_encode(
-                requestUrl((string)$vcard->vCard->PHOTO, 1));
+            $this->__set('photobin', base64_encode(
+                requestUrl((string)$vcard->vCard->PHOTO, 1)));
         } else {
-            $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
+            $this->__set('photobin', (string)$vcard->vCard->PHOTO->BINVAL);
         }
 
-        $this->description = (string)$vcard->vCard->DESC;
+        $this->__set('description', (string)$vcard->vCard->DESC);
     }
 
     public function createThumbnails() {
@@ -250,32 +250,32 @@ class Contact extends Model {
     }
 
     public function setTune($stanza) {
-        $this->tuneartist = (string)$stanza->items->item->tune->artist;
-        $this->tunelenght = (int)$stanza->items->item->tune->lenght;
-        $this->tunerating = (int)$stanza->items->item->tune->rating;
-        $this->tunesource = (string)$stanza->items->item->tune->source;
-        $this->tunetitle  = (string)$stanza->items->item->tune->title;
-        $this->tunetrack  = (string)$stanza->items->item->tune->track;
+        $this->__set('tuneartist', (string)$stanza->items->item->tune->artist);
+        $this->__set('tunelenght', (int)$stanza->items->item->tune->lenght);
+        $this->__set('tunerating', (int)$stanza->items->item->tune->rating);
+        $this->__set('tunesource', (string)$stanza->items->item->tune->source);
+        $this->__set('tunetitle', (string)$stanza->items->item->tune->title);
+        $this->__set('tunetrack', (string)$stanza->items->item->tune->track);
     }
 
     public function setVcard4($vcard) {
-        if(isset($vcard->bday->date))
-            $this->date    = (string)$vcard->bday->date;
+        /*if(isset($vcard->bday->date))
+            $this->__set('date', (string)$vcard->bday->date);
         if(empty($this->date))
-            $this->date    = null;
-
-        $this->name    = (string)$vcard->nickname->text;
-        $this->fn      = (string)$vcard->fn->text;
-        $this->url     = (string)$vcard->url->uri;
+            $this->__set('date', null);
+        */
+        $this->__set('name', (string)$vcard->nickname->text);
+        $this->__set('fn', (string)$vcard->fn->text);
+        $this->__set('url', (string)$vcard->url->uri);
 
         if(isset($vcard->gender))
-            $this->gender  = (string)$vcard->gender->sex->text;
+            $this->__set('gender ', (string)$vcard->gender->sex->text);
         if(isset($vcard->marital))
-            $this->marital = (string)$vcard->marital->status->text;
+            $this->__set('marital', (string)$vcard->marital->status->text);
 
-        $this->adrlocality     = (string)$vcard->adr->locality;
-        $this->adrcountry      = (string)$vcard->adr->country;
-        $this->adrpostalcode   = (string)$vcard->adr->code;
+        $this->__set('adrlocality', (string)$vcard->adr->locality);
+        $this->__set('adrcountry', (string)$vcard->adr->country);
+        $this->__set('adrpostalcode', (string)$vcard->adr->code);
 
         if(isset($vcard->impp)) {
             foreach($vcard->impp->children() as $c) {
@@ -283,21 +283,20 @@ class Contact extends Model {
 
                 switch($key) {
                     case 'twitter' :
-                        $this->twitter = str_replace('@', '', $value);
+                        $this->__set('twitter', str_replace('@', '', $value));
                         break;
                     case 'skype' :
-                        $this->skype = (string)$value;
+                        $this->__set('skype', (string)$value);
                         break;
                     case 'ymsgr' :
-                        $this->yahoo = (string)$value;
+                        $this->__set('yahoo', (string)$value);
                         break;
                 }
             }
         }
 
-        $this->email           = (string)$vcard->email->text;
-
-        $this->description     = trim((string)$vcard->note->text);
+        $this->__set('email', (string)$vcard->email->text);
+        $this->__set('description', trim((string)$vcard->note->text));
     }
 
     public function getPlace() {
