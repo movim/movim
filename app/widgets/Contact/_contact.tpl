@@ -151,6 +151,7 @@
         </li>
         {/if}
     </ul>
+    <br />
 
     {if="$blog != null"}
         <ul class="active">
