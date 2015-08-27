@@ -116,7 +116,7 @@ class Presence {
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $presence = $dom->createElementNS('jabber:client', 'presence');
-        $dom->appendChild($root);
+        $dom->appendChild($presence);
 
         $presence->setAttribute('from', $session->user.'@'.$session->host.'/'.$session->resource);
         $presence->setAttribute('id', $session->id);
