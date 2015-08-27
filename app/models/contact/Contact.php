@@ -2,6 +2,8 @@
 
 namespace modl;
 
+use Respect\Validation\Validator;
+
 class Contact extends Model {
     public $jid;
 
@@ -160,11 +162,10 @@ class Contact extends Model {
     public function set($vcard, $jid) {
         $this->__set('jid', \echapJid($jid));
 
+        $validate_date = Validator::date('Y-m-d');
         if(isset($vcard->vCard->BDAY)
-        && (string)$vcard->vCard->BDAY != '')
+        && $validate_date->validate($vcard->vCard->BDAY))
             $this->__set('date', (string)$vcard->vCard->BDAY);
-        else
-            $this->__set('date', null);
 
         $this->__set('date', date(DATE_ISO8601, strtotime($this->date)));
 
@@ -259,11 +260,11 @@ class Contact extends Model {
     }
 
     public function setVcard4($vcard) {
-        /*if(isset($vcard->bday->date))
+        $validate_date = Validator::date('Y-m-d');
+        if(isset($vcard->bday->date)
+        && $validate_date->validate($vcard->bday->date))
             $this->__set('date', (string)$vcard->bday->date);
-        if(empty($this->date))
-            $this->__set('date', null);
-        */
+
         $this->__set('name', (string)$vcard->nickname->text);
         $this->__set('fn', (string)$vcard->fn->text);
         $this->__set('url', (string)$vcard->url->uri);
