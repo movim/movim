@@ -22,15 +22,17 @@ class Bookmark {
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', 'storage:bookmarks');
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        $item->setAttribute('id', 'current');
         $publish->appendChild($item);
 
-        $storage = $dom->createElementNS('storage:bookmarks', 'storage');
+        $storage = $dom->createElement('storage');
         $item->appendChild($storage);
+        $storage->setAttribute('xmlns', 'storage:bookmarks');
+
+        $publish->setAttribute('node', 'storage:bookmarks');
+        $item->setAttribute('id', 'current');
 
         foreach($arr as $elt) {
             switch ($elt['type']) {
@@ -50,14 +52,15 @@ class Bookmark {
                              url="'.$elt['url'].'"/>';
                     break;*/
                 case 'subscription':
-                    $subscription = $dom->createElementNS('urn:xmpp:pubsub:subscription:0', 'subcription');
+                    $subscription = $dom->createElement('subscription');
+                    $storage->appendChild($subscription);
+                    $subscription->setAttribute('xmlns', 'urn:xmpp:pubsub:subscription:0');
+
                     $title = $dom->createElement('title', $elt['title']);
                     $subscription->appendChild($title);
                     $subscription->setAttribute('server', $elt['server']);
                     $subscription->setAttribute('node', $elt['node']);
                     $subscription->setAttribute('subid', $elt['subid']);
-
-                    $storage->appendChild($subscription);
 
                     break;
             }

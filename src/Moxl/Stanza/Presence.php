@@ -114,15 +114,17 @@ class Presence {
         if($nickname == false)
             $nickname = $session->user;
 
-        $xml = '
-            <presence
-                from="'.$session->user.'@'.$session->host.'/'.$session->resource.'"
-                id="'.$session->id.'"
-                to="'.$to.'/'.$nickname.'">
-                <x xmlns="http://jabber.org/protocol/muc"/>
-            </presence>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $presence = $dom->createElementNS('jabber:client', 'presence');
+        $dom->appendChild($root);
 
-        \Moxl\API::request($xml);
+        $presence->setAttribute('from', $session->user.'@'.$session->host.'/'.$session->resource);
+        $presence->setAttribute('id', $session->id);
+        $presence->setAttribute('to', $to.'/'.$nickname);
+
+        $presence->appendChild($dom->createElementNS('http://jabber.org/protocol/muc', 'x'));
+
+        \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
     /*

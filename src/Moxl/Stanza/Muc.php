@@ -13,11 +13,17 @@ class Muc {
     static function setSubject($to, $subject)
     {
         $session = \Sessionx::start();
-        $xml = '
-            <message to="'.str_replace(' ', '\40', $to).'" type="groupchat" id="'.$session->id.'">
-                <subject>'.$subject.'</subject>
-            </message>';
-        \Moxl\API::request($xml);
+
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $message = $dom->createElementNS('jabber:client', 'message');
+        $dom->appendChild($message);
+        $message->setAttribute('to', str_replace(' ', '\40', $to));
+        $message->setAttribute('id', $session->id);
+        $message->setAttribute('type', 'groupchat');
+
+        $message->appendChild($dom->createElement('subject', $subject));
+
+        \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
     static function getConfig($to)

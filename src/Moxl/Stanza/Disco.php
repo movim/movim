@@ -24,7 +24,7 @@ class Disco {
             $query->appendChild($feature);
         }
 
-        $xml = \Moxl\API::iqWrapper($query, $to, 'get', $id);
+        $xml = \Moxl\API::iqWrapper($query, $to, 'result', $id);
         \Moxl\API::request($xml);
     }
 
