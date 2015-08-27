@@ -167,7 +167,7 @@ class Handler {
 
             'fa9d41e26f664d9056618a4afe213861' => 'Post',
 
-            //'4c9681f0e9aca8a5b65f86b8b80d490f' => 'DiscoInfo',
+            '4c9681f0e9aca8a5b65f86b8b80d490f' => 'DiscoInfo',
             //'482069658b024085fbc4e311fb771fa6' => 'DiscoInfo',//?
 
             '37ff18f136d5826c4426af5a23729e48' => 'Mood',
@@ -175,7 +175,7 @@ class Handler {
             '0981a46bbfa88b3500c4bccda18ccb89' => 'Location',
             '9c8ed44d4528a66484b0fbd44b0a9070' => 'Nickname',
 
-            //'d8ea912a151202700bb399c9e04d205f' => 'Caps',
+            'd8ea912a151202700bb399c9e04d205f' => 'Caps',
             //'4a8a08f09d37b73795649038408b5f33' => 'Caps',//?
 
             '40ed26a65a25ab8bf809dd998d541d95' => 'PingPong',
