@@ -485,11 +485,13 @@ class Chat extends WidgetBase
 
     function prepareMessage(&$message)
     {
-        /*if(isset($message->html)) {
+        if(isset($message->html)) {
             $message->body = $message->html;
         } else {
-            $message->body = prepareString(htmlentities($message->body , ENT_COMPAT,'UTF-8'));
-        }*/
+            // We add some smileys...
+            $message->convertEmojis();
+            //    $message->body = prepareString(htmlentities($message->body , ENT_COMPAT,'UTF-8'));
+        }
 
         if($message->type == 'groupchat') {
             $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
