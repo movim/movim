@@ -18,16 +18,17 @@
                 <span class="second">{$value->conference}</span>
             </li>
         {/loop}
-
-        {if="$conferences == null"}
-            <li class="condensed">
-                <span class="icon green">
-                    <i class="zmdi zmdi-accounts-outline"></i>
-                </span>
-                <p>{$c->__('rooms.empty_text1')} {$c->__('rooms.empty_text2')}</p>
-            </li>
-        {/if}
     </ul>
+    {if="$conferences == null"}
+    <ul class="thick spaced">
+        <li class="condensed">
+            <span class="icon green">
+                <i class="zmdi zmdi-accounts-outline"></i>
+            </span>
+            <p>{$c->__('rooms.empty_text1')} {$c->__('rooms.empty_text2')}</p>
+        </li>
+    </ul>
+    {/if}
 {else}
     {if="$c->getView() == 'room' && $room != false"}
         <div class="placeholder icon">
