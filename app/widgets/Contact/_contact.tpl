@@ -131,14 +131,6 @@
         </li>
         {/if}
 
-        {if="$contact->description != null && trim($contact->description) != ''"}
-        <li class="condensed block">
-            <span class="icon gray"><i class="zmdi zmdi-format-align-justify"></i></span>
-            <span>{$c->__('general.about')}</span>
-            <p class="all">{$contact->description}</p>
-        </li>
-        {/if}
-
         {if="$contact->mood != null"}
         {$moods = unserialize($contact->mood)}
         <li class="condensed block">
@@ -148,6 +140,14 @@
                 {$mood[$value]}
                 {/loop}
             </p>
+        </li>
+        {/if}
+
+        {if="$contact->description != null && trim($contact->description) != ''"}
+        <li class="condensed block large">
+            <span class="icon gray"><i class="zmdi zmdi-format-align-justify"></i></span>
+            <span>{$c->__('general.about')}</span>
+            <p class="all">{$contact->description}</p>
         </li>
         {/if}
     </ul>
