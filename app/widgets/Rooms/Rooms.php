@@ -16,6 +16,7 @@ class Rooms extends WidgetBase
         $this->registerEvent('bookmark_set_handle', 'onBookmark');
         $this->registerEvent('presence_muc_handle', 'onConnected');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected');
+        $this->registerEvent('presence_muc_errorconflict', 'onConflict');
     }
 
     function onBookmark()
@@ -27,6 +28,11 @@ class Rooms extends WidgetBase
     function onConnected()
     {
         $this->refreshRooms();
+    }
+
+    function onConflict()
+    {
+        Notification::append(null, $this->__('chatrooms.conflict'));
     }
 
     function onDisconnected()
