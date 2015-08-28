@@ -34,10 +34,11 @@
     </div>
 
     <ul>
+        <!--
         <li class="subheader">
             {$c->__('compatibility.info')}
         </li>
-
+        -->
         {if="$dbconnected"}
             {if="$dbinfos > 0"}
                 <li>
