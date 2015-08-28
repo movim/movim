@@ -47,17 +47,9 @@ class MovimEmoji
     }
 }
 
-/**
- * @desc Prepare the string (add the a to the links and show the smileys)
- *
- * @param string $string
- * @param boolean display large emojis
- * @param check the links and convert them to pictures (heavy)
- * @return string
- */
-function prepareString($string, $large = false, $preview = false) {
+function addUrls($string, $preview = false) {
     // Add missing links
-    $string = preg_replace_callback(
+    return preg_replace_callback(
         "/([\w\"'>]+\:\/\/[\w-?&;#+%:~=\.\/\@]+[\w\/])/", function ($match) use($preview) {
             if(!in_array(substr($match[0], 0, 1), array('>', '"', '\''))) {
 		$content = $match[0];
@@ -84,6 +76,18 @@ function prepareString($string, $large = false, $preview = false) {
 
         }, $string
     );
+}
+
+/**
+ * @desc Prepare the string (add the a to the links and show the smileys)
+ *
+ * @param string $string
+ * @param boolean display large emojis
+ * @param check the links and convert them to pictures (heavy)
+ * @return string
+ */
+function prepareString($string, $large = false, $preview = false) {
+    $string = addUrls($string, $preview);
 
     // We remove all the style attributes
     $string = preg_replace_callback(
@@ -94,16 +98,7 @@ function prepareString($string, $large = false, $preview = false) {
 
     // Twitter hashtags
     $string = preg_replace_callback(
-        "/ #[a-zA-Z0-9_-]{3,}/", function ($match) {
-            return
-                ' <a class="twitter hastag" href="http://twitter.com/search?q='.
-                    urlencode(trim($match[0])).
-                    '&src=hash" target="_blank">'.
-                    trim($match[0]).
-                '</a>';
-        }, ' ' . $string
-    );
-
+        "/ #[a-zA-Z0-9_-]{3,}/", function ($match) { return ' <a class="twitter hastag" href="http://twitter.com/search?q='.  urlencode(trim($match[0])).  '&src=hash" target="_blank">'.  trim($match[0]).  '</a>'; }, ' ' . $string);
     $string = preg_replace_callback(
         "/ @[a-zA-Z0-9_-]{3,}/", function ($match) {
             return

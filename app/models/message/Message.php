@@ -101,4 +101,9 @@ class Message extends Model {
         $emoji = \MovimEmoji::getInstance();
         $this->body = $emoji->replace($this->body);
     }
+
+    public function addUrls()
+    {
+        $this->body = addUrls($this->body);
+    }
 }

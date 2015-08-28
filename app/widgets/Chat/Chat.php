@@ -490,6 +490,7 @@ class Chat extends WidgetBase
         } else {
             // We add some smileys...
             $message->convertEmojis();
+            $message->addUrls();
             //    $message->body = prepareString(htmlentities($message->body , ENT_COMPAT,'UTF-8'));
         }
 
