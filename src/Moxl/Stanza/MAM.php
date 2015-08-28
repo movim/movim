@@ -12,12 +12,12 @@ class MAM {
 
         $field_type = $dom->createElement('field');
         $field_type->setAttribute('var', 'FORM_TYPE');
-        $field_type->appendChild($dom->createElement('value', $limit));
+        $field_type->appendChild($dom->createElement('value', 'urn:xmpp:mam:0'));
         $x->appendChild($field_type);
 
         $field_with = $dom->createElement('field');
         $field_with->setAttribute('var', 'with');
-        $field_with->appendChild($dom->createElement('value', $limit));
+        $field_with->appendChild($dom->createElement('value', $jid));
         $x->appendChild($field_with);
 
         if($start) {
