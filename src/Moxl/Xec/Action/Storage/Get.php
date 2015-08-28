@@ -56,9 +56,10 @@ class Get extends Action
                 $this->deliver();
             }
             else {
-                $user->setConfig(array('config' => true));
-                $this->deliver();
+                $this->errorFeatureNotImplemented($stanza);
             }
+        } else {
+            $this->errorFeatureNotImplemented($stanza);
         }
     }
 
