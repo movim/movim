@@ -57,18 +57,14 @@ class PubsubAtom {
         }
 
         if($this->image && is_array($this->image)) {
-            $xml .= '
-                    <link
-                        rel="enclosure" ';
-
+            $link = $dom->createElement('link');
+            $link->setAttribute('rel', 'enclosure');
+            $link->setAttribute('href', $this->image['href']);
             if($this->image['type'] != null)
-                $xml .= 'type="'.$this->image['type'].'" ';
-
+                $link->setAttribute('type', $this->image['type']);
             if($this->image['title'] != null)
-                $xml .= 'title="'.htmlspecialchars($this->image['title']).'" ';
-
-            $xml .= '
-                        href="'.htmlspecialchars($this->image['href']).'"/>';
+                $link->setAttribute('title', $this->image['title']);
+            $entry->appendChild($link);
         }
 
         if($this->geo) {
