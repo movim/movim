@@ -32,7 +32,7 @@
                 <p>{$c->__('chatroom.button')}<br/>movim@conference.movim.eu</p>
         </li>
     </ul>
-
+    <!--
     <div class="clear spacetop"></div>
 
     <h2 class="padded_top_bottom">{$c->__('help.faq')}</h2>
@@ -71,5 +71,5 @@
             </section>
         </article>
 
-    </div>
+    </div>-->
 </div>
