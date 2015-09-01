@@ -20,6 +20,25 @@ use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
 
+class Utils {
+    public static function log($message, $priority = '')
+    {
+        if(LOG_LEVEL != null && LOG_LEVEL > 0) {
+            $log = new Logger('movim');
+
+            $handler = new SyslogHandler('movim');
+
+            if(LOG_LEVEL > 1)
+                $log->pushHandler(new StreamHandler(LOG_PATH.'/movim.log', Logger::DEBUG));
+
+            $log->pushHandler($handler, Logger::DEBUG);
+
+            $errlines = explode("\n",$message);
+            foreach ($errlines as $txt) { $log->addDebug($txt); }
+        }
+    }
+}
+
 /**
  * Return the list of gender
  */
@@ -501,7 +520,6 @@ function generateUUID($string = false) {
 
     return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
 }
-
 
 function movim_log($logs) {
     $log = new Logger('movim');

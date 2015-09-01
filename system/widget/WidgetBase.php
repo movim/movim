@@ -27,7 +27,7 @@ class WidgetBase
     protected $user;
     protected $name;
     protected $pure;    // To render the widget without the container
-    protected $translations = array(); // Set translations in the controller
+    //protected $translations = array(); // Set translations in the controller
     protected $_view;
     public $events;
     public $filters;
@@ -73,11 +73,6 @@ class WidgetBase
             'tpl_ext'       => 'tpl',
             'auto_escape'   => false
         );
-
-        if(file_exists($this->respath('locales.ini', true))) {
-            $this->translations = parse_ini_file($this->respath('locales.ini', true), true, INI_SCANNER_RAW);
-        }
-
         // We load the template engine
         $this->view = new Tpl;
         $this->view->objectConfigure($config);
@@ -87,30 +82,14 @@ class WidgetBase
         $this->pure = false;
     }
 
-    function __() {
+    function __()
+    {
         $args = func_get_args();
-        global $translationshash;
-
-        if(!is_array($this->translations)) $this->translations = array();
-
-        $tmp_trans = array_merge_recursive($this->translations, $translationshash);
-        $arr = explode('.', $args[0]);
-
-        if(is_array($tmp_trans)
-        && array_key_exists($arr[0], $tmp_trans)
-        && array_key_exists($arr[1], $tmp_trans[$arr[0]])) {
-            $vars = $tmp_trans[$arr[0]][$arr[1]];
-            if(is_array($vars))
-                $args[0] = $vars[0];
-            else
-                $args[0] = $vars;
-            return call_user_func_array('t', $args);
-        } else {
-            return $args[0];
-        }
+        return call_user_func_array('__', $args);
     }
 
-    function ___() {
+    function ___()
+    {
         echo call_user_func_array(array(&$this, '__'), func_get_args());
     }
 
@@ -119,7 +98,8 @@ class WidgetBase
         return $this->user->isSupported($key);
     }
 
-    function route() {
+    function route()
+    {
         return call_user_func_array('Route::urlize',func_get_args());
     }
 
@@ -147,9 +127,7 @@ class WidgetBase
     function display() {}
 
     /**
-     * Return the template's HTML code
-     * @param a specific template name to load (like Ruby partials)
-     * @param load the parent template, like for WidgetCommon
+     *  àdesc Return the template's HTML code
      */
     function draw()
     {
