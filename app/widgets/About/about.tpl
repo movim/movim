@@ -20,7 +20,7 @@
             <span class="icon bubble color purple"><i class="zmdi zmdi-flag"></i></span>
             <span>{$c->__('about.translators')}</span>
             <p>
-                Thanks to all the translators <a href="https://translations.launchpad.net/movim">translations.launchpad.net/movim</a>
+                {$c->__('about.translators_text')} <a href="https://www.transifex.com/projects/p/movim/">www.transifex.com/projects/p/movim/</a>
             </p>
         </li>
         <li class="subheader">{$c->__('about.software')}</li>
