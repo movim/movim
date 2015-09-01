@@ -46,7 +46,7 @@ class AdminTest extends WidgetBase
         $config = $cd->get();
 
         $this->view->assign('dbconnected', $md->_connected);
-        $this->view->assign('dbtype', $supported[$conf['type']]);
+        $this->view->assign('dbtype', $supported[$config->type]);
         $this->view->assign('dbinfos', sizeof($md->check()));
         $this->view->assign('websocketurl', $config->websocketurl);
     }

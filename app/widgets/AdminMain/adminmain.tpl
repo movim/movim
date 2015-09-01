@@ -155,7 +155,7 @@
     <input
     type="submit"
     class="button color green oppose"
-    value="{$c->__('button.submit')}"/>
+    value="{$c->__('button.save')}"/>
     <div class="clear"></div>
 </form>
 </div>
