@@ -36,7 +36,9 @@ class Config extends WidgetBase
         /* We load the user configuration */
         $this->user->reload();
 
-        $view->assign('languages', loadLangArray());
+        $l = Locale::start();
+
+        $view->assign('languages', $l->getList());
         $view->assign('me',        $this->user->getLogin());
         $view->assign('conf',      $this->user->getConfig());
 
