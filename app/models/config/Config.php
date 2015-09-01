@@ -50,7 +50,7 @@ class Config extends Model {
 
         parent::__construct();
 
-        $this->description      = __('global.description');
+        $this->description      = 'Description';//__('global.description');
         $this->theme            = 'material';
         $this->locale           = 'en';
         $this->maxusers         = -1;
