@@ -68,8 +68,5 @@ class PostDelete extends Errors
     public function error($stanza) {
         $pd = new \modl\PostnDAO();
         $pd->delete($this->_id);
-        
-        $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("Error"));
     }
 }

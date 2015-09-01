@@ -94,38 +94,7 @@ class Get extends Action
                 }
             }
 
-            // And we generate the "bookmark array"
-            /*$arr = array();
-            foreach($stanza->pubsub->items->item->storage->children() as $c) {
-                $tmp = array();
-                $tmp['type'] = $c->getName();
-                foreach($c->attributes() as $key => $value)
-                    $tmp[$key] = (string)$value;
-
-                foreach($c as $key => $value)
-                    $tmp[$key] = (string)$value;
-                    
-                array_push($arr, $tmp);
-            }*/
-            
-            //$evt = new \Event();
-            //$evt->runEvent('bookmark', false);
             $this->deliver();
         }
-    }
-
-    public function error($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('bookmarkerror', t('Error')); 
-    }
-
-    public function errorItemNotFound($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('bookmarkerror', t('Item Not Found')); 
-    }
-    
-    public function errorFeatureNotImplemented($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('bookmarkerror', '501 '.t('Feature Not Implemented')); 
     }
 }

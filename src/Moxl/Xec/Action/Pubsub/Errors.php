@@ -34,41 +34,41 @@ class Errors extends Action
     // Generic Pubsub errors handlers
     public function errorItemNotFound($error) {
         $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("The node does not exist"));
+        $evt->runEvent('pubsuberror', "The node does not exist");
     }
     
     public function errorFeatureNotImplemented($error) {
         $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("Your server doesn't support this feature"));
+        $evt->runEvent('pubsuberror', "Your server doesn't support this feature");
     }
     
     public function errorNotAuthorized($error) {
         $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("You are not autorized to do this action"));
+        $evt->runEvent('pubsuberror', "You are not autorized to do this action");
     }
     
     public function errorServiceUnavailable($error) {
         $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("This service is unavailable"));  
+        $evt->runEvent('pubsuberror', "This service is unavailable");  
     }
     
     public function errorForbidden($error) {
         $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("You are not autorized to do this action"));
+        $evt->runEvent('pubsuberror', "You are not autorized to do this action");
     }
 
     public function errorRemoteServerNotFound($error) {
         $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("The server does not exist"));
+        $evt->runEvent('pubsuberror', "The server does not exist");
     }
 
     public function errorUnexpectedRequest($error) {
         $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("Unexpected request"));
+        $evt->runEvent('pubsuberror', "Unexpected request");
     }
 
     public function errorNotAcceptable($error) {
         $evt = new \Event();
-        $evt->runEvent('pubsuberror', t("The server cannot accept this action"));
+        $evt->runEvent('pubsuberror', "The server cannot accept this action");
     }
 }
