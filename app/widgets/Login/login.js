@@ -23,7 +23,7 @@ var Login = {
             Login.rememberSession(localStorage.username);
 
             // A fallback security
-            setTimeout("MovimWebsocket.unregister()", 7000);
+            setTimeout("MovimWebsocket.unregister()", 20000);
         }
     },
     
