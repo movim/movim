@@ -11,8 +11,8 @@
     <meta name="theme-color" content="#1C1D5B" />
 
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
-    <link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
-    <script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>
+    <!--<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
+    <script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>-->
     <script src="<?php echo BASE_URI; ?>app/assets/js/favico.js"></script>
 
     <!-- OTR -->
