@@ -152,11 +152,13 @@ body > nav.active {
     width: 45rem;
 }
 
-body > div.dialog:not(:empty) ~ main,
-body > div.dialog:not(:empty) ~ nav,
-body > nav.active + main {
-    opacity: 0.5;
-    pointer-events: none;
+@media screen and (min-width: 1024px) {
+    body > div.dialog:not(:empty) ~ main,
+    body > div.dialog:not(:empty) ~ nav,
+    body > nav.active + main {
+        opacity: 0.5;
+        pointer-events: none;
+    }
 }
 
 body > nav li { /* Little hack for the navbar */
@@ -227,6 +229,7 @@ main {
     background-color: white;
     -webkit-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out;
+    transform: translateZ(0);
 }
 
 nav + main {
@@ -708,6 +711,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     width: 40rem;
     pointer-events: none;
     transition: opacity 0.2s ease, bottom 0.4s ease;
+    transform: translateX(0);
 }
 
 .snackbar p,
@@ -877,6 +881,7 @@ dl dd {
 .spinner:before,
 .spinner:after {
     transition: top .3s ease-in-out;
+    transform: translateX(0);
     content: '';
     position: absolute;
     left: calc(50% - 3.5rem);
