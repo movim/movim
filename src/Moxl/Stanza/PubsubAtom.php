@@ -86,15 +86,17 @@ class PubsubAtom {
                     </geoloc>';
         }
 
-        $content = $dom->createElement('content');
-        $content->setAttribute('type', 'xhtml');
-        $div = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'div');
-        $content->appendChild($div);
-        $entry->appendChild($content);
+        if($this->contentxhtml) {
+            $content = $dom->createElement('content');
+            $content->setAttribute('type', 'xhtml');
+            $div = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'div');
+            $content->appendChild($div);
+            $entry->appendChild($content);
 
-        $f = $dom->createDocumentFragment();
-        $f->appendXML($this->contentxhtml);
-        $div->appendChild($f);
+            $f = $dom->createDocumentFragment();
+            $f->appendXML($this->contentxhtml);
+            $div->appendChild($f);
+        }
 
         $content_raw = $dom->createElement('content', $this->content);
         $content_raw->setAttribute('type', 'text');
