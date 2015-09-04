@@ -103,7 +103,7 @@
                 <ul class="middle divided spaced">
                     {if="isset($attachements.links)"}
                         {loop="$attachements.links"}
-                            {if="substr($value.href, 0, 5) != 'xmpp:'"}
+                            {if="substr($value.href, 0, 5) != 'xmpp:' && filter_var($value.href, FILTER_VALIDATE_URL)"}
                                 <li>
                                     <span class="icon">
                                         <img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>

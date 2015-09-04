@@ -49,7 +49,8 @@
             <ul class="thin">
                 {if="isset($attachements.links)"}
                     {loop="$attachements.links"}
-                        {if="substr($value.href, 0, 5) != 'xmpp:'"}
+                        {$value|var_dump}
+                        {if="substr($value.href, 0, 5) != 'xmpp:' && filter_var($value.href, FILTER_VALIDATE_URL)"}
                         <li>
                             <span class="icon small"><img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/></span>
                             <a href="{$value.href}" class="alternate" target="_blank">
