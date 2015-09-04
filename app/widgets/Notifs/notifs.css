@@ -8,7 +8,7 @@
     margin-right: 0.5em;
     border-radius: 1em;
 }
-
+/*
 #notifs_widget.groupshown li:not(:first-child){
     display: none;
 }
@@ -24,3 +24,4 @@
     content: "\f2c0";
     display: inline-block;
 }
+*/
