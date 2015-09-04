@@ -20,11 +20,13 @@
                         <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
                     {/if}
                     <h2>
-                        {if="$value->title != null"}
-                            {$value->title}
-                        {else}
-                            {$c->__('post.default_title')}
-                        {/if}
+                        <a href="{$c->route('news', $value->nodeid)}">
+                            {if="$value->title != null"}
+                                {$value->title}
+                            {else}
+                                {$c->__('post.default_title')}
+                            {/if}
+                        </a>
                     </h2>
                     <p>
                         {if="$value->getContact()->getTrueName() != ''"}
