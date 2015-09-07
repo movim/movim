@@ -271,26 +271,6 @@ class Contact extends WidgetBase
         }
     }
 
-    function getLastFM($contact)
-    {
-        $uri = str_replace(
-            ' ',
-            '%20',
-            'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=80c1aa3abfa9e3d06f404a2e781e38f9&artist='.
-                $contact->tuneartist.
-                '&album='.
-                $contact->tunesource.
-                '&format=json'
-            );
-
-        $json = json_decode(requestURL($uri, 2));
-
-        $img = $json->album->image[2]->{'#text'};
-        $url = $json->album->url;
-
-        return array($img, $url);
-    }
-
     /**
      * @brief Validate the jid
      *

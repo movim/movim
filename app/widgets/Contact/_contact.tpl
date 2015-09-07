@@ -172,26 +172,25 @@
         </ul>
     {/if}
 
-    {if="$contact->tuneartist || $contact->tunetitle"}
+    {$album = $contact->getAlbum()}
+    {if="$album"}
     <ul class="flex">
         <li class="subheader block large">{$c->__('general.tune')}</li>
 
-        {$img_array = $c->getLastFM($contact)}
         <li class="
             block
             {if="$contact->tunetitle"}condensed{/if}
-            {if="isset($img_array[1]) && $img_array[1] != ''"} action{/if}
+            action
             ">
-            {if="isset($img_array[1]) && $img_array[1] != ''"}
-                <div class="action">
-                    <a href="{$img_array[1]}" target="_blank">
-                        <i class="zmdi zmdi-radio"></i>
-                    </a>
-                </div>
-            {/if}
+            
+            <div class="action">
+                <a href="{$album->url}" target="_blank">
+                    <i class="zmdi zmdi-radio"></i>
+                </a>
+            </div>
             <span class="icon bubble">
-                {if="isset($img_array[0]) && $img_array[0] != ''"}
-                    <img src="{$img_array[0]}"/>
+                {if="isset($album->url)"}
+                    <img src="{$album->url}"/>
                 {else}
                     <i class="zmdi zmdi-play-circle-fill"></i>
                 {/if}
@@ -204,7 +203,6 @@
                     {$contact->tunesource}
                 {/if}
             </span>
-
             {if="$contact->tunetitle"}
                 <p>{$contact->tunetitle}</p>
             {/if}
