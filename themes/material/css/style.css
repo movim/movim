@@ -895,8 +895,8 @@ dl dd {
 }
 
 .spinner.on:before {
-    animation: spinner 1s linear infinite;
-    -webkit-animation: spinner 1s linear infinite;
+    animation: 1s spinner infinite linear;
+    -webkit-animation: 1s spinner 1s infinite linear;
 }
 
 .spinner:before {
@@ -921,10 +921,12 @@ dl dd {
 }
 
 @keyframes spinner {
+    from { transform: rotate(0deg); }
     to {transform: rotate(360deg);}
 }
 
 @-webkit-keyframes spinner {
+    from { transform: rotate(0deg); }
     to {-webkit-transform: rotate(360deg);}
 }
 
