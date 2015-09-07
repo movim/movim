@@ -32,9 +32,8 @@ class GetSubscriptions extends Errors
 {
     private $_to;
     private $_node;
-    
-    private $_sync = false;
-    
+    private $_notify = true;
+
     public function request() 
     {
         $this->store();
@@ -50,6 +49,12 @@ class GetSubscriptions extends Errors
     public function setNode($node)
     {
         $this->_node = $node;
+        return $this;
+    }
+    
+    public function setNotify($notify)
+    {
+        $this->_notify = (bool)$notify;
         return $this;
     }
     
@@ -88,10 +93,9 @@ class GetSubscriptions extends Errors
             'subscriptions' => $tab, 
             'to' => $this->_to, 
             'node' => $this->_node));
-        $this->deliver();
 
-        // Still usefull ?
-        /*if($this->_sync)
-            $evt->runEvent('pubsubsubscribed', array($this->_to, $this->_node)); */
+        if($this->_notify) {
+            $this->deliver();
+        }
     }
 }
