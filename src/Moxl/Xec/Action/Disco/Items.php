@@ -25,15 +25,21 @@ class Items extends Action
     public function handle($stanza, $parent = false) {
         $nd = new \Modl\ItemDAO();
 
+        $jid = null;
+
         foreach($stanza->query->item as $item) {
             $n = new \Modl\Item();
             $n->set($item, $this->_to);
             if(substr($n->node, 0, 29) != 'urn:xmpp:microblog:0:comments')
                 $nd->set($n, true);
 
-            $r = new Request;
-            $r->setTo($n->jid)
-              ->request();
+            if($n->jid != $jid) {
+                $r = new Request;
+                $r->setTo($n->jid)
+                  ->request();
+            }
+
+            $jid = $n->jid;
         }
 
         $this->pack($this->_to);
