@@ -31,7 +31,7 @@ class Config extends Model {
             "loglevel" :
                 {"type":"string", "size":16, "mandatory":true  },
             "timezone" :
-                {"type":"string", "size":16, "mandatory":true  },
+                {"type":"string", "size":32, "mandatory":true  },
             "xmppwhitelist" :
                 {"type":"text" },
             "info" :
