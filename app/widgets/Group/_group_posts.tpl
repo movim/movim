@@ -112,7 +112,9 @@
                         {/if}
                         <span class="info">{$value->published|strtotime|prepareDate}</span>
                         <span>
-                            {$value->getContact()->getTrueName()}
+                            <a href="{$c->route('contact', $value->getContact()->jid)}">
+                                {$value->getContact()->getTrueName()}
+                            </a>
                         </span>
                         <p class="all">
                             {$value->content}
