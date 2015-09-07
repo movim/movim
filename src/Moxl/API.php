@@ -25,7 +25,10 @@ class API {
 
         if($id == false) $id = $session->id;
         $iq->setAttribute('id', $id);
-        $iq->setAttribute('xml:lang', $language);
+
+        if(isset($language)) {
+            $iq->setAttribute('xml:lang', $language);
+        }
 
         if(isset($session->user)) {
             $iq->setAttribute('from', $session->user.'@'.$session->host.'/'.$session->resource);

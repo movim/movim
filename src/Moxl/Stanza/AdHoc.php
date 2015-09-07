@@ -16,7 +16,7 @@ class AdHoc {
     static function command($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $query = $dom->createElementNS('http://jabber.org/protocol/commands', 'query');
+        $query = $dom->createElementNS('http://jabber.org/protocol/commands', 'command');
         $query->setAttribute('node', $node);
         $query->setAttribute('action', 'execute');
 
