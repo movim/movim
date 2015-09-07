@@ -31,18 +31,18 @@
                 <!--ng-class="rosterCtrl.getContactClient(myjid.ajiditems)"-- >-->
                 <div
                     class="action"
-                    ng-if="myjid.ajiditems.rosterview.tune != '' || myjid.ajiditems.rosterview.type != '' || myjid.ajiditems.rosterview.subscription != 'both'"
+                    ng-if="myjid.ajiditems.rosterview.tune || myjid.ajiditems.rosterview.type != '' || myjid.ajiditems.rosterview.subscription != 'both'"
                     ng-switch on="myjid.ajiditems.rosterview.type">
                     <i ng-switch-when="handheld" class="zmdi zmdi-smartphone"></i>
                     <i ng-switch-when="phone" class="zmdi zmdi-smartphone"></i>
                     <i ng-switch-when="web" class="zmdi zmdi-globe-alt"></i>
                     <i ng-switch-when="bot" class="zmdi zmdi-memory"></i>
-                    <i ng-if="myjid.ajiditems.rosterview.tune" class="zmdi zmdi-play-arrow"></i>
+                    <i ng-if="myjid.ajiditems.rosterview.tune" class="zmdi zmdi-play"></i>
                     <i ng-if="myjid.ajiditems.rosterview.subscription == 'to'" class="zmdi zmdi-arrow-in"></i>
                     <i ng-if="myjid.ajiditems.rosterview.subscription == 'from'" class="zmdi zmdi-arrow-out"></i>
                     <i ng-if="myjid.ajiditems.rosterview.subscription == 'none'" class="zmdi zmdi-do-not-disturb"></i>
                 </div>
-
+                
                 <span
                     ng-if="::myjid.ajiditems.rosterview.avatar != false"
                     class="icon bubble status {{myjid.ajiditems.rosterview.presencetxt}}"
