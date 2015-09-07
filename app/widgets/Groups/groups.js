@@ -10,7 +10,7 @@ var Groups = {
                 Group_ajaxGetItems(this.dataset.server, this.dataset.node);
                 Group_ajaxGetMetadata(this.dataset.server, this.dataset.node);
                 Group_ajaxGetAffiliations(this.dataset.server, this.dataset.node);
-                //Group_ajaxGetSubscriptions(this.dataset.server, this.dataset.node);
+                Group_ajaxGetSubscriptions(this.dataset.server, this.dataset.node, false);
                 Groups.reset(items);
                 movim_add_class(this, 'active');
             }

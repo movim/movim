@@ -196,10 +196,6 @@ class Group extends WidgetBase
         $view->assign('node', $node);
         $html .= $view->draw('_group_publish', true);
 
-        $header = $this->prepareHeader($server, $node);
-
-        Header::fill($header);
-
         RPC::call('MovimTpl.fill', '#group_widget.'.stringToUri($server.'_'.$node), $html);
         RPC::call('Group.enableVideos');
     }
@@ -282,14 +278,14 @@ class Group extends WidgetBase
           ->request();
     }
 
-    function ajaxGetSubscriptions($server, $node)
+    function ajaxGetSubscriptions($server, $node, $notify = true)
     {
         if(!$this->validateServerNode($server, $node)) return;
 
         $r = new GetSubscriptions;
         $r->setTo($server)
           ->setNode($node)
-          ->setSync()
+          ->setNotify($notify)
           ->request();
     }
 
