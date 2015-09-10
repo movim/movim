@@ -40,7 +40,7 @@
                     <i ng-if="myjid.ajiditems.rosterview.tune" class="zmdi zmdi-play"></i>
                     <i ng-if="myjid.ajiditems.rosterview.subscription == 'to'" class="zmdi zmdi-arrow-in"></i>
                     <i ng-if="myjid.ajiditems.rosterview.subscription == 'from'" class="zmdi zmdi-arrow-out"></i>
-                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'none'" class="zmdi zmdi-do-not-disturb"></i>
+                    <i ng-if="myjid.ajiditems.rosterview.subscription == 'none'" class="zmdi zmdi-block"></i>
                 </div>
                 
                 <span

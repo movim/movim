@@ -328,7 +328,7 @@
                     {/if}
                     {if="$contactr->rostersubscription == 'none'"}
                         <span class="icon gray">
-                            <i class="zmdi zmdi-do-not-disturb"></i>
+                            <i class="zmdi zmdi-block"></i>
                         </span>
 
                         <span>{$c->__('subscription.nil')}</span>
