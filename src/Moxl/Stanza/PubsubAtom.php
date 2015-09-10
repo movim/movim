@@ -86,6 +86,12 @@ class PubsubAtom {
                     </geoloc>';
         }
 
+        if($this->content) {
+            $content_raw = $dom->createElement('content', $this->content);
+            $content_raw->setAttribute('type', 'text');
+            $entry->appendChild($content_raw);
+        }
+
         if($this->contentxhtml) {
             $content = $dom->createElement('content');
             $content->setAttribute('type', 'xhtml');
@@ -97,10 +103,6 @@ class PubsubAtom {
             $f->appendXML($this->contentxhtml);
             $div->appendChild($f);
         }
-
-        $content_raw = $dom->createElement('content', $this->content);
-        $content_raw->setAttribute('type', 'text');
-        $entry->appendChild($content_raw);
 
         $link = $dom->createElement('link');
         $link->setAttribute('rel', 'alternate');
