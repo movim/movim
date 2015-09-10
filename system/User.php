@@ -53,7 +53,7 @@ class User {
             $this->config = $session->config;
             $lang = $this->getConfig('language');
             if(isset($lang)) {
-                $l = Locale::start();
+                $l = Movim\i18n\Locale::start();
                 $l->load($lang);
             }
 

@@ -632,4 +632,16 @@ function requestURL($url, $timeout = 10, $post = false) {
         return false;
     }
 }
+
+/*
+ * @desc Translate something
+ */
+function __() {
+    $args = func_get_args();
+    $l = Movim\i18n\Locale::start();
+
+    $string = array_shift($args);
+    return $l->translate($string, $args);
+}
+
 ?>

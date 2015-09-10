@@ -9,8 +9,6 @@ use \React\EventLoop\Factory;
 use React\Socket\Server as Reactor;
 
 require dirname(__FILE__) . '/vendor/autoload.php';
-require dirname(__FILE__) . '/src/Movim/Daemon/Core.php'; // Why ?
-require dirname(__FILE__) . '/src/Movim/Daemon/Session.php'; // Why ?
 
 define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');

@@ -200,10 +200,6 @@ class Bootstrap {
     }
 
     private function loadSystem() {
-        // Loads up all system libraries.
-        //require_once(SYSTEM_PATH . "/i18n/i18n.php");
-        require_once(SYSTEM_PATH . "/i18n/Locale.php");
-
         require_once(SYSTEM_PATH . "Session.php");
         require_once(SYSTEM_PATH . "Sessionx.php");
         require_once(SYSTEM_PATH . "Utils.php");
@@ -256,7 +252,7 @@ class Bootstrap {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        $l = Locale::start();
+        $l = Movim\i18n\Locale::start();
 
         if($user->isLogged()) {
             $lang = $user->getConfig('language');
