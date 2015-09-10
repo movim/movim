@@ -39,7 +39,7 @@ class Syndication extends WidgetBase
         $feed = $dom->createElementNS('http://www.w3.org/2005/Atom', 'feed');
         $dom->appendChild($feed);
 
-        $feed->appendChild($dom->createElement('date', date('c')));
+        $feed->appendChild($dom->createElement('updated', date('c')));
 
         $feed->appendChild($self = $dom->createElement('link'));
         $self->setAttribute('rel', 'self');
