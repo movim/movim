@@ -131,6 +131,12 @@ article section content div.quote li img {
     float: right;
 }
 
+article section content img.big_picture {
+    display: block;
+    margin: 0rem auto;
+    margin-bottom: 1rem;
+}
+
 article ul li.pic img {
     max-width: 30rem;
     max-height: 30rem;
