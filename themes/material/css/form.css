@@ -218,6 +218,13 @@ form > div .radio > input[type="radio"]:checked + label:hover {
     box-shadow: inset 0 0 0rem 0.4rem white, 0 0 0 1.5rem rgba(0, 0, 0, 0.1);
 }
 
+/* Disabled */
+
+form > div > input:disabled,
+form > div > input:disabled + label {
+    opacity: 0.5;
+}
+
 /* Button */
 
 .button.oppose {

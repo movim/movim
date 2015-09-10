@@ -1,0 +1,13 @@
+#post_widget #enable_content > * {
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+    opacity: 0.3;
+}
+
+#post_widget #enable_content:hover > * {
+    opacity: 1;
+}
+
+#post_widget #content_field {
+    display: none;
+}

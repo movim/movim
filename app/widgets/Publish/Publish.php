@@ -29,6 +29,7 @@ class Publish extends WidgetBase
     function load()
     {
         $this->addjs('publish.js');
+        $this->addcss('publish.css');
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->registerEvent('pubsub_testpostpublish_handle', 'onTestPublish');
         $this->registerEvent('pubsub_testpostpublish_error', 'onTestPublishError');
@@ -138,22 +139,25 @@ class Publish extends WidgetBase
     {
         RPC::call('Publish.disableSend');
 
-        if($form->content->value != '') {
-            $content = Markdown::defaultTransform($form->content->value);
+        if($form->title->value != '') {
 
             $p = new PostPublish;
             $p->setFrom($this->user->getLogin())
               ->setTo($form->to->value)
-              ->setContent($form->content->value)
+              ->setTitle($form->title->value)
               ->setNode($form->node->value);
               //->setLocation($geo)
               //->enableComments()
+            if($form->content->value != '') {
+                $p->setContent($form->content->value);
 
+                $content = Markdown::defaultTransform($form->content->value);
+                $p->setContentXhtml(rawurldecode($content));
+            }
+
+            // Still usefull ? Check line 44
             if($form->node->value == 'urn:xmpp:microblog:0') {
                 $p->enableComments();
-            }
-            if($form->title->value != '') {
-                $p->setTitle($form->title->value);
             }
 
             if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
@@ -172,11 +176,10 @@ class Publish extends WidgetBase
                 }
             }
 
-            $p->setContentXhtml(rawurldecode($content))
-              ->request();
+            $p->request();
         } else {
             RPC::call('Publish.enableSend');
-            Notification::append(false, $this->__('publish.no_content'));
+            Notification::append(false, $this->__('publish.no_title'));
         }
     }
 

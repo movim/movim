@@ -23,6 +23,11 @@ var Publish = {
         movim_add_class('#button_send', 'disabled');
     },
 
+    enableContent: function() {
+        document.querySelector('#enable_content').style.display = 'none';
+        document.querySelector('#content_field').style.display = 'block';
+    },
+
     headerBack: function(server, node, ok) {
         // We check if the form is filled
         if(Publish.checkFilled() && ok == false) {

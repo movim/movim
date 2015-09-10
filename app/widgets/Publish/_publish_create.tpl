@@ -5,10 +5,7 @@
         <input type="text" name="title" placeholder="{$c->__('post.title')}">
         <label for="title">{$c->__('post.title')}</label>
     </div>
-    <div>
-        <textarea name="content" placeholder="{$c->__('post.content')}" onkeyup="movim_textarea_autoheight(this);"></textarea>
-        <label for="content">{$c->__('post.content')}</label>
-    </div>
+
     <div>
         <input
             type="url"
@@ -24,6 +21,15 @@
             </section>
         </article>
         <div id="gallery"></div>
+    </div>
+    
+    <div id="enable_content" onclick="Publish.enableContent();">
+        <input type="text" value="{$c->__('publish.add_text')}"/>
+        <label>{$c->__('publish.add_text_label')}</label>
+    </div>
+    <div id="content_field">
+        <textarea name="content" placeholder="{$c->__('post.content_text')}" onkeyup="movim_textarea_autoheight(this);"></textarea>
+        <label for="content">{$c->__('post.content_label')}</label>
     </div>
 
     <ul class="middle flex active">
