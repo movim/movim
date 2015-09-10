@@ -8,10 +8,6 @@ class Blog extends WidgetBase {
 
     function display()
     {
-        /*if(!$this->get('f')) {
-            return;
-        }*/
-
         if($this->_view == 'grouppublic') {
             $from = $this->get('s');
             $node = $this->get('n');

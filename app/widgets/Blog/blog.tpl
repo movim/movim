@@ -28,7 +28,15 @@
             {/if}
         </li>
         {else}
-        <li class="condensed">
+        <li class="condensed action">
+            <div class="action">
+                <a
+                    href="{$c->route('feed', array($server, $node))}"
+                    target="_blank"
+                >
+                    <i class="zmdi zmdi-portable-wifi"></i> Atom
+                </a>
+            </div>
             <span class="icon gray">
                 <i class="zmdi zmdi-pages"></i>
             </span>

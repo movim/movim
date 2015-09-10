@@ -293,6 +293,14 @@ class Postn extends Model {
             return false;
     }
 
+    public function getUUID() {
+        if(substr($this->nodeid, 10) == 'urn:uuid:') {
+            return $this->nodeid;
+        } else {
+            return 'urn:uuid:'.generateUUID($this->nodeid);
+        }
+    }
+
     public function isMicroblog() {
         if($this->node == "urn:xmpp:microblog:0")
             return true;

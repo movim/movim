@@ -11,58 +11,123 @@ class Syndication extends WidgetBase
     {
         ob_clean();
 
-        if(!$this->get('f')) {
-            return;
-        }
-
-        $from = $this->get('f');
-        if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
-            $node = 'urn:xmpp:microblog:0';
-        } else {
-            return;
-        }
-
         $pd = new \modl\PostnDAO();
         $cd = new \modl\ContactDAO();
+        $id = new \Modl\ItemDAO;
 
-        $this->view->assign('contact', $cd->get($from, true));
-        $this->view->assign('uri',  Route::urlize('blog',array($from)));
-
-        if(isset($from) && isset($node)) {
-            $messages = $pd->getPublic($from, $node, 10, 0);
-            $this->view->assign('messages', $messages);
+        if(!$this->get('s')) {
+            return;
         }
 
-        if(isset($messages[0])) {
-            header("Content-Type: application/atom+xml; charset=UTF-8");
+        $from = $this->get('s');
 
-            $this->view->assign('date', date('c'));
+        if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
+            $node = 'urn:xmpp:microblog:0';
+            $contact = $cd->get($from);
+        } elseif(!$this->get('n')) {
+            return;
+        } else {
+            $node = $this->get('n');
+            $item = $id->getItem($from, $node);
         }
-    }
 
-    function prepareTitle($title)
-    {
-        if($title == null)
-            return '...';
-        else
-            return $this->prepareContent($title, true);
-    }
+        $messages = $pd->getPublic($from, $node, 10, 0);
+        header("Content-Type: application/atom+xml; charset=UTF-8");
 
-    function prepareContent($content, $title = false)
-    {
-        if($title)
-            return cleanHTMLTags($content);
-        else
-            return trim(cleanHTMLTags(prepareString($content)));
-    }
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->formatOutput = true;
+        $feed = $dom->createElementNS('http://www.w3.org/2005/Atom', 'feed');
+        $dom->appendChild($feed);
 
-    function generateUUID($content)
-    {
-        return generateUUID(serialize($content));
-    }
+        $feed->appendChild($dom->createElement('date', date('c')));
 
-    function prepareUpdated($date)
-    {
-        return date('c', strtotime($date));
+        $feed->appendChild($self = $dom->createElement('link'));
+        $self->setAttribute('rel', 'self');
+
+        if($contact != null) {
+            $feed->appendChild($dom->createElement('title', __('feed.title', $contact->getTrueName())));
+
+            $feed->appendChild($author = $dom->createElement('author'));
+            $author->appendChild($dom->createElement('name', $contact->getTrueName()));
+            $author->appendChild($dom->createElement('uri', Route::urlize('blog',array($from))));
+
+            $feed->appendChild($dom->createElement('logo', $contact->getPhoto('xl')));
+
+            $self->setAttribute('href', Route::urlize('feed',array($server)));
+        }
+
+        if($item != null) {
+            if($item->name) {
+                $feed->appendChild($dom->createElement('title', $item->name));
+            } else {
+                $feed->appendChild($dom->createElement('title', $item->node));
+            }
+
+            if($item->description) {
+                $feed->appendChild($dom->createElement('subtitle', $item->description));
+            } else {
+                $feed->appendChild($dom->createElement('subtitle', $item->server));
+            }
+
+            $self->setAttribute('href', Route::urlize('feed',array($server, $node)));
+        }
+
+        $feed->appendChild($generator = $dom->createElement('generator', 'Movim'));
+        $generator->setAttribute('uri', 'https://movim.eu');
+        $generator->setAttribute('version', APP_VERSION);
+
+        foreach($messages as $message) {
+            $feed->appendChild($entry = $dom->createElement('entry'));
+
+            if($message->title) {
+                $entry->appendChild($dom->createElement('title', $message->title));
+            } else {
+                $entry->appendChild($dom->createElement('title', __('post.default_title')));
+            }
+
+            $entry->appendChild($dom->createElement('id', $message->getUUID()));
+            $entry->appendChild($dom->createElement('updated', date('c', strtotime($message->updated))));
+
+            $entry->appendChild($content = $dom->createElement('content'));
+            $content->appendChild($div = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'div'));
+            $content->setAttribute('type', 'xhtml');
+
+            $f = $dom->createDocumentFragment();
+            $f->appendXML($message->contentcleaned);
+            $div->appendChild($f);
+
+            //$div->appendChild($dom->createCDATASection($message->contentcleaned));
+
+            $attachements = $message->getAttachements();
+
+            if(isset($attachements['pictures'])) {
+                foreach($attachements['pictures'] as $value) {
+                    $entry->appendChild($link = $dom->createElement('link'));
+                    $link->setAttribute('rel', 'enclosure');
+                    $link->setAttribute('type', $value['type']);
+                    $link->setAttribute('href', $value['href']);
+                }
+            }
+
+            if(isset($attachements['files'])) {
+                foreach($attachements['files'] as $value) {
+                    $entry->appendChild($link = $dom->createElement('link'));
+                    $link->setAttribute('rel', 'enclosure');
+                    $link->setAttribute('type', $value['type']);
+                    $link->setAttribute('href', $value['href']);
+                }
+            }
+
+            if(isset($attachements['links'])) {
+                foreach($attachements['files'] as $value) {
+                    $entry->appendChild($link = $dom->createElement('link'));
+                    $link->setAttribute('rel', 'alternate');
+                    $link->setAttribute('href', $value['href']);
+                }
+            }
+        }
+
+        echo $dom->saveXML();
+        exit;
     }
 }
