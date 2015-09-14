@@ -75,6 +75,12 @@ var Notification = {
         Notification_ajaxCurrent(Notification.notifs_key);
     },
     toast : function(html) {
+        // Android notification
+        if(Android != null) {
+            Android.showToast(html);
+            return;
+        }
+
         target = document.getElementById('toast');
 
         if(target) {
@@ -88,7 +94,8 @@ var Notification = {
             3000);
     },
     snackbar : function(html, time) {
-        if(Notification.inhibed == true) return;
+        if(Android != null
+        || Notification.inhibed == true) return;
 
         target = document.getElementById('snackbar');
 
@@ -103,9 +110,14 @@ var Notification = {
             time*1000);
     },
     desktop : function(title, body, picture) {
+        // Android notification
+        if(Android != null) {
+            Android.showNotification(title, body, picture);
+            return;
+        }
+
         if(Notification.inhibed == true
         || Notification.focused) return;
-console.log(DesktopNotification);
         var notification = new DesktopNotification(title, { icon: picture, body: body });
     }
 }
