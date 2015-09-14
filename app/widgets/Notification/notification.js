@@ -76,7 +76,7 @@ var Notification = {
     },
     toast : function(html) {
         // Android notification
-        if(Android != null) {
+        if(typeof Android !== 'undefined') {
             Android.showToast(html);
             return;
         }
@@ -94,7 +94,7 @@ var Notification = {
             3000);
     },
     snackbar : function(html, time) {
-        if(Android != null
+        if(typeof Android !== 'undefined'
         || Notification.inhibed == true) return;
 
         target = document.getElementById('snackbar');
@@ -114,7 +114,7 @@ var Notification = {
         || Notification.focused) return;
 
         // Android notification
-        if(Android != null) {
+        if(typeof Android !== 'undefined') {
             Android.showNotification(title, body, picture);
             return;
         }
