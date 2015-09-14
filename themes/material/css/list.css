@@ -226,7 +226,7 @@ ul li div.bubble {
 }
 
 ul li div.bubble div {
-    white-space: pre-wrap;
+    /*white-space: pre-wrap;*/
     display: inline;
 }
 
