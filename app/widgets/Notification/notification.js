@@ -110,14 +110,15 @@ var Notification = {
             time*1000);
     },
     desktop : function(title, body, picture) {
+        if(Notification.inhibed == true
+        || Notification.focused) return;
+
         // Android notification
         if(Android != null) {
             Android.showNotification(title, body, picture);
             return;
         }
 
-        if(Notification.inhibed == true
-        || Notification.focused) return;
         var notification = new DesktopNotification(title, { icon: picture, body: body });
     }
 }
