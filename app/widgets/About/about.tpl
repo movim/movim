@@ -4,7 +4,7 @@
     <ul class="thick divided">
         <li class="condensed">
             <span class="icon bubble color green"><i class="zmdi zmdi-info"></i></span>
-            <p>{$c->__('about.info')} <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3</a>.</p>
+            <p class="all">{$c->__('about.info')} <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3</a>.</p>
         </li>
         <li class="subheader">{$c->__('about.thanks')}</li>
         <li class="condensed">
