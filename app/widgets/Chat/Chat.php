@@ -72,7 +72,14 @@ class Chat extends WidgetBase
             && $message->type != 'groupchat') {
                 $avatar = $contact->getPhoto('s');
                 if($avatar == false) $avatar = null;
-                Notification::append('chat|'.$from, $contact->getTrueName(), $message->body, $avatar, 4);
+                Notification::append(
+                    'chat|'.$from,
+                    $contact->getTrueName(),
+                    $message->body,
+                    $avatar,
+                    4,
+                    $this->route('chat', $contact->jid)
+                );
             }
 
             RPC::call('movim_fill', $from.'_state', $contact->jid);

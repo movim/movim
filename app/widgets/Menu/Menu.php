@@ -46,9 +46,24 @@ class Menu extends WidgetBase
                     $title = $post->title;
                 }
 
-                if(!$post->isMine()) Notification::append('news', $contact->getTrueName(), $title, $contact->getPhoto('s'), 2);
+                if(!$post->isMine())
+                    Notification::append(
+                        'news',
+                        $contact->getTrueName(),
+                        $title,
+                        $contact->getPhoto('s'),
+                        2,
+                        $this->route('news', $post->nodeid)
+                    );
             } else {
-                Notification::append('news', $post->title, $post->node, null, 2);
+                Notification::append(
+                    'news',
+                    $post->title,
+                    $post->node,
+                    null,
+                    2,
+                    $this->route('news', $post->nodeid)
+                );
             }
 
             $this->onStream($count);
