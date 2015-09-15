@@ -29,7 +29,7 @@ class Notification extends WidgetBase
         $session = Session::start();
         $notifs = $session->get('notifs');
 
-        RPC::call('Notification.desktop', $title, $body, $picture);
+        RPC::call('Notification.desktop', $title, $body, $picture, $action);
 
         $notifs_key = $session->get('notifs_key');
         if($notifs_key != null && $key == $notifs_key) return;
@@ -58,7 +58,7 @@ class Notification extends WidgetBase
         }
 
         $n = new Notification;
-        RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture), $time);
+        RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture, $action), $time);
 
         $session->set('notifs', $notifs);
     }
@@ -121,13 +121,14 @@ class Notification extends WidgetBase
         $session->set('notifs_key', $key);
     }
 
-    function prepareSnackbar($title, $body = false, $picture = false)
+    function prepareSnackbar($title, $body = null, $picture = null, $action = null)
     {
         $view = $this->tpl();
 
         $view->assign('title', $title);
         $view->assign('body', $body);
         $view->assign('picture', $picture);
+        $view->assign('action', $action);
 
         return $view->draw('_notification', true);
     }

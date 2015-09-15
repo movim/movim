@@ -109,7 +109,7 @@ var Notification = {
             },
             time*1000);
     },
-    desktop : function(title, body, picture) {
+    desktop : function(title, body, picture, action) {
         if(Notification.inhibed == true
         || Notification.focused) return;
 
@@ -120,6 +120,12 @@ var Notification = {
         }
 
         var notification = new DesktopNotification(title, { icon: picture, body: body });
+
+        if(action !== null) {
+            notification.onclick = function() {
+                window.location.href = action;
+            }
+        }
     }
 }
 

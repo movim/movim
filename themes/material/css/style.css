@@ -714,6 +714,19 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     transform: translateX(0);
 }
 
+.snackbar > a {
+    pointer-events: auto;
+    margin: -1rem -2rem;
+    display: block;
+    margin: -2rem -1rem;
+    padding: 2rem 1rem;
+}
+
+.snackbar > a:hover {
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    padding: calc(2rem - 3px) calc(1rem - 3px);
+}
+
 .snackbar p,
 .toast p {
     color: white;
