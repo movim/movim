@@ -5,11 +5,10 @@
             <span class="info">{$conferences|count}</span>
         </li>
         {loop="$conferences"}
-            {$connected = $c->checkConnected($value->conference, $value->nick)}
             <li data-jid="{$value->conference}"
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
-                class="room {if="$connected"}online{/if}">
-                {if="$connected"}
+                class="room {if="$value->connected"}online action{/if}">
+                {if="$value->connected"}
                     <span class="icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts"></i></span>
                 {else}
                     <span class="disabled icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts-outline"></i></span>

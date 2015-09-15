@@ -10,6 +10,8 @@ class Conference extends Model {
     public $autojoin;
     public $status;
 
+    public $connected = false;
+
     public function __construct() {
         $this->_struct = '
         {

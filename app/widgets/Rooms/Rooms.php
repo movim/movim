@@ -243,7 +243,22 @@ class Rooms extends WidgetBase
     {
         $view = $this->tpl();
         $cod = new \modl\ConferenceDAO();
-        $view->assign('conferences', $cod->getAll());
+
+        $list = $cod->getAll();
+
+        $connected = array();
+        
+        foreach($list as $key => $room) {
+            if($this->checkConnected($room->conference, $room->nick)) {
+                $room->connected = true;
+                array_push($connected, $room);
+                unset($list[$key]);
+            }
+        }
+
+        $list = array_merge($connected, $list);
+        
+        $view->assign('conferences', $list);
         $view->assign('room', $this->get('r'));
 
         return $view->draw('_rooms', true);
