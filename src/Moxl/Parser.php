@@ -7,6 +7,7 @@ class Parser {
     private $depth = 0;
     private $node = null;
     private $handler = null;
+    private $raw = false;
 
     public function __construct()
     {
@@ -50,13 +51,24 @@ class Parser {
         if($this->depth == 1) {
             $this->node = $this->handler = simplexml_load_string("<$name></$name>", 'SimpleXMLElement', LIBXML_COMPACT | LIBXML_PARSEHUGE);
         } elseif($this->depth > 1) {
-            $this->handler = $this->handler->addChild($name);
+            if($this->raw != false) {
+                $this->handler[0] .= '<'.$name.' ';
+                foreach($attrs as $name => $value) {
+                    $this->handler[0] .= $name."='".$value."' ";
+                }
+                $this->handler[0] .= '>';
+            } else {
+                $this->handler = $this->handler->addChild($name);
+            }
         }
 
         if(isset($this->handler)) {
             foreach($attrs as $name => $value) {
                 if ('xmlns:' === substr($name, 0, 6)) {
                     $name = 'xmlns:'.$name;
+                }
+                if($value === 'http://www.w3.org/1999/xhtml') {
+                    $this->raw = $this->depth;
                 }
                 $this->handler->addAttribute($name, $value);
             }
@@ -71,11 +83,24 @@ class Parser {
 
         $this->depth--;
 
+        if($this->raw != false) {
+            $this->handler[0] .= '</'.$name.'>';
+        }
+
+        if($this->raw != false
+        && $this->depth == $this->raw) {
+            $this->raw = false;
+        }
+
         if($this->depth == 1) {
-            #fwrite(STDERR, colorize($this->node->asXML(), 'blue')." : ".colorize('received', 'green')."\n");
+            /*$dom = new \DOMDocument('1.0', 'utf-8');
+            $element = $dom->importNode(dom_import_simplexml($this->node), true);
+            $dom->appendChild($element); 
+            $debug = $dom->saveHTML();
+            fwrite(STDERR, colorize($debug, 'blue')." : ".colorize('received', 'green')."\n");*/
             \Moxl\Xec\Handler::handle($this->node);
             unset($this->node);
-        } elseif($this->depth > 1) {
+        } elseif($this->depth > 1 && $this->raw == false) {
             $this->handler = current($this->handler->xpath("parent::*"));
         }
     }
