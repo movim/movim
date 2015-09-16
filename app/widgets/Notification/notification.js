@@ -115,7 +115,7 @@ var Notification = {
 
         // Android notification
         if(typeof Android !== 'undefined') {
-            Android.showNotification(title, body, picture);
+            Android.showNotification(title, body, picture, action);
             return;
         }
 
