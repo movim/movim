@@ -153,10 +153,11 @@ class Publish extends WidgetBase
                 $p->enableComments();
             }
 
-            $content = '';
+            $content = $content_xhtml = '';
 
             if($form->content->value != '') {
                 $content = $form->content->value;
+                $content_xhtml = Markdown::defaultTransform($content);
             }
 
             if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
@@ -168,7 +169,7 @@ class Publish extends WidgetBase
                         $key = key($embed->images);
                         $p->setImage($embed->images[0]['value'], $embed->title, $embed->images[0]['mime']);
                     } else {
-                        $content .= $this->prepareEmbed($embed);
+                        $content_xhtml .= $this->prepareEmbed($embed);
                     }
                 } catch(Exception $e) {
                     error_log($e->getMessage());
@@ -177,9 +178,10 @@ class Publish extends WidgetBase
 
             if($content != '') {
                 $p->setContent($content);
+            }
 
-                $content = Markdown::defaultTransform($content);
-                $p->setContentXhtml(rawurldecode($content));
+            if($content_xhtml != '') {
+                $p->setContentXhtml(rawurldecode($content_xhtml));
             }
 
             $p->request();
