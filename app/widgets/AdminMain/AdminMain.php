@@ -72,7 +72,7 @@ class AdminMain extends WidgetBase
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        $l = Locale::start();
+        $l = Movim\i18n\Locale::start();
 
         $this->view->assign('conf', $cd->get());
         $this->view->assign('logs',
