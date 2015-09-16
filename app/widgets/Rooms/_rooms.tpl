@@ -7,7 +7,7 @@
         {loop="$conferences"}
             <li data-jid="{$value->conference}"
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
-                class="room {if="$value->connected"}online action{/if}">
+                class="room {if="$value->connected"}online{/if}">
                 {if="$value->connected"}
                     <span class="icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts"></i></span>
                 {else}
