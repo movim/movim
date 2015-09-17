@@ -113,18 +113,18 @@ var Notification = {
         if(Notification.inhibed == true
         || Notification.focused) return;
 
-        // Android notification
-        if(typeof Android !== 'undefined') {
-            Android.showNotification(title, body, picture, action);
-            return;
-        }
-
         var notification = new DesktopNotification(title, { icon: picture, body: body });
 
         if(action !== null) {
             notification.onclick = function() {
                 window.location.href = action;
             }
+        }
+    },
+    android : function(title, body, picture, action) {
+        if(typeof Android !== 'undefined') {
+            Android.showNotification(title, body, picture, action);
+            return;
         }
     }
 }
