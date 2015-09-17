@@ -83,16 +83,12 @@ class Chat extends WidgetBase
             }
 
             RPC::call('movim_fill', $from.'_state', $contact->jid);
-        // If the message is from me
-        } /*else {
+        } else {
+            // If the message is from me we reset the notif counter
             $from = $message->jidto;
-            $contact = $cd->get();
-        }*
-
-        $me = $cd->get();
-        if($me == null) {
-            $me = new \Modl\Contact;
-        }*/
+            $n = new Notification;
+            $n->ajaxClear('chat|'.$from);
+        }
 
         if(!preg_match('#^\?OTR#', $message->body)) {
             RPC::call('Chat.appendMessage', $this->prepareMessage($message));
