@@ -53,8 +53,10 @@ class Parser {
         } elseif($this->depth > 1) {
             if($this->raw != false) {
                 $this->handler[0] .= '<'.$name.' ';
-                foreach($attrs as $name => $value) {
-                    $this->handler[0] .= $name."='".$value."' ";
+                if($this->raw <= $this->depth) {
+                    foreach($attrs as $name => $value) {
+                        $this->handler[0] .= $name."='".$value."' ";
+                    }
                 }
                 $this->handler[0] .= '>';
             } else {
@@ -62,7 +64,7 @@ class Parser {
             }
         }
 
-        if(isset($this->handler)) {
+        if(isset($this->handler) && $this->raw == false) {
             foreach($attrs as $name => $value) {
                 if ('xmlns:' === substr($name, 0, 6)) {
                     $name = 'xmlns:'.$name;
