@@ -83,7 +83,7 @@ var Chat = {
 	    }
 
 	    bubble.querySelector('div').className = '';
-        } else {
+        } else if(Chat.left != null) {
             if(message.session == message.jidfrom) {
                 bubble = Chat.right.cloneNode(true);
                 if(Chat.previous == 'right') {
@@ -124,6 +124,7 @@ var Chat = {
 MovimWebsocket.attach(function() {
     var jid = document.querySelector('#chat_widget').dataset.jid;
     if(jid) {
+        MovimTpl.showPanel();
         Chat_ajaxGet(jid);
     }
 });
