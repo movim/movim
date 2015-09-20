@@ -32,14 +32,15 @@ class Notification extends WidgetBase
         RPC::call('Notification.desktop', $title, $body, $picture, $action);
 
         $notifs_key = $session->get('notifs_key');
-        if($notifs_key != null && $key == $notifs_key) return;
-
-        RPC::call('Notification.android', $title, $body, $picture, $action);
 
         if($notifs == null) $notifs = array();
 
         $explode = explode('|', $key);
         $first = reset($explode);
+
+        if($notifs_key != null && $first == $notifs_key) return;
+
+        RPC::call('Notification.android', $title, $body, $picture, $action);
 
         if(array_key_exists($first, $notifs)) {
             $notifs[$first]++;

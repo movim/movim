@@ -111,7 +111,10 @@ var Notification = {
     },
     desktop : function(title, body, picture, action) {
         if(Notification.inhibed == true
-        || Notification.focused) return;
+        || Notification.focused
+        || typeof DesktopNotification === 'undefined') return;
+
+        console.log(Notification.focused);
 
         var notification = new DesktopNotification(title, { icon: picture, body: body });
 
@@ -152,6 +155,8 @@ document.onfocus = function() {
 
 
 window.addEventListener('load', function () {
+    if(typeof DesktopNotification === 'undefined') return;
+
     DesktopNotification.requestPermission(function (status) {
     // This allows to use Notification.permission with Chrome/Safari
     if(DesktopNotification.permission !== status) {
