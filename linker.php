@@ -31,6 +31,10 @@ $parser = new \Moxl\Parser;
 
 $buffer = '';
 
+function handleSSLErrors($errno, $errstr) {
+    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize($errstr, 'red')."\n");
+}
+
 $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser) {
     if(substr($data, -1) == "") {
         $messages = explode("", $buffer . substr($data, 0, -1));
@@ -113,7 +117,16 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 stream_context_set_option($conn->stream, 'ssl', 'allow_self_signed', true);
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer_name', false);
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer', false);
+                set_error_handler('handleSSLErrors');
                 $out = stream_socket_enable_crypto($conn->stream, 1, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+                restore_error_handler();
+
+                if($out !== true) {
+                    $loop->stop();
+                    return;
+                }
+
+                fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('TLS enabled', 'blue')."\n");
 
                 $restart = true;
             }

@@ -5,7 +5,6 @@ var Upload = {
 
     init : function() {
         document.getElementById('file').addEventListener('change', function(){
-            console.log(this);
             var file = this.files[0];
             Upload_ajaxSend({
                 name: file.name,
