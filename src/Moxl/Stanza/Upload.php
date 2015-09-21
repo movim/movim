@@ -6,7 +6,7 @@ class Upload {
     static function request($to, $name, $size, $type)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $request = $dom->createElementNS('eu:siacs:conversations:http:upload', 'request');
+        $request = $dom->createElementNS('urn:xmpp:http:upload', 'request');
         $request->appendChild($dom->createElement('filename', $name));
         $request->appendChild($dom->createElement('size', $size));
         $request->appendChild($dom->createElement('content-type', $type));
