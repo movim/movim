@@ -15,6 +15,7 @@ var Chat = {
         var text = n.value;
         n.value = "";
         n.focus();
+        movim_textarea_autoheight(n);
         Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
     },
     appendTextarea: function(value)
@@ -79,10 +80,10 @@ var Chat = {
             bubble.querySelector('span.user').innerHTML = message.resource;
             var conversation = document.getElementById(id);
             if(conversation) {
-		conversation.appendChild(bubble);
-	    }
+                conversation.appendChild(bubble);
+            }
 
-	    bubble.querySelector('div').className = '';
+            bubble.querySelector('div').className = '';
         } else if(Chat.left != null) {
             if(message.session == message.jidfrom) {
                 bubble = Chat.right.cloneNode(true);
@@ -114,6 +115,8 @@ var Chat = {
 
                 movim_append(id, bubble.outerHTML);
                 bubble.querySelector('div.bubble').className = 'bubble';
+
+                if(bubble.className.contains('oppose')) MovimTpl.scrollPanel();
             }
         }
 
