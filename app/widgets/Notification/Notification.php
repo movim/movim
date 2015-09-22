@@ -48,6 +48,8 @@ class Notification extends WidgetBase
             $notifs[$first] = 1;
         }
 
+        if($notifs_key != null && $key == $notifs_key) return;
+
         RPC::call('Notification.counter', $first, $notifs[$first]);
 
         if($first != $key) {
