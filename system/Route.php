@@ -41,21 +41,25 @@ class Route extends \BaseController {
             $request = explode('/', $this->fetchGet('query'));
             $this->_page = $request[0];
             array_shift($request);
-
-            if(isset($this->_routes[$this->_page]))
-                $route = $this->_routes[$this->_page];
-
-            if(count($request) && isset($route)) {
-                $i = 0;
-                foreach($route as $key) {
-                    if (isset($request[$i])) {
-                        $_GET[$key] = $request[$i];
-                    }
-                    $i++;
-                }
-            }
         } else {
-            $this->_page = $this->fetchGet('q');
+            $uri = strstr($_SERVER['REQUEST_URI'], 'index.php/');
+            $request = explode('/', $uri);
+            array_shift($request);
+
+            $this->_page = array_shift($request);
+        }
+
+        if(isset($this->_routes[$this->_page]))
+            $route = $this->_routes[$this->_page];
+
+        if(count($request) && isset($route)) {
+            $i = 0;
+            foreach($route as $key) {
+                if (isset($request[$i])) {
+                    $_GET[$key] = $request[$i];
+                }
+                $i++;
+            }
         }
 
         if(empty($this->_page))
@@ -78,38 +82,26 @@ class Route extends \BaseController {
             return BASE_URI;
 
         if(isset($routes[$page])) {
-            //if($params != false && count($routes[$page]) != count($params)) {
-                //throw new Exception(__('error.route', $page));
-            //} else {
-                if($tab != false)
-                    $tab = '#'.$tab;
-                // Here we got a beautiful rewriten URL !
-                if($config->rewrite == true
-                /*&& isset($_SERVER['HTTP_MOD_REWRITE'])
-                && $_SERVER['HTTP_MOD_REWRITE']*/) {
-                    $uri = BASE_URI . $page;
-                    if($params != false && is_array($params))
-                        foreach($params as $value)
-                            $uri .= '/' . $value;
-                    elseif($params != false)
-                        $uri .= '/' . $params;
-                }
-                //We construct a classic URL if the rewriting is disabled
-                else {
-                    $uri = BASE_URI . '?q=' . $page;
+            if($tab != false)
+                $tab = '#'.$tab;
+            // Here we got a beautiful rewriten URL !
+            if($config->rewrite == true) {
+                $uri = BASE_URI . $page;
+            }
+            //We construct a classic URL if the rewriting is disabled
+            else {
+                $uri = BASE_URI . 'index.php/'. $page;
+            }
 
-                    if($params != false && is_array($params)) {
-                        $i = 0;
-                        foreach($params as $value) {
-                            $uri .= '&' . $routes[$page][$i] . '=' . $value;
-                            $i++;
-                        }
-                    }
-                    elseif($params != false)
-                        $uri .= '&'.$routes[$page][0].'='.$params;
+            if($params != false && is_array($params)) {
+                foreach($params as $value) {
+                    $uri .= '/' . $value ;
                 }
-                return $uri.$tab;
-            //}
+            } elseif($params != false) {
+                $uri .= '/' . $params;
+            }
+            
+            return $uri.$tab;
         } else {
             throw new Exception(__('Route not set for the page %s', $page));
         }
