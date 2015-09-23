@@ -114,8 +114,6 @@ var Notification = {
         || Notification.focused
         || typeof DesktopNotification === 'undefined') return;
 
-        console.log(Notification.focused);
-
         var notification = new DesktopNotification(title, { icon: picture, body: body });
 
         if(action !== null) {

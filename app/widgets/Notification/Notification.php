@@ -38,9 +38,10 @@ class Notification extends WidgetBase
         $explode = explode('|', $key);
         $first = reset($explode);
 
-        if($notifs_key != null && $first == $notifs_key) return;
-
-        RPC::call('Notification.android', $title, $body, $picture, $action);
+        // What we receive is not what it's on the screen on Android
+        if($key != null && $key != $notifs_key) {
+            RPC::call('Notification.android', $title, $body, $picture, $action);
+        }
 
         if(array_key_exists($first, $notifs)) {
             $notifs[$first]++;
