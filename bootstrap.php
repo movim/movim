@@ -261,18 +261,14 @@ class Bootstrap {
 
         if($user->isLogged()) {
             $lang = $user->getConfig('language');
-            if(isset($lang)) {
-                $l->load($lang);
-            } else {
-                // Load default language.
-                $l->load($config->locale);
-            }
         }
-        elseif(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+
+        if(isset($lang)) {
+            $l->load($lang);
+        } elseif(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             $l->detect();
             $l->loadPo();
-        }
-        else {
+        } else {
             $l->load($config->locale);
         }
     }
