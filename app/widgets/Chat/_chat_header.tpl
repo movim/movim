@@ -26,7 +26,13 @@
             </span>
         </li>
     </ul>
-    <div id="chat_header" class="return active {if="$c->supported('upload')"}r2{else}r1{/if} condensed" onclick="MovimTpl.hidePanel(); Chat_ajaxGet();">
+    <div
+        id="chat_header"
+        class="return active {if="$c->supported('upload')"}r2{else}r1{/if} condensed"
+        onclick="
+            MovimTpl.hidePanel();
+            Notification.current('chat');
+            Chat_ajaxGet();">
         <span id="back" class="icon"><i class="zmdi zmdi-arrow-back"></i></span>
         <h2>
             {if="$contact != null"}
