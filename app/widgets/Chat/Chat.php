@@ -528,6 +528,11 @@ class Chat extends WidgetBase
         else return true;
     }
 
+    function getSmileyPath($id)
+    {
+        return BASE_URI.'/themes/material/img/emojis/large/'.$id.'.png';
+    }
+
     function display()
     {
         $this->view->assign('jid', false);
