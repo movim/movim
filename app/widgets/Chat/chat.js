@@ -116,7 +116,7 @@ var Chat = {
                 movim_append(id, bubble.outerHTML);
                 bubble.querySelector('div.bubble').className = 'bubble';
 
-                if(bubble.className.contains('oppose')) MovimTpl.scrollPanel();
+                if(bubble.className.indexOf('oppose') > -1) MovimTpl.scrollPanel();
             }
         }
 
