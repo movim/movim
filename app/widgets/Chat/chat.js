@@ -18,6 +18,10 @@ var Chat = {
         movim_textarea_autoheight(n);
         Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
     },
+    focus: function()
+    {
+        document.querySelector('#chat_textarea').focus();
+    },
     appendTextarea: function(value)
     {
     },
@@ -129,6 +133,7 @@ MovimWebsocket.attach(function() {
     if(jid) {
         MovimTpl.showPanel();
         Chat_ajaxGet(jid);
+        Notification.current('chat|' + jid);
     }
 });
 
