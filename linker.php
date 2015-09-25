@@ -113,10 +113,14 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 $loop->stop();
             } elseif($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
+                $session = \Sessionx::start();
                 stream_set_blocking($conn->stream, 1);
+                stream_context_set_option($conn->stream, 'ssl', 'SNI_enabled', false);
+                stream_context_set_option($conn->stream, 'ssl', 'peer_name', $session->host);
                 stream_context_set_option($conn->stream, 'ssl', 'allow_self_signed', true);
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer_name', false);
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer', false);
+
                 set_error_handler('handleSSLErrors');
                 $out = stream_socket_enable_crypto($conn->stream, 1, STREAM_CRYPTO_METHOD_TLS_CLIENT);
                 restore_error_handler();
