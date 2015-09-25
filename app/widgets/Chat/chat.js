@@ -20,7 +20,7 @@ var Chat = {
     },
     focus: function()
     {
-        document.querySelector('#chat_textarea').focus();
+        //document.querySelector('#chat_textarea').focus();
     },
     appendTextarea: function(value)
     {
