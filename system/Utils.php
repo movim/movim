@@ -634,6 +634,16 @@ function requestURL($url, $timeout = 10, $post = false) {
 }
 
 /*
+ * @desc Get the URI of a smiley
+ */
+function getSmileyPath($id, $large = true)
+{
+    $folder = '';
+    if($large) $folder = 'large/';
+    return BASE_URI.'/themes/material/img/emojis/'.$folder.$id.'.png';
+}
+
+/*
  * @desc Translate something
  */
 function __() {

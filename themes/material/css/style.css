@@ -788,6 +788,8 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
 .placeholder h1 {
     color: #888;
+    line-height: 5rem;
+    padding-bottom: 2rem;
 }
 
 .placeholder h4 {

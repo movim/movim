@@ -216,8 +216,8 @@ class Chat extends WidgetBase
 
         Header::fill($header);
         RPC::call('movim_fill', 'chat_widget', $html);
-        RPC::call('MovimTpl.scrollPanel');
         RPC::call('MovimTpl.showPanel');
+        RPC::call('MovimTpl.scrollPanel');
         RPC::call('Chat.focus');
 
         $this->prepareMessages($room, true);
@@ -532,7 +532,7 @@ class Chat extends WidgetBase
 
     function getSmileyPath($id)
     {
-        return BASE_URI.'/themes/material/img/emojis/large/'.$id.'.png';
+        return getSmileyPath($id);
     }
 
     function display()

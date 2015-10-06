@@ -1,11 +1,9 @@
 {if="$subscriptions == null"}
     <ul class="thick">
-        <li class="condensed">
-            <span class="icon bubble color green">
-                <i class="zmdi zmdi-bookmark"></i>
-            </span>
-            <span>{$c->__('groups.empty_title')}</span>
-            <p>{$c->__('groups.empty_text1')} {$c->__('groups.empty_text2')}</p>
+        <div class="placeholder icon pages">
+            <h1>{$c->__('groups.empty_title')}</h1>
+            <h4>{$c->__('groups.empty_text1')}</h4>
+            <h4>{$c->__('groups.empty_text2')}</h4>
         </li>
     </ul>
 {else}

@@ -1,6 +1,33 @@
 <div id="hello_widget" class="divided">
+    {if="!isset($top) || !isset($news)"}
+        <ul class="simple thick">
+            {$a = '1f600'}
+            <li>
+                <h2>{$c->__('hello.enter_title')}</h2>
+                <p>{$c->__('hello.enter_paragraph')} <img alt=":sushi:" class="emoji" src="{$a|getSmileyPath:false}"></p>
+            </li>
+        </ul>
+        <ul class="middle">
+            <li class="condensed">
+                <span class="icon gray">
+                    <i class="zmdi zmdi-menu on_mobile"></i>
+                    <i class="zmdi zmdi-cloud-outline on_desktop"></i>
+                </span>
+                <span>{$c->__('hello.menu_title')}</span>
+                <p>{$c->__('hello.menu_paragraph')}</p>
+            </li>
+        </ul>
+    {/if}
     <ul class="flex active middle">
-        <li class="subheader block large">{$c->__('hello.active_contacts')}</li>
+        <li class="subheader block large">{$c->__('chat.frequent')}</li>
+        {if="empty($top)"}
+            <li>
+                <span class="icon gray">
+                    <i class="zmdi zmdi-info-outline"></i>
+                </span>
+                <span>{$c->__('chats.empty_title')}</span>
+            </li>
+        {/if}
         {loop="$top"}
             <li tabindex="{$key+1}" class="block action {if="$value->status"}condensed{/if}"
                 onclick="Hello_ajaxChat('{$value->jid}')">
@@ -41,6 +68,14 @@
     </ul>
     {if="$c->supported('pubsub')"}
         <ul id="news" class="card shadow flex active">
+            {if="empty($news)"}
+                <li>
+                    <span class="icon gray">
+                        <i class="zmdi zmdi-info-outline"></i>
+                    </span>
+                    <span>{$c->__('menu.empty_title')}</span>
+                </li>
+            {/if}
             {loop="$news"}
                 <li class="block condensed"
                     data-id="{$value->nodeid}"

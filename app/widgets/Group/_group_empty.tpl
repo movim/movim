@@ -13,7 +13,7 @@
             {$c->___('group.help_info2', '<i class="zmdi zmdi-bookmark"></i>', '<i class="zmdi zmdi-plus"></i> ')}<br />
             {$c->___('group.help_info3', '<i class="zmdi zmdi-edit"></i>')}<br />
             <br />
-            {$c->___('group.help_info4', '<a href="'.$c->route('news').'">','</a>')}
+            {$c->___('group.help_info4', '<a href="'.$c->route('news').'"><i class="zmdi zmdi-receipt"></i> ','</a>')}
         </p>
     </li>
 </ul>
