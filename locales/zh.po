@@ -1,6 +1,6 @@
-# Chinese translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+#
+# Translators:
+# kashing <shing3232@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -91,18 +91,18 @@
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 15:17+0200\n"
-"PO-Revision-Date: 2015-06-09 12:21+0000\n"
-"Last-Translator: edhelas <edhelas@movim.eu>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-10-06 23:33+0200\n"
+"PO-Revision-Date: 2015-10-06 21:34+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -115,6 +115,10 @@ msgstr "开发者"
 #: [about]translators
 msgid "Translators"
 msgstr "翻译者"
+
+#: [about]translators_text
+msgid "Thanks to all the translators"
+msgstr ""
 
 #: [about]software
 msgid "Software"
@@ -134,12 +138,11 @@ msgstr "Movim是一款基于XMPP的交流平台. 除了以下的软件和资源,
 
 #: [account]title
 msgid "Account"
-msgstr ""
+msgstr "帐户"
 
 #: [account]password_change_title
-#, fuzzy
 msgid "Change my password"
-msgstr "错误密码"
+msgstr "更改我的密码"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -147,42 +150,40 @@ msgid "Password"
 msgstr "密码"
 
 #: [account]password_confirmation
-#, fuzzy
 msgid "Password confirmation"
-msgstr "%s - 配置"
+msgstr "密码确认"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "密码已经更新了"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "请输入一个有效的密码 （最少6个字符）"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "提供两个的密码不是相同的"
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "删除我的账号"
 
 #: [account]delete
-#, fuzzy
 msgid "Delete your account"
-msgstr "另一个账户"
+msgstr "删除我的账号"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "你将会删除你的XMPP账号跟所有有关的信息(基本资料,联系和公布)"
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "你确认你要删除它？"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "入口"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -250,14 +251,13 @@ msgstr "用户名"
 
 #: [db]host
 msgid "Host"
-msgstr ""
+msgstr "主机"
 
 #: [db]port
 msgid "Port"
-msgstr ""
+msgstr "端口"
 
 #: [db]name
-#, fuzzy
 msgid "Database sName"
 msgstr "数据库名称"
 
@@ -334,7 +334,6 @@ msgid "List of whitelisted XMPP servers"
 msgstr "XMPP服务器白名单列表"
 
 #: [information]title
-#, fuzzy
 msgctxt "[information]title"
 msgid "Information Message"
 msgstr "通知消息"
@@ -348,12 +347,10 @@ msgid "This message will be displayed on the login page"
 msgstr "这条信息将显示在登录页面"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you dont want to show any message."
 msgstr "如果您不想显示任何信息，请在此留空"
 
 #: [information]label
-#, fuzzy
 msgctxt "[information]label"
 msgid "Information Message"
 msgstr "通知消息"
@@ -372,11 +369,11 @@ msgstr "系统日志和文件"
 
 #: [rewrite]title
 msgid "URL Rewriting"
-msgstr ""
+msgstr "URL从写"
 
 #: [rewrite]info
 msgid "The URL Rewriting can be enabled"
-msgstr ""
+msgstr "URL 重写可以激活"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -400,16 +397,15 @@ msgstr "安装 php5-curl 库"
 
 #: [compatibility]imagick
 msgid "Install the php5-imagick library"
-msgstr ""
+msgstr "安装 php5-imagick 库"
 
 #: [compatibility]gd
 msgid "Install the php5-gd library"
-msgstr ""
+msgstr "安装 php5-gd 库"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movims root directory"
-msgstr "阅读和写Movim的根目录写的web服务器权限"
+msgstr "网页服务器在Movim根目录的阅读和写权限"
 
 #: [compatibility]rewrite
 msgid "The URL Rewriting support is currently disabled"
@@ -417,7 +413,7 @@ msgstr "URL 重写支持已经被禁用"
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
-msgstr ""
+msgstr "数据库需要更新,去数据库面板修复它."
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -429,15 +425,15 @@ msgstr ""
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "浏览器"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Movim 核心"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Movim 后台进程"
 
 #: [schema]xmpp
 msgid "XMPP"
@@ -445,23 +441,23 @@ msgstr ""
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
-msgstr ""
+msgstr "在这里你可以注册你的容器在官方的 %sMovim API%s , 同时他会显示在 %sthe pods page%s."
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr ""
+msgstr "你的容器还没注册在接口上."
 
 #: [api]registered
 msgid "Your pod is registered on the API"
-msgstr ""
+msgstr "你的容器已注册在接口上."
 
 #: [api]wait
 msgid "Your pod is not yet validated"
-msgstr ""
+msgstr "你的容器还没验证"
 
 #: [api]validated
 msgid "Your pod is validated"
-msgstr ""
+msgstr "你的容器已验证"
 
 #: [api]unregister
 msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
@@ -473,11 +469,11 @@ msgstr "配置已更新"
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: [avatar]use_it
 msgid "Use it"
-msgstr ""
+msgstr "用它"
 
 #: [avatar]webcam
 msgid "Webcam"
@@ -505,7 +501,7 @@ msgstr "%s的 feed"
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
-msgstr ""
+msgstr "这个用户还没发布任何东西"
 
 #: [title]conferences
 msgid "Conferences"
@@ -524,7 +520,6 @@ msgid "Chat Room ID"
 msgstr "聊天室ID"
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
 msgstr "姓名"
@@ -550,7 +545,6 @@ msgid "Bookmarks updated"
 msgstr "更新书签"
 
 #: [bookmarks]error
-#, fuzzy
 msgid "An error occured :"
 msgstr "发生一个错误： "
 
@@ -567,7 +561,6 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
 msgstr "姓名"
@@ -582,7 +575,7 @@ msgstr "加密消息"
 
 #: [message]composing [chats]composing
 msgid "Composing..."
-msgstr ""
+msgstr "输入中..."
 
 #: [message]paused [chats]paused
 msgid "Paused..."
@@ -590,7 +583,7 @@ msgstr "暂停..."
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
+msgstr "联系人已消失"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -614,11 +607,11 @@ msgstr "同联系人讨论"
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "常用联系人"
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "成员"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
@@ -634,7 +627,7 @@ msgstr "配置"
 
 #: [chatroom]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "配置已保存"
 
 #: [chatroom]subject
 msgid "Subject"
@@ -649,7 +642,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the plus button bellow or visit the Contacts page."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -674,7 +667,7 @@ msgstr "联系人"
 
 #: [title]posts [page]posts
 msgid "Posts"
-msgstr ""
+msgstr "帖子"
 
 #: [title]messages
 msgid "Messages"
@@ -682,7 +675,7 @@ msgstr "消息"
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "一般"
 
 #: [config]language
 msgid "Language"
@@ -694,11 +687,11 @@ msgstr ""
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "显示离线联络人"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "隐藏离线的联系人"
 
 #: [config]appearence
 msgid "Appearence"
@@ -754,7 +747,7 @@ msgstr "其它帐号"
 
 #: [general]tune
 msgid "Is Listening"
-msgstr ""
+msgstr "是在听"
 
 #: [position]legend [position]position_title
 msgid "Geographic Position"
@@ -794,7 +787,7 @@ msgstr "最近注册的"
 
 #: [explore]explore
 msgid "Find some new friends"
-msgstr ""
+msgstr "寻找些新朋友"
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -822,47 +815,43 @@ msgstr "您将删除其中一个联系人, 请确认"
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%s 年"
 
 #: [blog]last
 msgid "Last public post"
-msgstr ""
+msgstr "最后的公开帖子"
 
 #: [subscription]to
-#, fuzzy
 msgid "You can see this contact status"
-msgstr "该账户没有公共订阅"
+msgstr "你可以看到这些联络的状态"
 
 #: [subscription]to_button
 msgid "Share my status"
-msgstr ""
+msgstr "分享我的状态"
 
 #: [subscription]to_text
 msgid "But this contact cannot see yours"
 msgstr ""
 
 #: [subscription]from
-#, fuzzy
 msgid "You are not subscribed to this contact"
-msgstr "该账户没有公共订阅"
+msgstr ""
 
 #: [subscription]from_button
-#, fuzzy
 msgid "Ask to subscribe"
-msgstr "取消订阅"
+msgstr ""
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
 msgstr ""
 
 #: [subscription]nil
-#, fuzzy
 msgid "No subscriptions"
-msgstr "订阅"
+msgstr ""
 
 #: [subscription]nil_button
 msgid "Invite"
-msgstr ""
+msgstr "邀请"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
@@ -933,9 +922,8 @@ msgid "Subscriptions"
 msgstr "订阅"
 
 #: [group]servers
-#, fuzzy
 msgid "Groups servers"
-msgstr "分组"
+msgstr ""
 
 #: [group]search_server
 msgid "Search for a new server"
@@ -966,11 +954,11 @@ msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any subscriptions yet, select a group server above to start exploring."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Subscribe to your favorite feeds by bookmarking them."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]subscriptions
@@ -1025,15 +1013,13 @@ msgstr "所有"
 msgid "Refresh all the streams"
 msgstr "刷新所有流"
 
-#: [roster]search
-#, fuzzy
-msgid "Search in your contacts"
-msgstr "同联系人讨论"
+#: [menu]me
+msgid "My publications"
+msgstr ""
 
-#: [hello]active_contacts
-#, fuzzy
-msgid "Active contacts"
-msgstr "您的联系人"
+#: [roster]search
+msgid "Search in your contacts"
+msgstr ""
 
 #: [hello]chat
 msgid "Go on the Chat page"
@@ -1065,6 +1051,22 @@ msgstr ""
 
 #: [hello]share_button
 msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1204,10 +1206,9 @@ msgid "Account successfully created"
 msgstr "创建账户成功"
 
 #: [error]xmpp_unauthorized
-#, fuzzy
 msgctxt "[error]xmpp_unauthorized"
 msgid "Your XMPP server is unauthorized"
-msgstr "你的XMPP服务没有被授权"
+msgstr ""
 
 #: [error]mec_error
 msgid "The server takes too much time to respond"
@@ -1242,10 +1243,9 @@ msgid "Invalid password format"
 msgstr ""
 
 #: [error]unauthorized
-#, fuzzy
 msgctxt "[error]unauthorized"
 msgid "Your XMPP server is unauthorized"
-msgstr "你的XMPP服务没有被授权"
+msgstr ""
 
 #: [error]conflict
 msgid "A Movim session is already open on an other device"
@@ -1262,10 +1262,6 @@ msgstr "Movim暂不支持此认证机制"
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "XMPP鉴别错误"
-
-#: [account]title [accounts]accounts_title
-msgid "Accounts"
-msgstr "帐户"
 
 #: [form]username
 msgid "My address"
@@ -1359,49 +1355,9 @@ msgstr "新闻订阅"
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: [post]preview [page]preview
-msgid "Preview"
-msgstr "预览"
-
-#: [post]help [page]help
-msgid "Help"
-msgstr "帮助"
-
-#: [post]help_more
-msgid "More help"
-msgstr ""
-
-#: [post]help_manual
-msgid "Markdown syntax manual"
-msgstr ""
-
-#: [post]title
-msgid "Title"
-msgstr "标题"
-
-#: [post]content
+#: [post]content [post]content_label
 msgid "Content"
 msgstr ""
-
-#: [post]link
-msgid "Link"
-msgstr "连接"
-
-#: [post]tags
-msgid "Tags"
-msgstr ""
-
-#: [post]valid_url [publish]valid_url
-msgid "Please enter a valid url"
-msgstr ""
-
-#: [post]no_content_preview [publish]no_content_preview
-msgid "No content to preview"
-msgstr ""
-
-#: [post]no_content [publish]no_content [post]empty
-msgid "No content"
-msgstr "没有内容"
 
 #: [post]published
 msgid "Post published"
@@ -1409,10 +1365,6 @@ msgstr ""
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
-
-#: [post]gallery
-msgid "This picture will be added to your gallery"
 msgstr ""
 
 #: [post]hot
@@ -1427,10 +1379,6 @@ msgstr ""
 msgid "New post"
 msgstr ""
 
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
-msgstr ""
-
 #: [post]repost
 msgid "This is a re-post from %s"
 msgstr ""
@@ -1440,9 +1388,8 @@ msgid "See %s profile"
 msgstr ""
 
 #: [post]public
-#, fuzzy
 msgid "Publish this post publicly?"
-msgstr "公开您的档案么?"
+msgstr ""
 
 #: [post]blog_add
 msgid "Post published on your blog"
@@ -1454,11 +1401,11 @@ msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
-msgstr ""
+msgstr "删除我的帖子"
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr ""
+msgstr "您将移除以下的帖子, 请确认."
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1492,6 +1439,54 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
+#: [post]preview [page]preview
+msgid "Preview"
+msgstr "预览"
+
+#: [post]help [page]help
+msgid "Help"
+msgstr "帮助"
+
+#: [post]help_more
+msgid "More help"
+msgstr ""
+
+#: [post]help_manual
+msgid "Markdown syntax manual"
+msgstr ""
+
+#: [post]content_text
+msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [post]link
+msgid "Link"
+msgstr "连接"
+
+#: [post]tags
+msgid "Tags"
+msgstr ""
+
+#: [post]gallery
+msgid "This picture will be added to your gallery"
+msgstr ""
+
+#: [post]embed_tip
+msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
+msgstr ""
+
+#: [publish]valid_url
+msgid "Please enter a valid url"
+msgstr ""
+
+#: [publish]no_content_preview
+msgid "No content to preview"
+msgstr ""
+
+#: [publish]no_title
+msgid "Please provide a title"
+msgstr ""
+
 #: [publish]title
 msgid "Publish"
 msgstr ""
@@ -1508,9 +1503,17 @@ msgstr ""
 msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
 msgstr ""
 
+#: [publish]add_text
+msgid "Click here to add some text to your publication"
+msgstr ""
+
+#: [publish]add_text_label
+msgid "Add some text"
+msgstr ""
+
 #: [public_groups]shared
 msgid "Shared"
-msgstr ""
+msgstr "共享"
 
 #: [public_groups]added
 msgid "%s has been added to your public groups"
@@ -1525,7 +1528,7 @@ msgid "You don't have any chatroom yet."
 msgstr ""
 
 #: [rooms]empty_text2
-msgid "Add one by clicking on the add button in the header."
+msgid "Add one by clicking on the add button."
 msgstr ""
 
 #: [chatrooms]title
@@ -1542,11 +1545,15 @@ msgstr "聊天室用户"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
+msgstr "请输入正确的昵称(2到40个字母)"
+
+#: [chatrooms]conflict
+msgid "Username already taken"
 msgstr ""
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
+msgstr "公共聊天室"
 
 #: [room]no_room
 msgid "Please provide a room address"
@@ -1562,11 +1569,11 @@ msgstr ""
 
 #: [room]anonymous_login
 msgid "Login on %s"
-msgstr ""
+msgstr "登录在%s"
 
 #: [room]nick
 msgid "Your nickname"
-msgstr ""
+msgstr "你的昵称"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1593,14 +1600,12 @@ msgid "Please enter a valid Jabber ID"
 msgstr "请输入有效的Jabber ID"
 
 #: [roster]no_contacts_title
-#, fuzzy
 msgid "No contacts ?"
-msgstr "您的联系人"
+msgstr "没联系人"
 
 #: [roster]no_contacts_text
-#, fuzzy
 msgid "You can add one using the + button bellow"
-msgstr "没有联系人? 您可以使用下面的加号按钮来进入探索页面"
+msgstr ""
 
 #: [roster]show_hide
 msgid "Show/Hide"
@@ -1668,7 +1673,7 @@ msgstr "Movim 是一个分散式管理的社交网络，在建立一个新账户
 
 #: [subscribe]server_question
 msgid "Your server here ?"
-msgstr ""
+msgstr "你的服务器这里？"
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1683,13 +1688,12 @@ msgid "No contact specified"
 msgstr "没有指定联系人"
 
 #: [upload]title
-#, fuzzy
 msgid "Upload a file"
-msgstr "上传"
+msgstr "上传一个文件"
 
 #: [upload]choose
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "选择一个文件上传"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1712,10 +1716,13 @@ msgid "Your profile is now restricted"
 msgstr "现在您的档案是保密的"
 
 #: [general]nickname
-#, fuzzy
 msgctxt "[general]nickname"
 msgid "Nickname"
 msgstr "昵称"
+
+#: [accounts]accounts_title
+msgid "Accounts"
+msgstr "帐户"
 
 #: [accounts]twitter
 msgid "Twitter"
@@ -1726,19 +1733,13 @@ msgid "Skype"
 msgstr "Skype"
 
 #: [accounts]yahoo
-msgid "Yahoo"
-msgstr "Yahoo"
+msgid "Yahoo Account"
+msgstr "雅虎帐户"
 
 #: [accounts]accounts_nickname
-#, fuzzy
 msgctxt "[accounts]accounts_nickname"
 msgid "Nickname"
 msgstr "昵称"
-
-#: [accounts]accounts_yahoo
-#, fuzzy
-msgid "Yahoo Account"
-msgstr "其它帐号"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -1822,7 +1823,7 @@ msgstr "头像"
 
 #: [page]chats
 msgid "Chats"
-msgstr ""
+msgstr "聊天"
 
 #: [page]server
 msgid "Server"
@@ -1830,7 +1831,7 @@ msgstr "服务器"
 
 #: [page]public_groups
 msgid "Public Groups"
-msgstr ""
+msgstr "公共分组"
 
 #: [page]viewer
 msgid "Viewer"
@@ -1974,7 +1975,7 @@ msgstr "%s - 档案"
 
 #: [title]server
 msgid "%s - Server"
-msgstr ""
+msgstr "%s - 服务器"
 
 #: [button]validate
 msgid "Validate"
@@ -2018,7 +2019,7 @@ msgstr "注册"
 
 #: [button]unregister
 msgid "Unregister"
-msgstr ""
+msgstr "未注册"
 
 #: [button]save
 msgid "Save"
@@ -2058,15 +2059,15 @@ msgstr "接收"
 
 #: [button]refuse
 msgid "Refuse"
-msgstr ""
+msgstr "拒绝"
 
 #: [button]next
 msgid "Next"
-msgstr ""
+msgstr "下一个"
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
+msgstr "前一个"
 
 #: [step]step
 msgid "Step %s"
@@ -2105,7 +2106,6 @@ msgid "Sunday"
 msgstr "星期日"
 
 #: [gender]nil
-#, fuzzy
 msgctxt "[gender]nil"
 msgid "None"
 msgstr "无"
@@ -2143,7 +2143,6 @@ msgid "Registered"
 msgstr "已注册"
 
 #: [marital]nil
-#, fuzzy
 msgctxt "[marital]nil"
 msgid "None"
 msgstr "无"
@@ -2621,7 +2620,6 @@ msgid "Yesterday"
 msgstr "昨天"
 
 #: [date]ago
-#, fuzzy
 msgid "%d days ago"
 msgstr " %d 天以前"
 
@@ -2629,9 +2627,13 @@ msgstr " %d 天以前"
 msgid "day"
 msgstr "日期"
 
+#: [post]title
+msgid "Title"
+msgstr "标题"
+
 #: [post]whats_new
 msgid "What's new ?"
-msgstr ""
+msgstr "当前最新"
 
 #: [post]place
 msgid "Place"
@@ -2649,13 +2651,17 @@ msgstr ""
 msgid "email"
 msgstr "邮件"
 
+#: [post]empty
+msgid "No content"
+msgstr "没有内容"
+
 #: [post]no_comments
 msgid "No comments yet"
 msgstr ""
 
 #: [post]no_comments_stream
 msgid "No comments stream"
-msgstr "没有评论集"
+msgstr ""
 
 #: [post]no_load
 msgid "Your feed cannot be loaded."
@@ -2678,9 +2684,8 @@ msgid "Show the older comments"
 msgstr "显示以前的评论"
 
 #: [post]comments_loading
-#, fuzzy
 msgid "Loading comments..."
-msgstr "载入评论..."
+msgstr ""
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2725,156 +2730,3 @@ msgstr "API无法连接, 请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Environment"
-#~ msgstr "环境"
-
-#~ msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
-#~ msgstr "你可以使用Facebook帐号来登录, 如 %s您的id@chat.facebook.com%s 和您的密码. (只能聊天)"
-
-#~ msgid "%sGmail accounts are also compatible%s but are not fully supported"
-#~ msgstr "%sGmail 账户可用%s，但是部分功能不支持"
-
-#~ msgid "You can login using your favorite Jabber account"
-#~ msgstr "您可以使用您喜欢的Jabber账户登录"
-
-#~ msgid "or with our demonstration account"
-#~ msgstr "或使用我们的演示账户"
-
-#~ msgid "%s has been removed from your public groups"
-#~ msgstr "%s 已经从您分组移除"
-
-#~ msgid "Remove a chatroom"
-#~ msgstr "移除一个聊天室"
-
-#~ msgid "You are going to remove the following chatroom. Please confirm your action."
-#~ msgstr "您将移除以下的聊天室, 请确认."
-
-#~ msgid "Remove"
-#~ msgstr "移除"
-
-#~ msgid "remorseful"
-#~ msgstr "悔恨"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - 建立帐号"
-
-#~ msgid "Debug console"
-#~ msgstr "检查更正主控台"
-
-#~ msgid "Logout"
-#~ msgstr "注销"
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "PHP 版本不符。 Movim 需要 PHP 5.3以上的版本。"
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim 需要 %s 扩展名。"
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Movim 的文件夹必须不是写保护的。"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Movim 安装程序。"
-
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "不能建立目录 '%s'。"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "不能建立配置文件  '%s'。"
-
-#~ msgid "Compatibility Test"
-#~ msgstr "兼容性测试"
-
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "没有达到符合安装 Movim的软件要求。请检查后再安装。"
-
-#~ msgid "User not logged in."
-#~ msgstr "用户还未登录。"
-
-#~ msgid "JID not provided."
-#~ msgstr "还未提供JID。"
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "JID %s 是不正确"
-
-#~ msgid "normal"
-#~ msgstr "普通"
-
-#~ msgid "talkative"
-#~ msgstr "活跃"
-
-#~ msgid "Create my vCard"
-#~ msgstr "建立个人名片"
-
-#~ msgid "Edit my Profile"
-#~ msgstr "编辑个人简介"
-
-#~ msgid "Invite this user"
-#~ msgstr "邀请用户"
-
-#~ msgid "Wrong ID"
-#~ msgstr "ID错误"
-
-#~ msgid "You entered different passwords"
-#~ msgstr "您输入了不同的密码"
-
-#~ msgid "Invalid name"
-#~ msgstr "用户名无效"
-
-#~ msgid "Username already taken"
-#~ msgstr "用户名已注册"
-
-#~ msgid "Could not connect to the XMPP server"
-#~ msgstr "不能链接到XMPP服务器"
-
-#~ msgid "Could not communicate with the XMPP server"
-#~ msgstr "不能和XMPP服务器交流"
-
-#~ msgid "empty"
-#~ msgstr "空"
-
-#~ msgid "terse"
-#~ msgstr "简洁"
-
-#~ msgid "ultimate"
-#~ msgstr "最后"
-
-#~ msgid "wants to talk with you"
-#~ msgstr "想和你谈谈"
-
-#~ msgid "What is Movim?"
-#~ msgstr "什么是Movim'"
-
-#~ msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
-#~ msgstr "访问页面 %s什么是Movim？ %s 了解更多，关于这个程序的目的和怎样运行"
-
-#~ msgid "Some features are missing/I can't do everything I used to do on other social networks"
-#~ msgstr "特色正在消失/对我没用，我更喜欢其他的社交网站。"
-
-#~ msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
-#~ msgstr "即使Movim正在快速发展，很多特色仍然在丢失。请耐心地期待我们，您可以查看%s版本的路线图%s以了解我们是否在往您设想的方向发展"
-
-#~ msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
-#~ msgstr "不要忘了Movim是一个开放性的程序，我们期待您的参与（see %s 我能加入吗 %s"
-
-#~ msgid "I can't find the answer to my question here"
-#~ msgstr "在这里找不到我的问题的答案"
-
-#~ msgid "Connecting..."
-#~ msgstr "联系中"
-
-#~ msgid "The current BOSH URL in invalid"
-#~ msgstr "当前的BOSH URL 无效"
-
-#~ msgid "No profile yet ?"
-#~ msgstr "还没有简介？"
-
-#~ msgid "Remove this contact"
-#~ msgstr "移除联系人"
-
-#~ msgid "Your server doesn't support post publication, you can only read contact's feeds"
-#~ msgstr "您的服务器不支持该版本，您只能读取联系人的feeds"
-
-#~ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
-#~ msgstr "转到%s到的常见问题解答%s或来问你的问题官方聊天室%s或通过我们的邮件列表（%s看看专用页%s）。"

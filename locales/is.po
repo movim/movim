@@ -1,6 +1,6 @@
-# Ukrainian translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+#
+# Translators:
+# Jóhannes Gunnar Þorsteinsson <johannesg@johannesg.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -91,30 +91,30 @@
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-10-06 23:33+0200\n"
-"PO-Revision-Date: 2012-08-02 15:08+0000\n"
-"Last-Translator: Nazar Banakh <flesch91@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"PO-Revision-Date: 2015-10-06 21:34+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Icelandic (http://www.transifex.com/movim/movim/language/is/)\n"
+"Language: is\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=2; plural=(n % 10 != 1 || n % 100 == 11);\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Þakkir"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "Forritarar"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Þýðendur"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
@@ -122,89 +122,88 @@ msgstr ""
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "Hugbúnaður"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "Tilföng"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim er samskiptakerfi byggt á XMPP tækninni. Öll verkefni, fyrir utan eftirtalinn hugbúnað og efni, eru undir"
 
 #: [account]title
 msgid "Account"
-msgstr ""
+msgstr "Aðgangur"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Breyta lykilorði mínu"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
 msgid "Password"
-msgstr ""
+msgstr "Lykilorð"
 
 #: [account]password_confirmation
-#, fuzzy
 msgid "Password confirmation"
-msgstr "%s - Конфігурація"
+msgstr "Staðfesting á lykilorði"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Lykilorðið hefur verið uppfært"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Vinsamlegast notist við gilt lykilorð (lágmark 6 stafir)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "Lykilorðin eru ekki eins"
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "Eyða aðgangi mínum"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Eyða aðgangi þínum"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "Þú munt eyða XMPP aðgangionum þínum og öllum upplýsingum tengdum honum (prófíll, tengiliðir og færslur)."
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Ertu viss um að þú viljir eyða aðganginum?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "Gátt"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "Skapa nýjan aðgang"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "Ekkert aðgangs sköpunar eyðublað fundið á netþjón"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "virkur"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "Aðgangur þinn hefur verið skráður"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Hleð"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -220,11 +219,11 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Aðgerðir"
 
 #: [db]legend [schema]database
 msgid "Database"
-msgstr ""
+msgstr "Gagnagrunnur"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
@@ -232,27 +231,27 @@ msgstr ""
 
 #: [db]connect_success
 msgid "Movim is connected to the database"
-msgstr ""
+msgstr "Movim er tengt við gagnagrunninn"
 
 #: [db]update
 msgid "The database need to be updated"
-msgstr ""
+msgstr "Þörf er á að uppfæra gagnagrunninn"
 
 #: [db]up_to_date
 msgid "Movim database is up to date"
-msgstr ""
+msgstr "Movim gagnagrunnur er af nýjustu gerð"
 
 #: [db]type
 msgid "Database Type"
-msgstr ""
+msgstr "Gerð Gagnagrunns"
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Notendanafn"
 
 #: [db]host
 msgid "Host"
-msgstr ""
+msgstr "Hýsill"
 
 #: [db]port
 msgid "Port"
@@ -264,15 +263,15 @@ msgstr ""
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Almennar Stillingar"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Þemi"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "Sjálfgefið tungumál"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -280,15 +279,15 @@ msgstr ""
 
 #: [general]timezone
 msgid "Server Timezone"
-msgstr ""
+msgstr "Tímabelti Netþjóns"
 
 #: [general]limit
 msgid "User folder size limit (in bytes)"
-msgstr ""
+msgstr "Stærðartakmörk notendamöppu (í bætum)"
 
 #: [websocket]title
 msgid "WebSocket Configuration"
-msgstr ""
+msgstr "WebSocket Stillingar"
 
 #: [websocket]info
 msgid "Enter here a valid WebSocket URI in the form"
@@ -405,9 +404,8 @@ msgid "Install the php5-gd library"
 msgstr ""
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movims root directory"
-msgstr "Включити права читання і запису на кореневу папку Movim"
+msgstr ""
 
 #: [compatibility]rewrite
 msgid "The URL Rewriting support is currently disabled"
@@ -427,11 +425,11 @@ msgstr ""
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "Vafri"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Movim Kjarni"
 
 #: [schema]daemon
 msgid "Movim Daemon"
@@ -479,11 +477,11 @@ msgstr ""
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr ""
+msgstr "Vefmyndamél"
 
 #: [avatar]cheese
 msgid "Cheese !"
-msgstr ""
+msgstr "Sís!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -491,11 +489,11 @@ msgstr ""
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "Myndin hefur verið uppfærð"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "Ekki náðist að uppfæra mynd"
 
 #: [blog]title [feed]title
 msgid "%s's feed"
@@ -511,11 +509,11 @@ msgstr ""
 
 #: [title]groups [group]empty_title [menu]groups [page]groups
 msgid "Groups"
-msgstr ""
+msgstr "Hópar"
 
 #: [chatroom]add
 msgid "Add a new Chat Room"
-msgstr ""
+msgstr "Bæta við nýrri Spjallrás"
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
@@ -524,11 +522,11 @@ msgstr ""
 #: [chatroom]name
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr ""
+msgstr "Nafn"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
-msgstr ""
+msgstr "Gælunafn"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
@@ -540,11 +538,11 @@ msgstr ""
 
 #: [chatroom]empty_name [chatrooms]empty_name
 msgid "Empty name"
-msgstr ""
+msgstr "Autt nafn"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
-msgstr ""
+msgstr "Bókamerki uppfærð"
 
 #: [bookmarks]error
 msgid "An error occured :"
@@ -552,20 +550,20 @@ msgstr ""
 
 #: [bookmarks]configure
 msgid "Configure"
-msgstr ""
+msgstr "Stilla"
 
 #: [url]add
 msgid "Add a new URL"
-msgstr ""
+msgstr "Bæta við slóð"
 
 #: [url]url
 msgid "URL"
-msgstr ""
+msgstr "Slóð"
 
 #: [url]name
 msgctxt "[url]name"
 msgid "Name"
-msgstr ""
+msgstr "Nafn"
 
 #: [message]published
 msgid "Message Published"
@@ -597,11 +595,11 @@ msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "Broskallar"
 
 #: [chat]empty_title [button]chat
 msgid "Chat"
-msgstr ""
+msgstr "Spjall"
 
 #: [chat]empty_text
 msgid "Discuss with your contacts"
@@ -613,7 +611,7 @@ msgstr ""
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "Meðlimir"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
@@ -625,7 +623,7 @@ msgstr ""
 
 #: [chatroom]config [group]configuration [page]configuration
 msgid "Configuration"
-msgstr "Конфігурація"
+msgstr "Stillingar"
 
 #: [chatroom]config_saved
 msgid "Configuration saved"
@@ -657,7 +655,7 @@ msgstr ""
 
 #: [title]data
 msgid "Data"
-msgstr ""
+msgstr "Gögn"
 
 #: [title]cache
 msgid "Cache"
@@ -665,23 +663,23 @@ msgstr ""
 
 #: [title]contacts [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr ""
+msgstr "Tengiliðir"
 
 #: [title]posts [page]posts
 msgid "Posts"
-msgstr ""
+msgstr "Færslur"
 
 #: [title]messages
 msgid "Messages"
-msgstr ""
+msgstr "Skilaboð"
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "Almennt"
 
 #: [config]language
 msgid "Language"
-msgstr ""
+msgstr "Tungumál"
 
 #: [config]roster
 msgid "Roster display"
@@ -689,15 +687,15 @@ msgstr ""
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "Sýna ótengda tengiliði"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "Fela ótengda tengiliði"
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "Útlit"
 
 #: [config]info
 msgid "This configuration is shared wherever you are connected"
@@ -717,39 +715,39 @@ msgstr ""
 
 #: [general]name [public_groups]name [chatrooms]name
 msgid "Name"
-msgstr ""
+msgstr "Nafn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr ""
+msgstr "Afmælisdagur"
 
 #: [general]gender
 msgid "Gender"
-msgstr ""
+msgstr "Kyn"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr ""
+msgstr "Hjúskaparstaða"
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "Tölvupóstur"
 
 #: [general]website
 msgid "Website"
-msgstr ""
+msgstr "Vefsíða"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "Um Mig"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "Aðrir Aðgangar"
 
 #: [general]tune
 msgid "Is Listening"
-msgstr ""
+msgstr "Er Að Hlusta"
 
 #: [position]legend [position]position_title
 msgid "Geographic Position"
@@ -761,23 +759,23 @@ msgstr ""
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "Land"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "Skap"
 
 #: [mood]im
 msgid "I'm "
-msgstr ""
+msgstr "Ég er"
 
 #: [listen]title
 msgid "Listening"
-msgstr ""
+msgstr "Að Hlusta"
 
 #: [last]title
 msgid "Last seen"
-msgstr ""
+msgstr "Sást síðast"
 
 #: [client]title
 msgid "Client Informations"
@@ -921,7 +919,7 @@ msgstr ""
 
 #: [group]subscriptions [statistics]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "Áskriftir"
 
 #: [group]servers
 msgid "Groups servers"
@@ -1275,11 +1273,11 @@ msgstr ""
 
 #: [form]another_account
 msgid "Another account"
-msgstr ""
+msgstr "Annar aðgangur"
 
 #: [form]no_account
 msgid "No account yet ?"
-msgstr ""
+msgstr "Enginn aðgangur?"
 
 #: [form]whitelist.info
 msgid "You can login with accounts from theses servers"
@@ -1359,19 +1357,19 @@ msgstr ""
 
 #: [post]content [post]content_label
 msgid "Content"
-msgstr ""
+msgstr "Efni"
 
 #: [post]published
 msgid "Post published"
-msgstr ""
+msgstr "Færsla hefur verið gefin út"
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
+msgstr "Færsla hefur verið eydd"
 
 #: [post]hot
 msgid "What's Hot"
-msgstr ""
+msgstr "Hvað er Heitt"
 
 #: [post]hot_text
 msgid "Posts recently published in Groups that you are not subscribed (yet)"
@@ -1379,7 +1377,7 @@ msgstr ""
 
 #: [post]new [publish]new
 msgid "New post"
-msgstr ""
+msgstr "Nýjar færslur"
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -1463,15 +1461,15 @@ msgstr ""
 
 #: [post]link
 msgid "Link"
-msgstr ""
+msgstr "Tengill"
 
 #: [post]tags
 msgid "Tags"
-msgstr ""
+msgstr "Mörk"
 
 #: [post]gallery
 msgid "This picture will be added to your gallery"
-msgstr ""
+msgstr "Þessi mynd verður bætt við myndasafnið þitt"
 
 #: [post]embed_tip
 msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
@@ -1479,11 +1477,11 @@ msgstr ""
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
-msgstr ""
+msgstr "Gjörið svo vel að setja inn rétta slóð"
 
 #: [publish]no_content_preview
 msgid "No content to preview"
-msgstr ""
+msgstr "Ekkert efni til þess að forskoða"
 
 #: [publish]no_title
 msgid "Please provide a title"
@@ -1515,7 +1513,7 @@ msgstr ""
 
 #: [public_groups]shared
 msgid "Shared"
-msgstr ""
+msgstr "Deilt"
 
 #: [public_groups]added
 msgid "%s has been added to your public groups"
@@ -1523,7 +1521,7 @@ msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
-msgstr ""
+msgstr "Bæta við spjallrás"
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1535,15 +1533,15 @@ msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr ""
+msgstr "Spjallrásir"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
+msgstr "Uppáhalds Rás"
 
 #: [chatrooms]users
 msgid "Users in the room"
-msgstr ""
+msgstr "Notendur á rás"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1555,11 +1553,11 @@ msgstr ""
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
+msgstr "Almenn spjallrás"
 
 #: [room]no_room
 msgid "Please provide a room address"
-msgstr ""
+msgstr "Gjörið svo vel að gefa upp slóð rásar"
 
 #: [room]anonymous_text1
 msgid "You are currently logued as an anonymous user."
@@ -1929,7 +1927,7 @@ msgstr ""
 
 #: [title]configuration
 msgid "%s - Configuration"
-msgstr "%s - Конфігурація"
+msgstr ""
 
 #: [title]discover
 msgid "%s - Discover"
@@ -2045,11 +2043,11 @@ msgstr ""
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "Já"
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "Nei"
 
 #: [button]return
 msgid "Return"
@@ -2057,7 +2055,7 @@ msgstr ""
 
 #: [button]accept
 msgid "Accept"
-msgstr ""
+msgstr "Samþykkja"
 
 #: [button]refuse
 msgid "Refuse"
@@ -2065,64 +2063,64 @@ msgstr ""
 
 #: [button]next
 msgid "Next"
-msgstr ""
+msgstr "Áfram"
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
+msgstr "Afturábak"
 
 #: [step]step
 msgid "Step %s"
-msgstr ""
+msgstr "Skref %s"
 
 #: [day]title
 msgid "Day"
-msgstr ""
+msgstr "Dagur"
 
 #: [day]monday
 msgid "Monday"
-msgstr ""
+msgstr "Mánudagur"
 
 #: [day]tuesday
 msgid "Tuesday"
-msgstr ""
+msgstr "Þriðjudagur"
 
 #: [day]wednesday
 msgid "Wednesday"
-msgstr ""
+msgstr "Miðvikudagur"
 
 #: [day]thursday
 msgid "Thursday"
-msgstr ""
+msgstr "Fimmtudagur"
 
 #: [day]friday
 msgid "Friday"
-msgstr ""
+msgstr "Föstudagur"
 
 #: [day]saturday
 msgid "Saturday"
-msgstr ""
+msgstr "Laugardagur"
 
 #: [day]sunday
 msgid "Sunday"
-msgstr ""
+msgstr "Sunnudagur"
 
 #: [gender]nil
 msgctxt "[gender]nil"
 msgid "None"
-msgstr ""
+msgstr "Ekkert"
 
 #: [gender]male
 msgid "Male"
-msgstr ""
+msgstr "Karlmaður"
 
 #: [gender]female
 msgid "Female"
-msgstr ""
+msgstr "Kvenmaður"
 
 #: [gender]other
 msgid "Other"
-msgstr ""
+msgstr "Annað"
 
 #: [client]bot
 msgid "Bot"
@@ -2134,40 +2132,40 @@ msgstr ""
 
 #: [client]phone
 msgid "Phone"
-msgstr ""
+msgstr "Sími"
 
 #: [client]web
 msgid "Web"
-msgstr ""
+msgstr "Vefur"
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
+msgstr "Skráður"
 
 #: [marital]nil
 msgctxt "[marital]nil"
 msgid "None"
-msgstr ""
+msgstr "Engin"
 
 #: [marital]single
 msgid "Single"
-msgstr ""
+msgstr "Einhleypur"
 
 #: [marital]relationship
 msgid "In a relationship"
-msgstr ""
+msgstr "Í sambandi"
 
 #: [marital]married
 msgid "Married"
-msgstr ""
+msgstr "Gift/ur"
 
 #: [marital]divorced
 msgid "Divorced"
-msgstr ""
+msgstr "Skilin/n"
 
 #: [marital]widowed
 msgid "Widowed"
-msgstr ""
+msgstr "Ekkja/Ekkill"
 
 #: [marital]cohabiting
 msgid "Cohabiting"
@@ -2631,7 +2629,7 @@ msgstr ""
 
 #: [post]title
 msgid "Title"
-msgstr ""
+msgstr "Titill"
 
 #: [post]whats_new
 msgid "What's new ?"
@@ -2655,7 +2653,7 @@ msgstr ""
 
 #: [post]empty
 msgid "No content"
-msgstr ""
+msgstr "Ekkert efni"
 
 #: [post]no_comments
 msgid "No comments yet"
@@ -2732,78 +2730,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "PHP версії не збігаються. Movim вимагає мінімум PHP 5.3"
-
-#~ msgid "Actual version : "
-#~ msgstr "Актуальна версія "
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Оновіть вашу версію PHP або зверніться до адміністратора сервера"
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim вимагає розширення %s ."
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Встановити %s і  %s пакетів."
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Папка Movim повинна бути доступна для запису"
-
-#~ msgid "Install the %s package"
-#~ msgstr "Установка пакету %s"
-
-#~ msgid "or"
-#~ msgstr "або"
-
-#~ msgid "Bosh connection failed with error '%s'"
-#~ msgstr "Сталася помилка '%s'"
-
-#~ msgid "XMPP connection through Bosh failed with error '%s'"
-#~ msgstr "XMPP з'єднання  з помилкою '%s'"
-
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "Не вдалося створити '%s' каталог."
-
-#~ msgid "ultimate"
-#~ msgstr "загальна"
-
-#~ msgid "normal"
-#~ msgstr "звичайний"
-
-#~ msgid "terse"
-#~ msgstr "стислий"
-
-#~ msgid "empty"
-#~ msgstr "порожній"
-
-#~ msgid "Some errors were detected. Please correct them for the installation to proceed."
-#~ msgstr "Були виявлено деякі помилки . Будь ласка, виправте їх, щоб продовжити установку."
-
-#~ msgid "talkative"
-#~ msgstr "мовність"
-
-#~ msgid "Database connection failed with error '%s'"
-#~ msgstr "Підключення до бази даних з помилкою '%s'"
-
-#~ msgid "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr "Перед тим, як користуватися вашою соціальною мережею,  потрібно кілька налаштувань."
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Дякуємо Вам за завантаження Movim!"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Не вдається створити файл конфігурації  '%s'."
-
-#~ msgid "Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit."
-#~ msgstr "Майте на увазі, що Movim знаходиться на стадії розробки і буде обробляти багато особистих даних. Його використання може потенційно загрожувати вашим даним. Завжди звертайте увагу на інформацію, яку Ви представляєте."
-
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "Наступні вимоги не були виконані. Будь ласка, переконайтеся, що всі вони були виконані  для того, щоб встановити Movim."
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Тест на сумісність"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Movim установник"

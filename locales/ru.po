@@ -1,6 +1,5 @@
-# Russian translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+#
+# Translators:
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -91,18 +90,18 @@
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 15:17+0200\n"
-"PO-Revision-Date: 2015-06-09 12:19+0000\n"
-"Last-Translator: Paul <jadjer@mail.ru>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-10-06 23:33+0200\n"
+"PO-Revision-Date: 2015-10-06 21:34+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -115,6 +114,10 @@ msgstr "Разработчики"
 #: [about]translators
 msgid "Translators"
 msgstr "Переводчики"
+
+#: [about]translators_text
+msgid "Thanks to all the translators"
+msgstr ""
 
 #: [about]software
 msgid "Software"
@@ -137,9 +140,8 @@ msgid "Account"
 msgstr ""
 
 #: [account]password_change_title
-#, fuzzy
 msgid "Change my password"
-msgstr "Неверный пароль"
+msgstr ""
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -147,9 +149,8 @@ msgid "Password"
 msgstr "Пароль"
 
 #: [account]password_confirmation
-#, fuzzy
 msgid "Password confirmation"
-msgstr "%s - настройки"
+msgstr ""
 
 #: [account]password_changed
 msgid "The password has been updated"
@@ -168,9 +169,8 @@ msgid "Delete my account"
 msgstr ""
 
 #: [account]delete
-#, fuzzy
 msgid "Delete your account"
-msgstr "Другая учётная запись"
+msgstr ""
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
@@ -190,31 +190,31 @@ msgstr "Создать новую учётную запись"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr "На сервере не найдена форма создания учетной записи"
+msgstr ""
 
 #: [create]server_on
 msgid "on"
-msgstr "на"
+msgstr ""
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr "Ваша учётная запись была успешно зарегистрирована"
+msgstr ""
 
 #: [create]loading
 msgid "Loading"
-msgstr "Идёт загрузка"
+msgstr ""
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr "Неприменимо"
+msgstr ""
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr "Регистрация на этом сервере в данный момент недоступна"
+msgstr ""
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
-msgstr "Серве использует внешнюю систему регистрации, пожалуйста, проследуйте по этому адресу."
+msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
@@ -257,9 +257,8 @@ msgid "Port"
 msgstr "Порт"
 
 #: [db]name
-#, fuzzy
 msgid "Database sName"
-msgstr "Имя базы данных"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -334,10 +333,9 @@ msgid "List of whitelisted XMPP servers"
 msgstr "Белый список серверов XMPP"
 
 #: [information]title
-#, fuzzy
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "Информационное сообщение"
+msgstr ""
 
 #: [information]description
 msgid "Description"
@@ -348,15 +346,13 @@ msgid "This message will be displayed on the login page"
 msgstr "Это сообщение будет отображаться на странице входа"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you dont want to show any message."
-msgstr "Оставьте это поле пустым, если ты не хочешь показывать любое сообщение."
+msgstr ""
 
 #: [information]label
-#, fuzzy
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr "Информационное сообщение"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -407,9 +403,8 @@ msgid "Install the php5-gd library"
 msgstr ""
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movims root directory"
-msgstr "Права на чтение и запись на веб-сервере для корневого каталога Movim"
+msgstr ""
 
 #: [compatibility]rewrite
 msgid "The URL Rewriting support is currently disabled"
@@ -524,10 +519,9 @@ msgid "Chat Room ID"
 msgstr "ID Беседки"
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Имя"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -550,9 +544,8 @@ msgid "Bookmarks updated"
 msgstr "Закладки обновлены"
 
 #: [bookmarks]error
-#, fuzzy
 msgid "An error occured :"
-msgstr "Произошла ошибка: "
+msgstr ""
 
 #: [bookmarks]configure
 msgid "Configure"
@@ -567,10 +560,9 @@ msgid "URL"
 msgstr "URL"
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Имя"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -649,7 +641,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the plus button bellow or visit the Contacts page."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -705,9 +697,8 @@ msgid "Appearence"
 msgstr "Внешний вид"
 
 #: [config]info
-#, fuzzy
 msgid "This configuration is shared wherever you are connected"
-msgstr "Эта конфигурация действительна откуда бы Вы не подключились"
+msgstr ""
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -830,9 +821,8 @@ msgid "Last public post"
 msgstr ""
 
 #: [subscription]to
-#, fuzzy
 msgid "You can see this contact status"
-msgstr "Нет публичной ленты для этого контакта"
+msgstr ""
 
 #: [subscription]to_button
 msgid "Share my status"
@@ -843,23 +833,20 @@ msgid "But this contact cannot see yours"
 msgstr ""
 
 #: [subscription]from
-#, fuzzy
 msgid "You are not subscribed to this contact"
-msgstr "Нет публичной ленты для этого контакта"
+msgstr ""
 
 #: [subscription]from_button
-#, fuzzy
 msgid "Ask to subscribe"
-msgstr "Отписаться"
+msgstr ""
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
 msgstr ""
 
 #: [subscription]nil
-#, fuzzy
 msgid "No subscriptions"
-msgstr "Подписки"
+msgstr ""
 
 #: [subscription]nil_button
 msgid "Invite"
@@ -934,9 +921,8 @@ msgid "Subscriptions"
 msgstr "Подписки"
 
 #: [group]servers
-#, fuzzy
 msgid "Groups servers"
-msgstr "Группы"
+msgstr ""
 
 #: [group]search_server
 msgid "Search for a new server"
@@ -967,11 +953,11 @@ msgid "Contact post"
 msgstr "Для связи"
 
 #: [groups]empty_text1
-msgid "You don't have any subscriptions yet, select a group server above to start exploring."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Subscribe to your favorite feeds by bookmarking them."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]subscriptions
@@ -1015,9 +1001,8 @@ msgid "%s posts"
 msgstr ""
 
 #: [groups]disco_error
-#, fuzzy
 msgid "This server doesn't exists"
-msgstr "На этом сервере %s аккаунтов"
+msgstr ""
 
 #: [menu]all
 msgid "All"
@@ -1027,15 +1012,13 @@ msgstr "Все"
 msgid "Refresh all the streams"
 msgstr "Обновить все потоки"
 
-#: [roster]search
-#, fuzzy
-msgid "Search in your contacts"
-msgstr "Обсудить с вашими контактами"
+#: [menu]me
+msgid "My publications"
+msgstr ""
 
-#: [hello]active_contacts
-#, fuzzy
-msgid "Active contacts"
-msgstr "Ваши контакты"
+#: [roster]search
+msgid "Search in your contacts"
+msgstr ""
 
 #: [hello]chat
 msgid "Go on the Chat page"
@@ -1067,6 +1050,22 @@ msgstr ""
 
 #: [hello]share_button
 msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1206,10 +1205,9 @@ msgid "Account successfully created"
 msgstr "Учётная запись успешно создана"
 
 #: [error]xmpp_unauthorized
-#, fuzzy
 msgctxt "[error]xmpp_unauthorized"
 msgid "Your XMPP server is unauthorized"
-msgstr "Ваш XMPP-сервер не авторизован"
+msgstr ""
 
 #: [error]mec_error
 msgid "The server takes too much time to respond"
@@ -1244,10 +1242,9 @@ msgid "Invalid password format"
 msgstr ""
 
 #: [error]unauthorized
-#, fuzzy
 msgctxt "[error]unauthorized"
 msgid "Your XMPP server is unauthorized"
-msgstr "Ваш XMPP-сервер не авторизован"
+msgstr ""
 
 #: [error]conflict
 msgid "A Movim session is already open on an other device"
@@ -1264,10 +1261,6 @@ msgstr "Данный механизм аутентификации не подд
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "XMPP-аутентификация не прошла"
-
-#: [account]title [accounts]accounts_title
-msgid "Accounts"
-msgstr "Учётные записи"
 
 #: [form]username
 msgid "My address"
@@ -1302,9 +1295,8 @@ msgid "No news yet..."
 msgstr ""
 
 #: [menu]empty
-#, fuzzy
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
-msgstr "Добро пожаловать в вашу новостную ленту, здесь вы увидите все записи, опубликованные в группах, на которые вы подписаны"
+msgstr ""
 
 #: [menu]refresh
 msgid "Refreshing all the streams"
@@ -1362,49 +1354,9 @@ msgstr "Новостная лента"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Найдите и зарегистрируйтесь в интересных вам группах"
 
-#: [post]preview [page]preview
-msgid "Preview"
-msgstr "Предпросмотр"
-
-#: [post]help [page]help
-msgid "Help"
-msgstr "Помощь"
-
-#: [post]help_more
-msgid "More help"
-msgstr ""
-
-#: [post]help_manual
-msgid "Markdown syntax manual"
-msgstr ""
-
-#: [post]title
-msgid "Title"
-msgstr "Название"
-
-#: [post]content
+#: [post]content [post]content_label
 msgid "Content"
 msgstr ""
-
-#: [post]link
-msgid "Link"
-msgstr "Ссылка"
-
-#: [post]tags
-msgid "Tags"
-msgstr ""
-
-#: [post]valid_url [publish]valid_url
-msgid "Please enter a valid url"
-msgstr ""
-
-#: [post]no_content_preview [publish]no_content_preview
-msgid "No content to preview"
-msgstr ""
-
-#: [post]no_content [publish]no_content [post]empty
-msgid "No content"
-msgstr "Нет данных"
 
 #: [post]published
 msgid "Post published"
@@ -1412,10 +1364,6 @@ msgstr ""
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
-
-#: [post]gallery
-msgid "This picture will be added to your gallery"
 msgstr ""
 
 #: [post]hot
@@ -1430,10 +1378,6 @@ msgstr ""
 msgid "New post"
 msgstr ""
 
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
-msgstr ""
-
 #: [post]repost
 msgid "This is a re-post from %s"
 msgstr ""
@@ -1443,9 +1387,8 @@ msgid "See %s profile"
 msgstr ""
 
 #: [post]public
-#, fuzzy
 msgid "Publish this post publicly?"
-msgstr "Этот профиль общедоступен?"
+msgstr ""
 
 #: [post]blog_add
 msgid "Post published on your blog"
@@ -1495,6 +1438,54 @@ msgstr "Присутствие"
 msgid "Online with Movim"
 msgstr ""
 
+#: [post]preview [page]preview
+msgid "Preview"
+msgstr "Предпросмотр"
+
+#: [post]help [page]help
+msgid "Help"
+msgstr "Помощь"
+
+#: [post]help_more
+msgid "More help"
+msgstr ""
+
+#: [post]help_manual
+msgid "Markdown syntax manual"
+msgstr ""
+
+#: [post]content_text
+msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [post]link
+msgid "Link"
+msgstr "Ссылка"
+
+#: [post]tags
+msgid "Tags"
+msgstr ""
+
+#: [post]gallery
+msgid "This picture will be added to your gallery"
+msgstr ""
+
+#: [post]embed_tip
+msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
+msgstr ""
+
+#: [publish]valid_url
+msgid "Please enter a valid url"
+msgstr ""
+
+#: [publish]no_content_preview
+msgid "No content to preview"
+msgstr ""
+
+#: [publish]no_title
+msgid "Please provide a title"
+msgstr ""
+
 #: [publish]title
 msgid "Publish"
 msgstr ""
@@ -1509,6 +1500,14 @@ msgstr ""
 
 #: [publish]form_filled
 msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
+msgstr ""
+
+#: [publish]add_text
+msgid "Click here to add some text to your publication"
+msgstr ""
+
+#: [publish]add_text_label
+msgid "Add some text"
 msgstr ""
 
 #: [public_groups]shared
@@ -1528,7 +1527,7 @@ msgid "You don't have any chatroom yet."
 msgstr ""
 
 #: [rooms]empty_text2
-msgid "Add one by clicking on the add button in the header."
+msgid "Add one by clicking on the add button."
 msgstr ""
 
 #: [chatrooms]title
@@ -1545,6 +1544,10 @@ msgstr "Пользователи в комнате"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
+msgstr ""
+
+#: [chatrooms]conflict
+msgid "Username already taken"
 msgstr ""
 
 #: [room]anonymous_title
@@ -1596,14 +1599,12 @@ msgid "Please enter a valid Jabber ID"
 msgstr "Пожалуйста, введи правильный Jabber ID"
 
 #: [roster]no_contacts_title
-#, fuzzy
 msgid "No contacts ?"
-msgstr "Ваши контакты"
+msgstr ""
 
 #: [roster]no_contacts_text
-#, fuzzy
 msgid "You can add one using the + button bellow"
-msgstr "Нет контактов? Вы можете добавить их с помощью кнопки + ниже или перейдя на страничку Обозревателя."
+msgstr ""
 
 #: [roster]show_hide
 msgid "Show/Hide"
@@ -1686,9 +1687,8 @@ msgid "No contact specified"
 msgstr "Контакт не задан"
 
 #: [upload]title
-#, fuzzy
 msgid "Upload a file"
-msgstr "Загрузить"
+msgstr ""
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1715,10 +1715,13 @@ msgid "Your profile is now restricted"
 msgstr "Ваш профиль теперь скрыт"
 
 #: [general]nickname
-#, fuzzy
 msgctxt "[general]nickname"
 msgid "Nickname"
-msgstr "Псевдоним"
+msgstr ""
+
+#: [accounts]accounts_title
+msgid "Accounts"
+msgstr "Учётные записи"
 
 #: [accounts]twitter
 msgid "Twitter"
@@ -1729,19 +1732,13 @@ msgid "Skype"
 msgstr "Skype"
 
 #: [accounts]yahoo
-msgid "Yahoo"
-msgstr "Yahoo"
+msgid "Yahoo Account"
+msgstr ""
 
 #: [accounts]accounts_nickname
-#, fuzzy
 msgctxt "[accounts]accounts_nickname"
 msgid "Nickname"
-msgstr "Псевдоним"
-
-#: [accounts]accounts_yahoo
-#, fuzzy
-msgid "Yahoo Account"
-msgstr "Другие учётные записи"
+msgstr ""
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -2045,11 +2042,11 @@ msgstr "Идет подключение"
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr "Да"
+msgstr ""
 
 #: [button]bool_no
 msgid "No"
-msgstr "Нет"
+msgstr ""
 
 #: [button]return
 msgid "Return"
@@ -2108,10 +2105,9 @@ msgid "Sunday"
 msgstr "Воскресенье"
 
 #: [gender]nil
-#, fuzzy
 msgctxt "[gender]nil"
 msgid "None"
-msgstr "Нет"
+msgstr ""
 
 #: [gender]male
 msgid "Male"
@@ -2146,10 +2142,9 @@ msgid "Registered"
 msgstr "Зарегистрировано"
 
 #: [marital]nil
-#, fuzzy
 msgctxt "[marital]nil"
 msgid "None"
-msgstr "Нет"
+msgstr ""
 
 #: [marital]single
 msgid "Single"
@@ -2624,13 +2619,16 @@ msgid "Yesterday"
 msgstr "Вчера"
 
 #: [date]ago
-#, fuzzy
 msgid "%d days ago"
-msgstr " %d дней назад"
+msgstr ""
 
 #: [date]day
 msgid "day"
 msgstr "день"
+
+#: [post]title
+msgid "Title"
+msgstr "Название"
 
 #: [post]whats_new
 msgid "What's new ?"
@@ -2652,13 +2650,17 @@ msgstr "Геолокация"
 msgid "email"
 msgstr "электронная почта"
 
+#: [post]empty
+msgid "No content"
+msgstr "Нет данных"
+
 #: [post]no_comments
 msgid "No comments yet"
 msgstr ""
 
 #: [post]no_comments_stream
 msgid "No comments stream"
-msgstr "Нет потока с комментариями"
+msgstr ""
 
 #: [post]no_load
 msgid "Your feed cannot be loaded."
@@ -2681,9 +2683,8 @@ msgid "Show the older comments"
 msgstr "Показать более старые комментарии"
 
 #: [post]comments_loading
-#, fuzzy
 msgid "Loading comments..."
-msgstr "Идет загрузка комментариев..."
+msgstr ""
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2728,303 +2729,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Environment"
-#~ msgstr "Окружение"
-
-#~ msgid "You can login with Facebook (chat only) using %syour.id@chat.facebook.com%s and your password"
-#~ msgstr "Вы можете войти в Facebook (только чат), используя %syour.id@chat.facebook.com%s и Ваш пароль"
-
-#~ msgid "%sGmail accounts are also compatible%s but are not fully supported"
-#~ msgstr "%sУчетные записи Gmail%s также совместимы, но поддерживаются не полностью"
-
-#~ msgid "You can login using your favorite Jabber account"
-#~ msgstr "Вы можете войти используя ваш любимый Jabber"
-
-#~ msgid "or with our demonstration account"
-#~ msgstr "или с помощью нашей демо учетной записи"
-
-#~ msgid "%s has been removed from your public groups"
-#~ msgstr "Группа %s была удалена из списка ваших публичных групп"
-
-#~ msgid "Remove a chatroom"
-#~ msgstr "Удалить комнату"
-
-#~ msgid "You are going to remove the following chatroom. Please confirm your action."
-#~ msgstr "Вы собирается удалить комнату, на которую вы подписаны. Пожулуйста, подтвердите это."
-
-#~ msgid "Remote application incompatible"
-#~ msgstr "Удаленное приложение несовместимо"
-
-#~ msgid "Remove"
-#~ msgstr "Удалить"
-
-#~ msgid "remorseful"
-#~ msgstr "полный раскаяния"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - создание учётной записи"
-
-#~ msgid "Logout"
-#~ msgstr "Выход"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Установщик Movim"
-
-#~ msgid "Install the %s package"
-#~ msgstr "Установите пакет %s"
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim требует расширение %s."
-
-#~ msgid "or"
-#~ msgstr "или"
-
-#~ msgid "Actual version : "
-#~ msgstr "Актуальная версия : "
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "Версии интерпретатора PHP не совпадают. Movim требует версию PHP 5.3 или выше."
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Обновите Вашу версию PHP или обратитесь к системному администратору"
-
-#~ msgid "Enable read and write rights on Movim's root folder"
-#~ msgstr "Включите права на запись и чтение для корневой папки Movim"
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Папка с Movim должна быть доступна для записи."
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "установите пакеты %s и %s"
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "Настройки соединения XMPP"
-
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "Невозможно создать папку '%s'."
-
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "Следующие требования не были удовлетворены. Пожалуйста, удостоверьтесь, что у Вас есть разрешения на установку Movim."
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Тест совместимости"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "Правильный Bosh"
-
-#~ msgid "Success !"
-#~ msgstr "Успешно !"
-
-#~ msgid "BOSH Connection Preferences"
-#~ msgstr "Настройки соединения BOSH"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Невозможно создать файл конфигурации '%s'."
-
-#~ msgid "Database Movim schema installed"
-#~ msgstr "Схема базы данных Movim установлена"
-
-#~ msgid "Database Detected"
-#~ msgstr "База данных обнаружена"
-
-#~ msgid "User not logged in."
-#~ msgstr "Пользователь не выполнил вход."
-
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "Невозможно открыть файл отчета '%s'"
-
-#~ msgid "Please remove the %s folder in order to complete the installation"
-#~ msgstr "Пожалуйста, удалите папку %s для завершения установки"
-
-#~ msgid "Invalid name"
-#~ msgstr "Недопустимое имя"
-
-#~ msgid "Could not connect to the XMPP server"
-#~ msgstr "Невозможно подключиться к XMPP серверу"
-
-#~ msgid "Username already taken"
-#~ msgstr "Такое имя пользователя уже используется"
-
-#~ msgid "Wrong ID"
-#~ msgstr "Неверный ID"
-
-#~ msgid "Example :"
-#~ msgstr "Пример:"
-
-#~ msgid "Remove this contact"
-#~ msgstr "Удалить этот контакт"
-
-#~ msgid "wants to talk with you"
-#~ msgstr "хочет пообщаться с вами"
-
-#~ msgid "Connecting..."
-#~ msgstr "Подключение…"
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "Настройки прокси-сервера"
-
-#~ msgid "Make sure your password is safe :"
-#~ msgstr "Удостоверьтесь, что пароль является надежным:"
-
-#~ msgid "Could not communicate with the XMPP server"
-#~ msgstr "Невозможно установить соединение с XMPP сервером"
-
-#~ msgid "Pseudo"
-#~ msgstr "Псевдо"
-
-#~ msgid "Create"
-#~ msgstr "Создать"
-
-#~ msgid "8 characters"
-#~ msgstr "8 символов"
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Благодарим Вас за загрузку Movin!"
-
-#~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr "Рекомендуются прописные буквы, цифры и спецзнаки"
-
-#~ msgid "Add your login informations"
-#~ msgstr "Добавьте Вашу информацию для соединения"
-
-#~ msgid "%s - Add An Account"
-#~ msgstr "%s - Добавить запись"
-
-#~ msgid "Address"
-#~ msgstr "Адрес"
-
-#~ msgid "Client Name"
-#~ msgstr "Имя клиента"
-
-#~ msgid "Client Type"
-#~ msgstr "Тип клиента"
-
-#~ msgid "My Posts"
-#~ msgstr "Мои сообщения"
-
-#~ msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
-#~ msgstr "Посетите страницу %s Что такое Movin? %s чтобы узнать больше об этом проектк, его целях и для понимания принципов его работы."
-
-#~ msgid "I can't find the answer to my question here"
-#~ msgstr "Я не нашёл здесь ответа на мой вопрос"
-
-#~ msgid "Decline"
-#~ msgstr "Отклонить"
-
-#~ msgid "No profile yet ?"
-#~ msgstr "Ещё нет профиля?"
-
-#~ msgid "Create my vCard"
-#~ msgstr "Создать мою vCard"
-
-#~ msgid "empty"
-#~ msgstr "пусто"
-
-#~ msgid "Edit my Profile"
-#~ msgstr "Редактировать мой Профиль"
-
-#~ msgid "Link my current account"
-#~ msgstr "Соединить с моим текущим счётом"
-
-#~ msgid "Contacts (%s)"
-#~ msgstr "Контакты (%s)"
-
-#~ msgid "Follow"
-#~ msgstr "Следовать"
-
-#~ msgid "Show All"
-#~ msgstr "Показать всё"
-
-#~ msgid "Some errors were detected. Please correct them for the installation to proceed."
-#~ msgstr "Обнаружены ошибки. Пожалуйста исправльте их, чтобы продолжить процесс инсталляции."
-
-#~ msgid "Retype"
-#~ msgstr "Переписать"
-
-#~ msgid "Loading your feed ..."
-#~ msgstr "Загрузка Вашей ленты"
-
-#~ msgid "Your server doesn't support post publication, you can only read contact's feeds"
-#~ msgstr "Ваш сервер не поддерживает публикацию сообщений, Вы можете только читать контактные ленты"
-
-#~ msgid "Only alphanumerics elements are authorized"
-#~ msgstr "Использовать только буквы и цифры"
-
-#~ msgid "terse"
-#~ msgstr "кратко"
-
-#~ msgid "Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit."
-#~ msgstr "Имейте в виду, что Movim только развивается и имеет дело с большим объёмом персональной информации. Её использование потенциально угрожает Вашей безопасности. Всегда будьте внимательны к информации, которую Вы предоставляете."
-
-#~ msgid "Same here !"
-#~ msgstr "Я тоже!"
-
-#~ msgid "Loading the contact feed ..."
-#~ msgstr "Грузится лента контакта"
-
-#~ msgid "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr "Прежде чем Вы насладитесь Вашей социальной сетью требуются некоторые поправки"
-
-#~ msgid "JID not provided."
-#~ msgstr "JID не предоставлен."
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "jid '%s' некорректный"
-
-#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "Вы имеет теперь доступ к Movin при помощи %sJump In !%s"
-
-#~ msgid "Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !"
-#~ msgstr "Оставьте пустым это поле, этот адрес позволит Вам следовать за всей сетью Movin !"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Не удаётся загрузить элемент '%s'"
-
-#~ msgid "What is Movim?"
-#~ msgstr "Что такое Movim?"
-
-#~ msgid "Invite this user"
-#~ msgstr "пригласить этого пользователя"
-
-#~ msgid "Bosh connection failed with error '%s'"
-#~ msgstr "Некорректное соединение с BOSH, ошибка '%s'"
-
-#~ msgid "Database connection failed with error '%s'"
-#~ msgstr "Неудачное соединение с базой данных, ошибка '%s'"
-
-#~ msgid "XMPP connection through Bosh failed with error '%s'"
-#~ msgstr "XMPP соединене через BOSH неудачно, ошибка '%s'"
-
-#~ msgid "Send request"
-#~ msgstr "Отправить запрос"
-
-#~ msgid "You entered different passwords"
-#~ msgstr "Введённые пароли не совпадают"
-
-#~ msgid "ultimate"
-#~ msgstr "полно"
-
-#~ msgid "normal"
-#~ msgstr "обычно"
-
-#~ msgid "talkative"
-#~ msgstr "подробно"
-
-#~ msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
-#~ msgstr "Хотя Movim быстро развивается, в нём (очень) много чего не хватает. Будьте терпеливы ;). Вы можете посмотреть %s планы развития новых версий %s , чтобы узнать, что из желаемого уже на подходе."
-
-#~ msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
-#~ msgstr "Не забывайте, что Movim - проект с открытым кодом, помощь всячески приветствуется (смотри %s Могу ли я участвовать %s)"
-
-#~ msgid "Some features are missing/I can't do everything I used to do on other social networks"
-#~ msgstr "Не хватает некоторых функций/Мне нельзя делать то же, что в других соцсетях"
-
-#~ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
-#~ msgstr "Перейдите на %s Частые Вопросы (ЧаВо?) %s , или задайте свой вопрос в конференции %s , или через нашу почтовую рассылку (%s смотри соответствующую страницу %s)."
-
-#~ msgid "The current BOSH URL in invalid"
-#~ msgstr "Текущий BOSH URL недействителен"
-
-#~ msgid "Debug console"
-#~ msgstr "Консоль отладки"

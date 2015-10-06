@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 15:17+0200\n"
+"POT-Creation-Date: 2015-10-06 23:33+0200\n"
 "PO-Revision-Date: 2014-06-01 23:07+0000\n"
 "Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: Ido <io@li.org>\n"
@@ -116,6 +116,10 @@ msgstr ""
 
 #: [about]translators
 msgid "Translators"
+msgstr ""
+
+#: [about]translators_text
+msgid "Thanks to all the translators"
 msgstr ""
 
 #: [about]software
@@ -640,7 +644,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the plus button bellow or visit the Contacts page."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -952,11 +956,11 @@ msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any subscriptions yet, select a group server above to start exploring."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Subscribe to your favorite feeds by bookmarking them."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]subscriptions
@@ -1011,12 +1015,12 @@ msgstr ""
 msgid "Refresh all the streams"
 msgstr ""
 
-#: [roster]search
-msgid "Search in your contacts"
+#: [menu]me
+msgid "My publications"
 msgstr ""
 
-#: [hello]active_contacts
-msgid "Active contacts"
+#: [roster]search
+msgid "Search in your contacts"
 msgstr ""
 
 #: [hello]chat
@@ -1049,6 +1053,22 @@ msgstr ""
 
 #: [hello]share_button
 msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1245,10 +1265,6 @@ msgstr ""
 msgid "The XMPP authentification failed"
 msgstr ""
 
-#: [account]title [accounts]accounts_title
-msgid "Accounts"
-msgstr ""
-
 #: [form]username
 msgid "My address"
 msgstr ""
@@ -1341,48 +1357,8 @@ msgstr ""
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: [post]preview [page]preview
-msgid "Preview"
-msgstr ""
-
-#: [post]help [page]help
-msgid "Help"
-msgstr ""
-
-#: [post]help_more
-msgid "More help"
-msgstr ""
-
-#: [post]help_manual
-msgid "Markdown syntax manual"
-msgstr ""
-
-#: [post]title
-msgid "Title"
-msgstr ""
-
-#: [post]content
+#: [post]content [post]content_label
 msgid "Content"
-msgstr ""
-
-#: [post]link
-msgid "Link"
-msgstr ""
-
-#: [post]tags
-msgid "Tags"
-msgstr ""
-
-#: [post]valid_url [publish]valid_url
-msgid "Please enter a valid url"
-msgstr ""
-
-#: [post]no_content_preview [publish]no_content_preview
-msgid "No content to preview"
-msgstr ""
-
-#: [post]no_content [publish]no_content [post]empty
-msgid "No content"
 msgstr ""
 
 #: [post]published
@@ -1391,10 +1367,6 @@ msgstr ""
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
-
-#: [post]gallery
-msgid "This picture will be added to your gallery"
 msgstr ""
 
 #: [post]hot
@@ -1407,10 +1379,6 @@ msgstr ""
 
 #: [post]new [publish]new
 msgid "New post"
-msgstr ""
-
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
 msgstr ""
 
 #: [post]repost
@@ -1473,6 +1441,54 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
+#: [post]preview [page]preview
+msgid "Preview"
+msgstr ""
+
+#: [post]help [page]help
+msgid "Help"
+msgstr ""
+
+#: [post]help_more
+msgid "More help"
+msgstr ""
+
+#: [post]help_manual
+msgid "Markdown syntax manual"
+msgstr ""
+
+#: [post]content_text
+msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [post]link
+msgid "Link"
+msgstr ""
+
+#: [post]tags
+msgid "Tags"
+msgstr ""
+
+#: [post]gallery
+msgid "This picture will be added to your gallery"
+msgstr ""
+
+#: [post]embed_tip
+msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
+msgstr ""
+
+#: [publish]valid_url
+msgid "Please enter a valid url"
+msgstr ""
+
+#: [publish]no_content_preview
+msgid "No content to preview"
+msgstr ""
+
+#: [publish]no_title
+msgid "Please provide a title"
+msgstr ""
+
 #: [publish]title
 msgid "Publish"
 msgstr ""
@@ -1487,6 +1503,14 @@ msgstr ""
 
 #: [publish]form_filled
 msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
+msgstr ""
+
+#: [publish]add_text
+msgid "Click here to add some text to your publication"
+msgstr ""
+
+#: [publish]add_text_label
+msgid "Add some text"
 msgstr ""
 
 #: [public_groups]shared
@@ -1506,7 +1530,7 @@ msgid "You don't have any chatroom yet."
 msgstr ""
 
 #: [rooms]empty_text2
-msgid "Add one by clicking on the add button in the header."
+msgid "Add one by clicking on the add button."
 msgstr ""
 
 #: [chatrooms]title
@@ -1523,6 +1547,10 @@ msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
+msgstr ""
+
+#: [chatrooms]conflict
+msgid "Username already taken"
 msgstr ""
 
 #: [room]anonymous_title
@@ -1694,6 +1722,10 @@ msgctxt "[general]nickname"
 msgid "Nickname"
 msgstr ""
 
+#: [accounts]accounts_title
+msgid "Accounts"
+msgstr ""
+
 #: [accounts]twitter
 msgid "Twitter"
 msgstr ""
@@ -1703,16 +1735,12 @@ msgid "Skype"
 msgstr ""
 
 #: [accounts]yahoo
-msgid "Yahoo"
+msgid "Yahoo Account"
 msgstr ""
 
 #: [accounts]accounts_nickname
 msgctxt "[accounts]accounts_nickname"
 msgid "Nickname"
-msgstr ""
-
-#: [accounts]accounts_yahoo
-msgid "Yahoo Account"
 msgstr ""
 
 #: [privacy]privacy_title
@@ -2604,6 +2632,10 @@ msgstr " %d dii ante"
 msgid "day"
 msgstr "dio"
 
+#: [post]title
+msgid "Title"
+msgstr ""
+
 #: [post]whats_new
 msgid "What's new ?"
 msgstr ""
@@ -2622,6 +2654,10 @@ msgstr ""
 
 #: [post]email
 msgid "email"
+msgstr ""
+
+#: [post]empty
+msgid "No content"
 msgstr ""
 
 #: [post]no_comments

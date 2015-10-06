@@ -3,6 +3,7 @@
 # Éfrit, 2015
 # Jaussoin Timothée <edhelas@movim.eu>, 2015
 # Maxime Buquet <tidusx62@gmail.com>, 2015
+# Thirty Thirds <thirtythirds@gmail.com>, 2015
 # Tom <caporaldead@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -96,8 +97,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 15:17+0200\n"
-"PO-Revision-Date: 2015-08-21 09:30+0000\n"
+"POT-Creation-Date: 2015-10-06 23:33+0200\n"
+"PO-Revision-Date: 2015-10-06 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -105,7 +106,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 1.12.0\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -118,6 +119,10 @@ msgstr "Développeurs"
 #: [about]translators
 msgid "Translators"
 msgstr "Traducteurs"
+
+#: [about]translators_text
+msgid "Thanks to all the translators"
+msgstr ""
 
 #: [about]software
 msgid "Software"
@@ -182,7 +187,7 @@ msgstr "Êtes-vous sûr de vouloir le supprimer ?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "Passerelle"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -641,8 +646,8 @@ msgid "No chats yet..."
 msgstr "Pas de discussions pour le moment"
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the plus button bellow or visit the Contacts page."
-msgstr "Commencez une nouvelle conversation en cliquant sur le bouton plus ci-dessous ou visitez la page Contacts."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -846,7 +851,7 @@ msgstr "Mais ce contact peut tout de même voir votre présence en ligne"
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr ""
+msgstr "Pas de Souscriptions"
 
 #: [subscription]nil_button
 msgid "Invite"
@@ -926,23 +931,23 @@ msgstr ""
 
 #: [group]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "Rechercher un nouveau serveur"
 
 #: [group]help_info1
 msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-msgstr ""
+msgstr "Les Groupes sont le meilleur moyen pour échanger des messages concernant des sujets que vous aimez avec tous les autres utilisateurs de Movim."
 
 #: [group]help_info2
 msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-msgstr ""
+msgstr "Choisissez un serveur et un Groupe et souscrivez-y en utilisant le bouton %s dans l'en-tête. Vous pouvez aussi en créer un nouveau en utilisant le bouton %s."
 
 #: [group]help_info3
 msgid "Done? You can now publish a new post in the Group by using the %s button."
-msgstr ""
+msgstr "Effectué? Vous pouvez maintenant publier un nouveau billet dans le Groupe en utilisant le bouton %s."
 
 #: [group]help_info4
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-msgstr ""
+msgstr "Vous trouverez une liste des Groupes auxquels vous avez souscrit dans Mes Abonnements et recevrez immédiatement tous les nouveaux messages arrivés sur la page %sActualités%s."
 
 #: [groups]empty_title
 msgid "Hello"
@@ -953,12 +958,12 @@ msgid "Contact post"
 msgstr "Billet d’un contact"
 
 #: [groups]empty_text1
-msgid "You don't have any subscriptions yet, select a group server above to start exploring."
-msgstr "Vous n'avez souscrit à aucun groupe pour le moment, choisissez un serveur de groupes ci-dessous et commencer à explorer."
+msgid "You don't have any group subscriptions yet."
+msgstr ""
 
 #: [groups]empty_text2
-msgid "Subscribe to your favorite feeds by bookmarking them."
-msgstr "Souscrivez à vos groupes favorits en les mettant en favoris."
+msgid "Here you will be able to manage all your subscriptions."
+msgstr ""
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1002,7 +1007,7 @@ msgstr "%s billets"
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
+msgstr "Ce serveur n'existe pas"
 
 #: [menu]all
 msgid "All"
@@ -1012,13 +1017,13 @@ msgstr "Tous"
 msgid "Refresh all the streams"
 msgstr "Rafraîchir tous les flux"
 
+#: [menu]me
+msgid "My publications"
+msgstr ""
+
 #: [roster]search
 msgid "Search in your contacts"
 msgstr "Chercher dans vos contacts "
-
-#: [hello]active_contacts
-msgid "Active contacts"
-msgstr "Contacts actifs"
 
 #: [hello]chat
 msgid "Go on the Chat page"
@@ -1051,6 +1056,22 @@ msgstr "Cliquez-déposez ou mettez en favoris dans votre navigateur le bouton su
 #: [hello]share_button
 msgid "Share on Movim"
 msgstr "Partager sur Movim"
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1246,10 +1267,6 @@ msgstr "Le mécanisme d’authentification n’est pas supporté par Movim"
 msgid "The XMPP authentification failed"
 msgstr "L’authentification au serveur XMPP a échoué"
 
-#: [account]title [accounts]accounts_title
-msgid "Accounts"
-msgstr "Comptes"
-
 #: [form]username
 msgid "My address"
 msgstr "Mon adresse"
@@ -1280,11 +1297,11 @@ msgstr "Population"
 
 #: [menu]empty_title
 msgid "No news yet..."
-msgstr "Pas de commentaires pour le moment"
+msgstr "Aucune actualité… pour le moment"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
-msgstr "Bienvenue sur flux d’actualité, ici vous verrez tous les billets publiés dans les groupes auxquels vous vous êtes abonnés."
+msgstr "Bienvenue sur votre flux d’actualité, ici vous verrez toutes les publications des groupes auxquels vous vous êtes abonnés ainsi que celles de vos contacts."
 
 #: [menu]refresh
 msgid "Refreshing all the streams"
@@ -1342,49 +1359,9 @@ msgstr "Fil d’actualité"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Découvrez et rejoignez les groupes qui vous intéressent"
 
-#: [post]preview [page]preview
-msgid "Preview"
-msgstr "Aperçu"
-
-#: [post]help [page]help
-msgid "Help"
-msgstr "Aide"
-
-#: [post]help_more
-msgid "More help"
-msgstr "Aide supplémentaire"
-
-#: [post]help_manual
-msgid "Markdown syntax manual"
-msgstr "Manuel d'utilisation de la syntaxe Markdown"
-
-#: [post]title
-msgid "Title"
-msgstr "Titre"
-
-#: [post]content
+#: [post]content [post]content_label
 msgid "Content"
 msgstr "Contenu"
-
-#: [post]link
-msgid "Link"
-msgstr "Lien"
-
-#: [post]tags
-msgid "Tags"
-msgstr "Étiquettes"
-
-#: [post]valid_url [publish]valid_url
-msgid "Please enter a valid url"
-msgstr "Veuillez entrer une URL valide"
-
-#: [post]no_content_preview [publish]no_content_preview
-msgid "No content to preview"
-msgstr "Pas de contenu à afficher"
-
-#: [post]no_content [publish]no_content [post]empty
-msgid "No content"
-msgstr "Aucun contenu"
 
 #: [post]published
 msgid "Post published"
@@ -1394,25 +1371,17 @@ msgstr "Bilet publié"
 msgid "Post deleted"
 msgstr "Billet effacé"
 
-#: [post]gallery
-msgid "This picture will be added to your gallery"
-msgstr "Cette image va être ajoutée à votre galerie"
-
 #: [post]hot
 msgid "What's Hot"
 msgstr "Quoi de neuf"
 
 #: [post]hot_text
 msgid "Posts recently published in Groups that you are not subscribed (yet)"
-msgstr ""
+msgstr "Billets récemment publiés dans les Groupes auxquels vous n'êtes pas (encore) inscrit"
 
 #: [post]new [publish]new
 msgid "New post"
 msgstr "Nouveau billet"
-
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
-msgstr "Vous pouvez également utiliser des services comme Imgur ou Flickr pour héberger vos images et coller le lien résultant ici."
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -1424,7 +1393,7 @@ msgstr "Voir le profil de %s"
 
 #: [post]public
 msgid "Publish this post publicly?"
-msgstr ""
+msgstr "Publier ce billet publiquement?"
 
 #: [post]blog_add
 msgid "Post published on your blog"
@@ -1448,7 +1417,7 @@ msgstr "Commentaires désactivés."
 
 #: [post]comment_published
 msgid "Comment published"
-msgstr "Commentaire publié."
+msgstr "Commentaire publié"
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -1474,13 +1443,61 @@ msgstr "Présence"
 msgid "Online with Movim"
 msgstr "En ligne avec Movim"
 
+#: [post]preview [page]preview
+msgid "Preview"
+msgstr "Aperçu"
+
+#: [post]help [page]help
+msgid "Help"
+msgstr "Aide"
+
+#: [post]help_more
+msgid "More help"
+msgstr "Aide supplémentaire"
+
+#: [post]help_manual
+msgid "Markdown syntax manual"
+msgstr "Manuel d'utilisation de la syntaxe Markdown"
+
+#: [post]content_text
+msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [post]link
+msgid "Link"
+msgstr "Lien"
+
+#: [post]tags
+msgid "Tags"
+msgstr "Étiquettes"
+
+#: [post]gallery
+msgid "This picture will be added to your gallery"
+msgstr "Cette image va être ajoutée à votre galerie"
+
+#: [post]embed_tip
+msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
+msgstr "Vous pouvez également utiliser des services comme Imgur ou Flickr pour héberger vos images et coller le lien résultant ici."
+
+#: [publish]valid_url
+msgid "Please enter a valid url"
+msgstr "Veuillez entrer une URL valide"
+
+#: [publish]no_content_preview
+msgid "No content to preview"
+msgstr "Pas de contenu à afficher"
+
+#: [publish]no_title
+msgid "Please provide a title"
+msgstr ""
+
 #: [publish]title
 msgid "Publish"
 msgstr "Publier"
 
 #: [publish]attach
 msgid "Add a file or a picture to your post"
-msgstr ""
+msgstr "Ajouter un fichier ou une image à vôtre billet"
 
 #: [publish]no_publication
 msgid "You cannot publish a post on this Group"
@@ -1489,6 +1506,14 @@ msgstr "Vous ne pouvez pas publier de billet sur ce groupe"
 #: [publish]form_filled
 msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
 msgstr "Certains champs ont été remplis. Êtes-vous sûr de vouloir revenir en arrière et de perdre le contenu déjà saisi ?"
+
+#: [publish]add_text
+msgid "Click here to add some text to your publication"
+msgstr ""
+
+#: [publish]add_text_label
+msgid "Add some text"
+msgstr ""
 
 #: [public_groups]shared
 msgid "Shared"
@@ -1507,8 +1532,8 @@ msgid "You don't have any chatroom yet."
 msgstr "Vous n'avez pas encore de salon de discussions."
 
 #: [rooms]empty_text2
-msgid "Add one by clicking on the add button in the header."
-msgstr "Ajoutez en un en cliquant sur le bouton plus dans l'entête."
+msgid "Add one by clicking on the add button."
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1525,6 +1550,10 @@ msgstr "Utilisateurs du salon"
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
 msgstr "Merci d'entrer un surnom valide (entre 2 et 40 caractères)"
+
+#: [chatrooms]conflict
+msgid "Username already taken"
+msgstr ""
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1576,11 +1605,11 @@ msgstr "Veuillez entrer un identifiant Jabber valide"
 
 #: [roster]no_contacts_title
 msgid "No contacts ?"
-msgstr ""
+msgstr "Aucun contacts?"
 
 #: [roster]no_contacts_text
 msgid "You can add one using the + button bellow"
-msgstr ""
+msgstr "Vous pouvez en ajouter un en cliquant sur le bouton + ci-dessous"
 
 #: [roster]show_hide
 msgid "Show/Hide"
@@ -1664,11 +1693,11 @@ msgstr "Aucun contact indiqué"
 
 #: [upload]title
 msgid "Upload a file"
-msgstr ""
+msgstr "Téléverser un fichier"
 
 #: [upload]choose
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "Choisir un fichier à téléverser"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1695,6 +1724,10 @@ msgctxt "[general]nickname"
 msgid "Nickname"
 msgstr "Surnom"
 
+#: [accounts]accounts_title
+msgid "Accounts"
+msgstr "Comptes"
+
 #: [accounts]twitter
 msgid "Twitter"
 msgstr "Twitter"
@@ -1704,17 +1737,13 @@ msgid "Skype"
 msgstr "Skype"
 
 #: [accounts]yahoo
-msgid "Yahoo"
-msgstr "Yahoo"
+msgid "Yahoo Account"
+msgstr "Compte Yahoo"
 
 #: [accounts]accounts_nickname
 msgctxt "[accounts]accounts_nickname"
 msgid "Nickname"
 msgstr "Surnom"
-
-#: [accounts]accounts_yahoo
-msgid "Yahoo Account"
-msgstr "Compte Yahoo"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -2018,11 +2047,11 @@ msgstr "Connexion"
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: [button]return
 msgid "Return"
@@ -2083,7 +2112,7 @@ msgstr "Dimanche"
 #: [gender]nil
 msgctxt "[gender]nil"
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #: [gender]male
 msgid "Male"
@@ -2120,7 +2149,7 @@ msgstr "Inscrit"
 #: [marital]nil
 msgctxt "[marital]nil"
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #: [marital]single
 msgid "Single"
@@ -2602,6 +2631,10 @@ msgstr " Il y a %d jours"
 msgid "day"
 msgstr "jour"
 
+#: [post]title
+msgid "Title"
+msgstr "Titre"
+
 #: [post]whats_new
 msgid "What's new ?"
 msgstr "Quoi de neuf ?"
@@ -2622,13 +2655,17 @@ msgstr "Géolocalisation"
 msgid "email"
 msgstr "courriel"
 
+#: [post]empty
+msgid "No content"
+msgstr "Aucun contenu"
+
 #: [post]no_comments
 msgid "No comments yet"
-msgstr ""
+msgstr "Pas de commentaires pour le moment"
 
 #: [post]no_comments_stream
 msgid "No comments stream"
-msgstr ""
+msgstr "Pas de flux de commentaires"
 
 #: [post]no_load
 msgid "Your feed cannot be loaded."
@@ -2652,7 +2689,7 @@ msgstr "Afficher les commentaires plus anciens"
 
 #: [post]comments_loading
 msgid "Loading comments..."
-msgstr ""
+msgstr "Chargement des commentaires…"
 
 #: [post]comments_get
 msgid "Get the comments"

@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 15:17+0200\n"
+"POT-Creation-Date: 2015-10-06 23:33+0200\n"
 "PO-Revision-Date: 2015-06-09 12:18+0000\n"
 "Last-Translator: edhelas <edhelas@movim.eu>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -114,6 +114,10 @@ msgstr ""
 
 #: [about]translators
 msgid "Translators"
+msgstr ""
+
+#: [about]translators_text
+msgid "Thanks to all the translators"
 msgstr ""
 
 #: [about]software
@@ -649,7 +653,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the plus button bellow or visit the Contacts page."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -965,12 +969,14 @@ msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any subscriptions yet, select a group server above to start exploring."
-msgstr ""
+#, fuzzy
+msgid "You don't have any group subscriptions yet."
+msgstr "Gerir vòstres abonaments"
 
 #: [groups]empty_text2
-msgid "Subscribe to your favorite feeds by bookmarking them."
-msgstr ""
+#, fuzzy
+msgid "Here you will be able to manage all your subscriptions."
+msgstr "Gerir vòstres abonaments"
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1024,15 +1030,14 @@ msgstr "Tot"
 msgid "Refresh all the streams"
 msgstr ""
 
+#: [menu]me
+msgid "My publications"
+msgstr ""
+
 #: [roster]search
 #, fuzzy
 msgid "Search in your contacts"
 msgstr "Partejat amb un contacte"
-
-#: [hello]active_contacts
-#, fuzzy
-msgid "Active contacts"
-msgstr "Accions"
 
 #: [hello]chat
 msgid "Go on the Chat page"
@@ -1064,6 +1069,22 @@ msgstr ""
 
 #: [hello]share_button
 msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1260,10 +1281,6 @@ msgstr ""
 msgid "The XMPP authentification failed"
 msgstr "Autentificacion al servidor XMPP impossibla"
 
-#: [account]title [accounts]accounts_title
-msgid "Accounts"
-msgstr ""
-
 #: [form]username
 msgid "My address"
 msgstr "Mon adreça"
@@ -1356,49 +1373,9 @@ msgstr ""
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: [post]preview [page]preview
-msgid "Preview"
-msgstr ""
-
-#: [post]help [page]help
-msgid "Help"
-msgstr "Ajuda"
-
-#: [post]help_more
-msgid "More help"
-msgstr ""
-
-#: [post]help_manual
-msgid "Markdown syntax manual"
-msgstr ""
-
-#: [post]title
-msgid "Title"
-msgstr ""
-
-#: [post]content
+#: [post]content [post]content_label
 msgid "Content"
 msgstr ""
-
-#: [post]link
-msgid "Link"
-msgstr "Ligam"
-
-#: [post]tags
-msgid "Tags"
-msgstr ""
-
-#: [post]valid_url [publish]valid_url
-msgid "Please enter a valid url"
-msgstr ""
-
-#: [post]no_content_preview [publish]no_content_preview
-msgid "No content to preview"
-msgstr ""
-
-#: [post]no_content [publish]no_content [post]empty
-msgid "No content"
-msgstr "Pas cap de contengut"
 
 #: [post]published
 msgid "Post published"
@@ -1406,10 +1383,6 @@ msgstr ""
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
-
-#: [post]gallery
-msgid "This picture will be added to your gallery"
 msgstr ""
 
 #: [post]hot
@@ -1422,10 +1395,6 @@ msgstr ""
 
 #: [post]new [publish]new
 msgid "New post"
-msgstr ""
-
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
 msgstr ""
 
 #: [post]repost
@@ -1489,6 +1458,54 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
+#: [post]preview [page]preview
+msgid "Preview"
+msgstr ""
+
+#: [post]help [page]help
+msgid "Help"
+msgstr "Ajuda"
+
+#: [post]help_more
+msgid "More help"
+msgstr ""
+
+#: [post]help_manual
+msgid "Markdown syntax manual"
+msgstr ""
+
+#: [post]content_text
+msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [post]link
+msgid "Link"
+msgstr "Ligam"
+
+#: [post]tags
+msgid "Tags"
+msgstr ""
+
+#: [post]gallery
+msgid "This picture will be added to your gallery"
+msgstr ""
+
+#: [post]embed_tip
+msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
+msgstr ""
+
+#: [publish]valid_url
+msgid "Please enter a valid url"
+msgstr ""
+
+#: [publish]no_content_preview
+msgid "No content to preview"
+msgstr ""
+
+#: [publish]no_title
+msgid "Please provide a title"
+msgstr ""
+
 #: [publish]title
 msgid "Publish"
 msgstr ""
@@ -1503,6 +1520,14 @@ msgstr ""
 
 #: [publish]form_filled
 msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
+msgstr ""
+
+#: [publish]add_text
+msgid "Click here to add some text to your publication"
+msgstr ""
+
+#: [publish]add_text_label
+msgid "Add some text"
 msgstr ""
 
 #: [public_groups]shared
@@ -1522,7 +1547,7 @@ msgid "You don't have any chatroom yet."
 msgstr ""
 
 #: [rooms]empty_text2
-msgid "Add one by clicking on the add button in the header."
+msgid "Add one by clicking on the add button."
 msgstr ""
 
 #: [chatrooms]title
@@ -1540,6 +1565,10 @@ msgstr ""
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
 msgstr ""
+
+#: [chatrooms]conflict
+msgid "Username already taken"
+msgstr "Nom d'utilizaire ja existent"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1713,6 +1742,10 @@ msgctxt "[general]nickname"
 msgid "Nickname"
 msgstr "Escais"
 
+#: [accounts]accounts_title
+msgid "Accounts"
+msgstr ""
+
 #: [accounts]twitter
 msgid "Twitter"
 msgstr ""
@@ -1722,19 +1755,15 @@ msgid "Skype"
 msgstr ""
 
 #: [accounts]yahoo
-msgid "Yahoo"
-msgstr ""
+#, fuzzy
+msgid "Yahoo Account"
+msgstr "%s - Compte"
 
 #: [accounts]accounts_nickname
 #, fuzzy
 msgctxt "[accounts]accounts_nickname"
 msgid "Nickname"
 msgstr "Escais"
-
-#: [accounts]accounts_yahoo
-#, fuzzy
-msgid "Yahoo Account"
-msgstr "%s - Compte"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -2625,6 +2654,10 @@ msgstr " i a %d jorns"
 msgid "day"
 msgstr "jorn"
 
+#: [post]title
+msgid "Title"
+msgstr ""
+
 #: [post]whats_new
 msgid "What's new ?"
 msgstr ""
@@ -2644,6 +2677,10 @@ msgstr ""
 #: [post]email
 msgid "email"
 msgstr "E-mail"
+
+#: [post]empty
+msgid "No content"
+msgstr "Pas cap de contengut"
 
 #: [post]no_comments
 msgid "No comments yet"
@@ -2721,6 +2758,10 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Active contacts"
+#~ msgstr "Accions"
 
 #~ msgid "Environment"
 #~ msgstr "Environament"
@@ -2835,9 +2876,6 @@ msgstr ""
 
 #~ msgid "Could not connect to the XMPP server"
 #~ msgstr "Error a la connexion al servidor XMPP"
-
-#~ msgid "Username already taken"
-#~ msgstr "Nom d'utilizaire ja existent"
 
 #~ msgid "Make sure your password is safe :"
 #~ msgstr "Asseguratz-vos que vòstre senhal es segur :"

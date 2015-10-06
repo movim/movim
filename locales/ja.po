@@ -1,6 +1,6 @@
-# Japanese translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+#
+# Translators:
+# Maxime Buquet <tidusx62@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -91,18 +91,18 @@
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 15:17+0200\n"
-"PO-Revision-Date: 2015-06-09 12:20+0000\n"
-"Last-Translator: edhelas <edhelas@movim.eu>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2015-10-06 23:33+0200\n"
+"PO-Revision-Date: 2015-10-06 21:34+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -115,6 +115,10 @@ msgstr "開発者"
 #: [about]translators
 msgid "Translators"
 msgstr "翻訳者"
+
+#: [about]translators_text
+msgid "Thanks to all the translators"
+msgstr ""
 
 #: [about]software
 msgid "Software"
@@ -137,9 +141,8 @@ msgid "Account"
 msgstr "アカウント"
 
 #: [account]password_change_title
-#, fuzzy
 msgid "Change my password"
-msgstr "パスワードが違います"
+msgstr "パスワードを変更する"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -147,9 +150,8 @@ msgid "Password"
 msgstr "パスワード"
 
 #: [account]password_confirmation
-#, fuzzy
 msgid "Password confirmation"
-msgstr "%s - 設定"
+msgstr "パスワードを再入力してください"
 
 #: [account]password_changed
 msgid "The password has been updated"
@@ -168,7 +170,6 @@ msgid "Delete my account"
 msgstr "アカウントを削除する"
 
 #: [account]delete
-#, fuzzy
 msgid "Delete your account"
 msgstr "アカウントを削除する"
 
@@ -206,7 +207,7 @@ msgstr "読み込み中"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "不正"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
@@ -257,9 +258,8 @@ msgid "Port"
 msgstr "ポート"
 
 #: [db]name
-#, fuzzy
 msgid "Database sName"
-msgstr "データベース名"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -334,10 +334,9 @@ msgid "List of whitelisted XMPP servers"
 msgstr "信頼するXMPPサーバー"
 
 #: [information]title
-#, fuzzy
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "クライアントインフォメーション"
+msgstr ""
 
 #: [information]description
 msgid "Description"
@@ -348,15 +347,13 @@ msgid "This message will be displayed on the login page"
 msgstr "このメッセージはログインページに表示されます"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you dont want to show any message."
-msgstr "メッセージを表示したくない場合、空にしてください。"
+msgstr ""
 
 #: [information]label
-#, fuzzy
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr "クライアントインフォメーション"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -407,9 +404,8 @@ msgid "Install the php5-gd library"
 msgstr ""
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movims root directory"
-msgstr "Movimルートの読み取り・書き込み権限"
+msgstr ""
 
 #: [compatibility]rewrite
 msgid "The URL Rewriting support is currently disabled"
@@ -429,19 +425,19 @@ msgstr ""
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "ブラウザ"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Movim コア"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Movim デーモン"
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
@@ -524,7 +520,6 @@ msgid "Chat Room ID"
 msgstr ""
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
 msgstr "名前"
@@ -550,9 +545,8 @@ msgid "Bookmarks updated"
 msgstr "ブックマークを更新しました"
 
 #: [bookmarks]error
-#, fuzzy
 msgid "An error occured :"
-msgstr "エラーが発生しました： "
+msgstr ""
 
 #: [bookmarks]configure
 msgid "Configure"
@@ -567,10 +561,9 @@ msgid "URL"
 msgstr "URL"
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "名前"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -645,12 +638,11 @@ msgid "Subject changed"
 msgstr "トピックが更新されました"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet..."
-msgstr "コメントがまだありません"
+msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the plus button bellow or visit the Contacts page."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -703,7 +695,7 @@ msgstr "オフラインのコンタクトを非表示"
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "表示"
 
 #: [config]info
 msgid "This configuration is shared wherever you are connected"
@@ -830,9 +822,8 @@ msgid "Last public post"
 msgstr ""
 
 #: [subscription]to
-#, fuzzy
 msgid "You can see this contact status"
-msgstr "このコンタクトを削除する"
+msgstr ""
 
 #: [subscription]to_button
 msgid "Share my status"
@@ -847,18 +838,16 @@ msgid "You are not subscribed to this contact"
 msgstr ""
 
 #: [subscription]from_button
-#, fuzzy
 msgid "Ask to subscribe"
-msgstr "参加申請取消"
+msgstr ""
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
 msgstr ""
 
 #: [subscription]nil
-#, fuzzy
 msgid "No subscriptions"
-msgstr "サブスクリプションを習得する"
+msgstr ""
 
 #: [subscription]nil_button
 msgid "Invite"
@@ -933,9 +922,8 @@ msgid "Subscriptions"
 msgstr ""
 
 #: [group]servers
-#, fuzzy
 msgid "Groups servers"
-msgstr "グループ"
+msgstr ""
 
 #: [group]search_server
 msgid "Search for a new server"
@@ -966,11 +954,11 @@ msgid "Contact post"
 msgstr "コンタクトの投稿"
 
 #: [groups]empty_text1
-msgid "You don't have any subscriptions yet, select a group server above to start exploring."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Subscribe to your favorite feeds by bookmarking them."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]subscriptions
@@ -1025,15 +1013,13 @@ msgstr "全て"
 msgid "Refresh all the streams"
 msgstr ""
 
-#: [roster]search
-#, fuzzy
-msgid "Search in your contacts"
-msgstr "一人のコンタクトと共有"
+#: [menu]me
+msgid "My publications"
+msgstr ""
 
-#: [hello]active_contacts
-#, fuzzy
-msgid "Active contacts"
-msgstr "アクション"
+#: [roster]search
+msgid "Search in your contacts"
+msgstr ""
 
 #: [hello]chat
 msgid "Go on the Chat page"
@@ -1066,6 +1052,22 @@ msgstr ""
 #: [hello]share_button
 msgid "Share on Movim"
 msgstr "Movimで共有する"
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1204,10 +1206,9 @@ msgid "Account successfully created"
 msgstr "アカウントが正常に作成されました"
 
 #: [error]xmpp_unauthorized
-#, fuzzy
 msgctxt "[error]xmpp_unauthorized"
 msgid "Your XMPP server is unauthorized"
-msgstr "あなとが使用しているXMPPサーバーは許可がありません"
+msgstr ""
 
 #: [error]mec_error
 msgid "The server takes too much time to respond"
@@ -1242,10 +1243,9 @@ msgid "Invalid password format"
 msgstr ""
 
 #: [error]unauthorized
-#, fuzzy
 msgctxt "[error]unauthorized"
 msgid "Your XMPP server is unauthorized"
-msgstr "あなとが使用しているXMPPサーバーは許可がありません"
+msgstr ""
 
 #: [error]conflict
 msgid "A Movim session is already open on an other device"
@@ -1262,10 +1262,6 @@ msgstr "認識方法が対応されていません"
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
 msgstr "XMPP認証に失敗しました"
-
-#: [account]title [accounts]accounts_title
-msgid "Accounts"
-msgstr "アカウント"
 
 #: [form]username
 msgid "My address"
@@ -1296,9 +1292,8 @@ msgid "Population"
 msgstr "人口"
 
 #: [menu]empty_title
-#, fuzzy
 msgid "No news yet..."
-msgstr "コメントがまだありません"
+msgstr ""
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
@@ -1360,49 +1355,9 @@ msgstr "新着情報"
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: [post]preview [page]preview
-msgid "Preview"
-msgstr "プレビュー"
-
-#: [post]help [page]help
-msgid "Help"
-msgstr "ヘルプ"
-
-#: [post]help_more
-msgid "More help"
-msgstr ""
-
-#: [post]help_manual
-msgid "Markdown syntax manual"
-msgstr ""
-
-#: [post]title
-msgid "Title"
-msgstr "件名"
-
-#: [post]content
+#: [post]content [post]content_label
 msgid "Content"
 msgstr "コンテンツ"
-
-#: [post]link
-msgid "Link"
-msgstr "リンク"
-
-#: [post]tags
-msgid "Tags"
-msgstr ""
-
-#: [post]valid_url [publish]valid_url
-msgid "Please enter a valid url"
-msgstr ""
-
-#: [post]no_content_preview [publish]no_content_preview
-msgid "No content to preview"
-msgstr ""
-
-#: [post]no_content [publish]no_content [post]empty
-msgid "No content"
-msgstr ""
 
 #: [post]published
 msgid "Post published"
@@ -1410,10 +1365,6 @@ msgstr ""
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
-
-#: [post]gallery
-msgid "This picture will be added to your gallery"
 msgstr ""
 
 #: [post]hot
@@ -1427,10 +1378,6 @@ msgstr ""
 #: [post]new [publish]new
 msgid "New post"
 msgstr "新しい投稿"
-
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
-msgstr ""
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -1492,6 +1439,54 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
+#: [post]preview [page]preview
+msgid "Preview"
+msgstr "プレビュー"
+
+#: [post]help [page]help
+msgid "Help"
+msgstr "ヘルプ"
+
+#: [post]help_more
+msgid "More help"
+msgstr ""
+
+#: [post]help_manual
+msgid "Markdown syntax manual"
+msgstr ""
+
+#: [post]content_text
+msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [post]link
+msgid "Link"
+msgstr "リンク"
+
+#: [post]tags
+msgid "Tags"
+msgstr ""
+
+#: [post]gallery
+msgid "This picture will be added to your gallery"
+msgstr ""
+
+#: [post]embed_tip
+msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
+msgstr ""
+
+#: [publish]valid_url
+msgid "Please enter a valid url"
+msgstr ""
+
+#: [publish]no_content_preview
+msgid "No content to preview"
+msgstr ""
+
+#: [publish]no_title
+msgid "Please provide a title"
+msgstr ""
+
 #: [publish]title
 msgid "Publish"
 msgstr ""
@@ -1506,6 +1501,14 @@ msgstr ""
 
 #: [publish]form_filled
 msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
+msgstr ""
+
+#: [publish]add_text
+msgid "Click here to add some text to your publication"
+msgstr ""
+
+#: [publish]add_text_label
+msgid "Add some text"
 msgstr ""
 
 #: [public_groups]shared
@@ -1525,8 +1528,8 @@ msgid "You don't have any chatroom yet."
 msgstr "チャットルームはまだありません"
 
 #: [rooms]empty_text2
-msgid "Add one by clicking on the add button in the header."
-msgstr "追加するにはボタンを押してください"
+msgid "Add one by clicking on the add button."
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1542,6 +1545,10 @@ msgstr ""
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
+msgstr ""
+
+#: [chatrooms]conflict
+msgid "Username already taken"
 msgstr ""
 
 #: [room]anonymous_title
@@ -1593,9 +1600,8 @@ msgid "Please enter a valid Jabber ID"
 msgstr "正しいジャバーIDを入力してください"
 
 #: [roster]no_contacts_title
-#, fuzzy
 msgid "No contacts ?"
-msgstr "コンタクト"
+msgstr ""
 
 #: [roster]no_contacts_text
 msgid "You can add one using the + button bellow"
@@ -1682,9 +1688,8 @@ msgid "No contact specified"
 msgstr ""
 
 #: [upload]title
-#, fuzzy
 msgid "Upload a file"
-msgstr "アップロード"
+msgstr ""
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1711,10 +1716,13 @@ msgid "Your profile is now restricted"
 msgstr "あなたのプロファイルは非公開されました"
 
 #: [general]nickname
-#, fuzzy
 msgctxt "[general]nickname"
 msgid "Nickname"
-msgstr "ニックネーム"
+msgstr ""
+
+#: [accounts]accounts_title
+msgid "Accounts"
+msgstr "アカウント"
 
 #: [accounts]twitter
 msgid "Twitter"
@@ -1725,19 +1733,13 @@ msgid "Skype"
 msgstr "Skype"
 
 #: [accounts]yahoo
-msgid "Yahoo"
-msgstr "Yahoo"
+msgid "Yahoo Account"
+msgstr ""
 
 #: [accounts]accounts_nickname
-#, fuzzy
 msgctxt "[accounts]accounts_nickname"
 msgid "Nickname"
-msgstr "ニックネーム"
-
-#: [accounts]accounts_yahoo
-#, fuzzy
-msgid "Yahoo Account"
-msgstr "アカウント"
+msgstr ""
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -2041,11 +2043,11 @@ msgstr ""
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr "はい"
+msgstr ""
 
 #: [button]bool_no
 msgid "No"
-msgstr "いいえ"
+msgstr ""
 
 #: [button]return
 msgid "Return"
@@ -2104,10 +2106,9 @@ msgid "Sunday"
 msgstr ""
 
 #: [gender]nil
-#, fuzzy
 msgctxt "[gender]nil"
 msgid "None"
-msgstr "なし"
+msgstr ""
 
 #: [gender]male
 msgid "Male"
@@ -2142,10 +2143,9 @@ msgid "Registered"
 msgstr "登録済み"
 
 #: [marital]nil
-#, fuzzy
 msgctxt "[marital]nil"
 msgid "None"
-msgstr "なし"
+msgstr ""
 
 #: [marital]single
 msgid "Single"
@@ -2620,13 +2620,16 @@ msgid "Yesterday"
 msgstr "昨日"
 
 #: [date]ago
-#, fuzzy
 msgid "%d days ago"
-msgstr " %d日間前に"
+msgstr ""
 
 #: [date]day
 msgid "day"
 msgstr "日"
+
+#: [post]title
+msgid "Title"
+msgstr "件名"
 
 #: [post]whats_new
 msgid "What's new ?"
@@ -2648,9 +2651,13 @@ msgstr ""
 msgid "email"
 msgstr "メール"
 
+#: [post]empty
+msgid "No content"
+msgstr ""
+
 #: [post]no_comments
 msgid "No comments yet"
-msgstr "コメントがまだありません"
+msgstr ""
 
 #: [post]no_comments_stream
 msgid "No comments stream"
@@ -2677,9 +2684,8 @@ msgid "Show the older comments"
 msgstr "前のコメントを見る"
 
 #: [post]comments_loading
-#, fuzzy
 msgid "Loading comments..."
-msgstr "コメント読み込み"
+msgstr ""
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2724,231 +2730,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
-
-#~ msgid "Environment"
-#~ msgstr "環境"
-
-#~ msgid "Remove a chatroom"
-#~ msgstr "ルームを削除する"
-
-#~ msgid "Logout"
-#~ msgstr "ログアウト"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - アカウントの作成"
-
-#~ msgid "Debug console"
-#~ msgstr "デバッグコンソール"
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "PHPバージョンが不一致です。MovimにはPHP5.3以上が必要です。"
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Movimのフォルダーに書き込むことが許すはずです。"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Movimインストーラー"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "「%s」の設定ファイルをクリエートできませんでした。"
-
-#~ msgid "Compatibility Test"
-#~ msgstr "両立テスト"
-
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "次の条件は認めませんでした。Movimをインストールするためには、全部認めるようにしてください。"
-
-#~ msgid "wants to talk with you"
-#~ msgstr "はあなたとチャットしたいそうです。"
-
-#~ msgid "Decline"
-#~ msgstr "断る"
-
-#~ msgid "Loading the contact feed ..."
-#~ msgstr "コンタクトのフィードをロードしています。"
-
-#~ msgid "Install the %s package"
-#~ msgstr "%sというパッケージをインストールしてください。"
-
-#~ msgid "or"
-#~ msgstr "または"
-
-#~ msgid "Actual version : "
-#~ msgstr "現在のバージョン "
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "PHPバージョンをアップデートしてください。それとも、アドミンサーバーを連絡してください。"
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "%sと%sというパッケージをインストールしてください。"
-
-#~ msgid "Enable read and write rights on Movim's root folder"
-#~ msgstr "Movimルートフォルドに読取り書込み権利を許可してください。"
-
-#~ msgid "Bosh connection failed with error '%s'"
-#~ msgstr "「%s」というエラーでBoshコネクションが失敗しました。"
-
-#~ msgid "Database connection failed with error '%s'"
-#~ msgstr "「%s」というエラーでデータベースコネクションが失敗しました。"
-
-#~ msgid "XMPP connection through Bosh failed with error '%s'"
-#~ msgstr "Boshを通じてXMPPコネクションは「%s」というエラーで失波しました。"
-
-#~ msgid "Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit."
-#~ msgstr "Movimは未だ開発中で、多くのパーソナルインフォメーションを扱うことを注目して下さい。これの使用はデータを危ぶむ可能性があります。送るインフォメーションにいつもご注意下さい。"
-
-#~ msgid "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr "あなたのソーシャルネットワークをお楽しみする前に、いくつかの修整が必要です。"
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Movimをダウンロードして頂き、誠にありがとうございます。"
-
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "「%s」というフォルダをクリエートできませんでした。"
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "プロクシ設定"
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "XMPPコネクション設定"
-
-#~ msgid "ultimate"
-#~ msgstr "絶対的に信頼"
-
-#~ msgid "talkative"
-#~ msgstr "軽口"
-
-#~ msgid "normal"
-#~ msgstr "通常"
-
-#~ msgid "empty"
-#~ msgstr "空"
-
-#~ msgid "Some errors were detected. Please correct them for the installation to proceed."
-#~ msgstr "エラーが発生されました。インストールを完成するには、それらを直してください。"
-
-#~ msgid "BOSH Connection Preferences"
-#~ msgstr "BOSHコネクション設定"
-
-#~ msgid "Success !"
-#~ msgstr "成功！"
-
-#~ msgid "Please remove the %s folder in order to complete the installation"
-#~ msgstr "インストールを完成するには、「%s」というフォルダを抜いてください。"
-
-#~ msgid "JID not provided."
-#~ msgstr "JIDは備われていません。"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "「%s」というエレメントバリューをロードできません。"
-
-#~ msgid "User not logged in."
-#~ msgstr "ユーザーはログインしていません。"
-
-#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "これから、「%sJump」というMovimインスタンスを「!%s」にアクセスすることができます。"
-
-#~ msgid "Database Movim schema installed"
-#~ msgstr "Movimデータベースのスキームがインストールされました。"
-
-#~ msgid "Database Detected"
-#~ msgstr "データベースが発見されました。"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "妥当なBosh"
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "「%s」というJIDは正しくありません。"
-
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "「%s」というログファイルをオープンできません。"
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movimには「%s」という拡張子が必要です。"
-
-#~ msgid "terse"
-#~ msgstr "約やかな"
-
-#~ msgid "Wrong ID"
-#~ msgstr "不可のID"
-
-#~ msgid "%s - Add An Account"
-#~ msgstr "%s - アカウントを追加"
-
-#~ msgid "Only alphanumerics elements are authorized"
-#~ msgstr "英数文字のみが認められています。"
-
-#~ msgid "Make sure your password is safe :"
-#~ msgstr "パスワードが充分にセキュアだと改めて見届けてください。"
-
-#~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr "セキュアなパスワードの中で、親文字と数と特殊文字がお勧めです。"
-
-#~ msgid "Invalid name"
-#~ msgstr "名前が無効です"
-
-#~ msgid "Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !"
-#~ msgstr "はじめには、このブランクを真新しいIDで入力してください。このアドレスはすべてのMovimネットワークで使われるのです。"
-
-#~ msgid "Add your login informations"
-#~ msgstr "ログインインフォメーションを追加してください。"
-
-#~ msgid "Retype"
-#~ msgstr "再入力"
-
-#~ msgid "Example :"
-#~ msgstr "例えば："
-
-#~ msgid "Same here !"
-#~ msgstr "こちらは同じです。"
-
-#~ msgid "Pseudo"
-#~ msgstr "ニックネーム"
-
-#~ msgid "Create"
-#~ msgstr "作成"
-
-#~ msgid "8 characters"
-#~ msgstr "８字"
-
-#~ msgid "Address"
-#~ msgstr "住所"
-
-#~ msgid "Your server doesn't support post publication, you can only read contact's feeds"
-#~ msgstr "サーバーではポスト掲載を取り締まることができません。それで、自分のコンタクトの掲載しか読めません。"
-
-#~ msgid "Invite this user"
-#~ msgstr "このユーザーを招待する"
-
-#~ msgid "Loading your feed ..."
-#~ msgstr "フィードをローディング中・・・"
-
-#~ msgid "Client Name"
-#~ msgstr "クライアント名"
-
-#~ msgid "Client Type"
-#~ msgstr "クライアントタイプ"
-
-#~ msgid "My Posts"
-#~ msgstr "マイポスト"
-
-#~ msgid "Create my vCard"
-#~ msgstr "vCardを作成"
-
-#~ msgid "What is Movim?"
-#~ msgstr "Movimとは？"
-
-#~ msgid "Could not communicate with the XMPP server"
-#~ msgstr "XMPPサーバーと通信ができませんでした。"
-
-#~ msgid "Connecting..."
-#~ msgstr "接続中..."
-
-#~ msgid "Edit my Profile"
-#~ msgstr "プロフィールの変更"
-
-#~ msgid "You entered different passwords"
-#~ msgstr "記入されたパスワードが異なっています"
-
-#~ msgid "Could not connect to the XMPP server"
-#~ msgstr "XMPP サーバーに接続できませんでした"
