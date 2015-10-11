@@ -11,7 +11,7 @@ class Share extends WidgetBase
     function display()
     {
         $validate_url = Validator::url();
-        $url = $this->get('url');
+        $url = rawurldecode(urldecode($this->get('url')));
         if($validate_url->validate($url)) {
             $this->view->assign('url', $url);
         }

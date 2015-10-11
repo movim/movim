@@ -172,7 +172,7 @@
                 <p>{$c->__('hello.share_text')}</p>
             </li>
             <li class="block">
-                <a class="button" href="javascript:(function(){location.href='{$c->route('share')}&url='+encodeURIComponent(location.href);})();">
+                <a class="button" href="javascript:(function(){location.href='{$c->route('share', '\'+escape(encodeURIComponent(location.href));')}})();">
                     <i class="zmdi zmdi-share"></i> {$c->__('hello.share_button')}
                 </a>
             </li>

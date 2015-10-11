@@ -19,7 +19,7 @@
         {else}
             <li class="condensed">
                 <span class="icon bubble orange color">
-                    <i class="zmdi zmdi-error"></i>
+                    <i class="zmdi zmdi-alert-triangle"></i>
                 </span>
                 <span>{$c->__('page.share')}</span>
                 <p>{$c->__('share.error')}</p>
