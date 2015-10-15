@@ -204,7 +204,7 @@ class Contact extends WidgetBase
 
         if($c == null
         || $c->created == null
-        || $c->isEmpty()
+        //|| $c->isEmpty()
         || $c->isOld()) {
             $c = new \Modl\Contact;
             $c->jid = $jid;
