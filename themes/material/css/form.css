@@ -53,6 +53,7 @@ form > div > .select:after {
     position: absolute;
     right: 0;
     bottom: 0.25rem;
+    pointer-events: none;
 }
 
 form > div > .select select {
