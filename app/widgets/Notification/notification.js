@@ -161,12 +161,10 @@ MovimWebsocket.attach(function() {
 });
 
 document.onblur = function() {
-    console.log('BLUR');
     Notification.focused = false;
     Notification_ajaxCurrent('blurred');
 }
 document.onfocus = function() {
-    console.log('FOCUS');
     Notification.focused = true;
     Notification.current(Notification.notifs_key);
     Notification_ajaxClear(Notification.notifs_key);
