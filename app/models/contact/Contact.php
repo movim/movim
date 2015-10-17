@@ -436,11 +436,11 @@ class Contact extends Model {
 
     function isOld() {
         if(strtotime($this->updated) < mktime( // We update the 1 day old vcards
-                                        0,
-                                        0,
-                                        0,
+                                        gmdate("H"),
+                                        gmdate("i")-10,
+                                        gmdate("s"),
                                         gmdate("m"),
-                                        gmdate("d")-1,
+                                        gmdate("d"),
                                         gmdate("Y")
                                     )
             ) {
