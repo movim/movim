@@ -22,7 +22,7 @@ var Presence = {
         if(textarea != null) {
             movim_textarea_autoheight(textarea);
 
-            textarea.onkeydown = function(event) {
+            textarea.oninput = function(event) {
                 movim_textarea_autoheight(this);
             };
         }

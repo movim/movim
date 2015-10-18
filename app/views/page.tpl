@@ -50,6 +50,7 @@
             <?php echo __('global.no_js'); ?>
             </div>
         </noscript>
+        <div id="hiddendiv"></div>
         <div id="snackbar" class="snackbar"></div>
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Notification');?>

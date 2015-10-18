@@ -28,7 +28,7 @@
         <label>{$c->__('publish.add_text_label')}</label>
     </div>
     <div id="content_field">
-        <textarea name="content" placeholder="{$c->__('post.content_text')}" onkeyup="movim_textarea_autoheight(this);"></textarea>
+        <textarea name="content" placeholder="{$c->__('post.content_text')}" oninput="movim_textarea_autoheight(this);"></textarea>
         <label for="content">{$c->__('post.content_label')}</label>
     </div>
 

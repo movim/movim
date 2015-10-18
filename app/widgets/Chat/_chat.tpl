@@ -34,7 +34,6 @@
                             }
                             "
                         onkeyup="
-                            movim_textarea_autoheight(this);
                             {if="!$muc"}
                             setTimeout(function()
                             {
@@ -45,6 +44,7 @@
                             },5000);
                             {/if}
                             "
+                        oninput="movim_textarea_autoheight(this);"
                         placeholder="{$c->__('chat.placeholder')}"
                     ></textarea>
                 </div>

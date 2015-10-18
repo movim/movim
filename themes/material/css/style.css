@@ -978,7 +978,6 @@ dl dd {
     -o-animation: fadeout 1s forwards;
 }
 
-
 @keyframes fadeout {
     to {
         background-color:#fff;

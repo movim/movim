@@ -32,7 +32,8 @@ form > div > textarea:focus + label {
     display: block;
 }
 */
-form > div > textarea {
+form > div > textarea,
+#hiddendiv {
     border: none;
     resize: none;
     font-family: sans-serif;
@@ -380,4 +381,18 @@ header.big ~ .button.action {
 
 .button.action .actions li:hover {
     background-color: white;
+}
+
+/* The textarea hidden div */
+#hiddendiv {
+    /*display: none;*/
+    position: fixed;
+    display: block;
+    z-index: -1;
+    opacity: 0;
+    height: initial;
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
 }
