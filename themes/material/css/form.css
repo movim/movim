@@ -385,12 +385,11 @@ header.big ~ .button.action {
 
 /* The textarea hidden div */
 #hiddendiv {
-    /*display: none;*/
     position: fixed;
     display: block;
     z-index: -1;
     opacity: 0;
-    height: initial;
+    height: auto;
     overflow: hidden;
     white-space: pre-wrap;
     word-wrap: break-word;

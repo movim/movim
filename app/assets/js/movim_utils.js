@@ -116,7 +116,7 @@ function movim_form_to_json(formname) {
  * @param DOMElement textbox
  */
 function movim_textarea_autoheight(textbox) {
-    if(textbox != null ) {
+    if(textbox != null && textbox.value != '') {
         var val = textbox.value;
         val = val.replace(/\n/g, '<br>');
         var hidden = document.querySelector('#hiddendiv');

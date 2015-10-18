@@ -1,8 +1,3 @@
-{if="!BROWSER_COMP"}
-    <div class="message warning">
-        {$c->__('error.too_old')}
-    </div>
-{else}
 <div id="login_widget">
     <div id="sessions" class="dialog actions"></div>
 
@@ -78,5 +73,3 @@
 <div id="error_websocket" class="snackbar">
     {$c->__('error.websocket')}
 </div>
-
-{/if}

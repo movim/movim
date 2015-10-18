@@ -21,7 +21,7 @@ time, mark, audio, video {
 }
 
 * {
- -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 :focus {
     outline: 0;

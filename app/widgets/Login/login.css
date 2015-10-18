@@ -42,7 +42,7 @@ body main > header {
 #login_widget.choose > div#sessions,
 #login_widget.error  > div#error,
 #login_widget:not(.error):not(.choose) > div#form {
-    display: initial;
+    display: block;
 }
 
 #login_widget span.info {

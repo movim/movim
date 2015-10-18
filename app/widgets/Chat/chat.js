@@ -40,11 +40,11 @@ var Chat = {
         var div = document.createElement('div');
 
         div.innerHTML = left;
-        Chat.left = div.firstChild;
+        Chat.left = div.firstChild.cloneNode(true);
         div.innerHTML = right;
-        Chat.right = div.firstChild;
+        Chat.right = div.firstChild.cloneNode(true);
         div.innerHTML = room;
-        Chat.room = div.firstChild;
+        Chat.room = div.firstChild.cloneNode(true);
     },
     appendMessages : function(messages) {
         if(messages) {

@@ -56,8 +56,6 @@ class Bootstrap {
         //Check if vital system need is OK
         $this->checkSystem();
 
-        if(!$light) $this->setBrowserSupport();
-
         $this->loadSystem();
         $this->loadCommonLibraries();
         $this->loadDispatcher();
@@ -329,58 +327,6 @@ class Bootstrap {
         $db->connect();
 
         return true;
-    }
-
-    private function setBrowserSupport() {
-        if(isset( $_SERVER['HTTP_USER_AGENT'])) {
-            $useragent = $_SERVER['HTTP_USER_AGENT'];
-
-            if (preg_match('|MSIE ([0-9].[0-9]{1,2})|',$useragent,$matched)) {
-                $browser_version=$matched[1];
-                $browser = 'IE';
-            } elseif (preg_match('/Opera[\/ ]([0-9]{1}\.[0-9]{1}([0-9])?)/',$useragent,$matched)) {
-                $browser_version=$matched[1];
-                $browser = 'Opera';
-            } elseif(preg_match('|Firefox/([0-9\.]+)|',$useragent,$matched)) {
-                $browser_version=$matched[1];
-                $browser = 'Firefox';
-            } elseif(preg_match('|Safari/([0-9\.]+)|',$useragent,$matched)) {
-                $browser_version=$matched[1];
-                $browser = 'Safari';
-            } else {
-                $browser_version = 0;
-                $browser = 'other';
-            }
-        } else {
-            $browser_version = 0;
-            $browser= 'other';
-        }
-
-        define('BROWSER_VERSION', $browser_version);
-        define('BROWSER', $browser);
-
-        $compatible = false;
-
-        switch($browser) {
-            case 'Firefox':
-                if($browser_version > 30.0)
-                    $compatible = true;
-            break;
-            case 'IE':
-                if($browser_version > 10.0)
-                    $compatible = true;
-            break;
-            case 'Safari': // Also Chrome-Chromium
-                if($browser_version > 522.0)
-                    $compatible = true;
-            break;
-            case 'Opera':
-                if($browser_version > 12.1)
-                    $compatible = true;
-            break;
-        }
-
-        define('BROWSER_COMP', $compatible);
     }
 
     private function startingSession() {

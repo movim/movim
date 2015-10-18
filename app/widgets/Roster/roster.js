@@ -254,10 +254,6 @@ var Roster = {
         var roster      = document.querySelector('#roster');
         var rosterlist  = document.querySelector('#rosterlist');
 
-        roster.onblur  = function() {
-            roster.className = roster_classback;
-            rosterlist.className = rosterlist_classback;
-        };
         search.oninput = function(event) {
             if(search.value.length > 0) {
                 movim_add_class(roster, 'search');
@@ -308,8 +304,10 @@ var Roster = {
 
     clearSearch: function() {
         var search = document.querySelector('#rostersearch');
-        search.value = '';
-        search.oninput();
+        if(search) {
+            search.value = '';
+            search.oninput();
+        }
     },
 
     setFound : function(jid) {
