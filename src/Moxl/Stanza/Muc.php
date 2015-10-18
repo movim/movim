@@ -37,14 +37,19 @@ class Muc {
 
     static function setConfig($to, $data)
     {
-        $xmpp = new \FormtoXMPP();
-        $stream = '
-            <query xmlns="http://jabber.org/protocol/muc#owner">
-                <x xmlns="jabber:x:data" type="submit"></x>
-            </query>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
+        $dom->appendChild($query);
 
-        $xml = $xmpp->getXMPP($stream, $data)->asXML();
-        $xml = \Moxl\API::iqWrapper(strstr($xml, '<query'), $to, 'set');
+        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x->setAttribute('type', 'submit');
+        $query->appendChild($x);
+
+        $xmpp = new \FormtoXMPP($data);
+        $xmpp->create();
+        $xmpp->appendToX($dom);
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
         \Moxl\API::request($xml);
     }
 }

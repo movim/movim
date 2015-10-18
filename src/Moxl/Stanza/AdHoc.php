@@ -26,15 +26,21 @@ class AdHoc {
 
     static function submit($to, $node, $data, $sessionid)
     {
-        $xmpp = new \FormtoXMPP();
-        $stream = '
-            <command xmlns="http://jabber.org/protocol/commands"
-                   sessionid="'.$sessionid.'"
-                   node="'.$node.'">
-                <x xmlns="jabber:x:data" type="submit"></x>
-            </command>';
-        $xml = $xmpp->getXMPP($stream, $data)->asXML();
-        $xml = \Moxl\API::iqWrapper(strstr($xml, '<command'), $to, 'set');
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $command = $dom->createElementNS('http://jabber.org/protocol/commands', 'command');
+        $dom->appendChild($command);
+        $command->setAttribute('sessionid', $sessionid);
+        $command->setAttribute('node', $node);
+
+        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x->setAttribute('type', 'submit');
+        $command->appendChild($x);
+
+        $xmpp = new \FormtoXMPP($data);
+        $xmpp->create();
+        $xmpp->appendToX($dom);
+
+        $xml = \Moxl\API::iqWrapper($command, $to, 'set');
         \Moxl\API::request($xml);
     }
 }

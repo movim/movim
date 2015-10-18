@@ -237,16 +237,23 @@ class Pubsub {
 
     static function setConfig($to, $node, $data)
     {
-        $xmpp = new \FormtoXMPP();
-        $stream = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
-                <configure node="'.$node.'">
-                    <x xmlns="jabber:x:data" type="submit"></x>
-                </configure>
-            </pubsub>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
+        $dom->appendChild($pubsub);
 
-        $xml = $xmpp->getXMPP($stream, $data)->asXML();
-        $xml = \Moxl\API::iqWrapper(strstr($xml, '<pubsub'), $to, 'set');
+        $configure = $dom->createElement('configure');
+        $configure->setAttribute('node', $node);
+        $pubsub->appendChild($configure);
+
+        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x->setAttribute('type', 'submit');
+        $configure->appendChild($x);
+
+        $xmpp = new \FormtoXMPP($data);
+        $xmpp->create();
+        $xmpp->appendToX($dom);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 
