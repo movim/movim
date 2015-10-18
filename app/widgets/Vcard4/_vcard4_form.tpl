@@ -21,7 +21,7 @@
         </span>
 
         <span>{$c->__('privacy.privacy_question')}</span>
-        <p>{$c->__('privacy.privacy_info')}</p>
+        <p class="all">{$c->__('privacy.privacy_info')}</p>
     </li>
 </ul>
 
