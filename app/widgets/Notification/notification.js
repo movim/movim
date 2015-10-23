@@ -78,7 +78,7 @@ var Notification = {
                 Notification.favicon.badge(Notification.tab_counter1 + Notification.tab_counter2);
             
             if(Notification.electron != null)
-                Notification.electron.notification(true);
+                Notification.electron.notification(Notification.tab_counter1 + Notification.tab_counter2);
         }
     },
     current : function(key) {
