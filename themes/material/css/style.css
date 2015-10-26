@@ -126,8 +126,8 @@ body > nav {
     background-color: #fefefe;
     width: 7rem;
     max-width: 95%;
-    -webkit-transition: width 0.2s ease;
-    transition: width 0.2s ease;
+    -webkit-transition: width 0.3s cubic-bezier(.4,0,.2,1);
+    transition: width 0.3s cubic-bezier(.4,0,.2,1);
     z-index: 2;
     position: relative;
 }
@@ -168,15 +168,15 @@ body > nav li { /* Little hack for the navbar */
 @media screen and (max-width: 1024px) {
     body > nav:not(.active) {
         width: 45rem;
-        -webkit-transition: -webkit-transform .2s ease-in-out;
-        transition: transform .2s ease-in-out;
+        -webkit-transition: -webkit-transform .3s cubic-bezier(.4,0,.2,1);
+        transition: transform .3s cubic-bezier(.4,0,.2,1);
         -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
     }
 
     body > nav.active {
-        -webkit-transition: -webkit-transform .2s ease-in-out;
-        transition: transform .2s ease-in-out;
+        -webkit-transition: -webkit-transform .3s cubic-bezier(.4,0,.2,1);
+        transition: transform .3s cubic-bezier(.4,0,.2,1);
         -webkit-transform: translateX(0%);
         transform: translateX(0%);
     }
@@ -393,8 +393,8 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     top: 0;
     right: 0;
     /*transition: right 0.2s ease;*/
-    -webkit-transition: -webkit-transform .2s ease-in-out;
-    transition: transform .2s ease-in-out;
+    -webkit-transition: -webkit-transform .3s cubic-bezier(.4,0,.2,1);
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
     background-color: #EEE;
 }
 
@@ -895,7 +895,7 @@ dl dd {
 
 .spinner:before,
 .spinner:after {
-    transition: top .3s ease-in-out;
+    transition: top .3s cubic-bezier(.4,0,.2,1);
     transform: translateX(0);
     content: '';
     position: absolute;
