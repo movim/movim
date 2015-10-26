@@ -268,18 +268,34 @@ class XMPPtoForm{
 
         if(count($s->xpath('option')) > 0){
             foreach($s->option as $option){
-                $opt = $this->html->createElement('option', $option->attributes()->label);
+                if(isset($option->attributes()->label)) {
+                    $opt = $this->html->createElement('option', $option->attributes()->label);
+                } else {
+                    $opt = $this->html->createElement('option', $option->value);
+                }
+
                 $opt->setAttribute('value', $option->value);
-                if(in_array((string)$opt->value, $s->xpath('value')))
-                    $select->setAttribute('selected', 'selected');
+                if(
+                    in_array(
+                        (string)$opt->nodeValue,
+                        array_map(
+                            function($sxml) {
+                                return (string)$sxml;
+                            },
+                            $s->xpath('value')
+                        )
+                    )
+                ) {
+                    $opt->setAttribute('selected', 'selected');
+                }
                 $select->appendChild($opt);
             }
         }
         else{
             foreach($s->value as $option){
                 $option = $this->html->createElement('option', $option);
-                $select->setAttribute('value', $option['label']);
-                $select->setAttribute('selected', 'selected');
+                $option->setAttribute('value', $option['label']);
+                $option->setAttribute('selected', 'selected');
                 $select->appendChild($option);
             }
         }
