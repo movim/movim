@@ -11,11 +11,11 @@
         <ul class="thick">
             <li class="condensed">
                 {if="$url"}
-                    <span class="icon bubble">
+                    <span class="icon bubble color {if="isset($presence)"}status {$presence}{/if}">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="icon bubble color {$contact->jid|stringToColor}">
+                    <span class="icon bubble color {$contact->jid|stringToColor} {if="isset($presence)"}status {$presence}{/if}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
@@ -244,7 +244,9 @@
 
         {if="$contact->twitter != null"}
         <li class="condensed block">
-            <span class="icon gray">T</span>
+            <span class="icon gray">
+                <i class="zmdi zmdi-twitter"></i>
+            </span>
             <span>Twitter</span>
             <p>
                 <a

@@ -219,6 +219,8 @@ class Contact extends WidgetBase
         $gallery = $pd->getGallery($jid);
         $blog    = $pd->getPublic($jid, 'urn:xmpp:microblog:0', 1, 0);
 
+        $presencestxt = getPresencesTxt();
+
         if(isset($c)) {
             $view->assign('mood', getMood());
 
@@ -233,6 +235,10 @@ class Contact extends WidgetBase
 
                 $cad = new \Modl\CapsDAO();
                 $caps = $cad->get($node);
+
+                if($cr->value != null) {
+                    $view->assign('presence', $presencestxt[$cr->value]);
+                }
 
                 if(
                     isset($caps)

@@ -20,7 +20,14 @@ var Chat = {
     },
     focus: function()
     {
-        //document.querySelector('#chat_textarea').focus();
+        if(typeof Android !== 'undefined') {
+            setTimeout(function(){
+                document.querySelector('#chat_textarea').focus();
+                if(scrolled) MovimTpl.scrollPanel();
+            }, 1000);
+        } else {
+            document.querySelector('#chat_textarea').focus();
+        }
     },
     appendTextarea: function(value)
     {
@@ -48,10 +55,10 @@ var Chat = {
     },
     appendMessages : function(messages) {
         if(messages) {
-	    for(var i = 0, len = messages.length; i < len; ++i ) {
-                Chat.appendMessage(messages[i]);
-            }
-	}
+            for(var i = 0, len = messages.length; i < len; ++i ) {
+                    Chat.appendMessage(messages[i]);
+                }
+        }
     },
     appendMessage : function(message) {
         if(message.body == '') return;

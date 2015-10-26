@@ -87,7 +87,7 @@ var MovimTpl = {
         }
     },
     isPanelScrolled : function() {
-         var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
+        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
 
         if(selector != null) {
             return (selector.scrollHeight - selector.scrollTop === selector.clientHeight);

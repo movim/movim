@@ -4,7 +4,7 @@
     class="
         {if="isset($message)"}condensed{/if}
         {if="$contact->last > 60"} inactive{/if}
-        {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
+        {if="$caps && in_array($caps->type, array('handheld', 'phone', 'web'))"}
             action
         {/if}
         "
@@ -12,6 +12,11 @@
     {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
         <div class="action">
             <i class="zmdi zmdi-smartphone"></i>
+        </div>
+    {/if}
+    {if="$caps && $caps->type == 'web'"}
+        <div class="action">
+            <i class="zmdi zmdi-globe-alt"></i>
         </div>
     {/if}
     <span data-key="chat|{$contact->jid}" class="counter bottom"></span>

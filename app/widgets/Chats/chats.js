@@ -17,8 +17,6 @@ var Chats = {
                     Notification_ajaxClear('chat|' + this.dataset.jid);
                     Notification.current('chat|' + this.dataset.jid);
                     movim_add_class(this, 'active');
-
-                    MovimTpl.scrollPanel();
                 }
 
                 items[i].onmousedown = function(e) {
