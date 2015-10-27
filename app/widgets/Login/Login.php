@@ -87,6 +87,15 @@ class Login extends WidgetBase
         $this->view->assign('connected', $connected);
 
         $this->view->assign('error', $this->prepareError());
+
+        if(isset($_SERVER['PHP_AUTH_USER'])
+        && isset($_SERVER['PHP_AUTH_PW'])
+        && Validator::email()->length(6, 40)->validate($_SERVER['PHP_AUTH_USER'])) {
+            list($username, $host) = explode('@', $_SERVER['PHP_AUTH_USER']);
+            $this->view->assign('httpAuthHost', $host);
+            $this->view->assign('httpAuthUser', $_SERVER['PHP_AUTH_USER']);
+            $this->view->assign('httpAuthPassword', $_SERVER['PHP_AUTH_PW']);
+        }
     }
 
     function showErrorBlock($error)
@@ -139,6 +148,19 @@ class Login extends WidgetBase
 
     function ajaxLogin($form)
     {
+        $login    = $form->login->value;
+        $password = $form->pass->value;
+
+        $this->doLogin($login, $password);
+    }
+
+    function ajaxHTTPLogin($login, $password)
+    {
+        $this->doLogin($login, $password);        
+    }
+
+    private function doLogin($login, $password)
+    {
         // We get the Server Configuration
         $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
@@ -146,9 +168,6 @@ class Login extends WidgetBase
         // First we check the form
         $validate_login   = Validator::email()->length(6, 40);
         $validate_password = Validator::string()->length(4, 40);
-
-        $login    = $form->login->value;
-        $password = $form->pass->value;
 
         if(!$validate_login->validate($login)) {
             $this->showErrorBlock('login_format');

@@ -1,6 +1,17 @@
 <div id="login_widget">
     <div id="sessions" class="dialog actions"></div>
 
+    {if="isset($httpAuthUser)"}
+        <script type="text/javascript">
+        MovimWebsocket.attach(function() {
+            MovimWebsocket.connection.register('{$httpAuthHost}');
+        });
+        MovimWebsocket.register(function() {
+            Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}');
+        });
+        </script>
+    {/if}
+
     <div id="form" class="dialog">
         <section>
             <span class="info">{$c->__('form.connected')} {$connected} / {$pop}</span>
