@@ -60,6 +60,13 @@
 
     <section>
         <content>
+            {if="strlen($post->contentcleaned) < 500 && isset($attachements.pictures)"}
+                {loop="$attachements.pictures"}
+                    <a href="{$value.href}" class="alternate" target="_blank">
+                        <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
+                    </a>
+                {/loop}
+            {/if}
             {$post->contentcleaned}
         </content>
     </section>
@@ -97,7 +104,7 @@
                 {/loop}
             {/if}
         </ul>
-        {if="isset($attachements.pictures)"}
+        {if="strlen($value->contentcleaned) >= 500 && isset($attachements.pictures)"}
             <ul class="flex middle">
             {loop="$attachements.pictures"}
                 <li class="block pic">
