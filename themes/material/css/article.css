@@ -115,6 +115,10 @@ article section content div.quote li {
     padding-left: 0;
 }
 
+article section content div.quote ul li > * {
+    margin-right: 1rem;
+}
+
 article section content div.quote li:first-child {
     flex: 1 75%;
 }
