@@ -4,7 +4,12 @@
         <span class="info">{$comments|count}</span>
     </li>
     {loop="$comments"}
-        <li class="condensed">
+        <li class="condensed {if="$value->isMine()"}action{/if}">
+            {if="$value->isMine()"}
+                <div class="action" onclick="Post_ajaxDelete('{$value->origin}', '{$value->node}', '{$value->nodeid}')">
+                    <i class="zmdi zmdi-delete"></i>
+                </div>
+            {/if}
             <a href="{$c->route('contact', $value->getContact()->jid)}">
                 {$url = $value->getContact()->getPhoto('s')}
                 {if="$url"}
