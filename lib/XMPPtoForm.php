@@ -199,6 +199,10 @@ class XMPPtoForm{
                 $textarea->nodeValue .= $value . "\n";
             }
         }
+
+        if(empty($textarea->nodeValue)) {
+            $textarea->nodeValue = ' ';
+        }
         
         $container->appendChild($textarea);
 
