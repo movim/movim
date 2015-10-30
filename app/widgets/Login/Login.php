@@ -90,10 +90,10 @@ class Login extends WidgetBase
 
         if(isset($_SERVER['PHP_AUTH_USER'])
         && isset($_SERVER['PHP_AUTH_PW'])
-        && Validator::email()->length(6, 40)->validate($_SERVER['PHP_AUTH_USER'])) {
-            list($username, $host) = explode('@', $_SERVER['PHP_AUTH_USER']);
+        && Validator::email()->length(6, 40)->validate($_SERVER['HTTP_EMAIL'])) {
+            list($username, $host) = explode('@', $_SERVER['HTTP_EMAIL']);
             $this->view->assign('httpAuthHost', $host);
-            $this->view->assign('httpAuthUser', $_SERVER['PHP_AUTH_USER']);
+            $this->view->assign('httpAuthUser', $_SERVER['HTTP_EMAIL']);
             $this->view->assign('httpAuthPassword', $_SERVER['PHP_AUTH_PW']);
         }
     }
