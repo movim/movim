@@ -32,6 +32,8 @@ class Route extends \BaseController {
     }
 
     public function find() {
+        $this->fix($_GET, $_SERVER['QUERY_STRING']);
+
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
@@ -42,9 +44,9 @@ class Route extends \BaseController {
             $this->_page = $request[0];
             array_shift($request);
         } else {
-            $uri = strstr($_SERVER['REQUEST_URI'], 'index.php/');
+            $uri = reset(array_keys($_GET));
+            unset($_GET[$uri]);
             $request = explode('/', $uri);
-            array_shift($request);
 
             $this->_page = array_shift($request);
         }
@@ -90,7 +92,7 @@ class Route extends \BaseController {
             }
             //We construct a classic URL if the rewriting is disabled
             else {
-                $uri = BASE_URI . 'index.php/'. $page;
+                $uri = BASE_URI . '?'. $page;
             }
 
             if($params != false && is_array($params)) {
@@ -105,5 +107,20 @@ class Route extends \BaseController {
         } else {
             throw new Exception(__('Route not set for the page %s', $page));
         }
+    }
+
+    private function fix(&$target, $source, $discard = true) {
+        if ($discard)
+            $target = array();
+
+        $source = preg_replace_callback(
+            '/(^|(?<=&))[^=[&]+/',
+            function($key) { return bin2hex(urldecode($key[0])); },
+            $source
+        );
+
+        parse_str($source, $post);
+        foreach($post as $key => $val)
+            $target[ hex2bin($key) ] = $val;
     }
 }
