@@ -20,12 +20,7 @@ var Chat = {
     },
     focus: function()
     {
-        if(typeof Android !== 'undefined') {
-            setTimeout(function(){
-                document.querySelector('#chat_textarea').focus();
-                if(scrolled) MovimTpl.scrollPanel();
-            }, 1000);
-        } else {
+        if(document.documentElement.clientWidth > 1024) {
             document.querySelector('#chat_textarea').focus();
         }
     },
