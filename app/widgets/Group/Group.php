@@ -365,6 +365,11 @@ class Group extends WidgetBase
         RPC::call('movim_fill', 'group_widget', $html);
     }
 
+    function ajaxTogglePrivacy($id) {
+        $p = new Post;
+        $p->ajaxTogglePrivacy($id);
+    }
+
     function prepareEmpty()
     {
         $id = new \modl\ItemDAO();

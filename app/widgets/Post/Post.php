@@ -222,11 +222,11 @@ class Post extends WidgetBase
 
         if($po->isMine()) {
             if($po->privacy == 1) {
-                Notification::append(false, $this->__('post.blog_remove'));
+                Notification::append(false, $this->__('post.public_no'));
                 \Modl\Privacy::set($id, 0);
             }
             if($po->privacy == 0) {
-                Notification::append(false, $this->__('post.blog_add'));
+                Notification::append(false, $this->__('post.public_yes'));
                 \Modl\Privacy::set($id, 1);
             }
         }

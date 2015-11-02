@@ -229,8 +229,8 @@ class PostnDAO extends SQL {
                 and postn.node = :node
             order by postn.published desc';
 
-        if($limitr)
-            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+        if($limitr !== false)
+            $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
 
         $this->prepare(
             'Postn',

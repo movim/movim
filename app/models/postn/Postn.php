@@ -281,7 +281,8 @@ class Postn extends Model {
         }
     }
 
-    public function getPlace() {
+    public function getPlace()
+    {
         if(isset($this->lat, $this->lon) && $this->lat != '' && $this->lon != '') {
             return true;
         }
@@ -289,7 +290,8 @@ class Postn extends Model {
             return false;
     }
 
-    public function isMine() {
+    public function isMine()
+    {
         $user = new \User();
 
         if($this->aid == $user->getLogin()
@@ -299,7 +301,8 @@ class Postn extends Model {
             return false;
     }
 
-    public function getUUID() {
+    public function getUUID()
+    {
         if(substr($this->nodeid, 10) == 'urn:uuid:') {
             return $this->nodeid;
         } else {
@@ -307,11 +310,34 @@ class Postn extends Model {
         }
     }
 
-    public function isMicroblog() {
-        if($this->node == "urn:xmpp:microblog:0")
+    public function isMicroblog()
+    {
+        if($this->node == "urn:xmpp:microblog:0") {
             return true;
-        else
+        } else {
             return false;
+        }
+    }
+
+    public function isShort()
+    {
+        return (strlen($value->contentcleaned) < 500);
+    }
+
+    public function getPublicUrl()
+    {
+        if($this->isMicroblog()) {
+            return \Route::urlize('blog', array($this->origin));
+        } else {
+            return \Route::urlize('grouppublic', array($this->origin, $this->node));
+        }
+    }
+
+    public function isPublic() {
+        if(isset($this->privacy) && $this->privacy) {
+            return true;
+        }
+        return false;
     }
 }
 
