@@ -11,13 +11,13 @@
     {if="$post->isMine()"}
         <ul class="active">
             {if="$post->isEditable()"}
-                <li onclick="Publish_ajaxCreate('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                <li onclick="Publish_ajaxCreate('{$post->origin}', '{$post->node}', '{$post->nodeid}')" title="{$c->__('button.edit')}">
                     <span class="icon">
                         <i class="zmdi zmdi-edit"></i>
                     </span>
                 </li>
             {/if}
-            <li onclick="Post_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+            <li onclick="Post_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')" title="{$c->__('button.delete')}">
                 <span class="icon">
                     <i class="zmdi zmdi-delete"></i>
                 </span>

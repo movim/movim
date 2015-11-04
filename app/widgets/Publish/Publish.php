@@ -67,18 +67,20 @@ class Publish extends WidgetBase
     {
         if(!$this->validateServerNode($server, $node)) return;
 
-        $view = $this->tpl();
-        $view->assign('to', $server);
-        $view->assign('node', $node);
-        $view->assign('item', false);
+        $item = false;
 
         if($id) {
             $pd = new \modl\PostnDAO();
             $p = $pd->getItem($id);
             if($p->isEditable()) {
-                $view->assign('item', $p);
+                $item = $p;
             }
         }
+
+        $view = $this->tpl();
+        $view->assign('to', $server);
+        $view->assign('node', $node);
+        $view->assign('item', $item);
 
         RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
 
@@ -86,9 +88,10 @@ class Publish extends WidgetBase
         $item = $pd->getItem($server, $node);
 
         $view = $this->tpl();
-        $view->assign('item', $item);
         $view->assign('server', $server);
         $view->assign('node', $node);
+        $view->assign('item', $item);
+
         Header::fill($view->draw('_publish_header', true));
 
         if($id) {

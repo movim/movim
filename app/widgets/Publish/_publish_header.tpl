@@ -6,7 +6,11 @@
     <div class="return active r3 condensed"
         onclick="Publish.headerBack('{$server}', '{$node}', false)">
         <span id="back" class="icon" ><i class="zmdi zmdi-arrow-back"></i></span>
-        <h2>{$c->__('publish.new')}</h2>
+        {if="$item != false"}
+            <h2>{$c->__('publish.edit')}</h2>
+        {else}
+            <h2>{$c->__('publish.new')}</h2>
+        {/if}
         <h4>
             {if="$item != null && $item->node != 'urn:xmpp:microblog:0'"}
                 {if="$item->name"}
