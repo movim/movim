@@ -43,7 +43,7 @@
         <form name="comment">
             <div>
                 <textarea
-                    onkeyup="movim_textarea_autoheight(this);"
+                    oninput="movim_textarea_autoheight(this);"
                     name="comment"
                     placeholder="{$c->__('field.type_here')}"
                 ></textarea>
