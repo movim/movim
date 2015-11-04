@@ -58,6 +58,12 @@ class PostPublish extends Errors
         return $this;
     }
 
+    public function setId($id)
+    {
+        $this->_atom->id = $id;
+        return $this;
+    }
+
     public function setNode($node)
     {
         $this->_node = $node;
