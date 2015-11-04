@@ -1,13 +1,14 @@
 <div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
     <ul class="thick">
         {if="$mode == 'blog'"}
-        <li class="action">
+        <li class="action {if="isset($contact->description)"}condensed{/if}">
             <div class="action">
                 <a
                     href="{$c->route('feed', array($contact->jid))}"
                     target="_blank"
+                    title="Atom"
                 >
-                    <i class="zmdi zmdi-portable-wifi"></i> Atom
+                    <i class="zmdi zmdi-portable-wifi"></i>
                 </a>
             </div>
             <span class="icon gray">
@@ -25,6 +26,9 @@
                     {$c->__('page.blog')}
                 </a>
             </h2>
+            {/if}
+            {if="isset($contact->description)"}
+                <p>{$contact->description}</p>
             {/if}
         </li>
         {else}

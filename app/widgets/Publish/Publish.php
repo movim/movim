@@ -63,13 +63,23 @@ class Publish extends WidgetBase
         $this->ajaxCreate($this->user->getLogin(), 'urn:xmpp:microblog:0');
     }
 
-    function ajaxCreate($server, $node)
+    function ajaxCreate($server, $node, $id = false)
     {
         if(!$this->validateServerNode($server, $node)) return;
 
         $view = $this->tpl();
         $view->assign('to', $server);
         $view->assign('node', $node);
+        $view->assign('item', false);
+
+        if($id) {
+            $pd = new \modl\PostnDAO();
+            $p = $pd->getItem($id);
+            if($p->isEditable()) {
+                $view->assign('item', $p);
+            }
+        }
+
         RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
 
         $pd = new \Modl\ItemDAO;
@@ -80,6 +90,10 @@ class Publish extends WidgetBase
         $view->assign('server', $server);
         $view->assign('node', $node);
         Header::fill($view->draw('_publish_header', true));
+
+        if($id) {
+            RPC::call('Publish.initEdit');
+        }
 
         RPC::call('Publish.setEmbed');
     }
@@ -158,6 +172,10 @@ class Publish extends WidgetBase
             if($form->content->value != '') {
                 $content = $form->content->value;
                 $content_xhtml = Markdown::defaultTransform($content);
+            }
+
+            if($form->id->value != '') {
+                $p->setId($form->id->value);
             }
 
             if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {

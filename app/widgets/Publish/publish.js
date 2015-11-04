@@ -60,6 +60,12 @@ var Publish = {
         }
 
         return false;
+    },
+
+    initEdit: function() {
+        Publish.enableContent();
+        Publish_ajaxEmbedTest(document.querySelector('#content_link input').value);
+        movim_textarea_autoheight(document.querySelector('#content_field textarea'));
     }
 }
 

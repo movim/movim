@@ -12,6 +12,7 @@ class PostnDAO extends SQL {
 
                     title           = :title,
                     content         = :content,
+                    contentraw      = :contentraw,
                     contentcleaned  = :contentcleaned,
 
                     commentplace    = :commentplace,
@@ -42,6 +43,7 @@ class PostnDAO extends SQL {
 
                 'title'             => $post->title,
                 'content'           => $post->content,
+                'contentraw'        => $post->contentraw,
                 'contentcleaned'    => $post->contentcleaned,
 
                 'commentplace'      => $post->commentplace,
@@ -81,6 +83,7 @@ class PostnDAO extends SQL {
 
                 title,
                 content,
+                contentraw,
                 contentcleaned,
 
                 commentplace,
@@ -108,6 +111,7 @@ class PostnDAO extends SQL {
 
                     :title,
                     :content,
+                    :contentraw,
                     :contentcleaned,
 
                     :commentplace,
@@ -135,6 +139,7 @@ class PostnDAO extends SQL {
 
                     'title'             => $post->title,
                     'content'           => $post->content,
+                    'contentraw'        => $post->contentraw,
                     'contentcleaned'    => $post->contentcleaned,
 
                     'commentplace'      => $post->commentplace,

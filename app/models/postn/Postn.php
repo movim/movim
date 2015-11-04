@@ -2,6 +2,8 @@
 
 namespace Modl;
 
+use Respect\Validation\Validator;
+
 class Postn extends Model {
     public $origin;         // Where the post is comming from (jid or server)
     public $node;           // microblog or pubsub
@@ -13,6 +15,7 @@ class Postn extends Model {
 
     public $title;          //
     public $content;        // The content
+    public $contentraw;     // The raw content
     public $contentcleaned; // The cleanned content
 
     public $commentplace;
@@ -53,6 +56,8 @@ class Postn extends Model {
             "title" :
                 {"type":"text" },
             "content" :
+                {"type":"text" },
+            "contentraw" :
                 {"type":"text" },
             "contentcleaned" :
                 {"type":"text" },
@@ -100,6 +105,10 @@ class Postn extends Model {
                     return (string)$dom->saveHTML();
                     break;
                 case 'text':
+                    if(trim($c) != '') {
+                        $this->__set('contentraw', trim($c));
+                    }
+                    break;
                 default :
                     $content = (string)$c;
                     break;
@@ -258,6 +267,7 @@ class Postn extends Model {
                             array_push($attachements['files'], $l);
                         }
                         break;
+                    case 'related' :
                     case 'alternate' :
                         array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
                         break;
@@ -270,6 +280,26 @@ class Postn extends Model {
         if(empty($attachements['links']))    unset($attachements['links']);
 
         return $attachements;
+    }
+
+    public function getAttachement()
+    {
+        $attachements = $this->getAttachements();
+        if(isset($attachements['pictures'])) {
+            return $attachements['pictures'][0];
+        }
+        if(isset($attachements['files'])) {
+            return $attachements['files'][0];
+        }
+        if(isset($attachements['links'])) {
+            foreach($attachements['links'] as $link) {
+                if(Validator::url()->validate($link['href'])) {
+                    return $link;
+                }
+            }
+            return false;
+        }
+        return false;
     }
 
     public function getPicture()
@@ -319,9 +349,14 @@ class Postn extends Model {
         }
     }
 
+    public function isEditable()
+    {
+        return ($this->contentraw != null);
+    }
+
     public function isShort()
     {
-        return (strlen($value->contentcleaned) < 500);
+        return (strlen($this->contentcleaned) < 500);
     }
 
     public function getPublicUrl()
