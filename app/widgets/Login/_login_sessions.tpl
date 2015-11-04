@@ -24,10 +24,10 @@
     </ul>
 </section>
 <div>
-    <a class="button flat" href="{$c->route('about')}">
+    <a class="button flat" href="{$c->route('about')}" title="{$c->__('page.about')}">
         <i class="zmdi zmdi-help"></i>
     </a>
-    <a class="button flat" href="{$c->route('admin')}">
+    <a class="button flat" href="{$c->route('admin')}" title="{$c->__('page.administration')}">
         <i class="zmdi zmdi-pages"></i>
     </a>
     <span class="button flat" onclick="Login.toForm()">{$c->__('form.another_account')}</span>
