@@ -396,8 +396,8 @@ class PostnDAO extends SQL {
                 and privacy.value = 1
             order by postn.published desc';
 
-        if($limitr)
-            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+        if($limitr !== false)
+            $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
 
         $this->prepare(
             'Postn',

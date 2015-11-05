@@ -154,19 +154,37 @@
     <br />
 
     {if="$blog != null"}
-        <ul class="active">
-            <li class="subheader">{$c->__('blog.last')}</li>
-            <a href="{$c->route('blog', array($contact->jid))}" target="_blank">
-                <li class="block large condensed action">
+        <ul class="active block flex">
+            <li class="block large subheader">{$c->__('blog.last')}</li>
+            {loop="$blog"}
+                <li class="block condensed" onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
+                    {$url = $value->getContact()->getPhoto('l')}
+                    {if="$url"}
+                        <span class="icon bubble" style="background-image: url({$url});">
+                        </span>
+                    {else}
+                        <span class="icon thumb color {$value->getContact()->jid|stringToColor}">
+                            <i class="zmdi zmdi-account"></i>
+                        </span>
+                    {/if}
+                    {if="$value->title != null"}
+                        <span>{$value->title}</span>
+                    {else}
+                        <span>{$c->__('hello.contact_post')}</span>
+                    {/if}
+                    <p>{$value->contentcleaned|strip_tags}</p>
+                    <span class="info">{$value->published|strtotime|prepareDate}</span>
+                </li>
+            {/loop}
+            <a href="{$c->route('blog', array($jid))}" target="_blank" class="block large">
+                <li class="action">
                     <div class="action">
                         <i class="zmdi zmdi-chevron-right"></i>
                     </div>
                     <span class="icon">
                         <i class="zmdi zmdi-portable-wifi"></i>
                     </span>
-                    <span class="info">{$blog[0]->published|strtotime|prepareDate}</span>
-                    <span>{$blog[0]->title}</span>
-                    <p class="more">{$blog[0]->contentcleaned|strip_tags:'<img><img/>'}</p>
+                    <span>{$c->__('blog.visit')}</span>
                 </li>
             </a>
         </ul>
