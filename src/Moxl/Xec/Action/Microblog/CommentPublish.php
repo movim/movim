@@ -94,7 +94,7 @@ class CommentPublish extends Errors
         $p->aname   = $this->_atom->name;
         $p->aid     = $this->_atom->jid;
         
-        $p->content = $this->_atom->content;
+        $p->contentraw = $this->_atom->content;
         
         $p->published = gmdate('Y-m-d H:i:s');
         $p->updated = gmdate('Y-m-d H:i:s');
