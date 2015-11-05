@@ -201,7 +201,7 @@
                                     {$value->getContact()->getTrueName()}
                                 </span>
                                 <p class="all">
-                                    {$value->content}
+                                    {$value->contentraw}
                                 </p>
                             </li>
                         {/loop}
