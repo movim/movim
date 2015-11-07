@@ -11,3 +11,7 @@ var AccountNext = {
 function setUsername(user) {
     AccountNext.setUsername(user);
 }
+
+MovimWebsocket.attach(function() {
+    Notification.current('accountnext');
+});

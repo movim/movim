@@ -87,6 +87,7 @@ class AccountNext extends WidgetBase {
     {
         Notification::append(null, $this->__('error.service_unavailable'));
         RPC::call('remoteUnregister');
+        RPC::call('movim_redirect', $this->route('account'));
     }
 
     function ajaxGetForm($host)
