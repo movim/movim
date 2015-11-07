@@ -32,10 +32,12 @@ class Menu extends WidgetBase
     function onPost($packet)
     {
         $pd = new \Modl\PostnDAO;
-        $count = $pd->getCountSince(Cache::c('since'));
+        $since = Cache::c('since');
+        $count = $pd->getCountSince($since);
+        $post = $packet->content;
 
-        if($count > 0) {
-            $post = $packet->content;
+        if($count > 0
+        && (strtotime($post->published) > strtotime($since))) {
             if($post->isMicroblog()) {
                 $cd = new \Modl\ContactDAO;
                 $contact = $cd->get($post->origin);
