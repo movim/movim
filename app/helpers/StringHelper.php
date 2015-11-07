@@ -319,6 +319,40 @@ function stripTags($string)
 }
 
 /**
+ * Purify a string
+ * @param string
+ * @return string
+ */
+function purifyHTML($string)
+{
+    $config = \HTMLPurifier_Config::createDefault();
+    $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
+    $config->set('Cache.SerializerPath', '/tmp');
+    $config->set('HTML.DefinitionID', 'html5-definitions'); 
+    $config->set('HTML.DefinitionRev', 1);
+    if ($def = $config->maybeGetRawHTMLDefinition()) {
+        $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
+          'src' => 'URI',
+          'type' => 'Text',
+          'width' => 'Length',
+          'height' => 'Length',
+          'poster' => 'URI',
+          'preload' => 'Enum#auto,metadata,none',
+          'controls' => 'Bool',
+        ));
+        $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
+          'src' => 'URI',
+          'preload' => 'Enum#auto,metadata,none',
+          'muted' => 'Bool',
+          'controls' => 'Bool',
+        ));
+    }
+
+    $purifier = new \HTMLPurifier($config);
+    return $purifier->purify($string);
+}
+
+/**
  * Return the first two letters of a string
  * @param string
  * @return string

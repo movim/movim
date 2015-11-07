@@ -206,9 +206,8 @@ class Postn extends Model {
             $this->__set('commentplace', $this->origin);
 
         $this->__set('content', trim($content));
-        //$this->__set('contentcleaned', prepareString(html_entity_decode($this->content)));
-        $purifier = new \HTMLPurifier();
-        $this->contentcleaned = $purifier->purify(html_entity_decode($this->content));
+
+        $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
 
         if($entry->entry->geoloc) {
             if($entry->entry->geoloc->lat != 0)
