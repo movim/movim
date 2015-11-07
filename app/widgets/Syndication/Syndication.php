@@ -31,7 +31,7 @@ class Syndication extends WidgetBase
             $item = $id->getItem($from, $node);
         }
 
-        $messages = $pd->getPublic($from, $node, 10, 0);
+        $messages = $pd->getPublic($from, $node, 0, 20);
         header("Content-Type: application/atom+xml; charset=UTF-8");
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
