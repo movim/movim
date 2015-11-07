@@ -72,6 +72,9 @@ class Contact extends WidgetBase
         $a = new Moxl\Xec\Action\Avatar\Get;
         $a->setTo(echapJid($jid))->request();
 
+        $v = new Moxl\Xec\Action\Vcard\Get;
+        $v->setTo(echapJid($jid))->request();
+
         $r = new Get;
         $r->setTo(echapJid($jid))->request();
     }
@@ -206,8 +209,10 @@ class Contact extends WidgetBase
         || $c->created == null
         //|| $c->isEmpty()
         || $c->isOld()) {
-            $c = new \Modl\Contact;
-            $c->jid = $jid;
+            if($c == null) {
+                $c = new \Modl\Contact;
+                $c->jid = $jid;
+            }
             $this->ajaxRefreshVcard($jid);
         }
 
