@@ -18,6 +18,8 @@
 use Moxl\Xec\Action\Vcard4\Get;
 use Moxl\Xec\Action\Vcard4\Set;
 
+use Respect\Validation\Validator;
+
 class Vcard4 extends WidgetBase
 {
     function load()
@@ -141,24 +143,32 @@ class Vcard4 extends WidgetBase
         if(isset($vcard->date->value)) {
             $c->date = $vcard->date->value;
         } 
-        
-        $c->name    = $vcard->name->value;
-        $c->fn      = $vcard->fn->value;
-        $c->url     = $vcard->url->value;
-        
-        $c->gender  = $vcard->gender->value;
-        $c->marital = $vcard->marital->value;
+
+        if(Validator::string()->length(0, 40)->validate($vcard->name->value))
+            $c->name    = $vcard->name->value;
+        if(Validator::string()->length(0, 40)->validate($vcard->fn->value))
+            $c->fn      = $vcard->fn->value;
+
+        if(Validator::url()->validate($vcard->url->value))
+            $c->url     = $vcard->url->value;
+
+        if(Validator::in(array_keys(getGender()))->validate($vcard->gender->value))
+            $c->gender  = $vcard->gender->value;
+        if(Validator::in(array_keys(getMarital()))->validate($vcard->marital->value))
+            $c->marital = $vcard->marital->value;
 
         $c->adrlocality     = $vcard->locality->value;
         $c->adrcountry      = $vcard->country->value;
 
-        $c->email   = $vcard->email->value;
+        if(Validator::email()->validate($vcard->email->value))
+            $c->email   = $vcard->email->value;
 
         $c->twitter = $vcard->twitter->value;
         $c->skype   = $vcard->skype->value;
         $c->yahoo   = $vcard->yahoo->value;
-        
-        $c->description     = trim($vcard->desc->value);
+
+        if(Validator::string()->validate($vcard->desc->value))
+            $c->description     = trim($vcard->desc->value);
             
         $cd = new \Modl\ContactDAO();
         $cd->set($c);
