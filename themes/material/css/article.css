@@ -50,7 +50,8 @@ article section content ol li {
     line-height: 3rem;
     padding-left: 2rem;
     list-style-position: inside;
-    min-height: 4rem;
+    min-height: 3rem;
+    font-weight: 300;
     margin: 1rem auto;
 }
 
