@@ -62,7 +62,7 @@
                     <i class="zmdi zmdi-portable-wifi"></i>
                 </span>
             {/if}
-            <p>{$value->contentcleaned|strip_tags}</p>
+            <p>{$value->contentcleaned|stripTags}</p>
         </li>
     {/loop}
     {if="count($items) == $paging"}

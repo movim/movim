@@ -39,7 +39,7 @@
             {if="preg_match('#^\?OTR#', $message->body)"}
                 <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
             {else}
-                <p>{$message->body|prepareString|strip_tags}</p>
+                <p>{$message->body|prepareString|stripTags}</p>
             {/if}
         {/if}
     {/if}

@@ -309,6 +309,16 @@ function stringToColor($string) {
 }
 
 /**
+ * Strip tags and add a whitespace
+ * @param string
+ * @return string
+ */
+function stripTags($string)
+{
+    return strip_tags(preg_replace('/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2', $string));
+}
+
+/**
  * Return the first two letters of a string
  * @param string
  * @return string
