@@ -102,32 +102,6 @@
         </li>
     </ul>
 
-    {if="$server_rewrite"}
-        <br />
-        <h3>{$c->__('rewrite.title')}</h3>
-
-
-        <div>
-            <ul class="thick simple">
-                <li class="action">
-                    <div class="control action">
-                        <div class="checkbox">
-                            <input
-                                type="checkbox"
-                                id="rewrite"
-                                name="rewrite"
-                                {if="$conf->rewrite"}
-                                    checked
-                                {/if}>
-                            <label for="rewrite"></label>
-                        </div>
-                    </div>
-                    <span>{$c->__('rewrite.info')}</span>
-                </li>
-            </ul>
-        </div>
-    {/if}
-
     <br />
     <h3>{$c->__('credentials.title')}</h3>
 

@@ -34,22 +34,11 @@ class Route extends \BaseController {
     public function find() {
         $this->fix($_GET, $_SERVER['QUERY_STRING']);
 
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
+        $uri = reset(array_keys($_GET));
+        unset($_GET[$uri]);
+        $request = explode('/', $uri);
 
-        if($config->rewrite == true
-        && isset($_SERVER['HTTP_MOD_REWRITE'])
-        && $_SERVER['HTTP_MOD_REWRITE']) {
-            $request = explode('/', $this->fetchGet('query'));
-            $this->_page = $request[0];
-            array_shift($request);
-        } else {
-            $uri = reset(array_keys($_GET));
-            unset($_GET[$uri]);
-            $request = explode('/', $uri);
-
-            $this->_page = array_shift($request);
-        }
+        $this->_page = array_shift($request);
 
         if(isset($this->_routes[$this->_page]))
             $route = $this->_routes[$this->_page];
@@ -77,19 +66,13 @@ class Route extends \BaseController {
         $r = new Route();
         $routes = $r->_routes;
 
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
-
         if($page === 'root')
             return BASE_URI;
 
         if(isset($routes[$page])) {
             if($tab != false)
                 $tab = '#'.$tab;
-            // Here we got a beautiful rewriten URL !
-            if($config->rewrite == true) {
-                $uri = BASE_URI . $page;
-            }
+
             //We construct a classic URL if the rewriting is disabled
             else {
                 $uri = BASE_URI . '?'. $page;

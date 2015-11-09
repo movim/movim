@@ -109,14 +109,5 @@
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
-
-        {if="!$_SERVER['HTTP_MOD_REWRITE']"}
-            <li>
-                <span class="icon bubble color orange">
-                    <i class="zmdi zmdi-edit"></i>
-                </span>
-                <span>{$c->__('compatibility.rewrite')}</span>
-            </li>
-        {/if}
     </ul>
 </div>

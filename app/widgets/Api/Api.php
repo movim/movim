@@ -54,22 +54,15 @@ class Api extends WidgetBase {
 
     function ajaxRegister()
     {
-        $rewrite = false;
-
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
-
-        if($config->rewrite/*isset($_SERVER['HTTP_MOD_REWRITE'])
-            && $_SERVER['HTTP_MOD_REWRITE']*/) {
-            $rewrite = true;
-        }
 
         $json = requestURL(
             MOVIM_API.'register',
             1,
             array(
                 'uri' => BASE_URI,
-                'rewrite' => $rewrite));
+                'rewrite' => false));
 
         $json = json_decode($json);
 
