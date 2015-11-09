@@ -66,6 +66,7 @@ class RPC
     public static function clear()
     {
         self::$funcalls = array();
+        self::$instance = null;
     }
 
     /**

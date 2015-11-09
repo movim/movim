@@ -168,11 +168,9 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 $conn->write(trim($xml));
                 #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
-        }
 
-        // Two ticks to be sure that we get everything from the socket, sic…
-        $loop->tick();
-        //$loop->tick();
+            gc_collect_cycles();
+        }
     });
 
     $conn->on('error', function($msg) use ($conn, $loop) {

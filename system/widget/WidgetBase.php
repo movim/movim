@@ -23,7 +23,6 @@ class WidgetBase
     protected $js = array(); /*< Contains javascripts. */
     protected $css = array(); /*< Contains CSS files. */
     protected $ajax;     /*< Contains ajax client code. */
-    protected $tpl;
     protected $user;
     protected $name;
     protected $pure;    // To render the widget without the container
@@ -80,6 +79,12 @@ class WidgetBase
         $this->view->assign('c', $this);
 
         $this->pure = false;
+    }
+
+    function __destruct()
+    {
+        unset($this->view);
+        unset($this->user);
     }
 
     function __()

@@ -104,6 +104,7 @@ class Session {
         if(isset($this->process)) {
             $this->process->stdin->write($msg."");
         }
+        unset($msg);
     }
 
     public function messageOut($msg)
