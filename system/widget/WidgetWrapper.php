@@ -187,7 +187,7 @@ class WidgetWrapper
             }
         }
 
-        unset($ey, $data);
+        unset($key, $data);
     }
 
     /**

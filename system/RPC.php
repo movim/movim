@@ -15,7 +15,6 @@
 
 class RPC
 {
-    protected static $instance;
     protected static $funcalls;
 
     public static function call($funcname)
@@ -66,7 +65,6 @@ class RPC
     public static function clear()
     {
         self::$funcalls = array();
-        self::$instance = null;
     }
 
     /**
