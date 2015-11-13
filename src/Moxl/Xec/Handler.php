@@ -66,8 +66,9 @@ class Handler {
 
             foreach($child->children() as $s1) {
                 Handler::handleNode($s1, $child);
-                foreach($s1->children() as $s2)
+                foreach($s1->children() as $s2) {
                     Handler::handleNode($s2, $child);
+                }
             }
         } elseif(
             $id != '' &&
@@ -144,16 +145,15 @@ class Handler {
             $hash = md5($name.$ns.$node);
             Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . ' [' . $node . ']", "'.$hash.'"');
             Handler::searchPayload($hash, $s, $sparent);
-        } //else {
+        } 
 
         $hash = md5($name.$ns);
         Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . '", "'.$hash.'"');
         Handler::searchPayload($hash, $s, $sparent);
-        //}
     }
 
-    static function getHashToClass() {
-        return array(
+    static public function searchPayload($hash, $s, $sparent = false) {
+        $hashToClass = array(
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
             '78e731027d8fd50ed642340b7c9a63b3' => 'Message',// TLS
 
@@ -208,29 +208,22 @@ class Handler {
             '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',#
             '128477f50347d98ee1213d71f27e8886' => 'SessionBind',
         );
-
-    }
-
-    static public function searchPayload($hash, $s, $sparent = false) {
-        $base = __DIR__.'/';
-
-        $hashToClass = self::getHashToClass();
         if(isset($hashToClass[$hash])) {
-            if(file_exists($base.'Payload/'.$hashToClass[$hash].'.php')) {
-                require_once($base.'Payload/'.$hashToClass[$hash].'.php');
+            //if(file_exists($base.'Payload/'.$hashToClass[$hash].'.php')) {
+            //    require_once($base.'Payload/'.$hashToClass[$hash].'.php');
                 $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
 
-                if(class_exists($classname)) {
-                    Utils::log('Handler : Call class "'.$hashToClass[$hash].'"');
+                //if(class_exists($classname)) {
+                    //Utils::log('Handler : Call class "'.$hashToClass[$hash].'"');
                     $payload_class = new $classname();
                     $payload_class->prepare($s, $sparent);
                     $payload_class->handle($s, $sparent);
-                } else {
+                /*} else {
                    Utils::log('Handler : Payload class "'.$hashToClass[$hash].'" not found');
-                }
-            } else {
+                }*/
+            /*} else {
                 Utils::log('Handler : Payload file "'.$hashToClass[$hash].'" not found');
-            }
+            }*/
         } else {
             Utils::log('Handler : This event is not listed');
             return true;
