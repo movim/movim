@@ -82,23 +82,12 @@ class Publish extends Action
         
         $evt->runEvent('locationpublished', $c);
     }
-    
-    public function errorFeatureNotImplemented($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('locationpublisherror', t("Your server doesn't support location publication"));
-    }
-    
-    public function errorNotAuthorized($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('locationpublisherror', t("Your are not authorized to publish your location"));
-    }
-    
+
     public function errorServiceUnavailable($stanza) {
         $this->errorFeatureNotImplemented($stanza);
     }
-    
+
     public function errorForbidden($stanza) {
         $this->errorNotAuthorized($stanza);
     }
-
 }

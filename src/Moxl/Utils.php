@@ -32,7 +32,7 @@ class Utils {
     public static function displayXML($xml) {
         echo '<pre>'.htmlentities(Utils::cleanXML($xml), ENT_QUOTES, 'UTF-8').'</pre>';
     }
-    
+
     // A simple function which clean and reindent an XML string
     public static function cleanXML($xml) {
         if($xml != '') {
@@ -49,7 +49,7 @@ class Utils {
         $data = explode(',', $data);
         $pairs = array();
         $key = false;
-        
+
         foreach($data as $pair) {
             $dd = strpos($pair, '=');
             if($dd) {
@@ -61,8 +61,29 @@ class Utils {
                 continue;
             }
         }
-        
+
         return $pairs;
+    }
+
+    public static function resolveHost($host) {
+        $r = new \Net_DNS2_Resolver(array('timeout' => 1));
+        try {
+            $result = $r->query('_xmpp-client._tcp.'.$host, 'SRV');
+
+            if(!empty($result->answer[0])) return $result->answer[0];
+        } catch (\Net_DNS2_Exception $e) {
+            error_log($e->getMessage());
+        }
+    }
+
+    public static function getDomain($host) {
+        $result = Utils::resolveHost($host);
+
+        if(isset($result->target) && $result->target != null)
+            return $result->target;
+        else {
+            return $host;
+        }
     }
 
     public static function implodeData($data) {
@@ -92,14 +113,15 @@ class Utils {
             'urn:xmpp:vcard4',
             'urn:xmpp:vcard4+notify',
             'urn:xmpp:avatar:data',
-            'urn:xmpp:avatar:data+notify',
+            'urn:xmpp:avatar:metadata',
+            'urn:xmpp:avatar:metadata+notify',
             'urn:xmpp:receipts',
             'urn:xmpp:carbons:2',
-            'urn:xmpp:avatar:data',
             'jabber:iq:version',
             'jabber:iq:last',
             'vcard-temp',
             'jabber:x:data',
+            'urn:xmpp:ping',
 
             // Jingle
             'http://jabber.org/protocol/jingle',
@@ -114,7 +136,7 @@ class Utils {
             'urn:xmpp:jingle:transports:ice-udp:0',
             'urn:xmpp:jingle:transports:ice-udp:1',
             'urn:xmpp:jingle:apps:rtp:rtcp-fb:0',
-            
+
             'http://jabber.org/protocol/muc',
             'http://jabber.org/protocol/nick',
             'http://jabber.org/protocol/nick+notify',
@@ -140,7 +162,7 @@ class Utils {
         $s .= 'client/web//Movim<';
 
         $support = Utils::getSupportedServices();
-            
+
         asort($support);
         foreach($support as $sup ) {
             $s = $s.$sup.'<';
@@ -149,16 +171,16 @@ class Utils {
         return base64_encode(sha1(utf8_encode($s),true));
     }
 
-    public static function log($message, $priority = '') 
+    public static function log($message, $priority = '')
     {
         if(LOG_LEVEL != null && LOG_LEVEL > 0) {
             $log = new Logger('moxl');
 
             $handler = new SyslogHandler('moxl');
-            
+
             if(LOG_LEVEL > 1)
                 $log->pushHandler(new StreamHandler(LOG_PATH.'/xmpp.log', Logger::DEBUG));
-            
+
             $log->pushHandler($handler, Logger::DEBUG);
 
             $errlines = explode("\n",$message);

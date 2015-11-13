@@ -1,6 +1,27 @@
 Moxl Changelog
 ================
 
+v1.4
+---------------------------
+ * Add a XML Stream parser
+
+v1.3
+---------------------------
+ * Clean the XEP-0060: Pubsub actions and use the Package system
+ * Fix the error handler to fire properly global errors
+
+v1.2.1
+---------------------------
+ * Add support of the XEP-0050: Ad-Hoc Commands 
+
+v1.2
+---------------------------
+ * Large refactoring to move from de BOSH connection system to Websockets
+ * SASL authentication is now part of the Action/Payload system
+ * Clean a lot of BOSH related sourcecode
+ * Move a lot of Payloads and Actions to the Package system
+ * Add the account registration support
+
 v1.1.1
 ---------------------------
  * The Actions now inherit from the Payloads to gain Package system support

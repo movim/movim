@@ -52,9 +52,7 @@ class GetConfig extends Errors
     }
     
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        $xml = new \XMPPtoForm();
-        $form = $xml->getHTML($stanza->pubsub->configure->x->asXML());
-        $evt->runEvent('pubsubconfig', array($form, $this->_to, $this->_node)); 
+        $this->pack(array('config' => $stanza->pubsub->configure, 'server' => $this->_to, 'node' => $this->_node));
+        $this->deliver();
     }
 }

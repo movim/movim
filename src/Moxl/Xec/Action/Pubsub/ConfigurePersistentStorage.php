@@ -31,11 +31,12 @@ class ConfigurePersistentStorage extends Action
 {
     private $_to;
     private $_node;
+    private $_access_model;
     
     public function request() 
     {
         $this->store();
-        Pubsub::configurePersistentStorage($this->_to, $this->_node);
+        Pubsub::configurePersistentStorage($this->_to, $this->_node, $this->_access_model);
     }
     
     public function setTo($to)
@@ -43,10 +44,16 @@ class ConfigurePersistentStorage extends Action
         $this->_to = $to;
         return $this;
     }
-    
+
     public function setNode($node)
     {
         $this->_node = $node;
+        return $this;
+    }
+
+    public function setAccessPresence()
+    {
+        $this->_access_model = 'presence';
         return $this;
     }
     
@@ -55,7 +62,7 @@ class ConfigurePersistentStorage extends Action
         $this->deliver();
     }
 
-    public function errorFeatureNotImplemented($stanza) {
+    public function errorFeatureNotImplemented($error) {
         $this->pack($this->_node);
         $this->deliver();
     }

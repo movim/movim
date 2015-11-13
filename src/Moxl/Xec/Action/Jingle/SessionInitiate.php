@@ -53,6 +53,14 @@ class SessionInitiate extends Action
     public function handle($stanza, $parent = false) {
         
     }
+
+    public function errorItemNotFound($stanza) {
+        $this->deliver();
+    }
+
+    public function errorUnexpectedRequest($stanza) {
+        $this->deliver();
+    }
     
     public function error($error) {
 

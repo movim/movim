@@ -1,6 +1,6 @@
 <?php
 /*
- * DiscoItems.php
+ * Bind.php
  * 
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
@@ -22,45 +22,38 @@
  * 
  */
 
-namespace Moxl\Xec\Action\Pubsub;
+namespace Moxl\Xec\Action\Session;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Disco;
-use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Stanza\Stream;
+use Moxl\Utils;
 
-class DiscoItems extends Errors
+class Bind extends Action
 {
     private $_to;
     
     public function request() 
     {
         $this->store();
-        Disco::items($this->_to);
+        Stream::bindSet($this->_resource);
     }
     
-    public function setTo($to)
+    public function setResource($resource)
     {
-        $this->_to = $to;
+        $this->_resource = $resource;
         return $this;
     }
     
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        
-        $nd = new \modl\ItemDAO();
-        
-        foreach($stanza->query->item as $item) {
-            $n = new \modl\Item();
-            $n->set($item, $this->_to);
-            if(substr($n->node, 0, 29) != 'urn:xmpp:microblog:0:comments')
-                $nd->set($n);
-        }
+        $session = \Sessionx::start();
+        list($jid, $resource) = explode('/', (string)$stanza->bind->jid);
 
-        $evt->runEvent('discoitems', $this->_to);
-    }
+        list($session->username, $session->host) = explode('@',$jid);
+        if($resource)
+            $session->resource = $resource;
 
-    public function error($error) {
-        $evt = new \Event();
-        $evt->runEvent('discoerror', $server);
+        $ss = new Start;
+        $ss->setTo($session->host)
+           ->request();
     }
 }

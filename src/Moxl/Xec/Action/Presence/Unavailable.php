@@ -32,12 +32,13 @@ class Unavailable extends Action
     private $_status;
     private $_to;
     private $_type;
-    private $_ressource;
+    private $_resource;
+    private $_muc = false;
 
     public function request() 
     {
         $this->store();
-        Presence::unavailable($this->_to.'/'.$this->_ressource, $this->_status, $this->_type);
+        Presence::unavailable($this->_to.'/'.$this->_resource, $this->_status, $this->_type);
     }
 
     public function setStatus($status)
@@ -52,9 +53,9 @@ class Unavailable extends Action
         return $this;
     }
     
-    public function setRessource($ressource)
+    public function setResource($resource)
     {
-        $this->_ressource = $ressource;
+        $this->_resource = $resource;
         return $this;
     }
     
@@ -62,23 +63,24 @@ class Unavailable extends Action
     {
         $this->_type = $type;
         return $this;
-    } 
+    }
 
-    // Fixme ? For the moment this method is used only for the MUC requests
+    public function setMuc()
+    {
+        $this->_muc = true;
+        return $this;
+    }
+
     public function handle($stanza, $parent = false) {
-        $cd = new \modl\ConferenceDAO();
-        $conf = $cd->get($this->_to);
-        $conf->status = 0;
-        $cd->set($conf);
+        if($this->_muc) {
+            // We clear all the old messages
+            $md = new \modl\MessageDAO();
+            $md->deleteContact($this->_to);
 
-        // We clear all the old messages
-        $md = new \modl\MessageDAO();
-        $md->deleteContact($this->_to);
+            $md = new \modl\PresenceDAO();
+            $md->clearMuc($this->_to);
+        }
 
-        $md = new \modl\PresenceDAO();
-        $md->clearMuc($this->_to);
-        
-        $evt = new \Event();
-        $evt->runEvent('muc_presence', false);
+        $this->deliver();
     }
 }

@@ -6,22 +6,18 @@ namespace Moxl\Stanza;
 
 class Carbons {
     static function enable() {
-        $xml = '
-            <enable xmlns="urn:xmpp:carbons:2"/>
-            ';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $xml = $dom->createElementNS('urn:xmpp:carbons:2', 'enable');
 
         $xml = \Moxl\API::iqWrapper($xml, false, 'set');
-
         \Moxl\API::request($xml);
     }
 
     static function disable() {
-        $xml = '
-            <disable xmlns="urn:xmpp:carbons:2"/>
-            ';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $xml = $dom->createElementNS('urn:xmpp:carbons:2', 'disable');
 
         $xml = \Moxl\API::iqWrapper($xml, false, 'set');
-
         \Moxl\API::request($xml);
     }
 }

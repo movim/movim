@@ -55,8 +55,8 @@ class RemoveItem extends Action
         $rd = new \modl\RosterLinkDAO();
         $rd->delete($this->_to);
 
-        $evt = new \Event();
-        $evt->runEvent('roster');
+        $this->pack($this->_to);
+        $this->deliver();
     }
 
     public function errorItemNotFound($stanza) {
@@ -65,6 +65,6 @@ class RemoveItem extends Action
     
     public function errorServiceUnavailable() 
     {
-        var_dump('Handle the Error !');
+        $this->deliver();
     }
 }

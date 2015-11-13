@@ -59,7 +59,6 @@ class SetConfig extends Errors
     }
     
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        $evt->runEvent('pubsubconfigsubmited', $stanza);
+        $this->deliver();
     }
 }

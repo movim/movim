@@ -83,8 +83,7 @@ class Set extends Action
                 $cd->set($co);                    
             }
         }
-               
-        $evt = new \Event();
-        $evt->runEvent('bookmark', false);
+
+        $this->deliver();
     }
 }

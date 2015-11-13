@@ -29,58 +29,31 @@ namespace Moxl\Xec\Payload;
 class Carbons extends Payload
 {
     public function handle($stanza, $parent = false) {
-        $stanza = $stanza->forwarded->message;
+        $message = $stanza->forwarded->message;
 
-        $jid = explode('/',(string)$stanza->attributes()->from);
-        $to = current(explode('/',(string)$stanza->attributes()->to));
+        $jid = explode('/',(string)$message->attributes()->from);
+        $to = current(explode('/',(string)$message->attributes()->to));
 
         $evt = new \Event();
 
-        if($stanza->composing) {
-            if($parent->attributes()->from == $jid[0])
-                $evt->runEvent('composing', $to);
-            else
-                $evt->runEvent('composing', $jid[0]);
-        }
+        if($message->composing)
+            $evt->runEvent('composing', array($jid[0], $to));
+        if($message->paused)
+            $evt->runEvent('paused', array($jid[0], $to));
+        if($message->gone)
+            $evt->runEvent('gone', array($jid[0], $to));
         
-        if($stanza->paused) {
-            if($parent->attributes()->from == $jid[0])
-                $evt->runEvent('paused', $to);
-            else
-                $evt->runEvent('paused', $jid[0]);
-        }
-        
-        if($stanza->gone) {
-            if($parent->attributes()->from == $jid[0])
-                $evt->runEvent('gone', $to);
-            else
-                $evt->runEvent('gone', $jid[0]);
-        }
-        
-        if($stanza->body || $stanza->subject) {
+        if($message->body || $message->subject) {
             $m = new \modl\Message();
+            $m->set($message, $stanza->forwarded);
 
-            $m->session     = $parent->attributes()->from;
-            $m->jidto      = $to;
-            $m->jidfrom    = $jid[0];
-            
-            $m->ressource = $jid[1];
-            
-            $m->type    = (string)$stanza->attributes()->type;
-            
-            $m->body    = (string)$stanza->body;
-            $m->subject = (string)$stanza->subject;
-            
-            if($stanza->delay)
-                $m->published = date('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
-            else
-                $m->published = date('Y-m-d H:i:s');
-            $m->delivered = date('Y-m-d H:i:s');
-            
-            $md = new \modl\MessageDAO();
-            $md->set($m);
-                    
-            $evt->runEvent('message', $m);
+            if(!preg_match('#^\?OTR#', $m->body)) {
+                $md = new \modl\MessageDAO();
+                $md->set($m);
+
+                $this->pack($m);
+                $this->deliver();
+            }
         }
     }
 }

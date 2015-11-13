@@ -44,7 +44,8 @@ class Unsubscribed extends Action
     }
     
     public function handle($stanza, $parent = false) {
-        var_dump('Presence Unsubscribed');
+        $this->pack($this->_to);
+        $this->deliver();
     }
     
     public function load($key) {}

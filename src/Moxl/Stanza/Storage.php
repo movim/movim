@@ -1,30 +1,30 @@
 <?php
 /*
  * Basic stanza for the XEP-0049 implementation
- */ 
+ */
 
 namespace Moxl\Stanza;
 
 class Storage {
     static function set($xmlns, $data)
     {
-        $xml = '
-            <query xmlns="jabber:iq:private">
-                <data xmlns="'.$xmlns.'">
-                    '.$data.'
-                </data>
-            </query>';
-        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
+        $dom = new \DOMDocument('1.0', 'utf-8');
+        $query = $dom->createElementNS('jabber:iq:private', 'query');
+        $data = $dom->createElementNS($xmlns, 'data', $data);
+        $query->appendchild($data);
+
+        $xml = \Moxl\API::iqWrapper($query, false, 'set');
         \Moxl\API::request($xml);
     }
 
     static function get($xmlns)
     {
-        $xml = '
-            <query xmlns="jabber:iq:private">
-                <data xmlns="'.$xmlns.'"/>
-            </query>';
-        $xml = \Moxl\API::iqWrapper($xml, false, 'get');
+        $dom = new \DOMDocument('1.0', 'utf-8');
+        $query = $dom->createElementNS('jabber:iq:private', 'query');
+        $data = $dom->createElementNS($xmlns, 'data');
+        $query->appendchild($data);
+
+        $xml = \Moxl\API::iqWrapper($query, false, 'get');
         \Moxl\API::request($xml);
     }
 

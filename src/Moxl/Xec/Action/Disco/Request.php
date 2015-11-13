@@ -65,6 +65,8 @@ class Request extends Action
          && $c->name != '') {
             $cd = new \modl\CapsDAO();
             $cd->set($c);
+            $this->pack($c);
+            $this->deliver();
         }
     }
 }

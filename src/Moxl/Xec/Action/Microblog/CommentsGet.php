@@ -25,17 +25,18 @@
 namespace Moxl\Xec\Action\Microblog;
 
 use Moxl\Xec\Action;
-use Moxl\Stanza\Microblog;
+use Moxl\Stanza\Pubsub;
 
 class CommentsGet extends Action
 {
     private $_to;
     private $_id;
-    
+    private $_node;
+
     public function request() 
     {
         $this->store();
-        Microblog::commentsGet($this->_to, $this->_id);
+        Pubsub::getItems($this->_to, $this->_node);
     }
     
     public function setTo($to)
@@ -47,54 +48,38 @@ class CommentsGet extends Action
     public function setId($id)
     {
         $this->_id = $id;
+        $this->_node = 'urn:xmpp:microblog:0:comments/'.$this->_id;
         return $this;
     }
     
     public function handle($stanza, $parent = false) {
         $evt = new \Event();
-        
-        $to = current(explode('/',(string)$stanza->attributes()->to));
 
         $node = (string)$stanza->pubsub->items->attributes()->node;
         list($xmlns, $parent) = explode("/", $node);
 
         if($stanza->pubsub->items->item) {
-            
-            $comments = array();
-
             foreach($stanza->pubsub->items->item as $item) {
                 $p = new \modl\Postn();
                 $p->set($item, $this->_to, false, $node);
                 
                 $pd = new \modl\PostnDAO();
                 $pd->set($p);
-                
-                array_unshift($comments, $p);
             }
-            
-            $evt->runEvent('comment', $parent);
-        } else {
-            $evt->runEvent('nocomment', $parent);   
         }
+
+        $this->pack(
+            array(
+                'server' => $this->_to,
+                'node' => $this->_node,
+                'id' => $this->_id)
+            );
+        $this->deliver();
     }
     
-    public function errorFeatureNotImplemented() {
-        $evt = new \Event();
-        $evt->runEvent('nocommentstream', $this->_id);
-    }
-    
-    public function errorItemNotFound() {        
-        $evt = new \Event();
-        $evt->runEvent('nocommentstream', $this->_id);
-    }
-    
-    public function errorRemoteServerNotFound($stanza) {
-        $this->errorItemNotFound($stanza);
-    }
-    
-    public function errorNotAuthorized() {
-        $evt = new \Event();
-        $evt->runEvent('nostreamautorized', $this->_id);
+    public function error() {
+        $this->pack($this->_id);
+        $this->deliver();
     }
 
 }

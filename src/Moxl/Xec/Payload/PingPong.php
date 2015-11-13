@@ -1,6 +1,8 @@
 <?php
 /*
- * Delete.php
+ * @file Ping.php
+ * 
+ * @brief Handle incoming Ping and Pong them
  * 
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
@@ -22,43 +24,16 @@
  * 
  */
 
-namespace Moxl\Xec\Action\Group;
+namespace Moxl\Xec\Payload;
 
-use Moxl\Xec\Action;
-use Moxl\Xec\Action\Pubsub\Errors;
-use Moxl\Stanza\Group;
+use Moxl\Stanza\Ping;
 
-class Delete extends Errors
+class PingPong extends Payload
 {
-    private $_to;
-    private $_node;
-    
-    public function request() 
-    {
-        $this->store();
-        Group::delete($this->_to, $this->_node);
-    }
-    
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-    
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
-    }
-    
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        if($stanza["type"] == "result"){
-            $evt->runEvent('deletionsuccess', $this->_to); 
-            
-            //delete from bookmark
-            $sd = new \modl\SubscriptionDAO();
-            $sd->deleteNode($this->_to, $this->_node);
-        }
+        //$node = $stanza->attributes()->node.'#'.$stanza->attributes()->ver;
+        $to = (string)$parent->attributes()->from;
+        $id = (string)$parent->attributes()->id;
+        Ping::pong($to, $id);
     }
 }

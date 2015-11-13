@@ -70,8 +70,8 @@ class Unsubscribe extends Errors
         // , $this->_subid
         $sd->deleteNode($this->_to, $this->_node);
         
-        $evt = new \Event();
-        $evt->runEvent('pubsubunsubscribed', array($this->_to, $this->_node)); 
+        $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+        $this->deliver();
     }
 
     public function errorItemNotFound($error) {

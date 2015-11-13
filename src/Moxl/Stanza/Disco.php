@@ -7,43 +7,50 @@ use Moxl\Utils;
 class Disco {
     static function answer($to, $id)
     {
-        global $session;
-        $xml = '
-            <iq type="result" xmlns="jabber:client" to="'.$to.'" id="'.$id.'">
-                <query 
-                    xmlns="http://jabber.org/protocol/disco#info"
-                    node="http://moxl.movim.eu/#'.Utils::generateCaps().'">
-                    <identity category="client" type="web" name="Movim"/>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/disco#info', 'query');
+        $query->setAttribute('node', 'http://moxl.movim.eu/#'.Utils::generateCaps());
 
-            foreach(Utils::getSupportedServices() as $service)
-                $xml .= '<feature var="'.$service.'"/>'."\n";
-                
-        $xml .= '
-                </query>
-            </iq>';
+        $identity = $dom->createElement('identity');
+        $identity->setAttribute('category', 'client');
+        $identity->setAttribute('type', 'web');
+        $identity->setAttribute('name', 'Movim');
+
+        $query->appendChild($identity);
+
+        foreach(Utils::getSupportedServices() as $service) {
+            $feature = $dom->createElement('feature');
+            $feature->setAttribute('var', $service);
+            $query->appendChild($feature);
+        }
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'result', $id);
         \Moxl\API::request($xml);
     }
 
     static function request($to, $node = false)
     {
-        $xml_node = '';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/disco#info', 'query');
 
-        if($node != false)
-            $xml_node = 'node="'.$node.'"';
-        
-        $xml = '
-            <query xmlns="http://jabber.org/protocol/disco#info"
-                '.$xml_node.'/>';
+        if($node != false) {
+            $query->setAttribute('node', $node);
+        }
 
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml); 
+        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
+        \Moxl\API::request($xml);
     }
 
-    static function items($to)
+    static function items($to, $node = false)
     {
-        $xml = '
-            <query xmlns="http://jabber.org/protocol/disco#items"/>';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'get');
-        \Moxl\API::request($xml); 
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $query = $dom->createElementNS('http://jabber.org/protocol/disco#items', 'query');
+
+        if($node != false) {
+            $query->setAttribute('node', $node);
+        }
+
+        $xml = \Moxl\API::iqWrapper($query, $to, 'get');
+        \Moxl\API::request($xml);
     }
 }

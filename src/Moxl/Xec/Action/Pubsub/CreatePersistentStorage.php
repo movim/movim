@@ -50,7 +50,14 @@ class CreatePersistentStorage extends Action
         return $this;
     }
     
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
+        $this->pack($this->_node);
+        $this->deliver();
+    }
+
+    public function errorConflict($error)
+    {
         $this->pack($this->_node);
         $this->deliver();
     }

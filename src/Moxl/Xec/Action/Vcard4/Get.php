@@ -59,21 +59,23 @@ class Get extends Action
 
         $c->jid       = $this->_to;
 
-        $vcard = $stanza->pubsub->items->item->vcard;
-        $c->setVcard4($vcard);
+        if($vcard = $stanza->pubsub->items->item) {
+            $vcard = $stanza->pubsub->items->item->vcard;
+            $c->setVcard4($vcard);
 
-        $c->createThumbnails();
+            $c->createThumbnails();
 
-        $cd->set($c);
+            $cd->set($c);
 
-        $evt = new \Event();
-        if($this->_me)
-            $evt->runEvent('myvcard', $c);
-        else
-            $evt->runEvent('vcard', $c);
+            $this->pack($c);
+            $this->deliver();
+        } else {
+            $this->error(false);
+        }
     }
     
-    public function errorItemNotFound($error) {
-
+    public function error($error) {
+        $r = new \Moxl\Xec\Action\Vcard\Get;
+        $r->setTo($this->_to)->request();
     }
 }

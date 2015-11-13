@@ -35,6 +35,7 @@ class Set extends Action
     {
         $this->store();
         Avatar::set($this->_data);
+        Avatar::setMetadata($this->_data);
     }
     
     public function setData($data)
@@ -44,22 +45,20 @@ class Set extends Action
     }
     
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        $evt->runEvent('myavatarvalid', $stanza);
+        $cd = new \Modl\ContactDAO();
+        $this->pack($cd->get());
+        $this->deliver();
     }
     
     public function errorFeatureNotImplemented($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('myavatarinvalid', 'vcardfeaturenotimpl');
+        $this->deliver();
     }
     
     public function errorBadRequest($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('myavatarinvalid', 'vcardbadrequest');
+        $this->deliver();
     }
 
     public function errorNotAllowed($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('myavatarinvalid', 'vcardfeaturenotimpl');
+        $this->deliver();
     }
 }

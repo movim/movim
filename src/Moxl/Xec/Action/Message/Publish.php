@@ -32,6 +32,7 @@ class Publish extends Action
 {
     private $_to;
     private $_content;
+    private $_html;
     private $_muc = false;
     private $_encrypted = false;
     
@@ -39,11 +40,11 @@ class Publish extends Action
     {
         $this->store();
         if($this->_muc)
-            Muc::message($this->_to, $this->_content);
+            Muc::message($this->_to, $this->_content, $this->_html);
         elseif($this->_encrypted)
-            Message::encrypted($this->_to, $this->_content);
+            Message::encrypted($this->_to, $this->_content, $this->_html);
         else
-            Message::message($this->_to, $this->_content);
+            Message::message($this->_to, $this->_content, $this->_html);
     }
     
     public function setTo($to)
@@ -57,6 +58,11 @@ class Publish extends Action
         $this->_muc = true;
         return $this;
     }
+    
+    public function getMuc()
+    {
+        return $this->_muc;
+    }
 
     public function setEncrypted($bool)
     {
@@ -69,9 +75,17 @@ class Publish extends Action
         $this->_content = $content;
         return $this;
     }
+
+    public function setHTML($html)
+    {
+        $this->_html = $html;
+        return $this;
+    }
     
-    public function handle($stanza, $parent = false) {     
-        $evt = new \Event();
-        $evt->runEvent('messagepublished', $this->_to);
+    public function handle($stanza, $parent = false) {
+        if($this->_muc) {
+            $m = new \Moxl\Xec\Payload\Message;
+            $m->handle($stanza, $parent);
+        }
     }
 }

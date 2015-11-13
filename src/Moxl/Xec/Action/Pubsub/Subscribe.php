@@ -67,36 +67,21 @@ class Subscribe extends Errors
     }
     
     public function handle($stanza, $parent = false) {
-        $jid = $this->_from;
-        $server = $this->_to;
-        $node = $this->_node;
-        
         $s = $stanza->pubsub->subscription;
         
         $su = new \modl\Subscription();
-        $su->set($jid, $server, $node, $s);
+        $su->set($this->_from, $this->_to, $this->_node, $s);
     
         $sd = new \modl\SubscriptionDAO();
         $sd->set($su);
 
-        //add the group to the public list (if checked)
-        if($this->_data['listgroup'] == true){
-            $add = new ListAdd();
-            $add->setTo($this->_to)
-              ->setNode($this->_node)
-              ->setFrom($this->_from)
-              ->setData($this->_data)
-              ->request();
-        }
-        
-        $evt = new \Event();
-        $evt->runEvent('pubsubsubscribed', array($this->_to, $this->_node)); 
+        $this->pack(array('server' => $this->_to, 'node' => $this->_node, 'data', $this->_data));
+        $this->deliver();
     }
     
     public function error($stanza) {
-        parent::error($stanza);
-        $evt = new \Event();
-        $evt->runEvent('pubsubsubscribederror', array($this->_to, $this->_node)); 
+        $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+        $this->deliver();
     }
     
 }

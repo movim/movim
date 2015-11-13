@@ -59,19 +59,14 @@ class Get extends Action
             $c = new \modl\Contact();
 
         $c->jid       = $this->_to;
-
-        $c->phototype = 'image/png';
         $c->photobin  = (string)$stanza->pubsub->items->item->data;
 
         $c->createThumbnails();
 
         $cd->set($c);
 
-        $evt = new \Event();
-        if($this->_me)
-            $evt->runEvent('myvcard', $c);
-        else
-            $evt->runEvent('vcard', $c);
+        $this->pack($c);
+        $this->deliver();
     }
     
     public function errorItemNotFound($error) {

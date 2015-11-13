@@ -1,6 +1,8 @@
 <?php
 /*
- * Create.php
+ * @file Set.php
+ * 
+ * @brief Register on the server
  * 
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
  * 
@@ -22,33 +24,25 @@
  * 
  */
 
-namespace Moxl\Xec\Action\Group;
+namespace Moxl\Xec\Action\Register;
 
 use Moxl\Xec\Action;
-use Moxl\Xec\Action\Pubsub\Errors;
-use Moxl\Stanza\Group;
+use Moxl\Stanza\Register;
 
-class Create extends Errors
+class Set extends Action
 {
     private $_to;
-    private $_node;
     private $_data;
     
     public function request() 
     {
         $this->store();
-        Group::create($this->_to, $this->_node);
+        Register::set($this->_to, $this->_data);
     }
     
     public function setTo($to)
     {
         $this->_to = $to;
-        return $this;
-    }
-    
-    public function setNode($node)
-    {
-        $this->_node = $node;
         return $this;
     }
     
@@ -59,21 +53,16 @@ class Create extends Errors
     }
     
     public function handle($stanza, $parent = false) {
-        if($stanza["type"] == "result"){
-            $evt = new \Event();
-            $evt->runEvent('creationsuccess', array($this->_to, $this->_node, $this->_data)); 
-            
-            //add to bookmark
-            $sub = new \modl\Subscription();
-            $sub->set(current(explode($stanza["to"], "/")), $this->_to, $this->_node, $stanza);
-            
-            $sd = new \modl\SubscriptionDAO();
-            $sd->set($sub);
-        }
+        $this->pack($this->_data);
+        $this->deliver();
     }
-    
-    public function error($error) {
-        $evt = new \Event();
-        $evt->runEvent('creationerror', $this->_node); 
+
+    public function errorConflict($id, $message = false) {
+        $this->pack($message);
+        $this->deliver();
+    }
+
+    public function errorNotAcceptable($id, $message = false) {
+        $this->deliver();
     }
 }

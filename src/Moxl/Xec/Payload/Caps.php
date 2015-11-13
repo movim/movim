@@ -1,6 +1,6 @@
 <?php
 /*
- * @file Post.php
+ * @file Caps.php
  * 
  * @brief Handle incoming Entity Capabilities (XEP 0115 Entity Capabilities)
  * 
@@ -26,7 +26,7 @@
 
 namespace Moxl\Xec\Payload;
 
-//use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\Disco\Request;
 
 class Caps extends Payload
 {
@@ -37,9 +37,11 @@ class Caps extends Payload
         $cd = new \modl\CapsDAO();
         $c = $cd->get($node);
 
-        if(!$c) {
-            $this->pack(array($to, $node));
-            $this->deliver();
+        if(!$c && $parent->getName() != 'streamfeatures') {
+            $d = new Request;
+            $d->setTo($to)
+              ->setNode($node)
+              ->request();
         }
     }
 }

@@ -44,8 +44,9 @@ class Set extends Action
     }
     
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        $evt->runEvent('myvcard4valid', $stanza);
+        $cd = new \Modl\ContactDAO();
+        $this->pack($cd->get());
+        $this->deliver();
     }
     
     public function errorFeatureNotImplemented($stanza) {
