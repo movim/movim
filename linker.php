@@ -6,6 +6,8 @@ require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 gc_enable();
 
+//memprof_enable();
+
 $bootstrap = new Bootstrap();
 $booted = $bootstrap->boot();
 
@@ -136,13 +138,9 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             \Moxl\API::clear();
             \RPC::clear();
 
-            fwrite(STDERR, colorize(getenv('sid'), 'yellow')." before : ".\sizeToCleanSize(memory_get_usage())."\n");
-
             if(!$parser->parse($message)) {
                 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
             }
-
-            fwrite(STDERR, colorize(getenv('sid'), 'yellow')." after : ".\sizeToCleanSize(memory_get_usage())."\n");
 
             if($restart) {
                 $session = \Sessionx::start();
@@ -171,6 +169,8 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             \Moxl\API::clear();
 
             gc_collect_cycles();
+            //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." end data : ".\sizeToCleanSize(memory_get_usage())."\n");
+            //memprof_dump_callgrind(fopen("/tmp/callgrind.out", "w"));
         }
     });
 

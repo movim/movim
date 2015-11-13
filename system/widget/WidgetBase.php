@@ -51,7 +51,7 @@ class WidgetBase
         $this->user = new User;
 
         // Generating Ajax calls.
-        $refl = new ReflectionClass(get_class($this));
+        $refl = new ReflectionClass($this->name);
         $meths = $refl->getMethods();
 
         foreach($meths as $method) {
@@ -62,7 +62,7 @@ class WidgetBase
                     $params[] = $param->name;
                 }
 
-                $this->ajax->defun(get_class($this), $method->name, $params);
+                $this->ajax->defun($this->name, $method->name, $params);
             }
         }
 
@@ -84,7 +84,9 @@ class WidgetBase
     function __destruct()
     {
         unset($this->view);
+        unset($this->ajax);
         unset($this->user);
+        unset($this->_view);
     }
 
     function __()

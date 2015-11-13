@@ -39,7 +39,7 @@ class AjaxController extends BaseController
         }
         
         $buffer = '<script type="text/javascript">';
-        foreach($this->funclist as $funcdef) {
+        foreach($this->funclist as $key => $funcdef) {
             $parlist = implode(', ', $funcdef['params']);
 
             $buffer .= "function " . $funcdef['object'] . '_'
@@ -54,7 +54,7 @@ class AjaxController extends BaseController
      */
     public function defun($widget, $funcname, array $params)
     {
-        $this->funclist[] = array(
+        $this->funclist[$widget.$funcname] = array(
             'object' => $widget,
             'funcname' => $funcname,
             'params' => $params,

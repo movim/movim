@@ -15,8 +15,6 @@
  * See COPYING for licensing information.
  */
 class User {
-    private $xmppSession;
-
     public  $username = '';
     private $password = '';
     private $config = array();
