@@ -45,7 +45,7 @@
                 <i class="zmdi zmdi-pages"></i>
             </span>
             <h2>
-                <a href="{$c->route('group', array($server, $node))}">
+                <a href="{$c->route('node', array($server, $node))}">
                     {if="$item != null"}
                         {if="$item->name"}
                             {$item->name}
@@ -82,13 +82,12 @@
                             </span>
                         {/if}
                         <h2>
-                            <a href="
-                                {if="$value->isMicroblog()"}
-                                    {$c->route('blog', array($value->origin, $value->nodeid))}
+                            <a {if="$value->isMicroblog()"}
+                                href="{$c->route('blog', array($value->origin, $value->nodeid))}"
                                 {else}
-                                    {$c->route('group', array($value->origin, $value->node, $value->nodeid))}
+                                href="{$c->route('node', array($value->origin, $value->node, $value->nodeid))}"
                                 {/if}
-                                ">
+                                >
                                 {if="$value->title != null"}
                                     {$value->title}
                                 {else}

@@ -362,7 +362,7 @@ class Postn extends Model {
         if($this->isMicroblog()) {
             return \Route::urlize('blog', array($this->origin));
         } else {
-            return \Route::urlize('grouppublic', array($this->origin, $this->node));
+            return \Route::urlize('node', array($this->origin, $this->node));
         }
     }
 

@@ -16,7 +16,7 @@ class Blog extends WidgetBase {
 
     function load()
     {
-        if($this->_view == 'grouppublic') {
+        if($this->_view == 'node') {
             $this->_from = $this->get('s');
             $this->_node = $this->get('n');
 
@@ -29,7 +29,7 @@ class Blog extends WidgetBase {
             $this->_from = $this->get('f');
 
             $cd = new \modl\ContactDAO();
-            $this->_contact = $cd->get($from, true);
+            $this->_contact = $cd->get($this->_from, true);
             if(filter_var($this->_from, FILTER_VALIDATE_EMAIL)) {
                 $this->_node = 'urn:xmpp:microblog:0';
             } else {
