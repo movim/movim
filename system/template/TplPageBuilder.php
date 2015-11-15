@@ -124,10 +124,20 @@ class TplPageBuilder
             $meta->setAttribute('property', 'og:title');
             $meta->setAttribute('content', $widgets->title);
             $metas->appendChild($meta);
+
+            $meta = $dom->createElement('meta');
+            $meta->setAttribute('name', 'twitter:title');
+            $meta->setAttribute('content', $widgets->title);
+            $metas->appendChild($meta);
         }
         if(isset($widgets->image)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('property', 'og:image');
+            $meta->setAttribute('content', $widgets->image);
+            $metas->appendChild($meta);
+
+            $meta = $dom->createElement('meta');
+            $meta->setAttribute('name', 'twitter:image');
             $meta->setAttribute('content', $widgets->image);
             $metas->appendChild($meta);
         }
@@ -136,7 +146,23 @@ class TplPageBuilder
             $meta->setAttribute('property', 'og:description');
             $meta->setAttribute('content', $widgets->description);
             $metas->appendChild($meta);
+
+            $meta = $dom->createElement('meta');
+            $meta->setAttribute('name', 'twitter:description');
+            $meta->setAttribute('content', $widgets->description);
+            $metas->appendChild($meta);
         }
+
+        $meta = $dom->createElement('meta');
+        $meta->setAttribute('property', 'og:type');
+        $meta->setAttribute('content', 'article');
+        $metas->appendChild($meta);
+
+        $meta = $dom->createElement('meta');
+        $meta->setAttribute('property', 'twitter:card');
+        $meta->setAttribute('content', 'summary');
+        $metas->appendChild($meta);
+
         echo strip_tags($dom->saveXML($dom->documentElement), '<meta>');
     }
 

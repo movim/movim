@@ -47,16 +47,18 @@ class Blog extends WidgetBase {
             } elseif(Validator::string()->length(5, 100)->validate($this->_id)) {
                 $this->_messages = $pd->getPublicItem($this->_from, $this->_node, $this->_id);
 
-                $this->title = $this->_messages[0]->title;
+                if(is_object($this->_messages[0])) {
+                    $this->title = $this->_messages[0]->title;
 
-                $description = stripTags($this->_messages[0]->contentcleaned);
-                if(!empty($description)) {
-                    $this->description = $description;
-                }
+                    $description = stripTags($this->_messages[0]->contentcleaned);
+                    if(!empty($description)) {
+                        $this->description = $description;
+                    }
 
-                $attachements = $this->_messages[0]->getAttachements();
-                if($attachements && array_key_exists('pictures', $attachements)) {
-                    $this->image = urldecode($attachements['pictures'][0]['href']);
+                    $attachements = $this->_messages[0]->getAttachements();
+                    if($attachements && array_key_exists('pictures', $attachements)) {
+                        $this->image = urldecode($attachements['pictures'][0]['href']);
+                    }
                 }
             }
         } else {
