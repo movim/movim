@@ -182,6 +182,11 @@ class TplPageBuilder
         $meta->setAttribute('content', 'summary_large_image');
         $metas->appendChild($meta);
 
+        $meta = $dom->createElement('meta');
+        $meta->setAttribute('property', 'twitter:site');
+        $meta->setAttribute('content', 'MovimNetwork');
+        $metas->appendChild($meta);
+
         echo strip_tags($dom->saveXML($dom->documentElement), '<meta>');
     }
 
