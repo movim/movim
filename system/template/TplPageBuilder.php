@@ -151,10 +151,28 @@ class TplPageBuilder
             $meta->setAttribute('name', 'twitter:description');
             $meta->setAttribute('content', $widgets->description);
             $metas->appendChild($meta);
+
+            $meta = $dom->createElement('meta');
+            $meta->setAttribute('name', 'description');
+            $meta->setAttribute('content', $widgets->description);
+            $metas->appendChild($meta);
+        } else {
+            $cd = new \Modl\ConfigDAO();
+            $config = $cd->get();
+
+            $meta = $dom->createElement('meta');
+            $meta->setAttribute('name', 'description');
+            $meta->setAttribute('content', $config->description);
+            $metas->appendChild($meta);
         }
 
         $meta = $dom->createElement('meta');
         $meta->setAttribute('property', 'og:type');
+        $meta->setAttribute('content', 'article');
+        $metas->appendChild($meta);
+
+        $meta = $dom->createElement('meta');
+        $meta->setAttribute('property', 'og:url');
         $meta->setAttribute('content', 'article');
         $metas->appendChild($meta);
 

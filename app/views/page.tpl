@@ -1,13 +1,9 @@
-<?php /* -*- mode: html -*- */
-    $cd = new \Modl\ConfigDAO();
-    $config = $cd->get();
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="roster">
   <head>
     <meta charset="utf-8" />
     <title><?php $this->title();?></title>
 
-    <meta name="description" content="<?php echo $config->description; ?>" />
     <meta name="theme-color" content="#1C1D5B" />
 
     <?php $this->meta();?>
