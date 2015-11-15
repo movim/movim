@@ -156,7 +156,7 @@ class WidgetWrapper
     {
         if(array_key_exists($key, $this->_events)) {
             foreach($this->_events[$key] as $widget_name) {
-                $widget = new $widget_name;
+                $widget = new $widget_name(true);
                 if(array_key_exists($key, $widget->events)) {
                     foreach($widget->events[$key] as $method) {
                         /*

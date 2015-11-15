@@ -41,14 +41,14 @@ class WidgetBase
         $this->load();
         $this->name = get_class($this);
 
+        $this->user = new User;
+
         // If light loading enabled, we stop here
         if($light)
             return;
 
         // Put default widget init here.
         $this->ajax = AjaxController::getInstance();
-
-        $this->user = new User;
 
         // Generating Ajax calls.
         $refl = new ReflectionClass($this->name);
