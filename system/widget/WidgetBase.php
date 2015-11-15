@@ -31,6 +31,11 @@ class WidgetBase
     public $events;
     public $filters;
 
+    // Meta tags
+    public $title;
+    public $image;
+    public $description;
+
     /**
      * Initialises Widget stuff.
      */

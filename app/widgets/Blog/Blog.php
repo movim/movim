@@ -5,59 +5,80 @@ use Respect\Validation\Validator;
 class Blog extends WidgetBase {
     public $_paging = 10;
 
+    private $_from;
+    private $_node;
+    private $_item;
+    private $_id;
+    private $_contact;
+    private $_messages;
+    private $_page;
+    private $_mode;
+
     function load()
     {
-
-    }
-
-    function display()
-    {
         if($this->_view == 'grouppublic') {
-            $from = $this->get('s');
-            $node = $this->get('n');
+            $this->_from = $this->get('s');
+            $this->_node = $this->get('n');
 
-            if(!$this->validateServerNode($from, $node)) return;
-
-            $this->view->assign('mode', 'group');
-            $this->view->assign('server', $from);
-            $this->view->assign('node', $node);
+            if(!$this->validateServerNode($this->_from, $this->_node)) return;
 
             $pd = new \Modl\ItemDAO;
-            $this->view->assign('item', $pd->getItem($from, $node));
+            $this->_item = $pd->getItem($this->_from, $this->_node);
+            $this->_mode = 'group';
         } else {
-            $from = $this->get('f');
+            $this->_from = $this->get('f');
 
             $cd = new \modl\ContactDAO();
-            $c  = $cd->get($from, true);
-            $this->view->assign('contact', $c);
-            if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
-                $node = 'urn:xmpp:microblog:0';
+            $this->_contact = $cd->get($from, true);
+            if(filter_var($this->_from, FILTER_VALIDATE_EMAIL)) {
+                $this->_node = 'urn:xmpp:microblog:0';
             } else {
                 return;
             }
-            $this->view->assign('mode', 'blog');
+            $this->_mode = 'blog';
         }
 
         $pd = new \modl\PostnDAO();        
 
-        if($id = $this->get('i')) {
-            if(Validator::int()->between(0, 100)->validate($id)) {
-                $messages = $pd->getNodeUnfiltered($from, $node, $id * $this->_paging, $this->_paging + 1);
-                $page = $id + 1;
-            } elseif(Validator::string()->length(5, 100)->validate($id)) {
-                $messages = $pd->getPublicItem($from, $node, $id);
+        if($this->_id = $this->get('i')) {
+            if(Validator::int()->between(0, 100)->validate($this->_id)) {
+                $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, $this->_id * $this->_paging, $this->_paging + 1);
+                $this->_page = $this->_id + 1;
+            } elseif(Validator::string()->length(5, 100)->validate($this->_id)) {
+                $this->_messages = $pd->getPublicItem($this->_from, $this->_node, $this->_id);
+
+                $this->title = $this->_messages[0]->title;
+
+                $description = stripTags($this->_messages[0]->contentcleaned);
+                if(!empty($description)) {
+                    $this->description = $description;
+                }
+
+                $attachements = $this->_messages[0]->getAttachements();
+                if($attachements && array_key_exists('pictures', $attachements)) {
+                    $this->image = urldecode($attachements['pictures'][0]['href']);
+                }
             }
         } else {
-            $page = 1;
-            $messages = $pd->getNodeUnfiltered($from, $node, 0, $this->_paging + 1);
+            $this->_page = 1;
+            $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, 0, $this->_paging + 1);
         }
 
-        if(count($messages) == $this->_paging + 1) {
-            array_pop($messages);
-            $this->view->assign('more', $page);
+        if(count($this->_messages) == $this->_paging + 1) {
+            array_pop($this->_messages);
         }
+    }
 
-        $this->view->assign('posts', $messages);
+    function display()
+    {
+        $this->view->assign('server', $this->_from);
+        $this->view->assign('node', $this->_node);
+
+        $this->view->assign('item', $this->_item);
+        $this->view->assign('contact', $this->_contact);
+        $this->view->assign('mode', $this->_mode);
+        $this->view->assign('more', $this->_page);
+        $this->view->assign('posts', $this->_messages);
     }
 
     private function validateServerNode($server, $node)

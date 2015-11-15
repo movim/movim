@@ -99,7 +99,45 @@ class TplPageBuilder
      */
     function title()
     {
+        $widgets = WidgetWrapper::getInstance();
+        if(isset($widgets->title)) {
+            $this->title .= ' - ' . $widgets->title;
+        }
         echo $this->title;
+    }
+
+    /**
+     * Display some meta tag defined in the widgets using Facebook OpenGraph
+     */
+    function meta()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $dom->formatOutput = true;
+
+        $metas = $dom->createElement('xml');
+        $dom->appendChild($metas);
+
+        $widgets = WidgetWrapper::getInstance();
+
+        if(isset($widgets->title)) {
+            $meta = $dom->createElement('meta');
+            $meta->setAttribute('property', 'og:title');
+            $meta->setAttribute('content', $widgets->title);
+            $metas->appendChild($meta);
+        }
+        if(isset($widgets->image)) {
+            $meta = $dom->createElement('meta');
+            $meta->setAttribute('property', 'og:image');
+            $meta->setAttribute('content', $widgets->image);
+            $metas->appendChild($meta);
+        }
+        if(isset($widgets->description)) {
+            $meta = $dom->createElement('meta');
+            $meta->setAttribute('property', 'og:description');
+            $meta->setAttribute('content', $widgets->description);
+            $metas->appendChild($meta);
+        }
+        echo strip_tags($dom->saveXML($dom->documentElement), '<meta>');
     }
 
     function addScript($script)
@@ -167,10 +205,5 @@ class TplPageBuilder
         $widgets->setView($this->_view);
 
         echo $widgets->runWidget($name, 'build');
-    }
-    
-    function displayFooterDebug()
-    {
-        //\system\Logs\Logger::displayFooterDebug();
     }
 }

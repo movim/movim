@@ -10,17 +10,10 @@
     <meta name="description" content="<?php echo $config->description; ?>" />
     <meta name="theme-color" content="#1C1D5B" />
 
-    <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
-    <!--<link rel="stylesheet" href="<?php echo BASE_URI; ?>app/assets/js/leaflet.css" />
-    <script src="<?php echo BASE_URI; ?>app/assets/js/leaflet.js"></script>-->
-    <script src="<?php echo BASE_URI; ?>app/assets/js/favico.js"></script>
+    <?php $this->meta();?>
 
-    <!-- OTR -->
-    <!--<script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/bigint.js"></script>
-    <script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/crypto.js"></script>
-    <script src="<?php echo BASE_URI; ?>app/assets/js/otr/dep/eventemitter.js"></script>
-    <script src="<?php echo BASE_URI; ?>app/assets/js/otr/otr.js"></script>
-    <script src="<?php echo BASE_URI; ?>app/assets/js/cycle.js"></script>-->
+    <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
+    <script src="<?php echo BASE_URI; ?>app/assets/js/favico.js"></script>
 
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
@@ -55,10 +48,6 @@
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Notification');?>
         <?php $this->content();?>
-
-        <?php
-            $this->displayFooterDebug();
-        ?>
         <script type="text/javascript">movim_onload();</script>
     </body>
 </html>
