@@ -160,7 +160,7 @@ class TplPageBuilder
 
         $meta = $dom->createElement('meta');
         $meta->setAttribute('property', 'twitter:card');
-        $meta->setAttribute('content', 'summary');
+        $meta->setAttribute('content', 'summary_large_image');
         $metas->appendChild($meta);
 
         echo strip_tags($dom->saveXML($dom->documentElement), '<meta>');
