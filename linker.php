@@ -101,6 +101,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
     $stdin->on('data', $stdin_behaviour);
 
     // We define a huge buffer to prevent issues with SSL streams, see https://bugs.php.net/bug.php?id=65137
+    $conn->bufferSize = 1024*32;
     $conn->on('data', function($message) use (&$conn, $loop, $parser) {
         if(!empty($message)) {
             $restart = false;
@@ -167,6 +168,8 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             }
 
             \Moxl\API::clear();
+
+            $loop->tick();
 
             gc_collect_cycles();
             //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." end data : ".\sizeToCleanSize(memory_get_usage())."\n");
