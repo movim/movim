@@ -35,6 +35,7 @@ class WidgetWrapper
     public $title = null; // If a widget has defined a particular title
     public $image = null; // If a widget has defined a particular image 
     public $description = null; // If a widget has defined a particular description
+    public $url = null; // If a widget has defined a particular url
 
     private function __construct()
     {
@@ -124,6 +125,7 @@ class WidgetWrapper
             if(isset($widget->title)) $this->title = $widget->title;
             if(isset($widget->image)) $this->image = $widget->image;
             if(isset($widget->description)) $this->description = $widget->description;
+            if(isset($widget->url)) $this->url = $widget->url;
 
             return $widget;
         }

@@ -25,6 +25,8 @@ class Blog extends WidgetBase {
             $pd = new \Modl\ItemDAO;
             $this->_item = $pd->getItem($this->_from, $this->_node);
             $this->_mode = 'group';
+
+            $this->url = Route::urlize('node', array($this->_from, $this->_node));
         } else {
             $this->_from = $this->get('f');
 
@@ -36,6 +38,8 @@ class Blog extends WidgetBase {
                 return;
             }
             $this->_mode = 'blog';
+
+            $this->url = Route::urlize('blog', $this->_from);
         }
 
         $pd = new \modl\PostnDAO();        
@@ -59,6 +63,12 @@ class Blog extends WidgetBase {
                     if($attachements && array_key_exists('pictures', $attachements)) {
                         $this->image = urldecode($attachements['pictures'][0]['href']);
                     }
+                }
+
+                if($this->_view == 'node') {
+                    $this->url = Route::urlize('node', array($this->_from, $this->_node, $this->_id));
+                } else {
+                    $this->url = Route::urlize('blog', array($this->_from, $this->_id));
                 }
             }
         } else {

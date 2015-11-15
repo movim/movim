@@ -165,14 +165,15 @@ class TplPageBuilder
             $meta->setAttribute('content', $config->description);
             $metas->appendChild($meta);
         }
+        if(isset($widgets->url)) {
+            $meta = $dom->createElement('meta');
+            $meta->setAttribute('property', 'og:url');
+            $meta->setAttribute('content', $widgets->url);
+            $metas->appendChild($meta);
+        }
 
         $meta = $dom->createElement('meta');
         $meta->setAttribute('property', 'og:type');
-        $meta->setAttribute('content', 'article');
-        $metas->appendChild($meta);
-
-        $meta = $dom->createElement('meta');
-        $meta->setAttribute('property', 'og:url');
         $meta->setAttribute('content', 'article');
         $metas->appendChild($meta);
 
