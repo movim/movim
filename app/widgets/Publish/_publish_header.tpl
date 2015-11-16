@@ -6,7 +6,7 @@
     <div class="return active r3 condensed"
         onclick="Publish.headerBack('{$server}', '{$node}', false)">
         <span id="back" class="icon" ><i class="zmdi zmdi-arrow-back"></i></span>
-        {if="$item != false"}
+        {if="$post != false"}
             <h2>{$c->__('publish.edit')}</h2>
         {else}
             <h2>{$c->__('publish.new')}</h2>
