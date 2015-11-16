@@ -89,6 +89,12 @@ class PostPublish extends Errors
         return $this;
     }
 
+    public function setPublished($published)
+    {
+        $this->_atom->published = $published;
+        return $this;
+    }
+
     public function setImage($href, $title = null, $type = null)
     {
         $this->_atom->image = array(

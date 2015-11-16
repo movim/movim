@@ -18,6 +18,8 @@ class PubsubAtom {
     public $geo = false;
     public $comments = false;
 
+    public $published = false;
+
     public function __construct() {
         $this->id = md5(openssl_random_pseudo_bytes(5));
     }
@@ -109,7 +111,12 @@ class PubsubAtom {
         $link->setAttribute('href', $this->to.'?;node='.$this->node.';item='.$this->id);
         $entry->appendChild($link);
 
-        $entry->appendChild($dom->createElement('published', gmdate(DATE_ISO8601)));
+        if($this->published != false) {
+            $entry->appendChild($dom->createElement('published', date(DATE_ISO8601, $this->published)));
+        } else {
+            $entry->appendChild($dom->createElement('published', gmdate(DATE_ISO8601)));
+        }
+
         $entry->appendChild($dom->createElement('updated', gmdate(DATE_ISO8601)));
 
         return $dom->saveXML($dom->documentElement);
