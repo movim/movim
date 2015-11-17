@@ -1,5 +1,5 @@
 /* Grid */
-ul.grid li {
+ul.grid > li {
     background-size: cover;
     width: calc(25% - 0.2em);
     padding: 0;
@@ -12,7 +12,7 @@ ul.grid li {
     margin: 0.1em;
 }
 
-ul.grid nav {
+ul.grid > li > nav {
     position: absolute;
     bottom: 0;
     color: white;
@@ -26,14 +26,14 @@ ul.grid nav {
 }
 
 @media screen and (max-width: 1024px) {
-    ul.grid li {
+    ul.grid > li {
         width: calc(33.33% - 0.2em);
         padding-bottom: 33.33%;
     }
 }
 
 @media screen and (max-width: 640px) {
-    ul.grid li {
+    ul.grid > li {
         width: calc(50% - 0.2em);
         padding-bottom: 50%;
     }
@@ -43,4 +43,8 @@ ul.grid:after {
     content: "";
     display: block;
     clear: both;
+}
+
+ul.grid.padded {
+    padding: 0;
 }
