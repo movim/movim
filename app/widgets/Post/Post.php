@@ -20,6 +20,7 @@
 
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\PostDelete;
+use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Microblog\CommentPublish;
@@ -96,7 +97,16 @@ class Post extends WidgetBase
 
     function ajaxGetPost($id)
     {
-        $html = $this->preparePost($id);
+        $pd = new \Modl\PostnDAO;
+        $p  = $pd->getItem($id);
+
+        $gi = new GetItem;
+        $gi->setTo($p->origin)
+           ->setNode($p->node)
+           ->setId($p->nodeid)
+           ->request();
+
+        $html = $this->preparePost($p);
         $header = $this->prepareHeader($id);
 
         Header::fill($header);
@@ -178,11 +188,8 @@ class Post extends WidgetBase
         return $view->draw('_post_header', true);
     }
 
-    function preparePost($id)
+    function preparePost($p)
     {
-        $pd = new \Modl\PostnDAO;
-        $p  = $pd->getItem($id);
-
         $view = $this->tpl();
 
         if(isset($p)) {

@@ -100,6 +100,9 @@
                                 <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()} –
                             {/if}
                             {$value->published|strtotime|prepareDate}
+                            {if="$value->published != $value->updated"}
+                                - <i class="zmdi zmdi-edit"></i> {$value->updated|strtotime|prepareDate}
+                            {/if}
                         </p>
                     </li>
                 </ul>

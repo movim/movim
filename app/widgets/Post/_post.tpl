@@ -53,6 +53,9 @@
                         </a> –
                     {/if}
                     {$post->published|strtotime|prepareDate}
+                    {if="$post->published != $post->updated"}
+                        - <i class="zmdi zmdi-edit"></i> {$post->updated|strtotime|prepareDate}
+                    {/if}
                 </p>
             </li>
         </ul>

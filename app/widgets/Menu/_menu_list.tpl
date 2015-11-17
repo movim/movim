@@ -55,6 +55,7 @@
                     </a> –
                 {/if}
                 {$value->published|strtotime|prepareDate}
+                {if="$value->published != $value->updated"}<i class="zmdi zmdi-edit"></i>{/if}
             </p>
 
             {if="$value->privacy"}
