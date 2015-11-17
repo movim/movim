@@ -174,18 +174,25 @@ class Pubsub {
 
     static function postPublish($to, $node, $atom)
     {
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <publish node="'.$node.'">
-                <item id="'.$atom->id.'">
-                    '.$atom.'
-                </item>
-                </publish>
-            </pubsub>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
 
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $atomxml = $dom->importNode($atom->getDom(), true);
+
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $publish = $dom->createElement('publish');
+        $publish->setAttribute('node', $node);
+        $pubsub->appendChild($publish);
+
+        $item = $dom->createElement('item');
+        $item->appendChild($atomxml);
+        $item->setAttribute('id', $atom->id);
+        $publish->appendChild($item);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
+
         \Moxl\API::request($xml);
     }
+
 
     static function testPostPublish($to, $node, $id)
     {

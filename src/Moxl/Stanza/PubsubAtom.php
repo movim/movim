@@ -28,9 +28,10 @@ class PubsubAtom {
         $this->comments = true;
     }
 
-    public function __toString() {
+    public function getDom() {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $entry = $dom->createElementNS('http://www.w3.org/2005/Atom', 'entry');
+        //$entry = $dom->createElementNS('http://www.w3.org/2005/Atom', 'entry');
+        $entry = $dom->createElement('entry');
         $dom->appendChild($entry);
         $entry->appendChild($dom->createElement('id', $this->id));
 
@@ -69,7 +70,7 @@ class PubsubAtom {
             $entry->appendChild($link);
         }
 
-        if($this->geo) {
+        /*if($this->geo) {
             $xml .= '
                     <geoloc xmlns="http://jabber.org/protocol/geoloc">
                         <lat>'.$this->geo['latitude'].'</lat>
@@ -86,7 +87,7 @@ class PubsubAtom {
                         <uri>'.$this->geo['uri'].'</uri>
                         <timestamp>'.date('c').'</timestamp>
                     </geoloc>';
-        }
+        }*/
 
         if($this->content) {
             $content_raw = $dom->createElement('content', $this->content);
@@ -96,14 +97,15 @@ class PubsubAtom {
 
         if($this->contentxhtml) {
             $content = $dom->createElement('content');
-            $content->setAttribute('type', 'xhtml');
-            $div = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'div');
+            $div = $dom->createElement('div');
             $content->appendChild($div);
+            $content->setAttribute('type', 'xhtml');
             $entry->appendChild($content);
 
             $f = $dom->createDocumentFragment();
             $f->appendXML($this->contentxhtml);
             $div->appendChild($f);
+            $div->setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
         }
 
         $link = $dom->createElement('link');
@@ -117,8 +119,13 @@ class PubsubAtom {
             $entry->appendChild($dom->createElement('published', gmdate(DATE_ISO8601)));
         }
 
+        $entry->setAttribute('xmlns', 'http://www.w3.org/2005/Atom');
         $entry->appendChild($dom->createElement('updated', gmdate(DATE_ISO8601)));
 
-        return $dom->saveXML($dom->documentElement);
+        return $dom->documentElement;
+    }
+
+    public function __toString() {
+        return $dom->saveXML($this->getDom());
     }
 }
