@@ -221,7 +221,7 @@ class Contact extends WidgetBase
         $view = $this->tpl();
 
         $pd = new \Modl\PostnDAO;
-        $gallery = $pd->getGallery($jid);
+        $gallery = $pd->getGallery($jid, 0, 12);
         $blog    = $pd->getPublic($jid, 'urn:xmpp:microblog:0', 0, 4);
 
         $presencestxt = getPresencesTxt();

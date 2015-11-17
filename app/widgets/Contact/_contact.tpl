@@ -315,7 +315,7 @@
                 <li style="background-image: url('{$attachements['pictures'][0]['href']}');"
                     onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
                     <nav>
-                        {$attachements['pictures'][0]['title']}
+                        <span>{$value->title}</span>
                     </nav>
                 </li>
             {/loop}
