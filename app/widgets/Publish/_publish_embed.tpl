@@ -1,12 +1,12 @@
-<div class="quote" cite="{$embed->url}">
+<div class="quote" cite="{$embed->url|htmlspecialchars}">
     <ul>
         <li>
             <span>
-                <a href="{$embed->url|htmlspecialchars}" target="_blank">{$embed->title}</a>
+                <a href="{$embed->url|htmlspecialchars}" target="_blank">{$embed->title|htmlentities}</a>
             </span>
-            <p>{$embed->description}</p>
+            <p>{$embed->description|htmlentities}</p>
             <p>
-                <a href="{$embed->providerUrl|htmlspecialchars}" target="_blank">{$embed->providerName}</a>
+                <a href="{$embed->providerUrl|htmlspecialchars}" target="_blank">{$embed->providerName|htmlentities}</a>
             </p>
         </li>
         {if="$embed->images != null"}

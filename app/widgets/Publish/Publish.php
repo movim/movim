@@ -161,7 +161,7 @@ class Publish extends WidgetBase
             $p = new PostPublish;
             $p->setFrom($this->user->getLogin())
               ->setTo($form->to->value)
-              ->setTitle($form->title->value)
+              ->setTitle(htmlentities($form->title->value))
               ->setNode($form->node->value);
               //->setLocation($geo)
               //->enableComments()
@@ -194,10 +194,12 @@ class Publish extends WidgetBase
                     $embed = Embed\Embed::create($form->embed->value);
                     $p->setLink($form->embed->value);
 
-                    if($embed->type == 'photo') {
+                    if(in_array($embed->type, array('photo', 'rich'))) {
                         $key = key($embed->images);
                         $p->setImage($embed->images[0]['value'], $embed->title, $embed->images[0]['mime']);
-                    } else {
+                    }
+
+                    if($embed->type !== 'photo') {
                         $content_xhtml .= $this->prepareEmbed($embed);
                     }
                 } catch(Exception $e) {
@@ -206,7 +208,7 @@ class Publish extends WidgetBase
             }
 
             if($content != '') {
-                $p->setContent($content);
+                $p->setContent(htmlentities($content));
             }
 
             if($content_xhtml != '') {
@@ -233,12 +235,15 @@ class Publish extends WidgetBase
             $embed = Embed\Embed::create($url);
             $html = $this->prepareEmbed($embed);
 
-            if($embed->type == 'photo') {
+            RPC::call('movim_fill', 'preview', '');
+            RPC::call('movim_fill', 'gallery', '');
+
+            if(in_array($embed->type, array('photo', 'rich'))) {
                 RPC::call('movim_fill', 'gallery', $this->prepareGallery($embed));
-                RPC::call('movim_fill', 'preview', '');
-            } else {
+            }
+
+            if($embed->type !== 'photo') {
                 RPC::call('movim_fill', 'preview', $html);
-                RPC::call('movim_fill', 'gallery', '');
             }
         } catch(Exception $e) {
             error_log($e->getMessage());
