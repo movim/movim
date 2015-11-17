@@ -283,7 +283,7 @@ class Postn extends Model {
     public function getAttachement()
     {
         $attachements = $this->getAttachements();
-        if(isset($attachements['pictures'])) {
+        if(isset($attachements['pictures']) && !isset($attachements['links'])) {
             return $attachements['pictures'][0];
         }
         if(isset($attachements['files'])) {
@@ -354,7 +354,7 @@ class Postn extends Model {
 
     public function isShort()
     {
-        return (strlen($this->contentcleaned) < 500);
+        return (strlen($this->contentcleaned) < 700);
     }
 
     public function getPublicUrl()
