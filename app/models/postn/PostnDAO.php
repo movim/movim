@@ -248,20 +248,21 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
-    function getGallery($from) {
+    function getGallery($from, $limitf = false, $limitr = false) {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
             left outer join privacy on postn.nodeid = privacy.pkey
-            where (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')))
-                and postn.origin = :aid
+            where postn.aid = :aid
                 and postn.picture = 1
             order by postn.published desc';
+
+        if($limitr !== false)
+            $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
 
         $this->prepare(
             'Postn',
             array(
-                'origin' => $this->_user,
                 'aid' => $from // Another hack
             )
         );
