@@ -10,6 +10,8 @@ class Session {
     protected   $baseuri;
     public      $process;
 
+    public      $registered;
+
     protected   $buffer;
 
     public function __construct($loop, $sid, $baseuri)
@@ -77,9 +79,15 @@ class Session {
             $sd->delete($this->sid);
         });
 
+        $self = $this;
+
         // Debug only, if the linker output some errors
-        $this->process->stderr->on('data', function($output) use ($me) {
-            echo $output;
+        $this->process->stderr->on('data', function($output) use ($me, $self) {
+            if($output === 'registered') {
+                $self->registered = true;
+            } else {
+                echo $output;
+            }
         });
     }
 

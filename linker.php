@@ -191,6 +191,8 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
     $obj = new \StdClass;
     $obj->func = 'registered';
 
+    fwrite(STDERR, 'registered');
+
     //fwrite(STDERR, colorize(json_encode($obj).' '.strlen($obj), 'yellow')." : ".colorize('obj sent to browser', 'green')."\n");
 
     echo base64_encode(gzcompress(json_encode($obj), 9))."";
