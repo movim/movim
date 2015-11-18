@@ -83,7 +83,7 @@ class Session {
 
         // Debug only, if the linker output some errors
         $this->process->stderr->on('data', function($output) use ($me, $self) {
-            if($output === 'registered') {
+            if(strpos($output, 'registered') !== false) {
                 $self->registered = true;
             } else {
                 echo $output;
