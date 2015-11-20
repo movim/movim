@@ -2,11 +2,11 @@
     <ul>
         <li>
             <span>
-                <a href="{$embed->url|htmlspecialchars}" target="_blank">{$embed->title|htmlentities}</a>
+                <a href="{$embed->url|htmlspecialchars}" target="_blank">{$embed->title|htmlspecialchars}</a>
             </span>
-            <p>{$embed->description|htmlentities}</p>
+            <p>{$embed->description|htmlspecialchars}</p>
             <p>
-                <a href="{$embed->providerUrl|htmlspecialchars}" target="_blank">{$embed->providerName|htmlentities}</a>
+                <a href="{$embed->providerUrl|htmlspecialchars}" target="_blank">{$embed->providerName|htmlspecialchars}</a>
             </p>
         </li>
         {if="$embed->images != null"}

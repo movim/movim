@@ -161,7 +161,7 @@ class Publish extends WidgetBase
             $p = new PostPublish;
             $p->setFrom($this->user->getLogin())
               ->setTo($form->to->value)
-              ->setTitle(htmlentities($form->title->value))
+              ->setTitle(htmlspecialchars($form->title->value))
               ->setNode($form->node->value);
               //->setLocation($geo)
               //->enableComments()
@@ -208,11 +208,11 @@ class Publish extends WidgetBase
             }
 
             if($content != '') {
-                $p->setContent(htmlentities($content));
+                $p->setContent(htmlspecialchars($content));
             }
 
             if($content_xhtml != '') {
-                $p->setContentXhtml(rawurldecode($content_xhtml));
+                $p->setContentXhtml($content_xhtml);
             }
 
             $p->request();
