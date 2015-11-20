@@ -34,7 +34,8 @@ class Route extends \BaseController {
     public function find() {
         $this->fix($_GET, $_SERVER['QUERY_STRING']);
 
-        $uri = reset(array_keys($_GET));
+        $gets = array_keys($_GET);
+        $uri = reset($gets);
         unset($_GET[$uri]);
         $request = explode('/', $uri);
 
