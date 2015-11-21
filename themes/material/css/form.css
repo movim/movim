@@ -60,6 +60,7 @@ form > div > .select:after {
 form > div > .select select {
     width: calc(100% + 3rem);
     background-color: transparent;
+    background-image: none;
 }
 
 main > header form > div:not(.clear):not(.control) {
