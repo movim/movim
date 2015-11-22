@@ -28,3 +28,16 @@
   font-weight: 800;
   src: local('Open Sans Extrabold'), local('OpenSans-Extrabold'), url(../fonts/os_800.woff2) format('woff2'), url(../fonts/os_800.woff) format('woff');
 }
+
+.emoji {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.5rem;
+    margin-bottom: -0.3rem;
+}
+
+.emoji.large {
+    width: 5rem;
+    height: 5rem;
+    margin: 0;
+}

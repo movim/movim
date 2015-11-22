@@ -7,7 +7,7 @@
     <ul class="thin">
         <li class="action">
             <span class="icon gray emojis_open" onclick="Chat_ajaxSmiley()">
-                {$c->ajaxSmileyGet('😃')}
+                <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
             <div class="action" data-jid="{$jid}" onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
                 <i class="zmdi zmdi-mail-send"></i>

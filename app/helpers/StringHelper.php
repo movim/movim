@@ -23,7 +23,7 @@ class MovimEmoji
 
     public function replace($string, $large = false)
     {
-        $this->_emoji->setAssetUrlFormat($this->getPath($large));
+        $this->_emoji->setAssetUrlFormat($this->getPath());
         $string = $this->_emoji->replaceEmojiWithImages($string);
         $this->_emoji->setAssetUrlFormat($this->getPath());
 
@@ -32,10 +32,7 @@ class MovimEmoji
 
     private function getPath($large = false)
     {
-        $path = BASE_URI . 'themes/' . $this->_theme . '/img/emojis/';
-        if($large) $path .= 'large/';
-
-        return $path.'%s.png';
+        return BASE_URI . 'themes/' . $this->_theme . '/img/emojis/svg/%s.svg';
     }
 
     public static function getInstance()
