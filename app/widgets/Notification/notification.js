@@ -7,6 +7,7 @@ var Notification = {
     tab_counter2 : 0,
     tab_counter1_key : 'chat',
     tab_counter2_key : 'news',
+    document_title_init : null,
     document_title : document.title,
     notifs_key : '',
     favicon : null,
@@ -141,6 +142,8 @@ var Notification = {
     }
 }
 
+Notification.document_title_init = document.title;
+
 MovimWebsocket.attach(function() {
     if(typeof Favico != 'undefined') {
         Notification.favicon = new Favico({
@@ -155,7 +158,8 @@ MovimWebsocket.attach(function() {
         Notification.electron = remote.getCurrentWindow();
     }
 
-    Notification.document_title = document.title;
+    Notification.document_title = Notification.document_title_init;
+    Notification.tab_counter1 = Notification.tab_counter2 = 0;
     Notification_ajaxGet();
     Notification.current(Notification.notifs_key);
 });
