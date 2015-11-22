@@ -26,6 +26,7 @@ var MovimWebsocket = {
     attached: new Array(),
     registered: new Array(),
     unregistered: false,
+    attempts: 1,
 
     launchAttached : function() {
         for(var i = 0; i < MovimWebsocket.attached.length; i++) {
@@ -50,6 +51,7 @@ var MovimWebsocket = {
 
         this.connection.onopen = function(e) {
             console.log("Connection established!");
+            MovimWebsocket.attempts = 1;
             MovimWebsocket.launchAttached();
         };
 
@@ -87,14 +89,25 @@ var MovimWebsocket = {
         };
 
         this.connection.onerror = function(e) {
+            console.log(e.code);
+            console.log(e);
             console.log("Connection error!");
+
+            setTimeout(function () {
+                // We've tried to reconnect so increment the attempts by 1
+                MovimWebsocket.attempts++;
+
+                // Connection has closed so try to reconnect every 10 seconds.
+                MovimWebsocket.init();
+            }, MovimWebsocket.generateInterval());
+
             // We prevent the onclose launch
             this.onclose = null;
         };
     },
 
     send : function(widget, func, params) {
-        if(this.connection.readyState != 0) {
+        if(this.connection.readyState == 1) {
             this.connection.send(
                 JSON.stringify(
                     {'func' : 'message', 'body' :
@@ -151,6 +164,17 @@ var MovimWebsocket = {
     unregister : function(reload) {
         if(reload == false) this.unregistered = true;
         this.connection.unregister();
+    },
+
+    generateInterval :function() {
+        var maxInterval = (Math.pow(2, MovimWebsocket.attempts) - 1) * 1000;
+
+        if (maxInterval > 30*1000) {
+            maxInterval = 30*1000; // If the generated interval is more than 30 seconds, truncate it down to 30 seconds.
+        }
+
+        // generate the interval to a random number between 0 and the maxInterval determined from above
+        return Math.random() * maxInterval; 
     }
 }
 
@@ -163,6 +187,14 @@ function remoteUnregisterReload()
 {
     MovimWebsocket.unregister(true);
 }
+
+document.addEventListener("visibilitychange", function () {
+    if(!document.hidden) {
+        if(MovimWebsocket.connection.readyState == 3) {
+            MovimWebsocket.init();
+        }
+    }
+});
 
 window.onbeforeunload = function() {
     MovimWebsocket.connection.onclose = function () {}; // disable onclose handler first

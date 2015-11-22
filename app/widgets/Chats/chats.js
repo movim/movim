@@ -16,6 +16,7 @@ var Chats = {
                     Chats.reset(items);
                     Notification_ajaxClear('chat|' + this.dataset.jid);
                     Notification.current('chat|' + this.dataset.jid);
+                    document.querySelector('#chat_widget').dataset.jid = this.dataset.jid;
                     movim_add_class(this, 'active');
                 }
 
@@ -24,6 +25,7 @@ var Chats = {
                         Notification_ajaxClear('chat|' + this.dataset.jid);
                         Notification.current('chat');
                         Chats_ajaxClose(this.dataset.jid);
+                        delete document.querySelector('#chat_widget').dataset.jid;
                         MovimTpl.hidePanel();
                     }
                 }
