@@ -8,7 +8,11 @@
 
     <?php $this->meta();?>
 
+    <meta name="application-name" content="Movim">
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
+    <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/48.png');?>" sizes="48x48">
+    <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/96.png');?>" sizes="96x96">
+    <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/128.png');?>" sizes="128x128">
     <script src="<?php echo BASE_URI; ?>app/assets/js/favico.js"></script>
 
     <meta name="viewport" content="width=device-width, user-scalable=no">
