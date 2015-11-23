@@ -297,8 +297,9 @@ class XMPPtoForm{
         }
         else{
             foreach($s->value as $option){
+                $label = $option['label'];
                 $option = $this->html->createElement('option', $option);
-                $option->setAttribute('value', $option['label']);
+                $option->setAttribute('value', $label);
                 $option->setAttribute('selected', 'selected');
                 $select->appendChild($option);
             }
