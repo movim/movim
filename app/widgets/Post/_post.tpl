@@ -75,6 +75,19 @@
     </section>
 
     <footer>
+        {$tags = $post->getTags()}
+        {if="isset($tags)"}
+            <ul class="thin">
+                <li>
+                    <span class="icon zmdi zmdi-tag gray"></span>
+                    <span>
+                        {loop="$tags"}
+                            <a target="_blank" href="{$c->route('tag', array($value))}">#{$value}</a>
+                        {/loop}
+                    </span>
+                </li>
+            </ul>
+        {/if}
         <ul class="middle divided spaced">
             {if="isset($attachements.links)"}
                 {loop="$attachements.links"}

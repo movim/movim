@@ -13,6 +13,7 @@ class Blog extends WidgetBase {
     private $_messages;
     private $_page;
     private $_mode;
+    private $_tag;
 
     function load()
     {
@@ -27,6 +28,10 @@ class Blog extends WidgetBase {
             $this->_mode = 'group';
 
             $this->url = Route::urlize('node', array($this->_from, $this->_node));
+        } elseif($this->_view == 'tag' && $this->validateTag($this->get('t'))) {
+            $this->_mode = 'tag';
+            $this->_tag = $this->get('t');
+            $this->title = '#'.$this->_tag;
         } else {
             $this->_from = $this->get('f');
 
@@ -46,7 +51,11 @@ class Blog extends WidgetBase {
 
         if($this->_id = $this->get('i')) {
             if(Validator::int()->between(0, 100)->validate($this->_id)) {
-                $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, $this->_id * $this->_paging, $this->_paging + 1);
+                if(isset($this->_tag)) {
+                    $this->_messages = $pd->getPublicTag($this->get('t'), $this->_id * $this->_paging, $this->_paging + 1);
+                } else {
+                    $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, $this->_id * $this->_paging, $this->_paging + 1);
+                }
                 $this->_page = $this->_id + 1;
             } elseif(Validator::string()->length(5, 100)->validate($this->_id)) {
                 $this->_messages = $pd->getPublicItem($this->_from, $this->_node, $this->_id);
@@ -73,7 +82,11 @@ class Blog extends WidgetBase {
             }
         } else {
             $this->_page = 1;
-            $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, 0, $this->_paging + 1);
+            if(isset($this->_tag)) {
+                $this->_messages = $pd->getPublicTag($this->get('t'), 0, $this->_paging + 1);
+            } else {
+                $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, 0, $this->_paging + 1);
+            }
         }
 
         if(count($this->_messages) == $this->_paging + 1) {
@@ -91,6 +104,8 @@ class Blog extends WidgetBase {
         $this->view->assign('mode', $this->_mode);
         $this->view->assign('more', $this->_page);
         $this->view->assign('posts', $this->_messages);
+        
+        $this->view->assign('tag', $this->_tag);
     }
 
     private function validateServerNode($server, $node)
@@ -102,6 +117,11 @@ class Blog extends WidgetBase {
         || !$validate_node->validate($node)
         ) return false;
         else return true;
+    }
+
+    private function validateTag($tag)
+    {
+        return Validator::string()->notEmpty()->alnum()->validate($tag);
     }
 
     function getComments($post)

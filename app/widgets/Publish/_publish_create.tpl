@@ -48,4 +48,18 @@
         </li>
         {/if}
     </ul>
+
+    <div>
+        {if="$item != false"}
+            {$tags = $item->getTagsImploded()}
+        {/if}
+        <input
+            type="text"
+            name="tags"
+            placeholder="write, comma separated, tags"
+            {if="isset($tags)"}
+                value="{$tags}"
+            {/if}>
+        <label for="title">{$c->__('post.tags')}</label>
+    </div>
 </form>

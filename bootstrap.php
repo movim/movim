@@ -316,6 +316,7 @@ class Bootstrap {
         Modl\Utils::loadModel('Message');
         Modl\Utils::loadModel('Sessionx');
         Modl\Utils::loadModel('Conference');
+        Modl\Utils::loadModel('Tag');
 
         if(file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
             require DOCUMENT_ROOT.'/config/db.inc.php';

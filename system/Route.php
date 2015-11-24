@@ -10,6 +10,7 @@ class Route extends \BaseController {
                 'accountnext'   => array('s', 'err'),
                 'admin'         => false,
                 'blog'          => array('f', 'i'),
+                'tag'           => array('t', 'i'),
                 'chat'          => array('f'),
                 'conf'          => false,
                 'contact'       => array('f'),

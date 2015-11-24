@@ -24,7 +24,6 @@ class Postn extends Model {
     public $updated;        //
     public $delay;          //
 
-    public $tags;           // Store the tags
     public $picture;        // Tell if the post contain embeded pictures
 
     public $lat;
@@ -80,8 +79,6 @@ class Postn extends Model {
                 {"type":"text" },
             "picture" :
                 {"type":"int", "size":4 },
-            "tags" :
-                {"type":"text" },
             "hash" :
                 {"type":"string", "size":128 }
         }';
@@ -186,18 +183,23 @@ class Postn extends Model {
 
         // Tags parsing
         if($entry->entry->category) {
-            $this->tags = array();
+            $td = new \Modl\TagDAO;
 
             if($entry->entry->category->count() == 1
-            && isset($entry->entry->category->attributes()->term))
-                array_push($this->tags, (string)$entry->entry->category->attributes()->term);
-            else
-                foreach($entry->entry->category as $cat)
-                    array_push($this->tags, (string)$cat->attributes()->term);
+            && isset($entry->entry->category->attributes()->term)) {
+                $tag = new \Modl\Tag;
+                $tag->nodeid = $this->__get('nodeid');
+                $tag->tag    = (string)$entry->entry->category->attributes()->term;
+                $td->set($tag);
+            } else {
+                foreach($entry->entry->category as $cat) {
+                    $tag = new \Modl\Tag;
+                    $tag->nodeid = $this->__get('nodeid');
+                    $tag->tag    = (string)$cat->attributes()->term;
+                    $td->set($tag);
+                }
+            }
         }
-
-        if(!empty($this->tags))
-            $this->__set('tags', serialize($this->tags));
 
         if($contentimg != '')
             $content .= '<br />'.$contentimg;
@@ -363,6 +365,21 @@ class Postn extends Model {
             return \Route::urlize('blog', array($this->origin));
         } else {
             return \Route::urlize('node', array($this->origin, $this->node));
+        }
+    }
+
+    public function getTags()
+    {
+        $td = new \Modl\TagDAO;
+        $tags = $td->getTags($this->nodeid);
+        return array_map(function($tag) { return $tag->tag; }, $tags);
+    }
+
+    public function getTagsImploded()
+    {
+        $tags = $this->getTags();
+        if(is_array($tags)) {
+            return implode(', ', $tags);
         }
     }
 

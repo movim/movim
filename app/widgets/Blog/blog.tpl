@@ -31,6 +31,17 @@
                 <p>{$contact->description}</p>
             {/if}
         </li>
+        {elseif="$mode == 'tag'"}
+        <li class="condensed">
+            <span class="icon gray">
+                <i class="zmdi zmdi-tag"></i>
+            </span>
+            <h2>
+                <a href="{$c->route('tag', array($tag))}">
+                    #{$tag}
+                </a>
+            </h2>
+        </li>
         {else}
         <li class="condensed action">
             <div class="action">
@@ -132,6 +143,19 @@
                     </content>
                 </section>
                 <footer>
+                    {$tags = $value->getTags()}
+                    {if="isset($tags)"}
+                        <ul class="thin">
+                            <li>
+                                <span class="icon zmdi zmdi-tag gray"></span>
+                                <span>
+                                    {loop="$tags"}
+                                        <a href="{$c->route('tag', array($value))}">#{$value}</a>
+                                    {/loop}
+                                </span>
+                            </li>
+                        </ul>
+                    {/if}
                     <ul class="middle divided spaced">
                         {if="isset($attachements.links)"}
                             {loop="$attachements.links"}

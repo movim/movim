@@ -189,6 +189,19 @@ class Publish extends WidgetBase
                 }
             }
 
+            if(Validator::string()->notEmpty()->alnum(',')->validate($form->tags->value)) {
+                $p->setTags(array_unique(
+                    array_filter(
+                        array_map(
+                            function($value) {
+                                return trim(strtolower($value));
+                            },
+                            explode(',', $form->tags->value)
+                        )
+                    )
+                ));
+            }
+
             if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
                 try {
                     $embed = Embed\Embed::create($form->embed->value);
