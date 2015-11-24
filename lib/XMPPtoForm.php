@@ -281,7 +281,7 @@ class XMPPtoForm{
                 $opt->setAttribute('value', $option->value);
                 if(
                     in_array(
-                        (string)$opt->nodeValue,
+                        (string)$option->value,
                         array_map(
                             function($sxml) {
                                 return (string)$sxml;
