@@ -18,6 +18,8 @@ class PubsubAtom {
     public $geo = false;
     public $comments = false;
 
+    public $tags = array();
+
     public $published = false;
 
     public function __construct() {
@@ -117,6 +119,12 @@ class PubsubAtom {
             $entry->appendChild($dom->createElement('published', date(DATE_ISO8601, $this->published)));
         } else {
             $entry->appendChild($dom->createElement('published', gmdate(DATE_ISO8601)));
+        }
+
+        foreach($this->tags as $tag) {
+            $category = $dom->createElement('category');
+            $entry->appendChild($category);
+            $category->setAttribute('term', $tag);
         }
 
         $entry->setAttribute('xmlns', 'http://www.w3.org/2005/Atom');

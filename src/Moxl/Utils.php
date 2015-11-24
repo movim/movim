@@ -74,6 +74,8 @@ class Utils {
         } catch (\Net_DNS2_Exception $e) {
             error_log($e->getMessage());
         }
+
+        return false;
     }
 
     public static function getDomain($host) {

@@ -128,6 +128,12 @@ class PostPublish extends Errors
         return $this;
     }
 
+    public function setTags($tags)
+    {
+        $this->_atom->tags = $tags;
+        return $this;
+    }
+
     public function enableComments()
     {
         $this->_atom->enableComments();
