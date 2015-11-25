@@ -137,25 +137,6 @@ class RosterLinkDAO extends SQL {
             $this->set($r);
     }
     
-    function setChat($jid, $chaton) {
-        $this->_sql = '
-            update rosterlink
-            set chaton      = :chaton
-            where session   = :session
-                and jid     = :jid';
-        
-        $this->prepare(
-            'RosterLink', 
-            array(
-                'session'       => $this->_user,
-                'jid'           => $jid,
-                'chaton'        => $chaton
-            )
-        );
-        
-        return $this->run('RosterLink');
-    }
-    
     function get($jid) {
         $this->_sql = '
             select *
@@ -217,23 +198,6 @@ class RosterLinkDAO extends SQL {
             'RosterLink', 
             array(
                 'session' => $session
-            )
-        );
-        
-        return $this->run('RosterLink');
-    }
-    
-    function getChats() {
-        $this->_sql = '
-            select *
-            from rosterlink
-            where session=:session
-            and chaton > 0';
-        
-        $this->prepare(
-            'RosterLink', 
-            array(
-                'session' => $this->_user
             )
         );
         

@@ -412,21 +412,6 @@ class ContactDAO extends SQL {
         return (int)$results[0];
     }
 
-    function cleanRoster() {
-        $this->_sql = '
-            delete from rosterlink
-                where session = :session';
-
-        $this->prepare(
-            'RosterLink',
-            array(
-                'session' => $this->_user
-            )
-        );
-
-        return $this->run('RosterLink');
-    }
-
     function getRoster() {
         $this->_sql = '
         select
@@ -484,30 +469,6 @@ class ContactDAO extends SQL {
         on rosterlink.jid = contact.jid
         where rosterlink.session = :session
         order by groupname, rosterlink.jid';
-
-        $this->prepare(
-            'RosterLink',
-            array(
-                'session' => $this->_user
-            )
-        );
-
-        return $this->run('RosterContact');
-    }
-
-    function getRosterChat() {
-        $this->_sql = '
-            select * from rosterlink
-            left outer join (
-                select * from presence
-                order by presence.priority desc
-                ) as presence
-                on rosterlink.jid = presence.jid
-            left outer join contact
-                on rosterlink.jid = contact.jid
-            where rosterlink.session = :session
-                and rosterlink.chaton > 0
-            order by rosterlink.groupname, rosterlink.jid, presence.value';
 
         $this->prepare(
             'RosterLink',
@@ -621,27 +582,6 @@ class ContactDAO extends SQL {
         return $this->run('PresenceContact');
     }
 
-    function getMe($item = false) {
-        $this->_sql = '
-            select * from contact
-            left outer join presence on contact.jid = presence.jid
-            where contact.jid = :jid
-            and presence.session = :session';
-
-        $this->prepare(
-            'RosterLink',
-            array(
-                'session' => $this->_user,
-                'jid' => $this->_user
-            )
-        );
-
-        if($item)
-            return $this->run('RosterContact');
-        else
-            return $this->run('RosterContact', 'item');
-    }
-
     function getTop($limit = 6) {
         $this->_sql = '
             select *, jidfrom from (
@@ -680,23 +620,5 @@ class ContactDAO extends SQL {
         );
 
         return $this->run('RosterContact');
-    }
-
-    function getStatistics() {
-        $this->_sql = '
-            select
-            (select count(*) from postn where postn.session = :session ) as post,
-            (select count(*) from rosterlink where rosterlink.session= :session ) as rosterlink,
-            (select count(*) from presence where presence.session= :session ) as presence,
-            (select count(*) from message where message.session = :session) as message;';
-
-        $this->prepare(
-            'Postn',
-            array(
-                'session' => $this->_user
-            )
-        );
-
-        return $this->run(null, 'array');
     }
 }

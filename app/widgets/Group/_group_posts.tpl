@@ -58,7 +58,7 @@
         <footer>
             {$tags = $value->getTags()}
             {if="isset($tags)"}
-                <ul class="thin">
+                <ul class="middle">
                     <li>
                         <span class="icon zmdi zmdi-tag gray"></span>
                         <span>
