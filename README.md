@@ -7,7 +7,7 @@ Movim is a decentralized social network, written in PHP and HTML5 and based on t
 
 Installation
 ------------
-Please refer to the installation instructions that are available on the GitHub Wiki : hthttps://github.com/edhelas/movim/wiki .
+Please refer to the installation instructions that are available on the GitHub Wiki : https://github.com/edhelas/movim/wiki .
 
 
 Translations
@@ -25,6 +25,12 @@ You can also use Movim on our official Pods :
 
 * https://pod.movim.eu/ server hosted in France
 * https://nl.movim.eu/ server hosted in The Netherlands
+
+### Librairies
+Movim also contains to specific librairies :
+
+* https://github.com/edhelas/moxl Moxl (for Movim XMPP Library) is a light PHP XMPP especially made for the Movim project 
+* https://github.com/edhelas/modl A light PHP Database layer using DAO pattern
 
 Support Us
 ----------
