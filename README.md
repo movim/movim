@@ -27,10 +27,10 @@ You can also use Movim on our official Pods :
 * https://nl.movim.eu/ server hosted in The Netherlands
 
 ### Librairies
-Movim also contains to specific librairies :
+Movim also contains two specific librairies :
 
-* https://github.com/edhelas/moxl Moxl (for Movim XMPP Library) is a light PHP XMPP especially made for the Movim project 
-* https://github.com/edhelas/modl A light PHP Database layer using DAO pattern
+* https://github.com/edhelas/moxl Moxl (for Movim XMPP Library) is a PHP XMPP library especially made for the Movim project 
+* https://github.com/edhelas/modl Mod (for Movim Data Layer) is a light PHP Database layer using DAO pattern
 
 Support Us
 ----------
