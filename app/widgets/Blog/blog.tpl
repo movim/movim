@@ -145,7 +145,7 @@
                 <footer>
                     {$tags = $value->getTags()}
                     {if="isset($tags)"}
-                        <ul class="thin">
+                        <ul class="middle">
                             <li>
                                 <span class="icon zmdi zmdi-tag gray"></span>
                                 <span>
@@ -162,7 +162,7 @@
                                 {if="substr($value.href, 0, 5) != 'xmpp:' && filter_var($value.href, FILTER_VALIDATE_URL)"}
                                     <li>
                                         <span class="icon">
-                                            <img src="http://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
+                                            <img src="https://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
                                         </span>
                                         <a href="{$value.href}" class="alternate" target="_blank">
                                             <span>{$value.href|urldecode}</span>
