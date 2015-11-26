@@ -1,9 +1,9 @@
 <div class="tabelem" title="{$c->__('page.help')}" id="help_widget">
     <ul class="thick active">
         <li class="condensed action">
-            <a href="http://wiki.movim.eu" target="_blank">
+            <a href="https://github.com/edhelas/movim/wiki" target="_blank">
                 <span class="icon bubble color blue">
-                    <i class="zmdi zmdi-format-subject"></i>
+                    <i class="zmdi zmdi-github-alt"></i>
                 </span>
                 <span>{$c->__('wiki.question')}</span>
                 <p>{$c->__('wiki.button')}</p>
@@ -13,7 +13,7 @@
             </div>
         </li>
         <li class="condensed action">
-            <a href="http://wiki.movim.eu/en:mailing_list" target="_blank">
+            <a href="https://github.com/edhelas/movim/wiki/Mailing-List" target="_blank">
                 <span class="icon bubble color orange">
                     <i class="zmdi zmdi-email"></i>
                 </span>
@@ -24,12 +24,15 @@
                 <i class="zmdi zmdi-chevron-right"></i>
             </div>
         </li>
-        <li class="condensed">
-                <span class="icon bubble color green">
-                    <i class="zmdi zmdi-comment-text-alt"></i>
-                </span>
-                <span>{$c->__('chatroom.question')}</span>
-                <p>{$c->__('chatroom.button')}<br/>movim@conference.movim.eu</p>
+        <li class="condensed action" onclick="Help_ajaxAddChatroom()">
+            <span class="icon bubble color green">
+                <i class="zmdi zmdi-comment-text-alt"></i>
+            </span>
+            <span>{$c->__('chatroom.question')}</span>
+            <p>{$c->__('chatroom.button')}<br/>movim@conference.movim.eu</p>
+            <div class="action">
+                <i class="zmdi zmdi-accounts-add"></i>
+            </div>
         </li>
     </ul>
     <!--
