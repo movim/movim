@@ -1,7 +1,7 @@
 Movim Installation
 ===================
 
-* Movim deployment tutorial: http://wiki.movim.eu/en:install
+* Movim deployment tutorial: https://github.com/edhelas/movim/wiki/Install-Movim
 
 You can also follow the Jappix project documentation for a full stack deployment:
 
