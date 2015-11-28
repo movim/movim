@@ -20,6 +20,7 @@ class Message extends Model {
     public $delivered;
 
     public $color; // Only for chatroom purpose
+    public $publishedPrepared; // Only for chat purpose
 
     public function __construct()
     {

@@ -2,7 +2,7 @@
 
 <div class="placeholder icon">
     <h1>{$c->__('chats.empty_title')}</h1>
-    <h4>{$c->___('chats.empty', '<i class="zmdi zmdi-plus"></i>', '<a href="'.$c->route('contact').'"><i class="zmdi zmdi-accounts"></i>', '</a>')}</h4>
+    <h4>{$c->___('chats.empty', '<i class="zmdi zmdi-plus"></i>', '<a href="'.$c->route('contact').'"><i class="zmdi zmdi-accounts"></i> ', '</a>')}</h4>
 </div>
 <a class="button action color" onclick="MovimTpl.toggleActionButton()">
     <i class="zmdi zmdi-plus"></i>

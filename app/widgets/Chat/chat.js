@@ -3,6 +3,8 @@ var Chat = {
     right: null,
     room: null,
     previous: null,
+    date: null,
+    lastScroll: null,
     addSmiley: function(element) {
         var n = document.querySelector('#chat_textarea');
         n.value = n.value + element.dataset.emoji;
@@ -47,15 +49,28 @@ var Chat = {
         Chat.right = div.firstChild.cloneNode(true);
         div.innerHTML = room;
         Chat.room = div.firstChild.cloneNode(true);
+
+        Chat.setScrollBehaviour();
+    },
+    setScrollBehaviour : function() {
+        var discussion = document.querySelector('#chat_widget div.contained');
+        discussion.onscroll = function() {
+            if(this.scrollTop < 1) {
+                var chat = document.querySelector('#chat_widget');
+                Chat.lastScroll = this.scrollHeight;
+                Chat_ajaxGetHistory(chat.dataset.jid, Chat.date);
+            }
+        };
     },
     appendMessages : function(messages) {
         if(messages) {
+            Chat.date = messages[0].published;
             for(var i = 0, len = messages.length; i < len; ++i ) {
-                    Chat.appendMessage(messages[i]);
-                }
+                Chat.appendMessage(messages[i], false);
+            }
         }
     },
-    appendMessage : function(message) {
+    appendMessage : function(message, prepend) {
         if(message.body == '') return;
 
         var bubble = null;
@@ -74,7 +89,7 @@ var Chat = {
             }
 
             bubble.querySelector('div').innerHTML = message.body;
-            bubble.querySelector('span.info').innerHTML = message.published;
+            bubble.querySelector('span.info').innerHTML = message.publishedPrepared;
             bubble.querySelector('span.user').className = 'user ' + message.color;
 
             bubble.querySelector('span.user').onclick = function(n) {
@@ -117,21 +132,37 @@ var Chat = {
             if(bubble) {
                 bubble.querySelector('div.bubble div').innerHTML = message.body;
 
-                bubble.querySelector('div.bubble span.info').innerHTML = message.published;
+                bubble.querySelector('div.bubble span.info').innerHTML = message.publishedPrepared;
 
-                movim_append(id, bubble.outerHTML);
+                if(prepend) {
+                    Chat.date = message.published;
+                    var discussion = document.querySelector('#chat_widget div.contained');
+
+                    // We prepend
+                    movim_prepend(id, bubble.outerHTML);
+
+                    // And we scroll where we were
+                    var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
+                    discussion.scrollTop += scrollDiff;
+                    Chat.lastScroll = discussion.scrollHeight;
+                } else {
+                    movim_append(id, bubble.outerHTML);
+                }
+
                 bubble.querySelector('div.bubble').className = 'bubble';
 
-                if(bubble.className.indexOf('oppose') > -1) MovimTpl.scrollPanel();
+                if(bubble.className.indexOf('oppose') > -1
+                && prepend == null) MovimTpl.scrollPanel();
             }
         }
 
-        if(scrolled) MovimTpl.scrollPanel();
+        if(scrolled && prepend == null) MovimTpl.scrollPanel();
     }
 }
 
 MovimWebsocket.attach(function() {
-    var jid = document.querySelector('#chat_widget').dataset.jid;
+    var chat = document.querySelector('#chat_widget');
+    var jid = chat.dataset.jid;
     if(jid) {
         MovimTpl.showPanel();
         Chat_ajaxGet(jid);

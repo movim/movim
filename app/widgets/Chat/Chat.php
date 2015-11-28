@@ -12,6 +12,8 @@ use Respect\Validation\Validator;
 
 class Chat extends WidgetBase
 {
+    private $_pagination = 30;
+
     function load()
     {
         $this->addjs('chat.js');
@@ -315,6 +317,30 @@ class Chat extends WidgetBase
     }
 
     /**
+     * @brief Get the chat history
+     *
+     * @param string jid
+     * @param string time
+     */
+    function ajaxGetHistory($jid, $date)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $md = new \Modl\MessageDAO();
+        $messages = $md->getHistory(echapJid($jid), date(DATE_ISO8601, strtotime($date)), $this->_pagination);
+
+        if(count($messages) > 0) {
+            Notification::append(false, $this->__('message.history', count($messages)));
+        }
+
+        foreach($messages as $message) {
+            if(!preg_match('#^\?OTR#', $message->body)) {
+                RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
+            }
+        }
+    }
+
+    /**
      * @brief Configure a room
      *
      * @param string $room
@@ -451,7 +477,7 @@ class Chat extends WidgetBase
         if(!$this->validateJid($jid)) return;
 
         $md = new \Modl\MessageDAO();
-        $messages = $md->getContact(echapJid($jid), 0, 30);
+        $messages = $md->getContact(echapJid($jid), 0, $this->_pagination);
 
         if(is_array($messages)) {
             $messages = array_reverse($messages);
@@ -501,7 +527,7 @@ class Chat extends WidgetBase
             $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
         }
 
-        $message->published = prepareDate(strtotime($message->published));
+        $message->publishedPrepared = prepareDate(strtotime($message->published));
 
         return $message;
     }

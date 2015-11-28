@@ -2,7 +2,7 @@
 
 namespace modl;
 
-class MessageDAO extends SQL {  
+class MessageDAO extends SQL {
     function set(Message $message) {
         $this->_sql = '
             insert into message
@@ -31,7 +31,7 @@ class MessageDAO extends SQL {
                 :published,
                 :delivered
                 )';
-            
+
         $this->prepare(
             'Message',
             array(
@@ -48,21 +48,21 @@ class MessageDAO extends SQL {
                 'delivered' => $message->delivered
             )
         );
-            
+
         return $this->run('Message');
     }
-    
+
     function getContact($jid, $limitf = false, $limitr = false) {
         $this->_sql = '
-            select * from message 
+            select * from message
             where session = :session
                 and (jidfrom = :jidfrom
                 or jidto = :jidto)
             order by published desc';
-            
-        if($limitr) 
+
+        if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-            
+
         $this->prepare(
             'Message',
             array(
@@ -71,7 +71,7 @@ class MessageDAO extends SQL {
                 'jidto' => $jid
             )
         );
-            
+
         return $this->run('Message');
     }
 
@@ -90,13 +90,37 @@ class MessageDAO extends SQL {
                 'session' => $this->_user
             )
         );
-            
+
+        return $this->run('Message');
+    }
+
+    function getHistory($jid, $date, $limit = 30) {
+        $this->_sql = '
+            select * from message
+            where session = :session
+                and (jidfrom = :jidfrom
+                or jidto = :jidto)
+                and published < :published
+            order by published desc';
+
+        $this->_sql .= ' limit '.(string)$limit;
+
+        $this->prepare(
+            'Message',
+            array(
+                'session' => $this->_user,
+                'jidfrom' => $jid,
+                'jidto' => $jid,
+                'published' => $date
+            )
+        );
+
         return $this->run('Message');
     }
 
     function getRoomSubject($room) {
         $this->_sql = '
-            select * from message 
+            select * from message
             where jidfrom = :jidfrom
               and subject != \'\'
               order by published desc
@@ -108,10 +132,10 @@ class MessageDAO extends SQL {
                 'jidfrom'   => $room
             )
         );
-            
+
         return $this->run('Message', 'item');
     }
-    
+
     function clearMessage() {
         $this->_sql = '
             delete from message
@@ -123,7 +147,7 @@ class MessageDAO extends SQL {
                 'session' => $this->_user
             )
         );
-            
+
         return $this->run('Message');
     }
 }

@@ -32,13 +32,6 @@ class Chats extends WidgetBase
             }
 
             $this->ajaxOpen($from, false);
-            /*
-            $chats = Cache::c('chats');
-            if(!array_key_exists($from, $chats)) {
-                $this->ajaxOpen($from);
-            } else {
-                RPC::call('Chats.prepend', $from, $this->prepareChat($from));
-            }*/
         }
     }
 

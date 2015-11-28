@@ -4,7 +4,9 @@
 </div>
 
 <ul class="flex middle active">
-    <li class="subheader block large">{$c->__('chat.frequent')}</li>
+    {if="$top"}
+        <li class="subheader block large">{$c->__('chat.frequent')}</li>
+    {/if}
     {loop="$top"}
         <li class="condensed block {if="$value->last > 60"} inactive{/if}"
             onclick="Chats_ajaxOpen('{$value->jid}'); Chat_ajaxGet('{$value->jid}');">
