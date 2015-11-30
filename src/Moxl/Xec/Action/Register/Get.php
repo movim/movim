@@ -48,7 +48,7 @@ class Get extends Action
     public function handle($stanza, $parent = false)
     {
         $this->prepare($stanza, $parent);
-        $this->pack($stanza->query);
+        $this->pack($stanza->query, $this->_to);
         $this->deliver();
     }
 

@@ -94,8 +94,11 @@ abstract class Payload
      *
      * @return void
      */
-    final public function pack($content) {
+    final public function pack($content, $from) {
         $this->packet->content = $content;
+        if($from != null) {
+            $this->packet->from = $from;
+        }
     }
 
     abstract public function handle($stanza, $parent = false);
