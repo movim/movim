@@ -21,7 +21,7 @@
                 name="login">
                 <div>
                     <input type="email" name="login" id="login" autofocus required disabled
-                        placeholder="{$c->__('form.username')}"/>
+                        placeholder="username@server.com"/>
                     <label for="login">{$c->__('form.username')}</label>
                 </div>
                 <div>
@@ -38,7 +38,7 @@
                                     disabled
                                     data-loading="{$c->__('button.connecting')}"
                                     value="{$c->__('button.come_in')}"
-                                    class="button flat"/> 
+                                    class="button flat"/>
                             </div>
                             <a id="return_sessions" class="button flat" href="#" onclick="Login.toChoose()">
                                 {$c->__('account.title')}

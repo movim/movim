@@ -1,3 +1,30 @@
 #subscription_form form > div {
-    left: 2rem;
+    left: 1rem;
+}
+
+#subscription_form form {
+    padding-top: 5rem;
+}
+
+#subscription_form ul#obb {
+    padding-top: 10rem;
+}
+
+#subscription_form div#movim input {
+    width: calc(100% - 15rem);
+    text-align: right;
+}
+
+#subscription_form div#movim span {
+    color: gray;
+    font-weight: bold;
+    text-align: left;
+    font-size: 2rem;
+    top: 4rem;
+    float: right;
+    position: relative;
+    line-height: 3rem;
+    padding: 1rem;
+    width: 15rem;
+    box-sizing: border-box;
 }

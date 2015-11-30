@@ -1,7 +1,6 @@
 <?php
 
 use Moxl\Xec\Action\Disco\Request;
-use Moxl\Xec\Action\Register\Get;
 use Moxl\Xec\Action\Register\Set;
 
 class AccountNext extends WidgetBase {
@@ -30,32 +29,40 @@ class AccountNext extends WidgetBase {
     {
         $form = $package->content;
 
-        $xtf = new \XMPPtoForm();
-        if(!empty($form->x)){
-            switch($form->x->attributes()->xmlns) {
-                case 'jabber:x:data' :
-                    $formview = $this->tpl();
+        if($package->from == 'movim.eu') {
+            $movimview = $this->tpl();
+            $movimview->assign('submitdata', $this->call('ajaxRegister', "movim_form_to_json('data')"));
+            $html = $movimview->draw('_accountnext_movim', true);
 
-                    $formh = $xtf->getHTML($form->x->asXML());
-                    $formview->assign('submitdata', $this->call('ajaxRegister', "movim_form_to_json('data')"));
+            RPC::call('movim_fill', 'subscription_form', $html);
+        } else {
+            $xtf = new \XMPPtoForm();
+            if(!empty($form->x)){
+                switch($form->x->attributes()->xmlns) {
+                    case 'jabber:x:data' :
+                        $formview = $this->tpl();
 
-                    $formview->assign('formh', $formh);
-                    $html = $formview->draw('_accountnext_form', true);
+                        $formh = $xtf->getHTML($form->x->asXML());
+                        $formview->assign('submitdata', $this->call('ajaxRegister', "movim_form_to_json('data')"));
 
-                    RPC::call('movim_fill', 'subscription_form', $html);
-                    break;
-                case 'jabber:x:oob' :
-                    $oobview = $this->tpl();
-                    $oobview->assign('url', (string)$form->x->url);
+                        $formview->assign('formh', $formh);
+                        $html = $formview->draw('_accountnext_form', true);
 
-                    $html = $oobview->draw('_accountnext_oob', true);
+                        RPC::call('movim_fill', 'subscription_form', $html);
+                        break;
+                    case 'jabber:x:oob' :
+                        $oobview = $this->tpl();
+                        $oobview->assign('url', (string)$form->x->url);
 
-                    RPC::call('movim_fill', 'subscription_form', $html);
-                    break;
+                        $html = $oobview->draw('_accountnext_oob', true);
+
+                        RPC::call('movim_fill', 'subscription_form', $html);
+                        break;
+                }
+
+            } else{
+                $formh = $xtf->getHTML($form->asXML());
             }
-
-        } else{
-            $formh = $xtf->getHTML($form->asXML());
         }
     }
 
@@ -68,7 +75,7 @@ class AccountNext extends WidgetBase {
 
         $html = $view->draw('_accountnext_registered', true);
 
-        RPC::call('movim_fill', 'subscription_form', $html);
+        RPC::call('movim_fill', 'subscribe', $html);
         RPC::call('setUsername', $data->username->value);
     }
 
