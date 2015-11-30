@@ -6,6 +6,10 @@ form > div:not(.clear):not(.control) {
     box-sizing: border-box;
 }
 
+form > div.compact:not(.clear):not(.control) {
+    min-height: 0;
+}
+
 li > form > div:not(.control) { /* If we put the form in a list */
     min-height: 0;
     line-height: 3rem;
@@ -105,6 +109,12 @@ form > div > textarea {
     overflow: hidden; /* Fixme */
 
     box-shadow: none; /* Firefox weird CSS */
+}
+
+form > div.compact > .select,
+form > div.compact > input:not([type=submit]),
+form > div.compact > textarea {
+    padding-top: 2.5rem;
 }
 
 /* Webkit hack */
