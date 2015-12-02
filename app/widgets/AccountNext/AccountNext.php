@@ -110,6 +110,12 @@ class AccountNext extends WidgetBase {
 
     function ajaxRegister($form)
     {
+        if(isset($form->re_password)
+        && $form->re_password->value != $form->password->value) {
+            Notification::append(null, $this->__('account.password_not_same'));
+            return;
+        }
+
         $s = new Set;
         $s->setData($form)->request();
     }
