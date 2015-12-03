@@ -2,6 +2,8 @@
 
 use Respect\Validation\Validator;
 
+include_once WIDGETS_PATH.'Post/Post.php';
+
 class Blog extends WidgetBase {
     public $_paging = 10;
 
@@ -47,7 +49,7 @@ class Blog extends WidgetBase {
             $this->url = Route::urlize('blog', $this->_from);
         }
 
-        $pd = new \modl\PostnDAO();        
+        $pd = new \modl\PostnDAO();
 
         if($this->_id = $this->get('i')) {
             if(Validator::int()->between(0, 100)->validate($this->_id)) {
@@ -94,6 +96,11 @@ class Blog extends WidgetBase {
         }
     }
 
+    public function preparePost($p) {
+        $pw = new Post;
+        return $pw->preparePost($p, true, true);
+    }
+
     function display()
     {
         $this->view->assign('server', $this->_from);
@@ -104,7 +111,7 @@ class Blog extends WidgetBase {
         $this->view->assign('mode', $this->_mode);
         $this->view->assign('more', $this->_page);
         $this->view->assign('posts', $this->_messages);
-        
+
         $this->view->assign('tag', $this->_tag);
     }
 

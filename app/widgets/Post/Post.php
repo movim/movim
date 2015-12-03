@@ -188,16 +188,18 @@ class Post extends WidgetBase
         return $view->draw('_post_header', true);
     }
 
-    function preparePost($p)
+    function preparePost($p, $external = false, $public = false)
     {
         $view = $this->tpl();
 
         if(isset($p)) {
-            if(isset($p->commentplace)) {
+            if(isset($p->commentplace) && !$external) {
                 $this->ajaxGetComments($p->commentplace, $p->nodeid);
             }
 
             $view->assign('recycled', false);
+            $view->assign('external', $external);
+            $view->assign('public', $public);
 
             // Is it a recycled post ?
             if($p->getContact()->jid
@@ -210,7 +212,7 @@ class Post extends WidgetBase
             $view->assign('post', $p);
             $view->assign('attachements', $p->getAttachements());
             return $view->draw('_post', true);
-        } else {
+        } elseif(!$external) {
             return $this->prepareEmpty();
         }
     }
@@ -237,6 +239,12 @@ class Post extends WidgetBase
                 \Modl\Privacy::set($id, 1);
             }
         }
+    }
+
+    function getComments($post)
+    {
+        $pd = new \Modl\PostnDAO();
+        return $pd->getComments($post);
     }
 
     function display()

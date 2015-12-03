@@ -35,6 +35,8 @@ class Postn extends Model {
 
     public $hash;
 
+    private $youtube;
+
     public function __construct() {
         $this->hash = md5(openssl_random_pseudo_bytes(5));
 
@@ -222,6 +224,10 @@ class Postn extends Model {
         return in_array($type, array('image/jpeg', 'image/png', 'image/jpg'));
     }
 
+    private function typeIsLink($type) {
+        return $type == 'text/html';
+    }
+
     private function setAttachements($links) {
         $contentimg = '';
 
@@ -253,24 +259,29 @@ class Postn extends Model {
     public function getAttachements()
     {
         $attachements = null;
+        $this->picture = null;
 
         if(isset($this->links)) {
             $attachements = array('pictures' => array(), 'files' => array(), 'links' => array());
 
             $links = unserialize($this->links);
             foreach($links as $l) {
-                switch($l['rel']) {
-                    case 'enclosure' :
-                        if($this->typeIsPicture($l['type'])) {
-                            array_push($attachements['pictures'], $l);
-                        } else {
-                            array_push($attachements['files'], $l);
-                        }
-                        break;
-                    case 'related' :
-                    case 'alternate' :
-                        array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
-                        break;
+                if($this->typeIsPicture($l['type'])) {
+                    if($this->picture == null) {
+                        $this->picture = $l['href'];
+                    }
+                    array_push($attachements['pictures'], $l);
+                } elseif(($this->typeIsLink($l['type'])
+                || in_array($l['rel'], array('related', 'alternate')))
+                && Validator::url()->validate($l['href'])) {
+                    if($this->youtube == null
+                    && preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
+                        $this->youtube = $match[1];
+                    }
+
+                    array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
+                } elseif($l['rel'] == 'enclosure') {
+                    array_push($attachements['files'], $l);
                 }
             }
         }
@@ -292,43 +303,32 @@ class Postn extends Model {
             return $attachements['files'][0];
         }
         if(isset($attachements['links'])) {
-            foreach($attachements['links'] as $link) {
-                if(Validator::url()->validate($link['href'])) {
-                    return $link;
-                }
-            }
-            return false;
+            return $attachements['files'][0];
         }
         return false;
     }
 
     public function getPicture()
     {
-        $attachements = $this->getAttachements();
-        if(is_array($attachements)
-        && array_key_exists('pictures', $attachements)) {
-            return $attachements['pictures'][0]['href'];
-        }
+        return $this->picture;
+    }
+
+    public function getYoutube()
+    {
+        return $this->youtube;
     }
 
     public function getPlace()
     {
-        if(isset($this->lat, $this->lon) && $this->lat != '' && $this->lon != '') {
-            return true;
-        }
-        else
-            return false;
+        return (isset($this->lat, $this->lon) && $this->lat != '' && $this->lon != '');
     }
 
     public function isMine()
     {
         $user = new \User();
 
-        if($this->aid == $user->getLogin()
-        || $this->origin == $user->getLogin())
-            return true;
-        else
-            return false;
+        return ($this->aid == $user->getLogin()
+        || $this->origin == $user->getLogin());
     }
 
     public function getUUID()
@@ -342,11 +342,7 @@ class Postn extends Model {
 
     public function isMicroblog()
     {
-        if($this->node == "urn:xmpp:microblog:0") {
-            return true;
-        } else {
-            return false;
-        }
+        return ($this->node == "urn:xmpp:microblog:0");
     }
 
     public function isEditable()
@@ -384,10 +380,7 @@ class Postn extends Model {
     }
 
     public function isPublic() {
-        if(isset($this->privacy) && $this->privacy) {
-            return true;
-        }
-        return false;
+        return (isset($this->privacy) && $this->privacy);
     }
 }
 

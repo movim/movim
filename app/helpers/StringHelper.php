@@ -343,6 +343,10 @@ function purifyHTML($string)
           'muted' => 'Bool',
           'controls' => 'Bool',
         ));
+        $def->addElement('source', 'Block', 'Flow', 'Common', array(
+          'src' => 'URI',
+          'type' => 'Text',
+        ));
     }
 
     $purifier = new \HTMLPurifier($config);

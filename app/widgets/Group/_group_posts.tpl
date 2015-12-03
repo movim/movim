@@ -1,4 +1,6 @@
 {loop="$posts"}
+    {$c->preparePost($value)}
+    <!--
     {$attachements = $value->getAttachements()}
     <article id="{$value->nodeid}" class="block">
         {if="isset($attachements.pictures)"}
@@ -187,7 +189,7 @@
             </ul>
         {/if}
         <br />
-    </article>
+    </article>-->
 {/loop}
 {if="$posts != null && count($posts) >= $paging-1"}
 <ul class="active thick">

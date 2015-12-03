@@ -381,6 +381,11 @@ class Group extends WidgetBase
         return $html;
     }
 
+    public function preparePost($p) {
+        $pw = new Post;
+        return $pw->preparePost($p, true);
+    }
+
     private function prepareHeader($server, $node)
     {
         $pd = new \Modl\ItemDAO;

@@ -78,6 +78,8 @@
     </ul>
 
     {loop="$posts"}
+        {$c->preparePost($value)}
+        <!--
         <article class="block">
             <header>
                 <ul class="thick">
@@ -235,7 +237,7 @@
                 {/if}
                 <br />
             {/if}
-        </article>
+        </article>-->
     {/loop}
     {if="isset($more)"}
         <article>

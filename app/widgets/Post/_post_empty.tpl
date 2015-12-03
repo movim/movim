@@ -3,6 +3,7 @@
 <ul class="flex card shadow active">
 {loop="$posts"}
     {if="!filter_var($value->origin, FILTER_VALIDATE_EMAIL)"}
+        {$attachements = $value->getAttachements()}
         <li
             class="block condensed"
             data-id="{$value->nodeid}"
@@ -41,7 +42,7 @@
                 {/if}
             </p>
         </li>
-        {/if}
+    {/if}
 {/loop}
 </ul>
 <ul class="active thick">

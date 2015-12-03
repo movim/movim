@@ -5,6 +5,7 @@
     {/if}
 
     {loop="$items"}
+        {$attachements = $value->getAttachements()}
         <li
             tabindex="{$page*$paging+$key+1}"
             class="block large condensed "
