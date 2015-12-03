@@ -53,15 +53,19 @@
                 </h2>
                 <p>
                     {if="$contact->getTrueName() != ''"}
+                        {if="!$public"}
                         <a href="{$c->route('contact', $contact->jid)}">
+                        {/if}
                             <i class="zmdi zmdi-account"></i> {$contact->getTrueName()}
-                        </a> –
+                        {if="!$public"}</a>{/if} –
                     {/if}
                     {if="$post->node != 'urn:xmpp:microblog:0'"}
                         {$post->origin} /
+                        {if="!$public"}
                         <a href="{$c->route('group', array($post->origin, $post->node))}">
+                        {/if}
                             <i class="zmdi zmdi-pages"></i> {$post->node}
-                        </a> –
+                        {if="!$public"}</a>{/if} –
                     {/if}
                     {$post->published|strtotime|prepareDate}
                     {if="$post->published != $post->updated"}
