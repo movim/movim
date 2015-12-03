@@ -29,7 +29,11 @@
                 </a>
             </span>
             <p class="all">
-                {$value->contentraw}
+                {if="$value->contentraw"}
+                    {$value->contentraw}
+                {else}
+                    {$value->title}
+                {/if}
             </p>
         </li>
     {/loop}

@@ -1,9 +1,11 @@
 <article class="block">
     {if="isset($attachements.pictures)"}
-    <header
-        class="big"
-        style="
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachements['pictures'][0]['href']}');">
+        {if="($public && $post->isPublic()) || !$public"}
+            <header
+                class="big"
+                style="
+                    background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachements['pictures'][0]['href']}');">
+        {/if}
     {else}
     <header>
     {/if}
@@ -253,7 +255,7 @@
                             </p>
                         </li>
                     {/loop}
-                </ul>
+                </ul><br />
             {/if}
         {else}
             <div id="comments"></div>
