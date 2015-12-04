@@ -95,6 +95,8 @@ class Blog extends WidgetBase {
             array_pop($this->_messages);
         }
 
+        $this->user = new User($this->_from);
+
         $cssurl = $this->user->getDumpedConfig('cssurl');
         if(isset($cssurl)
         && $cssurl != ''

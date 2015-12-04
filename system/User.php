@@ -30,12 +30,18 @@ class User {
      * Class constructor. Reloads the user's session or attempts to authenticate
      * the user.
      */
-    function __construct()
+    function __construct($username = false)
     {
-        $session = \Sessionx::start();
-        if($session->active) {
-            $this->username = $session->user.'@'.$session->host;
+        if($username) {
+            $this->username = $username;
+        }
 
+        $session = \Sessionx::start();
+        if($session->active && $this->username == null) {
+            $this->username = $session->user.'@'.$session->host;
+        }
+
+        if($this->username != null) {
             $this->userdir = DOCUMENT_ROOT.'/users/'.$this->username.'/';
             $this->useruri = BASE_URI.'users/'.$this->username.'/';
         }
