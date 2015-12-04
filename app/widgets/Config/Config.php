@@ -19,6 +19,7 @@
  */
 
 use Moxl\Xec\Action\Storage\Set;
+use Respect\Validation\Validator;
 
 class Config extends WidgetBase
 {
@@ -59,15 +60,19 @@ class Config extends WidgetBase
         $data = (array)$package->content;
         $this->user->setConfig($data);
 
-        $html = $this->prepareConfigForm();
+        $this->refreshConfig();
 
-        RPC::call('movim_fill', 'config_widget', $html);
-        RPC::call('Config.load');
         Notification::append(null, $this->__('config.updated'));
     }
 
     function ajaxSubmit($data)
     {
+        if(!$this->validateForm($data)) {
+            $this->refreshConfig();
+            Notification::append(null, $this->__('config.not_valid'));
+            return;
+        }
+
         $config = $this->user->getConfig();
         if(isset($config))
             $data = array_merge($config, $data);
@@ -76,6 +81,25 @@ class Config extends WidgetBase
         $s->setXmlns('movim:prefs')
           ->setData(serialize($data))
           ->request();
+    }
+
+    private function refreshConfig()
+    {
+        $html = $this->prepareConfigForm();
+
+        RPC::call('movim_fill', 'config_widget', $html);
+        RPC::call('Config.load');
+    }
+
+    private function validateForm($data)
+    {
+        $l = Movim\i18n\Locale::start();
+
+        if(Validator::in(array_keys($l->getList()))->validate($data['language'])
+        && Validator::in(array('show', 'hide'))->validate($data['roster'])
+        && ($data['cssurl'] == '' || Validator::url()->validate($data['cssurl'])))
+            return true;
+        return false;
     }
 
     function display()

@@ -94,6 +94,13 @@ class Blog extends WidgetBase {
         if(count($this->_messages) == $this->_paging + 1) {
             array_pop($this->_messages);
         }
+
+        $cssurl = $this->user->getDumpedConfig('cssurl');
+        if(isset($cssurl)
+        && $cssurl != ''
+        && Validator::url()->validate($cssurl)) {
+            $this->addrawcss($cssurl);
+        }
     }
 
     public function preparePost($p) {

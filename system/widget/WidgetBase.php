@@ -22,6 +22,7 @@ class WidgetBase
 {
     protected $js = array(); /*< Contains javascripts. */
     protected $css = array(); /*< Contains CSS files. */
+    protected $rawcss = array(); /*< Contains raw CSS files links. */
     protected $ajax;     /*< Contains ajax client code. */
     protected $user;
     protected $name;
@@ -43,10 +44,10 @@ class WidgetBase
     {
         if($view != null) $this->_view = $view;
 
+        $this->user = new User;
+
         $this->load();
         $this->name = get_class($this);
-
-        $this->user = new User;
 
         // If light loading enabled, we stop here
         if($light)
@@ -245,7 +246,7 @@ class WidgetBase
     }
 
     /**
-     * @brief Adds a javascript file to this widget.
+     * @brief Adds a CSS file to this widget.
      */
     protected function addcss($filename)
     {
@@ -253,11 +254,19 @@ class WidgetBase
     }
 
     /**
+     * @brief Adds a CSS to the page.
+     */
+    protected function addrawcss($url)
+    {
+        $this->rawcss[] = $url;
+    }
+
+    /**
      * @brief returns the list of javascript files to be loaded for the widget.
      */
     public function loadcss()
     {
-        return $this->css;
+        return array_merge($this->css, $this->rawcss);
     }
 
     /*

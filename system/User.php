@@ -155,6 +155,9 @@ class User {
     {
         $session = \Sessionx::start();
         $session->config = $config;
+
+        file_put_contents($this->userdir.'config.dump', serialize($config));
+
         $this->reload();
     }
 
@@ -164,6 +167,16 @@ class User {
             return $this->config;
         if(isset($this->config[$key]))
             return $this->config[$key];
+    }
+
+    function getDumpedConfig($key = false)
+    {
+        $config = unserialize(file_get_contents($this->userdir.'config.dump'));
+
+        if($key == false)
+            return $config;
+        if(isset($config[$key]))
+            return $config[$key];
     }
 
     function isSupported($key)
