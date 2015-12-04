@@ -77,6 +77,7 @@
                 </li>
             {/if}
             {loop="$news"}
+                {$attachements = $value->getAttachements()}
                 <li class="block condensed"
                     data-id="{$value->nodeid}"
                     {if="$value->title != null"}
