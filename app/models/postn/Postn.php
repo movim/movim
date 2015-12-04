@@ -266,12 +266,12 @@ class Postn extends Model {
 
             $links = unserialize($this->links);
             foreach($links as $l) {
-                if($this->typeIsPicture($l['type'])) {
+                if(isset($l['type']) && $this->typeIsPicture($l['type'])) {
                     if($this->picture == null) {
                         $this->picture = $l['href'];
                     }
                     array_push($attachements['pictures'], $l);
-                } elseif(($this->typeIsLink($l['type'])
+                } elseif((isset($l['type']) && $this->typeIsLink($l['type'])
                 || in_array($l['rel'], array('related', 'alternate')))
                 && Validator::url()->validate($l['href'])) {
                     if($this->youtube == null
@@ -280,7 +280,7 @@ class Postn extends Model {
                     }
 
                     array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
-                } elseif($l['rel'] == 'enclosure') {
+                } elseif(isset($l['rel']) && $l['rel'] == 'enclosure') {
                     array_push($attachements['files'], $l);
                 }
             }
@@ -303,7 +303,7 @@ class Postn extends Model {
             return $attachements['files'][0];
         }
         if(isset($attachements['links'])) {
-            return $attachements['files'][0];
+            return $attachements['links'][0];
         }
         return false;
     }
@@ -368,7 +368,9 @@ class Postn extends Model {
     {
         $td = new \Modl\TagDAO;
         $tags = $td->getTags($this->nodeid);
-        return array_map(function($tag) { return $tag->tag; }, $tags);
+        if(is_array($tags)) {
+            return array_map(function($tag) { return $tag->tag; }, $tags);
+        }
     }
 
     public function getTagsImploded()

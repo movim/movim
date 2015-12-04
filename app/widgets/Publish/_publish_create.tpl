@@ -28,7 +28,7 @@
         </article>
         <div id="gallery"></div>
     </div>
-    
+
     <div id="enable_content" onclick="Publish.enableContent();">
         <input type="text" value="{$c->__('publish.add_text')}"/>
         <label>{$c->__('publish.add_text_label')}</label>
