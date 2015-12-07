@@ -75,6 +75,18 @@ function addUrls($string, $preview = false) {
     );
 }
 
+function addHFR($string) {
+    // HFR EasterEgg
+    return preg_replace_callback(
+            '/\[:([\w\s-]+)([:\d])*\]/', function ($match) {
+                $num = '';
+                if(count($match) == 3)
+                    $num = $match[2].'/';
+                return '<img alt="'.$match[0].'" src="http://forum-images.hardware.fr/images/perso/'.$num.$match[1].'.gif">';
+            }, $string
+    );
+}
+
 /**
  * @desc Prepare the string (add the a to the links and show the smileys)
  *
@@ -325,7 +337,7 @@ function purifyHTML($string)
     $config = \HTMLPurifier_Config::createDefault();
     $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
     $config->set('Cache.SerializerPath', '/tmp');
-    $config->set('HTML.DefinitionID', 'html5-definitions'); 
+    $config->set('HTML.DefinitionID', 'html5-definitions');
     $config->set('HTML.DefinitionRev', 1);
     if ($def = $config->maybeGetRawHTMLDefinition()) {
         $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(

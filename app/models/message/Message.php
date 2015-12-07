@@ -100,7 +100,7 @@ class Message extends Model {
     public function convertEmojis()
     {
         $emoji = \MovimEmoji::getInstance();
-        $this->body = $emoji->replace($this->body);
+        $this->body = addHFR($emoji->replace($this->body));
     }
 
     public function addUrls()
