@@ -41,3 +41,7 @@
     height: 5rem;
     margin: 0;
 }
+
+.hfr {
+    display: inline-block;
+}

@@ -56,7 +56,7 @@
     margin-top: 0.85rem;
 }
 
-#chat_widget li img:not(.emoji) {
+#chat_widget li img:not(.emoji):not(.hfr) {
     max-height: 30rem;
     max-width: 100%;
     display: block;
