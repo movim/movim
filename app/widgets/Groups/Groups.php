@@ -118,7 +118,7 @@ class Groups extends WidgetBase
     {
         if(!$this->validateServer($server)) return;
 
-        $validate_name = Validator::string()->length(4, 80);
+        $validate_name = Validator::stringType()->length(4, 80);
         if(!$validate_name->validate($form->name->value)) {
             Notification::append(null, $this->__('groups.name_error'));
             return;
@@ -191,7 +191,7 @@ class Groups extends WidgetBase
      */
     private function validateServer($server)
     {
-        $validate_server = Validator::string()->noWhitespace()->length(6, 40);
+        $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         if(!$validate_server->validate($server)) return false;
         else return true;
     }

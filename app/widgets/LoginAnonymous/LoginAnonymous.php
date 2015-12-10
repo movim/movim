@@ -27,7 +27,7 @@ class LoginAnonymous extends WidgetBase
 
     function ajaxLogin($username)
     {
-        $validate_user = Validator::string()->length(4, 40);
+        $validate_user = Validator::stringType()->length(4, 40);
         if(!$validate_user->validate($username)) {
             Notification::append(null, $this->__('login_anonymous.bad_username'));
             return;

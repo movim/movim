@@ -59,7 +59,7 @@ class Blog extends WidgetBase {
                     $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, $this->_id * $this->_paging, $this->_paging + 1);
                 }
                 $this->_page = $this->_id + 1;
-            } elseif(Validator::string()->length(5, 100)->validate($this->_id)) {
+            } elseif(Validator::stringType()->length(5, 100)->validate($this->_id)) {
                 $this->_messages = $pd->getPublicItem($this->_from, $this->_node, $this->_id);
 
                 if(is_object($this->_messages[0])) {
@@ -126,8 +126,8 @@ class Blog extends WidgetBase {
 
     private function validateServerNode($server, $node)
     {
-        $validate_server = Validator::string()->noWhitespace()->length(6, 40);
-        $validate_node = Validator::string()->length(3, 100);
+        $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
+        $validate_node = Validator::stringType()->length(3, 100);
 
         if(!$validate_server->validate($server)
         || !$validate_node->validate($node)
@@ -137,7 +137,7 @@ class Blog extends WidgetBase {
 
     private function validateTag($tag)
     {
-        return Validator::string()->notEmpty()->alnum()->validate($tag);
+        return Validator::stringType()->notEmpty()->alnum()->validate($tag);
     }
 
     function getComments($post)

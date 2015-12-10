@@ -56,7 +56,7 @@ class Account extends WidgetBase
 
     function ajaxChangePassword($form)
     {
-        $validate = Validator::string()->length(6, 40);
+        $validate = Validator::stringType()->length(6, 40);
         $p1 = $form->password->value;
         $p2 = $form->password_confirmation->value;
 
@@ -113,7 +113,7 @@ class Account extends WidgetBase
 
     private function validateServer($server)
     {
-        $validate_server = Validator::string()->noWhitespace()->length(6, 80);
+        $validate_server = Validator::stringType()->noWhitespace()->length(6, 80);
         if(!$validate_server->validate($server)) return false;
         else return true;
     }

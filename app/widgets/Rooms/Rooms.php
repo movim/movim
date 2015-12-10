@@ -272,7 +272,7 @@ class Rooms extends WidgetBase
      */
     private function validateRoom($room)
     {
-        $validate_server = Validator::string()->noWhitespace()->length(6, 80);
+        $validate_server = Validator::stringType()->noWhitespace()->length(6, 80);
         if(!$validate_server->validate($room)) return false;
         else return true;
     }
@@ -284,7 +284,7 @@ class Rooms extends WidgetBase
      */
     private function validateResource($resource)
     {
-        $validate_resource = Validator::string()->length(2, 40);
+        $validate_resource = Validator::stringType()->length(2, 40);
         if(!$validate_resource->validate($resource)) return false;
         else return true;
     }

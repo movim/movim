@@ -167,7 +167,7 @@ class Login extends WidgetBase
 
         // First we check the form
         $validate_login   = Validator::email()->length(6, 40);
-        $validate_password = Validator::string()->length(4, 40);
+        $validate_password = Validator::stringType()->length(4, 40);
 
         if(!$validate_login->validate($login)) {
             $this->showErrorBlock('login_format');

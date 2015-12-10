@@ -144,9 +144,9 @@ class Vcard4 extends WidgetBase
             $c->date = $vcard->date->value;
         } 
 
-        if(Validator::string()->length(0, 40)->validate($vcard->name->value))
+        if(Validator::stringType()->length(0, 40)->validate($vcard->name->value))
             $c->name    = $vcard->name->value;
-        if(Validator::string()->length(0, 40)->validate($vcard->fn->value))
+        if(Validator::stringType()->length(0, 40)->validate($vcard->fn->value))
             $c->fn      = $vcard->fn->value;
 
         if(Validator::url()->validate($vcard->url->value))
@@ -167,7 +167,7 @@ class Vcard4 extends WidgetBase
         $c->skype   = $vcard->skype->value;
         $c->yahoo   = $vcard->yahoo->value;
 
-        if(Validator::string()->validate($vcard->desc->value))
+        if(Validator::stringType()->validate($vcard->desc->value))
             $c->description     = trim($vcard->desc->value);
             
         $cd = new \Modl\ContactDAO();

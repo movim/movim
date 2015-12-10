@@ -289,7 +289,7 @@ class Contact extends WidgetBase
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::string()->noWhitespace()->length(6, 60);
+        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
         if(!$validate_jid->validate($jid)) return false;
         else return true;
     }

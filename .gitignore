@@ -4,5 +4,4 @@
 /cache
 *~
 /config/db.inc.php
-/composer.lock
 /composer.phar

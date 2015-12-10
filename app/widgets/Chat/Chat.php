@@ -394,7 +394,7 @@ class Chat extends WidgetBase
     {
         if(!$this->validateJid($room)) return;
 
-        $validate_subject = Validator::string()->length(0, 200);
+        $validate_subject = Validator::stringType()->length(0, 200);
         if(!$validate_subject->validate($form->subject->value)) return;
 
         $p = new SetSubject;
@@ -549,7 +549,7 @@ class Chat extends WidgetBase
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::string()->noWhitespace()->length(6, 60);
+        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
         if(!$validate_jid->validate($jid)) return false;
         else return true;
     }

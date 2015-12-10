@@ -421,8 +421,8 @@ class Group extends WidgetBase
 
     private function validateServerNode($server, $node)
     {
-        $validate_server = Validator::string()->noWhitespace()->length(6, 40);
-        $validate_node = Validator::string()->length(3, 100);
+        $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
+        $validate_node = Validator::stringType()->length(3, 100);
 
         if(!$validate_server->validate($server)
         || !$validate_node->validate($node)

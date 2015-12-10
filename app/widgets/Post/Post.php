@@ -147,8 +147,8 @@ class Post extends WidgetBase
     {
         $comment = trim($form->comment->value);
 
-        $validate_comment = Validator::string()->notEmpty();
-        $validate_id = Validator::string()->length(6, 128)->noWhitespace();
+        $validate_comment = Validator::stringType()->notEmpty();
+        $validate_id = Validator::stringType()->length(6, 128)->noWhitespace();
 
         if(!$validate_comment->validate($comment)
         || !$validate_id->validate($id)) return;
@@ -218,7 +218,7 @@ class Post extends WidgetBase
     }
 
     function ajaxTogglePrivacy($id) {
-        $validate = Validator::string()->length(6, 128);
+        $validate = Validator::stringType()->length(6, 128);
 
         if(!$validate->validate($id))
             return;
@@ -249,7 +249,7 @@ class Post extends WidgetBase
 
     function display()
     {
-        $validate_nodeid = Validator::string()->length(10, 100);
+        $validate_nodeid = Validator::stringType()->length(10, 100);
 
         $this->view->assign('nodeid', false);
         if($validate_nodeid->validate($this->get('n'))) {
