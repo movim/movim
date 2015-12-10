@@ -95,7 +95,7 @@ class Postn extends Model {
                 case 'html':
                 case 'xhtml':
                     $dom = new \DOMDocument('1.0', 'utf-8');
-                    $import = dom_import_simplexml($c->children());
+                    $import = @dom_import_simplexml($c->children());
                     if($import == null) {
                         $import = dom_import_simplexml($c);
                     }
