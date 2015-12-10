@@ -197,7 +197,7 @@ class Contact extends Model {
         $p->fromBase($this->photobin);
         $p->set($this->jid);
 
-        if(isset($this->email)) {
+        if(isset($this->email) && $this->email != '') {
             \createEmailPic(strtolower($this->jid), $this->email);
         }
     }
@@ -214,7 +214,7 @@ class Contact extends Model {
 
     public function getPhoto($size = 'l', $jid = false) {
         if($size == 'email') {
-            return BASE_URI.'cache/'.strtolower($this->jid).'_email.jpg';
+            return BASE_URI.'cache/'.strtolower($this->jid).'_email.png';
         } else {
             $sizes = array(
                 'wall'  => array(1920, 1080),

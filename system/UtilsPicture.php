@@ -2,15 +2,22 @@
 
 
 function createEmailPic($jid, $email) {
-    if(file_exists(DOCUMENT_ROOT.'/cache/'.$jid.'_email.jpg'))  
-        unlink(DOCUMENT_ROOT.'/cache/'.$jid.'_email.jpg');
-    
-    $thumb = imagecreatetruecolor(250, 20);
-    $white = imagecolorallocate($thumb, 255, 255, 255);
-    imagefill($thumb, 0, 0, $white);
+    $cachefile = DOCUMENT_ROOT.'/cache/'.$jid.'_email.png';
 
-    $text_color = imagecolorallocate ($thumb, 0, 0,0);//black text
-    imagestring ($thumb, 4, 0, 0,  $email, $text_color);
-    
-    imagejpeg($thumb, DOCUMENT_ROOT.'/cache/'.$jid.'_email.jpg', 95);
+    if(file_exists(DOCUMENT_ROOT.'/cache/'.$jid.'_email.png'))
+        unlink(DOCUMENT_ROOT.'/cache/'.$jid.'_email.png');
+
+    $draw = new ImagickDraw();
+    $draw->setFontSize(13);
+    $draw->setGravity(Imagick::GRAVITY_CENTER);
+
+    $canvas = new Imagick();
+
+    $metrics = $canvas->queryFontMetrics($draw, $email);
+
+    $canvas->newImage($metrics['textWidth'], $metrics['textHeight'], "transparent", "png");
+    $canvas->annotateImage($draw, 0, 0, 0, $email);
+
+    $canvas->setImageFormat('PNG');
+    $canvas->writeImage($cachefile);
 }
