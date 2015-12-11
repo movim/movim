@@ -25,7 +25,7 @@ use Moxl\Xec\Action\Presence\Muc;
 class Bookmark extends WidgetBase
 {
     private $_list_server;
-    
+
     function load()
     {
         $this->addcss('bookmark.css');
@@ -35,19 +35,19 @@ class Bookmark extends WidgetBase
     }
 
     function display()
-    {        
+    {
         $this->view->assign('subscriptionconfig', Route::urlize('conf', false, 'groupsubscribedlistconfig'));
 
         $this->view->assign('getbookmark',      $this->call("ajaxGetBookmark"));
         $this->view->assign('setbookmark',      $this->call("ajaxSetBookmark", "''"));
-        
+
         $this->view->assign('preparebookmark',  $this->prepareBookmark());
     }
 
     function prepareBookmark() {
         $cd = new \modl\ConferenceDAO();
         $sd = new \modl\SubscriptionDAO();
-        
+
         // The URL add form
         $listview = $this->tpl();
         $listview->assign('conferences', $cd->getAll());
@@ -58,19 +58,19 @@ class Bookmark extends WidgetBase
         // The URL add form
         $urlview = $this->tpl();
         $urlview->assign(
-            'submit', 
+            'submit',
             $this->call(
-                'ajaxBookmarkUrlAdd', 
+                'ajaxBookmarkUrlAdd',
                 "movim_parse_form('bookmarkurladd')")
         );
         $html .= $urlview->draw('_bookmark_url_add', true);
-        
+
         // The MUC add form
         $mucview = $this->tpl();
         $mucview->assign(
-            'submit', 
+            'submit',
             $this->call(
-                'ajaxBookmarkMucAdd', 
+                'ajaxBookmarkMucAdd',
                 "movim_parse_form('bookmarkmucadd')")
         );
         $html .= $mucview->draw('_bookmark_muc_add', true);
@@ -81,7 +81,7 @@ class Bookmark extends WidgetBase
 
     function checkNewServer($node) {
         $r = false;
-        
+
         if($this->_list_server != $node->server)
             $r = true;
 
@@ -95,7 +95,7 @@ class Bookmark extends WidgetBase
             "'".$node->conference."'"
             );
     }
-    
+
     function getMucJoin($node) {
         return $this->call(
             'ajaxBookmarkMucJoin',
@@ -103,43 +103,43 @@ class Bookmark extends WidgetBase
             "'".$node->nick."'"
             );
     }
-    
+
     function onGroupSubscribed()
     {
-        $html = $this->prepareBookmark();     
-        RPC::call('movim_fill', 'bookmarks', $html);   
-        RPC::call('setBookmark');   
+        $html = $this->prepareBookmark();
+        RPC::call('movim_fill', 'bookmarks', $html);
+        RPC::call('setBookmark');
     }
-    
+
     function onGroupUnsubscribed()
     {
-        $html = $this->prepareBookmark();  
-        RPC::call('movim_fill', 'bookmarks', $html);   
-        RPC::call('setBookmark');        
+        $html = $this->prepareBookmark();
+        RPC::call('movim_fill', 'bookmarks', $html);
+        RPC::call('setBookmark');
     }
-    
+
     function onBookmark()
     {
         $html = $this->prepareBookmark();
         RPC::call('movim_fill', 'bookmarks', $html);
         Notification::append(null, $this->__('bookmarks.updated'));
     }
-    
-    function ajaxGetBookmark() 
+
+    function ajaxGetBookmark()
     {
         $b = new Get;
         $b->setTo($this->user->getLogin())
           ->request();
     }
-    
-    function ajaxSetBookmark($item = false) 
+
+    function ajaxSetBookmark($item = false)
     {
         $arr = array();
 
         if($item) {
             array_push($arr, $item);
         }
-        
+
         $sd = new \modl\SubscriptionDAO();
         $cd = new \modl\ConferenceDAO();
 
@@ -151,7 +151,7 @@ class Bookmark extends WidgetBase
                     'title'     => $s->title,
                     'subid'     => $s->subid,
                     'tags'      => unserialize($s->tags),
-                    'node'      => $s->node));   
+                    'node'      => $s->node));
         }
 
         foreach($cd->getAll() as $c) {
@@ -161,18 +161,18 @@ class Bookmark extends WidgetBase
                     'name'      => $c->name,
                     'autojoin'  => $c->autojoin,
                     'nick'      => $c->nick,
-                    'jid'       => $c->conference)); 
+                    'jid'       => $c->conference));
         }
 
-        
+
         $b = new Set;
         $b->setArr($arr)
           ->setTo($this->user->getLogin())
           ->request();
     }
-    
+
     // Add a new MUC
-    function ajaxBookmarkMucAdd($form) 
+    function ajaxBookmarkMucAdd($form)
     {
         if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
             $html = '<div class="message error">'.$this->__('chatroom.bad_id').'</div>' ;
@@ -181,28 +181,28 @@ class Bookmark extends WidgetBase
         } elseif(trim($form['name']) == '') {
             $html = '<div class="message error">'.$this->__('chatroom.empty_name').'</div>' ;
             RPC::call('movim_fill', 'bookmarkmucadderror', $html);
-            RPC::commit();            
+            RPC::commit();
         } else {
             $item = array(
                     'type'      => 'conference',
                     'name'      => $form['name'],
                     'autojoin'  => $form['autojoin'],
                     'nick'      => $form['nick'],
-                    'jid'       => $form['jid']);   
+                    'jid'       => $form['jid']);
             $this->ajaxSetBookmark($item);
         }
     }
-    
+
     // Remove a MUC
     function ajaxBookmarkMucRemove($jid)
     {
         $cd = new \modl\ConferenceDAO();
         $cd->deleteNode($jid);
-        
+
         $this->ajaxSetBookmark();
     }
-    
-    // Join a MUC 
+
+    // Join a MUC
     function ajaxBookmarkMucJoin($jid, $nickname)
     {
         $p = new Muc;
@@ -212,7 +212,7 @@ class Bookmark extends WidgetBase
     }
     /*
     // Add a new URL
-    function ajaxBookmarkUrlAdd($form) 
+    function ajaxBookmarkUrlAdd($form)
     {
         if(!filter_var($form['url'], FILTER_VALIDATE_URL)) {
             $html = '<div class="message error">'.t('Bad URL').'</div>' ;
@@ -221,24 +221,24 @@ class Bookmark extends WidgetBase
         } elseif(trim($form['name']) == '') {
             $html = '<div class="message error">'.t('Empty name').'</div>' ;
             RPC::call('movim_fill', 'bookmarkadderror', $html);
-            RPC::commit();            
+            RPC::commit();
         } else {
-        
-            $bookmarks = Cache::c('bookmark');        
-                    
+
+            $bookmarks = Cache::c('bookmark');
+
             if($bookmarks == null)
                 $bookmarks = array();
-            
+
             array_push($bookmarks,
                 array(
                     'type'      => 'url',
                     'name'      => $form['name'],
-                    'url'       => $form['url']));   
-            
+                    'url'       => $form['url']));
+
             $this->ajaxSetBookmark($bookmarks);
         }
     }
-    
+
     // Remove an URL
     function ajaxBookmarkUrlRemove($url)
     {

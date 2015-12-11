@@ -203,9 +203,9 @@ class Rooms extends WidgetBase
             array_push($arr,
                 array(
                     'type'      => 'conference',
-                    'name'      => htmlentities($c->name),
+                    'name'      => $c->name,
                     'autojoin'  => $c->autojoin,
-                    'nick'      => htmlentities($c->nick),
+                    'nick'      => $c->nick,
                     'jid'       => $c->conference));
         }
 
@@ -248,7 +248,7 @@ class Rooms extends WidgetBase
         $list = $cod->getAll();
 
         $connected = array();
-        
+
         foreach($list as $key => $room) {
             if($this->checkConnected($room->conference, $room->nick)) {
                 $room->connected = true;
@@ -258,7 +258,7 @@ class Rooms extends WidgetBase
         }
 
         $list = array_merge($connected, $list);
-        
+
         $view->assign('conferences', $list);
         $view->assign('room', $this->get('r'));
 
