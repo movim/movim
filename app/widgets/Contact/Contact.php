@@ -178,7 +178,7 @@ class Contact extends WidgetBase
 
     function ajaxPublic($page = 0)
     {
-        $validate_page = Validator::int();
+        $validate_page = Validator::intType();
         if(!$validate_page->validate($page)) return;
 
         RPC::call('MovimTpl.fill', '#public_list', $this->preparePublic($page));
