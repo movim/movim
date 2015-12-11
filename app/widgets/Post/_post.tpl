@@ -251,7 +251,11 @@
                                 {$value->getContact()->getTrueName()}
                             </span>
                             <p class="all">
-                                {$value->contentraw}
+                                {if="$value->title"}
+                                    {$value->title}
+                                {else}
+                                    {$value->contentraw}
+                                {/if}
                             </p>
                         </li>
                     {/loop}

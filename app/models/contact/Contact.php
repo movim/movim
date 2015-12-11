@@ -355,8 +355,10 @@ class Contact extends Model {
             && !filter_var($this->name, FILTER_VALIDATE_EMAIL)
           )
             $truename = $this->name;
-        else
-            $truename = $this->jid;
+        else {
+            $truename = explodeJid($this->jid);
+            $truename = $truename['username'];
+        }
 
         return $truename;
     }
