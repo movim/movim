@@ -6,7 +6,18 @@
     <div id="preview" class="block">
         <div>
             <form name="avatarform" id="avatarform">
-                <img src="data:image/jpeg;base64,{$photobin}">
+                {if="isset($photobin) && $photobin != ''"}
+                    <img src="data:image/jpeg;base64,{$photobin}">
+                {else}
+                    <ul class="thick">
+                        <li>
+                            <span class="icon bubble color {$me->jid|stringToColor}">
+                                <i class="zmdi zmdi-account"></i>
+                            </span>
+                            <p>{$c->__('avatar.missing')}</p>
+                        </li>
+                    </ul>
+                {/if}
                 <input type="hidden" name="photobin" value="{$photobin}"/>
             </form>
         </div>
@@ -40,7 +51,7 @@
     </div>
 </div>
     <!--
-    <div class="block">        
+    <div class="block">
         <input type="file" onchange="vCardImageLoad(this.files);">
         <label for="avatar">{$c->__('page.avatar')}</label>
         <input type="hidden" name="photobin"  value="{$photobin}"/>
@@ -62,16 +73,16 @@
     <div id="camdiv" class="block">
         <video id="runningcam" class="squares" autoplay></video>
         <canvas style="display:none;"></canvas>
-        
-        <a 
-            id="shoot" 
-            class="button flat oppose" 
+
+        <a
+            id="shoot"
+            class="button flat oppose"
             onclick="return false;">
             {$c->__('avatar.cheese')}
         </a>
         <a
-            id="capture" 
-            class="button flat" 
+            id="capture"
+            class="button flat"
             onclick="
                 showVideo();
                 return false;">
@@ -85,8 +96,8 @@
         onclick="
             {$submit}
             movim_button_save('#avatarvalidate');
-            this.value = '{$c->__('button.submitting')}'; 
-            this.className='button inactive oppose';" 
+            this.value = '{$c->__('button.submitting')}';
+            this.className='button inactive oppose';"
         class="button color oppose"
         id="avatarvalidate"
         >{$c->__('button.submit')}</a>
