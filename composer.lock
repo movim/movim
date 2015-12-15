@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "530ddadaf89e5d672e3b42b8831fee62",
+    "content-hash": "2a4187ff046018943394d6797b018de3",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -60,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "11ab3ddf33dcffa19a823c61fff81c9140e4937f"
+                "reference": "afa62af20a2ea7c5cbdf6ea3bf76a43bf810e6eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/11ab3ddf33dcffa19a823c61fff81c9140e4937f",
-                "reference": "11ab3ddf33dcffa19a823c61fff81c9140e4937f",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/afa62af20a2ea7c5cbdf6ea3bf76a43bf810e6eb",
+                "reference": "afa62af20a2ea7c5cbdf6ea3bf76a43bf810e6eb",
                 "shasum": ""
             },
             "require": {
@@ -106,7 +107,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2015-11-26 16:29:28"
+            "time": "2015-12-12 11:30:14"
         },
         {
             "name": "evenement/evenement",
@@ -692,12 +693,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/edhelas/moxl.git",
-                "reference": "b0049090a68b443b2600abbae9d2f30e7959b88f"
+                "reference": "96a00e9364ab50f712961d3881c5af68becef3d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/edhelas/moxl/zipball/b0049090a68b443b2600abbae9d2f30e7959b88f",
-                "reference": "b0049090a68b443b2600abbae9d2f30e7959b88f",
+                "url": "https://api.github.com/repos/edhelas/moxl/zipball/96a00e9364ab50f712961d3881c5af68becef3d1",
+                "reference": "96a00e9364ab50f712961d3881c5af68becef3d1",
                 "shasum": ""
             },
             "require": {
@@ -731,7 +732,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2015-11-30 23:01:50"
+            "time": "2015-12-15 07:15:37"
         },
         {
             "name": "movim/sasl2",
