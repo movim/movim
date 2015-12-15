@@ -34,15 +34,15 @@ var Avatar = {
             var base64 = canvas.toDataURL('image/jpeg', 0.7);
 
             var preview = document.querySelector('form[name=avatarform] img');
+
             var list = document.querySelector('form[name=avatarform] ul');
+            if(list) list.style.display = 'none';
+
             var input = document.querySelector('input[name="photobin"]');
 
             if(preview.className == 'error') preview.className = '';
 
             preview.src = base64;
-            list.style.display = 'none';
-
-
 
             var bin = base64.split(",");
             input.value = bin[1];
