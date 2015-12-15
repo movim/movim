@@ -9,6 +9,7 @@
                 {if="isset($photobin) && $photobin != ''"}
                     <img src="data:image/jpeg;base64,{$photobin}">
                 {else}
+                    <img src="#" class="error">
                     <ul class="thick">
                         <li>
                             <span class="icon bubble color {$me->jid|stringToColor}">

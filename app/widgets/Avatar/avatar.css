@@ -14,3 +14,7 @@
     border-radius: 0.25rem;
     margin: 0 auto;
 }
+
+#avatar_form div#preview img.error {
+    display: none;
+}
