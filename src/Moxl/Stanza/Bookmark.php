@@ -40,7 +40,7 @@ class Bookmark {
                     $conference = $dom->createElement('conference');
                     $nick = $dom->createElement('nick', $elt['nick']);
                     $conference->appendChild($nick);
-                    $conference->setAttribute('name', html_entity_decode($elt['name']));
+                    $conference->setAttribute('name', $elt['name']);
                     $conference->setAttribute('autojoin', $elt['autojoin']);
                     $conference->setAttribute('jid', $elt['jid']);
 

@@ -94,7 +94,7 @@ abstract class Payload
      *
      * @return void
      */
-    final public function pack($content, $from) {
+    final public function pack($content, $from = null) {
         $this->packet->content = $content;
         if($from != null) {
             $this->packet->from = $from;
