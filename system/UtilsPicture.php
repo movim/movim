@@ -8,16 +8,20 @@ function createEmailPic($jid, $email) {
         unlink(DOCUMENT_ROOT.'/cache/'.$jid.'_email.png');
 
     $draw = new ImagickDraw();
-    $draw->setFontSize(13);
-    $draw->setGravity(Imagick::GRAVITY_CENTER);
+    try {
+        $draw->setFontSize(13);
+        $draw->setGravity(Imagick::GRAVITY_CENTER);
 
-    $canvas = new Imagick();
+        $canvas = new Imagick();
 
-    $metrics = $canvas->queryFontMetrics($draw, $email);
+        $metrics = $canvas->queryFontMetrics($draw, $email);
 
-    $canvas->newImage($metrics['textWidth'], $metrics['textHeight'], "transparent", "png");
-    $canvas->annotateImage($draw, 0, 0, 0, $email);
+        $canvas->newImage($metrics['textWidth'], $metrics['textHeight'], "transparent", "png");
+        $canvas->annotateImage($draw, 0, 0, 0, $email);
 
-    $canvas->setImageFormat('PNG');
-    $canvas->writeImage($cachefile);
+        $canvas->setImageFormat('PNG');
+        $canvas->writeImage($cachefile);
+    } catch (ImagickException $e) {
+        error_log($e->getMessage());
+    }
 }
