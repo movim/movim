@@ -51,7 +51,7 @@
             {if="isset($info) && $info != ''"}
             <ul class="list thin card">
                 <li class="info">
-                    <p>{$info}</p>
+                    <p class="normal">{$info}</p>
                 </li>
             </ul>
             {/if}
@@ -59,7 +59,7 @@
             {if="isset($whitelist) && $whitelist != ''"}
             <ul class="list thin card">
                 <li class="info">
-                    <p>{$c->__('whitelist.info')} : {$whitelist}</p>
+                    <p class="normal">{$c->__('whitelist.info')} : {$whitelist}</p>
                 </li>
             </ul>
             {/if}
