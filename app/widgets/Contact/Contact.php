@@ -43,6 +43,7 @@ class Contact extends WidgetBase
         Header::fill($header);
         RPC::call('movim_fill', 'contact_widget', $html);
         RPC::call('MovimTpl.showPanel');
+        RPC::call('MovimTpl.scrollHeaders');
     }
 
     function ajaxEditSubmit($form)
@@ -225,6 +226,15 @@ class Contact extends WidgetBase
         $blog    = $pd->getPublic($jid, 'urn:xmpp:microblog:0', 0, 4);
 
         $presencestxt = getPresencesTxt();
+
+        $view->assign('edit',
+            $this->call(
+                'ajaxEditContact',
+                "'".echapJS($jid)."'"));
+        $view->assign('delete',
+            $this->call(
+                'ajaxDeleteContact',
+                "'".echapJS($jid)."'"));
 
         if(isset($c)) {
             $view->assign('mood', getMood());

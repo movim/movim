@@ -1,89 +1,128 @@
+{if="$external || $public"}
 <article class="block">
-    {if="isset($attachements.pictures)"}
-        {if="($public && $post->isPublic()) || !$public"}
-            <header
-                class="big"
-                style="
-                    background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachements['pictures'][0]['href']}');">
-        {/if}
-    {else}
-    <header>
+{/if}
+
+{if="isset($attachements.pictures)"}
+    {if="($public && $post->isPublic()) || !$public"}
+        <header
+            class="big"
+            style="
+                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachements['pictures'][0]['href']}');">
     {/if}
-        <ul class="thick">
-            <li class="condensed">
-                {if="$recycled"}
-                    {$contact = $recycled}
-                {else}
-                    {$contact = $post->getContact()}
+{else}
+<header>
+{/if}
+    {if="!$external && !$public"}
+        <ul class="list middle">
+            <li>
+                <span class="primary icon active" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
+                    <i class="zmdi zmdi-arrow-back"></i>
+                </span>
+
+                {if="$post->isMine() && !$public"}
+                    {if="$post->isEditable()"}
+                        <span class="control icon active" onclick="Publish_ajaxCreate('{$post->origin}', '{$post->node}', '{$post->nodeid}')" title="{$c->__('button.edit')}">
+                            <i class="zmdi zmdi-edit"></i>
+                        </span>
+                    {/if}
+                    <span class="control icon active" onclick="Post_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')" title="{$c->__('button.delete')}">
+                        <i class="zmdi zmdi-delete"></i>
+                    </span>
                 {/if}
 
-                {if="$post->node == 'urn:xmpp:microblog:0'"}
-                    <a href="{$c->route('contact', $contact->jid)}">
-                        {$url = $contact->getPhoto('s')}
-                        {if="$url"}
-                            <span class="icon bubble">
-                                <img src="{$url}">
-                            </span>
-                        {else}
-                            <span class="icon bubble color {$contact->jid|stringToColor}">
-                                <i class="zmdi zmdi-account"></i>
-                            </span>
-                        {/if}
-                    </a>
-                {else}
-                    <a href="{$c->route('group', array($post->origin, $post->node))}">
-                        <span class="icon bubble color {$post->node|stringToColor}">{$post->node|firstLetterCapitalize}</span>
-                    </a>
-                {/if}
-                <h2 {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
-                    <a  {if="$public"}
-                            {if="$post->isMicroblog()"}
-                            href="{$c->route('blog', array($post->origin, $post->nodeid))}"
-                            {else}
-                            href="{$c->route('node', array($post->origin, $post->node, $post->nodeid))}"
-                            {/if}
-                        {else}
-                            href="{$c->route('news', $post->nodeid)}"
-                        {/if}
-                        >
-                        {if="$post->title != null"}
-                            {$post->title}
-                        {else}
-                            {$c->__('post.default_title')}
-                        {/if}
-                    </a>
-                </h2>
-                <p>
-                    {if="$contact->getTrueName() != ''"}
-                        {if="!$public"}
-                        <a href="{$c->route('contact', $contact->jid)}">
-                        {/if}
-                            <i class="zmdi zmdi-account"></i> {$contact->getTrueName()}
-                        {if="!$public"}</a>{/if} –
-                    {/if}
-                    {if="$post->node != 'urn:xmpp:microblog:0'"}
-                        {$post->origin} /
-                        {if="!$public"}
-                        <a href="{$c->route('group', array($post->origin, $post->node))}">
-                        {/if}
-                            <i class="zmdi zmdi-pages"></i> {$post->node}
-                        {if="!$public"}</a>{/if} –
-                    {/if}
-                    {$post->published|strtotime|prepareDate}
-                    {if="$post->published != $post->updated"}
-                        - <i class="zmdi zmdi-edit"></i> {$post->updated|strtotime|prepareDate}
+                <p class="line">
+                    {if="$post->title != null"}
+                        {$post->title}
+                    {else}
+                        {$c->__('post.default_title')}
                     {/if}
                 </p>
             </li>
-        </ul>
-    </header>
+        </div>
+    {/if}
+
+    <ul class="list thick">
+        <li>
+            {if="$recycled"}
+                {$contact = $recycled}
+            {else}
+                {$contact = $post->getContact()}
+            {/if}
+
+            {if="$post->node == 'urn:xmpp:microblog:0'"}
+                {$url = $contact->getPhoto('s')}
+                {if="$url"}
+                    <span class="icon primary bubble">
+                        <a href="{$c->route('contact', $contact->jid)}">
+                            <img src="{$url}">
+                        </a>
+                    </span>
+                {else}
+                    <span class="icon primary bubble color {$contact->jid|stringToColor}">
+                        <a href="{$c->route('contact', $contact->jid)}">
+                            <i class="zmdi zmdi-account"></i>
+                        </a>
+                    </span>
+                {/if}
+            {else}
+                <span class="icon primary bubble color {$post->node|stringToColor}">
+                    {$post->node|firstLetterCapitalize}
+                </span>
+            {/if}
+            <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
+                <a  {if="$public"}
+                        {if="$post->isMicroblog()"}
+                        href="{$c->route('blog', array($post->origin, $post->nodeid))}"
+                        {else}
+                        href="{$c->route('node', array($post->origin, $post->node, $post->nodeid))}"
+                        {/if}
+                    {else}
+                        href="{$c->route('news', $post->nodeid)}"
+                    {/if}
+                    >
+                    {if="$post->title != null"}
+                        {$post->title}
+                    {else}
+                        {$c->__('post.default_title')}
+                    {/if}
+                </a>
+            </p>
+            <p>
+                {if="$contact->getTrueName() != ''"}
+                    {if="!$public"}
+                    <a href="{$c->route('contact', $contact->jid)}">
+                    {/if}
+                        <i class="zmdi zmdi-account"></i> {$contact->getTrueName()}
+                    {if="!$public"}</a>{/if} –
+                {/if}
+                {if="$post->node != 'urn:xmpp:microblog:0'"}
+                    {$post->origin} /
+                    {if="!$public"}
+                    <a href="{$c->route('group', array($post->origin, $post->node))}">
+                    {/if}
+                        <i class="zmdi zmdi-pages"></i> {$post->node}
+                    {if="!$public"}</a>{/if} –
+                {/if}
+                {$post->published|strtotime|prepareDate}
+                {if="$post->published != $post->updated"}
+                    - <i class="zmdi zmdi-edit"></i> {$post->updated|strtotime|prepareDate}
+                {/if}
+            </p>
+
+        </li>
+    </ul>
+</header>
+
+{if="!$external && !$public"}
+<article class="block">
+{/if}
     {if="$public && !$post->isPublic()"}
-        <ul class="thick">
+        <ul class="list thick">
             <li>
-                <span class="icon color gray bubble">
+                <span class="primary icon color gray bubble">
                     <i class="zmdi zmdi-lock"></i>
                 </span>
-                <p class="center"> {$c->__('blog.private')} - <a href="{$c->route('main')}">{$c->__('page.login')}</a></p>
+                <p class="line center normal"> {$c->__('blog.private')} - <a href="{$c->route('main')}">{$c->__('page.login')}</a></p>
             </li>
         </ul>
         <br />
@@ -108,28 +147,30 @@
         <footer>
             {$tags = $post->getTags()}
             {if="isset($tags)"}
-                <ul class="middle">
+                <ul class="list middle">
                     <li>
-                        <span class="icon zmdi zmdi-tag gray"></span>
-                        <span>
+                        <span class="primary icon zmdi zmdi-tag gray"></span>
+                        <p class="normal">
                             {loop="$tags"}
                                 <a target="_blank" href="{$c->route('tag', array($value))}">#{$value}</a>
                             {/loop}
-                        </span>
+                        </p>
                     </li>
                 </ul>
             {/if}
-            <ul class="middle divided spaced">
+            <ul class="list middle divided spaced">
                 {if="isset($attachements.links)"}
                     {loop="$attachements.links"}
                         {if="substr($value.href, 0, 5) != 'xmpp:' && filter_var($value.href, FILTER_VALIDATE_URL)"}
                             <li>
-                                <span class="icon">
+                                <span class="primary icon">
                                     <img src="https://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
                                 </span>
-                                <a href="{$value.href}" class="alternate" target="_blank">
-                                    <span>{$value.href|urldecode}</span>
-                                </a>
+                                <p class="normal line">
+                                    <a href="{$value.href}" class="alternate" target="_blank">
+                                        {$value.href|urldecode}
+                                    </a>
+                                </p>
                             </li>
                         {/if}
                     {/loop}
@@ -152,10 +193,10 @@
                 {/if}
             </ul>
             {if="!$post->isShort() && isset($attachements.pictures)"}
-                <ul class="flex middle">
+                <ul class="list flex middle">
                 {loop="$attachements.pictures"}
                     <li class="block pic">
-                        <span class="icon gray">
+                        <span class="primary icon gray">
                             <i class="zmdi zmdi-image"></i>
                         </span>
                         <a href="{$value.href}" class="alternate" target="_blank">
@@ -166,36 +207,38 @@
                 </ul>
             {/if}
             {if="$post->isMine() && !$public"}
-                <ul class="middle">
-                    <li class="action">
-                        <form>
-                            <div class="action">
-                                <div class="checkbox">
-                                    <input
-                                        type="checkbox"
-                                        id="privacy"
-                                        name="privacy"
-                                        {if="$post->privacy"}
-                                            checked
-                                        {/if}
-                                        {if="$external"}
-                                            onclick="Group_ajaxTogglePrivacy('{$post->nodeid}')"
-                                        {else}
-                                            onclick="Post_ajaxTogglePrivacy('{$post->nodeid}')"
-                                        {/if}
-                                    >
-                                    <label for="privacy"></label>
-                                </div>
-                            </div>
-                        </form>
-                        <span class="icon gray">
+                <ul class="list middle">
+                    <li>
+                        <span class="primary icon gray">
                             <i class="zmdi zmdi-portable-wifi"></i>
                         </span>
-                        <span>
+                        <span class="control">
+                            <form>
+                                <div class="action">
+                                    <div class="checkbox">
+                                        <input
+                                            type="checkbox"
+                                            id="privacy"
+                                            name="privacy"
+                                            {if="$post->privacy"}
+                                                checked
+                                            {/if}
+                                            {if="$external"}
+                                                onclick="Group_ajaxTogglePrivacy('{$post->nodeid}')"
+                                            {else}
+                                                onclick="Post_ajaxTogglePrivacy('{$post->nodeid}')"
+                                            {/if}
+                                        >
+                                        <label for="privacy"></label>
+                                    </div>
+                                </div>
+                            </form>
+                        </span>
+                        <p class="line normal">
                             <a target="_blank" href="{$post->getPublicUrl()}">
                                 {$c->__('post.public')}
                             </a>
-                        </span>
+                        </p>
                     </li>
                 </ul>
             {/if}
@@ -203,23 +246,24 @@
 
         {if="$recycled"}
             <a href="{$c->route('contact', $post->getContact()->jid)}">
-                <ul class="active middle">
-                    <li class="condensed action">
-                        <div class="action">
-                            <i class="zmdi zmdi-chevron-right"></i>
-                        </div>
+                <ul class="list active middle">
+                    <li>
                         {$url = $post->getContact()->getPhoto('s')}
                         {if="$url"}
-                            <span class="icon bubble" style="background-image: url('{$url}');">
+                            <span class="primary icon bubble" style="background-image: url('{$url}');">
                                 <i class="zmdi zmdi-loop"></i>
                             </span>
                         {else}
-                            <span class="icon bubble color {$post->getContact()->jid|stringToColor}">
+                            <span class="primary icon bubble color {$post->getContact()->jid|stringToColor}">
                                 <i class="zmdi zmdi-loop"></i>
                             </span>
                         {/if}
 
-                        <span>{$c->__('post.repost', $post->getContact()->getTrueName())}</span>
+                        <div class="control">
+                            <i class="zmdi zmdi-chevron-right"></i>
+                        </div>
+
+                        <p>{$c->__('post.repost', $post->getContact()->getTrueName())}</p>
                         <p>{$c->__('post.repost_profile', $post->getContact()->getTrueName())}</p>
                     </li>
                 </ul>
@@ -229,28 +273,30 @@
         {if="$external"}
             {$comments = $c->getComments($post)}
             {if="$comments"}
-                <ul class="spaced middle">
+                <ul class="list spaced middle">
                     <li class="subheader">
-                        {$c->__('post.comments')}
-                        <span class="info">{$comments|count}</span>
+                        <p>
+                            <span class="info">{$comments|count}</span>
+                            {$c->__('post.comments')}
+                        </p>
                     </li>
                     {loop="$comments"}
-                        <li class="condensed">
+                        <li>
                             {$url = $value->getContact()->getPhoto('s')}
                             {if="$url"}
-                                <span class="icon bubble">
+                                <span class="primary icon bubble">
                                     <img src="{$url}">
                                 </span>
                             {else}
-                                <span class="icon bubble color {$value->getContact()->jid|stringToColor}">
+                                <span class="primary icon bubble color {$value->getContact()->jid|stringToColor}">
                                     <i class="zmdi zmdi-account"></i>
                                 </span>
                             {/if}
-                            <span class="info">{$value->published|strtotime|prepareDate}</span>
-                            <span>
+                            <p>
                                 {$value->getContact()->getTrueName()}
-                            </span>
-                            <p class="all">
+                            </p>
+                            <p>
+                                <span class="info">{$value->published|strtotime|prepareDate}</span>
                                 {if="$value->title"}
                                     {$value->title}
                                 {else}

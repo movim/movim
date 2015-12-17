@@ -1,45 +1,41 @@
 <div class="tabelem" title="{$c->__('page.help')}" id="help_widget">
-    <ul class="thick active">
-        <li class="condensed action">
-            <a href="https://github.com/edhelas/movim/wiki" target="_blank">
-                <span class="icon bubble color blue">
-                    <i class="zmdi zmdi-github-alt"></i>
-                </span>
-                <span>{$c->__('wiki.question')}</span>
-                <p>{$c->__('wiki.button')}</p>
-            </a>
-            <div class="action">
+    <ul class="list thick active">
+        <li>
+            <span class="primary icon bubble color blue">
+                <i class="zmdi zmdi-github-alt"></i>
+            </span>
+            <span class="control icon gray">
                 <i class="zmdi zmdi-chevron-right"></i>
-            </div>
+            </span>
+            <p>{$c->__('wiki.question')}</p>
+            <p><a href="https://github.com/edhelas/movim/wiki" target="_blank">{$c->__('wiki.button')}</a></p>
         </li>
-        <li class="condensed action">
-            <a href="https://github.com/edhelas/movim/wiki/Mailing-List" target="_blank">
-                <span class="icon bubble color orange">
-                    <i class="zmdi zmdi-email"></i>
-                </span>
-                <span>{$c->__('ml.question')}</span>
-                <p>{$c->__('ml.button')}</p>
-            </a>
-            <div class="action">
+        <li>
+            <span class="primary icon bubble color orange">
+                <i class="zmdi zmdi-email"></i>
+            </span>
+            <span class="control icon gray">
                 <i class="zmdi zmdi-chevron-right"></i>
-            </div>
+            </span>
+            <p>{$c->__('ml.question')}</p>
+            <p><a href="https://github.com/edhelas/movim/wiki/Mailing-List" target="_blank">{$c->__('ml.button')}</a></p>
         </li>
         <li class="condensed action" onclick="Help_ajaxAddChatroom()">
-            <span class="icon bubble color green">
+            <span class="primary icon bubble color green">
                 <i class="zmdi zmdi-comment-text-alt"></i>
             </span>
-            <span>{$c->__('chatroom.question')}</span>
-            <p>{$c->__('chatroom.button')}<br/>movim@conference.movim.eu</p>
-            <div class="action">
+            <span class="control icon gray">
                 <i class="zmdi zmdi-accounts-add"></i>
-            </div>
+            </span>
+            <p>{$c->__('chatroom.question')}</p>
+            <p>{$c->__('chatroom.button')}<br/>movim@conference.movim.eu</p>
         </li>
     </ul>
     <!--
     <div class="clear spacetop"></div>
 
     <h2 class="padded_top_bottom">{$c->__('help.faq')}</h2>
-    
+
     <div class="card">
         <article>
             <header>

@@ -1,38 +1,35 @@
 <section class="scroll">
     <h3>{$c->__('chatrooms.users')}</h3>
     <br />
-    <ul>
+    <ul class="list middle">
         {$presence = getPresencesTxt()}
         {loop="$list"}
-            <li class="
-                    action
-                    {if="$value->last > 60"} inactive{/if}
-                    {if="$value->status"}condensed{/if}"
+            <li class="{if="$value->last > 60"} inactive{/if}"
                 title="{$value->resource}">
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
-                    <span class="icon bubble status {$presence[$value->value]}">
+                    <span class="primary icon bubble status {$presence[$value->value]}">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="icon bubble color {$value->resource|stringToColor} status {$presence[$value->value]}">
+                    <span class="primary icon bubble color {$value->resource|stringToColor} status {$presence[$value->value]}">
                         <i class="zmdi zmdi-account"></i>
-                    </span>        
+                    </span>
                 {/if}
                 {if="$value->mucaffiliation =='owner'"}
-                    <div class="action">
+                    <div class="control">
                         <i class="zmdi zmdi-beenhere"></i>
                     </div>
                 {/if}
                 {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
-                    <a href="{$c->route('contact', $value->mucjid)}">
-                        <span>{$value->resource}</span>
-                    </a>
+                    <p class="line normal">
+                        <a href="{$c->route('contact', $value->mucjid)}">{$value->resource}</a>
+                    </p>
                 {else}
-                    <span>{$value->resource}</span>
+                    <p class="line normal">{$value->resource}</p>
                 {/if}
                 {if="$value->status"}
-                    <p class="wrap">{$value->status}</p>
+                    <p class="line">{$value->status}</p>
                 {/if}
             </li>
         {/loop}

@@ -1,9 +1,11 @@
-<div></div>
 <div>
-    <ul class="active">
+    <ul class="list"><li></li></ul>
+</div>
+<div>
+    <ul class="list medium">
         <a class="classic" href="{$c->route('pods')}">
             <li>
-                <span class="icon">
+                <span class="control icon">
                     <i class="zmdi zmdi-apps"></i>
                 </span>
             </li>

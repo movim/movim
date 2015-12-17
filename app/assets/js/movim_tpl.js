@@ -57,13 +57,32 @@ var MovimTpl = {
     init : function() {
         if(document.getElementById('back') != null)
             document.getElementById('back').style.display = 'none';
+
+        MovimTpl.scrollHeaders();
+    },
+    scrollHeaders : function() {
+        var headers = document.querySelectorAll('main > section > div > header');
+
+        for(var i = 0, len = headers.length; i < len; ++i ) {
+            var header = headers[i];
+
+            header.parentNode.onscroll = function() {
+                var header = this.querySelector('header');
+                if(this.scrollTop == 0) {
+                    movim_remove_class(header, 'scroll');
+                } else {
+                    movim_add_class(header, 'scroll');
+                }
+            }
+        }
     },
     showPanel : function() {
         movim_add_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
         MovimTpl.scrollPanelTop();
+        //MovimTpl.scrollHeaders();
     },
     hidePanel : function() {
-        Header_ajaxReset(CURRENT_PAGE);
+        //Header_ajaxReset(CURRENT_PAGE);
         var selector = 'main section > div:first-child:nth-last-child(2) ~ div';
         var inner = document.querySelector(selector + ' div');
 

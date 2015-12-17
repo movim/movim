@@ -1,21 +1,21 @@
 <li {if="$me"}class="oppose"{/if}>
     {$url = $contact->getPhoto('s')}
     {if="$url"}
-        {if="$me == null"}<a href="{$c->route('contact', $contact->jid)}">{/if}
-            <span class="icon bubble">
+        <span class="{if="$me"}control{else}primary{/if} icon bubble">
+            {if="$me == null"}<a href="{$c->route('contact', $contact->jid)}">{/if}
                 <img src="{$url}">
-            </span>
-        {if="$me == null"}</a>{/if}
+            {if="$me == null"}</a>{/if}
+        </span>
     {else}
-        {if="$me == null"}<a href="{$c->route('contact', $contact->jid)}">{/if}
-            <span class="icon bubble color {$contact->jid|stringToColor}">
+        <span class="{if="$me"}control{else}primary{/if} icon bubble color {$contact->jid|stringToColor}">
+            {if="$me == null"}<a href="{$c->route('contact', $contact->jid)}">{/if}
                 <i class="zmdi zmdi-account"></i>
-            </span>
-        {if="$me == null"}</a>{/if}
+            {if="$me == null"}</a>{/if}
+        </span>
     {/if}
 
     <div class="bubble">
-        <div></div>
+        <p></p>
         <span class="info"></span>
     </div>
 </li>

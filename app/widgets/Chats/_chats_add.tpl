@@ -1,37 +1,39 @@
 <section class="scroll">
     <h3>{$c->__('chats.add')}</h3>
-    <ul class="active" id="add_extend">
-        <li class="subheader">{$c->__('chats.frequent')}</li>
+    <ul class="list active" id="add_extend">
+        <li class="subheader">
+            <p>{$c->__('chats.frequent')}</p>
+        </li>
         {loop="$top"}
             {if="!in_array($value->jid, $chats)"}
-                <li class="condensed {if="$value->last > 60"} inactive{/if}"
+                <li class="{if="$value->last > 60"} inactive{/if}"
                         onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
                         {$url = $value->getPhoto('s')}
                         {if="$url"}
-                            <span class="icon bubble
+                            <span class="primary icon bubble
                                 {if="$value->value"}
                                     status {$presencestxt[$value->value]}
                                 {/if}">
                                 <img src="{$url}">
                             </span>
                         {else}
-                            <span class="icon bubble color {$value->jid|stringToColor}
+                            <span class="primary icon bubble color {$value->jid|stringToColor}
                                 {if="$value->value"}
                                     status {$presencestxt[$value->value]}
                                 {/if}">
                                 <i class="zmdi zmdi-account"></i>
                             </span>
                         {/if}
-                        <span>{$value->getTrueName()}</span>
-                        <p class="wrap">{$value->jid}</p>
+                        <p class="line">{$value->getTrueName()}</p>
+                        <p class="line">{$value->jid}</p>
                     </li>
             {/if}
         {/loop}
         <li onclick="Chats_ajaxAddExtend()">
-            <span class="icon">
+            <span class="primary icon">
                 <i class="zmdi zmdi-plus"></i>
             </span>
-            <span>{$c->__('chats.more')}</span>
+            <p class="normal">{$c->__('chats.more')}</p>
         </li>
     </ul>
     <br />

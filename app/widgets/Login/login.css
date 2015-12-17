@@ -60,7 +60,6 @@ body main > header {
 
 #login_widget form ul input {
     margin: 0;
-    display: block;
     height: 5rem;
 }
 

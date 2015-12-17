@@ -108,6 +108,7 @@ class Menu extends WidgetBase
             RPC::call('movim_posts_unread', 0);
         }
         RPC::call('Menu.refresh');
+        RPC::call('MovimTpl.scrollTop');
     }
 
     function ajaxRefresh()
@@ -162,6 +163,7 @@ class Menu extends WidgetBase
         }
 
         $view->assign('items', $items);
+        $view->assign('type', $type);
         $view->assign('page', $page);
         $view->assign('paging', $this->_paging);
 

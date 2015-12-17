@@ -1,26 +1,30 @@
-<ul>
-    <li class="subheader"> {$c->__('privacy.privacy_title')}</li>
-    <li class="condensed action">
-        <form>
-            <div class="control action">
-                <div class="checkbox">
-                    <input
-                        type="checkbox"
-                        id="privacy"
-                        name="privacy"
-                        {if="$me->privacy"}
-                            checked
-                        {/if}
-                        onchange="{$privacy}">
-                    <label for="privacy"></label>
-                </div>
-            </div>
-        </form>
-        <span class="icon bubble color blue">
+<ul class="list middle">
+    <li class="subheader">
+        <p>{$c->__('privacy.privacy_title')}</p>
+    </li>
+    <li>
+        <span class="primary icon bubble color blue">
             <i class="zmdi zmdi-shield-security"></i>
         </span>
+        <span class="control">
+            <form>
+                <div class="control action">
+                    <div class="checkbox">
+                        <input
+                            type="checkbox"
+                            id="privacy"
+                            name="privacy"
+                            {if="$me->privacy"}
+                                checked
+                            {/if}
+                            onchange="{$privacy}">
+                        <label for="privacy"></label>
+                    </div>
+                </div>
+            </form>
+        </span>
 
-        <span>{$c->__('privacy.privacy_question')}</span>
+        <p>{$c->__('privacy.privacy_question')}</p>
         <p class="all">{$c->__('privacy.privacy_info')}</p>
     </li>
 </ul>

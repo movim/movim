@@ -1,14 +1,15 @@
 <section class="scroll">
-    <ul class="thin divided simple">
+    <ul class="list thin divided simple">
         <li class="subheader">
-            {$c->__('group.subscriptions')}
-            <span class="info">{$subscriptions|count}</span>
+            <p><span class="info">{$subscriptions|count}</span>{$c->__('group.subscriptions')}</p>
         </li>
         {loop="$subscriptions"}
             <li>
-                <a href="{$c->route('contact', $value.jid)}">
-                    {$value.jid}
-                </a>
+                <p class="normal">
+                    <a href="{$c->route('contact', $value.jid)}">
+                        {$value.jid}
+                    </a>
+                </p>
             </li>
         {/loop}
     </ul>

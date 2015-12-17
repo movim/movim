@@ -1,4 +1,42 @@
-<form name="post" class="block">
+<header>
+    <ul class="list middle">
+        <li>
+            <span class="primary icon active" onclick="Publish.headerBack('{$server}', '{$node}', false);">
+                <i class="zmdi zmdi-arrow-back"></i>
+            </span>
+
+            <span id="button_send" class="control icon active" onclick="Publish.disableSend(); Publish_ajaxPublish(movim_form_to_json('post'));">
+                <i class="zmdi zmdi-mail-send"></i>
+            </span>
+            <span class="control icon active" onclick="Publish_ajaxHelp()">
+                <i class="zmdi zmdi-help"></i>
+            </span>
+            <span class="control icon active" onclick="Publish_ajaxPreview(movim_form_to_json('post'))">
+                <i class="zmdi zmdi-eye"></i>
+            </span>
+
+            {if="$item != false"}
+                <p class="line">{$c->__('publish.edit')}</p>
+            {else}
+                <p class="line">{$c->__('publish.new')}</p>
+            {/if}
+            <!--
+            <p>
+                {if="$item != null && $item->node != 'urn:xmpp:microblog:0'"}
+                    {if="$item->name"}
+                        {$item->name}
+                    {else}
+                        {$item->node}
+                    {/if}
+                {else}
+                    {$c->__('page.blog')}
+                {/if}
+            </p>-->
+        </li>
+    </ul>
+</header>
+
+<form name="post" class="block padded">
     <input type="hidden" name="to" value="{$to}">
     <input type="hidden" name="node" value="{$node}">
     <input type="hidden" name="id" value="{if="$item != false"}{$item->nodeid}{/if}">
@@ -38,13 +76,13 @@
         <label for="content">{$c->__('post.content_label')}</label>
     </div>
 
-    <ul class="middle flex active">
+    <ul class="list middle flex active">
         {if="$c->supported('upload')"}
         <li class="block large" onclick="Upload_ajaxRequest()">
-            <span class="icon">
+            <span class="primary icon">
                 <i class="zmdi zmdi-attachment-alt"></i>
             </span>
-            <span>{$c->__('publish.attach')}</span>
+            <p class="normal line">{$c->__('publish.attach')}</p>
         </li>
         {/if}
     </ul>

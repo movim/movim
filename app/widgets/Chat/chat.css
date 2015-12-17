@@ -23,7 +23,7 @@
 }
 
 #chat_widget .chat_box form {
-    width: calc(100% - 1rem);
+    width: calc(100% - 5rem);
 }
 
 #chat_widget .chat_box form > div {
@@ -35,25 +35,32 @@
     padding: 3rem 0px 1rem;
 }
 
-#chat_widget .chat_box div.action {
+#chat_widget .chat_box span.control {
     font-size: 4rem;
     color: gray;
 }
 
-#chat_widget .chat_box div.action:hover {
+#chat_widget .chat_box span.control:hover {
     cursor: pointer;
     color: #333;
 }
 
 #chat_widget section {
-    margin-bottom: 1rem;
+    padding-bottom: 2rem;
+}
+
+#chat_width li > p {
+    font-size: 2rem;
 }
 
 /* Chatroom */
 
+#chat_widget ul.simple {
+    padding-left: 2rem;
+}
+
 #chat_widget li span.icon {
-    top: 0%;
-    margin-top: 0.85rem;
+    top: 4rem;
 }
 
 #chat_widget li img:not(.emoji):not(.hfr) {
@@ -61,11 +68,51 @@
     max-width: 100%;
     display: block;
 }
+
+#chat_widget li.room {
+    padding: 0.25rem 0;
+}
+
+#chat_widget li.room > p {
+    font-size: 2rem;
+    display: inline;
+}
+
+#chat_widget li.room span.info {
+    float: right;
+    width: auto;
+    margin-top: 0.5rem;
+}
+
+#chat_widget li.room:first-child {
+    margin-top: 1rem;
+}
+
+#chat_widget li.room p.user {
+    font-weight: 700;
+    padding: 0;
+}
+
+#chat_widget li.room > p.message {
+    color: black;
+    padding-left: 1rem;
+}
+
+#chat_widget li.room p.user:hover {
+    cursor: pointer;
+}
+
+#chat_widget ul:after {
+    content: " ";
+    display: block;
+    clear: both;
+}
 /*
 #chat_widget li img.emoji {
     padding: 0.25rem;
 }
 */
+/*
 #chat_widget li.room {
     min-height: 3rem;
     margin-bottom: 0.5rem;
@@ -93,6 +140,7 @@
 #chat_widget li.room span.user:hover {
     cursor: pointer;
 }
+*/
 
 #chat_widget .placeholder {
     padding-top: 37em;
@@ -117,6 +165,7 @@ table.emojis td:hover {
 @media screen and (max-width: 1024px) {
     #chat_widget .chat_box {
         width: 100%;
+        left: 0;
     }
 
     #chat_widget .chat_box ul {

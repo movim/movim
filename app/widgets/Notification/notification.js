@@ -77,7 +77,7 @@ var Notification = {
 
             if(Notification.favicon != null)
                 Notification.favicon.badge(Notification.tab_counter1 + Notification.tab_counter2);
-            
+
             if(Notification.electron != null)
                 Notification.electron.notification(Notification.tab_counter1 + Notification.tab_counter2);
         }
@@ -115,11 +115,11 @@ var Notification = {
             target.innerHTML = html;
         }
 
-        setTimeout(function() {
+        /*setTimeout(function() {
             target = document.getElementById('snackbar');
             target.innerHTML = '';
             },
-            time*1000);
+            time*1000);*/
     },
     desktop : function(title, body, picture, action) {
         if(Notification.inhibed == true

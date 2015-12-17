@@ -1,11 +1,11 @@
 <section>
     <h3>{$c->__('roster.search')}</h3>
-    <ul class="simple">
+    <ul class="list">
         <li>
             <form name="add">
                 <div>
-                    <input 
-                        name="searchjid" 
+                    <input
+                        name="searchjid"
                         type="email"
                         title="{$c->__('roster.jid')}"
                         placeholder="user@server.tld"

@@ -1,5 +1,5 @@
 <li class="room">
+    <p class="user"></p>
     <span class="info"></span>
-    <span class="user"></span>
-    <div></div>
+    <p class="message"></p>
 </li>

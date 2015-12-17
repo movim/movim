@@ -71,10 +71,13 @@ main > header form > div:not(.clear):not(.control) {
     min-height: 0;
 }
 
+main > header li > form > div:not(.clear):not(.control) {
+    top: 1rem;
+}
+
 main > header form > div:not(.clear):not(.control) > input,
 main > header form > div:not(.clear):not(.control) > .select {
-    margin-top: 1.5rem;
-    padding-top: 0.4rem;
+    padding-top: 0;
 }
 
 main > header form > div:not(.clear):not(.control) > .select option {
@@ -387,6 +390,15 @@ header.big ~ .button.action {
 
 .button.action .actions li:hover {
     background-color: white;
+}
+
+.button.activity {
+    display: inline-block;
+    margin: 0;
+    font-size: 3rem;
+    line-height: 7rem;
+    height: auto;
+    width: 7rem;
 }
 
 /* The textarea hidden div */

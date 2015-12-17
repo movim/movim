@@ -88,23 +88,23 @@ var Chat = {
                 message.body = message.body.substr(4);
             }
 
-            bubble.querySelector('div').innerHTML = message.body;
+            bubble.querySelector('p.message').innerHTML = message.body;
             bubble.querySelector('span.info').innerHTML = message.publishedPrepared;
-            bubble.querySelector('span.user').className = 'user ' + message.color;
+            bubble.querySelector('p.user').className = 'user ' + message.color;
 
-            bubble.querySelector('span.user').onclick = function(n) {
+            bubble.querySelector('p.user').onclick = function(n) {
                 var textarea = document.querySelector('#chat_textarea');
                 textarea.value = this.innerHTML + ', ' + textarea.value;
                 textarea.focus();
             };
 
-            bubble.querySelector('span.user').innerHTML = message.resource;
+            bubble.querySelector('p.user').innerHTML = message.resource;
             var conversation = document.getElementById(id);
             if(conversation) {
                 conversation.appendChild(bubble);
             }
 
-            bubble.querySelector('div').className = '';
+            //bubble.querySelector('p.message').className = '';
         } else if(Chat.left != null) {
             if(message.session == message.jidfrom) {
                 bubble = Chat.right.cloneNode(true);
@@ -130,9 +130,9 @@ var Chat = {
             }
 
             if(bubble) {
-                bubble.querySelector('div.bubble div').innerHTML = message.body;
+                bubble.querySelector('div.bubble > p').innerHTML = message.body;
 
-                bubble.querySelector('div.bubble span.info').innerHTML = message.publishedPrepared;
+                bubble.querySelector('div.bubble > span.info').innerHTML = message.publishedPrepared;
 
                 if(prepend) {
                     Chat.date = message.published;

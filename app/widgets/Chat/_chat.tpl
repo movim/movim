@@ -1,17 +1,17 @@
 <div id="{$jid}_discussion" class="contained">
     <section id="{$jid}_messages">
-        <ul class="{if="$muc"}thin simple{else}middle{/if}" id="{$jid}_conversation"></ul>
+        <ul class="list {if="$muc"}thin simple{else}thick{/if}" id="{$jid}_conversation"></ul>
     </section>
 </div>
 <div class="chat_box">
-    <ul class="thin">
-        <li class="action">
-            <span class="icon gray emojis_open" onclick="Chat_ajaxSmiley()">
+    <ul class="list thin">
+        <li>
+            <span class="primary icon gray emojis_open" onclick="Chat_ajaxSmiley()">
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
-            <div class="action" data-jid="{$jid}" onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
+            <span class="control icon gray" data-jid="{$jid}" onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
                 <i class="zmdi zmdi-mail-send"></i>
-            </div>
+            </span>
             <form>
                 <div>
                      <textarea

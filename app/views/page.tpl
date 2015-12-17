@@ -19,7 +19,9 @@
 
     <?php
         $this->addCss('style.css');
-        $this->addCss('list.css');
+        $this->addCss('header.css');
+        //$this->addCss('list.css');
+        $this->addCss('listn.css');
         $this->addCss('grid.css');
         $this->addCss('article.css');
         $this->addCss('form.css');

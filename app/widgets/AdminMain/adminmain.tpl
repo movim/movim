@@ -68,9 +68,9 @@
         <label for="xmppwhitelist">{$c->__('whitelist.label')}</label>
     </div>
 
-    <ul class="thick">
-        <li class="condensed">
-            <span class="icon bubble color blue">
+    <ul class="list thick">
+        <li>
+            <span class="primary icon bubble color blue">
                 <i class="zmdi zmdi-info"></i>
             </span>
             <p>{$c->__('whitelist.info1')}</p>
@@ -92,12 +92,12 @@
         <label for="info">{$c->__('information.label')}</label>
     </div>
 
-    <ul class="thick">
-        <li class="condensed">
-            <span class="icon bubble color blue">
+    <ul class="list thick">
+        <li>
+            <span class="primary icon bubble color blue">
                 <i class="zmdi zmdi-info"></i>
             </span>
-            <span>{$c->__('information.info1')}</span>
+            <p>{$c->__('information.info1')}</p>
             <p>{$c->__('information.info2')}</p>
         </li>
     </ul>

@@ -1,25 +1,29 @@
 <div class="tabelem" title="{$c->__('account.title')}" id="account_widget">
     {if="isset($gateway)"}
-    <ul class="active middle divided">
-        <li class="subheader">{$c->__('account.gateway_title')}</li>
+    <ul class="list active middle divided">
+        <li class="subheader">
+            <p>{$c->__('account.gateway_title')}</p>
+        </li>
         {loop="$gateway"}
-        <li class="condensed action" onclick="Account_ajaxGetRegistration('{$value->node}')">
-            <div class="action">
-                <i class="zmdi zmdi-chevron-right"></i>
-            </div>
-            <span class="icon">
+        <li onclick="Account_ajaxGetRegistration('{$value->node}')">
+            <span class="primary icon">
                 <i class="zmdi zmdi-swap"></i>
             </span>
-            <span>{$value->name}</span>
+            <span class="control icon gray">
+                <i class="zmdi zmdi-chevron-right"></i>
+            </span>
+            <p>{$value->name}</p>
             <p>{$value->node}</p>
         </li>
         {/loop}
     </ul>
     {/if}
-    <ul class="middle active divided ">
-        <li class="subheader">{$c->__('account.password_change_title')}</li>
+    <ul class="list middle active divided ">
+        <li class="subheader">
+            <p>{$c->__('account.password_change_title')}</p>
+        </li>
         <li>
-            <span class="icon gray">
+            <span class="primary icon gray">
                 <i class="zmdi zmdi-key"></i>
             </span>
             <form name="password" class="">
@@ -38,15 +42,17 @@
                 </a>
             </form>
         </li>
-        <li class="subheader">{$c->__('account.delete_title')}</li>
-        <li class="action" onclick="Account_ajaxRemoveAccount()">
-            <span class="icon red">
+        <li class="subheader">
+            <p>{$c->__('account.delete_title')}</p>
+        </li>
+        <li onclick="Account_ajaxRemoveAccount()">
+            <span class="primary icon red">
                 <i class="zmdi zmdi-delete"></i>
             </span>
-            <div class="action">
+            <span class="control icon gray">
                 <i class="zmdi zmdi-chevron-right"></i>
-            </div>
-            <span>{$c->__('account.delete')}</span>
+            </span>
+            <p class="normal">{$c->__('account.delete')}</p>
         </li>
     </ul>
 </div>

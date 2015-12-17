@@ -1,4 +1,4 @@
-<div id="post_widget" class="card shadow">
+<div id="post_widget">
     {$c->prepareEmpty()}
     {if="$nodeid"}
         <script type="text/javascript">

@@ -247,13 +247,13 @@ main > header {
 }
 
 main > header > div {
-    padding-left: 9rem;
+    /*padding-left: 9rem;*/
     position: relative;
     width: 35%;
     display: inline-block;
     /*overflow: hidden;*/
     box-sizing: border-box;
-    padding-right: 1rem;
+    /*padding-right: 1rem;*/
 }
 
 main > header > div > .return > * {
@@ -262,7 +262,7 @@ main > header > div > .return > * {
     overflow: hidden;
 }
 
-main > header > div > ul.active:not(.context_menu) {
+/*main > header > div > ul.active:not(.context_menu) {
     float: right;
     margin-right: -1rem;
 }
@@ -288,7 +288,7 @@ main > header > div > ul.active:not(.context_menu) li span.icon {
 main > header > div > ul.active:not(.context_menu) li.thin span.icon {
     width: 3rem;
 }
-
+*/
 main > header > div:first-child:nth-last-child(2) ~ div {
     width: 65%;
     position: absolute;
@@ -392,10 +392,12 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     position: absolute;
     top: 0;
     right: 0;
-    /*transition: right 0.2s ease;*/
-    -webkit-transition: -webkit-transform .3s cubic-bezier(.4,0,.2,1);
-    transition: transform .3s cubic-bezier(.4,0,.2,1);
-    background-color: #EEE;
+    -webkit-transition: left .3s cubic-bezier(.4,0,.2,1);
+    transition: left .3s cubic-bezier(.4,0,.2,1);
+}
+
+main > section > div:first-child:nth-last-child(2) ~ div {
+    background-color: white;
 }
 
 main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
@@ -418,15 +420,13 @@ main > section > div > div.contained > * {
     }
     main > section > div:first-child:nth-last-child(2) ~ div {
         width: 100%;
-        -webkit-transform: translateX(100%);
-        transform: translateX(100%);
+        left: 100%;
         z-index: 1;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.23), 0 0 10px rgba(0, 0, 0, 0.16);
     }
 
     main > section > div:first-child:nth-last-child(2) ~ div.enabled {
-        -webkit-transform: translateX(0);
-        transform: translateX(0);
+        left: 0%;
     }
 
     main,
@@ -445,15 +445,15 @@ main footer {
 
 /* Icon */
 span.icon {
-    width: 5rem;
+    /*width: 5rem;
     height: 5rem;
-    position: absolute;
+    position: absolute;*/
     font-size: 3rem;
     line-height: 5rem;
-    top: 50%;
-    left: 2rem;
+    /*top: 50%;
+    left: 2rem;*/
     text-align: center;
-    margin-top: -2.5rem;
+    /*margin-top: -2.5rem;*/
     background-size: cover;
     background-position: center;
 }
@@ -463,7 +463,7 @@ span.icon img {
     max-height: 100%;
 }
 
-span.icon.thumb {
+span.icon.primary.thumb {
     left: 0;
     width: 7rem;
     top: 0;
@@ -559,22 +559,6 @@ main ul li .control > i {
 .card.shadow > .block:not(.subheader) {
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
     border: none;
-}
-
-/* Header */
-
-header.big {
-    background-size: cover, cover;
-    background-position: center center;
-    width: 100%;
-    max-width: 100%;
-    color: white;
-    position: relative;
-    margin-bottom: 2rem;
-}
-
-header.big p {
-    color: white;
 }
 
 /* Dialog */

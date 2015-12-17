@@ -1,45 +1,47 @@
 <div id="admindb" class="tabelem" title="{$c->__('db.legend')}">
-    <ul class="flex large">
-        <li class="subheader">{$c->__('db.legend')}</li>
+    <ul class="list flex large">
+        <li class="subheader">
+            <p>{$c->__('db.legend')}</p>
+        </li>
 
         {if="!$connected"}
-            <li class="block large condensed">
-                <span class="icon bubble color red">
+            <li class="block large">
+                <span class="primary icon bubble color red">
                     <i class="zmdi zmdi-code-setting"></i>
                 </span>
-                <span>{$c->__('db.connect_error')}</span>
+                <p>{$c->__('db.connect_error')}</p>
                 <p>{$errors}</p>
-            </li> 
+            </li>
         {else}
             <li class="block large">
-                <span class="icon bubble color green">
+                <span class="primary icon bubble color green">
                     <i class="zmdi zmdi-code-setting"></i>
                 </span>
-                <span>{$c->__('db.connect_success')}</span>
+                <p class="normal">{$c->__('db.connect_success')}</p>
             </li>
             {if="null !== $infos"}
-                <li class="block large condensed action">
-                    <div class="action">
-                        <a class="button" onclick="{$db_update}"> {$c->__('button.update')}</a>
-                    </div>
-                    <span class="icon bubble color orange">
+                <li class="block large">
+                    <span class="primary icon bubble color orange">
                         <i class="zmdi zmdi-refresh"></i>
                     </span>
-                    <span>{$c->__('db.update')}</span>
+                    <span class="control">
+                        <a class="button" onclick="{$db_update}"> {$c->__('button.update')}</a>
+                    </span>
+                    <p>{$c->__('db.update')}</p>
                     {loop="$infos"}
                         <p>{$value}</p>
                     {/loop}
                 </li>
             {else}
                 <li class="block large">
-                    <span class="icon bubble color green">
-                        <i class="zmdi zmdi-refresh"></i> 
+                    <span class="primary icon bubble color green">
+                        <i class="zmdi zmdi-refresh"></i>
                     </span>
-                    <span>{$c->__('db.up_to_date')}</span>
+                    <p class="normal">{$c->__('db.up_to_date')}</p>
                 </li>
             {/if}
         {/if}
-    </ul> 
+    </ul>
 
     <form class="flex padded_top_bottom">
         <div class="block">

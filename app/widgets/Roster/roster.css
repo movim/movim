@@ -1,5 +1,10 @@
-#roster form {
-    padding: 0 2rem;
+#roster form div {
+    min-height: 0;
+    top: 0;
+}
+
+#roster form div input {
+    padding-top: 2rem;
 }
 
 #roster ul#rosterlist > div > li {
@@ -16,16 +21,17 @@
     overflow: hidden;
 }
 
-#roster ul#rosterlist > div li:first-child:before {
+#roster ul#rosterlist > div li:first-child p:before {
     font-family: "Material-Design-Iconic-Font";
     content: "\f2fb";
     display: inline-block;
+    float: left;
+    margin-right: 1rem;
 }
 
-#roster ul#rosterlist > div.groupshown li:first-child:before {
+#roster ul#rosterlist > div.groupshown li:first-child p:before {
     font-family: "Material-Design-Iconic-Font";
     content: "\f2f9";
-    display: inline-block;
 }
 
 #roster ul#rosterlist > div.groupshown {

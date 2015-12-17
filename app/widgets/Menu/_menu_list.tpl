@@ -1,7 +1,7 @@
 {if="$items"}
     {if="$page == 0"}
         <div id="menu_refresh"></div>
-        <ul class="card shadow active flex stacked" id="menu_wrapper">
+        <ul class="list card shadow active flex stacked" id="menu_wrapper">
     {/if}
 
     {loop="$items"}
@@ -24,25 +24,31 @@
                     +18
                 </span>
             {elseif="$picture != null"}
-                <span class="icon thumb" style="background-image: url({$picture});"></span>
+                <span class="primary icon thumb" style="background-image: url({$picture});"></span>
             {elseif="$value->node == 'urn:xmpp:microblog:0'"}
                 {$url = $value->getContact()->getPhoto('l')}
                 {if="$url"}
-                    <span class="icon thumb" style="background-image: url({$url});">
+                    <span class="primary icon thumb" style="background-image: url({$url});">
                     </span>
                 {else}
-                    <span class="icon thumb color {$value->getContact()->jid|stringToColor}">
+                    <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
             {else}
-                <span class="icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+                <span class="primary icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+            {/if}
+
+            {if="$value->privacy"}
+                <span class="control icon gray" title="{$c->__('menu.public')}">
+                    <i class="zmdi zmdi-portable-wifi"></i>
+                </span>
             {/if}
 
             {if="$value->title != null"}
-                <span>{$value->title}</span>
+                <p class="line">{$value->title}</p>
             {else}
-                <span>{$c->__('menu.contact_post')}</span>
+                <p class="line">{$c->__('menu.contact_post')}</p>
             {/if}
             <p>
                 {if="$value->node == 'urn:xmpp:microblog:0'"}
@@ -58,19 +64,13 @@
                 {$value->published|strtotime|prepareDate}
                 {if="$value->published != $value->updated"}<i class="zmdi zmdi-edit"></i>{/if}
             </p>
-
-            {if="$value->privacy"}
-                <span class="info" title="{$c->__('menu.public')}">
-                    <i class="zmdi zmdi-portable-wifi"></i>
-                </span>
-            {/if}
             <p>{$value->contentcleaned|stripTags}</p>
         </li>
     {/loop}
     {if="count($items) == $paging"}
     <li id="history" class="block large" onclick="{$history} this.parentNode.removeChild(this);">
-        <span class="icon"><i class="zmdi zmdi-time-restore"></i></span>
-        <span>{$c->__('post.older')}</span>
+        <span class="icon primary"><i class="zmdi zmdi-time-restore"></i></span>
+        <p class="normal center">{$c->__('post.older')}</p>
     </li>
     {/if}
 

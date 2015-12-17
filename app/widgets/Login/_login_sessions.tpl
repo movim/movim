@@ -1,23 +1,23 @@
 <section>
     <h3>{$c->__('account.title')}</h3>
     <br />
-    <ul class="active">
+    <ul class="list active middle">
         {loop="$sessions"}
-        <li id="{$value->jid}" class="action condensed" title="{$value->jid}">
-            <div class="action">
-                <i class="zmdi zmdi-close"></i>
-            </div>
+        <li id="{$value->jid}" title="{$value->jid}">
             {$url = $value->getPhoto('s')}
             {if="$url"}
-                <span class="icon bubble">
+                <span class="primary icon bubble">
                     <img src="{$url}">
                 </span>
             {else}
-                <span class="icon bubble color {$value->jid|stringToColor}">
+                <span class="primary icon bubble color {$value->jid|stringToColor}">
                     <i class="zmdi zmdi-account"></i>
                 </span>
             {/if}
-            <span>{$value->getTrueName()}</span>
+            <span class="control icon gray">
+                <i class="zmdi zmdi-close"></i>
+            </span>
+            <p>{$value->getTrueName()}</p>
             <p>{$value->jid}</p>
         </li>
         {/loop}

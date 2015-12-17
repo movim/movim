@@ -1,0 +1,388 @@
+ul.list {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.list.middle li:not(.subheader) {
+    padding: 0.75rem 0;
+}
+
+ul.list.thick li:not(.subheader) {
+    padding: 1.5rem 0;
+}
+
+ul.list li {
+    clear: both;
+    position: relative;
+}
+
+ul.list li > *:not(p) {
+    display: inline-block;
+    top: 0;
+}
+
+/* Active list */
+
+
+ul.list.active li:hover:not(.subheader),
+ul.list.active.all li:hover,
+ul.list.active li.active:not(.subheader) {
+    background-color: rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+}
+
+/* Divided list */
+/*
+ul.list.divided:not(.spaced) > li:not(:last-child),
+ul.list.divided.spaced > li:not(:last-child).subheader,
+ul.list.divided.spaced > li:not(:last-child):not(.subheader):after {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+ul.list.divided.spaced > *:not(:last-child):after {
+    position: absolute;
+    right: 0;
+    bottom: 0rem;
+    content: "";
+    display: block;
+    width: calc(100% - 9rem);
+}
+*/
+
+/* Main elements */
+
+ul.list li > .control,
+ul.list li > .primary {
+    width: 5rem;
+    height: 5rem;
+    top: 50%;
+    margin-top: -2.5rem;
+    position: absolute;
+}
+ul.list li > .control.active,
+ul.list li > .primary.active {
+    width: 7rem;
+    height: 7rem;
+    margin-top: -3.5rem;
+    line-height: 7rem;
+}
+
+ul.list li > .primary.active {
+    left: 0;
+}
+
+ul.list li > .control.small,
+ul.list li > .primary.small {
+    width: 3rem;
+    height: 3rem;
+    margin-top: -1.5rem;
+}
+
+ul.list > li > *:not(.counter):not(span):not(.bubble),
+ul.list li.subheader p {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 2rem;
+    padding-left: 2rem;
+}
+
+/* Truncated content */
+
+ul.list li.subheader > p,
+ul.list li > p.line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Not sure */
+/*ul.list li > p > span {
+    float: right;
+    font-size: 1.5rem;
+    color: gray;
+}
+*/
+
+ul.list li > span.active {
+    transition: background-color 0.25s ease;
+}
+
+ul.list li > span.active:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+/*
+ul.list li > span.active {
+    overflow: hidden;
+    margin: -1rem;
+    padding: 1rem;
+    top: 1rem;
+}
+
+ul.list li > span.active:hover {
+    cursor: pointer;
+}
+
+ul.list li > span.active:after {
+    content: "";
+    background: rgba(255,255,255,0.3);
+    display: block;
+    position: absolute;
+    border-radius: 50%;
+    padding-top: 240%;
+    padding-left: 240%;
+    margin-top: -120%;
+    margin-left: -120%;
+    opacity: 0;
+    transition: all 1s;
+}
+
+ul.list li > span.active:active:after {
+    padding-top: 0;
+    padding-left: 0;
+    margin-top: 0;
+    margin-left: 0;
+    opacity: 1;
+    transition: 0s;
+}
+*/
+ul.list li > p > span.second {
+    color: gray;
+}
+
+ul.list li > p > span.info {
+    float: right;
+    font-size: 1.5rem;
+    color: gray;
+}
+
+/* Size automagicaly the content */
+
+ul.list li > p:first-of-type {
+    line-height: 5.5rem;
+    font-size: 3rem;
+}
+
+ul.list li > p.normal {
+    font-size: 2rem;
+}
+
+ul.list li > p.center {
+    text-align: center;
+}
+
+ul.list li > p:nth-last-of-type(3),
+ul.list li > p:nth-last-of-type(2) {
+    line-height: 3rem;
+    font-size: 2rem;
+}
+
+ul.list li > p:nth-last-of-type(3) + p,
+ul.list li > p:nth-last-of-type(2) + p {
+    line-height: 2.5rem;
+    font-size: 1.75rem;
+    max-height: 7.5rem;
+    overflow: hidden;
+}
+
+ul.list li > p:nth-last-of-type(3) + p.all,
+ul.list li > p:nth-last-of-type(2) + p.all {
+    max-height: auto;
+}
+
+/* Subheader */
+
+ul.list li.subheader > p {
+    font-size: 1.75rem;
+    line-height: 5rem;
+    font-weight: 600;
+    padding: 0 2rem;
+}
+
+/* If we have a primary control */
+
+
+ul.list li > .primary {
+    left: 2rem;
+}
+
+ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control) {
+    padding-left: 9rem;
+}
+
+/* Place the other controls */
+
+ul.list li > .control {
+    right: 0;
+}
+
+ul.list li > .control ~ .control {
+    right: 8rem;
+}
+
+ul.list li > .control ~ .control ~ .control {
+    right: 16rem;
+}
+
+/* Limit the size of the main content */
+
+ul.list li > .control ~ *:not(.control):not(.bubble) {
+    width: calc(100% - 8rem);
+}
+
+ul.list li > .control ~ .control ~ *:not(.control):not(.bubble) {
+    width: calc(100% - 16rem);
+}
+
+ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble) {
+    width: calc(100% - 24rem);
+}
+
+/* Tabs */
+
+ul.tabs {
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    white-space: nowrap;
+    height: 6rem;
+    line-height: 6rem;
+}
+
+ul.tabs:hover {
+    overflow-x: auto;
+}
+
+ul.tabs > li {
+    display: inline-block;
+    white-space: nowrap;
+    text-transform: uppercase;
+    font-size: 1.75rem;
+    font-weight: 600;
+    opacity: 0.6;
+    height: 6rem;
+    box-sizing: border-box;
+}
+
+ul.tabs > li > a {
+    padding: 0 3rem;
+}
+
+ul.tabs > li:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+ul.tabs > li.active {
+    opacity: 1;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+}
+
+/* Counter */
+
+ul li span.counter:empty {
+    display: none;
+}
+
+ul li span.counter {
+    position: absolute;
+    right: 1rem;
+    top: calc(50% - 1.5rem);
+    line-height: 2rem;
+    border-radius: 3rem;
+    padding: 0.5rem;
+    text-align: center;
+    min-width: 2rem;
+    font-size: 2rem;
+}
+
+ul li span.counter.bottom {
+    top: calc(50%);
+}
+
+/* Bubble */
+
+ul li div.bubble {
+    padding: 1rem 2rem;
+    border-radius: 0.25rem;
+    line-height: 2.75rem;
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    font-size: 1.75rem;
+    background-color: white;
+    border-color: white;
+    max-width: calc(100% - 9rem);
+    float: left;
+
+    left: 9rem;
+    padding-left: 2rem;
+    width: auto;
+}
+
+ul li div.bubble > p {
+    display: inline;
+}
+
+ul li.oppose div.bubble {
+    margin-right: 9rem;
+    float: right;
+    position: initial;
+}
+
+ul li div.bubble span.info {
+    float: right;
+    padding-left: 1rem;
+}
+
+ul li.same span.icon {
+    display: none;
+}
+
+ul li div.bubble:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+}
+
+ul li:not(.same) div.bubble:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -1.5rem;
+    border-top: 1.5rem solid black;
+    border-top-color: inherit;
+    border-left: 1.5rem solid transparent;
+    border-right: 1.5rem solid transparent;
+}
+
+ul li.oppose:not(.same) div.bubble:before {
+    left: calc(100% - 10.5rem);
+    top: 1.5rem;
+}
+
+/* Menu */
+
+ul.context_menu {
+    border-radius: 0.25rem;
+    overflow: hidden;
+    background-color: white;
+    color: #333;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+    z-index: 3;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.26), 0px 2px 10px 0px rgba(0, 0, 0, 0.16);
+    display: none;
+}
+
+ul.context_menu.shown {
+    display: block;
+}
+

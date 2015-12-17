@@ -1,69 +1,71 @@
 <div id="api" class="tabelem paddedtop" title="{$c->__("api.title")}">
-    <ul>
-        <li class="subheader">{$infos}</li>
+    <ul class="list">
+        <li class="subheader">
+            <p>{$infos}</p>
+        </li>
 
     {if="isset($json)"}
         {if="$json->status == 200"}
             <li>
-                <span class="icon bubble color green">
+                <span class="primary icon bubble color green">
                     <i class="zmdi zmdi-cloud"></i>
                 </span>
                 {if="!$unregister_status"}
-                    <div class="action">
+                    <span class="control">
                         <a class="button oppose" onclick="{$unregister}">
                             {$c->__('button.unregister')}
                         </a>
-                    </div>
+                    </span>
                 {/if}
-                <span>{$c->__('api.registered')}</span>
+                <p class="normal">{$c->__('api.registered')}</p>
             </li>
 
             {if="$json->pod->activated"}
                 <li>
-                    <span class="icon bubble color green">
+                    <span class="primary icon bubble color green">
                         <i class="zmdi zmdi-cloud"></i>
                     </span>
-                    <span>{$c->__('api.validated')}</span>
+                    <p class="normal">{$c->__('api.validated')}</p>
                 </li>
             {else}
                 <li>
-                    <span class="icon bubble color gray">
+                    <span class="primary icon bubble color gray">
                         <i class="zmdi zmdi-cloud-off"></i>
                     </span>
-                    <span>{$c->__('api.wait')}</span>
+                    <p class="normal">{$c->__('api.wait')}</p>
                 </li>
             {/if}
 
             {if="$unregister_status"}
                 <li>
-                    <div class="action">
+                    <span class="control">
                         <a class="button oppose" onclick="{$unregister}">
                             {$c->__('button.reset')}
                         </a>
-                    </div>
-                    <span>{$c->__('api.unregister')}</span>
+                    </span>
+                    <p class="normal">{$c->__('api.unregister')}</p>
                 </li>
             {/if}
             <script type="text/javascript">AdminTest.enableAPI();</script>
         {else}
             <li>
-                <span class="icon bubble color blue">
+                <span class="primary icon bubble color blue">
                     <i class="zmdi zmdi-cloud-off"></i>
                 </span>
-                <div class="action">
+                <span class="control">
                     <a class="button oppose" onclick="{$register}">
                         {$c->__('button.register')}
                     </a>
-                </div>
-                <span>{$c->__('api.register')}</span>
+                </span>
+                <p class="normal">{$c->__('api.register')}</p>
             </li>
         {/if}
     {else}
         <li>
-            <span class="icon bubble color gray">
+            <span class="primary icon bubble color gray">
                 <i class="zmdi zmdi-cloud-off"></i>
             </span>
-            {$c->__('api.error')}
+            <p class="normal">{$c->__('api.error')}</p>
         </li>
     {/if}
     </ul>

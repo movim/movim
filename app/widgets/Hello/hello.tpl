@@ -1,40 +1,52 @@
+<header>
+    <ul class="list middle">
+        <li>
+            <span id="menu" class="primary on_mobile icon active" onclick="MovimTpl.toggleMenu()"><i class="zmdi zmdi-menu"></i></span>
+            <span class="primary on_desktop icon"><i class="zmdi zmdi-home"></i></span>
+            <p class="center">{$c->__('page.home')}</p>
+        </li>
+    </ul>
+</header>
+
 <div id="hello_widget" class="divided">
     {if="!isset($top) || !isset($news)"}
-        <ul class="simple thick">
+        <ul class="list thick">
             {$a = '1f600'}
             <li>
-                <h2>{$c->__('hello.enter_title')}</h2>
-                <p class="all">{$c->__('hello.enter_paragraph')} <img alt=":smiley:" class="emoji" src="{$a|getSmileyPath}"></p>
+                <p>{$c->__('hello.enter_title')}</p>
+                <p>{$c->__('hello.enter_paragraph')} <img alt=":smiley:" class="emoji" src="{$a|getSmileyPath}"></p>
             </li>
         </ul>
-        <ul class="middle">
-            <li class="condensed">
-                <span class="icon gray">
+        <ul class="list middle">
+            <li>
+                <span class="primary icon gray">
                     <i class="zmdi zmdi-menu on_mobile"></i>
                     <i class="zmdi zmdi-cloud-outline on_desktop"></i>
                 </span>
-                <span>{$c->__('hello.menu_title')}</span>
-                <p class="all">{$c->__('hello.menu_paragraph')}</p>
+                <p>{$c->__('hello.menu_title')}</p>
+                <p>{$c->__('hello.menu_paragraph')}</p>
             </li>
         </ul>
     {/if}
-    <ul class="flex active middle">
-        <li class="subheader block large">{$c->__('chat.frequent')}</li>
+    <ul class="list flex active middle">
+        <li class="subheader block large">
+            <p>{$c->__('chat.frequent')}</p>
+        </li>
         {if="empty($top)"}
             <li>
-                <span class="icon gray">
+                <span class="primary icon gray">
                     <i class="zmdi zmdi-info-outline"></i>
                 </span>
-                <span>{$c->__('chats.empty_title')}</span>
+                <p class="normal">{$c->__('chats.empty_title')}</p>
             </li>
         {/if}
         {loop="$top"}
-            <li tabindex="{$key+1}" class="block action {if="$value->status"}condensed{/if}"
+            <li tabindex="{$key+1}" class="block"
                 onclick="Hello_ajaxChat('{$value->jid}')">
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
                     <span
-                        class="icon bubble
+                        class="primary icon bubble
                         {if="$value->value"}
                             status {$presencestxt[$value->value]}
                         {/if}">
@@ -42,7 +54,7 @@
                     </span>
                 {else}
                     <span
-                        class="icon bubble color {$value->jid|stringToColor}
+                        class="primary icon bubble color {$value->jid|stringToColor}
                         {if="$value->value"}
                             status {$presencestxt[$value->value]}
                         {/if}">
@@ -50,35 +62,41 @@
                     </span>
                 {/if}
 
-                <span>{$value->getTrueName()}</span>
-                <p class="wrap">{$value->status}</p>
+                <p>{$value->getTrueName()}</p>
+                <p>
+                    {if="isset($value->status)"}
+                        {$value->status}
+                    {else}
+                        {$value->jid}
+                    {/if}
+                </p>
             </li>
         {/loop}
         <a class="block large" href="{$c->route('chat')}">
-            <li class="action">
-                <div class="action">
-                    <i class="zmdi zmdi-chevron-right"></i>
-                </div>
-                <span class="icon">
+            <li>
+                <span class="primary icon">
                     <i class="zmdi zmdi-comments"></i>
                 </span>
-                <span>{$c->__('hello.chat')}</span>
+                <span class="control icon">
+                    <i class="zmdi zmdi-chevron-right"></i>
+                </span>
+                <p class="normal">{$c->__('hello.chat')}</p>
             </li>
         </a>
     </ul>
     {if="$c->supported('pubsub')"}
-        <ul id="news" class="card shadow flex active">
+        <ul id="news" class="list card shadow flex active">
             {if="empty($news)"}
                 <li>
-                    <span class="icon gray">
+                    <span class="control icon gray">
                         <i class="zmdi zmdi-info-outline"></i>
                     </span>
-                    <span>{$c->__('menu.empty_title')}</span>
+                    <p>{$c->__('menu.empty_title')}</p>
                 </li>
             {/if}
             {loop="$news"}
                 {$attachements = $value->getAttachements()}
-                <li class="block condensed"
+                <li class="block "
                     data-id="{$value->nodeid}"
                     {if="$value->title != null"}
                         title="{$value->title|strip_tags}"
@@ -89,29 +107,29 @@
                 >
                     {$picture = $value->getPicture()}
                     {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                        <span class="icon thumb color red tiny">
+                        <span class="primary icon thumb color red tiny">
                             +18
                         </span>
                     {elseif="$picture != null"}
-                        <span class="icon thumb" style="background-image: url({$picture});"></span>
+                        <span class="primary icon thumb" style="background-image: url({$picture});"></span>
                     {elseif="$value->node == 'urn:xmpp:microblog:0'"}
                         {$url = $value->getContact()->getPhoto('l')}
                         {if="$url"}
-                            <span class="icon thumb" style="background-image: url({$url});">
+                            <span class="primary icon thumb" style="background-image: url({$url});">
                             </span>
                         {else}
-                            <span class="icon thumb color {$value->getContact()->jid|stringToColor}">
+                            <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
                                 <i class="zmdi zmdi-account"></i>
                             </span>
                         {/if}
                     {else}
-                        <span class="icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+                        <span class="primary icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
                     {/if}
 
                     {if="$value->title != null"}
-                        <span>{$value->title}</span>
+                        <p class="line">{$value->title}</p>
                     {else}
-                        <span>{$c->__('hello.contact_post')}</span>
+                        <p class="line">{$c->__('hello.contact_post')}</p>
                     {/if}
                     <p>
                         {if="$value->node == 'urn:xmpp:microblog:0'"}
@@ -137,39 +155,39 @@
                 </li>
             {/loop}
             <a href="{$c->route('news')}">
-                <li class="action">
-                    <div class="action">
-                        <i class="zmdi zmdi-chevron-right"></i>
-                    </div>
-                    <span class="icon">
+                <li>
+                    <span class="primary icon">
                         <i class="zmdi zmdi-receipt"></i>
                     </span>
-                    <span>{$c->__('hello.news_page')}</span>
+                    <span class="control icon">
+                        <i class="zmdi zmdi-chevron-right"></i>
+                    </span>
+                    <p class="normal line">{$c->__('hello.news_page')}</p>
                 </li>
             </a>
         </ul>
         <br />
-        <ul class="active thick on_desktop">
+        <ul class="list active on_desktop">
             <a href="{$c->route('blog', array($jid))}" target="_blank">
-                <li class="condensed action">
-                    <div class="action">
-                        <i class="zmdi zmdi-chevron-right"></i>
-                    </div>
-                    <span class="icon">
+                <li>
+                    <span class="primary icon">
                         <i class="zmdi zmdi-portable-wifi"></i>
                     </span>
-                    <span>{$c->__('hello.blog_title')}</span>
+                    <span class="control icon">
+                        <i class="zmdi zmdi-chevron-right"></i>
+                    </span>
+                    <p class="list">{$c->__('hello.blog_title')}</p>
                     <p>{$c->__('hello.blog_text')}</p>
                 </li>
                 <br/>
             </a>
         </ul>
-        <ul class="thick flex on_desktop">
-            <li class="condensed block">
-                <span class="icon bubble color blue">
+        <ul class="list thick flex on_desktop">
+            <li class="block">
+                <span class="primary icon bubble color blue">
                     <i class="zmdi zmdi-share"></i>
                 </span>
-                <span>{$c->__('hello.share_title')}</span>
+                <p class="line">{$c->__('hello.share_title')}</p>
                 <p>{$c->__('hello.share_text')}</p>
             </li>
             <li class="block">

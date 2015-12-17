@@ -1,64 +1,64 @@
 <div>
-    <span class="on_desktop icon"><i class="zmdi zmdi-pages"></i></span>
-    <h2>
-        {$c->__('page.groups')}
-    </h2>
+    <ul class="list middle">
+        <li>
+            <span class="primary on_desktop icon"><i class="zmdi zmdi-pages"></i></span>
+            <p>
+                {$c->__('page.groups')}
+            </p>
+        </li>
+    </ul>
 </div>
 <div>
-    <ul class="active">
-        {if="$subscription == null"}
-            <li title="{$c->__('group.subscribe')}"
-                onclick="Group_ajaxAskSubscribe('{$item->server}', '{$item->node}')">
-                <span class="icon">
-                    <i class="zmdi zmdi-bookmark-outline"></i>
-                </span>
-            </li>
-        {else}
-            <li title="{$c->__('group.unsubscribe')}"
-                onclick="Group_ajaxAskUnsubscribe('{$item->server}', '{$item->node}')">
-                <span class="icon">
-                    <i class="zmdi zmdi-bookmark"></i>
-                </span>
-            </li>
-        {/if}
-        {if="$role == 'owner'"}
-            <li class="thin show_context_menu">
-                <span class="icon">
+    <ul class="list middle">
+        <li>
+            <span id="back" class="primary icon active" onclick="MovimTpl.hidePanel(); Group_ajaxClear(); Groups_ajaxHeader();">
+                <i class="zmdi zmdi-arrow-back"></i>
+            </span>
+            {if="$role == 'owner'"}
+                <span class="control show_context_menu icon active">
                     <i class="zmdi zmdi-more-vert"></i>
                 </span>
-            </li>
-        {/if}
-    </ul>
-    <div class="return active condensed {if="$role == 'owner'"}r2{else}r1{/if}"
-        onclick="MovimTpl.hidePanel(); Group_ajaxClear(); Groups_ajaxHeader();">
-        <span id="back" class="icon"><i class="zmdi zmdi-arrow-back"></i></span>
-        <h2>
-            {if="$item != null"}
-                {if="$item->name"}
-                    {$item->name}
-                {else}
-                    {$item->node}
-                {/if}
             {/if}
-        </h2>
-        {if="$item->description"}
-            <h4 title="{$item->description|strip_tags}">
-                {$item->description|strip_tags}
-            </h4>
-        {else}
-            <h4>{$item->server}</h4>
-        {/if}
-    </div>
+            {if="$subscription == null"}
+                <span class="control icon active" title="{$c->__('group.subscribe')}"
+                onclick="Group_ajaxAskSubscribe('{$item->server}', '{$item->node}')">
+                    <i class="zmdi zmdi-bookmark-outline"></i>
+                </span>
+            {else}
+                <span class="control icon active" title="{$c->__('group.unsubscribe')}"
+                onclick="Group_ajaxAskUnsubscribe('{$item->server}', '{$item->node}')">
+                    <i class="zmdi zmdi-bookmark"></i>
+                </span>
+            {/if}
+            <p class="line">
+                {if="$item != null"}
+                    {if="$item->name"}
+                        {$item->name}
+                    {else}
+                        {$item->node}
+                    {/if}
+                {/if}
+            </p>
+            {if="$item->description"}
+                <p class="line" title="{$item->description|strip_tags}">
+                    {$item->description|strip_tags}
+                </p>
+            {else}
+                <p class="line">{$item->server}</p>
+            {/if}
+        </li>
+    </ul>
+
     {if="$role == 'owner'"}
-        <ul class="simple context_menu active">
+        <ul class="list context_menu active">
             <li onclick="Group_ajaxGetConfig('{$item->server}', '{$item->node}')">
-                <span>{$c->__('group.configuration')}</span>
+                <p class="normal">{$c->__('group.configuration')}</p>
             </li>
             <li onclick="Group_ajaxGetSubscriptions('{$item->server}', '{$item->node}', true)">
-                <span>{$c->__('group.subscriptions')}</span>
+                <p class="normal">{$c->__('group.subscriptions')}</p>
             </li>
             <li onclick="Group_ajaxDelete('{$item->server}', '{$item->node}')">
-                <span>{$c->__('button.delete')}</span>
+                <p class="normal">{$c->__('button.delete')}</p>
             </li>
         </ul>
     {/if}

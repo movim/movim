@@ -1,12 +1,12 @@
 {if="isset($action)"}
 <a href="{$action}">
 {/if}
-    <ul class="{if="!isset($picture)"}simple{/if}">
-        <li class="{if="isset($body)"}condensed{/if}">
+    <ul class="list">
+        <li>
         {if="isset($picture)"}
-            <span class="icon bubble"><img src="{$picture}"></span>
+            <span class="primary icon bubble"><img src="{$picture}"></span>
         {/if}
-        <span>{$title}</span>
+        <p>{$title}</p>
         {if="isset($body)"}
             <p>{$body}</p>
         {/if}

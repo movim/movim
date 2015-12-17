@@ -1,30 +1,32 @@
 {if="!$c->supported('anonymous') && $c->getView() != 'room'"}
-    <ul class="thin divided spaced active">
+    <ul class="list divided spaced active">
         <li class="subheader">
-            {$c->__('chatrooms.title')}
-            <span class="info">{$conferences|count}</span>
+            <p>
+                <span class="info">{$conferences|count}</span>
+                {$c->__('chatrooms.title')}
+            </p>
         </li>
         {loop="$conferences"}
             <li data-jid="{$value->conference}"
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
                 class="room {if="$value->connected"}online{/if}">
                 {if="$value->connected"}
-                    <span class="icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts"></i></span>
+                    <span class="primary icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts"></i></span>
                 {else}
-                    <span class="disabled icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts-outline"></i></span>
+                    <span class="primary disabled icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts-outline"></i></span>
                 {/if}
-                <span>{$value->name}</span>
-                <span class="second">{$value->conference}</span>
+                <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
             </li>
         {/loop}
     </ul>
     {if="$conferences == null"}
-    <ul class="thick spaced">
-        <li class="condensed">
-            <span class="icon green">
+    <ul class="list thick spaced">
+        <li>
+            <span class="primary icon green">
                 <i class="zmdi zmdi-accounts-outline"></i>
             </span>
-            <p>{$c->__('rooms.empty_text1')} {$c->__('rooms.empty_text2')}</p>
+            <p>{$c->__('rooms.empty_text1')}</p>
+            <p>{$c->__('rooms.empty_text2')}</p>
         </li>
     </ul>
     {/if}

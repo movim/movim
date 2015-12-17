@@ -1,4 +1,4 @@
-<ul class="middle divided spaced active">
+<ul class="list middle divided spaced active">
     {loop="$nodes"}
         <li
             class="
@@ -10,33 +10,36 @@
             title="{$value->server} - {$value->node}"
         >
             {if="$value->subscription == 'subscribed'"}
-                <div class="action">
+                <span class="control icon gray">
                     <i class="zmdi zmdi-bookmark"></i>
-                </div>
+                </span>
             {/if}
-            <span class="icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
-            <span>
+            <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+            <p class="line">
                 {if="$value->name"}
                     {$value->name}
                 {else}
                     {$value->node}
                 {/if}
-                
-                {if="$value->description"}
                 <span class="second">
-                    {$value->description|strip_tags}
+                    {if="$value->description"}
+                        {$value->description|strip_tags}
+                    {/if}
                 </span>
-                {/if}                
-            </span>
-            <p class="wrap">
-                {if="$value->sub > 0"}
-                    {$c->__('groups.sub', $value->sub)}
-                {/if}
-                {if="$value->sub > 0 && $value->num > 0"}
-                  - 
-                {/if}
-                {if="$value->num > 0"}
-                     {$c->__('groups.num', $value->num)}
+            </p>
+            <p>
+                {if="isset($value->sub)"}
+                    {if="$value->sub > 0"}
+                        {$c->__('groups.sub', $value->sub)}
+                    {/if}
+                    {if="$value->sub > 0 && $value->num > 0"}
+                      -
+                    {/if}
+                    {if="$value->num > 0"}
+                         {$c->__('groups.num', $value->num)}
+                    {/if}
+                {else}
+                    {$value->node}
                 {/if}
             </p>
         </li>

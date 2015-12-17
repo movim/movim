@@ -1,6 +1,7 @@
+<br />
 <h2 class="thin">{$c->__('post.hot')}</h2>
 <h4 class="gray">{$c->__('post.hot_text')}</h4><br />
-<ul class="flex card shadow active">
+<ul class="list flex card shadow active">
 {loop="$posts"}
     {if="!filter_var($value->origin, FILTER_VALIDATE_EMAIL)"}
         {$attachements = $value->getAttachements()}
@@ -11,23 +12,23 @@
             data-node="{$value->node}">
             {$picture = $value->getPicture()}
             {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                <span class="icon thumb color red tiny">
+                <span class="primary icon thumb color red tiny">
                     +18
                 </span>
             {elseif="$picture != null"}
-                <span class="icon thumb" style="background-image: url({$picture});"></span>
+                <span class="primary icon thumb" style="background-image: url({$picture});"></span>
             {else}
-                <span class="icon thumb color {$value->node|stringToColor}">
+                <span class="primary icon thumb color {$value->node|stringToColor}">
                     {$value->node|firstLetterCapitalize}
                 </span>
             {/if}
-            <span>
+            <p class="line">
             {if="isset($value->title)"}
                 {$value->title}
             {else}
                 {$value->node}
             {/if}
-            </span>
+            </p>
             <p>
                 {$value->origin} /
                 <a href="{$c->route('group', array($value->origin, $value->node))}">
@@ -45,14 +46,14 @@
     {/if}
 {/loop}
 </ul>
-<ul class="active thick">
+<ul class="list active thick">
     <a href="{$c->route('group')}">
-        <li class="action">
-            <div class="action">
+        <li>
+            <span class="primary icon"><i class="zmdi zmdi-pages"></i></span>
+            <span class="control icon">
                 <i class="zmdi zmdi-chevron-right"></i>
-            </div>
-            <span class="icon"><i class="zmdi zmdi-pages"></i></span>
-            <span>Discover more articles on the Groups page</span>
+            </span>
+            <p class="normal">{$c->__('post.discover')}</p>
         </li>
     </a>
 </ul>

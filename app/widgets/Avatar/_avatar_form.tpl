@@ -24,28 +24,27 @@
         </div>
     </div>
     <div class="block">
-        <ul class="thick divided">
-            <li class="condensed">
-                <span class="icon bubble color green">
+        <ul class="list thick divided">
+            <li>
+                <span class="primary icon bubble color green">
                     <i class="zmdi zmdi-attachment-alt"></i>
                 </span>
-                <span>{$c->__('avatar.file')}</span>
+                <p>{$c->__('avatar.file')}</p>
                 <p><input type="file" onchange="Avatar.file(this.files);"></p>
             </li>
             {if="isset($gravatar)"}
-            <li class="condensed action">
-                <div class="action">
+            <li>
+                <span class="primary icon bubble color blue">
+                    <img src="http://www.gravatar.com/avatar/{$gravatar->entry[0]->hash}?s=50" />
+                </span>
+                <p>Gravatar</p>
+                <p>We found a Gravatar picture<br />
                     <a
                         onclick="Avatar.preview('data:image/jpeg;base64,{$gravatar_bin}')"
                         class="button flat">
                         {$c->__('avatar.use_it')}
                     </a>
-                </div>
-                <span class="icon bubble color blue">
-                    <img src="http://www.gravatar.com/avatar/{$gravatar->entry[0]->hash}?s=50" />
-                </span>
-                <span>Gravatar</span>
-                <p>We found a Gravatar picture</p>
+                </p>
             </li>
             {/if}
         </ul>

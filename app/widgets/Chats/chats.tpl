@@ -1,4 +1,4 @@
-<ul id="chats_widget_list" class="middle active divided spaced">{$list}</ul>
+<ul id="chats_widget_list" class="list middle active divided spaced">{$list}</ul>
 
 <div class="placeholder icon">
     <h1>{$c->__('chats.empty_title')}</h1>

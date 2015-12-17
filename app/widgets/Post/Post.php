@@ -111,6 +111,7 @@ class Post extends WidgetBase
 
         Header::fill($header);
         RPC::call('movim_fill', 'post_widget', $html);
+        RPC::call('MovimTpl.scrollHeaders');
     }
 
     function ajaxDelete($to, $node, $id)

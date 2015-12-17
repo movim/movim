@@ -3,7 +3,7 @@
         <h3>{$c->__('status.status')}</h3>
 
         <div>
-            <textarea 
+            <textarea
                 spellcheck="false"
                 name="status"
                 placeholder="{$c->__('status.here')}"
@@ -12,55 +12,57 @@
         </div>
 
         <div>
-            <ul class="active">
-                <li class="action">
-                    <span class="icon bubble color small green"></span>
-                    <div class="action">
+            <ul class="list active">
+                <li>
+                    <span class="primary icon bubble color small green"></span>
+                    <span class="control">
                         <div class="radio">
                             <input type="radio" name="value" id="chat" value="chat" {if="isset($p) && $p->value == 1"}checked="checked"{/if}/>
                             <label for="chat"></label>
                         </div>
-                    </div>
-                    <span>{$txt[1]}</span>
+                    </span>
+                    <p class="normal">{$txt[1]}</p>
                 </li>
-                <li class="action">
-                    <span class="icon bubble color small orange"></span>
-                    <div class="action">
+                <li>
+                    <span class="primary icon bubble color small orange"></span>
+                    <span class="control">
                         <div class="radio">
                             <input type="radio" name="value" id="away" value="away" {if="isset($p) && $p->value == 2"}checked="checked"{/if}/>
                             <label for="away"></label>
                         </div>
-                    </div>
-                    <span>{$txt[2]}</span>
+                    </span>
+                    <p class="normal">{$txt[2]}</p>
                 </li>
-                <li class="action">
-                    <span class="icon bubble color small red"></span>
-                    <div class="action">
+                <li>
+                    <span class="primary icon bubble color small red"></span>
+                    <span class="control">
                         <div class="radio">
                             <input type="radio" name="value" id="dnd" value="dnd" {if="isset($p) && $p->value == 3"}checked="checked"{/if}/>
                             <label for="dnd"></label>
                         </div>
-                    </div>
-                    <span>{$txt[3]}</span>
+                    </span>
+                    <p class="normal">{$txt[3]}</p>
                 </li>
-                <li class="action">
-                    <span class="icon bubble color small purple"></span>
-                    <div class="action">
+                <li>
+                    <span class="primary icon bubble color small purple"></span>
+                    <span class="control">
                         <div class="radio">
                             <input type="radio" name="value" id="xa" value="xa" {if="isset($p) && $p->value == 4"}checked="checked"{/if}/>
                             <label for="xa"></label>
                         </div>
-                    </div>
-                    <span>{$txt[4]}</span>
+                    </span>
+                    <p class="normal">{$txt[4]}</p>
                 </li>
             </ul>
         </div>
     </form>
-    <ul class="active">
-        <li class="subheader">{$c->__('status.disconnect')}</li>
+    <ul class="list active">
+        <li class="subheader">
+            <p class="normal">{$c->__('status.disconnect')}</p>
+        </li>
         <li onclick="{$calllogout}">
-            <span class="icon"><i class="zmdi zmdi-sign-in"></i></span>
-            <span>{$c->__('status.disconnect')}</span>
+            <span class="primary icon"><i class="zmdi zmdi-sign-in"></i></span>
+            <p class="normal">{$c->__('status.disconnect')}</p>
         </li>
     </ul>
                 <!--

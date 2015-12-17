@@ -1,10 +1,10 @@
-<ul class="middle">
+<ul class="list middle">
     <li>
-        <span class="icon gray">
+        <span class="primary icon gray">
             <i class="zmdi zmdi-comment"></i>
         </span>
-        <span>
+        <p class="normal">
             {$c->__('post.comments_disabled')}
-        </span>
+        </p>
     </li>
 </ul>

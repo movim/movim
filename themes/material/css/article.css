@@ -29,6 +29,7 @@ article section {
     line-height: 3rem;
     font-weight: 500;
     padding: 0 2rem;
+    padding-top: 2rem;
 }
 
 article img,
@@ -75,6 +76,14 @@ article section content b {
 article section content code,
 article section content pre {
     font-family: monospace;
+}
+
+article section content pre {
+    color: white;
+    padding: 1rem;
+    font-size: 1.5rem;
+    margin: 1rem 0;
+    background-color: #333;
 }
 
 article section content cite,

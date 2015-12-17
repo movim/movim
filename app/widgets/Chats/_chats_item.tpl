@@ -9,36 +9,39 @@
         {/if}
         "
     title="{$contact->jid}">
-    {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
-        <div class="action">
-            <i class="zmdi zmdi-smartphone"></i>
-        </div>
-    {/if}
-    {if="$caps && $caps->type == 'web'"}
-        <div class="action">
-            <i class="zmdi zmdi-globe-alt"></i>
-        </div>
-    {/if}
-    <span data-key="chat|{$contact->jid}" class="counter bottom"></span>
     {$url = $contact->getPhoto('s')}
     {if="$url"}
-        <span class="icon bubble {if="isset($presence)"}status {$presence}{/if}">
+        <span class="primary icon bubble {if="isset($presence)"}status {$presence}{/if}">
             <img src="{$url}">
         </span>
     {else}
-        <span class="icon bubble color {$contact->jid|stringToColor} {if="isset($presence)"}status {$presence}{/if}">
+        <span class="primary icon bubble color {$contact->jid|stringToColor} {if="isset($presence)"}status {$presence}{/if}">
             <i class="zmdi zmdi-account"></i>
         </span>
     {/if}
-    <span>{$contact->getTrueName()}</span>
+
+    {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
+        <span class="control icon gray">
+            <i class="zmdi zmdi-smartphone"></i>
+        </span>
+    {/if}
+    {if="$caps && $caps->type == 'web'"}
+        <span class="control icon gray">
+            <i class="zmdi zmdi-globe-alt"></i>
+        </span>
+    {/if}
+    <span data-key="chat|{$contact->jid}" class="counter bottom"></span>
+    <p class="normal">
+        <span class="info">{$message->published|strtotime|prepareDate}</span>
+        {$contact->getTrueName()}
+    </p>
     {if="isset($status)"}
         <p>{$status}</p>
     {else}
         {if="isset($message)"}
-            <span class="info">{$message->published|strtotime|prepareDate}</span>
             {if="preg_match('#^\?OTR#', $message->body)"}
                 <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
-            {else}
+            {elseif="stripTags(prepareString($message->body)) != ''"}
                 <p>{$message->body|prepareString|stripTags}</p>
             {/if}
         {/if}

@@ -1,8 +1,11 @@
 <div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
-    <ul class="thick">
+    <ul class="list thick">
         {if="$mode == 'blog'"}
-        <li class="action {if="isset($contact->description)"}condensed{/if}">
-            <div class="action">
+        <li>
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-edit"></i>
+            </span>
+            <span class="control icon">
                 <a
                     href="{$c->route('feed', array($contact->jid))}"
                     target="_blank"
@@ -10,22 +13,19 @@
                 >
                     <i class="zmdi zmdi-portable-wifi"></i>
                 </a>
-            </div>
-            <span class="icon gray">
-                <i class="zmdi zmdi-edit"></i>
             </span>
             {if="$contact"}
-            <h2>
+            <p>
                 <a href="{$c->route('blog', array($contact->jid))}">
                     {$c->__('blog.title', $contact->getTrueName())}
                 </a>
-            </h2>
+            </p>
             {else}
-            <h2>
+            <p>
                 <a href="{$c->route('blog', array($contact->jid))}">
                     {$c->__('page.blog')}
                 </a>
-            </h2>
+            </p>
             {/if}
             {if="isset($contact->description)"}
                 <p>{$contact->description}</p>
@@ -82,36 +82,34 @@
     {/loop}
     {if="isset($more)"}
         <article>
-            <ul class="active">
+            <ul class="list active">
                 {if="$mode == 'blog'"}
                 <a href="{$c->route('blog', array($contact->jid, $more))}">
                 {else}
                 <a href="{$c->route('group', array($server, $node, $more))}">
                 {/if}
                     <li id="history" class="block large">
-                        <span class="icon"><i class="zmdi zmdi-time-restore"></i></span>
-                        <span>{$c->__('post.older')}</span>
+                        <span class="primary icon"><i class="zmdi zmdi-time-restore"></i></span>
+                        <p class="normal line">{$c->__('post.older')}</p>
                     </li>
                 </a>
             </ul>
         </article>
     {/if}
     {if="$posts == null"}
-        <ul class="simple thick">
+        <ul class="list simple thick">
             <li>
-                <span>{$c->__('blog.empty')}</span>
+                <p>{$c->__('blog.empty')}</p>
             </li>
         </ul>
     {/if}
 
-    <ul>
+    <ul class="list">
         <li>
-            <a target="_blank" href="https://movim.eu">
-                <span class="icon">
-                    <i class="zmdi zmdi-cloud-outline"></i>
-                </span>
-                <span>Powered by Movim</span>
-            </a>
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-cloud-outline"></i>
+            </span>
+            <p class="center normal"><a target="_blank" href="https://movim.eu">Powered by Movim</a></p>
         </li>
     </ul>
 </div>

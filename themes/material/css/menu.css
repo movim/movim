@@ -1,27 +1,37 @@
 /* Menu */
 
-body > nav > ul span.icon {
+body > nav > ul.list li > .primary {
     left: 1rem;
 }
-
+/*
 body > nav > ul:first-child > a:first-child > li,
 body > nav > ul:first-child > a:nth-child(2) > li {
-    height: 7rem;
-    line-height: 7rem;
+    height: 8rem;
+    line-height: 8rem;
 }
-
+*/
+body > nav > ul:nth-child(2) li p.normal,
+body > nav > ul:nth-child(3) li p.normal {
+    height: 6rem;
+    line-height: 6rem;
+}
+/*
 body > nav > ul:first-child > a:first-child > li div.control {
-    line-height: 7rem;
+    line-height: 8rem;
 }
-
+*/
 body > nav > ul a {
     color: white;
 }
-
-body > nav > ul p {
+body > nav > ul.list li > p:nth-last-of-type(2) + p {
     color: gray;
 }
 
+body > nav > ul.list.active li:hover:not(.subheader),
+body > nav > ul.list.active li.active:not(.subheader) {
+    background-color: rgba(255, 255, 255, 0.035);
+}
+/*
 body > nav > header.big {
     overflow: hidden;
     height: 7rem;
@@ -40,6 +50,7 @@ body > nav > header.big ul li .icon {
 body > nav > header.big ul li .control {
     line-height: 5rem;
 }
+*/
 
 ul.oppose {
     position: absolute;
@@ -47,3 +58,4 @@ ul.oppose {
     width: 100%;
     min-width: 10rem;
 }
+

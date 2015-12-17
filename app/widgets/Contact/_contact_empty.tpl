@@ -1,6 +1,6 @@
-<ul class="thick">
+<ul class="list thick">
     <li>
-        <span class="icon bubble color {$jid|stringToColor}">{$jid|firstLetterCapitalize}</span>
-        <h2>{$jid}</h2>
+        <span class="primary icon bubble color {$jid|stringToColor}">{$jid|firstLetterCapitalize}</span>
+        <p class="normal">{$jid}</p>
     </li>
 </ul>

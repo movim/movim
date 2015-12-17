@@ -33,5 +33,6 @@
     .flex .block {
         margin-bottom: 0;
         flex: 1 100%;
+        max-width: 100%;
     }
 }
