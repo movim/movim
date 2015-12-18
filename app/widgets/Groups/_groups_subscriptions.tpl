@@ -7,12 +7,13 @@
         </li>
     </ul>
 {else}
-    <ul class="list divided spaced middle active">
+    <ul class="list divided spaced middle active all">
         {loop="$subscriptions"}
             {if="$c->checkNewServer($value)"}
-                <li class="subheader">
+                <li class="subheader" onclick="Groups_ajaxDisco('{$value->server}')">
+                    <span class="control icon gray"><i class="zmdi zmdi-chevron-right"></i></span>
                     <p>
-                        <a href="#" onclick="Groups_ajaxDisco('{$value->server}')">{$value->server} - {$value->servicename}</a>
+                        {$value->server} - {$value->servicename}
                     </p>
                 </li>
             {/if}

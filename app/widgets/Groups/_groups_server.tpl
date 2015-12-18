@@ -1,4 +1,8 @@
-<ul class="list middle divided spaced active">
+<ul class="list middle divided spaced active all">
+    <li class="subheader" onclick="Groups_ajaxSubscriptions()">
+        <span class="primary icon"><i class="zmdi zmdi-arrow-back"></i></span>
+        <p class="normal"><span class="info">{$nodes|count}</span>{$server}</p>
+    </li>
     {loop="$nodes"}
         <li
             class="

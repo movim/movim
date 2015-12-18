@@ -102,7 +102,7 @@ class XMPPtoForm{
         $input->setAttribute('id', $s);
         $input->setAttribute('name', 'generic_'.$s);
         $input->setAttribute('required', 'required');
-        
+
         $div->appendChild($input);
 
         $label = $this->html->createElement('label', $s);
@@ -111,24 +111,28 @@ class XMPPtoForm{
     }
     private function outTitle($s){
         $ul = $this->html->createElement('ul');
-        $ul->setAttribute('class', 'thin simple');
+        $ul->setAttribute('class', 'list thin');
         $this->html->appendChild($ul);
 
         $li = $this->html->createElement('li');
-        $li->appendChild($this->html->createElement('span', $s));
+        $title = $this->html->createElement('p', $s);
+        $title->setAttribute('class', 'normal line');
+        $li->appendChild($title);
 
         $ul->appendChild($li);
     }
 
     private function outP($s){
         $ul = $this->html->createElement('ul');
-        $ul->setAttribute('class', 'thin simple');
+        $ul->setAttribute('class', 'list thin');
         $this->html->appendChild($ul);
 
         $li = $this->html->createElement('li');
         $ul->appendChild($li);
 
-        $li->appendChild($this->html->createElement('p', $s));
+        $title = $this->html->createElement('p', $s);
+        $title->setAttribute('class', 'normal line');
+        $li->appendChild($title);
     }
 
     private function outUrl($s) {
@@ -161,7 +165,7 @@ class XMPPtoForm{
 
         if($s->required)
             $select->setAttribute('required', 'required');
-        
+
         $div->appendChild($select);
 
         $option = $this->html->createElement('option', __('button.bool_yes'));
@@ -203,7 +207,7 @@ class XMPPtoForm{
         if(empty($textarea->nodeValue)) {
             $textarea->nodeValue = ' ';
         }
-        
+
         $container->appendChild($textarea);
 
         $label = $this->html->createElement('label', $s['label']);
@@ -214,7 +218,7 @@ class XMPPtoForm{
     private function outInput($s, $type, $multiple){
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
-        
+
         $input = $this->html->createElement('input');
         $input->setAttribute('id', $s['var']);
         $input->setAttribute('name', $s['var']);
@@ -234,7 +238,7 @@ class XMPPtoForm{
 
         if($s['var'] == 'username')
             $input->setAttribute('pattern', '[a-z0-9_-]*');
-        
+
         $container->appendChild($input);
 
         $label = $this->html->createElement('label', $s['label']);
@@ -267,7 +271,7 @@ class XMPPtoForm{
 
         if($s->required)
             $select->setAttribute('required', 'required');
-        
+
         $div->appendChild($select);
 
         if(count($s->xpath('option')) > 0){
@@ -326,7 +330,7 @@ class FormtoXMPP
     {
         $fields = $this->_form->getElementsByTagName('field');
         $list = $dom->getElementsByTagName('x');
-            
+
         foreach($fields as $field) {
             $field = $dom->importNode($field, true);
             $list[0]->appendChild($field);
@@ -338,7 +342,7 @@ class FormtoXMPP
         foreach($this->_inputs as $key => $value) {
             $container = $this->_form->createElement('container');
             $this->_form->appendChild($container);
-           
+
             $field = $this->_form->createElement('field');
             $container->appendChild($field);
 
@@ -348,7 +352,7 @@ class FormtoXMPP
             if($value === 'true') {
                 $val->nodeValue = '1';
             }
-            
+
             if($value === 'false') {
                 $val->nodeValue = '0';
             }
@@ -362,7 +366,7 @@ class FormtoXMPP
             ) {
                 $val->nodeValue = trim($value);
             }
-            
+
             $field->setAttribute('var', trim($key));
         }
 
