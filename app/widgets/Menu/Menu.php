@@ -108,7 +108,7 @@ class Menu extends WidgetBase
             RPC::call('movim_posts_unread', 0);
         }
         RPC::call('Menu.refresh');
-        RPC::call('MovimTpl.scrollTop');
+        //RPC::call('MovimTpl.scrollTop');
     }
 
     function ajaxRefresh()

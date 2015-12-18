@@ -174,7 +174,7 @@ var MovimWebsocket = {
         }
 
         // generate the interval to a random number between 0 and the maxInterval determined from above
-        return Math.random() * maxInterval; 
+        return Math.random() * maxInterval;
     }
 }
 

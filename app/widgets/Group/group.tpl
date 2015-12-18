@@ -1,4 +1,4 @@
-<div id="group_widget" class="card shadow spinner">
+<div id="group_widget" class="card shadow spinner" style="background-color: #EEE;">
     {$c->prepareEmpty()}
     {if="$server && $node"}
         <script type="text/javascript">

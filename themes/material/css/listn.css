@@ -266,7 +266,7 @@ ul.tabs > li {
 }
 
 ul.tabs > li > a {
-    padding: 0 3rem;
+    padding: 1.5rem 3rem;
 }
 
 ul.tabs > li:hover {

@@ -17,8 +17,8 @@
             <span class="control icon gray">
                 <i class="zmdi zmdi-close"></i>
             </span>
-            <p>{$value->getTrueName()}</p>
-            <p>{$value->jid}</p>
+            <p class="line">{$value->getTrueName()}</p>
+            <p class="line">{$value->jid}</p>
         </li>
         {/loop}
     </ul>
