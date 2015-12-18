@@ -335,7 +335,7 @@ function stripTags($string)
 function purifyHTML($string)
 {
     $config = \HTMLPurifier_Config::createDefault();
-    $config->set('HTML.Doctype', 'HTML 4.01 Transitional');
+    $config->set('HTML.Doctype', 'XHTML 1.1');
     $config->set('Cache.SerializerPath', '/tmp');
     $config->set('HTML.DefinitionID', 'html5-definitions');
     $config->set('HTML.DefinitionRev', 1);

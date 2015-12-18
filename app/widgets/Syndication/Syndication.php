@@ -96,8 +96,6 @@ class Syndication extends WidgetBase
             $f->appendXML($message->contentcleaned);
             $div->appendChild($f);
 
-            //$div->appendChild($dom->createCDATASection($message->contentcleaned));
-
             $attachements = $message->getAttachements();
 
             if(isset($attachements['pictures'])) {
@@ -119,7 +117,7 @@ class Syndication extends WidgetBase
             }
 
             if(isset($attachements['links'])) {
-                foreach($attachements['files'] as $value) {
+                foreach($attachements['links'] as $value) {
                     $entry->appendChild($link = $dom->createElement('link'));
                     $link->setAttribute('rel', 'alternate');
                     $link->setAttribute('href', $value['href']);
