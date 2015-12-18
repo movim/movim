@@ -38,7 +38,7 @@ class Contact extends WidgetBase
         if(!$this->validateJid($jid)) return;
 
         $html = $this->prepareContact($jid);
-        $header = $this->prepareHeader($jid, $page);
+        //$header = $this->prepareHeader($jid, $page);
 
         Header::fill($header);
         RPC::call('movim_fill', 'contact_widget', $html);
@@ -123,6 +123,7 @@ class Contact extends WidgetBase
         Dialog::fill($view->draw('_contact_delete', true));
     }
 
+    /*
     function prepareHeader($jid, $page = 0)
     {
         if(!$this->validateJid($jid)) return;
@@ -157,6 +158,7 @@ class Contact extends WidgetBase
 
         return $view->draw('_contact_header', true);
     }
+    */
 
     function prepareEmpty($page = 0, $jid = null)
     {

@@ -1,5 +1,5 @@
 <div>
-    <ul class="simple thick">
+    <ul class="list thick">
         <li>
             <form method="post">
                     <div>
@@ -10,11 +10,11 @@
                         <input type="password" name="password" class="content" placeholder="{$c->__('input.password')}">
                         <label for="password">{$c->__('input.password')}</label>
                     </div>
-                    
-                    <input 
-                        class="button oppose color" 
-                        type="submit" 
-                        name="submit" 
+
+                    <input
+                        class="button oppose color"
+                        type="submit"
+                        name="submit"
                         value="{$c->__('button.validate')}" />
             </form>
         </li>

@@ -6,7 +6,7 @@
 <main>
     <?php //$this->widget('Header'); ?>
     <section>
-        <div>
+        <div style="background-color: #EEE;">
             <?php $this->widget('Notifs');?>
             <?php $this->widget('Roster');?>
         </div>
