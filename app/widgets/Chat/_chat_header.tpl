@@ -9,7 +9,7 @@
     </ul>
 </div>
 <div>
-    <ul class="list middle active">
+    <ul class="list middle">
         <li id="chat_header">
             <span onclick="
             MovimTpl.hidePanel();
