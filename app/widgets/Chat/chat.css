@@ -49,10 +49,6 @@
     padding-bottom: 2rem;
 }
 
-#chat_width li > p {
-    font-size: 2rem;
-}
-
 /* Chatroom */
 
 #chat_widget ul.simple {

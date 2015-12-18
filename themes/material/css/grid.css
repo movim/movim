@@ -12,17 +12,23 @@ ul.grid > li {
     margin: 0.1em;
 }
 
+ul.grid.active > li:hover {
+    cursor: pointer;
+}
+
 ul.grid > li > nav {
     position: absolute;
     bottom: 0;
     color: white;
     background-color: rgba(0, 0, 0, 0.5);
     width: 100%;
-    padding: 0 2rem;
+    padding: 0 1rem;
     box-sizing: border-box;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+    font-size: 2rem;
+    line-height: 5rem;
 }
 
 @media screen and (max-width: 1024px) {

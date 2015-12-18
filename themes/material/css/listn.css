@@ -250,6 +250,11 @@ ul.tabs {
     line-height: 6rem;
 }
 
+ul.tabs.wide > li {
+    width: 25%;
+    float: left;
+}
+
 ul.tabs:hover {
     overflow-x: auto;
 }
@@ -266,7 +271,10 @@ ul.tabs > li {
 }
 
 ul.tabs > li > a {
-    padding: 1.5rem 3rem;
+    /*padding: 1.5rem 3rem;*/
+    box-sizing: border-box;
+    padding: 0 3rem;
+    display: block;
 }
 
 ul.tabs > li:hover {

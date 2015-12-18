@@ -65,7 +65,7 @@
             {/if}
 
             <ul class="list thin">
-                <li class="new_account">
+                <li>
                     <p class="normal center">
                         {$c->__('form.no_account')}
                         <a class="button flat" href="{$c->route('account')}">

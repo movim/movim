@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "afa62af20a2ea7c5cbdf6ea3bf76a43bf810e6eb"
+                "reference": "282f73b2d94dd57408bdc8282f8bd48c409c0258"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/afa62af20a2ea7c5cbdf6ea3bf76a43bf810e6eb",
-                "reference": "afa62af20a2ea7c5cbdf6ea3bf76a43bf810e6eb",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/282f73b2d94dd57408bdc8282f8bd48c409c0258",
+                "reference": "282f73b2d94dd57408bdc8282f8bd48c409c0258",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2015-12-12 11:30:14"
+            "time": "2015-12-16 08:20:26"
         },
         {
             "name": "evenement/evenement",
@@ -281,6 +281,7 @@
                 "event",
                 "exception"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -338,6 +339,7 @@
                 "http",
                 "http client"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -382,6 +384,7 @@
                 "message",
                 "url"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-02-05 18:29:46"
         },
         {
@@ -435,6 +438,7 @@
                 "component",
                 "stream"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-05-01 21:36:02"
         },
         {

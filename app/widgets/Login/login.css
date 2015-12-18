@@ -7,14 +7,8 @@ body main {
     background-size: 30rem auto, 100% 100%;
 }
 
-body main > header {
-    box-shadow: none;
-    background-color: transparent;
-}
-
 @media screen and (max-width: 600px) {
     body main {
-        /*background-image: none;*/
         background-image: url(img/logo_cloud.svg);
         background-size: auto 2.6rem, 100% 100%;
         background-position: center 2.25rem;
@@ -25,14 +19,6 @@ body main > header {
         max-height: 92.5%;
         height: 82.5%;
     }
-}
-
-#login_widget li.new_account {
-    text-align: center;
-}
-
-#login_widget li.info {
-    padding: 1rem;
 }
 
 #login_widget > div {

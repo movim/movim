@@ -31,7 +31,6 @@ class Post extends WidgetBase
 {
     function load()
     {
-        $this->addcss('post.css');
         $this->addjs('post.js');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');

@@ -255,13 +255,13 @@ main > header > div {
     box-sizing: border-box;
     /*padding-right: 1rem;*/
 }
-
+/*
 main > header > div > .return > * {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
-
+*/
 /*main > header > div > ul.active:not(.context_menu) {
     float: right;
     margin-right: -1rem;
@@ -295,7 +295,7 @@ main > header > div:first-child:nth-last-child(2) ~ div {
     top: 0;
     right: 0;
 }
-
+/*
 main > header > div > span.icon {
     line-height: 7rem;
     left: 0;
@@ -320,15 +320,17 @@ main > header > div > form.return {
     padding-right: 0;
     padding-left: 9rem;
 }
-
+*/
 /* Not very beautiful… */
+/*
 main > header > div > .return.condensed > h2 {
     line-height: 3.5rem;
     font-size: 2.75rem;
     margin-top: 0.7rem;
     margin-bottom: -0.5rem;
 }
-
+*/
+/*
 main > header > div > .return > h4 {
     line-height: 2.5rem;
     font-size: 1.75rem;
@@ -343,7 +345,7 @@ main > header > div > span.active:hover {
     background-color: rgba(0, 0, 0, 0.05);
     cursor: pointer;
 }
-
+*/
 @media screen and (max-width: 1024px) {
     main > header > div,
     main > header > div:first-child:nth-last-child(2) ~ div {
@@ -499,7 +501,7 @@ span.icon.small {
     line-height: 3rem;
     margin-top: -1.5rem;
 }
-
+/*
 span.icon.tiny {
     font-size: 1.8rem;
     font-weight: 600;
@@ -511,7 +513,7 @@ span.icon.large {
     line-height: 7rem;
     margin-top: -3.5rem;
 }
-
+*/
 span.icon.small.bubble:first-letter,
 span.icon.small.bubble i {
     font-size: 2rem;
@@ -949,35 +951,4 @@ dl dd {
 .disabled {
     opacity: 0.5;
     pointer-events: none;
-}
-
-/* Animation */
-.background_fade {
-    background-color: #CCC;
-    animation: fadeout 1s forwards;
-    -moz-animation: fadeout 1s forwards;
-    -webkit-animation: fadeout 1s forwards;
-    -o-animation: fadeout 1s forwards;
-}
-
-@keyframes fadeout {
-    to {
-        background-color:#fff;
-    }
-
-}
-@-moz-keyframes fadeout {
-    to {
-        background-color: #ffffff;
-    }
-}
-@-webkit-keyframes fadeout {
-    to {
-        background-color: #ffffff;
-    }
-}
-@-o-keyframes fadeout {
-    to {
-        background-color: #ffffff;
-    }
 }

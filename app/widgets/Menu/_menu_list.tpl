@@ -9,7 +9,7 @@
         </ul>
         <ul>
             <li>
-                <ul class="tabs">
+                <ul class="tabs wide">
                     <li {if="$type == 'all'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetAll()">{$c->__('menu.all')}</a></li>
                     <li {if="$type == 'news'"}class="active"{/if} ><a href="#" onclick="Menu_ajaxGetNews()"><i class="zmdi zmdi-pages"></i></a></li>
                     <li {if="$type == 'feed'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetFeed()"><i class="zmdi zmdi-accounts"></i></a></li>
