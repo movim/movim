@@ -80,7 +80,7 @@
         </div>
     </ul>
     <br />
-    <a onclick="Roster_ajaxDisplaySearch()" class="button action color">
+    <a onclick="Roster_ajaxDisplaySearch()" class="button action color" title="{$c->__('roster.search')}">
         <i class="zmdi zmdi-account-add"></i>
     </a>
 
