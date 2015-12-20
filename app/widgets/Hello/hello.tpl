@@ -125,6 +125,11 @@
                     {else}
                         <span class="primary icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
                     {/if}
+                    {if="$value->privacy"}
+                        <span class="control icon gray" title="{$c->__('menu.public')}">
+                            <i class="zmdi zmdi-portable-wifi"></i>
+                        </span>
+                    {/if}
 
                     {if="$value->title != null"}
                         <p class="line">{$value->title}</p>
@@ -144,12 +149,6 @@
                         {/if}
                         {$value->published|strtotime|prepareDate}
                     </p>
-
-                    {if="$value->privacy"}
-                        <span class="info" title="{$c->__('menu.public')}">
-                            <i class="zmdi zmdi-portable-wifi"></i>
-                        </span>
-                    {/if}
                     <p>{$value->contentcleaned|strip_tags}</p>
 
                 </li>

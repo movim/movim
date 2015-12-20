@@ -358,6 +358,10 @@ ul li div.bubble:after {
      height: 0;
 }
 
+ul li div.quote {
+    font-style: italic;
+}
+
 ul li:not(.same) div.bubble:before {
     content: "";
     position: absolute;
