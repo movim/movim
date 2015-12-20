@@ -32,8 +32,8 @@
             {/if}
         </li>
         {elseif="$mode == 'tag'"}
-        <li class="condensed">
-            <span class="icon gray">
+        <li>
+            <span class="primary icon gray">
                 <i class="zmdi zmdi-tag"></i>
             </span>
             <h2>
@@ -43,37 +43,37 @@
             </h2>
         </li>
         {else}
-        <li class="condensed action">
-            <div class="action">
-                <a
-                    href="{$c->route('feed', array($server, $node))}"
-                    target="_blank"
-                >
-                    <i class="zmdi zmdi-portable-wifi"></i> Atom
-                </a>
-            </div>
-            <span class="icon gray">
-                <i class="zmdi zmdi-pages"></i>
-            </span>
-            <h2>
-                <a href="{$c->route('node', array($server, $node))}">
-                    {if="$item != null"}
-                        {if="$item->name"}
-                            {$item->name}
-                        {else}
-                            {$item->node}
+            <li>
+                <span class="primary icon gray">
+                    <i class="zmdi zmdi-pages"></i>
+                </span>
+                <span class="control icon">
+                    <a
+                        href="{$c->route('feed', array($server, $node))}"
+                        target="_blank"
+                    >
+                        <i class="zmdi zmdi-portable-wifi"></i>
+                    </a>
+                </span>
+                <p>
+                    <a href="{$c->route('node', array($server, $node))}">
+                        {if="$item != null"}
+                            {if="$item->name"}
+                                {$item->name}
+                            {else}
+                                {$item->node}
+                            {/if}
                         {/if}
-                    {/if}
-                </a>
-            </h2>
-            {if="$item->description"}
-                <h4 title="{$item->description|strip_tags}">
-                    {$item->description|strip_tags}
-                </h4>
-            {else}
-                <h4>{$item->server}</h4>
-            {/if}
-        </li>
+                    </a>
+                </p>
+                {if="$item->description"}
+                    <p title="{$item->description|strip_tags}">
+                        {$item->description|strip_tags}
+                    </p>
+                {else}
+                    <p>{$item->server}</p>
+                {/if}
+            </li>
         {/if}
     </ul>
 

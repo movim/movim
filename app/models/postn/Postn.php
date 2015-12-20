@@ -221,7 +221,7 @@ class Postn extends Model {
     }
 
     private function typeIsPicture($type) {
-        return in_array($type, array('image/jpeg', 'image/png', 'image/jpg'));
+        return in_array($type, array('image/jpeg', 'image/png', 'image/jpg', 'image/gif'));
     }
 
     private function typeIsLink($type) {

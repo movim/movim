@@ -322,7 +322,7 @@ ul li div.bubble {
     font-size: 1.75rem;
     background-color: white;
     border-color: white;
-    max-width: calc(100% - 9rem);
+    max-width: calc(100% - 11rem);
     float: left;
 
     left: 9rem;

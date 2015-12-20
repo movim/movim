@@ -49,6 +49,10 @@
     padding-bottom: 2rem;
 }
 
+#chat_widget li.oppose span.control {
+    right: 2rem;
+}
+
 /* Chatroom */
 
 #chat_widget ul.simple {
