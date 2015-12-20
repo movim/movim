@@ -17,7 +17,7 @@ var Notifs = {
                 movim_add_class(this, 'active');
             }
 
-            items[i].querySelector('a.button.flat').onclick = function(e) {
+            items[i].querySelector('span.control.icon').onclick = function(e) {
                 Notifs_ajaxAsk(this.dataset.jid);
             }
             i++;

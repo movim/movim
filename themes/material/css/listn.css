@@ -227,15 +227,15 @@ ul.list li > .control ~ .control ~ .control {
 
 /* Limit the size of the main content */
 
-ul.list li > .control ~ *:not(.control):not(.bubble) {
+ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
     width: calc(100% - 8rem);
 }
 
-ul.list li > .control ~ .control ~ *:not(.control):not(.bubble) {
+ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
     width: calc(100% - 16rem);
 }
 
-ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble) {
+ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
     width: calc(100% - 24rem);
 }
 
@@ -322,7 +322,7 @@ ul li div.bubble {
     font-size: 1.75rem;
     background-color: white;
     border-color: white;
-    max-width: calc(100% - 9rem);
+    max-width: calc(100% - 11rem);
     float: left;
 
     left: 9rem;
@@ -356,6 +356,10 @@ ul li div.bubble:after {
      content: " ";
      clear: both;
      height: 0;
+}
+
+ul li div.quote {
+    font-style: italic;
 }
 
 ul li:not(.same) div.bubble:before {

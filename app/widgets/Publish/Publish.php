@@ -126,7 +126,7 @@ class Publish extends WidgetBase
     {
         if($form->content->value != '') {
             $view = $this->tpl();
-            $view->assign('content', Markdown::defaultTransform($form->content->value));
+            $view->assign('content', addHFR(Markdown::defaultTransform($form->content->value)));
 
             Dialog::fill($view->draw('_publish_preview', true), true);
         } else {
@@ -175,7 +175,7 @@ class Publish extends WidgetBase
 
             if($form->content->value != '') {
                 $content = $form->content->value;
-                $content_xhtml = Markdown::defaultTransform($content);
+                $content_xhtml = addHFR(Markdown::defaultTransform($content));
             }
 
             if($form->id->value != '') {

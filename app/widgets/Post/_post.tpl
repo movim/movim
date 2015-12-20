@@ -178,16 +178,18 @@
                 {if="isset($attachements.files)"}
                     {loop="$attachements.files"}
                         <li>
-                            <a
-                                href="{$value.href}"
-                                class="enclosure"
-                                type="{$value.type}"
-                                target="_blank">
-                                <span class="icon gray">
-                                    <span class="zmdi zmdi-attachment-alt"></span>
-                                </span>
-                                <span>{$value.href|urldecode}</span>
-                            </a>
+                            <span class="primary icon gray">
+                                <span class="zmdi zmdi-attachment-alt"></span>
+                            </span>
+                            <p class="normal line">
+                                <a
+                                    href="{$value.href}"
+                                    class="enclosure"
+                                    type="{$value.type}"
+                                    target="_blank">
+                                {$value.href|urldecode}
+                                </a>
+                            </p>
                         </li>
                     {/loop}
                 {/if}

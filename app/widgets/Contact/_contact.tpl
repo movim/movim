@@ -23,7 +23,7 @@
 
                 <p class="line">{$contactr->getTrueName()}</p>
             {else}
-                <span class="control icon active" onclick="Roster_ajaxDisplaySearch('{$jid}')">
+                <span class="control icon active" onclick="Roster_ajaxDisplaySearch('{$contact->jid}')">
                     <i class="zmdi zmdi-account-add"></i>
                 </span>
                 {if="$contact != null"}
