@@ -235,7 +235,7 @@ ul.list li > .control ~ .control ~ *:not(.control):not(.bubble) {
     width: calc(100% - 16rem);
 }
 
-ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble) {
+ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
     width: calc(100% - 24rem);
 }
 
