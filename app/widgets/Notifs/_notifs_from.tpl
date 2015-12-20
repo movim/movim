@@ -1,4 +1,4 @@
-<ul class="list active all">
+<ul class="list active middle">
     {if="$invitations"}
     <li class="subheader">
         <p>
@@ -20,15 +20,11 @@
                     <i class="zmdi zmdi-account"></i>
                 </span>
             {/if}
-            <span class="control">
-                <a class="button flat" data-jid="{$value->jid}">
-                    {$c->__('notifs.manage')}
-                </a>
+            <span class="control icon active green" data-jid="{$value->jid}">
+                <i class="zmdi zmdi-settings"></i>
             </span>
             <p class="normal line">
-                <a href="{$c->route('contact', $value->jid)}">
-                    {$value->getTrueName()}
-                </a>
+                {$value->getTrueName()}
             </p>
         </li>
         {/if}

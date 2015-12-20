@@ -2,18 +2,18 @@
     <h3>{$c->__('notifs.manage')}</h3>
     <br />
     <h4 class="gray">{$c->__('notifs.wants_to_talk', $jid)}</h4>
-    <ul class="active">
+    <ul class="list active">
         <li onclick="Notifs_ajaxAccept('{$jid|echapJS}'); Dialog.clear();">
-            <span class="icon green">
+            <span class="icon control green">
                 <i class="zmdi zmdi-account-add"></i>
             </span>
-            {$c->__('button.accept')}
+            <p class="normal">{$c->__('button.accept')}</p>
         </li>
         <li onclick="Notifs_ajaxRefuse('{$jid|echapJS}'); Dialog.clear();">
-            <span class="icon red">
+            <span class="control icon red">
                 <i class="zmdi zmdi-close"></i>
             </span>
-            {$c->__('button.refuse')}
+            <p class="normal">{$c->__('button.refuse')}</p>
         </li>
     </ul>
 
