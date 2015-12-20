@@ -59,7 +59,7 @@
     padding-left: 2rem;
 }
 
-#chat_widget li span.icon {
+#chat_widget div:not(.chat_box) li span.icon {
     top: 4rem;
 }
 
