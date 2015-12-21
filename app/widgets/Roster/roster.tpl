@@ -2,7 +2,7 @@
     <header>
         <ul class="list">
             <li>
-                <span id="menu" class="primary on_mobile icon active" onclick="MovimTpl.toggleMenu()"><i class="zmdi zmdi-menu"></i></span>
+                <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()"><i class="zmdi zmdi-menu"></i></span>
                 <span class="primary on_desktop icon gray"><i class="zmdi zmdi-search"></i></span>
                 <form>
                     <div onclick="Roster.init();">

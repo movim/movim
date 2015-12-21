@@ -46,7 +46,7 @@
 }
 
 #chat_widget section {
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 
 #chat_widget li.oppose span.control {
@@ -71,6 +71,7 @@
 
 #chat_widget li.room {
     padding: 0.25rem 0;
+    padding-right: 2rem;
 }
 
 #chat_widget li.room > p {

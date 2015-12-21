@@ -5,6 +5,7 @@
 
 .flex .block {
     flex: 1 50%;
+    overflow: hidden;
 }
 
 .flex .block.large,

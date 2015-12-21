@@ -191,9 +191,9 @@ class Chat extends WidgetBase
 
             $html = $this->prepareChat($jid);
 
-            $header = $this->prepareHeader($jid);
+            //$header = $this->prepareHeader($jid);
 
-            Header::fill($header);
+            //Header::fill($header);
             RPC::call('movim_fill', 'chat_widget', $html);
             RPC::call('MovimTpl.showPanel');
             RPC::call('Chat.focus');
@@ -212,9 +212,9 @@ class Chat extends WidgetBase
 
         $html = $this->prepareChat($room, true);
 
-        $header = $this->prepareHeaderRoom($room);
+        //$header = $this->prepareHeaderRoom($room);
 
-        Header::fill($header);
+        //Header::fill($header);
         RPC::call('movim_fill', 'chat_widget', $html);
         RPC::call('MovimTpl.showPanel');
         RPC::call('Chat.focus');
@@ -468,6 +468,34 @@ class Chat extends WidgetBase
 
         $view->assign('emoji', prepareString('😀'));
         $view->assign('muc', $muc);
+
+        if($muc) {
+            $md = new \Modl\MessageDAO;
+            $s = $md->getRoomSubject($jid);
+
+            $cd = new \Modl\ConferenceDAO;
+            $c = $cd->get($jid);
+
+            $pd = new \Modl\PresenceDAO;
+            $p = $pd->getMyPresenceRoom($jid);
+
+            $view->assign('room', $jid);
+            $view->assign('subject', $s);
+            $view->assign('presence', $p);
+            $view->assign('conference', $c);
+        } else {
+            $cd = new \Modl\ContactDAO;
+
+            $cr = $cd->getRosterItem($jid);
+            if(isset($cr)) {
+                $contact = $cr;
+            } else {
+                $contact = $cd->get($jid);
+            }
+
+            $view->assign('contact', $contact);
+            $view->assign('jid', $jid);
+        }
 
         return $view->draw('_chat', true);
     }

@@ -4,7 +4,7 @@
 </nav>
 
 <main>
-    <?php $this->widget('Header'); ?>
+    <?php //$this->widget('Header'); ?>
     <section>
         <div>
             <?php $this->widget('Chats');?>

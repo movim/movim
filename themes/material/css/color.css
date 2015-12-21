@@ -75,6 +75,7 @@ ul.list li > p:nth-last-of-type(2) + p {
 .button.color,
 input[type=button].color,
 ul li span.counter,
+main > section > div > header.fixed,
 /*main > section > div > header,*/
 main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
 
@@ -88,6 +89,7 @@ main > section > div > header.scroll {
     background-color: #EEE;
 }
 
+header.fixed ul.list li > p:nth-last-of-type(2) + p,
 main > section > div > header.big *,
 .snackbar ul.list li > p:nth-last-of-type(2) + p,
 main > header ul.list li > p:nth-last-of-type(2) + p,

@@ -394,8 +394,8 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     position: absolute;
     top: 0;
     right: 0;
-    -webkit-transition: left .3s cubic-bezier(.4,0,.2,1);
-    transition: left .3s cubic-bezier(.4,0,.2,1);
+    /*-webkit-transition: left .3s cubic-bezier(.4,0,.2,1);
+    transition: left .3s cubic-bezier(.4,0,.2,1);*/
 }
 
 main > section > div:first-child:nth-last-child(2) ~ div {
@@ -403,7 +403,7 @@ main > section > div:first-child:nth-last-child(2) ~ div {
 }
 
 main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
-    height: calc(100% - 7rem);
+    height: calc(100% - 14.5rem);
     overflow-y: scroll;
     position: absolute;
     max-width: 100%;

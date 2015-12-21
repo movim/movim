@@ -1,14 +1,14 @@
-<header>
-    <ul class="list middle">
-        <li>
-            <span id="menu" class="primary on_mobile icon active" onclick="MovimTpl.toggleMenu()"><i class="zmdi zmdi-menu"></i></span>
-            <span class="primary on_desktop icon gray"><i class="zmdi zmdi-home"></i></span>
-            <p class="center">{$c->__('page.home')}</p>
-        </li>
-    </ul>
-</header>
-
 <div id="hello_widget" class="divided">
+    <header>
+        <ul class="list middle">
+            <li>
+                <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()"><i class="zmdi zmdi-menu"></i></span>
+                <span class="primary on_desktop icon gray"><i class="zmdi zmdi-home"></i></span>
+                <p class="center">{$c->__('page.home')}</p>
+            </li>
+        </ul>
+    </header>
+
     {if="!isset($top) || !isset($news)"}
         <ul class="list thick">
             {$a = '1f600'}
@@ -153,6 +153,8 @@
 
                 </li>
             {/loop}
+        </ul>
+        <ul class="list">
             <a href="{$c->route('news')}">
                 <li>
                     <span class="primary icon">

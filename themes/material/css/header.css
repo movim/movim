@@ -10,6 +10,24 @@ header.big {
 }
 
 
+header.fixed {
+    position: fixed;
+    background-color: red;
+    width: 100%;
+    max-width: 100%;
+    z-index: 1;
+}
+
+@media screen and (min-width: 1024px) {
+    main > section > div:first-child:nth-last-child(2) ~ div > header.fixed  {
+        width: 65%;
+    }
+}
+
+header.fixed + div {
+    margin-top: 7rem;
+}
+
 /*
 header.big {
     background-size: cover, cover;

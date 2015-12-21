@@ -54,13 +54,16 @@ var Chat = {
     },
     setScrollBehaviour : function() {
         var discussion = document.querySelector('#chat_widget div.contained');
-        discussion.onscroll = function() {
-            if(this.scrollTop < 1) {
-                var chat = document.querySelector('#chat_widget');
-                Chat.lastScroll = this.scrollHeight;
-                Chat_ajaxGetHistory(chat.dataset.jid, Chat.date);
-            }
-        };
+        console.log(discussion.dataset.muc);
+        if(discussion.dataset.muc != true) {
+            discussion.onscroll = function() {
+                if(this.scrollTop < 1) {
+                    var chat = document.querySelector('#chat_widget');
+                    Chat.lastScroll = this.scrollHeight;
+                    Chat_ajaxGetHistory(chat.dataset.jid, Chat.date);
+                }
+            };
+        }
     },
     appendMessages : function(messages) {
         if(messages) {
