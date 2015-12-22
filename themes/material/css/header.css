@@ -12,7 +12,6 @@ header.big {
 
 header.fixed {
     position: fixed;
-    background-color: red;
     width: 100%;
     max-width: 100%;
     z-index: 1;
