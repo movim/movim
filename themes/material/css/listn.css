@@ -332,7 +332,9 @@ ul li div.bubble {
 }
 
 ul li div.bubble > p {
-    display: inline;
+    overflow: hidden;
+    display: inline-block;
+    max-width: 100%;
 }
 
 ul li.oppose div.bubble {
