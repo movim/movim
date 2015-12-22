@@ -52,7 +52,7 @@ class Blog extends WidgetBase {
         $pd = new \modl\PostnDAO();
 
         if($this->_id = $this->get('i')) {
-            if(Validator::intType()->between(0, 100)->validate($this->_id)) {
+            if(Validator::intType()->between(0, 100)->validate((int)$this->_id)) {
                 if(isset($this->_tag)) {
                     $this->_messages = $pd->getPublicTag($this->get('t'), $this->_id * $this->_paging, $this->_paging + 1);
                 } else {
