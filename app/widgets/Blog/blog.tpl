@@ -86,7 +86,7 @@
                 {if="$mode == 'blog'"}
                 <a href="{$c->route('blog', array($contact->jid, $more))}">
                 {else}
-                <a href="{$c->route('group', array($server, $node, $more))}">
+                <a href="{$c->route('node', array($server, $node, $more))}">
                 {/if}
                     <li id="history" class="block large">
                         <span class="primary icon"><i class="zmdi zmdi-time-restore"></i></span>
