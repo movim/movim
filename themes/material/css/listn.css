@@ -325,7 +325,6 @@ ul li div.bubble {
     max-width: calc(100% - 11rem);
     float: left;
 
-    overflow: hidden;
     left: 9rem;
     padding-left: 2rem;
     width: auto;
