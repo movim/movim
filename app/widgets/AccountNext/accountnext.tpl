@@ -8,9 +8,9 @@
         </div>
 
         <div id="subscription_form" class="block">
-            <ul class="simple thick">
+            <ul class="list simple thick">
                 <li>
-                    <span>{$c->__('create.title')} {$c->__('create.server_on')} {$host}</span>
+                    <p>{$c->__('create.title')} {$c->__('create.server_on')} {$host}</p>
                     <p>{$c->__('create.loading')}</p>
                 </li>
             </ul>

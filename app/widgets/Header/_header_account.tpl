@@ -1,6 +1,12 @@
 <div>
-    <a href="{$c->route('main')}" class="classic">
-        <span id="menu" class="icon"><i class="zmdi zmdi-home"></i></span>
-    </a>
-    <h2>{$c->__('page.account_creation')}</h2>
+    <ul class="list middle">
+        <li>
+            <span class="primary active icon">
+                <a href="{$c->route('main')}">
+                    <i class="zmdi zmdi-home"></i>
+                </a>
+            </span>
+            <p>{$c->__('page.account_creation')}</p>
+        </li>
+    </ul>
 </div>

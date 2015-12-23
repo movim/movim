@@ -87,11 +87,11 @@
     {if="$c->supported('pubsub')"}
         <ul id="news" class="list card shadow flex active">
             {if="empty($news)"}
-                <li>
-                    <span class="control icon gray">
+                <li class="block">
+                    <span class="primary icon gray">
                         <i class="zmdi zmdi-info-outline"></i>
                     </span>
-                    <p>{$c->__('menu.empty_title')}</p>
+                    <p class="normal">{$c->__('menu.empty_title')}</p>
                 </li>
             {/if}
             {loop="$news"}
