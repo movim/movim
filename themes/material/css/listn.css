@@ -218,25 +218,49 @@ ul.list li > .control {
 }
 
 ul.list li > .control ~ .control {
-    right: 8rem;
+    right: 5rem;
 }
 
 ul.list li > .control ~ .control ~ .control {
-    right: 16rem;
+    right: 10rem;
 }
 
 /* Limit the size of the main content */
 
 ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
-    width: calc(100% - 9rem);
+    width: calc(100% - 5rem);
 }
 
 ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    width: calc(100% - 16rem);
+    width: calc(100% - 10rem);
 }
 
 ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    width: calc(100% - 24rem);
+    width: calc(100% - 15rem);
+}
+
+/* Place the other controls */
+
+header > ul.list li > .control ~ .control {
+    right: 7rem;
+}
+
+header > ul.list li > .control ~ .control ~ .control {
+    right: 14rem;
+}
+
+/* Limit the size of the main content */
+
+header > ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
+    width: calc(100% - 7rem);
+}
+
+header > ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
+    width: calc(100% - 14rem);
+}
+
+header > ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
+    width: calc(100% - 21rem);
 }
 
 /* Tabs */
