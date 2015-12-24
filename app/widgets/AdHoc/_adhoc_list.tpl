@@ -10,7 +10,7 @@
             <span class="control icon gray">
                 <i class="zmdi zmdi-chevron-right"></i>
             </span>
-            <p class="normal">{$value->attributes()->name}</p>
+            <p class="normal line">{$value->attributes()->name}</p>
         </li>
     {/loop}
 </ul>

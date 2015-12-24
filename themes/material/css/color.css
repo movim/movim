@@ -19,7 +19,7 @@
 }
 
 main > header a,
-.icon a,
+.icon:not(.placeholder) a,
 .color input {
     color: white;
 }

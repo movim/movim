@@ -10,12 +10,12 @@
                     <img src="data:image/jpeg;base64,{$photobin}">
                 {else}
                     <img src="#" class="error">
-                    <ul class="thick">
+                    <ul class="list thick">
                         <li>
-                            <span class="icon bubble color {$me->jid|stringToColor}">
+                            <span class="primary icon bubble color {$me->jid|stringToColor}">
                                 <i class="zmdi zmdi-account"></i>
                             </span>
-                            <p>{$c->__('avatar.missing')}</p>
+                            <p class="normal line">{$c->__('avatar.missing')}</p>
                         </li>
                     </ul>
                 {/if}
