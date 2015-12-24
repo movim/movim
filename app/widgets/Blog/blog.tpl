@@ -1,4 +1,4 @@
-<div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
+<header>
     <ul class="list thick">
         {if="$mode == 'blog'"}
         <li>
@@ -76,7 +76,9 @@
             </li>
         {/if}
     </ul>
+</header>
 
+<div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
     {loop="$posts"}
         {$c->preparePost($value)}
     {/loop}
@@ -99,7 +101,10 @@
     {if="$posts == null"}
         <ul class="list simple thick">
             <li>
-                <p>{$c->__('blog.empty')}</p>
+                <span class="primary icon gray">
+                    <i class="zmdi zmdi-comment-outline"></i>
+                </span>
+                <p class="normal">{$c->__('blog.empty')}</p>
             </li>
         </ul>
     {/if}

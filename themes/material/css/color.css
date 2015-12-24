@@ -108,6 +108,7 @@ main > section > div > header a:not(.classic):not(.activity):not(.action) {
 
 .button:not(.color),
 input[type=button],
+header:not(.big) .icon a,
 a/*,
 a:not(.classic):not(.activity):not(.action):not(.button)*/ { color: #FF5722; border-color: #FF5722; }
 
