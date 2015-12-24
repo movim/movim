@@ -61,7 +61,7 @@ class Vcard4 {
         $status = $dom->createElement('status');
         $marital->appendChild($status);
         $status->appendChild($dom->createElement('text', $data->marital));
-        $vcard->appendChild($gender);
+        $vcard->appendChild($marital);
 
         $impp = $dom->createElement('impp');
         $impp->appendChild($dom->createElement('uri', 'xmpp:'.$data->jid));
@@ -77,11 +77,11 @@ class Vcard4 {
         $email->appendChild($dom->createElement('text', $data->email));
         $vcard->appendChild($email);
 
-        $adr = $dom->createElement('ard');
+        $adr = $dom->createElement('adr');
         $adr->appendChild($dom->createElement('locality', $data->adrlocality));
         $adr->appendChild($dom->createElement('code', $data->adrpostalcode));
         $adr->appendChild($dom->createElement('country', $data->adrcountry));
-        $vcard->appendChild($note);
+        $vcard->appendChild($adr);
 
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);
