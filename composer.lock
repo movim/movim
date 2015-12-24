@@ -9,24 +9,24 @@
     "packages": [
         {
             "name": "cboden/ratchet",
-            "version": "v0.3.3",
+            "version": "v0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ratchetphp/Ratchet.git",
-                "reference": "6b247c05251b4b5cbd14243366b649f99a0e5681"
+                "reference": "a177819dd0e6eb1d7e4192aeafadfa43a84867f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/6b247c05251b4b5cbd14243366b649f99a0e5681",
-                "reference": "6b247c05251b4b5cbd14243366b649f99a0e5681",
+                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/a177819dd0e6eb1d7e4192aeafadfa43a84867f1",
+                "reference": "a177819dd0e6eb1d7e4192aeafadfa43a84867f1",
                 "shasum": ""
             },
             "require": {
                 "guzzle/http": "^3.6",
                 "php": ">=5.3.9",
                 "react/socket": "^0.3 || ^0.4",
-                "symfony/http-foundation": "^2.2",
-                "symfony/routing": "^2.2"
+                "symfony/http-foundation": "^2.2|^3.0",
+                "symfony/routing": "^2.2|^3.0"
             },
             "type": "library",
             "autoload": {
@@ -53,7 +53,7 @@
                 "server",
                 "sockets"
             ],
-            "time": "2015-05-27 12:51:05"
+            "time": "2015-12-23 15:06:48"
         },
         {
             "name": "embed/embed",
@@ -530,12 +530,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "4482d30bb0d9ef43c6e8bc5f3b64a8ac64e6e56e"
+                "reference": "156e56ee036505ec637d761ee62dc425d807183c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/4482d30bb0d9ef43c6e8bc5f3b64a8ac64e6e56e",
-                "reference": "4482d30bb0d9ef43c6e8bc5f3b64a8ac64e6e56e",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/156e56ee036505ec637d761ee62dc425d807183c",
+                "reference": "156e56ee036505ec637d761ee62dc425d807183c",
                 "shasum": ""
             },
             "require": {
@@ -573,7 +573,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2015-12-04 02:02:24"
+            "time": "2015-12-24 01:37:31"
         },
         {
             "name": "monolog/monolog",
@@ -693,12 +693,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/edhelas/moxl.git",
-                "reference": "96a00e9364ab50f712961d3881c5af68becef3d1"
+                "reference": "542077845a38c864500676be26bbb12e2c2838d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/edhelas/moxl/zipball/96a00e9364ab50f712961d3881c5af68becef3d1",
-                "reference": "96a00e9364ab50f712961d3881c5af68becef3d1",
+                "url": "https://api.github.com/repos/edhelas/moxl/zipball/542077845a38c864500676be26bbb12e2c2838d9",
+                "reference": "542077845a38c864500676be26bbb12e2c2838d9",
                 "shasum": ""
             },
             "require": {
@@ -732,7 +732,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2015-12-15 07:15:37"
+            "time": "2015-12-24 18:06:07"
         },
         {
             "name": "movim/sasl2",
@@ -1378,29 +1378,28 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v2.8.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "5ed0ec39ef684bec84d1fd9f2a55104e403b7e49"
+                "reference": "1563f784900958afdb584ca82a072c578ed8a929"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/5ed0ec39ef684bec84d1fd9f2a55104e403b7e49",
-                "reference": "5ed0ec39ef684bec84d1fd9f2a55104e403b7e49",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/1563f784900958afdb584ca82a072c578ed8a929",
+                "reference": "1563f784900958afdb584ca82a072c578ed8a929",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9",
-                "symfony/polyfill-php54": "~1.0"
+                "php": ">=5.5.9"
             },
             "require-dev": {
-                "symfony/expression-language": "~2.4|~3.0.0"
+                "symfony/expression-language": "~2.8|~3.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -1427,94 +1426,36 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2015-11-27 11:03:19"
-        },
-        {
-            "name": "symfony/polyfill-php54",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/polyfill-php54.git",
-                "reference": "2c9f6d98eb30dc04fe0b06f9cc92a55acea5bdcc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php54/zipball/2c9f6d98eb30dc04fe0b06f9cc92a55acea5bdcc",
-                "reference": "2c9f6d98eb30dc04fe0b06f9cc92a55acea5bdcc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Polyfill\\Php54\\": ""
-                },
-                "files": [
-                    "bootstrap.php"
-                ],
-                "classmap": [
-                    "Resources/stubs"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Nicolas Grekas",
-                    "email": "p@tchwork.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Symfony polyfill backporting some PHP 5.4+ features to lower PHP versions",
-            "homepage": "https://symfony.com",
-            "keywords": [
-                "compatibility",
-                "polyfill",
-                "portable",
-                "shim"
-            ],
-            "time": "2015-11-04 20:28:58"
+            "time": "2015-11-27 14:30:17"
         },
         {
             "name": "symfony/routing",
-            "version": "v2.8.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "f76830dc0f8068df36226dc822e7fc1f5f73be46"
+                "reference": "252014dfa4685e80f9216ae4b7d78b1a50dd55c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/f76830dc0f8068df36226dc822e7fc1f5f73be46",
-                "reference": "f76830dc0f8068df36226dc822e7fc1f5f73be46",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/252014dfa4685e80f9216ae4b7d78b1a50dd55c2",
+                "reference": "252014dfa4685e80f9216ae4b7d78b1a50dd55c2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.5.9"
             },
             "conflict": {
-                "symfony/config": "<2.7"
+                "symfony/config": "<2.8"
             },
             "require-dev": {
                 "doctrine/annotations": "~1.0",
                 "doctrine/common": "~2.2",
                 "psr/log": "~1.0",
-                "symfony/config": "~2.7|~3.0.0",
-                "symfony/expression-language": "~2.4|~3.0.0",
-                "symfony/http-foundation": "~2.3|~3.0.0",
-                "symfony/yaml": "~2.0,>=2.0.5|~3.0.0"
+                "symfony/config": "~2.8|~3.0",
+                "symfony/expression-language": "~2.8|~3.0",
+                "symfony/http-foundation": "~2.8|~3.0",
+                "symfony/yaml": "~2.8|~3.0"
             },
             "suggest": {
                 "doctrine/annotations": "For using the annotation loader",
@@ -1526,7 +1467,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "3.0-dev"
                 }
             },
             "autoload": {
@@ -1559,7 +1500,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2015-11-26 07:00:59"
+            "time": "2015-11-26 07:02:09"
         }
     ],
     "packages-dev": [],
