@@ -1,5 +1,5 @@
 {loop="$users"}
-    <li class="block" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}', {$page});">
+    <li class="block" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}', {if="$page"}{$page}{else}0{/if});">
         {$url = $value->getPhoto('s')}
         {if="$url"}
             <span class="primary icon bubble">
