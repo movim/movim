@@ -33,10 +33,10 @@
         <span class="primary icon gray">
             <i class="zmdi zmdi-book"></i>
         </span>
-        {loop="$pages"}
-            <p>
-                <a onclick="Contact_ajaxPublic('{$key}');" class="button flat {if="$key == $page"}on{/if}">{$key+1}</a>
-            </p>
-        {/loop}
+        <p>
+            {loop="$pages"}
+                <a onclick="Contact_ajaxPublic({$key});" class="button flat {if="$key == $page"}on{/if}">{$key+1}</a>
+            {/loop}
+        </p>
     </li>
 {/if}
