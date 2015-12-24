@@ -33,7 +33,7 @@
         </figure>
     </div>
 
-    <ul>
+    <ul class="list">
         <!--
         <li class="subheader">
             {$c->__('compatibility.info')}
@@ -42,35 +42,39 @@
         {if="$dbconnected"}
             {if="$dbinfos > 0"}
                 <li>
-                    <span class="icon bubble color orange"><i class="zmdi zmdi-refresh"></i></span>
-                    <span>{$c->__('compatibility.db')}</span>
+                    <span class="primary icon bubble color orange">
+                        <i class="zmdi zmdi-refresh"></i>
+                    </span>
+                    <p class="normal line">{$c->__('compatibility.db')}</p>
                 </li>
             {else}
                 <script type="text/javascript">AdminTest.databaseOK = true</script>
             {/if}
         {else}
-            <li class="condensed">
-                <span class="icon bubble color red"><i class="zmdi zmdi-data-usage"></i></span>
-                <span>Database connection error</span>
+            <li>
+                <span class="primary icon bubble color red">
+                    <i class="zmdi zmdi-data-usage"></i>
+                </span>
+                <p>Database connection error</p>
                 <p>Check if database configuration exist in the <code>config/</code> folder and fill it with proper values</p>
             </li>
         {/if}
 
         <li id="websocket_error">
-            <span class="icon bubble color red">
+            <span class="primary icon bubble color red">
                 <i class="zmdi zmdi-code-setting"></i>
             </span>
-            <span>
+            <p class="normal line">
                 {$c->__('compatibility.websocket')}
-            </span>
+            </p>
         </li>
 
         {if="!$c->version()"}
-            <li class="condensed">
-                <span class="icon color bubble red">
+            <li>
+                <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-sync-problem"></i>
                 </span>
-                <span>{$c->__('compatibility.php1', PHP_VERSION)}</span>
+                <p>{$c->__('compatibility.php1', PHP_VERSION)}</p>
                 <p>{$c->__('compatibility.php2')}</p>
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
@@ -78,34 +82,34 @@
 
         {if="!extension_loaded('imagick')"}
             <li>
-                <span class="icon color bubble red">
+                <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-image"></i>
                 </span>
-                <span>
+                <p class="normal line">
                     {$c->__('compatibility.imagick')}
-                </span>
+                </p>
             </div>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
         {if="!extension_loaded('gd')"}
             <li>
-                <span class="icon color bubble red">
+                <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-image"></i>
                 </span>
-                <span>
+                <p class="normal line">
                     {$c->__('compatibility.gd')}
-                </span>
+                </p>
             </div>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
         {if="!$c->testDir(DOCUMENT_ROOT)"}
             <li>
-                <span class="icon color bubble red">
+                <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-folder"></i>
                 </span>
-                <span>{$c->__('compatibility.rights')}</span>
+                <p class="normal line">{$c->__('compatibility.rights')}</p>
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}

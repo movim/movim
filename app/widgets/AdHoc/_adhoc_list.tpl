@@ -1,4 +1,4 @@
-<ul class="list middle divided active spaced">
+<ul class="list divided active spaced">
     <li class="subheader">
         <p>{$c->__('adhoc.title')}</p>
     </li>
