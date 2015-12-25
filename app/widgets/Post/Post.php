@@ -106,9 +106,7 @@ class Post extends WidgetBase
            ->request();
 
         $html = $this->preparePost($p);
-        //$header = $this->prepareHeader($id);
 
-        //Header::fill($header);
         RPC::call('movim_fill', 'post_widget', $html);
         RPC::call('MovimTpl.scrollHeaders');
     }
@@ -172,23 +170,6 @@ class Post extends WidgetBase
         return $view->draw('_post_empty', true);
     }
 
-    /*
-    function prepareHeader($id)
-    {
-        $pd = new \Modl\PostnDAO;
-        $p  = $pd->getItem($id);
-
-        $view = $this->tpl();
-
-        if(isset($p)) {
-            $view->assign('post', $p);
-        } else {
-            $view->assign('post', null);
-        }
-
-        return $view->draw('_post_header', true);
-    }
-    */
     function preparePost($p, $external = false, $public = false)
     {
         $view = $this->tpl();
