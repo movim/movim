@@ -1,7 +1,7 @@
 <header>
     <ul class="list middle">
         <li>
-            <span class="primary icon active" onclick="Publish.headerBack('{$server}', '{$node}', false);">
+            <span class="primary icon active" onclick="Publish.headerBack('{$to}', '{$node}', false);">
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
 
