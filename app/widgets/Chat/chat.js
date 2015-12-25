@@ -54,7 +54,6 @@ var Chat = {
     },
     setScrollBehaviour : function() {
         var discussion = document.querySelector('#chat_widget div.contained');
-        console.log(discussion.dataset.muc);
         if(discussion.dataset.muc != true) {
             discussion.onscroll = function() {
                 if(this.scrollTop < 1) {
@@ -86,7 +85,8 @@ var Chat = {
 
             id = message.jidfrom + '_conversation';
 
-            if(message.body.match(/^\/me/)) {
+            if(message.body.match(/^\/me/)
+            && bubble.querySelector('div') != null) {
                 bubble.querySelector('div').className = 'quote';
                 message.body = message.body.substr(4);
             }

@@ -384,7 +384,7 @@ ul li div.bubble:after {
      height: 0;
 }
 
-ul li div.quote {
+ul li .quote {
     font-style: italic;
 }
 
