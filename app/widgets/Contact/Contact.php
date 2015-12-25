@@ -38,7 +38,6 @@ class Contact extends WidgetBase
         if(!$this->validateJid($jid)) return;
 
         $html = $this->prepareContact($jid);
-        //$header = $this->prepareHeader($jid, $page);
 
         Header::fill($header);
         RPC::call('movim_fill', 'contact_widget', $html);
@@ -122,43 +121,6 @@ class Contact extends WidgetBase
 
         Dialog::fill($view->draw('_contact_delete', true));
     }
-
-    /*
-    function prepareHeader($jid, $page = 0)
-    {
-        if(!$this->validateJid($jid)) return;
-
-        $cd = new \Modl\ContactDAO;
-        $cr  = $cd->getRosterItem($jid);
-
-        $view = $this->tpl();
-
-        $view->assign('jid', echapJS($jid));
-        $view->assign('page', $page);
-
-        if(isset($cr)) {
-            $view->assign('contactr', $cr);
-            $view->assign('edit',
-                $this->call(
-                    'ajaxEditContact',
-                    "'".echapJS($cr->jid)."'"));
-            $view->assign('delete',
-                $this->call(
-                    'ajaxDeleteContact',
-                    "'".echapJS($cr->jid)."'"));
-        } else {
-            $view->assign('contactr', null);
-            $c  = $cd->get($jid);
-            if(isset($c)) {
-                $view->assign('contact', $c);
-            } else {
-                $view->assign('contact', null);
-            }
-        }
-
-        return $view->draw('_contact_header', true);
-    }
-    */
 
     function prepareEmpty($page = 0, $jid = null)
     {

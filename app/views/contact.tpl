@@ -4,7 +4,6 @@
 </nav>
 
 <main>
-    <?php //$this->widget('Header'); ?>
     <section>
         <div style="background-color: #EEE;">
             <?php $this->widget('Notifs');?>
