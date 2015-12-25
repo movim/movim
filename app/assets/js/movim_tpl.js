@@ -61,7 +61,7 @@ var MovimTpl = {
         MovimTpl.scrollHeaders();
     },
     scrollHeaders : function() {
-        var headers = document.querySelectorAll('main > section > div > header');
+        /*var headers = document.querySelectorAll('main > section > div > header');
 
         for(var i = 0, len = headers.length; i < len; ++i ) {
             var header = headers[i];
@@ -74,7 +74,7 @@ var MovimTpl = {
                     movim_add_class(header, 'scroll');
                 }
             }
-        }
+        }*/
     },
     showPanel : function() {
         movim_add_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
