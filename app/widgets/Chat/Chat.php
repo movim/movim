@@ -191,9 +191,6 @@ class Chat extends WidgetBase
 
             $html = $this->prepareChat($jid);
 
-            //$header = $this->prepareHeader($jid);
-
-            //Header::fill($header);
             RPC::call('movim_fill', 'chat_widget', $html);
             RPC::call('MovimTpl.showPanel');
             RPC::call('Chat.focus');
@@ -212,9 +209,6 @@ class Chat extends WidgetBase
 
         $html = $this->prepareChat($room, true);
 
-        //$header = $this->prepareHeaderRoom($room);
-
-        //Header::fill($header);
         RPC::call('movim_fill', 'chat_widget', $html);
         RPC::call('MovimTpl.showPanel');
         RPC::call('Chat.focus');
@@ -401,30 +395,6 @@ class Chat extends WidgetBase
         $p->setTo($room)
           ->setSubject($form->subject->value)
           ->request();
-    }
-
-    /**
-     * @brief Prepare the contact header
-     *
-     * @param string $jid
-     */
-    function prepareHeader($jid)
-    {
-        $view = $this->tpl();
-
-        $cd = new \Modl\ContactDAO;
-
-        $cr = $cd->getRosterItem($jid);
-        if(isset($cr)) {
-            $contact = $cr;
-        } else {
-            $contact = $cd->get($jid);
-        }
-
-        $view->assign('contact', $contact);
-        $view->assign('jid', $jid);
-
-        return $view->draw('_chat_header', true);
     }
 
     /**
