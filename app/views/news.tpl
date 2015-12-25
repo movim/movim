@@ -7,7 +7,6 @@
 </nav>
 
 <main>
-    <?php //$this->widget('Header');?>
     <section>
         <?php $this->widget('Menu');?>
         <?php $this->widget('Post');?>
