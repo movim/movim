@@ -2,7 +2,6 @@
 
 article {
     overflow: hidden;
-    /*padding-bottom: 2rem;*/
 }
 
 article header {
@@ -10,21 +9,7 @@ article header {
 }
 
 /* We hide the main title because it's already here ? */
-/*
-article section h1 {
-    display: none;
-}
 
-article header h1 {
-    font-size: 4rem;
-    line-height: 12rem;
-}
-
-article header h2,
-li.condensed h2 {
-    line-height: 3.75rem;
-}
-*/
 article section {
     font-size: 2rem;
     line-height: 3rem;

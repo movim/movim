@@ -247,105 +247,19 @@ main > header {
 }
 
 main > header > div {
-    /*padding-left: 9rem;*/
     position: relative;
     width: 35%;
     display: inline-block;
-    /*overflow: hidden;*/
     box-sizing: border-box;
-    /*padding-right: 1rem;*/
-}
-/*
-main > header > div > .return > * {
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-}
-*/
-/*main > header > div > ul.active:not(.context_menu) {
-    float: right;
-    margin-right: -1rem;
 }
 
-main > header > div > ul.active:not(.context_menu) li {
-    float: left;
-    height: 7rem;
-    min-width: 0;
-    line-height: 7rem;
-    width: 7rem;
-    padding: 0;
-    font-size: 4rem;
-}
-
-main > header > div > ul.active:not(.context_menu) li.thin {
-    width: 5rem;
-}
-
-main > header > div > ul.active:not(.context_menu) li span.icon {
-    left: 1rem;
-}
-
-main > header > div > ul.active:not(.context_menu) li.thin span.icon {
-    width: 3rem;
-}
-*/
 main > header > div:first-child:nth-last-child(2) ~ div {
     width: 65%;
     position: absolute;
     top: 0;
     right: 0;
 }
-/*
-main > header > div > span.icon {
-    line-height: 7rem;
-    left: 0;
-    width: 8rem;
-    height: 7rem;
-    top: 0;
-    margin: 0;
-}
 
-main > header > div > .return {
-    padding-left: 8rem;
-    margin-left: -9rem;
-    display: inline-block;
-    padding-right: 2rem;
-    max-width: calc(100% + 10rem);
-    height: 7rem;
-    box-sizing: border-box;
-}
-
-main > header > div > form.return {
-    display: block;
-    padding-right: 0;
-    padding-left: 9rem;
-}
-*/
-/* Not very beautiful… */
-/*
-main > header > div > .return.condensed > h2 {
-    line-height: 3.5rem;
-    font-size: 2.75rem;
-    margin-top: 0.7rem;
-    margin-bottom: -0.5rem;
-}
-*/
-/*
-main > header > div > .return > h4 {
-    line-height: 2.5rem;
-    font-size: 1.75rem;
-}
-
-main > header > div > .return.r1 { max-width: calc(100% + 3rem); }
-main > header > div > .return.r2 { max-width: calc(100% - 5rem); }
-main > header > div > .return.r3 { max-width: calc(100% - 12rem); }
-
-main > header > div > .return.active:hover,
-main > header > div > span.active:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    cursor: pointer;
-}
-*/
 @media screen and (max-width: 1024px) {
     main > header > div,
     main > header > div:first-child:nth-last-child(2) ~ div {
@@ -369,7 +283,6 @@ main > header + section {
 main > section > div {
     overflow-y: auto;
     display: block;
-    /*position: relative;*/
     float: left;
     height: 100%;
     width: 100%;

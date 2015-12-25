@@ -42,7 +42,7 @@
         >
             {$picture = $value->getPicture()}
             {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                <span class="icon thumb color red tiny">
+                <span class="primary icon thumb color red tiny">
                     +18
                 </span>
             {elseif="$picture != null"}

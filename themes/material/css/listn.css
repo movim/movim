@@ -31,25 +31,6 @@ ul.list.active li.active:not(.subheader) {
     cursor: pointer;
 }
 
-/* Divided list */
-/*
-ul.list.divided:not(.spaced) > li:not(:last-child),
-ul.list.divided.spaced > li:not(:last-child).subheader,
-ul.list.divided.spaced > li:not(:last-child):not(.subheader):after {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-}
-
-ul.list.divided.spaced > *:not(:last-child):after {
-    position: absolute;
-    right: 0;
-    bottom: 0rem;
-    content: "";
-    display: block;
-    width: calc(100% - 9rem);
-}
-*/
-
 /* Main elements */
 
 ul.list li > .control,
@@ -96,14 +77,6 @@ ul.list li > p.line {
     white-space: nowrap;
 }
 
-/* Not sure */
-/*ul.list li > p > span {
-    float: right;
-    font-size: 1.5rem;
-    color: gray;
-}
-*/
-
 ul.list li > span.active {
     transition: background-color 0.25s ease;
 }
@@ -112,41 +85,7 @@ ul.list li > span.active:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.1);
 }
-/*
-ul.list li > span.active {
-    overflow: hidden;
-    margin: -1rem;
-    padding: 1rem;
-    top: 1rem;
-}
 
-ul.list li > span.active:hover {
-    cursor: pointer;
-}
-
-ul.list li > span.active:after {
-    content: "";
-    background: rgba(255,255,255,0.3);
-    display: block;
-    position: absolute;
-    border-radius: 50%;
-    padding-top: 240%;
-    padding-left: 240%;
-    margin-top: -120%;
-    margin-left: -120%;
-    opacity: 0;
-    transition: all 1s;
-}
-
-ul.list li > span.active:active:after {
-    padding-top: 0;
-    padding-left: 0;
-    margin-top: 0;
-    margin-left: 0;
-    opacity: 1;
-    transition: 0s;
-}
-*/
 ul.list li > p > span.second {
     color: gray;
 }
@@ -402,6 +341,13 @@ ul li:not(.same) div.bubble:before {
 ul li.oppose:not(.same) div.bubble:before {
     left: calc(100% - 10.5rem);
     top: 1.5rem;
+}
+
+/* Icon */
+
+.icon.tiny {
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 /* Menu */
