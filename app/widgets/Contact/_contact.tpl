@@ -36,8 +36,8 @@
         </li>
     </ul>
 
-    <ul class="list thick">
-        <li>
+    <ul class="list thick flex">
+        <li class="block">
             {if="$url"}
                 <span class="primary icon bubble color {if="isset($presence)"}status {$presence}{/if}">
                     <img src="{$url}">
@@ -50,10 +50,9 @@
             <p class="line">{$contact->getTrueName()}</p>
             <p class="line">{$contact->jid}</p>
         </li>
-        <!--
         {if="$caps"}
-            <li>
-                <span class="icon">
+            <li class="block">
+                <span class="primary icon">
                     <i class="zmdi
                         {if="$caps->type == 'handheld' || $caps->type == 'phone'"}
                             zmdi-smartphone-android
@@ -65,14 +64,14 @@
                     ">
                     </i>
                 </span>
-                <span>
+                <p class="normal line">
                     {$caps->name}
                     {if="isset($clienttype[$caps->type])"}
                         - {$clienttype[$caps->type]}
                     {/if}
-                </span>
+                </p>
             </li>
-        {/if}-->
+        {/if}
     </ul>
 </header>
 
