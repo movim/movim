@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 23:33+0200\n"
+"POT-Creation-Date: 2015-12-29 13:42+0200\n"
 "PO-Revision-Date: 2015-10-06 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Icelandic (http://www.transifex.com/movim/movim/language/is/)\n"
@@ -205,6 +205,10 @@ msgstr "Aðgangur þinn hefur verið skráður"
 msgid "Loading"
 msgstr "Hleð"
 
+#: [create]placeholder
+msgid "…and start playing"
+msgstr ""
+
 #: [error]not_acceptable
 msgid "Not Acceptable"
 msgstr ""
@@ -258,8 +262,9 @@ msgid "Port"
 msgstr ""
 
 #: [db]name
-msgid "Database sName"
-msgstr ""
+#, fuzzy
+msgid "Database Name"
+msgstr "Gerð Gagnagrunns"
 
 #: [admin]general
 msgid "General Settings"
@@ -367,14 +372,6 @@ msgstr ""
 msgid "Syslog and files"
 msgstr ""
 
-#: [rewrite]title
-msgid "URL Rewriting"
-msgstr ""
-
-#: [rewrite]info
-msgid "The URL Rewriting can be enabled"
-msgstr ""
-
 #: [admin]compatibility
 msgid "General Overview"
 msgstr ""
@@ -405,10 +402,6 @@ msgstr ""
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movims root directory"
-msgstr ""
-
-#: [compatibility]rewrite
-msgid "The URL Rewriting support is currently disabled"
 msgstr ""
 
 #: [compatibility]db
@@ -495,12 +488,20 @@ msgstr "Myndin hefur verið uppfærð"
 msgid "Avatar Not Updated"
 msgstr "Ekki náðist að uppfæra mynd"
 
+#: [avatar]missing
+msgid "No avatar defined yet"
+msgstr ""
+
 #: [blog]title [feed]title
 msgid "%s's feed"
 msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
+msgstr ""
+
+#: [blog]private
+msgid "This content is private, please login to see it"
 msgstr ""
 
 #: [title]conferences
@@ -585,6 +586,10 @@ msgstr ""
 msgid "Contact gone"
 msgstr ""
 
+#: [message]history
+msgid "%s messages retrieved"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr ""
@@ -642,7 +647,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -697,9 +702,15 @@ msgstr "Fela ótengda tengiliði"
 msgid "Appearence"
 msgstr "Útlit"
 
-#: [config]info
-msgid "This configuration is shared wherever you are connected"
-msgstr ""
+#: [config]not_valid
+#, fuzzy
+msgid "Configuration invalid"
+msgstr "Stillingar"
+
+#: [config]advanced
+#, fuzzy
+msgid "Advanced Configuration"
+msgstr "Stillingar"
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -707,6 +718,10 @@ msgstr ""
 
 #: [notifications]desktop
 msgid "Use desktop notifications"
+msgstr ""
+
+#: [cssurl]label
+msgid "Custom CSS URL for your blog"
 msgstr ""
 
 #: [general]legend [general]general_title
@@ -819,6 +834,10 @@ msgstr ""
 
 #: [blog]last
 msgid "Last public post"
+msgstr ""
+
+#: [blog]visit
+msgid "Visit the blog to see all the public posts"
 msgstr ""
 
 #: [subscription]to
@@ -1005,18 +1024,6 @@ msgstr ""
 msgid "This server doesn't exists"
 msgstr ""
 
-#: [menu]all
-msgid "All"
-msgstr ""
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr ""
-
-#: [menu]me
-msgid "My publications"
-msgstr ""
-
 #: [roster]search
 msgid "Search in your contacts"
 msgstr ""
@@ -1122,8 +1129,9 @@ msgid "Chat with the team ?"
 msgstr ""
 
 #: [chatroom]button
-msgid "Join the Chatroom"
-msgstr ""
+#, fuzzy
+msgid "Add the chatroom"
+msgstr "Bæta við spjallrás"
 
 #: [init]location
 msgid "Location node created"
@@ -1214,10 +1222,6 @@ msgstr ""
 msgid "The server takes too much time to respond"
 msgstr ""
 
-#: [error]too_old
-msgid "Your web browser is too old to use with Movim."
-msgstr ""
-
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
 msgstr ""
@@ -1300,11 +1304,15 @@ msgid "Welcome on your news feed, here you will see all the posts published by y
 msgstr ""
 
 #: [menu]refresh
-msgid "Refreshing all the streams"
+msgid "Refresh all the streams"
 msgstr ""
 
 #: [menu]public
 msgid "This post is public"
+msgstr ""
+
+#: [menu]all
+msgid "All"
 msgstr ""
 
 #: [affiliations]title
@@ -1341,10 +1349,6 @@ msgstr ""
 
 #: [notifs]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
-
-#: [notifs]manage
-msgid "Manage"
 msgstr ""
 
 #: [post]news_feed
@@ -1391,12 +1395,12 @@ msgstr ""
 msgid "Publish this post publicly?"
 msgstr ""
 
-#: [post]blog_add
-msgid "Post published on your blog"
+#: [post]public_yes
+msgid "This post is now public"
 msgstr ""
 
-#: [post]blog_remove
-msgid "Post removed from your blog"
+#: [post]public_no
+msgid "This post is now private"
 msgstr ""
 
 #: [post]delete_title [post]delete
@@ -1405,6 +1409,10 @@ msgstr ""
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
+msgstr ""
+
+#: [post]discover
+msgid "Discover more articles on the Groups page"
 msgstr ""
 
 #: [post]comments_disabled
@@ -1471,10 +1479,6 @@ msgstr "Mörk"
 msgid "This picture will be added to your gallery"
 msgstr "Þessi mynd verður bætt við myndasafnið þitt"
 
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
-msgstr ""
-
 #: [publish]valid_url
 msgid "Please enter a valid url"
 msgstr "Gjörið svo vel að setja inn rétta slóð"
@@ -1485,6 +1489,10 @@ msgstr "Ekkert efni til þess að forskoða"
 
 #: [publish]no_title
 msgid "Please provide a title"
+msgstr ""
+
+#: [publish]edit
+msgid "Edit post"
 msgstr ""
 
 #: [publish]title
@@ -1876,6 +1884,11 @@ msgstr ""
 #: [page]room
 msgid "Room"
 msgstr ""
+
+#: [page]tag
+#, fuzzy
+msgid "Tag"
+msgstr "Mörk"
 
 #: [error]error
 msgid "Error: %s"

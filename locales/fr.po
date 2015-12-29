@@ -1,5 +1,6 @@
 #
 # Translators:
+# Cypouz, 2015
 # Éfrit, 2015
 # Jaussoin Timothée <edhelas@movim.eu>, 2015
 # Maxime Buquet <tidusx62@gmail.com>, 2015
@@ -97,8 +98,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 23:33+0200\n"
-"PO-Revision-Date: 2015-10-08 06:51+0000\n"
+"POT-Creation-Date: 2015-12-29 13:42+0200\n"
+"PO-Revision-Date: 2015-12-29 12:51+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -209,6 +210,10 @@ msgstr "Compte créé avec succès"
 msgid "Loading"
 msgstr "Chargement"
 
+#: [create]placeholder
+msgid "…and start playing"
+msgstr "…et amusez-vous"
+
 #: [error]not_acceptable
 msgid "Not Acceptable"
 msgstr "Non acceptable"
@@ -262,8 +267,8 @@ msgid "Port"
 msgstr "Port"
 
 #: [db]name
-msgid "Database sName"
-msgstr ""
+msgid "Database Name"
+msgstr "Nom de la base de données"
 
 #: [admin]general
 msgid "General Settings"
@@ -371,14 +376,6 @@ msgstr "Journal système (syslog)"
 msgid "Syslog and files"
 msgstr "Journal système et fichiers"
 
-#: [rewrite]title
-msgid "URL Rewriting"
-msgstr "Réécriture d’URL"
-
-#: [rewrite]info
-msgid "The URL Rewriting can be enabled"
-msgstr "La réécriture d’URL peut être activée"
-
 #: [admin]compatibility
 msgid "General Overview"
 msgstr "Aperçu général"
@@ -410,10 +407,6 @@ msgstr "Installez la librairie php5-gd"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movims root directory"
 msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier racine de Movim"
-
-#: [compatibility]rewrite
-msgid "The URL Rewriting support is currently disabled"
-msgstr "Le support des URI simplifiées (URL Rewriting) est actuellement désactivé"
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -499,6 +492,10 @@ msgstr "Avatar mis à jour"
 msgid "Avatar Not Updated"
 msgstr "Avatar non mis à jour"
 
+#: [avatar]missing
+msgid "No avatar defined yet"
+msgstr "Aucun avatar définit pour le moment"
+
 #: [blog]title [feed]title
 msgid "%s's feed"
 msgstr "Flux de %s"
@@ -506,6 +503,10 @@ msgstr "Flux de %s"
 #: [blog]empty
 msgid "This user has not posted anything right now"
 msgstr "Cet utilisateur n’a rien publié pour le moment"
+
+#: [blog]private
+msgid "This content is private, please login to see it"
+msgstr "Ce contenu est privé, veuillez vous connecter pour le consulter"
 
 #: [title]conferences
 msgid "Conferences"
@@ -589,6 +590,10 @@ msgstr "En pause…"
 msgid "Contact gone"
 msgstr "Le contact est absent pour le moment"
 
+#: [message]history
+msgid "%s messages retrieved"
+msgstr "%s messages récupérés"
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s a besoin de votre attention"
@@ -646,8 +651,8 @@ msgid "No chats yet..."
 msgstr "Pas de discussions pour le moment"
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
-msgstr "Commencez une nouvelle conversation en cliquant sur le bouton plus ci-dessous ou visitez la page %s Contacts%s."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
+msgstr "Commencez une nouvelle conversation en cliquant sur le bouton %s ci-dessous ou visitez la page %sContacts%s."
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -701,9 +706,13 @@ msgstr "Cacher les contacts hors ligne"
 msgid "Appearence"
 msgstr "Apparence"
 
-#: [config]info
-msgid "This configuration is shared wherever you are connected"
-msgstr "Cette configuration est partagée partout où vous vous connectez !"
+#: [config]not_valid
+msgid "Configuration invalid"
+msgstr "Configuration non valide"
+
+#: [config]advanced
+msgid "Advanced Configuration"
+msgstr "Configuration avancée"
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -712,6 +721,10 @@ msgstr "Notifier lors d’un message entrant"
 #: [notifications]desktop
 msgid "Use desktop notifications"
 msgstr "Utiliser les notifications bureau"
+
+#: [cssurl]label
+msgid "Custom CSS URL for your blog"
+msgstr "URL CSS personnalisée pour votre blog"
 
 #: [general]legend [general]general_title
 msgid "General Informations"
@@ -825,6 +838,10 @@ msgstr "%s ans"
 msgid "Last public post"
 msgstr "Derniers billets public"
 
+#: [blog]visit
+msgid "Visit the blog to see all the public posts"
+msgstr "Visiter le blog pour voir tous les billets publiques"
+
 #: [subscription]to
 msgid "You can see this contact status"
 msgstr "Vous pouvez voir l'état de ce contact"
@@ -835,7 +852,7 @@ msgstr "Partager mon état"
 
 #: [subscription]to_text
 msgid "But this contact cannot see yours"
-msgstr "Mais ce contact ne peux pas voir le votre"
+msgstr "Mais ce contact ne peut pas voir le vôtre"
 
 #: [subscription]from
 msgid "You are not subscribed to this contact"
@@ -1009,18 +1026,6 @@ msgstr "%s billets"
 msgid "This server doesn't exists"
 msgstr "Ce serveur n'existe pas"
 
-#: [menu]all
-msgid "All"
-msgstr "Tous"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Rafraîchir tous les flux"
-
-#: [menu]me
-msgid "My publications"
-msgstr "Mes publications"
-
 #: [roster]search
 msgid "Search in your contacts"
 msgstr "Chercher dans vos contacts "
@@ -1126,8 +1131,8 @@ msgid "Chat with the team ?"
 msgstr "Discuter avec l’équipe ?"
 
 #: [chatroom]button
-msgid "Join the Chatroom"
-msgstr "Rejoindre le salon de discussion"
+msgid "Add the chatroom"
+msgstr "Ajouter le salon de discussion"
 
 #: [init]location
 msgid "Location node created"
@@ -1218,10 +1223,6 @@ msgstr "Votre compte XMPP n’est pas autorisé à se connecter"
 msgid "The server takes too much time to respond"
 msgstr "Le serveur met trop de temps à répondre"
 
-#: [error]too_old
-msgid "Your web browser is too old to use with Movim."
-msgstr "Votre navigateur est trop vieux pour prendre en charge Movim"
-
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
 msgstr "Movim ne peut pas communiquer avec le serveur, veuillez réessayer plus tard (erreur de connexion WebSocket)"
@@ -1304,12 +1305,16 @@ msgid "Welcome on your news feed, here you will see all the posts published by y
 msgstr "Bienvenue sur votre flux d’actualité, ici vous verrez toutes les publications des groupes auxquels vous vous êtes abonnés ainsi que celles de vos contacts."
 
 #: [menu]refresh
-msgid "Refreshing all the streams"
+msgid "Refresh all the streams"
 msgstr "Rafraîchir tous les flux"
 
 #: [menu]public
 msgid "This post is public"
 msgstr "Ce billet est public"
+
+#: [menu]all
+msgid "All"
+msgstr "Tous"
 
 #: [affiliations]title
 msgid "Manage your members"
@@ -1346,10 +1351,6 @@ msgstr "Invitations en attente"
 #: [notifs]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s veut parler avec vous"
-
-#: [notifs]manage
-msgid "Manage"
-msgstr "Gérer"
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1395,13 +1396,13 @@ msgstr "Voir le profil de %s"
 msgid "Publish this post publicly?"
 msgstr "Publier ce billet publiquement?"
 
-#: [post]blog_add
-msgid "Post published on your blog"
-msgstr "Billet publié sur votre blog"
+#: [post]public_yes
+msgid "This post is now public"
+msgstr "Ce billet est désormais publique"
 
-#: [post]blog_remove
-msgid "Post removed from your blog"
-msgstr "Billet retiré de votre blog"
+#: [post]public_no
+msgid "This post is now private"
+msgstr "Ce billet est désormais privé"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1410,6 +1411,10 @@ msgstr "Supprimer ce billet"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Vous allez supprimer ce billet, veuillez confirmer votre action."
+
+#: [post]discover
+msgid "Discover more articles on the Groups page"
+msgstr "Découvrez plus de publications sur la page Actualité"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1475,10 +1480,6 @@ msgstr "Étiquettes"
 msgid "This picture will be added to your gallery"
 msgstr "Cette image va être ajoutée à votre galerie"
 
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
-msgstr "Vous pouvez également utiliser des services comme Imgur ou Flickr pour héberger vos images et coller le lien résultant ici."
-
 #: [publish]valid_url
 msgid "Please enter a valid url"
 msgstr "Veuillez entrer une URL valide"
@@ -1490,6 +1491,10 @@ msgstr "Pas de contenu à afficher"
 #: [publish]no_title
 msgid "Please provide a title"
 msgstr "Veuillez mettre un titre à votre publication"
+
+#: [publish]edit
+msgid "Edit post"
+msgstr "Éditer le billet"
 
 #: [publish]title
 msgid "Publish"
@@ -1533,7 +1538,7 @@ msgstr "Vous n'avez pas encore de salon de discussions."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr ""
+msgstr "Ajoutez en un en cliquant sur le bouton ajouter."
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1880,6 +1885,10 @@ msgstr "Partager"
 #: [page]room
 msgid "Room"
 msgstr "Salon"
+
+#: [page]tag
+msgid "Tag"
+msgstr "Étiquette"
 
 #: [error]error
 msgid "Error: %s"

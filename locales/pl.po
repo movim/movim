@@ -93,8 +93,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 23:33+0200\n"
-"PO-Revision-Date: 2015-10-06 21:34+0000\n"
+"POT-Creation-Date: 2015-12-29 13:42+0200\n"
+"PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
@@ -118,7 +118,7 @@ msgstr "Tłumacze"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Dziękujemy wszystkim tłumaczom"
 
 #: [about]software
 msgid "Software"
@@ -205,6 +205,10 @@ msgstr "Twoje konto zarejestrowano pomyślnie"
 msgid "Loading"
 msgstr "Ładowanie"
 
+#: [create]placeholder
+msgid "…and start playing"
+msgstr ""
+
 #: [error]not_acceptable
 msgid "Not Acceptable"
 msgstr "Nie akceptowalne"
@@ -258,8 +262,8 @@ msgid "Port"
 msgstr "Port"
 
 #: [db]name
-msgid "Database sName"
-msgstr "Nazwa Bazy Danych"
+msgid "Database Name"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -367,14 +371,6 @@ msgstr "Syslog"
 msgid "Syslog and files"
 msgstr "Syslog i pliki"
 
-#: [rewrite]title
-msgid "URL Rewriting"
-msgstr "Przepisywanie URL"
-
-#: [rewrite]info
-msgid "The URL Rewriting can be enabled"
-msgstr "Przepisywanie URL może być włączone"
-
 #: [admin]compatibility
 msgid "General Overview"
 msgstr "Przegląd Ogólny"
@@ -406,10 +402,6 @@ msgstr "Zainstaluj bibliotekę php5-gd"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movims root directory"
 msgstr "Prawa do odczytu i zapisu dla webserver w katalogu root Movims"
-
-#: [compatibility]rewrite
-msgid "The URL Rewriting support is currently disabled"
-msgstr "Wsparcie dla Przepisywania URL jest obecnie wyłączone"
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -495,6 +487,10 @@ msgstr "Avatar Zaktualizowany"
 msgid "Avatar Not Updated"
 msgstr "Avatar Nie Zaktualizowany"
 
+#: [avatar]missing
+msgid "No avatar defined yet"
+msgstr ""
+
 #: [blog]title [feed]title
 msgid "%s's feed"
 msgstr "Treści użytkownika %s"
@@ -502,6 +498,10 @@ msgstr "Treści użytkownika %s"
 #: [blog]empty
 msgid "This user has not posted anything right now"
 msgstr "Ten użytkownik niczego teraz nie opublikował"
+
+#: [blog]private
+msgid "This content is private, please login to see it"
+msgstr ""
 
 #: [title]conferences
 msgid "Conferences"
@@ -522,7 +522,7 @@ msgstr "ID Pokoju Rozmów"
 #: [chatroom]name
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Imię"
+msgstr "Nazwa"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -585,6 +585,10 @@ msgstr "Zapauzowane..."
 msgid "Contact gone"
 msgstr "Kontakt zniknął"
 
+#: [message]history
+msgid "%s messages retrieved"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s potrzebuje twojej uwagi"
@@ -642,7 +646,7 @@ msgid "No chats yet..."
 msgstr "Chwilowo brak czatów..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -683,7 +687,7 @@ msgstr "Język"
 
 #: [config]roster
 msgid "Roster display"
-msgstr "Wyświetl listę"
+msgstr "Wyświetlanie listy"
 
 #: [config]roster_show
 msgid "Show the offline contacts"
@@ -697,9 +701,13 @@ msgstr "Ukryj kontakty offline"
 msgid "Appearence"
 msgstr "Wygląd"
 
-#: [config]info
-msgid "This configuration is shared wherever you are connected"
-msgstr "Konfiguracja jest dzielona gdziekolwiek się nie łączysz"
+#: [config]not_valid
+msgid "Configuration invalid"
+msgstr ""
+
+#: [config]advanced
+msgid "Advanced Configuration"
+msgstr ""
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -709,13 +717,17 @@ msgstr "Powiadom o nowej wiadomości"
 msgid "Use desktop notifications"
 msgstr "Użyj powiadomień na pulpicie"
 
+#: [cssurl]label
+msgid "Custom CSS URL for your blog"
+msgstr ""
+
 #: [general]legend [general]general_title
 msgid "General Informations"
 msgstr "Ogólne Informacje"
 
 #: [general]name [public_groups]name [chatrooms]name
 msgid "Name"
-msgstr "Imię"
+msgstr "Nazwa"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -820,6 +832,10 @@ msgstr "%s lat"
 #: [blog]last
 msgid "Last public post"
 msgstr "Ostatni publiczny post"
+
+#: [blog]visit
+msgid "Visit the blog to see all the public posts"
+msgstr ""
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -955,11 +971,11 @@ msgstr "Wpis Kontaktu"
 
 #: [groups]empty_text1
 msgid "You don't have any group subscriptions yet."
-msgstr ""
+msgstr "Nie zasubskrybowałeś jeszcze żadnej grupy."
 
 #: [groups]empty_text2
 msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
+msgstr "Tutaj będziesz miał możliwość zarządzania swoimi wszystkimi subskrypcjami."
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1005,18 +1021,6 @@ msgstr "%s wpisów"
 msgid "This server doesn't exists"
 msgstr "Serwer nie istnieje"
 
-#: [menu]all
-msgid "All"
-msgstr "Wszystko"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Odśwież wszystkie strumienie"
-
-#: [menu]me
-msgid "My publications"
-msgstr ""
-
 #: [roster]search
 msgid "Search in your contacts"
 msgstr "Szukaj w swoich kontaktach"
@@ -1055,19 +1059,19 @@ msgstr "Udostępnij na Movim"
 
 #: [hello]enter_title
 msgid "Oh! Hello!"
-msgstr ""
+msgstr "Ah! Witaj!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
+msgstr "Wygląda na to, że jesteś tutaj nowy! Witaj w Movim!"
 
 #: [hello]menu_title
 msgid "Check the Menu"
-msgstr ""
+msgstr "Sprawdź Menu"
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
-msgstr ""
+msgstr "Tutaj masz dostęp do wszystkich głównych funkcji Movim. Możesz śmiało nawigować po całej stronie by odkryć jeszcze więcej!"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1122,8 +1126,8 @@ msgid "Chat with the team ?"
 msgstr "Porozmawiaj z ekipą ?"
 
 #: [chatroom]button
-msgid "Join the Chatroom"
-msgstr "Dołącz do Pokoju Czatowego"
+msgid "Add the chatroom"
+msgstr ""
 
 #: [init]location
 msgid "Location node created"
@@ -1214,10 +1218,6 @@ msgstr "Twój serwer XMPP nie jest autoryzowany"
 msgid "The server takes too much time to respond"
 msgstr "Serwer za długo odpowiada"
 
-#: [error]too_old
-msgid "Your web browser is too old to use with Movim."
-msgstr "Masz za starą przeglądarkę by używać Movim."
-
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
 msgstr "Movim nie może porozumieć się z serwerem, proszę spróbować później (błąd połączenia z Websocket)"
@@ -1300,12 +1300,16 @@ msgid "Welcome on your news feed, here you will see all the posts published by y
 msgstr "Witaj w zakładce nowinek. Tutaj znajdziesz wszystkie posty opublikowany przez twoje kontakty oraz kontakty z zasubskrybowanych grup."
 
 #: [menu]refresh
-msgid "Refreshing all the streams"
+msgid "Refresh all the streams"
 msgstr "Odśwież wszystkie strumienie"
 
 #: [menu]public
 msgid "This post is public"
 msgstr "Wpis jest publiczny"
+
+#: [menu]all
+msgid "All"
+msgstr "Wszystko"
 
 #: [affiliations]title
 msgid "Manage your members"
@@ -1342,10 +1346,6 @@ msgstr "Oczekiwanie na Zaproszenie"
 #: [notifs]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s chce z tobą rozmawiać"
-
-#: [notifs]manage
-msgid "Manage"
-msgstr "Zarządzaj"
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1391,13 +1391,13 @@ msgstr "Zobacz profil %s"
 msgid "Publish this post publicly?"
 msgstr "Opublikować wpis publicznie?"
 
-#: [post]blog_add
-msgid "Post published on your blog"
-msgstr "Wpis opublikowany na twoim blogu"
+#: [post]public_yes
+msgid "This post is now public"
+msgstr ""
 
-#: [post]blog_remove
-msgid "Post removed from your blog"
-msgstr "Wpis usunięty z twojego bloga"
+#: [post]public_no
+msgid "This post is now private"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1406,6 +1406,10 @@ msgstr "Usuń ten wpis"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Zamierzasz usunąć ten wpis, potwierdź swoje zamiary"
+
+#: [post]discover
+msgid "Discover more articles on the Groups page"
+msgstr ""
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1457,7 +1461,7 @@ msgstr "Podręcznik Markdown syntax"
 
 #: [post]content_text
 msgid "You can format your content using Markdown"
-msgstr ""
+msgstr "Możesz formatować swoją zawartość poprzez użycie Markdown"
 
 #: [post]link
 msgid "Link"
@@ -1471,10 +1475,6 @@ msgstr "Tagi"
 msgid "This picture will be added to your gallery"
 msgstr "Ten obrazek zostanie dodany do twojej galerii"
 
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
-msgstr "Możesz też użyć takich serwisów jak Imgur lub Flickr do wrzucenia obrazków i wklejenia linku tutaj."
-
 #: [publish]valid_url
 msgid "Please enter a valid url"
 msgstr "Proszę wpisać poprawny adres URL"
@@ -1485,6 +1485,10 @@ msgstr "Brak zawartości do podejrzenia"
 
 #: [publish]no_title
 msgid "Please provide a title"
+msgstr "Proszę podać tytuł"
+
+#: [publish]edit
+msgid "Edit post"
 msgstr ""
 
 #: [publish]title
@@ -1505,11 +1509,11 @@ msgstr "Jakieś pola zostały wypełnione. Czy na pewno chcesz wrócić i straci
 
 #: [publish]add_text
 msgid "Click here to add some text to your publication"
-msgstr ""
+msgstr "Kliknij tutaj by dodać trochę tekstu do swojej publikacji"
 
 #: [publish]add_text_label
 msgid "Add some text"
-msgstr ""
+msgstr "Dodaj trochę tekstu"
 
 #: [public_groups]shared
 msgid "Shared"
@@ -1529,7 +1533,7 @@ msgstr "Nie masz żadnych pokoi czatowych"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr ""
+msgstr "Dodaj coś poprzez kliknięcie na przycisku Dodaj"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1549,7 +1553,7 @@ msgstr "Proszę wpisać poprawny nick (2 do 40 znaków)"
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr ""
+msgstr "Nazwa użytkownika jest już zajęta"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1876,6 +1880,10 @@ msgstr "Udostępnij"
 #: [page]room
 msgid "Room"
 msgstr "Pokój"
+
+#: [page]tag
+msgid "Tag"
+msgstr ""
 
 #: [error]error
 msgid "Error: %s"

@@ -92,7 +92,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 23:33+0200\n"
+"POT-Creation-Date: 2015-12-29 13:42+0200\n"
 "PO-Revision-Date: 2015-10-06 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -204,6 +204,10 @@ msgstr ""
 msgid "Loading"
 msgstr ""
 
+#: [create]placeholder
+msgid "…and start playing"
+msgstr ""
+
 #: [error]not_acceptable
 msgid "Not Acceptable"
 msgstr ""
@@ -257,8 +261,9 @@ msgid "Port"
 msgstr "Port"
 
 #: [db]name
-msgid "Database sName"
-msgstr ""
+#, fuzzy
+msgid "Database Name"
+msgstr "Databasetype"
 
 #: [admin]general
 msgid "General Settings"
@@ -366,14 +371,6 @@ msgstr "Syslog"
 msgid "Syslog and files"
 msgstr "Syslog og filer"
 
-#: [rewrite]title
-msgid "URL Rewriting"
-msgstr "URL omskrivning"
-
-#: [rewrite]info
-msgid "The URL Rewriting can be enabled"
-msgstr "URL omskrivning kan slås til"
-
 #: [admin]compatibility
 msgid "General Overview"
 msgstr "Generel oversigt"
@@ -405,10 +402,6 @@ msgstr ""
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movims root directory"
 msgstr ""
-
-#: [compatibility]rewrite
-msgid "The URL Rewriting support is currently disabled"
-msgstr "URL omskrivnings understøttelse er i øjeblikket slået fra"
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -494,6 +487,10 @@ msgstr "Avatar opdateret"
 msgid "Avatar Not Updated"
 msgstr "Avatar ikke opdateret"
 
+#: [avatar]missing
+msgid "No avatar defined yet"
+msgstr ""
+
 #: [blog]title [feed]title
 msgid "%s's feed"
 msgstr "%s's feed"
@@ -501,6 +498,10 @@ msgstr "%s's feed"
 #: [blog]empty
 msgid "This user has not posted anything right now"
 msgstr "Denne bruger har ikke postet noget endnu"
+
+#: [blog]private
+msgid "This content is private, please login to see it"
+msgstr ""
 
 #: [title]conferences
 msgid "Conferences"
@@ -584,6 +585,10 @@ msgstr "Sat i pause..."
 msgid "Contact gone"
 msgstr "Kontakt er væk"
 
+#: [message]history
+msgid "%s messages retrieved"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s har brug for din opmærksomhed"
@@ -641,7 +646,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -696,9 +701,15 @@ msgstr "Skjul offline kontakter"
 msgid "Appearence"
 msgstr "Udseende"
 
-#: [config]info
-msgid "This configuration is shared wherever you are connected"
-msgstr ""
+#: [config]not_valid
+#, fuzzy
+msgid "Configuration invalid"
+msgstr "Opsætning gemt"
+
+#: [config]advanced
+#, fuzzy
+msgid "Advanced Configuration"
+msgstr "Opsætning"
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -707,6 +718,10 @@ msgstr "Giv besked om indkomne beskeder"
 #: [notifications]desktop
 msgid "Use desktop notifications"
 msgstr "Brug skrivebordsmeddelelser"
+
+#: [cssurl]label
+msgid "Custom CSS URL for your blog"
+msgstr ""
 
 #: [general]legend [general]general_title
 msgid "General Informations"
@@ -819,6 +834,10 @@ msgstr "%s år"
 #: [blog]last
 msgid "Last public post"
 msgstr "Sidste offentige indlæg"
+
+#: [blog]visit
+msgid "Visit the blog to see all the public posts"
+msgstr ""
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -1004,18 +1023,6 @@ msgstr "%s indlæg"
 msgid "This server doesn't exists"
 msgstr ""
 
-#: [menu]all
-msgid "All"
-msgstr "Alle"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Genopfrisk alle strømmene"
-
-#: [menu]me
-msgid "My publications"
-msgstr ""
-
 #: [roster]search
 msgid "Search in your contacts"
 msgstr ""
@@ -1121,8 +1128,9 @@ msgid "Chat with the team ?"
 msgstr "Chat med teamet ?"
 
 #: [chatroom]button
-msgid "Join the Chatroom"
-msgstr "Gå ind i chatrummet"
+#, fuzzy
+msgid "Add the chatroom"
+msgstr "Tilføj et chatrum"
 
 #: [init]location
 msgid "Location node created"
@@ -1213,10 +1221,6 @@ msgstr ""
 msgid "The server takes too much time to respond"
 msgstr "Serveren er for lang tid om at svare"
 
-#: [error]too_old
-msgid "Your web browser is too old to use with Movim."
-msgstr "Din internet browser er for gammel til at bruge Movim."
-
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
 msgstr "Movim kan ikke kommunikere med serveren, prøv venligst igen senere (Websocket forbindelsesfejl)"
@@ -1299,12 +1303,16 @@ msgid "Welcome on your news feed, here you will see all the posts published by y
 msgstr ""
 
 #: [menu]refresh
-msgid "Refreshing all the streams"
-msgstr "Genopfriksker alle strømmende"
+msgid "Refresh all the streams"
+msgstr "Genopfrisk alle strømmene"
 
 #: [menu]public
 msgid "This post is public"
 msgstr "Dette indlæg er offentligt"
+
+#: [menu]all
+msgid "All"
+msgstr "Alle"
 
 #: [affiliations]title
 msgid "Manage your members"
@@ -1341,10 +1349,6 @@ msgstr "Ventende invitationer"
 #: [notifs]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s vil gerne snakke med dig"
-
-#: [notifs]manage
-msgid "Manage"
-msgstr "Administrér"
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1390,13 +1394,15 @@ msgstr ""
 msgid "Publish this post publicly?"
 msgstr ""
 
-#: [post]blog_add
-msgid "Post published on your blog"
-msgstr "Indlæg udgivet på din blog"
+#: [post]public_yes
+#, fuzzy
+msgid "This post is now public"
+msgstr "Dette indlæg er offentligt"
 
-#: [post]blog_remove
-msgid "Post removed from your blog"
-msgstr "Indlæg fjernet fra din blog"
+#: [post]public_no
+#, fuzzy
+msgid "This post is now private"
+msgstr "Dette indlæg er offentligt"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1405,6 +1411,11 @@ msgstr "Slet dette indlæg"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Du er ved at slette dette indlæg, bekræft venligst din handling"
+
+#: [post]discover
+#, fuzzy
+msgid "Discover more articles on the Groups page"
+msgstr "Læs alle disse artikler på nyhedssiden"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1470,10 +1481,6 @@ msgstr "Tags"
 msgid "This picture will be added to your gallery"
 msgstr "Dette billede vil blive tilføjet til dit galleri"
 
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
-msgstr "Du kan også bruge tjenester som Imgur eller Flickr til at hoste dit billede og så indsætte et link her."
-
 #: [publish]valid_url
 msgid "Please enter a valid url"
 msgstr "Skriv venligst en gyldig url"
@@ -1485,6 +1492,11 @@ msgstr "Intet indhold at forhåndsvise"
 #: [publish]no_title
 msgid "Please provide a title"
 msgstr ""
+
+#: [publish]edit
+#, fuzzy
+msgid "Edit post"
+msgstr "Redigér"
 
 #: [publish]title
 msgid "Publish"
@@ -1875,6 +1887,11 @@ msgstr "Del"
 #: [page]room
 msgid "Room"
 msgstr ""
+
+#: [page]tag
+#, fuzzy
+msgid "Tag"
+msgstr "Tags"
 
 #: [error]error
 msgid "Error: %s"
@@ -2729,3 +2746,33 @@ msgstr "API'en kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "URL Rewriting"
+#~ msgstr "URL omskrivning"
+
+#~ msgid "The URL Rewriting can be enabled"
+#~ msgstr "URL omskrivning kan slås til"
+
+#~ msgid "The URL Rewriting support is currently disabled"
+#~ msgstr "URL omskrivnings understøttelse er i øjeblikket slået fra"
+
+#~ msgid "Join the Chatroom"
+#~ msgstr "Gå ind i chatrummet"
+
+#~ msgid "Your web browser is too old to use with Movim."
+#~ msgstr "Din internet browser er for gammel til at bruge Movim."
+
+#~ msgid "Refreshing all the streams"
+#~ msgstr "Genopfriksker alle strømmende"
+
+#~ msgid "Manage"
+#~ msgstr "Administrér"
+
+#~ msgid "Post published on your blog"
+#~ msgstr "Indlæg udgivet på din blog"
+
+#~ msgid "Post removed from your blog"
+#~ msgstr "Indlæg fjernet fra din blog"
+
+#~ msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
+#~ msgstr "Du kan også bruge tjenester som Imgur eller Flickr til at hoste dit billede og så indsætte et link her."

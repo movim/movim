@@ -1,5 +1,6 @@
 #
 # Translators:
+# Bikalkas <vicalcas@gmail.com.com>, 2015
 # Raúl <gomezromanr@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -93,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-06 23:33+0200\n"
-"PO-Revision-Date: 2015-10-06 21:34+0000\n"
+"POT-Creation-Date: 2015-12-29 13:42+0200\n"
+"PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
 "Language: es\n"
@@ -118,7 +119,7 @@ msgstr "Traductores"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Gracias a todos los Traductores"
 
 #: [about]software
 msgid "Software"
@@ -183,7 +184,7 @@ msgstr "¿Está seguro de que quieres eliminarla?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "Puerta de Enlace"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -204,6 +205,10 @@ msgstr "Tu cuenta ha sido registrada exitosamente"
 #: [create]loading
 msgid "Loading"
 msgstr "Cargando"
+
+#: [create]placeholder
+msgid "…and start playing"
+msgstr ""
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -258,7 +263,7 @@ msgid "Port"
 msgstr "Puerto"
 
 #: [db]name
-msgid "Database sName"
+msgid "Database Name"
 msgstr ""
 
 #: [admin]general
@@ -367,14 +372,6 @@ msgstr "Syslog"
 msgid "Syslog and files"
 msgstr "Syslog y archivos"
 
-#: [rewrite]title
-msgid "URL Rewriting"
-msgstr "Reescritura de la URL"
-
-#: [rewrite]info
-msgid "The URL Rewriting can be enabled"
-msgstr "La reescritura de la URL puede ser activada"
-
 #: [admin]compatibility
 msgid "General Overview"
 msgstr "Visión general"
@@ -406,10 +403,6 @@ msgstr "Instalar la librería php5-gd"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movims root directory"
 msgstr "Derechos de lectura y escritura para el servidor web en el directorio raíz de Movim"
-
-#: [compatibility]rewrite
-msgid "The URL Rewriting support is currently disabled"
-msgstr "La reescritura de la URL está actualmente desactivada"
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -495,6 +488,10 @@ msgstr "Avatar actualizado"
 msgid "Avatar Not Updated"
 msgstr "Avatar no actualizado"
 
+#: [avatar]missing
+msgid "No avatar defined yet"
+msgstr ""
+
 #: [blog]title [feed]title
 msgid "%s's feed"
 msgstr "Contenido de %s"
@@ -502,6 +499,10 @@ msgstr "Contenido de %s"
 #: [blog]empty
 msgid "This user has not posted anything right now"
 msgstr "Este usuario no ha publicado nada ahora mismo"
+
+#: [blog]private
+msgid "This content is private, please login to see it"
+msgstr ""
 
 #: [title]conferences
 msgid "Conferences"
@@ -585,6 +586,10 @@ msgstr "Pausado..."
 msgid "Contact gone"
 msgstr "Contacto perdido"
 
+#: [message]history
+msgid "%s messages retrieved"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s necesita tu atención"
@@ -642,7 +647,7 @@ msgid "No chats yet..."
 msgstr "Aún no hay conversaciones..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %s Contacts%s page."
+msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -697,9 +702,13 @@ msgstr "Esconder los contactos desconectados"
 msgid "Appearence"
 msgstr "Aspecto"
 
-#: [config]info
-msgid "This configuration is shared wherever you are connected"
-msgstr "Esta configuación es compartida dondequiera que te conectes"
+#: [config]not_valid
+msgid "Configuration invalid"
+msgstr ""
+
+#: [config]advanced
+msgid "Advanced Configuration"
+msgstr ""
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -708,6 +717,10 @@ msgstr "Notificar cuando reciba un mensaje"
 #: [notifications]desktop
 msgid "Use desktop notifications"
 msgstr "Utilice notificaciones en el escritorio"
+
+#: [cssurl]label
+msgid "Custom CSS URL for your blog"
+msgstr ""
 
 #: [general]legend [general]general_title
 msgid "General Informations"
@@ -821,6 +834,10 @@ msgstr "%s años"
 msgid "Last public post"
 msgstr "Último post público"
 
+#: [blog]visit
+msgid "Visit the blog to see all the public posts"
+msgstr ""
+
 #: [subscription]to
 msgid "You can see this contact status"
 msgstr "Puedes ver el estado de este contacto"
@@ -847,7 +864,7 @@ msgstr "Pero este contacto puede verte aún si estás en línea"
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr ""
+msgstr "No hay subscripciones"
 
 #: [subscription]nil_button
 msgid "Invite"
@@ -923,27 +940,27 @@ msgstr "Suscripciones"
 
 #: [group]servers
 msgid "Groups servers"
-msgstr ""
+msgstr "Grupo de Servidores"
 
 #: [group]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "Busca un nuevo Servidor"
 
 #: [group]help_info1
 msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-msgstr ""
+msgstr "Los grupos son la manera perfecta para compartir tus posts sobre los tópicos que te gusta con el resto de Movim"
 
 #: [group]help_info2
 msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-msgstr ""
+msgstr "Elige un servidor y un Grupo y suscribete a él usando el botón"
 
 #: [group]help_info3
 msgid "Done? You can now publish a new post in the Group by using the %s button."
-msgstr ""
+msgstr "¿Has Terminado? Puedes publicar un nuevo post en el Grupo usando el botón"
 
 #: [group]help_info4
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-msgstr ""
+msgstr "Encontrarás una lista con todos los Grupos a los que te has suscrito en Tus Subscripciones y recibe instantáneamente todos los nuevos poste en la página de novedades"
 
 #: [groups]empty_title
 msgid "Hello"
@@ -955,11 +972,11 @@ msgstr "Publicación de contacto"
 
 #: [groups]empty_text1
 msgid "You don't have any group subscriptions yet."
-msgstr ""
+msgstr "No te has suscrito a un grupo todavía"
 
 #: [groups]empty_text2
 msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
+msgstr "Aquí seras capaz de gestionar todas tus subscripciones"
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1003,19 +1020,7 @@ msgstr "%s publicaciones"
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
-
-#: [menu]all
-msgid "All"
-msgstr "Todos"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Refrescar todas las retransmisiones"
-
-#: [menu]me
-msgid "My publications"
-msgstr ""
+msgstr "Este servidor no existe"
 
 #: [roster]search
 msgid "Search in your contacts"
@@ -1055,15 +1060,15 @@ msgstr "Compartir en Movim"
 
 #: [hello]enter_title
 msgid "Oh! Hello!"
-msgstr ""
+msgstr "¡Oh! ¡Hola!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
+msgstr "¡Pareces nuevo aquí! ¡Bienvenido a Movim!"
 
 #: [hello]menu_title
 msgid "Check the Menu"
-msgstr ""
+msgstr "Comprueba el menú"
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
@@ -1122,8 +1127,8 @@ msgid "Chat with the team ?"
 msgstr "¿Conversar con el equipo?"
 
 #: [chatroom]button
-msgid "Join the Chatroom"
-msgstr "Unirse a la sala de conversación"
+msgid "Add the chatroom"
+msgstr ""
 
 #: [init]location
 msgid "Location node created"
@@ -1214,10 +1219,6 @@ msgstr "Tu server XMPP no está autorizado"
 msgid "The server takes too much time to respond"
 msgstr "El servidor está tardando demasiado en responder"
 
-#: [error]too_old
-msgid "Your web browser is too old to use with Movim."
-msgstr "Tu navegador web es demasiado antiguo para usar Movim"
-
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
 msgstr "Movim no puede contactar con el servidor, por favor, inténtelo de nuevo más tarde (error de conexión del Websocket)"
@@ -1300,12 +1301,16 @@ msgid "Welcome on your news feed, here you will see all the posts published by y
 msgstr "Bienvenido al contenido de tus noticias, aquí verás todos las publicaciones de tus contactos y de los grupos a los que te has suscrito"
 
 #: [menu]refresh
-msgid "Refreshing all the streams"
-msgstr "Refrescando todas las transmisiones"
+msgid "Refresh all the streams"
+msgstr "Refrescar todas las retransmisiones"
 
 #: [menu]public
 msgid "This post is public"
 msgstr "Esta publicación es pública"
+
+#: [menu]all
+msgid "All"
+msgstr "Todos"
 
 #: [affiliations]title
 msgid "Manage your members"
@@ -1342,10 +1347,6 @@ msgstr "Invitaciones pendientes"
 #: [notifs]wants_to_talk
 msgid "%s wants to talk with you"
 msgstr "%s quiere hablar contigo"
-
-#: [notifs]manage
-msgid "Manage"
-msgstr "Administrar"
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1391,13 +1392,13 @@ msgstr "Ver el perfil de %s"
 msgid "Publish this post publicly?"
 msgstr ""
 
-#: [post]blog_add
-msgid "Post published on your blog"
-msgstr "Mensaje publicado en tu blog"
+#: [post]public_yes
+msgid "This post is now public"
+msgstr ""
 
-#: [post]blog_remove
-msgid "Post removed from your blog"
-msgstr "Mensaje eliminado de tu blog"
+#: [post]public_no
+msgid "This post is now private"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1406,6 +1407,10 @@ msgstr "Eliminar esta publicación"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Vas a eliminar esta publicación, por favor, confirma la acción"
+
+#: [post]discover
+msgid "Discover more articles on the Groups page"
+msgstr ""
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1471,10 +1476,6 @@ msgstr "Etiquetas"
 msgid "This picture will be added to your gallery"
 msgstr "Esta imagen será añadida a tu galería"
 
-#: [post]embed_tip
-msgid "You can also use services like Imgur or Flickr to host your picture and paste the link here."
-msgstr "Puedes también utilizar servicios como Imgur o Flickr para guardar tu imagen y pegar el enlace aquí."
-
 #: [publish]valid_url
 msgid "Please enter a valid url"
 msgstr "Por favor, introduzca un enlace válido"
@@ -1485,6 +1486,10 @@ msgstr "Sin contenido para ver"
 
 #: [publish]no_title
 msgid "Please provide a title"
+msgstr ""
+
+#: [publish]edit
+msgid "Edit post"
 msgstr ""
 
 #: [publish]title
@@ -1876,6 +1881,10 @@ msgstr "Compartir"
 #: [page]room
 msgid "Room"
 msgstr "Sala"
+
+#: [page]tag
+msgid "Tag"
+msgstr ""
 
 #: [error]error
 msgid "Error: %s"
