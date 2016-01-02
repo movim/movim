@@ -124,6 +124,7 @@ ln -s /var/lib/movim/lib /usr/share/movim/ 2>/dev/null
 ln -s /var/lib/movim/locales /usr/share/movim/ 2>/dev/null
 ln -s /var/lib/movim/themes /usr/share/movim/ 2>/dev/null
 ln -s /var/lib/movim/vendor /usr/share/movim/ 2>/dev/null
+ln -s /var/lib/movim/src /usr/share/movim/ 2>/dev/null
 
 # We create the cache folder
 mkdir -p /var/cache/movim/cache 2>/dev/null

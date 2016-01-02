@@ -255,7 +255,7 @@ class Bootstrap {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        $l = Movim\i18n\Locale::start();
+        $l = \Movim\i18n\Locale::start();
 
         if($user->isLogged()) {
             $lang = $user->getConfig('language');

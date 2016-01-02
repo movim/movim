@@ -7,6 +7,9 @@ User=www-data
 Type=simple
 ExecStart=/usr/bin/php daemon.php https://localhost/movim/ 8080
 WorkingDirectory=/usr/share/movim/
+StandardOutput=syslog
+SyslogIdentifier=movim
+PIDFile=/run/movim.pid
 
 [Install]
 WantedBy=multi-user.target
