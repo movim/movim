@@ -170,7 +170,7 @@ The `store()` action saves the instance at its current state and stores it in an
 
 To match the result to the request, XECHandler will check that the ID of the stanza exisits in the array and reinstanciate the class. Therefore the developer won't even know that the request and the result were on two different executions (via two distinct requests on the XMPP server). The request is launched by the `request()` method and its result is received by the `handle()` method of the same instance.
 
-#### Réponse
+#### Response
 If everything goes well the result to the request will be received by the `handle($stanza)` method, where $stanza is the result converted in SimpleXML format.
 
 The values of the attributes of the class are saved as well and given back when the result arrives. You are free to play with that feature if you want to keep some values between the request and its result.
