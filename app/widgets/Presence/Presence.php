@@ -48,8 +48,7 @@ class Presence extends WidgetBase
 
     function onPostDisconnect($data)
     {
-        RPC::call('movim_reload',
-                       BASE_URI."index.php?q=disconnect");
+        RPC::call('movim_reload', Route::urlize('disconnect'));
     }
 
     function ajaxSet($form = false)
