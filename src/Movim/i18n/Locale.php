@@ -64,6 +64,8 @@ class Locale {
                 $po[$explode[0]] = $lang_list[$explode[0]];
             }
         }
+        
+        $po['en'] = 'English';
 
         return $po;
     }
