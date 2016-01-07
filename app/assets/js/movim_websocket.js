@@ -56,9 +56,7 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            //console.log(e.data);
             data = pako.ungzip(base64_decode(e.data), { to: 'string' });
-            //data = e.data;
 
             var obj = JSON.parse(data);
 
@@ -139,11 +137,9 @@ var MovimWebsocket = {
     },
 
     handle : function(funcalls) {
-        //var funcalls = JSON.parse(json);
         if(funcalls != null) {
             for(h = 0; h < funcalls.length; h++) {
                 var funcall = funcalls[h];
-                //console.log(funcall);
                 if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
                     try {
                         window[funcall.func].apply(null, funcall.params);
