@@ -13,7 +13,7 @@
                     <li {if="$type == 'all'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetAll()">{$c->__('menu.all')}</a></li>
                     <li {if="$type == 'news'"}class="active"{/if} ><a href="#" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}"><i class="zmdi zmdi-pages"></i></a></li>
                     <li {if="$type == 'feed'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}"><i class="zmdi zmdi-accounts"></i></a></li>
-                    <li {if="$type == 'me'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetMe()" title="{$c->__('menu.get_me')}"><i class="zmdi zmdi-portable-wifi"></i></a></li>
+                    <li {if="$type == 'me'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetMe()" title="{$c->__('menu.mine')}"><i class="zmdi zmdi-portable-wifi"></i></a></li>
                 </ul>
             </li>
         </ul>
