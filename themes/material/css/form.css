@@ -106,6 +106,7 @@ form > div > textarea {
     padding-top: 5rem;
     width: 100%;
     background-color: transparent;
+    color: black;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     margin-bottom: 1rem;
 
