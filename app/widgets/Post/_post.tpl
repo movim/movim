@@ -41,6 +41,7 @@
         </div>
     {/if}
 
+    {if="($public && $post->isPublic()) || !$public"}
     <ul class="list thick">
         <li>
             {if="$recycled"}
@@ -111,6 +112,7 @@
 
         </li>
     </ul>
+    {/if}
 </header>
 
 {if="!$external && !$public"}
