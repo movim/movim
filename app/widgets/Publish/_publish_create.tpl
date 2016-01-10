@@ -1,17 +1,17 @@
 <header>
     <ul class="list middle">
         <li>
-            <span class="primary icon active" onclick="Publish.headerBack('{$to}', '{$node}', false);">
+            <span class="primary icon active" onclick="Publish.headerBack('{$to}', '{$node}', false);" title="{$c->__('button.cancel')}">
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
 
-            <span id="button_send" class="control icon active" onclick="Publish.disableSend(); Publish_ajaxPublish(movim_form_to_json('post'));">
+            <span id="button_send" class="control icon active" onclick="Publish.disableSend(); Publish_ajaxPublish(movim_form_to_json('post'));" title="{$c->__('button.validate')}">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>
-            <span class="control icon active" onclick="Publish_ajaxHelp()">
+            <span class="control icon active" onclick="Publish_ajaxHelp()" title="{$c->__('page.help')}">
                 <i class="zmdi zmdi-help"></i>
             </span>
-            <span class="control icon active" onclick="Publish_ajaxPreview(movim_form_to_json('post'))">
+            <span class="control icon active" onclick="Publish_ajaxPreview(movim_form_to_json('post'))" title="{$c->__('page.preview')}">
                 <i class="zmdi zmdi-eye"></i>
             </span>
 
