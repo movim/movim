@@ -1,7 +1,29 @@
 Movim Changelog
 ================
 
-v0.8.1 (trunk)
+v0.9 (trunk)
+---------------------------
+ * New User Interface for the whole project
+ * Removed BOSH connections and introduce pure XMPP TLS connections
+ * Full real-time + daemon
+ * New Blog engine and custom CSS support
+ * New post publication system + attachements supported (upload and embed links)
+ * Fully responsive design UI based on Material Design
+ * Huge code cleanup and refactoring
+ * Updated i18n system and new languages
+ * New eventing system
+ * New administration panel
+ * New dedicated chat page and emojis support
+ * New project icon and favicon
+ * New implementation for the Groups feature
+ * New Roster based on Angular
+ * Refactor the Contact management system and add a gallery on the profiles
+ * New universal-share bookmarklet
+ * CSS animations and mobile integration (FirefoxOS and Android)
+ * Internet Explorer 11 support
+ * PHP7 Support
+
+v0.8.1
 ---------------------------
  * Add charts in the Statistics
  * Add a Caps support table
@@ -23,7 +45,7 @@ v0.8.0
 
  * Refactor the whole Movim sourcecode + clean old code
  * Quite all the Movim widgets are now using a full MVC system
- * Rewrite the core session manager (Sessionx) 
+ * Rewrite the core session manager (Sessionx)
  * Add a new localisation system + new translations
  * Move the Movim librairies and dependencies to Composer and convert Modl and Moxl to PSR-0 to simplify the loading and packaging of the libraries
  * Monolog is now the new log library for Movim
@@ -118,7 +140,7 @@ v0.6.0
 
 ### Datajar ###
 
- * Support updating of db-schemas. 
+ * Support updating of db-schemas.
 
 ### Translations ###
 
@@ -139,7 +161,7 @@ v0.5.0
  * Update dates (like “2 min ago”) automatically @edhelas
  * Clean and move UserConf in a single class @edhelas
  * New UI @edhelas
- 
+
 ### Core ###
 
  * Integrate Datajar @etenil
@@ -184,7 +206,7 @@ v0.5.0
 v0.4.0
 ---------------------------
 
- * Multisession support 
+ * Multisession support
  * Dynamically modify page title
  * image.php to built pictures from the database + ask the browser to cache them
  * Inscription on the Server (XMPP+Movim)
