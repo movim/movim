@@ -7,7 +7,7 @@ Movim is a decentralized social network, written in PHP and HTML5 and based on t
 
 Installation
 ------------
-Please refer to the installation instructions that are available on the GitHub Wiki : https://github.com/edhelas/movim/wiki .
+Please refer to the installation instructions that are available on the GitHub Wiki : https://github.com/movim/movim/wiki .
 
 
 Translations
