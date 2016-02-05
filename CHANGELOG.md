@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.9 (trunk)
+v0.9.1 (trunk)
+---------------------------
+
+v0.9
 ---------------------------
  * New User Interface for the whole project
  * Removed BOSH connections and introduce pure XMPP TLS connections

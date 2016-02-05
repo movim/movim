@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "4952e36a27fb47d68956eb5be2c1fe02dd7c5ccd"
+                "reference": "43c6b133b0084008f2e1d212c7b9fa7d03c5165b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/4952e36a27fb47d68956eb5be2c1fe02dd7c5ccd",
-                "reference": "4952e36a27fb47d68956eb5be2c1fe02dd7c5ccd",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/43c6b133b0084008f2e1d212c7b9fa7d03c5165b",
+                "reference": "43c6b133b0084008f2e1d212c7b9fa7d03c5165b",
                 "shasum": ""
             },
             "require": {
@@ -75,6 +75,7 @@
             },
             "require-dev": {
                 "guzzlehttp/guzzle": "5.x",
+                "phpunit/phpunit": "*",
                 "sstalle/php7cc": "^1.0"
             },
             "suggest": {
@@ -107,7 +108,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-01-06 18:43:22"
+            "time": "2016-02-01 14:15:40"
         },
         {
             "name": "evenement/evenement",
@@ -648,12 +649,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/edhelas/modl.git",
+                "url": "https://github.com/movim/modl.git",
                 "reference": "56a9ab5051f8c81243deba5ee86bc5dcc69ed26e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/edhelas/modl/zipball/56a9ab5051f8c81243deba5ee86bc5dcc69ed26e",
+                "url": "https://api.github.com/repos/movim/modl/zipball/56a9ab5051f8c81243deba5ee86bc5dcc69ed26e",
                 "reference": "56a9ab5051f8c81243deba5ee86bc5dcc69ed26e",
                 "shasum": ""
             },
@@ -692,12 +693,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/edhelas/moxl.git",
+                "url": "https://github.com/movim/moxl.git",
                 "reference": "94229ad56adce5bfdcc076bb9c748e4077df60b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/edhelas/moxl/zipball/94229ad56adce5bfdcc076bb9c748e4077df60b6",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/94229ad56adce5bfdcc076bb9c748e4077df60b6",
                 "reference": "94229ad56adce5bfdcc076bb9c748e4077df60b6",
                 "shasum": ""
             },
@@ -954,12 +955,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "a75cb3e7d444abfea339bc40ad9ced7ba78d4afa"
+                "reference": "1788d93ac5c63f79a537d524dbb723331df194ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/a75cb3e7d444abfea339bc40ad9ced7ba78d4afa",
-                "reference": "a75cb3e7d444abfea339bc40ad9ced7ba78d4afa",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/1788d93ac5c63f79a537d524dbb723331df194ee",
+                "reference": "1788d93ac5c63f79a537d524dbb723331df194ee",
                 "shasum": ""
             },
             "require": {
@@ -990,7 +991,7 @@
             "keywords": [
                 "process"
             ],
-            "time": "2014-08-08 23:27:29"
+            "time": "2016-01-19 00:31:28"
         },
         {
             "name": "react/dns",
@@ -1318,16 +1319,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.0.1",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "d36355e026905fa5229e1ed7b4e9eda2e67adfcf"
+                "reference": "4dd5df31a28c0f82b41cb1e1599b74b5dcdbdafa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/d36355e026905fa5229e1ed7b4e9eda2e67adfcf",
-                "reference": "d36355e026905fa5229e1ed7b4e9eda2e67adfcf",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/4dd5df31a28c0f82b41cb1e1599b74b5dcdbdafa",
+                "reference": "4dd5df31a28c0f82b41cb1e1599b74b5dcdbdafa",
                 "shasum": ""
             },
             "require": {
@@ -1374,20 +1375,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2015-10-30 23:35:59"
+            "time": "2016-01-27 05:14:46"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.0.1",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "939c8c28a5b1e4ab7317bc30c1f9aa881c4b06b5"
+                "reference": "9344a87ceedfc50354a39653e54257ee9aa6a77d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/939c8c28a5b1e4ab7317bc30c1f9aa881c4b06b5",
-                "reference": "939c8c28a5b1e4ab7317bc30c1f9aa881c4b06b5",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/9344a87ceedfc50354a39653e54257ee9aa6a77d",
+                "reference": "9344a87ceedfc50354a39653e54257ee9aa6a77d",
                 "shasum": ""
             },
             "require": {
@@ -1426,20 +1427,20 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2015-12-18 15:43:53"
+            "time": "2016-02-02 13:44:19"
         },
         {
             "name": "symfony/routing",
-            "version": "v3.0.1",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "3b1bac52f42cb0f54df1a2dbabd55a1d214e2a59"
+                "reference": "4686baa55a835e1c1ede9b86ba02415c8c8d6166"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/3b1bac52f42cb0f54df1a2dbabd55a1d214e2a59",
-                "reference": "3b1bac52f42cb0f54df1a2dbabd55a1d214e2a59",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/4686baa55a835e1c1ede9b86ba02415c8c8d6166",
+                "reference": "4686baa55a835e1c1ede9b86ba02415c8c8d6166",
                 "shasum": ""
             },
             "require": {
@@ -1500,7 +1501,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2015-12-23 08:00:11"
+            "time": "2016-01-27 05:14:46"
         }
     ],
     "packages-dev": [],
