@@ -90,7 +90,8 @@ article section content div.quote {
     display: block;
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.12);
-    padding: 2rem;
+    padding: 1rem 2rem;
+    margin-bottom: 1rem;
     box-sizing: border-box;
 }
 
