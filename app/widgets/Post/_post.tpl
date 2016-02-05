@@ -299,7 +299,7 @@
                             <p>
                                 {$value->getContact()->getTrueName()}
                             </p>
-                            <p>
+                            <p class="all">
                                 <span class="info">{$value->published|strtotime|prepareDate}</span>
                                 {if="$value->title"}
                                     {$value->title}

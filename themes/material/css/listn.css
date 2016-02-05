@@ -127,7 +127,7 @@ ul.list li > p:nth-last-of-type(2) + p {
 
 ul.list li > p:nth-last-of-type(3) + p.all,
 ul.list li > p:nth-last-of-type(2) + p.all {
-    max-height: auto;
+    max-height: 100%;
 }
 
 /* Subheader */
