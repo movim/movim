@@ -255,6 +255,20 @@ class SessionxDAO extends SQL {
         return $this->run('Sessionx');
     }
 
+    function deleteEmpty() {
+        $this->_sql = '
+            delete from sessionx
+            where
+                active = 0';
+
+        $this->prepare(
+            'Sessionx',
+            array()
+        );
+
+        return $this->run('Sessionx');
+    }
+
     /*function clean() {
         $this->_sql = '
             delete from sessionx
