@@ -94,7 +94,7 @@ class Core implements MessageComponentInterface {
     public function onMessage(ConnectionInterface $from, $msg)
     {
         $sid = $this->getSid($from);
-        if($sid != null) {
+        if($sid != null && isset($this->sessions[$sid])) {
             $this->sessions[$sid]->messageIn($from, $msg);
         }
     }
@@ -102,7 +102,7 @@ class Core implements MessageComponentInterface {
     public function onClose(ConnectionInterface $conn)
     {
         $sid = $this->getSid($conn);
-        if($sid != null) {
+        if($sid != null && isset($this->sessions[$sid])) {
             $this->sessions[$sid]->detach($conn);
             //$this->closeEmptySession($sid);
         }
