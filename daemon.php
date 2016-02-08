@@ -39,7 +39,6 @@ if($infos != null) {
     echo colorize("\nTo update the database run\n", 'green');
     echo colorize("php mud.php db set\n", 'purple');
     exit;
-    break;
 }
 
 $loop = Factory::create();
