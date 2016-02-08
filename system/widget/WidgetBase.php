@@ -140,7 +140,7 @@ class WidgetBase
     function display() {}
 
     /**
-     *  àdesc Return the template's HTML code
+     *  @desc Return the template's HTML code
      */
     function draw()
     {

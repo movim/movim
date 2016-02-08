@@ -26,6 +26,7 @@ class WidgetWrapper
 
     private $_widgets = array();
     private $_events = array();
+    private $_eventWidgets = array();
 
     private $_view = ''; // The current page where the widget is displayed
 
@@ -49,7 +50,12 @@ class WidgetWrapper
             if(is_dir(APP_PATH ."widgets/".$widget_dir) &&
                 $widget_dir != '..' &&
                 $widget_dir != '.') {
-                if($load) $this->loadWidget($widget_dir, true);
+
+                if($load != false
+                && in_array($widget_dir, $load)) {
+                    $this->loadWidget($widget_dir, true);
+                }
+
                 array_push($this->_widgets, $widget_dir);
             }
         }
@@ -111,6 +117,7 @@ class WidgetWrapper
                         $this->_events[$key] = array($name);
                     }
                 }
+                array_push($this->_eventWidgets, $name);
             }
         } else {
             if($this->_view != '') {

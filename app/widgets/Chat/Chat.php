@@ -438,6 +438,7 @@ class Chat extends WidgetBase
 
         $view->assign('emoji', prepareString('😀'));
         $view->assign('muc', $muc);
+        $view->assign('anon', false);
 
         if($muc) {
             $md = new \Modl\MessageDAO;

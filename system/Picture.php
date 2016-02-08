@@ -104,6 +104,7 @@ class Picture {
                     $im->setImageCompressionQuality(95);
                     $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
                     $im->writeImage($path);
+                    $im->clear();
                 }
             } catch (ImagickException $e) {
                 error_log($e->getMessage());
@@ -135,6 +136,6 @@ class Picture {
         $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
         
         $im->writeImage($path);
-        
+        $im->clear();
     }
 }

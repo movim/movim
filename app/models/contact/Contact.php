@@ -405,7 +405,7 @@ class Contact extends Model {
 
         $json = json_decode(requestURL($uri, 2));
 
-        if($json->album) {
+        if(isset($json->album)) {
             $json->album->url = $json->album->image[2]->{'#text'};
             return $json->album;
         }

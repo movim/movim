@@ -37,14 +37,13 @@ class Contact extends WidgetBase
     {
         if(!$this->validateJid($jid)) return;
 
-        $html = $this->prepareContact($jid);
+        $html = $this->prepareContact($jid, $page);
 
         $r = new GetItems;
         $r->setTo($jid)
           ->setNode('urn:xmpp:microblog:0')
           ->request();
 
-        Header::fill($header);
         RPC::call('movim_fill', 'contact_widget', $html);
         RPC::call('MovimTpl.showPanel');
         RPC::call('MovimTpl.scrollHeaders');
@@ -168,7 +167,7 @@ class Contact extends WidgetBase
         }
     }
 
-    function prepareContact($jid)
+    function prepareContact($jid, $page = 0)
     {
         if(!$this->validateJid($jid)) return;
 
@@ -196,6 +195,7 @@ class Contact extends WidgetBase
 
         $presencestxt = getPresencesTxt();
 
+        $view->assign('page', $page);
         $view->assign('edit',
             $this->call(
                 'ajaxEditContact',

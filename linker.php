@@ -23,7 +23,7 @@ fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets before : ".\sizeToCle
 
 // We load and register all the widgets
 $wrapper = WidgetWrapper::getInstance();
-$wrapper->registerAll(true);
+$wrapper->registerAll($bootstrap->getWidgets());
 
 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");
 

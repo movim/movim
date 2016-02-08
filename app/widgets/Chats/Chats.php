@@ -205,7 +205,11 @@ class Chats extends WidgetBase
             $view->assign('message', $m[0]);
         }
 
-        return $view->draw('_chats_item', true);
+        $html = $view->draw('_chats_item', true);
+
+        unset($view);
+
+        return $html;
     }
 
     private function validateJid($jid)

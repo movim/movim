@@ -21,6 +21,8 @@ function createEmailPic($jid, $email) {
 
         $canvas->setImageFormat('PNG');
         $canvas->writeImage($cachefile);
+
+        $canvas->clear();
     } catch (ImagickException $e) {
         error_log($e->getMessage());
     }

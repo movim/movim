@@ -198,6 +198,7 @@ class Group extends WidgetBase
 
         RPC::call('MovimTpl.fill', '#group_widget.'.stringToUri($server.'_'.$node), $html);
         RPC::call('Group.enableVideos');
+        unset($html);
     }
 
 
