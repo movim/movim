@@ -53,6 +53,10 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                 } elseif($msg->func == 'unregister') {
                     \Moxl\Stanza\Stream::end();
                 } elseif($msg->func == 'register') {
+                    if(is_resource($conn->stream)) {
+                        $conn->stream->close();
+                    }
+
                     $cd = new \Modl\ConfigDAO();
                     $config = $cd->get();
 

@@ -104,7 +104,10 @@ class Core implements MessageComponentInterface {
         $sid = $this->getSid($conn);
         if($sid != null && isset($this->sessions[$sid])) {
             $this->sessions[$sid]->detach($conn);
-            //$this->closeEmptySession($sid);
+
+            if($this->sessions[$sid]->process == null) {
+                unset($this->sessions[$sid]);
+            }
         }
     }
 
@@ -112,11 +115,9 @@ class Core implements MessageComponentInterface {
     {
         $this->loop->addPeriodicTimer(5, function() {
             foreach($this->sessions as $sid => $session) {
-                if(/*(time()-$session->timestamp > $this->cleanerdelay*3600)
-                ||*/ ($session->countClients() == 0
-                && $session->registered == null)) {
+                if($session->countClients() == 0
+                && $session->registered == null) {
                     $session->killLinker();
-                    //$this->closeEmptySession($sid);
                 }
 
                 if($session->process == null) {
@@ -133,18 +134,6 @@ class Core implements MessageComponentInterface {
         $sd = new \Modl\SessionxDAO();
         $sd->deleteEmpty();
     }
-
-    /*private function closeEmptySession($sid)
-    {
-        // No WebSockets and no linker ? We close the whole session
-        if(($this->sessions[$sid]->countClients() == 0)
-        && ($this->sessions[$sid]->process == null)) {
-            $sd = new \Modl\SessionxDAO();
-            $sd->delete($sid);
-            
-            unset($this->sessions[$sid]);
-        }
-    }*/
     
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
