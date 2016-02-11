@@ -96,7 +96,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             \Moxl\API::clear();
 
             if(!empty($xml) && $conn) {
-                $timestamp = time();
+                //$timestamp = time();
                 $conn->write(trim($xml));
                 #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
@@ -153,6 +153,8 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             \Moxl\API::clear();
             \RPC::clear();
 
+            $timestamp = time();
+
             if(!$parser->parse($message)) {
                 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
             }
@@ -177,7 +179,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             $xml = \Moxl\API::commit();
 
             if(!empty($xml)) {
-                $timestamp = time();
+                //$timestamp = time();
                 $conn->write(trim($xml));
                 #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
