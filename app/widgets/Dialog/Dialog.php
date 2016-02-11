@@ -16,6 +16,12 @@ class Dialog extends WidgetBase
         }
     }
     
+    public function ajaxClear()
+    {
+        RPC::call('movim_remove_class', '#dialog', 'scroll');
+        RPC::call('MovimTpl.fill', '#dialog', '');
+    }
+    
     function display() 
     {
     }

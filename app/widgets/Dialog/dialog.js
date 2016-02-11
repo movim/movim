@@ -7,7 +7,6 @@ var Dialog = {
         return false;
     },
     clear : function() {
-        movim_remove_class('#dialog', 'scroll');
-        document.querySelector('#dialog').innerHTML = '';
+        Dialog_ajaxClear();
     }
 }
