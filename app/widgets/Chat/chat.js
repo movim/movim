@@ -91,7 +91,7 @@ var Chat = {
                 message.body = message.body.substr(4);
             }
 
-            bubble.querySelector('p.message').innerHTML = message.body;
+            bubble.querySelector('p.message').innerHTML = message.body.replace(/\r\n?|\n/g, '<br />');
             bubble.querySelector('span.info').innerHTML = message.publishedPrepared;
             bubble.querySelector('p.user').className = 'user ' + message.color;
 
@@ -133,7 +133,7 @@ var Chat = {
             }
 
             if(bubble) {
-                bubble.querySelector('div.bubble > p').innerHTML = message.body;
+                bubble.querySelector('div.bubble > p').innerHTML = message.body.replace(/\r\n?|\n/g, '<br />');
 
                 bubble.querySelector('div.bubble > span.info').innerHTML = message.publishedPrepared;
 

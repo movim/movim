@@ -105,6 +105,9 @@
                         data-jid="{$jid}"
                         onkeypress="
                             if(event.keyCode == 13) {
+                                if(event.shiftKey) {
+                                    return;
+                                }
                                 state = 0;
                                 Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if});
                                 return false;
