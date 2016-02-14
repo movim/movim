@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "43c6b133b0084008f2e1d212c7b9fa7d03c5165b"
+                "reference": "825965c3ad812d02ed2bca4d6f823285474e1964"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/43c6b133b0084008f2e1d212c7b9fa7d03c5165b",
-                "reference": "43c6b133b0084008f2e1d212c7b9fa7d03c5165b",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/825965c3ad812d02ed2bca4d6f823285474e1964",
+                "reference": "825965c3ad812d02ed2bca4d6f823285474e1964",
                 "shasum": ""
             },
             "require": {
@@ -75,8 +75,7 @@
             },
             "require-dev": {
                 "guzzlehttp/guzzle": "5.x",
-                "phpunit/phpunit": "*",
-                "sstalle/php7cc": "^1.0"
+                "phpunit/phpunit": "*"
             },
             "suggest": {
                 "guzzlehttp/guzzle@5.x": "To use Guzzle5 request resolver"
@@ -108,7 +107,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-02-01 14:15:40"
+            "time": "2016-02-13 21:03:58"
         },
         {
             "name": "evenement/evenement",
