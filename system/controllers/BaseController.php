@@ -4,17 +4,11 @@ class BaseController {
     public $name = 'main';          // The name of the current page
     protected $session_only = false;// The page is protected by a session ?
     protected $raw = false;         // Display only the content ?
+    protected $public = false;      // It's a public page
     protected $page;
 
     function __construct() {
         $this->page = new TplPageBuilder();
-        $this->page->addScript('movim_hash.js');
-        $this->page->addScript('movim_utils.js');
-        $this->page->addScript('movim_base.js');
-        $this->page->addScript('movim_tpl.js');
-        $this->page->addScript('movim_websocket.js');
-        $this->page->addScript('movim_map.js');
-        $this->page->addScript('pako_inflate.js');
     }
 
     /**
@@ -63,6 +57,17 @@ class BaseController {
     }
 
     function display() {
+        $this->page->addScript('movim_hash.js');
+        $this->page->addScript('movim_utils.js');
+        $this->page->addScript('movim_base.js');
+
+        if(!$this->public) {
+            $this->page->addScript('movim_tpl.js');
+            $this->page->addScript('movim_websocket.js');
+            $this->page->addScript('movim_map.js');
+            $this->page->addScript('pako_inflate.js');
+        }
+
         if($this->session_only) {
             $user = new User();
             $content = new TplPageBuilder($user);

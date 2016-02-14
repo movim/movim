@@ -144,25 +144,27 @@ var Notification = {
 
 Notification.document_title_init = document.title;
 
-MovimWebsocket.attach(function() {
-    if(typeof Favico != 'undefined') {
-        Notification.favicon = new Favico({
-            animation: 'none',
-            fontStyle: 'normal',
-            bgColor: '#FF5722'
-        });
-    }
+if(typeof MovimWebsocket != 'undefined') {
+    MovimWebsocket.attach(function() {
+        if(typeof Favico != 'undefined') {
+            Notification.favicon = new Favico({
+                animation: 'none',
+                fontStyle: 'normal',
+                bgColor: '#FF5722'
+            });
+        }
 
-    if(typeof require !== 'undefined') {
-        var remote = require('remote');
-        Notification.electron = remote.getCurrentWindow();
-    }
+        if(typeof require !== 'undefined') {
+            var remote = require('remote');
+            Notification.electron = remote.getCurrentWindow();
+        }
 
-    Notification.document_title = Notification.document_title_init;
-    Notification.tab_counter1 = Notification.tab_counter2 = 0;
-    Notification_ajaxGet();
-    Notification.current(Notification.notifs_key);
-});
+        Notification.document_title = Notification.document_title_init;
+        Notification.tab_counter1 = Notification.tab_counter2 = 0;
+        Notification_ajaxGet();
+        Notification.current(Notification.notifs_key);
+    });
+}
 
 document.onblur = function() {
     Notification.focused = false;

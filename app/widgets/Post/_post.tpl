@@ -239,8 +239,11 @@
                             </form>
                         </span>
                         <p class="line normal">
+                            {$c->__('post.public')}
+                        </p>
+                        <p>
                             <a target="_blank" href="{$post->getPublicUrl()}">
-                                {$c->__('post.public')}
+                                {$c->__('post.public_url')}
                             </a>
                         </p>
                     </li>

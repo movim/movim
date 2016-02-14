@@ -14,7 +14,6 @@ class TplPageBuilder
 {
     private $theme = 'movim';
     private $_view = '';
-    private $_color = 'green';
     private $title = '';
     private $menu = array();
     private $content = '';

@@ -5,7 +5,7 @@
             <span class="primary icon gray">
                 <i class="zmdi zmdi-edit"></i>
             </span>
-            <span class="control icon">
+            <span class="control icon active">
                 <a
                     href="{$c->route('feed', array($contact->jid))}"
                     target="_blank"

@@ -67,7 +67,7 @@ class Blog extends WidgetBase {
 
                     $description = stripTags($this->_messages[0]->contentcleaned);
                     if(!empty($description)) {
-                        $this->description = $description;
+                        $this->description = truncate($description, 100);
                     }
 
                     $attachements = $this->_messages[0]->getAttachements();

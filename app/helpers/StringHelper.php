@@ -234,7 +234,11 @@ function explodeJid($jid)
     if(isset($arr[1])) $resource = $arr[1];
     else $resource = null;
 
-    list($username, $server) = explode('@', $jid);
+    $server = '';
+
+    $arr = explode('@', $jid);
+    $username = $arr[0];
+    if(isset($arr[1])) $server = $arr[1];
 
     return array(
         'username'  => $username,
@@ -372,4 +376,15 @@ function purifyHTML($string)
  */
 function firstLetterCapitalize($string) {
     return ucfirst(strtolower(mb_substr($string, 0, 2)));
+}
+
+/**
+ * Truncates the given string at the specified length.
+ *
+ * @param string $str The input string.
+ * @param int $width The number of chars at which the string will be truncated.
+ * @return string
+ */
+function truncate($str, $width) {
+    return strtok(wordwrap($str, $width, "…\n"), "\n");
 }
