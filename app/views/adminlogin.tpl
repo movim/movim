@@ -1,5 +1,5 @@
 <main>
-    <?php $this->widget('Header'); ?>
+    <?php $this->widget('Header');?>
     <section>
         <?php $this->widget('AdminLogin');?>
     </section>

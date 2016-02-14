@@ -1,6 +1,12 @@
 <div>
-    <a href="{$c->route('main')}" class="classic">
-        <span id="menu" class="icon"><i class="zmdi zmdi-home"></i></span>
-    </a>
-    <h2>{$c->__('page.about')}</h2>
+    <ul class="list middle">
+        <li>
+            <span class="primary icon gray active">
+                <a href="{$c->route('main')}">
+                    <i class="zmdi zmdi-arrow-back"></i>
+                </a>
+            </span>
+            <p>{$c->__('page.about')}</p>
+        </li>
+    </ul>
 </div>

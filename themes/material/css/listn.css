@@ -68,6 +68,10 @@ ul.list li.subheader p {
     padding-left: 2rem;
 }
 
+ul.list li .primary > a {
+    padding: 2rem;
+}
+
 /* Truncated content */
 
 ul.list li.subheader > p,
