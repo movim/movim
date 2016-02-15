@@ -70,7 +70,7 @@ ul.list li.subheader p {
 
 ul.list li .primary > a,
 ul.list li .control > a {
-    padding: 1.5rem;
+    display: block;
 }
 
 /* Truncated content */
