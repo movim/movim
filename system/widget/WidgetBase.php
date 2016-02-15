@@ -56,19 +56,21 @@ class WidgetBase
         // Put default widget init here.
         $this->ajax = AjaxController::getInstance();
 
-        // Generating Ajax calls.
-        $refl = new ReflectionClass($this->name);
-        $meths = $refl->getMethods();
+        if(!$this->ajax->isRegistered($this->name)) {
+            // Generating Ajax calls.
+            $refl = new ReflectionClass($this->name);
+            $meths = $refl->getMethods();
 
-        foreach($meths as $method) {
-            if(preg_match('#^ajax#', $method->name)) {
-                $pars = $method->getParameters();
-                $params = array();
-                foreach($pars as $param) {
-                    $params[] = $param->name;
+            foreach($meths as $method) {
+                if(preg_match('#^ajax#', $method->name)) {
+                    $pars = $method->getParameters();
+                    $params = array();
+                    foreach($pars as $param) {
+                        $params[] = $param->name;
+                    }
+
+                    $this->ajax->defun($this->name, $method->name, $params);
                 }
-
-                $this->ajax->defun($this->name, $method->name, $params);
             }
         }
 

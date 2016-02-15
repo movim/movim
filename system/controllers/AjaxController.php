@@ -15,6 +15,7 @@ class AjaxController extends BaseController
 {
     protected $funclist = array();
     protected static $instance;
+    protected $widgetlist = array();
 
     public function __construct()
     {
@@ -50,10 +51,19 @@ class AjaxController extends BaseController
     }
 
     /**
+     * Check if the widget is registered
+     */
+    public function isRegistered($widget)
+    {
+        return array_key_exists($widget, $this->widgetlist);
+    }
+
+    /**
      * Defines a new function.
      */
     public function defun($widget, $funcname, array $params)
     {
+        array_push($this->widgetlist, $widget);
         $this->funclist[$widget.$funcname] = array(
             'object' => $widget,
             'funcname' => $funcname,
