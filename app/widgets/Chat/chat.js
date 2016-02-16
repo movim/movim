@@ -129,7 +129,10 @@ var Chat = {
 
             if(message.id != null) {
                 bubble.id = message.id;
-                var elem = document.getElementById(bubble.id);
+                if(message.newid != null)
+                    bubble.id = message.newid;
+
+                var elem = document.getElementById(message.id);
                 if(elem)
                     elem.parentElement.removeChild(elem);
             }

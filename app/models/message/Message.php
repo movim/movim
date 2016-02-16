@@ -4,6 +4,7 @@ namespace modl;
 
 class Message extends Model {
     public $id;
+    public $newid;
 
     public $session;
     public $jidto;
@@ -99,6 +100,7 @@ class Message extends Model {
             //}
 
             if($stanza->replace) {
+                $this->newid = $this->id;
                 $this->id = (string)$stanza->replace->attributes()->id;
                 $this->edited = true;
             }

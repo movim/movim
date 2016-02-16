@@ -6,7 +6,8 @@ class MessageDAO extends SQL {
     function set(Message $message) {
         $this->_sql = '
             update message
-                set body            = :body,
+                set id              = :thread,
+                    body            = :body,
                     html            = :html,
                     published       = :published,
                     delivered       = :delivered,
@@ -20,6 +21,7 @@ class MessageDAO extends SQL {
         $this->prepare(
             'Message',
             array(
+                'thread'    => $message->newid, // FIXME
                 'id'        => $message->id,
                 'session'   => $message->session,
                 'jidto'     => $message->jidto,
