@@ -127,6 +127,13 @@ var Chat = {
                 id = message.jidfrom + '_conversation';
             }
 
+            if(message.id != null) {
+                bubble.id = message.id;
+                var elem = document.getElementById(bubble.id);
+                if(elem)
+                    elem.parentElement.removeChild(elem);
+            }
+
             if(message.body.match(/^\/me/)) {
                 bubble.querySelector('div.bubble').className = 'bubble quote';
                 message.body = message.body.substr(4);
@@ -135,7 +142,12 @@ var Chat = {
             if(bubble) {
                 bubble.querySelector('div.bubble > p').innerHTML = message.body.replace(/\r\n?|\n/g, '<br />');
 
-                bubble.querySelector('div.bubble > span.info').innerHTML = message.publishedPrepared;
+                var info = bubble.querySelector('div.bubble > span.info');
+                info.innerHTML = message.publishedPrepared;
+
+                if(message.edited) {
+                    info.innerHTML = '<i class="zmdi zmdi-edit"></i> ' + info.innerHTML;
+                }
 
                 if(prepend) {
                     Chat.date = message.published;

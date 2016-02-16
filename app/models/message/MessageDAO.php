@@ -5,49 +5,83 @@ namespace modl;
 class MessageDAO extends SQL {
     function set(Message $message) {
         $this->_sql = '
-            insert into message
-            (
-            session,
-            jidto,
-            jidfrom,
-            resource,
-            type,
-            subject,
-            thread,
-            body,
-            html,
-            published,
-            delivered)
-            values(
-                :session,
-                :jidto,
-                :jidfrom,
-                :resource,
-                :type,
-                :subject,
-                :thread,
-                :body,
-                :html,
-                :published,
-                :delivered
-                )';
+            update message
+                set body            = :body,
+                    html            = :html,
+                    published       = :published,
+                    delivered       = :delivered,
+                    edited          = 1
+
+                where session       = :session
+                    and id          = :id
+                    and jidto       = :jidto
+                    and jidfrom     = :jidfrom';
 
         $this->prepare(
             'Message',
             array(
+                'id'        => $message->id,
                 'session'   => $message->session,
                 'jidto'     => $message->jidto,
                 'jidfrom'   => $message->jidfrom,
-                'resource'  => $message->resource,
-                'type'      => $message->type,
-                'subject'   => $message->subject,
-                'thread'    => $message->thread,
                 'body'      => $message->body,
                 'html'      => $message->html,
                 'published' => $message->published,
                 'delivered' => $message->delivered
             )
         );
+
+        $this->run('Message');
+
+        if(!$this->_effective) {
+            $this->_sql = '
+                insert into message
+                (
+                id,
+                session,
+                jidto,
+                jidfrom,
+                resource,
+                type,
+                subject,
+                thread,
+                body,
+                html,
+                published,
+                delivered)
+                values(
+                    :id,
+                    :session,
+                    :jidto,
+                    :jidfrom,
+                    :resource,
+                    :type,
+                    :subject,
+                    :thread,
+                    :body,
+                    :html,
+                    :published,
+                    :delivered
+                    )';
+
+            $this->prepare(
+                'Message',
+                array(
+                    'id'        => $message->id,
+                    'session'   => $message->session,
+                    'jidto'     => $message->jidto,
+                    'jidfrom'   => $message->jidfrom,
+                    'resource'  => $message->resource,
+                    'type'      => $message->type,
+                    'subject'   => $message->subject,
+                    'thread'    => $message->thread,
+                    'body'      => $message->body,
+                    'html'      => $message->html,
+                    'published' => $message->published,
+                    'delivered' => $message->delivered
+                )
+            );
+        }
 
         return $this->run('Message');
     }

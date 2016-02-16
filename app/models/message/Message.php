@@ -3,6 +3,8 @@
 namespace modl;
 
 class Message extends Model {
+    public $id;
+
     public $session;
     public $jidto;
     public $jidfrom;
@@ -21,6 +23,7 @@ class Message extends Model {
 
     public $color; // Only for chatroom purpose
     public $publishedPrepared; // Only for chat purpose
+    public $edited;
 
     public function __construct()
     {
@@ -28,6 +31,8 @@ class Message extends Model {
         {
             "session" :
                 {"type":"string", "size":128, "mandatory":true },
+            "id" :
+                {"type":"string", "size":36},
             "jidto" :
                 {"type":"string", "size":128, "mandatory":true },
             "jidfrom" :
@@ -47,7 +52,9 @@ class Message extends Model {
             "published" :
                 {"type":"date"},
             "delivered" :
-                {"type":"date"}
+                {"type":"date"},
+            "edited" :
+                {"type":"int", "size":1}
         }';
 
         parent::__construct();
@@ -58,6 +65,10 @@ class Message extends Model {
         if($stanza->body || $stanza->subject) {
             $jid = explode('/',(string)$stanza->attributes()->from);
             $to = current(explode('/',(string)$stanza->attributes()->to));
+
+            if(isset($stanza->attributes()->id)) {
+                $this->id = (string)$stanza->attributes()->id;
+            }
 
             // This is not very beautiful
             $user = new \User;
@@ -86,6 +97,11 @@ class Message extends Model {
             } else {*/
             //    $this->html = \prepareString($this->body, false, $images);
             //}
+
+            if($stanza->replace) {
+                $this->id = (string)$stanza->replace->attributes()->id;
+                $this->edited = true;
+            }
 
             if($stanza->delay)
                 $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
