@@ -1,12 +1,3 @@
-#roster form div {
-    min-height: 0;
-    top: 0;
-}
-
-#roster form div input {
-    padding-top: 2rem;
-}
-
 #roster ul#rosterlist > div > li {
     min-height: 0;
 }

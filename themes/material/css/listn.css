@@ -281,8 +281,8 @@ ul li span.counter.bottom {
 /* Bubble */
 
 ul li div.bubble {
-    padding: 1rem 2rem;
-    border-radius: 0.25rem;
+    padding: 1.25rem 2rem 0.75rem;
+    border-radius: 0.5rem;
     line-height: 2.75rem;
     position: relative;
     box-sizing: border-box;
@@ -308,6 +308,7 @@ ul li.oppose div.bubble {
     margin-right: 9rem;
     float: right;
     position: initial;
+    background-color: #f5f5f5;
 }
 
 ul li div.bubble span.info {
@@ -346,6 +347,7 @@ ul li:not(.same) div.bubble:before {
 ul li.oppose:not(.same) div.bubble:before {
     left: calc(100% - 10.5rem);
     top: 1.5rem;
+    border-top-color: #f5f5f5;
 }
 
 /* Icon */

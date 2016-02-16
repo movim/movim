@@ -38,7 +38,7 @@
                     {/if}
                 </p>
             </li>
-        </div>
+        </ul>
     {/if}
 
     {if="($public && $post->isPublic()) || !$public"}

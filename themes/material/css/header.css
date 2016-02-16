@@ -27,3 +27,16 @@ header.fixed + div {
     margin-top: 7rem;
 }
 
+header ul:first-child > li:first-child {
+    text-align: center;
+}
+
+/* Specific forms in header */
+header form > div:not(.clear):not(.control) {
+    min-height: 0;
+    top: 0;
+}
+
+header form > div > input:not([type=submit]) {
+    padding-top: 2rem;
+}
