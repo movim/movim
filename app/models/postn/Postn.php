@@ -123,7 +123,8 @@ class Postn extends Model {
         else
             $entry = $item;
 
-        $this->__set('origin', $from);
+        if($from != '')
+            $this->__set('origin', $from);
 
         if($node)
             $this->__set('node', $node);
