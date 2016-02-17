@@ -577,6 +577,32 @@ class PostnDAO extends SQL {
         return $this->run('Postn');
     }
 
+    function getLastBlogPublic($limitf = false, $limitr = false)
+    {
+        $this->_sql = '
+            select * from postn
+            left outer join contact on postn.aid = contact.jid
+            left outer join privacy on postn.nodeid = privacy.pkey
+            where
+                node = \'urn:xmpp:microblog:0\'
+                and postn.origin not in (select jid from rosterlink where session = :origin)
+                and privacy.value = 1
+            order by published desc
+            ';
+
+        if($limitr)
+            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+
+        $this->prepare(
+            'Postn',
+            array(
+                'origin' => $this->_user
+            )
+        );
+
+        return $this->run('ContactPostn');
+    }
+
     function exist($id) {
         $this->_sql = '
             select count(*) from postn

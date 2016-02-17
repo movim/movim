@@ -165,7 +165,8 @@ class Post extends WidgetBase
 
         $nd = new \modl\PostnDAO();
         $view = $this->tpl();
-        $view->assign('posts', $nd->getLastPublished(0, 10));
+        $view->assign('blogs', $nd->getLastBlogPublic(0, 6));
+        $view->assign('posts', $nd->getLastPublished(0, 4));
 
         return $view->draw('_post_empty', true);
     }
