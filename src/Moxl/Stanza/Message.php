@@ -3,7 +3,15 @@
 namespace Moxl\Stanza;
 
 class Message {
-    static function maker($to, $content = false, $html = false, $type = 'chat', $chatstates = false, $receipts = false)
+    static function maker(
+        $to,
+        $content = false,
+        $html = false,
+        $type = 'chat',
+        $chatstates = false,
+        $receipts = false,
+        $id = false,
+        $replace = false)
     {
         $session = \Sessionx::start();
 
@@ -11,12 +19,23 @@ class Message {
         $root = $dom->createElementNS('jabber:client', 'message');
         $dom->appendChild($root);
         $root->setAttribute('to', str_replace(' ', '\40', $to));
-        $root->setAttribute('id', $session->id);
         $root->setAttribute('type', $type);
+
+        if($id != false) {
+            $root->setAttribute('id', $id);
+        } else {
+            $root->setAttribute('id', $session->id);
+        }
 
         if($content != false) {
             $body = $dom->createElement('body', $content);
             $root->appendChild($body);
+        }
+
+        if($replace != false) {
+            $rep = $dom->createElementNS('urn:xmpp:message-correct:0', 'replace');
+            $rep->setAttribute('id', $replace);
+            $root->appendChild($rep);
         }
 
         if($html != false) {
@@ -46,9 +65,9 @@ class Message {
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    static function message($to, $content, $html = false)
+    static function message($to, $content, $html = false, $id = false, $replace = false)
     {
-        self::maker($to, $content, $html, 'chat', 'active', 'request');
+        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace);
     }
     /*
     static function encrypted($to, $content)

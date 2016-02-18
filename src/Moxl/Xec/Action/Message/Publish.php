@@ -35,16 +35,18 @@ class Publish extends Action
     private $_html;
     private $_muc = false;
     private $_encrypted = false;
+    private $_id = false;
+    private $_replace = false;
     
     public function request() 
     {
         $this->store();
         if($this->_muc)
-            Muc::message($this->_to, $this->_content, $this->_html);
+            Muc::message($this->_to, $this->_content, $this->_html, $this->_id);
         elseif($this->_encrypted)
-            Message::encrypted($this->_to, $this->_content, $this->_html);
+            Message::encrypted($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace);
         else
-            Message::message($this->_to, $this->_content, $this->_html);
+            Message::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace);
     }
     
     public function setTo($to)
@@ -81,7 +83,19 @@ class Publish extends Action
         $this->_html = $html;
         return $this;
     }
-    
+
+    public function setId($id)
+    {
+        $this->_id = $id;
+        return $this;
+    }
+
+    public function setReplace($replace)
+    {
+        $this->_replace = $replace;
+        return $this;
+    }
+
     public function handle($stanza, $parent = false) {
         if($this->_muc) {
             $m = new \Moxl\Xec\Payload\Message;
