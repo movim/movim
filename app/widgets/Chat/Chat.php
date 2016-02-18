@@ -235,11 +235,15 @@ class Chat extends WidgetBase
         $m->jidfrom = $this->user->getLogin();
 
         if($replace != false) {
-            $m->newid   = Uuid::uuid4();
-            $m->id      = $replace;
-            $m->edited  = true;
+            $m->newid     = Uuid::uuid4();
+            $m->id        = $replace->id;
+            $m->edited    = true;
+            $m->published = $replace->published;
+            $m->delivered = $replace->delivered;
         } else {
             $m->id      = Uuid::uuid4();
+            $m->published = gmdate('Y-m-d H:i:s');
+            $m->delivered = gmdate('Y-m-d H:i:s');
         }
 
         $session    = \Sessionx::start();
@@ -262,8 +266,6 @@ class Chat extends WidgetBase
 
         $m->body      = trim(rawurldecode($message));
         //$m->html      = prepareString($m->body, false, true);
-        $m->published = gmdate('Y-m-d H:i:s');
-        $m->delivered = gmdate('Y-m-d H:i:s');
 
         if($resource != false) {
             $to = $to . '/' . $resource;
@@ -314,7 +316,7 @@ class Chat extends WidgetBase
         $m = $md->getLastItem($to);
 
         if($m) {
-            $this->ajaxSendMessage($to, $message, false, false, $m->id);
+            $this->ajaxSendMessage($to, $message, false, false, $m);
         }
     }
 
