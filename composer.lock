@@ -693,12 +693,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "b60a9496b2cbe169f074a750dbde461945a90bb4"
+                "reference": "6e9233290644f7bb4b9536364a7788e95156ca78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/b60a9496b2cbe169f074a750dbde461945a90bb4",
-                "reference": "b60a9496b2cbe169f074a750dbde461945a90bb4",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/6e9233290644f7bb4b9536364a7788e95156ca78",
+                "reference": "6e9233290644f7bb4b9536364a7788e95156ca78",
                 "shasum": ""
             },
             "require": {
@@ -732,7 +732,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-02-16 22:35:27"
+            "time": "2016-02-18 22:14:06"
         },
         {
             "name": "movim/sasl2",
