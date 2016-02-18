@@ -144,10 +144,6 @@ var Chat = {
                 bubble.id = message.id;
                 if(message.newid != null)
                     bubble.id = message.newid;
-
-                var elem = document.getElementById(message.id);
-                if(elem)
-                    elem.parentElement.removeChild(elem);
             }
 
             if(message.body.match(/^\/me/)) {
@@ -176,6 +172,10 @@ var Chat = {
                     var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
                     discussion.scrollTop += scrollDiff;
                     Chat.lastScroll = discussion.scrollHeight;
+                } else if(message.edited) {
+                    var elem = document.getElementById(message.id);
+                    if(elem)
+                        elem.parentElement.replaceChild(bubble, elem);
                 } else {
                     movim_append(id, bubble.outerHTML);
                 }
