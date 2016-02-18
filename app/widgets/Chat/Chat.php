@@ -10,6 +10,8 @@ use Moxl\Xec\Action\Muc\SetSubject;
 
 use Respect\Validation\Validator;
 
+use Ramsey\Uuid\Uuid;
+
 class Chat extends WidgetBase
 {
     private $_pagination = 30;
@@ -223,7 +225,7 @@ class Chat extends WidgetBase
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message, $muc = false, $resource = false) {
+    function ajaxSendMessage($to, $message, $muc = false, $resource = false, $replace = false) {
         if($message == '')
             return;
 
@@ -231,6 +233,14 @@ class Chat extends WidgetBase
         $m->session = $this->user->getLogin();
         $m->jidto   = echapJid($to);
         $m->jidfrom = $this->user->getLogin();
+
+        if($replace != false) {
+            $m->newid   = Uuid::uuid4();
+            $m->id      = $replace;
+            $m->edited  = true;
+        } else {
+            $m->id      = Uuid::uuid4();
+        }
 
         $session    = \Sessionx::start();
 
@@ -265,6 +275,13 @@ class Chat extends WidgetBase
         //$p->setHTML($m->html);
         $p->setContent($m->body);
 
+        if($replace != false) {
+            $p->setId($m->newid);
+            $p->setReplace($m->id);
+        } else {
+            $p->setId($m->id);
+        }
+
         if($muc) {
             $p->setMuc();
         }
@@ -282,6 +299,37 @@ class Chat extends WidgetBase
             $packet->content = $m;
             $this->onMessage($packet/*, true*/);
         }
+    }
+
+    /**
+     * @brief Send a correction message
+     *
+     * @param string $to
+     * @param string $message
+     * @return void
+     */
+    function ajaxCorrect($to, $message)
+    {
+        $md = new \Modl\MessageDAO;
+        $m = $md->getLastItem($to);
+
+        if($m) {
+            $this->ajaxSendMessage($to, $message, false, false, $m->id);
+        }
+    }
+
+    /**
+     * @brief Get the last message sent
+     *
+     * @param string $to
+     * @return void
+     */
+    function ajaxLast($to)
+    {
+        $md = new \Modl\MessageDAO;
+        $m = $md->getLastItem($to);
+
+        RPC::call('Chat.setTextarea', $m->body);
     }
 
     /**

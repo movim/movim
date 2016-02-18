@@ -5,6 +5,7 @@ var Chat = {
     previous: null,
     date: null,
     lastScroll: null,
+    edit: false,
     addSmiley: function(element) {
         var n = document.querySelector('#chat_textarea');
         n.value = n.value + element.dataset.emoji;
@@ -18,7 +19,12 @@ var Chat = {
         n.value = "";
         n.focus();
         movim_textarea_autoheight(n);
-        Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
+        if(Chat.edit) {
+            Chat.edit = false;
+            Chat_ajaxCorrect(jid, encodeURIComponent(text));
+        } else {
+            Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
+        }
     },
     focus: function()
     {
@@ -26,8 +32,15 @@ var Chat = {
             document.querySelector('#chat_textarea').focus();
         }
     },
-    appendTextarea: function(value)
+    setTextarea: function(value)
     {
+        Chat.edit = true;
+        document.querySelector('#chat_textarea').value = value;
+    },
+    clearReplace: function()
+    {
+        Chat.edit = false;
+        document.querySelector('#chat_textarea').value = '';
     },
     notify : function(title, body, image)
     {

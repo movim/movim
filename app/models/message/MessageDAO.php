@@ -88,7 +88,30 @@ class MessageDAO extends SQL {
         return $this->run('Message');
     }
 
-    function getContact($jid, $limitf = false, $limitr = false) {
+    function getLastItem($to)
+    {
+        $this->_sql = '
+            select * from message
+            where session = :session
+                and jidto = :jidto
+                and jidfrom = :jidfrom
+            order by published desc
+            limit 1';
+
+        $this->prepare(
+            'Message',
+            array(
+                'session' => $this->_user,
+                'jidto'   => $to,
+                'jidfrom' => $this->_user
+            )
+        );
+
+        return $this->run('Message', 'item');
+    }
+
+    function getContact($jid, $limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select * from message
             where session = :session
