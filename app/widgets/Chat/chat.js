@@ -83,6 +83,7 @@ var Chat = {
             for(var i = 0, len = messages.length; i < len; ++i ) {
                 Chat.appendMessage(messages[i], false);
             }
+            Chat.edit = false;
         }
     },
     appendMessage : function(message, prepend) {
