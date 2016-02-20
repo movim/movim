@@ -87,12 +87,14 @@ var Chat = {
         }
     },
     appendMessage : function(message, prepend) {
+        if(message.body == '') return;
+
         var bubble = null;
         var id = null;
 
         var scrolled = MovimTpl.isPanelScrolled();
 
-        if(message.type == 'groupchat') {
+        if(message.type == 'groupchat') {console.log(message.body);
             bubble = Chat.room.cloneNode(true);
 
             id = message.jidfrom + '_conversation';

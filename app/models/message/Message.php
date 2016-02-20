@@ -86,8 +86,11 @@ class Message extends Model {
                 $this->type    = (string)$stanza->attributes()->type;
             }
 
-            $this->__set('body', (string)$stanza->body);
-            $this->__set('subject', (string)$stanza->subject);
+            if($stanza->body)
+                $this->__set('body', (string)$stanza->body);
+
+            if($stanza->subject)
+                $this->__set('subject', (string)$stanza->subject);
 
             $images = (bool)($this->type == 'chat');
 
