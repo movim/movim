@@ -96,6 +96,7 @@ class Chat extends WidgetBase
 
         if(!preg_match('#^\?OTR#', $message->body)) {
             RPC::call('Chat.appendMessage', $this->prepareMessage($message));
+            RPC::call('Chat.cleanBubbles');
         }
     }
 
@@ -382,6 +383,7 @@ class Chat extends WidgetBase
                 RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
             }
         }
+        RPC::call('Chat.cleanBubbles');
     }
 
     /**

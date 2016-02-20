@@ -2,7 +2,6 @@ var Chat = {
     left : null,
     right: null,
     room: null,
-    previous: null,
     date: null,
     lastScroll: null,
     edit: false,
@@ -84,11 +83,10 @@ var Chat = {
                 Chat.appendMessage(messages[i], false);
             }
             Chat.edit = false;
+            Chat.cleanBubbles();
         }
     },
     appendMessage : function(message, prepend) {
-        if(message.body == '') return;
-
         var bubble = null;
         var id = null;
 
@@ -120,24 +118,12 @@ var Chat = {
             if(conversation) {
                 conversation.appendChild(bubble);
             }
-
-            //bubble.querySelector('p.message').className = '';
         } else if(Chat.left != null) {
             if(message.session == message.jidfrom) {
                 bubble = Chat.right.cloneNode(true);
-                if(Chat.previous == 'right') {
-                    bubble.className += ' same';
-                }
-
-                Chat.previous = 'right';
                 id = message.jidto + '_conversation';
             } else {
                 bubble = Chat.left.cloneNode(true);
-                if(Chat.previous == 'left') {
-                    bubble.className += ' same';
-                }
-
-                Chat.previous = 'left';
                 id = message.jidfrom + '_conversation';
             }
 
@@ -177,6 +163,8 @@ var Chat = {
                     var elem = document.getElementById(message.id);
                     if(elem)
                         elem.parentElement.replaceChild(bubble, elem);
+                    else
+                        movim_append(id, bubble.outerHTML);
                 } else {
                     movim_append(id, bubble.outerHTML);
                 }
@@ -189,6 +177,28 @@ var Chat = {
         }
 
         if(scrolled && prepend == null) MovimTpl.scrollPanel();
+    },
+    cleanBubbles : function() {
+        var bubbles = document.querySelectorAll('#chat_widget .contained ul.list > li');
+        var previous = null;
+
+        for(var i = 0, len = bubbles.length; i < len; ++i ) {
+            bubbles[i].className = bubbles[i].className.replace(' same', '');
+
+            if(bubbles[i].className.indexOf('oppose') > -1) {
+                if(previous == 'right') {
+                    bubbles[i].className += ' same';
+                }
+
+                previous = 'right';
+            } else {
+                if(previous == 'left') {
+                    bubbles[i].className += ' same';
+                }
+
+                previous = 'left';
+            }
+        }
     }
 }
 
