@@ -77,6 +77,11 @@
     </table>
 </section>
 <div>
+    <!--
+    <a onclick="Stickers_ajaxShow()" class="button flat">
+        Stickers
+    </a>
+    -->
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.close')}
     </a>

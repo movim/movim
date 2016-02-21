@@ -344,7 +344,7 @@ class Bootstrap {
         return["Account","AccountNext","Ack","AdHoc","Avatar","Bookmark","Chat",
         "Chats","Config","Contact","Dialog","Group","Groups","Header","Init",
         "Login","LoginAnonymous","Menu","Notifs","Post","Presence","Publish",
-        "Rooms","Roster","Upload","Vcard4"];
+        "Rooms","Roster","Stickers","Upload","Vcard4"];
 
     }
 }

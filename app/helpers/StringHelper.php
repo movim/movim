@@ -224,6 +224,17 @@ function cleanJid($jid)
 }
 
 /*
+ * Extract the CID
+ */
+function getCid($string)
+{
+    preg_match("/(\w+)\@/", $string, $matches);
+    if(is_array($matches)) {
+        return $matches[1];
+    }
+}
+
+/*
  *  Explode JID
  */
 function explodeJid($jid)

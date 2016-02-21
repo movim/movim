@@ -5,6 +5,7 @@ class Picture {
     private $_uri  = CACHE_URI;
     private $_key;
     private $_bin  = false;
+    private $_formats = ['jpeg' => '.jpg', 'png' => '.png'];
 
     /**
      * @desc Load a bin picture from a path
@@ -41,30 +42,31 @@ class Picture {
      * @param $height The height requested
      * @return The url of the picture
      */
-    public function get($key, $width = false, $height = false) {
+    public function get($key, $width = false, $height = false, $format = 'jpeg') {
+        if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
         $this->_key = $key;
 
-        $original = $this->_path.md5($this->_key).'.jpg';
+        $original = $this->_path.md5($this->_key).$this->_formats[$format];
 
         // We request the original picture
         if($width == false) {
             if(file_exists($original)) {
                 $this->fromPath($original);
-                return $this->_uri.md5($this->_key).'.jpg';
+                return $this->_uri.md5($this->_key).$this->_formats[$format];
             } else {
                 return false;
             }
         // We request a specific size
         } else {
-            if(file_exists($this->_path.md5($this->_key).'_'.$width.'.jpg')) {
-                $this->fromPath($this->_path.md5($this->_key).'_'.$width.'.jpg');
-                return $this->_uri.md5($this->_key).'_'.$width.'.jpg';
+            if(file_exists($this->_path.md5($this->_key).'_'.$width.$this->_formats[$format])) {
+                $this->fromPath($this->_path.md5($this->_key).'_'.$width.$this->_formats[$format]);
+                return $this->_uri.md5($this->_key).'_'.$width.$this->_formats[$format];
             } else {
                 if(file_exists($original)) {
                     $this->fromPath($original);
                     $this->createThumbnail($width, $height);
 
-                    return $this->_uri.md5($this->_key).'_'.$width.'.jpg';
+                    return $this->_uri.md5($this->_key).'_'.$width.$this->_formats[$format];
                 } else {
                     return false;
                 }
@@ -76,9 +78,11 @@ class Picture {
      * @desc Save a picture (original size)
      * @param $key The key of the picture
      */
-    public function set($key) {
+    public function set($key, $format = 'jpeg') {
+        if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
+
         $this->_key = $key;
-        $path = $this->_path.md5($this->_key).'.jpg';
+        $path = $this->_path.md5($this->_key).$this->_formats[$format];
 
         // If the file exist we replace it
         if(file_exists($path) && $this->_bin) {
@@ -89,7 +93,7 @@ class Picture {
                 glob(
                     $this->_path.
                     md5($key).
-                    '*.jpg',
+                    '*'.$this->_formats[$format],
                     GLOB_NOSORT
                     ) as $path_thumb) {
                 unlink($path_thumb);
@@ -101,6 +105,7 @@ class Picture {
             try {
                 $im->readImageBlob($this->_bin);
                 if($im != false) {
+                    $im->setImageFormat($format);
                     $im->setImageCompressionQuality(95);
                     $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
                     $im->writeImage($path);
@@ -116,13 +121,15 @@ class Picture {
      * @desc Create a thumbnail of the picture and save it
      * @param $size The size requested
      */
-    private function createThumbnail($width, $height = false) {
+    private function createThumbnail($width, $height = false, $format = 'jpeg') {
+        if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
         if(!$height) $height = $width;
         
-        $path = $this->_path.md5($this->_key).'_'.$width.'.jpg';
+        $path = $this->_path.md5($this->_key).'_'.$width.$this->_formats[$format];
 
         $im = new Imagick;
         $im->readImageBlob($this->_bin);
+        $im->setImageFormat($format);
 
         $geo = $im->getImageGeometry();
 

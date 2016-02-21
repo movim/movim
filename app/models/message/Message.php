@@ -26,6 +26,8 @@ class Message extends Model {
     public $publishedPrepared; // Only for chat purpose
     public $edited;
 
+    public $sticker; // The sticker code
+
     public function __construct()
     {
         $this->_struct = '
@@ -55,7 +57,9 @@ class Message extends Model {
             "delivered" :
                 {"type":"date"},
             "edited" :
-                {"type":"int", "size":1}
+                {"type":"int", "size":1},
+            "sticker" :
+                {"type":"string", "size":128 }
         }';
 
         parent::__construct();
@@ -93,6 +97,15 @@ class Message extends Model {
                 $this->__set('subject', (string)$stanza->subject);
 
             $images = (bool)($this->type == 'chat');
+
+            if($stanza->html) {
+                $xhtml = new \SimpleXMLElement('<body xmlns="http://www.w3.org/1999/xhtml">'.(string)$stanza->html->body.'</body>');
+                $xhtml->registerXPathNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
+                $img = $xhtml->xpath('//xhtml:img/@src')[0];
+                if($img) {
+                    $this->sticker = getCid((string)$img);
+                }
+            }
 
             /*if($stanza->html) {
                 $this->html = \cleanHTMLTags($stanza->html->body->asXML());

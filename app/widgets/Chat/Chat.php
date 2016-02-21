@@ -376,14 +376,14 @@ class Chat extends WidgetBase
 
         if(count($messages) > 0) {
             Notification::append(false, $this->__('message.history', count($messages)));
-        }
 
-        foreach($messages as $message) {
-            if(!preg_match('#^\?OTR#', $message->body)) {
-                RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
+            foreach($messages as $message) {
+                if(!preg_match('#^\?OTR#', $message->body)) {
+                    RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
+                }
             }
+            RPC::call('Chat.cleanBubbles');
         }
-        RPC::call('Chat.cleanBubbles');
     }
 
     /**
@@ -572,6 +572,11 @@ class Chat extends WidgetBase
             $message->convertEmojis();
             $message->addUrls();
             //    $message->body = prepareString(htmlentities($message->body , ENT_COMPAT,'UTF-8'));
+        }
+
+        if(isset($message->sticker)) {
+            $p = new Picture;
+            $message->sticker = $p->get($message->sticker, false, false, 'png'); 
         }
 
         if($message->type == 'groupchat') {

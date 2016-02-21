@@ -94,7 +94,7 @@ var Chat = {
 
         var scrolled = MovimTpl.isPanelScrolled();
 
-        if(message.type == 'groupchat') {console.log(message.body);
+        if(message.type == 'groupchat') {
             bubble = Chat.room.cloneNode(true);
 
             id = message.jidfrom + '_conversation';
@@ -140,8 +140,16 @@ var Chat = {
                 message.body = message.body.substr(4);
             }
 
+            if(message.sticker != null) {
+                bubble.querySelector('div.bubble').className += ' sticker';
+            }
+
             if(bubble) {
-                bubble.querySelector('div.bubble > p').innerHTML = message.body.replace(/\r\n?|\n/g, '<br />');
+                if(message.sticker != null) {
+                    bubble.querySelector('div.bubble > p').innerHTML = '<img src="' + message.sticker + '"/>';
+                } else {
+                    bubble.querySelector('div.bubble > p').innerHTML = message.body.replace(/\r\n?|\n/g, '<br />');
+                }
 
                 var info = bubble.querySelector('div.bubble > span.info');
                 info.innerHTML = message.publishedPrepared;

@@ -50,7 +50,8 @@ class MessageDAO extends SQL {
                 body,
                 html,
                 published,
-                delivered)
+                delivered,
+                sticker)
                 values(
                     :id,
                     :session,
@@ -63,7 +64,8 @@ class MessageDAO extends SQL {
                     :body,
                     :html,
                     :published,
-                    :delivered
+                    :delivered,
+                    :sticker
                     )';
 
             $this->prepare(
@@ -80,7 +82,8 @@ class MessageDAO extends SQL {
                     'body'      => $message->body,
                     'html'      => $message->html,
                     'published' => $message->published,
-                    'delivered' => $message->delivered
+                    'delivered' => $message->delivered,
+                    'sticker'   => $message->sticker
                 )
             );
         }

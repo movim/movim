@@ -281,21 +281,24 @@ ul li span.counter.bottom {
 /* Bubble */
 
 ul li div.bubble {
-    padding: 1.25rem 2rem 0.75rem;
-    border-radius: 0.5rem;
-    line-height: 2.75rem;
     position: relative;
     box-sizing: border-box;
     display: block;
     font-size: 1.75rem;
-    background-color: white;
-    border-color: white;
     max-width: calc(100% - 11rem);
     float: left;
 
     left: 9rem;
     padding-left: 2rem;
     width: auto;
+}
+
+ul li div.bubble:not(.sticker) {
+    padding: 1.25rem 2rem 0.75rem;
+    border-radius: 0.5rem;
+    line-height: 2.75rem;
+    background-color: white;
+    border-color: white;
 }
 
 ul li div.bubble > p {
@@ -308,6 +311,9 @@ ul li.oppose div.bubble {
     margin-right: 9rem;
     float: right;
     position: initial;
+}
+
+ul li.oppose div.bubble:not(.sticker) {
     background-color: #f5f5f5;
 }
 
@@ -333,7 +339,7 @@ ul li .quote {
     font-style: italic;
 }
 
-ul li:not(.same) div.bubble:before {
+ul li:not(.same) div.bubble:not(.sticker):before {
     content: "";
     position: absolute;
     top: 0;
@@ -344,7 +350,7 @@ ul li:not(.same) div.bubble:before {
     border-right: 1.5rem solid transparent;
 }
 
-ul li.oppose:not(.same) div.bubble:before {
+ul li.oppose:not(.same) div.bubble:not(.sticker):before {
     left: calc(100% - 10.5rem);
     top: 1.5rem;
     border-top-color: #f5f5f5;
