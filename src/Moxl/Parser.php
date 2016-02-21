@@ -85,7 +85,8 @@ class Parser {
 
         $this->depth--;
 
-        if($this->raw != false) {
+        if($this->raw != false
+        && $this->depth > $this->raw) {
             $this->handler[0] .= '</'.$name.'>';
         }
 

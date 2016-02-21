@@ -167,6 +167,8 @@ class Handler {
 
             'fa9d41e26f664d9056618a4afe213861' => 'Post',
 
+            '9952d726429340d482ecac82c1496191' => 'BOB',
+
             '4c9681f0e9aca8a5b65f86b8b80d490f' => 'DiscoInfo',
             //'482069658b024085fbc4e311fb771fa6' => 'DiscoInfo',//?
 
