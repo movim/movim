@@ -49,7 +49,7 @@ var Login = {
         }
 
         var s = localStorage.getObject('previousSessions');
-        if(s.indexOf(jid) == -1) {
+        if(s.indexOf(jid) == -1 && jid != '') {
             s.push(jid);
             localStorage.setObject('previousSessions', s);
         }

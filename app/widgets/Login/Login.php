@@ -224,7 +224,7 @@ class Login extends WidgetBase
         $sessions_grabbed = array();
 
         $cd = new \Modl\ContactDAO;
-        
+
         foreach($sessions as $s) {
             $c = $cd->get($s);
 
