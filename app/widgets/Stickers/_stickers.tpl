@@ -1,7 +1,7 @@
 <section class="scroll">
     <ul class="list flex active">
         {loop="$stickers"}
-            <li class="block" onclick="Stickers_ajaxSend('{$jid}', '{$value}')">
+            <li class="block" onclick="Stickers_ajaxSend('{$jid}', '{$value}'); Dialog.clear();">
                 <img src="{$path}{$value}"/>
             </li>
         {/loop}
