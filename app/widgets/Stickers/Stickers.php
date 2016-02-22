@@ -38,7 +38,7 @@ class Stickers extends WidgetBase
 
     function ajaxSend($to, $file)
     {
-        if(!$this->validateJid($jid)) return;
+        if(!$this->validateJid($to)) return;
 
         list($key, $ext) = explode('.', $file);
 
