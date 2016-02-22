@@ -1,8 +1,11 @@
 <?php
 
 use Moxl\Xec\Action\Message\Publish;
+
 use Moxl\Xec\Action\BOB\Answer;
 use Ramsey\Uuid\Uuid;
+
+use Respect\Validation\Validator;
 
 class Stickers extends WidgetBase
 {
