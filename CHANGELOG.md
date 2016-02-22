@@ -1,6 +1,10 @@
 Moxl Changelog
 ================
 
+v1.5
+---------------------------
+ * Add XEP-0231: Bits of Binary support
+
 v1.4
 ---------------------------
  * Add a XML Stream parser
