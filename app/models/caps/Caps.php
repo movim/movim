@@ -13,11 +13,11 @@ class Caps extends Model {
         $this->_struct = '
         {
             "node" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":128, "key":true },
             "category" : 
-                {"type":"string", "size":128, "mandatory":true },
+                {"type":"string", "size":16, "mandatory":true },
             "type" : 
-                {"type":"string", "size":128, "mandatory":true },
+                {"type":"string", "size":16, "mandatory":true },
             "name" : 
                 {"type":"string", "size":128, "mandatory":true },
             "features" : 

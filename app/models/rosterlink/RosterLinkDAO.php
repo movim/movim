@@ -12,7 +12,6 @@ class RosterLinkDAO extends SQL {
                 rostername, 
                 rosterask, 
                 rostersubscription,
-                realname,
                 groupname,
                 chaton)
                 values (
@@ -21,7 +20,6 @@ class RosterLinkDAO extends SQL {
                     :rostername, 
                     :rosterask, 
                     :rostersubscription,
-                    :realname,
                     :groupname,
                     :chaton
                     )';
@@ -34,7 +32,6 @@ class RosterLinkDAO extends SQL {
                 'rostername'    => $r->rostername,
                 'rosterask'     => $r->rosterask,
                 'rostersubscription'     => $r->rostersubscription,
-                'realname'      => $r->realname,
                 'groupname'     => $r->groupname,
                 'chaton'        => $r->chaton
             )
@@ -52,7 +49,6 @@ class RosterLinkDAO extends SQL {
                 rostername, 
                 rosterask, 
                 rostersubscription,
-                realname,
                 groupname,
                 chaton)
                 values
@@ -69,7 +65,6 @@ class RosterLinkDAO extends SQL {
                 :rostername_$i, 
                 :rosterask_$i, 
                 :rostersubscription_$i,
-                :realname_$i,
                 :groupname_$i,
                 :chaton_$i
                 ),";
@@ -82,7 +77,6 @@ class RosterLinkDAO extends SQL {
                     "rostername_$i"    => $r->rostername,
                     "rosterask_$i"     => $r->rosterask,
                     "rostersubscription_$i"     => $r->rostersubscription,
-                    "realname_$i"      => $r->realname,
                     "groupname_$i"     => $r->groupname,
                     "chaton_$i"        => $r->chaton
                 )
@@ -107,7 +101,6 @@ class RosterLinkDAO extends SQL {
             set rostername  = :rostername,
                 rosterask   = :rosterask,
                 rostersubscription = :rostersubscription,
-                realname    = :realname,
                 groupname   = :groupname,
                 chaton      = :chaton
             where session   = :session
@@ -121,7 +114,6 @@ class RosterLinkDAO extends SQL {
                 'rostername'    => $r->rostername,
                 'rosterask'     => $r->rosterask,
                 'rostersubscription'     => $r->rostersubscription,
-                'realname'      => $r->realname,
                 'groupname'     => $r->groupname,
                 'chaton'        => $r->chaton
             )

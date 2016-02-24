@@ -75,11 +75,11 @@ class Contact extends Model {
         $this->_struct = '
         {
             "jid" :
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "fn" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":64 },
             "name" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":64 },
             "date" :
                 {"type":"date",   "size":11 },
             "url" :
@@ -89,21 +89,21 @@ class Contact extends Model {
             "adrlocality" :
                 {"type":"string", "size":128 },
             "adrpostalcode" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":12 },
             "adrcountry" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":64 },
             "gender" :
                 {"type":"string", "size":1 },
             "marital" :
-                {"type":"string", "size":20 },
+                {"type":"string", "size":16 },
             "description" :
                 {"type":"text"},
             "mood" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":64 },
             "activity" :
                 {"type":"string", "size":128 },
             "nickname" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":32 },
             "tuneartist" :
                 {"type":"string", "size":128 },
             "tunelenght" :
@@ -117,25 +117,25 @@ class Contact extends Model {
             "tunetrack" :
                 {"type":"string", "size":128 },
             "loclatitude" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":32 },
             "loclongitude" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":32 },
             "localtitude" :
                 {"type":"int",    "size":11 },
             "loccountry" :
                 {"type":"string", "size":128 },
             "loccountrycode" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":2 },
             "locregion" :
                 {"type":"string", "size":128 },
             "locpostalcode" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":32 },
             "loclocality" :
                 {"type":"string", "size":128 },
             "locstreet" :
                 {"type":"string", "size":128 },
             "locbuilding" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":32 },
             "loctext" :
                 {"type":"text" },
             "locuri" :
@@ -151,9 +151,9 @@ class Contact extends Model {
             "avatarhash" :
                 {"type":"string", "size":128 },
             "created" :
-                {"type":"date" },
+                {"type":"date", "mandatory":true },
             "updated" :
-                {"type":"date" }
+                {"type":"date", "mandatory":true }
         }';
 
         parent::__construct();

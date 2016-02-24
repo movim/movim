@@ -19,11 +19,11 @@ class Subscription extends Model {
         $this->_struct = '
         {
             "jid" :
-                {"type":"string", "size":64, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "server" :
-                {"type":"string", "size":64, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "node" :
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":128, "key":true },
             "subscription" :
                 {"type":"string", "size":128, "mandatory":true },
             "subid" :

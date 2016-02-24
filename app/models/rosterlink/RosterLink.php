@@ -10,8 +10,6 @@ class RosterLink extends Model {
     public $rosterask;
     public $rostersubscription;
 
-    protected $realname;
-
     protected $groupname;
 
     public $chaton;
@@ -22,19 +20,17 @@ class RosterLink extends Model {
         $this->_struct = '
         {
             "session" :
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "jid" :
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":96, "key":true },
             "rostername" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":96 },
             "rosterask" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":16 },
             "rostersubscription" :
-                {"type":"string", "size":128 },
-            "realname" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":4, "mandatory":true },
             "groupname" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":64 },
             "chaton" :
                 {"type":"int", "size":11 }
         }';

@@ -19,13 +19,13 @@ class Item extends Model {
         $this->_struct = '
         {
             "server" :
-                {"type":"string", "size":64, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "jid" :
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "node" :
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "creator" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":64 },
             "name" :
                 {"type":"string", "size":128 },
             "created" :
@@ -33,7 +33,7 @@ class Item extends Model {
             "description" :
                 {"type":"text" },
             "updated" :
-                {"type":"date"}
+                {"type":"date", "mandatory":true}
         }';
 
         parent::__construct();

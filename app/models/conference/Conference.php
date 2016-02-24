@@ -16,9 +16,9 @@ class Conference extends Model {
         $this->_struct = '
         {
             "jid" :
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":128, "key":true },
             "conference" :
-                {"type":"string", "size":128, "mandatory":true, "key":true },
+                {"type":"string", "size":128, "key":true },
             "name" :
                 {"type":"string", "size":128, "mandatory":true },
             "nick" :

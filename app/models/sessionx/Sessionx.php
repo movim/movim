@@ -19,44 +19,44 @@ class Sessionx extends Model {
     public $start;
     public $timestamp;
     public $mechanism;
-    
+
     public function __construct() {
         $this->_struct = '
         {
-            "session" : 
-                {"type":"string", "size":128, "mandatory":true, "key":true },
-            "username" : 
+            "session" :
+                {"type":"string", "size":32, "key":true },
+            "username" :
                 {"type":"string", "size":64 },
-            "password" : 
+            "password" :
                 {"type":"string", "size":64 },
-            "hash" : 
-                {"type":"string", "size":128 },
-            "resource" : 
+            "hash" :
                 {"type":"string", "size":64 },
-            "rid" : 
+            "resource" :
+                {"type":"string", "size":16 },
+            "rid" :
                 {"type":"int",    "size":8,   "mandatory":true },
-            "sid" : 
+            "sid" :
                 {"type":"string",    "size":64 },
-            "id" : 
+            "id" :
                 {"type":"int",    "size":8,   "mandatory":true },
-            "port" : 
+            "port" :
                 {"type":"int",    "size":5,   "mandatory":true },
-            "host" : 
+            "host" :
                 {"type":"string", "size":64,  "mandatory":true },
-            "domain" : 
+            "domain" :
                 {"type":"string", "size":64,  "mandatory":true },
-            "config" : 
+            "config" :
                 {"type":"text" },
-            "active" : 
+            "active" :
                 {"type":"int",    "size":4 },
-            "start" : 
+            "start" :
                 {"type":"date" },
-            "timestamp" : 
+            "timestamp" :
                 {"type":"date" },
-            "mechanism" : 
-                {"type":"string", "size":64 }
+            "mechanism" :
+                {"type":"string", "size":16 }
         }';
-        
+
         parent::__construct();
     }
 }

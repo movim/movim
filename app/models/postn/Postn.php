@@ -43,15 +43,15 @@ class Postn extends Model {
         $this->_struct = '
         {
             "origin" :
-                {"type":"string", "size":64, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "node" :
-                {"type":"string", "size":96, "mandatory":true, "key":true },
+                {"type":"string", "size":96, "key":true },
             "nodeid" :
-                {"type":"string", "size":96, "mandatory":true, "key":true },
+                {"type":"string", "size":96, "key":true },
             "aname" :
                 {"type":"string", "size":128 },
             "aid" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":64 },
             "aemail" :
                 {"type":"string", "size":64 },
             "title" :
@@ -73,16 +73,16 @@ class Postn extends Model {
                 {"type":"date" },
 
             "lat" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":16 },
             "lon" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":16 },
 
             "links" :
                 {"type":"text" },
             "picture" :
                 {"type":"int", "size":4 },
             "hash" :
-                {"type":"string", "size":128 }
+                {"type":"string", "size":128, "mandatory":true }
         }';
 
         parent::__construct();

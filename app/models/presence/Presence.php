@@ -38,11 +38,11 @@ class Presence extends Model {
         $this->_struct = '
         {
             "id" :
-                {"type":"string", "size":128, "mandatory":true },
+                {"type":"string", "size":64, "mandatory":true },
             "session" :
-                {"type":"string", "size":64, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "jid" :
-                {"type":"string", "size":64, "mandatory":true, "key":true },
+                {"type":"string", "size":64, "key":true },
             "resource" :
                 {"type":"string", "size":64, "key":true },
             "value" :

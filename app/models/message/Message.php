@@ -33,17 +33,17 @@ class Message extends Model {
         $this->_struct = '
         {
             "session" :
-                {"type":"string", "size":128, "mandatory":true },
+                {"type":"string", "size":96, "mandatory":true },
             "id" :
-                {"type":"string", "size":36},
+                {"type":"string", "size":64},
             "jidto" :
-                {"type":"string", "size":128, "mandatory":true },
+                {"type":"string", "size":96, "mandatory":true },
             "jidfrom" :
-                {"type":"string", "size":128, "mandatory":true },
+                {"type":"string", "size":96, "mandatory":true },
             "resource" :
-                {"type":"string", "size":128 },
+                {"type":"string", "size":128, "mandatory":true },
             "type" :
-                {"type":"string", "size":20 },
+                {"type":"string", "size":16, "mandatory":true },
             "subject" :
                 {"type":"text"},
             "thread" :
@@ -53,7 +53,7 @@ class Message extends Model {
             "html" :
                 {"type":"text"},
             "published" :
-                {"type":"date"},
+                {"type":"date", "mandatory":true},
             "delivered" :
                 {"type":"date"},
             "edited" :
