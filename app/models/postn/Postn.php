@@ -73,9 +73,9 @@ class Postn extends Model {
                 {"type":"date" },
 
             "lat" :
-                {"type":"string", "size":16 },
+                {"type":"string", "size":32 },
             "lon" :
-                {"type":"string", "size":16 },
+                {"type":"string", "size":32 },
 
             "links" :
                 {"type":"text" },

@@ -103,7 +103,7 @@ class Contact extends Model {
             "activity" :
                 {"type":"string", "size":128 },
             "nickname" :
-                {"type":"string", "size":32 },
+                {"type":"string", "size":64 },
             "tuneartist" :
                 {"type":"string", "size":128 },
             "tunelenght" :

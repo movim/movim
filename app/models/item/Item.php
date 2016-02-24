@@ -23,7 +23,7 @@ class Item extends Model {
             "jid" :
                 {"type":"string", "size":64, "key":true },
             "node" :
-                {"type":"string", "size":64, "key":true },
+                {"type":"string", "size":96, "key":true },
             "creator" :
                 {"type":"string", "size":64 },
             "name" :
