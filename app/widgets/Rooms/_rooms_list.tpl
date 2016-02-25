@@ -1,7 +1,7 @@
 <section class="scroll">
     <h3>{$c->__('chatrooms.users')}</h3>
     <br />
-    <ul class="list middle">
+    <ul class="list">
         {$presence = getPresencesTxt()}
         {loop="$list"}
             <li class="{if="$value->last > 60"} inactive{/if}"
