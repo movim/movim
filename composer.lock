@@ -649,12 +649,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "56a9ab5051f8c81243deba5ee86bc5dcc69ed26e"
+                "reference": "5bb39d8826cc64fad5ee3767f835fd2c11bc930c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/56a9ab5051f8c81243deba5ee86bc5dcc69ed26e",
-                "reference": "56a9ab5051f8c81243deba5ee86bc5dcc69ed26e",
+                "url": "https://api.github.com/repos/movim/modl/zipball/5bb39d8826cc64fad5ee3767f835fd2c11bc930c",
+                "reference": "5bb39d8826cc64fad5ee3767f835fd2c11bc930c",
                 "shasum": ""
             },
             "require": {
@@ -685,7 +685,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2015-11-25 21:29:59"
+            "time": "2016-02-25 21:43:56"
         },
         {
             "name": "movim/moxl",
@@ -693,12 +693,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "cb4c21f8974f97c5cb54fa275050757bd3ba05bd"
+                "reference": "fe347435cee0454d30b51def2ce30759c7711312"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/cb4c21f8974f97c5cb54fa275050757bd3ba05bd",
-                "reference": "cb4c21f8974f97c5cb54fa275050757bd3ba05bd",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/fe347435cee0454d30b51def2ce30759c7711312",
+                "reference": "fe347435cee0454d30b51def2ce30759c7711312",
                 "shasum": ""
             },
             "require": {
@@ -732,7 +732,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-02-22 22:40:18"
+            "time": "2016-02-22 22:42:41"
         },
         {
             "name": "movim/sasl2",
@@ -982,31 +982,26 @@
         },
         {
             "name": "react/cache",
-            "version": "v0.4.0",
+            "version": "v0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/cache.git",
-                "reference": "9882ab5d8b00617baae83c6996f5a34668c11beb"
+                "reference": "558f614891341b1d817a8cdf9a358948ec49638f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/cache/zipball/9882ab5d8b00617baae83c6996f5a34668c11beb",
-                "reference": "9882ab5d8b00617baae83c6996f5a34668c11beb",
+                "url": "https://api.github.com/repos/reactphp/cache/zipball/558f614891341b1d817a8cdf9a358948ec49638f",
+                "reference": "558f614891341b1d817a8cdf9a358948ec49638f",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0",
-                "react/promise": "~2.0"
+                "php": ">=5.3.0",
+                "react/promise": "~2.0|~1.1"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "React\\Cache\\": ""
+                    "React\\Cache\\": "src\\"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1017,7 +1012,7 @@
             "keywords": [
                 "cache"
             ],
-            "time": "2014-02-02 01:11:26"
+            "time": "2016-02-25 18:17:16"
         },
         {
             "name": "react/child-process",
@@ -1025,19 +1020,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "1788d93ac5c63f79a537d524dbb723331df194ee"
+                "reference": "1c8183be536895f072843e47990b827ee873a698"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/1788d93ac5c63f79a537d524dbb723331df194ee",
-                "reference": "1788d93ac5c63f79a537d524dbb723331df194ee",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/1c8183be536895f072843e47990b827ee873a698",
+                "reference": "1c8183be536895f072843e47990b827ee873a698",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "~2.0",
                 "php": ">=5.4.0",
                 "react/event-loop": "0.4.*",
-                "react/stream": "0.4.*"
+                "react/stream": "~0.4.2"
             },
             "require-dev": {
                 "sebastian/environment": "~1.0"
@@ -1061,27 +1056,27 @@
             "keywords": [
                 "process"
             ],
-            "time": "2016-01-19 00:31:28"
+            "time": "2016-02-22 23:59:57"
         },
         {
             "name": "react/dns",
-            "version": "v0.4.1",
+            "version": "v0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "8c5ccc35dcb4b06b70eb9201842363fac7b0f3cf"
+                "reference": "62f6201e487df8add209cc42f05ffca33ee1ba05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/8c5ccc35dcb4b06b70eb9201842363fac7b0f3cf",
-                "reference": "8c5ccc35dcb4b06b70eb9201842363fac7b0f3cf",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/62f6201e487df8add209cc42f05ffca33ee1ba05",
+                "reference": "62f6201e487df8add209cc42f05ffca33ee1ba05",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0",
-                "react/cache": "0.4.*",
-                "react/promise": "~2.0",
-                "react/socket": "0.4.*"
+                "php": ">=5.3.0",
+                "react/cache": "~0.4.0|~0.3.0",
+                "react/promise": "~2.0|~1.1",
+                "react/socket": "~0.4.0|~0.3.0"
             },
             "type": "library",
             "extra": {
@@ -1091,7 +1086,7 @@
             },
             "autoload": {
                 "psr-4": {
-                    "React\\Dns\\": ""
+                    "React\\Dns\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1103,7 +1098,7 @@
                 "dns",
                 "dns-resolver"
             ],
-            "time": "2014-04-12 14:09:10"
+            "time": "2016-02-24 23:45:36"
         },
         {
             "name": "react/event-loop",
