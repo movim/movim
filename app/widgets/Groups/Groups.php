@@ -96,7 +96,10 @@ class Groups extends WidgetBase
 
     function ajaxDisco($server)
     {
-        if(!$this->validateServer($server)) return;
+        if(!$this->validateServer($server)) {
+            Notification::append(null, $this->__('groups.disco_error'));
+            return;
+        }
 
         $r = new Items;
         $r->setTo($server)->request();
@@ -191,9 +194,8 @@ class Groups extends WidgetBase
      */
     private function validateServer($server)
     {
-        $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
-        if(!$validate_server->validate($server)) return false;
-        else return true;
+        $validate_server = Validator::noWhitespace()->alnum('.')->length(6, 40);
+        return ($validate_server->validate($server));
     }
 
     function display()
