@@ -201,16 +201,16 @@
         },
         {
             "name": "forxer/gravatar",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/forxer/gravatar.git",
-                "reference": "5cfccda24b47950945859f11be5cd874e628cef4"
+                "reference": "98a17ed7880b986d03356baa7bc01b0162761c05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/forxer/gravatar/zipball/5cfccda24b47950945859f11be5cd874e628cef4",
-                "reference": "5cfccda24b47950945859f11be5cd874e628cef4",
+                "url": "https://api.github.com/repos/forxer/gravatar/zipball/98a17ed7880b986d03356baa7bc01b0162761c05",
+                "reference": "98a17ed7880b986d03356baa7bc01b0162761c05",
                 "shasum": ""
             },
             "require": {
@@ -237,7 +237,7 @@
             "keywords": [
                 "gravatar"
             ],
-            "time": "2015-06-30 11:28:02"
+            "time": "2016-02-26 21:12:47"
         },
         {
             "name": "guzzle/common",
@@ -693,12 +693,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "fe347435cee0454d30b51def2ce30759c7711312"
+                "reference": "e7d220024bf5d65328b08e5bc8e5c72962cac051"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/fe347435cee0454d30b51def2ce30759c7711312",
-                "reference": "fe347435cee0454d30b51def2ce30759c7711312",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/e7d220024bf5d65328b08e5bc8e5c72962cac051",
+                "reference": "e7d220024bf5d65328b08e5bc8e5c72962cac051",
                 "shasum": ""
             },
             "require": {
@@ -732,7 +732,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-02-22 22:42:41"
+            "time": "2016-02-27 16:23:37"
         },
         {
             "name": "movim/sasl2",
@@ -1145,16 +1145,16 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.2.1",
+            "version": "v2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "3b6fca09c7d56321057fa8867c8dbe1abf648627"
+                "reference": "3aacad8bf10c7d83e6fa2089d413529888c2bedf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/3b6fca09c7d56321057fa8867c8dbe1abf648627",
-                "reference": "3b6fca09c7d56321057fa8867c8dbe1abf648627",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/3aacad8bf10c7d83e6fa2089d413529888c2bedf",
+                "reference": "3aacad8bf10c7d83e6fa2089d413529888c2bedf",
                 "shasum": ""
             },
             "require": {
@@ -1185,7 +1185,7 @@
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2015-07-03 13:48:55"
+            "time": "2016-02-26 19:09:02"
         },
         {
             "name": "react/socket",
@@ -1320,16 +1320,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "0c536453114987b7e0f6f72369d3be0af8dd1109"
+                "reference": "4b2f15920627b93a0a4302e1e6e7db1bab1946e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/0c536453114987b7e0f6f72369d3be0af8dd1109",
-                "reference": "0c536453114987b7e0f6f72369d3be0af8dd1109",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/4b2f15920627b93a0a4302e1e6e7db1bab1946e2",
+                "reference": "4b2f15920627b93a0a4302e1e6e7db1bab1946e2",
                 "shasum": ""
             },
             "require": {
@@ -1380,7 +1380,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2015-11-25 20:03:11"
+            "time": "2016-02-26 15:21:26"
         },
         {
             "name": "symfony/event-dispatcher",
