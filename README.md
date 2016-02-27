@@ -75,7 +75,7 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0124](http://xmpp.org/extensions/xep-0124.html) | Bidirectional-streams Over Synchronous HTTP (BOSH) | Not anymore | |
 | [XEP-0163](http://xmpp.org/extensions/xep-0163.html) | Personal Eventing Protocol | Yes | See XEP-0277 |
 | [XEP-0172](http://xmpp.org/extensions/xep-0172.html) | User Nickname | Yes | Contact Nickname |
-| [XEP-0184](http://xmpp.org/extensions/xep-0184.html) | Message Delivery Receipts | Yes | Handled but not displayed + Send |
+| [XEP-0184](http://xmpp.org/extensions/xep-0184.html) | Message Delivery Receipts | Yes | |
 | [XEP-0199](http://xmpp.org/extensions/xep-0199.html) | XMPP Ping | Yes |  |
 | [XEP-0206](http://xmpp.org/extensions/xep-0206.html) | XMPP Over BOSH | Not anymore | |
 | [XEP-0224](http://xmpp.org/extensions/xep-0224.html) | Attention | Yes |  |
