@@ -1,5 +1,5 @@
 <section>
-    <h3>{$c->__('roster.search')}</h3>
+    <h3>{$c->__('roster.search_pod')}</h3>
     <ul class="list">
         <li>
             <form name="add">

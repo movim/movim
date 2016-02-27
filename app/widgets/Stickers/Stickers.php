@@ -25,7 +25,7 @@ class Stickers extends WidgetBase
         list($c, $ext) = explode('@', $cid);
         list($sh, $key) = explode('+', $c);
 
-        $base64 = base64_encode(file_get_contents(dirname(__FILE__).'/stickers/'.$key.'.png')); 
+        $base64 = base64_encode(file_get_contents(dirname(__FILE__).'/stickers/'.$key.'.png'));
 
         $a = new Answer;
         $a->setTo($to)
@@ -63,7 +63,6 @@ class Stickers extends WidgetBase
         $m->body    = 'A Stickers has been sent using Movim';
 
         $m->published = gmdate('Y-m-d H:i:s');
-        $m->delivered = gmdate('Y-m-d H:i:s');
 
         $session    = \Sessionx::start();
 
@@ -122,6 +121,6 @@ class Stickers extends WidgetBase
 
     function display()
     {
-    
+
     }
 }

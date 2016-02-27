@@ -158,6 +158,10 @@ var Chat = {
                     info.innerHTML = '<i class="zmdi zmdi-edit"></i> ' + info.innerHTML;
                 }
 
+                if(message.delivered) {
+                    info.innerHTML = '<i class="zmdi zmdi-check"></i> ' + info.innerHTML;
+                }
+
                 if(prepend) {
                     Chat.date = message.published;
                     var discussion = document.querySelector('#chat_widget div.contained');
@@ -169,7 +173,8 @@ var Chat = {
                     var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
                     discussion.scrollTop += scrollDiff;
                     Chat.lastScroll = discussion.scrollHeight;
-                } else if(message.edited) {
+                } else if(message.edited
+                       || message.delivered) {
                     var elem = document.getElementById(message.id);
                     if(elem)
                         elem.parentElement.replaceChild(bubble, elem);

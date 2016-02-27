@@ -25,6 +25,7 @@ class Chat extends WidgetBase
         $this->addcss('chat.css');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
+        $this->registerEvent('receipt', 'onMessage');
         $this->registerEvent('mamresult', 'onMessageHistory');
         $this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
@@ -255,7 +256,6 @@ class Chat extends WidgetBase
         } else {
             $m->id      = Uuid::uuid4();
             $m->published = gmdate('Y-m-d H:i:s');
-            $m->delivered = gmdate('Y-m-d H:i:s');
         }
 
         $session    = \Sessionx::start();

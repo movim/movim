@@ -11,7 +11,7 @@ class MessageDAO extends SQL {
                     html            = :html,
                     published       = :published,
                     delivered       = :delivered,
-                    edited          = 1
+                    edited          = :edited
 
                 where session       = :session
                     and id          = :id
@@ -25,6 +25,7 @@ class MessageDAO extends SQL {
                 'id'        => $message->id,
                 'session'   => $message->session,
                 'jidto'     => $message->jidto,
+                'edited'    => $message->edited,
                 'jidfrom'   => $message->jidfrom,
                 'body'      => $message->body,
                 'html'      => $message->html,
@@ -89,6 +90,25 @@ class MessageDAO extends SQL {
         }
 
         return $this->run('Message');
+    }
+
+    function getId($id)
+    {
+        $this->_sql = '
+            select * from message
+            where session = :session
+                and id = :id
+            limit 1';
+
+        $this->prepare(
+            'Message',
+            array(
+                'session' => $this->_user,
+                'id' => $id
+            )
+        );
+
+        return $this->run('Message', 'item');
     }
 
     function getLastItem($to)

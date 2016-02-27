@@ -127,7 +127,6 @@ class Message extends Model {
                 $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
             else
                 $this->published = gmdate('Y-m-d H:i:s');
-            $this->delivered = gmdate('Y-m-d H:i:s');
         }
     }
 
