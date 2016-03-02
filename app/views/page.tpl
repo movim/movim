@@ -49,6 +49,6 @@
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Notification');?>
         <?php $this->content();?>
-        <script type="text/javascript">movim_onload();</script>
+        <script type="text/javascript">if(typeof movim_onload == 'function') { movim_onload(); }</script>
     </body>
 </html>

@@ -81,7 +81,7 @@ class BaseController {
         } else {
             $built = $content->build($this->name);
             $this->page->setContent($built);
-            echo $this->page->build('page');
+            echo $this->page->build('page', $this->public);
         }
     }
 }

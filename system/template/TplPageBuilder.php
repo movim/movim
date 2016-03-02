@@ -3,7 +3,7 @@
 /**
  * @file TplPageBuilder.php
  * This file is part of Movim.
- * 
+ *
  * @brief This class is the templating engine for movim. It also handles themes.
  *
  * @author Timothée jaussoin
@@ -32,7 +32,7 @@ class TplPageBuilder
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
         $this->theme = $config->theme;
-     
+
     }
 
     function viewsPath($file)
@@ -65,11 +65,11 @@ class TplPageBuilder
             . $this->linkFile($file, true) .
             "\" type=\"text/css\" />\n";
     }
-    
+
     /**
      * Actually generates the page from templates.
      */
-    function build($view)
+    function build($view, $public = false)
     {
         $this->_view = $view;
         $template = $this->_view.'.tpl';
@@ -78,8 +78,14 @@ class TplPageBuilder
 
         require($this->viewsPath($template));
         $outp = ob_get_clean();
+
+        $scripts = $this->printCss();
+        if(!$public) {
+            $scripts .= $this->printScripts();
+        }
+
         $outp = str_replace('<%scripts%>',
-                            $this->printCss() . $this->printScripts(),
+                            $scripts,
                             $outp);
 
         return $outp;
