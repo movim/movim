@@ -111,7 +111,7 @@
                                 state = 0;
                                 Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if});
                                 return false;
-                            } else if(event.keyCode == 38) {
+                            } else if(event.keyCode == 38 && this.value == '') {
                                 Chat_ajaxLast(this.dataset.jid);
                             } else if(event.keyCode == 40) {
                                 Chat.clearReplace();

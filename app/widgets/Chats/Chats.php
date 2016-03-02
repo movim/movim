@@ -88,7 +88,8 @@ class Chats extends WidgetBase
         $g->setJid(echapJid($jid));
 
         if(!empty($messages)) {
-            $g->setStart(strtotime($messages[0]->published));
+            // We add a little delay of 10sec to prevent some sync issues
+            $g->setStart(strtotime($messages[0]->published)+10);
         }
 
         $g->request();

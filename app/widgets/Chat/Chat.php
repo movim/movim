@@ -571,7 +571,7 @@ class Chat extends WidgetBase
 
         RPC::call('Chat.setBubbles', $left, $right, $room);
         RPC::call('Chat.appendMessages', $messages);
-        RPC::call('MovimTpl.scrollPanel');
+        RPC::call('MovimTpl.scrollPanel', 100);
     }
 
     function prepareMessage(&$message)
