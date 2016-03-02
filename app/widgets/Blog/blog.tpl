@@ -47,10 +47,11 @@
                 <span class="primary icon gray">
                     <i class="zmdi zmdi-pages"></i>
                 </span>
-                <span class="control icon">
+                <span class="control icon active">
                     <a
                         href="{$c->route('feed', array($server, $node))}"
                         target="_blank"
+                        title="Atom"
                     >
                         <i class="zmdi zmdi-portable-wifi"></i>
                     </a>
