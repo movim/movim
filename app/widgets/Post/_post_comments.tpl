@@ -32,7 +32,7 @@
             </p>
             <p class="all">
                 {if="$value->contentraw"}
-                    {$value->contentraw}
+                    {$value->contentraw|prepareString}
                 {else}
                     {$value->title}
                 {/if}

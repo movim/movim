@@ -99,7 +99,7 @@ function prepareString($string, $large = false, $preview = false) {
     $string = addUrls($string, $preview);
 
     // We remove all the style attributes
-    $string = preg_replace_callback(
+    /*$string = preg_replace_callback(
         '/(<[^>]+) style=".*?"/i', function($match) {
             return $match[1];
         }, $string
@@ -136,7 +136,7 @@ function prepareString($string, $large = false, $preview = false) {
             '#<[/]?ss[^>]*>#is', function ($match) {
                 return '';
             }, ' ' . $string
-    );
+    );*/
 
     // We add some smileys...
     $emoji = MovimEmoji::getInstance();
