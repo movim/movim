@@ -29,12 +29,8 @@ function fatalErrorShutdownHandler()
 
         if (ob_get_contents()) ob_clean();
 
-        ?>
-        <div style="font-family: Arial; text-align: center;">
-            <h2>Oops... something went wrong.</h2>
-            <p>But don't panic. The NSA is on the case.</p>
-        </div>
-        <?php
+        echo "Oops... something went wrong.\n";
+        echo "But don't panic. The NSA is on the case.\n";
 
         if (ob_get_contents()) ob_end_clean();
     }
