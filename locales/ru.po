@@ -27,8 +27,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ConfigData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
@@ -37,25 +35,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Header/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Location/locales.ini
+#. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Login/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeAffiliations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeSubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -64,8 +54,6 @@
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PubsubSubscriptionConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -83,16 +71,12 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/VisioExt/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Visio/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-29 13:42+0200\n"
+"POT-Creation-Date: 2016-03-07 08:50+0200\n"
 "PO-Revision-Date: 2015-10-06 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -525,6 +509,7 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Псевдоним"
 
@@ -657,25 +642,9 @@ msgstr "Пообщаться с контактом"
 msgid "Load more contacts"
 msgstr ""
 
-#: [title]data
-msgid "Data"
-msgstr "Данные"
-
-#: [title]cache
-msgid "Cache"
-msgstr "Кэш"
-
-#: [title]contacts [menu]contacts [page]contacts
-msgid "Contacts"
-msgstr "Контакты"
-
-#: [title]posts [page]posts
-msgid "Posts"
-msgstr "Записи"
-
-#: [title]messages
-msgid "Messages"
-msgstr "Сообщения"
+#: [button]new
+msgid "New conversation"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -723,11 +692,11 @@ msgstr "Использовать оповещения ОС"
 msgid "Custom CSS URL for your blog"
 msgstr ""
 
-#: [general]legend [general]general_title
+#: [general]legend
 msgid "General Informations"
 msgstr "Общая информация"
 
-#: [general]name [public_groups]name [chatrooms]name
+#: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Имя"
 
@@ -763,7 +732,7 @@ msgstr "Другие учётные записи"
 msgid "Is Listening"
 msgstr ""
 
-#: [position]legend [position]position_title
+#: [position]legend
 msgid "Geographic Position"
 msgstr "Географическое расположение"
 
@@ -1023,10 +992,6 @@ msgstr ""
 msgid "This server doesn't exists"
 msgstr ""
 
-#: [roster]search
-msgid "Search in your contacts"
-msgstr ""
-
 #: [hello]chat
 msgid "Go on the Chat page"
 msgstr ""
@@ -1156,26 +1121,6 @@ msgstr "Создан узел подписок"
 msgid "Microblog node created"
 msgstr "Создан узел микроблога"
 
-#: [location]title
-msgid "Location"
-msgstr "Местоположение"
-
-#: [location]wrong_postition
-msgid "Wrong position"
-msgstr "Неправильная позиция"
-
-#: [location]updated
-msgid "Location updated"
-msgstr "Местонахождение обновлено"
-
-#: [location]update
-msgid "Update my position"
-msgstr "Обновить моё местоположение"
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Неверное имя пользователя"
@@ -1233,7 +1178,7 @@ msgstr ""
 msgid "Oops!"
 msgstr "Упс!"
 
-#: [error]default [visio]unknown_error
+#: [error]default
 msgid "Unknown error"
 msgstr "Неизвестная ошибка"
 
@@ -1294,6 +1239,10 @@ msgstr "Соединение установлено"
 msgid "Population"
 msgstr "Население"
 
+#: [login_anonymous]bad_username
+msgid "Bad nickname (between 4 and 40 characters)"
+msgstr ""
+
 #: [menu]empty_title
 msgid "No news yet..."
 msgstr ""
@@ -1314,33 +1263,19 @@ msgstr ""
 msgid "All"
 msgstr "Все"
 
-#: [affiliations]title
-msgid "Manage your members"
-msgstr "Управление позицией пользователей"
+#: [menu]mine
+#, fuzzy
+msgid "My publications"
+msgstr "Публикация контакта"
 
-#: [affiliations]get
-msgid "Get the members"
-msgstr "Получить членство"
+#: [menu]contacts [page]contacts
+msgid "Contacts"
+msgstr "Контакты"
 
-#: [affiliations]saved
-msgid "Affiliations saved"
-msgstr "Принадлежность сохраняется"
-
-#: [subscriptions]title
-msgid "Manage your subscriptions"
-msgstr "Управлять моими подписками"
-
-#: [subscriptions]info
-msgid "Manage the subscriptions"
-msgstr "Управлять подписками"
-
-#: [subscriptions]get
-msgid "Get the subscriptions"
-msgstr "Получить подписки"
-
-#: [subscriptions]saved
-msgid "Subscriptions saved"
-msgstr "Подписки сохранены"
+#: [menu]add_post
+#, fuzzy
+msgid "Add a post"
+msgstr "Добавить комментарий"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1390,6 +1325,11 @@ msgstr ""
 msgid "See %s profile"
 msgstr ""
 
+#: [post]blog_last
+#, fuzzy
+msgid "Public posts from users"
+msgstr "Открытые Группы"
+
 #: [post]public
 msgid "Publish this post publicly?"
 msgstr ""
@@ -1401,6 +1341,10 @@ msgstr "Ваш профиль теперь общедоступен"
 
 #: [post]public_no
 msgid "This post is now private"
+msgstr ""
+
+#: [post]public_url
+msgid "Public URL of this post"
 msgstr ""
 
 #: [post]delete_title [post]delete
@@ -1520,14 +1464,6 @@ msgstr ""
 msgid "Add some text"
 msgstr ""
 
-#: [public_groups]shared
-msgid "Shared"
-msgstr "Общее"
-
-#: [public_groups]added
-msgid "%s has been added to your public groups"
-msgstr "Группа %s была добавлена в список ваших публичных групп"
-
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "Добавить комнату"
@@ -1645,8 +1581,13 @@ msgid "Contact deleted"
 msgstr "Контакт удалён"
 
 #: [roster]search
-msgid "Search"
-msgstr "Поиск"
+msgid "Search in your contacts"
+msgstr ""
+
+#: [roster]search_pod
+#, fuzzy
+msgid "Search a contact"
+msgstr "Общий со всеми контактами"
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1724,11 +1665,6 @@ msgstr "Ваш профиль теперь общедоступен"
 msgid "Your profile is now restricted"
 msgstr "Ваш профиль теперь скрыт"
 
-#: [general]nickname
-msgctxt "[general]nickname"
-msgid "Nickname"
-msgstr ""
-
 #: [accounts]accounts_title
 msgid "Accounts"
 msgstr "Учётные записи"
@@ -1745,11 +1681,6 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr ""
 
-#: [accounts]accounts_nickname
-msgctxt "[accounts]accounts_nickname"
-msgid "Nickname"
-msgstr ""
-
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "Уровень приватности"
@@ -1759,7 +1690,8 @@ msgid "Is this profile public ?"
 msgstr "Этот профиль общедоступен?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+#, fuzzy
+msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
 msgstr "Внимание! Делая свой профиль общедоступным, вы соглашаетесь с тем, что вся нижеперечисленная информация станет доступна всем пользователям Movim и всему Интернету."
 
 #: [save]submit [button]submit
@@ -1769,34 +1701,6 @@ msgstr "Отправить"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Сброс"
-
-#: [visio]hung_up
-msgid "Hung up"
-msgstr "Вызов завершен"
-
-#: [visio]busy
-msgid "Your contact is busy"
-msgstr "Ваш контакт занят"
-
-#: [visio]declined
-msgid "Declined"
-msgstr "Отклонено"
-
-#: [visio]calling
-msgid "Is calling you"
-msgstr "Звонит вам"
-
-#: [visio]call
-msgid "Call"
-msgstr "Вызов"
-
-#: [visio]hang_up
-msgid "Hang up"
-msgstr "Повесить трубку"
-
-#: [visio]connection
-msgid "Connection"
-msgstr "Соединение"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1865,6 +1769,10 @@ msgstr "Имя пользователя"
 #: [page]feed
 msgid "Feed"
 msgstr "Лента"
+
+#: [page]posts
+msgid "Posts"
+msgstr "Записи"
 
 #: [page]gallery
 msgid "Gallery"
@@ -2743,6 +2651,78 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Data"
+#~ msgstr "Данные"
+
+#~ msgid "Cache"
+#~ msgstr "Кэш"
+
+#~ msgid "Messages"
+#~ msgstr "Сообщения"
+
+#~ msgid "Location"
+#~ msgstr "Местоположение"
+
+#~ msgid "Wrong position"
+#~ msgstr "Неправильная позиция"
+
+#~ msgid "Location updated"
+#~ msgstr "Местонахождение обновлено"
+
+#~ msgid "Update my position"
+#~ msgstr "Обновить моё местоположение"
+
+#~ msgid "Manage your members"
+#~ msgstr "Управление позицией пользователей"
+
+#~ msgid "Get the members"
+#~ msgstr "Получить членство"
+
+#~ msgid "Affiliations saved"
+#~ msgstr "Принадлежность сохраняется"
+
+#~ msgid "Manage your subscriptions"
+#~ msgstr "Управлять моими подписками"
+
+#~ msgid "Manage the subscriptions"
+#~ msgstr "Управлять подписками"
+
+#~ msgid "Get the subscriptions"
+#~ msgstr "Получить подписки"
+
+#~ msgid "Subscriptions saved"
+#~ msgstr "Подписки сохранены"
+
+#~ msgid "Shared"
+#~ msgstr "Общее"
+
+#~ msgid "%s has been added to your public groups"
+#~ msgstr "Группа %s была добавлена в список ваших публичных групп"
+
+#~ msgid "Search"
+#~ msgstr "Поиск"
+
+#~ msgid "Hung up"
+#~ msgstr "Вызов завершен"
+
+#~ msgid "Your contact is busy"
+#~ msgstr "Ваш контакт занят"
+
+#~ msgid "Declined"
+#~ msgstr "Отклонено"
+
+#~ msgid "Is calling you"
+#~ msgstr "Звонит вам"
+
+#~ msgid "Call"
+#~ msgstr "Вызов"
+
+#~ msgid "Hang up"
+#~ msgstr "Повесить трубку"
+
+#~ msgid "Connection"
+#~ msgstr "Соединение"
 
 #~ msgid "The URL Rewriting support is currently disabled"
 #~ msgstr "Поддержка URL Rewrite, на текущий момент, отключена"

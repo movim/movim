@@ -1,0 +1,56 @@
+#. extracted from ../app/widgets/Menu/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-07 08:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
+
+#: [menu]empty_title
+msgid "No news yet..."
+msgstr ""
+
+#: [menu]contact_post
+msgid "Contact post"
+msgstr ""
+
+#: [menu]empty
+msgid ""
+"Welcome on your news feed, here you will see all the posts published by your "
+"contacts and in the groups you have subscribed."
+msgstr ""
+
+#: [menu]refresh
+msgid "Refresh all the streams"
+msgstr ""
+
+#: [menu]public
+msgid "This post is public"
+msgstr ""
+
+#: [menu]all
+msgid "All"
+msgstr ""
+
+#: [menu]mine
+msgid "My publications"
+msgstr ""
+
+#: [menu]groups
+msgid "Groups"
+msgstr ""
+
+#: [menu]contacts
+msgid "Contacts"
+msgstr ""
+
+#: [menu]add_post
+msgid "Add a post"
+msgstr ""

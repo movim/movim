@@ -30,8 +30,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ConfigData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
@@ -40,25 +38,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Header/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Location/locales.ini
+#. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Login/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeAffiliations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeSubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -67,8 +57,6 @@
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PubsubSubscriptionConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -86,16 +74,12 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/VisioExt/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Visio/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-29 13:42+0200\n"
+"POT-Creation-Date: 2016-03-07 08:50+0200\n"
 "PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -527,6 +511,7 @@ msgid "Name"
 msgstr "姓名"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "昵称"
 
@@ -659,25 +644,9 @@ msgstr "同联系人聊天"
 msgid "Load more contacts"
 msgstr "加载更多联系人"
 
-#: [title]data
-msgid "Data"
-msgstr "数据"
-
-#: [title]cache
-msgid "Cache"
-msgstr "缓存"
-
-#: [title]contacts [menu]contacts [page]contacts
-msgid "Contacts"
-msgstr "联系人"
-
-#: [title]posts [page]posts
-msgid "Posts"
-msgstr "帖子"
-
-#: [title]messages
-msgid "Messages"
-msgstr "消息"
+#: [button]new
+msgid "New conversation"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -723,11 +692,11 @@ msgstr "使用桌面通知"
 msgid "Custom CSS URL for your blog"
 msgstr ""
 
-#: [general]legend [general]general_title
+#: [general]legend
 msgid "General Informations"
 msgstr "一般信息"
 
-#: [general]name [public_groups]name [chatrooms]name
+#: [general]name [chatrooms]name
 msgid "Name"
 msgstr "姓名"
 
@@ -763,7 +732,7 @@ msgstr "其它帐号"
 msgid "Is Listening"
 msgstr "是在听"
 
-#: [position]legend [position]position_title
+#: [position]legend
 msgid "Geographic Position"
 msgstr "地理位置"
 
@@ -1023,10 +992,6 @@ msgstr "%s 帖子"
 msgid "This server doesn't exists"
 msgstr "此服务器不存在"
 
-#: [roster]search
-msgid "Search in your contacts"
-msgstr "在您的联系人中搜索"
-
 #: [hello]chat
 msgid "Go on the Chat page"
 msgstr "转到“聊天”页面"
@@ -1155,26 +1120,6 @@ msgstr "订阅节点已创建"
 msgid "Microblog node created"
 msgstr "微博节点已创建"
 
-#: [location]title
-msgid "Location"
-msgstr "位置"
-
-#: [location]wrong_postition
-msgid "Wrong position"
-msgstr "错误位置"
-
-#: [location]updated
-msgid "Location updated"
-msgstr "位置已更新"
-
-#: [location]update
-msgid "Update my position"
-msgstr "更新我的位置"
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "不良昵称 (需在4到40字符之间)"
-
 #: [error]username
 msgid "Wrong username"
 msgstr "错误的用户名"
@@ -1232,7 +1177,7 @@ msgstr ""
 msgid "Oops!"
 msgstr "糟糕！Oops!"
 
-#: [error]default [visio]unknown_error
+#: [error]default
 msgid "Unknown error"
 msgstr "未知错误"
 
@@ -1293,6 +1238,10 @@ msgstr "已连接"
 msgid "Population"
 msgstr ""
 
+#: [login_anonymous]bad_username
+msgid "Bad nickname (between 4 and 40 characters)"
+msgstr "不良昵称 (需在4到40字符之间)"
+
 #: [menu]empty_title
 msgid "No news yet..."
 msgstr "尚无新闻"
@@ -1313,33 +1262,19 @@ msgstr ""
 msgid "All"
 msgstr "所有"
 
-#: [affiliations]title
-msgid "Manage your members"
-msgstr "管理你的成员"
+#: [menu]mine
+#, fuzzy
+msgid "My publications"
+msgstr "我的订阅"
 
-#: [affiliations]get
-msgid "Get the members"
-msgstr "添加成员"
+#: [menu]contacts [page]contacts
+msgid "Contacts"
+msgstr "联系人"
 
-#: [affiliations]saved
-msgid "Affiliations saved"
-msgstr "保存设置"
-
-#: [subscriptions]title
-msgid "Manage your subscriptions"
-msgstr "管理您的订阅"
-
-#: [subscriptions]info
-msgid "Manage the subscriptions"
-msgstr "管理此订阅"
-
-#: [subscriptions]get
-msgid "Get the subscriptions"
-msgstr "增加此订阅"
-
-#: [subscriptions]saved
-msgid "Subscriptions saved"
-msgstr "订阅已保存"
+#: [menu]add_post
+#, fuzzy
+msgid "Add a post"
+msgstr "添加评论"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1389,6 +1324,11 @@ msgstr ""
 msgid "See %s profile"
 msgstr "查看 %s 档案"
 
+#: [post]blog_last
+#, fuzzy
+msgid "Public posts from users"
+msgstr "公共分组"
+
 #: [post]public
 msgid "Publish this post publicly?"
 msgstr ""
@@ -1399,6 +1339,10 @@ msgstr ""
 
 #: [post]public_no
 msgid "This post is now private"
+msgstr ""
+
+#: [post]public_url
+msgid "Public URL of this post"
 msgstr ""
 
 #: [post]delete_title [post]delete
@@ -1517,14 +1461,6 @@ msgstr ""
 msgid "Add some text"
 msgstr "添加一些文字"
 
-#: [public_groups]shared
-msgid "Shared"
-msgstr "共享"
-
-#: [public_groups]added
-msgid "%s has been added to your public groups"
-msgstr "%s已经添加到了您的公共分组"
-
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "添加一个聊天室"
@@ -1642,8 +1578,13 @@ msgid "Contact deleted"
 msgstr "联系人已删除"
 
 #: [roster]search
-msgid "Search"
-msgstr "搜索"
+msgid "Search in your contacts"
+msgstr "在您的联系人中搜索"
+
+#: [roster]search_pod
+#, fuzzy
+msgid "Search a contact"
+msgstr "在您的联系人中搜索"
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1721,11 +1662,6 @@ msgstr "您的档案现在是公开的"
 msgid "Your profile is now restricted"
 msgstr "现在您的档案是保密的"
 
-#: [general]nickname
-msgctxt "[general]nickname"
-msgid "Nickname"
-msgstr "昵称"
-
 #: [accounts]accounts_title
 msgid "Accounts"
 msgstr "帐户"
@@ -1742,11 +1678,6 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr "雅虎帐户"
 
-#: [accounts]accounts_nickname
-msgctxt "[accounts]accounts_nickname"
-msgid "Nickname"
-msgstr "昵称"
-
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "隐私等级"
@@ -1756,7 +1687,8 @@ msgid "Is this profile public ?"
 msgstr "公开您的档案么?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+#, fuzzy
+msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
 msgstr "请注意！公开您的档案，上面列出的所有信息将对Movim的所有用户和整个互联网公开"
 
 #: [save]submit [button]submit
@@ -1766,34 +1698,6 @@ msgstr "提交"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "重置"
-
-#: [visio]hung_up
-msgid "Hung up"
-msgstr ""
-
-#: [visio]busy
-msgid "Your contact is busy"
-msgstr "您的联系人正忙"
-
-#: [visio]declined
-msgid "Declined"
-msgstr ""
-
-#: [visio]calling
-msgid "Is calling you"
-msgstr "在呼叫你"
-
-#: [visio]call
-msgid "Call"
-msgstr "呼叫"
-
-#: [visio]hang_up
-msgid "Hang up"
-msgstr "挂断"
-
-#: [visio]connection
-msgid "Connection"
-msgstr "连接"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1862,6 +1766,10 @@ msgstr "登录"
 #: [page]feed
 msgid "Feed"
 msgstr "Feed"
+
+#: [page]posts
+msgid "Posts"
+msgstr "帖子"
 
 #: [page]gallery
 msgid "Gallery"
@@ -2740,3 +2648,77 @@ msgstr "API无法连接, 请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Data"
+#~ msgstr "数据"
+
+#~ msgid "Cache"
+#~ msgstr "缓存"
+
+#~ msgid "Messages"
+#~ msgstr "消息"
+
+#~ msgid "Location"
+#~ msgstr "位置"
+
+#~ msgid "Wrong position"
+#~ msgstr "错误位置"
+
+#~ msgid "Location updated"
+#~ msgstr "位置已更新"
+
+#~ msgid "Update my position"
+#~ msgstr "更新我的位置"
+
+#~ msgid "Manage your members"
+#~ msgstr "管理你的成员"
+
+#~ msgid "Get the members"
+#~ msgstr "添加成员"
+
+#~ msgid "Affiliations saved"
+#~ msgstr "保存设置"
+
+#~ msgid "Manage your subscriptions"
+#~ msgstr "管理您的订阅"
+
+#~ msgid "Manage the subscriptions"
+#~ msgstr "管理此订阅"
+
+#~ msgid "Get the subscriptions"
+#~ msgstr "增加此订阅"
+
+#~ msgid "Subscriptions saved"
+#~ msgstr "订阅已保存"
+
+#~ msgid "Shared"
+#~ msgstr "共享"
+
+#~ msgid "%s has been added to your public groups"
+#~ msgstr "%s已经添加到了您的公共分组"
+
+#~ msgid "Search"
+#~ msgstr "搜索"
+
+#~ msgctxt "[general]nickname"
+#~ msgid "Nickname"
+#~ msgstr "昵称"
+
+#~ msgctxt "[accounts]accounts_nickname"
+#~ msgid "Nickname"
+#~ msgstr "昵称"
+
+#~ msgid "Your contact is busy"
+#~ msgstr "您的联系人正忙"
+
+#~ msgid "Is calling you"
+#~ msgstr "在呼叫你"
+
+#~ msgid "Call"
+#~ msgstr "呼叫"
+
+#~ msgid "Hang up"
+#~ msgstr "挂断"
+
+#~ msgid "Connection"
+#~ msgstr "连接"

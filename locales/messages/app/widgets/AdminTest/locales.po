@@ -1,0 +1,86 @@
+#. extracted from ../app/widgets/AdminTest/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-03-07 08:50+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
+
+#: [admin]compatibility
+msgid "General Overview"
+msgstr ""
+
+#: [compatibility]info
+msgid "Movim has found some issues or things that need to be fixed or improved"
+msgstr ""
+
+#: [compatibility]php1
+msgid "Update your PHP-Version: %s"
+msgstr ""
+
+#: [compatibility]php2
+msgid "Required: 5.3.0"
+msgstr ""
+
+#: [compatibility]curl
+msgid "Install the php5-curl library"
+msgstr ""
+
+#: [compatibility]imagick
+msgid "Install the php5-imagick library"
+msgstr ""
+
+#: [compatibility]gd
+msgid "Install the php5-gd library"
+msgstr ""
+
+#: [compatibility]rights
+msgid "\"Read and write rights for the webserver in Movims root directory\""
+msgstr ""
+
+#: [compatibility]db
+msgid "The database need to be updated, go to the database panel to fix this"
+msgstr ""
+
+#: [compatibility]websocket
+msgid ""
+"WebSocket connection error, check if the Movim Daemon is running and is "
+"reachable"
+msgstr ""
+
+#: [compatibility]xmpp_websocket
+msgid ""
+"XMPP Websocket connection error, please check the validity of the URL given "
+"in the General Configuration"
+msgstr ""
+
+#: [schema]browser
+msgid "Browser"
+msgstr ""
+
+#: [schema]movim
+msgid "Movim Core"
+msgstr ""
+
+#: [schema]daemon
+msgid "Movim Daemon"
+msgstr ""
+
+#: [schema]database
+msgid "Database"
+msgstr ""
+
+#: [schema]api
+msgid "API"
+msgstr ""
+
+#: [schema]xmpp
+msgid "XMPP"
+msgstr ""

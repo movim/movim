@@ -30,8 +30,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ConfigData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
@@ -40,25 +38,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Header/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Location/locales.ini
+#. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Login/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeAffiliations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeSubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -67,8 +57,6 @@
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PubsubSubscriptionConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -86,16 +74,12 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/VisioExt/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Visio/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-29 13:42+0200\n"
+"POT-Creation-Date: 2016-03-07 08:50+0200\n"
 "PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -527,6 +511,7 @@ msgid "Name"
 msgstr "Naam"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "bijnaam"
 
@@ -659,25 +644,9 @@ msgstr "Chat met een contactpersoon"
 msgid "Load more contacts"
 msgstr "Laad meer contactpersonen"
 
-#: [title]data
-msgid "Data"
-msgstr "Data"
-
-#: [title]cache
-msgid "Cache"
-msgstr "Buffer"
-
-#: [title]contacts [menu]contacts [page]contacts
-msgid "Contacts"
-msgstr "Contactpersonen"
-
-#: [title]posts [page]posts
-msgid "Posts"
-msgstr "Berichten"
-
-#: [title]messages
-msgid "Messages"
-msgstr "Berichten"
+#: [button]new
+msgid "New conversation"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -723,11 +692,11 @@ msgstr "Gebruik desktop notificaties"
 msgid "Custom CSS URL for your blog"
 msgstr ""
 
-#: [general]legend [general]general_title
+#: [general]legend
 msgid "General Informations"
 msgstr "Algemene informatie"
 
-#: [general]name [public_groups]name [chatrooms]name
+#: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Naam"
 
@@ -763,7 +732,7 @@ msgstr "Andere Accounts"
 msgid "Is Listening"
 msgstr "luistert"
 
-#: [position]legend [position]position_title
+#: [position]legend
 msgid "Geographic Position"
 msgstr "Geografische Positie"
 
@@ -1023,10 +992,6 @@ msgstr "%s berichten"
 msgid "This server doesn't exists"
 msgstr "Deze server bestaat niet"
 
-#: [roster]search
-msgid "Search in your contacts"
-msgstr "Zoek in je contacten"
-
 #: [hello]chat
 msgid "Go on the Chat page"
 msgstr "Ga naar de Chat pagina"
@@ -1155,26 +1120,6 @@ msgstr ""
 msgid "Microblog node created"
 msgstr ""
 
-#: [location]title
-msgid "Location"
-msgstr "Locatie"
-
-#: [location]wrong_postition
-msgid "Wrong position"
-msgstr "Verkeerde positie"
-
-#: [location]updated
-msgid "Location updated"
-msgstr "Locatie bijgewerkt"
-
-#: [location]update
-msgid "Update my position"
-msgstr "Update mijn positie"
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Foute gebruikersnaam"
@@ -1232,7 +1177,7 @@ msgstr "Onmogelijke login"
 msgid "Oops!"
 msgstr "Oeps!"
 
-#: [error]default [visio]unknown_error
+#: [error]default
 msgid "Unknown error"
 msgstr "Onbekende fout"
 
@@ -1293,6 +1238,10 @@ msgstr "Verbonden"
 msgid "Population"
 msgstr "Populatie"
 
+#: [login_anonymous]bad_username
+msgid "Bad nickname (between 4 and 40 characters)"
+msgstr ""
+
 #: [menu]empty_title
 msgid "No news yet..."
 msgstr "Nog geen nieuws..."
@@ -1313,33 +1262,19 @@ msgstr "Dit bericht is openbaar"
 msgid "All"
 msgstr "Alles"
 
-#: [affiliations]title
-msgid "Manage your members"
-msgstr "Beheer je leden"
+#: [menu]mine
+#, fuzzy
+msgid "My publications"
+msgstr "Mijn abonnementen"
 
-#: [affiliations]get
-msgid "Get the members"
-msgstr "Haal leden op"
+#: [menu]contacts [page]contacts
+msgid "Contacts"
+msgstr "Contactpersonen"
 
-#: [affiliations]saved
-msgid "Affiliations saved"
-msgstr ""
-
-#: [subscriptions]title
-msgid "Manage your subscriptions"
-msgstr "Beheer je aanmeldingen"
-
-#: [subscriptions]info
-msgid "Manage the subscriptions"
-msgstr "Beheer de aanmeldingen"
-
-#: [subscriptions]get
-msgid "Get the subscriptions"
-msgstr "Haal de aanmeldingen op"
-
-#: [subscriptions]saved
-msgid "Subscriptions saved"
-msgstr "Abonnementen opgeslagen"
+#: [menu]add_post
+#, fuzzy
+msgid "Add a post"
+msgstr "Reactie toevoegen"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1389,6 +1324,11 @@ msgstr "dit is een repost van %s"
 msgid "See %s profile"
 msgstr "zie %s profiel"
 
+#: [post]blog_last
+#, fuzzy
+msgid "Public posts from users"
+msgstr "Openbare groepen"
+
 #: [post]public
 msgid "Publish this post publicly?"
 msgstr "Post dit bericht openbaar?"
@@ -1400,6 +1340,11 @@ msgstr ""
 #: [post]public_no
 msgid "This post is now private"
 msgstr ""
+
+#: [post]public_url
+#, fuzzy
+msgid "Public URL of this post"
+msgstr "Post dit bericht openbaar?"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1516,14 +1461,6 @@ msgstr ""
 #: [publish]add_text_label
 msgid "Add some text"
 msgstr "Voeg wat tekst toe"
-
-#: [public_groups]shared
-msgid "Shared"
-msgstr "Gedeeld"
-
-#: [public_groups]added
-msgid "%s has been added to your public groups"
-msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1642,8 +1579,13 @@ msgid "Contact deleted"
 msgstr "Contactpersoon verwijderd"
 
 #: [roster]search
-msgid "Search"
-msgstr "Zoeken"
+msgid "Search in your contacts"
+msgstr "Zoek in je contacten"
+
+#: [roster]search_pod
+#, fuzzy
+msgid "Search a contact"
+msgstr "Zoek in je contacten"
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1721,11 +1663,6 @@ msgstr "Je profiel is nu openbaar"
 msgid "Your profile is now restricted"
 msgstr "Je profiel is nu afgeschermd"
 
-#: [general]nickname
-msgctxt "[general]nickname"
-msgid "Nickname"
-msgstr "Bijnaam"
-
 #: [accounts]accounts_title
 msgid "Accounts"
 msgstr "Accounts"
@@ -1742,11 +1679,6 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr "Yahoo Account"
 
-#: [accounts]accounts_nickname
-msgctxt "[accounts]accounts_nickname"
-msgid "Nickname"
-msgstr "Bijnaam"
-
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "Privacy-Niveau"
@@ -1756,7 +1688,8 @@ msgid "Is this profile public ?"
 msgstr "Is dit profiel openbaar?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+#, fuzzy
+msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
 msgstr "Let op! Door je profiel openbaar te maken zal alle bovenstaande informatie beschikbaar zijn voor alle Movim-gebruikers en het hele internet."
 
 #: [save]submit [button]submit
@@ -1766,34 +1699,6 @@ msgstr "Zenden"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Reset"
-
-#: [visio]hung_up
-msgid "Hung up"
-msgstr "Heeft opgehangen"
-
-#: [visio]busy
-msgid "Your contact is busy"
-msgstr "Je contactpersoon is bezig"
-
-#: [visio]declined
-msgid "Declined"
-msgstr "Afgewezen"
-
-#: [visio]calling
-msgid "Is calling you"
-msgstr "Belt je"
-
-#: [visio]call
-msgid "Call"
-msgstr "Bellen"
-
-#: [visio]hang_up
-msgid "Hang up"
-msgstr "Ophangen"
-
-#: [visio]connection
-msgid "Connection"
-msgstr "Verbinding"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1862,6 +1767,10 @@ msgstr "Inloggen"
 #: [page]feed
 msgid "Feed"
 msgstr "Feed"
+
+#: [page]posts
+msgid "Posts"
+msgstr "Berichten"
 
 #: [page]gallery
 msgid "Gallery"
@@ -2740,3 +2649,77 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "Data"
+#~ msgstr "Data"
+
+#~ msgid "Cache"
+#~ msgstr "Buffer"
+
+#~ msgid "Messages"
+#~ msgstr "Berichten"
+
+#~ msgid "Location"
+#~ msgstr "Locatie"
+
+#~ msgid "Wrong position"
+#~ msgstr "Verkeerde positie"
+
+#~ msgid "Location updated"
+#~ msgstr "Locatie bijgewerkt"
+
+#~ msgid "Update my position"
+#~ msgstr "Update mijn positie"
+
+#~ msgid "Manage your members"
+#~ msgstr "Beheer je leden"
+
+#~ msgid "Get the members"
+#~ msgstr "Haal leden op"
+
+#~ msgid "Manage your subscriptions"
+#~ msgstr "Beheer je aanmeldingen"
+
+#~ msgid "Manage the subscriptions"
+#~ msgstr "Beheer de aanmeldingen"
+
+#~ msgid "Get the subscriptions"
+#~ msgstr "Haal de aanmeldingen op"
+
+#~ msgid "Subscriptions saved"
+#~ msgstr "Abonnementen opgeslagen"
+
+#~ msgid "Shared"
+#~ msgstr "Gedeeld"
+
+#~ msgid "Search"
+#~ msgstr "Zoeken"
+
+#~ msgctxt "[general]nickname"
+#~ msgid "Nickname"
+#~ msgstr "Bijnaam"
+
+#~ msgctxt "[accounts]accounts_nickname"
+#~ msgid "Nickname"
+#~ msgstr "Bijnaam"
+
+#~ msgid "Hung up"
+#~ msgstr "Heeft opgehangen"
+
+#~ msgid "Your contact is busy"
+#~ msgstr "Je contactpersoon is bezig"
+
+#~ msgid "Declined"
+#~ msgstr "Afgewezen"
+
+#~ msgid "Is calling you"
+#~ msgstr "Belt je"
+
+#~ msgid "Call"
+#~ msgstr "Bellen"
+
+#~ msgid "Hang up"
+#~ msgstr "Ophangen"
+
+#~ msgid "Connection"
+#~ msgstr "Verbinding"

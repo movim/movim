@@ -30,8 +30,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ConfigData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
@@ -40,25 +38,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Header/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Location/locales.ini
+#. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Login/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeAffiliations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeSubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -67,8 +57,6 @@
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PubsubSubscriptionConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -86,16 +74,12 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/VisioExt/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Visio/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-29 13:42+0200\n"
+"POT-Creation-Date: 2016-03-07 08:50+0200\n"
 "PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -527,6 +511,7 @@ msgid "Name"
 msgstr "Név"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Becenév"
 
@@ -659,25 +644,9 @@ msgstr ""
 msgid "Load more contacts"
 msgstr "További kapcsolatok betöltése"
 
-#: [title]data
-msgid "Data"
-msgstr "Adat"
-
-#: [title]cache
-msgid "Cache"
-msgstr "Cache"
-
-#: [title]contacts [menu]contacts [page]contacts
-msgid "Contacts"
-msgstr "Kapcsolatok"
-
-#: [title]posts [page]posts
-msgid "Posts"
-msgstr "Megosztások"
-
-#: [title]messages
-msgid "Messages"
-msgstr "Üzenetek"
+#: [button]new
+msgid "New conversation"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -723,11 +692,11 @@ msgstr ""
 msgid "Custom CSS URL for your blog"
 msgstr ""
 
-#: [general]legend [general]general_title
+#: [general]legend
 msgid "General Informations"
 msgstr "Általános információk"
 
-#: [general]name [public_groups]name [chatrooms]name
+#: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Név"
 
@@ -763,7 +732,7 @@ msgstr "Egyéb felhasználói fiókok"
 msgid "Is Listening"
 msgstr "Éppen hallgatja"
 
-#: [position]legend [position]position_title
+#: [position]legend
 msgid "Geographic Position"
 msgstr "Földrajzi helyzet"
 
@@ -1023,10 +992,6 @@ msgstr "%s poszt"
 msgid "This server doesn't exists"
 msgstr "Ez a szerver nem létezik"
 
-#: [roster]search
-msgid "Search in your contacts"
-msgstr "Keresés ismerősök között"
-
 #: [hello]chat
 msgid "Go on the Chat page"
 msgstr "Irány a chat oldal"
@@ -1155,26 +1120,6 @@ msgstr ""
 msgid "Microblog node created"
 msgstr ""
 
-#: [location]title
-msgid "Location"
-msgstr ""
-
-#: [location]wrong_postition
-msgid "Wrong position"
-msgstr ""
-
-#: [location]updated
-msgid "Location updated"
-msgstr "Helyzet frissítve"
-
-#: [location]update
-msgid "Update my position"
-msgstr "Helyzetem frissítése"
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Téves felhasználónév"
@@ -1232,7 +1177,7 @@ msgstr ""
 msgid "Oops!"
 msgstr "Hupsz!"
 
-#: [error]default [visio]unknown_error
+#: [error]default
 msgid "Unknown error"
 msgstr "Ismeretlen hiba"
 
@@ -1293,6 +1238,10 @@ msgstr "Csatlakozva"
 msgid "Population"
 msgstr "Lakosság"
 
+#: [login_anonymous]bad_username
+msgid "Bad nickname (between 4 and 40 characters)"
+msgstr ""
+
 #: [menu]empty_title
 msgid "No news yet..."
 msgstr "Nincsenek még hírek"
@@ -1313,33 +1262,19 @@ msgstr "Ez a megosztás nyílvános"
 msgid "All"
 msgstr "Mind"
 
-#: [affiliations]title
-msgid "Manage your members"
-msgstr ""
+#: [menu]mine
+#, fuzzy
+msgid "My publications"
+msgstr "Feliratkozásaim"
 
-#: [affiliations]get
-msgid "Get the members"
-msgstr "Tagok lekérdezése"
+#: [menu]contacts [page]contacts
+msgid "Contacts"
+msgstr "Kapcsolatok"
 
-#: [affiliations]saved
-msgid "Affiliations saved"
-msgstr ""
-
-#: [subscriptions]title
-msgid "Manage your subscriptions"
-msgstr ""
-
-#: [subscriptions]info
-msgid "Manage the subscriptions"
-msgstr ""
-
-#: [subscriptions]get
-msgid "Get the subscriptions"
-msgstr ""
-
-#: [subscriptions]saved
-msgid "Subscriptions saved"
-msgstr ""
+#: [menu]add_post
+#, fuzzy
+msgid "Add a post"
+msgstr "Hozzászólok"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1389,6 +1324,11 @@ msgstr ""
 msgid "See %s profile"
 msgstr ""
 
+#: [post]blog_last
+#, fuzzy
+msgid "Public posts from users"
+msgstr "Nyilvános csoportok"
+
 #: [post]public
 msgid "Publish this post publicly?"
 msgstr ""
@@ -1399,6 +1339,10 @@ msgstr ""
 
 #: [post]public_no
 msgid "This post is now private"
+msgstr ""
+
+#: [post]public_url
+msgid "Public URL of this post"
 msgstr ""
 
 #: [post]delete_title [post]delete
@@ -1515,14 +1459,6 @@ msgstr ""
 
 #: [publish]add_text_label
 msgid "Add some text"
-msgstr ""
-
-#: [public_groups]shared
-msgid "Shared"
-msgstr "Megosztva"
-
-#: [public_groups]added
-msgid "%s has been added to your public groups"
 msgstr ""
 
 #: [rooms]add
@@ -1642,8 +1578,13 @@ msgid "Contact deleted"
 msgstr "Ismerős törölve"
 
 #: [roster]search
-msgid "Search"
-msgstr "Keresés"
+msgid "Search in your contacts"
+msgstr "Keresés ismerősök között"
+
+#: [roster]search_pod
+#, fuzzy
+msgid "Search a contact"
+msgstr "Keresés ismerősök között"
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1721,11 +1662,6 @@ msgstr "A profilod mostantól nyilvános"
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: [general]nickname
-msgctxt "[general]nickname"
-msgid "Nickname"
-msgstr ""
-
 #: [accounts]accounts_title
 msgid "Accounts"
 msgstr "Felhasználók"
@@ -1742,11 +1678,6 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr "Yahoo Account"
 
-#: [accounts]accounts_nickname
-msgctxt "[accounts]accounts_nickname"
-msgid "Nickname"
-msgstr ""
-
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "Magánszféra szintje"
@@ -1756,7 +1687,7 @@ msgid "Is this profile public ?"
 msgstr "Nyilvános ez a profil?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -1766,34 +1697,6 @@ msgstr "Küldés"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Alapértékek"
-
-#: [visio]hung_up
-msgid "Hung up"
-msgstr ""
-
-#: [visio]busy
-msgid "Your contact is busy"
-msgstr ""
-
-#: [visio]declined
-msgid "Declined"
-msgstr ""
-
-#: [visio]calling
-msgid "Is calling you"
-msgstr "Hív téged"
-
-#: [visio]call
-msgid "Call"
-msgstr "Hívás"
-
-#: [visio]hang_up
-msgid "Hang up"
-msgstr ""
-
-#: [visio]connection
-msgid "Connection"
-msgstr "Kapcsolat"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1862,6 +1765,10 @@ msgstr "Bejelentkezés"
 #: [page]feed
 msgid "Feed"
 msgstr "Hírforrás"
+
+#: [page]posts
+msgid "Posts"
+msgstr "Megosztások"
 
 #: [page]gallery
 msgid "Gallery"
@@ -2740,3 +2647,36 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Data"
+#~ msgstr "Adat"
+
+#~ msgid "Cache"
+#~ msgstr "Cache"
+
+#~ msgid "Messages"
+#~ msgstr "Üzenetek"
+
+#~ msgid "Location updated"
+#~ msgstr "Helyzet frissítve"
+
+#~ msgid "Update my position"
+#~ msgstr "Helyzetem frissítése"
+
+#~ msgid "Get the members"
+#~ msgstr "Tagok lekérdezése"
+
+#~ msgid "Shared"
+#~ msgstr "Megosztva"
+
+#~ msgid "Search"
+#~ msgstr "Keresés"
+
+#~ msgid "Is calling you"
+#~ msgstr "Hív téged"
+
+#~ msgid "Call"
+#~ msgstr "Hívás"
+
+#~ msgid "Connection"
+#~ msgstr "Kapcsolat"

@@ -28,8 +28,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ConfigData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
@@ -38,25 +36,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Header/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Location/locales.ini
+#. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Login/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeAffiliations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeSubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -65,8 +55,6 @@
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PubsubSubscriptionConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -84,16 +72,12 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/VisioExt/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Visio/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-29 13:42+0200\n"
+"POT-Creation-Date: 2016-03-07 08:50+0200\n"
 "PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
@@ -525,6 +509,7 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "שם כינוי"
 
@@ -657,25 +642,9 @@ msgstr "שיח עם איש קשר"
 msgid "Load more contacts"
 msgstr ""
 
-#: [title]data
-msgid "Data"
-msgstr "נתונים"
-
-#: [title]cache
-msgid "Cache"
-msgstr "מטמון"
-
-#: [title]contacts [menu]contacts [page]contacts
-msgid "Contacts"
-msgstr "אנשי קשר"
-
-#: [title]posts [page]posts
-msgid "Posts"
-msgstr "פרסומים"
-
-#: [title]messages
-msgid "Messages"
-msgstr "הודעות"
+#: [button]new
+msgid "New conversation"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -721,11 +690,11 @@ msgstr "השתמש בהתראות שולחן עבודה"
 msgid "Custom CSS URL for your blog"
 msgstr ""
 
-#: [general]legend [general]general_title
+#: [general]legend
 msgid "General Informations"
 msgstr "מידע כללי"
 
-#: [general]name [public_groups]name [chatrooms]name
+#: [general]name [chatrooms]name
 msgid "Name"
 msgstr "שם"
 
@@ -761,7 +730,7 @@ msgstr "חשבונות אחרים"
 msgid "Is Listening"
 msgstr ""
 
-#: [position]legend [position]position_title
+#: [position]legend
 msgid "Geographic Position"
 msgstr "מיקום גאוגרפי"
 
@@ -1021,10 +990,6 @@ msgstr ""
 msgid "This server doesn't exists"
 msgstr ""
 
-#: [roster]search
-msgid "Search in your contacts"
-msgstr ""
-
 #: [hello]chat
 msgid "Go on the Chat page"
 msgstr ""
@@ -1153,26 +1118,6 @@ msgstr "צומת הרשמות נוצר"
 msgid "Microblog node created"
 msgstr "צומת מיקרו-בלוג נוצר"
 
-#: [location]title
-msgid "Location"
-msgstr "מיקום"
-
-#: [location]wrong_postition
-msgid "Wrong position"
-msgstr "מיקום שגוי"
-
-#: [location]updated
-msgid "Location updated"
-msgstr "מיקום עודכן"
-
-#: [location]update
-msgid "Update my position"
-msgstr "עדכן את המיקום שלי"
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
-
 #: [error]username
 msgid "Wrong username"
 msgstr "שם משתמש שגוי"
@@ -1230,7 +1175,7 @@ msgstr ""
 msgid "Oops!"
 msgstr "אופס!"
 
-#: [error]default [visio]unknown_error
+#: [error]default
 msgid "Unknown error"
 msgstr "שגיאה לא ידועה"
 
@@ -1291,6 +1236,10 @@ msgstr "מחובר"
 msgid "Population"
 msgstr "אוכלוסיה"
 
+#: [login_anonymous]bad_username
+msgid "Bad nickname (between 4 and 40 characters)"
+msgstr ""
+
 #: [menu]empty_title
 msgid "No news yet..."
 msgstr ""
@@ -1311,33 +1260,19 @@ msgstr ""
 msgid "All"
 msgstr "הכל"
 
-#: [affiliations]title
-msgid "Manage your members"
-msgstr "נהל את חבריך"
+#: [menu]mine
+#, fuzzy
+msgid "My publications"
+msgstr "פרסום איש קשר"
 
-#: [affiliations]get
-msgid "Get the members"
-msgstr "השג את החברים"
+#: [menu]contacts [page]contacts
+msgid "Contacts"
+msgstr "אנשי קשר"
 
-#: [affiliations]saved
-msgid "Affiliations saved"
-msgstr "סינופים נשמרו"
-
-#: [subscriptions]title
-msgid "Manage your subscriptions"
-msgstr "נהל את ההרשמות שלך"
-
-#: [subscriptions]info
-msgid "Manage the subscriptions"
-msgstr "נהל את ההרשמות"
-
-#: [subscriptions]get
-msgid "Get the subscriptions"
-msgstr "השג את ההרשמות"
-
-#: [subscriptions]saved
-msgid "Subscriptions saved"
-msgstr "הרשמות נשמרו"
+#: [menu]add_post
+#, fuzzy
+msgid "Add a post"
+msgstr "הוסף תגובה"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1387,6 +1322,11 @@ msgstr ""
 msgid "See %s profile"
 msgstr ""
 
+#: [post]blog_last
+#, fuzzy
+msgid "Public posts from users"
+msgstr "קבוצות פומביות"
+
 #: [post]public
 msgid "Publish this post publicly?"
 msgstr ""
@@ -1397,6 +1337,10 @@ msgstr ""
 
 #: [post]public_no
 msgid "This post is now private"
+msgstr ""
+
+#: [post]public_url
+msgid "Public URL of this post"
 msgstr ""
 
 #: [post]delete_title [post]delete
@@ -1515,14 +1459,6 @@ msgstr ""
 msgid "Add some text"
 msgstr ""
 
-#: [public_groups]shared
-msgid "Shared"
-msgstr "משותף"
-
-#: [public_groups]added
-msgid "%s has been added to your public groups"
-msgstr "%s התווסף אל הקבוצה הפומבית שלך"
-
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "הוסף חדר שיחה"
@@ -1640,8 +1576,13 @@ msgid "Contact deleted"
 msgstr "איש קשר נמחק"
 
 #: [roster]search
-msgid "Search"
-msgstr "חיפוש"
+msgid "Search in your contacts"
+msgstr ""
+
+#: [roster]search_pod
+#, fuzzy
+msgid "Search a contact"
+msgstr "שותף עם כל אנשי הקשר"
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1719,11 +1660,6 @@ msgstr "הדיוקן שלך הינו פומבי כעת"
 msgid "Your profile is now restricted"
 msgstr "הדיוקן שלך הינו מוגבל כעת"
 
-#: [general]nickname
-msgctxt "[general]nickname"
-msgid "Nickname"
-msgstr ""
-
 #: [accounts]accounts_title
 msgid "Accounts"
 msgstr "חשבונות"
@@ -1740,11 +1676,6 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr ""
 
-#: [accounts]accounts_nickname
-msgctxt "[accounts]accounts_nickname"
-msgid "Nickname"
-msgstr ""
-
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "רמת פרטיות"
@@ -1754,7 +1685,8 @@ msgid "Is this profile public ?"
 msgstr "האם דיוקן זה הינו פומבי ?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+#, fuzzy
+msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
 msgstr "לצומת לבך ! בהופכך את דיוקנך לפומבי, כל המידע שמנוי מעלה יהיה זמין לכל המשתמשים של Movim וגם בכל המרשתת."
 
 #: [save]submit [button]submit
@@ -1764,34 +1696,6 @@ msgstr "שלח"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "אפס"
-
-#: [visio]hung_up
-msgid "Hung up"
-msgstr "נותקה"
-
-#: [visio]busy
-msgid "Your contact is busy"
-msgstr "איש הקשר שלך הינו עסוק"
-
-#: [visio]declined
-msgid "Declined"
-msgstr "נדחתה"
-
-#: [visio]calling
-msgid "Is calling you"
-msgstr "מתקשר אליך"
-
-#: [visio]call
-msgid "Call"
-msgstr "צור קשר"
-
-#: [visio]hang_up
-msgid "Hang up"
-msgstr "נתק"
-
-#: [visio]connection
-msgid "Connection"
-msgstr "חיבור"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1860,6 +1764,10 @@ msgstr "כניסה"
 #: [page]feed
 msgid "Feed"
 msgstr "ערוץ"
+
+#: [page]posts
+msgid "Posts"
+msgstr "פרסומים"
 
 #: [page]gallery
 msgid "Gallery"
@@ -2738,3 +2646,75 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Data"
+#~ msgstr "נתונים"
+
+#~ msgid "Cache"
+#~ msgstr "מטמון"
+
+#~ msgid "Messages"
+#~ msgstr "הודעות"
+
+#~ msgid "Location"
+#~ msgstr "מיקום"
+
+#~ msgid "Wrong position"
+#~ msgstr "מיקום שגוי"
+
+#~ msgid "Location updated"
+#~ msgstr "מיקום עודכן"
+
+#~ msgid "Update my position"
+#~ msgstr "עדכן את המיקום שלי"
+
+#~ msgid "Manage your members"
+#~ msgstr "נהל את חבריך"
+
+#~ msgid "Get the members"
+#~ msgstr "השג את החברים"
+
+#~ msgid "Affiliations saved"
+#~ msgstr "סינופים נשמרו"
+
+#~ msgid "Manage your subscriptions"
+#~ msgstr "נהל את ההרשמות שלך"
+
+#~ msgid "Manage the subscriptions"
+#~ msgstr "נהל את ההרשמות"
+
+#~ msgid "Get the subscriptions"
+#~ msgstr "השג את ההרשמות"
+
+#~ msgid "Subscriptions saved"
+#~ msgstr "הרשמות נשמרו"
+
+#~ msgid "Shared"
+#~ msgstr "משותף"
+
+#~ msgid "%s has been added to your public groups"
+#~ msgstr "%s התווסף אל הקבוצה הפומבית שלך"
+
+#~ msgid "Search"
+#~ msgstr "חיפוש"
+
+#~ msgid "Hung up"
+#~ msgstr "נותקה"
+
+#~ msgid "Your contact is busy"
+#~ msgstr "איש הקשר שלך הינו עסוק"
+
+#~ msgid "Declined"
+#~ msgstr "נדחתה"
+
+#~ msgid "Is calling you"
+#~ msgstr "מתקשר אליך"
+
+#~ msgid "Call"
+#~ msgstr "צור קשר"
+
+#~ msgid "Hang up"
+#~ msgstr "נתק"
+
+#~ msgid "Connection"
+#~ msgstr "חיבור"

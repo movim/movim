@@ -29,8 +29,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/ConfigData/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
@@ -39,25 +37,17 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Header/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Location/locales.ini
+#. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Login/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeAffiliations/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/NodeSubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -66,8 +56,6 @@
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/PubsubSubscriptionConfig/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -85,16 +73,12 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/VisioExt/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Visio/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-29 13:42+0200\n"
+"POT-Creation-Date: 2016-03-07 08:50+0200\n"
 "PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
@@ -526,6 +510,7 @@ msgid "Name"
 msgstr "Nome"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Nickname"
 
@@ -658,25 +643,9 @@ msgstr "Chatta con un contatto"
 msgid "Load more contacts"
 msgstr "Importa più contatti"
 
-#: [title]data
-msgid "Data"
+#: [button]new
+msgid "New conversation"
 msgstr ""
-
-#: [title]cache
-msgid "Cache"
-msgstr "Cache"
-
-#: [title]contacts [menu]contacts [page]contacts
-msgid "Contacts"
-msgstr "Contatti"
-
-#: [title]posts [page]posts
-msgid "Posts"
-msgstr "Articoli"
-
-#: [title]messages
-msgid "Messages"
-msgstr "Messaggi"
 
 #: [config]general
 msgid "General"
@@ -722,11 +691,11 @@ msgstr "Usa notifiche desktop"
 msgid "Custom CSS URL for your blog"
 msgstr ""
 
-#: [general]legend [general]general_title
+#: [general]legend
 msgid "General Informations"
 msgstr "Informazioni Generali"
 
-#: [general]name [public_groups]name [chatrooms]name
+#: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nome"
 
@@ -762,7 +731,7 @@ msgstr "Altri account"
 msgid "Is Listening"
 msgstr "Sta ascoltando"
 
-#: [position]legend [position]position_title
+#: [position]legend
 msgid "Geographic Position"
 msgstr "Posizione geografica"
 
@@ -1022,10 +991,6 @@ msgstr "%s articoli"
 msgid "This server doesn't exists"
 msgstr "Questo server non esiste"
 
-#: [roster]search
-msgid "Search in your contacts"
-msgstr "Cerca nei tuoi contatti"
-
 #: [hello]chat
 msgid "Go on the Chat page"
 msgstr "Accedi alla pagina della chat"
@@ -1154,26 +1119,6 @@ msgstr "Nodo sottoscrizione creato"
 msgid "Microblog node created"
 msgstr "Nodo Microblog creato"
 
-#: [location]title
-msgid "Location"
-msgstr "Posizione"
-
-#: [location]wrong_postition
-msgid "Wrong position"
-msgstr "Posizione errata"
-
-#: [location]updated
-msgid "Location updated"
-msgstr "Posizione aggiornata"
-
-#: [location]update
-msgid "Update my position"
-msgstr "Aggiorna la mia posizione"
-
-#: [login_anonymous]bad_username
-msgid "Bad nickname (between 4 and 40 characters)"
-msgstr "Nickname non valido (tra 4 e 40 caratteri)"
-
 #: [error]username
 msgid "Wrong username"
 msgstr "Nome utente errato"
@@ -1231,7 +1176,7 @@ msgstr "Impossibile accedere"
 msgid "Oops!"
 msgstr "Oops!"
 
-#: [error]default [visio]unknown_error
+#: [error]default
 msgid "Unknown error"
 msgstr "Errore sconosciuto"
 
@@ -1292,6 +1237,10 @@ msgstr "Connesso"
 msgid "Population"
 msgstr ""
 
+#: [login_anonymous]bad_username
+msgid "Bad nickname (between 4 and 40 characters)"
+msgstr "Nickname non valido (tra 4 e 40 caratteri)"
+
 #: [menu]empty_title
 msgid "No news yet..."
 msgstr "Ancora alcuna notizia..."
@@ -1312,33 +1261,18 @@ msgstr "Questo articolo è pubblico"
 msgid "All"
 msgstr "Tutti"
 
-#: [affiliations]title
-msgid "Manage your members"
+#: [menu]mine
+msgid "My publications"
 msgstr ""
 
-#: [affiliations]get
-msgid "Get the members"
-msgstr ""
+#: [menu]contacts [page]contacts
+msgid "Contacts"
+msgstr "Contatti"
 
-#: [affiliations]saved
-msgid "Affiliations saved"
-msgstr "Affiliazioni salvati"
-
-#: [subscriptions]title
-msgid "Manage your subscriptions"
-msgstr ""
-
-#: [subscriptions]info
-msgid "Manage the subscriptions"
-msgstr ""
-
-#: [subscriptions]get
-msgid "Get the subscriptions"
-msgstr ""
-
-#: [subscriptions]saved
-msgid "Subscriptions saved"
-msgstr ""
+#: [menu]add_post
+#, fuzzy
+msgid "Add a post"
+msgstr "Aggiungi un commento"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1388,6 +1322,11 @@ msgstr ""
 msgid "See %s profile"
 msgstr "Guarda il profilo %s"
 
+#: [post]blog_last
+#, fuzzy
+msgid "Public posts from users"
+msgstr "Gruppi pubblici"
+
 #: [post]public
 msgid "Publish this post publicly?"
 msgstr ""
@@ -1398,6 +1337,10 @@ msgstr ""
 
 #: [post]public_no
 msgid "This post is now private"
+msgstr ""
+
+#: [post]public_url
+msgid "Public URL of this post"
 msgstr ""
 
 #: [post]delete_title [post]delete
@@ -1514,14 +1457,6 @@ msgstr ""
 
 #: [publish]add_text_label
 msgid "Add some text"
-msgstr ""
-
-#: [public_groups]shared
-msgid "Shared"
-msgstr ""
-
-#: [public_groups]added
-msgid "%s has been added to your public groups"
 msgstr ""
 
 #: [rooms]add
@@ -1641,8 +1576,13 @@ msgid "Contact deleted"
 msgstr "Contatto cancellato"
 
 #: [roster]search
-msgid "Search"
-msgstr ""
+msgid "Search in your contacts"
+msgstr "Cerca nei tuoi contatti"
+
+#: [roster]search_pod
+#, fuzzy
+msgid "Search a contact"
+msgstr "Cerca nei tuoi contatti"
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1720,11 +1660,6 @@ msgstr "Il tuo profilo è ora pubblico"
 msgid "Your profile is now restricted"
 msgstr "Il tuo profilo ha ora restrizioni"
 
-#: [general]nickname
-msgctxt "[general]nickname"
-msgid "Nickname"
-msgstr "Nickname"
-
 #: [accounts]accounts_title
 msgid "Accounts"
 msgstr "Account"
@@ -1741,11 +1676,6 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr "Account Yahoo"
 
-#: [accounts]accounts_nickname
-msgctxt "[accounts]accounts_nickname"
-msgid "Nickname"
-msgstr "Nickname"
-
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "Livello di privacy"
@@ -1755,7 +1685,7 @@ msgid "Is this profile public ?"
 msgstr "Questo profilo è pubblico?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed above will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -1765,34 +1695,6 @@ msgstr "Invia"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Resettare"
-
-#: [visio]hung_up
-msgid "Hung up"
-msgstr ""
-
-#: [visio]busy
-msgid "Your contact is busy"
-msgstr "Il tuo contatto è impegnato"
-
-#: [visio]declined
-msgid "Declined"
-msgstr ""
-
-#: [visio]calling
-msgid "Is calling you"
-msgstr ""
-
-#: [visio]call
-msgid "Call"
-msgstr "Chiama"
-
-#: [visio]hang_up
-msgid "Hang up"
-msgstr ""
-
-#: [visio]connection
-msgid "Connection"
-msgstr "Connessione"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1861,6 +1763,10 @@ msgstr "Accedi"
 #: [page]feed
 msgid "Feed"
 msgstr "Feed"
+
+#: [page]posts
+msgid "Posts"
+msgstr "Articoli"
 
 #: [page]gallery
 msgid "Gallery"
@@ -2739,3 +2645,41 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
+
+#~ msgid "Cache"
+#~ msgstr "Cache"
+
+#~ msgid "Messages"
+#~ msgstr "Messaggi"
+
+#~ msgid "Location"
+#~ msgstr "Posizione"
+
+#~ msgid "Wrong position"
+#~ msgstr "Posizione errata"
+
+#~ msgid "Location updated"
+#~ msgstr "Posizione aggiornata"
+
+#~ msgid "Update my position"
+#~ msgstr "Aggiorna la mia posizione"
+
+#~ msgid "Affiliations saved"
+#~ msgstr "Affiliazioni salvati"
+
+#~ msgctxt "[general]nickname"
+#~ msgid "Nickname"
+#~ msgstr "Nickname"
+
+#~ msgctxt "[accounts]accounts_nickname"
+#~ msgid "Nickname"
+#~ msgstr "Nickname"
+
+#~ msgid "Your contact is busy"
+#~ msgstr "Il tuo contatto è impegnato"
+
+#~ msgid "Call"
+#~ msgstr "Chiama"
+
+#~ msgid "Connection"
+#~ msgstr "Connessione"
