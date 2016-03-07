@@ -119,6 +119,7 @@ class Stickers extends WidgetBase
 
         $view = $this->tpl();
         $view->assign('jid', $to);
+        $view->assign('icon', $this->respath('stickers').'/icon.png');
         Dialog::fill($view->draw('_stickers_smiley', true));
     }
 
