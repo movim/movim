@@ -110,7 +110,7 @@ class ConfigDAO extends SQL {
         $this->_sql = '
             select * from config';
 
-        $this->prepare('Config', array());
+        $this->prepare('Config');
 
         $conf = $this->run('Config', 'item');
 

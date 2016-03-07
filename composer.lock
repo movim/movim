@@ -61,12 +61,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "021a7aed6f0dff5ab3f2fb846b671776e4f16d27"
+                "reference": "a79b08b6351230cb6cc7e1003814d46e69434c97"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/021a7aed6f0dff5ab3f2fb846b671776e4f16d27",
-                "reference": "021a7aed6f0dff5ab3f2fb846b671776e4f16d27",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/a79b08b6351230cb6cc7e1003814d46e69434c97",
+                "reference": "a79b08b6351230cb6cc7e1003814d46e69434c97",
                 "shasum": ""
             },
             "require": {
@@ -107,7 +107,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-03-02 13:03:45"
+            "time": "2016-03-03 22:47:10"
         },
         {
             "name": "evenement/evenement",
@@ -281,6 +281,7 @@
                 "event",
                 "exception"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -338,6 +339,7 @@
                 "http",
                 "http client"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -382,6 +384,7 @@
                 "message",
                 "url"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-02-05 18:29:46"
         },
         {
@@ -435,6 +438,7 @@
                 "component",
                 "stream"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-05-01 21:36:02"
         },
         {
@@ -530,12 +534,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "156e56ee036505ec637d761ee62dc425d807183c"
+                "reference": "c4aded4071de3f6dce929bbcd27e6bc9a595ee9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/156e56ee036505ec637d761ee62dc425d807183c",
-                "reference": "156e56ee036505ec637d761ee62dc425d807183c",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/c4aded4071de3f6dce929bbcd27e6bc9a595ee9f",
+                "reference": "c4aded4071de3f6dce929bbcd27e6bc9a595ee9f",
                 "shasum": ""
             },
             "require": {
@@ -573,7 +577,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2015-12-24 01:37:31"
+            "time": "2016-03-04 22:37:21"
         },
         {
             "name": "monolog/monolog",
@@ -649,12 +653,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "9970773dbf73b1a32fdf398e1aa73ad1dd0b3449"
+                "reference": "e42a7df6aefeec8626337de62b1893dc43bdbf28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/9970773dbf73b1a32fdf398e1aa73ad1dd0b3449",
-                "reference": "9970773dbf73b1a32fdf398e1aa73ad1dd0b3449",
+                "url": "https://api.github.com/repos/movim/modl/zipball/e42a7df6aefeec8626337de62b1893dc43bdbf28",
+                "reference": "e42a7df6aefeec8626337de62b1893dc43bdbf28",
                 "shasum": ""
             },
             "require": {
@@ -685,7 +689,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2016-02-25 22:09:39"
+            "time": "2016-03-07 21:07:09"
         },
         {
             "name": "movim/moxl",
