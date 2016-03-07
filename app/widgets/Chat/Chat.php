@@ -587,7 +587,7 @@ class Chat extends WidgetBase
             $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
         }
 
-        $message->publishedPrepared = prepareDate(strtotime($message->published));
+        $message->publishedPrepared = prepareDate(strtotime($message->published), true, true);
 
         return $message;
     }

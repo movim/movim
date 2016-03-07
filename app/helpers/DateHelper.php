@@ -39,26 +39,26 @@ function getTimezoneCorrection() {
     return $timezones[date_default_timezone_get()];
 }
 /**
- * Return a human-readable date 
+ * Return a human-readable date
  *
  * @param timestamp $string
  * @return string
  */
-function prepareDate($time, $hours = true) {
+function prepareDate($time, $hours = true, $compact = false) {
     // We had the server timezone
     $time = $time + TIMEZONE_OFFSET;
-    
+
     $t = $time ? $time : time();
 
     $date = '';
-    
+
     $reldays = ((time() - $t)-(time()%86400))/86400;
     // if $time is within a week
     if($reldays < 7 && $reldays >= -2){
         //if $time is today or yesterday
-        if($reldays < -1) { 
+        if($reldays < -1) {
             $date = __('date.tomorrow');
-        } else if ($reldays <= 0) { 
+        } else if ($reldays <= 0) {
             //$date = __('date.today');
         } else if ($reldays <= 1) {
             $date = __('date.yesterday');
@@ -67,10 +67,16 @@ function prepareDate($time, $hours = true) {
         else {
             $date = __('date.ago', ceil($reldays));
         }
-    } 
+    }
     //else print full date
     else {
-        $date = __('day.'.strtolower(date('l', $t))) .', '.date('j', $t).' '.__('month.'.strtolower(date('F', $t))) ;
+        $date = '';
+
+        if(!$compact)
+            $date .= __('day.'.strtolower(date('l', $t))) . ', ';
+
+        $date .= date('j', $t).' '.__('month.'.strtolower(date('F', $t)));
+
         //if over 6months print year
         if (abs($reldays) > 182)
             $date .= date(', Y', $t);

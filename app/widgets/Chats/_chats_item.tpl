@@ -32,7 +32,7 @@
     {/if}
     <span data-key="chat|{$contact->jid}" class="counter bottom"></span>
     <p class="normal">
-        <span class="info">{$message->published|strtotime|prepareDate}</span>
+        <span class="info">{$message->published|strtotime|prepareDate:true,true}</span>
         {$contact->getTrueName()}
     </p>
     {if="isset($status)"}
