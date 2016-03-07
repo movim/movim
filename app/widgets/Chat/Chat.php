@@ -176,23 +176,6 @@ class Chat extends WidgetBase
     }
 
     /**
-     * @brief Show the smiley list
-     */
-    function ajaxSmiley()
-    {
-        $view = $this->tpl();
-        Dialog::fill($view->draw('_chat_smiley', true));
-    }
-
-    /**
-     * @brief Get the path of a emoji
-     */
-    function ajaxSmileyGet($string)
-    {
-        return prepareString($string, true);
-    }
-
-    /**
      * @brief Get a discussion
      * @param string $jid
      */

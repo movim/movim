@@ -512,7 +512,7 @@ main ul li .control > i {
     position: relative;
 }
 
-.dialog > section > *:first-child {
+.dialog > section > *:first-child:not(ul) {
     margin-top: 2rem;
 }
 

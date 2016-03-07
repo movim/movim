@@ -60,7 +60,7 @@ ul.list li > .primary.small {
     margin-top: -1.5rem;
 }
 
-ul.list > li > *:not(.counter):not(span):not(.bubble):not(.button),
+ul.list > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button),
 ul.list li.subheader p {
     width: 100%;
     box-sizing: border-box;

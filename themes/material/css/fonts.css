@@ -36,6 +36,13 @@
     margin-bottom: -0.3rem;
 }
 
+.emoji.medium {
+    width: auto;
+    height: 3.5rem;
+    margin: 0;
+    margin-bottom: -1.2rem;
+}
+
 .emoji.large {
     width: 5rem;
     height: 5rem;

@@ -69,6 +69,12 @@
     display: block;
 }
 
+
+#chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr) {
+    max-height: 17rem;
+}
+
+
 #chat_widget li.room {
     padding: 0.25rem 0;
     padding-right: 2rem;

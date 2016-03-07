@@ -29,6 +29,15 @@
     margin-bottom: 0;
 }
 
+.flex.third {
+    flex-flow: row wrap;
+}
+
+.flex.third .block:not(.large) {
+    flex: 1 33.33%;
+    max-width: 33.33%;
+}
+
 @media screen and (max-width: 1024px) {
     .flex.card .block,
     .flex .block {

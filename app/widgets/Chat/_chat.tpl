@@ -91,7 +91,7 @@
 <div class="chat_box">
     <ul class="list thin">
         <li>
-            <span class="primary icon gray emojis_open" onclick="Chat_ajaxSmiley()">
+            <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
             <span class="control icon gray" data-jid="{$jid}" onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">

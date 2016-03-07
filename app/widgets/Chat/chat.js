@@ -5,12 +5,6 @@ var Chat = {
     date: null,
     lastScroll: null,
     edit: false,
-    addSmiley: function(element) {
-        var n = document.querySelector('#chat_textarea');
-        n.value = n.value + element.dataset.emoji;
-        n.focus();
-        Dialog.clear();
-    },
     sendMessage: function(jid, muc)
     {
         var n = document.querySelector('#chat_textarea');
