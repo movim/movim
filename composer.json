@@ -19,7 +19,8 @@
 
         "cboden/ratchet": "0.3.*",
         "react/child-process": "0.5.*@dev",
-        "react/socket-client": "0.4.3",
+        "react/socket-client": "0.4.*",
+        "react/stream": "0.4.3",
 
         "forxer/Gravatar": "~1.2",
         "respect/validation": "1.0.*",

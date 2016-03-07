@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "36f305c1b49f9700c3c90de31d9ad5c6",
-    "content-hash": "cfb38697ddf63cba689ff1f94487d2b5",
+    "hash": "36f4b7c7661b2b45e50613dfd5980089",
+    "content-hash": "8232981501a04fa0304178f8138fd613",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -649,12 +649,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "9970773dbf73b1a32fdf398e1aa73ad1dd0b3449"
+                "reference": "e42a7df6aefeec8626337de62b1893dc43bdbf28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/9970773dbf73b1a32fdf398e1aa73ad1dd0b3449",
-                "reference": "9970773dbf73b1a32fdf398e1aa73ad1dd0b3449",
+                "url": "https://api.github.com/repos/movim/modl/zipball/e42a7df6aefeec8626337de62b1893dc43bdbf28",
+                "reference": "e42a7df6aefeec8626337de62b1893dc43bdbf28",
                 "shasum": ""
             },
             "require": {
@@ -685,7 +685,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2016-02-25 22:09:39"
+            "time": "2016-03-07 21:07:09"
         },
         {
             "name": "movim/moxl",
@@ -1230,16 +1230,16 @@
         },
         {
             "name": "react/socket-client",
-            "version": "v0.4.3",
+            "version": "v0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "1375dac21b1881cba31c2b38f412dc039566673f"
+                "reference": "3ca814d7e03e2a5bffeaa5773423107957a8aece"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/1375dac21b1881cba31c2b38f412dc039566673f",
-                "reference": "1375dac21b1881cba31c2b38f412dc039566673f",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/3ca814d7e03e2a5bffeaa5773423107957a8aece",
+                "reference": "3ca814d7e03e2a5bffeaa5773423107957a8aece",
                 "shasum": ""
             },
             "require": {
@@ -1268,7 +1268,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2015-03-20 15:24:06"
+            "time": "2015-09-23 22:40:04"
         },
         {
             "name": "react/stream",
