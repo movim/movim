@@ -13,10 +13,7 @@ $booted = $bootstrap->boot();
 
 $loop = React\EventLoop\Factory::create();
 
-$dnsResolverFactory = new React\Dns\Resolver\Factory();
-$dns = $dnsResolverFactory->createCached('8.8.8.8', $loop);
-
-$connector = new React\SocketClient\Connector($loop, $dns);
+$connector = new React\SocketClient\TcpConnector($loop);
 $stdin = new React\Stream\Stream(STDIN, $loop);
 
 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets before : ".\sizeToCleanSize(memory_get_usage())."\n");
@@ -75,7 +72,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                     if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
                     if(isset($dns->port) && $dns->port != null) $port = $dns->port;
                     #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-                    $connector->create($msg->host, $port)->then($xmpp_behaviour);
+                    $connector->create(gethostbyname($msg->host), $port)->then($xmpp_behaviour);
                 }
             } else {
                 return;
