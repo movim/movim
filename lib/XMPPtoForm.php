@@ -55,10 +55,10 @@ class XMPPtoForm{
                             $this->outHiddeninput($element);
                             break;
                         case "list-multi":
-                            $this->outList($element, "multiple");
+                            //$this->outList($element);
                             break;
                         case "list-single":
-                            $this->outList($element, "");
+                            $this->outList($element);
                             break;
                         case "jid-multi":
                             $this->outInput($element, "email", "multiple");
@@ -255,7 +255,7 @@ class XMPPtoForm{
         $this->html->appendChild($input);
     }
 
-    private function outList($s, $multiple){
+    private function outList($s){
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
 

@@ -145,7 +145,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 $restart = true;
             }
 
-            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
             #fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");
 
             \Moxl\API::clear();
