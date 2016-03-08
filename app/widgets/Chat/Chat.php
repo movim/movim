@@ -326,7 +326,8 @@ class Chat extends WidgetBase
         $md = new \Modl\MessageDAO;
         $m = $md->getLastItem($to);
 
-        RPC::call('Chat.setTextarea', $m->body);
+        if(!isset($m->sticker))
+            RPC::call('Chat.setTextarea', $m->body);
     }
 
     /**
