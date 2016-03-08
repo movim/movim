@@ -62,7 +62,7 @@ class Stickers extends WidgetBase
         $m->jidto   = echapJid($to);
         $m->jidfrom = $this->user->getLogin();
         $m->sticker = $key;
-        $m->body    = 'A Stickers has been sent using Movim';
+        $m->body    = $this->__('sticker.sent');
 
         $m->published = gmdate('Y-m-d H:i:s');
 

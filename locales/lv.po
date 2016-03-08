@@ -66,6 +66,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Stickers/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Subscribe/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Syndication/locales.ini
@@ -79,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-07 08:50+0200\n"
+"POT-Creation-Date: 2016-03-08 08:30+0200\n"
 "PO-Revision-Date: 2015-06-09 12:19+0000\n"
 "Last-Translator: Jānis Marks Gailis <jm-gailis@fai-vianet.fr>\n"
 "Language-Team: Latvian <lv@li.org>\n"
@@ -1628,6 +1630,10 @@ msgstr ""
 
 #: [statistics]monthly_sub_cum
 msgid "Monthly Subscriptions Cumulated"
+msgstr ""
+
+#: [sticker]sent
+msgid "A sticker has been sent using Movim"
 msgstr ""
 
 #: [subscribe]info
