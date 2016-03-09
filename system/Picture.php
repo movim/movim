@@ -10,7 +10,8 @@ class Picture {
     /**
      * @desc Load a bin picture from a path
      */
-    public function fromPath($path) {
+    public function fromPath($path)
+    {
         $handle = fopen($path, "r");
         $this->_bin = fread($handle, filesize($path));
         fclose($handle);
@@ -19,7 +20,8 @@ class Picture {
     /**
      * @desc Load a bin picture from a base64
      */
-    public function fromBase($base = false) {
+    public function fromBase($base = false)
+    {
         if($base) {
             $this->_bin = (string)base64_decode((string)$base);
         }
@@ -28,7 +30,8 @@ class Picture {
     /**
      * @desc Convert to a base64
      */
-    public function toBase() {
+    public function toBase()
+    {
         if($this->_bin)
             return base64_encode($this->_bin);
         else
@@ -42,7 +45,8 @@ class Picture {
      * @param $height The height requested
      * @return The url of the picture
      */
-    public function get($key, $width = false, $height = false, $format = 'jpeg') {
+    public function get($key, $width = false, $height = false, $format = 'jpeg')
+    {
         if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
         $this->_key = $key;
 
@@ -75,10 +79,30 @@ class Picture {
     }
 
     /**
+     * @desc Get the current picture size
+     * @param $key The picture key
+     */
+    public function getSize()
+    {
+        if($this->_bin) {
+            $im = new Imagick();
+            try {
+                $im->readImageBlob($this->_bin);
+                if($im != false) {
+                    return $im->getImageGeometry();
+                }
+            } catch (ImagickException $e) {
+                error_log($e->getMessage());
+            }
+        }
+    }
+
+    /**
      * @desc Save a picture (original size)
      * @param $key The key of the picture
      */
-    public function set($key, $format = 'jpeg') {
+    public function set($key, $format = 'jpeg')
+    {
         if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
 
         $this->_key = $key;
@@ -121,10 +145,11 @@ class Picture {
      * @desc Create a thumbnail of the picture and save it
      * @param $size The size requested
      */
-    private function createThumbnail($width, $height = false, $format = 'jpeg') {
+    private function createThumbnail($width, $height = false, $format = 'jpeg')
+    {
         if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
         if(!$height) $height = $width;
-        
+
         $path = $this->_path.md5($this->_key).'_'.$width.$this->_formats[$format];
 
         $im = new Imagick;
@@ -141,7 +166,7 @@ class Picture {
 
         $im->setImageCompressionQuality(85);
         $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
-        
+
         $im->writeImage($path);
         $im->clear();
     }

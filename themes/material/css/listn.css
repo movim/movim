@@ -93,6 +93,7 @@ ul.list li > span.active:hover {
 
 ul.list li > p > span.second {
     color: gray;
+    margin-left: 0.5rem;
 }
 
 ul.list li > p > span.info {

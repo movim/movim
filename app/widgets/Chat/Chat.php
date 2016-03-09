@@ -555,7 +555,7 @@ class Chat extends WidgetBase
 
         RPC::call('Chat.setBubbles', $left, $right, $room);
         RPC::call('Chat.appendMessages', $messages);
-        RPC::call('MovimTpl.scrollPanel', 100);
+        RPC::call('MovimTpl.scrollPanel');
     }
 
     function prepareMessage(&$message)
@@ -572,6 +572,7 @@ class Chat extends WidgetBase
         if(isset($message->sticker)) {
             $p = new Picture;
             $sticker = $p->get($message->sticker, false, false, 'png');
+            $stickerSize = $p->getSize();
 
             if($sticker == false) {
                 $r = new Request;
@@ -580,7 +581,10 @@ class Chat extends WidgetBase
                   ->setCid($message->sticker)
                   ->request();
             } else {
-                $message->sticker = $sticker;
+                $message->sticker = [
+                                        'url' => $sticker,
+                                        'width' => $stickerSize['width'],
+                                        'height' => $stickerSize['height']];
             }
         }
 

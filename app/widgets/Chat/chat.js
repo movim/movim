@@ -140,7 +140,11 @@ var Chat = {
 
             if(bubble) {
                 if(message.sticker != null) {
-                    bubble.querySelector('div.bubble > p').innerHTML = '<img src="' + message.sticker + '"/>';
+                    console.log(message.sticker);
+                    bubble.querySelector('div.bubble > p').innerHTML =
+                        '<img src="' + message.sticker.url +
+                        '" width="' + message.sticker.width +
+                        '" height="' + message.sticker.height + '"/>';
                 } else {
                     bubble.querySelector('div.bubble > p').innerHTML = message.body.replace(/\r\n?|\n/g, '<br />');
                 }

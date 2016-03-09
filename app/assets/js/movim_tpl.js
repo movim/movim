@@ -112,15 +112,11 @@ var MovimTpl = {
             return (selector.scrollHeight - Math.floor(selector.scrollTop) === selector.clientHeight);
         }
     },
-    scrollPanel : function(time) {
+    scrollPanel : function() {
         var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
 
-        if(typeof time == 'undefined') time = 0;
-
         if(selector != null) {
-            setTimeout(function() {
-                selector.scrollTop = selector.scrollHeight;
-            }, time);
+            selector.scrollTop = selector.scrollHeight;
         }
     },
     scrollPanelTop : function() {
