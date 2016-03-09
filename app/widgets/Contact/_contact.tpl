@@ -188,7 +188,7 @@
             </li>
             {loop="$blog"}
                 <li class="block" onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
-                    {$url = $value->getContact()->getPhoto('l')}
+                    {$url = $value->getContact()->getPhoto('s')}
                     {if="$url"}
                         <span class="primary icon bubble" style="background-image: url({$url});">
                         </span>

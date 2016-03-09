@@ -3,7 +3,7 @@
     {if="$url"}
         <span
             class="primary icon bubble status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}"
-            style="background-image: url({$me->getPhoto('m')})">
+            style="background-image: url({$me->getPhoto('s')})">
         </span>
     {else}
         <span class="primary icon bubble color {$me->jid|stringToColor} status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}">
