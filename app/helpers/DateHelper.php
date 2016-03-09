@@ -38,6 +38,7 @@ function getTimezoneCorrection() {
     $timezones = getTimezoneList();
     return $timezones[date_default_timezone_get()];
 }
+
 /**
  * Return a human-readable date
  *
@@ -66,6 +67,8 @@ function prepareDate($time, $hours = true, $compact = false) {
         //else print date "ago"
         else {
             $date = __('date.ago', ceil($reldays));
+
+            if($compact) return $date;
         }
     }
     //else print full date
@@ -80,6 +83,8 @@ function prepareDate($time, $hours = true, $compact = false) {
         //if over 6months print year
         if (abs($reldays) > 182)
             $date .= date(', Y', $t);
+
+        if($compact) return $date;
     }
     //if $hours option print the time
     if($hours) {
@@ -89,5 +94,5 @@ function prepareDate($time, $hours = true, $compact = false) {
         $date .= date('H:i', $time);
     }
     return $date;
-
 }
+

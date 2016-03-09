@@ -8,7 +8,7 @@
             action
         {/if}
         "
-    title="{$contact->jid}">
+    title="{$contact->jid} - {$message->published|strtotime|prepareDate}">
     {$url = $contact->getPhoto('s')}
     {if="$url"}
         <span class="primary icon bubble {if="isset($presence)"}status {$presence}{/if}">
@@ -20,20 +20,22 @@
         </span>
     {/if}
 
-    {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
-        <span class="control icon gray">
-            <i class="zmdi zmdi-smartphone"></i>
-        </span>
-    {/if}
-    {if="$caps && $caps->type == 'web'"}
-        <span class="control icon gray">
-            <i class="zmdi zmdi-globe-alt"></i>
-        </span>
-    {/if}
     <span data-key="chat|{$contact->jid}" class="counter bottom"></span>
-    <p class="normal">
-        <span class="info">{$message->published|strtotime|prepareDate:true,true}</span>
+    <p class="normal line">
+        <span class="info" title="{$message->published|strtotime|prepareDate}">
+            {$message->published|strtotime|prepareDate:true,true}
+        </span>
         {$contact->getTrueName()}
+        {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
+            <span class="second">
+                <i class="zmdi zmdi-smartphone"></i>
+            </span>
+        {/if}
+        {if="$caps && $caps->type == 'web'"}
+            <span class="second">
+                <i class="zmdi zmdi-globe-alt"></i>
+            </span>
+        {/if}
     </p>
     {if="isset($status)"}
         <p>{$status}</p>
@@ -42,7 +44,7 @@
             {if="preg_match('#^\?OTR#', $message->body)"}
                 <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
             {elseif="stripTags(prepareString($message->body)) != ''"}
-                <p>{$message->body|prepareString|stripTags}</p>
+                <p class="line">{$message->body|prepareString|stripTags}</p>
             {/if}
         {/if}
     {/if}
