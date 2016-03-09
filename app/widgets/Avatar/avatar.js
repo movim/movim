@@ -53,7 +53,7 @@ var Avatar = {
 MovimWebsocket.attach(function() {
     Avatar_ajaxGetForm();
 });
-
+/*
 function showVideo(){
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     navigator.getUserMedia({video:true, audio:false}, successCallback, errorCallback);
@@ -90,4 +90,4 @@ function snapshot() {
             vCardImageResize(this);
         }
     }
-}
+}*/

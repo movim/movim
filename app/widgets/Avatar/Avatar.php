@@ -98,10 +98,6 @@ class Avatar extends WidgetBase
 
     function ajaxSubmit($avatar)
     {
-        $p = new \Picture;
-        $p->fromBase((string)$avatar->photobin->value);
-        $p->set($this->user->getLogin());
-
         $r = new Set;
         $r->setData($avatar->photobin->value)->request();
     }
