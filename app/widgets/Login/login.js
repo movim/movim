@@ -1,4 +1,5 @@
 var Login = {
+    submitted : false,
     fillExample : function(login, pass) {
         document.querySelector('#login').value = login;
         document.querySelector('#pass').value = pass;
@@ -13,6 +14,8 @@ var Login = {
         form.onsubmit = function(e) {
             e.preventDefault();
 
+            Login.submitted = true;
+
             // We register the socket
             MovimWebsocket.connection.register(this.querySelector('input#login').value.replace(/.*@/, ""));
 
@@ -26,12 +29,12 @@ var Login = {
             setTimeout("MovimWebsocket.unregister()", 20000);
         }
     },
-    
+
     refresh: function(){
         /*Add onclick listeners*/
         var sessions = document.querySelectorAll('#sessions section ul > li');
         var i = 0;
-        
+
         while(i < sessions.length)
         {
             sessions[i].onclick = function(e){Login.choose(e.target);};
@@ -64,16 +67,16 @@ var Login = {
         while(element.tagName != "LI")
             element = element.parentNode;
         var jid = element.id;
-        
+
         if(tn == "I" || tn == "DIV"){
             Login.removeSession(jid);
         }
         else{
             Login.toForm();
-            
+
             document.querySelector('#login').value = jid;
             document.querySelector('#pass').value = "";
-            
+
             if(jid != '') {
                 document.querySelector('#pass').focus();
             } else {
@@ -96,7 +99,7 @@ var Login = {
         } else {
             localStorage.setObject('previousSessions', s);
         }
-        
+
         Login_ajaxGetRememberedSession(localStorage.getItem('previousSessions'));
     },
 
@@ -129,8 +132,8 @@ var Login = {
      * @brief Set the Movim cookie
      */
     setCookie : function(value) {
-        document.cookie = 'MOVIM_SESSION_ID='+value; 
-    } 
+        document.cookie = 'MOVIM_SESSION_ID='+value;
+    }
 }
 
 MovimWebsocket.attach(function()
@@ -161,7 +164,9 @@ MovimWebsocket.attach(function()
 MovimWebsocket.register(function()
 {
     form = document.querySelector('form[name="login"]');
-    eval(form.dataset.action);
+    if(Login.submitted) {
+        eval(form.dataset.action);
+    }
 });
 
 movim_add_onload(function() {

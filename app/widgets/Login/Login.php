@@ -65,16 +65,16 @@ class Login extends WidgetBase
     function display()
     {
         $submit = $this->call('ajaxLogin', "movim_form_to_json('login')");
-        
+
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
-        
+
         $this->view->assign('submit',   $submit);
         $this->view->assign('info',     $config->info);
         $this->view->assign('whitelist',$config->xmppwhitelist);
-        
+
         $pop = 0;
-        
+
         foreach(scandir(USERS_PATH) as $f)
             if(is_dir(USERS_PATH.'/'.$f))
                 $pop++;
@@ -156,7 +156,7 @@ class Login extends WidgetBase
 
     function ajaxHTTPLogin($login, $password)
     {
-        $this->doLogin($login, $password);        
+        $this->doLogin($login, $password);
     }
 
     private function doLogin($login, $password)
@@ -185,7 +185,7 @@ class Login extends WidgetBase
         if(
             $config->xmppwhitelist != '' &&!
             in_array(
-                $host, 
+                $host,
                 explode(',',$config->xmppwhitelist)
                 )
             ) {
