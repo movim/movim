@@ -142,7 +142,6 @@ var Chat = {
 
             if(bubble) {
                 if(message.sticker != null) {
-                    console.log(message.sticker);
                     bubble.querySelector('div.bubble > p').innerHTML =
                         '<img src="' + message.sticker.url +
                         '" width="' + message.sticker.width +
