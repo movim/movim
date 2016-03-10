@@ -44,6 +44,8 @@ class Contact extends WidgetBase
           ->setNode('urn:xmpp:microblog:0')
           ->request();
 
+        RPC::call('movim_push_state', $this->route('contact', $jid));
+
         RPC::call('movim_fill', 'contact_widget', $html);
         RPC::call('MovimTpl.showPanel');
         RPC::call('MovimTpl.scrollHeaders');

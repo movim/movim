@@ -220,6 +220,14 @@ function movim_toggle_display(element) {
 }
 
 /**
+ * @brief Push a new state in the History
+ * @param strin The new state URL
+ */
+function movim_push_state(url) {
+    window.history.pushState(null, "", url);
+}
+
+/**
  * @brief Set object in localStorage
  * @param key string
  * @param value the object
