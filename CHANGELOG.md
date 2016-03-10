@@ -6,6 +6,14 @@ v0.9.1 (trunk)
  * CSS fixes
  * Add Last Message Edition support
  * Improve Post discovery in the News page
+ * Add stickers support
+ * Improve loading time for Chat page
+ * Improve Chat bubbles display
+ * New compact date display
+ * Clean properly the tags in the database
+ * Allow tags with special characters
+ * Various UI and navigation fixed
+ * Update the dependencies
 
 v0.9
 ---------------------------
