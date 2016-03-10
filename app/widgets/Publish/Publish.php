@@ -189,12 +189,15 @@ class Publish extends WidgetBase
                 }
             }
 
-            if(Validator::stringType()->notEmpty()->alnum(',')->validate($form->tags->value)) {
+            if(Validator::stringType()->notEmpty()->validate($form->tags->value)) {
                 $p->setTags(array_unique(
                     array_filter(
                         array_map(
                             function($value) {
-                                return trim(strtolower($value));
+                                if(Validator::stringType()->notEmpty()->validate($value)) {
+                                    preg_match('/([^\s[:punct:]]|_|-){3,30}/', trim($value), $matches);
+                                    if(isset($matches[0])) return $matches[0];
+                                }
                             },
                             explode(',', $form->tags->value)
                         )
