@@ -214,14 +214,14 @@ var Chat = {
                 previous = 'left';
             }
 
-            if(bubbles[i].className.indexOf('room') > -1) {
+            /*if(bubbles[i].className.indexOf('room') > -1) {
                 var lastDate = bubbles[i].querySelector('span.info').innerHTML;
                 if(lastDate == Chat.lastDate) {
                     bubbles[i].querySelector('span.info').innerHTML = '';
                 }
 
                 Chat.lastDate = lastDate;
-            }
+            }*/
         }
     }
 }
