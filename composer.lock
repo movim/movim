@@ -281,7 +281,6 @@
                 "event",
                 "exception"
             ],
-            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -339,7 +338,6 @@
                 "http",
                 "http client"
             ],
-            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -384,7 +382,6 @@
                 "message",
                 "url"
             ],
-            "abandoned": "guzzle/guzzle",
             "time": "2014-02-05 18:29:46"
         },
         {
@@ -438,7 +435,6 @@
                 "component",
                 "stream"
             ],
-            "abandoned": "guzzle/guzzle",
             "time": "2014-05-01 21:36:02"
         },
         {
@@ -1024,12 +1020,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "1c8183be536895f072843e47990b827ee873a698"
+                "reference": "92b29374188e7bbfcfd5b9c9c1d68d7ec8358b30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/1c8183be536895f072843e47990b827ee873a698",
-                "reference": "1c8183be536895f072843e47990b827ee873a698",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/92b29374188e7bbfcfd5b9c9c1d68d7ec8358b30",
+                "reference": "92b29374188e7bbfcfd5b9c9c1d68d7ec8358b30",
                 "shasum": ""
             },
             "require": {
@@ -1060,7 +1056,7 @@
             "keywords": [
                 "process"
             ],
-            "time": "2016-02-22 23:59:57"
+            "time": "2016-03-08 21:22:43"
         },
         {
             "name": "react/dns",

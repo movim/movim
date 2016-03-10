@@ -68,7 +68,7 @@ function prepareDate($time, $hours = true, $compact = false) {
         else {
             $date = __('date.ago', ceil($reldays));
 
-            if($compact) return $date;
+            //if($compact) return $date;
         }
     }
     //else print full date

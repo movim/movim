@@ -4,6 +4,7 @@ var Chat = {
     room: null,
     date: null,
     lastScroll: null,
+    lastDate: null,
     edit: false,
     sendMessage: function(jid, muc)
     {
@@ -72,6 +73,7 @@ var Chat = {
     },
     appendMessages : function(messages) {
         if(messages) {
+            Chat.lastDate = null;
             Chat.date = messages[0].published;
             for(var i = 0, len = messages.length; i < len; ++i ) {
                 Chat.appendMessage(messages[i], false);
@@ -210,6 +212,15 @@ var Chat = {
                 }
 
                 previous = 'left';
+            }
+
+            if(bubbles[i].className.indexOf('room') > -1) {
+                var lastDate = bubbles[i].querySelector('span.info').innerHTML;
+                if(lastDate == Chat.lastDate) {
+                    bubbles[i].querySelector('span.info').innerHTML = '';
+                }
+
+                Chat.lastDate = lastDate;
             }
         }
     }
