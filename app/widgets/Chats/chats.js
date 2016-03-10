@@ -56,5 +56,5 @@ movim_add_onload(function(){
 });
 
 MovimWebsocket.attach(function() {
-    Chats.refresh();
+    Chats_ajaxGet();
 });

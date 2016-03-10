@@ -74,6 +74,12 @@ class Chats extends WidgetBase
         RPC::call('Chats.refresh');
     }
 
+    function ajaxGet()
+    {
+        RPC::call('movim_fill', 'chats_widget_list', $this->prepareChats());
+        RPC::call('Chats.refresh');
+    }
+
     /**
      * @brief Get history
      */
@@ -223,6 +229,5 @@ class Chats extends WidgetBase
 
     function display()
     {
-        $this->view->assign('list', $this->prepareChats());
     }
 }
