@@ -187,6 +187,7 @@ class Postn extends Model {
         // Tags parsing
         if($entry->entry->category) {
             $td = new \Modl\TagDAO;
+            $td->delete($this->__get('nodeid'));
 
             if($entry->entry->category->count() == 1
             && isset($entry->entry->category->attributes()->term)) {

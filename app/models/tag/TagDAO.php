@@ -39,6 +39,21 @@ class TagDAO extends SQL {
         }
     }
 
+    function delete($nodeid) {
+        $this->_sql = '
+            delete from tag
+            where nodeid = :nodeid';
+
+        $this->prepare(
+            'Tag',
+            array(
+                'nodeid' => $nodeid
+            )
+        );
+
+        return $this->run('Tag');
+    }
+
     function getTags($nodeid) {
         $this->_sql = '
             select * from tag
