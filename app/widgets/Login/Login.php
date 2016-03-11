@@ -50,8 +50,8 @@ class Login extends WidgetBase
             $r->request();
 
             // We refresh the messages
-            $c = new Chats;
-            $c->ajaxGetHistory();
+            //$c = new Chats;
+            //$c->ajaxGetHistory();
 
             // We get the configuration
             $s = new Get;
