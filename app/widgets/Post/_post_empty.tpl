@@ -27,7 +27,7 @@
         </li>
     </ul>
 {/if}
-
+<!--
 <ul class="list flex active middle">
     <li class="subheader block large">
         <p>{$c->__('chat.frequent')}</p>
@@ -84,7 +84,7 @@
         </li>
     </a>
 </ul>
-
+-->
 <ul class="list thick">
     <li>
         <span class="primary icon gray">
