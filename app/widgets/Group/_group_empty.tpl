@@ -27,7 +27,7 @@
                 <span class="primary icon bubble color {$value->server|stringToColor}">
                     {$value->server|firstLetterCapitalize}
                 </span>
-                <p title="{$value->server} - {$value->name}">{$value->server} - {$value->name}</p>
+                <p class="line" title="{$value->server} - {$value->name}">{$value->server} - {$value->name}</p>
                 <p>{$c->__('group.counter', $value->number)}</p>
             </li>
         {/if}

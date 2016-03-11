@@ -56,7 +56,7 @@ class Route extends \BaseController {
         }
 
         if(empty($this->_page))
-            $this->_page = 'main';
+            $this->_page = 'news';
 
         if(!isset($this->_routes[$this->_page]))
             $this->_page = 'notfound';
@@ -87,7 +87,7 @@ class Route extends \BaseController {
             } elseif($params != false) {
                 $uri .= '/' . $params;
             }
-            
+
             return $uri.$tab;
         } else {
             throw new Exception(__('Route not set for the page %s', $page));

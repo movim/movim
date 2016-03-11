@@ -2,8 +2,7 @@
     <ul class="thick">
         <div class="placeholder icon bookmark">
             <h1>{$c->__('groups.empty_title')}</h1>
-            <h4>{$c->__('groups.empty_text1')}</h4>
-            <h4>{$c->__('groups.empty_text2')}</h4>
+            <h4>{$c->__('groups.empty_text1')} {$c->__('groups.empty_text2')}</h4>
         </li>
     </ul>
 {else}

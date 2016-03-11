@@ -5,16 +5,97 @@
                 {$c->__('post.hot')}
             </p>
         </li>
-        <li>
-            <span class="primary icon gray">
-                <i class="zmdi zmdi-account"></i>
-            </span>
-            <p>
-                <h4 class="gray">{$c->__('post.blog_last')}</h4>
-            </p>
-        </li>
     </ul>
 </header>
+
+{if="!isset($top)"}
+    <ul class="list thick">
+        {$a = '1f600'}
+        <li>
+            <p>{$c->__('hello.enter_title')}</p>
+            <p>{$c->__('hello.enter_paragraph')} <img alt=":smiley:" class="emoji" src="{$a|getSmileyPath}"></p>
+        </li>
+    </ul>
+    <ul class="list middle">
+        <li>
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-menu on_mobile"></i>
+                <i class="zmdi zmdi-cloud-outline on_desktop"></i>
+            </span>
+            <p>{$c->__('hello.menu_title')}</p>
+            <p>{$c->__('hello.menu_paragraph')}</p>
+        </li>
+    </ul>
+{/if}
+
+<ul class="list flex active middle">
+    <li class="subheader block large">
+        <p>{$c->__('chat.frequent')}</p>
+    </li>
+    {if="empty($top)"}
+        <li>
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-info-outline"></i>
+            </span>
+            <p class="normal">{$c->__('chats.empty_title')}</p>
+        </li>
+    {/if}
+    {loop="$top"}
+        <li tabindex="{$key+1}" class="block"
+            onclick="Hello_ajaxChat('{$value->jid}')">
+            {$url = $value->getPhoto('s')}
+            {if="$url"}
+                <span
+                    class="primary icon bubble
+                    {if="$value->value"}
+                        status {$presencestxt[$value->value]}
+                    {/if}">
+                    <img src="{$url}">
+                </span>
+            {else}
+                <span
+                    class="primary icon bubble color {$value->jid|stringToColor}
+                    {if="$value->value"}
+                        status {$presencestxt[$value->value]}
+                    {/if}">
+                    <i class="zmdi zmdi-account"></i>
+                </span>
+            {/if}
+
+            <p>{$value->getTrueName()}</p>
+            <p>
+                {if="isset($value->status)"}
+                    {$value->status}
+                {else}
+                    {$value->jid}
+                {/if}
+            </p>
+        </li>
+    {/loop}
+    <a class="block large" href="{$c->route('chat')}">
+        <li>
+            <span class="primary icon">
+                <i class="zmdi zmdi-comments"></i>
+            </span>
+            <span class="control icon">
+                <i class="zmdi zmdi-chevron-right"></i>
+            </span>
+            <p class="normal">{$c->__('hello.chat')}</p>
+        </li>
+    </a>
+</ul>
+
+<ul class="list thick">
+    <li>
+        <span class="primary icon gray">
+            <i class="zmdi zmdi-account"></i>
+        </span>
+        <p>
+            <h4 class="gray">{$c->__('post.blog_last')}</h4>
+        </p>
+    </li>
+</ul>
+
 <ul class="list flex card shadow active">
 {loop="$blogs"}
     {$attachements = $value->getAttachements()}
@@ -58,6 +139,24 @@
     </li>
 {/loop}
 </ul>
+
+{if="$c->supported('pubsub')"}
+    <ul class="list active on_desktop middle">
+        <a href="{$c->route('blog', array($jid))}" target="_blank">
+            <li>
+                <span class="primary icon">
+                    <i class="zmdi zmdi-portable-wifi"></i>
+                </span>
+                <span class="control icon">
+                    <i class="zmdi zmdi-chevron-right"></i>
+                </span>
+                <p class="list">{$c->__('hello.blog_title')}</p>
+                <p>{$c->__('hello.blog_text')}</p>
+            </li>
+            <br/>
+        </a>
+    </ul>
+{/if}
 
 <ul class="list thick">
     <li>
@@ -114,15 +213,32 @@
     {/if}
 {/loop}
 </ul>
-<ul class="list active thick">
-    <a href="{$c->route('group')}">
-        <li>
-            <span class="primary icon"><i class="zmdi zmdi-pages"></i></span>
-            <span class="control icon">
-                <i class="zmdi zmdi-chevron-right"></i>
+{if="$c->supported('pubsub')"}
+    <ul class="list active middle">
+        <a href="{$c->route('group')}">
+            <li>
+                <span class="primary icon"><i class="zmdi zmdi-pages"></i></span>
+                <span class="control icon">
+                    <i class="zmdi zmdi-chevron-right"></i>
+                </span>
+                <p class="normal">{$c->__('post.discover')}</p>
+            </li>
+        </a>
+    </ul>
+
+    <ul class="list thick flex on_desktop">
+        <li class="block">
+            <span class="primary icon bubble color blue">
+                <i class="zmdi zmdi-share"></i>
             </span>
-            <p class="normal">{$c->__('post.discover')}</p>
+            <p class="line">{$c->__('hello.share_title')}</p>
+            <p>{$c->__('hello.share_text')}</p>
         </li>
-    </a>
-</ul>
+        <li class="block">
+            <a class="button" href="javascript:(function(){location.href='{$c->route('share', '\'+escape(encodeURIComponent(location.href));')}})();">
+                <i class="zmdi zmdi-share"></i> {$c->__('hello.share_button')}
+            </a>
+        </li>
+    </ul>
+{/if}
 
