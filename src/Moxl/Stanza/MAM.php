@@ -3,7 +3,7 @@
 namespace Moxl\Stanza;
 
 class MAM {
-    static function get($jid, $start = false, $end = false, $limit = false)
+    static function get($jid = false, $start = false, $end = false, $limit = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('urn:xmpp:mam:0', 'query');
@@ -15,10 +15,12 @@ class MAM {
         $field_type->appendChild($dom->createElement('value', 'urn:xmpp:mam:0'));
         $x->appendChild($field_type);
 
-        $field_with = $dom->createElement('field');
-        $field_with->setAttribute('var', 'with');
-        $field_with->appendChild($dom->createElement('value', $jid));
-        $x->appendChild($field_with);
+        if($jid) {
+            $field_with = $dom->createElement('field');
+            $field_with->setAttribute('var', 'with');
+            $field_with->appendChild($dom->createElement('value', $jid));
+            $x->appendChild($field_with);
+        }
 
         if($start) {
             $field_start = $dom->createElement('field');
@@ -47,7 +49,7 @@ class MAM {
         if($limit) {
             $field_limit = $dom->createElement('field');
             $field_limit->setAttribute('var', 'limit');
-            $field_limit->appendChild($dom->createElement($limit));
+            $field_limit->appendChild($dom->createElement('value', $limit));
             $x->appendChild($field_limit);
         }
 
