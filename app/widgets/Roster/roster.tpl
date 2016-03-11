@@ -59,21 +59,25 @@
 
                 <span
                     class="control icon gray"
-                    ng-if="myjid.ajiditems.rosterview.tune || myjid.ajiditems.rosterview.type != '' || myjid.ajiditems.rosterview.subscription != 'both'"
-                    ng-switch on="myjid.ajiditems.rosterview.type">
-                    <i ng-switch-when="handheld" class="zmdi zmdi-smartphone"></i>
-                    <i ng-switch-when="phone" class="zmdi zmdi-smartphone"></i>
-                    <i ng-switch-when="web" class="zmdi zmdi-globe-alt"></i>
-                    <i ng-switch-when="bot" class="zmdi zmdi-memory"></i>
+                    ng-if="myjid.ajiditems.rosterview.tune || myjid.ajiditems.rosterview.subscription != 'both'">
                     <i ng-if="myjid.ajiditems.rosterview.tune" class="zmdi zmdi-play"></i>
                     <i ng-if="myjid.ajiditems.rosterview.subscription == 'to'" class="zmdi zmdi-arrow-in"></i>
                     <i ng-if="myjid.ajiditems.rosterview.subscription == 'from'" class="zmdi zmdi-arrow-out"></i>
                     <i ng-if="myjid.ajiditems.rosterview.subscription == 'none'" class="zmdi zmdi-block"></i>
                 </span>
 
-
-                <p class="normal">{{myjid.ajiditems.rosterview.name}}</p>
-                <p ng-if="myjid.ajiditems.status && myjid.ajiditems.status != ''">
+                <p class="normal">{{myjid.ajiditems.rosterview.name}}
+                    <span
+                        class="second"
+                        ng-if="myjid.ajiditems.rosterview.type != ''"
+                        ng-switch on="myjid.ajiditems.rosterview.type">
+                        <i ng-switch-when="handheld" class="zmdi zmdi-smartphone"></i>
+                        <i ng-switch-when="phone" class="zmdi zmdi-smartphone"></i>
+                        <i ng-switch-when="web" class="zmdi zmdi-globe-alt"></i>
+                        <i ng-switch-when="bot" class="zmdi zmdi-memory"></i>
+                    </span>
+                </p>
+                <p class="line" ng-if="myjid.ajiditems.status && myjid.ajiditems.status != ''">
                     {{myjid.ajiditems.status}}
                 </p>
             </li>
