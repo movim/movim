@@ -11,13 +11,13 @@
             <span class="primary icon bubble"><i class="zmdi zmdi-cloud-outline"></i></span>
             <p class="normal">{$c->__('page.home')}</p>
         </li>
-    </a>-->
+    </a>
     <a class="classic on_mobile" href="{$c->route('root')}">
         <li class="{if="$page == 'main'"}active{/if}">
             <span class="primary icon bubble"><i class="zmdi zmdi-home"></i></span>
             <p class="normal">{$c->__('page.home')}</p>
         </li>
-    </a>
+    </a>-->
     <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}" href="{$c->route('news')}">
         <li {if="$page == 'news'"}class="active"{/if}>
             <span class="primary icon"><i class="zmdi zmdi-receipt"></i></span>
