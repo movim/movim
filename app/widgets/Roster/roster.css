@@ -61,9 +61,3 @@
     display: list-item;
 }
 
-#roster ul#rosterlist > div#spinner{
-    position: relative;
-    overflow: visible;
-    text-align: center;
-    margin: 50% 0;
-}

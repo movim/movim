@@ -193,12 +193,13 @@ window.onunload = window.onbeforeunload = function(e){
 };
 
 /* Functions to call angular inner functions */
-function initContacts(tab){
-    if(tab.length == 0)
+function initContacts(tab) {
+    tab = JSON.parse(tab);
+    if(tab.length == 0) {
         angular.element(roster).scope().contacts = null;
-    else
-        angular.element(roster).scope().initContacts(JSON.parse(tab));
-
+        document.getElementById("spinner").style.display = "none";
+    } else
+        angular.element(roster).scope().initContacts(tab);
     Roster.refresh();
 }
 
