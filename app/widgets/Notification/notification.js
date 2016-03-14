@@ -166,15 +166,16 @@ if(typeof MovimWebsocket != 'undefined') {
     });
 }
 
-document.onblur = function() {
+document.addEventListener('blur', function() {
     Notification.focused = false;
     Notification_ajaxCurrent('blurred');
-}
-document.onfocus = function() {
+});
+
+document.addEventListener('focus', function() {
     Notification.focused = true;
     Notification.current(Notification.notifs_key);
     Notification_ajaxClear(Notification.notifs_key);
-}
+});
 
 
 window.addEventListener('load', function () {

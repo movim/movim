@@ -242,4 +242,9 @@ Upload.attach(function() {
     movim_textarea_autoheight(textarea);
 });
 
+document.addEventListener('focus', function() {
+    var textarea = document.querySelector('#chat_textarea');
+    if(textarea) textarea.focus();
+});
+
 var state = 0;
