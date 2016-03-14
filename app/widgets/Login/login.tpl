@@ -3,6 +3,7 @@
 
     {if="isset($httpAuthUser)"}
         <script type="text/javascript">
+        localStorage.username = '{$httpAuthUser}';
         MovimWebsocket.attach(function() {
             MovimWebsocket.connection.register('{$httpAuthHost}');
         });
