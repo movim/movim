@@ -530,12 +530,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "c4aded4071de3f6dce929bbcd27e6bc9a595ee9f"
+                "reference": "657d382ce7033bfa070b0f3ceaf37cd73f86fdeb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/c4aded4071de3f6dce929bbcd27e6bc9a595ee9f",
-                "reference": "c4aded4071de3f6dce929bbcd27e6bc9a595ee9f",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/657d382ce7033bfa070b0f3ceaf37cd73f86fdeb",
+                "reference": "657d382ce7033bfa070b0f3ceaf37cd73f86fdeb",
                 "shasum": ""
             },
             "require": {
@@ -573,7 +573,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2016-03-04 22:37:21"
+            "time": "2016-03-14 00:45:27"
         },
         {
             "name": "monolog/monolog",
@@ -1235,12 +1235,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "f905ec2a576b1242b10d5c1dbd2f0eb4fcea7f0c"
+                "reference": "7c79c33c385030dd9952d5dce991c018b71e46e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/f905ec2a576b1242b10d5c1dbd2f0eb4fcea7f0c",
-                "reference": "f905ec2a576b1242b10d5c1dbd2f0eb4fcea7f0c",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/7c79c33c385030dd9952d5dce991c018b71e46e0",
+                "reference": "7c79c33c385030dd9952d5dce991c018b71e46e0",
                 "shasum": ""
             },
             "require": {
@@ -1272,7 +1272,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-03-08 13:22:16"
+            "time": "2016-03-14 03:35:31"
         },
         {
             "name": "react/stream",
