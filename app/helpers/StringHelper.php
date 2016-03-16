@@ -98,46 +98,6 @@ function addHFR($string) {
 function prepareString($string, $large = false, $preview = false) {
     $string = addUrls($string, $preview);
 
-    // We remove all the style attributes
-    /*$string = preg_replace_callback(
-        '/(<[^>]+) style=".*?"/i', function($match) {
-            return $match[1];
-        }, $string
-    );
-
-    // Twitter hashtags
-    $string = preg_replace_callback(
-        "/ #[a-zA-Z0-9_-]{3,}/", function ($match) { return ' <a class="twitter hastag" href="http://twitter.com/search?q='.  urlencode(trim($match[0])).  '&src=hash" target="_blank">'.  trim($match[0]).  '</a>'; }, ' ' . $string);
-    $string = preg_replace_callback(
-        "/ @[a-zA-Z0-9_-]{3,}/", function ($match) {
-            return
-                ' <a class="twitter at" href="http://twitter.com/'.
-                    trim($match[0]).
-                    '" target="_blank">'.
-                    trim($match[0]).
-                '</a>';
-      }, ' ' . $string
-    );
-
-    //remove all scripts
-    $string = preg_replace_callback(
-            '#<[/]?script[^>]*>#is', function ($match) {
-                return '';
-            }, ' ' . $string
-    );
-    //remove all iframe
-    $string = preg_replace_callback(
-            '#<[/]?iframe[^>]*>#is', function ($match) {
-                return '';
-            }, ' ' . $string
-    );
-    //remove all iframe
-    $string = preg_replace_callback(
-            '#<[/]?ss[^>]*>#is', function ($match) {
-                return '';
-            }, ' ' . $string
-    );*/
-
     // We add some smileys...
     $emoji = MovimEmoji::getInstance();
     $string = $emoji->replace($string, $large);
@@ -155,6 +115,16 @@ function fixSelfClosing($string) {
             return '<'.$match[1].'></'.$match[1].'>';
         }
         , $string);
+}
+
+/**
+ * @desc Escape the unescaped ampersand
+ */
+function escapeAmpersands($string) {
+    return preg_replace(
+        '/&[^; ]{0,6}.?/e',
+        "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))",
+        $string);
 }
 
 /**

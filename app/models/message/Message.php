@@ -98,8 +98,10 @@ class Message extends Model {
 
             $images = (bool)($this->type == 'chat');
 
+            \movim_log((string)$stanza->html->body);
+
             if($stanza->html) {
-                $xhtml = new \SimpleXMLElement('<body xmlns="http://www.w3.org/1999/xhtml">'.(string)$stanza->html->body.'</body>');
+                $xhtml = new \SimpleXMLElement('<body xmlns="http://www.w3.org/1999/xhtml">'.escapeAmpersands((string)$stanza->html->body).'</body>');
                 $xhtml->registerXPathNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
                 $img = $xhtml->xpath('//xhtml:img/@src')[0];
                 if($img) {
