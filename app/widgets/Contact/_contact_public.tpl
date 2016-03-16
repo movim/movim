@@ -1,24 +1,23 @@
 {loop="$users"}
     <li class="block" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}', {if="$page"}{$page}{else}0{/if});">
-        {$url = $value->getPhoto('s')}
+        {$url = $value->getPhoto('l')}
         {if="$url"}
-            <span class="primary icon bubble">
-                <img src="{$url}">
+            <span class="primary icon thumb" style="background-image: url({$url});">
             </span>
         {else}
-            <span class="primary icon bubble color {$value->jid|stringToColor}">
+            <span class="primary icon thumb color {$value->jid|stringToColor}">
                 <i class="zmdi zmdi-account"></i>
             </span>
         {/if}
 
         <p class="normal">
+            {$value->getTrueName()}
             {if="$value->getAge()"}
-                <span class="info">{$c->__('age.years', $value->getAge())}</span>
+                <span class="second">{$c->__('age.years', $value->getAge())}</span>
             {/if}
             {if="$value->getGender()"}
-                <span class="info">{$value->getGender()}</span>
+                <span class="second">{$value->getGender()}</span>
             {/if}
-            {$value->getTrueName()}
         </p>
 
         {if="$value->description != ''"}
