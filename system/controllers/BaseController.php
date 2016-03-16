@@ -60,6 +60,7 @@ class BaseController {
         $this->page->addScript('movim_hash.js');
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_base.js');
+        $this->page->addScript('movim_electron.js');
 
         if(!$this->public) {
             $this->page->addScript('movim_tpl.js');
