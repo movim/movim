@@ -1,8 +1,9 @@
-<ul id="obb" class="thick">
+<ul id="obb" class="list thick">
     <li class="condensed">
-        <span class="icon bubble color blue">
+        <span class="primary icon bubble color blue">
             <i class="zmdi zmdi-chevron-right"></i>
         </span>
+        <p></p>
         <p>
             {$c->__('oob.about')}
         </p>
