@@ -131,8 +131,10 @@ class Picture {
                 if($im != false) {
                     $im->setImageFormat($format);
 
-                    $im->setImageBackgroundColor('#ffffff');
-                    $im = $im->flattenImages();
+                    if($format == 'jpeg') {
+                        $im->setImageBackgroundColor('#ffffff');
+                        $im = $im->flattenImages();
+                    }
 
                     $im->setImageCompressionQuality(95);
                     $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
@@ -160,8 +162,10 @@ class Picture {
         $im->readImageBlob($this->_bin);
         $im->setImageFormat($format);
 
-        $im->setImageBackgroundColor('#ffffff');
-        $im = $im->flattenImages();
+        if($format == 'jpeg') {
+            $im->setImageBackgroundColor('#ffffff');
+            $im = $im->flattenImages();
+        }
 
         $geo = $im->getImageGeometry();
 
