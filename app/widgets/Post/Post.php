@@ -174,6 +174,7 @@ class Post extends WidgetBase
         $view->assign('top', $cd->getTop(6));
         $view->assign('blogs', $nd->getLastBlogPublic(0, 6));
         $view->assign('posts', $nd->getLastPublished(0, 4));
+        $view->assign('jid', $this->user->getLogin());
 
         return $view->draw('_post_empty', true);
     }
