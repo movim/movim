@@ -35,6 +35,19 @@ class Presence extends WidgetBase
         $this->addcss('presence.css');
         $this->addjs('presence.js');
         $this->registerEvent('mypresence', 'onMyPresence');
+        $this->registerEvent('session_up', 'onSessionUp');
+        $this->registerEvent('session_down', 'onSessionDown');
+    }
+
+    function onSessionUp()
+    {
+        $this->ajaxSet();
+    }
+
+    function onSessionDown()
+    {
+        $p = new Away;
+        $p->request();
     }
 
     function onMyPresence($packet)

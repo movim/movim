@@ -63,7 +63,7 @@ class Core implements MessageComponentInterface {
 ";
 
         $path = $explode['host'].$explode['path'];
-        
+
         if($explode['scheme'] == 'https') {
             $ws = 'wss://'.$path.'ws/';
             $secured = 'true';
@@ -78,7 +78,7 @@ class Core implements MessageComponentInterface {
 
         return $ws;
     }
-    
+
     public function onOpen(ConnectionInterface $conn)
     {
         $sid = $this->getSid($conn);
@@ -87,7 +87,7 @@ class Core implements MessageComponentInterface {
                 $this->sessions[$sid] = new Session($this->loop, $sid, $this->baseuri);
             }
 
-            $this->sessions[$sid]->attach($conn);
+            $this->sessions[$sid]->attach($this->loop, $conn);
         }
     }
 
@@ -103,7 +103,7 @@ class Core implements MessageComponentInterface {
     {
         $sid = $this->getSid($conn);
         if($sid != null && isset($this->sessions[$sid])) {
-            $this->sessions[$sid]->detach($conn);
+            $this->sessions[$sid]->detach($this->loop, $conn);
 
             if($this->sessions[$sid]->process == null) {
                 unset($this->sessions[$sid]);
@@ -134,7 +134,7 @@ class Core implements MessageComponentInterface {
         $sd = new \Modl\SessionxDAO();
         $sd->deleteEmpty();
     }
-    
+
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
         echo "An error has occurred: {$e->getMessage()}\n";
