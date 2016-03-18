@@ -105,18 +105,6 @@ function prepareString($string, $large = false, $preview = false) {
     return trim($string);
 }
 
-
-/**
- * Fix self-closing tags
- */
-function fixSelfClosing($string) {
-    return preg_replace_callback('/<([^\s<]+)\/>/',
-        function($match) {
-            return '<'.$match[1].'></'.$match[1].'>';
-        }
-        , $string);
-}
-
 /**
  * @desc Escape the unescaped ampersand
  */
@@ -124,22 +112,6 @@ function escapeAmpersands($string) {
     return preg_replace(
         '/&[^; ]{0,6}.?/e',
         "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))",
-        $string);
-}
-
-/**
- * Remove the content, body and html tags
- */
-function cleanHTMLTags($string) {
-    return str_replace(
-        array(
-            '<content type="html">',
-            '<html xmlns="http://jabber.org/protocol/xhtml-im">',
-            '<body xmlns="http://www.w3.org/1999/xhtml">',
-            '</body>',
-            '</html>',
-            '</content>'),
-        '',
         $string);
 }
 

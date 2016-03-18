@@ -107,14 +107,6 @@ class Message extends Model {
                 }
             }
 
-            /*if($stanza->html) {
-                $this->html = \cleanHTMLTags($stanza->html->body->asXML());
-                $this->html = \fixSelfClosing($this->html);
-                $this->html = \prepareString($this->html, false, $images);
-            } else {*/
-            //    $this->html = \prepareString($this->body, false, $images);
-            //}
-
             if($stanza->replace) {
                 $this->newid = $this->id;
                 $this->id = (string)$stanza->replace->attributes()->id;
