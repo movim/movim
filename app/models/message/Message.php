@@ -41,7 +41,7 @@ class Message extends Model {
             "jidfrom" :
                 {"type":"string", "size":96, "mandatory":true },
             "resource" :
-                {"type":"string", "size":128, "mandatory":true },
+                {"type":"string", "size":128 },
             "type" :
                 {"type":"string", "size":16, "mandatory":true },
             "subject" :
