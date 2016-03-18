@@ -124,7 +124,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
         if(!empty($message)) {
             $restart = false;
 
-            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
 
             if($message == '</stream:stream>') {
                 $conn->close();
