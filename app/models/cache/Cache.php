@@ -7,20 +7,20 @@ class Cache extends Model{
     public $name;
     public $data;
     public $timestamp;
-    
+
     public function __construct() {
         $this->_struct = '
         {
-            "session" : 
+            "session" :
                 {"type":"string", "size":64, "key":true },
-            "name" : 
+            "name" :
                 {"type":"string", "size":32, "key":true },
-            "data" : 
+            "data" :
                 {"type":"text", "mandatory":true },
-            "timestamp" : 
+            "timestamp" :
                 {"type":"date", "mandatory":true }
         }';
-        
+
         parent::__construct();
     }
 }
