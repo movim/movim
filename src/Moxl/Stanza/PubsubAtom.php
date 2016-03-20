@@ -2,6 +2,8 @@
 
 namespace Moxl\Stanza;
 
+use Ramsey\Uuid\Uuid;
+
 class PubsubAtom {
     public $id;
     public $name;
@@ -23,7 +25,7 @@ class PubsubAtom {
     public $published = false;
 
     public function __construct() {
-        $this->id = md5(openssl_random_pseudo_bytes(5));
+        $this->id = (string)Uuid::uuid4();
     }
 
     public function enableComments() {
@@ -45,6 +47,12 @@ class PubsubAtom {
         $author->appendChild($dom->createElement('name', $this->name));
         $author->appendChild($dom->createElement('uri', 'xmpp:'.$this->jid));
         $entry->appendChild($author);
+
+        $link = $dom->createElement('link');
+        $link->setAttribute('rel', 'alternate');
+        $link->setAttribute('type', 'application/atom+xml');
+        $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.$this->id.';item='.$this->id);
+        $entry->appendChild($link);
 
         if($this->comments) {
             $link = $dom->createElement('link');
