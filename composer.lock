@@ -281,6 +281,7 @@
                 "event",
                 "exception"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -338,6 +339,7 @@
                 "http",
                 "http client"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -382,6 +384,7 @@
                 "message",
                 "url"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-02-05 18:29:46"
         },
         {
@@ -435,6 +438,7 @@
                 "component",
                 "stream"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-05-01 21:36:02"
         },
         {
@@ -693,19 +697,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "3a54d80d975e3e142ce3ed4874d1501706c536ca"
+                "reference": "4bac529ad60c562cd2643c7ad991caaa4f129811"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/3a54d80d975e3e142ce3ed4874d1501706c536ca",
-                "reference": "3a54d80d975e3e142ce3ed4874d1501706c536ca",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/4bac529ad60c562cd2643c7ad991caaa4f129811",
+                "reference": "4bac529ad60c562cd2643c7ad991caaa4f129811",
                 "shasum": ""
             },
             "require": {
                 "monolog/monolog": "1.8.*",
                 "movim/sasl2": "dev-master",
                 "pear/net_dns2": "^1.4",
-                "php": ">=5.3.0"
+                "php": ">=5.3.0",
+                "ramsey/uuid": "^3.2"
             },
             "type": "library",
             "autoload": {
@@ -732,7 +737,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-03-18 22:41:27"
+            "time": "2016-03-20 20:47:28"
         },
         {
             "name": "movim/sasl2",
@@ -1285,12 +1290,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "7c79c33c385030dd9952d5dce991c018b71e46e0"
+                "reference": "4ed32f2ce1e732586783c7ebd10b7d75386f2588"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/7c79c33c385030dd9952d5dce991c018b71e46e0",
-                "reference": "7c79c33c385030dd9952d5dce991c018b71e46e0",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/4ed32f2ce1e732586783c7ebd10b7d75386f2588",
+                "reference": "4ed32f2ce1e732586783c7ebd10b7d75386f2588",
                 "shasum": ""
             },
             "require": {
@@ -1304,11 +1309,6 @@
                 "clue/block-react": "~1.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "React\\SocketClient\\": "src"
@@ -1322,7 +1322,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-03-14 03:35:31"
+            "time": "2016-03-19 13:11:48"
         },
         {
             "name": "react/stream",
