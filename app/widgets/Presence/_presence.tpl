@@ -10,10 +10,10 @@
             <i class="zmdi zmdi-account"></i>
         </span>
     {/if}
-    <!--
-    <span class="control icon gray">
-        <i class="zmdi zmdi-edit"></i>
-    </span>-->
-    <p class="line">{$me->getTrueName()}</p>
+
+    <span class="control icon">
+        <i class="zmdi zmdi-caret-down"></i>
+    </span>
+    <p class="line bold">{$me->getTrueName()}</p>
     <p class="line">{$presence->status}</p>
 </li>

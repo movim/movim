@@ -113,6 +113,10 @@ ul.list li > p.normal {
     font-size: 2rem;
 }
 
+ul.list li > p.bold {
+    font-weight: bold;
+}
+
 ul.list li > p.center {
     text-align: center;
 }
