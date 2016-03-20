@@ -20,6 +20,7 @@
 
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\PostDelete;
+use Moxl\Xec\Action\Pubsub\Delete;
 use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
@@ -129,6 +130,11 @@ class Post extends WidgetBase
         $p->setTo($to)
           ->setNode($node)
           ->setId($id)
+          ->request();
+
+        $p = new Delete;
+        $p->setTo($to)
+          ->setNode('urn:xmpp:microblog:0:comments/'.$id)
           ->request();
     }
 
