@@ -55,7 +55,7 @@
             name="embed"
             placeholder="http://myawesomewebsite.com/ or http://mynicepictureurl.com/"
             onpaste="var e=this; setTimeout(function(){Publish_ajaxEmbedTest(e.value);}, 4);"
-            {if="$attachement != false"}value="{$attachement.href}"{/if}
+            {if="isset($attachement) && $attachement != false"}value="{$attachement.href}"{/if}
         >
         <label for="embed">{$c->__('post.link')}</label>
 
