@@ -188,15 +188,17 @@ class Rooms extends WidgetBase
         $sd = new \modl\SubscriptionDAO();
         $cd = new \modl\ConferenceDAO();
 
-        foreach($sd->getSubscribed() as $s) {
-            array_push($arr,
-                array(
-                    'type'      => 'subscription',
-                    'server'    => $s->server,
-                    'title'     => $s->title,
-                    'subid'     => $s->subid,
-                    'tags'      => unserialize($s->tags),
-                    'node'      => $s->node));
+        if($sd->getSubscribed()) {
+            foreach($sd->getSubscribed() as $s) {
+                array_push($arr,
+                    array(
+                        'type'      => 'subscription',
+                        'server'    => $s->server,
+                        'title'     => $s->title,
+                        'subid'     => $s->subid,
+                        'tags'      => unserialize($s->tags),
+                        'node'      => $s->node));
+            }
         }
 
         foreach($cd->getAll() as $c) {
