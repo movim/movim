@@ -79,8 +79,12 @@ main > section > div > header.fixed,
 /*main > section > div > header,*/
 main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
 
+.tabs a {
+    color: #757575;
+}
+
 .tabs,
-.tabs a:not(.classic):not(.activity):not(.action) {
+.tabs li.active a:not(.classic):not(.activity):not(.action) {
     border-color: #3F51B5;
     color: #3F51B5;
 }
