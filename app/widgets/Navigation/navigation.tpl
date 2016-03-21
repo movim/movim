@@ -56,7 +56,10 @@
     </a>-->
 </ul>
 
-<ul class="list oppose active">
+<ul class="list divided oppose active">
+    <li class="subheader">
+        <p>{$c->__('page.account')}</p>
+    </li>
     <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}" href="{$c->route('conf')}">
         <li>
             <span class="primary icon">
@@ -65,7 +68,7 @@
             <p class="normal">{$c->__('page.configuration')}</p>
         </li>
     </a>
-    <a class="classic" href="{$c->route('help')}">
+    <a class="classic on_desktop" href="{$c->route('help')}">
         <li>
             <span class="primary icon">
                 <i class="zmdi zmdi-help"></i>
@@ -73,4 +76,8 @@
             <p class="normal">{$c->__('page.help')}</p>
         </li>
     </a>
+    <li onclick="Presence_ajaxLogout()">
+        <span class="primary icon"><i class="zmdi zmdi-sign-in"></i></span>
+        <p class="normal">{$c->__('status.disconnect')}</p>
+    </li>
 </ul>

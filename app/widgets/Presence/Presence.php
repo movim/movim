@@ -239,7 +239,6 @@ class Presence extends WidgetBase
         $presencetpl->assign('txt', $txt);
         $presencetpl->assign('txts', $txts);
 
-        $presencetpl->assign('calllogout',  $this->call('ajaxLogout'));
         $html = $presencetpl->draw('_presence_list', true);
 
         return $html;

@@ -56,24 +56,6 @@
             </ul>
         </div>
     </form>
-    <ul class="list active">
-        <li class="subheader">
-            <p class="normal">{$c->__('status.disconnect')}</p>
-        </li>
-        <li onclick="{$calllogout}">
-            <span class="primary icon"><i class="zmdi zmdi-sign-in"></i></span>
-            <p class="normal">{$c->__('status.disconnect')}</p>
-        </li>
-    </ul>
-                <!--
-        <div class="element large mini">
-            <label>{$c->__('chatroom.autojoin_label')}</label>
-            <div class="checkbox">
-                <input type="checkbox" id="autojoin" name="autojoin"/>
-                <label for="autojoin"></label>
-            </div>
-        </div>
-        -->
 </section>
 <div>
     <a onclick="Dialog.clear()" class="button flat">
