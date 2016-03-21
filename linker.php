@@ -37,11 +37,11 @@ function handleSSLErrors($errno, $errstr) {
 }
 
 // Temporary linker killer
-/*$loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
+$loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
     if($timestamp < time() - 3600*2) {
         $conn->close();
     }
-});*/
+});
 
 $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser, &$timestamp) {
     if(substr($data, -1) == "") {
@@ -102,7 +102,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             if(!empty($xml) && $conn) {
                 //$timestamp = time();
                 $conn->write(trim($xml));
-                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
         }
     } else {
@@ -124,7 +124,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
         if(!empty($message)) {
             $restart = false;
 
-            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
 
             if($message == '</stream:stream>') {
                 $conn->close();
@@ -185,7 +185,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             if(!empty($xml)) {
                 //$timestamp = time();
                 $conn->write(trim($xml));
-                #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
 
             \Moxl\API::clear();
