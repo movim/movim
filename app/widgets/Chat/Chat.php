@@ -562,6 +562,9 @@ class Chat extends WidgetBase
 
     function prepareMessage(&$message)
     {
+        $message->jidto = echapJS($message->jidto);
+        $message->jidfrom = echapJS($message->jidfrom);
+
         if(isset($message->html)) {
             $message->body = $message->html;
         } else {
