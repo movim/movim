@@ -1,19 +1,20 @@
 #!/usr/bin/env php
 
 <?php
+require dirname(__FILE__) . '/vendor/autoload.php';
+
 use Ratchet\Server\IoServer;
 use Ratchet\Http\HttpServer;
 use Ratchet\WebSocket\WsServer;
 use Movim\Daemon\Core;
+use Movim\Bootstrap;
 use \React\EventLoop\Factory;
 use React\Socket\Server as Reactor;
-
-require dirname(__FILE__) . '/vendor/autoload.php';
 
 define('DOCUMENT_ROOT', dirname(__FILE__));
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
-$bootstrap = new Bootstrap();
+$bootstrap = new Bootstrap;
 $booted = $bootstrap->boot();
 
 $argsize = count($argv);

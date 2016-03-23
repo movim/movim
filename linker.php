@@ -6,9 +6,10 @@ require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 gc_enable();
 
+use Movim\Bootstrap;
 //memprof_enable();
 
-$bootstrap = new Bootstrap();
+$bootstrap = new Bootstrap;
 $booted = $bootstrap->boot();
 
 $loop = React\EventLoop\Factory::create();

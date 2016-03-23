@@ -38,19 +38,22 @@
  */
 
 define('DOCUMENT_ROOT', dirname(__FILE__));
+
+require 'vendor/autoload.php';
 require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
+use Movim\Bootstrap;
+use Movim\Controller\Front;
+use Movim\Widget\Wrapper;
+
 try {
-    $bootstrap = new Bootstrap();
+    $bootstrap = new Bootstrap;
     $bootstrap->boot();
 } catch(Exception $e) {
     error_log($e->getMessage());
     echo 'Oops, something went wrong, please check the log files';
     return;
 }
-
-use Movim\Controller\Front;
-use Movim\Widget\Wrapper;
 
 $rqst = new Front;
 $rqst->handle();
