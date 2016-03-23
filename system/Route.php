@@ -23,9 +23,7 @@ class Route extends Base {
                 'help'          => false,
                 'infos'         => false,
                 'login'         => array('err'),
-                'main'          => false,
                 'news'          => array('n'),
-                'profile'       => false,
                 'room'          => array('r'),
                 'share'         => array('url'),
                 'visio'         => false
