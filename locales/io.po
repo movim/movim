@@ -1,8 +1,7 @@
-# Ido translation for movim
-# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
-# This file is distributed under the same license as the movim package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
+# Translators:
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013
+# William <fxinkeo@mail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -37,8 +36,6 @@
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -81,101 +78,101 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2014-06-01 23:07+0000\n"
-"Last-Translator: edhelas <edhelas@movim.eu>\n"
-"Language-Team: Ido <io@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Ido (http://www.transifex.com/movim/movim/language/io/)\n"
+"Language: io\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Danko"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "Konstruktisti"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Tradukanti"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Danko al omna tradukanti"
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "Softwaro"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "Moyeni"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim esas XMPP fondanta komunikajo-programo. Omna di la projeti, ecepte la sequanta softwari e moyeni, esas sub"
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Uzanto"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Chanjar mea pasvorto"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
 msgid "Password"
-msgstr ""
+msgstr "Pasvorto"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Pasvorto-konfirmo"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "La pasvorto aktualigesis"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Voluntez donar valida pasvorto (minim 6 literi)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "La donita pasvorti ne esas sama"
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "Efacar mea uzanto"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Efacar vua uzanto"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "Vu efacus vua XMPP-uzanto ed omna di la relatanta informi ligita ad olu (profilo, kontakti e publikigi)."
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Ka vu esas certa vu volas efacar olu ?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "Krear nova uzanto"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
@@ -191,7 +188,7 @@ msgstr ""
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Charjas"
 
 #: [create]placeholder
 msgid "…and start playing"
@@ -199,7 +196,7 @@ msgstr ""
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Ne aceptebla"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
@@ -211,11 +208,11 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Agi"
 
 #: [db]legend [schema]database
 msgid "Database"
-msgstr ""
+msgstr "Datumaro"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
@@ -235,11 +232,11 @@ msgstr ""
 
 #: [db]type
 msgid "Database Type"
-msgstr ""
+msgstr "Tipo di datumaro"
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Uzanto-nomo"
 
 #: [db]host
 msgid "Host"
@@ -259,7 +256,7 @@ msgstr ""
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Temo"
 
 #: [general]language
 msgid "Default language"
@@ -271,7 +268,7 @@ msgstr ""
 
 #: [general]timezone
 msgid "Server Timezone"
-msgstr ""
+msgstr "Servilo-tempozono"
 
 #: [general]limit
 msgid "User folder size limit (in bytes)"
@@ -307,7 +304,7 @@ msgstr ""
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "Riskribar pasvorto"
 
 #: [whitelist]title
 msgid "Whitelist - XMPP Server"
@@ -328,7 +325,7 @@ msgstr ""
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "Informo-mesajo"
 
 #: [information]description
 msgid "Description"
@@ -345,11 +342,11 @@ msgstr ""
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "Informo-mesajo"
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "Vakua"
 
 #: [log]syslog
 msgid "Syslog"
@@ -405,11 +402,11 @@ msgstr ""
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "Navigilo"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Movim-kerno"
 
 #: [schema]daemon
 msgid "Movim Daemon"
@@ -417,7 +414,7 @@ msgstr ""
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
@@ -449,19 +446,19 @@ msgstr ""
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "Failo"
 
 #: [avatar]use_it
 msgid "Use it"
-msgstr ""
+msgstr "Uzar olu"
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr ""
+msgstr "Webcam"
 
 #: [avatar]cheese
 msgid "Cheese !"
-msgstr ""
+msgstr "Ridetez !"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -497,25 +494,25 @@ msgstr ""
 
 #: [title]groups [group]empty_title [menu]groups [page]groups
 msgid "Groups"
-msgstr ""
+msgstr "Grupi"
 
 #: [chatroom]add
 msgid "Add a new Chat Room"
-msgstr ""
+msgstr "Adjuntar nova konverseyo "
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
-msgstr ""
+msgstr "Konverseyo ID"
 
 #: [chatroom]name
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr ""
+msgstr "Nomo"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 #: [accounts]accounts_nickname
 msgid "Nickname"
-msgstr ""
+msgstr "Surnomo"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
@@ -527,7 +524,7 @@ msgstr ""
 
 #: [chatroom]empty_name [chatrooms]empty_name
 msgid "Empty name"
-msgstr ""
+msgstr "Vakua nomo"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -535,7 +532,7 @@ msgstr ""
 
 #: [bookmarks]error
 msgid "An error occured :"
-msgstr ""
+msgstr "Eroro eventis :"
 
 #: [bookmarks]configure
 msgid "Configure"
@@ -543,20 +540,20 @@ msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
-msgstr ""
+msgstr "Adjuntar nova URL"
 
 #: [url]url
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: [url]name
 msgctxt "[url]name"
 msgid "Name"
-msgstr ""
+msgstr "Nomo"
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "Mesajo publikesis"
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -588,11 +585,11 @@ msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "Rideti"
 
 #: [chat]empty_title [button]chat
 msgid "Chat"
-msgstr ""
+msgstr "Konverso"
 
 #: [chat]empty_text
 msgid "Discuss with your contacts"
@@ -604,7 +601,7 @@ msgstr ""
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "Membri"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
@@ -656,7 +653,7 @@ msgstr ""
 
 #: [config]language
 msgid "Language"
-msgstr ""
+msgstr "Linguo"
 
 #: [config]roster
 msgid "Roster display"
@@ -700,35 +697,35 @@ msgstr ""
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr ""
+msgstr "Nomo"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr ""
+msgstr "Nasko-dato"
 
 #: [general]gender
 msgid "Gender"
-msgstr ""
+msgstr "Sexuo"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr ""
+msgstr "Spozala stando"
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "E-posto"
 
 #: [general]website
 msgid "Website"
-msgstr ""
+msgstr "Retosituo"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "Pri me"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "Altra uzanti"
 
 #: [general]tune
 msgid "Is Listening"
@@ -744,15 +741,15 @@ msgstr ""
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "Lando"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "Humoro"
 
 #: [mood]im
 msgid "I'm "
-msgstr ""
+msgstr "Me esas"
 
 #: [listen]title
 msgid "Listening"
@@ -776,7 +773,7 @@ msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
-msgstr ""
+msgstr "Redaktar"
 
 #: [edit]alias
 msgid "Alias"
@@ -784,7 +781,7 @@ msgstr ""
 
 #: [edit]group
 msgid "Group"
-msgstr ""
+msgstr "Grupo"
 
 #: [edit]updated [roster]updated
 msgid "Contact updated"
@@ -792,7 +789,7 @@ msgstr ""
 
 #: [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "Ka vu esas certe?"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
@@ -800,7 +797,7 @@ msgstr ""
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%s yari"
 
 #: [blog]last
 msgid "Last public post"
@@ -848,15 +845,15 @@ msgstr ""
 
 #: [group]subscribe
 msgid "Subscribe"
-msgstr ""
+msgstr "Abonar"
 
 #: [group]subscribed
 msgid "Subscribed"
-msgstr ""
+msgstr "Abonita"
 
 #: [group]unsubscribe
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Disabonar"
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -864,7 +861,7 @@ msgstr ""
 
 #: [group]unsubscribed
 msgid "Unsubscribed"
-msgstr ""
+msgstr "Disabonita"
 
 #: [group]share_label
 msgid "Make your membership to this group public to your friends"
@@ -872,11 +869,11 @@ msgstr ""
 
 #: [group]label_label
 msgid "Give a label for this group"
-msgstr ""
+msgstr "Donar etiketo por ica grupo"
 
 #: [group]sure
 msgid "Are you sure ?"
-msgstr ""
+msgstr "Ka vu esas certa ?"
 
 #: [group]empty_text
 msgid "Discover, follow and share"
@@ -892,7 +889,7 @@ msgstr ""
 
 #: [group]delete_title
 msgid "Delete the group"
-msgstr ""
+msgstr "Efacar ica grupo"
 
 #: [group]delete_text
 msgid "You are going to delete the following group. Please confirm your action."
@@ -904,11 +901,11 @@ msgstr ""
 
 #: [group]counter
 msgid "%s groups on this server"
-msgstr ""
+msgstr "%s grupi ye ica servilo"
 
 #: [group]subscriptions [statistics]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "Aboni"
 
 #: [group]servers
 msgid "Groups servers"
@@ -916,7 +913,7 @@ msgstr ""
 
 #: [group]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "Serchar por nova servilo"
 
 #: [group]help_info1
 msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
@@ -924,7 +921,7 @@ msgstr ""
 
 #: [group]help_info2
 msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-msgstr ""
+msgstr "Selektas servilo e grupo ed abonar ad olu per la %s-butono an la kapo. Vu anke povas krear nova per %s-butono."
 
 #: [group]help_info3
 msgid "Done? You can now publish a new post in the Group by using the %s button."
@@ -936,35 +933,35 @@ msgstr ""
 
 #: [groups]empty_title
 msgid "Hello"
-msgstr ""
+msgstr "Hola"
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
-msgstr ""
+msgstr "Mea aboni"
 
 #: [groups]add
 msgid "Create a new Group"
-msgstr ""
+msgstr "Krear nova grupo"
 
 #: [groups]name
 msgid "Group name"
-msgstr ""
+msgstr "Grupo-nomo"
 
 #: [groups]name_example
 msgid "My Little Pony - Fan Club"
-msgstr ""
+msgstr "Mea mikra poneo - adoranto-klubo"
 
 #: [groups]created
 msgid "Group created successfully"
@@ -992,54 +989,6 @@ msgstr ""
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr ""
-
-#: [hello]news [page]news
-msgid "News"
-msgstr ""
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr ""
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr ""
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr ""
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr ""
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr ""
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1076,15 +1025,15 @@ msgstr ""
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
-msgstr ""
+msgstr "Serchas por dokumentigo ?"
 
 #: [wiki]button
 msgid "Read the Wiki"
-msgstr ""
+msgstr "Lektar la WIki"
 
 #: [ml]question
 msgid "Talk with us by email ?"
-msgstr ""
+msgstr "Konversar kun ni per e-posto ?"
 
 #: [ml]button
 msgid "Join the Mailing List"
@@ -1092,7 +1041,7 @@ msgstr ""
 
 #: [chatroom]question
 msgid "Chat with the team ?"
-msgstr ""
+msgstr "Konversar kun l'esquado ?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1124,11 +1073,11 @@ msgstr ""
 
 #: [error]username
 msgid "Wrong username"
-msgstr ""
+msgstr "Nekorekta uzanto-nomo"
 
 #: [error]jid
 msgid "Invalid JID"
-msgstr ""
+msgstr "Nekorekta JID"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
@@ -1144,7 +1093,7 @@ msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
-msgstr ""
+msgstr "Nekorekta pasvorto"
 
 #: [error]internal
 msgid "Internal server error"
@@ -1177,11 +1126,11 @@ msgstr ""
 
 #: [error]title
 msgid "Oops!"
-msgstr ""
+msgstr "Ups!"
 
 #: [error]default
 msgid "Unknown error"
-msgstr ""
+msgstr "Nesavata eroro"
 
 #: [error]login_format
 msgid "Invalid username format"
@@ -1214,11 +1163,11 @@ msgstr ""
 
 #: [form]username
 msgid "My address"
-msgstr ""
+msgstr "Mea adreso"
 
 #: [form]create_one
 msgid "Create one !"
-msgstr ""
+msgstr "Krear !"
 
 #: [form]another_account
 msgid "Another account"
@@ -1250,7 +1199,7 @@ msgstr ""
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
-msgstr ""
+msgstr "Bonvenez a vua niuzo-adporto, hike vu spektebla omna di la postigi publikigita da vua kontakti e ye la grupi vu abonesas a."
 
 #: [menu]refresh
 msgid "Refresh all the streams"
@@ -1262,7 +1211,7 @@ msgstr ""
 
 #: [menu]all
 msgid "All"
-msgstr ""
+msgstr "Omna"
 
 #: [menu]mine
 msgid "My publications"
@@ -1282,7 +1231,7 @@ msgstr ""
 
 #: [notifs]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s volas konversar kun vu"
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1322,7 +1271,7 @@ msgstr ""
 
 #: [post]repost_profile
 msgid "See %s profile"
-msgstr ""
+msgstr "Regardar %s profilo"
 
 #: [post]blog_last
 msgid "Public posts from users"
@@ -1364,13 +1313,49 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr ""
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr ""
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr "Ho! Hola!"
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr "Olu semblas ke vu esas nova a hike! Bonvenez sur Movim!"
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr ""
 
 #: [status]here
 msgid "Your status here !"
-msgstr ""
+msgstr "Vua stando hike !"
 
 #: [status]updated
 msgid "Status updated"
@@ -1388,7 +1373,7 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr ""
 
@@ -1716,10 +1701,6 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr ""
@@ -1727,6 +1708,10 @@ msgstr ""
 #: [page]account_creation
 msgid "Account Creation"
 msgstr ""
+
+#: [page]news
+msgid "News"
+msgstr "Niuzi"
 
 #: [page]avatar
 msgid "Avatar"
@@ -1736,20 +1721,8 @@ msgstr ""
 msgid "Chats"
 msgstr ""
 
-#: [page]server
-msgid "Server"
-msgstr ""
-
 #: [page]public_groups
 msgid "Public Groups"
-msgstr ""
-
-#: [page]viewer
-msgid "Viewer"
-msgstr ""
-
-#: [page]media
-msgid "Media"
 msgstr ""
 
 #: [page]blog
@@ -1804,10 +1777,6 @@ msgstr ""
 msgid "Cannot load file '%s'"
 msgstr ""
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
@@ -1818,82 +1787,6 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr ""
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr ""
-
-#: [title]account
-msgid "%s - Account"
-msgstr ""
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr ""
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr ""
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr ""
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr ""
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr ""
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr ""
-
-#: [title]media
-msgid "%s - Media"
-msgstr ""
-
-#: [title]news
-msgid "%s - News"
-msgstr ""
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr ""
-
-#: [title]node
-msgid "%s - Group"
-msgstr ""
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr ""
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr ""
-
-#: [title]server
-msgid "%s - Server"
 msgstr ""
 
 #: [button]validate
@@ -1988,10 +1881,6 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: [step]step
-msgid "Step %s"
-msgstr ""
-
 #: [day]title
 msgid "Day"
 msgstr ""
@@ -2025,10 +1914,9 @@ msgid "Sunday"
 msgstr ""
 
 #: [gender]nil
-#, fuzzy
 msgctxt "[gender]nil"
 msgid "None"
-msgstr "Nula"
+msgstr ""
 
 #: [gender]male
 msgid "Male"
@@ -2063,10 +1951,9 @@ msgid "Registered"
 msgstr ""
 
 #: [marital]nil
-#, fuzzy
 msgctxt "[marital]nil"
 msgid "None"
-msgstr "Nula"
+msgstr ""
 
 #: [marital]single
 msgid "Single"
@@ -2086,7 +1973,7 @@ msgstr "Divorcinta"
 
 #: [marital]widowed
 msgid "Widowed"
-msgstr ""
+msgstr "Vidvesita"
 
 #: [marital]cohabiting
 msgid "Cohabiting"
@@ -2122,11 +2009,11 @@ msgstr "Konektita"
 
 #: [presence]away
 msgid "Away"
-msgstr ""
+msgstr "Absenta"
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "Ne trublez"
 
 #: [presence]xa
 msgid "Extended Away"
@@ -2541,9 +2428,8 @@ msgid "Yesterday"
 msgstr "Hiere"
 
 #: [date]ago
-#, fuzzy
 msgid "%d days ago"
-msgstr " %d dii ante"
+msgstr ""
 
 #: [date]day
 msgid "day"

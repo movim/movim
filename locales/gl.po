@@ -1,6 +1,5 @@
-# Galician translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+#
+# Translators:
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -35,8 +34,6 @@
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -77,18 +74,18 @@
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2014-06-01 23:06+0000\n"
-"Last-Translator: Daniel-san <inad9300@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Galician (http://www.transifex.com/movim/movim/language/gl/)\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -122,14 +119,13 @@ msgstr ""
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr ""
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
 msgstr ""
 
 #: [account]password_change_title
-#, fuzzy
 msgid "Change my password"
-msgstr "Contrasinal incorrecta"
+msgstr ""
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -137,9 +133,8 @@ msgid "Password"
 msgstr "Contrasinal"
 
 #: [account]password_confirmation
-#, fuzzy
 msgid "Password confirmation"
-msgstr "Configuración de %s"
+msgstr ""
 
 #: [account]password_changed
 msgid "The password has been updated"
@@ -675,14 +670,12 @@ msgid "Appearence"
 msgstr ""
 
 #: [config]not_valid
-#, fuzzy
 msgid "Configuration invalid"
-msgstr "Configuración"
+msgstr ""
 
 #: [config]advanced
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Configuración"
+msgstr ""
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -940,16 +933,16 @@ msgstr ""
 msgid "Hello"
 msgstr ""
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
@@ -994,54 +987,6 @@ msgstr ""
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr ""
-
-#: [hello]news [page]news
-msgid "News"
-msgstr ""
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr ""
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr ""
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr ""
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr ""
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr ""
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1366,6 +1311,42 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr ""
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr ""
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr ""
@@ -1390,7 +1371,7 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr ""
 
@@ -1718,10 +1699,6 @@ msgstr ""
 msgid "Home"
 msgstr "Inicio"
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr ""
@@ -1729,6 +1706,10 @@ msgstr ""
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Creación dunha Conta"
+
+#: [page]news
+msgid "News"
+msgstr ""
 
 #: [page]avatar
 msgid "Avatar"
@@ -1738,20 +1719,8 @@ msgstr ""
 msgid "Chats"
 msgstr ""
 
-#: [page]server
-msgid "Server"
-msgstr ""
-
 #: [page]public_groups
 msgid "Public Groups"
-msgstr ""
-
-#: [page]viewer
-msgid "Viewer"
-msgstr ""
-
-#: [page]media
-msgid "Media"
 msgstr ""
 
 #: [page]blog
@@ -1806,10 +1775,6 @@ msgstr ""
 msgid "Cannot load file '%s'"
 msgstr "Non pode cargarse o arquivo '%s'"
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr "Erro de ruta, por favor, coloque todos os parámetros para a páxina %s"
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
@@ -1820,82 +1785,6 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr ""
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr ""
-
-#: [title]account
-msgid "%s - Account"
-msgstr ""
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr ""
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "Configuración de %s"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr ""
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr ""
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "%s - Iniciar a MOVIM"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "%s - Benvindo ao MOVIM"
-
-#: [title]media
-msgid "%s - Media"
-msgstr ""
-
-#: [title]news
-msgid "%s - News"
-msgstr ""
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr ""
-
-#: [title]node
-msgid "%s - Group"
-msgstr ""
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr ""
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr ""
-
-#: [title]server
-msgid "%s - Server"
 msgstr ""
 
 #: [button]validate
@@ -1988,10 +1877,6 @@ msgstr ""
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
-
-#: [step]step
-msgid "Step %s"
 msgstr ""
 
 #: [day]title
@@ -2651,21 +2536,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Logout"
-#~ msgstr "Saír"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "Creación de Conta %s"
-
-#~ msgid "Debug console"
-#~ msgstr "Debug da consola"
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "Incompatibilidade de versión PHP. Movim require PHP mínimo 5.3."
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim require a extensión %s."
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Cartafol MOVIM debe ter permiso de escritura."

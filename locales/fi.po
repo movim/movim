@@ -1,6 +1,5 @@
-# Finnish translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+#
+# Translators:
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -35,8 +34,6 @@
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -77,18 +74,18 @@
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2012-07-19 13:34+0000\n"
-"Last-Translator: Sampo Harjula <sahtor@sahtor.net>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
+"Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -122,14 +119,13 @@ msgstr ""
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr ""
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
 msgstr ""
 
 #: [account]password_change_title
-#, fuzzy
 msgid "Change my password"
-msgstr "Väärä salasana"
+msgstr ""
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -137,9 +133,8 @@ msgid "Password"
 msgstr "Salasana"
 
 #: [account]password_confirmation
-#, fuzzy
 msgid "Password confirmation"
-msgstr "%s - Konfigurointi"
+msgstr ""
 
 #: [account]password_changed
 msgid "The password has been updated"
@@ -158,9 +153,8 @@ msgid "Delete my account"
 msgstr ""
 
 #: [account]delete
-#, fuzzy
 msgid "Delete your account"
-msgstr "Luo uusi tili"
+msgstr ""
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
@@ -251,9 +245,8 @@ msgid "Port"
 msgstr ""
 
 #: [db]name
-#, fuzzy
 msgid "Database Name"
-msgstr "Tietokanta tunnistettu"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -328,10 +321,9 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: [information]title
-#, fuzzy
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "Asiakastiedot"
+msgstr ""
 
 #: [information]description
 msgid "Description"
@@ -346,10 +338,9 @@ msgid "Leave this field blank if you dont want to show any message."
 msgstr ""
 
 #: [information]label
-#, fuzzy
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr "Asiakastiedot"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -392,9 +383,8 @@ msgid "Install the php5-gd library"
 msgstr ""
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movims root directory"
-msgstr "kirjoitus- ja lukuoikeudet Movim-juurihakemistoon"
+msgstr ""
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -513,10 +503,9 @@ msgid "Chat Room ID"
 msgstr ""
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Nimi"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 #: [accounts]accounts_nickname
@@ -556,10 +545,9 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Nimi"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -682,14 +670,12 @@ msgid "Appearence"
 msgstr ""
 
 #: [config]not_valid
-#, fuzzy
 msgid "Configuration invalid"
-msgstr "Asetukset"
+msgstr ""
 
 #: [config]advanced
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Asetukset"
+msgstr ""
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -820,9 +806,8 @@ msgid "Visit the blog to see all the public posts"
 msgstr ""
 
 #: [subscription]to
-#, fuzzy
 msgid "You can see this contact status"
-msgstr "Poista tämä kontakti"
+msgstr ""
 
 #: [subscription]to_button
 msgid "Share my status"
@@ -948,16 +933,16 @@ msgstr ""
 msgid "Hello"
 msgstr ""
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
@@ -1001,56 +986,7 @@ msgid "%s posts"
 msgstr ""
 
 #: [groups]disco_error
-#, fuzzy
 msgid "This server doesn't exists"
-msgstr "Tämä palvelin ylläpitää %s käyttäjätiliä"
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr ""
-
-#: [hello]news [page]news
-msgid "News"
-msgstr ""
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr ""
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr ""
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr ""
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr ""
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr ""
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1375,6 +1311,42 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr ""
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr ""
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr ""
@@ -1399,7 +1371,7 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr ""
 
@@ -1501,7 +1473,7 @@ msgstr ""
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr "Käyttäjänimi on jo käytössä"
+msgstr ""
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1552,9 +1524,8 @@ msgid "Please enter a valid Jabber ID"
 msgstr ""
 
 #: [roster]no_contacts_title
-#, fuzzy
 msgid "No contacts ?"
-msgstr "Kontaktit (%s)"
+msgstr ""
 
 #: [roster]no_contacts_text
 msgid "You can add one using the + button bellow"
@@ -1728,10 +1699,6 @@ msgstr ""
 msgid "Home"
 msgstr "Etusivu"
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr ""
@@ -1739,6 +1706,10 @@ msgstr ""
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Käyttäjätilin luominen"
+
+#: [page]news
+msgid "News"
+msgstr ""
 
 #: [page]avatar
 msgid "Avatar"
@@ -1748,20 +1719,8 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr ""
 
-#: [page]server
-msgid "Server"
-msgstr ""
-
 #: [page]public_groups
 msgid "Public Groups"
-msgstr ""
-
-#: [page]viewer
-msgid "Viewer"
-msgstr ""
-
-#: [page]media
-msgid "Media"
 msgstr ""
 
 #: [page]blog
@@ -1816,10 +1775,6 @@ msgstr "Virhe: %s"
 msgid "Cannot load file '%s'"
 msgstr "Ei voi ladata tiedostoa '%s'"
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
@@ -1830,82 +1785,6 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr ""
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr ""
-
-#: [title]account
-msgid "%s - Account"
-msgstr ""
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr ""
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "%s - Konfigurointi"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr ""
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr "%s - Ohjesivu"
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "%s - Kirjaudu Movimiin"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "%s - Tervetuloa käyttämään Movimia"
-
-#: [title]media
-msgid "%s - Media"
-msgstr ""
-
-#: [title]news
-msgid "%s - News"
-msgstr ""
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr ""
-
-#: [title]node
-msgid "%s - Group"
-msgstr ""
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr ""
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr "%s - Profiili"
-
-#: [title]server
-msgid "%s - Server"
 msgstr ""
 
 #: [button]validate
@@ -1974,11 +1853,11 @@ msgstr ""
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr "Kyllä"
+msgstr ""
 
 #: [button]bool_no
 msgid "No"
-msgstr "Ei"
+msgstr ""
 
 #: [button]return
 msgid "Return"
@@ -1998,10 +1877,6 @@ msgstr ""
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
-
-#: [step]step
-msgid "Step %s"
 msgstr ""
 
 #: [day]title
@@ -2037,10 +1912,9 @@ msgid "Sunday"
 msgstr ""
 
 #: [gender]nil
-#, fuzzy
 msgctxt "[gender]nil"
 msgid "None"
-msgstr "Ei mitään"
+msgstr ""
 
 #: [gender]male
 msgid "Male"
@@ -2075,10 +1949,9 @@ msgid "Registered"
 msgstr ""
 
 #: [marital]nil
-#, fuzzy
 msgctxt "[marital]nil"
 msgid "None"
-msgstr "Ei mitään"
+msgstr ""
 
 #: [marital]single
 msgid "Single"
@@ -2553,9 +2426,8 @@ msgid "Yesterday"
 msgstr "Eilen"
 
 #: [date]ago
-#, fuzzy
 msgid "%d days ago"
-msgstr " %d päivää sitten"
+msgstr ""
 
 #: [date]day
 msgid "day"
@@ -2618,9 +2490,8 @@ msgid "Show the older comments"
 msgstr ""
 
 #: [post]comments_loading
-#, fuzzy
 msgid "Loading comments..."
-msgstr "Ladataan sinun syötteitä ..."
+msgstr ""
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2665,269 +2536,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#, fuzzy
-#~ msgctxt "[general]nickname"
-#~ msgid "Nickname"
-#~ msgstr "Lempinimi"
-
-#, fuzzy
-#~ msgctxt "[accounts]accounts_nickname"
-#~ msgid "Nickname"
-#~ msgstr "Lempinimi"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Selaimesi on liian vanha Movimille, lataa uudempi"
-
-#, fuzzy
-#~ msgid "Active contacts"
-#~ msgstr "Toimenpiteet"
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "PHP versio ei yhteensopiva. Movim vaatii vähintään PHP 5.3:n"
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim vaatii %s laajennuksen."
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Movim -kansioon täytyy olla kirjoitusoikeudet"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Ei voitu luoda asetustiedostoa '%s'"
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Yhteensopivuustesti"
-
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "Seuraavia vaatimuksia ei voitu täyttää. Varmista että kaikki vaatimukset täytetty että voit asentaa Movimin."
-
-#~ msgid "User not logged in."
-#~ msgstr "Käyttäjä ei ole kirjautunut sisään."
-
-#~ msgid "JID not provided."
-#~ msgstr "JID ei määritetty."
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "jid '%s' on väärin"
-
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "Ei voi avata lokitiedostoa '%s'"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Tilin luominen"
-
-#~ msgid "Debug console"
-#~ msgstr "Debug konsoli"
-
-#~ msgid "Logout"
-#~ msgstr "Kirjaudu ulos"
-
-#~ msgid "wants to talk with you"
-#~ msgstr "haluaa jutella kanssasi"
-
-#~ msgid "Decline"
-#~ msgstr "Hylkää"
-
-#~ msgid "Loading the contact feed ..."
-#~ msgstr "Ladataan kontaktit-feediä"
-
-#~ msgid "Install the %s package"
-#~ msgstr "Asenna %s paketti"
-
-#~ msgid "or"
-#~ msgstr "tai"
-
-#~ msgid "Actual version : "
-#~ msgstr "Nykyinen versio: "
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Asenna %s ja %s paketit"
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Päivitä PHP versiosi tai ota yhteys palvelimen ylläpitäjään"
-
-#~ msgid "Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit."
-#~ msgstr "Muista että Movim on yhä työn alla ja ylläpitää henkilökohtaisia tietoja. Käyttö vielä tässä vaiheessa voi joissain tapauksissa vaarantaa yksityisyyden. Ole huolellinen jakaessasi tietoja."
-
-#~ msgid "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr "Ennen kuin voit nauttia sosiaalisesta verkosta, tarvitaan vielä vähän säätämistä"
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Kiitos että latasit Movimin!"
-
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "Kansiota '%s' ei voitu luoda"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Movin asennusohjelma"
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "Välityspalvelimen asetukset"
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "XMPP yhteysasetukset"
-
-#~ msgid "ultimate"
-#~ msgstr "äärimmäinen"
-
-#~ msgid "normal"
-#~ msgstr "normaali"
-
-#~ msgid "terse"
-#~ msgstr "ytimekäs"
-
-#~ msgid "empty"
-#~ msgstr "tyhjä"
-
-#~ msgid "BOSH Connection Preferences"
-#~ msgstr "BOSH yhteysasetukset"
-
-#~ msgid "Success !"
-#~ msgstr "Onnistui!"
-
-#~ msgid "Please remove the %s folder in order to complete the installation"
-#~ msgstr "Poista %s kansio että voit saattaa asennuksen loppuun"
-
-#~ msgid "Database Movim schema installed"
-#~ msgstr "Movim tietokantamalli asennettu"
-
-#~ msgid "Connecting..."
-#~ msgstr "Yhdistetään..."
-
-#~ msgid "%s - Add An Account"
-#~ msgstr "%s - Lisää käyttäjätili"
-
-#~ msgid "Only alphanumerics elements are authorized"
-#~ msgstr "vain numeeriset elementit on hyväksytty"
-
-#~ msgid "Wrong ID"
-#~ msgstr "Väärä ID"
-
-#~ msgid "Could not communicate with the XMPP server"
-#~ msgstr "Ongelmia yhteydessä XMPP serveriin"
-
-#~ msgid "Invalid name"
-#~ msgstr "Virheellinen nimi"
-
-#~ msgid "You entered different passwords"
-#~ msgstr "Syötit eri salasanat"
-
-#~ msgid "Could not connect to the XMPP server"
-#~ msgstr "Ei voitu luoda yhteyttä XMPP serveriin"
-
-#~ msgid "Firstly fill in this blank with a brand new account ID, this address will follow you on all the Movim network !"
-#~ msgstr "Ensiksi anna uusi tilin ID-tunniste, tämä tunniste on sinun käytössä koko Movim verkossa."
-
-#~ msgid "Make sure your password is safe :"
-#~ msgstr "Pidä huolta että salasanasi on turvallinen:"
-
-#~ msgid "Example :"
-#~ msgstr "Esimerkki:"
-
-#~ msgid "Same here !"
-#~ msgstr "Sama täällä!"
-
-#~ msgid "Pseudo"
-#~ msgstr "Pseudo"
-
-#~ msgid "Create"
-#~ msgstr "Luo"
-
-#~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr "Suositellaan käyttämään iso kirjainta, numeroa ja/tai erikoismerkkiä."
-
-#~ msgid "8 characters"
-#~ msgstr "8 merkkiä"
-
-#~ msgid "Retype"
-#~ msgstr "Kirjoita uudelleen"
-
-#~ msgid "Add your login informations"
-#~ msgstr "Lisää kirjautumistiedot"
-
-#~ msgid "Address"
-#~ msgstr "Osoite"
-
-#~ msgid "Client Type"
-#~ msgstr "Asiakasohjelma"
-
-#~ msgid "Your server doesn't support post publication, you can only read contact's feeds"
-#~ msgstr "Palvelimesi ei tue postauksen julakisua, voit vain lukea kontaktisi syötteet"
-
-#~ msgid "My Posts"
-#~ msgstr "Minun postaukset"
-
-#~ msgid "I can't find the answer to my question here"
-#~ msgstr "En löydä täältä vastausta kysymykselleni"
-
-#~ msgid "talkative"
-#~ msgstr "puhelias"
-
-#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "Voi nyt mennä uudenkarheaan Movim instanssiisi %s hyppää sisään %s"
-
-#~ msgid "Client Name"
-#~ msgstr "Asiakkaan nimi"
-
-#~ msgid "The current BOSH URL in invalid"
-#~ msgstr "Nykyinen BOSH url on epäkelpo"
-
-#~ msgid "Although Movim is evolving fast, many (many) features are missing. Be patient ;). You can have a look %s at next versions's roadmaps %s to know if the one you want is on its way."
-#~ msgstr "Vaikka Movim kehittyy nopeasti, useat ominaisuudet saattavat vielä olla puutteellisia. Ole kärsivällinen ;) Voit katsoa jo etukäteen %s tulevien versioiden ominaisuuksia %s."
-
-#~ msgid "Don't forget that Movim is an open source project, a helping hand is always welcome (see %s Can I participate %s)"
-#~ msgstr "Movim on avoimen lähdekoodin projekti, auttavat kädet ovat aina tervetulleita (katso %s Miten voin osallistua %s)"
-
-#~ msgid "No profile yet ?"
-#~ msgstr "Ei vielä käyttäjätunnusta?"
-
-#~ msgid "Link my current account"
-#~ msgstr "Yhdistä nykyiseen käyttäjätiliin"
-
-#~ msgid "Create my vCard"
-#~ msgstr "Luo vCard"
-
-#~ msgid "Show All"
-#~ msgstr "Näytä kaikki"
-
-#~ msgid "Edit my Profile"
-#~ msgstr "Muokkaa profiiliani"
-
-#~ msgid "Follow"
-#~ msgstr "Seuraa"
-
-#~ msgid "Some features are missing/I can't do everything I used to do on other social networks"
-#~ msgstr "Joitain ominaisuuksia puuttuu / en voi tehdä kaikkea mitä muissa sosiaalisissa verkoissa"
-
-#~ msgid "Visit the page %s What is Movim ? %s to know more about the project, its aims and understand how it works."
-#~ msgstr "Vieraile %s Mikä Movim on? %s sivulla saadaksesi tietoa projektista, tavoitteista ja ymmärtääksesi sen toimintaa."
-
-#~ msgid "Go to the %s to the Frequently Asked Questions %s or come ask your question on the official chatroom %s or via our mailing-list (%s see the dedicated page %s)."
-#~ msgstr "Vieräile %s Usein Kysytyissä Kysymyksissä (FAQ/UKK) %s tai kysy meidän virallisessa chatissa tai %s tai meidän postituslistalla (%s katso sivu%s)."
-
-#~ msgid "Some errors were detected. Please correct them for the installation to proceed."
-#~ msgstr "Joitain virheitä huomattiin, ole hyvä ja korjaa virheet että voidaan jatkaa asentamista."
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Ei voi ladata elementin arvoa '%s'"
-
-#~ msgid "Invite this user"
-#~ msgstr "Kutsu tämä tkäyttäjä"
-
-#~ msgid "What is Movim?"
-#~ msgstr "Mikä Movim on?"
-
-#~ msgid "XMPP connection through Bosh failed with error '%s'"
-#~ msgstr "XMPP yhteys Boshin kautta epäonnistui, virhekoodi '%s'"
-
-#~ msgid "Database connection failed with error '%s'"
-#~ msgstr "Yhteys tietokantaan epäonnistui, virhekoodi '%s'"
-
-#~ msgid "Send request"
-#~ msgstr "Lähetä pyyntö"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "Validi Bosh-yhteys"
-
-#~ msgid "Bosh connection failed with error '%s'"
-#~ msgstr "Bosh yhteys epäonnistui, virhekoodi '%s'"

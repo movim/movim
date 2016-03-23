@@ -36,8 +36,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
@@ -79,8 +77,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2015-12-29 12:43+0000\n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
 "Language: he\n"
@@ -122,7 +120,7 @@ msgstr "API"
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "Movim הינו פלטפורמת תקשורת מבוססת XMPP. כל הפרויקט, למעט התכנות והמקורות הבאים, רשוי תחת"
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
 msgstr ""
 
@@ -936,16 +934,16 @@ msgstr ""
 msgid "Hello"
 msgstr "שלום"
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "פרסום איש קשר"
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
@@ -990,54 +988,6 @@ msgstr ""
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr ""
-
-#: [hello]news [page]news
-msgid "News"
-msgstr "חדשות"
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr ""
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr ""
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr ""
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr ""
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr ""
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1263,18 +1213,16 @@ msgid "All"
 msgstr "הכל"
 
 #: [menu]mine
-#, fuzzy
 msgid "My publications"
-msgstr "פרסום איש קשר"
+msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
 msgstr "אנשי קשר"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Add a post"
-msgstr "הוסף תגובה"
+msgstr ""
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1325,9 +1273,8 @@ msgid "See %s profile"
 msgstr ""
 
 #: [post]blog_last
-#, fuzzy
 msgid "Public posts from users"
-msgstr "קבוצות פומביות"
+msgstr ""
 
 #: [post]public
 msgid "Publish this post publicly?"
@@ -1365,6 +1312,42 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr ""
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr ""
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr "התנתק"
@@ -1389,7 +1372,7 @@ msgstr "נוכחות"
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr "תצוגה מקדימה"
 
@@ -1582,9 +1565,8 @@ msgid "Search in your contacts"
 msgstr ""
 
 #: [roster]search_pod
-#, fuzzy
 msgid "Search a contact"
-msgstr "שותף עם כל אנשי הקשר"
+msgstr ""
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1691,9 +1673,8 @@ msgid "Is this profile public ?"
 msgstr "האם דיוקן זה הינו פומבי ?"
 
 #: [privacy]privacy_info
-#, fuzzy
 msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
-msgstr "לצומת לבך ! בהופכך את דיוקנך לפומבי, כל המידע שמנוי מעלה יהיה זמין לכל המשתמשים של Movim וגם בכל המרשתת."
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1719,10 +1700,6 @@ msgstr "ניהול"
 msgid "Home"
 msgstr "בית"
 
-#: [page]discover
-msgid "Discover"
-msgstr "גלה"
-
 #: [page]explore
 msgid "Explore"
 msgstr "סייר"
@@ -1730,6 +1707,10 @@ msgstr "סייר"
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "יצירת חשבון"
+
+#: [page]news
+msgid "News"
+msgstr "חדשות"
 
 #: [page]avatar
 msgid "Avatar"
@@ -1739,21 +1720,9 @@ msgstr "אווטאר"
 msgid "Chats"
 msgstr "שיחות"
 
-#: [page]server
-msgid "Server"
-msgstr "שרת"
-
 #: [page]public_groups
 msgid "Public Groups"
 msgstr "קבוצות פומביות"
-
-#: [page]viewer
-msgid "Viewer"
-msgstr "צופה"
-
-#: [page]media
-msgid "Media"
-msgstr "מדיה"
 
 #: [page]blog
 msgid "Blog"
@@ -1807,10 +1776,6 @@ msgstr "שגיאה: %s"
 msgid "Cannot load file '%s'"
 msgstr "לא ניתן לטעון קובץ '%s'"
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr "שגיאת ניתוב, אנא הגדר את כל הפרמטרים עבור העמוד %s"
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr "וידג׳ט מבוקש '%s' לא קיים."
@@ -1822,82 +1787,6 @@ msgstr "אירוע מבוקש '%s' לא רשום."
 #: [error]whoops
 msgid "Whoops!"
 msgstr "אופס!"
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr "נראה כי אין לך שום תמונה כאן?"
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr "%s - אודות"
-
-#: [title]account
-msgid "%s - Account"
-msgstr "%s - חשבון"
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr "%s - לוח ניהול"
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr "%s - בלוג"
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "‏‏%s - תצורה"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr "%s - לגלות"
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr "%s - סייר"
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr "‏‏%s - עמוד עזרה"
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "‏‏%s - התחברות אל Movim"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "‏‏%s - ברוך בואך אל Movim"
-
-#: [title]media
-msgid "%s - Media"
-msgstr "%s - מדיה"
-
-#: [title]news
-msgid "%s - News"
-msgstr "%s - חדשות"
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr "%s - תצורת קבוצה"
-
-#: [title]node
-msgid "%s - Group"
-msgstr "%s - קבוצה"
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr ""
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr "‏‏%s - דיוקן"
-
-#: [title]server
-msgid "%s - Server"
-msgstr "%s - שרת"
 
 #: [button]validate
 msgid "Validate"
@@ -1990,10 +1879,6 @@ msgstr ""
 #: [button]previous
 msgid "Previous"
 msgstr ""
-
-#: [step]step
-msgid "Step %s"
-msgstr "צעד %s"
 
 #: [day]title
 msgid "Day"
@@ -2652,75 +2537,3 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Data"
-#~ msgstr "נתונים"
-
-#~ msgid "Cache"
-#~ msgstr "מטמון"
-
-#~ msgid "Messages"
-#~ msgstr "הודעות"
-
-#~ msgid "Location"
-#~ msgstr "מיקום"
-
-#~ msgid "Wrong position"
-#~ msgstr "מיקום שגוי"
-
-#~ msgid "Location updated"
-#~ msgstr "מיקום עודכן"
-
-#~ msgid "Update my position"
-#~ msgstr "עדכן את המיקום שלי"
-
-#~ msgid "Manage your members"
-#~ msgstr "נהל את חבריך"
-
-#~ msgid "Get the members"
-#~ msgstr "השג את החברים"
-
-#~ msgid "Affiliations saved"
-#~ msgstr "סינופים נשמרו"
-
-#~ msgid "Manage your subscriptions"
-#~ msgstr "נהל את ההרשמות שלך"
-
-#~ msgid "Manage the subscriptions"
-#~ msgstr "נהל את ההרשמות"
-
-#~ msgid "Get the subscriptions"
-#~ msgstr "השג את ההרשמות"
-
-#~ msgid "Subscriptions saved"
-#~ msgstr "הרשמות נשמרו"
-
-#~ msgid "Shared"
-#~ msgstr "משותף"
-
-#~ msgid "%s has been added to your public groups"
-#~ msgstr "%s התווסף אל הקבוצה הפומבית שלך"
-
-#~ msgid "Search"
-#~ msgstr "חיפוש"
-
-#~ msgid "Hung up"
-#~ msgstr "נותקה"
-
-#~ msgid "Your contact is busy"
-#~ msgstr "איש הקשר שלך הינו עסוק"
-
-#~ msgid "Declined"
-#~ msgstr "נדחתה"
-
-#~ msgid "Is calling you"
-#~ msgstr "מתקשר אליך"
-
-#~ msgid "Call"
-#~ msgstr "צור קשר"
-
-#~ msgid "Hang up"
-#~ msgstr "נתק"
-
-#~ msgid "Connection"
-#~ msgstr "חיבור"

@@ -1,6 +1,6 @@
-# Ukrainian translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+#
+# Translators:
+# Den Girnyk <great.antique@gmail.com>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -35,8 +35,6 @@
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -77,72 +75,71 @@
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2012-08-02 15:08+0000\n"
-"Last-Translator: Nazar Banakh <flesch91@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Ukrainian (http://www.transifex.com/movim/movim/language/uk/)\n"
+"Language: uk\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Дякуємо"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "Розробники"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Перекладачі"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Дякуємо всім перекладачам"
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "Програмне забезпечення"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "Ресурси"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim - це платформа для спілкування, основана на протоколі XMPP. Всі проекти, окрім наступного програмного запезпечення там ресурсів, ліцензовані"
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Користувач"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Змінити мій пароль"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: [account]password_confirmation
-#, fuzzy
 msgid "Password confirmation"
-msgstr "%s - Конфігурація"
+msgstr "Підтвердження паролю"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Пароль був змінений"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
@@ -154,19 +151,19 @@ msgstr ""
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "Видалити мого користувача"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Видалити вашого користувача"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "Ви видалите вашого XMPP користувача та всю пов'язану з ним інформацію (профіль, контакти та публікації)"
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Ви впевнені, що хочете видалити це?"
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -174,7 +171,7 @@ msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "Створити нового користувача"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
@@ -186,15 +183,15 @@ msgstr ""
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "Ваш користувач був успішно зареєстрований"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Завантаження"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...та почніть грати"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -202,35 +199,35 @@ msgstr ""
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "Система реєстрації даного сервера наразі недоступна"
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
-msgstr ""
+msgstr "Даний сервер використовує зовнішню систему реєстрації. Перейдіть за наступним посиланням"
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Дії"
 
 #: [db]legend [schema]database
 msgid "Database"
-msgstr ""
+msgstr "База даних"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
-msgstr ""
+msgstr "Modl не може з'єднатись з базою даних"
 
 #: [db]connect_success
 msgid "Movim is connected to the database"
-msgstr ""
+msgstr "Movim з'єднався з базою даних"
 
 #: [db]update
 msgid "The database need to be updated"
-msgstr ""
+msgstr "База даних потребує оновлення"
 
 #: [db]up_to_date
 msgid "Movim database is up to date"
-msgstr ""
+msgstr "База даних Movim знаходиться в актуальному стані"
 
 #: [db]type
 msgid "Database Type"
@@ -387,9 +384,8 @@ msgid "Install the php5-gd library"
 msgstr ""
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movims root directory"
-msgstr "Включити права читання і запису на кореневу папку Movim"
+msgstr ""
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -675,14 +671,12 @@ msgid "Appearence"
 msgstr ""
 
 #: [config]not_valid
-#, fuzzy
 msgid "Configuration invalid"
-msgstr "Конфігурація"
+msgstr ""
 
 #: [config]advanced
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Конфігурація"
+msgstr ""
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -940,16 +934,16 @@ msgstr ""
 msgid "Hello"
 msgstr ""
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
@@ -994,54 +988,6 @@ msgstr ""
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr ""
-
-#: [hello]news [page]news
-msgid "News"
-msgstr ""
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr ""
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr ""
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr ""
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr ""
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr ""
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1366,6 +1312,42 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr ""
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr ""
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr ""
@@ -1390,7 +1372,7 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr ""
 
@@ -1718,16 +1700,16 @@ msgstr ""
 msgid "Home"
 msgstr ""
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr ""
 
 #: [page]account_creation
 msgid "Account Creation"
+msgstr ""
+
+#: [page]news
+msgid "News"
 msgstr ""
 
 #: [page]avatar
@@ -1738,20 +1720,8 @@ msgstr ""
 msgid "Chats"
 msgstr ""
 
-#: [page]server
-msgid "Server"
-msgstr ""
-
 #: [page]public_groups
 msgid "Public Groups"
-msgstr ""
-
-#: [page]viewer
-msgid "Viewer"
-msgstr ""
-
-#: [page]media
-msgid "Media"
 msgstr ""
 
 #: [page]blog
@@ -1806,10 +1776,6 @@ msgstr ""
 msgid "Cannot load file '%s'"
 msgstr ""
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
@@ -1820,82 +1786,6 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr ""
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr ""
-
-#: [title]account
-msgid "%s - Account"
-msgstr ""
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr ""
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "%s - Конфігурація"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr ""
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr ""
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr ""
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr ""
-
-#: [title]media
-msgid "%s - Media"
-msgstr ""
-
-#: [title]news
-msgid "%s - News"
-msgstr ""
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr ""
-
-#: [title]node
-msgid "%s - Group"
-msgstr ""
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr ""
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr ""
-
-#: [title]server
-msgid "%s - Server"
 msgstr ""
 
 #: [button]validate
@@ -1988,10 +1878,6 @@ msgstr ""
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
-
-#: [step]step
-msgid "Step %s"
 msgstr ""
 
 #: [day]title
@@ -2651,78 +2537,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "PHP версії не збігаються. Movim вимагає мінімум PHP 5.3"
-
-#~ msgid "Actual version : "
-#~ msgstr "Актуальна версія "
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Оновіть вашу версію PHP або зверніться до адміністратора сервера"
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim вимагає розширення %s ."
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Встановити %s і  %s пакетів."
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Папка Movim повинна бути доступна для запису"
-
-#~ msgid "Install the %s package"
-#~ msgstr "Установка пакету %s"
-
-#~ msgid "or"
-#~ msgstr "або"
-
-#~ msgid "Bosh connection failed with error '%s'"
-#~ msgstr "Сталася помилка '%s'"
-
-#~ msgid "XMPP connection through Bosh failed with error '%s'"
-#~ msgstr "XMPP з'єднання  з помилкою '%s'"
-
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "Не вдалося створити '%s' каталог."
-
-#~ msgid "ultimate"
-#~ msgstr "загальна"
-
-#~ msgid "normal"
-#~ msgstr "звичайний"
-
-#~ msgid "terse"
-#~ msgstr "стислий"
-
-#~ msgid "empty"
-#~ msgstr "порожній"
-
-#~ msgid "Some errors were detected. Please correct them for the installation to proceed."
-#~ msgstr "Були виявлено деякі помилки . Будь ласка, виправте їх, щоб продовжити установку."
-
-#~ msgid "talkative"
-#~ msgstr "мовність"
-
-#~ msgid "Database connection failed with error '%s'"
-#~ msgstr "Підключення до бази даних з помилкою '%s'"
-
-#~ msgid "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr "Перед тим, як користуватися вашою соціальною мережею,  потрібно кілька налаштувань."
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Дякуємо Вам за завантаження Movim!"
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Не вдається створити файл конфігурації  '%s'."
-
-#~ msgid "Keep in mind that Movim is still under development and will handle many personal details. Its use can potentially endanger your data. Always pay attention to information that you submit."
-#~ msgstr "Майте на увазі, що Movim знаходиться на стадії розробки і буде обробляти багато особистих даних. Його використання може потенційно загрожувати вашим даним. Завжди звертайте увагу на інформацію, яку Ви представляєте."
-
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "Наступні вимоги не були виконані. Будь ласка, переконайтеся, що всі вони були виконані  для того, щоб встановити Movim."
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Тест на сумісність"
-
-#~ msgid "Movim Installer"
-#~ msgstr "Movim установник"

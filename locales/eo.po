@@ -1,6 +1,5 @@
-# Esperanto translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+#
+# Translators:
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -35,8 +34,6 @@
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -77,18 +74,18 @@
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2013-05-11 17:33+0000\n"
-"Last-Translator: Baptiste Darthenay <baptiste+launchpad@darthenay.fr>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Esperanto (http://www.transifex.com/movim/movim/language/eo/)\n"
+"Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -122,14 +119,13 @@ msgstr ""
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr ""
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
 msgstr ""
 
 #: [account]password_change_title
-#, fuzzy
 msgid "Change my password"
-msgstr "Malkorekta pasvorto"
+msgstr ""
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -137,9 +133,8 @@ msgid "Password"
 msgstr "Pasvorto"
 
 #: [account]password_confirmation
-#, fuzzy
 msgid "Password confirmation"
-msgstr "%s - Agordaĵoj"
+msgstr ""
 
 #: [account]password_changed
 msgid "The password has been updated"
@@ -250,9 +245,8 @@ msgid "Port"
 msgstr ""
 
 #: [db]name
-#, fuzzy
 msgid "Database Name"
-msgstr "Datumbazo trovita"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -327,10 +321,9 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: [information]title
-#, fuzzy
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "Generalaj informoj"
+msgstr ""
 
 #: [information]description
 msgid "Description"
@@ -345,10 +338,9 @@ msgid "Leave this field blank if you dont want to show any message."
 msgstr ""
 
 #: [information]label
-#, fuzzy
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr "Generalaj informoj"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -391,9 +383,8 @@ msgid "Install the php5-gd library"
 msgstr ""
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movims root directory"
-msgstr "Ebligi legi kaj skribi rajtojn on la radika dosierujo de Movim"
+msgstr ""
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -512,10 +503,9 @@ msgid "Chat Room ID"
 msgstr ""
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Nomo"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 #: [accounts]accounts_nickname
@@ -555,10 +545,9 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Nomo"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -681,14 +670,12 @@ msgid "Appearence"
 msgstr ""
 
 #: [config]not_valid
-#, fuzzy
 msgid "Configuration invalid"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: [config]advanced
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -819,9 +806,8 @@ msgid "Visit the blog to see all the public posts"
 msgstr ""
 
 #: [subscription]to
-#, fuzzy
 msgid "You can see this contact status"
-msgstr "Forigi tiun kontakton"
+msgstr ""
 
 #: [subscription]to_button
 msgid "Share my status"
@@ -947,16 +933,16 @@ msgstr ""
 msgid "Hello"
 msgstr ""
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
@@ -1001,54 +987,6 @@ msgstr ""
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr ""
-
-#: [hello]news [page]news
-msgid "News"
-msgstr ""
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr ""
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr ""
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr ""
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr ""
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr ""
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1373,6 +1311,42 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr ""
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr ""
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr ""
@@ -1397,7 +1371,7 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr ""
 
@@ -1499,7 +1473,7 @@ msgstr ""
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr "Uzantnomo jam uzata"
+msgstr ""
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1725,10 +1699,6 @@ msgstr ""
 msgid "Home"
 msgstr "Ĉefpaĝo"
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr ""
@@ -1736,6 +1706,10 @@ msgstr ""
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Kreado de konto"
+
+#: [page]news
+msgid "News"
+msgstr ""
 
 #: [page]avatar
 msgid "Avatar"
@@ -1745,20 +1719,8 @@ msgstr "Avataro"
 msgid "Chats"
 msgstr ""
 
-#: [page]server
-msgid "Server"
-msgstr ""
-
 #: [page]public_groups
 msgid "Public Groups"
-msgstr ""
-
-#: [page]viewer
-msgid "Viewer"
-msgstr ""
-
-#: [page]media
-msgid "Media"
 msgstr ""
 
 #: [page]blog
@@ -1813,10 +1775,6 @@ msgstr "Eraro: %s"
 msgid "Cannot load file '%s'"
 msgstr "Ne povas ŝargi dosieron “%s”."
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
@@ -1827,82 +1785,6 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr ""
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr ""
-
-#: [title]account
-msgid "%s - Account"
-msgstr ""
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr ""
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "%s - Agordaĵoj"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr ""
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr "%s - Helppaĝo"
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "%s - Ensaluti al Movim"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "%s - Bonvenon al Movim"
-
-#: [title]media
-msgid "%s - Media"
-msgstr ""
-
-#: [title]news
-msgid "%s - News"
-msgstr ""
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr ""
-
-#: [title]node
-msgid "%s - Group"
-msgstr ""
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr ""
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr "%s - Profilo"
-
-#: [title]server
-msgid "%s - Server"
 msgstr ""
 
 #: [button]validate
@@ -1997,10 +1879,6 @@ msgstr ""
 msgid "Previous"
 msgstr ""
 
-#: [step]step
-msgid "Step %s"
-msgstr ""
-
 #: [day]title
 msgid "Day"
 msgstr ""
@@ -2034,10 +1912,9 @@ msgid "Sunday"
 msgstr ""
 
 #: [gender]nil
-#, fuzzy
 msgctxt "[gender]nil"
 msgid "None"
-msgstr "Neniu"
+msgstr ""
 
 #: [gender]male
 msgid "Male"
@@ -2072,10 +1949,9 @@ msgid "Registered"
 msgstr ""
 
 #: [marital]nil
-#, fuzzy
 msgctxt "[marital]nil"
 msgid "None"
-msgstr "Neniu"
+msgstr ""
 
 #: [marital]single
 msgid "Single"
@@ -2550,9 +2426,8 @@ msgid "Yesterday"
 msgstr "Hieraŭ"
 
 #: [date]ago
-#, fuzzy
 msgid "%d days ago"
-msgstr " Antaŭ %d tagoj"
+msgstr ""
 
 #: [date]day
 msgid "day"
@@ -2615,9 +2490,8 @@ msgid "Show the older comments"
 msgstr ""
 
 #: [post]comments_loading
-#, fuzzy
 msgid "Loading comments..."
-msgstr "Ŝarĝante la kontakta fluo…"
+msgstr ""
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2662,118 +2536,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#, fuzzy
-#~ msgctxt "[general]nickname"
-#~ msgid "Nickname"
-#~ msgstr "Kromnomo"
-
-#, fuzzy
-#~ msgctxt "[accounts]accounts_nickname"
-#~ msgid "Nickname"
-#~ msgstr "Kromnomo"
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "La Movima dosierujo devus esti skribebla."
-
-#~ msgid "Movim Installer"
-#~ msgstr "Movima instalilo"
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Kongrueca testo"
-
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "La sekvaj elementoj ne estis trovita. Bonvolu kontroli ke ĉiuj estas disponeblaj por instali Movim-on."
-
-#~ msgid "User not logged in."
-#~ msgstr "Uzanto ne ensalutita."
-
-#~ msgid "JID not provided."
-#~ msgstr "JID maldisponebla"
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "JID “%s” malkorekta"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Kreado de konto"
-
-#~ msgid "Debug console"
-#~ msgstr "Sencimiga konzolo"
-
-#~ msgid "Logout"
-#~ msgstr "Elsaluti"
-
-#~ msgid "wants to talk with you"
-#~ msgstr "volas paroli kun vi"
-
-#~ msgid "Decline"
-#~ msgstr "Malakcepti"
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "Nekongrua versio de PHP. Movim necesas PHP 5.3 minimume."
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Movim necesas la kromaĵon %s."
-
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "Ne povas krei dosierujon “%s”."
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Ne povas krei agorddosieron “%s”."
-
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "Ne povas malfermi protokolan dosieron '%s'"
-
-#~ msgid "or"
-#~ msgstr "aŭ"
-
-#~ msgid "Actual version : "
-#~ msgstr "Actuala versio: "
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Ĝisdatigu vian PHP-an version aŭ kontaktu vian servilan administranton"
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Instali %s kaj %s pakaĵojn"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "Valida BOSH"
-
-#~ msgid "Success !"
-#~ msgstr "Sukseso!"
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "Agordo de prokura servilo"
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "Agordoj de XMPP-konektado"
-
-#~ msgid "You can now access your shiny Movim instance %sJump In !%s"
-#~ msgstr "Nun, vi povas aliri vian Movim-instancon %sEk en!%s"
-
-#~ msgid "Database Movim schema installed"
-#~ msgstr "Skemo de Movim-datumbazo instalita"
-
-#~ msgid "Install the %s package"
-#~ msgstr "Intali la pakaĵon \"%s\""
-
-#~ msgid "BOSH Connection Preferences"
-#~ msgstr "Agordoj de BOSH-konektado"
-
-#~ msgid "Connecting..."
-#~ msgstr "Konektante..."
-
-#~ msgid "Invalid name"
-#~ msgstr "Nevalida uzantnomo"
-
-#~ msgid "You entered different passwords"
-#~ msgstr "Vi tajpis malsamajn pasvortojn"
-
-#~ msgid "empty"
-#~ msgstr "malplena"
-
-#~ msgid "normal"
-#~ msgstr "normala"
-
-#~ msgid "Cannot load element value '%s'"
-#~ msgstr "Ne eblas ŝarĝi elementvaloro '%s'"

@@ -1,5 +1,6 @@
 #
 # Translators:
+# Djeber Boudiba <djeber10@gmail.com>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -34,8 +35,6 @@
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -78,8 +77,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2015-10-06 21:34+0000\n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Arabic (http://www.transifex.com/movim/movim/language/ar/)\n"
 "Language: ar\n"
@@ -103,7 +102,7 @@ msgstr "المترجمون"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "شكر لكل المترجمين"
 
 #: [about]software
 msgid "Software"
@@ -121,13 +120,13 @@ msgstr "API"
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "موفيم عبارة عن مصفحة تواصل مرتكزة على XMPP. المشروع بأكمله بإستناء البرامج والموارد التالية هي تحت"
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
 msgstr ""
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "تغيير كلمة السر"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -136,11 +135,11 @@ msgstr "كلمة السّر"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "تأكيد كلمة السر"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "تم تحديث كلمة المرور"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
@@ -247,9 +246,8 @@ msgid "Port"
 msgstr "المَنفذ"
 
 #: [db]name
-#, fuzzy
 msgid "Database Name"
-msgstr "نوع قاعدة البيانات"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -673,14 +671,12 @@ msgid "Appearence"
 msgstr ""
 
 #: [config]not_valid
-#, fuzzy
 msgid "Configuration invalid"
-msgstr "ضبط"
+msgstr ""
 
 #: [config]advanced
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "ضبط"
+msgstr ""
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -938,16 +934,16 @@ msgstr ""
 msgid "Hello"
 msgstr ""
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
@@ -992,54 +988,6 @@ msgstr ""
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr ""
-
-#: [hello]news [page]news
-msgid "News"
-msgstr "اﻷخبار"
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr ""
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr ""
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr ""
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr ""
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr ""
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1273,9 +1221,8 @@ msgid "Contacts"
 msgstr ""
 
 #: [menu]add_post
-#, fuzzy
 msgid "Add a post"
-msgstr "أضف تعليق"
+msgstr ""
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1326,9 +1273,8 @@ msgid "See %s profile"
 msgstr ""
 
 #: [post]blog_last
-#, fuzzy
 msgid "Public posts from users"
-msgstr "مجموعات عامة"
+msgstr ""
 
 #: [post]public
 msgid "Publish this post publicly?"
@@ -1366,6 +1312,42 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr ""
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr ""
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr ""
@@ -1390,7 +1372,7 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr ""
 
@@ -1583,9 +1565,8 @@ msgid "Search in your contacts"
 msgstr ""
 
 #: [roster]search_pod
-#, fuzzy
 msgid "Search a contact"
-msgstr "اتصالاتكم"
+msgstr ""
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1719,10 +1700,6 @@ msgstr ""
 msgid "Home"
 msgstr "البداية"
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr "استكشاف"
@@ -1730,6 +1707,10 @@ msgstr "استكشاف"
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "إنشاء الحساب"
+
+#: [page]news
+msgid "News"
+msgstr "اﻷخبار"
 
 #: [page]avatar
 msgid "Avatar"
@@ -1739,21 +1720,9 @@ msgstr "الصورة"
 msgid "Chats"
 msgstr ""
 
-#: [page]server
-msgid "Server"
-msgstr ""
-
 #: [page]public_groups
 msgid "Public Groups"
 msgstr "مجموعات عامة"
-
-#: [page]viewer
-msgid "Viewer"
-msgstr ""
-
-#: [page]media
-msgid "Media"
-msgstr "وسائط"
 
 #: [page]blog
 msgid "Blog"
@@ -1807,10 +1776,6 @@ msgstr "خطأ: %s"
 msgid "Cannot load file '%s'"
 msgstr "لا يمكن تحميل الملف '%s'"
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr "خطأ في الطريق، برجاء ضبط المعاملات لهذه الصفحة %s"
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
@@ -1821,82 +1786,6 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr ""
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr ""
-
-#: [title]account
-msgid "%s - Account"
-msgstr ""
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr "%s - المدونة"
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "%s - تكوين"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr "%s - استكشاف"
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr "%s - صفحة المساعدة"
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "%s - الولوج إلى Movim"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "%s - MOVIM مرحبا بكم في"
-
-#: [title]media
-msgid "%s - Media"
-msgstr "%s - وسائط"
-
-#: [title]news
-msgid "%s - News"
-msgstr "%s - اﻷخبار"
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr ""
-
-#: [title]node
-msgid "%s - Group"
-msgstr ""
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr ""
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr "%s - الملف الشخصي"
-
-#: [title]server
-msgid "%s - Server"
 msgstr ""
 
 #: [button]validate
@@ -1989,10 +1878,6 @@ msgstr ""
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
-
-#: [step]step
-msgid "Step %s"
 msgstr ""
 
 #: [day]title
@@ -2652,6 +2537,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "المتصفح الذي تستخدمه أقدم من أن يُشغّل Movim!"

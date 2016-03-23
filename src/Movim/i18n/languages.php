@@ -8,6 +8,7 @@ function get_lang_list() {
     $lang_list = array(
         'aa' => "Afar",
         'ab' => "Abkhazian",
+        'ach' => "Acholi",
         'af' => "Afrikaans",
         'am' => "Amharic",
         'an' => "Aragon&#233;s",
@@ -100,6 +101,7 @@ function get_lang_list() {
         'lt' => "Lietuvi&#371;",
         'lu' => "Luba-katanga",
         'lv' => "Latvie&#353;u",
+        'lzh' => "Classical Chinese",
         'man' => "Mandingue", # a traduire en mandingue
         'mfv' => "Manjak", # ISO-639-3
         'mg' => "Malagasy",

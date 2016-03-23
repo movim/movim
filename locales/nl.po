@@ -38,8 +38,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
@@ -81,8 +79,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2015-12-29 12:43+0000\n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
@@ -124,7 +122,7 @@ msgstr "API"
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "Movim is een XMPP-gebaseerd communicatieplatform. Alles van het project, met uitzondering van de volgende software en hulpmiddelen, is onder"
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
 msgstr "Account"
 
@@ -938,17 +936,17 @@ msgstr "Je kunt een lijst van al je geabonneerde groepen vinden onder Mijn Abonn
 msgid "Hello"
 msgstr "Hallo"
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
-msgstr "Je hebt nog geen abonnementen"
-
-#: [groups]empty_text2
 msgid "Here you will be able to manage all your subscriptions."
 msgstr "Hier kun je al je abonnementen beheren."
+
+#: [groups]empty_text2
+msgid "You don't have any group subscriptions yet."
+msgstr "Je hebt nog geen abonnementen"
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -993,54 +991,6 @@ msgstr "%s berichten"
 #: [groups]disco_error
 msgid "This server doesn't exists"
 msgstr "Deze server bestaat niet"
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr "Ga naar de Chat pagina"
-
-#: [hello]news [page]news
-msgid "News"
-msgstr "Nieuws"
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr "Lees al deze artikelen op de nieuwspagina"
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr "Bezoek je openbare blog"
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr "Universele deel-knop"
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr "Deel op Movim"
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr "Oh! Hallo!"
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
-msgstr ""
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1265,18 +1215,16 @@ msgid "All"
 msgstr "Alles"
 
 #: [menu]mine
-#, fuzzy
 msgid "My publications"
-msgstr "Mijn abonnementen"
+msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
 msgstr "Contactpersonen"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Add a post"
-msgstr "Reactie toevoegen"
+msgstr ""
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1327,9 +1275,8 @@ msgid "See %s profile"
 msgstr "zie %s profiel"
 
 #: [post]blog_last
-#, fuzzy
 msgid "Public posts from users"
-msgstr "Openbare groepen"
+msgstr ""
 
 #: [post]public
 msgid "Publish this post publicly?"
@@ -1344,9 +1291,8 @@ msgid "This post is now private"
 msgstr ""
 
 #: [post]public_url
-#, fuzzy
 msgid "Public URL of this post"
-msgstr "Post dit bericht openbaar?"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1367,6 +1313,42 @@ msgstr "Reacties uitgeschakeld"
 #: [post]comment_published
 msgid "Comment published"
 msgstr "Reactie gepubliceerd"
+
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr "Bezoek je openbare blog"
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr "Universele deel-knop"
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr "Deel op Movim"
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr "Oh! Hallo!"
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -1392,7 +1374,7 @@ msgstr "aanwezigheid"
 msgid "Online with Movim"
 msgstr "Online met Movim"
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr "Voorbeeld"
 
@@ -1585,9 +1567,8 @@ msgid "Search in your contacts"
 msgstr "Zoek in je contacten"
 
 #: [roster]search_pod
-#, fuzzy
 msgid "Search a contact"
-msgstr "Zoek in je contacten"
+msgstr ""
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1694,9 +1675,8 @@ msgid "Is this profile public ?"
 msgstr "Is dit profiel openbaar?"
 
 #: [privacy]privacy_info
-#, fuzzy
 msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
-msgstr "Let op! Door je profiel openbaar te maken zal alle bovenstaande informatie beschikbaar zijn voor alle Movim-gebruikers en het hele internet."
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1722,10 +1702,6 @@ msgstr "Beheer"
 msgid "Home"
 msgstr "Home"
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr "Verkennen"
@@ -1733,6 +1709,10 @@ msgstr "Verkennen"
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Account aanmaken"
+
+#: [page]news
+msgid "News"
+msgstr "Nieuws"
 
 #: [page]avatar
 msgid "Avatar"
@@ -1742,21 +1722,9 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr "Chats"
 
-#: [page]server
-msgid "Server"
-msgstr "Server"
-
 #: [page]public_groups
 msgid "Public Groups"
 msgstr "Openbare groepen"
-
-#: [page]viewer
-msgid "Viewer"
-msgstr "Viewer"
-
-#: [page]media
-msgid "Media"
-msgstr "Media"
 
 #: [page]blog
 msgid "Blog"
@@ -1810,10 +1778,6 @@ msgstr "Error: %s"
 msgid "Cannot load file '%s'"
 msgstr "Kan bestand %s niet laden"
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr "Routeerfout, plaats alle argumenten voor de pagina %s"
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr "De opgevraagde widget '%s' bestaat niet."
@@ -1825,82 +1789,6 @@ msgstr "Het opgevraagde event '%s' is niet geregistreerd."
 #: [error]whoops
 msgid "Whoops!"
 msgstr "Oeps!"
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr "Het lijkt er op dat je hier geen afbeeldingen hebt"
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr "Je kunt proberen om een paar te uploaden door naar de Mediapagina te gaan"
-
-#: [title]about
-msgid "%s - About"
-msgstr "%s - Over"
-
-#: [title]account
-msgid "%s - Account"
-msgstr "%s - Account"
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr "%s - Beheerderspaneel"
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr "%s - Blog"
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "%s - Configuratie"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr ""
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr "%s - Hulppagina"
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "%s - Inloggen bij Movim"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "%s - Welkom bij Movim"
-
-#: [title]media
-msgid "%s - Media"
-msgstr "%s - Media"
-
-#: [title]news
-msgid "%s - News"
-msgstr "%s - Nieuws"
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr "%s - Groepsconfiguratie"
-
-#: [title]node
-msgid "%s - Group"
-msgstr "%s - Groep"
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr "%s - 404"
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr "%s - Profiel"
-
-#: [title]server
-msgid "%s - Server"
-msgstr "%s - Server"
 
 #: [button]validate
 msgid "Validate"
@@ -1993,10 +1881,6 @@ msgstr "Volgende"
 #: [button]previous
 msgid "Previous"
 msgstr "Vorige"
-
-#: [step]step
-msgid "Step %s"
-msgstr "Stap %s"
 
 #: [day]title
 msgid "Day"
@@ -2655,77 +2539,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#~ msgid "Data"
-#~ msgstr "Data"
-
-#~ msgid "Cache"
-#~ msgstr "Buffer"
-
-#~ msgid "Messages"
-#~ msgstr "Berichten"
-
-#~ msgid "Location"
-#~ msgstr "Locatie"
-
-#~ msgid "Wrong position"
-#~ msgstr "Verkeerde positie"
-
-#~ msgid "Location updated"
-#~ msgstr "Locatie bijgewerkt"
-
-#~ msgid "Update my position"
-#~ msgstr "Update mijn positie"
-
-#~ msgid "Manage your members"
-#~ msgstr "Beheer je leden"
-
-#~ msgid "Get the members"
-#~ msgstr "Haal leden op"
-
-#~ msgid "Manage your subscriptions"
-#~ msgstr "Beheer je aanmeldingen"
-
-#~ msgid "Manage the subscriptions"
-#~ msgstr "Beheer de aanmeldingen"
-
-#~ msgid "Get the subscriptions"
-#~ msgstr "Haal de aanmeldingen op"
-
-#~ msgid "Subscriptions saved"
-#~ msgstr "Abonnementen opgeslagen"
-
-#~ msgid "Shared"
-#~ msgstr "Gedeeld"
-
-#~ msgid "Search"
-#~ msgstr "Zoeken"
-
-#~ msgctxt "[general]nickname"
-#~ msgid "Nickname"
-#~ msgstr "Bijnaam"
-
-#~ msgctxt "[accounts]accounts_nickname"
-#~ msgid "Nickname"
-#~ msgstr "Bijnaam"
-
-#~ msgid "Hung up"
-#~ msgstr "Heeft opgehangen"
-
-#~ msgid "Your contact is busy"
-#~ msgstr "Je contactpersoon is bezig"
-
-#~ msgid "Declined"
-#~ msgstr "Afgewezen"
-
-#~ msgid "Is calling you"
-#~ msgstr "Belt je"
-
-#~ msgid "Call"
-#~ msgstr "Bellen"
-
-#~ msgid "Hang up"
-#~ msgstr "Ophangen"
-
-#~ msgid "Connection"
-#~ msgstr "Verbinding"

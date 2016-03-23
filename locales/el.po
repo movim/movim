@@ -1,6 +1,6 @@
-# Greek translations for Movim  package.
-# This file is distributed under the same license as the Movim  package.
-# This file was translated from CodingTeam at <http://codingteam.net/>.
+#
+# Translators:
+# Marinus Savoritias <savoritias@gmail.com>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -35,8 +35,6 @@
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -77,22 +75,22 @@
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
-"Project-Id-Version: Movim\n"
+"Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2013-12-07 17:27+0000\n"
-"Last-Translator: aitolos <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"Language-Team: Greek (http://www.transifex.com/movim/movim/language/el/)\n"
+"Language: el\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2015-06-18 21:08+0000\n"
-"X-Generator: Launchpad (build 17570)\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Ευχαριστώ"
 
 #: [about]developers
 msgid "Developers"
@@ -100,7 +98,7 @@ msgstr ""
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Μεταφράστες"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
@@ -108,7 +106,7 @@ msgstr ""
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "Λογισμικό"
 
 #: [about]resources
 msgid "Resources"
@@ -122,14 +120,13 @@ msgstr ""
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr ""
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Λογαριασμός"
 
 #: [account]password_change_title
-#, fuzzy
 msgid "Change my password"
-msgstr "Λανθασμένος κωδικός"
+msgstr "Αλλαγή κωδικού"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -137,13 +134,12 @@ msgid "Password"
 msgstr "Συνθηματικό"
 
 #: [account]password_confirmation
-#, fuzzy
 msgid "Password confirmation"
-msgstr "%s - Ρύθμιση"
+msgstr "Επιβεβαίωση κωδικού"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Ο κωδικός έχει αλλάξει"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
@@ -155,12 +151,11 @@ msgstr ""
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "Διέγραψε τον λογαριασμό μου"
 
 #: [account]delete
-#, fuzzy
 msgid "Delete your account"
-msgstr "Δημιουργία νέου λογαριασμού"
+msgstr "Διαγραφή του λογαριασμού σου"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
@@ -168,7 +163,7 @@ msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Είσαι σίγουρος οτι θέλεις να τον διαγράψεις;"
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -192,7 +187,7 @@ msgstr ""
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Φόρτωση"
 
 #: [create]placeholder
 msgid "…and start playing"
@@ -200,7 +195,7 @@ msgstr ""
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Δεν είναι αποδεκτό"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
@@ -212,7 +207,7 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Ενέργειες"
 
 #: [db]legend [schema]database
 msgid "Database"
@@ -240,7 +235,7 @@ msgstr ""
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Όνομα χρήστη"
 
 #: [db]host
 msgid "Host"
@@ -251,17 +246,16 @@ msgid "Port"
 msgstr ""
 
 #: [db]name
-#, fuzzy
 msgid "Database Name"
-msgstr "Εντοπίστηκε βάση δεδομένων"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Γενικές ρυθμίσεις"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Θέμα"
 
 #: [general]language
 msgid "Default language"
@@ -328,14 +322,13 @@ msgid "List of whitelisted XMPP servers"
 msgstr ""
 
 #: [information]title
-#, fuzzy
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "Γενικές πληροφορίες"
+msgstr ""
 
 #: [information]description
 msgid "Description"
-msgstr ""
+msgstr "Περιγραφή"
 
 #: [information]info1
 msgid "This message will be displayed on the login page"
@@ -346,14 +339,13 @@ msgid "Leave this field blank if you dont want to show any message."
 msgstr ""
 
 #: [information]label
-#, fuzzy
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr "Γενικές πληροφορίες"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "Άδειο"
 
 #: [log]syslog
 msgid "Syslog"
@@ -409,7 +401,7 @@ msgstr ""
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "Περιηγητής"
 
 #: [schema]movim
 msgid "Movim Core"
@@ -453,7 +445,7 @@ msgstr ""
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "Αρχείο"
 
 #: [avatar]use_it
 msgid "Use it"
@@ -512,7 +504,6 @@ msgid "Chat Room ID"
 msgstr ""
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
 msgstr "Όνομα"
@@ -532,7 +523,7 @@ msgstr ""
 
 #: [chatroom]empty_name [chatrooms]empty_name
 msgid "Empty name"
-msgstr ""
+msgstr "Άδειο όνομα"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -555,7 +546,6 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
 msgstr "Όνομα"
@@ -610,7 +600,7 @@ msgstr ""
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "Μέλη"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
@@ -654,11 +644,11 @@ msgstr ""
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "Νέα συζήτηση"
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "Γενικά"
 
 #: [config]language
 msgid "Language"
@@ -678,17 +668,15 @@ msgstr ""
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "Εμφάνιση"
 
 #: [config]not_valid
-#, fuzzy
 msgid "Configuration invalid"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: [config]advanced
-#, fuzzy
 msgid "Advanced Configuration"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -724,7 +712,7 @@ msgstr ""
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: [general]website
 msgid "Website"
@@ -732,15 +720,15 @@ msgstr "Ιστότοπος"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "Σχετικά με εμένα"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "Άλλοι λογαριασμοί"
 
 #: [general]tune
 msgid "Is Listening"
-msgstr ""
+msgstr "Ακούει"
 
 #: [position]legend
 msgid "Geographic Position"
@@ -752,11 +740,11 @@ msgstr ""
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "Χώρα"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "Διάθεση"
 
 #: [mood]im
 msgid "I'm "
@@ -764,7 +752,7 @@ msgstr ""
 
 #: [listen]title
 msgid "Listening"
-msgstr ""
+msgstr "Ακούει"
 
 #: [last]title
 msgid "Last seen"
@@ -792,7 +780,7 @@ msgstr "Ψευδώνυμο"
 
 #: [edit]group
 msgid "Group"
-msgstr ""
+msgstr "Ομάδα"
 
 #: [edit]updated [roster]updated
 msgid "Contact updated"
@@ -800,7 +788,7 @@ msgstr ""
 
 #: [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "Είσαι σίγουρος;"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
@@ -819,9 +807,8 @@ msgid "Visit the blog to see all the public posts"
 msgstr ""
 
 #: [subscription]to
-#, fuzzy
 msgid "You can see this contact status"
-msgstr "Διαγραφή αυτής της επαφής"
+msgstr ""
 
 #: [subscription]to_button
 msgid "Share my status"
@@ -947,16 +934,16 @@ msgstr ""
 msgid "Hello"
 msgstr ""
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
@@ -1001,54 +988,6 @@ msgstr ""
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr ""
-
-#: [hello]news [page]news
-msgid "News"
-msgstr ""
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr ""
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr ""
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr ""
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr ""
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr ""
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1373,6 +1312,42 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr ""
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr ""
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr ""
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr ""
@@ -1397,7 +1372,7 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr ""
 
@@ -1447,11 +1422,11 @@ msgstr ""
 
 #: [publish]title
 msgid "Publish"
-msgstr ""
+msgstr "Δημοσίευση"
 
 #: [publish]attach
 msgid "Add a file or a picture to your post"
-msgstr ""
+msgstr "Προσθήκη αρχείου ή φωτογραφίας στην δημοσίευση"
 
 #: [publish]no_publication
 msgid "You cannot publish a post on this Group"
@@ -1467,31 +1442,31 @@ msgstr ""
 
 #: [publish]add_text_label
 msgid "Add some text"
-msgstr ""
+msgstr "Προσθήκη κειμένου"
 
 #: [rooms]add
 msgid "Add a chatroom"
-msgstr ""
+msgstr "Προσθήκη δωμάτιου συνομιλίας"
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
-msgstr ""
+msgstr "Δεν έχεις κάποιο δωμάτιο συνομιλίας ακόμα"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr ""
+msgstr "Πρόσθεσε ένα κάνοντας κλικ στο κουμπί προσθήκης"
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr ""
+msgstr "Δωμάτιο συνομιλίας"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
+msgstr "Το αγαπημένο μου δωμάτιο"
 
 #: [chatrooms]users
 msgid "Users in the room"
-msgstr ""
+msgstr "Χρήστες στο δωμάτιο"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1499,11 +1474,11 @@ msgstr ""
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr "Αυτό το όνομα χρήστη χρησιμοποιείται ήδη"
+msgstr "Το όνομα χρήστη υπάρχει ήδη"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
+msgstr "Δημόσιο δωμάτιο συνομιλίας"
 
 #: [room]no_room
 msgid "Please provide a room address"
@@ -1523,7 +1498,7 @@ msgstr ""
 
 #: [room]nick
 msgid "Your nickname"
-msgstr ""
+msgstr "Το ψευδώνυμο σου"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1531,19 +1506,19 @@ msgstr ""
 
 #: [roster]show_disconnected
 msgid "Show disconnected contacts"
-msgstr ""
+msgstr "Εμφάνιση επαφών χωρίς σύνδεση"
 
 #: [roster]hide_disconnected
 msgid "Hide disconnected contacts"
-msgstr ""
+msgstr "Απόκρυψη επαφών χωρίς σύνδεση"
 
 #: [roster]show_group
 msgid "Show group %s"
-msgstr ""
+msgstr "Εμφάνιση ομάδας %s"
 
 #: [roster]hide_group
 msgid "Hide group %s"
-msgstr ""
+msgstr "Απόκρυψη ομάδας %s"
 
 #: [roster]jid_error
 msgid "Please enter a valid Jabber ID"
@@ -1551,15 +1526,15 @@ msgstr ""
 
 #: [roster]no_contacts_title
 msgid "No contacts ?"
-msgstr ""
+msgstr "Δεν υπάρχουν επαφές;"
 
 #: [roster]no_contacts_text
 msgid "You can add one using the + button bellow"
-msgstr ""
+msgstr "Μπορείς να προσθέσεις μία χρησιμοποιώντας το κουμπί + από κάτω"
 
 #: [roster]show_hide
 msgid "Show/Hide"
-msgstr ""
+msgstr "Εμφάνιση/Απόκρυψη"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
@@ -1571,27 +1546,27 @@ msgstr ""
 
 #: [roster]jid
 msgid "JID"
-msgstr ""
+msgstr "JID"
 
 #: [roster]results
 msgid "Results"
-msgstr ""
+msgstr "Αποτελέσματα"
 
 #: [roster]added
 msgid "Contact added"
-msgstr ""
+msgstr "Επαφή προσθέθηκε"
 
 #: [roster]deleted
 msgid "Contact deleted"
-msgstr ""
+msgstr "Επαφή διαγράφθηκε"
 
 #: [roster]search
 msgid "Search in your contacts"
-msgstr ""
+msgstr "Αναζήτηση στις επαφές σου"
 
 #: [roster]search_pod
 msgid "Search a contact"
-msgstr ""
+msgstr "Αναζήτηση επαφής"
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1603,7 +1578,7 @@ msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
-msgstr ""
+msgstr "Στατιστικά"
 
 #: [statistics]since
 msgid "Since"
@@ -1611,11 +1586,11 @@ msgstr ""
 
 #: [statistics]sessions
 msgid "Sessions"
-msgstr ""
+msgstr "Συνεδρίες"
 
 #: [statistics]monthly_sub
 msgid "Monthly Subscriptions"
-msgstr ""
+msgstr "Μηνιαίες συνδρομές"
 
 #: [statistics]monthly_sub_cum
 msgid "Monthly Subscriptions Cumulated"
@@ -1623,7 +1598,7 @@ msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
-msgstr ""
+msgstr "Ένα αυτοκόλλητο στάλθηκε χρησιμοποιώντας Movim"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -1643,15 +1618,15 @@ msgstr ""
 
 #: [feed]nope_contact
 msgid "No contact specified"
-msgstr ""
+msgstr "Δεν διευκρινίζεται κάποια επαφή"
 
 #: [upload]title
 msgid "Upload a file"
-msgstr ""
+msgstr "Μεταφορτώστε ένα αρχείο "
 
 #: [upload]choose
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "Διαλέξτε ένα αρχείο για να μεταφορτώσετε"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1659,15 +1634,15 @@ msgstr "Προφίλ"
 
 #: [vcard]updated
 msgid "Profile Updated"
-msgstr ""
+msgstr "Το προφίλ ενημερώθηκε"
 
 #: [vcard]not_updated
 msgid "Profile Not Updated"
-msgstr ""
+msgstr "Το προφίλ δεν ενημερώθηκε"
 
 #: [vcard]public
 msgid "Your profile is now public"
-msgstr ""
+msgstr "Το προφίλ είναι πλέον δημόσιο"
 
 #: [vcard]restricted
 msgid "Your profile is now restricted"
@@ -1675,31 +1650,31 @@ msgstr ""
 
 #: [accounts]accounts_title
 msgid "Accounts"
-msgstr ""
+msgstr "Λογαριασμοί"
 
 #: [accounts]twitter
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: [accounts]skype
 msgid "Skype"
-msgstr ""
+msgstr "Skype"
 
 #: [accounts]yahoo
 msgid "Yahoo Account"
-msgstr ""
+msgstr "Λογαριασμός Yahoo"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
-msgstr ""
+msgstr "Επίπεδο ιδιωτικότητας"
 
 #: [privacy]privacy_question
 msgid "Is this profile public ?"
-msgstr ""
+msgstr "Είναι αυτο το προφίλ δημόσιο;"
 
 #: [privacy]privacy_info
 msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
-msgstr ""
+msgstr "Δώσε προσοχή ! Κάνοντας το προφίλ σου δημόσιο, όλες οι πληροφορίες που φαίνονται παρακάτω θα είναι διαθέσιμες σε όλους τους χρήστες του Movim και σε όλο το διαδίκτυο."
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1711,7 +1686,7 @@ msgstr "Επαναφορά"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
-msgstr ""
+msgstr "Δεν έχεις ενεργοποιημένο το javascript. Καλή τύχη με αυτό."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
@@ -1725,10 +1700,6 @@ msgstr ""
 msgid "Home"
 msgstr "Αρχική Σελίδα"
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr ""
@@ -1736,6 +1707,10 @@ msgstr ""
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Δημιουργία Λογαριασμού"
+
+#: [page]news
+msgid "News"
+msgstr ""
 
 #: [page]avatar
 msgid "Avatar"
@@ -1745,20 +1720,8 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr ""
 
-#: [page]server
-msgid "Server"
-msgstr ""
-
 #: [page]public_groups
 msgid "Public Groups"
-msgstr ""
-
-#: [page]viewer
-msgid "Viewer"
-msgstr ""
-
-#: [page]media
-msgid "Media"
 msgstr ""
 
 #: [page]blog
@@ -1771,7 +1734,7 @@ msgstr ""
 
 #: [page]login
 msgid "Login"
-msgstr ""
+msgstr "Σύνδεση"
 
 #: [page]feed
 msgid "Feed"
@@ -1795,11 +1758,11 @@ msgstr ""
 
 #: [page]share
 msgid "Share"
-msgstr ""
+msgstr "Κοινωποίηση"
 
 #: [page]room
 msgid "Room"
-msgstr ""
+msgstr "Δωμάτιο"
 
 #: [page]tag
 msgid "Tag"
@@ -1813,10 +1776,6 @@ msgstr "Σφάλμα: %s"
 msgid "Cannot load file '%s'"
 msgstr "Αδύνατη η φόρτωση του αρχείου '%s'"
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
@@ -1827,123 +1786,47 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr ""
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr ""
-
-#: [title]account
-msgid "%s - Account"
-msgstr ""
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr ""
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "%s - Ρύθμιση"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr ""
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr "%s - Σελίδα βοήθειας"
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "%s - Είσοδος στο Movim"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "%s - Καλωσήλθατε στο Movim"
-
-#: [title]media
-msgid "%s - Media"
-msgstr ""
-
-#: [title]news
-msgid "%s - News"
-msgstr ""
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr ""
-
-#: [title]node
-msgid "%s - Group"
-msgstr ""
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr ""
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr "%s - Προφίλ"
-
-#: [title]server
-msgid "%s - Server"
-msgstr ""
+msgstr "Ουπς!"
 
 #: [button]validate
 msgid "Validate"
-msgstr ""
+msgstr "Επικύρωση"
 
 #: [button]refresh
 msgid "Refresh"
-msgstr ""
+msgstr "Ανανέωση"
 
 #: [button]add
 msgid "Add"
-msgstr ""
+msgstr "Προσθήκη"
 
 #: [button]delete
 msgid "Delete"
-msgstr ""
+msgstr "Διαγραφή"
 
 #: [button]cancel
 msgid "Cancel"
-msgstr ""
+msgstr "Ακύρωση"
 
 #: [button]close
 msgid "Close"
-msgstr ""
+msgstr "Κλείσιμο"
 
 #: [button]update
 msgid "Update"
-msgstr ""
+msgstr "Ενημέρωση"
 
 #: [button]updating
 msgid "Updating"
-msgstr ""
+msgstr "Ενημερώνεται"
 
 #: [button]submitting
 msgid "Submitting"
-msgstr ""
+msgstr "Υποβάλεται"
 
 #: [button]register
 msgid "Register"
-msgstr ""
+msgstr "Εγγραφή"
 
 #: [button]unregister
 msgid "Unregister"
@@ -1951,15 +1834,15 @@ msgstr ""
 
 #: [button]save
 msgid "Save"
-msgstr ""
+msgstr "Αποθήκευση"
 
 #: [button]clear
 msgid "Clear"
-msgstr ""
+msgstr "Εκκαθάριση"
 
 #: [button]upload
 msgid "Upload"
-msgstr ""
+msgstr "Μεταφόρτωση"
 
 #: [button]come_in
 msgid "Come in!"
@@ -1967,19 +1850,19 @@ msgstr "Έλα μέσα!"
 
 #: [button]connecting
 msgid "Connecting"
-msgstr ""
+msgstr "Συνδέεται"
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "Ναί"
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "Όχι"
 
 #: [button]return
 msgid "Return"
-msgstr ""
+msgstr "Επιστροφή"
 
 #: [button]accept
 msgid "Accept"
@@ -1987,23 +1870,19 @@ msgstr "Αποδοχή"
 
 #: [button]refuse
 msgid "Refuse"
-msgstr ""
+msgstr "Άρνηση"
 
 #: [button]next
 msgid "Next"
-msgstr ""
+msgstr "Επόμενο"
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
-
-#: [step]step
-msgid "Step %s"
-msgstr ""
+msgstr "Προηγούμενο"
 
 #: [day]title
 msgid "Day"
-msgstr ""
+msgstr "Μέρα"
 
 #: [day]monday
 msgid "Monday"
@@ -2031,10 +1910,9 @@ msgstr "Σάββατο"
 
 #: [day]sunday
 msgid "Sunday"
-msgstr ""
+msgstr "Κυριακή"
 
 #: [gender]nil
-#, fuzzy
 msgctxt "[gender]nil"
 msgid "None"
 msgstr "Κανένα"
@@ -2053,7 +1931,7 @@ msgstr "Άλλο"
 
 #: [client]bot
 msgid "Bot"
-msgstr ""
+msgstr "Ρομπότ"
 
 #: [client]desktop
 msgid "Desktop"
@@ -2061,18 +1939,17 @@ msgstr ""
 
 #: [client]phone
 msgid "Phone"
-msgstr ""
+msgstr "Τηλέφωνο"
 
 #: [client]web
 msgid "Web"
-msgstr ""
+msgstr "Διαδίκτυο"
 
 #: [client]registered
 msgid "Registered"
 msgstr ""
 
 #: [marital]nil
-#, fuzzy
 msgctxt "[marital]nil"
 msgid "None"
 msgstr "Κανένα"
@@ -2143,15 +2020,15 @@ msgstr "Παρατεταμένη απουσία"
 
 #: [presence]offline
 msgid "Offline"
-msgstr ""
+msgstr "Εκτός σύνδεσης"
 
 #: [presence]error
 msgid "Error"
-msgstr ""
+msgstr "Σφάλμα"
 
 #: [mood]afraid
 msgid "afraid"
-msgstr ""
+msgstr "Φοβισμένος"
 
 #: [mood]amazed
 msgid "amazed"
@@ -2163,7 +2040,7 @@ msgstr ""
 
 #: [mood]angry
 msgid "angry"
-msgstr ""
+msgstr "νευριασμένος"
 
 #: [mood]annoyed
 msgid "annoyed"
@@ -2187,15 +2064,15 @@ msgstr ""
 
 #: [mood]brave
 msgid "brave"
-msgstr ""
+msgstr "Γενναίος"
 
 #: [mood]calm
 msgid "calm"
-msgstr ""
+msgstr "Ήρεμος"
 
 #: [mood]cautious
 msgid "cautious"
-msgstr ""
+msgstr "Προσεκτικός"
 
 #: [mood]cold
 msgid "cold"
@@ -2223,7 +2100,7 @@ msgstr ""
 
 #: [mood]crazy
 msgid "crazy"
-msgstr ""
+msgstr "Τρελός"
 
 #: [mood]creative
 msgid "creative"
@@ -2267,7 +2144,7 @@ msgstr ""
 
 #: [mood]excited
 msgid "excited"
-msgstr ""
+msgstr "Ενθουσιασμένος"
 
 #: [mood]flirtatious
 msgid "flirtatious"
@@ -2279,7 +2156,7 @@ msgstr ""
 
 #: [mood]grateful
 msgid "grateful"
-msgstr ""
+msgstr "Ευγνώμων"
 
 #: [mood]grieving
 msgid "grieving"
@@ -2291,11 +2168,11 @@ msgstr ""
 
 #: [mood]guilty
 msgid "guilty"
-msgstr ""
+msgstr "Ένοχος"
 
 #: [mood]happy
 msgid "happy"
-msgstr ""
+msgstr "Χαρούμενος"
 
 #: [mood]hopeful
 msgid "hopeful"
@@ -2315,11 +2192,11 @@ msgstr ""
 
 #: [mood]hungry
 msgid "hungry"
-msgstr ""
+msgstr "Πεινασμένος"
 
 #: [mood]hurt
 msgid "hurt"
-msgstr ""
+msgstr "Πληγωμένος"
 
 #: [mood]impressed
 msgid "impressed"
@@ -2331,7 +2208,7 @@ msgstr ""
 
 #: [mood]in_love
 msgid "in love"
-msgstr ""
+msgstr "Ερωτευμένος"
 
 #: [mood]indignant
 msgid "indignant"
@@ -2347,27 +2224,27 @@ msgstr ""
 
 #: [mood]invincible
 msgid "invincible"
-msgstr ""
+msgstr "Ανίκητος"
 
 #: [mood]jealous
 msgid "jealous"
-msgstr ""
+msgstr "Ζηλιάρης"
 
 #: [mood]lonely
 msgid "lonely"
-msgstr ""
+msgstr "Μοναχικός"
 
 #: [mood]lost
 msgid "lost"
-msgstr ""
+msgstr "Χαμένος"
 
 #: [mood]lucky
 msgid "lucky"
-msgstr ""
+msgstr "Τυχερός"
 
 #: [mood]mean
 msgid "mean"
-msgstr ""
+msgstr "Κακός"
 
 #: [mood]moody
 msgid "moody"
@@ -2375,7 +2252,7 @@ msgstr ""
 
 #: [mood]nervous
 msgid "nervous"
-msgstr ""
+msgstr "Αγχωμένος"
 
 #: [mood]neutral
 msgid "neutral"
@@ -2391,15 +2268,15 @@ msgstr ""
 
 #: [mood]playful
 msgid "playful"
-msgstr ""
+msgstr "Παιχνιδιάρης"
 
 #: [mood]proud
 msgid "proud"
-msgstr ""
+msgstr "περήφανος"
 
 #: [mood]relaxed
 msgid "relaxed"
-msgstr ""
+msgstr "Χαλαρός"
 
 #: [mood]relieved
 msgid "relieved"
@@ -2411,11 +2288,11 @@ msgstr ""
 
 #: [mood]sad
 msgid "sad"
-msgstr ""
+msgstr "Λυπημένος"
 
 #: [mood]sarcastic
 msgid "sarcastic"
-msgstr ""
+msgstr "Σαρκαστικός"
 
 #: [mood]satisfied
 msgid "satisfied"
@@ -2423,7 +2300,7 @@ msgstr ""
 
 #: [mood]serious
 msgid "serious"
-msgstr ""
+msgstr "Σοβαρός"
 
 #: [mood]shocked
 msgid "shocked"
@@ -2431,11 +2308,11 @@ msgstr ""
 
 #: [mood]shy
 msgid "shy"
-msgstr ""
+msgstr "Ντροπαλός"
 
 #: [mood]sick
 msgid "sick"
-msgstr ""
+msgstr "Άρρωστος"
 
 #: [mood]sleepy
 msgid "sleepy"
@@ -2451,23 +2328,23 @@ msgstr ""
 
 #: [mood]strong
 msgid "strong"
-msgstr ""
+msgstr "Δυνατός"
 
 #: [mood]surprised
 msgid "surprised"
-msgstr ""
+msgstr "Έκπληκτός"
 
 #: [mood]thankful
 msgid "thankful"
-msgstr ""
+msgstr "Ευγνώμων"
 
 #: [mood]thirsty
 msgid "thirsty"
-msgstr ""
+msgstr "Διψασμένος"
 
 #: [mood]tired
 msgid "tired"
-msgstr ""
+msgstr "Κουρασμένος"
 
 #: [mood]undefined
 msgid "undefined"
@@ -2475,15 +2352,15 @@ msgstr ""
 
 #: [mood]weak
 msgid "weak"
-msgstr ""
+msgstr "Αδύναμος"
 
 #: [mood]worried
 msgid "worried"
-msgstr ""
+msgstr "Ανήσυχος"
 
 #: [month]title
 msgid "Month"
-msgstr ""
+msgstr "Μήνας"
 
 #: [month]january
 msgid "January"
@@ -2535,7 +2412,7 @@ msgstr "Δεκέμβριος"
 
 #: [year]title
 msgid "Year"
-msgstr ""
+msgstr "Χρόνος"
 
 #: [date]today
 msgid "Today"
@@ -2550,9 +2427,8 @@ msgid "Yesterday"
 msgstr "Χθες"
 
 #: [date]ago
-#, fuzzy
 msgid "%d days ago"
-msgstr " %d ημέρες πριν"
+msgstr ""
 
 #: [date]day
 msgid "day"
@@ -2560,15 +2436,15 @@ msgstr "ημέρα"
 
 #: [post]title
 msgid "Title"
-msgstr ""
+msgstr "Τίτλος"
 
 #: [post]whats_new
 msgid "What's new ?"
-msgstr ""
+msgstr "Κανένα νέο;"
 
 #: [post]place
 msgid "Place"
-msgstr ""
+msgstr "Μέρος"
 
 #: [post]by
 msgid "by"
@@ -2580,15 +2456,15 @@ msgstr ""
 
 #: [post]email
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: [post]empty
 msgid "No content"
-msgstr ""
+msgstr "Δεν υπάρχει περιεχόμενο"
 
 #: [post]no_comments
 msgid "No comments yet"
-msgstr ""
+msgstr "Δεν υπάρχουν σχόλια ακόμα"
 
 #: [post]no_comments_stream
 msgid "No comments stream"
@@ -2600,7 +2476,7 @@ msgstr ""
 
 #: [post]older
 msgid "Get older posts"
-msgstr ""
+msgstr "Ανάκτηση παλαιότερων αναρτήσεων"
 
 #: [post]new_items
 msgid "%s new items"
@@ -2612,20 +2488,19 @@ msgstr ""
 
 #: [post]comments_older
 msgid "Show the older comments"
-msgstr ""
+msgstr "Εμφάνιση παλαιότερων σχόλιων"
 
 #: [post]comments_loading
-#, fuzzy
 msgid "Loading comments..."
-msgstr "Φορτώνεται το contact feed ..."
+msgstr "Φόρτωση σχόλιων...."
 
 #: [post]comments_get
 msgid "Get the comments"
-msgstr ""
+msgstr "Ανάκτηση σχόλιων"
 
 #: [post]comment_add
 msgid "Add a comment"
-msgstr ""
+msgstr "Προσθήκη σχόλιου"
 
 #: [post]share
 msgid "Share with"
@@ -2633,27 +2508,27 @@ msgstr ""
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
+msgstr "Όλοι"
 
 #: [post]share_your_contacts
 msgid "Your contacts"
-msgstr ""
+msgstr "Οι επαφές σου"
 
 #: [post]updated
 msgid "Updated"
-msgstr ""
+msgstr "Ενημερώθηκε"
 
 #: [post]content_not_found
 msgid "Content not found"
-msgstr ""
+msgstr "Το περιεχόμενο δεν βρέθηκε"
 
 #: [post]default_title
 msgid "Contact publication"
-msgstr ""
+msgstr "Κοινοποιησή επαφής"
 
 #: [post]comments
 msgid "Comments"
-msgstr ""
+msgstr "Σχόλια"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -2661,158 +2536,4 @@ msgstr ""
 
 #: [field]type_here
 msgid "Type here"
-msgstr ""
-
-#, fuzzy
-#~ msgctxt "[general]nickname"
-#~ msgid "Nickname"
-#~ msgstr "Ψευδώνυμο"
-
-#, fuzzy
-#~ msgctxt "[accounts]accounts_nickname"
-#~ msgid "Nickname"
-#~ msgstr "Ψευδώνυμο"
-
-#~ msgid "Your web browser is too old to use with Movim."
-#~ msgstr "Ο περιηγητης σας είναι αρκετά παλιός για να χρησιμοποιηθεί με Movim"
-
-#~ msgid "PHP version mismatch. Movim requires PHP 5.3 minimum."
-#~ msgstr "Αναντιστοιχία έκδοσης της PHP. Το Movim απαιτεί τουλάχιστον την έκδοση 5.3 της PHP."
-
-#~ msgid "Movim requires the %s extension."
-#~ msgstr "Το Movim απαιτεί την %s επέκταση."
-
-#~ msgid "Movim's folder must be writable."
-#~ msgstr "Ο φάκελλος του Movim πρέπε να διαθέτει δικαίωμα εγγραφής."
-
-#~ msgid "Movim Installer"
-#~ msgstr "Πρόγραμμα εγκατάστασης του Movim"
-
-#~ msgid "Couldn't create directory '%s'."
-#~ msgstr "Αδύνατη η δημιουργία του φακέλλου '%s'."
-
-#~ msgid "Couldn't create configuration file '%s'."
-#~ msgstr "Αδύνατη η δημιουργία του αρχείου ρύθμισης '%s'."
-
-#~ msgid "Compatibility Test"
-#~ msgstr "Δοκιμασία συμβατότητας"
-
-#~ msgid "The following requirements were not met. Please make sure they are all satisfied in order to install Movim."
-#~ msgstr "Οι ακόλουθες προϋποθέσεις δεν καλύπτονταν. Παρακαλώ βεβαιωθείτε πως καλύπτονται όλες, για να μπορέσετε να προχωρήσετε στην εγκατάσταση του Movim."
-
-#~ msgid "User not logged in."
-#~ msgstr "Χρήστης μη συνδεδεμένος."
-
-#~ msgid "JID not provided."
-#~ msgstr "Δεν παρέχονται JID (Jabber Identif. Codes)"
-
-#~ msgid "jid '%s' is incorrect"
-#~ msgstr "Ο jid '%s' είναι λανθασμένος"
-
-#~ msgid "Cannot open log file '%s'"
-#~ msgstr "Αδύνατο να ανοίξει το αρχείο καταγραφής '%s'"
-
-#~ msgid "%s - Account Creation"
-#~ msgstr "%s - Δημιουργία Λογαριασμού"
-
-#~ msgid "Debug console"
-#~ msgstr "Κονσόλα αποσφαλμάτωσης"
-
-#~ msgid "Logout"
-#~ msgstr "Αποσύνδεση"
-
-#~ msgid "wants to talk with you"
-#~ msgstr "θέλει να μιλήσει μαζί σου"
-
-#~ msgid "Decline"
-#~ msgstr "Απόρριψη"
-
-#~ msgid "BOSH Connection Preferences"
-#~ msgstr "Επιλογές σύνδεσης BOSH"
-
-#~ msgid "Success !"
-#~ msgstr "Επιτυχής!"
-
-#~ msgid "You entered different passwords"
-#~ msgstr "Εισάγατε διαφορετικούς κωδικούς"
-
-#~ msgid "Wrong ID"
-#~ msgstr "Λάθος ID"
-
-#~ msgid "Only alphanumerics elements are authorized"
-#~ msgstr "Επιτρέπονται μόνο αλφαριθμιτικά στοιχεία"
-
-#~ msgid "Example :"
-#~ msgstr "Παράδειγμα"
-
-#~ msgid "Same here !"
-#~ msgstr "Το ίδιο και εδώ"
-
-#~ msgid "Retype"
-#~ msgstr "Επαναπληκτρολόγηση"
-
-#~ msgid "Create"
-#~ msgstr "Δημιούργησε"
-
-#~ msgid "Actual version : "
-#~ msgstr "Τρέχουσα έκδοση "
-
-#~ msgid "Install the %s package"
-#~ msgstr "Εγκαταστήστε το %s πακέτο"
-
-#~ msgid "Install %s and %s packages"
-#~ msgstr "Εγκατασταση %s και %s πακέτα"
-
-#~ msgid "Update your PHP version or contact your server administrator"
-#~ msgstr "Κάντε αναβάθμιση του PHP ή επικοινωνήστε με τον διαχειρηστή του εξυπηρετητή"
-
-#~ msgid "Before you enjoy your social network, a few adjustements are required."
-#~ msgstr "Πριν απολαύσετε το κοινωνικό σας δίκτυο, απαιτούνται ορισμένες προσαρμογές."
-
-#~ msgid "Thank you for downloading Movim!"
-#~ msgstr "Ευχαριστούμε που κατεβάσατε το Movim!"
-
-#~ msgid "Proxy Preferences"
-#~ msgstr "Προτιμήσεις proxy"
-
-#~ msgid "XMPP Connection Preferences"
-#~ msgstr "Προτιμήσεις σύνδεσης XMPP"
-
-#~ msgid "talkative"
-#~ msgstr "ομιλητικός"
-
-#~ msgid "terse"
-#~ msgstr "λιτός"
-
-#~ msgid "Some errors were detected. Please correct them for the installation to proceed."
-#~ msgstr "Εντοπίστηκαν μερικά σφάλματα. Παρακαλούμε διορθώστε τα για να συνεχίστεί η εγκατάσταση"
-
-#~ msgid "Valid Bosh"
-#~ msgstr "Εγκυρο bosh"
-
-#~ msgid "Make sure your password is safe :"
-#~ msgstr "Σιγουρευτείτε εαν ο κωδικός σας είναι ασφαλής"
-
-#~ msgid "A capital letter, a digit and a special character are recommended"
-#~ msgstr "Προτείνεται ένα κεφαλαίο γράμμα, ένα ψηφίο και ένας ειδικός χαρακτήρας"
-
-#~ msgid "Could not communicate with the XMPP server"
-#~ msgstr "Δεν είναι εφικτή η επικοινωνία με τον διακομιστή  XMPP"
-
-#~ msgid "Could not connect to the XMPP server"
-#~ msgstr "Δεν είναι εφικτή η σύνδεση στον διακομιστή  XMPP"
-
-#~ msgid "%s - Add An Account"
-#~ msgstr "%s - Προσθέστε λογαριασμό"
-
-#~ msgid "8 characters"
-#~ msgstr "8 χαρακτήρες"
-
-#~ msgid "I can't find the answer to my question here"
-#~ msgstr "Δεν βρίσκω απάντηση εδώ"
-
-#~ msgid "normal"
-#~ msgstr "κανονικό"
-
-#~ msgid "empty"
-#~ msgstr "κενό"
+msgstr "Πληκτρολογήστε εδώ"

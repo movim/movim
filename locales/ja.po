@@ -36,8 +36,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
@@ -79,8 +77,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2015-12-29 12:43+0000\n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
 "Language: ja\n"
@@ -122,7 +120,7 @@ msgstr "API"
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr ""
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
 msgstr "アカウント"
 
@@ -936,16 +934,16 @@ msgstr ""
 msgid "Hello"
 msgstr "こんにちは"
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "コンタクトの投稿"
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
@@ -990,54 +988,6 @@ msgstr "%s 投稿"
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr "チャットへ"
-
-#: [hello]news [page]news
-msgid "News"
-msgstr "新着情報"
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr "新着情報をもっと読む"
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr "公開ブログへ"
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr ""
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr "Movimで共有する"
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr ""
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [help]faq
@@ -1263,18 +1213,16 @@ msgid "All"
 msgstr "全て"
 
 #: [menu]mine
-#, fuzzy
 msgid "My publications"
-msgstr "人口"
+msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
 msgstr "コンタクト"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Add a post"
-msgstr "コメントを投稿する"
+msgstr ""
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1364,6 +1312,42 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr "公開ブログへ"
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr ""
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr "Movimで共有する"
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr ""
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr ""
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr "切断する"
@@ -1388,7 +1372,7 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr "プレビュー"
 
@@ -1581,9 +1565,8 @@ msgid "Search in your contacts"
 msgstr ""
 
 #: [roster]search_pod
-#, fuzzy
 msgid "Search a contact"
-msgstr "全てのコンタクトと共有"
+msgstr ""
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1717,10 +1700,6 @@ msgstr "システム管理"
 msgid "Home"
 msgstr "ホーム"
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr ""
@@ -1728,6 +1707,10 @@ msgstr ""
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "アカウント作成"
+
+#: [page]news
+msgid "News"
+msgstr "新着情報"
 
 #: [page]avatar
 msgid "Avatar"
@@ -1737,21 +1720,9 @@ msgstr "アバター"
 msgid "Chats"
 msgstr "チャット"
 
-#: [page]server
-msgid "Server"
-msgstr "サーバー"
-
 #: [page]public_groups
 msgid "Public Groups"
 msgstr ""
-
-#: [page]viewer
-msgid "Viewer"
-msgstr ""
-
-#: [page]media
-msgid "Media"
-msgstr "画像"
 
 #: [page]blog
 msgid "Blog"
@@ -1805,10 +1776,6 @@ msgstr "エラーが発生しました。%s"
 msgid "Cannot load file '%s'"
 msgstr "「%s」というファイルをロードできません。"
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
@@ -1819,82 +1786,6 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr ""
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr ""
-
-#: [title]account
-msgid "%s - Account"
-msgstr "%s - アカウント"
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr ""
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "%s - 設定"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr ""
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr "%s - ヘルプページ"
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "%s - MOVIMにログインする"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "%s - MOVIMへようこそ"
-
-#: [title]media
-msgid "%s - Media"
-msgstr ""
-
-#: [title]news
-msgid "%s - News"
-msgstr ""
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr ""
-
-#: [title]node
-msgid "%s - Group"
-msgstr ""
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr ""
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr "%s - プロファイル"
-
-#: [title]server
-msgid "%s - Server"
 msgstr ""
 
 #: [button]validate
@@ -1988,10 +1879,6 @@ msgstr "次へ"
 #: [button]previous
 msgid "Previous"
 msgstr "前へ"
-
-#: [step]step
-msgid "Step %s"
-msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2650,36 +2537,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
-
-#~ msgid "Data"
-#~ msgstr "データ"
-
-#~ msgid "Cache"
-#~ msgstr "キャッシュ"
-
-#~ msgid "Messages"
-#~ msgstr "メッセージ"
-
-#~ msgid "Location"
-#~ msgstr "現在地"
-
-#~ msgid "Location updated"
-#~ msgstr "現在地が更新されました"
-
-#~ msgid "Update my position"
-#~ msgstr "現在地を更新する"
-
-#~ msgid "Manage your subscriptions"
-#~ msgstr "サブスクリプションの管理"
-
-#~ msgid "Manage the subscriptions"
-#~ msgstr "サブスクリプションの管理"
-
-#~ msgid "Get the subscriptions"
-#~ msgstr "サブスクリプションを習得する"
-
-#~ msgid "Search"
-#~ msgstr "検索"
-
-#~ msgid "Call"
-#~ msgstr "呼び出し"

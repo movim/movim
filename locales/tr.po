@@ -1,6 +1,7 @@
 #
 # Translators:
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014
+# alisan alacam <alisanalacam@gmail.com>, 2016
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -80,25 +81,25 @@ msgstr ""
 "POT-Creation-Date: 2016-03-23 23:26+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
-"Language-Team: Latvian (http://www.transifex.com/movim/movim/language/lv/)\n"
-"Language: lv\n"
+"Language-Team: Turkish (http://www.transifex.com/movim/movim/language/tr/)\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr "Paldies"
+msgstr ""
 
 #: [about]developers
 msgid "Developers"
-msgstr "Izstrādātāji"
+msgstr "Geliştiriciler"
 
 #: [about]translators
 msgid "Translators"
-msgstr "Tulkotāji"
+msgstr ""
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
@@ -106,15 +107,15 @@ msgstr ""
 
 #: [about]software
 msgid "Software"
-msgstr "Programmatūra"
+msgstr "Yazılım"
 
 #: [about]resources
 msgid "Resources"
-msgstr "Resursi"
+msgstr ""
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr "API"
+msgstr ""
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
@@ -122,24 +123,24 @@ msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Hesap"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Şifremi değiştir"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
 msgid "Password"
-msgstr "Parole"
+msgstr "Şifre"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Şifre onaylama"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Şifre güncellendi"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
@@ -151,7 +152,7 @@ msgstr ""
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "Hesabımı sil"
 
 #: [account]delete
 msgid "Delete your account"
@@ -163,7 +164,7 @@ msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Bunu silmek isteğinize emin misiniz?"
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -171,7 +172,7 @@ msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr "Izveidot jaunu kontu"
+msgstr "Yeni hesap oluştur"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
@@ -179,15 +180,15 @@ msgstr ""
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "Açık"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "Hesabın başarıyla oluşturuldu"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Yükleniyor"
 
 #: [create]placeholder
 msgid "…and start playing"
@@ -207,23 +208,23 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
-msgstr "Darbības"
+msgstr "Eylemler"
 
 #: [db]legend [schema]database
 msgid "Database"
-msgstr ""
+msgstr "Veritabanı"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
-msgstr "Modl nevarēja pieslēgties datubāzei"
+msgstr ""
 
 #: [db]connect_success
 msgid "Movim is connected to the database"
-msgstr "Movim ir pieslēgts datubāzei"
+msgstr ""
 
 #: [db]update
 msgid "The database need to be updated"
-msgstr "Datņu bāze ir jāatjaunina"
+msgstr ""
 
 #: [db]up_to_date
 msgid "Movim database is up to date"
@@ -231,19 +232,19 @@ msgstr ""
 
 #: [db]type
 msgid "Database Type"
-msgstr "Datubāzes tips"
+msgstr "Veritabanı Tipi"
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
-msgstr "Lietotājvārds"
+msgstr "Kullanıcı adı"
 
 #: [db]host
 msgid "Host"
-msgstr "Resursdators"
+msgstr ""
 
 #: [db]port
 msgid "Port"
-msgstr "Ports"
+msgstr "Port"
 
 #: [db]name
 msgid "Database Name"
@@ -251,15 +252,15 @@ msgstr ""
 
 #: [admin]general
 msgid "General Settings"
-msgstr "Vispārīgie iestatījumi"
+msgstr ""
 
 #: [general]theme
 msgid "Theme"
-msgstr "Motīvs"
+msgstr ""
 
 #: [general]language
 msgid "Default language"
-msgstr "Noklusējuma valoda"
+msgstr ""
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -267,7 +268,7 @@ msgstr ""
 
 #: [general]timezone
 msgid "Server Timezone"
-msgstr "Servera laika josla"
+msgstr ""
 
 #: [general]limit
 msgid "User folder size limit (in bytes)"
@@ -303,7 +304,7 @@ msgstr ""
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr "Pārievadiet paroli"
+msgstr ""
 
 #: [whitelist]title
 msgid "Whitelist - XMPP Server"
@@ -328,7 +329,7 @@ msgstr ""
 
 #: [information]description
 msgid "Description"
-msgstr "Apraksts"
+msgstr ""
 
 #: [information]info1
 msgid "This message will be displayed on the login page"
@@ -441,7 +442,7 @@ msgstr ""
 
 #: [api]conf_updated [config]updated
 msgid "Configuration updated"
-msgstr "Atjaunināta konfigurācija"
+msgstr ""
 
 #: [avatar]file
 msgid "File"
@@ -489,11 +490,11 @@ msgstr ""
 
 #: [title]conferences
 msgid "Conferences"
-msgstr "Konferences"
+msgstr ""
 
 #: [title]groups [group]empty_title [menu]groups [page]groups
 msgid "Groups"
-msgstr "Grupas"
+msgstr ""
 
 #: [chatroom]add
 msgid "Add a new Chat Room"
@@ -511,7 +512,7 @@ msgstr ""
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 #: [accounts]accounts_nickname
 msgid "Nickname"
-msgstr "Segvārds"
+msgstr "Takma ad"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
@@ -523,7 +524,7 @@ msgstr ""
 
 #: [chatroom]empty_name [chatrooms]empty_name
 msgid "Empty name"
-msgstr "Tukšs vārds"
+msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
@@ -556,11 +557,11 @@ msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
-msgstr "Šifrēta vēstule"
+msgstr ""
 
 #: [message]composing [chats]composing
 msgid "Composing..."
-msgstr ""
+msgstr "Oluşturuluyor..."
 
 #: [message]paused [chats]paused
 msgid "Paused..."
@@ -576,7 +577,7 @@ msgstr ""
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr "%s pieprasa jūsu uzmanību"
+msgstr ""
 
 #: [chat]placeholder
 msgid "Your message here..."
@@ -588,7 +589,7 @@ msgstr ""
 
 #: [chat]empty_title [button]chat
 msgid "Chat"
-msgstr "Tērzēšana"
+msgstr "Sohbet"
 
 #: [chat]empty_text
 msgid "Discuss with your contacts"
@@ -612,7 +613,7 @@ msgstr ""
 
 #: [chatroom]config [group]configuration [page]configuration
 msgid "Configuration"
-msgstr ""
+msgstr "Yapılandırma"
 
 #: [chatroom]config_saved
 msgid "Configuration saved"
@@ -648,11 +649,11 @@ msgstr ""
 
 #: [config]general
 msgid "General"
-msgstr "Vispārīgi"
+msgstr ""
 
 #: [config]language
 msgid "Language"
-msgstr "Valoda"
+msgstr "Dil"
 
 #: [config]roster
 msgid "Roster display"
@@ -668,7 +669,7 @@ msgstr ""
 
 #: [config]appearence
 msgid "Appearence"
-msgstr "Izskats"
+msgstr ""
 
 #: [config]not_valid
 msgid "Configuration invalid"
@@ -692,35 +693,35 @@ msgstr ""
 
 #: [general]legend
 msgid "General Informations"
-msgstr "Vispārīgā Informācija"
+msgstr "Genel Bilgiler"
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr "Nosaukums"
+msgstr "Ad"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr "Dzimšanas datums"
+msgstr "Doğum Tarihi"
 
 #: [general]gender
 msgid "Gender"
-msgstr "Dzimums"
+msgstr "Cinsiyeti"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr "Ģimenes stāvoklis"
+msgstr "Medeni Durumu"
 
 #: [general]email
 msgid "Email"
-msgstr "E-pasts"
+msgstr ""
 
 #: [general]website
 msgid "Website"
-msgstr "Tīmekļa vietne"
+msgstr "Web sayfası"
 
 #: [general]about
 msgid "About Me"
-msgstr "Par mani"
+msgstr "Hakkımda"
 
 #: [general]accounts
 msgid "Other Accounts"
@@ -732,27 +733,27 @@ msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
-msgstr "Ģeogrāfiskais novietojums"
+msgstr ""
 
 #: [position]locality
 msgid "Locality"
-msgstr "Apvidus"
+msgstr ""
 
 #: [position]country
 msgid "Country"
-msgstr "Valsts"
+msgstr ""
 
 #: [mood]title
 msgid "Mood"
-msgstr "Noskaņojums"
+msgstr ""
 
 #: [mood]im
 msgid "I'm "
-msgstr "Esmu "
+msgstr ""
 
 #: [listen]title
 msgid "Listening"
-msgstr "Klausās"
+msgstr ""
 
 #: [last]title
 msgid "Last seen"
@@ -760,7 +761,7 @@ msgstr ""
 
 #: [client]title
 msgid "Client Informations"
-msgstr ""
+msgstr "İstemci bilgileri"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -776,15 +777,15 @@ msgstr ""
 
 #: [edit]alias
 msgid "Alias"
-msgstr "Pseidonīms"
+msgstr "Rumuz"
 
 #: [edit]group
 msgid "Group"
-msgstr "Grupa"
+msgstr ""
 
 #: [edit]updated [roster]updated
 msgid "Contact updated"
-msgstr "Kontakts atjaunināts"
+msgstr ""
 
 #: [delete]title
 msgid "Are you sure?"
@@ -844,15 +845,15 @@ msgstr ""
 
 #: [group]subscribe
 msgid "Subscribe"
-msgstr "Pierakstīties"
+msgstr ""
 
 #: [group]subscribed
 msgid "Subscribed"
-msgstr "Pierakstīts"
+msgstr ""
 
 #: [group]unsubscribe
 msgid "Unsubscribe"
-msgstr "Atrakstīties"
+msgstr ""
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -872,7 +873,7 @@ msgstr ""
 
 #: [group]sure
 msgid "Are you sure ?"
-msgstr "Vai esat pārliecināts(a)?"
+msgstr ""
 
 #: [group]empty_text
 msgid "Discover, follow and share"
@@ -1004,23 +1005,23 @@ msgstr ""
 
 #: [banner]white
 msgid "White, only you can see the information"
-msgstr ""
+msgstr "Beyaz, sadece siz bilgileri görebilirsiniz"
 
 #: [banner]green
 msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
+msgstr "Yeşil, seçeceğiniz kişiler tarafından bilgiler görülebilir"
 
 #: [banner]orange
 msgid "Orange, all your contact list can see your information"
-msgstr ""
+msgstr "Turuncu, bilgilerinizi kişi listenizdeki herkes görebilir"
 
 #: [banner]red
 msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
+msgstr "Kırmızı, XMPP ağındaki herkes bilgilerinizi görebilir"
 
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
-msgstr ""
+msgstr "Siyah, bütün internet bilgilerinizi görebilir."
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -1072,11 +1073,11 @@ msgstr ""
 
 #: [error]username
 msgid "Wrong username"
-msgstr "Nepareizs lietotājvārds"
+msgstr "Yanlış kullanıcı adı"
 
 #: [error]jid
 msgid "Invalid JID"
-msgstr "Nederīgs JID"
+msgstr "Geçersiz JID"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
@@ -1084,27 +1085,27 @@ msgstr ""
 
 #: [error]dns
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
+msgstr "XMPP Alan adı hatası, hesabınız geçerli bir Jabber ID değil"
 
 #: [error]data_missings
 msgid "Some data are missing !"
-msgstr "Dažas datnes trūkst !"
+msgstr "Bazı veriler eksik !"
 
 #: [error]wrong_password
 msgid "Wrong password"
-msgstr "Nepareiza parole"
+msgstr "Yanlış şifre"
 
 #: [error]internal
 msgid "Internal server error"
-msgstr "Servera iekšēja kļūda"
+msgstr "Dahili sunucu hatası"
 
 #: [error]session
 msgid "Session error"
-msgstr ""
+msgstr "Oturum hatası"
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr "Konts veiksmīgi izveidots"
+msgstr "Hesap başarıyla oluşturuldu"
 
 #: [error]xmpp_unauthorized
 msgctxt "[error]xmpp_unauthorized"
@@ -1129,7 +1130,7 @@ msgstr ""
 
 #: [error]default
 msgid "Unknown error"
-msgstr "Nezināma kļūda"
+msgstr "Bilinmeyen hata"
 
 #: [error]login_format
 msgid "Invalid username format"
@@ -1150,7 +1151,7 @@ msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr ""
+msgstr "Movim kimlik doğrulamada başarısız oldu. Yanlış veri girdiniz"
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
@@ -1158,15 +1159,15 @@ msgstr ""
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr "XMPP autentifikācija neizdevās"
+msgstr "XMPP kimlik doğrulaması başarısız oldu"
 
 #: [form]username
 msgid "My address"
-msgstr ""
+msgstr "Adresim"
 
 #: [form]create_one
 msgid "Create one !"
-msgstr "Izveidot vienu !"
+msgstr ""
 
 #: [form]another_account
 msgid "Another account"
@@ -1174,7 +1175,7 @@ msgstr ""
 
 #: [form]no_account
 msgid "No account yet ?"
-msgstr "Vēl nav konts ?"
+msgstr ""
 
 #: [form]whitelist.info
 msgid "You can login with accounts from theses servers"
@@ -1182,7 +1183,7 @@ msgstr ""
 
 #: [form]connected
 msgid "Connected"
-msgstr "Savienots"
+msgstr ""
 
 #: [form]population
 msgid "Population"
@@ -1210,7 +1211,7 @@ msgstr ""
 
 #: [menu]all
 msgid "All"
-msgstr ""
+msgstr "Hepsi"
 
 #: [menu]mine
 msgid "My publications"
@@ -1218,7 +1219,7 @@ msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr "Kontakti"
+msgstr ""
 
 #: [menu]add_post
 msgid "Add a post"
@@ -1230,7 +1231,7 @@ msgstr ""
 
 #: [notifs]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr "%s grib ar jums sazināties"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1350,7 +1351,7 @@ msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
-msgstr "Atvienoties"
+msgstr ""
 
 #: [status]here
 msgid "Your status here !"
@@ -1378,7 +1379,7 @@ msgstr ""
 
 #: [post]help [page]help
 msgid "Help"
-msgstr ""
+msgstr "Yardım"
 
 #: [post]help_more
 msgid "More help"
@@ -1394,7 +1395,7 @@ msgstr ""
 
 #: [post]link
 msgid "Link"
-msgstr "Saite"
+msgstr ""
 
 #: [post]tags
 msgid "Tags"
@@ -1502,7 +1503,7 @@ msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
-msgstr "Negrupēts"
+msgstr "Gruplanmamış"
 
 #: [roster]show_disconnected
 msgid "Show disconnected contacts"
@@ -1514,11 +1515,11 @@ msgstr ""
 
 #: [roster]show_group
 msgid "Show group %s"
-msgstr "Radīt %s grupu"
+msgstr ""
 
 #: [roster]hide_group
 msgid "Hide group %s"
-msgstr "Slēpt %s grupu"
+msgstr ""
 
 #: [roster]jid_error
 msgid "Please enter a valid Jabber ID"
@@ -1534,7 +1535,7 @@ msgstr ""
 
 #: [roster]show_hide
 msgid "Show/Hide"
-msgstr "Rādīt/slēpt"
+msgstr ""
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
@@ -1542,11 +1543,11 @@ msgstr ""
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
-msgstr "Spiest enter lai apstiprināt."
+msgstr ""
 
 #: [roster]jid
 msgid "JID"
-msgstr "JID"
+msgstr ""
 
 #: [roster]results
 msgid "Results"
@@ -1578,15 +1579,15 @@ msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
-msgstr "Statistika"
+msgstr ""
 
 #: [statistics]since
 msgid "Since"
-msgstr "Kopš"
+msgstr ""
 
 #: [statistics]sessions
 msgid "Sessions"
-msgstr "Sesijas"
+msgstr ""
 
 #: [statistics]monthly_sub
 msgid "Monthly Subscriptions"
@@ -1606,11 +1607,11 @@ msgstr ""
 
 #: [subscribe]server_question
 msgid "Your server here ?"
-msgstr "Jūsu serveris šeit ?"
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
-msgstr "Sazināties ar mums lai pievienot jūsu oficiāli atbalstīto serveru sarakstam"
+msgstr ""
 
 #: [feed]nope
 msgid "No public feed for this contact"
@@ -1630,11 +1631,11 @@ msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
-msgstr ""
+msgstr "Profil"
 
 #: [vcard]updated
 msgid "Profile Updated"
-msgstr "Profils atjaunināts"
+msgstr ""
 
 #: [vcard]not_updated
 msgid "Profile Not Updated"
@@ -1650,15 +1651,15 @@ msgstr ""
 
 #: [accounts]accounts_title
 msgid "Accounts"
-msgstr "Konti"
+msgstr ""
 
 #: [accounts]twitter
 msgid "Twitter"
-msgstr "Twitter"
+msgstr ""
 
 #: [accounts]skype
 msgid "Skype"
-msgstr "Skype"
+msgstr ""
 
 #: [accounts]yahoo
 msgid "Yahoo Account"
@@ -1666,7 +1667,7 @@ msgstr ""
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
-msgstr "Privātuma līmenis"
+msgstr ""
 
 #: [privacy]privacy_question
 msgid "Is this profile public ?"
@@ -1678,11 +1679,11 @@ msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
-msgstr ""
+msgstr "Gönder"
 
 #: [save]reset [button]reset
 msgid "Reset"
-msgstr ""
+msgstr "Sıfırla"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1694,19 +1695,19 @@ msgstr ""
 
 #: [page]administration
 msgid "Administration"
-msgstr "Administrācija"
+msgstr ""
 
 #: [page]home
 msgid "Home"
-msgstr "Sākumvieta"
+msgstr "Anasayfa"
 
 #: [page]explore
 msgid "Explore"
-msgstr "Izpētīt"
+msgstr ""
 
 #: [page]account_creation
 msgid "Account Creation"
-msgstr ""
+msgstr "Hesap Oluşturma"
 
 #: [page]news
 msgid "News"
@@ -1714,7 +1715,7 @@ msgstr ""
 
 #: [page]avatar
 msgid "Avatar"
-msgstr ""
+msgstr "Avatar"
 
 #: [page]chats
 msgid "Chats"
@@ -1726,7 +1727,7 @@ msgstr ""
 
 #: [page]blog
 msgid "Blog"
-msgstr "Emuārs"
+msgstr ""
 
 #: [page]about
 msgid "About"
@@ -1738,11 +1739,11 @@ msgstr ""
 
 #: [page]feed
 msgid "Feed"
-msgstr "Plūsma"
+msgstr "Besleme"
 
 #: [page]posts
 msgid "Posts"
-msgstr "Ieraksti"
+msgstr ""
 
 #: [page]gallery
 msgid "Gallery"
@@ -1770,11 +1771,11 @@ msgstr ""
 
 #: [error]error
 msgid "Error: %s"
-msgstr ""
+msgstr "Hata: %s"
 
 #: [error]cannot_load_file
 msgid "Cannot load file '%s'"
-msgstr ""
+msgstr "Dosya '% s' yüklenemedi"
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
@@ -1798,7 +1799,7 @@ msgstr ""
 
 #: [button]add
 msgid "Add"
-msgstr "Pievienot"
+msgstr "Ekle"
 
 #: [button]delete
 msgid "Delete"
@@ -1806,11 +1807,11 @@ msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
-msgstr ""
+msgstr "İptal"
 
 #: [button]close
 msgid "Close"
-msgstr "Aizvērt"
+msgstr ""
 
 #: [button]update
 msgid "Update"
@@ -1822,7 +1823,7 @@ msgstr ""
 
 #: [button]submitting
 msgid "Submitting"
-msgstr ""
+msgstr "Göndermek"
 
 #: [button]register
 msgid "Register"
@@ -1834,7 +1835,7 @@ msgstr ""
 
 #: [button]save
 msgid "Save"
-msgstr "Saglabāt"
+msgstr ""
 
 #: [button]clear
 msgid "Clear"
@@ -1846,7 +1847,7 @@ msgstr ""
 
 #: [button]come_in
 msgid "Come in!"
-msgstr ""
+msgstr "İçeri gel!"
 
 #: [button]connecting
 msgid "Connecting"
@@ -1866,7 +1867,7 @@ msgstr ""
 
 #: [button]accept
 msgid "Accept"
-msgstr ""
+msgstr "Kabul et"
 
 #: [button]refuse
 msgid "Refuse"
@@ -1882,31 +1883,31 @@ msgstr ""
 
 #: [day]title
 msgid "Day"
-msgstr ""
+msgstr "Gün"
 
 #: [day]monday
 msgid "Monday"
-msgstr ""
+msgstr "Pazartesi"
 
 #: [day]tuesday
 msgid "Tuesday"
-msgstr ""
+msgstr "Salı"
 
 #: [day]wednesday
 msgid "Wednesday"
-msgstr ""
+msgstr "Çarşamba"
 
 #: [day]thursday
 msgid "Thursday"
-msgstr ""
+msgstr "Perşembe"
 
 #: [day]friday
 msgid "Friday"
-msgstr ""
+msgstr "Cuma"
 
 #: [day]saturday
 msgid "Saturday"
-msgstr ""
+msgstr "Cumartesi"
 
 #: [day]sunday
 msgid "Sunday"
@@ -1919,27 +1920,27 @@ msgstr ""
 
 #: [gender]male
 msgid "Male"
-msgstr ""
+msgstr "Erkek"
 
 #: [gender]female
 msgid "Female"
-msgstr ""
+msgstr "Kadın"
 
 #: [gender]other
 msgid "Other"
-msgstr ""
+msgstr "Diğer"
 
 #: [client]bot
 msgid "Bot"
-msgstr ""
+msgstr "Bot"
 
 #: [client]desktop
 msgid "Desktop"
-msgstr ""
+msgstr "Masaüstü"
 
 #: [client]phone
 msgid "Phone"
-msgstr ""
+msgstr "Telefon"
 
 #: [client]web
 msgid "Web"
@@ -1956,31 +1957,31 @@ msgstr ""
 
 #: [marital]single
 msgid "Single"
-msgstr ""
+msgstr "Bekar"
 
 #: [marital]relationship
 msgid "In a relationship"
-msgstr ""
+msgstr "bir ilişkisi var"
 
 #: [marital]married
 msgid "Married"
-msgstr ""
+msgstr "Evli"
 
 #: [marital]divorced
 msgid "Divorced"
-msgstr ""
+msgstr "Boşanmış"
 
 #: [marital]widowed
 msgid "Widowed"
-msgstr ""
+msgstr "Dul"
 
 #: [marital]cohabiting
 msgid "Cohabiting"
-msgstr ""
+msgstr "birlikte yaşayan"
 
 #: [marital]union
 msgid "Civil Union"
-msgstr ""
+msgstr "Sivil Dernek"
 
 #: [flag]white
 msgid "Not shared"
@@ -2004,27 +2005,27 @@ msgstr ""
 
 #: [presence]online
 msgid "Online"
-msgstr ""
+msgstr "Çevrimiçi"
 
 #: [presence]away
 msgid "Away"
-msgstr ""
+msgstr "Uzakta"
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "Rahatsız Etmeyin"
 
 #: [presence]xa
 msgid "Extended Away"
-msgstr ""
+msgstr "Uzun Süredir Uzakta"
 
 #: [presence]offline
 msgid "Offline"
-msgstr ""
+msgstr "Çevrimdışı"
 
 #: [presence]error
 msgid "Error"
-msgstr "Kļūda"
+msgstr ""
 
 #: [mood]afraid
 msgid "afraid"
@@ -2360,71 +2361,71 @@ msgstr ""
 
 #: [month]title
 msgid "Month"
-msgstr ""
+msgstr "Ay"
 
 #: [month]january
 msgid "January"
-msgstr ""
+msgstr "Ocak"
 
 #: [month]february
 msgid "February"
-msgstr ""
+msgstr "Şubat"
 
 #: [month]march
 msgid "March"
-msgstr ""
+msgstr "Mart"
 
 #: [month]april
 msgid "April"
-msgstr ""
+msgstr "Nisan"
 
 #: [month]may
 msgid "May"
-msgstr ""
+msgstr "Mayıs"
 
 #: [month]june
 msgid "June"
-msgstr ""
+msgstr "Haziran"
 
 #: [month]july
 msgid "July"
-msgstr ""
+msgstr "Temmuz"
 
 #: [month]august
 msgid "August"
-msgstr ""
+msgstr "Ağustos"
 
 #: [month]september
 msgid "September"
-msgstr ""
+msgstr "Eylül"
 
 #: [month]october
 msgid "October"
-msgstr ""
+msgstr "Ekim"
 
 #: [month]november
 msgid "November"
-msgstr ""
+msgstr "Kasım"
 
 #: [month]december
 msgid "December"
-msgstr ""
+msgstr "Aralık"
 
 #: [year]title
 msgid "Year"
-msgstr ""
+msgstr "Yıl"
 
 #: [date]today
 msgid "Today"
-msgstr ""
+msgstr "Bugün"
 
 #: [date]tomorrow
 msgid "Tomorrow"
-msgstr ""
+msgstr "Yarın"
 
 #: [date]yesterday
 msgid "Yesterday"
-msgstr ""
+msgstr "Dün"
 
 #: [date]ago
 msgid "%d days ago"
@@ -2432,7 +2433,7 @@ msgstr ""
 
 #: [date]day
 msgid "day"
-msgstr ""
+msgstr "gün"
 
 #: [post]title
 msgid "Title"
@@ -2472,11 +2473,11 @@ msgstr ""
 
 #: [post]no_load
 msgid "Your feed cannot be loaded."
-msgstr ""
+msgstr "Beslemeleriniz yüklenemiyor"
 
 #: [post]older
 msgid "Get older posts"
-msgstr ""
+msgstr "Eski gönderileri getir"
 
 #: [post]new_items
 msgid "%s new items"
@@ -2500,19 +2501,19 @@ msgstr ""
 
 #: [post]comment_add
 msgid "Add a comment"
-msgstr "Pievienot komentāru"
+msgstr ""
 
 #: [post]share
 msgid "Share with"
-msgstr "Dalīt ar"
+msgstr ""
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr "Ikviens"
+msgstr ""
 
 #: [post]share_your_contacts
 msgid "Your contacts"
-msgstr "Jūsu kontakti"
+msgstr ""
 
 #: [post]updated
 msgid "Updated"

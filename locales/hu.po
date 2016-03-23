@@ -38,8 +38,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
@@ -81,8 +79,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2015-12-29 12:43+0000\n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
@@ -124,7 +122,7 @@ msgstr "API"
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "A Movim egy XMPP alapú kommunikációs platform. Az egész projekt, kikéve a következő szoftvereket és forrásokat alatta van a"
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
 msgstr "Felhasználó"
 
@@ -938,16 +936,16 @@ msgstr ""
 msgid "Hello"
 msgstr "Szia"
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
+msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [groups]empty_text2
-msgid "Here you will be able to manage all your subscriptions."
+msgid "You don't have any group subscriptions yet."
 msgstr ""
 
 #: [groups]subscriptions
@@ -993,54 +991,6 @@ msgstr "%s poszt"
 #: [groups]disco_error
 msgid "This server doesn't exists"
 msgstr "Ez a szerver nem létezik"
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr "Irány a chat oldal"
-
-#: [hello]news [page]news
-msgid "News"
-msgstr "Hírek"
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr "Olvasd ezeket a cikkeket a híroldalon"
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr "Látogasd meg a nyilvános blogod."
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr ""
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr "Univerzális megosztás gomb"
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr "Megosztás Movimon"
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr "Ó! Szia!"
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr "Úgy tűnik új vagy itt! Üdv a Movimon!"
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr ""
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
-msgstr ""
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1265,18 +1215,16 @@ msgid "All"
 msgstr "Mind"
 
 #: [menu]mine
-#, fuzzy
 msgid "My publications"
-msgstr "Feliratkozásaim"
+msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
 msgstr "Kapcsolatok"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Add a post"
-msgstr "Hozzászólok"
+msgstr ""
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1327,9 +1275,8 @@ msgid "See %s profile"
 msgstr ""
 
 #: [post]blog_last
-#, fuzzy
 msgid "Public posts from users"
-msgstr "Nyilvános csoportok"
+msgstr ""
 
 #: [post]public
 msgid "Publish this post publicly?"
@@ -1367,6 +1314,42 @@ msgstr "Kommentek letiltva"
 msgid "Comment published"
 msgstr "Komment közzétéve"
 
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr "Látogasd meg a nyilvános blogod."
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr "Univerzális megosztás gomb"
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr ""
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr "Megosztás Movimon"
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr "Ó! Szia!"
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr "Úgy tűnik új vagy itt! Üdv a Movimon!"
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr ""
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
 #: [status]disconnect
 msgid "Disconnect"
 msgstr "Lecsatlakozás"
@@ -1391,7 +1374,7 @@ msgstr "Jelenlét"
 msgid "Online with Movim"
 msgstr "Online Movimmal"
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr "Előnézet"
 
@@ -1584,9 +1567,8 @@ msgid "Search in your contacts"
 msgstr "Keresés ismerősök között"
 
 #: [roster]search_pod
-#, fuzzy
 msgid "Search a contact"
-msgstr "Keresés ismerősök között"
+msgstr ""
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1720,10 +1702,6 @@ msgstr "Adminisztráció"
 msgid "Home"
 msgstr "Kezdőoldal"
 
-#: [page]discover
-msgid "Discover"
-msgstr ""
-
 #: [page]explore
 msgid "Explore"
 msgstr ""
@@ -1731,6 +1709,10 @@ msgstr ""
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Felhasználó létrehozása"
+
+#: [page]news
+msgid "News"
+msgstr "Hírek"
 
 #: [page]avatar
 msgid "Avatar"
@@ -1740,21 +1722,9 @@ msgstr "Avatár"
 msgid "Chats"
 msgstr ""
 
-#: [page]server
-msgid "Server"
-msgstr "Szerver"
-
 #: [page]public_groups
 msgid "Public Groups"
 msgstr "Nyilvános csoportok"
-
-#: [page]viewer
-msgid "Viewer"
-msgstr "Nézegető"
-
-#: [page]media
-msgid "Media"
-msgstr "Média"
 
 #: [page]blog
 msgid "Blog"
@@ -1808,10 +1778,6 @@ msgstr "Hiba: %s"
 msgid "Cannot load file '%s'"
 msgstr ""
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr ""
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr ""
@@ -1823,82 +1789,6 @@ msgstr ""
 #: [error]whoops
 msgid "Whoops!"
 msgstr "Hupsz!"
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr "Úgy tűnik még nincsenek itt képeid."
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr ""
-
-#: [title]about
-msgid "%s - About"
-msgstr ""
-
-#: [title]account
-msgid "%s - Account"
-msgstr "%s - Felhasználó"
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr ""
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr ""
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "%s - Beállítások"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr ""
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr ""
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr ""
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "%s - Bejelentkezés Momimon"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "%s - Üdv a Movimon"
-
-#: [title]media
-msgid "%s - Media"
-msgstr "%s - Média"
-
-#: [title]news
-msgid "%s - News"
-msgstr "%s - Hírek"
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr "%s - Csoport beállítása"
-
-#: [title]node
-msgid "%s - Group"
-msgstr "%s - Csoport"
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr "%s - 404"
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr "%s - Profil"
-
-#: [title]server
-msgid "%s - Server"
-msgstr "%s - Szerver"
 
 #: [button]validate
 msgid "Validate"
@@ -1991,10 +1881,6 @@ msgstr "Következő"
 #: [button]previous
 msgid "Previous"
 msgstr "Előző"
-
-#: [step]step
-msgid "Step %s"
-msgstr "%s. lépés"
 
 #: [day]title
 msgid "Day"
@@ -2653,36 +2539,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgid "Data"
-#~ msgstr "Adat"
-
-#~ msgid "Cache"
-#~ msgstr "Cache"
-
-#~ msgid "Messages"
-#~ msgstr "Üzenetek"
-
-#~ msgid "Location updated"
-#~ msgstr "Helyzet frissítve"
-
-#~ msgid "Update my position"
-#~ msgstr "Helyzetem frissítése"
-
-#~ msgid "Get the members"
-#~ msgstr "Tagok lekérdezése"
-
-#~ msgid "Shared"
-#~ msgstr "Megosztva"
-
-#~ msgid "Search"
-#~ msgstr "Keresés"
-
-#~ msgid "Is calling you"
-#~ msgstr "Hív téged"
-
-#~ msgid "Call"
-#~ msgstr "Hívás"
-
-#~ msgid "Connection"
-#~ msgstr "Kapcsolat"

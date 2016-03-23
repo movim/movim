@@ -36,8 +36,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Hello/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
@@ -79,8 +77,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 08:30+0200\n"
-"PO-Revision-Date: 2015-12-29 12:43+0000\n"
+"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
@@ -122,7 +120,7 @@ msgstr "API"
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
 msgstr "Movim to oparta na XMPP platforma komunikacji. Cały projekt poza następującym oprogramowaniem i zasobami jest na licencji"
 
-#: [account]title
+#: [account]title [page]account
 msgid "Account"
 msgstr "Konto"
 
@@ -936,17 +934,17 @@ msgstr "Listę wszystkich zasubskrybowanych grup znajdziesz w Moich Subskrypcjac
 msgid "Hello"
 msgstr "Cześć"
 
-#: [groups]contact_post [hello]contact_post [menu]contact_post
+#: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "Wpis Kontaktu"
 
 #: [groups]empty_text1
-msgid "You don't have any group subscriptions yet."
-msgstr "Nie zasubskrybowałeś jeszcze żadnej grupy."
-
-#: [groups]empty_text2
 msgid "Here you will be able to manage all your subscriptions."
 msgstr "Tutaj będziesz miał możliwość zarządzania swoimi wszystkimi subskrypcjami."
+
+#: [groups]empty_text2
+msgid "You don't have any group subscriptions yet."
+msgstr "Nie zasubskrybowałeś jeszcze żadnej grupy."
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -991,54 +989,6 @@ msgstr "%s wpisów"
 #: [groups]disco_error
 msgid "This server doesn't exists"
 msgstr "Serwer nie istnieje"
-
-#: [hello]chat
-msgid "Go on the Chat page"
-msgstr "Przejdź do zakładki Czatu"
-
-#: [hello]news [page]news
-msgid "News"
-msgstr "Nowości"
-
-#: [hello]news_page
-msgid "Read all theses articles on the News page"
-msgstr "Przeczytaj wszystkie artykuły na stronie Nowości"
-
-#: [hello]blog_title
-msgid "Visit your public blog"
-msgstr "Odwiedź swojego publicznego bloga"
-
-#: [hello]blog_text
-msgid "See your public posts and share them with all your contacts"
-msgstr "Pokaż swoje publiczne posty i podziel się nimi ze wszystkimi twoimi kontaktami"
-
-#: [hello]share_title
-msgid "Universal share button"
-msgstr "Uniwersalny przycisk dzielenia się"
-
-#: [hello]share_text
-msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr "Ustaw zakładkę lub przeciągnij i upusć niniejszy guzik na twój pasek by użyć go na wszystkich stronach, które chcesz udostępnić na Movim"
-
-#: [hello]share_button
-msgid "Share on Movim"
-msgstr "Udostępnij na Movim"
-
-#: [hello]enter_title
-msgid "Oh! Hello!"
-msgstr "Ah! Witaj!"
-
-#: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
-msgstr "Wygląda na to, że jesteś tutaj nowy! Witaj w Movim!"
-
-#: [hello]menu_title
-msgid "Check the Menu"
-msgstr "Sprawdź Menu"
-
-#: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
-msgstr "Tutaj masz dostęp do wszystkich głównych funkcji Movim. Możesz śmiało nawigować po całej stronie by odkryć jeszcze więcej!"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1263,18 +1213,16 @@ msgid "All"
 msgstr "Wszystko"
 
 #: [menu]mine
-#, fuzzy
 msgid "My publications"
-msgstr "Moje Subskrypcje"
+msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
 msgstr "Kontakty"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Add a post"
-msgstr "Dodaj komentarz"
+msgstr ""
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1325,9 +1273,8 @@ msgid "See %s profile"
 msgstr "Zobacz profil %s"
 
 #: [post]blog_last
-#, fuzzy
 msgid "Public posts from users"
-msgstr "Publiczne Grupy"
+msgstr ""
 
 #: [post]public
 msgid "Publish this post publicly?"
@@ -1342,9 +1289,8 @@ msgid "This post is now private"
 msgstr ""
 
 #: [post]public_url
-#, fuzzy
 msgid "Public URL of this post"
-msgstr "Opublikować wpis publicznie?"
+msgstr ""
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1365,6 +1311,42 @@ msgstr "Komentowanie zablokowane"
 #: [post]comment_published
 msgid "Comment published"
 msgstr "Komentarz opublikowany"
+
+#: [hello]blog_title
+msgid "Visit your public blog"
+msgstr "Odwiedź swojego publicznego bloga"
+
+#: [hello]blog_text
+msgid "See your public posts and share them with all your contacts"
+msgstr "Pokaż swoje publiczne posty i podziel się nimi ze wszystkimi twoimi kontaktami"
+
+#: [hello]share_title
+msgid "Universal share button"
+msgstr "Uniwersalny przycisk dzielenia się"
+
+#: [hello]share_text
+msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
+msgstr "Ustaw zakładkę lub przeciągnij i upusć niniejszy guzik na twój pasek by użyć go na wszystkich stronach, które chcesz udostępnić na Movim"
+
+#: [hello]share_button
+msgid "Share on Movim"
+msgstr "Udostępnij na Movim"
+
+#: [hello]enter_title
+msgid "Oh! Hello!"
+msgstr "Ah! Witaj!"
+
+#: [hello]enter_paragraph
+msgid "It seems that you're new there! Welcome on Movim!"
+msgstr "Wygląda na to, że jesteś tutaj nowy! Witaj w Movim!"
+
+#: [hello]menu_title
+msgid "Check the Menu"
+msgstr "Sprawdź Menu"
+
+#: [hello]menu_paragraph
+msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr "Tutaj masz dostęp do wszystkich głównych funkcji Movim. Możesz śmiało nawigować po całej stronie by odkryć jeszcze więcej!"
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -1390,7 +1372,7 @@ msgstr "Obecność"
 msgid "Online with Movim"
 msgstr "Dostępny w Movim"
 
-#: [post]preview [page]preview
+#: [post]preview
 msgid "Preview"
 msgstr "Podgląd"
 
@@ -1583,9 +1565,8 @@ msgid "Search in your contacts"
 msgstr "Szukaj w swoich kontaktach"
 
 #: [roster]search_pod
-#, fuzzy
 msgid "Search a contact"
-msgstr "Szukaj w swoich kontaktach"
+msgstr ""
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1692,9 +1673,8 @@ msgid "Is this profile public ?"
 msgstr "Czy ten profil jest publiczny ?"
 
 #: [privacy]privacy_info
-#, fuzzy
 msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
-msgstr "Proszę o uwagę ! Poprzez zmiany profilu na publiczny wszystkie powyższe informacje będą dostępne dla każdego użytkownika Movim oraz dla każdego w Internecie."
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1720,10 +1700,6 @@ msgstr "Administracja"
 msgid "Home"
 msgstr "Home"
 
-#: [page]discover
-msgid "Discover"
-msgstr "Odkryj"
-
 #: [page]explore
 msgid "Explore"
 msgstr "Poznaj"
@@ -1731,6 +1707,10 @@ msgstr "Poznaj"
 #: [page]account_creation
 msgid "Account Creation"
 msgstr "Tworzenie Konta"
+
+#: [page]news
+msgid "News"
+msgstr "Nowości"
 
 #: [page]avatar
 msgid "Avatar"
@@ -1740,21 +1720,9 @@ msgstr "Awatar"
 msgid "Chats"
 msgstr "Czaty"
 
-#: [page]server
-msgid "Server"
-msgstr "Serwer"
-
 #: [page]public_groups
 msgid "Public Groups"
 msgstr "Publiczne Grupy"
-
-#: [page]viewer
-msgid "Viewer"
-msgstr "Oglądający"
-
-#: [page]media
-msgid "Media"
-msgstr "Media"
 
 #: [page]blog
 msgid "Blog"
@@ -1808,10 +1776,6 @@ msgstr "Błąd: %s"
 msgid "Cannot load file '%s'"
 msgstr "Nie można wczytać pliku '%s'"
 
-#: [error]route
-msgid "Route error, please set all the parameters for the page %s"
-msgstr "Route error, please set all the parameters for the page %s"
-
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
 msgstr "Podana wtyczka '%s' nie istnieje."
@@ -1823,82 +1787,6 @@ msgstr "Podane wydarzenie '%s' nie zarejestrowane."
 #: [error]whoops
 msgid "Whoops!"
 msgstr "Ups!"
-
-#: [error]media_not_found
-msgid "It seem that you don't have any pictures here?"
-msgstr "Czyżbyś nie miał tutaj żadnych zdjęć?"
-
-#: [error]media_ask_upload
-msgid "You can try to upload a couple by going to the Media page"
-msgstr "Możesz spróbować wysłać parę na stronie Mediów"
-
-#: [title]about
-msgid "%s - About"
-msgstr "%s - O stronie"
-
-#: [title]account
-msgid "%s - Account"
-msgstr "%s - Konto"
-
-#: [title]administration
-msgid "%s - Administration Panel"
-msgstr "%s - Panel Administracyjny"
-
-#: [title]blog
-msgid "%s - Blog"
-msgstr "%s - Blog"
-
-#: [title]configuration
-msgid "%s - Configuration"
-msgstr "%s - Konfiguracja"
-
-#: [title]discover
-msgid "%s - Discover"
-msgstr "%s - Odkryj"
-
-#: [title]explore
-msgid "%s - Explore"
-msgstr "%s - Sprawdź"
-
-#: [title]help
-msgid "%s - Help Page"
-msgstr "%s - Strona Pomocy"
-
-#: [title]login
-msgid "%s - Login to Movim"
-msgstr "%s - Zaloguj do Movim"
-
-#: [title]main
-msgid "%s - Welcome to Movim"
-msgstr "%s - Witaj w Movim"
-
-#: [title]media
-msgid "%s - Media"
-msgstr "%s - Media"
-
-#: [title]news
-msgid "%s - News"
-msgstr "%s - Wydarzenia"
-
-#: [title]node_configuration
-msgid "%s - Group Configuration"
-msgstr "%s - Konfiguracja Grupy"
-
-#: [title]node
-msgid "%s - Group"
-msgstr "%s - Grupa"
-
-#: [title]not_found
-msgid "%s - 404"
-msgstr "%s - 404"
-
-#: [title]profile
-msgid "%s - Profile"
-msgstr "%s - Profil"
-
-#: [title]server
-msgid "%s - Server"
-msgstr "%s - Serwer"
 
 #: [button]validate
 msgid "Validate"
@@ -1991,10 +1879,6 @@ msgstr "Następna"
 #: [button]previous
 msgid "Previous"
 msgstr "Poprzednia"
-
-#: [step]step
-msgid "Step %s"
-msgstr "Krok %s"
 
 #: [day]title
 msgid "Day"
@@ -2653,83 +2537,3 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
-
-#~ msgid "Data"
-#~ msgstr "Dane"
-
-#~ msgid "Cache"
-#~ msgstr "Ciasteczka"
-
-#~ msgid "Messages"
-#~ msgstr "Wiadomości"
-
-#~ msgid "Location"
-#~ msgstr "Lokalizacja"
-
-#~ msgid "Wrong position"
-#~ msgstr "Zła pozycja"
-
-#~ msgid "Location updated"
-#~ msgstr "Lokalizacja zaktualizowana"
-
-#~ msgid "Update my position"
-#~ msgstr "Zaktualizuj moją pozycję"
-
-#~ msgid "Manage your members"
-#~ msgstr "Zarządzaj członkami"
-
-#~ msgid "Get the members"
-#~ msgstr "Pozyskaj członków"
-
-#~ msgid "Affiliations saved"
-#~ msgstr "Przynależność zapisana"
-
-#~ msgid "Manage your subscriptions"
-#~ msgstr "Zarządzaj swoimi subskrypcjami"
-
-#~ msgid "Manage the subscriptions"
-#~ msgstr "Zarządzaj subskrypcjami"
-
-#~ msgid "Get the subscriptions"
-#~ msgstr "Pozyskaj subskrypcje"
-
-#~ msgid "Subscriptions saved"
-#~ msgstr "Subskrypcje zapisane"
-
-#~ msgid "Shared"
-#~ msgstr "Udostępnione"
-
-#~ msgid "%s has been added to your public groups"
-#~ msgstr "%s został dodany do twojej publicznej grupy"
-
-#~ msgid "Search"
-#~ msgstr "Szukaj"
-
-#~ msgctxt "[general]nickname"
-#~ msgid "Nickname"
-#~ msgstr "Nick"
-
-#~ msgctxt "[accounts]accounts_nickname"
-#~ msgid "Nickname"
-#~ msgstr "Nick"
-
-#~ msgid "Hung up"
-#~ msgstr "Rozłącz się"
-
-#~ msgid "Your contact is busy"
-#~ msgstr "Kontakt jest zajęty"
-
-#~ msgid "Declined"
-#~ msgstr "Odrzucono"
-
-#~ msgid "Is calling you"
-#~ msgstr "Dzwoni do ciebie"
-
-#~ msgid "Call"
-#~ msgstr "Dzwoń"
-
-#~ msgid "Hang up"
-#~ msgstr "Rozłącz"
-
-#~ msgid "Connection"
-#~ msgstr "Łączenie"
