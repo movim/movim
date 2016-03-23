@@ -27,64 +27,7 @@
         </li>
     </ul>
 {/if}
-<!--
-<ul class="list flex active middle">
-    <li class="subheader block large">
-        <p>{$c->__('chat.frequent')}</p>
-    </li>
-    {if="empty($top)"}
-        <li>
-            <span class="primary icon gray">
-                <i class="zmdi zmdi-info-outline"></i>
-            </span>
-            <p class="normal">{$c->__('chats.empty_title')}</p>
-        </li>
-    {/if}
-    {loop="$top"}
-        <li tabindex="{$key+1}" class="block"
-            onclick="Hello_ajaxChat('{$value->jid}')">
-            {$url = $value->getPhoto('s')}
-            {if="$url"}
-                <span
-                    class="primary icon bubble
-                    {if="$value->value"}
-                        status {$presencestxt[$value->value]}
-                    {/if}">
-                    <img src="{$url}">
-                </span>
-            {else}
-                <span
-                    class="primary icon bubble color {$value->jid|stringToColor}
-                    {if="$value->value"}
-                        status {$presencestxt[$value->value]}
-                    {/if}">
-                    <i class="zmdi zmdi-account"></i>
-                </span>
-            {/if}
 
-            <p>{$value->getTrueName()}</p>
-            <p>
-                {if="isset($value->status)"}
-                    {$value->status}
-                {else}
-                    {$value->jid}
-                {/if}
-            </p>
-        </li>
-    {/loop}
-    <a class="block large" href="{$c->route('chat')}">
-        <li>
-            <span class="primary icon">
-                <i class="zmdi zmdi-comments"></i>
-            </span>
-            <span class="control icon">
-                <i class="zmdi zmdi-chevron-right"></i>
-            </span>
-            <p class="normal">{$c->__('hello.chat')}</p>
-        </li>
-    </a>
-</ul>
--->
 <ul class="list thick">
     <li>
         <span class="primary icon gray">

@@ -32,7 +32,6 @@ html {
 }
 
 body {
-    font-family: 'OpenSans', sans-serif;
     background-color: black;
     overflow: hidden;
     position: absolute;
