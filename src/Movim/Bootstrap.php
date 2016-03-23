@@ -78,7 +78,7 @@ class Bootstrap
              $errors[] = 'You need to install php5-json that\'s not seems to be installed';
         }
         if (count($errors)) {
-            throw new Exception(implode("\n<br />",$errors));
+            throw new \Exception(implode("\n<br />",$errors));
         }
     }
 
@@ -330,7 +330,7 @@ class Bootstrap
     {
         $last_error = error_get_last();
         if($last_error['type'] === E_ERROR) {
-            systemErrorHandler(
+            $this->systemErrorHandler(
                 E_ERROR,
                 $last_error['message'],
                 $last_error['file'],

@@ -1,14 +1,16 @@
 #!/usr/bin/php
-<?php 
-define('DOCUMENT_ROOT', dirname(__FILE__));
-require_once(DOCUMENT_ROOT.'/bootstrap.php');
+<?php
+require __DIR__ . '/vendor/autoload.php';
 
+define('DOCUMENT_ROOT', dirname(__FILE__));
+
+use Movim\Bootstrap;
 $bootstrap = new Bootstrap();
 $bootstrap->boot();
 
 $argsize = count($argv);
 if($argsize == 1) {
-    echo 
+    echo
 colorize("Welcome to Mud - Movim Unified Doer
 
 Here some requests you can do with me :", 'green')."
@@ -18,7 +20,7 @@ Here some requests you can do with me :", 'green')."
 - ".colorize("db", 'yellow')."        create/update the database
 - ".colorize("config", 'yellow')."    set the configuration of Movim (separated by commas and colons) eg. info:Test,description:Hop
         ";
-    
+
 } elseif($argsize == 2) {
     switch ($argv[1]) {
         case 'getloc':
@@ -35,7 +37,7 @@ Here some requests you can do with me :", 'green')."
             break;
         case 'db':
             $md = Modl\Modl::getInstance();
-            $infos = $md->check();  
+            $infos = $md->check();
 
             if($infos == null) {
                 echo colorize("Nothing to do\n", 'green');
@@ -55,7 +57,7 @@ Here some requests you can do with me :", 'green')."
         case 'db':
             if($argv[2] == 'set') {
                 $md = Modl\Modl::getInstance();
-                $md->check(true);  
+                $md->check(true);
                 echo colorize("Database updated\n", 'green');
             }
             break;
@@ -78,55 +80,55 @@ function config($values) {
         if(property_exists($config, $key)) {
             $old = $config->$key;
             $config->$key = $value;
-            
+
             $cd->set($config);
             echo colorize("The configuration key ", 'yellow').
                 colorize($key, 'red').
                 colorize(" has been updated from ", 'yellow').
                 colorize($old, 'blue').
                 colorize(" to ", 'yellow').
-                colorize($value, 'blue')."\n"; 
+                colorize($value, 'blue')."\n";
         }
     }
 }
 
 function getloc() {
     echo colorize("Locales grabber\n", 'green');
-    
+
     // We look for all the ini files
     $inifiles = glob(WIDGETS_PATH.'*/*.ini');
     array_push($inifiles, LOCALES_PATH . 'locales.ini');
-    
+
     $locales = CACHE_PATH.'locales.php';
     $pot     = CACHE_PATH.'messages.pot';
-    
+
     // We create the cache file
     $out = "<?php\n";
-    
+
     foreach($inifiles as $ini) {
         $keys = parse_ini_file($ini);
         foreach($keys as $key => $value) {
             $out .= "t(\"$value\");\n";
         }
     }
-    
+
     $fp = fopen($locales, 'w');
     fwrite($fp, $out);
     fclose($fp);
-    
+
     echo "File $locales created\n";
-    
-    // And we run gettext on it    
+
+    // And we run gettext on it
     exec("xgettext -e --no-wrap -kt -o $pot -L PHP $locales ");
-    
+
     echo "File $pot created\n";
 }
 
 function comploc() {
     echo colorize("Locales compiler\n", 'green');
-    
+
     $folder = CACHE_PATH.'/locales/';
-    
+
     if(!file_exists($folder)) {
         $bool = mkdir($folder);
         if(!$bool) {
@@ -135,25 +137,25 @@ function comploc() {
         }
     } else
         echo colorize("Folder already exist, don't re-create it\n", 'red');
-    
-    
+
+
     $langs = loadLangArray();
     foreach($langs as $key => $value) {
         $langarr = parseLangFile(DOCUMENT_ROOT . '/locales/' . $key . '.po');
-        
+
         $out = '<?php global $translations;
         $translations = array(';
-        
-        foreach($langarr as $msgid => $msgstr) 
+
+        foreach($langarr as $msgid => $msgstr)
             if($msgid != '')
                 $out .= '"'.$msgid.'" => "'. $msgstr . '",'."\n";
-            
+
         $out .= ');';
-        
+
         $fp = fopen($folder.$key.'.php', 'w');
         fwrite($fp, $out);
         fclose($fp);
-        
+
         echo "- $key compiled\n";
     }
 }
@@ -164,16 +166,16 @@ function comptz() {
 
     $out = '<?php global $timezones;
     $timezones = array(';
-    
+
     foreach($tz as $key => $value)
         $out .= '"'.$key.'" => "'. $value . '",'."\n";
-        
+
     $out .= ');';
-    
+
     $fp = fopen($file, 'w');
     fwrite($fp, $out);
     fclose($fp);
-    
+
     echo "- Timezones compiled in $file\n";
 }
 
