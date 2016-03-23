@@ -1,6 +1,8 @@
 <?php
 namespace Movim\Controller;
 
+use Movim\Template\Builder;
+
 class Base {
     public $name = 'main';          // The name of the current page
     protected $session_only = false;// The page is protected by a session ?
@@ -9,7 +11,7 @@ class Base {
     protected $page;
 
     function __construct() {
-        $this->page = new \TplPageBuilder;
+        $this->page = new Builder;
     }
 
     /**
@@ -72,9 +74,9 @@ class Base {
 
         if($this->session_only) {
             $user = new \User;
-            $content = new \TplPageBuilder($user);
+            $content = new Builder($user);
         } else {
-            $content = new \TplPageBuilder;
+            $content = new Builder;
         }
 
         if($this->raw) {

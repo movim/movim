@@ -17,7 +17,7 @@
 
 use Modl\SessionxDAO;
  
-class Statistics extends WidgetBase
+class Statistics extends \Movim\Widget\Base
 {
     function load()
     {

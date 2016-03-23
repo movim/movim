@@ -7,7 +7,7 @@ use Moxl\Xec\Action\Presence\Unavailable;
 
 use Respect\Validation\Validator;
 
-class Rooms extends WidgetBase
+class Rooms extends \Movim\Widget\Base
 {
     function load()
     {

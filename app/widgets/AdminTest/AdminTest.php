@@ -15,7 +15,7 @@
  * See COPYING for licensing information.
  */
  
-class AdminTest extends WidgetBase
+class AdminTest extends \Movim\Widget\Base
 {
     function load() {
         $this->addjs('admintest.js');

@@ -2,7 +2,7 @@
 
 use Respect\Validation\Validator;
 
-class Share extends WidgetBase
+class Share extends \Movim\Widget\Base
 {
     function load()
     {

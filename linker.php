@@ -19,7 +19,7 @@ $stdin = new React\Stream\Stream(STDIN, $loop);
 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets before : ".\sizeToCleanSize(memory_get_usage())."\n");
 
 // We load and register all the widgets
-$wrapper = WidgetWrapper::getInstance();
+$wrapper = \Movim\Widget\Wrapper::getInstance();
 $wrapper->registerAll($bootstrap->getWidgets());
 
 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");

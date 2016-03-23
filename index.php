@@ -50,10 +50,11 @@ try {
 }
 
 use Movim\Controller\Front;
+use Movim\Widget\Wrapper;
 
 $rqst = new Front;
 $rqst->handle();
 
-WidgetWrapper::getInstance(false);
+Wrapper::getInstance(false);
 // Closing stuff
-WidgetWrapper::destroyInstance();
+Wrapper::destroyInstance();

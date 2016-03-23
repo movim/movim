@@ -2,7 +2,7 @@
 
 use Respect\Validation\Validator;
 
-class LoginAnonymous extends WidgetBase
+class LoginAnonymous extends \Movim\Widget\Base
 {
     function load()
     {

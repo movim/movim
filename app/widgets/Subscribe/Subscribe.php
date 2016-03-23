@@ -18,7 +18,7 @@
  * See COPYING for licensing information.
  */
  
-class Subscribe extends WidgetBase {
+class Subscribe extends \Movim\Widget\Base {
     
     function load()
     {

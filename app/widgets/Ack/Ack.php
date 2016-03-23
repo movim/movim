@@ -21,7 +21,7 @@ use Moxl\Xec\Action\Ack\Send;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Stanza\Disco;
  
-class Ack extends WidgetBase {
+class Ack extends \Movim\Widget\Base {
     function load()
     {
         $this->registerEvent('ack', 'onAckRequest');

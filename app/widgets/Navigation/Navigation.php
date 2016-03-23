@@ -1,6 +1,6 @@
 <?php
 
-class Navigation extends WidgetBase
+class Navigation extends \Movim\Widget\Base
 {
     function load()
     {

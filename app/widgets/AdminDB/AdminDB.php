@@ -15,7 +15,7 @@
  * See COPYING for licensing information.
  */
  
-class AdminDB extends WidgetBase
+class AdminDB extends \Movim\Widget\Base
 {
     function load() {
 

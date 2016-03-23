@@ -5,7 +5,7 @@ use Moxl\Xec\Action\Vcard4\Get;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\GetItems;
 
-class Contact extends WidgetBase
+class Contact extends \Movim\Widget\Base
 {
     private $_paging = 10;
 

@@ -1,6 +1,6 @@
 <?php
 
-class Dialog extends WidgetBase
+class Dialog extends \Movim\Widget\Base
 {
     function load() 
     {

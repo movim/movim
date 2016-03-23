@@ -1,6 +1,6 @@
 <?php
  
-class NotFound extends WidgetBase
+class NotFound extends \Movim\Widget\Base
 {
     function load()
     {

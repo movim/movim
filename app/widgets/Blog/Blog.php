@@ -4,7 +4,7 @@ use Respect\Validation\Validator;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
-class Blog extends WidgetBase {
+class Blog extends \Movim\Widget\Base {
     public $_paging = 10;
 
     private $_from;

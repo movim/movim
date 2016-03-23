@@ -1,6 +1,6 @@
 <?php
 
-class Hello extends WidgetBase
+class Hello extends \Movim\Widget\Base
 {
     function load()
     {

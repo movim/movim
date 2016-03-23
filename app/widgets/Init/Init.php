@@ -4,7 +4,7 @@ use Moxl\Xec\Action\Pubsub\ConfigurePersistentStorage;
 use Moxl\Xec\Action\Pubsub\CreatePersistentStorage;
 use Moxl\Xec\Action\Storage\Set;
 
-class Init extends WidgetBase
+class Init extends \Movim\Widget\Base
 {
     function load()
     {

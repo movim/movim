@@ -4,7 +4,7 @@ use Moxl\Xec\Action\AdHoc\Get;
 use Moxl\Xec\Action\AdHoc\Command;
 use Moxl\Xec\Action\AdHoc\Submit;
 
-class AdHoc extends WidgetBase
+class AdHoc extends \Movim\Widget\Base
 {
     function load()
     {

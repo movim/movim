@@ -6,7 +6,7 @@ use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\Create;
 use Moxl\Xec\Action\Pubsub\TestCreate;
 
-class Groups extends WidgetBase
+class Groups extends \Movim\Widget\Base
 {
     private $_list_server;
 

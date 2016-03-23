@@ -23,7 +23,7 @@ use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
-class Notifs extends WidgetBase
+class Notifs extends \Movim\Widget\Base
 {
     function load()
     {

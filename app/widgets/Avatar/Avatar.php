@@ -19,7 +19,7 @@ use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
 use forxer\Gravatar\Gravatar;
 
-class Avatar extends WidgetBase
+class Avatar extends \Movim\Widget\Base
 {
     function load()
     {

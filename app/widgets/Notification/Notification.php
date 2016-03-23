@@ -1,6 +1,6 @@
 <?php
 
-class Notification extends WidgetBase
+class Notification extends \Movim\Widget\Base
 {
     function load()
     {

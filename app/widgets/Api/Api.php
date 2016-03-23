@@ -15,7 +15,7 @@
  * See COPYING for licensing information.
  */
 
-class Api extends WidgetBase {
+class Api extends \Movim\Widget\Base {
     function load()
     {
     }

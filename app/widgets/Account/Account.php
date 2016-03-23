@@ -6,7 +6,7 @@ use Moxl\Xec\Action\Register\Get;
 use Moxl\Xec\Action\Register\Set;
 use Respect\Validation\Validator;
 
-class Account extends WidgetBase
+class Account extends \Movim\Widget\Base
 {
     function load()
     {

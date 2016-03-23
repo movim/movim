@@ -1,6 +1,6 @@
 <?php
 
-class Syndication extends WidgetBase
+class Syndication extends \Movim\Widget\Base
 {
     function load()
     {

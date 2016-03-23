@@ -22,7 +22,7 @@ use Moxl\Xec\Action\Bookmark\Get;
 use Moxl\Xec\Action\Bookmark\Set;
 use Moxl\Xec\Action\Presence\Muc;
 
-class Bookmark extends WidgetBase
+class Bookmark extends \Movim\Widget\Base
 {
     private $_list_server;
 

@@ -1,26 +1,7 @@
 <?php
-/*
- * @file WidgetWraper.php
- *
- * @brief Handle the Widgets
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- */
+namespace Movim\Widget;
 
-class WidgetWrapper
+class Wrapper
 {
     private static $instance;
 
@@ -34,7 +15,7 @@ class WidgetWrapper
     private $js = array(); // All the js loaded by the widgets so far.
 
     public $title = null; // If a widget has defined a particular title
-    public $image = null; // If a widget has defined a particular image 
+    public $image = null; // If a widget has defined a particular image
     public $description = null; // If a widget has defined a particular description
     public $url = null; // If a widget has defined a particular url
 
@@ -64,7 +45,7 @@ class WidgetWrapper
     static function getInstance()
     {
         if(!is_object(self::$instance)) {
-            self::$instance = new WidgetWrapper;
+            self::$instance = new Wrapper;
         }
         return self::$instance;
     }
@@ -179,7 +160,7 @@ class WidgetWrapper
                          */
                         if(is_array($widget->filters)
                         && array_key_exists($method, $widget->filters)) {
-                            $session = Session::start();
+                            $session = \Session::start();
                             $notifs_key = $session->get('notifs_key');
 
                             if($notifs_key == 'blurred') {

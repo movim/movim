@@ -21,7 +21,7 @@
 use Moxl\Xec\Action\Storage\Set;
 use Respect\Validation\Validator;
 
-class Config extends WidgetBase
+class Config extends \Movim\Widget\Base
 {
     function load()
     {

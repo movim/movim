@@ -15,7 +15,7 @@
  * See COPYING for licensing information.
  */
 
-class AdminMain extends WidgetBase
+class AdminMain extends \Movim\Widget\Base
 {
     function load() {
         $this->addjs('admin.js');

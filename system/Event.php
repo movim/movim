@@ -1,10 +1,11 @@
 <?php
+use Movim\Widget\Wrapper;
 
 class Event
 {
     function runEvent($key, $data = null)
     {
-        $widgets = WidgetWrapper::getInstance();
+        $widgets = Wrapper::getInstance();
         $widgets->iterate($key, $data);
     }
 }

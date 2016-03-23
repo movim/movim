@@ -27,7 +27,7 @@ use Moxl\Xec\Action\Pubsub\GetItems;
 use Moxl\Stanza\Stream;
 use Moxl\Xec\Action\Storage\Get;
 
-class Presence extends WidgetBase
+class Presence extends \Movim\Widget\Base
 {
 
     function load()

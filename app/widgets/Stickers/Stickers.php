@@ -7,7 +7,7 @@ use Ramsey\Uuid\Uuid;
 
 use Respect\Validation\Validator;
 
-class Stickers extends WidgetBase
+class Stickers extends \Movim\Widget\Base
 {
     function load()
     {

@@ -1,25 +1,10 @@
 <?php
-
-/**
- * @file Widget.php
- * This file is part of MOVIM.
- *
- * @brief A widget interface.
- *
- * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
- *
- * @version 1.0
- * @date 20 October 2010
- *
- * Copyright (C)2010 MOVIM Project
- *
- * See COPYING for licensing information.
- */
+namespace Movim\Widget;
 
 use Rain\Tpl;
 use Movim\Controller\Ajax;
 
-class WidgetBase
+class Base
 {
     protected $js = array(); /*< Contains javascripts. */
     protected $css = array(); /*< Contains CSS files. */
@@ -45,7 +30,7 @@ class WidgetBase
     {
         if($view != null) $this->_view = $view;
 
-        $this->user = new User;
+        $this->user = new \User;
 
         $this->load();
         $this->name = get_class($this);
@@ -59,7 +44,7 @@ class WidgetBase
 
         if(!$this->ajax->isRegistered($this->name)) {
             // Generating Ajax calls.
-            $refl = new ReflectionClass($this->name);
+            $refl = new \ReflectionClass($this->name);
             $meths = $refl->getMethods();
 
             foreach($meths as $method) {

@@ -10,7 +10,7 @@
  * @author Timothée Jaussoin <edhelas@gmail.com>
  */
 
-class System extends WidgetBase {
+class System extends \Movim\Widget\Base {
 
     function load()
     {

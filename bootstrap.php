@@ -224,14 +224,7 @@ class Bootstrap {
     }
 
     private function loadDispatcher() {
-        require_once(SYSTEM_PATH . "template/TplPageBuilder.php");
-
         require_once(SYSTEM_PATH . "Route.php");
-
-        require_once(SYSTEM_PATH . "widget/WidgetBase.php");
-        require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");
-
-        //require_once(APP_PATH . "widgets/WidgetCommon/WidgetCommon.php");
         require_once(APP_PATH . "widgets/Notification/Notification.php");
     }
 

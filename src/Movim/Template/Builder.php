@@ -1,18 +1,10 @@
 <?php
-
-/**
- * @file TplPageBuilder.php
- * This file is part of Movim.
- *
- * @brief This class is the templating engine for movim. It also handles themes.
- *
- * @author Timothée jaussoin
- *
- */
+namespace Movim\Template;
 
 use Movim\Controller\Ajax;
+use Movim\Widget\Wrapper;
 
-class TplPageBuilder
+class Builder
 {
     private $theme = 'movim';
     private $_view = '';
@@ -106,7 +98,7 @@ class TplPageBuilder
      */
     function title()
     {
-        $widgets = WidgetWrapper::getInstance();
+        $widgets = Wrapper::getInstance();
         if(isset($widgets->title)) {
             $this->title .= ' - ' . $widgets->title;
         }
@@ -124,7 +116,7 @@ class TplPageBuilder
         $metas = $dom->createElement('xml');
         $dom->appendChild($metas);
 
-        $widgets = WidgetWrapper::getInstance();
+        $widgets = Wrapper::getInstance();
 
         if(isset($widgets->title)) {
             $meta = $dom->createElement('meta');
@@ -217,7 +209,7 @@ class TplPageBuilder
 
     function printScripts() {
         $out = '';
-        $widgets = WidgetWrapper::getInstance();
+        $widgets = Wrapper::getInstance();
         $scripts = array_merge($this->scripts, $widgets->loadjs());
         foreach($scripts as $script) {
              $out .= '<script type="text/javascript" src="'
@@ -233,7 +225,7 @@ class TplPageBuilder
 
     function printCss() {
         $out = '';
-        $widgets = WidgetWrapper::getInstance();
+        $widgets = Wrapper::getInstance();
         $csss = array_merge($this->css, $widgets->loadcss()); // Note the 3rd s, there are many.
         foreach($csss as $css_path) {
             $out .= '<link rel="stylesheet" href="'
@@ -258,7 +250,7 @@ class TplPageBuilder
      */
     function widget($name)
     {
-        $widgets = WidgetWrapper::getInstance();
+        $widgets = Wrapper::getInstance();
         $widgets->setView($this->_view);
 
         echo $widgets->runWidget($name, 'build');

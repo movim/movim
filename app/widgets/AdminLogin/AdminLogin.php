@@ -15,7 +15,7 @@
  * See COPYING for licensing information.
  */
  
-class AdminLogin extends WidgetBase {  
+class AdminLogin extends \Movim\Widget\Base {  
     function load()
     {
     }

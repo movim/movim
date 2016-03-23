@@ -20,7 +20,7 @@ use Moxl\Xec\Action\Vcard4\Set;
 
 use Respect\Validation\Validator;
 
-class Vcard4 extends WidgetBase
+class Vcard4 extends \Movim\Widget\Base
 {
     function load()
     {

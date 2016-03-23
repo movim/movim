@@ -15,7 +15,7 @@
  * See COPYING for licensing information.
  */
  
-class Infos extends WidgetBase
+class Infos extends \Movim\Widget\Base
 {
     function load() {
 

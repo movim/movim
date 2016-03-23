@@ -1,6 +1,6 @@
 <?php
 
-class Header extends WidgetBase
+class Header extends \Movim\Widget\Base
 {
     function load()
     {

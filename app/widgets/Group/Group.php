@@ -14,7 +14,7 @@ use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
 
-class Group extends WidgetBase
+class Group extends \Movim\Widget\Base
 {
     private $_paging = 15;
     private $_role = null;

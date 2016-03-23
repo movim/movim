@@ -15,7 +15,7 @@
  * See COPYING for licensing information.
  */
  
-class Caps extends WidgetBase
+class Caps extends \Movim\Widget\Base
 {
     private $_table = array();
     private $_nslist;

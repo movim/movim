@@ -28,7 +28,7 @@ use Moxl\Xec\Action\Microblog\CommentPublish;
 use \Michelf\Markdown;
 use Respect\Validation\Validator;
 
-class Post extends WidgetBase
+class Post extends \Movim\Widget\Base
 {
     function load()
     {

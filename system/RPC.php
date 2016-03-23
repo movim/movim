@@ -1,17 +1,5 @@
 <?php
-/**
- * @file RPC.php
- * This file is part of Movim
- *
- * @brief Handle incoming requests and call the widgets
- *
- * @author Jaussoin Timothée
- *
- * @version 1.0
- * @date 28 october 2014
- *
- * All rights reserved.
- */
+use Movim\Widget\Wrapper;
 
 class RPC
 {
@@ -92,8 +80,8 @@ class RPC
                     array_push($result, $p);
             }
         }
-        
-        $widgets = WidgetWrapper::getInstance();
+
+        $widgets = Wrapper::getInstance();
 
         $widgets->runWidget($widget_name, (string)$request->func, $result);
     }

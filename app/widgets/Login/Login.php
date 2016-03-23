@@ -21,7 +21,7 @@ use Moxl\Xec\Action\Storage\Get;
 use Moxl\Xec\Action\Roster\GetList;
 use Respect\Validation\Validator;
 
-class Login extends WidgetBase
+class Login extends \Movim\Widget\Base
 {
     function load()
     {

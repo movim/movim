@@ -6,7 +6,7 @@ use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 use Moxl\Xec\Action\Presence\Unsubscribe;
 
-class Roster extends WidgetBase
+class Roster extends \Movim\Widget\Base
 {
     private $grouphtml;
 

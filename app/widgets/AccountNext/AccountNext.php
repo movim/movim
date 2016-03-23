@@ -3,7 +3,7 @@
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Register\Set;
 
-class AccountNext extends WidgetBase {
+class AccountNext extends \Movim\Widget\Base {
     function load()
     {
         $this->addjs('accountnext.js');

@@ -15,7 +15,7 @@
  * See COPYING for licensing information.
  */
  
-class Pods extends WidgetBase
+class Pods extends \Movim\Widget\Base
 {
     function load() {
 

@@ -18,7 +18,7 @@
  * See COPYING for licensing information.
  */
 
-class Tabs extends WidgetBase
+class Tabs extends \Movim\Widget\Base
 {
     function load()
     {

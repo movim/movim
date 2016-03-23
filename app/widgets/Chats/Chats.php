@@ -6,7 +6,7 @@ use Moxl\Xec\Action\Bookmark\Set;
 
 use Respect\Validation\Validator;
 
-class Chats extends WidgetBase
+class Chats extends \Movim\Widget\Base
 {
     function load()
     {
