@@ -532,38 +532,6 @@ function movim_log($logs) {
         $log->addInfo($logs);
 }
 
-/**
- * @desc Return a small help to recognize flag color
- * */
-function getFlagTitle($color){
-    $title = '';
-    switch($color){
-        case 'white':
-            $title = __('flag.white');
-        break;
-
-        case 'green':
-            $title = __('flag.green');
-        break;
-
-        case 'orange':
-            $title = __('flag.orange');
-        break;
-
-        case 'red':
-            $title = __('flag.red');
-        break;
-
-        case 'black':
-            $title = __('flag.black');
-        break;
-
-        default:
-        break;
-    }
-    return $title;
-}
-
 /*
  * @desc Generate a simple random key
  * @params The size of the key
@@ -652,4 +620,30 @@ function __() {
     return $l->translate($string, $args);
 }
 
-?>
+function createEmailPic($jid, $email) {
+    $cachefile = DOCUMENT_ROOT.'/cache/'.$jid.'_email.png';
+
+    if(file_exists(DOCUMENT_ROOT.'/cache/'.$jid.'_email.png'))
+        unlink(DOCUMENT_ROOT.'/cache/'.$jid.'_email.png');
+
+    $draw = new ImagickDraw();
+    try {
+        $draw->setFontSize(13);
+        $draw->setGravity(Imagick::GRAVITY_CENTER);
+
+        $canvas = new Imagick();
+
+        $metrics = $canvas->queryFontMetrics($draw, $email);
+
+        $canvas->newImage($metrics['textWidth'], $metrics['textHeight'], "transparent", "png");
+        $canvas->annotateImage($draw, 0, 0, 0, $email);
+
+        $canvas->setImageFormat('PNG');
+        $canvas->writeImage($cachefile);
+
+        $canvas->clear();
+    } catch (ImagickException $e) {
+        error_log($e->getMessage());
+    }
+}
+
