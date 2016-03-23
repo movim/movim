@@ -1,6 +1,9 @@
 <?php
 namespace Movim;
 
+use Monolog\Logger;
+use Monolog\Handler\SyslogHandler;
+
 class Bootstrap
 {
     function boot($light = false)
@@ -235,8 +238,8 @@ class Bootstrap
         ini_set('display_errors', 0);
         ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
 
-        set_error_handler('systemErrorHandler', E_ALL);
-        register_shutdown_function('fatalErrorShutdownHandler');
+        set_error_handler([$this, 'systemErrorHandler'], E_ALL);
+        register_shutdown_function([$this, 'fatalErrorShutdownHandler']);
     }
 
     private function setTimezone()
@@ -310,5 +313,35 @@ class Bootstrap
         "Chats","Config","Contact","Dialog","Group","Groups","Header","Init",
         "Login","LoginAnonymous","Menu","Notifs","Post","Presence","Publish",
         "Rooms","Roster","Stickers","Upload","Vcard4"];
+    }
+
+    /**
+     * Error Handler...
+     */
+    function systemErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = null)
+    {
+        $log = new Logger('movim');
+        $log->pushHandler(new SyslogHandler('movim'));
+        $log->addError($errstr);
+        return false;
+    }
+
+    function fatalErrorShutdownHandler()
+    {
+        $last_error = error_get_last();
+        if($last_error['type'] === E_ERROR) {
+            systemErrorHandler(
+                E_ERROR,
+                $last_error['message'],
+                $last_error['file'],
+                $last_error['line']);
+
+            if (ob_get_contents()) ob_clean();
+
+            echo "Oops... something went wrong.\n";
+            echo "But don't panic. The NSA is on the case.\n";
+
+            if (ob_get_contents()) ob_end_clean();
+        }
     }
 }

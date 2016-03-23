@@ -40,7 +40,6 @@
 define('DOCUMENT_ROOT', dirname(__FILE__));
 
 require 'vendor/autoload.php';
-require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 use Movim\Bootstrap;
 use Movim\Controller\Front;

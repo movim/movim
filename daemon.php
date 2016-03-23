@@ -12,7 +12,6 @@ use \React\EventLoop\Factory;
 use React\Socket\Server as Reactor;
 
 define('DOCUMENT_ROOT', dirname(__FILE__));
-require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 $bootstrap = new Bootstrap;
 $booted = $bootstrap->boot();

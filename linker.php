@@ -2,7 +2,6 @@
 require __DIR__ . '/vendor/autoload.php';
 
 define('DOCUMENT_ROOT', dirname(__FILE__));
-require_once(DOCUMENT_ROOT.'/bootstrap.php');
 
 gc_enable();
 
