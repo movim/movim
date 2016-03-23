@@ -1,17 +1,7 @@
 <?php
+namespace Movim\Controller;
 
-/**
- * @file AjaxController.php
- * This file is part of Movim.
- * 
- * @brief Description
- *
- * @author Timothée jaussoin
- *
- * @date  14 November 2013
- */
-
-class AjaxController extends BaseController
+class Ajax extends Base
 {
     protected $funclist = array();
     protected static $instance;
@@ -25,7 +15,7 @@ class AjaxController extends BaseController
     public static function getInstance()
     {
         if(!is_object(self::$instance)) {
-            self::$instance = new AjaxController();
+            self::$instance = new Ajax;
         }
         return self::$instance;
     }
@@ -38,7 +28,7 @@ class AjaxController extends BaseController
         if(empty($this->funclist)) {
             return '';
         }
-        
+
         $buffer = '<script type="text/javascript">';
         foreach($this->funclist as $key => $funcdef) {
             $parlist = implode(', ', $funcdef['params']);

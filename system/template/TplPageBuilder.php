@@ -10,6 +10,8 @@
  *
  */
 
+use Movim\Controller\Ajax;
+
 class TplPageBuilder
 {
     private $theme = 'movim';
@@ -223,7 +225,7 @@ class TplPageBuilder
                  '"></script>'."\n";
         }
 
-        $ajaxer = AjaxController::getInstance();
+        $ajaxer = Ajax::getInstance();
         $out .= $ajaxer->genJs();
 
         return $out;

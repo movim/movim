@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class ShareController extends BaseController {
+class ShareController extends Base
+{
     function load() {
         $this->session_only = true;
     }

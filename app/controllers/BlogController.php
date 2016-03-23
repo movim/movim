@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class BlogController extends BaseController {
+class BlogController extends Base
+{
     function load() {
         $this->session_only = false;
         $this->public = true;

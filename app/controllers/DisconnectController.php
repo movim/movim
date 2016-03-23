@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class DisconnectController extends BaseController {
+class DisconnectController extends Base
+{
     function load() {
         $this->session_only = false;
     }

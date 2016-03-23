@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class NewsController extends BaseController {
+class NewsController extends Base
+{
     function load() {
         $this->session_only = true;
     }

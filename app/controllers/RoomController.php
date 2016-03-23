@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class RoomController extends BaseController {
+class RoomController extends Base
+{
     function load() {
     }
 

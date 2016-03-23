@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class ConfController extends BaseController {
+class ConfController extends Base
+{
     function load() {
         $this->session_only = true;
     }

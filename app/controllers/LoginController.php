@@ -1,6 +1,7 @@
 <?php
+use Movim\Controller\Base;
 
-class LoginController extends BaseController {
+class LoginController extends Base {
     function load() {
         $this->session_only = false;
     }

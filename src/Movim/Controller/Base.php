@@ -1,6 +1,7 @@
 <?php
+namespace Movim\Controller;
 
-class BaseController {
+class Base {
     public $name = 'main';          // The name of the current page
     protected $session_only = false;// The page is protected by a session ?
     protected $raw = false;         // Display only the content ?
@@ -8,7 +9,7 @@ class BaseController {
     protected $page;
 
     function __construct() {
-        $this->page = new TplPageBuilder();
+        $this->page = new \TplPageBuilder;
     }
 
     /**
@@ -43,7 +44,7 @@ class BaseController {
 
     function checkSession() {
         if($this->session_only) {
-            $user = new User();
+            $user = new \User;
 
             if(!$user->isLogged()) {
                 $this->name = 'login';
@@ -52,7 +53,7 @@ class BaseController {
     }
 
     function redirect($page) {
-        $url = Route::urlize($page);
+        $url = \Route::urlize($page);
         header('Location: '. $url);
     }
 
@@ -70,10 +71,10 @@ class BaseController {
         }
 
         if($this->session_only) {
-            $user = new User();
-            $content = new TplPageBuilder($user);
+            $user = new \User;
+            $content = new \TplPageBuilder($user);
         } else {
-            $content = new TplPageBuilder();
+            $content = new \TplPageBuilder;
         }
 
         if($this->raw) {

@@ -46,14 +46,6 @@
             <p class="normal">{$c->__('page.chats')}</p>
         </li>
     </a>
-    <!--
-    <a class="classic" href="{$c->route('media')}">
-        <li>
-            <span class="icon"><i class="zmdi zmdi-photo"></i></span>
-            <span class="counter"></span>
-            <span>{$c->__('page.media')}</span>
-        </li>
-    </a>-->
 </ul>
 
 <ul class="list divided oppose active">

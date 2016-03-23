@@ -17,6 +17,7 @@
  */
 
 use Rain\Tpl;
+use Movim\Controller\Ajax;
 
 class WidgetBase
 {
@@ -54,7 +55,7 @@ class WidgetBase
             return;
 
         // Put default widget init here.
-        $this->ajax = AjaxController::getInstance();
+        $this->ajax = Ajax::getInstance();
 
         if(!$this->ajax->isRegistered($this->name)) {
             // Generating Ajax calls.

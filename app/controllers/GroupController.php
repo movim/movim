@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class GroupController extends BaseController {
+class GroupController extends Base
+{
     function load() {
         $this->session_only = false;
     }

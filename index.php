@@ -49,7 +49,9 @@ try {
     return;
 }
 
-$rqst = new FrontController();
+use Movim\Controller\Front;
+
+$rqst = new Front;
 $rqst->handle();
 
 WidgetWrapper::getInstance(false);

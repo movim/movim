@@ -201,8 +201,6 @@ class Bootstrap {
     private function loadSystem() {
         require_once(SYSTEM_PATH . "Session.php");
         require_once(SYSTEM_PATH . "Sessionx.php");
-        require_once(SYSTEM_PATH . "Utils.php");
-        require_once(SYSTEM_PATH . "UtilsPicture.php");
         require_once(SYSTEM_PATH . "Cache.php");
         require_once(SYSTEM_PATH . "Event.php");
         require_once(SYSTEM_PATH . "RPC.php");
@@ -227,12 +225,8 @@ class Bootstrap {
 
     private function loadDispatcher() {
         require_once(SYSTEM_PATH . "template/TplPageBuilder.php");
-        require_once(SYSTEM_PATH . "controllers/BaseController.php");
-        require_once(SYSTEM_PATH . "controllers/AjaxController.php");
 
         require_once(SYSTEM_PATH . "Route.php");
-
-        require_once(SYSTEM_PATH . "controllers/FrontController.php");
 
         require_once(SYSTEM_PATH . "widget/WidgetBase.php");
         require_once(SYSTEM_PATH . "widget/WidgetWrapper.php");

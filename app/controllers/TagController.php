@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class TagController extends BaseController {
+class TagController extends Base
+{
     function load() {
         $this->session_only = false;
     }

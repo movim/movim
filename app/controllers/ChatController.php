@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class ChatController extends BaseController {
+class ChatController extends Base
+{
     function load() {
         $this->session_only = true;
     }

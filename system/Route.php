@@ -1,5 +1,7 @@
 <?php
-class Route extends \BaseController {
+use Movim\Controller\Base;
+
+class Route extends Base {
     public $_routes;
     private $_page;
 
@@ -22,9 +24,7 @@ class Route extends \BaseController {
                 'infos'         => false,
                 'login'         => array('err'),
                 'main'          => false,
-                'media'         => array('f'),
                 'news'          => array('n'),
-                'pods'          => false,
                 'profile'       => false,
                 'room'          => array('r'),
                 'share'         => array('url'),

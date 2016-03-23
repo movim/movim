@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class InfosController extends BaseController {
+class InfosController extends Base
+{
     function load() {
         header('Content-type: application/json');
         $this->session_only = false;

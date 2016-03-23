@@ -1,29 +1,18 @@
 <?php
-/**
- * @file FrontController.php
- * This file is part of MOVIM.
- *
- * @brief Handles incoming static pages requests.
- *
- * @author edhelas <edhelas@gmail.com>
- *
- * Copyright (C)2013 MOVIM Project
- *
- * See COPYING for licensing deatils.
- */
+namespace Movim\Controller;
 
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 
-class FrontController extends BaseController
+class Front extends Base
 {
     public function handle() {
-        $r = new Route;
+        $r = new \Route;
         $this->runRequest($r->find());
-    }    
+    }
 
     private function loadController($request) {
-        $class_name = ucfirst($request).'Controller';     
+        $class_name = ucfirst($request).'Controller';
         if(file_exists(APP_PATH . 'controllers/'.$class_name.'.php')) {
             $controller_path = APP_PATH . 'controllers/'.$class_name.'.php';
         }
@@ -37,14 +26,14 @@ class FrontController extends BaseController
         require_once($controller_path);
         return new $class_name();
     }
-    
+
     /*
      * Here we load, instanciate and execute the correct controller
      */
     public function runRequest($request) {
         $c = $this->loadController($request);
 
-        $sess = Sessionx::start();
+        $sess = \Sessionx::start();
         $sess->refreshCookie();
 
         if(is_callable(array($c, 'load'))) {
@@ -52,7 +41,7 @@ class FrontController extends BaseController
             $c->load();
             $c->checkSession();
             $c->dispatch();
-            
+
             // If the controller ask to display a different page
             if($request != $c->name) {
                 $new_name = $c->name;

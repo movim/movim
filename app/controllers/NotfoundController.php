@@ -1,6 +1,8 @@
 <?php
+use Movim\Controller\Base;
 
-class NotfoundController extends BaseController {
+class NotfoundController extends Base
+{
     function load() {
         $this->session_only = false;
     }
