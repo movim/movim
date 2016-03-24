@@ -180,29 +180,11 @@ class Base
     }
 
     /**
-     * @brief Calls an the ajax function of another widget.
-     */
-    protected function callWidget($widgetname, $funcname)
-    {
-        $params = func_get_args();
-        echo $this->makeCall(array_slice($params, 1), $widgetname);
-    }
-
-    /**
      * @brief Returns the javascript ajax call.
      */
     protected function call($funcname)
     {
         return $this->makeCall(func_get_args());
-    }
-
-    /**
-     * @brief Returns the javascript call to another widget's ajax function.
-     */
-    protected function genCallWidget($widgetname, $funcname)
-    {
-        $params = func_get_args();
-        return $this->makeCall(array_slice($params, 1), $widgetname);
     }
 
     protected function makeCall($params, $widget=false)

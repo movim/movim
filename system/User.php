@@ -68,39 +68,6 @@ class User {
     }
 
     /**
-     * Get the current size in bytes of the user directory
-     */
-    function dirSize()
-    {
-        $sum = 0;
-
-        foreach($this->getDir() as $s)
-            $sum = $sum + filesize($this->userdir.$s);
-
-        return $sum;
-    }
-
-    /**
-     * Get a list of the files in the user dir with uri, dir and thumbs
-     */
-    function getDir()
-    {
-        $dir = array();
-        if(is_dir($this->userdir))
-            foreach(scandir($this->userdir) as $s) {
-                if(
-                    $s != '.' &&
-                    $s != '..' &&
-                    $s != 'index.html') {
-
-                    array_push($dir, $s);
-                }
-            }
-
-        return $dir;
-    }
-
-    /**
      * Checks if the user has an open session.
      */
     function isLogged()
@@ -150,11 +117,6 @@ class User {
     {
         $exp = explodeJid($this->username);
         return $exp['username'];
-    }
-
-    function getPass()
-    {
-        return $this->password;
     }
 
     function setConfig(array $config)
