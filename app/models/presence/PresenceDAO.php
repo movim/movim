@@ -6,7 +6,7 @@ class PresenceDAO extends SQL {
     function __construct() {
         parent::__construct();
     }
-    
+
     function set(Presence $presence) {
         $id = sha1(
                 $presence->session.
@@ -29,10 +29,10 @@ class PresenceDAO extends SQL {
                 mucaffiliation = :mucaffiliation,
                 mucrole     = :mucrole
             where id        = :id';
-        
+
         $this->prepare(
-            'Presence', 
-            array(                
+            'Presence',
+            array(
                 'value'     => $presence->value,
                 'priority'  => $presence->priority,
                 'status'    => $presence->status,
@@ -48,9 +48,9 @@ class PresenceDAO extends SQL {
                 'id'        => $id
             )
         );
-        
+
         $this->run('Presence');
-        
+
         if(!$this->_effective) {
             $this->_sql = '
                 insert into presence
@@ -87,9 +87,9 @@ class PresenceDAO extends SQL {
                     :mucjid,
                     :mucaffiliation,
                     :mucrole)';
-            
+
             $this->prepare(
-                'Presence', 
+                'Presence',
                 array(
                     'id'        => $id,
                     'session'   => $presence->session,
@@ -109,7 +109,7 @@ class PresenceDAO extends SQL {
                     'mucrole'   => $presence->mucrole
                 )
             );
-            
+
             $this->run('Presence');
         }
     }
@@ -125,14 +125,14 @@ class PresenceDAO extends SQL {
         $this->_sql = '
             delete from presence
             where id = :id';
-        
+
         $this->prepare(
-            'Presence', 
+            'Presence',
             array(
                 'id' => $id
             )
         );
-        
+
         return $this->run('Presence');
     }
 
@@ -140,100 +140,100 @@ class PresenceDAO extends SQL {
         $this->_sql = '
             select * from presence;
             ';
-            
+
         $this->prepare('Presence');
         return $this->run('Presence');
     }
 
-    function getPresence($jid, $resource) {        
+    function getPresence($jid, $resource) {
         $this->_sql = '
             select * from presence
-            where 
+            where
                 session = :session
                 and jid = :jid
                 and resource = :resource';
-        
+
         $this->prepare(
-            'Presence', 
+            'Presence',
             array(
                 'session' => $this->_user,
                 'jid' => $jid,
                 'resource' => $resource
             )
         );
-        
+
         return $this->run('Presence', 'item');
     }
-  
-    function getMyPresenceRoom($jid) {        
+
+    function getMyPresenceRoom($jid) {
         $this->_sql = '
             select * from presence
-            where 
+            where
                 session = :session
                 and jid = :jid
                 and mucjid = :session';
-        
+
         $this->prepare(
-            'Presence', 
+            'Presence',
             array(
                 'session' => $this->_user,
                 'jid' => $jid,
             )
         );
-        
+
         return $this->run('Presence', 'item');
     }
 
-    function getJid($jid) {       
+    function getJid($jid) {
         $this->_sql = '
             select * from presence
-            where 
+            where
                 session = :session
                 and jid = :jid
             order by mucaffiliation desc';
-        
+
         $this->prepare(
-            'Presence', 
+            'Presence',
             array(
                 'session' => $this->_user,
                 'jid' => $jid
             )
         );
-        
+
         return $this->run('Presence');
     }
-    
-    function clearPresence($session) {
+
+    function clearPresence() {
         $this->_sql = '
             delete from presence
-            where 
+            where
                 session = :session';
-        
+
         $this->prepare(
-            'Presence', 
+            'Presence',
             array(
-                'session' => $session
+                'session' => $this->_user
             )
         );
-        
+
         return $this->run('Presence');
     }
-    
+
     function clearMuc($muc) {
         $this->_sql = '
             delete from presence
-            where 
+            where
                 session = :session
                 and jid = :jid';
-        
+
         $this->prepare(
-            'Presence', 
+            'Presence',
             array(
                 'session' => $this->_user,
                 'jid'     => $muc
             )
         );
-        
+
         return $this->run('Presence');
     }
 }

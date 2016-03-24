@@ -36,7 +36,7 @@ class Login extends \Movim\Widget\Base
     function onStart($packet)
     {
         $pd = new \Modl\PresenceDAO();
-        $pd->clearPresence($this->user->getLogin());
+        $pd->clearPresence();
 
         $session = \Sessionx::start();
         $session->load();

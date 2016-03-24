@@ -58,7 +58,6 @@ class Rooms extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $cd = new \Modl\ContactDAO;
         $view->assign('username', $this->user->getUser());
 
         Dialog::fill($view->draw('_rooms_add', true));

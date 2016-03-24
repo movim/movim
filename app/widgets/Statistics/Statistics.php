@@ -16,7 +16,7 @@
  */
 
 use Modl\SessionxDAO;
- 
+
 class Statistics extends \Movim\Widget\Base
 {
     function load()
@@ -48,7 +48,7 @@ class Statistics extends \Movim\Widget\Base
         $days = array();
 
         $pattern = "Y-m";
-        
+
         foreach($tmp as $k => $time) {
             $key = date($pattern, $time);
 
@@ -66,7 +66,7 @@ class Statistics extends \Movim\Widget\Base
             $sum = $sum + $value;
             $days[$key] = $sum;
         }
-        
+
         $this->renderTimeLineChart($days, $this->__('statistics.monthly_sub_cum'), "monthly_cumulated.png");
     }
 
@@ -93,12 +93,6 @@ class Statistics extends \Movim\Widget\Base
         $chart->render(CACHE_PATH.$filename);
 
         $this->view->assign('cache_path',      BASE_URI.'cache/');
-    }
-
-    public function ajaxGetSessions($hashs)
-    {
-        $sd = new SessionxDAO;
-        $sessions = $sd->getAll();
     }
 
     function getTime($date)

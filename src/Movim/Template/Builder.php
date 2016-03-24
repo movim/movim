@@ -9,7 +9,6 @@ class Builder
     private $theme = 'movim';
     private $_view = '';
     private $title = '';
-    private $menu = array();
     private $content = '';
     private $user;
     private $css = array();

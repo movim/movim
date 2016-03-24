@@ -21,7 +21,6 @@
 
 class Session
 {
-    //protected $db;
     protected static $instance;
     protected static $sid = null;
     protected $values = array();
@@ -37,7 +36,7 @@ class Session
     /**
      * Gets a session handle.
      */
-    public static function start($name = false)
+    public static function start()
     {
         if(!isset(self::$instance)) {
             self::$instance = new self();

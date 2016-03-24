@@ -220,9 +220,6 @@ class Post extends \Movim\Widget\Base
         if(!$validate->validate($id))
             return;
 
-        $pd = new \Modl\PrivacyDAO();
-        $p = $pd->get($id);
-
         $pd = new \Modl\PostnDAO;
         $po  = $pd->getItem($id);
 

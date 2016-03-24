@@ -211,7 +211,6 @@ class Publish extends \Movim\Widget\Base
                     $p->setLink($form->embed->value);
 
                     if(in_array($embed->type, array('photo', 'rich'))) {
-                        $key = key($embed->images);
                         $p->setImage($embed->images[0]['value'], $embed->title, $embed->images[0]['mime']);
                     }
 

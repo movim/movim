@@ -16,7 +16,6 @@
  */
 class User {
     public  $username = '';
-    private $password = '';
     private $config = array();
 
     public $caps;
@@ -79,18 +78,6 @@ class User {
             return $session->active;
         else
             return false;
-    }
-
-    function desauth()
-    {
-        $pd = new modl\PresenceDAO();
-        $pd->clearPresence($this->username);
-
-        $s = \Sessionx::start();
-        $s->destroy();
-
-        $sess = Session::start();
-        Session::dispose();
     }
 
     function createDir()

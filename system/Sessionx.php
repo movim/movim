@@ -1,21 +1,5 @@
 <?php
 
-/**
- * @file Sessionx.php
- * This file is part of Movim.
- *
- * @brief This class manage the Movim current Movim. It doesn't replace
- * the other Session class. This class is a singleton.
- *
- * @author Jaussoin Timothée
- *
- * @version 1.0
- * @date 1 December 2013
- *
- * Copyright (C)2013 Movim
- *
- * See COPYING for licensing information.
- */
 class Sessionx {
     protected static $_sessionid = null;
     protected static $_instance;
@@ -24,8 +8,6 @@ class Sessionx {
 
     private         $_rid;
     private         $_id;
-
-    private         $_currentid;
 
     private         $_user;
     private         $_password;
@@ -39,10 +21,10 @@ class Sessionx {
     private         $_active = false;
     private         $_config;
     private         $_mechanism;
+
     /*
      * Session generation and handling part
      */
-
     protected function __construct()
     {
         if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
@@ -194,7 +176,7 @@ class Sessionx {
     }
 
     public function destroy() {
-        $sd = new modl\SessionxDAO();
+        $sd = new \Modl\SessionxDAO();
         $sd->delete(self::$_sessionid);
     }
 }

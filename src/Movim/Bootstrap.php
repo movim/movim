@@ -6,7 +6,7 @@ use Monolog\Handler\SyslogHandler;
 
 class Bootstrap
 {
-    function boot($light = false)
+    function boot()
     {
         //define all needed constants
         $this->setConstants();

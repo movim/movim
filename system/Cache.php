@@ -6,10 +6,6 @@ class Cache
 {
     private static $instance;
 
-    private $db;
-    private $log = true;
-    private $ttl; // TODO
-
     public static function create()
     {
         if(!is_object(self::$instance)) {
@@ -62,7 +58,7 @@ class Cache
         }
         else {
             // Cutting a piece of the args.
-            $content = array_slice($argslist, 1);
+            $content = array_slice($arglist, 1);
             return $this->write_cache($key, $content);
         }
     }

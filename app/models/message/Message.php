@@ -96,8 +96,6 @@ class Message extends Model {
             if($stanza->subject)
                 $this->__set('subject', (string)$stanza->subject);
 
-            $images = (bool)($this->type == 'chat');
-
             if($stanza->html) {
                 $xhtml = new \SimpleXMLElement('<body xmlns="http://www.w3.org/1999/xhtml">'.escapeAmpersands((string)$stanza->html->body).'</body>');
                 $xhtml->registerXPathNamespace('xhtml', 'http://www.w3.org/1999/xhtml');

@@ -8,8 +8,14 @@ class DisconnectController extends Base
     }
 
     function dispatch() {
-        $user = new User();
-        $user->desauth();
+        $pd = new modl\PresenceDAO();
+        $pd->clearPresence();
+
+        $s = \Sessionx::start();
+        $s->destroy();
+
+        Session::dispose();
+
         $this->redirect('login');
     }
 }
