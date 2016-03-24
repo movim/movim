@@ -27,8 +27,6 @@ class Api extends \Movim\Widget\Base {
             $this->__(
                 'api.info',
                 '<a href="http://api.movim.eu/" target="_blank">',
-                '</a>',
-                '<a href="'.$this->route('pods').'">',
                 '</a>'));
 
         $json = requestURL(MOVIM_API.'status', 1, array('uri' => BASE_URI));
