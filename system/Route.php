@@ -18,6 +18,7 @@ class Route extends Base {
                 'contact'       => array('f'),
                 'disconnect'    => array('err'),
                 'feed'          => array('s', 'n'),
+                'main'          => false,
                 'node'          => array('s', 'n', 'i'),
                 'group'         => array('s', 'n', 'i'),
                 'help'          => false,
@@ -53,7 +54,7 @@ class Route extends Base {
             }
         }
 
-        if(empty($this->_page))
+        if(empty($this->_page) || $this->_page == 'main')
             $this->_page = 'news';
 
         if(!isset($this->_routes[$this->_page]))
