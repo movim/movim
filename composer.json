@@ -8,6 +8,7 @@
     "require": {
         "php": ">=5.4.0",
         "ext-curl": "*",
+        "ext-mbstring": "*",
         "ext-imagick": "*",
 
         "monolog/monolog": "1.8.*",
