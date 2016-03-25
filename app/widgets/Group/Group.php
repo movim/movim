@@ -88,10 +88,12 @@ class Group extends \Movim\Widget\Base
         list($server, $node) = array_values($packet->content);
         Notification::append(false, $this->__('group.empty'));
 
-        $this->ajaxDelete($server, $node, true);
-        $this->ajaxGetAffiliations($server, $node);
-        // Display an error message
-        RPC::call('Group.clearLoad');
+        if($node != 'urn:xmpp:microblog:0') {
+            $this->ajaxDelete($server, $node, true);
+            $this->ajaxGetAffiliations($server, $node);
+            // Display an error message
+            RPC::call('Group.clearLoad');
+        }
     }
 
     function onAffiliations($packet)
