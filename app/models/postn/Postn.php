@@ -117,6 +117,28 @@ class Postn extends Model {
         return $content;
     }
 
+    private function getTitle($titles) {
+        $title = '';
+        foreach($titles as $t) {
+            switch($t->attributes()->type) {
+                case 'html':
+                case 'xhtml':
+                    $title = strip_tags((string)$t->children()->asXML());
+                    break;
+                case 'text':
+                    if(trim($t) != '') {
+                        $title = trim($t);
+                    }
+                    break;
+                default :
+                    $title = (string)$t;
+                    break;
+            }
+        }
+
+        return $title;
+    }
+
     public function set($item, $from, $delay = false, $node = false) {
         if($item->item)
             $entry = $item->item;
@@ -150,7 +172,7 @@ class Postn extends Model {
         if($entry->entry->source && $entry->entry->source->author->uri)
             $this->__set('aid', substr((string)$entry->entry->source->author->uri, 5));
 
-        $this->__set('title', (string)$entry->entry->title);
+        $this->__set('title', $this->getTitle($entry->entry->title));
 
         // Content
         if($entry->entry->summary && (string)$entry->entry->summary != '')
