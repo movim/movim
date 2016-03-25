@@ -6,6 +6,10 @@
     },
 
     "require": {
+        "php": ">=5.4.0",
+        "ext-curl": "*",
+        "ext-imagick": "*",
+
         "monolog/monolog": "1.8.*",
         "libchart/libchart": "dev-master",
         "rain/raintpl": "dev-master",

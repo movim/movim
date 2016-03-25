@@ -1,37 +1,10 @@
 <?php
 
-/**
- * @file Session.php
- * This file is part of MOVIM.
- *
- * @brief Class that manages session variables with minimal lock time.
- *
- * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
- *
- * Yes, this class is again a singleton. But this is justified by the fact that
- * there can only be one active session that is locked down.
- *
- * @version 1.0
- * @date 26 April 2011
- *
- * Copyright (C)2011 MOVIM
- *
- * See COPYING for licensing information.
- */
-
 class Session
 {
     protected static $instance;
     protected static $sid = null;
     protected $values = array();
-
-    /**
-     * Loads and immediately closes the session variables for the namespace
-     * $name.
-     */
-    protected function __construct()
-    {
-    }
 
     /**
      * Gets a session handle.
