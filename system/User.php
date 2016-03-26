@@ -71,13 +71,9 @@ class User {
      */
     function isLogged()
     {
-        // User is not logged in if both the session vars and the members are unset.
+        // We check if the session exists in the daemon
         $session = \Sessionx::start();
-
-        if($session->active)
-            return $session->active;
-        else
-            return false;
+        return (bool)requestURL('http://localhost:1560/exists/'.$session->sessionid);
     }
 
     function createDir()

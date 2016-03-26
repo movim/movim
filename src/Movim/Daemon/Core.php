@@ -108,6 +108,14 @@ class Core implements MessageComponentInterface {
         }
     }
 
+    public function forceClose($sid)
+    {
+        if(array_key_exists($sid, $this->sessions)) {
+            $this->sessions[$sid]->killLinker();
+            unset($this->sessions[$sid]);
+        }
+    }
+
     private function registerCleaner()
     {
         $this->loop->addPeriodicTimer(5, function() {
@@ -135,6 +143,13 @@ class Core implements MessageComponentInterface {
     public function onError(ConnectionInterface $conn, \Exception $e)
     {
         echo "An error has occurred: {$e->getMessage()}\n";
+    }
+
+    public function getSessions()
+    {
+        return array_map(
+            function($session) { return $session->registered; },
+             $this->sessions);
     }
 
     private function getSid(ConnectionInterface $conn)

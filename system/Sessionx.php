@@ -125,6 +125,8 @@ class Sessionx {
             $sd = new modl\SessionxDAO();
             $this->_rid = $sd->getRid(self::$_sessionid);
             return $this->_rid;
+        } elseif($key == 'sessionid') {
+            return self::$_sessionid;
         } else {
             if(
                 in_array(
