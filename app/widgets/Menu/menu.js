@@ -1,6 +1,6 @@
 var Menu = {
     refresh: function() {
-        var items = document.querySelectorAll('#menu_widget ul li, #post_widget ul.card li');
+        var items = document.querySelectorAll('ul#menu_wrapper li, #post_widget ul.card li');
 
         var i = 0;
         while(i < items.length)
