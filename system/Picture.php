@@ -8,6 +8,15 @@ class Picture {
     private $_formats = ['jpeg' => '.jpg', 'png' => '.png'];
 
     /**
+     * @desc Load a bin picture from an URL
+     */
+    public function fromURL($url)
+    {
+        $bin = requestURL($url, 2);
+        if($bin) $this->_bin = $bin;
+    }
+
+    /**
      * @desc Load a bin picture from a path
      */
     public function fromPath($path)
@@ -140,6 +149,9 @@ class Picture {
                     $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
                     $im->writeImage($path);
                     $im->clear();
+                    return true;
+                } else {
+                    return false;
                 }
             } catch (ImagickException $e) {
                 error_log($e->getMessage());
