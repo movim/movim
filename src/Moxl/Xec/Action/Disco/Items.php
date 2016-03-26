@@ -28,7 +28,11 @@ class Items extends Action
         $jid = null;
 
         foreach($stanza->query->item as $item) {
-            $n = new \Modl\Item();
+            $n = $nd->getItem($this->_to, (string)$item->attributes()->node);
+            if(!$n) {
+                $n = new \modl\Item();
+            }
+
             $n->set($item, $this->_to);
             if(substr($n->node, 0, 29) != 'urn:xmpp:microblog:0:comments')
                 $nd->set($n, true);

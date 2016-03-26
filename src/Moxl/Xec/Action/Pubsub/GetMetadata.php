@@ -56,12 +56,16 @@ class GetMetadata extends Errors
 
         $tab = array();
 
-        $nd = new \modl\ItemDAO();
+        $id = new \modl\ItemDAO();
 
-        $n = new \modl\Item();
-        $n->setMetadata($stanza->query->x, $this->_to, $this->_node);
+        $i = $id->getItem($this->_to, $this->_node);
+        if(!$i) {
+            $i = new \modl\Item();
+        }
 
-        $nd->set($n);
+        $i->setMetadata($stanza->query->x, $this->_to, $this->_node);
+
+        $id->set($i);
 
         $evt->runEvent('pubsubmetadata', array($this->_to, $this->_node));
     }
