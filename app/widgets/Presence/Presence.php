@@ -59,11 +59,6 @@ class Presence extends \Movim\Widget\Base
         RPC::call('movim_remove_class', '#presence_widget', 'unfolded');
     }
 
-    function onPostDisconnect($data)
-    {
-        RPC::call('movim_reload', Route::urlize('disconnect'));
-    }
-
     function ajaxSet($form = false)
     {
         if($form == false) {
