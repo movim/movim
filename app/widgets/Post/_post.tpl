@@ -133,9 +133,11 @@
             <content>
                 {if="$post->isShort() && isset($attachements.pictures)"}
                     {loop="$attachements.pictures"}
+                        {if="$value.type != 'picture'"}
                         <a href="{$value.href}" class="alternate" target="_blank">
                             <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
                         </a>
+                        {/if}
                     {/loop}
                 {elseif="$post->getYoutube()"}
                     <div class="video_embed">
