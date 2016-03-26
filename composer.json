@@ -28,6 +28,7 @@
         "react/stream": "0.4.3",
         "react/http": "dev-master",
 
+        "stojg/crop": "dev-master",
         "forxer/Gravatar": "~1.2",
         "respect/validation": "1.0.*",
         "ezyang/htmlpurifier": "^4.7",

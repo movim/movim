@@ -80,6 +80,7 @@ class SubscriptionDAO extends SQL {
                 subscription,
                 item.name,
                 item.description,
+                item.logo,
                 caps.name as servicename
             from subscription
             left outer join item
@@ -95,7 +96,8 @@ class SubscriptionDAO extends SQL {
                 subscription,
                 caps.name,
                 item.name,
-                item.description
+                item.description,
+                item.logo
             order by
                 subscription.server';
 

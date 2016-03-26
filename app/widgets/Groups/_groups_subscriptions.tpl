@@ -21,7 +21,13 @@
                 data-node="{$value->node}"
                 title="{$value->server} - {$value->node}"
             >
-                <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+                {if="$value->logo"}
+                    <span class="primary icon bubble">
+                        <img src="{$value->getLogo()}">
+                    </span>
+                {else}
+                    <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+                {/if}
                 <p class="line normal">
                     {if="$value->name"}
                         {$value->name}

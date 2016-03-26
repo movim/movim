@@ -14,6 +14,7 @@ class Subscription extends Model {
     public $timestamp;
     public $name;
     public $servicename;
+    public $logo;
 
     public function __construct() {
         $this->_struct = '
@@ -37,6 +38,12 @@ class Subscription extends Model {
         }';
 
         parent::__construct();
+    }
+
+    public function getLogo()
+    {
+        $p = new \Picture;
+        return $p->get($this->server.$this->node, 120);
     }
 
     function set($jid, $server, $node, $s) {

@@ -98,7 +98,7 @@ class Item extends Model {
     public function getLogo()
     {
         $p = new \Picture;
-        return $p->get($this->server.$this->node, 50);
+        return $p->get($this->server.$this->node, 120);
     }
 
     public function getName() {

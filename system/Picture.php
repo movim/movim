@@ -1,5 +1,8 @@
 <?php
 
+
+use stojg\crop\CropFace;
+
 class Picture {
     private $_path = CACHE_PATH;
     private $_uri  = CACHE_URI;
@@ -179,13 +182,18 @@ class Picture {
             $im = $im->flattenImages();
         }
 
+        $crop = new CropEntropy;
+        $crop->setImage($im);
+
         $geo = $im->getImageGeometry();
 
-        $im->cropThumbnailImage($width, $height);
+        //$im->cropThumbnailImage($width, $height);
         if($width > $geo['width']) {
             $factor = floor($width/$geo['width']);
             $im->blurImage($factor, 10);
         }
+
+        $im = $crop->resizeAndCrop($width, $height);
 
         $im->setImageCompressionQuality(85);
         $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);

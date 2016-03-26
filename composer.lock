@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2766c68854abee7115a7ef0df8b40062",
-    "content-hash": "d7fdb99829d63d6037a42dfd629614d1",
+    "hash": "b54958b944f29089f98f8ba4280c604b",
+    "content-hash": "a8f2cba127179fc763654ce07480f16c",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1637,6 +1637,52 @@
             "time": "2016-02-26 15:21:26"
         },
         {
+            "name": "stojg/crop",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stojg/crop.git",
+                "reference": "a57276d4ee50e01b465fed27a7b687dfb388a180"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stojg/crop/zipball/a57276d4ee50e01b465fed27a7b687dfb388a180",
+                "reference": "a57276d4ee50e01b465fed27a7b687dfb388a180",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "stojg\\crop": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2"
+            ],
+            "authors": [
+                {
+                    "name": "Stig Lindqvist",
+                    "email": "stojg.lindqvist@gmail.com",
+                    "homepage": "https://stojg.se/"
+                },
+                {
+                    "name": "Julien Deniau jdeniau",
+                    "email": "julien.deniau@gmail.com",
+                    "homepage": "http://www.mapado.com"
+                }
+            ],
+            "description": "Image cropping classes",
+            "homepage": "http://github.com/stojg/crop",
+            "keywords": [
+                "image"
+            ],
+            "time": "2015-12-03 05:49:01"
+        },
+        {
             "name": "symfony/event-dispatcher",
             "version": "v3.0.3",
             "source": {
@@ -1838,7 +1884,8 @@
         "heyupdate/emoji": 20,
         "react/child-process": 20,
         "react/socket-client": 20,
-        "react/http": 20
+        "react/http": 20,
+        "stojg/crop": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
