@@ -204,8 +204,6 @@ class Postn extends Model {
         if($delay)
             $this->__set('delay', $delay);
 
-        $contentimg = $this->setAttachements($entry->entry->link);
-
         // Tags parsing
         if($entry->entry->category) {
             $td = new \Modl\TagDAO;
@@ -227,14 +225,24 @@ class Postn extends Model {
             }
         }
 
-        if($contentimg != '')
-            $content .= '<br />'.$contentimg;
-
         if(!isset($this->commentplace))
             $this->__set('commentplace', $this->origin);
 
         $this->__set('content', trim($content));
         $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
+
+        $extra = false;
+        // We try to extract a picture
+        $xml = \simplexml_load_string('<div>'.$this->contentcleaned.'</div>');
+        if($xml) {
+            $results = $xml->xpath('//img/@src');
+            if(is_array($results) && !empty($results)) {
+                $extra = (string)$results[0];
+                $this->picture = true;
+            }
+        }
+
+        $this->setAttachements($entry->entry->link, $extra);
 
         if($entry->entry->geoloc) {
             if($entry->entry->geoloc->lat != 0)
@@ -245,16 +253,14 @@ class Postn extends Model {
     }
 
     private function typeIsPicture($type) {
-        return in_array($type, array('image/jpeg', 'image/png', 'image/jpg', 'image/gif'));
+        return in_array($type, array('picture', 'image/jpeg', 'image/png', 'image/jpg', 'image/gif'));
     }
 
     private function typeIsLink($type) {
         return $type == 'text/html';
     }
 
-    private function setAttachements($links) {
-        $contentimg = '';
-
+    private function setAttachements($links, $extra = false) {
         $l = array();
 
         foreach($links as $attachment) {
@@ -274,10 +280,12 @@ class Postn extends Model {
             }
         }
 
+        if($extra) {
+            array_push($l, array('href' => $extra, 'type' => 'picture'));
+        }
+
         if(!empty($l))
             $this->links = serialize($l);
-
-        return $contentimg;
     }
 
     public function getAttachements()
