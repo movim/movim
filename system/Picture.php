@@ -1,7 +1,7 @@
 <?php
 
 
-use stojg\crop\CropFace;
+use stojg\crop\CropEntropy;
 
 class Picture {
     private $_path = CACHE_PATH;
