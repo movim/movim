@@ -391,8 +391,13 @@ class Group extends \Movim\Widget\Base
 
     private function prepareHeader($server, $node)
     {
-        $pd = new \Modl\ItemDAO;
-        $item = $pd->getItem($server, $node);
+        $id = new \Modl\ItemDAO;
+        $item = $id->getItem($server, $node);
+
+        if($item && !$item->logo) {
+            $item->setPicture();
+            $id->set($item);
+        }
 
         $pd = new \Modl\SubscriptionDAO;
         $subscription = $pd->get($server, $node);
@@ -408,7 +413,7 @@ class Group extends \Movim\Widget\Base
 
     private function prepareGroup($server, $node, $page = 0)
     {
-        $pd = new \Modl\PostnDAO();
+        $pd = new \Modl\PostnDAO;
         $posts = $pd->getNodeUnfiltered($server, $node, $page*$this->_paging, $this->_paging);
 
         $view = $this->tpl();

@@ -14,6 +14,7 @@ class Item extends Model {
     public $subscription;
     public $num;
     public $sub;
+    public $logo;
 
     public function __construct() {
         $this->_struct = '
@@ -31,7 +32,9 @@ class Item extends Model {
             "created" :
                 {"type":"date"},
             "description" :
-                {"type":"text" },
+                {"type":"text"},
+            "logo" :
+                {"type":"bool"},
             "updated" :
                 {"type":"date", "mandatory":true}
         }';
@@ -74,6 +77,28 @@ class Item extends Model {
         }
 
         $this->updated  = date('Y-m-d H:i:s');
+    }
+
+    public function setPicture()
+    {
+        $pd = new \Modl\PostnDAO;
+        $item = $pd->getGroupPicture($this->server, $this->node);
+
+        if($item) {
+            $item->getAttachements();
+
+            $p = new \Picture;
+            $p->fromURL($item->getPicture());
+            if($p->set($this->server.$this->node)) {
+                $this->logo = true;
+            }
+        }
+    }
+
+    public function getLogo()
+    {
+        $p = new \Picture;
+        return $p->get($this->server.$this->node, 50);
     }
 
     public function getName() {

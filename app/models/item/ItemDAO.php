@@ -11,7 +11,8 @@ class ItemDAO extends SQL {
                     creator = :creator,
                     created = :created,
                     updated = :updated,
-                    description = :description
+                    description = :description,
+                    logo = :logo
                 where server = :server
                     and jid  = :jid
                     and node = :node';
@@ -26,7 +27,8 @@ class ItemDAO extends SQL {
                     'jid'           => $item->jid,
                     'node'          => $item->node,
                     'creator'       => $item->creator,
-                    'description'   => $item->description
+                    'description'   => $item->description,
+                    'logo'          => $item->logo
                 )
             );
 
@@ -43,7 +45,8 @@ class ItemDAO extends SQL {
                 name,
                 created,
                 updated,
-                description
+                description,
+                logo
                 )
                 values(
                     :server,
@@ -53,7 +56,8 @@ class ItemDAO extends SQL {
                     :name,
                     :created,
                     :updated,
-                    :description
+                    :description,
+                    :logo
                     )';
 
             $this->prepare(
@@ -66,7 +70,8 @@ class ItemDAO extends SQL {
                     'server'        => $item->server,
                     'jid'           => $item->jid,
                     'node'          => $item->node,
-                    'description'   => $item->description
+                    'description'   => $item->description,
+                    'logo'          => $item->logo
                 )
             );
 

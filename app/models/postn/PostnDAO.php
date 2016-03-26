@@ -287,6 +287,27 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
+    function getGroupPicture($origin, $node)
+    {
+        $this->_sql = '
+            select * from postn
+            where postn.origin = :origin
+                and postn.node = :node
+                and postn.picture = 1
+            order by postn.published desc
+            limit 1';
+
+        $this->prepare(
+            'Postn',
+            array(
+                'origin' => $origin,
+                'node' => $node
+            )
+        );
+
+        return $this->run('Postn', 'item');
+    }
+
     function getItem($id) {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
@@ -383,7 +404,8 @@ class PostnDAO extends SQL {
     }
 
 
-    function getMe($limitf = false, $limitr = false) {
+    function getMe($limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
@@ -404,7 +426,9 @@ class PostnDAO extends SQL {
 
         return $this->run('ContactPostn');
     }
-    function getPublic($origin, $node, $limitf = false, $limitr = false) {
+
+    function getPublic($origin, $node, $limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.aid, privacy.value as privacy from postn
             left outer join contact on postn.aid = contact.jid
