@@ -26,6 +26,7 @@
         "react/child-process": "0.5.*@dev",
         "react/socket-client": "dev-master",
         "react/stream": "0.4.3",
+        "react/http": "dev-master",
 
         "forxer/Gravatar": "~1.2",
         "respect/validation": "1.0.*",
