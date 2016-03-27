@@ -21,7 +21,7 @@ class MovimEmoji
         $this->_emoji = new Emoji(new EmojiIndex(), $this->getPath());
     }
 
-    public function replace($string, $large = false)
+    public function replace($string)
     {
         $this->_emoji->setAssetUrlFormat($this->getPath());
         $string = $this->_emoji->replaceEmojiWithImages($string);
@@ -30,7 +30,7 @@ class MovimEmoji
         return $string;
     }
 
-    private function getPath($large = false)
+    private function getPath()
     {
         return BASE_URI . 'themes/' . $this->_theme . '/img/emojis/svg/%s.svg';
     }
@@ -99,10 +99,7 @@ function prepareString($string, $large = false, $preview = false) {
     $string = addUrls($string, $preview);
 
     // We add some smileys...
-    $emoji = MovimEmoji::getInstance();
-    $string = $emoji->replace($string, $large);
-
-    return trim($string);
+    return trim((string)requestURL('http://localhost:1560/emojis/', 2, ['string' => $string]));
 }
 
 /**
@@ -291,35 +288,7 @@ function stripTags($string)
  */
 function purifyHTML($string)
 {
-    $config = \HTMLPurifier_Config::createDefault();
-    $config->set('HTML.Doctype', 'XHTML 1.1');
-    $config->set('Cache.SerializerPath', '/tmp');
-    $config->set('HTML.DefinitionID', 'html5-definitions');
-    $config->set('HTML.DefinitionRev', 1);
-    if ($def = $config->maybeGetRawHTMLDefinition()) {
-        $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
-          'src' => 'URI',
-          'type' => 'Text',
-          'width' => 'Length',
-          'height' => 'Length',
-          'poster' => 'URI',
-          'preload' => 'Enum#auto,metadata,none',
-          'controls' => 'Bool',
-        ));
-        $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
-          'src' => 'URI',
-          'preload' => 'Enum#auto,metadata,none',
-          'muted' => 'Bool',
-          'controls' => 'Bool',
-        ));
-        $def->addElement('source', 'Block', 'Flow', 'Common', array(
-          'src' => 'URI',
-          'type' => 'Text',
-        ));
-    }
-
-    $purifier = new \HTMLPurifier($config);
-    return $purifier->purify($string);
+    return (string)requestURL('http://localhost:1560/purify/', 2, ['html' => $string]);
 }
 
 /**

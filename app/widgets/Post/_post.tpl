@@ -201,6 +201,7 @@
             {if="!$post->isShort() && isset($attachements.pictures)"}
                 <ul class="list flex middle">
                 {loop="$attachements.pictures"}
+                    {if="$value.type != 'picture'"}
                     <li class="block pic">
                         <span class="primary icon gray">
                             <i class="zmdi zmdi-image"></i>
@@ -209,6 +210,7 @@
                             <img type="{$value.type}" src="{$value.href|urldecode}"/>
                         </a>
                     </li>
+                    {/if}
                 {/loop}
                 </ul>
             {/if}

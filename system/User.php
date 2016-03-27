@@ -73,7 +73,7 @@ class User {
     {
         // We check if the session exists in the daemon
         $session = \Sessionx::start();
-        return (bool)requestURL('http://localhost:1560/exists/'.$session->sessionid);
+        return (bool)requestURL('http://localhost:1560/exists/', 2, ['sid' => $session->sessionid]);
     }
 
     function createDir()
