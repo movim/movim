@@ -103,16 +103,6 @@ function prepareString($string, $large = false, $preview = false) {
 }
 
 /**
- * @desc Escape the unescaped ampersand
- */
-function escapeAmpersands($string) {
-    return preg_replace(
-        '/&[^; ]{0,6}.?/e',
-        "((substr('\\0',-1) == ';') ? '\\0' : '&amp;'.substr('\\0',1))",
-        $string);
-}
-
-/**
  * Return an array of informations from a XMPP uri
  */
 function explodeURI($uri) {

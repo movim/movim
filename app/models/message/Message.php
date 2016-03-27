@@ -97,11 +97,12 @@ class Message extends Model {
                 $this->__set('subject', (string)$stanza->subject);
 
             if($stanza->html) {
-                $xhtml = new \SimpleXMLElement('<body xmlns="http://www.w3.org/1999/xhtml">'.escapeAmpersands((string)$stanza->html->body).'</body>');
-                $xhtml->registerXPathNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
-                $img = $xhtml->xpath('//xhtml:img/@src')[0];
-                if($img) {
-                    $this->sticker = getCid((string)$img);
+                $xml = \simplexml_load_string((string)$stanza->html->body);
+                if($xml) {
+                    $results = $xml->xpath('//img/@src');
+                    if(is_array($results) && !empty($results)) {
+                        $this->sticker = getCid((string)$results[0]);
+                    }
                 }
             }
 
