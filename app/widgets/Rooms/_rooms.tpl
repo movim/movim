@@ -36,7 +36,7 @@
             <h1>{$c->__('room.anonymous_title')}</h1>
             <h4>{$c->__('room.anonymous_login', $room)}</h4>
         </div>
-        <ul class="simple divided thick">
+        <ul class="list thick">
             <li>
                 <form
                     name="loginanonymous">
