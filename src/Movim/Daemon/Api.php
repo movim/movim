@@ -58,7 +58,7 @@ class Api {
 
     public function purifyHTML($post)
     {
-        $string = $post['html'];
+        $string = urldecode($post['html']);
 
         $config = \HTMLPurifier_Config::createDefault();
         $config->set('HTML.Doctype', 'XHTML 1.1');

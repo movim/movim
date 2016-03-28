@@ -278,7 +278,7 @@ function stripTags($string)
  */
 function purifyHTML($string)
 {
-    return (string)requestURL('http://localhost:1560/purify/', 2, ['html' => $string]);
+    return (string)requestURL('http://localhost:1560/purify/', 2, ['html' => urlencode($string)]);
 }
 
 /**
