@@ -69,7 +69,7 @@
                 <li>
                     <p class="normal center">
                         {$c->__('form.no_account')}
-                        <a class="button flat" href="{$c->route('account')}">
+                        <a class="button color" href="{$c->route('account')}">
                             {$c->__('form.create_one')}
                         </a>
                     </p>

@@ -7,6 +7,6 @@ class AboutController extends Base {
     }
 
     function dispatch() {
-        $this->page->setTitle(__('title.about', APP_TITLE));
+        $this->page->setTitle(__('page.about'));
     }
 }

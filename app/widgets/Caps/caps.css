@@ -1,7 +1,7 @@
 #caps_widget table {
     width: 100%;
     display: block;
-    
+
     overflow: auto;
 
     font-size: 2rem;
@@ -56,6 +56,6 @@
     padding: 0 0.5rem;
 }
 
-main > section > div > * {
+main > section > div > #caps_widget {
     max-width: calc(100% - 4rem);
 }

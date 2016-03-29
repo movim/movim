@@ -10,7 +10,7 @@ class AdminloginController extends Base
 
     function dispatch()
     {
-        $this->page->setTitle(__('title.administration', APP_TITLE));
+        $this->page->setTitle(__('page.administration'));
 
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();

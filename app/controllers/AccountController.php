@@ -7,6 +7,6 @@ class AccountController extends Base {
     }
 
     function dispatch() {
-        $this->page->setTitle(__('title.account', APP_TITLE));
+        $this->page->setTitle(__('page.account_creation'));
     }
 }
