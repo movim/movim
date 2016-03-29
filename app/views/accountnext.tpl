@@ -5,7 +5,7 @@
                 <ul class="list middle">
                     <li>
                         <span class="primary active icon gray">
-                            <a href="<?php echo Route::urlize('main'); ?>">
+                            <a href="<?php echo Route::urlize('account'); ?>">
                                 <i class="zmdi zmdi-arrow-left"></i>
                             </a>
                         </span>
