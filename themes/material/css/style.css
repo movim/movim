@@ -181,7 +181,7 @@ body > nav li { /* Little hack for the navbar */
     }
 }
 
-@media screen and (min-width: 1024px) and (max-width: 1680px) {
+@media screen and (min-width: 1024px) and (max-width: 1679px) {
     body > nav p {
         transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
         opacity: 0;
