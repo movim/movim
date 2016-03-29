@@ -7,6 +7,9 @@ class LoginController extends Base {
     }
 
     function dispatch() {
+        $session = \Sessionx::start();
+        requestURL('http://localhost:1560/unregister/', 2, ['sid' => $session->sessionid]);
+
         $this->page->setTitle(__('page.login'));
 
         $user = new User();

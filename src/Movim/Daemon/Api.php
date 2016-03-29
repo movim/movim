@@ -25,6 +25,8 @@ class Api {
                 case 'exists':
                     $response->write($api->sessionExists($request->getPost()));
                     break;
+                case 'unregister':
+                    $response->write($api->sessionUnregister($request->getPost()));
                 case 'disconnect';
                     $response->write($api->sessionDisconnect($request->getPost()));
                     break;
@@ -47,6 +49,16 @@ class Api {
         $sessions = $this->_core->getSessions();
         return (array_key_exists($sid, $sessions)
         && $sessions[$sid] == true);
+    }
+
+    public function sessionUnregister($post)
+    {
+        $sid = $post['sid'];
+
+        $session = $this->_core->getSession($sid);
+        if($session) {
+            $session->messageIn(json_encode(['func' => 'unregister']));
+        }
     }
 
     public function sessionDisconnect($post)

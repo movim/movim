@@ -92,7 +92,7 @@ class Core implements MessageComponentInterface {
     {
         $sid = $this->getSid($from);
         if($sid != null && isset($this->sessions[$sid])) {
-            $this->sessions[$sid]->messageIn($from, $msg);
+            $this->sessions[$sid]->messageIn($msg);
         }
     }
 
@@ -150,6 +150,13 @@ class Core implements MessageComponentInterface {
         return array_map(
             function($session) { return $session->registered; },
              $this->sessions);
+    }
+
+    public function getSession($sid)
+    {
+        if(isset($this->sessions[$sid])) {
+            return $this->sessions[$sid];
+        }
     }
 
     private function getSid(ConnectionInterface $conn)

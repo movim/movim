@@ -136,7 +136,7 @@ class Session {
         }
     }
 
-    public function messageIn(ConnectionInterface $from, $msg)
+    public function messageIn($msg)
     {
         $this->timestamp = time();
         if(isset($this->process)) {
