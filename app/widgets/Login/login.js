@@ -75,6 +75,7 @@ var Login = {
             Login.toForm();
 
             document.querySelector('#login').value = jid;
+            document.querySelector('input#complete').value = jid;
             document.querySelector('#pass').value = "";
 
             if(jid != '') {
@@ -170,6 +171,25 @@ MovimWebsocket.register(function()
 });
 
 movim_add_onload(function() {
+    // We had the autocomplete system
+    var login = document.querySelector('input#login');
+    login.addEventListener('input', function() {
+        if(this.value.indexOf('@') == -1) {
+            // TODO allow another server here
+            document.querySelector('input#complete').value = this.value + '@movim.eu';
+        } else {
+            document.querySelector('input#complete').value = this.value;
+        }
+
+        if(this.value.length == 0) {
+            document.querySelector('input#complete').value = '';
+        }
+    });
+
+    login.addEventListener('blur', function() {
+        this.value = document.querySelector('input#complete').value;
+    });
+
     /* Dump cache variables  in localStorage */
     for ( var i = 0, len = localStorage.length; i < len; ++i ) {
         var cache = localStorage.key(i);

@@ -53,6 +53,14 @@ body main {
     padding: 1rem 2rem;
 }
 
+#login_widget input#complete {
+    position: absolute;
+    top: 0;
+    border-bottom: none;
+    z-index: -1;
+    color: gray;
+}
+
 ul.admin {
     position: relative;
     text-align: center;
