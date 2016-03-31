@@ -1,3 +1,4 @@
+<?php $this->widget('Stickers');?>
 <?php $this->widget('Presence'); ?>
 <?php $this->widget('LoginAnonymous'); ?>
 <main>
