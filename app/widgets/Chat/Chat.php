@@ -224,7 +224,9 @@ class Chat extends \Movim\Widget\Base
      * @return void
      */
     function ajaxSendMessage($to, $message, $muc = false, $resource = false, $replace = false) {
-        if($message == '')
+        $body = trim(rawurldecode($message));
+
+        if($body == '' || $body == '/me')
             return;
 
         $m = new \Modl\Message();
@@ -261,7 +263,7 @@ class Chat extends \Movim\Widget\Base
             $m->jidfrom     = $to;
         }
 
-        $m->body      = trim(rawurldecode($message));
+        $m->body      = $body;
         //$m->html      = prepareString($m->body, false, true);
 
         if($resource != false) {

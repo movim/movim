@@ -131,7 +131,7 @@ var Chat = {
                     bubble.id = message.newid;
             }
 
-            if(message.body.match(/^\/me/)) {
+            if(message.body.match(/^\/me\s/)) {
                 bubble.querySelector('div.bubble').className = 'bubble quote';
                 message.body = message.body.substr(4);
             }
@@ -235,12 +235,14 @@ MovimWebsocket.attach(function() {
     }
 });
 
-Upload.attach(function() {
-    var textarea = document.querySelector('#chat_textarea');
-    textarea.value = Upload.get + ' ' + textarea.value;
-    textarea.focus();
-    movim_textarea_autoheight(textarea);
-});
+if(typeof Upload != 'undefined') {
+    Upload.attach(function() {
+        var textarea = document.querySelector('#chat_textarea');
+        textarea.value = Upload.get + ' ' + textarea.value;
+        textarea.focus();
+        movim_textarea_autoheight(textarea);
+    });
+}
 
 document.addEventListener('focus', function() {
     var textarea = document.querySelector('#chat_textarea');
