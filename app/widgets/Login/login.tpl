@@ -21,9 +21,9 @@
                 data-action="{$submit}"
                 name="login">
                 <div>
+                    <input type="text" id="complete" tabindex="-1"/>
                     <input type="email" name="login" id="login" autofocus required disabled
                         placeholder="username@server.com"/>
-                    <input type="text" id="complete" tabindex="-1"/>
                     <label for="login">{$c->__('form.username')}</label>
                 </div>
                 <div>
