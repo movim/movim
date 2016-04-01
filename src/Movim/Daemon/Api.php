@@ -25,8 +25,15 @@ class Api {
                 case 'exists':
                     $response->write($api->sessionExists($request->getPost()));
                     break;
+                case 'linked':
+                    $response->write($api->sessionsLinked());
+                    break;
+                case 'started':
+                    $response->write($api->sessionsStarted());
+                    break;
                 case 'unregister':
                     $response->write($api->sessionUnregister($request->getPost()));
+                    break;
                 case 'disconnect';
                     $response->write($api->sessionDisconnect($request->getPost()));
                     break;
@@ -49,6 +56,20 @@ class Api {
         $sessions = $this->_core->getSessions();
         return (array_key_exists($sid, $sessions)
         && $sessions[$sid] == true);
+    }
+
+    public function sessionsLinked()
+    {
+        return count($this->_core->getSessions());
+    }
+
+    public function sessionsStarted()
+    {
+        $started = 0;
+        foreach($this->_core->getSessions() as $s) {
+            if($s == true) $started++;
+        }
+        return $started;
     }
 
     public function sessionUnregister($post)

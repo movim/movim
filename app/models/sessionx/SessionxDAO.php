@@ -3,7 +3,7 @@
 namespace modl;
 
 class SessionxDAO extends SQL {
-    function init(Sessionx $s) {        
+    function init(Sessionx $s) {
         $this->_sql = '
             update sessionx
             set username    = :username,
@@ -22,9 +22,9 @@ class SessionxDAO extends SQL {
                 timestamp   = :timestamp,
                 mechanism   = :mechanism
             where session = :session';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'session'   => $s->session,
                 'username'  => $s->username,
@@ -44,9 +44,9 @@ class SessionxDAO extends SQL {
                 'mechanism' => $s->mechanism
                 )
         );
-        
+
         $this->run('Sessionx');
-        
+
         if(!$this->_effective) {
             $this->_sql = '
                 insert into sessionx
@@ -83,9 +83,9 @@ class SessionxDAO extends SQL {
                  :start,
                  :timestamp,
                  :mechanism)';
-            
+
             $this->prepare(
-                'Sessionx', 
+                'Sessionx',
                 array(
                     'session'   => $s->session,
                     'username'  => $s->username,
@@ -105,7 +105,7 @@ class SessionxDAO extends SQL {
                     'mechanism' => $s->mechanism
                 )
             );
-            
+
             $this->run('Sessionx');
         }
     }
@@ -116,11 +116,11 @@ class SessionxDAO extends SQL {
             set
                 '.$key.'  = :'.$key.',
                 timestamp = :timestamp
-            where 
+            where
                 session = :session';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'session'   => $session,
                 $key        => $value,
@@ -134,11 +134,11 @@ class SessionxDAO extends SQL {
     function get($session) {
         $this->_sql = '
             select * from sessionx
-            where 
+            where
                 session = :session';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'session' => $session
             )
@@ -150,11 +150,11 @@ class SessionxDAO extends SQL {
     function getHash($hash) {
         $this->_sql = '
             select * from sessionx
-            where 
+            where
                 hash = :hash';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'hash' => $hash
             )
@@ -166,16 +166,16 @@ class SessionxDAO extends SQL {
     function getId($session) {
         $this->_sql = '
             select id from sessionx
-            where 
+            where
                 session = :session';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'session' => $session
             )
         );
-        
+
         $value = $this->run(null, 'array');
         $value = $value[0]['id'];
 
@@ -184,11 +184,11 @@ class SessionxDAO extends SQL {
             set
                 id          = :id,
                 timestamp   = :timestamp
-            where 
+            where
                 session = :session';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'session'   => $session,
                 'id'        => $value+1,
@@ -197,23 +197,23 @@ class SessionxDAO extends SQL {
         );
 
         $this->run();
-        
+
         return $value;
     }
 
     function getRid($session) {
         $this->_sql = '
             select rid from sessionx
-            where 
+            where
                 session = :session';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'session' => $session
             )
         );
-        
+
         $value = $this->run(null, 'array');
         $value = $value[0]['rid'];
 
@@ -222,11 +222,11 @@ class SessionxDAO extends SQL {
             set
                 rid         = :rid,
                 timestamp   = :timestamp
-            where 
+            where
                 session = :session';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'session' => $session,
                 'rid' => $value+1,
@@ -235,23 +235,23 @@ class SessionxDAO extends SQL {
         );
 
         $this->run();
-        
+
         return $value;
     }
 
     function delete($session) {
         $this->_sql = '
             delete from sessionx
-            where 
+            where
                 session = :session';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'session' => $session
             )
         );
-        
+
         return $this->run('Sessionx');
     }
 
@@ -273,9 +273,9 @@ class SessionxDAO extends SQL {
         $this->_sql = '
             delete from sessionx
             where timestamp < :timestamp';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'timestamp' => date(DATE_ISO8601, time() - 3600)
             )
@@ -286,9 +286,9 @@ class SessionxDAO extends SQL {
     function clear() {
         $this->_sql = '
             truncate table sessionx';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
             )
         );
@@ -299,30 +299,13 @@ class SessionxDAO extends SQL {
     function getAll() {
         $this->_sql = '
             select * from sessionx';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array()
         );
 
-        return $this->run('Sessionx');        
-    }
-
-    function getConnected() {
-        $this->_sql = '
-            select count(*) from sessionx';
-
-        $this->prepare(
-            'Sessionx', 
-            array(
-                
-            )
-        );
-
-        $results = $this->run(null, 'array');
-        $results = array_values($results[0]);
-        
-        return (int)$results[0]; 
+        return $this->run('Sessionx');
     }
 
     function checkConnected($username, $host)
@@ -332,9 +315,9 @@ class SessionxDAO extends SQL {
             where
                 username = :username
                 and host = :host';
-        
+
         $this->prepare(
-            'Sessionx', 
+            'Sessionx',
             array(
                 'username' => $username,
                 'host' => $host
@@ -343,7 +326,7 @@ class SessionxDAO extends SQL {
 
         $results = $this->run(null, 'array');
         $results = array_values($results[0]);
-        
-        return (int)$results[0]; 
+
+        return (int)$results[0];
     }
 }

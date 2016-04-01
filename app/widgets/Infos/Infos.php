@@ -14,7 +14,7 @@
  *
  * See COPYING for licensing information.
  */
- 
+
 class Infos extends \Movim\Widget\Base
 {
     function load() {
@@ -36,6 +36,8 @@ class Infos extends \Movim\Widget\Base
 
         $sd = new \Modl\SessionxDAO();
 
+        $connected = (int)requestURL('http://localhost:1560/started/', 2);
+
         $infos = array(
                 'url'           => BASE_URI,
                 'language'      => $config->locale,
@@ -46,9 +48,11 @@ class Infos extends \Movim\Widget\Base
                 'php_version'   => phpversion(),
                 'version'       => APP_VERSION,
                 'population'    => $pop,
-                'connected'     => $sd->getConnected()
+                'linked'        => (int)requestURL('http://localhost:1560/linked/', 2),
+                'started'       => $connected,
+                'connected'     => $connected
             );
-        
+
         $this->view->assign('json', json_encode($infos));
     }
 }

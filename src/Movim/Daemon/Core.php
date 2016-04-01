@@ -149,7 +149,7 @@ class Core implements MessageComponentInterface {
     {
         return array_map(
             function($session) { return $session->started; },
-             $this->sessions);
+            $this->sessions);
     }
 
     public function getSession($sid)
