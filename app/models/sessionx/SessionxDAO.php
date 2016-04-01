@@ -269,20 +269,6 @@ class SessionxDAO extends SQL {
         return $this->run('Sessionx');
     }
 
-    /*function clean() {
-        $this->_sql = '
-            delete from sessionx
-            where timestamp < :timestamp';
-
-        $this->prepare(
-            'Sessionx',
-            array(
-                'timestamp' => date(DATE_ISO8601, time() - 3600)
-            )
-        );
-
-        $this->run('Sessionx');
-    }*/
     function clear() {
         $this->_sql = '
             truncate table sessionx';
@@ -306,27 +292,5 @@ class SessionxDAO extends SQL {
         );
 
         return $this->run('Sessionx');
-    }
-
-    function checkConnected($username, $host)
-    {
-        $this->_sql = '
-            select count(*) from sessionx
-            where
-                username = :username
-                and host = :host';
-
-        $this->prepare(
-            'Sessionx',
-            array(
-                'username' => $username,
-                'host' => $host
-            )
-        );
-
-        $results = $this->run(null, 'array');
-        $results = array_values($results[0]);
-
-        return (int)$results[0];
     }
 }
