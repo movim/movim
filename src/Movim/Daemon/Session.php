@@ -12,6 +12,7 @@ class Session {
     public      $process;
 
     public      $registered;
+    public      $started;
 
     protected   $buffer;
     private     $state;
@@ -102,6 +103,8 @@ class Session {
         $this->process->stderr->on('data', function($output) use ($me, $self) {
             if(strpos($output, 'registered') !== false) {
                 $self->registered = true;
+            } elseif(strpos($output, 'started') !== false) {
+                $self->started = true;
             } else {
                 echo $output;
             }

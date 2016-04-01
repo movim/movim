@@ -751,12 +751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "bc73793d532eb9c2e9af1ffd5a42d31341347dd0"
+                "reference": "bb51b3726273c72c64c33495edf2d3520cb46620"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/bc73793d532eb9c2e9af1ffd5a42d31341347dd0",
-                "reference": "bc73793d532eb9c2e9af1ffd5a42d31341347dd0",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/bb51b3726273c72c64c33495edf2d3520cb46620",
+                "reference": "bb51b3726273c72c64c33495edf2d3520cb46620",
                 "shasum": ""
             },
             "require": {
@@ -791,7 +791,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-03-26 20:56:59"
+            "time": "2016-04-01 20:05:21"
         },
         {
             "name": "movim/sasl2",
@@ -1351,16 +1351,16 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.3.0",
+            "version": "v2.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "8ffacee1171e33a1c129f424bf1ec36e062eba82"
+                "reference": "f942da7b505d1a294284ab343d05df42d02ad6d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/8ffacee1171e33a1c129f424bf1ec36e062eba82",
-                "reference": "8ffacee1171e33a1c129f424bf1ec36e062eba82",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/f942da7b505d1a294284ab343d05df42d02ad6d9",
+                "reference": "f942da7b505d1a294284ab343d05df42d02ad6d9",
                 "shasum": ""
             },
             "require": {
@@ -1391,7 +1391,7 @@
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2016-03-24 21:20:22"
+            "time": "2016-03-31 13:10:33"
         },
         {
             "name": "react/promise-timer",
@@ -1574,16 +1574,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "4b2f15920627b93a0a4302e1e6e7db1bab1946e2"
+                "reference": "294368294f9cd207f81474bab27d99875a19ac55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/4b2f15920627b93a0a4302e1e6e7db1bab1946e2",
-                "reference": "4b2f15920627b93a0a4302e1e6e7db1bab1946e2",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/294368294f9cd207f81474bab27d99875a19ac55",
+                "reference": "294368294f9cd207f81474bab27d99875a19ac55",
                 "shasum": ""
             },
             "require": {
@@ -1634,7 +1634,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-02-26 15:21:26"
+            "time": "2016-03-31 17:39:15"
         },
         {
             "name": "stojg/crop",

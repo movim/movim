@@ -148,7 +148,7 @@ class Core implements MessageComponentInterface {
     public function getSessions()
     {
         return array_map(
-            function($session) { return $session->registered; },
+            function($session) { return $session->started; },
              $this->sessions);
     }
 
