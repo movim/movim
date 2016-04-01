@@ -30,9 +30,9 @@
             </p>
             <p>
                 {$value->description}<br />
-                <a target="_blank" href="{$value->url}">
+                <!--<a target="_blank" href="{$value->url}">
                     {$value->url}
-                </a>
+                </a>-->
             </p>
         </li>
         {/loop}
