@@ -38,7 +38,7 @@ function handleSSLErrors($errno, $errstr) {
 
 // Temporary linker killer
 $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
-    if($timestamp < time() - 3600*2) {
+    if($timestamp < time() - 3600*2 && $conn != null) {
         $conn->close();
     }
 });
@@ -91,7 +91,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             \RPC::clear();
 
             if(!empty($msg)) {
-                //echo json_encode($msg)."";
                 echo base64_encode(gzcompress(json_encode($msg), 9))."";
                 //fwrite(STDERR, colorize(json_encode($msg), 'yellow')." : ".colorize('sent to the browser', 'green')."\n");
             }
@@ -100,7 +99,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             \Moxl\API::clear();
 
             if(!empty($xml) && $conn) {
-                //$timestamp = time();
                 $conn->write(trim($xml));
                 #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
@@ -173,7 +171,6 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             $msg = \RPC::commit();
 
             if(!empty($msg)) {
-                //echo json_encode($msg)."";
                 echo base64_encode(gzcompress(json_encode($msg), 9))."";
                 //fwrite(STDERR, colorize(json_encode($msg).' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
             }
@@ -183,7 +180,6 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             $xml = \Moxl\API::commit();
 
             if(!empty($xml)) {
-                //$timestamp = time();
                 $conn->write(trim($xml));
                 #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
             }
