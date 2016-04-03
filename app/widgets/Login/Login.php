@@ -192,13 +192,18 @@ class Login extends \Movim\Widget\Base
         }
 
         // We check if we already have an open session
-        $s = Session::start();
-        if($s->get('hash') == sha1($username.$password.$host)) {
+        $sd = new \Modl\SessionxDAO;
+        $here = $sd->getHash(sha1($username.$password.$host));
+
+        if($here) {
+        //if($s->get('hash') == sha1($username.$password.$host)) {
             RPC::call('Login.setCookie', $here->session);
             RPC::call('movim_redirect', Route::urlize('main'));
             $this->showErrorBlock('conflict');
             return;
         }
+
+        $s = Session::start();
 
         // We try to get the domain
         $domain = \Moxl\Utils::getDomain($host);
@@ -215,7 +220,7 @@ class Login extends \Movim\Widget\Base
         $s->set('hash', sha1($username.$password.$host));
 
         $s = Sessionx::start();
-        $s->init($username, '', $host, $domain);
+        $s->init($username, $password, $host, $domain);
 
         \Moxl\Stanza\Stream::init($host);
     }
