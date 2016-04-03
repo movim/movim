@@ -57,7 +57,7 @@ class Stickers extends \Movim\Widget\Base
         $p->set($key, 'png');
 
         // Creating a message
-        $m = new \Modl\Message();
+        $m = new \Modl\Message;
         $m->session = $this->user->getLogin();
         $m->jidto   = echapJid($to);
         $m->jidfrom = $this->user->getLogin();
@@ -66,11 +66,11 @@ class Stickers extends \Movim\Widget\Base
 
         $m->published = gmdate('Y-m-d H:i:s');
 
-        $session    = \Sessionx::start();
+        $session    = \Session::start();
 
         $m->id      = Uuid::uuid4();
         $m->type    = 'chat';
-        $m->resource = $session->resource;
+        $m->resource = $session->get('resource');
 
         // Sending the sticker
         $html = "<p><img alt='Sticker' src='cid:sha1+".$key."@bob.xmpp.org'/></p>";
@@ -82,7 +82,7 @@ class Stickers extends \Movim\Widget\Base
           ->setId($m->id)
           ->request();
 
-        $md = new \Modl\MessageDAO();
+        $md = new \Modl\MessageDAO;
         $md->set($m);
 
         // Sending it to Chat

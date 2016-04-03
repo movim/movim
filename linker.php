@@ -38,7 +38,7 @@ function handleSSLErrors($errno, $errstr) {
 
 // Temporary linker killer
 $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
-    if($timestamp < time() - 3600*2 && $conn != null) {
+    if($timestamp < time() - 3600*2) {
         $conn->close();
     }
 });
@@ -129,10 +129,10 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 $loop->stop();
             } elseif($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
-                $session = \Sessionx::start();
+                $session = \Session::start();
                 stream_set_blocking($conn->stream, 1);
                 stream_context_set_option($conn->stream, 'ssl', 'SNI_enabled', false);
-                stream_context_set_option($conn->stream, 'ssl', 'peer_name', $session->host);
+                stream_context_set_option($conn->stream, 'ssl', 'peer_name', $session->get('host'));
                 stream_context_set_option($conn->stream, 'ssl', 'allow_self_signed', true);
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer_name', false);
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer', false);
@@ -162,8 +162,8 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             }
 
             if($restart) {
-                $session = \Sessionx::start();
-                \Moxl\Stanza\Stream::init($session->host);
+                $session = \Session::start();
+                \Moxl\Stanza\Stream::init($session->get('host'));
                 stream_set_blocking($conn->stream, 0);
                 $restart = false;
             }

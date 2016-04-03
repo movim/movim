@@ -60,10 +60,10 @@ class AdHoc extends \Movim\Widget\Base
 
     function ajaxGet()
     {
-        $session = \Sessionx::start();
+        $session = \Session::start();
 
         $g = new Get;
-        $g->setTo($session->host)
+        $g->setTo($session->get('host'))
           ->request();
     }
 
@@ -77,10 +77,10 @@ class AdHoc extends \Movim\Widget\Base
 
     function ajaxSubmit($data, $node, $sessionid)
     {
-        $session = \Sessionx::start();
+        $session = \Session::start();
 
         $s = new Submit;
-        $s->setTo($session->host)
+        $s->setTo($session->get('host'))
           ->setNode($node)
           ->setData($data)
           ->setSessionid($sessionid)

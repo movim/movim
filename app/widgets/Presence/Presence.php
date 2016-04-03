@@ -113,14 +113,20 @@ class Presence extends \Movim\Widget\Base
         $pd = new \Modl\PresenceDAO();
         $pd->clearPresence();
 
-        $session = \Sessionx::start();
+        $session = \Session::start();
         $p = new Unavailable;
         $p->setType('terminate')
-          ->setResource($session->resource)
-          ->setTo($this->user->getLogin())
+          ->setResource($session->get('resource'))
+          ->setTo($session->get('jid'))
           ->request();
 
         Stream::end();
+    }
+
+    function ajaxGetPresence()
+    {
+        $html = $this->preparePresence();
+        RPC::call('movim_fill', 'presence_widget', $html);
     }
 
     function ajaxConfigGet() {
@@ -132,27 +138,27 @@ class Presence extends \Movim\Widget\Base
     // We get the server capabilities
     function ajaxServerCapsGet()
     {
-        $session = \Sessionx::start();
+        $session = \Session::start();
         $c = new \Moxl\Xec\Action\Disco\Request;
-        $c->setTo($session->host)
+        $c->setTo($session->get('host'))
           ->request();
     }
 
     // We discover the server services
     function ajaxServerDisco()
     {
-        $session = \Sessionx::start();
+        $session = \Session::start();
         $c = new \Moxl\Xec\Action\Disco\Items;
-        $c->setTo($session->host)
+        $c->setTo($session->get('host'))
           ->request();
     }
 
     // We refresh the bookmarks
     function ajaxBookmarksGet()
     {
-        $session = \Sessionx::start();
+        $session = \Session::start();
         $b = new \Moxl\Xec\Action\Bookmark\Get;
-        $b->setTo($session->user.'@'.$session->host)
+        $b->setTo($session->get('jid'))
           ->request();
     }
 
@@ -182,11 +188,11 @@ class Presence extends \Movim\Widget\Base
 
     function preparePresence()
     {
-        $cd = new \Modl\ContactDAO();
-        $pd = new \Modl\PresenceDAO();
+        $cd = new \Modl\ContactDAO;
+        $pd = new \Modl\PresenceDAO;
 
-        $session = \Sessionx::start();
-        $presence = $pd->getPresence($this->user->getLogin(), $session->resource);
+        $session = \Session::start();
+        $presence = $pd->getPresence($session->get('jid'), $session->get('resource'));
 
         $presencetpl = $this->tpl();
 
@@ -214,13 +220,13 @@ class Presence extends \Movim\Widget\Base
         $txt = getPresences();
         $txts = getPresencesTxt();
 
-        $session = \Sessionx::start();
+        $session = \Session::start();
 
         $pd = new \Modl\PresenceDAO();
-        $p = $pd->getPresence($this->user->getLogin(), $session->resource);
+        $p = $pd->getPresence($session->get('jid'), $session->get('resource'));
 
         $cd = new \Modl\ContactDAO();
-        $contact = $cd->get($this->user->getLogin());
+        $contact = $cd->get($session->get('jid'));
         if($contact == null) {
             $contact = new \Modl\Contact;
         }
@@ -239,7 +245,6 @@ class Presence extends \Movim\Widget\Base
 
     function display()
     {
-        $this->view->assign('presence', $this->preparePresence());
     }
 }
 

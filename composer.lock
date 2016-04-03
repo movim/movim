@@ -751,12 +751,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "bb51b3726273c72c64c33495edf2d3520cb46620"
+                "reference": "6f8db17de32b4bc2ccf69eaee1f5404ccaa40ec0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/bb51b3726273c72c64c33495edf2d3520cb46620",
-                "reference": "bb51b3726273c72c64c33495edf2d3520cb46620",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/6f8db17de32b4bc2ccf69eaee1f5404ccaa40ec0",
+                "reference": "6f8db17de32b4bc2ccf69eaee1f5404ccaa40ec0",
                 "shasum": ""
             },
             "require": {
@@ -791,7 +791,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-04-01 20:05:21"
+            "time": "2016-04-03 08:10:04"
         },
         {
             "name": "movim/sasl2",
@@ -846,16 +846,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "76e90f747b769b347fe584e8015a014549107d35"
+                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/76e90f747b769b347fe584e8015a014549107d35",
-                "reference": "76e90f747b769b347fe584e8015a014549107d35",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/088c04e2f261c33bed6ca5245491cfca69195ccf",
+                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf",
                 "shasum": ""
             },
             "require": {
@@ -890,7 +890,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-03-18 20:36:13"
+            "time": "2016-04-03 06:00:07"
         },
         {
             "name": "pear/net_dns2",

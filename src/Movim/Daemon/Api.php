@@ -43,6 +43,9 @@ class Api {
                 case 'emojis':
                     $response->write($api->addEmojis($request->getPost()));
                     break;
+                case 'session':
+                    $response->write($api->getSession($request->getPost()));
+                    break;
             }
 
             $response->end();
@@ -59,6 +62,11 @@ class Api {
     }
 
     public function sessionsLinked()
+    {
+        return count($this->_core->getSessions());
+    }
+
+    public function getSession()
     {
         return count($this->_core->getSessions());
     }

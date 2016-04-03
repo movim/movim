@@ -99,7 +99,7 @@ class Rooms extends \Movim\Widget\Base
     {
         if(!$this->validateRoom($room)) return;
 
-        $cd = new \modl\ConferenceDAO();
+        $cd = new \Modl\ConferenceDAO;
         $cd->deleteNode($room);
 
         $this->setBookmark();
@@ -120,11 +120,6 @@ class Rooms extends \Movim\Widget\Base
             $nickname = $s->get('username');
         }
 
-        if($nickname == false || $nickname == null) {
-            $session = \Sessionx::start();
-            $nickname = $session->username;
-        }
-
         $p->setNickname($nickname);
 
         $p->request();
@@ -141,11 +136,6 @@ class Rooms extends \Movim\Widget\Base
 
         $s = Session::start();
         $resource = $s->get('username');
-
-        if($resource == null) {
-            $session = \Sessionx::start();
-            $resource = $session->username;
-        }
 
         $pu = new Unavailable;
         $pu->setTo($room)
@@ -184,8 +174,9 @@ class Rooms extends \Movim\Widget\Base
             array_push($arr, $item);
         }
 
-        $sd = new \modl\SubscriptionDAO();
-        $cd = new \modl\ConferenceDAO();
+        $sd = new \Modl\SubscriptionDAO;
+        $cd = new \Modl\ConferenceDAO;
+        $session = Session::start();
 
         if($sd->getSubscribed()) {
             foreach($sd->getSubscribed() as $s) {
@@ -213,7 +204,7 @@ class Rooms extends \Movim\Widget\Base
 
         $b = new Set;
         $b->setArr($arr)
-          ->setTo($this->user->getLogin())
+          ->setTo($session->get('jid'))
           ->request();
     }
 
@@ -225,11 +216,11 @@ class Rooms extends \Movim\Widget\Base
             return;
         }
 
-        $pd = new \modl\PresenceDAO();
+        $pd = new \Modl\PresenceDAO;
 
         if($resource == false) {
-            $session = \Sessionx::start();
-            $resource = $session->user;
+            $session = \Session::start();
+            $resource = $session->get('username');
         }
 
         $presence = $pd->getPresence($room, $resource);

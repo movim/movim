@@ -44,4 +44,5 @@ MovimWebsocket.attach(function()
 {
     Presence.refresh();
     Presence.postStart();
+    Presence_ajaxGetPresence();
 });

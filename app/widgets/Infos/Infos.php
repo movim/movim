@@ -34,8 +34,6 @@ class Infos extends \Movim\Widget\Base
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        $sd = new \Modl\SessionxDAO();
-
         $connected = (int)requestURL('http://localhost:1560/started/', 2);
 
         $infos = array(

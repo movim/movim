@@ -102,8 +102,9 @@ class AccountNext extends \Movim\Widget\Base {
         $domain = \Moxl\Utils::getDomain($host);
 
         // We create a new session or clear the old one
-        $s = Sessionx::start();
-        $s->init(null, null, $host, $domain);
+        $s = Session::start();
+        $s->set('host', $host);
+        $s->set('domain', $domain);
 
         \Moxl\Stanza\Stream::init($host);
     }

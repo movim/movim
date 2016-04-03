@@ -38,10 +38,9 @@ class Login extends \Movim\Widget\Base
         $pd = new \Modl\PresenceDAO();
         $pd->clearPresence();
 
-        $session = \Sessionx::start();
-        $session->load();
+        $session = \Session::start();
 
-        if($session->mechanism != 'ANONYMOUS') {
+        if($session->get('mechanism') != 'ANONYMOUS') {
             // http://xmpp.org/extensions/xep-0280.html
             \Moxl\Stanza\Carbons::enable();
 
@@ -193,10 +192,8 @@ class Login extends \Movim\Widget\Base
         }
 
         // We check if we already have an open session
-        $sd = new \Modl\SessionxDAO;
-        $here = $sd->getHash(sha1($username.$password.$host));
-
-        if($here) {
+        $s = Session::start();
+        if($s->get('hash') == sha1($username.$password.$host)) {
             RPC::call('Login.setCookie', $here->session);
             RPC::call('movim_redirect', Route::urlize('main'));
             $this->showErrorBlock('conflict');
@@ -210,8 +207,15 @@ class Login extends \Movim\Widget\Base
         RPC::call('register', $host);
 
         // We create a new session or clear the old one
+        $s->set('password', $password);
+        $s->set('username', $username);
+        $s->set('host', $host);
+        $s->set('domain', $domain);
+        $s->set('jid', $login);
+        $s->set('hash', sha1($username.$password.$host));
+
         $s = Sessionx::start();
-        $s->init($username, $password, $host, $domain);
+        $s->init($username, '', $host, $domain);
 
         \Moxl\Stanza\Stream::init($host);
     }
