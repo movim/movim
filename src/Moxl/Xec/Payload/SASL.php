@@ -30,7 +30,8 @@ use Moxl\Xec\Action\Register\Get;
 
 class SASL extends Payload
 {
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $mec = (array)$stanza->mechanism;
 
         /*
@@ -40,18 +41,17 @@ class SASL extends Payload
         if(isset($parent->starttls) && isset($parent->starttls->required))
             return;
 
-        $sessx = \Sessionx::start();
-        $user = $sessx->user;
+        $session = \Session::start();
+        $user = $session->get('username');
 
-        if(isset($user)) {
+        if($user) {
             if(!is_array($mec)) {
                 $mec = array($mec);
             }
 
             $mecchoice = str_replace('-', '', \Moxl\Auth::mechanismChoice($mec));
 
-            $sess = \Session::start();
-            $sess->set('mecchoice', $mecchoice);
+            $session->set('mecchoice', $mecchoice);
 
             \Moxl\Utils::log("/// MECANISM CHOICE ".$mecchoice);
 
@@ -62,7 +62,7 @@ class SASL extends Payload
             }
         } else {
             $g = new Get;
-            $g->setTo($sessx->host)->request();
+            $g->setTo($session->get('host'))->request();
         }
     }
 }

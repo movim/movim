@@ -5,7 +5,8 @@ namespace Moxl\Xec\Payload;
 
 class Receipt extends Payload
 {
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $id = (string)$stanza->attributes()->id;
 
         $md = new \Modl\MessageDAO;

@@ -30,7 +30,8 @@ use Moxl\Xec\Action\Vcard\Get;
 
 class Presence extends Payload
 {
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         // Subscribe request
         if((string)$stanza->attributes()->type == 'subscribe') {
             $session = \Session::start();

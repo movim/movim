@@ -8,14 +8,14 @@ class Presence {
      */
     static function maker($to = false, $status = false, $show = false, $priority = 0, $type = false)
     {
-        $session = \Sessionx::start();
+        $session = \Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'presence');
         $dom->appendChild($root);
 
-        $root->setAttribute('from', $session->user.'@'.$session->host.'/'.$session->resource);
-        $root->setAttribute('id', $session->id);
+        $root->setAttribute('from', $session->get('username').'@'.$session->get('host').'/'.$session->get('resource'));
+        $root->setAttribute('id', $session->get('id'));
 
         if($to != false) {
             $root->setAttribute('to', $to);
@@ -109,17 +109,17 @@ class Presence {
      */
     static function muc($to, $nickname = false)
     {
-        $session = \Sessionx::start();
+        $session = \Session::start();
 
         if($nickname == false)
-            $nickname = $session->user;
+            $nickname = $session->get('username');
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $presence = $dom->createElementNS('jabber:client', 'presence');
         $dom->appendChild($presence);
 
-        $presence->setAttribute('from', $session->user.'@'.$session->host.'/'.$session->resource);
-        $presence->setAttribute('id', $session->id);
+        $presence->setAttribute('from', $session->get('username').'@'.$session->get('host').'/'.$session->get('resource'));
+        $presence->setAttribute('id', $session->get('id'));
         $presence->setAttribute('to', $to.'/'.$nickname);
 
         $presence->appendChild($dom->createElementNS('http://jabber.org/protocol/muc', 'x'));

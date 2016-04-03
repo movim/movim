@@ -4,10 +4,10 @@ namespace Moxl\Stanza;
 
 class Ping {
     static function server() {
-        $session = \Sessionx::start();
+        $session = \Session::start();
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $ping = $dom->createElementNS('urn:xmpp:ping', 'ping');
-        \Moxl\API::request(\Moxl\API::iqWrapper($ping, $session->host, 'get'));
+        \Moxl\API::request(\Moxl\API::iqWrapper($ping, $session->get('host'), 'get'));
     }
 
     static function pong($to, $id) {

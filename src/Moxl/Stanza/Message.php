@@ -13,7 +13,7 @@ class Message {
         $id = false,
         $replace = false)
     {
-        $session = \Sessionx::start();
+        $session = \Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'message');
@@ -24,7 +24,7 @@ class Message {
         if($id != false) {
             $root->setAttribute('id', $id);
         } else {
-            $root->setAttribute('id', $session->id);
+            $root->setAttribute('id', $session->get('id'));
         }
 
         if($content != false) {
@@ -74,22 +74,7 @@ class Message {
     {
         self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace);
     }
-    /*
-    static function encrypted($to, $content)
-    {
-        $session = \Sessionx::start();
-        $xml = '
-            <message xmlns="jabber:client" to="'.str_replace(' ', '\40', $to).'" type="chat" id="'.$session->id.'">
-                <body>You receive an encrypted message</body>
-                <x xmlns="jabber:x:encrypted">
-                    '.$content.'
-                </x>
-                <active xmlns="http://jabber.org/protocol/chatstates"/>
-                <request xmlns="urn:xmpp:receipts"/>
-            </message>';
-        \Moxl\API::request($xml);
-    }
-    */
+
     static function composing($to)
     {
         self::maker($to, false, false, 'chat', 'composing');

@@ -43,11 +43,12 @@ class Get extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         if($stanza->query->data) {
             $data = unserialize(trim((string)$stanza->query->data));
 
-            $user = new \User();
+            $user = new \User;
             if(is_array($data)) {
                 $data = array_merge($data, array('config' => true));
                 $user->setConfig($data);
@@ -64,7 +65,7 @@ class Get extends Action
     }
 
     public function errorFeatureNotImplemented($stanza) {
-        $user = new \User();
+        $user = new \User;
         $user->setConfig(array('config' => false));
         $this->deliver();
     }

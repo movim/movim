@@ -43,14 +43,15 @@ class GetList extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
-        $evt = new \Event();
+    public function handle($stanza, $parent = false)
+    {
+        $evt = new \Event;
 
-        $rd = new \modl\RosterLinkDAO();
+        $rd = new \Modl\RosterLinkDAO;
         $list = array();
 
         foreach($stanza->query->item as $item) {
-            $r = new \modl\RosterLink();
+            $r = new \Modl\RosterLink;
             $r->set($item);
             array_push($list, $r);
         }

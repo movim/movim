@@ -32,7 +32,8 @@ class Post extends Payload
 {
     private $testid = 'test_post';
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $from   = (string)$parent->attributes()->from;
 
         if($stanza->items->item

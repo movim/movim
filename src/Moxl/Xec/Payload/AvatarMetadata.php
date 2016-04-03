@@ -6,12 +6,13 @@ use Moxl\Xec\Action\Avatar\Get;
 
 class AvatarMetadata extends Payload
 {
-    public function handle($stanza, $parent = false) {        
+    public function handle($stanza, $parent = false)
+    {
         $jid = current(explode('/',(string)$parent->attributes()->from));
 
-        $evt = new \Event();
-            
-        $cd = new \modl\ContactDAO();
+        $evt = new \Event;
+
+        $cd = new \Modl\ContactDAO;
         $c = $cd->get($jid);
 
         if(isset($stanza->items->item->metadata->info)) {
@@ -20,7 +21,7 @@ class AvatarMetadata extends Payload
             if($info->id != $c->avatarhash) {
                 $c->avatarhash = $info->id;
                 $cd->set($c);
-                
+
                 $g = new Get;
                 $g->setTo($jid)
                   ->request();

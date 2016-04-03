@@ -11,7 +11,7 @@ class ChangePassword extends Action
     private $_username;
     private $_password;
 
-    public function request() 
+    public function request()
     {
         $this->store();
         Register::changePassword($this->_to, $this->_username, $this->_password);
@@ -35,7 +35,8 @@ class ChangePassword extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $this->deliver();
     }
 }

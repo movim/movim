@@ -6,7 +6,7 @@ use Moxl\Stanza\Stream;
 
 class STARTTLSProceed extends Payload
 {
-    public function handle($stanza, $parent = false) {        
-
+    public function handle($stanza, $parent = false)
+    {
     }
 }

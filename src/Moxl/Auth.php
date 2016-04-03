@@ -13,28 +13,29 @@ class Auth {
                         'PLAIN',
                         'ANONYMOUS'
                         );
-        
+
         $mecchoice = false;
         $i = 0;
-        
+
         while($mecchoice == false && $i <= count($mechanism)) {
             if(in_array($mechanism[$i], $mec))
                 $mecchoice = true;
             else $i++;
         }
-        $session = \Sessionx::start();
-        $session->mechanism = $mechanism[$i];
+
+        $session = \Session::start();
+        $session->set('mechanism', $mechanism[$i]);
 
         return $mechanism[$i];
     }
 
     static function mechanismPLAIN() {
-        $session = \Sessionx::start();
+        $session = \Session::start();
 
         $s = new SASL2;
         $p = $s->factory('plain');
-        
-        $response = base64_encode($p->getResponse($session->user, $session->password));
+
+        $response = base64_encode($p->getResponse($session->get('username'), $session->get('password')));
 
         $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="PLAIN">'.
                     $response.
@@ -53,18 +54,18 @@ class Auth {
     }
 
     static function mechanismDIGESTMD5() {
-        $xml =  '<auth 
+        $xml =  '<auth
                     client-uses-full-bind-result="true"
-                    xmlns="urn:ietf:params:xml:ns:xmpp-sasl" 
+                    xmlns="urn:ietf:params:xml:ns:xmpp-sasl"
                     mechanism="DIGEST-MD5"/>';
 
         API::request($xml);
     }
 
     static function mechanismCRAMMD5() {
-        $xml =  '<auth 
+        $xml =  '<auth
                     client-uses-full-bind-result="true"
-                    xmlns="urn:ietf:params:xml:ns:xmpp-sasl" 
+                    xmlns="urn:ietf:params:xml:ns:xmpp-sasl"
                     mechanism="CRAM-MD5"/>';
 
         API::request($xml);
@@ -74,14 +75,13 @@ class Auth {
         $s = new SASL2;
         $fa = $s->factory('SCRAM-SHA1');
 
-        $session = \Sessionx::start();
+        $session = \Session::start();
 
         Utils::log("/// INITIAL MESSAGE");
 
-        $response = base64_encode($fa->getResponse($session->user, $session->password));
+        $response = base64_encode($fa->getResponse($session->get('username'), $session->get('password')));
 
-        $sess = \Session::start();
-        $sess->set('saslfa', $fa);
+        $session->set('saslfa', $fa);
 
         $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="SCRAM-SHA-1">
                     '.$response.'

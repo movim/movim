@@ -7,13 +7,14 @@ use Moxl\Stanza\Register;
 
 class Remove extends Action
 {
-    public function request() 
+    public function request()
     {
         $this->store();
         Register::remove();
     }
-    
-    public function handle($stanza, $parent = false) {
+
+    public function handle($stanza, $parent = false)
+    {
         $this->deliver();
     }
 }

@@ -12,13 +12,13 @@ class Muc {
 
     static function setSubject($to, $subject)
     {
-        $session = \Sessionx::start();
+        $session = \Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
         $dom->appendChild($message);
         $message->setAttribute('to', str_replace(' ', '\40', $to));
-        $message->setAttribute('id', $session->id);
+        $message->setAttribute('id', $session->get('id'));
         $message->setAttribute('type', 'groupchat');
 
         $message->appendChild($dom->createElement('subject', $subject));

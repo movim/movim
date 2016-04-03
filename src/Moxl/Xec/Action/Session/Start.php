@@ -45,6 +45,10 @@ class Start extends Action
     }
 
     public function handle($stanza, $parent = false) {
+        $session = \Session::start();
+        $session->remove('password');
+        $session->set('active', true);
+
         $session = \Sessionx::start();
 
         Utils::log("/// AUTH SUCCESSFULL");
@@ -53,7 +57,7 @@ class Start extends Action
         fwrite(STDERR, 'started');
 
         $session->active = true;
-        $session->password = 'hidden';
+        //$session->password = 'hidden';
 
         $this->pack($session);
         $this->deliver();
