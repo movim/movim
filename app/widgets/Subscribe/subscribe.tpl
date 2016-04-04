@@ -6,7 +6,7 @@
         </li>
     </ul>
 
-    <ul class="list thick active flex card">
+    <ul class="list card shadow active flex">
         {loop="$servers"}
         <li
             class="block"
