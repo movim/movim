@@ -52,6 +52,14 @@ class Rooms extends \Movim\Widget\Base
     }
 
     /**
+     * @brief Get the Rooms
+     */
+    public function ajaxDisplay()
+    {
+        $this->refreshRooms();
+    }
+
+    /**
      * @brief Display the add room form
      */
     function ajaxAdd()
@@ -283,6 +291,5 @@ class Rooms extends \Movim\Widget\Base
 
     function display()
     {
-        $this->view->assign('list', $this->prepareRooms());
     }
 }

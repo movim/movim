@@ -18,7 +18,7 @@ var Rooms = {
                             Rooms_ajaxJoin(this.dataset.jid);
                         }
                     }
-                    
+
                     Chat_ajaxGetRoom(this.dataset.jid);
                     Chats.reset(items);
                     movim_add_class(this, 'active');
@@ -69,4 +69,5 @@ var Rooms = {
 MovimWebsocket.attach(function() {
     Rooms.refresh();
     Rooms.anonymousInit();
+    Rooms_ajaxDisplay();
 });

@@ -1,1 +1,1 @@
-<div id="rooms_widget">{$list}</div>
+<div id="rooms_widget"></div>
