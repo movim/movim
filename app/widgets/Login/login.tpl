@@ -53,7 +53,8 @@
             {if="isset($info) && $info != ''"}
             <ul class="list thin card">
                 <li class="info">
-                    <p class="normal">{$info}</p>
+                    <p></p>
+                    <p class="center normal">{$info}</p>
                 </li>
             </ul>
             {/if}
