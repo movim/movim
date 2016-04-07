@@ -214,27 +214,6 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function ajaxTogglePrivacy($id) {
-        $validate = Validator::stringType()->length(6, 128);
-
-        if(!$validate->validate($id))
-            return;
-
-        $pd = new \Modl\PostnDAO;
-        $po  = $pd->getItem($id);
-
-        if($po->isMine()) {
-            if($po->privacy == 1) {
-                Notification::append(false, $this->__('post.public_no'));
-                \Modl\Privacy::set($id, 0);
-            }
-            if($po->privacy == 0) {
-                Notification::append(false, $this->__('post.public_yes'));
-                \Modl\Privacy::set($id, 1);
-            }
-        }
-    }
-
     function getComments($post)
     {
         $pd = new \Modl\PostnDAO();

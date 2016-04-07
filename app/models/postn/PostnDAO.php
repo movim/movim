@@ -17,6 +17,8 @@ class PostnDAO extends SQL {
 
                     commentplace    = :commentplace,
 
+                    open            = :open,
+
                     published       = :published,
                     updated         = :updated,
                     delay           = :delay,
@@ -46,6 +48,8 @@ class PostnDAO extends SQL {
                 'contentcleaned'    => $post->contentcleaned,
 
                 'commentplace'      => $post->commentplace,
+
+                'open'              => $post->open,
 
                 'published'         => $post->published,
                 'updated'           => $post->updated,
@@ -86,6 +90,8 @@ class PostnDAO extends SQL {
 
                 commentplace,
 
+                open,
+
                 published,
                 updated,
                 delay,
@@ -113,6 +119,8 @@ class PostnDAO extends SQL {
 
                     :commentplace,
 
+                    :open,
+
                     :published,
                     :updated,
                     :delay,
@@ -139,6 +147,8 @@ class PostnDAO extends SQL {
                     'contentcleaned'    => $post->contentcleaned,
 
                     'commentplace'      => $post->commentplace,
+
+                    'open'              => $post->open,
 
                     'published'         => $post->published,
                     'updated'           => $post->updated,
@@ -196,9 +206,8 @@ class PostnDAO extends SQL {
 
     function getNode($from, $node, $limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where ((postn.origin, node) in (select server, node from subscription where jid = :aid))
                 and postn.origin = :origin
                 and postn.node = :node
@@ -222,11 +231,10 @@ class PostnDAO extends SQL {
 
     function getPublicTag($tag, $limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where nodeid in (select nodeid from tag where tag = :title)
-                and privacy.value = 1
+                and postn.open = true
             order by postn.published desc';
 
         if($limitr !== false)
@@ -244,9 +252,8 @@ class PostnDAO extends SQL {
 
     function getNodeUnfiltered($from, $node, $limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where postn.origin = :origin
                 and postn.node = :node
             order by postn.published desc';
@@ -267,9 +274,8 @@ class PostnDAO extends SQL {
 
     function getGallery($from, $limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where postn.aid = :aid
                 and postn.picture = 1
             order by postn.published desc';
@@ -310,9 +316,8 @@ class PostnDAO extends SQL {
 
     function getItem($id) {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where postn.nodeid = :nodeid';
 
         $this->prepare(
@@ -327,9 +332,8 @@ class PostnDAO extends SQL {
 
     function getAllPosts($jid = false, $limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where (
                 (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
                 or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\')
@@ -358,9 +362,8 @@ class PostnDAO extends SQL {
 
     function getFeed($limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where ((postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
                 or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\'))
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
@@ -383,9 +386,8 @@ class PostnDAO extends SQL {
 
     function getNews($limitf = false, $limitr = false) {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where ((postn.origin, node) in (select server, node from subscription where jid = :origin))
             order by postn.published desc
             ';
@@ -407,9 +409,8 @@ class PostnDAO extends SQL {
     function getMe($limitf = false, $limitr = false)
     {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where postn.origin = :origin and postn.node = \'urn:xmpp:microblog:0\'
             order by postn.published desc
             ';
@@ -430,12 +431,11 @@ class PostnDAO extends SQL {
     function getPublic($origin, $node, $limitf = false, $limitr = false)
     {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where postn.origin = :origin
                 and postn.node = :node
-                and privacy.value = 1
+                and postn.open = true
             order by postn.published desc';
 
         if($limitr !== false)
@@ -454,12 +454,11 @@ class PostnDAO extends SQL {
 
     function getPublicItem($origin, $node, $nodeid) {
         $this->_sql = '
-            select *, postn.aid, privacy.value as privacy from postn
+            select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where postn.origin = :origin
                 and postn.node = :node
-                and privacy.value = 1
+                and postn.open = true
                 and postn.nodeid = :nodeid
             order by postn.published desc';
 
@@ -606,11 +605,10 @@ class PostnDAO extends SQL {
         $this->_sql = '
             select * from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join privacy on postn.nodeid = privacy.pkey
             where
                 node = \'urn:xmpp:microblog:0\'
                 and postn.origin not in (select jid from rosterlink where session = :origin)
-                and privacy.value = 1
+                and postn.open = true
             order by published desc
             ';
 

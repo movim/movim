@@ -61,7 +61,7 @@
                 <span class="primary icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
             {/if}
 
-            {if="$value->privacy"}
+            {if="$value->isPublic()"}
                 <span class="control icon gray" title="{$c->__('menu.public')}">
                     <i class="zmdi zmdi-portable-wifi"></i>
                 </span>

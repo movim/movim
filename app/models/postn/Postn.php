@@ -20,6 +20,8 @@ class Postn extends Model {
 
     public $commentplace;
 
+    public $open;
+
     public $published;      //
     public $updated;        //
     public $delay;          //
@@ -30,8 +32,6 @@ class Postn extends Model {
     public $lon;
 
     public $links;
-
-    public $privacy;
 
     public $hash;
 
@@ -64,6 +64,9 @@ class Postn extends Model {
                 {"type":"text" },
             "commentplace" :
                 {"type":"string", "size":128 },
+
+            "open" :
+                {"type":"bool"},
 
             "published" :
                 {"type":"date" },
@@ -274,6 +277,9 @@ class Postn extends Model {
                 $this->picture = true;
             }
 
+            if($enc['rel'] == 'alternate'
+            && Validator::url()->validate($enc['href'])) $this->open = true;
+
             if((string)$attachment->attributes()->title == 'comments') {
                 $substr = explode('?',substr((string)$attachment->attributes()->href, 5));
                 $this->commentplace = reset($substr);
@@ -304,7 +310,7 @@ class Postn extends Model {
                     }
                     array_push($attachements['pictures'], $l);
                 } elseif((isset($l['type']) && $this->typeIsLink($l['type'])
-                || in_array($l['rel'], array('related', 'alternate')))
+                || in_array($l['rel'], array('related')))
                 && Validator::url()->validate($l['href'])) {
                     if($this->youtube == null
                     && preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
@@ -414,7 +420,7 @@ class Postn extends Model {
     }
 
     public function isPublic() {
-        return (isset($this->privacy) && $this->privacy);
+        return ($this->open);
     }
 }
 

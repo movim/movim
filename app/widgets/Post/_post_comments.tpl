@@ -43,7 +43,7 @@
         <span class="primary icon gray">
             <i class="zmdi zmdi-comment"></i>
         </span>
-        <span class="control icon gray" onclick="Post_ajaxPublishComment(movim_form_to_json('comment'),'{$server}', '{$node}', '{$id}')">
+        <span class="control icon gray active" onclick="Post_ajaxPublishComment(movim_form_to_json('comment'),'{$server}', '{$node}', '{$id}')">
             <i class="zmdi zmdi-mail-send"></i>
         </span>
         <form name="comment">

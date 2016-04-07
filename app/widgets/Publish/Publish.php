@@ -205,7 +205,7 @@ class Publish extends \Movim\Widget\Base
                 ));
             }
 
-            if($form->embed->value != '' && filter_var($form->embed->value, FILTER_VALIDATE_URL)) {
+            if(Validator::notEmpty()->url()->validate($form->embed->value)) {
                 try {
                     $embed = Embed\Embed::create($form->embed->value);
                     $p->setLink($form->embed->value);
@@ -220,6 +220,10 @@ class Publish extends \Movim\Widget\Base
                 } catch(Exception $e) {
                     error_log($e->getMessage());
                 }
+            }
+
+            if($form->open->value === true) {
+                $p->isOpen();
             }
 
             if($content != '') {

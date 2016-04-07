@@ -76,17 +76,6 @@
         <label for="content">{$c->__('post.content_label')}</label>
     </div>
 
-    <ul class="list middle flex active">
-        {if="$c->supported('upload')"}
-        <li class="block large" onclick="Upload_ajaxRequest()">
-            <span class="primary icon">
-                <i class="zmdi zmdi-attachment-alt"></i>
-            </span>
-            <p class="normal line">{$c->__('publish.attach')}</p>
-        </li>
-        {/if}
-    </ul>
-
     <div>
         {if="$item != false"}
             {$tags = $item->getTagsImploded()}
@@ -99,5 +88,44 @@
                 value="{$tags}"
             {/if}>
         <label for="title">{$c->__('post.tags')}</label>
+    </div>
+
+    <ul class="list middle active">
+        {if="$c->supported('upload')"}
+        <li class="block large" onclick="Upload_ajaxRequest()">
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-attachment-alt"></i>
+            </span>
+            <p class="normal line">{$c->__('publish.attach')}</p>
+        </li>
+        {/if}
+    </ul>
+
+    <div>
+        <ul class="list thin">
+            <li>
+                <span class="primary icon gray">
+                    <i class="zmdi zmdi-portable-wifi"></i>
+                </span>
+                <span class="control">
+                    <div class="action">
+                        <div class="checkbox">
+                            <input
+                                type="checkbox"
+                                id="open"
+                                name="open"
+                                {if="$item != false && $item->open"}
+                                    checked
+                                {/if}
+                            >
+                            <label for="open"></label>
+                        </div>
+                    </div>
+                </span>
+                <p class="line normal">
+                    {$c->__('post.public')}
+                </p>
+            </li>
+        </ul>
     </div>
 </form>
