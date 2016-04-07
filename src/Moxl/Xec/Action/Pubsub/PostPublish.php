@@ -140,6 +140,12 @@ class PostPublish extends Errors
         return $this;
     }
 
+    public function isOpen()
+    {
+        $this->_atom->isOpen();
+        return $this;
+    }
+
     public function handle($stanza, $parent = false) {
         $g = new GetItem;
         $g->setTo($this->_to)

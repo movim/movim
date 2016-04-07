@@ -19,6 +19,7 @@ class PubsubAtom {
 
     public $geo = false;
     public $comments = false;
+    public $open = false;
 
     public $tags = array();
 
@@ -30,6 +31,10 @@ class PubsubAtom {
 
     public function enableComments() {
         $this->comments = true;
+    }
+
+    public function isOpen() {
+        $this->open = true;
     }
 
     public function getDom() {
@@ -51,7 +56,7 @@ class PubsubAtom {
         $link = $dom->createElement('link');
         $link->setAttribute('rel', 'alternate');
         $link->setAttribute('type', 'application/atom+xml');
-        $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.$this->id.';item='.$this->id);
+        $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.$this->node.';item='.$this->id);
         $entry->appendChild($link);
 
         if($this->comments) {
@@ -59,6 +64,22 @@ class PubsubAtom {
             $link->setAttribute('rel', 'replies');
             $link->setAttribute('title', 'comments');
             $link->setAttribute('href', 'xmpp:'.$this->jid.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
+            $entry->appendChild($link);
+        }
+
+        if($this->open) {
+            $link = $dom->createElement('link');
+            $link->setAttribute('rel', 'alternate');
+            $link->setAttribute('type', 'text/html');
+            $link->setAttribute('title', $this->title);
+
+            // Not very elegant
+            if($this->node == 'urn:xmpp:microblog:0') {
+                $link->setAttribute('href', \Route::urlize('blog', array($this->to, $this->id)));
+            } else {
+                $link->setAttribute('href', \Route::urlize('node', array($this->to, $this->node, $this->id)));
+            }
+
             $entry->appendChild($link);
         }
 
