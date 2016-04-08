@@ -36,6 +36,7 @@ class Postn extends Model {
     public $hash;
 
     private $youtube;
+    private $openlink;
 
     public function __construct() {
         $this->hash = md5(openssl_random_pseudo_bytes(5));
@@ -259,8 +260,10 @@ class Postn extends Model {
         return in_array($type, array('picture', 'image/jpeg', 'image/png', 'image/jpg', 'image/gif'));
     }
 
-    private function typeIsLink($type) {
-        return $type == 'text/html';
+    private function typeIsLink($link) {
+        return (isset($link['type'])
+        && $link['type'] == 'text/html'
+        && Validator::url()->validate($link['href']));
     }
 
     private function setAttachements($links, $extra = false) {
@@ -298,6 +301,7 @@ class Postn extends Model {
     {
         $attachements = null;
         $this->picture = null;
+        $this->openlink = null;
 
         if(isset($this->links)) {
             $attachements = array(
@@ -315,20 +319,18 @@ class Postn extends Model {
                     }
 
                     array_push($attachements['pictures'], $l);
-                } elseif(
-                    (isset($l['type'])
-                        && $this->typeIsLink($l['type'])
-                        && !$this->isMicroblog()
-                    || in_array($l['rel'], array('related'))
-                    )
-                && Validator::url()->validate($l['href'])) {
-
+                } elseif($this->typeIsLink($l)) {
                     if($this->youtube == null
                     && preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
                         $this->youtube = $match[1];
                     }
 
-                    array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
+                    if($l['rel'] == 'alternate') {
+                        $this->openlink = $l['href'];
+                        if(!$this->isMicroblog()) {
+                            array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
+                        }
+                    }
                 } elseif(isset($l['rel'])
                 && $l['rel'] == 'enclosure') {
                     array_push($attachements['files'], $l);
@@ -407,11 +409,7 @@ class Postn extends Model {
 
     public function getPublicUrl()
     {
-        if($this->isMicroblog()) {
-            return \Route::urlize('blog', array($this->origin, $this->nodeid));
-        } else {
-            return \Route::urlize('node', array($this->origin, $this->node, $this->nodeid));
-        }
+        return $this->openlink;
     }
 
     public function getTags()
