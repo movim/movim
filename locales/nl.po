@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"POT-Creation-Date: 2016-04-08 08:29+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -418,7 +418,8 @@ msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
+#, fuzzy
+msgid "Here you can register your pod on the official %sMovim API%s"
 msgstr "Hier kun je je pod registreren op de officiele %sMovim API%s waarna  de pod op %sde pods pagina%s getoond wordt."
 
 #: [api]register
@@ -1206,7 +1207,7 @@ msgstr "Welkom op je nieuws feed. Hier zie je alle berichten die door je contact
 msgid "Refresh all the streams"
 msgstr "Vernieuw alle streams"
 
-#: [menu]public
+#: [menu]public [post]public_yes
 msgid "This post is public"
 msgstr "Dit bericht is openbaar"
 
@@ -1282,13 +1283,10 @@ msgstr ""
 msgid "Publish this post publicly?"
 msgstr "Post dit bericht openbaar?"
 
-#: [post]public_yes
-msgid "This post is now public"
-msgstr ""
-
 #: [post]public_no
-msgid "This post is now private"
-msgstr ""
+#, fuzzy
+msgid "This post is private"
+msgstr "Dit bericht is openbaar"
 
 #: [post]public_url
 msgid "Public URL of this post"

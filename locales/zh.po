@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"POT-Creation-Date: 2016-04-08 08:29+0200\n"
 "PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -418,7 +418,8 @@ msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
+#, fuzzy
+msgid "Here you can register your pod on the official %sMovim API%s"
 msgstr "在这里你可以注册你的容器在官方的 %sMovim API%s , 同时他会显示在 %sthe pods page%s."
 
 #: [api]register
@@ -1206,7 +1207,7 @@ msgstr ""
 msgid "Refresh all the streams"
 msgstr "刷新所有流"
 
-#: [menu]public
+#: [menu]public [post]public_yes
 msgid "This post is public"
 msgstr ""
 
@@ -1285,12 +1286,8 @@ msgstr "公共分组"
 msgid "Publish this post publicly?"
 msgstr ""
 
-#: [post]public_yes
-msgid "This post is now public"
-msgstr ""
-
 #: [post]public_no
-msgid "This post is now private"
+msgid "This post is private"
 msgstr ""
 
 #: [post]public_url

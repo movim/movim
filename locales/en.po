@@ -76,7 +76,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-23 23:26+0200\n"
+"POT-Creation-Date: 2016-04-08 08:29+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -415,7 +415,8 @@ msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-msgid "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
+#, fuzzy
+msgid "Here you can register your pod on the official %sMovim API%s"
 msgstr "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
 
 #: [api]register
@@ -1203,7 +1204,7 @@ msgstr "Welcome on your news feed, here you will see all the posts published by 
 msgid "Refresh all the streams"
 msgstr "Refresh all the streams"
 
-#: [menu]public
+#: [menu]public [post]public_yes
 msgid "This post is public"
 msgstr "This post is public"
 
@@ -1279,12 +1280,9 @@ msgstr "Public posts from users"
 msgid "Publish this post publicly?"
 msgstr "Publish this post publicly?"
 
-#: [post]public_yes
-msgid "This post is now public"
-msgstr "This post is now public"
-
 #: [post]public_no
-msgid "This post is now private"
+#, fuzzy
+msgid "This post is private"
 msgstr "This post is now private"
 
 #: [post]public_url
@@ -2536,3 +2534,6 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "This post is now public"
+#~ msgstr "This post is now public"
