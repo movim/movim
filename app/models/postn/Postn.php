@@ -300,25 +300,37 @@ class Postn extends Model {
         $this->picture = null;
 
         if(isset($this->links)) {
-            $attachements = array('pictures' => array(), 'files' => array(), 'links' => array());
+            $attachements = array(
+                'pictures' => array(),
+                'files' => array(),
+                'links' => array()
+            );
 
             $links = unserialize($this->links);
+
             foreach($links as $l) {
                 if(isset($l['type']) && $this->typeIsPicture($l['type'])) {
                     if($this->picture == null) {
                         $this->picture = $l['href'];
                     }
+
                     array_push($attachements['pictures'], $l);
-                } elseif((isset($l['type']) && $this->typeIsLink($l['type'])
-                || in_array($l['rel'], array('related')))
+                } elseif(
+                    (isset($l['type'])
+                        && $this->typeIsLink($l['type'])
+                        && !$this->isMicroblog()
+                    || in_array($l['rel'], array('related'))
+                    )
                 && Validator::url()->validate($l['href'])) {
+
                     if($this->youtube == null
                     && preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
                         $this->youtube = $match[1];
                     }
 
                     array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
-                } elseif(isset($l['rel']) && $l['rel'] == 'enclosure') {
+                } elseif(isset($l['rel'])
+                && $l['rel'] == 'enclosure') {
                     array_push($attachements['files'], $l);
                 }
             }
