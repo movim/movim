@@ -43,6 +43,18 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
     }
 });
 
+// One connected ping each 5 mins
+$loop->addPeriodicTimer(5*60, function() use (&$conn) {
+    if(isset($conn)
+    && is_resource($conn->stream)) {
+        $ping = new \Moxl\Xec\Action\Ping\Server;
+        $ping->request();
+
+        $conn->write(trim(\Moxl\API::commit()));
+        \Moxl\API::clear();
+    }
+});
+
 $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser, &$timestamp) {
     if(substr($data, -1) == "") {
         $messages = explode("", $buffer . substr($data, 0, -1));
