@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b54958b944f29089f98f8ba4280c604b",
-    "content-hash": "a8f2cba127179fc763654ce07480f16c",
+    "hash": "959957c08a6e0a7b09d5b3bccf6f6979",
+    "content-hash": "958b7ab7a85b3465f8038d6848504ff1",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -535,52 +535,6 @@
                 "emoji"
             ],
             "time": "2015-06-06 08:55:07"
-        },
-        {
-            "name": "libchart/libchart",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/astehlik/libchart.git",
-                "reference": "408d6729f59c3d1641af4c5fee39bb3bcb7fd575"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/astehlik/libchart/zipball/408d6729f59c3d1641af4c5fee39bb3bcb7fd575",
-                "reference": "408d6729f59c3d1641af4c5fee39bb3bcb7fd575",
-                "shasum": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Libchart\\": "libchart/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Jean-Marc Trémeaux",
-                    "homepage": "http://naku.dohcrew.com/",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Alexander Stehlik",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Simple PHP chart drawing library",
-            "homepage": "http://naku.dohcrew.com/libchart/pages/introduction/",
-            "keywords": [
-                "bar charts",
-                "chart",
-                "charts",
-                "line charts",
-                "pie charts"
-            ],
-            "time": "2013-10-19 22:30:10"
         },
         {
             "name": "michelf/php-markdown",
@@ -1934,7 +1888,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "libchart/libchart": 20,
         "rain/raintpl": 20,
         "michelf/php-markdown": 20,
         "movim/modl": 20,

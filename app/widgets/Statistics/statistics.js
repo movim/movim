@@ -1,22 +1,6 @@
 var Statistics = {
     drawGraphs: function(data)
     {
-
-        console.log(data);
-        /*var data = {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
-            datasets: [
-                {
-                    label: "My First dataset",
-                    fillColor: "rgba(220,220,220,0.5)",
-                    strokeColor: "rgba(220,220,220,0.8)",
-                    highlightFill: "rgba(220,220,220,0.75)",
-                    highlightStroke: "rgba(220,220,220,1)",
-                    data: [65, 59, 80, 81, 56, 55, 40]
-                }
-            ]
-        };*/
-
         var options = {
             //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
             scaleBeginAtZero : true,
@@ -55,10 +39,8 @@ var Statistics = {
 
         };
 
-
         var ctx = document.getElementById("monthly").getContext("2d");
         var chart = new Chart(ctx).Line(data, options);
-        chart.update();
     }
 }
 
