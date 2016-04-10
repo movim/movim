@@ -5,7 +5,7 @@ namespace Moxl\Xec\Action\Ping;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Ping;
 
-class Ping extends Action
+class Server extends Action
 {
     public function request()
     {
