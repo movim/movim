@@ -27,15 +27,7 @@
     </ul>
 
     <h3 class="padded_top_bottom">{$c->__('statistics.subscriptions')}</h3>
-    <div class="card">
-        <img src="{$cache_path}monthly.png">
-    </div>
-    <div class="card">
-        <img src="{$cache_path}monthly_cumulated.png">
-    </div>
-    <script type="text/javascript">
-        MovimWebsocket.attach(function() {
-            MovimWebsocket.connection.admin("{$hash}");
-        });
-    </script>
+
+    <br />
+    <canvas id="monthly" width="800" height="400"></canvas>
 </div>

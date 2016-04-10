@@ -37,6 +37,7 @@
                Moxl - Movim XMPP Library - <a href="https://github.com/edhelas/moxl">GitHub Moxl</a> under AGPLv3<br/>
 
                Map Library - Leaflet <a href="http://leafletjs.com/">leafletjs.com</a> under BSD<br/>
+               Chart.js - Nick Downie <a href="http://www.chartjs.org/">chart.js</a> under MIT<br/>
                Favico.js - Miroslav Magda <a href="http://lab.ejci.net/favico.js/">lab.ejci.net/favico.js</a> under GPL and MIT<br/>
                Markdown - Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin<br/>
                Template Engine - RainTPL - Federico Ulfo <a href="http://www.raintpl.com/">www.raintpl.com</a> under MIT<br/>

@@ -1,39 +1,18 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Statistics.php
- * This file is part of MOVIM.
- *
- * @brief The administration widget.
- *
- * @author Timothée Jaussoin <edhelas@gmail.com>
- * *
- * Copyright (C)2014 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 use Modl\SessionxDAO;
 
 class Statistics extends \Movim\Widget\Base
 {
     function load()
     {
+        $this->addjs('chart.min.js');
+        $this->addjs('statistics.js');
     }
 
-    function display()
+    function ajaxGet()
     {
-        $sd = new SessionxDAO;
-        $this->view->assign('sessions',      $sd->getAll());
-
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
-
-        $this->view->assign('hash',          $config->password);
-
-        $tmp = array();
+        $tmp = [];
 
         foreach(scandir(USERS_PATH) as $f) {
             if(is_dir(USERS_PATH.'/'.$f)) {
@@ -45,9 +24,9 @@ class Statistics extends \Movim\Widget\Base
         }
 
         sort($tmp);
-        $days = array();
+        $days = [];
 
-        $pattern = "Y-m";
+        $pattern = "M Y";
 
         foreach($tmp as $k => $time) {
             $key = date($pattern, $time);
@@ -59,15 +38,34 @@ class Statistics extends \Movim\Widget\Base
             }
         }
 
-        $this->renderTimeLineChart($days, $this->__('statistics.monthly_sub'), "monthly.png");
+        $data = new stdClass;
+        $data->labels = [];
+        $data->datasets = [];
 
-        $sum = 0;
+        $first = new StdClass;
+        $first->label = "Monthly Subscriptions";
+        $first->fillColor = "rgba(255,152,0,0.5)";
+        $first->strokeColor = "rgba(255,152,0,0.8)";
+        $first->highlightFill = "rgba(220,220,220,0.75)";
+        $first->highlightStroke = "rgba(220,220,220,1)";
+
+        $values = [];
         foreach($days as $key => $value) {
-            $sum = $sum + $value;
-            $days[$key] = $sum;
+            array_push($data->labels, $key);
+            array_push($values, $value);
         }
 
-        $this->renderTimeLineChart($days, $this->__('statistics.monthly_sub_cum'), "monthly_cumulated.png");
+        $first->data = $values;
+
+        array_push($data->datasets, $first);
+
+        RPC::call('Statistics.drawGraphs', $data);
+    }
+
+    function display()
+    {
+        $sd = new SessionxDAO;
+        $this->view->assign('sessions',      $sd->getAll());
     }
 
     public function getContact($username, $host)
@@ -75,24 +73,6 @@ class Statistics extends \Movim\Widget\Base
         $jid = $username.'@'.$host;
         $cd = new modl\ContactDAO;
         return $cd->get($jid);
-    }
-
-    private function renderTimeLineChart($data, $title, $filename)
-    {
-        $chart = new Libchart\View\Chart\LineChart(750, 450);
-
-        $dataSet = new Libchart\Model\XYDataSet();
-
-        foreach($data as $key => $value) {
-            $dataSet->addPoint(new Libchart\Model\Point($key, $value));
-        }
-
-        $chart->setDataSet($dataSet);
-
-        $chart->setTitle($title);
-        $chart->render(CACHE_PATH.$filename);
-
-        $this->view->assign('cache_path',      BASE_URI.'cache/');
     }
 
     function getTime($date)
