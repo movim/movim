@@ -176,7 +176,7 @@ class Rooms extends \Movim\Widget\Base
 
     public function setBookmark($item = false)
     {
-        $arr = array();
+        $arr = [];
 
         if($item) {
             array_push($arr, $item);
@@ -247,19 +247,21 @@ class Rooms extends \Movim\Widget\Base
 
         $list = $cod->getAll();
 
-        $connected = array();
+        $connected = [];
 
-        foreach($list as $key => $room) {
-            if($this->checkConnected($room->conference, $room->nick)) {
-                $room->connected = true;
-                array_push($connected, $room);
-                unset($list[$key]);
+        if(is_array($list)) {
+            foreach($list as $key => $room) {
+                if($this->checkConnected($room->conference, $room->nick)) {
+                    $room->connected = true;
+                    array_push($connected, $room);
+                    unset($list[$key]);
+                }
             }
+
+            $connected = array_merge($connected, $list);
         }
 
-        $list = array_merge($connected, $list);
-
-        $view->assign('conferences', $list);
+        $view->assign('conferences', $connected);
         $view->assign('room', $this->get('r'));
 
         return $view->draw('_rooms', true);
