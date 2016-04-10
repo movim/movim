@@ -59,6 +59,11 @@ var Tabs = {
         var baseUrl = window.location.href.split('#')[0];
         window.location.replace(baseUrl + '#' + n);
 
+        // We try to call ajaxDisplay
+        if(typeof window[tabOn.title + '_ajaxDisplay'] == 'function') {
+            window[tabOn.title + '_ajaxDisplay'].apply();
+        }
+
         // We reset the scroll
         document.querySelector('#navtabs').parentNode.scrollTop = 0;
     }

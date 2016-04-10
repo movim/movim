@@ -10,7 +10,7 @@ class Statistics extends \Movim\Widget\Base
         $this->addjs('statistics.js');
     }
 
-    function ajaxGet()
+    function ajaxDisplay()
     {
         $tmp = [];
 
