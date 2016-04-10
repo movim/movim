@@ -5,7 +5,7 @@ class Locale {
     private static $_instance;
     public $translations;
     public $language;
-    public $hash = array();
+    public $hash = [];
 
     private function __construct()
     {
@@ -57,14 +57,15 @@ class Locale {
 
         $lang_list = get_lang_list();
         $dir = scandir(LOCALES_PATH);
-        $po = array();
+        $po = [];
         foreach($dir as $files) {
             $explode = explode('.', $files);
-            if(end($explode) == 'po') {
+            if(end($explode) == 'po'
+            && array_key_exists($explode[0], $lang_list)) {
                 $po[$explode[0]] = $lang_list[$explode[0]];
             }
         }
-        
+
         $po['en'] = 'English';
 
         return $po;
@@ -121,7 +122,7 @@ class Locale {
      */
     public function detect()
     {
-        $langs = array();
+        $langs = [];
 
         preg_match_all(
             '/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i',
@@ -178,7 +179,7 @@ class Locale {
         // Parsing the file.
         $handle = fopen($pofile, 'r');
 
-        $this->translations = array();
+        $this->translations = [];
 
         $msgid = "";
         $msgstr = "";
@@ -214,7 +215,7 @@ class Locale {
 
     private function getQuotedString($string)
     {
-        $matches = array();
+        $matches = [];
         preg_match('#"(.+)"#', $string, $matches);
 
         if(isset($matches[1]))

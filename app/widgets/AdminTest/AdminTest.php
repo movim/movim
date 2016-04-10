@@ -14,7 +14,7 @@
  *
  * See COPYING for licensing information.
  */
- 
+
 class AdminTest extends \Movim\Widget\Base
 {
     function load() {
@@ -24,14 +24,14 @@ class AdminTest extends \Movim\Widget\Base
 
     public function version()
     {
-        return (version_compare(PHP_VERSION, '5.3.0') >= 0);
+        return (version_compare(PHP_VERSION, '5.4.0') >= 0);
     }
 
     public function testDir($dir)
     {
         return (file_exists($dir) && is_dir($dir) && is_writable($dir));
     }
-    
+
     public function testFile($file)
     {
         return (file_exists($file) && is_writable($file));
@@ -39,15 +39,10 @@ class AdminTest extends \Movim\Widget\Base
 
     function display()
     {
-        $md = \modl\Modl::getInstance();
+        $md = \Modl\Modl::getInstance();
         $supported = $md->getSupportedDatabases();
 
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
-
         $this->view->assign('dbconnected', $md->_connected);
-        $this->view->assign('dbtype', $supported[$config->type]);
         $this->view->assign('dbinfos', sizeof($md->check()));
-        $this->view->assign('websocketurl', $config->websocketurl);
     }
 }

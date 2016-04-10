@@ -188,7 +188,9 @@
                                 <a
                                     href="{$value.href}"
                                     class="enclosure"
-                                    type="{$value.type}"
+                                    {if="isset($value.type)"}
+                                        type="{$value.type}"
+                                    {/if}
                                     target="_blank">
                                 {$value.href|urldecode}
                                 </a>
