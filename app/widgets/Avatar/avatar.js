@@ -50,9 +50,6 @@ var Avatar = {
     }
 }
 
-MovimWebsocket.attach(function() {
-    Avatar_ajaxGetForm();
-});
 /*
 function showVideo(){
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;

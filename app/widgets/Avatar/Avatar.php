@@ -88,7 +88,7 @@ class Avatar extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxGetForm()
+    function ajaxDisplay()
     {
         $cd = new \modl\ContactDAO();
         $me = $cd->get();
