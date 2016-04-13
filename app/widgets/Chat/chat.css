@@ -11,15 +11,14 @@
     position: fixed;
     bottom: 0;
     background-color: white;
-    width: 70%;
+    width: 65%;
     max-width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 #chat_widget .chat_box ul {
-    margin: 0 auto;
-    max-width: 100rem;
-    margin-left: calc(45% - 49rem);
+    margin: 0;
+    max-width: 100%;
 }
 
 #chat_widget .chat_box form {
@@ -51,6 +50,10 @@
 
 #chat_widget li.oppose span.control {
     right: 2rem;
+}
+
+#chat_widget .contained ul {
+    overflow-x: hidden;
 }
 
 /* Chatroom */
@@ -172,11 +175,7 @@ table.emojis td:hover {
 
 @media screen and (max-width: 1024px) {
     #chat_widget .chat_box {
-        width: 100%;
         left: 0;
-    }
-
-    #chat_widget .chat_box ul {
-        margin-left: auto;
+        width: 100%;
     }
 }
