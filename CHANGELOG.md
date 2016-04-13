@@ -3,6 +3,9 @@ Movim Changelog
 
 v0.9.1 (trunk)
 ---------------------------
+ * Moving values from Sessionx to Session
+ * Using chart.js for the statistics
+ * Refactor the "public" system for the Posts
  * CSS fixes
  * Add Last Message Edition support
  * Improve Post discovery in the News page

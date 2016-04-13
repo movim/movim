@@ -14,6 +14,7 @@
         "monolog/monolog": "1.8.*",
         "rain/raintpl": "dev-master",
         "michelf/php-markdown": "1.4.*@dev",
+
         "movim/modl": "dev-master",
         "movim/sasl2": "dev-master",
         "movim/moxl": "dev-master",
@@ -26,13 +27,13 @@
         "react/socket-client": "dev-master",
         "react/stream": "0.4.3",
         "react/http": "dev-master",
+        "react/promise-timer": "^1.1",
 
         "stojg/crop": "dev-master",
         "forxer/Gravatar": "~1.2",
         "respect/validation": "1.0.*",
         "ezyang/htmlpurifier": "^4.7",
         "ramsey/uuid": "^3.2",
-        "react/promise-timer": "^1.1",
         "symfony/console": "^3.0"
     }
 }
