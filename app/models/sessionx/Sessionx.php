@@ -5,7 +5,6 @@ namespace modl;
 class Sessionx extends Model {
     public $session;
     public $username;
-    public $password;
     public $hash;
     public $resource;
     public $rid;
@@ -27,8 +26,6 @@ class Sessionx extends Model {
                 {"type":"string", "size":32, "key":true },
             "username" :
                 {"type":"string", "size":64 },
-            "password" :
-                {"type":"string", "size":64 },
             "hash" :
                 {"type":"string", "size":64 },
             "resource" :
@@ -36,7 +33,7 @@ class Sessionx extends Model {
             "rid" :
                 {"type":"int",    "size":8,   "mandatory":true },
             "sid" :
-                {"type":"string",    "size":64 },
+                {"type":"string", "size":64 },
             "id" :
                 {"type":"int",    "size":8,   "mandatory":true },
             "port" :
