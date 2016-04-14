@@ -66,7 +66,7 @@ class Builder
     {
         $this->_view = $view;
         $template = $this->_view.'.tpl';
-        //if (ENVIRONMENT === 'production') ob_clean();
+
         ob_start();
 
         require($this->viewsPath($template));
