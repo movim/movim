@@ -88,5 +88,6 @@ class AdminMain extends \Movim\Widget\Base
 
         $this->view->assign('timezones', getTimezoneList());
         $this->view->assign('langs', $l->getList());
+        $this->view->assign('countries', getCountries());
     }
 }

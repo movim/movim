@@ -7,6 +7,32 @@
     </ul>
 
     <ul class="list card shadow active flex">
+        {if="!empty($config->xmppdomain)"}
+            <li
+                class="block large"
+                onclick="movim_redirect('{$c->route('accountnext', array($config->xmppdomain, false))}')">
+                <span class="primary icon bubble color {$config->xmppdomain|stringToColor}">
+                    {$config->xmppdomain|firstLetterCapitalize}
+                </span>
+                <p>
+                    {if="!empty($config->xmppcountry)"}
+                        <span class="info">
+                            <img
+                                class="flag"
+                                title="{$config->xmppcountry}"
+                                alt="{$config->xmppc}"
+                                src="{$c->flagPath($config->xmppcountry)}"/>
+                        </span>
+                    {/if}
+                    {$config->xmppdomain}
+                </p>
+                {if="!empty($config->xmppdescription)"}
+                <p>
+                    {$config->xmppdescription}<br />
+                </p>
+                {/if}
+            </li>
+        {/if}
         {loop="$servers"}
         <li
             class="block"
@@ -30,9 +56,6 @@
             </p>
             <p>
                 {$value->description}<br />
-                <!--<a target="_blank" href="{$value->url}">
-                    {$value->url}
-                </a>-->
             </p>
         </li>
         {/loop}

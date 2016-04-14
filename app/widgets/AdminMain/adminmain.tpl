@@ -6,7 +6,7 @@
         <label for="da">{$c->__('general.language')}</label>
         <div class="select">
             <select id="locale" name="locale">
-                <option value="en">English (default)</option>';
+                <option value="en">English (default)</option>
                 {loop="$langs"}
                     <option value="{$key}"
                     {if="$conf->locale == $key"}
@@ -57,6 +57,37 @@
         <label for="timezone">{$c->__('general.timezone')} - <span class="dTimezone">{$c->date($conf->timezone)}</span></label>
         <br /><br />
 
+    </div>
+
+    <br />
+
+    <h3>{$c->__('xmpp.title')}</h3>
+
+    <div>
+        <input type="text" name="xmppdomain" id="xmppdomain" placeholder="server.tld" value="{$conf->xmppdomain}" />
+        <label for="xmppdomain">{$c->__('xmpp.domain')}</label>
+    </div>
+
+    <div>
+        <textarea type="text" name="xmppdescription" id="xmppdescription" placeholder="{$c->__('xmpp.description')}" />{$conf->xmppdescription}</textarea>
+        <label for="xmppdescription">{$c->__('xmpp.description')}</label>
+    </div>
+
+    <div>
+        <div class="select">
+            <select id="xmppcountry" name="xmppcountry">
+                <option value=""></option>
+                {loop="$countries"}
+                    <option value="{$key}"
+                    {if="$conf->xmppcountry == $key"}
+                        selected="selected"
+                    {/if}>
+                        {$value}
+                    </option>
+                {/loop}
+            </select>
+        </div>
+        <label for="xmppcountry">{$c->__('xmpp.country')}</label>
     </div>
 
     <br />

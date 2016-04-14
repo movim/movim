@@ -76,6 +76,13 @@ class Login extends \Movim\Widget\Base
         $this->view->assign('info',     $config->info);
         $this->view->assign('whitelist',$config->xmppwhitelist);
 
+        if(isset($config->xmppdomain)
+        && !empty($config->xmppdomain)) {
+            $this->view->assign('domain', $config->xmppdomain);
+        } else {
+            $this->view->assign('domain', 'movim.eu');
+        }
+
         $pop = 0;
 
         foreach(scandir(USERS_PATH) as $f)

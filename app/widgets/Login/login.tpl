@@ -1,8 +1,9 @@
 <div id="login_widget">
     <div id="sessions" class="dialog actions"></div>
 
+    <script type="text/javascript">
+        Login.domain = '{$domain}';
     {if="isset($httpAuthUser)"}
-        <script type="text/javascript">
         localStorage.username = '{$httpAuthUser}';
         MovimWebsocket.attach(function() {
             MovimWebsocket.connection.register('{$httpAuthHost}');
@@ -10,8 +11,8 @@
         MovimWebsocket.register(function() {
             Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}');
         });
-        </script>
     {/if}
+    </script>
 
     <div id="form" class="dialog">
         <section>

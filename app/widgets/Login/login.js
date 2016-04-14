@@ -1,4 +1,5 @@
 var Login = {
+    domain : '@movim.eu',
     submitted : false,
     fillExample : function(login, pass) {
         document.querySelector('#login').value = login;
@@ -134,7 +135,7 @@ var Login = {
      */
     setCookie : function(value) {
         document.cookie = 'MOVIM_SESSION_ID='+value;
-    }
+    },
 }
 
 MovimWebsocket.attach(function()
@@ -176,7 +177,7 @@ movim_add_onload(function() {
     login.addEventListener('input', function() {
         if(this.value.indexOf('@') == -1) {
             // TODO allow another server here
-            document.querySelector('input#complete').value = this.value + '@movim.eu';
+            document.querySelector('input#complete').value = this.value + '@' + Login.domain;
         } else {
             document.querySelector('input#complete').value = this.value;
         }

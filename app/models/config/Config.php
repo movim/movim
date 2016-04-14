@@ -9,12 +9,16 @@ class Config extends Model {
     public $maxusers;
     public $loglevel;
     public $timezone;
-    public $xmppwhitelist;
     public $info;
     public $unregister;
     public $username;
     public $password;
     public $sizelimit;
+
+    public $xmppdomain;
+    public $xmppdescription;
+    public $xmppcountry;
+    public $xmppwhitelist;
 
     public function __construct() {
         $this->_struct = '
@@ -31,8 +35,6 @@ class Config extends Model {
                 {"type":"string", "size":16, "mandatory":true  },
             "timezone" :
                 {"type":"string", "size":32, "mandatory":true  },
-            "xmppwhitelist" :
-                {"type":"text" },
             "info" :
                 {"type":"text" },
             "unregister" :
@@ -42,7 +44,15 @@ class Config extends Model {
             "password" :
                 {"type":"string", "size":64, "mandatory":true  },
             "sizelimit" :
-                {"type":"int", "size":16 }
+                {"type":"int", "size":16 },
+            "xmppdomain" :
+                {"type":"string", "size":32  },
+            "xmppdescription" :
+                {"type":"text" },
+            "xmppcountry" :
+                {"type":"string", "size":4  },
+            "xmppwhitelist" :
+                {"type":"text" }
         }';
 
         parent::__construct();

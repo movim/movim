@@ -50,6 +50,30 @@ class ConfigCommand extends Command
                InputOption::VALUE_REQUIRED,
                'The server main locale'
             )
+            ->addOption(
+               'xmppdomain',
+               null,
+               InputOption::VALUE_REQUIRED,
+               'The default XMPP server domain'
+            )
+            ->addOption(
+               'xmppdescription',
+               null,
+               InputOption::VALUE_REQUIRED,
+               'The default XMPP server description'
+            )
+            ->addOption(
+               'xmppcountry',
+               null,
+               InputOption::VALUE_REQUIRED,
+               'The default XMPP server country'
+            )
+            ->addOption(
+               'xmppwhitelist',
+               null,
+               InputOption::VALUE_REQUIRED,
+               'The whitelisted XMPP servers'
+            )
         ;
     }
 

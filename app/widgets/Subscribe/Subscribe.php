@@ -17,9 +17,9 @@
  *
  * See COPYING for licensing information.
  */
- 
+
 class Subscribe extends \Movim\Widget\Base {
-    
+
     function load()
     {
         $this->addcss('subscribe.css');
@@ -37,7 +37,10 @@ class Subscribe extends \Movim\Widget\Base {
     function display() {
         $json = requestURL(MOVIM_API.'servers', 1);
         $json = json_decode($json);
-        
+
+        $cd = new \Modl\ConfigDAO;
+        $this->view->assign('config', $cd->get());
+
         if(is_object($json) && $json->status == 200) {
             $this->view->assign('servers', $json->servers);
         }
