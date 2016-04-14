@@ -182,4 +182,10 @@ var MovimTpl = {
 movim_add_onload(function() {
     MovimTpl.init();
     document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
+    document.onkeydown = function(evt) {
+        evt = evt || window.event;
+        if (evt.keyCode == 27 && Dialog.filled()) {
+            Dialog.clear();
+        }
+    };
 });
