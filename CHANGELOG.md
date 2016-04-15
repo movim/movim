@@ -3,6 +3,8 @@ Movim Changelog
 
 v0.9.1 (trunk)
 ---------------------------
+ * Put your own XMPP server as default in the configuration (movim.eu in fallback)
+ * Close the Dialog box when pressing ESC
  * Moving values from Sessionx to Session
  * Using chart.js for the statistics
  * Refactor the "public" system for the Posts
