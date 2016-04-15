@@ -182,7 +182,7 @@ class Groups extends \Movim\Widget\Base
      */
     private function validateServer($server)
     {
-        $validate_server = Validator::noWhitespace()->alnum('.')->length(6, 40);
+        $validate_server = Validator::noWhitespace()->alnum('.-_')->length(6, 40);
         return ($validate_server->validate($server));
     }
 
