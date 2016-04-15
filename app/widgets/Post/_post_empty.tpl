@@ -73,7 +73,6 @@
                 <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
             </a> –
             {$value->published|strtotime|prepareDate}
-            {if="$value->published != $value->updated"}<i class="zmdi zmdi-edit"></i>{/if}
         </p>
 
         <p>

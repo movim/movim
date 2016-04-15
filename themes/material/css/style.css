@@ -74,7 +74,8 @@ h1 { /* Display 1 */
 
 h2 { /* Headline */
     font-size: 3rem;
-    line-height: 7rem;
+    line-height: 4rem;
+    padding: 2rem 0;
 }
 
 h2.thin {
@@ -180,7 +181,7 @@ body > nav li { /* Little hack for the navbar */
         transform: translateX(0%);
     }
 }
-
+/*
 @media screen and (min-width: 1024px) and (max-width: 1679px) {
     body > nav p {
         transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
@@ -209,7 +210,7 @@ body > nav li { /* Little hack for the navbar */
         padding: 0.25rem;
     }
 }
-
+*/
 @media screen and (min-width: 1680px) {
     body > nav,
     body > nav:hover {
@@ -223,7 +224,7 @@ body > nav li { /* Little hack for the navbar */
 }
 
 body > nav.active:before,
-body > nav:hover:before {
+/*body > nav:hover:before*/ {
     display: none;
 }
 
@@ -256,13 +257,13 @@ main > header {
 
 main > header > div {
     position: relative;
-    width: 35%;
+    width: 30%;
     display: inline-block;
     box-sizing: border-box;
 }
 
 main > header > div:first-child:nth-last-child(2) ~ div {
-    width: 65%;
+    width: 70%;
     position: absolute;
     top: 0;
     right: 0;
@@ -308,10 +309,10 @@ main > section > div > * {
 
 /* Two blocks*/
 main > section > div:first-child:nth-last-child(2) {
-    width: 35%;
+    width: 30%;
 }
 main > section > div:first-child:nth-last-child(2) ~ div {
-    width: 65%;
+    width: 70%;
     position: absolute;
     top: 0;
     right: 0;
@@ -368,15 +369,9 @@ main footer {
 
 /* Icon */
 span.icon {
-    /*width: 5rem;
-    height: 5rem;
-    position: absolute;*/
     font-size: 3rem;
     line-height: 5rem;
-    /*top: 50%;
-    left: 2rem;*/
     text-align: center;
-    /*margin-top: -2.5rem;*/
     background-size: cover;
     background-position: center;
 }
@@ -794,6 +789,7 @@ dl dd {
 }
 
 /* Spinner */
+
 .spinner {
     position: relative;
 }
@@ -869,12 +865,14 @@ dl dd {
 }
 
 /* Disabled */
+
 .disabled {
     opacity: 0.5;
     pointer-events: none;
 }
 
 /* Spinner */
+
 div#spinner{
     position: relative;
     overflow: visible;

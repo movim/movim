@@ -83,8 +83,7 @@
                         <i class="zmdi zmdi-pages"></i> {$value->node}
                     </a> –
                 {/if}
-                {$value->published|strtotime|prepareDate}
-                {if="$value->published != $value->updated"}<i class="zmdi zmdi-edit"></i>{/if}
+                {$value->published|strtotime|prepareDate:true,true}
             </p>
             <p>{$value->contentcleaned|stripTags}</p>
         </li>
