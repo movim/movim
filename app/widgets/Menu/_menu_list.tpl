@@ -89,7 +89,6 @@
                         <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
                     </a> –
                 {else}
-                    {$value->origin} /
                     <a href="{$c->route('group', array($value->origin, $value->node))}">
                         <i class="zmdi zmdi-pages"></i> {$value->node}
                     </a> –
