@@ -13,7 +13,7 @@
                     <li {if="$type == 'all'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetAll()">{$c->__('menu.all')}</a></li>
                     <li {if="$type == 'news'"}class="active"{/if} ><a href="#" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}"><i class="zmdi zmdi-pages"></i></a></li>
                     <li {if="$type == 'feed'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}"><i class="zmdi zmdi-accounts"></i></a></li>
-                    <li {if="$type == 'me'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetMe()" title="{$c->__('menu.mine')}"><i class="zmdi zmdi-portable-wifi"></i></a></li>
+                    <li {if="$type == 'me'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetMe()" title="{$c->__('menu.mine')}"><i class="zmdi zmdi-edit"></i></a></li>
                 </ul>
             </li>
         </ul>
@@ -46,24 +46,35 @@
                     +18
                 </span>
             {elseif="$picture != null"}
-                <span class="primary icon thumb" style="background-image: url({$picture});"></span>
+                <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$picture});">
+                    {if="$value->isPublic()"}
+                        <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
+                    {/if}
+                </span>
             {elseif="$value->node == 'urn:xmpp:microblog:0'"}
                 {$url = $value->getContact()->getPhoto('l')}
                 {if="$url"}
-                    <span class="primary icon thumb" style="background-image: url({$url});">
+                    <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
+                        {if="$value->isPublic()"}
+                            <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
+                        {/if}
                     </span>
                 {else}
                     <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
-                        <i class="zmdi zmdi-account"></i>
+                        {if="$value->isPublic()"}
+                            <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
+                        {else}
+                            <i class="zmdi zmdi-account"></i>
+                        {/if}
                     </span>
                 {/if}
             {else}
-                <span class="primary icon thumb color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
-            {/if}
-
-            {if="$value->isPublic()"}
-                <span class="control icon gray" title="{$c->__('menu.public')}">
-                    <i class="zmdi zmdi-portable-wifi"></i>
+                <span class="primary icon thumb color {$value->node|stringToColor}">
+                    {if="$value->isPublic()"}
+                        <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
+                    {else}
+                        {$value->node|firstLetterCapitalize}
+                    {/if}
                 </span>
             {/if}
 
