@@ -87,13 +87,15 @@
                 {if="$value->node == 'urn:xmpp:microblog:0'"}
                     <a href="{$c->route('contact', $value->getContact()->jid)}">
                         <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
-                    </a> –
+                    </a>
                 {else}
                     <a href="{$c->route('group', array($value->origin, $value->node))}">
                         <i class="zmdi zmdi-pages"></i> {$value->node}
-                    </a> –
+                    </a>
                 {/if}
-                {$value->published|strtotime|prepareDate:true,true}
+                <span class="info">
+                    {$value->published|strtotime|prepareDate:true,true}
+                </span>
             </p>
             <p>{$value->contentcleaned|stripTags}</p>
         </li>
