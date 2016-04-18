@@ -13,10 +13,28 @@ class Rooms extends \Movim\Widget\Base
     {
         $this->addjs('rooms.js');
         $this->addcss('rooms.css');
+        $this->registerEvent('message', 'onMessage');
         $this->registerEvent('bookmark_set_handle', 'onBookmark');
         $this->registerEvent('presence_muc_handle', 'onConnected');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected');
         $this->registerEvent('presence_muc_errorconflict', 'onConflict');
+    }
+
+    function onMessage($packet)
+    {
+        $message = $packet->content;
+
+        if($message->session == $message->jidto
+        && $message->type == 'groupchat') {
+            Notification::append(
+                'chat|'.$message->jidfrom,
+                null,
+                $message->body,
+                null,
+                0,
+                null
+            );
+        }
     }
 
     function onBookmark()

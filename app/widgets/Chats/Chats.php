@@ -120,7 +120,7 @@ class Chats extends \Movim\Widget\Base
         if(!$this->validateJid($jid)) return;
 
         $chats = Cache::c('chats');
-        if($chats == null) $chats = array();
+        if($chats == null) $chats = [];
 
         unset($chats[$jid]);
 

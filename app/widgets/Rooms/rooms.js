@@ -9,7 +9,9 @@ var Rooms = {
             if(items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
                     Chats.refresh();
-                    Notification.current('chat');
+
+                    Notification_ajaxClear('chat|' + this.dataset.jid);
+                    Notification.current('chat|' + this.dataset.jid);
 
                     if(!movim_has_class(this, 'online')) {
                         if(this.dataset.nick != null) {

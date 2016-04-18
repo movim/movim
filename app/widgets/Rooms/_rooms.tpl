@@ -10,6 +10,7 @@
             <li data-jid="{$value->conference}"
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
                 class="room {if="$value->connected"}online{/if}">
+                <span data-key="chat|{$value->conference}" class="counter"></span>
                 {if="$value->connected"}
                     <span class="primary icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts"></i></span>
                 {else}

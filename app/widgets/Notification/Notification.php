@@ -18,28 +18,33 @@ class Notification extends \Movim\Widget\Base
      * @param integer $action An action
      * @return void
      */
-    static function append($key = null, $title, $body = null, $picture = null, $time = 2, $action = null)
+    static function append($key = null, $title = null, $body = null, $picture = null, $time = 2, $action = null)
     {
         // In this case we have an action confirmation
-        if($key == null) {
+        if($key == null && $title != null) {
             RPC::call('Notification.toast', $title);
             return;
+        }
+
+        if($picture == null) {
+            $picture = BASE_URI . '/themes/material/img/app/128.png';
         }
 
         $session = Session::start();
         $notifs = $session->get('notifs');
 
-        RPC::call('Notification.desktop', $title, $body, $picture, $action);
+        if($title != null)
+            RPC::call('Notification.desktop', $title, $body, $picture, $action);
 
         $notifs_key = $session->get('notifs_key');
 
-        if($notifs == null) $notifs = array();
+        if($notifs == null) $notifs = [];
 
         $explode = explode('|', $key);
         $first = reset($explode);
 
         // What we receive is not what it's on the screen on Android
-        if($key != null && $key != $notifs_key) {
+        if($key != null && $key != $notifs_key && $title != null) {
             RPC::call('Notification.android', $title, $body, $picture, $action);
         }
 
@@ -63,8 +68,10 @@ class Notification extends \Movim\Widget\Base
             RPC::call('Notification.counter', $key, $notifs[$key]);
         }
 
-        $n = new Notification;
-        RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture, $action), $time);
+        if($title != null) {
+            $n = new Notification;
+            RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture, $action), $time);
+        }
 
         $session->set('notifs', $notifs);
     }
