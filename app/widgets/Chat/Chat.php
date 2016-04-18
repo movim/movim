@@ -515,12 +515,17 @@ class Chat extends \Movim\Widget\Base
         return $view->draw('_chat', true);
     }
 
-    function prepareMessages($jid)
+    function prepareMessages($jid, $muc = false)
     {
         if(!$this->validateJid($jid)) return;
 
         $md = new \Modl\MessageDAO;
-        $messages = $md->getContact(echapJid($jid), 0, $this->_pagination);
+
+        if($muc) {
+            $messages = $md->getRoom(echapJid($jid));
+        } else {
+            $messages = $md->getContact(echapJid($jid), 0, $this->_pagination);
+        }
 
         if(is_array($messages)) {
             $messages = array_reverse($messages);

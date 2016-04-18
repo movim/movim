@@ -160,6 +160,32 @@ class MessageDAO extends SQL {
             where session = :session
                 and (jidfrom = :jidfrom
                 or jidto = :jidto)
+                and type = \'chat\'
+            order by published desc';
+
+        if($limitr)
+            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+
+        $this->prepare(
+            'Message',
+            array(
+                'session' => $this->_user,
+                'jidfrom' => $jid,
+                'jidto' => $jid
+            )
+        );
+
+        return $this->run('Message');
+    }
+
+    function getRoom($jid, $limitf = false, $limitr = false)
+    {
+        $this->_sql = '
+            select * from message
+            where session = :session
+                and (jidfrom = :jidfrom
+                or jidto = :jidto)
+                and type = \'groupchat\'
             order by published desc';
 
         if($limitr)
