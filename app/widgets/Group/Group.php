@@ -26,6 +26,7 @@ class Group extends \Movim\Widget\Base
         $this->registerEvent('pubsub_getitemsid_handle', 'onItems', 'groups');
         $this->registerEvent('pubsub_getitems_error', 'onItemsError', 'groups');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError', 'groups');
+        $this->registerEvent('pubsub_getmetadata_handle', 'onMetadata', 'groups');
 
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_unsubscribe_handle', 'onUnsubscribed');
@@ -94,6 +95,13 @@ class Group extends \Movim\Widget\Base
             // Display an error message
             RPC::call('Group.clearLoad');
         }
+    }
+
+    function onMetadata($packet)
+    {
+        list($server, $node) = $packet->content;
+
+        Header::fill($this->prepareHeader($server, $node));
     }
 
     function onAffiliations($packet)
