@@ -52,21 +52,21 @@ class GetMetadata extends Errors
     }
 
     public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-
-        $tab = array();
-
         $id = new \modl\ItemDAO();
 
         $i = $id->getItem($this->_to, $this->_node);
+
         if(!$i) {
             $i = new \modl\Item();
         }
 
-        $i->setMetadata($stanza->query->x, $this->_to, $this->_node);
+        if(isset($stanza->query->x)) {
+            $i->setMetadata($stanza->query->x, $this->_to, $this->_node);
+        }
 
         $id->set($i);
 
-        $evt->runEvent('pubsubmetadata', array($this->_to, $this->_node));
+        $this->pack([$this->_to, $this->_node]);
+        $this->deliver();
     }
 }
