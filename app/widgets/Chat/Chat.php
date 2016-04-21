@@ -36,7 +36,6 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved');
 
         $this->registerEvent('bob_request_handle', 'onSticker');
-        //$this->registerEvent('muc_setsubject_handle', 'onRoomSubjectChanged');
         //$this->registerEvent('presence', 'onPresence');
     }
 
@@ -129,8 +128,7 @@ class Chat extends \Movim\Widget\Base
 
     function onConferenceSubject($packet)
     {
-        $header = $this->prepareHeaderRoom($packet->content->jidfrom);
-        Header::fill($header);
+        $this->ajaxGetRoom($packet->content->jidfrom);
     }
 
     function onRoomConfig($packet)
@@ -152,12 +150,7 @@ class Chat extends \Movim\Widget\Base
     {
         Notification::append(false, $this->__('chatroom.config_saved'));
     }
-/*
-    function onRoomSubjectChanged($packet)
-    {
-        Notification::append(false, $this->__('chatroom.suject_changed'));
-    }
-*/
+
     private function setState($array, $message)
     {
         list($from, $to) = $array;
@@ -439,32 +432,6 @@ class Chat extends \Movim\Widget\Base
         $p->setTo($room)
           ->setSubject($form->subject->value)
           ->request();
-    }
-
-    /**
-     * @brief Prepare the contact header
-     *
-     * @param string $jid
-     */
-    function prepareHeaderRoom($room)
-    {
-        $view = $this->tpl();
-
-        $md = new \Modl\MessageDAO;
-        $s = $md->getRoomSubject($room);
-
-        $cd = new \Modl\ConferenceDAO;
-        $c = $cd->get($room);
-
-        $pd = new \Modl\PresenceDAO;
-        $p = $pd->getMyPresenceRoom($room);
-
-        $view->assign('room', $room);
-        $view->assign('subject', $s);
-        $view->assign('presence', $p);
-        $view->assign('conference', $c);
-
-        return $view->draw('_chat_header_room', true);
     }
 
     function prepareChat($jid, $muc = false)

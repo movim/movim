@@ -14,14 +14,15 @@
                 <i class="zmdi zmdi-more-vert"></i>
             </span>
 
+            <span class="control icon active" onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel(); {if="$anon"}Presence_ajaxLogout(){/if}">
+                <i class="zmdi zmdi-close"></i>
+            </span>
+
             {if="$c->supported('upload')"}
                 <span class="control icon active" onclick="Upload_ajaxRequest()">
                     <i class="zmdi zmdi-attachment-alt"></i>
                 </span>
             {/if}
-            <span class="control icon active" onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel(); {if="$anon"}Presence_ajaxLogout(){/if}">
-                <i class="zmdi zmdi-close"></i>
-            </span>
 
             {if="$conference != null && $conference->name"}
                 <p class="line" title="{$room}">{$conference->name}</p>
