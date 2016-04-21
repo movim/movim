@@ -34,6 +34,7 @@
         "respect/validation": "1.0.*",
         "ezyang/htmlpurifier": "^4.7",
         "ramsey/uuid": "^3.2",
-        "symfony/console": "^3.0"
+        "symfony/console": "^3.0",
+        "cocur/slugify": "^2.1"
     }
 }

@@ -6,6 +6,8 @@ use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\Create;
 use Moxl\Xec\Action\Pubsub\TestCreate;
 
+use Cocur\Slugify\Slugify;
+
 class Groups extends \Movim\Widget\Base
 {
     private $_list_server;
@@ -127,7 +129,14 @@ class Groups extends \Movim\Widget\Base
             return;
         }
 
-        $uri = stringToUri($form->name->value);
+
+        $slugify = new Slugify();
+        $uri = $slugify->slugify($form->name->value);
+
+        if($uri == '') {
+            Notification::append(null, $this->__('groups.name_error'));
+            return;
+        }
 
         $c = new Create;
         $c->setTo($server)->setNode($uri)->setData($form->name->value)

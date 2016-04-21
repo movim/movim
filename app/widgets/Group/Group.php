@@ -13,6 +13,7 @@ use Moxl\Xec\Action\Pubsub\SetConfig;
 use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
+use Cocur\Slugify\Slugify;
 
 class Group extends \Movim\Widget\Base
 {
@@ -70,7 +71,9 @@ class Group extends \Movim\Widget\Base
 
         $html = $view->draw('_group_ticker', true);
 
-        RPC::call('MovimTpl.fill', '#group_widget.'.stringToUri($server.'_'.$node), $html);
+        $slugify = new Slugify();
+
+        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), $html);
         RPC::call('Group.clearLoad');
         RPC::call('MovimTpl.showPanel');
     }
@@ -206,7 +209,9 @@ class Group extends \Movim\Widget\Base
         $view->assign('node', $node);
         $html .= $view->draw('_group_publish', true);
 
-        RPC::call('MovimTpl.fill', '#group_widget.'.stringToUri($server.'_'.$node), $html);
+        $slugify = new Slugify();
+
+        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), $html);
         RPC::call('Group.enableVideos');
         unset($html);
     }
@@ -265,7 +270,9 @@ class Group extends \Movim\Widget\Base
     {
         if(!$this->validateServerNode($server, $node)) return;
 
-        RPC::call('Group.addLoad', stringToUri($server.'_'.$node));
+        $slugify = new Slugify();
+
+        RPC::call('Group.addLoad', $slugify->slugify($server.'_'.$node));
 
         $r = new GetItemsId;
         $r->setTo($server)
