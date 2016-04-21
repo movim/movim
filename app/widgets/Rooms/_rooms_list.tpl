@@ -17,9 +17,9 @@
                     </span>
                 {/if}
                 {if="$value->mucaffiliation =='owner'"}
-                    <div class="control">
-                        <i class="zmdi zmdi-beenhere"></i>
-                    </div>
+                    <span class="control icon gray">
+                        <i class="zmdi zmdi-star"></i>
+                    </span>
                 {/if}
                 {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
                     <p class="line normal">
