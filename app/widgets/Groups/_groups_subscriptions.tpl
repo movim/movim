@@ -7,7 +7,7 @@
             <span class="primary icon on_desktop icon gray">
                 <i class="zmdi zmdi-bookmark"></i>
             </span>
-            {if="count($nodes) > 0"}
+            {if="count($subscriptions) > 0"}
                 <span class="control icon gray">
                     {$subscriptions|count}
                 </span>
