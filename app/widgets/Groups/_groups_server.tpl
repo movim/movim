@@ -1,10 +1,7 @@
 <header>
     <ul class="list middle">
         <li>
-            <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()">
-                <i class="zmdi zmdi-menu"></i>
-            </span>
-            <span class="primary icon on_desktop icon gray active" onclick="Groups_ajaxSubscriptions()">
+            <span class="primary icon icon gray active" onclick="Groups_ajaxSubscriptions()">
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
             {if="count($nodes) > 0"}
