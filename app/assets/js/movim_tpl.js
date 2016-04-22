@@ -98,6 +98,12 @@ var MovimTpl = {
             target.innerHTML = html;
         }
     },
+    append : function(selector, html) {
+        target = document.querySelector(selector);
+        if(target) {
+            target.insertAdjacentHTML('beforeend', html);
+        }
+    },
     isPanel : function() {
         if(movim_has_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled')) {
             return true;
