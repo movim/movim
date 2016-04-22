@@ -9,12 +9,12 @@ header.big {
     margin-bottom: 2rem;
 }
 
-
 header.fixed {
     position: fixed;
     width: 100%;
     max-width: 100%;
     z-index: 1;
+    top: 0;
 }
 
 @media screen and (min-width: 1024px) {
@@ -23,7 +23,7 @@ header.fixed {
     }
 }
 
-header.fixed + div {
+header.fixed:not(:empty) + * {
     margin-top: 7rem;
 }
 

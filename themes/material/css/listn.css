@@ -23,7 +23,6 @@ ul.list li > *:not(p) {
 
 /* Active list */
 
-
 ul.list.active li:hover:not(.subheader),
 ul.list.active.all li:hover,
 ul.list.active li.active:not(.subheader) {
@@ -388,3 +387,20 @@ ul.context_menu.shown {
     display: block;
 }
 
+/* Divided */
+
+*.divided:not(.spaced) > *:not(:last-child),
+*.divided.spaced > *:not(:last-child).subheader,
+*.divided.spaced > *:not(:last-child):not(.subheader):after {
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+}
+
+*.divided.spaced > *:not(:last-child):after {
+    position: absolute;
+    right: 0;
+    bottom: 0rem;
+    content: "";
+    display: block;
+    width: calc(100% - 9rem);
+}

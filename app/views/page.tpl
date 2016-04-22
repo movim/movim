@@ -24,6 +24,10 @@
         $this->addCss('grid.css');
         $this->addCss('article.css');
         $this->addCss('form.css');
+        $this->addCss('icon.css');
+        $this->addCss('dialog.css');
+        $this->addCss('card.css');
+        $this->addCss('table.css');
         $this->addCss('color.css');
         $this->addCss('block.css');
         $this->addCss('menu.css');

@@ -45,26 +45,30 @@ form > div > textarea,
     box-sizing: border-box;
 }
 
-form > div > .select {
-    position: relative;
-}
-
 form > div > .select:after {
     font-family: "Material-Design-Iconic-Font";
     content: "\f2f2";
     display: block;
     font-size: 4rem;
-    color: #B8B8B8;
+    color: #999;
     position: absolute;
     right: 1.25rem;
     bottom: 0.25rem;
     pointer-events: none;
 }
 
+form > div > .select:hover:after {
+    color: #555;
+}
+
 form > div > .select select {
-    width: calc(100% + 3rem);
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
     background-color: transparent;
     background-image: none;
+    padding: 1rem 0;
 }
 
 main > header form > div:not(.clear):not(.control) {
@@ -112,6 +116,12 @@ form > div > textarea {
     overflow: hidden; /* Fixme */
 
     box-shadow: none; /* Firefox weird CSS */
+}
+
+form > div > .select {
+    position: relative;
+    padding-top: 4rem;
+    padding-bottom: 0;
 }
 
 form > div.compact > .select,

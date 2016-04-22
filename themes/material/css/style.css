@@ -375,183 +375,6 @@ main footer {
     font-size: 2rem;
 }
 
-/* Icon */
-span.icon {
-    font-size: 3rem;
-    line-height: 5rem;
-    text-align: center;
-    background-size: cover;
-    background-position: center;
-}
-
-span.icon img {
-    max-width: 100%;
-    max-height: 100%;
-}
-
-span.icon.primary.thumb {
-    left: 0;
-    width: 7rem;
-    top: 0;
-    height: 100%;
-    margin: 0;
-    line-height: 7.5rem;
-}
-
-li.oppose span.icon {
-    left: auto;
-    right: 2rem;
-}
-
-span.icon.bubble {
-    border-radius: 5rem;
-    color: white;
-    font-size: 0;
-    font-size: 2.5rem;
-}
-
-span.icon.bubble img {
-    border-radius: 5rem;
-}
-
-span.icon.bubble i {
-    font-size: 3rem;
-    line-height: 5rem;
-}
-
-span.icon.small {
-    width: 3rem;
-    height: 3rem;
-    line-height: 3rem;
-    margin-top: -1.5rem;
-}
-/*
-span.icon.tiny {
-    font-size: 1.8rem;
-    font-weight: 600;
-}
-
-span.icon.large {
-    width: 7rem;
-    height: 7rem;
-    line-height: 7rem;
-    margin-top: -3.5rem;
-}
-*/
-span.icon.small.bubble:first-letter,
-span.icon.small.bubble i {
-    font-size: 2rem;
-    line-height: 1.5em;
-    vertical-align: text-top;
-}
-
-span.icon.status:after {
-    content: '';
-    display: block;
-    width: 2rem;
-    height: 2rem;
-    left: 3.25rem;
-    top: 3.25rem;
-    position: absolute;
-
-    border-radius: 2em;
-    background-color: #DDD;
-}
-
-main ul li .control > i {
-    margin-left: 0;
-}
-
-/* Card */
-
-.card {
-    padding: 1rem;
-}
-
-.card > .block:not(.subheader) {
-    background-color: white;
-    border-radius: 2px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    overflow: hidden;
-    margin-bottom: 1rem;
-}
-
-.card > form.block {
-    padding: 2rem;
-    padding-top: 0;
-    box-sizing: border-box;
-}
-
-.card.shadow > .block:not(.subheader) {
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 2px rgba(0, 0, 0, 0.24);
-    border: none;
-}
-
-/* Dialog */
-
-.dialog {
-    position: fixed;
-    top: 5%;
-    left: 50%;
-    background-color: white;
-    height: initial;
-    max-height: 90%;
-    width: 50rem;
-    margin-left: -25rem;
-
-    overflow: hidden;
-
-    box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
-    border-radius: 0.25rem;
-    z-index: 3;
-    box-sizing: border-box;
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-}
-
-.dialog:empty {
-    display: none;
-}
-
-.dialog.scroll {
-    height: 90%;
-}
-
-.dialog > section {
-    height: 100%;
-    overflow-y: auto;
-    position: relative;
-}
-
-.dialog > section > *:first-child:not(ul) {
-    margin-top: 2rem;
-}
-
-.dialog > section > *:last-child {
-    margin-bottom: 2rem;
-}
-
-.dialog > section > *:not(ul) {
-    padding: 0 2rem;
-}
-
-.dialog > section > form > ul > li {
-    padding: 0;
-}
-
-@media screen and (max-width: 600px) {
-    .dialog {
-        width: 90%;
-        height: 90%;
-        min-height: 0;
-        min-width: 0;
-        max-height: 90%;
-        margin-left: -45%;
-        margin-top: 0;
-        top: 5%;
-    }
-}
-
 /* Actions bar */
 
 .actions {
@@ -778,24 +601,6 @@ dl dd {
     }
 }
 
-/* Divided */
-
-*.divided:not(.spaced) > *:not(:last-child),
-*.divided.spaced > *:not(:last-child).subheader,
-*.divided.spaced > *:not(:last-child):not(.subheader):after {
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-}
-
-*.divided.spaced > *:not(:last-child):after {
-    position: absolute;
-    right: 0;
-    bottom: 0rem;
-    content: "";
-    display: block;
-    width: calc(100% - 9rem);
-}
-
 /* Spinner */
 
 .spinner {
@@ -824,7 +629,7 @@ dl dd {
 }
 
 .spinner:before {
-    z-index: 2;
+    z-index: 3;
     width: 3.5rem;
     height: 3.5rem;
     margin: 1rem;
@@ -837,6 +642,8 @@ dl dd {
 }
 
 .spinner:after {
+    z-index: 2;
+
     box-shadow: 0px 0.5rem 1.25rem rgba(0, 0, 0, 0.23), 0px 0.5rem 1.25rem rgba(0, 0, 0, 0.16);
     background-color: white;
 

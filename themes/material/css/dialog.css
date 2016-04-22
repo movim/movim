@@ -1,0 +1,64 @@
+/* Dialog */
+
+.dialog {
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    background-color: white;
+    height: initial;
+    max-height: 90%;
+    width: 50rem;
+    margin-left: -25rem;
+
+    overflow: hidden;
+
+    box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
+    border-radius: 0.25rem;
+    z-index: 3;
+    box-sizing: border-box;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+.dialog:empty {
+    display: none;
+}
+
+.dialog.scroll {
+    height: 90%;
+}
+
+.dialog > section {
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.dialog > section > *:first-child:not(ul) {
+    margin-top: 2rem;
+}
+
+.dialog > section > *:last-child {
+    margin-bottom: 2rem;
+}
+
+.dialog > section > *:not(ul) {
+    padding: 0 2rem;
+}
+
+.dialog > section > form > ul > li {
+    padding: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .dialog {
+        width: 90%;
+        height: 90%;
+        min-height: 0;
+        min-width: 0;
+        max-height: 90%;
+        margin-left: -45%;
+        margin-top: 0;
+        top: 5%;
+    }
+}

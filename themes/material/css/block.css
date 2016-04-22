@@ -12,11 +12,11 @@
 .flex.card .block.large {
     flex: 1 100%;
 }
-
+/*
 .flex.card {
     padding: 0;
 }
-
+*/
 .flex.card .block {
     margin: 1rem;
     flex: 1 calc(50% - 2rem);

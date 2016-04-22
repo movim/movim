@@ -1,0 +1,75 @@
+/* Icon */
+
+span.icon {
+    font-size: 3rem;
+    line-height: 5rem;
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+}
+
+span.icon img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+span.icon.primary.thumb {
+    left: 0;
+    width: 7rem;
+    top: 0;
+    height: 100%;
+    margin: 0;
+    line-height: 7.5rem;
+}
+
+li.oppose span.icon {
+    left: auto;
+    right: 2rem;
+}
+
+span.icon.bubble {
+    border-radius: 5rem;
+    color: white;
+    font-size: 0;
+    font-size: 2.5rem;
+}
+
+span.icon.bubble img {
+    border-radius: 5rem;
+}
+
+span.icon.bubble i {
+    font-size: 3rem;
+    line-height: 5rem;
+}
+
+span.icon.small {
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    margin-top: -1.5rem;
+}
+
+span.icon.small.bubble:first-letter,
+span.icon.small.bubble i {
+    font-size: 2rem;
+    line-height: 1.5em;
+    vertical-align: text-top;
+}
+
+span.icon.status:after {
+    content: '';
+    display: block;
+    width: 2rem;
+    height: 2rem;
+    left: 3.25rem;
+    top: 3.25rem;
+    position: absolute;
+
+    border-radius: 2em;
+    background-color: #DDD;
+}
+
+main ul li .control > i {
+    margin-left: 0;
+}
