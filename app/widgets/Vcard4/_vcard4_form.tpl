@@ -54,7 +54,7 @@
 
         <div class="select" style="width: 33.33%; float: left;">
             <select name="day" class="datepicker">
-                <option value="-1">{$c->__('Day')}</option>
+                <option value="-1">{$c->__('day.title')}</option>
                 {loop="$days"}
                     <option value="{$value}"
                     {if="$key == substr($me->date, 8)"}
@@ -66,7 +66,7 @@
         </div>
         <div class="select" style="width: 33.33%; float: right;">
             <select name="year" class="datepicker">
-                <option value="-1">{$c->__('Year')}</option>
+                <option value="-1">{$c->__('year.title')}</option>
                 {loop="$years"}
                     <option value="{$value}"
                     {if="$value == substr($me->date,0,4)"}
@@ -78,7 +78,7 @@
         </div>
         <div class="select" style="width: 33.33%;">
             <select name="month" class="datepicker">
-                <option value="-1">{$c->__('Month')}</option>
+                <option value="-1">{$c->__('month.title')}</option>
                 {loop="$months"}
                     <option value="{$key}"
                     {if="$key == substr($me->date,5,2)"}
@@ -91,7 +91,6 @@
     </div>
 
     <div class="block">
-        <label for="gender">{$c->__('general.gender')}</label>
         <div class="select">
             <select name="gender">
             {loop="$gender"}
@@ -103,6 +102,7 @@
             {/loop}
             </select>
         </div>
+        <label for="gender">{$c->__('general.gender')}</label>
     </div>
 
     <div class="block">
