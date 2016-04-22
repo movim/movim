@@ -1,3 +1,22 @@
+<header>
+    <ul class="list middle">
+        <li>
+            <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()">
+                <i class="zmdi zmdi-menu"></i>
+            </span>
+            <span class="primary icon on_desktop icon gray">
+                <i class="zmdi zmdi-bookmark"></i>
+            </span>
+            {if="count($nodes) > 0"}
+                <span class="control icon gray">
+                    {$subscriptions|count}
+                </span>
+            {/if}
+            <p class="center">{$c->__('page.groups')}</p>
+            <p class="center">{$c->__('groups.subscriptions')}</p>
+        </li>
+    </ul>
+</header>
 {if="$subscriptions == null"}
     <ul class="thick">
         <div class="placeholder icon bookmark">

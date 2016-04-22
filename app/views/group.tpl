@@ -6,7 +6,6 @@
 </nav>
 
 <main>
-    <?php $this->widget('Header'); ?>
     <section>
         <?php $this->widget('Groups'); ?>
         <?php $this->widget('Group'); ?>

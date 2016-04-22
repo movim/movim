@@ -1,6 +1,6 @@
 <section>
     <form name="groupadd">
-        <h3>{$c->__('groups.add')}</h3>
+        <h3>{$c->__('groups.add', $server)}</h3>
 
         <div>
             <input name="name" placeholder="{$c->__('groups.name_example')}" type="text" required />

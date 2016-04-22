@@ -104,7 +104,7 @@ class Group extends \Movim\Widget\Base
     {
         list($server, $node) = $packet->content;
 
-        Header::fill($this->prepareHeader($server, $node));
+        RPC::call('MovimTpl.fill', '#group_widget > header', $this->prepareHeader($server, $node));
     }
 
     function onAffiliations($packet)
@@ -116,7 +116,7 @@ class Group extends \Movim\Widget\Base
                 $this->_role = (string)$r[1];
         }
 
-        Header::fill($this->prepareHeader($server, $node));
+        RPC::call('MovimTpl.fill', '#group_widget > header', $this->prepareHeader($server, $node));
 
         //if(isset($this->_role)
         //&& ($this->_role == 'owner' || $this->_role == 'publisher')) {
@@ -211,7 +211,7 @@ class Group extends \Movim\Widget\Base
 
         $slugify = new Slugify();
 
-        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), $html);
+        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node).' > div.card', $html);
         RPC::call('Group.enableVideos');
         unset($html);
     }
@@ -283,8 +283,8 @@ class Group extends \Movim\Widget\Base
 
     function ajaxGetHistory($server, $node, $page)
     {
-        $html = $this->prepareGroup($server, $node, $page);
-        RPC::call('movim_append', 'group_widget', $html);
+        $html = $this->prepareGroup($server, $node);
+        RPC::call('MovimTpl.append', '#group_widget > div', $html);
         RPC::call('Group.enableVideos');
     }
 
@@ -380,7 +380,8 @@ class Group extends \Movim\Widget\Base
     function ajaxClear()
     {
         $html = $this->prepareEmpty();
-        RPC::call('movim_fill', 'group_widget', $html);
+        RPC::call('MovimTpl.fill', '#group_widget header', '');
+        RPC::call('MovimTpl.fill', '#group_widget > div', $html);
     }
 
     function prepareEmpty()
@@ -432,6 +433,7 @@ class Group extends \Movim\Widget\Base
         $view->assign('page', $page);
         $view->assign('posts', $posts);
         $view->assign('paging', $this->_paging);
+
         $html = $view->draw('_group_posts', true);
 
         return $html;
