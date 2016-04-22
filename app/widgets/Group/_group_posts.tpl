@@ -1,3 +1,6 @@
+{if="$page == 0"}
+<br />
+{/if}
 {loop="$posts"}
     {$c->preparePost($value)}
 {/loop}

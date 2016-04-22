@@ -283,7 +283,7 @@ class Group extends \Movim\Widget\Base
 
     function ajaxGetHistory($server, $node, $page)
     {
-        $html = $this->prepareGroup($server, $node);
+        $html = $this->prepareGroup($server, $node, $page);
         RPC::call('MovimTpl.append', '#group_widget > div', $html);
         RPC::call('Group.enableVideos');
     }
