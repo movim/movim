@@ -14,12 +14,12 @@ class Search extends \Movim\Widget\Base
     function ajaxRequest()
     {
         $view = $this->tpl();
-        $view->assign('empty', $this->ajaxSearch(''));
+        $view->assign('empty', $this->prepareSearch(''));
         Dialog::fill($view->draw('_search', true));
         RPC::call('Search.init');
     }
 
-    function ajaxSearch($key)
+    function prepareSearch($key)
     {
         $view = $this->tpl();
 
@@ -40,7 +40,12 @@ class Search extends \Movim\Widget\Base
             if(!$posts && !$contacts) $view->assign('empty', true);
         }
 
-        RPC::call('MovimTpl.fill', '#results', $view->draw('_search_results', true));
+        return $view->draw('_search_results', true);
+    }
+
+    function ajaxSearch($key)
+    {
+        RPC::call('MovimTpl.fill', '#results', $this->prepareSearch($key));
     }
 
     function display()
