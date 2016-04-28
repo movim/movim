@@ -9,6 +9,7 @@ class Search extends \Movim\Widget\Base
     function load()
     {
         $this->addjs('search.js');
+        $this->addcss('search.css');
     }
 
     function ajaxRequest()
@@ -46,6 +47,12 @@ class Search extends \Movim\Widget\Base
     function ajaxSearch($key)
     {
         RPC::call('MovimTpl.fill', '#results', $this->prepareSearch($key));
+    }
+
+    function ajaxChat($jid)
+    {
+        $contact = new Contact;
+        $contact->ajaxChat($jid);
     }
 
     function display()

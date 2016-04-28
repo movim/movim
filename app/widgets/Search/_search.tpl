@@ -1,4 +1,4 @@
-<section>
+<section id="search">
     <ul class="list">
         <li>
             <span class="primary icon gray">

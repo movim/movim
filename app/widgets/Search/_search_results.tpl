@@ -35,7 +35,7 @@
             <li class="subheader"><p>{$c->__('page.contacts')}</p></li>
         {/if}
         {loop="$contacts"}
-            <li onclick="movim_reload('{$c->route('contact', $value->jid)}')">
+            <li>
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
                     <span class="primary icon bubble">
@@ -46,6 +46,12 @@
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
+                <span class="control icon active gray" onclick="movim_reload('{$c->route('contact', $value->jid)}')">
+                    <i class="zmdi zmdi-accounts"></i>
+                </span>
+                <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
+                    <i class="zmdi zmdi-comment-text-alt"></i>
+                </span>
                 <p class="line">{$value->getTrueName()}</p>
                 <p class="line">{$value->jid}</p>
             </li>
