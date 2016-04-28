@@ -1,3 +1,4 @@
+<?php $this->widget('Search');?>
 <?php $this->widget('Upload'); ?>
 
 <nav class="color dark">

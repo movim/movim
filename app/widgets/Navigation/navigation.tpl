@@ -55,6 +55,12 @@
 </ul>
 
 <ul class="list divided oppose active">
+    <li onclick="Search_ajaxRequest()">
+        <span class="primary icon">
+            <i class="zmdi zmdi-search"></i>
+        </span>
+        <p class="normal">{$c->__('button.search')}</p>
+    </li>
     <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}"
        href="{$c->route('conf')}"
        title="{$c->__('page.configuration')}">

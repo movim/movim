@@ -480,6 +480,41 @@ class ContactDAO extends SQL {
         return $this->run('RosterContact');
     }
 
+    function search($key)
+    {
+        $this->_sql = '
+        select
+            rosterlink.jid,
+            contact.fn,
+            contact.name,
+            contact.nickname,
+            contact.tuneartist,
+            contact.tunetitle,
+            rosterlink.rostername,
+            rosterlink.rostersubscription,
+            rosterlink.groupname,
+            rosterlink.chaton
+        from rosterlink
+        left outer join contact
+        on rosterlink.jid = contact.jid
+        where rosterlink.session = :session
+          and (rosterlink.jid like :jid
+            or rosterlink.rostername like :rostername)
+        order by groupname, rosterlink.jid
+        limit 5 offset 0';
+
+        $this->prepare(
+            'RosterLink',
+            array(
+                'session' => $this->_user,
+                'jid' => '%'.$key.'%',
+                'rostername' => '%'.$key.'%'
+            )
+        );
+
+        return $this->run('RosterContact');
+    }
+
     function getRosterFrom() {
         $this->_sql = '
             select * from rosterlink

@@ -625,7 +625,36 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
-    function exist($id) {
+    function search($key)
+    {
+        $this->_sql = '
+            select *, postn.aid from postn
+            left outer join contact on postn.aid = contact.jid
+            where (
+                (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and node = \'urn:xmpp:microblog:0\')
+                or (postn.origin = :origin and node = \'urn:xmpp:microblog:0\')
+                or ((postn.origin, node) in (select server, node from subscription where jid = :origin))
+                )
+                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                and postn.node not like \'urn:xmpp:inbox\'
+                and upper(title) like upper(:title)
+            order by postn.published desc
+            limit 5 offset 0
+            ';
+
+        $this->prepare(
+            'Postn',
+            array(
+                'origin' => $this->_user,
+                'title'  => '%'.$key.'%'
+            )
+        );
+
+        return $this->run('ContactPostn');
+    }
+
+    function exist($id)
+    {
         $this->_sql = '
             select count(*) from postn
             where postn.nodeid = :nodeid

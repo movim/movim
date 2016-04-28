@@ -1,3 +1,5 @@
+<?php $this->widget('Search');?>
+
 <nav class="color dark">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Navigation');?>
