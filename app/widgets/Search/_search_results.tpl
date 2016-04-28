@@ -47,7 +47,7 @@
                     </span>
                 {/if}
                 <span class="control icon active gray" onclick="movim_reload('{$c->route('contact', $value->jid)}')">
-                    <i class="zmdi zmdi-accounts"></i>
+                    <i class="zmdi zmdi-account"></i>
                 </span>
                 <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
                     <i class="zmdi zmdi-comment-text-alt"></i>
