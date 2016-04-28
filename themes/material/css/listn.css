@@ -40,8 +40,25 @@ ul.list li > .primary {
     margin-top: -2.5rem;
     position: absolute;
 }
+
 ul.list li > .control.active,
 ul.list li > .primary.active {
+    width: 5rem;
+    height: 5rem;
+    margin-top: -2.5rem;
+    line-height: 5rem;
+}
+
+ul.list.middle li > .control.active,
+ul.list.middle li > .primary.active {
+    width: 6.5rem;
+    height: 6.5rem;
+    margin-top: -3.25rem;
+    line-height: 6.5rem;
+}
+
+ul.list.thick li > .control.active,
+ul.list.thick li > .primary.active {
     width: 7rem;
     height: 7rem;
     margin-top: -3.5rem;
@@ -173,6 +190,22 @@ ul.list li > .control ~ .control ~ .control {
     right: 10rem;
 }
 
+ul.list.middle li > .control ~ .control {
+    right: 6rem;
+}
+
+ul.list.middle li > .control ~ .control ~ .control {
+    right: 12rem;
+}
+
+ul.list.thick li > .control ~ .control {
+    right: 7rem;
+}
+
+ul.list.thick li > .control ~ .control ~ .control {
+    right: 14rem;
+}
+
 /* Limit the size of the main content */
 
 ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
@@ -185,16 +218,6 @@ ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
 
 ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
     width: calc(100% - 15rem);
-}
-
-/* Place the other controls */
-
-header > ul.list li > .control ~ .control {
-    right: 7rem;
-}
-
-header > ul.list li > .control ~ .control ~ .control {
-    right: 14rem;
 }
 
 /* Limit the size of the main content */
