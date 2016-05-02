@@ -82,11 +82,7 @@ class Publish extends \Movim\Widget\Base
         $view->assign('node', $node);
         $view->assign('item', $post);
 
-        if($node == 'urn:xmpp:microblog:0') {
-            RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
-        } else {
-            RPC::call('MovimTpl.fill', '#group_widget > div', $view->draw('_publish_create', true));
-        }
+        RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
 
         $pd = new \Modl\ItemDAO;
         $item = $pd->getItem($server, $node);

@@ -1,5 +1,5 @@
 <section>
-    <form name="groupadd">
+    <form name="groupadd" onsubmit="return false;">
         <h3>{$c->__('groups.add', $server)}</h3>
 
         <div>
