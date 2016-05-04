@@ -38,32 +38,32 @@ ul.list.active li.active:not(.subheader) {
 
 ul.list li .control,
 ul.list li .primary {
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 5rem;
+    height: 5rem;
     top: 50%;
-    margin-top: -2.75rem;
+    margin-top: -2.5rem;
     position: absolute;
-    line-height: 5.5rem;
-    /*padding: 0.25rem 0;*/
+    line-height: 5rem;
 }
 
-ul.list.middle li .control:not(.bubble),
-ul.list.middle li .primary:not(.bubble) {
+ul.list li .control:not(.bubble):not(.thumb),
+ul.list li .primary:not(.bubble):not(.thumb) {
+    margin-top: -3rem;
+    padding: 0.5rem;
+}
+
+ul.list.middle li .control:not(.bubble):not(.thumb),
+ul.list.middle li .primary:not(.bubble):not(.thumb) {
     margin-top: -3.5rem;
-    padding: 0.75rem 0;
+    padding: 1rem 0.5rem;
 }
 
-ul.list.thick li .control:not(.bubble),
-ul.list.thick li .primary:not(.bubble) {
-    padding: 1.5rem 0;
+ul.list.thick li .control:not(.bubble):not(.thumb),
+ul.list.thick li .primary:not(.bubble):not(.thumb) {
     margin-top: -4.25rem;
+    padding: 1.75rem 0.5rem;
 }
-/*
-ul.list li > .control.small.bubble,
-ul.list li > .primary.small.bubble {
-    margin-top: -1.5rem;
-}
-*/
+
 ul.list > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button),
 ul.list li.subheader p {
     width: 100%;
@@ -156,6 +156,10 @@ ul.list li.subheader > p {
 /* If we have a primary control */
 
 ul.list li > .primary {
+    left: 1.5rem;
+}
+
+ul.list li > .primary.bubble {
     left: 2rem;
 }
 
@@ -170,29 +174,37 @@ ul.list li > .control {
 }
 
 ul.list li > .control ~ .control {
-    right: 5.5rem;
+    right: 6rem;
 }
 
 ul.list li > .control ~ .control ~ .control {
-    right: 11rem;
+    right: 12rem;
 }
 
 /* Limit the size of the main content */
 
 ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
-    width: calc(100% - 5rem);
+    width: calc(100% - 6rem);
 }
 
 ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    width: calc(100% - 10rem);
+    width: calc(100% - 12rem);
 }
 
 ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    width: calc(100% - 15rem);
+    width: calc(100% - 18rem);
 }
 
 /* Limit the size of the main content */
 
+header > ul.list li .primary {
+    left: 0;
+}
+
+header > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
+    padding-left: 7rem;
+}
+/*
 header > ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
     width: calc(100% - 7rem);
 }
@@ -204,7 +216,7 @@ header > ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.co
 header > ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
     width: calc(100% - 21rem);
 }
-
+*/
 /* Tabs */
 
 ul.tabs {

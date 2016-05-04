@@ -12,7 +12,6 @@ form > div.compact:not(.clear):not(.control) {
 
 li > form > div:not(.control) { /* If we put the form in a list */
     min-height: 0;
-    line-height: 3rem;
     padding-top: 0rem;
     top: -1.5rem;
 }
