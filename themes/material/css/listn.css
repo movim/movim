@@ -202,7 +202,7 @@ header > ul.list li .primary {
 }
 
 header > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 7rem;
+    padding-left: 9rem;
 }
 /*
 header > ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
