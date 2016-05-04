@@ -1,13 +1,13 @@
 /* Menu */
 
-body > nav > ul.list li > .primary {
-    left: 1rem;
-}
-
 body > nav > ul:nth-child(2) li p.normal,
 body > nav > ul:nth-child(3) li p.normal {
     height: 6rem;
     line-height: 6rem;
+}
+
+body > nav > ul.list li span.primary {
+    left: 0.75rem;
 }
 
 body > nav > ul a {

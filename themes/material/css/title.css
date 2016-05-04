@@ -1,0 +1,55 @@
+/* Titles */
+
+h1 { /* Display 1 */
+    font-size: 4.25rem;
+    line-height: 7rem;
+}
+
+h2 { /* Headline */
+    font-size: 3rem;
+    line-height: 4rem;
+    padding: 2rem 0;
+}
+
+h2.thin {
+    line-height: 5rem;
+}
+
+h3 { /* Title */
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h4, input, textarea, select { /* Headline */
+    font-size: 2rem;
+    line-height: 2.5rem;
+}
+
+h4 {
+    font-weight: 400;
+}
+
+h4.gray {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+article section content ul li, /* Body 1 */
+article section content p {
+    font-size: 2rem;
+    font-weight: 300;
+}
+
+.snackbar, /* Body 2 */
+.toast {
+    font-size: 1.75rem;
+    font-weight: 500;
+}
+
+label, span.info { /* Caption */
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.54);
+}
+label, span.info b { /* Caption */
+    font-weight: 600;
+}
+

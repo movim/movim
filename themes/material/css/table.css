@@ -1,6 +1,7 @@
 table.table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 1rem;
 }
 
 table.table tbody tr:hover {
@@ -10,6 +11,11 @@ table.table tbody tr:hover {
 table.table th,
 table.table td {
     text-align: right;
+}
+
+table.table th li,
+table.table td li {
+    text-align: left;
 }
 
 table.table thead tr th,
@@ -33,5 +39,14 @@ table.table th {
 table.table th:last-child,
 table.table td:last-child {
     padding-right: 2rem;
+}
+
+table.table td li i {
+    line-height: 7rem;
+}
+
+table.table th[colspan],
+table.table td[colspan] {
+    padding: 0;
 }
 

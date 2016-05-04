@@ -1,7 +1,7 @@
 /* Form */
 
 form > div:not(.clear):not(.control) {
-    min-height: 9.5rem;
+    min-height: 9rem;
     position: relative;
     box-sizing: border-box;
 }
@@ -30,12 +30,7 @@ form > div > label {
 form > div.icon {
     padding-left: 9rem;
 }
-/*
-form > div > input:focus + label,
-form > div > textarea:focus + label {
-    display: block;
-}
-*/
+
 form > div > textarea,
 #hiddendiv {
     border: none;
@@ -96,10 +91,19 @@ main > header form > div:not(.clear):not(.control) > .select select {
 }
 
 /* Placeholders to mimic FF */
+
 ::-webkit-input-placeholder, /* WebKit browsers */
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #fff;
+    color: #fff;
     opacity: 0.5;
+}
+
+/* Webkit weird CSS, sic */
+
+form > div > .select select,
+form > div > input:not([type=submit]),
+form > div > textarea {
+    outline-width: 0;
 }
 
 form > div > .select,
@@ -107,15 +111,13 @@ form > div > input:not([type=submit]),
 form > div > textarea {
     display: block;
     padding: 1rem 0;
-    padding-top: 5rem;
+    padding-top: 4.5rem;
     width: 100%;
     background-color: transparent;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     margin-bottom: 1rem;
 
     overflow: hidden; /* Fixme */
-
-    box-shadow: none; /* Firefox weird CSS */
+    box-shadow:0px 1px 0px rgba(0, 0, 0, 0.12);
 }
 
 form > div > .select {
@@ -135,19 +137,8 @@ form > div > input:not([type=submit]):-webkit-autofill {
     -webkit-box-shadow: 0 0 0 50px white inset;
 }
 form > div > input:not([type=submit]):-webkit-autofill:focus {
-    -webkit-box-shadow: 0;
+    box-shadow: 0;
     -webkit-text-fill-color: #333;
-}
-
-form > div > input:focus,
-form > div > textarea:focus {
-    border-bottom-width: 2px;
-    margin-bottom: calc(1rem - 1px);
-}
-
-form > div > input:invalid,
-form > div > input:required {
-    box-shadow: none;
 }
 
 /* Checkbox element */
@@ -423,3 +414,4 @@ header.big ~ .button.action {
     word-wrap: break-word;
     overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
 }
+

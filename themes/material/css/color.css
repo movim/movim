@@ -56,10 +56,12 @@ ul li.action > form > div.action,
 .icon.gray  , p.user.gray     { color: #9E9E9E; }
 .icon.black , p.user.black    { color: #000; }
 
-form input:focus:invalid,
-form textarea:focus:invalid {
-    border-bottom-color: #F44336;
+form > div > input:focus:invalid,
+form > div > input:focus:required {
+    box-shadow: 0px 2px 0px #F44336;
 }
+
+form > div > input:invalid,
 form input:focus:invalid + label,
 form textarea:focus:invalid + label {
     color: #F44336;
@@ -127,5 +129,6 @@ form textarea:focus:not(:invalid) + label {
 
 form input:focus:not(:invalid),
 form textarea:focus:not(:invalid) {
-    border-bottom-color: #FF5722;
+    box-shadow:0px 2px 0px #FF5722;
 }
+

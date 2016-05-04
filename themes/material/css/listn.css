@@ -3,6 +3,10 @@ ul.list {
     padding: 0;
 }
 
+ul.list li:not(.subheader) {
+    padding: 0.25rem 0;
+}
+
 ul.list.middle li:not(.subheader) {
     padding: 0.75rem 0;
 }
@@ -32,47 +36,38 @@ ul.list.active li.active:not(.subheader) {
 
 /* Main elements */
 
-ul.list li > .control,
-ul.list li > .primary {
-    width: 5rem;
-    height: 5rem;
+ul.list li .control,
+ul.list li .primary {
+    width: 5.5rem;
+    height: 5.5rem;
     top: 50%;
-    margin-top: -2.5rem;
+    margin-top: -2.75rem;
     position: absolute;
+    line-height: 5.5rem;
+    /*padding: 0.25rem 0;*/
 }
 
-ul.list li > .control.active,
-ul.list li > .primary.active {
-    width: 5rem;
-    height: 5rem;
-    margin-top: -2.5rem;
-    line-height: 5rem;
-}
-
-ul.list.middle li > .control.active,
-ul.list.middle li > .primary.active {
-    width: 6.5rem;
-    height: 6.5rem;
-    margin-top: -3.25rem;
-    line-height: 6.5rem;
-}
-
-ul.list.thick li > .control.active,
-ul.list.thick li > .primary.active {
-    width: 7rem;
-    height: 7rem;
+ul.list.middle li .control:not(.bubble),
+ul.list.middle li .primary:not(.bubble) {
     margin-top: -3.5rem;
-    line-height: 7rem;
+    padding: 0.75rem 0;
 }
 
-ul.list li > .primary.active {
-    left: 0;
+ul.list.thick li .control:not(.bubble),
+ul.list.thick li .primary:not(.bubble) {
+    padding: 1.5rem 0;
+    margin-top: -4.25rem;
 }
 
 ul.list li > .control.small,
 ul.list li > .primary.small {
     width: 3rem;
     height: 3rem;
+    line-height: 3rem;
+}
+
+ul.list li > .control.small.bubble,
+ul.list li > .primary.small.bubble {
     margin-top: -1.5rem;
 }
 
@@ -167,7 +162,6 @@ ul.list li.subheader > p {
 
 /* If we have a primary control */
 
-
 ul.list li > .primary {
     left: 2rem;
 }
@@ -183,27 +177,11 @@ ul.list li > .control {
 }
 
 ul.list li > .control ~ .control {
-    right: 5rem;
+    right: 5.5rem;
 }
 
 ul.list li > .control ~ .control ~ .control {
-    right: 10rem;
-}
-
-ul.list.middle li > .control ~ .control {
-    right: 6rem;
-}
-
-ul.list.middle li > .control ~ .control ~ .control {
-    right: 12rem;
-}
-
-ul.list.thick li > .control ~ .control {
-    right: 7rem;
-}
-
-ul.list.thick li > .control ~ .control ~ .control {
-    right: 14rem;
+    right: 11rem;
 }
 
 /* Limit the size of the main content */
@@ -427,3 +405,4 @@ ul.context_menu.shown {
     display: block;
     width: calc(100% - 9rem);
 }
+
