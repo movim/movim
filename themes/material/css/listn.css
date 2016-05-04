@@ -58,19 +58,12 @@ ul.list.thick li .primary:not(.bubble) {
     padding: 1.5rem 0;
     margin-top: -4.25rem;
 }
-
-ul.list li > .control.small,
-ul.list li > .primary.small {
-    width: 3rem;
-    height: 3rem;
-    line-height: 3rem;
-}
-
+/*
 ul.list li > .control.small.bubble,
 ul.list li > .primary.small.bubble {
     margin-top: -1.5rem;
 }
-
+*/
 ul.list > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button),
 ul.list li.subheader p {
     width: 100%;

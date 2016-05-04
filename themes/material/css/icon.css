@@ -40,15 +40,22 @@ span.icon.bubble img {
 
 span.icon.bubble i {
     font-size: 3rem;
-    line-height: 5rem;
+    line-height: 5.5rem;
 }
 
-span.icon.small {
+ul.list li span.icon.small {
     width: 3rem;
     height: 3rem;
     line-height: 3rem;
     margin-top: -1.5rem;
 }
+
+/*ul.list li > .control.small,
+ul.list li > .primary.small {
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+}*/
 
 span.icon.small.bubble:first-letter,
 span.icon.small.bubble i {
