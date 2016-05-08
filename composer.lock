@@ -768,12 +768,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "df53ddbf00eaf98b5df15afed9e8f9b9322932f5"
+                "reference": "862c33c29045ca1a3fca275b54049aab072406a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/df53ddbf00eaf98b5df15afed9e8f9b9322932f5",
-                "reference": "df53ddbf00eaf98b5df15afed9e8f9b9322932f5",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/862c33c29045ca1a3fca275b54049aab072406a5",
+                "reference": "862c33c29045ca1a3fca275b54049aab072406a5",
                 "shasum": ""
             },
             "require": {
@@ -808,7 +808,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-04-19 20:01:53"
+            "time": "2016-05-08 17:17:02"
         },
         {
             "name": "movim/sasl2",
@@ -1593,16 +1593,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.5",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "294368294f9cd207f81474bab27d99875a19ac55"
+                "reference": "6597aa51149aff674faa9db1729c0c70392aa296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/294368294f9cd207f81474bab27d99875a19ac55",
-                "reference": "294368294f9cd207f81474bab27d99875a19ac55",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/6597aa51149aff674faa9db1729c0c70392aa296",
+                "reference": "6597aa51149aff674faa9db1729c0c70392aa296",
                 "shasum": ""
             },
             "require": {
@@ -1653,7 +1653,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-03-31 17:39:15"
+            "time": "2016-05-07 18:51:56"
         },
         {
             "name": "stojg/crop",
