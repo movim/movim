@@ -49,7 +49,7 @@ class Avatar {
         $item->setAttribute('id', sha1($data));
         $publish->appendChild($item);
 
-        $metadata = $dom->createElementNS('urn:xmpp:avatar:data', 'metadata');
+        $metadata = $dom->createElementNS('urn:xmpp:avatar:metadata', 'metadata');
         $item->appendChild($metadata);
 
         $info = $dom->createElement('info');
