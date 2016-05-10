@@ -150,7 +150,6 @@ class Vcard4 extends \Movim\Widget\Base
             $n = new Nickname;
             $n->setNickname($c->name)
               ->request();
-            return;
         }
 
         if(Validator::stringType()->length(0, 40)->validate($vcard->fn->value))
