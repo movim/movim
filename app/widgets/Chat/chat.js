@@ -158,7 +158,7 @@ var Chat = {
                 }
 
                 if(message.delivered) {
-                    info.innerHTML = '<i class="zmdi zmdi-check"></i> ' + info.innerHTML;
+                    info.innerHTML = '<i class="zmdi zmdi-check" title="' + message.delivered + '"></i> ' + info.innerHTML;
                 }
 
                 if(prepend) {

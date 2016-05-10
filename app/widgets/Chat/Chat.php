@@ -566,6 +566,10 @@ class Chat extends \Movim\Widget\Base
 
         $message->publishedPrepared = prepareDate(strtotime($message->published), true, true);
 
+        if($message->delivered) {
+            $message->delivered = prepareDate(strtotime($message->delivered), true);
+        }
+
         return $message;
     }
 
