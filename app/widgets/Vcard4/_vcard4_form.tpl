@@ -39,7 +39,7 @@
     </div>
     <div class="block">
         <input type="text" name="name" class="content" value="{$me->name}" placeholder="{$c->__('general.nickname')}">
-        <label for="fn">{$c->__('general.nickname')}</label>
+        <label for="name">{$c->__('general.nickname')}</label>
     </div>
 
     <div class="block large">
