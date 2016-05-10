@@ -5,18 +5,19 @@
  *
  * @file Vcard4.php
  * This file is part of MOVIM.
- * 
+ *
  * @brief A widget which display all the infos of a contact, vcard 4 version
  *
  * @author Timothée    Jaussoin <edhelas_at_gmail_dot_com>
 
  * Copyright (C)2013 MOVIM project
- * 
+ *
  * See COPYING for licensing information.
  */
 
 use Moxl\Xec\Action\Vcard4\Get;
 use Moxl\Xec\Action\Vcard4\Set;
+use Moxl\Xec\Action\Nickname\Set as Nickname;
 
 use Respect\Validation\Validator;
 
@@ -34,14 +35,14 @@ class Vcard4 extends \Movim\Widget\Base
         $me = $cd->get();
 
         $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
-        
+
         if($me == null) {
             $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
         } else {
             $this->view->assign('form', $this->prepareForm($me));
         }
     }
-    
+
     function prepareForm($me) {
         $vcardform = $this->tpl();
 
@@ -50,12 +51,12 @@ class Vcard4 extends \Movim\Widget\Base
         $vcardform->assign('gender',   getGender());
         $vcardform->assign('marital',  getMarital());
         $vcardform->assign('countries',getCountries());
-        
+
         $vcardform->assign(
             'submit',
             $this->call('ajaxVcardSubmit', "movim_form_to_json('vcard4')")
             );
-            
+
         $vcardform->assign(
             'privacy',
             $this->call('ajaxChangePrivacy', "this.checked")
@@ -78,7 +79,7 @@ class Vcard4 extends \Movim\Widget\Base
                 $j = (string)$i;
             }
             $m = getMonths();
-            
+
             $months[$j] = $m[$i];
         }
         for($i=date('o'); $i>= 1920; $i--) { array_push($years, $i); }
@@ -86,16 +87,16 @@ class Vcard4 extends \Movim\Widget\Base
         $vcardform->assign('days',   $days);
         $vcardform->assign('months', $months);
         $vcardform->assign('years',  $years);
-        
+
         return $vcardform->draw('_vcard4_form', true);
     }
-    
+
     function onMyVcard4($packet) {
         $c = $packet->content;
         $html = $this->prepareForm($c);
 
         Notification::append(null, $this->__('vcard.updated'));
-        
+
         RPC::call('movim_fill', 'vcard_form', $html);
         RPC::commit();
     }
@@ -105,12 +106,12 @@ class Vcard4 extends \Movim\Widget\Base
         Notification::append(null, $this->__('vcard.updated'));
         RPC::commit();
     }
-    
+
     function onMyVcard4NotReceived() {
         Notification::append(null, $this->__('vcard.not_updated'));
         RPC::commit();
     }
-    
+
     function ajaxGetVcard() {
         $r = new Get;
         $r->setTo($this->user->getLogin())
@@ -120,14 +121,14 @@ class Vcard4 extends \Movim\Widget\Base
 
     function ajaxVcardSubmit($vcard) {
         # Format it ISO 8601:
-        if($vcard->year->value  != -1 
-        && $vcard->month->value != -1 
+        if($vcard->year->value  != -1
+        && $vcard->month->value != -1
         && $vcard->day->value   != -1)
-            $vcard->date->value = 
+            $vcard->date->value =
                     $vcard->year->value.'-'.
                     $vcard->month->value.'-'.
                     $vcard->day->value;
-            
+
         unset($vcard->year->value);
         unset($vcard->month->value);
         unset($vcard->day->value);
@@ -137,15 +138,21 @@ class Vcard4 extends \Movim\Widget\Base
 
         if($c == null)
             $c = new \Modl\Contact();
-            
+
         $c->jid     = $this->user->getLogin();
-        
+
         if(isset($vcard->date->value)) {
             $c->date = $vcard->date->value;
-        } 
+        }
 
-        if(Validator::stringType()->length(0, 40)->validate($vcard->name->value))
+        if(Validator::stringType()->length(0, 40)->validate($vcard->name->value)) {
             $c->name    = $vcard->name->value;
+            $n = new Nickname;
+            $n->setNickname($c->name)
+              ->request();
+            return;
+        }
+
         if(Validator::stringType()->length(0, 40)->validate($vcard->fn->value))
             $c->fn      = $vcard->fn->value;
 
@@ -169,10 +176,10 @@ class Vcard4 extends \Movim\Widget\Base
 
         if(Validator::stringType()->validate($vcard->desc->value))
             $c->description     = trim($vcard->desc->value);
-            
+
         $cd = new \Modl\ContactDAO();
         $cd->set($c);
-        
+
         $r = new Set;
         $r->setData($c)->request();
 
