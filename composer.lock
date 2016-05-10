@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "6e6c07b2ec0424d1850c7ebeb4580307b83a9b9e"
+                "reference": "a76bf06a3941315f1dda96e3bcca85e760792875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/6e6c07b2ec0424d1850c7ebeb4580307b83a9b9e",
-                "reference": "6e6c07b2ec0424d1850c7ebeb4580307b83a9b9e",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/a76bf06a3941315f1dda96e3bcca85e760792875",
+                "reference": "a76bf06a3941315f1dda96e3bcca85e760792875",
                 "shasum": ""
             },
             "require": {
@@ -170,7 +170,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-03-25 09:40:48"
+            "time": "2016-05-09 14:46:41"
         },
         {
             "name": "evenement/evenement",
@@ -768,12 +768,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "862c33c29045ca1a3fca275b54049aab072406a5"
+                "reference": "25cc10feda6eedcdf9b42546f5101f5c9f6a0655"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/862c33c29045ca1a3fca275b54049aab072406a5",
-                "reference": "862c33c29045ca1a3fca275b54049aab072406a5",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/25cc10feda6eedcdf9b42546f5101f5c9f6a0655",
+                "reference": "25cc10feda6eedcdf9b42546f5101f5c9f6a0655",
                 "shasum": ""
             },
             "require": {
@@ -808,7 +808,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-05-08 17:17:02"
+            "time": "2016-05-10 22:04:45"
         },
         {
             "name": "movim/sasl2",
@@ -1703,7 +1703,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -1763,16 +1763,16 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "17b04e6b1ede45b57d3ad5146abe50df6c3968b4"
+                "reference": "807dde98589f9b2b00624dca326740380d78dbbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/17b04e6b1ede45b57d3ad5146abe50df6c3968b4",
-                "reference": "17b04e6b1ede45b57d3ad5146abe50df6c3968b4",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/807dde98589f9b2b00624dca326740380d78dbbc",
+                "reference": "807dde98589f9b2b00624dca326740380d78dbbc",
                 "shasum": ""
             },
             "require": {
@@ -1819,11 +1819,11 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-04-12 18:09:53"
+            "time": "2016-05-05 06:56:13"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
@@ -1935,16 +1935,16 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v3.0.5",
+            "version": "v3.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "6ab6fd5ee754fb53a303a5621ae35f3afd5970ac"
+                "reference": "a6cd168310066176599442aa21f5da86c3f8e0b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/6ab6fd5ee754fb53a303a5621ae35f3afd5970ac",
-                "reference": "6ab6fd5ee754fb53a303a5621ae35f3afd5970ac",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/a6cd168310066176599442aa21f5da86c3f8e0b3",
+                "reference": "a6cd168310066176599442aa21f5da86c3f8e0b3",
                 "shasum": ""
             },
             "require": {
@@ -2006,7 +2006,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2016-04-28 09:48:42"
+            "time": "2016-05-03 12:23:49"
         }
     ],
     "packages-dev": [],
