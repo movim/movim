@@ -17,7 +17,7 @@ use Cocur\Slugify\Slugify;
 
 class Group extends \Movim\Widget\Base
 {
-    private $_paging = 15;
+    private $_paging = 10;
     private $_role = null;
 
     function load()
