@@ -8,7 +8,7 @@ class AvatarMetadata extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $jid = current(explode('/',(string)$parent->attributes()->from));
+        $jid = current(explode('/', (string)$parent->attributes()->from));
 
         $evt = new \Event;
 
