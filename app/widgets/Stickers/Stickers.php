@@ -124,6 +124,19 @@ class Stickers extends \Movim\Widget\Base
     }
 
     /**
+     * @brief Show the smiley list
+     */
+    function ajaxSmileyTwo($to)
+    {
+        if(!$this->validateJid($to)) return;
+
+        $view = $this->tpl();
+        $view->assign('jid', $to);
+        $view->assign('icon', $this->respath('stickers').'/icon.png');
+        Dialog::fill($view->draw('_stickers_smiley_two', true));
+    }
+
+    /**
      * @brief Get the path of a emoji
      */
     function ajaxSmileyGet($string)
