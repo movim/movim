@@ -30,10 +30,10 @@
 }
 
 .emoji {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
     margin: 0 0.5rem;
-    margin-bottom: -0.3rem;
+    margin-bottom: -0.9rem;
 }
 
 .emoji.medium {
