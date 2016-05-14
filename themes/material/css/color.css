@@ -127,8 +127,8 @@ form textarea:focus:not(:invalid) + label {
     color: #FF5722;
 }
 
-form input:focus:not(:invalid),
-form textarea:focus:not(:invalid) {
+form input:focus:not(:invalid):not(.button),
+form textarea:focus:not(:invalid):not(.button) {
     box-shadow:0px 2px 0px #FF5722;
 }
 
