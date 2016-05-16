@@ -2,8 +2,8 @@ var Login = {
     domain : '@movim.eu',
     submitted : false,
     fillExample : function(login, pass) {
-        document.querySelector('#login').value = login;
-        document.querySelector('#pass').value = pass;
+        document.querySelector('input#username').value = login;
+        document.querySelector('input#password').value = pass;
     },
 
     /**
@@ -11,24 +11,25 @@ var Login = {
      */
     init : function() {
         // The form submission event
-        form = document.querySelector('form[name="login"]');
-        form.onsubmit = function(e) {
+        document.body.addEventListener('submit', function(e) {
             e.preventDefault();
 
             Login.submitted = true;
 
             // We register the socket
-            MovimWebsocket.connection.register(this.querySelector('input#login').value.replace(/.*@/, ""));
+            MovimWebsocket.connection.register(this.querySelector('input#username').value.replace(/.*@/, ""));
 
             var button = this.querySelector('input[type=submit]');
             button.value = button.dataset.loading;
 
-            localStorage.username = document.querySelector('#login').value;
+            localStorage.username = document.querySelector('input#username').value;
             Login.rememberSession(localStorage.username);
 
             // A fallback security
             setTimeout("MovimWebsocket.unregister()", 20000);
-        }
+
+            return true;
+        }, false);
     },
 
     refresh: function(){
@@ -75,14 +76,14 @@ var Login = {
         else{
             Login.toForm();
 
-            document.querySelector('#login').value = jid;
+            document.querySelector('input#username').value = jid;
             document.querySelector('input#complete').value = jid;
-            document.querySelector('#pass').value = "";
+            document.querySelector('input#password').value = "";
 
             if(jid != '') {
-                document.querySelector('#pass').focus();
+                document.querySelector('input#password').focus();
             } else {
-                document.querySelector('#login').focus();
+                document.querySelector('input#username').focus();
             }
         }
     },
@@ -118,7 +119,7 @@ var Login = {
     toForm : function() {
         movim_remove_class('#login_widget', 'choose');
         // Empty login field
-        document.querySelector('#login').value = "";
+        document.querySelector('input#username').value = "";
     },
 
     /**
@@ -127,7 +128,8 @@ var Login = {
     post : function(jid, url) {
         Login.rememberSession(jid);
         localStorage.postStart = 1;
-        movim_reload(url);
+
+        movim_redirect(url);
     },
 
     /**
@@ -141,7 +143,7 @@ var Login = {
 MovimWebsocket.attach(function()
 {
     if(localStorage.username != null)
-        document.querySelector('#login').value = localStorage.username;
+        document.querySelector('input#username').value = localStorage.username;
 
     Login.init();
 
@@ -173,7 +175,7 @@ MovimWebsocket.register(function()
 
 movim_add_onload(function() {
     // We had the autocomplete system
-    var login = document.querySelector('input#login');
+    var login = document.querySelector('input#username');
     login.addEventListener('input', function() {
         if(this.value.indexOf('@') == -1) {
             // TODO allow another server here

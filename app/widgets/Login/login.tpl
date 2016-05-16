@@ -20,17 +20,18 @@
             <h3>{$c->__('page.login')}</h3>
             <form
                 data-action="{$submit}"
+                method="post" action="login"
                 name="login">
                 <div>
                     <input type="text" id="complete" tabindex="-1"/>
-                    <input type="email" name="login" id="login" autofocus required disabled
+                    <input type="email" name="username" id="username" autofocus required
                         placeholder="username@server.com"/>
-                    <label for="login">{$c->__('form.username')}</label>
+                    <label for="username">{$c->__('form.username')}</label>
                 </div>
                 <div>
-                    <input type="password" name="pass" id="pass" autocomplete="off" required disabled
+                    <input type="password" name="password" id="password" required
                         placeholder="{$c->__('form.password')}"/>
-                    <label for="pass">{$c->__('form.password')}</label>
+                    <label for="password">{$c->__('form.password')}</label>
                 </div>
                 <div>
                     <ul class="list thin">
