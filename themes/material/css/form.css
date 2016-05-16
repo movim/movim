@@ -247,6 +247,7 @@ form > div > input:disabled + label {
     float: right;
 }
 
+.button:disabled,
 .button.inactive {
     opacity: 0.5;
     pointer-events:none;
