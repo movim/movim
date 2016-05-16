@@ -104,6 +104,14 @@
                         rows="1"
                         id="chat_textarea"
                         data-jid="{$jid}"
+                        onkeydown="
+                            if(event.keyCode == 38 && this.value == '') {
+                                Chat_ajaxLast(this.dataset.jid);
+                            } else if(event.keyCode == 40
+                            && (this.value == '' || Chat.edit == true)) {
+                                Chat.clearReplace();
+                            }
+                        "
                         onkeypress="
                             if(event.keyCode == 13) {
                                 if(event.shiftKey) {
@@ -112,11 +120,6 @@
                                 state = 0;
                                 Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if});
                                 return false;
-                            } else if(event.keyCode == 38 && this.value == '') {
-                                Chat_ajaxLast(this.dataset.jid);
-                            } else if(event.keyCode == 40
-                            && (this.value == '' || Chat.edit == true)) {
-                                Chat.clearReplace();
                             } else {
                                 {if="!$muc"}
                                 if(state == 0 || state == 2) {
