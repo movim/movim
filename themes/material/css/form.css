@@ -368,6 +368,7 @@ header.big ~ .button.action {
     bottom: 7rem;
     left: 0;
     padding: 0;
+    pointer-events: none;
 }
 
 .button.action .actions li {
@@ -382,6 +383,10 @@ header.big ~ .button.action {
     opacity: 0;
     transition: all 0.3s ease 0s;
     pointer-events: none;
+}
+
+.button.action.active .actions {
+    pointer-events: auto;
 }
 
 .button.action.active .actions li {
