@@ -39,12 +39,12 @@ class Publish extends \Movim\Widget\Base
     {
         list($to, $node, $id) = array_values($packet->content);
 
-        RPC::call('Publish.enableSend');
-
         // Only for the microblog for the moment
         //if($node == 'urn:xmpp:microblog:0') {
             $this->ajaxCreateComments($to, $id);
         //}
+
+        RPC::call('movim_redirect', Route::urlize('news', $id));
     }
 
     function onTestPublish($packet)
