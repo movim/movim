@@ -14,6 +14,7 @@ var Chats = {
 
                     Chat_ajaxGet(this.dataset.jid);
                     Chats.reset(items);
+                    Notification_ajaxClear('chat|' + this.dataset.jid);
                     Notification.current('chat|' + this.dataset.jid);
                     document.querySelector('#chat_widget').dataset.jid = this.dataset.jid;
                     movim_add_class(this, 'active');
