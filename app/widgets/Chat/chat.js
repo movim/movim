@@ -95,9 +95,8 @@ var Chat = {
 
             id = message.jidfrom + '_conversation';
 
-            if(message.body.match(/^\/me/)
-            && bubble.querySelector('div') != null) {
-                bubble.querySelector('div').className = 'quote';
+            if(message.body.match(/^\/me/)) {
+                bubble.querySelector('.message').className = 'message quote';
                 message.body = message.body.substr(4);
             }
 
@@ -132,7 +131,7 @@ var Chat = {
             }
 
             if(message.body.match(/^\/me\s/)) {
-                bubble.querySelector('div.bubble').className = 'bubble quote';
+                bubble.querySelector('div.bubble > p').className = 'quote';
                 message.body = message.body.substr(4);
             }
 
