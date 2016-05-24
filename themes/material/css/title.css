@@ -18,6 +18,7 @@ h2.thin {
 h3 { /* Title */
     font-size: 2.5rem;
     font-weight: 700;
+    line-height: 4.5rem;
 }
 
 h4, input, textarea, select { /* Headline */
