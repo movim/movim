@@ -16,9 +16,6 @@
                 {else}
                     <span class="primary disabled icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts-outline"></i></span>
                 {/if}
-                <span onclick="Rooms_ajaxEdit('{$value->conference}');" class="control active icon gray">
-                    <i class="zmdi zmdi-settings"></i>
-                </span>
                 <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
             </li>
         {/loop}

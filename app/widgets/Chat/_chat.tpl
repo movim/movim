@@ -36,6 +36,14 @@
     </ul>
 
     <ul class="list context_menu active">
+        {if="$presence != null && $presence->mucrole == 'moderator' && !$anon"}
+            <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
+                <p class="normal">{$c->__('chatroom.administration')}</p>
+            </li>
+            <li class="divided" onclick="Chat_ajaxGetSubject('{$room}')">
+                <p class="normal">{$c->__('chatroom.subject')}</p>
+            </li>
+        {/if}
         <li onclick="Rooms_ajaxList('{$room}')">
             <p class="normal">{$c->__('chatroom.members')}</p>
         </li>
@@ -44,14 +52,9 @@
                 <p class="normal">{$c->__('button.delete')}</p>
             </li>
         {/if}
-        {if="$presence != null && $presence->mucrole == 'moderator' && !$anon"}
-            <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
-                <p class="normal">{$c->__('chatroom.config')}</p>
-            </li>
-            <li onclick="Chat_ajaxGetSubject('{$room}')">
-                <p class="normal">{$c->__('chatroom.subject')}</p>
-            </li>
-        {/if}
+        <li onclick="Rooms_ajaxEdit('{$room}');">
+            <p class="normal">{$c->__('chatroom.config')}</p>
+        </li>
     </ul>
     {else}
     <ul class="list middle">
