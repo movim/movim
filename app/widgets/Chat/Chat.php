@@ -180,6 +180,9 @@ class Chat extends \Movim\Widget\Base
             $chats = new Chats;
             $chats->ajaxGetHistory($jid);
 
+            $notif = new Notification;
+            $notif->ajaxClear('chat|'.$jid);
+
             $html = $this->prepareChat($jid);
 
             RPC::call('movim_push_state', $this->route('chat', $jid));
