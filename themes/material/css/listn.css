@@ -395,6 +395,7 @@ ul.context_menu.shown {
 
 /* Divided */
 
+ul.list li.divided,
 *.divided:not(.spaced) > *:not(:last-child),
 *.divided.spaced > *:not(:last-child).subheader,
 *.divided.spaced > *:not(:last-child):not(.subheader):after {
