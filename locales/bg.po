@@ -58,6 +58,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
@@ -77,7 +79,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-08 08:29+0200\n"
+"POT-Creation-Date: 2016-05-24 08:36+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/movim/movim/language/bg/)\n"
@@ -306,7 +308,7 @@ msgid "Retype password"
 msgstr ""
 
 #: [whitelist]title
-msgid "Whitelist - XMPP Server"
+msgid "Whitelisted XMPP Servers"
 msgstr ""
 
 #: [whitelist]info1
@@ -341,6 +343,22 @@ msgstr ""
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
+msgstr ""
+
+#: [xmpp]title
+msgid "Default XMPP server"
+msgstr ""
+
+#: [xmpp]domain
+msgid "Main XMPP server domain"
+msgstr ""
+
+#: [xmpp]description
+msgid "Main XMPP server description"
+msgstr ""
+
+#: [xmpp]country
+msgid "Main XMPP server country"
 msgstr ""
 
 #: [log]empty
@@ -951,7 +969,7 @@ msgid "My Subscriptions"
 msgstr ""
 
 #: [groups]add
-msgid "Create a new Group"
+msgid "Create a new Group on %s"
 msgstr ""
 
 #: [groups]name
@@ -1444,6 +1462,10 @@ msgstr ""
 msgid "Add a chatroom"
 msgstr ""
 
+#: [rooms]edit
+msgid "Edit a chatroom"
+msgstr ""
+
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
 msgstr ""
@@ -1562,6 +1584,14 @@ msgstr ""
 
 #: [roster]search_pod
 msgid "Search a contact"
+msgstr ""
+
+#: [search]keyword
+msgid "What are you looking for?"
+msgstr ""
+
+#: [search]subtitle
+msgid "Open me using Ctrl + M"
 msgstr ""
 
 #: [share]error
@@ -1874,6 +1904,10 @@ msgstr ""
 
 #: [button]previous
 msgid "Previous"
+msgstr ""
+
+#: [button]search
+msgid "Search"
 msgstr ""
 
 #: [day]title

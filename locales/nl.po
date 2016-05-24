@@ -60,6 +60,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
@@ -79,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-08 08:29+0200\n"
+"POT-Creation-Date: 2016-05-24 08:36+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -308,7 +310,8 @@ msgid "Retype password"
 msgstr "Herhaal wachtwoord"
 
 #: [whitelist]title
-msgid "Whitelist - XMPP Server"
+#, fuzzy
+msgid "Whitelisted XMPP Servers"
 msgstr "Whitelist - XMPP Server"
 
 #: [whitelist]info1
@@ -344,6 +347,24 @@ msgstr "Laat dit veld leeg als je geen bericht wilt tonen."
 msgctxt "[information]label"
 msgid "Information Message"
 msgstr "Informatieve Mededeling"
+
+#: [xmpp]title
+#, fuzzy
+msgid "Default XMPP server"
+msgstr "Whitelist - XMPP Server"
+
+#: [xmpp]domain
+msgid "Main XMPP server domain"
+msgstr ""
+
+#: [xmpp]description
+msgid "Main XMPP server description"
+msgstr ""
+
+#: [xmpp]country
+#, fuzzy
+msgid "Main XMPP server country"
+msgstr "je XMPP server is niet geautoriseerd"
 
 #: [log]empty
 msgid "Empty"
@@ -954,7 +975,8 @@ msgid "My Subscriptions"
 msgstr "Mijn abonnementen"
 
 #: [groups]add
-msgid "Create a new Group"
+#, fuzzy
+msgid "Create a new Group on %s"
 msgstr "Maak een nieuwe Groep"
 
 #: [groups]name
@@ -1448,6 +1470,11 @@ msgstr "Voeg wat tekst toe"
 msgid "Add a chatroom"
 msgstr ""
 
+#: [rooms]edit
+#, fuzzy
+msgid "Edit a chatroom"
+msgstr "Openbare chatroom"
+
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
 msgstr "Je hebt nog geen chatrooms."
@@ -1566,6 +1593,14 @@ msgstr "Zoek in je contacten"
 
 #: [roster]search_pod
 msgid "Search a contact"
+msgstr ""
+
+#: [search]keyword
+msgid "What are you looking for?"
+msgstr ""
+
+#: [search]subtitle
+msgid "Open me using Ctrl + M"
 msgstr ""
 
 #: [share]error
@@ -1879,6 +1914,11 @@ msgstr "Volgende"
 #: [button]previous
 msgid "Previous"
 msgstr "Vorige"
+
+#: [button]search
+#, fuzzy
+msgid "Search"
+msgstr "maart"
 
 #: [day]title
 msgid "Day"

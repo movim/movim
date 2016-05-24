@@ -60,6 +60,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
@@ -79,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-08 08:29+0200\n"
+"POT-Creation-Date: 2016-05-24 08:36+0200\n"
 "PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -308,7 +310,8 @@ msgid "Retype password"
 msgstr "重新输入密码"
 
 #: [whitelist]title
-msgid "Whitelist - XMPP Server"
+#, fuzzy
+msgid "Whitelisted XMPP Servers"
 msgstr "白名单——XMPP服务器"
 
 #: [whitelist]info1
@@ -344,6 +347,24 @@ msgstr "如果您不想显示任何信息，请在此留空"
 msgctxt "[information]label"
 msgid "Information Message"
 msgstr "通知消息"
+
+#: [xmpp]title
+#, fuzzy
+msgid "Default XMPP server"
+msgstr "白名单——XMPP服务器"
+
+#: [xmpp]domain
+msgid "Main XMPP server domain"
+msgstr ""
+
+#: [xmpp]description
+msgid "Main XMPP server description"
+msgstr ""
+
+#: [xmpp]country
+#, fuzzy
+msgid "Main XMPP server country"
+msgstr "你的XMPP服务没有被授权"
 
 #: [log]empty
 msgid "Empty"
@@ -954,7 +975,8 @@ msgid "My Subscriptions"
 msgstr "我的订阅"
 
 #: [groups]add
-msgid "Create a new Group"
+#, fuzzy
+msgid "Create a new Group on %s"
 msgstr "创建新群组"
 
 #: [groups]name
@@ -1450,6 +1472,11 @@ msgstr "添加一些文字"
 msgid "Add a chatroom"
 msgstr "添加一个聊天室"
 
+#: [rooms]edit
+#, fuzzy
+msgid "Edit a chatroom"
+msgstr "添加一个聊天室"
+
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
 msgstr "你尚未拥有任何聊天室。"
@@ -1570,6 +1597,14 @@ msgstr "在您的联系人中搜索"
 #, fuzzy
 msgid "Search a contact"
 msgstr "在您的联系人中搜索"
+
+#: [search]keyword
+msgid "What are you looking for?"
+msgstr ""
+
+#: [search]subtitle
+msgid "Open me using Ctrl + M"
+msgstr ""
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1883,6 +1918,10 @@ msgstr "下一个"
 #: [button]previous
 msgid "Previous"
 msgstr "前一个"
+
+#: [button]search
+msgid "Search"
+msgstr "搜索"
 
 #: [day]title
 msgid "Day"
@@ -2664,9 +2703,6 @@ msgstr "在此输入"
 
 #~ msgid "%s has been added to your public groups"
 #~ msgstr "%s已经添加到了您的公共分组"
-
-#~ msgid "Search"
-#~ msgstr "搜索"
 
 #~ msgctxt "[general]nickname"
 #~ msgid "Nickname"

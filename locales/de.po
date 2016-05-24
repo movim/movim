@@ -64,6 +64,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
@@ -83,7 +85,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-08 08:29+0200\n"
+"POT-Creation-Date: 2016-05-24 08:36+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -312,7 +314,8 @@ msgid "Retype password"
 msgstr "Passwort erneut eingeben"
 
 #: [whitelist]title
-msgid "Whitelist - XMPP Server"
+#, fuzzy
+msgid "Whitelisted XMPP Servers"
 msgstr "Liste der erlaubten XMPP-Server"
 
 #: [whitelist]info1
@@ -348,6 +351,24 @@ msgstr "Dieses Feld leer lassen, wenn keine Nachricht angezeigt werden soll."
 msgctxt "[information]label"
 msgid "Information Message"
 msgstr "Informationsnachricht"
+
+#: [xmpp]title
+#, fuzzy
+msgid "Default XMPP server"
+msgstr "Liste der erlaubten XMPP-Server"
+
+#: [xmpp]domain
+msgid "Main XMPP server domain"
+msgstr ""
+
+#: [xmpp]description
+msgid "Main XMPP server description"
+msgstr ""
+
+#: [xmpp]country
+#, fuzzy
+msgid "Main XMPP server country"
+msgstr "Ihr XMPP Server ist nicht legitimiert"
 
 #: [log]empty
 msgid "Empty"
@@ -958,7 +979,8 @@ msgid "My Subscriptions"
 msgstr "Meine Abonnements"
 
 #: [groups]add
-msgid "Create a new Group"
+#, fuzzy
+msgid "Create a new Group on %s"
 msgstr "Eine neue Gruppe erstellen"
 
 #: [groups]name
@@ -1452,6 +1474,11 @@ msgstr "Text hinzufügen"
 msgid "Add a chatroom"
 msgstr "Chatraum hinzufügen"
 
+#: [rooms]edit
+#, fuzzy
+msgid "Edit a chatroom"
+msgstr "Chatraum hinzufügen"
+
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
 msgstr "Sie sind noch keinem Chatraum beigetreten."
@@ -1570,6 +1597,14 @@ msgstr "Kontakte durchsuchen"
 
 #: [roster]search_pod
 msgid "Search a contact"
+msgstr ""
+
+#: [search]keyword
+msgid "What are you looking for?"
+msgstr ""
+
+#: [search]subtitle
+msgid "Open me using Ctrl + M"
 msgstr ""
 
 #: [share]error
@@ -1883,6 +1918,11 @@ msgstr "Weiter"
 #: [button]previous
 msgid "Previous"
 msgstr "Zurück"
+
+#: [button]search
+#, fuzzy
+msgid "Search"
+msgstr "März"
 
 #: [day]title
 msgid "Day"
