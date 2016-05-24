@@ -90,6 +90,20 @@ class Rooms extends \Movim\Widget\Base
     }
 
     /**
+     * @brief Edit a room configuration
+     */
+    function ajaxEdit($room)
+    {
+        $view = $this->tpl();
+        $cd = new \Modl\ConferenceDAO;
+
+        $view->assign('room', $cd->get($room));
+        $view->assign('username', $this->user->getUser());
+
+        Dialog::fill($view->draw('_rooms_add', true));
+    }
+
+    /**
      * @brief Display the remove room confirmation
      */
     function ajaxRemoveConfirm($room)
@@ -181,6 +195,9 @@ class Rooms extends \Movim\Widget\Base
         } elseif(trim($form['name']) == '') {
             Notification::append(null, $this->__('chatrooms.empty_name'));
         } else {
+            $cd = new \Modl\ConferenceDAO;
+            $cd->deleteNode($form['jid']);
+
             $item = array(
                     'type'      => 'conference',
                     'name'      => $form['name'],

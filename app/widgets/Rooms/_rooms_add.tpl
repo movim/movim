@@ -1,17 +1,37 @@
 <section>
     <form name="bookmarkmucadd">
-        <h3>{$c->__('rooms.add')}</h3>
+        {if="isset($room)"}
+            <h3>{$c->__('rooms.edit')}</h3>
+        {else}
+            <h3>{$c->__('rooms.add')}</h3>
+        {/if}
 
         <div>
-            <input name="jid" placeholder="chatroom@server.com" type="email" required />
+            <input
+                {if="isset($room)"}value="{$room->conference}" disabled{/if}
+                name="jid"
+                placeholder="chatroom@server.com"
+                type="email"
+                required />
             <label>{$c->__('chatrooms.id')}</label>
         </div>
         <div>
-            <input name="name" placeholder="{$c->__('chatrooms.name_placeholder')}" required />
+            <input
+                {if="isset($room)"}value="{$room->name}"{/if}
+                name="name"
+                placeholder="{$c->__('chatrooms.name_placeholder')}"
+                required />
             <label>{$c->__('chatrooms.name')}</label>
         </div>
         <div>
-            <input name="nick" placeholder="{$username}" value="{$username}"/>
+            <input
+                {if="isset($room) && !empty($room->username)"}
+                    value="{$room->conference}"
+                {else}
+                    value="{$username}"
+                {/if}
+                name="nick"
+                placeholder="{$username}"/>
             <label>{$c->__('chatrooms.nickname')}</label>
         </div>
         <!--
@@ -28,11 +48,19 @@
         <a class="button flat" onclick="Dialog.clear()">
             {$c->__('button.close')}
         </a>
-        <a
-            class="button flat"
-            onclick="Rooms_ajaxChatroomAdd(movim_parse_form('bookmarkmucadd'));">
-            {$c->__('button.add')}
-        </a>
+        {if="isset($room)"}
+            <a
+                class="button flat"
+                onclick="Rooms_ajaxChatroomAdd(movim_parse_form('bookmarkmucadd'));">
+                {$c->__('button.edit')}
+            </a>
+        {else}
+            <a
+                class="button flat"
+                onclick="Rooms_ajaxChatroomAdd(movim_parse_form('bookmarkmucadd'));">
+                {$c->__('button.add')}
+            </a>
+        {/if}
     </div>
 
 </div>

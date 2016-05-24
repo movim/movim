@@ -6,6 +6,7 @@ v0.9.1 (trunk)
  * Fix Pubsub metadata handling for some XMPP servers
  * Add silent notifications for chatrooms
  * Add alternate nickname support (adding "_") when joining a chatroom
+ * Allow room configuration edition
  * Put your own XMPP server as default in the configuration (movim.eu in fallback)
  * Close the Dialog box when pressing ESC
  * Moving values from Sessionx to Session
