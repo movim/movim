@@ -36,6 +36,12 @@ class Muc extends Action
     {
         $this->store();
 
+        $session = \Session::start();
+
+        if(empty($this->_nickname)) {
+            $this->_nickname = $session->get('username');
+        }
+
         // We clear all the old messages
         $md = new \modl\MessageDAO();
         $md->deleteContact($this->_to);
@@ -68,7 +74,12 @@ class Muc extends Action
 
     public function errorConflict($stanza, $message)
     {
-        $this->deliver();
+        if(substr_count($this->_nickname, '_') > 5) {
+            $this->deliver();
+        } else {
+            $this->setNickname($this->_nickname.'_');
+            $this->request();
+        }
     }
 
     public function errorNotAcceptable($stanza, $message) {

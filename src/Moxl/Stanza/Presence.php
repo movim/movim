@@ -111,9 +111,6 @@ class Presence {
     {
         $session = \Session::start();
 
-        if($nickname == false)
-            $nickname = $session->get('username');
-
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $presence = $dom->createElementNS('jabber:client', 'presence');
         $dom->appendChild($presence);
