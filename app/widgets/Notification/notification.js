@@ -23,7 +23,7 @@ var Notification = {
             },
             sec*1000);
     },
-    refresh : function(keys) {
+    refresh : function(keys) {console.log(keys);
         var counters = document.querySelectorAll('.counter');
         for(i = 0; i < counters.length; i++) {
             var n = counters[i];
@@ -155,7 +155,7 @@ if(typeof MovimWebsocket != 'undefined') {
         }
 
         if(typeof require !== 'undefined') {
-            var remote = require('remote');
+            var remote = require('electron').remote;
             Notification.electron = remote.getCurrentWindow();
         }
 
