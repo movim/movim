@@ -34,12 +34,6 @@ h4.gray {
     color: rgba(0, 0, 0, 0.54);
 }
 
-article section content ul li, /* Body 1 */
-article section content p {
-    font-size: 2rem;
-    font-weight: 300;
-}
-
 .snackbar, /* Body 2 */
 .toast {
     font-size: 1.75rem;

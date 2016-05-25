@@ -33,6 +33,7 @@
         $this->addCss('menu.css');
         $this->addCss('fonts.css');
         $this->addCss('title.css');
+        $this->addCss('typo.css');
         $this->addCss('material-design-iconic-font.min.css');
 
         $this->widget('System');
