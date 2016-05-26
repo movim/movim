@@ -1,5 +1,5 @@
 <section>
-    <form name="subscribe">
+    <form name="subscribe" onsubmit="return false;">
          <h3>{$c->__('group.subscribe')}</h3>
         {if="$item"}
             <h4 class="gray">
