@@ -90,7 +90,6 @@ ul.list li > p:nth-last-of-type(2) + p {
 /* Default color : violet */
 
 input[type=button].color,
-ul li span.counter,
 main > section > div > header.fixed,
 main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
 
@@ -118,6 +117,7 @@ header.big ul.list li > p:nth-last-of-type(2) + p {
 
 /* Gray accent : orange */
 
+.button,
 header:not(.big) .icon a,
 a { color: #FF5722; border-color: #FF5722; }
 
