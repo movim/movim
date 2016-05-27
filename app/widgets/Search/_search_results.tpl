@@ -38,11 +38,17 @@
             <li>
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
-                    <span class="primary icon bubble">
+                    <span class="primary icon bubble
+                        {if="$value->value"}
+                            status {$presencestxt[$value->value]}
+                        {/if}">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$valu->jid|stringToColor}">
+                    <span class="primary icon bubble color {$value->jid|stringToColor}
+                        {if="$value->value"}
+                            status {$presencestxt[$value->value]}
+                        {/if}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
