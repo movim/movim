@@ -35,6 +35,16 @@ h4.gray {
     color: rgba(0, 0, 0, 0.54);
 }
 
+small {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 0.75em;
+    font-weight: normal;
+}
+
+h3 + small {
+    font-size: 1.75rem;
+}
+
 .snackbar, /* Body 2 */
 .toast {
     font-size: 1.75rem;
