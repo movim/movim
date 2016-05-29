@@ -17,8 +17,8 @@ article section p {
     line-height: inherit;
 }
 
-article section content ul li,
-article section content ol li {
+ul:not(.list):not(.tabs) > li,
+ol:not(.list):not(.tabs) > li {
     font-size: 2rem;
     line-height: 3rem;
     padding-left: 2rem;
@@ -27,23 +27,23 @@ article section content ol li {
     margin: 1rem auto;
 }
 
-article section content ul li > * {
+ul:not(.list):not(.tabs) > li > * {
     display: inline;
 }
 
-article section content ul li {
+ul:not(.list):not(.tabs) > li {
     list-style-type: disc;
 }
 
-article section content ul ul li {
+ul:not(.list):not(.tabs) > li > ul:not(.list):not(.tabs) > li {
     list-style-type: circle;
 }
 
-article section content ul ul ul li {
+ul:not(.list):not(.tabs) > li > ul:not(.list):not(.tabs) > li > ul:not(.list):not(.tabs) > li {
     list-style-type: square;
 }
 
-article section content ol li {
+ol:not(.list):not(.tabs) > li {
     list-style-type: decimal;
 }
 
