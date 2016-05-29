@@ -17,8 +17,8 @@ article section p {
     line-height: inherit;
 }
 
-ul:not(.list):not(.tabs) > li,
-ol:not(.list):not(.tabs) > li {
+ul:not(.list):not(.tabs):not(.grid) > li,
+ol:not(.list):not(.tabs):not(.grid) > li {
     font-size: 2rem;
     line-height: 3rem;
     padding-left: 2rem;
@@ -27,23 +27,23 @@ ol:not(.list):not(.tabs) > li {
     margin: 1rem auto;
 }
 
-ul:not(.list):not(.tabs) > li > * {
+ul:not(.list):not(.tabs):not(.grid) > li > * {
     display: inline;
 }
 
-ul:not(.list):not(.tabs) > li {
+ul:not(.list):not(.tabs):not(.grid) > li {
     list-style-type: disc;
 }
 
-ul:not(.list):not(.tabs) > li > ul:not(.list):not(.tabs) > li {
+ul:not(.list):not(.tabs):not(.grid) > li > ul:not(.list):not(.tabs):not(.grid) > li {
     list-style-type: circle;
 }
 
-ul:not(.list):not(.tabs) > li > ul:not(.list):not(.tabs) > li > ul:not(.list):not(.tabs) > li {
+ul:not(.list):not(.tabs):not(.grid) > li > ul:not(.list):not(.tabs):not(.grid) > li > ul:not(.list):not(.tabs):not(.grid) > li {
     list-style-type: square;
 }
 
-ol:not(.list):not(.tabs) > li {
+ol:not(.list):not(.tabs):not(.grid) > li {
     list-style-type: decimal;
 }
 
