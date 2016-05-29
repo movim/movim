@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.9.1 (trunk)
 ---------------------------
+ * Fix behaviour for Android and Electron packages
  * Fix Pubsub metadata handling for some XMPP servers
  * Add silent notifications for chatrooms
  * Add alternate nickname support (adding "_") when joining a chatroom
