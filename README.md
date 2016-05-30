@@ -79,7 +79,7 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0199](http://xmpp.org/extensions/xep-0199.html) | XMPP Ping | Yes |  |
 | [XEP-0206](http://xmpp.org/extensions/xep-0206.html) | XMPP Over BOSH | Not anymore | |
 | [XEP-0224](http://xmpp.org/extensions/xep-0224.html) | Attention | Yes |  |
-| [XEP-0231](http://xmpp.org/extensions/xep-0231.html) | Bits if Binary | Yes | For the Stickers feature |
+| [XEP-0231](http://xmpp.org/extensions/xep-0231.html) | Bits of Binary | Yes | For the Stickers feature |
 | [XEP-0245](http://xmpp.org/extensions/xep-0245.html) | The /me Command | Yes |  | 
 | [XEP-0256](http://xmpp.org/extensions/xep-0256.html) | Last Activity in Presence | Yes |  |
 | [XEP-0277](http://xmpp.org/extensions/xep-0277.html) | Microblogging over XMPP | Yes | |
