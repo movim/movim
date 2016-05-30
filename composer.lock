@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "cboden/ratchet",
-            "version": "v0.3.4",
+            "version": "v0.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ratchetphp/Ratchet.git",
-                "reference": "a177819dd0e6eb1d7e4192aeafadfa43a84867f1"
+                "reference": "b5ccecad9390db85d2c8df7cbeb047292fbbf4b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/a177819dd0e6eb1d7e4192aeafadfa43a84867f1",
-                "reference": "a177819dd0e6eb1d7e4192aeafadfa43a84867f1",
+                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/b5ccecad9390db85d2c8df7cbeb047292fbbf4b8",
+                "reference": "b5ccecad9390db85d2c8df7cbeb047292fbbf4b8",
                 "shasum": ""
             },
             "require": {
@@ -53,7 +53,7 @@
                 "server",
                 "sockets"
             ],
-            "time": "2015-12-23 15:06:48"
+            "time": "2016-05-25 12:55:03"
         },
         {
             "name": "cocur/slugify",
@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "09319dcaf93323d0ba23b2241665ee895dee04e8"
+                "reference": "7dc18c9dc0e713dafc25ea4d0d3c8dc0126471ec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/09319dcaf93323d0ba23b2241665ee895dee04e8",
-                "reference": "09319dcaf93323d0ba23b2241665ee895dee04e8",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/7dc18c9dc0e713dafc25ea4d0d3c8dc0126471ec",
+                "reference": "7dc18c9dc0e713dafc25ea4d0d3c8dc0126471ec",
                 "shasum": ""
             },
             "require": {
@@ -170,7 +170,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-05-24 13:28:28"
+            "time": "2016-05-27 14:39:28"
         },
         {
             "name": "evenement/evenement",
