@@ -46,7 +46,7 @@ article section content div.quote ul {
     flex-flow: row wrap;
 }
 
-article section content div.quote li {
+article section content div.quote ul:not(.list):not(.tabs):not(.grid) > li {
     flex: 1 25%;
     list-style-type: none;
     padding-left: 0;
