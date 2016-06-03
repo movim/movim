@@ -29,6 +29,7 @@ class Search extends \Movim\Widget\Base
             $view->assign('empty', true);
         } else {
             $view->assign('empty', false);
+            $view->assign('presencestxt', getPresencesTxt());
 
             $pd = new PostnDAO;
             $posts = $pd->search($key);

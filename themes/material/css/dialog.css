@@ -50,6 +50,11 @@
     padding: 0;
 }
 
+.dialog > section h3 {
+    padding-top: 0;
+}
+
+
 @media screen and (max-width: 600px) {
     .dialog {
         width: 90%;

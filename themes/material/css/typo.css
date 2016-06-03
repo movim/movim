@@ -1,0 +1,148 @@
+/* Typo */
+
+article section content ul li, /* Body 1 */
+ol li,
+p,
+table tbody tr td,
+dl dt,
+dl dd {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+article section p {
+    margin-bottom: 1rem;
+    max-height: initial;
+    color: inherit;
+    line-height: inherit;
+}
+
+ul:not(.list):not(.tabs):not(.grid) > li,
+ol:not(.list):not(.tabs):not(.grid) > li {
+    font-size: 2rem;
+    line-height: 3rem;
+    padding-left: 2rem;
+    list-style-position: inside;
+    min-height: 3rem;
+    margin: 1rem auto;
+}
+
+ul:not(.list):not(.tabs):not(.grid) > li > * {
+    display: inline;
+}
+
+ul:not(.list):not(.tabs):not(.grid) > li {
+    list-style-type: disc;
+}
+
+ul:not(.list):not(.tabs):not(.grid) > li > ul:not(.list):not(.tabs):not(.grid) > li {
+    list-style-type: circle;
+}
+
+ul:not(.list):not(.tabs):not(.grid) > li > ul:not(.list):not(.tabs):not(.grid) > li > ul:not(.list):not(.tabs):not(.grid) > li {
+    list-style-type: square;
+}
+
+ol:not(.list):not(.tabs):not(.grid) > li {
+    list-style-type: decimal;
+}
+
+strong,
+b {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+code,
+pre,
+xmp {
+    font-family: monospace;
+}
+
+code {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.6);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.3rem;
+}
+
+pre,
+xmp {
+    color: white;
+    padding: 1rem;
+    font-size: 1.6rem;
+    margin: 1rem 0;
+    border-left: 1rem solid gray;
+    background-color: #333;
+    white-space:pre-wrap; word-wrap:break-word;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    color: white;
+}
+
+pre::before,
+xmp::before {
+    content: attr(class);
+    display: block;
+    float: right;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 0 1rem;
+}
+
+q {
+  quotes: "“" "”" "‘" "’";
+}
+q:before {
+    content: open-quote;
+}
+q:after {
+    content: close-quote;
+}
+
+cite,
+blockquote {
+    padding-left: 1.5rem;
+    border-left: 1rem solid rgba(0, 0, 0, 0.2);
+    font-style: italic;
+    margin: 1rem 0;
+}
+
+/* Definition list */
+
+dl dt,
+dl dd {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 2.5rem;
+}
+
+dl di {
+    border-bottom: 1px solid #DDD;
+    display: block;
+    padding: 1em 0;
+}
+
+dl dt {
+    text-align: right;
+    font-weight: bold;
+    width: 25%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+dl dd {
+    text-align: left;
+    width: 74%;
+}
+

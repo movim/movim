@@ -12,9 +12,11 @@
     </ul>
     <ul class="list flex third active">
         {loop="$stickers"}
+            {if="strlen($value) == 44"}
             <li class="block" onclick="Stickers_ajaxSend('{$jid}', '{$value}'); Dialog.clear();">
                 <img class="sticker" src="{$path}{$value}"/>
             </li>
+            {/if}
         {/loop}
         <li class="block large">
             <span class="primary icon gray">

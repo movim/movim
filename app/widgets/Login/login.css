@@ -44,7 +44,7 @@ body main {
     min-height: 0;
 }
 
-#login_widget form ul input {
+#login_widget form ul input:not([type=submit]) {
     margin: 0;
     height: 5rem;
 }

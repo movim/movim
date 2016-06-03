@@ -59,6 +59,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
@@ -78,7 +80,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-08 08:29+0200\n"
+"POT-Creation-Date: 2016-05-24 08:36+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
@@ -307,7 +309,8 @@ msgid "Retype password"
 msgstr "Ridigita la password"
 
 #: [whitelist]title
-msgid "Whitelist - XMPP Server"
+#, fuzzy
+msgid "Whitelisted XMPP Servers"
 msgstr "la Whitelist del server XMPP"
 
 #: [whitelist]info1
@@ -343,6 +346,23 @@ msgstr "Lasciare vuoto questo campo per non mostrare alcun messaggio"
 msgctxt "[information]label"
 msgid "Information Message"
 msgstr "Informazione"
+
+#: [xmpp]title
+#, fuzzy
+msgid "Default XMPP server"
+msgstr "la Whitelist del server XMPP"
+
+#: [xmpp]domain
+msgid "Main XMPP server domain"
+msgstr ""
+
+#: [xmpp]description
+msgid "Main XMPP server description"
+msgstr ""
+
+#: [xmpp]country
+msgid "Main XMPP server country"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -953,7 +973,8 @@ msgid "My Subscriptions"
 msgstr ""
 
 #: [groups]add
-msgid "Create a new Group"
+#, fuzzy
+msgid "Create a new Group on %s"
 msgstr "Creare un nuovo gruppo"
 
 #: [groups]name
@@ -1447,6 +1468,11 @@ msgstr ""
 msgid "Add a chatroom"
 msgstr "Aggiungi una chatroom"
 
+#: [rooms]edit
+#, fuzzy
+msgid "Edit a chatroom"
+msgstr "Aggiungi una chatroom"
+
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
 msgstr "Non hai alcuna chatroom al momento."
@@ -1565,6 +1591,14 @@ msgstr "Cerca nei tuoi contatti"
 
 #: [roster]search_pod
 msgid "Search a contact"
+msgstr ""
+
+#: [search]keyword
+msgid "What are you looking for?"
+msgstr ""
+
+#: [search]subtitle
+msgid "Open me using Ctrl + M"
 msgstr ""
 
 #: [share]error
@@ -1878,6 +1912,11 @@ msgstr "Prossimo"
 #: [button]previous
 msgid "Previous"
 msgstr "Precedente"
+
+#: [button]search
+#, fuzzy
+msgid "Search"
+msgstr "marzo"
 
 #: [day]title
 msgid "Day"

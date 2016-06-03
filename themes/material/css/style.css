@@ -1,17 +1,4 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-input, select, option,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+* {
     margin: 0;
     padding: 0;
     border: 0;
@@ -63,61 +50,6 @@ body > script {
 
 a, a:link, a:visited {
     text-decoration: none;
-}
-
-/* Titles */
-
-h1 { /* Display 1 */
-    font-size: 4.25rem;
-    line-height: 7rem;
-}
-
-h2 { /* Headline */
-    font-size: 3rem;
-    line-height: 4rem;
-    padding: 2rem 0;
-}
-
-h2.thin {
-    line-height: 5rem;
-}
-
-h3 { /* Title */
-    font-size: 2.5rem;
-    font-weight: 700;
-}
-
-h4, input, textarea, select { /* Headline */
-    font-size: 2rem;
-    line-height: 3rem;
-}
-
-h4 {
-    font-weight: 400;
-}
-
-h4.gray {
-    color: rgba(0, 0, 0, 0.54);
-}
-
-article section content ul li, /* Body 1 */
-article section content p {
-    font-size: 2rem;
-    font-weight: 300;
-}
-
-.snackbar, /* Body 2 */
-.toast {
-    font-size: 1.75rem;
-    font-weight: 500;
-}
-
-label, span.info { /* Caption */
-    font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.54);
-}
-label, span.info b { /* Caption */
-    font-weight: 600;
 }
 
 /* Navigation bar */
@@ -549,39 +481,6 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 .icon.bookmark  { background-image: url(../img/icons/bookmark.svg); }
 .icon.clipboard { background-image: url(../img/icons/person.svg); }
 .icon.search    { background-image: url(../img/icons/search.svg); }
-
-/* Definition list */
-
-dl dt,
-dl dd {
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    padding: 0 1rem;
-    display: inline-block;
-    line-height: 2rem;
-    vertical-align: middle;
-}
-
-dl di {
-    border-bottom: 1px solid #DDD;
-    display: block;
-    padding: 1em 0;
-}
-
-dl dt {
-    text-align: right;
-    font-weight: bold;
-    width: 25%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-dl dd {
-    text-align: left;
-    width: 74%;
-}
 
 /* Padded */
 

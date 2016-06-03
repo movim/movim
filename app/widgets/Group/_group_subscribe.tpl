@@ -1,29 +1,24 @@
 <section>
-    <h3>{$c->__('group.subscribe')}</h3>
-    {if="$item"}
-        <br />
-        <h4 class="gray">
-            {$item->name}
-        </h4>
-    {/if}
-    <ul class="simple">
-        <li>
-            <form name="subscribe">
-                <div>
-                    <input 
-                        name="label" 
-                        type="text"
-                        title="{$c->__('group.label_label')}"
-                        placeholder="My Group Name"
-                        {if="$item"}
-                            value="{$item->name}"
-                        {/if}
-                    />
-                    <label for="label">{$c->__('group.label_label')}</label>
-                </div>
-            </form>
-        </li>
-    </ul>
+    <form name="subscribe" onsubmit="return false;">
+         <h3>{$c->__('group.subscribe')}</h3>
+        {if="$item"}
+            <h4 class="gray">
+                {$item->name}
+            </h4>
+        {/if}
+        <div>
+            <input
+                name="label"
+                type="text"
+                title="{$c->__('group.label_label')}"
+                placeholder="My Group Name"
+                {if="$item"}
+                    value="{$item->name}"
+                {/if}
+            />
+            <label for="label">{$c->__('group.label_label')}</label>
+        </div>
+    </form>
 </section>
 <div>
     <a onclick="Dialog.clear()" class="button flat">

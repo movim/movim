@@ -26,8 +26,7 @@ table.table tr:not(:last-child) td {
 table.table th,
 table.table td {
     line-height: 6rem;
-    padding-left: 2rem;
-    padding-right: 5rem;
+    padding: 0 2rem;
 }
 
 table.table th {

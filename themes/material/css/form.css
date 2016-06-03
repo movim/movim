@@ -267,8 +267,6 @@ input[type=button] {
     margin: 0.75rem 0.5rem;
 
     border-radius: 0.25rem;
-    background-color: white;
-    color: black;
     padding: 0 1rem;
 
     border: 0;
@@ -278,6 +276,11 @@ input[type=button] {
     box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
 
     background-image: none;
+}
+
+.button:not(.color),
+input[type=button]:not(.color) {
+    background-color: white;
 }
 
 .button:active {

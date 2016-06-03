@@ -49,7 +49,7 @@ $core = new Core($loop, $argv[1], $argv[2]);
 $app  = new HttpServer(new WsServer($core));
 
 $socket = new Reactor($loop);
-$socket->listen($argv[2], '0.0.0.0');
+$socket->listen($argv[2], '127.0.0.1');
 
 $socketApi = new Reactor($loop);
 new Api($socketApi, $core);

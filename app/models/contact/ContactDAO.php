@@ -493,9 +493,22 @@ class ContactDAO extends SQL {
             rosterlink.rostername,
             rosterlink.rostersubscription,
             rosterlink.groupname,
-            rosterlink.chaton
+            rosterlink.chaton,
+            presence.value,
+            presence.delay,
+            presence.last
         from rosterlink
         left outer join contact
+        left outer join (
+            select a.*
+            from presence a
+            join (
+                select jid, min( id ) as id
+                from presence
+                where session = :session
+                group by jid
+                ) as b on ( a.id = b.id )
+            ) presence on contact.jid = presence.jid
         on rosterlink.jid = contact.jid
         where rosterlink.session = :session
           and (rosterlink.jid like :jid

@@ -63,6 +63,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Search/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
@@ -82,8 +84,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-08 08:29+0200\n"
-"PO-Revision-Date: 2016-04-08 06:34+0000\n"
+"POT-Creation-Date: 2016-05-24 08:36+0200\n"
+"PO-Revision-Date: 2016-05-24 21:01+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -311,8 +313,8 @@ msgid "Retype password"
 msgstr "Ressaisissez le mot de passe"
 
 #: [whitelist]title
-msgid "Whitelist - XMPP Server"
-msgstr "Serveurs XMPP : Liste blanche"
+msgid "Whitelisted XMPP Servers"
+msgstr "Serveurs XMPP sur la liste blanche"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -347,6 +349,22 @@ msgstr "Laissez ce champ vide si vous ne voulez afficher aucun message."
 msgctxt "[information]label"
 msgid "Information Message"
 msgstr "Message d’information"
+
+#: [xmpp]title
+msgid "Default XMPP server"
+msgstr "Serveur XMPP par défaut"
+
+#: [xmpp]domain
+msgid "Main XMPP server domain"
+msgstr "Domaine du serveur XMPP par défaut"
+
+#: [xmpp]description
+msgid "Main XMPP server description"
+msgstr "Description du serveur XMPP par défaut"
+
+#: [xmpp]country
+msgid "Main XMPP server country"
+msgstr "Pays du serveur XMPP par défaut"
 
 #: [log]empty
 msgid "Empty"
@@ -956,8 +974,8 @@ msgid "My Subscriptions"
 msgstr "Mes Souscriptions"
 
 #: [groups]add
-msgid "Create a new Group"
-msgstr "Créer un nouveau Groupe"
+msgid "Create a new Group on %s"
+msgstr "Créer un nouveau Groupe sur %s"
 
 #: [groups]name
 msgid "Group name"
@@ -1227,7 +1245,7 @@ msgstr "Contacts"
 
 #: [menu]add_post
 msgid "Add a post"
-msgstr ""
+msgstr "Ajouter un billet"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1449,6 +1467,10 @@ msgstr "Ajouter du texte"
 msgid "Add a chatroom"
 msgstr "Ajouter un salon de discussion"
 
+#: [rooms]edit
+msgid "Edit a chatroom"
+msgstr "Éditer un salon de discussion"
+
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
 msgstr "Vous n'avez pas encore de salon de discussions."
@@ -1568,6 +1590,14 @@ msgstr "Chercher dans vos contacts "
 #: [roster]search_pod
 msgid "Search a contact"
 msgstr "Chercher un contact"
+
+#: [search]keyword
+msgid "What are you looking for?"
+msgstr "Que cherchez vous ?"
+
+#: [search]subtitle
+msgid "Open me using Ctrl + M"
+msgstr "Ouvrez moi en faisant Ctrl + M"
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1880,6 +1910,10 @@ msgstr "Suivant"
 #: [button]previous
 msgid "Previous"
 msgstr "Précédent"
+
+#: [button]search
+msgid "Search"
+msgstr "Rechercher"
 
 #: [day]title
 msgid "Day"

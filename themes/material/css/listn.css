@@ -315,6 +315,7 @@ ul li div.bubble > p {
     overflow: hidden;
     display: inline-block;
     max-width: 100%;
+    font-size: 1.75rem;
 }
 
 ul li.oppose div.bubble {
@@ -395,6 +396,7 @@ ul.context_menu.shown {
 
 /* Divided */
 
+ul.list li.divided,
 *.divided:not(.spaced) > *:not(:last-child),
 *.divided.spaced > *:not(:last-child).subheader,
 *.divided.spaced > *:not(:last-child):not(.subheader):after {

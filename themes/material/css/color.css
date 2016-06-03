@@ -1,8 +1,13 @@
 /* Color */
 
+ul.list li.divided,
 *.divided > *:not(:last-child),
 *.divided.spaced > *:not(:last-child):after {
     border-color: rgba(0, 0, 0, 0.12);
+}
+
+table tr th {
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .color {
@@ -24,37 +29,47 @@ main > header a,
     color: white;
 }
 
+.button.color,
+.button.action.color,
+ul li span.counter,
+form > div .radio > input[type="radio"]:checked + label {
+    border-color: #FF5722;
+    background-color: #FF5722;
+    color: white;
+}
+
 /* Elements */
 
-.bubble.color       , .icon.color          { color: white; background-color: #607D8B; border-color: #607D8B }
-span.icon.status.dnd:after,
-.bubble.color.red   , .icon.color.red      { color: white; background-color: #F44336; border-color: #F44336 }
-span.icon.status.xa:after,
-.bubble.color.purple, .icon.color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
-.bubble.color.indigo, .icon.color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
-.bubble.color.blue  , .icon.color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
-span.icon.status.chat:after,
-span.icon.status.online:after,
-.bubble.color.green , .icon.color.green    { color: white; background-color: #689F38; border-color: #689F38 }
-.bubble.color.orange, .icon.color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
-span.icon.status.away:after,
-.bubble.color.yellow, .icon.color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
-.bubble.color.brown , .icon.color.brown    { color: white; background-color: #795548; border-color: #795548 }
-.bubble.color.gray  , .icon.color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
-.bubble.color.black , .icon.color.black    { color: white; background-color: #000;    border-color: #000 }
-
-.icon.red   , p.user.red      { color: #F44336; }
-.icon.purple, p.user.purple   { color: #9C27B0; }
-.icon.indigo, p.user.indigo   { color: #3F51B5; }
-.icon.blue  , p.user.blue     { color: #2196F3; }
-.icon.green , p.user.green    { color: #689F38; }
-.icon.orange, p.user.orange   { color: #FF9800; }
-.icon.yellow, p.user.yellow   { color: #FBC02D; }
-.icon.brown , p.user.brown    { color: #795548; }
+.button.red,    .icon.red   , p.user.red      { color: #F44336; }
+.button.purple, .icon.purple, p.user.purple   { color: #9C27B0; }
+.button.indigo, .icon.indigo, p.user.indigo   { color: #3F51B5; }
+.button.blue,   .icon.blue  , p.user.blue     { color: #2196F3; }
+.button.green,  .icon.green , p.user.green    { color: #689F38; }
+.button.orange, .icon.orange, p.user.orange   { color: #FF9800; }
+.button.yellow, .icon.yellow, p.user.yellow   { color: #FBC02D; }
+.button.brown,  .icon.brown , p.user.brown    { color: #795548; }
 ul li.action > div.action,
 ul li.action > form > div.action,
-.icon.gray  , p.user.gray     { color: #9E9E9E; }
-.icon.black , p.user.black    { color: #000; }
+.button.gray,   .icon.gray  , p.user.gray     { color: #9E9E9E; }
+.button.black,  .icon.black , p.user.black    { color: #000; }
+
+.color          { color: white; background-color: #607D8B; border-color: #607D8B }
+span.icon.status.dnd:after,
+.color.red      { color: white; background-color: #F44336; border-color: #F44336 }
+span.icon.status.xa:after,
+.color.purple   { color: white; background-color: #9C27B0; border-color: #9C27B0 }
+.color.indigo   { color: white; background-color: #3F51B5; border-color: #3F51B5 }
+.color.blue     { color: white; background-color: #2196F3; border-color: #2196F3 }
+span.icon.status.chat:after,
+span.icon.status.online:after,
+.color.green    { color: white; background-color: #689F38; border-color: #689F38 }
+.color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
+span.icon.status.away:after,
+.color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
+.color.brown    { color: white; background-color: #795548; border-color: #795548 }
+.color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
+.color.black    { color: white; background-color: #000;    border-color: #000 }
+
 
 form > div > input:focus:invalid,
 form > div > input:focus:required {
@@ -74,11 +89,8 @@ ul.list li > p:nth-last-of-type(2) + p {
 
 /* Default color : violet */
 
-.button.color,
 input[type=button].color,
-ul li span.counter,
 main > section > div > header.fixed,
-/*main > section > div > header,*/
 main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
 
 .tabs a {
@@ -105,22 +117,12 @@ header.big ul.list li > p:nth-last-of-type(2) + p {
 
 /* Gray accent : orange */
 
-.button:not(.color),
-input[type=button],
+.button,
 header:not(.big) .icon a,
-a/*,
-a:not(.classic):not(.activity):not(.action):not(.button)*/ { color: #FF5722; border-color: #FF5722; }
+a { color: #FF5722; border-color: #FF5722; }
 
 form > div .checkbox:before { background-color: #FFE0B2; }
 form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #FF5722; }
-
-.button.color,
-ul li span.counter,
-form > div .radio > input[type="radio"]:checked + label {
-    border-color: #FF5722;
-    background-color: #FF5722;
-    color: white;
-}
 
 form input:focus:not(:invalid) + label,
 form textarea:focus:not(:invalid) + label {
