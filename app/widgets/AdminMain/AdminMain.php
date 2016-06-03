@@ -79,7 +79,7 @@ class AdminMain extends \Movim\Widget\Base
         $this->view->assign('bosh_info4',
             $this->__('bosh.info4', '<a href="http://wiki.movim.eu/en:install">', '</a>'));
 
-        $json = requestURL(MOVIM_API.'websockets', 1);
+        $json = requestURL(MOVIM_API.'websockets', 10);
         $json = json_decode($json);
 
         if(isset($json) && $json->status != 404) {
