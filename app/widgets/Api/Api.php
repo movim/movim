@@ -29,7 +29,7 @@ class Api extends \Movim\Widget\Base {
                 '<a href="http://api.movim.eu/" target="_blank">',
                 '</a>'));
 
-        $json = requestURL(MOVIM_API.'status', 1, array('uri' => BASE_URI));
+        $json = requestURL(MOVIM_API.'status', 10, array('uri' => BASE_URI));
         $json = json_decode($json);
 
         $cd = new \Modl\ConfigDAO();
@@ -57,7 +57,7 @@ class Api extends \Movim\Widget\Base {
 
         $json = requestURL(
             MOVIM_API.'register',
-            1,
+            10,
             array(
                 'uri' => BASE_URI,
                 'rewrite' => false));
