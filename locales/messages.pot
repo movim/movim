@@ -72,19 +72,18 @@
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 08:36+0200\n"
+"POT-Creation-Date: 2016-06-03 13:20+1100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 1.10.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -655,6 +654,10 @@ msgstr ""
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
+msgstr ""
+
+#: [chatroom]administration [page]administration
+msgid "Administration"
 msgstr ""
 
 #: [chats]empty_title
@@ -1486,8 +1489,8 @@ msgstr ""
 
 #: [publish]form_filled
 msgid ""
-"Some fields have been filled in. Do you still want to go back and loose "
-"their content?"
+"Some fields have been filled in. Do you still want to go back and lose their "
+"content?"
 msgstr ""
 
 #: [publish]add_text
@@ -1765,10 +1768,6 @@ msgstr ""
 msgid ""
 "Movim is a kickass distributed social networking platform that protect your "
 "privacy an comes with a set of awesome features."
-msgstr ""
-
-#: [page]administration
-msgid "Administration"
 msgstr ""
 
 #: [page]home
