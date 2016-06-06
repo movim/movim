@@ -17,7 +17,7 @@ article section p {
     line-height: inherit;
 }
 
-ul:not(.list):not(.tabs):not(.grid) > li,
+ul:not(.list):not(.tabs):not(.grid):not(.actions) > li,
 ol:not(.list):not(.tabs):not(.grid) > li {
     font-size: 2rem;
     line-height: 3rem;
@@ -31,7 +31,7 @@ ul:not(.list):not(.tabs):not(.grid) > li > * {
     display: inline;
 }
 
-ul:not(.list):not(.tabs):not(.grid) > li {
+ul:not(.list):not(.tabs):not(.grid):not(.actions) > li {
     list-style-type: disc;
 }
 
