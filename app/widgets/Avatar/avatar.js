@@ -16,7 +16,7 @@ var Avatar = {
     },
     preview : function(src) {
         var canvas = document.createElement('canvas');
-        width = height = canvas.width = canvas.height = 410;
+        width = height = canvas.width = canvas.height = 350;
         var image = new Image();
         image.src = src;
         image.onload = function(){
@@ -31,7 +31,7 @@ var Avatar = {
                 }
             }
 
-            var base64 = canvas.toDataURL('image/jpeg', 0.7);
+            var base64 = canvas.toDataURL('image/jpeg', 0.95);
 
             var preview = document.querySelector('form[name=avatarform] img');
 

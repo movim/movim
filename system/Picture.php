@@ -113,7 +113,7 @@ class Picture {
      * @desc Save a picture (original size)
      * @param $key The key of the picture
      */
-    public function set($key, $format = 'jpeg')
+    public function set($key, $format = 'jpeg', $quality = 95)
     {
         if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
 
@@ -145,10 +145,11 @@ class Picture {
 
                     if($format == 'jpeg') {
                         $im->setImageBackgroundColor('#ffffff');
+                        $im->setImageCompression(Imagick::COMPRESSION_JPEG);
                         $im = $im->flattenImages();
                     }
 
-                    $im->setImageCompressionQuality(95);
+                    $im->setImageCompressionQuality($quality);
                     $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
                     $im->writeImage($path);
                     $im->clear();
