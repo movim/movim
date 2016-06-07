@@ -3,7 +3,7 @@
 class Sessionx {
     protected static $_sessionid = null;
     protected static $_instance;
-    private         $_max_age = 86400; // 24hour
+    private         $_max_age = 604800; // 24hour
     private         $_timestamp;
 
     private         $_rid;
