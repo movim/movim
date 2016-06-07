@@ -125,6 +125,7 @@ class Utils {
             'jabber:x:data',
             'urn:xmpp:ping',
             'urn:xmpp:message-correct:0',
+            'urn:xmpp:bob',
 
             // Jingle
             /*'http://jabber.org/protocol/jingle',
@@ -147,6 +148,7 @@ class Utils {
             'http://jabber.org/protocol/mood+notify',
             'http://jabber.org/protocol/xhtml-im',
             'http://jabber.org/protocol/chatstates',
+            'http://jabber.org/protocol/commands',
             'http://jabber.org/protocol/httpbind',
             'http://jabber.org/protocol/caps',
             'http://jabber.org/protocol/disco#info',
