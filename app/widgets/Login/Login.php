@@ -171,8 +171,8 @@ class Login extends \Movim\Widget\Base
         $config = $cd->get();
 
         // First we check the form
-        $validate_login   = Validator::email()->length(6, 40);
-        $validate_password = Validator::stringType()->length(4, 40);
+        $validate_login   = Validator::email()->length(1, 254);
+        $validate_password = Validator::stringType()->length(1, 128);
 
         if(!$validate_login->validate($login)) {
             $this->showErrorBlock('login_format');
