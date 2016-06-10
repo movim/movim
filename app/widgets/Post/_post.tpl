@@ -21,7 +21,9 @@
 
                 {if="$post->isMine() && !$public"}
                     {if="$post->isEditable()"}
-                        <span class="control icon active" onclick="Publish_ajaxCreate('{$post->origin}', '{$post->node}', '{$post->nodeid}')" title="{$c->__('button.edit')}">
+                        <span class="control icon active"
+                              onclick="Publish_ajaxCreate('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
+                              title="{$c->__('button.edit')}">
                             <i class="zmdi zmdi-edit"></i>
                         </span>
                     {/if}
