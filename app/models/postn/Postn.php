@@ -327,14 +327,28 @@ class Postn extends Model {
                     if($l['rel'] == 'alternate') {
                         $this->openlink = $l['href'];
                         if(!$this->isMicroblog()) {
-                            array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
+                            array_push(
+                                $attachements['links'],
+                                array(
+                                    'href' => $l['href'],
+                                    'url'  => parse_url($l['href']),
+                                    'rel'  => 'alternate'
+                                )
+                            );
                         }
                     }
                 } elseif(isset($l['rel'])){
                     if ($l['rel'] == 'enclosure')
                         array_push($attachements['files'], $l);
                     elseif ($l['rel'] == 'related')
-                        array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
+                        array_push(
+                            $attachements['links'],
+                            array(
+                                'href' => $l['href'],
+                                'url'  => parse_url($l['href']),
+                                'rel'  => 'related'
+                            )
+                        );
                 }
             }
         }

@@ -168,6 +168,7 @@
             <ul class="list middle divided spaced">
                 {if="isset($attachements.links)"}
                     {loop="$attachements.links"}
+                        {if="$value.rel != 'alternate'"}
                         <li>
                             <span class="primary icon">
                                 <img src="https://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
@@ -178,6 +179,7 @@
                                 </a>
                             </p>
                         </li>
+                        {/if}
                     {/loop}
                 {/if}
                 {if="isset($attachements.files)"}
