@@ -96,10 +96,10 @@ class Syndication extends \Movim\Widget\Base
             $f->appendXML($message->contentcleaned);
             $div->appendChild($f);
 
-            $attachements = $message->getAttachements();
+            $attachments = $message->getAttachments();
 
-            if(isset($attachements['pictures'])) {
-                foreach($attachements['pictures'] as $value) {
+            if(isset($attachments['pictures'])) {
+                foreach($attachments['pictures'] as $value) {
                     $entry->appendChild($link = $dom->createElement('link'));
                     $link->setAttribute('rel', 'enclosure');
                     $link->setAttribute('type', $value['type']);
@@ -107,8 +107,8 @@ class Syndication extends \Movim\Widget\Base
                 }
             }
 
-            if(isset($attachements['files'])) {
-                foreach($attachements['files'] as $value) {
+            if(isset($attachments['files'])) {
+                foreach($attachments['files'] as $value) {
                     $entry->appendChild($link = $dom->createElement('link'));
                     $link->setAttribute('rel', 'enclosure');
                     $link->setAttribute('type', $value['type']);
@@ -116,8 +116,8 @@ class Syndication extends \Movim\Widget\Base
                 }
             }
 
-            if(isset($attachements['links'])) {
-                foreach($attachements['links'] as $value) {
+            if(isset($attachments['links'])) {
+                foreach($attachments['links'] as $value) {
                     $entry->appendChild($link = $dom->createElement('link'));
                     $link->setAttribute('rel', 'alternate');
                     $link->setAttribute('href', $value['href']);

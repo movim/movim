@@ -206,7 +206,7 @@ class Post extends \Movim\Widget\Base
             }
 
             $view->assign('post', $p);
-            $view->assign('attachements', $p->getAttachements());
+            $view->assign('attachments', $p->getAttachments());
             return $view->draw('_post', true);
         } elseif(!$external) {
             return $this->prepareEmpty();
