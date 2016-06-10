@@ -98,8 +98,16 @@ class Avatar extends \Movim\Widget\Base
 
     function ajaxSubmit($avatar)
     {
+        $p = new \Picture;
+        $p->fromBase($avatar->photobin->value);
+
+        $p->set('temp', 'jpeg', 60);
+
+        $p = new \Picture;
+        $p->get('temp');
+
         $r = new Set;
-        $r->setData($avatar->photobin->value)->request();
+        $r->setData($p->toBase())->request();
     }
 
     function display()

@@ -124,12 +124,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "7dc18c9dc0e713dafc25ea4d0d3c8dc0126471ec"
+                "reference": "03ee4853f9b9d28b4d3e0b73d8e74c751ac213a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/7dc18c9dc0e713dafc25ea4d0d3c8dc0126471ec",
-                "reference": "7dc18c9dc0e713dafc25ea4d0d3c8dc0126471ec",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/03ee4853f9b9d28b4d3e0b73d8e74c751ac213a2",
+                "reference": "03ee4853f9b9d28b4d3e0b73d8e74c751ac213a2",
                 "shasum": ""
             },
             "require": {
@@ -170,7 +170,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-05-27 14:39:28"
+            "time": "2016-06-06 10:02:47"
         },
         {
             "name": "evenement/evenement",
@@ -344,6 +344,7 @@
                 "event",
                 "exception"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -401,6 +402,7 @@
                 "http",
                 "http client"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-08-11 04:32:36"
         },
         {
@@ -445,6 +447,7 @@
                 "message",
                 "url"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-02-05 18:29:46"
         },
         {
@@ -498,6 +501,7 @@
                 "component",
                 "stream"
             ],
+            "abandoned": "guzzle/guzzle",
             "time": "2014-05-01 21:36:02"
         },
         {
@@ -768,12 +772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "3410fbbf1bedb0334fc2e78af13354c43441d961"
+                "reference": "b57acb56f9ce07904717d8d493f893c17e5cc7a0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/3410fbbf1bedb0334fc2e78af13354c43441d961",
-                "reference": "3410fbbf1bedb0334fc2e78af13354c43441d961",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/b57acb56f9ce07904717d8d493f893c17e5cc7a0",
+                "reference": "b57acb56f9ce07904717d8d493f893c17e5cc7a0",
                 "shasum": ""
             },
             "require": {
@@ -808,7 +812,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-06-02 21:07:21"
+            "time": "2016-06-07 06:14:12"
         },
         {
             "name": "movim/sasl2",
