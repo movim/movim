@@ -32,7 +32,6 @@ class Post extends \Movim\Widget\Base
 {
     function load()
     {
-        $this->addjs('post.js');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
