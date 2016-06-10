@@ -78,7 +78,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-03 13:20+1100\n"
+"POT-Creation-Date: 2016-05-24 08:36+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -646,10 +646,6 @@ msgstr "Subject"
 #: [chatroom]subject_changed
 msgid "Subject changed"
 msgstr "Subject changed"
-
-#: [chatroom]administration [page]administration
-msgid "Administration"
-msgstr "Administration"
 
 #: [chats]empty_title
 msgid "No chats yet..."
@@ -1456,8 +1452,7 @@ msgid "You cannot publish a post on this Group"
 msgstr "You cannot publish a post on this Group"
 
 #: [publish]form_filled
-#, fuzzy
-msgid "Some fields have been filled in. Do you still want to go back and lose their content?"
+msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
 msgstr "Some fields have been filled in. Do you still want to go back and loose their content?"
 
 #: [publish]add_text
@@ -1728,6 +1723,10 @@ msgstr "You don't have javascript enabled.  Good luck with that."
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+
+#: [page]administration
+msgid "Administration"
+msgstr "Administration"
 
 #: [page]home
 msgid "Home"

@@ -81,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-03 13:20+1100\n"
+"POT-Creation-Date: 2016-05-24 08:36+0200\n"
 "PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -649,10 +649,6 @@ msgstr "主题"
 #: [chatroom]subject_changed
 msgid "Subject changed"
 msgstr "主题已改变"
-
-#: [chatroom]administration [page]administration
-msgid "Administration"
-msgstr "管理"
 
 #: [chats]empty_title
 msgid "No chats yet..."
@@ -1461,8 +1457,7 @@ msgid "You cannot publish a post on this Group"
 msgstr ""
 
 #: [publish]form_filled
-#, fuzzy
-msgid "Some fields have been filled in. Do you still want to go back and lose their content?"
+msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
 msgstr "一些字段已被填写。你坚持要后退并丢弃这些内容么？"
 
 #: [publish]add_text
@@ -1735,6 +1730,10 @@ msgstr "您的浏览器没有开启javascript，请排查一下"
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr ""
+
+#: [page]administration
+msgid "Administration"
+msgstr "管理"
 
 #: [page]home
 msgid "Home"
