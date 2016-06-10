@@ -311,7 +311,6 @@ class Postn extends Model {
             );
 
             $links = unserialize($this->links);
-
             foreach($links as $l) {
                 if(isset($l['type']) && $this->typeIsPicture($l['type'])) {
                     if($this->picture == null) {
@@ -328,12 +327,28 @@ class Postn extends Model {
                     if($l['rel'] == 'alternate') {
                         $this->openlink = $l['href'];
                         if(!$this->isMicroblog()) {
-                            array_push($attachements['links'], array('href' => $l['href'], 'url' => parse_url($l['href'])));
+                            array_push(
+                                $attachements['links'],
+                                array(
+                                    'href' => $l['href'],
+                                    'url'  => parse_url($l['href']),
+                                    'rel'  => 'alternate'
+                                )
+                            );
                         }
                     }
-                } elseif(isset($l['rel'])
-                && $l['rel'] == 'enclosure') {
-                    array_push($attachements['files'], $l);
+                } elseif(isset($l['rel'])){
+                    if ($l['rel'] == 'enclosure')
+                        array_push($attachements['files'], $l);
+                    elseif ($l['rel'] == 'related')
+                        array_push(
+                            $attachements['links'],
+                            array(
+                                'href' => $l['href'],
+                                'url'  => parse_url($l['href']),
+                                'rel'  => 'related'
+                            )
+                        );
                 }
             }
         }
@@ -399,7 +414,7 @@ class Postn extends Model {
 
     public function isEditable()
     {
-        return ($this->contentraw != null);
+        return ($this->contentraw != null || $this->links != null);
     }
 
     public function isShort()

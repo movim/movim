@@ -21,7 +21,9 @@
 
                 {if="$post->isMine() && !$public"}
                     {if="$post->isEditable()"}
-                        <span class="control icon active" onclick="Publish_ajaxCreate('{$post->origin}', '{$post->node}', '{$post->nodeid}')" title="{$c->__('button.edit')}">
+                        <span class="control icon active"
+                              onclick="Publish_ajaxCreate('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
+                              title="{$c->__('button.edit')}">
                             <i class="zmdi zmdi-edit"></i>
                         </span>
                     {/if}
@@ -166,6 +168,7 @@
             <ul class="list middle divided spaced">
                 {if="isset($attachements.links)"}
                     {loop="$attachements.links"}
+                        {if="$value.rel != 'alternate'"}
                         <li>
                             <span class="primary icon">
                                 <img src="https://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
@@ -176,6 +179,7 @@
                                 </a>
                             </p>
                         </li>
+                        {/if}
                     {/loop}
                 {/if}
                 {if="isset($attachements.files)"}
