@@ -70,9 +70,9 @@ class Blog extends \Movim\Widget\Base {
                         $this->description = truncate($description, 100);
                     }
 
-                    $attachements = $this->_messages[0]->getAttachements();
-                    if($attachements && array_key_exists('pictures', $attachements)) {
-                        $this->image = urldecode($attachements['pictures'][0]['href']);
+                    $attachments = $this->_messages[0]->getAttachments();
+                    if($attachments && array_key_exists('pictures', $attachments)) {
+                        $this->image = urldecode($attachments['pictures'][0]['href']);
                     }
                 }
 

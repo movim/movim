@@ -44,7 +44,7 @@ class Contact extends \Movim\Widget\Base
           ->setNode('urn:xmpp:microblog:0')
           ->request();
 
-        RPC::call('movim_push_state', $this->route('contact', $jid));
+        RPC::call('MovimUtils.pushState', $this->route('contact', $jid));
 
         RPC::call('movim_fill', 'contact_widget', $html);
         RPC::call('MovimTpl.showPanel');
@@ -99,7 +99,7 @@ class Contact extends \Movim\Widget\Base
             $view->assign('submit',
                 $this->call(
                     'ajaxEditSubmit',
-                    "movim_form_to_json('manage')"));
+                    "MovimUtils.formToJson('manage')"));
             $view->assign('contact', $rl);
             $view->assign('groups', $groups);
         }
@@ -114,7 +114,7 @@ class Contact extends \Movim\Widget\Base
         $c = new Chats;
         $c->ajaxOpen($jid);
 
-        RPC::call('movim_redirect', $this->route('chat', $jid));
+        RPC::call('MovimUtils.redirect', $this->route('chat', $jid));
     }
 
     function ajaxDeleteContact($jid)

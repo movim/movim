@@ -25,7 +25,7 @@ class AdminDB extends \Movim\Widget\Base
     {
         $md = \modl\Modl::getInstance();
         $md->check(true);
-        RPC::call('movim_reload_this');
+        RPC::call('MovimUtils.reloadThis');
     }
 
     public function hidePassword($pass)

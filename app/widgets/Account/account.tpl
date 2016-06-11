@@ -36,7 +36,7 @@
                     <label>{$c->__('account.password_confirmation')}</label>
                 </div>
                 <a onclick="
-                        Account_ajaxChangePassword(movim_form_to_json('password'));
+                        Account_ajaxChangePassword(MovimUtils.formToJson('password'));
                         this.className='button oppose inactive';" class="button color oppose">
                     {$c->__('button.submit')}
                 </a>

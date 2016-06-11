@@ -46,7 +46,7 @@ class Config extends \Movim\Widget\Base
         $view->assign('submit',
             $this->call(
                 'ajaxSubmit',
-                "movim_parse_form('general')"
+                "MovimUtils.parseForm('general')"
             )
                 . "this.className='button color orange inactive oppose';
                     this.onclick=null;"

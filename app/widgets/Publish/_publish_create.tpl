@@ -5,13 +5,13 @@
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
 
-            <span id="button_send" class="control icon active" onclick="Publish.disableSend(); Publish_ajaxPublish(movim_form_to_json('post'));">
+            <span id="button_send" class="control icon active" onclick="Publish.disableSend(); Publish_ajaxPublish(MovimUtils.formToJson('post'));">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>
             <span class="control icon active" onclick="Publish_ajaxHelp()">
                 <i class="zmdi zmdi-help"></i>
             </span>
-            <span class="control icon active" onclick="Publish_ajaxPreview(movim_form_to_json('post'))">
+            <span class="control icon active" onclick="Publish_ajaxPreview(MovimUtils.formToJson('post'))">
                 <i class="zmdi zmdi-eye"></i>
             </span>
 
@@ -48,14 +48,14 @@
 
     <div id="content_link">
         {if="$item != false"}
-            {$attachement = $item->getAttachement()}
+            {$attachment = $item->getAttachment()}
         {/if}
         <input
             type="url"
             name="embed"
             placeholder="http://myawesomewebsite.com/ or http://mynicepictureurl.com/"
             onpaste="var e=this; setTimeout(function(){Publish_ajaxEmbedTest(e.value);}, 4);"
-            {if="isset($attachement) && $attachement != false"}value="{$attachement.href}"{/if}
+            {if="isset($attachment) && $attachment != false"}value="{$attachment.href}"{/if}
         >
         <label for="embed">{$c->__('post.link')}</label>
 
@@ -72,7 +72,7 @@
         <label>{$c->__('publish.add_text_label')}</label>
     </div>
     <div id="content_field">
-        <textarea name="content" placeholder="{$c->__('post.content_text')}" oninput="movim_textarea_autoheight(this);">{if="$item != false"}{$item->contentraw}{/if}</textarea>
+        <textarea name="content" placeholder="{$c->__('post.content_text')}" oninput="MovimUtils.textareaAutoheight(this);">{if="$item != false"}{$item->contentraw}{/if}</textarea>
         <label for="content">{$c->__('post.content_label')}</label>
     </div>
 

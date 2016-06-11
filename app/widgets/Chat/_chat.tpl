@@ -140,7 +140,7 @@
                             {/if}
                             Chat.toggleAction(this.value.length);
                             "
-                        oninput="movim_textarea_autoheight(this);"
+                        oninput="MovimUtils.textareaAutoheight(this);"
                         placeholder="{$c->__('chat.placeholder')}"
                     ></textarea>
                 </div>

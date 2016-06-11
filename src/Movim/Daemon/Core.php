@@ -35,7 +35,7 @@ class Core implements MessageComponentInterface {
             "\n".
             "--- ".colorize("Server Configuration - Apache", 'purple')." ---".
             "\n";
-        echo colorize("Enable the Secure WebSocket to WebSocket tunneling", 'yellow')."\n$ a2enmod proxy_wstunnel \n";
+        echo colorize("Enable the Secure WebSocket to WebSocket tunneling", 'yellow')."\n# a2enmod proxy_wstunnel \n";
         echo colorize("Add this in your configuration file (default-ssl.conf)", 'yellow')."\nProxyPass /ws/ ws://localhost:{$port}/\n";
 
         echo

@@ -25,7 +25,7 @@
         {$c->__('button.close')}
     </a>
     <a
-        onclick="Group_ajaxSubscribe(movim_form_to_json('subscribe'), '{$server}', '{$node}'); Dialog.clear()"
+        onclick="Group_ajaxSubscribe(MovimUtils.formToJson('subscribe'), '{$server}', '{$node}'); Dialog.clear()"
         class="button flat">
         {$c->__('group.subscribe')}
     </a>

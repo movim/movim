@@ -85,12 +85,39 @@ class Item extends Model {
         $item = $pd->getGroupPicture($this->server, $this->node);
 
         if($item) {
-            $item->getAttachements();
+            $item->getAttachments();
 
             $p = new \Picture;
-            $p->fromURL($item->getPicture());
-            if($p->set($this->server.$this->node)) {
-                $this->logo = true;
+            if($item->getPublicUrl()) {
+                try {
+                    $embed = \Embed\Embed::create($item->getPublicUrl());
+
+                    // We get the icon
+                    $url = false;
+                    foreach($embed->providerIcons as $icon) {
+                        if($icon['mime'] != 'image/x-icon') {
+                            $url = $icon['value'];
+                        }
+                    }
+
+                    // If not we take the main picture
+                    if(!$url) {
+                        $url = (string)$embed->image;
+                    }
+
+                    // If not we take the post picture
+                    if(!$url) {
+                        $url = (string)$item->picture;
+                    }
+
+                    $p->fromURL($url);
+                    if($p->set($this->server.$this->node)) {
+                        $this->logo = true;
+                    }
+                } catch(\Exception $e) {
+                    error_log($e->getMessage());
+                }
+
             }
         }
     }

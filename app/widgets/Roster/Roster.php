@@ -100,7 +100,7 @@ class Roster extends \Movim\Widget\Base
         $view->assign('add',
             $this->call(
                 'ajaxAdd',
-                "movim_parse_form('add')"));
+                "MovimUtils.parseForm('add')"));
         $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
 
         Dialog::fill($view->draw('_roster_search', true));
@@ -160,7 +160,7 @@ class Roster extends \Movim\Widget\Base
     function ajaxSearchContact($jid)
     {
         if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
-            RPC::call('movim_redirect', Route::urlize('contact', $jid));
+            RPC::call('MovimUtils.redirect', Route::urlize('contact', $jid));
             RPC::commit();
         } else
             Notification::append(null, $this->__('roster.jid_error'));

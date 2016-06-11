@@ -31,7 +31,7 @@ class AccountNext extends \Movim\Widget\Base {
 
         if($package->from == 'movim.eu') {
             $movimview = $this->tpl();
-            $movimview->assign('submitdata', $this->call('ajaxRegister', "movim_form_to_json('data')"));
+            $movimview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
             $html = $movimview->draw('_accountnext_movim', true);
 
             RPC::call('movim_fill', 'subscription_form', $html);
@@ -43,7 +43,7 @@ class AccountNext extends \Movim\Widget\Base {
                         $formview = $this->tpl();
 
                         $formh = $xtf->getHTML($form->x->asXML());
-                        $formview->assign('submitdata', $this->call('ajaxRegister', "movim_form_to_json('data')"));
+                        $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
 
                         $formview->assign('formh', $formh);
                         $html = $formview->draw('_accountnext_form', true);
@@ -94,7 +94,7 @@ class AccountNext extends \Movim\Widget\Base {
     {
         Notification::append(null, $this->__('error.service_unavailable'));
         RPC::call('remoteUnregister');
-        RPC::call('movim_redirect', $this->route('account'));
+        RPC::call('MovimUtils.redirect', $this->route('account'));
     }
 
     function ajaxGetForm($host)

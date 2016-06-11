@@ -19,7 +19,7 @@
                 {$c->__('button.add')}
             </a><a 
                 class="button icon no black merged right" 
-                onclick="movim_toggle_display('#bookmarkurladd')"
+                onclick="MovimUtils.toggleDisplay('#bookmarkurladd')"
             >
                 {$c->__('button.close')}
             </a>

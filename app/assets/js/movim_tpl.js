@@ -69,15 +69,15 @@ var MovimTpl = {
             header.parentNode.onscroll = function() {
                 var header = this.querySelector('header');
                 if(this.scrollTop == 0) {
-                    movim_remove_class(header, 'scroll');
+                    MovimUtils.removeClass(header, 'scroll');
                 } else {
-                    movim_add_class(header, 'scroll');
+                    MovimUtils.addClass(header, 'scroll');
                 }
             }
         }*/
     },
     showPanel : function() {
-        movim_add_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
+        MovimUtils.addClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
         MovimTpl.scrollPanelTop();
         //MovimTpl.scrollHeaders();
     },
@@ -86,7 +86,7 @@ var MovimTpl = {
         var selector = 'main section > div:first-child:nth-last-child(2) ~ div';
         var inner = document.querySelector(selector + ' div');
 
-        movim_remove_class(selector, 'enabled');
+        MovimUtils.removeClass(selector, 'enabled');
 
         // Clear the right panel
         //if(inner != null) inner.innerHTML = '';
@@ -105,7 +105,7 @@ var MovimTpl = {
         }
     },
     isPanel : function() {
-        if(movim_has_class('main section > div:first-child:nth-last-child(2) ~ div', 'enabled')) {
+        if(MovimUtils.hasClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled')) {
             return true;
         } else {
             return false;
@@ -133,7 +133,7 @@ var MovimTpl = {
         }
     },
     toggleMenu : function() {
-        movim_toggle_class('body > nav', 'active');
+        MovimUtils.toggleClass('body > nav', 'active');
     },
     toggleContextMenu : function(e) {
         var element = 'ul.context_menu';
@@ -144,21 +144,21 @@ var MovimTpl = {
         }
 
         if(document.querySelector('.show_context_menu').contains(e.target)) {
-            movim_add_class(element, classname);
+            MovimUtils.addClass(element, classname);
             return;
         }
 
         //if(!document.querySelector(element).contains(e.target))
-        movim_remove_class(element, classname);
+        MovimUtils.removeClass(element, classname);
     },
     toggleActionButton : function() {
-        movim_toggle_class('.button.action', 'active');
+        MovimUtils.toggleClass('.button.action', 'active');
     },
     hideContextMenu : function() {
-        movim_remove_class('ul.context_menu', 'shown');
+        MovimUtils.removeClass('ul.context_menu', 'shown');
     },
     hideMenu : function() {
-        movim_remove_class('body > nav', 'active');
+        MovimUtils.removeClass('body > nav', 'active');
     },
     back : function() {
         // If the contect menu is show
@@ -170,8 +170,8 @@ var MovimTpl = {
         else if(Dialog.filled()) {
             Dialog.clear();
         // If the menu is shown
-        } else if(movim_has_class('body > nav', 'active')) {
-            movim_toggle_class('body > nav', 'active');
+        } else if(MovimUtils.hasClass('body > nav', 'active')) {
+            MovimUtils.toggleClass('body > nav', 'active');
         // If the panel is shown
         } else if(MovimTpl.isPanel()) {
             MovimTpl.hidePanel();

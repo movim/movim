@@ -44,7 +44,7 @@ class Publish extends \Movim\Widget\Base
             $this->ajaxCreateComments($to, $id);
         //}
 
-        RPC::call('movim_redirect', Route::urlize('news', $id));
+        RPC::call('MovimUtils.redirect', Route::urlize('news', $id));
     }
 
     function onTestPublish($packet)

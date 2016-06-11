@@ -41,7 +41,7 @@
 
 <ul class="list flex card shadow active">
 {loop="$blogs"}
-    {$attachements = $value->getAttachements()}
+    {$attachments = $value->getAttachments()}
     <li
         class="block condensed"
         data-id="{$value->nodeid}"
@@ -113,7 +113,7 @@
 <ul class="list flex card shadow active">
 {loop="$posts"}
     {if="!filter_var($value->origin, FILTER_VALIDATE_EMAIL)"}
-        {$attachements = $value->getAttachements()}
+        {$attachments = $value->getAttachments()}
         <li
             class="block condensed"
             data-id="{$value->nodeid}"

@@ -13,13 +13,13 @@ var Notifs = {
             items[i].onclick = function(e) {
                 MovimTpl.showPanel();
                 Contact_ajaxGetContact(this.dataset.jid);
-                Notifs.reset(items);
-                movim_add_class(this, 'active');
-            }
+                MovimUtils.removeClassInList('active', items);
+                MovimUtils.addClass(this, 'active');
+            };
 
             items[i].querySelector('span.control.icon').onclick = function(e) {
                 Notifs_ajaxAsk(this.dataset.jid);
-            }
+            };
             i++;
         }
 
@@ -39,13 +39,6 @@ var Notifs = {
             }
         }
     },
-
-    reset: function(list) {
-        for(i = 0; i < list.length; i++) {
-            movim_remove_class(list[i], 'active');
-        }
-    },
-
     showHide : function(e){
         state = localStorage.getObject(Notifs.lswidget).invitShown;
         parent = document.querySelector('#notifs_widget');
@@ -57,7 +50,7 @@ var Notifs = {
 
         localStorage.setObject(Notifs.lswidget, {"invitShown": !state});
     },
-}
+};
 
 MovimWebsocket.attach(function() {
     Notifs_ajaxGet();

@@ -300,6 +300,7 @@ class PostnDAO extends SQL {
             where postn.origin = :origin
                 and postn.node = :node
                 and postn.picture = 1
+                and postn.open = true
             order by postn.published desc
             limit 1';
 

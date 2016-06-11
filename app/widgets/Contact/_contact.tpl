@@ -187,7 +187,7 @@
                 <p>{$c->__('blog.last')}</p>
             </li>
             {loop="$blog"}
-                <li class="block" onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
+                <li class="block" onclick="MovimUtils.reload('{$c->route('news', $value->nodeid)}')">
                     {$url = $value->getContact()->getPhoto('s')}
                     {if="$url"}
                         <span class="primary icon bubble" style="background-image: url({$url});">
@@ -344,9 +344,9 @@
         </ul>
         <ul class="grid active padded">
             {loop="$gallery"}
-                {$attachements = $value->getAttachements()}
-                <li style="background-image: url('{$attachements['pictures'][0]['href']}');"
-                    onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
+                {$attachments = $value->getAttachments()}
+                <li style="background-image: url('{$attachments['pictures'][0]['href']}');"
+                    onclick="MovimUtils.reload('{$c->route('news', $value->nodeid)}')">
                     <nav>
                         <span>{$value->title}</span>
                     </nav>

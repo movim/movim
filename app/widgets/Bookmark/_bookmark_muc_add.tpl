@@ -31,7 +31,7 @@
                 <i class="fa fa-plus"></i> {$c->__('button.add')}
             </a><a 
                 class="button black merged right" 
-                onclick="movim_toggle_display('#bookmarkmucadd')"
+                onclick="MovimUtils.toggleDisplay('#bookmarkmucadd')"
             >
                 <i class="fa fa-times"></i> {$c->__('button.close')}
             </a>
