@@ -18,7 +18,7 @@ class Dialog extends \Movim\Widget\Base
 
     public function ajaxClear()
     {
-        RPC::call('movim_remove_class', '#dialog', 'scroll');
+        RPC::call('MovimUtils.removeClass', '#dialog', 'scroll');
         RPC::call('MovimTpl.fill', '#dialog', '');
     }
 

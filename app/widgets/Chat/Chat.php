@@ -185,7 +185,7 @@ class Chat extends \Movim\Widget\Base
 
             $html = $this->prepareChat($jid);
 
-            RPC::call('movim_push_state', $this->route('chat', $jid));
+            RPC::call('MovimUtils.pushState', $this->route('chat', $jid));
 
             RPC::call('movim_fill', 'chat_widget', $html);
             RPC::call('MovimTpl.showPanel');

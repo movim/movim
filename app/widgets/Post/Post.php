@@ -107,7 +107,7 @@ class Post extends \Movim\Widget\Base
 
         $html = $this->preparePost($p);
 
-        RPC::call('movim_push_state', $this->route('news', $id));
+        RPC::call('MovimUtils.pushState', $this->route('news', $id));
 
         RPC::call('movim_fill', 'post_widget', $html);
         RPC::call('MovimTpl.scrollHeaders');

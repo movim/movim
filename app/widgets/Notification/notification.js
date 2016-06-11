@@ -23,7 +23,7 @@ var Notification = {
             },
             sec*1000);
     },
-    refresh : function(keys) {console.log(keys);
+    refresh : function(keys) {
         var counters = document.querySelectorAll('.counter');
         for(i = 0; i < counters.length; i++) {
             var n = counters[i];

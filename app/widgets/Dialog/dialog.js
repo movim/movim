@@ -1,6 +1,6 @@
 var Dialog = {
     addScroll : function() {
-        movim_add_class('#dialog', 'scroll');
+        MovimUtils.addClass('#dialog', 'scroll');
     },
     filled : function() {
         if(document.querySelector('#dialog').innerHTML != '') { return true; }

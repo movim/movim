@@ -10,7 +10,7 @@
     <li>
     <a class="button color gray oppose" 
        title="{$c->__('chatroom.add')}"
-       onclick="movim_toggle_display('#bookmarkmucadd')">
+       onclick="MovimUtils.toggleDisplay('#bookmarkmucadd')">
         <i class="fa fa-plus"></i> {$c->__('button.add')}
     </a>
     </li>

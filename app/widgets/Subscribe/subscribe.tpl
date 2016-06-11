@@ -10,7 +10,7 @@
         {if="!empty($config->xmppdomain)"}
             <li
                 class="block large"
-                onclick="movim_redirect('{$c->route('accountnext', array($config->xmppdomain, false))}')">
+                onclick="MovimUtils.redirect('{$c->route('accountnext', array($config->xmppdomain, false))}')">
                 <span class="primary icon bubble color {$config->xmppdomain|stringToColor}">
                     {$config->xmppdomain|firstLetterCapitalize}
                 </span>
@@ -36,7 +36,7 @@
         {loop="$servers"}
         <li
             class="block"
-            onclick="movim_redirect('{$c->route('accountnext', array($value->domain, false))}')">
+            onclick="MovimUtils.redirect('{$c->route('accountnext', array($value->domain, false))}')">
             <span class="primary icon bubble color {$value->description|stringToColor}">
                 {if="isset($value->checked) && $value->checked"}
                     <i class="fa md-star-outline"></i>

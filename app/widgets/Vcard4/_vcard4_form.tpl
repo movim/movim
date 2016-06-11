@@ -126,7 +126,7 @@
     </div>
 
     <div class="block large">
-        <textarea name="desc" id="desctext" class="content" onkeyup="movim_textarea_autoheight(this);">{$desc}</textarea>
+        <textarea name="desc" id="desctext" class="content" onkeyup="MovimUtils.textareaAutoheight(this);">{$desc}</textarea>
         <label for="desc">{$c->__('general.about')}</label>
     </div>
 
@@ -176,7 +176,7 @@
         <a
             onclick="
                 {$submit}
-                movim_button_save('#vcard4validate');
+                MovimUtils.buttonSave('#vcard4validate');
                 this.value = '{$c->__('Submitting')}';
                 this.className='button oppose inactive';"
             class="button color oppose"

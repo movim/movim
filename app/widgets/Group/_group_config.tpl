@@ -7,7 +7,7 @@
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.close')}
     </a>
-    <a onclick="Group_ajaxSetConfig(movim_parse_form('config'), '{$server}', '{$node}'); Dialog.clear();" class="button flat">
+    <a onclick="Group_ajaxSetConfig(MovimUtils.parseForm('config'), '{$server}', '{$node}'); Dialog.clear();" class="button flat">
         {$c->__('button.save')}
     </a>
 </div>

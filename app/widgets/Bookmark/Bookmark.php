@@ -61,7 +61,7 @@ class Bookmark extends \Movim\Widget\Base
             'submit',
             $this->call(
                 'ajaxBookmarkUrlAdd',
-                "movim_parse_form('bookmarkurladd')")
+                "MovimUtils.parseForm('bookmarkurladd')")
         );
         $html .= $urlview->draw('_bookmark_url_add', true);
 
@@ -71,7 +71,7 @@ class Bookmark extends \Movim\Widget\Base
             'submit',
             $this->call(
                 'ajaxBookmarkMucAdd',
-                "movim_parse_form('bookmarkmucadd')")
+                "MovimUtils.parseForm('bookmarkmucadd')")
         );
         $html .= $mucview->draw('_bookmark_muc_add', true);
 

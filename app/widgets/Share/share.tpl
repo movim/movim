@@ -14,7 +14,7 @@
             </li>
             <script type="text/javascript">
                 localStorage.setItem('share_url', '{$url}');
-                movim_redirect('{$c->route('news')}');
+                MovimUtils.redirect('{$c->route('news')}');
             </script>
         {else}
             <li>

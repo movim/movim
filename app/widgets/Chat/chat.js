@@ -12,7 +12,7 @@ var Chat = {
         var text = n.value;
         n.value = "";
         n.focus();
-        movim_textarea_autoheight(n);
+        MovimUtils.textareaAutoheight(n);
         if(Chat.edit) {
             Chat.edit = false;
             Chat_ajaxCorrect(jid, encodeURIComponent(text));
@@ -239,7 +239,7 @@ if(typeof Upload != 'undefined') {
         var textarea = document.querySelector('#chat_textarea');
         textarea.value = Upload.get + ' ' + textarea.value;
         textarea.focus();
-        movim_textarea_autoheight(textarea);
+        MovimUtils.textareaAutoheight(textarea);
     });
 }
 

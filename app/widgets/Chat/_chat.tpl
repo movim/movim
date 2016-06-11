@@ -144,7 +144,7 @@
                             },5000);
                             {/if}
                             "
-                        oninput="movim_textarea_autoheight(this);"
+                        oninput="MovimUtils.textareaAutoheight(this);"
                         placeholder="{$c->__('chat.placeholder')}"
                     ></textarea>
                 </div>

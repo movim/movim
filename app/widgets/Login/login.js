@@ -110,14 +110,14 @@ var Login = {
      * @brief Back to the choosing panel
      */
     toChoose : function() {
-        movim_add_class('#login_widget', 'choose');
+        MovimUtils.addClass('#login_widget', 'choose');
     },
 
     /**
      * @brief Back to the choosing panel
      */
     toForm : function() {
-        movim_remove_class('#login_widget', 'choose');
+        MovimUtils.removeClass('#login_widget', 'choose');
         // Empty login field
         document.querySelector('input#username').value = "";
     },
@@ -129,7 +129,7 @@ var Login = {
         Login.rememberSession(jid);
         localStorage.postStart = 1;
 
-        movim_redirect(url);
+        MovimUtils.redirect(url);
     },
 
     /**

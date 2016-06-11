@@ -16,11 +16,11 @@ var Publish = {
     },
 
     enableSend: function() {
-        movim_remove_class('#button_send', 'disabled');
+        MovimUtils.removeClass('#button_send', 'disabled');
     },
 
     disableSend: function() {
-        movim_add_class('#button_send', 'disabled');
+        MovimUtils.addClass('#button_send', 'disabled');
     },
 
     enableContent: function() {
@@ -65,7 +65,7 @@ var Publish = {
     initEdit: function() {
         Publish.enableContent();
         Publish_ajaxEmbedTest(document.querySelector('#content_link input').value);
-        movim_textarea_autoheight(document.querySelector('#content_field textarea'));
+        MovimUtils.textareaAutoheight(document.querySelector('#content_field textarea'));
     }
 }
 
