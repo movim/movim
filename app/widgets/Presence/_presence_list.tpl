@@ -61,7 +61,7 @@
     <a onclick="Dialog.clear()" class="button flat">
         {$c->__('button.close')}
     </a>
-    <a onclick="Presence_ajaxSet(movim_parse_form('presence')); Dialog.clear();" class="button flat">
+    <a onclick="Presence_ajaxSet(MovimUtils.parseForm('presence')); Dialog.clear();" class="button flat">
         {$c->__('button.submit')}
     </a>
 </div>

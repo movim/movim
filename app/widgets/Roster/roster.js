@@ -257,31 +257,29 @@ var Roster = {
 
         search.oninput = function(event) {
             if(search.value.length > 0) {
-                movim_add_class(roster, 'search');
+                MovimUtils.addClass(roster, 'search');
             } else {
-                movim_remove_class(roster, 'search');
+                MovimUtils.removeClass(roster, 'search');
             }
 
             // We clear the old search
             var selector_clear = '#rosterlist div > li.found';
             var li = document.querySelectorAll(selector_clear);
 
-            for(i = 0; i < li.length; i++) {
-                movim_remove_class(li.item(i), 'found');
-            }
-
+            MovimUtils.removeClassInList('found', li);
+            
             // We select the interesting li
             var selector = '#rosterlist div > li[title*="' + accentsTidy(search.value) + '"]:not(.subheader)';
             li = document.querySelectorAll(selector);
             if(li != null && li.item(0) != null ){
                 var g = li.item(0).parentNode.querySelector('.subheader');
-                movim_add_class(g, 'found');
+                MovimUtils.addClass(g, 'found');
                 for(i = 0; i < li.length; i++) {
                     if(li.item(i).parentNode.firstChild != g){
                         g = li.item(i).parentNode.querySelector('.subheader');
-                        movim_add_class(g, 'found');
+                        MovimUtils.addClass(g, 'found');
                     }
-                    movim_add_class(li.item(i), 'found');
+                    MovimUtils.addClass(li.item(i), 'found');
                 }
             }
         };
@@ -295,13 +293,7 @@ var Roster = {
             items[i].onclick = function(){Roster.clickOnContact(this);};
             i++;
         }
-    },
-
-    reset: function(list) {
-        for(i = 0; i < list.length; i++) {
-            movim_remove_class(list[i], 'active');
-        }
-    },
+    }
 
     clearSearch: function() {
         var search = document.querySelector('#rostersearch');
@@ -320,9 +312,9 @@ var Roster = {
         Contact_ajaxRefreshFeed(e.id);
         /*recalculated at each click*/
         var it = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
-        Roster.reset(it);
+        MovimUtils.removeClassInList('active', it);
         Roster.clearSearch();
-        movim_add_class(e, 'active');
+        MovimUtils.addClass(e, 'active');
     },
 }
 

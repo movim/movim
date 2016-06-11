@@ -56,7 +56,7 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            data = pako.ungzip(base64_decode(e.data), { to: 'string' });
+            data = pako.ungzip(MovimUtils.base64Decode(e.data), { to: 'string' });
 
             var obj = JSON.parse(data);
 
@@ -66,7 +66,7 @@ var MovimWebsocket = {
                 }
 
                 if(obj.func == 'disconnected') {
-                    movim_disconnect();
+                    MovimUtils.disconnect();
                 }
 
                 MovimWebsocket.handle(obj);
@@ -78,7 +78,7 @@ var MovimWebsocket = {
             console.log("Connection closed by the server or session closed");
             if(e.code == 1006 || e.code == 1000) {
                 if(MovimWebsocket.unregistered == false) {
-                    movim_disconnect();
+                    MovimUtils.disconnect();
                 } else {
                     MovimWebsocket.unregistered = false;
                     MovimWebsocket.init();

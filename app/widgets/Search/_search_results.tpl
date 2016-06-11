@@ -8,7 +8,7 @@
             <li class="subheader"><p>{$c->__('page.news')}</p></li>
         {/if}
         {loop="$posts"}
-            <li onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
+            <li onclick="MovimUtils.reload('{$c->route('news', $value->nodeid)}')">
                 {if="$value->title != null"}
                     <p class="line">{$value->title}</p>
                 {else}
@@ -52,7 +52,7 @@
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
-                <span class="control icon active gray" onclick="movim_reload('{$c->route('contact', $value->jid)}')">
+                <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
                     <i class="zmdi zmdi-account"></i>
                 </span>
                 <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">

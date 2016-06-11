@@ -51,13 +51,13 @@
         {if="isset($room)"}
             <a
                 class="button flat"
-                onclick="Rooms_ajaxChatroomAdd(movim_parse_form('bookmarkmucadd'));">
+                onclick="Rooms_ajaxChatroomAdd(MovimUtils.parseForm('bookmarkmucadd'));">
                 {$c->__('button.edit')}
             </a>
         {else}
             <a
                 class="button flat"
-                onclick="Rooms_ajaxChatroomAdd(movim_parse_form('bookmarkmucadd'));">
+                onclick="Rooms_ajaxChatroomAdd(MovimUtils.parseForm('bookmarkmucadd'));">
                 {$c->__('button.add')}
             </a>
         {/if}

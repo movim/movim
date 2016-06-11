@@ -13,7 +13,7 @@
         </a>
         <a
             class="button flat"
-            onclick="Chat_ajaxSetSubject('{$room}', movim_form_to_json('changesubject')); Dialog.clear();">
+            onclick="Chat_ajaxSetSubject('{$room}', MovimUtils.formToJson('changesubject')); Dialog.clear();">
             {$c->__('button.save')}
         </a>
     </div>

@@ -67,7 +67,7 @@ class Login extends \Movim\Widget\Base
 
     function display()
     {
-        $submit = $this->call('ajaxLogin', "movim_form_to_json('login')");
+        $submit = $this->call('ajaxLogin', "MovimUtils.formToJson('login')");
 
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
@@ -106,7 +106,7 @@ class Login extends \Movim\Widget\Base
     function showErrorBlock($error)
     {
         RPC::call('movim_fill', 'error', $this->prepareError($error));
-        RPC::call('movim_add_class', '#login_widget', 'error');
+        RPC::call('MovimUtils.addClass', '#login_widget', 'error');
     }
 
     function prepareError($error = 'default')
@@ -205,7 +205,7 @@ class Login extends \Movim\Widget\Base
         if($here) {
         //if($s->get('hash') == sha1($username.$password.$host)) {
             RPC::call('Login.setCookie', $here->session);
-            RPC::call('movim_redirect', Route::urlize('main'));
+            RPC::call('MovimUtils.redirect', Route::urlize('main'));
             $this->showErrorBlock('conflict');
             return;
         }

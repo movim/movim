@@ -56,7 +56,7 @@ class Presence extends \Movim\Widget\Base
         RPC::call('movim_fill', 'presence_widget', $html);
         Notification::append(null, $this->__('status.updated'));
         RPC::call('Presence.refresh');
-        RPC::call('movim_remove_class', '#presence_widget', 'unfolded');
+        RPC::call('MovimUtils.removeClass', '#presence_widget', 'unfolded');
     }
 
     function ajaxSet($form = false)

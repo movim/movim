@@ -65,7 +65,7 @@ class Api extends \Movim\Widget\Base {
         $json = json_decode($json);
 
         if(isset($json) && $json->status == 200) {
-            RPC::call('movim_reload_this');
+            RPC::call('MovimUtils.reloadThis');
             Notification::append(null, $this->__('api.conf_updated'));
         }
     }
@@ -78,7 +78,7 @@ class Api extends \Movim\Widget\Base {
         $config->unregister = !$config->unregister;
         $cd->set($config);
 
-        RPC::call('movim_reload_this');
+        RPC::call('MovimUtils.reloadThis');
         RPC::commit();
     }
 }

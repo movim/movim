@@ -54,7 +54,7 @@ class Vcard4 extends \Movim\Widget\Base
 
         $vcardform->assign(
             'submit',
-            $this->call('ajaxVcardSubmit', "movim_form_to_json('vcard4')")
+            $this->call('ajaxVcardSubmit', "MovimUtils.formToJson('vcard4')")
             );
 
         $vcardform->assign(
@@ -102,7 +102,7 @@ class Vcard4 extends \Movim\Widget\Base
     }
 
     function onMyVcard4Received() {
-        RPC::call('movim_button_reset', '#vcard4validate');
+        RPC::call('MovimUtils.buttonReset', '#vcard4validate');
         Notification::append(null, $this->__('vcard.updated'));
         RPC::commit();
     }
