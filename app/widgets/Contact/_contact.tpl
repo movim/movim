@@ -344,8 +344,8 @@
         </ul>
         <ul class="grid active padded">
             {loop="$gallery"}
-                {$attachements = $value->getAttachements()}
-                <li style="background-image: url('{$attachements['pictures'][0]['href']}');"
+                {$attachments = $value->getAttachments()}
+                <li style="background-image: url('{$attachments['pictures'][0]['href']}');"
                     onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
                     <nav>
                         <span>{$value->title}</span>

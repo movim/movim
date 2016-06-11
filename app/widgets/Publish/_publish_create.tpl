@@ -48,14 +48,14 @@
 
     <div id="content_link">
         {if="$item != false"}
-            {$attachement = $item->getAttachement()}
+            {$attachment = $item->getAttachment()}
         {/if}
         <input
             type="url"
             name="embed"
             placeholder="http://myawesomewebsite.com/ or http://mynicepictureurl.com/"
             onpaste="var e=this; setTimeout(function(){Publish_ajaxEmbedTest(e.value);}, 4);"
-            {if="isset($attachement) && $attachement != false"}value="{$attachement.href}"{/if}
+            {if="isset($attachment) && $attachment != false"}value="{$attachment.href}"{/if}
         >
         <label for="embed">{$c->__('post.link')}</label>
 

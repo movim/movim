@@ -2,12 +2,12 @@
 <article class="block">
 {/if}
 
-{if="isset($attachements.pictures)"}
+{if="isset($attachments.pictures)"}
     {if="($public && $post->isPublic()) || !$public"}
         <header
             class="big"
             style="
-                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachements['pictures'][0]['href']}');">
+                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachments['pictures'][0]['href']}');">
     {/if}
 {else}
 <header>
@@ -133,8 +133,8 @@
     {else}
         <section>
             <content>
-                {if="$post->isShort() && isset($attachements.pictures)"}
-                    {loop="$attachements.pictures"}
+                {if="$post->isShort() && isset($attachments.pictures)"}
+                    {loop="$attachments.pictures"}
                         {if="$value.type != 'picture'"}
                         <a href="{$value.href}" class="alternate" target="_blank">
                             <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
@@ -167,24 +167,24 @@
                 </ul>
             {/if}
             <ul class="list middle divided spaced">
-                {if="isset($attachements.links)"}
-                    {loop="$attachements.links"}
+                {if="isset($attachments.links)"}
+                    {loop="$attachments.links"}
                         {if="$value.rel != 'alternate'"}
-                        <li>
-                            <span class="primary icon">
-                                <img src="https://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
-                            </span>
-                            <p class="normal line">
-                                <a href="{$value.href}" class="alternate" target="_blank">
-                                    {$value.href|urldecode}
-                                </a>
-                            </p>
-                        </li>
+                            <li>
+                                <span class="primary icon">
+                                    <img src="https://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
+                                </span>
+                                <p class="normal line">
+                                    <a href="{$value.href}" class="alternate" target="_blank">
+                                        {$value.href|urldecode}
+                                    </a>
+                                </p>
+                            </li>
                         {/if}
                     {/loop}
                 {/if}
-                {if="isset($attachements.files)"}
-                    {loop="$attachements.files"}
+                {if="isset($attachments.files)"}
+                    {loop="$attachments.files"}
                         <li>
                             <span class="primary icon gray">
                                 <span class="zmdi zmdi-attachment-alt"></span>
@@ -204,9 +204,9 @@
                     {/loop}
                 {/if}
             </ul>
-            {if="!$post->isShort() && isset($attachements.pictures)"}
+            {if="!$post->isShort() && isset($attachments.pictures)"}
                 <ul class="list flex middle">
-                {loop="$attachements.pictures"}
+                {loop="$attachments.pictures"}
                     {if="$value.type != 'picture'"}
                     <li class="block pic">
                         <span class="primary icon gray">

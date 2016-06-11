@@ -85,7 +85,7 @@ class Item extends Model {
         $item = $pd->getGroupPicture($this->server, $this->node);
 
         if($item) {
-            $item->getAttachements();
+            $item->getAttachments();
 
             $p = new \Picture;
             if($item->getPublicUrl()) {
