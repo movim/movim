@@ -157,6 +157,7 @@
                 <ul class="list middle">
                     <li>
                         <span class="primary icon zmdi zmdi-tag gray"></span>
+                        <p></p>
                         <p class="normal">
                             {loop="$tags"}
                                 <a target="_blank" href="{$c->route('tag', array($value))}">#{$value}</a>
@@ -220,20 +221,23 @@
                 </ul>
             {/if}
             {if="$post->isPublic() && !$public"}
-                <ul class="list thick">
-                    <li>
-                        <span class="primary icon gray">
-                            <i class="zmdi zmdi-portable-wifi"></i>
-                        </span>
-                        <p class="line normal">
-                            {$c->__('post.public_yes')}
-                        </p>
-                        <p>
-                            <a target="_blank" href="{$post->getPublicUrl()}">
+                <ul class="list active middle">
+                    <a target="_blank" href="{$post->getPublicUrl()}">
+                        <li>
+                            <span class="primary icon gray">
+                                <i class="zmdi zmdi-portable-wifi"></i>
+                            </span>
+                            <span class="control icon">
+                                <i class="zmdi zmdi-chevron-right"></i>
+                            </span>
+                            <p class="line normal">
+                                {$c->__('post.public_yes')}
+                            </p>
+                            <p>
                                 {$c->__('post.public_url')}
-                            </a>
-                        </p>
-                    </li>
+                            </p>
+                        </li>
+                    </a>
                 </ul>
             {/if}
         </footer>
