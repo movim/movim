@@ -149,7 +149,7 @@
         };
 
         this.getContactTitle = function(c){
-            title = accentsTidy(c.rosterview.name) + " - " + c.jid;
+            title = MovimUtils.accentsTidy(c.rosterview.name) + " - " + c.jid;
             if(c.status) title += " - " + c.status;
             return title;
         };
@@ -269,7 +269,7 @@ var Roster = {
             MovimUtils.removeClassInList('found', li);
             
             // We select the interesting li
-            var selector = '#rosterlist div > li[title*="' + accentsTidy(search.value) + '"]:not(.subheader)';
+            var selector = '#rosterlist div > li[title*="' + MovimUtils.accentsTidy(search.value) + '"]:not(.subheader)';
             li = document.querySelectorAll(selector);
             if(li != null && li.item(0) != null ){
                 var g = li.item(0).parentNode.querySelector('.subheader');

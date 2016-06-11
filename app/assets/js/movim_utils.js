@@ -100,7 +100,7 @@ var MovimUtils = {
 
         return dec.replace(/\0+$/, '');
     },
-    button_reset: function(element) {
+    buttonReset: function(element) {
         var elt = document.querySelector(element);
         elt.className = elt.dataset.oldclassname;
     },
