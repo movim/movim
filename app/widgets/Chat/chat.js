@@ -221,6 +221,17 @@ var Chat = {
                 Chat.lastDate = lastDate;
             }*/
         }
+    },
+    toggleAction: function(l) {
+        var send_button = document.querySelector(".chat_box span[data-jid]");
+        var attachment_button = document.querySelector(".chat_box span.control:not([data-jid])");
+        if(l > 0){
+            send_button.style.display = "block";
+            attachment_button.style.display = "none";
+        } else {
+            send_button.style.display = "none";
+            attachment_button.style.display = "block";
+        }
     }
 }
 

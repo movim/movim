@@ -18,11 +18,9 @@
                 <i class="zmdi zmdi-close"></i>
             </span>
 
-            {if="$c->supported('upload')"}
-                <span class="control icon active" onclick="Upload_ajaxRequest()">
-                    <i class="zmdi zmdi-attachment-alt"></i>
-                </span>
-            {/if}
+            <span class="control icon active" onclick="Rooms_ajaxList('{$jid|echapJS}')">
+                <i class="zmdi zmdi-accounts"></i>
+            </span>
 
             {if="$conference != null && $conference->name"}
                 <p class="line" title="{$room}">{$conference->name}</p>
@@ -44,9 +42,6 @@
                 <p class="normal">{$c->__('chatroom.subject')}</p>
             </li>
         {/if}
-        <li onclick="Rooms_ajaxList('{$room}')">
-            <p class="normal">{$c->__('chatroom.members')}</p>
-        </li>
         {if="!$anon"}
             <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">
                 <p class="normal">{$c->__('button.delete')}</p>
@@ -69,11 +64,6 @@
             <span class="control icon active" onclick="Chats_ajaxClose('{$jid|echapJS}'); MovimTpl.hidePanel();">
                 <i class="zmdi zmdi-close"></i>
             </span>
-            {if="$c->supported('upload')"}
-                <span class="control icon active" onclick="Upload_ajaxRequest()">
-                    <i class="zmdi zmdi-attachment-alt"></i>
-                </span>
-            {/if}
             <p class="line">
                 {if="$contact != null"}
                     {$contact->getTrueName()}
@@ -98,6 +88,11 @@
             <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
+            {if="$c->supported('upload')"}
+                <span class="control icon active" onclick="Upload_ajaxRequest()">
+                    <i class="zmdi zmdi-attachment-alt"></i>
+                </span>
+            {/if}
             <span class="control icon gray" data-jid="{$jid}" onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>
@@ -143,6 +138,7 @@
                                 }
                             },5000);
                             {/if}
+                            Chat.toggleAction(this.value.length);
                             "
                         oninput="movim_textarea_autoheight(this);"
                         placeholder="{$c->__('chat.placeholder')}"
