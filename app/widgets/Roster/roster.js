@@ -232,8 +232,8 @@ function locationOf(element, array, comparer, start, end) {
         case -1: return locationOf(element, array, comparer, start, pivot);
         case 0: return pivot;
         case 1: return locationOf(element, array, comparer, pivot, end);
-    };
-};
+    }
+}
 
 /* Object comparison functions */
 var groupnameCompare = function(a, b) {
@@ -293,8 +293,7 @@ var Roster = {
             items[i].onclick = function(){Roster.clickOnContact(this);};
             i++;
         }
-    }
-
+    },
     clearSearch: function() {
         var search = document.querySelector('#rostersearch');
         if(search) {
@@ -302,7 +301,6 @@ var Roster = {
             search.oninput();
         }
     },
-
     setFound : function(jid) {
         document.querySelector('input[name=searchjid]').value = jid;
     },
@@ -316,7 +314,7 @@ var Roster = {
         Roster.clearSearch();
         MovimUtils.addClass(e, 'active');
     },
-}
+};
 
 MovimWebsocket.attach(function() {
     Roster_ajaxGetRoster();
