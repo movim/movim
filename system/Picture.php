@@ -1,6 +1,5 @@
 <?php
 
-
 use stojg\crop\CropEntropy;
 
 class Picture {
@@ -15,7 +14,7 @@ class Picture {
      */
     public function fromURL($url)
     {
-        $bin = requestURL($url, 2);
+        $bin = requestURL($url, 10);
         if($bin) $this->_bin = $bin;
     }
 
@@ -183,18 +182,18 @@ class Picture {
             $im = $im->flattenImages();
         }
 
-        $crop = new CropEntropy;
-        $crop->setImage($im);
+        //$crop = new CropEntropy;
+        //$crop->setImage($im);
 
         $geo = $im->getImageGeometry();
 
-        //$im->cropThumbnailImage($width, $height);
+        $im->cropThumbnailImage($width, $height);
         if($width > $geo['width']) {
             $factor = floor($width/$geo['width']);
             $im->blurImage($factor, 10);
         }
 
-        $im = $crop->resizeAndCrop($width, $height);
+        //$im = $crop->resizeAndCrop($width, $height);
 
         $im->setImageCompressionQuality(85);
         $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
