@@ -222,22 +222,19 @@
             {/if}
             {if="$post->isPublic() && !$public"}
                 <ul class="list active middle">
-                    <a target="_blank" href="{$post->getPublicUrl()}">
-                        <li>
-                            <span class="primary icon gray">
-                                <i class="zmdi zmdi-portable-wifi"></i>
-                            </span>
-                            <span class="control icon">
-                                <i class="zmdi zmdi-chevron-right"></i>
-                            </span>
-                            <p class="line normal">
-                                {$c->__('post.public_yes')}
-                            </p>
-                            <p>
+                    <li>
+                        <span class="primary icon gray">
+                            <i class="zmdi zmdi-portable-wifi"></i>
+                        </span>
+                        <p class="line normal">
+                            {$c->__('post.public_yes')}
+                        </p>
+                        <p>
+                            <a target="_blank" href="{$post->getPublicUrl()}">
                                 {$c->__('post.public_url')}
-                            </p>
-                        </li>
-                    </a>
+                            </a>
+                        </p>
+                    </li>
                 </ul>
             {/if}
         </footer>
