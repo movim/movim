@@ -168,9 +168,6 @@ table.emojis td {
 .chat_box ul.list li > .control.control {
     right: 0rem;
 }
-.chat_box ul.list li > .control[data-jid] {
-    display: none;
-}
 
 #chat_widget .emojis_open:hover,
 table.emojis td:hover {

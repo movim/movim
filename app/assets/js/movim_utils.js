@@ -156,6 +156,12 @@ var MovimUtils = {
         if(!node) console.log('Node ' + element + ' not found');
         return node.className.match(new RegExp('(\\s|^)'+classname+'(\\s|$)'));
     },
+    hideElement: function(element) {
+        if(!MovimUtils.hasClass(element, "hide"))
+            MovimUtils.addClass(element, "hide");
+        if(MovimUtils.hasClass(element, "show"))
+            MovimUtils.removeClass(element, "show");
+    },
     parseForm: function(formname) {
         var form = document.forms[formname];
         if(!form)
@@ -200,6 +206,12 @@ var MovimUtils = {
         for(i = 0; i < list.length; i++) {
             MovimUtils.removeClass(list[i], myclass);
         }
+    },
+    showElement: function(element) {
+        if(!MovimUtils.hasClass(element, "show"))
+            MovimUtils.addClass(element, "show");
+        if(MovimUtils.hasClass(element, "hide"))
+            MovimUtils.removeClass(element, "hide");
     },
     textareaAutoheight: function(textbox) {
         if(textbox != null) {

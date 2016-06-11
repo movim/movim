@@ -93,7 +93,9 @@
                     <i class="zmdi zmdi-attachment-alt"></i>
                 </span>
             {/if}
-            <span class="control icon gray" data-jid="{$jid}" onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
+            <span class="control icon gray hide"
+                  data-jid="{$jid}"
+                  onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>
             <form>
@@ -130,13 +132,13 @@
                             "
                         onkeyup="
                             {if="!$muc"}
-                            setTimeout(function()
-                            {
-                                if(state == 1 && since+5000 < new Date().getTime()) {
-                                    state = 2;
-                                    {$paused}
-                                }
-                            },5000);
+                                setTimeout(function()
+                                {
+                                    if(state == 1 && since+5000 < new Date().getTime()) {
+                                        state = 2;
+                                        {$paused}
+                                    }
+                                },5000);
                             {/if}
                             Chat.toggleAction(this.value.length);
                             "

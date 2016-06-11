@@ -20,7 +20,7 @@ ul.list li {
     position: relative;
 }
 
-ul.list li > *:not(p) {
+ul.list li > *:not(p, .hide) {
     display: inline-block;
     top: 0;
 }
