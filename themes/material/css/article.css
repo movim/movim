@@ -47,7 +47,6 @@ article section content div.quote ul {
 }
 
 article section content div.quote ul:not(.list):not(.tabs):not(.grid) > li {
-    flex: 1 25%;
     list-style-type: none;
     padding-left: 0;
 }
@@ -58,6 +57,8 @@ article section content div.quote ul li > * {
 
 article section content div.quote li:first-child {
     flex: 1 75%;
+    padding-right: 2rem;
+    box-sizing: border-box;
 }
 
 @media screen and (max-width: 1024px) {
