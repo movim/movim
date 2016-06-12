@@ -23,7 +23,7 @@ var AdminTest = {
         MovimUtils.addClass('div #xmpp-daemon', 'success');
         MovimUtils.removeClass('li.admindb', 'disabled');
 
-        MovimUtils.getNode('#websocket_error').style.display = 'none';
+        MovimUtils.hideElement(MovimUtils.getNode('#websocket_error'));
     },
 
     enableAPI : function() {

@@ -16,7 +16,7 @@
         $scope.lookupjid = {};
 
         $scope.initContacts = function(list){
-            document.getElementById("spinner").style.display = "block";
+            MovimUtils.showElement(document.getElementById("spinner"));
 
             /* Sort groups alphabetically */
             list.sort(groupnameCompare);
@@ -32,7 +32,7 @@
                     $scope.lookupjid[$scope.contacts[i].agroupitems[j].ajid] = $scope.contacts[i].agroupitems[j];
                 }
             }
-            document.getElementById("spinner").style.display = "none";
+            MovimUtils.hideElement(document.getElementById("spinner"));
             $scope.$apply();
         };
 
@@ -197,7 +197,7 @@ function initContacts(tab) {
     tab = JSON.parse(tab);
     if(tab.length == 0) {
         angular.element(roster).scope().contacts = null;
-        document.getElementById("spinner").style.display = "none";
+        MovimUtils.hideElement(document.getElementById("spinner"));
     } else
         angular.element(roster).scope().initContacts(tab);
     Roster.refresh();

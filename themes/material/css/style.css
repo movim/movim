@@ -595,7 +595,7 @@ div#spinner{
     margin: 50% 0;
 }
 .show{
-    display: initial;
+    display: block;
 }
 .hide{
     display: none;

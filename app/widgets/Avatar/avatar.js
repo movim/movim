@@ -36,7 +36,7 @@ var Avatar = {
             var preview = document.querySelector('form[name=avatarform] img');
 
             var list = document.querySelector('form[name=avatarform] ul');
-            if(list) list.style.display = 'none';
+            if(list) MovimUtils.hideElement(list);
 
             var input = document.querySelector('input[name="photobin"]');
 

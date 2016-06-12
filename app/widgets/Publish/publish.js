@@ -24,8 +24,8 @@ var Publish = {
     },
 
     enableContent: function() {
-        document.querySelector('#enable_content').style.display = 'none';
-        document.querySelector('#content_field').style.display = 'block';
+        MovimUtils.hideElement(document.getElementById('enable_content'));
+        MovimUtils.showElement(document.getElementById('content_field'));
     },
 
     headerBack: function(server, node, ok) {

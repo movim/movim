@@ -148,7 +148,7 @@ MovimWebsocket.attach(function()
     Login.init();
 
     // We hide the Websocket error
-    document.querySelector('#error_websocket').style.display = 'none';
+    MovimUtils.hideElement(document.getElementById('error_websocket'));
 
     // We enable the form
     var inputs = document.querySelectorAll('#login_widget div input[disabled]');

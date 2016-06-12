@@ -56,7 +56,7 @@ function movim_replace(id, html)
 var MovimTpl = {
     init : function() {
         if(document.getElementById('back') != null)
-            document.getElementById('back').style.display = 'none';
+            MovimUtils.hideElement(document.getElementById('back'));
 
         MovimTpl.scrollHeaders();
     },

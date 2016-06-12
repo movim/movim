@@ -41,10 +41,10 @@ var MovimUtils = {
         r = r.replace(new RegExp("\\W", 'g'),"");
         return r;
     },
-    addClass: function(element,classname) {
-        if(!MovimUtils.hasClass(element,classname)) {
-            var element = MovimUtils.getNode(element);
-            element.className += " "+classname;
+    addClass: function(element, classname) {
+        if(!MovimUtils.hasClass(element, classname)) {
+            element = MovimUtils.getNode(element);
+            element.className += " " + classname;
         }
     },
     base64Decode: function(data) {
@@ -134,12 +134,20 @@ var MovimUtils = {
 
             if(form.elements[i].name.length != 0) {
                 if(form.elements[i].type == 'checkbox')
-                    json[form.elements[i].name] = {'value' : form.elements[i].checked, 'attributes' : json_att};
-                else if(form.elements[i].type == 'radio'
-                    && form.elements[i].checked )
-                    json[form.elements[i].name] = {'value' : form.elements[i].value, 'attributes' : json_att};
+                    json[form.elements[i].name] = {
+                        'value' : form.elements[i].checked,
+                        'attributes' : json_att
+                    };
+                else if(form.elements[i].type == 'radio' && form.elements[i].checked )
+                    json[form.elements[i].name] = {
+                        'value' : form.elements[i].value,
+                        'attributes' : json_att
+                    };
                 else if(form.elements[i].type != 'radio')
-                    json[form.elements[i].name] = {'value' : form.elements[i].value, 'attributes' : json_att};
+                    json[form.elements[i].name] = {
+                        'value' : form.elements[i].value,
+                        'attributes' : json_att
+                    };
             }
         }
 
@@ -151,10 +159,12 @@ var MovimUtils = {
         else
             return str;
     },
-    hasClass: function(element,classname) {
-        var node = MovimUtils.getNode(element);
-        if(!node) console.log('Node ' + element + ' not found');
-        return node.className.match(new RegExp('(\\s|^)'+classname+'(\\s|$)'));
+    hasClass: function(element, classname) {
+        var node = element;
+        if(typeof node == "string")
+            node = MovimUtils.getNode(node);
+        if(!node) return false;
+        return node.className.split(" ").indexOf(classname) == -1? false : true;
     },
     hideElement: function(element) {
         if(!MovimUtils.hasClass(element, "hide"))
@@ -170,15 +180,20 @@ var MovimUtils = {
         var data = H();
         for(var i = 0; i < form.elements.length; i++) {
             if(form.elements[i].type == 'checkbox') {
-                data.set(form.elements[i].name,
-                    form.elements[i].checked);
-            } else if(form.elements[i].type == 'radio'
-                && form.elements[i].checked ) {
-                data.set(form.elements[i].name,
-                    form.elements[i].value);
+                data.set(
+                    form.elements[i].name,
+                    form.elements[i].checked
+                );
+            } else if(form.elements[i].type == 'radio' && form.elements[i].checked ) {
+                data.set(
+                    form.elements[i].name,
+                    form.elements[i].value
+                );
             } else if(form.elements[i].type != 'radio'){
-                data.set(form.elements[i].name,
-                    form.elements[i].value);
+                data.set(
+                    form.elements[i].name,
+                    form.elements[i].value
+                );
             }
         }
         return data;
@@ -196,9 +211,9 @@ var MovimUtils = {
         window.location.reload();
     },
     removeClass: function(element,classname) {
-        if (MovimUtils.hasClass(element,classname)) {
+        if (MovimUtils.hasClass(element, classname)) {
             var reg = new RegExp('(\\s|^)' + classname + '(\\s|$)');
-            var element = MovimUtils.getNode(element);
+            element = MovimUtils.getNode(element);
             element.className = element.className.replace(reg,' ');
         }
     },
@@ -215,8 +230,7 @@ var MovimUtils = {
     },
     textareaAutoheight: function(textbox) {
         if(textbox != null) {
-            var val = textbox.value;
-            val = val.replace(/\n/g, '<br>');
+            var val = textbox.value.replace(/\n/g, '<br>');
             var hidden = document.querySelector('#hiddendiv');
             hidden.innerHTML = val + '<br/>';
 
@@ -227,7 +241,7 @@ var MovimUtils = {
             hidden.style.width = textboxStyle.width;
             hidden.style.fontSize = textboxStyle.fontSize;
 
-            textbox.style.height = hidden.scrollHeight+"px";
+            textbox.style.height = hidden.scrollHeight + "px";
         }
     },
     toggleClass: function(element, classname) {
@@ -241,9 +255,9 @@ var MovimUtils = {
 
         if(node != null) {
             if(node.style.display == 'block')
-                node.style.display = 'none';
+                MovimUtils.hideElement(node);
             else
-                node.style.display = 'block';
+                MovimUtils.showElement(node);
         }
     }
 };
