@@ -169,7 +169,7 @@
             <ul class="list middle divided spaced">
                 {if="isset($attachments.links)"}
                     {loop="$attachments.links"}
-                        {if="$value.rel != 'alternate'"}
+                        {if="$value.rel != 'alternate' && $post->picture != $value['href'] && $post->open != $value['href']"}
                             <li>
                                 <span class="primary icon">
                                     <img src="https://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>

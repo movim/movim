@@ -261,8 +261,8 @@ class Postn extends Model {
     }
 
     private function typeIsLink($link) {
-        return (isset($link['type'])
-        && $link['type'] == 'text/html'
+        return (isset($link['rel'])
+        && $link['rel'] == 'related'
         && Validator::url()->validate($link['href']));
     }
 
@@ -312,6 +312,7 @@ class Postn extends Model {
 
             $links = unserialize($this->links);
             foreach($links as $l) {
+                \movim_log(serialize($l));
                 if(isset($l['type']) && $this->typeIsPicture($l['type'])) {
                     if($this->picture == null) {
                         $this->picture = $l['href'];
