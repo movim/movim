@@ -89,11 +89,11 @@
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
             {if="$c->supported('upload')"}
-                <span class="control icon active" onclick="Upload_ajaxRequest()">
+                <span class="control icon" onclick="Upload_ajaxRequest()">
                     <i class="zmdi zmdi-attachment-alt"></i>
                 </span>
             {/if}
-            <span class="control icon gray hide"
+            <span class="control icon gray {if="$c->supported('upload')"}hide{else}show{/if}"
                   data-jid="{$jid}"
                   onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
                 <i class="zmdi zmdi-mail-send"></i>
@@ -140,7 +140,9 @@
                                     }
                                 },5000);
                             {/if}
-                            Chat.toggleAction(this.value.length);
+                            {if="$c->supported('upload')"}
+                                Chat.toggleAction(this.value.length);
+                            {/if}
                             "
                         oninput="MovimUtils.textareaAutoheight(this);"
                         placeholder="{$c->__('chat.placeholder')}"
