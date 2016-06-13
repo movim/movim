@@ -172,7 +172,7 @@
         {/if}
 
         {if="$contact->description != null && trim($contact->description) != ''"}
-        <li class="pblock large">
+        <li class="block large">
             <span class="primary icon gray"><i class="zmdi zmdi-format-align-justify"></i></span>
             <p>{$c->__('general.about')}</p>
             <p class="all">{$contact->description}</p>
