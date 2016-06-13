@@ -8,7 +8,7 @@
 }
 
 #roster ul#rosterlist > div:not(.empty) {
-    height: 5rem;
+    height: 8rem;
     overflow: hidden;
 }
 
