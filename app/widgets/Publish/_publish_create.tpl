@@ -71,7 +71,7 @@
         <input type="text" value="{$c->__('publish.add_text')}"/>
         <label>{$c->__('publish.add_text_label')}</label>
     </div>
-    <div id="content_field">
+    <div id="content_field" class="hide">
         <textarea name="content" placeholder="{$c->__('post.content_text')}" oninput="MovimUtils.textareaAutoheight(this);">{if="$item != false"}{$item->contentraw}{/if}</textarea>
         <label for="content">{$c->__('post.content_label')}</label>
     </div>

@@ -2,7 +2,7 @@
     <h3>{$c->__('roster.search_pod')}</h3>
     <ul class="list">
         <li>
-            <form name="add">
+            <form name="add" onsubmit="return false;">
                 <div>
                     <input
                         name="searchjid"
