@@ -139,7 +139,10 @@ var Chat = {
         var append = true;
         var offset = 0;
         var quickie = document.querySelector("[data-bubble='" + speakertime.substring(speakertime.indexOf('<')+1) + "']");
-        if(quickie != null && quickie.parentNode == document.querySelector("#chat_widget .contained li:last-child")){
+        if(quickie != null
+            && quickie.parentNode == document.querySelector("#chat_widget .contained li:last-child")
+            && !MovimUtils.hasClass(quickie, "sticker")
+        ){
             bubble = quickie.parentNode;
             offset = bubble.querySelectorAll('div.bubble p').length;
             append = false;
@@ -183,7 +186,7 @@ var Chat = {
             }
 
             if (data[i].sticker != null) {
-                bubble.querySelectorAll('div.bubble > p')[i+offset].innerHTML =
+                bubble.querySelectorAll('div.bubble  p')[i+offset].innerHTML =
                     '<img src="' + data[i].sticker.url +
                     '" width="' + data[i].sticker.width +
                     '" height="' + data[i].sticker.height + '"/>';
@@ -224,8 +227,7 @@ var Chat = {
          } */
         if (append)
             movim_append(id, bubble.outerHTML);
-
-        if(bubble.className.indexOf('oppose') > -1 && prepend == null) 
+        if(bubble.className.indexOf('oppose') > -1 && prepend !== true)
             MovimTpl.scrollPanel();
     },
     appendMessage : function(message, prepend) {
