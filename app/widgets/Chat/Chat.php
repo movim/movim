@@ -17,6 +17,7 @@ use Ramsey\Uuid\Uuid;
 class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 30;
+    private $_wrapper = array();
 
     function load()
     {
@@ -100,7 +101,8 @@ class Chat extends \Movim\Widget\Base
         }
 
         if(!preg_match('#^\?OTR#', $message->body)) {
-            RPC::call('Chat.appendMessage', $this->prepareMessage($message));
+            //RPC::call('Chat.appendMessage', $this->prepareMessage($message));
+            RPC::call('Chat.appendMessagesWrapper', $this->prepareMessage($message));
             RPC::call('Chat.cleanBubbles');
         }
     }
@@ -367,7 +369,8 @@ class Chat extends \Movim\Widget\Base
 
             foreach($messages as $message) {
                 if(!preg_match('#^\?OTR#', $message->body)) {
-                    RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
+                    //RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
+                    RPC::call('Chat.appendMessageWrapper', $this->prepareMessage($message), true);
                 }
             }
             RPC::call('Chat.cleanBubbles');
@@ -526,7 +529,8 @@ class Chat extends \Movim\Widget\Base
         $room = $view->draw('_chat_bubble_room', true);
 
         RPC::call('Chat.setBubbles', $left, $right, $room);
-        RPC::call('Chat.appendMessages', $messages);
+        //RPC::call('Chat.appendMessages', $messages);
+        RPC::call('Chat.appendMessagesWrapper', $this->_wrapper);
         RPC::call('MovimTpl.scrollPanel');
     }
 
@@ -557,15 +561,13 @@ class Chat extends \Movim\Widget\Base
                   ->request();
             } else {
                 $message->sticker = [
-                                        'url' => $sticker,
-                                        'width' => $stickerSize['width'],
-                                        'height' => $stickerSize['height']];
+                    'url' => $sticker,
+                    'width' => $stickerSize['width'],
+                    'height' => $stickerSize['height']
+                ];
             }
         }
 
-        if($message->type == 'groupchat') {
-            $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
-        }
 
         $message->publishedPrepared = prepareDate(strtotime($message->published), true, true);
 
@@ -573,7 +575,36 @@ class Chat extends \Movim\Widget\Base
             $message->delivered = prepareDate(strtotime($message->delivered), true);
         }
 
-        return $message;
+        $date = substr($message->published, 0, 10);
+        
+        if($message->type == 'groupchat') {
+            $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
+
+            //fillup $wrapper
+            if(!array_key_exists($date, $this->_wrapper))
+                $this->_wrapper[$date] = array($message);
+            else
+                array_push($this->_wrapper[$date], $message);
+        } else {
+            $msgkey = $message->jidfrom . '>' .substr($message->published, 11, 5);
+            //fillup $wrapper
+            if(!array_key_exists($date, $this->_wrapper)){
+                $this->_wrapper[$date] = array('0<' . $msgkey => array($message));
+            }
+            else { //date contains at least one speaker@time=>msg already
+                $msgkeyid = count($this->_wrapper[$date]) . '<' . $message->jidfrom . '>' .substr($message->published, 11, 5);
+                end($this->_wrapper[$date]);
+                $lastkey = key($this->_wrapper[$date]);
+                if(substr($lastkey, strpos($lastkey, '<')+1) == $msgkey)
+                    array_push($this->_wrapper[$date][$lastkey], $message);
+                else
+                    $this->_wrapper[$date][$msgkeyid] = array($message);
+            }
+        }
+
+
+        //return $message;
+        return $this->_wrapper;
     }
 
     function prepareEmpty()

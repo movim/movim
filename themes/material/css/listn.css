@@ -311,7 +311,7 @@ ul li div.bubble:not(.sticker) {
     border-color: white;
 }
 
-ul li div.bubble > p {
+ul li div.bubble  p {
     overflow: hidden;
     display: inline-block;
     max-width: 100%;
