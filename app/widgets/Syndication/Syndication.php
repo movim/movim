@@ -20,6 +20,7 @@ class Syndication extends \Movim\Widget\Base
         }
 
         $from = $this->get('s');
+        $item = null;
 
         if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
             $node = 'urn:xmpp:microblog:0';
@@ -51,9 +52,9 @@ class Syndication extends \Movim\Widget\Base
             $author->appendChild($dom->createElement('name', $contact->getTrueName()));
             $author->appendChild($dom->createElement('uri', Route::urlize('blog',array($from))));
 
-            $feed->appendChild($dom->createElement('logo', $contact->getPhoto('xl')));
+            $feed->appendChild($dom->createElement('logo', $contact->getPhoto('l')));
 
-            $self->setAttribute('href', Route::urlize('feed',array($server)));
+            $self->setAttribute('href', Route::urlize('feed',array($from)));
         }
 
         if($item != null) {
@@ -123,6 +124,11 @@ class Syndication extends \Movim\Widget\Base
                     $link->setAttribute('href', $value['href']);
                 }
             }
+
+            $entry->appendChild($link = $dom->createElement('link'));
+            $link->setAttribute('rel', 'alternate');
+            $link->setAttribute('type', 'text/html');
+            $link->setAttribute('href', $message->getPublicUrl());
         }
 
         echo $dom->saveXML();

@@ -219,6 +219,7 @@ class Contact extends Model {
             $sizes = array(
                 'wall'  => array(1920, 1080),
                 'xxl'   => array(1280, 300),
+                'xl'    => array(512 , false),
                 'l'     => array(210 , false),
                 'm'     => array(120 , false),
                 's'     => array(50  , false),
