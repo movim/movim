@@ -71,7 +71,7 @@ var Chat = {
             };
         }
     },
-    appendMucMessages : function(date, messages) {
+    appendMucMessages : function(date, messages, prepend) {
         id = messages[0].jidfrom + '_conversation';
         var conversation = document.getElementById(id);
         datebox = Chat.room.cloneNode(true);
@@ -117,16 +117,22 @@ var Chat = {
             Chat.cleanBubbles();
         }
     },*/
-    appendMessagesWrapper : function(page) {
+    appendMessagesWrapper : function(page, prepend) {
         if(page) {
-            //Chat.lastDate = null;
-            //Chat.date = messages[0].published;
+            Chat.lastDate = null;
             for(date in page) {
                 if (page[date].constructor == Array) { //groupchat
-                    Chat.appendMucMessages(date, page[date]);
+                    if(!Chat.date)
+                        Chat.date = page[date][0].published;
+                    Chat.appendMucMessages(date, page[date], prepend);
                 } else {
                     for(speakertime in page[date]) {
-                        Chat.appendSpeaker(speakertime, page[date][speakertime], false);
+                        if(!Chat.date)
+                            Chat.date = page[date][speakertime][0].published;
+                        if(prepend)
+                            Chat.prependSpeaker(speakertime, page[date][speakertime]);
+                        else
+                            Chat.appendSpeaker(speakertime, page[date][speakertime]);
                     }
                 }
             }
@@ -134,9 +140,94 @@ var Chat = {
             Chat.cleanBubbles();
         }
     },
+    prependSpeaker : function(speakertime, data) {
+        var bubble = null;
+        var add = true;
+        var quickie = document.querySelector("[data-bubble='" + speakertime.substring(speakertime.indexOf('<')+1) + "']");
+        if(quickie != null
+            && quickie.parentNode == document.querySelector("#chat_widget .contained li:first-child")
+            && !MovimUtils.hasClass(quickie, "sticker")
+        ){
+            bubble = quickie.parentNode;
+            add = false;
+        } else {
+            var speaker = speakertime.substring(speakertime.indexOf('<') + 1, speakertime.indexOf('>'));
+
+            if (data[0].session == data[0].jidfrom) {
+                bubble = Chat.right.cloneNode(true);
+                id = data[0].jidto + '_conversation';
+            } else {
+                bubble = Chat.left.cloneNode(true);
+                id = data[0].jidfrom + '_conversation';
+            }
+            bubble.querySelector('div.bubble').setAttribute("data-bubble", speakertime.substring(speakertime.indexOf('<') + 1));
+        }
+        for(var i = 0, len = data.length; i < len; ++i) {
+            if (data[i].body.match(/^\/me\s/)) {
+                bubble.querySelector('div.bubble p').className = 'quote';
+                data[i].body = data[i].body.substr(4);
+            }
+            //if there is already a msg in this bubble, create another div
+            if (bubble.querySelector('div.bubble p').innerHTML != "") {
+                var div = document.createElement("div");
+                if (data[i].id != null) {
+                    div.setAttribute("id", data[i].id);
+                    if (data[i].newid != null)
+                        div.setAttribute("id", data[i].newid);
+                }
+                var p = document.createElement("p");
+                div.appendChild(p);
+                var span = document.createElement("span");
+                span.className = "info";
+                div.appendChild(span);
+
+                bubble.querySelector('div.bubble').insertBefore( div, bubble.querySelector('div.bubble').firstChild );
+            }
+
+            if (data[i].sticker != null) {
+                bubble.querySelector("div.bubble").className += " sticker";
+                bubble.querySelector("div.bubble p").innerHTML =
+                    '<img src="' + data[i].sticker.url +
+                    '" width="' + data[i].sticker.width +
+                    '" height="' + data[i].sticker.height + '"/>';
+            } else {
+                bubble.querySelector('div.bubble p').innerHTML = data[i].body.replace(/\r\n?|\n/g, '<br />');
+            }
+
+            var info = bubble.querySelector('div.bubble span.info');
+            info.innerHTML = data[i].publishedPrepared;
+
+            if (data[i].edited) {
+                info.innerHTML = '<i class="zmdi zmdi-edit"></i> ' + info.innerHTML;
+            }
+
+            if (data[i].delivered) {
+                info.innerHTML = '<i class="zmdi zmdi-check" title="' + data[i].delivered + '"></i> ' + info.innerHTML;
+            }
+
+            if (data[i].edited || data[i].delivered) {
+                var elem = document.getElementById(data[i].id);
+                if (elem) {
+                    elem.parentElement.replaceChild(bubble.querySelector('div.bubble > div'), elem);
+                    add = false;
+                }
+            }
+        }
+
+        Chat.date = data[0].published;
+        var discussion = document.querySelector('#chat_widget div.contained');
+        // We prepend
+        if (add)
+            movim_prepend(id, bubble.outerHTML);
+
+        // And we scroll where we were
+        var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
+        discussion.scrollTop += scrollDiff;
+        Chat.lastScroll = discussion.scrollHeight;
+    },
     appendSpeaker : function(speakertime, data, prepend) {
         var bubble = null;
-        var append = true;
+        var add = true;
         var offset = 0;
         var quickie = document.querySelector("[data-bubble='" + speakertime.substring(speakertime.indexOf('<')+1) + "']");
         if(quickie != null
@@ -145,7 +236,7 @@ var Chat = {
         ){
             bubble = quickie.parentNode;
             offset = bubble.querySelectorAll('div.bubble p').length;
-            append = false;
+            add = false;
         } else {
             var speaker = speakertime.substring(speakertime.indexOf('<') + 1, speakertime.indexOf('>'));
 
@@ -164,13 +255,14 @@ var Chat = {
                 data[i].body = data[i].body.substr(4);
             }
 
-            if (data[i].sticker != null) {
-                bubble.querySelector('div.bubble').className += ' sticker';
-            }
-
             //if there is already a msg in this bubble, create another div
             if (bubble.querySelector('div.bubble p').innerHTML != "") {
                 var div = document.createElement("div");
+                if (data[i].id != null) {
+                    div.setAttribute("id", data[i].id);
+                    if (data[i].newid != null)
+                        div.setAttribute("id", data[i].newid);
+                }
                 var p = document.createElement("p");
                 div.appendChild(p);
                 var span = document.createElement("span");
@@ -179,13 +271,8 @@ var Chat = {
                 bubble.querySelector('div.bubble').appendChild(div);
             }
 
-            if (data[i].id != null) {
-                bubble.querySelectorAll('div.bubble > div')[i+offset].id = data[i].id;
-                if (data[i].newid != null)
-                    bubble.querySelectorAll('div.bubble > div')[i+offset].id = data[i].newid;
-            }
-
             if (data[i].sticker != null) {
+                bubble.querySelector('div.bubble').className += ' sticker';
                 bubble.querySelectorAll('div.bubble  p')[i+offset].innerHTML =
                     '<img src="' + data[i].sticker.url +
                     '" width="' + data[i].sticker.width +
@@ -209,25 +296,15 @@ var Chat = {
                 var elem = document.getElementById(data[i].id);
                 if (elem) {
                     elem.parentElement.replaceChild(bubble.querySelectorAll('div.bubble > div')[i+offset], elem);
-                    append = false;
+                    add = false;
                 }
             }
         }
 
-        /*if(prepend) {
-         Chat.date = data[i].published;
-         var discussion = document.querySelector('#chat_widget div.contained');
-         // We prepend
-         movim_prepend(id, bubble.outerHTML);
-
-         // And we scroll where we were
-         var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
-         discussion.scrollTop += scrollDiff;
-         Chat.lastScroll = discussion.scrollHeight;
-         } */
-        if (append)
+        if (add)
             movim_append(id, bubble.outerHTML);
-        if(bubble.className.indexOf('oppose') > -1 && prepend !== true)
+
+        if(bubble.className.indexOf('oppose') > -1)
             MovimTpl.scrollPanel();
     },
     appendMessage : function(message, prepend) {
