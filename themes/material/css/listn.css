@@ -100,7 +100,8 @@ ul.list li > p > span.second {
     margin-left: 0.5rem;
 }
 
-ul.list li > p > span.info {
+ul.list li > p > span.info,
+ul li div.bubble:after {
     float: right;
     font-size: 1.5rem;
     color: gray;
@@ -310,7 +311,7 @@ ul li div.bubble:not(.sticker) {
     background-color: white;
     border-color: white;
     /*Give some space to add publishedprepared*/
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
 }
 ul li div.bubble.sticker {
     margin-bottom: 3rem;
@@ -342,25 +343,22 @@ ul li.same span.icon {
     display: none;
 }
 
-/*ul li div.bubble:after {
-     visibility: hidden;
-     display: block;
-     font-size: 0;
-     content: " ";
-     clear: both;
-     height: 0;
-}*/
+
 ul li div.bubble:after {
-     display: block;
-     content: attr(data-publishedprepared);
-     clear: both;
+    display: block;
+    content: attr(data-publishedprepared);
+    clear: both;
     position: absolute;
+    width: 20rem;
+    text-align: left;
+    padding-top: 1.5rem;
 }
 ul li.oppose div.bubble:after {
     right: 9rem;
+    text-align: right;
 }
 ul li:not(.oppose) div.bubble:after {
-    left: 0rem;
+    left: 0;
 }
 
 ul li .quote {
