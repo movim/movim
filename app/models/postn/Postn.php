@@ -267,10 +267,10 @@ class Postn extends Model {
     }
 
     private function setAttachments($links, $extra = false) {
-        $l = array();
+        $l = [];
 
         foreach($links as $attachment) {
-            $enc = array();
+            $enc = [];
             $enc = (array)$attachment->attributes();
             $enc = $enc['@attributes'];
             array_push($l, $enc);
@@ -305,9 +305,9 @@ class Postn extends Model {
 
         if(isset($this->links)) {
             $attachments = array(
-                'pictures' => array(),
-                'files' => array(),
-                'links' => array()
+                'pictures' => [],
+                'files' => [],
+                'links' => []
             );
 
             $links = unserialize($this->links);

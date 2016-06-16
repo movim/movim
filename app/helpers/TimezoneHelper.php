@@ -37,13 +37,13 @@ function getTimezoneOffset($timezone)
         DateTimeZone::PACIFIC,
     );
 
-    $timezones = array();
+    $timezones = [];
     foreach( $regions as $region )
     {
         $timezones = array_merge( $timezones, DateTimeZone::listIdentifiers( $region ) );
     }
 
-    $timezone_offsets = array();
+    $timezone_offsets = [];
     foreach( $timezones as $timezone )
     {
         $tz = new DateTimeZone($timezone);
@@ -54,7 +54,7 @@ function getTimezoneOffset($timezone)
     // sort timezone by timezone name
     ksort($timezone_offsets);
 
-    $timezone_list = array();
+    $timezone_list = [];
     foreach( $timezone_offsets as $timezone => $offset )
     {
         $offset_prefix = $offset < 0 ? '-' : '+';

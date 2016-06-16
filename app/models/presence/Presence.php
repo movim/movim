@@ -163,7 +163,7 @@ class Presence extends Model {
                 6 => 'server_error'
             );
 
-        $arr = array();
+        $arr = [];
         $arr['jid'] = $this->jid;
         $arr['resource'] = $this->resource;
         $arr['presence'] = $this->value;

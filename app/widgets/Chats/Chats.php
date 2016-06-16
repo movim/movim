@@ -160,7 +160,7 @@ class Chats extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $chats = Cache::c('chats');
 
-        if(!isset($chats)) $chats = array();
+        if(!isset($chats)) $chats = [];
 
         $view->assign('chats', array_keys($chats));
         $view->assign('top', $cd->getTop(15));

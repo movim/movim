@@ -107,7 +107,7 @@ function prepareString($string, $large = false, $preview = false) {
  */
 function explodeURI($uri) {
     $arr = parse_url(urldecode($uri));
-    $result = array();
+    $result = [];
 
     if(isset($arr['query'])) {
         $query = explode(';', $arr['query']);

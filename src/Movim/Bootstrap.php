@@ -44,7 +44,7 @@ class Bootstrap
             DOCUMENT_ROOT.'/log/php.log',
             DOCUMENT_ROOT.'/cache/test.tmp',
         );
-        $errors = array();
+        $errors = [];
 
         if(!is_writable(DOCUMENT_ROOT))
             $errors[] = 'We\'re unable to write to folder '.DOCUMENT_ROOT.': check rights';

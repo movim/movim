@@ -6,7 +6,7 @@ use Ratchet\ConnectionInterface;
 use Movim\Daemon\Session;
 
 class Core implements MessageComponentInterface {
-    private $sessions = array();
+    private $sessions = [];
     public $loop;
     public $baseuri;
 

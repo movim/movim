@@ -53,7 +53,7 @@ class Subscription extends Model {
         $this->__set('jid',             (string)$s->attributes()->jid);
         $this->__set('subscription',    (string)$s->attributes()->subscription);
         $this->__set('subid',           (string)$s->attributes()->subid);
-        $this->__set('tags', serialize(array()));
+        $this->__set('tags', serialize([]));
 
         if($this->subid = '')
             $this->subid = 'default';

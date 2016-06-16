@@ -55,7 +55,7 @@ class RosterLinkDAO extends SQL {
             ';     
                
         $i = 0;
-        $params = array();
+        $params = [];
             
         foreach($arr as $r) {
             $this->_sql .= "
@@ -164,7 +164,7 @@ class RosterLinkDAO extends SQL {
         $results = $this->run('RosterLink');
 
         if(is_array($results)) {
-            $arr = array();
+            $arr = [];
             
             foreach($results as $r)
                 array_push($arr, $r->groupname);
