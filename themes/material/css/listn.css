@@ -309,6 +309,11 @@ ul li div.bubble:not(.sticker) {
     line-height: 2.75rem;
     background-color: white;
     border-color: white;
+    /*Give some space to add publishedprepared*/
+    margin-bottom: 3rem;
+}
+ul li div.bubble.sticker {
+    margin-bottom: 3rem;
 }
 
 ul li div.bubble  p {
@@ -337,13 +342,25 @@ ul li.same span.icon {
     display: none;
 }
 
-ul li div.bubble:after {
+/*ul li div.bubble:after {
      visibility: hidden;
      display: block;
      font-size: 0;
      content: " ";
      clear: both;
      height: 0;
+}*/
+ul li div.bubble:after {
+     display: block;
+     content: attr(data-publishedprepared);
+     clear: both;
+    position: absolute;
+}
+ul li.oppose div.bubble:after {
+    right: 9rem;
+}
+ul li:not(.oppose) div.bubble:after {
+    left: 0rem;
 }
 
 ul li .quote {

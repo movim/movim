@@ -129,10 +129,7 @@ var Chat = {
                     for(speakertime in page[date]) {
                         if(!Chat.date)
                             Chat.date = page[date][speakertime][0].published;
-                        if(prepend)
-                            Chat.prependSpeaker(speakertime, page[date][speakertime]);
-                        else
-                            Chat.appendSpeaker(speakertime, page[date][speakertime]);
+                            Chat.appendSpeaker(speakertime, page[date][speakertime], prepend);
                     }
                 }
             }
@@ -140,19 +137,29 @@ var Chat = {
             Chat.cleanBubbles();
         }
     },
-    prependSpeaker : function(speakertime, data) {
-        var bubble = null;
-        var add = true;
-        var quickie = document.querySelector("[data-bubble='" + speakertime.substring(speakertime.indexOf('<')+1) + "']");
-        if(quickie != null
-            && quickie.parentNode == document.querySelector("#chat_widget .contained li:first-child")
-            && !MovimUtils.hasClass(quickie, "sticker")
-        ){
-            bubble = quickie.parentNode;
-            add = false;
-        } else {
-            var speaker = speakertime.substring(speakertime.indexOf('<') + 1, speakertime.indexOf('>'));
+    appendSpeaker : function(idjidtime, data, prepend) {
+        var bubble = null,
+            mergeMsg = false,
+            msgStack,
+            refBubble;
+        var jidtime = idjidtime.substring(idjidtime.indexOf('<') + 1);
 
+        if(prepend) {
+            refBubble = document.querySelector("#chat_widget .contained li:first-child");
+            msgStack = document.querySelector("[data-bubble='" + speakertime.substring(speakertime.indexOf('<')+1) + "']");
+        } else {
+            refBubble = document.querySelector("#chat_widget .contained li:last-child");
+            var stack = document.querySelectorAll("[data-bubble='" + speakertime.substring(speakertime.indexOf('<')+1) + "']");
+            msgStack = stack[stack.length-1];
+        }
+        if(msgStack != null
+            && msgStack.parentNode == refBubble
+            && idjidtime.indexOf("sticker<") == -1
+            && !MovimUtils.hasClass(msgStack, "sticker")
+        ){
+            bubble = msgStack.parentNode;
+            mergeMsg = true;
+        } else {
             if (data[0].session == data[0].jidfrom) {
                 bubble = Chat.right.cloneNode(true);
                 id = data[0].jidto + '_conversation';
@@ -160,152 +167,82 @@ var Chat = {
                 bubble = Chat.left.cloneNode(true);
                 id = data[0].jidfrom + '_conversation';
             }
-            bubble.querySelector('div.bubble').setAttribute("data-bubble", speakertime.substring(speakertime.indexOf('<') + 1));
+            bubble.querySelector('div.bubble').setAttribute("data-bubble", jidtime);
+            bubble.querySelector('div.bubble').setAttribute("data-publishedPrepared", data[0].publishedPrepared);
         }
+
+        var msg = bubble.querySelector('div.bubble > div');
+        var span = msg.getElementsByTagName('span')[0];
+        var p = msg.getElementsByTagName('p')[0];
         for(var i = 0, len = data.length; i < len; ++i) {
+            //if there is already a msg in this bubble, create another div (next msg or replacement)
+            if (bubble.querySelector('div.bubble p').innerHTML != "") {
+                msg = document.createElement("div");
+                p = document.createElement("p");
+                span = document.createElement("span");
+                span.className = "info";
+            }
+
             if (data[i].body.match(/^\/me\s/)) {
-                bubble.querySelector('div.bubble p').className = 'quote';
+                p.className = 'quote';
+                // remove "/me " from beginning of body
                 data[i].body = data[i].body.substr(4);
             }
-            //if there is already a msg in this bubble, create another div
-            if (bubble.querySelector('div.bubble p').innerHTML != "") {
-                var div = document.createElement("div");
-                if (data[i].id != null) {
-                    div.setAttribute("id", data[i].id);
-                    if (data[i].newid != null)
-                        div.setAttribute("id", data[i].newid);
-                }
-                var p = document.createElement("p");
-                div.appendChild(p);
-                var span = document.createElement("span");
-                span.className = "info";
-                div.appendChild(span);
-
-                bubble.querySelector('div.bubble').insertBefore( div, bubble.querySelector('div.bubble').firstChild );
+            if (data[i].id != null) {
+                msg.setAttribute("id", data[i].id);
+                if (data[i].newid != null)
+                    msg.setAttribute("id", data[i].newid);
             }
 
             if (data[i].sticker != null) {
-                bubble.querySelector("div.bubble").className += " sticker";
-                bubble.querySelector("div.bubble p").innerHTML =
-                    '<img src="' + data[i].sticker.url +
-                    '" width="' + data[i].sticker.width +
-                    '" height="' + data[i].sticker.height + '"/>';
+                MovimUtils.addClass(bubble.querySelector('div.bubble'), 'sticker');
+                p.appendChild(Chat.getStickerHtml(data[i].sticker));
             } else {
-                bubble.querySelector('div.bubble p').innerHTML = data[i].body.replace(/\r\n?|\n/g, '<br />');
+                p.innerHTML = data[i].body.replace(/\r\n?|\n/g, '<br />');
             }
 
-            var info = bubble.querySelector('div.bubble span.info');
-            info.innerHTML = data[i].publishedPrepared;
 
             if (data[i].edited) {
-                info.innerHTML = '<i class="zmdi zmdi-edit"></i> ' + info.innerHTML;
+                span.appendChild(Chat.getEditedIcoHtml());
             }
-
             if (data[i].delivered) {
-                info.innerHTML = '<i class="zmdi zmdi-check" title="' + data[i].delivered + '"></i> ' + info.innerHTML;
+                span.appendChild(Chat.getDeliveredIcoHtml(data[i].delivered));
             }
 
-            if (data[i].edited || data[i].delivered) {
-                var elem = document.getElementById(data[i].id);
-                if (elem) {
-                    elem.parentElement.replaceChild(bubble.querySelector('div.bubble > div'), elem);
-                    add = false;
-                }
-            }
-        }
+            msg.appendChild(p);
+            msg.appendChild(span);
 
-        Chat.date = data[0].published;
-        var discussion = document.querySelector('#chat_widget div.contained');
-        // We prepend
-        if (add)
-            movim_prepend(id, bubble.outerHTML);
-
-        // And we scroll where we were
-        var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
-        discussion.scrollTop += scrollDiff;
-        Chat.lastScroll = discussion.scrollHeight;
-    },
-    appendSpeaker : function(speakertime, data, prepend) {
-        var bubble = null;
-        var add = true;
-        var offset = 0;
-        var quickie = document.querySelector("[data-bubble='" + speakertime.substring(speakertime.indexOf('<')+1) + "']");
-        if(quickie != null
-            && quickie.parentNode == document.querySelector("#chat_widget .contained li:last-child")
-            && !MovimUtils.hasClass(quickie, "sticker")
-        ){
-            bubble = quickie.parentNode;
-            offset = bubble.querySelectorAll('div.bubble p').length;
-            add = false;
-        } else {
-            var speaker = speakertime.substring(speakertime.indexOf('<') + 1, speakertime.indexOf('>'));
-
-            if (data[0].session == data[0].jidfrom) {
-                bubble = Chat.right.cloneNode(true);
-                id = data[0].jidto + '_conversation';
+            var elem = document.getElementById(data[i].id);
+            if (elem) {
+                elem.parentElement.replaceChild(msg, elem);
+                mergeMsg = true;
             } else {
-                bubble = Chat.left.cloneNode(true);
-                id = data[0].jidfrom + '_conversation';
-            }
-            bubble.querySelector('div.bubble').setAttribute("data-bubble", speakertime.substring(speakertime.indexOf('<') + 1));
-        }
-        for(var i = 0, len = data.length; i < len; ++i) {
-            if (data[i].body.match(/^\/me\s/)) {
-                bubble.querySelector('div.bubble p').className = 'quote';
-                data[i].body = data[i].body.substr(4);
-            }
-
-            //if there is already a msg in this bubble, create another div
-            if (bubble.querySelector('div.bubble p').innerHTML != "") {
-                var div = document.createElement("div");
-                if (data[i].id != null) {
-                    div.setAttribute("id", data[i].id);
-                    if (data[i].newid != null)
-                        div.setAttribute("id", data[i].newid);
-                }
-                var p = document.createElement("p");
-                div.appendChild(p);
-                var span = document.createElement("span");
-                span.className = "info";
-                div.appendChild(span);
-                bubble.querySelector('div.bubble').appendChild(div);
-            }
-
-            if (data[i].sticker != null) {
-                bubble.querySelector('div.bubble').className += ' sticker';
-                bubble.querySelectorAll('div.bubble  p')[i+offset].innerHTML =
-                    '<img src="' + data[i].sticker.url +
-                    '" width="' + data[i].sticker.width +
-                    '" height="' + data[i].sticker.height + '"/>';
-            } else {
-                bubble.querySelectorAll('div.bubble  p')[i+offset].innerHTML = data[i].body.replace(/\r\n?|\n/g, '<br />');
-            }
-
-            var info = bubble.querySelectorAll('div.bubble span.info')[i+offset];
-            info.innerHTML = data[i].publishedPrepared;
-
-            if (data[i].edited) {
-                info.innerHTML = '<i class="zmdi zmdi-edit"></i> ' + info.innerHTML;
-            }
-
-            if (data[i].delivered) {
-                info.innerHTML = '<i class="zmdi zmdi-check" title="' + data[i].delivered + '"></i> ' + info.innerHTML;
-            }
-
-            if (data[i].edited || data[i].delivered) {
-                var elem = document.getElementById(data[i].id);
-                if (elem) {
-                    elem.parentElement.replaceChild(bubble.querySelectorAll('div.bubble > div')[i+offset], elem);
-                    add = false;
-                }
+                if(prepend)
+                    bubble.querySelector('div.bubble').insertBefore( msg, bubble.querySelector('div.bubble').firstChild );
+                else
+                    bubble.querySelector('div.bubble').appendChild(msg);
             }
         }
 
-        if (add)
-            movim_append(id, bubble.outerHTML);
+        if(prepend){
+            Chat.date = data[0].published;
+            var discussion = document.querySelector('#chat_widget div.contained');
+            // We prepend
+            if (mergeMsg)
+                movim_prepend(id, bubble.outerHTML);
 
-        if(bubble.className.indexOf('oppose') > -1)
-            MovimTpl.scrollPanel();
+            // And we scroll where we were
+            var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
+            discussion.scrollTop += scrollDiff;
+            Chat.lastScroll = discussion.scrollHeight;
+        }
+        else {
+            if (!mergeMsg)
+                movim_append(id, bubble.outerHTML);
+
+            if (bubble.className.indexOf('oppose') > -1)
+                MovimTpl.scrollPanel();
+        }
     },
     appendMessage : function(message, prepend) {
         if(message.body == '') return;
@@ -420,6 +357,24 @@ var Chat = {
                 Chat.lastDate = lastDate;
             }*/
         }
+    },
+    getStickerHtml: function(sticker) {
+        var img = document.createElement("img");
+        img.setAttribute("src", sticker.url);
+        img.setAttribute("width", sticker.width);
+        img.setAttribute("height", sticker.height);
+        return img;
+    },
+    getEditedIcoHtml: function() {
+        var i = document.createElement("i");
+        i.setAttribute("class", "zmdi zmdi-edit");
+        return i;
+    },
+    getDeliveredIcoHtml: function(delivered) {
+        var i = document.createElement("i");
+        i.setAttribute("class", "zmdi zmdi-check");
+        i.setAttribute("title", delivered);
+        return i;
     },
     toggleAction: function(l) {
         var send_button = document.querySelector(".chat_box span[data-jid]");

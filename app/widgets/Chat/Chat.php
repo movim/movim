@@ -18,6 +18,7 @@ class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 30;
     private $_wrapper = array();
+    private $_msgMap = array();
 
     function load()
     {
@@ -370,10 +371,14 @@ class Chat extends \Movim\Widget\Base
             foreach($messages as $message) {
                 if(!preg_match('#^\?OTR#', $message->body)) {
                     //RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
-                    RPC::call('Chat.appendMessagesWrapper', $this->prepareMessage($message), true);
-                    $this->_wrapper = array();
+                    $this->_msgMap[$message->id] = $message;
                 }
             }
+            foreach($this->_msgMap as $message)
+                $this->prepareMessage($message);
+            RPC::call('Chat.appendMessagesWrapper', $this->_wrapper, true);
+            $this->_wrapper = array();
+            
             RPC::call('Chat.cleanBubbles');
         }
     }
@@ -504,9 +509,11 @@ class Chat extends \Movim\Widget\Base
         if(is_array($messages)) {
             $messages = array_reverse($messages);
 
-            foreach($messages as $message) {
+            foreach($messages as $message)
+                $this->_msgMap[$message->id] = $message;
+
+            foreach($this->_msgMap as $message)
                 $this->prepareMessage($message);
-            }
         }
 
         $view = $this->tpl();
