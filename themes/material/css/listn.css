@@ -100,7 +100,8 @@ ul.list li > p > span.second {
     margin-left: 0.5rem;
 }
 
-ul.list li > p > span.info {
+ul.list li > p > span.info,
+ul li div.bubble:after {
     float: right;
     font-size: 1.5rem;
     color: gray;
@@ -204,19 +205,7 @@ header > ul.list li .primary {
 header > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
     padding-left: 9rem;
 }
-/*
-header > ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
-    width: calc(100% - 7rem);
-}
 
-header > ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    width: calc(100% - 14rem);
-}
-
-header > ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    width: calc(100% - 21rem);
-}
-*/
 /* Tabs */
 
 ul.tabs {
@@ -304,18 +293,23 @@ ul li div.bubble {
 }
 
 ul li div.bubble:not(.sticker) {
-    padding: 1.25rem 2rem 0.75rem;
+    padding: 1rem 1.75rem 0.5rem;
     border-radius: 0.5rem;
     line-height: 2.75rem;
     background-color: white;
     border-color: white;
+    margin-bottom: 0.75rem;
 }
 
-ul li div.bubble > p {
+ul li div.bubble p {
     overflow: hidden;
-    display: inline-block;
+    display: inline;
     max-width: 100%;
     font-size: 1.75rem;
+}
+
+ul li div.bubble > div + div {
+    margin-top: 0.5rem;
 }
 
 ul li.oppose div.bubble {
@@ -333,24 +327,35 @@ ul li div.bubble span.info {
     padding-left: 1rem;
 }
 
-ul li.same span.icon {
-    display: none;
+ul li div.bubble:after {
+    /*display: block;*/
+    content: attr(data-publishedprepared);
+    clear: both;
+    /*position: absolute;
+    width: 20rem;*/
+    line-height: 3rem;
+    text-align: left;
+    /*padding-top: 1rem;*/
 }
 
-ul li div.bubble:after {
-     visibility: hidden;
-     display: block;
-     font-size: 0;
-     content: " ";
-     clear: both;
-     height: 0;
+ul li div.bubble.sticker:after {
+    padding-top: 0.5rem;
+}
+
+ul li.oppose div.bubble:after {
+    right: 9rem;
+    text-align: right;
+}
+
+ul li:not(.oppose) div.bubble:after {
+    left: 0;
 }
 
 ul li .quote {
     font-style: italic;
 }
 
-ul li:not(.same) div.bubble:not(.sticker):before {
+ul li div.bubble:not(.sticker):before {
     content: "";
     position: absolute;
     top: 0;
@@ -361,9 +366,9 @@ ul li:not(.same) div.bubble:not(.sticker):before {
     border-right: 1.5rem solid transparent;
 }
 
-ul li.oppose:not(.same) div.bubble:not(.sticker):before {
+ul li.oppose div.bubble:not(.sticker):before {
     left: calc(100% - 10.5rem);
-    top: 1.5rem;
+    top: 0.75rem;
     border-top-color: #f5f5f5;
 }
 

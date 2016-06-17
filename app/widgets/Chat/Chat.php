@@ -17,6 +17,8 @@ use Ramsey\Uuid\Uuid;
 class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 30;
+    private $_wrapper = array();
+    private $_msgMap = array();
 
     function load()
     {
@@ -100,8 +102,9 @@ class Chat extends \Movim\Widget\Base
         }
 
         if(!preg_match('#^\?OTR#', $message->body)) {
-            RPC::call('Chat.appendMessage', $this->prepareMessage($message));
-            RPC::call('Chat.cleanBubbles');
+            //RPC::call('Chat.appendMessage', $this->prepareMessage($message));
+            RPC::call('Chat.appendMessagesWrapper', $this->prepareMessage($message));
+            //RPC::call('Chat.cleanBubbles');
         }
     }
 
@@ -358,7 +361,6 @@ class Chat extends \Movim\Widget\Base
     function ajaxGetHistory($jid, $date)
     {
         if(!$this->validateJid($jid)) return;
-
         $md = new \Modl\MessageDAO;
         $messages = $md->getHistory(echapJid($jid), date(DATE_ISO8601, strtotime($date)), $this->_pagination);
 
@@ -367,10 +369,16 @@ class Chat extends \Movim\Widget\Base
 
             foreach($messages as $message) {
                 if(!preg_match('#^\?OTR#', $message->body)) {
-                    RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
+                    //RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
+                    $this->_msgMap[$message->id] = $message;
                 }
             }
-            RPC::call('Chat.cleanBubbles');
+            foreach($this->_msgMap as $message)
+                $this->prepareMessage($message);
+            RPC::call('Chat.appendMessagesWrapper', $this->_wrapper, true);
+            $this->_wrapper = array();
+
+            //RPC::call('Chat.cleanBubbles');
         }
     }
 
@@ -500,9 +508,11 @@ class Chat extends \Movim\Widget\Base
         if(is_array($messages)) {
             $messages = array_reverse($messages);
 
-            foreach($messages as $message) {
+            foreach($messages as $message)
+                $this->_msgMap[$message->id] = $message;
+
+            foreach($this->_msgMap as $message)
                 $this->prepareMessage($message);
-            }
         }
 
         $view = $this->tpl();
@@ -526,7 +536,8 @@ class Chat extends \Movim\Widget\Base
         $room = $view->draw('_chat_bubble_room', true);
 
         RPC::call('Chat.setBubbles', $left, $right, $room);
-        RPC::call('Chat.appendMessages', $messages);
+        //RPC::call('Chat.appendMessages', $messages);
+        RPC::call('Chat.appendMessagesWrapper', $this->_wrapper);
         RPC::call('MovimTpl.scrollPanel');
     }
 
@@ -557,23 +568,53 @@ class Chat extends \Movim\Widget\Base
                   ->request();
             } else {
                 $message->sticker = [
-                                        'url' => $sticker,
-                                        'width' => $stickerSize['width'],
-                                        'height' => $stickerSize['height']];
+                    'url' => $sticker,
+                    'width' => $stickerSize['width'],
+                    'height' => $stickerSize['height']
+                ];
             }
         }
 
-        if($message->type == 'groupchat') {
-            $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
-        }
 
-        $message->publishedPrepared = prepareDate(strtotime($message->published), true, true);
+        $message->publishedPrepared = prepareDate(strtotime($message->published), true);
 
         if($message->delivered) {
             $message->delivered = prepareDate(strtotime($message->delivered), true);
         }
 
-        return $message;
+        $date = substr($message->published, 0, 10);
+
+        if($message->type == 'groupchat') {
+            $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
+
+            //fillup $wrapper
+            if(!array_key_exists($date, $this->_wrapper))
+                $this->_wrapper[$date] = array($message);
+            else
+                array_push($this->_wrapper[$date], $message);
+        } else {
+            $msgkey = $message->jidfrom . '>' .substr($message->published, 11, 5);
+            //fillup $wrapper
+            if(!array_key_exists($date, $this->_wrapper)){
+                $this->_wrapper[$date] = array('0<' . $msgkey => array($message));
+            }
+            else { //date contains at least one speaker@time=>msg already
+                end($this->_wrapper[$date]);
+                $lastkey = key($this->_wrapper[$date]);
+                if(substr($lastkey, strpos($lastkey, '<')+1) == $msgkey // same jidfrom, same min
+                    && !isset($message->sticker) // this msg is not a sticker
+                    && strpos($lastkey, "sticker<") === false) // the previous msg was not a sticker
+                    array_push($this->_wrapper[$date][$lastkey], $message);
+                else {
+                    $sticker = "";
+                    if(isset($message->sticker))
+                        $sticker = "sticker";
+                    $this->_wrapper[$date][count($this->_wrapper[$date]) . $sticker . '<' . $msgkey] = array($message);
+                }
+            }
+        }
+
+        return $this->_wrapper;
     }
 
     function prepareEmpty()

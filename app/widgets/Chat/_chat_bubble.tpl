@@ -15,7 +15,9 @@
     {/if}
 
     <div class="bubble">
-        <p></p>
-        <span class="info"></span>
+        <div>
+            <p></p>
+            <span class="info"></span>
+        </div>
     </div>
 </li>
