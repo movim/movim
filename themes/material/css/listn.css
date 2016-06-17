@@ -308,10 +308,6 @@ ul li div.bubble p {
     font-size: 1.75rem;
 }
 
-ul li div.bubble > div + div {
-    margin-top: 0.5rem;
-}
-
 ul li.oppose div.bubble {
     margin-right: 9rem;
     float: right;
