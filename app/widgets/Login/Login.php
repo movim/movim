@@ -236,7 +236,7 @@ class Login extends \Movim\Widget\Base
     {
         $sessions = json_decode($sessions);
 
-        $sessions_grabbed = array();
+        $sessions_grabbed = [];
 
         $cd = new \Modl\ContactDAO;
 

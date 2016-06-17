@@ -67,7 +67,7 @@ class Notifs extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO();
         $contacts = $cd->getRosterFrom();
 
-        $invitations = array();
+        $invitations = [];
 
         $session = \Session::start();
         $notifs = $session->get('activenotifs');

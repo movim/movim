@@ -4,7 +4,7 @@ class Session
 {
     protected static $instance;
     protected static $sid = null;
-    protected $values = array();
+    protected $values = [];
 
     /**
      * Gets a session handle.

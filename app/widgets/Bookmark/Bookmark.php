@@ -134,7 +134,7 @@ class Bookmark extends \Movim\Widget\Base
 
     function ajaxSetBookmark($item = false)
     {
-        $arr = array();
+        $arr = [];
 
         if($item) {
             array_push($arr, $item);
@@ -227,7 +227,7 @@ class Bookmark extends \Movim\Widget\Base
             $bookmarks = Cache::c('bookmark');
 
             if($bookmarks == null)
-                $bookmarks = array();
+                $bookmarks = [];
 
             array_push($bookmarks,
                 array(

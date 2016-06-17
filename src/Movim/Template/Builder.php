@@ -11,8 +11,8 @@ class Builder
     private $title = '';
     private $content = '';
     private $user;
-    private $css = array();
-    private $scripts = array();
+    private $css = [];
+    private $scripts = [];
 
     /**
      * Constructor. Determines whether to show the login page to the user or the

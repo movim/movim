@@ -8,7 +8,7 @@ class RPC
     public static function call($funcname)
     {
         if(!is_array(self::$funcalls)) {
-            self::$funcalls = array();
+            self::$funcalls = [];
         }
 
         $args = func_get_args();
@@ -52,7 +52,7 @@ class RPC
 
     public static function clear()
     {
-        self::$funcalls = array();
+        self::$funcalls = [];
     }
 
     /**
@@ -67,7 +67,7 @@ class RPC
             return;
         }
 
-        $result = array();
+        $result = [];
 
         // Preparing the parameters and calling the function.
         if(isset($request->params)) {

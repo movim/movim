@@ -63,7 +63,7 @@ class Vcard4 extends \Movim\Widget\Base
             );
 
         // The datepicker arrays
-        $days = $months = $years = array();
+        $days = $months = $years = [];
         for($i=1; $i<= 31; $i++) {
             if($i < 10){
                 $j = '0'.$i;

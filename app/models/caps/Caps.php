@@ -43,7 +43,7 @@ class Caps extends Model {
                 }
             }
             
-            $fet = array();
+            $fet = [];
             foreach($query->query->feature as $f) {
                 array_push($fet, (string)$f->attributes()->var);
             }

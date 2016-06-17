@@ -258,7 +258,7 @@ class SessionxDAO extends SQL {
 
         $this->prepare(
             'Sessionx',
-            array()
+            []
         );
 
         return $this->run('Sessionx');
@@ -283,7 +283,7 @@ class SessionxDAO extends SQL {
 
         $this->prepare(
             'Sessionx',
-            array()
+            []
         );
 
         return $this->run('Sessionx');

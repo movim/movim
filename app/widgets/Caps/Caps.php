@@ -17,7 +17,7 @@
  
 class Caps extends \Movim\Widget\Base
 {
-    private $_table = array();
+    private $_table = [];
     private $_nslist;
     
     function load() {
@@ -49,7 +49,7 @@ class Caps extends \Movim\Widget\Base
 
         foreach($clients as $c) {
             if(!isset($this->_table[$c->name])) {
-                $this->_table[$c->name] = array();
+                $this->_table[$c->name] = [];
             }
             
             $features = unserialize($c->features);

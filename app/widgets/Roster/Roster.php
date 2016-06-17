@@ -171,7 +171,7 @@ class Roster extends \Movim\Widget\Base
         $capsdao = new \Modl\CapsDAO();
         $caps = $capsdao->getAll();
 
-        $capsarr = array();
+        $capsarr = [];
         foreach($caps as $c) {
             $capsarr[$c->node] = $c;
         }
@@ -192,9 +192,9 @@ class Roster extends \Movim\Widget\Base
 
         $capsarr = $this->getCaps();
 
-        $result = array();
+        $result = [];
 
-        $farray = array(); //final array
+        $farray = []; //final array
         if(isset($contacts)) {
             /* Init */
             $c = array_shift($contacts);
@@ -206,12 +206,12 @@ class Roster extends \Movim\Widget\Base
             $ac = $c->toRoster();
             $this->prepareContact($ac, $c, $capsarr);
 
-            $garray = array(); //group array
+            $garray = []; //group array
             $garray['agroup'] = $groupname;
             $garray['tombstone'] = false;
-            $garray['agroupitems'] = array(); //group array of jids
+            $garray['agroupitems'] = []; //group array of jids
 
-            $jarray = array(); //jid array
+            $jarray = []; //jid array
             $jarray['ajid'] = $jid;
             $jarray['atruename'] = $ac['rosterview']['name'];
             $jarray['aval'] = $ac['value'];
@@ -234,10 +234,10 @@ class Roster extends \Movim\Widget\Base
                         array_push($farray, $garray);
                         //next group
                         $groupname = $ac['groupname'];
-                        $garray = array();
+                        $garray = [];
                         $garray['agroup'] = $groupname;
                         $garray['tombstone'] = false;
-                        $garray['agroupitems'] = array();
+                        $garray['agroupitems'] = [];
                     }
                     //push new jid in group
                     $jid = $ac['jid'];
@@ -259,7 +259,7 @@ class Roster extends \Movim\Widget\Base
         $rd = new \Modl\RosterLinkDAO();
         $groups = $rd->getGroups();
         if(is_array($groups) && !in_array("Ungrouped", $groups)) $groups[] = "Ungrouped";
-        else $groups = array();
+        else $groups = [];
 
         $groups = array_flip($groups);
         $result['groups'] = json_encode($groups);
@@ -279,7 +279,7 @@ class Roster extends \Movim\Widget\Base
         $presencestxt = getPresencesTxt();
 
         // We add some basic information
-        $c['rosterview']   = array();
+        $c['rosterview']   = [];
         $c['rosterview']['avatar']   = $oc->getPhoto('s');
         $c['rosterview']['color']    = stringToColor($oc->jid);
         $c['rosterview']['name']     = $oc->getTrueName();

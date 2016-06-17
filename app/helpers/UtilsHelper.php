@@ -585,7 +585,7 @@ function requestURL($url, $timeout = 10, $post = false) {
         curl_setopt ($ch, CURLOPT_POSTFIELDS, $params);
     }
 
-    $rs = array();
+    $rs = [];
 
     $content = curl_exec($ch);
 

@@ -16,7 +16,7 @@
  */
 class User {
     public  $username = '';
-    private $config = array();
+    private $config = [];
 
     public $caps;
 
