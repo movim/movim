@@ -377,7 +377,7 @@ class Chat extends \Movim\Widget\Base
                 $this->prepareMessage($message);
             RPC::call('Chat.appendMessagesWrapper', $this->_wrapper, true);
             $this->_wrapper = array();
-            
+
             //RPC::call('Chat.cleanBubbles');
         }
     }
@@ -576,14 +576,14 @@ class Chat extends \Movim\Widget\Base
         }
 
 
-        $message->publishedPrepared = prepareDate(strtotime($message->published), true, true);
+        $message->publishedPrepared = prepareDate(strtotime($message->published), true);
 
         if($message->delivered) {
             $message->delivered = prepareDate(strtotime($message->delivered), true);
         }
 
         $date = substr($message->published, 0, 10);
-        
+
         if($message->type == 'groupchat') {
             $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
 
@@ -614,8 +614,6 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
-
-        //return $message;
         return $this->_wrapper;
     }
 
