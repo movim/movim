@@ -79,7 +79,7 @@
 
 <div id="{$jid}_discussion" class="contained" data-muc="{$muc}">
     <section id="{$jid}_messages">
-        <ul class="list {if="$muc"}thin simple{else}thick{/if}" id="{$jid}_conversation"></ul>
+        <ul class="list {if="$muc"}thin simple{else}middle{/if}" id="{$jid}_conversation"></ul>
     </section>
 </div>
 <div class="chat_box">
