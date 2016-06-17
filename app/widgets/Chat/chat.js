@@ -106,17 +106,6 @@ var Chat = {
             }
         }
     },
-    /*appendMessages : function(messages) {
-        if(messages) {
-            Chat.lastDate = null;
-            Chat.date = messages[0].published;
-            for(var i = 0, len = messages.length; i < len; ++i ) {
-                Chat.appendMessage(messages[i], false);
-            }
-            Chat.edit = false;
-            Chat.cleanBubbles();
-        }
-    },*/
     appendMessagesWrapper : function(page, prepend) {
         if(page) {
             Chat.lastDate = null;
@@ -134,7 +123,6 @@ var Chat = {
                 }
             }
             Chat.edit = false;
-            //Chat.cleanBubbles();
         }
     },
     appendSpeaker : function(idjidtime, data, prepend) {
@@ -242,120 +230,6 @@ var Chat = {
             MovimTpl.scrollPanel();
         }
     },
-    /*appendMessage : function(message, prepend) {
-        if(message.body == '') return;
-
-        var bubble = null;
-        var id = null;
-
-        var scrolled = MovimTpl.isPanelScrolled();
-
-        if(Chat.left != null) {
-            if(message.session == message.jidfrom) {
-                bubble = Chat.right.cloneNode(true);
-                id = message.jidto + '_conversation';
-            } else {
-                bubble = Chat.left.cloneNode(true);
-                id = message.jidfrom + '_conversation';
-            }
-
-            if(message.id != null) {
-                bubble.id = message.id;
-                if(message.newid != null)
-                    bubble.id = message.newid;
-            }
-
-            if(message.body.match(/^\/me\s/)) {
-                bubble.querySelector('div.bubble > p').className = 'quote';
-                message.body = message.body.substr(4);
-            }
-
-            if(message.sticker != null) {
-                bubble.querySelector('div.bubble').className += ' sticker';
-            }
-
-            if(bubble) {
-                if(message.sticker != null) {
-                    bubble.querySelector('div.bubble > p').innerHTML =
-                        '<img src="' + message.sticker.url +
-                        '" width="' + message.sticker.width +
-                        '" height="' + message.sticker.height + '"/>';
-                } else {
-                    bubble.querySelector('div.bubble > p').innerHTML = message.body.replace(/\r\n?|\n/g, '<br />');
-                }
-
-                var info = bubble.querySelector('div.bubble > span.info');
-                info.innerHTML = message.publishedPrepared;
-
-                if(message.edited) {
-                    info.innerHTML = '<i class="zmdi zmdi-edit"></i> ' + info.innerHTML;
-                }
-
-                if(message.delivered) {
-                    info.innerHTML = '<i class="zmdi zmdi-check" title="' + message.delivered + '"></i> ' + info.innerHTML;
-                }
-
-                if(prepend) {
-                    Chat.date = message.published;
-                    var discussion = document.querySelector('#chat_widget div.contained');
-                    // We prepend
-                    movim_prepend(id, bubble.outerHTML);
-
-                    // And we scroll where we were
-                    var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
-                    discussion.scrollTop += scrollDiff;
-                    Chat.lastScroll = discussion.scrollHeight;
-                } else if(message.edited
-                       || message.delivered) {
-                    var elem = document.getElementById(message.id);
-                    if(elem)
-                        elem.parentElement.replaceChild(bubble, elem);
-                    else
-                        movim_append(id, bubble.outerHTML);
-                } else {
-                    movim_append(id, bubble.outerHTML);
-                }
-
-                //bubble.querySelector('div.bubble').className = 'bubble';
-
-                if(bubble.className.indexOf('oppose') > -1
-                && prepend == null) MovimTpl.scrollPanel();
-            }
-        }
-
-        if(scrolled && prepend == null) MovimTpl.scrollPanel();
-    },
-    cleanBubbles : function() {
-        var bubbles = document.querySelectorAll('#chat_widget .contained ul.list > li');
-        var previous = null;
-
-        for(var i = 0, len = bubbles.length; i < len; ++i ) {
-            bubbles[i].className = bubbles[i].className.replace(' same', '');
-
-            if(bubbles[i].className.indexOf('oppose') > -1) {
-                if(previous == 'right') {
-                    bubbles[i].className += ' same';
-                }
-
-                previous = 'right';
-            } else {
-                if(previous == 'left') {
-                    bubbles[i].className += ' same';
-                }
-
-                previous = 'left';
-            }
-
-            /*if(bubbles[i].className.indexOf('room') > -1) {
-                var lastDate = bubbles[i].querySelector('span.info').innerHTML;
-                if(lastDate == Chat.lastDate) {
-                    bubbles[i].querySelector('span.info').innerHTML = '';
-                }
-
-                Chat.lastDate = lastDate;
-            }//
-        }
-    },*/
     getStickerHtml: function(sticker) {
         var img = document.createElement("img");
         img.setAttribute("src", sticker.url);
