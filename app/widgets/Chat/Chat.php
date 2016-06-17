@@ -361,7 +361,6 @@ class Chat extends \Movim\Widget\Base
     function ajaxGetHistory($jid, $date)
     {
         if(!$this->validateJid($jid)) return;
-
         $md = new \Modl\MessageDAO;
         $messages = $md->getHistory(echapJid($jid), date(DATE_ISO8601, strtotime($date)), $this->_pagination);
 

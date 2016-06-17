@@ -129,7 +129,7 @@ var Chat = {
                     for(speakertime in page[date]) {
                         if(!Chat.date)
                             Chat.date = page[date][speakertime][0].published;
-                            Chat.appendSpeaker(speakertime, page[date][speakertime], prepend);
+                        Chat.appendSpeaker(speakertime, page[date][speakertime], prepend);
                     }
                 }
             }
@@ -228,20 +228,18 @@ var Chat = {
             Chat.date = data[0].published;
             var discussion = document.querySelector('#chat_widget div.contained');
             // We prepend
-            if (mergeMsg)
+            if (!mergeMsg)
                 movim_prepend(id, bubble.outerHTML);
 
             // And we scroll where we were
             var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
             discussion.scrollTop += scrollDiff;
             Chat.lastScroll = discussion.scrollHeight;
-        }
-        else {
-            if (!mergeMsg)
+        } else {
+            if (!mergeMsg) {
                 movim_append(id, bubble.outerHTML);
-
-            if (bubble.className.indexOf('oppose') > -1)
-                MovimTpl.scrollPanel();
+            }
+            MovimTpl.scrollPanel();
         }
     },
     appendMessage : function(message, prepend) {
