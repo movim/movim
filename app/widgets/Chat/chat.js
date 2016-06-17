@@ -77,9 +77,9 @@ var Chat = {
         datebox = Chat.room.cloneNode(true);
         datebox.innerHTML = date;
 
-        if(conversation) {
+        /*if(conversation) {
             conversation.appendChild(datebox);
-        }
+        }*/
 
         for(var i = 0, len = messages.length; i < len; ++i){
             bubble = Chat.room.cloneNode(true);
