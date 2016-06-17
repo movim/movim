@@ -119,10 +119,10 @@
     clear: both;
 }
 
-#chat_widget ul li.oppose + li.oppose span.icon,
-#chat_widget ul li.oppose + li.oppose .bubble::before,
-#chat_widget ul li:not(.oppose) + li:not(.oppose) span.icon,
-#chat_widget ul li:not(.oppose) + li:not(.oppose) .bubble::before {
+#chat_widget .contained ul li.oppose + li.oppose span.icon,
+#chat_widget .contained ul li.oppose + li.oppose .bubble::before,
+#chat_widget .contained ul li:not(.oppose) + li:not(.oppose) span.icon,
+#chat_widget .contained ul li:not(.oppose) + li:not(.oppose) .bubble::before {
     display: none;
 }
 
