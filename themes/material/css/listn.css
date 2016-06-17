@@ -314,7 +314,7 @@ ul li div.bubble:not(.sticker) {
     margin-bottom: 3.5rem;
 }
 ul li div.bubble.sticker {
-    margin-bottom: 3rem;
+    margin-bottom: 3.75rem;
 }
 
 ul li div.bubble  p {
@@ -339,7 +339,13 @@ ul li div.bubble span.info {
     padding-left: 1rem;
 }
 
-ul li.same span.icon {
+/*ul li.same span.icon {
+    display: none;
+}*/
+ul li.oppose + li.oppose span.icon,
+ul li.oppose + li.oppose .bubble::before,
+ul li:not(.oppose) + li:not(.oppose) span.icon,
+ul li:not(.oppose) + li:not(.oppose) .bubble::before {
     display: none;
 }
 
@@ -365,7 +371,7 @@ ul li .quote {
     font-style: italic;
 }
 
-ul li:not(.same) div.bubble:not(.sticker):before {
+ul li/*:not(.same)*/ div.bubble:not(.sticker):before {
     content: "";
     position: absolute;
     top: 0;
@@ -376,7 +382,7 @@ ul li:not(.same) div.bubble:not(.sticker):before {
     border-right: 1.5rem solid transparent;
 }
 
-ul li.oppose:not(.same) div.bubble:not(.sticker):before {
+ul li.oppose/*:not(.same)*/ div.bubble:not(.sticker):before {
     left: calc(100% - 10.5rem);
     top: 1.5rem;
     border-top-color: #f5f5f5;

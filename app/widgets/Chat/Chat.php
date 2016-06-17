@@ -104,7 +104,7 @@ class Chat extends \Movim\Widget\Base
         if(!preg_match('#^\?OTR#', $message->body)) {
             //RPC::call('Chat.appendMessage', $this->prepareMessage($message));
             RPC::call('Chat.appendMessagesWrapper', $this->prepareMessage($message));
-            RPC::call('Chat.cleanBubbles');
+            //RPC::call('Chat.cleanBubbles');
         }
     }
 
@@ -378,7 +378,7 @@ class Chat extends \Movim\Widget\Base
             RPC::call('Chat.appendMessagesWrapper', $this->_wrapper, true);
             $this->_wrapper = array();
             
-            RPC::call('Chat.cleanBubbles');
+            //RPC::call('Chat.cleanBubbles');
         }
     }
 

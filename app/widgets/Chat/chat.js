@@ -134,7 +134,7 @@ var Chat = {
                 }
             }
             Chat.edit = false;
-            Chat.cleanBubbles();
+            //Chat.cleanBubbles();
         }
     },
     appendSpeaker : function(idjidtime, data, prepend) {
@@ -146,10 +146,10 @@ var Chat = {
 
         if(prepend) {
             refBubble = document.querySelector("#chat_widget .contained li:first-child");
-            msgStack = document.querySelector("[data-bubble='" + speakertime.substring(speakertime.indexOf('<')+1) + "']");
+            msgStack = document.querySelector("[data-bubble='" + jidtime + "']");
         } else {
             refBubble = document.querySelector("#chat_widget .contained li:last-child");
-            var stack = document.querySelectorAll("[data-bubble='" + speakertime.substring(speakertime.indexOf('<')+1) + "']");
+            var stack = document.querySelectorAll("[data-bubble='" + jidtime + "']");
             msgStack = stack[stack.length-1];
         }
         if(msgStack != null
@@ -242,7 +242,7 @@ var Chat = {
             MovimTpl.scrollPanel();
         }
     },
-    appendMessage : function(message, prepend) {
+    /*appendMessage : function(message, prepend) {
         if(message.body == '') return;
 
         var bubble = null;
@@ -353,9 +353,9 @@ var Chat = {
                 }
 
                 Chat.lastDate = lastDate;
-            }*/
+            }//
         }
-    },
+    },*/
     getStickerHtml: function(sticker) {
         var img = document.createElement("img");
         img.setAttribute("src", sticker.url);
