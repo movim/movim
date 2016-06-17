@@ -45,7 +45,7 @@
 }
 
 #chat_widget section {
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
 }
 
 #chat_widget li.oppose span.control {
@@ -63,7 +63,7 @@
 }
 
 #chat_widget div:not(.chat_box) li span.icon {
-    top: 4rem;
+    top: 3.25rem;
 }
 
 #chat_widget li img:not(.emoji):not(.hfr) {
@@ -118,40 +118,13 @@
     display: block;
     clear: both;
 }
-/*
-#chat_widget li img.emoji {
-    padding: 0.25rem;
-}
-*/
-/*
-#chat_widget li.room {
-    min-height: 3rem;
-    margin-bottom: 0.5rem;
-}
-#chat_widget li.room:first-child {
-    margin-top: 1rem;
-}
 
-#chat_widget li.room,
-#chat_widget li.room div,
-#chat_widget li.room span.user {
-    line-height: 3rem;
+#chat_widget ul li.oppose + li.oppose span.icon,
+#chat_widget ul li.oppose + li.oppose .bubble::before,
+#chat_widget ul li:not(.oppose) + li:not(.oppose) span.icon,
+#chat_widget ul li:not(.oppose) + li:not(.oppose) .bubble::before {
+    display: none;
 }
-
-#chat_widget li.room span {
-    white-space: initial;
-}
-
-#chat_widget li.room span.user {
-    font-weight: 700;
-    float: left;
-    margin-right: 1rem;
-}
-
-#chat_widget li.room span.user:hover {
-    cursor: pointer;
-}
-*/
 
 #chat_widget .placeholder {
     padding-top: 37em;
