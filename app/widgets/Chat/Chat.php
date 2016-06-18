@@ -576,7 +576,7 @@ class Chat extends \Movim\Widget\Base
         }
 
 
-        $message->publishedPrepared = prepareDate(strtotime($message->published), true);
+        $message->publishedPrepared = prepareDate(strtotime($message->published), true, true);
 
         if($message->delivered) {
             $message->delivered = prepareDate(strtotime($message->delivered), true);
@@ -588,10 +588,12 @@ class Chat extends \Movim\Widget\Base
             $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
 
             //fillup $wrapper
-            if(!array_key_exists($date, $this->_wrapper))
-                $this->_wrapper[$date] = array($message);
-            else
-                array_push($this->_wrapper[$date], $message);
+            if($message->body != "") {
+                if (!array_key_exists($date, $this->_wrapper))
+                    $this->_wrapper[$date] = array($message);
+                else
+                    array_push($this->_wrapper[$date], $message);
+            }
         } else {
             $msgkey = $message->jidfrom . '>' .substr($message->published, 11, 5);
             //fillup $wrapper
@@ -614,6 +616,8 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
+
+        //return $message;
         return $this->_wrapper;
     }
 
