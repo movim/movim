@@ -306,6 +306,7 @@ ul li div.bubble p {
     display: inline;
     max-width: 100%;
     font-size: 1.75rem;
+    word-wrap: break-word;
 }
 
 ul li.oppose div.bubble {
