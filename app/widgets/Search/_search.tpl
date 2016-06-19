@@ -1,4 +1,7 @@
 <section id="search">
+    <div id="results">{$empty}</div>
+</section>
+<div>
     <ul class="list">
         <li>
             <span class="primary icon gray">
@@ -11,10 +14,4 @@
             </form>
         </li>
     </ul>
-    <div id="results">{$empty}</div>
-</section>
-<div>
-    <a onclick="Dialog.clear(); Upload.xhr.abort();" class="button flat">
-        {$c->__('button.close')}
-    </a>
 </div>

@@ -26,6 +26,7 @@
         $this->addCss('form.css');
         $this->addCss('icon.css');
         $this->addCss('dialog.css');
+        $this->addCss('drawer.css');
         $this->addCss('card.css');
         $this->addCss('table.css');
         $this->addCss('color.css');
@@ -53,6 +54,7 @@
         <div id="hiddendiv"></div>
         <div id="snackbar" class="snackbar"></div>
         <?php $this->widget('Dialog');?>
+        <?php $this->widget('Drawer');?>
         <?php $this->widget('Notification');?>
         <?php $this->content();?>
         <script type="text/javascript">if(typeof movim_onload == 'function') { movim_onload(); }</script>

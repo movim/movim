@@ -310,9 +310,9 @@ class Bootstrap
     {
         // Return a list of interesting widgets to load (to save memory)
         return["Account","AccountNext","Ack","AdHoc","Avatar","Bookmark","Chat",
-        "Chats","Config","Contact","Dialog","Group","Groups","Header","Init",
-        "Login","LoginAnonymous","Menu","Notifs","Post","Presence","Publish",
-        "Rooms","Roster","Stickers","Upload","Vcard4"];
+        "Chats","Config","Contact","Dialog","Drawer","Group","Groups","Header",
+        "Init","Login","LoginAnonymous","Menu","Notifs","Post","Presence",
+        "Publish","Rooms","Roster","Stickers","Upload","Vcard4"];
     }
 
     /**

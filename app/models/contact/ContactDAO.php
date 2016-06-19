@@ -514,7 +514,7 @@ class ContactDAO extends SQL {
           and (rosterlink.jid like :jid
             or rosterlink.rostername like :rostername)
         order by groupname, rosterlink.jid
-        limit 3 offset 0';
+        limit 4 offset 0';
 
         $this->prepare(
             'RosterLink',

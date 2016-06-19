@@ -16,7 +16,6 @@
     border-radius: 0.25rem;
     z-index: 3;
     box-sizing: border-box;
-    -webkit-transform: translateX(0);
     transform: translateX(0);
 }
 

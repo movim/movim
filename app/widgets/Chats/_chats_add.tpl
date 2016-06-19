@@ -7,7 +7,7 @@
         {loop="$top"}
             {if="!in_array($value->jid, $chats)"}
                 <li class="{if="$value->last > 60"} inactive{/if}"
-                        onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
+                        onclick="Chats_ajaxOpen('{$value->jid}'); Dialog_ajaxClear()">
                         {$url = $value->getPhoto('s')}
                         {if="$url"}
                             <span class="primary icon bubble
@@ -42,7 +42,7 @@
     </div>-->
 </section>
 <div>
-    <a onclick="Dialog.clear()" class="button flat">
+    <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
 </div>

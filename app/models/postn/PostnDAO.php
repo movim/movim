@@ -640,7 +640,7 @@ class PostnDAO extends SQL {
                 and postn.node not like \'urn:xmpp:inbox\'
                 and upper(title) like upper(:title)
             order by postn.published desc
-            limit 5 offset 0
+            limit 6 offset 0
             ';
 
         $this->prepare(

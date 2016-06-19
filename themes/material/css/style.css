@@ -58,7 +58,6 @@ body > nav {
     background-color: #fefefe;
     width: 7rem;
     max-width: 95%;
-    -webkit-transition: width 0.3s cubic-bezier(.4,0,.2,1);
     transition: width 0.3s cubic-bezier(.4,0,.2,1);
     z-index: 2;
     position: relative;
@@ -84,14 +83,16 @@ body > nav.active {
     width: 45rem;
 }
 
-@media screen and (min-width: 1024px) {
+/*@media screen and (min-width: 1024px) {*/
+    body > div.drawer:not(.empty) ~ main,
+    body > div.drawer:not(.empty) ~ nav,
     body > div.dialog:not(:empty) ~ main,
     body > div.dialog:not(:empty) ~ nav,
     body > nav.active + main {
         opacity: 0.5;
         pointer-events: none;
     }
-}
+/*}*/
 
 body > nav li { /* Little hack for the navbar */
     overflow: hidden;
@@ -100,16 +101,12 @@ body > nav li { /* Little hack for the navbar */
 @media screen and (max-width: 1024px) {
     body > nav:not(.active) {
         width: 45rem;
-        -webkit-transition: -webkit-transform .3s cubic-bezier(.4,0,.2,1);
         transition: transform .3s cubic-bezier(.4,0,.2,1);
-        -webkit-transform: translateX(-100%);
         transform: translateX(-100%);
     }
 
     body > nav.active {
-        -webkit-transition: -webkit-transform .3s cubic-bezier(.4,0,.2,1);
         transition: transform .3s cubic-bezier(.4,0,.2,1);
-        -webkit-transform: translateX(0%);
         transform: translateX(0%);
     }
 }
@@ -176,14 +173,12 @@ main {
     right: 0;
     top: 0;
     background-color: white;
-    -webkit-transition: opacity 0.3s ease-in-out;
     transition: opacity 0.3s ease-in-out;
     transform: translateZ(0);
 }
 
 nav + main {
     width: calc(100% - 7rem);
-    -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
 
@@ -256,8 +251,7 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     position: absolute;
     top: 0;
     right: 0;
-    /*-webkit-transition: left .3s cubic-bezier(.4,0,.2,1);
-    transition: left .3s cubic-bezier(.4,0,.2,1);*/
+    /*transition: left .3s cubic-bezier(.4,0,.2,1);*/
 }
 
 main > section > div:first-child:nth-last-child(2) ~ div {
@@ -334,6 +328,28 @@ main footer {
     max-width: calc(100% - 5rem);
     width: 100%;
     padding: 0;
+}
+
+.actions > div:last-child form > div {
+    min-height: 0;
+    top: -0.5rem;
+}
+
+.actions > div:last-child form > div input {
+    margin: 0;
+    padding-top: 1.5rem;
+}
+
+.drawer.actions > div:last-child ul.tabs {
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 0;
+}
+
+.drawer.actions > div:last-child ul.tabs li.active {
+    border-top-width: 2px;
+    border-top-style: solid;
+    border-bottom-width: 0;
 }
 
 .actions.scroll > section {
@@ -525,7 +541,6 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
 .spinner.on:before {
     animation: 1s spinner infinite linear;
-    -webkit-animation: 1s spinner 1s infinite linear;
 }
 
 .spinner:before {

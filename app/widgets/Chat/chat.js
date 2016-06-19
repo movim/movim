@@ -164,7 +164,8 @@ var Chat = {
         var p = msg.getElementsByTagName('p')[0];
         for(var i = 0, len = data.length; i < len; ++i) {
             //if there is already a msg in this bubble, create another div (next msg or replacement)
-            if (bubble.querySelector('div.bubble p').innerHTML != "") {
+            if (bubble.querySelector('div.bubble p')
+            && bubble.querySelector('div.bubble p').innerHTML != "") {
                 msg = document.createElement("div");
                 p = document.createElement("p");
                 span = document.createElement("span");

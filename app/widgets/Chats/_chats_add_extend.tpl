@@ -6,7 +6,7 @@
             <p>{$value->groupname}</p>
         </li>
     {/if}
-    <li onclick="Chats_ajaxOpen('{$value->jid}'); Dialog.clear()">
+    <li onclick="Chats_ajaxOpen('{$value->jid}'); Dialog_ajaxClear()">
         {$url = $value->getPhoto('s')}
         {if="$url"}
             <span class="primary icon bubble">

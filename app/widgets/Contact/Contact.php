@@ -51,6 +51,30 @@ class Contact extends \Movim\Widget\Base
         RPC::call('MovimTpl.scrollHeaders');
     }
 
+    function ajaxGetDrawer($jid)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $tpl = $this->tpl();
+
+        $cd = new \Modl\ContactDAO;
+        $cr = $cd->getRosterItem($jid);
+
+        if(isset($cr)) {
+            if($cr->value != null) {
+                $presencestxt = getPresencesTxt();
+                $tpl->assign('presence', $presencestxt[$cr->value]);
+            }
+
+            $tpl->assign('contactr', $cr);
+        }
+
+        $c  = $cd->get($jid, true);
+        $tpl->assign('contact', $c);
+
+        Drawer::fill($tpl->draw('_contact_drawer', true));
+    }
+
     function ajaxEditSubmit($form)
     {
         $rd = new UpdateItem;

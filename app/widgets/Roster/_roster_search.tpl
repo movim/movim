@@ -24,10 +24,10 @@
     </div>
 </section>
 <div>
-    <a onclick="Dialog.clear()" class="button flat">
+    <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
-    <a onclick="{$add} Dialog.clear()" class="button flat">
+    <a onclick="{$add} Dialog_ajaxClear()" class="button flat">
         {$c->__('button.add')}
     </a>
 </div>

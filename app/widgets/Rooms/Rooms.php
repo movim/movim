@@ -205,7 +205,7 @@ class Rooms extends \Movim\Widget\Base
                     'nick'      => $form['nick'],
                     'jid'       => $form['jid']);
             $this->setBookmark($item);
-            RPC::call('Dialog.clear');
+            RPC::call('Dialog_ajaxClear');
         }
     }
 

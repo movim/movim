@@ -45,7 +45,7 @@
         -->
     </section>
     <div>
-        <a class="button flat" onclick="Dialog.clear()">
+        <a class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.close')}
         </a>
         {if="isset($room)"}

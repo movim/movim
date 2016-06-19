@@ -1,19 +1,8 @@
 <section class="scroll">
-    <ul class="tabs">
-        <li onclick="Stickers_ajaxShow('{$jid}')" class="active">
-            <a href="#"><img alt=":sticker:" class="emoji medium" src="{$icon}"></a>
-        </li>
-        <li onclick="Stickers_ajaxSmiley('{$jid}')">
-            <a href="#"><img alt=":smiley:" class="emoji medium" src="{$c->getSmileyPath('1f603')}"></a>
-        </li>
-        <li onclick="Stickers_ajaxSmileyTwo('{$jid}')">
-            <a href="#"><img alt=":smiley:" class="emoji medium" src="{$c->getSmileyPath('1f44d')}"></a>
-        </li>
-    </ul>
-    <ul class="list flex third active">
+    <ul class="list flex active">
         {loop="$stickers"}
             {if="strlen($value) == 44"}
-            <li class="block" onclick="Stickers_ajaxSend('{$jid}', '{$value}'); Dialog.clear();">
+            <li class="block" onclick="Stickers_ajaxSend('{$jid}', '{$value}'); Drawer.clear();">
                 <img class="sticker" src="{$path}{$value}"/>
             </li>
             {/if}
@@ -28,7 +17,15 @@
     </ul>
 </section>
 <div>
-    <a onclick="Dialog.clear()" class="button flat">
-        {$c->__('button.close')}
-    </a>
+    <ul class="tabs">
+        <li onclick="Stickers_ajaxShow('{$jid}')" class="active">
+            <a href="#"><img alt=":sticker:" class="emoji medium" src="{$icon}"></a>
+        </li>
+        <li onclick="Stickers_ajaxSmiley('{$jid}')">
+            <a href="#"><img alt=":smiley:" class="emoji medium" src="{$c->getSmileyPath('1f603')}"></a>
+        </li>
+        <li onclick="Stickers_ajaxSmileyTwo('{$jid}')">
+            <a href="#"><img alt=":smiley:" class="emoji medium" src="{$c->getSmileyPath('1f44d')}"></a>
+        </li>
+    </ul>
 </div>

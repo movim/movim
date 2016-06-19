@@ -21,11 +21,11 @@
     </form>
 </section>
 <div>
-    <a onclick="Dialog.clear()" class="button flat">
+    <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
     <a
-        onclick="Group_ajaxSubscribe(MovimUtils.formToJson('subscribe'), '{$server}', '{$node}'); Dialog.clear()"
+        onclick="Group_ajaxSubscribe(MovimUtils.formToJson('subscribe'), '{$server}', '{$node}'); Dialog_ajaxClear()"
         class="button flat">
         {$c->__('group.subscribe')}
     </a>
