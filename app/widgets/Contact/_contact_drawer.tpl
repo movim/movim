@@ -32,7 +32,7 @@
 
     <ul class="list middle">
         {if="$contact->fn != null"}
-        <li class="block">
+        <li>
             <span class="primary icon gray">{$contact->fn|firstLetterCapitalize}</span>
             <p>{$c->__('general.name')}</p>
             <p>{$contact->fn}</p>
@@ -40,7 +40,7 @@
         {/if}
 
         {if="$contact->nickname != null"}
-        <li class="block">
+        <li>
             <span class="primary icon gray">{$contact->nickname|firstLetterCapitalize}</span>
             <p>{$c->__('general.nickname')}</p>
             <p>{$contact->nickname}</p>
@@ -48,7 +48,7 @@
         {/if}
 
         {if="$contact->url != null"}
-        <li class="block">
+        <li>
             <span class="primary icon gray"><i class="zmdi zmdi-link"></i></span>
             <p>{$c->__('general.website')}</p>
             <p>
@@ -62,10 +62,18 @@
         {/if}
 
         {if="$contact->email != null"}
-        <li class="block">
+        <li>
             <span class="primary icon gray"><i class="zmdi zmdi-email"></i></span>
             <p>{$c->__('general.email')}</p>
             <p><img src="{$contact->getPhoto('email')}"/></p>
+        </li>
+        {/if}
+
+        {if="$contact->description != null && trim($contact->description) != ''"}
+        <li>
+            <span class="primary icon gray"><i class="zmdi zmdi-format-align-justify"></i></span>
+            <p>{$c->__('general.about')}</p>
+            <p class="all">{$contact->description}</p>
         </li>
         {/if}
     </ul>

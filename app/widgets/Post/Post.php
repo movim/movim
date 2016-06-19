@@ -94,6 +94,12 @@ class Post extends \Movim\Widget\Base
         //RPC::call('Menu_ajaxGetAll');
     }
 
+    function ajaxGetContact($jid)
+    {
+        $c = new Contact;
+        $c->ajaxGetDrawer($jid);
+    }
+
     function ajaxGetPost($id)
     {
         $pd = new \Modl\PostnDAO;

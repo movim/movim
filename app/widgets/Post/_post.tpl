@@ -56,13 +56,13 @@
                 {$url = $contact->getPhoto('s')}
                 {if="$url"}
                     <span class="icon primary bubble">
-                        <a href="{$c->route('contact', $contact->jid)}">
+                        <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
                             <img src="{$url}">
                         </a>
                     </span>
                 {else}
                     <span class="icon primary bubble color {$contact->jid|stringToColor}">
-                        <a href="{$c->route('contact', $contact->jid)}">
+                        <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
                             <i class="zmdi zmdi-account"></i>
                         </a>
                     </span>
@@ -93,7 +93,7 @@
             <p>
                 {if="$contact->getTrueName() != ''"}
                     {if="!$public"}
-                    <a href="{$c->route('contact', $contact->jid)}">
+                    <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
                     {/if}
                         <i class="zmdi zmdi-account"></i> {$contact->getTrueName()}
                     {if="!$public"}</a>{/if} –

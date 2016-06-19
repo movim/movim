@@ -165,9 +165,11 @@ var MovimTpl = {
         var cm = document.querySelector('ul.context_menu');
         if(cm != null && cm.className.includes('shown')) {
             MovimTpl.toggleContextMenu(document);
-        }
+        // If a drawer is show
+        } else if(Drawer.filled()) {
+            Drawer.clear();
         // If a dialog box is show
-        else if(Dialog.filled()) {
+        } else if(Dialog.filled()) {
             Dialog.clear();
         // If the menu is shown
         } else if(MovimUtils.hasClass('body > nav', 'active')) {

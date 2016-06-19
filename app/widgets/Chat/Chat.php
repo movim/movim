@@ -199,6 +199,15 @@ class Chat extends \Movim\Widget\Base
     }
 
     /**
+     * @brief Get a Drawer view of a contact
+     */
+    function ajaxGetContact($jid)
+    {
+        $c = new Contact;
+        $c->ajaxGetDrawer($jid);
+    }
+
+    /**
      * @brief Get a chatroom
      * @param string $jid
      */
