@@ -126,7 +126,10 @@ class Publish extends \Movim\Widget\Base
     {
         if($form->content->value != '') {
             $view = $this->tpl();
-            $view->assign('content', addHFR(Markdown::defaultTransform($form->content->value)));
+
+            $doc = new DOMDocument();
+            $doc->loadXML('<div>'.addHFR(Markdown::defaultTransform($form->content->value)).'</div>');
+            $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
             Dialog::fill($view->draw('_publish_preview', true), true);
         } else {
