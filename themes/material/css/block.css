@@ -4,13 +4,13 @@
 }
 
 .flex .block {
-    flex: 1 50%;
+    flex: 0 1 50%;
     overflow: hidden;
 }
 
 .flex .block.large,
 .flex.card .block.large {
-    flex: 1 100%;
+    flex: 0 1 100%;
 }
 /*
 .flex.card {
@@ -34,7 +34,7 @@
 }
 
 .flex.third .block:not(.large) {
-    flex: 1 33.33%;
+    flex: 0 1 33.33%;
     max-width: 33.33%;
 }
 
@@ -42,7 +42,7 @@
     .flex.card .block,
     .flex .block {
         margin-bottom: 0;
-        flex: 1 100%;
+        flex: 0 1 100%;
         max-width: 100%;
     }
 }
