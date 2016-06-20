@@ -214,7 +214,7 @@
                     <span class="control icon">
                         <i class="zmdi zmdi-chevron-right"></i>
                     </span>
-                    <p class="normal">{$c->__('blog.visit')}</p>
+                    <p class="normal line">{$c->__('blog.visit')}</p>
                 </li>
             </a>
         </ul>

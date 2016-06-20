@@ -109,6 +109,10 @@ ul li div.bubble:after {
 
 /* Size automagicaly the content */
 
+ul.list li > p {
+    box-sizing: border-box;
+}
+
 ul.list li > p:first-of-type {
     line-height: 5.5rem;
     font-size: 3rem;
