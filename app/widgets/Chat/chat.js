@@ -71,7 +71,7 @@ var Chat = {
             };
         }
     },
-    appendMucMessages : function(date, messages, prepend) {
+    appendMucMessages : function(date, messages) {
         id = messages[0].jidfrom + '_conversation';
         var conversation = document.getElementById(id);
         datebox = Chat.room.cloneNode(true);
@@ -113,7 +113,7 @@ var Chat = {
                 if (page[date].constructor == Array) { //groupchat
                     if(!Chat.date)
                         Chat.date = page[date][0].published;
-                    Chat.appendMucMessages(date, page[date], prepend);
+                    Chat.appendMucMessages(date, page[date]);
                 } else {
                     for(speakertime in page[date]) {
                         if(!Chat.date)
