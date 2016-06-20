@@ -93,7 +93,7 @@ class Chat extends \Movim\Widget\Base
                 );
             }
 
-            RPC::call('movim_fill', $from.'_state', $contact->jid);
+            RPC::call('MovimTpl.fill', '#' . $from.'_state', $contact->jid);
         } else {
             // If the message is from me we reset the notif counter
             $from = $message->jidto;
@@ -168,7 +168,7 @@ class Chat extends \Movim\Widget\Base
 
         $html = $view->draw('_chat_state', true);
 
-        RPC::call('movim_fill', $jid.'_state', $html);
+        RPC::call('MovimTpl.fill', '#' . $jid.'_state', $html);
     }
 
     /**
@@ -178,7 +178,7 @@ class Chat extends \Movim\Widget\Base
     function ajaxGet($jid = null)
     {
         if($jid == null) {
-            RPC::call('movim_fill', 'chat_widget', $this->prepareEmpty());
+            RPC::call('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
         } else {
             $chats = new Chats;
             $chats->ajaxGetHistory($jid);
@@ -190,7 +190,7 @@ class Chat extends \Movim\Widget\Base
 
             RPC::call('MovimUtils.pushState', $this->route('chat', $jid));
 
-            RPC::call('movim_fill', 'chat_widget', $html);
+            RPC::call('MovimTpl.fill', '#chat_widget', $html);
             RPC::call('MovimTpl.showPanel');
             RPC::call('Chat.focus');
 
@@ -217,7 +217,7 @@ class Chat extends \Movim\Widget\Base
 
         $html = $this->prepareChat($room, true);
 
-        RPC::call('movim_fill', 'chat_widget', $html);
+        RPC::call('MovimTpl.fill', '#chat_widget', $html);
         RPC::call('MovimTpl.showPanel');
         RPC::call('Chat.focus');
 

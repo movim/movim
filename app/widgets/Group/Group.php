@@ -123,7 +123,7 @@ class Group extends \Movim\Widget\Base
         //    $view = $this->tpl();
         //    $view->assign('server', $server);
         //    $view->assign('node', $node);
-        //    RPC::call('movim_append', 'group_widget', $view->draw('_group_publish', true));
+        //    RPC::call('MovimTpl.append', '#group_widget', $view->draw('_group_publish', true));
         //}
     }
 

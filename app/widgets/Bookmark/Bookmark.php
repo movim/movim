@@ -107,21 +107,21 @@ class Bookmark extends \Movim\Widget\Base
     function onGroupSubscribed()
     {
         $html = $this->prepareBookmark();
-        RPC::call('movim_fill', 'bookmarks', $html);
+        RPC::call('MovimTpl.fill', '#bookmarks', $html);
         RPC::call('setBookmark');
     }
 
     function onGroupUnsubscribed()
     {
         $html = $this->prepareBookmark();
-        RPC::call('movim_fill', 'bookmarks', $html);
+        RPC::call('MovimTpl.fill', '#bookmarks', $html);
         RPC::call('setBookmark');
     }
 
     function onBookmark()
     {
         $html = $this->prepareBookmark();
-        RPC::call('movim_fill', 'bookmarks', $html);
+        RPC::call('MovimTpl.fill', '#bookmarks', $html);
         Notification::append(null, $this->__('bookmarks.updated'));
     }
 
@@ -176,11 +176,11 @@ class Bookmark extends \Movim\Widget\Base
     {
         if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
             $html = '<div class="message error">'.$this->__('chatroom.bad_id').'</div>' ;
-            RPC::call('movim_fill', 'bookmarkmucadderror', $html);
+            RPC::call('MovimTpl.fill', '#bookmarkmucadderror', $html);
             RPC::commit();
         } elseif(trim($form['name']) == '') {
             $html = '<div class="message error">'.$this->__('chatroom.empty_name').'</div>' ;
-            RPC::call('movim_fill', 'bookmarkmucadderror', $html);
+            RPC::call('MovimTpl.fill', '#bookmarkmucadderror', $html);
             RPC::commit();
         } else {
             $item = array(
@@ -216,11 +216,11 @@ class Bookmark extends \Movim\Widget\Base
     {
         if(!filter_var($form['url'], FILTER_VALIDATE_URL)) {
             $html = '<div class="message error">'.t('Bad URL').'</div>' ;
-            RPC::call('movim_fill', 'bookmarkadderror', $html);
+            RPC::call('MovimTpl.fill', '#bookmarkadderror', $html);
             RPC::commit();
         } elseif(trim($form['name']) == '') {
             $html = '<div class="message error">'.t('Empty name').'</div>' ;
-            RPC::call('movim_fill', 'bookmarkadderror', $html);
+            RPC::call('MovimTpl.fill', '#bookmarkadderror', $html);
             RPC::commit();
         } else {
 

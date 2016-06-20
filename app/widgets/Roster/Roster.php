@@ -119,7 +119,7 @@ class Roster extends \Movim\Widget\Base
             $view->assign('contacts', $contacts);
             $html = $view->draw('_roster_search_results', true);
 
-            RPC::call('movim_fill', 'search_results', $html);
+            RPC::call('MovimTpl.fill', '#search_results', $html);
         }
     }
 

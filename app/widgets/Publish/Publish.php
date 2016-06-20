@@ -257,15 +257,15 @@ class Publish extends \Movim\Widget\Base
             $embed = Embed\Embed::create($url);
             $html = $this->prepareEmbed($embed);
 
-            RPC::call('movim_fill', 'preview', '');
-            RPC::call('movim_fill', 'gallery', '');
+            RPC::call('MovimTpl.fill', '#preview', '');
+            RPC::call('MovimTpl.fill', '#gallery', '');
 
             if(in_array($embed->type, array('photo', 'rich'))) {
-                RPC::call('movim_fill', 'gallery', $this->prepareGallery($embed));
+                RPC::call('MovimTpl.fill', '#gallery', $this->prepareGallery($embed));
             }
 
             if($embed->type !== 'photo') {
-                RPC::call('movim_fill', 'preview', $html);
+                RPC::call('MovimTpl.fill', '#preview', $html);
             }
         } catch(Exception $e) {
             error_log($e->getMessage());

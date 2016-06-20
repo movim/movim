@@ -105,7 +105,7 @@ class Login extends \Movim\Widget\Base
 
     function showErrorBlock($error)
     {
-        RPC::call('movim_fill', 'error', $this->prepareError($error));
+        RPC::call('MovimTpl.fill', '#error', $this->prepareError($error));
         RPC::call('MovimUtils.addClass', '#login_widget', 'error');
     }
 
@@ -256,7 +256,7 @@ class Login extends \Movim\Widget\Base
         $sessionshtml->assign('sessions', $sessions_grabbed);
         $sessionshtml->assign('empty', new \Modl\Contact);
 
-        RPC::call('movim_fill', 'sessions', $sessionshtml->draw('_login_sessions', true));
+        RPC::call('MovimTpl.fill', '#sessions', $sessionshtml->draw('_login_sessions', true));
         RPC::call('Login.refresh');
     }
 }

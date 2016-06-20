@@ -77,19 +77,19 @@ class Post extends \Movim\Widget\Base
         $view->assign('id', $id);
 
         $html = $view->draw('_post_comments', true);
-        RPC::call('movim_fill', 'comments', $html);
+        RPC::call('MovimTpl.fill', '#comments', $html);
     }
 
     function onCommentsError($packet)
     {
         $view = $this->tpl();
         $html = $view->draw('_post_comments_error', true);
-        RPC::call('movim_fill', 'comments', $html);
+        RPC::call('MovimTpl.fill', '#comments', $html);
     }
 
     function ajaxClear()
     {
-        RPC::call('movim_fill', 'post_widget', $this->prepareEmpty());
+        RPC::call('MovimTpl.fill', '#post_widget', $this->prepareEmpty());
         RPC::call('Menu.refresh');
         //RPC::call('Menu_ajaxGetAll');
     }
@@ -115,7 +115,7 @@ class Post extends \Movim\Widget\Base
 
         RPC::call('MovimUtils.pushState', $this->route('news', $id));
 
-        RPC::call('movim_fill', 'post_widget', $html);
+        RPC::call('MovimTpl.fill', '#post_widget', $html);
         RPC::call('MovimTpl.scrollHeaders');
     }
 

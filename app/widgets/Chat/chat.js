@@ -218,7 +218,7 @@ var Chat = {
             var discussion = document.querySelector('#chat_widget div.contained');
             // We prepend
             if (!mergeMsg)
-                movim_prepend(id, bubble.outerHTML);
+                MovimTpl.prepend(id, bubble.outerHTML);
 
             // And we scroll where we were
             var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
@@ -226,7 +226,7 @@ var Chat = {
             Chat.lastScroll = discussion.scrollHeight;
         } else {
             if (!mergeMsg) {
-                movim_append(id, bubble.outerHTML);
+                MovimTpl.append("#" + id, bubble.outerHTML);
             }
             MovimTpl.scrollPanel();
         }

@@ -34,7 +34,7 @@ class AccountNext extends \Movim\Widget\Base {
             $movimview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
             $html = $movimview->draw('_accountnext_movim', true);
 
-            RPC::call('movim_fill', 'subscription_form', $html);
+            RPC::call('MovimTpl.fill', '#subscription_form', $html);
         } else {
             $xtf = new \XMPPtoForm();
             if(!empty($form->x)){
@@ -48,7 +48,7 @@ class AccountNext extends \Movim\Widget\Base {
                         $formview->assign('formh', $formh);
                         $html = $formview->draw('_accountnext_form', true);
 
-                        RPC::call('movim_fill', 'subscription_form', $html);
+                        RPC::call('MovimTpl.fill', '#subscription_form', $html);
                         break;
                     case 'jabber:x:oob' :
                         $oobview = $this->tpl();
@@ -56,7 +56,7 @@ class AccountNext extends \Movim\Widget\Base {
 
                         $html = $oobview->draw('_accountnext_oob', true);
 
-                        RPC::call('movim_fill', 'subscription_form', $html);
+                        RPC::call('MovimTpl.fill', '#subscription_form', $html);
                         break;
                 }
 
@@ -75,7 +75,7 @@ class AccountNext extends \Movim\Widget\Base {
 
         $html = $view->draw('_accountnext_registered', true);
 
-        RPC::call('movim_fill', 'subscribe', $html);
+        RPC::call('MovimTpl.fill', '#subscribe', $html);
         RPC::call('setUsername', $data->username->value);
     }
 

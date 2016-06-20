@@ -87,7 +87,7 @@ class Config extends \Movim\Widget\Base
     {
         $html = $this->prepareConfigForm();
 
-        RPC::call('movim_fill', 'config_widget', $html);
+        RPC::call('MovimTpl.fill', '#config_widget', $html);
         RPC::call('Config.load');
     }
 
