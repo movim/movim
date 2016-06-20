@@ -97,7 +97,7 @@ class Vcard4 extends \Movim\Widget\Base
 
         Notification::append(null, $this->__('vcard.updated'));
 
-        RPC::call('movim_fill', 'vcard_form', $html);
+        RPC::call('MovimTpl.fill', 'vcard_form', $html);
         RPC::commit();
     }
 

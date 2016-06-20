@@ -107,7 +107,7 @@ class Bookmark extends \Movim\Widget\Base
     function onGroupSubscribed()
     {
         $html = $this->prepareBookmark();
-        RPC::call('movim_fill', 'bookmarks', $html);
+        RPC::call('MovimTpl.fill', 'bookmarks', $html);
         RPC::call('setBookmark');
     }
 

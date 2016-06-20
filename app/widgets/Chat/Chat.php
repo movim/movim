@@ -93,7 +93,7 @@ class Chat extends \Movim\Widget\Base
                 );
             }
 
-            RPC::call('movim_fill', $from.'_state', $contact->jid);
+            RPC::call('MovimTpl.fill', $from.'_state', $contact->jid);
         } else {
             // If the message is from me we reset the notif counter
             $from = $message->jidto;

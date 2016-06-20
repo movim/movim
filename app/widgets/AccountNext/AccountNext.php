@@ -34,7 +34,7 @@ class AccountNext extends \Movim\Widget\Base {
             $movimview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
             $html = $movimview->draw('_accountnext_movim', true);
 
-            RPC::call('movim_fill', 'subscription_form', $html);
+            RPC::call('MovimTpl.fill', 'subscription_form', $html);
         } else {
             $xtf = new \XMPPtoForm();
             if(!empty($form->x)){

@@ -30,7 +30,7 @@ class Contact extends \Movim\Widget\Base
     function ajaxClear($page = 0)
     {
         $html = $this->prepareEmpty($page);
-        RPC::call('movim_fill', 'contact_widget', $html);
+        RPC::call('MovimTpl.fill', 'contact_widget', $html);
     }
 
     function ajaxGetContact($jid, $page = 0)
