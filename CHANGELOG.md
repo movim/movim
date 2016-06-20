@@ -3,6 +3,9 @@ Movim Changelog
 
 v0.9.1 (trunk)
 ---------------------------
+ * New bubble merging algorythm in the Chat
+ * Improve UI and mobile UX on low resolution devices
+ * New widget Drawer used for the stickers and the search form
  * Fix behaviour for Android and Electron packages
  * Fix Pubsub metadata handling for some XMPP servers
  * Add global search
