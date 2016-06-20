@@ -77,7 +77,7 @@ class Post extends \Movim\Widget\Base
         $view->assign('id', $id);
 
         $html = $view->draw('_post_comments', true);
-        RPC::call('MovimTpl.fill', 'comments', $html);
+        RPC::call('movim_fill', 'comments', $html);
     }
 
     function onCommentsError($packet)

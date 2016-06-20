@@ -53,7 +53,7 @@ class Presence extends \Movim\Widget\Base
     function onMyPresence($packet)
     {
         $html = $this->preparePresence();
-        RPC::call('MovimTpl.fill', 'presence_widget', $html);
+        RPC::call('movim_fill', 'presence_widget', $html);
         Notification::append(null, $this->__('status.updated'));
         RPC::call('Presence.refresh');
         RPC::call('MovimUtils.removeClass', '#presence_widget', 'unfolded');

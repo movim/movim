@@ -105,7 +105,7 @@ class Login extends \Movim\Widget\Base
 
     function showErrorBlock($error)
     {
-        RPC::call('MovimTpl.fill', 'error', $this->prepareError($error));
+        RPC::call('movim_fill', 'error', $this->prepareError($error));
         RPC::call('MovimUtils.addClass', '#login_widget', 'error');
     }
 

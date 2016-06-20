@@ -38,7 +38,7 @@ class Avatar extends \Movim\Widget\Base
         $me = $packet->content;
         $html = $this->prepareForm($me);
 
-        RPC::call('MovimTpl.fill', 'avatar_form', $html);
+        RPC::call('movim_fill', 'avatar_form', $html);
         Notification::append(null, $this->__('avatar.updated'));
     }
 

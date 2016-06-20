@@ -92,7 +92,7 @@ class Groups extends \Movim\Widget\Base
     {
         $html = $this->prepareSubscriptions();
 
-        RPC::call('MovimTpl.fill', 'groups_widget', $html);
+        RPC::call('movim_fill', 'groups_widget', $html);
         RPC::call('Groups.refresh');
     }
 

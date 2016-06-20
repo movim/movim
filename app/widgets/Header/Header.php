@@ -8,7 +8,7 @@ class Header extends \Movim\Widget\Base
 
     static function fill($html)
     {
-        RPC::call('MovimTpl.fill', 'header', $html);
+        RPC::call('movim_fill', 'header', $html);
     }
 
     function ajaxReset($view)

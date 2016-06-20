@@ -10,6 +10,49 @@
  * Look at the comments for help.
  */
 
+// movim_append(div, text)
+function movim_append(id, html)
+{
+    target = document.getElementById(id);
+    if(target) {
+        target.insertAdjacentHTML('beforeend', html);
+    }
+}
+// movim_prepend(div, text)
+function movim_prepend(id, html)
+{
+    target = document.getElementById(id);
+    if(target) {
+        target.insertAdjacentHTML('afterbegin', html);
+    }
+}
+// movim_fill(div, text)
+function movim_fill(id, html)
+{
+    target = document.getElementById(id);
+    if(target) {
+        target.innerHTML = html;
+    }
+}
+// movim_delete(div)
+function movim_delete(id)
+{
+    target = document.getElementById(id);
+    if(target)
+        target.parentNode.removeChild(target);
+}
+// movim_replace(id)
+function movim_replace(id, html)
+{
+    target = document.getElementById(id);
+    if(target) {
+        var div = document.createElement('div');
+        div.innerHTML = html;
+        var element = div.firstChild;
+        replacedNode = target.parentNode.replaceChild(element, target);
+    }
+}
+
 var MovimTpl = {
     init : function() {
         if(document.getElementById('back') != null)
@@ -33,62 +76,10 @@ var MovimTpl = {
             }
         }*/
     },
-    append : function(selector, html) {
-        target = document.querySelector(selector);
-        if(target) {
-            target.insertAdjacentHTML('beforeend', html);
-        }
-    },
-    back : function() {
-        // If the contect menu is show
-        var cm = document.querySelector('ul.context_menu');
-        if(cm != null && cm.className.includes('shown')) {
-            MovimTpl.toggleContextMenu(document);
-            // If a drawer is show
-        } else if(Drawer.filled()) {
-            Drawer.clear();
-            // If a dialog box is show
-        } else if(Dialog.filled()) {
-            Dialog.clear();
-            // If the menu is shown
-        } else if(MovimUtils.hasClass('body > nav', 'active')) {
-            MovimUtils.toggleClass('body > nav', 'active');
-            // If the panel is shown
-        } else if(MovimTpl.isPanel()) {
-            MovimTpl.hidePanel();
-        } else {
-            window.history.back();
-        }
-    },
-    remove: function(id) {
-        target = document.getElementById(id);
-        if(target)
-            target.parentNode.removeChild(target);
-    },
-    replace: function(id, html) {
-        target = document.getElementById(id);
-        if(target) {
-            var div = document.createElement('div');
-            div.innerHTML = html;
-            var element = div.firstChild;
-            replacedNode = target.parentNode.replaceChild(element, target);
-        }
-    },
-    fill : function(selector, html) {
-        target = document.querySelector(selector);
-        if(target) {
-            target.innerHTML = html;
-        }
-    },
-    getHeaderColor : function() {
-        var header = document.querySelector('body main > header');
-        return window.getComputedStyle(header).backgroundColor;
-    },
-    hideContextMenu : function() {
-        MovimUtils.removeClass('ul.context_menu', 'shown');
-    },
-    hideMenu : function() {
-        MovimUtils.removeClass('body > nav', 'active');
+    showPanel : function() {
+        MovimUtils.addClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
+        MovimTpl.scrollPanelTop();
+        //MovimTpl.scrollHeaders();
     },
     hidePanel : function() {
         //Header_ajaxReset(CURRENT_PAGE);
@@ -100,6 +91,18 @@ var MovimTpl = {
         // Clear the right panel
         //if(inner != null) inner.innerHTML = '';
         //else document.querySelector(selector).innerHTML = '';
+    },
+    fill : function(selector, html) {
+        target = document.querySelector(selector);
+        if(target) {
+            target.innerHTML = html;
+        }
+    },
+    append : function(selector, html) {
+        target = document.querySelector(selector);
+        if(target) {
+            target.insertAdjacentHTML('beforeend', html);
+        }
     },
     isPanel : function() {
         if(MovimUtils.hasClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled')) {
@@ -115,15 +118,22 @@ var MovimTpl = {
             return (selector.scrollHeight - Math.floor(selector.scrollTop) <= selector.clientHeight + 3);
         }
     },
-    prepend: function(id, html)
-    {
-        target = document.getElementById(id);
-        if(target) {
-            target.insertAdjacentHTML('afterbegin', html);
+    scrollPanel : function() {
+        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
+
+        if(selector != null) {
+            selector.scrollTop = selector.scrollHeight;
         }
     },
-    toggleActionButton : function() {
-        MovimUtils.toggleClass('.button.action', 'active');
+    scrollPanelTop : function() {
+        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div');
+
+        if(selector != null) {
+            selector.scrollTop = 0;
+        }
+    },
+    toggleMenu : function() {
+        MovimUtils.toggleClass('body > nav', 'active');
     },
     toggleContextMenu : function(e) {
         var element = 'ul.context_menu';
@@ -141,29 +151,41 @@ var MovimTpl = {
         //if(!document.querySelector(element).contains(e.target))
         MovimUtils.removeClass(element, classname);
     },
-    toggleMenu : function() {
-        MovimUtils.toggleClass('body > nav', 'active');
+    toggleActionButton : function() {
+        MovimUtils.toggleClass('.button.action', 'active');
     },
-    scrollPanel : function() {
-        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
-
-        if(selector != null) {
-            selector.scrollTop = selector.scrollHeight;
+    hideContextMenu : function() {
+        MovimUtils.removeClass('ul.context_menu', 'shown');
+    },
+    hideMenu : function() {
+        MovimUtils.removeClass('body > nav', 'active');
+    },
+    back : function() {
+        // If the contect menu is show
+        var cm = document.querySelector('ul.context_menu');
+        if(cm != null && cm.className.includes('shown')) {
+            MovimTpl.toggleContextMenu(document);
+        // If a drawer is show
+        } else if(Drawer.filled()) {
+            Drawer.clear();
+        // If a dialog box is show
+        } else if(Dialog.filled()) {
+            Dialog.clear();
+        // If the menu is shown
+        } else if(MovimUtils.hasClass('body > nav', 'active')) {
+            MovimUtils.toggleClass('body > nav', 'active');
+        // If the panel is shown
+        } else if(MovimTpl.isPanel()) {
+            MovimTpl.hidePanel();
+        } else {
+            window.history.back();
         }
     },
-    scrollPanelTop : function() {
-        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div');
-
-        if(selector != null) {
-            selector.scrollTop = 0;
-        }
-    },
-    showPanel : function() {
-        MovimUtils.addClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
-        MovimTpl.scrollPanelTop();
-        //MovimTpl.scrollHeaders();
+    getHeaderColor : function() {
+        var header = document.querySelector('body main > header');
+        return window.getComputedStyle(header).backgroundColor;
     }
-};
+}
 
 movim_add_onload(function() {
     MovimTpl.init();

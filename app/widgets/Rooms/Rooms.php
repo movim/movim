@@ -65,7 +65,7 @@ class Rooms extends \Movim\Widget\Base
 
     private function refreshRooms()
     {
-        RPC::call('MovimTpl.fill', 'rooms_widget', $this->prepareRooms());
+        RPC::call('movim_fill', 'rooms_widget', $this->prepareRooms());
         RPC::call('Rooms.refresh');
     }
 
