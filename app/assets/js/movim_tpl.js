@@ -24,14 +24,14 @@ var MovimTpl = {
         }
     },
     back : function() {
-        // If the contect menu is show
+        // If the contect menu is shown
         var cm = document.querySelector('ul.context_menu');
         if(cm != null && cm.className.includes('shown')) {
             MovimTpl.toggleContextMenu(document);
-            // If a drawer is show
+            // If a drawer is shown
         } else if(Drawer.filled()) {
             Drawer.clear();
-            // If a dialog box is show
+            // If a dialog box is shown
         } else if(Dialog.filled()) {
             Dialog.clear();
             // If the menu is shown
@@ -72,11 +72,7 @@ var MovimTpl = {
         //else document.querySelector(selector).innerHTML = '';
     },
     isPanel: function() {
-        if(MovimUtils.hasClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled')) {
-            return true;
-        } else {
-            return false;
-        }
+        return MovimUtils.hasClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
     },
     isPanelScrolled: function() {
         var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
@@ -85,19 +81,19 @@ var MovimTpl = {
             return (selector.scrollHeight - Math.floor(selector.scrollTop) <= selector.clientHeight + 3);
         }
     },
-    prepend: function(id, html) {
-        target = document.getElementById(id);
+    prepend: function(selector, html) {
+        target = document.querySelector(selector);
         if(target) {
             target.insertAdjacentHTML('afterbegin', html);
         }
     },
-    remove: function(id) {
-        target = document.getElementById(id);
+    remove: function(selector) {
+        target = document.querySelector(selector);
         if(target)
             target.parentNode.removeChild(target);
     },
-    replace: function (id, html) {
-        target = document.getElementById(id);
+    replace: function (selector, html) {
+        target = document.querySelector(selector);
         if(target) {
             var div = document.createElement('div');
             div.innerHTML = html;
@@ -122,7 +118,6 @@ var MovimTpl = {
     showPanel : function() {
         MovimUtils.addClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
         MovimTpl.scrollPanelTop();
-        //MovimTpl.scrollHeaders();
     },
     toggleActionButton : function() {
         MovimUtils.toggleClass('.button.action', 'active');

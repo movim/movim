@@ -37,8 +37,8 @@ var Chats = {
         }
     },
     prepend: function(from, html) {
-        MovimTpl.remove(from + '_chat_item');
-        MovimTpl.prepend('chats_widget_list', html);
+        MovimTpl.remove('#' + from + '_chat_item');
+        MovimTpl.prepend('#chats_widget_list', html);
         Chats.refresh();
         Notification_ajaxGet();
     }

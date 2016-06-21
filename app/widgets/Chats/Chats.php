@@ -42,7 +42,7 @@ class Chats extends \Movim\Widget\Base
             $c = $contacts[0];
             $chats = Cache::c('chats');
             if(is_array($chats) &&  array_key_exists($c->jid, $chats)) {
-                RPC::call('MovimTpl.replace', $c->jid.'_chat_item', $this->prepareChat($c->jid));
+                RPC::call('MovimTpl.replace', '#' . $c->jid.'_chat_item', $this->prepareChat($c->jid));
                 RPC::call('Chats.refresh');
 
                 $n = new Notification;
@@ -70,7 +70,7 @@ class Chats extends \Movim\Widget\Base
             $jid = $from;
         }
 
-        RPC::call('MovimTpl.replace', $jid.'_chat_item', $this->prepareChat($jid, $message));
+        RPC::call('MovimTpl.replace', '#' . $jid.'_chat_item', $this->prepareChat($jid, $message));
         RPC::call('Chats.refresh');
     }
 
