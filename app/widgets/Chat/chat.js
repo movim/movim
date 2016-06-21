@@ -122,6 +122,10 @@ var Chat = {
                     }
                 }
             }
+            // Only scroll down if scroll was at the bottom before the new msg
+            // => don't scroll if the user was reading previous messages
+            if(MovimTpl.isPanelScrolled() && prepend !== true)
+                MovimTpl.scrollPanel();
             Chat.edit = false;
         }
     },
@@ -228,7 +232,6 @@ var Chat = {
             if (!mergeMsg) {
                 movim_append(id, bubble.outerHTML);
             }
-            MovimTpl.scrollPanel();
         }
     },
     getStickerHtml: function(sticker) {
