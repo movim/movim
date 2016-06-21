@@ -379,11 +379,12 @@ class Chat extends \Movim\Widget\Base
             foreach($messages as $message) {
                 if(!preg_match('#^\?OTR#', $message->body)) {
                     //RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
-                    $this->_msgMap[$message->published.$message->jid] = $message;
+                    //$this->_msgMap[$message->published.$message->jid] = $message;
+                    $this->prepareMessage($message);
                 }
             }
-            foreach($this->_msgMap as $message)
-                $this->prepareMessage($message);
+            //foreach($this->_msgMap as $message)
+            //    $this->prepareMessage($message);
             RPC::call('Chat.appendMessagesWrapper', $this->_wrapper, true);
             $this->_wrapper = array();
 
@@ -517,11 +518,12 @@ class Chat extends \Movim\Widget\Base
         if(is_array($messages)) {
             $messages = array_reverse($messages);
 
-            foreach($messages as $message) {
+            /*foreach($messages as $message) {
                 $this->_msgMap[$message->published.$message->jid] = $message;
             }
 
-            foreach($this->_msgMap as $message) {
+            foreach($this->_msgMap as $message) {*/
+            foreach($messages as $message) {
                 $this->prepareMessage($message);
             }
         }
