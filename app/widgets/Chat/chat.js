@@ -108,6 +108,7 @@ var Chat = {
     },
     appendMessagesWrapper : function(page, prepend) {
         if(page) {
+            var scrolled = MovimTpl.isPanelScrolled();
             Chat.lastDate = null;
             for(date in page) {
                 if (page[date].constructor == Array) { //groupchat
@@ -122,6 +123,10 @@ var Chat = {
                     }
                 }
             }
+            // Only scroll down if scroll was at the bottom before the new msg
+            // => don't scroll if the user was reading previous messages
+            if(scrolled && prepend !== true)
+                MovimTpl.scrollPanel();
             Chat.edit = false;
         }
     },
@@ -135,7 +140,7 @@ var Chat = {
         if(prepend) {
             refBubble = document.querySelector("#chat_widget .contained li:first-child");
             msgStack = document.querySelector("[data-bubble='" + jidtime + "']");
-        } else {
+        } else {
             refBubble = document.querySelector("#chat_widget .contained li:last-child");
             var stack = document.querySelectorAll("[data-bubble='" + jidtime + "']");
             msgStack = stack[stack.length-1];
@@ -163,7 +168,7 @@ var Chat = {
         var span = msg.getElementsByTagName('span')[0];
         var p = msg.getElementsByTagName('p')[0];
         for(var i = 0, len = data.length; i < len; ++i) {
-            //if there is already a msg in this bubble, create another div (next msg or replacement)
+            // If there is already a msg in this bubble, create another div (next msg or replacement)
             if (bubble.querySelector('div.bubble p')
             && bubble.querySelector('div.bubble p').innerHTML != "") {
                 msg = document.createElement("div");
@@ -174,7 +179,7 @@ var Chat = {
 
             if (data[i].body.match(/^\/me\s/)) {
                 p.className = 'quote';
-                // remove "/me " from beginning of body
+                // Remove "/me " from beginning of body
                 data[i].body = data[i].body.substr(4);
             }
             if (data[i].id != null) {
@@ -228,7 +233,6 @@ var Chat = {
             if (!mergeMsg) {
                 movim_append(id, bubble.outerHTML);
             }
-            MovimTpl.scrollPanel();
         }
     },
     getStickerHtml: function(sticker) {
