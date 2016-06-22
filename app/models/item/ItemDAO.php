@@ -97,27 +97,6 @@ class ItemDAO extends SQL {
         return $this->run('Server');
     }
 
-    function getConferenceServers() {
-        $this->_sql = '
-            select server, count(node) as number
-            from item
-            where node not like :node
-            and node = :name
-            group by server
-            order by number desc';
-
-        $this->prepare(
-            'Item',
-            array(
-                'node' => 'urn:xmpp:microblog:0:comments%',
-                // It's a hack to affect an empty string
-                'name' => ''
-            )
-        );
-
-        return $this->run('Server');
-    }
-
     function getGroupServers() {
         $this->_sql = '
             select server, count(item.node) as number, caps.name
@@ -188,6 +167,24 @@ class ItemDAO extends SQL {
         );
 
         return $this->run('Item');
+    }
+
+    function getConference($server) {
+        $this->_sql = '
+            select item.* from item
+            join caps on caps.node = item.jid
+            where server = :server
+            and category = \'conference\'
+            and type = \'text\'';
+
+        $this->prepare(
+            'Item',
+            array(
+                'server' => $server
+            )
+        );
+
+        return $this->run('Item', 'item');
     }
 
     function getUpload($server) {
