@@ -100,11 +100,8 @@ class Chat extends \Movim\Widget\Base
             $n = new Notification;
             $n->ajaxClear('chat|'.$from);
         }
-
         if(!preg_match('#^\?OTR#', $message->body)) {
-            //RPC::call('Chat.appendMessage', $this->prepareMessage($message));
-            RPC::call('Chat.appendMessagesWrapper', $this->prepareMessage($message));
-            //RPC::call('Chat.cleanBubbles');
+            RPC::call('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
     }
 
@@ -554,12 +551,15 @@ class Chat extends \Movim\Widget\Base
         RPC::call('MovimTpl.scrollPanel');
     }
 
-    function prepareMessage(&$message)
+    function prepareMessage(&$message, $jid=null)
     {
+        if($jid != $message->jidto && $jid != $message->jidfrom && $jid != null)
+            return $this->_wrapper;
+
         $message->jidto = echapJS($message->jidto);
         $message->jidfrom = echapJS($message->jidfrom);
 
-        if(isset($message->html)) {
+        if (isset($message->html)) {
             $message->body = $message->html;
         } else {
             // We add some smileys...
@@ -568,17 +568,17 @@ class Chat extends \Movim\Widget\Base
             //    $message->body = prepareString(htmlentities($message->body , ENT_COMPAT,'UTF-8'));
         }
 
-        if(isset($message->sticker)) {
+        if (isset($message->sticker)) {
             $p = new Picture;
             $sticker = $p->get($message->sticker, false, false, 'png');
             $stickerSize = $p->getSize();
 
-            if($sticker == false) {
+            if ($sticker == false) {
                 $r = new Request;
                 $r->setTo($message->jidfrom)
-                  ->setResource($message->resource)
-                  ->setCid($message->sticker)
-                  ->request();
+                    ->setResource($message->resource)
+                    ->setCid($message->sticker)
+                    ->request();
             } else {
                 $message->sticker = [
                     'url' => $sticker,
@@ -591,38 +591,38 @@ class Chat extends \Movim\Widget\Base
 
         $message->publishedPrepared = prepareDate(strtotime($message->published), true);
 
-        if($message->delivered) {
+        if ($message->delivered) {
             $message->delivered = prepareDate(strtotime($message->delivered), true);
         }
 
         $date = substr($message->published, 0, 10);
 
-        if($message->type == 'groupchat') {
-            $message->color = stringToColor($message->session.$message->resource.$message->jidfrom.$message->type);
+        if ($message->type == 'groupchat') {
+            $message->color = stringToColor($message->session . $message->resource . $message->jidfrom . $message->type);
 
             //fillup $wrapper
-            if($message->body != "") {
+            if ($message->body != "") {
                 if (!array_key_exists($date, $this->_wrapper))
                     $this->_wrapper[$date] = array($message);
                 else
                     array_push($this->_wrapper[$date], $message);
             }
         } else {
-            $msgkey = $message->jidfrom . '>' .substr($message->published, 11, 5);
+            $msgkey = $message->jidfrom . '>' . substr($message->published, 11, 5);
             //fillup $wrapper
-            if(!array_key_exists($date, $this->_wrapper)){
+            if (!array_key_exists($date, $this->_wrapper)) {
                 $this->_wrapper[$date] = array('0<' . $msgkey => array($message));
-            }
-            else { //date contains at least one speaker@time=>msg already
+            } else { //date contains at least one speaker@time=>msg already
                 end($this->_wrapper[$date]);
                 $lastkey = key($this->_wrapper[$date]);
-                if(substr($lastkey, strpos($lastkey, '<')+1) == $msgkey // same jidfrom, same min
+                if (substr($lastkey, strpos($lastkey, '<') + 1) == $msgkey // same jidfrom, same min
                     && !isset($message->sticker) // this msg is not a sticker
-                    && strpos($lastkey, "sticker<") === false) // the previous msg was not a sticker
+                    && strpos($lastkey, "sticker<") === false
+                ) // the previous msg was not a sticker
                     array_push($this->_wrapper[$date][$lastkey], $message);
                 else {
                     $sticker = "";
-                    if(isset($message->sticker))
+                    if (isset($message->sticker))
                         $sticker = "sticker";
                     $this->_wrapper[$date][count($this->_wrapper[$date]) . $sticker . '<' . $msgkey] = array($message);
                 }
