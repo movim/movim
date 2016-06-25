@@ -81,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 08:36+0200\n"
+"POT-Creation-Date: 2016-06-25 19:30+0200\n"
 "PO-Revision-Date: 2015-12-29 12:43+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -650,12 +650,16 @@ msgstr "主题"
 msgid "Subject changed"
 msgstr "主题已改变"
 
+#: [chatroom]administration [page]administration
+msgid "Administration"
+msgstr "管理"
+
 #: [chats]empty_title
 msgid "No chats yet..."
 msgstr "尚无对话"
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
+msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -1558,7 +1562,8 @@ msgid "No contacts ?"
 msgstr "没联系人"
 
 #: [roster]no_contacts_text
-msgid "You can add one using the + button bellow"
+#, fuzzy
+msgid "You can add one using the + button below"
 msgstr "你可以使用下面的加号按钮来添加一个"
 
 #: [roster]show_hide
@@ -1712,7 +1717,7 @@ msgstr "公开您的档案么?"
 
 #: [privacy]privacy_info
 #, fuzzy
-msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr "请注意！公开您的档案，上面列出的所有信息将对Movim的所有用户和整个互联网公开"
 
 #: [save]submit [button]submit
@@ -1730,10 +1735,6 @@ msgstr "您的浏览器没有开启javascript，请排查一下"
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr ""
-
-#: [page]administration
-msgid "Administration"
-msgstr "管理"
 
 #: [page]home
 msgid "Home"

@@ -77,7 +77,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 08:36+0200\n"
+"POT-Creation-Date: 2016-06-25 19:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -657,13 +657,17 @@ msgstr ""
 msgid "Subject changed"
 msgstr ""
 
+#: [chatroom]administration [page]administration
+msgid "Administration"
+msgstr ""
+
 #: [chats]empty_title
 msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
 msgid ""
-"Open a new conversation by clicking on the %s button bellow or visit the "
+"Open a new conversation by clicking on the %s button below or visit the "
 "%sContacts%s page."
 msgstr ""
 
@@ -1589,7 +1593,7 @@ msgid "No contacts ?"
 msgstr ""
 
 #: [roster]no_contacts_text
-msgid "You can add one using the + button bellow"
+msgid "You can add one using the + button below"
 msgstr ""
 
 #: [roster]show_hide
@@ -1745,7 +1749,7 @@ msgstr ""
 #: [privacy]privacy_info
 msgid ""
 "Please pay attention ! By making your profile public, all the information "
-"listed bellow will be available for all the Movim users and on the whole "
+"listed below will be available for all the Movim users and on the whole "
 "Internet."
 msgstr ""
 
@@ -1765,10 +1769,6 @@ msgstr ""
 msgid ""
 "Movim is a kickass distributed social networking platform that protect your "
 "privacy an comes with a set of awesome features."
-msgstr ""
-
-#: [page]administration
-msgid "Administration"
 msgstr ""
 
 #: [page]home

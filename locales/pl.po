@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 08:36+0200\n"
+"POT-Creation-Date: 2016-06-25 19:30+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
@@ -648,12 +648,16 @@ msgstr "Temat"
 msgid "Subject changed"
 msgstr "Temat zmieniony"
 
+#: [chatroom]administration [page]administration
+msgid "Administration"
+msgstr "Administracja"
+
 #: [chats]empty_title
 msgid "No chats yet..."
 msgstr "Chwilowo brak czatów..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
+msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -1554,7 +1558,8 @@ msgid "No contacts ?"
 msgstr "Brak kontaktów ?"
 
 #: [roster]no_contacts_text
-msgid "You can add one using the + button bellow"
+#, fuzzy
+msgid "You can add one using the + button below"
 msgstr "Możesz dodać jakieś klikając na przycisk + poniżej"
 
 #: [roster]show_hide
@@ -1706,7 +1711,7 @@ msgid "Is this profile public ?"
 msgstr "Czy ten profil jest publiczny ?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -1724,10 +1729,6 @@ msgstr "Nie masz włączonego javascript.  Zatem powodzenia."
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr "Movim jest zajefajną platformą sieci społecznościowej, która dba o twoją prywatność i posiada wiele fajnych funkcji."
-
-#: [page]administration
-msgid "Administration"
-msgstr "Administracja"
 
 #: [page]home
 msgid "Home"
