@@ -69,7 +69,7 @@ class Contact extends \Movim\Widget\Base
             $tpl->assign('contactr', $cr);
         }
 
-        $c  = $cd->get($jid, true);
+        $c  = $cd->get($jid);
         $tpl->assign('contact', $c);
 
         Drawer::fill($tpl->draw('_contact_drawer', true));
