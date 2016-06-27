@@ -127,10 +127,10 @@ var Chat = {
             // => don't scroll if the user was reading previous messages
             if(scrolled && prepend !== true)
                 MovimTpl.scrollPanel();
-            Chat.edit = false;
         }
     },
     appendSpeaker : function(idjidtime, data, prepend) {
+    console.log(data);
         var bubble = null,
             mergeMsg = false,
             msgStack,
