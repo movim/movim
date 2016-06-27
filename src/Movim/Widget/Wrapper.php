@@ -77,7 +77,7 @@ class Wrapper
             $path = APP_PATH . "widgets/$name/$name.php";
         }
         else {
-            throw new Exception(
+            throw new \Exception(
                 __('error.widget_load_error', $name));
         }
 
