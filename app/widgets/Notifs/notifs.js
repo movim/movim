@@ -1,7 +1,3 @@
-/*function showNotifsList() {
-    movim_toggle_class('#notifslist', 'show');
-}*/
-
 var Notifs = {
     lswidget : localStorage.getItem('username').replace('@', 'at') + '_Notifs',
 
@@ -10,7 +6,7 @@ var Notifs = {
         var i = 0;
         while(i < items.length)
         {
-            items[i].onclick = function(e) {
+            /*items[i].onclick = function(e) {
                 MovimTpl.showPanel();
                 Contact_ajaxGetContact(this.dataset.jid);
                 MovimUtils.removeClassInList('active', items);
@@ -19,7 +15,7 @@ var Notifs = {
 
             items[i].querySelector('span.control.icon').onclick = function(e) {
                 Notifs_ajaxAsk(this.dataset.jid);
-            };
+            };*/
             i++;
         }
 

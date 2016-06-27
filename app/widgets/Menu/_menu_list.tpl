@@ -33,7 +33,7 @@
         {$attachments = $value->getAttachments()}
         <li
             tabindex="{$page*$paging+$key+1}"
-            class="block large condensed "
+            class="block large"
             data-id="{$value->nodeid}"
             data-server="{$value->origin}"
             data-node="{$value->node}"
