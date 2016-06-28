@@ -31,6 +31,29 @@
     </header>
 
     <ul class="list middle">
+        {if="$caps"}
+            <li class="block">
+                <span class="primary icon gray">
+                    <i class="zmdi
+                        {if="$caps->type == 'handheld' || $caps->type == 'phone'"}
+                            zmdi-smartphone-android
+                        {elseif="$caps->type == 'bot'"}
+                            zmdi-memory
+                        {else}
+                            zmdi-laptop
+                        {/if}
+                    ">
+                    </i>
+                </span>
+                <p class="normal line">
+                    {$caps->name}
+                    {if="isset($clienttype[$caps->type])"}
+                        - {$clienttype[$caps->type]}
+                    {/if}
+                </p>
+            </li>
+        {/if}
+
         {if="$contact->fn != null"}
         <li>
             <span class="primary icon gray">{$contact->fn|firstLetterCapitalize}</span>

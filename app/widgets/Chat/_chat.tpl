@@ -65,11 +65,7 @@
                 <i class="zmdi zmdi-close"></i>
             </span>
             <p class="line">
-                {if="$contact != null"}
-                    {$contact->getTrueName()}
-                {else}
-                    {$jid|echapJS}
-                {/if}
+                {$contact->getTrueName()}
             </p>
             <p class="line" id="{$jid}_state">{$contact->jid}</p>
         </li>

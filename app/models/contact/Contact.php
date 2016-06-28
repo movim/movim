@@ -514,7 +514,8 @@ class PresenceContact extends Contact {
 
 }
 
-class RosterContact extends Contact {
+class RosterContact extends Contact
+{
     protected $rostername;
     protected $groupname;
     protected $status;
@@ -532,7 +533,8 @@ class RosterContact extends Contact {
     protected $category;
     //protected $type;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->_struct = "
         {
@@ -572,7 +574,8 @@ class RosterContact extends Contact {
     }
 
     // This method is only use on the connection
-    public function setPresence($p) {
+    public function setPresence($p)
+    {
         $this->resource         = $p->resource;
         $this->value            = $p->value;
         $this->status           = $p->status;
@@ -582,5 +585,16 @@ class RosterContact extends Contact {
         $this->muc              = $p->muc;
         $this->mucaffiliation   = $p->mucaffiliation;
         $this->mucrole          = $p->mucrole;
+    }
+
+    public function getCaps()
+    {
+        if(!empty($this->node)
+        && !empty($this->ver)) {
+            $node = $this->node.'#'.$this->ver;
+
+            $cad = new \Modl\CapsDAO();
+            return $cad->get($node);
+        }
     }
 }

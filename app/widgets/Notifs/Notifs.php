@@ -1,22 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Notifs.php
- * This file is part of MOVIM.
- *
- * @brief The notification widget
- *
- * @author Timothée Jaussoin <edhelas@gmail.com>
- *
- * @version 1.0
- * @date 16 juin 2011
- *
- * Copyright (C)2010 MOVIM project
- *
- * See COPYING for licensing information.
- */
 use Moxl\Xec\Action\Presence\Subscribed;
 use Moxl\Xec\Action\Presence\Unsubscribed;
 use Moxl\Xec\Action\Roster\AddItem;
@@ -41,7 +24,6 @@ class Notifs extends \Movim\Widget\Base
     {
         $html = $this->prepareNotifs();
         RPC::call('movim_fill', 'notifs_widget', $html);
-        RPC::call('Notifs.refresh');
 
         if(is_string($from)) {
             $cd = new \Modl\ContactDAO;
@@ -49,7 +31,13 @@ class Notifs extends \Movim\Widget\Base
 
             $avatar = $contact->getPhoto('s');
             if($avatar == false) $avatar = null;
-            Notification::append('invite|'.$from, $contact->getTrueName(), $this->__('notifs.wants_to_talk', $contact->getTrueName()), $avatar, 4);
+
+            Notification::append(
+                'invite|'.$from, $contact->getTrueName(),
+                $this->__('notifs.wants_to_talk',
+                $contact->getTrueName()),
+                $avatar,
+                4);
         }
     }
 
@@ -82,13 +70,6 @@ class Notifs extends \Movim\Widget\Base
         $nft->assign('invitations', $invitations);
         $nft->assign('contacts', $contacts);
         return $nft->draw('_notifs_from', true);
-    }
-
-    function ajaxAsk($jid)
-    {
-        $view = $this->tpl();
-        $view->assign('jid', $jid);
-        Dialog::fill($view->draw('_notifs_confirm', true));
     }
 
     function ajaxAccept($jid)
