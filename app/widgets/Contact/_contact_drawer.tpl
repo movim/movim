@@ -39,6 +39,8 @@
                             zmdi-smartphone-android
                         {elseif="$caps->type == 'bot'"}
                             zmdi-memory
+                        {elseif="$caps->type == 'web'"}
+                            zmdi-globe-alt
                         {else}
                             zmdi-laptop
                         {/if}
@@ -47,8 +49,10 @@
                 </span>
                 <p class="normal line">
                     {$caps->name}
+                </p>
+                <p class="line">
                     {if="isset($clienttype[$caps->type])"}
-                        - {$clienttype[$caps->type]}
+                        {$clienttype[$caps->type]}
                     {/if}
                 </p>
             </li>
