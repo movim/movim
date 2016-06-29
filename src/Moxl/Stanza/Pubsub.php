@@ -30,7 +30,8 @@ class Pubsub {
     static function createPersistentStorage($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $pubsub = $dom->createElement('pubsub');
+        $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
         $create = $dom->createElement('create');
         $create->setAttribute('node', $node);
         $pubsub->appendChild($create);
@@ -38,28 +39,29 @@ class Pubsub {
         $configure = $dom->createElement('configure');
         $pubsub->appendChild($configure);
 
-        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x = $dom->createElement('x');
+        $x->setAttribute('jabber:x:data');
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'FORM_TYPE');
         $field->setAttribute('type', 'hidden');
-        $configure->appendChild($field);
+        $x->appendChild($field);
 
         $value = $dom->createElement('value', 'http://jabber.org/protocol/pubsub#node_config');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#persist_items');
-        $configure->appendChild($field);
+        $x->appendChild($field);
 
         $value = $dom->createElement('value', 'true');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#access_model');
-        $configure->appendChild($field);
+        $x->appendChild($field);
 
         $value = $dom->createElement('value', 'whitelist');
         $field->appendChild($value);
@@ -70,7 +72,8 @@ class Pubsub {
     static function configurePersistentStorage($to, $node, $access_model = 'whitelist')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $pubsub = $dom->createElement('pubsub');
+        $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
         $create = $dom->createElement('create');
         $create->setAttribute('node', $node);
         $pubsub->appendChild($create);
@@ -78,21 +81,22 @@ class Pubsub {
         $configure = $dom->createElement('configure');
         $pubsub->appendChild($configure);
 
-        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x = $dom->createElement('x');
+        $x->setAttribute('jabber:x:data');
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'FORM_TYPE');
         $field->setAttribute('type', 'hidden');
-        $configure->appendChild($field);
+        $x->appendChild($field);
 
         $value = $dom->createElement('value', 'http://jabber.org/protocol/pubsub#node_config');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#persist_items');
-        $configure->appendChild($field);
+        $x->appendChild($field);
 
         $value = $dom->createElement('value', 'true');
         $field->appendChild($value);
@@ -101,7 +105,7 @@ class Pubsub {
 
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#access_model');
-        $configure->appendChild($field);
+        $x->appendChild($field);
 
         $value = $dom->createElement('value', $access_model);
         $field->appendChild($value);
