@@ -40,7 +40,7 @@ class Pubsub {
         $pubsub->appendChild($configure);
 
         $x = $dom->createElement('x');
-        $x->setAttribute('jabber:x:data');
+        $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
@@ -82,7 +82,7 @@ class Pubsub {
         $pubsub->appendChild($configure);
 
         $x = $dom->createElement('x');
-        $x->setAttribute('jabber:x:data');
+        $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 
