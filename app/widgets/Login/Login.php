@@ -240,15 +240,17 @@ class Login extends \Movim\Widget\Base
 
         $cd = new \Modl\ContactDAO;
 
-        foreach($sessions as $s) {
-            $c = $cd->get($s);
+        if(is_array($sessions)) {
+            foreach($sessions as $s) {
+                $c = $cd->get($s);
 
-            if($c != null) {
-                array_push($sessions_grabbed, $c);
-            } else {
-                $c = new \Modl\Contact;
-                $c->jid = $s;
-                array_push($sessions_grabbed, $c);
+                if($c != null) {
+                    array_push($sessions_grabbed, $c);
+                } else {
+                    $c = new \Modl\Contact;
+                    $c->jid = $s;
+                    array_push($sessions_grabbed, $c);
+                }
             }
         }
 
