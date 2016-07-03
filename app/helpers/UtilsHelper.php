@@ -1,5 +1,6 @@
 <?php
 
+use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
 
