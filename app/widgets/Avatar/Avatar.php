@@ -1,20 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Avatar.php
- * This file is part of Movim.
- *
- * @brief A widget which display all the infos of a contact, vcard 4 version
- *
- * @author Timothée    Jaussoin <edhelas_at_gmail_dot_com>
-
- * Copyright (C)2013 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
 use forxer\Gravatar\Gravatar;

@@ -1,20 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Statistics.php
- * This file is part of MOVIM.
- *
- * @brief The administration widget.
- *
- * @author Timothée Jaussoin <edhelas@gmail.com>
- * *
- * Copyright (C)2014 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 class Api extends \Movim\Widget\Base {
     function load()
     {

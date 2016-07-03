@@ -1,23 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Logout.php
- * This file is part of MOVIM.
- *
- * @brief The little logout widget.
- *
- * @author Guillaume Pasquet <etenil@etenilsrealm.nl>
- *
- * @version 1.0
- * @date 20 October 2010
- *
- * Copyright (C)2010 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 use Moxl\Xec\Action\Presence\Chat;
 use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\DND;
