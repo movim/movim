@@ -31,10 +31,10 @@
             <span class="control icon gray active" onclick="Contact_ajaxGetContact('{$value->jid}');">
                 <i class="zmdi zmdi-account"></i>
             </span>
-            <p class="line">
-                {$value->getTrueName()}
+            <p class="line normal">
+                {$c->__('notifs.wants_to_talk', $value->getTrueName())}
             </p>
-            <p class="line">{$c->__('notifs.wants_to_talk', $jid)}</p>
+            <p>{$value->jid}</p>
         </li>
         {/if}
     {/loop}
