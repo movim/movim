@@ -195,22 +195,18 @@ class Login extends \Movim\Widget\Base
 
         $s = Session::start();
 
-        // We try to get the domain
-        $domain = \Moxl\Utils::getDomain($host);
-
-        // We launch the XMPP socket
-        RPC::call('register', $host);
-
         // We create a new session or clear the old one
         $s->set('password', $password);
         $s->set('username', $username);
         $s->set('host', $host);
-        $s->set('domain', $domain);
         $s->set('jid', $login);
         $s->set('hash', sha1($username.$password.$host));
 
         $s = Sessionx::start();
-        $s->init($username, $password, $host, $domain);
+        $s->init($username, $password, $host, $host);
+
+        // We launch the XMPP socket
+        RPC::call('register', $host);
 
         \Moxl\Stanza\Stream::init($host);
     }
