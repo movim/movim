@@ -3,17 +3,13 @@
 namespace modl;
 
 class SessionxDAO extends SQL {
-    function init(Sessionx $s) {
+    function init(Sessionx $s) {\movim_log($s->start);
         $this->_sql = '
             update sessionx
             set username    = :username,
                 hash        = :hash,
                 resource    = :resource,
-                rid         = :rid,
-                id          = :id,
-                port        = :port,
                 host        = :host,
-                domain      = :domain,
                 config      = :config,
                 active      = :active,
                 start       = :start,
@@ -27,11 +23,7 @@ class SessionxDAO extends SQL {
                 'username'  => $s->username,
                 'hash'      => $s->hash,
                 'resource'  => $s->resource,
-                'rid'       => $s->rid,
-                'id'        => $s->id,
-                'port'      => $s->port,
                 'host'      => $s->host,
-                'domain'    => $s->domain,
                 'config'    => $s->config,
                 'active'    => $s->active,
                 'start'     => $s->start,
@@ -48,11 +40,7 @@ class SessionxDAO extends SQL {
                  username,
                  hash,
                  resource,
-                 rid,
-                 id,
-                 port,
                  host,
-                 domain,
                  config,
                  active,
                  start,
@@ -62,11 +50,7 @@ class SessionxDAO extends SQL {
                  :username,
                  :hash,
                  :resource,
-                 :rid,
-                 :id,
-                 :port,
                  :host,
-                 :domain,
                  :config,
                  :active,
                  :start,
@@ -79,11 +63,7 @@ class SessionxDAO extends SQL {
                     'username'  => $s->username,
                     'hash'      => $s->hash,
                     'resource'  => $s->resource,
-                    'rid'       => $s->rid,
-                    'id'        => $s->id,
-                    'port'      => $s->port,
                     'host'      => $s->host,
-                    'domain'    => $s->domain,
                     'config'    => $s->config,
                     'active'    => $s->active,
                     'start'     => $s->start,
@@ -146,82 +126,6 @@ class SessionxDAO extends SQL {
         );
 
         return $this->run('Sessionx', 'item');
-    }
-
-    function getId($session) {
-        $this->_sql = '
-            select id from sessionx
-            where
-                session = :session';
-
-        $this->prepare(
-            'Sessionx',
-            array(
-                'session' => $session
-            )
-        );
-
-        $value = $this->run(null, 'array');
-        $value = $value[0]['id'];
-
-        $this->_sql = '
-            update sessionx
-            set
-                id          = :id,
-                timestamp   = :timestamp
-            where
-                session = :session';
-
-        $this->prepare(
-            'Sessionx',
-            array(
-                'session'   => $session,
-                'id'        => $value+1,
-                'timestamp' => date(DATE_ISO8601)
-            )
-        );
-
-        $this->run();
-
-        return $value;
-    }
-
-    function getRid($session) {
-        $this->_sql = '
-            select rid from sessionx
-            where
-                session = :session';
-
-        $this->prepare(
-            'Sessionx',
-            array(
-                'session' => $session
-            )
-        );
-
-        $value = $this->run(null, 'array');
-        $value = $value[0]['rid'];
-
-        $this->_sql = '
-            update sessionx
-            set
-                rid         = :rid,
-                timestamp   = :timestamp
-            where
-                session = :session';
-
-        $this->prepare(
-            'Sessionx',
-            array(
-                'session' => $session,
-                'rid' => $value+1,
-                'timestamp' => date(DATE_ISO8601)
-            )
-        );
-
-        $this->run();
-
-        return $value;
     }
 
     function delete($session) {

@@ -7,11 +7,7 @@ class Sessionx extends Model {
     public $username;
     public $hash;
     public $resource;
-    public $rid;
-    public $id;
-    public $port;
     public $host;
-    public $domain;
     public $config;
     public $active;
     public $start;
@@ -28,15 +24,7 @@ class Sessionx extends Model {
                 {"type":"string", "size":64 },
             "resource" :
                 {"type":"string", "size":16 },
-            "rid" :
-                {"type":"int",    "size":8,   "mandatory":true },
-            "id" :
-                {"type":"int",    "size":8,   "mandatory":true },
-            "port" :
-                {"type":"int",    "size":5,   "mandatory":true },
             "host" :
-                {"type":"string", "size":64,  "mandatory":true },
-            "domain" :
                 {"type":"string", "size":64,  "mandatory":true },
             "config" :
                 {"type":"text" },

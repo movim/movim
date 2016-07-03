@@ -203,7 +203,7 @@ class Login extends \Movim\Widget\Base
         $s->set('hash', sha1($username.$password.$host));
 
         $s = Sessionx::start();
-        $s->init($username, $password, $host, $host);
+        $s->init($username, $password, $host);
 
         // We launch the XMPP socket
         RPC::call('register', $host);
