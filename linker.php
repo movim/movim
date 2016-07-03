@@ -76,6 +76,10 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                     $evt->runEvent('session_up');
                 } elseif($msg->func == 'unregister') {
                     \Moxl\Stanza\Stream::end();
+                    $loop->addPeriodicTimer(5, function() use(&$conn, $loop) {
+                        $conn->close();
+                        $loop->stop();
+                    });
                 } elseif($msg->func == 'register') {
                     if(isset($conn)
                     && is_resource($conn->stream)) {
