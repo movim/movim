@@ -8,7 +8,6 @@ class Sessionx extends Model {
     public $hash;
     public $resource;
     public $rid;
-    public $sid;
     public $id;
     public $port;
     public $host;
@@ -17,7 +16,6 @@ class Sessionx extends Model {
     public $active;
     public $start;
     public $timestamp;
-    public $mechanism;
 
     public function __construct() {
         $this->_struct = '
@@ -32,8 +30,6 @@ class Sessionx extends Model {
                 {"type":"string", "size":16 },
             "rid" :
                 {"type":"int",    "size":8,   "mandatory":true },
-            "sid" :
-                {"type":"string", "size":64 },
             "id" :
                 {"type":"int",    "size":8,   "mandatory":true },
             "port" :
@@ -49,9 +45,7 @@ class Sessionx extends Model {
             "start" :
                 {"type":"date" },
             "timestamp" :
-                {"type":"date" },
-            "mechanism" :
-                {"type":"string", "size":16 }
+                {"type":"date" }
         }';
 
         parent::__construct();

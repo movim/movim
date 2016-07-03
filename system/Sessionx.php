@@ -13,14 +13,12 @@ class Sessionx {
     private         $_password;
     private         $_resource;
     private         $_hash;
-    private         $_sid;
     private         $_port;
     private         $_host;
     private         $_domain;
     private         $_start;
     private         $_active = false;
     private         $_config;
-    private         $_mechanism;
 
     /*
      * Session generation and handling part
@@ -65,7 +63,6 @@ class Sessionx {
         $s->hash        = sha1($this->_user.$this->password.$this->host);
         $s->resource    = $this->_resource;
         $s->rid         = $this->_rid;
-        $s->sid         = $this->_sid;
         $s->id          = $this->_id;
         $s->port        = $this->_port;
         $s->host        = $this->_host;
@@ -74,7 +71,6 @@ class Sessionx {
         $s->active      = $this->_active;
         $s->start       = $this->_start;
         $s->timestamp   = $this->_timestamp;
-        $s->mechanism   = $this->_mechanism;
         return $s;
     }
 
@@ -105,7 +101,6 @@ class Sessionx {
             $this->_hash        = $session->hash;
             $this->_resource    = $session->resource;
             $this->_rid         = $session->rid;
-            $this->_sid         = $session->sid;
             $this->_id          = $session->id;
             $this->_port        = $session->port;
             $this->_host        = $session->host;
@@ -114,7 +109,6 @@ class Sessionx {
             $this->_active      = $session->active;
             $this->_start       = $session->start;
             $this->_timestamp   = $session->timestamp;
-            $this->_mechanism   = $session->mechanism;
         }
 
         self::$_instance = $this;
@@ -139,8 +133,7 @@ class Sessionx {
                         'user',
                         'password',
                         'hash',
-                        'start',
-                        'mechanism')
+                        'start')
                     )
             ) {
                 $key = '_'.$key;
