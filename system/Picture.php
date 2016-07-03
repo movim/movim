@@ -145,7 +145,8 @@ class Picture {
                     if($format == 'jpeg') {
                         $im->setImageBackgroundColor('#ffffff');
                         $im->setImageCompression(Imagick::COMPRESSION_JPEG);
-                        $im = $im->flattenImages();
+                        $im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
+                        $im = $im->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
                     }
 
                     $im->setImageCompressionQuality($quality);
@@ -179,7 +180,8 @@ class Picture {
 
         if($format == 'jpeg') {
             $im->setImageBackgroundColor('#ffffff');
-            $im = $im->flattenImages();
+            $im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
+            $im = $im->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
         }
 
         //$crop = new CropEntropy;
