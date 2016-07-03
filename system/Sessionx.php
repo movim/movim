@@ -90,7 +90,7 @@ class Sessionx {
         $this->_rid = rand(1, 2048);
         $this->_id  = 0;
 
-        $sd = new modl\SessionxDAO();
+        $sd = new \Modl\SessionxDAO();
         $s = $this->inject();
         $sd->init($s);
     }
