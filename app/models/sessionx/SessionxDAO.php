@@ -253,12 +253,12 @@ class SessionxDAO extends SQL {
     function deleteEmpty() {
         $this->_sql = '
             delete from sessionx
-            where
-                active = 0';
+            where active = 0
+                and start < :timestamp';
 
         $this->prepare(
             'Sessionx',
-            []
+            ['timestamp' => date(DATE_ISO8601, time()-60)]
         );
 
         return $this->run('Sessionx');
