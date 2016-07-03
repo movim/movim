@@ -88,6 +88,21 @@ class Utils {
         }
     }
 
+    public static function resolveIp($host) {
+        $r = new \Net_DNS2_Resolver(array('timeout' => 1));
+        try {
+            #$result = $r->query($host, 'AAAA');
+            #if(!empty($result->answer[0])) return $result->answer[0];
+
+            $result = $r->query($host, 'A');
+            if(!empty($result->answer[0])) return $result->answer[0];
+        } catch (\Net_DNS2_Exception $e) {
+            error_log($e->getMessage());
+        }
+
+        return false;
+    }
+
     public static function implodeData($data) {
         $return = array();
         foreach($data as $key => $value)
