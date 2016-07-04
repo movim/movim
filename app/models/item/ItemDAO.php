@@ -192,8 +192,7 @@ class ItemDAO extends SQL {
             select * from item
             left outer join caps on caps.node = item.jid
             where server = :server
-            and category = \'store\'
-            and type = \'file\'';
+            and features like \'%urn:xmpp:http:upload%\'';
 
         $this->prepare(
             'Item',
