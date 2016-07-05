@@ -19,7 +19,7 @@
 */
 .flex.card .block {
     margin: 1rem;
-    flex: 1 calc(50% - 2rem);
+    flex: 0 1 calc(50% - 2rem);
     min-height: 5rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
