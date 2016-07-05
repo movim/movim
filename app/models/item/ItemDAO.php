@@ -15,6 +15,8 @@ class ItemDAO extends SQL
             'stopped nodes',
             'running nodes',
             'online users',
+            'device_state',
+            'message_waiting',
             'outgoing s2s'";
     }
 
