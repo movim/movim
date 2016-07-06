@@ -18,7 +18,7 @@ body > nav > ul.list li > .primary.bubble {
     left: 1rem;
 }
 
-body > nav > ul a {
+body > nav.color.dark > ul a {
     color: white;
 }
 body > nav > ul.list li > p:nth-last-of-type(2) + p {
