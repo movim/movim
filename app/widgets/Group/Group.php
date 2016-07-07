@@ -238,6 +238,12 @@ class Group extends \Movim\Widget\Base
           ->request();
     }
 
+    function ajaxGetContact($jid)
+    {
+        $c = new Contact;
+        $c->ajaxGetDrawer($jid);
+    }
+
     function ajaxGetMetadata($server, $node)
     {
         if(!$this->validateServerNode($server, $node)) return;
