@@ -27,7 +27,8 @@ class PresenceDAO extends SQL {
                 muc         = :muc,
                 mucjid      = :mucjid,
                 mucaffiliation = :mucaffiliation,
-                mucrole     = :mucrole
+                mucrole     = :mucrole,
+                updated     = :updated
             where id        = :id';
 
         $this->prepare(
@@ -45,7 +46,8 @@ class PresenceDAO extends SQL {
                 'mucjid'    => $presence->mucjid,
                 'mucaffiliation' => $presence->mucaffiliation,
                 'mucrole'   => $presence->mucrole,
-                'id'        => $id
+                'id'        => $id,
+                'updated'   => gmdate(DATE_ISO8601)
             )
         );
 
@@ -69,7 +71,9 @@ class PresenceDAO extends SQL {
                 muc,
                 mucjid,
                 mucaffiliation,
-                mucrole)
+                mucrole,
+                created,
+                updated)
                 values(
                     :id,
                     :session,
@@ -86,7 +90,9 @@ class PresenceDAO extends SQL {
                     :muc,
                     :mucjid,
                     :mucaffiliation,
-                    :mucrole)';
+                    :mucrole,
+                    :created,
+                    :updated)';
 
             $this->prepare(
                 'Presence',
@@ -106,7 +112,9 @@ class PresenceDAO extends SQL {
                     'muc'       => $presence->muc,
                     'mucjid'    => $presence->mucjid,
                     'mucaffiliation' => $presence->mucaffiliation,
-                    'mucrole'   => $presence->mucrole
+                    'mucrole'   => $presence->mucrole,
+                    'created'   => gmdate(DATE_ISO8601),
+                    'updated'   => gmdate(DATE_ISO8601)
                 )
             );
 

@@ -34,6 +34,9 @@ class Presence extends Model {
     // vcard-temp:x:update, not saved in the DB
     public $photo = false;
 
+    private $created;
+    private $updated;
+
     public function __construct() {
         $this->_struct = '
         {
@@ -68,7 +71,11 @@ class Presence extends Model {
             "mucaffiliation" :
                 {"type":"string", "size":32 },
             "mucrole" :
-                {"type":"string", "size":32 }
+                {"type":"string", "size":32 },
+            "created" :
+                {"type":"date"},
+            "updated" :
+                {"type":"date"}
         }';
 
         parent::__construct();
