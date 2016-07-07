@@ -28,7 +28,7 @@
     </li>
 {/loop}
 {if="$pages"}
-    <li class="block">
+    <li class="block large">
         <span class="primary icon gray">
             <i class="zmdi zmdi-book"></i>
         </span>
