@@ -93,7 +93,7 @@
             <p>
                 {if="$contact->getTrueName() != ''"}
                     {if="!$public"}
-                    <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
+                    <a href="#" onclick="if(typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                     {/if}
                         <i class="zmdi zmdi-account"></i> {$contact->getTrueName()}
                     {if="!$public"}</a>{/if} –
