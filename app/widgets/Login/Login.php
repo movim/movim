@@ -18,9 +18,6 @@ class Login extends \Movim\Widget\Base
 
     function onStart($packet)
     {
-        $pd = new \Modl\PresenceDAO();
-        $pd->clearPresence();
-
         $session = \Session::start();
 
         if($session->get('mechanism') != 'ANONYMOUS') {

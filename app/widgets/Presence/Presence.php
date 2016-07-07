@@ -41,6 +41,12 @@ class Presence extends \Movim\Widget\Base
         RPC::call('MovimUtils.removeClass', '#presence_widget', 'unfolded');
     }
 
+    function ajaxClear()
+    {
+        $pd = new \Modl\PresenceDAO();
+        $pd->clearPresence();
+    }
+
     function ajaxSet($form = false)
     {
         if($form == false) {

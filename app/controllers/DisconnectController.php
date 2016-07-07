@@ -11,9 +11,6 @@ class DisconnectController extends Base
         $session = \Sessionx::start();
         requestURL('http://localhost:1560/disconnect/', 2, ['sid' => $session->sessionid]);
 
-        $pd = new modl\PresenceDAO();
-        $pd->clearPresence();
-
         Session::dispose();
 
         $this->redirect('login');
