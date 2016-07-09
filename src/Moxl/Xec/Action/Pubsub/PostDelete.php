@@ -65,6 +65,11 @@ class PostDelete extends Errors
         $td = new \Modl\TagDAO;
         $td->delete($this->_id);
 
+        $this->pack([
+            'server' => $this->_to,
+            'node' => $this->_node,
+            'id' => $this->_id]);
+
         $this->deliver();
     }
 

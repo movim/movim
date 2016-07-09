@@ -57,7 +57,6 @@ class Start extends Action
         fwrite(STDERR, 'started');
 
         $session->active = true;
-        //$session->password = 'hidden';
 
         $this->pack($session);
         $this->deliver();
