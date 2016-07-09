@@ -20,7 +20,7 @@ class Syndication extends \Movim\Widget\Base
         }
 
         $from = $this->get('s');
-        $item = null;
+        $item = $contact = null;
 
         if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
             $node = 'urn:xmpp:microblog:0';
