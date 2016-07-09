@@ -34,12 +34,19 @@ class Post extends \Movim\Widget\Base
         $this->onComments($packet);
     }
 
-    function onDelete()
+    function onDelete($packet)
     {
-        Notification::append(false, $this->__('post.deleted'));
-        $this->ajaxClear();
-        RPC::call('MovimTpl.hidePanel');
-        RPC::call('Menu_ajaxGetAll');
+        $content = $packet->content;
+
+        if(substr($content['node'], 0, 29) == 'urn:xmpp:microblog:0:comments') {
+            Notification::append(false, $this->__('post.comment_deleted'));
+            $this->ajaxGetComments($content['server'], substr($content['node'], 30));
+        } else {
+            Notification::append(false, $this->__('post.deleted'));
+            $this->ajaxClear();
+            RPC::call('MovimTpl.hidePanel');
+            RPC::call('Menu_ajaxGetAll');
+        }
     }
 
     function onComments($packet)
