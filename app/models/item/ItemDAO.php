@@ -104,6 +104,7 @@ class ItemDAO extends SQL
             from item
             left outer join caps on caps.node = item.server
             where item.node not like :node
+            and item.node != \'\'
             and caps.category = \'pubsub\'
             and caps.type = \'service\'
             group by server, caps.name
@@ -136,6 +137,7 @@ class ItemDAO extends SQL
                 as s on s.server = item.server
                 and s.node = item.node
             where item.server = :server
+                and item.node != \'\'
                 and item.node not like \'/%\'
             order by name, item.node
             ';

@@ -8,25 +8,25 @@ class Caps extends Model {
     public $type;
     public $name;
     public $features;
-    
+
     public function __construct() {
         $this->_struct = '
         {
-            "node" : 
+            "node" :
                 {"type":"string", "size":128, "key":true },
-            "category" : 
+            "category" :
                 {"type":"string", "size":16, "mandatory":true },
-            "type" : 
+            "type" :
                 {"type":"string", "size":16, "mandatory":true },
-            "name" : 
+            "name" :
                 {"type":"string", "size":128, "mandatory":true },
-            "features" : 
+            "features" :
                 {"type":"text", "mandatory":true }
         }';
-        
+
         parent::__construct();
     }
-    
+
     public function set($query, $node = false) {
         if(!$node)
             $this->node     = (string)$query->query->attributes()->node;
@@ -35,18 +35,23 @@ class Caps extends Model {
 
         if(isset($query->query)) {
             foreach($query->query->identity as $i) {
-                if($i->attributes()
-                && $i->attributes()->name) {
+                if($i->attributes()) {
                     $this->category = (string)$i->attributes()->category;
                     $this->type     = (string)$i->attributes()->type;
-                    $this->name     = (string)$i->attributes()->name;
+
+                    if($i->attributes()->name) {
+                        $this->name = (string)$i->attributes()->name;
+                    } else {
+                        $this->name = $this->node;
+                    }
                 }
             }
-            
+
             $fet = [];
             foreach($query->query->feature as $f) {
                 array_push($fet, (string)$f->attributes()->var);
             }
+
             $this->features = serialize($fet);
         }
     }
