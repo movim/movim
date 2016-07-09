@@ -4,22 +4,6 @@ namespace modl;
 
 class ItemDAO extends SQL
 {
-    function getFilter()
-    {
-        return "
-            '',
-            'all users',
-            'announce',
-            'config',
-            'user',
-            'stopped nodes',
-            'running nodes',
-            'online users',
-            'device_state',
-            'message_waiting',
-            'outgoing s2s'";
-    }
-
     function set(Item $item, $insert_only = false) {
         if(!$insert_only) {
             $this->_sql = '
@@ -120,8 +104,8 @@ class ItemDAO extends SQL
             from item
             left outer join caps on caps.node = item.server
             where item.node not like :node
-            and item.node not in ('.$this->getFilter().')
-            and item.node not like \'/%\'
+            and caps.category = \'pubsub\'
+            and caps.type = \'service\'
             group by server, caps.name
             order by number desc';
 
@@ -152,8 +136,7 @@ class ItemDAO extends SQL
                 as s on s.server = item.server
                 and s.node = item.node
             where item.server = :server
-              and item.node not in ('.$this->getFilter().')
-            and item.node not like \'/%\'
+                and item.node not like \'/%\'
             order by name, item.node
             ';
 
