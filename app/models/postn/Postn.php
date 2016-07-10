@@ -338,16 +338,16 @@ class Postn extends Model {
                     case 'related':
                         if(preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
                             $this->youtube = $match[1];
-                        } else {
-                            array_push(
-                                $attachments['links'],
-                                [
-                                    'href' => $l['href'],
-                                    'url'  => parse_url($l['href']),
-                                    'rel'  => 'related'
-                                ]
-                            );
                         }
+
+                        array_push(
+                            $attachments['links'],
+                            [
+                                'href' => $l['href'],
+                                'url'  => parse_url($l['href']),
+                                'rel'  => 'related'
+                            ]
+                        );
                         break;
 
                     case 'alternate':
