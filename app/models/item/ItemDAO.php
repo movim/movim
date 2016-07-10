@@ -107,6 +107,7 @@ class ItemDAO extends SQL
             and item.node != \'\'
             and caps.category = \'pubsub\'
             and caps.type = \'service\'
+            and item.node not like \'/%\'
             group by server, caps.name
             order by number desc';
 
