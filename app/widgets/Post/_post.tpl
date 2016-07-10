@@ -2,12 +2,12 @@
 <article class="block">
 {/if}
 
-{if="isset($attachments.pictures)"}
+{if="isset($post->picture)"}
     {if="($public && $post->isPublic()) || !$public"}
         <header
             class="big"
             style="
-                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachments['pictures'][0]['href']}');">
+                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$post->picture}');">
     {/if}
 {else}
 <header>
