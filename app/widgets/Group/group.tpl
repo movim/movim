@@ -1,5 +1,5 @@
 <div id="group_widget" class="spinner" style="background-color: #EEE;">
-    <header class="fixed">{$header}</header>
+    <header class="fixed"></header>
     <div class="card shadow">
         {$c->prepareEmpty()}
         {if="$server && $node"}
