@@ -11,3 +11,7 @@ form[name=post] #enable_content:hover > * {
 form[name=post] article section {
     padding-top: 0;
 }
+
+form[name=post] #content_link article section {
+    padding: 0;
+}
