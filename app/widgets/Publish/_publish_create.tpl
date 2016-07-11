@@ -48,7 +48,7 @@
 
     <div id="content_link">
         {if="$item != false"}
-            {$attachment = $item->getAttachment()}
+            {$attachment = $item->getAttachment(true)}
         {/if}
         <input
             type="url"

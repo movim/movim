@@ -328,6 +328,10 @@ class Postn extends Model {
                     case 'enclosure':
                         if($this->typeIsPicture($l['type'])) {
                             array_push($attachments['pictures'], $l);
+
+                            if($this->picture == null) {
+                                $this->picture = $l['href'];
+                            }
                         } elseif($l['type'] == 'picture' && $this->picture == null) {
                             $this->picture = $l['href'];
                         } else {
@@ -375,18 +379,20 @@ class Postn extends Model {
         return $attachments;
     }
 
-    public function getAttachment()
+    public function getAttachment($link = false)
     {
         $attachments = $this->getAttachments();
+
         if(isset($attachments['pictures']) && !isset($attachments['links'])) {
             return $attachments['pictures'][0];
         }
-        if(isset($attachments['files'])) {
+        if(isset($attachments['files']) && !$link) {
             return $attachments['files'][0];
         }
         if(isset($attachments['links'])) {
             return $attachments['links'][0];
         }
+
         return false;
     }
 
