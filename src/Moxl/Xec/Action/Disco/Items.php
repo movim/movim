@@ -37,7 +37,12 @@ class Items extends Action
             if(substr($n->node, 0, 29) != 'urn:xmpp:microblog:0:comments')
                 $nd->set($n, true);
 
-            if($n->jid != $jid) {
+            if(isset($n->node)) {
+                $r = new Request;
+                $r->setTo($n->jid)
+                  ->setNode($n->node)
+                  ->request();
+            } elseif($n->jid != $jid) {
                 $r = new Request;
                 $r->setTo($n->jid)
                   ->request();
