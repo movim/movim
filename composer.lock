@@ -57,16 +57,16 @@
         },
         {
             "name": "cocur/slugify",
-            "version": "v2.1.1",
+            "version": "v2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "eee9879958875921082293dbdbf4866b641864f2"
+                "reference": "13c1d3b2e602822c47a7ac62f9d409e1a2b76113"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/eee9879958875921082293dbdbf4866b641864f2",
-                "reference": "eee9879958875921082293dbdbf4866b641864f2",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/13c1d3b2e602822c47a7ac62f9d409e1a2b76113",
+                "reference": "13c1d3b2e602822c47a7ac62f9d409e1a2b76113",
                 "shasum": ""
             },
             "require": {
@@ -75,6 +75,7 @@
             "require-dev": {
                 "laravel/framework": "~5.1",
                 "latte/latte": "~2.2",
+                "league/container": "^2.2.0",
                 "mikey179/vfsstream": "~1.6",
                 "mockery/mockery": "~0.9",
                 "nette/di": "~2.2",
@@ -116,7 +117,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2016-04-08 18:57:21"
+            "time": "2016-07-10 13:06:05"
         },
         {
             "name": "embed/embed",
