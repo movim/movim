@@ -179,8 +179,10 @@ class Picture {
         $im->setImageFormat($format);
 
         if($format == 'jpeg') {
+            $im->setImageAlphaChannel(11);
+            // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
+            //$im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
             $im->setImageBackgroundColor('#ffffff');
-            $im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
             $im = $im->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
         }
 
