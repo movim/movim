@@ -19,7 +19,7 @@ class RosterLinkDAO extends SQL {
                     :rostername,
                     :rosterask,
                     :rostersubscription,
-                    :groupname,
+                    :groupname
                     )';
 
         $this->prepare(

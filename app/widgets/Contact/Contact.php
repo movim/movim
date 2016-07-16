@@ -48,7 +48,6 @@ class Contact extends \Movim\Widget\Base
 
         RPC::call('movim_fill', 'contact_widget', $html);
         RPC::call('MovimTpl.showPanel');
-        RPC::call('MovimTpl.scrollHeaders');
     }
 
     function ajaxGetDrawer($jid)

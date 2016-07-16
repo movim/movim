@@ -130,7 +130,6 @@ var Chat = {
         }
     },
     appendSpeaker : function(idjidtime, data, prepend) {
-    console.log(data);
         var bubble = null,
             mergeMsg = false,
             msgStack,

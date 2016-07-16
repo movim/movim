@@ -57,32 +57,12 @@ var MovimTpl = {
     init : function() {
         if(document.getElementById('back') != null)
             MovimUtils.hideElement(document.getElementById('back'));
-
-        MovimTpl.scrollHeaders();
-    },
-    scrollHeaders : function() {
-        /*var headers = document.querySelectorAll('main > section > div > header');
-
-        for(var i = 0, len = headers.length; i < len; ++i ) {
-            var header = headers[i];
-
-            header.parentNode.onscroll = function() {
-                var header = this.querySelector('header');
-                if(this.scrollTop == 0) {
-                    MovimUtils.removeClass(header, 'scroll');
-                } else {
-                    MovimUtils.addClass(header, 'scroll');
-                }
-            }
-        }*/
     },
     showPanel : function() {
         MovimUtils.addClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
         MovimTpl.scrollPanelTop();
-        //MovimTpl.scrollHeaders();
     },
     hidePanel : function() {
-        //Header_ajaxReset(CURRENT_PAGE);
         var selector = 'main section > div:first-child:nth-last-child(2) ~ div';
         var inner = document.querySelector(selector + ' div');
 
@@ -154,9 +134,6 @@ var MovimTpl = {
     toggleActionButton : function() {
         MovimUtils.toggleClass('.button.action', 'active');
     },
-    hideContextMenu : function() {
-        MovimUtils.removeClass('ul.context_menu', 'shown');
-    },
     hideMenu : function() {
         MovimUtils.removeClass('body > nav', 'active');
     },
@@ -180,10 +157,6 @@ var MovimTpl = {
         } else {
             window.history.back();
         }
-    },
-    getHeaderColor : function() {
-        var header = document.querySelector('body main > header');
-        return window.getComputedStyle(header).backgroundColor;
     }
 }
 
