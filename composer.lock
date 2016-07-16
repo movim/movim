@@ -125,12 +125,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "d5e6ce1f2483ae86a4c03f45ba9a4430979b0430"
+                "reference": "d43ee9044db423aa5559b21baa68a28faf6debb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/d5e6ce1f2483ae86a4c03f45ba9a4430979b0430",
-                "reference": "d5e6ce1f2483ae86a4c03f45ba9a4430979b0430",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/d43ee9044db423aa5559b21baa68a28faf6debb4",
+                "reference": "d43ee9044db423aa5559b21baa68a28faf6debb4",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-07-09 18:56:02"
+            "time": "2016-07-14 07:14:46"
         },
         {
             "name": "evenement/evenement",
@@ -610,12 +610,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "657d382ce7033bfa070b0f3ceaf37cd73f86fdeb"
+                "reference": "0bec870817e6cbe2089b700f86ae881de9cba235"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/657d382ce7033bfa070b0f3ceaf37cd73f86fdeb",
-                "reference": "657d382ce7033bfa070b0f3ceaf37cd73f86fdeb",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/0bec870817e6cbe2089b700f86ae881de9cba235",
+                "reference": "0bec870817e6cbe2089b700f86ae881de9cba235",
                 "shasum": ""
             },
             "require": {
@@ -653,7 +653,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2016-03-14 00:45:27"
+            "time": "2016-07-13 20:57:33"
         },
         {
             "name": "monolog/monolog",
