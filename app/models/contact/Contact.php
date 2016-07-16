@@ -522,7 +522,6 @@ class RosterContact extends Contact
     protected $resource;
     protected $value;
     protected $delay;
-    protected $chaton;
     protected $last;
     protected $publickey;
     protected $muc;
@@ -550,8 +549,6 @@ class RosterContact extends Contact
                 {'type':'string', 'size':128, 'key':true },
             'value' :
                 {'type':'int',    'size':11, 'mandatory':true },
-            'chaton' :
-                {'type':'int',    'size':11 },
             'status' :
                 {'type':'text'},
             'node' :
