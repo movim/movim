@@ -188,6 +188,20 @@ class RosterLinkDAO extends SQL {
         return $this->run('RosterLink');
     }
 
+    function clearRosterLink() {
+        $this->_sql = '
+            delete from rosterlink
+            where session = :session';
+        $this->prepare(
+            'RosterLink',
+            array(
+                'session' => $this->_user
+            )
+        );
+
+        return $this->run('RosterLink');
+    }
+
     function delete($jid) {
         $this->_sql = '
             delete from rosterlink
