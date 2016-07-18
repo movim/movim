@@ -143,9 +143,11 @@ class Picture {
                     $im->setImageFormat($format);
 
                     if($format == 'jpeg') {
-                        $im->setImageBackgroundColor('#ffffff');
                         $im->setImageCompression(Imagick::COMPRESSION_JPEG);
-                        $im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
+                        $im->setImageAlphaChannel(11);
+                        // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
+                        //$im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
+                        $im->setImageBackgroundColor('#ffffff');
                         $im = $im->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
                     }
 
@@ -179,6 +181,7 @@ class Picture {
         $im->setImageFormat($format);
 
         if($format == 'jpeg') {
+            $im->setImageCompression(Imagick::COMPRESSION_JPEG);
             $im->setImageAlphaChannel(11);
             // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
             //$im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
