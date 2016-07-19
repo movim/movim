@@ -44,7 +44,7 @@ class Session {
         $this->clients->detach($conn);
 
         if($this->countClients() == 0) {
-            $loop->addPeriodicTimer(5, function($timer) {
+            $loop->addPeriodicTimer(10, function($timer) {
                 if($this->countClients() == 0) {
                     $this->stateOut('down');
                 }
