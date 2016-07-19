@@ -4,8 +4,6 @@ class Subscribe extends \Movim\Widget\Base {
 
     function load()
     {
-        $this->addcss('subscribe.css');
-        $this->addjs('subscribe.js');
     }
 
     function flagPath($country) {
