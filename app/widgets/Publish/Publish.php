@@ -1,23 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Post.php
- * This file is part of Movim.
- *
- * @brief The Post visualisation widget
- *
- * @author Jaussoin Timothée <edhelas_at_movim_dot_com>
- *
- * @version 1.0
- * @date 1 december 2014
- *
- * Copyright (C)2014 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\TestPostPublish;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;

@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 08:36+0200\n"
+"POT-Creation-Date: 2016-06-25 19:30+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Icelandic (http://www.transifex.com/movim/movim/language/is/)\n"
@@ -644,12 +644,16 @@ msgstr ""
 msgid "Subject changed"
 msgstr ""
 
+#: [chatroom]administration [page]administration
+msgid "Administration"
+msgstr ""
+
 #: [chats]empty_title
 msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
+msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -1549,7 +1553,7 @@ msgid "No contacts ?"
 msgstr ""
 
 #: [roster]no_contacts_text
-msgid "You can add one using the + button bellow"
+msgid "You can add one using the + button below"
 msgstr ""
 
 #: [roster]show_hide
@@ -1701,7 +1705,7 @@ msgid "Is this profile public ?"
 msgstr ""
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -1718,10 +1722,6 @@ msgstr ""
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
-msgstr ""
-
-#: [page]administration
-msgid "Administration"
 msgstr ""
 
 #: [page]home

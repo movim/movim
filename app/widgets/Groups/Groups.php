@@ -59,6 +59,9 @@ class Groups extends \Movim\Widget\Base
 
     function onDiscoError($packet)
     {
+        $id = new \Modl\ItemDAO();
+        $id->deleteItems($packet->content);
+
         Notification::append(null, $this->__('groups.disco_error'));
     }
 
@@ -79,7 +82,7 @@ class Groups extends \Movim\Widget\Base
 
     function ajaxHeader()
     {
-        $id = new \modl\ItemDAO();
+        $id = new \Modl\ItemDAO();
 
         $view = $this->tpl();
         $view->assign('servers', $id->getGroupServers());

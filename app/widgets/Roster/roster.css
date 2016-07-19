@@ -8,8 +8,12 @@
 }
 
 #roster ul#rosterlist > div:not(.empty) {
-    height: 8rem;
+    height: 5rem;
     overflow: hidden;
+}
+
+#roster ul#rosterlist > div#spinner {
+    height: 8rem;
 }
 
 #roster ul#rosterlist > div li:first-child p:before {

@@ -6,21 +6,14 @@ class Sessionx {
     private         $_max_age = 604800; // 24hour
     private         $_timestamp;
 
-    private         $_rid;
-    private         $_id;
-
     private         $_user;
     private         $_password;
     private         $_resource;
     private         $_hash;
-    private         $_sid;
-    private         $_port;
     private         $_host;
-    private         $_domain;
-    private         $_start;
     private         $_active = false;
     private         $_config;
-    private         $_mechanism;
+    private         $_start;
 
     /*
      * Session generation and handling part
@@ -64,33 +57,22 @@ class Sessionx {
         $s->password    = $this->_password;
         $s->hash        = sha1($this->_user.$this->password.$this->host);
         $s->resource    = $this->_resource;
-        $s->rid         = $this->_rid;
-        $s->sid         = $this->_sid;
-        $s->id          = $this->_id;
-        $s->port        = $this->_port;
         $s->host        = $this->_host;
-        $s->domain      = $this->_domain;
         $s->config      = serialize($this->_config);
         $s->active      = $this->_active;
         $s->start       = $this->_start;
         $s->timestamp   = $this->_timestamp;
-        $s->mechanism   = $this->_mechanism;
         return $s;
     }
 
-    public function init($user, $pass, $host, $domain) {
-        $this->_port        = 5222;
+    public function init($user, $pass, $host) {
         $this->_host        = $host;
-        $this->_domain      = $domain;
         $this->_user        = $user;
         $this->_password    = $pass;
         $this->_resource    = 'moxl'.\generateKey(6);
         $this->_start       = date(DATE_ISO8601);
 
-        $this->_rid = rand(1, 2048);
-        $this->_id  = 0;
-
-        $sd = new modl\SessionxDAO();
+        $sd = new \Modl\SessionxDAO();
         $s = $this->inject();
         $sd->init($s);
     }
@@ -104,43 +86,29 @@ class Sessionx {
             $this->_password    = $session->password;
             $this->_hash        = $session->hash;
             $this->_resource    = $session->resource;
-            $this->_rid         = $session->rid;
-            $this->_sid         = $session->sid;
-            $this->_id          = $session->id;
-            $this->_port        = $session->port;
             $this->_host        = $session->host;
-            $this->_domain      = $session->domain;
             $this->_config      = unserialize($session->config);
             $this->_active      = $session->active;
             $this->_start       = $session->start;
             $this->_timestamp   = $session->timestamp;
-            $this->_mechanism   = $session->mechanism;
         }
 
         self::$_instance = $this;
     }
 
     public function __get($key) {
-        if($key == 'rid') {
-            $sd = new modl\SessionxDAO();
-            $this->_rid = $sd->getRid(self::$_sessionid);
-            return $this->_rid;
-        } elseif($key == 'sessionid') {
+        if($key == 'sessionid') {
             return self::$_sessionid;
         } else {
             if(
                 in_array(
                     $key,
                     array(
-                        'port',
-                        'id',
                         'host',
-                        'domain',
                         'user',
                         'password',
                         'hash',
-                        'start',
-                        'mechanism')
+                        'start')
                     )
             ) {
                 $key = '_'.$key;
@@ -150,9 +118,6 @@ class Sessionx {
                 $session = $sd->get(self::$_sessionid);
                 if(isset($session->config))
                     $session->config = unserialize($session->config);
-
-                if($key == 'currentid')
-                    $key = 'id';
 
                 if(isset($session))
                     return $session->$key;
@@ -168,13 +133,8 @@ class Sessionx {
         elseif($key == 'user')
             $key = 'username';
 
-        if($key == 'id') {
-            $this->_id = $value;
-            self::$_instance = $this;
-        } else {
-            $sd = new modl\SessionxDAO();
-            $sd->update(self::$_sessionid, $key, $value);
-        }
+        $sd = new modl\SessionxDAO();
+        $sd->update(self::$_sessionid, $key, $value);
     }
 
     public function destroy() {

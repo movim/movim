@@ -5,16 +5,11 @@ namespace modl;
 class RosterLink extends Model {
     public $session;
     public $jid;
-
-    protected $rostername;
     public $rosterask;
     public $rostersubscription;
-
-    protected $groupname;
-
-    public $chaton;
-
     public $publickey;
+    protected $rostername;
+    protected $groupname;
 
     public function __construct() {
         $this->_struct = '
@@ -30,9 +25,7 @@ class RosterLink extends Model {
             "rostersubscription" :
                 {"type":"string", "size":4, "mandatory":true },
             "groupname" :
-                {"type":"string", "size":64 },
-            "chaton" :
-                {"type":"int", "size":11 }
+                {"type":"string", "size":64 }
         }';
 
         parent::__construct();

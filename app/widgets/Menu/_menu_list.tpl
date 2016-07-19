@@ -33,7 +33,7 @@
         {$attachments = $value->getAttachments()}
         <li
             tabindex="{$page*$paging+$key+1}"
-            class="block large condensed "
+            class="block large"
             data-id="{$value->nodeid}"
             data-server="{$value->origin}"
             data-node="{$value->node}"
@@ -105,8 +105,10 @@
     {/loop}
     {if="count($items) == $paging"}
     <li id="history" class="block large" onclick="{$history} this.parentNode.removeChild(this);">
-        <span class="icon primary"><i class="zmdi zmdi-time-restore"></i></span>
-        <p class="normal center">{$c->__('post.older')}</p>
+        <span class="icon primary gray">
+            <i class="zmdi zmdi-time-restore"></i>
+        </span>
+        <p class="normal center line">{$c->__('post.older')}</p>
     </li>
     {/if}
 

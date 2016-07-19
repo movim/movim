@@ -84,6 +84,13 @@ class Rooms extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
+        $id = new \Modl\ItemDAO;
+        $item = $id->getConference($this->user->getServer());
+
+        if($item) {
+            $view->assign('server', $item->jid);
+        }
+
         $view->assign('username', $this->user->getUser());
 
         Dialog::fill($view->draw('_rooms_add', true));

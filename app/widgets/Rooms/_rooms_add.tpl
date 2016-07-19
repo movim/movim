@@ -10,7 +10,11 @@
             <input
                 {if="isset($room)"}value="{$room->conference}" disabled{/if}
                 name="jid"
-                placeholder="chatroom@server.com"
+                {if="isset($server)"}
+                    placeholder="chatroom@{$server}"
+                {else}
+                    placeholder="chatroom@server.com"
+                {/if}
                 type="email"
                 required />
             <label>{$c->__('chatrooms.id')}</label>

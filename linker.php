@@ -76,6 +76,10 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                     $evt->runEvent('session_up');
                 } elseif($msg->func == 'unregister') {
                     \Moxl\Stanza\Stream::end();
+                    $loop->addPeriodicTimer(5, function() use(&$conn, $loop) {
+                        if(isset($conn)) $conn->close();
+                        $loop->stop();
+                    });
                 } elseif($msg->func == 'register') {
                     if(isset($conn)
                     && is_resource($conn->stream)) {
@@ -90,7 +94,17 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                     if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
                     if(isset($dns->port) && $dns->port != null) $port = $dns->port;
                     #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-                    $connector->create(gethostbyname($msg->host), $port)->then($xmpp_behaviour);
+
+                    $ip = \Moxl\Utils::resolveIp($msg->host);
+                    $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
+
+                    fwrite(
+                        STDERR,
+                        colorize(
+                            getenv('sid'), 'yellow')." : ".
+                            colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
+                            "\n");
+                    $connector->create($ip, $port)->then($xmpp_behaviour);
                 }
             } else {
                 return;

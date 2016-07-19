@@ -1,20 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file AdminTest.php
- * This file is part of Movim.
- *
- * @brief The Admin Pest part
- *
- * @author Jaussoin Timothée <edhelas@movim.eu>
-
- * Copyright (C)2014 Movim project
- *
- * See COPYING for licensing information.
- */
-
 class AdminTest extends \Movim\Widget\Base
 {
     function load() {

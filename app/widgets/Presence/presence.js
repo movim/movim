@@ -27,6 +27,7 @@ var Presence = {
             // We disable the notifications for a couple of seconds
             Notification.inhibit(10);
 
+            Presence_ajaxClear();
             Presence_ajaxSet();
             //Presence_ajaxConfigGet();
             Presence_ajaxServerCapsGet();

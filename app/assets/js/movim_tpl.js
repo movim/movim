@@ -61,7 +61,6 @@ var MovimTpl = {
         MovimUtils.removeClass('body > nav', 'active');
     },
     hidePanel: function() {
-        //Header_ajaxReset(CURRENT_PAGE);
         var selector = 'main section > div:first-child:nth-last-child(2) ~ div';
         var inner = document.querySelector(selector + ' div');
 

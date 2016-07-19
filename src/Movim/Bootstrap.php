@@ -33,7 +33,7 @@ class Bootstrap
             $this->startingSession();
             $this->loadLanguage();
         } else {
-            throw new Exception('Error loading Modl');
+            throw new \Exception('Error loading Modl');
         }
     }
 
@@ -287,7 +287,7 @@ class Bootstrap
         if(file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
             require DOCUMENT_ROOT.'/config/db.inc.php';
         } else {
-            throw new Exception('Cannot find config/db.inc.php file');
+            throw new \Exception('Cannot find config/db.inc.php file');
         }
 
         $db->setConnectionArray($conf);

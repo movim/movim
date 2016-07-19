@@ -20,8 +20,6 @@ class Postn extends Model {
 
     public $commentplace;
 
-    public $open;
-
     public $published;      //
     public $updated;        //
     public $delay;          //
@@ -36,6 +34,8 @@ class Postn extends Model {
     public $hash;
 
     private $youtube;
+
+    public $open;
     private $openlink;
 
     public function __construct() {
@@ -257,7 +257,7 @@ class Postn extends Model {
     }
 
     private function typeIsPicture($type) {
-        return in_array($type, array('picture', 'image/jpeg', 'image/png', 'image/jpg', 'image/gif'));
+        return in_array($type, ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']);
     }
 
     private function typeIsLink($link) {
@@ -290,11 +290,18 @@ class Postn extends Model {
         }
 
         if($extra) {
-            array_push($l, array('href' => $extra, 'type' => 'picture'));
+            array_push(
+                $l,
+                [
+                    'rel' => 'enclosure',
+                    'href' => $extra,
+                    'type' => 'picture'
+                ]);
         }
 
-        if(!empty($l))
+        if(!empty($l)) {
             $this->links = serialize($l);
+        }
     }
 
     public function getAttachments()
@@ -304,51 +311,63 @@ class Postn extends Model {
         $this->openlink = null;
 
         if(isset($this->links)) {
-            $attachments = array(
+            $links = unserialize($this->links);
+            $attachments = [
                 'pictures' => [],
                 'files' => [],
                 'links' => []
-            );
+            ];
 
-            $links = unserialize($this->links);
             foreach($links as $l) {
-                if(isset($l['type']) && $this->typeIsPicture($l['type'])) {
-                    if($this->picture == null) {
-                        $this->picture = $l['href'];
-                    }
+                // If the href is not a valid URL we skip
+                if(!Validator::url()->validate($l['href'])) continue;
 
-                    array_push($attachments['pictures'], $l);
-                } elseif($this->typeIsLink($l)) {
-                    if($this->youtube == null
-                    && preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
-                        $this->youtube = $match[1];
-                    }
+                // Prepare the switch
+                $rel = isset($l['rel']) ? $l['rel'] : null;
+                switch($rel) {
+                    case 'enclosure':
+                        if($this->typeIsPicture($l['type'])) {
+                            array_push($attachments['pictures'], $l);
 
-                    if($l['rel'] == 'alternate') {
+                            if($this->picture == null) {
+                                $this->picture = $l['href'];
+                            }
+                        } elseif($l['type'] == 'picture' && $this->picture == null) {
+                            $this->picture = $l['href'];
+                        } else {
+                            array_push($attachments['files'], $l);
+                        }
+                        break;
+
+                    case 'related':
+                        if(preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
+                            $this->youtube = $match[1];
+                        }
+
+                        array_push(
+                            $attachments['links'],
+                            [
+                                'href' => $l['href'],
+                                'url'  => parse_url($l['href']),
+                                'rel'  => 'related'
+                            ]
+                        );
+                        break;
+
+                    case 'alternate':
+                    default:
                         $this->openlink = $l['href'];
                         if(!$this->isMicroblog()) {
                             array_push(
                                 $attachments['links'],
-                                array(
+                                [
                                     'href' => $l['href'],
                                     'url'  => parse_url($l['href']),
                                     'rel'  => 'alternate'
-                                )
+                                ]
                             );
                         }
-                    }
-                } elseif(isset($l['rel'])){
-                    if ($l['rel'] == 'enclosure')
-                        array_push($attachments['files'], $l);
-                    elseif ($l['rel'] == 'related')
-                        array_push(
-                            $attachments['links'],
-                            array(
-                                'href' => $l['href'],
-                                'url'  => parse_url($l['href']),
-                                'rel'  => 'related'
-                            )
-                        );
+                        break;
                 }
             }
         }
@@ -360,18 +379,20 @@ class Postn extends Model {
         return $attachments;
     }
 
-    public function getAttachment()
+    public function getAttachment($link = false)
     {
         $attachments = $this->getAttachments();
+
         if(isset($attachments['pictures']) && !isset($attachments['links'])) {
             return $attachments['pictures'][0];
         }
-        if(isset($attachments['files'])) {
+        if(isset($attachments['files']) && !$link) {
             return $attachments['files'][0];
         }
         if(isset($attachments['links'])) {
             return $attachments['links'][0];
         }
+
         return false;
     }
 

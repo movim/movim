@@ -7,11 +7,13 @@
             <span class="primary icon on_desktop icon gray">
                 <i class="zmdi zmdi-bookmark"></i>
             </span>
-            {if="count($subscriptions) > 0"}
-                <span class="control icon gray">
+                <span class="control icon gray active" onclick="MovimTpl.showPanel()">
+                {if="count($subscriptions) > 0"}
                     {$subscriptions|count}
+                {else}
+                    <i class="zmdi zmdi-eye"></i>
+                {/if}
                 </span>
-            {/if}
             <p class="center">{$c->__('page.groups')}</p>
             <p class="center">{$c->__('groups.subscriptions')}</p>
         </li>

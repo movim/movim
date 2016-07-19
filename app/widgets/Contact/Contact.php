@@ -48,7 +48,6 @@ class Contact extends \Movim\Widget\Base
 
         RPC::call('MovimTpl.fill', '#contact_widget', $html);
         RPC::call('MovimTpl.showPanel');
-        RPC::call('MovimTpl.scrollHeaders');
     }
 
     function ajaxGetDrawer($jid)
@@ -62,14 +61,15 @@ class Contact extends \Movim\Widget\Base
 
         if(isset($cr)) {
             if($cr->value != null) {
-                $presencestxt = getPresencesTxt();
-                $tpl->assign('presence', $presencestxt[$cr->value]);
+                $tpl->assign('presence', getPresencesTxt()[$cr->value]);
             }
 
             $tpl->assign('contactr', $cr);
+            $tpl->assign('caps', $cr->getCaps());
+            $tpl->assign('clienttype', getClientTypes());
         }
 
-        $c  = $cd->get($jid, true);
+        $c  = $cd->get($jid);
         $tpl->assign('contact', $c);
 
         Drawer::fill($tpl->draw('_contact_drawer', true));
@@ -219,8 +219,6 @@ class Contact extends \Movim\Widget\Base
         $gallery = $pd->getGallery($jid, 0, 12);
         $blog    = $pd->getPublic($jid, 'urn:xmpp:microblog:0', 0, 4);
 
-        $presencestxt = getPresencesTxt();
-
         $view->assign('page', $page);
         $view->assign('edit',
             $this->call(
@@ -233,34 +231,17 @@ class Contact extends \Movim\Widget\Base
 
         if(isset($c)) {
             $view->assign('mood', getMood());
+            $view->assign('clienttype', getClientTypes());
 
             $view->assign('contact', $c);
             $view->assign('contactr', $cr);
 
-            if( $cr->node != null
-                && $cr->ver != null
-                && $cr->node
-                && $cr->ver) {
-                $node = $cr->node.'#'.$cr->ver;
+            if($cr->value != null) {
+                $view->assign('presence', getPresencesTxt()[$cr->value]);
+            }
 
-                $cad = new \Modl\CapsDAO();
-                $caps = $cad->get($node);
-
-                if($cr->value != null) {
-                    $view->assign('presence', $presencestxt[$cr->value]);
-                }
-
-                if(
-                    isset($caps)
-                    && $caps->name != ''
-                    && $caps->type != '' ) {
-                    $clienttype = getClientTypes();
-
-                    $view->assign('caps', $caps);
-                    $view->assign('clienttype', $clienttype);
-                }
-            } else {
-                $view->assign('caps', null);
+            if(isset($cr)) {
+                $view->assign('caps', $cr->getCaps());
             }
 
             $view->assign('gallery', $gallery);

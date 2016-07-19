@@ -42,13 +42,13 @@
     <input type="hidden" name="id" value="{if="$item != false"}{$item->nodeid}{/if}">
 
     <div>
-        <input type="text" name="title" placeholder="{$c->__('post.title')}" {if="$item != false"}value="{$item->title}"{/if}>
+        <input type="text" name="title" placeholder="{$c->__('post.title')}" {if="$item != false"}value="{$item->title|htmlspecialchars}"{/if}>
         <label for="title">{$c->__('post.title')}</label>
     </div>
 
     <div id="content_link">
         {if="$item != false"}
-            {$attachment = $item->getAttachment()}
+            {$attachment = $item->getAttachment(true)}
         {/if}
         <input
             type="url"

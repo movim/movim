@@ -167,7 +167,7 @@
                 <span class="control icon">
                     <i class="zmdi zmdi-chevron-right"></i>
                 </span>
-                <p class="normal">{$c->__('post.discover')}</p>
+                <p class="normal line">{$c->__('post.discover')}</p>
             </li>
         </a>
     </ul>
@@ -181,9 +181,7 @@
             <p>{$c->__('hello.share_text')}</p>
         </li>
         <li class="block">
-            <a class="button" href="javascript:(function(){location.href='{$c->route('share', '\'+escape(encodeURIComponent(location.href));')}})();">
-                <i class="zmdi zmdi-share"></i> {$c->__('hello.share_button')}
-            </a>
+            <a class="button" href="javascript:(function(){location.href='{$c->route('share', '\'+escape(encodeURIComponent(location.href));')}})();"><i class="zmdi zmdi-share"></i> {$c->__('hello.share_button')}</a>
         </li>
     </ul>
 {/if}

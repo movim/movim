@@ -1,20 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Pods.php
- * This file is part of Movim.
- *
- * @brief The Infos widget for the API
- *
- * @author Jaussoin Timothée <edhelas@movim.eu>
-
- * Copyright (C)2014 Movim project
- *
- * See COPYING for licensing information.
- */
-
 class Infos extends \Movim\Widget\Base
 {
     function load() {

@@ -1,23 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Subscribe.php
- * This file is part of MOVIM.
- *
- * @brief The account creation widget.
- *
- * @author Timothée Jaussoin <edhelas@gmail.com>
- *
- * @version 1.0
- * @date 25 November 2011
- *
- * Copyright (C)2010 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 class Subscribe extends \Movim\Widget\Base {
 
     function load()

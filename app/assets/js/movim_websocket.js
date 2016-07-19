@@ -76,7 +76,10 @@ var MovimWebsocket = {
 
         this.connection.onclose = function(e) {
             console.log("Connection closed by the server or session closed");
-            if(e.code == 1006 || e.code == 1000) {
+
+            if(e.code == 1006) {
+                MovimWebsocket.reconnect();
+            } else if(e.code == 1000) {
                 if(MovimWebsocket.unregistered == false) {
                     MovimUtils.disconnect();
                 } else {
@@ -91,13 +94,7 @@ var MovimWebsocket = {
             console.log(e);
             console.log("Connection error!");
 
-            setTimeout(function () {
-                // We've tried to reconnect so increment the attempts by 1
-                MovimWebsocket.attempts++;
-
-                // Connection has closed so try to reconnect every 10 seconds.
-                MovimWebsocket.init();
-            }, MovimWebsocket.generateInterval());
+            MovimWebsocket.reconnect();
 
             // We prevent the onclose launch
             this.onclose = null;
@@ -160,6 +157,18 @@ var MovimWebsocket = {
     unregister : function(reload) {
         if(reload == false) this.unregistered = true;
         this.connection.unregister();
+    },
+
+    reconnect : function() {
+        var interval = MovimWebsocket.generateInterval();
+        console.log("Try to reconnect in " + interval);
+        setTimeout(function () {
+            // We've tried to reconnect so increment the attempts by 1
+            MovimWebsocket.attempts++;
+
+            // Connection has closed so try to reconnect every 10 seconds.
+            MovimWebsocket.init();
+        }, interval);
     },
 
     generateInterval :function() {

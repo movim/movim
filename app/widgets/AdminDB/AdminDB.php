@@ -1,20 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file AdminDB.php
- * This file is part of Movim.
- *
- * @brief The DB Administration widget
- *
- * @author Jaussoin Timothée <edhelas@movim.eu>
-
- * Copyright (C)2014 Movim project
- *
- * See COPYING for licensing information.
- */
- 
 class AdminDB extends \Movim\Widget\Base
 {
     function load() {
@@ -37,10 +22,10 @@ class AdminDB extends \Movim\Widget\Base
     {
         $md = \modl\Modl::getInstance();
         $infos = $md->check();
-        
+
         $errors = '';
 
-        $this->view->assign('infos', $infos); 
+        $this->view->assign('infos', $infos);
         $this->view->assign('db_update', $this->call('ajaxUpdateDatabase')
             ."this.className='button color loading';");
         try {
@@ -54,7 +39,7 @@ class AdminDB extends \Movim\Widget\Base
         }
 
         $supported = $md->getSupportedDatabases();
-        
+
         $this->view->assign('connected', $md->_connected);
         $this->view->assign('conf', $conf);
         $this->view->assign('dbtype', $supported[$conf['type']]);

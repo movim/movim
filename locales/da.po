@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 08:36+0200\n"
+"POT-Creation-Date: 2016-06-25 19:30+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -648,12 +648,17 @@ msgstr "Emne"
 msgid "Subject changed"
 msgstr "Emnet er ændret"
 
+#: [chatroom]administration [page]administration
+msgid "Administration"
+msgstr "Administration"
+
 #: [chats]empty_title
 msgid "No chats yet..."
 msgstr "Ingen chat endnu..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
+#, fuzzy
+msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
 msgstr "Start en ny samtale ved at klikke på %s-knappen herunder, eller gå til %sContacts%s-siden."
 
 #: [chats]add
@@ -1554,7 +1559,8 @@ msgid "No contacts ?"
 msgstr "Ingen kontakter?"
 
 #: [roster]no_contacts_text
-msgid "You can add one using the + button bellow"
+#, fuzzy
+msgid "You can add one using the + button below"
 msgstr "Du kan tilføje en ved at brug knappen mærket med + nedenfor"
 
 #: [roster]show_hide
@@ -1706,7 +1712,7 @@ msgid "Is this profile public ?"
 msgstr "Er denne profil offentlig?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -1724,10 +1730,6 @@ msgstr "Du har ikke Javascript slået til. Held og lykke med det."
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr "Movim er en brandgod distribueret social netværks-platform, der beskytter dit privatliv og kommer med et sæt af ærefrygtindgydende features."
-
-#: [page]administration
-msgid "Administration"
-msgstr "Administration"
 
 #: [page]home
 msgid "Home"

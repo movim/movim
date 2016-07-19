@@ -2,12 +2,12 @@
 <article class="block">
 {/if}
 
-{if="isset($attachments.pictures)"}
+{if="isset($post->picture)"}
     {if="($public && $post->isPublic()) || !$public"}
         <header
             class="big"
             style="
-                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$attachments['pictures'][0]['href']}');">
+                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$post->picture}');">
     {/if}
 {else}
 <header>
@@ -93,7 +93,7 @@
             <p>
                 {if="$contact->getTrueName() != ''"}
                     {if="!$public"}
-                    <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
+                    <a href="#" onclick="if(typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                     {/if}
                         <i class="zmdi zmdi-account"></i> {$contact->getTrueName()}
                     {if="!$public"}</a>{/if} –

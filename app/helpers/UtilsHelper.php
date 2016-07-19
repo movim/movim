@@ -1,21 +1,5 @@
 <?php
 
-/**
- * @file Utils.php
- * This file is part of PROJECT.
- *
- * @brief Description
- *
- * @author Etenil <etenil@etenilsrealm.nl>
- *
- * @version 1.0
- * @date 20 February 2011
- *
- * Copyright (C)2011 Etenil
- *
- * All rights reserved.
- */
-
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;

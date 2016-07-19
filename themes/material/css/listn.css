@@ -109,6 +109,10 @@ ul li div.bubble:after {
 
 /* Size automagicaly the content */
 
+ul.list li > p {
+    box-sizing: border-box;
+}
+
 ul.list li > p:first-of-type {
     line-height: 5.5rem;
     font-size: 3rem;
@@ -399,7 +403,7 @@ ul.context_menu.shown {
 /* Divided */
 
 ul.list li.divided,
-*.divided:not(.spaced) > *:not(:last-child),
+*.divided:not(.spaced):not(li) > *:not(:last-child),
 *.divided.spaced > *:not(:last-child).subheader,
 *.divided.spaced > *:not(:last-child):not(.subheader):after {
     border-bottom-width: 1px;

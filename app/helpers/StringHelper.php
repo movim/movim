@@ -47,7 +47,7 @@ class MovimEmoji
 function addUrls($string, $preview = false) {
     // Add missing links
     return preg_replace_callback(
-        "/([\w\"'>]+\:\/\/[\w-?'&;#+,%:~=\.\/\@\(\)]+)/u", function ($match) use($preview) {
+        "/([\w\"'>]+\:\/\/[\w-?'&;!#+,%:~=\.\/\@\(\)]+)/u", function ($match) use($preview) {
             if(!in_array(substr($match[0], 0, 1), array('>', '"', '\''))) {
                 $content = $match[0];
 
@@ -226,8 +226,9 @@ function colorize($string, $color) {
  * @param string
  * @return string
  */
-function stringToColor($string) {
-    $colors = array(
+function stringToColor($string)
+{
+    $colors = [
         0 => 'red',
         1 => 'purple',
         2 => 'indigo',
@@ -235,15 +236,11 @@ function stringToColor($string) {
         4 => 'green',
         5 => 'orange',
         6 => 'yellow',
-        7 => 'brown');
+        7 => 'brown'
+    ];
 
-    $s = substr(base_convert(sha1($string), 15, 10), 0, 10);
-
-    if($colors[$s%8]) {
-        return $colors[$s%8];
-    } else {
-        return 'orange';
-    }
+    $s = crc32($string);
+    return $colors[$s%8];
 }
 
 /**

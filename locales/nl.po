@@ -81,7 +81,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-24 08:36+0200\n"
+"POT-Creation-Date: 2016-06-25 19:30+0200\n"
 "PO-Revision-Date: 2016-03-23 22:27+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -650,12 +650,16 @@ msgstr "Onderwerp"
 msgid "Subject changed"
 msgstr "Onderwerp gewijzigd"
 
+#: [chatroom]administration [page]administration
+msgid "Administration"
+msgstr "Beheer"
+
 #: [chats]empty_title
 msgid "No chats yet..."
 msgstr "Nog geen chats..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
+msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
 msgstr ""
 
 #: [chats]add
@@ -1556,7 +1560,8 @@ msgid "No contacts ?"
 msgstr "Geen contactpersonen?"
 
 #: [roster]no_contacts_text
-msgid "You can add one using the + button bellow"
+#, fuzzy
+msgid "You can add one using the + button below"
 msgstr "Je kunt er een toevoegen met de +-knop hieronder"
 
 #: [roster]show_hide
@@ -1708,7 +1713,7 @@ msgid "Is this profile public ?"
 msgstr "Is dit profiel openbaar?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -1726,10 +1731,6 @@ msgstr "Je hebt javascript uit staan. Veel succes daarmee."
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr "Movim is een kick-ass gedistribueerd sociaal netwerk dat jouw privacy beschermt. Een setje awesome mogelijkheden is inbegrepen."
-
-#: [page]administration
-msgid "Administration"
-msgstr "Beheer"
 
 #: [page]home
 msgid "Home"
