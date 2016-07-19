@@ -166,6 +166,12 @@ var MovimUtils = {
         if(!node) return false;
         return node.className.split(" ").indexOf(classname) == -1? false : true;
     },
+    showElement: function(element) {
+        if(!MovimUtils.hasClass(element, "show"))
+            MovimUtils.addClass(element, "show");
+        if(MovimUtils.hasClass(element, "hide"))
+            MovimUtils.removeClass(element, "hide");
+    },
     hideElement: function(element) {
         if(!MovimUtils.hasClass(element, "hide"))
             MovimUtils.addClass(element, "hide");
@@ -221,12 +227,6 @@ var MovimUtils = {
         for(i = 0; i < list.length; i++) {
             MovimUtils.removeClass(list[i], myclass);
         }
-    },
-    showElement: function(element) {
-        if(!MovimUtils.hasClass(element, "show"))
-            MovimUtils.addClass(element, "show");
-        if(MovimUtils.hasClass(element, "hide"))
-            MovimUtils.removeClass(element, "hide");
     },
     textareaAutoheight: function(textbox) {
         if(textbox != null) {
