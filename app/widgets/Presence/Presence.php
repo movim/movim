@@ -180,6 +180,12 @@ class Presence extends \Movim\Widget\Base
         $pd = new \Modl\PresenceDAO;
 
         $session = \Session::start();
+
+        // If the user is still on a logued-in page after a daemon restart
+        if($session->get('jid') == false) {
+            RPC::call('MovimUtils.disconnect');
+        }
+
         $presence = $pd->getPresence($session->get('jid'), $session->get('resource'));
 
         $presencetpl = $this->tpl();

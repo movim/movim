@@ -53,7 +53,7 @@
         </noscript>
         <div id="hiddendiv"></div>
         <div id="snackbar" class="snackbar"></div>
-        <div id="error_websocket" class="snackbar">
+        <div id="error_websocket" class="snackbar hide">
             <ul class="list">
                 <li>
                     <span class="control icon gray">
