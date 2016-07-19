@@ -5,7 +5,7 @@ Moxl is the official XMPP library of the Movim project. It replaces Jaxl from ve
 ## History
 Moxl (for Movim XMPP Library) was developed in summer 2012 by Timothée Jaussoin after the development team decided to replace the Jaxl library which started to be too limited for the needs of the Movim project.
 
-Moxl was partially rewritten during the autumn 2014 to work with the new Movim WebSocket daemon. The library was previously working exclusively with BOSH. All the source-code relative to BOSH was removed since. 
+Moxl was partially rewritten during the autumn 2014 to work with the new Movim WebSocket daemon. The library was previously working exclusively with BOSH. All the source-code relative to BOSH was removed since.
 
 ## Features
 Its way of working is fundamentally different from Jaxl's. Moxl was created to communicate with the XMPP server only in HTTP(S). That is why there is no synchronous mode or system that can make it work like a daemon.
@@ -20,25 +20,25 @@ To keep the session open between the Moxl requests, all the session variables ar
 
 It can be interesting to know that all the session parameters (session hash, id, user, target server...) are stored in memory throughout the daemon execution, for performance reasons.
 
-### Namespaces 
+### Namespaces
 Unlike a whole lot of XMPP libraries, Moxl prefers treating messages through XMPP namespaces than via extensions (XEP).
 
 ### Details on the features
 
 #### Authentification
 For the authentification, Moxl can currently connect in several modes :
-  * PLAIN : plain authentification, without encryption of the password 
+  * PLAIN : plain authentification, without encryption of the password
   * DIGEST-MD5 : secured authentification based on secret exchange between the client and the server
   * CRAM-MD5
   * SCRAM-SHA1
   * ANONYMOUS
 
-The Moxl authentication sequence is based on the SASL2 library. You can find it here [GitHub The PHP SASL2 Authentification Library](https://github.com/edhelas/sasl2). 
+The Moxl authentication sequence is based on the SASL2 library. You can find it here [GitHub The PHP SASL2 Authentification Library](https://github.com/edhelas/sasl2).
 
 ### XMPP Resources
 
 The authentification syste was also adapted to let you connect easily on servers that impose a resource (like Gmail or Facebook). An XMPP resource is a string placed at the end of the JID (Jabber ID or more commonly the address of the user on the XMPP network) that lets you specify the client you use to send your messages. A user can be connected on multiple clients at a time. For example if you send a message at :
- 
+
   * `user@server.com/android` the user will receive it on his Android
   * `user@server.com/home` the user will receive it on his home computer
 
@@ -54,14 +54,14 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 |--------|------|-------------|----------|
 | [XEP-0004](http://xmpp.org/extensions/xep-0004.html) | Data Forms | Yes | For account creation form + all Pubsub configuration |
 | [XEP-0012](http://xmpp.org/extensions/xep-0012.html) | Last Activity | Yes |  |
-| [XEP-0030](http://xmpp.org/extensions/xep-0030.html) | Service Discovery | Yes |   | 
+| [XEP-0030](http://xmpp.org/extensions/xep-0030.html) | Service Discovery | Yes |   |
 | [XEP-0045](http://xmpp.org/extensions/xep-0045.html) | Multi-User Chat | Yes |   |
 | [XEP-0048](http://xmpp.org/extensions/xep-0048.html) | Bookmarks | Yes | MUC + URL + PubsubSuscription support |
 | [XEP-0049](http://xmpp.org/extensions/xep-0049.html) | Private XML Storage | Yes | To store Movim account configuration |
 | [XEP-0050](http://xmpp.org/extensions/xep-0050.html) | Ad-Hoc Commands | Yes | |
 | [XEP-0054](http://xmpp.org/extensions/xep-0054.html) | vcard-temp | Yes | Add Gender + Marital elements (non-standard) |
 | [XEP-0060](http://xmpp.org/extensions/xep-0060.html) | Publish-Subscribe | Yes | Implemented for the Groups + Microblog |
-| [XEP-0071](http://xmpp.org/extensions/xep-0071.html) | XHTML-IM | Yes | Used for Pubsub publication | 
+| [XEP-0071](http://xmpp.org/extensions/xep-0071.html) | XHTML-IM | Yes | Used for Pubsub publication |
 | [XEP-0077](http://xmpp.org/extensions/xep-0077.html) | In-Band Registration | Yes | jabber: x:oob support |
 | [XEP-0080](http://xmpp.org/extensions/xep-0080.html) | User Location | Not yet | For message reception in XEP-0277 + Contact Location |
 | [XEP-0084](http://xmpp.org/extensions/xep-0084.html) | User Avatar | Yes | Read and Write |
@@ -80,16 +80,17 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0206](http://xmpp.org/extensions/xep-0206.html) | XMPP Over BOSH | Not anymore | |
 | [XEP-0224](http://xmpp.org/extensions/xep-0224.html) | Attention | Yes |  |
 | [XEP-0231](http://xmpp.org/extensions/xep-0231.html) | Bits of Binary | Yes | For the Stickers feature |
-| [XEP-0245](http://xmpp.org/extensions/xep-0245.html) | The /me Command | Yes |  | 
+| [XEP-0245](http://xmpp.org/extensions/xep-0245.html) | The /me Command | Yes |  |
 | [XEP-0256](http://xmpp.org/extensions/xep-0256.html) | Last Activity in Presence | Yes |  |
 | [XEP-0277](http://xmpp.org/extensions/xep-0277.html) | Microblogging over XMPP | Yes | |
 | [XEP-0280](http://xmpp.org/extensions/xep-0280.html) | Message Carbons | Yes | |
 | [XEP-0292](http://xmpp.org/extensions/xep-0292.html) | vCard4 Over XMPP | Yes | |
+| [XEP-0313](http://xmpp.org/extensions/xep-0313.html) | Message Archive Management | Yes | Only up to urn:xmpp:mam:0 |
 | [XEP-0330](http://xmpp.org/extensions/xep-0330.html) | Pubsub Subscription | Yes | Using PEP, proposed by the Movim team|
 | [XEP-0363](http://xmpp.org/extensions/xep-0363.html) | HTTP File Upload | Yes | |
 
-## Internal Operation 
-### Structure of the library 
+## Internal Operation
+### Structure of the library
 
 Here is the structure of the directories which compose Moxl :
 
@@ -113,7 +114,7 @@ XEC (for XMPP Event Controller) is a sub module of Moxl. It smartly manages requ
 
 In both cases, XECPayload and XECHandler are to be developed by the integrater to link the events from Moxl to the ones of the target application.
 
-### Action 
+### Action
 A XEC action is a request made to the XMPP server. In this situation XEC provides a system to let Moxl "remember" past requests and send back the result to the appropriate requestor.
 
 ```php
@@ -125,25 +126,25 @@ use Moxl\Stanza\Roster
 class AddItem extends Action
 {
     private $_to;
-    
-    public function request() 
+
+    public function request()
     {
         $this->store();
         Roster::add($this->_to);
     }
-    
+
     public function setTo($to)
     {
         $this->_to = $to;
         return $this;
     }
-    
-    public function handle($stanza) 
+
+    public function handle($stanza)
     {
         var_dump('Handle item');
     }
-    
-    public function errorServiceUnavailable() 
+
+    public function errorServiceUnavailable()
     {
         var_dump('Handle the Error !');
     }
@@ -189,11 +190,11 @@ The operation is a bit different here. Here is an extract of XECHandler which de
 
 ```php
 require('XECHandler.array.php');
-        
+
 $name = $s->getName();
 $ns = $s->getNamespaces();
 $node = (string)$s->attributes()->node;
-        
+
 if(is_array($ns))
     $ns = current($ns);
 
@@ -243,7 +244,7 @@ Here the resulting string is `96c06e02022480352b6c581286b7eefb`.
 $hashToClass = array(
     '9b98cd868d07fb7f6d6cb39dad31f10e' => 'Message',
     'e83b2aea042b74b1bec00b7d1bba2405' => 'Presence',
-    
+
     '96c06e02022480352b6c581286b7eefb' => 'Post'
     );
 ```
@@ -255,7 +256,7 @@ namespace Moxl\Xec\Payload;
 
 class Post extends Payload
 {
-    public function handle($stanza) {   
+    public function handle($stanza) {
         var_dump('Post received');
     }
 }
@@ -268,7 +269,7 @@ The search for the appropriate Handlers is not only done in one level as you cou
 
 The in-depth research is limited to three levels maximum (corresponding to three XML levels), mainly for performance purposes.
 
-### Packet, commuication with Movim 
+### Packet, commuication with Movim
 
 To standardise and unify the events sent to Movim the Payloads and Actions can emit Packets identified by an unique key generated by Moxl.
 
@@ -286,7 +287,7 @@ class SASLFailure extends Payload
     public function handle($stanza, $parent = false) {
         $session = \Sessionx::start();
         $session->destroy();
-        
+
         $this->pack($stanza->children()->getName());
         $this->deliver();
     }
