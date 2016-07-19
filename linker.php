@@ -66,45 +66,53 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             $msg = json_decode($message);
 
             if(isset($msg)) {
-                if($msg->func == 'message' && $msg->body != '') {
-                    $msg = $msg->body;
-                } elseif($msg->func == 'down') {
-                    $evt = new Event;
-                    $evt->runEvent('session_down');
-                } elseif($msg->func == 'up') {
-                    $evt = new Event;
-                    $evt->runEvent('session_up');
-                } elseif($msg->func == 'unregister') {
-                    \Moxl\Stanza\Stream::end();
-                    $loop->addPeriodicTimer(5, function() use(&$conn, $loop) {
+                switch ($msg->func) {
+                    case 'message':
+                        $msg = $msg->body;
+                        break;
+
+                    case 'down':
+                        $evt = new Event;
+                        $evt->runEvent('session_down');
+                        break;
+
+                    case 'up':
+                        $evt = new Event;
+                        $evt->runEvent('session_up');
+                        break;
+
+                    case 'unregister':
+                        \Moxl\Stanza\Stream::end();
                         if(isset($conn)) $conn->close();
                         $loop->stop();
-                    });
-                } elseif($msg->func == 'register') {
-                    if(isset($conn)
-                    && is_resource($conn->stream)) {
-                        $conn->stream->close();
-                    }
+                        break;
 
-                    $cd = new \Modl\ConfigDAO();
-                    $config = $cd->get();
+                    case 'register':
+                        if(isset($conn)
+                        && is_resource($conn->stream)) {
+                            $conn->stream->close();
+                        }
 
-                    $port = 5222;
-                    $dns = \Moxl\Utils::resolveHost($msg->host);
-                    if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
-                    if(isset($dns->port) && $dns->port != null) $port = $dns->port;
-                    #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                        $cd = new \Modl\ConfigDAO();
+                        $config = $cd->get();
 
-                    $ip = \Moxl\Utils::resolveIp($msg->host);
-                    $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
+                        $port = 5222;
+                        $dns = \Moxl\Utils::resolveHost($msg->host);
+                        if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
+                        if(isset($dns->port) && $dns->port != null) $port = $dns->port;
+                        #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
 
-                    fwrite(
-                        STDERR,
-                        colorize(
-                            getenv('sid'), 'yellow')." : ".
-                            colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
-                            "\n");
-                    $connector->create($ip, $port)->then($xmpp_behaviour);
+                        $ip = \Moxl\Utils::resolveIp($msg->host);
+                        $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
+
+                        fwrite(
+                            STDERR,
+                            colorize(
+                                getenv('sid'), 'yellow')." : ".
+                                colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
+                                "\n");
+                        $connector->create($ip, $port)->then($xmpp_behaviour);
+                        break;
                 }
             } else {
                 return;
