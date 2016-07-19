@@ -439,6 +439,15 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     opacity: 0;
 }
 
+.snackbar#error_websocket {
+    max-height: initial;
+}
+
+.snackbar#error_websocket p {
+    line-height: 2.5rem;
+    white-space: initial;
+}
+
 @media screen and (max-width: 22rem) {
     .snackbar {
         width: 100%;

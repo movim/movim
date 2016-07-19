@@ -3,7 +3,8 @@
 
     <h2 id="username">username@server.com</h2>
 
-    <a class="button color" onclick="remoteUnregister(); MovimWebsocket.attach(function() {MovimUtils.redirect('{$c->route('disconnect')}')});" href="#">
+    <a class="button color"
+       href="{$c->route('disconnect')}">
         {$c->__('page.login')}
     </a>
 </div>
