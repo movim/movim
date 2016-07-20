@@ -9,7 +9,7 @@
 }
 
 .flex .block.large,
-.flex.card .block.large {
+.flex.card .block.large:not(.subheader) {
     flex: 0 1 100%;
 }
 /*
