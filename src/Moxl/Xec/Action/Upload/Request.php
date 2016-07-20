@@ -58,4 +58,22 @@ class Request extends Action
         $this->pack($this->_to);
         $this->deliver();
     }
+
+    // the file size was too large
+    public function errorNotAcceptable($error) {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    // the client exceeded a quota
+    public function errorResourceConstraint($error) {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    // the client is not allowed to upload files
+    public function errorNotAllowed($error) {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
 }
