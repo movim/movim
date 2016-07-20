@@ -53,6 +53,17 @@
         </noscript>
         <div id="hiddendiv"></div>
         <div id="snackbar" class="snackbar"></div>
+        <div id="error_websocket" class="snackbar hide">
+            <ul class="list">
+                <li>
+                    <span class="control icon gray">
+                        <i class="zmdi zmdi-code-setting"></i>
+                    </span>
+                    <p class="normal">
+                        <?php echo __('error.websocket'); ?>
+                    </p>
+                </li>
+        </div>
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Drawer');?>
         <?php $this->widget('Notification');?>

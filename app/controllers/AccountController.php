@@ -7,6 +7,9 @@ class AccountController extends Base {
     }
 
     function dispatch() {
+        $session = \Sessionx::start();
+        requestURL('http://localhost:1560/disconnect/', 2, ['sid' => $session->sessionid]);
+
         $this->page->setTitle(__('page.account_creation'));
     }
 }

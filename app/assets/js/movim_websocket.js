@@ -25,10 +25,12 @@ var MovimWebsocket = {
     connection: null,
     attached: new Array(),
     registered: new Array(),
-    unregistered: false,
     attempts: 1,
 
     launchAttached : function() {
+        // We hide the Websocket error
+        MovimUtils.hideElement(document.getElementById('error_websocket'));
+
         for(var i = 0; i < MovimWebsocket.attached.length; i++) {
             MovimWebsocket.attached[i]();
         }
@@ -80,19 +82,15 @@ var MovimWebsocket = {
             if(e.code == 1006) {
                 MovimWebsocket.reconnect();
             } else if(e.code == 1000) {
-                if(MovimWebsocket.unregistered == false) {
-                    MovimUtils.disconnect();
-                } else {
-                    MovimWebsocket.unregistered = false;
-                    MovimWebsocket.init();
-                }
+                MovimUtils.disconnect();
             }
         };
 
         this.connection.onerror = function(e) {
-            console.log(e.code);
-            console.log(e);
             console.log("Connection error!");
+
+            // We hide the Websocket error
+            MovimUtils.showElement(document.getElementById('error_websocket'));
 
             MovimWebsocket.reconnect();
 
@@ -155,13 +153,12 @@ var MovimWebsocket = {
     },
 
     unregister : function(reload) {
-        if(reload == false) this.unregistered = true;
         this.connection.unregister();
     },
 
     reconnect : function() {
         var interval = MovimWebsocket.generateInterval();
-        console.log("Try to reconnect in " + interval);
+        console.log("Try to reconnect");
         setTimeout(function () {
             // We've tried to reconnect so increment the attempts by 1
             MovimWebsocket.attempts++;
@@ -183,16 +180,7 @@ var MovimWebsocket = {
     }
 }
 
-function remoteUnregister()
-{
-    MovimWebsocket.unregister(false);
-}
-
-function remoteUnregisterReload()
-{
-    MovimWebsocket.unregister(true);
-}
-
+/*
 document.addEventListener("visibilitychange", function () {
     if(!document.hidden) {
         if(MovimWebsocket.connection.readyState == 3) {
@@ -200,7 +188,7 @@ document.addEventListener("visibilitychange", function () {
         }
     }
 });
-
+*/
 window.onbeforeunload = function() {
     MovimWebsocket.connection.onclose = function () {}; // disable onclose handler first
     MovimWebsocket.connection.close()

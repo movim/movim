@@ -4,5 +4,9 @@
     <h4 class="gray">{$error}</h4>
 </section>
 <div>
-    <span class="button flat oppose" onclick="remoteUnregister(); MovimWebsocket.attach(function() {MovimUtils.redirect('{$c->route('login')}')});">{$c->__('button.return')}</span>
+    <span
+        class="button flat oppose"
+        onclick="MovimUtils.redirect('{$c->route('disconnect')}');">
+        {$c->__('button.return')}
+    </span>
 </div>

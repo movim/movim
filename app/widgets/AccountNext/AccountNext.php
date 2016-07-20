@@ -93,7 +93,10 @@ class AccountNext extends \Movim\Widget\Base {
     function onServiceUnavailable()
     {
         Notification::append(null, $this->__('error.service_unavailable'));
-        RPC::call('remoteUnregister');
+
+        $session = \Sessionx::start();
+        requestURL('http://localhost:1560/disconnect/', 2, ['sid' => $session->sessionid]);
+
         RPC::call('MovimUtils.redirect', $this->route('account'));
     }
 

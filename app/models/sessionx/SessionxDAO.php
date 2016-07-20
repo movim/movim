@@ -3,7 +3,7 @@
 namespace modl;
 
 class SessionxDAO extends SQL {
-    function init(Sessionx $s) {\movim_log($s->start);
+    function init(Sessionx $s) {
         $this->_sql = '
             update sessionx
             set username    = :username,
