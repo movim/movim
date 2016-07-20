@@ -3,6 +3,9 @@ Movim Changelog
 
 v0.9.1 (trunk)
 ---------------------------
+ * Refactor MovimWebsocket and fix disconnection issues
+ * Remove and cleanup old code
+ * Handle errors when uploading large files
  * New bubble merging algorythm in the Chat
  * Improve UI and mobile UX on low resolution devices
  * New widget Drawer used for the stickers and the search form
