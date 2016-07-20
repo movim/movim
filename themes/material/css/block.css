@@ -17,7 +17,7 @@
     padding: 0;
 }
 */
-.flex.card .block {
+.flex.card .block:not(.subheader) {
     margin: 1rem;
     flex: 0 1 calc(50% - 2rem);
     min-height: 5rem;
