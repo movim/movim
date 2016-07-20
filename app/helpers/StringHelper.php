@@ -272,6 +272,14 @@ function firstLetterCapitalize($string) {
     return ucfirst(strtolower(mb_substr($string, 0, 2)));
 }
 
+/** Return a clean string that can be used for HTML ids
+ * @param string
+ * @return string
+ */
+function cleanupId($string) {
+    return preg_replace('/([^a-z0-9]+)/i', '-', $string);
+}
+
 /**
  * Truncates the given string at the specified length.
  *

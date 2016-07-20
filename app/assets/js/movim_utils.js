@@ -47,6 +47,9 @@ var MovimUtils = {
             element.className += " " + classname;
         }
     },
+    cleanupId: function(string) {
+        return string.replace(/([^a-z0-9]+)/gi, '-');
+    },
     base64Decode: function(data) {
         //  discuss at: http://phpjs.org/functions/base64_decode/
         // original by: Tyler Akins (http://rumkin.com)

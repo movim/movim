@@ -114,7 +114,7 @@ class Presence extends \Movim\Widget\Base
     function ajaxGetPresence()
     {
         $html = $this->preparePresence();
-        if($html) RPC::call('movim_fill', 'presence_widget', $html);
+        if($html) RPC::call('MovimTpl.fill', '#presence_widget', $html);
     }
 
     function ajaxConfigGet() {

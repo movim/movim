@@ -67,15 +67,15 @@
             <p class="line">
                 {$contact->getTrueName()}
             </p>
-            <p class="line" id="{$jid}_state">{$contact->jid}</p>
+            <p class="line" id="{$jid|cleanupId}-state">{$contact->jid}</p>
         </li>
     </ul>
     {/if}
 </header>
 
-<div id="{$jid}_discussion" class="contained" data-muc="{$muc}">
-    <section id="{$jid}_messages">
-        <ul class="list {if="$muc"}thin simple{else}middle{/if}" id="{$jid}_conversation"></ul>
+<div id="{$jid|cleanupId}-discussion" class="contained" data-muc="{$muc}">
+    <section id="{$jid|cleanupId}-messages">
+        <ul class="list {if="$muc"}thin simple{else}middle{/if}" id="{$jid|cleanupId}-conversation"></ul>
     </section>
 </div>
 <div class="chat_box">

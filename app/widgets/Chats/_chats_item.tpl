@@ -1,5 +1,5 @@
 <li
-    id="{$contact->jid}_chat_item"
+    id="{$contact->jid|cleanupId}-chat-item"
     data-jid="{$contact->jid}"
     class="
         {if="isset($message)"}condensed{/if}

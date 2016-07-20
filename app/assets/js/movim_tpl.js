@@ -14,8 +14,6 @@ var MovimTpl = {
     init : function() {
         if(document.getElementById('back') != null)
             MovimUtils.hideElement(document.getElementById('back'));
-
-        MovimTpl.scrollHeaders();
     },
     append : function(selector, html) {
         target = document.querySelector(selector);
@@ -49,10 +47,6 @@ var MovimTpl = {
         if(target) {
             target.innerHTML = html;
         }
-    },
-    getHeaderColor : function() {
-        var header = document.querySelector('body main > header');
-        return window.getComputedStyle(header).backgroundColor;
     },
     hideContextMenu : function() {
         MovimUtils.removeClass('ul.context_menu', 'shown');
