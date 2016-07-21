@@ -8,8 +8,8 @@
     overflow: hidden;
 }
 
-.flex .block.large:not(.subheader),
-.flex.card .block.large:not(.subheader) {
+.flex .block.large,
+.flex.card .block.large {
     flex: 0 1 100%;
 }
 /*
