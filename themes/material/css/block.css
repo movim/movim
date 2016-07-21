@@ -8,10 +8,6 @@
     overflow: hidden;
 }
 
-.flex .block.large,
-.flex.card .block.large {
-    flex: 0 1 100%;
-}
 /*
 .flex.card {
     padding: 0;
@@ -36,6 +32,12 @@
 .flex.third .block:not(.large) {
     flex: 0 1 33.33%;
     max-width: 33.33%;
+}
+
+
+.flex .block.large,
+.flex.card .block.large {
+    flex: 0 1 100%;
 }
 
 @media screen and (max-width: 1024px) {
