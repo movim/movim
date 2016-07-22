@@ -12,7 +12,7 @@
 }
 
 
-.drawer .flex .block {
+.drawer .flex .block:not(.subheader) {
     flex: 0 1 33.33%;
 }
 
@@ -41,7 +41,7 @@
 }
 
 @media screen and (min-width: 40rem) {
-    .drawer .flex .block {
+    .drawer .flex .block:not(.subheader) {
         flex: 0 1 25%;
     }
 }
