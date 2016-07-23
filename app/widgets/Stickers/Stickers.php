@@ -27,7 +27,7 @@ class Stickers extends \Movim\Widget\Base
         list($c, $ext) = explode('@', $cid);
         list($sh, $key) = explode('+', $c);
 
-        $base64 = base64_encode(file_get_contents(dirname(__FILE__).'/stickers/'.$key.'.png'));
+        $base64 = base64_encode(file_get_contents(CACHE_PATH.md5($key).'.png'));
 
         $a = new Answer;
         $a->setTo($to)
@@ -38,13 +38,13 @@ class Stickers extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxSend($to, $file)
+    function ajaxSend($to, $pack, $file)
     {
         if(!$this->validateJid($to)) return;
 
         list($key, $ext) = explode('.', $file);
 
-        $filepath = dirname(__FILE__).'/stickers/'.$key.'.png';
+        $filepath = dirname(__FILE__).'/stickers/'.$pack.'/'.$key.'.png';
 
         if(!file_exists($filepath)) return;
 
@@ -52,9 +52,11 @@ class Stickers extends \Movim\Widget\Base
         $base64 = base64_encode(file_get_contents($filepath));
 
         // Caching the picture
-        $p = new Picture;
-        $p->fromBase($base64);
-        $p->set($key, 'png');
+        if(!file_exists(CACHE_PATH.md5($key).'.png')) {
+            $p = new Picture;
+            $p->fromBase($base64);
+            $p->set($key, 'png');
+        }
 
         // Creating a message
         $m = new \Modl\Message;
@@ -92,22 +94,30 @@ class Stickers extends \Movim\Widget\Base
         $c->onMessage($packet/*, true*/);
     }
 
-    function ajaxShow($to)
+    function ajaxShow($to, $pack = null)
     {
         if(!$this->validateJid($to)) return;
 
-        $files = scandir(dirname(__FILE__).'/stickers/');
+        $packs = $this->getPacks();
 
-        array_shift($files);
-        array_shift($files);
+        $pack = isset($pack) ? $pack : 'racoon';
 
-        $view = $this->tpl();
-        $view->assign('jid', $to);
-        $view->assign('stickers', $files);
-        $view->assign('icon', $this->respath('stickers').'/icon.png');
-        $view->assign('path', $this->respath('stickers').'/');
+        if(in_array($pack, $packs)) {
+            $files = scandir(dirname(__FILE__).'/stickers/'.$pack);
 
-        Drawer::fill($view->draw('_stickers', true), true);
+            array_shift($files);
+            array_shift($files);
+
+            $view = $this->tpl();
+            $view->assign('jid', $to);
+            $view->assign('stickers', $files);
+            $view->assign('packs', $packs);
+            $view->assign('pack', $pack);
+            $view->assign('info', parse_ini_file(dirname(__FILE__).'/stickers/'.$pack.'/info.ini'));
+            $view->assign('path', $this->respath('stickers'));
+
+            Drawer::fill($view->draw('_stickers', true), true);
+        }
     }
 
     /**
@@ -119,7 +129,8 @@ class Stickers extends \Movim\Widget\Base
 
         $view = $this->tpl();
         $view->assign('jid', $to);
-        $view->assign('icon', $this->respath('stickers').'/icon.png');
+        $view->assign('packs', $this->getPacks());
+        $view->assign('path', $this->respath('stickers'));
         Drawer::fill($view->draw('_stickers_smiley', true));
     }
 
@@ -132,7 +143,8 @@ class Stickers extends \Movim\Widget\Base
 
         $view = $this->tpl();
         $view->assign('jid', $to);
-        $view->assign('icon', $this->respath('stickers').'/icon.png');
+        $view->assign('packs', $this->getPacks());
+        $view->assign('path', $this->respath('stickers'));
         Drawer::fill($view->draw('_stickers_smiley_two', true));
     }
 
@@ -142,6 +154,28 @@ class Stickers extends \Movim\Widget\Base
     function ajaxSmileyGet($string)
     {
         return prepareString($string, true);
+    }
+
+    /**
+     * @brief Get a list of stickers packs
+     */
+    function getPacks()
+    {
+        $dirs = scandir(dirname(__FILE__).'/stickers/');
+
+        $packs = [];
+
+        array_shift($dirs);
+        array_shift($dirs);
+
+        // Get the packs
+        foreach($dirs as $dir) {
+            if(is_dir(dirname(__FILE__).'/stickers/'.$dir)) {
+                array_push($packs, $dir);
+            }
+        }
+
+        return $packs;
     }
 
     /**
