@@ -177,35 +177,40 @@ class Picture {
         $path = $this->_path.md5($this->_key).'_'.$width.$this->_formats[$format];
 
         $im = new Imagick;
-        $im->readImageBlob($this->_bin);
-        $im->setImageFormat($format);
 
-        if($format == 'jpeg') {
-            $im->setImageCompression(Imagick::COMPRESSION_JPEG);
-            $im->setImageAlphaChannel(11);
-            // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
-            //$im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
-            $im->setImageBackgroundColor('#ffffff');
-            $im = $im->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
+        try {
+            $im->readImageBlob($this->_bin);
+            $im->setImageFormat($format);
+
+            if($format == 'jpeg') {
+                $im->setImageCompression(Imagick::COMPRESSION_JPEG);
+                $im->setImageAlphaChannel(11);
+                // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
+                //$im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
+                $im->setImageBackgroundColor('#ffffff');
+                $im = $im->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
+            }
+
+            //$crop = new CropEntropy;
+            //$crop->setImage($im);
+
+            $geo = $im->getImageGeometry();
+
+            $im->cropThumbnailImage($width, $height);
+            if($width > $geo['width']) {
+                $factor = floor($width/$geo['width']);
+                $im->blurImage($factor, 10);
+            }
+
+            //$im = $crop->resizeAndCrop($width, $height);
+
+            $im->setImageCompressionQuality(85);
+            $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
+
+            $im->writeImage($path);
+            $im->clear();
+        } catch (ImagickException $e) {
+            error_log($e->getMessage());
         }
-
-        //$crop = new CropEntropy;
-        //$crop->setImage($im);
-
-        $geo = $im->getImageGeometry();
-
-        $im->cropThumbnailImage($width, $height);
-        if($width > $geo['width']) {
-            $factor = floor($width/$geo['width']);
-            $im->blurImage($factor, 10);
-        }
-
-        //$im = $crop->resizeAndCrop($width, $height);
-
-        $im->setImageCompressionQuality(85);
-        $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
-
-        $im->writeImage($path);
-        $im->clear();
     }
 }
