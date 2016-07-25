@@ -193,9 +193,7 @@ class Post extends \Movim\Widget\Base
             $view->assign('public', $public);
 
             // Is it a recycled post ?
-            if($p->getContact()->jid
-            && $p->node == 'urn:xmpp:microblog:0'
-            && ($p->origin != $p->getContact()->jid)) {
+            if($p->isRecycled()) {
                 $cd = new \Modl\ContactDAO;
                 $view->assign('recycled', $cd->get($p->origin));
             }
