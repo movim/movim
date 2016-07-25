@@ -65,6 +65,10 @@ var Upload = {
                 canvas.getContext("2d").drawImage(image, 0, 0, width, height);
 
                 if(typeof canvas.toBlob == 'function') {
+                    if(file.type != 'image/jpeg') {
+                        Upload.name += '.jpg';
+                    }
+
                     canvas.toBlob(
                         function (blob) {
                             Upload.initiate(blob);
@@ -110,8 +114,8 @@ var Upload = {
                 Upload.launchAttached();
             }
 
-            if(Upload.xhr.readyState == 1
-            && Upload.xhr.status == 0) {
+            if(Upload.xhr.readyState == 4
+            && Upload.xhr.status != 200) {
                 Upload_ajaxFailed();
             }
         }
