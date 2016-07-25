@@ -611,19 +611,25 @@ class Chat extends \Movim\Widget\Base
             $msgkey = $message->jidfrom . '>' . substr($message->published, 11, 5);
             //fillup $wrapper
             if (!array_key_exists($date, $this->_wrapper)) {
-                $this->_wrapper[$date] = array('0<' . $msgkey => array($message));
+                $sticker = "";
+                if (isset($message->sticker)) {
+                    $sticker = "sticker";
+                }
+                $this->_wrapper[$date] = ['0' . $sticker . '<' . $msgkey => array($message)];
             } else { //date contains at least one speaker@time=>msg already
                 end($this->_wrapper[$date]);
                 $lastkey = key($this->_wrapper[$date]);
                 if (substr($lastkey, strpos($lastkey, '<') + 1) == $msgkey // same jidfrom, same min
                     && !isset($message->sticker) // this msg is not a sticker
                     && strpos($lastkey, "sticker<") === false
-                ) // the previous msg was not a sticker
+                ) {// the previous msg was not a sticker
                     array_push($this->_wrapper[$date][$lastkey], $message);
+                }
                 else {
                     $sticker = "";
-                    if (isset($message->sticker))
+                    if (isset($message->sticker)) {
                         $sticker = "sticker";
+                    }
                     $this->_wrapper[$date][count($this->_wrapper[$date]) . $sticker . '<' . $msgkey] = array($message);
                 }
             }
