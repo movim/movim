@@ -8,9 +8,7 @@ var Avatar = {
             reader.readAsDataURL(f);
 
             reader.onload = function (ev) {
-                var img = new Image();
-                img.src = ev.target.result;
-                Avatar.preview(img.src);
+                Avatar.preview(ev.target.result);
             };
         };
     },

@@ -44,6 +44,11 @@ class Upload extends \Movim\Widget\Base {
         }
     }
 
+    function ajaxFailed()
+    {
+        Notification::append(null, $this->__('upload.error_failed'));
+    }
+
     function display()
     {
 

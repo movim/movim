@@ -494,4 +494,11 @@ class ContactPostn extends Postn {
 
         return $c;
     }
+
+    public function isRecycled()
+    {
+        return ($this->getContact()->jid
+            && $this->node == 'urn:xmpp:microblog:0'
+            && (strtolower($this->origin) != strtolower($this->getContact()->jid)));
+    }
 }
