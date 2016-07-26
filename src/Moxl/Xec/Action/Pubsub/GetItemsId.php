@@ -61,7 +61,7 @@ class GetItemsId extends Errors
 
         foreach($stanza->query->item as $item) {
             $id = (string)$item->attributes()->name;
-            if(!$pd->exist($id)) {
+            if(!$pd->exists($this->_to, $this->_node, $id)) {
                 $get = true;
 
                 $gi = new GetItem;
@@ -73,13 +73,13 @@ class GetItemsId extends Errors
         }
 
         if($get == false) {
-            $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+            $this->pack(['server' => $this->_to, 'node' => $this->_node]);
             $this->deliver();
         }
     }
 
     public function error($errorid, $message) {
-        $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
 

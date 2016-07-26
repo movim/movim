@@ -62,19 +62,10 @@ class Post extends Payload
 
             $this->method('retract');
 
-            $this->pack(array(
+            $this->pack([
                     'server' => $from,
                     'node' => $stanza->attributes()->node
-                ));
-            $this->deliver();
-        } elseif(isset($stanza->items->item->realtime)) {
-            $this->method('ticker');
-
-            $this->pack(array(
-                    'server' => $from,
-                    'node' => $stanza->items->attributes()->node,
-                    'ticker' => $stanza->items->item->realtime
-                ));
+                ]);
             $this->deliver();
         } elseif($stanza->items->item && isset($stanza->items->item->attributes()->id)
             && !filter_var($from, FILTER_VALIDATE_EMAIL)) {
@@ -82,13 +73,14 @@ class Post extends Payload
 
             $p = new \modl\PostnDAO();
 
+            $node = (string)$stanza->items->attributes()->node;
             $id = (string)$stanza->items->item->attributes()->id;
-            $here = $p->exist($id);
+            $here = $p->exists($from, $node, $id);
 
             if(!$here && $id != $this->testid) {
                 $d = new GetItem;
                 $d->setTo($from)
-                  ->setNode((string)$stanza->items->attributes()->node)
+                  ->setNode($node)
                   ->setId($id)
                   ->request();
             }
