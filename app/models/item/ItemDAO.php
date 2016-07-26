@@ -110,7 +110,7 @@ class ItemDAO extends SQL
                 as counter on item.jid = counter.jid
             where caps.category = \'pubsub\'
             and caps.type = \'service\'
-            and item.node = \'\'
+            group by item.jid, counter.number, caps.name
             order by counter.number is null, counter.number desc';
 
         $this->prepare(
