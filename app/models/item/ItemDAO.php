@@ -111,7 +111,7 @@ class ItemDAO extends SQL
             where caps.category = \'pubsub\'
             and caps.type = \'service\'
             and item.node = \'\'
-            order by counter.number desc';
+            order by counter.number is null, counter.number desc';
 
         $this->prepare(
             'Item'
