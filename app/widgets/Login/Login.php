@@ -133,7 +133,7 @@ class Login extends \Movim\Widget\Base
 
     function ajaxLogin($form)
     {
-        $username = $form->username->value;
+        $username = strtolower($form->username->value);
         $password = $form->password->value;
 
         $this->doLogin($username, $password);
