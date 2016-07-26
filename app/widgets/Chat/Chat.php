@@ -630,7 +630,7 @@ class Chat extends \Movim\Widget\Base
                     if (isset($message->sticker)) {
                         $sticker = "sticker";
                     }
-                    $this->_wrapper[$date][count($this->_wrapper[$date]) . $sticker . '<' . $msgkey] = [$message]);
+                    $this->_wrapper[$date][count($this->_wrapper[$date]) . $sticker . '<' . $msgkey] = [$message];
                 }
             }
         }
