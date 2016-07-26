@@ -100,22 +100,21 @@ class ItemDAO extends SQL
 
     function getGroupServers() {
         $this->_sql = '
-            select server, count(item.node) as number, caps.name
-            from item
-            left outer join caps on caps.node = item.server
-            where item.node not like :node
-            and item.node != \'\'
-            and caps.category = \'pubsub\'
+            select item.jid as server, counter.number, caps.name from item
+            left outer join caps on caps.node = item.jid
+            left outer join (
+                select jid,
+                count(*) as number from item
+                where node != \'\'
+                group by jid)
+                as counter on item.jid = counter.jid
+            where caps.category = \'pubsub\'
             and caps.type = \'service\'
-            and item.node not like \'/%\'
-            group by server, caps.name
-            order by number desc';
+            and item.node = \'\'
+            order by counter.number desc';
 
         $this->prepare(
-            'Item',
-            array(
-                'node' => 'urn:xmpp:microblog:0:comments%',
-            )
+            'Item'
         );
 
         return $this->run('Server');

@@ -42,7 +42,7 @@
                     {$value->server}
                     <span class="second">{$value->name}</span>
                 </p>
-                <p>{$c->__('group.counter', $value->number)}</p>
+                <p>{$c->__('group.counter', (empty($value->number)) ? 0 : $value->number)}</p>
             </li>
         {/if}
     {/loop}
