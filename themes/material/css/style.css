@@ -605,6 +605,11 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
 /* Disabled */
 
+.faded {
+    filter: grayscale(100);
+    opacity: 0.5;
+}
+
 .disabled {
     opacity: 0.5;
     pointer-events: none;

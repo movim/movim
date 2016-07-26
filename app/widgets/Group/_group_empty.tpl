@@ -34,7 +34,7 @@
     </li>
     {loop="$servers"}
         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
-            <li class="block" onclick="Groups_ajaxDisco('{$value->server}'); MovimTpl.hidePanel();">
+            <li class="block {if="empty($value->number)"}faded{/if}" onclick="Groups_ajaxDisco('{$value->server}'); MovimTpl.hidePanel();">
                 <span class="primary icon bubble color {$value->server|stringToColor}">
                     {$value->server|firstLetterCapitalize}
                 </span>
