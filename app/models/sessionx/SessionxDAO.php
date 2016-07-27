@@ -7,6 +7,7 @@ class SessionxDAO extends SQL {
         $this->_sql = '
             update sessionx
             set username    = :username,
+                jid         = :jid,
                 hash        = :hash,
                 resource    = :resource,
                 host        = :host,
@@ -21,6 +22,7 @@ class SessionxDAO extends SQL {
             array(
                 'session'   => $s->session,
                 'username'  => $s->username,
+                'jid'       => $s->username.'@'.$s->host,
                 'hash'      => $s->hash,
                 'resource'  => $s->resource,
                 'host'      => $s->host,
@@ -38,6 +40,7 @@ class SessionxDAO extends SQL {
                 insert into sessionx
                 (session,
                  username,
+                 jid,
                  hash,
                  resource,
                  host,
@@ -48,6 +51,7 @@ class SessionxDAO extends SQL {
                 values
                 (:session,
                  :username,
+                 :jid,
                  :hash,
                  :resource,
                  :host,
@@ -61,6 +65,7 @@ class SessionxDAO extends SQL {
                 array(
                     'session'   => $s->session,
                     'username'  => $s->username,
+                    'jid'       => $s->username.'@'.$s->host,
                     'hash'      => $s->hash,
                     'resource'  => $s->resource,
                     'host'      => $s->host,

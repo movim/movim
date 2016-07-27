@@ -18,6 +18,8 @@ class Sessionx extends Model {
         {
             "session" :
                 {"type":"string", "size":32, "key":true },
+            "jid" :
+                {"type":"string", "size":64 },
             "username" :
                 {"type":"string", "size":64 },
             "hash" :
