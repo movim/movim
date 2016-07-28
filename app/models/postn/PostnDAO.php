@@ -658,10 +658,9 @@ class PostnDAO extends SQL {
     {
         $this->_sql = '
             select count(*) from postn
-            where
-                origin = :origin,
-                node = :node,
-                nodeid = :nodeid
+            where origin = :origin
+            and node = :node
+            and nodeid = :nodeid
             ';
 
         $this->prepare(
@@ -674,6 +673,7 @@ class PostnDAO extends SQL {
         );
 
         $arr = $this->run(null, 'array');
+\movim_log(serialize($arr));
         if(is_array($arr) && isset($arr[0])) {
             $arr = array_values($arr[0]);
             return (bool)$arr[0];
