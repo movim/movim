@@ -59,7 +59,7 @@ class GetItemsId extends Errors
 
         $get = false;
 
-        foreach($stanza->query->item as $item) {
+        foreach(array_reverse($stanza->query->xpath('item')) as $item) {
             $id = (string)$item->attributes()->name;
             if(!$pd->exists($this->_to, $this->_node, $id)) {
                 $get = true;
