@@ -58,6 +58,11 @@ class Set extends Action
         $this->deliver();
     }
 
+    public function error($stanza)
+    {
+        $this->deliver();
+    }
+
     public function errorConflict($id, $message = false)
     {
         $this->pack($message);
