@@ -17,12 +17,22 @@ class Register {
     {
         $form = new Form($data);
 
-        $xml = '
-            <query xmlns="jabber:iq:register">
-                '.$form.'
-            </query>
-            ';
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        if(isset($data->generic_username)) {
+            $dom = new \DOMDocument('1.0', 'UTF-8');
+            $query = $dom->createElementNS('jabber:iq:register', 'query');
+            $query->appendChild($dom->createElement('username', $data->generic_username->value));
+            $query->appendChild($dom->createElement('password', $data->generic_password->value));
+
+            $xml = \Moxl\API::iqWrapper($query, $to, 'set');
+        } else {
+            $xml = '
+                <query xmlns="jabber:iq:register">
+                    '.$form.'
+                </query>
+                ';
+            $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        }
+
         \Moxl\API::request($xml);
     }
 
