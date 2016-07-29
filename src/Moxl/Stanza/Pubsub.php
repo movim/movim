@@ -291,7 +291,8 @@ class Pubsub {
         $configure->setAttribute('node', $node);
         $pubsub->appendChild($configure);
 
-        $x = $dom->createElementNS('jabber:x:data', 'x');
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
         $configure->appendChild($x);
 

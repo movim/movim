@@ -73,4 +73,9 @@ class Set extends Action
     {
         $this->deliver();
     }
+
+    public function errorForbidden($id, $message = false)
+    {
+        $this->deliver();
+    }
 }
