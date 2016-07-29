@@ -79,7 +79,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
 "Language: en\n"
@@ -307,9 +307,8 @@ msgid "Retype password"
 msgstr "Retype password"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Whitelisted XMPP Servers"
-msgstr "Whitelist - XMPP Server"
+msgstr "Whitelisted XMPP Servers"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -346,22 +345,20 @@ msgid "Information Message"
 msgstr "Information Message"
 
 #: [xmpp]title
-#, fuzzy
 msgid "Default XMPP server"
-msgstr "Whitelist - XMPP Server"
+msgstr "Default XMPP server"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "Main XMPP server domain"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "Main XMPP server description"
 
 #: [xmpp]country
-#, fuzzy
 msgid "Main XMPP server country"
-msgstr "Your XMPP server is unauthorized"
+msgstr "Main XMPP server country"
 
 #: [log]empty
 msgid "Empty"
@@ -436,9 +433,8 @@ msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-#, fuzzy
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Here you can register your pod on the official %sMovim API%s and be listed on %sthe pods page%s."
+msgstr "Here you can register your pod on the official %sMovim API%s"
 
 #: [api]register
 msgid "Your pod is not registered on the API"
@@ -656,9 +652,8 @@ msgid "No chats yet..."
 msgstr "No chats yet..."
 
 #: [chats]empty
-#, fuzzy
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr "Open a new conversation by clicking on the %s button bellow or visit the %sContacts%s page."
+msgstr "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -977,9 +972,8 @@ msgid "My Subscriptions"
 msgstr "My Subscriptions"
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Create a new Group"
+msgstr "Create a new Group on %s"
 
 #: [groups]name
 msgid "Group name"
@@ -1308,9 +1302,8 @@ msgid "Publish this post publicly?"
 msgstr "Publish this post publicly?"
 
 #: [post]public_no
-#, fuzzy
 msgid "This post is private"
-msgstr "This post is now private"
+msgstr "This post is private"
 
 #: [post]public_url
 msgid "Public URL of this post"
@@ -1473,9 +1466,8 @@ msgid "Add a chatroom"
 msgstr "Add a chatroom"
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "Add a chatroom"
+msgstr "Edit a chatroom"
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1558,9 +1550,8 @@ msgid "No contacts ?"
 msgstr "No contacts ?"
 
 #: [roster]no_contacts_text
-#, fuzzy
 msgid "You can add one using the + button below"
-msgstr "You can add one using the + button bellow"
+msgstr "You can add one using the + button below"
 
 #: [roster]show_hide
 msgid "Show/Hide"
@@ -1600,11 +1591,11 @@ msgstr "Search a contact"
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr ""
+msgstr "What are you looking for?"
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
+msgstr "Open me using Ctrl + M"
 
 #: [share]error
 msgid "This is not a valid url"
@@ -1711,9 +1702,8 @@ msgid "Is this profile public ?"
 msgstr "Is this profile public ?"
 
 #: [privacy]privacy_info
-#, fuzzy
 msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "Please pay attention ! By making your profile public, all the information listed bellow will be available for all the Movim users and on the whole Internet."
+msgstr "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1916,9 +1906,8 @@ msgid "Previous"
 msgstr "Previous"
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "March"
+msgstr "Search"
 
 #: [day]title
 msgid "Day"
@@ -2577,6 +2566,3 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
-
-#~ msgid "This post is now public"
-#~ msgstr "This post is now public"

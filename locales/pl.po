@@ -1,6 +1,6 @@
 #
 # Translators:
-# Robert Wolniak <robert.wolniak@gmail.com>, 2015
+# Robert Wolniak <robert.wolniak@gmail.com>, 2015-2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -80,7 +80,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
@@ -193,7 +193,7 @@ msgstr "Ładowanie"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...i zacznij grać"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -249,7 +249,7 @@ msgstr "Port"
 
 #: [db]name
 msgid "Database Name"
-msgstr ""
+msgstr "Nazwa Bazy Danych"
 
 #: [admin]general
 msgid "General Settings"
@@ -308,9 +308,8 @@ msgid "Retype password"
 msgstr "Przepisz hasło"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Whitelisted XMPP Servers"
-msgstr "Biała lista - Serwer XMPP"
+msgstr ""
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -347,9 +346,8 @@ msgid "Information Message"
 msgstr "Wiadomość Informacyjna"
 
 #: [xmpp]title
-#, fuzzy
 msgid "Default XMPP server"
-msgstr "Biała lista - Serwer XMPP"
+msgstr ""
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
@@ -360,9 +358,8 @@ msgid "Main XMPP server description"
 msgstr ""
 
 #: [xmpp]country
-#, fuzzy
 msgid "Main XMPP server country"
-msgstr "Twój serwer XMPP nie jest autoryzowany"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -437,9 +434,8 @@ msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-#, fuzzy
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Tutaj możesz zarejestrować swojego poda na oficjalnym %sMovim API%s i mieć go oznaczonego na %sthe pods page%s."
+msgstr "Tutaj możesz zarejestrować swojego poda na oficjalnym %sMovim API%s"
 
 #: [api]register
 msgid "Your pod is not registered on the API"
@@ -495,7 +491,7 @@ msgstr "Avatar Nie Zaktualizowany"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "Jeszcze nie ustawiono awatara"
 
 #: [blog]title [feed]title
 msgid "%s's feed"
@@ -507,7 +503,7 @@ msgstr "Ten użytkownik niczego teraz nie opublikował"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "Niniejsza zawartość jest prywatna. Zaloguj się, by ją zobaczyć"
 
 #: [title]conferences
 msgid "Conferences"
@@ -594,7 +590,7 @@ msgstr "Kontakt zniknął"
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr ""
+msgstr "%s wiadomości odebranych"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -670,7 +666,7 @@ msgstr "Załaduj więcej kontaktów"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "Nowa rozmowa"
 
 #: [config]general
 msgid "General"
@@ -698,11 +694,11 @@ msgstr "Wygląd"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr ""
+msgstr "Niedozwolona konfiguracja"
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Konfiguracja Zaawansowana"
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -714,7 +710,7 @@ msgstr "Użyj powiadomień na pulpicie"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
-msgstr ""
+msgstr "Własny CSS URL twojego bloga"
 
 #: [general]legend
 msgid "General Informations"
@@ -830,7 +826,7 @@ msgstr "Ostatni publiczny post"
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
-msgstr ""
+msgstr "Odwiedź bloga by zobaczyć wszystkie publiczne posty"
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -977,9 +973,8 @@ msgid "My Subscriptions"
 msgstr "Moje Subskrypcje"
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Stwórz nową Grupę"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1071,7 +1066,7 @@ msgstr "Porozmawiaj z ekipą ?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr ""
+msgstr "Dodaj pokój rozmów"
 
 #: [init]location
 msgid "Location node created"
@@ -1241,7 +1236,7 @@ msgstr "Wszystko"
 
 #: [menu]mine
 msgid "My publications"
-msgstr ""
+msgstr "Moje publikacje"
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
@@ -1249,7 +1244,7 @@ msgstr "Kontakty"
 
 #: [menu]add_post
 msgid "Add a post"
-msgstr ""
+msgstr "Dodaj post"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1301,20 +1296,19 @@ msgstr "Zobacz profil %s"
 
 #: [post]blog_last
 msgid "Public posts from users"
-msgstr ""
+msgstr "Publiczne posty użytkowników"
 
 #: [post]public
 msgid "Publish this post publicly?"
 msgstr "Opublikować wpis publicznie?"
 
 #: [post]public_no
-#, fuzzy
 msgid "This post is private"
-msgstr "Wpis jest publiczny"
+msgstr "Ten post jest prywatny"
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr ""
+msgstr "Publiczny adres URL tego postu"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1326,7 +1320,7 @@ msgstr "Zamierzasz usunąć ten wpis, potwierdź swoje zamiary"
 
 #: [post]discover
 msgid "Discover more articles on the Groups page"
-msgstr ""
+msgstr "Znajdź więcej artykułów na stronie Grup"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1442,7 +1436,7 @@ msgstr "Proszę podać tytuł"
 
 #: [publish]edit
 msgid "Edit post"
-msgstr ""
+msgstr "Edytuj post"
 
 #: [publish]title
 msgid "Publish"
@@ -1473,9 +1467,8 @@ msgid "Add a chatroom"
 msgstr "Dodaj pokój czatowy"
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "Dodaj pokój czatowy"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1558,9 +1551,8 @@ msgid "No contacts ?"
 msgstr "Brak kontaktów ?"
 
 #: [roster]no_contacts_text
-#, fuzzy
 msgid "You can add one using the + button below"
-msgstr "Możesz dodać jakieś klikając na przycisk + poniżej"
+msgstr ""
 
 #: [roster]show_hide
 msgid "Show/Hide"
@@ -1596,7 +1588,7 @@ msgstr "Szukaj w swoich kontaktach"
 
 #: [roster]search_pod
 msgid "Search a contact"
-msgstr ""
+msgstr "Wyszukaj w kontaktach"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -1636,7 +1628,7 @@ msgstr "Miesięczne Subskrypcje w sumie"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
-msgstr ""
+msgstr "Wysłano stickera za pomocą Movim"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -1800,7 +1792,7 @@ msgstr "Pokój"
 
 #: [page]tag
 msgid "Tag"
-msgstr ""
+msgstr "Tag"
 
 #: [error]error
 msgid "Error: %s"
@@ -1915,9 +1907,8 @@ msgid "Previous"
 msgstr "Poprzednia"
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "Marzec"
+msgstr ""
 
 #: [day]title
 msgid "Day"

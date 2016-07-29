@@ -80,7 +80,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
 "Language: ja\n"
@@ -308,9 +308,8 @@ msgid "Retype password"
 msgstr "パスワードを再入力してください"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Whitelisted XMPP Servers"
-msgstr "信頼するXMPPサーバー"
+msgstr ""
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -347,9 +346,8 @@ msgid "Information Message"
 msgstr ""
 
 #: [xmpp]title
-#, fuzzy
 msgid "Default XMPP server"
-msgstr "信頼するXMPPサーバー"
+msgstr ""
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
@@ -975,9 +973,8 @@ msgid "My Subscriptions"
 msgstr ""
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "グループを作成する"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1470,9 +1467,8 @@ msgid "Add a chatroom"
 msgstr "チャットルームを追加する"
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "チャットルームを追加する"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1911,9 +1907,8 @@ msgid "Previous"
 msgstr "前へ"
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "３月"
+msgstr ""
 
 #: [day]title
 msgid "Day"

@@ -2,6 +2,7 @@
 # Translators:
 # Alexander Popov <alex.wayfer@gmail.com>, 2016
 # Alexander Radchenko <radchenkosasha@gmail.com>, 2016
+# Qim Armnov <hoakimartamonov@gmail.com>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -81,8 +82,8 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
+"Last-Translator: Qim Armnov <hoakimartamonov@gmail.com>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -309,9 +310,8 @@ msgid "Retype password"
 msgstr "Введите пароль ещё раз"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Whitelisted XMPP Servers"
-msgstr "Белый список XMPP серверов"
+msgstr "Добавленные в белый список XMPP сервера"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -348,21 +348,20 @@ msgid "Information Message"
 msgstr "Информационное сообщение"
 
 #: [xmpp]title
-#, fuzzy
 msgid "Default XMPP server"
-msgstr "Белый список XMPP серверов"
+msgstr "Сервер XMPP по-умолчанию"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "Домен основного xmpp сервера"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "Описание основного xmpp сервера"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "Страна основного xmpp сервера"
 
 #: [log]empty
 msgid "Empty"
@@ -414,11 +413,11 @@ msgstr "Базе данных нуждается в обновлении, пер
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr ""
+msgstr "Ошибка соединения WebSocket, убедитесь что служба Movim запущена и доступна"
 
 #: [compatibility]xmpp_websocket
 msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr ""
+msgstr "Ошибка соединения Websocket, проверьте правильность URL адреса в разделе настроек"
 
 #: [schema]browser
 msgid "Browser"
@@ -430,16 +429,15 @@ msgstr "Ядро Movim"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Служба Movim"
 
 #: [schema]xmpp
 msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-#, fuzzy
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Здесь Вы можете зарегистрировать свою установку Movim в %sMovim API%s с упомянанием на %sстранице установок%s."
+msgstr ""
 
 #: [api]register
 msgid "Your pod is not registered on the API"
@@ -495,7 +493,7 @@ msgstr "Аватара не обновлена"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "Аватар не установлен"
 
 #: [blog]title [feed]title
 msgid "%s's feed"
@@ -553,7 +551,7 @@ msgstr "Закладки обновлены"
 
 #: [bookmarks]error
 msgid "An error occured :"
-msgstr ""
+msgstr "Произошла ошибка: "
 
 #: [bookmarks]configure
 msgid "Configure"
@@ -590,11 +588,11 @@ msgstr "Пауза..."
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
+msgstr "Контакт ушел"
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr ""
+msgstr "%s сообщений получено"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -618,7 +616,7 @@ msgstr "Обсудить с вашими контактами"
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "Популярные контакты"
 
 #: [chatroom]members
 msgid "Members"
@@ -642,11 +640,11 @@ msgstr "Настройки сохранены"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "Тема"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "Тема изменена"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
@@ -654,11 +652,11 @@ msgstr "Администрирование"
 
 #: [chats]empty_title
 msgid "No chats yet..."
-msgstr ""
+msgstr "Бесед пока нет..."
 
 #: [chats]empty
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr ""
+msgstr "Начните новую беседу щелкнув по %s кнопке внизу или посетите %sContacts%s страницу."
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -666,11 +664,11 @@ msgstr "Пообщаться с контактом"
 
 #: [chats]more
 msgid "Load more contacts"
-msgstr ""
+msgstr "Загрузить еще"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "Новая беседа"
 
 #: [config]general
 msgid "General"
@@ -686,11 +684,11 @@ msgstr ""
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "Показывать контакты не в сети"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "Скрыть контакты не в сети"
 
 #: [config]appearence
 msgid "Appearence"
@@ -698,11 +696,11 @@ msgstr "Внешний вид"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr ""
+msgstr "Неправильные настройки"
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Расширенные настройки"
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -714,7 +712,7 @@ msgstr "Использовать оповещения ОС"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
-msgstr ""
+msgstr "Указать URL собственного CSS для вашего блога"
 
 #: [general]legend
 msgid "General Informations"
@@ -754,7 +752,7 @@ msgstr "Другие учётные записи"
 
 #: [general]tune
 msgid "Is Listening"
-msgstr ""
+msgstr "Слушает"
 
 #: [position]legend
 msgid "Geographic Position"
@@ -794,7 +792,7 @@ msgstr "Последний зарегестрированый"
 
 #: [explore]explore
 msgid "Find some new friends"
-msgstr ""
+msgstr "Найдите новых друзей"
 
 #: [edit]title [button]edit
 msgid "Edit"
@@ -822,19 +820,19 @@ msgstr "Вы собираетесь удалить один из ваших ко
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%s лет"
 
 #: [blog]last
 msgid "Last public post"
-msgstr ""
+msgstr "Последняя публикация"
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
-msgstr ""
+msgstr "Открыть блог для всех публикаций"
 
 #: [subscription]to
 msgid "You can see this contact status"
-msgstr ""
+msgstr "Вы можете видеть статус этого контакта"
 
 #: [subscription]to_button
 msgid "Share my status"
@@ -842,19 +840,19 @@ msgstr "Поделиться статусом"
 
 #: [subscription]to_text
 msgid "But this contact cannot see yours"
-msgstr ""
+msgstr "Но этот контакт не может видеть ваш"
 
 #: [subscription]from
 msgid "You are not subscribed to this contact"
-msgstr ""
+msgstr "Вы не подписаны на этот контакт"
 
 #: [subscription]from_button
 msgid "Ask to subscribe"
-msgstr ""
+msgstr "Запросить подписку"
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
-msgstr ""
+msgstr "Но этот контакт может видеть ваш онлайн-статус"
 
 #: [subscription]nil
 msgid "No subscriptions"
@@ -862,11 +860,11 @@ msgstr "Нет подписок"
 
 #: [subscription]nil_button
 msgid "Invite"
-msgstr ""
+msgstr "Приглашение"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-msgstr ""
+msgstr "Контакт находится в вашем контакт-листе, но нет подписки между аккаунтами"
 
 #: [group]subscribe
 msgid "Subscribe"
@@ -882,11 +880,11 @@ msgstr "Отписаться"
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
-msgstr ""
+msgstr "Вы собираетесь отписаться от этой группы"
 
 #: [group]unsubscribed
 msgid "Unsubscribed"
-msgstr ""
+msgstr "Неподписанный"
 
 #: [group]share_label
 msgid "Make your membership to this group public to your friends"
@@ -894,7 +892,7 @@ msgstr "Раскрыть ваше членство в данной группе 
 
 #: [group]label_label
 msgid "Give a label for this group"
-msgstr ""
+msgstr "Дайте название для этой группы"
 
 #: [group]sure
 msgid "Are you sure ?"
@@ -902,11 +900,11 @@ msgstr "Вы уверены?"
 
 #: [group]empty_text
 msgid "Discover, follow and share"
-msgstr ""
+msgstr "Изучайте новое, подписывайтесь и делитесь"
 
 #: [group]empty
 msgid "Something bad happened to this group"
-msgstr ""
+msgstr "Что то случилось с этой группой"
 
 #: [group]config_saved
 msgid "Group configuration saved"
@@ -918,15 +916,15 @@ msgstr "Удалить группу"
 
 #: [group]delete_text
 msgid "You are going to delete the following group. Please confirm your action."
-msgstr ""
+msgstr "Вы собираетесь  удалить следующую группу. Подтвердите ваше действие."
 
 #: [group]delete_clean_text
 msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
+msgstr "Похоже эта группа больше не существует. Удалить ее из списка ваших подписок?"
 
 #: [group]counter
 msgid "%s groups on this server"
-msgstr ""
+msgstr "%s групп на этом сервере"
 
 #: [group]subscriptions [statistics]subscriptions
 msgid "Subscriptions"
@@ -934,27 +932,27 @@ msgstr "Подписки"
 
 #: [group]servers
 msgid "Groups servers"
-msgstr ""
+msgstr "Серверы групп"
 
 #: [group]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "Поиск нового сервера"
 
 #: [group]help_info1
 msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-msgstr ""
+msgstr "Группы отличный способ делиться публикациями по интересующим вас темам с другими пользователями Movim"
 
 #: [group]help_info2
 msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-msgstr ""
+msgstr "Выберите сервер и Группу и подпишитесь используя %s кнопку в заголовке. Вы также можете создать новую группу используя %s кнопку."
 
 #: [group]help_info3
 msgid "Done? You can now publish a new post in the Group by using the %s button."
-msgstr ""
+msgstr "Все готово? Теперь вы можете сделать новую Публикацию в Группе используя %s кнопку"
 
 #: [group]help_info4
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-msgstr ""
+msgstr "Вы можете найти список групп на которые вы подписаны в разделе Мои подписки, а также получать мнгновенные уведомления о новых публикациях на %sNews%s странице"
 
 #: [groups]empty_title
 msgid "Hello"
@@ -966,7 +964,7 @@ msgstr "Для связи"
 
 #: [groups]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
+msgstr "Здесь вы можете управлять своими подписками"
 
 #: [groups]empty_text2
 msgid "You don't have any group subscriptions yet."
@@ -974,16 +972,15 @@ msgstr ""
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
-msgstr ""
+msgstr "Мои Подписки"
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Создать новую учётную запись"
+msgstr "Создать новую Группу на %s"
 
 #: [groups]name
 msgid "Group name"
-msgstr ""
+msgstr "Название группы"
 
 #: [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -991,31 +988,31 @@ msgstr "My Little Pony -Фан Клуб"
 
 #: [groups]created
 msgid "Group created successfully"
-msgstr ""
+msgstr "Группа успешно создана"
 
 #: [groups]deleted
 msgid "Group deleted successfully"
-msgstr ""
+msgstr "Группа удалена успешно"
 
 #: [groups]name_error
 msgid "Please provide a valid group name (4 characters minimum)"
-msgstr ""
+msgstr "Введите допустимое название группы (минимум 4 символа)"
 
 #: [groups]no_creation
 msgid "You cannot create a new Group on this server"
-msgstr ""
+msgstr "Вы не можете создать новую Группу на этом сервере"
 
 #: [groups]sub
 msgid "%s subscribers"
-msgstr ""
+msgstr "%s подписчиков"
 
 #: [groups]num
 msgid "%s posts"
-msgstr ""
+msgstr "% публикаций"
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
+msgstr "Такой сервер не существует"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1071,7 +1068,7 @@ msgstr "Желаете пообщаться с нашей командой?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr ""
+msgstr "Добавить чат-комнату"
 
 #: [init]location
 msgid "Location node created"
@@ -1136,7 +1133,7 @@ msgstr "Учётная запись успешно создана"
 #: [error]xmpp_unauthorized
 msgctxt "[error]xmpp_unauthorized"
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "Ваш XMPP сервер не авторизован"
 
 #: [error]mec_error
 msgid "The server takes too much time to respond"
@@ -1148,7 +1145,7 @@ msgstr "Movim не может связаться с сервером, пожал
 
 #: [error]impossible
 msgid "Impossible login"
-msgstr ""
+msgstr "Недопустимое имя пользователя"
 
 #: [error]title
 msgid "Oops!"
@@ -1160,20 +1157,20 @@ msgstr "Неизвестная ошибка"
 
 #: [error]login_format
 msgid "Invalid username format"
-msgstr ""
+msgstr "Неверный формат имени пользователя"
 
 #: [error]password_format
 msgid "Invalid password format"
-msgstr ""
+msgstr "Неверный формат пароля"
 
 #: [error]unauthorized
 msgctxt "[error]unauthorized"
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "Ваш XMPP-сервер не авторизован"
 
 #: [error]conflict
 msgid "A Movim session is already open on an other device"
-msgstr ""
+msgstr "У вас уже есть запущенная сессия Movim на другом устройстве"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1205,7 +1202,7 @@ msgstr "Еще нет учетной записи?"
 
 #: [form]whitelist.info
 msgid "You can login with accounts from theses servers"
-msgstr ""
+msgstr "Вы можете войти с помощью аккаунтов на этих серверах"
 
 #: [form]connected
 msgid "Connected"
@@ -1217,15 +1214,15 @@ msgstr "Население"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
+msgstr "Неподходящий псевдоним (от 4 до 40 символов)"
 
 #: [menu]empty_title
 msgid "No news yet..."
-msgstr ""
+msgstr "Пока никаких новостей..."
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
-msgstr ""
+msgstr "Добро пожаловать в вашу новостную ленту, здесь будут отображаться все публикации от ваших контактов и групп на которые вы подписаны"
 
 #: [menu]refresh
 msgid "Refresh all the streams"
@@ -1233,7 +1230,7 @@ msgstr "Обновить все потоки"
 
 #: [menu]public [post]public_yes
 msgid "This post is public"
-msgstr ""
+msgstr "Эта публикация общедоступна"
 
 #: [menu]all
 msgid "All"
@@ -1241,7 +1238,7 @@ msgstr "Все"
 
 #: [menu]mine
 msgid "My publications"
-msgstr ""
+msgstr "Мои публикации"
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
@@ -1249,7 +1246,7 @@ msgstr "Контакты"
 
 #: [menu]add_post
 msgid "Add a post"
-msgstr ""
+msgstr "Добавить публикацию"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1472,9 +1469,8 @@ msgid "Add a chatroom"
 msgstr "Добавить комнату"
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "Добавить комнату"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1913,9 +1909,8 @@ msgid "Previous"
 msgstr ""
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "Март"
+msgstr ""
 
 #: [day]title
 msgid "Day"

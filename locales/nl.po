@@ -1,7 +1,8 @@
 #
 # Translators:
 # before <never@unseen.is>, 2015
-# BurningNetel <joepseuren1@gmail.com>, 2015
+# Joep Seuren <joepseuren1@gmail.com>, 2015
+# Jeshua Edgar <jeshua.edgar@hotmail.com>, 2016
 # Steven Roose <stevenroose@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -82,7 +83,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
@@ -310,9 +311,8 @@ msgid "Retype password"
 msgstr "Herhaal wachtwoord"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Whitelisted XMPP Servers"
-msgstr "Whitelist - XMPP Server"
+msgstr ""
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -349,9 +349,8 @@ msgid "Information Message"
 msgstr "Informatieve Mededeling"
 
 #: [xmpp]title
-#, fuzzy
 msgid "Default XMPP server"
-msgstr "Whitelist - XMPP Server"
+msgstr ""
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
@@ -362,9 +361,8 @@ msgid "Main XMPP server description"
 msgstr ""
 
 #: [xmpp]country
-#, fuzzy
 msgid "Main XMPP server country"
-msgstr "je XMPP server is niet geautoriseerd"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -439,9 +437,8 @@ msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-#, fuzzy
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Hier kun je je pod registreren op de officiele %sMovim API%s waarna  de pod op %sde pods pagina%s getoond wordt."
+msgstr ""
 
 #: [api]register
 msgid "Your pod is not registered on the API"
@@ -509,7 +506,7 @@ msgstr "Deze gebruiker heeft momenteel niets gepost"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "Deze data is privé, log in om dit te zien."
 
 #: [title]conferences
 msgid "Conferences"
@@ -596,7 +593,7 @@ msgstr "Contact verdwenen"
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr ""
+msgstr "%s berichten ontvangen"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -672,7 +669,7 @@ msgstr "Laad meer contactpersonen"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "Nieuw gesprek"
 
 #: [config]general
 msgid "General"
@@ -704,7 +701,7 @@ msgstr ""
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Geavanceerde configuratie"
 
 #: [notifications]message
 msgid "Notify on incoming message"
@@ -832,7 +829,7 @@ msgstr "laatste publiek bericht"
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
-msgstr ""
+msgstr "Bezoek de blog om alle openbare berichten te zien"
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -979,9 +976,8 @@ msgid "My Subscriptions"
 msgstr "Mijn abonnementen"
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Maak een nieuwe Groep"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1061,7 +1057,7 @@ msgstr "Lees de Wiki"
 
 #: [ml]question
 msgid "Talk with us by email ?"
-msgstr ""
+msgstr "Spreek met ons via email?"
 
 #: [ml]button
 msgid "Join the Mailing List"
@@ -1073,7 +1069,7 @@ msgstr "Chatten met het team?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr ""
+msgstr "Voeg de chatroom toe"
 
 #: [init]location
 msgid "Location node created"
@@ -1310,9 +1306,8 @@ msgid "Publish this post publicly?"
 msgstr "Post dit bericht openbaar?"
 
 #: [post]public_no
-#, fuzzy
 msgid "This post is private"
-msgstr "Dit bericht is openbaar"
+msgstr ""
 
 #: [post]public_url
 msgid "Public URL of this post"
@@ -1475,9 +1470,8 @@ msgid "Add a chatroom"
 msgstr ""
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "Openbare chatroom"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1560,9 +1554,8 @@ msgid "No contacts ?"
 msgstr "Geen contactpersonen?"
 
 #: [roster]no_contacts_text
-#, fuzzy
 msgid "You can add one using the + button below"
-msgstr "Je kunt er een toevoegen met de +-knop hieronder"
+msgstr ""
 
 #: [roster]show_hide
 msgid "Show/Hide"
@@ -1917,9 +1910,8 @@ msgid "Previous"
 msgstr "Vorige"
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "maart"
+msgstr ""
 
 #: [day]title
 msgid "Day"

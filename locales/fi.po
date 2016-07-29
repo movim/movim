@@ -1,5 +1,6 @@
 #
 # Translators:
+# Mikael H <silfursun@gmail.com>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -79,7 +80,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
 "Language: fi\n"
@@ -91,43 +92,43 @@ msgstr ""
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Kiitos"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "Kehittäjät"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Kääntäjät"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Kiitos kaikille kääntäjille"
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "Ohjelmisto"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "Resurssit"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim on XMPP-pohjainen keskustelualusta. Koko projekti, lukuun ottamatta seuraavia ohjelmistoja ja resursseja, käyttää lisenssiä"
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Tili"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Vaihda salasana"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -136,39 +137,39 @@ msgstr "Salasana"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Vahvista salasana"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Salasanasi on päivitetty"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Anna toimiva salasana (vähintään 6 merkkiä)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "Salasanat eivät täsmää"
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "Poista tili"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Poista tilisi"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "Olet poistamassa XMPP-tiliäsi ja kaikkea siihen liittyvää tietoa (profiili, kontaktit ja julkaisut)."
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Oletko varma että haluat poistaa sen?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "Portti"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -176,7 +177,7 @@ msgstr "Luo uusi tili"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "Palvelimelta ei löytynyt tilin luontikaavaketta"
 
 #: [create]server_on
 msgid "on"
@@ -184,11 +185,11 @@ msgstr ""
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "Tilisi on rekisteröity"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Ladataan"
 
 #: [create]placeholder
 msgid "…and start playing"
@@ -196,15 +197,15 @@ msgstr ""
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Ei hyväksyttävä"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "Palvelimelle ei voi rekisteröityä juuri nyt"
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
-msgstr ""
+msgstr "Palvelin käyttää ulkoista rekisteröitymistä, klikkaa seuraavaa linkkiä"
 
 #: [adhoc]title
 msgid "Actions"
@@ -212,55 +213,55 @@ msgstr "Toimenpiteet"
 
 #: [db]legend [schema]database
 msgid "Database"
-msgstr ""
+msgstr "Tietokanta"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
-msgstr ""
+msgstr "Modl ei pystynyt yhdistämään tietokantaan"
 
 #: [db]connect_success
 msgid "Movim is connected to the database"
-msgstr ""
+msgstr "Movim on yhdistetty tietokantaan"
 
 #: [db]update
 msgid "The database need to be updated"
-msgstr ""
+msgstr "Tietokanta pitää päivittää"
 
 #: [db]up_to_date
 msgid "Movim database is up to date"
-msgstr ""
+msgstr "Movim-tietokanta on ajan tasalla"
 
 #: [db]type
 msgid "Database Type"
-msgstr ""
+msgstr "Tietokannan tyyppi"
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Käyttäjänimi"
 
 #: [db]host
 msgid "Host"
-msgstr ""
+msgstr "Host"
 
 #: [db]port
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: [db]name
 msgid "Database Name"
-msgstr ""
+msgstr "Tietokannan nimi"
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Yleiset asetukset"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Teema"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "Oletuskieli"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -268,7 +269,7 @@ msgstr ""
 
 #: [general]timezone
 msgid "Server Timezone"
-msgstr ""
+msgstr "Palvelimen aikavyöhyke"
 
 #: [general]limit
 msgid "User folder size limit (in bytes)"
@@ -304,7 +305,7 @@ msgstr ""
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "Kirjoita salasana uudelleen"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -362,7 +363,7 @@ msgstr ""
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "Tyhjä"
 
 #: [log]syslog
 msgid "Syslog"
@@ -386,19 +387,19 @@ msgstr ""
 
 #: [compatibility]php2
 msgid "Required: 5.3.0"
-msgstr ""
+msgstr "Vaadittu: 5.3.0"
 
 #: [compatibility]curl
 msgid "Install the php5-curl library"
-msgstr ""
+msgstr "Asenna php5-curl kirjasto"
 
 #: [compatibility]imagick
 msgid "Install the php5-imagick library"
-msgstr ""
+msgstr "Asenna php5-imagick kirjasto"
 
 #: [compatibility]gd
 msgid "Install the php5-gd library"
-msgstr ""
+msgstr "Asenna php5-gd kirjasto"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movims root directory"
@@ -418,19 +419,19 @@ msgstr ""
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "Selain"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Movim ydin"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Movim daemon"
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
@@ -462,7 +463,7 @@ msgstr ""
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "Tiedosto"
 
 #: [avatar]use_it
 msgid "Use it"
@@ -470,27 +471,27 @@ msgstr ""
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr ""
+msgstr "Webkamera"
 
 #: [avatar]cheese
 msgid "Cheese !"
-msgstr ""
+msgstr "Sano muikku!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "Ota kuva webkameralla"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "Avatar päivitetty"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "Avataria ei päivitetty"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "Ei avataria vielä"
 
 #: [blog]title [feed]title
 msgid "%s's feed"
@@ -498,11 +499,11 @@ msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
-msgstr ""
+msgstr "Tämä käyttäjä ei ole julkaissut vielä mitään"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "Tämä sisältö on yksityistä, kirjaudu sisään nähdäksesi"
 
 #: [title]conferences
 msgid "Conferences"
@@ -510,25 +511,25 @@ msgstr ""
 
 #: [title]groups [group]empty_title [menu]groups [page]groups
 msgid "Groups"
-msgstr ""
+msgstr "Ryhmät"
 
 #: [chatroom]add
 msgid "Add a new Chat Room"
-msgstr ""
+msgstr "Lisää keskusteluhuone"
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
-msgstr ""
+msgstr "Keskusteluhuoneen ID"
 
 #: [chatroom]name
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 #: [accounts]accounts_nickname
 msgid "Nickname"
-msgstr "Lempinimi"
+msgstr "Nimimerkki"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
@@ -536,44 +537,44 @@ msgstr ""
 
 #: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
-msgstr ""
+msgstr "Huono keskusteluhuoneen ID"
 
 #: [chatroom]empty_name [chatrooms]empty_name
 msgid "Empty name"
-msgstr ""
+msgstr "Tyhä nimi"
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
-msgstr ""
+msgstr "Kirjanmerkit päivitetty"
 
 #: [bookmarks]error
 msgid "An error occured :"
-msgstr ""
+msgstr "Tapahtui virhe:"
 
 #: [bookmarks]configure
 msgid "Configure"
-msgstr ""
+msgstr "Muokkaa asetuksia"
 
 #: [url]add
 msgid "Add a new URL"
-msgstr ""
+msgstr "Lisää uusi osoite"
 
 #: [url]url
 msgid "URL"
-msgstr ""
+msgstr "Osoite"
 
 #: [url]name
 msgctxt "[url]name"
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "Viesti julkaistu"
 
 #: [message]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "Salattu viesti"
 
 #: [message]composing [chats]composing
 msgid "Composing..."
@@ -593,39 +594,39 @@ msgstr ""
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr ""
+msgstr "%s tarvitsee huomiosi"
 
 #: [chat]placeholder
 msgid "Your message here..."
-msgstr ""
+msgstr "Viestisi tähän..."
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "Hymiöt"
 
 #: [chat]empty_title [button]chat
 msgid "Chat"
-msgstr "Chat"
+msgstr "Keskustelu"
 
 #: [chat]empty_text
 msgid "Discuss with your contacts"
-msgstr ""
+msgstr "Keskustele kontaktiesi kanssa"
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "Usein käytetyt kontaktit"
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "Jäsenet"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "Yhdistetty keskusteluhuoneeseen"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "Yhdistetty keskusteluhuoneeseen katkaistu"
 
 #: [chatroom]config [group]configuration [page]configuration
 msgid "Configuration"
@@ -633,15 +634,15 @@ msgstr "Asetukset"
 
 #: [chatroom]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "Asetukset tallennettu"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "Aihe"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "Aihe vaihdettu"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
@@ -649,7 +650,7 @@ msgstr ""
 
 #: [chats]empty_title
 msgid "No chats yet..."
-msgstr ""
+msgstr "Ei keskusteluja vielä..."
 
 #: [chats]empty
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
@@ -657,19 +658,19 @@ msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr ""
+msgstr "Keskustele kontaktin kanssa"
 
 #: [chats]more
 msgid "Load more contacts"
-msgstr ""
+msgstr "Lataa lisää kontakteja"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "Uusi keskustelu"
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "Yleinen"
 
 #: [config]language
 msgid "Language"
@@ -681,15 +682,15 @@ msgstr ""
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "Näytä offline-kontaktit"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "Piilota offline-kontaktit"
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "Ulkonäkö"
 
 #: [config]not_valid
 msgid "Configuration invalid"
@@ -705,7 +706,7 @@ msgstr ""
 
 #: [notifications]desktop
 msgid "Use desktop notifications"
-msgstr ""
+msgstr "Käytä työpöytäilmoituksia"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -733,7 +734,7 @@ msgstr "Siviilisääty"
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "Sähköposti"
 
 #: [general]website
 msgid "Website"
@@ -745,7 +746,7 @@ msgstr "Tietoja minusta"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "Muut tilit"
 
 #: [general]tune
 msgid "Is Listening"
@@ -761,23 +762,23 @@ msgstr ""
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "Maa"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "Fiilis"
 
 #: [mood]im
 msgid "I'm "
-msgstr ""
+msgstr "Olen"
 
 #: [listen]title
 msgid "Listening"
-msgstr ""
+msgstr "Kuuntelee"
 
 #: [last]title
 msgid "Last seen"
-msgstr ""
+msgstr "Nähty viimeksi"
 
 #: [client]title
 msgid "Client Informations"
@@ -801,31 +802,31 @@ msgstr "Alias"
 
 #: [edit]group
 msgid "Group"
-msgstr ""
+msgstr "Ryhmä"
 
 #: [edit]updated [roster]updated
 msgid "Contact updated"
-msgstr ""
+msgstr "Kontakti päivitetty"
 
 #: [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "Oletko varma?"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr ""
+msgstr "Varmista kontaktin poistaminen"
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%s vuotta"
 
 #: [blog]last
 msgid "Last public post"
-msgstr ""
+msgstr "Viimeisin julkinen julkaisu"
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
-msgstr ""
+msgstr "Käy blogissa ja lue katso julkiset julkaisut"
 
 #: [subscription]to
 msgid "You can see this contact status"
@@ -833,7 +834,7 @@ msgstr ""
 
 #: [subscription]to_button
 msgid "Share my status"
-msgstr ""
+msgstr "Jaa tilani"
 
 #: [subscription]to_text
 msgid "But this contact cannot see yours"
@@ -893,7 +894,7 @@ msgstr ""
 
 #: [group]sure
 msgid "Are you sure ?"
-msgstr ""
+msgstr "Oletko varma?"
 
 #: [group]empty_text
 msgid "Discover, follow and share"
@@ -909,11 +910,11 @@ msgstr ""
 
 #: [group]delete_title
 msgid "Delete the group"
-msgstr ""
+msgstr "Poista tämä ryhmä"
 
 #: [group]delete_text
 msgid "You are going to delete the following group. Please confirm your action."
-msgstr ""
+msgstr "Varmista ryhmän poistaminen"
 
 #: [group]delete_clean_text
 msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
@@ -953,7 +954,7 @@ msgstr ""
 
 #: [groups]empty_title
 msgid "Hello"
-msgstr ""
+msgstr "Hei"
 
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
@@ -972,25 +973,24 @@ msgid "My Subscriptions"
 msgstr ""
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Luo uusi tili"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
-msgstr ""
+msgstr "Ryhmän nimi"
 
 #: [groups]name_example
 msgid "My Little Pony - Fan Club"
-msgstr ""
+msgstr "My Little Pony -faniryhmä"
 
 #: [groups]created
 msgid "Group created successfully"
-msgstr ""
+msgstr "Ryhmän luonti onnistui"
 
 #: [groups]deleted
 msgid "Group deleted successfully"
-msgstr ""
+msgstr "Ryhmän poisto onnistui"
 
 #: [groups]name_error
 msgid "Please provide a valid group name (4 characters minimum)"
@@ -1006,7 +1006,7 @@ msgstr ""
 
 #: [groups]num
 msgid "%s posts"
-msgstr ""
+msgstr "%s julkaisua"
 
 #: [groups]disco_error
 msgid "This server doesn't exists"
@@ -1014,7 +1014,7 @@ msgstr ""
 
 #: [help]faq
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Usein kysytyt kysymykset"
 
 #: [banner]title
 msgid "What do the little banners refer to ?"
@@ -1147,7 +1147,7 @@ msgstr ""
 
 #: [error]title
 msgid "Oops!"
-msgstr ""
+msgstr "Hups!"
 
 #: [error]default
 msgid "Unknown error"
@@ -1188,15 +1188,15 @@ msgstr "Oma osoite"
 
 #: [form]create_one
 msgid "Create one !"
-msgstr ""
+msgstr "Luo uusi!"
 
 #: [form]another_account
 msgid "Another account"
-msgstr ""
+msgstr "Toinen tili"
 
 #: [form]no_account
 msgid "No account yet ?"
-msgstr ""
+msgstr "Ei tiliä vielä?"
 
 #: [form]whitelist.info
 msgid "You can login with accounts from theses servers"
@@ -1204,7 +1204,7 @@ msgstr ""
 
 #: [form]connected
 msgid "Connected"
-msgstr ""
+msgstr "Yhdistetty"
 
 #: [form]population
 msgid "Population"
@@ -1212,11 +1212,11 @@ msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
+msgstr "Huono nimimerkki (4-40 merkkiä)"
 
 #: [menu]empty_title
 msgid "No news yet..."
-msgstr ""
+msgstr "Ei uutisia vielä"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
@@ -1228,7 +1228,7 @@ msgstr ""
 
 #: [menu]public [post]public_yes
 msgid "This post is public"
-msgstr ""
+msgstr "Tämä julkaisu on julkinen"
 
 #: [menu]all
 msgid "All"
@@ -1240,11 +1240,11 @@ msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr ""
+msgstr "Kontaktit"
 
 #: [menu]add_post
 msgid "Add a post"
-msgstr ""
+msgstr "Lisää julkaisu"
 
 #: [notifs]title
 msgid "Pending Invitations"
@@ -1264,19 +1264,19 @@ msgstr ""
 
 #: [post]content [post]content_label
 msgid "Content"
-msgstr ""
+msgstr "Sisältö"
 
 #: [post]published
 msgid "Post published"
-msgstr ""
+msgstr "Julkaisu julkaistu"
 
 #: [post]deleted
 msgid "Post deleted"
-msgstr ""
+msgstr "Julkaisu poistettu"
 
 #: [post]hot
 msgid "What's Hot"
-msgstr ""
+msgstr "Kuumaa juuri nyt"
 
 #: [post]hot_text
 msgid "Posts recently published in Groups that you are not subscribed (yet)"
@@ -1284,7 +1284,7 @@ msgstr ""
 
 #: [post]new [publish]new
 msgid "New post"
-msgstr ""
+msgstr "Uusi julkaisu"
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -1300,23 +1300,23 @@ msgstr ""
 
 #: [post]public
 msgid "Publish this post publicly?"
-msgstr ""
+msgstr "Julkaise julkisesti?"
 
 #: [post]public_no
 msgid "This post is private"
-msgstr ""
+msgstr "Tämä julkaisu on yksityinen"
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr ""
+msgstr "Julkinen URL"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
-msgstr ""
+msgstr "Poista tämä julkaisu"
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr ""
+msgstr "Varmista julkaisun poistaminen"
 
 #: [post]discover
 msgid "Discover more articles on the Groups page"
@@ -1324,15 +1324,15 @@ msgstr ""
 
 #: [post]comments_disabled
 msgid "Comments disabled"
-msgstr ""
+msgstr "Kommentit pois käytöstä"
 
 #: [post]comment_published
 msgid "Comment published"
-msgstr ""
+msgstr "Kommentti julkaistu"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
-msgstr ""
+msgstr "Vieraile julkisessa blogissasi"
 
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
@@ -1340,23 +1340,23 @@ msgstr ""
 
 #: [hello]share_title
 msgid "Universal share button"
-msgstr ""
+msgstr "Universaali jakamisnappula"
 
 #: [hello]share_text
 msgid "Bookmark or drag and drop the following button in your toolbar and use it on all the pages you want to share on Movim"
-msgstr ""
+msgstr "Raahaa nappula kirjanmerkkeihin tai työkaluriville ja käytä sitä sivuilla, jotka haluat jakaa Movimissa"
 
 #: [hello]share_button
 msgid "Share on Movim"
-msgstr ""
+msgstr "Jaa Movimissa"
 
 #: [hello]enter_title
 msgid "Oh! Hello!"
-msgstr ""
+msgstr "Hei vaan!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
+msgstr "Olet näköjään uusi täällä. Tervetuloa Movimiin!"
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -1368,19 +1368,19 @@ msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
-msgstr ""
+msgstr "Katkaise yhteys"
 
 #: [status]here
 msgid "Your status here !"
-msgstr ""
+msgstr "Tilasi tähän!"
 
 #: [status]updated
 msgid "Status updated"
-msgstr ""
+msgstr "Tila päivitetty"
 
 #: [status]status
 msgid "Status"
-msgstr ""
+msgstr "Tila"
 
 #: [status]presence
 msgid "Presence"
@@ -1392,7 +1392,7 @@ msgstr ""
 
 #: [post]preview
 msgid "Preview"
-msgstr ""
+msgstr "Esikatsele"
 
 #: [post]help [page]help
 msgid "Help"
@@ -1400,55 +1400,55 @@ msgstr "Ohje"
 
 #: [post]help_more
 msgid "More help"
-msgstr ""
+msgstr "Lisää ohjeita"
 
 #: [post]help_manual
 msgid "Markdown syntax manual"
-msgstr ""
+msgstr "Markdown-ohje"
 
 #: [post]content_text
 msgid "You can format your content using Markdown"
-msgstr ""
+msgstr "Voit muokata sisältöä Markdownilla"
 
 #: [post]link
 msgid "Link"
-msgstr ""
+msgstr "Linkki"
 
 #: [post]tags
 msgid "Tags"
-msgstr ""
+msgstr "Tagit"
 
 #: [post]gallery
 msgid "This picture will be added to your gallery"
-msgstr ""
+msgstr "Tämä kuva lisätään galleriaasi"
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
-msgstr ""
+msgstr "Anna toimiva osoite"
 
 #: [publish]no_content_preview
 msgid "No content to preview"
-msgstr ""
+msgstr "Ei sisältöä mitä esikatsella"
 
 #: [publish]no_title
 msgid "Please provide a title"
-msgstr ""
+msgstr "Anna otsikko"
 
 #: [publish]edit
 msgid "Edit post"
-msgstr ""
+msgstr "Muokkaa julkaisua"
 
 #: [publish]title
 msgid "Publish"
-msgstr ""
+msgstr "Julkaise"
 
 #: [publish]attach
 msgid "Add a file or a picture to your post"
-msgstr ""
+msgstr "Lisää tiedosto tai kuva julkaisuusi"
 
 #: [publish]no_publication
 msgid "You cannot publish a post on this Group"
-msgstr ""
+msgstr "Et voi julkaista tässä ryhmässä"
 
 #: [publish]form_filled
 msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
@@ -1456,15 +1456,15 @@ msgstr ""
 
 #: [publish]add_text
 msgid "Click here to add some text to your publication"
-msgstr ""
+msgstr "Klikkaa tästä lisätäksesi tekstiä julkaisuusi"
 
 #: [publish]add_text_label
 msgid "Add some text"
-msgstr ""
+msgstr "Lisää tekstiä"
 
 #: [rooms]add
 msgid "Add a chatroom"
-msgstr ""
+msgstr "Lisää keskusteluhuone"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
@@ -1472,39 +1472,39 @@ msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
-msgstr ""
+msgstr "Sinulla ei ole vielä yhtään keskusteluhuonetta."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr ""
+msgstr "Lisää yksi painamalla lisäyspainiketta."
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr ""
+msgstr "Keskusteluhuoneet"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
+msgstr "Lempihuoneeni"
 
 #: [chatrooms]users
 msgid "Users in the room"
-msgstr ""
+msgstr "Huoneen käyttäjät"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
-msgstr ""
+msgstr "Anna toimiva nimimerkki (2-40 merkkiä)"
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr ""
+msgstr "Nimimerkki on jo käytössä"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
+msgstr "Julkinen keskusteluhuone"
 
 #: [room]no_room
 msgid "Please provide a room address"
-msgstr ""
+msgstr "Anna huoneen osoite"
 
 #: [room]anonymous_text1
 msgid "You are currently logued as an anonymous user."
@@ -1520,7 +1520,7 @@ msgstr ""
 
 #: [room]nick
 msgid "Your nickname"
-msgstr ""
+msgstr "Nimimerkkisi"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1548,7 +1548,7 @@ msgstr ""
 
 #: [roster]no_contacts_title
 msgid "No contacts ?"
-msgstr ""
+msgstr "Ei kontakteja?"
 
 #: [roster]no_contacts_text
 msgid "You can add one using the + button below"
@@ -1556,7 +1556,7 @@ msgstr ""
 
 #: [roster]show_hide
 msgid "Show/Hide"
-msgstr ""
+msgstr "Näytä/Piilota"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
@@ -1576,19 +1576,19 @@ msgstr ""
 
 #: [roster]added
 msgid "Contact added"
-msgstr ""
+msgstr "Kontakti lisätty"
 
 #: [roster]deleted
 msgid "Contact deleted"
-msgstr ""
+msgstr "Kontakti poistettu"
 
 #: [roster]search
 msgid "Search in your contacts"
-msgstr ""
+msgstr "Etsi kontakteistasi"
 
 #: [roster]search_pod
 msgid "Search a contact"
-msgstr ""
+msgstr "Etsi kontaktia"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -1600,15 +1600,15 @@ msgstr ""
 
 #: [share]error
 msgid "This is not a valid url"
-msgstr ""
+msgstr "Tämä ei ole toimiva osoite"
 
 #: [share]success
 msgid "Sharing the URL"
-msgstr ""
+msgstr "Osoitteen jakaminen"
 
 #: [statistics]title
 msgid "Statistics"
-msgstr ""
+msgstr "Tilastot"
 
 #: [statistics]since
 msgid "Since"
@@ -1628,15 +1628,15 @@ msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
-msgstr ""
+msgstr "Tarra lähetettiin Movimista"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr ""
+msgstr "Movim on hajautettu sosiaalinen verkosto. Ennen rekisteröitymistä sinun pitää valita serveri jolle rekisteröidyt."
 
 #: [subscribe]server_question
 msgid "Your server here ?"
-msgstr ""
+msgstr "Oma serverisi tähän?"
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1652,11 +1652,11 @@ msgstr ""
 
 #: [upload]title
 msgid "Upload a file"
-msgstr ""
+msgstr "Lataa tiedosto"
 
 #: [upload]choose
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "Valitse ladattava tiedosto"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1664,43 +1664,43 @@ msgstr "Profiili"
 
 #: [vcard]updated
 msgid "Profile Updated"
-msgstr ""
+msgstr "Profiili päivitetty"
 
 #: [vcard]not_updated
 msgid "Profile Not Updated"
-msgstr ""
+msgstr "Profiilia ei päivitetty"
 
 #: [vcard]public
 msgid "Your profile is now public"
-msgstr ""
+msgstr "Profiilisi on nyt julkinen"
 
 #: [vcard]restricted
 msgid "Your profile is now restricted"
-msgstr ""
+msgstr "Profiilisi on nyt rajattu"
 
 #: [accounts]accounts_title
 msgid "Accounts"
-msgstr ""
+msgstr "Tili"
 
 #: [accounts]twitter
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: [accounts]skype
 msgid "Skype"
-msgstr ""
+msgstr "Skype"
 
 #: [accounts]yahoo
 msgid "Yahoo Account"
-msgstr ""
+msgstr "Yahoo!"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
-msgstr ""
+msgstr "Yksityisyyden taso"
 
 #: [privacy]privacy_question
 msgid "Is this profile public ?"
-msgstr ""
+msgstr "Onko tämä profiili julkinen?"
 
 #: [privacy]privacy_info
 msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -1716,7 +1716,7 @@ msgstr "Nollaa"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
-msgstr ""
+msgstr "Javascript on pois käytöstä. Onnea vaan."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
@@ -1728,7 +1728,7 @@ msgstr "Etusivu"
 
 #: [page]explore
 msgid "Explore"
-msgstr ""
+msgstr "Tutki"
 
 #: [page]account_creation
 msgid "Account Creation"
@@ -1736,7 +1736,7 @@ msgstr "Käyttäjätilin luominen"
 
 #: [page]news
 msgid "News"
-msgstr ""
+msgstr "Uutiset"
 
 #: [page]avatar
 msgid "Avatar"
@@ -1744,15 +1744,15 @@ msgstr "Avatar"
 
 #: [page]chats
 msgid "Chats"
-msgstr ""
+msgstr "Keskustelut"
 
 #: [page]public_groups
 msgid "Public Groups"
-msgstr ""
+msgstr "Julkiset ryhmät"
 
 #: [page]blog
 msgid "Blog"
-msgstr ""
+msgstr "Blogi"
 
 #: [page]about
 msgid "About"
@@ -1760,7 +1760,7 @@ msgstr ""
 
 #: [page]login
 msgid "Login"
-msgstr ""
+msgstr "Kirjaudu sisään"
 
 #: [page]feed
 msgid "Feed"
@@ -1768,11 +1768,11 @@ msgstr "Syöte"
 
 #: [page]posts
 msgid "Posts"
-msgstr ""
+msgstr "Julkaisut"
 
 #: [page]gallery
 msgid "Gallery"
-msgstr ""
+msgstr "Galleria"
 
 #: [page]visio
 msgid "Visio-conference"
@@ -1780,19 +1780,19 @@ msgstr ""
 
 #: [page]pods
 msgid "Pods"
-msgstr ""
+msgstr "Podit"
 
 #: [page]share
 msgid "Share"
-msgstr ""
+msgstr "Jaa"
 
 #: [page]room
 msgid "Room"
-msgstr ""
+msgstr "Huone"
 
 #: [page]tag
 msgid "Tag"
-msgstr ""
+msgstr "Tagi"
 
 #: [error]error
 msgid "Error: %s"
@@ -1812,7 +1812,7 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
-msgstr ""
+msgstr "Hupsista!"
 
 #: [button]validate
 msgid "Validate"
@@ -1820,7 +1820,7 @@ msgstr ""
 
 #: [button]refresh
 msgid "Refresh"
-msgstr ""
+msgstr "Lataa uudelleen"
 
 #: [button]add
 msgid "Add"
@@ -1828,7 +1828,7 @@ msgstr "Lisää uusi"
 
 #: [button]delete
 msgid "Delete"
-msgstr ""
+msgstr "Poista"
 
 #: [button]cancel
 msgid "Cancel"
@@ -1836,15 +1836,15 @@ msgstr "Peruuta"
 
 #: [button]close
 msgid "Close"
-msgstr ""
+msgstr "Sulje"
 
 #: [button]update
 msgid "Update"
-msgstr ""
+msgstr "Päivitä"
 
 #: [button]updating
 msgid "Updating"
-msgstr ""
+msgstr "Päivitetään"
 
 #: [button]submitting
 msgid "Submitting"
@@ -1852,23 +1852,23 @@ msgstr "Lähetetään"
 
 #: [button]register
 msgid "Register"
-msgstr ""
+msgstr "Rekisteröidy"
 
 #: [button]unregister
 msgid "Unregister"
-msgstr ""
+msgstr "Ei rekisteröity"
 
 #: [button]save
 msgid "Save"
-msgstr ""
+msgstr "Tallenna"
 
 #: [button]clear
 msgid "Clear"
-msgstr ""
+msgstr "Tyhjää"
 
 #: [button]upload
 msgid "Upload"
-msgstr ""
+msgstr "Lataa"
 
 #: [button]come_in
 msgid "Come in!"
@@ -1876,19 +1876,19 @@ msgstr "Tule sisään!"
 
 #: [button]connecting
 msgid "Connecting"
-msgstr ""
+msgstr "Yhdistetään"
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "Kyllä"
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "Ei"
 
 #: [button]return
 msgid "Return"
-msgstr ""
+msgstr "Takaisin"
 
 #: [button]accept
 msgid "Accept"
@@ -1896,20 +1896,19 @@ msgstr "Hyväksy"
 
 #: [button]refuse
 msgid "Refuse"
-msgstr ""
+msgstr "Hylkää"
 
 #: [button]next
 msgid "Next"
-msgstr ""
+msgstr "Seuraava"
 
 #: [button]previous
 msgid "Previous"
-msgstr ""
+msgstr "Edellinen"
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "Maaliskuu"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -1941,12 +1940,12 @@ msgstr "Launtai"
 
 #: [day]sunday
 msgid "Sunday"
-msgstr ""
+msgstr "Sunnuntai"
 
 #: [gender]nil
 msgctxt "[gender]nil"
 msgid "None"
-msgstr ""
+msgstr "Ei mitään"
 
 #: [gender]male
 msgid "Male"
@@ -1974,16 +1973,16 @@ msgstr "Puhelin"
 
 #: [client]web
 msgid "Web"
-msgstr ""
+msgstr "Netti"
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
+msgstr "Rekisteröity"
 
 #: [marital]nil
 msgctxt "[marital]nil"
 msgid "None"
-msgstr ""
+msgstr "Ei mitään"
 
 #: [marital]single
 msgid "Single"
@@ -2015,23 +2014,23 @@ msgstr "Rekisteröity parisuhde"
 
 #: [flag]white
 msgid "Not shared"
-msgstr ""
+msgstr "Ei jaettu"
 
 #: [flag]green
 msgid "Shared with one contact"
-msgstr ""
+msgstr "Jaettu yhden kontaktin kanssa"
 
 #: [flag]orange
 msgid "Shared with all contacts"
-msgstr ""
+msgstr "Jaettu kaikkien kontaktien kanssa"
 
 #: [flag]red
 msgid "Shared with the XMPP network"
-msgstr ""
+msgstr "Jaettu XMPP-verkoston kanssa"
 
 #: [flag]black
 msgid "Shared with the whole Internet"
-msgstr ""
+msgstr "Jaettu koko internetin kanssa"
 
 #: [presence]online
 msgid "Online"
@@ -2055,15 +2054,15 @@ msgstr "Poissa verkosta"
 
 #: [presence]error
 msgid "Error"
-msgstr ""
+msgstr "Virhe"
 
 #: [mood]afraid
 msgid "afraid"
-msgstr ""
+msgstr "peloissaan"
 
 #: [mood]amazed
 msgid "amazed"
-msgstr ""
+msgstr "huvittunut"
 
 #: [mood]amorous
 msgid "amorous"
@@ -2071,15 +2070,15 @@ msgstr ""
 
 #: [mood]angry
 msgid "angry"
-msgstr ""
+msgstr "vihainen"
 
 #: [mood]annoyed
 msgid "annoyed"
-msgstr ""
+msgstr "ärsyyntynyt"
 
 #: [mood]anxious
 msgid "anxious"
-msgstr ""
+msgstr "ahdistunut"
 
 #: [mood]aroused
 msgid "aroused"
@@ -2087,19 +2086,19 @@ msgstr ""
 
 #: [mood]ashamed
 msgid "ashamed"
-msgstr ""
+msgstr "häpeissään"
 
 #: [mood]bored
 msgid "bored"
-msgstr ""
+msgstr "tylsistynyt"
 
 #: [mood]brave
 msgid "brave"
-msgstr ""
+msgstr "rohkea"
 
 #: [mood]calm
 msgid "calm"
-msgstr ""
+msgstr "rauhallinen"
 
 #: [mood]cautious
 msgid "cautious"
@@ -2115,7 +2114,7 @@ msgstr ""
 
 #: [mood]confused
 msgid "confused"
-msgstr ""
+msgstr "hämmentynyt"
 
 #: [mood]contemplative
 msgid "contemplative"
@@ -2131,15 +2130,15 @@ msgstr ""
 
 #: [mood]crazy
 msgid "crazy"
-msgstr ""
+msgstr "sekaisin"
 
 #: [mood]creative
 msgid "creative"
-msgstr ""
+msgstr "luova"
 
 #: [mood]curious
 msgid "curious"
-msgstr ""
+msgstr "utelias"
 
 #: [mood]dejected
 msgid "dejected"
@@ -2147,11 +2146,11 @@ msgstr ""
 
 #: [mood]depressed
 msgid "depressed"
-msgstr ""
+msgstr "masentunut"
 
 #: [mood]disappointed
 msgid "disappointed"
-msgstr ""
+msgstr "pettynyt"
 
 #: [mood]disgusted
 msgid "disgusted"
@@ -2171,11 +2170,11 @@ msgstr ""
 
 #: [mood]envious
 msgid "envious"
-msgstr ""
+msgstr "kateellinen"
 
 #: [mood]excited
 msgid "excited"
-msgstr ""
+msgstr "innoissaan"
 
 #: [mood]flirtatious
 msgid "flirtatious"
@@ -2187,7 +2186,7 @@ msgstr ""
 
 #: [mood]grateful
 msgid "grateful"
-msgstr ""
+msgstr "kiitollonen"
 
 #: [mood]grieving
 msgid "grieving"
@@ -2203,11 +2202,11 @@ msgstr ""
 
 #: [mood]happy
 msgid "happy"
-msgstr ""
+msgstr "iloinen"
 
 #: [mood]hopeful
 msgid "hopeful"
-msgstr ""
+msgstr "toiveikas"
 
 #: [mood]hot
 msgid "hot"
@@ -2219,11 +2218,11 @@ msgstr ""
 
 #: [mood]humiliated
 msgid "humiliated"
-msgstr ""
+msgstr "nöytyytetty"
 
 #: [mood]hungry
 msgid "hungry"
-msgstr ""
+msgstr "nälkäinen"
 
 #: [mood]hurt
 msgid "hurt"
@@ -2231,7 +2230,7 @@ msgstr ""
 
 #: [mood]impressed
 msgid "impressed"
-msgstr ""
+msgstr "vakuuttunut"
 
 #: [mood]in_awe
 msgid "in awe"
@@ -2239,7 +2238,7 @@ msgstr ""
 
 #: [mood]in_love
 msgid "in love"
-msgstr ""
+msgstr "rakastunut"
 
 #: [mood]indignant
 msgid "indignant"
@@ -2247,7 +2246,7 @@ msgstr ""
 
 #: [mood]interested
 msgid "interested"
-msgstr ""
+msgstr "kiinnostunut"
 
 #: [mood]intoxicated
 msgid "intoxicated"
@@ -2259,23 +2258,23 @@ msgstr ""
 
 #: [mood]jealous
 msgid "jealous"
-msgstr ""
+msgstr "kateellinen"
 
 #: [mood]lonely
 msgid "lonely"
-msgstr ""
+msgstr "yksinäinen"
 
 #: [mood]lost
 msgid "lost"
-msgstr ""
+msgstr "hukassa"
 
 #: [mood]lucky
 msgid "lucky"
-msgstr ""
+msgstr "onnekas"
 
 #: [mood]mean
 msgid "mean"
-msgstr ""
+msgstr "ilkeä"
 
 #: [mood]moody
 msgid "moody"
@@ -2283,99 +2282,99 @@ msgstr ""
 
 #: [mood]nervous
 msgid "nervous"
-msgstr ""
+msgstr "jännittynyt"
 
 #: [mood]neutral
 msgid "neutral"
-msgstr ""
+msgstr "neutraali"
 
 #: [mood]offended
 msgid "offended"
-msgstr ""
+msgstr "loukkaantunut"
 
 #: [mood]outraged
 msgid "outraged"
-msgstr ""
+msgstr "raivoissaan"
 
 #: [mood]playful
 msgid "playful"
-msgstr ""
+msgstr "leikkisä"
 
 #: [mood]proud
 msgid "proud"
-msgstr ""
+msgstr "ylpeä"
 
 #: [mood]relaxed
 msgid "relaxed"
-msgstr ""
+msgstr "rentoutunut"
 
 #: [mood]relieved
 msgid "relieved"
-msgstr ""
+msgstr "helpottunut"
 
 #: [mood]restless
 msgid "restless"
-msgstr ""
+msgstr "rauhaton"
 
 #: [mood]sad
 msgid "sad"
-msgstr ""
+msgstr "surullinen"
 
 #: [mood]sarcastic
 msgid "sarcastic"
-msgstr ""
+msgstr "sarkastinen"
 
 #: [mood]satisfied
 msgid "satisfied"
-msgstr ""
+msgstr "tyytyväinen"
 
 #: [mood]serious
 msgid "serious"
-msgstr ""
+msgstr "vakava"
 
 #: [mood]shocked
 msgid "shocked"
-msgstr ""
+msgstr "järkyttynyt"
 
 #: [mood]shy
 msgid "shy"
-msgstr ""
+msgstr "hiljainen"
 
 #: [mood]sick
 msgid "sick"
-msgstr ""
+msgstr "sairas"
 
 #: [mood]sleepy
 msgid "sleepy"
-msgstr ""
+msgstr "uninen"
 
 #: [mood]spontaneous
 msgid "spontaneous"
-msgstr ""
+msgstr "spontaani"
 
 #: [mood]stressed
 msgid "stressed"
-msgstr ""
+msgstr "stressaantunut"
 
 #: [mood]strong
 msgid "strong"
-msgstr ""
+msgstr "vahva"
 
 #: [mood]surprised
 msgid "surprised"
-msgstr ""
+msgstr "yllättynyt"
 
 #: [mood]thankful
 msgid "thankful"
-msgstr ""
+msgstr "kiitollinen"
 
 #: [mood]thirsty
 msgid "thirsty"
-msgstr ""
+msgstr "janoinen"
 
 #: [mood]tired
 msgid "tired"
-msgstr ""
+msgstr "väsynyt"
 
 #: [mood]undefined
 msgid "undefined"
@@ -2383,11 +2382,11 @@ msgstr ""
 
 #: [mood]weak
 msgid "weak"
-msgstr ""
+msgstr "heikko"
 
 #: [mood]worried
 msgid "worried"
-msgstr ""
+msgstr "huolestunut"
 
 #: [month]title
 msgid "Month"
@@ -2459,7 +2458,7 @@ msgstr "Eilen"
 
 #: [date]ago
 msgid "%d days ago"
-msgstr ""
+msgstr "%d päivää sitten"
 
 #: [date]day
 msgid "day"
@@ -2467,15 +2466,15 @@ msgstr "päivä"
 
 #: [post]title
 msgid "Title"
-msgstr ""
+msgstr "Otsikko"
 
 #: [post]whats_new
 msgid "What's new ?"
-msgstr ""
+msgstr "Mitä uutta?"
 
 #: [post]place
 msgid "Place"
-msgstr ""
+msgstr "Paikka"
 
 #: [post]by
 msgid "by"
@@ -2487,15 +2486,15 @@ msgstr ""
 
 #: [post]email
 msgid "email"
-msgstr ""
+msgstr "sähköposti"
 
 #: [post]empty
 msgid "No content"
-msgstr ""
+msgstr "Ei sisältöä"
 
 #: [post]no_comments
 msgid "No comments yet"
-msgstr ""
+msgstr "Ei kommentteja vielä"
 
 #: [post]no_comments_stream
 msgid "No comments stream"
@@ -2511,19 +2510,19 @@ msgstr "Hae vanhat postaukset"
 
 #: [post]new_items
 msgid "%s new items"
-msgstr ""
+msgstr "%s uutta julkaisua"
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
+msgstr "Virhe kommentin julkaisussa"
 
 #: [post]comments_older
 msgid "Show the older comments"
-msgstr ""
+msgstr "Näytä vanhemmat kommentit"
 
 #: [post]comments_loading
 msgid "Loading comments..."
-msgstr ""
+msgstr "Ladataan kommentteja..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2531,27 +2530,27 @@ msgstr ""
 
 #: [post]comment_add
 msgid "Add a comment"
-msgstr ""
+msgstr "Lisää kommentti"
 
 #: [post]share
 msgid "Share with"
-msgstr ""
+msgstr "Kenen kanssa jaetaan?"
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
+msgstr "Kaikki"
 
 #: [post]share_your_contacts
 msgid "Your contacts"
-msgstr ""
+msgstr "Kontaktisi"
 
 #: [post]updated
 msgid "Updated"
-msgstr ""
+msgstr "Päivitetty"
 
 #: [post]content_not_found
 msgid "Content not found"
-msgstr ""
+msgstr "Sisältöä ei löytynyt"
 
 #: [post]default_title
 msgid "Contact publication"
@@ -2559,12 +2558,12 @@ msgstr ""
 
 #: [post]comments
 msgid "Comments"
-msgstr ""
+msgstr "Kommentit"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
-msgstr ""
+msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 
 #: [field]type_here
 msgid "Type here"
-msgstr ""
+msgstr "Kirjoita tähän"

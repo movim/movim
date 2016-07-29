@@ -81,7 +81,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Turkish (http://www.transifex.com/movim/movim/language/tr/)\n"
 "Language: tr\n"
@@ -974,9 +974,8 @@ msgid "My Subscriptions"
 msgstr ""
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Yeni hesap oluştur"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1909,9 +1908,8 @@ msgid "Previous"
 msgstr ""
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "Mart"
+msgstr ""
 
 #: [day]title
 msgid "Day"

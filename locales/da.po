@@ -80,7 +80,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
 "Language: da\n"
@@ -308,9 +308,8 @@ msgid "Retype password"
 msgstr "Gentag adgangskode"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Whitelisted XMPP Servers"
-msgstr "Hvidliste - XMPP-server"
+msgstr ""
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -347,9 +346,8 @@ msgid "Information Message"
 msgstr "Informationsbesked"
 
 #: [xmpp]title
-#, fuzzy
 msgid "Default XMPP server"
-msgstr "Hvidliste - XMPP-server"
+msgstr ""
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
@@ -360,9 +358,8 @@ msgid "Main XMPP server description"
 msgstr ""
 
 #: [xmpp]country
-#, fuzzy
 msgid "Main XMPP server country"
-msgstr "Din XMPP-server er uautoriseret"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -437,9 +434,8 @@ msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-#, fuzzy
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Her kan du registrere din pod på den officielle %sMovim API%s og blive listet på %spod siden%s."
+msgstr ""
 
 #: [api]register
 msgid "Your pod is not registered on the API"
@@ -657,9 +653,8 @@ msgid "No chats yet..."
 msgstr "Ingen chat endnu..."
 
 #: [chats]empty
-#, fuzzy
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr "Start en ny samtale ved at klikke på %s-knappen herunder, eller gå til %sContacts%s-siden."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -978,9 +973,8 @@ msgid "My Subscriptions"
 msgstr "Mine Abonnementer"
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Opret en ny gruppe"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1309,9 +1303,8 @@ msgid "Publish this post publicly?"
 msgstr "Publicer dette indlæg offentligt?"
 
 #: [post]public_no
-#, fuzzy
 msgid "This post is private"
-msgstr "Dette indlæg er nu privat"
+msgstr ""
 
 #: [post]public_url
 msgid "Public URL of this post"
@@ -1474,9 +1467,8 @@ msgid "Add a chatroom"
 msgstr "Tilføj et chatrum"
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "Tilføj et chatrum"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1559,9 +1551,8 @@ msgid "No contacts ?"
 msgstr "Ingen kontakter?"
 
 #: [roster]no_contacts_text
-#, fuzzy
 msgid "You can add one using the + button below"
-msgstr "Du kan tilføje en ved at brug knappen mærket med + nedenfor"
+msgstr ""
 
 #: [roster]show_hide
 msgid "Show/Hide"
@@ -1916,9 +1907,8 @@ msgid "Previous"
 msgstr "Forrige"
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "Marts"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2577,6 +2567,3 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "This post is now public"
-#~ msgstr "Dette indlæg er nu offentligt"

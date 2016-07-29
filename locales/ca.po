@@ -80,7 +80,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
 "Language: ca\n"
@@ -653,9 +653,8 @@ msgid "No chats yet..."
 msgstr "Encara no hi ha cap xat..."
 
 #: [chats]empty
-#, fuzzy
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr "Obra una nova conversa apretant el %s botó a sota o visita la pàgina de %sContactes%s."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -974,9 +973,8 @@ msgid "My Subscriptions"
 msgstr "Les Meves Subscripcions"
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Crea un Grup nou"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1469,9 +1467,8 @@ msgid "Add a chatroom"
 msgstr ""
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "Afegeix la sala de xat"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."

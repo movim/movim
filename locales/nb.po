@@ -1,5 +1,6 @@
 #
 # Translators:
+# tyler moss <inactive+protonbeta@transifex.com>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -79,10 +80,10 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
-"Language-Team: Norwegian (http://www.transifex.com/movim/movim/language/no/)\n"
-"Language: no\n"
+"Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
+"Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -91,23 +92,23 @@ msgstr ""
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Takk"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "Utviklere"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Oversettere"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Takk til alle oversettere"
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "Programvare"
 
 #: [about]resources
 msgid "Resources"
@@ -123,24 +124,24 @@ msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Endre passordet mitt"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
 msgid "Password"
-msgstr ""
+msgstr "Passord"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Passord bekreftelse"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Passordet er oppdatert"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
@@ -152,11 +153,11 @@ msgstr ""
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "Slett min konto"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Slett kontoen din"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
@@ -164,7 +165,7 @@ msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Er du sikker på at du vil slette den ?"
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -172,7 +173,7 @@ msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "Opprett en ny konto"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
@@ -180,7 +181,7 @@ msgstr ""
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "På"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
@@ -188,7 +189,7 @@ msgstr ""
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Laster"
 
 #: [create]placeholder
 msgid "…and start playing"
@@ -196,7 +197,7 @@ msgstr ""
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Ikke akseptabelt"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
@@ -208,11 +209,11 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Handlinger"
 
 #: [db]legend [schema]database
 msgid "Database"
-msgstr ""
+msgstr "Database"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
@@ -236,7 +237,7 @@ msgstr ""
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Brukernavn"
 
 #: [db]host
 msgid "Host"
@@ -252,15 +253,15 @@ msgstr ""
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Generelle innstillinger"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "Standard språk"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -362,7 +363,7 @@ msgstr ""
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "Tom"
 
 #: [log]syslog
 msgid "Syslog"

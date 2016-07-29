@@ -1,5 +1,6 @@
 #
 # Translators:
+# Andrea Novella <andrea.novella.wd@gmail.com>, 2016
 # Astrofillite, 2015
 # fmarella <francesco.marella@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -81,7 +82,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
 "Language: it\n"
@@ -250,7 +251,7 @@ msgstr "Porta"
 
 #: [db]name
 msgid "Database Name"
-msgstr ""
+msgstr "Nome database"
 
 #: [admin]general
 msgid "General Settings"
@@ -309,9 +310,8 @@ msgid "Retype password"
 msgstr "Ridigita la password"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Whitelisted XMPP Servers"
-msgstr "la Whitelist del server XMPP"
+msgstr ""
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -348,9 +348,8 @@ msgid "Information Message"
 msgstr "Informazione"
 
 #: [xmpp]title
-#, fuzzy
 msgid "Default XMPP server"
-msgstr "la Whitelist del server XMPP"
+msgstr ""
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
@@ -437,9 +436,8 @@ msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-#, fuzzy
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Qui puoi registrare il tuo pod su %sMovim API% ufficiale ed essere elencato su %sthe pods page%s."
+msgstr ""
 
 #: [api]register
 msgid "Your pod is not registered on the API"
@@ -507,7 +505,7 @@ msgstr "Questo utente non ha pubblicato nulla al momento"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "Questo contenuto è privato, per visualizzarlo accedi al tuo profilo."
 
 #: [title]conferences
 msgid "Conferences"
@@ -922,7 +920,7 @@ msgstr "Stai per eliminare il seguente gruppo. Sei sicuro di volerlo fare?"
 
 #: [group]delete_clean_text
 msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
+msgstr "Sembra che questo gruppo non esista più. Vuoi rimuoverlo dalle tue sottoscrizioni?"
 
 #: [group]counter
 msgid "%s groups on this server"
@@ -977,9 +975,8 @@ msgid "My Subscriptions"
 msgstr ""
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Creare un nuovo gruppo"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1308,9 +1305,8 @@ msgid "Publish this post publicly?"
 msgstr ""
 
 #: [post]public_no
-#, fuzzy
 msgid "This post is private"
-msgstr "Questo articolo è pubblico"
+msgstr ""
 
 #: [post]public_url
 msgid "Public URL of this post"
@@ -1473,9 +1469,8 @@ msgid "Add a chatroom"
 msgstr "Aggiungi una chatroom"
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "Aggiungi una chatroom"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1914,9 +1909,8 @@ msgid "Previous"
 msgstr "Precedente"
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "marzo"
+msgstr ""
 
 #: [day]title
 msgid "Day"

@@ -79,14 +79,14 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
-"Language-Team: Adyghe (http://www.transifex.com/movim/movim/language/ady/)\n"
-"Language: ady\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
+"Language: zh_TW\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Translate Toolkit 1.13.0\n"
 
 #: [about]thanks
@@ -132,7 +132,7 @@ msgstr ""
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
 msgid "Password"
-msgstr ""
+msgstr "密碼"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
@@ -172,7 +172,7 @@ msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "建立帳號"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
@@ -208,7 +208,7 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "動作"
 
 #: [db]legend [schema]database
 msgid "Database"
@@ -528,7 +528,7 @@ msgstr ""
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 #: [accounts]accounts_nickname
 msgid "Nickname"
-msgstr ""
+msgstr "檔名"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
@@ -577,7 +577,7 @@ msgstr ""
 
 #: [message]composing [chats]composing
 msgid "Composing..."
-msgstr ""
+msgstr "輸入中"
 
 #: [message]paused [chats]paused
 msgid "Paused..."
@@ -605,7 +605,7 @@ msgstr ""
 
 #: [chat]empty_title [button]chat
 msgid "Chat"
-msgstr ""
+msgstr "聊天"
 
 #: [chat]empty_text
 msgid "Discuss with your contacts"
@@ -629,7 +629,7 @@ msgstr ""
 
 #: [chatroom]config [group]configuration [page]configuration
 msgid "Configuration"
-msgstr ""
+msgstr "設置"
 
 #: [chatroom]config_saved
 msgid "Configuration saved"
@@ -673,7 +673,7 @@ msgstr ""
 
 #: [config]language
 msgid "Language"
-msgstr ""
+msgstr "語言"
 
 #: [config]roster
 msgid "Roster display"
@@ -713,23 +713,23 @@ msgstr ""
 
 #: [general]legend
 msgid "General Informations"
-msgstr ""
+msgstr "一般資訊"
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr ""
+msgstr "生日"
 
 #: [general]gender
 msgid "Gender"
-msgstr ""
+msgstr "性別"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr ""
+msgstr "婚姻狀況"
 
 #: [general]email
 msgid "Email"
@@ -737,11 +737,11 @@ msgstr ""
 
 #: [general]website
 msgid "Website"
-msgstr ""
+msgstr "網站"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "關於我"
 
 #: [general]accounts
 msgid "Other Accounts"
@@ -781,7 +781,7 @@ msgstr ""
 
 #: [client]title
 msgid "Client Informations"
-msgstr ""
+msgstr "聯絡人的簡訊"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -797,7 +797,7 @@ msgstr ""
 
 #: [edit]alias
 msgid "Alias"
-msgstr ""
+msgstr "別名"
 
 #: [edit]group
 msgid "Group"
@@ -1093,11 +1093,11 @@ msgstr ""
 
 #: [error]username
 msgid "Wrong username"
-msgstr ""
+msgstr "錯誤的使用者名稱"
 
 #: [error]jid
 msgid "Invalid JID"
-msgstr ""
+msgstr "JID錯誤"
 
 #: [error]empty_challenge
 msgid "Empty Challenge from the server"
@@ -1105,27 +1105,27 @@ msgstr ""
 
 #: [error]dns
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr ""
+msgstr "XMPP網域錯誤, 不正確Jabber ID"
 
 #: [error]data_missings
 msgid "Some data are missing !"
-msgstr ""
+msgstr "缺少資料 !"
 
 #: [error]wrong_password
 msgid "Wrong password"
-msgstr ""
+msgstr "錯誤的密碼"
 
 #: [error]internal
 msgid "Internal server error"
-msgstr ""
+msgstr "內部的伺服器錯誤"
 
 #: [error]session
 msgid "Session error"
-msgstr ""
+msgstr "作業階段錯誤"
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr ""
+msgstr "成功建立帳戶"
 
 #: [error]xmpp_unauthorized
 msgctxt "[error]xmpp_unauthorized"
@@ -1150,7 +1150,7 @@ msgstr ""
 
 #: [error]default
 msgid "Unknown error"
-msgstr ""
+msgstr "不明的錯誤"
 
 #: [error]login_format
 msgid "Invalid username format"
@@ -1171,7 +1171,7 @@ msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr ""
+msgstr "無法驗證. 不正確的憑據"
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
@@ -1179,11 +1179,11 @@ msgstr ""
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr ""
+msgstr "XMPP 驗證失敗"
 
 #: [form]username
 msgid "My address"
-msgstr ""
+msgstr "您的用戶名"
 
 #: [form]create_one
 msgid "Create one !"
@@ -1231,7 +1231,7 @@ msgstr ""
 
 #: [menu]all
 msgid "All"
-msgstr ""
+msgstr "所有"
 
 #: [menu]mine
 msgid "My publications"
@@ -1395,7 +1395,7 @@ msgstr ""
 
 #: [post]help [page]help
 msgid "Help"
-msgstr ""
+msgstr "求助"
 
 #: [post]help_more
 msgid "More help"
@@ -1523,7 +1523,7 @@ msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
-msgstr ""
+msgstr "未群組"
 
 #: [roster]show_disconnected
 msgid "Show disconnected contacts"
@@ -1659,7 +1659,7 @@ msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
-msgstr ""
+msgstr "個人檔案"
 
 #: [vcard]updated
 msgid "Profile Updated"
@@ -1707,11 +1707,11 @@ msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
-msgstr ""
+msgstr "確認"
 
 #: [save]reset [button]reset
 msgid "Reset"
-msgstr ""
+msgstr "重設"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1723,7 +1723,7 @@ msgstr ""
 
 #: [page]home
 msgid "Home"
-msgstr ""
+msgstr "首頁"
 
 #: [page]explore
 msgid "Explore"
@@ -1731,7 +1731,7 @@ msgstr ""
 
 #: [page]account_creation
 msgid "Account Creation"
-msgstr ""
+msgstr "創建帳戶"
 
 #: [page]news
 msgid "News"
@@ -1739,7 +1739,7 @@ msgstr ""
 
 #: [page]avatar
 msgid "Avatar"
-msgstr ""
+msgstr "圖像"
 
 #: [page]chats
 msgid "Chats"
@@ -1763,7 +1763,7 @@ msgstr ""
 
 #: [page]feed
 msgid "Feed"
-msgstr ""
+msgstr "來源"
 
 #: [page]posts
 msgid "Posts"
@@ -1795,11 +1795,11 @@ msgstr ""
 
 #: [error]error
 msgid "Error: %s"
-msgstr ""
+msgstr "錯誤: %s"
 
 #: [error]cannot_load_file
 msgid "Cannot load file '%s'"
-msgstr ""
+msgstr "無法載入檔案'%s'"
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
@@ -1823,7 +1823,7 @@ msgstr ""
 
 #: [button]add
 msgid "Add"
-msgstr ""
+msgstr "加"
 
 #: [button]delete
 msgid "Delete"
@@ -1831,7 +1831,7 @@ msgstr ""
 
 #: [button]cancel
 msgid "Cancel"
-msgstr ""
+msgstr "取消"
 
 #: [button]close
 msgid "Close"
@@ -1847,7 +1847,7 @@ msgstr ""
 
 #: [button]submitting
 msgid "Submitting"
-msgstr ""
+msgstr "傳送"
 
 #: [button]register
 msgid "Register"
@@ -1871,7 +1871,7 @@ msgstr ""
 
 #: [button]come_in
 msgid "Come in!"
-msgstr ""
+msgstr "登录"
 
 #: [button]connecting
 msgid "Connecting"
@@ -1891,7 +1891,7 @@ msgstr ""
 
 #: [button]accept
 msgid "Accept"
-msgstr ""
+msgstr "接受"
 
 #: [button]refuse
 msgid "Refuse"
@@ -1911,31 +1911,31 @@ msgstr ""
 
 #: [day]title
 msgid "Day"
-msgstr ""
+msgstr "天"
 
 #: [day]monday
 msgid "Monday"
-msgstr ""
+msgstr "星期一"
 
 #: [day]tuesday
 msgid "Tuesday"
-msgstr ""
+msgstr "星期二"
 
 #: [day]wednesday
 msgid "Wednesday"
-msgstr ""
+msgstr "星期三"
 
 #: [day]thursday
 msgid "Thursday"
-msgstr ""
+msgstr "星期四"
 
 #: [day]friday
 msgid "Friday"
-msgstr ""
+msgstr "星期五"
 
 #: [day]saturday
 msgid "Saturday"
-msgstr ""
+msgstr "星期六"
 
 #: [day]sunday
 msgid "Sunday"
@@ -1948,27 +1948,27 @@ msgstr ""
 
 #: [gender]male
 msgid "Male"
-msgstr ""
+msgstr "男性"
 
 #: [gender]female
 msgid "Female"
-msgstr ""
+msgstr "女性"
 
 #: [gender]other
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 #: [client]bot
 msgid "Bot"
-msgstr ""
+msgstr "Bot"
 
 #: [client]desktop
 msgid "Desktop"
-msgstr ""
+msgstr "桌面"
 
 #: [client]phone
 msgid "Phone"
-msgstr ""
+msgstr "電話"
 
 #: [client]web
 msgid "Web"
@@ -1985,31 +1985,31 @@ msgstr ""
 
 #: [marital]single
 msgid "Single"
-msgstr ""
+msgstr "未婚"
 
 #: [marital]relationship
 msgid "In a relationship"
-msgstr ""
+msgstr "在关系"
 
 #: [marital]married
 msgid "Married"
-msgstr ""
+msgstr "已婚"
 
 #: [marital]divorced
 msgid "Divorced"
-msgstr ""
+msgstr "離婚"
 
 #: [marital]widowed
 msgid "Widowed"
-msgstr ""
+msgstr "鰥夫"
 
 #: [marital]cohabiting
 msgid "Cohabiting"
-msgstr ""
+msgstr "同居"
 
 #: [marital]union
 msgid "Civil Union"
-msgstr ""
+msgstr "同性婚禮"
 
 #: [flag]white
 msgid "Not shared"
@@ -2033,23 +2033,23 @@ msgstr ""
 
 #: [presence]online
 msgid "Online"
-msgstr ""
+msgstr "線上"
 
 #: [presence]away
 msgid "Away"
-msgstr ""
+msgstr "離開"
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "請勿打擾"
 
 #: [presence]xa
 msgid "Extended Away"
-msgstr ""
+msgstr "長時間離開"
 
 #: [presence]offline
 msgid "Offline"
-msgstr ""
+msgstr "離線"
 
 #: [presence]error
 msgid "Error"
@@ -2389,71 +2389,71 @@ msgstr ""
 
 #: [month]title
 msgid "Month"
-msgstr ""
+msgstr "月"
 
 #: [month]january
 msgid "January"
-msgstr ""
+msgstr "一月"
 
 #: [month]february
 msgid "February"
-msgstr ""
+msgstr "二月"
 
 #: [month]march
 msgid "March"
-msgstr ""
+msgstr "三月"
 
 #: [month]april
 msgid "April"
-msgstr ""
+msgstr "四月"
 
 #: [month]may
 msgid "May"
-msgstr ""
+msgstr "五月"
 
 #: [month]june
 msgid "June"
-msgstr ""
+msgstr "六月"
 
 #: [month]july
 msgid "July"
-msgstr ""
+msgstr "七月"
 
 #: [month]august
 msgid "August"
-msgstr ""
+msgstr "八月"
 
 #: [month]september
 msgid "September"
-msgstr ""
+msgstr "九月"
 
 #: [month]october
 msgid "October"
-msgstr ""
+msgstr "十月"
 
 #: [month]november
 msgid "November"
-msgstr ""
+msgstr "十一月"
 
 #: [month]december
 msgid "December"
-msgstr ""
+msgstr "十二月"
 
 #: [year]title
 msgid "Year"
-msgstr ""
+msgstr "年"
 
 #: [date]today
 msgid "Today"
-msgstr ""
+msgstr "今天"
 
 #: [date]tomorrow
 msgid "Tomorrow"
-msgstr ""
+msgstr "明天"
 
 #: [date]yesterday
 msgid "Yesterday"
-msgstr ""
+msgstr "昨天"
 
 #: [date]ago
 msgid "%d days ago"
@@ -2461,7 +2461,7 @@ msgstr ""
 
 #: [date]day
 msgid "day"
-msgstr ""
+msgstr "天"
 
 #: [post]title
 msgid "Title"
@@ -2501,11 +2501,11 @@ msgstr ""
 
 #: [post]no_load
 msgid "Your feed cannot be loaded."
-msgstr ""
+msgstr "來源不能載入"
 
 #: [post]older
 msgid "Get older posts"
-msgstr ""
+msgstr "查看舊留言"
 
 #: [post]new_items
 msgid "%s new items"

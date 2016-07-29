@@ -82,7 +82,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
 "Language: es\n"
@@ -310,9 +310,8 @@ msgid "Retype password"
 msgstr "Escriba la contraseña de nuevo"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Whitelisted XMPP Servers"
-msgstr "Lista blanca  - Servidor XMPP"
+msgstr ""
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -349,9 +348,8 @@ msgid "Information Message"
 msgstr "Mensaje de información"
 
 #: [xmpp]title
-#, fuzzy
 msgid "Default XMPP server"
-msgstr "Lista blanca  - Servidor XMPP"
+msgstr ""
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
@@ -362,9 +360,8 @@ msgid "Main XMPP server description"
 msgstr ""
 
 #: [xmpp]country
-#, fuzzy
 msgid "Main XMPP server country"
-msgstr "Tu server XMPP no está autorizado"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -439,9 +436,8 @@ msgid "XMPP"
 msgstr "XMPP"
 
 #: [api]info
-#, fuzzy
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr "Aquí puedes registrar tu pod en la %sAPI de Movim%s oficial y puede ser escuchado en %la página pod%s"
+msgstr ""
 
 #: [api]register
 msgid "Your pod is not registered on the API"
@@ -979,9 +975,8 @@ msgid "My Subscriptions"
 msgstr "Mis suscripciones"
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Crear un nuevo grupo"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1310,9 +1305,8 @@ msgid "Publish this post publicly?"
 msgstr ""
 
 #: [post]public_no
-#, fuzzy
 msgid "This post is private"
-msgstr "Esta publicación es pública"
+msgstr ""
 
 #: [post]public_url
 msgid "Public URL of this post"
@@ -1475,9 +1469,8 @@ msgid "Add a chatroom"
 msgstr "Añadir una sala de conversación"
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "Añadir una sala de conversación"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1916,9 +1909,8 @@ msgid "Previous"
 msgstr "Anterior"
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "Marzo"
+msgstr ""
 
 #: [day]title
 msgid "Day"

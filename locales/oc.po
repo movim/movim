@@ -79,7 +79,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/movim/movim/language/oc/)\n"
 "Language: oc\n"
@@ -307,9 +307,8 @@ msgid "Retype password"
 msgstr "Tornar picar lo senhal"
 
 #: [whitelist]title
-#, fuzzy
 msgid "Whitelisted XMPP Servers"
-msgstr "Servidors XMPP - Lista blancha"
+msgstr ""
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -346,9 +345,8 @@ msgid "Information Message"
 msgstr ""
 
 #: [xmpp]title
-#, fuzzy
 msgid "Default XMPP server"
-msgstr "Servidors XMPP - Lista blancha"
+msgstr ""
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
@@ -974,9 +972,8 @@ msgid "My Subscriptions"
 msgstr ""
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Crear un compte novèl"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1909,9 +1906,8 @@ msgid "Previous"
 msgstr ""
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "Març"
+msgstr ""
 
 #: [day]title
 msgid "Day"

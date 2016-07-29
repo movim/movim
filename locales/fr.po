@@ -85,7 +85,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-05-24 21:01+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -658,7 +658,6 @@ msgid "No chats yet..."
 msgstr "Pas de discussions pour le moment"
 
 #: [chats]empty
-#, fuzzy
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
 msgstr "Commencez une nouvelle conversation en cliquant sur le bouton %s ci-dessous ou visitez la page %sContacts%s."
 
@@ -1557,7 +1556,6 @@ msgid "No contacts ?"
 msgstr "Aucun contacts?"
 
 #: [roster]no_contacts_text
-#, fuzzy
 msgid "You can add one using the + button below"
 msgstr "Vous pouvez en ajouter un en cliquant sur le bouton + ci-dessous"
 
@@ -1710,7 +1708,6 @@ msgid "Is this profile public ?"
 msgstr "Ce profil est-il public ?"
 
 #: [privacy]privacy_info
-#, fuzzy
 msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr "Faites attention ! En rendant votre profil public, toutes les informations listées ci-dessus seront visibles par les utilisateurs de Movim mais également par tous les internautes."
 

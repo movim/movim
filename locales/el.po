@@ -80,7 +80,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: 2016-03-23 22:27+0000\n"
+"PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Greek (http://www.transifex.com/movim/movim/language/el/)\n"
 "Language: el\n"
@@ -973,9 +973,8 @@ msgid "My Subscriptions"
 msgstr ""
 
 #: [groups]add
-#, fuzzy
 msgid "Create a new Group on %s"
-msgstr "Δημιουργία νέου λογαριασμού"
+msgstr ""
 
 #: [groups]name
 msgid "Group name"
@@ -1468,9 +1467,8 @@ msgid "Add a chatroom"
 msgstr "Προσθήκη δωμάτιου συνομιλίας"
 
 #: [rooms]edit
-#, fuzzy
 msgid "Edit a chatroom"
-msgstr "Προσθήκη δωμάτιου συνομιλίας"
+msgstr ""
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1553,9 +1551,8 @@ msgid "No contacts ?"
 msgstr "Δεν υπάρχουν επαφές;"
 
 #: [roster]no_contacts_text
-#, fuzzy
 msgid "You can add one using the + button below"
-msgstr "Μπορείς να προσθέσεις μία χρησιμοποιώντας το κουμπί + από κάτω"
+msgstr ""
 
 #: [roster]show_hide
 msgid "Show/Hide"
@@ -1706,9 +1703,8 @@ msgid "Is this profile public ?"
 msgstr "Είναι αυτο το προφίλ δημόσιο;"
 
 #: [privacy]privacy_info
-#, fuzzy
 msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "Δώσε προσοχή ! Κάνοντας το προφίλ σου δημόσιο, όλες οι πληροφορίες που φαίνονται παρακάτω θα είναι διαθέσιμες σε όλους τους χρήστες του Movim και σε όλο το διαδίκτυο."
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1911,9 +1907,8 @@ msgid "Previous"
 msgstr "Προηγούμενο"
 
 #: [button]search
-#, fuzzy
 msgid "Search"
-msgstr "Μάρτιος"
+msgstr ""
 
 #: [day]title
 msgid "Day"
