@@ -12,6 +12,7 @@ class AccountNext extends \Movim\Widget\Base {
         $this->registerEvent('register_get_handle', 'onForm');
         $this->registerEvent('register_set_handle', 'onRegistered');
         $this->registerEvent('register_set_errorconflict', 'onRegisterError', 'accountnext');
+        $this->registerEvent('register_set_errorforbidden', 'onForbidden', 'accountnext');
         $this->registerEvent('register_set_errornotacceptable', 'onRegisterNotAcceptable', 'accountnext');
         $this->registerEvent('register_get_errorserviceunavailable', 'onServiceUnavailable', 'accountnext');
     }
@@ -47,22 +48,25 @@ class AccountNext extends \Movim\Widget\Base {
 
                         $formview->assign('formh', $formh);
                         $html = $formview->draw('_accountnext_form', true);
-
-                        RPC::call('MovimTpl.fill', '#subscription_form', $html);
                         break;
                     case 'jabber:x:oob' :
                         $oobview = $this->tpl();
                         $oobview->assign('url', (string)$form->x->url);
 
                         $html = $oobview->draw('_accountnext_oob', true);
-
-                        RPC::call('MovimTpl.fill', '#subscription_form', $html);
                         break;
                 }
+            } else {
+                $formview = $this->tpl();
 
-            } else{
                 $formh = $xtf->getHTML($form->asXML());
+                $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
+
+                $formview->assign('formh', $formh);
+                $html = $formview->draw('_accountnext_form', true);
             }
+
+            RPC::call('MovimTpl.fill', '#subscription_form', $html);
         }
     }
 
@@ -79,10 +83,20 @@ class AccountNext extends \Movim\Widget\Base {
         RPC::call('setUsername', $data->username->value);
     }
 
+    function onError()
+    {
+        Notification::append(null, $this->__('error.service_unavailable'));
+    }
+
     function onRegisterError($package)
     {
         $error = $package->content;
         Notification::append(null, $error);
+    }
+
+    function onForbidden()
+    {
+        Notification::append(null, $this->__('error.forbidden'));
     }
 
     function onRegisterNotAcceptable()

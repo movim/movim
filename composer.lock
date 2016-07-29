@@ -125,12 +125,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "87194b5ab36d7d4a4a5cdff5ab7fd80d98a64c27"
+                "reference": "a6c6fb5e3e5476c173cee4cd6e3e2f2632d83f36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/87194b5ab36d7d4a4a5cdff5ab7fd80d98a64c27",
-                "reference": "87194b5ab36d7d4a4a5cdff5ab7fd80d98a64c27",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/a6c6fb5e3e5476c173cee4cd6e3e2f2632d83f36",
+                "reference": "a6c6fb5e3e5476c173cee4cd6e3e2f2632d83f36",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-07-28 08:54:15"
+            "time": "2016-07-29 18:49:34"
         },
         {
             "name": "evenement/evenement",
@@ -773,12 +773,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "0c488a68c50765ee3485697e0be958f0a3f5e7a6"
+                "reference": "e10c6951c177410261f32dbf8dea84eae458a7b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/0c488a68c50765ee3485697e0be958f0a3f5e7a6",
-                "reference": "0c488a68c50765ee3485697e0be958f0a3f5e7a6",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/e10c6951c177410261f32dbf8dea84eae458a7b2",
+                "reference": "e10c6951c177410261f32dbf8dea84eae458a7b2",
                 "shasum": ""
             },
             "require": {
@@ -813,7 +813,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-07-28 21:43:49"
+            "time": "2016-07-29 21:34:20"
         },
         {
             "name": "movim/sasl2",
