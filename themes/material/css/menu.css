@@ -37,3 +37,8 @@ ul.oppose {
     min-width: 10rem;
 }
 
+@media screen and (max-height: 500px) {
+    ul.oppose {
+        bottom: initial;
+    }
+}
