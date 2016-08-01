@@ -125,12 +125,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "a6c6fb5e3e5476c173cee4cd6e3e2f2632d83f36"
+                "reference": "06a0331dfc37586d669e1a6ad73277fa02b64599"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/a6c6fb5e3e5476c173cee4cd6e3e2f2632d83f36",
-                "reference": "a6c6fb5e3e5476c173cee4cd6e3e2f2632d83f36",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/06a0331dfc37586d669e1a6ad73277fa02b64599",
+                "reference": "06a0331dfc37586d669e1a6ad73277fa02b64599",
                 "shasum": ""
             },
             "require": {
@@ -171,7 +171,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-07-29 18:49:34"
+            "time": "2016-07-30 09:03:13"
         },
         {
             "name": "evenement/evenement",
@@ -1703,16 +1703,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.1.2",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "747154aa69b0f83cd02fc9aa554836dee417631a"
+                "reference": "f9e638e8149e9e41b570ff092f8007c477ef0ce5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/747154aa69b0f83cd02fc9aa554836dee417631a",
-                "reference": "747154aa69b0f83cd02fc9aa554836dee417631a",
+                "url": "https://api.github.com/repos/symfony/console/zipball/f9e638e8149e9e41b570ff092f8007c477ef0ce5",
+                "reference": "f9e638e8149e9e41b570ff092f8007c477ef0ce5",
                 "shasum": ""
             },
             "require": {
@@ -1759,20 +1759,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 07:02:31"
+            "time": "2016-07-26 08:04:17"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v3.1.2",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
-                "reference": "7f9839ede2070f53e7e2f0849b9bd14748c434c5"
+                "reference": "c0c00c80b3a69132c4e55c3e7db32b4a387615e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/7f9839ede2070f53e7e2f0849b9bd14748c434c5",
-                "reference": "7f9839ede2070f53e7e2f0849b9bd14748c434c5",
+                "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/c0c00c80b3a69132c4e55c3e7db32b4a387615e5",
+                "reference": "c0c00c80b3a69132c4e55c3e7db32b4a387615e5",
                 "shasum": ""
             },
             "require": {
@@ -1819,20 +1819,20 @@
             ],
             "description": "Symfony EventDispatcher Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 05:41:56"
+            "time": "2016-07-19 10:45:57"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.1.2",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "6b5a3764c5b0ce1f0ec3b8be5bba969122a78cfc"
+                "reference": "399a44b73f6c176de40fb063dcdaa578bcfb94d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/6b5a3764c5b0ce1f0ec3b8be5bba969122a78cfc",
-                "reference": "6b5a3764c5b0ce1f0ec3b8be5bba969122a78cfc",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/399a44b73f6c176de40fb063dcdaa578bcfb94d6",
+                "reference": "399a44b73f6c176de40fb063dcdaa578bcfb94d6",
                 "shasum": ""
             },
             "require": {
@@ -1872,7 +1872,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-29 07:02:31"
+            "time": "2016-07-17 14:02:08"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1935,7 +1935,7 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v3.1.2",
+            "version": "v3.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
