@@ -1089,16 +1089,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.4.1",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "b4fe3b7387cb323fd15ad5837cae992422c9fa5c"
+                "reference": "a6d15c8618ea3951fd54d34e326b68d3d0bc0786"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/b4fe3b7387cb323fd15ad5837cae992422c9fa5c",
-                "reference": "b4fe3b7387cb323fd15ad5837cae992422c9fa5c",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/a6d15c8618ea3951fd54d34e326b68d3d0bc0786",
+                "reference": "a6d15c8618ea3951fd54d34e326b68d3d0bc0786",
                 "shasum": ""
             },
             "require": {
@@ -1116,7 +1116,7 @@
                 "jakub-onderka/php-parallel-lint": "^0.9.0",
                 "mockery/mockery": "^0.9.4",
                 "moontoast/math": "^1.1",
-                "phpunit/phpunit": "^4.7|^5.0",
+                "phpunit/phpunit": "^4.7|>=5.0 <5.4",
                 "satooshi/php-coveralls": "^0.6.1",
                 "squizlabs/php_codesniffer": "^2.3"
             },
@@ -1165,7 +1165,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2016-04-24 00:30:41"
+            "time": "2016-08-02 18:39:32"
         },
         {
             "name": "react/cache",
@@ -1247,30 +1247,25 @@
         },
         {
             "name": "react/dns",
-            "version": "v0.4.2",
+            "version": "v0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "62f6201e487df8add209cc42f05ffca33ee1ba05"
+                "reference": "751b3129556e04944f164e3556a20ca6e201e459"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/62f6201e487df8add209cc42f05ffca33ee1ba05",
-                "reference": "62f6201e487df8add209cc42f05ffca33ee1ba05",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/751b3129556e04944f164e3556a20ca6e201e459",
+                "reference": "751b3129556e04944f164e3556a20ca6e201e459",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "react/cache": "~0.4.0|~0.3.0",
-                "react/promise": "~2.0|~1.1",
+                "react/promise": "~2.1|~1.2",
                 "react/socket": "~0.4.0|~0.3.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "React\\Dns\\": "src"
@@ -1285,7 +1280,7 @@
                 "dns",
                 "dns-resolver"
             ],
-            "time": "2016-02-24 23:45:36"
+            "time": "2016-08-01 10:09:07"
         },
         {
             "name": "react/event-loop",
