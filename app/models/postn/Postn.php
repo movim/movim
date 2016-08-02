@@ -254,6 +254,11 @@ class Postn extends Model {
             if($entry->entry->geoloc->lon != 0)
                 $this->__set('lon', (string)$entry->entry->geoloc->lon);
         }
+
+        // We fill empty aid
+        if($this->isMicroblog() && empty($this->aid)) {
+            $this->__set('aid', $this->origin);
+        }
     }
 
     private function typeIsPicture($type) {
