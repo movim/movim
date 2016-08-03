@@ -1,5 +1,5 @@
 <div id="statistics" class="tabelem" title="{$c->__("statistics.title")}">
-    <ul class="list divided thick">
+    <ul class="list divided middle">
         <li class="subheader">
             <p>{$c->__('statistics.sessions')} <span class="second">{$sessions|count}</a></p>
         </li>
