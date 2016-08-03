@@ -178,7 +178,7 @@ class SessionxDAO extends SQL {
 
     function getAll() {
         $this->_sql = '
-            select * from sessionx';
+            select * from sessionx order by start';
 
         $this->prepare(
             'Sessionx',

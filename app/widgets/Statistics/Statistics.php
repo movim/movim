@@ -65,7 +65,7 @@ class Statistics extends \Movim\Widget\Base
     function display()
     {
         $sd = new SessionxDAO;
-        $this->view->assign('sessions',      $sd->getAll());
+        $this->view->assign('sessions', $sd->getAll());
     }
 
     public function getContact($username, $host)
