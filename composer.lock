@@ -1588,16 +1588,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.7",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "6597aa51149aff674faa9db1729c0c70392aa296"
+                "reference": "fb7f19f9ad96eb9ccb49e12212d7ebd90f9e0bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/6597aa51149aff674faa9db1729c0c70392aa296",
-                "reference": "6597aa51149aff674faa9db1729c0c70392aa296",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/fb7f19f9ad96eb9ccb49e12212d7ebd90f9e0bea",
+                "reference": "fb7f19f9ad96eb9ccb49e12212d7ebd90f9e0bea",
                 "shasum": ""
             },
             "require": {
@@ -1648,7 +1648,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-05-07 18:51:56"
+            "time": "2016-08-03 09:05:28"
         },
         {
             "name": "stojg/crop",
