@@ -54,8 +54,8 @@ class Base {
         }
     }
 
-    function redirect($page) {
-        $url = \Route::urlize($page);
+    function redirect($page, $params = false) {
+        $url = \Route::urlize($page, $params);
         header('Location: '. $url);
     }
 
