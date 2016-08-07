@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.9.1 (trunk)
+v0.11 (trunk)
+---------------------------
+
+v0.10
 ---------------------------
  * Resize and compress large pictures in Upload
  * Refactor MovimWebsocket and fix disconnection issues
