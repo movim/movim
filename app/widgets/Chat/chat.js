@@ -4,6 +4,7 @@ var Chat = {
     room: null,
     date: null,
     lastScroll: null,
+    lastHeight: null,
     lastDate: null,
     edit: false,
     sendMessage: function(jid, muc)
@@ -61,15 +62,15 @@ var Chat = {
     },
     setScrollBehaviour : function() {
         var discussion = document.querySelector('#chat_widget div.contained');
-        if(discussion.dataset.muc != true) {
-            discussion.onscroll = function() {
+        discussion.onscroll = function() {
+            if(discussion.dataset.muc != true) {
                 if(this.scrollTop < 1) {
                     var chat = document.querySelector('#chat_widget');
-                    Chat.lastScroll = this.scrollHeight;
                     Chat_ajaxGetHistory(chat.dataset.jid, Chat.date);
                 }
-            };
-        }
+            }
+            Chat.lastHeight = this.clientHeight;
+        };
     },
     appendMucMessages : function(date, messages) {
         id = MovimUtils.cleanupId(messages[0].jidfrom + '_conversation');
@@ -123,10 +124,14 @@ var Chat = {
                     }
                 }
             }
+
             // Only scroll down if scroll was at the bottom before the new msg
             // => don't scroll if the user was reading previous messages
-            if(scrolled && prepend !== true)
-                MovimTpl.scrollPanel();
+            if(scrolled && prepend !== true) {
+                setTimeout(function() {
+                    MovimTpl.scrollPanel();
+                }, 20);
+            }
         }
     },
     appendSpeaker : function(idjidtime, data, prepend) {
@@ -239,9 +244,11 @@ var Chat = {
     },
     getStickerHtml: function(sticker) {
         var img = document.createElement("img");
-        img.setAttribute("src", sticker.url);
-        img.setAttribute("width", sticker.width);
-        img.setAttribute("height", sticker.height);
+        if(sticker.url) {
+            img.setAttribute("src", sticker.url);
+            img.setAttribute("width", sticker.width);
+            img.setAttribute("height", sticker.height);
+        }
         return img;
     },
     getEditedIcoHtml: function() {
@@ -290,6 +297,12 @@ if(typeof Upload != 'undefined') {
 document.addEventListener('focus', function() {
     var textarea = document.querySelector('#chat_textarea');
     if(textarea) textarea.focus();
+});
+
+window.addEventListener('resize', function() {
+    var discussion = document.querySelector('#chat_widget div.contained');
+    discussion.scrollTop += Chat.lastHeight - discussion.clientHeight;
+    Chat.lastHeight = discussion.clientHeight;
 });
 
 var state = 0;
