@@ -35,6 +35,7 @@
         "ezyang/htmlpurifier": "^4.7",
         "ramsey/uuid": "^3.2",
         "symfony/console": "^3.0",
-        "cocur/slugify": "^2.1"
+        "cocur/slugify": "^2.1",
+        "guzzlehttp/guzzle": "^6.2"
     }
 }
