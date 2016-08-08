@@ -277,7 +277,7 @@ class PostnDAO extends SQL {
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
             where postn.aid = :aid
-                and postn.picture = 1
+                and postn.picture is not null
             order by postn.published desc';
 
         if($limitr !== false)
@@ -299,7 +299,7 @@ class PostnDAO extends SQL {
             select * from postn
             where postn.origin = :origin
                 and postn.node = :node
-                and postn.picture = 1
+                and postn.picture is not null
                 and postn.open = true
             order by postn.published desc
             limit 1';

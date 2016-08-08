@@ -45,14 +45,14 @@ var Upload = {
         var image = new Image();
         image.onload = function()
         {
-            var limit = 1920;
+            var limit = 1600;
 
             var ratio = Math.min(limit / image.naturalWidth, limit / image.naturalHeight);
 
             var width = image.naturalWidth;
             var height = image.naturalHeight;
 
-            if(ratio < 1 || file.size > 320000) {
+            if(ratio < 1 || file.size > SMALL_PICTURE_LIMIT) {
                 if(ratio < 1) {
                     width = Math.round(width*ratio);
                     height = Math.round(height*ratio);

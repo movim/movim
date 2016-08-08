@@ -84,7 +84,7 @@ class Postn extends Model {
             "links" :
                 {"type":"text" },
             "picture" :
-                {"type":"int", "size":4 },
+                {"type":"text" },
             "hash" :
                 {"type":"string", "size":128, "mandatory":true }
         }';
@@ -242,7 +242,9 @@ class Postn extends Model {
             $results = $xml->xpath('//img/@src');
             if(is_array($results) && !empty($results)) {
                 $extra = (string)$results[0];
-                $this->picture = true;
+                if(isSmallPicture($extra)) {
+                    $this->picture = $extra;
+                }
             }
         }
 
@@ -280,9 +282,11 @@ class Postn extends Model {
             $enc = $enc['@attributes'];
             array_push($l, $enc);
 
-            if(array_key_exists('type', $enc)
-            && $this->typeIsPicture($enc['type'])) {
-                $this->picture = true;
+            if($this->picture == null
+            && isset($enc['type'])
+            && $this->typeIsPicture($enc['type'])
+            && isSmallPicture($enc['href'])) {
+                $this->picture = $enc['href'];
             }
 
             if($enc['rel'] == 'alternate'
@@ -312,7 +316,6 @@ class Postn extends Model {
     public function getAttachments()
     {
         $attachments = null;
-        $this->picture = null;
         $this->openlink = null;
 
         if(isset($this->links)) {
@@ -333,12 +336,6 @@ class Postn extends Model {
                     case 'enclosure':
                         if($this->typeIsPicture($l['type'])) {
                             array_push($attachments['pictures'], $l);
-
-                            if($this->picture == null) {
-                                $this->picture = $l['href'];
-                            }
-                        } elseif($l['type'] == 'picture' && $this->picture == null) {
-                            $this->picture = $l['href'];
                         } else {
                             array_push($attachments['files'], $l);
                         }

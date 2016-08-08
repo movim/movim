@@ -6,4 +6,5 @@
     var CURRENT_PAGE    = '{$current_page}';
     var SERVER_CONF     = {$server_conf};
     var SECURE_WEBSOCKET= {$secure_websocket};
+    var SMALL_PICTURE_LIMIT = {$small_picture_limit};
 </script>

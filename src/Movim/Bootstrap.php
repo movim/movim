@@ -88,6 +88,7 @@ class Bootstrap
         define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
         define('APP_SECURED',   $this->isServerSecured());
+        define('SMALL_PICTURE_LIMIT', 320000);
 
         if(isset($_SERVER['HTTP_HOST'])) {
             define('BASE_HOST',     $_SERVER['HTTP_HOST']);
