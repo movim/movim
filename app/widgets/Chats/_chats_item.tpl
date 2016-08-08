@@ -8,7 +8,7 @@
             action
         {/if}
         "
-    title="{$contact->jid} - {$message->published|strtotime|prepareDate}">
+    title="{$contact->jid}{if="isset($message)"} - {$message->published|strtotime|prepareDate}{/if}">
     {$url = $contact->getPhoto('s')}
     {if="$url"}
         <span class="primary icon bubble {if="isset($presence)"}status {$presence}{/if}">
@@ -22,9 +22,11 @@
 
     <span data-key="chat|{$contact->jid}" class="counter bottom"></span>
     <p class="normal line">
-        <span class="info" title="{$message->published|strtotime|prepareDate}">
-            {$message->published|strtotime|prepareDate:true,true}
-        </span>
+        {if="isset($message)"}
+            <span class="info" title="{$message->published|strtotime|prepareDate}">
+                {$message->published|strtotime|prepareDate:true,true}
+            </span>
+        {/if}
         {$contact->getTrueName()}
         {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
             <span class="second">
