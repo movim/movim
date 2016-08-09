@@ -106,6 +106,7 @@ class ItemDAO extends SQL
                 select jid,
                 count(*) as number from item
                 where node != \'\'
+                and node not like \'/%\'
                 group by jid)
                 as counter on item.jid = counter.jid
             where caps.category = \'pubsub\'
