@@ -14,7 +14,15 @@
         </li>
     </ul>
 </header>
-<ul class="list middle divided spaced active all">
+{if="$nodes == null"}
+    <ul class="thick">
+        <div class="placeholder icon pages">
+            <h1>{$c->__('error.oops')}</h1>
+            <h4>{$c->__('groups.empty_server')}</h4>
+        </li>
+    </ul>
+{else}
+    <ul class="list middle divided spaced active all">
     <!--<li class="subheader" >
         <span class="primary icon"><i class="zmdi zmdi-arrow-back"></i></span>
         <p class="normal">{$server}</p>
@@ -71,7 +79,8 @@
             </p>
         </li>
     {/loop}
-</ul>
+    </ul>
+{/if}
 <a onclick="Groups_ajaxTestAdd('{$server}')" class="button action color">
     <i class="zmdi zmdi-plus"></i>
 </a>

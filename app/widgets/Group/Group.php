@@ -34,7 +34,8 @@ class Group extends \Movim\Widget\Base
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
         $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
 
-        $this->registerEvent('pubsub_delete_handle', 'onDelete');
+        $this->registerEvent('disco_items_handle', 'onDisco', 'groups');
+        $this->registerEvent('pubsub_delete_handle', 'onDisco');
 
         $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
@@ -52,7 +53,7 @@ class Group extends \Movim\Widget\Base
         RPC::call('MovimTpl.showPanel');
     }
 
-    function onDelete($packet)
+    function onDisco($packet)
     {
         $this->ajaxClear();
     }

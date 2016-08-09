@@ -1,5 +1,5 @@
 <section>
-    <h3>{$c->__('error.title')}</h3>
+    <h3>{$c->__('error.oops')}</h3>
     <br />
     <h4 class="gray">{$error}</h4>
 </section>
