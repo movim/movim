@@ -136,15 +136,16 @@ class PresenceDAO extends SQL {
 
         $this->prepare(
             'Presence',
-            array(
+            [
                 'id' => $id
-            )
+            ]
         );
 
         return $this->run('Presence');
     }
 
-    function getAll() {
+    function getAll()
+    {
         $this->_sql = '
             select * from presence;
             ';
@@ -153,7 +154,8 @@ class PresenceDAO extends SQL {
         return $this->run('Presence');
     }
 
-    function getPresence($jid, $resource) {
+    function getPresence($jid, $resource)
+    {
         $this->_sql = '
             select * from presence
             where
@@ -163,11 +165,11 @@ class PresenceDAO extends SQL {
 
         $this->prepare(
             'Presence',
-            array(
+            [
                 'session' => $this->_user,
                 'jid' => $jid,
                 'resource' => $resource
-            )
+            ]
         );
 
         return $this->run('Presence', 'item');
@@ -183,10 +185,10 @@ class PresenceDAO extends SQL {
 
         $this->prepare(
             'Presence',
-            array(
+            [
                 'session' => $this->_user,
                 'jid' => $jid,
-            )
+            ]
         );
 
         return $this->run('Presence', 'item');
@@ -202,10 +204,10 @@ class PresenceDAO extends SQL {
 
         $this->prepare(
             'Presence',
-            array(
+            [
                 'session' => $this->_user,
                 'jid' => $jid
-            )
+            ]
         );
 
         return $this->run('Presence');
@@ -219,10 +221,24 @@ class PresenceDAO extends SQL {
 
         $this->prepare(
             'Presence',
-            array(
+            [
                 'session' => $this->_user
-            )
+            ]
         );
+
+        return $this->run('Presence');
+    }
+
+    // TODO fix with a foreign key
+    function cleanPresences()
+    {
+        $this->_sql = '
+            delete from presence
+            where session not in (
+                select jid as session
+                from sessionx)';
+
+        $this->prepare();
 
         return $this->run('Presence');
     }
@@ -236,10 +252,10 @@ class PresenceDAO extends SQL {
 
         $this->prepare(
             'Presence',
-            array(
+            [
                 'session' => $this->_user,
                 'jid'     => $muc
-            )
+            ]
         );
 
         return $this->run('Presence');

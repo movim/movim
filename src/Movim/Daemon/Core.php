@@ -136,6 +136,9 @@ class Core implements MessageComponentInterface {
     {
         $sd = new \Modl\SessionxDAO();
         $sd->deleteEmpty();
+
+        $pd = new \Modl\PresenceDAO();
+        $pd->cleanPresences();
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e)
