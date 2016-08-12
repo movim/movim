@@ -11,7 +11,8 @@ class MessageDAO extends SQL {
                     html            = :html,
                     published       = :published,
                     delivered       = :delivered,
-                    edited          = :edited
+                    edited          = :edited,
+                    picture         = :picture
 
                 where session       = :session
                     and id          = :id
@@ -26,6 +27,7 @@ class MessageDAO extends SQL {
                 'session'   => $message->session,
                 'jidto'     => $message->jidto,
                 'edited'    => $message->edited,
+                'picture'   => $message->picture,
                 'jidfrom'   => $message->jidfrom,
                 'body'      => $message->body,
                 'html'      => $message->html,
@@ -52,7 +54,8 @@ class MessageDAO extends SQL {
                 html,
                 published,
                 delivered,
-                sticker)
+                sticker,
+                picture)
                 values(
                     :id,
                     :session,
@@ -66,7 +69,8 @@ class MessageDAO extends SQL {
                     :html,
                     :published,
                     :delivered,
-                    :sticker
+                    :sticker,
+                    :picture
                     )';
 
             $this->prepare(
@@ -84,7 +88,8 @@ class MessageDAO extends SQL {
                     'html'      => $message->html,
                     'published' => $message->published,
                     'delivered' => $message->delivered,
-                    'sticker'   => $message->sticker
+                    'sticker'   => $message->sticker,
+                    'picture'   => $message->picture
                 )
             );
         }

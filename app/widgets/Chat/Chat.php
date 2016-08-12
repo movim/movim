@@ -264,6 +264,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         $m->body      = $body;
+        $m->checkPicture();
         //$m->html      = prepareString($m->body, false, true);
 
         if($resource != false) {
@@ -588,6 +589,13 @@ class Chat extends \Movim\Widget\Base
                     'height' => $stickerSize['height']
                 ];
             }
+        }
+
+        if (isset($message->picture)) {
+            $message->sticker = [
+                'url' => $message->picture,
+                'picture' => true
+            ];
         }
 
 

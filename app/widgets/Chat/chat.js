@@ -246,10 +246,23 @@ var Chat = {
         var img = document.createElement("img");
         if(sticker.url) {
             img.setAttribute("src", sticker.url);
-            img.setAttribute("width", sticker.width);
-            img.setAttribute("height", sticker.height);
+            if(sticker.width)  img.setAttribute("width", sticker.width);
+            if(sticker.height)
+                img.setAttribute("height", sticker.height);
+            else {
+                img.setAttribute("height", "150");
+            }
         }
-        return img;
+
+        if(sticker.picture) {
+            var a = document.createElement("a");
+            a.setAttribute("href", sticker.url);
+            a.setAttribute("target", "_blank");
+            a.appendChild(img);
+            return a;
+        } else {
+            return img;
+        }
     },
     getEditedIcoHtml: function() {
         var i = document.createElement("i");

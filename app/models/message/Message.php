@@ -1,6 +1,8 @@
 <?php
 
-namespace modl;
+namespace Modl;
+
+use Respect\Validation\Validator;
 
 class Message extends Model {
     public $id;
@@ -26,6 +28,7 @@ class Message extends Model {
     public $publishedPrepared; // Only for chat purpose
     public $edited;
 
+    public $picture; // A valid (small) picture URL
     public $sticker; // The sticker code
 
     public function __construct()
@@ -58,6 +61,8 @@ class Message extends Model {
                 {"type":"date"},
             "edited" :
                 {"type":"int", "size":1},
+            "picture" :
+                {"type":"text" },
             "sticker" :
                 {"type":"string", "size":128 }
         }';
@@ -130,6 +135,17 @@ class Message extends Model {
                 $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
             else
                 $this->published = gmdate('Y-m-d H:i:s');
+
+            $this->checkPicture();
+        }
+    }
+
+    public function checkPicture()
+    {
+        $body = trim($this->body);
+        if(Validator::url()->notEmpty()->validate($body)
+        && isSmallPicture($body)) {
+            $this->picture = $body;
         }
     }
 
