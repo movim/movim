@@ -17,7 +17,7 @@ use Cocur\Slugify\Slugify;
 
 class Group extends \Movim\Widget\Base
 {
-    private $_paging = 10;
+    private $_paging = 5;
     private $_role = null;
 
     function load()
@@ -191,6 +191,7 @@ class Group extends \Movim\Widget\Base
 
         $slugify = new Slugify();
 
+        RPC::call('MovimUtils.addClass', '#group_widget', 'fixed');
         RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node).' > div.card', $html);
         RPC::call('Group.enableVideos');
         unset($html);
@@ -366,6 +367,7 @@ class Group extends \Movim\Widget\Base
     function ajaxClear()
     {
         $html = $this->prepareEmpty();
+        RPC::call('MovimUtils.removeClass', '#group_widget', 'fixed');
         RPC::call('MovimTpl.fill', '#group_widget header', '');
         RPC::call('MovimTpl.fill', '#group_widget > div', $html);
     }

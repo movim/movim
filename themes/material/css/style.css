@@ -84,16 +84,14 @@ body > nav.active {
     width: 45rem;
 }
 
-/*@media screen and (min-width: 1024px) {*/
-    body > div.drawer:not(.empty) ~ main,
-    body > div.drawer:not(.empty) ~ nav,
-    body > div.dialog:not(:empty) ~ main,
-    body > div.dialog:not(:empty) ~ nav,
-    body > nav.active + main {
-        opacity: 0.5;
-        pointer-events: none;
-    }
-/*}*/
+body > div.drawer:not(.empty) ~ main,
+body > div.drawer:not(.empty) ~ nav,
+body > div.dialog:not(:empty) ~ main,
+body > div.dialog:not(:empty) ~ nav,
+body > nav.active + main {
+    opacity: 0.5;
+    pointer-events: none;
+}
 
 body > nav li { /* Little hack for the navbar */
     overflow: hidden;
@@ -119,36 +117,7 @@ body > nav li span.counter {
     font-size: 1.75rem;
     padding: 0.25rem;
 }
-/*
-@media screen and (min-width: 1024px) and (max-width: 1679px) {
-    body > nav p {
-        transition: opacity 0.5s cubic-bezier(.4,0,.2,1);
-        opacity: 0;
-    }
 
-    body > nav:hover {
-        width: 45rem;
-        box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
-    }
-
-    body > nav:hover p {
-        opacity: 1;
-    }
-
-    body > nav:hover + main {
-        opacity: 0.5;
-        pointer-events: none;
-    }
-
-    body > nav:not(:hover) li span.counter {
-        left: 3.5rem;
-        top: calc(50% - 1.25rem);
-        right: auto;
-        font-size: 1.75rem;
-        padding: 0.25rem;
-    }
-}
-*/
 @media screen and (min-width: 1680px) {
     body > nav,
     body > nav:hover {
@@ -161,8 +130,7 @@ body > nav li span.counter {
     }
 }
 
-body > nav.active:before/*,
-body > nav:hover:before*/ {
+body > nav.active:before {
     display: none;
 }
 
@@ -183,46 +151,9 @@ nav + main {
     transform: translateZ(0);
 }
 
-main > header {
-    position: relative;
-    height: 7rem;
-    /*overflow: hidden;*/
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.2);
-    z-index: 2;
-}
-
-main > header > div {
-    position: relative;
-    width: 30%;
-    display: inline-block;
-    box-sizing: border-box;
-}
-
-main > header > div:first-child:nth-last-child(2) ~ div {
-    width: 70%;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-@media screen and (max-width: 1024px) {
-    main > header > div,
-    main > header > div:first-child:nth-last-child(2) ~ div {
-        width: 100%;
-    }
-
-    main > header > div:first-child:nth-last-child(2) {
-        display: none;
-    }
-}
-
 main > section {
     height: 100%;
     position: relative;
-}
-
-main > header + section {
-    height: calc(100% - 7rem);
 }
 
 main > section > div {
@@ -234,8 +165,13 @@ main > section > div {
     box-sizing: border-box;
 }
 
+main > section > div.fixed {
+    height: calc(100% - 7rem);
+    top: 7rem;
+}
+
 main > section > div:not(:last-child) {
-    border-right: 1px solid #DDDDDD;
+    border-right: 1px solid #DDD;
 }
 
 main > section > div > * {
@@ -250,7 +186,6 @@ main > section > div:first-child:nth-last-child(2) {
 main > section > div:first-child:nth-last-child(2) ~ div {
     width: 70%;
     position: absolute;
-    top: 0;
     right: 0;
     /*transition: left .3s cubic-bezier(.4,0,.2,1);*/
 }
@@ -260,7 +195,7 @@ main > section > div:first-child:nth-last-child(2) ~ div {
 }
 
 main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
-    height: calc(100% - 14.5rem);
+    height: calc(100% - 7.5rem);
     overflow-y: scroll;
     position: absolute;
     max-width: 100%;
@@ -375,96 +310,6 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
         max-width: 100%;
     }
 }
-
-
-/* Snackbar - Toast */
-
-.snackbar,
-.toast {
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.23), 0px 3px 10px rgba(0, 0, 0, 0.16);
-    position: fixed;
-    z-index: 4;
-    min-height: 6rem;
-    max-height: 11rem;
-    height: auto;
-    color: white;
-    padding: 2rem 3rem;
-    box-sizing: border-box;
-    width: 40rem;
-    pointer-events: none;
-    transition: opacity 0.2s ease, bottom 0.4s ease;
-    transform: translateX(0);
-}
-
-.snackbar > a {
-    pointer-events: auto;
-    margin: -1rem -2rem;
-    display: block;
-    margin: -2rem -1rem;
-    padding: 2rem 1rem;
-}
-
-.snackbar > a:hover {
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    padding: calc(2rem - 3px) calc(1rem - 3px);
-}
-
-.snackbar p,
-.toast p {
-    color: white;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.snackbar {
-    background-color: #333333;
-    bottom: 3rem;
-    left: 3rem;
-    border-radius: 0.25rem;
-    opacity: 1;
-    padding: 2rem 1rem;
-}
-
-.toast {
-    background-color: #323232;
-    border-radius: 3rem;
-    left: 50%;
-    bottom: 3rem;
-    line-height: 2.5rem;
-    margin-left: -20rem;
-}
-
-.snackbar:empty,
-.toast:empty {
-    opacity: 0;
-}
-
-.snackbar#error_websocket {
-    max-height: initial;
-}
-
-.snackbar#error_websocket p {
-    line-height: 2.5rem;
-    white-space: initial;
-}
-
-@media screen and (max-width: 22rem) {
-    .snackbar {
-        width: 100%;
-        top: 0;
-        left: 0;
-        bottom: auto;
-        border-radius: 0;
-    }
-
-    .toast {
-        max-width: 90%;
-        left: 5%;
-        margin-left: 0;
-    }
-}
-
 
 /* Placeholder */
 

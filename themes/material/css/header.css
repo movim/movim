@@ -23,10 +23,6 @@ header.fixed {
     }
 }
 
-header.fixed:not(:empty) + * {
-    margin-top: 7rem;
-}
-
 header ul:first-child > li:first-child {
     text-align: center;
 }

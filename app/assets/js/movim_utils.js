@@ -41,12 +41,6 @@ var MovimUtils = {
         r = r.replace(new RegExp("\\W", 'g'),"");
         return r;
     },
-    addClass: function(element, classname) {
-        if(!MovimUtils.hasClass(element, classname)) {
-            element = MovimUtils.getNode(element);
-            element.className += " " + classname;
-        }
-    },
     cleanupId: function(string) {
         return string.replace(/([^a-z0-9]+)/gi, '-');
     },
@@ -218,6 +212,12 @@ var MovimUtils = {
     },
     reloadThis: function() {
         window.location.reload();
+    },
+    addClass: function(element, classname) {
+        if(!MovimUtils.hasClass(element, classname)) {
+            element = MovimUtils.getNode(element);
+            element.className += " " + classname;
+        }
     },
     removeClass: function(element,classname) {
         if (MovimUtils.hasClass(element, classname)) {

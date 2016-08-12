@@ -19,6 +19,7 @@
 
     <?php
         $this->addCss('style.css');
+        $this->addCss('notification.css');
         $this->addCss('header.css');
         $this->addCss('listn.css');
         $this->addCss('grid.css');
