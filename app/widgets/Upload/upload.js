@@ -131,6 +131,3 @@ var Upload = {
     }
 }
 
-MovimWebsocket.attach(function()
-{
-});
