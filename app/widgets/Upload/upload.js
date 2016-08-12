@@ -47,10 +47,10 @@ var Upload = {
         {
             var limit = 1600;
 
-            var ratio = Math.min(limit / image.naturalWidth, limit / image.naturalHeight);
-
             var width = image.naturalWidth;
             var height = image.naturalHeight;
+
+            var ratio = (limit*limit)/(width*height);
 
             if(ratio < 1 || file.size > SMALL_PICTURE_LIMIT) {
                 if(ratio < 1) {
@@ -124,6 +124,10 @@ var Upload = {
 
         Upload.xhr.setRequestHeader('Content-Type', 'text/plain');
         Upload.xhr.send(Upload.file);
+    },
+
+    abort : function() {
+        if(Upload.xhr) Upload.xhr.abort();
     }
 }
 
