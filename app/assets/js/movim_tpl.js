@@ -54,18 +54,15 @@ var MovimTpl = {
     hideMenu: function() {
         MovimUtils.removeClass('body > nav', 'active');
     },
+    showPanel: function() {
+        MovimUtils.addClass('main section', 'enabled');
+        MovimTpl.scrollPanelTop();
+    },
     hidePanel: function() {
-        var selector = 'main section > div:first-child:nth-last-child(2) ~ div';
-        var inner = document.querySelector(selector + ' div');
-
-        MovimUtils.removeClass(selector, 'enabled');
-
-        // Clear the right panel
-        //if(inner != null) inner.innerHTML = '';
-        //else document.querySelector(selector).innerHTML = '';
+        MovimUtils.removeClass('main section', 'enabled');
     },
     isPanel: function() {
-        return MovimUtils.hasClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
+        return MovimUtils.hasClass('main section', 'enabled');
     },
     isPanelScrolled: function() {
         var selector = document.querySelector('main section > div:first-child:nth-last-child(2) ~ div div');
@@ -107,10 +104,6 @@ var MovimTpl = {
         if(selector != null) {
             selector.scrollTop = 0;
         }
-    },
-    showPanel : function() {
-        MovimUtils.addClass('main section > div:first-child:nth-last-child(2) ~ div', 'enabled');
-        MovimTpl.scrollPanelTop();
     },
     toggleActionButton : function() {
         MovimUtils.toggleClass('.button.action', 'active');

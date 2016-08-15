@@ -177,6 +177,7 @@ main > section > div:not(:last-child) {
 main > section > div > * {
     max-width: 100rem;
     margin: 0 auto;
+    position: relative; /* Prevent fixed issues on Chrome Android */
 }
 
 /* Two blocks*/
@@ -219,8 +220,16 @@ main > section > div > div.contained > * {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.23), 0 0 10px rgba(0, 0, 0, 0.16);
     }
 
-    main > section > div:first-child:nth-last-child(2) ~ div.enabled {
-        left: 0%;
+    main > section:not(.enabled) > div:not(:first-child) {
+        display: none;
+    }
+
+    main > section.enabled > div:first-child:nth-last-child(2) {
+        display: none;
+    }
+
+    main > section.enabled > div:first-child:nth-last-child(2) ~ div {
+        left: 0;
     }
 
     main,
