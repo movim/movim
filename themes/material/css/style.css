@@ -177,7 +177,11 @@ main > section > div:not(:last-child) {
 main > section > div > * {
     max-width: 100rem;
     margin: 0 auto;
-    position: relative; /* Prevent fixed issues on Chrome Android */
+}
+
+/* Prevent fixed issues on Chrome Android */
+main > section > div:first-child:nth-last-child(2) ~ div > div {
+    position: relative;
 }
 
 /* Two blocks*/
