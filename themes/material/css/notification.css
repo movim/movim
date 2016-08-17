@@ -70,6 +70,12 @@
     white-space: initial;
 }
 
+.snackbar#error_websocket:not(.hide) ~ main,
+.snackbar#error_websocket:not(.hide) ~ nav {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 @media screen and (max-width: 22rem) {
     .snackbar {
         width: 100%;
