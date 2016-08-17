@@ -292,7 +292,7 @@ ul li div.bubble {
     float: left;
 
     left: 9rem;
-    padding-left: 2rem;
+    /*padding-left: 2rem;*/
     width: auto;
 }
 
