@@ -12,9 +12,9 @@ WebSocket.prototype.register = function(host) {
     this.send(JSON.stringify({'func' : 'register', 'host' : host}));
 };
 
-WebSocket.prototype.admin = function(key) {
+/*WebSocket.prototype.admin = function(key) {
     this.send(JSON.stringify({'func' : 'admin', 'key' : key}));
-};
+};*/
 
 /**
  * @brief Definition of the MovimWebsocket object
@@ -26,6 +26,7 @@ var MovimWebsocket = {
     attached: new Array(),
     registered: new Array(),
     attempts: 1,
+    pong: false,
 
     launchAttached : function() {
         // We hide the Websocket error
@@ -55,6 +56,7 @@ var MovimWebsocket = {
             console.log("Connection established!");
             MovimWebsocket.attempts = 1;
             MovimWebsocket.launchAttached();
+            MovimWebsocket.ping();
         };
 
         this.connection.onmessage = function(e) {
@@ -69,6 +71,10 @@ var MovimWebsocket = {
 
                 if(obj.func == 'disconnected') {
                     MovimUtils.disconnect();
+                }
+
+                if(obj.func == 'pong') {
+                    MovimWebsocket.pong = true;
                 }
 
                 MovimWebsocket.handle(obj);
@@ -112,6 +118,26 @@ var MovimWebsocket = {
                     }
                 )
             );
+        }
+    },
+
+    // A ping/pong system to handle socket errors for buggy browser (Chrome on Linux…)
+    ping : function() {
+        if(this.connection.readyState == 1) {
+            this.connection.send(
+                JSON.stringify(
+                    {'func' : 'ping'}
+                )
+            );
+
+            setTimeout(function(){
+                if(MovimWebsocket.pong == false) {
+                    MovimWebsocket.connection.onerror();
+                } else {
+                    MovimWebsocket.pong = false;
+                    MovimWebsocket.ping();
+                }
+            }, 15000);
         }
     },
 

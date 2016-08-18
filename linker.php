@@ -71,6 +71,13 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         $msg = $msg->body;
                         break;
 
+                    case 'ping':
+                        // And we say that we are ready !
+                        $obj = new \StdClass;
+                        $obj->func = 'pong';
+                        echo base64_encode(gzcompress(json_encode($obj), 9))."";
+                        break;
+
                     case 'down':
                         $evt = new Event;
                         $evt->runEvent('session_down');
