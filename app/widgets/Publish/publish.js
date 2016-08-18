@@ -40,7 +40,7 @@ var Publish = {
             Post_ajaxClear();
             MovimTpl.hidePanel();
         } else {
-            MovimUtils.reload(BASE_URI+'?group/'+server+'/'+node);
+            MovimUtils.reload(BASE_URI + '?group/' + server + '/' + node);
         }
     },
 
