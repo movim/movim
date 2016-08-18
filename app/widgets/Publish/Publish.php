@@ -64,6 +64,7 @@ class Publish extends \Movim\Widget\Base
         $view->assign('node', $node);
         $view->assign('item', $post);
 
+        RPC::call('MovimUtils.removeClass', '#group_widget', 'fixed');
         RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
 
         $pd = new \Modl\ItemDAO;

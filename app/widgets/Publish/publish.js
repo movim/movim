@@ -38,11 +38,9 @@ var Publish = {
         // We are on the news page
         if(typeof Post_ajaxClear === 'function') {
             Post_ajaxClear();
-            //Header_ajaxReset('news');
             MovimTpl.hidePanel();
         } else {
-            Group_ajaxGetItems(server, node);
-            Group_ajaxGetAffiliations(server, node);
+            MovimUtils.reload(BASE_URI+'?group/'+server+'/'+node);
         }
     },
 
