@@ -280,5 +280,12 @@ var MovimUtils = {
         var dataView = new DataView(arrayBuffer);
         var blob = new Blob([dataView.buffer], { type: mimeString });
         return blob;
+    },
+    urlParts : function() {
+        var str = window.location.search.split('/');
+        var page = str[0].substr(1);
+        str.shift()
+        var parts = {'page': page, 'params': str};
+        return parts;
     }
 };

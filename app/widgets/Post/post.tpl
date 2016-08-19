@@ -1,11 +1,12 @@
 <div id="post_widget">
     {$c->prepareEmpty()}
-    {if="$nodeid"}
-        <script type="text/javascript">
-            MovimWebsocket.attach(function() {
-                Post_ajaxGetPost('{$nodeid}');
+    <script type="text/javascript">
+        MovimWebsocket.attach(function() {
+            var nodeid = MovimUtils.urlParts().params[0];
+            if(nodeid) {
+                Post_ajaxGetPost(nodeid);
                 MovimTpl.showPanel();
-            });
-        </script>
-    {/if}
+            }
+        });
+    </script>
 </div>

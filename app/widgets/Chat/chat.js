@@ -289,8 +289,7 @@ var Chat = {
 };
 
 MovimWebsocket.attach(function() {
-    var chat = document.querySelector('#chat_widget');
-    var jid = chat.dataset.jid;
+    var jid = MovimUtils.urlParts().params[0];
     if(jid) {
         MovimTpl.showPanel();
         Chat_ajaxGet(jid);
