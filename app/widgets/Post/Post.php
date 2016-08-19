@@ -105,7 +105,6 @@ class Post extends \Movim\Widget\Base
         RPC::call('MovimUtils.pushState', $this->route('news', $id));
 
         RPC::call('MovimTpl.fill', '#post_widget', $html);
-        RPC::call('MovimTpl.scrollHeaders');
     }
 
     function ajaxDelete($to, $node, $id)
