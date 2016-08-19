@@ -336,7 +336,7 @@ class Postn extends Model {
                     case 'enclosure':
                         if($this->typeIsPicture($l['type'])) {
                             array_push($attachments['pictures'], $l);
-                        } else {
+                        } elseif($l['type'] != 'picture') {
                             array_push($attachments['files'], $l);
                         }
                         break;
