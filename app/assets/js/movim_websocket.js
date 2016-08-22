@@ -50,6 +50,12 @@ var MovimWebsocket = {
             var uri = 'ws://' + BASE_HOST + '/ws/';
         }
 
+        if(this.connection
+        && this.connection.readyState == 1) {
+            this.connection.onclose = null;
+            this.connection.close();
+        }
+
         this.connection = new WebSocket(uri);
 
         this.connection.onopen = function(e) {
