@@ -53,14 +53,14 @@
         data-node="{$value->node}">
         {$picture = $value->getPicture()}
         {if="$picture != null"}
-            <span class="primary icon thumb" style="background-image: url({$picture});"></span>
+            <span class="icon top" style="background-image: url({$picture});"></span>
         {else}
             {$url = $value->getContact()->getPhoto('l')}
             {if="$url"}
-                <span class="primary icon thumb" style="background-image: url({$url});">
+                <span class="icon top" style="background-image: url({$url});">
                 </span>
             {else}
-                <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
+                <span class="icon top color {$value->getContact()->jid|stringToColor}">
                     <i class="zmdi zmdi-account"></i>
                 </span>
             {/if}
@@ -125,13 +125,13 @@
             data-node="{$value->node}">
             {$picture = $value->getPicture()}
             {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                <span class="primary icon thumb color red tiny">
+                <span class="icon top color red tiny">
                     +18
                 </span>
             {elseif="$picture != null"}
-                <span class="primary icon thumb" style="background-image: url({$picture});"></span>
+                <span class="icon top" style="background-image: url({$picture});"></span>
             {else}
-                <span class="primary icon thumb color {$value->node|stringToColor}">
+                <span class="icon top color {$value->node|stringToColor}">
                     {$value->node|firstLetterCapitalize}
                 </span>
             {/if}
