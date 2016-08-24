@@ -48,7 +48,9 @@
                     <img src="{$value->getLogo()}">
                 </span>
             {else}
-                <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+                <span class="primary icon bubble color {$value->node|stringToColor}">
+                    {$value->node|firstLetterCapitalize}
+                </span>
             {/if}
             <p class="line">
                 {if="$value->name"}

@@ -68,9 +68,15 @@
                     </span>
                 {/if}
             {else}
-                <span class="icon primary bubble color {$post->node|stringToColor}">
-                    {$post->node|firstLetterCapitalize}
-                </span>
+                {if="$post->logo"}
+                    <span class="primary icon bubble">
+                        <img src="{$post->getLogo()}">
+                    </span>
+                {else}
+                    <span class="primary icon bubble color {$post->node|stringToColor}">
+                        {$post->node|firstLetterCapitalize}
+                    </span>
+                {/if}
             {/if}
             <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                 <a  {if="$public"}

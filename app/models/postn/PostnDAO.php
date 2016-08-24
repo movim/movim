@@ -208,6 +208,9 @@ class PostnDAO extends SQL {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
+            left outer join item
+                on postn.origin = item.server
+                and postn.node = item.node
             where ((postn.origin, node) in (select server, node from subscription where jid = :aid))
                 and postn.origin = :origin
                 and postn.node = :node
@@ -254,6 +257,9 @@ class PostnDAO extends SQL {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
+            left outer join item
+                on postn.origin = item.server
+                and postn.node = item.node
             where postn.origin = :origin
                 and postn.node = :node
             order by postn.published desc';
@@ -319,6 +325,9 @@ class PostnDAO extends SQL {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
+            left outer join item
+                on postn.origin = item.server
+                and postn.node = item.node
             where postn.nodeid = :nodeid';
 
         $this->prepare(
@@ -579,12 +588,14 @@ class PostnDAO extends SQL {
     {
         $this->_sql = '
             select * from postn
+            left outer join item on postn.origin = item.server
+                and postn.node = item.node
             where
-                node != \'urn:xmpp:microblog:0\'
+                postn.node != \'urn:xmpp:microblog:0\'
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
                 and postn.origin not like \'nsfw%\'
-                and ((postn.origin, node) not in (select server, node from subscription where jid = :origin))
+                and ((postn.origin, postn.node) not in (select server, node from subscription where jid = :origin))
             order by published desc
             ';
 

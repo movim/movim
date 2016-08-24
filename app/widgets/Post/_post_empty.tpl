@@ -55,15 +55,19 @@
         {if="$picture != null"}
             <span class="icon top" style="background-image: url({$picture});"></span>
         {else}
-            {$url = $value->getContact()->getPhoto('l')}
-            {if="$url"}
-                <span class="icon top" style="background-image: url({$url});">
-                </span>
-            {else}
-                <span class="icon top color {$value->getContact()->jid|stringToColor}">
-                    <i class="zmdi zmdi-account"></i>
-                </span>
-            {/if}
+            <span class="icon top color {$value->getContact()->jid|stringToColor}">
+                <i class="zmdi zmdi-account"></i>
+            </span>
+        {/if}
+
+        {$url = $value->getContact()->getPhoto('l')}
+        {if="$url"}
+            <span class="primary icon bubble" style="background-image: url({$url});">
+            </span>
+        {else}
+            <span class="primary icon bubble color {$value->getContact()->jid|stringToColor}">
+                <i class="zmdi zmdi-account"></i>
+            </span>
         {/if}
         <p class="line">
         {if="isset($value->title)"}
@@ -135,6 +139,15 @@
                     {$value->node|firstLetterCapitalize}
                 </span>
             {/if}
+
+            {if="$value->logo"}
+                <span class="primary icon bubble">
+                    <img src="{$value->getLogo()}">
+                </span>
+            {else}
+                <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+            {/if}
+
             <p class="line">
             {if="isset($value->title)"}
                 {$value->title}
@@ -181,7 +194,7 @@
             <p>{$c->__('hello.share_text')}</p>
         </li>
         <li class="block">
-            <a class="button" href="javascript:(function(){location.href='{$c->route('share', '\'+escape(encodeURIComponent(location.href));')}})();"><i class="zmdi zmdi-share"></i> {$c->__('hello.share_button')}</a>
+            <a class="button" href="javascript:(function(){location.href='{$c->route('share', '\'+escape(encodeURIComponent(location.href));')}})();"><i class="zmdi zmdi-share"></i> {$c->__('button.share')}</a>
         </li>
     </ul>
 {/if}
