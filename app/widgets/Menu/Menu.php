@@ -58,11 +58,13 @@ class Menu extends \Movim\Widget\Base
                         $this->route('news', $post->nodeid)
                     );
             } else {
+                $logo = ($post->logo) ? $post->getLogo() : null;
+
                 Notification::append(
                     'news',
                     $post->title,
                     $post->node,
-                    null,
+                    $logo,
                     2,
                     $this->route('news', $post->nodeid)
                 );
