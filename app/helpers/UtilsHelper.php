@@ -608,7 +608,9 @@ function isSmallPicture($url, $size = false)
 
             $typearr = explode('/', $type);
 
-            return ($typearr[0] == 'image' && $length <= $size);
+            return ($typearr[0] == 'image'
+                && $length <= $size
+                && $length >= 2000);
         }
 
         return false;
