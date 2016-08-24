@@ -55,8 +55,8 @@
         {if="$picture != null"}
             <span class="icon top" style="background-image: url({$picture});"></span>
         {else}
-            <span class="icon top color {$value->getContact()->jid|stringToColor}">
-                <i class="zmdi zmdi-account"></i>
+            <span class="icon top color dark">
+                <i class="zmdi zmdi-edit"></i>
             </span>
         {/if}
 
@@ -135,7 +135,7 @@
             {elseif="$picture != null"}
                 <span class="icon top" style="background-image: url({$picture});"></span>
             {else}
-                <span class="icon top color {$value->node|stringToColor}">
+                <span class="icon top color dark">
                     {$value->node|firstLetterCapitalize}
                 </span>
             {/if}
