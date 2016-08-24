@@ -29,6 +29,15 @@
             <p>{$c->__('hello.menu_title')}</p>
             <p>{$c->__('hello.menu_paragraph')}</p>
         </li>
+        {if="$me->isEmpty()"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="zmdi zmdi-settings"></i>
+                </span>
+                <p>{$c->__('hello.profile_title')}</p>
+                <p>{$c->__('hello.profile_paragraph')}</p>
+            </li>
+        {/if}
     </ul>
 {/if}
 

@@ -37,7 +37,7 @@ class Vcard4 extends \Movim\Widget\Base
         $vcardform->assign('marital',  getMarital());
         $vcardform->assign('countries',getCountries());
 
-        if(!$me->isValidDate()) $me->date = null;
+        $me->isValidDate();
 
         $vcardform->assign(
             'submit',

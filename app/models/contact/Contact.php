@@ -364,15 +364,6 @@ class Contact extends Model {
         return $truename;
     }
 
-    function isValidDate()
-    {
-        return (isset($this->date)
-            && $this->date != '0000-00-00T00:00:00+0000'
-            && $this->date != '1970-01-01 00:00:00'
-            && $this->date != '1970-01-01 01:00:00'
-            && $this->date != '1970-01-01T00:00:00+0000');
-    }
-
     function getAge()
     {
         if($this->isValidDate()) {
@@ -433,6 +424,8 @@ class Contact extends Model {
     }
 
     function isEmpty() {
+        $this->isValidDate();
+
         if($this->fn == null
         && $this->name == null
         && $this->date == null
@@ -441,6 +434,20 @@ class Contact extends Model {
         && $this->description == null) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    function isValidDate()
+    {
+        if(isset($this->date)
+            && $this->date != '0000-00-00T00:00:00+0000'
+            && $this->date != '1970-01-01 00:00:00'
+            && $this->date != '1970-01-01 01:00:00'
+            && $this->date != '1970-01-01T00:00:00+0000') {
+            return true;
+        } else {
+            $this->date = null;
             return false;
         }
     }
