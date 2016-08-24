@@ -46,6 +46,10 @@ ul.list li .primary {
     line-height: 5rem;
 }
 
+ul.list li .top + .primary {
+    top: calc(50% + 5rem);
+}
+
 ul.list li .control:not(.bubble):not(.thumb):not(.top),
 ul.list li .primary:not(.bubble):not(.thumb):not(.top) {
     margin-top: -3rem;
