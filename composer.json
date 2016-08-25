@@ -25,8 +25,8 @@
         "cboden/ratchet": "0.3.*",
         "react/child-process": "0.5.*@dev",
         "react/socket-client": "dev-master",
-        "react/stream": "0.4.3",
-        "react/http": "dev-master",
+        "react/stream": "0.4.*",
+        "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
         "react/promise-timer": "^1.1",
 
         "stojg/crop": "dev-master",

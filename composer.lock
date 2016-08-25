@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8c1072b517ae7dc56bba7e1125b2b03b",
-    "content-hash": "96874f33492b97b5d9ad43d84313ac2f",
+    "hash": "268bc95b66abbeb627bd7d442f90888d",
+    "content-hash": "7388a347b0fc03e194687bc025fd4152",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -723,12 +723,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "0bec870817e6cbe2089b700f86ae881de9cba235"
+                "reference": "edd172b62750775c0b21692b41f168b98fc6c38f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/0bec870817e6cbe2089b700f86ae881de9cba235",
-                "reference": "0bec870817e6cbe2089b700f86ae881de9cba235",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/edd172b62750775c0b21692b41f168b98fc6c38f",
+                "reference": "edd172b62750775c0b21692b41f168b98fc6c38f",
                 "shasum": ""
             },
             "require": {
@@ -766,7 +766,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2016-07-13 20:57:33"
+            "time": "2016-08-25 11:38:04"
         },
         {
             "name": "monolog/monolog",
@@ -1029,16 +1029,16 @@
         },
         {
             "name": "pear/net_dns2",
-            "version": "1.4.1",
+            "version": "v1.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikepultz/netdns2.git",
-                "reference": "ba0ede1df70ed98591a14efc88fb9097eafaf541"
+                "reference": "81026bab8e84cf21bb59b54a00e98b6fa0692eb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikepultz/netdns2/zipball/ba0ede1df70ed98591a14efc88fb9097eafaf541",
-                "reference": "ba0ede1df70ed98591a14efc88fb9097eafaf541",
+                "url": "https://api.github.com/repos/mikepultz/netdns2/zipball/81026bab8e84cf21bb59b54a00e98b6fa0692eb5",
+                "reference": "81026bab8e84cf21bb59b54a00e98b6fa0692eb5",
                 "shasum": ""
             },
             "require": {
@@ -1065,10 +1065,11 @@
             "description": "Native PHP5 DNS Resolver and Updater Library",
             "homepage": "http://netdns2.com/",
             "keywords": [
+                "PEAR",
                 "dns",
                 "network"
             ],
-            "time": "2015-04-13 00:55:32"
+            "time": "2016-08-23 03:59:55"
         },
         {
             "name": "psr/http-message",
@@ -1654,16 +1655,16 @@
         },
         {
             "name": "react/stream",
-            "version": "v0.4.3",
+            "version": "v0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "305b2328d2a2e157bc13b61a0f5c6e41b666b188"
+                "reference": "fcc9e7cea126962cff303c90c05e2efdcec09a27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/305b2328d2a2e157bc13b61a0f5c6e41b666b188",
-                "reference": "305b2328d2a2e157bc13b61a0f5c6e41b666b188",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/fcc9e7cea126962cff303c90c05e2efdcec09a27",
+                "reference": "fcc9e7cea126962cff303c90c05e2efdcec09a27",
                 "shasum": ""
             },
             "require": {
@@ -1671,6 +1672,7 @@
                 "php": ">=5.3.8"
             },
             "require-dev": {
+                "clue/stream-filter": "~1.2",
                 "react/event-loop": "^0.4|^0.3",
                 "react/promise": "^2.0|^1.0"
             },
@@ -1679,11 +1681,6 @@
                 "react/promise": "^2.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.5-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "React\\Stream\\": "src"
@@ -1698,7 +1695,7 @@
                 "pipe",
                 "stream"
             ],
-            "time": "2015-10-07 18:32:58"
+            "time": "2016-08-22 09:51:07"
         },
         {
             "name": "respect/validation",
