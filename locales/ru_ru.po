@@ -22,8 +22,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -79,7 +77,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (Russia) (http://www.transifex.com/movim/movim/language/ru_RU/)\n"
@@ -202,6 +200,10 @@ msgstr "Не допустимо"
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
 msgstr "Регистрация на этом сервере в данный момент недоступна"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr ""
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
@@ -505,69 +507,6 @@ msgstr ""
 msgid "This content is private, please login to see it"
 msgstr ""
 
-#: [title]conferences
-msgid "Conferences"
-msgstr "Конференции"
-
-#: [title]groups [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "Группы"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "Создать Беседку"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID Беседки"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr ""
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Псевдоним"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Хотите автоматически войти в эту Беседку?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Неверный ID Беседки"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Имя не задано"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Закладки обновлены"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "Настройка"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "Добавить новый URL"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr ""
-
 #: [message]published
 msgid "Message Published"
 msgstr "Сообщение опубликовано"
@@ -719,6 +658,10 @@ msgstr "Общая информация"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Имя"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Псевдоним"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -896,6 +839,10 @@ msgstr ""
 msgid "Are you sure ?"
 msgstr "Вы уверены?"
 
+#: [group]empty_title [menu]groups [page]groups
+msgid "Groups"
+msgstr "Группы"
+
 #: [group]empty_text
 msgid "Discover, follow and share"
 msgstr ""
@@ -966,6 +913,10 @@ msgstr ""
 
 #: [groups]empty_text2
 msgid "You don't have any group subscriptions yet."
+msgstr ""
+
+#: [groups]empty_server
+msgid "There is no Groups yet on this server."
 msgstr ""
 
 #: [groups]subscriptions
@@ -1137,17 +1088,9 @@ msgstr ""
 msgid "The server takes too much time to respond"
 msgstr "Сервер потребовал слишком много времени на ответ"
 
-#: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
-msgstr "Movim не может связаться с сервером, пожалуйста, попробуйте снова попозже (Ошибка соединения с Websocket)"
-
 #: [error]impossible
 msgid "Impossible login"
 msgstr ""
-
-#: [error]title
-msgid "Oops!"
-msgstr "Упс!"
 
 #: [error]default
 msgid "Unknown error"
@@ -1198,7 +1141,7 @@ msgstr "Другая учётная запись"
 msgid "No account yet ?"
 msgstr "Еще нет учетной записи?"
 
-#: [form]whitelist.info
+#: [form]whitelist_info
 msgid "You can login with accounts from theses servers"
 msgstr ""
 
@@ -1330,6 +1273,11 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [post]comment_deleted
+#, fuzzy
+msgid "Comment deleted"
+msgstr "Контакт удалён"
+
 #: [hello]blog_title
 msgid "Visit your public blog"
 msgstr ""
@@ -1364,6 +1312,14 @@ msgstr ""
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
+#: [hello]profile_title
+msgid "Looks like you didn't complete your profile yet"
+msgstr ""
+
+#: [hello]profile_paragraph
+msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr ""
 
 #: [status]disconnect
@@ -1482,9 +1438,21 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "Беседки"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID Беседки"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Мои любимые комнаты"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Неверный ID Беседки"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Имя не задано"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1497,6 +1465,10 @@ msgstr ""
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Закладки обновлены"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1658,6 +1630,19 @@ msgstr ""
 msgid "Choose a file to upload"
 msgstr ""
 
+#: [upload]info
+msgid "Large pictures will be resized and compressed"
+msgstr ""
+
+#: [upload]error_filesize
+msgid "File too large"
+msgstr ""
+
+#: [upload]error_failed
+#, fuzzy
+msgid "Upload failed"
+msgstr "Загрузить"
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Профиль"
@@ -1722,6 +1707,11 @@ msgstr "У вас не активирован javascript. Удачи вам в �
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr "Movim — пацанская распределенная платформа социальная активности, которая защищает вашу приватность и имеет много классных фишек."
 
+#: [global]loading
+#, fuzzy
+msgid "Loading…"
+msgstr "Идёт загрузка"
+
 #: [page]home
 msgid "Home"
 msgstr "Домой"
@@ -1783,8 +1773,10 @@ msgid "Pods"
 msgstr "Поды"
 
 #: [page]share
+#, fuzzy
+msgctxt "[page]share"
 msgid "Share"
-msgstr ""
+msgstr "Поделиться с"
 
 #: [page]room
 msgid "Room"
@@ -1813,6 +1805,14 @@ msgstr "Запрашиваемое событие '%s' не зарегистри
 #: [error]whoops
 msgid "Whoops!"
 msgstr "Ой-ой!"
+
+#: [error]websocket
+msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgstr "Movim не может связаться с сервером, пожалуйста, попробуйте снова попозже (Ошибка соединения с Websocket)"
+
+#: [error]oops
+msgid "Oops!"
+msgstr "Упс!"
 
 #: [button]validate
 msgid "Validate"
@@ -1909,6 +1909,12 @@ msgstr ""
 #: [button]search
 msgid "Search"
 msgstr ""
+
+#: [button]share
+#, fuzzy
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Поделиться с"
 
 #: [day]title
 msgid "Day"
@@ -2567,3 +2573,21 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Conferences"
+#~ msgstr "Конференции"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Создать Беседку"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "Хотите автоматически войти в эту Беседку?"
+
+#~ msgid "Configure"
+#~ msgstr "Настройка"
+
+#~ msgid "Add a new URL"
+#~ msgstr "Добавить новый URL"
+
+#~ msgid "URL"
+#~ msgstr "URL"

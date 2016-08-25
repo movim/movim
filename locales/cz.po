@@ -22,8 +22,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -79,7 +77,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -202,6 +200,10 @@ msgstr "Nepřijatelné"
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
 msgstr "Registrační systém tohoto serveru není momentálně dostupný"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr ""
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
@@ -505,69 +507,6 @@ msgstr "Tento uživatel nyní nezveřejnil žádný příspěvek"
 msgid "This content is private, please login to see it"
 msgstr "Tento obsah je soukromý, přihlašte se pro zobrazení"
 
-#: [title]conferences
-msgid "Conferences"
-msgstr "Konference"
-
-#: [title]groups [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "Skupiny"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "Přidat novou konverzaci"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID konverzace"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Jméno"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Přezdívka"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Přejete si připojovat se automaticky do této konverzace?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Chybné ID konverzace"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Prázdné jméno"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Záložky aktualizovány"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "Nastala chyba:"
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "Konfigurovat"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "Přidat novou URL"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Jméno"
-
 #: [message]published
 msgid "Message Published"
 msgstr "Zpráva zveřejněna"
@@ -719,6 +658,10 @@ msgstr "Obecné informace"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Jméno"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Přezdívka"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -896,6 +839,10 @@ msgstr "Dát této skupině označení"
 msgid "Are you sure ?"
 msgstr "Jste si jisti?"
 
+#: [group]empty_title [menu]groups [page]groups
+msgid "Groups"
+msgstr "Skupiny"
+
 #: [group]empty_text
 msgid "Discover, follow and share"
 msgstr "Objevuj, následuj a sdílej"
@@ -967,6 +914,11 @@ msgstr "Zde budete moci spravovat všechny vaše odběry."
 #: [groups]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr "Zatím neodebíráte žádné skupiny."
+
+#: [groups]empty_server
+#, fuzzy
+msgid "There is no Groups yet on this server."
+msgstr "%s skupin na tomto serveru"
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1137,17 +1089,9 @@ msgstr "Váš XMPP server není autorizován"
 msgid "The server takes too much time to respond"
 msgstr "Serveru trvá příliš dlouho odpovídat"
 
-#: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
-msgstr "Movimu se nepodařilo kontaktovat server, zkuste to prosím znovu později (chyba WebSocket připojení)"
-
 #: [error]impossible
 msgid "Impossible login"
 msgstr "Nemožné přihlášení"
-
-#: [error]title
-msgid "Oops!"
-msgstr "Ups!"
 
 #: [error]default
 msgid "Unknown error"
@@ -1198,7 +1142,7 @@ msgstr "Další účet"
 msgid "No account yet ?"
 msgstr "Nemáte zatím účet?"
 
-#: [form]whitelist.info
+#: [form]whitelist_info
 msgid "You can login with accounts from theses servers"
 msgstr "Můžete se přihlásit s účty z těchto serverů"
 
@@ -1330,6 +1274,11 @@ msgstr "Komentáře vypnuty"
 msgid "Comment published"
 msgstr "Komentář zveřejněn"
 
+#: [post]comment_deleted
+#, fuzzy
+msgid "Comment deleted"
+msgstr "Kontakt odebrán"
+
 #: [hello]blog_title
 msgid "Visit your public blog"
 msgstr "Navštívit váš veřejný blog"
@@ -1365,6 +1314,14 @@ msgstr "Prohlédněte si menu"
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr "Všechny hlavní vlastnosti Movimu jsou dostupné zde. Neváhejte prohlížet si různé stránky pro objevení více! "
+
+#: [hello]profile_title
+msgid "Looks like you didn't complete your profile yet"
+msgstr ""
+
+#: [hello]profile_paragraph
+msgid "You can go in the Configuration page to describe yourself and put a nice picture"
+msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -1482,9 +1439,21 @@ msgstr "Přidejte konverzaci kliknutím na tlačítko přidat."
 msgid "Chatrooms"
 msgstr "Konverzace"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID konverzace"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Moje oblíbená konverzace"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Chybné ID konverzace"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Prázdné jméno"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1497,6 +1466,10 @@ msgstr "Zadejte prosím správné uživatelské jméno (2 až 40 znaků)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Uživatelské jméno již obsazeno"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Záložky aktualizovány"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1658,6 +1631,19 @@ msgstr "Nahrát soubor"
 msgid "Choose a file to upload"
 msgstr "Vyberte soubor pro nahrání"
 
+#: [upload]info
+msgid "Large pictures will be resized and compressed"
+msgstr ""
+
+#: [upload]error_filesize
+msgid "File too large"
+msgstr ""
+
+#: [upload]error_failed
+#, fuzzy
+msgid "Upload failed"
+msgstr "Nahrát soubor"
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -1722,6 +1708,11 @@ msgstr "Nemáte povolený javascript. Tak to hodně štěstí."
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr "Movim je drsná distribuovaná sociální síť, která chrání vaše soukromí a obsahuje mnoho úžasných vymožeností."
 
+#: [global]loading
+#, fuzzy
+msgid "Loading…"
+msgstr "Načítání"
+
 #: [page]home
 msgid "Home"
 msgstr "Domů"
@@ -1783,6 +1774,8 @@ msgid "Pods"
 msgstr "Pody"
 
 #: [page]share
+#, fuzzy
+msgctxt "[page]share"
 msgid "Share"
 msgstr "Sdílet"
 
@@ -1812,6 +1805,14 @@ msgstr "Vyžádaná událost \"%s\" není zaregistrována."
 
 #: [error]whoops
 msgid "Whoops!"
+msgstr "Ups!"
+
+#: [error]websocket
+msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgstr "Movimu se nepodařilo kontaktovat server, zkuste to prosím znovu později (chyba WebSocket připojení)"
+
+#: [error]oops
+msgid "Oops!"
 msgstr "Ups!"
 
 #: [button]validate
@@ -1909,6 +1910,12 @@ msgstr "Předchozí"
 #: [button]search
 msgid "Search"
 msgstr ""
+
+#: [button]share
+#, fuzzy
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Sdílet"
 
 #: [day]title
 msgid "Day"
@@ -2567,3 +2574,32 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "Conferences"
+#~ msgstr "Konference"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Přidat novou konverzaci"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Jméno"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "Přejete si připojovat se automaticky do této konverzace?"
+
+#~ msgid "An error occured :"
+#~ msgstr "Nastala chyba:"
+
+#~ msgid "Configure"
+#~ msgstr "Konfigurovat"
+
+#~ msgid "Add a new URL"
+#~ msgstr "Přidat novou URL"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Jméno"

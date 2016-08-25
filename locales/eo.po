@@ -21,8 +21,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -78,7 +76,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Esperanto (http://www.transifex.com/movim/movim/language/eo/)\n"
@@ -200,6 +198,10 @@ msgstr ""
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
+msgstr ""
+
+#: [error]forbidden
+msgid "Registration forbidden"
 msgstr ""
 
 #: [oob]about
@@ -504,69 +506,6 @@ msgstr ""
 msgid "This content is private, please login to see it"
 msgstr ""
 
-#: [title]conferences
-msgid "Conferences"
-msgstr ""
-
-#: [title]groups [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr ""
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr ""
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr ""
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Kromnomo"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr ""
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr ""
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr ""
-
 #: [message]published
 msgid "Message Published"
 msgstr ""
@@ -718,6 +657,10 @@ msgstr "Generalaj informoj"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nomo"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Kromnomo"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -895,6 +838,10 @@ msgstr ""
 msgid "Are you sure ?"
 msgstr ""
 
+#: [group]empty_title [menu]groups [page]groups
+msgid "Groups"
+msgstr ""
+
 #: [group]empty_text
 msgid "Discover, follow and share"
 msgstr ""
@@ -965,6 +912,10 @@ msgstr ""
 
 #: [groups]empty_text2
 msgid "You don't have any group subscriptions yet."
+msgstr ""
+
+#: [groups]empty_server
+msgid "There is no Groups yet on this server."
 msgstr ""
 
 #: [groups]subscriptions
@@ -1136,16 +1087,8 @@ msgstr ""
 msgid "The server takes too much time to respond"
 msgstr ""
 
-#: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
-msgstr ""
-
 #: [error]impossible
 msgid "Impossible login"
-msgstr ""
-
-#: [error]title
-msgid "Oops!"
 msgstr ""
 
 #: [error]default
@@ -1197,7 +1140,7 @@ msgstr ""
 msgid "No account yet ?"
 msgstr ""
 
-#: [form]whitelist.info
+#: [form]whitelist_info
 msgid "You can login with accounts from theses servers"
 msgstr ""
 
@@ -1329,6 +1272,10 @@ msgstr ""
 msgid "Comment published"
 msgstr ""
 
+#: [post]comment_deleted
+msgid "Comment deleted"
+msgstr ""
+
 #: [hello]blog_title
 msgid "Visit your public blog"
 msgstr ""
@@ -1363,6 +1310,14 @@ msgstr ""
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
+#: [hello]profile_title
+msgid "Looks like you didn't complete your profile yet"
+msgstr ""
+
+#: [hello]profile_paragraph
+msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr ""
 
 #: [status]disconnect
@@ -1481,8 +1436,20 @@ msgstr ""
 msgid "Chatrooms"
 msgstr ""
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
+msgstr ""
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr ""
+
+#: [chatrooms]empty_name
+msgid "Empty name"
 msgstr ""
 
 #: [chatrooms]users
@@ -1495,6 +1462,10 @@ msgstr ""
 
 #: [chatrooms]conflict
 msgid "Username already taken"
+msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
 msgstr ""
 
 #: [room]anonymous_title
@@ -1657,6 +1628,18 @@ msgstr ""
 msgid "Choose a file to upload"
 msgstr ""
 
+#: [upload]info
+msgid "Large pictures will be resized and compressed"
+msgstr ""
+
+#: [upload]error_filesize
+msgid "File too large"
+msgstr ""
+
+#: [upload]error_failed
+msgid "Upload failed"
+msgstr ""
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profilo"
@@ -1721,6 +1704,10 @@ msgstr ""
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr ""
 
+#: [global]loading
+msgid "Loading…"
+msgstr ""
+
 #: [page]home
 msgid "Home"
 msgstr "Ĉefpaĝo"
@@ -1782,6 +1769,7 @@ msgid "Pods"
 msgstr ""
 
 #: [page]share
+msgctxt "[page]share"
 msgid "Share"
 msgstr ""
 
@@ -1811,6 +1799,14 @@ msgstr ""
 
 #: [error]whoops
 msgid "Whoops!"
+msgstr ""
+
+#: [error]websocket
+msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgstr ""
+
+#: [error]oops
+msgid "Oops!"
 msgstr ""
 
 #: [button]validate
@@ -1907,6 +1903,11 @@ msgstr ""
 
 #: [button]search
 msgid "Search"
+msgstr ""
+
+#: [button]share
+msgctxt "[button]share"
+msgid "Share"
 msgstr ""
 
 #: [day]title

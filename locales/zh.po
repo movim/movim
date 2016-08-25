@@ -25,8 +25,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -82,7 +80,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Wangrui Enderex <jwr030521@gmail.com>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -205,6 +203,10 @@ msgstr "不能接受"
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
 msgstr "该服务的注册系统当前不可用"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr ""
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
@@ -508,69 +510,6 @@ msgstr "这个用户还没发布任何东西"
 msgid "This content is private, please login to see it"
 msgstr ""
 
-#: [title]conferences
-msgid "Conferences"
-msgstr "会议"
-
-#: [title]groups [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "分组"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "添加一个新的聊天室"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "聊天室ID"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "姓名"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "昵称"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "您想自动加入该聊天室么?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "无效的聊天室ID"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "用户名为空"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "更新书签"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "发生一个错误： "
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "配置"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "添加一个新的URL"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "姓名"
-
 #: [message]published
 msgid "Message Published"
 msgstr "消息发布"
@@ -722,6 +661,10 @@ msgstr "一般信息"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "姓名"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "昵称"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -899,6 +842,10 @@ msgstr "给该群组加上标签"
 msgid "Are you sure ?"
 msgstr "您确定吗 ?"
 
+#: [group]empty_title [menu]groups [page]groups
+msgid "Groups"
+msgstr "分组"
+
 #: [group]empty_text
 msgid "Discover, follow and share"
 msgstr "发现、跟随并分享"
@@ -970,6 +917,11 @@ msgstr "您可以在这里管理您的所有订阅"
 #: [groups]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr "您尚未订阅任何群组"
+
+#: [groups]empty_server
+#, fuzzy
+msgid "There is no Groups yet on this server."
+msgstr "该服务器上有%s个群组"
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1140,17 +1092,9 @@ msgstr "你的XMPP服务没有被授权"
 msgid "The server takes too much time to respond"
 msgstr "服务器未响应"
 
-#: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
-msgstr "Movim无法连接服务器, 请稍后重试(WebSocket连接错误)"
-
 #: [error]impossible
 msgid "Impossible login"
 msgstr "无法登陆"
-
-#: [error]title
-msgid "Oops!"
-msgstr "糟糕！Oops!"
 
 #: [error]default
 msgid "Unknown error"
@@ -1201,7 +1145,7 @@ msgstr "另一个账户"
 msgid "No account yet ?"
 msgstr "还没有账户 ?"
 
-#: [form]whitelist.info
+#: [form]whitelist_info
 msgid "You can login with accounts from theses servers"
 msgstr "你可以使用这些服务器的账号来登录"
 
@@ -1333,6 +1277,11 @@ msgstr "评论已禁用"
 msgid "Comment published"
 msgstr "评论已发布"
 
+#: [post]comment_deleted
+#, fuzzy
+msgid "Comment deleted"
+msgstr "联系人已删除"
+
 #: [hello]blog_title
 msgid "Visit your public blog"
 msgstr "访问你的公开博客"
@@ -1368,6 +1317,14 @@ msgstr "检查菜单"
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr "Movim 的所有主要特性均可在此访问。请不要犹豫，航越该页面来发现更多东西！"
+
+#: [hello]profile_title
+msgid "Looks like you didn't complete your profile yet"
+msgstr ""
+
+#: [hello]profile_paragraph
+msgid "You can go in the Configuration page to describe yourself and put a nice picture"
+msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -1485,9 +1442,21 @@ msgstr "点击新建按钮来添加一个。"
 msgid "Chatrooms"
 msgstr "聊天室"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "聊天室ID"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr ""
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "无效的聊天室ID"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "用户名为空"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1500,6 +1469,10 @@ msgstr "请输入正确的昵称(2到40个字母)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "用户名已被使用"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "更新书签"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1661,6 +1634,19 @@ msgstr "上传一个文件"
 msgid "Choose a file to upload"
 msgstr "选择一个文件上传"
 
+#: [upload]info
+msgid "Large pictures will be resized and compressed"
+msgstr ""
+
+#: [upload]error_filesize
+msgid "File too large"
+msgstr ""
+
+#: [upload]error_failed
+#, fuzzy
+msgid "Upload failed"
+msgstr "上传一个文件"
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "简介"
@@ -1725,6 +1711,11 @@ msgstr "您的浏览器没有开启javascript，请排查一下"
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr ""
 
+#: [global]loading
+#, fuzzy
+msgid "Loading…"
+msgstr "载入中"
+
 #: [page]home
 msgid "Home"
 msgstr "主页"
@@ -1786,6 +1777,8 @@ msgid "Pods"
 msgstr ""
 
 #: [page]share
+#, fuzzy
+msgctxt "[page]share"
 msgid "Share"
 msgstr "分享"
 
@@ -1816,6 +1809,14 @@ msgstr "请求的事件 '%s' 未注册."
 #: [error]whoops
 msgid "Whoops!"
 msgstr ""
+
+#: [error]websocket
+msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgstr "Movim无法连接服务器, 请稍后重试(WebSocket连接错误)"
+
+#: [error]oops
+msgid "Oops!"
+msgstr "糟糕！Oops!"
 
 #: [button]validate
 msgid "Validate"
@@ -1912,6 +1913,12 @@ msgstr "前一个"
 #: [button]search
 msgid "Search"
 msgstr ""
+
+#: [button]share
+#, fuzzy
+msgctxt "[button]share"
+msgid "Share"
+msgstr "分享"
 
 #: [day]title
 msgid "Day"
@@ -2570,3 +2577,32 @@ msgstr "API无法连接, 请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Conferences"
+#~ msgstr "会议"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "添加一个新的聊天室"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "姓名"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "您想自动加入该聊天室么?"
+
+#~ msgid "An error occured :"
+#~ msgstr "发生一个错误： "
+
+#~ msgid "Configure"
+#~ msgstr "配置"
+
+#~ msgid "Add a new URL"
+#~ msgstr "添加一个新的URL"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "姓名"

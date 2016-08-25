@@ -25,8 +25,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -82,7 +80,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Free Bill <commodum@justemail.net>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -205,6 +203,10 @@ msgstr "Nem elfogadható"
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
 msgstr "A szerver regisztrációs rendszere jelenleg nem elérhető."
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr ""
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
@@ -508,69 +510,6 @@ msgstr "Ez a felhasználó nem osztott meg semmit sem eddig."
 msgid "This content is private, please login to see it"
 msgstr "Ez a tartalom nem nyilvános, jelentkezz be, hogy láthasd"
 
-#: [title]conferences
-msgid "Conferences"
-msgstr "Konferenciák"
-
-#: [title]groups [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "Csoportok"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "Új chat szoba hozzáadása."
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Chat szoba azonosítója:"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Név"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Becenév"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Automatikusan be akarsz lépni a chat szobába?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Rossz Chat szoba azonosító"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Név üres"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Könyvjelzők frissítve"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "Hiba lépett fel:"
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "Konfigurálás"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "Új URL hozzáadása"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Név"
-
 #: [message]published
 msgid "Message Published"
 msgstr "Üzenet közzétéve"
@@ -722,6 +661,10 @@ msgstr "Általános információk"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Név"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Becenév"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -899,6 +842,10 @@ msgstr "Adj meg címkéket ehhez a csoporthoz"
 msgid "Are you sure ?"
 msgstr "Biztos vagy benne ?"
 
+#: [group]empty_title [menu]groups [page]groups
+msgid "Groups"
+msgstr "Csoportok"
+
 #: [group]empty_text
 msgid "Discover, follow and share"
 msgstr "Fedezd fel, kövesd és oszd meg"
@@ -970,6 +917,11 @@ msgstr "Itt kezelheted a feliratkozásaidat."
 #: [groups]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr "Még nem iratkoztál fel egy csoportra sem."
+
+#: [groups]empty_server
+#, fuzzy
+msgid "There is no Groups yet on this server."
+msgstr "%s csoportok a szerveren."
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1140,17 +1092,9 @@ msgstr "Ay XMPP szervered nincs hitelesítve"
 msgid "The server takes too much time to respond"
 msgstr "A szervernek túl sok időbe telik válaszolni"
 
-#: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
-msgstr "A Movim nem tudott kommunikálni a szerverrel, próbáld újra később (Websocket kapcsolódási hiba)"
-
 #: [error]impossible
 msgid "Impossible login"
 msgstr "Nem lehet belépni"
-
-#: [error]title
-msgid "Oops!"
-msgstr "Hupsz!"
 
 #: [error]default
 msgid "Unknown error"
@@ -1201,7 +1145,7 @@ msgstr "Másik felhasználói fiók"
 msgid "No account yet ?"
 msgstr "Nincs még felhasználói fiókod ?"
 
-#: [form]whitelist.info
+#: [form]whitelist_info
 msgid "You can login with accounts from theses servers"
 msgstr "Az alábbi szerverek fiókjaival tudsz belépni"
 
@@ -1333,6 +1277,11 @@ msgstr "Kommentek letiltva"
 msgid "Comment published"
 msgstr "Komment közzétéve"
 
+#: [post]comment_deleted
+#, fuzzy
+msgid "Comment deleted"
+msgstr "Ismerős törölve"
+
 #: [hello]blog_title
 msgid "Visit your public blog"
 msgstr "Látogasd meg a nyilvános blogod."
@@ -1367,6 +1316,14 @@ msgstr ""
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
+#: [hello]profile_title
+msgid "Looks like you didn't complete your profile yet"
+msgstr ""
+
+#: [hello]profile_paragraph
+msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr ""
 
 #: [status]disconnect
@@ -1485,9 +1442,21 @@ msgstr "Vegyél fel egyet a hozzáadás gombra kattintva."
 msgid "Chatrooms"
 msgstr "Chatszobák"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Chat szoba azonosítója:"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Kedvenc szobám"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Rossz Chat szoba azonosító"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Név üres"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1500,6 +1469,10 @@ msgstr "Adj meg egy helyes becenevet (2-40 karakter hosszú)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "A felhasználónév már használatban van"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Könyvjelzők frissítve"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1661,6 +1634,19 @@ msgstr "Fájl feltöltése"
 msgid "Choose a file to upload"
 msgstr "Válaszd ki a feltölteni kívánt fájlt"
 
+#: [upload]info
+msgid "Large pictures will be resized and compressed"
+msgstr ""
+
+#: [upload]error_filesize
+msgid "File too large"
+msgstr ""
+
+#: [upload]error_failed
+#, fuzzy
+msgid "Upload failed"
+msgstr "Fájl feltöltése"
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profil"
@@ -1725,6 +1711,11 @@ msgstr "Nincs bakapcsolva a javascripted. Sok sikert hozzá."
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr "A Movim egy zsírkirály megosztott közösségi háló platformja, amely védi a magánszférádat és nagyszerű funkciókkal érkezik"
 
+#: [global]loading
+#, fuzzy
+msgid "Loading…"
+msgstr "Töltés"
+
 #: [page]home
 msgid "Home"
 msgstr "Kezdőoldal"
@@ -1786,6 +1777,8 @@ msgid "Pods"
 msgstr "Podok"
 
 #: [page]share
+#, fuzzy
+msgctxt "[page]share"
 msgid "Share"
 msgstr "Megosztás"
 
@@ -1815,6 +1808,14 @@ msgstr "A keresett '%s' esemény nincs regisztrálva."
 
 #: [error]whoops
 msgid "Whoops!"
+msgstr "Hupsz!"
+
+#: [error]websocket
+msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgstr "A Movim nem tudott kommunikálni a szerverrel, próbáld újra később (Websocket kapcsolódási hiba)"
+
+#: [error]oops
+msgid "Oops!"
 msgstr "Hupsz!"
 
 #: [button]validate
@@ -1912,6 +1913,12 @@ msgstr "Előző"
 #: [button]search
 msgid "Search"
 msgstr "Keresés"
+
+#: [button]share
+#, fuzzy
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Megosztás"
 
 #: [day]title
 msgid "Day"
@@ -2570,3 +2577,32 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Conferences"
+#~ msgstr "Konferenciák"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Új chat szoba hozzáadása."
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Név"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "Automatikusan be akarsz lépni a chat szobába?"
+
+#~ msgid "An error occured :"
+#~ msgstr "Hiba lépett fel:"
+
+#~ msgid "Configure"
+#~ msgstr "Konfigurálás"
+
+#~ msgid "Add a new URL"
+#~ msgstr "Új URL hozzáadása"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Név"

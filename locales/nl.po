@@ -25,8 +25,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -82,7 +80,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -205,6 +203,10 @@ msgstr "Niet Aanvaardbaar"
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
 msgstr "Het registratie-systeem van deze server is momenteel niet bereikbaar"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr ""
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
@@ -508,69 +510,6 @@ msgstr "Deze gebruiker heeft momenteel niets gepost"
 msgid "This content is private, please login to see it"
 msgstr "Deze data is privé, log in om dit te zien."
 
-#: [title]conferences
-msgid "Conferences"
-msgstr "Conferenties"
-
-#: [title]groups [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "Groepen"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "Voeg een nieuwe chatroom toe"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Chatroom ID"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Naam"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "bijnaam"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Wil je deze chatroom automatisch joinen?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Onjuist Chatroom-ID"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Lege naam"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Favoriet bijgewerkt"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "Er is een fout opgetreden : "
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "Instellen"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "Een nieuwe URL toevoegen"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Naam"
-
 #: [message]published
 msgid "Message Published"
 msgstr "Bericht gepubliceerd"
@@ -722,6 +661,10 @@ msgstr "Algemene informatie"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Naam"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "bijnaam"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -899,6 +842,10 @@ msgstr "geef een label voor deze groep"
 msgid "Are you sure ?"
 msgstr "Weet je het zeker?"
 
+#: [group]empty_title [menu]groups [page]groups
+msgid "Groups"
+msgstr "Groepen"
+
 #: [group]empty_text
 msgid "Discover, follow and share"
 msgstr "Ontdek, volg en deel"
@@ -970,6 +917,11 @@ msgstr "Hier kun je al je abonnementen beheren."
 #: [groups]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr "Je hebt nog geen abonnementen"
+
+#: [groups]empty_server
+#, fuzzy
+msgid "There is no Groups yet on this server."
+msgstr "%s groepen op deze server"
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1140,17 +1092,9 @@ msgstr "je XMPP server is niet geautoriseerd"
 msgid "The server takes too much time to respond"
 msgstr "De server neemt te veel tijd om te antwoorden"
 
-#: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
-msgstr "Movim kan niet communiceren met de server, probeer het later opnieuw (Websocket verbindings fout)"
-
 #: [error]impossible
 msgid "Impossible login"
 msgstr "Onmogelijke login"
-
-#: [error]title
-msgid "Oops!"
-msgstr "Oeps!"
 
 #: [error]default
 msgid "Unknown error"
@@ -1201,7 +1145,7 @@ msgstr ""
 msgid "No account yet ?"
 msgstr "Nog geen account?"
 
-#: [form]whitelist.info
+#: [form]whitelist_info
 msgid "You can login with accounts from theses servers"
 msgstr ""
 
@@ -1333,6 +1277,11 @@ msgstr "Reacties uitgeschakeld"
 msgid "Comment published"
 msgstr "Reactie gepubliceerd"
 
+#: [post]comment_deleted
+#, fuzzy
+msgid "Comment deleted"
+msgstr "Contactpersoon verwijderd"
+
 #: [hello]blog_title
 msgid "Visit your public blog"
 msgstr "Bezoek je openbare blog"
@@ -1367,6 +1316,14 @@ msgstr ""
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgstr ""
+
+#: [hello]profile_title
+msgid "Looks like you didn't complete your profile yet"
+msgstr ""
+
+#: [hello]profile_paragraph
+msgid "You can go in the Configuration page to describe yourself and put a nice picture"
 msgstr ""
 
 #: [status]disconnect
@@ -1485,9 +1442,21 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "Chatrooms"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Chatroom ID"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr ""
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Onjuist Chatroom-ID"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Lege naam"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1500,6 +1469,10 @@ msgstr "Voer een geldige nickname in (2 tot 40 tekens)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Favoriet bijgewerkt"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1661,6 +1634,19 @@ msgstr "Upload een bestand"
 msgid "Choose a file to upload"
 msgstr "Kies een bestand om te uploaden"
 
+#: [upload]info
+msgid "Large pictures will be resized and compressed"
+msgstr ""
+
+#: [upload]error_filesize
+msgid "File too large"
+msgstr ""
+
+#: [upload]error_failed
+#, fuzzy
+msgid "Upload failed"
+msgstr "Upload een bestand"
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Profiel"
@@ -1725,6 +1711,11 @@ msgstr "Je hebt javascript uit staan. Veel succes daarmee."
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr "Movim is een kick-ass gedistribueerd sociaal netwerk dat jouw privacy beschermt. Een setje awesome mogelijkheden is inbegrepen."
 
+#: [global]loading
+#, fuzzy
+msgid "Loading…"
+msgstr "Laden"
+
 #: [page]home
 msgid "Home"
 msgstr "Home"
@@ -1786,6 +1777,8 @@ msgid "Pods"
 msgstr "Pods"
 
 #: [page]share
+#, fuzzy
+msgctxt "[page]share"
 msgid "Share"
 msgstr "Deel"
 
@@ -1815,6 +1808,14 @@ msgstr "Het opgevraagde event '%s' is niet geregistreerd."
 
 #: [error]whoops
 msgid "Whoops!"
+msgstr "Oeps!"
+
+#: [error]websocket
+msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgstr "Movim kan niet communiceren met de server, probeer het later opnieuw (Websocket verbindings fout)"
+
+#: [error]oops
+msgid "Oops!"
 msgstr "Oeps!"
 
 #: [button]validate
@@ -1912,6 +1913,12 @@ msgstr "Vorige"
 #: [button]search
 msgid "Search"
 msgstr ""
+
+#: [button]share
+#, fuzzy
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Deel"
 
 #: [day]title
 msgid "Day"
@@ -2570,3 +2577,32 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "Conferences"
+#~ msgstr "Conferenties"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Voeg een nieuwe chatroom toe"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "Wil je deze chatroom automatisch joinen?"
+
+#~ msgid "An error occured :"
+#~ msgstr "Er is een fout opgetreden : "
+
+#~ msgid "Configure"
+#~ msgstr "Instellen"
+
+#~ msgid "Add a new URL"
+#~ msgstr "Een nieuwe URL toevoegen"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Naam"

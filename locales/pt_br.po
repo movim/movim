@@ -25,8 +25,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -82,7 +80,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -205,6 +203,10 @@ msgstr "Não permitido"
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
 msgstr "O sistema de registro deste servidor está momentaneamente indisponível"
+
+#: [error]forbidden
+msgid "Registration forbidden"
+msgstr ""
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
@@ -508,69 +510,6 @@ msgstr "Este usuário não postou algo até agora"
 msgid "This content is private, please login to see it"
 msgstr ""
 
-#: [title]conferences
-msgid "Conferences"
-msgstr "Conferências"
-
-#: [title]groups [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "Grupos"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "Adicionar uma nova Sala de Conversa"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID da Sala de Conversa"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Nome"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Apelido"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Você deseja juntar-se automaticamente a esta Sala de Conversa?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "ID de Sala de Conversa inválido"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Nome vazio"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Favoritos atualizados"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "Ocorreu um erro:"
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "Configurar"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "Adicionar um novo endereço"
-
-#: [url]url
-msgid "URL"
-msgstr "Endereço"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Nome"
-
 #: [message]published
 msgid "Message Published"
 msgstr "Mensagem publicada"
@@ -722,6 +661,10 @@ msgstr "Informações Gerais"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nome"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Apelido"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -899,6 +842,10 @@ msgstr "Atribuir uma etiqueta para este grupo"
 msgid "Are you sure ?"
 msgstr "Tem certeza?"
 
+#: [group]empty_title [menu]groups [page]groups
+msgid "Groups"
+msgstr "Grupos"
+
 #: [group]empty_text
 msgid "Discover, follow and share"
 msgstr "Descubra, siga e compartilhe"
@@ -970,6 +917,11 @@ msgstr "Aqui você será capaz de gerenciar todas as suas inscrições."
 #: [groups]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr "Você ainda não está inscrito em qualquer grupo."
+
+#: [groups]empty_server
+#, fuzzy
+msgid "There is no Groups yet on this server."
+msgstr "%s grupos neste servidor"
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1140,17 +1092,9 @@ msgstr ""
 msgid "The server takes too much time to respond"
 msgstr ""
 
-#: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
-msgstr ""
-
 #: [error]impossible
 msgid "Impossible login"
 msgstr "Login impossível"
-
-#: [error]title
-msgid "Oops!"
-msgstr "Oops!"
 
 #: [error]default
 msgid "Unknown error"
@@ -1201,7 +1145,7 @@ msgstr "Outra conta"
 msgid "No account yet ?"
 msgstr "Ainda sem conta?"
 
-#: [form]whitelist.info
+#: [form]whitelist_info
 msgid "You can login with accounts from theses servers"
 msgstr "Você pode logar com contas destes servidores"
 
@@ -1333,6 +1277,11 @@ msgstr "Comentários desabilitados"
 msgid "Comment published"
 msgstr "Comentário publicado"
 
+#: [post]comment_deleted
+#, fuzzy
+msgid "Comment deleted"
+msgstr "Contato deletado"
+
 #: [hello]blog_title
 msgid "Visit your public blog"
 msgstr "Visitar o seu blog público"
@@ -1368,6 +1317,14 @@ msgstr "Verificar o Menu"
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
 msgstr "Todas as principais funcionalidades do Movim estão acessíveis aqui. Não hesite em navegar pelas páginas para descobrir mais!"
+
+#: [hello]profile_title
+msgid "Looks like you didn't complete your profile yet"
+msgstr ""
+
+#: [hello]profile_paragraph
+msgid "You can go in the Configuration page to describe yourself and put a nice picture"
+msgstr ""
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -1485,9 +1442,21 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "Salas de Conversa"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID da Sala de Conversa"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Minha Sala Favorita"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "ID de Sala de Conversa inválido"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Nome vazio"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1500,6 +1469,10 @@ msgstr "Por favor informe um apelido correto (2 a 40 caracteres)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Nome de usuário em uso"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Favoritos atualizados"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1661,6 +1634,19 @@ msgstr "Enviar um arquivo"
 msgid "Choose a file to upload"
 msgstr "Escolha um arquivo para enviar"
 
+#: [upload]info
+msgid "Large pictures will be resized and compressed"
+msgstr ""
+
+#: [upload]error_filesize
+msgid "File too large"
+msgstr ""
+
+#: [upload]error_failed
+#, fuzzy
+msgid "Upload failed"
+msgstr "Enviar um arquivo"
+
 #: [vcard]title [page]profile
 msgid "Profile"
 msgstr "Perfil"
@@ -1725,6 +1711,11 @@ msgstr "Você não possui javascript habilitado. Boa sorte."
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
 msgstr "Movim é uma plataforma de rede social distribuída arrasadora que protege sua privacidade e vem com uma série de funcionalidades incríveis."
 
+#: [global]loading
+#, fuzzy
+msgid "Loading…"
+msgstr "Carregando"
+
 #: [page]home
 msgid "Home"
 msgstr "Página inicial"
@@ -1786,6 +1777,8 @@ msgid "Pods"
 msgstr "Pods"
 
 #: [page]share
+#, fuzzy
+msgctxt "[page]share"
 msgid "Share"
 msgstr "Compartilhar"
 
@@ -1816,6 +1809,14 @@ msgstr "Evento solicitado '%s' não registrado."
 #: [error]whoops
 msgid "Whoops!"
 msgstr "Ooops!"
+
+#: [error]websocket
+msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgstr ""
+
+#: [error]oops
+msgid "Oops!"
+msgstr "Oops!"
 
 #: [button]validate
 msgid "Validate"
@@ -1912,6 +1913,12 @@ msgstr "Anterior"
 #: [button]search
 msgid "Search"
 msgstr ""
+
+#: [button]share
+#, fuzzy
+msgctxt "[button]share"
+msgid "Share"
+msgstr "Compartilhar"
 
 #: [day]title
 msgid "Day"
@@ -2570,3 +2577,32 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
+
+#~ msgid "Conferences"
+#~ msgstr "Conferências"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Adicionar uma nova Sala de Conversa"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "Você deseja juntar-se automaticamente a esta Sala de Conversa?"
+
+#~ msgid "An error occured :"
+#~ msgstr "Ocorreu um erro:"
+
+#~ msgid "Configure"
+#~ msgstr "Configurar"
+
+#~ msgid "Add a new URL"
+#~ msgstr "Adicionar um novo endereço"
+
+#~ msgid "URL"
+#~ msgstr "Endereço"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Nome"
