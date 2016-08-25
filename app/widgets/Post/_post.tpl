@@ -70,11 +70,15 @@
             {else}
                 {if="$post->logo"}
                     <span class="primary icon bubble">
-                        <img src="{$post->getLogo()}">
+                        <a href="{$c->route('group', array($post->origin, $post->node))}">
+                            <img src="{$post->getLogo()}">
+                        </a>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->node|stringToColor}">
-                        {$post->node|firstLetterCapitalize}
+                        <a href="{$c->route('group', array($post->origin, $post->node))}">
+                            {$post->node|firstLetterCapitalize}
+                        </a>
                     </span>
                 {/if}
             {/if}

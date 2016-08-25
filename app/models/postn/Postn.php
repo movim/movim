@@ -247,6 +247,14 @@ class Postn extends Model {
                     $this->picture = $extra;
                 }
             }
+
+            $results = $xml->xpath('//video/@poster');
+            if(is_array($results) && !empty($results)) {
+                $extra = (string)$results[0];
+                if(isSmallPicture($extra)) {
+                    $this->picture = $extra;
+                }
+            }
         }
 
         $this->setAttachments($entry->entry->link, $extra);

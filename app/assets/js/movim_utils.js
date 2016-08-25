@@ -263,6 +263,16 @@ var MovimUtils = {
                 MovimUtils.showElement(node);
         }
     },
+    enableVideos: function() {
+        var items = document.querySelectorAll('video');
+
+        var i = 0;
+        while(i < items.length)
+        {
+            items[i].setAttribute('controls', 'controls');
+            i++;
+        }
+    },
     dataURLtoBlob : function(dataURI) {
         // convert base64 to raw binary data held in a string
         var byteString = atob(dataURI.split(',')[1]);
