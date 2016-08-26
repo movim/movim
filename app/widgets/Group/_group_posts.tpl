@@ -1,5 +1,13 @@
 {if="$page == 0"}
-    <header></header>
+    <header>
+        <ul class="list middle">
+            <li>
+                <span id="back" class="primary icon active" onclick="MovimTpl.hidePanel(); Group_ajaxClear();">
+                    <i class="zmdi zmdi-arrow-back"></i>
+                </span>
+            </li>
+        </ul>
+    </header>
 {/if}
 
 <ul class="list card active flex shadow">

@@ -9,6 +9,7 @@ ul.list li:not(.subheader) {
 
 ul.list.middle li:not(.subheader) {
     padding: 0.75rem 0;
+    min-height: 5rem;
 }
 
 ul.list.thick li:not(.subheader) {
