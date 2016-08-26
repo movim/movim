@@ -1,4 +1,4 @@
-<div id="group_widget" class="spinner" style="background-color: #EEE;">
+<div id="group_widget" class="spin" style="background-color: #EEE;">
     {$c->prepareEmpty()}
     {if="$server && $node"}
         <script type="text/javascript">

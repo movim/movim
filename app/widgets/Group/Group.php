@@ -260,6 +260,7 @@ class Group extends \Movim\Widget\Base
         $slugify = new Slugify();
 
         RPC::call('Group.addLoad', $slugify->slugify($server.'_'.$node));
+        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), '');
 
         $r = new GetItemsId;
         $r->setTo($server)

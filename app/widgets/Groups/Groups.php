@@ -62,6 +62,9 @@ class Groups extends \Movim\Widget\Base
         $id = new \Modl\ItemDAO();
         $id->deleteItems($packet->content);
 
+        RPC::call('MovimTpl.fill', '#groups_widget', $this->prepareSubscriptions());
+        RPC::call('Groups.refresh');
+
         Notification::append(null, $this->__('groups.disco_error'));
     }
 
@@ -105,6 +108,8 @@ class Groups extends \Movim\Widget\Base
             Notification::append(null, $this->__('groups.disco_error'));
             return;
         }
+
+        RPC::call('MovimTpl.fill', '#groups_widget', '');
 
         $r = new Items;
         $r->setTo($server)->request();

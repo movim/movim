@@ -1,3 +1,3 @@
-<div id="groups_widget">
+<div id="groups_widget" class="spin">
     {$c->prepareSubscriptions()}
 </div>

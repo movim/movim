@@ -324,6 +324,14 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     }
 }
 
+/* Spin */
+
+.spin:empty {
+    background-image: url(../img/movim_cloud.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
 /* Placeholder */
 
 .placeholder {
@@ -383,65 +391,6 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
         padding: 0 2rem;
         box-sizing: border-box;
     }
-}
-
-/* Spinner */
-
-.spinner {
-    position: relative;
-}
-
-.spinner:before,
-.spinner:after {
-    transition: top .3s cubic-bezier(.4,0,.2,1);
-    transform: translateX(0);
-    content: '';
-    position: absolute;
-    left: calc(50% - 3.5rem);
-    border-radius: 50%;
-    top: -10rem;
-}
-
-.spinner.on:before,
-.spinner.on:after {
-    top: 3rem;
-}
-
-.spinner.on:before {
-    animation: 1s spinner infinite linear;
-}
-
-.spinner:before {
-    z-index: 3;
-    width: 3.5rem;
-    height: 3.5rem;
-    margin: 1rem;
-}
-
-.spinner:not(:required):before {
-    content: '';
-    border: 0.75rem solid transparent;
-    border-top: 0.75rem solid #ddd;
-}
-
-.spinner:after {
-    z-index: 2;
-
-    box-shadow: 0px 0.5rem 1.25rem rgba(0, 0, 0, 0.23), 0px 0.5rem 1.25rem rgba(0, 0, 0, 0.16);
-    background-color: white;
-
-    width: 7rem;
-    height: 7rem;
-}
-
-@keyframes spinner {
-    from { transform: rotate(0deg); }
-    to {transform: rotate(360deg);}
-}
-
-@-webkit-keyframes spinner {
-    from { transform: rotate(0deg); }
-    to {-webkit-transform: rotate(360deg);}
 }
 
 /* Display/hide */
