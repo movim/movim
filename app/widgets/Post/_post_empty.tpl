@@ -88,8 +88,14 @@
         <p>
             <a href="{$c->route('contact', $value->getContact()->jid)}">
                 <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
-            </a> –
-            {$value->published|strtotime|prepareDate}
+            </a>
+                {$count = $value->countComments()}
+                {if="$count > 0"}
+                    {$count} <i class="zmdi zmdi-comment-outline"></i>
+                {/if}
+            <span class="info">
+                {$value->published|strtotime|prepareDate}
+            </span>
         </p>
 
         <p>
@@ -170,8 +176,10 @@
                 {$value->origin} /
                 <a href="{$c->route('group', array($value->origin, $value->node))}">
                     <i class="zmdi zmdi-pages"></i> {$value->node}
-                </a> –
-                {$value->published|strtotime|prepareDate}
+                </a>
+                <span class="info">
+                    {$value->published|strtotime|prepareDate}
+                </span>
             </p>
 
             <p>

@@ -516,6 +516,28 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
+    function countComments($origin, $id)
+    {
+        $this->_sql = '
+            select count(*) from postn
+            where origin = :origin
+                and node = :node';
+
+        $this->prepare(
+            'Postn',
+            [
+                'origin' => $origin,
+                'node'   => 'urn:xmpp:microblog:0:comments/'.$id
+            ]
+        );
+
+        $arr = $this->run(null, 'array');
+        if(is_array($arr) && isset($arr[0])) {
+            $arr = array_values($arr[0]);
+            return (int)$arr[0];
+        }
+    }
+
     function clearPost() {
         $this->_sql = '
             delete from postn
@@ -523,9 +545,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'session' => $this->_user
-            )
+            ]
         );
 
         return $this->run('Postn');
@@ -546,10 +568,10 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $this->_user,
                 'published' => $date
-            )
+            ]
         );
 
         $arr = $this->run(null, 'array');

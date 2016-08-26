@@ -465,6 +465,12 @@ class Postn extends Model {
         return $this->openlink;
     }
 
+    public function countComments()
+    {
+        $pd = new \Modl\PostnDAO;
+        return $pd->countComments($this->commentplace, $this->nodeid);
+    }
+
     public function getTags()
     {
         $td = new \Modl\TagDAO;
