@@ -256,10 +256,10 @@ class Group extends \Movim\Widget\Base
     function ajaxGetItems($server, $node)
     {
         if(!$this->validateServerNode($server, $node)) return;
-
         $slugify = new Slugify();
 
         RPC::call('Group.addLoad', $slugify->slugify($server.'_'.$node));
+        RPC::call('MovimUtils.pushState', $this->route('group', [$server, $node]));
         RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), '');
 
         $r = new GetItemsId;
