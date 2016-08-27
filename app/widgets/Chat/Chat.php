@@ -175,6 +175,8 @@ class Chat extends \Movim\Widget\Base
     function ajaxGet($jid = null)
     {
         if($jid == null) {
+            RPC::call('MovimUtils.pushState', $this->route('chat'));
+
             RPC::call('MovimUtils.removeClass', '#chat_widget', 'fixed');
             RPC::call('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
         } else {
