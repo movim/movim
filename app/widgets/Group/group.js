@@ -9,3 +9,10 @@ var Group = {
         MovimUtils.removeClass('#group_widget', 'on');
     }
 }
+
+MovimWebsocket.attach(function() {
+    var parts = MovimUtils.urlParts();
+    if(parts.params.length) {
+        Group_ajaxGetItems(parts.params[0], parts.params[1]);
+    }
+});
