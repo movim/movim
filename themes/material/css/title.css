@@ -5,6 +5,10 @@ h1 { /* Display 1 */
     line-height: 7rem;
 }
 
+article h1 {
+    line-height: 5rem;
+}
+
 h2 { /* Headline */
     font-size: 3rem;
     line-height: 4rem;
