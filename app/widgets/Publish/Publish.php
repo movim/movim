@@ -53,7 +53,7 @@ class Publish extends \Movim\Widget\Base
 
         if($id) {
             $pd = new \modl\PostnDAO();
-            $p = $pd->getItem($id);
+            $p = $pd->get($server, $node, $id);
             if($p->isEditable()) {
                 $post = $p;
             }
@@ -144,6 +144,11 @@ class Publish extends \Movim\Widget\Base
           ->request();
     }
 
+    function ajaxRepost($server, $node, $id)
+    {
+        if(!$this->validateServerNode($server, $node)) return;
+    }
+
     function ajaxPublish($form)
     {
         RPC::call('Publish.disableSend');
@@ -155,7 +160,6 @@ class Publish extends \Movim\Widget\Base
               ->setTitle(htmlspecialchars($form->title->value))
               ->setNode($form->node->value);
               //->setLocation($geo)
-              //->enableComments()
 
             // Still usefull ? Check line 44
             if($form->node->value == 'urn:xmpp:microblog:0') {
@@ -173,7 +177,7 @@ class Publish extends \Movim\Widget\Base
                 $p->setId($form->id->value);
 
                 $pd = new \modl\PostnDAO();
-                $post = $pd->getItem($form->id->value);
+                $post = $pd->get($form->to->value, $form->node->value, $form->id->value);
 
                 if(isset($post)) {
                     $p->setPublished(strtotime($post->published));

@@ -9,7 +9,7 @@ var Menu = {
                 items[i].onclick = function(e) {
                     if(this.dataset.id) {
                         MovimTpl.showPanel();
-                        Post_ajaxGetPost(this.dataset.id);
+                        Post_ajaxGetPost(this.dataset.server, this.dataset.node, this.dataset.id);
                         //Menu_ajaxGetNode(this.dataset.server, this.dataset.node);
                         MovimUtils.removeClassInList('active', items);
                         MovimUtils.addClass(this, 'active');

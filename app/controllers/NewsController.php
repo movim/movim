@@ -13,7 +13,11 @@ class NewsController extends Base
         $user = new User();
         if(!$user->isLogged()) {
             $pd = new \Modl\PostnDAO;
-            $p  = $pd->getItem($this->fetchGet('n'));
+            $p  = $pd->get(
+                $this->fetchGet('s'),
+                $this->fetchGet('n'),
+                $this->fetchGet('i')
+            );
 
             if($p) {
                 if($p->isMicroblog()) {

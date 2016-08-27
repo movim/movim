@@ -428,6 +428,15 @@ class Postn extends Model {
         return $p->get($this->origin.$this->node, 120);
     }
 
+    public function getUUID()
+    {
+        if(substr($this->nodeid, 10) == 'urn:uuid:') {
+            return $this->nodeid;
+        } else {
+            return 'urn:uuid:'.generateUUID($this->nodeid);
+        }
+    }
+
     public function isMine()
     {
         $user = new \User();
@@ -436,13 +445,8 @@ class Postn extends Model {
         || $this->origin == $user->getLogin());
     }
 
-    public function getUUID()
-    {
-        if(substr($this->nodeid, 10) == 'urn:uuid:') {
-            return $this->nodeid;
-        } else {
-            return 'urn:uuid:'.generateUUID($this->nodeid);
-        }
+    public function isPublic() {
+        return ($this->open);
     }
 
     public function isMicroblog()
@@ -486,10 +490,6 @@ class Postn extends Model {
         if(is_array($tags)) {
             return implode(', ', $tags);
         }
-    }
-
-    public function isPublic() {
-        return ($this->open);
     }
 }
 

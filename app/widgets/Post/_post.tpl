@@ -85,12 +85,12 @@
             <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                 <a  {if="$public"}
                         {if="$post->isMicroblog()"}
-                        href="{$c->route('blog', array($post->origin, $post->nodeid))}"
+                        href="{$c->route('blog', [$post->origin, $post->nodeid])}"
                         {else}
-                        href="{$c->route('node', array($post->origin, $post->node, $post->nodeid))}"
+                        href="{$c->route('node', [$post->origin, $post->node, $post->nodeid])}"
                         {/if}
                     {else}
-                        href="{$c->route('news', $post->nodeid)}"
+                        href="{$c->route('news', [$post->origin, $post->node, $post->nodeid])}"
                     {/if}
                     >
                     {if="$post->title != null"}

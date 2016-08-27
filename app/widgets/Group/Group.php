@@ -303,8 +303,8 @@ class Group extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
 
-        $pd = new \Modl\ItemDAO;
-        $item = $pd->getItem($server, $node);
+        $id = new \Modl\ItemDAO;
+        $item = $id->getItem($server, $node);
 
         if(isset($item)) {
             $view->assign('item', $item);
@@ -336,8 +336,8 @@ class Group extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
 
-        $pd = new \Modl\ItemDAO;
-        $item = $pd->getItem($server, $node);
+        $id = new \Modl\ItemDAO;
+        $item = $id->getItem($server, $node);
 
         if(isset($item)) {
             $view->assign('item', $item);

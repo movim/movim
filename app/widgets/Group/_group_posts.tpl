@@ -12,7 +12,7 @@
 
 <ul class="list card active flex shadow">
 {loop="$posts"}
-    <li class="block" onclick="MovimUtils.redirect('{$c->route('news', $value->nodeid)}')">
+    <li class="block" onclick="MovimUtils.redirect('{$c->route('news', [$value->origin, $value->node, $value->nodeid])}')">
         {$picture = $value->getPicture()}
         {if="$picture != null"}
             <span class="icon top" style="background-image: url({$picture});"></span>

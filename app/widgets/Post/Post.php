@@ -92,10 +92,10 @@ class Post extends \Movim\Widget\Base
         $c->ajaxGetDrawer($jid);
     }
 
-    function ajaxGetPost($id)
+    function ajaxGetPost($origin, $node, $id)
     {
         $pd = new \Modl\PostnDAO;
-        $p  = $pd->getItem($id);
+        $p  = $pd->get($origin, $node, $id);
 
         $gi = new GetItem;
         $gi->setTo($p->origin)
@@ -105,7 +105,7 @@ class Post extends \Movim\Widget\Base
 
         $html = $this->preparePost($p);
 
-        RPC::call('MovimUtils.pushState', $this->route('news', $id));
+        RPC::call('MovimUtils.pushState', $this->route('news', [$p->origin, $p->node, $p->nodeid]));
 
         RPC::call('MovimTpl.fill', '#post_widget', $html);
         RPC::call('MovimUtils.enableVideos');

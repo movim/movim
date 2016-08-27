@@ -6,29 +6,29 @@ class Route extends Base {
     private $_page;
 
     public function __construct() {
-        $this->_routes = array(
-                'about'         => array('x'),
+        $this->_routes = [
+                'about'         => ['x'],
                 'account'       => false,
-                'accountnext'   => array('s', 'err'),
+                'accountnext'   => ['s', 'err'],
                 'admin'         => false,
-                'blog'          => array('f', 'i'),
-                'tag'           => array('t', 'i'),
-                'chat'          => array('f'),
+                'blog'          => ['f', 'i'],
+                'tag'           => ['t', 'i'],
+                'chat'          => ['f'],
                 'conf'          => false,
-                'contact'       => array('f'),
-                'disconnect'    => array('err'),
-                'feed'          => array('s', 'n'),
+                'contact'       => ['f'],
+                'disconnect'    => ['err'],
+                'feed'          => ['s', 'n'],
                 'main'          => false,
-                'node'          => array('s', 'n', 'i'),
-                'group'         => array('s', 'n', 'i'),
+                'node'          => ['s', 'n', 'i'],
+                'group'         => ['s', 'n', 'i'],
                 'help'          => false,
                 'infos'         => false,
-                'login'         => array('err'),
-                'news'          => array('n'),
-                'room'          => array('r'),
-                'share'         => array('url'),
+                'login'         => ['err'],
+                'news'          => ['s', 'n', 'i'],
+                'room'          => ['r'],
+                'share'         => ['url'],
                 'visio'         => false
-            );
+            ];
     }
 
     public function find() {

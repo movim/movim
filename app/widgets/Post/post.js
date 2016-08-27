@@ -1,8 +1,8 @@
 MovimWebsocket.attach(function() {
-    var nodeid = MovimUtils.urlParts().params[0];
-    if(nodeid) {
+    var parts = MovimUtils.urlParts();
+    if(parts.params.length) {
         document.querySelector('#post_widget').innerHTML = '';
-        Post_ajaxGetPost(nodeid);
+        Post_ajaxGetPost(parts.params[0], parts.params[1], parts.params[2]);
         MovimTpl.showPanel();
     }
 });
