@@ -366,6 +366,8 @@ class Group extends \Movim\Widget\Base
 
     function ajaxClear()
     {
+        RPC::call('MovimUtils.pushState', $this->route('group'));
+
         $html = $this->prepareEmpty();
         RPC::call('MovimTpl.fill', '#group_widget header', '');
         RPC::call('MovimTpl.fill', '#group_widget', $html);

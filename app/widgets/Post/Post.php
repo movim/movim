@@ -79,6 +79,8 @@ class Post extends \Movim\Widget\Base
 
     function ajaxClear()
     {
+        RPC::call('MovimUtils.pushState', $this->route('news'));
+
         RPC::call('MovimTpl.fill', '#post_widget', $this->prepareEmpty());
         RPC::call('Menu.refresh');
         //RPC::call('Menu_ajaxGetAll');
