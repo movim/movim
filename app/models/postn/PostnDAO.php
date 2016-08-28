@@ -172,7 +172,7 @@ class PostnDAO extends SQL {
         }
     }
 
-    function get($origin, $node, $nodeid) {
+    function get($origin, $node, $nodeid, $public = false) {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
@@ -182,6 +182,8 @@ class PostnDAO extends SQL {
             where postn.origin = :origin
                 and postn.node = :node
                 and postn.nodeid = :nodeid';
+
+        if($public) $this->_sql .= ' and postn.open = true';
 
         $this->prepare(
             'Postn',
@@ -195,6 +197,10 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn', 'item');
     }
 
+    function getPublicItem($origin, $node, $nodeid) {
+        return $this->get($origin, $node, $nodeid, true);
+    }
+
     function delete($nodeid) {
         $this->_sql = '
             delete from postn
@@ -202,9 +208,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'nodeid' => $nodeid
-            )
+            ]
         );
 
         return $this->run('Postn');
@@ -218,10 +224,10 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $origin,
                 'node' => $node
-            )
+            ]
         );
 
         return $this->run('Postn');
@@ -245,32 +251,11 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'aid' => $this->_user, // TODO: Little hack to bypass the check, need to fix it in Modl
                 'origin' => $from,
                 'node' => $node
-            )
-        );
-
-        return $this->run('ContactPostn');
-    }
-
-    function getPublicTag($tag, $limitf = false, $limitr = false) {
-        $this->_sql = '
-            select *, postn.aid from postn
-            left outer join contact on postn.aid = contact.jid
-            where nodeid in (select nodeid from tag where tag = :title)
-                and postn.open = true
-            order by postn.published desc';
-
-        if($limitr !== false)
-            $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
-
-        $this->prepare(
-            'Postn',
-            array(
-                'title' => $tag # Hack
-            )
+            ]
         );
 
         return $this->run('ContactPostn');
@@ -292,10 +277,31 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $from,
                 'node' => $node
-            )
+            ]
+        );
+
+        return $this->run('ContactPostn');
+    }
+
+    function getPublicTag($tag, $limitf = false, $limitr = false) {
+        $this->_sql = '
+            select *, postn.aid from postn
+            left outer join contact on postn.aid = contact.jid
+            where nodeid in (select nodeid from tag where tag = :title)
+                and postn.open = true
+            order by postn.published desc';
+
+        if($limitr !== false)
+            $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
+
+        $this->prepare(
+            'Postn',
+            [
+                'title' => $tag # Hack
+            ]
         );
 
         return $this->run('ContactPostn');
@@ -390,9 +396,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $this->_user
-            )
+            ]
         );
 
         return $this->run('ContactPostn');
@@ -411,9 +417,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $this->_user
-            )
+            ]
         );
 
         return $this->run('ContactPostn');
@@ -434,9 +440,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $this->_user
-            )
+            ]
         );
 
         return $this->run('ContactPostn');
@@ -457,31 +463,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
-                'origin' => $origin,
-                'node' => $node
-            )
-        );
-
-        return $this->run('ContactPostn');
-    }
-
-    function getPublicItem($origin, $node, $nodeid) {
-        $this->_sql = '
-            select *, postn.aid from postn
-            left outer join contact on postn.aid = contact.jid
-            where postn.origin = :origin
-                and postn.node = :node
-                and postn.open = true
-                and postn.nodeid = :nodeid
-            order by postn.published desc';
-
-        $this->prepare(
-            'Postn',
             [
                 'origin' => $origin,
-                'node' => $node,
-                'nodeid' => $nodeid,
+                'node' => $node
             ]
         );
 

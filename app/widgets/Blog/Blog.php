@@ -60,7 +60,7 @@ class Blog extends \Movim\Widget\Base {
                 }
                 $this->_page = $this->_id + 1;
             } elseif(Validator::stringType()->length(5, 100)->validate($this->_id)) {
-                $this->_messages = $pd->getPublicItem($this->_from, $this->_node, $this->_id);
+                $this->_messages[0] = $pd->getPublicItem($this->_from, $this->_node, $this->_id);
 
                 if(is_object($this->_messages[0])) {
                     $this->title = $this->_messages[0]->title;
@@ -95,13 +95,15 @@ class Blog extends \Movim\Widget\Base {
             array_pop($this->_messages);
         }
 
-        $this->user = new User($this->_from);
+        if($this->_node == 'urn:xmpp:microblog:0') {
+            $this->user = new User($this->_from);
 
-        $cssurl = $this->user->getDumpedConfig('cssurl');
-        if(isset($cssurl)
-        && $cssurl != ''
-        && Validator::url()->validate($cssurl)) {
-            $this->addrawcss($cssurl);
+            $cssurl = $this->user->getDumpedConfig('cssurl');
+            if(isset($cssurl)
+            && $cssurl != ''
+            && Validator::url()->validate($cssurl)) {
+                $this->addrawcss($cssurl);
+            }
         }
     }
 
