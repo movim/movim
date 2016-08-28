@@ -240,7 +240,7 @@ class PostnDAO extends SQL {
             left outer join item
                 on postn.origin = item.server
                 and postn.node = item.node
-            where ((postn.origin, node) in (select server, node from subscription where jid = :aid))
+            where ((postn.origin, node) in (select server, node from subscription where jid = :jid))
                 and postn.origin = :origin
                 and postn.node = :node
                 and postn.node != \'urn:xmpp:microblog:0\'
@@ -252,7 +252,7 @@ class PostnDAO extends SQL {
         $this->prepare(
             'Postn',
             [
-                'aid' => $this->_user, // TODO: Little hack to bypass the check, need to fix it in Modl
+                'subscription.jid' => $this->_user,
                 'origin' => $from,
                 'node' => $node
             ]
@@ -290,7 +290,7 @@ class PostnDAO extends SQL {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            where nodeid in (select nodeid from tag where tag = :title)
+            where nodeid in (select nodeid from tag where tag = :tag)
                 and postn.open = true
             order by postn.published desc';
 
@@ -300,7 +300,7 @@ class PostnDAO extends SQL {
         $this->prepare(
             'Postn',
             [
-                'title' => $tag # Hack
+                'tag.tag' => $tag
             ]
         );
 
@@ -320,9 +320,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
-                'aid' => $from // Another hack
-            )
+            [
+                'aid' => $from
+            ]
         );
 
         return $this->run('ContactPostn');
@@ -341,10 +341,10 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $origin,
                 'node' => $node
-            )
+            ]
         );
 
         return $this->run('Postn', 'item');
@@ -372,9 +372,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $jid
-            )
+            ]
         );
 
         return $this->run('ContactPostn');
@@ -497,8 +497,7 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
-            )
+            []
         );
 
         return $this->run('ContactPostn');
@@ -584,9 +583,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $this->_user
-            )
+            ]
         );
 
         $arr = $this->run(null, 'array');
@@ -614,9 +613,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $this->_user
-            )
+            ]
         );
 
         return $this->run('Postn');
@@ -639,9 +638,9 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $this->_user
-            )
+            ]
         );
 
         return $this->run('ContactPostn');
@@ -666,10 +665,10 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'origin' => $this->_user,
                 'title'  => '%'.$key.'%'
-            )
+            ]
         );
 
         return $this->run('ContactPostn');

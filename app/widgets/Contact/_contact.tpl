@@ -356,7 +356,7 @@
             {loop="$gallery"}
                 {$attachments = $value->getAttachments()}
                 <li style="background-image: url('{$attachments['pictures'][0]['href']}');"
-                    onclick="MovimUtils.reload('{$c->route('news', $value->nodeid)}')">
+                    onclick="MovimUtils.reload('{$c->route('news', [$value->origin, $value->node, $value->nodeid])}')">
                     <nav>
                         <span>{$value->title}</span>
                     </nav>
