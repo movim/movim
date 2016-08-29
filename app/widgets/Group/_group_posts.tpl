@@ -37,13 +37,8 @@
             {$value->node}
         {/if}
         </p>
-        <p>
-            {$value->published|strtotime|prepareDate}
-        </p>
-
-        <p>
-            {$value->contentcleaned|strip_tags}
-        </p>
+        <p>{$value->contentcleaned|strip_tags}</p>
+        <p><span class="info">{$value->published|strtotime|prepareDate}</span></p>
     </li>
 {/loop}
 </ul>

@@ -85,6 +85,7 @@
             {$value->node}
         {/if}
         </p>
+        <p>{$value->contentcleaned|strip_tags}</p>
         <p>
             <a href="{$c->route('contact', $value->getContact()->jid)}">
                 <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
@@ -96,10 +97,6 @@
             <span class="info">
                 {$value->published|strtotime|prepareDate}
             </span>
-        </p>
-
-        <p>
-            {$value->contentcleaned|strip_tags}
         </p>
     </li>
 {/loop}
@@ -173,6 +170,11 @@
             {/if}
             </p>
             <p>
+                {if="current(explode('.', $value->origin)) != 'nsfw'"}
+                    {$value->contentcleaned|strip_tags}
+                {/if}
+            </p>
+            <p>
                 {$value->origin} /
                 <a href="{$c->route('group', array($value->origin, $value->node))}">
                     <i class="zmdi zmdi-pages"></i> {$value->node}
@@ -180,12 +182,6 @@
                 <span class="info">
                     {$value->published|strtotime|prepareDate}
                 </span>
-            </p>
-
-            <p>
-                {if="current(explode('.', $value->origin)) != 'nsfw'"}
-                    {$value->contentcleaned|strip_tags}
-                {/if}
             </p>
         </li>
     {/if}

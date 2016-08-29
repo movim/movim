@@ -54,7 +54,7 @@
                         <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                     {/if}
                 </span>
-            {elseif="$value->node == 'urn:xmpp:microblog:0'"}
+            {elseif="$value->isMicroblog()"}
                 {$url = $value->getContact()->getPhoto('l')}
                 {if="$url"}
                     <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
@@ -86,8 +86,9 @@
             {else}
                 <p class="line">{$c->__('menu.contact_post')}</p>
             {/if}
+            <p>{$value->contentcleaned|stripTags}</p>
             <p>
-                {if="$value->node == 'urn:xmpp:microblog:0'"}
+                {if="$value->isMicroblog()"}
                     <a href="{$c->route('contact', $value->getContact()->jid)}">
                         <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
                     </a>
@@ -104,7 +105,6 @@
                     {$value->published|strtotime|prepareDate:true,true}
                 </span>
             </p>
-            <p>{$value->contentcleaned|stripTags}</p>
         </li>
     {/loop}
     {if="count($items) == $paging"}

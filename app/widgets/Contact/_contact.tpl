@@ -211,9 +211,8 @@
                         <p class="line">{$c->__('hello.contact_post')}</p>
                     {/if}
 
-                    <p>
-                    <span class="info">{$value->published|strtotime|prepareDate}</span>
-                        {$value->contentcleaned|strip_tags}</p>
+                    <p>{$value->contentcleaned|strip_tags}</p>
+                    <p><span class="info">{$value->published|strtotime|prepareDate}</span></p>
                 </li>
             {/loop}
             <a href="{$c->route('blog', array($contact->jid))}" target="_blank" class="block large simple">
