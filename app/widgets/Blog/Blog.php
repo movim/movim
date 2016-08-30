@@ -139,7 +139,7 @@ class Blog extends \Movim\Widget\Base {
 
     private function validateTag($tag)
     {
-        return Validator::stringType()->notEmpty()->alnum()->validate($tag);
+        return Validator::stringType()->notEmpty()->alnum('_-')->validate($tag);
     }
 
     function getComments($post)

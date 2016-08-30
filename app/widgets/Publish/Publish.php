@@ -19,12 +19,11 @@ class Publish extends \Movim\Widget\Base
 
     function onPublish($packet)
     {
-        list($to, $node, $id) = array_values($packet->content);
+        list($to, $node, $id, $repost) = array_values($packet->content);
 
-        // Only for the microblog for the moment
-        //if($node == 'urn:xmpp:microblog:0') {
+        if(!$repost) {
             $this->ajaxCreateComments($to, $id);
-        //}
+        }
 
         RPC::call('MovimUtils.redirect', Route::urlize('news', [$to, $node, $id]));
     }
@@ -45,24 +44,39 @@ class Publish extends \Movim\Widget\Base
         $this->ajaxCreate($this->user->getLogin(), 'urn:xmpp:microblog:0');
     }
 
-    function ajaxCreate($server, $node, $id = false)
+
+    /*function ajaxReply($server, $node, $id)
+    {
+        $this->ajaxCreate($server, $node, $id, true);
+    }*/
+
+    function ajaxCreate($server, $node, $id = false, $reply = false)
     {
         if(!$this->validateServerNode($server, $node)) return;
 
         $post = false;
 
+        $view = $this->tpl();
+
         if($id) {
             $pd = new \modl\PostnDAO();
             $p = $pd->get($server, $node, $id);
-            if($p->isEditable()) {
+            if($p->isEditable() || $reply) {
                 $post = $p;
             }
         }
 
-        $view = $this->tpl();
-        $view->assign('to', $server);
-        $view->assign('node', $node);
-        $view->assign('item', $post);
+        if($reply) {
+            $view->assign('to', $this->user->getLogin());
+            $view->assign('node', 'urn:xmpp:microblog:0');
+            $view->assign('item', false);
+            $view->assign('reply', $post);
+        } else {
+            $view->assign('to', $server);
+            $view->assign('node', $node);
+            $view->assign('item', $post);
+            $view->assign('reply', false);
+        }
 
         if($node == 'urn:xmpp:microblog:0') {
             RPC::call('MovimUtils.pushState', $this->route('news'));
@@ -70,7 +84,11 @@ class Publish extends \Movim\Widget\Base
             RPC::call('MovimUtils.removeClass', '#group_widget', 'fixed');
         }
 
-        RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
+        if($reply) {
+            Drawer::fill($view->draw('_publish_create', true));
+        } else {
+            RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
+        }
 
         $pd = new \Modl\ItemDAO;
         $item = $pd->getItem($server, $node);
@@ -81,7 +99,7 @@ class Publish extends \Movim\Widget\Base
         $view->assign('post', $post);
         $view->assign('item', $item);
 
-        Header::fill($view->draw('_publish_header', true));
+        //Header::fill($view->draw('_publish_header', true));
 
         if($id) {
             RPC::call('Publish.initEdit');
@@ -144,10 +162,44 @@ class Publish extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxRepost($server, $node, $id)
+    /*function ajaxRepost($server, $node, $id)
     {
         if(!$this->validateServerNode($server, $node)) return;
-    }
+
+        $pd = new \modl\PostnDAO();
+        $post = $pd->get($server, $node, $id);
+
+        if($post) {
+            $attachments = $post->getAttachments();
+
+            $p = new PostPublish;
+
+            if($post->aid) $p->setFrom($post->aid);
+            else           $p->setFrom($post->origin);
+
+            $p->setTo($this->user->getLogin())
+              ->setTitle($post->title)
+              ->setNode('urn:xmpp:microblog:0')
+              ->setContent($post->contentraw)
+              ->setContentXhtml($post->content)
+              ->enableComments()
+              ->setTags($post->getTags())
+              ->setRepost([$post->origin, $post->node, $post->nodeid]);
+
+            if(isset($attachments['links'])) {
+                $p->setLink($attachments['links'][0]['href']);
+            }
+
+            if(isset($attachments['pictures'])) {
+                $p->setImage(
+                    $attachments['pictures'][0]['href'],
+                    $attachments['pictures'][0]['title'],
+                    $attachments['pictures'][0]['type']);
+            }
+
+            $p->request();
+        }
+    }*/
 
     function ajaxPublish($form)
     {
@@ -162,9 +214,9 @@ class Publish extends \Movim\Widget\Base
               //->setLocation($geo)
 
             // Still usefull ? Check line 44
-            if($form->node->value == 'urn:xmpp:microblog:0') {
+            //if($form->node->value == 'urn:xmpp:microblog:0') {
                 $p->enableComments();
-            }
+            //}
 
             $content = $content_xhtml = '';
 
@@ -191,7 +243,7 @@ class Publish extends \Movim\Widget\Base
                             function($value) {
                                 if(Validator::stringType()->notEmpty()->validate($value)) {
                                     preg_match('/([^\s[:punct:]]|_|-){3,30}/', trim($value), $matches);
-                                    if(isset($matches[0])) return $matches[0];
+                                    if(isset($matches[0])) return strtolower($matches[0]);
                                 }
                             },
                             explode(',', $form->tags->value)

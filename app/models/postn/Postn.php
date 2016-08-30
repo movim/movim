@@ -18,7 +18,8 @@ class Postn extends Model {
     public $contentraw;     // The raw content
     public $contentcleaned; // The cleanned content
 
-    public $commentplace;
+    public $commentorigin;
+    public $commentnodeid;
 
     public $published;      //
     public $updated;        //
@@ -64,8 +65,10 @@ class Postn extends Model {
                 {"type":"text" },
             "contentcleaned" :
                 {"type":"text" },
-            "commentplace" :
-                {"type":"string", "size":128 },
+            "commentorigin" :
+                {"type":"string", "size":64 },
+            "commentnodeid" :
+                {"type":"string", "size":96 },
 
             "open" :
                 {"type":"bool"},
@@ -218,20 +221,20 @@ class Postn extends Model {
             && isset($entry->entry->category->attributes()->term)) {
                 $tag = new \Modl\Tag;
                 $tag->nodeid = $this->__get('nodeid');
-                $tag->tag    = (string)$entry->entry->category->attributes()->term;
+                $tag->tag    = strtolower((string)$entry->entry->category->attributes()->term);
                 $td->set($tag);
             } else {
                 foreach($entry->entry->category as $cat) {
                     $tag = new \Modl\Tag;
                     $tag->nodeid = $this->__get('nodeid');
-                    $tag->tag    = (string)$cat->attributes()->term;
+                    $tag->tag    = strtolower((string)$cat->attributes()->term);
                     $td->set($tag);
                 }
             }
         }
 
-        if(!isset($this->commentplace))
-            $this->__set('commentplace', $this->origin);
+        if(!isset($this->commentorigin))
+            $this->__set('commentorigin', $this->origin);
 
         $this->__set('content', trim($content));
         $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
@@ -303,7 +306,8 @@ class Postn extends Model {
 
             if((string)$attachment->attributes()->title == 'comments') {
                 $substr = explode('?',substr((string)$attachment->attributes()->href, 5));
-                $this->commentplace = reset($substr);
+                $this->commentorigin = reset($substr);
+                $this->commentnodeid = substr((string)$substr[1], 36);
             }
         }
 
@@ -437,6 +441,11 @@ class Postn extends Model {
         }
     }
 
+    public function getRef()
+    {
+        return 'xmpp:'.$this->origin.'?;node='.$this->node.';item='.$this->nodeid;
+    }
+
     public function isMine()
     {
         $user = new \User();
@@ -472,7 +481,7 @@ class Postn extends Model {
     public function countComments()
     {
         $pd = new \Modl\PostnDAO;
-        return $pd->countComments($this->commentplace, $this->nodeid);
+        return $pd->countComments($this->commentorigin, $this->commentnodeid);
     }
 
     public function getTags()
@@ -523,5 +532,12 @@ class ContactPostn extends Postn {
         return ($this->getContact()->jid
             && $this->node == 'urn:xmpp:microblog:0'
             && (strtolower($this->origin) != strtolower($this->getContact()->jid)));
+    }
+
+    public function isEditable()
+    {
+        return (
+            ($this->contentraw != null || $this->links != null)
+            && !$this->isRecycled());
     }
 }

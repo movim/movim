@@ -1,9 +1,15 @@
 <header>
     <ul class="list middle">
         <li>
+            {if="$reply"}
+            <span class="primary icon active" onclick="Drawer_ajaxClear()">
+                <i class="zmdi zmdi-close"></i>
+            </span>
+            {else}
             <span class="primary icon active" onclick="Publish.headerBack('{$to}', '{$node}', false);">
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
+            {/if}
 
             <span id="button_send" class="control icon active" onclick="Publish.disableSend(); Publish_ajaxPublish(MovimUtils.formToJson('post'));">
                 <i class="zmdi zmdi-mail-send"></i>
@@ -15,11 +21,15 @@
                 <i class="zmdi zmdi-eye"></i>
             </span>
 
-            {if="$item != false"}
-                <p class="line">{$c->__('publish.edit')}</p>
-            {else}
-                <p class="line">{$c->__('publish.new')}</p>
-            {/if}
+            <p class="line">
+                {if="$reply"}
+                    {$c->__('button.share')}
+                {elseif="$item != false"}
+                    {$c->__('publish.edit')}
+                {else}
+                    {$c->__('publish.new')}
+                {/if}
+            </p>
             <!--
             <p>
                 {if="$item != null && $item->node != 'urn:xmpp:microblog:0'"}
@@ -37,16 +47,48 @@
 </header>
 
 <form name="post" class="block padded">
+    {if="$reply"}
+    <ul class="list thick card">
+        <li class="block">
+            {if="$reply->picture"}
+                <span
+                    class="primary icon thumb"
+                    style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});"></span>
+            {/if}
+            <p class="line">{$reply->title}</p>
+            <p>{$reply->contentcleaned|stripTags}</p>
+            <p>
+                {if="$reply->isMicroblog()"}
+                    <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
+                {else}
+                    <i class="zmdi zmdi-pages"></i> {$reply->node}
+                {/if}
+                <span class="info">
+                    {$reply->published|strtotime|prepareDate:true,true}
+                </span>
+            </p>
+        </li>
+    </ul>
+    {/if}
+
     <input type="hidden" name="to" value="{$to}">
     <input type="hidden" name="node" value="{$node}">
     <input type="hidden" name="id" value="{if="$item != false"}{$item->nodeid}{/if}">
 
     <div>
-        <input type="text" name="title" placeholder="{$c->__('post.title')}" {if="$item != false"}value="{$item->title|htmlspecialchars}"{/if}>
+        <input
+            type="text"
+            name="title"
+            placeholder="{$c->__('post.title')}"
+            {if="$item != false"}
+                value="{$item->title|htmlspecialchars}"
+            {elseif="$reply"}
+                value="{$reply->title|htmlspecialchars}"
+            {/if}>
         <label for="title">{$c->__('post.title')}</label>
     </div>
 
-    <div id="content_link">
+    <div id="content_link" {if="$reply"}class="hide"{/if}>
         {if="$item != false"}
             {$attachment = $item->getAttachment(true)}
         {/if}
@@ -90,7 +132,7 @@
         <label for="title">{$c->__('post.tags')}</label>
     </div>
 
-    <ul class="list middle active">
+    <ul class="list middle active {if="$reply"}hide{/if}">
         {if="$c->supported('upload')"}
         <li class="block large" onclick="Upload_ajaxRequest()">
             <span class="primary icon gray">
@@ -102,7 +144,7 @@
     </ul>
 
     <div>
-        <ul class="list thin">
+        <ul class="list middle">
             <li>
                 <span class="primary icon gray">
                     <i class="zmdi zmdi-portable-wifi"></i>

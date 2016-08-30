@@ -38,7 +38,13 @@
         {/if}
         </p>
         <p>{$value->contentcleaned|strip_tags}</p>
-        <p><span class="info">{$value->published|strtotime|prepareDate}</span></p>
+        <p>
+            {$count = $value->countComments()}
+            {if="$count > 0"}
+                {$count} <i class="zmdi zmdi-comment-outline"></i>
+            {/if}
+            <span class="info">{$value->published|strtotime|prepareDate}</span>
+        </p>
     </li>
 {/loop}
 </ul>

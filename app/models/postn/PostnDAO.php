@@ -15,7 +15,8 @@ class PostnDAO extends SQL {
                     contentraw      = :contentraw,
                     contentcleaned  = :contentcleaned,
 
-                    commentplace    = :commentplace,
+                    commentorigin   = :commentorigin,
+                    commentnodeid   = :commentnodeid,
 
                     open            = :open,
 
@@ -47,7 +48,8 @@ class PostnDAO extends SQL {
                 'contentraw'        => $post->contentraw,
                 'contentcleaned'    => $post->contentcleaned,
 
-                'commentplace'      => $post->commentplace,
+                'commentorigin'     => $post->commentorigin,
+                'commentnodeid'     => $post->commentnodeid,
 
                 'open'              => $post->open,
 
@@ -88,7 +90,8 @@ class PostnDAO extends SQL {
                 contentraw,
                 contentcleaned,
 
-                commentplace,
+                commentorigin,
+                commentnodeid,
 
                 open,
 
@@ -117,7 +120,8 @@ class PostnDAO extends SQL {
                     :contentraw,
                     :contentcleaned,
 
-                    :commentplace,
+                    :commentorigin,
+                    :commentnodeid,
 
                     :open,
 
@@ -146,7 +150,8 @@ class PostnDAO extends SQL {
                     'contentraw'        => $post->contentraw,
                     'contentcleaned'    => $post->contentcleaned,
 
-                    'commentplace'      => $post->commentplace,
+                    'commentorigin'     => $post->commentorigin,
+                    'commentnodeid'     => $post->commentnodeid,
 
                     'open'              => $post->open,
 

@@ -46,8 +46,8 @@
     {if="($public && $post->isPublic()) || !$public"}
     <ul class="list thick">
         <li>
-            {if="$recycled"}
-                {$contact = $recycled}
+            {if="$repost"}
+                {$contact = $repost}
             {else}
                 {$contact = $post->getContact()}
             {/if}
@@ -130,6 +130,33 @@
 {if="!$external && !$public"}
 <article class="block">
 {/if}
+
+        {if="$repost"}
+            <a href="{$c->route('contact', $post->getContact()->jid)}">
+                <ul class="list active middle">
+                    <li>
+                        {$url = $post->getContact()->getPhoto('s')}
+                        {if="$url"}
+                            <span class="primary icon bubble" style="background-image: url('{$url}');">
+                                <i class="zmdi zmdi-loop"></i>
+                            </span>
+                        {else}
+                            <span class="primary icon bubble color {$post->getContact()->jid|stringToColor}">
+                                <i class="zmdi zmdi-loop"></i>
+                            </span>
+                        {/if}
+
+                        <span class="control icon">
+                            <i class="zmdi zmdi-chevron-right"></i>
+                        </span>
+
+                        <p>{$c->__('post.repost', $post->getContact()->getTrueName())}</p>
+                        <p>{$c->__('post.repost_profile', $post->getContact()->getTrueName())}</p>
+                    </li>
+                </ul>
+            </a>
+        {/if}
+
     {if="$public && !$post->isPublic()"}
         <ul class="list thick">
             <li>
@@ -169,7 +196,7 @@
                         <p></p>
                         <p class="normal">
                             {loop="$tags"}
-                                <a target="_blank" href="{$c->route('tag', array($value))}">#{$value}</a>
+                                <a target="_blank" href="{$c->route('tag', [$value])}">#{$value}</a>
                             {/loop}
                         </p>
                     </li>
@@ -246,33 +273,10 @@
                     </li>
                 </ul>
             {/if}
+            <!--<a class="button action color" onclick="Publish_ajaxReply('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                <i class="zmdi zmdi-share"></i>
+            </a>-->
         </footer>
-
-        {if="$recycled"}
-            <a href="{$c->route('contact', $post->getContact()->jid)}">
-                <ul class="list active middle">
-                    <li>
-                        {$url = $post->getContact()->getPhoto('s')}
-                        {if="$url"}
-                            <span class="primary icon bubble" style="background-image: url('{$url}');">
-                                <i class="zmdi zmdi-loop"></i>
-                            </span>
-                        {else}
-                            <span class="primary icon bubble color {$post->getContact()->jid|stringToColor}">
-                                <i class="zmdi zmdi-loop"></i>
-                            </span>
-                        {/if}
-
-                        <div class="control">
-                            <i class="zmdi zmdi-chevron-right"></i>
-                        </div>
-
-                        <p>{$c->__('post.repost', $post->getContact()->getTrueName())}</p>
-                        <p>{$c->__('post.repost_profile', $post->getContact()->getTrueName())}</p>
-                    </li>
-                </ul>
-            </a>
-        {/if}
 
         {if="$external"}
             {$comments = $c->getComments($post)}

@@ -90,10 +90,10 @@
             <a href="{$c->route('contact', $value->getContact()->jid)}">
                 <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
             </a>
-                {$count = $value->countComments()}
-                {if="$count > 0"}
-                    {$count} <i class="zmdi zmdi-comment-outline"></i>
-                {/if}
+            {$count = $value->countComments()}
+            {if="$count > 0"}
+                {$count} <i class="zmdi zmdi-comment-outline"></i>
+            {/if}
             <span class="info">
                 {$value->published|strtotime|prepareDate}
             </span>

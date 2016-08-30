@@ -188,18 +188,19 @@ class Post extends \Movim\Widget\Base
         $view = $this->tpl();
 
         if(isset($p)) {
-            if(isset($p->commentplace) && !$external) {
-                $this->ajaxGetComments($p->commentplace, $p->nodeid);
+            if(isset($p->commentorigin)
+            && !$external) {
+                $this->ajaxGetComments($p->commentorigin, $p->commentnodeid); // Broken in case of repost
             }
 
-            $view->assign('recycled', false);
+            $view->assign('repost', false);
             $view->assign('external', $external);
             $view->assign('public', $public);
 
-            // Is it a recycled post ?
+            // Is it a repost ?
             if($p->isRecycled()) {
                 $cd = new \Modl\ContactDAO;
-                $view->assign('recycled', $cd->get($p->origin));
+                $view->assign('repost', $cd->get($p->origin));
             }
 
             $view->assign('post', $p);
