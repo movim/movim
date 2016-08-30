@@ -35,6 +35,7 @@ class PostPublish extends Errors
     private $_node;
     private $_to = '';
     private $_atom;
+    private $_repost;
 
     public function __construct() {
         parent::__construct();
@@ -86,6 +87,13 @@ class PostPublish extends Errors
     public function setLink($link)
     {
         $this->_atom->link = $link;
+        return $this;
+    }
+
+    public function setRepost($repost)
+    {
+        $this->_atom->repost = $repost;
+        $this->_repost = true;
         return $this;
     }
 
@@ -153,7 +161,7 @@ class PostPublish extends Errors
           ->setId($this->_atom->id)
           ->request();
 
-        $this->pack(array('to' => $this->_to, 'node' => $this->_node, 'id' => $this->_atom->id));
+        $this->pack(['to' => $this->_to, 'node' => $this->_node, 'id' => $this->_atom->id, 'repost' => $this->_repost]);
         $this->deliver();
     }
 }

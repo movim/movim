@@ -11,6 +11,7 @@ class PubsubAtom {
     public $content;
     public $title;
     public $link;
+    public $repost;
     public $image;
     public $contentxhtml = false;
 
@@ -63,7 +64,13 @@ class PubsubAtom {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'replies');
             $link->setAttribute('title', 'comments');
-            $link->setAttribute('href', 'xmpp:'.$this->jid.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
+
+            if($this->repost) {
+                $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node=urn:xmpp:microblog:0:comments/'.$this->repost[2]);
+            } else {
+                $link->setAttribute('href', 'xmpp:'.$this->to.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
+            }
+
             $entry->appendChild($link);
         }
 
@@ -87,6 +94,13 @@ class PubsubAtom {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'related');
             $link->setAttribute('href', $this->link);
+            $entry->appendChild($link);
+        }
+
+        if($this->repost) {
+            $link = $dom->createElement('link');
+            $link->setAttribute('rel', 'via');
+            $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node='.$this->repost[1].';item='.$this->repost[2]);
             $entry->appendChild($link);
         }
 
@@ -150,10 +164,12 @@ class PubsubAtom {
             $entry->appendChild($dom->createElement('published', gmdate(DATE_ISO8601)));
         }
 
-        foreach($this->tags as $tag) {
-            $category = $dom->createElement('category');
-            $entry->appendChild($category);
-            $category->setAttribute('term', $tag);
+        if(is_array($this->tags)) {
+            foreach($this->tags as $tag) {
+                $category = $dom->createElement('category');
+                $entry->appendChild($category);
+                $category->setAttribute('term', $tag);
+            }
         }
 
         $entry->setAttribute('xmlns', 'http://www.w3.org/2005/Atom');
