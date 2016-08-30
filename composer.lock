@@ -723,12 +723,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "edd172b62750775c0b21692b41f168b98fc6c38f"
+                "reference": "86237084481ae3dc2078ff9dd1bc03e81e36141f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/edd172b62750775c0b21692b41f168b98fc6c38f",
-                "reference": "edd172b62750775c0b21692b41f168b98fc6c38f",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/86237084481ae3dc2078ff9dd1bc03e81e36141f",
+                "reference": "86237084481ae3dc2078ff9dd1bc03e81e36141f",
                 "shasum": ""
             },
             "require": {
@@ -766,7 +766,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2016-08-25 11:38:04"
+            "time": "2016-08-29 20:25:25"
         },
         {
             "name": "monolog/monolog",
@@ -842,12 +842,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "e42a7df6aefeec8626337de62b1893dc43bdbf28"
+                "reference": "5483c7325ffeedca617e9fe15b37b945ed319f10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/e42a7df6aefeec8626337de62b1893dc43bdbf28",
-                "reference": "e42a7df6aefeec8626337de62b1893dc43bdbf28",
+                "url": "https://api.github.com/repos/movim/modl/zipball/5483c7325ffeedca617e9fe15b37b945ed319f10",
+                "reference": "5483c7325ffeedca617e9fe15b37b945ed319f10",
                 "shasum": ""
             },
             "require": {
@@ -878,7 +878,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2016-03-07 21:07:09"
+            "time": "2016-08-28 20:23:41"
         },
         {
             "name": "movim/moxl",
@@ -886,12 +886,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "e10c6951c177410261f32dbf8dea84eae458a7b2"
+                "reference": "4e7fb4789025c01f780f3cbd2df20b603d2e2321"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/e10c6951c177410261f32dbf8dea84eae458a7b2",
-                "reference": "e10c6951c177410261f32dbf8dea84eae458a7b2",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/4e7fb4789025c01f780f3cbd2df20b603d2e2321",
+                "reference": "4e7fb4789025c01f780f3cbd2df20b603d2e2321",
                 "shasum": ""
             },
             "require": {
@@ -926,7 +926,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-07-29 21:34:20"
+            "time": "2016-08-30 21:43:10"
         },
         {
             "name": "movim/sasl2",
