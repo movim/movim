@@ -73,6 +73,7 @@
 
     <input type="hidden" name="to" value="{$to}">
     <input type="hidden" name="node" value="{$node}">
+    <input type="hidden" name="reply" value="{if="$reply"}1{else}0{/if}">
     <input type="hidden" name="id" value="{if="$item != false"}{$item->nodeid}{/if}">
 
     <div>

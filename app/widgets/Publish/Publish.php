@@ -45,10 +45,10 @@ class Publish extends \Movim\Widget\Base
     }
 
 
-    /*function ajaxReply($server, $node, $id)
+    function ajaxReply($server, $node, $id)
     {
         $this->ajaxCreate($server, $node, $id, true);
-    }*/
+    }
 
     function ajaxCreate($server, $node, $id = false, $reply = false)
     {
