@@ -142,6 +142,5 @@ class Server extends Item {
     public $server;
     public $number;
     public $name;
-    public $nodeid;
     public $published;
 }

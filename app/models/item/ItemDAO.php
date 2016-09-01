@@ -123,14 +123,14 @@ class ItemDAO extends SQL
 
     function getItems($server) {
         $this->_sql = '
-            select *, postn.nodeid, postn.published from item
+            select *, postn.published from item
             left outer join (
                 select node, count(node) as num from postn
                 where origin = :server
                 group by node) as p
             on p.node = item.node
             left outer join (
-	            select origin, node, nodeid, max(published) as published
+	            select origin, node, max(published) as published
                 from postn
 	            group by origin, node
             ) as postn on postn.origin = item.server
@@ -147,7 +147,7 @@ class ItemDAO extends SQL
             where item.server = :server
                 and item.node != \'\'
                 and item.node not like \'/%\'
-            order by postn.published desc, name, item.node
+            order by postn.published is null, postn.published desc, name, item.node
             ';
 
         $this->prepare(
