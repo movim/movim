@@ -179,7 +179,7 @@ class PostnDAO extends SQL {
 
     function get($origin, $node, $nodeid, $public = false) {
         $this->_sql = '
-            select *, postn.aid from postn
+            select postn.*, contact.*, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
             left outer join item
                 on postn.origin = item.server

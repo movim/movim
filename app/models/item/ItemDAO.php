@@ -123,36 +123,43 @@ class ItemDAO extends SQL
 
     function getItems($server) {
         $this->_sql = '
-            select * from item
+            select *, postn.nodeid, postn.published from item
             left outer join (
                 select node, count(node) as num from postn
                 where origin = :server
                 group by node) as p
             on p.node = item.node
             left outer join (
-            select node, count(node) as sub from subscription
-            where server = :server
-            group by node) as sub
-            on sub.node = item.node
+	            select origin, node, nodeid, max(published) as published
+                from postn
+	            group by origin, node
+            ) as postn on postn.origin = item.server
+              and postn.node = item.node
+            left outer join (
+                select node, count(node) as sub from subscription
+                where server = :server
+                group by node
+            ) as sub
+              on sub.node = item.node
             left outer join (select server, node, subscription from subscription where jid = :node)
                 as s on s.server = item.server
                 and s.node = item.node
             where item.server = :server
                 and item.node != \'\'
                 and item.node not like \'/%\'
-            order by name, item.node
+            order by postn.published desc, name, item.node
             ';
 
         $this->prepare(
             'Item',
-            array(
+            [
                 // Dirty hack, using node param to inject the session key
                 'node' => $this->_user,
                 'server' => $server
-            )
+            ]
         );
 
-        return $this->run('Item');
+        return $this->run('Server');
     }
 
     function getGateways($server) {

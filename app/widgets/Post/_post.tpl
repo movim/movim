@@ -108,7 +108,7 @@
                         <i class="zmdi zmdi-account"></i> {$contact->getTrueName()}
                     {if="!$public"}</a>{/if} –
                 {/if}
-                {if="$post->node != 'urn:xmpp:microblog:0'"}
+                {if="!$post->isMicroblog()"}
                     {$post->origin} /
                     {if="!$public"}
                     <a href="{$c->route('group', array($post->origin, $post->node))}">

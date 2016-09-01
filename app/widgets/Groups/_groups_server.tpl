@@ -65,19 +65,20 @@
                 </span>
             </p>
             <p>
-                {if="isset($value->sub)"}
-                    {if="$value->sub > 0"}
-                        {$c->__('groups.sub', $value->sub)}
-                    {/if}
-                    {if="$value->sub > 0 && $value->num > 0"}
-                      -
-                    {/if}
-                    {if="$value->num > 0"}
-                         {$c->__('groups.num', $value->num)}
-                    {/if}
-                {else}
-                    {$value->node}
+                {if="$value->num > 0"}
+                     {$c->__('groups.num', $value->num)}
                 {/if}
+                {if="$value->sub > 0 && $value->num > 0"}
+                  -
+                {/if}
+                {if="$value->sub > 0"}
+                    <span title="{$c->__('groups.sub', $value->sub)}">
+                        {$value->sub} <i class="zmdi zmdi-accounts"></i>
+                    </span>
+                {/if}
+                <span class="info">
+                    {$value->published|strtotime|prepareDate:true,true}
+                </span>
             </p>
         </li>
     {/loop}
