@@ -109,7 +109,7 @@ var Upload = {
 
         Upload.xhr.onreadystatechange = function() {
             if(Upload.xhr.readyState == 4
-            && Upload.xhr.status == 200) {
+            && (Upload.xhr.status == 200 || Upload.xhr.status == 201)) {
                 Dialog.clear();
                 Upload.launchAttached();
             }
