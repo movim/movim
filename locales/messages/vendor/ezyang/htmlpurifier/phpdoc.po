@@ -1,0 +1,66 @@
+#. extracted from ../vendor/ezyang/htmlpurifier/phpdoc.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
+
+#: %5BParse+Data%5Dtitle
+msgid "HTML Purifier API Documentation"
+msgstr ""
+
+#: %5BParse+Data%5Dhidden
+msgid "false"
+msgstr ""
+
+#: %5BParse+Data%5Dparseprivate
+msgid "off"
+msgstr ""
+
+#: %5BParse+Data%5Djavadocdesc
+msgctxt "[Parse Data]javadocdesc"
+msgid "on"
+msgstr ""
+
+#: %5BParse+Data%5Ddefaultcategoryname
+msgid "Documentation"
+msgstr ""
+
+#: %5BParse+Data%5Ddefaultpackagename
+msgid "HTMLPurifier"
+msgstr ""
+
+#: %5BParse+Data%5Dtarget
+msgid "docs/phpdoc"
+msgstr ""
+
+#: %5BParse+Data%5Dreadmeinstallchangelog
+msgid "README, INSTALL, NEWS, WYSIWYG, SLOW, LICENSE, CREDITS"
+msgstr ""
+
+#: %5BParse+Data%5Ddirectory
+msgid "."
+msgstr ""
+
+#: %5BParse+Data%5Dignore
+msgid ""
+"*tests*,*benchmarks*,*docs*,*test-settings.php,*configdoc*,*maintenance*,*smo"
+"ketests*,*standalone*,*.svn*,*conf*"
+msgstr ""
+
+#: %5BParse+Data%5Dsourcecode
+msgctxt "[Parse Data]sourcecode"
+msgid "on"
+msgstr ""
+
+#: %5BParse+Data%5Doutput
+msgid "HTML:frames:default"
+msgstr ""

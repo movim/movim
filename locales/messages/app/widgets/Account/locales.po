@@ -1,0 +1,64 @@
+#. extracted from ../app/widgets/Account/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
+
+#: [account]title
+msgid "Account"
+msgstr ""
+
+#: [account]password_change_title
+msgid "Change my password"
+msgstr ""
+
+#: [account]password
+msgid "Password"
+msgstr ""
+
+#: [account]password_confirmation
+msgid "Password confirmation"
+msgstr ""
+
+#: [account]password_changed
+msgid "The password has been updated"
+msgstr ""
+
+#: [account]password_not_valid
+msgid "Please provide a valid password (6 characters minimum)"
+msgstr ""
+
+#: [account]password_not_same
+msgid "The provided passwords are not the same"
+msgstr ""
+
+#: [account]delete_title
+msgid "Delete my account"
+msgstr ""
+
+#: [account]delete
+msgid "Delete your account"
+msgstr ""
+
+#: [account]delete_text
+msgid ""
+"You will delete your XMPP account and all the relative information linked to "
+"it (profile, contacts and publications)."
+msgstr ""
+
+#: [account]delete_text_confirm
+msgid "\"Are you sure that you want to delete it ?\""
+msgstr ""
+
+#: [account]gateway_title
+msgid "Gateway"
+msgstr ""

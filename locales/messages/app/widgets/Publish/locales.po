@@ -1,0 +1,112 @@
+#. extracted from ../app/widgets/Publish/locales.ini
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-24 23:28+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Translate Toolkit 1.13.0\n"
+
+#: [post]news_feed
+msgid "News Feed"
+msgstr ""
+
+#: [post]placeholder
+msgid "Discover and register to the groups you are interested in"
+msgstr ""
+
+#: [post]preview
+msgid "Preview"
+msgstr ""
+
+#: [post]help
+msgid "Help"
+msgstr ""
+
+#: [post]help_more
+msgid "More help"
+msgstr ""
+
+#: [post]help_manual
+msgid "Markdown syntax manual"
+msgstr ""
+
+#: [post]content_label
+msgid "Content"
+msgstr ""
+
+#: [post]content_text
+msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [post]link
+msgid "Link"
+msgstr ""
+
+#: [post]tags
+msgid "Tags"
+msgstr ""
+
+#: [post]published
+msgid "Post published"
+msgstr ""
+
+#: [post]deleted
+msgid "Post deleted"
+msgstr ""
+
+#: [post]gallery
+msgid "This picture will be added to your gallery"
+msgstr ""
+
+#: [publish]valid_url
+msgid "Please enter a valid url"
+msgstr ""
+
+#: [publish]no_content_preview
+msgid "No content to preview"
+msgstr ""
+
+#: [publish]no_title
+msgid "Please provide a title"
+msgstr ""
+
+#: [publish]new
+msgid "New post"
+msgstr ""
+
+#: [publish]edit
+msgid "Edit post"
+msgstr ""
+
+#: [publish]title
+msgid "Publish"
+msgstr ""
+
+#: [publish]attach
+msgid "Add a file or a picture to your post"
+msgstr ""
+
+#: [publish]no_publication
+msgid "You cannot publish a post on this Group"
+msgstr ""
+
+#: [publish]form_filled
+msgid ""
+"Some fields have been filled in. Do you still want to go back and loose "
+"their content?"
+msgstr ""
+
+#: [publish]add_text
+msgid "Click here to add some text to your publication"
+msgstr ""
+
+#: [publish]add_text_label
+msgid "Add some text"
+msgstr ""
