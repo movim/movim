@@ -32,6 +32,8 @@ class Postn extends Model {
 
     public $links;
 
+    public $reply;
+
     public $hash;
 
     private $youtube;
@@ -79,6 +81,9 @@ class Postn extends Model {
                 {"type":"date" },
             "delay" :
                 {"type":"date" },
+
+            "reply" :
+                {"type":"text" },
 
             "lat" :
                 {"type":"string", "size":32 },
@@ -272,6 +277,19 @@ class Postn extends Model {
         // We fill empty aid
         if($this->isMicroblog() && empty($this->aid)) {
             $this->__set('aid', $this->origin);
+        }
+
+        // We check if this is a reply
+        if($entry->entry->{'in-reply-to'}) {
+            $href = (string)$entry->entry->{'in-reply-to'}->attributes()->href;
+            $arr = explode(';', $href);
+            $reply = [
+                'origin' => substr($arr[0], 5, -1),
+                'node'   => substr($arr[1], 5),
+                'nodeid' => substr($arr[2], 5)
+            ];
+
+            $this->__set('reply', serialize($reply));
         }
     }
 
@@ -471,6 +489,20 @@ class Postn extends Model {
     public function isShort()
     {
         return (strlen($this->contentcleaned) < 700);
+    }
+
+    public function isReply()
+    {
+        return isset($this->reply);
+    }
+
+    public function getReply()
+    {
+        if(!$this->reply) return;
+
+        $reply = unserialize($this->reply);
+        $pd = new \Modl\PostnDAO;
+        return $pd->get($reply['origin'], $reply['node'], $reply['nodeid']);
     }
 
     public function getPublicUrl()

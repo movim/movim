@@ -69,7 +69,7 @@ ul.list.thick li .primary:not(.bubble):not(.thumb):not(.top) {
     padding: 1.75rem 0.5rem;
 }
 
-ul.list > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button),
+ul.list > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul),
 ul.list li.subheader p {
     width: 100%;
     box-sizing: border-box;
@@ -154,6 +154,13 @@ ul.list li > p:nth-last-of-type(2) + p.all {
     max-height: 100%;
 }
 
+/* In case of a card inside a li */
+ul.list li > ul.list.card {
+    padding-right: 1rem;
+    padding-left: 8rem;
+    padding-bottom: 0.5rem;
+}
+
 /* Subheader */
 
 ul.list li.subheader > p {
@@ -173,7 +180,7 @@ ul.list li > .primary.bubble {
     left: 2rem;
 }
 
-ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control) {
+ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
     padding-left: 9rem;
 }
 

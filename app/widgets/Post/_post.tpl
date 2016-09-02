@@ -130,32 +130,31 @@
 {if="!$external && !$public"}
 <article class="block">
 {/if}
-
-        {if="$repost"}
-            <a href="{$c->route('contact', $post->getContact()->jid)}">
-                <ul class="list active middle">
-                    <li>
-                        {$url = $post->getContact()->getPhoto('s')}
-                        {if="$url"}
-                            <span class="primary icon bubble" style="background-image: url('{$url}');">
-                                <i class="zmdi zmdi-loop"></i>
-                            </span>
-                        {else}
-                            <span class="primary icon bubble color {$post->getContact()->jid|stringToColor}">
-                                <i class="zmdi zmdi-loop"></i>
-                            </span>
-                        {/if}
-
-                        <span class="control icon">
-                            <i class="zmdi zmdi-chevron-right"></i>
+    {if="$repost"}
+        <a href="{$c->route('contact', $post->getContact()->jid)}">
+            <ul class="list active middle">
+                <li>
+                    {$url = $post->getContact()->getPhoto('s')}
+                    {if="$url"}
+                        <span class="primary icon bubble" style="background-image: url('{$url}');">
+                            <i class="zmdi zmdi-loop"></i>
                         </span>
+                    {else}
+                        <span class="primary icon bubble color {$post->getContact()->jid|stringToColor}">
+                            <i class="zmdi zmdi-loop"></i>
+                        </span>
+                    {/if}
 
-                        <p>{$c->__('post.repost', $post->getContact()->getTrueName())}</p>
-                        <p>{$c->__('post.repost_profile', $post->getContact()->getTrueName())}</p>
-                    </li>
-                </ul>
-            </a>
-        {/if}
+                    <span class="control icon">
+                        <i class="zmdi zmdi-chevron-right"></i>
+                    </span>
+
+                    <p>{$c->__('post.repost', $post->getContact()->getTrueName())}</p>
+                    <p>{$c->__('post.repost_profile', $post->getContact()->getTrueName())}</p>
+                </li>
+            </ul>
+        </a>
+    {/if}
 
     {if="$public && !$post->isPublic()"}
         <ul class="list thick">
@@ -188,6 +187,57 @@
             </content>
         </section>
         <footer>
+            {if="$post->isReply()"}
+                <section>
+                {if="$reply"}
+                    <a href="{$c->route('news', [$reply->origin, $reply->node, $reply->nodeid])}">
+                        <ul class="list active thick card">
+                            <li class="block">
+                                {if="$reply->picture"}
+                                    <span
+                                        class="primary icon thumb white color"
+                                        style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
+                                        <i class="zmdi zmdi-mail-reply"></i>
+                                    </span>
+                                {elseif="$reply->isMicroblog()"}
+                                    {$url = $reply->getContact()->getPhoto('l')}
+                                    {if="$url"}
+                                        <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
+                                            <i class="zmdi zmdi-mail-reply"></i>
+                                        </span>
+                                    {else}
+                                        <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
+                                            <i class="zmdi zmdi-mail-reply"></i>
+                                        </span>
+                                    {/if}
+                                {/if}
+                                <p class="line">{$reply->title}</p>
+                                <p>{$reply->contentcleaned|stripTags}</p>
+                                <p>
+                                    {if="$reply->isMicroblog()"}
+                                        <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
+                                    {else}
+                                        <i class="zmdi zmdi-pages"></i> {$reply->node}
+                                    {/if}
+                                    <span class="info">
+                                        {$reply->published|strtotime|prepareDate:true,true}
+                                    </span>
+                                </p>
+                            </li>
+                        </ul>
+                    </a>
+                {else}
+                    <ul class="list thick card">
+                        <li class="block">
+                            <span class="primary icon gray">
+                                <i class="zmdi zmdi-info-outline"></i>
+                            </span>
+                            <p class="line normal">{$c->__('post.original_deleted')}</p>
+                        </li>
+                    </ul>
+                {/if}
+                </section>
+            {/if}
             {$tags = $post->getTags()}
             {if="isset($tags)"}
                 <ul class="list thick">
@@ -273,9 +323,11 @@
                     </li>
                 </ul>
             {/if}
-            <!--<a class="button action color" onclick="Publish_ajaxReply('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+            {if="!$post->isReply()"}
+            <a class="button action color" onclick="Publish_ajaxReply('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
                 <i class="zmdi zmdi-share"></i>
-            </a>-->
+            </a>
+            {/if}
         </footer>
 
         {if="$external"}

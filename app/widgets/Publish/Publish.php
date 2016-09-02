@@ -61,16 +61,23 @@ class Publish extends \Movim\Widget\Base
         if($id) {
             $pd = new \modl\PostnDAO();
             $p = $pd->get($server, $node, $id);
-            if($p->isEditable() || $reply) {
+
+            if($p->isEditable() && !$reply) {
                 $post = $p;
+            }
+
+            if($p->isReply()) {
+                $reply = $p->getReply();
+            } elseif($reply) {
+                $reply = $p;
             }
         }
 
         if($reply) {
             $view->assign('to', $this->user->getLogin());
             $view->assign('node', 'urn:xmpp:microblog:0');
-            $view->assign('item', false);
-            $view->assign('reply', $post);
+            $view->assign('item', $post);
+            $view->assign('reply', $reply);
         } else {
             $view->assign('to', $server);
             $view->assign('node', $node);
@@ -279,6 +286,12 @@ class Publish extends \Movim\Widget\Base
 
             if($content_xhtml != '') {
                 $p->setContentXhtml($content_xhtml);
+            }
+
+            if($form->reply->value) {
+                $pd = new \modl\PostnDAO();
+                $post = $pd->get($form->replyorigin->value, $form->replynode->value, $form->replynodeid->value);
+                $p->setReply($post->getRef());
             }
 
             $p->request();

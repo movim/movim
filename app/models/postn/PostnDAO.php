@@ -24,6 +24,8 @@ class PostnDAO extends SQL {
                     updated         = :updated,
                     delay           = :delay,
 
+                    reply           = :reply,
+
                     lat             = :lat,
                     lon             = :lon,
 
@@ -56,6 +58,8 @@ class PostnDAO extends SQL {
                 'published'         => $post->published,
                 'updated'           => $post->updated,
                 'delay'             => $post->delay,
+
+                'reply'             => $post->reply,
 
                 'lat'               => $post->lat,
                 'lon'               => $post->lon,
@@ -99,6 +103,8 @@ class PostnDAO extends SQL {
                 updated,
                 delay,
 
+                reply,
+
                 lat,
                 lon,
 
@@ -129,6 +135,8 @@ class PostnDAO extends SQL {
                     :updated,
                     :delay,
 
+                    :reply,
+
                     :lat,
                     :lon,
 
@@ -158,6 +166,8 @@ class PostnDAO extends SQL {
                     'published'         => $post->published,
                     'updated'           => $post->updated,
                     'delay'             => $post->delay,
+
+                    'reply'             => $post->reply,
 
                     'lat'               => $post->lat,
                     'lon'               => $post->lon,

@@ -10,8 +10,18 @@ class Menu extends \Movim\Widget\Base
     {
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract');
+        $this->registerEvent('pubsub_postdelete', 'onRetract');
+        $this->registerEvent('pubsub_getitem_handle', 'onHandle');
+
         $this->addjs('menu.js');
         $this->addcss('menu.css');
+    }
+
+    function onHandle($packet)
+    {
+        if($packet->content['nodeid']) {
+            $this->onRetract($packet);
+        }
     }
 
     function onRetract($packet)

@@ -87,6 +87,34 @@
                 <p class="line">{$c->__('menu.contact_post')}</p>
             {/if}
             <p>{$value->contentcleaned|stripTags}</p>
+            {if="$value->isReply()"}
+                {$reply = $value->getReply()}
+                    <ul class="list card">
+                        <li class="block">
+                            {if="$reply"}
+                                <p class="line">{$reply->title}</p>
+                                <p>{$reply->contentcleaned|stripTags}</p>
+                                <p>
+                                {if="$reply->isMicroblog()"}
+                                    <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
+                                {else}
+                                    <i class="zmdi zmdi-pages"></i> {$reply->node}
+                                {/if}
+
+                                <span class="info">
+                                    {$reply->published|strtotime|prepareDate:true,true}
+                                </span>
+                                </p>
+                            {else}
+                                <span class="primary icon gray">
+                                    <i class="zmdi zmdi-info-outline"></i>
+                                </span>
+                                <p class="line normal">{$c->__('post.original_deleted')}</p>
+                            {/if}
+                        </li>
+                    </ul>
+
+            {/if}
             <p>
                 {if="$value->isMicroblog()"}
                     <a href="{$c->route('contact', $value->getContact()->jid)}">
