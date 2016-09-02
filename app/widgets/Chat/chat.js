@@ -85,7 +85,6 @@ var Chat = {
         for(var i = 0, len = messages.length; i < len; ++i){
             bubble = Chat.room.cloneNode(true);
 
-
             if(messages[i].body.match(/^\/me/)) {
                 bubble.querySelector('.message').className = 'message quote';
                 messages[i].body = messages[i].body.substr(4);
@@ -104,6 +103,11 @@ var Chat = {
             bubble.querySelector('p.user').innerHTML = messages[i].resource;
             if(conversation) {
                 conversation.appendChild(bubble);
+                if (messages[i].sticker != null) {
+                    MovimUtils.addClass(bubble.querySelector('p.message'), 'sticker');
+                    bubble.querySelector('p.message').innerHTML = "";
+                    conversation.appendChild(Chat.getStickerHtml(messages[i].sticker));
+                }
             }
         }
     },
