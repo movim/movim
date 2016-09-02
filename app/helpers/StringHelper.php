@@ -277,7 +277,7 @@ function firstLetterCapitalize($string) {
  * @return string
  */
 function cleanupId($string) {
-    return preg_replace('/([^a-z0-9]+)/i', '-', $string);
+    return "id-" . preg_replace('/([^a-z0-9]+)/i', '-', $string);
 }
 
 /**
