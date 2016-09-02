@@ -73,7 +73,7 @@ var Chat = {
         };
     },
     appendMucMessages : function(date, messages) {
-        id = "chat-" + MovimUtils.cleanupId(messages[0].jidfrom + '_conversation');
+        id = MovimUtils.cleanupId(messages[0].jidfrom + '_conversation');
         var conversation = document.getElementById(id);
         datebox = Chat.room.cloneNode(true);
         datebox.innerHTML = date;
@@ -230,7 +230,7 @@ var Chat = {
             var discussion = document.querySelector('#chat_widget div.contained');
             // We prepend
             if (!mergeMsg)
-                MovimTpl.prepend("#chat-" + id, bubble.outerHTML);
+                MovimTpl.prepend("#" + id, bubble.outerHTML);
 
             // And we scroll where we were
             var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
@@ -238,7 +238,7 @@ var Chat = {
             Chat.lastScroll = discussion.scrollHeight;
         } else {
             if (!mergeMsg) {
-                MovimTpl.append("#chat-" + id, bubble.outerHTML);
+                MovimTpl.append("#" + id, bubble.outerHTML);
             }
         }
     },
