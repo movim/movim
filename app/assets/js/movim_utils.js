@@ -42,7 +42,7 @@ var MovimUtils = {
         return r;
     },
     cleanupId: function(string) {
-        return "chat-" + string.replace(/([^a-z0-9]+)/gi, '-');
+        return "id-" + string.replace(/([^a-z0-9]+)/gi, '-');
     },
     base64Decode: function(data) {
         //  discuss at: http://phpjs.org/functions/base64_decode/
