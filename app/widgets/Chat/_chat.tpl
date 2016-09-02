@@ -73,9 +73,9 @@
     {/if}
 </header>
 
-<div id="{$jid|cleanupId}-discussion" class="contained" data-muc="{$muc}">
+<div id="chat-{$jid|cleanupId}-discussion" class="contained" data-muc="{$muc}">
     <section id="{$jid|cleanupId}-messages">
-        <ul class="list {if="$muc"}thin simple{else}middle{/if}" id="{$jid|cleanupId}-conversation"></ul>
+        <ul class="list {if="$muc"}thin simple{else}middle{/if}" id="chat-{$jid|cleanupId}-conversation"></ul>
     </section>
 </div>
 <div class="chat_box">
