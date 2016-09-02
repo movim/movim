@@ -73,7 +73,7 @@ var Chat = {
         };
     },
     appendMucMessages : function(date, messages) {
-        id = MovimUtils.cleanupId(messages[0].jidfrom + '_conversation');
+        id = "chat-" + MovimUtils.cleanupId(messages[0].jidfrom + '_conversation');
         var conversation = document.getElementById(id);
         datebox = Chat.room.cloneNode(true);
         datebox.innerHTML = date;
