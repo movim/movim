@@ -97,6 +97,12 @@ class PostPublish extends Errors
         return $this;
     }
 
+    public function setReply($ref)
+    {
+        $this->_atom->reply = $ref;
+        return $this;
+    }
+
     public function setPublished($published)
     {
         $this->_atom->published = $published;

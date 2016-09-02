@@ -11,9 +11,12 @@ class PubsubAtom {
     public $content;
     public $title;
     public $link;
-    public $repost;
+
     public $image;
     public $contentxhtml = false;
+
+    public $repost;
+    public $reply;
 
     public $to;
     public $node;
@@ -40,7 +43,6 @@ class PubsubAtom {
 
     public function getDom() {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        //$entry = $dom->createElementNS('http://www.w3.org/2005/Atom', 'entry');
         $entry = $dom->createElement('entry');
         $dom->appendChild($entry);
         $entry->appendChild($dom->createElement('id', $this->id));
@@ -82,9 +84,9 @@ class PubsubAtom {
 
             // Not very elegant
             if($this->node == 'urn:xmpp:microblog:0') {
-                $link->setAttribute('href', \Route::urlize('blog', array($this->to, $this->id)));
+                $link->setAttribute('href', \Route::urlize('blog', [$this->to, $this->id]));
             } else {
-                $link->setAttribute('href', \Route::urlize('node', array($this->to, $this->node, $this->id)));
+                $link->setAttribute('href', \Route::urlize('node', [$this->to, $this->node, $this->id]));
             }
 
             $entry->appendChild($link);
@@ -102,6 +104,12 @@ class PubsubAtom {
             $link->setAttribute('rel', 'via');
             $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node='.$this->repost[1].';item='.$this->repost[2]);
             $entry->appendChild($link);
+        }
+
+        if($this->reply) {
+            $thr = $dom->createElement('thr:in-reply-to');
+            $thr->setAttribute('href', $this->reply);
+            $entry->appendChild($thr);
         }
 
         if($this->image && is_array($this->image)) {
@@ -173,6 +181,9 @@ class PubsubAtom {
         }
 
         $entry->setAttribute('xmlns', 'http://www.w3.org/2005/Atom');
+        if($this->reply) {
+            $entry->setAttribute('xmlns:thr', 'http://purl.org/syndication/thread/1.0');
+        }
         $entry->appendChild($dom->createElement('updated', gmdate(DATE_ISO8601)));
 
         return $dom->documentElement;

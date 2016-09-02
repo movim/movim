@@ -33,6 +33,7 @@ class GetItem extends Errors
     private $_to;
     private $_node;
     private $_id;
+    private $_askreply;
 
     public function request()
     {
@@ -58,7 +59,14 @@ class GetItem extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function setAskReply($reply)
+    {
+        $this->_askreply = $reply;
+        return $this;
+    }
+
+    public function handle($stanza, $parent = false)
+    {
         $evt = new \Event();
 
         $to = current(explode('/',(string)$stanza->attributes()->to));
@@ -79,32 +87,27 @@ class GetItem extends Errors
 
                     $post = true;
 
-                    $this->pack($p);
-                    $evt->runEvent('post', $this->packet);
-                } elseif(isset($item->realtime)) {
-                    $this->method('ticker');
-
-                    $this->pack(array(
-                            'server' => $from,
-                            'node'   => $node,
-                            'ticker' => $item->realtime
-                        ));
-                    $this->deliver();
+                    if(is_array($this->_askreply)) {
+                        $this->pack([
+                            'origin' => $this->_askreply['origin'],
+                            'node'   => $this->_askreply['node'],
+                            'nodeid' => $this->_askreply['nodeid']]);
+                        $this->deliver();
+                    }
                 }
             }
 
             //if($post) {
-                $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+                $this->pack(['server' => $this->_to, 'node' => $this->_node]);
                 $this->deliver();
             //}
         } else {
-            $evt->runEvent('nostream', array('from' => $from, 'node' => $node));
+            $pd = new PostDelete;
+            $pd->setTo($this->_to)
+               ->setNode($this->_node)
+               ->setId($this->_id);
+
+            $pd->handle($stanza);
         }
     }
-
-    public function error($error) {
-        $evt = new \Event();
-        $evt->runEvent('nostream', array('from' => $this->_to, 'node' => $this->_node));
-    }
-
 }

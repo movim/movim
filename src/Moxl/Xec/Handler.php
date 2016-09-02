@@ -99,7 +99,7 @@ class Handler {
                 if($error->text)
                     $message = (string)$error->text;
 
-                Utils::log('Handler : '.$id.' - '.$errorid);
+                Utils::log('Handler : '.get_class($action).' '.$id.' - '.$errorid);
 
                 /* If the action has defined a special handler
                  * for this error
