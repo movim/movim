@@ -3,6 +3,11 @@ Movim Changelog
 
 v0.11 (trunk)
 ---------------------------
+ * CSS fixes
+ * Refactoring of the groups page UI and UX
+ * Add (small) picture embeding in chats
+ * Various speed optimisation
+ * Add reply feature of existing posts
 
 v0.10
 ---------------------------
