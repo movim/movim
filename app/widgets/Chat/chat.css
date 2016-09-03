@@ -110,6 +110,11 @@
     padding-left: 1rem;
 }
 
+#chat_widget li.room > p.message.sticker {
+    display: block;
+    padding: 0.5rem 0;
+}
+
 #chat_widget li.room p.user:hover {
     cursor: pointer;
 }

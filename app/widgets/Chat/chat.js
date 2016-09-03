@@ -85,13 +85,18 @@ var Chat = {
         for(var i = 0, len = messages.length; i < len; ++i){
             bubble = Chat.room.cloneNode(true);
 
-
             if(messages[i].body.match(/^\/me/)) {
                 bubble.querySelector('.message').className = 'message quote';
                 messages[i].body = messages[i].body.substr(4);
             }
 
-            bubble.querySelector('p.message').innerHTML = messages[i].body.replace(/\r\n?|\n/g, '<br />');
+            if (messages[i].sticker != null) {
+                MovimUtils.addClass(bubble.querySelector('p.message'), 'sticker');
+                bubble.querySelector('p.message').appendChild(Chat.getStickerHtml(messages[i].sticker));
+            } else {
+                bubble.querySelector('p.message').innerHTML = messages[i].body.replace(/\r\n?|\n/g, '<br />');
+            }
+
             bubble.querySelector('span.info').innerHTML = messages[i].publishedPrepared;
             bubble.querySelector('p.user').className = 'user ' + messages[i].color;
 
