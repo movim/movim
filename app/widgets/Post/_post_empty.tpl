@@ -60,16 +60,15 @@
         data-id="{$value->nodeid}"
         data-server="{$value->origin}"
         data-node="{$value->node}">
-        {$picture = $value->getPicture()}
-        {if="$picture != null"}
-            <span class="icon top" style="background-image: url({$picture});"></span>
+        {if="$value->picture != null"}
+            <span class="icon top" style="background-image: url({$value->picture});"></span>
         {else}
             <span class="icon top color dark">
                 <i class="zmdi zmdi-edit"></i>
             </span>
         {/if}
 
-        {$url = $value->getContact()->getPhoto('l')}
+        {$url = $value->getContact()->getPhoto('m')}
         {if="$url"}
             <span class="primary icon bubble" style="background-image: url({$url});">
             </span>
@@ -133,19 +132,13 @@
 <ul class="list flex card shadow active">
 {loop="$posts"}
     {if="!filter_var($value->origin, FILTER_VALIDATE_EMAIL)"}
-        {$attachments = $value->getAttachments()}
         <li
             class="block condensed"
             data-id="{$value->nodeid}"
             data-server="{$value->origin}"
             data-node="{$value->node}">
-            {$picture = $value->getPicture()}
-            {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                <span class="icon top color red tiny">
-                    +18
-                </span>
-            {elseif="$picture != null"}
-                <span class="icon top" style="background-image: url({$picture});"></span>
+            {if="$value->picture != null"}
+                <span class="icon top" style="background-image: url({$value->picture});"></span>
             {else}
                 <span class="icon top color dark">
                     {$value->node|firstLetterCapitalize}
@@ -170,13 +163,11 @@
             {/if}
             </p>
             <p>
-                {if="current(explode('.', $value->origin)) != 'nsfw'"}
-                    {$value->contentcleaned|strip_tags}
-                {/if}
+                {$value->contentcleaned|strip_tags}
             </p>
             <p>
                 {$value->origin} /
-                <a href="{$c->route('group', array($value->origin, $value->node))}">
+                <a href="{$c->route('group', [$value->origin, $value->node])}">
                     <i class="zmdi zmdi-pages"></i> {$value->node}
                 </a>
                 <span class="info">

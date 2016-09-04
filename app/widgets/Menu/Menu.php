@@ -142,7 +142,6 @@ class Menu extends \Movim\Widget\Base
         $view = $this->tpl();
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(Cache::c('since'));
-
         // getting newer, not older
         if($page == 0 || $page == ""){
             $count = 0;
