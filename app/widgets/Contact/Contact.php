@@ -39,15 +39,15 @@ class Contact extends \Movim\Widget\Base
 
         $html = $this->prepareContact($jid, $page);
 
-        $r = new GetItems;
-        $r->setTo($jid)
-          ->setNode('urn:xmpp:microblog:0')
-          ->request();
-
         RPC::call('MovimUtils.pushState', $this->route('contact', $jid));
 
         RPC::call('MovimTpl.fill', '#contact_widget', $html);
         RPC::call('MovimTpl.showPanel');
+
+        $r = new GetItems;
+        $r->setTo($jid)
+          ->setNode('urn:xmpp:microblog:0')
+          ->request();
     }
 
     function ajaxGetDrawer($jid)
