@@ -610,7 +610,7 @@ function isSmallPicture($url, $size = false)
 
             return ($typearr[0] == 'image'
                 && $length <= $size
-                && $length >= 2000);
+                && $length >= 10000);
         }
 
         return false;
