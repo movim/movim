@@ -35,15 +35,17 @@ class User {
     /**
      * @brief Reload the user configuration
      */
-    function reload()
+    function reload($language = false)
     {
         $session = \Sessionx::start();
         if($session->config) {
-            $this->config = $session->config;
-            $lang = $this->getConfig('language');
-            if(isset($lang)) {
-                $l = Movim\i18n\Locale::start();
-                $l->load($lang);
+            if($language) {
+                $this->config = $session->config;
+                $lang = $this->getConfig('language');
+                if(isset($lang)) {
+                    $l = Movim\i18n\Locale::start();
+                    $l->load($lang);
+                }
             }
 
             $cd = new modl\CapsDAO;
@@ -95,7 +97,7 @@ class User {
 
         file_put_contents($this->userdir.'config.dump', serialize($config));
 
-        $this->reload();
+        $this->reload(true);
     }
 
     function getConfig($key = false)
