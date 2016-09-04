@@ -1,3 +1,1 @@
-<div id="post_widget" class="spin">
-    {$c->prepareEmpty()}
-</div>
+<div id="post_widget" class="spin"></div>

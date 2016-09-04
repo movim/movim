@@ -1,4 +1,5 @@
 MovimWebsocket.attach(function() {
+    Post_ajaxClear();
     var parts = MovimUtils.urlParts();
     if(parts.params.length) {
         document.querySelector('#post_widget').innerHTML = '';
