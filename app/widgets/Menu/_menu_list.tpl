@@ -30,7 +30,6 @@
     {/if}
 
     {loop="$items"}
-        {$attachments = $value->getAttachments()}
         <li
             tabindex="{$page*$paging+$key+1}"
             class="block large"
@@ -43,19 +42,18 @@
                 title="{$c->__('menu.contact_post')}"
             {/if}
         >
-            {$picture = $value->getPicture()}
-            {if="current(explode('.', $value->origin)) == 'nsfw'"}
+            {if="$value->isNSFW()"}
                 <span class="primary icon thumb color red tiny">
                     +18
                 </span>
-            {elseif="$picture != null"}
-                <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$picture});">
+            {elseif="$value->picture != null"}
+                <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$value->picture});">
                     {if="$value->isPublic()"}
                         <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                     {/if}
                 </span>
             {elseif="$value->isMicroblog()"}
-                {$url = $value->getContact()->getPhoto('l')}
+                {$url = $value->getContact()->getPhoto('m')}
                 {if="$url"}
                     <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
                         {if="$value->isPublic()"}

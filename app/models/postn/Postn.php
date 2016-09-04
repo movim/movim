@@ -491,6 +491,11 @@ class Postn extends Model {
         return (strlen($this->contentcleaned) < 700);
     }
 
+    public function isNSFW()
+    {
+        return (current(explode('.', $this->origin)) == 'nsfw');
+    }
+
     public function isReply()
     {
         return isset($this->reply);
