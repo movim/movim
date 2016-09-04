@@ -1,20 +1,39 @@
 {if="!$c->supported('anonymous') && $c->getView() != 'room'"}
-    <ul class="list divided spaced active">
+    <ul class="list divided spaced {if="!$edit"}active{/if}">
         <li class="subheader">
+            <span class="control icon active gray" onclick="Rooms_ajaxDisplay({if="$edit"}false{else}true{/if});">
+                {if="$edit"}
+                    <i class="zmdi zmdi-check"></i>
+                {else}
+                    <i class="zmdi zmdi-settings"></i>
+                {/if}
+            </span>
             <p>
                 <span class="info">{$conferences|count}</span>
                 {$c->__('chatrooms.title')}
             </p>
         </li>
         {loop="$conferences"}
-            <li data-jid="{$value->conference}"
+            <li {if="!$edit"} data-jid="{$value->conference}" {/if}
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
                 class="room {if="$value->connected"}online{/if}">
                 <span data-key="chat|{$value->conference}" class="counter"></span>
                 {if="$value->connected"}
-                    <span class="primary icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts"></i></span>
+                    <span class="primary icon small bubble color {$value->name|stringToColor}">
+                        <i class="zmdi zmdi-accounts"></i>
+                    </span>
                 {else}
-                    <span class="primary disabled icon small bubble color {$value->name|stringToColor}"><i class="zmdi zmdi-accounts-outline"></i></span>
+                    <span class="primary disabled icon small bubble color {$value->name|stringToColor}">
+                        <i class="zmdi zmdi-accounts-outline"></i>
+                    </span>
+                {/if}
+                {if="$edit"}
+                    <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
+                        <i class="zmdi zmdi-delete"></i>
+                    </span>
+                    <span class="control icon active gray" onclick="Rooms_ajaxEdit('{$value->conference}');">
+                        <i class="zmdi zmdi-edit"></i>
+                    </span>
                 {/if}
                 <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
             </li>

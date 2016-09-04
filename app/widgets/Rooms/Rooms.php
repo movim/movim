@@ -63,18 +63,18 @@ class Rooms extends \Movim\Widget\Base
         Notification::append(null, $this->__('chatrooms.disconnected'));
     }
 
-    private function refreshRooms()
+    private function refreshRooms($edit = false)
     {
-        RPC::call('MovimTpl.fill', '#rooms_widget', $this->prepareRooms());
+        RPC::call('MovimTpl.fill', '#rooms_widget', $this->prepareRooms($edit));
         RPC::call('Rooms.refresh');
     }
 
     /**
      * @brief Get the Rooms
      */
-    public function ajaxDisplay()
+    public function ajaxDisplay($edit = false)
     {
-        $this->refreshRooms();
+        $this->refreshRooms($edit);
     }
 
     /**
@@ -285,7 +285,7 @@ class Rooms extends \Movim\Widget\Base
         }
     }
 
-    function prepareRooms()
+    function prepareRooms($edit = false)
     {
         $view = $this->tpl();
         $cod = new \modl\ConferenceDAO();
@@ -306,6 +306,7 @@ class Rooms extends \Movim\Widget\Base
             $connected = array_merge($connected, $list);
         }
 
+        $view->assign('edit', $edit);
         $view->assign('conferences', $connected);
         $view->assign('room', $this->get('r'));
 

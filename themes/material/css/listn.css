@@ -163,6 +163,10 @@ ul.list li > ul.list.card {
 
 /* Subheader */
 
+ul.list li.subheader {
+    overflow: hidden;
+}
+
 ul.list li.subheader > p {
     font-size: 1.75rem;
     line-height: 5rem;
