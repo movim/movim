@@ -1,1 +1,1 @@
-<div id="drawer" class="drawer empty scroll"></div>
+<div id="drawer" class="drawer empty"></div>

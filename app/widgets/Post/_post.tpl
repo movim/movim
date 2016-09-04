@@ -10,7 +10,7 @@
                 background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$post->picture}');">
     {/if}
 {else}
-<header>
+<header class="relative">
 {/if}
     {if="!$external && !$public"}
         <ul class="list middle">
@@ -124,6 +124,12 @@
 
         </li>
     </ul>
+    {/if}
+
+    {if="!$post->isReply() && !$public"}
+        <a class="button action color" onclick="Publish_ajaxReply('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+            <i class="zmdi zmdi-share"></i>
+        </a>
     {/if}
 </header>
 
@@ -322,11 +328,6 @@
                         </p>
                     </li>
                 </ul>
-            {/if}
-            {if="!$post->isReply()"}
-            <a class="button action color" onclick="Publish_ajaxReply('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
-                <i class="zmdi zmdi-share"></i>
-            </a>
             {/if}
         </footer>
 

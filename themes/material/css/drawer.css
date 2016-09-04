@@ -6,7 +6,7 @@
     bottom: 0;
     left: 0;
     width: 100%;
-    height: 85%;
+    height: calc(100% - 7rem);
     box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
     transition: transform .3s cubic-bezier(.4,0,.2,1) .2s;
 }
@@ -32,7 +32,7 @@
     transform: translateY(100%);
 }
 
-.drawer > form.padded {
+.drawer form.padded {
     padding: 2rem;
 }
 

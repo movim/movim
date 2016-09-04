@@ -92,7 +92,7 @@ class Publish extends \Movim\Widget\Base
         }
 
         if($reply) {
-            Drawer::fill($view->draw('_publish_create', true));
+            Drawer::fill('<section>'.$view->draw('_publish_create', true).'</section>');
         } else {
             RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
         }

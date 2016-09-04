@@ -187,11 +187,6 @@ class Group extends \Movim\Widget\Base
 
         $html = $this->prepareGroup($server, $node);
 
-        $view = $this->tpl();
-        $view->assign('server', $server);
-        $view->assign('node', $node);
-        $html .= $view->draw('_group_publish', true);
-
         $slugify = new Slugify();
 
         RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), $html);

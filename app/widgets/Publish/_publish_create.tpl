@@ -152,9 +152,6 @@
     <div>
         <ul class="list middle">
             <li>
-                <span class="primary icon gray">
-                    <i class="zmdi zmdi-portable-wifi"></i>
-                </span>
                 <span class="control">
                     <div class="action">
                         <div class="checkbox">

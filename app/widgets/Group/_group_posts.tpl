@@ -1,5 +1,5 @@
 {if="$page == 0"}
-    <header>
+    <header class="relative">
         <ul class="list middle">
             <li>
                 <span id="back" class="primary icon active" onclick="MovimTpl.hidePanel(); Group_ajaxClear();">
