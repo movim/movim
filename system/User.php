@@ -110,6 +110,8 @@ class User {
 
     function getDumpedConfig($key = false)
     {
+        if(!file_exists($this->userdir.'config.dump')) return [];
+
         $config = unserialize(file_get_contents($this->userdir.'config.dump'));
 
         if($key == false)

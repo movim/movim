@@ -19,7 +19,7 @@ class Menu extends \Movim\Widget\Base
 
     function onHandle($packet)
     {
-        if($packet->content['nodeid']) {
+        if(isset($packet->content['nodeid'])) {
             $this->onRetract($packet);
         }
     }

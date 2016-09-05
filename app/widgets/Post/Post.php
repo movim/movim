@@ -5,8 +5,8 @@ use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Pubsub\Delete;
 use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Microblog\CommentsGet;
-use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Microblog\CommentPublish;
+
 use \Michelf\Markdown;
 use Respect\Validation\Validator;
 
@@ -35,7 +35,7 @@ class Post extends \Movim\Widget\Base
     {
         $content = $packet->content;
 
-        if($content['nodeid']) {
+        if(isset($content['nodeid'])) {
             $pd = new \Modl\PostnDAO;
             $p  = $pd->get($content['origin'], $content['node'], $content['nodeid']);
 
