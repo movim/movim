@@ -178,8 +178,16 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer_name', false);
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer', false);
 
+                // See http://php.net/manual/en/function.stream-socket-enable-crypto.php#119122
+                $crypto_method = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+
+                if (defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')) {
+                    $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
+                    $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT;
+                }
+
                 set_error_handler('handleSSLErrors');
-                $out = stream_socket_enable_crypto($conn->stream, 1, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+                $out = stream_socket_enable_crypto($conn->stream, 1, $crypto_method);
                 restore_error_handler();
                 if($out !== true) {
                     $loop->stop();
@@ -227,12 +235,12 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
 
             \Moxl\API::clear();
 
-            $loop->tick();
-
             gc_collect_cycles();
             //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." end data : ".\sizeToCleanSize(memory_get_usage())."\n");
             //memprof_dump_callgrind(fopen("/tmp/callgrind.out", "w"));
         }
+
+        $loop->tick();
     });
 
     $conn->on('error', function($msg) use ($conn, $loop) {
