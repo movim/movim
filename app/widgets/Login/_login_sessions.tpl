@@ -14,7 +14,7 @@
                     <i class="zmdi zmdi-account"></i>
                 </span>
             {/if}
-            <span class="control icon gray">
+            <span class="control icon gray active">
                 <i class="zmdi zmdi-close"></i>
             </span>
             <p class="line">{$value->getTrueName()}</p>
