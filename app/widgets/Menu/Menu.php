@@ -21,6 +21,8 @@ class Menu extends \Movim\Widget\Base
     {
         if(isset($packet->content['nodeid'])) {
             $this->onRetract($packet);
+        } else {
+            $this->onPost($packet);
         }
     }
 
