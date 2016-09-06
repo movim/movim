@@ -32,6 +32,7 @@ class Pubsub {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
+
         $create = $dom->createElement('create');
         $create->setAttribute('node', $node);
         $pubsub->appendChild($create);
@@ -69,16 +70,15 @@ class Pubsub {
         $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
+
     static function configurePersistentStorage($to, $node, $access_model = 'whitelist')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
-        $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
-        $create = $dom->createElement('create');
-        $create->setAttribute('node', $node);
-        $pubsub->appendChild($create);
+        $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub#owner');
 
         $configure = $dom->createElement('configure');
+        $configure->setAttribute('node', $node);
         $pubsub->appendChild($configure);
 
         $x = $dom->createElement('x');
@@ -108,6 +108,57 @@ class Pubsub {
         $x->appendChild($field);
 
         $value = $dom->createElement('value', $access_model);
+        $field->appendChild($value);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
+        \Moxl\API::request($xml);
+    }
+
+    static function createCommentNode($to, $node)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElement('pubsub');
+        $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
+
+        $create = $dom->createElement('create');
+        $create->setAttribute('node', 'urn:xmpp:microblog:0:comments/'.$node);
+        $pubsub->appendChild($create);
+
+        $configure = $dom->createElement('configure');
+        $pubsub->appendChild($configure);
+
+        $x = $dom->createElement('x');
+        $x->setAttribute('xmlns', 'jabber:x:data');
+        $x->setAttribute('type', 'submit');
+        $configure->appendChild($x);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'FORM_TYPE');
+        $field->setAttribute('type', 'hidden');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'http://jabber.org/protocol/pubsub#node_config');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#persist_items');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'true');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#access_model');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'open');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#publish_model');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'open');
         $field->appendChild($value);
 
         $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
