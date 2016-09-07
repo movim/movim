@@ -42,11 +42,11 @@ var ChatOTR = {
         ChatOTR.buddy.on('status', function (state) {
             switch (state) {
                 case OTR.CONST.STATUS_AKE_SUCCESS:
-                    movim_add_class(document.querySelector('#chat_header'), 'encrypted');
+                    MovimUtils.addClass(document.querySelector('#chat_header'), 'encrypted');
                     ChatOTR.status = 2;
                     break
                 case OTR.CONST.STATUS_END_OTR:
-                    movim_remove_class(document.querySelector('#chat_header'), 'encrypted');
+                    MovimUtils.removeClass(document.querySelector('#chat_header'), 'encrypted');
                     ChatOTR.status = 0;
                     break
                 }

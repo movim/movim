@@ -17,14 +17,14 @@ header.fixed {
     top: 0;
 }
 
+header.relative {
+    position: relative;
+}
+
 @media screen and (min-width: 1024px) {
     main > section > div:first-child:nth-last-child(2) ~ div > header.fixed  {
         width: inherit;
     }
-}
-
-header.fixed:not(:empty) + * {
-    margin-top: 7rem;
 }
 
 header ul:first-child > li:first-child {

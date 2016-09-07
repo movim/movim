@@ -33,7 +33,7 @@ class Bootstrap
             $this->startingSession();
             $this->loadLanguage();
         } else {
-            throw new Exception('Error loading Modl');
+            throw new \Exception('Error loading Modl');
         }
     }
 
@@ -44,7 +44,7 @@ class Bootstrap
             DOCUMENT_ROOT.'/log/php.log',
             DOCUMENT_ROOT.'/cache/test.tmp',
         );
-        $errors = array();
+        $errors = [];
 
         if(!is_writable(DOCUMENT_ROOT))
             $errors[] = 'We\'re unable to write to folder '.DOCUMENT_ROOT.': check rights';
@@ -88,6 +88,7 @@ class Bootstrap
         define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
         define('APP_SECURED',   $this->isServerSecured());
+        define('SMALL_PICTURE_LIMIT', 320000);
 
         if(isset($_SERVER['HTTP_HOST'])) {
             define('BASE_HOST',     $_SERVER['HTTP_HOST']);
@@ -287,7 +288,7 @@ class Bootstrap
         if(file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
             require DOCUMENT_ROOT.'/config/db.inc.php';
         } else {
-            throw new Exception('Cannot find config/db.inc.php file');
+            throw new \Exception('Cannot find config/db.inc.php file');
         }
 
         $db->setConnectionArray($conf);
@@ -310,9 +311,9 @@ class Bootstrap
     {
         // Return a list of interesting widgets to load (to save memory)
         return["Account","AccountNext","Ack","AdHoc","Avatar","Bookmark","Chat",
-        "Chats","Config","Contact","Dialog","Group","Groups","Header","Init",
-        "Login","LoginAnonymous","Menu","Notifs","Post","Presence","Publish",
-        "Rooms","Roster","Stickers","Upload","Vcard4"];
+        "Chats","Config","Contact","Dialog","Drawer","Group","Groups","Header",
+        "Init","Login","LoginAnonymous","Menu","Notifs","Post","Presence",
+        "Publish","Rooms","Roster","Stickers","Upload","Vcard4"];
     }
 
     /**

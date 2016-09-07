@@ -17,7 +17,7 @@ use Cocur\Slugify\Slugify;
 
 class Group extends \Movim\Widget\Base
 {
-    private $_paging = 10;
+    private $_paging = 8;
     private $_role = null;
 
     function load()
@@ -34,10 +34,8 @@ class Group extends \Movim\Widget\Base
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
         $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
 
-        $this->registerEvent('pubsub_delete_handle', 'onDelete');
-
-        $this->registerEvent('post_ticker', 'onTicker');
-        $this->registerEvent('pubsub_getitem_ticker', 'onTicker');
+        $this->registerEvent('disco_items_handle', 'onDisco', 'groups');
+        $this->registerEvent('pubsub_delete_handle', 'onDisco');
 
         $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
@@ -49,33 +47,18 @@ class Group extends \Movim\Widget\Base
     {
         list($server, $node) = array_values($packet->content);
 
+        $this->ajaxGetMetadata($server, $node);
+        $this->ajaxGetAffiliations($server, $node);
+
         $this->displayItems($server, $node);
 
         RPC::call('Group.clearLoad');
         RPC::call('MovimTpl.showPanel');
     }
 
-    function onDelete($packet)
+    function onDisco($packet)
     {
         $this->ajaxClear();
-    }
-
-    function onTicker($packet)
-    {
-        list($server, $node, $ticker) = array_values($packet->content);
-
-        $view = $this->tpl();
-        $view->assign('server', $server);
-        $view->assign('node', $node);
-        $view->assign('ticker', $ticker);
-
-        $html = $view->draw('_group_ticker', true);
-
-        $slugify = new Slugify();
-
-        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), $html);
-        RPC::call('Group.clearLoad');
-        RPC::call('MovimTpl.showPanel');
     }
 
     function onBookmark()
@@ -123,7 +106,7 @@ class Group extends \Movim\Widget\Base
         //    $view = $this->tpl();
         //    $view->assign('server', $server);
         //    $view->assign('node', $node);
-        //    RPC::call('movim_append', 'group_widget', $view->draw('_group_publish', true));
+        //    RPC::call('MovimTpl.append', '#group_widget', $view->draw('_group_publish', true));
         //}
     }
 
@@ -204,16 +187,9 @@ class Group extends \Movim\Widget\Base
 
         $html = $this->prepareGroup($server, $node);
 
-        $view = $this->tpl();
-        $view->assign('server', $server);
-        $view->assign('node', $node);
-        $html .= $view->draw('_group_publish', true);
-
         $slugify = new Slugify();
 
-        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node).' > div.card', $html);
-        RPC::call('Group.enableVideos');
-        unset($html);
+        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), $html);
     }
 
 
@@ -236,6 +212,12 @@ class Group extends \Movim\Widget\Base
         $d = new Delete;
         $d->setTo($server)->setNode($node)
           ->request();
+    }
+
+    function ajaxGetContact($jid)
+    {
+        $c = new Contact;
+        $c->ajaxGetDrawer($jid);
     }
 
     function ajaxGetMetadata($server, $node)
@@ -269,10 +251,11 @@ class Group extends \Movim\Widget\Base
     function ajaxGetItems($server, $node)
     {
         if(!$this->validateServerNode($server, $node)) return;
-
         $slugify = new Slugify();
 
         RPC::call('Group.addLoad', $slugify->slugify($server.'_'.$node));
+        RPC::call('MovimUtils.pushState', $this->route('group', [$server, $node]));
+        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), '');
 
         $r = new GetItemsId;
         $r->setTo($server)
@@ -284,8 +267,7 @@ class Group extends \Movim\Widget\Base
     function ajaxGetHistory($server, $node, $page)
     {
         $html = $this->prepareGroup($server, $node, $page);
-        RPC::call('MovimTpl.append', '#group_widget > div', $html);
-        RPC::call('Group.enableVideos');
+        RPC::call('MovimTpl.append', '#group_widget', $html);
     }
 
     function ajaxGetAffiliations($server, $node){
@@ -316,8 +298,8 @@ class Group extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
 
-        $pd = new \Modl\ItemDAO;
-        $item = $pd->getItem($server, $node);
+        $id = new \Modl\ItemDAO;
+        $item = $id->getItem($server, $node);
 
         if(isset($item)) {
             $view->assign('item', $item);
@@ -349,8 +331,8 @@ class Group extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
 
-        $pd = new \Modl\ItemDAO;
-        $item = $pd->getItem($server, $node);
+        $id = new \Modl\ItemDAO;
+        $item = $id->getItem($server, $node);
 
         if(isset($item)) {
             $view->assign('item', $item);
@@ -379,9 +361,11 @@ class Group extends \Movim\Widget\Base
 
     function ajaxClear()
     {
+        RPC::call('MovimUtils.pushState', $this->route('group'));
+
         $html = $this->prepareEmpty();
         RPC::call('MovimTpl.fill', '#group_widget header', '');
-        RPC::call('MovimTpl.fill', '#group_widget > div', $html);
+        RPC::call('MovimTpl.fill', '#group_widget', $html);
     }
 
     function prepareEmpty()
@@ -395,10 +379,12 @@ class Group extends \Movim\Widget\Base
         return $html;
     }
 
+    /*
     public function preparePost($p) {
         $pw = new Post;
         return $pw->preparePost($p, true);
     }
+    */
 
     private function prepareHeader($server, $node)
     {

@@ -8,20 +8,4 @@
     margin-right: 0.5em;
     border-radius: 1em;
 }
-/*
-#notifs_widget.groupshown li:not(:first-child){
-    display: none;
-}
 
-#notifs_widget.groupshown ul li:first-child:before {
-    font-family: "Material Design Iconic Font";
-    content: "\f2c2";
-    display: inline-block;
-}
-
-#notifs_widget ul li:first-child:before {
-    font-family: "Material Design Iconic Font";
-    content: "\f2c0";
-    display: inline-block;
-}
-*/

@@ -345,7 +345,7 @@ input[type=button].flat:focus {
 }
 
 .button.action.active > i {
-    transform: rotate(135deg);
+    transform: rotate(45deg);
 }
 
 li.action div.action .button {
@@ -384,7 +384,7 @@ header.big ~ .button.action {
     height: 6rem;
     padding: 0;
     opacity: 0;
-    transition: all 0.3s ease 0s;
+    transition: all 0.3s ease 0.15s;
     pointer-events: none;
 }
 

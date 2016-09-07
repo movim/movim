@@ -10,13 +10,13 @@
     <h4 class="gray">{$server}/{$node}</h4>
 </section>
 <div class="no_bar">
-    <a onclick="Dialog.clear()" class="button flat">
+    <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </a>
     <a 
         name="submit" 
         class="button flat" 
-        onclick="Group_ajaxDeleteConfirm('{$server}', '{$node}'); Dialog.clear()">
+        onclick="Group_ajaxDeleteConfirm('{$server}', '{$node}'); Dialog_ajaxClear()">
         {$c->__('button.remove')}
     </a>
 </div>

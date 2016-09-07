@@ -1,8 +1,23 @@
 Movim Changelog
 ================
 
-v0.9.1 (trunk)
+v0.11 (trunk)
 ---------------------------
+ * CSS fixes
+ * Refactoring of the groups page UI and UX
+ * Add (small) picture embeding in chats
+ * Various speed optimisation
+ * Add reply feature of existing posts
+
+v0.10
+---------------------------
+ * Resize and compress large pictures in Upload
+ * Refactor MovimWebsocket and fix disconnection issues
+ * Remove and cleanup old code
+ * Handle errors when uploading large files
+ * New bubble merging algorythm in the Chat
+ * Improve UI and mobile UX on low resolution devices
+ * New widget Drawer used for the stickers and the search form
  * Fix behaviour for Android and Electron packages
  * Fix Pubsub metadata handling for some XMPP servers
  * Add global search

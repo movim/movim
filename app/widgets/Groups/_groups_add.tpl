@@ -8,12 +8,12 @@
         </div>
     </section>
     <div>
-        <a class="button flat" onclick="Dialog.clear()">
+        <a class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.close')}
         </a>
         <a
             class="button flat"
-            onclick="Groups_ajaxAddConfirm('{$server}', movim_form_to_json('groupadd')); Dialog.clear();">
+            onclick="Groups_ajaxAddConfirm('{$server}', MovimUtils.formToJson('groupadd')); Dialog_ajaxClear();">
             {$c->__('button.add')}
         </a>
     </div>

@@ -42,7 +42,7 @@ class Chats extends \Movim\Widget\Base
             $c = $contacts[0];
             $chats = Cache::c('chats');
             if(is_array($chats) &&  array_key_exists($c->jid, $chats)) {
-                RPC::call('movim_replace', $c->jid.'_chat_item', $this->prepareChat($c->jid));
+                RPC::call('MovimTpl.replace', '#' . cleanupId($c->jid.'_chat_item'), $this->prepareChat($c->jid));
                 RPC::call('Chats.refresh');
 
                 $n = new Notification;
@@ -70,13 +70,13 @@ class Chats extends \Movim\Widget\Base
             $jid = $from;
         }
 
-        RPC::call('movim_replace', $jid.'_chat_item', $this->prepareChat($jid, $message));
+        RPC::call('MovimTpl.replace', '#' . cleanupId($jid.'_chat_item'), $this->prepareChat($jid, $message));
         RPC::call('Chats.refresh');
     }
 
     function ajaxGet()
     {
-        RPC::call('movim_fill', 'chats_widget_list', $this->prepareChats());
+        RPC::call('MovimTpl.fill', '#chats_widget_list', $this->prepareChats());
         RPC::call('Chats.refresh');
     }
 
@@ -143,7 +143,7 @@ class Chats extends \Movim\Widget\Base
         unset($chats[$jid]);
         Cache::c('chats', $chats);
 
-        RPC::call('movim_delete', $jid.'_chat_item');
+        RPC::call('MovimTpl.remove', '#' . cleanupId($jid . '_chat_item'));
 
         RPC::call('Chats.refresh');
         RPC::call('Chat.empty');
@@ -160,7 +160,7 @@ class Chats extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $chats = Cache::c('chats');
 
-        if(!isset($chats)) $chats = array();
+        if(!isset($chats)) $chats = [];
 
         $view->assign('chats', array_keys($chats));
         $view->assign('top', $cd->getTop(15));
@@ -180,7 +180,7 @@ class Chats extends \Movim\Widget\Base
         $contacts = $cd->getRosterSimple();
         $view->assign('contacts', $contacts);
 
-        RPC::call('movim_fill', 'add_extend', $view->draw('_chats_add_extend', true));
+        RPC::call('MovimTpl.fill', '#add_extend', $view->draw('_chats_add_extend', true));
     }
 
     function prepareChats()

@@ -16,7 +16,7 @@ class Search extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('empty', $this->prepareSearch(''));
-        Dialog::fill($view->draw('_search', true));
+        Drawer::fill($view->draw('_search', true), true);
         RPC::call('Search.init');
     }
 

@@ -6,7 +6,7 @@ use Ratchet\ConnectionInterface;
 use Movim\Daemon\Session;
 
 class Core implements MessageComponentInterface {
-    private $sessions = array();
+    private $sessions = [];
     public $loop;
     public $baseuri;
 
@@ -52,8 +52,6 @@ class Core implements MessageComponentInterface {
     proxy_set_header X-Real-IP \$remote_addr;
     proxy_set_header X-Forwarded-For \$proxy_add_x_forwarded_for;
     proxy_set_header X-Forwarded-Proto https;
-    proxy_read_timeout 86400s;
-    proxy_send_timeout 86400s;
     proxy_redirect off;
 }
 
@@ -138,6 +136,9 @@ class Core implements MessageComponentInterface {
     {
         $sd = new \Modl\SessionxDAO();
         $sd->deleteEmpty();
+
+        $pd = new \Modl\PresenceDAO();
+        $pd->cleanPresences();
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e)

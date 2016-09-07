@@ -1,7 +1,7 @@
 <div id="statistics" class="tabelem" title="{$c->__("statistics.title")}">
-    <ul class="list divided thick">
+    <ul class="list divided middle">
         <li class="subheader">
-            <p>{$c->__('statistics.sessions')} - {$sessions|count}</p>
+            <p>{$c->__('statistics.sessions')} <span class="second">{$sessions|count}</a></p>
         </li>
         {loop="$sessions"}
             {$user = $c->getContact($value->username, $value->host)}
@@ -16,7 +16,7 @@
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
-                <p>{$user->getTrueName()} - {$value->username}@{$value->host} - {$value->domain}</p>
+                <p>{$user->getTrueName()} <span class="second">{$value->username}@{$value->host}</a></p>
                 <p>
                     {if="isset($value->start)"}
                         {$c->getTime($value->start)}

@@ -172,7 +172,7 @@
         {/if}
 
         {if="$contact->description != null && trim($contact->description) != ''"}
-        <li class="pblock large">
+        <li class="block large">
             <span class="primary icon gray"><i class="zmdi zmdi-format-align-justify"></i></span>
             <p>{$c->__('general.about')}</p>
             <p class="all">{$contact->description}</p>
@@ -182,31 +182,40 @@
     <br />
 
     {if="$blog != null"}
-        <ul class="list middle active block flex">
+        <ul class="list middle active card block flex">
             <li class="block large subheader">
                 <p>{$c->__('blog.last')}</p>
             </li>
             {loop="$blog"}
-                <li class="block" onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
-                    {$url = $value->getContact()->getPhoto('s')}
-                    {if="$url"}
-                        <span class="primary icon bubble" style="background-image: url({$url});">
+                <li class="block" onclick="MovimUtils.reload('{$c->route('news', [$value->origin, $value->node, $value->nodeid])}')">
+                    {$picture = $value->getPicture()}
+                    {if="$picture != null"}
+                        <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$picture});">
+                            <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                         </span>
                     {else}
-                        <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
-                            <i class="zmdi zmdi-account"></i>
-                        </span>
+                        {$url = $value->getContact()->getPhoto('l')}
+                        {if="$url"}
+                            <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
+                                <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
+                            </span>
+                        {else}
+                            <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
+                                <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
+                            </span>
+                        {/if}
                     {/if}
                     {if="$value->title != null"}
                         <p class="line">{$value->title}</p>
                     {else}
                         <p class="line">{$c->__('hello.contact_post')}</p>
                     {/if}
-                    <p>{$value->published|strtotime|prepareDate}</p>
+
                     <p>{$value->contentcleaned|strip_tags}</p>
+                    <p><span class="info">{$value->published|strtotime|prepareDate}</span></p>
                 </li>
             {/loop}
-            <a href="{$c->route('blog', array($contact->jid))}" target="_blank" class="block large">
+            <a href="{$c->route('blog', array($contact->jid))}" target="_blank" class="block large simple">
                 <li>
                     <span class="primary icon">
                         <i class="zmdi zmdi-portable-wifi"></i>
@@ -214,7 +223,7 @@
                     <span class="control icon">
                         <i class="zmdi zmdi-chevron-right"></i>
                     </span>
-                    <p class="normal">{$c->__('blog.visit')}</p>
+                    <p class="normal line">{$c->__('blog.visit')}</p>
                 </li>
             </a>
         </ul>
@@ -344,9 +353,8 @@
         </ul>
         <ul class="grid active padded">
             {loop="$gallery"}
-                {$attachments = $value->getAttachments()}
-                <li style="background-image: url('{$attachments['pictures'][0]['href']}');"
-                    onclick="movim_reload('{$c->route('news', $value->nodeid)}')">
+                <li style="background-image: url('{$value->picture}');"
+                    onclick="MovimUtils.reload('{$c->route('news', [$value->origin, $value->node, $value->nodeid])}')">
                     <nav>
                         <span>{$value->title}</span>
                     </nav>

@@ -66,31 +66,60 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             $msg = json_decode($message);
 
             if(isset($msg)) {
-                if($msg->func == 'message' && $msg->body != '') {
-                    $msg = $msg->body;
-                } elseif($msg->func == 'down') {
-                    $evt = new Event;
-                    $evt->runEvent('session_down');
-                } elseif($msg->func == 'up') {
-                    $evt = new Event;
-                    $evt->runEvent('session_up');
-                } elseif($msg->func == 'unregister') {
-                    \Moxl\Stanza\Stream::end();
-                } elseif($msg->func == 'register') {
-                    if(isset($conn)
-                    && is_resource($conn->stream)) {
-                        $conn->stream->close();
-                    }
+                switch ($msg->func) {
+                    case 'message':
+                        $msg = $msg->body;
+                        break;
 
-                    $cd = new \Modl\ConfigDAO();
-                    $config = $cd->get();
+                    case 'ping':
+                        // And we say that we are ready !
+                        $obj = new \StdClass;
+                        $obj->func = 'pong';
+                        echo base64_encode(gzcompress(json_encode($obj), 9))."";
+                        break;
 
-                    $port = 5222;
-                    $dns = \Moxl\Utils::resolveHost($msg->host);
-                    if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
-                    if(isset($dns->port) && $dns->port != null) $port = $dns->port;
-                    #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-                    $connector->create(gethostbyname($msg->host), $port)->then($xmpp_behaviour);
+                    case 'down':
+                        $evt = new Event;
+                        $evt->runEvent('session_down');
+                        break;
+
+                    case 'up':
+                        $evt = new Event;
+                        $evt->runEvent('session_up');
+                        break;
+
+                    case 'unregister':
+                        \Moxl\Stanza\Stream::end();
+                        if(isset($conn)) $conn->close();
+                        $loop->stop();
+                        break;
+
+                    case 'register':
+                        if(isset($conn)
+                        && is_resource($conn->stream)) {
+                            $conn->stream->close();
+                        }
+
+                        $cd = new \Modl\ConfigDAO();
+                        $config = $cd->get();
+
+                        $port = 5222;
+                        $dns = \Moxl\Utils::resolveHost($msg->host);
+                        if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
+                        if(isset($dns->port) && $dns->port != null) $port = $dns->port;
+                        #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+
+                        $ip = \Moxl\Utils::resolveIp($msg->host);
+                        $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
+
+                        fwrite(
+                            STDERR,
+                            colorize(
+                                getenv('sid'), 'yellow')." : ".
+                                colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
+                                "\n");
+                        $connector->create($ip, $port)->then($xmpp_behaviour);
+                        break;
                 }
             } else {
                 return;
@@ -149,8 +178,16 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer_name', false);
                 #stream_context_set_option($conn->stream, 'ssl', 'verify_peer', false);
 
+                // See http://php.net/manual/en/function.stream-socket-enable-crypto.php#119122
+                $crypto_method = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+
+                if (defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')) {
+                    $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT;
+                    $crypto_method |= STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT;
+                }
+
                 set_error_handler('handleSSLErrors');
-                $out = stream_socket_enable_crypto($conn->stream, 1, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+                $out = stream_socket_enable_crypto($conn->stream, 1, $crypto_method);
                 restore_error_handler();
                 if($out !== true) {
                     $loop->stop();
@@ -198,12 +235,12 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
 
             \Moxl\API::clear();
 
-            $loop->tick();
-
             gc_collect_cycles();
             //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." end data : ".\sizeToCleanSize(memory_get_usage())."\n");
             //memprof_dump_callgrind(fopen("/tmp/callgrind.out", "w"));
         }
+
+        $loop->tick();
     });
 
     $conn->on('error', function($msg) use ($conn, $loop) {

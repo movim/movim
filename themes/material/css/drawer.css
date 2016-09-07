@@ -1,0 +1,50 @@
+.drawer {
+    position: fixed;
+    background-color: white;
+    z-index: 3;
+
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 7rem);
+    box-shadow: 0 2.5rem 5rem rgba(0,0,0,0.30), 0 2rem 1.5rem rgba(0,0,0,0.22);
+    transition: transform .3s cubic-bezier(.4,0,.2,1) .2s;
+}
+
+
+.drawer .flex .block:not(.subheader):not(.large) {
+    flex: 0 1 33.33%;
+}
+
+.drawer > section {
+    height: 100%;
+    overflow-y: auto;
+    position: relative;
+}
+
+.drawer > section > table,
+.drawer > section > ul.flex {
+    margin: 0 auto;
+    padding: 2rem 3rem;
+}
+
+.drawer.empty {
+    transform: translateY(100%);
+}
+
+.drawer form.padded {
+    padding: 2rem;
+}
+
+@media screen and (min-width: 1024px) {
+    .drawer {
+        width: 70rem;
+        left: calc(50% - 35rem);
+    }
+}
+
+@media screen and (min-width: 40rem) {
+    .drawer .flex .block:not(.subheader):not(.large) {
+        flex: 0 1 25%;
+    }
+}

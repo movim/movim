@@ -17,7 +17,7 @@ var Tabs = {
         }
 
         // We show the first tab
-        tabs[0].style.display = "inline-block";
+        MovimUtils.showElement(tabs[0]);
 
         // We insert the list
         document.querySelector('#navtabs').innerHTML = html;
@@ -50,11 +50,11 @@ var Tabs = {
         // We hide all the div
         var tabs = document.querySelectorAll('.tabelem');
         for (var i=0; i<tabs.length; i++){
-            tabs[i].style.display = 'none';
+            MovimUtils.hideElement(tabs[i]);
         }
         // We show the selected div
-        var tabOn = document.querySelector('#'+n);
-        tabOn.style.display = "block";
+        var tabOn = document.getElementById(n);
+        MovimUtils.showElement(tabOn);
 
         var baseUrl = window.location.href.split('#')[0];
         window.location.replace(baseUrl + '#' + n);
@@ -67,7 +67,7 @@ var Tabs = {
         // We reset the scroll
         document.querySelector('#navtabs').parentNode.scrollTop = 0;
     }
-}
+};
 
 movim_add_onload(function()
 {

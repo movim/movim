@@ -3,6 +3,6 @@ var Stickers = {
         var n = document.querySelector('#chat_textarea');
         n.value = n.value + element.dataset.emoji;
         n.focus();
-        Dialog.clear();
+        Drawer.clear();
     }
 }

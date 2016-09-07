@@ -14,7 +14,15 @@
         </li>
     </ul>
 </header>
-<ul class="list middle divided spaced active all">
+{if="$nodes == null"}
+    <ul class="thick">
+        <div class="placeholder icon pages">
+            <h1>{$c->__('error.oops')}</h1>
+            <h4>{$c->__('groups.empty_server')}</h4>
+        </li>
+    </ul>
+{else}
+    <ul class="list middle divided spaced active all">
     <!--<li class="subheader" >
         <span class="primary icon"><i class="zmdi zmdi-arrow-back"></i></span>
         <p class="normal">{$server}</p>
@@ -40,7 +48,9 @@
                     <img src="{$value->getLogo()}">
                 </span>
             {else}
-                <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
+                <span class="primary icon bubble color {$value->node|stringToColor}">
+                    {$value->node|firstLetterCapitalize}
+                </span>
             {/if}
             <p class="line">
                 {if="$value->name"}
@@ -55,23 +65,25 @@
                 </span>
             </p>
             <p>
-                {if="isset($value->sub)"}
-                    {if="$value->sub > 0"}
-                        {$c->__('groups.sub', $value->sub)}
-                    {/if}
-                    {if="$value->sub > 0 && $value->num > 0"}
-                      -
-                    {/if}
-                    {if="$value->num > 0"}
-                         {$c->__('groups.num', $value->num)}
-                    {/if}
-                {else}
-                    {$value->node}
+                {if="$value->num > 0"}
+                     {$c->__('groups.num', $value->num)}
                 {/if}
+                {if="$value->sub > 0 && $value->num > 0"}
+                  -
+                {/if}
+                {if="$value->sub > 0"}
+                    <span title="{$c->__('groups.sub', $value->sub)}">
+                        {$value->sub} <i class="zmdi zmdi-accounts"></i>
+                    </span>
+                {/if}
+                <span class="info">
+                    {$value->published|strtotime|prepareDate:true,true}
+                </span>
             </p>
         </li>
     {/loop}
-</ul>
+    </ul>
+{/if}
 <a onclick="Groups_ajaxTestAdd('{$server}')" class="button action color">
     <i class="zmdi zmdi-plus"></i>
 </a>

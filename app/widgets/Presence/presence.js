@@ -3,10 +3,10 @@ var Presence = {
         var textarea = document.querySelector('form[name=presence] textarea');
 
         if(textarea != null) {
-            movim_textarea_autoheight(textarea);
+            MovimUtils.textareaAutoheight(textarea);
 
             textarea.oninput = function(event) {
-                movim_textarea_autoheight(this);
+                MovimUtils.textareaAutoheight(this);
             };
         }
 
@@ -27,6 +27,7 @@ var Presence = {
             // We disable the notifications for a couple of seconds
             Notification.inhibit(10);
 
+            Presence_ajaxClear();
             Presence_ajaxSet();
             //Presence_ajaxConfigGet();
             Presence_ajaxServerCapsGet();

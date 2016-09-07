@@ -4,15 +4,15 @@ use Movim\Controller\Base;
 class GroupController extends Base
 {
     function load() {
-        $this->session_only = false;
+        $this->session_only = true;
     }
 
     function dispatch() {
+        $this->page->setTitle(__('page.groups'));
+
         $user = new User();
         if(!$user->isLogged()) {
-            $this->name = 'grouppublic';
+            $this->redirect('node', [$this->fetchGet('s'), $this->fetchGet('n')]);
         }
-
-        $this->page->setTitle(__('page.groups'));
     }
 }

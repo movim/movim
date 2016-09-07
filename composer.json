@@ -17,16 +17,16 @@
 
         "movim/modl": "dev-master",
         "movim/sasl2": "dev-master",
-        "movim/moxl": "dev-master",
+        "movim/moxl": "dev-master#8c54affb3a38d7e0478fd48bfa786fd18d729dfe",
 
         "embed/embed": "dev-master",
         "heyupdate/emoji": "0.2.*@dev",
 
         "cboden/ratchet": "0.3.*",
-        "react/child-process": "0.5.*@dev",
+        "react/child-process": "dev-master",
         "react/socket-client": "dev-master",
-        "react/stream": "0.4.3",
-        "react/http": "dev-master",
+        "react/stream": "0.4.*",
+        "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
         "react/promise-timer": "^1.1",
 
         "stojg/crop": "dev-master",
@@ -35,6 +35,7 @@
         "ezyang/htmlpurifier": "^4.7",
         "ramsey/uuid": "^3.2",
         "symfony/console": "^3.0",
-        "cocur/slugify": "^2.1"
+        "cocur/slugify": "^2.1",
+        "guzzlehttp/guzzle": "^6.2"
     }
 }

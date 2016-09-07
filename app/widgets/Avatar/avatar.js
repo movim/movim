@@ -8,9 +8,7 @@ var Avatar = {
             reader.readAsDataURL(f);
 
             reader.onload = function (ev) {
-                var img = new Image();
-                img.src = ev.target.result;
-                Avatar.preview(img.src);
+                Avatar.preview(ev.target.result);
             };
         };
     },
@@ -36,7 +34,7 @@ var Avatar = {
             var preview = document.querySelector('form[name=avatarform] img');
 
             var list = document.querySelector('form[name=avatarform] ul');
-            if(list) list.style.display = 'none';
+            if(list) MovimUtils.hideElement(list);
 
             var input = document.querySelector('input[name="photobin"]');
 

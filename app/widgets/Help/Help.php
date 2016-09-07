@@ -20,7 +20,7 @@ class Help extends \Movim\Widget\Base
 
         $r->ajaxJoin('movim@conference.movim.eu');
 
-        RPC::call('movim_redirect', $this->route('chat'));
+        RPC::call('MovimUtils.redirect', $this->route('chat'));
     }
     
     function display() 

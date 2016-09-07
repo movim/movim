@@ -30,7 +30,7 @@ class Contact extends \Movim\Widget\Base
     function ajaxClear($page = 0)
     {
         $html = $this->prepareEmpty($page);
-        RPC::call('movim_fill', 'contact_widget', $html);
+        RPC::call('MovimTpl.fill', '#contact_widget', $html);
     }
 
     function ajaxGetContact($jid, $page = 0)
@@ -39,16 +39,40 @@ class Contact extends \Movim\Widget\Base
 
         $html = $this->prepareContact($jid, $page);
 
+        RPC::call('MovimUtils.pushState', $this->route('contact', $jid));
+
+        RPC::call('MovimTpl.fill', '#contact_widget', $html);
+        RPC::call('MovimTpl.showPanel');
+
         $r = new GetItems;
         $r->setTo($jid)
           ->setNode('urn:xmpp:microblog:0')
           ->request();
+    }
 
-        RPC::call('movim_push_state', $this->route('contact', $jid));
+    function ajaxGetDrawer($jid)
+    {
+        if(!$this->validateJid($jid)) return;
 
-        RPC::call('movim_fill', 'contact_widget', $html);
-        RPC::call('MovimTpl.showPanel');
-        RPC::call('MovimTpl.scrollHeaders');
+        $tpl = $this->tpl();
+
+        $cd = new \Modl\ContactDAO;
+        $cr = $cd->getRosterItem($jid);
+
+        if(isset($cr)) {
+            if($cr->value != null) {
+                $tpl->assign('presence', getPresencesTxt()[$cr->value]);
+            }
+
+            $tpl->assign('contactr', $cr);
+            $tpl->assign('caps', $cr->getCaps());
+            $tpl->assign('clienttype', getClientTypes());
+        }
+
+        $c  = $cd->get($jid);
+        $tpl->assign('contact', $c);
+
+        Drawer::fill($tpl->draw('_contact_drawer', true));
     }
 
     function ajaxEditSubmit($form)
@@ -99,7 +123,7 @@ class Contact extends \Movim\Widget\Base
             $view->assign('submit',
                 $this->call(
                     'ajaxEditSubmit',
-                    "movim_form_to_json('manage')"));
+                    "MovimUtils.formToJson('manage')"));
             $view->assign('contact', $rl);
             $view->assign('groups', $groups);
         }
@@ -114,7 +138,7 @@ class Contact extends \Movim\Widget\Base
         $c = new Chats;
         $c->ajaxOpen($jid);
 
-        RPC::call('movim_redirect', $this->route('chat', $jid));
+        RPC::call('MovimUtils.redirect', $this->route('chat', $jid));
     }
 
     function ajaxDeleteContact($jid)
@@ -195,8 +219,6 @@ class Contact extends \Movim\Widget\Base
         $gallery = $pd->getGallery($jid, 0, 12);
         $blog    = $pd->getPublic($jid, 'urn:xmpp:microblog:0', 0, 4);
 
-        $presencestxt = getPresencesTxt();
-
         $view->assign('page', $page);
         $view->assign('edit',
             $this->call(
@@ -209,34 +231,17 @@ class Contact extends \Movim\Widget\Base
 
         if(isset($c)) {
             $view->assign('mood', getMood());
+            $view->assign('clienttype', getClientTypes());
 
             $view->assign('contact', $c);
             $view->assign('contactr', $cr);
 
-            if( $cr->node != null
-                && $cr->ver != null
-                && $cr->node
-                && $cr->ver) {
-                $node = $cr->node.'#'.$cr->ver;
+            if($cr->value != null) {
+                $view->assign('presence', getPresencesTxt()[$cr->value]);
+            }
 
-                $cad = new \Modl\CapsDAO();
-                $caps = $cad->get($node);
-
-                if($cr->value != null) {
-                    $view->assign('presence', $presencestxt[$cr->value]);
-                }
-
-                if(
-                    isset($caps)
-                    && $caps->name != ''
-                    && $caps->type != '' ) {
-                    $clienttype = getClientTypes();
-
-                    $view->assign('caps', $caps);
-                    $view->assign('clienttype', $clienttype);
-                }
-            } else {
-                $view->assign('caps', null);
+            if(isset($cr)) {
+                $view->assign('caps', $cr->getCaps());
             }
 
             $view->assign('gallery', $gallery);

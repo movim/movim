@@ -10,8 +10,20 @@ class Menu extends \Movim\Widget\Base
     {
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract');
+        $this->registerEvent('pubsub_postdelete', 'onRetract');
+        $this->registerEvent('pubsub_getitem_handle', 'onHandle');
+
         $this->addjs('menu.js');
         $this->addcss('menu.css');
+    }
+
+    function onHandle($packet)
+    {
+        if(isset($packet->content['nodeid'])) {
+            $this->onRetract($packet);
+        } else {
+            $this->onPost($packet);
+        }
     }
 
     function onRetract($packet)
@@ -26,7 +38,7 @@ class Menu extends \Movim\Widget\Base
         $view->assign('refresh', $this->call('ajaxGetAll'));
 
         RPC::call('movim_posts_unread', $count);
-        RPC::call('movim_fill', 'menu_refresh', $view->draw('_menu_refresh', true));
+        RPC::call('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh', true));
     }
 
     function onPost($packet)
@@ -58,11 +70,13 @@ class Menu extends \Movim\Widget\Base
                         $this->route('news', $post->nodeid)
                     );
             } else {
+                $logo = ($post->logo) ? $post->getLogo() : null;
+
                 Notification::append(
                     'news',
                     $post->title,
                     $post->node,
-                    null,
+                    $logo,
                     2,
                     $this->route('news', $post->nodeid)
                 );
@@ -102,9 +116,9 @@ class Menu extends \Movim\Widget\Base
         $html = $this->prepareList($type, $server, $node, $page);
 
         if($page > 0) {
-            RPC::call('movim_append', 'menu_wrapper', $html);
+            RPC::call('MovimTpl.append', '#menu_wrapper', $html);
         } else {
-            RPC::call('movim_fill', 'menu_widget', $html);
+            RPC::call('MovimTpl.fill', '#menu_widget', $html);
             RPC::call('movim_posts_unread', 0);
         }
         RPC::call('Menu.refresh');
@@ -130,7 +144,6 @@ class Menu extends \Movim\Widget\Base
         $view = $this->tpl();
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(Cache::c('since'));
-
         // getting newer, not older
         if($page == 0 || $page == ""){
             $count = 0;

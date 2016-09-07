@@ -18,7 +18,7 @@ class AdHoc extends \Movim\Widget\Base
     {
         $list = $package->content;
         $html = $this->prepareList($list);
-        RPC::call('movim_fill', 'adhoc_widget', $html);
+        RPC::call('MovimTpl.fill', '#adhoc_widget', $html);
         RPC::call('AdHoc.refresh');
     }
 

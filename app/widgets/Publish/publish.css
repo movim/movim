@@ -8,10 +8,10 @@ form[name=post] #enable_content:hover > * {
     opacity: 1;
 }
 
-form[name=post] #content_field {
-    display: none;
-}
-
 form[name=post] article section {
     padding-top: 0;
+}
+
+form[name=post] #content_link article section {
+    padding: 0;
 }

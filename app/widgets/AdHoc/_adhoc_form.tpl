@@ -4,7 +4,7 @@
     </form>
 </section>
 <div>
-    <a onclick="Dialog.clear()" class="button flat">
+    <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
     {if="$actions != null"}

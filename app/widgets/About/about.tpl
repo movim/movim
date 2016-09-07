@@ -36,7 +36,6 @@
                Modl - Movim DB Layer - <a href="https://github.com/edhelas/modl">GitHub Modl</a> under AGPLv3<br/>
                Moxl - Movim XMPP Library - <a href="https://github.com/edhelas/moxl">GitHub Moxl</a> under AGPLv3<br/>
 
-               Map Library - Leaflet <a href="http://leafletjs.com/">leafletjs.com</a> under BSD<br/>
                Chart.js - Nick Downie <a href="http://www.chartjs.org/">chart.js</a> under MIT<br/>
                Favico.js - Miroslav Magda <a href="http://lab.ejci.net/favico.js/">lab.ejci.net/favico.js</a> under GPL and MIT<br/>
                Markdown - Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin<br/>
@@ -60,7 +59,6 @@
             <p class="all">
                 OpenStreetMap - Nominatim <a href="http://nominatim.openstreetmap.org/">nominatim.openstreetmap.org</a><br/>
                 Last.fm API - <a href="http://www.last.fm/api">www.last.fm/api</a><br/>
-                Youtube API - <a href="http://developers.google.com/youtube">developers.google.com/youtube</a><br/>
             </p>
         </li>
     </ul>

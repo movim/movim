@@ -63,18 +63,18 @@ class Rooms extends \Movim\Widget\Base
         Notification::append(null, $this->__('chatrooms.disconnected'));
     }
 
-    private function refreshRooms()
+    private function refreshRooms($edit = false)
     {
-        RPC::call('movim_fill', 'rooms_widget', $this->prepareRooms());
+        RPC::call('MovimTpl.fill', '#rooms_widget', $this->prepareRooms($edit));
         RPC::call('Rooms.refresh');
     }
 
     /**
      * @brief Get the Rooms
      */
-    public function ajaxDisplay()
+    public function ajaxDisplay($edit = false)
     {
-        $this->refreshRooms();
+        $this->refreshRooms($edit);
     }
 
     /**
@@ -83,6 +83,13 @@ class Rooms extends \Movim\Widget\Base
     function ajaxAdd()
     {
         $view = $this->tpl();
+
+        $id = new \Modl\ItemDAO;
+        $item = $id->getConference($this->user->getServer());
+
+        if($item) {
+            $view->assign('server', $item->jid);
+        }
 
         $view->assign('username', $this->user->getUser());
 
@@ -191,21 +198,21 @@ class Rooms extends \Movim\Widget\Base
     {
         if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
             Notification::append(null, $this->__('chatrooms.bad_id'));
-            //Notification::append(null, $this->__('chatrooms.bad_nickname'));
         } elseif(trim($form['name']) == '') {
             Notification::append(null, $this->__('chatrooms.empty_name'));
         } else {
             $cd = new \Modl\ConferenceDAO;
             $cd->deleteNode($form['jid']);
 
-            $item = array(
+            $item = [
                     'type'      => 'conference',
                     'name'      => $form['name'],
                     'autojoin'  => $form['autojoin'],
                     'nick'      => $form['nick'],
-                    'jid'       => $form['jid']);
+                    'jid'       => $form['jid']
+                    ];
             $this->setBookmark($item);
-            RPC::call('Dialog.clear');
+            RPC::call('Dialog_ajaxClear');
         }
     }
 
@@ -221,29 +228,32 @@ class Rooms extends \Movim\Widget\Base
         $cd = new \Modl\ConferenceDAO;
         $session = Session::start();
 
-        if($sd->getSubscribed()) {
-            foreach($sd->getSubscribed() as $s) {
+        $subscribed = $sd->getSubscribed();
+        if($subscribed) {
+            foreach($subscribed as $s) {
                 array_push($arr,
-                    array(
+                    [
                         'type'      => 'subscription',
                         'server'    => $s->server,
                         'title'     => $s->title,
                         'subid'     => $s->subid,
                         'tags'      => unserialize($s->tags),
-                        'node'      => $s->node));
+                        'node'      => $s->node]);
             }
         }
 
-        foreach($cd->getAll() as $c) {
-            array_push($arr,
-                array(
-                    'type'      => 'conference',
-                    'name'      => $c->name,
-                    'autojoin'  => $c->autojoin,
-                    'nick'      => $c->nick,
-                    'jid'       => $c->conference));
+        $conferences = $cd->getAll();
+        if($conferences) {
+            foreach($conferences as $c) {
+                array_push($arr,
+                    [
+                        'type'      => 'conference',
+                        'name'      => $c->name,
+                        'autojoin'  => $c->autojoin,
+                        'nick'      => $c->nick,
+                        'jid'       => $c->conference]);
+            }
         }
-
 
         $b = new Set;
         $b->setArr($arr)
@@ -275,7 +285,7 @@ class Rooms extends \Movim\Widget\Base
         }
     }
 
-    function prepareRooms()
+    function prepareRooms($edit = false)
     {
         $view = $this->tpl();
         $cod = new \modl\ConferenceDAO();
@@ -296,6 +306,7 @@ class Rooms extends \Movim\Widget\Base
             $connected = array_merge($connected, $list);
         }
 
+        $view->assign('edit', $edit);
         $view->assign('conferences', $connected);
         $view->assign('room', $this->get('r'));
 

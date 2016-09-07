@@ -62,9 +62,10 @@
             {/if}
 
             {if="isset($whitelist) && $whitelist != ''"}
-            <ul class="list thin card">
+            <ul class="list thin">
                 <li class="info">
-                    <p class="normal">{$c->__('whitelist.info')} : {$whitelist}</p>
+                    <p></p>
+                    <p class="center normal">{$c->__('form.whitelist_info')} : {$whitelist}</p>
                 </li>
             </ul>
             {/if}
@@ -87,6 +88,3 @@
     </div>
 </div>
 
-<div id="error_websocket" class="snackbar">
-    {$c->__('error.websocket')}
-</div>

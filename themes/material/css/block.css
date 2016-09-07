@@ -3,29 +3,25 @@
     flex-flow: row wrap;
 }
 
-.flex .block {
-    flex: 1 50%;
+.flex .block:not(.subheader) {
+    flex: 0 1 50%;
     overflow: hidden;
 }
 
-.flex .block.large,
-.flex.card .block.large {
-    flex: 1 100%;
-}
 /*
 .flex.card {
     padding: 0;
 }
 */
-.flex.card .block {
+.flex.card .block:not(.subheader) {
     margin: 1rem;
-    flex: 1 calc(50% - 2rem);
+    flex: 0 1 calc(50% - 2rem);
     min-height: 5rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
 
-.flex.stacked .block {
+.flex.stacked .block:not(.subheader) {
     margin-bottom: 0;
 }
 
@@ -34,15 +30,21 @@
 }
 
 .flex.third .block:not(.large) {
-    flex: 1 33.33%;
+    flex: 0 1 33.33%;
     max-width: 33.33%;
 }
 
+
+.flex .block.large,
+.flex.card .block.large {
+    flex: 0 1 100%;
+}
+
 @media screen and (max-width: 1024px) {
-    .flex.card .block,
-    .flex .block {
+    .flex.card .block:not(.subheader),
+    .flex .block:not(.subheader) {
         margin-bottom: 0;
-        flex: 1 100%;
+        flex: 0 1 100%;
         max-width: 100%;
     }
 }

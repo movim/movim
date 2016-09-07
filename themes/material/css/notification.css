@@ -1,0 +1,94 @@
+/* Snackbar - Toast */
+
+.snackbar,
+.toast {
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.23), 0px 3px 10px rgba(0, 0, 0, 0.16);
+    position: fixed;
+    z-index: 4;
+    min-height: 6rem;
+    max-height: 11rem;
+    height: auto;
+    color: white;
+    padding: 2rem 3rem;
+    box-sizing: border-box;
+    width: 40rem;
+    pointer-events: none;
+    transition: opacity 0.2s ease, bottom 0.4s ease;
+    transform: translateX(0);
+}
+
+.snackbar > a {
+    pointer-events: auto;
+    margin: -1rem -2rem;
+    display: block;
+    margin: -2rem -1rem;
+    padding: 2rem 1rem;
+}
+
+.snackbar > a:hover {
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    padding: calc(2rem - 3px) calc(1rem - 3px);
+}
+
+.snackbar p,
+.toast p {
+    color: white;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.snackbar {
+    background-color: #333333;
+    bottom: 3rem;
+    left: 3rem;
+    border-radius: 0.25rem;
+    opacity: 1;
+    padding: 2rem 1rem;
+}
+
+.toast {
+    background-color: #323232;
+    border-radius: 3rem;
+    left: 50%;
+    bottom: 3rem;
+    line-height: 2.5rem;
+    margin-left: -20rem;
+}
+
+.snackbar:empty,
+.toast:empty {
+    opacity: 0;
+}
+
+.snackbar#error_websocket {
+    max-height: initial;
+}
+
+.snackbar#error_websocket p {
+    line-height: 2.5rem;
+    white-space: initial;
+}
+
+.snackbar#error_websocket:not(.hide) ~ main,
+.snackbar#error_websocket:not(.hide) ~ nav {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 22rem) {
+    .snackbar {
+        width: 100%;
+        top: 0;
+        left: 0;
+        bottom: auto;
+        border-radius: 0;
+    }
+
+    .toast {
+        max-width: 90%;
+        left: 5%;
+        margin-left: 0;
+    }
+}
+

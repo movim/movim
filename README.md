@@ -33,7 +33,7 @@ You can also use Movim on our official Pods :
 ### Librairies
 Movim also contains two specific librairies :
 
-* https://github.com/movim/moxl Moxl (for Movim XMPP Library) is a PHP XMPP library especially made for the Movim project 
+* https://github.com/movim/moxl Moxl (for Movim XMPP Library) is a PHP XMPP library especially made for the Movim project
 * https://github.com/movim/modl Modl (for Movim Data Layer) is a light PHP Database layer using DAO pattern
 
 Support Us
@@ -44,4 +44,4 @@ You can support us on :
 
 License
 -------
-Movim is released under the terms of the AGPL license. See COPYING for more details.
+Movim is released under the terms of the AGPLv3 license. See COPYING for more details.

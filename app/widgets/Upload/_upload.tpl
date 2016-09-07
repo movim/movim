@@ -1,4 +1,4 @@
-<section>
+<section id="upload">
     <h3>{$c->__('upload.title')}</h3>
     <ul class="list thick">
         <li>
@@ -10,10 +10,19 @@
                 <input type="file" id="file" />
             </p>
         </li>
+        <li>
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-photo-size-select-small"></i>
+            </span>
+            <p></p>
+            <p class="normal">
+                {$c->__('upload.info')}
+            </p>
+        </li>
     </ul>
 </section>
 <div>
-    <a onclick="Dialog.clear(); Upload.xhr.abort();" class="button flat">
+    <a onclick="Dialog_ajaxClear(); Upload.abort();" class="button flat">
         {$c->__('button.close')}
     </a>
 </div>

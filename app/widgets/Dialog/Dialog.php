@@ -2,14 +2,14 @@
 
 class Dialog extends \Movim\Widget\Base
 {
-    function load() 
+    function load()
     {
         $this->addjs('dialog.js');
     }
 
     static function fill($html = '', $scroll = false)
     {
-        RPC::call('movim_fill', 'dialog', $html);
+        RPC::call('MovimTpl.fill', '#dialog', $html);
 
         if($scroll) {
             RPC::call('Dialog.addScroll');
@@ -18,11 +18,11 @@ class Dialog extends \Movim\Widget\Base
 
     public function ajaxClear()
     {
-        RPC::call('movim_remove_class', '#dialog', 'scroll');
+        RPC::call('MovimUtils.removeClass', '#dialog', 'scroll');
         RPC::call('MovimTpl.fill', '#dialog', '');
     }
 
-    function display() 
+    function display()
     {
     }
 }

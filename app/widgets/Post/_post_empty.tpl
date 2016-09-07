@@ -1,6 +1,10 @@
 <header>
     <ul class="list middle">
         <li>
+            <span class="primary icon active gray on_mobile" onclick="MovimTpl.hidePanel()">
+                <i class="zmdi zmdi-arrow-back"></i>
+            </span>
+            <span class="control"></span>
             <p>
                 {$c->__('post.hot')}
             </p>
@@ -25,6 +29,15 @@
             <p>{$c->__('hello.menu_title')}</p>
             <p>{$c->__('hello.menu_paragraph')}</p>
         </li>
+        {if="$me->isEmpty()"}
+            <li>
+                <span class="primary icon gray">
+                    <i class="zmdi zmdi-settings"></i>
+                </span>
+                <p>{$c->__('hello.profile_title')}</p>
+                <p>{$c->__('hello.profile_paragraph')}</p>
+            </li>
+        {/if}
     </ul>
 {/if}
 
@@ -47,19 +60,22 @@
         data-id="{$value->nodeid}"
         data-server="{$value->origin}"
         data-node="{$value->node}">
-        {$picture = $value->getPicture()}
-        {if="$picture != null"}
-            <span class="primary icon thumb" style="background-image: url({$picture});"></span>
+        {if="$value->picture != null"}
+            <span class="icon top" style="background-image: url({$value->picture});"></span>
         {else}
-            {$url = $value->getContact()->getPhoto('l')}
-            {if="$url"}
-                <span class="primary icon thumb" style="background-image: url({$url});">
-                </span>
-            {else}
-                <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
-                    <i class="zmdi zmdi-account"></i>
-                </span>
-            {/if}
+            <span class="icon top color dark">
+                <i class="zmdi zmdi-edit"></i>
+            </span>
+        {/if}
+
+        {$url = $value->getContact()->getPhoto('m')}
+        {if="$url"}
+            <span class="primary icon bubble" style="background-image: url({$url});">
+            </span>
+        {else}
+            <span class="primary icon bubble color {$value->getContact()->jid|stringToColor}">
+                <i class="zmdi zmdi-account"></i>
+            </span>
         {/if}
         <p class="line">
         {if="isset($value->title)"}
@@ -68,15 +84,18 @@
             {$value->node}
         {/if}
         </p>
+        <p>{$value->contentcleaned|strip_tags}</p>
         <p>
             <a href="{$c->route('contact', $value->getContact()->jid)}">
                 <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
-            </a> –
-            {$value->published|strtotime|prepareDate}
-        </p>
-
-        <p>
-            {$value->contentcleaned|strip_tags}
+            </a>
+            {$count = $value->countComments()}
+            {if="$count > 0"}
+                {$count} <i class="zmdi zmdi-comment-outline"></i>
+            {/if}
+            <span class="info">
+                {$value->published|strtotime|prepareDate}
+            </span>
         </p>
     </li>
 {/loop}
@@ -113,24 +132,29 @@
 <ul class="list flex card shadow active">
 {loop="$posts"}
     {if="!filter_var($value->origin, FILTER_VALIDATE_EMAIL)"}
-        {$attachments = $value->getAttachments()}
         <li
             class="block condensed"
             data-id="{$value->nodeid}"
             data-server="{$value->origin}"
             data-node="{$value->node}">
-            {$picture = $value->getPicture()}
-            {if="current(explode('.', $value->origin)) == 'nsfw'"}
-                <span class="primary icon thumb color red tiny">
-                    +18
-                </span>
-            {elseif="$picture != null"}
-                <span class="primary icon thumb" style="background-image: url({$picture});"></span>
+            {if="$value->picture != null"}
+                <span class="icon top" style="background-image: url({$value->picture});"></span>
             {else}
-                <span class="primary icon thumb color {$value->node|stringToColor}">
+                <span class="icon top color dark">
                     {$value->node|firstLetterCapitalize}
                 </span>
             {/if}
+
+            {if="$value->logo"}
+                <span class="primary icon bubble">
+                    <img src="{$value->getLogo()}">
+                </span>
+            {else}
+                <span class="primary icon bubble color {$value->node|stringToColor}">
+                    {$value->node|firstLetterCapitalize}
+                </span>
+            {/if}
+
             <p class="line">
             {if="isset($value->title)"}
                 {$value->title}
@@ -139,17 +163,16 @@
             {/if}
             </p>
             <p>
-                {$value->origin} /
-                <a href="{$c->route('group', array($value->origin, $value->node))}">
-                    <i class="zmdi zmdi-pages"></i> {$value->node}
-                </a> –
-                {$value->published|strtotime|prepareDate}
+                {$value->contentcleaned|strip_tags}
             </p>
-
             <p>
-                {if="current(explode('.', $value->origin)) != 'nsfw'"}
-                    {$value->contentcleaned|strip_tags}
-                {/if}
+                {$value->origin} /
+                <a href="{$c->route('group', [$value->origin, $value->node])}">
+                    <i class="zmdi zmdi-pages"></i> {$value->node}
+                </a>
+                <span class="info">
+                    {$value->published|strtotime|prepareDate}
+                </span>
             </p>
         </li>
     {/if}
@@ -163,7 +186,7 @@
                 <span class="control icon">
                     <i class="zmdi zmdi-chevron-right"></i>
                 </span>
-                <p class="normal">{$c->__('post.discover')}</p>
+                <p class="normal line">{$c->__('post.discover')}</p>
             </li>
         </a>
     </ul>
@@ -177,9 +200,7 @@
             <p>{$c->__('hello.share_text')}</p>
         </li>
         <li class="block">
-            <a class="button" href="javascript:(function(){location.href='{$c->route('share', '\'+escape(encodeURIComponent(location.href));')}})();">
-                <i class="zmdi zmdi-share"></i> {$c->__('hello.share_button')}
-            </a>
+            <a class="button" href="javascript:(function(){location.href='{$c->route('share', '\'+escape(encodeURIComponent(location.href));')}})();"><i class="zmdi zmdi-share"></i> {$c->__('button.share')}</a>
         </li>
     </ul>
 {/if}

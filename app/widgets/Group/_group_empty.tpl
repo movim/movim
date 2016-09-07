@@ -1,8 +1,17 @@
-<div class="placeholder icon pages">
-    <h1>{$c->__('group.empty_title')}</h1>
-    <h4>{$c->__('group.empty_text')}</h4>
-</div>
+<header>
+    <ul class="list middle">
+        <li>
+            <span class="primary icon gray active on_mobile" onclick="MovimTpl.hidePanel()">
+                <i class="zmdi zmdi-arrow-left"></i>
+            </span>
+            <p class="center">{$c->__('group.empty_title')}</p>
+            <p class="center line">{$c->__('group.empty_text')}</p>
+        </li>
+    </ul>
+</header>
+
 <ul class="list card thick">
+    <li></li>
     <li class="block">
         <span class="primary icon gray">
             <i class="zmdi zmdi-help"></i>
@@ -19,16 +28,21 @@
         </p>
     </li>
 </ul>
-<h2>{$c->__('group.servers')}</h2>
 <ul class="list flex middle active">
+    <li class="block large">
+        <p>{$c->__('group.servers')}</p>
+    </li>
     {loop="$servers"}
         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
-            <li class="block" onclick="Groups_ajaxDisco('{$value->server}')">
+            <li class="block {if="empty($value->number)"}faded{/if}" onclick="Groups_ajaxDisco('{$value->server}'); MovimTpl.hidePanel();">
                 <span class="primary icon bubble color {$value->server|stringToColor}">
                     {$value->server|firstLetterCapitalize}
                 </span>
-                <p class="line" title="{$value->server} - {$value->name}">{$value->server} - {$value->name}</p>
-                <p>{$c->__('group.counter', $value->number)}</p>
+                <p class="line" title="{$value->server} - {$value->name}">
+                    {$value->server}
+                    <span class="second">{$value->name}</span>
+                </p>
+                <p>{$c->__('group.counter', (empty($value->number)) ? 0 : $value->number)}</p>
             </li>
         {/if}
     {/loop}

@@ -1,30 +1,12 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Post.php
- * This file is part of Movim.
- *
- * @brief The Post visualisation widget
- *
- * @author Jaussoin Timothée <edhelas_at_movim_dot_com>
- *
- * @version 1.0
- * @date 1 december 2014
- *
- * Copyright (C)2014 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Pubsub\Delete;
 use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Microblog\CommentsGet;
-use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Microblog\CommentPublish;
+
 use \Michelf\Markdown;
 use Respect\Validation\Validator;
 
@@ -32,11 +14,14 @@ class Post extends \Movim\Widget\Base
 {
     function load()
     {
+        $this->addjs('post.js');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
+        $this->registerEvent('pubsub_postdelete', 'onDelete');
+        $this->registerEvent('pubsub_getitem_handle', 'onHandle');
     }
 
     function onPublish($packet)
@@ -46,18 +31,44 @@ class Post extends \Movim\Widget\Base
         RPC::call('MovimTpl.hidePanel');
     }
 
+    function onHandle($packet)
+    {
+        $content = $packet->content;
+
+        if(isset($content['nodeid'])) {
+            $pd = new \Modl\PostnDAO;
+            $p  = $pd->get($content['origin'], $content['node'], $content['nodeid']);
+
+            if($p) {
+                $html = $this->preparePost($p);
+
+                RPC::call('MovimUtils.pushState', $this->route('news', [$p->origin, $p->node, $p->nodeid]));
+
+                RPC::call('MovimTpl.fill', '#post_widget', $html);
+                RPC::call('MovimUtils.enableVideos');
+            }
+        }
+    }
+
     function onCommentPublished($packet)
     {
         Notification::append(false, $this->__('post.comment_published'));
         $this->onComments($packet);
     }
 
-    function onDelete()
+    function onDelete($packet)
     {
-        Notification::append(false, $this->__('post.deleted'));
-        $this->ajaxClear();
-        RPC::call('MovimTpl.hidePanel');
-        RPC::call('Menu_ajaxGetAll');
+        $content = $packet->content;
+
+        if(substr($content['node'], 0, 29) == 'urn:xmpp:microblog:0:comments') {
+            Notification::append(false, $this->__('post.comment_deleted'));
+            $this->ajaxGetComments($content['server'], substr($content['node'], 30));
+        } else {
+            Notification::append(false, $this->__('post.deleted'));
+            $this->ajaxClear();
+            RPC::call('MovimTpl.hidePanel');
+            RPC::call('Menu_ajaxGetAll');
+        }
     }
 
     function onComments($packet)
@@ -77,40 +88,65 @@ class Post extends \Movim\Widget\Base
         $view->assign('id', $id);
 
         $html = $view->draw('_post_comments', true);
-        RPC::call('movim_fill', 'comments', $html);
+        RPC::call('MovimTpl.fill', '#comments', $html);
     }
 
     function onCommentsError($packet)
     {
         $view = $this->tpl();
         $html = $view->draw('_post_comments_error', true);
-        RPC::call('movim_fill', 'comments', $html);
+        RPC::call('MovimTpl.fill', '#comments', $html);
     }
 
     function ajaxClear()
     {
-        RPC::call('movim_fill', 'post_widget', $this->prepareEmpty());
+        RPC::call('MovimUtils.pushState', $this->route('news'));
+
+        RPC::call('MovimTpl.fill', '#post_widget', $this->prepareEmpty());
         RPC::call('Menu.refresh');
         //RPC::call('Menu_ajaxGetAll');
     }
 
-    function ajaxGetPost($id)
+    function ajaxGetContact($jid)
+    {
+        $c = new Contact;
+        $c->ajaxGetDrawer($jid);
+    }
+
+    function ajaxGetPost($origin, $node, $id)
     {
         $pd = new \Modl\PostnDAO;
-        $p  = $pd->getItem($id);
+        $p  = $pd->get($origin, $node, $id);
 
-        $gi = new GetItem;
-        $gi->setTo($p->origin)
-           ->setNode($p->node)
-           ->setId($p->nodeid)
-           ->request();
+        if($p) {
+            $html = $this->preparePost($p);
 
-        $html = $this->preparePost($p);
+            RPC::call('MovimUtils.pushState', $this->route('news', [$p->origin, $p->node, $p->nodeid]));
 
-        RPC::call('movim_push_state', $this->route('news', $id));
+            RPC::call('MovimTpl.fill', '#post_widget', $html);
+            RPC::call('MovimUtils.enableVideos');
 
-        RPC::call('movim_fill', 'post_widget', $html);
-        RPC::call('MovimTpl.scrollHeaders');
+            // If the post is a reply but we don't have the original
+            if($p->isReply() && !$p->getReply()) {
+                $reply = unserialize($p->reply);
+
+                $gi = new GetItem;
+                $gi->setTo($reply['origin'])
+                   ->setNode($reply['node'])
+                   ->setId($reply['nodeid'])
+                   ->setAskReply([
+                        'origin' => $p->origin,
+                        'node' => $p->node,
+                        'nodeid' => $p->nodeid])
+                   ->request();
+            }
+
+            $gi = new GetItem;
+            $gi->setTo($p->origin)
+               ->setNode($p->node)
+               ->setId($p->nodeid)
+               ->request();
+        }
     }
 
     function ajaxDelete($to, $node, $id)
@@ -179,6 +215,7 @@ class Post extends \Movim\Widget\Base
         $view->assign('top', $cd->getTop(6));
         $view->assign('blogs', $nd->getLastBlogPublic(0, 6));
         $view->assign('posts', $nd->getLastPublished(0, 4));
+        $view->assign('me', $cd->get($this->user->getLogin()), true);
         $view->assign('jid', $this->user->getLogin());
 
         return $view->draw('_post_empty', true);
@@ -189,20 +226,21 @@ class Post extends \Movim\Widget\Base
         $view = $this->tpl();
 
         if(isset($p)) {
-            if(isset($p->commentplace) && !$external) {
-                $this->ajaxGetComments($p->commentplace, $p->nodeid);
+            if(isset($p->commentorigin)
+            && !$external) {
+                $this->ajaxGetComments($p->commentorigin, $p->commentnodeid); // Broken in case of repost
             }
 
-            $view->assign('recycled', false);
+            $view->assign('repost', false);
             $view->assign('external', $external);
             $view->assign('public', $public);
 
-            // Is it a recycled post ?
-            if($p->getContact()->jid
-            && $p->node == 'urn:xmpp:microblog:0'
-            && ($p->origin != $p->getContact()->jid)) {
+            $view->assign('reply', $p->isReply() ? $p->getReply() : false);
+
+            // Is it a repost ?
+            if($p->isRecycled()) {
                 $cd = new \Modl\ContactDAO;
-                $view->assign('recycled', $cd->get($p->origin));
+                $view->assign('repost', $cd->get($p->origin));
             }
 
             $view->assign('post', $p);

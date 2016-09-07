@@ -47,7 +47,7 @@ class MovimEmoji
 function addUrls($string, $preview = false) {
     // Add missing links
     return preg_replace_callback(
-        "/([\w\"'>]+\:\/\/[\w-?'&;#+,%:~=\.\/\@\(\)]+)/u", function ($match) use($preview) {
+        "/([\w\"'>]+\:\/\/[\w-\*?'&;!#+,%:~=\.\/\@\(\)]+)/u", function ($match) use($preview) {
             if(!in_array(substr($match[0], 0, 1), array('>', '"', '\''))) {
                 $content = $match[0];
 
@@ -107,7 +107,7 @@ function prepareString($string, $large = false, $preview = false) {
  */
 function explodeURI($uri) {
     $arr = parse_url(urldecode($uri));
-    $result = array();
+    $result = [];
 
     if(isset($arr['query'])) {
         $query = explode(';', $arr['query']);
@@ -226,8 +226,9 @@ function colorize($string, $color) {
  * @param string
  * @return string
  */
-function stringToColor($string) {
-    $colors = array(
+function stringToColor($string)
+{
+    $colors = [
         0 => 'red',
         1 => 'purple',
         2 => 'indigo',
@@ -235,15 +236,11 @@ function stringToColor($string) {
         4 => 'green',
         5 => 'orange',
         6 => 'yellow',
-        7 => 'brown');
+        7 => 'brown'
+    ];
 
-    $s = substr(base_convert(sha1($string), 15, 10), 0, 10);
-
-    if($colors[$s%8]) {
-        return $colors[$s%8];
-    } else {
-        return 'orange';
-    }
+    $s = crc32($string);
+    return $colors[$s%8];
 }
 
 /**
@@ -273,6 +270,14 @@ function purifyHTML($string)
  */
 function firstLetterCapitalize($string) {
     return ucfirst(strtolower(mb_substr($string, 0, 2)));
+}
+
+/** Return a clean string that can be used for HTML ids
+ * @param string
+ * @return string
+ */
+function cleanupId($string) {
+    return "id-" . preg_replace('/([^a-z0-9]+)/i', '-', $string);
 }
 
 /**

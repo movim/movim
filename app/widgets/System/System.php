@@ -21,6 +21,7 @@ class System extends \Movim\Widget\Base {
     {
         $this->view->assign('base_uri',     BASE_URI);
         $this->view->assign('base_host',    BASE_HOST);
+        $this->view->assign('small_picture_limit', SMALL_PICTURE_LIMIT);
         $this->view->assign('error_uri',    Route::urlize('disconnect'));
 
         $r = new Route;

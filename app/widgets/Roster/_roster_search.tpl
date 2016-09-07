@@ -1,8 +1,8 @@
 <section>
-    <h3>{$c->__('roster.search_pod')}</h3>
+    <h3>{$c->__('roster.add_title')}</h3>
     <ul class="list">
         <li>
-            <form name="add">
+            <form name="add" onsubmit="return false;">
                 <div>
                     <input
                         name="searchjid"
@@ -24,10 +24,10 @@
     </div>
 </section>
 <div>
-    <a onclick="Dialog.clear()" class="button flat">
+    <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
-    <a onclick="{$add} Dialog.clear()" class="button flat">
+    <a onclick="{$add} Dialog_ajaxClear()" class="button flat">
         {$c->__('button.add')}
     </a>
 </div>

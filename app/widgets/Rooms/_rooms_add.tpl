@@ -10,7 +10,11 @@
             <input
                 {if="isset($room)"}value="{$room->conference}" disabled{/if}
                 name="jid"
-                placeholder="chatroom@server.com"
+                {if="isset($server)"}
+                    placeholder="chatroom@{$server}"
+                {else}
+                    placeholder="chatroom@server.com"
+                {/if}
                 type="email"
                 required />
             <label>{$c->__('chatrooms.id')}</label>
@@ -45,19 +49,19 @@
         -->
     </section>
     <div>
-        <a class="button flat" onclick="Dialog.clear()">
+        <a class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.close')}
         </a>
         {if="isset($room)"}
             <a
                 class="button flat"
-                onclick="Rooms_ajaxChatroomAdd(movim_parse_form('bookmarkmucadd'));">
+                onclick="Rooms_ajaxChatroomAdd(MovimUtils.parseForm('bookmarkmucadd'));">
                 {$c->__('button.edit')}
             </a>
         {else}
             <a
                 class="button flat"
-                onclick="Rooms_ajaxChatroomAdd(movim_parse_form('bookmarkmucadd'));">
+                onclick="Rooms_ajaxChatroomAdd(MovimUtils.parseForm('bookmarkmucadd'));">
                 {$c->__('button.add')}
             </a>
         {/if}

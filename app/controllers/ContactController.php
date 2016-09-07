@@ -9,5 +9,10 @@ class ContactController extends Base
 
     function dispatch() {
         $this->page->setTitle(__('page.contacts'));
+
+        $user = new User();
+        if(!$user->isLogged()) {
+            $this->redirect('blog', [$this->fetchGet('f')]);
+        }
     }
 }

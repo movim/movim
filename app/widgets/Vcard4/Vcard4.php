@@ -1,20 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Vcard4.php
- * This file is part of MOVIM.
- *
- * @brief A widget which display all the infos of a contact, vcard 4 version
- *
- * @author Timothée    Jaussoin <edhelas_at_gmail_dot_com>
-
- * Copyright (C)2013 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 use Moxl\Xec\Action\Vcard4\Get;
 use Moxl\Xec\Action\Vcard4\Set;
 use Moxl\Xec\Action\Nickname\Set as Nickname;
@@ -52,9 +37,11 @@ class Vcard4 extends \Movim\Widget\Base
         $vcardform->assign('marital',  getMarital());
         $vcardform->assign('countries',getCountries());
 
+        $me->isValidDate();
+
         $vcardform->assign(
             'submit',
-            $this->call('ajaxVcardSubmit', "movim_form_to_json('vcard4')")
+            $this->call('ajaxVcardSubmit', "MovimUtils.formToJson('vcard4')")
             );
 
         $vcardform->assign(
@@ -63,7 +50,7 @@ class Vcard4 extends \Movim\Widget\Base
             );
 
         // The datepicker arrays
-        $days = $months = $years = array();
+        $days = $months = $years = [];
         for($i=1; $i<= 31; $i++) {
             if($i < 10){
                 $j = '0'.$i;
@@ -97,12 +84,12 @@ class Vcard4 extends \Movim\Widget\Base
 
         Notification::append(null, $this->__('vcard.updated'));
 
-        RPC::call('movim_fill', 'vcard_form', $html);
+        RPC::call('MovimTpl.fill', '#vcard_form', $html);
         RPC::commit();
     }
 
     function onMyVcard4Received() {
-        RPC::call('movim_button_reset', '#vcard4validate');
+        RPC::call('MovimUtils.buttonReset', '#vcard4validate');
         Notification::append(null, $this->__('vcard.updated'));
         RPC::commit();
     }

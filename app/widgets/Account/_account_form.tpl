@@ -4,10 +4,10 @@
     </form>
 </section>
 <div>
-    <a onclick="Dialog.clear()" class="button flat">
+    <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
-    <a onclick="Account_ajaxRegister('{$from}', movim_form_to_json('register')); Dialog.clear();" class="button flat">
+    <a onclick="Account_ajaxRegister('{$from}', MovimUtils.formToJson('register')); Dialog_ajaxClear();" class="button flat">
         {$c->__('button.submit')}
     </a>
     {if="$actions != null"}

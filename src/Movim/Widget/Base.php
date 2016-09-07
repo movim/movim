@@ -6,14 +6,14 @@ use Movim\Controller\Ajax;
 
 class Base
 {
-    protected $js = array(); /*< Contains javascripts. */
-    protected $css = array(); /*< Contains CSS files. */
-    protected $rawcss = array(); /*< Contains raw CSS files links. */
+    protected $js = []; /*< Contains javascripts. */
+    protected $css = []; /*< Contains CSS files. */
+    protected $rawcss = []; /*< Contains raw CSS files links. */
     protected $ajax;     /*< Contains ajax client code. */
     protected $user;
     protected $name;
     protected $pure;    // To render the widget without the container
-    //protected $translations = array(); // Set translations in the controller
+    //protected $translations = []; // Set translations in the controller
     protected $_view;
     public $events;
     public $filters;
@@ -50,7 +50,7 @@ class Base
             foreach($meths as $method) {
                 if(preg_match('#^ajax#', $method->name)) {
                     $pars = $method->getParameters();
-                    $params = array();
+                    $params = [];
                     foreach($pars as $param) {
                         $params[] = $param->name;
                     }
@@ -268,7 +268,7 @@ class Base
 
         if($filter != null) {
             if(!is_array($this->filters)) {
-                $this->filters = array();
+                $this->filters = [];
             }
             $this->filters[$function] = $filter;
         }

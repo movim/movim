@@ -18,13 +18,13 @@ var AdHoc = {
 
         while(i < textareas.length)
         {
-            movim_textarea_autoheight(textareas[i]);
+            MovimUtils.textareaAutoheight(textareas[i]);
             i++;
         }
     },
     submit: function() {
         var form = document.querySelector('#dialog form[name=command]');
-        AdHoc_ajaxSubmit(movim_parse_form('command'), form.dataset.node, form.dataset.sessionid);
+        AdHoc_ajaxSubmit(MovimUtils.parseForm('command'), form.dataset.node, form.dataset.sessionid);
     }
 }
 

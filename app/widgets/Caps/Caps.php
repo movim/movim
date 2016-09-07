@@ -1,25 +1,10 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file AdminDB.php
- * This file is part of Movim.
- *
- * @brief Capabilities support array
- *
- * @author Jaussoin Timothée <edhelas@movim.eu>
-
- * Copyright (C)2014 Movim project
- *
- * See COPYING for licensing information.
- */
- 
 class Caps extends \Movim\Widget\Base
 {
-    private $_table = array();
+    private $_table = [];
     private $_nslist;
-    
+
     function load() {
         $this->addcss('caps.css');
     }
@@ -49,9 +34,9 @@ class Caps extends \Movim\Widget\Base
 
         foreach($clients as $c) {
             if(!isset($this->_table[$c->name])) {
-                $this->_table[$c->name] = array();
+                $this->_table[$c->name] = [];
             }
-            
+
             $features = unserialize($c->features);
             foreach($features as $f) {
                 if(!in_array($f, $this->_table[$c->name])) {

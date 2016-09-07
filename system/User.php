@@ -1,22 +1,8 @@
 <?php
 
-/**
- * @file User.php
- * This file is part of Movim.
- *
- * @brief Handles the user's login and user.
- *
- * @author Jaussoin Timothée
- *
- * @date 2014
- *
- * Copyright (C)2014 Movim
- *
- * See COPYING for licensing information.
- */
 class User {
     public  $username = '';
-    private $config = array();
+    private $config = [];
 
     public $caps;
 
@@ -49,15 +35,17 @@ class User {
     /**
      * @brief Reload the user configuration
      */
-    function reload()
+    function reload($language = false)
     {
         $session = \Sessionx::start();
         if($session->config) {
-            $this->config = $session->config;
-            $lang = $this->getConfig('language');
-            if(isset($lang)) {
-                $l = Movim\i18n\Locale::start();
-                $l->load($lang);
+            if($language) {
+                $this->config = $session->config;
+                $lang = $this->getConfig('language');
+                if(isset($lang)) {
+                    $l = Movim\i18n\Locale::start();
+                    $l->load($lang);
+                }
             }
 
             $cd = new modl\CapsDAO;
@@ -109,7 +97,7 @@ class User {
 
         file_put_contents($this->userdir.'config.dump', serialize($config));
 
-        $this->reload();
+        $this->reload(true);
     }
 
     function getConfig($key = false)
@@ -122,6 +110,8 @@ class User {
 
     function getDumpedConfig($key = false)
     {
+        if(!file_exists($this->userdir.'config.dump')) return [];
+
         $config = unserialize(file_get_contents($this->userdir.'config.dump'));
 
         if($key == false)

@@ -4,13 +4,13 @@
     <article>
         <section>
             <content>
-                {$content|prepareString}
+                {$content}
             </content>
         </section>
     </article>
 </section>
 <div class="no_bar">
-    <a onclick="Dialog.clear()" class="button flat">
+    <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
 </div>

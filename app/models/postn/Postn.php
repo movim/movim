@@ -18,9 +18,8 @@ class Postn extends Model {
     public $contentraw;     // The raw content
     public $contentcleaned; // The cleanned content
 
-    public $commentplace;
-
-    public $open;
+    public $commentorigin;
+    public $commentnodeid;
 
     public $published;      //
     public $updated;        //
@@ -33,9 +32,14 @@ class Postn extends Model {
 
     public $links;
 
+    public $reply;
+
     public $hash;
 
     private $youtube;
+
+    public $open;
+    public $logo;
     private $openlink;
 
     public function __construct() {
@@ -63,8 +67,10 @@ class Postn extends Model {
                 {"type":"text" },
             "contentcleaned" :
                 {"type":"text" },
-            "commentplace" :
-                {"type":"string", "size":128 },
+            "commentorigin" :
+                {"type":"string", "size":64 },
+            "commentnodeid" :
+                {"type":"string", "size":96 },
 
             "open" :
                 {"type":"bool"},
@@ -76,6 +82,9 @@ class Postn extends Model {
             "delay" :
                 {"type":"date" },
 
+            "reply" :
+                {"type":"text" },
+
             "lat" :
                 {"type":"string", "size":32 },
             "lon" :
@@ -84,7 +93,7 @@ class Postn extends Model {
             "links" :
                 {"type":"text" },
             "picture" :
-                {"type":"int", "size":4 },
+                {"type":"text" },
             "hash" :
                 {"type":"string", "size":128, "mandatory":true }
         }';
@@ -217,20 +226,20 @@ class Postn extends Model {
             && isset($entry->entry->category->attributes()->term)) {
                 $tag = new \Modl\Tag;
                 $tag->nodeid = $this->__get('nodeid');
-                $tag->tag    = (string)$entry->entry->category->attributes()->term;
+                $tag->tag    = strtolower((string)$entry->entry->category->attributes()->term);
                 $td->set($tag);
             } else {
                 foreach($entry->entry->category as $cat) {
                     $tag = new \Modl\Tag;
                     $tag->nodeid = $this->__get('nodeid');
-                    $tag->tag    = (string)$cat->attributes()->term;
+                    $tag->tag    = strtolower((string)$cat->attributes()->term);
                     $td->set($tag);
                 }
             }
         }
 
-        if(!isset($this->commentplace))
-            $this->__set('commentplace', $this->origin);
+        if(!isset($this->commentorigin))
+            $this->__set('commentorigin', $this->origin);
 
         $this->__set('content', trim($content));
         $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
@@ -242,7 +251,17 @@ class Postn extends Model {
             $results = $xml->xpath('//img/@src');
             if(is_array($results) && !empty($results)) {
                 $extra = (string)$results[0];
-                $this->picture = true;
+                if(isSmallPicture($extra)) {
+                    $this->picture = $extra;
+                }
+            }
+
+            $results = $xml->xpath('//video/@poster');
+            if(is_array($results) && !empty($results)) {
+                $extra = (string)$results[0];
+                if(isSmallPicture($extra)) {
+                    $this->picture = $extra;
+                }
             }
         }
 
@@ -254,30 +273,50 @@ class Postn extends Model {
             if($entry->entry->geoloc->lon != 0)
                 $this->__set('lon', (string)$entry->entry->geoloc->lon);
         }
+
+        // We fill empty aid
+        if($this->isMicroblog() && empty($this->aid)) {
+            $this->__set('aid', $this->origin);
+        }
+
+        // We check if this is a reply
+        if($entry->entry->{'in-reply-to'}) {
+            $href = (string)$entry->entry->{'in-reply-to'}->attributes()->href;
+            $arr = explode(';', $href);
+            $reply = [
+                'origin' => substr($arr[0], 5, -1),
+                'node'   => substr($arr[1], 5),
+                'nodeid' => substr($arr[2], 5)
+            ];
+
+            $this->__set('reply', serialize($reply));
+        }
     }
 
     private function typeIsPicture($type) {
-        return in_array($type, array('picture', 'image/jpeg', 'image/png', 'image/jpg', 'image/gif'));
+        return in_array($type, ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']);
     }
 
     private function typeIsLink($link) {
-        return (isset($link['type'])
-        && $link['type'] == 'text/html'
+        return (isset($link['rel'])
+        && in_array($link['rel'], ['related', 'alternate'])
         && Validator::url()->validate($link['href']));
     }
 
     private function setAttachments($links, $extra = false) {
-        $l = array();
+        $l = [];
 
         foreach($links as $attachment) {
-            $enc = array();
+            $enc = [];
             $enc = (array)$attachment->attributes();
             $enc = $enc['@attributes'];
             array_push($l, $enc);
 
-            if(array_key_exists('type', $enc)
-            && $this->typeIsPicture($enc['type'])) {
-                $this->picture = true;
+            if($this->picture == null
+            && isset($enc['type'])
+            && $this->typeIsPicture($enc['type'])
+            && isSmallPicture($enc['href'])) {
+                $this->picture = $enc['href'];
             }
 
             if($enc['rel'] == 'alternate'
@@ -285,70 +324,83 @@ class Postn extends Model {
 
             if((string)$attachment->attributes()->title == 'comments') {
                 $substr = explode('?',substr((string)$attachment->attributes()->href, 5));
-                $this->commentplace = reset($substr);
+                $this->commentorigin = reset($substr);
+                $this->commentnodeid = substr((string)$substr[1], 36);
             }
         }
 
         if($extra) {
-            array_push($l, array('href' => $extra, 'type' => 'picture'));
+            array_push(
+                $l,
+                [
+                    'rel' => 'enclosure',
+                    'href' => $extra,
+                    'type' => 'picture'
+                ]);
         }
 
-        if(!empty($l))
+        if(!empty($l)) {
             $this->links = serialize($l);
+        }
     }
 
     public function getAttachments()
     {
         $attachments = null;
-        $this->picture = null;
         $this->openlink = null;
 
         if(isset($this->links)) {
-            $attachments = array(
-                'pictures' => array(),
-                'files' => array(),
-                'links' => array()
-            );
-
             $links = unserialize($this->links);
+            $attachments = [
+                'pictures' => [],
+                'files' => [],
+                'links' => []
+            ];
+
             foreach($links as $l) {
-                if(isset($l['type']) && $this->typeIsPicture($l['type'])) {
-                    if($this->picture == null) {
-                        $this->picture = $l['href'];
-                    }
+                // If the href is not a valid URL we skip
+                if(!Validator::url()->validate($l['href'])) continue;
 
-                    array_push($attachments['pictures'], $l);
-                } elseif($this->typeIsLink($l)) {
-                    if($this->youtube == null
-                    && preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
-                        $this->youtube = $match[1];
-                    }
+                // Prepare the switch
+                $rel = isset($l['rel']) ? $l['rel'] : null;
+                switch($rel) {
+                    case 'enclosure':
+                        if($this->typeIsPicture($l['type'])) {
+                            array_push($attachments['pictures'], $l);
+                        } elseif($l['type'] != 'picture') {
+                            array_push($attachments['files'], $l);
+                        }
+                        break;
 
-                    if($l['rel'] == 'alternate') {
+                    case 'related':
+                        if(preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
+                            $this->youtube = $match[1];
+                        }
+
+                        array_push(
+                            $attachments['links'],
+                            [
+                                'href' => $l['href'],
+                                'url'  => parse_url($l['href']),
+                                'rel'  => 'related'
+                            ]
+                        );
+                        break;
+
+                    case 'alternate':
+                    default:
                         $this->openlink = $l['href'];
                         if(!$this->isMicroblog()) {
                             array_push(
                                 $attachments['links'],
-                                array(
+                                [
                                     'href' => $l['href'],
                                     'url'  => parse_url($l['href']),
                                     'rel'  => 'alternate'
-                                )
+                                ]
                             );
                         }
-                    }
-                } elseif(isset($l['rel'])){
-                    if ($l['rel'] == 'enclosure')
-                        array_push($attachments['files'], $l);
-                    elseif ($l['rel'] == 'related')
-                        array_push(
-                            $attachments['links'],
-                            array(
-                                'href' => $l['href'],
-                                'url'  => parse_url($l['href']),
-                                'rel'  => 'related'
-                            )
-                        );
+                        break;
                 }
             }
         }
@@ -360,18 +412,20 @@ class Postn extends Model {
         return $attachments;
     }
 
-    public function getAttachment()
+    public function getAttachment($link = false)
     {
         $attachments = $this->getAttachments();
+
         if(isset($attachments['pictures']) && !isset($attachments['links'])) {
             return $attachments['pictures'][0];
         }
-        if(isset($attachments['files'])) {
+        if(isset($attachments['files']) && !$link) {
             return $attachments['files'][0];
         }
         if(isset($attachments['links'])) {
             return $attachments['links'][0];
         }
+
         return false;
     }
 
@@ -390,12 +444,10 @@ class Postn extends Model {
         return (isset($this->lat, $this->lon) && $this->lat != '' && $this->lon != '');
     }
 
-    public function isMine()
+    public function getLogo()
     {
-        $user = new \User();
-
-        return ($this->aid == $user->getLogin()
-        || $this->origin == $user->getLogin());
+        $p = new \Picture;
+        return $p->get($this->origin.$this->node, 120);
     }
 
     public function getUUID()
@@ -405,6 +457,23 @@ class Postn extends Model {
         } else {
             return 'urn:uuid:'.generateUUID($this->nodeid);
         }
+    }
+
+    public function getRef()
+    {
+        return 'xmpp:'.$this->origin.'?;node='.$this->node.';item='.$this->nodeid;
+    }
+
+    public function isMine()
+    {
+        $user = new \User();
+
+        return ($this->aid == $user->getLogin()
+        || $this->origin == $user->getLogin());
+    }
+
+    public function isPublic() {
+        return ($this->open);
     }
 
     public function isMicroblog()
@@ -422,9 +491,34 @@ class Postn extends Model {
         return (strlen($this->contentcleaned) < 700);
     }
 
+    public function isNSFW()
+    {
+        return (current(explode('.', $this->origin)) == 'nsfw');
+    }
+
+    public function isReply()
+    {
+        return isset($this->reply);
+    }
+
+    public function getReply()
+    {
+        if(!$this->reply) return;
+
+        $reply = unserialize($this->reply);
+        $pd = new \Modl\PostnDAO;
+        return $pd->get($reply['origin'], $reply['node'], $reply['nodeid']);
+    }
+
     public function getPublicUrl()
     {
         return $this->openlink;
+    }
+
+    public function countComments()
+    {
+        $pd = new \Modl\PostnDAO;
+        return $pd->countComments($this->commentorigin, $this->commentnodeid);
     }
 
     public function getTags()
@@ -442,10 +536,6 @@ class Postn extends Model {
         if(is_array($tags)) {
             return implode(', ', $tags);
         }
-    }
-
-    public function isPublic() {
-        return ($this->open);
     }
 }
 
@@ -472,5 +562,19 @@ class ContactPostn extends Postn {
         $c->photobin = $this->photobin;
 
         return $c;
+    }
+
+    public function isRecycled()
+    {
+        return ($this->getContact()->jid
+            && $this->node == 'urn:xmpp:microblog:0'
+            && (strtolower($this->origin) != strtolower($this->getContact()->jid)));
+    }
+
+    public function isEditable()
+    {
+        return (
+            ($this->contentraw != null || $this->links != null)
+            && !$this->isRecycled());
     }
 }

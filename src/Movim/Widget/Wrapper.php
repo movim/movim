@@ -5,14 +5,14 @@ class Wrapper
 {
     private static $instance;
 
-    private $_widgets = array();
-    private $_events = array();
-    private $_eventWidgets = array();
+    private $_widgets = [];
+    private $_events = [];
+    private $_eventWidgets = [];
 
     private $_view = ''; // The current page where the widget is displayed
 
-    private $css = array(); // All the css loaded by the widgets so far.
-    private $js = array(); // All the js loaded by the widgets so far.
+    private $css = []; // All the css loaded by the widgets so far.
+    private $js = []; // All the js loaded by the widgets so far.
 
     public $title = null; // If a widget has defined a particular title
     public $image = null; // If a widget has defined a particular image
@@ -77,7 +77,7 @@ class Wrapper
             $path = APP_PATH . "widgets/$name/$name.php";
         }
         else {
-            throw new Exception(
+            throw new \Exception(
                 __('error.widget_load_error', $name));
         }
 
@@ -133,7 +133,7 @@ class Wrapper
         $widget = $this->loadWidget($widget_name);
 
         if(!is_array($params))
-            $params = array();
+            $params = [];
 
         $result = call_user_func_array(array($widget, $method), $params);
 

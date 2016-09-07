@@ -3,9 +3,9 @@ namespace Movim\Controller;
 
 class Ajax extends Base
 {
-    protected $funclist = array();
+    protected $funclist = [];
     protected static $instance;
-    protected $widgetlist = array();
+    protected $widgetlist = [];
 
     public function __construct()
     {

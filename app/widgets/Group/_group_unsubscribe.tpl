@@ -8,11 +8,11 @@
     {/if}
 </section>
 <div>
-    <a onclick="Dialog.clear()" class="button flat">
+    <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
     <a
-        onclick="Group_ajaxUnsubscribe('{$server}', '{$node}'); Dialog.clear()"
+        onclick="Group_ajaxUnsubscribe('{$server}', '{$node}'); Dialog_ajaxClear()"
         class="button flat">
         {$c->__('group.unsubscribe')}
     </a>

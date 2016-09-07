@@ -6,11 +6,11 @@ var AdminTest = {
     
     toggleConfiguration : function() {
         if(this.databaseOK && this.websocketOK && this.movimOK) {
-            movim_remove_class('li.admingen', 'disabled');
-            movim_remove_class('li.api', 'disabled');
+            MovimUtils.removeClass('li.admingen', 'disabled');
+            MovimUtils.removeClass('li.api', 'disabled');
         } else {
-            movim_add_class('li.admingen', 'disabled');
-            movim_add_class('li.api', 'disabled');
+            MovimUtils.addClass('li.admingen', 'disabled');
+            MovimUtils.addClass('li.api', 'disabled');
         }
     },
 
@@ -18,37 +18,37 @@ var AdminTest = {
         this.websocketOK = true;
         this.toggleConfiguration();
 
-        movim_remove_class('figure #browser-daemon', 'error');
-        movim_add_class('figure #browser-daemon', 'success');
-        movim_add_class('div #xmpp-daemon', 'success');
-        movim_remove_class('li.admindb', 'disabled');
+        MovimUtils.removeClass('figure #browser-daemon', 'error');
+        MovimUtils.addClass('figure #browser-daemon', 'success');
+        MovimUtils.addClass('div #xmpp-daemon', 'success');
+        MovimUtils.removeClass('li.admindb', 'disabled');
 
-        movim_get_node('#websocket_error').style.display = 'none';
+        MovimUtils.hideElement(MovimUtils.getNode('#websocket_error'));
     },
 
     enableAPI : function() {
         this.apiOK = true;
 
-        movim_remove_class('figure #movim-api', 'disabled');
-        movim_add_class('figure #movim-api', 'success');
+        MovimUtils.removeClass('figure #movim-api', 'disabled');
+        MovimUtils.addClass('figure #movim-api', 'success');
     },
 
     disableMovim : function() {
         this.movimOK = false;
 
-        movim_add_class('figure #movim_block', 'error');
+        MovimUtils.addClass('figure #movim_block', 'error');
     }/*,
 
     testXMPPWebsocket : function(url) {
         this.connection = new WebSocket(url, 'xmpp');
 
         this.connection.onopen = function(e) {
-            movim_remove_class('figure #daemon-xmpp', 'error');
-            movim_add_class('figure #daemon-xmpp', 'success');
-            movim_get_node('#xmpp_websocket_error').style.display = 'none';
+            MovimUtils.removeClass('figure #daemon-xmpp', 'error');
+            MovimUtils.addClass('figure #daemon-xmpp', 'success');
+            MovimUtils.getNode('#xmpp_websocket_error').style.display = 'none';
         };
     }*/
-}
+};
 
 MovimWebsocket.attach(function() {
     AdminTest.enableWebsocket();
@@ -57,5 +57,5 @@ MovimWebsocket.attach(function() {
 
 movim_add_onload(function() {
     AdminTest.toggleConfiguration();
-    movim_add_class('li.admindb', 'disabled');
+    MovimUtils.addClass('li.admindb', 'disabled');
 });

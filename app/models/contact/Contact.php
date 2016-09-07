@@ -219,6 +219,7 @@ class Contact extends Model {
             $sizes = array(
                 'wall'  => array(1920, 1080),
                 'xxl'   => array(1280, 300),
+                'xl'    => array(512 , false),
                 'l'     => array(210 , false),
                 'm'     => array(120 , false),
                 's'     => array(50  , false),
@@ -363,19 +364,17 @@ class Contact extends Model {
         return $truename;
     }
 
-    function getAge() {
-        if(isset($this->date)
-            && $this->date != '0000-00-00T00:00:00+0000'
-            && $this->date != '1970-01-01 00:00:00'
-            && $this->date != '1970-01-01 01:00:00'
-            && $this->date != '1970-01-01T00:00:00+0000') {
+    function getAge()
+    {
+        if($this->isValidDate()) {
             $age = intval(substr(date('Ymd') - date('Ymd', strtotime($this->date)), 0, -4));
             if($age != 0)
                 return $age;
         }
     }
 
-    function getGender() {
+    function getGender()
+    {
         $gender = getGender();
 
         if($this->gender != null && $this->gender != 'N') {
@@ -383,7 +382,8 @@ class Contact extends Model {
         }
     }
 
-    function getMarital() {
+    function getMarital()
+    {
         $marital = getMarital();
 
         if($this->marital != null && $this->marital != 'none') {
@@ -424,6 +424,8 @@ class Contact extends Model {
     }
 
     function isEmpty() {
+        $this->isValidDate();
+
         if($this->fn == null
         && $this->name == null
         && $this->date == null
@@ -432,6 +434,20 @@ class Contact extends Model {
         && $this->description == null) {
             return true;
         } else {
+            return false;
+        }
+    }
+
+    function isValidDate()
+    {
+        if(isset($this->date)
+            && $this->date != '0000-00-00T00:00:00+0000'
+            && $this->date != '1970-01-01 00:00:00'
+            && $this->date != '1970-01-01 01:00:00'
+            && $this->date != '1970-01-01T00:00:00+0000') {
+            return true;
+        } else {
+            $this->date = null;
             return false;
         }
     }
@@ -513,14 +529,14 @@ class PresenceContact extends Contact {
 
 }
 
-class RosterContact extends Contact {
+class RosterContact extends Contact
+{
     protected $rostername;
     protected $groupname;
     protected $status;
     protected $resource;
     protected $value;
     protected $delay;
-    protected $chaton;
     protected $last;
     protected $publickey;
     protected $muc;
@@ -531,7 +547,8 @@ class RosterContact extends Contact {
     protected $category;
     //protected $type;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->_struct = "
         {
@@ -547,8 +564,6 @@ class RosterContact extends Contact {
                 {'type':'string', 'size':128, 'key':true },
             'value' :
                 {'type':'int',    'size':11, 'mandatory':true },
-            'chaton' :
-                {'type':'int',    'size':11 },
             'status' :
                 {'type':'text'},
             'node' :
@@ -571,7 +586,8 @@ class RosterContact extends Contact {
     }
 
     // This method is only use on the connection
-    public function setPresence($p) {
+    public function setPresence($p)
+    {
         $this->resource         = $p->resource;
         $this->value            = $p->value;
         $this->status           = $p->status;
@@ -581,5 +597,16 @@ class RosterContact extends Contact {
         $this->muc              = $p->muc;
         $this->mucaffiliation   = $p->mucaffiliation;
         $this->mucrole          = $p->mucrole;
+    }
+
+    public function getCaps()
+    {
+        if(!empty($this->node)
+        && !empty($this->ver)) {
+            $node = $this->node.'#'.$this->ver;
+
+            $cad = new \Modl\CapsDAO();
+            return $cad->get($node);
+        }
     }
 }

@@ -1,24 +1,9 @@
 <?php
 
-/**
- * @file Utils.php
- * This file is part of PROJECT.
- *
- * @brief Description
- *
- * @author Etenil <etenil@etenilsrealm.nl>
- *
- * @version 1.0
- * @date 20 February 2011
- *
- * Copyright (C)2011 Etenil
- *
- * All rights reserved.
- */
-
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
+use GuzzleHttp\Client;
 
 class Utils {
     public static function log($message, $priority = '')
@@ -565,7 +550,8 @@ function geoRadius($latitude, $longitude, $radius) {
 /*
  * @desc Request a simple url
  */
-function requestURL($url, $timeout = 10, $post = false) {
+function requestURL($url, $timeout = 10, $post = false)
+{
     $ch = curl_init($url);
 
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -585,7 +571,7 @@ function requestURL($url, $timeout = 10, $post = false) {
         curl_setopt ($ch, CURLOPT_POSTFIELDS, $params);
     }
 
-    $rs = array();
+    $rs = [];
 
     $content = curl_exec($ch);
 
@@ -602,6 +588,43 @@ function requestURL($url, $timeout = 10, $post = false) {
 }
 
 /*
+ * @desc Check if the URL is a small picture
+ */
+function isSmallPicture($url, $size = false)
+{
+    if(!$size) $size = SMALL_PICTURE_LIMIT;
+
+    $client = new Guzzle\Http\Client($url, [
+        'request.options' => [
+            'timeout' => 2,
+            'connect_timeout' => 2
+        ]
+    ]);
+
+    $request = $client->head('');
+
+    try {
+        $response = $request->send();
+
+        $length = $response->getHeader('content-length');
+
+        if($length) {
+            $length = (int)$length->toArray()[0];
+            $type   = (string)$response->getHeader('content-type');
+
+            $typearr = explode('/', $type);
+
+            return ($typearr[0] == 'image'
+                && $length <= $size
+                && $length >= 10000);
+        }
+
+        return false;
+    } catch(\Exception $e) {
+        return false;
+    }
+}
+/*
  * @desc Get the URI of a smiley
  */
 function getSmileyPath($id)
@@ -612,7 +635,8 @@ function getSmileyPath($id)
 /*
  * @desc Translate something
  */
-function __() {
+function __()
+{
     $args = func_get_args();
     $l = Movim\i18n\Locale::start();
 
@@ -620,7 +644,8 @@ function __() {
     return $l->translate($string, $args);
 }
 
-function createEmailPic($jid, $email) {
+function createEmailPic($jid, $email)
+{
     $cachefile = DOCUMENT_ROOT.'/cache/'.$jid.'_email.png';
 
     if(file_exists(DOCUMENT_ROOT.'/cache/'.$jid.'_email.png'))

@@ -1,23 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file Wall.php
- * This file is part of MOVIM.
- *
- * @brief The configuration form
- *
- * @author Timothée Jaussoin <edhelas_at_gmail_dot_com>
- *
- * @version 1.0
- * @date 28 October 2010
- *
- * Copyright (C)2010 MOVIM project
- *
- * See COPYING for licensing information.
- */
-
 use Moxl\Xec\Action\Storage\Set;
 use Respect\Validation\Validator;
 
@@ -46,7 +28,7 @@ class Config extends \Movim\Widget\Base
         $view->assign('submit',
             $this->call(
                 'ajaxSubmit',
-                "movim_parse_form('general')"
+                "MovimUtils.parseForm('general')"
             )
                 . "this.className='button color orange inactive oppose';
                     this.onclick=null;"
@@ -87,7 +69,7 @@ class Config extends \Movim\Widget\Base
     {
         $html = $this->prepareConfigForm();
 
-        RPC::call('movim_fill', 'config_widget', $html);
+        RPC::call('MovimTpl.fill', '#config_widget', $html);
         RPC::call('Config.load');
     }
 

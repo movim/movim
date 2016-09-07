@@ -1,20 +1,5 @@
 <?php
 
-/**
- * @package Widgets
- *
- * @file AdminMain.php
- * This file is part of Movim.
- *
- * @brief The main configuration on Movim
- *
- * @author Jaussoin Timothée <edhelas@movim.eu>
-
- * Copyright (C)2014 Movim project
- *
- * See COPYING for licensing information.
- */
-
 class AdminMain extends \Movim\Widget\Base
 {
     function load() {
