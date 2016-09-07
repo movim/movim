@@ -594,7 +594,13 @@ function isSmallPicture($url, $size = false)
 {
     if(!$size) $size = SMALL_PICTURE_LIMIT;
 
-    $client = new Guzzle\Http\Client($url);
+    $client = new Guzzle\Http\Client($url, [
+        'request.options' => [
+            'timeout' => 2,
+            'connect_timeout' => 2
+        ]
+    ]);
+
     $request = $client->head('');
 
     try {
