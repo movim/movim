@@ -35,7 +35,7 @@ class Post extends \Movim\Widget\Base
     {
         $content = $packet->content;
 
-        if(isset($content['nodeid'])) {
+        if(is_array($content) && isset($content['nodeid'])) {
             $pd = new \Modl\PostnDAO;
             $p  = $pd->get($content['origin'], $content['node'], $content['nodeid']);
 

@@ -19,7 +19,8 @@ class Menu extends \Movim\Widget\Base
 
     function onHandle($packet)
     {
-        if(isset($packet->content['nodeid'])) {
+        if(is_array($packet->content)
+        && isset($packet->content['nodeid'])) {
             $this->onRetract($packet);
         } else {
             $this->onPost($packet);
