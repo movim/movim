@@ -91,6 +91,22 @@ class Chat extends \Movim\Widget\Base
                     4,
                     $this->route('chat', $contact->jid)
                 );
+            } elseif($message->type == 'groupchat') {
+                $pd = new \Modl\PresenceDAO;
+                $p = $pd->getMyPresenceRoom($from);
+
+                // If we are quoted in a chatroom
+                if(strpos($message->body, $p->resource) !== false) {
+                    $cd = new \Modl\ConferenceDAO;
+                    $c = $cd->get($from);
+
+                    Notification::append(
+                        'chat|'.$from,
+                        ($c != null && $c->name) ? $c->name : $from,
+                        $message->body,
+                        false,
+                        4);
+                }
             }
 
             RPC::call('MovimTpl.fill', '#' . cleanupId($from.'_state'), $contact->jid);
