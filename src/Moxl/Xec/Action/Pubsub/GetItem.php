@@ -93,6 +93,9 @@ class GetItem extends Errors
                             'node'   => $this->_askreply['node'],
                             'nodeid' => $this->_askreply['nodeid']]);
                         $this->deliver();
+                    } else {
+                        $this->pack($p);
+                        $evt->runEvent('post', $this->packet);
                     }
                 }
             }
