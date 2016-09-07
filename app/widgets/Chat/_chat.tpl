@@ -2,7 +2,14 @@
     {if="$muc"}
     <ul class="list middle active">
         <li>
-            <span id="back" class="primary icon active" {if="!$anon"}onclick="MovimTpl.hidePanel(); Chat_ajaxGet();"{/if}>
+            <span id="back" class="primary icon active"
+                {if="!$anon"}
+                    onclick="
+                        MovimTpl.hidePanel();
+                        Notification.current('chat');
+                        Chat_ajaxGet();"
+                {/if}>
+
                 {if="!$anon"}
                     <i class="zmdi zmdi-arrow-back"></i>
                 {else}
