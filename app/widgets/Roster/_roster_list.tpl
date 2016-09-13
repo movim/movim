@@ -15,6 +15,13 @@
     {loop="$contacts"}
         {$c->prepareItem($value)}
     {/loop}
+
+    {if="empty($contacts)"}
+        <div ng-if="contacts == null" class="empty placeholder icon contacts">
+            <h1>{$c->__('roster.no_contacts_title')}</h1>
+            <h4>{$c->__('roster.no_contacts_text')}</h4>
+        </div>
+    {/if}
 </ul>
 <a onclick="Roster_ajaxDisplaySearch()" class="button action color" title="{$c->__('roster.search')}">
     <i class="zmdi zmdi-account-add"></i>

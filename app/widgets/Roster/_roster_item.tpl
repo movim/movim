@@ -5,6 +5,7 @@
     class="{if="$contact->value == null"}faded{/if}"
     onclick="
         Contact_ajaxGetContact('{$contact->jid}');
+        Contact_ajaxRefreshFeed('{$contact->jid}');
     ">
     {$url = $contact->getPhoto('m')}
     {if="$url"}
