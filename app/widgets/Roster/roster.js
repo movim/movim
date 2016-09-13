@@ -1,9 +1,10 @@
+/*
 (function(){
     var app = angular.module("roster", []);
 
-    /* Controller for Rosterlist */
+    // Controller for Rosterlist
     app.controller("RosterController", function($scope){
-        /* Cache variables */
+        // Cache variables
         $scope.lsJid = localStorage.getItem("username").replace("@", "at");
         $scope.lsRoster = localStorage.getObject($scope.lsJid + "_Roster") || {};
         $scope.lsGroupState = "groupState" in $scope.lsRoster ? $scope.lsRoster.groupState : {};
@@ -11,21 +12,21 @@
         $scope.contacts = [];
         $scope.groups = [];
 
-        /* Dictionaries */
+        // Dictionaries
         $scope.lookupgroups = {};
         $scope.lookupjid = {};
 
         $scope.initContacts = function(list){
             MovimUtils.showElement(document.getElementById("spinner"));
 
-            /* Sort groups alphabetically */
+            // Sort groups alphabetically
             list.sort(groupnameCompare);
 
             $scope.contacts = list;
-            /* Populate dictionaries */
+            // Populate dictionaries
             for(var i = 0; i < $scope.contacts.length; i++){
                 $scope.lookupgroups[$scope.contacts[i].agroup] = $scope.contacts[i];
-                /* Sort jid by presence and alphabetically */
+                // Sort jid by presence and alphabetically
                 $scope.contacts[i].agroupitems.sort(jidAvalCompare);
 
                 for(var j = 0; j < $scope.contacts[i].agroupitems.length; j++){
@@ -64,11 +65,11 @@
                 key = "ajid";
             }
 
-            /* Put element in the right place inside array */
+            // Put element in the right place inside array
             index = locationOf(element, array, comparer);
             array.splice(index, 0, element);
 
-            /* Update dictionary from the appropriate index */
+            // Update dictionary from the appropriate index
             for(var i=index; i<array.length; i++){
                 dico[array[i][key]] = array[i];
             }
@@ -76,34 +77,34 @@
 
         $scope.updateContact = function(list){
             if($scope.contacts === null) $scope.contacts = [];
-            /* Group change */
+            // Group change
             if((list.jid in $scope.lookupjid)
                 && !($scope.lookupjid[list.jid].ajiditems.groupname == list.groupname)){
-                /* Kill jid from old location or whole group if it's the only jid */
+                // Kill jid from old location or whole group if it's the only jid
                 oldgroupname = $scope.lookupjid[list.jid].ajiditems.groupname;
                 if($scope.lookupgroups[oldgroupname].agroupitems.length == 1){
                     $scope.lookupgroups[oldgroupname].tombstone = true;
-                    /* Remove group from localStorage */
+                    // Remove group from localStorage
                     delete $scope.lsGroupState['rosterGroup_'+oldgroupname];
                 }
                 else{
                     $scope.lookupjid[list.jid].tombstone = true;
                 }
             }
-            /* New group is not in the list */
+            // New group is not in the list
             if(!(list.groupname in $scope.lookupgroups)) {
-                /* Create group */
+                // Create group
                 el = {
                     'agroup': list.groupname,
                     'agroupitems': [],
                     'tombstone': false,
                 };
                 $scope.pushInPlace(el, $scope.contacts, groupnameCompare);
-                /* Reference in the localstorage for toggling */
+                // Reference in the localstorage for toggling
                 $scope.lsGroupState["rosterGroup_" + list.groupname] = true;
             }
 
-            /* Jid is in the list and no group change */
+            // Jid is in the list and no group change
             if(list.jid in $scope.lookupjid
                 && ($scope.lookupjid[list.jid].ajiditems.groupname == list.groupname))
             {
@@ -190,10 +191,10 @@ window.onunload = window.onbeforeunload = function(e){
     // Update real localstorage
     angular.element(roster).scope().lsRoster.groupState = angular.element(roster).scope().lsGroupState;
     localStorage.setObject(lsjid + "_Roster", angular.element(roster).scope().lsRoster);
-};
+};*/
 
 /* Functions to call angular inner functions */
-function initContacts(tab) {
+/*function initContacts(tab) {
     tab = JSON.parse(tab);
     if(tab.length == 0) {
         angular.element(roster).scope().contacts = null;
@@ -214,9 +215,10 @@ function updateContact(tab){
 function deleteContact(jid){
     angular.element(roster).scope().deleteContact(jid);
 }
-
+/*
 
 /* === PushInPlace subfunctions === */
+/*
 function locationOf(element, array, comparer, start, end) {
     if (array.length === 0)
         return 0;
@@ -233,14 +235,16 @@ function locationOf(element, array, comparer, start, end) {
         case 0: return pivot;
         case 1: return locationOf(element, array, comparer, pivot, end);
     }
-}
+}*/
 
 /* Object comparison functions */
+/*
 var groupnameCompare = function(a, b) {
     return a.agroup.localeCompare(b.agroup);
 };
-
+*/
 /* Presence + alphabetical comparison */
+/*
 var jidAvalCompare = function(a, b) {
     n = a.aval - b.aval;
     if(n == 0){
@@ -248,6 +252,7 @@ var jidAvalCompare = function(a, b) {
     }
     return n ? n < 0 ? -1 : 1 : 0;
 };
+*/
 
 var Roster = {
     init : function() {
@@ -256,6 +261,7 @@ var Roster = {
         var rosterlist  = document.querySelector('#rosterlist');
 
         search.oninput = function(event) {
+
             if(search.value.length > 0) {
                 MovimUtils.addClass(roster, 'search');
             } else {
@@ -263,11 +269,21 @@ var Roster = {
             }
 
             // We clear the old search
-            var selector_clear = '#rosterlist div > li.found';
+            var selector_clear = '#rosterlist > li.found';
             var li = document.querySelectorAll(selector_clear);
 
             MovimUtils.removeClassInList('found', li);
-            
+
+            var founds = document.querySelectorAll(
+                '#rosterlist > li[name*="' + MovimUtils.cleanupId(search.value) + '"]'
+            );
+
+            if(founds) {
+                for(i = 0; i < founds.length; i++) {
+                    MovimUtils.addClass(founds[i], 'found');
+                }
+            }
+            /*
             // We select the interesting li
             var selector = '#rosterlist div > li[title*="' + MovimUtils.accentsTidy(search.value) + '"]:not(.subheader)';
             li = document.querySelectorAll(selector);
@@ -281,9 +297,10 @@ var Roster = {
                     }
                     MovimUtils.addClass(li.item(i), 'found');
                 }
-            }
+            }*/
+
         };
-    },
+    }/*,
     refresh: function() {
         var items = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
         var i = 0;
@@ -308,17 +325,17 @@ var Roster = {
     clickOnContact : function(e) {
         Contact_ajaxGetContact(e.id);
         Contact_ajaxRefreshFeed(e.id);
-        /*recalculated at each click*/
+        //recalculated at each click
         var it = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
         MovimUtils.removeClassInList('active', it);
         Roster.clearSearch();
         MovimUtils.addClass(e, 'active');
-    },
+    },*/
 };
 
 MovimWebsocket.attach(function() {
-    Roster_ajaxGetRoster();
-    Roster.refresh();
+    /*Roster_ajaxGetRoster();
+    Roster.refresh();*/
     Notification.current('contacts');
 });
 

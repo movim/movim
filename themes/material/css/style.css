@@ -411,6 +411,13 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
 }
 
+/* Tag */
+.tag {
+    font-size: 1.5rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.4rem;
+}
+
 /* Disabled */
 
 .faded {

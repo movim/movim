@@ -412,39 +412,40 @@ class ContactDAO extends SQL {
         return (int)$results[0];
     }
 
-    function getRoster() {
+    function getRoster($jid = false)
+    {
         $this->_sql = '
-        select
-            rosterlink.jid,
-            contact.fn,
-            contact.name,
-            contact.nickname,
-            contact.tuneartist,
-            contact.tunetitle,
-            rosterlink.rostername,
-            rosterlink.rostersubscription,
-            rosterlink.groupname,
-            presence.status,
-            presence.resource,
-            presence.value,
-            presence.delay,
-            presence.node,
-            presence.ver,
-            presence.last
-        from rosterlink
-        left outer join presence
-        on rosterlink.jid = presence.jid and rosterlink.session = presence.session
-        left outer join contact
-        on rosterlink.jid = contact.jid
-        where rosterlink.session = :session
-        order by groupname, rosterlink.jid, presence.value';
+            select *
+            from rosterlink
+            left outer join (
+                select min(value) as value, jid, session
+                from presence
+                group by jid, session
+                order by value
+            ) as presence
+                on rosterlink.jid = presence.jid
+                and rosterlink.session = presence.session
+            left outer join contact
+            on rosterlink.jid = contact.jid
+            where rosterlink.session = :session';
 
-        $this->prepare(
-            'RosterLink',
-            array(
-                'session' => $this->_user
-            )
-        );
+        if($jid) {
+            $this->_sql .= '
+            and rosterlink.jid = :jid';
+        }
+
+        $this->_sql .= '
+            order by rostername';
+
+        if($jid) {
+            $this->prepare(
+                'RosterLink', ['session' => $this->_user, 'jid' => $jid]
+            );
+        } else {
+            $this->prepare(
+                'RosterLink', ['session' => $this->_user]
+            );
+        }
 
         return $this->run('RosterContact');
     }

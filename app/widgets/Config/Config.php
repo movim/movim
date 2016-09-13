@@ -17,7 +17,7 @@ class Config extends \Movim\Widget\Base
         $view = $this->tpl();
 
         /* We load the user configuration */
-        $this->user->reload();
+        $this->user->reload(true);
 
         $l = Movim\i18n\Locale::start();
 

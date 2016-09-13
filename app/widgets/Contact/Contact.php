@@ -11,7 +11,6 @@ class Contact extends \Movim\Widget\Base
 
     function load()
     {
-        $this->registerEvent('roster_updateitem_handle', 'onContactEdited', 'contacts');
         $this->registerEvent('vcard_get_handle', 'onVcardReceived', 'contacts');
         $this->registerEvent('vcard4_get_handle', 'onVcardReceived', 'contacts');
     }
@@ -20,11 +19,6 @@ class Contact extends \Movim\Widget\Base
     {
         $contact = $packet->content;
         $this->ajaxGetContact($contact->jid);
-    }
-
-    public function onContactEdited($packet)
-    {
-        Notification::append(null, $this->__('edit.updated'));
     }
 
     function ajaxClear($page = 0)

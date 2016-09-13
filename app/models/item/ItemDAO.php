@@ -130,9 +130,9 @@ class ItemDAO extends SQL
                 group by node) as p
             on p.node = item.node
             left outer join (
-	            select origin, node, max(published) as published
+                select origin, node, max(published) as published
                 from postn
-	            group by origin, node
+                group by origin, node
             ) as postn on postn.origin = item.server
               and postn.node = item.node
             left outer join (

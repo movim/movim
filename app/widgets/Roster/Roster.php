@@ -22,10 +22,16 @@ class Roster extends \Movim\Widget\Base
 
     function onDelete($packet)
     {
-        $jid = $packet->content;
+        /*$jid = $packet->content;
         if($jid != null){
             RPC::call('deleteContact', $jid);
-        }
+        }*/
+        RPC::call(
+            'MovimTpl.fill',
+            '#roster',
+            $this->prepareItems()
+        );
+
         Notification::append(null, $this->__('roster.deleted'));
     }
 
@@ -33,8 +39,11 @@ class Roster extends \Movim\Widget\Base
     {
         $contacts = $packet->content;
         if($contacts != null){
-            $c = $contacts[0];
+            $cd = new \Modl\ContactDAO();
 
+            $contact = $contacts[0];
+
+            /*
             if($c->groupname == '')
                 $c->groupname = $this->__('roster.ungrouped');
             else{
@@ -46,28 +55,46 @@ class Roster extends \Movim\Widget\Base
             $this->prepareContact($ac, $c, $this->getCaps());
             $c = $ac;
 
-            RPC::call('updateContact', json_encode($c));
+            RPC::call('updateContact', json_encode($c));*/
+
+            $html = $this->prepareItem($cd->getRoster($contact->jid)[0]);
+            if($html) {
+                RPC::call('MovimTpl.replace', '#'.cleanupId($contact->jid), $html);
+            }
         }
     }
 
     function onAdd($packet)
     {
-        $this->onPresence($packet);
+        //$this->onPresence($packet);
+        RPC::call(
+            'MovimTpl.fill',
+            '#roster',
+            $this->prepareItems()
+        );
+
         Notification::append(null, $this->__('roster.added'));
     }
 
-    function onUpdate($packet)
+    function onUpdate($packet = false)
     {
-        $this->onPresence($packet);
+        //$this->onPresence($packet);
+        RPC::call(
+            'MovimTpl.fill',
+            '#roster',
+            $this->prepareItems()
+        );
+
         Notification::append(null, $this->__('roster.updated'));
     }
 
     function onRoster()
     {
-        $results = $this->prepareRoster();
+        $this->onUpdate();
+        /*$results = $this->prepareRoster();
 
         RPC::call('initContacts', $results['contacts']);
-        RPC::call('initGroups', $results['groups']);
+        RPC::call('initGroups', $results['groups']);*/
     }
 
     /**
@@ -166,7 +193,7 @@ class Roster extends \Movim\Widget\Base
             Notification::append(null, $this->__('roster.jid_error'));
     }
 
-    private function getCaps()
+    /*private function getCaps()
     {
         $capsdao = new \Modl\CapsDAO();
         $caps = $capsdao->getAll();
@@ -177,14 +204,14 @@ class Roster extends \Movim\Widget\Base
         }
 
         return $capsarr;
-    }
+    }*/
 
     /**
      * @brief Get data from database to pass it on to angular in JSON
      * @param
      * @returns $result: a json for the contacts and one for the groups
      */
-    function prepareRoster()
+    /*function prepareRoster()
     {
         //Contacts
         $contactdao = new \Modl\ContactDAO();
@@ -196,7 +223,7 @@ class Roster extends \Movim\Widget\Base
 
         $farray = []; //final array
         if(isset($contacts)) {
-            /* Init */
+            // Init
             $c = array_shift($contacts);
             if($c->groupname == ''){
                 $c->groupname = $this->__('roster.ungrouped');
@@ -221,7 +248,7 @@ class Roster extends \Movim\Widget\Base
             array_push($garray['agroupitems'], $jarray);
 
             foreach($contacts as &$c) {
-                /*jid has changed*/
+                // jid has changed
                 if($jid != $c->jid){
                     if($c->groupname == ''){
                         $c->groupname = $this->__('roster.ungrouped');
@@ -265,7 +292,7 @@ class Roster extends \Movim\Widget\Base
         $result['groups'] = json_encode($groups);
 
         return $result;
-    }
+    }*/
 
     /**
      * @brief Get data for contacts display in roster
@@ -274,6 +301,7 @@ class Roster extends \Movim\Widget\Base
      *          $caps: an array of capabilities
      * @returns
      */
+    /*
     function prepareContact(&$c, $oc, $caps)
     {
         $presencestxt = getPresencesTxt();
@@ -336,12 +364,31 @@ class Roster extends \Movim\Widget\Base
         if(($oc->tuneartist != null && $oc->tuneartist != '')
             || ($oc->tunetitle  != null && $oc->tunetitle  != ''))
             $c['rosterview']['tune'] = true;
+    }*/
+
+    function prepareItems()
+    {
+        $cd = new \Modl\ContactDAO();
+        $this->user->reload(true);
+
+        $view = $this->tpl();
+        $view->assign('contacts', $cd->getRoster());
+        $view->assign('offlineshown', $this->user->getConfig('roster'));
+        $view->assign('presencestxt', getPresencesTxt());
+
+        return $view->draw('_roster_list', true);
+    }
+
+    function prepareItem($contact)
+    {
+        $view = $this->tpl();
+        $view->assign('contact', $contact);
+        $view->assign('presencestxt', getPresencesTxt());
+
+        return $view->draw('_roster_item', true);
     }
 
     function display()
     {
-        $this->user->reload();
-        $this->view->assign('conf',      $this->user->getConfig());
-        $this->view->assign('base_uri',  BASE_URI);
     }
 }

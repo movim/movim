@@ -55,6 +55,8 @@
 }
 */
 /* Search */
+
+/*
 #roster ul li.subheader.search,
 #roster.search ul#rosterlist div.groupshown > li {
     display: none;
@@ -64,4 +66,8 @@
 #roster.search ul#rosterlist div > li.found {
     display: list-item;
 }
+*/
 
+#roster.search ul#rosterlist li:not(.found) {
+    display: none;
+}
