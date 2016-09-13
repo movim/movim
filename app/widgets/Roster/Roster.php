@@ -11,7 +11,7 @@ class Roster extends \Movim\Widget\Base
     function load()
     {
         $this->addcss('roster.css');
-        $this->addjs('angular.js');
+        //$this->addjs('angular.js');
         $this->addjs('roster.js');
         $this->registerEvent('roster_getlist_handle', 'onRoster');
         $this->registerEvent('roster_additem_handle', 'onAdd');
