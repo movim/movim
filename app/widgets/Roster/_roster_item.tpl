@@ -23,7 +23,7 @@
             <i class="zmdi zmdi-account"></i>
         </span>
     {/if}
-    <p class="normal">{$contact->getTrueName()}</p>
+    <p class="normal line">{$contact->getTrueName()}</p>
     {if="$contact->groupname"}
     <p>
         <span class="tag color {$contact->groupname|stringToColor}">
