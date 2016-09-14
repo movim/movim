@@ -3,20 +3,6 @@
 namespace Moxl\Stanza;
 
 class Roster {
-    /*
-     * The roster builder
-     */
-    static function builder($xml, $to, $type)
-    {
-        $xml = '
-            <query xmlns="jabber:iq:roster">
-                '.$xml.'
-            </query>';
-
-        $xml = \Moxl\API::iqWrapper($xml, $to, $type);
-        \Moxl\API::request($xml);
-    }
-
     static function get()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -30,14 +16,18 @@ class Roster {
      */
     static function add($to, $name, $group)
     {
-        $xml ='
-            <item
-                jid="'.$to.'"
-                name="'.htmlspecialchars($name).'">
-                <group>'.htmlspecialchars($group).'</group>
-            </item>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $roster = $dom->createElementNS('jabber:iq:roster', 'query');
 
-        $xml = self::builder($xml, false, 'set');
+        $item = $dom->createElement('item');
+        $item->setAttribute('jid', $to);
+        $item->setAttribute('name', $name);
+        $roster->appendChild($item);
+
+        $group = $dom->createElement('group', $group);
+        $item->appendChild($group);
+
+        $xml = \Moxl\API::iqWrapper($roster, false, 'set');
         \Moxl\API::request($xml);
     }
 
@@ -52,10 +42,15 @@ class Roster {
      */
     static function remove($to)
     {
-        $xml = '
-            <item jid="'.$to.'" subscription="remove"/>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $roster = $dom->createElementNS('jabber:iq:roster', 'query');
 
-        $xml = self::builder($xml, false, 'set');
+        $item = $dom->createElement('item');
+        $item->setAttribute('jid', $to);
+        $item->setAttribute('subscription', 'remove');
+        $roster->appendChild($item);
+
+        $xml = \Moxl\API::iqWrapper($roster, false, 'set');
         \Moxl\API::request($xml);
     }
 

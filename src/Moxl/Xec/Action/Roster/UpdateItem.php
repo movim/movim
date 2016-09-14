@@ -66,20 +66,7 @@ class UpdateItem extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $r = new \Modl\RosterLink;
-
-        $r->session = $this->_from;
-        $r->jid = $this->_to;
-        $r->rostername = $this->_name;
-        $r->groupname = $this->_group;
-
-        $rd = new \Modl\RosterLinkDAO;
-        $rd->update($r);
-
-        $cd = new \Modl\ContactDAO;
-        $c = $cd->getRosterItem($this->_to, true);
-
-        $this->pack($c);
+        $this->pack($this->_to);
         $this->deliver();
     }
 }
