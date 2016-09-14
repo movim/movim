@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8180da9299fc920a8ceb4e8b8eede9e7",
-    "content-hash": "97666ecd60ecc241633d6f72a793e894",
+    "hash": "591790387472ce6e3c932b922221b02c",
+    "content-hash": "a985e8029dcbdd1e228df9c78c77b8fb",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -886,12 +886,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "8c54affb3a38d7e0478fd48bfa786fd18d729dfe"
+                "reference": "d2b2ad159557f0c486695f45bb60d6c99235a329"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/8c54affb3a38d7e0478fd48bfa786fd18d729dfe",
-                "reference": "8c54affb3a38d7e0478fd48bfa786fd18d729dfe",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/d2b2ad159557f0c486695f45bb60d6c99235a329",
+                "reference": "d2b2ad159557f0c486695f45bb60d6c99235a329",
                 "shasum": ""
             },
             "require": {
@@ -926,7 +926,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-09-07 17:39:49"
+            "time": "2016-09-14 06:42:38"
         },
         {
             "name": "movim/sasl2",
@@ -1694,16 +1694,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.9",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "fb7f19f9ad96eb9ccb49e12212d7ebd90f9e0bea"
+                "reference": "7e88a7a0c894b6c2baa134b6c0433a6b458a8a59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/fb7f19f9ad96eb9ccb49e12212d7ebd90f9e0bea",
-                "reference": "fb7f19f9ad96eb9ccb49e12212d7ebd90f9e0bea",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/7e88a7a0c894b6c2baa134b6c0433a6b458a8a59",
+                "reference": "7e88a7a0c894b6c2baa134b6c0433a6b458a8a59",
                 "shasum": ""
             },
             "require": {
@@ -1754,7 +1754,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-08-03 09:05:28"
+            "time": "2016-09-12 16:06:10"
         },
         {
             "name": "stojg/crop",

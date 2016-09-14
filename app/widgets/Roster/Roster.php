@@ -17,21 +17,21 @@ class Roster extends \Movim\Widget\Base
         $this->registerEvent('roster_additem_handle', 'onAdd');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
+        $this->registerEvent('roster', 'onChange');
         $this->registerEvent('presence', 'onPresence', 'contacts');
     }
 
-    function onDelete($packet)
+    function onChange($packet)
     {
-        /*$jid = $packet->content;
-        if($jid != null){
-            RPC::call('deleteContact', $jid);
-        }*/
         RPC::call(
             'MovimTpl.fill',
             '#roster',
             $this->prepareItems()
         );
+    }
 
+    function onDelete($packet)
+    {
         Notification::append(null, $this->__('roster.deleted'));
     }
 
@@ -66,25 +66,11 @@ class Roster extends \Movim\Widget\Base
 
     function onAdd($packet)
     {
-        //$this->onPresence($packet);
-        RPC::call(
-            'MovimTpl.fill',
-            '#roster',
-            $this->prepareItems()
-        );
-
         Notification::append(null, $this->__('roster.added'));
     }
 
     function onUpdate($packet = false)
     {
-        //$this->onPresence($packet);
-        RPC::call(
-            'MovimTpl.fill',
-            '#roster',
-            $this->prepareItems()
-        );
-
         Notification::append(null, $this->__('roster.updated'));
     }
 
