@@ -23,6 +23,6 @@
         </div>
     {/if}
 </ul>
-<a onclick="Roster_ajaxDisplaySearch()" class="button action color" title="{$c->__('roster.search')}">
+<a onclick="Roster_ajaxDisplaySearch()" class="button action color" title="{$c->__('roster.add_title')}">
     <i class="zmdi zmdi-account-add"></i>
 </a>
