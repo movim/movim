@@ -30,12 +30,17 @@ var Chat = {
     setTextarea: function(value)
     {
         Chat.edit = true;
-        document.querySelector('#chat_textarea').value = value;
+        var textarea = document.querySelector('#chat_textarea');
+        textarea.value = value;
+        MovimUtils.textareaAutoheight(textarea);
+
     },
     clearReplace: function()
     {
         Chat.edit = false;
-        document.querySelector('#chat_textarea').value = '';
+        var textarea = document.querySelector('#chat_textarea');
+        textarea.value = '';
+        MovimUtils.textareaAutoheight(textarea);
     },
     notify : function(title, body, image)
     {
