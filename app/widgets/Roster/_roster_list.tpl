@@ -3,7 +3,7 @@
         <li>
             <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()"><i class="zmdi zmdi-menu"></i></span>
             <span class="primary on_desktop icon gray"><i class="zmdi zmdi-search"></i></span>
-            <form>
+            <form onsubmit="return false;">
                 <div onclick="Roster.init();">
                     <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
                 </div>
