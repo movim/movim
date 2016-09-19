@@ -161,7 +161,7 @@ var MovimUtils = {
         if(typeof node == "string")
             node = MovimUtils.getNode(node);
         if(!node) return false;
-        return node.className.split(" ").indexOf(classname) == -1? false : true;
+        return node.classList.contains(classname);
     },
     showElement: function(element) {
         if(!MovimUtils.hasClass(element, "show"))
@@ -216,14 +216,13 @@ var MovimUtils = {
     addClass: function(element, classname) {
         if(!MovimUtils.hasClass(element, classname)) {
             element = MovimUtils.getNode(element);
-            element.className += " " + classname;
+            element.classList.add(classname);
         }
     },
     removeClass: function(element,classname) {
         if (MovimUtils.hasClass(element, classname)) {
-            var reg = new RegExp('(\\s|^)' + classname + '(\\s|$)');
             element = MovimUtils.getNode(element);
-            element.className = element.className.replace(reg,' ');
+            element.classList.remove(classname);
         }
     },
     removeClassInList: function(myclass, list) {
