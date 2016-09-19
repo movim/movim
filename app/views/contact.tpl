@@ -11,7 +11,7 @@
             <?php $this->widget('Notifs');?>
             <?php $this->widget('Roster');?>
         </div>
-        <div id="contact_widget">
+        <div id="contact_widget" class="spin">
             <?php $this->widget('Contact');?>
         </div>
     </section>

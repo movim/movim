@@ -13,6 +13,7 @@ class Contact extends \Movim\Widget\Base
     {
         $this->registerEvent('vcard_get_handle', 'onVcardReceived', 'contacts');
         $this->registerEvent('vcard4_get_handle', 'onVcardReceived', 'contacts');
+        $this->addjs('contact.js');
     }
 
     public function onVcardReceived($packet)
@@ -24,6 +25,8 @@ class Contact extends \Movim\Widget\Base
     function ajaxClear($page = 0)
     {
         $html = $this->prepareEmpty($page);
+
+        RPC::call('MovimUtils.pushState', $this->route('contact'));
         RPC::call('MovimTpl.fill', '#contact_widget', $html);
     }
 
