@@ -14,3 +14,7 @@
 #search form > div:not(.control) {
     top: -1rem;
 }
+
+#search ul#roster li:not(.found) {
+    display: none;
+}

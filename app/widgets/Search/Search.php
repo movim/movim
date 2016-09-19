@@ -16,6 +16,11 @@ class Search extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('empty', $this->prepareSearch(''));
+
+        $cd = new ContactDAO;
+        $view->assign('contacts', $cd->getRoster());
+        $view->assign('presencestxt', getPresencesTxt());
+
         Drawer::fill($view->draw('_search', true), true);
         RPC::call('Search.init');
     }
@@ -35,11 +40,7 @@ class Search extends \Movim\Widget\Base
             $posts = $pd->search($key);
             $view->assign('posts', $posts);
 
-            $cd = new ContactDAO;
-            $contacts = $cd->search($key);
-            $view->assign('contacts', $contacts);
-
-            if(!$posts && !$contacts) $view->assign('empty', true);
+            if(!$posts) $view->assign('empty', true);
         }
 
         return $view->draw('_search_results', true);
