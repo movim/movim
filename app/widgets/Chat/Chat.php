@@ -573,6 +573,7 @@ class Chat extends \Movim\Widget\Base
         //RPC::call('Chat.appendMessages', $messages);
         RPC::call('Chat.appendMessagesWrapper', $this->_wrapper);
         RPC::call('MovimTpl.scrollPanel');
+        RPC::call('Chat.clearReplace');
     }
 
     function prepareMessage(&$message, $jid=null)
