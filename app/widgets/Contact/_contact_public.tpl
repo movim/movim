@@ -12,19 +12,20 @@
 
         <p class="normal">
             {$value->getTrueName()}
-            {if="$value->getAge()"}
-                <span class="second">{$c->__('age.years', $value->getAge())}</span>
-            {/if}
-            {if="$value->getGender()"}
-                <span class="second">{$value->getGender()}</span>
-            {/if}
         </p>
 
-        {if="$value->description != ''"}
         <p>
             {$value->description|strip_tags}
+            {if="$value->getAge()"}
+                <span class="tag color gray">{$c->__('age.years', $value->getAge())}</span>
+            {/if}
+            {if="$value->getGender()"}
+                <span class="tag color
+                {if="$value->gender == 'M'"}blue{/if}
+                {if="$value->gender == 'F'"}red{/if}
+                ">{$value->getGender()}</span>
+            {/if}
         </p>
-        {/if}
     </li>
 {/loop}
 {if="$pages"}

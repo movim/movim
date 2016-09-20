@@ -1,6 +1,6 @@
 <br />
 <h2>{$c->__('explore.explore')}</h2>
 
-<ul id="public_list" class="list flex card shadow active">
+<ul id="public_list" class="list flex card active">
     {$users}
 </ul>
