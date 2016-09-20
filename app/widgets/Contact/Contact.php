@@ -186,6 +186,7 @@ class Contact extends \Movim\Widget\Base
             $view->assign('pages', array_fill(0, (int)($count/$this->_paging), 'p'));
             $view->assign('users', array_reverse($users));
             $view->assign('page', $page);
+            $view->assign('presencestxt', getPresencesTxt());
             return $view->draw('_contact_public', true);
         }
     }

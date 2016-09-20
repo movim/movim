@@ -369,25 +369,33 @@ class ContactDAO extends SQL {
 
     function getAllPublic($limitf = false, $limitr = false) {
         $this->_sql =
-            'select *, privacy.value as privacy from contact
+            'select contact.*, presence.*, privacy.value as privacy from contact
             left outer join privacy
               on contact.jid = privacy.pkey
+            left outer join (
+                select min(value) as value, jid, session
+                from presence
+                group by jid, session
+                order by value
+            ) as presence
+                on contact.jid = presence.jid
+                and contact.jid = presence.session
             where privacy.value = 1
               and contact.jid not in (select jid from rosterlink where session = :jid)
               and contact.jid != :jid
-            order by jid desc';
+            order by contact.jid desc';
 
         if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare(
             'Contact',
-            array(
+            [
                 'jid' => $this->_user
-            )
+            ]
         );
 
-        return $this->run('Contact');
+        return $this->run('RosterContact');
     }
 
     function countAllPublic() {

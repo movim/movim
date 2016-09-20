@@ -2,10 +2,18 @@
     <li class="block" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}', {if="$page"}{$page}{else}0{/if});">
         {$url = $value->getPhoto('l')}
         {if="$url"}
-            <span class="primary icon thumb" style="background-image: url({$url});">
+            <span class="primary icon bubble
+            {if="$value->value"}
+                status {$presencestxt[$value->value]}
+            {/if}
+            " style="background-image: url({$url});">
             </span>
         {else}
-            <span class="primary icon thumb color {$value->jid|stringToColor}">
+            <span class="primary icon bubble color {$value->jid|stringToColor}
+            {if="$value->value"}
+                status {$presencestxt[$value->value]}
+            {/if}
+            ">
                 <i class="zmdi zmdi-account"></i>
             </span>
         {/if}
