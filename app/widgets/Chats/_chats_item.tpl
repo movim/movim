@@ -28,7 +28,7 @@
             </span>
         {/if}
         {$contact->getTrueName()}
-        {if="$caps && in_array($caps->type, array('handheld', 'phone'))"}
+        {if="$caps && in_array($caps->type, ['handheld', 'phone'])"}
             <span class="second">
                 <i class="zmdi zmdi-smartphone"></i>
             </span>

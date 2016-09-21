@@ -635,12 +635,13 @@ class ContactDAO extends SQL {
         return $this->run('PresenceContact');
     }
 
-    function getTop($limit = 6) {
+    function getTop($limit = 6, $filter = false) {
+        $filter = ($filter != false) ? implode('\',\'', $filter) : '';
         $this->_sql = '
             select *, jidfrom from (
                 select jidfrom, count(*) as count from message
-                where jidfrom not like :jid
-                    and session = :jid
+                where jidfrom not like :session
+                    and session = :session
                     and type != \'groupchat\'
                 group by jidfrom
                 order by count desc
@@ -648,7 +649,8 @@ class ContactDAO extends SQL {
             join (
                 select *
                 from rosterlink
-                where session = :jid
+                where session = :session
+                and jid not in (\''.$filter.'\')
                 ) as rosterlink on jidfrom = rosterlink.jid
             left outer join contact on jidfrom = contact.jid
             left outer join (
@@ -657,7 +659,7 @@ class ContactDAO extends SQL {
                 join (
                     select jid, min( id ) as id
                     from presence
-                    where session = :jid
+                    where session = :session
                     group by jid
                     ) as b on ( a.id = b.id )
                 ) presence on jidfrom = presence.jid
@@ -666,10 +668,10 @@ class ContactDAO extends SQL {
 
         $this->prepare(
             'Contact',
-            array(
-                'jid' => $this->_user,
+            [
+                'rosterlink.session' => $this->_user,
                 'tunelenght' => $limit // And an another hack…
-            )
+            ]
         );
 
         return $this->run('RosterContact');
