@@ -7,7 +7,7 @@ use Moxl\Xec\Action\Pubsub\GetItems;
 
 class Contact extends \Movim\Widget\Base
 {
-    private $_paging = 10;
+    private $_paging = 14;
 
     function load()
     {
