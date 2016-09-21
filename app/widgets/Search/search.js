@@ -22,7 +22,7 @@ var Search = {
                 MovimUtils.addClass(founds[i], 'found');
                 if(i > 4) break;
             }
-        } else {
+        } else if(subheader) {
             subheader.classList.remove('found');
         }
     }
