@@ -7,7 +7,7 @@ use Moxl\Xec\Action\Pubsub\GetItems;
 
 class Contact extends \Movim\Widget\Base
 {
-    private $_paging = 14;
+    private $_paging = 12;
 
     function load()
     {
@@ -184,7 +184,7 @@ class Contact extends \Movim\Widget\Base
         if($users != null){
             $view = $this->tpl();
             $view->assign('pages', array_fill(0, (int)($count/$this->_paging), 'p'));
-            $view->assign('users', array_reverse($users));
+            $view->assign('users', $users);
             $view->assign('page', $page);
             $view->assign('presencestxt', getPresencesTxt());
             return $view->draw('_contact_public', true);
