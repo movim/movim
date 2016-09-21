@@ -383,7 +383,7 @@ class ContactDAO extends SQL {
             where privacy.value = 1
               and contact.jid not in (select jid from rosterlink where session = :jid)
               and contact.jid != :jid
-            order by contact.jid desc';
+            order by presence.value desc, contact.jid desc';
 
         if($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;

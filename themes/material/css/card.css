@@ -1,9 +1,5 @@
 /* Card */
-/*
-.card {
-    padding: 1rem;
-}
-*/
+
 .card > .block:not(.subheader):not(.simple) {
     background-color: white;
     border-radius: 2px;
