@@ -3,6 +3,7 @@
         <p><span class="info">{$comments|count}</span> {$c->__('post.comments')}</p>
     </li>
     {loop="$comments"}
+        {if="$value->title || $value->contentraw"}
         <li>
             {if="$value->isMine()"}
                 <span class="control icon gray active" onclick="Post_ajaxDelete('{$value->origin}', '{$value->node}', '{$value->nodeid}')">
@@ -38,6 +39,7 @@
                 {/if}
             </p>
         </li>
+        {/if}
     {/loop}
     <li>
         <span class="primary icon gray">
