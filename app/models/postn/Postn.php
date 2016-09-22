@@ -537,6 +537,18 @@ class Postn extends Model {
             return implode(', ', $tags);
         }
     }
+
+    public function getNext()
+    {
+        $pd = new PostnDAO;
+        return $pd->getNext($this->origin, $this->node, $this->nodeid);
+    }
+
+    public function getPrevious()
+    {
+        $pd = new PostnDAO;
+        return $pd->getPrevious($this->origin, $this->node, $this->nodeid);
+    }
 }
 
 class ContactPostn extends Postn {

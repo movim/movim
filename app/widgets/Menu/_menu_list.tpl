@@ -84,7 +84,7 @@
             {else}
                 <p class="line">{$c->__('menu.contact_post')}</p>
             {/if}
-            <p>{$value->contentcleaned|stripTags}</p>
+            <p>{$value->contentcleaned|stripTags|truncate:140}</p>
             {if="$value->isReply()"}
                 {$reply = $value->getReply()}
                     <ul class="list card">

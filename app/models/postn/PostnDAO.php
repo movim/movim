@@ -187,7 +187,7 @@ class PostnDAO extends SQL {
         }
     }
 
-    function get($origin, $node, $nodeid, $public = false) {
+    function get($origin, $node, $nodeid, $public = false, $around = false) {
         $this->_sql = '
             select postn.*, contact.*, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
@@ -195,8 +195,51 @@ class PostnDAO extends SQL {
                 on postn.origin = item.server
                 and postn.node = item.node
             where postn.origin = :origin
-                and postn.node = :node
-                and postn.nodeid = :nodeid';
+                and postn.node = :node';
+
+        if(!$around) {
+            $this->_sql .= ' and postn.nodeid = :nodeid';
+        } else {
+            $compare = ($around == 1) ? '>' : '<';
+            $order   = ($around == 1) ? 'asc' : 'desc';
+            $this->_sql .= ' and postn.nodeid = (
+                    select nodeid
+                    from postn
+                    where published '. $compare .' (
+                        select published
+                        from postn
+                        where postn.origin = :origin
+                            and postn.node = :node
+                            and postn.nodeid = :nodeid
+                    )
+                    and postn.origin = :origin
+                    and postn.node = :node
+                    and (
+                        (
+                            postn.origin in (
+                                select jid
+                                from rosterlink
+                                where session = :jid
+                                and rostersubscription in (\'both\', \'to\')
+                            )
+                            and node = \'urn:xmpp:microblog:0\'
+                        )
+                        or (
+                            postn.origin = :jid
+                            and node = \'urn:xmpp:microblog:0\'
+                        )
+                        or (
+                            (postn.origin, node) in (
+                                select server, node
+                                from subscription
+                                where jid = :jid)
+                        )
+                    )
+                    order by published '.$order.'
+                    limit 1
+                )
+                ';
+        }
 
         if($public) $this->_sql .= ' and postn.open = true';
 
@@ -206,10 +249,19 @@ class PostnDAO extends SQL {
                 'origin' => $origin,
                 'node' => $node,
                 'nodeid' => $nodeid,
+                'contact.jid' => $this->_user
             ]
         );
 
         return $this->run('ContactPostn', 'item');
+    }
+
+    function getNext($origin, $node, $nodeid, $public = false) {
+        return $this->get($origin, $node, $nodeid, $public, 1);
+    }
+
+    function getPrevious($origin, $node, $nodeid, $public = false) {
+        return $this->get($origin, $node, $nodeid, $public, 2);
     }
 
     function getPublicItem($origin, $node, $nodeid) {
