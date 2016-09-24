@@ -109,11 +109,14 @@ class Roster extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
+        $rd = new \Modl\RosterLinkDAO();
+
         $view->assign('jid', $jid);
         $view->assign('add',
             $this->call(
                 'ajaxAdd',
                 "MovimUtils.parseForm('add')"));
+        $view->assign('groups', $rd->getGroups());
         $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
 
         Dialog::fill($view->draw('_roster_search', true));
@@ -141,15 +144,15 @@ class Roster extends \Movim\Widget\Base
      */
     function ajaxAdd($form)
     {
-        $jid = $form['searchjid'];
-
         $r = new AddItem;
-        $r->setTo($jid)
+        $r->setTo($form->searchjid->value)
           ->setFrom($this->user->getLogin())
+          ->setName($form->alias->value)
+          ->setGroup($form->group->value)
           ->request();
 
         $p = new Subscribe;
-        $p->setTo($jid)
+        $p->setTo($form->searchjid->value)
           ->request();
     }
 

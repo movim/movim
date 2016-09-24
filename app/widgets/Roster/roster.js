@@ -300,7 +300,7 @@ var Roster = {
             }*/
 
         };
-    }/*,
+    },/*
     refresh: function() {
         var items = document.querySelectorAll('#rosterlist div > li:not(.subheader)');
         var i = 0;
@@ -317,11 +317,11 @@ var Roster = {
             search.value = '';
             search.oninput();
         }
-    },
+    },*/
     setFound : function(jid) {
         document.querySelector('input[name=searchjid]').value = jid;
-    },
-
+    }
+    /*
     clickOnContact : function(e) {
         Contact_ajaxGetContact(e.id);
         Contact_ajaxRefreshFeed(e.id);
