@@ -31,16 +31,30 @@ class AddItem extends Action
 {
     private $_to;
     private $_from;
+    private $_name;
+    private $_group;
 
     public function request()
     {
         $this->store();
-        Roster::add($this->_to, '', '');
+        Roster::add($this->_to, $this->_name, $this->_group);
     }
 
     public function setTo($to)
     {
         $this->_to = $to;
+        return $this;
+    }
+
+    public function setName($name)
+    {
+        $this->_name = $name;
+        return $this;
+    }
+
+    public function setGroup($group)
+    {
+        $this->_group = $group;
         return $this;
     }
 
