@@ -234,6 +234,7 @@ class PostnDAO extends SQL {
                                 from subscription
                                 where jid = :jid)
                         )
+                        or postn.open = true
                     )
                     order by published '.$order.'
                     limit 1
