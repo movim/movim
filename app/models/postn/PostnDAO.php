@@ -188,6 +188,12 @@ class PostnDAO extends SQL {
     }
 
     function get($origin, $node, $nodeid, $public = false, $around = false) {
+        $params = [
+                'origin' => $origin,
+                'node' => $node,
+                'nodeid' => $nodeid
+            ];
+
         $this->_sql = '
             select postn.*, contact.*, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
@@ -240,18 +246,15 @@ class PostnDAO extends SQL {
                     limit 1
                 )
                 ';
+
+            $params['contact.jid'] = $this->_user;
         }
 
         if($public) $this->_sql .= ' and postn.open = true';
 
         $this->prepare(
             'Postn',
-            [
-                'origin' => $origin,
-                'node' => $node,
-                'nodeid' => $nodeid,
-                'contact.jid' => $this->_user
-            ]
+            $params
         );
 
         return $this->run('ContactPostn', 'item');
