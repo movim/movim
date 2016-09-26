@@ -392,7 +392,7 @@
                         <p>{$c->__('subscription.from')}</p>
                         <p>{$c->__('subscription.from_text')}</p>
                         <p>
-                            <a class="button flat" onclick="Notifs_ajaxAsk('{$contactr->jid}')">
+                            <a class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
                                 {$c->__('subscription.from_button')}
                             </a>
                         </p>
@@ -405,7 +405,7 @@
                         <p>{$c->__('subscription.nil')}</p>
                         <p>{$c->__('subscription.nil_text')}</p>
                         <p>
-                            <a class="button flat" onclick="Notifs_ajaxAsk('{$contactr->jid}')">
+                            <a class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
                                 {$c->__('subscription.nil_button')}
                             </a>
                         </p>
