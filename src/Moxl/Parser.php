@@ -5,6 +5,7 @@ namespace Moxl;
 class Parser {
     private $parser;
     private $depth = 0;
+    public  $nodes = null;
     private $node = null;
     private $handler = null;
     private $raw = false;
@@ -31,6 +32,8 @@ class Parser {
 
         $this->depth = 0;
         $this->node = $this->handler = null;
+
+        $this->nodes = new \SplQueue;
     }
 
     public function parse($data, $end = false)
@@ -96,12 +99,7 @@ class Parser {
         }
 
         if($this->depth == 1) {
-            /*$dom = new \DOMDocument('1.0', 'utf-8');
-            $element = $dom->importNode(dom_import_simplexml($this->node), true);
-            $dom->appendChild($element); 
-            $debug = $dom->saveHTML();
-            fwrite(STDERR, colorize($debug, 'blue')." : ".colorize('received', 'green')."\n");*/
-            \Moxl\Xec\Handler::handle($this->node);
+            $this->nodes->enqueue($this->node);
             unset($this->node);
         } elseif($this->depth > 1 && $this->raw == false) {
             $this->handler = current($this->handler->xpath("parent::*"));
