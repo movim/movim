@@ -61,7 +61,7 @@ class Config extends Model {
         $this->theme            = 'material';
         $this->locale           = 'en';
         $this->maxusers         = -1;
-        $this->loglevel         = 'empty';
+        $this->loglevel         = 0;
         $this->timezone         = 'Etc/GMT';
         $this->xmppwhitelist    = '';
         $this->info             = '';
