@@ -7,7 +7,6 @@ use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use Moxl\Xec\Action\Microblog\CommentPublish;
 
-use \Michelf\Markdown;
 use Respect\Validation\Validator;
 
 class Post extends \Movim\Widget\Base

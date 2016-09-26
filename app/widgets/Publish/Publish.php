@@ -3,7 +3,7 @@
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\TestPostPublish;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
-use \Michelf\Markdown;
+use \Michelf\MarkdownExtra;
 use Respect\Validation\Validator;
 
 class Publish extends \Movim\Widget\Base
@@ -141,7 +141,7 @@ class Publish extends \Movim\Widget\Base
             $view = $this->tpl();
 
             $doc = new DOMDocument();
-            $doc->loadXML('<div>'.addHFR(Markdown::defaultTransform($form->content->value)).'</div>');
+            $doc->loadXML('<div>'.addHFR(MarkdownExtra::defaultTransform($form->content->value)).'</div>');
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
             Dialog::fill($view->draw('_publish_preview', true), true);
@@ -229,7 +229,7 @@ class Publish extends \Movim\Widget\Base
 
             if($form->content->value != '') {
                 $content = $form->content->value;
-                $content_xhtml = addHFR(Markdown::defaultTransform($content));
+                $content_xhtml = addHFR(MarkdownExtra::defaultTransform($content));
             }
 
             if($form->id->value != '') {
