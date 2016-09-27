@@ -293,7 +293,12 @@ var MovimUtils = {
     urlParts : function() {
         var str = window.location.search.split('/');
         var page = str[0].substr(1);
-        str.shift()
+        str.shift();
+
+        var str = str.map(function(param) {
+            return decodeURIComponent(param);
+        });
+
         var parts = {'page': page, 'params': str};
         return parts;
     }

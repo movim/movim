@@ -81,10 +81,10 @@ class Route extends Base {
 
             if($params != false && is_array($params)) {
                 foreach($params as $value) {
-                    $uri .= '/' . $value ;
+                    $uri .= '/' . rawurlencode($value);
                 }
             } elseif($params != false) {
-                $uri .= '/' . $params;
+                $uri .= '/' . rawurlencode($params);
             }
 
             return $uri.$tab;

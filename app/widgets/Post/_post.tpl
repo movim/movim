@@ -337,7 +337,7 @@
                     <ul class="list card flex active">
                         {if="$previous"}
                             <li class="block"
-                                onclick="Post_ajaxGetPost('{$previous->origin}', '{$previous->node}', '{$previous->nodeid}');">
+                                onclick="MovimUtils.redirect('{$c->route('news', [$previous->origin, $previous->node, $previous->nodeid])}')">
                                 <span class="primary icon gray">
                                     <i class="zmdi zmdi-arrow-left"></i>
                                 </span>
@@ -362,7 +362,7 @@
                         {/if}
                         {if="$next"}
                             <li class="block"
-                                onclick="Post_ajaxGetPost('{$next->origin}', '{$next->node}', '{$next->nodeid}');">
+                                onclick="MovimUtils.redirect('{$c->route('news', [$next->origin, $next->node, $next->nodeid])}')">
                                 <span class="control icon gray">
                                     <i class="zmdi zmdi-arrow-right"></i>
                                 </span>
