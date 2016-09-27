@@ -412,18 +412,16 @@ class Postn extends Model {
         return $attachments;
     }
 
-    public function getAttachment($link = false)
+    public function getAttachment()
     {
         $attachments = $this->getAttachments();
 
-        if(isset($attachments['pictures']) && !isset($attachments['links'])) {
-            return $attachments['pictures'][0];
-        }
-        if(isset($attachments['files']) && !$link) {
-            return $attachments['files'][0];
-        }
-        if(isset($attachments['links'])) {
-            return $attachments['links'][0];
+        foreach($attachments as $key => $group) {
+            foreach($group as $attachment) {
+                if(in_array($attachment['rel'], ['enclosure', 'related'])) {
+                    return $attachment;
+                }
+            }
         }
 
         return false;

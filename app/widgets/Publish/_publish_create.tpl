@@ -96,7 +96,7 @@
 
     <div id="content_link" {if="$reply"}class="hide"{/if}>
         {if="$item != false"}
-            {$attachment = $item->getAttachment(true)}
+            {$attachment = $item->getAttachment()}
         {/if}
         <input
             type="url"
