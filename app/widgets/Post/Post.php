@@ -212,8 +212,8 @@ class Post extends \Movim\Widget\Base
 
         $view->assign('presencestxt', getPresencesTxt());
         $view->assign('top', $cd->getTop(6));
-        $view->assign('blogs', $nd->getLastBlogPublic(0, 6));
-        $view->assign('posts', $nd->getLastPublished(0, 4));
+        $view->assign('blogs', $nd->getLastBlogPublic(0, 8));
+        $view->assign('posts', $nd->getLastPublished(0, 6));
         $view->assign('me', $cd->get($this->user->getLogin()), true);
         $view->assign('jid', $this->user->getLogin());
 

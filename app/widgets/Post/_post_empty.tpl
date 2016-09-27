@@ -84,7 +84,7 @@
             {$value->node}
         {/if}
         </p>
-        <p>{$value->contentcleaned|strip_tags}</p>
+        <p>{$value->contentcleaned|strip_tags|truncate:140}</p>
         <p>
             <a href="{$c->route('contact', $value->getContact()->jid)}">
                 <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
@@ -163,7 +163,7 @@
             {/if}
             </p>
             <p>
-                {$value->contentcleaned|strip_tags}
+                {$value->contentcleaned|strip_tags|truncate:140}
             </p>
             <p>
                 {$value->origin} /

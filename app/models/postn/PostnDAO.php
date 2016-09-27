@@ -676,6 +676,7 @@ class PostnDAO extends SQL {
                 and postn.node not like \'urn:xmpp:inbox\'
                 and postn.origin not like \'nsfw%\'
                 and ((postn.origin, postn.node) not in (select server, node from subscription where jid = :origin))
+                and aid is not null
             order by published desc
             ';
 
@@ -701,6 +702,7 @@ class PostnDAO extends SQL {
                 node = \'urn:xmpp:microblog:0\'
                 and postn.origin not in (select jid from rosterlink where session = :origin)
                 and postn.open = true
+                and content != \'\'
             order by published desc
             ';
 
