@@ -102,6 +102,10 @@ var Chat = {
                 bubble.querySelector('p.message').innerHTML = messages[i].body.replace(/\r\n?|\n/g, '<br />');
             }
 
+            if (messages[i].quoted) {
+                bubble.querySelector('p.message').classList.add('quoted');
+            }
+
             bubble.querySelector('span.info').innerHTML = messages[i].publishedPrepared;
             bubble.querySelector('p.user').className = 'user ' + messages[i].color;
 

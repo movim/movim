@@ -30,6 +30,7 @@ class Message extends Model {
 
     public $picture; // A valid (small) picture URL
     public $sticker; // The sticker code
+    public $quoted;  // If the user was quoted in the message
 
     public function __construct()
     {
@@ -64,7 +65,9 @@ class Message extends Model {
             "picture" :
                 {"type":"text" },
             "sticker" :
-                {"type":"string", "size":128 }
+                {"type":"string", "size":128 },
+            "quoted" :
+                {"type":"int", "size":1}
         }';
 
         parent::__construct();
@@ -92,7 +95,7 @@ class Message extends Model {
 
             $this->type = 'chat';
             if($stanza->attributes()->type) {
-                $this->type    = (string)$stanza->attributes()->type;
+                $this->type = (string)$stanza->attributes()->type;
             }
 
             if($stanza->body)
@@ -100,6 +103,15 @@ class Message extends Model {
 
             if($stanza->subject)
                 $this->__set('subject', (string)$stanza->subject);
+
+            if($this->type == 'groupchat') {
+                $pd = new \Modl\PresenceDAO;
+                $p = $pd->getMyPresenceRoom($this->jidfrom);
+
+                if(strpos($this->body, $p->resource) !== false) {
+                    $this->quoted = true;
+                }
+            }
 
             if($stanza->html) {
                 $xml = \simplexml_load_string((string)$stanza->html->body);

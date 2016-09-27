@@ -91,22 +91,17 @@ class Chat extends \Movim\Widget\Base
                     4,
                     $this->route('chat', $contact->jid)
                 );
-            } elseif($message->type == 'groupchat') {
-                $pd = new \Modl\PresenceDAO;
-                $p = $pd->getMyPresenceRoom($from);
+            } elseif ($message->type == 'groupchat'
+                   && $message->quoted) {
+                $cd = new \Modl\ConferenceDAO;
+                $c = $cd->get($from);
 
-                // If we are quoted in a chatroom
-                if(strpos($message->body, $p->resource) !== false) {
-                    $cd = new \Modl\ConferenceDAO;
-                    $c = $cd->get($from);
-
-                    Notification::append(
-                        'chat|'.$from,
-                        ($c != null && $c->name) ? $c->name : $from,
-                        $message->body,
-                        false,
-                        4);
-                }
+                Notification::append(
+                    'chat|'.$from,
+                    ($c != null && $c->name) ? $c->name : $from,
+                    $message->resource.': '.$message->body,
+                    false,
+                    4);
             }
 
             RPC::call('MovimTpl.fill', '#' . cleanupId($from.'_state'), $contact->jid);
@@ -539,11 +534,6 @@ class Chat extends \Movim\Widget\Base
         if(is_array($messages)) {
             $messages = array_reverse($messages);
 
-            /*foreach($messages as $message) {
-                $this->_msgMap[$message->published.$message->jid] = $message;
-            }
-
-            foreach($this->_msgMap as $message) {*/
             foreach($messages as $message) {
                 $this->prepareMessage($message);
             }
@@ -576,7 +566,7 @@ class Chat extends \Movim\Widget\Base
         RPC::call('Chat.clearReplace');
     }
 
-    function prepareMessage(&$message, $jid=null)
+    function prepareMessage(&$message, $jid = null)
     {
         if($jid != $message->jidto && $jid != $message->jidfrom && $jid != null)
             return $this->_wrapper;
@@ -587,10 +577,8 @@ class Chat extends \Movim\Widget\Base
         if (isset($message->html)) {
             $message->body = $message->html;
         } else {
-            // We add some smileys...
             $message->convertEmojis();
             $message->addUrls();
-            //    $message->body = prepareString(htmlentities($message->body , ENT_COMPAT,'UTF-8'));
         }
 
         if (isset($message->sticker)) {
@@ -620,7 +608,6 @@ class Chat extends \Movim\Widget\Base
             ];
         }
 
-
         $message->publishedPrepared = prepareDate(strtotime($message->published), true);
 
         if ($message->delivered) {
@@ -639,29 +626,37 @@ class Chat extends \Movim\Widget\Base
                 else
                     array_push($this->_wrapper[$date], $message);
             }
+
+            $pd = new \Modl\PresenceDAO;
+            $p = $pd->getMyPresenceRoom($message->from);
         } else {
             $msgkey = $message->jidfrom . '>' . substr($message->published, 11, 5);
+
             //fillup $wrapper
             if (!array_key_exists($date, $this->_wrapper)) {
                 $sticker = "";
+
                 if (isset($message->sticker)) {
                     $sticker = "sticker";
                 }
+
                 $this->_wrapper[$date] = ['0' . $sticker . '<' . $msgkey => [$message]];
             } else { //date contains at least one speaker@time=>msg already
                 end($this->_wrapper[$date]);
                 $lastkey = key($this->_wrapper[$date]);
+
                 if (substr($lastkey, strpos($lastkey, '<') + 1) == $msgkey // same jidfrom, same min
                     && !isset($message->sticker) // this msg is not a sticker
                     && strpos($lastkey, "sticker<") === false
                 ) { // the previous msg was not a sticker
                     array_push($this->_wrapper[$date][$lastkey], $message);
-                }
-                else {
+                } else {
                     $sticker = "";
+
                     if (isset($message->sticker)) {
                         $sticker = "sticker";
                     }
+
                     $this->_wrapper[$date][count($this->_wrapper[$date]) . $sticker . '<' . $msgkey] = [$message];
                 }
             }

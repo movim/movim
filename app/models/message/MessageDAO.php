@@ -12,7 +12,8 @@ class MessageDAO extends SQL {
                     published       = :published,
                     delivered       = :delivered,
                     edited          = :edited,
-                    picture         = :picture
+                    picture         = :picture,
+                    quoted          = :quoted
 
                 where session       = :session
                     and id          = :id
@@ -21,19 +22,20 @@ class MessageDAO extends SQL {
 
         $this->prepare(
             'Message',
-            array(
+            [
                 'thread'    => $message->newid, // FIXME
                 'id'        => $message->id,
                 'session'   => $message->session,
                 'jidto'     => $message->jidto,
                 'edited'    => $message->edited,
                 'picture'   => $message->picture,
+                'quoted'    => $message->quoted,
                 'jidfrom'   => $message->jidfrom,
                 'body'      => $message->body,
                 'html'      => $message->html,
                 'published' => $message->published,
                 'delivered' => $message->delivered
-            )
+            ]
         );
 
         $this->run('Message');
@@ -55,7 +57,8 @@ class MessageDAO extends SQL {
                 published,
                 delivered,
                 sticker,
-                picture)
+                picture,
+                quoted)
                 values(
                     :id,
                     :session,
@@ -70,12 +73,13 @@ class MessageDAO extends SQL {
                     :published,
                     :delivered,
                     :sticker,
-                    :picture
+                    :picture,
+                    :quoted
                     )';
 
             $this->prepare(
                 'Message',
-                array(
+                [
                     'id'        => $message->id,
                     'session'   => $message->session,
                     'jidto'     => $message->jidto,
@@ -89,8 +93,9 @@ class MessageDAO extends SQL {
                     'published' => $message->published,
                     'delivered' => $message->delivered,
                     'sticker'   => $message->sticker,
-                    'picture'   => $message->picture
-                )
+                    'picture'   => $message->picture,
+                    'quoted'    => $message->quoted
+                ]
             );
         }
 
@@ -107,10 +112,10 @@ class MessageDAO extends SQL {
 
         $this->prepare(
             'Message',
-            array(
+            [
                 'session' => $this->_user,
                 'id' => $id
-            )
+            ]
         );
 
         return $this->run('Message', 'item');
@@ -128,11 +133,11 @@ class MessageDAO extends SQL {
 
         $this->prepare(
             'Message',
-            array(
+            [
                 'session' => $this->_user,
                 'jidto'   => $to,
                 'jidfrom' => $this->_user
-            )
+            ]
         );
 
         return $this->run('Message', 'item');

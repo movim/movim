@@ -119,6 +119,13 @@
     cursor: pointer;
 }
 
+#chat_widget li.room p.quoted {
+    background-color: rgba(255, 255, 51, 0.3);
+    padding: 0 0.5rem;
+    margin: 0 1rem;
+    border-radius: 0.5rem;
+}
+
 #chat_widget ul:after {
     content: " ";
     display: block;
