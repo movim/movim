@@ -151,7 +151,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
 
                 if(!empty($xml) && $conn) {
                     $conn->write(trim($xml));
-                    fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                    #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
                 }
             });
 
@@ -176,7 +176,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
         if(!empty($message)) {
             $restart = false;
 
-            fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
 
             if($message == '</stream:stream>') {
                 $conn->close();
@@ -257,7 +257,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
 
                     if(!empty($xml)) {
                         $conn->write(trim($xml));
-                        fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+                        #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
                     }
 
                     \Moxl\API::clear();
