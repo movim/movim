@@ -3,6 +3,15 @@ Movim Changelog
 
 v0.11 (trunk)
 ---------------------------
+ * Navigation improvement
+ * Add previous/next post shortcut in the footer of each posts
+ * Highlight mentionned messages in chatrooms
+ * Non alpha-numeric Pubsub items and nodes support
+ * Non alpha-numeric JID support
+ * Fix Markdown links with underscores
+ * Fix two-way contact subscription button in Contact
+ * New simplified and optimized Roster
+ * Improved search (global and roster)
  * CSS fixes
  * Refactoring of the groups page UI and UX
  * Add (small) picture embeding in chats
