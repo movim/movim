@@ -29,8 +29,8 @@
         </div>
         <div>
             <input
-                {if="isset($room) && !empty($room->username)"}
-                    value="{$room->conference}"
+                {if="isset($room) && $room->nick != ''"}
+                    value="{$room->nick}"
                 {else}
                     value="{$username}"
                 {/if}

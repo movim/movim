@@ -15,14 +15,14 @@ class ConferenceDAO extends SQL {
 
         $this->prepare(
             'Conference',
-            array(
+            [
                 'jid'           => $c->jid,
                 'conference'    => $c->conference,
                 'name'          => $c->name,
                 'nick'          => $c->nick,
                 'autojoin'      => $c->autojoin,
                 'status'        => $c->status
-            )
+            ]
         );
 
         $this->run('Conference');
@@ -35,14 +35,14 @@ class ConferenceDAO extends SQL {
 
             $this->prepare(
                 'Conference',
-                array(
+                [
                     'jid'           => $c->jid,
                     'conference'    => $c->conference,
                     'name'          => $c->name,
                     'nick'          => $c->nick,
                     'autojoin'      => $c->autojoin,
                     'status'        => $c->status
-                )
+                ]
             );
 
             $this->run('Conference');
@@ -57,10 +57,10 @@ class ConferenceDAO extends SQL {
 
         $this->prepare(
             'Conference',
-            array(
+            [
                 'jid' => $this->_user,
                 'conference' => $conference,
-            )
+            ]
         );
 
         return $this->run('Conference', 'item');
@@ -74,9 +74,9 @@ class ConferenceDAO extends SQL {
 
         $this->prepare(
             'Conference',
-            array(
+            [
                 'jid' => $this->_user
-            )
+            ]
         );
 
         return $this->run('Conference');
@@ -89,9 +89,9 @@ class ConferenceDAO extends SQL {
 
         $this->prepare(
             'Subscription',
-            array(
+            [
                 'jid' => $this->_user
-            )
+            ]
         );
 
         return $this->run('conference');
@@ -105,10 +105,10 @@ class ConferenceDAO extends SQL {
 
         $this->prepare(
             'Conference',
-            array(
+            [
                 'jid' => $this->_user,
                 'conference' => $conference
-            )
+            ]
         );
 
         return $this->run('Conference');
