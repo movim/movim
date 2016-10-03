@@ -24,14 +24,6 @@
             <i class="zmdi zmdi-account"></i>
         </span>
     {/if}
-    <p class="normal line">{$contact->getTrueName()}</p>
-    {if="$contact->groupname"}
-    <p>
-        <span class="tag color {$contact->groupname|stringToColor}">
-            {$contact->groupname}
-        </span>
-    </p>
-    {/if}
     {if="$contact->rostersubscription != 'both'"}
     <span class="control icon gray">
         {if="$contact->rostersubscription == 'to'"}
@@ -42,5 +34,13 @@
             <i class="zmdi zmdi-block"></i>
         {/if}
     </span>
+    {/if}
+    <p class="normal line">{$contact->getTrueName()}</p>
+    {if="$contact->groupname"}
+    <p>
+        <span class="tag color {$contact->groupname|stringToColor}">
+            {$contact->groupname}
+        </span>
+    </p>
     {/if}
 </li>
