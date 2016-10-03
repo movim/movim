@@ -124,6 +124,10 @@ var Chat = {
     appendMessagesWrapper : function(page, prepend) {
         if(page) {
             var scrolled = MovimTpl.isPanelScrolled();
+
+            var discussion = document.querySelector('#chat_widget div.contained');
+            Chat.lastScroll = discussion.scrollHeight;
+
             Chat.lastDate = null;
             for(date in page) {
                 if (page[date].constructor == Array) { //groupchat
@@ -145,6 +149,13 @@ var Chat = {
                 setTimeout(function() {
                     MovimTpl.scrollPanel();
                 }, 20);
+            }
+
+            if(prepend) {
+                // And we scroll where we were
+                var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
+                discussion.scrollTop += scrollDiff;
+                Chat.lastScroll = discussion.scrollHeight;
             }
         }
     },
@@ -241,15 +252,10 @@ var Chat = {
 
         if(prepend){
             Chat.date = data[0].published;
-            var discussion = document.querySelector('#chat_widget div.contained');
+
             // We prepend
             if (!mergeMsg)
                 MovimTpl.prepend("#" + id, bubble.outerHTML);
-
-            // And we scroll where we were
-            var scrollDiff = discussion.scrollHeight - Chat.lastScroll;
-            discussion.scrollTop += scrollDiff;
-            Chat.lastScroll = discussion.scrollHeight;
         } else {
             if (!mergeMsg) {
                 MovimTpl.append("#" + id, bubble.outerHTML);
