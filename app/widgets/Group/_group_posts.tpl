@@ -37,7 +37,7 @@
             {$value->node}
         {/if}
         </p>
-        <p>{$value->contentcleaned|strip_tags|truncate:140}</p>
+        <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
         <p>
             {$count = $value->countComments()}
             {if="$count > 0"}

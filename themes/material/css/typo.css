@@ -78,6 +78,7 @@ xmp {
     border-left: 1rem solid gray;
     background-color: #333;
     white-space:pre-wrap; word-wrap:break-word;
+    direction: ltr;
 }
 
 pre code {
@@ -144,5 +145,9 @@ dl dt {
 dl dd {
     text-align: left;
     width: 74%;
+}
+
+*[dir="rtl"] dl dd {
+    text-align: right;
 }
 

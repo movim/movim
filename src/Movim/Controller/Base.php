@@ -11,7 +11,7 @@ class Base {
     protected $page;
 
     function __construct() {
-        $this->page = new Builder;
+        $this->page = new Builder(new \User);
     }
 
     /**

@@ -2,10 +2,6 @@ form[name=presence] ul {
     margin: 0 -2rem;
 }
 
-#presence_widget {
-    min-width: 20rem;
-}
-
 #presence_widget li {
     padding: 2.5rem 0;
 }

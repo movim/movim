@@ -13,19 +13,19 @@ class Builder
     private $user;
     private $css = [];
     private $scripts = [];
+    private $dir = 'ltr';
 
     /**
      * Constructor. Determines whether to show the login page to the user or the
      * Movim interface.
      */
-    function __construct(&$user = NULL)
+    function __construct(&$user = null)
     {
         $this->user = $user;
 
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
         $this->theme = $config->theme;
-
     }
 
     function viewsPath($file)
@@ -102,6 +102,21 @@ class Builder
             $this->title .= ' - ' . $widgets->title;
         }
         echo $this->title;
+    }
+
+    /**
+     * Displays the current title.
+     */
+    function dir()
+    {
+        $this->user->reload(true);
+        $lang = $this->user->getConfig('language');
+
+        if(in_array($lang, ['ar', 'he', 'fa'])) {
+            $this->dir = 'rtl';
+        }
+
+        echo $this->dir;
     }
 
     /**

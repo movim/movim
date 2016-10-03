@@ -1,4 +1,4 @@
-<ul id="presence_widget" class="list active thick">
+<ul id="presence_widget" class="list active thick" dir="ltr">
     <li>
         <span class="primary icon bubble color status">
             <i class="zmdi zmdi-account"></i>

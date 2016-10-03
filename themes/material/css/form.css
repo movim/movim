@@ -26,6 +26,11 @@ form > div > label {
     left: 0; /* We force the left align */
 }
 
+
+*[dir="rtl"] form > div > label {
+    right: 0;
+}
+
 form > div.icon {
     padding-left: 9rem;
 }
@@ -49,6 +54,11 @@ form > div > .select:after {
     right: 1.25rem;
     bottom: 0.25rem;
     pointer-events: none;
+}
+
+*[dir="rtl"] form > div > .select::after {
+    left: 1.25rem;
+    right: auto;
 }
 
 form > div > .select:hover:after {
@@ -152,6 +162,7 @@ form > div .checkbox {
     width: 4.5rem;
     height: 5rem;
     top: 1rem;
+    direction: ltr;
 }
 
 form > div .checkbox:before,
@@ -213,7 +224,8 @@ form > div .radio > input[type="radio"] + label {
     border-style: solid;
     border-color: gray;
     transition: box-shadow 0.1s ease;
-    margin-top: 1.25rem;
+    margin: 1.25rem;
+    margin-bottom: 0;
 }
 
 form > div .radio > input[type="radio"] + label:hover {

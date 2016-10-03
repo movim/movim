@@ -9,11 +9,13 @@
                         {if="$key == $conf.language"}
                             <option
                                 value="{$key}"
+                                dir="auto"
                                 selected="selected">
                                 {$value}
                             </option>
                         {else}
                             <option
+                                dir="auto"
                                 value="{$key}">
                                 {$value}
                             </option>

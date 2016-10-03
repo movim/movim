@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="roster">
+<html>
   <head>
     <meta charset="utf-8" />
     <title><?php $this->title();?></title>
@@ -43,7 +43,7 @@
         $this->scripts();
     ?>
     </head>
-    <body>
+    <body dir="<?php $this->dir();?>">
         <noscript>
             <style type="text/css">
                 nav {display:none;} #content {display: none;}

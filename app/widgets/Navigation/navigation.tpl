@@ -1,4 +1,4 @@
-<ul class="list active">
+<ul class="list active" dir="ltr">
     <a class="classic on_mobile" href="#">
         <li onclick="MovimTpl.toggleMenu()">
             <span class="primary icon bubble on_mobile"><i class="zmdi zmdi-menu"></i></span>
@@ -54,7 +54,7 @@
     </a>
 </ul>
 
-<ul class="list divided oppose active">
+<ul class="list divided oppose active" dir="ltr">
     <li onclick="Search_ajaxRequest()">
         <span class="primary icon">
             <i class="zmdi zmdi-search"></i>

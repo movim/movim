@@ -33,6 +33,7 @@ body > nav > ul.list.active li.active:not(.subheader) {
 ul.oppose {
     position: absolute;
     bottom: 0;
+    left: 0;
     width: 100%;
     min-width: 10rem;
 }

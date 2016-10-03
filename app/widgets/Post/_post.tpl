@@ -173,7 +173,7 @@
         </ul>
         <br />
     {else}
-        <section>
+        <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
             <content>
                 {if="$post->isShort() && isset($attachments.pictures)"}
                     {loop="$attachments.pictures"}

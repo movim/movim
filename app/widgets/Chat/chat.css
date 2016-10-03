@@ -22,7 +22,7 @@
 }
 
 #chat_widget .chat_box form {
-    width: calc(100% - 5rem);
+    margin-right: 6rem;
 }
 
 #chat_widget .chat_box form > div {

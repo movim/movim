@@ -80,11 +80,11 @@
             {/if}
 
             {if="$value->title != null"}
-                <p class="line">{$value->title}</p>
+                <p class="line" dir="auto">{$value->title}</p>
             {else}
                 <p class="line">{$c->__('menu.contact_post')}</p>
             {/if}
-            <p>{$value->contentcleaned|stripTags|truncate:140}</p>
+            <p dir="auto">{$value->contentcleaned|stripTags|truncate:140}</p>
             {if="$value->isReply()"}
                 {$reply = $value->getReply()}
                     <ul class="list card">
