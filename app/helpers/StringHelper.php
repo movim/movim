@@ -264,6 +264,16 @@ function purifyHTML($string)
 }
 
 /**
+ * Check if a string is RTL
+ * @param string
+ * @return string
+ */
+function isRTL($string)
+{
+    return preg_match('/\p{Arabic}|\p{Hebrew}/u', $string);
+}
+
+/**
  * Return the first two letters of a string
  * @param string
  * @return string

@@ -501,7 +501,7 @@ class Postn extends Model {
 
     public function isRTL()
     {
-        return preg_match('/\p{Arabic}|\p{Hebrew}/u', $this->contentraw);
+        return isRTL($this->contentraw);
     }
 
     public function getReply()

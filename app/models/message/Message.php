@@ -32,6 +32,8 @@ class Message extends Model {
     public $sticker; // The sticker code
     public $quoted;  // If the user was quoted in the message
 
+    public $rtl = false;
+
     public function __construct()
     {
         $this->_struct = '

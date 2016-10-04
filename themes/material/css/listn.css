@@ -321,6 +321,10 @@ ul li div.bubble {
     width: auto;
 }
 
+ul li div.bubble[dir="rtl"] {
+    text-align: right;
+}
+
 ul li div.bubble:not(.sticker) {
     padding: 1rem 1.75rem 0.5rem;
     border-radius: 0.5rem;

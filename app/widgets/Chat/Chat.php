@@ -608,6 +608,8 @@ class Chat extends \Movim\Widget\Base
             ];
         }
 
+        $message->rtl = isRTL($message->body);
+
         $message->publishedPrepared = prepareDate(strtotime($message->published), true);
 
         if ($message->delivered) {

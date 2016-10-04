@@ -209,6 +209,10 @@ var Chat = {
                 span.className = "info";
             }
 
+            if (data[i].rtl) {
+                bubble.querySelector('div.bubble').setAttribute('dir', 'rtl');
+            }
+
             if (data[i].body.match(/^\/me\s/)) {
                 p.className = 'quote';
                 // Remove "/me " from beginning of body
