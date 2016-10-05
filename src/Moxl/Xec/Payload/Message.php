@@ -42,22 +42,24 @@ class Message extends Payload
         if($stanza->gone)
             $evt->runEvent('gone', array($jid[0], $to));
         if($stanza->body || $stanza->subject) {
-            $m = new \Modl\Message;
-            $m->set($stanza, $parent);
-
             if($stanza->request) {
                 $from = (string)$stanza->attributes()->from;
                 $id = (string)$stanza->attributes()->id;
                 \Moxl\Stanza\Message::receipt($from, $id);
             }
 
-            if(!preg_match('#^\?OTR#', $m->body)) {
-                $md = new \Modl\MessageDAO;
-                $md->set($m);
+            $m = new \Modl\Message;
+            $promise = $m->set($stanza, $parent);
 
-                $this->pack($m);
-                $this->deliver();
-            }
+            $promise->done(function() use ($m) {
+                if(!preg_match('#^\?OTR#', $m->body)) {
+                    $md = new \Modl\MessageDAO;
+                    $md->set($m);
+
+                    $this->pack($m);
+                    $this->deliver();
+                }
+            });
         }
     }
 }

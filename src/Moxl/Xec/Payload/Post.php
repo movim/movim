@@ -45,17 +45,20 @@ class Post extends Payload
                 $delay = false;
 
             $p = new \modl\Postn();
-            $p->set($stanza->items, $from, $delay);
+            $promise = $p->set($stanza->items, $from, $delay);
 
-            // We limit the very old posts (2 months old)
-            if(strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
-            && $p->nodeid != $this->testid) {
-                $pd = new \modl\PostnDAO();
-                $pd->set($p, $from);
+            $promise->done(function() use ($p, $from) {
+                // We limit the very old posts (2 months old)
+                if(strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
+                && $p->nodeid != $this->testid) {
+                    $pd = new \modl\PostnDAO();
+                    $pd->set($p, $from);
 
-                $this->pack($p);
-                $this->deliver();
-            }
+                    $this->pack($p);
+                    $this->deliver();
+                }
+            });
+
         } elseif($stanza->items->retract) {
             $pd = new \modl\PostnDAO();
             $pd->delete($stanza->items->retract->attributes()->id);
@@ -70,7 +73,6 @@ class Post extends Payload
         } elseif($stanza->items->item && isset($stanza->items->item->attributes()->id)
             && !filter_var($from, FILTER_VALIDATE_EMAIL)) {
             // In this case we only get the header, so we request the full content
-
             $p = new \modl\PostnDAO();
 
             $node = (string)$stanza->items->attributes()->node;

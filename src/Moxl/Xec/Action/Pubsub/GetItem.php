@@ -80,29 +80,32 @@ class GetItem extends Errors
                 if(isset($item->entry)
                 &&(string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
                     $p = new \modl\Postn();
-                    $p->set($item, $from, false, $node);
+                    $promise = $p->set($item, $from, false, $node);
 
-                    $pd = new \modl\PostnDAO();
-                    $pd->set($p);
+                    $promise->done(function() use ($p, $evt) {
+                        $pd = new \modl\PostnDAO();
+                        $pd->set($p);
 
-                    $post = true;
+                        $post = true;
 
-                    if(is_array($this->_askreply)) {
-                        $this->pack([
-                            'origin' => $this->_askreply['origin'],
-                            'node'   => $this->_askreply['node'],
-                            'nodeid' => $this->_askreply['nodeid']]);
+                        if(is_array($this->_askreply)) {
+                            $this->pack([
+                                'origin' => $this->_askreply['origin'],
+                                'node'   => $this->_askreply['node'],
+                                'nodeid' => $this->_askreply['nodeid']]);
+                            $this->deliver();
+                        } else {
+                            $this->pack($p);
+                            $evt->runEvent('post', $this->packet);
+                        }
+
+                        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
                         $this->deliver();
-                    } else {
-                        $this->pack($p);
-                        $evt->runEvent('post', $this->packet);
-                    }
+                    });
                 }
             }
 
             //if($post) {
-                $this->pack(['server' => $this->_to, 'node' => $this->_node]);
-                $this->deliver();
             //}
         } else {
             $pd = new PostDelete;

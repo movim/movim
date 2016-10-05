@@ -67,18 +67,21 @@ class GetItems extends Errors
                 if($this->_since == null
                 || strtotime($this->_since) < strtotime($item->entry->published)) {
                     $p = new \modl\Postn();
-                    $p->set($item, $this->_to, false, $this->_node);
-                    $pd->set($p);
+                    $promise = $p->set($item, $this->_to, false, $this->_node);
+
+                    $promise->done(function() use($pd, $p) {
+                        $pd->set($p);
+
+                        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
+                        $this->deliver();
+                    });
                 }
             }
         }
-
-        $this->pack(array('server' => $this->_to, 'node' => $this->_node));
-        $this->deliver();
     }
 
     public function error($errorid, $message) {
-        $this->pack(array('server' => $this->_to, 'node' => $this->_node));
+        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
 
