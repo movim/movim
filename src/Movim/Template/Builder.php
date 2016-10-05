@@ -19,7 +19,7 @@ class Builder
      * Constructor. Determines whether to show the login page to the user or the
      * Movim interface.
      */
-    function __construct(&$user = null)
+    function __construct($user = null)
     {
         $this->user = $user;
 
