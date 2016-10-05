@@ -244,29 +244,6 @@ class Postn extends Model {
         $this->__set('content', trim($content));
         $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
 
-        $extra = false;
-        // We try to extract a picture
-        $xml = \simplexml_load_string('<div>'.$this->contentcleaned.'</div>');
-        if($xml) {
-            $results = $xml->xpath('//img/@src');
-            if(is_array($results) && !empty($results)) {
-                $extra = (string)$results[0];
-                if(isSmallPicture($extra)) {
-                    $this->picture = $extra;
-                }
-            }
-
-            $results = $xml->xpath('//video/@poster');
-            if(is_array($results) && !empty($results)) {
-                $extra = (string)$results[0];
-                if(isSmallPicture($extra)) {
-                    $this->picture = $extra;
-                }
-            }
-        }
-
-        $this->setAttachments($entry->entry->link, $extra);
-
         if($entry->entry->geoloc) {
             if($entry->entry->geoloc->lat != 0)
                 $this->__set('lat', (string)$entry->entry->geoloc->lat);
@@ -291,19 +268,58 @@ class Postn extends Model {
 
             $this->__set('reply', serialize($reply));
         }
+
+        $extra = false;
+        // We try to extract a picture
+        $xml = \simplexml_load_string('<div>'.$this->contentcleaned.'</div>');
+        if($xml) {
+            $results = $xml->xpath('//img/@src');
+
+            $check = new \Movim\Task\CheckSmallPicture;
+
+            if(is_array($results) && !empty($results)) {
+                $extra = (string)$results[0];
+
+                return $check->run($extra)
+                    ->then(function($small) use($extra, $entry) {
+                        if($small) $this->picture = $extra;
+                        $this->setAttachments($entry->entry->link, $extra);
+                    });
+            } else {
+                $results = $xml->xpath('//video/@poster');
+                if(is_array($results) && !empty($results)) {
+                    $extra = (string)$results[0];
+
+                    return $check->run($extra)
+                        ->then(function($small) use($extra, $entry) {
+                            $this->picture = $extra;
+                            $this->setAttachments($entry->entry->link, $extra);
+                        });
+                }
+            }
+        }
+
+        $this->setAttachments($entry->entry->link, $extra);
+
+        return new \React\Promise\Promise(function($resolve) {
+            $resolve(true);
+        });
     }
 
-    private function typeIsPicture($type) {
+    private function typeIsPicture($type)
+    {
         return in_array($type, ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']);
     }
 
-    private function typeIsLink($link) {
+    private function typeIsLink($link)
+    {
         return (isset($link['rel'])
         && in_array($link['rel'], ['related', 'alternate'])
         && Validator::url()->validate($link['href']));
     }
 
-    private function setAttachments($links, $extra = false) {
+    private function setAttachments($links, $extra = false)
+    {
         $l = [];
 
         foreach($links as $attachment) {
@@ -315,7 +331,7 @@ class Postn extends Model {
             if($this->picture == null
             && isset($enc['type'])
             && $this->typeIsPicture($enc['type'])
-            && isSmallPicture($enc['href'])) {
+            /*&& isSmallPicture($enc['href'])*/) {
                 $this->picture = $enc['href'];
             }
 

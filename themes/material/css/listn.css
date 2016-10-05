@@ -448,3 +448,56 @@ ul.list li.divided,
     width: calc(100% - 9rem);
 }
 
+/* RTL */
+
+*[dir="rtl"] :not(nav) ul.list li > .primary {
+    left: auto;
+    right: 1.5rem;
+}
+
+*[dir="rtl"] :not(nav) ul.list li > .primary.bubble {
+    left: auto;
+    right: 2rem;
+}
+
+*[dir="rtl"] :not(nav) ul.list li > .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
+    padding-left: 2rem;
+    padding-right: 9rem;
+}
+
+*[dir="rtl"] :not(nav) ul.list li > .top + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control) {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+
+*[dir="rtl"] :not(nav) ul.list li > .control {
+    right: auto;
+    left: 0;
+}
+
+*[dir="rtl"] :not(nav) ul.list li > .control ~ .control {
+    right: auto;
+    left: 6rem;
+}
+
+*[dir="rtl"] :not(nav) ul.list li > .control ~ .control ~ .control {
+    right: auto;
+    left: 12rem;
+}
+
+
+*[dir="rtl"] :not(nav) ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
+    margin-right: auto;
+    margin-left: 6rem;
+}
+
+*[dir="rtl"] :not(nav) ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
+    margin-right: auto;
+    margin-left: 12rem;
+}
+
+*[dir="rtl"] :not(nav) ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
+    margin-right: 0;
+    margin-left: 18rem;
+}

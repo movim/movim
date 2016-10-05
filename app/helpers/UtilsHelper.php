@@ -588,40 +588,6 @@ function requestURL($url, $timeout = 10, $post = false)
 }
 
 /*
- * @desc Check if the URL is a small picture
- */
-function isSmallPicture($url, $size = false)
-{
-    if(!$size) $size = SMALL_PICTURE_LIMIT;
-
-    $client = new Client([
-        'request.options' => [
-            'timeout' => 2,
-            'connect_timeout' => 2
-        ]
-    ]);
-
-    try {
-        $response = $client->head($url);
-
-        $length = $response->getHeader('content-length');
-
-        if($length) {
-            $length = (int)$length[0];
-            $type   = (string)$response->getHeader('content-type')[0];
-            $typearr = explode('/', $type);
-
-            return ($typearr[0] == 'image'
-                && $length <= $size
-                && $length >= 10000);
-        }
-
-        return false;
-    } catch(\Exception $e) {
-        return false;
-    }
-}
-/*
  * @desc Get the URI of a smiley
  */
 function getSmileyPath($id)

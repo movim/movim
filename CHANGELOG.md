@@ -3,6 +3,7 @@ Movim Changelog
 
 v0.11 (trunk)
 ---------------------------
+ * Rewrite blocking code to asyncrone promises
  * Navigation improvement
  * Add previous/next post shortcut in the footer of each posts
  * Highlight mentionned messages in chatrooms

@@ -280,43 +280,46 @@ class Chat extends \Movim\Widget\Base
         }
 
         $m->body      = $body;
-        $m->checkPicture();
-        //$m->html      = prepareString($m->body, false, true);
+        $promise = $m->checkPicture();
 
-        if($resource != false) {
-            $to = $to . '/' . $resource;
-        }
+        $promise->done(function() use ($m, $to, $muc, $resource, $replace) {
+            //$m->html      = prepareString($m->body, false, true);
 
-        // We decode URL codes to send the correct message to the XMPP server
-        $p = new Publish;
-        $p->setTo($to);
-        //$p->setHTML($m->html);
-        $p->setContent($m->body);
-
-        if($replace != false) {
-            $p->setId($m->newid);
-            $p->setReplace($m->id);
-        } else {
-            $p->setId($m->id);
-        }
-
-        if($muc) {
-            $p->setMuc();
-        }
-
-        $p->request();
-
-        /* Is it really clean ? */
-        if(!$p->getMuc()) {
-            if(!preg_match('#^\?OTR#', $m->body)) {
-                $md = new \Modl\MessageDAO;
-                $md->set($m);
+            if($resource != false) {
+                $to = $to . '/' . $resource;
             }
 
-            $packet = new Moxl\Xec\Payload\Packet;
-            $packet->content = $m;
-            $this->onMessage($packet/*, true*/);
-        }
+            // We decode URL codes to send the correct message to the XMPP server
+            $p = new Publish;
+            $p->setTo($to);
+            //$p->setHTML($m->html);
+            $p->setContent($m->body);
+
+            if($replace != false) {
+                $p->setId($m->newid);
+                $p->setReplace($m->id);
+            } else {
+                $p->setId($m->id);
+            }
+
+            if($muc) {
+                $p->setMuc();
+            }
+
+            $p->request();
+
+            /* Is it really clean ? */
+            if(!$p->getMuc()) {
+                if(!preg_match('#^\?OTR#', $m->body)) {
+                    $md = new \Modl\MessageDAO;
+                    $md->set($m);
+                }
+
+                $packet = new Moxl\Xec\Payload\Packet;
+                $packet->content = $m;
+                $this->onMessage($packet/*, true*/);
+            }
+        });
     }
 
     /**

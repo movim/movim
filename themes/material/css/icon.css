@@ -33,6 +33,10 @@ span.icon.primary.thumb {
     line-height: 7.5rem;
 }
 
+*[dir="rtl"] span.icon.primary.thumb {
+    right: 0;
+}
+
 li.oppose span.icon {
     left: auto;
     right: 2rem;
