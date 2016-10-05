@@ -450,6 +450,7 @@ ul.list li.divided,
 
 /* RTL */
 
+/*
 *[dir="rtl"] :not(nav) ul.list li > .primary {
     left: auto;
     right: 1.5rem;
@@ -500,4 +501,4 @@ ul.list li.divided,
 *[dir="rtl"] :not(nav) ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
     margin-right: 0;
     margin-left: 18rem;
-}
+}*/
