@@ -177,7 +177,6 @@ class Roster extends \Movim\Widget\Base
     {
         if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
             RPC::call('MovimUtils.redirect', Route::urlize('contact', $jid));
-            RPC::commit();
         } else
             Notification::append(null, $this->__('roster.jid_error'));
     }

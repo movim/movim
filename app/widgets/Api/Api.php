@@ -64,6 +64,5 @@ class Api extends \Movim\Widget\Base {
         $cd->set($config);
 
         RPC::call('MovimUtils.reloadThis');
-        RPC::commit();
     }
 }
