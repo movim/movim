@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bd2862efa454d71557574a68b0b2309e",
-    "content-hash": "0bf5ab4df20ab58892020d7ae4b4d2ca",
+    "hash": "d4d69a8fd3af98c7f4846c5b5f4f0f7d",
+    "content-hash": "0053bed7415928f960f4b47fcdb850b8",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -180,12 +180,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "8f574c58c09aaaf71f88809e3425399229e84d16"
+                "reference": "5fdc3d9c141df9f9e54eaf1e957698cfa8d3e47d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/8f574c58c09aaaf71f88809e3425399229e84d16",
-                "reference": "8f574c58c09aaaf71f88809e3425399229e84d16",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/5fdc3d9c141df9f9e54eaf1e957698cfa8d3e47d",
+                "reference": "5fdc3d9c141df9f9e54eaf1e957698cfa8d3e47d",
                 "shasum": ""
             },
             "require": {
@@ -226,7 +226,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-09-16 11:06:07"
+            "time": "2016-10-06 18:13:19"
         },
         {
             "name": "evenement/evenement",
@@ -941,12 +941,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "39b8a43bf8f24d08fa7bfe2223956f4a421e2359"
+                "reference": "640dd87b87e1235622b88b2a79ebf15a89dfec15"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/39b8a43bf8f24d08fa7bfe2223956f4a421e2359",
-                "reference": "39b8a43bf8f24d08fa7bfe2223956f4a421e2359",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/640dd87b87e1235622b88b2a79ebf15a89dfec15",
+                "reference": "640dd87b87e1235622b88b2a79ebf15a89dfec15",
                 "shasum": ""
             },
             "require": {
@@ -981,7 +981,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-10-05 21:33:05"
+            "time": "2016-10-06 20:08:00"
         },
         {
             "name": "movim/sasl2",
@@ -1539,16 +1539,16 @@
         },
         {
             "name": "react/http-client",
-            "version": "v0.4.11",
+            "version": "v0.4.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/http-client.git",
-                "reference": "4d367ff9909954bafe6a04762ec68e6b1e12bcf8"
+                "reference": "f2b902a0e5bc062ffb2ddd9032776bed9ed5d9f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http-client/zipball/4d367ff9909954bafe6a04762ec68e6b1e12bcf8",
-                "reference": "4d367ff9909954bafe6a04762ec68e6b1e12bcf8",
+                "url": "https://api.github.com/repos/reactphp/http-client/zipball/f2b902a0e5bc062ffb2ddd9032776bed9ed5d9f0",
+                "reference": "f2b902a0e5bc062ffb2ddd9032776bed9ed5d9f0",
                 "shasum": ""
             },
             "require": {
@@ -1575,7 +1575,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2016-09-15 20:59:05"
+            "time": "2016-10-06 13:08:24"
         },
         {
             "name": "react/promise",

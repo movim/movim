@@ -57,29 +57,24 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
     }
 });*/
 
-function emptyBuffers() {
+function writeXMPP($xml)
+{
     global $conn;
-
-    $msg = \RPC::commit();
-
-    if(!empty($msg)) {
-        echo base64_encode(gzcompress(json_encode($msg), 9))."";
-        //fwrite(STDERR, colorize(json_encode($msg).' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
-    }
-
-    \RPC::clear();
-
-    $xml = \Moxl\API::commit();
 
     if(!empty($xml) && $conn) {
         $conn->write(trim($xml));
         #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
     }
-
-    \Moxl\API::clear();
 }
 
-$stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser, &$timestamp) {
+function tick()
+{
+    global $loop;
+    $loop->tick();
+}
+
+$stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser, &$timestamp)
+{
     if(substr($data, -1) == "") {
         $messages = explode("", $buffer . substr($data, 0, -1));
         $buffer = '';
@@ -151,8 +146,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
 
             $rpc = new \RPC();
             $rpc->handle_json($msg);
-
-            emptyBuffers($conn);
         }
     } else {
         $buffer .= $data;
@@ -234,11 +227,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 unset($node);
             }
 
-            emptyBuffers($conn);
-
-            //gc_collect_cycles();
             //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." end data : ".\sizeToCleanSize(memory_get_usage())."\n");
-            //memprof_dump_callgrind(fopen("/tmp/callgrind.out", "w"));
         }
 
         $loop->tick();

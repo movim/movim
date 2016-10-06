@@ -12,10 +12,6 @@ WebSocket.prototype.register = function(host) {
     this.send(JSON.stringify({'func' : 'register', 'host' : host}));
 };
 
-/*WebSocket.prototype.admin = function(key) {
-    this.send(JSON.stringify({'func' : 'admin', 'key' : key}));
-};*/
-
 /**
  * @brief Definition of the MovimWebsocket object
  * @param string error
@@ -163,22 +159,19 @@ var MovimWebsocket = {
         this.attached = new Array();
     },
 
-    handle : function(funcalls) {
-        if(funcalls != null) {
-            for(h = 0; h < funcalls.length; h++) {
-                var funcall = funcalls[h];
-                if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
-                    try {
-                        window[funcall.func].apply(null, funcall.params);
-                    } catch(err) {
-                        console.log("Error caught: " + err.toString() + " - " + funcall.func + ":" + JSON.stringify(funcall.params));
-                    }
-                } else if(funcall.func != null) {
-                    var funcs  = funcall.func.split('.');
-                    var called = funcs[0];
-                    if(typeof window[called] == 'object') {
-                        window[funcs[0]][funcs[1]].apply(null, funcall.params);
-                    }
+    handle : function(funcall) {
+        if(funcall != null) {
+            if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
+                try {
+                    window[funcall.func].apply(null, funcall.params);
+                } catch(err) {
+                    console.log("Error caught: " + err.toString() + " - " + funcall.func + ":" + JSON.stringify(funcall.params));
+                }
+            } else if(funcall.func != null) {
+                var funcs  = funcall.func.split('.');
+                var called = funcs[0];
+                if(typeof window[called] == 'object') {
+                    window[funcs[0]][funcs[1]].apply(null, funcall.params);
                 }
             }
         }

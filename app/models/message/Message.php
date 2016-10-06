@@ -162,7 +162,7 @@ class Message extends Model {
             $check = new \Movim\Task\CheckSmallPicture;
             return $check->run($body)
                 ->then(function($small) use($body) {
-                    $this->picture = $body;
+                    if($small) $this->picture = $body;
                 });
         }
 
