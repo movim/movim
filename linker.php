@@ -57,6 +57,18 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
     }
 });*/
 
+function writeOut()
+{
+    $msg = \RPC::commit();
+
+    if(!empty($msg)) {
+        echo base64_encode(gzcompress(json_encode($msg), 9))."";
+        //fwrite(STDERR, colorize(json_encode($msg).' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
+    }
+
+    \RPC::clear();
+}
+
 function writeXMPP($xml)
 {
     global $conn;
@@ -146,6 +158,8 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
 
             $rpc = new \RPC();
             $rpc->handle_json($msg);
+
+            writeOut();
         }
     } else {
         $buffer .= $data;
@@ -226,6 +240,8 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
 
                 unset($node);
             }
+
+            writeOut();
 
             //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." end data : ".\sizeToCleanSize(memory_get_usage())."\n");
         }
