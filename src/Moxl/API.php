@@ -3,8 +3,6 @@
 namespace Moxl;
 
 class API {
-    protected static $xml = '';
-
     static function iqWrapper($xml = false, $to = false, $type = false, $id = false)
     {
         $session = \Session::start();
@@ -55,22 +53,6 @@ class API {
      */
     static function request($xml, $type = false)
     {
-        self::$xml .= $xml;
-    }
-
-    /*
-     *  Return the stacked XML and clear it
-     */
-    static function commit()
-    {
-        return trim(self::$xml);
-    }
-
-    /*
-     *  Clear the stacked XML
-     */
-    static function clear()
-    {
-        self::$xml = '';
+        writeXMPP($xml);
     }
 }
