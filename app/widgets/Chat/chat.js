@@ -5,7 +5,6 @@ var Chat = {
     date: null,
     lastScroll: null,
     lastHeight: null,
-    lastDate: null,
     edit: false,
     sendMessage: function(jid, muc)
     {
@@ -122,13 +121,13 @@ var Chat = {
         }
     },
     appendMessagesWrapper : function(page, prepend) {
+        Chat.date = null;
         if(page) {
             var scrolled = MovimTpl.isPanelScrolled();
 
             var discussion = document.querySelector('#chat_widget div.contained');
             Chat.lastScroll = discussion.scrollHeight;
 
-            Chat.lastDate = null;
             for(date in page) {
                 if (page[date].constructor == Array) { //groupchat
                     if(!Chat.date)
