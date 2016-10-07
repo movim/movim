@@ -152,14 +152,14 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         $connector->create($ip, $port)->then($xmpp_behaviour);
                         break;
                 }
+
+                $rpc = new \RPC();
+                $rpc->handle_json($msg);
+
+                writeOut();
             } else {
                 return;
             }
-
-            $rpc = new \RPC();
-            $rpc->handle_json($msg);
-
-            writeOut();
         }
     } else {
         $buffer .= $data;
