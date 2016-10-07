@@ -39,6 +39,7 @@ class CheckSmallPicture extends Engine {
             },
             function (\Exception $error) {
                 return false;
-            });
+            })
+            ->always(function() { writeOut(); });
     }
 }
