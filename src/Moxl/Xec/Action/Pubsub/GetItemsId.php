@@ -57,13 +57,9 @@ class GetItemsId extends Errors
 
         $pd = new \modl\PostnDAO();
 
-        $get = false;
-
         foreach(array_reverse($stanza->query->xpath('item')) as $item) {
             $id = (string)$item->attributes()->name;
             if(!$pd->exists($this->_to, $this->_node, $id)) {
-                $get = true;
-
                 $gi = new GetItem;
                 $gi->setTo($this->_to)
                    ->setNode($this->_node)
@@ -72,10 +68,8 @@ class GetItemsId extends Errors
             }
         }
 
-        if($get == false) {
-            $this->pack(['server' => $this->_to, 'node' => $this->_node]);
-            $this->deliver();
-        }
+        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
+        $this->deliver();
     }
 
     public function error($errorid, $message) {
