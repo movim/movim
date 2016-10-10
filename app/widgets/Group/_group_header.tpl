@@ -10,12 +10,12 @@
         {/if}
         {if="$subscription == null"}
             <span class="control icon active" title="{$c->__('group.subscribe')}"
-            onclick="Group_ajaxAskSubscribe('{$item->server}', '{$item->node}')">
+            onclick="Group_ajaxAskSubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
                 <i class="zmdi zmdi-bookmark-outline"></i>
             </span>
         {else}
             <span class="control icon active" title="{$c->__('group.unsubscribe')}"
-            onclick="Group_ajaxAskUnsubscribe('{$item->server}', '{$item->node}')">
+            onclick="Group_ajaxAskUnsubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
                 <i class="zmdi zmdi-bookmark"></i>
             </span>
         {/if}
@@ -40,18 +40,18 @@
 
 {if="$role == 'owner'"}
     <ul class="list context_menu active">
-        <li onclick="Group_ajaxGetConfig('{$item->server}', '{$item->node}')">
+        <li onclick="Group_ajaxGetConfig('{$item->server|echapJS}', '{$item->node|echapJS}')">
             <p class="normal">{$c->__('group.configuration')}</p>
         </li>
-        <li onclick="Group_ajaxGetSubscriptions('{$item->server}', '{$item->node}', true)">
+        <li onclick="Group_ajaxGetSubscriptions('{$item->server|echapJS}', '{$item->node|echapJS}', true)">
             <p class="normal">{$c->__('group.subscriptions')}</p>
         </li>
-        <li onclick="Group_ajaxDelete('{$item->server}', '{$item->node}')">
+        <li onclick="Group_ajaxDelete('{$item->server|echapJS}', '{$item->node|echapJS}')">
             <p class="normal">{$c->__('button.delete')}</p>
         </li>
     </ul>
 {/if}
 
-<a onclick="Publish_ajaxTestPublish('{$item->server}','{$item->node}')" class="button action color">
+<a onclick="Publish_ajaxTestPublish('{$item->server|echapJS}','{$item->node|echapJS}')" class="button action color">
     <i class="zmdi zmdi-edit"></i>
 </a>

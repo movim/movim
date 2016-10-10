@@ -140,7 +140,7 @@ function echapJid($jid)
  */
 function echapJS($string)
 {
-    return str_replace("\\", "\\\\", $string);
+    return str_replace(["\\", "'"], ["\\\\", "\\'"], $string);
 }
 
 /*

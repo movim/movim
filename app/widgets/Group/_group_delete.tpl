@@ -13,10 +13,10 @@
     <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </a>
-    <a 
-        name="submit" 
-        class="button flat" 
-        onclick="Group_ajaxDeleteConfirm('{$server}', '{$node}'); Dialog_ajaxClear()">
+    <a
+        name="submit"
+        class="button flat"
+        onclick="Group_ajaxDeleteConfirm('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.remove')}
     </a>
 </div>
