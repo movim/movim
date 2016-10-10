@@ -82,13 +82,13 @@
 <div id="contact_tab">
     <ul class="tabs">
         <li class="active" href="#" onclick="Contact_ajaxGetContact('{$contact->jid}')" title="{$c->__('general.legend')}">
-            <i class="icon zmdi zmdi-account-box-o"></i> {$c->__('page.profile')}
+            {$c->__('page.profile')}
         </li>
         <li onclick="Contact_ajaxGetBlog('{$contact->jid}')" title="{$c->__('page.blog')}">
-            <i class="icon zmdi zmdi-edit"></i> {$c->__('page.blog')}
+            {$c->__('page.blog')}
         </li>
         <li onclick="Contact_ajaxGetGallery('{$contact->jid}')" title="{$c->__('page.gallery')}">
-            <i class="icon zmdi zmdi-collection-image-o"></i> {$c->__('page.gallery')}
+            {$c->__('page.gallery')}
         </li>
     </ul>
 

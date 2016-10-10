@@ -284,10 +284,6 @@ ul.tabs > li.active {
     border-bottom-style: solid;
 }
 
-ul.tabs > li .icon {
-    padding-right: 1rem;
-}
-
 /* Counter */
 
 ul li span.counter:empty {
