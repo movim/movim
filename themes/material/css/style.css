@@ -374,6 +374,8 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 .icon.bookmark  { background-image: url(../img/icons/bookmark.svg); }
 .icon.clipboard { background-image: url(../img/icons/person.svg); }
 .icon.search    { background-image: url(../img/icons/search.svg); }
+.icon.blog      { background-image: url(../img/icons/description.svg); }
+.icon.gallery   { background-image: url(../img/icons/collections.svg); }
 
 /* Padded */
 

@@ -47,6 +47,32 @@ class Contact extends \Movim\Widget\Base
           ->request();
     }
 
+    function ajaxGetGallery($jid)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $view = $this->tpl();
+
+        $pd = new \Modl\PostnDAO;
+        $view->assign('jid', $jid);
+        $view->assign('gallery', $pd->getGallery($jid));
+
+        RPC::call('MovimTpl.fill', '#contact_tab', $view->draw('_contact_gallery', true));
+    }
+
+    function ajaxGetBlog($jid)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $view = $this->tpl();
+
+        $pd = new \Modl\PostnDAO;
+        $view->assign('jid', $jid);
+        $view->assign('blog', $pd->getPublic($jid, 'urn:xmpp:microblog:0'));
+
+        RPC::call('MovimTpl.fill', '#contact_tab', $view->draw('_contact_blog', true));
+    }
+
     function ajaxGetDrawer($jid)
     {
         if(!$this->validateJid($jid)) return;
@@ -200,7 +226,6 @@ class Contact extends \Movim\Widget\Base
 
         if($c == null
         || $c->created == null
-        //|| $c->isEmpty()
         || $c->isOld()) {
             if($c == null) {
                 $c = new \Modl\Contact;
@@ -214,18 +239,8 @@ class Contact extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $pd = new \Modl\PostnDAO;
-        $gallery = $pd->getGallery($jid, 0, 12);
-        $blog    = $pd->getPublic($jid, 'urn:xmpp:microblog:0', 0, 4);
 
         $view->assign('page', $page);
-        $view->assign('edit',
-            $this->call(
-                'ajaxEditContact',
-                "'".echapJS($jid)."'"));
-        $view->assign('delete',
-            $this->call(
-                'ajaxDeleteContact',
-                "'".echapJS($jid)."'"));
 
         if(isset($c)) {
             $view->assign('mood', getMood());
@@ -242,23 +257,10 @@ class Contact extends \Movim\Widget\Base
                 $view->assign('caps', $cr->getCaps());
             }
 
-            $view->assign('gallery', $gallery);
-            $view->assign('blog', $blog);
-
-            $view->assign('chat',
-                $this->call(
-                    'ajaxChat',
-                    "'".echapJS($c->jid)."'"));
-
             return $view->draw('_contact', true);
         } elseif(isset($cr)) {
             $view->assign('contact', null);
             $view->assign('contactr', $cr);
-
-            $view->assign('chat',
-                $this->call(
-                    'ajaxChat',
-                    "'".echapJS($cr->jid)."'"));
 
             return $view->draw('_contact', true);
         } else {
