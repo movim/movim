@@ -1,7 +1,7 @@
 {if="$contact != null"}
     {$url = $contact->getPhoto('s')}
 
-<a onclick="Contact_ajaxChat('{$contact->jid|echapJS}'}" class="button action color red">
+<a onclick="Contact_ajaxChat('{$contact->jid|echapJS}')" class="button action color red">
     <i class="zmdi zmdi-comment-text-alt"></i>
 </a>
 

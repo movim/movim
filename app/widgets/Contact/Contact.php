@@ -55,7 +55,7 @@ class Contact extends \Movim\Widget\Base
 
         $pd = new \Modl\PostnDAO;
         $view->assign('jid', $jid);
-        $view->assign('gallery', $pd->getGallery($jid));
+        $view->assign('gallery', $pd->getGallery($jid, 0, 20));
 
         RPC::call('MovimTpl.fill', '#contact_tab', $view->draw('_contact_gallery', true));
     }
@@ -68,7 +68,7 @@ class Contact extends \Movim\Widget\Base
 
         $pd = new \Modl\PostnDAO;
         $view->assign('jid', $jid);
-        $view->assign('blog', $pd->getPublic($jid, 'urn:xmpp:microblog:0'));
+        $view->assign('blog', $pd->getPublic($jid, 'urn:xmpp:microblog:0', 0, 18));
 
         RPC::call('MovimTpl.fill', '#contact_tab', $view->draw('_contact_blog', true));
     }
