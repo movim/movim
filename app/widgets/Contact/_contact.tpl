@@ -1,17 +1,18 @@
 {if="$contact != null"}
     {$url = $contact->getPhoto('s')}
 
-<a onclick="Contact_ajaxChat('{$contact->jid|echapJS}')" class="button action color red">
-    <i class="zmdi zmdi-comment-text-alt"></i>
-</a>
-
-<header class="big"
+<header class="big relative"
     {if="$url"}
         style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%), url('{$contact->getPhoto('xxl')}');"
     {else}
         style="background-color: rgba(62,81,181,1);"
     {/if}
     >
+    <a onclick="Contact_ajaxChat('{$contact->jid|echapJS}')" class="button action color red">
+        <i class="zmdi zmdi-comment-text-alt"></i>
+    </a>
+
+
     <ul class="list middle">
         <li>
             <span class="primary icon active" onclick="MovimTpl.hidePanel(); Contact_ajaxClear({$page});">
