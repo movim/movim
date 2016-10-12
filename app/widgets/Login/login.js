@@ -129,7 +129,11 @@ var Login = {
         Login.rememberSession(jid);
         localStorage.postStart = 1;
 
-        MovimUtils.redirect(url);
+        if(MovimUtils.urlParts().page != 'login') {
+            MovimUtils.reloadThis();
+        } else {
+            MovimUtils.redirect(url);
+        }
     },
 
     /**

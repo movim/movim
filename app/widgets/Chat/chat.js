@@ -313,10 +313,16 @@ var Chat = {
 
 MovimWebsocket.attach(function() {
     var jid = MovimUtils.urlParts().params[0];
+    var room = MovimUtils.urlParts().params[1];
     if(jid) {
         MovimTpl.showPanel();
-        Chat_ajaxGet(jid);
-        Notification.current('chat|' + jid);
+
+        if(room) {
+            Chat_ajaxGetRoom(jid);
+        } else {
+            Chat_ajaxGet(jid);
+            Notification.current('chat|' + jid);
+        }
     }
 });
 

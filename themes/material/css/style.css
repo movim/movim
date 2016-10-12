@@ -376,6 +376,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 .icon.search    { background-image: url(../img/icons/search.svg); }
 .icon.blog      { background-image: url(../img/icons/description.svg); }
 .icon.gallery   { background-image: url(../img/icons/collections.svg); }
+.icon.share     { background-image: url(../img/icons/share.svg); }
 
 /* Padded */
 

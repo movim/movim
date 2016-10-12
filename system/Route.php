@@ -13,7 +13,7 @@ class Route extends Base {
                 'admin'         => false,
                 'blog'          => ['f', 'i'],
                 'tag'           => ['t', 'i'],
-                'chat'          => ['f'],
+                'chat'          => ['f', 'r'],
                 'conf'          => false,
                 'contact'       => ['f'],
                 'disconnect'    => ['err'],

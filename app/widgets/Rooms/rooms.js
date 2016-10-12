@@ -10,17 +10,6 @@ var Rooms = {
                 items[i].onclick = function(e) {
                     Chats.refresh();
 
-                    Notification_ajaxClear('chat|' + this.dataset.jid);
-                    Notification.current('chat|' + this.dataset.jid);
-
-                    if(!MovimUtils.hasClass(this, 'online')) {
-                        if(this.dataset.nick != null) {
-                            Rooms_ajaxJoin(this.dataset.jid, this.dataset.nick);
-                        } else {
-                            Rooms_ajaxJoin(this.dataset.jid);
-                        }
-                    }
-
                     Chat_ajaxGetRoom(this.dataset.jid);
                     MovimUtils.removeClassInList('active', items);
                     MovimUtils.addClass(this, 'active');

@@ -9,6 +9,7 @@
         <div>
             <input
                 {if="isset($room)"}value="{$room->conference}" disabled{/if}
+                {if="isset($id)"}value="{$id}" disabled{/if}
                 name="jid"
                 {if="isset($server)"}
                     placeholder="chatroom@{$server}"

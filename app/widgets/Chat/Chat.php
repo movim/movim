@@ -227,16 +227,32 @@ class Chat extends \Movim\Widget\Base
     {
         if(!$this->validateJid($room)) return;
 
-        $html = $this->prepareChat($room, true);
+        $cod = new \modl\ConferenceDAO();
+        $r = $cod->get($room);
 
-        RPC::call('MovimUtils.pushState', $this->route('chat'));
+        if($r) {
+            $rooms = new Rooms;
+            if(!$rooms->checkConnected($r->conference, $r->nick)) {
+                RPC::call('Rooms_ajaxJoin', $r->conference, $r->nick);
+            }
 
-        RPC::call('MovimUtils.addClass', '#chat_widget', 'fixed');
-        RPC::call('MovimTpl.fill', '#chat_widget', $html);
-        RPC::call('MovimTpl.showPanel');
-        RPC::call('Chat.focus');
+            $html = $this->prepareChat($room, true);
 
-        $this->prepareMessages($room, true);
+            RPC::call('MovimUtils.pushState', $this->route('chat', [$room, 'room']));
+
+            RPC::call('MovimUtils.addClass', '#chat_widget', 'fixed');
+            RPC::call('MovimTpl.fill', '#chat_widget', $html);
+            RPC::call('MovimTpl.showPanel');
+            RPC::call('Chat.focus');
+
+            $this->prepareMessages($room, true);
+
+            $notif = new Notification;
+            $notif->ajaxClear('chat|'.$room);
+            RPC::call('Notification.current', 'chat|'.$room);
+        } else {
+            RPC::call('Rooms_ajaxAdd', $room);
+        }
     }
 
     /**
@@ -702,9 +718,5 @@ class Chat extends \Movim\Widget\Base
 
     function display()
     {
-        $this->view->assign('jid', false);
-        if($this->validateJid($this->get('f'))) {
-            $this->view->assign('jid', $this->get('f'));
-        }
     }
 }
