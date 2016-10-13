@@ -1,7 +1,9 @@
 <script type="text/javascript">
-    navigator.registerProtocolHandler('xmpp',
-                                  '{$c->route("share")}/%s',
-                                  'Movim');
+    if(typeof Android === 'undefined') {
+        navigator.registerProtocolHandler('xmpp',
+                                      '{$c->route("share")}/%s',
+                                      'Movim');
+    }
 
     var BASE_URI        = '{$base_uri}';
     var BASE_HOST       = '{$base_host}';
