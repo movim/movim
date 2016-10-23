@@ -38,27 +38,25 @@ class Jingle extends Payload
 
         $action = (string)$stanza->attributes()->action;
 
-        $evt = new \Event;
-
-        $evt->runEvent('ack', array($from, $id));
-
-        /*$ack = new Send;
-        $ack->setTo($to)
+        $ack = new Send;
+        $ack->setTo($from)
             ->setId($id)
-            ->request();*/
+            ->request();
+
+        $evt = new \Event;
 
         switch($action) {
             case 'session-initiate' :
-                $evt->runEvent('jinglesessioninitiate' , $stanza);
+                $evt->runEvent('jingle_sessioninitiate' , [$stanza, $from]);
                 break;
             case 'transport-info' :
-                $evt->runEvent('jingletransportinfo'   , $stanza);
+                $evt->runEvent('jingle_transportinfo'   , $stanza);
                 break;
             case 'session-terminate' :
-                $evt->runEvent('jinglesessionterminate', $stanza);
+                $evt->runEvent('jingle_sessionterminate', $stanza);
                 break;
             case 'session-accept' :
-                $evt->runEvent('jinglesessionaccept'   , $stanza);
+                $evt->runEvent('jingle_sessionaccept'   , $stanza);
                 break;
         }
     }

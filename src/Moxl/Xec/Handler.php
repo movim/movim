@@ -192,7 +192,7 @@ class Handler {
             '0f59aa7fb0492a008df1b807e91dda3b' => 'AvatarMetadata',
             '36fe2745bdc72b1682be2c008d547e3d' => 'Vcard4',
 
-            //'d84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
+            'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
             '201fa54dd93e3403611830213f5f9fbc' => 'Carbons',//?

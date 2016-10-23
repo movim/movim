@@ -143,7 +143,7 @@ class Utils {
             'urn:xmpp:bob',
 
             // Jingle
-            /*'http://jabber.org/protocol/jingle',
+            'http://jabber.org/protocol/jingle',
             'urn:xmpp:jingle:1',
             'urn:xmpp:jingle:apps:rtp:1',
             'urn:xmpp:jingle:apps:rtp:audio',
@@ -154,7 +154,7 @@ class Utils {
             'urn:ietf:rfc:5576',
             'urn:xmpp:jingle:transports:ice-udp:0',
             'urn:xmpp:jingle:transports:ice-udp:1',
-            'urn:xmpp:jingle:apps:rtp:rtcp-fb:0',*/
+            'urn:xmpp:jingle:apps:rtp:rtcp-fb:0',
 
             'http://jabber.org/protocol/muc',
             'http://jabber.org/protocol/nick',
