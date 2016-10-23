@@ -202,8 +202,12 @@ var Visio = {
 
         Visio.toggleMainButton();
 
-        navigator.mediaDevices.getUserMedia(constraints).
-        then(Visio.handleSuccess).catch(Visio.handleError);
+        if(typeof navigator.webkitGetUserMedia == 'function') {
+            navigator.mediaDevices.getUserMedia(constraints, Visio.handleSuccess, Visio.handleError);
+        } else {
+            navigator.mediaDevices.getUserMedia(constraints).
+            then(Visio.handleSuccess).catch(Visio.handleError);
+        }
     },
 
     /*
