@@ -203,7 +203,7 @@ var Visio = {
         Visio.toggleMainButton();
 
         if(typeof navigator.webkitGetUserMedia == 'function') {
-            navigator.mediaDevices.getUserMedia(constraints, Visio.handleSuccess, Visio.handleError);
+            navigator.webkitGetUserMedia(constraints, Visio.handleSuccess, Visio.handleError);
         } else {
             navigator.mediaDevices.getUserMedia(constraints).
             then(Visio.handleSuccess).catch(Visio.handleError);
