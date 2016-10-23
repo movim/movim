@@ -342,8 +342,10 @@ document.addEventListener('focus', function() {
 
 window.addEventListener('resize', function() {
     var discussion = document.querySelector('#chat_widget div.contained');
-    discussion.scrollTop += Chat.lastHeight - discussion.clientHeight;
-    Chat.lastHeight = discussion.clientHeight;
+    if(discussion) {
+        discussion.scrollTop += Chat.lastHeight - discussion.clientHeight;
+        Chat.lastHeight = discussion.clientHeight;
+    }
 });
 
 var state = 0;
