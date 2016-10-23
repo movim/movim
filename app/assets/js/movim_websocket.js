@@ -81,12 +81,10 @@ var MovimWebsocket = {
                 }
 
                 if(obj.func == 'pong') {
-                    console.log('pong');
                     MovimWebsocket.pong = true;
                 }
 
                 if(obj.func == 'block') {
-                    console.log('block');
                     MovimWebsocket.clearAttached();
                     MovimUtils.addClass('body', 'disabled');
                 }
