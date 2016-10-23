@@ -2,14 +2,16 @@
 
 namespace modl;
 
-class Caps extends Model {
+class Caps extends Model
+{
     public $node;
     public $category;
     public $type;
     public $name;
     public $features;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->_struct = '
         {
             "node" :
@@ -27,7 +29,8 @@ class Caps extends Model {
         parent::__construct();
     }
 
-    public function set($query, $node = false) {
+    public function set($query, $node = false)
+    {
         if(!$node)
             $this->node     = (string)$query->query->attributes()->node;
         else
@@ -54,5 +57,11 @@ class Caps extends Model {
 
             $this->features = serialize($fet);
         }
+    }
+
+    public function isJingle()
+    {
+        $features = unserialize($this->features);
+        return (in_array('http://jabber.org/protocol/jingle', $features));
     }
 }

@@ -1,0 +1,34 @@
+#visio video {
+    width: 100%;
+    height: 100%;
+    background-color: #111;
+}
+
+#visio .level,
+#visio video#video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 25rem;
+    height: auto;
+}
+
+@media screen and (max-width: 800px) {
+    #visio .level,
+    #visio video#video {
+        width: 15rem;
+    }
+}
+
+#visio header {
+    top: 2.5rem;
+}
+
+#visio .button.action {
+    right: calc(50% - 3.5rem);
+}
+
+#visio .level {
+    background-color: rgba(255, 255, 255, 0.1);
+    height: 0.5rem;
+}

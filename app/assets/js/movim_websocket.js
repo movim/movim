@@ -27,6 +27,7 @@ var MovimWebsocket = {
     registered: new Array(),
     attempts: 1,
     pong: false,
+    blocked: false,
 
     launchAttached : function() {
         // We hide the Websocket error
@@ -56,7 +57,7 @@ var MovimWebsocket = {
             this.connection.close();
         }
 
-        this.connection = new WebSocket(uri);
+        this.connection = new WebSocket(uri + '?path=' + MovimUtils.urlParts().page);
 
         this.connection.onopen = function(e) {
             console.log("Connection established!");
@@ -80,7 +81,14 @@ var MovimWebsocket = {
                 }
 
                 if(obj.func == 'pong') {
+                    console.log('pong');
                     MovimWebsocket.pong = true;
+                }
+
+                if(obj.func == 'block') {
+                    console.log('block');
+                    MovimWebsocket.clearAttached();
+                    MovimUtils.addClass('body', 'disabled');
                 }
 
                 MovimWebsocket.handle(obj);

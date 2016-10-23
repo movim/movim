@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "71330327afbe2878c925fa6c5e7e585f",
-    "content-hash": "c80ff9387b9bbcd5a8340e596aa3f77c",
+    "hash": "1cf03c908f92f0272a981f74f9bb7fb1",
+    "content-hash": "def0b401d37d7eca252d75ad1fd0924b",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -57,16 +57,16 @@
         },
         {
             "name": "clue/buzz-react",
-            "version": "v1.0.1",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/php-buzz-react.git",
-                "reference": "0b2bdeefaf4e09aed5bd122909589e3573afb5f4"
+                "reference": "693c96d35f0cd0e4f0e1a51b976433a91792eff9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/0b2bdeefaf4e09aed5bd122909589e3573afb5f4",
-                "reference": "0b2bdeefaf4e09aed5bd122909589e3573afb5f4",
+                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/693c96d35f0cd0e4f0e1a51b976433a91792eff9",
+                "reference": "693c96d35f0cd0e4f0e1a51b976433a91792eff9",
                 "shasum": ""
             },
             "require": {
@@ -108,7 +108,7 @@
                 "http client",
                 "reactphp"
             ],
-            "time": "2016-08-12 11:50:24"
+            "time": "2016-10-21 10:29:37"
         },
         {
             "name": "cocur/slugify",
@@ -180,16 +180,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "90a6fd4515e816162d00481a2a2fc42af8740e38"
+                "reference": "753c886f2ced7240137003382b055fc4b795cdf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/90a6fd4515e816162d00481a2a2fc42af8740e38",
-                "reference": "90a6fd4515e816162d00481a2a2fc42af8740e38",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/753c886f2ced7240137003382b055fc4b795cdf2",
+                "reference": "753c886f2ced7240137003382b055fc4b795cdf2",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
+                "ext-mbstring": "*",
                 "php": ">=5.4.0"
             },
             "require-dev": {
@@ -227,7 +228,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-10-07 18:29:01"
+            "time": "2016-10-14 16:27:33"
         },
         {
             "name": "evenement/evenement",
@@ -942,12 +943,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "c10b5348b3009e51bb755f47ebf4fdbca65bebc8"
+                "reference": "cb486211cc06dbf1abfd625c2f1399f2caadcf86"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/c10b5348b3009e51bb755f47ebf4fdbca65bebc8",
-                "reference": "c10b5348b3009e51bb755f47ebf4fdbca65bebc8",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/cb486211cc06dbf1abfd625c2f1399f2caadcf86",
+                "reference": "cb486211cc06dbf1abfd625c2f1399f2caadcf86",
                 "shasum": ""
             },
             "require": {
@@ -982,7 +983,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-10-07 20:09:48"
+            "time": "2016-10-23 20:43:18"
         },
         {
             "name": "movim/sasl2",
@@ -1037,16 +1038,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.2",
+            "version": "v2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf"
+                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/088c04e2f261c33bed6ca5245491cfca69195ccf",
-                "reference": "088c04e2f261c33bed6ca5245491cfca69195ccf",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
+                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
                 "shasum": ""
             },
             "require": {
@@ -1081,7 +1082,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-04-03 06:00:07"
+            "time": "2016-10-17 15:23:22"
         },
         {
             "name": "pear/net_dns2",
@@ -1540,16 +1541,16 @@
         },
         {
             "name": "react/http-client",
-            "version": "v0.4.12",
+            "version": "v0.4.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/http-client.git",
-                "reference": "f2b902a0e5bc062ffb2ddd9032776bed9ed5d9f0"
+                "reference": "07fa19d83d9d3af4a6899c120fd4d41380d4a04e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http-client/zipball/f2b902a0e5bc062ffb2ddd9032776bed9ed5d9f0",
-                "reference": "f2b902a0e5bc062ffb2ddd9032776bed9ed5d9f0",
+                "url": "https://api.github.com/repos/reactphp/http-client/zipball/07fa19d83d9d3af4a6899c120fd4d41380d4a04e",
+                "reference": "07fa19d83d9d3af4a6899c120fd4d41380d4a04e",
                 "shasum": ""
             },
             "require": {
@@ -1576,7 +1577,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2016-10-06 13:08:24"
+            "time": "2016-10-19 20:19:11"
         },
         {
             "name": "react/promise",

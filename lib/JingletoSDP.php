@@ -1,6 +1,7 @@
 <?php 
 
-class JingletoSDP {
+class JingletoSDP
+{
     private $sdp = '';
     private $jingle;
 
@@ -8,6 +9,7 @@ class JingletoSDP {
 
     // Only used for ICE Candidate (Jingle transport-info)
     public $media;
+    public $name;
     
     private $values = array(
         'session_sdp_id'    => 1,
@@ -17,10 +19,12 @@ class JingletoSDP {
         'unicast_address'   => '0.0.0.0'
         );
     
-    function __construct($jingle) {
+    function __construct($jingle)
+    {
         $this->jingle = $jingle;
 
-        if(isset($this->jingle->attributes()->sid)) {
+        if(isset($this->jingle->attributes()->sid))
+        {
             $sid = (string)$this->jingle->attributes()->sid;
 
             //$sid = substr(base_convert($sid, 30, 10), 0, 6);
@@ -33,20 +37,15 @@ class JingletoSDP {
         $this->action = (string)$this->jingle->attributes()->action;
     }
     
-    function getSessionId(){
+    function getSessionId()
+    {
         $s = Session::start();
-        /*if($sid = $s->get('jingleSid')){
-            return $sid;
-        }
-        else{
-            $sessid = $this->jingle->attributes()->sid;
-            return substr(base_convert($sessid, 30, 10), 0, 6);
-        }*/
 
         return substr(base_convert($s->get('jingleSid'), 30, 10), 0, 6);
     }
     
-    function generate() {
+    function generate()
+    {
         if($this->jingle->attributes()->initiator) {
             $username = explode('@', (string)$this->jingle->attributes()->initiator);
             $username = $username[0];
@@ -68,15 +67,15 @@ class JingletoSDP {
             $this->values['unicast_address'];
             
         $sdp_session_name =
-            's=SIP Call'; // Use the sessid ?
+            's=-'; // Use the sessid ?
             
         $sdp_timing =
             't=0 0';
         
         $sdp_medias = '';
             
-        foreach($this->jingle->children() as $content) {              
-            $media_header_ids = array();
+        foreach($this->jingle->children() as $content) {
+            $media_header_ids = [];
             $media_header_first_port = null;
             $media_header_last_ip = null;
             
@@ -84,22 +83,26 @@ class JingletoSDP {
 
             // http://xmpp.org/extensions/xep-0338.html
             if((string)$content->getName() == 'group') {
-                $sdp_media .=
+                $sdp_medias .=
                     "\r\na=group:".
                     (string)$content->attributes()->semantics;
                 foreach($content->children() as $content) {
-                    $sdp_media .= " ".(string)$content->attributes()->name;
+                    $sdp_medias .= " ".(string)$content->attributes()->name;
                 }
+
+                continue;
             }
             
             if($content->getName() != 'content')
                 break;
-                
-            if(isset($content->transport->attributes()->ufrag))
-                $sdp_media .= "\r\na=ice-ufrag:".$content->transport->attributes()->ufrag;
-                
+
+            $this->name = (string)$content->attributes()->name;
+
             if(isset($content->transport->attributes()->pwd))
                 $sdp_media .= "\r\na=ice-pwd:".$content->transport->attributes()->pwd;
+
+            if(isset($content->transport->attributes()->ufrag))
+                $sdp_media .= "\r\na=ice-ufrag:".$content->transport->attributes()->ufrag;
 
             if(isset($content->description)) {
                 foreach($content->description->children() as $payload) {
@@ -123,8 +126,8 @@ class JingletoSDP {
                             if(isset($payload->crypto)) {
                                 $sdp_media .= 
                                     "\r\na=crypto:".
-                                    $payload->crypto->attributes()->tag.' '.                          
-                                    $payload->crypto->attributes()->{'crypto-suite'}.' '.                          
+                                    $payload->crypto->attributes()->tag.' '.
+                                    $payload->crypto->attributes()->{'crypto-suite'}.' '.
                                     $payload->crypto->attributes()->{'key-params'};
 
                                 // TODO session params ?
@@ -133,7 +136,7 @@ class JingletoSDP {
                             if(isset($payload->{'zrtp-hash'})) {
                                 $sdp_media .= 
                                     "\r\na=zrtp-hash:".
-                                    $payload->{'zrtp-hash'}->attributes()->version.' '.                          
+                                    $payload->{'zrtp-hash'}->attributes()->version.' '.
                                     (string)$payload->{'zrtp-hash'};
                             }
                             break;
@@ -202,14 +205,14 @@ class JingletoSDP {
                             
                             break;
 
-                        /*case 'source':
+                        case 'source':
                             foreach($payload->children() as $s) {
                                 $sdp_media .= 
                                     "\r\na=ssrc:".$payload->attributes()->id.' '.
                                     $s->attributes()->name.':'.
                                     $s->attributes()->value;
                             }
-                            break;*/
+                            break;
                     }
                     // TODO sendrecv ?
                 }
@@ -241,7 +244,7 @@ class JingletoSDP {
                         if(isset($content->transport->fingerprint->attributes()->setup)) {
                             $sdp_media .= 
                                 "\r\na=setup:".
-                                $content->transport->fingerprint->attributes()->setup;                    
+                                $content->transport->fingerprint->attributes()->setup;
                         }
                         break;
 
@@ -279,6 +282,7 @@ class JingletoSDP {
                             if($media_header_first_port == null)
                                 $media_header_first_port = $payload->attributes()->port;
                         }
+
                         if(isset($payload->attributes()->generation)) {
                             $sdp_media .=
                                 ' generation '.$payload->attributes()->generation.
@@ -287,7 +291,7 @@ class JingletoSDP {
                         }
 
                         $media_header_last_ip = $payload->attributes()->ip;
-                        
+
                         break;
                 }
             }
@@ -298,12 +302,12 @@ class JingletoSDP {
             if($media_header_last_ip == null)
                 $media_header_last_ip = '0.0.0.0';
 
-            if(isset($content->description))
+            if(isset($content->description)) {
                 $this->media = (string)$content->description->attributes()->media;
-            else
-                $this->media = (string)$content->attributes()->name;
-            
-            if($this->action != 'transport-info') {                    
+                $this->mlineindex = ($this->media == 'audio') ? 0 : 1;
+            }
+
+            if($this->action != 'transport-info') {
                 $sdp_media_header = 
                     "\r\nm=".$this->media.
                     ' '.$media_header_first_port.' ';
@@ -312,19 +316,22 @@ class JingletoSDP {
                     $sdp_media_header .= 'DTLS/SCTP';
                 } elseif(isset($content->description->crypto)
                 || isset($content->transport->fingerprint)) {
-                    $sdp_media_header .= 'RTP/SAVPF';
+                    $sdp_media_header .= 'UDP/TLS/RTP/SAVPF';
                 } else {
-                    $sdp_media_header .= 'RTP/AVP';
+                    $sdp_media_header .= 'UDP/TLS/RTP/AVP';
                 }
-                    
-                
+
                 $sdp_media_header = $sdp_media_header.' '.implode(' ', $media_header_ids);
-            
+
                 $sdp_medias .=
                     $sdp_media_header.
                     "\r\nc=IN IP4 ".$media_header_last_ip.
                     $sdp_media;
                     //"\r\na=sendrecv";
+
+                if(!empty($this->name)) {
+                    $sdp_medias .= "\r\na=mid:".$this->name;
+                }
             } else {
                 $sdp_medias = $sdp_media;
             }
@@ -336,9 +343,9 @@ class JingletoSDP {
             $this->sdp .= "\r\n".$sdp_session_name;
             $this->sdp .= "\r\n".$sdp_timing;
         }
-        
+
         $this->sdp .= $sdp_medias;
-        
-        return $this->sdp."\r\n";
+
+        return trim($this->sdp."\r\n");
     }
 }

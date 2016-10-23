@@ -1,4 +1,6 @@
 <?php $this->widget('Search');?>
+<?php $this->widget('VisioLink');?>
+<?php $this->widget('Notification');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>

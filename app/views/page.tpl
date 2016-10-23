@@ -67,7 +67,6 @@
         </div>
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Drawer');?>
-        <?php $this->widget('Notification');?>
         <?php $this->content();?>
         <script type="text/javascript">if(typeof movim_onload == 'function') { movim_onload(); }</script>
     </body>

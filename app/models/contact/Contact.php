@@ -599,6 +599,11 @@ class RosterContact extends Contact
         $this->mucrole          = $p->mucrole;
     }
 
+    public function getFullResource()
+    {
+        return $this->jid.'/'.$this->resource;
+    }
+
     public function getCaps()
     {
         if(!empty($this->node)

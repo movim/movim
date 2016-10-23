@@ -30,7 +30,7 @@ main > header a,
 }
 
 .button.color,
-.button.action.color,
+.color,
 ul li span.counter,
 form > div .radio > input[type="radio"]:checked + label {
     border-color: #FF5722;
@@ -69,7 +69,7 @@ span.icon.status.away:after,
 .color.brown    { color: white; background-color: #795548; border-color: #795548 }
 .color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
 .color.black    { color: white; background-color: #000;    border-color: #000 }
-
+.color.transparent { color: white; background-color: rgba(0, 0, 0, 0); }
 
 form > div > input:focus:invalid,
 form > div > input:focus:required {

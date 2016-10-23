@@ -11,7 +11,7 @@ class Front extends Base
         $this->runRequest($r->find());
     }
 
-    private function loadController($request) {
+    public function loadController($request) {
         $class_name = ucfirst($request).'Controller';
         if(file_exists(APP_PATH . 'controllers/'.$class_name.'.php')) {
             $controller_path = APP_PATH . 'controllers/'.$class_name.'.php';
@@ -36,7 +36,7 @@ class Front extends Base
         $sess = \Sessionx::start();
         $sess->refreshCookie();
 
-        if(is_callable(array($c, 'load'))) {
+        if(is_callable([$c, 'load'])) {
             $c->name = $request;
             $c->load();
             $c->checkSession();

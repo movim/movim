@@ -8,7 +8,7 @@
         style="background-color: rgba(62,81,181,1);"
     {/if}
     >
-    <a onclick="Contact_ajaxChat('{$contact->jid|echapJS}')" class="button action color red">
+    <a onclick="Contact_ajaxChat('{$contact->jid|echapJS}')" class="button action color">
         <i class="zmdi zmdi-comment-text-alt"></i>
     </a>
 
@@ -69,6 +69,11 @@
                     ">
                     </i>
                 </span>
+                {if="$caps->isJingle()"}
+                    <span class="control icon active" onclick="VisioLink.openVisio('{$contactr->getFullResource()}');">
+                        <i class="zmdi zmdi-phone"></i>
+                    </span>
+                {/if}
                 <p class="normal line">
                     {$caps->name}
                     {if="isset($clienttype[$caps->type])"}

@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    if(typeof Android === 'undefined') {
+    if(typeof navigator.registerProtocolHandler == 'function') {
         navigator.registerProtocolHandler('xmpp',
                                       '{$c->route("share")}/%s',
                                       'Movim');

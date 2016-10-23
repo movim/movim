@@ -190,8 +190,8 @@ class Bootstrap
         require_once(LIB_PATH . "XMPPtoForm.php");
 
         // SDPtoJingle and JingletoSDP lib :)
-        //require_once(LIB_PATH . "SDPtoJingle.php");
-        //require_once(LIB_PATH . "JingletoSDP.php");
+        require_once(LIB_PATH . "SDPtoJingle.php");
+        require_once(LIB_PATH . "JingletoSDP.php");
     }
 
     private function loadHelpers()
@@ -313,7 +313,8 @@ class Bootstrap
         return["Account","AccountNext","Ack","AdHoc","Avatar","Bookmark","Chat",
         "Chats","Config","Contact","Dialog","Drawer","Group","Groups","Header",
         "Init","Login","LoginAnonymous","Menu","Notifs","Post","Presence",
-        "Publish","Rooms","Roster","Stickers","Upload","Vcard4"];
+        "Publish","Rooms","Roster","Stickers","Upload","Vcard4", "Visio",
+        "VisioLink"];
     }
 
     /**

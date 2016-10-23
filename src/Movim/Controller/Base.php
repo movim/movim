@@ -5,6 +5,7 @@ use Movim\Template\Builder;
 
 class Base {
     public $name = 'main';          // The name of the current page
+    public $unique = false;         // Only one WS for this page
     protected $session_only = false;// The page is protected by a session ?
     protected $raw = false;         // Display only the content ?
     protected $public = false;      // It's a public page

@@ -360,9 +360,9 @@ class ContactDAO extends SQL {
 
         $this->prepare(
             'Contact',
-            array(
+            [
                 'jid' => '%'.$search.'%'
-                )
+            ]
         );
         return $this->run('Contact');
     }
@@ -583,10 +583,10 @@ class ContactDAO extends SQL {
 
         $this->prepare(
             'RosterLink',
-            array(
+            [
                 'session' => $this->_user,
                 'jid' => $jid
-            )
+            ]
         );
 
         if($item)

@@ -3,6 +3,7 @@ namespace Movim\Daemon;
 
 use Ratchet\ConnectionInterface;
 use React\EventLoop\Timer\Timer;
+use Movim\Controller\Front;
 
 class Session {
     protected   $clients;
@@ -17,6 +18,9 @@ class Session {
     protected   $buffer;
     private     $state;
 
+    private     $front;
+    private     $uniques = [];
+
     public function __construct($loop, $sid, $baseuri)
     {
         $this->sid     = $sid;
@@ -25,11 +29,32 @@ class Session {
         $this->clients = new \SplObjectStorage;
         $this->register($loop, $this);
 
+        $this->front = new Front;
+
         $this->timestamp = time();
     }
 
     public function attach($loop, ConnectionInterface $conn)
     {
+        $name = $conn->WebSocket->request->getQuery()->toArray()['path'];
+        if(!empty($name)) {
+            $page = $this->front->loadController($name);
+            $page->load();
+
+            if($page->unique) {
+                if(isset($this->uniques[$name])) {
+                    $obj = new \StdClass;
+                    $obj->func = 'block';
+                    $msg = base64_encode(gzcompress(json_encode($obj), 9));
+                    $conn->send($msg);
+
+                    return;
+                } else {
+                    $this->uniques[$name] = 1;
+                }
+            }
+        }
+
         $this->clients->attach($conn);
 
         if($this->countClients() > 0) {
@@ -41,6 +66,16 @@ class Session {
 
     public function detach($loop, ConnectionInterface $conn)
     {
+        $name = $conn->WebSocket->request->getQuery()->toArray()['path'];
+
+        if($this->clients->contains($conn)
+        && !empty($name)
+        && isset($this->uniques[$name])) {
+            unset($this->uniques[$name]);
+        } else {
+            return;
+        }
+
         $this->clients->detach($conn);
 
         if($this->countClients() == 0) {
@@ -68,10 +103,10 @@ class Session {
         $this->process = new \React\ChildProcess\Process(
                                         'exec php linker.php ' . $this->sid,
                                         null,
-                                        array(
+                                        [
                                             'sid'       => $this->sid,
                                             'baseuri'   => $this->baseuri
-                                        )
+                                        ]
                                     );
 
         $this->process->start($loop);

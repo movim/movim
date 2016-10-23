@@ -219,7 +219,7 @@ var MovimUtils = {
             element.classList.add(classname);
         }
     },
-    removeClass: function(element,classname) {
+    removeClass: function(element, classname) {
         if (MovimUtils.hasClass(element, classname)) {
             element = MovimUtils.getNode(element);
             element.classList.remove(classname);
