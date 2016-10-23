@@ -203,10 +203,10 @@ var Visio = {
         Visio.toggleMainButton();
 
         if(typeof navigator.webkitGetUserMedia == 'function') {
-            navigator.webkitGetUserMedia(constraints, Visio.handleSuccess, Visio.handleError);
+            navigator.webkitGetUserMedia(constraints, Visio.handleSuccess, logError);
         } else {
             navigator.mediaDevices.getUserMedia(constraints).
-            then(Visio.handleSuccess).catch(Visio.handleError);
+            then(Visio.handleSuccess).catch(logError);
         }
     },
 
