@@ -126,6 +126,9 @@ var Chat = {
             var scrolled = MovimTpl.isPanelScrolled();
 
             var discussion = document.querySelector('#chat_widget div.contained');
+
+            if(discussion == null) return;
+
             Chat.lastScroll = discussion.scrollHeight;
 
             for(date in page) {

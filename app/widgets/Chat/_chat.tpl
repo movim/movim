@@ -6,7 +6,7 @@
                 {if="!$anon"}
                     onclick="
                         MovimTpl.hidePanel();
-                        Notification.current('chat');
+                        Notification.current('');
                         Chat_ajaxGet();"
                 {/if}>
 
@@ -63,7 +63,7 @@
         <li id="chat_header">
             <span onclick="
             MovimTpl.hidePanel();
-            Notification.current('chat');
+            Notification.current('');
             Chat_ajaxGet();"
             id="back" class="primary icon active">
                 <i class="zmdi zmdi-arrow-back"></i>
