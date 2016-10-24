@@ -115,13 +115,9 @@
             {/if}
             <p>
                 {if="$value->isMicroblog()"}
-                    <a href="{$c->route('contact', $value->getContact()->jid)}">
-                        <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
-                    </a>
+                    <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
                 {else}
-                    <a href="{$c->route('group', array($value->origin, $value->node))}">
-                        <i class="zmdi zmdi-pages"></i> {$value->node}
-                    </a>
+                    <i class="zmdi zmdi-pages"></i> {$value->node}
                 {/if}
                 {$count = $value->countComments()}
                 {if="$count > 0"}
