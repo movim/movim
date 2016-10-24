@@ -27,7 +27,6 @@ var MovimWebsocket = {
     registered: new Array(),
     attempts: 1,
     pong: false,
-    blocked: false,
 
     launchAttached : function() {
         // We hide the Websocket error
@@ -63,7 +62,9 @@ var MovimWebsocket = {
             console.log("Connection established!");
             MovimWebsocket.attempts = 1;
             MovimWebsocket.launchAttached();
-            MovimWebsocket.ping();
+            setTimeout(function(){
+                MovimWebsocket.ping();
+            }, 15000);
         };
 
         this.connection.onmessage = function(e) {
