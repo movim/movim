@@ -183,7 +183,7 @@ class JingletoSDP
                                                 $payload->attributes()->id.
                                                 ' ';
                                         } else {
-                                            $sdp_media .= '; ';
+                                            $sdp_media .= ';';
                                         }
 
                                         if(isset($param->attributes()->name)) {
@@ -285,9 +285,22 @@ class JingletoSDP
 
                         if(isset($payload->attributes()->generation)) {
                             $sdp_media .=
-                                ' generation '.$payload->attributes()->generation.
-                                ' network '.$payload->attributes()->network.
+                                ' generation '.$payload->attributes()->generation;
+                        }
+
+                        if(isset($payload->attributes()->network)) {
+                            $sdp_media .=
+                                ' network '.$payload->attributes()->network;
+                        }
+
+                        if(isset($payload->attributes()->id)) {
+                            $sdp_media .=
                                 ' id '.$payload->attributes()->id;
+                        }
+
+                        if(isset($payload->attributes()->{'network-id'})) {
+                            $sdp_media .=
+                                ' network-id '.$payload->attributes()->{'network-id'};
                         }
 
                         $media_header_last_ip = $payload->attributes()->ip;

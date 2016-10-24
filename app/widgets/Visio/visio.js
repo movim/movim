@@ -189,8 +189,11 @@ var Visio = {
             Visio.toggleMainButton();
         };
 
-        Visio.pc.ontrack = function (evt) {
+        /*Visio.pc.ontrack = function (evt) {
             document.getElementById('remote_video').src = URL.createObjectURL(evt.streams[0]);
+        };*/
+        Visio.pc.onaddstream = function(evt) {
+            document.getElementById('remote_video').src = URL.createObjectURL(evt.stream);
         };
 
         Visio.audioContext = new AudioContext();

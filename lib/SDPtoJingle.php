@@ -91,12 +91,6 @@ class SDPtoJingle {
         foreach($params as $value) {
             $p = explode('=', trim($value));
 
-            if($p[0] == 'stereo' && $p[1] == '1') {
-                $parameter = $payloadtype->addChild('parameter');
-                $parameter->addAttribute('value', 'sprop-stereo');
-                $parameter->addAttribute('value', '1');
-            }
-
             $parameter = $payloadtype->addChild('parameter');
             if(count($p) == 1) {
                 $parameter->addAttribute('value', $p[0]);
@@ -342,9 +336,7 @@ class SDPtoJingle {
                             $this->initContent();
                             $this->addName();
 
-                            $generation = "0";
-                            $network = "0";
-                            $id = generateKey(10);
+                            $generation = $network = $id = $networdid = false;
 
                             if($key = array_search("generation", $matches))
                                 $generation = $matches[($key+1)];
@@ -352,6 +344,8 @@ class SDPtoJingle {
                                 $network = $matches[($key+1)];
                             if($key = array_search("id", $matches))
                                 $id = $matches[($key+1)];
+                            if($key = array_search("network-id", $matches))
+                                $networdid = $matches[($key+1)];
 
                             if(isset($matches[11]) && isset($matches[13])) {
                                 $reladdr = $matches[11];
@@ -365,10 +359,16 @@ class SDPtoJingle {
                             $candidate->addAttribute('component' , $matches[2]);
                             $candidate->addAttribute('foundation', $matches[1]);
 
-                            //$candidate->addAttribute('generation', $generation);
-                            //$candidate->addAttribute('id'        , $id);
+                            if($generation)
+                                $candidate->addAttribute('generation', $generation);
+                            if($id)
+                                $candidate->addAttribute('id'        , $id);
+                            if($network)
+                                $candidate->addAttribute('network'   , $network);
+                            if($networkid)
+                                $candidate->addAttribute('network-id', $networkid);
+
                             $candidate->addAttribute('ip'        , $matches[5]);
-                            //$candidate->addAttribute('network'   , $network);
                             $candidate->addAttribute('port'      , $matches[6]);
                             $candidate->addAttribute('priority'  , $matches[4]);
                             $candidate->addAttribute('protocol'  , $matches[3]);
