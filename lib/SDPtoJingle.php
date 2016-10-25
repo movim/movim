@@ -336,7 +336,7 @@ class SDPtoJingle {
                             $this->initContent();
                             $this->addName();
 
-                            $generation = $network = $id = $networdid = false;
+                            $generation = $network = $id = $networkid = false;
 
                             if($key = array_search("generation", $matches))
                                 $generation = $matches[($key+1)];
