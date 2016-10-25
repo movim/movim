@@ -32,3 +32,30 @@
     background-color: rgba(255, 255, 255, 0.1);
     height: 0.5rem;
 }
+
+#visio .ring {
+    -webkit-animation: Rotate 2000ms infinite;
+    animation: Rotate 2000ms infinite;
+}
+
+@-webkit-keyframes Rotate {
+  0% {-webkit-transform:rotate(0deg);}
+  4% {-webkit-transform:rotate(-22.5deg);}
+  8% {-webkit-transform:rotate(0deg);}
+  12% {-webkit-transform:rotate(22.5deg);}
+  16% {-webkit-transform:rotate(0deg);}
+  20% {-webkit-transform:rotate(-22.5deg);}
+  24% {-webkit-transform:rotate(0deg);}
+  100% {-webkit-transform:rotate(0deg);}
+}
+
+@keyframes Rotate {
+  0% {transform:rotate(0deg);}
+  4% {transform:rotate(-22.5deg);}
+  8% {transform:rotate(0deg);}
+  12% {transform:rotate(-22.5deg);}
+  16% {transform:rotate(0deg);}
+  20% {transform:rotate(-22.5deg);}
+  24% {transform:rotate(0deg);}
+  100% {transform:rotate(0deg);}
+}

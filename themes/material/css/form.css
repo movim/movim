@@ -422,6 +422,10 @@ header.big ~ .button.action {
     width: 7rem;
 }
 
+.button i {
+    margin: 0 0.5rem;
+}
+
 /* The textarea hidden div */
 #hiddendiv {
     position: fixed;

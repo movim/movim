@@ -69,12 +69,12 @@
                     ">
                     </i>
                 </span>
-                {if="$caps->isJingle()"}
-                    <span class="control icon active" onclick="VisioLink.openVisio('{$contactr->getFullResource()}');">
-                        <i class="zmdi zmdi-phone"></i>
-                    </span>
-                {/if}
                 <p class="normal line">
+                    {if="$caps->isJingle()"}
+                    <a class="button oppose color green active" onclick="VisioLink.openVisio('{$contactr->getFullResource()}');">
+                        <i class="zmdi zmdi-phone"></i> {$c->__('button.call')}
+                    </a>
+                    {/if}
                     {$caps->name}
                     {if="isset($clienttype[$caps->type])"}
                         - {$clienttype[$caps->type]}

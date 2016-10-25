@@ -92,9 +92,7 @@ var Visio = {
     },
 
     localDescCreated: function(desc) {
-        Visio.pc.setLocalDescription(desc, function () {
-            Visio_ajaxAccept(Visio.pc.localDescription, Visio.from);
-        }, logError);
+        Visio.pc.setLocalDescription(desc, Visio.toggleMainButton, logError);
     },
 
     onCandidate: function(candidate, mid, mlineindex) {
@@ -216,13 +214,16 @@ var Visio = {
     /*
      * Actions
      */
-
     hello: function() {
         Visio.pc.createOffer(function (desc) {
             Visio.pc.setLocalDescription(desc, function () {
                 Visio_ajaxInitiate(Visio.pc.localDescription, Visio.from);
             }, logError);
         }, logError);
+    },
+
+    answer: function() {
+        Visio_ajaxAccept(Visio.pc.localDescription, Visio.from);
     },
 
     goodbye: function() {
@@ -237,51 +238,52 @@ var Visio = {
     toggleMainButton: function() {
         button = document.getElementById('main');
 
-        if(button) {
-            i = button.querySelector('i');
+        i = button.querySelector('i');
 
-            MovimUtils.removeClass(button, 'red');
-            MovimUtils.removeClass(button, 'green');
-            MovimUtils.removeClass(button, 'blue');
-            MovimUtils.removeClass(button, 'gray');
-            MovimUtils.addClass(button, 'disabled');
+        MovimUtils.removeClass(button, 'red');
+        MovimUtils.removeClass(button, 'green');
+        MovimUtils.removeClass(button, 'gray');
+        MovimUtils.removeClass(button, 'orange');
+        MovimUtils.removeClass(button, 'ring');
 
-            if(Visio.pc) {
-                if(Visio.pc.getLocalStreams().length > 0) {
-                    MovimUtils.removeClass(button, 'disabled');
-                }
+        MovimUtils.addClass(button, 'disabled');
 
-                if(Visio.pc.iceConnectionState == 'new') {
-                    if(Visio.pc.iceGatheringState == 'gathering') {
-                        MovimUtils.addClass(button, 'blue');
-                        i.className = 'zmdi zmdi-phone-setting';
+        if(Visio.pc) {
+            if(Visio.pc.iceConnectionState != 'closed'
+            && Visio.pc.getLocalStreams().length > 0) {
+                MovimUtils.removeClass(button, 'disabled');
+            }
 
-                        button.onclick = function() { Visio.goodbye(); };
-
-                    } else if(Visio.pc.iceGatheringState == 'complete') {
-                        MovimUtils.addClass(button, 'blue');
-                        i.className = 'zmdi zmdi-phone-paused';
-
-                        button.onclick = function() { Visio.goodbye(); };
-                    } else {
-                        MovimUtils.addClass(button, 'green');
-                        i.className = 'zmdi zmdi-phone';
-
-                        button.onclick = function() { Visio.hello(); };
-                    }
-                } else if(Visio.pc.iceConnectionState == 'closed') {
-                    MovimUtils.addClass(button, 'gray');
-                    i.className = 'zmdi zmdi-rotate-left';
-
-                    button.onclick = function() { MovimUtils.reloadThis(); };
-                } else if(Visio.pc.iceConnectionState == 'connected'
-                       || Visio.pc.iceConnectionState == 'complete'
-                       || Visio.pc.iceConnectionState == 'failed') {
-                    MovimUtils.addClass(button, 'red');
-                    i.className = 'zmdi zmdi-phone-end';
+            if(Visio.pc.iceConnectionState == 'new') {
+                if(Visio.pc.iceGatheringState == 'gathering'
+                || Visio.pc.iceGatheringState == 'complete') {
+                    MovimUtils.addClass(button, 'orange');
+                    i.className = 'zmdi zmdi-phone-ring';
 
                     button.onclick = function() { Visio.goodbye(); };
+                } else {
+                    MovimUtils.addClass(button, 'green');
+                    i.className = 'zmdi zmdi-phone';
+
+                    button.onclick = function() { Visio.hello(); };
                 }
+            } else if(Visio.pc.iceConnectionState == 'checking') {
+                MovimUtils.addClass(button, 'green');
+                i.className = 'zmdi zmdi-phone-end ring';
+
+                button.onclick = function() { Visio.answer(); };
+            } else if(Visio.pc.iceConnectionState == 'closed') {
+                MovimUtils.addClass(button, 'gray');
+                i.className = 'zmdi zmdi-phone-end';
+
+                button.onclick = function() { MovimUtils.reloadThis(); };
+            } else if(Visio.pc.iceConnectionState == 'connected'
+                   || Visio.pc.iceConnectionState == 'complete'
+                   || Visio.pc.iceConnectionState == 'failed') {
+                MovimUtils.addClass(button, 'red');
+                i.className = 'zmdi zmdi-phone-end';
+
+                button.onclick = function() { Visio.goodbye(); };
             }
         }
     },
