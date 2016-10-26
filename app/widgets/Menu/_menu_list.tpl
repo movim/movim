@@ -85,6 +85,20 @@
                 <p class="line">{$c->__('menu.contact_post')}</p>
             {/if}
             <p dir="auto">{$value->contentcleaned|stripTags|truncate:140}</p>
+            <p>
+                {if="$value->isMicroblog()"}
+                    <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
+                {else}
+                    <i class="zmdi zmdi-pages"></i> {$value->node}
+                {/if}
+                {$count = $value->countComments()}
+                {if="$count > 0"}
+                    {$count} <i class="zmdi zmdi-comment-outline"></i>
+                {/if}
+                <span class="info">
+                    {$value->published|strtotime|prepareDate:true,true}
+                </span>
+            </p>
             {if="$value->isReply()"}
                 {$reply = $value->getReply()}
                     <ul class="list card">
@@ -113,20 +127,6 @@
                     </ul>
 
             {/if}
-            <p>
-                {if="$value->isMicroblog()"}
-                    <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
-                {else}
-                    <i class="zmdi zmdi-pages"></i> {$value->node}
-                {/if}
-                {$count = $value->countComments()}
-                {if="$count > 0"}
-                    {$count} <i class="zmdi zmdi-comment-outline"></i>
-                {/if}
-                <span class="info">
-                    {$value->published|strtotime|prepareDate:true,true}
-                </span>
-            </p>
         </li>
     {/loop}
     {if="count($items) == $paging"}
