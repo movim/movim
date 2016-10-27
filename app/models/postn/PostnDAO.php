@@ -724,15 +724,12 @@ class PostnDAO extends SQL {
                             and postn.origin not in (select jid from rosterlink where session = :origin)
                             and postn.open = true
                             and content != \'\'
+                    ) p
+                    order by published desc
                     ';
 
                 if($limitr)
                     $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
-
-                $this->_sql .= '
-                    ) p
-                    order by published desc
-                    ';
             break;
         }
 
