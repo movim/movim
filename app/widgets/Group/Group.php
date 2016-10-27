@@ -76,10 +76,18 @@ class Group extends \Movim\Widget\Base
         Notification::append(false, $this->__('group.empty'));
 
         if($node != 'urn:xmpp:microblog:0') {
-            $this->ajaxDelete($server, $node, true);
-            $this->ajaxGetAffiliations($server, $node);
-            // Display an error message
-            RPC::call('Group.clearLoad');
+            $sd = new \Modl\SubscriptionDAO;
+
+            if($sd->get($server, $node)) {
+                $this->ajaxDelete($server, $node, true);
+                $this->ajaxGetAffiliations($server, $node);
+                // Display an error message
+                RPC::call('Group.clearLoad');
+            } else {
+                $id = new \Modl\ItemDAO;
+                $id->deleteItem($server, $node);
+                $this->ajaxClear();
+            }
         }
     }
 

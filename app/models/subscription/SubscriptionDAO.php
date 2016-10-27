@@ -16,7 +16,7 @@ class SubscriptionDAO extends SQL {
 
         $this->prepare(
             'Subscription',
-            array(
+            [
                 'subscription' => $s->subscription,
                 'timestamp' => date(DATE_ISO8601),
                 'jid'   => $s->jid,
@@ -24,7 +24,7 @@ class SubscriptionDAO extends SQL {
                 'node'  => $s->node,
                 'tags'  => $s->tags,
                 'subid' => $s->subid
-            )
+            ]
         );
 
         $this->run('Subscription');
@@ -61,11 +61,11 @@ class SubscriptionDAO extends SQL {
 
         $this->prepare(
             'Subscription',
-            array(
+            [
                 'jid' => $this->_user,
                 'server' => $server,
                 'node' => $node
-            )
+            ]
         );
 
         return $this->run('Subscription');
@@ -103,9 +103,9 @@ class SubscriptionDAO extends SQL {
 
         $this->prepare(
             'Subscription',
-            array(
+            [
                 'jid' => $this->_user
-            )
+            ]
         );
 
         return $this->run('Subscription');
@@ -118,9 +118,9 @@ class SubscriptionDAO extends SQL {
 
         $this->prepare(
             'Subscription',
-            array(
+            [
                 'jid' => $this->_user
-            )
+            ]
         );
 
         return $this->run('Subscription');
@@ -135,11 +135,11 @@ class SubscriptionDAO extends SQL {
 
         $this->prepare(
             'Subscription',
-            array(
+            [
                 'jid' => $this->_user,
                 'server' => $server,
                 'node' => $node
-            )
+            ]
         );
 
         return $this->run('Subscription');
@@ -155,12 +155,12 @@ class SubscriptionDAO extends SQL {
 
         $this->prepare(
             'Subscription',
-            array(
+            [
                 'jid' => $this->_user,
                 'server' => $server,
                 'node' => $node,
                 'subid' => $subid,
-            )
+            ]
         );
 
         return $this->run('Subscription');

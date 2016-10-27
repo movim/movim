@@ -147,7 +147,9 @@ class Groups extends \Movim\Widget\Base
         }
 
         $c = new Create;
-        $c->setTo($server)->setNode($uri)->setData($form->name->value)
+        $c->setTo($server)
+          ->setNode($uri)
+          ->setName($form->name->value)
           ->request();
     }
 
