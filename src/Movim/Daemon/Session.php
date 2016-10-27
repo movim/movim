@@ -36,7 +36,7 @@ class Session {
 
     public function attach($loop, ConnectionInterface $conn)
     {
-        $name = $conn->WebSocket->request->getQuery()->toArray()['path'];
+        /*$name = $conn->WebSocket->request->getQuery()->toArray()['path'];
         if(!empty($name)) {
             $page = $this->front->loadController($name);
             $page->load();
@@ -53,7 +53,7 @@ class Session {
                     $this->uniques[$name] = 1;
                 }
             }
-        }
+        }*/
 
         $this->clients->attach($conn);
 
@@ -66,7 +66,7 @@ class Session {
 
     public function detach($loop, ConnectionInterface $conn)
     {
-        $name = $conn->WebSocket->request->getQuery()->toArray()['path'];
+        /*$name = $conn->WebSocket->request->getQuery()->toArray()['path'];
 
         if($this->clients->contains($conn)
         && !empty($name)
@@ -74,7 +74,7 @@ class Session {
             unset($this->uniques[$name]);
         } else {
             return;
-        }
+        }*/
 
         $this->clients->detach($conn);
 
