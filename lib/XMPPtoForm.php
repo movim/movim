@@ -166,6 +166,7 @@ class XMPPtoForm{
 
         $label = $this->html->createElement('label', $s['label']);
         $label->setAttribute('for', $s['var']);
+        $label->setAttribute('title', $s['label']);
         $container->appendChild($label);
     }
 
@@ -196,6 +197,7 @@ class XMPPtoForm{
 
         $label = $this->html->createElement('label', $s['label']);
         $label->setAttribute('for', $s['var']);
+        $label->setAttribute('title', $s['label']);
         $container->appendChild($label);
     }
 
@@ -232,6 +234,7 @@ class XMPPtoForm{
 
         $label = $this->html->createElement('label', $s['label']);
         $label->setAttribute('for', $s['var']);
+        $label->setAttribute('title', $s['label']);
         $container->appendChild($label);
     }
 
@@ -300,6 +303,7 @@ class XMPPtoForm{
 
         $label = $this->html->createElement('label', $s['label']);
         $label->setAttribute('for', $s['var']);
+        $label->setAttribute('title', $s['label']);
         $container->appendChild($label);
     }
 }

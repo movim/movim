@@ -77,7 +77,7 @@
                 <i class="zmdi zmdi-account"></i>
             </span>
         {/if}
-        <p class="line">
+        <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
         {if="isset($value->title)"}
             {$value->title}
         {else}
@@ -154,7 +154,7 @@
             </span>
         {/if}
 
-        <p class="line">
+        <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
         {if="isset($value->title)"}
             {$value->title}
         {else}

@@ -341,7 +341,7 @@
                                 <span class="primary icon gray">
                                     <i class="zmdi zmdi-arrow-left"></i>
                                 </span>
-                                <p class="line">
+                                <p class="line" {if="isset($previous->title)"}title="{$previous->title}"{/if}>
                                 {if="isset($previous->title)"}
                                     {$previous->title}
                                 {else}
@@ -366,7 +366,7 @@
                                 <span class="control icon gray">
                                     <i class="zmdi zmdi-arrow-right"></i>
                                 </span>
-                                <p class="line">
+                                <p class="line" {if="isset($next->title)"}title="{$next->title}"{/if}>
                                 {if="isset($next->title)"}
                                     {$next->title}
                                 {else}
