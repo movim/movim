@@ -697,19 +697,44 @@ class PostnDAO extends SQL {
 
     function getLastBlogPublic($limitf = false, $limitr = false)
     {
-        $this->_sql = '
-            select * from postn
-            left outer join contact on postn.aid = contact.jid
-            where
-                node = \'urn:xmpp:microblog:0\'
-                and postn.origin not in (select jid from rosterlink where session = :origin)
-                and postn.open = true
-                and content != \'\'
-            order by published desc
-            ';
+        switch($this->_dbtype) {
+            case 'mysql':
+                $this->_sql = '
+                    select * from postn
+                    left outer join contact on postn.aid = contact.jid
+                    where
+                        node = \'urn:xmpp:microblog:0\'
+                        and postn.origin not in (select jid from rosterlink where session = :origin)
+                        and postn.open = true
+                        and content != \'\'
+                    group by origin
+                    order by published desc
+                    ';
 
-        if($limitr)
-            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+                if($limitr)
+                    $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+            break;
+            case 'pgsql':
+                $this->_sql = '
+                    select * from (
+                        select distinct on (origin) * from postn
+                        left outer join contact on postn.aid = contact.jid
+                        where
+                            node = \'urn:xmpp:microblog:0\'
+                            and postn.origin not in (select jid from rosterlink where session = :origin)
+                            and postn.open = true
+                            and content != \'\'
+                    ';
+
+                if($limitr)
+                    $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+
+                $this->_sql .= '
+                    ) p
+                    order by published desc
+                    ';
+            break;
+        }
 
         $this->prepare(
             'Postn',
