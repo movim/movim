@@ -1,6 +1,11 @@
 Moxl Changelog
 ================
 
+v1.6
+---------------------------
+ * Big refresh and cleanup of the library
+ * Fix and update Jingle
+
 v1.5
 ---------------------------
  * Add XEP-0231: Bits of Binary support
@@ -16,7 +21,7 @@ v1.3
 
 v1.2.1
 ---------------------------
- * Add support of the XEP-0050: Ad-Hoc Commands 
+ * Add support of the XEP-0050: Ad-Hoc Commands
 
 v1.2
 ---------------------------

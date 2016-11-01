@@ -84,9 +84,9 @@ class PubsubAtom {
 
             // Not very elegant
             if($this->node == 'urn:xmpp:microblog:0') {
-                $link->setAttribute('href', \Route::urlize('blog', [$this->to, $this->id]));
+                $link->setAttribute('href', \Movim\Route::urlize('blog', [$this->to, $this->id]));
             } else {
-                $link->setAttribute('href', \Route::urlize('node', [$this->to, $this->node, $this->id]));
+                $link->setAttribute('href', \Movim\Route::urlize('node', [$this->to, $this->node, $this->id]));
             }
 
             $entry->appendChild($link);

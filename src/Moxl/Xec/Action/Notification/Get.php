@@ -43,35 +43,31 @@ class Get extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-
+    public function handle($stanza, $parent = false)
+    {
         $session = \Session::start();
         $session->set('activenotifs', array());
         if($stanza->pubsub->items->item) {
             foreach($stanza->pubsub->items->item as $item) {
-                $evt->runEvent('notification', $item);
+                $this->event('notification', $item);
             }
 
-            $evt->runEvent('notifications');
+            $this->event('notifications');
         } else {
-            $evt->runEvent('nonotification');
+            $this->event('nonotification');
         }
     }
 
     public function errorFeatureNotImplemented($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('nonotification');
+        $this->event('nonotification');
     }
 
     public function errorItemNotFound($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('nonotification');
+        $this->event('nonotification');
     }
 
     public function errorNotAuthorized($stanza) {
-        $evt = new \Event();
-        $evt->runEvent('nonotificationautorized');
+        $this->event('nonotificationautorized');
     }
 
     public function errorNotAllowed($stanza) {

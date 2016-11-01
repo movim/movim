@@ -31,13 +31,11 @@ class Vcard4 extends Payload
     public function handle($stanza, $parent = false) {
         $jid = current(explode('/',(string)$parent->attributes()->from));
 
-        $evt = new \Event();
-
-        $cd = new \modl\ContactDAO();
+        $cd = new \Modl\ContactDAO;
         $c = $cd->get($jid);
 
         if($c == null)
-            $c = new \modl\Contact();
+            $c = new \Modl\Contact;
 
         $c->jid = $jid;
         $vcard = $stanza->items->item->vcard;
@@ -46,6 +44,6 @@ class Vcard4 extends Payload
         $c->createThumbnails();
         $cd->set($c);
 
-        $evt->runEvent('vcard', $c);
+        $this->event('vcard', $c);
     }
 }

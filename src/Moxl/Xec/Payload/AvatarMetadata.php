@@ -10,8 +10,6 @@ class AvatarMetadata extends Payload
     {
         $jid = current(explode('/', (string)$parent->attributes()->from));
 
-        $evt = new \Event;
-
         $cd = new \Modl\ContactDAO;
         $c = $cd->get($jid);
 

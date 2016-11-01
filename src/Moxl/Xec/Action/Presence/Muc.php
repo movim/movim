@@ -43,7 +43,7 @@ class Muc extends Action
         }
 
         // We clear all the old messages
-        $md = new \modl\MessageDAO();
+        $md = new \Modl\MessageDAO;
         $md->deleteContact($this->_to);
 
         Presence::muc($this->_to, $this->_nickname);
@@ -63,10 +63,10 @@ class Muc extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $p = new \modl\Presence();
+        $p = new \Modl\Presence;
         $p->setPresence($stanza);
 
-        $pd = new \modl\PresenceDAO();
+        $pd = new \Modl\PresenceDAO;
         $pd->set($p);
 
         $this->deliver();
@@ -82,8 +82,8 @@ class Muc extends Action
         }
     }
 
-    public function errorNotAcceptable($stanza, $message) {
-        $evt = new \Event();
-        $evt->runEvent('bookmarkerror', $message);
+    public function errorNotAcceptable($stanza, $message)
+    {
+        $this->event('bookmarkerror', $message);
     }
 }

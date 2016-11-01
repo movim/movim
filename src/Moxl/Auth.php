@@ -6,13 +6,13 @@ use \SASL2\SASL2;
 
 class Auth {
     static function mechanismChoice($mec) {
-        $mechanism = array(
+        $mechanism = [
                         'SCRAM-SHA-1',
                         'DIGEST-MD5',
                         'CRAM-MD5',
                         'PLAIN',
                         'ANONYMOUS'
-                        );
+                     ];
 
         $mecchoice = false;
         $i = 0;
@@ -37,38 +37,45 @@ class Auth {
 
         $response = base64_encode($p->getResponse($session->get('username'), $session->get('password')));
 
-        $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="PLAIN">'.
-                    $response.
-                '</auth>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'auth', $response);
+        $auth->setAttribute('mechanism', 'PLAIN');
+        $dom->appendChild($auth);
 
-        API::request($xml);
+        API::request($dom->saveXML($dom->documentElement));
     }
 
     static function mechanismANONYMOUS() {
         $s = new SASL2;
         $fa = $s->factory('ANONYMOUS');
 
-        $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="ANONYMOUS"/>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'auth');
+        $auth->setAttribute('mechanism', 'ANONYMOUS');
+        $dom->appendChild($auth);
 
-        API::request($xml);
+        API::request($dom->saveXML($dom->documentElement));
     }
 
     static function mechanismDIGESTMD5() {
-        $xml =  '<auth
-                    client-uses-full-bind-result="true"
-                    xmlns="urn:ietf:params:xml:ns:xmpp-sasl"
-                    mechanism="DIGEST-MD5"/>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'auth');
+        $auth->setAttribute('client-uses-full-bind-result', 'true');
+        $auth->setAttribute('mechanism', 'DIGEST-MD5');
+        $dom->appendChild($auth);
 
-        API::request($xml);
+        API::request($dom->saveXML($dom->documentElement));
+
     }
 
     static function mechanismCRAMMD5() {
-        $xml =  '<auth
-                    client-uses-full-bind-result="true"
-                    xmlns="urn:ietf:params:xml:ns:xmpp-sasl"
-                    mechanism="CRAM-MD5"/>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'auth');
+        $auth->setAttribute('client-uses-full-bind-result', 'true');
+        $auth->setAttribute('mechanism', 'CRAM-MD5');
+        $dom->appendChild($auth);
 
-        API::request($xml);
+        API::request($dom->saveXML($dom->documentElement));
     }
 
     static function mechanismSCRAMSHA1() {
@@ -83,10 +90,12 @@ class Auth {
 
         $session->set('saslfa', $fa);
 
-        $xml =  '<auth xmlns="urn:ietf:params:xml:ns:xmpp-sasl" mechanism="SCRAM-SHA-1">
-                    '.$response.'
-                </auth>';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'auth', $response);
+        $auth->setAttribute('mechanism', 'SCRAM-SHA-1');
+        $dom->appendChild($auth);
 
-        API::request($xml);
+        API::request($dom->saveXML($dom->documentElement));
+
     }
 }

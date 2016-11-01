@@ -17,8 +17,11 @@ class Stream {
 
     static function startTLS()
     {
-        $xml = '<starttls xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>';
-        \Moxl\API::request($xml);
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $starttls = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-tls', 'starttls');
+        $dom->appendChild($starttls);
+
+        \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
     static function bindSet($resource)

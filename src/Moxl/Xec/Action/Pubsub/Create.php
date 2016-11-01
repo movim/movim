@@ -58,7 +58,8 @@ class Create extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         if($stanza["type"] == "result"){
             $this->pack(array('server' => $this->_to, 'node' => $this->_node));
             $this->deliver();
@@ -72,8 +73,8 @@ class Create extends Errors
         }
     }
 
-    public function error($error) {
-        $evt = new \Event();
-        $evt->runEvent('creationerror', $this->_node);
+    public function error($error)
+    {
+        $this->event('creationerror', $this->_node);
     }
 }

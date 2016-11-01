@@ -1,25 +1,25 @@
 <?php
 /*
  * Publish.php
- * 
+ *
  * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- * 
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
  * MA 02110-1301, USA.
- * 
- * 
+ *
+ *
  */
 
 namespace Moxl\Xec\Action\Location;
@@ -31,13 +31,13 @@ class Publish extends Action
 {
     private $_to;
     private $_geo;
-    
-    public function request() 
+
+    public function request()
     {
         $this->store();
         Location::publish($this->_to, $this->_geo);
     }
-    
+
     public function setTo($to)
     {
         $this->_to = $to;
@@ -49,15 +49,14 @@ class Publish extends Action
         $this->_geo = $geo;
         return $this;
     }
-        
-    public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        
+
+    public function handle($stanza, $parent = false)
+    {
         $from = current(explode('/',(string)$stanza->attributes()->from));
-        
+
         $cd = new \modl\ContactDAO();
         $c = $cd->get($from);
-        
+
         if($c == null) {
             $c = new \modl\Contact();
             $c->jid = $from;
@@ -76,18 +75,20 @@ class Publish extends Action
         $c->loctext = $this->_geo['text'];
         $c->locuri = $this->_geo['uri'];
         $c->loctimestamp = date(
-                            'Y-m-d H:i:s', 
+                            'Y-m-d H:i:s',
                             time());
         $cd->set($c);
-        
-        $evt->runEvent('locationpublished', $c);
+
+        $this->event('locationpublished', $c);
     }
 
-    public function errorServiceUnavailable($stanza) {
+    public function errorServiceUnavailable($stanza)
+    {
         $this->errorFeatureNotImplemented($stanza);
     }
 
-    public function errorForbidden($stanza) {
+    public function errorForbidden($stanza)
+    {
         $this->errorNotAuthorized($stanza);
     }
 }

@@ -33,14 +33,12 @@ class Message extends Payload
         $jid = explode('/',(string)$stanza->attributes()->from);
         $to = current(explode('/',(string)$stanza->attributes()->to));
 
-        $evt = new \Event;
-
         if($stanza->composing)
-            $evt->runEvent('composing', array($jid[0], $to));
+            $this->event('composing', array($jid[0], $to));
         if($stanza->paused)
-            $evt->runEvent('paused', array($jid[0], $to));
+            $this->event('paused', array($jid[0], $to));
         if($stanza->gone)
-            $evt->runEvent('gone', array($jid[0], $to));
+            $this->event('gone', array($jid[0], $to));
         if($stanza->body || $stanza->subject) {
             if($stanza->request) {
                 $from = (string)$stanza->attributes()->from;

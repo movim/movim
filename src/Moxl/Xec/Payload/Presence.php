@@ -39,13 +39,12 @@ class Presence extends Payload
             $notifs[(string)$stanza->attributes()->from] = 'sub';
             $session->set('activenotifs', $notifs);
 
-            $evt = new \Event;
-            $evt->runEvent('subscribe', (string)$stanza->attributes()->from);
+            $this->event('subscribe', (string)$stanza->attributes()->from);
         } else {
-            $p = new \modl\Presence();
+            $p = new \Modl\Presence;
             $p->setPresence($stanza);
 
-            $pd = new \modl\PresenceDAO();
+            $pd = new \Modl\PresenceDAO;
             $pd->set($p);
 
             /*if($p->photo) {

@@ -35,14 +35,12 @@ class Carbons extends Payload
         $jid = explode('/',(string)$message->attributes()->from);
         $to = current(explode('/',(string)$message->attributes()->to));
 
-        $evt = new \Event;
-
         if($message->composing)
-            $evt->runEvent('composing', array($jid[0], $to));
+            $this->event('composing', array($jid[0], $to));
         if($message->paused)
-            $evt->runEvent('paused', array($jid[0], $to));
+            $this->event('paused', array($jid[0], $to));
         if($message->gone)
-            $evt->runEvent('gone', array($jid[0], $to));
+            $this->event('gone', array($jid[0], $to));
 
         if($message->body || $message->subject) {
             $m = new \Modl\Message;

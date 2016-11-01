@@ -43,20 +43,18 @@ class Jingle extends Payload
             ->setId($id)
             ->request();
 
-        $evt = new \Event;
-
         switch($action) {
             case 'session-initiate' :
-                $evt->runEvent('jingle_sessioninitiate' , [$stanza, $from]);
+                $this->event('jingle_sessioninitiate' , [$stanza, $from]);
                 break;
             case 'transport-info' :
-                $evt->runEvent('jingle_transportinfo'   , $stanza);
+                $this->event('jingle_transportinfo'   , $stanza);
                 break;
             case 'session-terminate' :
-                $evt->runEvent('jingle_sessionterminate', $stanza);
+                $this->event('jingle_sessionterminate', $stanza);
                 break;
             case 'session-accept' :
-                $evt->runEvent('jingle_sessionaccept'   , $stanza);
+                $this->event('jingle_sessionaccept'   , $stanza);
                 break;
         }
     }

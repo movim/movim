@@ -27,6 +27,8 @@ namespace Moxl\Xec\Action\Vcard;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Vcard;
 
+use Movim\Widget\Event;
+
 class Get extends Action
 {
     private $_to;
@@ -58,7 +60,7 @@ class Get extends Action
             $jid = $this->_to;
 
         if($jid) {
-            $evt = new \Event;
+            $evt = new Event;
 
             $cd = new \Modl\ContactDAO;
 

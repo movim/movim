@@ -24,6 +24,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Movim\Widget\Event;
+
 use Moxl\Xec\Payload\Packet;
 use Moxl\Utils;
 
@@ -60,11 +62,12 @@ abstract class Payload
      *
      * @return void
      */
-    final public function deliver() {
+    final public function deliver()
+    {
         $action_ns = 'Moxl\Xec\Action';
         if(get_parent_class($this) == $action_ns
         || get_parent_class(get_parent_class($this)) == $action_ns) {
-            $class = str_replace(array($action_ns, '\\'), array('', '_'), get_class($this));
+            $class = str_replace([$action_ns, '\\'], ['', '_'], get_class($this));
             $key = strtolower(substr($class, 1));
         } else {
             $class = strtolower(get_class($this));
@@ -76,8 +79,18 @@ abstract class Payload
 
         Utils::log('Package : Event "'.$key.'" from "'.$this->packet->from.'" fired');
 
-        $evt = new \Event();
-        $evt->runEvent($key, $this->packet);
+        $this->event($key, $this->packet);
+    }
+
+    /**
+     * Send an event to Movim
+     *
+     * @return void
+     */
+    final public function event($key, $packet = null)
+    {
+        $evt = new Event;
+        $evt->run($key, $packet);
     }
 
     /**
@@ -85,7 +98,8 @@ abstract class Payload
      *
      * @return void
      */
-    final public function method($method) {
+    final public function method($method)
+    {
         $this->method = strtolower($method);
     }
 
@@ -94,7 +108,8 @@ abstract class Payload
      *
      * @return void
      */
-    final public function pack($content, $from = null) {
+    final public function pack($content, $from = null)
+    {
         $this->packet->content = $content;
         if($from != null) {
             $this->packet->from = $from;

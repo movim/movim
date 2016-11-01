@@ -8,8 +8,6 @@ class Avatar extends Payload
     {
         $jid = current(explode('/',(string)$parent->attributes()->from));
 
-        $evt = new \Event;
-
         $cd = new \Modl\ContactDAO;
         $c = $cd->get($jid);
 
@@ -20,6 +18,6 @@ class Avatar extends Payload
         $p->fromBase((string)$stanza->items->item->data);
         $p->set($jid);
 
-        $evt->runEvent('vcard', $c);
+        $this->event('vcard', $c);
     }
 }

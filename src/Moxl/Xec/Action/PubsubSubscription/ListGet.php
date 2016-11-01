@@ -8,32 +8,31 @@ use Moxl\Stanza\PubsubSubscription;
 
 class ListGet extends Errors
 {
-    
-    public function request() 
+    public function request()
     {
         $this->store();
         PubsubSubscription::listGet();
     }
-    
-    public function handle($stanza, $parent = false) {
-        $evt = new \Event();
-        
-        $tab = array();
+
+    public function handle($stanza, $parent = false)
+    {
+        $tab = [];
+
         foreach($stanza->pubsub->items->children() as $i) {
-            $sub = array(
+            $sub = [
                 'node'   => (string)$i->subscription["node"],
                 'server' => (string)$i->subscription["server"],
-                'title'  => (string)$i->subscription->title);
+                'title'  => (string)$i->subscription->title];
 
             $tab[(string)$i->subscription["server"].(string)$i->subscription["node"]] = $sub;
         }
-        
-        $evt->runEvent('groupsubscribedlist', $tab); 
+
+        $this->event('groupsubscribedlist', $tab);
     }
 
-    public function errorItemNotFound($stanza) {
+    public function errorItemNotFound($stanza)
+    {
         parent::errorItemNotFound($stanza);
-        $evt = new \Event();
-        $evt->runEvent('groupsubscribedlist', array()); 
+        $this->event('groupsubscribedlist', []);
     }
 }

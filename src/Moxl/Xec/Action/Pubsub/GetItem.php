@@ -67,8 +67,6 @@ class GetItem extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $evt = new \Event();
-
         $to = current(explode('/',(string)$stanza->attributes()->to));
         $from = $this->_to;
         $node = $this->_node;
@@ -79,11 +77,11 @@ class GetItem extends Errors
             foreach($stanza->pubsub->items->item as $item) {
                 if(isset($item->entry)
                 &&(string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
-                    $p = new \modl\Postn();
+                    $p = new \Modl\Postn;
                     $promise = $p->set($item, $from, false, $node);
 
-                    $promise->done(function() use ($p, $evt) {
-                        $pd = new \modl\PostnDAO();
+                    $promise->done(function() use ($p) {
+                        $pd = new \Modl\PostnDAO;
                         $pd->set($p);
 
                         $post = true;
@@ -96,7 +94,7 @@ class GetItem extends Errors
                             $this->deliver();
                         } else {
                             $this->pack($p);
-                            $evt->runEvent('post', $this->packet);
+                            $this->event('post', $this->packet);
                         }
 
                         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
@@ -104,9 +102,6 @@ class GetItem extends Errors
                     });
                 }
             }
-
-            //if($post) {
-            //}
         } else {
             $pd = new PostDelete;
             $pd->setTo($this->_to)

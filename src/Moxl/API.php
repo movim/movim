@@ -51,7 +51,7 @@ class API {
     /*
      *  Call the request class with the correct XML
      */
-    static function request($xml, $type = false)
+    static function request($xml)
     {
         writeXMPP($xml);
     }
