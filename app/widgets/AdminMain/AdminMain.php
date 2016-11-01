@@ -48,8 +48,7 @@ class AdminMain extends \Movim\Widget\Base
 
     function display()
     {
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
+        $cd = new \Modl\ConfigDAO;
 
         $l = Movim\i18n\Locale::start();
 

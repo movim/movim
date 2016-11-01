@@ -1,4 +1,7 @@
 <?php
+
+namespace Movim;
+
 /**
  * A fully-static class that deals with caching.
  */
@@ -9,8 +12,9 @@ class Cache
     public static function create()
     {
         if(!is_object(self::$instance)) {
-            self::$instance = new Cache();
+            self::$instance = new Cache;
         }
+
         return self::$instance;
     }
 
@@ -19,7 +23,7 @@ class Cache
     {
         $cache = self::create();
 
-        return call_user_func_array(array($cache, 'handle'), func_get_args());
+        return call_user_func_array([$cache, 'handle'], func_get_args());
     }
 
     /**
@@ -44,7 +48,7 @@ class Cache
         $key = $arglist[0];
 
         if(func_num_args() == 1) {
-            $content = $this->read_cache($key);
+            $content = $this->readCache($key);
 
             if(isset($content) && $content != "") {
                 return $content;
@@ -54,25 +58,25 @@ class Cache
         }
 
         if(func_num_args() == 2) {
-            return $this->write_cache($key, $arglist[1]);
+            return $this->writeCache($key, $arglist[1]);
         }
         else {
             // Cutting a piece of the args.
             $content = array_slice($arglist, 1);
-            return $this->write_cache($key, $content);
+            return $this->writeCache($key, $content);
         }
     }
 
     /**
      * Serializes data in a proper fashion.
      */
-    private function write_cache($key, $object)
+    private function writeCache($key, $object)
     {
         $data = str_replace("'", "\\'", base64_encode(gzcompress(serialize($object))));
         $time = date(DATE_ISO8601, time());
 
-        $cd = new \modl\CacheDAO();
-        $c = new \modl\Cache();
+        $cd = new \Modl\CacheDAO;
+        $c = new \Modl\Cache;
 
         $c->data = $data;
         $c->name = $key;
@@ -84,9 +88,9 @@ class Cache
     /**
      * Unserializes data.
      */
-    private function read_cache($key)
+    private function readCache($key)
     {
-        $cd = new \modl\CacheDAO();
+        $cd = new \Modl\CacheDAO;
         $var = $cd->get($key);
 
         if(isset($var)) {

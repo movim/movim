@@ -42,7 +42,7 @@ class Login extends \Movim\Widget\Base
     function onConfig($packet)
     {
         $this->user->createDir();
-        RPC::call('Login.post', $this->user->getLogin(), Route::urlize('root'));
+        RPC::call('Login.post', $this->user->getLogin(), $this->route('root'));
     }
 
     function display()
@@ -185,7 +185,7 @@ class Login extends \Movim\Widget\Base
         if($here) {
         //if($s->get('hash') == sha1($username.$password.$host)) {
             RPC::call('Login.setCookie', $here->session);
-            RPC::call('MovimUtils.redirect', Route::urlize('main'));
+            RPC::call('MovimUtils.redirect', $this->route('main'));
             $this->showErrorBlock('conflict');
             return;
         }

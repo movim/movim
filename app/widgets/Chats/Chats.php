@@ -40,7 +40,7 @@ class Chats extends \Movim\Widget\Base
         $contacts = $packet->content;
         if($contacts != null){
             $c = $contacts[0];
-            $chats = Cache::c('chats');
+            $chats = \Movim\Cache::c('chats');
             if(is_array($chats) &&  array_key_exists($c->jid, $chats)) {
                 RPC::call('MovimTpl.replace', '#' . cleanupId($c->jid.'_chat_item'), $this->prepareChat($c->jid));
                 RPC::call('Chats.refresh');
@@ -89,7 +89,7 @@ class Chats extends \Movim\Widget\Base
         $md = new \Modl\MessageDAO();
 
         if($jid == false) {
-            $chats = Cache::c('chats');
+            $chats = \Movim\Cache::c('chats');
 
             foreach($chats as $jid => $value) {
                 $messages = $md->getContact(echapJid($jid), 0, 1);
@@ -119,7 +119,7 @@ class Chats extends \Movim\Widget\Base
     {
         if(!$this->validateJid($jid)) return;
 
-        $chats = Cache::c('chats');
+        $chats = \Movim\Cache::c('chats');
         if($chats == null) $chats = [];
 
         unset($chats[$jid]);
@@ -130,7 +130,7 @@ class Chats extends \Movim\Widget\Base
 
             if($history) $this->ajaxGetHistory($jid);
 
-            Cache::c('chats', $chats);
+            \Movim\Cache::c('chats', $chats);
             RPC::call('Chats.prepend', $jid, $this->prepareChat($jid));
         }
     }
@@ -139,9 +139,9 @@ class Chats extends \Movim\Widget\Base
     {
         if(!$this->validateJid($jid)) return;
 
-        $chats = Cache::c('chats');
+        $chats = \Movim\Cache::c('chats');
         unset($chats[$jid]);
-        Cache::c('chats', $chats);
+        \Movim\Cache::c('chats', $chats);
 
         RPC::call('MovimTpl.remove', '#' . cleanupId($jid . '_chat_item'));
 
@@ -158,7 +158,7 @@ class Chats extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
-        $chats = Cache::c('chats');
+        $chats = \Movim\Cache::c('chats');
 
         if(!isset($chats)) $chats = [];
 
@@ -185,7 +185,7 @@ class Chats extends \Movim\Widget\Base
 
     function prepareChats()
     {
-        $chats = Cache::c('chats');
+        $chats = \Movim\Cache::c('chats');
 
         $view = $this->tpl();
 

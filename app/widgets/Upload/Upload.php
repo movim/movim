@@ -2,7 +2,8 @@
 
 use Moxl\Xec\Action\Upload\Request;
 
-class Upload extends \Movim\Widget\Base {
+class Upload extends \Movim\Widget\Base
+{
     function load()
     {
         $this->addjs('upload.js');

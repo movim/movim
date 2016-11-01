@@ -25,7 +25,6 @@ class AdminTest extends \Movim\Widget\Base
     function display()
     {
         $md = \Modl\Modl::getInstance();
-        $supported = $md->getSupportedDatabases();
 
         $this->view->assign('dbconnected', $md->_connected);
         $this->view->assign('dbinfos', sizeof($md->check()));

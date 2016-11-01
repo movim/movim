@@ -1,11 +1,16 @@
 <?php
+
+namespace Movim;
+
 use Movim\Controller\Base;
 
-class Route extends Base {
+class Route extends Base
+{
     public $_routes;
     private $_page;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->_routes = [
                 'about'         => ['x'],
                 'account'       => false,
@@ -31,7 +36,8 @@ class Route extends Base {
             ];
     }
 
-    public function find() {
+    public function find()
+    {
         $this->fix($_GET, $_SERVER['QUERY_STRING']);
 
         $gets = array_keys($_GET);
@@ -63,7 +69,8 @@ class Route extends Base {
         return $this->_page;
     }
 
-    public static function urlize($page, $params = false, $tab = false) {
+    public static function urlize($page, $params = false, $tab = false)
+    {
         $r = new Route();
         $routes = $r->_routes;
 
@@ -93,7 +100,8 @@ class Route extends Base {
         }
     }
 
-    private function fix(&$target, $source, $discard = true) {
+    private function fix(&$target, $source, $discard = true)
+    {
         if ($discard)
             $target = [];
 

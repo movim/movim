@@ -6,7 +6,7 @@
                     <li>
 
                         <span class="primary active icon gray">
-                            <a href="<?php echo Route::urlize('main'); ?>">
+                            <a href="<?php echo \Movim\Route::urlize('main'); ?>">
                                 <i class="zmdi zmdi-home"></i>
                             </a>
                         </span>

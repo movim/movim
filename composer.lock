@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dbb574456f132e482cabb0757780cd76",
-    "content-hash": "7562505e5daec5229f1fbf08824d409c",
+    "hash": "25897ea70d72101c3c0c3be052624296",
+    "content-hash": "e7e89a5e02422901e16de989b196fb1f",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -735,20 +735,20 @@
         },
         {
             "name": "heyupdate/emoji",
-            "version": "0.2.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heyupdate/emoji.git",
-                "reference": "f1bad3641ebda73c71d9d078a9200e145169ca15"
+                "reference": "78f6f7e20c4685107e57fb11f1356a7d8e9bd661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heyupdate/emoji/zipball/f1bad3641ebda73c71d9d078a9200e145169ca15",
-                "reference": "f1bad3641ebda73c71d9d078a9200e145169ca15",
+                "url": "https://api.github.com/repos/heyupdate/emoji/zipball/78f6f7e20c4685107e57fb11f1356a7d8e9bd661",
+                "reference": "78f6f7e20c4685107e57fb11f1356a7d8e9bd661",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0"
+                "php": ">=5.4.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.4"
@@ -756,7 +756,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.2.x-dev"
+                    "dev-master": "1.0.x-dev"
                 }
             },
             "autoload": {
@@ -772,7 +772,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2015-06-06 08:38:14"
+            "time": "2016-08-27 14:02:32"
         },
         {
             "name": "michelf/php-markdown",
@@ -943,12 +943,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "e7e9911adf0286dcca80eac07a8a3eb2d721efeb"
+                "reference": "abfee9f02ad1af5abc2bbbb64814dcf0dda658cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/e7e9911adf0286dcca80eac07a8a3eb2d721efeb",
-                "reference": "e7e9911adf0286dcca80eac07a8a3eb2d721efeb",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/abfee9f02ad1af5abc2bbbb64814dcf0dda658cf",
+                "reference": "abfee9f02ad1af5abc2bbbb64814dcf0dda658cf",
                 "shasum": ""
             },
             "require": {
@@ -983,7 +983,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-10-27 21:42:48"
+            "time": "2016-11-01 20:05:09"
         },
         {
             "name": "movim/sasl2",
@@ -1541,16 +1541,16 @@
         },
         {
             "name": "react/http-client",
-            "version": "v0.4.13",
+            "version": "v0.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/http-client.git",
-                "reference": "07fa19d83d9d3af4a6899c120fd4d41380d4a04e"
+                "reference": "24104ddd30a2a76d0697c05950ba2ae43b51de3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http-client/zipball/07fa19d83d9d3af4a6899c120fd4d41380d4a04e",
-                "reference": "07fa19d83d9d3af4a6899c120fd4d41380d4a04e",
+                "url": "https://api.github.com/repos/reactphp/http-client/zipball/24104ddd30a2a76d0697c05950ba2ae43b51de3f",
+                "reference": "24104ddd30a2a76d0697c05950ba2ae43b51de3f",
                 "shasum": ""
             },
             "require": {
@@ -1577,7 +1577,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2016-10-19 20:19:11"
+            "time": "2016-10-28 18:03:41"
         },
         {
             "name": "react/promise",
@@ -1800,16 +1800,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.14",
+            "version": "1.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "98050476c694ac499053342cff232888ab52eb89"
+                "reference": "f82fcf076237e005bc778049d73323d2164b5e8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/98050476c694ac499053342cff232888ab52eb89",
-                "reference": "98050476c694ac499053342cff232888ab52eb89",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/f82fcf076237e005bc778049d73323d2164b5e8e",
+                "reference": "f82fcf076237e005bc778049d73323d2164b5e8e",
                 "shasum": ""
             },
             "require": {
@@ -1861,7 +1861,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-09-19 16:22:39"
+            "time": "2016-10-29 13:21:14"
         },
         {
             "name": "ringcentral/psr7",

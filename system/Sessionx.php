@@ -1,6 +1,7 @@
 <?php
 
-class Sessionx {
+class Sessionx
+{
     protected static $_sessionid = null;
     protected static $_instance;
     private         $_max_age = 604800; // 24hour
@@ -50,8 +51,9 @@ class Sessionx {
     /*
      * Session management part
      */
-    private function inject() {
-        $s = new modl\Sessionx();
+    private function inject()
+    {
+        $s = new \Modl\Sessionx;
         $s->session     = self::$_sessionid;
         $s->username    = $this->_user;
         $s->password    = $this->_password;
@@ -65,20 +67,22 @@ class Sessionx {
         return $s;
     }
 
-    public function init($user, $pass, $host) {
+    public function init($user, $pass, $host)
+    {
         $this->_host        = $host;
         $this->_user        = $user;
         $this->_password    = $pass;
         $this->_resource    = 'moxl'.\generateKey(6);
         $this->_start       = date(DATE_ISO8601);
 
-        $sd = new \Modl\SessionxDAO();
+        $sd = new \Modl\SessionxDAO;
         $s = $this->inject();
         $sd->init($s);
     }
 
-    public function load() {
-        $sd = new modl\SessionxDAO();
+    public function load()
+    {
+        $sd = new \Modl\SessionxDAO;
         $session = $sd->get(self::$_sessionid);
 
         if(isset($session)) {
@@ -96,25 +100,27 @@ class Sessionx {
         self::$_instance = $this;
     }
 
-    public function __get($key) {
+    public function __get($key)
+    {
         if($key == 'sessionid') {
             return self::$_sessionid;
         } else {
             if(
                 in_array(
                     $key,
-                    array(
+                    [
                         'host',
                         'user',
                         'password',
                         'hash',
-                        'start')
-                    )
+                        'start'
+                    ]
+                )
             ) {
                 $key = '_'.$key;
                 return $this->$key;
             } else {
-                $sd = new modl\SessionxDAO();
+                $sd = new \Modl\SessionxDAO;
                 $session = $sd->get(self::$_sessionid);
                 if(isset($session->config))
                     $session->config = unserialize($session->config);
@@ -138,7 +144,7 @@ class Sessionx {
     }
 
     public function destroy() {
-        $sd = new \Modl\SessionxDAO();
+        $sd = new \Modl\SessionxDAO;
         $sd->delete(self::$_sessionid);
     }
 }

@@ -50,11 +50,11 @@ class Syndication extends \Movim\Widget\Base
 
             $feed->appendChild($author = $dom->createElement('author'));
             $author->appendChild($dom->createElement('name', $contact->getTrueName()));
-            $author->appendChild($dom->createElement('uri', Route::urlize('blog', [$from])));
+            $author->appendChild($dom->createElement('uri', $this->route('blog', [$from])));
 
             $feed->appendChild($dom->createElement('logo', $contact->getPhoto('l')));
 
-            $self->setAttribute('href', Route::urlize('feed', [$from]));
+            $self->setAttribute('href', $this->route('feed', [$from]));
         }
 
         if($item != null) {
@@ -70,7 +70,7 @@ class Syndication extends \Movim\Widget\Base
                 $feed->appendChild($dom->createElement('subtitle', $item->server));
             }
 
-            $self->setAttribute('href', Route::urlize('feed', [$from, $node]));
+            $self->setAttribute('href', $this->route('feed', [$from, $node]));
         }
 
         $feed->appendChild($generator = $dom->createElement('generator', 'Movim'));

@@ -345,7 +345,7 @@ class SDPtoJingle {
                             if($key = array_search("id", $matches))
                                 $id = $matches[($key+1)];
                             if($key = array_search("network-id", $matches))
-                                $networdid = $matches[($key+1)];
+                                $networkid = $matches[($key+1)];
 
                             if(isset($matches[11]) && isset($matches[13])) {
                                 $reladdr = $matches[11];

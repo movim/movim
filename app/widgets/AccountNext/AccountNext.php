@@ -75,8 +75,6 @@ class AccountNext extends \Movim\Widget\Base {
         $data = $packet->content;
 
         $view = $this->tpl();
-        $view->assign('url', (string)$form->x->url);
-
         $html = $view->draw('_accountnext_registered', true);
 
         RPC::call('MovimTpl.fill', '#subscribe', $html);

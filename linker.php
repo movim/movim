@@ -35,7 +35,14 @@ $buffer = '';
 $timestamp = time();
 
 function handleSSLErrors($errno, $errstr) {
-    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize($errstr, 'red')."\n");
+    fwrite(
+        STDERR,
+        colorize(getenv('sid'), 'yellow').
+        " : ".colorize($errno, 'red').
+        " ".
+        colorize($errstr, 'red').
+        "\n"
+    );
 }
 
 // Temporary linker killer
@@ -110,13 +117,19 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         break;
 
                     case 'down':
-                        $evt = new Event;
-                        $evt->runEvent('session_down');
+                        if(isset($conn)
+                        && is_resource($conn->stream)) {
+                            $evt = new Movim\Widget\Event;
+                            $evt->run('session_down');
+                        }
                         break;
 
                     case 'up':
-                        $evt = new Event;
-                        $evt->runEvent('session_up');
+                        if(isset($conn)
+                        && is_resource($conn->stream)) {
+                            $evt = new Movim\Widget\Event;
+                            $evt->run('session_up');
+                        }
                         break;
 
                     case 'unregister':

@@ -177,8 +177,6 @@ class Bootstrap
     {
         require_once(SYSTEM_PATH . "Session.php");
         require_once(SYSTEM_PATH . "Sessionx.php");
-        require_once(SYSTEM_PATH . "Cache.php");
-        require_once(SYSTEM_PATH . "Event.php");
         require_once(SYSTEM_PATH . "RPC.php");
         require_once(SYSTEM_PATH . "User.php");
         require_once(SYSTEM_PATH . "Picture.php");
@@ -203,7 +201,6 @@ class Bootstrap
 
     private function loadDispatcher()
     {
-        require_once(SYSTEM_PATH . "Route.php");
         require_once(APP_PATH . "widgets/Notification/Notification.php");
     }
 

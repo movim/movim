@@ -51,7 +51,7 @@ class Presence extends \Movim\Widget\Base
     {
         if($form == false) {
             // We update the cache with our status and presence
-            $presence = Cache::c('presence');
+            $presence = \Movim\Cache::c('presence');
 
             $value = $presence['show'];
             $status = $presence['status'];
@@ -87,12 +87,12 @@ class Presence extends \Movim\Widget\Base
             }
         }
 
-        Cache::c(
+        \Movim\Cache::c(
             'presence',
-            array(
+            [
                 'status' => $status,
                 'show' => $value
-                )
+            ]
         );
     }
 

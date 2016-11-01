@@ -12,10 +12,10 @@ class CacheDAO extends SQL {
 
         $this->prepare(
             'Cache',
-            array(
+            [
                 'session' => $this->_user,
                 'name' => $key
-            )
+            ]
         );
 
         return $this->run('Cache', 'item');
@@ -31,12 +31,12 @@ class CacheDAO extends SQL {
 
         $this->prepare(
             'Cache',
-            array(
+            [
                 'session'   => $this->_user,
                 'data'      => $cache->data,
                 'timestamp' => $cache->timestamp,
                 'name'      => $cache->name
-            )
+            ]
         );
 
         $this->run('Cache');
@@ -49,12 +49,12 @@ class CacheDAO extends SQL {
 
             $this->prepare(
                 'Cache',
-                array(
+                [
                     'session'   => $this->_user,
                     'name'      => $cache->name,
                     'data'      => $cache->data,
                     'timestamp' => $cache->timestamp
-                )
+                ]
             );
 
             return $this->run('Cache');

@@ -311,13 +311,6 @@ class Postn extends Model {
         return in_array($type, ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']);
     }
 
-    private function typeIsLink($link)
-    {
-        return (isset($link['rel'])
-        && in_array($link['rel'], ['related', 'alternate'])
-        && Validator::url()->validate($link['href']));
-    }
-
     private function setAttachments($links, $extra = false)
     {
         $l = [];

@@ -4,7 +4,8 @@ use Respect\Validation\Validator;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
-class Blog extends \Movim\Widget\Base {
+class Blog extends \Movim\Widget\Base
+{
     public $_paging = 10;
 
     private $_from;
@@ -29,7 +30,7 @@ class Blog extends \Movim\Widget\Base {
             $this->_item = $pd->getItem($this->_from, $this->_node);
             $this->_mode = 'group';
 
-            $this->url = Route::urlize('node', array($this->_from, $this->_node));
+            $this->url = $this->route('node', [$this->_from, $this->_node]);
         } elseif($this->_view == 'tag' && $this->validateTag($this->get('t'))) {
             $this->_mode = 'tag';
             $this->_tag = $this->get('t');
@@ -46,7 +47,7 @@ class Blog extends \Movim\Widget\Base {
             }
             $this->_mode = 'blog';
 
-            $this->url = Route::urlize('blog', $this->_from);
+            $this->url = $this->route('blog', $this->_from);
         }
 
         $pd = new \modl\PostnDAO();
@@ -77,9 +78,9 @@ class Blog extends \Movim\Widget\Base {
                 }
 
                 if($this->_view == 'node') {
-                    $this->url = Route::urlize('node', array($this->_from, $this->_node, $this->_id));
+                    $this->url = $this->route('node', [$this->_from, $this->_node, $this->_id]);
                 } else {
-                    $this->url = Route::urlize('blog', array($this->_from, $this->_id));
+                    $this->url = $this->route('blog', [$this->_from, $this->_id]);
                 }
             }
         } else {

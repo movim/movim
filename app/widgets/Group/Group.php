@@ -180,8 +180,6 @@ class Group extends \Movim\Widget\Base
 
     function onUnsubscribed($packet)
     {
-        $arr = $packet->content;
-
         // Set the bookmark
         $r = new Rooms;
         $r->setBookmark();

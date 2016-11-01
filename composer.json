@@ -17,10 +17,10 @@
 
         "movim/modl": "dev-master",
         "movim/sasl2": "dev-master",
-        "movim/moxl": "dev-master#e7e9911adf0286dcca80eac07a8a3eb2d721efeb",
+        "movim/moxl": "dev-master#abfee9f02ad1af5abc2bbbb64814dcf0dda658cf",
 
         "embed/embed": "dev-master",
-        "heyupdate/emoji": "0.2.*@dev",
+        "heyupdate/emoji": "dev-master",
 
         "cboden/ratchet": "0.3.*",
         "react/child-process": "dev-master",

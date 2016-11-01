@@ -1,6 +1,7 @@
 <?php
 
-class Api extends \Movim\Widget\Base {
+class Api extends \Movim\Widget\Base
+{
     function load()
     {
     }
@@ -37,15 +38,15 @@ class Api extends \Movim\Widget\Base {
 
     function ajaxRegister()
     {
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
+        $cd = new \Modl\ConfigDAO;
 
         $json = requestURL(
             MOVIM_API.'register',
             3,
-            array(
+            [
                 'uri' => BASE_URI,
-                'rewrite' => false));
+                'rewrite' => false
+            ]);
 
         $json = json_decode($json);
 

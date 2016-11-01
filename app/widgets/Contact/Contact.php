@@ -238,8 +238,6 @@ class Contact extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $pd = new \Modl\PostnDAO;
-
         $view->assign('page', $page);
 
         if(isset($c)) {

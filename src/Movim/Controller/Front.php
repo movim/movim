@@ -3,11 +3,12 @@ namespace Movim\Controller;
 
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
+use Movim\Route;
 
 class Front extends Base
 {
     public function handle() {
-        $r = new \Route;
+        $r = new Route;
         $this->runRequest($r->find());
     }
 

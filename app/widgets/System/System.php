@@ -1,17 +1,9 @@
 <?php
-/**
- * @package Widgets
- *
- * @file System.php
- * This file is part of MOVIM.
- *
- * @brief Some global configuration.
- *
- * @author Timothée Jaussoin <edhelas@gmail.com>
- */
 
-class System extends \Movim\Widget\Base {
+use \Movim\Route;
 
+class System extends \Movim\Widget\Base
+{
     function load()
     {
 
@@ -22,7 +14,7 @@ class System extends \Movim\Widget\Base {
         $this->view->assign('base_uri',     BASE_URI);
         $this->view->assign('base_host',    BASE_HOST);
         $this->view->assign('small_picture_limit', SMALL_PICTURE_LIMIT);
-        $this->view->assign('error_uri',    Route::urlize('disconnect'));
+        $this->view->assign('error_uri',    $this->route('disconnect'));
 
         $r = new Route;
         $this->view->assign('current_page', $r->find());
@@ -38,10 +30,11 @@ class System extends \Movim\Widget\Base {
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        $public_conf = array(
+        $public_conf = [
             'bosh_url' => $config->boshurl,
             'timezone' => $config->timezone
-            );
+        ];
+
         $this->view->assign('server_conf', json_encode($public_conf));
     }
 }

@@ -134,10 +134,10 @@ class Core implements MessageComponentInterface {
 
     private function cleanupDBSessions()
     {
-        $sd = new \Modl\SessionxDAO();
+        $sd = new \Modl\SessionxDAO;
         $sd->deleteEmpty();
 
-        $pd = new \Modl\PresenceDAO();
+        $pd = new \Modl\PresenceDAO;
         $pd->cleanPresences();
     }
 

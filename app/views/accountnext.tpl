@@ -6,7 +6,7 @@
                 <ul class="list middle">
                     <li>
                         <span class="primary active icon gray">
-                            <a href="<?php echo Route::urlize('account'); ?>">
+                            <a href="<?php echo \Movim\Route::urlize('account'); ?>">
                                 <i class="zmdi zmdi-arrow-left"></i>
                             </a>
                         </span>

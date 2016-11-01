@@ -1,7 +1,7 @@
 <?php
 
 use HeyUpdate\Emoji\Emoji;
-use HeyUpdate\Emoji\EmojiIndex;
+use HeyUpdate\Emoji\Index\CompiledIndex;
 
 /**
  * @desc A singleton wrapper for the Emoji library
@@ -14,25 +14,25 @@ class MovimEmoji
 
     protected function __construct()
     {
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
         $this->_theme = $config->theme;
 
-        $this->_emoji = new Emoji(new EmojiIndex(), $this->getPath());
+        $this->_emoji = new Emoji(new CompiledIndex, $this->getPath());
     }
 
     public function replace($string)
     {
-        $this->_emoji->setAssetUrlFormat($this->getPath());
+        $this->_emoji->setImageHtmlTemplate('<img alt="{{name}}" class="emoji" src="'.$this->getPath().'">');
         $string = $this->_emoji->replaceEmojiWithImages($string);
-        $this->_emoji->setAssetUrlFormat($this->getPath());
+        $this->_emoji->setImageHtmlTemplate('<img alt=":%s:" class="emoji" src="'.$this->getPath().'">');
 
         return $string;
     }
 
     private function getPath()
     {
-        return BASE_URI . 'themes/' . $this->_theme . '/img/emojis/svg/%s.svg';
+        return BASE_URI . 'themes/' . $this->_theme . '/img/emojis/svg/{{unicode}}.svg';
     }
 
     public static function getInstance()

@@ -32,10 +32,6 @@ class LoginAnonymous extends \Movim\Widget\Base
             Notification::append(null, $this->__('login_anonymous.bad_username'));
             return;
         }
-        
-        // We get the Server Configuration
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
 
         $host = 'anonymous.jappix.com';
         $password = 'AmISnowden?';
