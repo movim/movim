@@ -105,8 +105,8 @@ class CommentPublish extends Errors
             [
                 'server' => $this->_to,
                 'node' => $this->_node,
-                'id' => $this->_parentid)
-            ];
+                'id' => $this->_parentid
+            ]);
         $this->deliver();
     }
 
