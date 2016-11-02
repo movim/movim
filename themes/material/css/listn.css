@@ -263,12 +263,11 @@ ul.tabs > li {
     font-weight: 600;
     opacity: 0.6;
     height: 6rem;
-    padding: 0 3rem;
     box-sizing: border-box;
 }
 
-ul.tabs > li > a {
-    /*padding: 1.5rem 3rem;*/
+ul.tabs > li > * {
+    padding: 0 3rem;
     box-sizing: border-box;
     display: block;
 }

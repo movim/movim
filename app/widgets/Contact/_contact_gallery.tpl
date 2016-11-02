@@ -1,12 +1,12 @@
 <ul class="tabs">
     <li href="#" onclick="Contact_ajaxGetContact('{$jid}')" title="{$c->__('general.legend')}">
-        {$c->__('page.profile')}
+        <span>{$c->__('page.profile')}</span>
     </li>
     <li onclick="Contact_ajaxGetBlog('{$jid}')" title="{$c->__('page.blog')}">
-        {$c->__('page.blog')}
+        <span>{$c->__('page.blog')}</span>
     </li>
     <li class="active" onclick="Contact_ajaxGetGallery('{$jid}')" title="{$c->__('page.gallery')}">
-        {$c->__('page.gallery')}
+        <span>{$c->__('page.gallery')}</span>
     </li>
 </ul>
 
