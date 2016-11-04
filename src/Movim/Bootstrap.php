@@ -60,7 +60,8 @@ class Bootstrap
         } else {
             touch(DOCUMENT_ROOT.'/users/index.html');
         }
-        if(!empty($errors) && !is_writable(DOCUMENT_ROOT))
+
+        if(!empty($errors) && !is_writable(DOCUMENT_ROOT)) {
             $errors[] = 'We\'re unable to write to folder '.DOCUMENT_ROOT.': check rights';
         }
 
