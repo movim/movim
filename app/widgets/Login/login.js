@@ -179,7 +179,6 @@ movim_add_onload(function() {
     var login = document.querySelector('input#username');
     login.addEventListener('input', function() {
         if(this.value.indexOf('@') == -1) {
-            // TODO allow another server here
             document.querySelector('input#complete').value = this.value + '@' + Login.domain;
         } else {
             document.querySelector('input#complete').value = this.value;
