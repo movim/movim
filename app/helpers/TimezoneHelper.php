@@ -16,16 +16,27 @@ function getTimezoneList()
 function getTimezoneOffset($timezone)
 {
     $tz = new DateTimeZone($timezone);
-    $utc = new DateTimeZone('UTC'); 
+    $utc = new DateTimeZone('UTC');
     return $tz->getOffset(new DateTime('now', $utc));
+}
+
+/*
+ * Prettify an offset
+ */
+function getPrettyOffset($offset)
+{
+    $offset_prefix = $offset < 0 ? '-' : '+';
+    $offset_formatted = gmdate('H:i', abs($offset));
+
+    return "UTC${offset_prefix}${offset_formatted}";
 }
 
 /*
  * Generate the timezone list
  */
- function generateTimezoneList()
- {
-    $regions = array(
+function generateTimezoneList()
+{
+    $regions = [
         DateTimeZone::AFRICA,
         DateTimeZone::AMERICA,
         DateTimeZone::ANTARCTICA,
@@ -35,42 +46,45 @@ function getTimezoneOffset($timezone)
         DateTimeZone::EUROPE,
         DateTimeZone::INDIAN,
         DateTimeZone::PACIFIC,
-    );
+    ];
 
     $timezones = [];
-    foreach( $regions as $region )
+    foreach($regions as $region)
     {
         $timezones = array_merge( $timezones, DateTimeZone::listIdentifiers( $region ) );
     }
 
-    $timezone_offsets = [];
-    foreach( $timezones as $timezone )
+    $timezone_offsets_summer = [];
+    $timezone_offsets_winter = [];
+
+    foreach($timezones as $timezone)
     {
         $tz = new DateTimeZone($timezone);
         $utc = new DateTimeZone('UTC');
-        $timezone_offsets[$timezone] = $tz->getOffset(new DateTime('now', $utc));
+        $timezone_offsets_summer[$timezone] = $tz->getOffset(new DateTime('first day of August', $utc));
+        $timezone_offsets_winter[$timezone] = $tz->getOffset(new DateTime('first day of December', $utc));
     }
 
     // sort timezone by timezone name
-    ksort($timezone_offsets);
+    ksort($timezone_offsets_summer);
+    ksort($timezone_offsets_winter);
 
     $timezone_list = [];
-    foreach( $timezone_offsets as $timezone => $offset )
-    {
-        $offset_prefix = $offset < 0 ? '-' : '+';
-        $offset_formatted = gmdate( 'H:i', abs($offset) );
 
-        $pretty_offset = "UTC${offset_prefix}${offset_formatted}";
-        
+    foreach($timezone_offsets_summer as $timezone => $offset)
+    {
+        $pretty_summer_offset = getPrettyOffset($offset);
+        $pretty_winter_offset = getPrettyOffset($timezone_offsets_winter[$timezone]);
+
         $split = explode("/", $timezone);
 
-        $timezone_list[$timezone] = "$split[1]/$split[0] (${pretty_offset})";
+        $timezone_list[$timezone] = "$split[1]/$split[0] (Summer ${pretty_summer_offset} - Winter ${pretty_winter_offset})";
     }
-    
-    asort($timezone_list);
-    
+
+    ksort($timezone_list);
+
     return $timezone_list;
- }
+}
 
 /*
  * Get the user local timezone
