@@ -64,6 +64,7 @@
                         <?php echo __('error.websocket'); ?>
                     </p>
                 </li>
+            </ul>
         </div>
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Drawer');?>
