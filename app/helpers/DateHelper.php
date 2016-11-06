@@ -5,21 +5,22 @@
  * @return string
  */
 function getDays() {
-    return array(
+    return [
         1 => __('day.monday'),
         2 => __('day.tuesday'),
         3 => __('day.wednesday'),
         4 => __('day.thursday'),
         5 => __('day.friday'),
         6 => __('day.saturday'),
-        7 => __('day.sunday'));
+        7 => __('day.sunday')
+    ];
 }
 /**
  * Return a human-readable year
  * @return string
  */
 function getMonths() {
-    return array(
+    return [
         1 => __('month.january'),
         2 => __('month.february'),
         3 => __('month.march'),
@@ -31,7 +32,8 @@ function getMonths() {
         9 => __('month.september'),
         10 => __('month.october'),
         11 => __('month.november'),
-        12 => __('month.december'));
+        12 => __('month.december')
+    ];
 }
 
 function getTimezoneCorrection() {
@@ -56,7 +58,7 @@ function prepareDate($time, $hours = true, $compact = false) {
 
     $date = '';
 
-    $reldays = ((time() - $t)-(time()%86400))/86400;
+    $reldays = ((time() - $t - TIMEZONE_OFFSET)-(time()%86400))/86400;
     // if $time is within a week
     if($reldays < 7 && $reldays >= -2){
         //if $time is today or yesterday
@@ -70,8 +72,6 @@ function prepareDate($time, $hours = true, $compact = false) {
         //else print date "ago"
         else {
             $date = __('date.ago', ceil($reldays));
-
-            //if($compact) return $date;
         }
     }
     //else print full date
