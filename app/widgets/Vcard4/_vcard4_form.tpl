@@ -121,7 +121,7 @@
     </div>
 
     <div class="block">
-        <input type="url" name ="url" class="content" value="{$me->url}">
+        <input type="url" name ="url" class="content" value="{$me->url}" placeholder="https://mywebsite.com/">
         <label for="url">{$c->__('general.website')}</label>
     </div>
 
