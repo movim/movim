@@ -58,9 +58,6 @@ class Presence extends \Movim\Widget\Base
 
             if($presence == null || !isset($presence['show']) || $presence['show'] == '')
                 $value = 'chat';
-
-            if($presence == null|| !isset($presence['status']) || $presence['status'] == '')
-                $status = $this->__('status.online');
         } else {
             $status = $form['status'];
             $value = $form['value'];
