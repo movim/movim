@@ -4,6 +4,7 @@ use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Vcard4\Get;
 use Respect\Validation\Validator;
 use Moxl\Xec\Action\Pubsub\GetItems;
+use Moxl\Xec\Action\PubsubSubscription\Get as GetSubscriptions;
 
 class Contact extends \Movim\Widget\Base
 {
@@ -13,6 +14,8 @@ class Contact extends \Movim\Widget\Base
     {
         $this->registerEvent('vcard_get_handle', 'onVcardReceived', 'contacts');
         $this->registerEvent('vcard4_get_handle', 'onVcardReceived', 'contacts');
+        $this->registerEvent('pubsubsubscription_get_handle', 'onSubscriptions', 'contacts');
+
         $this->addjs('contact.js');
     }
 
@@ -20,6 +23,27 @@ class Contact extends \Movim\Widget\Base
     {
         $contact = $packet->content;
         $this->ajaxGetContact($contact->jid);
+        $this->ajaxRefreshSubscriptions($contact->jid);
+    }
+
+    public function onSubscriptions($packet)
+    {
+        $view = $this->tpl();
+
+        $items = [];
+        $id = new \Modl\ItemDAO;
+
+        foreach($packet->content as $subscription) {
+            $item = $id->getItem($subscription['server'], $subscription['node']);
+
+            if($item) {
+                array_push($items, $item);
+            }
+        }
+
+        $view->assign('subscriptions', $items);
+
+        RPC::call('MovimTpl.fill', '#contact_subscriptions', $view->draw('_contact_subscriptions', true));
     }
 
     function ajaxClear($page = 0)
@@ -35,6 +59,8 @@ class Contact extends \Movim\Widget\Base
         if(!$this->validateJid($jid)) return;
 
         $html = $this->prepareContact($jid, $page);
+
+        $this->ajaxRefreshSubscriptions($jid);
 
         RPC::call('MovimUtils.pushState', $this->route('contact', $jid));
 
@@ -115,6 +141,15 @@ class Contact extends \Movim\Widget\Base
         $r = new GetItems;
         $r->setTo($jid)
           ->setNode('urn:xmpp:microblog:0')
+          ->request();
+    }
+
+    function ajaxRefreshSubscriptions($jid)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $r = new GetSubscriptions;
+        $r->setTo($jid)
           ->request();
     }
 

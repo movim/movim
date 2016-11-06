@@ -17,7 +17,7 @@
 
         "movim/modl": "dev-master",
         "movim/sasl2": "dev-master",
-        "movim/moxl": "dev-master#0d0c1808014dcd08f22263e074c319f7b4134ae2",
+        "movim/moxl": "dev-master#612c14911dacc78b6380ee467a1cd6b5413a5036",
 
         "embed/embed": "dev-master",
         "heyupdate/emoji": "dev-master",
