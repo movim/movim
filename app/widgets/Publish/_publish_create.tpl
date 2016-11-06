@@ -1,4 +1,4 @@
-<header>
+<header class="relative">
     <ul class="list middle">
         <li>
             {if="$reply"}
@@ -34,6 +34,13 @@
             </p>-->
         </li>
     </ul>
+    <span
+        title="{$c->__('menu.add_post')}"
+        id="button_send"
+        class="button action color"
+        onclick="Publish.disableSend(); Publish_ajaxPublish(MovimUtils.formToJson('post'));">
+        <i class="zmdi zmdi-mail-send"></i>
+    </span>
 </header>
 
 <form name="post" class="block padded">
@@ -174,10 +181,3 @@
     </div>
 </form>
 
-<span
-    title="{$c->__('menu.add_post')}"
-    id="button_send"
-    class="button action color"
-    onclick="Publish.disableSend(); Publish_ajaxPublish(MovimUtils.formToJson('post'));">
-    <i class="zmdi zmdi-mail-send"></i>
-</span>

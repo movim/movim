@@ -106,8 +106,6 @@ class Publish extends \Movim\Widget\Base
         $view->assign('post', $post);
         $view->assign('item', $item);
 
-        //Header::fill($view->draw('_publish_header', true));
-
         if($id) {
             RPC::call('Publish.initEdit');
         }
