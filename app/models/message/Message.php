@@ -110,7 +110,8 @@ class Message extends Model {
                 $pd = new \Modl\PresenceDAO;
                 $p = $pd->getMyPresenceRoom($this->jidfrom);
 
-                if(strpos($this->body, $p->resource) !== false) {
+                if(is_object($p)
+                && strpos($this->body, $p->resource) !== false) {
                     $this->quoted = true;
                 }
             }
