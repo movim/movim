@@ -40,25 +40,25 @@ class Bootstrap
     private function checkSystem()
     {
         $listWritableFile = array(
-            DOCUMENT_ROOT.'/log/logger.log',
-            DOCUMENT_ROOT.'/log/php.log',
-            DOCUMENT_ROOT.'/cache/test.tmp',
+            LOG_PATH.'/logger.log',
+            LOG_PATH.'/php.log',
+            CACHE_PATH.'/test.tmp',
         );
         $errors = [];
 
-        if(!file_exists(DOCUMENT_ROOT.'/cache') && !@mkdir(DOCUMENT_ROOT.'/cache')) {
+        if(!file_exists(CACHE_PATH) && !@mkdir(CACHE_PATH)) {
             $errors[] = 'Couldn\'t create directory cache';
         }
-        if(!file_exists(DOCUMENT_ROOT.'/log') && !@mkdir(DOCUMENT_ROOT.'/log')) {
+        if(!file_exists(LOG_PATH) && !@mkdir(LOG_PATH)) {
             $errors[] = 'Couldn\'t create directory log';
         }
-        if(!file_exists(DOCUMENT_ROOT.'/config') && !@mkdir(DOCUMENT_ROOT.'/config')) {
+        if(!file_exists(CONFIG_PATH) && !@mkdir(CONFIG_PATH)) {
             $errors[] = 'Couldn\'t create directory config';
         }
-        if(!file_exists(DOCUMENT_ROOT.'/users') && !@mkdir(DOCUMENT_ROOT.'/users')) {
+        if(!file_exists(USERS_PATH) && !@mkdir(USERS_PATH)) {
             $errors[] = 'Couldn\'t create directory users';
         } else {
-            touch(DOCUMENT_ROOT.'/users/index.html');
+            touch(USERS_PATH.'/index.html');
         }
 
         if(!empty($errors) && !is_writable(DOCUMENT_ROOT)) {
@@ -111,6 +111,7 @@ class Bootstrap
         define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
         define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
         define('LOG_PATH',      DOCUMENT_ROOT . '/log/');
+        define('CONFIG_PATH',   DOCUMENT_ROOT . '/config/');
 
         define('VIEWS_PATH',    DOCUMENT_ROOT . '/app/views/');
         define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
