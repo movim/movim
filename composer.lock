@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5bf5fe18e31b4b1b233033216bf8bf62",
-    "content-hash": "9666718ea2e4fa2ae6bf4c4d27033c09",
+    "hash": "47c7950a6301a169561eab6d6942fa2b",
+    "content-hash": "5f6dcb8dafc7e8d4f0d96d497d1382f6",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -319,46 +319,6 @@
                 "html"
             ],
             "time": "2016-07-16 12:58:58"
-        },
-        {
-            "name": "forxer/gravatar",
-            "version": "1.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/forxer/gravatar.git",
-                "reference": "98a17ed7880b986d03356baa7bc01b0162761c05"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/forxer/gravatar/zipball/98a17ed7880b986d03356baa7bc01b0162761c05",
-                "reference": "98a17ed7880b986d03356baa7bc01b0162761c05",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "forxer\\Gravatar\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Vincent Garnier",
-                    "email": "forxer@gmail.org",
-                    "homepage": "http://forx.fr"
-                }
-            ],
-            "description": "A library providing easy gravatar integration.",
-            "keywords": [
-                "gravatar"
-            ],
-            "time": "2016-02-26 21:12:47"
         },
         {
             "name": "guzzle/common",

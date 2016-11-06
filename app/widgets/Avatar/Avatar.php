@@ -2,7 +2,6 @@
 
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
-use forxer\Gravatar\Gravatar;
 
 class Avatar extends \Movim\Widget\Base
 {
@@ -47,15 +46,6 @@ class Avatar extends \Movim\Widget\Base
         $avatarform->assign('photobin', $p->toBase());
 
         $avatarform->assign('me',       $me);
-
-        if(isset($me->email)) {
-            $result = requestURL(Gravatar::profile($me->email, 'json'), 3);
-            $obj = json_decode($result);
-            if($obj != 'User not found') {
-                $avatarform->assign('gravatar_bin', base64_encode(requestURL('http://www.gravatar.com/avatar/'.$obj->entry[0]->hash.'?s=250')));
-                $avatarform->assign('gravatar', $obj);
-            }
-        }
 
         $avatarform->assign(
             'submit',

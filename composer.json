@@ -28,7 +28,6 @@
         "react/promise-timer": "^1.1",
 
         "stojg/crop": "dev-master",
-        "forxer/Gravatar": "~1.2",
         "respect/validation": "1.0.*",
         "ezyang/htmlpurifier": "^4.7",
         "ramsey/uuid": "^3.2",
