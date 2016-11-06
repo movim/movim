@@ -58,8 +58,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -77,8 +75,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-24 23:28+0200\n"
-"PO-Revision-Date: 2016-07-29 20:30+0000\n"
+"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
@@ -747,10 +745,6 @@ msgstr "Alias"
 msgid "Group"
 msgstr "Grupa"
 
-#: [edit]updated [roster]updated
-msgid "Contact updated"
-msgstr "Kontakt zaktualizowany"
-
 #: [delete]title
 msgid "Are you sure?"
 msgstr "Jesteś pewny/a?"
@@ -916,9 +910,8 @@ msgid "You don't have any group subscriptions yet."
 msgstr "Nie zasubskrybowałeś jeszcze żadnej grupy."
 
 #: [groups]empty_server
-#, fuzzy
 msgid "There is no Groups yet on this server."
-msgstr "%s grup na serwerze"
+msgstr ""
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1166,6 +1159,10 @@ msgstr "Chwilowo brak wiadomości..."
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
 msgstr "Witaj w zakładce nowinek. Tutaj znajdziesz wszystkie posty opublikowany przez twoje kontakty oraz kontakty z zasubskrybowanych grup."
 
+#: [menu]discover [button]discover
+msgid "Discover"
+msgstr ""
+
 #: [menu]refresh
 msgid "Refresh all the streams"
 msgstr "Odśwież wszystkie strumienie"
@@ -1206,7 +1203,7 @@ msgstr "Nowinki"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Odkryj i zarejestruj się do grup, którymi jesteś zainteresowany"
 
-#: [post]content [post]content_label
+#: [post]content [publish]content_label
 msgid "Content"
 msgstr "Zawartość"
 
@@ -1275,9 +1272,8 @@ msgid "Comment published"
 msgstr "Komentarz opublikowany"
 
 #: [post]comment_deleted
-#, fuzzy
 msgid "Comment deleted"
-msgstr "Kontakt usunięty"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1347,35 +1343,35 @@ msgstr "Obecność"
 msgid "Online with Movim"
 msgstr "Dostępny w Movim"
 
-#: [post]preview
+#: [publish]preview
 msgid "Preview"
 msgstr "Podgląd"
 
-#: [post]help [page]help
+#: [publish]help [page]help
 msgid "Help"
 msgstr "Pomoc"
 
-#: [post]help_more
+#: [publish]help_more
 msgid "More help"
 msgstr "Więcej pomocy"
 
-#: [post]help_manual
+#: [publish]help_manual
 msgid "Markdown syntax manual"
 msgstr "Podręcznik Markdown syntax"
 
-#: [post]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr "Możesz formatować swoją zawartość poprzez użycie Markdown"
 
-#: [post]link
+#: [publish]link
 msgid "Link"
 msgstr "Link"
 
-#: [post]tags
+#: [publish]tags
 msgid "Tags"
 msgstr "Tagi"
 
-#: [post]gallery
+#: [publish]gallery
 msgid "This picture will be added to your gallery"
 msgstr "Ten obrazek zostanie dodany do twojej galerii"
 
@@ -1531,6 +1527,10 @@ msgstr ""
 msgid "Show/Hide"
 msgstr "Pokaż/Ukryj"
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr ""
+
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
 msgstr "Wpisz Jabber ID twojego kontaktu"
@@ -1551,6 +1551,10 @@ msgstr "Wyniki"
 msgid "Contact added"
 msgstr "Kontakt dodany"
 
+#: [roster]updated
+msgid "Contact updated"
+msgstr "Kontakt zaktualizowany"
+
 #: [roster]deleted
 msgid "Contact deleted"
 msgstr "Kontakt usunięty"
@@ -1570,14 +1574,6 @@ msgstr ""
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr ""
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "To nie jest poprawny URL"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "Udostępnianie URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1640,9 +1636,8 @@ msgid "File too large"
 msgstr ""
 
 #: [upload]error_failed
-#, fuzzy
 msgid "Upload failed"
-msgstr "Wyślij plik"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1709,9 +1704,8 @@ msgid "Movim is a kickass distributed social networking platform that protect yo
 msgstr "Movim jest zajefajną platformą sieci społecznościowej, która dba o twoją prywatność i posiada wiele fajnych funkcji."
 
 #: [global]loading
-#, fuzzy
 msgid "Loading…"
-msgstr "Ładowanie"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1774,10 +1768,9 @@ msgid "Pods"
 msgstr "Pody"
 
 #: [page]share
-#, fuzzy
 msgctxt "[page]share"
 msgid "Share"
-msgstr "Udostępnij"
+msgstr ""
 
 #: [page]room
 msgid "Room"
@@ -1814,6 +1807,10 @@ msgstr "Movim nie może porozumieć się z serwerem, proszę spróbować późni
 #: [error]oops
 msgid "Oops!"
 msgstr "Ups!"
+
+#: [button]call
+msgid "Call"
+msgstr ""
 
 #: [button]validate
 msgid "Validate"
@@ -1912,10 +1909,9 @@ msgid "Search"
 msgstr ""
 
 #: [button]share
-#, fuzzy
 msgctxt "[button]share"
 msgid "Share"
-msgstr "Udostępnij"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2567,6 +2563,10 @@ msgstr "Publikacje kontaktu"
 msgid "Comments"
 msgstr "Komentarze"
 
+#: [post]original_deleted
+msgid "Original post deleted"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
@@ -2574,32 +2574,3 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
-
-#~ msgid "Conferences"
-#~ msgstr "Konferencje"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Dodaj nowy Pokój Rozmów"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Nazwa"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Czy chcesz automatycznie dołączać do tego Pokoju Rozmów?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Wystąpił błąd :"
-
-#~ msgid "Configure"
-#~ msgstr "Konfiguracja"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Dodaj nowy URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Nazwa"

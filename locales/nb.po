@@ -1,5 +1,6 @@
 #
 # Translators:
+# Ruben Solvang <rsolvang@gmail.com>, 2016
 # tyler moss <inactive+protonbeta@transifex.com>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -58,8 +59,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -77,8 +76,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-24 23:28+0200\n"
-"PO-Revision-Date: 2016-07-29 20:30+0000\n"
+"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
@@ -110,15 +109,15 @@ msgstr "Programvare"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "Ressurser"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim er basert på kommunikasjonsplattformen XMPP. Hele prosjektet, med unntak av følgende programvare og ressurser, er under"
 
 #: [account]title [page]account
 msgid "Account"
@@ -135,7 +134,7 @@ msgstr "Passord"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr "Passord bekreftelse"
+msgstr "Passordbekreftelse"
 
 #: [account]password_changed
 msgid "The password has been updated"
@@ -143,11 +142,11 @@ msgstr "Passordet er oppdatert"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Vennligst oppgi et gyldig passord (må inneholde minst 6 tegn)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "Passordene er ulike"
 
 #: [account]delete_title
 msgid "Delete my account"
@@ -159,15 +158,15 @@ msgstr "Slett kontoen din"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "Du vil slette din XMPP-konto og all relevant informasjon koblet til den (profil, kontakter og publikasjoner)"
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr "Er du sikker på at du vil slette den ?"
+msgstr "Er du sikker på at du vil slette den?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -175,15 +174,15 @@ msgstr "Opprett en ny konto"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "Fant ikke skjema for opprettelse av ny konto på tjeneren"
 
 #: [create]server_on
 msgid "on"
-msgstr "På"
+msgstr "på"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "Din konto har blitt registrert"
 
 #: [create]loading
 msgid "Loading"
@@ -191,15 +190,15 @@ msgstr "Laster"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...og start leken"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr "Ikke akseptabelt"
+msgstr "Ikke akseptert"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "Registreringssystemet på denne tjeneren er foreløpig utilgjengelig"
 
 #: [error]forbidden
 msgid "Registration forbidden"
@@ -207,7 +206,7 @@ msgstr ""
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
-msgstr ""
+msgstr "Denne tjeneren bruker et eksternt registreringssystem. Vennligst trykk på følgende lenke."
 
 #: [adhoc]title
 msgid "Actions"
@@ -219,23 +218,23 @@ msgstr "Database"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
-msgstr ""
+msgstr "Modl kunne ikke koble til databasen"
 
 #: [db]connect_success
 msgid "Movim is connected to the database"
-msgstr ""
+msgstr "Movim er koblet til databasen"
 
 #: [db]update
 msgid "The database need to be updated"
-msgstr ""
+msgstr "Databasen må oppdateres"
 
 #: [db]up_to_date
 msgid "Movim database is up to date"
-msgstr ""
+msgstr "Movim-databasen er oppdatert"
 
 #: [db]type
 msgid "Database Type"
-msgstr ""
+msgstr "Databasetype"
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
@@ -243,15 +242,15 @@ msgstr "Brukernavn"
 
 #: [db]host
 msgid "Host"
-msgstr ""
+msgstr "Vert"
 
 #: [db]port
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: [db]name
 msgid "Database Name"
-msgstr ""
+msgstr "Databasenavn"
 
 #: [admin]general
 msgid "General Settings"
@@ -267,101 +266,101 @@ msgstr "Standard språk"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "Detaljrikdom i loggen"
 
 #: [general]timezone
 msgid "Server Timezone"
-msgstr ""
+msgstr "Tjenertidssone"
 
 #: [general]limit
 msgid "User folder size limit (in bytes)"
-msgstr ""
+msgstr "Størrelsesgrense på brukermappe (i bytes)"
 
 #: [websocket]title
 msgid "WebSocket Configuration"
-msgstr ""
+msgstr "WebSocket-konfigurasjon"
 
 #: [websocket]info
 msgid "Enter here a valid WebSocket URI in the form"
-msgstr ""
+msgstr "Fyll inn en gyldig WebSocket URI i skjemaet"
 
 #: [websocket]label
 msgid "WebSocket URI"
-msgstr ""
+msgstr "WebSocket URI"
 
 #: [websocket]save_info
 msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr ""
+msgstr "Hvis URIen forandres må tjenesten omstartes for å laste inn den nye konfigurasjonen"
 
 #: [websocket]publics
 msgid "Public WebSockets"
-msgstr ""
+msgstr "Offentlig WebSockets"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "Administrasjonsakkreditiv"
 
 #: [credentials]info
 msgid "Change the default credentials admin/password"
-msgstr ""
+msgstr "Endre forhåndslagrede akkreditiv (admin/password)"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "Gjenta passord"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "Hvitelistede XMPP-tjenere"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "Hvis du ønsker å spesifisere én eller flere XMPP-tjenere på Movim-kapselen og samtidig blokkere alle andre tilkoblinger, må du oppgi domene(ne) her, separert med komma (f.eks.: movim.eu, jabber.fr)"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "La dette feltet stå tomt for å gi tilgang til alle XMPP-kontoer"
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "Liste over hvitelistede XMPP-tjenere"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "Informasjonsbeskjed"
 
 #: [information]description
 msgid "Description"
-msgstr ""
+msgstr "Beskrivelse"
 
 #: [information]info1
 msgid "This message will be displayed on the login page"
-msgstr ""
+msgstr "Denne meldingen vil vises på påloggingssiden"
 
 #: [information]info2
 msgid "Leave this field blank if you dont want to show any message."
-msgstr ""
+msgstr "La feltet stå tomt hvis du ikke ønsker å vise en melding"
 
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "Informasjonsbeskjed"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "Standard XMPP-tjener"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "Forvalgt XMPP tjenerdomene"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "Forvalgt XMPP tjenerbeskrivelse"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "Forvalgt XMPP tjenerland"
 
 #: [log]empty
 msgid "Empty"
@@ -369,143 +368,143 @@ msgstr "Tom"
 
 #: [log]syslog
 msgid "Syslog"
-msgstr ""
+msgstr "Syslog"
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr ""
+msgstr "Syslog og filer"
 
 #: [admin]compatibility
 msgid "General Overview"
-msgstr ""
+msgstr "Generell oversikt"
 
 #: [compatibility]info
 msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr ""
+msgstr "Movim har funnet problemer eller uoverensstemmelser som må fikses eller utbedres"
 
 #: [compatibility]php1
 msgid "Update your PHP-Version: %s"
-msgstr ""
+msgstr "Oppdater din PHP-versjon: %s"
 
 #: [compatibility]php2
 msgid "Required: 5.3.0"
-msgstr ""
+msgstr "Påkrevd: 5.3.0"
 
 #: [compatibility]curl
 msgid "Install the php5-curl library"
-msgstr ""
+msgstr "Installer 'php5-curl'-biblioteket"
 
 #: [compatibility]imagick
 msgid "Install the php5-imagick library"
-msgstr ""
+msgstr "Installer 'php5-imagick'-biblioteket"
 
 #: [compatibility]gd
 msgid "Install the php5-gd library"
-msgstr ""
+msgstr "Installer 'php5-gd'-biblioteket"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movims root directory"
-msgstr ""
+msgstr "Tjenerens lese- og skriverettigheter i Movims rotmappe"
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
-msgstr ""
+msgstr "Databasen må oppdateres. Gå til databasepanelet for å fikse dette"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr ""
+msgstr "Klarer ikke koble til WebSocket, kontroller at Movim-tjenesten kjører og kan kontaktes"
 
 #: [compatibility]xmpp_websocket
 msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr ""
+msgstr "Får ikke kontakt med XMPP Websocket, vennligst kontroller at lenken i 'Generelle innstillinger' er riktig."
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "Nettleser"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Movim Core"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Movim-tjenesten"
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr ""
+msgstr "Her kan du registrere kapselen din på den offisielle %sMovim API%s"
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr ""
+msgstr "Kapselen din er ikke registrert på APIet"
 
 #: [api]registered
 msgid "Your pod is registered on the API"
-msgstr ""
+msgstr "Kapselen din er registrert på APIet"
 
 #: [api]wait
 msgid "Your pod is not yet validated"
-msgstr ""
+msgstr "Kapselen din er ikke godkjent enda"
 
 #: [api]validated
 msgid "Your pod is validated"
-msgstr ""
+msgstr "Kapselen din er godkjent"
 
 #: [api]unregister
 msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr ""
+msgstr "Du spurte om å bli fjernet fra APIet og forespørselen din vil behandles i løpet av et par timer"
 
 #: [api]conf_updated [config]updated
 msgid "Configuration updated"
-msgstr ""
+msgstr "Konfigurasjonen er oppdatert"
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "Fil"
 
 #: [avatar]use_it
 msgid "Use it"
-msgstr ""
+msgstr "Ta i bruk"
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr ""
+msgstr "Webkamera"
 
 #: [avatar]cheese
 msgid "Cheese !"
-msgstr ""
+msgstr "Trekk på smilebåndet!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "Ta bilde med webkameraet"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "Avataren er oppdatert"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "Avataren er ikke oppdatert"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "Ingen avatar angitt enda"
 
 #: [blog]title [feed]title
 msgid "%s's feed"
-msgstr ""
+msgstr "%ss strøm"
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
-msgstr ""
+msgstr "Denne brukeren har ikke postet noe enda"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "Dette innholdet er privat, vennligst logg på for å se det"
 
 #: [message]published
 msgid "Message Published"
@@ -661,7 +660,7 @@ msgstr ""
 
 #: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
 msgid "Nickname"
-msgstr ""
+msgstr "Kallenavn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -745,10 +744,6 @@ msgstr ""
 
 #: [edit]group
 msgid "Group"
-msgstr ""
-
-#: [edit]updated [roster]updated
-msgid "Contact updated"
 msgstr ""
 
 #: [delete]title
@@ -841,7 +836,7 @@ msgstr ""
 
 #: [group]empty_title [menu]groups [page]groups
 msgid "Groups"
-msgstr ""
+msgstr "Grupper"
 
 #: [group]empty_text
 msgid "Discover, follow and share"
@@ -1165,6 +1160,10 @@ msgstr ""
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
 msgstr ""
 
+#: [menu]discover [button]discover
+msgid "Discover"
+msgstr ""
+
 #: [menu]refresh
 msgid "Refresh all the streams"
 msgstr ""
@@ -1205,7 +1204,7 @@ msgstr ""
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: [post]content [post]content_label
+#: [post]content [publish]content_label
 msgid "Content"
 msgstr ""
 
@@ -1345,35 +1344,35 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview
+#: [publish]preview
 msgid "Preview"
 msgstr ""
 
-#: [post]help [page]help
+#: [publish]help [page]help
 msgid "Help"
 msgstr ""
 
-#: [post]help_more
+#: [publish]help_more
 msgid "More help"
 msgstr ""
 
-#: [post]help_manual
+#: [publish]help_manual
 msgid "Markdown syntax manual"
 msgstr ""
 
-#: [post]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr ""
 
-#: [post]link
+#: [publish]link
 msgid "Link"
 msgstr ""
 
-#: [post]tags
+#: [publish]tags
 msgid "Tags"
 msgstr ""
 
-#: [post]gallery
+#: [publish]gallery
 msgid "This picture will be added to your gallery"
 msgstr ""
 
@@ -1439,7 +1438,7 @@ msgstr ""
 
 #: [chatrooms]id
 msgid "Chat Room ID"
-msgstr ""
+msgstr "Samtalerom-ID"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -1447,11 +1446,11 @@ msgstr ""
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom ID"
-msgstr ""
+msgstr "Feil samtalerom-ID"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
-msgstr ""
+msgstr "Tomt navn"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1529,6 +1528,10 @@ msgstr ""
 msgid "Show/Hide"
 msgstr ""
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr ""
+
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
 msgstr ""
@@ -1549,6 +1552,10 @@ msgstr ""
 msgid "Contact added"
 msgstr ""
 
+#: [roster]updated
+msgid "Contact updated"
+msgstr ""
+
 #: [roster]deleted
 msgid "Contact deleted"
 msgstr ""
@@ -1567,14 +1574,6 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr ""
-
-#: [share]success
-msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1706,9 +1705,8 @@ msgid "Movim is a kickass distributed social networking platform that protect yo
 msgstr ""
 
 #: [global]loading
-#, fuzzy
 msgid "Loading…"
-msgstr "Laster"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1809,6 +1807,10 @@ msgstr ""
 
 #: [error]oops
 msgid "Oops!"
+msgstr ""
+
+#: [button]call
+msgid "Call"
 msgstr ""
 
 #: [button]validate
@@ -2560,6 +2562,10 @@ msgstr ""
 
 #: [post]comments
 msgid "Comments"
+msgstr ""
+
+#: [post]original_deleted
+msgid "Original post deleted"
 msgstr ""
 
 #: [api]error

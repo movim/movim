@@ -4,7 +4,7 @@
 # Éfrit, 2015
 # Jaussoin Timothée <edhelas@movim.eu>, 2015-2016
 # Maxime Buquet <tidusx62@gmail.com>, 2015
-# Thirty Thirds <thirtythirds@gmail.com>, 2015
+# Thirty Thirds <thirtythirds@gmail.com>, 2015-2016
 # Tom <caporaldead@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -63,8 +63,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -82,8 +80,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-24 23:28+0200\n"
-"PO-Revision-Date: 2016-07-29 20:30+0000\n"
+"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -208,7 +206,7 @@ msgstr "Le système d’inscription de ce serveur est actuellement indisponible"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Enregistrement interdit"
 
 #: [oob]about
 msgid "This server use an external system for the registration, please click on the following URL."
@@ -752,10 +750,6 @@ msgstr "Alias"
 msgid "Group"
 msgstr "Groupe"
 
-#: [edit]updated [roster]updated
-msgid "Contact updated"
-msgstr "Contact mis à jour"
-
 #: [delete]title
 msgid "Are you sure?"
 msgstr "Êtes-vous sûr ?"
@@ -921,9 +915,8 @@ msgid "You don't have any group subscriptions yet."
 msgstr "Vous n'avez encore aucune souscription pour le moment"
 
 #: [groups]empty_server
-#, fuzzy
 msgid "There is no Groups yet on this server."
-msgstr "%s groupes sur ce serveur"
+msgstr "Il n'y a pas encore de Groupes sur ce serveur."
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1171,6 +1164,10 @@ msgstr "Aucune actualité… pour le moment"
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
 msgstr "Bienvenue sur votre flux d’actualité, ici vous verrez toutes les publications des groupes auxquels vous vous êtes abonnés ainsi que celles de vos contacts."
 
+#: [menu]discover [button]discover
+msgid "Discover"
+msgstr "Découvrir"
+
 #: [menu]refresh
 msgid "Refresh all the streams"
 msgstr "Rafraîchir tous les flux"
@@ -1211,7 +1208,7 @@ msgstr "Fil d’actualité"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Découvrez et rejoignez les groupes qui vous intéressent"
 
-#: [post]content [post]content_label
+#: [post]content [publish]content_label
 msgid "Content"
 msgstr "Contenu"
 
@@ -1280,9 +1277,8 @@ msgid "Comment published"
 msgstr "Commentaire publié"
 
 #: [post]comment_deleted
-#, fuzzy
 msgid "Comment deleted"
-msgstr "Contact supprimé"
+msgstr "Commentaire supprimé"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1322,11 +1318,11 @@ msgstr "Toutes les principales fonctionnalités de Movim sont disponibles à cet
 
 #: [hello]profile_title
 msgid "Looks like you didn't complete your profile yet"
-msgstr ""
+msgstr "Il semblerait que vous n'ayez pas encore complété vôtre profil"
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
-msgstr ""
+msgstr "Vous pouvez aller sur la page de configuration pour vous décrire et ajouter une jolie photo"
 
 #: [status]disconnect
 msgid "Disconnect"
@@ -1352,35 +1348,35 @@ msgstr "Présence"
 msgid "Online with Movim"
 msgstr "En ligne avec Movim"
 
-#: [post]preview
+#: [publish]preview
 msgid "Preview"
 msgstr "Aperçu"
 
-#: [post]help [page]help
+#: [publish]help [page]help
 msgid "Help"
 msgstr "Aide"
 
-#: [post]help_more
+#: [publish]help_more
 msgid "More help"
 msgstr "Aide supplémentaire"
 
-#: [post]help_manual
+#: [publish]help_manual
 msgid "Markdown syntax manual"
 msgstr "Manuel d'utilisation de la syntaxe Markdown"
 
-#: [post]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr "Vous pouvez enrichir le contenu en utilisant Markdown"
 
-#: [post]link
+#: [publish]link
 msgid "Link"
 msgstr "Lien"
 
-#: [post]tags
+#: [publish]tags
 msgid "Tags"
 msgstr "Étiquettes"
 
-#: [post]gallery
+#: [publish]gallery
 msgid "This picture will be added to your gallery"
 msgstr "Cette image va être ajoutée à votre galerie"
 
@@ -1536,6 +1532,10 @@ msgstr "Vous pouvez en ajouter un en cliquant sur le bouton + ci-dessous"
 msgid "Show/Hide"
 msgstr "Afficher / Masquer"
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr "Ajouter un contact"
+
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
 msgstr "Entrez l’identifiant Jabber de votre contact."
@@ -1556,6 +1556,10 @@ msgstr "Résultats"
 msgid "Contact added"
 msgstr "Contact ajouté"
 
+#: [roster]updated
+msgid "Contact updated"
+msgstr "Contact mis à jour"
+
 #: [roster]deleted
 msgid "Contact deleted"
 msgstr "Contact supprimé"
@@ -1575,14 +1579,6 @@ msgstr "Que cherchez vous ?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Ouvrez moi en faisant Ctrl + M"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "Cette URL n'est pas valide"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "Partage de l'URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1638,16 +1634,15 @@ msgstr "Choisir un fichier à téléverser"
 
 #: [upload]info
 msgid "Large pictures will be resized and compressed"
-msgstr ""
+msgstr "Les grandes images seront redimensionnées et compressées"
 
 #: [upload]error_filesize
 msgid "File too large"
-msgstr ""
+msgstr "Fichier trop grand"
 
 #: [upload]error_failed
-#, fuzzy
 msgid "Upload failed"
-msgstr "Téléverser un fichier"
+msgstr "Le téléversement a échoué"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1714,9 +1709,8 @@ msgid "Movim is a kickass distributed social networking platform that protect yo
 msgstr "Movim est un réseau social innovant et distribué protégeant votre vie privée et apportant plein de fonctionnalités toutes plus géniales les unes que les autres."
 
 #: [global]loading
-#, fuzzy
 msgid "Loading…"
-msgstr "Chargement"
+msgstr "Chargement…"
 
 #: [page]home
 msgid "Home"
@@ -1779,7 +1773,6 @@ msgid "Pods"
 msgstr "Pods"
 
 #: [page]share
-#, fuzzy
 msgctxt "[page]share"
 msgid "Share"
 msgstr "Partager"
@@ -1819,6 +1812,10 @@ msgstr "Movim ne peut pas communiquer avec le serveur, veuillez réessayer plus 
 #: [error]oops
 msgid "Oops!"
 msgstr "Oups !"
+
+#: [button]call
+msgid "Call"
+msgstr "Appeler"
 
 #: [button]validate
 msgid "Validate"
@@ -1917,7 +1914,6 @@ msgid "Search"
 msgstr "Rechercher"
 
 #: [button]share
-#, fuzzy
 msgctxt "[button]share"
 msgid "Share"
 msgstr "Partager"
@@ -2572,6 +2568,10 @@ msgstr "Billet d’un contact"
 msgid "Comments"
 msgstr "Commentaires"
 
+#: [post]original_deleted
+msgid "Original post deleted"
+msgstr "Billet original supprimé"
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "L’API est indisponible pour le moment, réessayez plus tard."
@@ -2579,32 +2579,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Conferences"
-#~ msgstr "Conférences"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Ajouter un nouveau salon"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Nom"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Voulez vous rejoindre automatiquement ce salon ?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Une erreur s’est produite : "
-
-#~ msgid "Configure"
-#~ msgstr "Configurer"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Ajouter un nouveau lien"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Nom"

@@ -58,8 +58,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -77,8 +75,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-24 23:28+0200\n"
-"PO-Revision-Date: 2016-07-29 20:30+0000\n"
+"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
 "Language: cs_CZ\n"
@@ -747,10 +745,6 @@ msgstr "Přezdívka"
 msgid "Group"
 msgstr "Skupina"
 
-#: [edit]updated [roster]updated
-msgid "Contact updated"
-msgstr "Kontakt aktualizován"
-
 #: [delete]title
 msgid "Are you sure?"
 msgstr "Jste si jisti?"
@@ -916,9 +910,8 @@ msgid "You don't have any group subscriptions yet."
 msgstr "Zatím neodebíráte žádné skupiny."
 
 #: [groups]empty_server
-#, fuzzy
 msgid "There is no Groups yet on this server."
-msgstr "%s skupin na tomto serveru"
+msgstr ""
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1166,6 +1159,10 @@ msgstr "Zatím žádné novinky..."
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
 msgstr "Vítejte v Novinkách, zde se vám budou zobrazovat příspěvky vašich kontaktů a příspěvky zveřejněné ve skupinách, které odebíráte."
 
+#: [menu]discover [button]discover
+msgid "Discover"
+msgstr ""
+
 #: [menu]refresh
 msgid "Refresh all the streams"
 msgstr "Obnovit všechny proudy"
@@ -1206,7 +1203,7 @@ msgstr "Zeď novinek"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Objevujte a registrujte nové skupiny, které vás zajímají"
 
-#: [post]content [post]content_label
+#: [post]content [publish]content_label
 msgid "Content"
 msgstr "Obsah"
 
@@ -1275,9 +1272,8 @@ msgid "Comment published"
 msgstr "Komentář zveřejněn"
 
 #: [post]comment_deleted
-#, fuzzy
 msgid "Comment deleted"
-msgstr "Kontakt odebrán"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1347,35 +1343,35 @@ msgstr "Přítomnost"
 msgid "Online with Movim"
 msgstr "Online s Movimem"
 
-#: [post]preview
+#: [publish]preview
 msgid "Preview"
 msgstr "Ukázka"
 
-#: [post]help [page]help
+#: [publish]help [page]help
 msgid "Help"
 msgstr "Pomoc"
 
-#: [post]help_more
+#: [publish]help_more
 msgid "More help"
 msgstr "Další pomoc"
 
-#: [post]help_manual
+#: [publish]help_manual
 msgid "Markdown syntax manual"
 msgstr "Návod na syntaxi Markdown"
 
-#: [post]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr "Můžete svůj obsah formátovat syntaxí Markdown"
 
-#: [post]link
+#: [publish]link
 msgid "Link"
 msgstr "Odkaz"
 
-#: [post]tags
+#: [publish]tags
 msgid "Tags"
 msgstr "Štítky"
 
-#: [post]gallery
+#: [publish]gallery
 msgid "This picture will be added to your gallery"
 msgstr "Tento obrázek bude přidán do vaší galerie"
 
@@ -1531,6 +1527,10 @@ msgstr ""
 msgid "Show/Hide"
 msgstr "Zobrazit/Skrýt"
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr ""
+
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
 msgstr "Zadejte Jabber ID vašeho kontaktu."
@@ -1551,6 +1551,10 @@ msgstr "Výsledky"
 msgid "Contact added"
 msgstr "Kontakt přidán"
 
+#: [roster]updated
+msgid "Contact updated"
+msgstr "Kontakt aktualizován"
+
 #: [roster]deleted
 msgid "Contact deleted"
 msgstr "Kontakt odebrán"
@@ -1570,14 +1574,6 @@ msgstr ""
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr ""
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "Toto není validní URL"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "Sdílení URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1640,9 +1636,8 @@ msgid "File too large"
 msgstr ""
 
 #: [upload]error_failed
-#, fuzzy
 msgid "Upload failed"
-msgstr "Nahrát soubor"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1709,9 +1704,8 @@ msgid "Movim is a kickass distributed social networking platform that protect yo
 msgstr "Movim je drsná distribuovaná sociální síť, která chrání vaše soukromí a obsahuje mnoho úžasných vymožeností."
 
 #: [global]loading
-#, fuzzy
 msgid "Loading…"
-msgstr "Načítání"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1774,10 +1768,9 @@ msgid "Pods"
 msgstr "Pody"
 
 #: [page]share
-#, fuzzy
 msgctxt "[page]share"
 msgid "Share"
-msgstr "Sdílet"
+msgstr ""
 
 #: [page]room
 msgid "Room"
@@ -1814,6 +1807,10 @@ msgstr "Movimu se nepodařilo kontaktovat server, zkuste to prosím znovu pozdě
 #: [error]oops
 msgid "Oops!"
 msgstr "Ups!"
+
+#: [button]call
+msgid "Call"
+msgstr ""
 
 #: [button]validate
 msgid "Validate"
@@ -1912,10 +1909,9 @@ msgid "Search"
 msgstr ""
 
 #: [button]share
-#, fuzzy
 msgctxt "[button]share"
 msgid "Share"
-msgstr "Sdílet"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2567,6 +2563,10 @@ msgstr "Kontakt příspěvek"
 msgid "Comments"
 msgstr "Komentáře"
 
+#: [post]original_deleted
+msgid "Original post deleted"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "API je nedostupná, zkuste to znovu později"
@@ -2574,32 +2574,3 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
-
-#~ msgid "Conferences"
-#~ msgstr "Konference"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Přidat novou konverzaci"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Jméno"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Přejete si připojovat se automaticky do této konverzace?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Nastala chyba:"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurovat"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Přidat novou URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Jméno"

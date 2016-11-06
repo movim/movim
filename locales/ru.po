@@ -61,8 +61,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -80,9 +78,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-24 23:28+0200\n"
-"PO-Revision-Date: 2016-08-31 04:53+0000\n"
-"Last-Translator: Stanislav N. <pztrn@pztrn.name>\n"
+"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -750,10 +748,6 @@ msgstr "привязка"
 msgid "Group"
 msgstr "Группа"
 
-#: [edit]updated [roster]updated
-msgid "Contact updated"
-msgstr "Контакты обновлены"
-
 #: [delete]title
 msgid "Are you sure?"
 msgstr "Вы уверены?"
@@ -1168,6 +1162,10 @@ msgstr "Пока никаких новостей..."
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
 msgstr "Добро пожаловать в вашу новостную ленту, здесь будут отображаться все публикации от ваших контактов и групп на которые вы подписаны"
 
+#: [menu]discover [button]discover
+msgid "Discover"
+msgstr ""
+
 #: [menu]refresh
 msgid "Refresh all the streams"
 msgstr "Обновить все потоки"
@@ -1208,7 +1206,7 @@ msgstr "Новостная лента"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Найдите и зарегистрируйтесь в интересных вам группах"
 
-#: [post]content [post]content_label
+#: [post]content [publish]content_label
 msgid "Content"
 msgstr "Содержание"
 
@@ -1348,35 +1346,35 @@ msgstr "Присутствие"
 msgid "Online with Movim"
 msgstr "В сети через Movim"
 
-#: [post]preview
+#: [publish]preview
 msgid "Preview"
 msgstr "Предпросмотр"
 
-#: [post]help [page]help
+#: [publish]help [page]help
 msgid "Help"
 msgstr "Помощь"
 
-#: [post]help_more
+#: [publish]help_more
 msgid "More help"
 msgstr "Больше помощи"
 
-#: [post]help_manual
+#: [publish]help_manual
 msgid "Markdown syntax manual"
 msgstr "Помощник по синтаксису Markdown"
 
-#: [post]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr "Вы можете использовать форматирование Markdown"
 
-#: [post]link
+#: [publish]link
 msgid "Link"
 msgstr "Ссылка"
 
-#: [post]tags
+#: [publish]tags
 msgid "Tags"
 msgstr "Теги"
 
-#: [post]gallery
+#: [publish]gallery
 msgid "This picture will be added to your gallery"
 msgstr "Эта картинка будет добавлена в вашу галерею"
 
@@ -1532,6 +1530,10 @@ msgstr "Вы можете добавить контакт используя к�
 msgid "Show/Hide"
 msgstr "Показать/Скрыть"
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr ""
+
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
 msgstr "Введите Jabber ID"
@@ -1552,6 +1554,10 @@ msgstr "Результаты"
 msgid "Contact added"
 msgstr "Контакт добавлен"
 
+#: [roster]updated
+msgid "Contact updated"
+msgstr "Контакты обновлены"
+
 #: [roster]deleted
 msgid "Contact deleted"
 msgstr "Контакт удалён"
@@ -1571,14 +1577,6 @@ msgstr "Что вы хотите найти?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Откройте меня, используя Ctrl+M"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "Неверная ссылка"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "Поделиться ссылкой"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1812,6 +1810,10 @@ msgstr "Movim не может связаться с сервером, пожал
 #: [error]oops
 msgid "Oops!"
 msgstr "Упс!"
+
+#: [button]call
+msgid "Call"
+msgstr ""
 
 #: [button]validate
 msgid "Validate"
@@ -2563,6 +2565,10 @@ msgstr "Публикация контакта"
 #: [post]comments
 msgid "Comments"
 msgstr "Комментарии"
+
+#: [post]original_deleted
+msgid "Original post deleted"
+msgstr ""
 
 #: [api]error
 msgid "The API is not reachable, try again later"

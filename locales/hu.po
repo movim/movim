@@ -61,8 +61,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -80,9 +78,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-24 23:28+0200\n"
-"PO-Revision-Date: 2016-07-29 20:30+0000\n"
-"Last-Translator: Free Bill <commodum@justemail.net>\n"
+"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -750,10 +748,6 @@ msgstr "Alias"
 msgid "Group"
 msgstr "Csoport"
 
-#: [edit]updated [roster]updated
-msgid "Contact updated"
-msgstr "Kapcsolat frissítve"
-
 #: [delete]title
 msgid "Are you sure?"
 msgstr "Biztos vagy benne?"
@@ -919,9 +913,8 @@ msgid "You don't have any group subscriptions yet."
 msgstr "Még nem iratkoztál fel egy csoportra sem."
 
 #: [groups]empty_server
-#, fuzzy
 msgid "There is no Groups yet on this server."
-msgstr "%s csoportok a szerveren."
+msgstr ""
 
 #: [groups]subscriptions
 msgid "My Subscriptions"
@@ -1169,6 +1162,10 @@ msgstr "Nincsenek még hírek"
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
 msgstr "Üdv a hírfolyamodban. Itt láthatod az ismerőseid és a feliratkozott csoportjaid bejegyzéseit."
 
+#: [menu]discover [button]discover
+msgid "Discover"
+msgstr ""
+
 #: [menu]refresh
 msgid "Refresh all the streams"
 msgstr "Adatfolyamok frissítése"
@@ -1209,7 +1206,7 @@ msgstr "Hírfolyam"
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: [post]content [post]content_label
+#: [post]content [publish]content_label
 msgid "Content"
 msgstr "Tartalom"
 
@@ -1278,9 +1275,8 @@ msgid "Comment published"
 msgstr "Komment közzétéve"
 
 #: [post]comment_deleted
-#, fuzzy
 msgid "Comment deleted"
-msgstr "Ismerős törölve"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1350,35 +1346,35 @@ msgstr "Jelenlét"
 msgid "Online with Movim"
 msgstr "Online Movimmal"
 
-#: [post]preview
+#: [publish]preview
 msgid "Preview"
 msgstr "Előnézet"
 
-#: [post]help [page]help
+#: [publish]help [page]help
 msgid "Help"
 msgstr "Segítség"
 
-#: [post]help_more
+#: [publish]help_more
 msgid "More help"
 msgstr "Mégtöbb segítség"
 
-#: [post]help_manual
+#: [publish]help_manual
 msgid "Markdown syntax manual"
 msgstr "Markdown formázási útmutató"
 
-#: [post]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr "A tartalmadat Markdownnal formázhatod"
 
-#: [post]link
+#: [publish]link
 msgid "Link"
 msgstr "Link"
 
-#: [post]tags
+#: [publish]tags
 msgid "Tags"
 msgstr "Címkék"
 
-#: [post]gallery
+#: [publish]gallery
 msgid "This picture will be added to your gallery"
 msgstr "Ez a kép a galériádhoz lesz adva"
 
@@ -1534,6 +1530,10 @@ msgstr ""
 msgid "Show/Hide"
 msgstr "Mutat/Elrejt"
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr ""
+
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
 msgstr "Add meg az ismerősöd Jabber azonosítóját."
@@ -1554,6 +1554,10 @@ msgstr "Eredmények"
 msgid "Contact added"
 msgstr "Ismerős hozzáadva"
 
+#: [roster]updated
+msgid "Contact updated"
+msgstr "Kapcsolat frissítve"
+
 #: [roster]deleted
 msgid "Contact deleted"
 msgstr "Ismerős törölve"
@@ -1573,14 +1577,6 @@ msgstr "Mit keresel?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "A Ctrl + M gombbal nyithatsz meg"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "Nem érvényes url"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "URL megosztása"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1643,9 +1639,8 @@ msgid "File too large"
 msgstr ""
 
 #: [upload]error_failed
-#, fuzzy
 msgid "Upload failed"
-msgstr "Fájl feltöltése"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1712,9 +1707,8 @@ msgid "Movim is a kickass distributed social networking platform that protect yo
 msgstr "A Movim egy zsírkirály megosztott közösségi háló platformja, amely védi a magánszférádat és nagyszerű funkciókkal érkezik"
 
 #: [global]loading
-#, fuzzy
 msgid "Loading…"
-msgstr "Töltés"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1777,10 +1771,9 @@ msgid "Pods"
 msgstr "Podok"
 
 #: [page]share
-#, fuzzy
 msgctxt "[page]share"
 msgid "Share"
-msgstr "Megosztás"
+msgstr ""
 
 #: [page]room
 msgid "Room"
@@ -1817,6 +1810,10 @@ msgstr "A Movim nem tudott kommunikálni a szerverrel, próbáld újra később 
 #: [error]oops
 msgid "Oops!"
 msgstr "Hupsz!"
+
+#: [button]call
+msgid "Call"
+msgstr ""
 
 #: [button]validate
 msgid "Validate"
@@ -1915,10 +1912,9 @@ msgid "Search"
 msgstr "Keresés"
 
 #: [button]share
-#, fuzzy
 msgctxt "[button]share"
 msgid "Share"
-msgstr "Megosztás"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2570,6 +2566,10 @@ msgstr ""
 msgid "Comments"
 msgstr "Kommentek"
 
+#: [post]original_deleted
+msgid "Original post deleted"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "Az API nem elérhető, próbáld újra később"
@@ -2577,32 +2577,3 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgid "Conferences"
-#~ msgstr "Konferenciák"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Új chat szoba hozzáadása."
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Név"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Automatikusan be akarsz lépni a chat szobába?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Hiba lépett fel:"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurálás"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Új URL hozzáadása"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Név"

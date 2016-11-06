@@ -1,5 +1,6 @@
 #
 # Translators:
+# Adilson Cabral <adilson.cabral0@gmail.com>, 2016
 # Emanuel Carneiro Machado <emanuel.c.machado@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -58,8 +59,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -77,8 +76,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-24 23:28+0200\n"
-"PO-Revision-Date: 2016-07-29 20:30+0000\n"
+"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (http://www.transifex.com/movim/movim/language/pt/)\n"
 "Language: pt\n"
@@ -102,7 +101,7 @@ msgstr "Tradutores"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Obrigado a todos os tradutores"
 
 #: [about]software
 msgid "Software"
@@ -118,7 +117,7 @@ msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movin é uma plataforma baseada em comunicação XMPPP. Todo o projeto excepto os seguintes softwares e recursos, a baixo"
 
 #: [account]title [page]account
 msgid "Account"
@@ -126,7 +125,7 @@ msgstr "Conta"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Alterar senha"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -143,15 +142,15 @@ msgstr "A senha foi actualizada"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Por favor, forneça uma chave válida (minímo 6 characteres)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "As chaves fornecidas não são iguais."
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "Eliminar conta"
 
 #: [account]delete
 msgid "Delete your account"
@@ -747,10 +746,6 @@ msgstr "Alias"
 msgid "Group"
 msgstr ""
 
-#: [edit]updated [roster]updated
-msgid "Contact updated"
-msgstr ""
-
 #: [delete]title
 msgid "Are you sure?"
 msgstr ""
@@ -1165,6 +1160,10 @@ msgstr ""
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
 msgstr ""
 
+#: [menu]discover [button]discover
+msgid "Discover"
+msgstr ""
+
 #: [menu]refresh
 msgid "Refresh all the streams"
 msgstr ""
@@ -1205,7 +1204,7 @@ msgstr ""
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: [post]content [post]content_label
+#: [post]content [publish]content_label
 msgid "Content"
 msgstr ""
 
@@ -1345,35 +1344,35 @@ msgstr ""
 msgid "Online with Movim"
 msgstr ""
 
-#: [post]preview
+#: [publish]preview
 msgid "Preview"
 msgstr ""
 
-#: [post]help [page]help
+#: [publish]help [page]help
 msgid "Help"
 msgstr "Ajuda"
 
-#: [post]help_more
+#: [publish]help_more
 msgid "More help"
 msgstr ""
 
-#: [post]help_manual
+#: [publish]help_manual
 msgid "Markdown syntax manual"
 msgstr ""
 
-#: [post]content_text
+#: [publish]content_text
 msgid "You can format your content using Markdown"
 msgstr ""
 
-#: [post]link
+#: [publish]link
 msgid "Link"
 msgstr ""
 
-#: [post]tags
+#: [publish]tags
 msgid "Tags"
 msgstr ""
 
-#: [post]gallery
+#: [publish]gallery
 msgid "This picture will be added to your gallery"
 msgstr ""
 
@@ -1529,6 +1528,10 @@ msgstr ""
 msgid "Show/Hide"
 msgstr ""
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr ""
+
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
 msgstr ""
@@ -1549,6 +1552,10 @@ msgstr ""
 msgid "Contact added"
 msgstr ""
 
+#: [roster]updated
+msgid "Contact updated"
+msgstr ""
+
 #: [roster]deleted
 msgid "Contact deleted"
 msgstr ""
@@ -1567,14 +1574,6 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr ""
-
-#: [share]success
-msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1808,6 +1807,10 @@ msgstr ""
 
 #: [error]oops
 msgid "Oops!"
+msgstr ""
+
+#: [button]call
+msgid "Call"
 msgstr ""
 
 #: [button]validate
@@ -2559,6 +2562,10 @@ msgstr ""
 
 #: [post]comments
 msgid "Comments"
+msgstr ""
+
+#: [post]original_deleted
+msgid "Original post deleted"
 msgstr ""
 
 #: [api]error
