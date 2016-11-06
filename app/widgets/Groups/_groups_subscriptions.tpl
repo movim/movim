@@ -7,7 +7,7 @@
             <span class="primary icon on_desktop icon gray">
                 <i class="zmdi zmdi-bookmark"></i>
             </span>
-                <span class="control icon gray active" onclick="MovimTpl.showPanel()">
+                <span class="control icon gray active on_mobile" onclick="MovimTpl.showPanel()">
                 {if="count($subscriptions) > 0"}
                     {$subscriptions|count}
                 {else}
