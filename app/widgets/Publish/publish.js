@@ -51,6 +51,7 @@ var Publish = {
         while(i < form.elements.length)
         {
             if(form.elements[i].type != 'hidden'
+            && form.elements[i].type != 'checkbox'
             && form.elements[i].value != form.elements[i].defaultValue) {
                 return true;
             }
