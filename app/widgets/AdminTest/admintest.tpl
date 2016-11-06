@@ -104,7 +104,7 @@
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
-        {if="!$c->testDir(DOCUMENT_ROOT . '/cache')"}
+        {if="!$c->testDir(CACHE_PATH)"}
             <li>
                 <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-folder"></i>
@@ -114,7 +114,7 @@
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
-        {if="!$c->testDir(DOCUMENT_ROOT . '/log')"}
+        {if="!$c->testDir(LOG_PATH)"}
             <li>
                 <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-folder"></i>
@@ -124,7 +124,7 @@
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
-        {if="!$c->testDir(DOCUMENT_ROOT . '/users')"}
+        {if="!$c->testDir(USERS_PATH)"}
             <li>
                 <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-folder"></i>
