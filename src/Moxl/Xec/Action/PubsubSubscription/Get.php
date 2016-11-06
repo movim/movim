@@ -4,16 +4,16 @@ namespace Moxl\Xec\Action\PubsubSubscription;
 
 use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Errors;
-use Moxl\Stanza\PubsubSubscription;
+use Moxl\Stanza\Pubsub;
 
-class ListGetFriends extends Errors
+class Get extends Errors
 {
     private $_to;
 
     public function request()
     {
         $this->store();
-        PubsubSubscription::listGetFriends($this->_to);
+        Pubsub::getItems($this->_to, 'urn:xmpp:pubsub:subscription');
     }
 
     public function setTo($to)
@@ -28,27 +28,25 @@ class ListGetFriends extends Errors
 
         foreach($stanza->pubsub->items->children() as $i) {
             $sub = [
-                (string)$i->subscription["node"],
-                (string)$i->subscription["server"],
-                (string)$i->subscription->title
+                'node'      => (string)$i->subscription["node"],
+                'server'    =>(string)$i->subscription["server"],
+                'title'     => (string)$i->subscription->title
             ];
             array_push($tab, $sub);
         }
 
-        if(count($tab) == 0)
-            $this->event('groupsubscribedlisterror', '');
-        else
-            $this->event('groupsubscribedlist', $tab);
+        $this->pack($tab);
+        $this->deliver();
     }
 
     public function errorFeatureNotImplemented($error)
     {
-        $this->event('groupsubscribedlisterror', $error);
+        $this->deliver();
     }
 
     public function errorItemNotFound($error)
     {
-        $this->event('groupsubscribedlisterror', $error);
+        $this->deliver();
     }
 }
 
