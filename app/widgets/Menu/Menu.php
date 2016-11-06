@@ -50,6 +50,7 @@ class Menu extends \Movim\Widget\Base
         $post = $packet->content;
 
         if($count > 0
+        && $post
         && (strtotime($post->published) > strtotime($since))) {
             if($post->isMicroblog()) {
                 $cd = new \Modl\ContactDAO;
