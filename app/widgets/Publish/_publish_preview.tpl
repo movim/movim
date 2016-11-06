@@ -1,5 +1,5 @@
 <section>
-    <h3>{$c->__('post.preview')}</h3>
+    <h3>{$c->__('publish.preview')}</h3>
     <br />
     <article>
         <section>
