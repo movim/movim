@@ -183,10 +183,8 @@ class Login extends \Movim\Widget\Base
         $here = $sd->getHash(sha1($username.$password.$host));
 
         if($here) {
-        //if($s->get('hash') == sha1($username.$password.$host)) {
             RPC::call('Login.setCookie', $here->session);
             RPC::call('MovimUtils.redirect', $this->route('main'));
-            $this->showErrorBlock('conflict');
             return;
         }
 
