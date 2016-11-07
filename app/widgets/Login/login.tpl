@@ -2,16 +2,22 @@
     <div id="sessions" class="dialog actions"></div>
 
     <script type="text/javascript">
+        if(typeof navigator.registerProtocolHandler == 'function') {
+            navigator.registerProtocolHandler('xmpp',
+                                          '{$c->route("share")}/%s',
+                                          'Movim');
+        }
+
         Login.domain = '{$domain}';
-    {if="isset($httpAuthUser)"}
-        localStorage.username = '{$httpAuthUser}';
-        MovimWebsocket.attach(function() {
-            MovimWebsocket.connection.register('{$httpAuthHost}');
-        });
-        MovimWebsocket.register(function() {
-            Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}');
-        });
-    {/if}
+        {if="isset($httpAuthUser)"}
+            localStorage.username = '{$httpAuthUser}';
+            MovimWebsocket.attach(function() {
+                MovimWebsocket.connection.register('{$httpAuthHost}');
+            });
+            MovimWebsocket.register(function() {
+                Login_ajaxHTTPLogin('{$httpAuthUser}', '{$httpAuthPassword}');
+            });
+        {/if}
     </script>
 
     <div id="form" class="dialog">

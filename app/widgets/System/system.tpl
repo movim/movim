@@ -1,10 +1,4 @@
 <script type="text/javascript">
-    if(typeof navigator.registerProtocolHandler == 'function') {
-        navigator.registerProtocolHandler('xmpp',
-                                      '{$c->route("share")}/%s',
-                                      'Movim');
-    }
-
     var BASE_URI        = '{$base_uri}';
     var BASE_HOST       = '{$base_host}';
     var ERROR_URI       = '{$error_uri}';
