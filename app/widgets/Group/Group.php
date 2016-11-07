@@ -10,6 +10,9 @@ use Moxl\Xec\Action\Pubsub\Unsubscribe;
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 
+use Moxl\Xec\Action\PubsubSubscription\Add as SubscriptionAdd;
+use Moxl\Xec\Action\PubsubSubscription\Remove as SubscriptionRemove;
+
 use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
@@ -326,6 +329,14 @@ class Group extends \Movim\Widget\Base
           ->setFrom($this->user->getLogin())
           ->setData($form)
           ->request();
+
+        if($form->share->value) {
+            $a = new SubscriptionAdd;
+            $a->setServer($server)
+              ->setNode($node)
+              ->setFrom($this->user->getLogin())
+              ->request();
+        }
     }
 
     function ajaxAskUnsubscribe($server, $node)
@@ -353,7 +364,7 @@ class Group extends \Movim\Widget\Base
     {
         if(!$this->validateServerNode($server, $node)) return;
 
-        $sd = new \Modl\SubscriptionDAO();
+        $sd = new \Modl\SubscriptionDAO;
 
         foreach($sd->get($server, $node) as $s) {
             $g = new Unsubscribe;
@@ -363,6 +374,12 @@ class Group extends \Movim\Widget\Base
               ->setFrom($this->user->getLogin())
               ->request();
         }
+
+        $r = new SubscriptionRemove;
+        $r->setServer($server)
+          ->setNode($node)
+          ->setFrom($this->user->getLogin())
+          ->request();
     }
 
     function ajaxClear()

@@ -18,6 +18,23 @@
             />
             <label for="label">{$c->__('group.label_label')}</label>
         </div>
+
+        <div class="checkbox">
+            <ul class="list thick">
+                <li>
+                    <span class="primary">
+                        <div class="control action">
+                            <div class="checkbox">
+                                <input id="share" name="share" type="checkbox">
+                                <label for="share"></label>
+                            </div>
+                        </div>
+                    </span>
+                    <p class="line">{$c->__('group.share_subscription')}</p>
+                    <p>{$c->__('group.share_subscription_text')}</p>
+                </li>
+            </ul>
+        </div>
     </form>
 </section>
 <div>
