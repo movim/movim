@@ -39,21 +39,6 @@ class PubsubSubscription
 
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);
-
-        /*$xml .= '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <publish node="urn:xmpp:pubsub:subscription">
-                  <item id="'.$id.'">
-                    <subscription xmlns="urn:xmpp:pubsub:subscription:0"
-                        server="'.$server.'" node="'.$node.'">
-                      <title>'.$title.'</title>
-                    </subscription>
-                  </item>
-                </publish>
-            </pubsub>
-            ';
-        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
-        \Moxl\API::request($xml);*/
     }
 
     static function listRemove($server, $jid, $node)
@@ -72,17 +57,6 @@ class PubsubSubscription
 
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);
-
-        /*
-        $xml .= '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <retract node="urn:xmpp:pubsub:subscription">
-                  <item id="'.$id.'"/>
-                </retract>
-            </pubsub>
-            ';
-        $xml = \Moxl\API::iqWrapper($xml, false, 'set');
-        \Moxl\API::request($xml);*/
     }
 
     static function listGetOwned() {
