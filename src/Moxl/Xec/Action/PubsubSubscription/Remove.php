@@ -6,22 +6,21 @@ use Moxl\Xec\Action;
 use Moxl\Xec\Action\Pubsub\Errors;
 use Moxl\Stanza\PubsubSubscription;
 
-class ListAdd extends Errors
+class Remove extends Errors
 {
-    private $_to;
+    private $_server;
     private $_from;
     private $_node;
-    private $_data;
 
     public function request()
     {
         $this->store();
-        PubsubSubscription::listAdd($this->_to, $this->_from, $this->_node, $this->_data['title']);
+        PubsubSubscription::listRemove($this->_server, $this->_from, $this->_node);
     }
 
-    public function setTo($to)
+    public function setServer($server)
     {
-        $this->_to = $to;
+        $this->_server = $server;
         return $this;
     }
 
@@ -37,16 +36,8 @@ class ListAdd extends Errors
         return $this;
     }
 
-    public function setData($data)
-    {
-        $this->_data = $data;
-        return $this;
-    }
-
     public function handle($stanza, $parent = false)
     {
-        if($stanza["type"] == "result"){
-            $this->event('groupadded', $this->_node);
-        }
+        $this->deliver();
     }
 }

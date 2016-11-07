@@ -5,6 +5,7 @@ v1.6
 ---------------------------
  * Big refresh and cleanup of the library
  * Fix and update Jingle
+ * Fix and Update XEP-0330: Pubsub Subscription
 
 v1.5
 ---------------------------

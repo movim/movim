@@ -210,7 +210,7 @@ class Pubsub {
 
     static function unsubscribe($to, $from, $node, $subid)
     {
-        if($subid != '')
+        /*if($subid != '')
             $subid = 'subid="'.$subid.'"';
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub">
@@ -222,6 +222,21 @@ class Pubsub {
 
         $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
 
+        \Moxl\API::request($xml);*/
+
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
+        $unsubscribe = $dom->createElement('unsubscribe');
+        $unsubscribe->setAttribute('node', $node);
+        $unsubscribe->setAttribute('jid', $from);
+
+        if(!empty($subid)) {
+            $unsubscribe->setAttribute('subid', $subid);
+        }
+
+        $pubsub->appendChild($unsubscribe);
+
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 
@@ -309,7 +324,6 @@ class Pubsub {
         $publish->appendChild($item);
 
         $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
-
         \Moxl\API::request($xml);
     }
 
