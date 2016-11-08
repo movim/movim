@@ -152,6 +152,8 @@ class Vcard4 extends \Movim\Widget\Base
 
         if(Validator::email()->validate($vcard->email->value))
             $c->email   = $vcard->email->value;
+        else
+            $c->email = '';
 
         $c->twitter = $vcard->twitter->value;
         $c->skype   = $vcard->skype->value;
