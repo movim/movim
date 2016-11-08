@@ -297,6 +297,15 @@ class Postn extends Model {
                         });
                 }
             }
+
+            $results = $xml->xpath('//a');
+            if(is_array($results) && !empty($results)) {
+                foreach($results as $link) {
+                    $link->addAttribute('target', '_blank');
+                }
+            }
+
+            $this->contentcleaned = $xml->children()->asXML();
         }
 
         $this->setAttachments($entry->entry->link, $extra);
