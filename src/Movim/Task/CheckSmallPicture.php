@@ -32,7 +32,7 @@ class CheckSmallPicture extends Engine {
                     $typearr = explode('/', $type);
                     return ($typearr[0] == 'image'
                         && $length <= $size
-                        && $length >= 10000);
+                        && $length >= 5000);
                 }
 
                 return false;
