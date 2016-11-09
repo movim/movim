@@ -104,12 +104,32 @@
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
-        {if="!$c->testDir(DOCUMENT_ROOT)"}
+        {if="!$c->testDir(CACHE_PATH)"}
             <li>
                 <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-folder"></i>
                 </span>
-                <p class="normal line">{$c->__('compatibility.rights')}</p>
+                <p class="normal line">{$c->__('compatibility.rights_cache')}</p>
+            </li>
+            <script type="text/javascript">AdminTest.disableMovim()</script>
+        {/if}
+
+        {if="!$c->testDir(LOG_PATH)"}
+            <li>
+                <span class="primary icon color bubble red">
+                    <i class="zmdi zmdi-folder"></i>
+                </span>
+                <p class="normal line">{$c->__('compatibility.rights_log')}</p>
+            </li>
+            <script type="text/javascript">AdminTest.disableMovim()</script>
+        {/if}
+
+        {if="!$c->testDir(USERS_PATH)"}
+            <li>
+                <span class="primary icon color bubble red">
+                    <i class="zmdi zmdi-folder"></i>
+                </span>
+                <p class="normal line">{$c->__('compatibility.rights_users')}</p>
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
