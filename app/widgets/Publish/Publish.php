@@ -91,26 +91,31 @@ class Publish extends \Movim\Widget\Base
             RPC::call('MovimUtils.removeClass', '#group_widget', 'fixed');
         }
 
+        $session = \Session::start();
+        $view->assign('url', $session->get('share_url'));
+
         if($reply) {
             Drawer::fill('<section>'.$view->draw('_publish_create', true).'</section>');
         } else {
             RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
         }
 
-        $pd = new \Modl\ItemDAO;
+        /*$pd = new \Modl\ItemDAO;
         $item = $pd->getItem($server, $node);
 
         $view = $this->tpl();
         $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('post', $post);
-        $view->assign('item', $item);
+        $view->assign('item', $item);*/
 
         if($id) {
             RPC::call('Publish.initEdit');
         }
 
-        RPC::call('Publish.setEmbed');
+        if($session->get('share_url')) {
+            RPC::call('Publish.setEmbed');
+        }
     }
 
     function ajaxCreateComments($server, $id)
@@ -146,6 +151,14 @@ class Publish extends \Movim\Widget\Base
         } else {
             Notification::append(false, $this->__('publish.no_content_preview'));
         }
+    }
+
+    function ajaxClearShareUrl()
+    {
+        $session = \Session::start();
+        $session->remove('share_url');
+
+        RPC::call('Publish.clearEmbed');
     }
 
     function ajaxHelp()
@@ -291,6 +304,9 @@ class Publish extends \Movim\Widget\Base
                 $post = $pd->get($form->replyorigin->value, $form->replynode->value, $form->replynodeid->value);
                 $p->setReply($post->getRef());
             }
+
+            $session = \Session::start();
+            $session->remove('share_url');
 
             $p->request();
         } else {

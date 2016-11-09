@@ -95,12 +95,20 @@
         {if="$item != false"}
             {$attachment = $item->getAttachment()}
         {/if}
+        <a class="button oppose flat gray" style="margin-top: 4rem" onclick="Publish_ajaxClearShareUrl()">
+            <i class="zmdi zmdi-close"></i>
+        </a>
         <input
             type="url"
+            style="width: calc(100% - 6rem)"
             name="embed"
             placeholder="http://myawesomewebsite.com/ or http://mynicepictureurl.com/"
             onpaste="var e=this; setTimeout(function(){Publish_ajaxEmbedTest(e.value);}, 4);"
-            {if="isset($attachment) && $attachment != false"}value="{$attachment.href}"{/if}
+            {if="isset($attachment) && $attachment != false"}
+                value="{$attachment.href}"
+            {elseif="$url"}
+                value="{$url}"
+            {/if}
         >
         <label for="embed">{$c->__('publish.link')}</label>
 
