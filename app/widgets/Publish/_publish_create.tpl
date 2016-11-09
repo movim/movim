@@ -6,9 +6,19 @@
                 <i class="zmdi zmdi-close"></i>
             </span>
             {else}
-            <span class="primary icon active" onclick="Publish.headerBack('{$to}', '{$node}', false);">
+            <span class="primary icon active" onclick="Publish.headerBack('{$to}', '{$node}', false);  Publish_ajaxClearShareUrl();">
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
+            {/if}
+
+            {if="$reply"}
+                <span
+                    title="{$c->__('menu.add_post')}"
+                    id="button_send"
+                    class="control icon active"
+                    onclick="Publish.disableSend(); Publish_ajaxPublish(MovimUtils.formToJson('post'));">
+                    <i class="zmdi zmdi-mail-send"></i>
+                </span>
             {/if}
 
             <p class="line">
@@ -34,13 +44,16 @@
             </p>-->
         </li>
     </ul>
-    <span
-        title="{$c->__('menu.add_post')}"
-        id="button_send"
-        class="button action color"
-        onclick="Publish.disableSend(); Publish_ajaxPublish(MovimUtils.formToJson('post'));">
-        <i class="zmdi zmdi-mail-send"></i>
-    </span>
+
+    {if="!$reply"}
+        <span
+            title="{$c->__('menu.add_post')}"
+            id="button_send"
+            class="button action color"
+            onclick="Publish.disableSend(); Publish_ajaxPublish(MovimUtils.formToJson('post'));">
+            <i class="zmdi zmdi-mail-send"></i>
+        </span>
+    {/if}
 </header>
 
 <form name="post" class="block padded">
