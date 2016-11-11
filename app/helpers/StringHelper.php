@@ -239,7 +239,7 @@ function stringToColor($string)
         7 => 'brown'
     ];
 
-    $s = crc32($string);
+    $s = abs(crc32($string));
     return $colors[$s%8];
 }
 
