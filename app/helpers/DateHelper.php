@@ -47,45 +47,36 @@ function getTimezoneCorrection() {
  * @param timestamp $string
  * @return string
  */
-function prepareDate($time, $hours = true, $compact = false) {
-    // If the time is empty, return nothing
-    if(empty($time)) return '';
-
-    // We had the server timezone
-    $time = $time + TIMEZONE_OFFSET;
-
-    $t = $time ? $time : time();
+function prepareDate($time = false, $hours = true, $compact = false) {
+    $time = $time ? $time : time();
+    $t = $time + TIMEZONE_OFFSET;
 
     $date = '';
 
-    $reldays = ((time() - $t - TIMEZONE_OFFSET)-(time()%86400))/86400;
-    // if $time is within a week
-    if($reldays < 7 && $reldays >= -2){
-        //if $time is today or yesterday
-        if($reldays < -1) {
-            $date = __('date.tomorrow');
-        } else if ($reldays <= 0) {
-            //$date = __('date.today');
-        } else if ($reldays <= 1) {
-            $date = __('date.yesterday');
-        }
-        //else print date "ago"
-        else {
-            $date = __('date.ago', ceil($reldays));
-        }
-    }
-    //else print full date
-    else {
-        $date = '';
+    $reldays = -(time() - $t - (time() % 86400)) / 86400;
 
-        if(!$compact)
+    // if $reldays is within a week
+    if (-7 < $reldays && $reldays <= 2) {
+        if($reldays > 1) {
+            $date = __('date.tomorrow');
+        } else if (-1 < $reldays && $reldays <= 0) {
+            $date = __('date.yesterday');
+        } else if (0 < $reldays && $reldays <= 1) {
+            // Today
+        } else {
+            $$date = __('date.ago', ceil(-$reldays));
+        }
+    } else {
+        if(!$compact) {
             $date .= __('day.'.strtolower(date('l', $t))) . ', ';
+        }
 
         $date .= date('j', $t).' '.__('month.'.strtolower(date('F', $t)));
 
-        //if over 6months print year
-        if (abs($reldays) > 182)
-            $date .= date(', Y', $t);
+        // Over 6 months
+        if (abs($reldays) > 182) {
+            $date .= gmdate(', Y', $t);
+        }
 
         if($compact) return $date;
     }
@@ -94,8 +85,10 @@ function prepareDate($time, $hours = true, $compact = false) {
         if($date != '') {
             $date .= ' - ';
         }
-        $date .= date('H:i', $time);
+
+        $date .= gmdate('H:i', $t);
     }
+
     return $date;
 }
 
