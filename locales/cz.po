@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"POT-Creation-Date: 2016-11-13 14:58+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -402,7 +402,8 @@ msgid "Install the php5-gd library"
 msgstr "Nainstalujte knihovnu php5-gd"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movims root directory"
+#, fuzzy
+msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Práva na čtení a zápis pro webserver v kořenovém adresáři Movimu"
 
 #: [compatibility]db
@@ -893,6 +894,15 @@ msgstr "Dokončeno? Nyní můžete v této skupině publikovat nový příspěve
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr "Seznam odebíraných skupin najdete v záložce Moje odběry a nové příspěvky vám budou zobrazeny na stránce %sNovinky%."
 
+#: [group]share_subscription
+#, fuzzy
+msgid "Share this subscription publicly"
+msgstr "Odeslat příspěvek veřejně?"
+
+#: [group]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
 #: [groups]empty_title
 msgid "Hello"
 msgstr "Ahoj"
@@ -1073,11 +1083,6 @@ msgstr "Chyba sezení"
 msgid "Account successfully created"
 msgstr "Účet úspěšně vytvořen"
 
-#: [error]xmpp_unauthorized
-msgctxt "[error]xmpp_unauthorized"
-msgid "Your XMPP server is unauthorized"
-msgstr "Váš XMPP server není autorizován"
-
 #: [error]mec_error
 msgid "The server takes too much time to respond"
 msgstr "Serveru trvá příliš dlouho odpovídat"
@@ -1099,13 +1104,9 @@ msgid "Invalid password format"
 msgstr "Nesprávný formát hesla"
 
 #: [error]unauthorized
-msgctxt "[error]unauthorized"
+#, fuzzy
 msgid "Your XMPP server is unauthorized"
 msgstr "Váš XMPP server není autorizován"
-
-#: [error]conflict
-msgid "A Movim session is already open on an other device"
-msgstr "Movim sezení je již otevřené na jiném zařízení"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1338,10 +1339,6 @@ msgstr "Stav"
 #: [status]presence
 msgid "Presence"
 msgstr "Přítomnost"
-
-#: [status]online
-msgid "Online with Movim"
-msgstr "Online s Movimem"
 
 #: [publish]preview
 msgid "Preview"
@@ -1675,6 +1672,10 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr "Yahoo Účet"
 
+#: [privacy]my_profile
+msgid "Go to my profile page"
+msgstr ""
+
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "Úroveň soukromí"
@@ -1801,7 +1802,8 @@ msgid "Whoops!"
 msgstr "Ups!"
 
 #: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+#, fuzzy
+msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movimu se nepodařilo kontaktovat server, zkuste to prosím znovu později (chyba WebSocket připojení)"
 
 #: [error]oops
@@ -2574,3 +2576,21 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#, fuzzy
+#~ msgid "Read and write rights for the webserver in Movim's cache directory"
+#~ msgstr "Práva na čtení a zápis pro webserver v kořenovém adresáři Movimu"
+
+#, fuzzy
+#~ msgid "Read and write rights for the webserver in Movim's log directory"
+#~ msgstr "Práva na čtení a zápis pro webserver v kořenovém adresáři Movimu"
+
+#~ msgctxt "[error]unauthorized"
+#~ msgid "Your XMPP server is unauthorized"
+#~ msgstr "Váš XMPP server není autorizován"
+
+#~ msgid "A Movim session is already open on an other device"
+#~ msgstr "Movim sezení je již otevřené na jiném zařízení"
+
+#~ msgid "Online with Movim"
+#~ msgstr "Online s Movimem"

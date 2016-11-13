@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"POT-Creation-Date: 2016-11-13 14:58+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -406,7 +406,8 @@ msgid "Install the php5-gd library"
 msgstr "Instale a biblioteca php5-curl"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movims root directory"
+#, fuzzy
+msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Permissões de leitura e escrita para o servidor Web no diretório raiz do Movim"
 
 #: [compatibility]db
@@ -897,6 +898,15 @@ msgstr "Terminou? Agora você pode publicar um novo artigo no Grupo utilizando o
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr "Você encontrará uma lista de todos os Grupos em que está inscrito em Minhas Inscrições e receberá instantaneamente todos os novos artigos na página %sNotícias%s."
 
+#: [group]share_subscription
+#, fuzzy
+msgid "Share this subscription publicly"
+msgstr "Publicar este artigo publicamente?"
+
+#: [group]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
 #: [groups]empty_title
 msgid "Hello"
 msgstr "Olá"
@@ -1077,11 +1087,6 @@ msgstr "Erro de sessão"
 msgid "Account successfully created"
 msgstr "Conta criada com sucesso"
 
-#: [error]xmpp_unauthorized
-msgctxt "[error]xmpp_unauthorized"
-msgid "Your XMPP server is unauthorized"
-msgstr "Seu servidor XMPP não esta autorizado"
-
 #: [error]mec_error
 msgid "The server takes too much time to respond"
 msgstr "O servidor demorou muito tempo para responder"
@@ -1103,13 +1108,9 @@ msgid "Invalid password format"
 msgstr "Formato de senha inválido"
 
 #: [error]unauthorized
-msgctxt "[error]unauthorized"
+#, fuzzy
 msgid "Your XMPP server is unauthorized"
 msgstr "Seu servidor XMPP não esta autorizado"
-
-#: [error]conflict
-msgid "A Movim session is already open on an other device"
-msgstr "Uma sessão do Movim já está aberta em outro dispositivo"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1342,10 +1343,6 @@ msgstr "Estado"
 #: [status]presence
 msgid "Presence"
 msgstr "Presente"
-
-#: [status]online
-msgid "Online with Movim"
-msgstr "Online com Movim"
 
 #: [publish]preview
 msgid "Preview"
@@ -1679,6 +1676,10 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr "Conta Yahoo"
 
+#: [privacy]my_profile
+msgid "Go to my profile page"
+msgstr ""
+
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "Nível de privacidade"
@@ -1805,7 +1806,8 @@ msgid "Whoops!"
 msgstr "Ooops!"
 
 #: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+#, fuzzy
+msgid "Movim cannot talk with the server, please try again later"
 msgstr "Servidor não responde, por favor tente mais tarde (Erro de conexão com o Websocket)"
 
 #: [error]oops
@@ -2578,3 +2580,21 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
+
+#, fuzzy
+#~ msgid "Read and write rights for the webserver in Movim's cache directory"
+#~ msgstr "Permissões de leitura e escrita para o servidor Web no diretório raiz do Movim"
+
+#, fuzzy
+#~ msgid "Read and write rights for the webserver in Movim's log directory"
+#~ msgstr "Permissões de leitura e escrita para o servidor Web no diretório raiz do Movim"
+
+#~ msgctxt "[error]unauthorized"
+#~ msgid "Your XMPP server is unauthorized"
+#~ msgstr "Seu servidor XMPP não esta autorizado"
+
+#~ msgid "A Movim session is already open on an other device"
+#~ msgstr "Uma sessão do Movim já está aberta em outro dispositivo"
+
+#~ msgid "Online with Movim"
+#~ msgstr "Online com Movim"

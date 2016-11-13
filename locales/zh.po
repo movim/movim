@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"POT-Creation-Date: 2016-11-13 14:58+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -406,7 +406,8 @@ msgid "Install the php5-gd library"
 msgstr "安装 php5-gd 库"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movims root directory"
+#, fuzzy
+msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "网页服务器在Movim根目录的阅读和写权限"
 
 #: [compatibility]db
@@ -897,6 +898,15 @@ msgstr "完成了？现在你可以按 %s 来发表一个新帖。"
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr "你订阅的所有群组在“我的订阅”页面中，它们中的新帖子将会出现在 %s新闻%s 页面。"
 
+#: [group]share_subscription
+#, fuzzy
+msgid "Share this subscription publicly"
+msgstr "公开发布该贴？"
+
+#: [group]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
 #: [groups]empty_title
 msgid "Hello"
 msgstr "您好"
@@ -1077,11 +1087,6 @@ msgstr "Session错误"
 msgid "Account successfully created"
 msgstr "创建账户成功"
 
-#: [error]xmpp_unauthorized
-msgctxt "[error]xmpp_unauthorized"
-msgid "Your XMPP server is unauthorized"
-msgstr "你的XMPP服务没有被授权"
-
 #: [error]mec_error
 msgid "The server takes too much time to respond"
 msgstr "服务器未响应"
@@ -1103,13 +1108,9 @@ msgid "Invalid password format"
 msgstr "无效密码格式"
 
 #: [error]unauthorized
-msgctxt "[error]unauthorized"
+#, fuzzy
 msgid "Your XMPP server is unauthorized"
 msgstr "你的XMPP服务没有被授权"
-
-#: [error]conflict
-msgid "A Movim session is already open on an other device"
-msgstr "一个 Movim 会话已在其他设备上开启"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1342,10 +1343,6 @@ msgstr "状态"
 #: [status]presence
 msgid "Presence"
 msgstr ""
-
-#: [status]online
-msgid "Online with Movim"
-msgstr "Movim 在线"
 
 #: [publish]preview
 msgid "Preview"
@@ -1679,6 +1676,10 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr "雅虎帐户"
 
+#: [privacy]my_profile
+msgid "Go to my profile page"
+msgstr ""
+
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "隐私等级"
@@ -1805,7 +1806,8 @@ msgid "Whoops!"
 msgstr "糟了！"
 
 #: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+#, fuzzy
+msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movim无法连接服务器, 请稍后重试(WebSocket连接错误)"
 
 #: [error]oops
@@ -2578,3 +2580,21 @@ msgstr "API无法连接, 请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#, fuzzy
+#~ msgid "Read and write rights for the webserver in Movim's cache directory"
+#~ msgstr "网页服务器在Movim根目录的阅读和写权限"
+
+#, fuzzy
+#~ msgid "Read and write rights for the webserver in Movim's log directory"
+#~ msgstr "网页服务器在Movim根目录的阅读和写权限"
+
+#~ msgctxt "[error]unauthorized"
+#~ msgid "Your XMPP server is unauthorized"
+#~ msgstr "你的XMPP服务没有被授权"
+
+#~ msgid "A Movim session is already open on an other device"
+#~ msgstr "一个 Movim 会话已在其他设备上开启"
+
+#~ msgid "Online with Movim"
+#~ msgstr "Movim 在线"

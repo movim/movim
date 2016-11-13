@@ -109,7 +109,7 @@
                 <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-folder"></i>
                 </span>
-                <p class="normal line">{$c->__('compatibility.rights_cache')}</p>
+                <p class="normal line">{$c->__('compatibility.rights', 'cache')}</p>
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
@@ -119,7 +119,7 @@
                 <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-folder"></i>
                 </span>
-                <p class="normal line">{$c->__('compatibility.rights_log')}</p>
+                <p class="normal line">{$c->__('compatibility.rights', 'log')}</p>
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
@@ -129,7 +129,7 @@
                 <span class="primary icon color bubble red">
                     <i class="zmdi zmdi-folder"></i>
                 </span>
-                <p class="normal line">{$c->__('compatibility.rights_users')}</p>
+                <p class="normal line">{$c->__('compatibility.rights', 'users')}</p>
             </li>
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}

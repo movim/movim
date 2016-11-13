@@ -75,7 +75,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"POT-Creation-Date: 2016-11-13 14:58+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
@@ -402,7 +402,7 @@ msgid "Install the php5-gd library"
 msgstr "Asenna php5-gd kirjasto"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movims root directory"
+msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
 
 #: [compatibility]db
@@ -893,6 +893,15 @@ msgstr ""
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr ""
 
+#: [group]share_subscription
+#, fuzzy
+msgid "Share this subscription publicly"
+msgstr "Julkaise julkisesti?"
+
+#: [group]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
 #: [groups]empty_title
 msgid "Hello"
 msgstr "Hei"
@@ -1073,11 +1082,6 @@ msgstr "Istuntovirhe"
 msgid "Account successfully created"
 msgstr "Käyttäjätili luotiin onnistuneesti"
 
-#: [error]xmpp_unauthorized
-msgctxt "[error]xmpp_unauthorized"
-msgid "Your XMPP server is unauthorized"
-msgstr ""
-
 #: [error]mec_error
 msgid "The server takes too much time to respond"
 msgstr ""
@@ -1099,13 +1103,9 @@ msgid "Invalid password format"
 msgstr ""
 
 #: [error]unauthorized
-msgctxt "[error]unauthorized"
+#, fuzzy
 msgid "Your XMPP server is unauthorized"
-msgstr ""
-
-#: [error]conflict
-msgid "A Movim session is already open on an other device"
-msgstr ""
+msgstr "Oma serverisi tähän?"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1337,10 +1337,6 @@ msgstr "Tila"
 
 #: [status]presence
 msgid "Presence"
-msgstr ""
-
-#: [status]online
-msgid "Online with Movim"
 msgstr ""
 
 #: [publish]preview
@@ -1675,6 +1671,10 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr "Yahoo!"
 
+#: [privacy]my_profile
+msgid "Go to my profile page"
+msgstr ""
+
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "Yksityisyyden taso"
@@ -1801,7 +1801,7 @@ msgid "Whoops!"
 msgstr "Hupsista!"
 
 #: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgid "Movim cannot talk with the server, please try again later"
 msgstr ""
 
 #: [error]oops

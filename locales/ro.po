@@ -74,7 +74,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"POT-Creation-Date: 2016-11-13 14:58+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
@@ -401,7 +401,7 @@ msgid "Install the php5-gd library"
 msgstr ""
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movims root directory"
+msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
 
 #: [compatibility]db
@@ -892,6 +892,14 @@ msgstr ""
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr ""
 
+#: [group]share_subscription
+msgid "Share this subscription publicly"
+msgstr ""
+
+#: [group]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
 #: [groups]empty_title
 msgid "Hello"
 msgstr ""
@@ -1072,11 +1080,6 @@ msgstr ""
 msgid "Account successfully created"
 msgstr ""
 
-#: [error]xmpp_unauthorized
-msgctxt "[error]xmpp_unauthorized"
-msgid "Your XMPP server is unauthorized"
-msgstr ""
-
 #: [error]mec_error
 msgid "The server takes too much time to respond"
 msgstr ""
@@ -1098,12 +1101,7 @@ msgid "Invalid password format"
 msgstr ""
 
 #: [error]unauthorized
-msgctxt "[error]unauthorized"
 msgid "Your XMPP server is unauthorized"
-msgstr ""
-
-#: [error]conflict
-msgid "A Movim session is already open on an other device"
 msgstr ""
 
 #: [error]wrong_account
@@ -1336,10 +1334,6 @@ msgstr ""
 
 #: [status]presence
 msgid "Presence"
-msgstr ""
-
-#: [status]online
-msgid "Online with Movim"
 msgstr ""
 
 #: [publish]preview
@@ -1674,6 +1668,10 @@ msgstr ""
 msgid "Yahoo Account"
 msgstr ""
 
+#: [privacy]my_profile
+msgid "Go to my profile page"
+msgstr ""
+
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr ""
@@ -1800,7 +1798,7 @@ msgid "Whoops!"
 msgstr ""
 
 #: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+msgid "Movim cannot talk with the server, please try again later"
 msgstr ""
 
 #: [error]oops
