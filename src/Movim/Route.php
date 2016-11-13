@@ -81,6 +81,8 @@ class Route extends Base
             if($tab != false)
                 $tab = '#'.$tab;
 
+            $uri = '';
+
             //We construct a classic URL if the rewriting is disabled
             else {
                 $uri = BASE_URI . '?'. $page;
