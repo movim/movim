@@ -250,7 +250,7 @@ class Bootstrap
         // And we set a global offset
         define('TIMEZONE_OFFSET', getTimezoneOffset($config->timezone));
 
-        date_default_timezone_set($config->timezone);
+        date_default_timezone_set("UTC");
     }
 
     private function setLogLevel()

@@ -15,7 +15,8 @@ class AdminloginController extends Base
         $cd = new \Modl\ConfigDAO();
         $config = $cd->get();
 
-        if($config->username == $_POST['username']
+        if(isset($_POST['username'])
+        && $config->username == $_POST['username']
         && $config->password == sha1($_POST['password'])) {
             $_SESSION['admin'] = true;
             $this->name = 'admin';

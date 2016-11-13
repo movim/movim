@@ -15,7 +15,7 @@ class Statistics extends \Movim\Widget\Base
         $tmp = [];
 
         foreach(scandir(USERS_PATH) as $f) {
-            if(is_dir(USERS_PATH.'/'.$f)) {
+            if(is_dir(USERS_PATH.$f) && !in_array($f, ['..'])) {
                 $time = filemtime(USERS_PATH.'/'.$f.'/index.html');
                 if($time) {
                     array_push($tmp, $time);
@@ -43,10 +43,10 @@ class Statistics extends \Movim\Widget\Base
         $data->datasets = [];
 
         $first = new StdClass;
-        $first->label = "Monthly Subscriptions";
-        $first->fillColor = "rgba(255,152,0,0.5)";
-        $first->strokeColor = "rgba(255,152,0,0.8)";
-        $first->highlightFill = "rgba(220,220,220,0.75)";
+        $first->label           = "Monthly Subscriptions";
+        $first->fillColor       = "rgba(255,152,0,0.5)";
+        $first->strokeColor     = "rgba(255,152,0,0.8)";
+        $first->highlightFill   = "rgba(220,220,220,0.75)";
         $first->highlightStroke = "rgba(220,220,220,1)";
 
         $values = [];

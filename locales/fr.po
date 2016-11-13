@@ -80,7 +80,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 11:50+0200\n"
+"POT-Creation-Date: 2016-11-13 14:58+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -407,7 +407,8 @@ msgid "Install the php5-gd library"
 msgstr "Installez la librairie php5-gd"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movims root directory"
+#, fuzzy
+msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier racine de Movim"
 
 #: [compatibility]db
@@ -898,6 +899,15 @@ msgstr "C'est fait? Vous pouvez maintenant publier un nouveau billet dans le Gro
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr "Vous trouverez la liste des Groupes auxquels vous avez souscrit dans Mes Souscriptions et recevrez immédiatement tous les nouveaux messages arrivés sur la page %sActualité%s."
 
+#: [group]share_subscription
+#, fuzzy
+msgid "Share this subscription publicly"
+msgstr "Publier ce billet publiquement?"
+
+#: [group]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
 #: [groups]empty_title
 msgid "Hello"
 msgstr "Salut"
@@ -1078,11 +1088,6 @@ msgstr "Erreur de session"
 msgid "Account successfully created"
 msgstr "Compte créé avec succès"
 
-#: [error]xmpp_unauthorized
-msgctxt "[error]xmpp_unauthorized"
-msgid "Your XMPP server is unauthorized"
-msgstr "Votre compte XMPP n’est pas autorisé à se connecter"
-
 #: [error]mec_error
 msgid "The server takes too much time to respond"
 msgstr "Le serveur met trop de temps à répondre"
@@ -1104,13 +1109,9 @@ msgid "Invalid password format"
 msgstr "Mot de passe non valide"
 
 #: [error]unauthorized
-msgctxt "[error]unauthorized"
+#, fuzzy
 msgid "Your XMPP server is unauthorized"
 msgstr "Votre compte XMPP n’est pas autorisé à se connecter"
-
-#: [error]conflict
-msgid "A Movim session is already open on an other device"
-msgstr "Une session Movim est déjà ouverte sur un autre ordinateur."
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1343,10 +1344,6 @@ msgstr "Statut"
 #: [status]presence
 msgid "Presence"
 msgstr "Présence"
-
-#: [status]online
-msgid "Online with Movim"
-msgstr "En ligne avec Movim"
 
 #: [publish]preview
 msgid "Preview"
@@ -1680,6 +1677,10 @@ msgstr "Skype"
 msgid "Yahoo Account"
 msgstr "Compte Yahoo"
 
+#: [privacy]my_profile
+msgid "Go to my profile page"
+msgstr ""
+
 #: [privacy]privacy_title
 msgid "Privacy Level"
 msgstr "Niveau de confidentialité"
@@ -1806,7 +1807,8 @@ msgid "Whoops!"
 msgstr "Oups !"
 
 #: [error]websocket
-msgid "Movim cannot talk with the server, please try again later (Websocket connection error)"
+#, fuzzy
+msgid "Movim cannot talk with the server, please try again later"
 msgstr "Movim ne peut pas communiquer avec le serveur, veuillez réessayer plus tard (erreur de connexion WebSocket)"
 
 #: [error]oops
@@ -2579,3 +2581,21 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
+
+#, fuzzy
+#~ msgid "Read and write rights for the webserver in Movim's cache directory"
+#~ msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier racine de Movim"
+
+#, fuzzy
+#~ msgid "Read and write rights for the webserver in Movim's log directory"
+#~ msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier racine de Movim"
+
+#~ msgctxt "[error]unauthorized"
+#~ msgid "Your XMPP server is unauthorized"
+#~ msgstr "Votre compte XMPP n’est pas autorisé à se connecter"
+
+#~ msgid "A Movim session is already open on an other device"
+#~ msgstr "Une session Movim est déjà ouverte sur un autre ordinateur."
+
+#~ msgid "Online with Movim"
+#~ msgstr "En ligne avec Movim"

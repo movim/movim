@@ -189,7 +189,9 @@ class Locale {
         $last_token = "";
 
         while($line = fgets($handle)) {
-            if($line[0] == "#" || trim(rtrim($line)) == "") {
+            if($line[0] == "#"
+            || trim(rtrim($line)) == ""
+            || preg_match('#^msgctxt#', $line)) {
                 continue;
             }
 
