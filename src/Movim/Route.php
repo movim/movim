@@ -78,13 +78,13 @@ class Route extends Base
             return BASE_URI;
 
         if(isset($routes[$page])) {
-            if($tab != false)
-                $tab = '#'.$tab;
-
             $uri = '';
 
+            if($tab != false) {
+                $tab = '#'.$tab;
+
             //We construct a classic URL if the rewriting is disabled
-            else {
+            } else {
                 $uri = BASE_URI . '?'. $page;
             }
 
