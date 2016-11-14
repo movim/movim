@@ -64,7 +64,7 @@ function prepareDate($time = false, $hours = true, $compact = false) {
         } else if (0 < $reldays && $reldays <= 1) {
             // Today
         } else {
-            $$date = __('date.ago', ceil(-$reldays));
+            $date = __('date.ago', ceil(-$reldays));
         }
     } else {
         if(!$compact) {
