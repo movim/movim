@@ -107,47 +107,7 @@
                         rows="1"
                         id="chat_textarea"
                         data-jid="{$jid}"
-                        onkeydown="
-                            if(event.keyCode == 38 && this.value == '') {
-                                Chat_ajaxLast(this.dataset.jid);
-                            } else if(event.keyCode == 40
-                            && (this.value == '' || Chat.edit == true)) {
-                                Chat.clearReplace();
-                            }
-                        "
-                        onkeypress="
-                            if(event.keyCode == 13) {
-                                if(event.shiftKey) {
-                                    return;
-                                }
-                                state = 0;
-                                Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if});
-                                return false;
-                            } else {
-                                {if="!$muc"}
-                                if(state == 0 || state == 2) {
-                                    state = 1;
-                                    {$composing}
-                                    since = new Date().getTime();
-                                }
-                                {/if}
-                            }
-                            "
-                        onkeyup="
-                            {if="!$muc"}
-                                setTimeout(function()
-                                {
-                                    if(state == 1 && since+5000 < new Date().getTime()) {
-                                        state = 2;
-                                        {$paused}
-                                    }
-                                },5000);
-                            {/if}
-                            {if="$c->supported('upload')"}
-                                Chat.toggleAction(this.value.length);
-                            {/if}
-                            "
-                        oninput="MovimUtils.textareaAutoheight(this);"
+                        data-muc="{if="$muc"}true{/if}"
                         placeholder="{$c->__('chat.placeholder')}"
                     ></textarea>
                 </div>

@@ -498,9 +498,6 @@ class Chat extends \Movim\Widget\Base
 
         $jid = echapJS($jid);
 
-        $view->assign('composing', $this->call('ajaxSendComposing', "'" . $jid . "'"));
-        $view->assign('paused', $this->call('ajaxSendPaused', "'" . $jid . "'"));
-
         $view->assign('smiley', $this->call('ajaxSmiley'));
 
         $view->assign('emoji', prepareString('😀'));
