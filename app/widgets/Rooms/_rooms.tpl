@@ -18,7 +18,8 @@
         {loop="$conferences"}
             <li {if="!$edit"} data-jid="{$value->conference}" {/if}
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
-                class="room {if="$value->connected"}online{/if}">
+                class="room {if="$value->connected"}online{/if}"
+                title="{$value->conference}">
                 <span data-key="chat|{$value->conference}" class="counter"></span>
                 {if="$value->connected"}
                     <span class="primary icon small bubble color {$value->name|stringToColor}">
