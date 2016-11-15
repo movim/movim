@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "780ab0891a3915f7eea1117c466a5c4a",
-    "content-hash": "b5d01eb2af806102e6fc1725dab22cdd",
+    "hash": "75bcbec4b18e6ed68e59d729a5d94012",
+    "content-hash": "834cbf613874c03bfe356eb589df8caf",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -903,12 +903,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "587e938b5ebf664ac9e95a58e8a35eed83b045c7"
+                "reference": "4fa53d847b392e74bc99a2d4b5b12bae26ff15fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/587e938b5ebf664ac9e95a58e8a35eed83b045c7",
-                "reference": "587e938b5ebf664ac9e95a58e8a35eed83b045c7",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/4fa53d847b392e74bc99a2d4b5b12bae26ff15fa",
+                "reference": "4fa53d847b392e74bc99a2d4b5b12bae26ff15fa",
                 "shasum": ""
             },
             "require": {
@@ -943,7 +943,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-11-07 21:52:40"
+            "time": "2016-11-15 20:09:17"
         },
         {
             "name": "movim/sasl2",
@@ -1716,16 +1716,16 @@
         },
         {
             "name": "react/stream",
-            "version": "v0.4.4",
+            "version": "v0.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "fcc9e7cea126962cff303c90c05e2efdcec09a27"
+                "reference": "23389503012e1ab721ad498a5a1f4b39f7a43c00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/fcc9e7cea126962cff303c90c05e2efdcec09a27",
-                "reference": "fcc9e7cea126962cff303c90c05e2efdcec09a27",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/23389503012e1ab721ad498a5a1f4b39f7a43c00",
+                "reference": "23389503012e1ab721ad498a5a1f4b39f7a43c00",
                 "shasum": ""
             },
             "require": {
@@ -1756,7 +1756,7 @@
                 "pipe",
                 "stream"
             ],
-            "time": "2016-08-22 09:51:07"
+            "time": "2016-11-13 17:06:02"
         },
         {
             "name": "respect/validation",
@@ -1880,52 +1880,6 @@
                 "uri"
             ],
             "time": "2016-03-25 17:36:49"
-        },
-        {
-            "name": "stojg/crop",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stojg/crop.git",
-                "reference": "a57276d4ee50e01b465fed27a7b687dfb388a180"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stojg/crop/zipball/a57276d4ee50e01b465fed27a7b687dfb388a180",
-                "reference": "a57276d4ee50e01b465fed27a7b687dfb388a180",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "stojg\\crop": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2"
-            ],
-            "authors": [
-                {
-                    "name": "Stig Lindqvist",
-                    "email": "stojg.lindqvist@gmail.com",
-                    "homepage": "https://stojg.se/"
-                },
-                {
-                    "name": "Julien Deniau jdeniau",
-                    "email": "julien.deniau@gmail.com",
-                    "homepage": "http://www.mapado.com"
-                }
-            ],
-            "description": "Image cropping classes",
-            "homepage": "http://github.com/stojg/crop",
-            "keywords": [
-                "image"
-            ],
-            "time": "2015-12-03 05:49:01"
         },
         {
             "name": "symfony/console",
@@ -2160,16 +2114,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.2.0",
+            "version": "v1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594"
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/dff51f72b0706335131b00a7f49606168c582594",
-                "reference": "dff51f72b0706335131b00a7f49606168c582594",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/e79d363049d1c2128f133a2667e4f4190904f7f4",
+                "reference": "e79d363049d1c2128f133a2667e4f4190904f7f4",
                 "shasum": ""
             },
             "require": {
@@ -2181,7 +2135,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -2215,7 +2169,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-05-18 14:26:46"
+            "time": "2016-11-14 01:06:16"
         },
         {
             "name": "symfony/routing",
@@ -2305,8 +2259,7 @@
         "embed/embed": 20,
         "heyupdate/emoji": 20,
         "react/child-process": 20,
-        "react/http": 20,
-        "stojg/crop": 20
+        "react/http": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
