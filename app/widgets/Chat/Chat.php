@@ -14,6 +14,8 @@ use Respect\Validation\Validator;
 
 use Ramsey\Uuid\Uuid;
 
+use Movim\Picture;
+
 class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 30;

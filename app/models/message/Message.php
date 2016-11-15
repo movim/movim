@@ -4,6 +4,8 @@ namespace Modl;
 
 use Respect\Validation\Validator;
 
+use Movim\Picture;
+
 class Message extends Model {
     public $id;
     public $newid;
@@ -124,7 +126,7 @@ class Message extends Model {
                         if(substr((string)$results[0], 0, 10) == 'data:image') {
                             $str = explode('base64,', $results[0]);
                             if(isset($str[1])) {
-                                $p = new \Picture;
+                                $p = new Picture;
                                 $p->fromBase(urldecode($str[1]));
                                 $key = sha1(urldecode($str[1]));
                                 $p->set($key, 'png');

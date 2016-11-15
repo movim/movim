@@ -27,7 +27,6 @@
         "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
         "react/promise-timer": "^1.1",
 
-        "stojg/crop": "dev-master",
         "respect/validation": "1.0.*",
         "ezyang/htmlpurifier": "^4.7",
         "ramsey/uuid": "^3.2",

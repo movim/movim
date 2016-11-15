@@ -4,7 +4,10 @@ namespace Modl;
 
 use Respect\Validation\Validator;
 
-class Postn extends Model {
+use Movim\Picture;
+
+class Postn extends Model
+{
     public $origin;         // Where the post is comming from (jid or server)
     public $node;           // microblog or pubsub
     public $nodeid;         // the ID if the item
@@ -21,9 +24,9 @@ class Postn extends Model {
     public $commentorigin;
     public $commentnodeid;
 
-    public $published;      //
-    public $updated;        //
-    public $delay;          //
+    public $published;
+    public $updated;
+    public $delay;
 
     public $picture;        // Tell if the post contain embeded pictures
 
@@ -42,7 +45,8 @@ class Postn extends Model {
     public $logo;
     private $openlink;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->hash = md5(openssl_random_pseudo_bytes(5));
 
         $this->_struct = '
@@ -101,8 +105,10 @@ class Postn extends Model {
         parent::__construct();
     }
 
-    private function getContent($contents) {
+    private function getContent($contents)
+    {
         $content = '';
+
         foreach($contents as $c) {
             switch($c->attributes()->type) {
                 case 'html':
@@ -130,7 +136,8 @@ class Postn extends Model {
         return $content;
     }
 
-    private function getTitle($titles) {
+    private function getTitle($titles)
+    {
         $title = '';
         foreach($titles as $t) {
             switch($t->attributes()->type) {
@@ -152,7 +159,8 @@ class Postn extends Model {
         return $title;
     }
 
-    public function set($item, $from, $delay = false, $node = false) {
+    public function set($item, $from, $delay = false, $node = false)
+    {
         if($item->item)
             $entry = $item->item;
         else
@@ -462,7 +470,7 @@ class Postn extends Model {
 
     public function getLogo()
     {
-        $p = new \Picture;
+        $p = new Picture;
         return $p->get($this->origin.$this->node, 120);
     }
 
@@ -482,7 +490,7 @@ class Postn extends Model {
 
     public function isMine()
     {
-        $user = new \User();
+        $user = new \User;
 
         return ($this->aid == $user->getLogin()
         || $this->origin == $user->getLogin());
@@ -572,7 +580,8 @@ class Postn extends Model {
     }
 }
 
-class ContactPostn extends Postn {
+class ContactPostn extends Postn
+{
     public $jid;
 
     public $fn;
@@ -585,8 +594,9 @@ class ContactPostn extends Postn {
 
     public $nickname;
 
-    function getContact() {
-        $c = new Contact();
+    function getContact()
+    {
+        $c = new Contact;
         $c->jid = $this->aid;
         $c->fn = $this->fn;
         $c->name = $this->name;

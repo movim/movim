@@ -1,8 +1,11 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
-class Subscription extends Model {
+use Movim\Picture;
+
+class Subscription extends Model
+{
     public $jid;
     protected $server;
     protected $node;
@@ -16,7 +19,8 @@ class Subscription extends Model {
     public $servicename;
     public $logo;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->_struct = '
         {
             "jid" :
@@ -42,11 +46,12 @@ class Subscription extends Model {
 
     public function getLogo()
     {
-        $p = new \Picture;
+        $p = new Picture;
         return $p->get($this->server.$this->node, 120);
     }
 
-    function set($jid, $server, $node, $s) {
+    function set($jid, $server, $node, $s)
+    {
         $this->__set('jid',             $jid);
         $this->__set('server',          $server);
         $this->__set('node',            $node);

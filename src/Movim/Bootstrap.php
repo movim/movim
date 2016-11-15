@@ -180,7 +180,6 @@ class Bootstrap
         require_once(SYSTEM_PATH . "Sessionx.php");
         require_once(SYSTEM_PATH . "RPC.php");
         require_once(SYSTEM_PATH . "User.php");
-        require_once(SYSTEM_PATH . "Picture.php");
     }
 
     private function loadCommonLibraries()

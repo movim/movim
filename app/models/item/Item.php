@@ -1,8 +1,11 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
-class Item extends Model {
+use Movim\Picture;
+
+class Item extends Model
+{
     public $server;
     public $jid;
     public $name;
@@ -16,7 +19,8 @@ class Item extends Model {
     public $sub;
     public $logo;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->_struct = '
         {
             "server" :
@@ -42,7 +46,8 @@ class Item extends Model {
         parent::__construct();
     }
 
-    public function set($item, $from) {
+    public function set($item, $from)
+    {
         $this->server = $from;
         $this->node   = (string)$item->attributes()->node;
         $this->jid    = (string)$item->attributes()->jid;
@@ -52,7 +57,8 @@ class Item extends Model {
         $this->updated  = date('Y-m-d H:i:s');
     }
 
-    public function setMetadata($metadata, $from, $node) {
+    public function setMetadata($metadata, $from, $node)
+    {
         $this->server = $from;
         $this->jid = $from;
         $this->node = $node;
@@ -87,7 +93,7 @@ class Item extends Model {
         if($item) {
             $item->getAttachments();
 
-            $p = new \Picture;
+            $p = new Picture;
             if($item->getPublicUrl()) {
                 try {
                     $embed = \Embed\Embed::create($item->getPublicUrl());
@@ -124,11 +130,12 @@ class Item extends Model {
 
     public function getLogo()
     {
-        $p = new \Picture;
+        $p = new Picture;
         return $p->get($this->server.$this->node, 120);
     }
 
-    public function getName() {
+    public function getName()
+    {
         if($this->name != null)
             return $this->name;
         elseif($this->node != null)
@@ -138,7 +145,8 @@ class Item extends Model {
     }
 }
 
-class Server extends Item {
+class Server extends Item
+{
     public $server;
     public $number;
     public $name;

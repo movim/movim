@@ -3,6 +3,8 @@
 use Moxl\Xec\Action\Avatar\Get;
 use Moxl\Xec\Action\Avatar\Set;
 
+use Movim\Picture;
+
 class Avatar extends \Movim\Widget\Base
 {
     function load()
@@ -28,7 +30,7 @@ class Avatar extends \Movim\Widget\Base
 
     function onMyAvatarError()
     {
-        $cd = new \modl\ContactDAO();
+        $cd = new \Modl\ContactDAO;
         $me = $cd->get();
         $html = $this->prepareForm($me);
 
@@ -65,7 +67,7 @@ class Avatar extends \Movim\Widget\Base
 
     function ajaxDisplay()
     {
-        $cd = new \modl\ContactDAO();
+        $cd = new \Modl\ContactDAO;
         $me = $cd->get();
 
         RPC::call('MovimTpl.fill', '#avatar_form', $this->prepareForm($me));
@@ -73,12 +75,12 @@ class Avatar extends \Movim\Widget\Base
 
     function ajaxSubmit($avatar)
     {
-        $p = new \Picture;
+        $p = new Picture;
         $p->fromBase($avatar->photobin->value);
 
         $p->set('temp', 'jpeg', 60);
 
-        $p = new \Picture;
+        $p = new Picture;
         $p->get('temp');
 
         $r = new Set;
