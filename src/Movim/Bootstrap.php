@@ -210,10 +210,10 @@ class Bootstrap
      */
     function loadLanguage()
     {
-        $user = new \User();
+        $user = new \User;
         $user->reload(true);
 
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         $l = \Movim\i18n\Locale::start();
@@ -244,7 +244,7 @@ class Bootstrap
     private function setTimezone()
     {
         // We set the default timezone to the server timezone
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         // And we set a global offset
@@ -256,7 +256,7 @@ class Bootstrap
     private function setLogLevel()
     {
         // We set the default timezone to the server timezone
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         define('LOG_LEVEL', (int)$config->loglevel);
