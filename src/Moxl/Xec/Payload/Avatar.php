@@ -2,6 +2,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Movim\Picture;
+
 class Avatar extends Payload
 {
     public function handle($stanza, $parent = false)
@@ -14,7 +16,7 @@ class Avatar extends Payload
         if($c == null)
             $c = new \Modl\Contact;
 
-        $p = new \Picture;
+        $p = new Picture;
         $p->fromBase((string)$stanza->items->item->data);
         $p->set($jid);
 

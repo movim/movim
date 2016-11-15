@@ -5,13 +5,15 @@ namespace Moxl\Xec\Action\BOB;
 use Moxl\Xec\Action;
 use Moxl\Stanza\BOB;
 
+use Movim\Picture;
+
 class Request extends Action
 {
     private $_to;
     private $_cid;
     private $_resource;
 
-    public function request() 
+    public function request()
     {
         $this->store();
         BOB::request($this->_to.'/'.$this->_resource, $this->_cid);
@@ -45,11 +47,11 @@ class Request extends Action
         $type = (string)$stanza->data->attributes()->type;
         $data = (string)$stanza->data;
 
-        $p = new \Picture;
+        $p = new Picture;
         $p->fromBase($data);
         $p->set($this->_cid, 'png');
 
-        $this->pack(array('to' => $this->_to, 'cid' => $this->_cid));
+        $this->pack(['to' => $this->_to, 'cid' => $this->_cid]);
         $this->deliver();
     }
 }
