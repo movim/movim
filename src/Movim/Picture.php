@@ -97,13 +97,13 @@ class Picture
     public function getSize()
     {
         if($this->_bin) {
-            $im = new Imagick();
+            $im = new \Imagick;
             try {
                 $im->readImageBlob($this->_bin);
                 if($im != false) {
                     return $im->getImageGeometry();
                 }
-            } catch (ImagickException $e) {
+            } catch (\ImagickException $e) {
                 error_log($e->getMessage());
             }
         }
@@ -137,30 +137,30 @@ class Picture
         }
 
         if($this->_bin) {
-            $im = new Imagick();
+            $im = new \Imagick;
             try {
                 $im->readImageBlob($this->_bin);
                 if($im != false) {
                     $im->setImageFormat($format);
 
                     if($format == 'jpeg') {
-                        $im->setImageCompression(Imagick::COMPRESSION_JPEG);
+                        $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
                         $im->setImageAlphaChannel(11);
                         // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
                         //$im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
                         $im->setImageBackgroundColor('#ffffff');
-                        $im = $im->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
+                        $im = $im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
                     }
 
                     $im->setImageCompressionQuality($quality);
-                    $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
+                    $im->setInterlaceScheme(\Imagick::INTERLACE_PLANE);
                     $im->writeImage($path);
                     $im->clear();
                     return true;
                 } else {
                     return false;
                 }
-            } catch (ImagickException $e) {
+            } catch (\ImagickException $e) {
                 error_log($e->getMessage());
             }
         }
@@ -177,19 +177,19 @@ class Picture
 
         $path = $this->_path.md5($this->_key).'_'.$width.$this->_formats[$format];
 
-        $im = new Imagick;
+        $im = new \Imagick;
 
         try {
             $im->readImageBlob($this->_bin);
             $im->setImageFormat($format);
 
             if($format == 'jpeg') {
-                $im->setImageCompression(Imagick::COMPRESSION_JPEG);
+                $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
                 $im->setImageAlphaChannel(11);
                 // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
                 //$im->setImageAlphaChannel(Imagick::ALPHACHANNEL_REMOVE);
                 $im->setImageBackgroundColor('#ffffff');
-                $im = $im->mergeImageLayers(Imagick::LAYERMETHOD_FLATTEN);
+                $im = $im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
             }
 
             $geo = $im->getImageGeometry();
@@ -201,11 +201,11 @@ class Picture
             }
 
             $im->setImageCompressionQuality(85);
-            $im->setInterlaceScheme(Imagick::INTERLACE_PLANE);
+            $im->setInterlaceScheme(\Imagick::INTERLACE_PLANE);
 
             $im->writeImage($path);
             $im->clear();
-        } catch (ImagickException $e) {
+        } catch (\ImagickException $e) {
             error_log($e->getMessage());
         }
     }
