@@ -5,7 +5,7 @@ After=apache2.service network.target local-fs.target
 [Service]
 User=www-data
 Type=simple
-ExecStart=/usr/bin/php daemon.php https://localhost/movim/ 8080
+ExecStart=/usr/bin/php daemon.php start --url=https://localhost/movim/ --port=8080
 WorkingDirectory=/usr/share/movim/
 StandardOutput=syslog
 SyslogIdentifier=movim
