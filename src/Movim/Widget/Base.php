@@ -86,8 +86,7 @@ class Base
 
     function __()
     {
-        $args = func_get_args();
-        return call_user_func_array('__', $args);
+        return call_user_func_array('__', func_get_args());
     }
 
     function ___()
@@ -102,7 +101,12 @@ class Base
 
     function route()
     {
-        return call_user_func_array('\Movim\Route::urlize',func_get_args());
+        return call_user_func_array('\Movim\Route::urlize', func_get_args());
+    }
+
+    function rpc()
+    {
+        return call_user_func_array('\RPC::call', func_get_args());
     }
 
     function load() {}
@@ -188,7 +192,7 @@ class Base
         return $this->makeCall(func_get_args());
     }
 
-    protected function makeCall($params, $widget=false)
+    protected function makeCall($params, $widget = false)
     {
         if(!$widget) {
             $widget = $this->name;
