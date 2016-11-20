@@ -23,7 +23,7 @@
             {if="$json->pod->activated"}
                 <li>
                     <span class="primary icon bubble color green">
-                        <i class="zmdi zmdi-cloud"></i>
+                        <i class="zmdi zmdi-check"></i>
                     </span>
                     <p class="normal">{$c->__('api.validated')}</p>
                 </li>
