@@ -266,7 +266,7 @@ class Base
     {
         if(!is_array($this->events)
         || !array_key_exists($type, $this->events)) {
-            $this->events[$type] = array($function);
+            $this->events[$type] = [$function];
         } else {
             $this->events[$type][] = $function;
         }
