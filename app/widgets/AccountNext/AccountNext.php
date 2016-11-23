@@ -30,44 +30,36 @@ class AccountNext extends \Movim\Widget\Base {
     {
         $form = $package->content;
 
-        /*if($package->from == 'movim.eu') {
-            $movimview = $this->tpl();
-            $movimview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
-            $html = $movimview->draw('_accountnext_movim', true);
+        $xtf = new \XMPPtoForm();
+        if(!empty($form->x)){
+            switch($form->x->attributes()->xmlns) {
+                case 'jabber:x:data' :
+                    $formview = $this->tpl();
 
-            RPC::call('MovimTpl.fill', '#subscription_form', $html);
-        } else {*/
-            $xtf = new \XMPPtoForm();
-            if(!empty($form->x)){
-                switch($form->x->attributes()->xmlns) {
-                    case 'jabber:x:data' :
-                        $formview = $this->tpl();
+                    $formh = $xtf->getHTML($form->x->asXML());
+                    $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
 
-                        $formh = $xtf->getHTML($form->x->asXML());
-                        $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
+                    $formview->assign('formh', $formh);
+                    $html = $formview->draw('_accountnext_form', true);
+                    break;
+                case 'jabber:x:oob' :
+                    $oobview = $this->tpl();
+                    $oobview->assign('url', (string)$form->x->url);
 
-                        $formview->assign('formh', $formh);
-                        $html = $formview->draw('_accountnext_form', true);
-                        break;
-                    case 'jabber:x:oob' :
-                        $oobview = $this->tpl();
-                        $oobview->assign('url', (string)$form->x->url);
-
-                        $html = $oobview->draw('_accountnext_oob', true);
-                        break;
-                }
-            } else {
-                $formview = $this->tpl();
-
-                $formh = $xtf->getHTML($form->asXML());
-                $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
-
-                $formview->assign('formh', $formh);
-                $html = $formview->draw('_accountnext_form', true);
+                    $html = $oobview->draw('_accountnext_oob', true);
+                    break;
             }
+        } else {
+            $formview = $this->tpl();
 
-            RPC::call('MovimTpl.fill', '#subscription_form', $html);
-        //}
+            $formh = $xtf->getHTML($form->asXML());
+            $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
+
+            $formview->assign('formh', $formh);
+            $html = $formview->draw('_accountnext_form', true);
+        }
+
+        RPC::call('MovimTpl.fill', '#subscription_form', $html);
     }
 
     function onRegistered($packet)
