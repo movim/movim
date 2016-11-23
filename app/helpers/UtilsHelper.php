@@ -554,7 +554,7 @@ function geoRadius($latitude, $longitude, $radius)
 /*
  * @desc Request a simple url
  */
-function requestURL($url, $timeout = 10, $post = false)
+function requestURL($url, $timeout = 10, $post = false, $json = false)
 {
     $ch = curl_init($url);
 
@@ -564,6 +564,10 @@ function requestURL($url, $timeout = 10, $post = false)
     curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0');
+
+    if($json) {
+        curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json']);
+    }
 
     if(is_array($post)) {
         $params = '';

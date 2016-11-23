@@ -30,13 +30,13 @@ class AccountNext extends \Movim\Widget\Base {
     {
         $form = $package->content;
 
-        if($package->from == 'movim.eu') {
+        /*if($package->from == 'movim.eu') {
             $movimview = $this->tpl();
             $movimview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
             $html = $movimview->draw('_accountnext_movim', true);
 
             RPC::call('MovimTpl.fill', '#subscription_form', $html);
-        } else {
+        } else {*/
             $xtf = new \XMPPtoForm();
             if(!empty($form->x)){
                 switch($form->x->attributes()->xmlns) {
@@ -67,7 +67,7 @@ class AccountNext extends \Movim\Widget\Base {
             }
 
             RPC::call('MovimTpl.fill', '#subscription_form', $html);
-        }
+        //}
     }
 
     function onRegistered($packet)

@@ -18,7 +18,7 @@ class Subscribe extends \Movim\Widget\Base
 
     function display()
     {
-        $json = requestURL(MOVIM_API.'servers', 3);
+        $json = requestURL(MOVIM_API.'servers', 3, false, true);
         $json = json_decode($json);
 
         $cd = new \Modl\ConfigDAO;

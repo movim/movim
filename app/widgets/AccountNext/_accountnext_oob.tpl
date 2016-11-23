@@ -8,7 +8,7 @@
             {$c->__('oob.about')}
         </p>
         <p>
-            <a href="{$url}" target="_blank">{$url}</a>
+            <a href="{$url}">{$url}</a>
         </p>
     </li>
 </ul>
