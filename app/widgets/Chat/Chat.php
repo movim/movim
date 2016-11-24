@@ -298,9 +298,9 @@ class Chat extends \Movim\Widget\Base
         }
 
         $m->body      = $body;
-        $promise = $m->checkPicture();
+        //$promise = $m->checkPicture();
 
-        $promise->done(function() use ($m, $to, $muc, $resource, $replace) {
+        //$promise->done(function() use ($m, $to, $muc, $resource, $replace) {
             //$m->html      = prepareString($m->body, false, true);
 
             if($resource != false) {
@@ -337,7 +337,7 @@ class Chat extends \Movim\Widget\Base
                 $packet->content = $m;
                 $this->onMessage($packet/*, true*/);
             }
-        });
+        //});
     }
 
     /**
