@@ -19,8 +19,7 @@ use Movim\Picture;
 class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 30;
-    private $_wrapper = array();
-    private $_msgMap = array();
+    private $_wrapper = [];
 
     function load()
     {
@@ -206,7 +205,7 @@ class Chat extends \Movim\Widget\Base
             RPC::call('MovimUtils.addClass', '#chat_widget', 'fixed');
             RPC::call('MovimTpl.fill', '#chat_widget', $html);
             RPC::call('MovimTpl.showPanel');
-            RPC::call('Chat.focus');
+            RPC::call('Chat.focus', $jid);
 
             $this->prepareMessages($jid);
         }
@@ -264,13 +263,14 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message, $muc = false, $resource = false, $replace = false) {
+    function ajaxSendMessage($to, $message, $muc = false, $resource = false, $replace = false)
+    {
         $body = trim(rawurldecode($message));
 
         if($body == '' || $body == '/me')
             return;
 
-        $m = new \Modl\Message();
+        $m = new \Modl\Message;
         $m->session = $this->user->getLogin();
         $m->jidto   = echapJid($to);
         $m->jidfrom = $this->user->getLogin();
@@ -298,46 +298,41 @@ class Chat extends \Movim\Widget\Base
         }
 
         $m->body      = $body;
-        //$promise = $m->checkPicture();
 
-        //$promise->done(function() use ($m, $to, $muc, $resource, $replace) {
-            //$m->html      = prepareString($m->body, false, true);
+        if($resource != false) {
+            $to = $to . '/' . $resource;
+        }
 
-            if($resource != false) {
-                $to = $to . '/' . $resource;
+        // We decode URL codes to send the correct message to the XMPP server
+        $p = new Publish;
+        $p->setTo($to);
+        //$p->setHTML($m->html);
+        $p->setContent($m->body);
+
+        if($replace != false) {
+            $p->setId($m->newid);
+            $p->setReplace($m->id);
+        } else {
+            $p->setId($m->id);
+        }
+
+        if($muc) {
+            $p->setMuc();
+        }
+
+        $p->request();
+
+        /* Is it really clean ? */
+        if(!$p->getMuc()) {
+            if(!preg_match('#^\?OTR#', $m->body)) {
+                $md = new \Modl\MessageDAO;
+                $md->set($m);
             }
 
-            // We decode URL codes to send the correct message to the XMPP server
-            $p = new Publish;
-            $p->setTo($to);
-            //$p->setHTML($m->html);
-            $p->setContent($m->body);
-
-            if($replace != false) {
-                $p->setId($m->newid);
-                $p->setReplace($m->id);
-            } else {
-                $p->setId($m->id);
-            }
-
-            if($muc) {
-                $p->setMuc();
-            }
-
-            $p->request();
-
-            /* Is it really clean ? */
-            if(!$p->getMuc()) {
-                if(!preg_match('#^\?OTR#', $m->body)) {
-                    $md = new \Modl\MessageDAO;
-                    $md->set($m);
-                }
-
-                $packet = new Moxl\Xec\Payload\Packet;
-                $packet->content = $m;
-                $this->onMessage($packet/*, true*/);
-            }
-        //});
+            $packet = new \Moxl\Xec\Payload\Packet;
+            $packet->content = $m;
+            $this->onMessage($packet);
+        }
     }
 
     /**
@@ -415,17 +410,11 @@ class Chat extends \Movim\Widget\Base
 
             foreach($messages as $message) {
                 if(!preg_match('#^\?OTR#', $message->body)) {
-                    //RPC::call('Chat.appendMessage', $this->prepareMessage($message), true);
-                    //$this->_msgMap[$message->published.$message->jid] = $message;
                     $this->prepareMessage($message);
                 }
             }
-            //foreach($this->_msgMap as $message)
-            //    $this->prepareMessage($message);
             RPC::call('Chat.appendMessagesWrapper', $this->_wrapper, true);
-            $this->_wrapper = array();
-
-            //RPC::call('Chat.cleanBubbles');
+            $this->_wrapper = [];
         }
     }
 
@@ -641,10 +630,11 @@ class Chat extends \Movim\Widget\Base
 
             //fillup $wrapper
             if ($message->body != "") {
-                if (!array_key_exists($date, $this->_wrapper))
+                if (!array_key_exists($date, $this->_wrapper)) {
                     $this->_wrapper[$date] = [$message];
-                else
+                } else {
                     array_push($this->_wrapper[$date], $message);
+                }
             }
 
             $pd = new \Modl\PresenceDAO;

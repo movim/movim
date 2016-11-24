@@ -26,8 +26,12 @@ var Chat = {
         }
     },
 
-    focus: function()
+    focus: function(jid)
     {
+        if(jid) {
+            document.querySelector('#chat_widget').dataset.jid = jid;
+        }
+
         var textarea = document.querySelector('#chat_textarea');
 
         setTimeout(function() {
@@ -134,6 +138,7 @@ var Chat = {
             if(discussion.dataset.muc != true) {
                 if(this.scrollTop < 1) {
                     var chat = document.querySelector('#chat_widget');
+                    console.log(chat.dataset);
                     Chat_ajaxGetHistory(chat.dataset.jid, Chat.date);
                 }
             }
@@ -265,6 +270,7 @@ var Chat = {
         var msg = bubble.querySelector('div.bubble > div');
         var span = msg.getElementsByTagName('span')[0];
         var p = msg.getElementsByTagName('p')[0];
+
         for(var i = 0, len = data.length; i < len; ++i) {
             // If there is already a msg in this bubble, create another div (next msg or replacement)
             if (bubble.querySelector('div.bubble p')
@@ -284,6 +290,7 @@ var Chat = {
                 // Remove "/me " from beginning of body
                 data[i].body = data[i].body.substr(4);
             }
+
             if (data[i].id != null) {
                 msg.setAttribute("id", data[i].id);
                 if (data[i].newid != null)
@@ -296,7 +303,6 @@ var Chat = {
             } else {
                 p.innerHTML = data[i].body.replace(/\r\n?|\n/g, '<br />');
             }
-
 
             if (data[i].edited) {
                 span.appendChild(Chat.getEditedIcoHtml());

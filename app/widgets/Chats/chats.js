@@ -16,7 +16,6 @@ var Chats = {
                     MovimUtils.removeClassInList('active', items);
                     Notification_ajaxClear('chat|' + this.dataset.jid);
                     Notification.current('chat|' + this.dataset.jid);
-                    document.querySelector('#chat_widget').dataset.jid = this.dataset.jid;
                     MovimUtils.addClass(this, 'active');
                 };
 
