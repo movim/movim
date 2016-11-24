@@ -1,7 +1,7 @@
 <li
     id="{$contact->jid|cleanupId}"
     title="{$contact->jid}"
-    name="{$contact->jid|cleanupId}-{$contact->getTrueName()|cleanupId}-{$contact->groupname|cleanupId}"
+    name="{$contact->getSearchTerms()}"
     class="{if="$contact->value == null"}faded{/if}"
     onclick="
         Contact_ajaxGetContact('{$contact->jid}');

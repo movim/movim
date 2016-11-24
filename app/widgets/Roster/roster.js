@@ -21,7 +21,7 @@ var Roster = {
             MovimUtils.removeClassInList('found', li);
 
             var founds = document.querySelectorAll(
-                '#rosterlist > li[name*="' + MovimUtils.cleanupId(search.value) + '"]'
+                '#rosterlist > li[name*="' + MovimUtils.cleanupId(search.value).slice(3) + '"]'
             );
 
             if(founds) {

@@ -424,6 +424,13 @@ class Contact extends Model
         }
     }
 
+    public function getSearchTerms()
+    {
+        return cleanupId($this->jid).'-'.
+            cleanupId($this->getTrueName()).'-'.
+            cleanupId($this->groupname);
+    }
+
     function toRoster()
     {
         return [

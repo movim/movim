@@ -13,7 +13,7 @@ var Search = {
         if(key == '') return;
 
         var founds = document.querySelectorAll(
-            '#search > #roster > li[name*="' + MovimUtils.cleanupId(key) + '"]'
+            '#search > #roster > li[name*="' + MovimUtils.cleanupId(key).slice(3) + '"]'
         );
 
         if(founds.length > 0) {
