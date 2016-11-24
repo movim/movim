@@ -98,7 +98,7 @@ class Route extends Base
 
             return $uri.$tab;
         } else {
-            throw new Exception(__('Route not set for the page %s', $page));
+            throw new \Exception(__('Route not set for the page %s', $page));
         }
     }
 

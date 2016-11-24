@@ -1,7 +1,34 @@
 <section>
+    <ul class="list thick active">
+        <li onclick="MovimUtils.reload('{$c->route('conf')}')">
+            {$url = $contact->getPhoto('s')}
+            {if="$url"}
+                <span
+                    class="primary icon bubble"
+                    style="background-image: url({$contact->getPhoto('s')})">
+                </span>
+            {else}
+                <span class="primary icon bubble color {$contact->jid|stringToColor}">
+                    <i class="zmdi zmdi-account"></i>
+                </span>
+            {/if}
+            <span class="control icon gray">
+                <i class="zmdi zmdi-chevron-right"></i>
+            </span>
+            <span class="control icon gray">
+                <i class="zmdi zmdi-edit"></i>
+            </span>
+            <p class="normal line">{$contact->getTrueName()}</p>
+            <p class="line">
+                {if="isset($p) && $p->status != ''"}
+                    {$p->status}
+                {else}
+                    {$txt[$p->value]}
+                {/if}
+            </p>
+        </li>
+    </ul>
     <form name="presence">
-        <h3>{$c->__('status.status')}</h3>
-
         <div>
             <textarea
                 spellcheck="false"
