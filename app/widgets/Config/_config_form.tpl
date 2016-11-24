@@ -26,20 +26,6 @@
         <label for="language">{$c->__('config.language')}</label>
     </div>
 
-    <!--<div class="block">
-        <div class="select">
-            <select name="roster" id="roster" value="{$conf.roster}">
-                <option value="hide" {if="$conf.roster == 'hide'"}selected="selected"{/if}>
-                    {$c->__('config.roster_hide')}
-                </option>
-                <option value="show" {if="$conf.roster == 'show'"}selected="selected"{/if} >
-                    {$c->__('config.roster_show')}
-                </option>
-            </select>
-        </div>
-        <label for="roster">{$c->__('config.roster')}</label>
-    </div>-->
-
     <br />
     <h3>{$c->__('config.advanced')}</h3>
 
