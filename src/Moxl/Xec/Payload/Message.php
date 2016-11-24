@@ -47,17 +47,15 @@ class Message extends Payload
             }
 
             $m = new \Modl\Message;
-            $promise = $m->set($stanza, $parent);
+            $m->set($stanza, $parent);
 
-            $promise->done(function() use ($m) {
-                if(!preg_match('#^\?OTR#', $m->body)) {
-                    $md = new \Modl\MessageDAO;
-                    $md->set($m);
+            if(!preg_match('#^\?OTR#', $m->body)) {
+                $md = new \Modl\MessageDAO;
+                $md->set($m);
 
-                    $this->pack($m);
-                    $this->deliver();
-                }
-            });
+                $this->pack($m);
+                $this->deliver();
+            }
         }
     }
 }
