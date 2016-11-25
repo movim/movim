@@ -204,8 +204,8 @@ class Chat extends \Movim\Widget\Base
 
             RPC::call('MovimUtils.addClass', '#chat_widget', 'fixed');
             RPC::call('MovimTpl.fill', '#chat_widget', $html);
-            RPC::call('MovimTpl.showPanel');
             RPC::call('Chat.focus', $jid);
+            RPC::call('MovimTpl.showPanel');
 
             $this->prepareMessages($jid);
         }
