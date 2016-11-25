@@ -16,7 +16,7 @@
         </span>
     {else}
         <span class="primary icon bubble color {$contact->jid|stringToColor} {if="isset($presence)"}status {$presence}{/if}">
-            <i class="zmdi zmdi-account"></i>
+            {$contact->getTrueName()|firstLetterCapitalize}
         </span>
     {/if}
 

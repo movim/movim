@@ -289,7 +289,7 @@ class Rooms extends \Movim\Widget\Base
     function prepareRooms($edit = false)
     {
         $view = $this->tpl();
-        $cod = new \modl\ConferenceDAO();
+        $cod = new \Modl\ConferenceDAO;
 
         $list = $cod->getAll();
 

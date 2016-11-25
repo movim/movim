@@ -21,7 +21,7 @@
                 status {$presencestxt[$contact->value]}
             {/if}"
         ">
-            <i class="zmdi zmdi-account"></i>
+            {$contact->getTrueName()|firstLetterCapitalize}
         </span>
     {/if}
     {if="$contact->rostersubscription != 'both'"}

@@ -21,15 +21,9 @@
                 class="room {if="$value->connected"}online{/if}"
                 title="{$value->conference}">
                 <span data-key="chat|{$value->conference}" class="counter"></span>
-                {if="$value->connected"}
-                    <span class="primary icon small bubble color {$value->name|stringToColor}">
-                        <i class="zmdi zmdi-accounts"></i>
-                    </span>
-                {else}
-                    <span class="primary disabled icon small bubble color {$value->name|stringToColor}">
-                        <i class="zmdi zmdi-accounts-outline"></i>
-                    </span>
-                {/if}
+                <span class="primary {if="!$value->connected"}disabled{/if} icon small bubble color {$value->name|stringToColor}">
+                    {$value->name|firstLetterCapitalize:true}
+                </span>
                 {if="$edit"}
                     <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
                         <i class="zmdi zmdi-delete"></i>

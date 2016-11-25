@@ -278,8 +278,9 @@ function isRTL($string)
  * @param string
  * @return string
  */
-function firstLetterCapitalize($string) {
-    return ucfirst(strtolower(mb_substr($string, 0, 2)));
+function firstLetterCapitalize($string, $firstOnly = false) {
+    $size = ($firstOnly) ? 1 : 2;
+    return ucfirst(strtolower(mb_substr($string, 0, $size)));
 }
 
 /** Return a clean string that can be used for HTML ids
