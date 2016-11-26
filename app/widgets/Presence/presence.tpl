@@ -3,7 +3,7 @@
         <span class="primary icon bubble color status">
             <i class="zmdi zmdi-account"></i>
         </span>
-        <p class="line bold">{$c->__('status.status')}</p>
-        <p class="line">{$c->__('status.status')}</p>
+        <p class="line bold"><br /></p>
+        <p class="line"><br /></p>
     </li>
 </ul>

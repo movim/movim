@@ -11,7 +11,6 @@ use Moxl\Xec\Action\Storage\Get;
 
 class Presence extends \Movim\Widget\Base
 {
-
     function load()
     {
         $this->addcss('presence.css');
@@ -214,10 +213,10 @@ class Presence extends \Movim\Widget\Base
 
         $session = \Session::start();
 
-        $pd = new \Modl\PresenceDAO();
+        $pd = new \Modl\PresenceDAO;
         $p = $pd->getPresence($session->get('jid'), $session->get('resource'));
 
-        $cd = new \Modl\ContactDAO();
+        $cd = new \Modl\ContactDAO;
         $contact = $cd->get($session->get('jid'));
         if($contact == null) {
             $contact = new \Modl\Contact;

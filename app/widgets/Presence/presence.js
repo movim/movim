@@ -29,13 +29,11 @@ var Presence = {
 
             Presence_ajaxClear();
             Presence_ajaxSet();
-            //Presence_ajaxConfigGet();
             Presence_ajaxServerCapsGet();
             Presence_ajaxBookmarksGet();
             Presence_ajaxUserRefresh();
             Presence_ajaxFeedRefresh();
             Presence_ajaxServerDisco();
-            //Menu_ajaxRefresh();
             localStorage.postStart = 0;
         }
     }
@@ -43,7 +41,6 @@ var Presence = {
 
 MovimWebsocket.attach(function()
 {
-    Presence.refresh();
     Presence.postStart();
     Presence_ajaxGetPresence();
 });
