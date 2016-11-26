@@ -4,6 +4,7 @@ namespace Movim\Daemon;
 use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use Movim\Daemon\Session;
+use Dflydev\FigCookies\Cookies;
 
 class Core implements MessageComponentInterface {
     private $sessions = [];
@@ -158,9 +159,10 @@ class Core implements MessageComponentInterface {
 
     private function getSid(ConnectionInterface $conn)
     {
-        $cookies = $conn->WebSocket->request->getCookies();
-        if(array_key_exists('MOVIM_SESSION_ID', $cookies)) {
-            return $cookies['MOVIM_SESSION_ID'];
+        $cookies = Cookies::fromRequest($conn->httpRequest);
+
+        if($cookies->get('MOVIM_SESSION_ID')) {
+            return $cookies->get('MOVIM_SESSION_ID')->getValue();
         } else {
             return null;
         }
