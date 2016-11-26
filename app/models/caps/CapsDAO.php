@@ -1,9 +1,11 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
-class CapsDAO extends SQL {
-    function set(Caps $caps) {
+class CapsDAO extends SQL
+{
+    function set(Caps $caps)
+    {
         $this->_sql = '
             update caps
             set category = :category,
@@ -58,7 +60,8 @@ class CapsDAO extends SQL {
         }
     }
 
-    function get($node) {
+    function get($node)
+    {
         $this->_sql = '
             select * from caps
             where
@@ -74,7 +77,8 @@ class CapsDAO extends SQL {
         return $this->run('Caps', 'item');
     }
 
-    function getClients() {
+    function getClients()
+    {
         $this->_sql = '
             select * from caps
             where category = :category';
@@ -89,7 +93,8 @@ class CapsDAO extends SQL {
         return $this->run('Caps');
     }
 
-    function getServers() {
+    function getServers()
+    {
         $this->_sql = '
             select * from caps
             where category = :category';
@@ -104,7 +109,8 @@ class CapsDAO extends SQL {
         return $this->run('Caps');
     }
 
-    function getAll() {
+    function getAll()
+    {
         $this->_sql = '
             select * from caps';
 

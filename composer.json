@@ -31,7 +31,6 @@
         "ramsey/uuid": "^3.2",
         "symfony/console": "^3.0",
         "cocur/slugify": "^2.1",
-        "guzzlehttp/guzzle": "^6.2",
         "clue/buzz-react": "^1.0",
         "dflydev/fig-cookies": "^1.0"
     }

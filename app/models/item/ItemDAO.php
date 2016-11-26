@@ -4,7 +4,8 @@ namespace modl;
 
 class ItemDAO extends SQL
 {
-    function set(Item $item, $insert_only = false) {
+    function set(Item $item, $insert_only = false)
+    {
         if(!$insert_only) {
             $this->_sql = '
                 update item
@@ -20,7 +21,7 @@ class ItemDAO extends SQL
 
             $this->prepare(
                 'Item',
-                array(
+                [
                     'name'          => $item->name,
                     'created'       => $item->created,
                     'updated'       => $item->updated,
@@ -30,7 +31,7 @@ class ItemDAO extends SQL
                     'creator'       => $item->creator,
                     'description'   => $item->description,
                     'logo'          => $item->logo
-                )
+                ]
             );
 
             $this->run('Item');
@@ -63,7 +64,7 @@ class ItemDAO extends SQL
 
             $this->prepare(
                 'Item',
-                array(
+                [
                     'name'          => $item->name,
                     'creator'       => $item->creator,
                     'created'       => $item->created,
@@ -73,7 +74,7 @@ class ItemDAO extends SQL
                     'node'          => $item->node,
                     'description'   => $item->description,
                     'logo'          => $item->logo
-                )
+                ]
             );
 
             $this->run('Item');
