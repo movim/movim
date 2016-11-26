@@ -15,5 +15,11 @@
         <i class="zmdi zmdi-caret-down"></i>
     </span>
     <p class="line bold">{$me->getTrueName()}</p>
-    <p class="line">{$presence->status}</p>
+    <p class="line">
+        {if="$presence->status"}
+            {$presence->status}
+        {else}
+            …
+        {/if}
+    </p>
 </li>
