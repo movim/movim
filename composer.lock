@@ -601,12 +601,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "84c1f82f670401b70e5d709451183f042a38501e"
+                "reference": "4f6a80928d9a272e903cb58fd3395fc55e414c2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/84c1f82f670401b70e5d709451183f042a38501e",
-                "reference": "84c1f82f670401b70e5d709451183f042a38501e",
+                "url": "https://api.github.com/repos/movim/modl/zipball/4f6a80928d9a272e903cb58fd3395fc55e414c2d",
+                "reference": "4f6a80928d9a272e903cb58fd3395fc55e414c2d",
                 "shasum": ""
             },
             "require": {
@@ -637,7 +637,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2016-11-26 21:18:09"
+            "time": "2016-11-26 21:26:45"
         },
         {
             "name": "movim/moxl",
