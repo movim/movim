@@ -109,13 +109,13 @@ var Upload = {
 
         Upload.xhr.onreadystatechange = function() {
             if(Upload.xhr.readyState == 4
-            && (Upload.xhr.status == 200 || Upload.xhr.status == 201)) {
+            && (Upload.xhr.status >= 200 && Upload.xhr.status < 400)) {
                 Dialog.clear();
                 Upload.launchAttached();
             }
 
             if(Upload.xhr.readyState == 4
-            && Upload.xhr.status != 200) {
+            && Upload.xhr.status >= 400) {
                 Upload_ajaxFailed();
             }
         }
