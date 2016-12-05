@@ -36,30 +36,41 @@
             <p>
                 <section {if="!$post->isShort()"}class="limited"{/if}>
                     {if="$post->isReply()"}
-                    {$reply = $post->getReply()}
-                        <ul class="list thick card">
-                            <li class="block">
-                                {if="$reply->picture"}
-                                    <span
-                                        class="primary icon thumb color white"
-                                        style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
-                                        <i class="zmdi zmdi-mail-reply"></i>
-                                    </span>
-                                {/if}
-                                <p class="line">{$reply->title}</p>
-                                <p>{$reply->contentcleaned|stripTags}</p>
-                                <p>
-                                    {if="$reply->isMicroblog()"}
-                                        <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
-                                    {else}
-                                        <i class="zmdi zmdi-pages"></i> {$reply->node}
+                        {$reply = $post->getReply()}
+                        {if="$reply"}
+                            <ul class="list thick card">
+                                <li class="block">
+                                    {if="$reply->picture"}
+                                        <span
+                                            class="primary icon thumb color white"
+                                            style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
+                                            <i class="zmdi zmdi-mail-reply"></i>
+                                        </span>
                                     {/if}
-                                    <span class="info">
-                                        {$reply->published|strtotime|prepareDate:true,true}
+                                    <p class="line">{$reply->title}</p>
+                                    <p>{$reply->contentcleaned|stripTags}</p>
+                                    <p>
+                                        {if="$reply->isMicroblog()"}
+                                            <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
+                                        {else}
+                                            <i class="zmdi zmdi-pages"></i> {$reply->node}
+                                        {/if}
+                                        <span class="info">
+                                            {$reply->published|strtotime|prepareDate:true,true}
+                                        </span>
+                                    </p>
+                                </li>
+                            </ul>
+                        {else}
+                            <ul class="list thick card">
+                                <li class="block">
+                                    <span class="primary icon gray">
+                                        <i class="zmdi zmdi-info-outline"></i>
                                     </span>
-                                </p>
-                            </li>
-                        </ul>
+                                    <p class="line normal">{$c->__('post.original_deleted')}</p>
+                                </li>
+                            </ul>
+                        {/if}
                     {/if}
                     <content>
                         {if="$post->isShort() && isset($attachments.pictures)"}
