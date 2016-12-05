@@ -7,7 +7,7 @@
         <header
             class="big"
             style="
-                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$post->picture}');">
+                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$post->picture|echapJS}');">
     {/if}
 {else}
 <header class="relative">
@@ -182,7 +182,7 @@
                                 {if="$reply->picture"}
                                     <span
                                         class="primary icon thumb white color"
-                                        style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
+                                        style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture|echapJS});">
                                         <i class="zmdi zmdi-mail-reply"></i>
                                     </span>
                                 {elseif="$reply->isMicroblog()"}
