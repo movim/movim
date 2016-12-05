@@ -1,13 +1,27 @@
 <article class="block large">
     <ul class="list thick">
         <li>
-            <span class="primary icon gray">
-            {if="$post->isMicroblog()"}
-                <i class="zmdi zmdi-account"></i>
+            {if="$post->isNSFW()"}
+                <span class="primary icon bubble color red tiny">
+                    +18
+                </span>
+            {elseif="$post->isMicroblog()"}
+                {$url = $post->getContact()->getPhoto('m')}
+                {if="$url"}
+                    <span class="primary icon bubble color white">
+                        <img src="{$url}"/>
+                    </span>
+                {else}
+                    <span class="primary icon thumb color {$post->getContact()->jid|stringToColor}">
+                        <i class="zmdi zmdi-account"></i>
+                    </span>
+                {/if}
             {else}
-                <i class="zmdi zmdi-group-work"></i>
+                <span class="primary icon bubble color {$post->node|stringToColor}">
+                    {$post->node|firstLetterCapitalize}
+                </span>
             {/if}
-            </span>
+
             <p class="normal">{$post->title}</p>
             <p>
                 {if="$post->isMicroblog()"}
@@ -93,11 +107,17 @@
             </p>
             <p class="normal">
                 <a class="button flat gray">
-                    {$post->countComments()} <i class="zmdi zmdi-comment"></i>
+                    {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
                 </a>
                 <a class="button flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
                     <i class="zmdi zmdi-share"></i>
                 </a>
+                {if="$post->isPublic()"}
+                    <a class="button flat gray" target="_blank" href="{$post->getPublicUrl()}">
+                        <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
+                    </a>
+                {/if}
+
                 <a class="button flat oppose" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
                     Read more
                 </a>

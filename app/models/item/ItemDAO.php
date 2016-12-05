@@ -290,8 +290,19 @@ class ItemDAO extends SQL
     function getItem($server, $item) {
         $this->_sql = '
             select * from item
+            left outer join (
+                select node, count(node) as num from postn
+                where origin = :server
+                group by node) as p
+            on p.node = item.node
+            left outer join (
+                select node, count(node) as sub from subscription
+                where server = :server
+                group by node
+            ) as sub
+              on sub.node = item.node
             where
-                node = :node
+                item.node = :node
                 and server = :server';
 
         $this->prepare(

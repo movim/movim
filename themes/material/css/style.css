@@ -196,10 +196,9 @@ main > section > div:first-child:nth-last-child(2) ~ div {
 
 @media screen and (min-width: 1025px) {
     main > section > aside {
-        width: 33%;
+        width: calc(50% - 30rem);
         right: 0;
         position: absolute;
-        margin-right: 2%;
     }
 
     main > section > aside > * {
@@ -211,7 +210,7 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     }
 
     main > section > aside + div > * {
-        margin-right: 35%;
+        margin-right: calc(50% - 30rem);
         margin-left: auto;
     }
 }

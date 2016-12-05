@@ -1,1 +1,1 @@
-<div id="communities"></div>
+<div id="communities" class="spin"></div>
