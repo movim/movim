@@ -29,9 +29,6 @@
     </li>
 </ul>-->
 <ul class="list flex middle active">
-    <li class="block large">
-        <p>{$c->__('group.servers')}</p>
-    </li>
     {loop="$servers"}
         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
             <li class="block
