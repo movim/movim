@@ -9,7 +9,7 @@
         {loop="$subscriptions"}
             <li class="block"
                 title="{$value->server} - {$value->node}"
-                onclick="MovimUtils.redirect('{$c->route('group', [$value->server, $value->node])}')">
+                onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')">
                 {if="$value->logo"}
                     <span class="primary icon bubble">
                         <img src="{$value->getLogo()}">

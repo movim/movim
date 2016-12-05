@@ -12,7 +12,7 @@
             </span>
             <p class="normal">{$c->__('group.subscriptions')}</p>
         </li>
-        <li onclick="Group_ajaxDelete('{$item->server|echapJS}', '{$item->node|echapJS}')">
+        <li onclick="CommunityAffiliations_ajaxDelete('{$item->server|echapJS}', '{$item->node|echapJS}')">
             <span class="primary icon gray">
                 <i class="zmdi zmdi-delete"></i>
             </span>

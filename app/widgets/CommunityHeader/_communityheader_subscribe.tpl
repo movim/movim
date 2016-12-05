@@ -42,7 +42,7 @@
         {$c->__('button.close')}
     </a>
     <a
-        onclick="Group_ajaxSubscribe(MovimUtils.formToJson('subscribe'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()"
+        onclick="CommunityHeader_ajaxSubscribe(MovimUtils.formToJson('subscribe'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()"
         class="button flat">
         {$c->__('group.subscribe')}
     </a>

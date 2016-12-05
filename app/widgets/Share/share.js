@@ -8,6 +8,9 @@ var Share = {
     },
     save: function(link) {
         localStorage.setItem('share_url', link);
+    },
+    redirect: function(url) {
+        MovimUtils.redirect(url);
     }
 };
 

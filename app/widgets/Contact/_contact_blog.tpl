@@ -16,7 +16,7 @@
             <p>{$c->__('blog.last')}</p>
         </li>
         {loop="$blog"}
-            <li class="block" onclick="MovimUtils.reload('{$c->route('news', [$value->origin, $value->node, $value->nodeid])}')">
+            <li class="block" onclick="MovimUtils.reload('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
                 {$picture = $value->getPicture()}
                 {if="$picture != null"}
                     <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$picture});">

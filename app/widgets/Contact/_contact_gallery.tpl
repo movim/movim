@@ -14,7 +14,7 @@
     <ul class="grid active padded">
         {loop="$gallery"}
             <li style="background-image: url('{$value->picture}');"
-                onclick="MovimUtils.reload('{$c->route('news', [$value->origin, $value->node, $value->nodeid])}')">
+                onclick="MovimUtils.reload('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
                 <nav>
                     <span>{$value->title}</span>
                 </nav>

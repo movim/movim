@@ -12,12 +12,12 @@
     <section style="background-color: #EEE;">
         <?php if(empty($_GET['s'])) { ?>
             <aside>
-
+                <?php $this->widget('NewsNav');?>
             </aside>
             <?php $this->widget('Communities'); ?>
         <?php } elseif(empty($_GET['n'])) { ?>
             <aside>
-
+                <?php $this->widget('NewsNav');?>
             </aside>
             <?php $this->widget('CommunitiesServer'); ?>
         <?php } else { ?>

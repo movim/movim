@@ -1,108 +1,81 @@
-<ul class="list thick">
+<ul class="list">
     <li>
         <p class="line">
-            <h4 class="gray">{$c->__('post.blog_last')}</h4>
+            <h4 class="gray"></h4>
         </p>
     </li>
 </ul>
 
-<ul class="list active">
-{loop="$blogs"}
-    {$attachments = $value->getAttachments()}
-    <li
-        class="block condensed"
-        data-id="{$value->nodeid}"
-        data-server="{$value->origin}"
-        data-node="{$value->node}">
-
-        <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
-        {if="isset($value->title)"}
-            {$value->title}
-        {else}
-            {$value->node}
-        {/if}
-        </p>
-        <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
-        <p>
-            <a href="{$c->route('contact', $value->getContact()->jid)}">
-                <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
-            </a>
-            {$count = $value->countComments()}
-            {if="$count > 0"}
-                {$count} <i class="zmdi zmdi-comment-outline"></i>
-            {/if}
-            <span class="info">
-                {$value->published|strtotime|prepareDate:true,true}
-            </span>
-        </p>
-    </li>
-{/loop}
-</ul>
-
-{if="$c->supported('pubsub')"}
-    <ul class="list active on_desktop middle">
-        <a href="{$c->route('blog', array($jid))}" target="_blank">
-            <li>
-                <span class="primary icon">
-                    <i class="zmdi zmdi-portable-wifi"></i>
-                </span>
-                <span class="control icon">
-                    <i class="zmdi zmdi-chevron-right"></i>
-                </span>
-                <p class="normal line">{$c->__('hello.blog_title')}</p>
+{if="$c->getView() == 'news'"}
+    <ul class="list active middle divided">
+        <li class="subheader">
+            <p>{$c->__('post.blog_last')}</p>
+        </li>
+        {loop="$blogs"}
+            {$attachments = $value->getAttachments()}
+            <li onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')"i>
+                <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
+                {if="isset($value->title)"}
+                    {$value->title}
+                {else}
+                    {$value->node}
+                {/if}
+                </p>
+                <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
+                <p>
+                    <a href="{$c->route('contact', $value->getContact()->jid)}">
+                        {$value->getContact()->getTrueName()}
+                    </a>
+                    {$count = $value->countComments()}
+                    {if="$count > 0"}
+                        {$count} <i class="zmdi zmdi-comment-outline"></i>
+                    {/if}
+                    <span class="info">
+                        {$value->published|strtotime|prepareDate:true,true}
+                    </span>
+                </p>
             </li>
-        </a>
+        {/loop}
     </ul>
 {/if}
 
-<ul class="list thick">
-    <li>
-        <p class="line">
-            <h4 class="gray">{$c->__('page.communities')}</h4>
-        </p>
-    </li>
-</ul>
-<ul class="list active">
-{loop="$posts"}
-    <li
-        class="block condensed"
-        data-id="{$value->nodeid}"
-        data-server="{$value->origin}"
-        data-node="{$value->node}">
-
-        <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
-        {if="isset($value->title)"}
-            {$value->title}
-        {else}
-            {$value->node}
-        {/if}
-        </p>
-        <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
-        <p>
-            {$value->origin} /
-            <a href="{$c->route('group', [$value->origin, $value->node])}">
-                <i class="zmdi zmdi-pages"></i> {$value->node}
+<ul class="list active middle divided">
+    <li class="subheader active">
+        {if="$c->getView() == 'news'"}
+        <span class="control active icon gray">
+            <a href="{$c->route('community')}">
+                <i class="zmdi zmdi-chevron-right"></i>
             </a>
-            <span class="info">
-                {$value->published|strtotime|prepareDate}
-            </span>
-        </p>
+        </span>
+        {/if}
+        <p>{$c->__('page.communities')}</p>
     </li>
-{/loop}
-</ul>
-{if="$c->supported('pubsub')"}
-    <ul class="list active middle">
-        <a href="{$c->route('group')}">
-            <li>
-                <span class="primary icon"><i class="zmdi zmdi-pages"></i></span>
-                <span class="control icon">
-                    <i class="zmdi zmdi-chevron-right"></i>
-                </span>
-                <p class="normal line">{$c->__('post.discover')}</p>
-            </li>
-        </a>
-    </ul>
 
+    {loop="$posts"}
+        <li onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
+            <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
+            {if="isset($value->title)"}
+                {$value->title}
+            {else}
+                {$value->node}
+            {/if}
+            </p>
+            <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
+            <p>
+                <a href="{$c->route('community', [$value->origin, $value->node])}">{$value->node}</a>
+                {$count = $value->countComments()}
+                {if="$count > 0"}
+                    {$count} <i class="zmdi zmdi-comment-outline"></i>
+                {/if}
+                <span class="info">
+                    {$value->published|strtotime|prepareDate:true,true}
+                </span>
+            </p>
+        </li>
+    {/loop}
+</ul>
+
+{if="$c->getView() == 'news' && $c->supported('pubsub')"}
     <ul class="list thick on_desktop card">
         <li class="block">
             <p class="line">{$c->__('hello.share_title')}</p>

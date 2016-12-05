@@ -41,7 +41,6 @@ body > * {
     position: relative;
     overflow: hidden;
     font-family: 'Open Sans', sans-serif;
-    color: rgba(0, 0, 0, 0.87);
 }
 
 body > script {

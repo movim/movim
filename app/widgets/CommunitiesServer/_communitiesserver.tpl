@@ -23,17 +23,13 @@
     </ul>
 {else}
     <ul class="list middle divided spaced active all flex">
-    <!--<li class="subheader" >
-        <span class="primary icon"><i class="zmdi zmdi-arrow-back"></i></span>
-        <p class="normal">{$server}</p>
-    </li>-->
     {loop="$nodes"}
         <li
             class="block
                 {if="$value->subscription == 'subscribed'"}action{/if}
                 {if="$value->sub > 0 || $value->num > 0"}condensed{/if}
                 "
-            onclick="MovimUtils.redirect('{$c->route('group', [$value->server, $value->node])}')"
+            onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
             title="{$value->server} - {$value->node}"
         >
             {if="$value->subscription == 'subscribed'"}

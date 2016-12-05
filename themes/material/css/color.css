@@ -1,5 +1,9 @@
 /* Color */
 
+body > * {
+    color: rgba(0, 0, 0, 0.87);
+}
+
 ul.list li.divided,
 *.divided > *:not(:last-child),
 *.divided.spaced > *:not(:last-child):after {

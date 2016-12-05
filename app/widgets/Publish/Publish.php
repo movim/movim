@@ -1,7 +1,6 @@
 <?php
 
 use Moxl\Xec\Action\Pubsub\PostPublish;
-use Moxl\Xec\Action\Pubsub\TestPostPublish;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use \Michelf\MarkdownExtra;
 use Respect\Validation\Validator;
@@ -13,45 +12,38 @@ class Publish extends \Movim\Widget\Base
         $this->addjs('publish.js');
         $this->addcss('publish.css');
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
-        $this->registerEvent('pubsub_testpostpublish_handle', 'onTestPublish');
-        $this->registerEvent('pubsub_testpostpublish_error', 'onTestPublishError');
     }
 
     function onPublish($packet)
     {
+        Notification::append(false, $this->__('post.published'));
+
         list($to, $node, $id, $repost) = array_values($packet->content);
 
         if(!$repost) {
             $this->ajaxCreateComments($to, $id);
         }
 
-        RPC::call('MovimUtils.redirect', $this->route('news', [$to, $node, $id]));
+        if($node == 'urn:xmpp:microblog:0') {
+            $this->rpc('MovimUtils.redirect', $this->route('news'));
+        } else {
+            $this->rpc('MovimUtils.redirect', $this->route('community', [$to, $node]));
+        }
     }
-
-    function onTestPublish($packet)
-    {
-        list($server, $node) = array_values($packet->content);
-        $this->ajaxCreate($server, $node);
-    }
-
-    function onTestPublishError($packet)
-    {
-        Notification::append(null, $this->__('publish.no_publication'));
-    }
-
-    function ajaxCreateBlog()
-    {
-        $this->ajaxCreate($this->user->getLogin(), 'urn:xmpp:microblog:0');
-    }
-
 
     function ajaxReply($server, $node, $id)
     {
         $this->ajaxCreate($server, $node, $id, true);
     }
 
-    function ajaxCreate($server, $node, $id = false, $reply = false)
+    function ajaxCreate($server = false, $node = false, $id = false, $reply = false)
     {
+        if($server == false
+        && $node == false) {
+            $server = $this->user->getLogin();
+            $node = 'urn:xmpp:microblog:0';
+        }
+
         if(!$this->validateServerNode($server, $node)) return;
 
         $post = false;
@@ -59,7 +51,7 @@ class Publish extends \Movim\Widget\Base
         $view = $this->tpl();
 
         if($id) {
-            $pd = new \modl\PostnDAO();
+            $pd = new \Modl\PostnDAO;
             $p = $pd->get($server, $node, $id);
 
             if($p->isEditable() && !$reply) {
@@ -85,20 +77,11 @@ class Publish extends \Movim\Widget\Base
             $view->assign('reply', false);
         }
 
-        if($node == 'urn:xmpp:microblog:0') {
-            RPC::call('MovimUtils.pushState', $this->route('news'));
-        } else {
-            RPC::call('MovimUtils.removeClass', '#group_widget', 'fixed');
-        }
-
         $session = \Session::start();
         $view->assign('url', $session->get('share_url'));
 
-        if($reply) {
-            Drawer::fill('<section>'.$view->draw('_publish_create', true).'</section>');
-        } else {
-            RPC::call('MovimTpl.fill', 'main section > div:nth-child(2)', $view->draw('_publish_create', true));
-        }
+        $this->rpc('MovimTpl.fill', '#publish', $view->draw('_publish_create', true));
+
 
         /*$pd = new \Modl\ItemDAO;
         $item = $pd->getItem($server, $node);
@@ -165,19 +148,6 @@ class Publish extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         Dialog::fill($view->draw('_publish_help', true), true);
-    }
-
-    /*
-     * Sic, doing this hack and wait to have a proper way to test it in the standard
-     */
-    function ajaxTestPublish($server, $node)
-    {
-        if(!$this->validateServerNode($server, $node)) return;
-
-        $t = new TestPostPublish;
-        $t->setTo($server)
-          ->setNode($node)
-          ->request();
     }
 
     /*function ajaxRepost($server, $node, $id)
@@ -275,7 +245,7 @@ class Publish extends \Movim\Widget\Base
                     $embed = Embed\Embed::create($form->embed->value);
                     $p->setLink($form->embed->value);
 
-                    if(in_array($embed->type, array('photo', 'rich'))) {
+                    if(in_array($embed->type, ['photo', 'rich'])) {
                         $p->setImage($embed->images[0]['value'], $embed->title, $embed->images[0]['mime']);
                     }
 
@@ -331,7 +301,7 @@ class Publish extends \Movim\Widget\Base
             RPC::call('MovimTpl.fill', '#preview', '');
             RPC::call('MovimTpl.fill', '#gallery', '');
 
-            if(in_array($embed->type, array('photo', 'rich'))) {
+            if(in_array($embed->type, ['photo', 'rich'])) {
                 RPC::call('MovimTpl.fill', '#gallery', $this->prepareGallery($embed));
             }
 

@@ -53,7 +53,7 @@
                         target="_blank"
                         title="Atom"
                     >
-                        <i class="zmdi zmdi-portable-wifi"></i>
+                        <i class="zmdi zmdi-rss"></i>
                     </a>
                 </span>
                 <p>

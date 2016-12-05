@@ -17,7 +17,7 @@ class Share extends \Movim\Widget\Base
         && substr($link, 0, 4) == 'http') {
             $session = \Session::start();
             $session->set('share_url', $link);
-            RPC::call('MovimUtils.redirect', $this->route('news', 'publish'));
+            RPC::call('Share.redirect', $this->route('publish'));
         } elseif(substr($link, 0, 5) == 'xmpp:') {
             $link = str_replace(['xmpp://', 'xmpp:'], '', $link);
 

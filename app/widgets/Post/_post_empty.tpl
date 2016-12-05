@@ -164,7 +164,7 @@
         <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
         <p>
             {$value->origin} /
-            <a href="{$c->route('group', [$value->origin, $value->node])}">
+            <a href="{$c->route('community', [$value->origin, $value->node])}">
                 <i class="zmdi zmdi-pages"></i> {$value->node}
             </a>
             <span class="info">
@@ -176,7 +176,7 @@
 </ul>
 {if="$c->supported('pubsub')"}
     <ul class="list active middle">
-        <a href="{$c->route('group')}">
+        <a href="{$c->route('community')}">
             <li>
                 <span class="primary icon"><i class="zmdi zmdi-pages"></i></span>
                 <span class="control icon">

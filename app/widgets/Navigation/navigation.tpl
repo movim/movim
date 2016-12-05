@@ -36,7 +36,7 @@
         </li>
     </a>
     <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}"
-       href="{$c->route('group')}"
+       href="{$c->route('community')}"
        title="{$c->__('page.communities')}">
         <li {if="$page == 'group'"}class="active"{/if}>
             <span class="primary icon"><i class="zmdi zmdi-group-work"></i></span>

@@ -22,7 +22,7 @@
                 {if="$post->isMine() && !$public"}
                     {if="$post->isEditable()"}
                         <span class="control icon active"
-                              onclick="Publish_ajaxCreate('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
+                              onclick="MovimUtils.redirect('{$c->route('publish', [$post->origin, $post->node, $post->nodeid])}')"
                               title="{$c->__('button.edit')}">
                             <i class="zmdi zmdi-edit"></i>
                         </span>
@@ -70,13 +70,13 @@
             {else}
                 {if="$post->logo"}
                     <span class="primary icon bubble">
-                        <a href="{$c->route('group', array($post->origin, $post->node))}">
+                        <a href="{$c->route('community', [$post->origin, $post->node])}">
                             <img src="{$post->getLogo()}">
                         </a>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->node|stringToColor}">
-                        <a href="{$c->route('group', array($post->origin, $post->node))}">
+                        <a href="{$c->route('community', [$post->origin, $post->node])}">
                             {$post->node|firstLetterCapitalize}
                         </a>
                     </span>
@@ -105,15 +105,15 @@
                     {if="!$public"}
                     <a href="#" onclick="if(typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                     {/if}
-                        <i class="zmdi zmdi-account"></i> {$contact->getTrueName()}
-                    {if="!$public"}</a>{/if} –
+                        {$contact->getTrueName()}
+                    {if="!$public"}</a>{/if}
                 {/if}
                 {if="!$post->isMicroblog()"}
                     {$post->origin} /
                     {if="!$public"}
-                    <a href="{$c->route('group', array($post->origin, $post->node))}">
+                    <a href="{$c->route('community', [$post->origin, $post->node])}">
                     {/if}
-                        <i class="zmdi zmdi-pages"></i> {$post->node}
+                        {$post->node}
                     {if="!$public"}</a>{/if} –
                 {/if}
                 {$post->published|strtotime|prepareDate}
@@ -127,7 +127,7 @@
     {/if}
 
     {if="!$post->isReply() && !$public"}
-        <a class="button action color" onclick="Publish_ajaxReply('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+        <a class="button action color" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
             <i class="zmdi zmdi-share"></i>
         </a>
     {/if}
@@ -174,29 +174,9 @@
         <br />
     {else}
         <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
-            <content>
-                {if="$post->isShort() && isset($attachments.pictures)"}
-                    {loop="$attachments.pictures"}
-                        {if="$value.type != 'picture'"}
-                        <a href="{$value.href}" class="alternate" target="_blank">
-                            <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
-                        </a>
-                        {/if}
-                    {/loop}
-                {/if}
-                {if="$post->getYoutube()"}
-                    <div class="video_embed">
-                        <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                {/if}
-                {$post->contentcleaned}
-            </content>
-        </section>
-        <footer>
             {if="$post->isReply()"}
-                <section>
                 {if="$reply"}
-                    <a href="{$c->route('news', [$reply->origin, $reply->node, $reply->nodeid])}">
+                    <a href="{$c->route('post', [$reply->origin, $reply->node, $reply->nodeid])}">
                         <ul class="list active thick card">
                             <li class="block">
                                 {if="$reply->picture"}
@@ -217,6 +197,9 @@
                                         </span>
                                     {/if}
                                 {/if}
+                                <span class="control icon gray">
+                                    <i class="zmdi zmdi-chevron-right"></i>
+                                </span>
                                 <p class="line">{$reply->title}</p>
                                 <p>{$reply->contentcleaned|stripTags}</p>
                                 <p>
@@ -242,8 +225,26 @@
                         </li>
                     </ul>
                 {/if}
-                </section>
             {/if}
+            <content>
+                {if="$post->isShort() && isset($attachments.pictures)"}
+                    {loop="$attachments.pictures"}
+                        {if="$value.type != 'picture'"}
+                        <a href="{$value.href}" class="alternate" target="_blank">
+                            <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
+                        </a>
+                        {/if}
+                    {/loop}
+                {/if}
+                {if="$post->getYoutube()"}
+                    <div class="video_embed">
+                        <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                {/if}
+                {$post->contentcleaned}
+            </content>
+        </section>
+        <footer>
             {$tags = $post->getTags()}
             {if="isset($tags)"}
                 <ul class="list thick">
@@ -337,7 +338,7 @@
                     <ul class="list card flex active">
                         {if="$previous"}
                             <li class="block"
-                                onclick="MovimUtils.redirect('{$c->route('news', [$previous->origin, $previous->node, $previous->nodeid])}')">
+                                onclick="MovimUtils.redirect('{$c->route('post', [$previous->origin, $previous->node, $previous->nodeid])}')">
                                 <span class="primary icon gray">
                                     <i class="zmdi zmdi-arrow-left"></i>
                                 </span>
@@ -362,7 +363,7 @@
                         {/if}
                         {if="$next"}
                             <li class="block"
-                                onclick="MovimUtils.redirect('{$c->route('news', [$next->origin, $next->node, $next->nodeid])}')">
+                                onclick="MovimUtils.redirect('{$c->route('post', [$next->origin, $next->node, $next->nodeid])}')">
                                 <span class="control icon gray">
                                     <i class="zmdi zmdi-arrow-right"></i>
                                 </span>

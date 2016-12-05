@@ -17,17 +17,9 @@ class Post extends \Movim\Widget\Base
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
-        $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
         $this->registerEvent('pubsub_postdelete', 'onDelete');
         $this->registerEvent('pubsub_getitem_handle', 'onHandle');
-    }
-
-    function onPublish($packet)
-    {
-        Notification::append(false, $this->__('post.published'));
-        $this->ajaxClear();
-        RPC::call('MovimTpl.hidePanel');
     }
 
     function onHandle($packet)
@@ -57,16 +49,19 @@ class Post extends \Movim\Widget\Base
 
     function onDelete($packet)
     {
-        $content = $packet->content;
+        list($server, $node, $id) = array_values($packet->content);
 
-        if(substr($content['node'], 0, 29) == 'urn:xmpp:microblog:0:comments') {
+        if(substr($node, 0, 29) == 'urn:xmpp:microblog:0:comments') {
             Notification::append(false, $this->__('post.comment_deleted'));
-            $this->ajaxGetComments($content['server'], substr($content['node'], 30));
+            $this->ajaxGetComments($server, substr($node, 30));
         } else {
             Notification::append(false, $this->__('post.deleted'));
-            $this->ajaxClear();
-            RPC::call('MovimTpl.hidePanel');
-            RPC::call('Menu_ajaxGetAll');
+
+            if($node == 'urn:xmpp:microblog:0') {
+                $this->rpc('MovimUtils.redirect', $this->route('news'));
+            } else {
+                $this->rpc('MovimUtils.redirect', $this->route('community', [$server, $node]));
+            }
         }
     }
 
@@ -74,10 +69,10 @@ class Post extends \Movim\Widget\Base
     {
         list($server, $node, $id) = array_values($packet->content);
 
-        $p = new \Modl\ContactPostn();
+        $p = new \Modl\ContactPostn;
         $p->nodeid = $id;
 
-        $pd = new \Modl\PostnDAO();
+        $pd = new \Modl\PostnDAO;
         $comments = $pd->getComments($p);
 
         $view = $this->tpl();
@@ -119,8 +114,6 @@ class Post extends \Movim\Widget\Base
 
         if($p) {
             $html = $this->preparePost($p);
-
-            RPC::call('MovimUtils.pushState', $this->route('news', [$p->origin, $p->node, $p->nodeid]));
 
             RPC::call('MovimTpl.fill', '#post_widget', $html);
             RPC::call('MovimUtils.enableVideos');
@@ -213,7 +206,7 @@ class Post extends \Movim\Widget\Base
         $view->assign('presencestxt', getPresencesTxt());
         $view->assign('top', $cd->getTop(6));
         $view->assign('blogs', $nd->getLastBlogPublic(0, 8));
-        $view->assign('posts', $nd->getLastPublished(0, 6));
+        $view->assign('posts', $nd->getLastPublished(false, false, 0, 6));
         $view->assign('me', $cd->get($this->user->getLogin()), true);
         $view->assign('jid', $this->user->getLogin());
 

@@ -1,7 +1,8 @@
 <?php
+
 use Movim\Controller\Base;
 
-class GroupController extends Base
+class CommunityController extends Base
 {
     function load()
     {
@@ -10,7 +11,7 @@ class GroupController extends Base
 
     function dispatch()
     {
-        $this->page->setTitle(__('page.groups'));
+        $this->page->setTitle(__('page.communities'));
 
         $user = new User();
         if(!$user->isLogged()) {

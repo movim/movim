@@ -13,7 +13,7 @@ class CommunityData extends \Movim\Widget\Base
     {
         list($server, $node) = $packet->content;
 
-        RPC::call('MovimTpl.fill', '#community_data', $this->prepareData($server, $node));
+        $this->rpc('MovimTpl.fill', '#community_data', $this->prepareData($server, $node));
     }
 
     public function prepareData($server, $node)

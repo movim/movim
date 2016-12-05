@@ -15,10 +15,10 @@
                         {$post->getContact()->getTrueName()}
                     </a> –
                 {else}
-                    <a href="{$c->route('group', $post->origin)}">
+                    <a href="{$c->route('community', $post->origin)}">
                         {$post->origin}
                     </a> /
-                    <a href="{$c->route('group', [$post->origin, $post->node])}">
+                    <a href="{$c->route('community', [$post->origin, $post->node])}">
                         {$post->node}
                     </a> –
                 {/if}
@@ -35,6 +35,32 @@
             </p>
             <p>
                 <section {if="!$post->isShort()"}class="limited"{/if}>
+                    {if="$post->isReply()"}
+                    {$reply = $post->getReply()}
+                        <ul class="list thick card">
+                            <li class="block">
+                                {if="$reply->picture"}
+                                    <span
+                                        class="primary icon thumb color white"
+                                        style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
+                                        <i class="zmdi zmdi-mail-reply"></i>
+                                    </span>
+                                {/if}
+                                <p class="line">{$reply->title}</p>
+                                <p>{$reply->contentcleaned|stripTags}</p>
+                                <p>
+                                    {if="$reply->isMicroblog()"}
+                                        <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
+                                    {else}
+                                        <i class="zmdi zmdi-pages"></i> {$reply->node}
+                                    {/if}
+                                    <span class="info">
+                                        {$reply->published|strtotime|prepareDate:true,true}
+                                    </span>
+                                </p>
+                            </li>
+                        </ul>
+                    {/if}
                     <content>
                         {if="$post->isShort() && isset($attachments.pictures)"}
                             {loop="$attachments.pictures"}
@@ -69,7 +95,7 @@
                 <a class="button flat gray">
                     {$post->countComments()} <i class="zmdi zmdi-comment"></i>
                 </a>
-                <a class="button flat gray">
+                <a class="button flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
                     <i class="zmdi zmdi-share"></i>
                 </a>
                 <a class="button flat oppose" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">

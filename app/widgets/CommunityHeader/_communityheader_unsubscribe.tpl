@@ -12,7 +12,7 @@
         {$c->__('button.close')}
     </a>
     <a
-        onclick="Group_ajaxUnsubscribe('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()"
+        onclick="CommunityHeader_ajaxUnsubscribe('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()"
         class="button flat">
         {$c->__('group.unsubscribe')}
     </a>

@@ -20,7 +20,7 @@
                             <i class="zmdi zmdi-account"></i> {$value->getContact()->getTrueName()}
                         </a>
                     {else}
-                        <a href="{$c->route('group', [$value->origin, $value->node])}">
+                        <a href="{$c->route('community', [$value->origin, $value->node])}">
                             <i class="zmdi zmdi-pages"></i> {$value->node}
                         </a>
                     {/if}

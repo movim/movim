@@ -16,7 +16,7 @@
     <a
         name="submit"
         class="button flat"
-        onclick="Group_ajaxDeleteConfirm('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()">
+        onclick="CommunityAffiliations_ajaxDeleteConfirm('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.remove')}
     </a>
 </div>

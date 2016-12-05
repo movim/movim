@@ -666,7 +666,7 @@ class PostnDAO extends SQL {
             return $arr[0]['published'];
     }
 
-    function getLastPublished($limitf = false, $limitr = false)
+    function getLastPublished($origin = false, $limitf = false, $limitr = false)
     {
         $this->_sql = '
             select * from postn
@@ -677,20 +677,40 @@ class PostnDAO extends SQL {
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
                 and postn.origin not like \'nsfw%\'
-                and ((postn.origin, postn.node) not in (select server, node from subscription where jid = :origin))
-                and aid is not null
+                and (
+                    (postn.origin, postn.node) not in
+                    (select server, node
+                        from subscription
+                        where subscription.jid = :jid
+                    )
+                )
+                and aid is not null';
+
+        if($origin) {
+            $this->_sql .= '
+                and origin = :origin
+            ';
+        }
+
+        $this->_sql .= '
             order by published desc
             ';
 
-        if($limitr)
-            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+        if($limitr) {
+            $this->_sql .= ' limit '.$limitr.' offset '.$limitf;
+        }
 
-        $this->prepare(
-            'Postn',
-            [
-                'origin' => $this->_user
-            ]
-        );
+        if($origin) {
+            $this->prepare(
+                'Postn',
+                [
+                    'origin' => $origin,
+                    'subscription.jid' => $this->_user
+                ]
+            );
+        } else {
+            $this->prepare('Postn', ['subscription.jid' => $this->_user]);
+        }
 
         return $this->run('Postn');
     }

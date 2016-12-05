@@ -1,17 +1,20 @@
+<a onclick="CommunityHeader_ajaxTestPublish('{$server}', '{$node}')" class="button action color" title="{$c->__('menu.add_post')}">
+    <i class="zmdi zmdi-edit"></i>
+</a>
 <ul class="list thick">
     <li>
         {if="$subscription == null"}
             <a class="button oppose green color" title="{$c->__('group.subscribe')}"
-            onclick="Group_ajaxAskSubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
+            onclick="CommunityHeader_ajaxAskSubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
                 Join
             </a>
         {else}
             <a class="button oppose flat" title="{$c->__('group.unsubscribe')}"
-            onclick="Group_ajaxAskUnsubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
+            onclick="CommunityHeader_ajaxAskUnsubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
                 Leave
             </a>
         {/if}
-        <span id="back" class="primary icon active gray" onclick="history.back()">
+        <span class="primary icon active gray" onclick="history.back()">
             <i class="zmdi zmdi-arrow-back"></i>
         </span>
         <p class="line">

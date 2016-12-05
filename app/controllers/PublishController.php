@@ -1,14 +1,15 @@
 <?php
 use Movim\Controller\Base;
 
-class ChatController extends Base
+class PublishController extends Base
 {
-    function load() {
+    function load()
+    {
         $this->session_only = true;
     }
 
     function dispatch()
     {
-        $this->page->setTitle(__('page.chats'));
+        $this->page->setTitle(__('page.publish'));
     }
 }

@@ -30,13 +30,7 @@ var Publish = {
             return;
         }
 
-        // We are on the news page
-        if(typeof Post_ajaxClear === 'function') {
-            Post_ajaxClear();
-            MovimTpl.hidePanel();
-        } else {
-            MovimUtils.reload(BASE_URI + '?group/' + server + '/' + node);
-        }
+        history.back();
     },
 
     checkFilled: function() {
@@ -62,6 +56,19 @@ var Publish = {
         MovimUtils.textareaAutoheight(document.querySelector('#content_field textarea'));
     }
 }
+
+MovimWebsocket.attach(function() {
+    var parts = MovimUtils.urlParts();
+    if(parts.params.length > 3 && parts.params[3] == 'share') {
+        Publish_ajaxReply(parts.params[0], parts.params[1], parts.params[2]);
+    } else if(parts.params.length > 2) {
+        Publish_ajaxCreate(parts.params[0], parts.params[1], parts.params[2]);
+    } else if(parts.params.length > 0) {
+        Publish_ajaxCreate(parts.params[0], parts.params[1]);
+    } else {
+        Publish_ajaxCreate();
+    }
+});
 
 Upload.attach(function() {
     var embed = document.querySelector('input[name=embed]');

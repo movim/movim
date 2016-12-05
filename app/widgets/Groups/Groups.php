@@ -19,8 +19,6 @@ class Groups extends \Movim\Widget\Base
         $this->registerEvent('pubsub_create_handle', 'onCreate');
         $this->registerEvent('pubsub_testcreate_handle', 'onTestCreate');
         $this->registerEvent('pubsub_testcreate_error', 'onTestCreateError');
-        $this->registerEvent('pubsub_delete_handle', 'onDelete');
-        $this->registerEvent('pubsub_delete_error', 'onDeleteError');
         $this->addjs('groups.js');
     }
 
