@@ -13,6 +13,8 @@ var Group = {
 MovimWebsocket.attach(function() {
     var parts = MovimUtils.urlParts();
     if(parts.params.length > 0) {
+        Group_ajaxGetMetadata(parts.params[0], parts.params[1]);
+        Group_ajaxGetAffiliations(parts.params[0], parts.params[1]);
         Group_ajaxGetItems(parts.params[0], parts.params[1]);
     }
 });

@@ -18,6 +18,29 @@ article section {
     padding-top: 2rem;
 }
 
+article section.limited {
+    display: block;
+    max-height: 80rem;
+    overflow: hidden;
+}
+
+article section.limited:after {
+    content: "";
+    display: block;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+    width: 100%;
+    height: 5rem;
+    position: absolute;
+    bottom: 0;
+    pointer-events: none;
+}
+
+@media screen and (max-width: 1024px) {
+    article section.limited {
+        max-height: 40rem;
+    }
+}
+
 article img,
 article video {
     max-width: 100%;

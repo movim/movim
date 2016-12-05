@@ -10,10 +10,7 @@
 </nav>
 
 <main>
-    <section style="background-color: #EEE;">
-        <aside><?php $this->widget('NewsNav');?></aside>
-        <?php $this->widget('Menu');?>
-        <?php //$this->widget('Post');?>
-        <?php //$this->widget('Publish');?>
+    <section>
+        <?php $this->widget('Post');?>
     </section>
 </main>

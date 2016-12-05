@@ -193,12 +193,33 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     width: 70%;
     position: absolute;
     right: 0;
-    /*transition: left .3s cubic-bezier(.4,0,.2,1);*/
 }
 
+@media screen and (min-width: 1025px) {
+    main > section > aside {
+        width: 33%;
+        right: 0;
+        position: absolute;
+        margin-right: 2%;
+    }
+
+    main > section > aside > * {
+        max-width: 40rem;
+    }
+
+    main > section > aside + div {
+        width: 100%;
+    }
+
+    main > section > aside + div > * {
+        margin-right: 35%;
+        margin-left: auto;
+    }
+}
+/*
 main > section > div:first-child:nth-last-child(2) ~ div {
     background-color: white;
-}
+}*/
 
 main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
     height: calc(100% - 7.5rem);
@@ -244,6 +265,14 @@ main > section > div > div.contained > * {
 
     body > nav {
         width: 0;
+    }
+
+    aside {
+        display: none;
+    }
+
+    main > section:not(.enabled) > aside + div:not(:first-child) {
+        display: block;
     }
 }
 

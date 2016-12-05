@@ -1,19 +1,7 @@
-{if="$page == 0"}
-    <header class="relative">
-        <ul class="list middle">
-            <li>
-                <span id="back" class="primary icon active" onclick="MovimTpl.hidePanel(); Group_ajaxClear();">
-                    <i class="zmdi zmdi-arrow-back"></i>
-                </span>
-            </li>
-        </ul>
-    </header>
-{/if}
-
 {if="!empty($posts)"}
-    <ul class="list card active flex shadow">
+    <ul class="list card shadow">
     {loop="$posts"}
-        <li class="block" onclick="MovimUtils.redirect('{$c->route('news', [$value->origin, $value->node, $value->nodeid])}')">
+    <!--    <li class="block" onclick="MovimUtils.redirect('{$c->route('news', [$value->origin, $value->node, $value->nodeid])}')">
             {$picture = $value->getPicture()}
             {if="$picture != null"}
                 <span class="icon top" style="background-image: url({$picture});"></span>
@@ -46,7 +34,8 @@
                 {/if}
                 <span class="info">{$value->published|strtotime|prepareDate}</span>
             </p>
-        </li>
+        </li>-->
+        {$c->preparePost($value)}
     {/loop}
     </ul>
 {else}

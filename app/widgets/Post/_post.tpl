@@ -15,7 +15,7 @@
     {if="!$external && !$public"}
         <ul class="list middle">
             <li>
-                <span class="primary icon active" onclick="MovimTpl.hidePanel(); Post_ajaxClear();">
+                <span class="primary icon gray active" onclick="history.back();">
                     <i class="zmdi zmdi-arrow-back"></i>
                 </span>
 

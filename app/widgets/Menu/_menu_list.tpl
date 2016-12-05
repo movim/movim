@@ -8,17 +8,31 @@
                 <span class="primary on_desktop icon gray">
                     <i class="zmdi zmdi-filter-list"></i>
                 </span>
-                <span class="control icon active gray on_mobile" onclick="MovimTpl.showPanel()">
+                <!--<span class="control icon active gray on_mobile" onclick="MovimTpl.showPanel()">
                     <i class="zmdi zmdi-eye"></i>
-                </span>
+                </span>-->
                 <p class="center line">{$c->__('page.news')}</p>
             </li>
         </ul>
         <ul class="tabs wide">
-            <li {if="$type == 'all'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetAll()">{$c->__('menu.all')}</a></li>
-            <li {if="$type == 'news'"}class="active"{/if} ><a href="#" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}"><i class="zmdi zmdi-pages"></i></a></li>
-            <li {if="$type == 'feed'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}"><i class="zmdi zmdi-accounts"></i></a></li>
-            <li {if="$type == 'me'"}class="active"{/if}><a href="#" onclick="Menu_ajaxGetMe()" title="{$c->__('menu.mine')}"><i class="zmdi zmdi-edit"></i></a></li>
+            <li {if="$type == 'all'"}class="active"{/if}>
+                <a href="#" onclick="Menu_ajaxGetAll()">{$c->__('menu.all')}</a>
+            </li>
+            <li {if="$type == 'news'"}class="active"{/if} >
+                <a href="#" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}">
+                    {$c->__('page.communities')}
+                </a>
+            </li>
+            <li {if="$type == 'feed'"}class="active"{/if}>
+                <a href="#" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}">
+                    {$c->__('page.contacts')}
+                </a>
+            </li>
+            <li {if="$type == 'me'"}class="active"{/if}>
+                <a href="#" onclick="Menu_ajaxGetMe()" title="{$c->__('menu.mine')}">
+                    {$c->__('page.blog')}
+                </a>
+            </li>
         </ul>
     </header>
 {/if}
@@ -26,11 +40,11 @@
 {if="$items"}
     {if="$page == 0"}
         <div id="menu_refresh"></div>
-        <ul class="list card shadow active flex stacked" id="menu_wrapper">
+        <div class="list card shadow" id="menu_wrapper">
     {/if}
 
     {loop="$items"}
-        <li
+        <!--<li
             tabindex="{$page*$paging+$key+1}"
             class="block large"
             data-id="{$value->nodeid}"
@@ -127,19 +141,22 @@
                     </ul>
 
             {/if}
-        </li>
+        </li>-->
+        {$c->preparePost($value)}
     {/loop}
     {if="count($items) == $paging"}
-    <li id="history" class="block large" onclick="{$history} this.parentNode.removeChild(this);">
-        <span class="icon primary gray">
-            <i class="zmdi zmdi-time-restore"></i>
-        </span>
-        <p class="normal center line">{$c->__('post.older')}</p>
-    </li>
+        <ul class="block list active thick">
+            <li id="history" class="block large" onclick="{$history} this.parentNode.removeChild(this);">
+                <span class="icon primary gray">
+                    <i class="zmdi zmdi-time-restore"></i>
+                </span>
+                <p class="normal center">{$c->__('post.older')}</p>
+            </li>
+        </ul>
     {/if}
 
     {if="$page == 0"}
-        </ul>
+        </div>
     {/if}
 {elseif="$page == 0"}
     <div id="menu_refresh"></div>

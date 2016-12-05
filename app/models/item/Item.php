@@ -128,10 +128,10 @@ class Item extends Model
         }
     }
 
-    public function getLogo()
+    public function getLogo($size = 120)
     {
         $p = new Picture;
-        return $p->get($this->server.$this->node, 120);
+        return $p->get($this->server.$this->node, $size);
     }
 
     public function getName()

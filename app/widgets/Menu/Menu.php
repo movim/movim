@@ -2,6 +2,8 @@
 
 use Moxl\Xec\Action\Pubsub\GetItems;
 
+include_once WIDGETS_PATH.'Post/Post.php';
+
 class Menu extends \Movim\Widget\Base
 {
     private $_paging = 15;
@@ -191,6 +193,12 @@ class Menu extends \Movim\Widget\Base
         }
 
         return $html;
+    }
+
+    function preparePost($p)
+    {
+        $pw = new \Post;
+        return $pw->preparePost($p, true, true, true);
     }
 
     function display()

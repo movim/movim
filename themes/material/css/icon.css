@@ -24,6 +24,10 @@ span.icon.top {
     left: 0;
 }
 
+span.icon.top.preview {
+    height: 25rem;
+}
+
 span.icon.primary.thumb {
     left: 0;
     width: 7rem;

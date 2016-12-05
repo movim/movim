@@ -69,7 +69,7 @@ ul.list.thick li .primary:not(.bubble):not(.thumb):not(.top) {
     padding: 1.75rem 0.5rem;
 }
 
-ul.list > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul),
+ul.list > li > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul):not(article),
 ul.list li.subheader p {
     box-sizing: border-box;
     padding-right: 2rem;

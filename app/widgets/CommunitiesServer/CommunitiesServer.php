@@ -8,26 +8,17 @@ use Moxl\Xec\Action\Pubsub\TestCreate;
 
 use Cocur\Slugify\Slugify;
 
-class Groups extends \Movim\Widget\Base
+class CommunitiesServer extends \Movim\Widget\Base
 {
-    private $_list_server;
-
-    function load()
+    public function load()
     {
         $this->registerEvent('disco_items_handle', 'onDisco');
         $this->registerEvent('disco_items_error', 'onDiscoError');
         $this->registerEvent('pubsub_create_handle', 'onCreate');
         $this->registerEvent('pubsub_testcreate_handle', 'onTestCreate');
         $this->registerEvent('pubsub_testcreate_error', 'onTestCreateError');
-        $this->registerEvent('pubsub_delete_handle', 'onDelete');
-        $this->registerEvent('pubsub_delete_error', 'onDeleteError');
-        $this->addjs('groups.js');
-    }
 
-    function onDisco($packet)
-    {
-        $server = $packet->content;
-        $this->displayServer($server);
+        $this->addjs('communitiesserver.js');
     }
 
     function onCreate($packet)
@@ -38,13 +29,21 @@ class Groups extends \Movim\Widget\Base
         $this->ajaxDisco($server);
     }
 
+    function onDisco($packet)
+    {
+        $server = $packet->content;
+
+        RPC::call('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($server));
+    }
+
     function onDiscoError($packet)
     {
-        $id = new \Modl\ItemDAO();
-        $id->deleteItems($packet->content);
+        $server = $packet->content;
 
-        RPC::call('MovimTpl.fill', '#groups_widget', $this->prepareSubscriptions());
-        RPC::call('Groups.refresh');
+        $id = new \Modl\ItemDAO();
+        $id->deleteItems($server);
+
+        RPC::call('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($server));
 
         Notification::append(null, $this->__('groups.disco_error'));
     }
@@ -56,31 +55,12 @@ class Groups extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('server', $server);
 
-        Dialog::fill($view->draw('_groups_add', true));
+        Dialog::fill($view->draw('_communitiesserver_add', true));
     }
 
     function onTestCreateError($packet)
     {
         Notification::append(null, $this->__('groups.no_creation'));
-    }
-
-    function ajaxHeader()
-    {
-        $id = new \Modl\ItemDAO();
-
-        $view = $this->tpl();
-        $view->assign('servers', $id->getGroupServers());
-        $header = $view->draw('_groups_header', true);
-
-        Header::fill($header);
-    }
-
-    function ajaxSubscriptions()
-    {
-        $html = $this->prepareSubscriptions();
-
-        RPC::call('MovimTpl.fill', '#groups_widget', $html);
-        RPC::call('Groups.refresh');
     }
 
     function ajaxDisco($server)
@@ -90,7 +70,7 @@ class Groups extends \Movim\Widget\Base
             return;
         }
 
-        RPC::call('MovimTpl.fill', '#groups_widget', '');
+        RPC::call('MovimTpl.fill', '#communities_server', '');
 
         $r = new Items;
         $r->setTo($server)->request();
@@ -118,7 +98,6 @@ class Groups extends \Movim\Widget\Base
             return;
         }
 
-
         $slugify = new Slugify();
         $uri = $slugify->slugify($form->name->value);
 
@@ -134,45 +113,16 @@ class Groups extends \Movim\Widget\Base
           ->request();
     }
 
-    private function displayServer($server)
+    public function prepareCommunitiesServer($server)
     {
-        if(!$this->validateServer($server)) return;
-
-        $html = $this->prepareServer($server);
-
-        RPC::call('MovimTpl.fill', '#groups_widget', $html);
-        RPC::call('Groups.refresh');
-    }
-
-    function checkNewServer($node) {
-        $r = false;
-
-        if($this->_list_server != $node->server)
-            $r = true;
-
-        $this->_list_server = $node->server;
-        return $r;
-    }
-
-    function prepareSubscriptions() {
-        $sd = new \Modl\SubscriptionDAO;
-
-        $view = $this->tpl();
-        $view->assign('subscriptions', $sd->getSubscribed());
-        $html = $view->draw('_groups_subscriptions', true);
-
-        return $html;
-    }
-
-    private function prepareServer($server) {
         $id = new \Modl\ItemDAO;
 
         $view = $this->tpl();
+        $view->assign('item', $id->getJid($server));
         $view->assign('nodes', $id->getItems($server));
         $view->assign('server', $server);
-        $html = $view->draw('_groups_server', true);
 
-        return $html;
+        return $view->draw('_communitiesserver', true);
     }
 
     /**
@@ -186,7 +136,8 @@ class Groups extends \Movim\Widget\Base
         return ($validate_server->validate($server));
     }
 
-    function display()
+    public function display()
     {
+        $this->view->assign('server', $this->get('s'));
     }
 }

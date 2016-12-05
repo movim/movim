@@ -220,7 +220,7 @@ class Post extends \Movim\Widget\Base
         return $view->draw('_post_empty', true);
     }
 
-    function preparePost($p, $external = false, $public = false)
+    function preparePost($p, $external = false, $public = false, $card = false)
     {
         $view = $this->tpl();
 
@@ -244,7 +244,12 @@ class Post extends \Movim\Widget\Base
 
             $view->assign('post', $p);
             $view->assign('attachments', $p->getAttachments());
-            return $view->draw('_post', true);
+
+            if($card) {
+                return $view->draw('_post_card', true);
+            } else {
+                return $view->draw('_post', true);
+            }
         } elseif(!$external) {
             return $this->prepareEmpty();
         }

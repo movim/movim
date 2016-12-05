@@ -91,9 +91,9 @@ class ItemDAO extends SQL
 
         $this->prepare(
             'Item',
-            array(
+            [
                 'node' => 'urn:xmpp:microblog:0:comments%'
-            )
+            ]
         );
 
         return $this->run('Server');
@@ -172,9 +172,9 @@ class ItemDAO extends SQL
 
         $this->prepare(
             'Item',
-            array(
+            [
                 'server' => $server
-            )
+            ]
         );
 
         return $this->run('Item');
@@ -190,9 +190,9 @@ class ItemDAO extends SQL
 
         $this->prepare(
             'Item',
-            array(
+            [
                 'server' => $server
-            )
+            ]
         );
 
         return $this->run('Item', 'item');
@@ -207,9 +207,9 @@ class ItemDAO extends SQL
 
         $this->prepare(
             'Item',
-            array(
+            [
                 'server' => $server
-            )
+            ]
         );
 
         return $this->run('Item', 'item');
@@ -230,9 +230,9 @@ class ItemDAO extends SQL
 
         $this->prepare(
             'Item',
-            array(
+            [
                 'node'      => 'urn:xmpp:microblog%'
-            )
+            ]
         );
 
         return $this->run('Item');
@@ -245,9 +245,9 @@ class ItemDAO extends SQL
 
         $this->prepare(
             'Item',
-            array(
+            [
                 'server' => $server
-            )
+            ]
         );
 
         return $this->run('Item');
@@ -261,13 +261,30 @@ class ItemDAO extends SQL
 
         $this->prepare(
             'Item',
-            array(
+            [
                 'server' => $server,
                 'node' => $item
-            )
+            ]
         );
 
         return $this->run('Item');
+    }
+
+    function getJid($jid) {
+        $this->_sql = '
+            select * from item
+            where
+                jid = :jid
+                and node = \'\'';
+
+        $this->prepare(
+            'Item',
+            [
+                'jid' => $jid
+            ]
+        );
+
+        return $this->run('Item', 'item');
     }
 
     function getItem($server, $item) {
@@ -279,10 +296,10 @@ class ItemDAO extends SQL
 
         $this->prepare(
             'Item',
-            array(
+            [
                 'node' => $item,
                 'server' => $server
-            )
+            ]
         );
 
         return $this->run('Item', 'item');

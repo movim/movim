@@ -30,6 +30,7 @@ class Route extends Base
                 'infos'         => false,
                 'login'         => ['err'],
                 'news'          => ['s', 'n', 'i'],
+                'post'          => ['s', 'n', 'i'],
                 'room'          => ['r'],
                 'share'         => ['url'],
                 'visio'         => false

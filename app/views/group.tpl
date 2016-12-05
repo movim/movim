@@ -9,9 +9,28 @@
 </nav>
 
 <main>
-    <section>
-        <?php $this->widget('Groups'); ?>
-        <?php $this->widget('Group'); ?>
-        <?php $this->widget('Publish'); ?>
+    <section style="background-color: #EEE;">
+        <?php if(empty($_GET['s'])) { ?>
+            <aside>
+
+            </aside>
+            <?php $this->widget('Communities'); ?>
+        <?php } elseif(empty($_GET['n'])) { ?>
+            <aside>
+
+            </aside>
+            <?php $this->widget('CommunitiesServer'); ?>
+        <?php } else { ?>
+            <aside>
+                <?php $this->widget('CommunityData'); ?>
+                <?php $this->widget('CommunityAffiliations'); ?>
+            </aside>
+            <div id="community">
+            <?php $this->widget('CommunityHeader'); ?>
+            <?php //$this->widget('Groups'); ?>
+            <?php $this->widget('Group'); ?>
+            <?php //$this->widget('Publish'); ?>
+            </div>
+        <?php } ?>
     </section>
 </main>
