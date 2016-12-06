@@ -159,6 +159,7 @@ main > section {
 }
 
 main > section > div {
+    overflow-y: auto;
     display: block;
     float: left;
     height: 100%;
