@@ -144,6 +144,7 @@ main {
     background-color: white;
     transition: opacity 0.3s ease-in-out;
     transform: translateZ(0);
+    overflow-y: auto;
 }
 
 nav + main {
@@ -154,6 +155,7 @@ nav + main {
 main > section {
     height: 100%;
     position: relative;
+    overflow-y: auto;
 }
 
 main > section > div {
@@ -196,22 +198,25 @@ main > section > div:first-child:nth-last-child(2) ~ div {
 
 @media screen and (min-width: 1025px) {
     main > section > aside {
-        width: calc(50% - 30rem);
-        right: 0;
-        position: absolute;
+        width: calc(50% - 28rem);
+        float: right;
+        max-height: 100%;
     }
 
     main > section > aside > * {
         max-width: 45rem;
+        margin-left: 1rem;
     }
 
     main > section > aside + div {
-        width: 100%;
+        width: calc(50% + 28rem);
+        float: left;
+        height: auto;
     }
 
     main > section > aside + div > * {
-        margin-right: calc(50% - 30rem);
-        margin-left: auto;
+        max-width: 100rem;
+        margin-right: 1rem;
     }
 }
 /*

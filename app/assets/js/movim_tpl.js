@@ -39,6 +39,8 @@ var MovimTpl = {
         } else if(MovimTpl.isPanel()) {
             MovimTpl.hidePanel();
             window.history.back();
+        } else {
+            history.back();
         }
     },
     fill : function(selector, html) {
