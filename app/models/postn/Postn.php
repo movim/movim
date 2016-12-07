@@ -312,8 +312,6 @@ class Postn extends Model
                     $link->addAttribute('target', '_blank');
                 }
             }
-
-            $this->contentcleaned = $xml->children()->asXML();
         }
 
         $this->setAttachments($entry->entry->link, $extra);
