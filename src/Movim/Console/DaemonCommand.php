@@ -40,6 +40,13 @@ class DaemonCommand extends Command
                'Port on which the daemon will listen',
                8080
             )
+            ->addOption(
+               'interface',
+               'i',
+               InputOption::VALUE_OPTIONAL,
+               'Interface on which the daemon will listen',
+               '127.0.0.1'
+            )
         ;
     }
 
@@ -72,7 +79,7 @@ class DaemonCommand extends Command
         $app  = new HttpServer(new WsServer($core));
 
         $socket = new Reactor($loop);
-        $socket->listen($input->getOption('port'), '127.0.0.1');
+        $socket->listen($input->getOption('port'), $input->getOption('interface'));
 
         $socketApi = new Reactor($loop);
         new Api($socketApi, $core);
