@@ -90,7 +90,7 @@
                         href="{$c->route('node', [$post->origin, $post->node, $post->nodeid])}"
                         {/if}
                     {else}
-                        href="{$c->route('news', [$post->origin, $post->node, $post->nodeid])}"
+                        href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}"
                     {/if}
                     >
                     {if="$post->title != null"}
