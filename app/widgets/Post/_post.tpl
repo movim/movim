@@ -109,7 +109,11 @@
                     {if="!$public"}</a>{/if}
                 {/if}
                 {if="!$post->isMicroblog()"}
-                    {$post->origin} /
+                    {if="!$public"}
+                    <a href="{$c->route('community', $post->origin)}">
+                    {/if}
+                        {$post->origin}
+                    {if="!$public"}</a>{/if} /
                     {if="!$public"}
                     <a href="{$c->route('community', [$post->origin, $post->node])}">
                     {/if}
