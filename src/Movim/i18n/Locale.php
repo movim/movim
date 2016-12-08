@@ -122,13 +122,15 @@ class Locale {
     /**
      * @desc Auto-detects the language from the user browser
      */
-    public function detect()
+    public function detect($accepted = false)
     {
         $langs = [];
 
+        $languages = ($accepted != false) ? $accepted : $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+
         preg_match_all(
             '/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i',
-            $_SERVER['HTTP_ACCEPT_LANGUAGE'],
+            $languages,
             $lang_parse);
 
         if (count($lang_parse[1])) {
@@ -156,6 +158,8 @@ class Locale {
 
             $this->language = 'en';
         }
+
+        return $this->language;
     }
 
     /**

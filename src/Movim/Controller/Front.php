@@ -7,12 +7,14 @@ use Movim\Route;
 
 class Front extends Base
 {
-    public function handle() {
+    public function handle()
+    {
         $r = new Route;
         $this->runRequest($r->find());
     }
 
-    public function loadController($request) {
+    public function loadController($request)
+    {
         $class_name = ucfirst($request).'Controller';
         if(file_exists(APP_PATH . 'controllers/'.$class_name.'.php')) {
             $controller_path = APP_PATH . 'controllers/'.$class_name.'.php';
@@ -31,7 +33,8 @@ class Front extends Base
     /*
      * Here we load, instanciate and execute the correct controller
      */
-    public function runRequest($request) {
+    public function runRequest($request)
+    {
         $c = $this->loadController($request);
 
         $sess = \Sessionx::start();

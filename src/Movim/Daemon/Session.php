@@ -18,18 +18,21 @@ class Session {
     protected   $buffer;
     private     $state;
 
+    private     $language;
+
     private     $front;
     private     $uniques = [];
 
-    public function __construct($loop, $sid, $baseuri)
+    public function __construct($loop, $sid, $baseuri, $language = false)
     {
         $this->sid     = $sid;
         $this->baseuri = $baseuri;
+        $this->language = $language;
 
         $this->clients = new \SplObjectStorage;
         $this->register($loop, $this);
 
-        $this->front = new Front;
+        //$this->front = new Front;
 
         $this->timestamp = time();
     }
@@ -105,7 +108,8 @@ class Session {
                                         null,
                                         [
                                             'sid'       => $this->sid,
-                                            'baseuri'   => $this->baseuri
+                                            'baseuri'   => $this->baseuri,
+                                            'language'  => $this->language
                                         ]
                                     );
 

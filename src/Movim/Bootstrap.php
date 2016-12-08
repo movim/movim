@@ -223,6 +223,9 @@ class Bootstrap
 
         if(isset($lang)) {
             $l->load($lang);
+        } elseif(getenv('language') != false) {
+            $l->detect(getenv('language'));
+            $l->loadPo();
         } elseif(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
             $l->detect();
             $l->loadPo();

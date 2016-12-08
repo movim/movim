@@ -76,7 +76,8 @@ class Core implements MessageComponentInterface {
         $sid = $this->getSid($conn);
         if($sid != null) {
             if(!array_key_exists($sid, $this->sessions)) {
-                $this->sessions[$sid] = new Session($this->loop, $sid, $this->baseuri);
+                $language = $this->getLanguage($conn);
+                $this->sessions[$sid] = new Session($this->loop, $sid, $this->baseuri, $language);
             }
 
             $this->sessions[$sid]->attach($this->loop, $conn);
@@ -155,6 +156,12 @@ class Core implements MessageComponentInterface {
         if(isset($this->sessions[$sid])) {
             return $this->sessions[$sid];
         }
+    }
+
+    private function getLanguage(ConnectionInterface $conn)
+    {
+        $languages = $conn->httpRequest->getHeader('Accept-Language');
+        return (is_array($languages)) ? $languages[0] : false;
     }
 
     private function getSid(ConnectionInterface $conn)
