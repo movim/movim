@@ -160,8 +160,7 @@ class ItemDAO extends SQL
                 and s.node = item.node
             where item.node != \'\'
                 and item.node not like \'/%\'
-                and item.node != \'urn:xmpp:microblog:0\'
-                and item.server != \'nsfw.movim.eu\'';
+                and item.node != \'urn:xmpp:microblog:0\'';
 
         if($server) {
             $this->_sql .= '
