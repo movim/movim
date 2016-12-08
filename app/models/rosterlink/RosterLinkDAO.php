@@ -139,7 +139,8 @@ class RosterLinkDAO extends SQL {
         return $this->run('RosterLink', 'item');
     }
 
-    function getGroups() {
+    function getGroups()
+    {
         $this->_sql = '
             select groupname
             from rosterlink
@@ -148,9 +149,9 @@ class RosterLinkDAO extends SQL {
 
         $this->prepare(
             'RosterLink',
-            array(
+            [
                 'session' => $this->_user
-            )
+            ]
         );
 
         $results = $this->run('RosterLink');
@@ -167,7 +168,8 @@ class RosterLinkDAO extends SQL {
         }
     }
 
-    function getRoster($to = null) {
+    function getRoster($to = null)
+    {
         if($to != null)
             $session = $to;
         else
@@ -180,29 +182,31 @@ class RosterLinkDAO extends SQL {
 
         $this->prepare(
             'RosterLink',
-            array(
+            [
                 'session' => $session
-            )
+            ]
         );
 
         return $this->run('RosterLink');
     }
 
-    function clearRosterLink() {
+    function clearRosterLink()
+    {
         $this->_sql = '
             delete from rosterlink
             where session = :session';
         $this->prepare(
             'RosterLink',
-            array(
+            [
                 'session' => $this->_user
-            )
+            ]
         );
 
         return $this->run('RosterLink');
     }
 
-    function delete($jid) {
+    function delete($jid)
+    {
         $this->_sql = '
             delete from rosterlink
             where session = :session
@@ -210,10 +214,10 @@ class RosterLinkDAO extends SQL {
 
         $this->prepare(
             'RosterLink',
-            array(
+            [
                 'session' => $this->_user,
                 'jid' => $jid
-            )
+            ]
         );
 
         return $this->run('RosterLink');

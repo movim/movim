@@ -36,9 +36,12 @@ class Communities extends \Movim\Widget\Base
 
     function prepareCommunities()
     {
-        $id = new \Modl\ItemDAO();
+        $id = new \Modl\ItemDAO;
+        $pd = new \Modl\PostnDAO;
 
         $view = $this->tpl();
+
+        $view->assign('communities', $id->getItems(false, 0, 10));
         $view->assign('servers', $id->getGroupServers());
 
         return $view->draw('_communities', true);

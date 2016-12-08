@@ -7,13 +7,20 @@
 </ul>
 
 {if="$c->getView() == 'news'"}
-    <ul class="list active middle divided">
+    <ul class="list active middle card shadow">
         <li class="subheader">
             <p>{$c->__('post.blog_last')}</p>
         </li>
         {loop="$blogs"}
             {$attachments = $value->getAttachments()}
-            <li onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')"i>
+            <li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
+                {if="$value->picture"}
+                    <span class="primary thumb icon" style="background-image: url('{$value->picture}');"></span>
+                {else}
+                    <span class="primary thumb color icon color {$value->node|stringToColor}">
+                        {$value->node|firstLetterCapitalize}
+                    </span>
+                {/if}
                 <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
                 {if="isset($value->title)"}
                     {$value->title}
@@ -39,7 +46,7 @@
     </ul>
 {/if}
 
-<ul class="list active middle divided">
+<ul class="list active middle card shadow">
     <li class="subheader active">
         {if="$c->getView() == 'news'"}
         <span class="control active icon gray">
@@ -52,7 +59,14 @@
     </li>
 
     {loop="$posts"}
-        <li onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
+        <li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
+            {if="$value->picture"}
+                <span class="primary thumb icon" style="background-image: url('{$value->picture}');"></span>
+            {else}
+                <span class="primary thumb color icon color {$value->node|stringToColor}">
+                    {$value->node|firstLetterCapitalize}
+                </span>
+            {/if}
             <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
             {if="isset($value->title)"}
                 {$value->title}
