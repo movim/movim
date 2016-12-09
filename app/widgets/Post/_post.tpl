@@ -105,8 +105,8 @@
                     {if="!$public"}
                     <a href="#" onclick="if(typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                     {/if}
-                        {$contact->getTrueName()}
-                    {if="!$public"}</a>{/if}
+                    {$contact->getTrueName()}
+                    {if="!$public"}</a>{/if} –
                 {/if}
                 {if="!$post->isMicroblog()"}
                     {if="!$public"}

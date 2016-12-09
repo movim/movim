@@ -70,16 +70,10 @@
                 </span>
             </p>
             <p>
-                {$value->server} -
-                {if="$value->num > 0"}
-                     {$c->__('groups.num', $value->num)}
-                {/if}
-                {if="$value->sub > 0 && $value->num > 0"}
-                  -
-                {/if}
+                {$value->server}
                 {if="$value->sub > 0"}
                     <span title="{$c->__('groups.sub', $value->sub)}">
-                        {$value->sub} <i class="zmdi zmdi-accounts"></i>
+                        - {$value->sub} <i class="zmdi zmdi-accounts"></i>
                     </span>
                 {/if}
                 <span class="info">
