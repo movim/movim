@@ -4,6 +4,9 @@
             <span class="primary icon gray active on_mobile" onclick="history.back()">
                 <i class="zmdi zmdi-arrow-left"></i>
             </span>
+            <span class="control icon gray active" onclick="MovimUtils.redirect('{$c->route('community', 'subscriptions')}')">
+                <i class="zmdi zmdi-settings"></i>
+            </span>
             <p class="center">{$c->__('page.communities')}</p>
             <p class="center line">{$c->__('group.empty_text')}</p>
         </li>

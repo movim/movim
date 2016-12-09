@@ -15,6 +15,11 @@
                 <?php $this->widget('NewsNav');?>
             </aside>
             <?php $this->widget('Communities'); ?>
+        <?php } elseif($_GET['s'] == 'subscriptions') { ?>
+            <aside>
+                <?php $this->widget('NewsNav');?>
+            </aside>
+            <?php $this->widget('CommunitySubscriptions'); ?>
         <?php } elseif(empty($_GET['n'])) { ?>
             <aside>
                 <?php $this->widget('NewsNav');?>
@@ -27,9 +32,7 @@
             </aside>
             <div id="community">
             <?php $this->widget('CommunityHeader'); ?>
-            <?php //$this->widget('Groups'); ?>
             <?php $this->widget('Group'); ?>
-            <?php //$this->widget('Publish'); ?>
             </div>
         <?php } ?>
     </section>
