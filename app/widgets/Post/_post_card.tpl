@@ -12,7 +12,7 @@
                         <img src="{$url}"/>
                     </span>
                 {else}
-                    <span class="primary icon thumb color {$post->getContact()->jid|stringToColor}">
+                    <span class="primary icon bubble color {$post->getContact()->jid|stringToColor}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}

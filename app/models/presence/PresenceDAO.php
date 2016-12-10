@@ -2,12 +2,15 @@
 
 namespace Modl;
 
-class PresenceDAO extends SQL {
-    function __construct() {
+class PresenceDAO extends SQL
+{
+    function __construct()
+    {
         parent::__construct();
     }
 
-    function set(Presence $presence) {
+    function set(Presence $presence)
+    {
         $id = sha1(
                 $presence->session.
                 $presence->jid.
@@ -33,7 +36,7 @@ class PresenceDAO extends SQL {
 
         $this->prepare(
             'Presence',
-            array(
+            [
                 'value'     => $presence->value,
                 'priority'  => $presence->priority,
                 'status'    => $presence->status,
@@ -47,8 +50,8 @@ class PresenceDAO extends SQL {
                 'mucaffiliation' => $presence->mucaffiliation,
                 'mucrole'   => $presence->mucrole,
                 'id'        => $id,
-                'updated'   => gmdate(DATE_ISO8601)
-            )
+                'updated'   => gmdate(SQL::SQL_DATE)
+            ]
         );
 
         $this->run('Presence');
@@ -96,7 +99,7 @@ class PresenceDAO extends SQL {
 
             $this->prepare(
                 'Presence',
-                array(
+                [
                     'id'        => $id,
                     'session'   => $presence->session,
                     'jid'       => $presence->jid,
@@ -113,9 +116,9 @@ class PresenceDAO extends SQL {
                     'mucjid'    => $presence->mucjid,
                     'mucaffiliation' => $presence->mucaffiliation,
                     'mucrole'   => $presence->mucrole,
-                    'created'   => gmdate(DATE_ISO8601),
-                    'updated'   => gmdate(DATE_ISO8601)
-                )
+                    'created'   => gmdate(SQL::SQL_DATE),
+                    'updated'   => gmdate(SQL::SQL_DATE)
+                ]
             );
 
             $this->run('Presence');
@@ -175,7 +178,8 @@ class PresenceDAO extends SQL {
         return $this->run('Presence', 'item');
     }
 
-    function getMyPresenceRoom($jid) {
+    function getMyPresenceRoom($jid)
+    {
         $this->_sql = '
             select * from presence
             where
@@ -194,7 +198,8 @@ class PresenceDAO extends SQL {
         return $this->run('Presence', 'item');
     }
 
-    function getJid($jid) {
+    function getJid($jid)
+    {
         $this->_sql = '
             select * from presence
             where
@@ -213,7 +218,8 @@ class PresenceDAO extends SQL {
         return $this->run('Presence');
     }
 
-    function clearPresence() {
+    function clearPresence()
+    {
         $this->_sql = '
             delete from presence
             where
@@ -243,7 +249,8 @@ class PresenceDAO extends SQL {
         return $this->run('Presence');
     }
 
-    function clearMuc($muc) {
+    function clearMuc($muc)
+    {
         $this->_sql = '
             delete from presence
             where

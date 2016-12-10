@@ -54,7 +54,7 @@ class Item extends Model
         if($this->jid == null)
             $this->jid = $this->node;
         $this->name   = (string)$item->attributes()->name;
-        $this->updated  = date('Y-m-d H:i:s');
+        $this->updated  = date(SQL::SQL_DATE);
     }
 
     public function setMetadata($metadata, $from, $node)
@@ -74,7 +74,7 @@ class Item extends Model
                     $this->creator = (string)$i->value;
                     break;
                 case 'pubsub#creation_date':
-                    $this->created = (string)$i->value;
+                    $this->created = date(SQL::SQL_DATE, strtotime((string)$i->value));
                     break;
                 case 'pubsub#description':
                     $this->description = (string)$i->value;

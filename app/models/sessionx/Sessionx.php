@@ -2,7 +2,8 @@
 
 namespace modl;
 
-class Sessionx extends Model {
+class Sessionx extends Model
+{
     public $session;
     public $username;
     public $hash;
@@ -13,7 +14,8 @@ class Sessionx extends Model {
     public $start;
     public $timestamp;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->_struct = '
         {
             "session" :

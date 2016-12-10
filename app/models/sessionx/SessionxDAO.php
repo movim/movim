@@ -2,8 +2,10 @@
 
 namespace modl;
 
-class SessionxDAO extends SQL {
-    function init(Sessionx $s) {
+class SessionxDAO extends SQL
+{
+    function init(Sessionx $s)
+    {
         $this->_sql = '
             update sessionx
             set username    = :username,
@@ -19,7 +21,7 @@ class SessionxDAO extends SQL {
 
         $this->prepare(
             'Sessionx',
-            array(
+            [
                 'session'   => $s->session,
                 'username'  => $s->username,
                 'jid'       => $s->username.'@'.$s->host,
@@ -30,7 +32,7 @@ class SessionxDAO extends SQL {
                 'active'    => $s->active,
                 'start'     => $s->start,
                 'timestamp' => $s->timestamp
-                )
+            ]
         );
 
         $this->run('Sessionx');
@@ -62,7 +64,7 @@ class SessionxDAO extends SQL {
 
             $this->prepare(
                 'Sessionx',
-                array(
+                [
                     'session'   => $s->session,
                     'username'  => $s->username,
                     'jid'       => $s->username.'@'.$s->host,
@@ -73,14 +75,15 @@ class SessionxDAO extends SQL {
                     'active'    => $s->active,
                     'start'     => $s->start,
                     'timestamp' => $s->timestamp
-                )
+                ]
             );
 
             $this->run('Sessionx');
         }
     }
 
-    function update($session, $key, $value) {
+    function update($session, $key, $value)
+    {
         $this->_sql = '
             update sessionx
             set
@@ -91,17 +94,18 @@ class SessionxDAO extends SQL {
 
         $this->prepare(
             'Sessionx',
-            array(
+            [
                 'session'   => $session,
                 $key        => $value,
-                'timestamp' => date(DATE_ISO8601)
-            )
+                'timestamp' => date(SQL::SQL_DATE)
+            ]
         );
 
         $this->run('Sessionx');
     }
 
-    function get($session) {
+    function get($session)
+    {
         $this->_sql = '
             select * from sessionx
             where
@@ -109,15 +113,16 @@ class SessionxDAO extends SQL {
 
         $this->prepare(
             'Sessionx',
-            array(
+            [
                 'session' => $session
-            )
+            ]
         );
 
         return $this->run('Sessionx', 'item');
     }
 
-    function getHash($hash) {
+    function getHash($hash)
+    {
         $this->_sql = '
             select * from sessionx
             where
@@ -125,15 +130,16 @@ class SessionxDAO extends SQL {
 
         $this->prepare(
             'Sessionx',
-            array(
+            [
                 'hash' => $hash
-            )
+            ]
         );
 
         return $this->run('Sessionx', 'item');
     }
 
-    function delete($session) {
+    function delete($session)
+    {
         $this->_sql = '
             delete from sessionx
             where
@@ -141,15 +147,16 @@ class SessionxDAO extends SQL {
 
         $this->prepare(
             'Sessionx',
-            array(
+            [
                 'session' => $session
-            )
+            ]
         );
 
         return $this->run('Sessionx');
     }
 
-    function deleteEmpty() {
+    function deleteEmpty()
+    {
         $this->_sql = '
             delete from sessionx
             where active = 0
@@ -157,26 +164,27 @@ class SessionxDAO extends SQL {
 
         $this->prepare(
             'Sessionx',
-            ['timestamp' => date(DATE_ISO8601, time()-60)]
+            ['timestamp' => date(SQL::SQL_DATE, time()-60)]
         );
 
         return $this->run('Sessionx');
     }
 
-    function clear() {
+    function clear()
+    {
         $this->_sql = '
             truncate table sessionx';
 
         $this->prepare(
             'Sessionx',
-            array(
-            )
+            []
         );
 
         $this->run('Sessionx');
     }
 
-    function getAll() {
+    function getAll()
+    {
         $this->_sql = '
             select * from sessionx order by start desc';
 

@@ -403,7 +403,7 @@ class Chat extends \Movim\Widget\Base
     {
         if(!$this->validateJid($jid)) return;
         $md = new \Modl\MessageDAO;
-        $messages = $md->getHistory(echapJid($jid), date(DATE_ISO8601, strtotime($date)), $this->_pagination);
+        $messages = $md->getHistory(echapJid($jid), $date, $this->_pagination);
 
         if(count($messages) > 0) {
             Notification::append(false, $this->__('message.history', count($messages)));

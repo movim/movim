@@ -2,8 +2,10 @@
 
 namespace modl;
 
-class MessageDAO extends SQL {
-    function set(Message $message) {
+class MessageDAO extends SQL
+{
+    function set(Message $message)
+    {
         $this->_sql = '
             update message
                 set id              = :thread,
@@ -222,17 +224,18 @@ class MessageDAO extends SQL {
 
         $this->prepare(
             'Message',
-            array(
+            [
                 'jidfrom'   => $jid,
                 'jidto'     => $jid,
                 'session' => $this->_user
-            )
+            ]
         );
 
         return $this->run('Message');
     }
 
-    function getHistory($jid, $date, $limit = 30) {
+    function getHistory($jid, $date, $limit = 30)
+    {
         $this->_sql = '
             select * from message
             where session = :session
@@ -245,18 +248,19 @@ class MessageDAO extends SQL {
 
         $this->prepare(
             'Message',
-            array(
+            [
                 'session' => $this->_user,
                 'jidfrom' => $jid,
                 'jidto' => $jid,
-                'published' => $date
-            )
+                'published' => date(SQL::SQL_DATE, strtotime($date))
+            ]
         );
 
         return $this->run('Message');
     }
 
-    function getRoomSubject($room) {
+    function getRoomSubject($room)
+    {
         $this->_sql = '
             select * from message
             where jidfrom = :jidfrom

@@ -2,12 +2,15 @@
 
 namespace modl;
 
-class ContactDAO extends SQL {
-    function __construct() {
+class ContactDAO extends SQL
+{
+    function __construct()
+    {
         parent::__construct();
     }
 
-    function get($jid = null, $empty = false) {
+    function get($jid = null, $empty = false)
+    {
         $this->_sql = '
             select *, privacy.value as privacy from contact
             left outer join privacy
@@ -18,9 +21,9 @@ class ContactDAO extends SQL {
 
         $this->prepare(
             'Contact',
-            array(
+            [
                 'jid' => $jid
-            )
+            ]
         );
 
         $contact = $this->run('Contact', 'item');
@@ -35,9 +38,10 @@ class ContactDAO extends SQL {
         return $contact;
     }
 
-    function set(Contact $contact) {
+    function set(Contact $contact)
+    {
         if(!isset($contact->created)) {
-            $contact->created = date(DATE_ISO8601);
+            $contact->created = date(SQL::SQL_DATE);
         }
 
         $this->_sql = '
@@ -94,7 +98,7 @@ class ContactDAO extends SQL {
 
         $this->prepare(
             'Contact',
-            array(
+            [
                 'fn'    => $contact->fn,
                 'name'  => $contact->name,
                 'date'  => $contact->date,
@@ -150,10 +154,10 @@ class ContactDAO extends SQL {
                 'avatarhash'        => $contact->avatarhash,
 
                 'created'           => $contact->created,
-                'updated'           => date(DATE_ISO8601),
+                'updated'           => date(SQL::SQL_DATE),
 
                 'jid'  => $contact->jid
-            )
+            ]
         );
 
         $this->run('Contact');
@@ -273,7 +277,7 @@ class ContactDAO extends SQL {
 
             $this->prepare(
                 'Contact',
-                array(
+                [
                     'fn'    => $contact->fn,
                     'name'  => $contact->name,
                     'date'  => $contact->date,
@@ -328,18 +332,19 @@ class ContactDAO extends SQL {
 
                     'avatarhash'        => $contact->avatarhash,
 
-                    'created'           => date(DATE_ISO8601),
-                    'updated'           => date(DATE_ISO8601),
+                    'created'           => date(SQL::SQL_DATE),
+                    'updated'           => date(SQL::SQL_DATE),
 
                     'jid'               => $contact->jid
-                )
+                ]
             );
 
             $this->run('Contact');
         }
     }
 
-    function getAll() {
+    function getAll()
+    {
         $this->_sql =
             'select *, privacy.value as privacy from contact
             left outer join privacy
@@ -349,7 +354,8 @@ class ContactDAO extends SQL {
         return $this->run('Contact');
     }
 
-    function searchJid($search) {
+    function searchJid($search)
+    {
         $this->_sql =
             'select *, privacy.value as privacy from contact
             left outer join privacy
@@ -367,7 +373,8 @@ class ContactDAO extends SQL {
         return $this->run('Contact');
     }
 
-    function getAllPublic($limitf = false, $limitr = false) {
+    function getAllPublic($limitf = false, $limitr = false)
+    {
         $this->_sql =
             'select contact.*, presence.*, privacy.value as privacy from contact
             left outer join privacy
@@ -398,7 +405,8 @@ class ContactDAO extends SQL {
         return $this->run('RosterContact');
     }
 
-    function countAllPublic() {
+    function countAllPublic()
+    {
         $this->_sql =
             'select count(*) from contact
             left outer join privacy
@@ -459,7 +467,8 @@ class ContactDAO extends SQL {
     }
 
     // Get the roster without the presences
-    function getRosterSimple() {
+    function getRosterSimple()
+    {
         $this->_sql = '
         select
             rosterlink.jid,
@@ -524,17 +533,18 @@ class ContactDAO extends SQL {
 
         $this->prepare(
             'RosterLink',
-            array(
+            [
                 'session' => $this->_user,
                 'jid' => '%'.$key.'%',
                 'rostername' => '%'.$key.'%'
-            )
+            ]
         );
 
         return $this->run('RosterContact');
     }
 
-    function getRosterFrom() {
+    function getRosterFrom()
+    {
         $this->_sql = '
             select * from rosterlink
             left outer join contact
@@ -544,16 +554,17 @@ class ContactDAO extends SQL {
 
         $this->prepare(
             'RosterLink',
-            array(
+            [
                 'session'            => $this->_user,
                 'rostersubscription' => 'from'
-            )
+            ]
         );
 
         return $this->run('RosterContact');
     }
 
-    function getRosterItem($jid, $item = false) {
+    function getRosterItem($jid, $item = false)
+    {
         $this->_sql = '
         select
             rosterlink.jid,
@@ -595,7 +606,8 @@ class ContactDAO extends SQL {
             return $this->run('RosterContact', 'item');
     }
 
-    function getPresence($jid, $resource) {
+    function getPresence($jid, $resource)
+    {
         $this->_sql = '
             select * from contact
             right outer join presence on contact.jid = presence.mucjid
@@ -606,17 +618,18 @@ class ContactDAO extends SQL {
 
         $this->prepare(
             'Presence',
-            array(
+            [
                 'session' => $this->_user,
                 'jid' => $jid,
                 'resource' => $resource
-            )
+            ]
         );
 
         return $this->run('PresenceContact', 'item');
     }
 
-    function getPresences($jid) {
+    function getPresences($jid)
+    {
         $this->_sql = '
             select * from contact
             right outer join presence on contact.jid = presence.mucjid
@@ -626,16 +639,17 @@ class ContactDAO extends SQL {
 
         $this->prepare(
             'Presence',
-            array(
+            [
                 'session' => $this->_user,
                 'jid' => $jid
-            )
+            ]
         );
 
         return $this->run('PresenceContact');
     }
 
-    function getTop($limit = 6, $filter = false) {
+    function getTop($limit = 6, $filter = false)
+    {
         $filter = ($filter != false) ? implode('\',\'', $filter) : '';
         $this->_sql = '
             select *, jidfrom from (

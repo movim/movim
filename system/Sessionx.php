@@ -1,5 +1,7 @@
 <?php
 
+use Modl\SQL;
+
 class Sessionx
 {
     protected static $_sessionid = null;
@@ -73,7 +75,7 @@ class Sessionx
         $this->_user        = $user;
         $this->_password    = $pass;
         $this->_resource    = 'moxl'.\generateKey(6);
-        $this->_start       = date(DATE_ISO8601);
+        $this->_start       = date(SQL::SQL_DATE);
 
         $sd = new \Modl\SessionxDAO;
         $s = $this->inject();

@@ -73,7 +73,7 @@ class Cache
     private function writeCache($key, $object)
     {
         $data = str_replace("'", "\\'", base64_encode(gzcompress(serialize($object))));
-        $time = date(DATE_ISO8601, time());
+        $time = date(\Modl\SQL::SQL_DATE);
 
         $cd = new \Modl\CacheDAO;
         $c = new \Modl\Cache;

@@ -172,7 +172,7 @@ class Contact extends Model
         && $validate_date->validate($vcard->vCard->BDAY))
             $this->__set('date', (string)$vcard->vCard->BDAY);
 
-        $this->__set('date', date(DATE_ISO8601, strtotime($this->date)));
+        $this->__set('date', date(SQL::SQL_DATE, strtotime($this->date)));
 
         $this->__set('name', (string)$vcard->vCard->NICKNAME);
         $this->__set('fn', (string)$vcard->vCard->FN);

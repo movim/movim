@@ -213,14 +213,14 @@ class Postn extends Model
         if($entry->entry->updated)
             $this->__set('updated', (string)$entry->entry->updated);
         else
-            $this->__set('updated', gmdate(DATE_ISO8601));
+            $this->__set('updated', gmdate(SQL::SQL_DATE));
 
         if($entry->entry->published)
             $this->__set('published', (string)$entry->entry->published);
         elseif($entry->entry->updated)
             $this->__set('published', (string)$entry->entry->updated);
         else
-            $this->__set('published', gmdate(DATE_ISO8601));
+            $this->__set('published', gmdate(SQL::SQL_DATE));
 
         if($delay)
             $this->__set('delay', $delay);

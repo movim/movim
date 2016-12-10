@@ -2,8 +2,10 @@
 
 namespace modl;
 
-class CacheDAO extends SQL {
-    function get($key) {
+class CacheDAO extends SQL
+{
+    function get($key)
+    {
         $this->_sql = '
             select * from cache
             where
@@ -21,7 +23,8 @@ class CacheDAO extends SQL {
         return $this->run('Cache', 'item');
     }
 
-    function set(Cache $cache) {
+    function set(Cache $cache)
+    {
         $this->_sql = '
             update cache
                 set data = :data,
