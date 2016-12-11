@@ -92,7 +92,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 17:18+0200\n"
+"POT-Creation-Date: 2016-12-11 17:28+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -1370,6 +1370,10 @@ msgstr "You are going to delete this post, please confirm your action"
 #, fuzzy
 msgid "Discover more articles on the communities page"
 msgstr "Discover more articles on the Groups page"
+
+#: [post]more
+msgid "Read more"
+msgstr ""
 
 #: [post]comments_disabled
 msgid "Comments disabled"

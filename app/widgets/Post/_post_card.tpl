@@ -130,7 +130,7 @@
                 {/if}
 
                 <a class="button flat oppose" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
-                    Read more
+                    {$c->__('post.more')}
                 </a>
             </p>
         </li>

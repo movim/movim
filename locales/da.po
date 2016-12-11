@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 17:18+0200\n"
+"POT-Creation-Date: 2016-12-11 17:28+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -1374,6 +1374,10 @@ msgstr "Du er ved at slette dette indlæg, bekræft venligst din handling"
 #, fuzzy
 msgid "Discover more articles on the communities page"
 msgstr "Find flere artikler på Grupper-siden"
+
+#: [post]more
+msgid "Read more"
+msgstr ""
 
 #: [post]comments_disabled
 msgid "Comments disabled"
