@@ -144,7 +144,8 @@ class Menu extends \Movim\Widget\Base
         }
     }
 
-    function prepareList($type = 'all', $server = null, $node = null, $page = 0) {
+    function prepareList($type = 'all', $server = null, $node = null, $page = 0)
+    {
         $view = $this->tpl();
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(\Movim\Cache::c('since'));
@@ -170,6 +171,7 @@ class Menu extends \Movim\Widget\Base
                 $items  = $pd->getFeed($page * $this->_paging + $count, $this->_paging);
                 break;
             case 'me' :
+                $view->assign('jid', $this->user->getLogin());
                 $view->assign('history', $this->call('ajaxGetMe', $next));
                 $items  = $pd->getMe($page * $this->_paging + $count, $this->_paging);
                 break;

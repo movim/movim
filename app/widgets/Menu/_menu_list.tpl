@@ -45,7 +45,7 @@
 
 {if="$type == 'me' && $c->supported('pubsub')"}
     <ul class="list active on_desktop flex">
-        <a href="{$c->route('contact', $me->jid)}" class="block">
+        <a href="{$c->route('contact', $jid)}" class="block">
             <li>
                 <span class="primary icon">
                     <i class="zmdi zmdi-account"></i>
