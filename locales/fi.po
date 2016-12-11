@@ -22,9 +22,25 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Communities/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesServer/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityAffiliations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityHeader/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -58,6 +74,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -75,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-13 14:58+0200\n"
+"POT-Creation-Date: 2016-12-11 17:18+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
@@ -505,6 +523,73 @@ msgstr "Tämä käyttäjä ei ole julkaissut vielä mitään"
 msgid "This content is private, please login to see it"
 msgstr "Tämä sisältö on yksityistä, kirjaudu sisään nähdäksesi"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Ryhmät"
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "Lisää keskusteluhuone"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Keskusteluhuoneen ID"
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Nimi"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Nimimerkki"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Huono keskusteluhuoneen ID"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tyhä nimi"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Kirjanmerkit päivitetty"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "Asetukset"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Nimi"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Viesti julkaistu"
@@ -565,11 +650,12 @@ msgstr "Yhdistetty keskusteluhuoneeseen"
 msgid "Disconnected from the chatroom"
 msgstr "Yhdistetty keskusteluhuoneeseen katkaistu"
 
-#: [chatroom]config [group]configuration [page]configuration
+#: [chatroom]config [communityaffiliation]configuration [group]configuration
+#: [page]configuration
 msgid "Configuration"
 msgstr "Asetukset"
 
-#: [chatroom]config_saved
+#: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
 msgstr "Asetukset tallennettu"
 
@@ -604,6 +690,136 @@ msgstr "Lataa lisää kontakteja"
 #: [button]new
 msgid "New conversation"
 msgstr "Uusi keskustelu"
+
+#: [communities]empty_text [group]empty_text
+msgid "Discover, follow and share"
+msgstr ""
+
+#: [communities]counter
+msgid "%s communities"
+msgstr ""
+
+#: [communities]search_server [group]search_server
+msgid "Search for a new server"
+msgstr ""
+
+#: [communities]servers
+msgid "Communities servers"
+msgstr ""
+
+#: [communities]disco_error [groups]disco_error
+msgid "This server doesn't exists"
+msgstr ""
+
+#: [communitiesserver]created [groups]created
+msgid "Group created successfully"
+msgstr "Ryhmän luonti onnistui"
+
+#: [communitiesserver]empty_server
+msgid "There is no Groups yet on this server."
+msgstr ""
+
+#: [communitiesserver]add [groups]add
+msgid "Create a new Group on %s"
+msgstr ""
+
+#: [communitiesserver]name [groups]name
+msgid "Group name"
+msgstr "Ryhmän nimi"
+
+#: [communitiesserver]name_example [groups]name_example
+msgid "My Little Pony - Fan Club"
+msgstr "My Little Pony -faniryhmä"
+
+#: [communitiesserver]name_error [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr ""
+
+#: [communitiesserver]no_creation [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr ""
+
+#: [communityaffiliation]subscriptions [group]subscriptions
+#: [statistics]subscriptions
+msgid "Subscriptions"
+msgstr ""
+
+#: [communityaffiliation]deleted [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Ryhmän poisto onnistui"
+
+#: [communityaffiliation]delete_title [group]delete_title
+msgid "Delete the group"
+msgstr "Poista tämä ryhmä"
+
+#: [communityaffiliation]delete_text [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Varmista ryhmän poistaminen"
+
+#: [communityaffiliation]delete_clean_text [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr ""
+
+#: [communitydata]sub [groups]sub
+msgid "%s subscribers"
+msgstr ""
+
+#: [communitydata]num [groups]num
+msgid "%s posts"
+msgstr "%s julkaisua"
+
+#: [communityheader]subscribe [group]subscribe
+msgid "Subscribe"
+msgstr ""
+
+#: [communityheader]unsubscribe [group]unsubscribe
+msgid "Unsubscribe"
+msgstr ""
+
+#: [communityheader]label_label
+msgid "Give a label for this community"
+msgstr ""
+
+#: [communityheader]label_placeholder
+msgid "My Community Name"
+msgstr ""
+
+#: [communityheader]share_subscription
+#, fuzzy
+msgid "Share this subscription publicly"
+msgstr "Julkaise julkisesti?"
+
+#: [communityheader]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
+#: [communityheader]unsubscribe_text
+msgid "You are going to unsubscribe from this community"
+msgstr ""
+
+#: [communityheader]sure [group]sure
+msgid "Are you sure ?"
+msgstr "Oletko varma?"
+
+#: [communityposts]empty
+msgid "This community seems empty"
+msgstr ""
+
+#: [communitysubscriptions]subscriptions [groups]subscriptions
+msgid "My Subscriptions"
+msgstr ""
+
+#: [communitysubscriptions]empty_title [groups]empty_title
+msgid "Hello"
+msgstr "Hei"
+
+#: [communitysubscriptions]empty_text1 [groups]empty_text1
+msgid "Here you will be able to manage all your subscriptions."
+msgstr ""
+
+#: [communitysubscriptions]empty_text2 [groups]empty_text2
+msgid "You don't have any group subscriptions yet."
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -656,10 +872,6 @@ msgstr "Perustiedot"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nimi"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Nimimerkki"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -801,16 +1013,8 @@ msgstr ""
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr ""
 
-#: [group]subscribe
-msgid "Subscribe"
-msgstr ""
-
 #: [group]subscribed
 msgid "Subscribed"
-msgstr ""
-
-#: [group]unsubscribe
-msgid "Unsubscribe"
 msgstr ""
 
 #: [group]unsubscribe_text
@@ -829,18 +1033,6 @@ msgstr ""
 msgid "Give a label for this group"
 msgstr ""
 
-#: [group]sure
-msgid "Are you sure ?"
-msgstr "Oletko varma?"
-
-#: [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "Ryhmät"
-
-#: [group]empty_text
-msgid "Discover, follow and share"
-msgstr ""
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr ""
@@ -849,32 +1041,12 @@ msgstr ""
 msgid "Group configuration saved"
 msgstr ""
 
-#: [group]delete_title
-msgid "Delete the group"
-msgstr "Poista tämä ryhmä"
-
-#: [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
-msgstr "Varmista ryhmän poistaminen"
-
-#: [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
-
 #: [group]counter
 msgid "%s groups on this server"
 msgstr ""
 
-#: [group]subscriptions [statistics]subscriptions
-msgid "Subscriptions"
-msgstr ""
-
 #: [group]servers
 msgid "Groups servers"
-msgstr ""
-
-#: [group]search_server
-msgid "Search for a new server"
 msgstr ""
 
 #: [group]help_info1
@@ -893,77 +1065,8 @@ msgstr ""
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr ""
 
-#: [group]share_subscription
-#, fuzzy
-msgid "Share this subscription publicly"
-msgstr "Julkaise julkisesti?"
-
-#: [group]share_subscription_text
-msgid "It will appear on your profile"
-msgstr ""
-
-#: [groups]empty_title
-msgid "Hello"
-msgstr "Hei"
-
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
-msgstr ""
-
-#: [groups]empty_text1
-msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
-
-#: [groups]empty_text2
-msgid "You don't have any group subscriptions yet."
-msgstr ""
-
-#: [groups]empty_server
-msgid "There is no Groups yet on this server."
-msgstr ""
-
-#: [groups]subscriptions
-msgid "My Subscriptions"
-msgstr ""
-
-#: [groups]add
-msgid "Create a new Group on %s"
-msgstr ""
-
-#: [groups]name
-msgid "Group name"
-msgstr "Ryhmän nimi"
-
-#: [groups]name_example
-msgid "My Little Pony - Fan Club"
-msgstr "My Little Pony -faniryhmä"
-
-#: [groups]created
-msgid "Group created successfully"
-msgstr "Ryhmän luonti onnistui"
-
-#: [groups]deleted
-msgid "Group deleted successfully"
-msgstr "Ryhmän poisto onnistui"
-
-#: [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr ""
-
-#: [groups]no_creation
-msgid "You cannot create a new Group on this server"
-msgstr ""
-
-#: [groups]sub
-msgid "%s subscribers"
-msgstr ""
-
-#: [groups]num
-msgid "%s posts"
-msgstr "%s julkaisua"
-
-#: [groups]disco_error
-msgid "This server doesn't exists"
 msgstr ""
 
 #: [help]faq
@@ -1152,11 +1255,12 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Huono nimimerkki (4-40 merkkiä)"
 
 #: [menu]empty_title
-msgid "No news yet..."
+#, fuzzy
+msgid "No news yet…"
 msgstr "Ei uutisia vielä"
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
+msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr ""
 
 #: [menu]discover [button]discover
@@ -1220,7 +1324,7 @@ msgid "What's Hot"
 msgstr "Kuumaa juuri nyt"
 
 #: [post]hot_text
-msgid "Posts recently published in Groups that you are not subscribed (yet)"
+msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
 #: [post]new [publish]new
@@ -1260,7 +1364,7 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "Varmista julkaisun poistaminen"
 
 #: [post]discover
-msgid "Discover more articles on the Groups page"
+msgid "Discover more articles on the communities page"
 msgstr ""
 
 #: [post]comments_disabled
@@ -1331,10 +1435,6 @@ msgstr "Tilasi tähän!"
 msgid "Status updated"
 msgstr "Tila päivitetty"
 
-#: [status]status
-msgid "Status"
-msgstr "Tila"
-
 #: [status]presence
 msgid "Presence"
 msgstr ""
@@ -1387,7 +1487,7 @@ msgstr "Anna otsikko"
 msgid "Edit post"
 msgstr "Muokkaa julkaisua"
 
-#: [publish]title
+#: [publish]title [page]publish
 msgid "Publish"
 msgstr "Julkaise"
 
@@ -1431,21 +1531,9 @@ msgstr "Lisää yksi painamalla lisäyspainiketta."
 msgid "Chatrooms"
 msgstr "Keskusteluhuoneet"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Keskusteluhuoneen ID"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Lempihuoneeni"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Huono keskusteluhuoneen ID"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tyhä nimi"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1458,10 +1546,6 @@ msgstr "Anna toimiva nimimerkki (2-40 merkkiä)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Nimimerkki on jo käytössä"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Kirjanmerkit päivitetty"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1569,6 +1653,15 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+#, fuzzy
+msgid "This is not a valid url"
+msgstr "Anna toimiva osoite"
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1707,6 +1800,11 @@ msgstr ""
 msgid "Loading…"
 msgstr ""
 
+#: [page]communities
+#, fuzzy
+msgid "Communities"
+msgstr "Kommentit"
+
 #: [page]home
 msgid "Home"
 msgstr "Etusivu"
@@ -1734,6 +1832,11 @@ msgstr "Keskustelut"
 #: [page]public_groups
 msgid "Public Groups"
 msgstr "Julkiset ryhmät"
+
+#: [page]post
+#, fuzzy
+msgid "Post"
+msgstr "Julkaisut"
 
 #: [page]blog
 msgid "Blog"
@@ -2574,3 +2677,6 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
+
+#~ msgid "Status"
+#~ msgstr "Tila"

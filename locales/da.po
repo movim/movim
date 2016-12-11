@@ -22,9 +22,25 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Communities/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesServer/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityAffiliations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityHeader/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -58,6 +74,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -75,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-13 14:58+0200\n"
+"POT-Creation-Date: 2016-12-11 17:18+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -506,6 +524,74 @@ msgstr "Denne bruger har ikke delt noget endnu"
 msgid "This content is private, please login to see it"
 msgstr "Dette indhold er privat, log ind for at se det"
 
+#: [title]conferences
+#, fuzzy
+msgid "Conferences"
+msgstr "Visio-konference"
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Grupper"
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "Tilføj et chatrum"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID for chatrum"
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Navn"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Kaldenavn"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Ugyldigt ID for Chatrum"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tomt navn"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Bogmærker opdateret"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "Opsætning"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Navn"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Besked publiceret"
@@ -566,11 +652,12 @@ msgstr "Forbundet til chatrummet"
 msgid "Disconnected from the chatroom"
 msgstr "Afkoblet fra chatrummet"
 
-#: [chatroom]config [group]configuration [page]configuration
+#: [chatroom]config [communityaffiliation]configuration [group]configuration
+#: [page]configuration
 msgid "Configuration"
 msgstr "Opsætning"
 
-#: [chatroom]config_saved
+#: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
 msgstr "Opsætning gemt"
 
@@ -605,6 +692,139 @@ msgstr "Indlæs flere kontakter"
 #: [button]new
 msgid "New conversation"
 msgstr ""
+
+#: [communities]empty_text [group]empty_text
+msgid "Discover, follow and share"
+msgstr "Opdag, følg og del"
+
+#: [communities]counter
+msgid "%s communities"
+msgstr ""
+
+#: [communities]search_server [group]search_server
+msgid "Search for a new server"
+msgstr "Led efter en ny server"
+
+#: [communities]servers
+#, fuzzy
+msgid "Communities servers"
+msgstr "Gruppeservere"
+
+#: [communities]disco_error [groups]disco_error
+msgid "This server doesn't exists"
+msgstr "Denne server eksisterer ikke"
+
+#: [communitiesserver]created [groups]created
+msgid "Group created successfully"
+msgstr "Gruppe er oprettet"
+
+#: [communitiesserver]empty_server
+msgid "There is no Groups yet on this server."
+msgstr ""
+
+#: [communitiesserver]add [groups]add
+msgid "Create a new Group on %s"
+msgstr ""
+
+#: [communitiesserver]name [groups]name
+msgid "Group name"
+msgstr "Gruppenavn"
+
+#: [communitiesserver]name_example [groups]name_example
+msgid "My Little Pony - Fan Club"
+msgstr "My Little Pony - Fanklub"
+
+#: [communitiesserver]name_error [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Opgiv venligst et gyldigt gruppenavn (mindst 4 tegn)"
+
+#: [communitiesserver]no_creation [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "Du kan ikke oprette en ny gruppe på denne server"
+
+#: [communityaffiliation]subscriptions [group]subscriptions
+#: [statistics]subscriptions
+msgid "Subscriptions"
+msgstr "Abonnementer"
+
+#: [communityaffiliation]deleted [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Gruppe er slettet"
+
+#: [communityaffiliation]delete_title [group]delete_title
+msgid "Delete the group"
+msgstr "Slet denne gruppe"
+
+#: [communityaffiliation]delete_text [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Du er ved at slette følgende gruppe. Bekræft venligst din handling."
+
+#: [communityaffiliation]delete_clean_text [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Det ser ud til at denne gruppe ikke eksisterer mere. Vil du fjerne den fra dine abonnementer?"
+
+#: [communitydata]sub [groups]sub
+msgid "%s subscribers"
+msgstr "%s abonnenter"
+
+#: [communitydata]num [groups]num
+msgid "%s posts"
+msgstr "%s indlæg"
+
+#: [communityheader]subscribe [group]subscribe
+msgid "Subscribe"
+msgstr "Abonnér"
+
+#: [communityheader]unsubscribe [group]unsubscribe
+msgid "Unsubscribe"
+msgstr "Opsig abonnement"
+
+#: [communityheader]label_label
+#, fuzzy
+msgid "Give a label for this community"
+msgstr "Giv denne gruppe en label"
+
+#: [communityheader]label_placeholder
+msgid "My Community Name"
+msgstr ""
+
+#: [communityheader]share_subscription
+#, fuzzy
+msgid "Share this subscription publicly"
+msgstr "Publicer dette indlæg offentligt?"
+
+#: [communityheader]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
+#: [communityheader]unsubscribe_text
+#, fuzzy
+msgid "You are going to unsubscribe from this community"
+msgstr "Du er ved at opsige dit abonnement på denne gruppe"
+
+#: [communityheader]sure [group]sure
+msgid "Are you sure ?"
+msgstr "Er du sikker?"
+
+#: [communityposts]empty
+msgid "This community seems empty"
+msgstr ""
+
+#: [communitysubscriptions]subscriptions [groups]subscriptions
+msgid "My Subscriptions"
+msgstr "Mine Abonnementer"
+
+#: [communitysubscriptions]empty_title [groups]empty_title
+msgid "Hello"
+msgstr "Hej"
+
+#: [communitysubscriptions]empty_text1 [groups]empty_text1
+msgid "Here you will be able to manage all your subscriptions."
+msgstr "Her kan du håndtere alle dine abonnementer."
+
+#: [communitysubscriptions]empty_text2 [groups]empty_text2
+msgid "You don't have any group subscriptions yet."
+msgstr "Du har endnu ingen abonnementer på grupper."
 
 #: [config]general
 msgid "General"
@@ -657,10 +877,6 @@ msgstr "Generelle Informationer"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Navn"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Kaldenavn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -802,17 +1018,9 @@ msgstr "Inviter"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Denne kontakt er i din kontaktliste, men der er ingen abonnementer mellem de to konti"
 
-#: [group]subscribe
-msgid "Subscribe"
-msgstr "Abonnér"
-
 #: [group]subscribed
 msgid "Subscribed"
 msgstr "Abonnerer"
-
-#: [group]unsubscribe
-msgid "Unsubscribe"
-msgstr "Opsig abonnement"
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -830,18 +1038,6 @@ msgstr "Gør dit medlemskab af denne gruppe offentligt for dine venner"
 msgid "Give a label for this group"
 msgstr "Giv denne gruppe en label"
 
-#: [group]sure
-msgid "Are you sure ?"
-msgstr "Er du sikker?"
-
-#: [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "Grupper"
-
-#: [group]empty_text
-msgid "Discover, follow and share"
-msgstr "Opdag, følg og del"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Noget skidt er sket med denne gruppe"
@@ -850,33 +1046,13 @@ msgstr "Noget skidt er sket med denne gruppe"
 msgid "Group configuration saved"
 msgstr "Gruppeopsætning gemt"
 
-#: [group]delete_title
-msgid "Delete the group"
-msgstr "Slet denne gruppe"
-
-#: [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
-msgstr "Du er ved at slette følgende gruppe. Bekræft venligst din handling."
-
-#: [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Det ser ud til at denne gruppe ikke eksisterer mere. Vil du fjerne den fra dine abonnementer?"
-
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s grupper på denne server"
 
-#: [group]subscriptions [statistics]subscriptions
-msgid "Subscriptions"
-msgstr "Abonnementer"
-
 #: [group]servers
 msgid "Groups servers"
 msgstr "Gruppeservere"
-
-#: [group]search_server
-msgid "Search for a new server"
-msgstr "Led efter en ny server"
 
 #: [group]help_info1
 msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
@@ -894,78 +1070,9 @@ msgstr "Færdig? Du kan nu publicere et indlæg i gruppen med %s-knappen."
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr "Du finder en liste over alle grupper du abonnerer på i Mine Abonnementer, og modtager øjeblikkeligt alle nye indlæg på %sNews%s-siden."
 
-#: [group]share_subscription
-#, fuzzy
-msgid "Share this subscription publicly"
-msgstr "Publicer dette indlæg offentligt?"
-
-#: [group]share_subscription_text
-msgid "It will appear on your profile"
-msgstr ""
-
-#: [groups]empty_title
-msgid "Hello"
-msgstr "Hej"
-
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "Kontakt indlæg"
-
-#: [groups]empty_text1
-msgid "Here you will be able to manage all your subscriptions."
-msgstr "Her kan du håndtere alle dine abonnementer."
-
-#: [groups]empty_text2
-msgid "You don't have any group subscriptions yet."
-msgstr "Du har endnu ingen abonnementer på grupper."
-
-#: [groups]empty_server
-msgid "There is no Groups yet on this server."
-msgstr ""
-
-#: [groups]subscriptions
-msgid "My Subscriptions"
-msgstr "Mine Abonnementer"
-
-#: [groups]add
-msgid "Create a new Group on %s"
-msgstr ""
-
-#: [groups]name
-msgid "Group name"
-msgstr "Gruppenavn"
-
-#: [groups]name_example
-msgid "My Little Pony - Fan Club"
-msgstr "My Little Pony - Fanklub"
-
-#: [groups]created
-msgid "Group created successfully"
-msgstr "Gruppe er oprettet"
-
-#: [groups]deleted
-msgid "Group deleted successfully"
-msgstr "Gruppe er slettet"
-
-#: [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr "Opgiv venligst et gyldigt gruppenavn (mindst 4 tegn)"
-
-#: [groups]no_creation
-msgid "You cannot create a new Group on this server"
-msgstr "Du kan ikke oprette en ny gruppe på denne server"
-
-#: [groups]sub
-msgid "%s subscribers"
-msgstr "%s abonnenter"
-
-#: [groups]num
-msgid "%s posts"
-msgstr "%s indlæg"
-
-#: [groups]disco_error
-msgid "This server doesn't exists"
-msgstr "Denne server eksisterer ikke"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1153,11 +1260,13 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Ugyldigt kælenavn (mellem 4 og 40 tegn)"
 
 #: [menu]empty_title
-msgid "No news yet..."
+#, fuzzy
+msgid "No news yet…"
 msgstr "Endnu ingen nyheder..."
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
+#, fuzzy
+msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Velkommen til din nyhedsstrøm, her vil du se alle de indlæg der publiceres af dine kontakter og i grupper du abonnerer på."
 
 #: [menu]discover [button]discover
@@ -1221,7 +1330,8 @@ msgid "What's Hot"
 msgstr "Hvad der snakkes om"
 
 #: [post]hot_text
-msgid "Posts recently published in Groups that you are not subscribed (yet)"
+#, fuzzy
+msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Indlæg der er publiceret for nyligt i grupper du (endnu) ikke abonnerer på"
 
 #: [post]new [publish]new
@@ -1261,7 +1371,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "Du er ved at slette dette indlæg, bekræft venligst din handling"
 
 #: [post]discover
-msgid "Discover more articles on the Groups page"
+#, fuzzy
+msgid "Discover more articles on the communities page"
 msgstr "Find flere artikler på Grupper-siden"
 
 #: [post]comments_disabled
@@ -1332,10 +1443,6 @@ msgstr "Din status her !"
 msgid "Status updated"
 msgstr "Status opdateret"
 
-#: [status]status
-msgid "Status"
-msgstr "Status"
-
 #: [status]presence
 msgid "Presence"
 msgstr "Tilstedeværelse"
@@ -1388,7 +1495,7 @@ msgstr "Angiv venligst en titel"
 msgid "Edit post"
 msgstr "Rediger indlæg"
 
-#: [publish]title
+#: [publish]title [page]publish
 msgid "Publish"
 msgstr "Publicer"
 
@@ -1432,21 +1539,9 @@ msgstr "Tilføj ved at klikke på tilføj-knappen"
 msgid "Chatrooms"
 msgstr "Chatrum"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID for chatrum"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mit favoritrum"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Ugyldigt ID for Chatrum"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tomt navn"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1459,10 +1554,6 @@ msgstr "Angiv venligst et gyldigt kælenavn (2 til 40 tegn)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Brugernavn er allerede i brug"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Bogmærker opdateret"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1570,6 +1661,15 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+#, fuzzy
+msgid "This is not a valid url"
+msgstr "Skriv venligst en gyldig url"
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1708,6 +1808,11 @@ msgstr "Movim er en brandgod distribueret social netværks-platform, der beskytt
 msgid "Loading…"
 msgstr ""
 
+#: [page]communities
+#, fuzzy
+msgid "Communities"
+msgstr "Kommentarer"
+
 #: [page]home
 msgid "Home"
 msgstr "Start"
@@ -1735,6 +1840,11 @@ msgstr "Chats"
 #: [page]public_groups
 msgid "Public Groups"
 msgstr "Offentlige Grupper"
+
+#: [page]post
+#, fuzzy
+msgid "Post"
+msgstr "Indlæg"
 
 #: [page]blog
 msgid "Blog"
@@ -2576,6 +2686,9 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "Status"
+#~ msgstr "Status"
 
 #, fuzzy
 #~ msgid "Read and write rights for the webserver in Movim's cache directory"

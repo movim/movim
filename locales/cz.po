@@ -22,9 +22,25 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Communities/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesServer/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityAffiliations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityHeader/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -58,6 +74,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -75,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-13 14:58+0200\n"
+"POT-Creation-Date: 2016-12-11 17:18+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -506,6 +524,73 @@ msgstr "Tento uživatel nyní nezveřejnil žádný příspěvek"
 msgid "This content is private, please login to see it"
 msgstr "Tento obsah je soukromý, přihlašte se pro zobrazení"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Skupiny"
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "Přidat konverzaci"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID konverzace"
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Jméno"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Přezdívka"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Chybné ID konverzace"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Prázdné jméno"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Záložky aktualizovány"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "Konfigurace"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Jméno"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Zpráva zveřejněna"
@@ -566,11 +651,12 @@ msgstr "Připojeni do konverzace"
 msgid "Disconnected from the chatroom"
 msgstr "Odpojeni z konverzace"
 
-#: [chatroom]config [group]configuration [page]configuration
+#: [chatroom]config [communityaffiliation]configuration [group]configuration
+#: [page]configuration
 msgid "Configuration"
 msgstr "Konfigurace"
 
-#: [chatroom]config_saved
+#: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
 msgstr "Konfigurace uložena"
 
@@ -605,6 +691,139 @@ msgstr "Načíst více kontaktů."
 #: [button]new
 msgid "New conversation"
 msgstr "Nová konverzace"
+
+#: [communities]empty_text [group]empty_text
+msgid "Discover, follow and share"
+msgstr "Objevuj, následuj a sdílej"
+
+#: [communities]counter
+msgid "%s communities"
+msgstr ""
+
+#: [communities]search_server [group]search_server
+msgid "Search for a new server"
+msgstr "Vyhledat nový server"
+
+#: [communities]servers
+#, fuzzy
+msgid "Communities servers"
+msgstr "Skupiny servery"
+
+#: [communities]disco_error [groups]disco_error
+msgid "This server doesn't exists"
+msgstr "Tento server neexistuje"
+
+#: [communitiesserver]created [groups]created
+msgid "Group created successfully"
+msgstr "Skupina úspěšně vytvořena"
+
+#: [communitiesserver]empty_server
+msgid "There is no Groups yet on this server."
+msgstr ""
+
+#: [communitiesserver]add [groups]add
+msgid "Create a new Group on %s"
+msgstr ""
+
+#: [communitiesserver]name [groups]name
+msgid "Group name"
+msgstr "Název skupiny"
+
+#: [communitiesserver]name_example [groups]name_example
+msgid "My Little Pony - Fan Club"
+msgstr "My Little Pony - Klub fanoušků"
+
+#: [communitiesserver]name_error [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Poskytněte prosím validní název skupiny (minimálně 4 znaky)"
+
+#: [communitiesserver]no_creation [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "Na tomto serveru nemůžete vytvořit novou skupinu"
+
+#: [communityaffiliation]subscriptions [group]subscriptions
+#: [statistics]subscriptions
+msgid "Subscriptions"
+msgstr "Odběry"
+
+#: [communityaffiliation]deleted [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Skupina úspěšně odstraněna"
+
+#: [communityaffiliation]delete_title [group]delete_title
+msgid "Delete the group"
+msgstr "Odstranit tuto skupinu"
+
+#: [communityaffiliation]delete_text [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Odstraníte následující skupinu, prosím potvrďte akci"
+
+#: [communityaffiliation]delete_clean_text [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Vypadá to, že tako skupina již neexistuje. Přejete si odstranit ji z vašich odběrů?"
+
+#: [communitydata]sub [groups]sub
+msgid "%s subscribers"
+msgstr "%s odběratelů"
+
+#: [communitydata]num [groups]num
+msgid "%s posts"
+msgstr "%s příspěvků"
+
+#: [communityheader]subscribe [group]subscribe
+msgid "Subscribe"
+msgstr "Odebírat"
+
+#: [communityheader]unsubscribe [group]unsubscribe
+msgid "Unsubscribe"
+msgstr "Neodebírat"
+
+#: [communityheader]label_label
+#, fuzzy
+msgid "Give a label for this community"
+msgstr "Dát této skupině označení"
+
+#: [communityheader]label_placeholder
+msgid "My Community Name"
+msgstr ""
+
+#: [communityheader]share_subscription
+#, fuzzy
+msgid "Share this subscription publicly"
+msgstr "Odeslat příspěvek veřejně?"
+
+#: [communityheader]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
+#: [communityheader]unsubscribe_text
+#, fuzzy
+msgid "You are going to unsubscribe from this community"
+msgstr "Odhlásíte odběr od této skupiny"
+
+#: [communityheader]sure [group]sure
+msgid "Are you sure ?"
+msgstr "Jste si jisti?"
+
+#: [communityposts]empty
+msgid "This community seems empty"
+msgstr ""
+
+#: [communitysubscriptions]subscriptions [groups]subscriptions
+msgid "My Subscriptions"
+msgstr "Moje odběry"
+
+#: [communitysubscriptions]empty_title [groups]empty_title
+msgid "Hello"
+msgstr "Ahoj"
+
+#: [communitysubscriptions]empty_text1 [groups]empty_text1
+msgid "Here you will be able to manage all your subscriptions."
+msgstr "Zde budete moci spravovat všechny vaše odběry."
+
+#: [communitysubscriptions]empty_text2 [groups]empty_text2
+msgid "You don't have any group subscriptions yet."
+msgstr "Zatím neodebíráte žádné skupiny."
 
 #: [config]general
 msgid "General"
@@ -657,10 +876,6 @@ msgstr "Obecné informace"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Jméno"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Přezdívka"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -802,17 +1017,9 @@ msgstr "Pozvat"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Tento kontakt je ve vašem seznamu kontaktů, ale mezi těmito dvěma účty nejsou žádné odběry"
 
-#: [group]subscribe
-msgid "Subscribe"
-msgstr "Odebírat"
-
 #: [group]subscribed
 msgid "Subscribed"
 msgstr "Odebíráno"
-
-#: [group]unsubscribe
-msgid "Unsubscribe"
-msgstr "Neodebírat"
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -830,18 +1037,6 @@ msgstr "Zveřejnit vaše členství v této skupině vašim přátelům"
 msgid "Give a label for this group"
 msgstr "Dát této skupině označení"
 
-#: [group]sure
-msgid "Are you sure ?"
-msgstr "Jste si jisti?"
-
-#: [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "Skupiny"
-
-#: [group]empty_text
-msgid "Discover, follow and share"
-msgstr "Objevuj, následuj a sdílej"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Této skupině se stalo něco špatného"
@@ -850,33 +1045,13 @@ msgstr "Této skupině se stalo něco špatného"
 msgid "Group configuration saved"
 msgstr "Konfigurace skupiny uložena"
 
-#: [group]delete_title
-msgid "Delete the group"
-msgstr "Odstranit tuto skupinu"
-
-#: [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
-msgstr "Odstraníte následující skupinu, prosím potvrďte akci"
-
-#: [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Vypadá to, že tako skupina již neexistuje. Přejete si odstranit ji z vašich odběrů?"
-
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s skupin na tomto serveru"
 
-#: [group]subscriptions [statistics]subscriptions
-msgid "Subscriptions"
-msgstr "Odběry"
-
 #: [group]servers
 msgid "Groups servers"
 msgstr "Skupiny servery"
-
-#: [group]search_server
-msgid "Search for a new server"
-msgstr "Vyhledat nový server"
 
 #: [group]help_info1
 msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
@@ -894,78 +1069,9 @@ msgstr "Dokončeno? Nyní můžete v této skupině publikovat nový příspěve
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr "Seznam odebíraných skupin najdete v záložce Moje odběry a nové příspěvky vám budou zobrazeny na stránce %sNovinky%."
 
-#: [group]share_subscription
-#, fuzzy
-msgid "Share this subscription publicly"
-msgstr "Odeslat příspěvek veřejně?"
-
-#: [group]share_subscription_text
-msgid "It will appear on your profile"
-msgstr ""
-
-#: [groups]empty_title
-msgid "Hello"
-msgstr "Ahoj"
-
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "Odeslat kontakt"
-
-#: [groups]empty_text1
-msgid "Here you will be able to manage all your subscriptions."
-msgstr "Zde budete moci spravovat všechny vaše odběry."
-
-#: [groups]empty_text2
-msgid "You don't have any group subscriptions yet."
-msgstr "Zatím neodebíráte žádné skupiny."
-
-#: [groups]empty_server
-msgid "There is no Groups yet on this server."
-msgstr ""
-
-#: [groups]subscriptions
-msgid "My Subscriptions"
-msgstr "Moje odběry"
-
-#: [groups]add
-msgid "Create a new Group on %s"
-msgstr ""
-
-#: [groups]name
-msgid "Group name"
-msgstr "Název skupiny"
-
-#: [groups]name_example
-msgid "My Little Pony - Fan Club"
-msgstr "My Little Pony - Klub fanoušků"
-
-#: [groups]created
-msgid "Group created successfully"
-msgstr "Skupina úspěšně vytvořena"
-
-#: [groups]deleted
-msgid "Group deleted successfully"
-msgstr "Skupina úspěšně odstraněna"
-
-#: [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr "Poskytněte prosím validní název skupiny (minimálně 4 znaky)"
-
-#: [groups]no_creation
-msgid "You cannot create a new Group on this server"
-msgstr "Na tomto serveru nemůžete vytvořit novou skupinu"
-
-#: [groups]sub
-msgid "%s subscribers"
-msgstr "%s odběratelů"
-
-#: [groups]num
-msgid "%s posts"
-msgstr "%s příspěvků"
-
-#: [groups]disco_error
-msgid "This server doesn't exists"
-msgstr "Tento server neexistuje"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1153,11 +1259,13 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Nesprávné přihlašovací jméno (mezi 4 a 40 znaky)"
 
 #: [menu]empty_title
-msgid "No news yet..."
+#, fuzzy
+msgid "No news yet…"
 msgstr "Zatím žádné novinky..."
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
+#, fuzzy
+msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Vítejte v Novinkách, zde se vám budou zobrazovat příspěvky vašich kontaktů a příspěvky zveřejněné ve skupinách, které odebíráte."
 
 #: [menu]discover [button]discover
@@ -1221,7 +1329,8 @@ msgid "What's Hot"
 msgstr "Co je žhavé"
 
 #: [post]hot_text
-msgid "Posts recently published in Groups that you are not subscribed (yet)"
+#, fuzzy
+msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Příspěcky nedávno zveřejněné ve Skupinách, které neodebíráte (zatím)"
 
 #: [post]new [publish]new
@@ -1261,7 +1370,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "Odstraníte tento příspěvek, potvrďte prosím akci"
 
 #: [post]discover
-msgid "Discover more articles on the Groups page"
+#, fuzzy
+msgid "Discover more articles on the communities page"
 msgstr "Objevte další články na stránce Skupiny"
 
 #: [post]comments_disabled
@@ -1332,10 +1442,6 @@ msgstr "Váš stav sem!"
 msgid "Status updated"
 msgstr "Stav aktualizován"
 
-#: [status]status
-msgid "Status"
-msgstr "Stav"
-
 #: [status]presence
 msgid "Presence"
 msgstr "Přítomnost"
@@ -1388,7 +1494,7 @@ msgstr "Zadejte prosím nadpis"
 msgid "Edit post"
 msgstr "Upravit příspěvek"
 
-#: [publish]title
+#: [publish]title [page]publish
 msgid "Publish"
 msgstr "Zveřejnit"
 
@@ -1432,21 +1538,9 @@ msgstr "Přidejte konverzaci kliknutím na tlačítko přidat."
 msgid "Chatrooms"
 msgstr "Konverzace"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID konverzace"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Moje oblíbená konverzace"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Chybné ID konverzace"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Prázdné jméno"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1459,10 +1553,6 @@ msgstr "Zadejte prosím správné uživatelské jméno (2 až 40 znaků)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Uživatelské jméno již obsazeno"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Záložky aktualizovány"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1570,6 +1660,15 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+#, fuzzy
+msgid "This is not a valid url"
+msgstr "Uveďte prosím validní URL"
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1708,6 +1807,11 @@ msgstr "Movim je drsná distribuovaná sociální síť, která chrání vaše s
 msgid "Loading…"
 msgstr ""
 
+#: [page]communities
+#, fuzzy
+msgid "Communities"
+msgstr "Komentáře"
+
 #: [page]home
 msgid "Home"
 msgstr "Domů"
@@ -1735,6 +1839,11 @@ msgstr "Konverzace"
 #: [page]public_groups
 msgid "Public Groups"
 msgstr "Veřejné skupiny"
+
+#: [page]post
+#, fuzzy
+msgid "Post"
+msgstr "Příspěvky"
 
 #: [page]blog
 msgid "Blog"
@@ -2576,6 +2685,9 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "Status"
+#~ msgstr "Stav"
 
 #, fuzzy
 #~ msgid "Read and write rights for the webserver in Movim's cache directory"

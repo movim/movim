@@ -25,9 +25,25 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Communities/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitiesServer/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityAffiliations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityHeader/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityPosts/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunitySubscriptions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -61,6 +77,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -78,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-13 14:58+0200\n"
+"POT-Creation-Date: 2016-12-11 17:18+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -509,6 +527,74 @@ msgstr "Ez a felhasználó nem osztott meg semmit sem eddig."
 msgid "This content is private, please login to see it"
 msgstr "Ez a tartalom nem nyilvános, jelentkezz be, hogy láthasd"
 
+#: [title]conferences
+#, fuzzy
+msgid "Conferences"
+msgstr "Videó-konferencia"
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Csoportok"
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "Chatszoba hozzáadása"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Chat szoba azonosítója:"
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Név"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Becenév"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Rossz Chat szoba azonosító"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Név üres"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Könyvjelzők frissítve"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "Beállítások"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Név"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Üzenet közzétéve"
@@ -569,11 +655,12 @@ msgstr "Csatlakozva a chat szobához"
 msgid "Disconnected from the chatroom"
 msgstr "Lecsatlakozva a chat szobától"
 
-#: [chatroom]config [group]configuration [page]configuration
+#: [chatroom]config [communityaffiliation]configuration [group]configuration
+#: [page]configuration
 msgid "Configuration"
 msgstr "Beállítások"
 
-#: [chatroom]config_saved
+#: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
 msgstr "Beállítások elmentve."
 
@@ -608,6 +695,139 @@ msgstr "További kapcsolatok betöltése"
 #: [button]new
 msgid "New conversation"
 msgstr "Új beszélgetés"
+
+#: [communities]empty_text [group]empty_text
+msgid "Discover, follow and share"
+msgstr "Fedezd fel, kövesd és oszd meg"
+
+#: [communities]counter
+msgid "%s communities"
+msgstr ""
+
+#: [communities]search_server [group]search_server
+msgid "Search for a new server"
+msgstr "Új szerver keresése"
+
+#: [communities]servers
+#, fuzzy
+msgid "Communities servers"
+msgstr "Csoportok szerverei"
+
+#: [communities]disco_error [groups]disco_error
+msgid "This server doesn't exists"
+msgstr "Ez a szerver nem létezik"
+
+#: [communitiesserver]created [groups]created
+msgid "Group created successfully"
+msgstr "Csoport sikeresen létrehozva"
+
+#: [communitiesserver]empty_server
+msgid "There is no Groups yet on this server."
+msgstr ""
+
+#: [communitiesserver]add [groups]add
+msgid "Create a new Group on %s"
+msgstr "Készítsd egy új csoportot itt: %s"
+
+#: [communitiesserver]name [groups]name
+msgid "Group name"
+msgstr "Csoport neve"
+
+#: [communitiesserver]name_example [groups]name_example
+msgid "My Little Pony - Fan Club"
+msgstr "Én Kicsi Pónim - Rajongói Klub"
+
+#: [communitiesserver]name_error [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Adj meg egy érvényes csoportnevet (legalább 4 karakter)"
+
+#: [communitiesserver]no_creation [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "Nem tudsz új csoportot létrehozni ezen a szerveren"
+
+#: [communityaffiliation]subscriptions [group]subscriptions
+#: [statistics]subscriptions
+msgid "Subscriptions"
+msgstr "Feliratkozások"
+
+#: [communityaffiliation]deleted [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Csoport sikeresen törölve"
+
+#: [communityaffiliation]delete_title [group]delete_title
+msgid "Delete the group"
+msgstr "Csoport törlése"
+
+#: [communityaffiliation]delete_text [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Törölni fogod a következő csoportot. Kérlek erősítsd meg szándékod!"
+
+#: [communityaffiliation]delete_clean_text [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Úgy tűnik ez a csoport már nem létezik. El akarod távolítani a feliratkozásaid közül?"
+
+#: [communitydata]sub [groups]sub
+msgid "%s subscribers"
+msgstr "%s feliratkozó"
+
+#: [communitydata]num [groups]num
+msgid "%s posts"
+msgstr "%s poszt"
+
+#: [communityheader]subscribe [group]subscribe
+msgid "Subscribe"
+msgstr "Feliratkozás"
+
+#: [communityheader]unsubscribe [group]unsubscribe
+msgid "Unsubscribe"
+msgstr "Leiratkozás"
+
+#: [communityheader]label_label
+#, fuzzy
+msgid "Give a label for this community"
+msgstr "Adj meg címkéket ehhez a csoporthoz"
+
+#: [communityheader]label_placeholder
+msgid "My Community Name"
+msgstr ""
+
+#: [communityheader]share_subscription
+#, fuzzy
+msgid "Share this subscription publicly"
+msgstr "Nyilvánosan közzéteszed a bejegyzést?"
+
+#: [communityheader]share_subscription_text
+msgid "It will appear on your profile"
+msgstr ""
+
+#: [communityheader]unsubscribe_text
+#, fuzzy
+msgid "You are going to unsubscribe from this community"
+msgstr "Le fogsz iratkozni ennek a csoportnak a frissítéseiről"
+
+#: [communityheader]sure [group]sure
+msgid "Are you sure ?"
+msgstr "Biztos vagy benne ?"
+
+#: [communityposts]empty
+msgid "This community seems empty"
+msgstr ""
+
+#: [communitysubscriptions]subscriptions [groups]subscriptions
+msgid "My Subscriptions"
+msgstr "Feliratkozásaim"
+
+#: [communitysubscriptions]empty_title [groups]empty_title
+msgid "Hello"
+msgstr "Szia"
+
+#: [communitysubscriptions]empty_text1 [groups]empty_text1
+msgid "Here you will be able to manage all your subscriptions."
+msgstr "Itt kezelheted a feliratkozásaidat."
+
+#: [communitysubscriptions]empty_text2 [groups]empty_text2
+msgid "You don't have any group subscriptions yet."
+msgstr "Még nem iratkoztál fel egy csoportra sem."
 
 #: [config]general
 msgid "General"
@@ -660,10 +880,6 @@ msgstr "Általános információk"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Név"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Becenév"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -805,17 +1021,9 @@ msgstr "Meghívás"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Ez az ismerős az ismerős listádon van, de nincsenek feliratkozások a két felhasználó között."
 
-#: [group]subscribe
-msgid "Subscribe"
-msgstr "Feliratkozás"
-
 #: [group]subscribed
 msgid "Subscribed"
 msgstr "Feliratkozva"
-
-#: [group]unsubscribe
-msgid "Unsubscribe"
-msgstr "Leiratkozás"
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -833,18 +1041,6 @@ msgstr "Tedd publikussá, hogy ennek a csoportnak tagja vagy a barátaid számá
 msgid "Give a label for this group"
 msgstr "Adj meg címkéket ehhez a csoporthoz"
 
-#: [group]sure
-msgid "Are you sure ?"
-msgstr "Biztos vagy benne ?"
-
-#: [group]empty_title [menu]groups [page]groups
-msgid "Groups"
-msgstr "Csoportok"
-
-#: [group]empty_text
-msgid "Discover, follow and share"
-msgstr "Fedezd fel, kövesd és oszd meg"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Valami rossz történt a csoporttal"
@@ -853,33 +1049,13 @@ msgstr "Valami rossz történt a csoporttal"
 msgid "Group configuration saved"
 msgstr "Csoportbeállítások elmentve."
 
-#: [group]delete_title
-msgid "Delete the group"
-msgstr "Csoport törlése"
-
-#: [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
-msgstr "Törölni fogod a következő csoportot. Kérlek erősítsd meg szándékod!"
-
-#: [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Úgy tűnik ez a csoport már nem létezik. El akarod távolítani a feliratkozásaid közül?"
-
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s csoportok a szerveren."
 
-#: [group]subscriptions [statistics]subscriptions
-msgid "Subscriptions"
-msgstr "Feliratkozások"
-
 #: [group]servers
 msgid "Groups servers"
 msgstr "Csoportok szerverei"
-
-#: [group]search_server
-msgid "Search for a new server"
-msgstr "Új szerver keresése"
 
 #: [group]help_info1
 msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
@@ -897,78 +1073,9 @@ msgstr "Kész vagy? %s gombbal máris küldhetsz egy új bejegyzést a csoportba
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
 msgstr "A Feliratkozásaim menüben találhatod a feliratkozott csoportjaid listáját, és a %sNews%s oldalon azonnal láthatsz minden új bejegyzést."
 
-#: [group]share_subscription
-#, fuzzy
-msgid "Share this subscription publicly"
-msgstr "Nyilvánosan közzéteszed a bejegyzést?"
-
-#: [group]share_subscription_text
-msgid "It will appear on your profile"
-msgstr ""
-
-#: [groups]empty_title
-msgid "Hello"
-msgstr "Szia"
-
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
-
-#: [groups]empty_text1
-msgid "Here you will be able to manage all your subscriptions."
-msgstr "Itt kezelheted a feliratkozásaidat."
-
-#: [groups]empty_text2
-msgid "You don't have any group subscriptions yet."
-msgstr "Még nem iratkoztál fel egy csoportra sem."
-
-#: [groups]empty_server
-msgid "There is no Groups yet on this server."
-msgstr ""
-
-#: [groups]subscriptions
-msgid "My Subscriptions"
-msgstr "Feliratkozásaim"
-
-#: [groups]add
-msgid "Create a new Group on %s"
-msgstr "Készítsd egy új csoportot itt: %s"
-
-#: [groups]name
-msgid "Group name"
-msgstr "Csoport neve"
-
-#: [groups]name_example
-msgid "My Little Pony - Fan Club"
-msgstr "Én Kicsi Pónim - Rajongói Klub"
-
-#: [groups]created
-msgid "Group created successfully"
-msgstr "Csoport sikeresen létrehozva"
-
-#: [groups]deleted
-msgid "Group deleted successfully"
-msgstr "Csoport sikeresen törölve"
-
-#: [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr "Adj meg egy érvényes csoportnevet (legalább 4 karakter)"
-
-#: [groups]no_creation
-msgid "You cannot create a new Group on this server"
-msgstr "Nem tudsz új csoportot létrehozni ezen a szerveren"
-
-#: [groups]sub
-msgid "%s subscribers"
-msgstr "%s feliratkozó"
-
-#: [groups]num
-msgid "%s posts"
-msgstr "%s poszt"
-
-#: [groups]disco_error
-msgid "This server doesn't exists"
-msgstr "Ez a szerver nem létezik"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1156,11 +1263,13 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Rossz becenév (4-40 karakter)"
 
 #: [menu]empty_title
-msgid "No news yet..."
+#, fuzzy
+msgid "No news yet…"
 msgstr "Nincsenek még hírek"
 
 #: [menu]empty
-msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the groups you have subscribed."
+#, fuzzy
+msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Üdv a hírfolyamodban. Itt láthatod az ismerőseid és a feliratkozott csoportjaid bejegyzéseit."
 
 #: [menu]discover [button]discover
@@ -1224,7 +1333,7 @@ msgid "What's Hot"
 msgstr "Újdonságok"
 
 #: [post]hot_text
-msgid "Posts recently published in Groups that you are not subscribed (yet)"
+msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
 #: [post]new [publish]new
@@ -1264,7 +1373,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "Hagyd jóvá, hogy tényleg le szeretnéd törölni ezt a bejegyzést"
 
 #: [post]discover
-msgid "Discover more articles on the Groups page"
+#, fuzzy
+msgid "Discover more articles on the communities page"
 msgstr "Még több cikk vár a Csoportok oldalon"
 
 #: [post]comments_disabled
@@ -1335,10 +1445,6 @@ msgstr "Állapotfrissítés itt!"
 msgid "Status updated"
 msgstr "Állapot frissítve"
 
-#: [status]status
-msgid "Status"
-msgstr "Állapot"
-
 #: [status]presence
 msgid "Presence"
 msgstr "Jelenlét"
@@ -1391,7 +1497,7 @@ msgstr "Kérlek adj címet neki"
 msgid "Edit post"
 msgstr "Bejegyzés szerkesztése"
 
-#: [publish]title
+#: [publish]title [page]publish
 msgid "Publish"
 msgstr "Közzétesz"
 
@@ -1435,21 +1541,9 @@ msgstr "Vegyél fel egyet a hozzáadás gombra kattintva."
 msgid "Chatrooms"
 msgstr "Chatszobák"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Chat szoba azonosítója:"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Kedvenc szobám"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Rossz Chat szoba azonosító"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Név üres"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1462,10 +1556,6 @@ msgstr "Adj meg egy helyes becenevet (2-40 karakter hosszú)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "A felhasználónév már használatban van"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Könyvjelzők frissítve"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1574,6 +1664,15 @@ msgstr "Mit keresel?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "A Ctrl + M gombbal nyithatsz meg"
+
+#: [share]error
+#, fuzzy
+msgid "This is not a valid url"
+msgstr "Érvényes url-t adj meg"
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1711,6 +1810,11 @@ msgstr "A Movim egy zsírkirály megosztott közösségi háló platformja, amel
 msgid "Loading…"
 msgstr ""
 
+#: [page]communities
+#, fuzzy
+msgid "Communities"
+msgstr "Kommentek"
+
 #: [page]home
 msgid "Home"
 msgstr "Kezdőoldal"
@@ -1738,6 +1842,11 @@ msgstr "Beszélgetések"
 #: [page]public_groups
 msgid "Public Groups"
 msgstr "Nyilvános csoportok"
+
+#: [page]post
+#, fuzzy
+msgid "Post"
+msgstr "Megosztások"
 
 #: [page]blog
 msgid "Blog"
@@ -2579,6 +2688,9 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Status"
+#~ msgstr "Állapot"
 
 #, fuzzy
 #~ msgid "Read and write rights for the webserver in Movim's cache directory"
