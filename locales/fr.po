@@ -99,7 +99,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-11 17:18+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"PO-Revision-Date: 2016-12-11 16:25+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -107,7 +107,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0b7\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -425,9 +425,8 @@ msgid "Install the php5-gd library"
 msgstr "Installez la librairie php5-gd"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier racine de Movim"
+msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier %s"
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -530,16 +529,14 @@ msgid "This content is private, please login to see it"
 msgstr "Ce contenu est privé, veuillez vous connecter pour le consulter"
 
 #: [title]conferences
-#, fuzzy
 msgid "Conferences"
-msgstr "Vidéoconférence"
+msgstr "Conférences"
 
 #: [title]groups [group]empty_title [page]groups
 msgid "Groups"
 msgstr "Groupes"
 
 #: [chatroom]add
-#, fuzzy
 msgid "Add a new Chat Room"
 msgstr "Ajouter un salon de discussion"
 
@@ -548,7 +545,6 @@ msgid "Chat Room ID"
 msgstr "Identifiant du salon"
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
 msgstr "Nom"
@@ -560,7 +556,7 @@ msgstr "Pseudonyme"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
+msgstr "Voulez vous rejoindre automatiquement ce salon ?"
 
 #: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
@@ -576,23 +572,21 @@ msgstr "Signets mis à jour"
 
 #: [bookmarks]error
 msgid "An error occured :"
-msgstr ""
+msgstr "Une erreur s’est produite : "
 
 #: [bookmarks]configure
-#, fuzzy
 msgid "Configure"
-msgstr "Configuration"
+msgstr "Configurer"
 
 #: [url]add
 msgid "Add a new URL"
-msgstr ""
+msgstr "Ajouter un nouveau lien"
 
 #: [url]url
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
 msgstr "Nom"
@@ -704,16 +698,15 @@ msgstr "Découvrir, suivre et partager"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "% communautés"
 
 #: [communities]search_server [group]search_server
 msgid "Search for a new server"
 msgstr "Rechercher un nouveau serveur"
 
 #: [communities]servers
-#, fuzzy
 msgid "Communities servers"
-msgstr "Serveurs de Groupes"
+msgstr "Serveurs de Communautés"
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
@@ -785,27 +778,24 @@ msgid "Unsubscribe"
 msgstr "Se désabonner"
 
 #: [communityheader]label_label
-#, fuzzy
 msgid "Give a label for this community"
-msgstr "Donnez un nom personnalisé pour ce Groupe"
+msgstr "Donnez un nom personnalisé pour cette communauté"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "Ma Communauté"
 
 #: [communityheader]share_subscription
-#, fuzzy
 msgid "Share this subscription publicly"
-msgstr "Publier ce billet publiquement?"
+msgstr "Partager cette souscription publiquement"
 
 #: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr ""
+msgstr "Elle apparaîtra sur votre profil"
 
 #: [communityheader]unsubscribe_text
-#, fuzzy
 msgid "You are going to unsubscribe from this community"
-msgstr "Vous allez vous désinscrire de ce Groupe."
+msgstr "Vous allez vous désinscrire de cette communauté"
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
@@ -813,7 +803,7 @@ msgstr "Êtes-vous sûr ?"
 
 #: [communityposts]empty
 msgid "This community seems empty"
-msgstr ""
+msgstr "Cette communauté semble vide"
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
 msgid "My Subscriptions"
@@ -1216,9 +1206,8 @@ msgid "Invalid password format"
 msgstr "Mot de passe non valide"
 
 #: [error]unauthorized
-#, fuzzy
 msgid "Your XMPP server is unauthorized"
-msgstr "Votre compte XMPP n’est pas autorisé à se connecter"
+msgstr "Votre serveur XMPP n’est pas autorisé à se connecter"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1265,14 +1254,12 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Mauvais surnom (entre 4 et 40 caractères)"
 
 #: [menu]empty_title
-#, fuzzy
 msgid "No news yet…"
 msgstr "Aucune actualité… pour le moment"
 
 #: [menu]empty
-#, fuzzy
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "Bienvenue sur votre flux d’actualité, ici vous verrez toutes les publications des groupes auxquels vous vous êtes abonnés ainsi que celles de vos contacts."
+msgstr "Bienvenue sur votre flux d’actualité, ici vous verrez toutes les publications des communautés auxquelles vous vous êtes abonnées ainsi que celles de vos contacts."
 
 #: [menu]discover [button]discover
 msgid "Discover"
@@ -1335,9 +1322,8 @@ msgid "What's Hot"
 msgstr "Quoi de neuf"
 
 #: [post]hot_text
-#, fuzzy
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr "Billets récemment publiés dans les Groupes auxquels vous n'êtes pas (encore) inscrit"
+msgstr "Billets récemment publiés dans les communautés auxquelles vous n'êtes pas (encore) inscrit"
 
 #: [post]new [publish]new
 msgid "New post"
@@ -1376,9 +1362,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "Vous allez supprimer ce billet, veuillez confirmer votre action."
 
 #: [post]discover
-#, fuzzy
 msgid "Discover more articles on the communities page"
-msgstr "Découvrez plus de publications sur la page Actualité"
+msgstr "Découvrez plus de publications sur la page communautés"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1669,13 +1654,12 @@ msgid "Open me using Ctrl + M"
 msgstr "Ouvrez moi en faisant Ctrl + M"
 
 #: [share]error
-#, fuzzy
 msgid "This is not a valid url"
-msgstr "Veuillez entrer une URL valide"
+msgstr "Cette URL n'est pas valide"
 
 #: [share]success
 msgid "Sharing the URL"
-msgstr ""
+msgstr "Partage de l'URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1779,7 +1763,7 @@ msgstr "Compte Yahoo"
 
 #: [privacy]my_profile
 msgid "Go to my profile page"
-msgstr ""
+msgstr "Aller sur mon profil"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -1814,9 +1798,8 @@ msgid "Loading…"
 msgstr "Chargement…"
 
 #: [page]communities
-#, fuzzy
 msgid "Communities"
-msgstr "Commentaires"
+msgstr "Communautés"
 
 #: [page]home
 msgid "Home"
@@ -1847,9 +1830,8 @@ msgid "Public Groups"
 msgstr "Groupes publics"
 
 #: [page]post
-#, fuzzy
 msgid "Post"
-msgstr "Billets"
+msgstr "Article"
 
 #: [page]blog
 msgid "Blog"
@@ -1917,9 +1899,8 @@ msgid "Whoops!"
 msgstr "Oups !"
 
 #: [error]websocket
-#, fuzzy
 msgid "Movim cannot talk with the server, please try again later"
-msgstr "Movim ne peut pas communiquer avec le serveur, veuillez réessayer plus tard (erreur de connexion WebSocket)"
+msgstr "Movim ne peut pas communiquer avec le serveur, veuillez réessayer plus tard"
 
 #: [error]oops
 msgid "Oops!"
@@ -2691,24 +2672,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Status"
-#~ msgstr "Statut"
-
-#, fuzzy
-#~ msgid "Read and write rights for the webserver in Movim's cache directory"
-#~ msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier racine de Movim"
-
-#, fuzzy
-#~ msgid "Read and write rights for the webserver in Movim's log directory"
-#~ msgstr "Droits de lecture et d’écriture pour le serveur web dans le dossier racine de Movim"
-
-#~ msgctxt "[error]unauthorized"
-#~ msgid "Your XMPP server is unauthorized"
-#~ msgstr "Votre compte XMPP n’est pas autorisé à se connecter"
-
-#~ msgid "A Movim session is already open on an other device"
-#~ msgstr "Une session Movim est déjà ouverte sur un autre ordinateur."
-
-#~ msgid "Online with Movim"
-#~ msgstr "En ligne avec Movim"
