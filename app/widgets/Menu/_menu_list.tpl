@@ -80,8 +80,8 @@
         {$c->preparePost($value)}
     {/loop}
     {if="count($items) == $paging"}
-        <ul class="block list active thick">
-            <li id="history" class="block large" onclick="{$history} this.parentNode.removeChild(this);">
+        <ul class="list active thick">
+            <li id="history" class="large" onclick="{$history} this.parentNode.removeChild(this);">
                 <span class="icon primary gray">
                     <i class="zmdi zmdi-time-restore"></i>
                 </span>

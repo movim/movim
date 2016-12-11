@@ -80,8 +80,9 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function ajaxGetHistory($server, $node, $page)
     {
-        $html = $this->prepareGroup($server, $node, $page);
+        $html = $this->prepareCommunity($server, $node, $page);
         RPC::call('MovimTpl.append', '#communityposts', $html);
+        RPC::call('MovimUtils.enableVideos');
     }
 
     function ajaxClear()

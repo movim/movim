@@ -12,11 +12,11 @@
 
 {if="$posts != null && count($posts) >= $paging-1"}
 <ul class="list active thick">
-    <li onclick="Group_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.parentNode.removeChild(this.parentNode);">
-        <span class="primary icon">
+    <li onclick="CommunityPosts_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.parentNode.removeChild(this.parentNode);">
+        <span class="icon primary gray">
             <i class="zmdi zmdi-time-restore"></i>
         </span>
-        <p class="normal line">{$c->__('post.older')}</p>
+        <p class="normal center">{$c->__('post.older')}</p>
     </li>
 </ul>
 {/if}
