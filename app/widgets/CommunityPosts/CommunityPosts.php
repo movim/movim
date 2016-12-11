@@ -1,11 +1,6 @@
 <?php
 
 use Moxl\Xec\Action\Pubsub\GetItemsId;
-//use Moxl\Xec\Action\Pubsub\GetAffiliations;
-//use Moxl\Xec\Action\Pubsub\GetSubscriptions;
-
-//use Moxl\Xec\Action\Pubsub\GetConfig;
-//use Moxl\Xec\Action\Pubsub\SetConfig;
 
 use Moxl\Xec\Action\Pubsub\Delete;
 
@@ -25,10 +20,6 @@ class CommunityPosts extends \Movim\Widget\Base
         $this->registerEvent('pubsub_getitemsid_handle', 'onItems');
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
-//        $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
-
-//        $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
-//        $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
 
         $this->addjs('communityposts.js');
     }
@@ -57,50 +48,16 @@ class CommunityPosts extends \Movim\Widget\Base
             }
         }
     }
-    /*
-    function onSubscriptions($packet)
-    {
-        list($subscriptions, $server, $node) = array_values($packet->content);
-
-        $view = $this->tpl();
-
-        $view->assign('subscriptions', $subscriptions);
-        $view->assign('server', $server);
-        $view->assign('node', $node);
-
-        Dialog::fill($view->draw('_group_subscriptions', true), true);
-    }*/
-
-    /*function onConfig($packet)
-    {
-        list($config, $server, $node) = array_values($packet->content);
-
-        $view = $this->tpl();
-
-        $xml = new \XMPPtoForm();
-        $form = $xml->getHTML($config->x->asXML());
-
-        $view->assign('form', $form);
-        $view->assign('server', $server);
-        $view->assign('node', $node);
-        $view->assign('attributes', $config->attributes());
-
-        Dialog::fill($view->draw('_group_config', true), true);
-    }
-
-    function onConfigSaved()
-    {
-        Notification::append(false, $this->__('group.config_saved'));
-    }*/
 
     private function displayItems($server, $node)
     {
         if(!$this->validateServerNode($server, $node)) return;
 
         $html = $this->prepareCommunity($server, $node);
-        $slugify = new Slugify();
+        $slugify = new Slugify;
 
         RPC::call('MovimTpl.fill', '#communityposts.'.$slugify->slugify($server.'_'.$node), $html);
+        RPC::call('MovimUtils.enableVideos');
     }
 
     function ajaxGetContact($jid)
@@ -109,35 +66,10 @@ class CommunityPosts extends \Movim\Widget\Base
         $c->ajaxGetDrawer($jid);
     }
 
-/*    function ajaxGetConfig($server, $node)
-    {
-        if(!$this->validateServerNode($server, $node)) return;
-
-        $r = new GetConfig;
-        $r->setTo($server)
-          ->setNode($node)
-          ->request();
-    }
-
-    function ajaxSetConfig($data, $server, $node)
-    {
-        if(!$this->validateServerNode($server, $node)) return;
-
-        $r = new SetConfig;
-        $r->setTo($server)
-          ->setNode($node)
-          ->setData($data)
-          ->request();
-    }
-*/
     function ajaxGetItems($server, $node)
     {
         if(!$this->validateServerNode($server, $node)) return;
         $slugify = new Slugify;
-
-        //RPC::call('Group.addLoad', $slugify->slugify($server.'_'.$node));
-        //RPC::call('MovimUtils.pushState', $this->route('group', [$server, $node]));
-        //RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), '');
 
         $r = new GetItemsId;
         $r->setTo($server)
@@ -152,25 +84,6 @@ class CommunityPosts extends \Movim\Widget\Base
         RPC::call('MovimTpl.append', '#communityposts', $html);
     }
 
-/*    function ajaxGetAffiliations($server, $node){
-        if(!$this->validateServerNode($server, $node)) return;
-
-        $r = new GetAffiliations;
-        $r->setTo($server)->setNode($node)
-          ->request();
-    }
-
-    function ajaxGetSubscriptions($server, $node, $notify = true)
-    {
-        if(!$this->validateServerNode($server, $node)) return;
-
-        $r = new GetSubscriptions;
-        $r->setTo($server)
-          ->setNode($node)
-          ->setNotify($notify)
-          ->request();
-    }
-*/
     function ajaxClear()
     {
         $html = $this->prepareEmpty();
