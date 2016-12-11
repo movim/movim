@@ -198,8 +198,8 @@ class Post extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $nd = new \modl\PostnDAO;
-        $cd = new modl\ContactDAO;
+        $nd = new \Modl\PostnDAO;
+        $cd = new \Modl\ContactDAO;
 
         $view = $this->tpl();
 

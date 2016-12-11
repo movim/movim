@@ -8,7 +8,7 @@
                 <i class="zmdi zmdi-settings"></i>
             </span>
             <p class="center">{$c->__('page.communities')}</p>
-            <p class="center line">{$c->__('group.empty_text')}</p>
+            <p class="center line">{$c->__('communities.empty_text')}</p>
         </li>
     </ul>
 </header>
@@ -72,7 +72,7 @@
             <p>
                 {$value->server}
                 {if="$value->sub > 0"}
-                    <span title="{$c->__('groups.sub', $value->sub)}">
+                    <span title="{$c->__('communitydata.sub', $value->sub)}">
                         - {$value->sub} <i class="zmdi zmdi-accounts"></i>
                     </span>
                 {/if}
@@ -86,7 +86,7 @@
 
 <ul class="list flex middle active">
     <li class="subheader block large">
-        <p>{$c->__('group.servers')}</p>
+        <p>{$c->__('communities.servers')}</p>
     </li>
     {loop="$servers"}
         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
@@ -100,7 +100,7 @@
                     {$value->server}
                     <span class="second">{$value->name}</span>
                 </p>
-                <p>{$c->__('group.counter', (empty($value->number)) ? 0 : $value->number)}</p>
+                <p>{$c->__('communities.counter', (empty($value->number)) ? 0 : $value->number)}</p>
             </li>
         {/if}
     {/loop}
@@ -112,7 +112,7 @@
             <div>
                 <input placeholder="pubsub.server.com" onkeypress="
                     if(event.keyCode == 13) { Communities_ajaxDisco(this.value); return false; }" >
-                <label>{$c->__('group.search_server')}</label>
+                <label>{$c->__('communities.search_server')}</label>
             </div>
         </form>
     </li>

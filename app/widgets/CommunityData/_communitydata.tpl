@@ -10,10 +10,10 @@
         <p>
             <!--{$item->created|strtotime|prepareDate:true,true}-->
             {if="$item->num > 0"}
-                 {$c->__('groups.num', $item->num)}
+                 {$c->__('communitydata.num', $item->num)}
             {/if}
             {if="$item->sub > 0"}
-                <br />{$c->__('groups.sub', $item->sub)}
+                <br />{$c->__('communitydata.sub', $item->sub)}
             {/if}
         </p>
     </li>

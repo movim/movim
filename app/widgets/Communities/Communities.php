@@ -19,11 +19,9 @@ class Communities extends \Movim\Widget\Base
     function ajaxDisco($server)
     {
         if(!$this->validateServer($server)) {
-            Notification::append(null, $this->__('groups.disco_error'));
+            Notification::append(null, $this->__('communities.disco_error'));
             return;
         }
-
-        RPC::call('MovimTpl.fill', '#groups_widget', '');
 
         $r = new Items;
         $r->setTo($server)->request();

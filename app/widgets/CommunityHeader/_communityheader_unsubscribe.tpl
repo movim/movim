@@ -1,9 +1,9 @@
 <section>
-    <h3>{$c->__('group.sure')}</h3>
+    <h3>{$c->__('communityheader.sure')}</h3>
     {if="$item"}
         <br />
         <h4 class="gray">
-            {$c->__('group.unsubscribe_text')} : {$item->name}
+            {$c->__('communityheader.unsubscribe_text')} : {$item->name}
         </h4>
     {/if}
 </section>
@@ -14,6 +14,6 @@
     <a
         onclick="CommunityHeader_ajaxUnsubscribe('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()"
         class="button flat">
-        {$c->__('group.unsubscribe')}
+        {$c->__('communityheader.unsubscribe')}
     </a>
 </div>

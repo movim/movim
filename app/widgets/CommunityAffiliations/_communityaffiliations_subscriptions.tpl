@@ -1,7 +1,7 @@
 <section class="scroll">
     <ul class="list thin divided simple">
         <li class="subheader">
-            <p><span class="info">{$subscriptions|count}</span>{$c->__('group.subscriptions')}</p>
+            <p><span class="info">{$subscriptions|count}</span>{$c->__('communityaffiliation.subscriptions')}</p>
         </li>
         {loop="$subscriptions"}
             <li>

@@ -23,7 +23,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     function onCreate($packet)
     {
-        Notification::append(null, $this->__('groups.created'));
+        Notification::append(null, $this->__('communitiesserver.created'));
 
         list($server, $node) = array_values($packet->content);
         $this->ajaxDisco($server);
@@ -45,7 +45,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
         RPC::call('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($server));
 
-        Notification::append(null, $this->__('groups.disco_error'));
+        Notification::append(null, $this->__('communitiesserver.disco_error'));
     }
 
     function onTestCreate($packet)
@@ -60,13 +60,13 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     function onTestCreateError($packet)
     {
-        Notification::append(null, $this->__('groups.no_creation'));
+        Notification::append(null, $this->__('communitiesserver.no_creation'));
     }
 
     function ajaxDisco($server)
     {
         if(!$this->validateServer($server)) {
-            Notification::append(null, $this->__('groups.disco_error'));
+            Notification::append(null, $this->__('communitiesserver.disco_error'));
             return;
         }
 
@@ -94,7 +94,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
         $validate_name = Validator::stringType()->length(4, 80);
         if(!$validate_name->validate($form->name->value)) {
-            Notification::append(null, $this->__('groups.name_error'));
+            Notification::append(null, $this->__('communitiesserver.name_error'));
             return;
         }
 
@@ -102,7 +102,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         $uri = $slugify->slugify($form->name->value);
 
         if($uri == '') {
-            Notification::append(null, $this->__('groups.name_error'));
+            Notification::append(null, $this->__('communitiesserver.name_error'));
             return;
         }
 

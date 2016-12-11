@@ -32,7 +32,7 @@
             </aside>
             <div id="community">
             <?php $this->widget('CommunityHeader'); ?>
-            <?php $this->widget('Group'); ?>
+            <?php $this->widget('CommunityPosts'); ?>
             </div>
         <?php } ?>
     </section>

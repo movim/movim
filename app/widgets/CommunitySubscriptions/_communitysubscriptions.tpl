@@ -10,7 +10,7 @@
             <span class="control icon gray active on_mobile" onclick="MovimTpl.showPanel()">
             </span>
             <p class="center">{$c->__('page.communities')}</p>
-            <p class="center">{$c->__('groups.subscriptions')}</p>
+            <p class="center">{$c->__('communitysubscriptions.subscriptions')}</p>
         </li>
     </ul>
 </header>
@@ -18,8 +18,8 @@
 {if="$subscriptions == null"}
     <ul class="thick">
         <div class="placeholder icon bookmark">
-            <h1>{$c->__('groups.empty_title')}</h1>
-            <h4>{$c->__('groups.empty_text1')} {$c->__('groups.empty_text2')}</h4>
+            <h1>{$c->__('communitysubscriptions.empty_title')}</h1>
+            <h4>{$c->__('communitysubscriptions.empty_text1')} {$c->__('communitysubscriptions.empty_text2')}</h4>
         </li>
     </ul>
 {else}

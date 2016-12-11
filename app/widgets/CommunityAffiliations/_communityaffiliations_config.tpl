@@ -7,7 +7,7 @@
     <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </a>
-    <a onclick="Group_ajaxSetConfig(MovimUtils.parseForm('config'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear();"
+    <a onclick="CommunityAffiliations_ajaxSetConfig(MovimUtils.parseForm('config'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear();"
        class="button flat">
         {$c->__('button.save')}
     </a>

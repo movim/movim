@@ -18,7 +18,7 @@
     <ul class="thick">
         <div class="placeholder icon pages">
             <h1>{$c->__('error.oops')}</h1>
-            <h4>{$c->__('groups.empty_server')}</h4>
+            <h4>{$c->__('communitiesserver.empty_server')}</h4>
         </li>
     </ul>
 {else}
@@ -61,13 +61,13 @@
             </p>
             <p>
                 {if="$value->num > 0"}
-                     {$c->__('groups.num', $value->num)}
+                     {$c->__('communitydata.num', $value->num)}
                 {/if}
                 {if="$value->sub > 0 && $value->num > 0"}
                   -
                 {/if}
                 {if="$value->sub > 0"}
-                    <span title="{$c->__('groups.sub', $value->sub)}">
+                    <span title="{$c->__('communitydata.sub', $value->sub)}">
                         {$value->sub} <i class="zmdi zmdi-accounts"></i>
                     </span>
                 {/if}

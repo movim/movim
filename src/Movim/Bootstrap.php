@@ -311,8 +311,8 @@ class Bootstrap
     {
         // Return a list of interesting widgets to load (to save memory)
         return["Account","AccountNext","Ack","AdHoc","Avatar","Bookmark","Communities",
-        "CommunityAffiliations","CommunityData","CommunityHeader","CommunitiesServer","Chat",
-        "Chats","Config","Contact","Dialog","Drawer","Group","Header",
+        "CommunityAffiliations","CommunityData","CommunityHeader","CommunityPosts","CommunitiesServer","Chat",
+        "Chats","Config","Contact","Dialog","Drawer","Header",
         "Init","Login","LoginAnonymous","Menu","Notifs","Post","Presence",
         "Publish","Rooms","Roster","Stickers","Upload","Vcard4", "Visio",
         "VisioLink"];

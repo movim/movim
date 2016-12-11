@@ -1,11 +1,11 @@
 <?php
 
 use Moxl\Xec\Action\Pubsub\GetItemsId;
-use Moxl\Xec\Action\Pubsub\GetAffiliations;
-use Moxl\Xec\Action\Pubsub\GetSubscriptions;
+//use Moxl\Xec\Action\Pubsub\GetAffiliations;
+//use Moxl\Xec\Action\Pubsub\GetSubscriptions;
 
-use Moxl\Xec\Action\Pubsub\GetConfig;
-use Moxl\Xec\Action\Pubsub\SetConfig;
+//use Moxl\Xec\Action\Pubsub\GetConfig;
+//use Moxl\Xec\Action\Pubsub\SetConfig;
 
 use Moxl\Xec\Action\Pubsub\Delete;
 
@@ -14,10 +14,9 @@ use Cocur\Slugify\Slugify;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
-class Group extends \Movim\Widget\Base
+class CommunityPosts extends \Movim\Widget\Base
 {
     private $_paging = 8;
-    private $_role = null;
 
     function load()
     {
@@ -26,12 +25,12 @@ class Group extends \Movim\Widget\Base
         $this->registerEvent('pubsub_getitemsid_handle', 'onItems');
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
-        $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
+//        $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
 
-        $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
-        $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
+//        $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
+//        $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
 
-        $this->addjs('group.js');
+        $this->addjs('communityposts.js');
     }
 
     function onItems($packet)
@@ -51,8 +50,6 @@ class Group extends \Movim\Widget\Base
             if($sd->get($server, $node)) {
                 $this->ajaxDelete($server, $node, true);
                 $this->ajaxGetAffiliations($server, $node);
-                // Display an error message
-                RPC::call('Group.clearLoad');
             } else {
                 $id = new \Modl\ItemDAO;
                 $id->deleteItem($server, $node);
@@ -60,7 +57,7 @@ class Group extends \Movim\Widget\Base
             }
         }
     }
-
+    /*
     function onSubscriptions($packet)
     {
         list($subscriptions, $server, $node) = array_values($packet->content);
@@ -72,9 +69,9 @@ class Group extends \Movim\Widget\Base
         $view->assign('node', $node);
 
         Dialog::fill($view->draw('_group_subscriptions', true), true);
-    }
+    }*/
 
-    function onConfig($packet)
+    /*function onConfig($packet)
     {
         list($config, $server, $node) = array_values($packet->content);
 
@@ -94,16 +91,16 @@ class Group extends \Movim\Widget\Base
     function onConfigSaved()
     {
         Notification::append(false, $this->__('group.config_saved'));
-    }
+    }*/
 
     private function displayItems($server, $node)
     {
         if(!$this->validateServerNode($server, $node)) return;
 
-        $html = $this->prepareGroup($server, $node);
+        $html = $this->prepareCommunity($server, $node);
         $slugify = new Slugify();
 
-        RPC::call('MovimTpl.fill', '#group_widget.'.$slugify->slugify($server.'_'.$node), $html);
+        RPC::call('MovimTpl.fill', '#communityposts.'.$slugify->slugify($server.'_'.$node), $html);
     }
 
     function ajaxGetContact($jid)
@@ -112,7 +109,8 @@ class Group extends \Movim\Widget\Base
         $c->ajaxGetDrawer($jid);
     }
 
-    function ajaxGetConfig($server, $node){
+/*    function ajaxGetConfig($server, $node)
+    {
         if(!$this->validateServerNode($server, $node)) return;
 
         $r = new GetConfig;
@@ -121,7 +119,8 @@ class Group extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxSetConfig($data, $server, $node){
+    function ajaxSetConfig($data, $server, $node)
+    {
         if(!$this->validateServerNode($server, $node)) return;
 
         $r = new SetConfig;
@@ -130,11 +129,11 @@ class Group extends \Movim\Widget\Base
           ->setData($data)
           ->request();
     }
-
+*/
     function ajaxGetItems($server, $node)
     {
         if(!$this->validateServerNode($server, $node)) return;
-        $slugify = new Slugify();
+        $slugify = new Slugify;
 
         //RPC::call('Group.addLoad', $slugify->slugify($server.'_'.$node));
         //RPC::call('MovimUtils.pushState', $this->route('group', [$server, $node]));
@@ -150,10 +149,10 @@ class Group extends \Movim\Widget\Base
     function ajaxGetHistory($server, $node, $page)
     {
         $html = $this->prepareGroup($server, $node, $page);
-        RPC::call('MovimTpl.append', '#group_widget', $html);
+        RPC::call('MovimTpl.append', '#communityposts', $html);
     }
 
-    function ajaxGetAffiliations($server, $node){
+/*    function ajaxGetAffiliations($server, $node){
         if(!$this->validateServerNode($server, $node)) return;
 
         $r = new GetAffiliations;
@@ -171,21 +170,20 @@ class Group extends \Movim\Widget\Base
           ->setNotify($notify)
           ->request();
     }
-
+*/
     function ajaxClear()
     {
         $html = $this->prepareEmpty();
-        RPC::call('MovimTpl.fill', '#group_widget header', '');
-        RPC::call('MovimTpl.fill', '#group_widget', $html);
+        RPC::call('MovimTpl.fill', '#communityposts', $html);
     }
 
     function prepareEmpty()
     {
-        $id = new \modl\ItemDAO();
+        $id = new \Modl\ItemDAO();
 
         $view = $this->tpl();
         $view->assign('servers', $id->getGroupServers());
-        $html = $view->draw('_group_empty', true);
+        $html = $view->draw('_communityposts_empty', true);
 
         return $html;
     }
@@ -195,7 +193,7 @@ class Group extends \Movim\Widget\Base
         return $pw->preparePost($p, true, true, true);
     }
 
-    private function prepareGroup($server, $node, $page = 0)
+    private function prepareCommunity($server, $node, $page = 0)
     {
         $pd = new \Modl\PostnDAO;
         $posts = $pd->getNodeUnfiltered($server, $node, $page*$this->_paging, $this->_paging);
@@ -215,7 +213,7 @@ class Group extends \Movim\Widget\Base
         $view->assign('subscription', $subscription);
         $view->assign('paging', $this->_paging);
 
-        $html = $view->draw('_group_posts', true);
+        $html = $view->draw('_communityposts', true);
 
         return $html;
     }
@@ -233,20 +231,16 @@ class Group extends \Movim\Widget\Base
 
     function getComments($post)
     {
-        $pd = new \Modl\PostnDAO();
+        $pd = new \Modl\PostnDAO;
         return $pd->getComments($post);
     }
 
     function display()
     {
-        $slugify = new Slugify();
-        /*$this->view->assign('server', false);
-        $this->view->assign('node', false);
-        if($this->validateServerNode($this->get('s'), $this->get('n'))) {
-            $this->view->assign('server', $this->get('s'));
-            $this->view->assign('node', $this->get('n'));
-        }*/
+        $slugify = new Slugify;
+
         $this->view->assign('class', $slugify->slugify($this->get('s').'_'.$this->get('n')));
-        $this->view->assign('html', $this->prepareGroup($this->get('s'), $this->get('n')));
+        $this->view->assign('html', $this->prepareCommunity($this->get('s'), $this->get('n')));
     }
 }
+

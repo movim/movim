@@ -1,10 +1,10 @@
 <section>
-    <h3>{$c->__('group.delete_title')}</h3>
+    <h3>{$c->__('communityaffiliation.delete_title')}</h3>
     <br />
     {if="$clean"}
-        <h4 class="gray">{$c->__('group.delete_clean_text')}</h4>
+        <h4 class="gray">{$c->__('communityaffiliation.delete_clean_text')}</h4>
     {else}
-        <h4 class="gray">{$c->__('group.delete_text')}</h4>
+        <h4 class="gray">{$c->__('communityaffiliation.delete_text')}</h4>
     {/if}
     <br />
     <h4 class="gray">{$server}/{$node}</h4>
