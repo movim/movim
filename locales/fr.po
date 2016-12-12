@@ -99,7 +99,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-11 17:28+0200\n"
-"PO-Revision-Date: 2016-12-11 16:29+0000\n"
+"PO-Revision-Date: 2016-12-12 11:54+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -698,7 +698,7 @@ msgstr "Découvrir, suivre et partager"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr "% communautés"
+msgstr "%s communautés"
 
 #: [communities]search_server [group]search_server
 msgid "Search for a new server"
