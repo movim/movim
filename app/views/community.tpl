@@ -28,6 +28,7 @@
         <?php } else { ?>
             <aside>
                 <?php $this->widget('CommunityData'); ?>
+                <?php $this->widget('CommunityConfig'); ?>
                 <?php $this->widget('CommunityAffiliations'); ?>
             </aside>
             <div id="community">

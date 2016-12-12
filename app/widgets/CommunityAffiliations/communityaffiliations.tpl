@@ -1,3 +1,1 @@
-<ul class="list card">
-    <li id="community_affiliation"></li>
-</ul>
+<div id="community_affiliation"></div>

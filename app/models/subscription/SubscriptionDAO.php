@@ -74,6 +74,24 @@ class SubscriptionDAO extends SQL
         return $this->run('Subscription');
     }
 
+    function getAll($server, $node)
+    {
+        $this->_sql = '
+            select * from subscription
+            where server = :server
+                and node = :node';
+
+        $this->prepare(
+            'Subscription',
+            [
+                'server' => $server,
+                'node' => $node
+            ]
+        );
+
+        return $this->run('Subscription');
+    }
+
     function getSubscribed()
     {
         $this->_sql = '

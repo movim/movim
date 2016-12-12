@@ -1,14 +1,6 @@
-<section class="scroll">
-    <form name="config" data-sessionid="{$attributes->sessionid}" data-node="{$attributes->node}">
-        {$form}
-    </form>
-</section>
+<section class="scroll spin" id="community_affiliations_config"></section>
 <div>
     <a onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
-    </a>
-    <a onclick="CommunityAffiliations_ajaxSetConfig(MovimUtils.parseForm('config'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear();"
-       class="button flat">
-        {$c->__('button.save')}
     </a>
 </div>

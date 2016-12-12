@@ -59,6 +59,22 @@ class Caps extends Model
         }
     }
 
+    public function getPubsubRoles()
+    {
+        $features = unserialize($this->features);
+
+        $roles = ['owner', 'none'];
+
+        foreach($features as $feature) {
+            preg_match("/http:\/\/jabber.org\/protocol\/pubsub#(.*)-affiliation$/", $feature, $matches);
+            if(!empty($matches)){
+                array_push($roles, $matches[1]);
+            }
+        }
+
+        return $roles;
+    }
+
     public function isJingle()
     {
         $features = unserialize($this->features);
