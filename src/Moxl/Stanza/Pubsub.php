@@ -413,23 +413,20 @@ class Pubsub {
 
     static function setAffiliations($to, $node, $data)
     {
-        $affiliations = "";
-        foreach($data as $jid_subid => $affiliation){
-            $split = split("_", $jid_subid);
-            $affiliations .= '
-                <affiliation
-                    jid="'.$split[0].'"
-                    subid="'.$split[1].'"
-                    affiliation="'.$affiliation.'" />';
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
+        $affiliations = $dom->createElement('affiliations');
+        $affiliations->setAttribute('node', $node);
+        $pubsub->appendChild($affiliations);
+
+        foreach($data as $jid => $role) {
+            $affiliation = $dom->createElement('affiliation');
+            $affiliation->setAttribute('jid', $jid);
+            $affiliation->setAttribute('affiliation', $role);
+            $affiliations->appendChild($affiliation);
         }
 
-        $xml = '<pubsub xmlns="http://jabber.org/protocol/pubsub#owner">
-                <affiliations node="'.$node.'">
-                '.$affiliations.'
-                </affiliations>
-            </pubsub>';
-
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 }

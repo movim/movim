@@ -60,6 +60,9 @@ class SetAffiliations extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $this->event('pubsubaffiliationssubmited', $stanza);
+        $ga = new GetAffiliations;
+        $ga->setTo($this->_to)
+           ->setNode($this->_node)
+           ->request();
     }
 }

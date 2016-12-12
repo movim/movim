@@ -51,13 +51,14 @@ class GetMetadata extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
-        $id = new \modl\ItemDAO();
+    public function handle($stanza, $parent = false)
+    {
+        $id = new \Modl\ItemDAO;
 
         $i = $id->getItem($this->_to, $this->_node);
 
         if(!$i) {
-            $i = new \modl\Item();
+            $i = new \Modl\Item;
         }
 
         if(isset($stanza->query->x)) {

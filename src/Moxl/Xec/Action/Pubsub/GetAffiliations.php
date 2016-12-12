@@ -55,11 +55,11 @@ class GetAffiliations extends Errors
     {
         $tab = [];
         foreach($stanza->pubsub->affiliations->children() as $i) {
-            $sub = array((string)$i["jid"], (string)$i["affiliation"], (string)$i["subid"]);
+            $sub = [(string)$i["jid"], (string)$i["affiliation"], (string)$i["subid"]];
             array_push($tab, $sub);
         }
 
-        $this->pack(array('affiliations' => $tab, 'server' => $this->_to, 'node' => $this->_node));
+        $this->pack(['affiliations' => $tab, 'server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
 }
