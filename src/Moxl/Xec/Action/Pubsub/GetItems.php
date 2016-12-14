@@ -66,7 +66,7 @@ class GetItems extends Errors
             && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
                 if($this->_since == null
                 || strtotime($this->_since) < strtotime($item->entry->published)) {
-                    $p = new \modl\Postn();
+                    $p = new \Modl\Postn;
                     $promise = $p->set($item, $this->_to, false, $this->_node);
 
                     $promise->done(function() use($pd, $p) {

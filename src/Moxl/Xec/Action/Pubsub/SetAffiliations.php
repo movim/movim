@@ -64,5 +64,7 @@ class SetAffiliations extends Errors
         $ga->setTo($this->_to)
            ->setNode($this->_node)
            ->request();
+
+        $this->deliver();
     }
 }

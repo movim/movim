@@ -54,10 +54,13 @@ class GetItemsId extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $evt = new Event;
 
         $pd = new \modl\PostnDAO();
+
+        $ids = [];
 
         foreach(array_reverse($stanza->query->xpath('item')) as $item) {
             $id = (string)$item->attributes()->name;
@@ -68,13 +71,16 @@ class GetItemsId extends Errors
                    ->setId($id)
                    ->request();
             }
+
+            array_push($ids, $id);
         }
 
-        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
+        $this->pack(['server' => $this->_to, 'node' => $this->_node, 'ids' => $ids]);
         $this->deliver();
     }
 
     public function error($errorid, $message) {
+
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }

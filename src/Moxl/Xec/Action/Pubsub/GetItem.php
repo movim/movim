@@ -97,7 +97,7 @@ class GetItem extends Errors
                             $this->event('post', $this->packet);
                         }
 
-                        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
+                        $this->pack(['server' => $this->_to, 'node' => $this->_node, 'id' => $this->_id]);
                         $this->deliver();
                     });
                 }
