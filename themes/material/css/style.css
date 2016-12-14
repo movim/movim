@@ -364,6 +364,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     background-image: url(../img/movim_cloud.svg);
     background-repeat: no-repeat;
     background-position: center center;
+    min-height: 30rem;
 }
 
 .spin {

@@ -1,1 +1,1 @@
-<div id="communityposts" class="spin {$class}">{$html}</div>
+<div id="communityposts" class="spin {$class}"></div>

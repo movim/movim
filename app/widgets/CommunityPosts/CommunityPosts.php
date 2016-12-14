@@ -1,7 +1,6 @@
 <?php
 
 use Moxl\Xec\Action\Pubsub\GetItemsId;
-
 use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
@@ -15,19 +14,26 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function load()
     {
-        $this->registerEvent('pubsub_getitem_handle', 'onItems');
-        $this->registerEvent('pubsub_getitems_handle', 'onItems');
-        $this->registerEvent('pubsub_getitemsid_handle', 'onItems');
+        $this->registerEvent('pubsub_getitem_handle', 'onItem');
+        $this->registerEvent('pubsub_getitemsid_handle', 'onItemsId');
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
 
         $this->addjs('communityposts.js');
     }
 
-    function onItems($packet)
+    function onItem($packet)
     {
-        list($server, $node) = array_values($packet->content);
-        $this->displayItems($server, $node);
+        list($server, $node, $id) = array_values($packet->content);
+
+        RPC::call('MovimTpl.fill', '#'.cleanupId($id), $this->preparePost($server, $node, $id));
+        RPC::call('MovimUtils.enableVideos');
+    }
+
+    function onItemsId($packet)
+    {
+        list($server, $node, $ids) = array_values($packet->content);
+        $this->displayItems($server, $node, $ids);
     }
 
     function onItemsError($packet)
@@ -49,13 +55,13 @@ class CommunityPosts extends \Movim\Widget\Base
         }
     }
 
-    private function displayItems($server, $node)
+    private function displayItems($server, $node, $ids = false)
     {
         if(!$this->validateServerNode($server, $node)) return;
 
-        $html = $this->prepareCommunity($server, $node);
-        $slugify = new Slugify;
+        $html = $this->prepareCommunity($server, $node, 0, $ids);
 
+        $slugify = new Slugify;
         RPC::call('MovimTpl.fill', '#communityposts.'.$slugify->slugify($server.'_'.$node), $html);
         RPC::call('MovimUtils.enableVideos');
     }
@@ -102,15 +108,23 @@ class CommunityPosts extends \Movim\Widget\Base
         return $html;
     }
 
-    public function preparePost($p) {
+    public function preparePost($server, $node, $id) {
+        $pd = new \Modl\PostnDAO;
+        $p = $pd->get($server, $node, $id);
+
         $pw = new \Post;
         return $pw->preparePost($p, true, true, true);
     }
 
-    private function prepareCommunity($server, $node, $page = 0)
+    private function prepareCommunity($server, $node, $page = 0, $ids)
     {
         $pd = new \Modl\PostnDAO;
-        $posts = $pd->getNodeUnfiltered($server, $node, $page*$this->_paging, $this->_paging);
+
+        /*if($ids == false) {
+            $posts = $pd->getNodeUnfiltered($server, $node, $page*$this->_paging, $this->_paging);
+        } else {
+            $posts = $pd->getIds($server, $node, $ids);
+        }*/
 
         $id = new \Modl\ItemDAO;
         $item = $id->getItem($server, $node);
@@ -122,7 +136,8 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('page', $page);
-        $view->assign('posts', $posts);
+        $view->assign('ids', $ids);
+        //$view->assign('posts', $posts);
         $view->assign('item', $item);
         $view->assign('subscription', $subscription);
         $view->assign('paging', $this->_paging);
@@ -152,9 +167,7 @@ class CommunityPosts extends \Movim\Widget\Base
     function display()
     {
         $slugify = new Slugify;
-
         $this->view->assign('class', $slugify->slugify($this->get('s').'_'.$this->get('n')));
-        $this->view->assign('html', $this->prepareCommunity($this->get('s'), $this->get('n')));
     }
 }
 

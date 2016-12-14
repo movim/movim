@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1aaa1bec8814b0cd613fa1a1218909c2",
-    "content-hash": "a24aeeaa19424b380b9d825fdaba2e89",
+    "hash": "be6d846e650b33858717fd6132461528",
+    "content-hash": "40b31b92b9318d541d7d8bb56b9878e3",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -645,12 +645,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "0074174165aacdc706220466b7b95c61c33df9ce"
+                "reference": "3dad38944bc3f2c06c1c6258380a3987fec8cade"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/0074174165aacdc706220466b7b95c61c33df9ce",
-                "reference": "0074174165aacdc706220466b7b95c61c33df9ce",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/3dad38944bc3f2c06c1c6258380a3987fec8cade",
+                "reference": "3dad38944bc3f2c06c1c6258380a3987fec8cade",
                 "shasum": ""
             },
             "require": {
@@ -685,7 +685,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-12-12 22:59:37"
+            "time": "2016-12-14 06:57:42"
         },
         {
             "name": "movim/sasl2",
@@ -1676,16 +1676,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "09d0fd33560e3573185a2ea17614e37ba38716c5"
+                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/09d0fd33560e3573185a2ea17614e37ba38716c5",
-                "reference": "09d0fd33560e3573185a2ea17614e37ba38716c5",
+                "url": "https://api.github.com/repos/symfony/console/zipball/d12aa9ca20f4db83ec58410978dab6afcb9d6aaa",
+                "reference": "d12aa9ca20f4db83ec58410978dab6afcb9d6aaa",
                 "shasum": ""
             },
             "require": {
@@ -1735,11 +1735,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2016-11-16 22:18:16"
+            "time": "2016-12-11 14:34:22"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -1796,7 +1796,7 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
@@ -1908,7 +1908,7 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v3.2.0",
+            "version": "v3.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",

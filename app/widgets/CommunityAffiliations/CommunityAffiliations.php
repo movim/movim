@@ -13,6 +13,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
     public function load()
     {
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
+        $this->registerEvent('pubsub_setaffiliations_handle', 'onAffiliationsSet');
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
         $this->registerEvent('pubsub_delete_error', 'onDeleteError');
 
@@ -59,6 +60,11 @@ class CommunityAffiliations extends \Movim\Widget\Base
             '#community_affiliations_config',
             $view->draw('_communityaffiliations_config_content', true)
         );
+    }
+
+    function onAffiliationsSet($packet)
+    {
+        Notification::append(null, $this->__('communityaffiliation.role_set'));
     }
 
     function onSubscriptions($packet)

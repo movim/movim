@@ -12,6 +12,12 @@
             </span>
             <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
         </li>
+        <li onclick="CommunityAffiliations_ajaxAffiliations('{$item->server|echapJS}', '{$item->node|echapJS}')">
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-account-box-o"></i>
+            </span>
+            <p class="normal">{$c->__('communityaffiliation.roles')}</p>
+        </li>
         <li onclick="CommunityAffiliations_ajaxDelete('{$item->server|echapJS}', '{$item->node|echapJS}')">
             <span class="primary icon gray">
                 <i class="zmdi zmdi-delete"></i>
@@ -21,14 +27,14 @@
     </ul>
 {/if}
 
-{loop="$affiliations"}
-<ul class="list card">
+<ul class="list card active">
     <li class="subheader">
         <p>{$c->__('communityaffiliation.owner')}</p>
     </li>
+{loop="$affiliations"}
     {if="$value[1] == 'owner'"}
         {$contact = $c->getContact($value[0])}
-        <li>
+        <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
             {$url = $contact->getPhoto('m')}
             {if="$url"}
                 <span class="primary icon bubble"
@@ -42,5 +48,5 @@
             <p class="normal">{$contact->getTrueName()}</p>
         </li>
     {/if}
-</ul>
 {/loop}
+</ul>

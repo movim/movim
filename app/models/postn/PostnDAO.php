@@ -260,16 +260,45 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn', 'item');
     }
 
-    function getNext($origin, $node, $nodeid, $public = false) {
+    function getNext($origin, $node, $nodeid, $public = false)
+    {
         return $this->get($origin, $node, $nodeid, $public, 1);
     }
 
-    function getPrevious($origin, $node, $nodeid, $public = false) {
+    function getPrevious($origin, $node, $nodeid, $public = false)
+    {
         return $this->get($origin, $node, $nodeid, $public, 2);
     }
 
-    function getPublicItem($origin, $node, $nodeid) {
+    function getPublicItem($origin, $node, $nodeid)
+    {
         return $this->get($origin, $node, $nodeid, true);
+    }
+
+    function getIds($origin, $node, $nodeids)
+    {
+        $ids = (!empty($nodeids)) ? implode('\',\'', $nodeids) : '';
+        $this->_sql = '
+            select postn.*, contact.*, postn.aid from postn
+            left outer join contact on postn.aid = contact.jid
+            left outer join item
+                on postn.origin = item.server
+                and postn.node = item.node
+            where postn.origin = :origin
+                and postn.node = :node
+                and postn.nodeid in (\''.$ids.'\')
+            order by published';
+
+
+        $this->prepare(
+            'Postn',
+            [
+                'origin' => $origin,
+                'node' => $node
+            ]
+        );
+
+        return $this->run('ContactPostn');
     }
 
     function delete($nodeid) {
