@@ -124,11 +124,10 @@ class User
     function isSupported($key)
     {
         $this->reload();
-
         if($this->caps != null) {
             switch($key) {
                 case 'pubsub':
-                    return in_array('http://jabber.org/protocol/pubsub#publish', $this->caps);
+                    return in_array('http://jabber.org/protocol/pubsub#persistent-items', $this->caps);
                     break;
                 case 'upload':
                     $id = new \Modl\ItemDAO;
