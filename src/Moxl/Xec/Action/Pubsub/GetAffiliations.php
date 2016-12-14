@@ -55,8 +55,13 @@ class GetAffiliations extends Errors
     {
         $tab = [];
         foreach($stanza->pubsub->affiliations->children() as $i) {
-            $sub = [(string)$i["jid"], (string)$i["affiliation"], (string)$i["subid"]];
-            array_push($tab, $sub);
+            $affiliation = (string)$i["affiliation"];
+
+            if(!array_key_exists($affiliation, $tab)) {
+                $tab[$affiliation] = [];
+            }
+
+            array_push($tab[$affiliation], ['jid' => (string)$i["jid"], 'subid' => (string)$i["subid"]]);
         }
 
         $this->pack(['affiliations' => $tab, 'server' => $this->_to, 'node' => $this->_node]);
