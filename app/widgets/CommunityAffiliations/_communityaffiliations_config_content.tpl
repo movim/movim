@@ -3,47 +3,49 @@
         <p>Roles</p>
     </li>
     {loop="$affiliations"}
-        {$contact = $c->getContact($value[0])}
-        {$role = $value[1]}
-        <li>
-            {$url = $contact->getPhoto('m')}
-            {if="$url"}
-                <span class="primary icon bubble"
-                    style="background-image: url({$url});">
-                </span>
-            {else}
-                <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                    {$contact->getTrueName()|firstLetterCapitalize}
-                </span>
-            {/if}
-            <form name="{$contact->jid}">
-                <input type="hidden" name="jid" value="{$contact->jid}"/>
-                <div>
-                    {if="$role == 'owner' && $contact->jid == $me"}
-                        <input type="text" disabled value="{$c->__('communityaffiliation.owner')}"/>
-                    {else}
-                    <div class="select">
-                        <select name="role" id="role" onchange="CommunityAffiliations.update('{$contact->jid}')">
-                            {loop="$roles"}
-                                {if="$value == $role"}
-                                    <option
-                                        value="{$value}"
-                                        selected="selected">
-                                        {$value}
-                                    </option>
-                                {else}
-                                    <option value="{$value}">
-                                        {$value}
-                                    </option>
-                                {/if}
-                            {/loop}
-                        </select>
+        {$role = $key}
+        {loop="$affiliations[$role]"}
+            {$contact = $c->getContact($value['jid'])}
+            <li title="{$contact->jid}">
+                {$url = $contact->getPhoto('m')}
+                {if="$url"}
+                    <span class="primary icon bubble"
+                        style="background-image: url({$url});">
+                    </span>
+                {else}
+                    <span class="primary icon bubble color {$contact->jid|stringToColor}">
+                        {$contact->getTrueName()|firstLetterCapitalize}
+                    </span>
+                {/if}
+                <form name="{$contact->jid}">
+                    <input type="hidden" name="jid" value="{$contact->jid}"/>
+                    <div>
+                        {if="$role == 'owner' && $contact->jid == $me"}
+                            <input type="text" disabled value="{$c->__('communityaffiliation.owner')}"/>
+                        {else}
+                        <div class="select">
+                            <select name="role" id="role" onchange="CommunityAffiliations.update('{$contact->jid}')">
+                                {loop="$roles"}
+                                    {if="$value == $role"}
+                                        <option
+                                            value="{$value}"
+                                            selected="selected">
+                                            {$value}
+                                        </option>
+                                    {else}
+                                        <option value="{$value}">
+                                            {$value}
+                                        </option>
+                                    {/if}
+                                {/loop}
+                            </select>
+                        </div>
+                        {/if}
+                        <label for="role">{$contact->getTrueName()} role</label>
                     </div>
-                    {/if}
-                    <label for="role">{$contact->getTrueName()} role</label>
-                </div>
-            </form>
-        </li>
+                </form>
+            </li>
+        {/loop}
     {/loop}
     <li class="subheader">
         <p>{$c->__('button.add')}</p>
