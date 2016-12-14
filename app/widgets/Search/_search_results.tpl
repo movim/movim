@@ -8,7 +8,7 @@
             <li class="subheader"><p>{$c->__('page.news')}</p></li>
         {/if}
         {loop="$posts"}
-            <li onclick="MovimUtils.reload('{$c->route('news', [$value->origin, $value->node, $value->nodeid])}')">
+            <li onclick="MovimUtils.reload('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
                 {if="$value->title != null"}
                     <p class="line">{$value->title}</p>
                 {else}

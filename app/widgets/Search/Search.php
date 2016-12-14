@@ -36,8 +36,13 @@ class Search extends \Movim\Widget\Base
             $view->assign('empty', false);
             $view->assign('presencestxt', getPresencesTxt());
 
-            $pd = new PostnDAO;
-            $posts = $pd->search($key);
+            $posts = false;
+
+            if($this->user->isSupported('pubsub')) {
+                $pd = new PostnDAO;
+                $posts = $pd->search($key);
+            }
+
             $view->assign('posts', $posts);
 
             if(!$posts) $view->assign('empty', true);
