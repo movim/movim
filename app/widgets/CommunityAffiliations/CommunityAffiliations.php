@@ -28,9 +28,10 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
         $role = null;
 
-        foreach($affiliations as $r) {
-            if($r[0] == $this->user->getLogin())
-                $role = (string)$r[1];
+        foreach($affiliations['owner'] as $r) {
+            if($r['jid'] == $this->user->getLogin()) {
+                $role = 'owner';
+            }
         }
 
         $id = new \Modl\ItemDAO;

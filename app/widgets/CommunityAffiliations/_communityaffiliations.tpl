@@ -27,13 +27,37 @@
     </ul>
 {/if}
 
+{if="array_key_exists('owner', $affiliations)"}
+    <ul class="list card active">
+        <li class="subheader">
+            <p>{$c->__('communityaffiliation.owners')}</p>
+        </li>
+        {loop="$affiliations['owner']"}
+            {$contact = $c->getContact($value['jid'])}
+            <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+                {$url = $contact->getPhoto('m')}
+                {if="$url"}
+                    <span class="primary icon bubble"
+                        style="background-image: url({$url});">
+                    </span>
+                {else}
+                    <span class="primary icon bubble color {$contact->jid|stringToColor}">
+                        {$contact->getTrueName()|firstLetterCapitalize}
+                    </span>
+                {/if}
+                <p class="normal">{$contact->getTrueName()}</p>
+            </li>
+        {/loop}
+    </ul>
+{/if}
+
+{if="array_key_exists('publisher', $affiliations)"}
 <ul class="list card active">
     <li class="subheader">
-        <p>{$c->__('communityaffiliation.owner')}</p>
+        <p>{$c->__('communityaffiliation.publishers')}</p>
     </li>
-{loop="$affiliations"}
-    {if="$value[1] == 'owner'"}
-        {$contact = $c->getContact($value[0])}
+    {loop="$affiliations['publisher']"}
+        {$contact = $c->getContact($value['jid'])}
         <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
             {$url = $contact->getPhoto('m')}
             {if="$url"}
@@ -47,6 +71,6 @@
             {/if}
             <p class="normal">{$contact->getTrueName()}</p>
         </li>
-    {/if}
-{/loop}
+    {/loop}
 </ul>
+{/if}

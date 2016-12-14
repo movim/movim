@@ -18,6 +18,7 @@ class CommunityHeader extends \Movim\Widget\Base
     {
         $this->registerEvent('pubsub_getmetadata_handle', 'onMetadata');
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
+        $this->registerEvent('pubsub_subscribe_errorunsupported', 'onSubscriptionUnsupported');
         $this->registerEvent('pubsub_unsubscribe_handle', 'onUnsubscribed');
         $this->registerEvent('pubsub_testpostpublish_handle', 'onTestPublish');
         $this->registerEvent('pubsub_testpostpublish_error', 'onTestPublishError');
@@ -52,7 +53,12 @@ class CommunityHeader extends \Movim\Widget\Base
 
         $this->ajaxGetMetadata($server, $node);
 
-        Notification::append(null, $this->__('group.subscribed'));
+        Notification::append(null, $this->__('communityheader.subscribed'));
+    }
+
+    function onSubscriptionUnsupported($packet)
+    {
+        Notification::append(null, $this->__('communityheader.subscription_unsupported'));
     }
 
     function onUnsubscribed($packet)
@@ -64,7 +70,7 @@ class CommunityHeader extends \Movim\Widget\Base
 
         $this->ajaxGetMetadata($server, $node);
 
-        Notification::append(null, $this->__('group.unsubscribed'));
+        Notification::append(null, $this->__('communityheader.unsubscribed'));
     }
 
     function ajaxGetMetadata($server, $node)

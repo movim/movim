@@ -10,7 +10,7 @@ include_once WIDGETS_PATH.'Post/Post.php';
 
 class CommunityPosts extends \Movim\Widget\Base
 {
-    private $_paging = 8;
+    private $_paging = 10;
 
     function load()
     {
@@ -33,6 +33,9 @@ class CommunityPosts extends \Movim\Widget\Base
     function onItemsId($packet)
     {
         list($server, $node, $ids) = array_values($packet->content);
+
+        $ids = array_slice($ids, 0, $this->_paging);
+
         $this->displayItems($server, $node, $ids);
     }
 
