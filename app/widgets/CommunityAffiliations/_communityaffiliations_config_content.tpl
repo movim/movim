@@ -19,7 +19,7 @@
             <form name="{$contact->jid}">
                 <input type="hidden" name="jid" value="{$contact->jid}"/>
                 <div>
-                    {if="$role == 'owner'"}
+                    {if="$role == 'owner' && $contact->jid == $me"}
                         <input type="text" disabled value="{$c->__('communityaffiliation.owner')}"/>
                     {else}
                     <div class="select">
@@ -68,7 +68,7 @@
                 <div class="select">
                     <select name="role" id="role" onchange="CommunityAffiliations.update('addaffiliation')">
                         {loop="$roles"}
-                            {if="$value == $role"}
+                            {if="$value == 'none'"}
                                 <option
                                     value="{$value}"
                                     selected="selected">

@@ -53,6 +53,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
+        $view->assign('me', $this->user->getLogin());
         $view->assign('roles', $cd->get($server)->getPubsubRoles());
 
         $this->rpc(
