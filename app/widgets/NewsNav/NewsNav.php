@@ -14,9 +14,9 @@ class NewsNav extends \Movim\Widget\Base
 
         $this->view->assign('presencestxt', getPresencesTxt());
         $this->view->assign('top', $cd->getTop(6));
-        $this->view->assign('blogs', $nd->getLastBlogPublic(0, 3));
+        $this->view->assign('blogs', $nd->getLastBlogPublic(0, 4));
 
-        $count = ($this->getView() == 'news') ? 2 : 5;
+        $count = ($this->getView() == 'news') ? 3 : 6;
         $origin = ($this->get('s') && $this->get('s') != 'subscriptions') ?
             $this->get('s') : false;
 
