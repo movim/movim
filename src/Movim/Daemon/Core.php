@@ -6,14 +6,21 @@ use Ratchet\ConnectionInterface;
 use Movim\Daemon\Session;
 use Dflydev\FigCookies\Cookies;
 
-class Core implements MessageComponentInterface {
+use Symfony\Component\Console\Input\InputInterface;
+
+class Core implements MessageComponentInterface
+{
     private $sessions = [];
+    private $input;
+
     public $loop;
     public $baseuri;
 
-    public function __construct($loop, $baseuri, $port)
+    public function __construct($loop, $baseuri, InputInterface $input)
     {
-        $this->setWebsocket($baseuri, $port);
+        $this->input = $input;
+
+        $this->setWebsocket($baseuri, $this->input->getOption('port'));
 
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
@@ -77,7 +84,14 @@ class Core implements MessageComponentInterface {
         if($sid != null) {
             if(!array_key_exists($sid, $this->sessions)) {
                 $language = $this->getLanguage($conn);
-                $this->sessions[$sid] = new Session($this->loop, $sid, $this->baseuri, $language);
+                $this->sessions[$sid] = new Session(
+                    $this->loop,
+                    $sid,
+                    $this->baseuri,
+                    $language,
+                    $this->input->getOption('verbose'),
+                    $this->input->getOption('debug')
+                );
             }
 
             $this->sessions[$sid]->attach($this->loop, $conn);

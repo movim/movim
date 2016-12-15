@@ -47,6 +47,12 @@ class DaemonCommand extends Command
                'Interface on which the daemon will listen',
                '127.0.0.1'
             )
+            ->addOption(
+               'debug',
+               'd',
+               InputOption::VALUE_NONE,
+               'Output XMPP logs'
+            )
         ;
     }
 
@@ -75,7 +81,7 @@ class DaemonCommand extends Command
         $output->writeln('<info>Movim daemon launched</info>');
         $output->writeln('<info>Base URL: '.$baseuri.'</info>');
 
-        $core = new Core($loop, $baseuri, $input->getOption('port'));
+        $core = new Core($loop, $baseuri, $input);
         $app  = new HttpServer(new WsServer($core));
 
         $socket = new Reactor($loop);

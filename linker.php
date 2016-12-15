@@ -6,7 +6,6 @@ define('DOCUMENT_ROOT', dirname(__FILE__));
 gc_enable();
 
 use Movim\Bootstrap;
-//memprof_enable();
 
 $bootstrap = new Bootstrap;
 $booted = $bootstrap->boot();
@@ -18,13 +17,10 @@ $stdin = new React\Stream\Stream(STDIN, $loop);
 
 \Movim\Task\Engine::init($loop);
 
-fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets before : ".\sizeToCleanSize(memory_get_usage())."\n");
-
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();
 $wrapper->registerAll($bootstrap->getWidgets());
 
-fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");
 
 $conn = null;
 
@@ -82,7 +78,10 @@ function writeXMPP($xml)
 
     if(!empty($xml) && $conn) {
         $conn->write(trim($xml));
-        #fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+
+        if(getenv('debug')) {
+            fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
+        }
     }
 }
 
@@ -156,12 +155,15 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         $ip = \Moxl\Utils::resolveIp($msg->host);
                         $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
 
-                        fwrite(
-                            STDERR,
-                            colorize(
-                                getenv('sid'), 'yellow')." : ".
-                                colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
-                                "\n");
+                        if(getenv('verbose')) {
+                            fwrite(
+                                STDERR,
+                                colorize(
+                                    getenv('sid'), 'yellow')." : ".
+                                    colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
+                                    "\n");
+                        }
+
                         $connector->create($ip, $port)->then($xmpp_behaviour);
                         break;
                 }
@@ -179,10 +181,14 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
     }
 };
 
-$xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser, &$timestamp) {
+$xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser, &$timestamp)
+{
     $conn = $stream;
-    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
-    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
+
+    if(getenv('verbose')) {
+        fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
+        fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
+    }
 
     $stdin->removeAllListeners('data');
     $stdin->on('data', $stdin_behaviour);
@@ -194,7 +200,9 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
         if(!empty($message)) {
             $restart = false;
 
-            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            if(getenv('debug')) {
+                fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
+            }
 
             if($message == '</stream:stream>') {
                 $conn->close();
@@ -206,8 +214,6 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 stream_context_set_option($conn->stream, 'ssl', 'SNI_enabled', false);
                 stream_context_set_option($conn->stream, 'ssl', 'peer_name', $session->get('host'));
                 stream_context_set_option($conn->stream, 'ssl', 'allow_self_signed', true);
-                #stream_context_set_option($conn->stream, 'ssl', 'verify_peer_name', false);
-                #stream_context_set_option($conn->stream, 'ssl', 'verify_peer', false);
 
                 // See http://php.net/manual/en/function.stream-socket-enable-crypto.php#119122
                 $crypto_method = STREAM_CRYPTO_METHOD_TLS_CLIENT;
@@ -220,12 +226,15 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 set_error_handler('handleSSLErrors');
                 $out = stream_socket_enable_crypto($conn->stream, 1, $crypto_method);
                 restore_error_handler();
+
                 if($out !== true) {
                     $loop->stop();
                     return;
                 }
 
-                fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('TLS enabled', 'blue')."\n");
+                if(getenv('verbose')) {
+                    fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('TLS enabled', 'blue')."\n");
+                }
 
                 $restart = true;
             }
