@@ -61,8 +61,6 @@
     {/loop}
 
     <li>
-        <span class="primary icon gray">
-        </span>
         <p class="center">
             {if="!$liked"}
             <a class="button red flat" onclick="Post_ajaxLike('{$server}', '{$node}', '{$id}')">
