@@ -183,8 +183,7 @@ class Post extends \Movim\Widget\Base
     private function publishComment($comment, $to, $node, $id)
     {
         if(!Validator::stringType()->notEmpty()->validate($comment)
-        || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)
-        || $comment == '♥') return;
+        || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)) return;
 
         $cp = new CommentPublish;
         $cp->setTo($to)
@@ -198,7 +197,9 @@ class Post extends \Movim\Widget\Base
     {
         $comment = trim($form->comment->value);
 
-        $this->publishComment($comment, $to, $node, $id);
+        if($comment != '♥') {
+            $this->publishComment($comment, $to, $node, $id);
+        }
     }
 
     function ajaxLike($to, $node, $id)
