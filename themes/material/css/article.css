@@ -29,7 +29,7 @@ article section.limited:after {
     display: block;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
     width: 100%;
-    height: 5rem;
+    height: 10rem;
     position: absolute;
     bottom: 0;
     pointer-events: none;

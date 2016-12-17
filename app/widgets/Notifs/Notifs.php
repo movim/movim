@@ -27,6 +27,9 @@ class Notifs extends \Movim\Widget\Base
 
         if(!$since) $since = date(\Modl\SQL::SQL_DATE, 0);
 
+        $emoji = \MovimEmoji::getInstance();
+
+        $view->assign('hearth',  $emoji->replace('♥'));
         $view->assign('notifs', $pd->getNotifsSince(
             $since,
             0, 6)

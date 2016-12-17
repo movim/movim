@@ -58,7 +58,7 @@ function prepareDate($time = false, $hours = true, $compact = false) {
     // if $reldays is within a week
     if (-7 < $reldays && $reldays <= 2) {
         if($reldays > 1) {
-            $date = __('date.tomorrow');
+            $date = '';
         } else if (-1 < $reldays && $reldays <= 0) {
             $date = __('date.yesterday');
         } else if (0 < $reldays && $reldays <= 1) {

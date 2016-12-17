@@ -75,10 +75,14 @@ class Post extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $comments = $pd->getComments($p);
 
+        $emoji = \MovimEmoji::getInstance();
+
         $view = $this->tpl();
+        $view->assign('post', $p);
         $view->assign('comments', $comments);
         $view->assign('server', $server);
         $view->assign('node', $node);
+        $view->assign('hearth', $emoji->replace('♥'));
         $view->assign('id', $id);
 
         $html = $view->draw('_post_comments', true);
@@ -176,15 +180,11 @@ class Post extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxPublishComment($form, $to, $node, $id)
+    private function publishComment($comment, $to, $node, $id)
     {
-        $comment = trim($form->comment->value);
-
-        $validate_comment = Validator::stringType()->notEmpty();
-        $validate_id = Validator::stringType()->length(6, 128)->noWhitespace();
-
-        if(!$validate_comment->validate($comment)
-        || !$validate_id->validate($id)) return;
+        if(!Validator::stringType()->notEmpty()->validate($comment)
+        || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)
+        || $comment == '♥') return;
 
         $cp = new CommentPublish;
         $cp->setTo($to)
@@ -192,6 +192,18 @@ class Post extends \Movim\Widget\Base
            ->setParentId($id)
            ->setContent(htmlspecialchars(rawurldecode($comment)))
            ->request();
+    }
+
+    function ajaxPublishComment($form, $to, $node, $id)
+    {
+        $comment = trim($form->comment->value);
+
+        $this->publishComment($comment, $to, $node, $id);
+    }
+
+    function ajaxLike($to, $node, $id)
+    {
+        $this->publishComment('♥', $to, $node, $id);
     }
 
     function prepareEmpty()

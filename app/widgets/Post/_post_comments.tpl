@@ -1,8 +1,16 @@
 <ul class="list divided spaced middle">
-    <li class="subheader">
-        <p><span class="info">{$comments|count}</span> {$c->__('post.comments')}</p>
+    <li class="subheader center">
+        <p>
+            <span class="info">{$comments|count}</span> {$c->__('post.comments')}
+        </p>
     </li>
+    {$liked = false}
+
     {loop="$comments"}
+        {if="$value->isMine(true) && $value->isLike()"}
+            {$liked = true}
+        {/if}
+
         {if="$value->title || $value->contentraw"}
         <li>
             {if="$value->isMine()"}
@@ -11,37 +19,63 @@
                 </span>
             {/if}
 
-            {$url = $value->getContact()->getPhoto('s')}
-            {if="$url"}
-                <span class="primary icon bubble">
-                    <a href="{$c->route('contact', $value->getContact()->jid)}">
-                        <img src="{$url}">
-                    </a>
+            {if="$value->isLike()"}
+                <span class="primary icon small red">
+                    <i class="zmdi zmdi-favorite"></i>
                 </span>
             {else}
-                <span class="primary icon bubble color {$value->getContact()->jid|stringToColor}">
-                    <a href="{$c->route('contact', $value->getContact()->jid)}">
-                        <i class="zmdi zmdi-account"></i>
-                    </a>
-                </span>
+                {$url = $value->getContact()->getPhoto('s')}
+                {if="$url"}
+                    <span class="primary icon bubble small">
+                        <a href="{$c->route('contact', $value->getContact()->jid)}">
+                            <img src="{$url}">
+                        </a>
+                    </span>
+                {else}
+                    <span class="primary icon bubble color {$value->getContact()->jid|stringToColor} small">
+                        <a href="{$c->route('contact', $value->getContact()->jid)}">
+                            <i class="zmdi zmdi-account"></i>
+                        </a>
+                    </span>
+                {/if}
             {/if}
-            <p>
-                <span class="info">{$value->published|strtotime|prepareDate}</span>
+            <p class="normal">
+                <span class="info" title="{$value->published|strtotime|prepareDate}">
+                    {$value->published|strtotime|prepareDate:true,true}
+                </span>
                 <a href="{$c->route('contact', $value->getContact()->jid)}">
                     {$value->getContact()->getTrueName()}
                 </a>
             </p>
-            <p class="all">
-                {if="$value->contentraw"}
-                    {$value->contentraw|addHFR}
-                {else}
-                    {$value->title}
-                {/if}
-            </p>
+            {if="!$value->isLike()"}
+                <p class="all">
+                    {if="$value->contentraw"}
+                        {$value->contentraw|addHFR}
+                    {else}
+                        {$value->title}
+                    {/if}
+                </p>
+            {/if}
         </li>
         {/if}
     {/loop}
+
     <li>
+        <span class="primary icon gray">
+        </span>
+        <p class="center">
+            {if="!$liked"}
+            <a class="button red flat" onclick="Post_ajaxLike('{$server}', '{$node}', '{$id}')">
+                <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
+            </a>
+            {/if}
+            <a class="button flat gray" onclick="Post.comment()">
+                <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
+            </a>
+        </p>
+    </li>
+
+    <li class="hide" id="comment_add">
         <span class="primary icon gray">
             <i class="zmdi zmdi-comment"></i>
         </span>

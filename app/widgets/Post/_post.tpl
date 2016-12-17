@@ -334,65 +334,6 @@
                     </li>
                 </ul>
             {/if}
-
-            {if="!$external"}
-                {$next = $post->getNext()}
-                {$previous = $post->getPrevious()}
-                {if="$next || $previous"}
-                    <ul class="list card flex active">
-                        {if="$previous"}
-                            <li class="block"
-                                onclick="MovimUtils.redirect('{$c->route('post', [$previous->origin, $previous->node, $previous->nodeid])}')">
-                                <span class="primary icon gray">
-                                    <i class="zmdi zmdi-arrow-left"></i>
-                                </span>
-                                <p class="line" {if="isset($previous->title)"}title="{$previous->title}"{/if}>
-                                {if="isset($previous->title)"}
-                                    {$previous->title}
-                                {else}
-                                    {$previous->node}
-                                {/if}
-                                </p>
-                                <p>{$previous->contentcleaned|strip_tags|truncate:140}</p>
-                                <p>
-                                    {$count = $previous->countComments()}
-                                    {if="$count > 0"}
-                                        {$count} <i class="zmdi zmdi-comment-outline"></i>
-                                    {/if}
-                                    <span class="info">
-                                        {$previous->published|strtotime|prepareDate}
-                                    </span>
-                                </p>
-                            </li>
-                        {/if}
-                        {if="$next"}
-                            <li class="block"
-                                onclick="MovimUtils.redirect('{$c->route('post', [$next->origin, $next->node, $next->nodeid])}')">
-                                <span class="control icon gray">
-                                    <i class="zmdi zmdi-arrow-right"></i>
-                                </span>
-                                <p class="line" {if="isset($next->title)"}title="{$next->title}"{/if}>
-                                {if="isset($next->title)"}
-                                    {$next->title}
-                                {else}
-                                    {$next->node}
-                                {/if}
-                                </p>
-                                <p>{$next->contentcleaned|strip_tags|truncate:140}</p>
-                                <p>
-                                    {$count = $next->countComments()}
-                                    {if="$count > 0"}
-                                        {$count} <i class="zmdi zmdi-comment-outline"></i>
-                                    {/if}
-                                    <span class="info">
-                                        {$next->published|strtotime|prepareDate}
-                                    </span>
-                                </p>
-                            </li>
-                        {/if}
-                    </ul>
-                {/if}
-            {/if}
         </footer>
 
         {if="$external"}
@@ -435,7 +376,66 @@
                 </ul><br />
             {/if}
         {else}
-            <div id="comments"></div>
+            <div id="comments" class="spin"></div>
         {/if}
     {/if}
+
+    {if="!$external"}
+            {$next = $post->getNext()}
+            {$previous = $post->getPrevious()}
+            {if="$next || $previous"}
+                <ul class="list card flex active">
+                    {if="$previous"}
+                        <li class="block"
+                            onclick="MovimUtils.redirect('{$c->route('post', [$previous->origin, $previous->node, $previous->nodeid])}')">
+                            <span class="primary icon gray">
+                                <i class="zmdi zmdi-arrow-left"></i>
+                            </span>
+                            <p class="line" {if="isset($previous->title)"}title="{$previous->title}"{/if}>
+                            {if="isset($previous->title)"}
+                                {$previous->title}
+                            {else}
+                                {$previous->node}
+                            {/if}
+                            </p>
+                            <p class="line">{$previous->contentcleaned|strip_tags|truncate:140}</p>
+                            <p>
+                                {$count = $previous->countComments()}
+                                {if="$count > 0"}
+                                    {$count} <i class="zmdi zmdi-comment-outline"></i>
+                                {/if}
+                                <span class="info">
+                                    {$previous->published|strtotime|prepareDate}
+                                </span>
+                            </p>
+                        </li>
+                    {/if}
+                    {if="$next"}
+                        <li class="block"
+                            onclick="MovimUtils.redirect('{$c->route('post', [$next->origin, $next->node, $next->nodeid])}')">
+                            <span class="control icon gray">
+                                <i class="zmdi zmdi-arrow-right"></i>
+                            </span>
+                            <p class="line" {if="isset($next->title)"}title="{$next->title}"{/if}>
+                            {if="isset($next->title)"}
+                                {$next->title}
+                            {else}
+                                {$next->node}
+                            {/if}
+                            </p>
+                            <p class="line">{$next->contentcleaned|strip_tags|truncate:140}</p>
+                            <p>
+                                {$count = $next->countComments()}
+                                {if="$count > 0"}
+                                    {$count} <i class="zmdi zmdi-comment-outline"></i>
+                                {/if}
+                                <span class="info">
+                                    {$next->published|strtotime|prepareDate}
+                                </span>
+                            </p>
+                        </li>
+                    {/if}
+                </ul>
+            {/if}
+        {/if}
 </article>

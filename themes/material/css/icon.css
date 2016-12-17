@@ -69,6 +69,10 @@ ul.list li span.icon.small {
     margin-top: -1.5rem;
 }
 
+ul.list li span.icon.small:not(.bubble) i {
+    padding: 1rem 0;
+}
+
 /*ul.list li > .control.small,
 ul.list li > .primary.small {
     width: 3rem;

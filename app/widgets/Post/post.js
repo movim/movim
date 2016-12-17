@@ -1,3 +1,9 @@
+var Post = {
+    comment: function() {
+        MovimUtils.showElement(document.querySelector('#comment_add'));
+    }
+};
+
 MovimWebsocket.attach(function() {
     var parts = MovimUtils.urlParts();
 

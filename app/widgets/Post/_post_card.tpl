@@ -118,6 +118,9 @@
             </p>
             <p class="normal">
                 <a class="button flat gray">
+                    {$post->countLikes()} <i class="zmdi zmdi-favorite-outline"></i>
+                </a>
+                <a class="button flat gray">
                     {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
                 </a>
                 <a class="button flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">

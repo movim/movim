@@ -486,20 +486,27 @@ class Postn extends Model
         return 'xmpp:'.$this->origin.'?;node='.$this->node.';item='.$this->nodeid;
     }
 
+    // Works only for the microblog posts
     public function getParent()
     {
-        return preg_replace("/urn:xmpp:microblog:0:comments\/(.*)/", "$1", $this->node);
+        $pd = new PostnDAO;
+        return $pd->get($this->origin, 'urn:xmpp:microblog:0', preg_replace("/urn:xmpp:microblog:0:comments\/(.*)/", "$1", $this->node));
     }
 
-    public function isMine()
+    public function isMine($force = false)
     {
         $user = new \User;
 
-        return ($this->aid == $user->getLogin()
-        || $this->origin == $user->getLogin());
+        if($force) {
+            return ($this->aid == $user->getLogin());
+        } else {
+            return ($this->aid == $user->getLogin()
+            || $this->origin == $user->getLogin());
+        }
     }
 
-    public function isPublic() {
+    public function isPublic()
+    {
         return ($this->open);
     }
 
@@ -528,6 +535,11 @@ class Postn extends Model
         return isset($this->reply);
     }
 
+    public function isLike()
+    {
+        return ($this->contentraw == '♥');
+    }
+
     public function isRTL()
     {
         return isRTL($this->contentraw);
@@ -551,6 +563,12 @@ class Postn extends Model
     {
         $pd = new \Modl\PostnDAO;
         return $pd->countComments($this->commentorigin, $this->commentnodeid);
+    }
+
+    public function countLikes()
+    {
+        $pd = new \Modl\PostnDAO;
+        return $pd->countLikes($this->commentorigin, $this->commentnodeid);
     }
 
     public function getTags()
