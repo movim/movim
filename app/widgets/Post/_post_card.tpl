@@ -108,13 +108,10 @@
         </li>
 
         <li>
-            <p class="normal">
-                {$tags = $post->getTags()}
-                {if="isset($tags)"}
-                    {loop="$tags"}
-                        <a target="_blank" href="{$c->route('tag', [$value])}">#{$value}</a>
-                    {/loop}
-                {/if}
+            <p class="normal center">
+                <a class="button flat" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                    <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
+                </a>
             </p>
             <p class="normal">
                 <a class="button flat gray">
@@ -131,10 +128,6 @@
                         <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                     </a>
                 {/if}
-
-                <a class="button flat oppose" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
-                    {$c->__('post.more')}
-                </a>
             </p>
         </li>
     </ul>
