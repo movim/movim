@@ -42,6 +42,11 @@
 
                 <p>{$value->contentcleaned|strip_tags}</p>
                 <p>
+                    {$count = $value->countLikes()}
+                    {if="$count > 0"}
+                        {$count} <i class="zmdi zmdi-favorite-outline"></i>
+                    {/if}
+
                     {$count = $value->countComments()}
                     {if="$count > 0"}
                         {$count} <i class="zmdi zmdi-comment-outline"></i>

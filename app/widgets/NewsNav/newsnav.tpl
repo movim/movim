@@ -33,6 +33,12 @@
                     <a href="{$c->route('contact', $value->getContact()->jid)}">
                         {$value->getContact()->getTrueName()}
                     </a>
+
+                    {$count = $value->countLikes()}
+                    {if="$count > 0"}
+                        {$count} <i class="zmdi zmdi-favorite-outline"></i>
+                    {/if}
+
                     {$count = $value->countComments()}
                     {if="$count > 0"}
                         {$count} <i class="zmdi zmdi-comment-outline"></i>
@@ -77,10 +83,17 @@
             <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
             <p>
                 <a href="{$c->route('community', [$value->origin, $value->node])}">{$value->node}</a>
+
+                {$count = $value->countLikes()}
+                {if="$count > 0"}
+                    {$count} <i class="zmdi zmdi-favorite-outline"></i>
+                {/if}
+
                 {$count = $value->countComments()}
                 {if="$count > 0"}
                     {$count} <i class="zmdi zmdi-comment-outline"></i>
                 {/if}
+
                 <span class="info">
                     {$value->published|strtotime|prepareDate:true,true}
                 </span>
