@@ -39,7 +39,7 @@
             <span class="primary icon gray">
                 <i class="zmdi zmdi-notifications-none"></i>
             </span>
-            <p class="normal center">No new notifications</p>
+            <p class="normal center">{$c->__('notifs.empty')}</p>
         </li>
     {/if}
 </ul>
