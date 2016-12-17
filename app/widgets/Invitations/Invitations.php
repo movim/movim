@@ -6,25 +6,24 @@ use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
-class Notifs extends \Movim\Widget\Base
+class Invitations extends \Movim\Widget\Base
 {
     function load()
     {
-        $this->addcss('notifs.css');
-        $this->addjs('notifs.js');
+        $this->addcss('invitations.css');
+        $this->addjs('invitations.js');
 
-        $this->registerEvent('subscribe', 'onNotifs');
-        $this->registerEvent('roster_additem_handle', 'onNotifs');
-        $this->registerEvent('roster_updateitem_handle', 'onNotifs');
-        $this->registerEvent('presence_subscribe_handle', 'onNotifs');
-        $this->registerEvent('presence_subscribed_handle', 'onNotifs');
+        $this->registerEvent('subscribe', 'onInvitations');
+        $this->registerEvent('roster_additem_handle', 'onInvitations');
+        $this->registerEvent('roster_updateitem_handle', 'onInvitations');
+        $this->registerEvent('presence_subscribe_handle', 'onInvitations');
+        $this->registerEvent('presence_subscribed_handle', 'onInvitations');
     }
 
-    function onNotifs($from = false)
+    function onInvitations($from = false)
     {
-        $html = $this->prepareNotifs();
-        RPC::call('MovimTpl.fill', '#notifs_widget', $html);
-        RPC::call('Notifs.refresh');
+        $html = $this->prepareInvitations();
+        RPC::call('MovimTpl.fill', '#invitations_widget', $html);
 
         if(is_string($from)) {
             $cd = new \Modl\ContactDAO;
@@ -35,7 +34,7 @@ class Notifs extends \Movim\Widget\Base
 
             Notification::append(
                 'invite|'.$from, $contact->getTrueName(),
-                $this->__('notifs.wants_to_talk',
+                $this->__('invitations.wants_to_talk',
                 $contact->getTrueName()),
                 $avatar,
                 4);
@@ -44,16 +43,16 @@ class Notifs extends \Movim\Widget\Base
 
     function ajaxGet()
     {
-        $this->onNotifs();
+        $this->onInvitations();
     }
 
     /*
      * Create the list of notifications
      * @return string
      */
-    function prepareNotifs()
+    function prepareInvitations()
     {
-        $cd = new \Modl\ContactDAO();
+        $cd = new \Modl\ContactDAO;
         $contacts = $cd->getRosterFrom();
 
         $invitations = [];
@@ -70,7 +69,7 @@ class Notifs extends \Movim\Widget\Base
 
         $nft->assign('invitations', $invitations);
         $nft->assign('contacts', $contacts);
-        return $nft->draw('_notifs_from', true);
+        return $nft->draw('_invitations_from', true);
     }
 
     function ajaxAccept($jid)
@@ -128,7 +127,7 @@ class Notifs extends \Movim\Widget\Base
 
         $session->set('activenotifs', $notifs);
 
-        $this->onNotifs();
+        $this->onInvitations();
         Notification::ajaxClear('invite|'.$jid);
     }
 }

@@ -1,3 +1,3 @@
 MovimWebsocket.attach(function() {
-    Notifs_ajaxGet();
+    Invitations_ajaxGet();
 });

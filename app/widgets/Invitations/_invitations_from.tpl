@@ -22,17 +22,17 @@
                     <i class="zmdi zmdi-account"></i>
                 </span>
             {/if}
-            <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifs_ajaxAccept('{$value->jid}');">
+            <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Invitations_ajaxAccept('{$value->jid}');">
                 <i class="zmdi zmdi-check"></i>
             </span>
-            <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Notifs_ajaxRefuse('{$value->jid}');">
+            <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Invitations_ajaxRefuse('{$value->jid}');">
                 <i class="zmdi zmdi-close"></i>
             </span>
             <span class="control icon gray active" onclick="Contact_ajaxGetContact('{$value->jid}');">
                 <i class="zmdi zmdi-account"></i>
             </span>
             <p class="line normal">
-                {$c->__('notifs.wants_to_talk', $value->getTrueName())}
+                {$c->__('invitations.wants_to_talk', $value->getTrueName())}
             </p>
             <p>{$value->jid}</p>
         </li>

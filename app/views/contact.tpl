@@ -10,7 +10,7 @@
 <main>
     <section>
         <div style="background-color: #EEE;">
-            <?php $this->widget('Notifs');?>
+            <?php $this->widget('Invitations');?>
             <?php $this->widget('Roster');?>
         </div>
         <div id="contact_widget" class="spin">
