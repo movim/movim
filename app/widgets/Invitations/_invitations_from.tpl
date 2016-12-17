@@ -3,7 +3,7 @@
     <li class="subheader">
         <p>
             <span class="info">{$invitations|count}</span>
-            {$c->__('notifs.title')}
+            {$c->__('invitations.title')}
         </p>
     </li>
 </ul>

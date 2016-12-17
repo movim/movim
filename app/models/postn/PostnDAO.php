@@ -642,7 +642,8 @@ class PostnDAO extends SQL {
         return $this->run('Postn');
     }
 
-    function getCountSince($date) {
+    function getCountSince($date)
+    {
         $this->_sql = '
             select count(*) from postn
             where (
@@ -670,7 +671,35 @@ class PostnDAO extends SQL {
         }
     }
 
-    function getLastDate() {
+    function getNotifsSince($date, $limitf = false, $limitr = false)
+    {
+        $this->_sql = '
+            select * from postn
+            left outer join contact on postn.aid = contact.jid
+            where origin = :origin
+            and commentnodeid is null
+            and node != \'urn:xmpp:microblog:0\'
+            and published > :published
+            order by published desc
+                ';
+
+        if($limitr) {
+            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
+        }
+
+        $this->prepare(
+            'Postn',
+            [
+                'origin' => $this->_user,
+                'published' => $date
+            ]
+        );
+
+        return $this->run('ContactPostn');
+    }
+
+    function getLastDate()
+    {
         $this->_sql = '
             select published from postn
             where (

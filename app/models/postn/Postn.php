@@ -486,6 +486,11 @@ class Postn extends Model
         return 'xmpp:'.$this->origin.'?;node='.$this->node.';item='.$this->nodeid;
     }
 
+    public function getParent()
+    {
+        return preg_replace("/urn:xmpp:microblog:0:comments\/(.*)/", "$1", $this->node);
+    }
+
     public function isMine()
     {
         $user = new \User;

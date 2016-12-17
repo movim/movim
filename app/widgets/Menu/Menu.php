@@ -125,8 +125,8 @@ class Menu extends \Movim\Widget\Base
             RPC::call('MovimTpl.fill', '#menu_widget', $html);
             RPC::call('movim_posts_unread', 0);
         }
+
         RPC::call('Menu.refresh');
-        //RPC::call('MovimTpl.scrollTop');
     }
 
     function ajaxRefresh()

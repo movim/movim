@@ -2,6 +2,8 @@
 
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
+use Moxl\Xec\Action\Pubsub\Subscribe;
+
 use \Michelf\MarkdownExtra;
 use Respect\Validation\Validator;
 
@@ -12,6 +14,7 @@ class Publish extends \Movim\Widget\Base
         $this->addjs('publish.js');
         $this->addcss('publish.css');
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
+        $this->registerEvent('microblog_commentcreatenode_handle', 'onCommentNodeCreated');
     }
 
     function onPublish($packet)
@@ -29,6 +32,17 @@ class Publish extends \Movim\Widget\Base
         } else {
             $this->rpc('MovimUtils.redirect', $this->route('community', [$to, $node]));
         }
+    }
+
+    function onCommentNodeCreated($packet)
+    {
+        list($server, $parentid) = array_values($packet->content);
+
+        $s = new Subscribe;
+        $s->setTo($server)
+          ->setFrom($this->user->getLogin())
+          ->setNode('urn:xmpp:microblog:0:comments/'.$parentid)
+          ->request();
     }
 
     function ajaxReply($server, $node, $id)

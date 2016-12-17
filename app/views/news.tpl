@@ -11,7 +11,10 @@
 
 <main>
     <section style="background-color: #EEE;">
-        <aside><?php $this->widget('NewsNav');?></aside>
+        <aside>
+            <?php $this->widget('Notifs');?>
+            <?php $this->widget('NewsNav');?>
+        </aside>
         <?php $this->widget('Menu');?>
     </section>
 </main>

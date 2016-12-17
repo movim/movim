@@ -313,7 +313,7 @@ class Bootstrap
         return["Account","AccountNext","Ack","AdHoc","Avatar","Bookmark","Communities",
         "CommunityAffiliations","CommunityConfig","CommunityData","CommunityHeader","CommunityPosts","CommunitiesServer","Chat",
         "Chats","Config","Contact","Dialog","Drawer","Header",
-        "Init","Login","LoginAnonymous","Menu","Invitations","Post","Presence",
+        "Init","Login","LoginAnonymous","Menu","Notifs","Invitations","Post","Presence",
         "Publish","Rooms","Roster","Stickers","Upload","Vcard4", "Visio",
         "VisioLink"];
     }
