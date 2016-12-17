@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Pubsub {
+class Pubsub
+{
     static function create($to, $node, $name)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -182,6 +183,13 @@ class Pubsub {
         $x->appendChild($field);
 
         $value = $dom->createElement('value', 'open');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#notify_retract');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'true');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');

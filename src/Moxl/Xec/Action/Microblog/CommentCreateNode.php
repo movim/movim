@@ -50,7 +50,9 @@ class CommentCreateNode extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
-
+    public function handle($stanza, $parent = false)
+    {
+        $this->pack(['server' => $this->_to, 'parentid' => $this->_parentid]);
+        $this->deliver();
     }
 }
