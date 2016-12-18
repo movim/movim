@@ -85,15 +85,17 @@
     {/loop}
     {if="isset($more)"}
         <article>
-            <ul class="list active">
+            <ul class="list active thick">
                 {if="$mode == 'blog'"}
-                <a href="{$c->route('blog', array($contact->jid, $more))}">
+                <a href="{$c->route('blog', [$contact->jid, $more])}">
+                {elseif="$mode == 'tag'"}
+                <a href="{$c->route('tag', [$tag, $more])}">
                 {else}
-                <a href="{$c->route('node', array($server, $node, $more))}">
+                <a href="{$c->route('node', [$server, $node, $more])}">
                 {/if}
                     <li id="history" class="block large">
-                        <span class="primary icon"><i class="zmdi zmdi-time-restore"></i></span>
-                        <p class="normal line">{$c->__('post.older')}</p>
+                        <span class="primary icon gray"><i class="zmdi zmdi-time-restore"></i></span>
+                        <p class="normal line center">{$c->__('post.older')}</p>
                     </li>
                 </a>
             </ul>

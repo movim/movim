@@ -6,7 +6,7 @@ include_once WIDGETS_PATH.'Post/Post.php';
 
 class Blog extends \Movim\Widget\Base
 {
-    public $_paging = 10;
+    public $_paging = 8;
 
     private $_from;
     private $_node;
@@ -38,19 +38,21 @@ class Blog extends \Movim\Widget\Base
         } else {
             $this->_from = $this->get('f');
 
-            $cd = new \modl\ContactDAO();
+            $cd = new \Modl\ContactDAO;
             $this->_contact = $cd->get($this->_from, true);
+
             if(filter_var($this->_from, FILTER_VALIDATE_EMAIL)) {
                 $this->_node = 'urn:xmpp:microblog:0';
             } else {
                 return;
             }
+
             $this->_mode = 'blog';
 
             $this->url = $this->route('blog', $this->_from);
         }
 
-        $pd = new \modl\PostnDAO();
+        $pd = new \Modl\PostnDAO;
 
         if($this->_id = $this->get('i')) {
             if(Validator::stringType()->between('1', '100')->validate($this->_id)) {
@@ -94,6 +96,8 @@ class Blog extends \Movim\Widget\Base
 
         if(count($this->_messages) == $this->_paging + 1) {
             array_pop($this->_messages);
+        } else {
+            $this->_page = null;
         }
 
         if($this->_node == 'urn:xmpp:microblog:0') {
@@ -108,7 +112,8 @@ class Blog extends \Movim\Widget\Base
         }
     }
 
-    public function preparePost($p) {
+    public function preparePost($p)
+    {
         $pw = new Post;
         return $pw->preparePost($p, true, true);
     }
