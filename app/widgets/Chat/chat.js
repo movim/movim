@@ -18,6 +18,9 @@ var Chat = {
         n.value = "";
         n.focus();
         MovimUtils.textareaAutoheight(n);
+
+        localStorage.removeItem(n.dataset.jid + '_message');
+
         if(Chat.edit) {
             Chat.edit = false;
             Chat_ajaxCorrect(jid, encodeURIComponent(text));
@@ -56,7 +59,6 @@ var Chat = {
                 Chat.state = 0;
                 Chat.sendMessage(this.dataset.jid, Boolean(this.dataset.muc));
 
-                localStorage.removeItem(this.dataset.jid + '_message');
                 return false;
             } else if(!Boolean(this.dataset.muc)) {
                 if(Chat.state == 0 || Chat.state == 2) {
