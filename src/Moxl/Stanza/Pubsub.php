@@ -193,6 +193,13 @@ class Pubsub
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#max_items');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 1000);
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#publish_model');
         $x->appendChild($field);
 
