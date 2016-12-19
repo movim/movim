@@ -15,7 +15,8 @@
                 <?php $this->widget('NewsNav');?>
             </aside>
             <?php $this->widget('Communities'); ?>
-        <?php } elseif($_GET['s'] == 'subscriptions') { ?>
+        <?php } elseif($_GET['s'] == 'subscriptions'
+                    && $this->user->isSupported('pubsub')) { ?>
             <aside>
                 <?php $this->widget('NewsNav');?>
             </aside>

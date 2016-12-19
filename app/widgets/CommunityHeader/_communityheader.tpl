@@ -3,16 +3,18 @@
 </a>
 <ul class="list thick">
     <li>
-        {if="$subscription == null"}
-            <a class="button oppose green color" title="{$c->__('communityheader.subscribe')}"
-            onclick="CommunityHeader_ajaxAskSubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
-                {$c->__('communityheader.subscribe')}
-            </a>
-        {else}
-            <a class="button oppose flat" title="{$c->__('communityheader.unsubscribe')}"
-            onclick="CommunityHeader_ajaxAskUnsubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
-                {$c->__('communityheader.unsubscribe')}
-            </a>
+        {if="$c->supported('pubsub')"}
+            {if="$subscription == null"}
+                <a class="button oppose green color" title="{$c->__('communityheader.subscribe')}"
+                onclick="CommunityHeader_ajaxAskSubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
+                    {$c->__('communityheader.subscribe')}
+                </a>
+            {else}
+                <a class="button oppose flat" title="{$c->__('communityheader.unsubscribe')}"
+                onclick="CommunityHeader_ajaxAskUnsubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
+                    {$c->__('communityheader.unsubscribe')}
+                </a>
+            {/if}
         {/if}
         <span class="primary icon active gray" onclick="history.back()">
             <i class="zmdi zmdi-arrow-back"></i>
