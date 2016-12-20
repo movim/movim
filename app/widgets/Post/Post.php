@@ -156,6 +156,16 @@ class Post extends \Movim\Widget\Base
         Dialog::fill($view->draw('_post_delete', true));
     }
 
+    function ajaxShare($origin, $node, $id)
+    {
+        $pd = new \Modl\PostnDAO;
+        $p  = $pd->get($origin, $node, $id);
+
+        if($p) {
+            $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node, $id, 'share']));
+        }
+    }
+
     function ajaxDeleteConfirm($to, $node, $id) {
         $p = new PostDelete;
         $p->setTo($to)

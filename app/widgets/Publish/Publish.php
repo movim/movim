@@ -68,14 +68,16 @@ class Publish extends \Movim\Widget\Base
             $pd = new \Modl\PostnDAO;
             $p = $pd->get($server, $node, $id);
 
-            if($p->isEditable() && !$reply) {
-                $post = $p;
-            }
+            if($p) {
+                if($p->isEditable() && !$reply) {
+                    $post = $p;
+                }
 
-            if($p->isReply()) {
-                $reply = $p->getReply();
-            } elseif($reply) {
-                $reply = $p;
+                if($p->isReply()) {
+                    $reply = $p->getReply();
+                } elseif($reply) {
+                    $reply = $p;
+                }
             }
         }
 

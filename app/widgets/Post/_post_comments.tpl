@@ -94,7 +94,7 @@
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
             </a>
             {if="!$post->isReply()"}
-            <a class="button flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
+            <a class="button flat gray" onclick="Post.share()">
                 <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
             </a>
             {/if}

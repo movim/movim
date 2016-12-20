@@ -15,6 +15,7 @@ class Item extends Model
     public $updated;
     public $description;
     public $subscription;
+    public $logo;
     public $num;
     public $sub;
 

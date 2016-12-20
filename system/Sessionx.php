@@ -89,7 +89,6 @@ class Sessionx
 
         if(isset($session)) {
             $this->_user        = $session->username;
-            $this->_password    = $session->password;
             $this->_hash        = $session->hash;
             $this->_resource    = $session->resource;
             $this->_host        = $session->host;
@@ -127,10 +126,11 @@ class Sessionx
                 if(isset($session->config))
                     $session->config = unserialize($session->config);
 
-                if(isset($session))
+                if(isset($session)) {
                     return $session->$key;
-                else
+                } else {
                     return null;
+                }
             }
         }
     }
