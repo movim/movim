@@ -49,7 +49,7 @@
                     style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});"></span>
             {/if}
             <p class="line">{$reply->title}</p>
-            <p>{$reply->contentcleaned|stripTags}</p>
+            <p>{$reply->contentcleaned|html_entity_decode|stripTags}</p>
             <p>
                 {if="$reply->isMicroblog()"}
                     <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}

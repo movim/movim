@@ -62,7 +62,7 @@
                                         </span>
                                     {/if}
                                     <p class="line">{$reply->title}</p>
-                                    <p>{$reply->contentcleaned|stripTags}</p>
+                                    <p>{$reply->contentcleaned|html_entity_decode|stripTags}</p>
                                     <p>
                                         {if="$reply->isMicroblog()"}
                                             <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}

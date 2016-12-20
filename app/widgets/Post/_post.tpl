@@ -199,7 +199,7 @@
                                     <i class="zmdi zmdi-chevron-right"></i>
                                 </span>
                                 <p class="line">{$reply->title}</p>
-                                <p>{$reply->contentcleaned|stripTags}</p>
+                                <p>{$reply->contentcleaned|html_entity_decode|stripTags}</p>
                                 <p>
                                     {if="$reply->isMicroblog()"}
                                         <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
@@ -392,7 +392,7 @@
                                 {$previous->node}
                             {/if}
                             </p>
-                            <p class="line">{$previous->contentcleaned|strip_tags|truncate:140}</p>
+                            <p class="line">{$previous->contentcleaned|html_entity_decode|stripTags|truncate:140}</p>
                             <p>
                                 {$count = $previous->countComments()}
                                 {if="$count > 0"}
@@ -417,7 +417,7 @@
                                 {$next->node}
                             {/if}
                             </p>
-                            <p class="line">{$next->contentcleaned|strip_tags|truncate:140}</p>
+                            <p class="line">{$next->contentcleaned|html_entity_decode|stripTags|truncate:140}</p>
                             <p>
                                 {$count = $next->countComments()}
                                 {if="$count > 0"}
