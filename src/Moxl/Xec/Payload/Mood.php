@@ -20,7 +20,7 @@ class Mood extends Payload
                 $c = $cd->get($from);
 
                 if($c != null) {
-                    $c->mood = serialize($arrmood);
+                    $c->mood = $arrmood;
                     $cd->set($c);
                 }
             }
