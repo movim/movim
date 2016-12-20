@@ -1,9 +1,12 @@
 <ul class="list divided spaced middle">
-    <li class="subheader center">
-        <p>
-            <span class="info">{$comments|count}</span> {$c->__('post.comments')}
-        </p>
-    </li>
+    {if="count($comments) > 0"}
+        <li class="subheader center">
+            <p>
+                <span class="info">{$comments|count}</span> {$c->__('post.comments')}
+            </p>
+        </li>
+    {/if}
+
     {$liked = false}
 
     {loop="$comments"}
@@ -59,7 +62,8 @@
         </li>
         {/if}
     {/loop}
-
+</ul>
+<ul class="list">
     <li>
         <p class="center">
             {if="!$liked"}
@@ -70,6 +74,11 @@
             <a class="button flat gray" onclick="Post.comment()">
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
             </a>
+            {if="!$post->isReply()"}
+            <a class="button flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
+                <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
+            </a>
+            {/if}
         </p>
     </li>
 

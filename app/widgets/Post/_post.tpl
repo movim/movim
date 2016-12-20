@@ -129,12 +129,6 @@
         </li>
     </ul>
     {/if}
-
-    {if="!$post->isReply() && !$public"}
-        <a class="button action color" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
-            <i class="zmdi zmdi-share"></i>
-        </a>
-    {/if}
 </header>
 
 {if="!$external && !$public"}
