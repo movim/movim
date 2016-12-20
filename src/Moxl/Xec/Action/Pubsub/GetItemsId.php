@@ -58,13 +58,14 @@ class GetItemsId extends Errors
     {
         $evt = new Event;
 
-        $pd = new \modl\PostnDAO();
+        $pd = new \Modl\PostnDAO();
 
         $ids = [];
 
         foreach(array_reverse($stanza->query->xpath('item')) as $item) {
             $id = (string)$item->attributes()->name;
-            if(!$pd->exists($this->_to, $this->_node, $id)) {
+            if(!$pd->exists($this->_to, $this->_node, $id)
+            && !empty($id)) {
                 $gi = new GetItem;
                 $gi->setTo($this->_to)
                    ->setNode($this->_node)

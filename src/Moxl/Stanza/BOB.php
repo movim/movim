@@ -9,7 +9,9 @@ class BOB {
         $data = $dom->createElementNS('urn:xmpp:bob', 'data');
         $data->setAttribute('cid', 'sha1+'.$cid.'@bob.xmpp.org');
 
-        \Moxl\API::request(\Moxl\API::iqWrapper($data, $to, 'get'));
+        if(!empty($cid)) {
+            \Moxl\API::request(\Moxl\API::iqWrapper($data, $to, 'get'));
+        }
     }
 
     static function answer($to, $id, $cid, $type, $base64)
