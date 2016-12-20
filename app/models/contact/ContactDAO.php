@@ -488,9 +488,9 @@ class ContactDAO extends SQL
 
         $this->prepare(
             'RosterLink',
-            array(
+            [
                 'session' => $this->_user
-            )
+            ]
         );
 
         return $this->run('RosterContact');

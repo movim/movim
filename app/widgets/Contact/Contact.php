@@ -3,7 +3,7 @@
 use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Vcard4\Get;
 use Respect\Validation\Validator;
-use Moxl\Xec\Action\Pubsub\GetItems;
+use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\PubsubSubscription\Get as GetSubscriptions;
 
 class Contact extends \Movim\Widget\Base
@@ -67,7 +67,7 @@ class Contact extends \Movim\Widget\Base
         RPC::call('MovimTpl.fill', '#contact_widget', $html);
         RPC::call('MovimTpl.showPanel');
 
-        $r = new GetItems;
+        $r = new GetItemsId;
         $r->setTo($jid)
           ->setNode('urn:xmpp:microblog:0')
           ->request();
@@ -138,7 +138,7 @@ class Contact extends \Movim\Widget\Base
     {
         if(!$this->validateJid($jid)) return;
 
-        $r = new GetItems;
+        $r = new GetItemsId;
         $r->setTo($jid)
           ->setNode('urn:xmpp:microblog:0')
           ->request();

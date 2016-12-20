@@ -177,7 +177,7 @@ class Roster extends \Movim\Widget\Base
 
     function prepareItems()
     {
-        $cd = new \Modl\ContactDAO();
+        $cd = new \Modl\ContactDAO;
         $this->user->reload(true);
 
         $view = $this->tpl();

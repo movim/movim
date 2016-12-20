@@ -36,7 +36,7 @@
                     {$value->node}
                 {/if}
                 </p>
-                <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
+                <p dir="auto">{$value->contentcleaned|html_entity_decode|stripTags|truncate:140}</p>
                 <p>
                     <a href="{$c->route('contact', $value->getContact()->jid)}">
                         {$value->getContact()->getTrueName()}
@@ -88,7 +88,7 @@
                 {$value->node}
             {/if}
             </p>
-            <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
+            <p dir="auto">{$value->contentcleaned|html_entity_decode|stripTags|truncate:140}</p>
             <p>
                 <a href="{$c->route('community', [$value->origin, $value->node])}">{$value->node}</a>
 

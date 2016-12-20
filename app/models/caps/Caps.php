@@ -10,24 +10,13 @@ class Caps extends Model
     public $name;
     public $features;
 
-    public function __construct()
-    {
-        $this->_struct = '
-        {
-            "node" :
-                {"type":"string", "size":128, "key":true },
-            "category" :
-                {"type":"string", "size":16, "mandatory":true },
-            "type" :
-                {"type":"string", "size":16, "mandatory":true },
-            "name" :
-                {"type":"string", "size":128, "mandatory":true },
-            "features" :
-                {"type":"text", "mandatory":true }
-        }';
-
-        parent::__construct();
-    }
+    public $_struct = [
+        'node'      => ['type' => 'string','size' => 128,'key' => true],
+        'category'  => ['type' => 'string','size' => 16,'mandatory' => true],
+        'type'      => ['type' => 'string','size' => 16,'mandatory' => true],
+        'name'      => ['type' => 'string','size' => 128,'mandatory' => true],
+        'features'  => ['type' => 'text','mandatory' => true],
+    ];
 
     public function set($query, $node = false)
     {

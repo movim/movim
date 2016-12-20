@@ -245,7 +245,7 @@
                         <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
                     </div>
                 {/if}
-                {$post->contentcleaned}
+                {$post->contentcleaned|html_entity_decode}
             </content>
         </section>
         <footer>

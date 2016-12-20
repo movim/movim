@@ -2,8 +2,10 @@
 
 namespace modl;
 
-class TagDAO extends SQL {
-    function set(Tag $t) {
+class TagDAO extends SQL
+{
+    function set(Tag $t)
+    {
         $this->_sql = '
             update tag
             set nodeid = :nodeid,
@@ -13,10 +15,10 @@ class TagDAO extends SQL {
 
         $this->prepare(
             'Tag',
-            array(
+            [
                 'nodeid' => $t->nodeid,
                 'tag' => $t->tag
-            )
+            ]
         );
 
         $this->run('Tag');
@@ -29,41 +31,43 @@ class TagDAO extends SQL {
 
             $this->prepare(
                 'Tag',
-                array(
+                [
                     'nodeid' => $t->nodeid,
                     'tag' => $t->tag
-                )
+                ]
             );
 
             $this->run('Tag');
         }
     }
 
-    function delete($nodeid) {
+    function delete($nodeid)
+    {
         $this->_sql = '
             delete from tag
             where nodeid = :nodeid';
 
         $this->prepare(
             'Tag',
-            array(
+            [
                 'nodeid' => $nodeid
-            )
+            ]
         );
 
         return $this->run('Tag');
     }
 
-    function getTags($nodeid) {
+    function getTags($nodeid)
+    {
         $this->_sql = '
             select * from tag
             where nodeid = :nodeid';
 
         $this->prepare(
             'Tag',
-            array(
+            [
                 'nodeid' => $nodeid
-            )
+            ]
         );
 
         return $this->run('Tag');

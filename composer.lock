@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bdc605def8a93a49beeaccd2e6347617",
-    "content-hash": "9f3fe412e518f3adcbb6d1a5eac53c28",
+    "hash": "4a07cf0756a2ade30458f5f73f8e23e4",
+    "content-hash": "2ac23b756a07842958c980214acd0dff",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -237,12 +237,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "811949b227040f87c0758fcc0999249ea536bc28"
+                "reference": "ac4f531edaf870c21d3de073a8e5c108043702ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/811949b227040f87c0758fcc0999249ea536bc28",
-                "reference": "811949b227040f87c0758fcc0999249ea536bc28",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/ac4f531edaf870c21d3de073a8e5c108043702ce",
+                "reference": "ac4f531edaf870c21d3de073a8e5c108043702ce",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-12-18 21:06:48"
+            "time": "2016-12-19 22:43:45"
         },
         {
             "name": "evenement/evenement",
@@ -597,17 +597,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "442fabc5900520dc872bed8b0839decd88afae29"
+                "reference": "14e9b8e996fe605ba079a351230e569e46e636de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/442fabc5900520dc872bed8b0839decd88afae29",
-                "reference": "442fabc5900520dc872bed8b0839decd88afae29",
+                "url": "https://api.github.com/repos/movim/modl/zipball/14e9b8e996fe605ba079a351230e569e46e636de",
+                "reference": "14e9b8e996fe605ba079a351230e569e46e636de",
                 "shasum": ""
             },
             "require": {
                 "monolog/monolog": "1.8.*",
-                "php": ">=5.3.0"
+                "php": ">=5.4.0"
             },
             "type": "library",
             "autoload": {
@@ -633,7 +633,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2016-12-10 16:15:57"
+            "time": "2016-12-20 16:24:04"
         },
         {
             "name": "movim/moxl",
@@ -641,12 +641,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "20dbb213143f44814ded5d3cbfdebc3189281119"
+                "reference": "8a72e9635358e1137d1227e80c8547edd3369f07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/20dbb213143f44814ded5d3cbfdebc3189281119",
-                "reference": "20dbb213143f44814ded5d3cbfdebc3189281119",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/8a72e9635358e1137d1227e80c8547edd3369f07",
+                "reference": "8a72e9635358e1137d1227e80c8547edd3369f07",
                 "shasum": ""
             },
             "require": {
@@ -681,7 +681,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-12-19 18:41:37"
+            "time": "2016-12-20 16:26:06"
         },
         {
             "name": "movim/sasl2",
@@ -928,13 +928,13 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/rainphp/raintpl3.git",
-                "reference": "51a242eb959fc28b9d8d3edf8f168a0e9fa0d858"
+                "url": "https://github.com/feulf/raintpl3.git",
+                "reference": "fed74db70cc2a80df11fc302a2ea0077185be5e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rainphp/raintpl3/zipball/51a242eb959fc28b9d8d3edf8f168a0e9fa0d858",
-                "reference": "51a242eb959fc28b9d8d3edf8f168a0e9fa0d858",
+                "url": "https://api.github.com/repos/feulf/raintpl3/zipball/fed74db70cc2a80df11fc302a2ea0077185be5e8",
+                "reference": "fed74db70cc2a80df11fc302a2ea0077185be5e8",
                 "shasum": ""
             },
             "require": {
@@ -964,7 +964,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2014-12-23 19:29:46"
+            "time": "2016-12-15 14:21:40"
         },
         {
             "name": "ramsey/uuid",
@@ -1423,30 +1423,25 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.4.3",
+            "version": "v0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "ce015ec5879b96f5d30905f035f223aa85013fcc"
+                "reference": "d61930e1aefb2a704b0adbe6bb97ee4a835d6a96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/ce015ec5879b96f5d30905f035f223aa85013fcc",
-                "reference": "ce015ec5879b96f5d30905f035f223aa85013fcc",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/d61930e1aefb2a704b0adbe6bb97ee4a835d6a96",
+                "reference": "d61930e1aefb2a704b0adbe6bb97ee4a835d6a96",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "~2.0|~1.0",
                 "php": ">=5.3.0",
                 "react/event-loop": "0.4.*|0.3.*",
-                "react/stream": "0.4.*|0.3.*"
+                "react/stream": "^0.4.2"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "React\\Socket\\": "src"
@@ -1460,20 +1455,20 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-03-01 20:10:35"
+            "time": "2016-12-19 22:52:38"
         },
         {
             "name": "react/socket-client",
-            "version": "v0.5.1",
+            "version": "v0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "3cb406a14008c092207d95a63ebe7739f74843bf"
+                "reference": "6c5560be7d19992f2eb385ef442889ea73e80ff6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/3cb406a14008c092207d95a63ebe7739f74843bf",
-                "reference": "3cb406a14008c092207d95a63ebe7739f74843bf",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/6c5560be7d19992f2eb385ef442889ea73e80ff6",
+                "reference": "6c5560be7d19992f2eb385ef442889ea73e80ff6",
                 "shasum": ""
             },
             "require": {
@@ -1482,10 +1477,10 @@
                 "react/event-loop": "0.4.*|0.3.*",
                 "react/promise": "^2.1 || ^1.2",
                 "react/promise-timer": "~1.0",
-                "react/stream": "0.4.*|0.3.*"
+                "react/stream": "^0.4.5"
             },
             "require-dev": {
-                "clue/block-react": "~1.0"
+                "clue/block-react": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -1501,7 +1496,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-11-20 00:11:24"
+            "time": "2016-12-19 23:23:16"
         },
         {
             "name": "react/stream",

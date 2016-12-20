@@ -12,7 +12,7 @@
     </div>
 {/if}
 
-{if="$posts != null && count($posts) >= $paging-1"}
+{if="isset($posts) && count($posts) >= $paging-1"}
 <ul class="list active thick">
     <li onclick="CommunityPosts_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.parentNode.removeChild(this.parentNode);">
         <span class="icon primary gray">

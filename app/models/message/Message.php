@@ -14,14 +14,14 @@ class Message extends Model {
     public $jidto;
     public $jidfrom;
 
-    protected $resource;
+    public $resource;
 
     public $type;
 
-    protected $subject;
-    protected $thread;
-    protected $body;
-    protected $html;
+    public $subject;
+    public $thread;
+    public $body;
+    public $html;
 
     public $published;
     public $delivered;
@@ -36,46 +36,23 @@ class Message extends Model {
 
     public $rtl = false;
 
-    public function __construct()
-    {
-        $this->_struct = '
-        {
-            "session" :
-                {"type":"string", "size":96, "mandatory":true },
-            "id" :
-                {"type":"string", "size":64},
-            "jidto" :
-                {"type":"string", "size":96, "mandatory":true },
-            "jidfrom" :
-                {"type":"string", "size":96, "mandatory":true },
-            "resource" :
-                {"type":"string", "size":128 },
-            "type" :
-                {"type":"string", "size":16, "mandatory":true },
-            "subject" :
-                {"type":"text"},
-            "thread" :
-                {"type":"string", "size":128 },
-            "body" :
-                {"type":"text"},
-            "html" :
-                {"type":"text"},
-            "published" :
-                {"type":"date", "mandatory":true},
-            "delivered" :
-                {"type":"date"},
-            "edited" :
-                {"type":"int", "size":1},
-            "picture" :
-                {"type":"text" },
-            "sticker" :
-                {"type":"string", "size":128 },
-            "quoted" :
-                {"type":"int", "size":1}
-        }';
-
-        parent::__construct();
-    }
+    public $_struct = [
+        'session'   => ['type' => 'string','size' => 96,'mandatory' => true],
+        'id'        => ['type' => 'string','size' => 64],
+        'jidto'     => ['type' => 'string','size' => 96,'mandatory' => true],
+        'jidfrom'   => ['type' => 'string','size' => 96,'mandatory' => true],
+        'resource'  => ['type' => 'string','size' => 128],
+        'type'      => ['type' => 'string','size' => 16,'mandatory' => true],
+        'subject'   => ['type' => 'text'],
+        'thread'    => ['type' => 'string','size' => 128],
+        'body'      => ['type' => 'text'],'html' => ['type' => 'text'],
+        'published' => ['type' => 'date','mandatory' => true],
+        'delivered' => ['type' => 'date'],
+        'edited'    => ['type' => 'int','size' => 1],
+        'picture'   => ['type' => 'text'],
+        'sticker'   => ['type' => 'string','size' => 128],
+        'quoted'    => ['type' => 'int','size' => 1],
+    ];
 
     public function set($stanza, $parent = false)
     {
@@ -95,7 +72,7 @@ class Message extends Model {
             $this->jidfrom    = $jid[0];
 
             if(isset($jid[1]))
-                $this->__set('resource', $jid[1]);
+                $this->resource = $jid[1];
 
             $this->type = 'chat';
             if($stanza->attributes()->type) {
@@ -103,10 +80,10 @@ class Message extends Model {
             }
 
             if($stanza->body)
-                $this->__set('body', (string)$stanza->body);
+                $this->body = (string)$stanza->body;
 
             if($stanza->subject)
-                $this->__set('subject', (string)$stanza->subject);
+                $this->subject = (string)$stanza->subject;
 
             if($this->type == 'groupchat') {
                 $pd = new \Modl\PresenceDAO;
