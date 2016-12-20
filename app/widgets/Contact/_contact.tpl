@@ -181,7 +181,7 @@
             {/if}
 
             {if="$contact->mood != null"}
-            {$moods = unserialize($contact->mood)}
+            {$moods = $contact->mood}
             <li class="block">
                 <span class="primary icon gray"><i class="zmdi zmdi-mood"></i></span>
                 <p>{$c->__('mood.title')}</p>

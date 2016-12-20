@@ -51,7 +51,7 @@ class User
 
             $cd = new modl\CapsDAO;
             $caps = $cd->get($session->host);
-            $this->caps = unserialize($caps->features);
+            $this->caps = $caps->features;
         }
     }
 

@@ -62,10 +62,10 @@ class Postn extends Model
         'published'     => ['type' => 'date'],
         'updated'       => ['type' => 'date'],
         'delay'         => ['type' => 'date'],
-        'reply'         => ['type' => 'text'],
+        'reply'         => ['type' => 'serialized'],
         'lat'           => ['type' => 'string','size' => 32],
         'lon'           => ['type' => 'string','size' => 32],
-        'links'         => ['type' => 'text'],
+        'links'         => ['type' => 'serialized'],
         'picture'       => ['type' => 'text'],
         'hash'          => ['type' => 'string','size' => 128,'mandatory' => true]
     ];
@@ -244,7 +244,7 @@ class Postn extends Model
                 'nodeid' => substr($arr[2], 5)
             ];
 
-            $this->reply = serialize($reply);
+            $this->reply = $reply;
         }
 
         $extra = false;
@@ -334,7 +334,7 @@ class Postn extends Model
         }
 
         if(!empty($l)) {
-            $this->links = serialize($l);
+            $this->links = $l;
         }
     }
 
@@ -344,7 +344,7 @@ class Postn extends Model
         $this->openlink = null;
 
         if(isset($this->links)) {
-            $links = unserialize($this->links);
+            $links = $this->links;
             $attachments = [
                 'pictures' => [],
                 'files' => [],
@@ -519,7 +519,7 @@ class Postn extends Model
     {
         if(!$this->reply) return;
 
-        $reply = unserialize($this->reply);
+        $reply = $this->reply;
         $pd = new \Modl\PostnDAO;
         return $pd->get($reply['origin'], $reply['node'], $reply['nodeid']);
     }

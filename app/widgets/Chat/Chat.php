@@ -636,9 +636,6 @@ class Chat extends \Movim\Widget\Base
                     array_push($this->_wrapper[$date], $message);
                 }
             }
-
-            $pd = new \Modl\PresenceDAO;
-            $p = $pd->getMyPresenceRoom($message->from);
         } else {
             $msgkey = $message->jidfrom . '>' . substr($message->published, 11, 5);
 

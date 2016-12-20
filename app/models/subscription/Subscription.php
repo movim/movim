@@ -20,13 +20,13 @@ class Subscription extends Model
     public $logo;
 
     public $_struct = [
-        'jid'       => ['type' => 'string','size' => 64,'key' => true],
-        'server'    => ['type' => 'string','size' => 64,'key' => true],
-        'node'      => ['type' => 'string','size' => 128,'key' => true],
-        'subscription' => ['type' => 'string','size' => 128,'mandatory' => true],
-        'subid'     => ['type' => 'string','size' => 128],
-        'title'     => ['type' => 'string','size' => 128],
-        'tags'      => ['type' => 'text'],
+        'jid'       => ['type' => 'string', 'size' => 64, 'key' => true],
+        'server'    => ['type' => 'string', 'size' => 64, 'key' => true],
+        'node'      => ['type' => 'string', 'size' => 128, 'key' => true],
+        'subscription' => ['type' => 'serialized', 'size' => 128, 'mandatory' => true],
+        'subid'     => ['type' => 'string', 'size' => 128],
+        'title'     => ['type' => 'string', 'size' => 128],
+        'tags'      => ['type' => 'serialized'],
         'timestamp' => ['type' => 'date',]
     ];
 
@@ -44,7 +44,7 @@ class Subscription extends Model
         $this->jid          = (string)$s->attributes()->jid;
         $this->subscription = (string)$s->attributes()->subscription;
         $this->subid        = (string)$s->attributes()->subid;
-        $this->tags         = serialize([]);
+        $this->tags         = [];
 
         if($this->subid = '') {
             $this->subid = 'default';

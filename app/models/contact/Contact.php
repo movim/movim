@@ -88,7 +88,7 @@ class Contact extends Model
         'gender' =>         ['type' => 'string','size' => 1],
         'marital' =>        ['type' => 'string','size' => 16],
         'description' =>    ['type' => 'text'],
-        'mood' =>           ['type' => 'string','size' => 64],
+        'mood' =>           ['type' => 'serialized','size' => 64],
         'activity' =>       ['type' => 'string','size' => 128],
         'nickname' =>       ['type' => 'string','size' => 64],
         'tuneartist' =>     ['type' => 'string','size' => 128],

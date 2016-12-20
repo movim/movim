@@ -29,7 +29,7 @@ class Caps extends \Movim\Widget\Base
 
     function display()
     {
-        $cd = new \modl\CapsDAO();
+        $cd = new \modl\CapsDAO;
         $clients = $cd->getClients();
 
         foreach($clients as $c) {
@@ -37,8 +37,7 @@ class Caps extends \Movim\Widget\Base
                 $this->_table[$c->name] = [];
             }
 
-            $features = unserialize($c->features);
-            foreach($features as $f) {
+            foreach($c->features as $f) {
                 if(!in_array($f, $this->_table[$c->name])) {
                     array_push($this->_table[$c->name], (string)$f);
                 }

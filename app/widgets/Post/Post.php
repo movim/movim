@@ -124,7 +124,7 @@ class Post extends \Movim\Widget\Base
 
             // If the post is a reply but we don't have the original
             if($p->isReply() && !$p->getReply()) {
-                $reply = unserialize($p->reply);
+                $reply = $p->reply;
 
                 $gi = new GetItem;
                 $gi->setTo($reply['origin'])

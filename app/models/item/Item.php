@@ -90,7 +90,7 @@ class Item extends Model
                     $url = false;
                     foreach($embed->providerIcons as $icon) {
                         if($icon['mime'] != 'image/x-icon') {
-                            $url = $icon['value'];
+                            $url = $icon['url'];
                         }
                     }
 
