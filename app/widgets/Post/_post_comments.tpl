@@ -64,24 +64,6 @@
     {/loop}
 </ul>
 <ul class="list">
-    <li>
-        <p class="center">
-            {if="!$liked"}
-            <a class="button red flat" onclick="Post_ajaxLike('{$server}', '{$node}', '{$id}')">
-                <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
-            </a>
-            {/if}
-            <a class="button flat gray" onclick="Post.comment()">
-                <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
-            </a>
-            {if="!$post->isReply()"}
-            <a class="button flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
-                <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
-            </a>
-            {/if}
-        </p>
-    </li>
-
     <li class="hide" id="comment_add">
         <span class="primary icon gray">
             <i class="zmdi zmdi-comment"></i>
@@ -99,5 +81,23 @@
                 <label for="comment">{$c->__('post.comment_add')}</label>
             </div>
         </form>
+    </li>
+
+    <li>
+        <p class="center">
+            {if="!$liked"}
+            <a class="button red flat" onclick="Post_ajaxLike('{$server}', '{$node}', '{$id}')">
+                <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
+            </a>
+            {/if}
+            <a class="button flat gray" onclick="Post.comment()">
+                <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
+            </a>
+            {if="!$post->isReply()"}
+            <a class="button flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
+                <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
+            </a>
+            {/if}
+        </p>
     </li>
 </ul>
