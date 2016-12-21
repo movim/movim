@@ -9,9 +9,9 @@
     </li>
 
     <li class="block">
-        <p>
+        <p class="center">
             {if="$c->supported('pubsub')"}
-            <a class="button flat gray oppose" onclick="Post.share()">
+            <a class="button flat gray" onclick="Post.share()">
                 <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
             </a>
             {/if}
