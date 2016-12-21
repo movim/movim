@@ -93,7 +93,7 @@
             <a class="button flat gray" onclick="Post.comment()">
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
             </a>
-            {if="!$post->isReply() && $c->supported('pubsub')"}
+            {if="$c->supported('pubsub')"}
             <a class="button flat gray" onclick="Post.share()">
                 <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
             </a>
