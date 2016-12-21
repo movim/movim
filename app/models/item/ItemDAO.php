@@ -109,7 +109,7 @@ class ItemDAO extends SQL
                 select jid,
                 count(*) as number from item
                 where node != \'\'
-                and node not like \'/%\'
+                and node not like \'urn:xmpp:microblog:0:comments%\'
                 group by jid)
                 as counter on item.jid = counter.jid
             where caps.category = \'pubsub\'
@@ -162,7 +162,7 @@ class ItemDAO extends SQL
                 as s on s.server = item.server
                 and s.node = item.node
             where item.node != \'\'
-                and item.node not like \'/%\'
+                and item.node not like \'urn:xmpp:microblog:0:comments%\'
                 and item.node != \'urn:xmpp:microblog:0\'';
 
         if($server) {
