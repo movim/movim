@@ -23,7 +23,7 @@ Links
 ### Pods
 You can also use Movim on our official Pods :
 
-* https://pod.movim.eu/ server hosted in France
+* https://it.movim.eu/ server hosted in France
 * https://nl.movim.eu/ server hosted in The Netherlands
 
 ### Librairies
