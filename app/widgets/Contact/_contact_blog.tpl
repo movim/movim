@@ -40,7 +40,7 @@
                     <p class="line">{$c->__('hello.contact_post')}</p>
                 {/if}
 
-                <p>{$value->contentcleaned|strip_tags}</p>
+                <p>{$value->getSummary()}</p>
                 <p>
                     {$count = $value->countLikes()}
                     {if="$count > 0"}
