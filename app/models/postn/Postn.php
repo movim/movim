@@ -515,6 +515,11 @@ class Postn extends Model
         return isRTL($this->contentraw);
     }
 
+    public function getSummary()
+    {
+        return truncate(stripTags(html_entity_decode($this->contentcleaned)), 140);
+    }
+
     public function getReply()
     {
         if(!$this->reply) return;

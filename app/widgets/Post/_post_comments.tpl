@@ -42,7 +42,7 @@
                     </span>
                 {/if}
             {/if}
-            <p class="normal">
+            <p class="normal line">
                 <span class="info" title="{$value->published|strtotime|prepareDate}">
                     {$value->published|strtotime|prepareDate:true,true}
                 </span>
@@ -93,7 +93,7 @@
             <a class="button flat gray" onclick="Post.comment()">
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
             </a>
-            {if="!$post->isReply()"}
+            {if="!$post->isReply() && $c->supported('pubsub')"}
             <a class="button flat gray" onclick="Post.share()">
                 <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
             </a>
