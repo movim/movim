@@ -265,7 +265,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxSendMessage($to, $message, $muc = false, $resource = false, $replace = false)
     {
-        $body = trim(rawurldecode($message));
+        $body = (string)htmlentities(trim(rawurldecode($message)), ENT_XML1, 'UTF-8', false);
 
         if($body == '' || $body == '/me')
             return;
