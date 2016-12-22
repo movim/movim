@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f643442e6dd89b82a5bcda3dddf127cd",
-    "content-hash": "9e6193bff08cac6b02f5d2def49196b7",
+    "hash": "4a0798730c3acbe3e02f2450ec94414e",
+    "content-hash": "d4aba830a4037e89d3dd318a7f0570d4",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -597,12 +597,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "8a4c151c10194e96fe72709d5783e170c530f7d7"
+                "reference": "5e7f0a68f0081ca5d4aefcbdfea1e63b4db7fd51"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/8a4c151c10194e96fe72709d5783e170c530f7d7",
-                "reference": "8a4c151c10194e96fe72709d5783e170c530f7d7",
+                "url": "https://api.github.com/repos/movim/modl/zipball/5e7f0a68f0081ca5d4aefcbdfea1e63b4db7fd51",
+                "reference": "5e7f0a68f0081ca5d4aefcbdfea1e63b4db7fd51",
                 "shasum": ""
             },
             "require": {
@@ -633,7 +633,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2016-12-21 12:07:35"
+            "time": "2016-12-22 10:57:55"
         },
         {
             "name": "movim/moxl",
@@ -641,12 +641,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "ad86dc55f8521f69f5170099463c5a8ced823aef"
+                "reference": "c28a264076c945888aacc7516fe26fa80eecfec5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/ad86dc55f8521f69f5170099463c5a8ced823aef",
-                "reference": "ad86dc55f8521f69f5170099463c5a8ced823aef",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/c28a264076c945888aacc7516fe26fa80eecfec5",
+                "reference": "c28a264076c945888aacc7516fe26fa80eecfec5",
                 "shasum": ""
             },
             "require": {
@@ -681,7 +681,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2016-12-20 19:33:18"
+            "time": "2016-12-22 10:59:02"
         },
         {
             "name": "movim/sasl2",
