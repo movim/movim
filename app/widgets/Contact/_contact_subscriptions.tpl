@@ -12,7 +12,7 @@
                 onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')">
                 {if="$value->logo"}
                     <span class="primary icon bubble">
-                        <img src="{$value->getLogo()}">
+                        <img src="{$value->getLogo(50)}">
                     </span>
                 {else}
                     <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
