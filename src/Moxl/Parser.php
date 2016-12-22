@@ -109,7 +109,7 @@ class Parser {
     private function contents($parser, $data)
     {
         if(isset($this->handler)) {
-            $this->handler[0] .= $data;
+            $this->handler[0] .= (string)htmlentities($data, ENT_XML1, 'UTF-8', false);
         }
     }
 
