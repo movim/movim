@@ -23,7 +23,6 @@ var Login = {
             button.value = button.dataset.loading;
 
             localStorage.username = document.querySelector('input#username').value;
-            Login.rememberSession(localStorage.username);
 
             // A fallback security
             setTimeout("MovimWebsocket.unregister()", 20000);

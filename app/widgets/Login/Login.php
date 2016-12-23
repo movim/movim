@@ -32,6 +32,8 @@ class Login extends \Movim\Widget\Base
             //$c = new Chats;
             //$c->ajaxGetHistory();
 
+            $this->rpc('Login.rememberSession', $this->user->getLogin());
+
             // We get the configuration
             $s = new Get;
             $s->setXmlns('movim:prefs')
