@@ -31,7 +31,6 @@ class System extends \Movim\Widget\Base
         $config = $cd->get();
 
         $public_conf = [
-            'bosh_url' => $config->boshurl,
             'timezone' => $config->timezone
         ];
 

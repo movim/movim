@@ -45,64 +45,34 @@ class Postn extends Model
     public $logo;
     private $openlink;
 
+    public $_struct = [
+        'origin'        => ['type' => 'string','size' => 64,'key' => true],
+        'node'          => ['type' => 'string','size' => 96,'key' => true],
+        'nodeid'        => ['type' => 'string','size' => 96,'key' => true],
+        'aname'         => ['type' => 'string','size' => 128],
+        'aid'           => ['type' => 'string','size' => 64],
+        'aemail'        => ['type' => 'string','size' => 64],
+        'title'         => ['type' => 'text'],
+        'content'       => ['type' => 'text'],
+        'contentraw'    => ['type' => 'text'],
+        'contentcleaned' => ['type' => 'text'],
+        'commentorigin' => ['type' => 'string','size' => 64],
+        'commentnodeid' => ['type' => 'string','size' => 96],
+        'open'          => ['type' => 'bool'],
+        'published'     => ['type' => 'date'],
+        'updated'       => ['type' => 'date'],
+        'delay'         => ['type' => 'date'],
+        'reply'         => ['type' => 'serialized'],
+        'lat'           => ['type' => 'string','size' => 32],
+        'lon'           => ['type' => 'string','size' => 32],
+        'links'         => ['type' => 'serialized'],
+        'picture'       => ['type' => 'text'],
+        'hash'          => ['type' => 'string','size' => 128,'mandatory' => true]
+    ];
+
     public function __construct()
     {
         $this->hash = md5(openssl_random_pseudo_bytes(5));
-
-        $this->_struct = '
-        {
-            "origin" :
-                {"type":"string", "size":64, "key":true },
-            "node" :
-                {"type":"string", "size":96, "key":true },
-            "nodeid" :
-                {"type":"string", "size":96, "key":true },
-            "aname" :
-                {"type":"string", "size":128 },
-            "aid" :
-                {"type":"string", "size":64 },
-            "aemail" :
-                {"type":"string", "size":64 },
-            "title" :
-                {"type":"text" },
-            "content" :
-                {"type":"text" },
-            "contentraw" :
-                {"type":"text" },
-            "contentcleaned" :
-                {"type":"text" },
-            "commentorigin" :
-                {"type":"string", "size":64 },
-            "commentnodeid" :
-                {"type":"string", "size":96 },
-
-            "open" :
-                {"type":"bool"},
-
-            "published" :
-                {"type":"date" },
-            "updated" :
-                {"type":"date" },
-            "delay" :
-                {"type":"date" },
-
-            "reply" :
-                {"type":"text" },
-
-            "lat" :
-                {"type":"string", "size":32 },
-            "lon" :
-                {"type":"string", "size":32 },
-
-            "links" :
-                {"type":"text" },
-            "picture" :
-                {"type":"text" },
-            "hash" :
-                {"type":"string", "size":128, "mandatory":true }
-        }';
-
-        parent::__construct();
     }
 
     private function getContent($contents)
@@ -124,7 +94,7 @@ class Postn extends Model
                     break;
                 case 'text':
                     if(trim($c) != '') {
-                        $this->__set('contentraw', trim($c));
+                        $this->contentraw = trim($c);
                     }
                     break;
                 default :
@@ -167,33 +137,33 @@ class Postn extends Model
             $entry = $item;
 
         if($from != '')
-            $this->__set('origin', $from);
+            $this->origin = $from;
 
         if($node)
-            $this->__set('node', $node);
+            $this->node = $node;
         else
-            $this->__set('node', (string)$item->attributes()->node);
+            $this->node = (string)$item->attributes()->node;
 
-        $this->__set('nodeid', (string)$entry->attributes()->id);
+        $this->nodeid = (string)$entry->attributes()->id;
 
         if($entry->entry->id)
-            $this->__set('nodeid', (string)$entry->entry->id);
+            $this->nodeid = (string)$entry->entry->id;
 
         // Get some informations on the author
         if($entry->entry->author->name)
-            $this->__set('aname', (string)$entry->entry->author->name);
+            $this->aname = (string)$entry->entry->author->name;
         if($entry->entry->author->uri)
-            $this->__set('aid', substr((string)$entry->entry->author->uri, 5));
+            $this->aid = substr((string)$entry->entry->author->uri, 5);
         if($entry->entry->author->email)
-            $this->__set('aemail', (string)$entry->entry->author->email);
+            $this->aemail = (string)$entry->entry->author->email;
 
         // Non standard support
         if($entry->entry->source && $entry->entry->source->author->name)
-            $this->__set('aname', (string)$entry->entry->source->author->name);
+            $this->aname = (string)$entry->entry->source->author->name;
         if($entry->entry->source && $entry->entry->source->author->uri)
-            $this->__set('aid', substr((string)$entry->entry->source->author->uri, 5));
+            $this->aid = substr((string)$entry->entry->source->author->uri, 5);
 
-        $this->__set('title', $this->getTitle($entry->entry->title));
+        $this->title = $this->getTitle($entry->entry->title);
 
         // Content
         if($entry->entry->summary && (string)$entry->entry->summary != '')
@@ -211,35 +181,35 @@ class Postn extends Model
         $content = $summary.$content;
 
         if($entry->entry->updated)
-            $this->__set('updated', (string)$entry->entry->updated);
+            $this->updated = (string)$entry->entry->updated;
         else
-            $this->__set('updated', gmdate(SQL::SQL_DATE));
+            $this->updated = gmdate(SQL::SQL_DATE);
 
         if($entry->entry->published)
-            $this->__set('published', (string)$entry->entry->published);
+            $this->published = (string)$entry->entry->published;
         elseif($entry->entry->updated)
-            $this->__set('published', (string)$entry->entry->updated);
+            $this->published = (string)$entry->entry->updated;
         else
-            $this->__set('published', gmdate(SQL::SQL_DATE));
+            $this->published = gmdate(SQL::SQL_DATE);
 
         if($delay)
-            $this->__set('delay', $delay);
+            $this->delay = $delay;
 
         // Tags parsing
         if($entry->entry->category) {
             $td = new \Modl\TagDAO;
-            $td->delete($this->__get('nodeid'));
+            $td->delete($this->nodeid);
 
             if($entry->entry->category->count() == 1
             && isset($entry->entry->category->attributes()->term)) {
                 $tag = new \Modl\Tag;
-                $tag->nodeid = $this->__get('nodeid');
+                $tag->nodeid = $this->nodeid;
                 $tag->tag    = strtolower((string)$entry->entry->category->attributes()->term);
                 $td->set($tag);
             } else {
                 foreach($entry->entry->category as $cat) {
                     $tag = new \Modl\Tag;
-                    $tag->nodeid = $this->__get('nodeid');
+                    $tag->nodeid = $this->nodeid;
                     $tag->tag    = strtolower((string)$cat->attributes()->term);
                     $td->set($tag);
                 }
@@ -247,21 +217,21 @@ class Postn extends Model
         }
 
         if(!isset($this->commentorigin))
-            $this->__set('commentorigin', $this->origin);
+            $this->commentorigin = $this->origin;
 
-        $this->__set('content', trim($content));
+        $this->content = trim($content);
         $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
 
         if($entry->entry->geoloc) {
             if($entry->entry->geoloc->lat != 0)
-                $this->__set('lat', (string)$entry->entry->geoloc->lat);
+                $this->lat = (string)$entry->entry->geoloc->lat;
             if($entry->entry->geoloc->lon != 0)
-                $this->__set('lon', (string)$entry->entry->geoloc->lon);
+                $this->lon = (string)$entry->entry->geoloc->lon;
         }
 
         // We fill empty aid
         if($this->isMicroblog() && empty($this->aid)) {
-            $this->__set('aid', $this->origin);
+            $this->aid = $this->origin;
         }
 
         // We check if this is a reply
@@ -274,7 +244,7 @@ class Postn extends Model
                 'nodeid' => substr($arr[2], 5)
             ];
 
-            $this->__set('reply', serialize($reply));
+            $this->reply = $reply;
         }
 
         $extra = false;
@@ -364,7 +334,7 @@ class Postn extends Model
         }
 
         if(!empty($l)) {
-            $this->links = serialize($l);
+            $this->links = $l;
         }
     }
 
@@ -374,7 +344,7 @@ class Postn extends Model
         $this->openlink = null;
 
         if(isset($this->links)) {
-            $links = unserialize($this->links);
+            $links = $this->links;
             $attachments = [
                 'pictures' => [],
                 'files' => [],
@@ -545,11 +515,16 @@ class Postn extends Model
         return isRTL($this->contentraw);
     }
 
+    public function getSummary()
+    {
+        return truncate(stripTags(html_entity_decode($this->contentcleaned)), 140);
+    }
+
     public function getReply()
     {
         if(!$this->reply) return;
 
-        $reply = unserialize($this->reply);
+        $reply = $this->reply;
         $pd = new \Modl\PostnDAO;
         return $pd->get($reply['origin'], $reply['node'], $reply['nodeid']);
     }

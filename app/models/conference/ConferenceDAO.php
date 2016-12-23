@@ -2,8 +2,10 @@
 
 namespace modl;
 
-class ConferenceDAO extends SQL {
-    function set(Conference $c) {
+class ConferenceDAO extends SQL
+{
+    function set(Conference $c)
+    {
         $this->_sql = '
             update conference
             set name        = :name,
@@ -49,7 +51,8 @@ class ConferenceDAO extends SQL {
         }
     }
 
-    function get($conference) {
+    function get($conference)
+    {
         $this->_sql = '
             select * from conference
             where jid       = :jid
@@ -66,7 +69,8 @@ class ConferenceDAO extends SQL {
         return $this->run('Conference', 'item');
     }
 
-    function getAll() {
+    function getAll()
+    {
         $this->_sql = '
             select * from conference
             where jid = :jid
@@ -82,7 +86,8 @@ class ConferenceDAO extends SQL {
         return $this->run('Conference');
     }
 
-    function delete() {
+    function delete()
+    {
         $this->_sql = '
             delete from conference
             where jid = :jid';
@@ -97,7 +102,8 @@ class ConferenceDAO extends SQL {
         return $this->run('conference');
     }
 
-    function deleteNode($conference) {
+    function deleteNode($conference)
+    {
         $this->_sql = '
             delete from conference
             where jid       = :jid

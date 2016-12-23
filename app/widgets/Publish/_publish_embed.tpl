@@ -11,8 +11,8 @@
         </li>
         {if="$embed->images != null"}
             <li>
-                <a href="{$embed->images[0]['value']|htmlspecialchars}" target="_blank">
-                    <img src="{$embed->images[0]['value']|htmlspecialchars}"/>
+                <a href="{$embed->images[0]['url']|htmlspecialchars}" target="_blank">
+                    <img src="{$embed->images[0]['url']|htmlspecialchars}"/>
                 </a>
             </li>
         {/if}

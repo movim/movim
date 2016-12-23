@@ -15,44 +15,32 @@ class Item extends Model
     public $updated;
     public $description;
     public $subscription;
+    public $logo;
     public $num;
     public $sub;
-    public $logo;
 
-    public function __construct()
-    {
-        $this->_struct = '
-        {
-            "server" :
-                {"type":"string", "size":64, "key":true },
-            "jid" :
-                {"type":"string", "size":64, "key":true },
-            "node" :
-                {"type":"string", "size":96, "key":true },
-            "creator" :
-                {"type":"string", "size":64 },
-            "name" :
-                {"type":"string", "size":128 },
-            "created" :
-                {"type":"date"},
-            "description" :
-                {"type":"text"},
-            "logo" :
-                {"type":"bool"},
-            "updated" :
-                {"type":"date", "mandatory":true}
-        }';
-
-        parent::__construct();
-    }
+    public $_struct = [
+        'server'    => ['type' => 'string','size' => 64,'key' => true],
+        'jid'       => ['type' => 'string','size' => 64,'key' => true],
+        'node'      => ['type' => 'string','size' => 96,'key' => true],
+        'creator'   => ['type' => 'string','size' => 64],
+        'name'      => ['type' => 'string','size' => 128],
+        'created'   => ['type' => 'date'],
+        'description' => ['type' => 'text'],
+        'logo'      => ['type' => 'bool'],
+        'updated'   => ['type' => 'date','mandatory' => true],
+    ];
 
     public function set($item, $from)
     {
         $this->server = $from;
         $this->node   = (string)$item->attributes()->node;
         $this->jid    = (string)$item->attributes()->jid;
-        if($this->jid == null)
+
+        if($this->jid == null) {
             $this->jid = $this->node;
+        }
+
         $this->name   = (string)$item->attributes()->name;
         $this->updated  = date(SQL::SQL_DATE);
     }
@@ -102,7 +90,7 @@ class Item extends Model
                     $url = false;
                     foreach($embed->providerIcons as $icon) {
                         if($icon['mime'] != 'image/x-icon') {
-                            $url = $icon['value'];
+                            $url = $icon['url'];
                         }
                     }
 

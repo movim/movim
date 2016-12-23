@@ -2,8 +2,10 @@
 
 namespace Modl;
 
-class ConfigDAO extends SQL {
-    function set(Config $c) {
+class ConfigDAO extends SQL
+{
+    function set(Config $c)
+    {
         $this->_sql = '
             update config
             set description   = :description,
@@ -24,7 +26,7 @@ class ConfigDAO extends SQL {
 
         $this->prepare(
             'Config',
-            array(
+            [
                 'description'  => $c->description,
                 'theme'        => $c->theme,
                 'locale'       => $c->locale,
@@ -40,7 +42,7 @@ class ConfigDAO extends SQL {
                 'username'     => $c->username,
                 'password'     => $c->password,
                 'sizelimit'    => $c->sizelimit
-            )
+            ]
         );
 
         $this->run('Config');
@@ -49,11 +51,7 @@ class ConfigDAO extends SQL {
             $this->_sql = '
                 truncate table config;';
 
-            $this->prepare(
-                'Config',
-                array(
-                )
-            );
+            $this->prepare('Config');
 
             $this->run('Config');
 
@@ -98,7 +96,7 @@ class ConfigDAO extends SQL {
 
             $this->prepare(
                 'Config',
-                array(
+                [
                     'description'  => $c->description,
                     'theme'        => $c->theme,
                     'locale'       => $c->locale,
@@ -114,14 +112,15 @@ class ConfigDAO extends SQL {
                     'username'     => $c->username,
                     'password'     => $c->password,
                     'sizelimit'    => $c->sizelimit
-                )
+                ]
             );
 
             $this->run('Config');
         }
     }
 
-    function get() {
+    function get()
+    {
         $this->_sql = '
             select * from config';
 
@@ -129,8 +128,9 @@ class ConfigDAO extends SQL {
 
         $conf = $this->run('Config', 'item');
 
-        if(!isset($conf))
+        if(!isset($conf)) {
             return new Config;
+        }
 
         return $conf;
     }

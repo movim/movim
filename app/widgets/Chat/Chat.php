@@ -265,7 +265,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxSendMessage($to, $message, $muc = false, $resource = false, $replace = false)
     {
-        $body = trim(rawurldecode($message));
+        $body = (string)htmlentities(trim(rawurldecode($message)), ENT_XML1, 'UTF-8', false);
 
         if($body == '' || $body == '/me')
             return;
@@ -636,9 +636,6 @@ class Chat extends \Movim\Widget\Base
                     array_push($this->_wrapper[$date], $message);
                 }
             }
-
-            $pd = new \Modl\PresenceDAO;
-            $p = $pd->getMyPresenceRoom($message->from);
         } else {
             $msgkey = $message->jidfrom . '>' . substr($message->published, 11, 5);
 

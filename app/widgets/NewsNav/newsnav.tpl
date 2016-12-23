@@ -14,12 +14,20 @@
         {loop="$blogs"}
             {$attachments = $value->getAttachments()}
             <li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
-                {if="$value->picture"}
-                    <span class="primary thumb icon" style="background-image: url('{$value->picture}');"></span>
-                {else}
-                    <span class="primary thumb color icon color {$value->node|stringToColor}">
-                        {$value->node|firstLetterCapitalize}
+                {$picture = $value->getPicture()}
+                {if="$picture != null"}
+                    <span class="primary icon thumb color white" style="background-image: url({$picture});">
                     </span>
+                {else}
+                    {$url = $value->getContact()->getPhoto('l')}
+                    {if="$url"}
+                        <span class="primary icon thumb color white" style="background-image: url({$url});">
+                        </span>
+                    {else}
+                        <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
+                            {$value->getContact()->getTrueName()|firstLetterCapitalize}
+                        </span>
+                    {/if}
                 {/if}
                 <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
                 {if="isset($value->title)"}
@@ -28,7 +36,7 @@
                     {$value->node}
                 {/if}
                 </p>
-                <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
+                <p dir="auto">{$value->getSummary()}</p>
                 <p>
                     <a href="{$c->route('contact', $value->getContact()->jid)}">
                         {$value->getContact()->getTrueName()}
@@ -80,7 +88,7 @@
                 {$value->node}
             {/if}
             </p>
-            <p dir="auto">{$value->contentcleaned|strip_tags|truncate:140}</p>
+            <p dir="auto">{$value->getSummary()}</p>
             <p>
                 <a href="{$c->route('community', [$value->origin, $value->node])}">{$value->node}</a>
 

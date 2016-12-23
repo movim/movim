@@ -124,7 +124,7 @@ class Post extends \Movim\Widget\Base
 
             // If the post is a reply but we don't have the original
             if($p->isReply() && !$p->getReply()) {
-                $reply = unserialize($p->reply);
+                $reply = $p->reply;
 
                 $gi = new GetItem;
                 $gi->setTo($reply['origin'])
@@ -154,6 +154,16 @@ class Post extends \Movim\Widget\Base
         $view->assign('id', $id);
 
         Dialog::fill($view->draw('_post_delete', true));
+    }
+
+    function ajaxShare($origin, $node, $id)
+    {
+        $pd = new \Modl\PostnDAO;
+        $p  = $pd->get($origin, $node, $id);
+
+        if($p) {
+            $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node, $id, 'share']));
+        }
     }
 
     function ajaxDeleteConfirm($to, $node, $id) {

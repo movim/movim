@@ -18,7 +18,8 @@
             <p class="normal">{$c->__('page.home')}</p>
         </li>
     </a>-->
-    <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}"
+    {if="$c->supported('pubsub')"}
+    <a class="classic"
        href="{$c->route('news')}"
        title="{$c->__('page.news')}">
         <li {if="$page == 'news'"}class="active"{/if}>
@@ -27,6 +28,7 @@
             <p class="normal">{$c->__('page.news')}</p>
         </li>
     </a>
+    {/if}
     <a class="classic" href="{$c->route('contact')}"
        title="{$c->__('page.contacts')}">
         <li {if="$page == 'contact'"}class="active"{/if}>
@@ -35,7 +37,7 @@
             <p class="normal">{$c->__('page.contacts')}</p>
         </li>
     </a>
-    <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}"
+    <a class="classic"
        href="{$c->route('community')}"
        title="{$c->__('page.communities')}">
         <li {if="$page == 'group'"}class="active"{/if}>
@@ -61,7 +63,7 @@
         </span>
         <p class="normal">{$c->__('button.search')}</p>
     </li>
-    <a class="classic {if="!$c->supported('pubsub')"}disabled{/if}"
+    <a class="classic"
        href="{$c->route('conf')}"
        title="{$c->__('page.configuration')}">
         <li>

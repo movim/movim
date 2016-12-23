@@ -102,14 +102,6 @@
 
     <div class="block">
         <ul class="list flex">
-            {if="$contact->delay != null"}
-            <li class="block">
-                <span class="icon brown"><i class="zmdi zmdi-restore"></i></span>
-                <p>{$c->__('last.title')}</p>
-                <p>{$contact->delay}</p>
-            </li>
-            {/if}
-
             {if="$contact->fn == null && $contact->nickname == null"}
             <li class="block">
                 <span class="primary icon gray">{$contact->jid|firstLetterCapitalize}</span>
@@ -189,7 +181,7 @@
             {/if}
 
             {if="$contact->mood != null"}
-            {$moods = unserialize($contact->mood)}
+            {$moods = $contact->mood}
             <li class="block">
                 <span class="primary icon gray"><i class="zmdi zmdi-mood"></i></span>
                 <p>{$c->__('mood.title')}</p>

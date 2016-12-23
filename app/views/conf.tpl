@@ -19,10 +19,13 @@
                     </li>
                 </ul>
             </header>
+
             <?php $this->widget('Tabs');?>
-            <?php $this->widget('Vcard4');?>
-            <?php $this->widget('Avatar');?>
-            <?php $this->widget('Config');?>
+            <?php if($this->user->isSupported('pubsub')) { ?>
+                <?php $this->widget('Vcard4');?>
+                <?php $this->widget('Avatar');?>
+                <?php $this->widget('Config');?>
+            <?php } ?>
             <?php $this->widget('Account');?>
             <?php $this->widget('AdHoc');?>
         </div>

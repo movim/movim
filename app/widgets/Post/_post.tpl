@@ -129,12 +129,6 @@
         </li>
     </ul>
     {/if}
-
-    {if="!$post->isReply() && !$public"}
-        <a class="button action color" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
-            <i class="zmdi zmdi-share"></i>
-        </a>
-    {/if}
 </header>
 
 {if="!$external && !$public"}
@@ -205,7 +199,7 @@
                                     <i class="zmdi zmdi-chevron-right"></i>
                                 </span>
                                 <p class="line">{$reply->title}</p>
-                                <p>{$reply->contentcleaned|stripTags}</p>
+                                <p>{$reply->getSummary()}</p>
                                 <p>
                                     {if="$reply->isMicroblog()"}
                                         <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
@@ -245,7 +239,7 @@
                         <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
                     </div>
                 {/if}
-                {$post->contentcleaned}
+                {$post->contentcleaned|html_entity_decode}
             </content>
         </section>
         <footer>
@@ -398,7 +392,7 @@
                                 {$previous->node}
                             {/if}
                             </p>
-                            <p class="line">{$previous->contentcleaned|strip_tags|truncate:140}</p>
+                            <p class="line">{$previous->getSummary()}</p>
                             <p>
                                 {$count = $previous->countComments()}
                                 {if="$count > 0"}
@@ -423,7 +417,7 @@
                                 {$next->node}
                             {/if}
                             </p>
-                            <p class="line">{$next->contentcleaned|strip_tags|truncate:140}</p>
+                            <p class="line">{$next->getSummary()}</p>
                             <p>
                                 {$count = $next->countComments()}
                                 {if="$count > 0"}

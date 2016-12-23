@@ -180,11 +180,11 @@ class MessageDAO extends SQL
 
         $this->prepare(
             'Message',
-            array(
+             [
                 'session' => $this->_user,
                 'jidfrom' => $jid,
                 'jidto' => $jid
-            )
+            ]
         );
 
         return $this->run('Message');
@@ -205,11 +205,11 @@ class MessageDAO extends SQL
 
         $this->prepare(
             'Message',
-            array(
+            [
                 'session' => $this->_user,
                 'jidfrom' => $jid,
                 'jidto' => $jid
-            )
+            ]
         );
 
         return $this->run('Message');
@@ -270,24 +270,25 @@ class MessageDAO extends SQL
 
         $this->prepare(
             'Message',
-            array(
+            [
                 'jidfrom'   => $room
-            )
+            ]
         );
 
         return $this->run('Message', 'item');
     }
 
-    function clearMessage() {
+    function clearMessage()
+    {
         $this->_sql = '
             delete from message
             where session = :session';
 
         $this->prepare(
             'Message',
-            array(
+            [
                 'session' => $this->_user
-            )
+            ]
         );
 
         return $this->run('Message');

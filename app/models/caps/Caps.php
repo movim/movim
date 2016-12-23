@@ -10,24 +10,13 @@ class Caps extends Model
     public $name;
     public $features;
 
-    public function __construct()
-    {
-        $this->_struct = '
-        {
-            "node" :
-                {"type":"string", "size":128, "key":true },
-            "category" :
-                {"type":"string", "size":16, "mandatory":true },
-            "type" :
-                {"type":"string", "size":16, "mandatory":true },
-            "name" :
-                {"type":"string", "size":128, "mandatory":true },
-            "features" :
-                {"type":"text", "mandatory":true }
-        }';
-
-        parent::__construct();
-    }
+    public $_struct = [
+        'node'      => ['type' => 'string','size' => 128,'key' => true],
+        'category'  => ['type' => 'string','size' => 16,'mandatory' => true],
+        'type'      => ['type' => 'string','size' => 16,'mandatory' => true],
+        'name'      => ['type' => 'string','size' => 128,'mandatory' => true],
+        'features'  => ['type' => 'serialized','mandatory' => true],
+    ];
 
     public function set($query, $node = false)
     {
@@ -55,13 +44,13 @@ class Caps extends Model
                 array_push($fet, (string)$f->attributes()->var);
             }
 
-            $this->features = serialize($fet);
+            $this->features = $fet;
         }
     }
 
     public function getPubsubRoles()
     {
-        $features = unserialize($this->features);
+        $features = $this->features;
 
         $roles = ['owner', 'none'];
 
@@ -77,7 +66,7 @@ class Caps extends Model
 
     public function isJingle()
     {
-        $features = unserialize($this->features);
+        $features = $this->features;
         return (in_array('http://jabber.org/protocol/jingle', $features));
     }
 }

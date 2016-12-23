@@ -10,191 +10,147 @@ class Contact extends Model
 {
     public $jid;
 
-    protected $fn;
-    protected $name;
-    protected $date;
-    protected $url;
+    public $fn;
+    public $name;
+    public $date;
+    public $url;
 
     public    $email;
 
-    protected $adrlocality;
-    protected $adrpostalcode;
-    protected $adrcountry;
+    public $adrlocality;
+    public $adrpostalcode;
+    public $adrcountry;
 
-    protected $gender;
-    protected $marital;
+    public $gender;
+    public $marital;
 
-    protected $photobin;
+    public $photobin;
 
-    protected $description;
+    public $description;
 
-    protected $protected;
-    protected $privacy;
+    public $protected;
+    public $privacy;
 
     // User Mood (contain serialized array) - XEP 0107
-    protected $mood;
+    public $mood;
 
     // User Activity (contain serialized array) - XEP 0108
-    protected $activity;
+    public $activity;
 
     // User Nickname - XEP 0172
-    protected $nickname;
+    public $nickname;
 
     // User Tune - XEP 0118
-    protected $tuneartist;
-    protected $tunelenght;
-    protected $tunerating;
-    protected $tunesource;
-    protected $tunetitle;
-    protected $tunetrack;
+    public $tuneartist;
+    public $tunelenght;
+    public $tunerating;
+    public $tunesource;
+    public $tunetitle;
+    public $tunetrack;
 
     // User Location
-    protected $loclatitude;
-    protected $loclongitude;
-    protected $localtitude;
-    protected $loccountry;
-    protected $loccountrycode;
-    protected $locregion;
-    protected $locpostalcode;
-    protected $loclocality;
-    protected $locstreet;
-    protected $locbuilding;
-    protected $loctext;
-    protected $locuri;
-    protected $loctimestamp;
+    public $loclatitude;
+    public $loclongitude;
+    public $localtitude;
+    public $loccountry;
+    public $loccountrycode;
+    public $locregion;
+    public $locpostalcode;
+    public $loclocality;
+    public $locstreet;
+    public $locbuilding;
+    public $loctext;
+    public $locuri;
+    public $loctimestamp;
 
     // Accounts
-    protected $twitter;
-    protected $skype;
-    protected $yahoo;
+    public $twitter;
+    public $skype;
+    public $yahoo;
 
-    protected $avatarhash;
+    public $avatarhash;
 
     // Datetime
     public $created;
     public $updated;
 
-    public function __construct()
-    {
-        $this->_struct = '
-        {
-            "jid" :
-                {"type":"string", "size":64, "key":true },
-            "fn" :
-                {"type":"string", "size":64 },
-            "name" :
-                {"type":"string", "size":64 },
-            "date" :
-                {"type":"date",   "size":11 },
-            "url" :
-                {"type":"string", "size":128 },
-            "email" :
-                {"type":"string", "size":128 },
-            "adrlocality" :
-                {"type":"string", "size":128 },
-            "adrpostalcode" :
-                {"type":"string", "size":12 },
-            "adrcountry" :
-                {"type":"string", "size":64 },
-            "gender" :
-                {"type":"string", "size":1 },
-            "marital" :
-                {"type":"string", "size":16 },
-            "description" :
-                {"type":"text"},
-            "mood" :
-                {"type":"string", "size":64 },
-            "activity" :
-                {"type":"string", "size":128 },
-            "nickname" :
-                {"type":"string", "size":64 },
-            "tuneartist" :
-                {"type":"string", "size":128 },
-            "tunelenght" :
-                {"type":"int",    "size":11 },
-            "tunerating" :
-                {"type":"int",    "size":11 },
-            "tunesource" :
-                {"type":"string", "size":128 },
-            "tunetitle" :
-                {"type":"string", "size":128 },
-            "tunetrack" :
-                {"type":"string", "size":128 },
-            "loclatitude" :
-                {"type":"string", "size":32 },
-            "loclongitude" :
-                {"type":"string", "size":32 },
-            "localtitude" :
-                {"type":"int",    "size":11 },
-            "loccountry" :
-                {"type":"string", "size":128 },
-            "loccountrycode" :
-                {"type":"string", "size":2 },
-            "locregion" :
-                {"type":"string", "size":128 },
-            "locpostalcode" :
-                {"type":"string", "size":32 },
-            "loclocality" :
-                {"type":"string", "size":128 },
-            "locstreet" :
-                {"type":"string", "size":128 },
-            "locbuilding" :
-                {"type":"string", "size":32 },
-            "loctext" :
-                {"type":"text" },
-            "locuri" :
-                {"type":"string", "size":128 },
-            "loctimestamp" :
-                {"type":"date",   "size":11 },
-            "twitter" :
-                {"type":"string", "size":128 },
-            "skype" :
-                {"type":"string", "size":128 },
-            "yahoo" :
-                {"type":"string", "size":128 },
-            "avatarhash" :
-                {"type":"string", "size":128 },
-            "created" :
-                {"type":"date", "mandatory":true },
-            "updated" :
-                {"type":"date", "mandatory":true }
-        }';
-
-        parent::__construct();
-    }
+    public $_struct =
+    [
+        'jid' =>            ['type' => 'string','size' => 64,'key' => true],
+        'fn' =>             ['type' => 'string','size' => 64],
+        'name' =>           ['type' => 'string','size' => 64],
+        'date' =>           ['type' => 'date','size' => 11],
+        'url' =>            ['type' => 'string','size' => 128],
+        'email' =>          ['type' => 'string','size' => 128],
+        'adrlocality' =>    ['type' => 'string','size' => 128],
+        'adrpostalcode' =>  ['type' => 'string','size' => 12],
+        'adrcountry' =>     ['type' => 'string','size' => 64],
+        'gender' =>         ['type' => 'string','size' => 1],
+        'marital' =>        ['type' => 'string','size' => 16],
+        'description' =>    ['type' => 'text'],
+        'mood' =>           ['type' => 'serialized','size' => 64],
+        'activity' =>       ['type' => 'string','size' => 128],
+        'nickname' =>       ['type' => 'string','size' => 64],
+        'tuneartist' =>     ['type' => 'string','size' => 128],
+        'tunelenght' =>     ['type' => 'int','size' => 11],
+        'tunerating' =>     ['type' => 'int','size' => 11],
+        'tunesource' =>     ['type' => 'string','size' => 128],
+        'tunetitle' =>      ['type' => 'string','size' => 128],
+        'tunetrack' =>      ['type' => 'string','size' => 128],
+        'loclatitude' =>    ['type' => 'string','size' => 32],
+        'loclongitude' =>   ['type' => 'string','size' => 32],
+        'localtitude' =>    ['type' => 'int','size' => 11],
+        'loccountry' =>     ['type' => 'string','size' => 128],
+        'loccountrycode' => ['type' => 'string','size' => 2],
+        'locregion' =>      ['type' => 'string','size' => 128],
+        'locpostalcode' =>  ['type' => 'string','size' => 32],
+        'loclocality' =>    ['type' => 'string','size' => 128],
+        'locstreet' =>      ['type' => 'string','size' => 128],
+        'locbuilding' =>    ['type' => 'string','size' => 32],
+        'loctext' =>        ['type' => 'text'],
+        'locuri' =>         ['type' => 'string','size' => 128],
+        'loctimestamp' =>   ['type' => 'date','size' => 11],
+        'twitter' =>        ['type' => 'string','size' => 128],
+        'skype' =>          ['type' => 'string','size' => 128],
+        'yahoo' =>          ['type' => 'string','size' => 128],
+        'avatarhash' =>     ['type' => 'string','size' => 128],
+        'created' =>        ['type' => 'date','mandatory' => true],
+        'updated' =>        ['type' => 'date','mandatory' => true],
+    ];
 
     public function set($vcard, $jid)
     {
-        $this->__set('jid', \echapJid($jid));
+        $this->jid = \echapJid($jid);
 
         $validate_date = Validator::date('Y-m-d');
         if(isset($vcard->vCard->BDAY)
-        && $validate_date->validate($vcard->vCard->BDAY))
-            $this->__set('date', (string)$vcard->vCard->BDAY);
-
-        $this->__set('date', date(SQL::SQL_DATE, strtotime($this->date)));
-
-        $this->__set('name', (string)$vcard->vCard->NICKNAME);
-        $this->__set('fn', (string)$vcard->vCard->FN);
-        $this->__set('url', (string)$vcard->vCard->URL);
-
-        $this->__set('gender', (string)$vcard->vCard->{'X-GENDER'});
-        $this->__set('marital', (string)$vcard->vCard->MARITAL->STATUS);
-
-        $this->__set('email', (string)$vcard->vCard->EMAIL->USERID);
-
-        $this->__set('adrlocality', (string)$vcard->vCard->ADR->LOCALITY);
-        $this->__set('adrpostalcode', (string)$vcard->vCard->ADR->PCODE);
-        $this->__set('adrcountry', (string)$vcard->vCard->ADR->CTRY);
-
-        if(filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
-            $this->__set('photobin', base64_encode(
-                requestUrl((string)$vcard->vCard->PHOTO, 1)));
-        } else {
-            $this->__set('photobin', (string)$vcard->vCard->PHOTO->BINVAL);
+        && $validate_date->validate($vcard->vCard->BDAY)) {
+            $this->date = (string)$vcard->vCard->BDAY;
         }
 
-        $this->__set('description', (string)$vcard->vCard->DESC);
+        //$this->date = date(SQL::SQL_DATE, strtotime($this->date));
+
+        $this->name = (string)$vcard->vCard->NICKNAME;
+        $this->fn = (string)$vcard->vCard->FN;
+        $this->url = (string)$vcard->vCard->URL;
+
+        $this->gender = (string)$vcard->vCard->{'X-GENDER'};
+        $this->marital = (string)$vcard->vCard->MARITAL->STATUS;
+
+        $this->email = (string)$vcard->vCard->EMAIL->USERID;
+
+        $this->adrlocality = (string)$vcard->vCard->ADR->LOCALITY;
+        $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
+        $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
+
+        if(filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
+            $this->photobin = base64_encode(
+                requestUrl((string)$vcard->vCard->PHOTO, 1));
+        } else {
+            $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
+        }
+
+        $this->description = (string)$vcard->vCard->DESC;
     }
 
     public function createThumbnails()
@@ -262,33 +218,34 @@ class Contact extends Model
 
     public function setTune($stanza)
     {
-        $this->__set('tuneartist', (string)$stanza->items->item->tune->artist);
-        $this->__set('tunelenght', (int)$stanza->items->item->tune->lenght);
-        $this->__set('tunerating', (int)$stanza->items->item->tune->rating);
-        $this->__set('tunesource', (string)$stanza->items->item->tune->source);
-        $this->__set('tunetitle', (string)$stanza->items->item->tune->title);
-        $this->__set('tunetrack', (string)$stanza->items->item->tune->track);
+        $this->tuneartist = (string)$stanza->items->item->tune->artist;
+        $this->tunelenght = (int)$stanza->items->item->tune->lenght;
+        $this->tunerating = (int)$stanza->items->item->tune->rating;
+        $this->tunesource = (string)$stanza->items->item->tune->source;
+        $this->tunetitle = (string)$stanza->items->item->tune->title;
+        $this->tunetrack = (string)$stanza->items->item->tune->track;
     }
 
     public function setVcard4($vcard)
     {
         $validate_date = Validator::date('Y-m-d');
         if(isset($vcard->bday->date)
-        && $validate_date->validate($vcard->bday->date))
-            $this->__set('date', (string)$vcard->bday->date);
+        && $validate_date->validate($vcard->bday->date)) {
+            $this->date = (string)$vcard->bday->date;
+        }
 
-        $this->__set('name', (string)$vcard->nickname->text);
-        $this->__set('fn', (string)$vcard->fn->text);
-        $this->__set('url', (string)$vcard->url->uri);
+        $this->name = (string)$vcard->nickname->text;
+        $this->fn = (string)$vcard->fn->text;
+        $this->url = (string)$vcard->url->uri;
 
         if(isset($vcard->gender))
-            $this->__set('gender ', (string)$vcard->gender->sex->text);
+            $this->gender  = (string)$vcard->gender->sex->text;
         if(isset($vcard->marital))
-            $this->__set('marital', (string)$vcard->marital->status->text);
+            $this->marital = (string)$vcard->marital->status->text;
 
-        $this->__set('adrlocality', (string)$vcard->adr->locality);
-        $this->__set('adrcountry', (string)$vcard->adr->country);
-        $this->__set('adrpostalcode', (string)$vcard->adr->code);
+        $this->adrlocality = (string)$vcard->adr->locality;
+        $this->adrcountry = (string)$vcard->adr->country;
+        $this->adrpostalcode = (string)$vcard->adr->code;
 
         if(isset($vcard->impp)) {
             foreach($vcard->impp->children() as $c) {
@@ -296,20 +253,20 @@ class Contact extends Model
 
                 switch($key) {
                     case 'twitter' :
-                        $this->__set('twitter', str_replace('@', '', $value));
+                        $this->twitter = str_replace('@', '', $value);
                         break;
                     case 'skype' :
-                        $this->__set('skype', (string)$value);
+                        $this->skype = (string)$value;
                         break;
                     case 'ymsgr' :
-                        $this->__set('yahoo', (string)$value);
+                        $this->yahoo = (string)$value;
                         break;
                 }
             }
         }
 
-        $this->__set('email', (string)$vcard->email->text);
-        $this->__set('description', trim((string)$vcard->note->text));
+        $this->email = (string)$vcard->email->text;
+        $this->description = trim((string)$vcard->note->text);
     }
 
     public function getPlace()
@@ -495,120 +452,79 @@ class Contact extends Model
 class PresenceContact extends Contact
 {
     // General presence informations
-    protected $resource;
-    protected $value;
-    protected $priority;
-    protected $status;
+    public $resource;
+    public $value;
+    public $priority;
+    public $status;
 
     // Client Informations
-    protected $node;
-    protected $ver;
+    public $node;
+    public $ver;
 
     // Delay - XEP 0203
-    protected $delay;
+    public $delay;
 
     // Last Activity - XEP 0256
-    protected $last;
+    public $last;
 
     // Current Jabber OpenPGP Usage - XEP-0027
-    protected $publickey;
-    protected $muc;
-    protected $mucjid;
-    protected $mucaffiliation;
-    protected $mucrole;
+    public $publickey;
+    public $muc;
+    public $mucjid;
+    public $mucaffiliation;
+    public $mucrole;
 
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->_struct = '
-        {
-            "resource" :
-                {"type":"string", "size":64, "key":true },
-            "value" :
-                {"type":"int",    "size":11, "mandatory":true },
-            "priority" :
-                {"type":"int",    "size":11 },
-            "status" :
-                {"type":"text"},
-            "node" :
-                {"type":"string", "size":128 },
-            "ver" :
-                {"type":"string", "size":128 },
-            "delay" :
-                {"type":"date"},
-            "last" :
-                {"type":"int",    "size":11 },
-            "publickey" :
-                {"type":"text"},
-            "muc" :
-                {"type":"int",    "size":1 },
-            "mucjid" :
-                {"type":"string", "size":64 },
-            "mucaffiliation" :
-                {"type":"string", "size":32 },
-            "mucrole" :
-                {"type":"string", "size":32 }
-        }';
-    }
-
+    public $_struct = [
+        'resource'  => ['type' => 'string', 'size' => 64, 'key' => true ],
+        'value'     => ['type' => 'int','size' => 11, 'mandatory' => true ],
+        'priority'  => ['type' => 'int','size' => 11 ],
+        'status'    => ['type' => 'text'],
+        'node'      => ['type' => 'string', 'size' => 128 ],
+        'ver'       => ['type' => 'string', 'size' => 128 ],
+        'delay'     => ['type' => 'date'],
+        'last'      => ['type' => 'int','size' => 11 ],
+        'publickey'  => ['type' => 'text'],
+        'muc'       => ['type' => 'int','size' => 1 ],
+        'mucjid'    => ['type' => 'string', 'size' => 64 ],
+        'mucaffiliation'  => ['type' => 'string', 'size' => 32 ],
+        'mucrole'   => ['type' => 'string', 'size' => 32 ]
+    ];
 }
 
 class RosterContact extends Contact
 {
-    protected $rostername;
-    protected $groupname;
-    protected $status;
-    protected $resource;
-    protected $value;
-    protected $delay;
-    protected $last;
-    protected $publickey;
-    protected $muc;
-    protected $rosterask;
-    protected $rostersubscription;
-    protected $node;
-    protected $ver;
-    protected $category;
-    //protected $type;
+    public $rostername;
+    public $groupname;
+    public $status;
+    public $resource;
+    public $value;
+    public $delay;
+    public $last;
+    public $publickey;
+    public $muc;
+    public $rosterask;
+    public $rostersubscription;
+    public $node;
+    public $ver;
+    public $category;
 
-    public function __construct()
-    {
-        parent::__construct();
-        $this->_struct = "
-        {
-            'rostername' :
-                {'type':'string', 'size':128 },
-            'rosterask' :
-                {'type':'string', 'size':128 },
-            'rostersubscription' :
-                {'type':'string', 'size':8 },
-            'groupname' :
-                {'type':'string', 'size':128 },
-            'resource' :
-                {'type':'string', 'size':128, 'key':true },
-            'value' :
-                {'type':'int',    'size':11, 'mandatory':true },
-            'status' :
-                {'type':'text'},
-            'node' :
-                {'type':'string', 'size':128 },
-            'ver' :
-                {'type':'string', 'size':128 },
-            'delay' :
-                {'type':'date'},
-            'last' :
-                {'type':'int',    'size':11 },
-            'publickey' :
-                {'type':'text'},
-            'muc' :
-                {'type':'int',    'size':1 },
-            'mucaffiliation' :
-                {'type':'string', 'size':32 },
-            'mucrole' :
-                {'type':'string', 'size':32 }
-        }";
-    }
+    public $_struct = [
+        'rostername'    => ['type' => 'string', 'size' => 128 ],
+        'rosterask'     => ['type' => 'string', 'size' => 128 ],
+        'rostersubscription'=> ['type' => 'string', 'size' => 8 ],
+        'groupname'     => ['type' => 'string', 'size' => 128 ],
+        'resource'      => ['type' => 'string', 'size' => 128, 'key' => true ],
+        'value'         => ['type' => 'int','size' => 11, 'mandatory' => true ],
+        'status'        => ['type' => 'text'],
+        'node'          => ['type' => 'string', 'size' => 128 ],
+        'ver'           => ['type' => 'string', 'size' => 128 ],
+        'delay'         => ['type' => 'date'],
+        'last'          => ['type' => 'int','size' => 11 ],
+        'publickey'     => ['type' => 'text'],
+        'muc'           => ['type' => 'int','size' => 1 ],
+        'mucaffiliation'=> ['type' => 'string', 'size' => 32 ],
+        'mucrole'       => ['type' => 'string', 'size' => 32 ]
+    ];
 
     // This method is only use on the connection
     public function setPresence($p)

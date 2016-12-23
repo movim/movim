@@ -1,9 +1,12 @@
 <ul class="list divided spaced middle">
-    <li class="subheader center">
-        <p>
-            <span class="info">{$comments|count}</span> {$c->__('post.comments')}
-        </p>
-    </li>
+    {if="count($comments) > 0"}
+        <li class="subheader center">
+            <p>
+                <span class="info">{$comments|count}</span> {$c->__('post.comments')}
+            </p>
+        </li>
+    {/if}
+
     {$liked = false}
 
     {loop="$comments"}
@@ -39,7 +42,7 @@
                     </span>
                 {/if}
             {/if}
-            <p class="normal">
+            <p class="normal line">
                 <span class="info" title="{$value->published|strtotime|prepareDate}">
                     {$value->published|strtotime|prepareDate:true,true}
                 </span>
@@ -59,20 +62,8 @@
         </li>
         {/if}
     {/loop}
-
-    <li>
-        <p class="center">
-            {if="!$liked"}
-            <a class="button red flat" onclick="Post_ajaxLike('{$server}', '{$node}', '{$id}')">
-                <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
-            </a>
-            {/if}
-            <a class="button flat gray" onclick="Post.comment()">
-                <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
-            </a>
-        </p>
-    </li>
-
+</ul>
+<ul class="list">
     <li class="hide" id="comment_add">
         <span class="primary icon gray">
             <i class="zmdi zmdi-comment"></i>
@@ -90,5 +81,23 @@
                 <label for="comment">{$c->__('post.comment_add')}</label>
             </div>
         </form>
+    </li>
+
+    <li>
+        <p class="center">
+            {if="!$liked"}
+            <a class="button red flat" onclick="Post_ajaxLike('{$server}', '{$node}', '{$id}')">
+                <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
+            </a>
+            {/if}
+            <a class="button flat gray" onclick="Post.comment()">
+                <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
+            </a>
+            {if="$c->supported('pubsub')"}
+            <a class="button flat gray" onclick="Post.share()">
+                <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
+            </a>
+            {/if}
+        </p>
     </li>
 </ul>

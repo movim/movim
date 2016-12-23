@@ -68,8 +68,8 @@
                     </a>
                 </p>
                 {if="$item->description"}
-                    <p title="{$item->description|strip_tags}">
-                        {$item->description|strip_tags}
+                    <p title="{$item->description|stripTags}">
+                        {$item->description|stripTags}
                     </p>
                 {else}
                     <p>{$item->server}</p>

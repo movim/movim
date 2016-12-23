@@ -238,7 +238,7 @@ class Rooms extends \Movim\Widget\Base
                         'server'    => $s->server,
                         'title'     => $s->title,
                         'subid'     => $s->subid,
-                        'tags'      => unserialize($s->tags),
+                        'tags'      => $s->tags,
                         'node'      => $s->node]);
             }
         }

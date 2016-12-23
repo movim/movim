@@ -1,9 +1,11 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
-class PostnDAO extends SQL {
-    function set(Postn $post) {
+class PostnDAO extends SQL
+{
+    function set(Postn $post)
+    {
         $this->_sql = '
             update postn
                 set aname           = :aname,
@@ -40,7 +42,7 @@ class PostnDAO extends SQL {
 
         $this->prepare(
             'Postn',
-            array(
+            [
                 'aname'             => $post->aname,
                 'aid'               => $post->aid,
                 'aemail'            => $post->aemail,
@@ -72,7 +74,7 @@ class PostnDAO extends SQL {
                 'origin'            => $post->origin,
                 'node'              => $post->node,
                 'nodeid'            => $post->nodeid
-            )
+            ]
         );
 
         $this->run('Postn');
@@ -148,7 +150,7 @@ class PostnDAO extends SQL {
 
             $this->prepare(
                 'Postn',
-                array(
+                [
                     'aname'             => $post->aname,
                     'aid'               => $post->aid,
                     'aemail'            => $post->aemail,
@@ -180,14 +182,15 @@ class PostnDAO extends SQL {
                     'origin'            => $post->origin,
                     'node'              => $post->node,
                     'nodeid'            => $post->nodeid
-                )
+                ]
             );
 
             $this->run('Postn');
         }
     }
 
-    function get($origin, $node, $nodeid, $public = false, $around = false) {
+    function get($origin, $node, $nodeid, $public = false, $around = false)
+    {
         $params = [
                 'origin' => $origin,
                 'node' => $node,
@@ -301,7 +304,8 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
-    function delete($nodeid) {
+    function delete($nodeid)
+    {
         $this->_sql = '
             delete from postn
             where nodeid = :nodeid';
@@ -316,7 +320,8 @@ class PostnDAO extends SQL {
         return $this->run('Postn');
     }
 
-    function deleteNode($origin, $node) {
+    function deleteNode($origin, $node)
+    {
         $this->_sql = '
             delete from postn
             where origin = :origin
@@ -333,7 +338,8 @@ class PostnDAO extends SQL {
         return $this->run('Postn');
     }
 
-    function getNode($from, $node, $limitf = false, $limitr = false) {
+    function getNode($from, $node, $limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
@@ -361,7 +367,8 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
-    function getNodeUnfiltered($from, $node, $limitf = false, $limitr = false) {
+    function getNodeUnfiltered($from, $node, $limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
@@ -386,7 +393,8 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
-    function getPublicTag($tag, $limitf = false, $limitr = false) {
+    function getPublicTag($tag, $limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
@@ -407,7 +415,8 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
-    function getGallery($from, $limitf = false, $limitr = false) {
+    function getGallery($from, $limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
@@ -450,7 +459,8 @@ class PostnDAO extends SQL {
         return $this->run('Postn', 'item');
     }
 
-    function getAllPosts($jid = false, $limitf = false, $limitr = false) {
+    function getAllPosts($jid = false, $limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
@@ -480,7 +490,8 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
-    function getFeed($limitf = false, $limitr = false) {
+    function getFeed($limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
@@ -504,7 +515,8 @@ class PostnDAO extends SQL {
         return $this->run('ContactPostn');
     }
 
-    function getNews($limitf = false, $limitr = false) {
+    function getNews($limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid

@@ -81,7 +81,8 @@ class ItemDAO extends SQL
         }
     }
 
-    function getServers() {
+    function getServers()
+    {
         $this->_sql = '
             select server, count(node) as number
             from item
@@ -99,7 +100,8 @@ class ItemDAO extends SQL
         return $this->run('Server');
     }
 
-    function getGroupServers() {
+    function getGroupServers()
+    {
         $this->_sql = '
             select item.jid as server, counter.number, caps.name from item
             left outer join caps on caps.node = item.jid
@@ -107,7 +109,7 @@ class ItemDAO extends SQL
                 select jid,
                 count(*) as number from item
                 where node != \'\'
-                and node not like \'/%\'
+                and node not like \'urn:xmpp:microblog:0:comments%\'
                 group by jid)
                 as counter on item.jid = counter.jid
             where caps.category = \'pubsub\'
@@ -122,7 +124,8 @@ class ItemDAO extends SQL
         return $this->run('Server');
     }
 
-    function getItems($server = false, $limitf = false, $limitr = false) {
+    function getItems($server = false, $limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select *, postn.published from item
             left outer join (
@@ -159,7 +162,7 @@ class ItemDAO extends SQL
                 as s on s.server = item.server
                 and s.node = item.node
             where item.node != \'\'
-                and item.node not like \'/%\'
+                and item.node not like \'urn:xmpp:microblog:0:comments%\'
                 and item.node != \'urn:xmpp:microblog:0\'';
 
         if($server) {
@@ -195,7 +198,8 @@ class ItemDAO extends SQL
         return $this->run('Server');
     }
 
-    function getGateways($server) {
+    function getGateways($server)
+    {
         $this->_sql = '
             select * from item
             left outer join caps on caps.node = item.jid
@@ -212,7 +216,8 @@ class ItemDAO extends SQL
         return $this->run('Item');
     }
 
-    function getConference($server) {
+    function getConference($server)
+    {
         $this->_sql = '
             select item.* from item
             join caps on caps.node = item.jid
@@ -230,7 +235,8 @@ class ItemDAO extends SQL
         return $this->run('Item', 'item');
     }
 
-    function getUpload($server) {
+    function getUpload($server)
+    {
         $this->_sql = '
             select * from item
             left outer join caps on caps.node = item.jid
@@ -247,7 +253,8 @@ class ItemDAO extends SQL
         return $this->run('Item', 'item');
     }
 
-    function getUpdatedItems($limitf = false, $limitr = false) {
+    function getUpdatedItems($limitf = false, $limitr = false)
+    {
         $this->_sql = '
             select * from item natural join (
                 select distinct node, max(updated) as num from postn
@@ -270,7 +277,8 @@ class ItemDAO extends SQL
         return $this->run('Item');
     }
 
-    function deleteItems($server) {
+    function deleteItems($server)
+    {
         $this->_sql = '
             delete from item
             where server= :server';
@@ -285,7 +293,8 @@ class ItemDAO extends SQL
         return $this->run('Item');
     }
 
-    function deleteItem($server, $item) {
+    function deleteItem($server, $item)
+    {
         $this->_sql = '
             delete from item
             where server = :server
@@ -302,7 +311,8 @@ class ItemDAO extends SQL
         return $this->run('Item');
     }
 
-    function getJid($jid) {
+    function getJid($jid)
+    {
         $this->_sql = '
             select * from item
             where
@@ -319,7 +329,8 @@ class ItemDAO extends SQL
         return $this->run('Item', 'item');
     }
 
-    function getItem($server, $item) {
+    function getItem($server, $item)
+    {
         $this->_sql = '
             select * from item
             left outer join (

@@ -94,7 +94,7 @@ class Syndication extends \Movim\Widget\Base
             $content->setAttribute('type', 'xhtml');
 
             $f = $dom->createDocumentFragment();
-            $f->appendXML($message->contentcleaned);
+            $f->appendXML(html_entity_decode($message->contentcleaned));
             $div->appendChild($f);
 
             $attachments = $message->getAttachments();
