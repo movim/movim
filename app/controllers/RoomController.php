@@ -1,12 +1,15 @@
 <?php
+
 use Movim\Controller\Base;
 
 class RoomController extends Base
 {
-    function load() {
+    function load()
+    {
     }
 
-    function dispatch() {
+    function dispatch()
+    {
         $this->page->setTitle(__('page.room'));
     }
 }

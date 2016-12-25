@@ -1,13 +1,16 @@
 <?php
+
 use Movim\Controller\Base;
 
 class NotfoundController extends Base
 {
-    function load() {
+    function load()
+    {
         $this->session_only = false;
     }
 
-    function dispatch() {
+    function dispatch()
+    {
         $this->page->setTitle(__('title.not_found', APP_TITLE));
     }
 }

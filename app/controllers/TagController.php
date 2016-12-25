@@ -1,13 +1,16 @@
 <?php
+
 use Movim\Controller\Base;
 
 class TagController extends Base
 {
-    function load() {
+    function load()
+    {
         $this->session_only = false;
     }
 
-    function dispatch() {
+    function dispatch()
+    {
         $this->page->setTitle(__('page.tag'));
     }
 }

@@ -4,15 +4,14 @@ class Syndication extends \Movim\Widget\Base
 {
     function load()
     {
-
     }
 
     function display()
     {
         ob_clean();
 
-        $pd = new \modl\PostnDAO();
-        $cd = new \modl\ContactDAO();
+        $pd = new \Modl\PostnDAO;
+        $cd = new \Modl\ContactDAO;
         $id = new \Modl\ItemDAO;
 
         if(!$this->get('s')) {

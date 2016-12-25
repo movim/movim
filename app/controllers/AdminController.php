@@ -1,12 +1,15 @@
 <?php
 use Movim\Controller\Base;
 
-class AdminController extends Base {
-    function load() {
+class AdminController extends Base
+{
+    function load()
+    {
         $this->session_only = false;
     }
 
-    function dispatch() {
+    function dispatch()
+    {
         session_start();
 
         if(isset($_SESSION['admin']) && $_SESSION['admin'] == true) {

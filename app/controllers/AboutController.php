@@ -1,12 +1,15 @@
 <?php
 use Movim\Controller\Base;
 
-class AboutController extends Base {
-    function load() {
+class AboutController extends Base
+{
+    function load()
+    {
         $this->session_only = false;
     }
 
-    function dispatch() {
+    function dispatch()
+    {
         $this->page->setTitle(__('page.about'));
     }
 }

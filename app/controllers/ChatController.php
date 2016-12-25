@@ -3,7 +3,8 @@ use Movim\Controller\Base;
 
 class ChatController extends Base
 {
-    function load() {
+    function load()
+    {
         $this->session_only = true;
     }
 
