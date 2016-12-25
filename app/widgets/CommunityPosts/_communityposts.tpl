@@ -1,8 +1,8 @@
-{if="!empty($ids)"}
+{if="!empty($posts)"}
     <ul class="list card shadow">
-    {loop="$ids"}
-        <div id="{$value|cleanupId}" class="block large">
-            {$c->preparePost($server, $node, $value)}
+    {loop="$posts"}
+        <div id="{$value->nodeid|cleanupId}" class="block large">
+            {$c->preparePost($value)}
         </div>
     {/loop}
     </ul>

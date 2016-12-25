@@ -25,9 +25,10 @@ class CommunityPosts extends \Movim\Widget\Base
     function onItem($packet)
     {
         list($server, $node, $id) = array_values($packet->content);
-
+        /*
         RPC::call('MovimTpl.fill', '#'.cleanupId($id), $this->preparePost($server, $node, $id));
-        RPC::call('MovimUtils.enableVideos');
+        RPC::call('MovimUtils.enableVideos');*/
+        $this->displayItems($server, $node);
     }
 
     function onItemsId($packet)
@@ -111,9 +112,9 @@ class CommunityPosts extends \Movim\Widget\Base
         return $html;
     }
 
-    public function preparePost($server, $node, $id) {
-        $pd = new \Modl\PostnDAO;
-        $p = $pd->get($server, $node, $id);
+    public function preparePost($p) {
+        /*$pd = new \Modl\PostnDAO;
+        $p = $pd->get($server, $node, $id);*/
 
         $pw = new \Post;
         return $pw->preparePost($p, true, true, true);
@@ -123,8 +124,9 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         $pd = new \Modl\PostnDAO;
 
-        /*if($ids == false) {
+        /*if($ids == false) {*/
             $posts = $pd->getNodeUnfiltered($server, $node, $page*$this->_paging, $this->_paging);
+        /*
         } else {
             $posts = $pd->getIds($server, $node, $ids);
         }*/
@@ -139,8 +141,8 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('page', $page);
-        $view->assign('ids', $ids);
-        //$view->assign('posts', $posts);
+        //$view->assign('ids', $ids);
+        $view->assign('posts', $posts);
         $view->assign('item', $item);
         $view->assign('subscription', $subscription);
         $view->assign('paging', $this->_paging);
