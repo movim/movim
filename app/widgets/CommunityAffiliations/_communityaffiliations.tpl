@@ -34,7 +34,8 @@
         </li>
         {loop="$affiliations['owner']"}
             {$contact = $c->getContact($value['jid'])}
-            <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+            <li title="{$contact->jid}"
+                onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
                 {$url = $contact->getPhoto('m')}
                 {if="$url"}
                     <span class="primary icon bubble"
@@ -45,7 +46,8 @@
                         {$contact->getTrueName()|firstLetterCapitalize}
                     </span>
                 {/if}
-                <p class="normal">{$contact->getTrueName()}</p>
+                <p>{$contact->getTrueName()}</p>
+                <p>{$contact->jid}</p>
             </li>
         {/loop}
     </ul>
@@ -58,7 +60,8 @@
     </li>
     {loop="$affiliations['publisher']"}
         {$contact = $c->getContact($value['jid'])}
-        <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+        <li title="{$contact->jid}"
+            onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
             {$url = $contact->getPhoto('m')}
             {if="$url"}
                 <span class="primary icon bubble"
@@ -69,7 +72,8 @@
                     {$contact->getTrueName()|firstLetterCapitalize}
                 </span>
             {/if}
-            <p class="normal">{$contact->getTrueName()}</p>
+            <p>{$contact->getTrueName()}</p>
+            <p>{$contact->jid}</p>
         </li>
     {/loop}
 </ul>
