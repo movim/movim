@@ -41,6 +41,6 @@ MovimWebsocket.attach(function() {
 });
 
 
-movim_add_onload(function(){
+movim_add_onload(function() {
     Roster.init();
 });

@@ -20,15 +20,12 @@ var Visio = {
     /*
      * Jingle and WebRTC
      */
-
     handleSuccess: function(stream) {
         Visio.pc.addStream(stream);
 
         Visio.toggleMainButton();
 
         Visio_ajaxGetSDP();
-
-        //MovimUtils.removeClass('#visio', 'disabled');
 
         // Video
         var videoTracks = stream.getVideoTracks();
@@ -346,7 +343,6 @@ var Visio = {
     },
 }
 
-//movim_add_onload(function() {
 MovimWebsocket.attach(function() {
     Visio.init();
 });

@@ -12,10 +12,6 @@ WebSocket.prototype.register = function(host) {
     this.send(JSON.stringify({'func' : 'register', 'host' : host}));
 };
 
-/*WebSocket.prototype.admin = function(key) {
-    this.send(JSON.stringify({'func' : 'admin', 'key' : key}));
-};*/
-
 /**
  * @brief Definition of the MovimWebsocket object
  * @param string error
@@ -219,15 +215,6 @@ var MovimWebsocket = {
     }
 }
 
-/*
-document.addEventListener("visibilitychange", function () {
-    if(!document.hidden) {
-        if(MovimWebsocket.connection.readyState == 3) {
-            MovimWebsocket.init();
-        }
-    }
-});
-*/
 window.onbeforeunload = function() {
     MovimWebsocket.connection.onclose = function () {}; // disable onclose handler first
     MovimWebsocket.connection.close()
