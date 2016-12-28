@@ -9,7 +9,7 @@
 </section>
 <div>
     <a onclick="Dialog_ajaxClear()" class="button flat">
-        {$c->__('button.close')}
+        {$c->__('button.cancel')}
     </a>
     <a
         onclick="CommunityHeader_ajaxUnsubscribe('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()"
