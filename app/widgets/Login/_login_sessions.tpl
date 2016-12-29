@@ -1,5 +1,5 @@
 <section>
-    <h3>{$c->__('account.title')}</h3>
+    <h3>{$c->__('accounts.accounts_title')}</h3>
     <br />
     <ul class="list active middle">
         {loop="$sessions"}

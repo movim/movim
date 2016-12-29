@@ -65,7 +65,7 @@
                     <div>
                         <input
                             type="submit"
-                            value="{$c->__('button.come_in')}"
+                            value="{$c->__('page.login')}"
                             class="button flat oppose"/>
                     </div>
                 </form>

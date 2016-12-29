@@ -44,13 +44,13 @@
                         <li>
                             <p class="center">
                                 <a id="return_sessions" class="button flat" href="#" onclick="Login.toChoose()">
-                                    {$c->__('account.title')}
+                                    {$c->__('accounts.accounts_title')}
                                 </a>
                                 <input
                                     type="submit"
                                     disabled
                                     data-loading="{$c->__('button.connecting')}"
-                                    value="{$c->__('button.come_in')}"
+                                    value="{$c->__('page.login')}"
                                     class="button flat"/>
                             </p>
                         </li>
@@ -80,7 +80,7 @@
                 <li>
                     <p class="normal center">
                         {$c->__('form.no_account')}
-                        <a class="button color" href="{$c->route('account')}">
+                        <a class="button flat" href="{$c->route('account')}">
                             {$c->__('form.create_one')}
                         </a>
                     </p>
