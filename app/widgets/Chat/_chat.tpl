@@ -1,6 +1,6 @@
 <header class="fixed">
     {if="$muc"}
-    <ul class="list middle active">
+    <ul class="list middle">
         <li>
             <span id="back" class="primary icon active"
                 {if="!$anon"}
@@ -35,7 +35,7 @@
                 <p class="line">{$room}</p>
             {/if}
             {if="$subject != null"}
-                <p class="line" title="{$subject->subject}">{$subject->subject}</p>
+                <p class="line" title="{$subject->subject}">{$subject->subject|addUrls}</p>
             {/if}
         </li>
     </ul>
