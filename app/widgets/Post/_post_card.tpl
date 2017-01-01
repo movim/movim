@@ -101,7 +101,7 @@
                                 <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
                             </div>
                         {/if}
-                        {$post->contentcleaned|html_entity_decode}
+                        {$post->contentcleaned}
                     </content>
                 <section>
             </p>
