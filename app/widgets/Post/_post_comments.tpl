@@ -86,7 +86,7 @@
     <li>
         <p class="center">
             {if="!$liked"}
-            <a class="button red flat" onclick="Post_ajaxLike('{$server}', '{$node}', '{$id}')">
+            <a class="button red flat" id="like" onclick="MovimUtils.addClass('#like', 'disabled'); Post_ajaxLike('{$server}', '{$node}', '{$id}')">
                 <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
             </a>
             {/if}
