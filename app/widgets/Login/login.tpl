@@ -49,7 +49,7 @@
                                 <input
                                     type="submit"
                                     disabled
-                                    data-loading="{$c->__('button.connecting')}"
+                                    data-loading="{$c->__('button.connecting')}…"
                                     value="{$c->__('page.login')}"
                                     class="button flat"/>
                             </p>
