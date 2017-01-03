@@ -45,8 +45,8 @@
         {if="isset($message)"}
             {if="preg_match('#^\?OTR#', $message->body)"}
                 <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
-            {elseif="stripTags(prepareString($message->body)) != ''"}
-                <p class="line">{$message->body|prepareString|stripTags}</p>
+            {elseif="stripTags($message->body) != ''"}
+                <p class="line">{$message->body|stripTags}</p>
             {/if}
         {/if}
     {/if}
