@@ -28,25 +28,26 @@ class Utils {
  * Return the list of gender
  */
 function getGender() {
-    return array('N' => __('gender.nil'),
-                 'M' => __('gender.male'),
-                 'F' => __('gender.female'),
-                 'O' => __('gender.other')
-                );
+    return [
+        'N' => __('gender.nil'),
+        'M' => __('gender.male'),
+        'F' => __('gender.female'),
+        'O' => __('gender.other')
+    ];
 }
 
 /**
  * Return the list of client types
  */
 function getClientTypes() {
-    return array(
-                'bot'           => __('client.bot'),
-                'pc'            => __('client.desktop'),
-                'phone'         => __('client.phone'),
-                'handheld'      => __('client.phone'),
-                'web'           => __('client.web'),
-                'registered'    => __('client.registered')
-                );
+    return [
+        'bot'           => __('client.bot'),
+        'pc'            => __('client.desktop'),
+        'phone'         => __('client.phone'),
+        'handheld'      => __('client.phone'),
+        'web'           => __('client.web'),
+        'registered'    => __('client.registered')
+    ];
 }
 
 /**
@@ -367,7 +368,7 @@ function getCountries() {
  * Return the list of marital status
  */
 function getMarital() {
-    return array(
+    return [
             'none'          => __('marital.nil'),
             'single'        => __('marital.single'),
             'relationship'  => __('marital.relationship'),
@@ -376,30 +377,30 @@ function getMarital() {
             'widowed'       => __('marital.widowed'),
             'cohabiting'    => __('marital.cohabiting'),
             'union'         => __('marital.union')
-        );
+        ];
 }
 
 function getPresences() {
-    return array(
+    return [
             1 => __('presence.online'),
             2 => __('presence.away'),
             3 => __('presence.dnd'),
             4 => __('presence.xa'),
             5 => __('presence.offline'),
             6 => __('presence.error')
-        );
+        ];
 
 }
 
 function getPresencesTxt() {
-    return array(
+    return [
                 1 => 'online',
                 2 => 'away',
                 3 => 'dnd',
                 4 => 'xa',
                 5 => 'offline',
                 6 => 'server_error'
-            );
+            ];
 }
 
 function getMood() {
