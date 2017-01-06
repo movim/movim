@@ -192,6 +192,7 @@ class Roster extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('contact', $contact);
+        $view->assign('presences', getPresences());
         $view->assign('presencestxt', getPresencesTxt());
 
         return $view->draw('_roster_item', true);

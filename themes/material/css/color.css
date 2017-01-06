@@ -70,6 +70,7 @@ span.icon.status.online:after,
 .color.orange   { color: white; background-color: #FF9800; border-color: #FF9800 }
 span.icon.status.away:after,
 .color.yellow   { color: white; background-color: #FDD835; border-color: #FDD835 }
+span.icon.status.server_error:after,
 .color.brown    { color: white; background-color: #795548; border-color: #795548 }
 .color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
 .color.black    { color: white; background-color: #000;    border-color: #000 }

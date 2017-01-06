@@ -1,8 +1,8 @@
 <li
     id="{$contact->jid|cleanupId}"
-    title="{$contact->jid}"
+    title="{$contact->jid} - {$presences[$contact->value]}"
     name="{$contact->getSearchTerms()}"
-    class="{if="$contact->value == null"}faded{/if}"
+    class="{if="$contact->value == null || $contact->value > 4"}faded{/if}"
     onclick="
         Contact_ajaxGetContact('{$contact->jid}');
         Contact_ajaxRefreshFeed('{$contact->jid}');
