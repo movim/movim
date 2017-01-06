@@ -38,50 +38,57 @@ class Presence extends Model {
     public $updated;
 
     public $_struct = [
-        'id'        => ['type' => 'string','size' => 64,'mandatory' => true],
-        'session'   => ['type' => 'string','size' => 64,'key' => true],
-        'jid'       => ['type' => 'string','size' => 64,'key' => true],
-        'resource'  => ['type' => 'string','size' => 64,'key' => true],
-        'value'     => ['type' => 'int','size' => 11,'mandatory' => true],
-        'priority'  => ['type' => 'int','size' => 11],
+        'id'        => ['type' => 'string', 'size' => 64, 'mandatory' => true],
+        'session'   => ['type' => 'string', 'size' => 64, 'key' => true],
+        'jid'       => ['type' => 'string', 'size' => 64, 'key' => true],
+        'resource'  => ['type' => 'string', 'size' => 64, 'key' => true],
+        'value'     => ['type' => 'int',    'size' => 11, 'mandatory' => true],
+        'priority'  => ['type' => 'int',    'size' => 11],
         'status'    => ['type' => 'text'],
-        'node'      => ['type' => 'string','size' => 128],
-        'ver'       => ['type' => 'string','size' => 128],
+        'node'      => ['type' => 'string', 'size' => 128],
+        'ver'       => ['type' => 'string', 'size' => 128],
         'delay'     => ['type' => 'date'],
-        'last'      => ['type' => 'int','size' => 11],
+        'last'      => ['type' => 'int',    'size' => 11],
         'publickey' => ['type' => 'text'],
-        'muc'       => ['type' => 'int','size' => 1],
-        'mucjid'    => ['type' => 'string','size' => 64],
+        'muc'       => ['type' => 'int',    'size' => 1],
+        'mucjid'    => ['type' => 'string', 'size' => 64],
         'mucaffiliation' => ['type' => 'string','size' => 32],
-        'mucrole'   => ['type' => 'string','size' => 32],
-        'created'   => ['type' => 'date'],'updated' => ['type' => 'date'],
+        'mucrole'   => ['type' => 'string', 'size' => 32],
+        'created'   => ['type' => 'date'],
+        'updated'   => ['type' => 'date'],
     ];
 
     public function setPresence($stanza)
     {
         $jid = explode('/',(string)$stanza->attributes()->from);
 
-        if($stanza->attributes()->to)
+        if($stanza->attributes()->to) {
             $to = current(explode('/',(string)$stanza->attributes()->to));
-        else
+        } else {
             $to = $jid[0];
+        }
 
         $this->session = $to;
         $this->jid = $jid[0];
-        if(isset($jid[1]))
-            $this->resource = $jid[1];
-        else
-            $this->resource = 'default';
 
-        $this->status = (string)$stanza->status;
+        if(isset($jid[1])) {
+            $this->resource = $jid[1];
+        } else {
+            $this->resource = 'default';
+        }
+
+        if($stanza->status) {
+            $this->status = (string)$stanza->status;
+        }
 
         if($stanza->c) {
             $this->node = (string)$stanza->c->attributes()->node;
             $this->ver = (string)$stanza->c->attributes()->ver;
         }
 
-        if($stanza->priority)
+        if($stanza->priority) {
             $this->priority = (string)$stanza->priority;
+        }
 
         if((string)$stanza->attributes()->type == 'error') {
             $this->value = 6;
