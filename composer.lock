@@ -237,12 +237,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "ac4f531edaf870c21d3de073a8e5c108043702ce"
+                "reference": "65862e3c5ecaf7796717d2b400273f8bb6a8ef46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/ac4f531edaf870c21d3de073a8e5c108043702ce",
-                "reference": "ac4f531edaf870c21d3de073a8e5c108043702ce",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/65862e3c5ecaf7796717d2b400273f8bb6a8ef46",
+                "reference": "65862e3c5ecaf7796717d2b400273f8bb6a8ef46",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2016-12-19 22:43:45"
+            "time": "2017-01-11 20:30:43"
         },
         {
             "name": "evenement/evenement",
@@ -1050,16 +1050,16 @@
         },
         {
             "name": "ratchet/rfc6455",
-            "version": "v0.2.1",
+            "version": "v0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ratchetphp/RFC6455.git",
-                "reference": "055b3eca13f314fb910ea55052a9f7d4e516fbc8"
+                "reference": "56aecde679d72d7b1087bbe1d6f7d96e123d396a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/RFC6455/zipball/055b3eca13f314fb910ea55052a9f7d4e516fbc8",
-                "reference": "055b3eca13f314fb910ea55052a9f7d4e516fbc8",
+                "url": "https://api.github.com/repos/ratchetphp/RFC6455/zipball/56aecde679d72d7b1087bbe1d6f7d96e123d396a",
+                "reference": "56aecde679d72d7b1087bbe1d6f7d96e123d396a",
                 "shasum": ""
             },
             "require": {
@@ -1094,7 +1094,7 @@
                 "rfc6455",
                 "websocket"
             ],
-            "time": "2016-03-16 12:32:52"
+            "time": "2017-01-01 15:41:18"
         },
         {
             "name": "react/cache",
@@ -1329,27 +1329,22 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.4.1",
+            "version": "v2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "8025426794f1944de806618671d4fa476dc7626f"
+                "reference": "2760f3898b7e931aa71153852dcd48a75c9b95db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/8025426794f1944de806618671d4fa476dc7626f",
-                "reference": "8025426794f1944de806618671d4fa476dc7626f",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/2760f3898b7e931aa71153852dcd48a75c9b95db",
+                "reference": "2760f3898b7e931aa71153852dcd48a75c9b95db",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "React\\Promise\\": "src/"
@@ -1369,20 +1364,24 @@
                 }
             ],
             "description": "A lightweight implementation of CommonJS Promises/A for PHP",
-            "time": "2016-05-03 17:50:52"
+            "keywords": [
+                "promise",
+                "promises"
+            ],
+            "time": "2016-12-22 14:09:01"
         },
         {
             "name": "react/promise-timer",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-timer.git",
-                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a"
+                "reference": "ddedc67bfd7f579fc83e66ff67e3564b179297dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/6a46050d801688e08d1a550b97b1f3735505c62a",
-                "reference": "6a46050d801688e08d1a550b97b1f3735505c62a",
+                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/ddedc67bfd7f579fc83e66ff67e3564b179297dd",
+                "reference": "ddedc67bfd7f579fc83e66ff67e3564b179297dd",
                 "shasum": ""
             },
             "require": {
@@ -1419,27 +1418,32 @@
                 "timeout",
                 "timer"
             ],
-            "time": "2016-02-29 19:03:45"
+            "time": "2016-12-27 08:12:19"
         },
         {
             "name": "react/socket",
-            "version": "v0.4.4",
+            "version": "v0.4.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "d61930e1aefb2a704b0adbe6bb97ee4a835d6a96"
+                "reference": "32385d71f84c4a26ea577cb91f1220decb440dce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/d61930e1aefb2a704b0adbe6bb97ee4a835d6a96",
-                "reference": "d61930e1aefb2a704b0adbe6bb97ee4a835d6a96",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/32385d71f84c4a26ea577cb91f1220decb440dce",
+                "reference": "32385d71f84c4a26ea577cb91f1220decb440dce",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "~2.0|~1.0",
                 "php": ">=5.3.0",
                 "react/event-loop": "0.4.*|0.3.*",
-                "react/stream": "^0.4.2"
+                "react/promise": "^2.0 || ^1.1",
+                "react/stream": "^0.4.5"
+            },
+            "require-dev": {
+                "clue/block-react": "^1.1",
+                "react/socket-client": "^0.5.1"
             },
             "type": "library",
             "autoload": {
@@ -1451,24 +1455,24 @@
             "license": [
                 "MIT"
             ],
-            "description": "Library for building an evented socket server.",
+            "description": "Async, streaming plaintext TCP/IP and secure TLS socket server for React PHP",
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-12-19 22:52:38"
+            "time": "2017-01-08 11:36:16"
         },
         {
             "name": "react/socket-client",
-            "version": "v0.5.2",
+            "version": "v0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "6c5560be7d19992f2eb385ef442889ea73e80ff6"
+                "reference": "5570838d436f056695e9a5eaf01dd5f80386dd26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/6c5560be7d19992f2eb385ef442889ea73e80ff6",
-                "reference": "6c5560be7d19992f2eb385ef442889ea73e80ff6",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/5570838d436f056695e9a5eaf01dd5f80386dd26",
+                "reference": "5570838d436f056695e9a5eaf01dd5f80386dd26",
                 "shasum": ""
             },
             "require": {
@@ -1496,7 +1500,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-12-19 23:23:16"
+            "time": "2016-12-24 11:19:15"
         },
         {
             "name": "react/stream",
