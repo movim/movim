@@ -248,6 +248,7 @@ main > section > div > div.contained > * {
         left: 100%;
         z-index: 1;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.23), 0 0 10px rgba(0, 0, 0, 0.16);
+        overflow-y: visible;
     }
 
     main > section:not(.enabled) > div:not(:first-child) {
