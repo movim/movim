@@ -21,13 +21,13 @@
 
                 {if="$post->isMine() && !$public"}
                     {if="$post->isEditable()"}
-                        <span class="control icon active"
+                        <span class="control icon active gray"
                               onclick="MovimUtils.redirect('{$c->route('publish', [$post->origin, $post->node, $post->nodeid])}')"
                               title="{$c->__('button.edit')}">
                             <i class="zmdi zmdi-edit"></i>
                         </span>
                     {/if}
-                    <span class="control icon active" onclick="Post_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')" title="{$c->__('button.delete')}">
+                    <span class="control icon active gray" onclick="Post_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')" title="{$c->__('button.delete')}">
                         <i class="zmdi zmdi-delete"></i>
                     </span>
                 {/if}
