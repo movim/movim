@@ -565,7 +565,7 @@ msgstr "Spitzname"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
+msgstr "Möchtest du diesem Chatraum automatisch beitreten?"
 
 #: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
@@ -818,7 +818,7 @@ msgstr "Sind Sie sicher?"
 
 #: [communityposts]empty
 msgid "This community seems empty"
-msgstr ""
+msgstr "Diese Gruppe scheint leer zu sein"
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
 msgid "My Subscriptions"
@@ -1281,7 +1281,7 @@ msgstr "Willkommen zu Ihren Neuigkeiten, hier können Sie alle Beiträge sehen, 
 
 #: [menu]discover [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "Entdecken"
 
 #: [menu]refresh
 msgid "Refresh all the streams"
@@ -1387,7 +1387,7 @@ msgstr "Mehr Artikel gibt es auf der Gruppenseite"
 
 #: [post]more
 msgid "Read more"
-msgstr ""
+msgstr "Mehr lesen"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1631,7 +1631,7 @@ msgstr "Anzeigen/Ausblenden"
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr ""
+msgstr "Kontakt hinzufügen"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
@@ -1936,7 +1936,7 @@ msgstr "Huch!"
 
 #: [button]call
 msgid "Call"
-msgstr ""
+msgstr "Anruf"
 
 #: [button]validate
 msgid "Validate"
