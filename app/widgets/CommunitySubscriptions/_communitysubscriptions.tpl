@@ -1,14 +1,10 @@
 <header>
     <ul class="list middle">
         <li>
-            <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()">
-                <i class="zmdi zmdi-menu"></i>
-            </span>
             <span class="primary icon active gray" onclick="history.back()">
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
-            <span class="control icon gray active on_mobile" onclick="MovimTpl.showPanel()">
-            </span>
+            <span class="control on_mobile"></span>
             <p class="center">{$c->__('page.communities')}</p>
             <p class="center">{$c->__('communitysubscriptions.subscriptions')}</p>
         </li>

@@ -64,15 +64,16 @@ class Menu extends \Movim\Widget\Base
                     $title = $post->title;
                 }
 
-                if(!$post->isMine())
+                if(!$post->isMine()) {
                     Notification::append(
                         'news',
                         $contact->getTrueName(),
                         $title,
                         $contact->getPhoto('s'),
                         2,
-                        $this->route('news', $post->nodeid)
+                        $this->route('post', [$post->origin, $post->node, $post->nodeid])
                     );
+                }
             } else {
                 $logo = ($post->logo) ? $post->getLogo() : null;
 
@@ -82,7 +83,7 @@ class Menu extends \Movim\Widget\Base
                     $post->node,
                     $logo,
                     2,
-                    $this->route('news', $post->nodeid)
+                    $this->route('post', [$post->origin, $post->node, $post->nodeid])
                 );
             }
 

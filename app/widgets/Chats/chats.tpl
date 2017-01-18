@@ -1,9 +1,16 @@
 <header>
-    <ul class="list middle">
+    <ul class="list middle on_mobile">
         <li>
             <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()"><i class="zmdi zmdi-menu"></i></span>
             <span class="primary icon on_desktop icon gray"><i class="zmdi zmdi-comments"></i></span>
             <p class="center">{$c->__('page.chats')}</p>
+        </li>
+    </ul>
+    <ul class="list on_desktop divided spaced">
+        <li class="subheader">
+            <p>
+                {$c->__('page.chats')}
+            </p>
         </li>
     </ul>
 </header>

@@ -5,9 +5,6 @@
                 <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()">
                     <i class="zmdi zmdi-menu"></i>
                 </span>
-                <span class="primary on_desktop icon gray">
-                    <i class="zmdi zmdi-filter-list"></i>
-                </span>
                 <!--<span class="control icon active gray on_mobile" onclick="MovimTpl.showPanel()">
                     <i class="zmdi zmdi-eye"></i>
                 </span>-->
@@ -43,7 +40,7 @@
     </header>
 {/if}
 
-{if="$type == 'me' && $c->supported('pubsub')"}
+{if="$type == 'me' && $c->supported('pubsub') && $page == 0"}
     <ul class="list active on_desktop flex">
         <a href="{$c->route('contact', $jid)}" class="block">
             <li>

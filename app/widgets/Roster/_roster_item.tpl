@@ -1,6 +1,6 @@
 <li
     id="{$contact->jid|cleanupId}"
-    title="{$contact->jid} - {$presences[$contact->value]}"
+    title="{$contact->jid}{if="$contact->value"} - {$presences[$contact->value]}{/if}"
     name="{$contact->getSearchTerms()}"
     class="{if="$contact->value == null || $contact->value > 4"}faded{/if}"
     onclick="

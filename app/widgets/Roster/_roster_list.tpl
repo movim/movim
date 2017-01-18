@@ -5,7 +5,7 @@
                 <i class="zmdi zmdi-menu"></i>
             </span>
             {if="count($contacts) > 5"}
-            <span class="primary on_desktop icon gray">
+            <span class="primary on_desktop icon bubble gray">
                 <i class="zmdi zmdi-search"></i>
             </span>
             <form onsubmit="return false;">
@@ -14,7 +14,7 @@
                 </div>
             </form>
             {else}
-                <span class="primary on_desktop icon gray">
+                <span class="primary on_desktop icon gray bubble">
                     <i class="zmdi zmdi-accounts"></i>
                 </span>
                 <span class="control icon active gray on_mobile" onclick="MovimTpl.showPanel()">
