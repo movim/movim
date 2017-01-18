@@ -1825,7 +1825,7 @@ msgstr "Laden..."
 #: [page]communities
 #, fuzzy
 msgid "Communities"
-msgstr "Kommentare"
+msgstr "Gruppen"
 
 #: [page]home
 msgid "Home"
