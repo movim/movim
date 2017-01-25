@@ -59,11 +59,10 @@
             </p>
         </li>
         {/loop}
-
+    </ul>
+    <ul class="list thick">
         <li class="block">
-            <span class="primary icon bubble color orange">
-                <i class="zmdi zmdi-globe-alt"></i>
-            </span>
+            <p></p>
             <p>{$c->__('subscribe.server_question')}</p>
             <p>
                 {$c->__('subscribe.server_contact')} • <a href="https://movim.eu/">https://movim.eu/</a>
