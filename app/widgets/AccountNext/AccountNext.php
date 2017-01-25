@@ -43,10 +43,7 @@ class AccountNext extends \Movim\Widget\Base {
                     $html = $formview->draw('_accountnext_form', true);
                     break;
                 case 'jabber:x:oob' :
-                    $oobview = $this->tpl();
-                    $oobview->assign('url', (string)$form->x->url);
-
-                    $html = $oobview->draw('_accountnext_oob', true);
+                    RPC::call('MovimUtils.redirect', (string)$form->x->url);
                     break;
             }
         } else {
