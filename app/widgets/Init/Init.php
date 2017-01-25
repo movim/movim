@@ -18,34 +18,11 @@ class Init extends \Movim\Widget\Base
     {
         $node = $package->content;
     }
-    
+
     function onConfigured($package)
     {
         $node = $package->content;
-
-        switch($node) {
-            case 'storage:bookmarks' :
-                $notif = $this->__('init.bookmark');
-                break;
-            case 'urn:xmpp:vcard4' :
-                $notif = $this->__('init.vcard4');
-                break;
-            case 'urn:xmpp:avatar:data' :
-                $notif = $this->__('init.avatar');
-                break;
-            case 'http://jabber.org/protocol/geoloc' :
-                $notif = $this->__('init.location');
-                break;
-            case 'urn:xmpp:pubsub:subscription' :
-                $notif = $this->__('init.subscriptions');
-                break;
-            case 'urn:xmpp:microblog:0' :
-                $notif = $this->__('init.microblog');
-                break;
-        }
-
         RPC::call('Init.setNode', $node);
-        Notification::append(null, $notif);
     }
 
     private function createPersistentStorage($node)
