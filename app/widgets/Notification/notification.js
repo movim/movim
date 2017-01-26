@@ -177,14 +177,3 @@ document.addEventListener('focus', function() {
     Notification_ajaxClear(Notification.notifs_key);
 });
 
-
-window.addEventListener('load', function () {
-    if(typeof DesktopNotification === 'undefined') return;
-
-    DesktopNotification.requestPermission(function (status) {
-    // This allows to use Notification.permission with Chrome/Safari
-    if(DesktopNotification.permission !== status) {
-        DesktopNotification.permission = status;
-    }
-  });
-});

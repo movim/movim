@@ -1,6 +1,19 @@
 <form enctype="multipart/form-data" method="post" action="index.php" name="general">
     <br/>
     <h3>{$c->__('config.general')}</h3>
+
+    <ul class="list flex active">
+        <!--<li class="block" onclick="Onboarding_ajaxAskNotifications()">
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-notifications"></i>
+            </span>
+            <span class="control icon gray">
+                <i class="zmdi zmdi-chevron-down"></i>
+            </span>
+            <p class="normal">{$c->__('notifs.title')}</p>
+        </li>-->
+    </ul>
+
     <div class="block">
         <div class="select">
             <select name="language" id="language" value="{$conf.language}">

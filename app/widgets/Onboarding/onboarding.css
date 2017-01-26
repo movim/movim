@@ -1,0 +1,12 @@
+#onboarding .placeholder.icon {
+    background-position: center 1rem;
+    padding-top: 26rem;
+}
+
+#onboarding.notifications .placeholder.icon {
+    background-image: url(img/notifications.svg);
+}
+
+#onboarding.public .placeholder.icon {
+    background-image: url(img/public.svg);
+}
