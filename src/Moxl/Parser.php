@@ -2,7 +2,8 @@
 
 namespace Moxl;
 
-class Parser {
+class Parser
+{
     private $parser;
     private $depth = 0;
     public  $nodes = null;

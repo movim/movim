@@ -1,40 +1,22 @@
 <?php
-/**
- * @file Utils.php
- *
- * @brief Some stuff for Moxl
- *
- * Copyright © 2012 Timothée Jaussoin
- *
- * This file is part of Moxl.
- *
- * Moxl is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Lesser General Public License as
- * published by the Free Software Foundation, either version 3 of
- * the License, or (at your option) any later version.
- *
- * Moxl is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with Datajar.  If not, see <http://www.gnu.org/licenses/>.
- */
+
 namespace Moxl;
 
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
 
-class Utils {
+class Utils
+{
     // Display RAW XML in the browser
-    public static function displayXML($xml) {
+    public static function displayXML($xml)
+    {
         echo '<pre>'.htmlentities(Utils::cleanXML($xml), ENT_QUOTES, 'UTF-8').'</pre>';
     }
 
     // A simple function which clean and reindent an XML string
-    public static function cleanXML($xml) {
+    public static function cleanXML($xml)
+    {
         if($xml != '') {
             $doc = new \DOMDocument();
             $doc->loadXML($xml);
@@ -45,9 +27,10 @@ class Utils {
         }
     }
 
-    public static function explodeData($data) {
+    public static function explodeData($data)
+    {
         $data = explode(',', $data);
-        $pairs = array();
+        $pairs = [];
         $key = false;
 
         foreach($data as $pair) {
@@ -65,8 +48,9 @@ class Utils {
         return $pairs;
     }
 
-    public static function resolveHost($host) {
-        $r = new \Net_DNS2_Resolver(array('timeout' => 1));
+    public static function resolveHost($host)
+    {
+        $r = new \Net_DNS2_Resolver(['timeout' => 1]);
         try {
             $result = $r->query('_xmpp-client._tcp.'.$host, 'SRV');
 
@@ -78,7 +62,8 @@ class Utils {
         return false;
     }
 
-    public static function getDomain($host) {
+    public static function getDomain($host)
+    {
         $result = Utils::resolveHost($host);
 
         if(isset($result->target) && $result->target != null)
@@ -88,8 +73,9 @@ class Utils {
         }
     }
 
-    public static function resolveIp($host) {
-        $r = new \Net_DNS2_Resolver(array('timeout' => 1));
+    public static function resolveIp($host)
+    {
+        $r = new \Net_DNS2_Resolver(['timeout' => 1]);
         try {
             #$result = $r->query($host, 'AAAA');
             #if(!empty($result->answer[0])) return $result->answer[0];
@@ -103,14 +89,16 @@ class Utils {
         return false;
     }
 
-    public static function implodeData($data) {
-        $return = array();
+    public static function implodeData($data)
+    {
+        $return = [];
         foreach($data as $key => $value)
             $return[] = $key . '="' . $value . '"';
         return implode(',', $return);
     }
 
-    public static function generateNonce($binary = true) {
+    public static function generateNonce($binary = true)
+    {
         $str = '';
         mt_srand((double) microtime()*10000000);
         for($i=0; $i<32; $i++)
@@ -118,14 +106,22 @@ class Utils {
         return $binary ? $str : base64_encode($str);
     }
 
-    public static function getSupportedServices() {
-        return array(
+    public static function getSupportedServices()
+    {
+        return [
             'urn:xmpp:microblog:0',
             'urn:xmpp:microblog:0+notify',
             'urn:xmpp:inbox',
             'urn:xmpp:inbox+notify',
             'urn:xmpp:pubsub:subscription',
             'urn:xmpp:pubsub:subscription+notify',
+
+            //'eu.siacs.conversations.axolotl.devicelist',
+            //'eu.siacs.conversations.axolotl.devicelist+notify',
+
+            //'urn:xmpp:omemo:0:movim',
+            //'urn:xmpp:omemo:0:movim+notify',
+
             'urn:xmpp:attention:0',
             'urn:xmpp:vcard4',
             'urn:xmpp:vcard4+notify',
@@ -174,10 +170,12 @@ class Utils {
             'http://jabber.org/protocol/http-bind',
             'http://jabber.org/protocol/pubsub',
             'http://jabber.org/protocol/tune',
-            'http://jabber.org/protocol/tune+notify');
+            'http://jabber.org/protocol/tune+notify'
+        ];
     }
 
-    public static function generateCaps() {
+    public static function generateCaps()
+    {
         $s = '';
         $s .= 'client/web//Movim<';
 

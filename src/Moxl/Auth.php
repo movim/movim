@@ -4,8 +4,10 @@ namespace Moxl;
 
 use \SASL2\SASL2;
 
-class Auth {
-    static function mechanismChoice($mec) {
+class Auth
+{
+    static function mechanismChoice($mec)
+    {
         $mechanism = [
                         'SCRAM-SHA-1',
                         'DIGEST-MD5',
@@ -29,7 +31,8 @@ class Auth {
         return $mechanism[$i];
     }
 
-    static function mechanismPLAIN() {
+    static function mechanismPLAIN()
+    {
         $session = \Session::start();
 
         $s = new SASL2;
@@ -45,7 +48,8 @@ class Auth {
         API::request($dom->saveXML($dom->documentElement));
     }
 
-    static function mechanismANONYMOUS() {
+    static function mechanismANONYMOUS()
+    {
         $s = new SASL2;
         $fa = $s->factory('ANONYMOUS');
 
@@ -57,7 +61,8 @@ class Auth {
         API::request($dom->saveXML($dom->documentElement));
     }
 
-    static function mechanismDIGESTMD5() {
+    static function mechanismDIGESTMD5()
+    {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'auth');
         $auth->setAttribute('client-uses-full-bind-result', 'true');
@@ -68,7 +73,8 @@ class Auth {
 
     }
 
-    static function mechanismCRAMMD5() {
+    static function mechanismCRAMMD5()
+    {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'auth');
         $auth->setAttribute('client-uses-full-bind-result', 'true');
@@ -78,7 +84,8 @@ class Auth {
         API::request($dom->saveXML($dom->documentElement));
     }
 
-    static function mechanismSCRAMSHA1() {
+    static function mechanismSCRAMSHA1()
+    {
         $s = new SASL2;
         $fa = $s->factory('SCRAM-SHA1');
 

@@ -39,7 +39,7 @@ class Handler {
     {
         $_instances = 'empty';
 
-        $user = new \User();
+        $user = new \User;
 
         $db = \Modl\Modl::getInstance();
         $db->setUser($user->getLogin());
@@ -193,6 +193,12 @@ class Handler {
             '36fe2745bdc72b1682be2c008d547e3d' => 'Vcard4',
 
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
+
+            //'da6b60476aeab672ac0afe3ff27dc6a4' => 'OMEMODevices',
+            //'c5685812e4af902631769b013dc3512d' => 'OMEMOMessage',
+            // Non standard
+            //'bf6fdcbb9c8df6480076113d4865c3c2' => 'OMEMOMovim',
+            //'c978b9c87e224e5817b0dde65fec8cd1' => 'OMEMOMessage',
 
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
             '201fa54dd93e3403611830213f5f9fbc' => 'Carbons',//?

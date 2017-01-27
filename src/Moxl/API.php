@@ -2,7 +2,8 @@
 
 namespace Moxl;
 
-class API {
+class API
+{
     static function iqWrapper($xml = false, $to = false, $type = false, $id = false)
     {
         $session = \Session::start();
