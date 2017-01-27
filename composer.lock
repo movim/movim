@@ -237,12 +237,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "2908fa4615eac4981e6821d3aa03e8bb16956e54"
+                "reference": "5001d7e5bf2d224bc957fd810af1b51d3792e878"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/2908fa4615eac4981e6821d3aa03e8bb16956e54",
-                "reference": "2908fa4615eac4981e6821d3aa03e8bb16956e54",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/5001d7e5bf2d224bc957fd810af1b51d3792e878",
+                "reference": "5001d7e5bf2d224bc957fd810af1b51d3792e878",
                 "shasum": ""
             },
             "require": {
@@ -281,7 +281,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-01-25 18:33:32"
+            "time": "2017-01-26 20:37:58"
         },
         {
             "name": "evenement/evenement",
@@ -1425,16 +1425,16 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.4.5",
+            "version": "v0.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "32385d71f84c4a26ea577cb91f1220decb440dce"
+                "reference": "cf074e53c974df52388ebd09710a9018894745d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/32385d71f84c4a26ea577cb91f1220decb440dce",
-                "reference": "32385d71f84c4a26ea577cb91f1220decb440dce",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/cf074e53c974df52388ebd09710a9018894745d2",
+                "reference": "cf074e53c974df52388ebd09710a9018894745d2",
                 "shasum": ""
             },
             "require": {
@@ -1446,6 +1446,7 @@
             },
             "require-dev": {
                 "clue/block-react": "^1.1",
+                "phpunit/phpunit": "~4.8",
                 "react/socket-client": "^0.5.1"
             },
             "type": "library",
@@ -1462,7 +1463,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2017-01-08 11:36:16"
+            "time": "2017-01-26 09:23:38"
         },
         {
             "name": "react/socket-client",
@@ -1551,16 +1552,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.15",
+            "version": "1.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "f82fcf076237e005bc778049d73323d2164b5e8e"
+                "reference": "8eb95c2b04fc3c30d19fdc59ca84e81795c9c9a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/f82fcf076237e005bc778049d73323d2164b5e8e",
-                "reference": "f82fcf076237e005bc778049d73323d2164b5e8e",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/8eb95c2b04fc3c30d19fdc59ca84e81795c9c9a3",
+                "reference": "8eb95c2b04fc3c30d19fdc59ca84e81795c9c9a3",
                 "shasum": ""
             },
             "require": {
@@ -1612,7 +1613,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-10-29 13:21:14"
+            "time": "2017-01-26 14:38:38"
         },
         {
             "name": "ringcentral/psr7",
