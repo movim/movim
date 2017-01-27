@@ -74,7 +74,7 @@ class Presence extends Payload
 
                 $this->pack($c);
 
-                if($p->value == 5 || $p->value == 6) {
+                if($p->value == 5 /*|| $p->value == 6*/) {
                     $pd->delete($p);
                 }
             }
