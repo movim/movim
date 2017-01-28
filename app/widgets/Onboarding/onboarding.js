@@ -7,14 +7,7 @@ var Onboarding = {
         }
     },
 
-    disableNotifications: function() {
-        localStorage.setItem('onboardingNotifications', true);
-        Onboarding.check();
-    },
-
     enableNotifications: function() {
-        localStorage.setItem('onboardingNotifications', true);
-
         DesktopNotification.requestPermission(function (status) {
             if(DesktopNotification.permission !== status) {
                 DesktopNotification.permission = status;
@@ -24,9 +17,12 @@ var Onboarding = {
         Onboarding.check();
     },
 
+    setNotifications: function() {
+        localStorage.setItem('onboardingNotifications', true);
+    },
+
     setPublic: function() {
         localStorage.setItem('onboardingPublic', true);
-        Onboarding.check();
     }
 }
 

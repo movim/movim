@@ -6,7 +6,7 @@
     </div>
 </section>
 <div>
-    <a onclick="Onboarding.disableNotifications();  Dialog_ajaxClear();" class="button flat">
+    <a onclick="Onboarding.disableNotifications();  Dialog_ajaxClear(); Onboarding.check();" class="button flat">
         {$c->__('button.not_now')}
     </a>
     <a onclick="Onboarding.enableNotifications(); Dialog_ajaxClear();" class="button flat">

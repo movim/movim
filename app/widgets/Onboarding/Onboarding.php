@@ -11,19 +11,22 @@ class Onboarding extends \Movim\Widget\Base
     public function ajaxAskNotifications()
     {
         $tpl = $this->tpl();
+        $this->rpc('Onboarding.setNotifications');
         Dialog::fill($tpl->draw('_onboarding_notifications', true));
     }
 
     public function ajaxAskPublic()
     {
         $tpl = $this->tpl();
+        $this->rpc('Onboarding.setPublic');
         Dialog::fill($tpl->draw('_onboarding_public', true));
     }
 
     public function ajaxEnablePublic()
     {
         \Modl\Privacy::set($this->user->getLogin(), 1);
-        $this->rpc('Onboarding.setPublic');
         Notification::append(null, $this->__('vcard.public'));
+
+        $this->rpc('Onboarding.check');
     }
 }
