@@ -26,16 +26,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="187.8015"
-     inkscape:cy="242.98537"
+     inkscape:cx="34.587214"
+     inkscape:cy="300.12823"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g5620"
      showgrid="true"
      units="px"
-     inkscape:window-width="1920"
-     inkscape:window-height="1080"
+     inkscape:window-width="1600"
+     inkscape:window-height="873"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      showguides="false">
     <inkscape:grid
@@ -50,7 +50,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -129,9 +129,10 @@
          id="path3766-6" />
       <path
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.28459236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-         d="m 57.331219,183.50413 c -28.459235,0 -24.190349,35.57405 -21.344426,39.84293 2.845924,4.26889 6.640482,5.21753 9.960732,7.11481 -4.831794,-9.44756 -5.365445,-22.01687 -4.268885,-29.8822 h 15.652579 15.65258 c 1.09656,7.86533 0.562909,20.43464 -4.268885,29.8822 3.32025,-1.89728 7.114808,-2.84592 9.960732,-7.11481 2.845923,-4.26888 7.114809,-39.84293 -21.344427,-39.84293 z"
+         d="m 57.331219,183.50413 c -28.459235,0 -24.190349,38.06631 -21.344426,42.33519 2.845924,4.26889 6.640482,5.21753 9.960732,7.11481 -4.831794,-9.44756 -4.368542,-24.50913 -3.271982,-32.37446 h 14.655676 14.655677 c 1.09656,7.86533 1.559812,22.9269 -3.271982,32.37446 3.32025,-1.89728 7.114808,-2.84592 9.960732,-7.11481 2.845923,-4.26888 7.114809,-42.33519 -21.344427,-42.33519 z"
          id="path4521"
-         inkscape:connector-curvature="0" />
+         inkscape:connector-curvature="0"
+         sodipodi:nodetypes="sscccccss" />
     </g>
     <g
        id="g4562"
