@@ -10,3 +10,7 @@
 #onboarding.public .placeholder.icon {
     background-image: url(img/public.svg);
 }
+
+#onboarding.popups .placeholder.icon {
+    background-image: url(img/popups.svg);
+}

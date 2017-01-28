@@ -4,6 +4,8 @@ var Onboarding = {
             Onboarding_ajaxAskPublic();
         } else if(localStorage.getItem('onboardingNotifications') === null) {
             Onboarding_ajaxAskNotifications();
+        } else if(localStorage.getItem('onboardingPopups') === null) {
+            Onboarding_ajaxAskPopups();
         }
     },
 
@@ -14,7 +16,7 @@ var Onboarding = {
             }
         });
 
-        Onboarding.check();
+        //Onboarding.check();
     },
 
     setNotifications: function() {
@@ -23,6 +25,11 @@ var Onboarding = {
 
     setPublic: function() {
         localStorage.setItem('onboardingPublic', true);
+    },
+
+    setPopups: function() {
+        window.open('?popuptest', '', 'width=600,height=400,status=0,titlebar=0,toolbar=0,menubar=0');
+        localStorage.setItem('onboardingPopups', true);
     }
 }
 

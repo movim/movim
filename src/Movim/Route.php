@@ -34,7 +34,8 @@ class Route extends Base
                 'publish'       => ['s', 'n', 'i', 'sh'],
                 'room'          => ['r'],
                 'share'         => ['url'],
-                'visio'         => false
+                'visio'         => false,
+                'popuptest'     => false
             ];
     }
 
