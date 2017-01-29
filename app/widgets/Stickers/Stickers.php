@@ -102,7 +102,7 @@ class Stickers extends \Movim\Widget\Base
 
         $packs = $this->getPacks();
 
-        $pack = isset($pack) ? $pack : 'racoon';
+        $pack = isset($pack) ? $pack : current($packs);
 
         if(in_array($pack, $packs)) {
             $files = scandir(dirname(__FILE__).'/stickers/'.$pack);
