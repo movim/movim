@@ -75,7 +75,7 @@
 
 #chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr) {
     border-radius: 0.5rem;
-    max-height: 150px;
+    max-height: 135px;
     width: auto;
 }
 
