@@ -29,10 +29,10 @@
                 <a href="#"><img alt=":sticker:" class="emoji medium" src="{$path}/{$value}/icon.png"></a>
             </li>
         {/loop}
-        <li onclick="Stickers_ajaxSmiley('{$jid}')">
+        <li onclick="Stickers_ajaxSmiley('{$jid}')" class="on_desktop">
             <a href="#"><img alt=":smiley:" class="emoji medium" src="{$c->getSmileyPath('1f603')}"></a>
         </li>
-        <li onclick="Stickers_ajaxSmileyTwo('{$jid}')">
+        <li onclick="Stickers_ajaxSmileyTwo('{$jid}')" class="on_desktop">
             <a href="#"><img alt=":smiley:" class="emoji medium" src="{$c->getSmileyPath('1f44d')}"></a>
         </li>
     </ul>
