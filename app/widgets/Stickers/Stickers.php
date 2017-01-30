@@ -29,7 +29,7 @@ class Stickers extends \Movim\Widget\Base
         list($c, $ext) = explode('@', $cid);
         list($sh, $key) = explode('+', $c);
 
-        $base64 = base64_encode(file_get_contents(CACHE_PATH.md5($key).'.png'));
+        $base64 = base64_encode(file_get_contents(CACHE_PATH.hash('sha256',$key).'.png'));
 
         $a = new Answer;
         $a->setTo($to)
@@ -54,7 +54,7 @@ class Stickers extends \Movim\Widget\Base
         $base64 = base64_encode(file_get_contents($filepath));
 
         // Caching the picture
-        if(!file_exists(CACHE_PATH.md5($key).'.png')) {
+        if(!file_exists(CACHE_PATH.hash('sha256',$key).'.png')) {
             $p = new Picture;
             $p->fromBase($base64);
             $p->set($key, 'png');
