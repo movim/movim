@@ -3,7 +3,6 @@ Movim Changelog
 
 v0.11 (trunk)
 ---------------------------
- * Rewrite blocking code to asyncrone promises
  * Navigation improvement
  * Add previous/next post shortcut in the footer of each posts
  * Highlight mentionned messages in chatrooms
@@ -18,6 +17,15 @@ v0.11 (trunk)
  * Add (small) picture embeding in chats
  * Various speed optimisation
  * Add reply feature of existing posts
+ * New and improved Share widget, now supports xmpp: links
+ * New Stickers!
+ * Big refactoring of the Groups, now called Communities with improved navigation and discovery features
+ * Also refactor the Post widget
+ * Add an Onboarding widget with some advices
+ * Add Like feature 
+ * New Notifications widget to keep track of the comments and likes
+ * Improvements in Carbons feature
+ * Improve the Stickers picker
 
 v0.10
 ---------------------------
