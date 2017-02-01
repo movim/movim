@@ -4,7 +4,8 @@ namespace Moxl\Stanza;
 
 use Moxl\Stanza\Message;
 
-class Muc {
+class Muc
+{
     static function message($to, $content, $html = false, $id = false)
     {
         Message::maker($to, $content, false, 'groupchat', false, false, $id);

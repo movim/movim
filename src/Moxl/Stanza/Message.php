@@ -11,7 +11,8 @@ class Message {
         $chatstates = false,
         $receipts = false,
         $id = false,
-        $replace = false)
+        $replace = false,
+        $file = false)
     {
         $session = \Session::start();
 
@@ -67,12 +68,41 @@ class Message {
             $root->appendChild($request);
         }
 
+        if($file != false) {
+            $reference = $dom->createElement('reference');
+            $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
+            $reference->setAttribute('type', 'data');
+            $root->appendChild($reference);
+
+            $media = $dom->createElement('media-sharing');
+            $media->setAttribute('xmlns', 'urn:xmpp:sims:1');
+            $reference->appendChild($media);
+
+            $filen = $dom->createElement('file');
+            $filen->setAttribute('xmlns', 'urn:xmpp:jingle:apps:file-transfer:4');
+            $media->appendChild($filen);
+
+            $filen->appendChild($dom->createElement('media-type', $file->type));
+            $filen->appendChild($dom->createElement('name', $file->name));
+            $filen->appendChild($dom->createElement('size', $file->size));
+
+            $sources = $dom->createElement('sources');
+            $media->appendChild($sources);
+
+            $reference = $dom->createElement('reference');
+            $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
+            $reference->setAttribute('type', 'data');
+            $reference->setAttribute('uri', $file->uri);
+
+            $sources->appendChild($reference);
+        }
+
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    static function message($to, $content, $html = false, $id = false, $replace = false)
+    static function message($to, $content, $html = false, $id = false, $replace = false, $file = false)
     {
-        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace);
+        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file);
     }
 
     static function composing($to)
