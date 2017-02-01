@@ -26,8 +26,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -58,6 +56,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Invitations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -65,6 +65,8 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Post/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -77,8 +79,6 @@
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 17:28+0200\n"
+"POT-Creation-Date: 2017-02-01 19:34+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -224,10 +224,6 @@ msgstr "该服务的注册系统当前不可用"
 #: [error]forbidden
 msgid "Registration forbidden"
 msgstr "禁止注册"
-
-#: [oob]about
-msgid "This server use an external system for the registration, please click on the following URL."
-msgstr "该服务使用一个外部的注册系统, 请点击以下的URL."
 
 #: [adhoc]title
 msgid "Actions"
@@ -528,74 +524,6 @@ msgstr "这个用户还没发布任何东西"
 msgid "This content is private, please login to see it"
 msgstr "私密内容，请登录后查看"
 
-#: [title]conferences
-#, fuzzy
-msgid "Conferences"
-msgstr "视频"
-
-#: [title]groups [group]empty_title [page]groups
-msgid "Groups"
-msgstr "分组"
-
-#: [chatroom]add
-#, fuzzy
-msgid "Add a new Chat Room"
-msgstr "添加一个聊天室"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "聊天室ID"
-
-#: [chatroom]name
-#, fuzzy
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "姓名"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "昵称"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "无效的聊天室ID"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "用户名为空"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "更新书签"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-#, fuzzy
-msgid "Configure"
-msgstr "配置"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-#, fuzzy
-msgctxt "[url]name"
-msgid "Name"
-msgstr "姓名"
-
 #: [message]published
 msgid "Message Published"
 msgstr "消息发布"
@@ -722,7 +650,7 @@ msgstr "此服务器不存在"
 msgid "Group created successfully"
 msgstr "成功建立群组"
 
-#: [communitiesserver]empty_server
+#: [communitiesserver]empty_server [groups]empty_server
 msgid "There is no Groups yet on this server."
 msgstr "该服务器上还没有任何群组。"
 
@@ -767,6 +695,32 @@ msgstr "您将移除一下的群组, 请确认"
 msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "看起来这个组不再存在了。你想将它从你的订阅中删除么？"
 
+#: [communityaffiliation]owner
+msgid "Owner"
+msgstr ""
+
+#: [communityaffiliation]owners
+msgid "Owners"
+msgstr ""
+
+#: [communityaffiliation]publisher
+#, fuzzy
+msgid "Publisher"
+msgstr "发布"
+
+#: [communityaffiliation]publishers
+#, fuzzy
+msgid "Publishers"
+msgstr "发布"
+
+#: [communityaffiliation]roles
+msgid "Roles"
+msgstr ""
+
+#: [communityaffiliation]role_set
+msgid "Role correctly set"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr "%s 订阅者"
@@ -783,6 +737,19 @@ msgstr "订阅"
 msgid "Unsubscribe"
 msgstr "取消订阅"
 
+#: [communityheader]subscribed [group]subscribed
+msgid "Subscribed"
+msgstr "已订阅"
+
+#: [communityheader]unsubscribed [group]unsubscribed
+msgid "Unsubscribed"
+msgstr "未订阅"
+
+#: [communityheader]subscription_unsupported
+#, fuzzy
+msgid "The subscriptions are disabled for this community"
+msgstr "给该群组加上标签"
+
 #: [communityheader]label_label
 #, fuzzy
 msgid "Give a label for this community"
@@ -792,12 +759,12 @@ msgstr "给该群组加上标签"
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 #, fuzzy
 msgid "Share this subscription publicly"
 msgstr "公开发布该贴？"
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -862,14 +829,6 @@ msgstr "配置无效"
 msgid "Advanced Configuration"
 msgstr "高级配置"
 
-#: [notifications]message
-msgid "Notify on incoming message"
-msgstr "通知新消息"
-
-#: [notifications]desktop
-msgid "Use desktop notifications"
-msgstr "使用桌面通知"
-
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "你的博客的自定义CSS超链接"
@@ -881,6 +840,10 @@ msgstr "一般信息"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "姓名"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "昵称"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1022,17 +985,9 @@ msgstr "邀请"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
 
-#: [group]subscribed
-msgid "Subscribed"
-msgstr "已订阅"
-
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "你将取消订阅该群组"
-
-#: [group]unsubscribed
-msgid "Unsubscribed"
-msgstr "未订阅"
 
 #: [group]share_label
 msgid "Make your membership to this group public to your friends"
@@ -1041,6 +996,10 @@ msgstr "将你对该群组的订阅状况公开给你的朋友"
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "给该群组加上标签"
+
+#: [group]empty_title [page]groups
+msgid "Groups"
+msgstr "分组"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1157,6 +1116,14 @@ msgstr "订阅节点已创建"
 #: [init]microblog
 msgid "Microblog node created"
 msgstr "微博节点已创建"
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr "待处理的邀请"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s 想同您聊天"
 
 #: [error]username
 msgid "Wrong username"
@@ -1301,13 +1268,48 @@ msgstr "联系人"
 msgid "Add a post"
 msgstr "添加帖子"
 
-#: [notifs]title
-msgid "Pending Invitations"
-msgstr "待处理的邀请"
+#: [notifs]title [onboarding]notifications_title
+#, fuzzy
+msgid "Notifications"
+msgstr "使用桌面通知"
 
-#: [notifs]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s 想同您聊天"
+#: [notifs]empty
+#, fuzzy
+msgid "No new notifications"
+msgstr "使用桌面通知"
+
+#: [onboarding]notifications_text
+msgid "Movim can notify you when a new post is published or if you receive messages"
+msgstr ""
+
+#: [onboarding]notifications_text_second
+msgid "You can always disable them afterwards"
+msgstr ""
+
+#: [onboarding]public_title
+#, fuzzy
+msgid "Public profile"
+msgstr "公共分组"
+
+#: [onboarding]public_text
+msgid "Make your profile public and allow other users to find you and make new contacts more easily"
+msgstr ""
+
+#: [onboarding]public_text_second
+msgid "You can always disable this in the configuration afterwards"
+msgstr ""
+
+#: [onboarding]popups_title
+msgid "Popups"
+msgstr ""
+
+#: [onboarding]popups_text
+msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
+msgstr ""
+
+#: [onboarding]popups_text_second
+msgid "Please be sure that they are enabled to use this feature properly"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1547,9 +1549,21 @@ msgstr "点击新建按钮来添加一个。"
 msgid "Chatrooms"
 msgstr "聊天室"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "聊天室ID"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "收藏的聊天室"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "无效的聊天室ID"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "用户名为空"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1562,6 +1576,10 @@ msgstr "请输入正确的昵称(2到40个字母)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "用户名已被使用"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "更新书签"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1670,15 +1688,6 @@ msgstr "想找什么？"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "按 Ctrl+m 打开我"
-
-#: [share]error
-#, fuzzy
-msgid "This is not a valid url"
-msgstr "请输入一个有效的URL"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1988,10 +1997,6 @@ msgstr "清除"
 msgid "Upload"
 msgstr "上传"
 
-#: [button]come_in
-msgid "Come in!"
-msgstr "登录"
-
 #: [button]connecting
 msgid "Connecting"
 msgstr "连接中"
@@ -2032,6 +2037,18 @@ msgstr "搜索"
 msgctxt "[button]share"
 msgid "Share"
 msgstr "分享"
+
+#: [button]like
+msgid "Like"
+msgstr ""
+
+#: [button]not_now
+msgid "Not Now"
+msgstr ""
+
+#: [button]enable
+msgid "Enable"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2694,6 +2711,41 @@ msgstr "API无法连接, 请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "This server use an external system for the registration, please click on the following URL."
+#~ msgstr "该服务使用一个外部的注册系统, 请点击以下的URL."
+
+#, fuzzy
+#~ msgid "Conferences"
+#~ msgstr "视频"
+
+#, fuzzy
+#~ msgid "Add a new Chat Room"
+#~ msgstr "添加一个聊天室"
+
+#, fuzzy
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "姓名"
+
+#, fuzzy
+#~ msgid "Configure"
+#~ msgstr "配置"
+
+#, fuzzy
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "姓名"
+
+#~ msgid "Notify on incoming message"
+#~ msgstr "通知新消息"
+
+#, fuzzy
+#~ msgid "This is not a valid url"
+#~ msgstr "请输入一个有效的URL"
+
+#~ msgid "Come in!"
+#~ msgstr "登录"
 
 #~ msgid "Status"
 #~ msgstr "状态"

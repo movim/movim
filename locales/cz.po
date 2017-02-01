@@ -22,8 +22,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -54,6 +52,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Invitations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -61,6 +61,8 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Post/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -73,8 +75,6 @@
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 17:28+0200\n"
+"POT-Creation-Date: 2017-02-01 19:34+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -220,10 +220,6 @@ msgstr "Registrační systém tohoto serveru není momentálně dostupný"
 #: [error]forbidden
 msgid "Registration forbidden"
 msgstr ""
-
-#: [oob]about
-msgid "This server use an external system for the registration, please click on the following URL."
-msgstr "Tento serveru používá externí systém pro registrace, klikněte prosím na následující URL."
 
 #: [adhoc]title
 msgid "Actions"
@@ -524,73 +520,6 @@ msgstr "Tento uživatel nyní nezveřejnil žádný příspěvek"
 msgid "This content is private, please login to see it"
 msgstr "Tento obsah je soukromý, přihlašte se pro zobrazení"
 
-#: [title]conferences
-msgid "Conferences"
-msgstr ""
-
-#: [title]groups [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Skupiny"
-
-#: [chatroom]add
-#, fuzzy
-msgid "Add a new Chat Room"
-msgstr "Přidat konverzaci"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID konverzace"
-
-#: [chatroom]name
-#, fuzzy
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Jméno"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Přezdívka"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Chybné ID konverzace"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Prázdné jméno"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Záložky aktualizovány"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-#, fuzzy
-msgid "Configure"
-msgstr "Konfigurace"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-#, fuzzy
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Jméno"
-
 #: [message]published
 msgid "Message Published"
 msgstr "Zpráva zveřejněna"
@@ -717,7 +646,7 @@ msgstr "Tento server neexistuje"
 msgid "Group created successfully"
 msgstr "Skupina úspěšně vytvořena"
 
-#: [communitiesserver]empty_server
+#: [communitiesserver]empty_server [groups]empty_server
 msgid "There is no Groups yet on this server."
 msgstr ""
 
@@ -762,6 +691,32 @@ msgstr "Odstraníte následující skupinu, prosím potvrďte akci"
 msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Vypadá to, že tako skupina již neexistuje. Přejete si odstranit ji z vašich odběrů?"
 
+#: [communityaffiliation]owner
+msgid "Owner"
+msgstr ""
+
+#: [communityaffiliation]owners
+msgid "Owners"
+msgstr ""
+
+#: [communityaffiliation]publisher
+#, fuzzy
+msgid "Publisher"
+msgstr "Zveřejnit"
+
+#: [communityaffiliation]publishers
+#, fuzzy
+msgid "Publishers"
+msgstr "Zveřejnit"
+
+#: [communityaffiliation]roles
+msgid "Roles"
+msgstr ""
+
+#: [communityaffiliation]role_set
+msgid "Role correctly set"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr "%s odběratelů"
@@ -778,6 +733,19 @@ msgstr "Odebírat"
 msgid "Unsubscribe"
 msgstr "Neodebírat"
 
+#: [communityheader]subscribed [group]subscribed
+msgid "Subscribed"
+msgstr "Odebíráno"
+
+#: [communityheader]unsubscribed [group]unsubscribed
+msgid "Unsubscribed"
+msgstr "Odběr odhlášen"
+
+#: [communityheader]subscription_unsupported
+#, fuzzy
+msgid "The subscriptions are disabled for this community"
+msgstr "Dát této skupině označení"
+
 #: [communityheader]label_label
 #, fuzzy
 msgid "Give a label for this community"
@@ -787,12 +755,12 @@ msgstr "Dát této skupině označení"
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 #, fuzzy
 msgid "Share this subscription publicly"
 msgstr "Odeslat příspěvek veřejně?"
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -857,14 +825,6 @@ msgstr "Konfigurace není validní"
 msgid "Advanced Configuration"
 msgstr "Pokročilá konfigurace"
 
-#: [notifications]message
-msgid "Notify on incoming message"
-msgstr "Oznámit doručení příchozí zprávy"
-
-#: [notifications]desktop
-msgid "Use desktop notifications"
-msgstr "Použít desktopové notifikace"
-
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "Vlastní URL CSS pro váš blog"
@@ -876,6 +836,10 @@ msgstr "Obecné informace"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Jméno"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Přezdívka"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1017,17 +981,9 @@ msgstr "Pozvat"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Tento kontakt je ve vašem seznamu kontaktů, ale mezi těmito dvěma účty nejsou žádné odběry"
 
-#: [group]subscribed
-msgid "Subscribed"
-msgstr "Odebíráno"
-
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Odhlásíte odběr od této skupiny"
-
-#: [group]unsubscribed
-msgid "Unsubscribed"
-msgstr "Odběr odhlášen"
 
 #: [group]share_label
 msgid "Make your membership to this group public to your friends"
@@ -1036,6 +992,10 @@ msgstr "Zveřejnit vaše členství v této skupině vašim přátelům"
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "Dát této skupině označení"
+
+#: [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Skupiny"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1152,6 +1112,14 @@ msgstr "Uzel odběrů vytvořen"
 #: [init]microblog
 msgid "Microblog node created"
 msgstr "Uzel mikroblogu vytvořen"
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr "Nevyřízené pozvánky"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s s vámi chce mluvit"
 
 #: [error]username
 msgid "Wrong username"
@@ -1296,13 +1264,48 @@ msgstr "Kontakty"
 msgid "Add a post"
 msgstr "Přidat příspěvek"
 
-#: [notifs]title
-msgid "Pending Invitations"
-msgstr "Nevyřízené pozvánky"
+#: [notifs]title [onboarding]notifications_title
+#, fuzzy
+msgid "Notifications"
+msgstr "Použít desktopové notifikace"
 
-#: [notifs]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s s vámi chce mluvit"
+#: [notifs]empty
+#, fuzzy
+msgid "No new notifications"
+msgstr "Použít desktopové notifikace"
+
+#: [onboarding]notifications_text
+msgid "Movim can notify you when a new post is published or if you receive messages"
+msgstr ""
+
+#: [onboarding]notifications_text_second
+msgid "You can always disable them afterwards"
+msgstr ""
+
+#: [onboarding]public_title
+#, fuzzy
+msgid "Public profile"
+msgstr "Veřejné skupiny"
+
+#: [onboarding]public_text
+msgid "Make your profile public and allow other users to find you and make new contacts more easily"
+msgstr ""
+
+#: [onboarding]public_text_second
+msgid "You can always disable this in the configuration afterwards"
+msgstr ""
+
+#: [onboarding]popups_title
+msgid "Popups"
+msgstr ""
+
+#: [onboarding]popups_text
+msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
+msgstr ""
+
+#: [onboarding]popups_text_second
+msgid "Please be sure that they are enabled to use this feature properly"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1542,9 +1545,21 @@ msgstr "Přidejte konverzaci kliknutím na tlačítko přidat."
 msgid "Chatrooms"
 msgstr "Konverzace"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID konverzace"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Moje oblíbená konverzace"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Chybné ID konverzace"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Prázdné jméno"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1557,6 +1572,10 @@ msgstr "Zadejte prosím správné uživatelské jméno (2 až 40 znaků)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Uživatelské jméno již obsazeno"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Záložky aktualizovány"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1664,15 +1683,6 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
-
-#: [share]error
-#, fuzzy
-msgid "This is not a valid url"
-msgstr "Uveďte prosím validní URL"
-
-#: [share]success
-msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1983,10 +1993,6 @@ msgstr "Vymazat"
 msgid "Upload"
 msgstr "Nahrát"
 
-#: [button]come_in
-msgid "Come in!"
-msgstr "Vstupte!"
-
 #: [button]connecting
 msgid "Connecting"
 msgstr "Připojuji"
@@ -2026,6 +2032,18 @@ msgstr ""
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr ""
+
+#: [button]not_now
+msgid "Not Now"
+msgstr ""
+
+#: [button]enable
+msgid "Enable"
 msgstr ""
 
 #: [day]title
@@ -2689,6 +2707,37 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "This server use an external system for the registration, please click on the following URL."
+#~ msgstr "Tento serveru používá externí systém pro registrace, klikněte prosím na následující URL."
+
+#, fuzzy
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Přidat konverzaci"
+
+#, fuzzy
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Jméno"
+
+#, fuzzy
+#~ msgid "Configure"
+#~ msgstr "Konfigurace"
+
+#, fuzzy
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Jméno"
+
+#~ msgid "Notify on incoming message"
+#~ msgstr "Oznámit doručení příchozí zprávy"
+
+#, fuzzy
+#~ msgid "This is not a valid url"
+#~ msgstr "Uveďte prosím validní URL"
+
+#~ msgid "Come in!"
+#~ msgstr "Vstupte!"
 
 #~ msgid "Status"
 #~ msgstr "Stav"

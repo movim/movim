@@ -21,8 +21,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -53,6 +51,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Invitations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -60,6 +60,8 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Post/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -72,8 +74,6 @@
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -92,7 +92,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 17:28+0200\n"
+"POT-Creation-Date: 2017-02-01 19:34+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Breton (http://www.transifex.com/movim/movim/language/br/)\n"
@@ -218,10 +218,6 @@ msgstr ""
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
-
-#: [oob]about
-msgid "This server use an external system for the registration, please click on the following URL."
 msgstr ""
 
 #: [adhoc]title
@@ -522,72 +518,6 @@ msgstr ""
 msgid "This content is private, please login to see it"
 msgstr ""
 
-#: [title]conferences
-msgid "Conferences"
-msgstr ""
-
-#: [title]groups [group]empty_title [page]groups
-msgid "Groups"
-msgstr ""
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr ""
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
-#: [chatroom]name
-#, fuzzy
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Anv"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Lezanv"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr ""
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-#, fuzzy
-msgid "Configure"
-msgstr "Kefluniadur"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-#, fuzzy
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Anv"
-
 #: [message]published
 msgid "Message Published"
 msgstr ""
@@ -713,7 +643,7 @@ msgstr ""
 msgid "Group created successfully"
 msgstr ""
 
-#: [communitiesserver]empty_server
+#: [communitiesserver]empty_server [groups]empty_server
 msgid "There is no Groups yet on this server."
 msgstr ""
 
@@ -758,6 +688,30 @@ msgstr ""
 msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
+#: [communityaffiliation]owner
+msgid "Owner"
+msgstr ""
+
+#: [communityaffiliation]owners
+msgid "Owners"
+msgstr ""
+
+#: [communityaffiliation]publisher
+msgid "Publisher"
+msgstr ""
+
+#: [communityaffiliation]publishers
+msgid "Publishers"
+msgstr ""
+
+#: [communityaffiliation]roles
+msgid "Roles"
+msgstr ""
+
+#: [communityaffiliation]role_set
+msgid "Role correctly set"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr ""
@@ -774,6 +728,18 @@ msgstr ""
 msgid "Unsubscribe"
 msgstr ""
 
+#: [communityheader]subscribed [group]subscribed
+msgid "Subscribed"
+msgstr ""
+
+#: [communityheader]unsubscribed [group]unsubscribed
+msgid "Unsubscribed"
+msgstr ""
+
+#: [communityheader]subscription_unsupported
+msgid "The subscriptions are disabled for this community"
+msgstr ""
+
 #: [communityheader]label_label
 msgid "Give a label for this community"
 msgstr ""
@@ -782,11 +748,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -850,14 +816,6 @@ msgstr ""
 msgid "Advanced Configuration"
 msgstr ""
 
-#: [notifications]message
-msgid "Notify on incoming message"
-msgstr ""
-
-#: [notifications]desktop
-msgid "Use desktop notifications"
-msgstr ""
-
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr ""
@@ -869,6 +827,10 @@ msgstr "Titouroù hollek"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Anv"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Lezanv"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1010,16 +972,8 @@ msgstr ""
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr ""
 
-#: [group]subscribed
-msgid "Subscribed"
-msgstr ""
-
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
-msgstr ""
-
-#: [group]unsubscribed
-msgid "Unsubscribed"
 msgstr ""
 
 #: [group]share_label
@@ -1028,6 +982,10 @@ msgstr ""
 
 #: [group]label_label
 msgid "Give a label for this group"
+msgstr ""
+
+#: [group]empty_title [page]groups
+msgid "Groups"
 msgstr ""
 
 #: [group]empty
@@ -1144,6 +1102,14 @@ msgstr ""
 
 #: [init]microblog
 msgid "Microblog node created"
+msgstr ""
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr ""
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
 msgstr ""
 
 #: [error]username
@@ -1286,12 +1252,46 @@ msgstr ""
 msgid "Add a post"
 msgstr ""
 
-#: [notifs]title
-msgid "Pending Invitations"
+#: [notifs]title [onboarding]notifications_title
+#, fuzzy
+msgid "Notifications"
+msgstr "Kefluniadur"
+
+#: [notifs]empty
+msgid "No new notifications"
 msgstr ""
 
-#: [notifs]wants_to_talk
-msgid "%s wants to talk with you"
+#: [onboarding]notifications_text
+msgid "Movim can notify you when a new post is published or if you receive messages"
+msgstr ""
+
+#: [onboarding]notifications_text_second
+msgid "You can always disable them afterwards"
+msgstr ""
+
+#: [onboarding]public_title
+#, fuzzy
+msgid "Public profile"
+msgstr "Profil"
+
+#: [onboarding]public_text
+msgid "Make your profile public and allow other users to find you and make new contacts more easily"
+msgstr ""
+
+#: [onboarding]public_text_second
+msgid "You can always disable this in the configuration afterwards"
+msgstr ""
+
+#: [onboarding]popups_title
+msgid "Popups"
+msgstr ""
+
+#: [onboarding]popups_text
+msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
+msgstr ""
+
+#: [onboarding]popups_text_second
+msgid "Please be sure that they are enabled to use this feature properly"
 msgstr ""
 
 #: [post]news_feed
@@ -1530,8 +1530,20 @@ msgstr ""
 msgid "Chatrooms"
 msgstr ""
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
+msgstr ""
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr ""
+
+#: [chatrooms]empty_name
+msgid "Empty name"
 msgstr ""
 
 #: [chatrooms]users
@@ -1544,6 +1556,10 @@ msgstr ""
 
 #: [chatrooms]conflict
 msgid "Username already taken"
+msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
 msgstr ""
 
 #: [room]anonymous_title
@@ -1652,14 +1668,6 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr ""
-
-#: [share]success
-msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1967,10 +1975,6 @@ msgstr ""
 msgid "Upload"
 msgstr ""
 
-#: [button]come_in
-msgid "Come in!"
-msgstr "Deuit e-barzh !"
-
 #: [button]connecting
 msgid "Connecting"
 msgstr ""
@@ -2010,6 +2014,18 @@ msgstr ""
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr ""
+
+#: [button]not_now
+msgid "Not Now"
+msgstr ""
+
+#: [button]enable
+msgid "Enable"
 msgstr ""
 
 #: [day]title
@@ -2673,3 +2689,20 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#, fuzzy
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Anv"
+
+#, fuzzy
+#~ msgid "Configure"
+#~ msgstr "Kefluniadur"
+
+#, fuzzy
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Anv"
+
+#~ msgid "Come in!"
+#~ msgstr "Deuit e-barzh !"

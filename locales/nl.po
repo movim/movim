@@ -25,8 +25,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -57,6 +55,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Invitations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -64,6 +64,8 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Post/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -76,8 +78,6 @@
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -96,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 17:28+0200\n"
+"POT-Creation-Date: 2017-02-01 19:34+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -223,10 +223,6 @@ msgstr "Het registratie-systeem van deze server is momenteel niet bereikbaar"
 #: [error]forbidden
 msgid "Registration forbidden"
 msgstr ""
-
-#: [oob]about
-msgid "This server use an external system for the registration, please click on the following URL."
-msgstr "Deze server gebruikt een extern registratie-systeem, gelieve op onderstaande link te klikken."
 
 #: [adhoc]title
 msgid "Actions"
@@ -527,74 +523,6 @@ msgstr "Deze gebruiker heeft momenteel niets gepost"
 msgid "This content is private, please login to see it"
 msgstr "Deze data is privé, log in om dit te zien."
 
-#: [title]conferences
-#, fuzzy
-msgid "Conferences"
-msgstr "Visioconferentie"
-
-#: [title]groups [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Groepen"
-
-#: [chatroom]add
-#, fuzzy
-msgid "Add a new Chat Room"
-msgstr "Voeg de chatroom toe"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Chatroom ID"
-
-#: [chatroom]name
-#, fuzzy
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Naam"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "bijnaam"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Onjuist Chatroom-ID"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Lege naam"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Favoriet bijgewerkt"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-#, fuzzy
-msgid "Configure"
-msgstr "Configuratie"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-#, fuzzy
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Naam"
-
 #: [message]published
 msgid "Message Published"
 msgstr "Bericht gepubliceerd"
@@ -721,7 +649,7 @@ msgstr "Deze server bestaat niet"
 msgid "Group created successfully"
 msgstr "Groep aangemaakt"
 
-#: [communitiesserver]empty_server
+#: [communitiesserver]empty_server [groups]empty_server
 msgid "There is no Groups yet on this server."
 msgstr ""
 
@@ -766,6 +694,32 @@ msgstr "Weet je zeker dat je deze groep wil verwijderen?"
 msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Blijkbaar bestaat deze groep niet meer. Verwijder deze groep van je abonnementen"
 
+#: [communityaffiliation]owner
+msgid "Owner"
+msgstr ""
+
+#: [communityaffiliation]owners
+msgid "Owners"
+msgstr ""
+
+#: [communityaffiliation]publisher
+#, fuzzy
+msgid "Publisher"
+msgstr "Publiceer"
+
+#: [communityaffiliation]publishers
+#, fuzzy
+msgid "Publishers"
+msgstr "Publiceer"
+
+#: [communityaffiliation]roles
+msgid "Roles"
+msgstr ""
+
+#: [communityaffiliation]role_set
+msgid "Role correctly set"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr "%s geabbonneerde"
@@ -782,6 +736,19 @@ msgstr "Abbonneer"
 msgid "Unsubscribe"
 msgstr "Uitschrijven"
 
+#: [communityheader]subscribed [group]subscribed
+msgid "Subscribed"
+msgstr "Geabonneerd"
+
+#: [communityheader]unsubscribed [group]unsubscribed
+msgid "Unsubscribed"
+msgstr "Uitgeschreven"
+
+#: [communityheader]subscription_unsupported
+#, fuzzy
+msgid "The subscriptions are disabled for this community"
+msgstr "geef een label voor deze groep"
+
 #: [communityheader]label_label
 #, fuzzy
 msgid "Give a label for this community"
@@ -791,12 +758,12 @@ msgstr "geef een label voor deze groep"
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 #, fuzzy
 msgid "Share this subscription publicly"
 msgstr "Post dit bericht openbaar?"
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -861,14 +828,6 @@ msgstr ""
 msgid "Advanced Configuration"
 msgstr "Geavanceerde configuratie"
 
-#: [notifications]message
-msgid "Notify on incoming message"
-msgstr "Melding op inkomend bericht"
-
-#: [notifications]desktop
-msgid "Use desktop notifications"
-msgstr "Gebruik desktop notificaties"
-
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr ""
@@ -880,6 +839,10 @@ msgstr "Algemene informatie"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Naam"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "bijnaam"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1021,17 +984,9 @@ msgstr "Uitnodigen"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Deze contactpersoon zit in je contactenlijst, maar deze is niet geabonneerd"
 
-#: [group]subscribed
-msgid "Subscribed"
-msgstr "Geabonneerd"
-
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Je gaat je uitschrijven uit deze Groep"
-
-#: [group]unsubscribed
-msgid "Unsubscribed"
-msgstr "Uitgeschreven"
 
 #: [group]share_label
 msgid "Make your membership to this group public to your friends"
@@ -1040,6 +995,10 @@ msgstr "Maak je lidmaadschap op deze groep publiek naar je vrienden"
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "geef een label voor deze groep"
+
+#: [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Groepen"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1156,6 +1115,14 @@ msgstr ""
 #: [init]microblog
 msgid "Microblog node created"
 msgstr ""
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr ""
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s wil met je praten"
 
 #: [error]username
 msgid "Wrong username"
@@ -1300,13 +1267,48 @@ msgstr "Contactpersonen"
 msgid "Add a post"
 msgstr ""
 
-#: [notifs]title
-msgid "Pending Invitations"
+#: [notifs]title [onboarding]notifications_title
+#, fuzzy
+msgid "Notifications"
+msgstr "Gebruik desktop notificaties"
+
+#: [notifs]empty
+#, fuzzy
+msgid "No new notifications"
+msgstr "Gebruik desktop notificaties"
+
+#: [onboarding]notifications_text
+msgid "Movim can notify you when a new post is published or if you receive messages"
 msgstr ""
 
-#: [notifs]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s wil met je praten"
+#: [onboarding]notifications_text_second
+msgid "You can always disable them afterwards"
+msgstr ""
+
+#: [onboarding]public_title
+#, fuzzy
+msgid "Public profile"
+msgstr "Openbare groepen"
+
+#: [onboarding]public_text
+msgid "Make your profile public and allow other users to find you and make new contacts more easily"
+msgstr ""
+
+#: [onboarding]public_text_second
+msgid "You can always disable this in the configuration afterwards"
+msgstr ""
+
+#: [onboarding]popups_title
+msgid "Popups"
+msgstr ""
+
+#: [onboarding]popups_text
+msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
+msgstr ""
+
+#: [onboarding]popups_text_second
+msgid "Please be sure that they are enabled to use this feature properly"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1545,9 +1547,21 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "Chatrooms"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Chatroom ID"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr ""
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Onjuist Chatroom-ID"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Lege naam"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1560,6 +1574,10 @@ msgstr "Voer een geldige nickname in (2 tot 40 tekens)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Favoriet bijgewerkt"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1667,15 +1685,6 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
-
-#: [share]error
-#, fuzzy
-msgid "This is not a valid url"
-msgstr "Voer een geldig url in alstublieft"
-
-#: [share]success
-msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1986,10 +1995,6 @@ msgstr ""
 msgid "Upload"
 msgstr "Uploaden"
 
-#: [button]come_in
-msgid "Come in!"
-msgstr "Kom binnen!"
-
 #: [button]connecting
 msgid "Connecting"
 msgstr ""
@@ -2029,6 +2034,18 @@ msgstr ""
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
+msgstr ""
+
+#: [button]like
+msgid "Like"
+msgstr ""
+
+#: [button]not_now
+msgid "Not Now"
+msgstr ""
+
+#: [button]enable
+msgid "Enable"
 msgstr ""
 
 #: [day]title
@@ -2692,6 +2709,41 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "This server use an external system for the registration, please click on the following URL."
+#~ msgstr "Deze server gebruikt een extern registratie-systeem, gelieve op onderstaande link te klikken."
+
+#, fuzzy
+#~ msgid "Conferences"
+#~ msgstr "Visioconferentie"
+
+#, fuzzy
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Voeg de chatroom toe"
+
+#, fuzzy
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#, fuzzy
+#~ msgid "Configure"
+#~ msgstr "Configuratie"
+
+#, fuzzy
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "Notify on incoming message"
+#~ msgstr "Melding op inkomend bericht"
+
+#, fuzzy
+#~ msgid "This is not a valid url"
+#~ msgstr "Voer een geldig url in alstublieft"
+
+#~ msgid "Come in!"
+#~ msgstr "Kom binnen!"
 
 #~ msgid "Status"
 #~ msgstr "status"

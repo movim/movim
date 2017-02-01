@@ -25,8 +25,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -57,6 +55,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Invitations/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Login/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/LoginAnonymous/locales.ini
@@ -64,6 +64,8 @@
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Onboarding/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Post/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -76,8 +78,6 @@
 #. extracted from ../app/widgets/Roster/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -96,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 17:28+0200\n"
+"POT-Creation-Date: 2017-02-01 19:34+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -223,10 +223,6 @@ msgstr "Система регистрации на этом сервере в д
 #: [error]forbidden
 msgid "Registration forbidden"
 msgstr "Регистрация запрещена"
-
-#: [oob]about
-msgid "This server use an external system for the registration, please click on the following URL."
-msgstr "Данный сервер использует внешнюю систему регистрации, пожалуйста, пройдите по следующей ссылке."
 
 #: [adhoc]title
 msgid "Actions"
@@ -527,74 +523,6 @@ msgstr "Этот пользователь ещё ничего не публик�
 msgid "This content is private, please login to see it"
 msgstr "Этот контент приватный, пожалуйста авторизуйтесь, чтобы посмотреть его"
 
-#: [title]conferences
-#, fuzzy
-msgid "Conferences"
-msgstr "Visio-конференция"
-
-#: [title]groups [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Группы"
-
-#: [chatroom]add
-#, fuzzy
-msgid "Add a new Chat Room"
-msgstr "Добавить комнату"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID комнаты"
-
-#: [chatroom]name
-#, fuzzy
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Имя"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Псевдоним"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Неверный ID комнаты"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Имя не задано"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Закладки обновлены"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-#, fuzzy
-msgid "Configure"
-msgstr "Настройки"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-#, fuzzy
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Имя"
-
 #: [message]published
 msgid "Message Published"
 msgstr "Сообщение опубликовано"
@@ -721,7 +649,7 @@ msgstr "Такой сервер не существует"
 msgid "Group created successfully"
 msgstr "Группа успешно создана"
 
-#: [communitiesserver]empty_server
+#: [communitiesserver]empty_server [groups]empty_server
 msgid "There is no Groups yet on this server."
 msgstr "На этом сервере пока нет групп"
 
@@ -766,6 +694,32 @@ msgstr "Вы собираетесь  удалить следующую груп�
 msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Похоже эта группа больше не существует. Удалить ее из списка ваших подписок?"
 
+#: [communityaffiliation]owner
+msgid "Owner"
+msgstr ""
+
+#: [communityaffiliation]owners
+msgid "Owners"
+msgstr ""
+
+#: [communityaffiliation]publisher
+#, fuzzy
+msgid "Publisher"
+msgstr "Опубликовать"
+
+#: [communityaffiliation]publishers
+#, fuzzy
+msgid "Publishers"
+msgstr "Опубликовать"
+
+#: [communityaffiliation]roles
+msgid "Roles"
+msgstr ""
+
+#: [communityaffiliation]role_set
+msgid "Role correctly set"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr "%s подписчиков"
@@ -782,6 +736,19 @@ msgstr "Подписаться"
 msgid "Unsubscribe"
 msgstr "Отписаться"
 
+#: [communityheader]subscribed [group]subscribed
+msgid "Subscribed"
+msgstr "Подписано"
+
+#: [communityheader]unsubscribed [group]unsubscribed
+msgid "Unsubscribed"
+msgstr "Неподписанный"
+
+#: [communityheader]subscription_unsupported
+#, fuzzy
+msgid "The subscriptions are disabled for this community"
+msgstr "Дайте название для этой группы"
+
 #: [communityheader]label_label
 #, fuzzy
 msgid "Give a label for this community"
@@ -791,12 +758,12 @@ msgstr "Дайте название для этой группы"
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 #, fuzzy
 msgid "Share this subscription publicly"
 msgstr "Сделать пост доступным всем?"
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -861,14 +828,6 @@ msgstr "Неправильные настройки"
 msgid "Advanced Configuration"
 msgstr "Расширенные настройки"
 
-#: [notifications]message
-msgid "Notify on incoming message"
-msgstr "Оповещать о входящих сообщениях"
-
-#: [notifications]desktop
-msgid "Use desktop notifications"
-msgstr "Использовать оповещения ОС"
-
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "Указать URL собственного CSS для вашего блога"
@@ -880,6 +839,10 @@ msgstr "Общая информация"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Имя"
+
+#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Псевдоним"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1021,17 +984,9 @@ msgstr "Приглашение"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Контакт находится в вашем контакт-листе, но нет подписки между аккаунтами"
 
-#: [group]subscribed
-msgid "Subscribed"
-msgstr "Подписано"
-
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Вы собираетесь отписаться от этой группы"
-
-#: [group]unsubscribed
-msgid "Unsubscribed"
-msgstr "Неподписанный"
 
 #: [group]share_label
 msgid "Make your membership to this group public to your friends"
@@ -1040,6 +995,10 @@ msgstr "Раскрыть ваше членство в данной группе 
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "Дайте название для этой группы"
+
+#: [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Группы"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1156,6 +1115,14 @@ msgstr "Создан узел подписок"
 #: [init]microblog
 msgid "Microblog node created"
 msgstr "Создан узел микроблога"
+
+#: [invitations]title
+msgid "Pending Invitations"
+msgstr "Ожидающие решения приглашения"
+
+#: [invitations]wants_to_talk
+msgid "%s wants to talk with you"
+msgstr "%s хочет поговорить с Вами"
 
 #: [error]username
 msgid "Wrong username"
@@ -1300,13 +1267,48 @@ msgstr "Контакты"
 msgid "Add a post"
 msgstr "Добавить публикацию"
 
-#: [notifs]title
-msgid "Pending Invitations"
-msgstr "Ожидающие решения приглашения"
+#: [notifs]title [onboarding]notifications_title
+#, fuzzy
+msgid "Notifications"
+msgstr "Использовать оповещения ОС"
 
-#: [notifs]wants_to_talk
-msgid "%s wants to talk with you"
-msgstr "%s хочет поговорить с Вами"
+#: [notifs]empty
+#, fuzzy
+msgid "No new notifications"
+msgstr "Использовать оповещения ОС"
+
+#: [onboarding]notifications_text
+msgid "Movim can notify you when a new post is published or if you receive messages"
+msgstr ""
+
+#: [onboarding]notifications_text_second
+msgid "You can always disable them afterwards"
+msgstr ""
+
+#: [onboarding]public_title
+#, fuzzy
+msgid "Public profile"
+msgstr "Открытые Группы"
+
+#: [onboarding]public_text
+msgid "Make your profile public and allow other users to find you and make new contacts more easily"
+msgstr ""
+
+#: [onboarding]public_text_second
+msgid "You can always disable this in the configuration afterwards"
+msgstr ""
+
+#: [onboarding]popups_title
+msgid "Popups"
+msgstr ""
+
+#: [onboarding]popups_text
+msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
+msgstr ""
+
+#: [onboarding]popups_text_second
+msgid "Please be sure that they are enabled to use this feature properly"
+msgstr ""
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1546,9 +1548,21 @@ msgstr "Добавьте с помощью кнопки \"Добавить\""
 msgid "Chatrooms"
 msgstr "Комнаты"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID комнаты"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Мои любимые комнаты"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Неверный ID комнаты"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Имя не задано"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1561,6 +1575,10 @@ msgstr "Введите корректный псевдоним (от 2 до 40 �
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Имя пользователя уже используется"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Закладки обновлены"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1669,15 +1687,6 @@ msgstr "Что вы хотите найти?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Откройте меня, используя Ctrl+M"
-
-#: [share]error
-#, fuzzy
-msgid "This is not a valid url"
-msgstr "Введите верную ссылку"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1987,10 +1996,6 @@ msgstr "Очистить"
 msgid "Upload"
 msgstr "Загрузить"
 
-#: [button]come_in
-msgid "Come in!"
-msgstr "Войти!"
-
 #: [button]connecting
 msgid "Connecting"
 msgstr "Идет подключение"
@@ -2031,6 +2036,18 @@ msgstr "Поиск"
 msgctxt "[button]share"
 msgid "Share"
 msgstr "Поделиться"
+
+#: [button]like
+msgid "Like"
+msgstr ""
+
+#: [button]not_now
+msgid "Not Now"
+msgstr ""
+
+#: [button]enable
+msgid "Enable"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2693,6 +2710,41 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "This server use an external system for the registration, please click on the following URL."
+#~ msgstr "Данный сервер использует внешнюю систему регистрации, пожалуйста, пройдите по следующей ссылке."
+
+#, fuzzy
+#~ msgid "Conferences"
+#~ msgstr "Visio-конференция"
+
+#, fuzzy
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Добавить комнату"
+
+#, fuzzy
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Имя"
+
+#, fuzzy
+#~ msgid "Configure"
+#~ msgstr "Настройки"
+
+#, fuzzy
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Имя"
+
+#~ msgid "Notify on incoming message"
+#~ msgstr "Оповещать о входящих сообщениях"
+
+#, fuzzy
+#~ msgid "This is not a valid url"
+#~ msgstr "Введите верную ссылку"
+
+#~ msgid "Come in!"
+#~ msgstr "Войти!"
 
 #~ msgid "Status"
 #~ msgstr "Состояние"
