@@ -34,6 +34,8 @@ class Message extends Model {
     public $sticker; // The sticker code
     public $quoted;  // If the user was quoted in the message
 
+    public $file;
+
     public $rtl = false;
 
     public $_struct = [
@@ -52,6 +54,7 @@ class Message extends Model {
         'picture'   => ['type' => 'text'],
         'sticker'   => ['type' => 'string','size' => 128],
         'quoted'    => ['type' => 'int','size' => 1],
+        'file'      => ['type' => 'serialized']
     ];
 
     public function set($stanza, $parent = false)
@@ -129,6 +132,27 @@ class Message extends Model {
                 $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
             else
                 $this->published = gmdate('Y-m-d H:i:s');
+
+            if($stanza->reference) {
+                $this->file = [];
+
+                $file = $stanza->reference->{'media-sharing'}->file;
+                if(isset($file)) {
+                    if(preg_match('/\w+\/[-+.\w]+/', $file->{'media-type'}) == 1) {
+                        $this->file['type'] = (string)$file->{'media-type'};
+                    }
+                    $this->file['size'] = (int)$file->size;
+                    $this->file['name'] = (string)$file->name;
+                }
+
+                if($stanza->reference->{'media-sharing'}->sources) {
+                    $source = $stanza->reference->{'media-sharing'}->sources->reference;
+
+                    if(!filter_var((string)$source->attributes()->uri, FILTER_VALIDATE_URL) === false) {
+                        $this->file['uri'] = (string)$source->attributes()->uri;
+                    }
+                }
+            }
 
             return $this->checkPicture();
         }

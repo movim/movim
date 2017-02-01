@@ -15,7 +15,8 @@ class MessageDAO extends SQL
                     delivered       = :delivered,
                     edited          = :edited,
                     picture         = :picture,
-                    quoted          = :quoted
+                    quoted          = :quoted,
+                    file            = :file
 
                 where session       = :session
                     and id          = :id
@@ -32,6 +33,7 @@ class MessageDAO extends SQL
                 'edited'    => $message->edited,
                 'picture'   => $message->picture,
                 'quoted'    => $message->quoted,
+                'file'      => $message->file,
                 'jidfrom'   => $message->jidfrom,
                 'body'      => $message->body,
                 'html'      => $message->html,
@@ -56,6 +58,7 @@ class MessageDAO extends SQL
                 thread,
                 body,
                 html,
+                file,
                 published,
                 delivered,
                 sticker,
@@ -72,6 +75,7 @@ class MessageDAO extends SQL
                     :thread,
                     :body,
                     :html,
+                    :file,
                     :published,
                     :delivered,
                     :sticker,
@@ -92,6 +96,7 @@ class MessageDAO extends SQL
                     'thread'    => $message->thread,
                     'body'      => $message->body,
                     'html'      => $message->html,
+                    'file'      => $message->file,
                     'published' => $message->published,
                     'delivered' => $message->delivered,
                     'sticker'   => $message->sticker,
