@@ -188,6 +188,11 @@ var Chat = {
             bubble.querySelector('p.user').innerHTML = messages[i].resource;
             if(conversation) {
                 conversation.appendChild(bubble);
+                if (messages[i].sticker != null) {
+                    MovimUtils.addClass(bubble.querySelector('p.message'), 'sticker');
+                    bubble.querySelector('p.message').innerHTML = "";
+                    conversation.appendChild(Chat.getStickerHtml(messages[i].sticker));
+                }
             }
         }
     },
