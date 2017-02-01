@@ -25,4 +25,7 @@
     <a onclick="Dialog_ajaxClear(); Upload.abort();" class="button flat">
         {$c->__('button.close')}
     </a>
+    <a onclick="Upload.init();" class="button flat">
+        {$c->__('button.upload')}
+    </a>
 </div>

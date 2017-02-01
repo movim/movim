@@ -27,7 +27,6 @@ class Upload extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         Dialog::fill($view->draw('_upload', true));
-        RPC::call('Upload.init');
     }
 
     function ajaxSend($file)

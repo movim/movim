@@ -6,13 +6,9 @@ var Upload = {
     file : null,
 
     init : function() {
-        document.getElementById('file').addEventListener('change', function(){
-            var file = this.files[0];
-
-            Upload.name = file.name;
-
-            Upload.preview(file);
-        });
+        var file = document.getElementById('file').files[0];
+        Upload.name = file.name;
+        Upload.preview(file);
     },
 
     attach : function(func) {
@@ -23,7 +19,12 @@ var Upload = {
 
     launchAttached : function() {
         for(var i = 0; i < Upload.attached.length; i++) {
-            Upload.attached[i]();
+            Upload.attached[i]({
+                name: Upload.name,
+                size: Upload.file.size,
+                type: Upload.file.type,
+                uri:  Upload.get
+            });
         }
     },
 

@@ -404,11 +404,9 @@ MovimWebsocket.attach(function() {
 });
 
 if(typeof Upload != 'undefined') {
-    Upload.attach(function() {
+    Upload.attach(function(file) {
         var textarea = document.querySelector('#chat_textarea');
-        textarea.value = Upload.get + ' ' + textarea.value;
-        textarea.focus();
-        MovimUtils.textareaAutoheight(textarea);
+        Chat_ajaxSendMessage(textarea.dataset.jid, false, false, false, false, file);
     });
 }
 

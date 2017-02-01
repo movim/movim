@@ -263,9 +263,13 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message, $muc = false, $resource = false, $replace = false)
+    function ajaxSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
-        $body = (string)htmlentities(trim(rawurldecode($message)), ENT_XML1, 'UTF-8', false);
+        if($file != false) {
+            $body = $file->uri;
+        } else {
+            $body = (string)htmlentities(trim(rawurldecode($message)), ENT_XML1, 'UTF-8', false);
+        }
 
         if($body == '' || $body == '/me')
             return;
@@ -318,6 +322,10 @@ class Chat extends \Movim\Widget\Base
 
         if($muc) {
             $p->setMuc();
+        }
+
+        if($file) {
+            $p->setFile($file);
         }
 
         $p->request();
