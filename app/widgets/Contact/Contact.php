@@ -8,7 +8,7 @@ use Moxl\Xec\Action\PubsubSubscription\Get as GetSubscriptions;
 
 class Contact extends \Movim\Widget\Base
 {
-    private $_paging = 12;
+    private $_paging = 8;
 
     function load()
     {
@@ -213,7 +213,7 @@ class Contact extends \Movim\Widget\Base
     function prepareEmpty($page = 0, $jid = null)
     {
         if($jid == null) {
-            $cd = new \modl\ContactDAO();
+            $cd = new \Modl\ContactDAO;
             $count = $cd->countAllPublic();
             if($count != 0){
                 $view = $this->tpl();
@@ -244,6 +244,10 @@ class Contact extends \Movim\Widget\Base
         $count = $cd->countAllPublic();
         if($users != null){
             $view = $this->tpl();
+
+            $nd = new \Modl\PostnDAO;
+
+            $view->assign('blogs', $nd->getLastBlogPublic(0, 8));
             $view->assign('pages', array_fill(0, (int)($count/$this->_paging), 'p'));
             $view->assign('users', $users);
             $view->assign('page', $page);
