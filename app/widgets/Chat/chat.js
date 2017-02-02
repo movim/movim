@@ -406,7 +406,8 @@ MovimWebsocket.attach(function() {
 if(typeof Upload != 'undefined') {
     Upload.attach(function(file) {
         var textarea = document.querySelector('#chat_textarea');
-        Chat_ajaxSendMessage(textarea.dataset.jid, false, false, false, false, file);
+
+        Chat_ajaxSendMessage(textarea.dataset.jid, false, Boolean(textarea.dataset.muc), false, false, file);
     });
 }
 
