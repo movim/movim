@@ -1,4 +1,4 @@
-<ul class="list flex active">
+<ul class="list flex active middle">
 {loop="$users"}
     <li class="block" title="{$value->jid}" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}', {if="$page"}{$page}{else}0{/if});">
         {$url = $value->getPhoto('l')}

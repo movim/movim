@@ -8,7 +8,7 @@ use Moxl\Xec\Action\PubsubSubscription\Get as GetSubscriptions;
 
 class Contact extends \Movim\Widget\Base
 {
-    private $_paging = 8;
+    private $_paging = 10;
 
     function load()
     {
