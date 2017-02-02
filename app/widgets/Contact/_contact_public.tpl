@@ -25,16 +25,7 @@
 
         <p>
             {$value->description|strip_tags|truncate:80}
-            {if="$value->description != ''"}<br />{/if}
-            {if="$value->getAge()"}
-                <span class="tag color gray">{$c->__('age.years', $value->getAge())}</span>
-            {/if}
-            {if="$value->getGender()"}
-                <span class="tag color
-                {if="$value->gender == 'M'"}blue{/if}
-                {if="$value->gender == 'F'"}red{/if}
-                ">{$value->getGender()}</span>
-            {/if}
+            {if="empty($value->description)"}-{/if}
         </p>
     </li>
 {/loop}
