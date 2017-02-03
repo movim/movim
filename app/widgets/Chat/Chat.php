@@ -372,8 +372,10 @@ class Chat extends \Movim\Widget\Base
         $md = new \Modl\MessageDAO;
         $m = $md->getLastItem($to);
 
-        if(!isset($m->sticker))
+        if(!isset($m->sticker)
+        && !isset($m->file)) {
             RPC::call('Chat.setTextarea', $m->body);
+        }
     }
 
     /**
