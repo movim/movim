@@ -268,8 +268,8 @@ var Chat = {
 
             id = MovimUtils.cleanupId(id);
 
-            bubble.querySelector('div.bubble').setAttribute("data-bubble", jidtime);
-            bubble.querySelector('div.bubble').setAttribute("data-publishedPrepared", data.publishedPrepared);
+            bubble.querySelector('div.bubble').dataset.bubble = jidtime;
+            bubble.querySelector('div.bubble').dataset.publishedprepared = data.publishedPrepared;
         }
 
         var msg = bubble.querySelector('div.bubble > div');
