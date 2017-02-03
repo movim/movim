@@ -107,11 +107,14 @@ class Vcard4 extends \Movim\Widget\Base
         # Format it ISO 8601:
         if($vcard->year->value  != -1
         && $vcard->month->value != -1
-        && $vcard->day->value   != -1)
+        && $vcard->day->value   != -1) {
             $vcard->date->value =
                     $vcard->year->value.'-'.
                     $vcard->month->value.'-'.
                     $vcard->day->value;
+        } else {
+            $vcard->date->value = null;
+        }
 
         unset($vcard->year->value);
         unset($vcard->month->value);
@@ -124,10 +127,7 @@ class Vcard4 extends \Movim\Widget\Base
             $c = new \Modl\Contact();
 
         $c->jid     = $this->user->getLogin();
-
-        if(isset($vcard->date->value)) {
-            $c->date = $vcard->date->value;
-        }
+        $c->date = $vcard->date->value;
 
         if(Validator::stringType()->length(0, 40)->validate($vcard->name->value)) {
             $c->name    = $vcard->name->value;
