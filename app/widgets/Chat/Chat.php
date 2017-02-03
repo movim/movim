@@ -325,6 +325,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         if($file) {
+            $m->file = (array)$file;
             $p->setFile($file);
         }
 
@@ -583,11 +584,30 @@ class Chat extends \Movim\Widget\Base
 
     function prepareMessage(&$message, $jid = null)
     {
-        if($jid != $message->jidto && $jid != $message->jidfrom && $jid != null)
+        if ($jid != $message->jidto && $jid != $message->jidfrom && $jid != null) {
             return $this->_wrapper;
+        }
 
         $message->jidto = echapJS($message->jidto);
         $message->jidfrom = echapJS($message->jidfrom);
+
+        // Attached file
+        if (isset($message->file)) {
+            if (!$message->isTrusted()) {
+                $message->file = null;
+            } else {
+                if($message->body == $message->file['uri']) {
+                    $message->body = null;
+                }
+
+                if(typeIsPicture($message->file['type'])
+                && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
+                    $message->picture = $message->file['uri'];
+                }
+
+                $message->file['size'] = sizeToCleanSize($message->file['size']);
+            }
+        }
 
         if (isset($message->html)) {
             $message->body = $message->html;
@@ -596,6 +616,7 @@ class Chat extends \Movim\Widget\Base
             $message->addUrls();
         }
 
+        // Sticker message
         if (isset($message->sticker)) {
             $p = new Picture;
             $sticker = $p->get($message->sticker, false, false, 'png');
@@ -624,7 +645,6 @@ class Chat extends \Movim\Widget\Base
         }
 
         $message->rtl = isRTL($message->body);
-
         $message->publishedPrepared = prepareDate(strtotime($message->published), true);
 
         if ($message->delivered) {
@@ -633,48 +653,23 @@ class Chat extends \Movim\Widget\Base
 
         $date = substr($message->published, 0, 10);
 
+        // We create the date wrapper
+        if (!array_key_exists($date, $this->_wrapper)) {
+            $this->_wrapper[$date] = [];
+        }
+
         if ($message->type == 'groupchat') {
             $message->color = stringToColor($message->session . $message->resource . $message->jidfrom . $message->type);
 
-            //fillup $wrapper
-            if ($message->body != "") {
-                if (!array_key_exists($date, $this->_wrapper)) {
-                    $this->_wrapper[$date] = [$message];
-                } else {
-                    array_push($this->_wrapper[$date], $message);
-                }
+            if (!empty($message->body)) {
+                array_push($this->_wrapper[$date], $message);
             }
         } else {
-            $msgkey = $message->jidfrom . '>' . substr($message->published, 11, 5);
+            $msgkey = '<' . $message->jidfrom . '>' . substr($message->published, 11, 5);
 
-            //fillup $wrapper
-            if (!array_key_exists($date, $this->_wrapper)) {
-                $sticker = "";
+            $counter = count($this->_wrapper[$date]);
 
-                if (isset($message->sticker)) {
-                    $sticker = "sticker";
-                }
-
-                $this->_wrapper[$date] = ['0' . $sticker . '<' . $msgkey => [$message]];
-            } else { //date contains at least one speaker@time=>msg already
-                end($this->_wrapper[$date]);
-                $lastkey = key($this->_wrapper[$date]);
-
-                if (substr($lastkey, strpos($lastkey, '<') + 1) == $msgkey // same jidfrom, same min
-                    && !isset($message->sticker) // this msg is not a sticker
-                    && strpos($lastkey, "sticker<") === false
-                ) { // the previous msg was not a sticker
-                    array_push($this->_wrapper[$date][$lastkey], $message);
-                } else {
-                    $sticker = "";
-
-                    if (isset($message->sticker)) {
-                        $sticker = "sticker";
-                    }
-
-                    $this->_wrapper[$date][count($this->_wrapper[$date]) . $sticker . '<' . $msgkey] = [$message];
-                }
-            }
+            $this->_wrapper[$date][$counter.$msgkey] = $message;
         }
 
         return $this->_wrapper;

@@ -76,6 +76,7 @@
 #chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr) {
     border-radius: 0.5rem;
     max-height: 135px;
+    margin-bottom: 0.5rem;
     width: auto;
 }
 
@@ -167,4 +168,18 @@ table.emojis td:hover {
         left: 0;
         width: 100%;
     }
+}
+
+/* File preview */
+#chat_widget div.file:not(.bubble) {
+    display: inline-block;
+}
+
+#chat_widget div.file:not(.bubble) a {
+    padding: 1rem 0;
+}
+
+#chat_widget div.file:not(.bubble) span.size {
+    color: gray;
+    padding-left: 1rem;
 }

@@ -134,23 +134,30 @@ class Message extends Model {
                 $this->published = gmdate('Y-m-d H:i:s');
 
             if($stanza->reference) {
-                $this->file = [];
+                $filetmp = [];
 
                 $file = $stanza->reference->{'media-sharing'}->file;
                 if(isset($file)) {
                     if(preg_match('/\w+\/[-+.\w]+/', $file->{'media-type'}) == 1) {
-                        $this->file['type'] = (string)$file->{'media-type'};
+                        $filetmp['type'] = (string)$file->{'media-type'};
                     }
-                    $this->file['size'] = (int)$file->size;
-                    $this->file['name'] = (string)$file->name;
+                    $filetmp['size'] = (int)$file->size;
+                    $filetmp['name'] = (string)$file->name;
                 }
 
                 if($stanza->reference->{'media-sharing'}->sources) {
                     $source = $stanza->reference->{'media-sharing'}->sources->reference;
 
                     if(!filter_var((string)$source->attributes()->uri, FILTER_VALIDATE_URL) === false) {
-                        $this->file['uri'] = (string)$source->attributes()->uri;
+                        $filetmp['uri'] = (string)$source->attributes()->uri;
                     }
+                }
+
+                if(array_key_exists('uri', $filetmp)
+                && array_key_exists('type', $filetmp)
+                && array_key_exists('size', $filetmp)
+                && array_key_exists('name', $filetmp)) {
+                    $this->file = $filetmp;
                 }
             }
 
@@ -179,6 +186,14 @@ class Message extends Model {
     {
         $emoji = \MovimEmoji::getInstance();
         $this->body = addHFR($emoji->replace($this->body));
+    }
+
+    public function isTrusted()
+    {
+        $rd = new \Modl\RosterLinkDAO;
+
+        return ($this->session == $this->jidfrom
+            || $rd->get($this->jidfrom) !== null);
     }
 
     public function addUrls()

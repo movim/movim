@@ -325,7 +325,7 @@ ul li div.bubble[dir="rtl"] {
     text-align: right;
 }
 
-ul li div.bubble:not(.sticker) {
+ul li div.bubble:not(.sticker):not(.file) {
     padding: 1rem 1.75rem 0.5rem;
     border-radius: 0.5rem;
     line-height: 2.75rem;
@@ -348,7 +348,11 @@ ul li.oppose div.bubble {
     position: initial;
 }
 
-ul li.oppose div.bubble:not(.sticker) {
+ul li.oppose div.bubble.file {
+    word-break: break-all;
+}
+
+ul li.oppose div.bubble:not(.sticker):not(.file) {
     background-color: #f5f5f5;
 }
 
@@ -385,7 +389,7 @@ ul li .quote {
     font-style: italic;
 }
 
-ul li div.bubble:not(.sticker):before {
+ul li div.bubble:not(.sticker):not(.file):before {
     content: "";
     position: absolute;
     top: 0;
@@ -396,7 +400,7 @@ ul li div.bubble:not(.sticker):before {
     border-right: 1.5rem solid transparent;
 }
 
-ul li.oppose div.bubble:not(.sticker):before {
+ul li.oppose div.bubble:not(.sticker):not(.file):before {
     left: calc(100% - 10.5rem);
     top: 0.75rem;
     border-top-color: #f5f5f5;

@@ -140,7 +140,6 @@ var Chat = {
             if(discussion.dataset.muc != true) {
                 if(this.scrollTop < 1) {
                     var chat = document.querySelector('#chat_widget');
-                    console.log(chat.dataset);
                     Chat_ajaxGetHistory(chat.dataset.jid, Chat.date);
                 }
             }
@@ -204,13 +203,14 @@ var Chat = {
 
             for(date in page) {
                 if (page[date].constructor == Array) { //groupchat
-                    if(!Chat.date)
+                    if(!Chat.date) {
                         Chat.date = page[date][0].published;
+                    }
                     Chat.appendMucMessages(date, page[date]);
                 } else {
                     for(speakertime in page[date]) {
                         if(!Chat.date)
-                            Chat.date = page[date][speakertime][0].published;
+                            Chat.date = page[date][speakertime].published;
                         Chat.appendSpeaker(speakertime, page[date][speakertime], prepend);
                     }
                 }
@@ -247,89 +247,96 @@ var Chat = {
             var stack = document.querySelectorAll("[data-bubble='" + jidtime + "']");
             msgStack = stack[stack.length-1];
         }
+
         if(msgStack != null
             && msgStack.parentNode == refBubble
-            && idjidtime.indexOf("sticker<") == -1
-            && !MovimUtils.hasClass(msgStack, "sticker")
+            && data.file === null
+            && data.sticker === null
+            && !MovimUtils.hasClass(refBubble.querySelector('div.bubble'), "sticker")
+            && !MovimUtils.hasClass(refBubble.querySelector('div.bubble'), "file")
         ){
             bubble = msgStack.parentNode;
             mergeMsg = true;
         } else {
-            if (data[0].session == data[0].jidfrom) {
+            if (data.session == data.jidfrom) {
                 bubble = Chat.right.cloneNode(true);
-                id = data[0].jidto + '_conversation';
+                id = data.jidto + '_conversation';
             } else {
                 bubble = Chat.left.cloneNode(true);
-                id = data[0].jidfrom + '_conversation';
+                id = data.jidfrom + '_conversation';
             }
 
             id = MovimUtils.cleanupId(id);
 
             bubble.querySelector('div.bubble').setAttribute("data-bubble", jidtime);
-            bubble.querySelector('div.bubble').setAttribute("data-publishedPrepared", data[0].publishedPrepared);
+            bubble.querySelector('div.bubble').setAttribute("data-publishedPrepared", data.publishedPrepared);
         }
 
         var msg = bubble.querySelector('div.bubble > div');
         var span = msg.getElementsByTagName('span')[0];
         var p = msg.getElementsByTagName('p')[0];
 
-        for(var i = 0, len = data.length; i < len; ++i) {
-            // If there is already a msg in this bubble, create another div (next msg or replacement)
-            if (bubble.querySelector('div.bubble p')
-            && bubble.querySelector('div.bubble p').innerHTML != "") {
-                msg = document.createElement("div");
-                p = document.createElement("p");
-                span = document.createElement("span");
-                span.className = "info";
-            }
+        // If there is already a msg in this bubble, create another div (next msg or replacement)
+        if (bubble.querySelector('div.bubble p')
+        && bubble.querySelector('div.bubble p').innerHTML != "") {
+            msg = document.createElement("div");
+            p = document.createElement("p");
+            span = document.createElement("span");
+            span.className = "info";
+        }
 
-            if (data[i].rtl) {
-                bubble.querySelector('div.bubble').setAttribute('dir', 'rtl');
-            }
+        if (data.rtl) {
+            bubble.querySelector('div.bubble').setAttribute('dir', 'rtl');
+        }
 
-            if (data[i].body.match(/^\/me\s/)) {
-                p.className = 'quote';
-                // Remove "/me " from beginning of body
-                data[i].body = data[i].body.substr(4);
-            }
+        if (data.body.match(/^\/me\s/)) {
+            p.className = 'quote';
+            // Remove "/me " from beginning of body
+            data.body = data.body.substr(4);
+        }
 
-            if (data[i].id != null) {
-                msg.setAttribute("id", data[i].id);
-                if (data[i].newid != null)
-                    msg.setAttribute("id", data[i].newid);
-            }
-
-            if (data[i].sticker != null) {
-                MovimUtils.addClass(bubble.querySelector('div.bubble'), 'sticker');
-                p.appendChild(Chat.getStickerHtml(data[i].sticker));
-            } else {
-                p.innerHTML = data[i].body.replace(/\r\n?|\n/g, '<br />');
-            }
-
-            if (data[i].edited) {
-                span.appendChild(Chat.getEditedIcoHtml());
-            }
-            if (data[i].delivered) {
-                span.appendChild(Chat.getDeliveredIcoHtml(data[i].delivered));
-            }
-
-            msg.appendChild(p);
-            msg.appendChild(span);
-
-            var elem = document.getElementById(data[i].id);
-            if (elem) {
-                elem.parentElement.replaceChild(msg, elem);
-                mergeMsg = true;
-            } else {
-                if(prepend)
-                    bubble.querySelector('div.bubble').insertBefore( msg, bubble.querySelector('div.bubble').firstChild );
-                else
-                    bubble.querySelector('div.bubble').appendChild(msg);
+        if (data.id != null) {
+            msg.setAttribute("id", data.id);
+            if (data.newid != null) {
+                msg.setAttribute("id", data.newid);
             }
         }
 
+        if (data.sticker != null) {
+            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'sticker');
+            p.appendChild(Chat.getStickerHtml(data.sticker));
+        } else {
+            p.innerHTML = data.body.replace(/\r\n?|\n/g, '<br />');
+        }
+
+        if (data.file != null) {
+            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'file');
+            p.appendChild(Chat.getFileHtml(data.file, data.sticker));
+        }
+
+        if (data.edited) {
+            span.appendChild(Chat.getEditedIcoHtml());
+        }
+        if (data.delivered) {
+            span.appendChild(Chat.getDeliveredIcoHtml(data.delivered));
+        }
+
+        msg.appendChild(p);
+        msg.appendChild(span);
+
+        var elem = document.getElementById(data.id);
+        if (elem) {
+            elem.parentElement.replaceChild(msg, elem);
+            mergeMsg = true;
+        } else {
+            if(prepend)
+                bubble.querySelector('div.bubble').insertBefore( msg, bubble.querySelector('div.bubble').firstChild );
+            else
+                bubble.querySelector('div.bubble').appendChild(msg);
+        }
+
         if(prepend){
-            Chat.date = data[0].published;
+            Chat.date = data.published;
 
             // We prepend
             if (!mergeMsg)
@@ -361,6 +368,27 @@ var Chat = {
         } else {
             return img;
         }
+    },
+    getFileHtml: function(file, sticker) {
+        var div = document.createElement("div");
+        div.setAttribute("class", "file");
+
+        var a = document.createElement("a");
+        if(sticker == null) {
+            a.innerHTML = file.name;
+        }
+        a.setAttribute("href", file.uri);
+        a.setAttribute("target", "_blank");
+
+        div.appendChild(a);
+
+        var span = document.createElement("span");
+        span.innerHTML = file.size;
+        span.setAttribute("class", "size");
+
+        a.appendChild(span);
+
+        return div;
     },
     getEditedIcoHtml: function() {
         var i = document.createElement("i");

@@ -291,11 +291,6 @@ class Postn extends Model
         });
     }
 
-    private function typeIsPicture($type)
-    {
-        return in_array($type, ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']);
-    }
-
     private function setAttachments($links, $extra = false)
     {
         $l = [];
@@ -308,7 +303,7 @@ class Postn extends Model
 
             if($this->picture == null
             && isset($enc['type'])
-            && $this->typeIsPicture($enc['type'])
+            && typeIsPicture($enc['type'])
             /*&& isSmallPicture($enc['href'])*/) {
                 $this->picture = $enc['href'];
             }
@@ -359,7 +354,7 @@ class Postn extends Model
                 $rel = isset($l['rel']) ? $l['rel'] : null;
                 switch($rel) {
                     case 'enclosure':
-                        if($this->typeIsPicture($l['type'])) {
+                        if(typeIsPicture($l['type'])) {
                             array_push($attachments['pictures'], $l);
                         } elseif($l['type'] != 'picture') {
                             array_push($attachments['files'], $l);
