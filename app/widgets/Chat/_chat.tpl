@@ -88,9 +88,11 @@
 <div class="chat_box">
     <ul class="list thin">
         <li>
+            {if="!$muc"}
             <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
+            {/if}
             {if="$c->supported('upload')"}
                 <span class="control icon" onclick="Upload_ajaxRequest()">
                     <i class="zmdi zmdi-attachment-alt"></i>
