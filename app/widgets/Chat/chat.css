@@ -186,7 +186,6 @@ table.emojis td:hover {
 
 #chat_widget audio {
     border-radius: 0.5rem;
-    margin-bottom: 1rem;
     width: 100%;
     min-width: 23rem;
 }
