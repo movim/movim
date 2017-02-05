@@ -608,6 +608,11 @@ class Chat extends \Movim\Widget\Base
                     $message->picture = $message->file['uri'];
                 }
 
+                if(typeIsAudio($message->file['type'])
+                && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
+                    $message->audio = $message->file['uri'];
+                }
+
                 $message->file['size'] = sizeToCleanSize($message->file['size']);
             }
         }

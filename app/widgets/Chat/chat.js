@@ -309,7 +309,10 @@ var Chat = {
             p.innerHTML = data.body.replace(/\r\n?|\n/g, '<br />');
         }
 
-        if (data.file != null) {
+        if (data.audio != null) {
+            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'file');
+            p.appendChild(Chat.getAudioHtml(data.file));
+        } else if (data.file != null) {
             MovimUtils.addClass(bubble.querySelector('div.bubble'), 'file');
             p.appendChild(Chat.getFileHtml(data.file, data.sticker));
         }
@@ -368,6 +371,18 @@ var Chat = {
         } else {
             return img;
         }
+    },
+    getAudioHtml: function(file) {
+        var audio = document.createElement("audio");
+        audio.setAttribute("controls", true);
+
+        var source = document.createElement("source");
+        source.setAttribute("src", file.uri);
+        source.setAttribute("type", file.type);
+
+        audio.appendChild(source);
+
+        return audio;
     },
     getFileHtml: function(file, sticker) {
         var div = document.createElement("div");

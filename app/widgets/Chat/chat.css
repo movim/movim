@@ -183,3 +183,10 @@ table.emojis td:hover {
     color: gray;
     padding-left: 1rem;
 }
+
+#chat_widget audio {
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    width: 100%;
+    min-width: 23rem;
+}

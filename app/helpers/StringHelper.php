@@ -231,6 +231,19 @@ function typeIsPicture($type)
 }
 
 /**
+ * Check if the mimetype is an audio file
+ * @param string
+ * @return bool
+ */
+function typeIsAudio($type)
+{
+    return in_array($type, [
+        'audio/aac', 'audio/ogg', 'video/ogg', 'audio/opus',
+        'audio/vorbis', 'audio/speex', 'audio/mpeg']
+    );
+}
+
+/**
  * Return a color generated from the string
  * @param string
  * @return string
