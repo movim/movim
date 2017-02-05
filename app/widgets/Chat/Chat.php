@@ -72,7 +72,8 @@ class Chat extends \Movim\Widget\Base
         $message = $packet->content;
         $cd = new \Modl\ContactDAO;
 
-        if($message->session == $message->jidto && !$history) {
+        if($message->session == $message->jidto && !$history
+        && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
 
             $contact = $cd->getRosterItem($from);
