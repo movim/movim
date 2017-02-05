@@ -98,7 +98,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"PO-Revision-Date: 2017-02-01 18:35+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -106,7 +106,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0rc1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -420,9 +420,8 @@ msgid "Install the php5-gd library"
 msgstr "安装 php5-gd 库"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr "网页服务器在Movim根目录的阅读和写权限"
+msgstr ""
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -638,9 +637,8 @@ msgid "Search for a new server"
 msgstr "寻找一个新服务器"
 
 #: [communities]servers
-#, fuzzy
 msgid "Communities servers"
-msgstr "群组服务器"
+msgstr ""
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
@@ -704,14 +702,12 @@ msgid "Owners"
 msgstr ""
 
 #: [communityaffiliation]publisher
-#, fuzzy
 msgid "Publisher"
-msgstr "发布"
+msgstr ""
 
 #: [communityaffiliation]publishers
-#, fuzzy
 msgid "Publishers"
-msgstr "发布"
+msgstr ""
 
 #: [communityaffiliation]roles
 msgid "Roles"
@@ -746,32 +742,28 @@ msgid "Unsubscribed"
 msgstr "未订阅"
 
 #: [communityheader]subscription_unsupported
-#, fuzzy
 msgid "The subscriptions are disabled for this community"
-msgstr "给该群组加上标签"
+msgstr ""
 
 #: [communityheader]label_label
-#, fuzzy
 msgid "Give a label for this community"
-msgstr "给该群组加上标签"
+msgstr ""
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
 msgstr ""
 
 #: [communityheader]share_subscription [group]share_subscription
-#, fuzzy
 msgid "Share this subscription publicly"
-msgstr "公开发布该贴？"
+msgstr ""
 
 #: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
 #: [communityheader]unsubscribe_text
-#, fuzzy
 msgid "You are going to unsubscribe from this community"
-msgstr "你将取消订阅该群组"
+msgstr ""
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
@@ -1182,9 +1174,8 @@ msgid "Invalid password format"
 msgstr "无效密码格式"
 
 #: [error]unauthorized
-#, fuzzy
 msgid "Your XMPP server is unauthorized"
-msgstr "你的XMPP服务没有被授权"
+msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1231,14 +1222,12 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "不良昵称 (需在4到40字符之间)"
 
 #: [menu]empty_title
-#, fuzzy
 msgid "No news yet…"
-msgstr "尚无新闻"
+msgstr ""
 
 #: [menu]empty
-#, fuzzy
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "欢迎来到你的新闻订阅。你将在此处看到你的联系人和你订阅的群组中发的帖子。"
+msgstr ""
 
 #: [menu]discover [button]discover
 msgid "Discover"
@@ -1269,14 +1258,12 @@ msgid "Add a post"
 msgstr "添加帖子"
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "使用桌面通知"
+msgstr ""
 
 #: [notifs]empty
-#, fuzzy
 msgid "No new notifications"
-msgstr "使用桌面通知"
+msgstr ""
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
@@ -1287,9 +1274,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "公共分组"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1336,9 +1322,8 @@ msgid "What's Hot"
 msgstr "当前热门"
 
 #: [post]hot_text
-#, fuzzy
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr "在你(还)没订阅的群组中发生的最近新鲜事"
+msgstr ""
 
 #: [post]new [publish]new
 msgid "New post"
@@ -1377,9 +1362,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "您将移除以下的帖子, 请确认."
 
 #: [post]discover
-#, fuzzy
 msgid "Discover more articles on the communities page"
-msgstr "在“群组”页面发现新文章"
+msgstr ""
 
 #: [post]more
 msgid "Read more"
@@ -1826,9 +1810,8 @@ msgid "Loading…"
 msgstr "载入中…"
 
 #: [page]communities
-#, fuzzy
 msgid "Communities"
-msgstr "评论"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1859,9 +1842,8 @@ msgid "Public Groups"
 msgstr "公共分组"
 
 #: [page]post
-#, fuzzy
 msgid "Post"
-msgstr "帖子"
+msgstr ""
 
 #: [page]blog
 msgid "Blog"
@@ -1929,9 +1911,8 @@ msgid "Whoops!"
 msgstr "糟了！"
 
 #: [error]websocket
-#, fuzzy
 msgid "Movim cannot talk with the server, please try again later"
-msgstr "Movim无法连接服务器, 请稍后重试(WebSocket连接错误)"
+msgstr ""
 
 #: [error]oops
 msgid "Oops!"
@@ -2711,59 +2692,3 @@ msgstr "API无法连接, 请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "This server use an external system for the registration, please click on the following URL."
-#~ msgstr "该服务使用一个外部的注册系统, 请点击以下的URL."
-
-#, fuzzy
-#~ msgid "Conferences"
-#~ msgstr "视频"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "添加一个聊天室"
-
-#, fuzzy
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "姓名"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "配置"
-
-#, fuzzy
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "姓名"
-
-#~ msgid "Notify on incoming message"
-#~ msgstr "通知新消息"
-
-#, fuzzy
-#~ msgid "This is not a valid url"
-#~ msgstr "请输入一个有效的URL"
-
-#~ msgid "Come in!"
-#~ msgstr "登录"
-
-#~ msgid "Status"
-#~ msgstr "状态"
-
-#, fuzzy
-#~ msgid "Read and write rights for the webserver in Movim's cache directory"
-#~ msgstr "网页服务器在Movim根目录的阅读和写权限"
-
-#, fuzzy
-#~ msgid "Read and write rights for the webserver in Movim's log directory"
-#~ msgstr "网页服务器在Movim根目录的阅读和写权限"
-
-#~ msgctxt "[error]unauthorized"
-#~ msgid "Your XMPP server is unauthorized"
-#~ msgstr "你的XMPP服务没有被授权"
-
-#~ msgid "A Movim session is already open on an other device"
-#~ msgstr "一个 Movim 会话已在其他设备上开启"
-
-#~ msgid "Online with Movim"
-#~ msgstr "Movim 在线"

@@ -2,7 +2,7 @@
 # Translators:
 # Cypouz, 2015
 # Éfrit, 2015
-# Jaussoin Timothée <edhelas@movim.eu>, 2015-2016
+# Jaussoin Timothée <edhelas@movim.eu>, 2015-2017
 # Maxime Buquet <tidusx62@gmail.com>, 2015
 # Thirty Thirds <thirtythirds@gmail.com>, 2015-2016
 # Tom <caporaldead@gmail.com>, 2015
@@ -99,7 +99,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-12-12 11:54+0000\n"
+"PO-Revision-Date: 2017-02-01 18:45+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -107,7 +107,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.0.0b7\n"
+"X-Generator: Translate Toolkit 2.0.0rc1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -696,29 +696,27 @@ msgstr "Il semblerait que que groupe n'existe plus. Souhaitez-vous le supprimer 
 
 #: [communityaffiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Propriétaire"
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "Propriétaires"
 
 #: [communityaffiliation]publisher
-#, fuzzy
 msgid "Publisher"
-msgstr "Publier"
+msgstr "Rédacteur"
 
 #: [communityaffiliation]publishers
-#, fuzzy
 msgid "Publishers"
-msgstr "Publier"
+msgstr "Rédacteurs"
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "Rôles"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "Rôle sauvegardé"
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -745,9 +743,8 @@ msgid "Unsubscribed"
 msgstr "Désinscrit(e)"
 
 #: [communityheader]subscription_unsupported
-#, fuzzy
 msgid "The subscriptions are disabled for this community"
-msgstr "Donnez un nom personnalisé pour cette communauté"
+msgstr "Les souscriptions sont désactivées pour cette communauté"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
@@ -1262,47 +1259,44 @@ msgid "Add a post"
 msgstr "Ajouter un billet"
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Utiliser les notifications bureau"
+msgstr "Notifications"
 
 #: [notifs]empty
-#, fuzzy
 msgid "No new notifications"
-msgstr "Utiliser les notifications bureau"
+msgstr "Pas de nouvelles notifications"
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
-msgstr ""
+msgstr "Movim peut vous notifier lors de la publication d'un nouvel article ou si vous recevez de nouveaux messages"
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr ""
+msgstr "Vous pourrez toujours les désactiver plus tard"
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "Groupes publics"
+msgstr "Profil publique"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr ""
+msgstr "Rendez votre profil public pour permettre aux autres utilisateurs de vous trouver plus facilement"
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
-msgstr ""
+msgstr "Vous pourrez toujours désactiver cela dans la configuration plus tard"
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr ""
+msgstr "Popups"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
-msgstr ""
+msgstr "Movim utilise les popups pour la vidéoconférence, ils sont parfois bloqués par les navigateurs "
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
-msgstr ""
+msgstr "Veuillez vous assurer qu'ils sont autorisés afin d'utiliser cette fonctionnalité "
 
 #: [post]news_feed
 msgid "News Feed"
@@ -2028,15 +2022,15 @@ msgstr "Partager"
 
 #: [button]like
 msgid "Like"
-msgstr ""
+msgstr "Like"
 
 #: [button]not_now
 msgid "Not Now"
-msgstr ""
+msgstr "Pas maintenant"
 
 #: [button]enable
 msgid "Enable"
-msgstr ""
+msgstr "Activer"
 
 #: [day]title
 msgid "Day"
@@ -2699,47 +2693,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "This server use an external system for the registration, please click on the following URL."
-#~ msgstr "Ce serveur utilise un service externe pour enregistrer les nouveaux utilisateurs, cliquer sur lien suivant pour y accéder."
-
-#~ msgid "Conferences"
-#~ msgstr "Conférences"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Ajouter un salon de discussion"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Nom"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Voulez vous rejoindre automatiquement ce salon ?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Une erreur s’est produite : "
-
-#~ msgid "Configure"
-#~ msgstr "Configurer"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Ajouter un nouveau lien"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Nom"
-
-#~ msgid "Notify on incoming message"
-#~ msgstr "Notifier lors d’un message entrant"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "Cette URL n'est pas valide"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "Partage de l'URL"
-
-#~ msgid "Come in!"
-#~ msgstr "Entrez !"

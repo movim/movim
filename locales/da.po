@@ -94,7 +94,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"PO-Revision-Date: 2017-02-01 18:35+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
 "Language: da\n"
@@ -102,7 +102,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0rc1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -416,9 +416,8 @@ msgid "Install the php5-gd library"
 msgstr "Installer php5-gd biblioteket"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr "Læse og skrive-rettigheder på webserveren i Movims rodmappe"
+msgstr ""
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -634,9 +633,8 @@ msgid "Search for a new server"
 msgstr "Led efter en ny server"
 
 #: [communities]servers
-#, fuzzy
 msgid "Communities servers"
-msgstr "Gruppeservere"
+msgstr ""
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
@@ -700,14 +698,12 @@ msgid "Owners"
 msgstr ""
 
 #: [communityaffiliation]publisher
-#, fuzzy
 msgid "Publisher"
-msgstr "Publicer"
+msgstr ""
 
 #: [communityaffiliation]publishers
-#, fuzzy
 msgid "Publishers"
-msgstr "Publicer"
+msgstr ""
 
 #: [communityaffiliation]roles
 msgid "Roles"
@@ -742,32 +738,28 @@ msgid "Unsubscribed"
 msgstr "Abonnement opsagt"
 
 #: [communityheader]subscription_unsupported
-#, fuzzy
 msgid "The subscriptions are disabled for this community"
-msgstr "Giv denne gruppe en label"
+msgstr ""
 
 #: [communityheader]label_label
-#, fuzzy
 msgid "Give a label for this community"
-msgstr "Giv denne gruppe en label"
+msgstr ""
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
 msgstr ""
 
 #: [communityheader]share_subscription [group]share_subscription
-#, fuzzy
 msgid "Share this subscription publicly"
-msgstr "Publicer dette indlæg offentligt?"
+msgstr ""
 
 #: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
 #: [communityheader]unsubscribe_text
-#, fuzzy
 msgid "You are going to unsubscribe from this community"
-msgstr "Du er ved at opsige dit abonnement på denne gruppe"
+msgstr ""
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
@@ -1178,9 +1170,8 @@ msgid "Invalid password format"
 msgstr "Ugyldigt adgangskode-format"
 
 #: [error]unauthorized
-#, fuzzy
 msgid "Your XMPP server is unauthorized"
-msgstr "Din XMPP-server er uautoriseret"
+msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1227,14 +1218,12 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Ugyldigt kælenavn (mellem 4 og 40 tegn)"
 
 #: [menu]empty_title
-#, fuzzy
 msgid "No news yet…"
-msgstr "Endnu ingen nyheder..."
+msgstr ""
 
 #: [menu]empty
-#, fuzzy
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "Velkommen til din nyhedsstrøm, her vil du se alle de indlæg der publiceres af dine kontakter og i grupper du abonnerer på."
+msgstr ""
 
 #: [menu]discover [button]discover
 msgid "Discover"
@@ -1265,14 +1254,12 @@ msgid "Add a post"
 msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Brug skrivebordsmeddelelser"
+msgstr ""
 
 #: [notifs]empty
-#, fuzzy
 msgid "No new notifications"
-msgstr "Brug skrivebordsmeddelelser"
+msgstr ""
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
@@ -1283,9 +1270,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "Offentlige Grupper"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1332,9 +1318,8 @@ msgid "What's Hot"
 msgstr "Hvad der snakkes om"
 
 #: [post]hot_text
-#, fuzzy
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr "Indlæg der er publiceret for nyligt i grupper du (endnu) ikke abonnerer på"
+msgstr ""
 
 #: [post]new [publish]new
 msgid "New post"
@@ -1373,9 +1358,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "Du er ved at slette dette indlæg, bekræft venligst din handling"
 
 #: [post]discover
-#, fuzzy
 msgid "Discover more articles on the communities page"
-msgstr "Find flere artikler på Grupper-siden"
+msgstr ""
 
 #: [post]more
 msgid "Read more"
@@ -1822,9 +1806,8 @@ msgid "Loading…"
 msgstr ""
 
 #: [page]communities
-#, fuzzy
 msgid "Communities"
-msgstr "Kommentarer"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1855,9 +1838,8 @@ msgid "Public Groups"
 msgstr "Offentlige Grupper"
 
 #: [page]post
-#, fuzzy
 msgid "Post"
-msgstr "Indlæg"
+msgstr ""
 
 #: [page]blog
 msgid "Blog"
@@ -1925,9 +1907,8 @@ msgid "Whoops!"
 msgstr "Hovsa!"
 
 #: [error]websocket
-#, fuzzy
 msgid "Movim cannot talk with the server, please try again later"
-msgstr "Movim kan ikke kommunikere med serveren, prøv venligst igen senere (Websocket forbindelsesfejl)"
+msgstr ""
 
 #: [error]oops
 msgid "Oops!"
@@ -2707,59 +2688,3 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "This server use an external system for the registration, please click on the following URL."
-#~ msgstr "Denne server bruger et eksternt system til registrering, klik venligst på følgende link."
-
-#, fuzzy
-#~ msgid "Conferences"
-#~ msgstr "Visio-konference"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Tilføj et chatrum"
-
-#, fuzzy
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Navn"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Opsætning"
-
-#, fuzzy
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Navn"
-
-#~ msgid "Notify on incoming message"
-#~ msgstr "Giv besked om indkomne beskeder"
-
-#, fuzzy
-#~ msgid "This is not a valid url"
-#~ msgstr "Skriv venligst en gyldig url"
-
-#~ msgid "Come in!"
-#~ msgstr "Kom Ind!"
-
-#~ msgid "Status"
-#~ msgstr "Status"
-
-#, fuzzy
-#~ msgid "Read and write rights for the webserver in Movim's cache directory"
-#~ msgstr "Læse og skrive-rettigheder på webserveren i Movims rodmappe"
-
-#, fuzzy
-#~ msgid "Read and write rights for the webserver in Movim's log directory"
-#~ msgstr "Læse og skrive-rettigheder på webserveren i Movims rodmappe"
-
-#~ msgctxt "[error]unauthorized"
-#~ msgid "Your XMPP server is unauthorized"
-#~ msgstr "Din XMPP-server er uautoriseret"
-
-#~ msgid "A Movim session is already open on an other device"
-#~ msgstr "En Movim session er allerede åben på en anden enhed"
-
-#~ msgid "Online with Movim"
-#~ msgstr "Online med Movim"

@@ -97,7 +97,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"PO-Revision-Date: 2017-02-01 18:35+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
@@ -105,7 +105,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0rc1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -419,9 +419,8 @@ msgid "Install the php5-gd library"
 msgstr "Установите библиотеку php5-gd"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr "Права на чтение и запись для веб-сервера в корневом каталоге Movim"
+msgstr ""
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -637,9 +636,8 @@ msgid "Search for a new server"
 msgstr "Поиск нового сервера"
 
 #: [communities]servers
-#, fuzzy
 msgid "Communities servers"
-msgstr "Серверы групп"
+msgstr ""
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
@@ -703,14 +701,12 @@ msgid "Owners"
 msgstr ""
 
 #: [communityaffiliation]publisher
-#, fuzzy
 msgid "Publisher"
-msgstr "Опубликовать"
+msgstr ""
 
 #: [communityaffiliation]publishers
-#, fuzzy
 msgid "Publishers"
-msgstr "Опубликовать"
+msgstr ""
 
 #: [communityaffiliation]roles
 msgid "Roles"
@@ -745,32 +741,28 @@ msgid "Unsubscribed"
 msgstr "Неподписанный"
 
 #: [communityheader]subscription_unsupported
-#, fuzzy
 msgid "The subscriptions are disabled for this community"
-msgstr "Дайте название для этой группы"
+msgstr ""
 
 #: [communityheader]label_label
-#, fuzzy
 msgid "Give a label for this community"
-msgstr "Дайте название для этой группы"
+msgstr ""
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
 msgstr ""
 
 #: [communityheader]share_subscription [group]share_subscription
-#, fuzzy
 msgid "Share this subscription publicly"
-msgstr "Сделать пост доступным всем?"
+msgstr ""
 
 #: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
 #: [communityheader]unsubscribe_text
-#, fuzzy
 msgid "You are going to unsubscribe from this community"
-msgstr "Вы собираетесь отписаться от этой группы"
+msgstr ""
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
@@ -1181,9 +1173,8 @@ msgid "Invalid password format"
 msgstr "Неверный формат пароля"
 
 #: [error]unauthorized
-#, fuzzy
 msgid "Your XMPP server is unauthorized"
-msgstr "Ваш XMPP сервер не авторизован"
+msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1230,14 +1221,12 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Неподходящий псевдоним (от 4 до 40 символов)"
 
 #: [menu]empty_title
-#, fuzzy
 msgid "No news yet…"
-msgstr "Пока никаких новостей..."
+msgstr ""
 
 #: [menu]empty
-#, fuzzy
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr "Добро пожаловать в вашу новостную ленту, здесь будут отображаться все публикации от ваших контактов и групп на которые вы подписаны"
+msgstr ""
 
 #: [menu]discover [button]discover
 msgid "Discover"
@@ -1268,14 +1257,12 @@ msgid "Add a post"
 msgstr "Добавить публикацию"
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Использовать оповещения ОС"
+msgstr ""
 
 #: [notifs]empty
-#, fuzzy
 msgid "No new notifications"
-msgstr "Использовать оповещения ОС"
+msgstr ""
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
@@ -1286,9 +1273,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "Открытые Группы"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1335,9 +1321,8 @@ msgid "What's Hot"
 msgstr "Что актуально"
 
 #: [post]hot_text
-#, fuzzy
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr "Записи, опубликованные в группах, на которые вы (пока еще) еще не подписаны"
+msgstr ""
 
 #: [post]new [publish]new
 msgid "New post"
@@ -1376,9 +1361,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "Вы собираетесь удалить этот пост. Пожалуйста, подтвердите это."
 
 #: [post]discover
-#, fuzzy
 msgid "Discover more articles on the communities page"
-msgstr "Больше статей на странице групп"
+msgstr ""
 
 #: [post]more
 msgid "Read more"
@@ -1825,9 +1809,8 @@ msgid "Loading…"
 msgstr "Загрузка..."
 
 #: [page]communities
-#, fuzzy
 msgid "Communities"
-msgstr "Комментарии"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1858,9 +1841,8 @@ msgid "Public Groups"
 msgstr "Открытые Группы"
 
 #: [page]post
-#, fuzzy
 msgid "Post"
-msgstr "Записи"
+msgstr ""
 
 #: [page]blog
 msgid "Blog"
@@ -1928,9 +1910,8 @@ msgid "Whoops!"
 msgstr "Ой-ой!"
 
 #: [error]websocket
-#, fuzzy
 msgid "Movim cannot talk with the server, please try again later"
-msgstr "Movim не может связаться с сервером, пожалуйста, попробуйте снова попозже (Ошибка соединения с Websocket)"
+msgstr ""
 
 #: [error]oops
 msgid "Oops!"
@@ -2710,59 +2691,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
-
-#~ msgid "This server use an external system for the registration, please click on the following URL."
-#~ msgstr "Данный сервер использует внешнюю систему регистрации, пожалуйста, пройдите по следующей ссылке."
-
-#, fuzzy
-#~ msgid "Conferences"
-#~ msgstr "Visio-конференция"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Добавить комнату"
-
-#, fuzzy
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Имя"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Настройки"
-
-#, fuzzy
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Имя"
-
-#~ msgid "Notify on incoming message"
-#~ msgstr "Оповещать о входящих сообщениях"
-
-#, fuzzy
-#~ msgid "This is not a valid url"
-#~ msgstr "Введите верную ссылку"
-
-#~ msgid "Come in!"
-#~ msgstr "Войти!"
-
-#~ msgid "Status"
-#~ msgstr "Состояние"
-
-#, fuzzy
-#~ msgid "Read and write rights for the webserver in Movim's cache directory"
-#~ msgstr "Права на чтение и запись для веб-сервера в корневом каталоге Movim"
-
-#, fuzzy
-#~ msgid "Read and write rights for the webserver in Movim's log directory"
-#~ msgstr "Права на чтение и запись для веб-сервера в корневом каталоге Movim"
-
-#~ msgctxt "[error]unauthorized"
-#~ msgid "Your XMPP server is unauthorized"
-#~ msgstr "Ваш XMPP-сервер не авторизован"
-
-#~ msgid "A Movim session is already open on an other device"
-#~ msgstr "У вас уже есть запущенная сессия Movim на другом устройстве"
-
-#~ msgid "Online with Movim"
-#~ msgstr "В сети через Movim"
