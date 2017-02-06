@@ -3,6 +3,7 @@ var Chat = {
     right: null,
     room: null,
     date: null,
+    currentDate: null,
     lastScroll: null,
     lastHeight: null,
     edit: false,
@@ -122,7 +123,7 @@ var Chat = {
     {
         Chat_ajaxGet();
     },
-    setBubbles : function(left, right, room) {
+    setBubbles : function(left, right, room, date) {
         var div = document.createElement('div');
 
         div.innerHTML = left;
@@ -131,6 +132,8 @@ var Chat = {
         Chat.right = div.firstChild.cloneNode(true);
         div.innerHTML = room;
         Chat.room = div.firstChild.cloneNode(true);
+        div.innerHTML = date;
+        Chat.date = div.firstChild.cloneNode(true);
 
         Chat.setScrollBehaviour();
     },
@@ -140,58 +143,14 @@ var Chat = {
             if(discussion.dataset.muc != true) {
                 if(this.scrollTop < 1) {
                     var chat = document.querySelector('#chat_widget');
-                    Chat_ajaxGetHistory(chat.dataset.jid, Chat.date);
+                    Chat_ajaxGetHistory(chat.dataset.jid, Chat.currentDate);
                 }
             }
             Chat.lastHeight = this.clientHeight;
         };
     },
-    appendMucMessages : function(date, messages) {
-        id = MovimUtils.cleanupId(messages[0].jidfrom + '_conversation');
-        var conversation = document.getElementById(id);
-        datebox = Chat.room.cloneNode(true);
-        datebox.innerHTML = date;
-
-        /*if(conversation) {
-            conversation.appendChild(datebox);
-        }*/
-
-        for(var i = 0, len = messages.length; i < len; ++i){
-            bubble = Chat.room.cloneNode(true);
-
-            if(messages[i].body.match(/^\/me/)) {
-                bubble.querySelector('.message').className = 'message quote';
-                messages[i].body = messages[i].body.substr(4);
-            }
-
-            if (messages[i].sticker != null) {
-                MovimUtils.addClass(bubble.querySelector('p.message'), 'sticker');
-                bubble.querySelector('p.message').appendChild(Chat.getStickerHtml(messages[i].sticker));
-            } else {
-                bubble.querySelector('p.message').innerHTML = messages[i].body.replace(/\r\n?|\n/g, '<br />');
-            }
-
-            if (messages[i].quoted) {
-                bubble.querySelector('p.message').classList.add('quoted');
-            }
-
-            bubble.querySelector('span.info').innerHTML = messages[i].publishedPrepared;
-            bubble.querySelector('p.user').className = 'user ' + messages[i].color;
-
-            bubble.querySelector('p.user').onclick = function(n) {
-                var textarea = document.querySelector('#chat_textarea');
-                textarea.value = this.innerHTML + ', ' + textarea.value;
-                textarea.focus();
-            };
-
-            bubble.querySelector('p.user').innerHTML = messages[i].resource;
-            if(conversation) {
-                conversation.appendChild(bubble);
-            }
-        }
-    },
     appendMessagesWrapper : function(page, prepend) {
-        Chat.date = null;
+        Chat.currentDate = null;
         if(page) {
             var scrolled = MovimTpl.isPanelScrolled();
 
@@ -202,17 +161,21 @@ var Chat = {
             Chat.lastScroll = discussion.scrollHeight;
 
             for(date in page) {
-                if (page[date].constructor == Array) { //groupchat
-                    if(!Chat.date) {
-                        Chat.date = page[date][0].published;
+                if (page[date].constructor == Array) {
+                    for(id in page[date]) {
+                        Chat.appendMucMessage(page[date][id]);
                     }
-                    Chat.appendMucMessages(date, page[date]);
                 } else {
                     for(speakertime in page[date]) {
-                        if(!Chat.date)
-                            Chat.date = page[date][speakertime].published;
-                        Chat.appendSpeaker(speakertime, page[date][speakertime], prepend);
+                        if(!Chat.currentDate) {
+                            Chat.currentDate = page[date][speakertime].published;
+                        }
+                        Chat.appendMessage(speakertime, page[date][speakertime], prepend);
                     }
+                }
+
+                if(date != '') {
+                    Chat.appendDate(date, prepend);
                 }
             }
 
@@ -232,7 +195,53 @@ var Chat = {
             }
         }
     },
-    appendSpeaker : function(idjidtime, data, prepend) {
+    appendMucMessage : function(message) {
+        var conversation = document.getElementById(
+            MovimUtils.cleanupId(message.jidfrom + '_conversation')
+        );
+        //datebox = Chat.room.cloneNode(true);
+        //datebox.innerHTML = date;
+
+        //if(conversation) {
+        //    conversation.appendChild(datebox);
+        //}
+
+        bubble = Chat.room.cloneNode(true);
+
+        var p = bubble.querySelector('p.message');
+
+        if(message.body.match(/^\/me/)) {
+            p.classList.add('quote');
+            message.body = message.body.substr(4);
+        }
+
+        if (message.quoted) {
+            p.classList.add('quoted');
+        }
+
+        /*if (message.sticker != null) {
+            MovimUtils.addClass(bubble.querySelector('p.message'), 'sticker');
+            bubble.querySelector('p.message').appendChild(Chat.getStickerHtml(message.sticker));
+        } else {*/
+        p.innerHTML = message.body.replace(/\r\n?|\n/g, '<br />');
+        //}
+
+        bubble.querySelector('span.info').innerHTML = message.publishedPrepared;
+
+        var user = bubble.querySelector('p.user');
+        user.className = 'user ' + message.color;
+        user.innerHTML = message.resource;
+        user.onclick = function(n) {
+            var textarea = document.querySelector('#chat_textarea');
+            textarea.value = this.innerHTML + ', ' + textarea.value;
+            textarea.focus();
+        };
+
+        if(conversation) {
+            conversation.appendChild(bubble);
+        }
+    },
+    appendMessage : function(idjidtime, data, prepend) {
         var bubble = null,
             mergeMsg = false,
             msgStack,
@@ -278,11 +287,11 @@ var Chat = {
 
         // If there is already a msg in this bubble, create another div (next msg or replacement)
         if (bubble.querySelector('div.bubble p')
-        && bubble.querySelector('div.bubble p').innerHTML != "") {
+        && bubble.querySelector('div.bubble p').innerHTML != '') {
             msg = document.createElement("div");
             p = document.createElement("p");
             span = document.createElement("span");
-            span.className = "info";
+            span.className = 'info';
         }
 
         if (data.rtl) {
@@ -291,7 +300,6 @@ var Chat = {
 
         if (data.body.match(/^\/me\s/)) {
             p.className = 'quote';
-            // Remove "/me " from beginning of body
             data.body = data.body.substr(4);
         }
 
@@ -332,22 +340,35 @@ var Chat = {
             elem.parentElement.replaceChild(msg, elem);
             mergeMsg = true;
         } else {
-            if(prepend)
+            if(prepend) {
                 bubble.querySelector('div.bubble').insertBefore( msg, bubble.querySelector('div.bubble').firstChild );
-            else
+            } else {
                 bubble.querySelector('div.bubble').appendChild(msg);
+            }
         }
 
         if(prepend){
-            Chat.date = data.published;
+            Chat.currentDate = data.published;
 
             // We prepend
-            if (!mergeMsg)
+            if (!mergeMsg) {
                 MovimTpl.prepend("#" + id, bubble.outerHTML);
+            }
         } else {
             if (!mergeMsg) {
                 MovimTpl.append("#" + id, bubble.outerHTML);
             }
+        }
+    },
+    appendDate: function(date, prepend) {
+        var list = document.querySelector('#chat_widget > div ul');
+        dateNode = Chat.date.cloneNode(true);
+        dateNode.querySelector('p').innerHTML = date;
+
+        if(prepend) {
+            list.insertBefore(dateNode, list.firstChild);
+        } else {
+            list.appendChild(dateNode);
         }
     },
     getStickerHtml: function(sticker) {

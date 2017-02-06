@@ -578,8 +578,9 @@ class Chat extends \Movim\Widget\Base
 
         $room = $view->draw('_chat_bubble_room', true);
 
-        RPC::call('Chat.setBubbles', $left, $right, $room);
-        //RPC::call('Chat.appendMessages', $messages);
+        $date = $view->draw('_chat_date', true);
+
+        RPC::call('Chat.setBubbles', $left, $right, $room, $date);
         RPC::call('Chat.appendMessagesWrapper', $this->_wrapper);
         RPC::call('MovimTpl.scrollPanel');
         RPC::call('Chat.clearReplace');
@@ -653,13 +654,13 @@ class Chat extends \Movim\Widget\Base
         }
 
         $message->rtl = isRTL($message->body);
-        $message->publishedPrepared = prepareDate(strtotime($message->published), true);
+        $message->publishedPrepared = gmdate('H:i', strtotime($message->published));
 
         if ($message->delivered) {
             $message->delivered = prepareDate(strtotime($message->delivered), true);
         }
 
-        $date = substr($message->published, 0, 10);
+        $date = prepareDate(strtotime($message->published), false, false, true);
 
         // We create the date wrapper
         if (!array_key_exists($date, $this->_wrapper)) {

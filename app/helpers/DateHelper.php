@@ -47,7 +47,7 @@ function getTimezoneCorrection() {
  * @param timestamp $string
  * @return string
  */
-function prepareDate($time = false, $hours = true, $compact = false) {
+function prepareDate($time = false, $hours = true, $compact = false, $dateOnly = false) {
     $time = $time ? $time : time();
     $t = $time + TIMEZONE_OFFSET;
 
@@ -80,6 +80,9 @@ function prepareDate($time = false, $hours = true, $compact = false) {
 
         if($compact) return $date;
     }
+
+    if($dateOnly) return $date;
+
     //if $hours option print the time
     if($hours) {
         if($date != '') {

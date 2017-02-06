@@ -7,7 +7,7 @@ ul.list li:not(.subheader) {
     padding: 0.25rem 0;
 }
 
-ul.list.middle li:not(.subheader) {
+ul.list.middle li:not(.subheader):not(.date) {
     padding: 0.75rem 0;
     min-height: 5rem;
 }
@@ -404,6 +404,21 @@ ul li.oppose div.bubble:not(.sticker):not(.file):before {
     left: calc(100% - 10.5rem);
     top: 0.75rem;
     border-top-color: #f5f5f5;
+}
+
+/* Date separator */
+ul li.date {
+    min-height: 0;
+    text-align: center;
+}
+
+ul li.date > p.normal {
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+    display: inline-block;
+    background-color: #E3E3E3;
+    border-radius: 2rem;
+    margin: 1rem;
 }
 
 /* Icon */
