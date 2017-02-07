@@ -363,9 +363,18 @@ var Chat = {
     appendDate: function(date, prepend) {
         var list = document.querySelector('#chat_widget > div ul');
         dateNode = Chat.date.cloneNode(true);
+        dateNode.dataset.value = date;
         dateNode.querySelector('p').innerHTML = date;
 
+        var dates = list.querySelectorAll('li.date');
+
         if(prepend) {
+            // If the date was already displayed we remove it
+            if(dates.length > 0
+            && dates[0].dataset.value == date) {
+                dates[0].remove();
+            }
+
             list.insertBefore(dateNode, list.firstChild);
         } else {
             list.appendChild(dateNode);
