@@ -161,6 +161,10 @@ var Chat = {
             Chat.lastScroll = discussion.scrollHeight;
 
             for(date in page) {
+		if(prepend && date != '') {
+		    Chat.appendDate(date, prepend);
+		}
+
                 if (page[date].constructor == Array) {
                     for(id in page[date]) {
                         Chat.appendMucMessage(page[date][id]);
@@ -174,7 +178,7 @@ var Chat = {
                     }
                 }
 
-                if(date != '') {
+                if(prepend === undefined && date != '') {
                     Chat.appendDate(date, prepend);
                 }
             }
@@ -371,11 +375,9 @@ var Chat = {
         if(prepend) {
             // If the date was already displayed we remove it
             if(dates.length > 0
-            && dates[0].dataset.value == date) {
-                dates[0].remove();
+            && dates[0].dataset.value != date) {
+                list.insertBefore(dateNode, list.firstChild);
             }
-
-            list.insertBefore(dateNode, list.firstChild);
         } else {
             list.appendChild(dateNode);
         }
@@ -498,3 +500,4 @@ window.addEventListener('resize', function() {
 });
 
 var state = 0;
+
