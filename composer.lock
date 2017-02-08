@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bd1dca57564f8c2b4969997f12005183",
-    "content-hash": "4df02887639ee82c9c6594f0a4024435",
+    "hash": "6abceb89629a24ad4b969ecd98ed7cd0",
+    "content-hash": "2340f0cc373a71664db145e05a1f992a",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -477,16 +477,16 @@
         },
         {
             "name": "michelf/php-markdown",
-            "version": "dev-lib",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "86237084481ae3dc2078ff9dd1bc03e81e36141f"
+                "reference": "1f51cc520948f66cd2af8cbc45a5ee175e774220"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/86237084481ae3dc2078ff9dd1bc03e81e36141f",
-                "reference": "86237084481ae3dc2078ff9dd1bc03e81e36141f",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/1f51cc520948f66cd2af8cbc45a5ee175e774220",
+                "reference": "1f51cc520948f66cd2af8cbc45a5ee175e774220",
                 "shasum": ""
             },
             "require": {
@@ -524,7 +524,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2016-08-29 20:25:25"
+            "time": "2016-10-29 18:58:20"
         },
         {
             "name": "monolog/monolog",
@@ -1986,7 +1986,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "rain/raintpl": 20,
-        "michelf/php-markdown": 20,
         "movim/modl": 20,
         "movim/sasl2": 20,
         "movim/moxl": 20,

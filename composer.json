@@ -13,7 +13,7 @@
 
         "monolog/monolog": "1.8.*",
         "rain/raintpl": "dev-master",
-        "michelf/php-markdown": "1.4.*@dev",
+        "michelf/php-markdown": "1.7.0",
 
         "movim/modl": "dev-master#5e7f0a68f0081ca5d4aefcbdfea1e63b4db7fd51",
         "movim/sasl2": "dev-master",
@@ -27,11 +27,11 @@
         "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
 
         "respect/validation": "1.0.*",
-        "ezyang/htmlpurifier": "^4.7",
-        "ramsey/uuid": "^3.2",
-        "symfony/console": "^3.0",
-        "cocur/slugify": "^2.1",
-        "clue/buzz-react": "^1.0",
+        "ezyang/htmlpurifier": "^4.8",
+        "ramsey/uuid": "^3.5",
+        "symfony/console": "^3.2",
+        "cocur/slugify": "^2.3",
+        "clue/buzz-react": "^1.1",
         "dflydev/fig-cookies": "^1.0"
     }
 }
