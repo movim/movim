@@ -1,26 +1,31 @@
 <?php
-class XMPPtoForm{
+class XMPPtoForm
+{
     private $fieldset;
     private $xmpp;
     private $html;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->fieldset = 0;
         $this->html = new \DOMDocument('1.0', 'UTF-8');
         $this->xmpp = '';
     }
 
-    public function getHTML($xmpp){
+    public function getHTML($xmpp)
+    {
         $this->setXMPP($xmpp);
         $this->create();
         return $this->html->saveXML();
     }
 
-    public function setXMPP($xmpp){
+    public function setXMPP($xmpp)
+    {
         $this->xmpp = $xmpp;
     }
 
-    public function create(){
+    public function create()
+    {
         $this->xmpp = str_replace('xmlns=', 'ns=', $this->xmpp);
         $x = new SimpleXMLElement($this->xmpp);
 
@@ -43,13 +48,13 @@ class XMPPtoForm{
                         //    $this->outBold($element);
                         //    break;
                         case "text-single":
-                            $this->outInput($element, "", "");
+                            $this->outInput($element, "");
                             break;
                         case "text-multi":
                             $this->outTextarea($element);
                             break;
                         case "text-private":
-                            $this->outInput($element, "password", "");
+                            $this->outInput($element, "password");
                             break;
                         case "hidden":
                             $this->outHiddeninput($element);
@@ -61,13 +66,17 @@ class XMPPtoForm{
                             $this->outList($element);
                             break;
                         case "jid-multi":
-                            $this->outInput($element, "email", "multiple");
+                            $this->outInput($element, "email");
                             break;
                         case "jid-single":
-                            $this->outInput($element, "email", "");
+                            $this->outInput($element, "email");
+                            break;
+                        case "fixed":
+                            $this->outP((string)$element->value);
                             break;
                         default:
-                            //$this->html .= "";
+                            $this->outInput($element, "text");
+                            break;
                     }
                     //if($element['type'] != 'hidden')
                     //    $this->html .='</div>';
@@ -92,7 +101,8 @@ class XMPPtoForm{
         }*/
     }
 
-    private function outGeneric($s){
+    private function outGeneric($s)
+    {
         $div = $this->html->createElement('div');
         $div->setAttribute('class', 'element');
         $this->html->appendChild($div);
@@ -109,17 +119,20 @@ class XMPPtoForm{
         $label->setAttribute('for', $s);
         $div->appendChild($label);
     }
-    private function outTitle($s){
+    private function outTitle($s)
+    {
         $title = $this->html->createElement('h3', $s);
         $this->html->appendChild($title);
     }
 
-    private function outP($s){
+    private function outP($s)
+    {
         $title = $this->html->createElement('p', $s);
         $this->html->appendChild($title);
     }
 
-    private function outUrl($s) {
+    private function outUrl($s)
+    {
         $a = $this->html->createElement('a', $s->getName());
         $a->setAttribute('href', $s->getName());
         $this->html->appendChild($a);
@@ -201,7 +214,7 @@ class XMPPtoForm{
         $container->appendChild($label);
     }
 
-    private function outInput($s, $type = false, $multiple){
+    private function outInput($s, $type = false){
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
 
@@ -218,8 +231,9 @@ class XMPPtoForm{
         }
         $input->setAttribute('label', $s['label']);
 
-        if($s->required)
+        if($s->required) {
             $input->setAttribute('required', 'required');
+        }
 
         foreach($s->children() as $value){
             if($value->getName() == "value"){
@@ -227,8 +241,9 @@ class XMPPtoForm{
             }
         }
 
-        if($s['var'] == 'username')
+        if($s['var'] == 'username') {
             $input->setAttribute('pattern', '[a-z0-9_-]*');
+        }
 
         $container->appendChild($input);
 
