@@ -127,6 +127,14 @@ class Base
         return $this->_view;
     }
 
+    /**
+     * Get the current view name
+     */
+    function getUser()
+    {
+        return $this->user;
+    }
+
     /*
      * @desc Preload some sourcecode for the draw method
      */

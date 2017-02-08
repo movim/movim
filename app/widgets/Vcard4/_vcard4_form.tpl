@@ -33,6 +33,7 @@
     </li>
 </ul>
 
+{if="$c->getUser()->isSupported('pubsub')"}
 <div class="clear padded"></div>
 
 <form name="vcard4" id="vcard4form" class="flex">
@@ -195,3 +196,16 @@
         </a>
     </div>
 </form>
+{else}
+<ul class="list thick">
+    <li>
+        <span class="primary icon orange bubble color">
+            <i class="zmdi zmdi-alert-triangle"></i>
+        </span>
+        <p>{$c->__('degraded.title')}</p>
+        <p>{$c->__('degraded.text_1')}</br>
+        {$c->__('degraded.text_2')}</p>
+        <p>{$c->__('degraded.text_3')}</p>
+    </li>
+</ul>
+{/if}
