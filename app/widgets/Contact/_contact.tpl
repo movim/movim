@@ -8,9 +8,9 @@
         style="background-color: rgba(62,81,181,1);"
     {/if}
     >
-    <a onclick="Contact_ajaxChat('{$contact->jid|echapJS}')" class="button action color">
+    <button onclick="Contact_ajaxChat('{$contact->jid|echapJS}')" class="button action color">
         <i class="zmdi zmdi-comment-text-alt"></i>
-    </a>
+    </button>
 
 
     <ul class="list middle">
@@ -71,9 +71,9 @@
                 </span>
                 <p class="normal line">
                     {if="$caps->isJingle()"}
-                    <a class="button oppose color green active" onclick="VisioLink.openVisio('{$contactr->getFullResource()}');">
+                    <button class="button oppose color green active" onclick="VisioLink.openVisio('{$contactr->getFullResource()}');">
                         <i class="zmdi zmdi-phone"></i> {$c->__('button.call')}
-                    </a>
+                    </button>
                     {/if}
                     {$caps->name}
                     {if="isset($clienttype[$caps->type])"}
@@ -329,9 +329,9 @@
                             <p>{$c->__('subscription.to')}</p>
                             <p>{$c->__('subscription.to_text')}</p>
                             <p>
-                                <a class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
+                                <button class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
                                     {$c->__('subscription.to_button')}
-                                </a>
+                                </button>
                             </p>
                         {/if}
                         {if="$contactr->rostersubscription == 'from'"}
@@ -341,9 +341,9 @@
                             <p>{$c->__('subscription.from')}</p>
                             <p>{$c->__('subscription.from_text')}</p>
                             <p>
-                                <a class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
+                                <button class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
                                     {$c->__('subscription.from_button')}
-                                </a>
+                                </button>
                             </p>
                         {/if}
                         {if="$contactr->rostersubscription == 'none'"}
@@ -354,9 +354,9 @@
                             <p>{$c->__('subscription.nil')}</p>
                             <p>{$c->__('subscription.nil_text')}</p>
                             <p>
-                                <a class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
+                                <button class="button flat" onclick="Notifs_ajaxAccept('{$contactr->jid}')">
                                     {$c->__('subscription.nil_button')}
-                                </a>
+                                </button>
                             </p>
                         {/if}
                     </li>
