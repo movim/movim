@@ -662,6 +662,8 @@ class Chat extends \Movim\Widget\Base
 
         $date = prepareDate(strtotime($message->published), false, false, true);
 
+        if(empty($date)) $date = $this->__('date.today');
+
         // We create the date wrapper
         if (!array_key_exists($date, $this->_wrapper)) {
             $this->_wrapper[$date] = [];

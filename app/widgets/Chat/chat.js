@@ -161,9 +161,9 @@ var Chat = {
             Chat.lastScroll = discussion.scrollHeight;
 
             for(date in page) {
-		if(prepend && date != '') {
-		    Chat.appendDate(date, prepend);
-		}
+                if(prepend === undefined) {
+                    Chat.appendDate(date, prepend);
+                }
 
                 if (page[date].constructor == Array) {
                     for(id in page[date]) {
@@ -178,7 +178,7 @@ var Chat = {
                     }
                 }
 
-                if(prepend === undefined && date != '') {
+                if(prepend && date) {
                     Chat.appendDate(date, prepend);
                 }
             }
@@ -375,10 +375,17 @@ var Chat = {
         if(prepend) {
             // If the date was already displayed we remove it
             if(dates.length > 0
-            && dates[0].dataset.value != date) {
-                list.insertBefore(dateNode, list.firstChild);
+            && dates[0].dataset.value == date) {
+                dates[0].parentNode.removeChild(dates[0]);
             }
+
+            list.insertBefore(dateNode, list.firstChild);
         } else {
+            if(dates.length > 0
+            && dates[dates.length-1].dataset.value == date) {
+                return;
+            }
+
             list.appendChild(dateNode);
         }
     },
