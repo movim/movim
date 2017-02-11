@@ -10,13 +10,13 @@
     <h4 class="gray">{$server}/{$node}</h4>
 </section>
 <div class="no_bar">
-    <a onclick="Dialog_ajaxClear()" class="button flat">
+    <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
-    </a>
-    <a
+    </button>
+    <button
         name="submit"
         class="button flat"
         onclick="CommunityAffiliations_ajaxDeleteConfirm('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()">
         {$c->__('button.remove')}
-    </a>
+    </button>
 </div>

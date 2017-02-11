@@ -5,15 +5,15 @@
     <li>
         {if="$c->supported('pubsub')"}
             {if="$subscription == null"}
-                <a class="button oppose green color" title="{$c->__('communityheader.subscribe')}"
+                <button class="button oppose green color" title="{$c->__('communityheader.subscribe')}"
                 onclick="CommunityHeader_ajaxAskSubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
                     {$c->__('communityheader.subscribe')}
-                </a>
+                </button>
             {else}
-                <a class="button oppose flat" title="{$c->__('communityheader.unsubscribe')}"
+                <button class="button oppose flat" title="{$c->__('communityheader.unsubscribe')}"
                 onclick="CommunityHeader_ajaxAskUnsubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
                     {$c->__('communityheader.unsubscribe')}
-                </a>
+                </button>
             {/if}
         {/if}
         <span class="primary icon active gray" onclick="history.back()">

@@ -85,10 +85,10 @@
     </form>
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear()" class="button flat">
+    <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
-    </a>
-    <a onclick="Presence_ajaxSet(MovimUtils.parseForm('presence')); Dialog_ajaxClear();" class="button flat">
+    </button>
+    <button onclick="Presence_ajaxSet(MovimUtils.parseForm('presence')); Dialog_ajaxClear();" class="button flat">
         {$c->__('button.submit')}
-    </a>
+    </button>
 </div>

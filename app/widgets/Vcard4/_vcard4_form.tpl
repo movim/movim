@@ -178,7 +178,7 @@
     </div>
 
     <div class="block large">
-        <a
+        <button
             onclick="
                 {$submit}
                 MovimUtils.buttonSave('#vcard4validate');
@@ -188,12 +188,12 @@
             id="vcard4validate"
             >
             {$c->__('button.save')}
-        </a>
-        <a
+        </button>
+        <button
             onclick="document.querySelector('#vcard4form').reset();"
             class="button flat oppose">
             {$c->__('button.reset')}
-        </a>
+        </button>
     </div>
 </form>
 {else}

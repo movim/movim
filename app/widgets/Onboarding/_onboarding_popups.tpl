@@ -6,7 +6,7 @@
     </div>
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear(); Onboarding.check();" class="button flat">
+    <button onclick="Dialog_ajaxClear(); Onboarding.check();" class="button flat">
         {$c->__('button.close')}
-    </a>
+    </button>
 </div>

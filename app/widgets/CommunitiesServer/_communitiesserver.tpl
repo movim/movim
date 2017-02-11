@@ -79,6 +79,6 @@
     {/loop}
     </ul>
 {/if}
-<a onclick="CommunitiesServer_ajaxTestAdd('{$server}')" class="button action color">
+<button onclick="CommunitiesServer_ajaxTestAdd('{$server}')" class="button action color">
     <i class="zmdi zmdi-plus"></i>
-</a>
+</button>

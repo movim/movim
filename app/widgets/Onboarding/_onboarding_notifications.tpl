@@ -6,10 +6,10 @@
     </div>
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear(); Onboarding.check();" class="button flat">
+    <button onclick="Dialog_ajaxClear(); Onboarding.check();" class="button flat">
         {$c->__('button.not_now')}
-    </a>
-    <a onclick="Onboarding.enableNotifications(); Dialog_ajaxClear(); Onboarding.check();" class="button flat">
+    </button>
+    <button onclick="Onboarding.enableNotifications(); Dialog_ajaxClear(); Onboarding.check();" class="button flat">
         {$c->__('button.enable')}
-    </a>
+    </button>
 </div>

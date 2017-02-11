@@ -38,12 +38,12 @@
     </form>
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear()" class="button flat">
+    <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
-    </a>
-    <a
+    </button>
+    <button
         onclick="CommunityHeader_ajaxSubscribe(MovimUtils.formToJson('subscribe'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()"
         class="button flat">
         {$c->__('communityheader.subscribe')}
-    </a>
+    </button>
 </div>

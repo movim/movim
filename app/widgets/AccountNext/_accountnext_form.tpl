@@ -1,9 +1,10 @@
 <form name="data">
     {$formh}
-    <a
+    <button
+        type="button"
         class="button color oppose"
         onclick="{$submitdata}"
     >
         {$c->__('button.validate')}
-    </a>
+    </button>
 </form>

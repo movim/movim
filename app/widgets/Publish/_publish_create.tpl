@@ -91,9 +91,13 @@
         {if="$item != false"}
             {$attachment = $item->getAttachment()}
         {/if}
-        <a class="button oppose flat gray" style="margin-top: 4rem" onclick="Publish_ajaxClearShareUrl()">
+        <button
+            class="button oppose flat gray"
+            type="button"
+            style="margin-top: 4rem"
+            onclick="Publish_ajaxClearShareUrl()">
             <i class="zmdi zmdi-close"></i>
-        </a>
+        </button>
         <input
             type="url"
             style="width: calc(100% - 6rem)"
@@ -124,12 +128,12 @@
         <textarea name="content" placeholder="{$c->__('publish.content_text')}" oninput="MovimUtils.textareaAutoheight(this);">{if="$item != false"}{$item->contentraw}{/if}</textarea>
         <label for="content">{$c->__('publish.content_label')}</label>
 
-        <a class="button oppose flat gray" onclick="Publish_ajaxHelp()">
+        <button class="button oppose flat gray" type="button" onclick="Publish_ajaxHelp()">
             <i class="zmdi zmdi-help"></i> {$c->__('publish.help')}
-        </a>
-        <a class="button oppose flat gray" onclick="Publish_ajaxPreview(MovimUtils.formToJson('post'))">
+        </button>
+        <button class="button oppose flat gray" type="button" onclick="Publish_ajaxPreview(MovimUtils.formToJson('post'))">
             <i class="zmdi zmdi-eye"></i> {$c->__('publish.preview')}
-        </a>
+        </button>
     </div>
 
     <hr class="clear" />

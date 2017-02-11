@@ -35,13 +35,13 @@
     </form>
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear()" class="button flat">
+    <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
-    </a>
-    <a
+    </button>
+    <button
         name="submit"
         class="button flat"
         onclick="{$submit} Dialog_ajaxClear()">
         {$c->__('button.save')}
-    </a>
+    </button>
 </div>

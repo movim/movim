@@ -48,10 +48,11 @@
     </div>
 
     <div class="clear padded"></div>
-    <a
+    <button
+        type="button"
         onclick="{$submit}"
         class="button color oppose" >
         {$c->__('button.save')}
-    </a>
+    </button>
     <div class="clear"></div>
 </form>

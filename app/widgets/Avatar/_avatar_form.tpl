@@ -32,21 +32,6 @@
                 <p>{$c->__('avatar.file')}</p>
                 <p><input type="file" onchange="Avatar.file(this.files);"></p>
             </li>
-            {if="isset($gravatar)"}
-            <li>
-                <span class="primary icon bubble color blue">
-                    <img src="http://www.gravatar.com/avatar/{$gravatar->entry[0]->hash}?s=50" />
-                </span>
-                <p>Gravatar</p>
-                <p>We found a Gravatar picture<br />
-                    <a
-                        onclick="Avatar.preview('data:image/jpeg;base64,{$gravatar_bin}')"
-                        class="button flat">
-                        {$c->__('avatar.use_it')}
-                    </a>
-                </p>
-            </li>
-            {/if}
         </ul>
     </div>
 </div>
@@ -92,7 +77,8 @@
     </div>-->
 
 <div class="block large">
-    <a
+    <button
+        type="button"
         onclick="
             {$submit}
             MovimUtils.buttonSave('#avatarvalidate');
@@ -100,5 +86,5 @@
             this.className='button inactive oppose';"
         class="button color oppose"
         id="avatarvalidate"
-        >{$c->__('button.submit')}</a>
+        >{$c->__('button.submit')}</button>
 </div>

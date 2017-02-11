@@ -8,14 +8,13 @@
         </div>
     </section>
     <div>
-        <a class="button flat" onclick="Dialog_ajaxClear()">
+        <button class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.close')}
-        </a>
-        <a
+        </button>
+        <button
             class="button flat"
             onclick="Chat_ajaxSetSubject('{$room}', MovimUtils.formToJson('changesubject')); Dialog_ajaxClear();">
             {$c->__('button.save')}
-        </a>
+        </button>
     </div>
-
 </div>

@@ -4,24 +4,24 @@
     </form>
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear()" class="button flat">
+    <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
-    </a>
+    </button>
     {if="$actions != null"}
         {if="isset($actions->next)"}
-            <a onclick="AdHoc.submit()" class="button flat">
+            <button onclick="AdHoc.submit()" class="button flat">
                 {$c->__('button.next')}
-            </a>
+            </button>
         {/if}
         {if="isset($actions->previous)"}
-            <a onclick="" class="button flat">
+            <button class="button flat">
                 {$c->__('button.previous')}
-            </a>
+            </button>
         {/if}
         {if="isset($actions->cancel)"}
-            <a onclick="" class="button flat">
+            <button class="button flat">
                 {$c->__('button.cancel')}
-            </a>
+            </button>
         {/if}
         {if="isset($actions->complete)"}
             <!--<a onclick="" class="button flat">

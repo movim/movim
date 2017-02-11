@@ -22,10 +22,10 @@
     </ul>
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear(); Upload.abort();" class="button flat">
+    <button onclick="Dialog_ajaxClear(); Upload.abort();" class="button flat">
         {$c->__('button.close')}
-    </a>
-    <a onclick="Upload.init();" class="button flat">
+    </button>
+    <button onclick="Upload.init();" class="button flat">
         {$c->__('button.upload')}
-    </a>
+    </button>
 </div>

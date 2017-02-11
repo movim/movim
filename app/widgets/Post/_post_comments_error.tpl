@@ -11,9 +11,9 @@
     <li class="block">
         <p class="center">
             {if="$c->supported('pubsub')"}
-            <a class="button flat gray" onclick="Post.share()">
+            <button class="button flat gray" onclick="Post.share()">
                 <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
-            </a>
+            </button>
             {/if}
         </p>
     </li>

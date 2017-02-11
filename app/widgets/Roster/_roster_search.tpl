@@ -54,10 +54,10 @@
     </div>
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear()" class="button flat">
+    <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
-    </a>
-    <a onclick="Roster_ajaxAdd(MovimUtils.formToJson('add')); Dialog_ajaxClear()" class="button flat">
+    </button>
+    <button onclick="Roster_ajaxAdd(MovimUtils.formToJson('add')); Dialog_ajaxClear()" class="button flat">
         {$c->__('button.add')}
-    </a>
+    </button>
 </div>

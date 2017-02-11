@@ -4,11 +4,11 @@
     </form>
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear()" class="button flat">
+    <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
-    </a>
-    <a onclick="CommunityConfig_ajaxSetConfig(MovimUtils.parseForm('config'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear();"
+    </button>
+    <button onclick="CommunityConfig_ajaxSetConfig(MovimUtils.parseForm('config'), '{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear();"
        class="button flat">
         {$c->__('button.save')}
-    </a>
+    </button>
 </div>

@@ -11,10 +11,11 @@
     <div class="compact">
         <input name="re_password" type="password" placeholder="{$c->__('credentials.re_password')}">
     </div>
-    <a
+    <button
+        type="button"
         class="button color oppose"
         onclick="{$submitdata}"
     >
         {$c->__('button.validate')}
-    </a>
+    </button>
 </form>

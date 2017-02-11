@@ -50,21 +50,21 @@
         -->
     </section>
     <div>
-        <a class="button flat" onclick="Dialog_ajaxClear()">
+        <button class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.cancel')}
-        </a>
+        </button>
         {if="isset($room)"}
-            <a
+            <button
                 class="button flat"
                 onclick="Rooms_ajaxChatroomAdd(MovimUtils.parseForm('bookmarkmucadd'));">
                 {$c->__('button.edit')}
-            </a>
+            </button>
         {else}
-            <a
+            <button
                 class="button flat"
                 onclick="Rooms_ajaxChatroomAdd(MovimUtils.parseForm('bookmarkmucadd'));">
                 {$c->__('button.add')}
-            </a>
+            </button>
         {/if}
     </div>
 

@@ -86,17 +86,17 @@
     <li>
         <p class="center">
             {if="!$liked"}
-            <a class="button red flat" id="like" onclick="MovimUtils.addClass('#like', 'disabled'); Post_ajaxLike('{$server}', '{$node}', '{$id}')">
+            <button class="button red flat" id="like" onclick="MovimUtils.addClass('#like', 'disabled'); Post_ajaxLike('{$server}', '{$node}', '{$id}')">
                 <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
-            </a>
+            </button>
             {/if}
-            <a class="button flat gray" onclick="Post.comment()">
+            <button class="button flat gray" onclick="Post.comment()">
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
-            </a>
+            </button>
             {if="$c->supported('pubsub')"}
-            <a class="button flat gray" onclick="Post.share()">
+            <button class="button flat gray" onclick="Post.share()">
                 <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
-            </a>
+            </button>
             {/if}
         </p>
     </li>

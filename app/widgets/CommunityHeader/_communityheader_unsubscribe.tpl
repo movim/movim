@@ -8,12 +8,12 @@
     {/if}
 </section>
 <div>
-    <a onclick="Dialog_ajaxClear()" class="button flat">
+    <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
-    </a>
-    <a
+    </button>
+    <button
         onclick="CommunityHeader_ajaxUnsubscribe('{$server|echapJS}', '{$node|echapJS}'); Dialog_ajaxClear()"
         class="button flat">
         {$c->__('communityheader.unsubscribe')}
-    </a>
+    </button>
 </div>

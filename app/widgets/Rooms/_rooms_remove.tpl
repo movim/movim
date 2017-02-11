@@ -6,13 +6,13 @@
     <h4 class="gray">{$room}</h4>
 </section>
 <div class="no_bar">
-    <a onclick="Dialog_ajaxClear()" class="button flat">
+    <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
-    </a>
-    <a 
-        name="submit" 
-        class="button flat" 
+    </button>
+    <button
+        name="submit"
+        class="button flat"
         onclick="Rooms_ajaxExit('{$room}'); Rooms_ajaxRemove('{$room}'); Dialog_ajaxClear()">
         {$c->__('button.remove')}
-    </a>
+    </button>
 </div>
