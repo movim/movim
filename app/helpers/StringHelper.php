@@ -296,6 +296,16 @@ function isRTL($string)
 }
 
 /**
+ * Invert a number
+ * @param num
+ * @return num
+ */
+function invertSign($num)
+{
+    return ($num <= 0) ? abs($num) : -$num ;
+}
+
+/**
  * Return the first two letters of a string
  * @param string
  * @return string

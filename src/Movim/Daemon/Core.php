@@ -84,11 +84,13 @@ class Core implements MessageComponentInterface
         if($sid != null) {
             if(!array_key_exists($sid, $this->sessions)) {
                 $language = $this->getLanguage($conn);
+                $offset = $this->getOffset($conn);
                 $this->sessions[$sid] = new Session(
                     $this->loop,
                     $sid,
                     $this->baseuri,
                     $language,
+                    $offset,
                     $this->input->getOption('verbose'),
                     $this->input->getOption('debug')
                 );
@@ -176,6 +178,12 @@ class Core implements MessageComponentInterface
     {
         $languages = $conn->httpRequest->getHeader('Accept-Language');
         return (is_array($languages)) ? $languages[0] : false;
+    }
+
+    private function getOffset(ConnectionInterface $conn)
+    {
+        parse_str($conn->httpRequest->getUri()->getQuery(), $arr);
+        return (isset($arr['offset'])) ? invertSign(((int)$arr['offset'])*60) : 0;
     }
 
     private function getSid(ConnectionInterface $conn)

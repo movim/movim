@@ -23,12 +23,14 @@ class Session
     private     $debug;
 
     private     $language;
+    private     $offset;
 
-    public function __construct($loop, $sid, $baseuri, $language = false, $verbose = false, $debug = false)
+    public function __construct($loop, $sid, $baseuri, $language = false, $offset = 0, $verbose = false, $debug = false)
     {
         $this->sid     = $sid;
         $this->baseuri = $baseuri;
         $this->language = $language;
+        $this->offset = $offset;
 
         $this->verbose = $verbose;
         $this->debug = $debug;
@@ -87,6 +89,7 @@ class Session
                                 'sid'       => $this->sid,
                                 'baseuri'   => $this->baseuri,
                                 'language'  => $this->language,
+                                'offset'    => $this->offset,
                                 'verbose'   => $this->verbose,
                                 'debug'     => $this->debug
                             ]

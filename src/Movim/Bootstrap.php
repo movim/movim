@@ -245,12 +245,16 @@ class Bootstrap
 
     private function setTimezone()
     {
-        // We set the default timezone to the server timezone
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        if(getenv('offset') != 0) {
+            define('TIMEZONE_OFFSET', getenv('offset'));
+        } else {
+            // We set the default timezone to the server timezone
+            $cd = new \Modl\ConfigDAO;
+            $config = $cd->get();
 
-        // And we set a global offset
-        define('TIMEZONE_OFFSET', getTimezoneOffset($config->timezone));
+            // And we set a global offset
+            define('TIMEZONE_OFFSET', getTimezoneOffset($config->timezone));
+        }
 
         date_default_timezone_set("UTC");
     }
