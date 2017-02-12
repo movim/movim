@@ -95,3 +95,15 @@ function prepareDate($time = false, $hours = true, $compact = false, $dateOnly =
     return $date;
 }
 
+/**
+ * Return a human-readable time
+ *
+ * @param timestamp $string
+ * @return string
+ */
+function prepareTime($time = false) {
+    $time = $time ? $time : time();
+    $t = $time + TIMEZONE_OFFSET;
+
+    return gmdate('H:i', $t);
+}

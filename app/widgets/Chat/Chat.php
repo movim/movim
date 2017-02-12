@@ -654,7 +654,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         $message->rtl = isRTL($message->body);
-        $message->publishedPrepared = gmdate('H:i', strtotime($message->published));
+        $message->publishedPrepared = prepareTime(strtotime($message->published));
 
         if ($message->delivered) {
             $message->delivered = prepareDate(strtotime($message->delivered), true);
