@@ -117,16 +117,16 @@
         },
         {
             "name": "cocur/slugify",
-            "version": "v2.3",
+            "version": "v2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "57a00e06a382928e350cc7bbb13b19f1b8f4e73a"
+                "reference": "f11f22d4e60c408187c3efd8ac201c022a93cc3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/57a00e06a382928e350cc7bbb13b19f1b8f4e73a",
-                "reference": "57a00e06a382928e350cc7bbb13b19f1b8f4e73a",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/f11f22d4e60c408187c3efd8ac201c022a93cc3f",
+                "reference": "f11f22d4e60c408187c3efd8ac201c022a93cc3f",
                 "shasum": ""
             },
             "require": {
@@ -177,7 +177,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2016-08-09 20:10:17"
+            "time": "2017-02-09 19:27:52"
         },
         {
             "name": "dflydev/fig-cookies",
@@ -237,12 +237,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "49d460487a488641da0b3073b58181a3d0da55e9"
+                "reference": "e0043bb98e008825bb94e8df3be197ebe0e4e86d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/49d460487a488641da0b3073b58181a3d0da55e9",
-                "reference": "49d460487a488641da0b3073b58181a3d0da55e9",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/e0043bb98e008825bb94e8df3be197ebe0e4e86d",
+                "reference": "e0043bb98e008825bb94e8df3be197ebe0e4e86d",
                 "shasum": ""
             },
             "require": {
@@ -252,7 +252,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.0",
-                "phpunit/phpunit": "*"
+                "phpunit/phpunit": "^4.8|^5.7"
             },
             "type": "library",
             "autoload": {
@@ -281,7 +281,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-02-01 22:16:21"
+            "time": "2017-02-12 21:48:59"
         },
         {
             "name": "evenement/evenement",
@@ -1174,23 +1174,23 @@
         },
         {
             "name": "react/dns",
-            "version": "v0.4.3",
+            "version": "v0.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "751b3129556e04944f164e3556a20ca6e201e459"
+                "reference": "e3064994379cb4d1e0ee3f5b850b6e8748efae3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/751b3129556e04944f164e3556a20ca6e201e459",
-                "reference": "751b3129556e04944f164e3556a20ca6e201e459",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/e3064994379cb4d1e0ee3f5b850b6e8748efae3b",
+                "reference": "e3064994379cb4d1e0ee3f5b850b6e8748efae3b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "react/cache": "~0.4.0|~0.3.0",
                 "react/promise": "~2.1|~1.2",
-                "react/socket": "~0.4.0|~0.3.0"
+                "react/socket": "^0.5 || ^0.4.4"
             },
             "type": "library",
             "autoload": {
@@ -1207,7 +1207,7 @@
                 "dns",
                 "dns-resolver"
             ],
-            "time": "2016-08-01 10:09:07"
+            "time": "2017-02-13 09:58:13"
         },
         {
             "name": "react/event-loop",
@@ -1268,11 +1268,11 @@
                 "shasum": ""
             },
             "require": {
-                "evenement/evenement": "^2.0",
-                "guzzlehttp/psr7": "^1.0",
-                "php": ">=5.4.0",
+                "evenement/evenement": "^2.0 || ^1.0",
+                "php": ">=5.3.0",
                 "react/socket": "^0.4",
-                "react/stream": "^0.4"
+                "react/stream": "^0.4.4",
+                "ringcentral/psr7": "^1.2"
             },
             "type": "library",
             "autoload": {
