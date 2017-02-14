@@ -126,6 +126,8 @@ var Chat = {
     setBubbles : function(left, right, room, date) {
         var div = document.createElement('div');
 
+        Chat.currentDate = null;
+
         div.innerHTML = left;
         Chat.left = div.firstChild.cloneNode(true);
         div.innerHTML = right;
@@ -150,7 +152,6 @@ var Chat = {
         };
     },
     appendMessagesWrapper : function(page, prepend) {
-        Chat.currentDate = null;
         if(page) {
             var scrolled = MovimTpl.isPanelScrolled();
 
@@ -203,12 +204,6 @@ var Chat = {
         var conversation = document.getElementById(
             MovimUtils.cleanupId(message.jidfrom + '_conversation')
         );
-        //datebox = Chat.room.cloneNode(true);
-        //datebox.innerHTML = date;
-
-        //if(conversation) {
-        //    conversation.appendChild(datebox);
-        //}
 
         bubble = Chat.room.cloneNode(true);
 
