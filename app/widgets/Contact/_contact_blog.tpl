@@ -55,7 +55,7 @@
                 </p>
             </li>
         {/loop}
-        <a href="{$c->route('blog', array($contact->jid))}" target="_blank" class="block large simple">
+        <a href="{$c->route('blog', $jid)}" target="_blank" class="block large simple">
             <li>
                 <span class="primary icon">
                     <i class="zmdi zmdi-portable-wifi"></i>

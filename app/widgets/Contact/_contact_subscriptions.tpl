@@ -3,7 +3,7 @@
         <li class="subheader block large">
             <p>
                 <span class="info">{$subscriptions|count}</span>
-                {$c->__('group.subscriptions')}
+                {$c->__('page.communities')}
             </p>
         </li>
         {loop="$subscriptions"}
