@@ -625,6 +625,10 @@ class Chat extends \Movim\Widget\Base
             $message->addUrls();
         }
 
+        if (isset($message->subject) && $message->type == 'headline') {
+            $message->body = $message->subject.': '.$message->body;
+        }
+
         // Sticker message
         if (isset($message->sticker)) {
             $p = new Picture;
