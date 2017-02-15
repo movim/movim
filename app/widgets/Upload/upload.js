@@ -116,7 +116,7 @@ var Upload = {
             }
 
             if(Upload.xhr.readyState == 4
-            && Upload.xhr.status >= 400) {
+            && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)) {
                 Upload_ajaxFailed();
             }
         }
