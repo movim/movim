@@ -177,8 +177,8 @@ class MessageDAO extends SQL
             where session = :session
                 and (jidfrom = :jidfrom
                 or jidto = :jidto)
-                and type = \'chat\'
-                 or type = \'headline\'
+                and (type = \'chat\'
+                or type = \'headline\')
             order by published desc';
 
         if($limitr)
