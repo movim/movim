@@ -23,7 +23,8 @@ class Sessionx
      */
     protected function __construct()
     {
-        if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
+        if(isset($_COOKIE['MOVIM_SESSION_ID'])
+        && !empty($_COOKIE['MOVIM_SESSION_ID'])) {
             self::$_sessionid = $_COOKIE['MOVIM_SESSION_ID'];
         } elseif(SESSION_ID) {
             self::$_sessionid = SESSION_ID;
@@ -39,6 +40,11 @@ class Sessionx
         if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
             setcookie("MOVIM_SESSION_ID", $_COOKIE['MOVIM_SESSION_ID'], time()+$this->_max_age, '/', false, APP_SECURED);
         }
+    }
+
+    public function renewCookie()
+    {
+        setcookie("MOVIM_SESSION_ID", generateKey(32), time()+$this->_max_age, '/', false, APP_SECURED);
     }
 
     public static function start()
