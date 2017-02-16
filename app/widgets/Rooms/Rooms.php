@@ -210,7 +210,7 @@ class Rooms extends \Movim\Widget\Base
                     'name'      => $form['name'],
                     'autojoin'  => $form['autojoin'],
                     'nick'      => $form['nick'],
-                    'jid'       => $form['jid']
+                    'jid'       => strtolower($form['jid'])
                     ];
             $this->setBookmark($item);
             RPC::call('Dialog_ajaxClear');
@@ -252,7 +252,9 @@ class Rooms extends \Movim\Widget\Base
                         'name'      => $c->name,
                         'autojoin'  => $c->autojoin,
                         'nick'      => $c->nick,
-                        'jid'       => $c->conference]);
+                        'jid'       => $c->conference
+                    ]
+                );
             }
         }
 
