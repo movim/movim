@@ -84,12 +84,13 @@ class DaemonCommand extends Command
         $core = new Core($loop, $baseuri, $input);
         $app  = new HttpServer(new WsServer($core));
 
-        $socket = new Reactor($loop);
-        $socket->listen($input->getOption('port'), $input->getOption('interface'));
+        $socket = new Reactor(
+            $input->getOption('interface').':'.$input->getOption('port'),
+            $loop
+        );
 
-        $socketApi = new Reactor($loop);
+        $socketApi = new Reactor(1560, $loop);
         new Api($socketApi, $core);
-        $socketApi->listen(1560);
 
         $server = new IoServer($app, $socket, $loop);
 

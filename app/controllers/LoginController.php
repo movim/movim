@@ -13,8 +13,8 @@ class LoginController extends Base
     {
         $this->page->setTitle(__('page.login'));
 
-        $session = \Sessionx::start();
-        $session->renewCookie();
+        //$session = \Sessionx::start();
+        //$session->renewCookie();
 
         $user = new User;
         if($user->isLogged()) {

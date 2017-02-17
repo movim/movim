@@ -129,8 +129,6 @@ class Sessionx
             } else {
                 $sd = new \Modl\SessionxDAO;
                 $session = $sd->get(self::$_sessionid);
-                if(isset($session->config))
-                    $session->config = unserialize($session->config);
 
                 if(isset($session)) {
                     return $session->$key;
@@ -141,17 +139,18 @@ class Sessionx
         }
     }
 
-    public function __set($key, $value) {
-        if($key == 'config')
-            $value = serialize($value);
-        elseif($key == 'user')
+    public function __set($key, $value)
+    {
+        if($key == 'user') {
             $key = 'username';
+        }
 
-        $sd = new modl\SessionxDAO();
+        $sd = new modl\SessionxDAO;
         $sd->update(self::$_sessionid, $key, $value);
     }
 
-    public function destroy() {
+    public function destroy()
+    {
         $sd = new \Modl\SessionxDAO;
         $sd->delete(self::$_sessionid);
     }

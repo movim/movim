@@ -13,19 +13,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ratchetphp/Ratchet.git",
-                "reference": "a78c8d2ddff78aef1d05cbf08e8bdcf8c21e1b14"
+                "reference": "cc2bc79455f47f772c628dd32e313125f294a243"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/a78c8d2ddff78aef1d05cbf08e8bdcf8c21e1b14",
-                "reference": "a78c8d2ddff78aef1d05cbf08e8bdcf8c21e1b14",
+                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/cc2bc79455f47f772c628dd32e313125f294a243",
+                "reference": "cc2bc79455f47f772c628dd32e313125f294a243",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/psr7": "^1.0",
                 "php": ">=5.4.2",
                 "ratchet/rfc6455": "^0.2",
-                "react/socket": "^0.3 || ^0.4",
+                "react/socket": "^0.5",
                 "symfony/http-foundation": "^2.2|^3.0",
                 "symfony/routing": "^2.2|^3.0"
             },
@@ -58,7 +58,7 @@
                 "sockets",
                 "websocket"
             ],
-            "time": "2016-06-06 13:13:02"
+            "time": "2017-02-17 01:34:04"
         },
         {
             "name": "clue/buzz-react",
@@ -1270,7 +1270,7 @@
             "require": {
                 "evenement/evenement": "^2.0 || ^1.0",
                 "php": ">=5.3.0",
-                "react/socket": "^0.4",
+                "react/socket": "^0.5",
                 "react/stream": "^0.4.4",
                 "ringcentral/psr7": "^1.2"
             },
@@ -1425,16 +1425,16 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.4.6",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "cf074e53c974df52388ebd09710a9018894745d2"
+                "reference": "691dbf6cb3aa9ae67ef25d29c32e853d5d34fa99"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/cf074e53c974df52388ebd09710a9018894745d2",
-                "reference": "cf074e53c974df52388ebd09710a9018894745d2",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/691dbf6cb3aa9ae67ef25d29c32e853d5d34fa99",
+                "reference": "691dbf6cb3aa9ae67ef25d29c32e853d5d34fa99",
                 "shasum": ""
             },
             "require": {
@@ -1463,7 +1463,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2017-01-26 09:23:38"
+            "time": "2017-02-14 06:49:09"
         },
         {
             "name": "react/socket-client",
@@ -1675,16 +1675,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "7a8405a9fc175f87fed8a3c40856b0d866d61936"
+                "reference": "0e5e6899f82230fcb1153bcaf0e106ffaa44b870"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/7a8405a9fc175f87fed8a3c40856b0d866d61936",
-                "reference": "7a8405a9fc175f87fed8a3c40856b0d866d61936",
+                "url": "https://api.github.com/repos/symfony/console/zipball/0e5e6899f82230fcb1153bcaf0e106ffaa44b870",
+                "reference": "0e5e6899f82230fcb1153bcaf0e106ffaa44b870",
                 "shasum": ""
             },
             "require": {
@@ -1734,20 +1734,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-06 12:04:21"
+            "time": "2017-02-16 14:07:22"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "b4d9818f127c60ce21ed62c395da7df868dc8477"
+                "reference": "9b98854cb45bc59d100b7d4cc4cf9e05f21026b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/b4d9818f127c60ce21ed62c395da7df868dc8477",
-                "reference": "b4d9818f127c60ce21ed62c395da7df868dc8477",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/9b98854cb45bc59d100b7d4cc4cf9e05f21026b9",
+                "reference": "9b98854cb45bc59d100b7d4cc4cf9e05f21026b9",
                 "shasum": ""
             },
             "require": {
@@ -1791,20 +1791,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-01-28 02:37:08"
+            "time": "2017-02-16 16:34:18"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "e192b04de44aa1ed0e39d6793f7e06f5e0b672a0"
+                "reference": "a90da6dd679605d88c9803a57a6fc1fb7a19a6e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/e192b04de44aa1ed0e39d6793f7e06f5e0b672a0",
-                "reference": "e192b04de44aa1ed0e39d6793f7e06f5e0b672a0",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/a90da6dd679605d88c9803a57a6fc1fb7a19a6e0",
+                "reference": "a90da6dd679605d88c9803a57a6fc1fb7a19a6e0",
                 "shasum": ""
             },
             "require": {
@@ -1844,7 +1844,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-02 13:47:35"
+            "time": "2017-02-16 22:46:52"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1907,7 +1907,7 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v3.2.3",
+            "version": "v3.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",

@@ -21,7 +21,7 @@ class Sessionx extends Model
         'hash'      => ['type' => 'string','size' => 64],
         'resource'  => ['type' => 'string','size' => 16],
         'host'      => ['type' => 'string','size' => 64,'mandatory' => true],
-        'config'    => ['type' => 'text'],
+        'config'    => ['type' => 'serialized'],
         'active'    => ['type' => 'int','size' => 4],
         'start'     => ['type' => 'date'],
         'timestamp' => ['type' => 'date']
