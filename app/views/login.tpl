@@ -1,3 +1,5 @@
+<?php $this->widget('Notification');?>
+
 <main>
     <section>
         <div>

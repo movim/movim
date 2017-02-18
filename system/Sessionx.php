@@ -30,7 +30,7 @@ class Sessionx
             self::$_sessionid = SESSION_ID;
         } elseif(!headers_sent()) {
             $key = generateKey(32);
-            setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/', false, APP_SECURED);
+            $this->setCookie($key);
             self::$_sessionid = $key;
         }
     }
@@ -38,13 +38,19 @@ class Sessionx
     public function refreshCookie()
     {
         if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
-            setcookie("MOVIM_SESSION_ID", $_COOKIE['MOVIM_SESSION_ID'], time()+$this->_max_age, '/', false, APP_SECURED);
+            $this->setCookie($_COOKIE['MOVIM_SESSION_ID']);
         }
     }
 
     public function renewCookie()
     {
-        setcookie("MOVIM_SESSION_ID", generateKey(32), time()+$this->_max_age, '/', false, APP_SECURED);
+        $this->setCookie(generateKey(32));
+    }
+
+    private function setCookie($key)
+    {
+        header_remove('Set-Cookie');
+        setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/', false, APP_SECURED);
     }
 
     public static function start()

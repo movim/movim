@@ -32,7 +32,11 @@ class Login extends \Movim\Widget\Base
             //$c = new Chats;
             //$c->ajaxGetHistory();
 
+            $p = new Presence;
+            $p->start();
+
             $this->rpc('Login.rememberSession', $this->user->getLogin());
+            $this->rpc('MovimUtils.redirect', $this->route('root'));
 
             // We get the configuration
             $s = new Get;
@@ -44,7 +48,6 @@ class Login extends \Movim\Widget\Base
     function onConfig($packet)
     {
         $this->user->createDir();
-        RPC::call('Login.post', $this->user->getLogin(), $this->route('root'));
     }
 
     function display()

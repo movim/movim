@@ -20,22 +20,6 @@ var Presence = {
             }
             i++;
         }
-    },
-
-    postStart : function() {
-        if(localStorage.postStart == 1) {
-            // We disable the notifications for a couple of seconds
-            Notification.inhibit(10);
-
-            Presence_ajaxClear();
-            Presence_ajaxSet();
-            Presence_ajaxServerCapsGet();
-            Presence_ajaxBookmarksGet();
-            Presence_ajaxUserRefresh();
-            Presence_ajaxFeedRefresh();
-            Presence_ajaxServerDisco();
-            localStorage.postStart = 0;
-        }
     }
 }
 

@@ -122,20 +122,6 @@ var Login = {
     },
 
     /**
-     * @brief Post login requests
-     */
-    post : function(jid, url) {
-        Login.rememberSession(jid);
-        localStorage.postStart = 1;
-
-        if(MovimUtils.urlParts().page != 'login') {
-            MovimUtils.reloadThis();
-        } else {
-            MovimUtils.redirect(url);
-        }
-    },
-
-    /**
      * @brief Set the Movim cookie
      */
     setCookie : function(value) {

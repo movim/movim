@@ -34,10 +34,23 @@ class Presence extends \Movim\Widget\Base
     function onMyPresence($packet)
     {
         $html = $this->preparePresence();
-        RPC::call('MovimTpl.fill', '#presence_widget', $html);
+        $this->rpc('MovimTpl.fill', '#presence_widget', $html);
         Notification::append(null, $this->__('status.updated'));
-        RPC::call('Presence.refresh');
-        RPC::call('MovimUtils.removeClass', '#presence_widget', 'unfolded');
+        $this->rpc('Presence.refresh');
+        $this->rpc('MovimUtils.removeClass', '#presence_widget', 'unfolded');
+    }
+
+    function start()
+    {
+        $this->rpc('Notification.inhibit', 10);
+
+        $this->ajaxClear();
+        $this->ajaxSet();
+        $this->ajaxServerCapsGet();
+        $this->ajaxBookmarksGet();
+        $this->ajaxUserRefresh();
+        $this->ajaxFeedRefresh();
+        $this->ajaxServerDisco();
     }
 
     function ajaxClear()
@@ -110,7 +123,7 @@ class Presence extends \Movim\Widget\Base
     function ajaxGetPresence()
     {
         $html = $this->preparePresence();
-        if($html) RPC::call('MovimTpl.fill', '#presence_widget', $html);
+        if($html) $this->rpc('MovimTpl.fill', '#presence_widget', $html);
     }
 
     function ajaxConfigGet() {
@@ -167,7 +180,7 @@ class Presence extends \Movim\Widget\Base
     function ajaxOpenDialog()
     {
         Dialog::fill($this->preparePresenceList());
-        RPC::call('Presence.refresh');
+        $this->rpc('Presence.refresh');
     }
 
     function preparePresence()
@@ -179,7 +192,7 @@ class Presence extends \Movim\Widget\Base
 
         // If the user is still on a logued-in page after a daemon restart
         if($session->get('jid') == false) {
-            RPC::call('MovimUtils.disconnect');
+            $this->rpc('MovimUtils.disconnect');
             return false;
         }
 
