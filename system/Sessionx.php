@@ -50,7 +50,6 @@ class Sessionx
     private function setCookie($key)
     {
         header_remove('Set-Cookie');
-        session_set_cookie_params($this->_max_age, '/', BASE_HOST, APP_SECURED);
         setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/', BASE_HOST, APP_SECURED);
     }
 

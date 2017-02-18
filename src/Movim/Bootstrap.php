@@ -12,6 +12,7 @@ class Bootstrap
         $this->setConstants();
 
         mb_internal_encoding("UTF-8");
+        ini_set('session.use_cookies', '0');
 
         //First thing to do, define error management (in case of error forward)
         $this->setLogs();
