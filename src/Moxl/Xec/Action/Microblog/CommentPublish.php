@@ -89,27 +89,12 @@ class CommentPublish extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $p = new \modl\Postn();
+        $cd = new CommentsGet;
+        $cd->setTo($this->_to)
+           ->setId($this->_parentid)
+           ->request();
 
-        $p->origin  = $this->_to;
-
-        $p->node    = $this->_node;
-        $p->nodeid  = $this->_atom->id;
-
-        $p->aname   = $this->_atom->name;
-        $p->aid     = $this->_atom->jid;
-
-        $p->title   = $this->_atom->title;
-        $p->contentraw = $this->_atom->content;
-
-        $p->published = gmdate('Y-m-d H:i:s');
-        $p->updated = gmdate('Y-m-d H:i:s');
-
-        $pd = new \modl\PostnDAO();
-        $pd->set($p);
-
-        $this->pack(
-            [
+        $this->pack([
                 'server' => $this->_to,
                 'node' => $this->_node,
                 'id' => $this->_parentid
