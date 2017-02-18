@@ -104,7 +104,7 @@ class Sessionx
             $this->_hash        = $session->hash;
             $this->_resource    = $session->resource;
             $this->_host        = $session->host;
-            $this->_config      = unserialize($session->config);
+            $this->_config      = $session->config;
             $this->_active      = $session->active;
             $this->_start       = $session->start;
             $this->_timestamp   = $session->timestamp;
