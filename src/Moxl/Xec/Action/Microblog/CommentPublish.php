@@ -63,6 +63,12 @@ class CommentPublish extends Errors
         return $this;
     }
 
+    public function setTitle($title)
+    {
+        $this->_atom->title = $title;
+        return $this;
+    }
+
     public function setContent($content)
     {
         $this->_atom->content = $content;
@@ -93,6 +99,7 @@ class CommentPublish extends Errors
         $p->aname   = $this->_atom->name;
         $p->aid     = $this->_atom->jid;
 
+        $p->title   = $this->_atom->title;
         $p->contentraw = $this->_atom->content;
 
         $p->published = gmdate('Y-m-d H:i:s');
