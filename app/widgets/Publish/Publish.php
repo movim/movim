@@ -209,7 +209,7 @@ class Publish extends \Movim\Widget\Base
     {
         RPC::call('Publish.disableSend');
 
-        if($form->title->value != '') {
+        if(Validator::stringType()->notEmpty()->validate(trim($form->title->value))) {
             $p = new PostPublish;
             $p->setFrom($this->user->getLogin())
               ->setTo($form->to->value)
@@ -217,19 +217,16 @@ class Publish extends \Movim\Widget\Base
               ->setNode($form->node->value);
               //->setLocation($geo)
 
-            // Still usefull ? Check line 44
-            //if($form->node->value == 'urn:xmpp:microblog:0') {
-                $p->enableComments();
-            //}
+            $p->enableComments();
 
             $content = $content_xhtml = '';
 
-            if($form->content->value != '') {
+            if(Validator::stringType()->notEmpty()->validate(trim($form->content->value))) {
                 $content = $form->content->value;
                 $content_xhtml = addHFR(MarkdownExtra::defaultTransform($content));
             }
 
-            if($form->id->value != '') {
+            if(Validator::stringType()->notEmpty()->validate(trim($form->id->value))) {
                 $p->setId($form->id->value);
 
                 $pd = new \modl\PostnDAO();
