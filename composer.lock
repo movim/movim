@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a61dc42870ee4ba49342beb198832a6f",
-    "content-hash": "6abe5db9040fc1a0700233824daea8e5",
+    "hash": "a0da47d453af723bfa5cf62d54d24b5c",
+    "content-hash": "c0c414b78c1221dd811df3b58388327d",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -644,12 +644,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "76c6dc1e572e9d47f2dd0a07ec3a7276ad22f954"
+                "reference": "ef618d8d1cd873fe74ad6e9b54adba5c043bb3ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/76c6dc1e572e9d47f2dd0a07ec3a7276ad22f954",
-                "reference": "76c6dc1e572e9d47f2dd0a07ec3a7276ad22f954",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/ef618d8d1cd873fe74ad6e9b54adba5c043bb3ed",
+                "reference": "ef618d8d1cd873fe74ad6e9b54adba5c043bb3ed",
                 "shasum": ""
             },
             "require": {
@@ -684,7 +684,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-02-18 11:07:11"
+            "time": "2017-02-18 16:17:24"
         },
         {
             "name": "movim/sasl2",
