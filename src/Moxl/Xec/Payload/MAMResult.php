@@ -6,7 +6,8 @@ class MAMResult extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        if($stanza->forwarded->delay) {
+        if($stanza->forwarded->delay
+        && empty((string)$parent->attributes()->from)) {
             $m = new \Modl\Message;
             $m->set($stanza->forwarded->message, $stanza->forwarded);
 

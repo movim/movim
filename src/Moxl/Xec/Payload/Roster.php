@@ -28,7 +28,8 @@ namespace Moxl\Xec\Payload;
 
 class Roster extends Payload
 {
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         if((string)$parent->attributes()->type == 'set')
         {
             $rd = new \Modl\RosterLinkDAO;

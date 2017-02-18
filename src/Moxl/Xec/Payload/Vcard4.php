@@ -28,7 +28,8 @@ namespace Moxl\Xec\Payload;
 
 class Vcard4 extends Payload
 {
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $jid = current(explode('/',(string)$parent->attributes()->from));
 
         $cd = new \Modl\ContactDAO;
