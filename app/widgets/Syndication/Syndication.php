@@ -77,6 +77,8 @@ class Syndication extends \Movim\Widget\Base
             $alternate->setAttribute('href', $this->route('node', [$from, $node]));
         }
 
+        $feed->appendChild($dom->createElement('id', 'xmpp:'.$from.'?;node='.rawurlencode($node)));
+
         $feed->appendChild($generator = $dom->createElement('generator', 'Movim'));
         $generator->setAttribute('uri', 'https://movim.eu');
         $generator->setAttribute('version', APP_VERSION);
