@@ -333,7 +333,7 @@
         {if="$external"}
             {$comments = $c->getComments($post)}
             {if="$comments"}
-                <ul class="list spaced middle">
+                <ul class="list divided spaced middle">
                     <li class="subheader">
                         <p>
                             <span class="info">{$comments|count}</span>
@@ -343,27 +343,37 @@
                     {loop="$comments"}
                         {if="$value->title || $value->contentraw"}
                         <li>
-                            {$url = $value->getContact()->getPhoto('s')}
-                            {if="$url"}
-                                <span class="primary icon bubble">
-                                    <img src="{$url}">
+                            {if="$value->isLike()"}
+                                <span class="primary icon small red">
+                                    <i class="zmdi zmdi-favorite"></i>
                                 </span>
                             {else}
-                                <span class="primary icon bubble color {$value->getContact()->jid|stringToColor}">
-                                    <i class="zmdi zmdi-account"></i>
-                                </span>
+                                {$url = $value->getContact()->getPhoto('s')}
+                                {if="$url"}
+                                    <span class="primary icon small bubble">
+                                        <img src="{$url}">
+                                    </span>
+                                {else}
+                                    <span class="primary icon small bubble color {$value->getContact()->jid|stringToColor}">
+                                        <i class="zmdi zmdi-account"></i>
+                                    </span>
+                                {/if}
                             {/if}
-                            <p>
+                            <p class="normal line">
+                                <span class="info" title="{$value->published|strtotime|prepareDate}">
+                                    {$value->published|strtotime|prepareDate:true,true}
+                                </span>
                                 {$value->getContact()->getTrueName()}
                             </p>
-                            <p class="all">
-                                <span class="info">{$value->published|strtotime|prepareDate}</span>
-                                {if="$value->title"}
-                                    {$value->title}
-                                {else}
-                                    {$value->contentraw}
-                                {/if}
-                            </p>
+                            {if="!$value->isLike()"}
+                                <p class="all">
+                                    {if="$value->title"}
+                                        {$value->title}
+                                    {else}
+                                        {$value->contentraw}
+                                    {/if}
+                                </p>
+                            {/if}
                         </li>
                         {/if}
                     {/loop}

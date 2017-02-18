@@ -199,7 +199,7 @@ class Post extends \Movim\Widget\Base
         $cp->setTo($to)
            ->setFrom($this->user->getLogin())
            ->setParentId($id)
-           ->setContent(htmlspecialchars(rawurldecode($comment)))
+           ->setTitle(htmlspecialchars(rawurldecode($comment)))
            ->request();
     }
 
