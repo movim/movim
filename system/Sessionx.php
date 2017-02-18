@@ -50,7 +50,7 @@ class Sessionx
     private function setCookie($key)
     {
         header_remove('Set-Cookie');
-        setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/', false, APP_SECURED);
+        setcookie("MOVIM_SESSION_ID", $key, time()+$this->_max_age, '/', BASE_HOST, APP_SECURED);
     }
 
     public static function start()
@@ -151,7 +151,7 @@ class Sessionx
             $key = 'username';
         }
 
-        $sd = new modl\SessionxDAO;
+        $sd = new \Modl\SessionxDAO;
         $sd->update(self::$_sessionid, $key, $value);
     }
 

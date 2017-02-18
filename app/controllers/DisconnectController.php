@@ -11,6 +11,9 @@ class DisconnectController extends Base
     function dispatch()
     {
         $session = \Sessionx::start();
+
+        $session->renewCookie();
+
         requestURL('http://localhost:1560/disconnect/', 2, ['sid' => $session->sessionid]);
 
         Session::dispose();
