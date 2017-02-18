@@ -44,16 +44,20 @@ class Syndication extends \Movim\Widget\Base
         $feed->appendChild($self = $dom->createElement('link'));
         $self->setAttribute('rel', 'self');
 
+        $feed->appendChild($alternate = $dom->createElement('link'));
+        $alternate->setAttribute('rel', 'alternate');
+
         if($contact != null) {
             $feed->appendChild($dom->createElement('title', __('feed.title', $contact->getTrueName())));
 
             $feed->appendChild($author = $dom->createElement('author'));
             $author->appendChild($dom->createElement('name', $contact->getTrueName()));
-            $author->appendChild($dom->createElement('uri', $this->route('blog', [$from])));
+            $author->appendChild($dom->createElement('uri', $this->route('blog', $from)));
 
             $feed->appendChild($dom->createElement('logo', $contact->getPhoto('l')));
 
-            $self->setAttribute('href', $this->route('feed', [$from]));
+            $self->setAttribute('href', $this->route('feed', $from));
+            $alternate->setAttribute('href', $this->route('blog', $from));
         }
 
         if($item != null) {
@@ -70,6 +74,7 @@ class Syndication extends \Movim\Widget\Base
             }
 
             $self->setAttribute('href', $this->route('feed', [$from, $node]));
+            $alternate->setAttribute('href', $this->route('node', [$from, $node]));
         }
 
         $feed->appendChild($generator = $dom->createElement('generator', 'Movim'));
