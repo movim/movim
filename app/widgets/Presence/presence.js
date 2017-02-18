@@ -25,6 +25,5 @@ var Presence = {
 
 MovimWebsocket.attach(function()
 {
-    Presence.postStart();
     Presence_ajaxGetPresence();
 });
