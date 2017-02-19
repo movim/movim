@@ -136,10 +136,15 @@
     <br />
     <h3>{$c->__('credentials.title')}</h3>
 
-    {if="$conf->user == 'admin' || $conf->pass == sha1('password')"}
-        <div class="message error">
-            {$c->__('credentials.info')}
-        </div>
+    {if="$conf->username == 'admin' || $conf->password == sha1('password')"}
+        <ul class="list thick">
+            <li>
+                <span class="primary icon orange color bubble">
+                    <i class="zmdi zmdi-alert-triangle"></i>
+                </span>
+                <p class="normal">{$c->__('credentials.info')}</p>
+            </li>
+        </ul>
     {/if}
 
     <div>
