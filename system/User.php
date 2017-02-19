@@ -96,6 +96,8 @@ class User
         $session = \Sessionx::start();
         $session->config = $config;
 
+        $this->createDir();
+
         file_put_contents($this->userdir.'config.dump', serialize($config));
 
         $this->reload(true);
