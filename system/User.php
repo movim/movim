@@ -138,8 +138,8 @@ class User
                     break;
             }
         } elseif($key == 'anonymous') {
-            $session = \Sessionx::start();
-            return ($session->mechanism == 'ANONYMOUS');
+            $session = \Session::start();
+            return ($session->get('mechanism') == 'ANONYMOUS');
         } else {
             return false;
         }

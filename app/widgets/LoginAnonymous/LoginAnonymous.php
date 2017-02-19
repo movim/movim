@@ -12,11 +12,9 @@ class LoginAnonymous extends \Movim\Widget\Base
 
     function onStart($packet)
     {
-        $session = \Sessionx::start();
-        $session->load();
-
-        if($session->mechanism == 'ANONYMOUS') {
-            RPC::call('Rooms.anonymousJoin');
+        $session = \Session::start();
+        if($session->get('mechanism') == 'ANONYMOUS') {
+            $this->rpc('Rooms.anonymousJoin');
         }
     }
 
