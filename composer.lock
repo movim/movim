@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a0da47d453af723bfa5cf62d54d24b5c",
-    "content-hash": "c0c414b78c1221dd811df3b58388327d",
+    "hash": "11c15c6b4e6d718eb7fecb6cbd64c26f",
+    "content-hash": "7b20838c63c7ef0998a5cc60e1f07ce0",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -600,12 +600,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "5e7f0a68f0081ca5d4aefcbdfea1e63b4db7fd51"
+                "reference": "3b4d032665c695781c5584602b2bd1403a957a72"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/5e7f0a68f0081ca5d4aefcbdfea1e63b4db7fd51",
-                "reference": "5e7f0a68f0081ca5d4aefcbdfea1e63b4db7fd51",
+                "url": "https://api.github.com/repos/movim/modl/zipball/3b4d032665c695781c5584602b2bd1403a957a72",
+                "reference": "3b4d032665c695781c5584602b2bd1403a957a72",
                 "shasum": ""
             },
             "require": {
@@ -636,7 +636,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2016-12-22 10:57:55"
+            "time": "2017-02-19 21:08:19"
         },
         {
             "name": "movim/moxl",
