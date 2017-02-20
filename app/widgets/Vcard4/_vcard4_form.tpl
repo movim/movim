@@ -47,52 +47,14 @@
         <label for="name">{$c->__('general.nickname')}</label>
     </div>
 
-    <div class="block large">
+    <div class="block">
         <input type="email" name="email" class="content" value="{$me->email}" placeholder="{$c->__('general.email')}">
         <label for="fn">{$c->__('general.email')}</label>
     </div>
 
-    <!-- The date picker -->
-
-    <div class="block large">
-        <label for="day">{$c->__('general.date_of_birth')}</label>
-
-        <div class="select" style="width: 33.33%; float: left;">
-            <select name="day" class="datepicker">
-                <option value="-1">{$c->__('day.title')}</option>
-                {loop="$days"}
-                    <option value="{$value}"
-                    {if="$key == substr($me->date, 8)"}
-                        selected
-                    {/if}
-                    >{$value}</option>
-                {/loop}
-            </select>
-        </div>
-        <div class="select" style="width: 33.33%; float: right;">
-            <select name="year" class="datepicker">
-                <option value="-1">{$c->__('year.title')}</option>
-                {loop="$years"}
-                    <option value="{$value}"
-                    {if="$value == substr($me->date,0,4)"}
-                        selected
-                    {/if}
-                    >{$value}</option>
-                {/loop}
-            </select>
-        </div>
-        <div class="select" style="width: 33.33%;">
-            <select name="month" class="datepicker">
-                <option value="-1">{$c->__('month.title')}</option>
-                {loop="$months"}
-                    <option value="{$key}"
-                    {if="$key == substr($me->date,5,2)"}
-                        selected
-                    {/if}
-                    >{$value}</option>
-                {/loop}
-            </select>
-        </div>
+    <div class="block">
+        <input type="text" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" name="date" class="content" value="{$me->getDate()}" placeholder="DD-MM-YYYY">
+        <label for="date">{$c->__('general.date_of_birth')}{$me->getDate()}</label>
     </div>
 
     <div class="block">
@@ -125,7 +87,7 @@
         </div>
     </div>
 
-    <div class="block">
+    <div class="block large">
         <input type="url" name ="url" class="content" value="{$me->url}" placeholder="https://mywebsite.com/">
         <label for="url">{$c->__('general.website')}</label>
     </div>
@@ -185,12 +147,14 @@
                 this.value = '{$c->__('Submitting')}';
                 this.className='button oppose inactive';"
             class="button color oppose"
+            type="button"
             id="vcard4validate"
             >
             {$c->__('button.save')}
         </button>
         <button
             onclick="document.querySelector('#vcard4form').reset();"
+            type="button"
             class="button flat oppose">
             {$c->__('button.reset')}
         </button>

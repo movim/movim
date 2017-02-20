@@ -343,6 +343,14 @@ class Contact extends Model
         }
     }
 
+    public function getDate()
+    {
+        if($this->date == null) return null;
+
+        $dt = new \DateTime($this->date);
+        return $dt->format('d-m-Y');
+    }
+
     function getGender()
     {
         $gender = getGender();
