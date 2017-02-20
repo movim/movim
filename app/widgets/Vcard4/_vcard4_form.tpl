@@ -54,7 +54,7 @@
 
     <div class="block">
         <input type="text" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" name="date" class="content" value="{$me->getDate()}" placeholder="DD-MM-YYYY">
-        <label for="date">{$c->__('general.date_of_birth')}{$me->getDate()}</label>
+        <label for="date">{$c->__('general.date_of_birth')}</label>
     </div>
 
     <div class="block">
