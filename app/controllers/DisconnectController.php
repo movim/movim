@@ -17,6 +17,7 @@ class DisconnectController extends Base
         requestURL('http://localhost:1560/disconnect/', 2, ['sid' => $session->sessionid]);
 
         Session::dispose();
+        $session->destroy();
 
         $this->redirect('login');
     }
