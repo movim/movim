@@ -39,16 +39,11 @@ class Handler {
     {
         $_instances = 'empty';
 
-        $user = new \User;
-
-        $db = \Modl\Modl::getInstance();
-        $db->setUser($user->getLogin());
-
         $id = '';
         $element = '';
 
         // Id verification in the returned stanza
-        if(in_array($child->getName(), array('iq', 'presence', 'message'))) {
+        if(in_array($child->getName(), ['iq', 'presence', 'message'])) {
             $id = (string)$child->attributes()->id;
         }
 

@@ -44,19 +44,20 @@ class Start extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $session = \Session::start();
         $session->remove('password');
         $session->set('active', true);
 
-        $session = \Sessionx::start();
+        $sd = new \Modl\SessionxDAO;
+        $session = $sd->get(SESSION_ID);
+        $session->active = true;
+        $sd->set($session);
 
         Utils::log("/// AUTH SUCCESSFULL");
 
-        // And we tell the daemon that the session is started !
         fwrite(STDERR, 'started');
-
-        $session->active = true;
 
         $this->pack($session);
         $this->deliver();
