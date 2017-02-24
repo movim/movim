@@ -32,10 +32,10 @@ class Register extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $sessx = \Sessionx::start();
-        $user = $sessx->user;
+        $sd = new \Modl\SessionxDAO;
+        $s = $sd->get(SESSION_ID);
 
-        if(!isset($user)) {
+        if($s && isset($s->username)) {
             $r = new Get;
             $r->request();
         }

@@ -30,8 +30,8 @@ class SASLFailure extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $session = \Sessionx::start();
-        $session->destroy();
+        $sd = new \Modl\SessionxDAO;
+        $sd->delete(SESSION_ID);
 
         $this->pack($stanza->children()->getName());
         $this->deliver();
