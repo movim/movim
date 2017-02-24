@@ -36,7 +36,6 @@ class Login extends \Movim\Widget\Base
             $p->start();
 
             $this->rpc('Login.rememberSession', $this->user->getLogin());
-            $this->rpc('MovimUtils.redirect', $this->route('root'));
 
             // We get the configuration
             $s = new Get;
@@ -48,13 +47,14 @@ class Login extends \Movim\Widget\Base
     function onConfig($packet)
     {
         $this->user->createDir();
+        $this->rpc('MovimUtils.redirect', $this->route('root'));
     }
 
     function display()
     {
         $submit = $this->call('ajaxLogin', "MovimUtils.formToJson('login')");
 
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         $this->view->assign('submit',   $submit);
@@ -169,6 +169,9 @@ class Login extends \Movim\Widget\Base
             return;
         }
 
+        $db = \Modl\Modl::getInstance();
+        $db->setUser($login);
+
         list($username, $host) = explode('@', $login);
 
         // Check whitelisted server
@@ -183,30 +186,26 @@ class Login extends \Movim\Widget\Base
             return;
         }
 
+        // TODO Clean me
+        $se = Sessionx::start();
+
         // We check if we already have an open session
         $sd = new \Modl\SessionxDAO;
         $here = $sd->getHash(sha1($username.$password.$host));
 
         if($here) {
-            RPC::call('Login.setCookie', $here->session);
-            RPC::call('MovimUtils.redirect', $this->route('main'));
+            $this->rpc('Login.setCookie', $here->session, date(DATE_COOKIE, $se->getTime()));
+            $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
         }
 
-        $s = Session::start();
-
-        // We create a new session or clear the old one
-        $s->set('password', $password);
-        $s->set('username', $username);
-        $s->set('host', $host);
-        $s->set('jid', $login);
-        $s->set('hash', sha1($username.$password.$host));
-
-        $s = Sessionx::start();
+        $s = new \Modl\Sessionx;
         $s->init($username, $password, $host);
+        $s->loadMemory();
+        $sd->set($s);
 
         // We launch the XMPP socket
-        RPC::call('register', $host);
+        $this->rpc('register', $host);
 
         \Moxl\Stanza\Stream::init($host);
     }

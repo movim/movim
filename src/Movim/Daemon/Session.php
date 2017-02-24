@@ -117,13 +117,15 @@ class Session
             $me->process = null;
             $me->closeAll();
 
+            $pd = new \Modl\PresenceDAO;
+            $pd->clearPresence();
+
             $sd = new \Modl\SessionxDAO;
             $sd->delete($this->sid);
         });
 
         $self = $this;
 
-        // Debug only, if the linker output some errors
         $this->process->stderr->on('data', function($output) use ($me, $self) {
             if(strpos($output, 'registered') !== false) {
                 $self->registered = true;

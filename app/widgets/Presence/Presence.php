@@ -107,9 +107,6 @@ class Presence extends \Movim\Widget\Base
 
     function ajaxLogout()
     {
-        $pd = new \Modl\PresenceDAO();
-        $pd->clearPresence();
-
         $session = \Session::start();
         $p = new Unavailable;
         $p->setType('terminate')

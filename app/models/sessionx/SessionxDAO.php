@@ -4,7 +4,7 @@ namespace modl;
 
 class SessionxDAO extends SQL
 {
-    function init(Sessionx $s)
+    function set(Sessionx $s)
     {
         $this->_sql = '
             update sessionx
@@ -24,14 +24,14 @@ class SessionxDAO extends SQL
             [
                 'session'   => $s->session,
                 'username'  => $s->username,
-                'jid'       => $s->username.'@'.$s->host,
+                'jid'       => $s->jid,
                 'hash'      => $s->hash,
                 'resource'  => $s->resource,
                 'host'      => $s->host,
                 'config'    => $s->config,
                 'active'    => $s->active,
                 'start'     => $s->start,
-                'timestamp' => $s->timestamp
+                'timestamp' => date(SQL::SQL_DATE)
             ]
         );
 
@@ -67,41 +67,19 @@ class SessionxDAO extends SQL
                 [
                     'session'   => $s->session,
                     'username'  => $s->username,
-                    'jid'       => $s->username.'@'.$s->host,
+                    'jid'       => $s->jid,
                     'hash'      => $s->hash,
                     'resource'  => $s->resource,
                     'host'      => $s->host,
                     'config'    => $s->config,
                     'active'    => $s->active,
                     'start'     => $s->start,
-                    'timestamp' => $s->timestamp
+                    'timestamp' => date(SQL::SQL_DATE)
                 ]
             );
 
             $this->run('Sessionx');
         }
-    }
-
-    function update($session, $key, $value)
-    {
-        $this->_sql = '
-            update sessionx
-            set
-                '.$key.'  = :'.$key.',
-                timestamp = :timestamp
-            where
-                session = :session';
-
-        $this->prepare(
-            'Sessionx',
-            [
-                'session'   => $session,
-                $key        => $value,
-                'timestamp' => date(SQL::SQL_DATE)
-            ]
-        );
-
-        $this->run('Sessionx');
     }
 
     function get($session)

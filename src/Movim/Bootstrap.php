@@ -102,7 +102,11 @@ class Bootstrap
         define('BASE_URI',      $this->getBaseUri());
         define('CACHE_URI',     $this->getBaseUri() . 'cache/');
 
-        define('SESSION_ID',    getenv('sid'));
+        if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
+            define('SESSION_ID',    $_COOKIE['MOVIM_SESSION_ID']);
+        } else {
+            define('SESSION_ID',    getenv('sid'));
+        }
 
         define('THEMES_PATH',   DOCUMENT_ROOT . '/themes/');
         define('USERS_PATH',    DOCUMENT_ROOT . '/users/');
@@ -304,12 +308,31 @@ class Bootstrap
 
     private function startingSession()
     {
-        $s = \Sessionx::start();
-        $s->load();
+        if(SESSION_ID !== null) {
+            $process = (bool)requestURL('http://localhost:1560/exists/', 2, ['sid' => SESSION_ID]);
 
-        $user = new \User;
-        $db = \Modl\Modl::getInstance();
-        $db->setUser($user->getLogin());
+            $sd = new \Modl\SessionxDAO;
+            $session = $sd->get(SESSION_ID);
+
+            if($session) {
+                // There a session in the DB but no process
+                if(!$process) {
+                    $sd->delete(SESSION_ID);
+                    return;
+                }
+
+                $db = \Modl\Modl::getInstance();
+                $db->setUser($session->jid);
+
+                $s = \Session::start();
+                $s->set('jid', $session->jid);
+            } elseif($process) {
+                // A process but no session in the db
+                requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);
+            }
+        }
+
+        \Sessionx::start();
     }
 
     public function getWidgets()

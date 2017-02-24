@@ -5,7 +5,8 @@ namespace Movim\Daemon;
 use \React\Http\Server;
 use \React\Socket\Server as Reactor;
 
-class Api {
+class Api
+{
     private $_http;
     private $_core;
 

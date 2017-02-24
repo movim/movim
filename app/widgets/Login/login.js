@@ -124,8 +124,8 @@ var Login = {
     /**
      * @brief Set the Movim cookie
      */
-    setCookie : function(value) {
-        document.cookie = 'MOVIM_SESSION_ID='+value;
+    setCookie : function(value, expires) {
+        document.cookie = 'MOVIM_SESSION_ID=' + value + '; expires=' + expires + '; path=/';
     },
 }
 
