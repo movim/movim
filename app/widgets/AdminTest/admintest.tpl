@@ -80,30 +80,6 @@
             <script type="text/javascript">AdminTest.disableMovim()</script>
         {/if}
 
-        {if="!extension_loaded('imagick')"}
-            <li>
-                <span class="primary icon color bubble red">
-                    <i class="zmdi zmdi-image"></i>
-                </span>
-                <p class="normal line">
-                    {$c->__('compatibility.imagick')}
-                </p>
-            </div>
-            <script type="text/javascript">AdminTest.disableMovim()</script>
-        {/if}
-
-        {if="!extension_loaded('gd')"}
-            <li>
-                <span class="primary icon color bubble red">
-                    <i class="zmdi zmdi-image"></i>
-                </span>
-                <p class="normal line">
-                    {$c->__('compatibility.gd')}
-                </p>
-            </div>
-            <script type="text/javascript">AdminTest.disableMovim()</script>
-        {/if}
-
         {if="!$c->testDir(CACHE_PATH)"}
             <li>
                 <span class="primary icon color bubble red">
