@@ -60,12 +60,12 @@ class Vcard4 extends \Movim\Widget\Base
 
         Notification::append(null, $this->__('vcard.updated'));
 
-        RPC::call('MovimTpl.fill', '#vcard_form', $html);
+        $this->rpc('MovimTpl.fill', '#vcard_form', $html);
     }
 
     function onMyVcard4Received()
     {
-        RPC::call('MovimUtils.buttonReset', '#vcard4validate');
+        $this->rpc('MovimUtils.buttonReset', '#vcard4validate');
         Notification::append(null, $this->__('vcard.updated'));
     }
 

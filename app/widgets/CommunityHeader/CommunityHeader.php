@@ -30,7 +30,7 @@ class CommunityHeader extends \Movim\Widget\Base
     {
         list($server, $node) = $packet->content;
 
-        RPC::call('MovimTpl.fill', '#community_header', $this->prepareHeader($server, $node));
+        $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($server, $node));
     }
 
     function onTestPublish($packet)

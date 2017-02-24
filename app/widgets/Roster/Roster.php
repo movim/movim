@@ -22,7 +22,7 @@ class Roster extends \Movim\Widget\Base
 
     function onChange($packet)
     {
-        RPC::call(
+        $this->rpc(
             'MovimTpl.fill',
             '#roster',
             $this->prepareItems()
@@ -44,7 +44,7 @@ class Roster extends \Movim\Widget\Base
 
             $html = $this->prepareItem($cd->getRoster($contact->jid)[0]);
             if($html) {
-                RPC::call('MovimTpl.replace', '#'.cleanupId($contact->jid), $html);
+                $this->rpc('MovimTpl.replace', '#'.cleanupId($contact->jid), $html);
             }
         }
     }
@@ -116,7 +116,7 @@ class Roster extends \Movim\Widget\Base
             $view->assign('contacts', $contacts);
             $html = $view->draw('_roster_search_results', true);
 
-            RPC::call('MovimTpl.fill', '#search_results', $html);
+            $this->rpc('MovimTpl.fill', '#search_results', $html);
         }
     }
 
@@ -157,7 +157,7 @@ class Roster extends \Movim\Widget\Base
     function ajaxSearchContact($jid)
     {
         if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
-            RPC::call('MovimUtils.redirect', $this->route('contact', $jid));
+            $this->rpc('MovimUtils.redirect', $this->route('contact', $jid));
         } else
             Notification::append(null, $this->__('roster.jid_error'));
     }

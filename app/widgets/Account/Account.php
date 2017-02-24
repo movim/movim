@@ -18,7 +18,7 @@ class Account extends \Movim\Widget\Base
 
     function onPasswordChanged()
     {
-        RPC::call('Account.resetPassword');
+        $this->rpc('Account.resetPassword');
         Notification::append(null, $this->__('account.password_changed'));
     }
 
@@ -28,7 +28,7 @@ class Account extends \Movim\Widget\Base
         $md->clearMessage();
         $pd = new Modl\PostnDAO;
         $pd->deleteNode($this->user->getLogin(), 'urn:xmpp:microblog:0');
-        RPC::call('Account.clearAccount');
+        $this->rpc('Account.clearAccount');
     }
 
     function onRegister($package)
@@ -71,11 +71,11 @@ class Account extends \Movim\Widget\Base
                    ->setPassword($p1)
                    ->request();
             } else {
-                RPC::call('Account.resetPassword');
+                $this->rpc('Account.resetPassword');
                 Notification::append(null, $this->__('account.password_not_same'));
             }
         } else {
-            RPC::call('Account.resetPassword');
+            $this->rpc('Account.resetPassword');
             Notification::append(null, $this->__('account.password_not_valid'));
         }
     }

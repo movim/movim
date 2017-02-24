@@ -19,15 +19,16 @@ class System extends \Movim\Widget\Base
         $r = new Route;
         $this->view->assign('current_page', $r->find());
 
-        if(!isset($_SERVER['HTTP_MOD_REWRITE']) || !$_SERVER['HTTP_MOD_REWRITE'])
+        if(!isset($_SERVER['HTTP_MOD_REWRITE']) || !$_SERVER['HTTP_MOD_REWRITE']) {
             $this->view->assign('page_key_uri', '?q=');
-        else
+        } else {
             $this->view->assign('page_key_uri', '');
+        }
 
         $this->view->assign('secure_websocket',    file_get_contents(CACHE_PATH.'websocket'));
 
         // And we load some public values of the system configuration
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         $public_conf = [

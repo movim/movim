@@ -59,7 +59,7 @@ class Statistics extends \Movim\Widget\Base
 
         array_push($data->datasets, $first);
 
-        RPC::call('Statistics.drawGraphs', $data);
+        $this->rpc('Statistics.drawGraphs', $data);
     }
 
     function display()

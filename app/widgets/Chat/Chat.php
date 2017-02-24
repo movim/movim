@@ -106,7 +106,7 @@ class Chat extends \Movim\Widget\Base
                     4);
             }
 
-            RPC::call('MovimTpl.fill', '#' . cleanupId($from.'_state'), $contact->jid);
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($from.'_state'), $contact->jid);
         } else {
             // If the message is from me we reset the notif counter
             $from = $message->jidto;
@@ -114,7 +114,7 @@ class Chat extends \Movim\Widget\Base
             $n->ajaxClear('chat|'.$from);
         }
         if(!preg_match('#^\?OTR#', $message->body)) {
-            RPC::call('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
+            $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
     }
 
@@ -178,7 +178,7 @@ class Chat extends \Movim\Widget\Base
 
         $html = $view->draw('_chat_state', true);
 
-        RPC::call('MovimTpl.fill', '#' . cleanupId($jid.'_state'), $html);
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_state'), $html);
     }
 
     /**
@@ -188,10 +188,10 @@ class Chat extends \Movim\Widget\Base
     function ajaxGet($jid = null)
     {
         if($jid == null) {
-            RPC::call('MovimUtils.pushState', $this->route('chat'));
+            $this->rpc('MovimUtils.pushState', $this->route('chat'));
 
-            RPC::call('MovimUtils.removeClass', '#chat_widget', 'fixed');
-            RPC::call('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
+            $this->rpc('MovimUtils.removeClass', '#chat_widget', 'fixed');
+            $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
         } else {
             $chats = new Chats;
             $chats->ajaxGetHistory($jid);
@@ -201,12 +201,12 @@ class Chat extends \Movim\Widget\Base
 
             $html = $this->prepareChat($jid);
 
-            RPC::call('MovimUtils.pushState', $this->route('chat', $jid));
+            $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));
 
-            RPC::call('MovimUtils.addClass', '#chat_widget', 'fixed');
-            RPC::call('MovimTpl.fill', '#chat_widget', $html);
-            RPC::call('Chat.focus', $jid);
-            RPC::call('MovimTpl.showPanel');
+            $this->rpc('MovimUtils.addClass', '#chat_widget', 'fixed');
+            $this->rpc('MovimTpl.fill', '#chat_widget', $html);
+            $this->rpc('Chat.focus', $jid);
+            $this->rpc('MovimTpl.showPanel');
 
             $this->prepareMessages($jid);
         }
@@ -235,25 +235,25 @@ class Chat extends \Movim\Widget\Base
         if($r) {
             $rooms = new Rooms;
             if(!$rooms->checkConnected($r->conference, $r->nick)) {
-                RPC::call('Rooms_ajaxJoin', $r->conference, $r->nick);
+                $this->rpc('Rooms_ajaxJoin', $r->conference, $r->nick);
             }
 
             $html = $this->prepareChat($room, true);
 
-            RPC::call('MovimUtils.pushState', $this->route('chat', [$room, 'room']));
+            $this->rpc('MovimUtils.pushState', $this->route('chat', [$room, 'room']));
 
-            RPC::call('MovimUtils.addClass', '#chat_widget', 'fixed');
-            RPC::call('MovimTpl.fill', '#chat_widget', $html);
-            RPC::call('MovimTpl.showPanel');
-            RPC::call('Chat.focus');
+            $this->rpc('MovimUtils.addClass', '#chat_widget', 'fixed');
+            $this->rpc('MovimTpl.fill', '#chat_widget', $html);
+            $this->rpc('MovimTpl.showPanel');
+            $this->rpc('Chat.focus');
 
             $this->prepareMessages($room, true);
 
             $notif = new Notification;
             $notif->ajaxClear('chat|'.$room);
-            RPC::call('Notification.current', 'chat|'.$room);
+            $this->rpc('Notification.current', 'chat|'.$room);
         } else {
-            RPC::call('Rooms_ajaxAdd', $room);
+            $this->rpc('Rooms_ajaxAdd', $room);
         }
     }
 
@@ -375,7 +375,7 @@ class Chat extends \Movim\Widget\Base
 
         if(!isset($m->sticker)
         && !isset($m->file)) {
-            RPC::call('Chat.setTextarea', $m->body);
+            $this->rpc('Chat.setTextarea', $m->body);
         }
     }
 
@@ -425,7 +425,7 @@ class Chat extends \Movim\Widget\Base
                     $this->prepareMessage($message);
                 }
             }
-            RPC::call('Chat.appendMessagesWrapper', $this->_wrapper, true);
+            $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, true);
             $this->_wrapper = [];
         }
     }
@@ -580,10 +580,10 @@ class Chat extends \Movim\Widget\Base
 
         $date = $view->draw('_chat_date', true);
 
-        RPC::call('Chat.setBubbles', $left, $right, $room, $date);
-        RPC::call('Chat.appendMessagesWrapper', $this->_wrapper);
-        RPC::call('MovimTpl.scrollPanel');
-        RPC::call('Chat.clearReplace');
+        $this->rpc('Chat.setBubbles', $left, $right, $room, $date);
+        $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper);
+        $this->rpc('MovimTpl.scrollPanel');
+        $this->rpc('Chat.clearReplace');
     }
 
     function prepareMessage(&$message, $jid = null)

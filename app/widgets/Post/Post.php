@@ -33,10 +33,10 @@ class Post extends \Movim\Widget\Base
             if($p) {
                 $html = $this->preparePost($p);
 
-                RPC::call('MovimUtils.pushState', $this->route('news', [$p->origin, $p->node, $p->nodeid]));
+                $this->rpc('MovimUtils.pushState', $this->route('news', [$p->origin, $p->node, $p->nodeid]));
 
-                RPC::call('MovimTpl.fill', '#post_widget', $html);
-                RPC::call('MovimUtils.enableVideos');
+                $this->rpc('MovimTpl.fill', '#post_widget', $html);
+                $this->rpc('MovimUtils.enableVideos');
             }
         }
     }
@@ -86,23 +86,23 @@ class Post extends \Movim\Widget\Base
         $view->assign('id', $id);
 
         $html = $view->draw('_post_comments', true);
-        RPC::call('MovimTpl.fill', '#comments', $html);
+        $this->rpc('MovimTpl.fill', '#comments', $html);
     }
 
     function onCommentsError($packet)
     {
         $view = $this->tpl();
         $html = $view->draw('_post_comments_error', true);
-        RPC::call('MovimTpl.fill', '#comments', $html);
+        $this->rpc('MovimTpl.fill', '#comments', $html);
     }
 
     function ajaxClear()
     {
-        RPC::call('MovimUtils.pushState', $this->route('news'));
+        $this->rpc('MovimUtils.pushState', $this->route('news'));
 
-        RPC::call('MovimTpl.fill', '#post_widget', $this->prepareEmpty());
-        RPC::call('Menu.refresh');
-        //RPC::call('Menu_ajaxGetAll');
+        $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareEmpty());
+        $this->rpc('Menu.refresh');
+        //$this->rpc('Menu_ajaxGetAll');
     }
 
     function ajaxGetContact($jid)
@@ -119,8 +119,8 @@ class Post extends \Movim\Widget\Base
         if($p) {
             $html = $this->preparePost($p);
 
-            RPC::call('MovimTpl.fill', '#post_widget', $html);
-            RPC::call('MovimUtils.enableVideos');
+            $this->rpc('MovimTpl.fill', '#post_widget', $html);
+            $this->rpc('MovimUtils.enableVideos');
 
             // If the post is a reply but we don't have the original
             if($p->isReply() && !$p->getReply()) {

@@ -15,7 +15,7 @@ class Upload extends \Movim\Widget\Base
     function onRequested($package)
     {
         list($get, $put) = array_values($package->content);
-        RPC::call('Upload.request', $get, $put);
+        $this->rpc('Upload.request', $get, $put);
     }
 
     function onErrorNotAcceptable()

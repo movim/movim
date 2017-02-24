@@ -182,8 +182,6 @@ class Bootstrap
     private function loadSystem()
     {
         require_once(SYSTEM_PATH . "Session.php");
-        require_once(SYSTEM_PATH . "Sessionx.php");
-        require_once(SYSTEM_PATH . "RPC.php");
         require_once(SYSTEM_PATH . "User.php");
     }
 
@@ -332,7 +330,7 @@ class Bootstrap
             }
         }
 
-        \Sessionx::start();
+        Cookie::set();
     }
 
     public function getWidgets()

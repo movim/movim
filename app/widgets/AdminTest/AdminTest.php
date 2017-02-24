@@ -2,7 +2,8 @@
 
 class AdminTest extends \Movim\Widget\Base
 {
-    function load() {
+    function load()
+    {
         $this->addjs('admintest.js');
         $this->addcss('admintest.css');
     }

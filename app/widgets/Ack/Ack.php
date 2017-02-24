@@ -21,7 +21,7 @@ class Ack extends \Movim\Widget\Base {
     function onAckRequest($ack) {
         $to = $ack[0];
         $id = $ack[1];
-        RPC::call('ackRequest', $to, $id);
+        $this->rpc('ackRequest', $to, $id);
     }
 
     function ajaxAckRequest($to, $id) {

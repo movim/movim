@@ -42,8 +42,8 @@ class Chats extends \Movim\Widget\Base
             $c = $contacts[0];
             $chats = \Movim\Cache::c('chats');
             if(is_array($chats) &&  array_key_exists($c->jid, $chats)) {
-                RPC::call('MovimTpl.replace', '#' . cleanupId($c->jid.'_chat_item'), $this->prepareChat($c->jid));
-                RPC::call('Chats.refresh');
+                $this->rpc('MovimTpl.replace', '#' . cleanupId($c->jid.'_chat_item'), $this->prepareChat($c->jid));
+                $this->rpc('Chats.refresh');
 
                 $n = new Notification;
                 $n->ajaxGet();
@@ -70,14 +70,14 @@ class Chats extends \Movim\Widget\Base
             $jid = $from;
         }
 
-        RPC::call('MovimTpl.replace', '#' . cleanupId($jid.'_chat_item'), $this->prepareChat($jid, $message));
-        RPC::call('Chats.refresh');
+        $this->rpc('MovimTpl.replace', '#' . cleanupId($jid.'_chat_item'), $this->prepareChat($jid, $message));
+        $this->rpc('Chats.refresh');
     }
 
     function ajaxGet()
     {
-        RPC::call('MovimTpl.fill', '#chats_widget_list', $this->prepareChats());
-        RPC::call('Chats.refresh');
+        $this->rpc('MovimTpl.fill', '#chats_widget_list', $this->prepareChats());
+        $this->rpc('Chats.refresh');
     }
 
     /**
@@ -131,7 +131,7 @@ class Chats extends \Movim\Widget\Base
             if($history) $this->ajaxGetHistory($jid);
 
             \Movim\Cache::c('chats', $chats);
-            RPC::call('Chats.prepend', $jid, $this->prepareChat($jid));
+            $this->rpc('Chats.prepend', $jid, $this->prepareChat($jid));
         }
     }
 
@@ -143,11 +143,11 @@ class Chats extends \Movim\Widget\Base
         unset($chats[$jid]);
         \Movim\Cache::c('chats', $chats);
 
-        RPC::call('MovimTpl.remove', '#' . cleanupId($jid . '_chat_item'));
+        $this->rpc('MovimTpl.remove', '#' . cleanupId($jid . '_chat_item'));
 
-        RPC::call('Chats.refresh');
-        RPC::call('Chat.empty');
-        RPC::call('MovimTpl.hidePanel');
+        $this->rpc('Chats.refresh');
+        $this->rpc('Chat.empty');
+        $this->rpc('MovimTpl.hidePanel');
     }
 
     /**
@@ -180,7 +180,7 @@ class Chats extends \Movim\Widget\Base
         $contacts = $cd->getRosterSimple();
         $view->assign('contacts', $contacts);
 
-        RPC::call('MovimTpl.fill', '#add_extend', $view->draw('_chats_add_extend', true));
+        $this->rpc('MovimTpl.fill', '#add_extend', $view->draw('_chats_add_extend', true));
     }
 
     function prepareChats()

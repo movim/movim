@@ -1,6 +1,7 @@
 <?php
 
-class AdminLogin extends \Movim\Widget\Base {
+class AdminLogin extends \Movim\Widget\Base
+{
     function load()
     {
     }

@@ -29,7 +29,7 @@ class Communities extends \Movim\Widget\Base
 
     function ajaxGet()
     {
-        RPC::call('MovimTpl.fill', '#communities', $this->prepareCommunities());
+        $this->rpc('MovimTpl.fill', '#communities', $this->prepareCommunities());
     }
 
     function prepareCommunities()

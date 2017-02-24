@@ -24,14 +24,14 @@ class Visio extends \Movim\Widget\Base
         $s = Session::start();
         $s->set('sdp', $jts->generate());
 
-        RPC::call('VisioLink.openVisio', $from);
+        $this->rpc('VisioLink.openVisio', $from);
     }
 
     function ajaxGetSDP()
     {
         $s = Session::start();
         if($s->get('sdp')) {
-            RPC::call('Visio.onSDP', $s->get('sdp'), 'offer');
+            $this->rpc('Visio.onSDP', $s->get('sdp'), 'offer');
             $s->remove('sdp');
         }
     }
@@ -40,7 +40,7 @@ class Visio extends \Movim\Widget\Base
     {
         $jts = new JingletoSDP($stanza);
 
-        RPC::call('Visio.onSDP', $jts->generate(), 'answer');
+        $this->rpc('Visio.onSDP', $jts->generate(), 'answer');
     }
 
     function onCandidate($stanza)
@@ -65,7 +65,7 @@ class Visio extends \Movim\Widget\Base
 
         if(is_array($candidates)) {
             foreach($candidates as $candidate) {
-                RPC::call('Visio.onCandidate', $candidate[0], $candidate[1], $candidate[2]);
+                $this->rpc('Visio.onCandidate', $candidate[0], $candidate[1], $candidate[2]);
             }
         }
 
@@ -74,7 +74,7 @@ class Visio extends \Movim\Widget\Base
 
     function onTerminate($stanza)
     {
-        RPC::call('Visio.onTerminate');
+        $this->rpc('Visio.onTerminate');
     }
 
     function ajaxInitiate($sdp, $to)

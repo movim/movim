@@ -1,5 +1,7 @@
 <?php
 
+use Movim\RPC;
+
 class Notification extends \Movim\Widget\Base
 {
     function load()

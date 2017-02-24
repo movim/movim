@@ -18,8 +18,8 @@ class AdHoc extends \Movim\Widget\Base
     {
         $list = $package->content;
         $html = $this->prepareList($list);
-        RPC::call('MovimTpl.fill', '#adhoc_widget', $html);
-        RPC::call('AdHoc.refresh');
+        $this->rpc('MovimTpl.fill', '#adhoc_widget', $html);
+        $this->rpc('AdHoc.refresh');
     }
 
     function onCommand($package)
@@ -48,7 +48,7 @@ class AdHoc extends \Movim\Widget\Base
             Dialog::fill($view->draw('_adhoc_form', true), true);
         }
 
-        RPC::call('AdHoc.initForm');
+        $this->rpc('AdHoc.initForm');
     }
 
     function prepareList($list)
@@ -89,7 +89,7 @@ class AdHoc extends \Movim\Widget\Base
 
     function getIcon($command)
     {
-        $icons = array(
+        $icons = [
             'http://jabber.org/protocol/admin#delete-user' => 'zmdi-delete',
             'http://jabber.org/protocol/admin#end-user-session' => 'zmdi-stop',
             'http://jabber.org/protocol/admin#change-user-password' => 'zmdi-lock',
@@ -102,7 +102,7 @@ class AdHoc extends \Movim\Widget\Base
             'http://jabber.org/protocol/admin#get-user-roster' => 'zmdi-format-list-bulleted',
             'http://jabber.org/protocol/admin#get-online-users' => 'zmdi-trending-up',
             'http://jabber.org/protocol/admin#announce' => 'zmdi-notifications',
-        );
+        ];
 
         if(array_key_exists($command, $icons)) {
             return $icons[$command];

@@ -5,11 +5,13 @@ class Caps extends \Movim\Widget\Base
     private $_table = [];
     private $_nslist;
 
-    function load() {
+    function load()
+    {
         $this->addcss('caps.css');
     }
 
-    function isImplemented($client, $key) {
+    function isImplemented($client, $key)
+    {
         if(in_array($this->_nslist[$key]['ns'], $client)) {
             return '
                 <td

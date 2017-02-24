@@ -2,11 +2,12 @@
 
 class AdminMain extends \Movim\Widget\Base
 {
-    function load() {
+    function load()
+    {
         $this->addjs('admin.js');
 
         $form = $_POST;
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         if(isset($form) && !empty($form)) {
@@ -54,12 +55,11 @@ class AdminMain extends \Movim\Widget\Base
         $l = Movim\i18n\Locale::start();
 
         $this->view->assign('conf', $cd->get());
-        $this->view->assign('logs',
-            array(
+        $this->view->assign('logs', [
                 0 => $this->__('log.empty'),
                 1 => $this->__('log.syslog'),
-                2 => $this->__('log.syslog_files'))
-        );
+                2 => $this->__('log.syslog_files')
+        ]);
 
         $this->view->assign('bosh_info4',
             $this->__('bosh.info4', '<a href="http://wiki.movim.eu/en:install">', '</a>'));

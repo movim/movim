@@ -4,6 +4,7 @@ namespace Movim\Controller;
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Movim\Route;
+use Movim\Cookie;
 
 class Front extends Base
 {
@@ -37,8 +38,7 @@ class Front extends Base
     {
         $c = $this->loadController($request);
 
-        $sess = \Sessionx::start();
-        $sess->refreshCookie();
+        Cookie::refresh();
 
         if(is_callable([$c, 'load'])) {
             $c->name = $request;

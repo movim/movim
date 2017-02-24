@@ -26,8 +26,8 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         list($server, $node, $id) = array_values($packet->content);
         /*
-        RPC::call('MovimTpl.fill', '#'.cleanupId($id), $this->preparePost($server, $node, $id));
-        RPC::call('MovimUtils.enableVideos');*/
+        $this->rpc('MovimTpl.fill', '#'.cleanupId($id), $this->preparePost($server, $node, $id));
+        $this->rpc('MovimUtils.enableVideos');*/
         $this->displayItems($server, $node);
     }
 
@@ -66,8 +66,8 @@ class CommunityPosts extends \Movim\Widget\Base
         $html = $this->prepareCommunity($server, $node, 0, $ids);
 
         $slugify = new Slugify;
-        RPC::call('MovimTpl.fill', '#communityposts.'.$slugify->slugify($server.'_'.$node), $html);
-        RPC::call('MovimUtils.enableVideos');
+        $this->rpc('MovimTpl.fill', '#communityposts.'.$slugify->slugify($server.'_'.$node), $html);
+        $this->rpc('MovimUtils.enableVideos');
     }
 
     function ajaxGetContact($jid)
@@ -91,14 +91,14 @@ class CommunityPosts extends \Movim\Widget\Base
     function ajaxGetHistory($server, $node, $page)
     {
         $html = $this->prepareCommunity($server, $node, $page);
-        RPC::call('MovimTpl.append', '#communityposts', $html);
-        RPC::call('MovimUtils.enableVideos');
+        $this->rpc('MovimTpl.append', '#communityposts', $html);
+        $this->rpc('MovimUtils.enableVideos');
     }
 
     function ajaxClear()
     {
         $html = $this->prepareEmpty();
-        RPC::call('MovimTpl.fill', '#communityposts', $html);
+        $this->rpc('MovimTpl.fill', '#communityposts', $html);
     }
 
     function prepareEmpty()

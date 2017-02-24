@@ -22,7 +22,7 @@ class Init extends \Movim\Widget\Base
     function onConfigured($package)
     {
         $node = $package->content;
-        RPC::call('Init.setNode', $node);
+        $this->rpc('Init.setNode', $node);
     }
 
     private function createPersistentStorage($node)

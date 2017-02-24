@@ -6,6 +6,7 @@ define('DOCUMENT_ROOT', dirname(__FILE__));
 gc_enable();
 
 use Movim\Bootstrap;
+use Movim\RPC;
 
 $bootstrap = new Bootstrap;
 $booted = $bootstrap->boot();
@@ -62,14 +63,14 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
 
 function writeOut()
 {
-    $msg = \RPC::commit();
+    $msg = RPC::commit();
 
     if(!empty($msg)) {
         echo base64_encode(gzcompress(json_encode($msg), 9))."";
         //fwrite(STDERR, colorize(json_encode($msg).' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
     }
 
-    \RPC::clear();
+    RPC::clear();
 }
 
 function writeXMPP($xml)
@@ -168,7 +169,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         break;
                 }
 
-                $rpc = new \RPC();
+                $rpc = new RPC;
                 $rpc->handle_json($msg);
 
                 writeOut();

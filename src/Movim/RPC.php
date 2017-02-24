@@ -1,4 +1,7 @@
 <?php
+
+namespace Movim;
+
 use Movim\Widget\Wrapper;
 
 class RPC

@@ -22,7 +22,7 @@ class Search extends \Movim\Widget\Base
         $view->assign('presencestxt', getPresencesTxt());
 
         Drawer::fill($view->draw('_search', true), true);
-        RPC::call('Search.init');
+        $this->rpc('Search.init');
     }
 
     function prepareSearch($key)
@@ -53,7 +53,7 @@ class Search extends \Movim\Widget\Base
 
     function ajaxSearch($key)
     {
-        RPC::call('MovimTpl.fill', '#results', $this->prepareSearch($key));
+        $this->rpc('MovimTpl.fill', '#results', $this->prepareSearch($key));
     }
 
     function ajaxChat($jid)

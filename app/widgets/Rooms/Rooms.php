@@ -40,7 +40,7 @@ class Rooms extends \Movim\Widget\Base
     function onBookmark()
     {
         $this->refreshRooms();
-        RPC::call('MovimTpl.hidePanel');
+        $this->rpc('MovimTpl.hidePanel');
     }
 
     function onConnected()
@@ -65,8 +65,8 @@ class Rooms extends \Movim\Widget\Base
 
     private function refreshRooms($edit = false)
     {
-        RPC::call('MovimTpl.fill', '#rooms_widget', $this->prepareRooms($edit));
-        RPC::call('Rooms.refresh');
+        $this->rpc('MovimTpl.fill', '#rooms_widget', $this->prepareRooms($edit));
+        $this->rpc('Rooms.refresh');
     }
 
     /**
@@ -213,7 +213,7 @@ class Rooms extends \Movim\Widget\Base
                     'jid'       => strtolower($form['jid'])
                     ];
             $this->setBookmark($item);
-            RPC::call('Dialog_ajaxClear');
+            $this->rpc('Dialog_ajaxClear');
         }
     }
 

@@ -33,7 +33,7 @@ class CommunitiesServer extends \Movim\Widget\Base
     {
         $server = $packet->content;
 
-        RPC::call('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($server));
+        $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($server));
     }
 
     function onDiscoError($packet)
@@ -43,7 +43,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         $id = new \Modl\ItemDAO();
         $id->deleteItems($server);
 
-        RPC::call('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($server));
+        $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($server));
 
         Notification::append(null, $this->__('communitiesserver.disco_error'));
     }
@@ -70,7 +70,7 @@ class CommunitiesServer extends \Movim\Widget\Base
             return;
         }
 
-        RPC::call('MovimTpl.fill', '#communities_server', '');
+        $this->rpc('MovimTpl.fill', '#communities_server', '');
 
         $r = new Items;
         $r->setTo($server)->request();

@@ -10,7 +10,7 @@ class AdminDB extends \Movim\Widget\Base
     {
         $md = \modl\Modl::getInstance();
         $md->check(true);
-        RPC::call('MovimUtils.reloadThis');
+        $this->rpc('MovimUtils.reloadThis');
     }
 
     public function hidePassword($pass)
@@ -20,7 +20,7 @@ class AdminDB extends \Movim\Widget\Base
 
     function display()
     {
-        $md = \modl\Modl::getInstance();
+        $md = \Modl\Modl::getInstance();
         $infos = $md->check();
 
         $errors = '';

@@ -3,6 +3,7 @@
 use Moxl\Xec\Action\Storage\Get;
 use Moxl\Xec\Action\Roster\GetList;
 use Respect\Validation\Validator;
+use Movim\Cookie;
 
 class Login extends \Movim\Widget\Base
 {
@@ -90,8 +91,8 @@ class Login extends \Movim\Widget\Base
 
     function showErrorBlock($error)
     {
-        RPC::call('MovimTpl.fill', '#error', $this->prepareError($error));
-        RPC::call('MovimUtils.addClass', '#login_widget', 'error');
+        $this->rpc('MovimTpl.fill', '#error', $this->prepareError($error));
+        $this->rpc('MovimUtils.addClass', '#login_widget', 'error');
     }
 
     function prepareError($error = 'default')
@@ -186,15 +187,12 @@ class Login extends \Movim\Widget\Base
             return;
         }
 
-        // TODO Clean me
-        $se = Sessionx::start();
-
         // We check if we already have an open session
         $sd = new \Modl\SessionxDAO;
         $here = $sd->getHash(sha1($username.$password.$host));
 
         if($here) {
-            $this->rpc('Login.setCookie', $here->session, date(DATE_COOKIE, $se->getTime()));
+            $this->rpc('Login.setCookie', $here->session, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
         }
@@ -236,7 +234,7 @@ class Login extends \Movim\Widget\Base
         $sessionshtml->assign('sessions', $sessions_grabbed);
         $sessionshtml->assign('empty', new \Modl\Contact);
 
-        RPC::call('MovimTpl.fill', '#sessions', $sessionshtml->draw('_login_sessions', true));
-        RPC::call('Login.refresh');
+        $this->rpc('MovimTpl.fill', '#sessions', $sessionshtml->draw('_login_sessions', true));
+        $this->rpc('Login.refresh');
     }
 }

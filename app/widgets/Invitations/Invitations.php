@@ -23,7 +23,7 @@ class Invitations extends \Movim\Widget\Base
     function onInvitations($from = false)
     {
         $html = $this->prepareInvitations();
-        RPC::call('MovimTpl.fill', '#invitations_widget', $html);
+        $this->rpc('MovimTpl.fill', '#invitations_widget', $html);
 
         if(is_string($from)) {
             $cd = new \Modl\ContactDAO;

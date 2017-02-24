@@ -1,5 +1,7 @@
 <?php
 
+use Movim\RPC;
+
 class Dialog extends \Movim\Widget\Base
 {
     function load()

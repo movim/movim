@@ -1,5 +1,7 @@
 <?php
 
+use Movim\RPC;
+
 class Drawer extends \Movim\Widget\Base
 {
     function load()

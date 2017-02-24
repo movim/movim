@@ -17,19 +17,19 @@ class Share extends \Movim\Widget\Base
         && substr($link, 0, 4) == 'http') {
             $session = \Session::start();
             $session->set('share_url', $link);
-            RPC::call('Share.redirect', $this->route('publish'));
+            $this->rpc('Share.redirect', $this->route('publish'));
         } elseif(substr($link, 0, 5) == 'xmpp:') {
             $link = str_replace(['xmpp://', 'xmpp:'], '', $link);
 
             if(substr($link, -5, 5) == '?join') {
-                RPC::call(
+                $this->rpc(
                     'MovimUtils.redirect',
                     $this->route(
                         'chat', [str_replace('?join', '', $link), 'room']
                     )
                 );
             } else {
-                RPC::call(
+                $this->rpc(
                     'MovimUtils.redirect',
                     $this->route(
                         'contact', $link

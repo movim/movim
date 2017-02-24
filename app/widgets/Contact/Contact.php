@@ -43,15 +43,15 @@ class Contact extends \Movim\Widget\Base
 
         $view->assign('subscriptions', $items);
 
-        RPC::call('MovimTpl.fill', '#contact_subscriptions', $view->draw('_contact_subscriptions', true));
+        $this->rpc('MovimTpl.fill', '#contact_subscriptions', $view->draw('_contact_subscriptions', true));
     }
 
     function ajaxClear($page = 0)
     {
         $html = $this->prepareEmpty($page);
 
-        RPC::call('MovimUtils.pushState', $this->route('contact'));
-        RPC::call('MovimTpl.fill', '#contact_widget', $html);
+        $this->rpc('MovimUtils.pushState', $this->route('contact'));
+        $this->rpc('MovimTpl.fill', '#contact_widget', $html);
     }
 
     function ajaxGetContact($jid, $page = 0)
@@ -62,10 +62,10 @@ class Contact extends \Movim\Widget\Base
 
         $this->ajaxRefreshSubscriptions($jid);
 
-        RPC::call('MovimUtils.pushState', $this->route('contact', $jid));
+        $this->rpc('MovimUtils.pushState', $this->route('contact', $jid));
 
-        RPC::call('MovimTpl.fill', '#contact_widget', $html);
-        RPC::call('MovimTpl.showPanel');
+        $this->rpc('MovimTpl.fill', '#contact_widget', $html);
+        $this->rpc('MovimTpl.showPanel');
 
         $r = new GetItemsId;
         $r->setTo($jid)
@@ -83,7 +83,7 @@ class Contact extends \Movim\Widget\Base
         $view->assign('jid', $jid);
         $view->assign('gallery', $pd->getGallery($jid, 0, 20));
 
-        RPC::call('MovimTpl.fill', '#contact_tab', $view->draw('_contact_gallery', true));
+        $this->rpc('MovimTpl.fill', '#contact_tab', $view->draw('_contact_gallery', true));
     }
 
     function ajaxGetBlog($jid)
@@ -96,7 +96,7 @@ class Contact extends \Movim\Widget\Base
         $view->assign('jid', $jid);
         $view->assign('blog', $pd->getPublic($jid, 'urn:xmpp:microblog:0', 0, 18));
 
-        RPC::call('MovimTpl.fill', '#contact_tab', $view->draw('_contact_blog', true));
+        $this->rpc('MovimTpl.fill', '#contact_tab', $view->draw('_contact_blog', true));
     }
 
     function ajaxGetDrawer($jid)
@@ -196,7 +196,7 @@ class Contact extends \Movim\Widget\Base
         $c = new Chats;
         $c->ajaxOpen($jid);
 
-        RPC::call('MovimUtils.redirect', $this->route('chat', $jid));
+        $this->rpc('MovimUtils.redirect', $this->route('chat', $jid));
     }
 
     function ajaxDeleteContact($jid)
@@ -234,7 +234,7 @@ class Contact extends \Movim\Widget\Base
         $validate_page = Validator::intType();
         if(!$validate_page->validate($page)) return;
 
-        RPC::call('MovimTpl.fill', '#public_list', $this->preparePublic($page));
+        $this->rpc('MovimTpl.fill', '#public_list', $this->preparePublic($page));
     }
 
     private function preparePublic($page = 0)

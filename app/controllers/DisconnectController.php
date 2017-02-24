@@ -1,5 +1,7 @@
 <?php
+
 use Movim\Controller\Base;
+use Movim\Cookie;
 
 class DisconnectController extends Base
 {
@@ -15,8 +17,7 @@ class DisconnectController extends Base
         Session::dispose();
 
         // Fresh cookie
-        $session = \Sessionx::start();
-        $session->renewCookie();
+        Cookie::renew();
 
         $this->redirect('login');
     }

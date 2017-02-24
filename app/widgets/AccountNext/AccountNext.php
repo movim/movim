@@ -43,7 +43,7 @@ class AccountNext extends \Movim\Widget\Base {
                     $html = $formview->draw('_accountnext_form', true);
                     break;
                 case 'jabber:x:oob' :
-                    RPC::call('MovimUtils.redirect', (string)$form->x->url);
+                    $this->rpc('MovimUtils.redirect', (string)$form->x->url);
                     break;
             }
         } else {
@@ -56,7 +56,7 @@ class AccountNext extends \Movim\Widget\Base {
             $html = $formview->draw('_accountnext_form', true);
         }
 
-        RPC::call('MovimTpl.fill', '#subscription_form', $html);
+        $this->rpc('MovimTpl.fill', '#subscription_form', $html);
     }
 
     function onRegistered($packet)
@@ -66,8 +66,8 @@ class AccountNext extends \Movim\Widget\Base {
         $view = $this->tpl();
         $html = $view->draw('_accountnext_registered', true);
 
-        RPC::call('MovimTpl.fill', '#subscribe', $html);
-        RPC::call('setUsername', $data->username->value);
+        $this->rpc('MovimTpl.fill', '#subscribe', $html);
+        $this->rpc('setUsername', $data->username->value);
     }
 
     function onError()
@@ -95,10 +95,9 @@ class AccountNext extends \Movim\Widget\Base {
     {
         Notification::append(null, $this->__('error.service_unavailable'));
 
-        $session = \Sessionx::start();
-        requestURL('http://localhost:1560/disconnect/', 2, ['sid' => $session->sessionid]);
+        requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);
 
-        RPC::call('MovimUtils.redirect', $this->route('account'));
+        $this->rpc('MovimUtils.redirect', $this->route('account'));
     }
 
     function ajaxGetForm($host)

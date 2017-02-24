@@ -109,11 +109,11 @@ class Publish extends \Movim\Widget\Base
         $view->assign('item', $item);*/
 
         if($id) {
-            RPC::call('Publish.initEdit');
+            $this->rpc('Publish.initEdit');
         }
 
         if($session->get('share_url')) {
-            RPC::call('Publish.setEmbed');
+            $this->rpc('Publish.setEmbed');
         }
     }
 
@@ -157,7 +157,7 @@ class Publish extends \Movim\Widget\Base
         $session = \Session::start();
         $session->remove('share_url');
 
-        RPC::call('Publish.clearEmbed');
+        $this->rpc('Publish.clearEmbed');
     }
 
     function ajaxHelp()
@@ -207,7 +207,7 @@ class Publish extends \Movim\Widget\Base
 
     function ajaxPublish($form)
     {
-        RPC::call('Publish.disableSend');
+        $this->rpc('Publish.disableSend');
 
         if(Validator::stringType()->notEmpty()->validate(trim($form->title->value))) {
             $p = new PostPublish;
@@ -293,7 +293,7 @@ class Publish extends \Movim\Widget\Base
 
             $p->request();
         } else {
-            RPC::call('Publish.enableSend');
+            $this->rpc('Publish.enableSend');
             Notification::append(false, $this->__('publish.no_title'));
         }
     }
@@ -311,15 +311,15 @@ class Publish extends \Movim\Widget\Base
             $embed = Embed\Embed::create($url);
             $html = $this->prepareEmbed($embed);
 
-            RPC::call('MovimTpl.fill', '#preview', '');
-            RPC::call('MovimTpl.fill', '#gallery', '');
+            $this->rpc('MovimTpl.fill', '#preview', '');
+            $this->rpc('MovimTpl.fill', '#gallery', '');
 
             if(in_array($embed->type, ['photo', 'rich'])) {
-                RPC::call('MovimTpl.fill', '#gallery', $this->prepareGallery($embed));
+                $this->rpc('MovimTpl.fill', '#gallery', $this->prepareGallery($embed));
             }
 
             if($embed->type !== 'photo') {
-                RPC::call('MovimTpl.fill', '#preview', $html);
+                $this->rpc('MovimTpl.fill', '#preview', $html);
             }
         } catch(Exception $e) {
             error_log($e->getMessage());

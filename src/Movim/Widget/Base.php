@@ -1,4 +1,5 @@
 <?php
+
 namespace Movim\Widget;
 
 use Rain\Tpl;
@@ -106,7 +107,7 @@ class Base
 
     function rpc()
     {
-        return call_user_func_array('\RPC::call', func_get_args());
+        return call_user_func_array('\Movim\RPC::call', func_get_args());
     }
 
     function load() {}

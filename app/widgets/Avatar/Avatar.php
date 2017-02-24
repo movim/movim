@@ -24,7 +24,7 @@ class Avatar extends \Movim\Widget\Base
         $me = $packet->content;
         $html = $this->prepareForm($me);
 
-        RPC::call('MovimTpl.fill', '#avatar_form', $html);
+        $this->rpc('MovimTpl.fill', '#avatar_form', $html);
         Notification::append(null, $this->__('avatar.updated'));
     }
 
@@ -34,7 +34,7 @@ class Avatar extends \Movim\Widget\Base
         $me = $cd->get();
         $html = $this->prepareForm($me);
 
-        RPC::call('MovimTpl.fill', '#avatar_form', $html);
+        $this->rpc('MovimTpl.fill', '#avatar_form', $html);
         Notification::append(null, $this->__('avatar.not_updated'));
     }
 
@@ -70,7 +70,7 @@ class Avatar extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $me = $cd->get();
 
-        RPC::call('MovimTpl.fill', '#avatar_form', $this->prepareForm($me));
+        $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm($me));
     }
 
     function ajaxSubmit($avatar)
