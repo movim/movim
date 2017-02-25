@@ -2,6 +2,8 @@
 
 namespace Moxl\Stanza;
 
+use Movim\Session;
+
 class OMEMO
 {
     static function setDeviceList($ids)
@@ -106,7 +108,7 @@ class OMEMO
         $payload,
         $isprekey)
     {
-        $session = \Session::start();
+        $session = Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'message');

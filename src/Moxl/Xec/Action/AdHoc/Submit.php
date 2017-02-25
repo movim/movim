@@ -12,7 +12,7 @@ class Submit extends Action
     private $_data;
     private $_sessionid;
 
-    public function request() 
+    public function request()
     {
         $this->store();
         AdHoc::submit($this->_to, $this->_node, $this->_data, $this->_sessionid);
@@ -42,7 +42,8 @@ class Submit extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $this->pack($stanza->command);
         $this->deliver();
     }

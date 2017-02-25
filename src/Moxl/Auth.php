@@ -3,6 +3,7 @@
 namespace Moxl;
 
 use \SASL2\SASL2;
+use Movim\Session;
 
 class Auth
 {
@@ -25,7 +26,7 @@ class Auth
             else $i++;
         }
 
-        $session = \Session::start();
+        $session = Session::start();
         $session->set('mechanism', $mechanism[$i]);
 
         return $mechanism[$i];
@@ -33,7 +34,7 @@ class Auth
 
     static function mechanismPLAIN()
     {
-        $session = \Session::start();
+        $session = Session::start();
 
         $s = new SASL2;
         $p = $s->factory('plain');
@@ -89,7 +90,7 @@ class Auth
         $s = new SASL2;
         $fa = $s->factory('SCRAM-SHA1');
 
-        $session = \Session::start();
+        $session = Session::start();
 
         Utils::log("/// INITIAL MESSAGE");
 

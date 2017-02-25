@@ -2,11 +2,13 @@
 
 namespace Moxl;
 
+use Movim\Session;
+
 class API
 {
     static function iqWrapper($xml = false, $to = false, $type = false, $id = false)
     {
-        $session = \Session::start();
+        $session = Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $iq = $dom->createElementNS('jabber:client', 'iq');

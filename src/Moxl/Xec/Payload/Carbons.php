@@ -2,6 +2,8 @@
 
 namespace Moxl\Xec\Payload;
 
+use Movim\User;
+
 class Carbons extends Payload
 {
     public function handle($stanza, $parent = false)
@@ -13,7 +15,7 @@ class Carbons extends Payload
         $from = current(explode('/',(string)$message->attributes()->from));
         $to = current(explode('/',(string)$message->attributes()->to));
 
-        $user = new \User;
+        $user = new User;
         if($parentfrom == $user->getLogin()) {
             if($message->composing)
                 $this->event('composing', [$from, $to]);

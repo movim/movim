@@ -27,6 +27,8 @@ namespace Moxl\Xec\Action\Storage;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Storage;
 
+use Movim\User;
+
 class Get extends Action
 {
     private $_xmlns;
@@ -48,9 +50,9 @@ class Get extends Action
         if($stanza->query->data) {
             $data = unserialize(trim((string)$stanza->query->data));
 
-            $user = new \User;
+            $user = new User;
             if(is_array($data)) {
-                $data = array_merge($data, array('config' => true));
+                $data = array_merge($data, ['config' => true]);
                 $user->setConfig($data);
 
                 $this->pack($data);
@@ -64,9 +66,10 @@ class Get extends Action
         }
     }
 
-    public function errorFeatureNotImplemented($stanza) {
-        $user = new \User;
-        $user->setConfig(array('config' => false));
+    public function errorFeatureNotImplemented($stanza)
+    {
+        $user = new User;
+        $user->setConfig(['config' => false]);
         $this->deliver();
     }
 }

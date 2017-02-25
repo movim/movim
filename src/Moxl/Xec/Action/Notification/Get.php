@@ -1,31 +1,11 @@
 <?php
-/*
- * Get.php
- *
- * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- *
- */
 
 namespace Moxl\Xec\Action\Notification;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Notification;
+
+use Movim\Session;
 
 class Get extends Action
 {
@@ -45,8 +25,8 @@ class Get extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $session = \Session::start();
-        $session->set('activenotifs', array());
+        $session = Session::start();
+        $session->set('activenotifs', []);
         if($stanza->pubsub->items->item) {
             foreach($stanza->pubsub->items->item as $item) {
                 $this->event('notification', $item);
@@ -58,19 +38,23 @@ class Get extends Action
         }
     }
 
-    public function errorFeatureNotImplemented($stanza) {
+    public function errorFeatureNotImplemented($stanza)
+    {
         $this->event('nonotification');
     }
 
-    public function errorItemNotFound($stanza) {
+    public function errorItemNotFound($stanza)
+    {
         $this->event('nonotification');
     }
 
-    public function errorNotAuthorized($stanza) {
+    public function errorNotAuthorized($stanza)
+    {
         $this->event('nonotificationautorized');
     }
 
-    public function errorNotAllowed($stanza) {
+    public function errorNotAllowed($stanza)
+    {
         $this->errorItemNotFound($stanza);
     }
 

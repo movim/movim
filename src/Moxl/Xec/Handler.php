@@ -29,6 +29,8 @@ namespace Moxl\Xec;
 
 use Moxl\Utils;
 
+use Movim\Session;
+
 class Handler {
     /**
      * Constructor of class Handler.
@@ -47,7 +49,7 @@ class Handler {
             $id = (string)$child->attributes()->id;
         }
 
-        $sess = \Session::start();
+        $sess = Session::start();
 
         if(
             ($id != '' &&

@@ -2,7 +2,10 @@
 
 namespace Moxl\Stanza;
 
-class Message {
+use Movim\Session;
+
+class Message
+{
     static function maker(
         $to,
         $content = false,
@@ -14,7 +17,7 @@ class Message {
         $replace = false,
         $file = false)
     {
-        $session = \Session::start();
+        $session = Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'message');

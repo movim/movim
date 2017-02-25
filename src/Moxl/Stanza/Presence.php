@@ -2,13 +2,16 @@
 
 namespace Moxl\Stanza;
 
-class Presence {
+use Movim\Session;
+
+class Presence
+{
     /*
      * The presence builder
      */
     static function maker($to = false, $status = false, $show = false, $priority = 0, $type = false)
     {
-        $session = \Session::start();
+        $session = Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $root = $dom->createElementNS('jabber:client', 'presence');
@@ -109,7 +112,7 @@ class Presence {
      */
     static function muc($to, $nickname = false)
     {
-        $session = \Session::start();
+        $session = Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $presence = $dom->createElementNS('jabber:client', 'presence');
