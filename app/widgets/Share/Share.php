@@ -2,6 +2,8 @@
 
 use Respect\Validation\Validator;
 
+use Movim\Session;
+
 class Share extends \Movim\Widget\Base
 {
     function load()
@@ -15,7 +17,7 @@ class Share extends \Movim\Widget\Base
 
         if($validate_url->validate($link)
         && substr($link, 0, 4) == 'http') {
-            $session = \Session::start();
+            $session = Session::start();
             $session->set('share_url', $link);
             $this->rpc('Share.redirect', $this->route('publish'));
         } elseif(substr($link, 0, 5) == 'xmpp:') {

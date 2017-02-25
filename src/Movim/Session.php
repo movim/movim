@@ -1,5 +1,7 @@
 <?php
 
+namespace Movim;
+
 class Session
 {
     protected static $instance;

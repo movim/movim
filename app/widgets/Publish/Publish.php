@@ -4,8 +4,11 @@ use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 
-use \Michelf\MarkdownExtra;
+use Movim\Session;
+
+use Michelf\MarkdownExtra;
 use Respect\Validation\Validator;
+
 
 class Publish extends \Movim\Widget\Base
 {
@@ -93,7 +96,7 @@ class Publish extends \Movim\Widget\Base
             $view->assign('reply', false);
         }
 
-        $session = \Session::start();
+        $session = Session::start();
         $view->assign('url', $session->get('share_url'));
 
         $this->rpc('MovimTpl.fill', '#publish', $view->draw('_publish_create', true));
@@ -154,7 +157,7 @@ class Publish extends \Movim\Widget\Base
 
     function ajaxClearShareUrl()
     {
-        $session = \Session::start();
+        $session = Session::start();
         $session->remove('share_url');
 
         $this->rpc('Publish.clearEmbed');
@@ -283,12 +286,12 @@ class Publish extends \Movim\Widget\Base
             }
 
             if($form->reply->value) {
-                $pd = new \modl\PostnDAO();
+                $pd = new \Modl\PostnDAO;
                 $post = $pd->get($form->replyorigin->value, $form->replynode->value, $form->replynodeid->value);
                 $p->setReply($post->getRef());
             }
 
-            $session = \Session::start();
+            $session = Session::start();
             $session->remove('share_url');
 
             $p->request();

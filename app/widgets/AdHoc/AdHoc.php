@@ -4,6 +4,8 @@ use Moxl\Xec\Action\AdHoc\Get;
 use Moxl\Xec\Action\AdHoc\Command;
 use Moxl\Xec\Action\AdHoc\Submit;
 
+use Movim\Session;
+
 class AdHoc extends \Movim\Widget\Base
 {
     function load()
@@ -60,7 +62,7 @@ class AdHoc extends \Movim\Widget\Base
 
     function ajaxGet()
     {
-        $session = \Session::start();
+        $session = Session::start();
 
         $g = new Get;
         $g->setTo($session->get('host'))
@@ -77,7 +79,7 @@ class AdHoc extends \Movim\Widget\Base
 
     function ajaxSubmit($data, $node, $sessionid)
     {
-        $session = \Session::start();
+        $session = Session::start();
 
         $s = new Submit;
         $s->setTo($session->get('host'))

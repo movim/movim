@@ -8,6 +8,7 @@ use Ramsey\Uuid\Uuid;
 use Respect\Validation\Validator;
 
 use Movim\Picture;
+use Movim\Session;
 
 class Stickers extends \Movim\Widget\Base
 {
@@ -70,7 +71,7 @@ class Stickers extends \Movim\Widget\Base
 
         $m->published = gmdate('Y-m-d H:i:s');
 
-        $session    = \Session::start();
+        $session    = Session::start();
 
         $m->id      = Uuid::uuid4();
         $m->type    = 'chat';

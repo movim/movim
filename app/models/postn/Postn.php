@@ -5,6 +5,7 @@ namespace Modl;
 use Respect\Validation\Validator;
 
 use Movim\Picture;
+use Movim\User;
 
 class Postn extends Model
 {
@@ -460,7 +461,7 @@ class Postn extends Model
 
     public function isMine($force = false)
     {
-        $user = new \User;
+        $user = new User;
 
         if($force) {
             return ($this->aid == $user->getLogin());

@@ -1,5 +1,8 @@
 <?php
+
 namespace Movim\Widget;
+
+use Movim\Session;
 
 class Wrapper
 {
@@ -160,7 +163,7 @@ class Wrapper
                          */
                         if(is_array($widget->filters)
                         && array_key_exists($method, $widget->filters)) {
-                            $session = \Session::start();
+                            $session = Session::start();
                             $notifs_key = $session->get('notifs_key');
 
                             if($notifs_key == 'blurred') {

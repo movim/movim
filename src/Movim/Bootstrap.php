@@ -1,4 +1,5 @@
 <?php
+
 namespace Movim;
 
 use Monolog\Logger;
@@ -12,7 +13,6 @@ class Bootstrap
         $this->setConstants();
 
         mb_internal_encoding("UTF-8");
-        ini_set('session.use_cookies', '0');
 
         //First thing to do, define error management (in case of error forward)
         $this->setLogs();
@@ -20,7 +20,6 @@ class Bootstrap
         //Check if vital system need is OK
         $this->checkSystem();
 
-        $this->loadSystem();
         $this->loadCommonLibraries();
         $this->loadDispatcher();
         $this->loadHelpers();
@@ -40,11 +39,11 @@ class Bootstrap
 
     private function checkSystem()
     {
-        $listWritableFile = array(
+        $listWritableFile = [
             LOG_PATH.'/logger.log',
             LOG_PATH.'/php.log',
             CACHE_PATH.'/test.tmp',
-        );
+        ];
         $errors = [];
 
         if(!file_exists(CACHE_PATH) && !@mkdir(CACHE_PATH)) {
@@ -179,12 +178,6 @@ class Bootstrap
         }
     }
 
-    private function loadSystem()
-    {
-        require_once(SYSTEM_PATH . "Session.php");
-        require_once(SYSTEM_PATH . "User.php");
-    }
-
     private function loadCommonLibraries()
     {
         // XMPPtoForm lib
@@ -212,7 +205,7 @@ class Bootstrap
      */
     function loadLanguage()
     {
-        $user = new \User;
+        $user = new User;
         $user->reload(true);
 
         $cd = new \Modl\ConfigDAO;
@@ -322,7 +315,7 @@ class Bootstrap
                 $db = \Modl\Modl::getInstance();
                 $db->setUser($session->jid);
 
-                $s = \Session::start();
+                $s = Session::start();
                 $s->set('jid', $session->jid);
             } elseif($process) {
                 // A process but no session in the db
@@ -336,12 +329,13 @@ class Bootstrap
     public function getWidgets()
     {
         // Return a list of interesting widgets to load (to save memory)
-        return["Account","AccountNext","Ack","AdHoc","Avatar","Bookmark","Communities",
-        "CommunityAffiliations","CommunityConfig","CommunityData","CommunityHeader","CommunityPosts","CommunitiesServer","Chat",
-        "Chats","Config","Contact","Dialog","Drawer","Header",
-        "Init","Login","LoginAnonymous","Menu","Notifs","Invitations","Post","Presence",
-        "Publish","Rooms","Roster","Stickers","Upload","Vcard4", "Visio",
-        "VisioLink"];
+        return ['Account','AccountNext','Ack','AdHoc','Avatar','Bookmark',
+        'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
+        'CommunityHeader','CommunityPosts','CommunitiesServer','Chat','Chats',
+        'Config','Contact','Dialog','Drawer','Header','Init','Login',
+        'LoginAnonymous','Menu','Notifs','Invitations','Post','Presence',
+        'Publish','Rooms','Roster','Stickers','Upload','Vcard4', 'Visio',
+        'VisioLink'];
     }
 
     /**

@@ -7,6 +7,8 @@ use Moxl\Xec\Action\Presence\Unavailable;
 
 use Respect\Validation\Validator;
 
+use Movim\Session;
+
 class Rooms extends \Movim\Widget\Base
 {
     function load()
@@ -275,7 +277,7 @@ class Rooms extends \Movim\Widget\Base
         $pd = new \Modl\PresenceDAO;
 
         if($resource == false) {
-            $session = \Session::start();
+            $session = Session::start();
             $resource = $session->get('username');
         }
 

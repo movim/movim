@@ -7,6 +7,7 @@ gc_enable();
 
 use Movim\Bootstrap;
 use Movim\RPC;
+use Movim\Session;
 
 $bootstrap = new Bootstrap;
 $booted = $bootstrap->boot();
@@ -21,7 +22,6 @@ $stdin = new React\Stream\Stream(STDIN, $loop);
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();
 $wrapper->registerAll($bootstrap->getWidgets());
-
 
 $conn = null;
 
@@ -208,7 +208,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 $loop->stop();
             } elseif($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
-                $session = \Session::start();
+                $session = Session::start();
                 stream_set_blocking($conn->stream, 1);
                 stream_context_set_option($conn->stream, 'ssl', 'SNI_enabled', false);
                 stream_context_set_option($conn->stream, 'ssl', 'peer_name', $session->get('host'));
@@ -243,7 +243,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             $timestamp = time();
 
             if($restart) {
-                $session = \Session::start();
+                $session = Session::start();
                 \Moxl\Stanza\Stream::init($session->get('host'));
                 stream_set_blocking($conn->stream, 0);
                 $restart = false;

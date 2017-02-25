@@ -1,6 +1,7 @@
 <?php
 
 use Movim\RPC;
+use Movim\Session;
 
 class Notification extends \Movim\Widget\Base
 {

@@ -4,6 +4,7 @@ namespace Movim\Widget;
 
 use Rain\Tpl;
 use Movim\Controller\Ajax;
+use Movim\User;
 
 class Base
 {
@@ -32,7 +33,7 @@ class Base
     {
         if($view != null) $this->_view = $view;
 
-        $this->user = new \User;
+        $this->user = new User;
 
         $this->load();
         $this->name = get_class($this);

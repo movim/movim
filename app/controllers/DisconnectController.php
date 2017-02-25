@@ -2,6 +2,7 @@
 
 use Movim\Controller\Base;
 use Movim\Cookie;
+use Movim\Session;
 
 class DisconnectController extends Base
 {

@@ -1,5 +1,9 @@
 <?php
 
+namespace Movim;
+
+use Movim\i18n\Locale;
+
 class User
 {
     private $config = [];
@@ -7,9 +11,6 @@ class User
     public $caps;
 
     public $userdir;
-    public $useruri;
-
-    public $sizelimit;
 
     /**
      * Class constructor. Reloads the user's session or attempts to authenticate
@@ -17,14 +18,9 @@ class User
      */
     function __construct($username = false)
     {
-        $s = \Session::start();
+        $s = Session::start();
         if($username) {
             $s->set('username', $username);
-        }
-
-        if($s->get('jid')) {
-            $this->userdir = DOCUMENT_ROOT.'/users/'.$s->get('jid').'/';
-            $this->useruri = BASE_URI.'users/'.$s->get('jid').'/';
         }
     }
 
@@ -41,7 +37,7 @@ class User
                 $this->config = $session->config;
                 $lang = $this->getConfig('language');
                 if(isset($lang)) {
-                    $l = Movim\i18n\Locale::start();
+                    $l = Locale::start();
                     $l->load($lang);
                 }
             }
@@ -57,33 +53,38 @@ class User
      */
     function isLogged()
     {
-        return (bool)requestURL('http://localhost:1560/exists/', 2, ['sid' => SESSION_ID]);
+        $s = Session::start();
+        return ($s->get('jid'));
     }
 
     function createDir()
     {
-        if(!is_dir($this->userdir)
-        && $this->userdir != '') {
-            mkdir($this->userdir);
-            touch($this->userdir.'index.html');
+        $s = Session::start();
+        if($s->get('jid')) {
+            $this->userdir = DOCUMENT_ROOT.'/users/'.$s->get('jid').'/';
+
+            if(!is_dir($this->userdir)) {
+                mkdir($this->userdir);
+                touch($this->userdir.'index.html');
+            }
         }
     }
 
     function getLogin()
     {
-        $s = \Session::start();
+        $s = Session::start();
         return $s->get('jid');
     }
 
     function getServer()
     {
-        $s = \Session::start();
+        $s = Session::start();
         return $s->get('host');
     }
 
     function getUser()
     {
-        $s = \Session::start();
+        $s = Session::start();
         return $s->get('username');
     }
 
@@ -140,7 +141,7 @@ class User
                     break;
             }
         } elseif($key == 'anonymous') {
-            $session = \Session::start();
+            $session = Session::start();
             return ($session->get('mechanism') == 'ANONYMOUS');
         } else {
             return false;

@@ -4,6 +4,7 @@ namespace Movim\Controller;
 
 use Movim\Template\Builder;
 use Movim\Route;
+use Movim\User;
 
 class Base
 {
@@ -16,7 +17,7 @@ class Base
 
     function __construct()
     {
-        $this->page = new Builder(new \User);
+        $this->page = new Builder(new User);
     }
 
     /**
@@ -52,7 +53,7 @@ class Base
     function checkSession()
     {
         if($this->session_only) {
-            $user = new \User;
+            $user = new User;
 
             if(!$user->isLogged()) {
                 $this->name = 'login';
@@ -80,7 +81,7 @@ class Base
         }
 
         if($this->session_only) {
-            $user = new \User;
+            $user = new User;
             $content = new Builder($user);
         } else {
             $content = new Builder;

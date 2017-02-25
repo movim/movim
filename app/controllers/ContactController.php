@@ -1,5 +1,7 @@
 <?php
+
 use Movim\Controller\Base;
+use Movim\User;
 
 class ContactController extends Base
 {

@@ -3,6 +3,8 @@
 use Moxl\Xec\Action\Jingle\SessionInitiate;
 use Moxl\Xec\Action\Jingle\SessionTerminate;
 
+use Movim\Session;
+
 class Visio extends \Movim\Widget\Base
 {
     function load()

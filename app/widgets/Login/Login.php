@@ -2,8 +2,11 @@
 
 use Moxl\Xec\Action\Storage\Get;
 use Moxl\Xec\Action\Roster\GetList;
+
 use Respect\Validation\Validator;
+
 use Movim\Cookie;
+use Movim\Session;
 
 class Login extends \Movim\Widget\Base
 {
@@ -19,7 +22,7 @@ class Login extends \Movim\Widget\Base
 
     function onStart($packet)
     {
-        $session = \Session::start();
+        $session = Session::start();
 
         if($session->get('mechanism') != 'ANONYMOUS') {
             // http://xmpp.org/extensions/xep-0280.html

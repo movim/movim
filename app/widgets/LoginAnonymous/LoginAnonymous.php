@@ -2,6 +2,8 @@
 
 use Respect\Validation\Validator;
 
+use Movim\Session;
+
 class LoginAnonymous extends \Movim\Widget\Base
 {
     function load()
@@ -12,15 +14,10 @@ class LoginAnonymous extends \Movim\Widget\Base
 
     function onStart($packet)
     {
-        $session = \Session::start();
+        $session = Session::start();
         if($session->get('mechanism') == 'ANONYMOUS') {
             $this->rpc('Rooms.anonymousJoin');
         }
-    }
-
-    function display()
-    {
-
     }
 
     function ajaxLogin($username)
@@ -50,5 +47,9 @@ class LoginAnonymous extends \Movim\Widget\Base
         $sd->set($s);
 
         \Moxl\Stanza\Stream::init($host);
+    }
+
+    function display()
+    {
     }
 }

@@ -6,6 +6,8 @@ use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
+use Movim\Session;
+
 class Invitations extends \Movim\Widget\Base
 {
     function load()
@@ -57,7 +59,7 @@ class Invitations extends \Movim\Widget\Base
 
         $invitations = [];
 
-        $session = \Session::start();
+        $session = Session::start();
         $notifs = $session->get('activenotifs');
         if(is_array($notifs)) {
             foreach($notifs as $key => $value) {
@@ -102,7 +104,7 @@ class Invitations extends \Movim\Widget\Base
           ->request();
 
         // TODO : move in Moxl
-        $session = \Session::start();
+        $session = Session::start();
         $notifs = $session->get('activenotifs');
 
         unset($notifs[$jid]);
@@ -120,7 +122,7 @@ class Invitations extends \Movim\Widget\Base
           ->request();
 
         // TODO : move in Moxl
-        $session = \Session::start();
+        $session = Session::start();
         $notifs = $session->get('activenotifs');
 
         unset($notifs[$jid]);

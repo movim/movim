@@ -5,8 +5,10 @@ namespace Modl;
 use Respect\Validation\Validator;
 
 use Movim\Picture;
+use Movim\User;
 
-class Message extends Model {
+class Message extends Model
+{
     public $id;
     public $newid;
 
@@ -68,7 +70,7 @@ class Message extends Model {
             }
 
             // This is not very beautiful
-            $user = new \User;
+            $user = new User;
             $this->session    = $user->getLogin();
 
             $this->jidto      = $to;

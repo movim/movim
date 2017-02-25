@@ -2,6 +2,8 @@
 
 namespace Modl;
 
+use Movim\Session;
+
 class Sessionx extends Model
 {
     public $session;
@@ -44,7 +46,7 @@ class Sessionx extends Model
 
     public function loadMemory()
     {
-        $s = \Session::start();
+        $s = Session::start();
         $s->set('password', $this->password);
         $s->set('username', $this->username);
         $s->set('host',     $this->host);

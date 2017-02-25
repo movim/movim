@@ -1,6 +1,7 @@
 <?php
 
 use Respect\Validation\Validator;
+use Movim\User;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
@@ -150,7 +151,7 @@ class Blog extends \Movim\Widget\Base
 
     function getComments($post)
     {
-        $pd = new \Modl\PostnDAO();
+        $pd = new \Modl\PostnDAO;
         return $pd->getComments($post);
     }
 }

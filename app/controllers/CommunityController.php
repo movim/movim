@@ -1,6 +1,7 @@
 <?php
 
 use Movim\Controller\Base;
+use Movim\User;
 
 class CommunityController extends Base
 {
@@ -13,7 +14,7 @@ class CommunityController extends Base
     {
         $this->page->setTitle(__('page.communities'));
 
-        $user = new User();
+        $user = new User;
         if(!$user->isLogged()) {
             $this->redirect('node', [$this->fetchGet('s'), $this->fetchGet('n')]);
         }

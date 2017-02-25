@@ -3,6 +3,8 @@
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Register\Set;
 
+use Movim\Session;
+
 class AccountNext extends \Movim\Widget\Base {
     function load()
     {
@@ -30,7 +32,7 @@ class AccountNext extends \Movim\Widget\Base {
     {
         $form = $package->content;
 
-        $xtf = new \XMPPtoForm();
+        $xtf = new \XMPPtoForm;
         if(!empty($form->x)){
             switch($form->x->attributes()->xmlns) {
                 case 'jabber:x:data' :

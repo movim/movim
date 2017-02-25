@@ -15,6 +15,7 @@ use Respect\Validation\Validator;
 use Ramsey\Uuid\Uuid;
 
 use Movim\Picture;
+use Movim\Session;
 
 class Chat extends \Movim\Widget\Base
 {
@@ -291,14 +292,14 @@ class Chat extends \Movim\Widget\Base
             $m->published = gmdate('Y-m-d H:i:s');
         }
 
-        $session    = \Session::start();
+        $session    = Session::start();
 
         $m->type    = 'chat';
         $m->resource = $session->get('resource');
 
         if($muc) {
             $m->type        = 'groupchat';
-            $m->resource = $session->get('username');
+            $m->resource    = $session->get('username');
             $m->jidfrom     = $to;
         }
 

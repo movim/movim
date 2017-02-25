@@ -5,9 +5,13 @@ use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\DND;
 use Moxl\Xec\Action\Presence\XA;
 use Moxl\Xec\Action\Presence\Unavailable;
+
 use Moxl\Xec\Action\Pubsub\GetItems;
-use Moxl\Stanza\Stream;
 use Moxl\Xec\Action\Storage\Get;
+
+use Moxl\Stanza\Stream;
+
+use Movim\Session;
 
 class Presence extends \Movim\Widget\Base
 {
@@ -107,7 +111,7 @@ class Presence extends \Movim\Widget\Base
 
     function ajaxLogout()
     {
-        $session = \Session::start();
+        $session = Session::start();
         $p = new Unavailable;
         $p->setType('terminate')
           ->setResource($session->get('resource'))
@@ -132,7 +136,7 @@ class Presence extends \Movim\Widget\Base
     // We get the server capabilities
     function ajaxServerCapsGet()
     {
-        $session = \Session::start();
+        $session = Session::start();
         $c = new \Moxl\Xec\Action\Disco\Request;
         $c->setTo($session->get('host'))
           ->request();
@@ -141,7 +145,7 @@ class Presence extends \Movim\Widget\Base
     // We discover the server services
     function ajaxServerDisco()
     {
-        $session = \Session::start();
+        $session = Session::start();
         $c = new \Moxl\Xec\Action\Disco\Items;
         $c->setTo($session->get('host'))
           ->request();
@@ -150,7 +154,7 @@ class Presence extends \Movim\Widget\Base
     // We refresh the bookmarks
     function ajaxBookmarksGet()
     {
-        $session = \Session::start();
+        $session = Session::start();
         $b = new \Moxl\Xec\Action\Bookmark\Get;
         $b->setTo($session->get('jid'))
           ->request();
@@ -185,7 +189,7 @@ class Presence extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $pd = new \Modl\PresenceDAO;
 
-        $session = \Session::start();
+        $session = Session::start();
 
         // If the user is still on a logued-in page after a daemon restart
         if($session->get('jid') == false) {
@@ -221,7 +225,7 @@ class Presence extends \Movim\Widget\Base
         $txt = getPresences();
         $txts = getPresencesTxt();
 
-        $session = \Session::start();
+        $session = Session::start();
 
         $pd = new \Modl\PresenceDAO;
         $p = $pd->getPresence($session->get('jid'), $session->get('resource'));
