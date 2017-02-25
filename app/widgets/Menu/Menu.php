@@ -40,8 +40,8 @@ class Menu extends \Movim\Widget\Base
         $view->assign('count', $count);
         $view->assign('refresh', $this->call('ajaxGetAll'));
 
-        RPC::call('movim_posts_unread', $count);
-        RPC::call('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh', true));
+        $this->rpc('movim_posts_unread', $count);
+        $this->rpc('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh', true));
     }
 
     function onPost($packet)
@@ -121,13 +121,13 @@ class Menu extends \Movim\Widget\Base
         $html = $this->prepareList($type, $server, $node, $page);
 
         if($page > 0) {
-            RPC::call('MovimTpl.append', '#menu_wrapper', $html);
+            $this->rpc('MovimTpl.append', '#menu_wrapper', $html);
         } else {
-            RPC::call('MovimTpl.fill', '#menu_widget', $html);
-            RPC::call('movim_posts_unread', 0);
+            $this->rpc('MovimTpl.fill', '#menu_widget', $html);
+            $this->rpc('movim_posts_unread', 0);
         }
 
-        RPC::call('Menu.refresh');
+        $this->rpc('Menu.refresh');
     }
 
     function ajaxRefresh()
