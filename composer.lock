@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6817afe983b7f3630a426b09094a8910",
-    "content-hash": "0d14bf58d715d8ad5db62d6e5bd9f5e6",
+    "hash": "de934c47acefdbd23136cda60951ed9d",
+    "content-hash": "9430a97e4fb80f7a24491dff1b6c9051",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -607,12 +607,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "3b4d032665c695781c5584602b2bd1403a957a72"
+                "reference": "77a0d357b939bb7000ed9b590b04a82d04d14c06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/3b4d032665c695781c5584602b2bd1403a957a72",
-                "reference": "3b4d032665c695781c5584602b2bd1403a957a72",
+                "url": "https://api.github.com/repos/movim/modl/zipball/77a0d357b939bb7000ed9b590b04a82d04d14c06",
+                "reference": "77a0d357b939bb7000ed9b590b04a82d04d14c06",
                 "shasum": ""
             },
             "require": {
@@ -643,7 +643,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-02-19 21:08:19"
+            "time": "2017-02-26 08:51:12"
         },
         {
             "name": "movim/moxl",
