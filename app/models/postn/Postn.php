@@ -503,7 +503,7 @@ class Postn extends Model
 
     public function isLike()
     {
-        return ($this->contentraw == '♥');
+        return ($this->contentraw == '♥' || $this->title == '♥');
     }
 
     public function isRTL()
