@@ -121,7 +121,8 @@ class Handler {
         }
     }
 
-    static public function handleNode($s, $sparent = false) {
+    static public function handleNode($s, $sparent = false)
+    {
         $name = $s->getName();
         $node = false;
 
@@ -149,7 +150,8 @@ class Handler {
         Handler::searchPayload($hash, $s, $sparent);
     }
 
-    static public function searchPayload($hash, $s, $sparent = false) {
+    static public function searchPayload($hash, $s, $sparent = false)
+    {
         $hashToClass = array(
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
             '78e731027d8fd50ed642340b7c9a63b3' => 'Message',// TLS
@@ -190,6 +192,8 @@ class Handler {
             '36fe2745bdc72b1682be2c008d547e3d' => 'Vcard4',
 
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
+
+            'c2a75c460d99bcad64e81e7730abddef' => 'PubsubSubscription',
 
             //'da6b60476aeab672ac0afe3ff27dc6a4' => 'OMEMODevices',
             //'c5685812e4af902631769b013dc3512d' => 'OMEMOMessage',

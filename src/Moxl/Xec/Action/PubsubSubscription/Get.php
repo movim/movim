@@ -24,18 +24,16 @@ class Get extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $tab = [];
+        $sd = new \Modl\SharedSubscriptionDAO;
+        $sd->deleteJid($this->_to);
 
         foreach($stanza->pubsub->items->children() as $i) {
-            $sub = [
-                'node'      => (string)$i->subscription["node"],
-                'server'    =>(string)$i->subscription["server"],
-                'title'     => (string)$i->subscription->title
-            ];
-            array_push($tab, $sub);
+            $s = new \Modl\SharedSubscription;
+            $s->set($this->_to, $i->subscription);
+            $sd->set($s);
         }
 
-        $this->pack($tab);
+        $this->pack($this->_to);
         $this->deliver();
     }
 
