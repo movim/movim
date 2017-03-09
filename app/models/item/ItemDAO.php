@@ -329,6 +329,25 @@ class ItemDAO extends SQL
         return $this->run('Item', 'item');
     }
 
+    function getSharedItems($jid)
+    {
+        $this->_sql = '
+            select * from item
+            where (server, node) in (
+                select server, node from sharedsubscription
+                where jid = :jid
+            )';
+
+        $this->prepare(
+            'Item',
+            [
+                'jid' => $jid
+            ]
+        );
+
+        return $this->run('Item');
+    }
+
     function getItem($server, $item)
     {
         $this->_sql = '

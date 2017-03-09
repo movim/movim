@@ -30,18 +30,8 @@ class Contact extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $items = [];
         $id = new \Modl\ItemDAO;
-
-        foreach($packet->content as $subscription) {
-            $item = $id->getItem($subscription['server'], $subscription['node']);
-
-            if($item) {
-                array_push($items, $item);
-            }
-        }
-
-        $view->assign('subscriptions', $items);
+        $view->assign('subscriptions', $id->getSharedItems($packet->content));
 
         $this->rpc('MovimTpl.fill', '#contact_subscriptions', $view->draw('_contact_subscriptions', true));
     }

@@ -278,6 +278,7 @@ class Bootstrap
         \Modl\Utils::loadModel('Cache');
         \Modl\Utils::loadModel('Postn');
         \Modl\Utils::loadModel('Subscription');
+        \Modl\Utils::loadModel('SharedSubscription');
         \Modl\Utils::loadModel('Caps');
         \Modl\Utils::loadModel('Item');
         \Modl\Utils::loadModel('Message');

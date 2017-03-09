@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "de934c47acefdbd23136cda60951ed9d",
-    "content-hash": "9430a97e4fb80f7a24491dff1b6c9051",
+    "hash": "be1dfa54bbc8c51ec5b14ceff06a1586",
+    "content-hash": "04a1b6a8575126446fe28a53a2c82120",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -331,16 +331,16 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.9.0",
+            "version": "v4.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "a1c09b09e398687deeb8e309a6305def4b43439b"
+                "reference": "de82f9845f2a0f9f27abec67d6a4958427e6f5d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/a1c09b09e398687deeb8e309a6305def4b43439b",
-                "reference": "a1c09b09e398687deeb8e309a6305def4b43439b",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/de82f9845f2a0f9f27abec67d6a4958427e6f5d6",
+                "reference": "de82f9845f2a0f9f27abec67d6a4958427e6f5d6",
                 "shasum": ""
             },
             "require": {
@@ -374,7 +374,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2017-01-13 12:31:37"
+            "time": "2017-03-08 08:22:36"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -651,12 +651,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "cbfcc14e143b42bb67cd9b703240c7b3692b9a9c"
+                "reference": "1b490cd523e9bad19de403d7ecff2af867e92216"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/cbfcc14e143b42bb67cd9b703240c7b3692b9a9c",
-                "reference": "cbfcc14e143b42bb67cd9b703240c7b3692b9a9c",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/1b490cd523e9bad19de403d7ecff2af867e92216",
+                "reference": "1b490cd523e9bad19de403d7ecff2af867e92216",
                 "shasum": ""
             },
             "require": {
@@ -691,7 +691,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-02-25 23:13:54"
+            "time": "2017-03-09 22:04:45"
         },
         {
             "name": "movim/sasl2",
@@ -1279,7 +1279,7 @@
                 "evenement/evenement": "^2.0 || ^1.0",
                 "php": ">=5.3.0",
                 "react/socket": "^0.5",
-                "react/stream": "^0.4.4",
+                "react/stream": "^0.6 || ^0.5 || ^0.4.4",
                 "ringcentral/psr7": "^1.2"
             },
             "type": "library",
@@ -1433,16 +1433,16 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.5.0",
+            "version": "v0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "691dbf6cb3aa9ae67ef25d29c32e853d5d34fa99"
+                "reference": "c0e337e375d5fb064da4ba62a91a29815e7502f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/691dbf6cb3aa9ae67ef25d29c32e853d5d34fa99",
-                "reference": "691dbf6cb3aa9ae67ef25d29c32e853d5d34fa99",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/c0e337e375d5fb064da4ba62a91a29815e7502f8",
+                "reference": "c0e337e375d5fb064da4ba62a91a29815e7502f8",
                 "shasum": ""
             },
             "require": {
@@ -1450,7 +1450,7 @@
                 "php": ">=5.3.0",
                 "react/event-loop": "0.4.*|0.3.*",
                 "react/promise": "^2.0 || ^1.1",
-                "react/stream": "^0.4.5"
+                "react/stream": "^0.6 || ^0.5 || ^0.4.5"
             },
             "require-dev": {
                 "clue/block-react": "^1.1",
@@ -1471,7 +1471,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2017-02-14 06:49:09"
+            "time": "2017-03-09 12:13:07"
         },
         {
             "name": "react/socket-client",
@@ -1683,16 +1683,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.4",
+            "version": "v3.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "0e5e6899f82230fcb1153bcaf0e106ffaa44b870"
+                "reference": "28fb243a2b5727774ca309ec2d92da240f1af0dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/0e5e6899f82230fcb1153bcaf0e106ffaa44b870",
-                "reference": "0e5e6899f82230fcb1153bcaf0e106ffaa44b870",
+                "url": "https://api.github.com/repos/symfony/console/zipball/28fb243a2b5727774ca309ec2d92da240f1af0dd",
+                "reference": "28fb243a2b5727774ca309ec2d92da240f1af0dd",
                 "shasum": ""
             },
             "require": {
@@ -1742,20 +1742,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-16 14:07:22"
+            "time": "2017-03-06 19:30:27"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.4",
+            "version": "v3.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "9b98854cb45bc59d100b7d4cc4cf9e05f21026b9"
+                "reference": "b90c9f91ad8ac37d9f114e369042d3226b34dc1a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/9b98854cb45bc59d100b7d4cc4cf9e05f21026b9",
-                "reference": "9b98854cb45bc59d100b7d4cc4cf9e05f21026b9",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/b90c9f91ad8ac37d9f114e369042d3226b34dc1a",
+                "reference": "b90c9f91ad8ac37d9f114e369042d3226b34dc1a",
                 "shasum": ""
             },
             "require": {
@@ -1799,20 +1799,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-16 16:34:18"
+            "time": "2017-02-18 17:28:00"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.2.4",
+            "version": "v3.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "a90da6dd679605d88c9803a57a6fc1fb7a19a6e0"
+                "reference": "c57009887010eb4e58bfca2970314a5b820b24b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/a90da6dd679605d88c9803a57a6fc1fb7a19a6e0",
-                "reference": "a90da6dd679605d88c9803a57a6fc1fb7a19a6e0",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/c57009887010eb4e58bfca2970314a5b820b24b9",
+                "reference": "c57009887010eb4e58bfca2970314a5b820b24b9",
                 "shasum": ""
             },
             "require": {
@@ -1852,7 +1852,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-16 22:46:52"
+            "time": "2017-03-04 12:23:14"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1915,16 +1915,16 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v3.2.4",
+            "version": "v3.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "af464432c177dbcdbb32295113b7627500331f2d"
+                "reference": "d6605f9a5767bc5bc4895e1c762ba93964608aee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/af464432c177dbcdbb32295113b7627500331f2d",
-                "reference": "af464432c177dbcdbb32295113b7627500331f2d",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/d6605f9a5767bc5bc4895e1c762ba93964608aee",
+                "reference": "d6605f9a5767bc5bc4895e1c762ba93964608aee",
                 "shasum": ""
             },
             "require": {
@@ -1986,7 +1986,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-01-28 02:37:08"
+            "time": "2017-03-02 15:58:09"
         }
     ],
     "packages-dev": [],

@@ -785,6 +785,8 @@ class PostnDAO extends SQL
                         where subscription.jid = :jid
                     )
                 )
+                and (postn.origin, postn.node) in
+                    (select server, node from sharedsubscription)
                 and aid is not null';
 
         if($origin) {
