@@ -470,7 +470,7 @@ class PostnDAO extends SQL
             where (
                 (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and postn.node = \'urn:xmpp:microblog:0\')
                 or (postn.origin = :origin and postn.node = \'urn:xmpp:microblog:0\')
-                or ((postn.origin, postn.node) in (select server, postn.node from subscription where jid = :origin))
+                or ((postn.origin, postn.node) in (select server, node from subscription where jid = :origin))
                 )
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
@@ -526,7 +526,7 @@ class PostnDAO extends SQL
             left outer join item
                 on postn.origin = item.server
                 and postn.node = item.node
-            where ((postn.origin, postn.node) in (select server, postn.node from subscription where jid = :origin))
+            where ((postn.origin, postn.node) in (select server, node from subscription where jid = :origin))
             order by postn.published desc
             ';
 
