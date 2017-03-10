@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/ratchetphp/Ratchet.git",
-                "reference": "cc2bc79455f47f772c628dd32e313125f294a243"
+                "reference": "b00da833ced5eef568280fe3d2fcce363cb33f96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/cc2bc79455f47f772c628dd32e313125f294a243",
-                "reference": "cc2bc79455f47f772c628dd32e313125f294a243",
+                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/b00da833ced5eef568280fe3d2fcce363cb33f96",
+                "reference": "b00da833ced5eef568280fe3d2fcce363cb33f96",
                 "shasum": ""
             },
             "require": {
@@ -58,7 +58,7 @@
                 "sockets",
                 "websocket"
             ],
-            "time": "2017-02-17 01:34:04"
+            "time": "2017-03-10 14:22:43"
         },
         {
             "name": "clue/buzz-react",
@@ -1146,21 +1146,22 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "3ab4f83c6f6c5862f7ca28d999a92d327472a671"
+                "reference": "be6ebd7763170626794cbcb5c7b7ffdf5c9a4cb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/3ab4f83c6f6c5862f7ca28d999a92d327472a671",
-                "reference": "3ab4f83c6f6c5862f7ca28d999a92d327472a671",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/be6ebd7763170626794cbcb5c7b7ffdf5c9a4cb4",
+                "reference": "be6ebd7763170626794cbcb5c7b7ffdf5c9a4cb4",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "~2.0",
                 "php": ">=5.4.0",
                 "react/event-loop": "0.4.*",
-                "react/stream": "~0.4.2"
+                "react/stream": "^0.5 || ^0.4.4"
             },
             "require-dev": {
+                "phpunit/phpunit": "^5.0 || ^4.8.10",
                 "sebastian/environment": "~1.0"
             },
             "type": "library",
@@ -1177,7 +1178,7 @@
             "keywords": [
                 "process"
             ],
-            "time": "2016-08-01 18:09:48"
+            "time": "2017-03-10 13:33:18"
         },
         {
             "name": "react/dns",
@@ -1683,7 +1684,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -1746,7 +1747,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -1803,7 +1804,7 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
@@ -1915,7 +1916,7 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v3.2.5",
+            "version": "v3.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
