@@ -51,6 +51,9 @@ class Menu extends \Movim\Widget\Base
         $count = $pd->getCountSince($since);
         $post = $packet->content;
 
+        // We reload a fresh Post
+        $post = $pd->get($post->origin, $post->node, $post->nodeid);
+
         if($count > 0
         && is_object($post)
         && (strtotime($post->published) > strtotime($since))) {

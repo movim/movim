@@ -435,7 +435,7 @@ class Postn extends Model
     public function getLogo()
     {
         $p = new Picture;
-        return $p->get($this->origin.$this->node, 120);
+        return $p->get($this->origin.$this->node, 50);
     }
 
     public function getUUID()

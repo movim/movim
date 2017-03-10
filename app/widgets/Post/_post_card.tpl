@@ -5,6 +5,10 @@
                 <span class="primary icon bubble color red tiny">
                     +18
                 </span>
+            {elseif="$post->logo"}
+                <span class="primary icon bubble color white">
+                    <img src="{$post->getLogo()}"/>
+                </span>
             {elseif="$post->isMicroblog()"}
                 {$url = $post->getContact()->getPhoto('m')}
                 {if="$url"}
