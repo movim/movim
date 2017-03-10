@@ -49,8 +49,8 @@ class CommunityPosts extends \Movim\Widget\Base
             $sd = new \Modl\SubscriptionDAO;
 
             if($sd->get($server, $node)) {
-                $this->ajaxDelete($server, $node, true);
-                $this->ajaxGetAffiliations($server, $node);
+                $this->rpc('CommunityAffiliations_ajaxDelete', $server, $node, true);
+                $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $server, $node);
             } else {
                 $id = new \Modl\ItemDAO;
                 $id->deleteItem($server, $node);
