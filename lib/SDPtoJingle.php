@@ -1,5 +1,9 @@
 <?php
-class SDPtoJingle {
+
+use Movim\Session;
+
+class SDPtoJingle
+{
     private $sdp;
     private $arr;
     private $jingle;

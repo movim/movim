@@ -1,5 +1,7 @@
 <?php 
 
+use Movim\Session;
+
 class JingletoSDP
 {
     private $sdp = '';
