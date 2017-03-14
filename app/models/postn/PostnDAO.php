@@ -631,8 +631,8 @@ class PostnDAO extends SQL
                 and node = :node
                 and (title != \'\'
                 or contentraw != \'\')
-                and contentraw != :contentraw
-                and title != :contentraw
+                and (contentraw != :contentraw
+                or title != :contentraw)
                 ';
 
         $this->prepare(
@@ -658,8 +658,7 @@ class PostnDAO extends SQL
             where origin = :origin
                 and node = :node
                 and (contentraw = :contentraw
-                  or title = :contentraw
-                )';
+                or title = :contentraw)';
 
         $this->prepare(
             'Postn',
