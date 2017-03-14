@@ -10,7 +10,7 @@
                 id="{$value->jid|cleanupId}"
                 title="{$value->jid}"
                 name="{$value->jid|cleanupId}-{$value->getTrueName()|cleanupId}-{$value->groupname|cleanupId}"
-                class="{if="$value->value == null"}faded{/if}"
+                class="{if="$value->value == null || $value->value > 4"}faded{/if}"
 
             >
                 {$url = $value->getPhoto('m')}
