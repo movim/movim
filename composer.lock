@@ -331,16 +331,16 @@
         },
         {
             "name": "ezyang/htmlpurifier",
-            "version": "v4.9.1",
+            "version": "v4.9.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
-                "reference": "de82f9845f2a0f9f27abec67d6a4958427e6f5d6"
+                "reference": "6d50e5282afdfdfc3e0ff6d192aff56c5629b3d4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/de82f9845f2a0f9f27abec67d6a4958427e6f5d6",
-                "reference": "de82f9845f2a0f9f27abec67d6a4958427e6f5d6",
+                "url": "https://api.github.com/repos/ezyang/htmlpurifier/zipball/6d50e5282afdfdfc3e0ff6d192aff56c5629b3d4",
+                "reference": "6d50e5282afdfdfc3e0ff6d192aff56c5629b3d4",
                 "shasum": ""
             },
             "require": {
@@ -374,7 +374,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2017-03-08 08:22:36"
+            "time": "2017-03-13 06:30:53"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -746,16 +746,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.9",
+            "version": "v2.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "6968531206671f94377b01dc7888d5d1b858a01b"
+                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/6968531206671f94377b01dc7888d5d1b858a01b",
-                "reference": "6968531206671f94377b01dc7888d5d1b858a01b",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/634bae8e911eefa89c1abfbf1b66da679ac8f54d",
+                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d",
                 "shasum": ""
             },
             "require": {
@@ -790,7 +790,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-03 20:43:42"
+            "time": "2017-03-13 16:27:32"
         },
         {
             "name": "pear/net_dns2",
@@ -1146,18 +1146,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "be6ebd7763170626794cbcb5c7b7ffdf5c9a4cb4"
+                "reference": "b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/be6ebd7763170626794cbcb5c7b7ffdf5c9a4cb4",
-                "reference": "be6ebd7763170626794cbcb5c7b7ffdf5c9a4cb4",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6",
+                "reference": "b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6",
                 "shasum": ""
             },
             "require": {
-                "evenement/evenement": "~2.0",
-                "php": ">=5.4.0",
-                "react/event-loop": "0.4.*",
+                "evenement/evenement": "^2.0 || ^1.0",
+                "php": ">=5.3.0",
+                "react/event-loop": "^0.4 || ^0.3",
                 "react/stream": "^0.5 || ^0.4.4"
             },
             "require-dev": {
@@ -1178,20 +1178,20 @@
             "keywords": [
                 "process"
             ],
-            "time": "2017-03-10 13:33:18"
+            "time": "2017-03-14 13:23:20"
         },
         {
             "name": "react/dns",
-            "version": "v0.4.5",
+            "version": "v0.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "a029bdd95b285deca3211944e9d0ffe3476f1945"
+                "reference": "a4c32f0021c742a1781c445270cb29a2d4b76fed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/a029bdd95b285deca3211944e9d0ffe3476f1945",
-                "reference": "a029bdd95b285deca3211944e9d0ffe3476f1945",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/a4c32f0021c742a1781c445270cb29a2d4b76fed",
+                "reference": "a4c32f0021c742a1781c445270cb29a2d4b76fed",
                 "shasum": ""
             },
             "require": {
@@ -1199,7 +1199,11 @@
                 "react/cache": "~0.4.0|~0.3.0",
                 "react/promise": "~2.1|~1.2",
                 "react/promise-timer": "~1.1",
-                "react/socket": "^0.5 || ^0.4.4"
+                "react/socket": "^0.5 || ^0.4.4",
+                "react/stream": "^0.6 || ^0.5 || ^0.4.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.0 || ^4.8.10"
             },
             "type": "library",
             "autoload": {
@@ -1216,7 +1220,7 @@
                 "dns",
                 "dns-resolver"
             ],
-            "time": "2017-03-02 20:03:08"
+            "time": "2017-03-11 13:46:09"
         },
         {
             "name": "react/event-loop",
@@ -1561,16 +1565,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.16",
+            "version": "1.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "8eb95c2b04fc3c30d19fdc59ca84e81795c9c9a3"
+                "reference": "dc869ac3757af7de801f1c7dbe16c6493d537a9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/8eb95c2b04fc3c30d19fdc59ca84e81795c9c9a3",
-                "reference": "8eb95c2b04fc3c30d19fdc59ca84e81795c9c9a3",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/dc869ac3757af7de801f1c7dbe16c6493d537a9e",
+                "reference": "dc869ac3757af7de801f1c7dbe16c6493d537a9e",
                 "shasum": ""
             },
             "require": {
@@ -1622,7 +1626,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2017-01-26 14:38:38"
+            "time": "2017-03-14 09:28:03"
         },
         {
             "name": "ringcentral/psr7",
