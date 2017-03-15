@@ -404,6 +404,10 @@
                         </p>
                         <p class="line">{$previous->getSummary()}</p>
                         <p>
+                            {$likes = $previous->countLikes()}
+                            {if="$likes > 0"}
+                                {$likes} <i class="zmdi zmdi-favorite-outline"></i>
+                            {/if}
                             {$count = $previous->countComments()}
                             {if="$count > 0"}
                                 {$count} <i class="zmdi zmdi-comment-outline"></i>
@@ -429,6 +433,10 @@
                         </p>
                         <p class="line">{$next->getSummary()}</p>
                         <p>
+                            {$likes = $next->countLikes()}
+                            {if="$likes > 0"}
+                                {$likes} <i class="zmdi zmdi-favorite-outline"></i>
+                            {/if}
                             {$count = $next->countComments()}
                             {if="$count > 0"}
                                 {$count} <i class="zmdi zmdi-comment-outline"></i>
