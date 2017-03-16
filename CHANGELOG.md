@@ -22,10 +22,11 @@ v0.11 (trunk)
  * Big refactoring of the Groups, now called Communities with improved navigation and discovery features
  * Also refactor the Post widget
  * Add an Onboarding widget with some advices
- * Add Like feature 
+ * Add Like feature
  * New Notifications widget to keep track of the comments and likes
  * Improvements in Carbons feature
  * Improve the Stickers picker
+ * Refactor and cleanup the session management
 
 v0.10
 ---------------------------
