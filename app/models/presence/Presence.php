@@ -73,8 +73,6 @@ class Presence extends Model {
 
         if(isset($jid[1])) {
             $this->resource = $jid[1];
-        } else {
-            $this->resource = 'default';
         }
 
         if($stanza->status) {
