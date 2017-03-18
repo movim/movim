@@ -111,6 +111,7 @@ class SubscriptionDAO extends SQL
             left outer join caps
                 on caps.node = subscription.server
             where subscription.jid = :jid
+            and subscription.node not like \'urn:xmpp:microblog:0:comments/%\'
             group by
                 subscription.server,
                 subscription.node,
