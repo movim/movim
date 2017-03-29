@@ -219,8 +219,6 @@ class Post extends \Movim\Widget\Base
 
     function prepareEmpty()
     {
-        $view = $this->tpl();
-
         $nd = new \Modl\PostnDAO;
         $cd = new \Modl\ContactDAO;
 
@@ -273,7 +271,7 @@ class Post extends \Movim\Widget\Base
 
     function getComments($post)
     {
-        $pd = new \Modl\PostnDAO();
+        $pd = new \Modl\PostnDAO;
         return $pd->getComments($post);
     }
 

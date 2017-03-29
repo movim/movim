@@ -18,7 +18,7 @@ class Api
         $api = &$this;
 
         $this->_http->on('request', function ($request, $response) use ($api) {
-            $response->writeHead(200, array('Content-Type' => 'text/plain'));
+            $response->writeHead(200, ['Content-Type' => 'text/plain']);
 
             $url = explode('/', $request->getUrl()->getPath());
 

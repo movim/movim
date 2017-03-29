@@ -39,7 +39,9 @@ class Base
         $this->name = get_class($this);
 
         // If light loading enabled, we stop here
-        if($light) return;
+        if($light) {
+            $this->load(); return;
+        }
 
         // Put default widget init here.
         $this->ajax = Ajax::getInstance();
@@ -62,20 +64,22 @@ class Base
             }
         }
 
-        $config = [
-            'tpl_dir'       => $this->respath('', true),
-            'cache_dir'     => CACHE_PATH,
-            'tpl_ext'       => 'tpl',
-            'auto_escape'   => false
-        ];
+        if(php_sapi_name() != 'cli') {
+            $config = [
+                'tpl_dir'       => $this->respath('', true),
+                'cache_dir'     => CACHE_PATH,
+                'tpl_ext'       => 'tpl',
+                'auto_escape'   => false
+            ];
 
-        // We load the template engine
-        $this->view = new Tpl;
-        $this->view->objectConfigure($config);
+            // We load the template engine
+            $this->view = new Tpl;
+            $this->view->objectConfigure($config);
 
-        $this->view->assign('c', $this);
+            $this->view->assign('c', $this);
 
-        $this->pure = false;
+            $this->pure = false;
+        }
     }
 
     function __destruct()
@@ -151,7 +155,8 @@ class Base
         return trim($this->view->draw(strtolower($this->name), true));
     }
 
-    protected function tpl() {
+    protected function tpl()
+    {
         $config = [
             'tpl_dir'       => APP_PATH.'widgets/'.$this->name.'/',
             'cache_dir'     => CACHE_PATH,

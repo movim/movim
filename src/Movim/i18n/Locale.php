@@ -52,7 +52,8 @@ class Locale {
      * @desc Return an array containing all the presents languages in i18n
      */
 
-    public function getList() {
+    public function getList()
+    {
         require_once('languages.php');
 
         $lang_list = get_lang_list();

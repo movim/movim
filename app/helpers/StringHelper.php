@@ -102,31 +102,6 @@ function prepareString($string, $large = false, $preview = false) {
     return trim((string)requestURL('http://localhost:1560/emojis/', 2, ['string' => $string]));
 }
 
-/**
- * Return an array of informations from a XMPP uri
- */
-function explodeURI($uri) {
-    $arr = parse_url(urldecode($uri));
-    $result = [];
-
-    if(isset($arr['query'])) {
-        $query = explode(';', $arr['query']);
-
-
-        foreach($query as $elt) {
-            if($elt != '') {
-                list($key, $val) = explode('=', $elt);
-                $result[$key] = $val;
-            }
-        }
-
-        $arr = array_merge($arr, $result);
-    }
-
-    return $arr;
-
-}
-
 /*
  * Echap the JID
  */
@@ -180,11 +155,11 @@ function explodeJid($jid)
     $username = $arr[0];
     if(isset($arr[1])) $server = $arr[1];
 
-    return array(
+    return [
         'username'  => $username,
         'server'    => $server,
         'resource' => $resource
-        );
+    ];
 }
 
 /**
@@ -205,8 +180,9 @@ function sizeToCleanSize($size, $precision = 2)
  * @param color
  * @return string
  */
-function colorize($string, $color) {
-    $colors = array(
+function colorize($string, $color)
+{
+    $colors = [
         'black'     => 30,
         'red'       => 31,
         'green'     => 32,
@@ -215,7 +191,7 @@ function colorize($string, $color) {
         'purple'    => 35,
         'turquoise' => 36,
         'white'     => 37
-    );
+    ];
 
     return "\033[".$colors[$color]."m".$string."\033[0m";
 }

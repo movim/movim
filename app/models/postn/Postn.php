@@ -286,10 +286,6 @@ class Postn extends Model
         }
 
         $this->setAttachments($entry->entry->link, $extra);
-
-        return new \React\Promise\Promise(function($resolve) {
-            $resolve(true);
-        });
     }
 
     private function setAttachments($links, $extra = false)

@@ -27,7 +27,8 @@ class Utils {
 /**
  * Return the list of gender
  */
-function getGender() {
+function getGender()
+{
     return [
         'N' => __('gender.nil'),
         'M' => __('gender.male'),
@@ -39,7 +40,8 @@ function getGender() {
 /**
  * Return the list of client types
  */
-function getClientTypes() {
+function getClientTypes()
+{
     return [
         'bot'           => __('client.bot'),
         'pc'            => __('client.desktop'),
@@ -53,7 +55,8 @@ function getClientTypes() {
 /**
  * Return a XEP to namespace association
  */
-function getXepNamespace() {
+function getXepNamespace()
+{
     return [
         '0004' => array('name' => 'Data Forms',             'category' => 'client',     'ns' => 'jabber:x:data'),
         '0012' => array('name' => 'Last Activity',          'category' => 'chat',       'ns' => 'jabber:iq:last'),
@@ -113,8 +116,9 @@ function getXepNamespace() {
 /**
  * Return a list of all the country
  */
-function getCountries() {
-    return array(
+function getCountries()
+{
+    return [
         'AF' => 'Afghanistan',
         'AX' => 'Aland Islands',
         'AL' => 'Albania',
@@ -361,7 +365,7 @@ function getCountries() {
         'YE' => 'Yemen',
         'ZM' => 'Zambia',
         'ZW' => 'Zimbabwe'
-    );
+    ];
 }
 
 /**
@@ -403,8 +407,9 @@ function getPresencesTxt() {
             ];
 }
 
-function getMood() {
-    return array(
+function getMood()
+{
+    return [
         'afraid'        => __('mood.afraid'), // Impressed with fear or apprehension; in fear; apprehensive.
         'amazed'        => __('mood.amazed'), // Astonished; confounded with fear, surprise or wonder.
         'amorous'       => __('mood.amorous'), // Inclined to love; having a propensity to love, or to sexual enjoyment; loving, fond, affectionate, passionate, lustful, sexual, etc.
@@ -489,7 +494,7 @@ function getMood() {
         'undefined'     => __('mood.undefined'), // [Feeling any emotion not defined here.]
         'weak'          => __('mood.weak'), // Lacking in force or ability, either physical or emotional.
         'worried'       => __('mood.worried') // Thinking about unpleasant things that have happened or that might happen; feeling afraid and unhappy.
-    );
+    ];
 }
 
 /*
@@ -535,21 +540,6 @@ function generateKey($size)
         $hash.= $hash_chars[$r];
     }
     return $hash;
-}
-
-/*
- * @desc Get the range aroung a position with a radius
- */
-function geoRadius($latitude, $longitude, $radius)
-{
-    $lat_range = $range/69.172;
-    $lon_range = abs($range/(cos($latitude) * 69.172));
-    $min_lat = number_format($latitude - $lat_range, "4", ".", "");
-    $max_lat = number_format($latitude + $lat_range, "4", ".", "");
-    $min_lon = number_format($longitude - $lon_range, "4", ".", "");
-    $max_lon = number_format($longitude + $lon_range, "4", ".", "");
-
-    return [$min_lat, $max_lat, $min_lon, $max_lon];
 }
 
 /*
@@ -623,12 +613,12 @@ function createEmailPic($jid, $email)
     if(file_exists(DOCUMENT_ROOT.'/cache/'.$jid.'_email.png'))
         unlink(DOCUMENT_ROOT.'/cache/'.$jid.'_email.png');
 
-    $draw = new ImagickDraw();
+    $draw = new ImagickDraw;
     try {
         $draw->setFontSize(13);
         $draw->setGravity(Imagick::GRAVITY_CENTER);
 
-        $canvas = new Imagick();
+        $canvas = new Imagick;
 
         $metrics = $canvas->queryFontMetrics($draw, $email);
 

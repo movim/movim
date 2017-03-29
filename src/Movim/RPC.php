@@ -18,10 +18,10 @@ class RPC
         array_shift($args);
 
         if(self::filter($funcname, $args)) {
-            $funcall = array(
+            $funcall = [
                 'func' => $funcname,
                 'params' => $args,
-                );
+            ];
 
             //echo base64_encode(gzcompress(json_encode([$funcall]), 9))."";
             self::$funcalls[] = $funcall;
@@ -85,8 +85,7 @@ class RPC
             }
         }
 
-        $widgets = Wrapper::getInstance();
-
+        $widgets = new Wrapper;
         $widgets->runWidget($widget_name, (string)$request->func, $result);
     }
 }
