@@ -139,11 +139,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         break;
 
                     case 'register':
-                        /*if(isset($conn)
-                        && is_resource($conn->stream)) {
-                            $conn->stream->close();
-                        }*/
-
                         $cd = new \Modl\ConfigDAO;
                         $config = $cd->get();
 
