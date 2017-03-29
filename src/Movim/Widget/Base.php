@@ -34,14 +34,12 @@ class Base
         if($view != null) $this->_view = $view;
 
         $this->user = new User;
-
         $this->load();
+
         $this->name = get_class($this);
 
         // If light loading enabled, we stop here
-        if($light) {
-            $this->load(); return;
-        }
+        if($light) return;
 
         // Put default widget init here.
         $this->ajax = Ajax::getInstance();
