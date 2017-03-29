@@ -39,28 +39,26 @@ class Post extends Payload
         if($stanza->items->item
         && isset($stanza->items->item->entry)
         && (string)$stanza->items->item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
-            if($parent->delay)
+            if($parent->delay) {
                 $delay = gmdate('Y-m-d H:i:s', strtotime((string)$parent->delay->attributes()->stamp));
-            else
+            } else {
                 $delay = false;
+            }
 
-            $p = new \modl\Postn();
-            $promise = $p->set($stanza->items, $from, $delay);
+            $p = new \Modl\Postn;
+            $p->set($stanza->items, $from, $delay);
 
-            $promise->done(function() use ($p, $from) {
-                // We limit the very old posts (2 months old)
-                if(strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
-                && $p->nodeid != $this->testid) {
-                    $pd = new \modl\PostnDAO();
-                    $pd->set($p, $from);
+            // We limit the very old posts (2 months old)
+            if(strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
+            && $p->nodeid != $this->testid) {
+                $pd = new \Modl\PostnDAO;
+                $pd->set($p, $from);
 
-                    $this->pack($p);
-                    $this->deliver();
-                }
-            });
-
+                $this->pack($p);
+                $this->deliver();
+            }
         } elseif($stanza->items->retract) {
-            $pd = new \modl\PostnDAO();
+            $pd = new \Modl\PostnDAO;
             $pd->delete($stanza->items->retract->attributes()->id);
 
             $this->method('retract');
@@ -73,7 +71,7 @@ class Post extends Payload
         } elseif($stanza->items->item && isset($stanza->items->item->attributes()->id)
             && !filter_var($from, FILTER_VALIDATE_EMAIL)) {
             // In this case we only get the header, so we request the full content
-            $p = new \modl\PostnDAO();
+            $p = new \Modl\PostnDAO;
 
             $node = (string)$stanza->items->attributes()->node;
             $id = (string)$stanza->items->item->attributes()->id;

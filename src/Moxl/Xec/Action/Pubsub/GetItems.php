@@ -58,8 +58,9 @@ class GetItems extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
-        $pd = new \modl\PostnDAO();
+    public function handle($stanza, $parent = false)
+    {
+        $pd = new \Modl\PostnDAO;
 
         foreach($stanza->pubsub->items->item as $item) {
             if(isset($item->entry)
@@ -67,20 +68,19 @@ class GetItems extends Errors
                 if($this->_since == null
                 || strtotime($this->_since) < strtotime($item->entry->published)) {
                     $p = new \Modl\Postn;
-                    $promise = $p->set($item, $this->_to, false, $this->_node);
+                    $p->set($item, $this->_to, false, $this->_node);
 
-                    $promise->done(function() use($pd, $p) {
-                        $pd->set($p);
+                    $pd->set($p);
 
-                        $this->pack(['server' => $this->_to, 'node' => $this->_node]);
-                        $this->deliver();
-                    });
+                    $this->pack(['server' => $this->_to, 'node' => $this->_node]);
+                    $this->deliver();
                 }
             }
         }
     }
 
-    public function error($errorid, $message) {
+    public function error($errorid, $message)
+    {
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }

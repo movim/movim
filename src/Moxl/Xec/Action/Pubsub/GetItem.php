@@ -78,28 +78,26 @@ class GetItem extends Errors
                 if(isset($item->entry)
                 &&(string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
                     $p = new \Modl\Postn;
-                    $promise = $p->set($item, $from, false, $node);
+                    $p->set($item, $from, false, $node);
 
-                    $promise->done(function() use ($p) {
-                        $pd = new \Modl\PostnDAO;
-                        $pd->set($p);
+                    $pd = new \Modl\PostnDAO;
+                    $pd->set($p);
 
-                        $post = true;
+                    $post = true;
 
-                        if(is_array($this->_askreply)) {
-                            $this->pack([
-                                'origin' => $this->_askreply['origin'],
-                                'node'   => $this->_askreply['node'],
-                                'nodeid' => $this->_askreply['nodeid']]);
-                            $this->deliver();
-                        } else {
-                            $this->pack($p);
-                            $this->event('post', $this->packet);
-                        }
-
-                        $this->pack(['server' => $this->_to, 'node' => $this->_node, 'id' => $this->_id]);
+                    if(is_array($this->_askreply)) {
+                        $this->pack([
+                            'origin' => $this->_askreply['origin'],
+                            'node'   => $this->_askreply['node'],
+                            'nodeid' => $this->_askreply['nodeid']]);
                         $this->deliver();
-                    });
+                    } else {
+                        $this->pack($p);
+                        $this->event('post', $this->packet);
+                    }
+
+                    $this->pack(['server' => $this->_to, 'node' => $this->_node, 'id' => $this->_id]);
+                    $this->deliver();
                 }
             }
         } else {
