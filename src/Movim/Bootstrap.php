@@ -207,6 +207,10 @@ class Bootstrap
     {
         $user = new User;
 
+        if(php_sapi_name() != 'cli') {
+            $user->reload(true);
+        }
+
         $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
