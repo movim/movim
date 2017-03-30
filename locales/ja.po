@@ -1,6 +1,8 @@
 #
 # Translators:
+# Aheahead <rmatumoto@gmail.com>, 2016
 # Maxime Buquet <tidusx62@gmail.com>, 2015
+# RACER, 2017
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -21,6 +23,8 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -76,6 +80,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -93,16 +99,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"Last-Translator: RACER\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
 "Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -118,7 +124,7 @@ msgstr "翻訳者"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "全ての翻訳者への謝意を表す｡"
 
 #: [about]software
 msgid "Software"
@@ -263,7 +269,7 @@ msgstr "ポート"
 
 #: [db]name
 msgid "Database Name"
-msgstr ""
+msgstr "データベース名"
 
 #: [admin]general
 msgid "General Settings"
@@ -303,7 +309,7 @@ msgstr "ウェブソケットURI"
 
 #: [websocket]save_info
 msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "URIを変えるとデーモンを再起動してください"
+msgstr "URLを変更した場合はデーモンを再起動してください"
 
 #: [websocket]publics
 msgid "Public WebSockets"
@@ -361,7 +367,7 @@ msgstr ""
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "デフォルトのXMPPサーバー"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
@@ -433,7 +439,7 @@ msgstr ""
 
 #: [schema]browser
 msgid "Browser"
-msgstr "ブラウザ"
+msgstr "ブラウザー"
 
 #: [schema]movim
 msgid "Movim Core"
@@ -505,7 +511,7 @@ msgstr "アバターが更新されていません"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "アバターが設定されていません"
 
 #: [blog]title [feed]title
 msgid "%s's feed"
@@ -517,6 +523,69 @@ msgstr "このユーザがまだ投稿していません"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
+msgstr ""
+
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "グループ"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr ""
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "ニックネーム"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "不正チャットルームID"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "名前が空です"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "ブックマークを更新しました"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr ""
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "新しいURLを追加する"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
 msgstr ""
 
 #: [message]published
@@ -626,7 +695,7 @@ msgstr ""
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%s コミュニティー"
 
 #: [communities]search_server [group]search_server
 msgid "Search for a new server"
@@ -644,7 +713,7 @@ msgstr ""
 msgid "Group created successfully"
 msgstr "グループが正常に作成されました"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr ""
 
@@ -698,9 +767,8 @@ msgid "Owners"
 msgstr ""
 
 #: [communityaffiliation]publisher
-#, fuzzy
 msgid "Publisher"
-msgstr "メッセージが公開されました"
+msgstr ""
 
 #: [communityaffiliation]publishers
 msgid "Publishers"
@@ -750,11 +818,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -800,11 +868,11 @@ msgstr ""
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr "オフラインのコンタクトを表示"
+msgstr "オフラインの知り合いを表示"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr "オフラインのコンタクトを非表示"
+msgstr "オフラインの知り合いを非表示"
 
 #: [config]appearence
 msgid "Appearence"
@@ -830,10 +898,6 @@ msgstr "一般情報"
 msgid "Name"
 msgstr "名前"
 
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "ニックネーム"
-
 #: [general]date_of_birth
 msgid "Date of Birth"
 msgstr "生年月日"
@@ -848,7 +912,7 @@ msgstr "婚姻区分"
 
 #: [general]email
 msgid "Email"
-msgstr "メール"
+msgstr "メールアドレス"
 
 #: [general]website
 msgid "Website"
@@ -928,7 +992,7 @@ msgstr "コンタクトを削除しますが、よろしいですか"
 
 #: [age]years
 msgid "%s years"
-msgstr "%s 年"
+msgstr "%s 歳"
 
 #: [blog]last
 msgid "Last public post"
@@ -986,10 +1050,6 @@ msgstr ""
 msgid "Give a label for this group"
 msgstr ""
 
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "グループ"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr ""
@@ -1040,23 +1100,23 @@ msgstr "この標で、あなとが公開しているデータの機密性が分
 
 #: [banner]white
 msgid "White, only you can see the information"
-msgstr "白、あなとしか見れない"
+msgstr "白、あなた以外見られない"
 
 #: [banner]green
 msgid "Green, you have chosen some contacts who can see your information"
-msgstr "緑、シェアーしているコンタクトしか見れない"
+msgstr "緑、共有している知り合いしか見られない"
 
 #: [banner]orange
 msgid "Orange, all your contact list can see your information"
-msgstr "オレンジ、あなたのコンタクト全員が見れる"
+msgstr "橙、あなたの知り合い全員が見られる"
 
 #: [banner]red
 msgid "Red, everybody in the XMPP network can see your information"
-msgstr "XMPPを使っている人全員が見れる"
+msgstr "XMPPを使っている人全員が見られる"
 
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
-msgstr "黒、誰でも見れる"
+msgstr "黒、誰でも見られる"
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -1248,16 +1308,15 @@ msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr "コンタクト"
+msgstr "知り合い"
 
 #: [menu]add_post
 msgid "Add a post"
 msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "設定"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1272,9 +1331,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "プロフィール"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1466,7 +1524,7 @@ msgstr "リンク"
 
 #: [publish]tags
 msgid "Tags"
-msgstr ""
+msgstr "タグ"
 
 #: [publish]gallery
 msgid "This picture will be added to your gallery"
@@ -1532,21 +1590,9 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "チャットルーム"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr ""
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "不正チャットルームID"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "名前が空です"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1559,10 +1605,6 @@ msgstr ""
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "ブックマークを更新しました"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1610,7 +1652,7 @@ msgstr "グループ%sを非表示"
 
 #: [roster]jid_error
 msgid "Please enter a valid Jabber ID"
-msgstr "正しいジャバーIDを入力してください"
+msgstr "正しいJabber IDを入力してください"
 
 #: [roster]no_contacts_title
 msgid "No contacts ?"
@@ -1670,6 +1712,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1796,6 +1846,22 @@ msgstr "送信"
 msgid "Reset"
 msgstr "リセット"
 
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
@@ -1809,9 +1875,8 @@ msgid "Loading…"
 msgstr ""
 
 #: [page]communities
-#, fuzzy
 msgid "Communities"
-msgstr "コメント"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1842,9 +1907,8 @@ msgid "Public Groups"
 msgstr ""
 
 #: [page]post
-#, fuzzy
 msgid "Post"
-msgstr "投稿"
+msgstr ""
 
 #: [page]blog
 msgid "Blog"
@@ -1937,11 +2001,11 @@ msgstr "追加"
 
 #: [button]delete
 msgid "Delete"
-msgstr ""
+msgstr "削除"
 
 #: [button]cancel
 msgid "Cancel"
-msgstr ""
+msgstr "取り消し"
 
 #: [button]close
 msgid "Close"
@@ -1985,11 +2049,11 @@ msgstr ""
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "はい"
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "いいえ"
 
 #: [button]return
 msgid "Return"
@@ -2018,7 +2082,7 @@ msgstr ""
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
-msgstr ""
+msgstr "共有"
 
 #: [button]like
 msgid "Like"
@@ -2062,7 +2126,7 @@ msgstr "土曜日"
 
 #: [day]sunday
 msgid "Sunday"
-msgstr ""
+msgstr "日曜日"
 
 #: [gender]nil
 msgctxt "[gender]nil"
@@ -2693,30 +2757,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "チャットルームを追加する"
-
-#, fuzzy
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "名前"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "設定"
-
-#, fuzzy
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "名前"
-
-#~ msgid "Come in!"
-#~ msgstr "来てください！"
-
-#~ msgid "Status"
-#~ msgstr "ステータス"
-
-#~ msgid "A Movim session is already open on an other device"
-#~ msgstr "他にセッションが存在しています"

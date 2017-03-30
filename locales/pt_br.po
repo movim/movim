@@ -26,6 +26,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -80,6 +82,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -97,8 +101,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2017-02-01 18:35+0000\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -106,7 +110,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.0.0rc1\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -523,6 +527,69 @@ msgstr "Este usuário não publicou nada até agora"
 msgid "This content is private, please login to see it"
 msgstr "Este conteúdo é privado, por favor entre entre em sua conta para visualizá-lo"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Grupos"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID da Sala de Bate-papo"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr ""
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Apelido"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "ID de Sala de Bate-papo inválido"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Nome vazio"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Favoritos atualizados"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr ""
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr ""
+
 #: [message]published
 msgid "Message Published"
 msgstr "Mensagem publicada"
@@ -648,7 +715,7 @@ msgstr "Este servidor não existe."
 msgid "Group created successfully"
 msgstr "Grupo criado com sucesso"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr "Não ha grupos neste servidor ainda."
 
@@ -753,11 +820,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -832,10 +899,6 @@ msgstr "Informações Gerais"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nome"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Apelido"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -988,10 +1051,6 @@ msgstr "Tornar sua filiação a este grupo pública a seus amigos"
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "Atribuir uma etiqueta para este grupo"
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Grupos"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1533,21 +1592,9 @@ msgstr "Adicione pressionando o botão adicionar"
 msgid "Chatrooms"
 msgstr "Salas de Bate-papo"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID da Sala de Bate-papo"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Minha Sala Favorita"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "ID de Sala de Bate-papo inválido"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Nome vazio"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1560,10 +1607,6 @@ msgstr "Por favor informe um apelido valido (2 a 40 caracteres)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Nome de usuário em uso"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Favoritos atualizados"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1672,6 +1715,14 @@ msgstr "O que você esta procurando?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Me abra utilizando Ctrl + M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1796,6 +1847,22 @@ msgstr "Enviar"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Restaurar"
+
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."

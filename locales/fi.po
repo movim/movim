@@ -22,6 +22,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -76,6 +78,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -93,8 +97,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
 "Language: fi\n"
@@ -102,7 +106,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -519,6 +523,69 @@ msgstr "Tämä käyttäjä ei ole julkaissut vielä mitään"
 msgid "This content is private, please login to see it"
 msgstr "Tämä sisältö on yksityistä, kirjaudu sisään nähdäksesi"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Ryhmät"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Keskusteluhuoneen ID"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr ""
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Nimimerkki"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Huono keskusteluhuoneen ID"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tyhä nimi"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Kirjanmerkit päivitetty"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr ""
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr ""
+
 #: [message]published
 msgid "Message Published"
 msgstr "Viesti julkaistu"
@@ -644,7 +711,7 @@ msgstr ""
 msgid "Group created successfully"
 msgstr "Ryhmän luonti onnistui"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr ""
 
@@ -698,14 +765,12 @@ msgid "Owners"
 msgstr ""
 
 #: [communityaffiliation]publisher
-#, fuzzy
 msgid "Publisher"
-msgstr "Julkaise"
+msgstr ""
 
 #: [communityaffiliation]publishers
-#, fuzzy
 msgid "Publishers"
-msgstr "Julkaise"
+msgstr ""
 
 #: [communityaffiliation]roles
 msgid "Roles"
@@ -751,12 +816,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
-#, fuzzy
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr "Julkaise julkisesti?"
+msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -831,10 +895,6 @@ msgstr "Perustiedot"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nimi"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Nimimerkki"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -987,10 +1047,6 @@ msgstr ""
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr ""
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Ryhmät"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1173,9 +1229,8 @@ msgid "Invalid password format"
 msgstr ""
 
 #: [error]unauthorized
-#, fuzzy
 msgid "Your XMPP server is unauthorized"
-msgstr "Oma serverisi tähän?"
+msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1222,9 +1277,8 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr "Huono nimimerkki (4-40 merkkiä)"
 
 #: [menu]empty_title
-#, fuzzy
 msgid "No news yet…"
-msgstr "Ei uutisia vielä"
+msgstr ""
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
@@ -1259,14 +1313,12 @@ msgid "Add a post"
 msgstr "Lisää julkaisu"
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Käytä työpöytäilmoituksia"
+msgstr ""
 
 #: [notifs]empty
-#, fuzzy
 msgid "No new notifications"
-msgstr "Käytä työpöytäilmoituksia"
+msgstr ""
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
@@ -1277,9 +1329,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "Julkiset ryhmät"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1537,21 +1588,9 @@ msgstr "Lisää yksi painamalla lisäyspainiketta."
 msgid "Chatrooms"
 msgstr "Keskusteluhuoneet"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Keskusteluhuoneen ID"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Lempihuoneeni"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Huono keskusteluhuoneen ID"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tyhä nimi"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1564,10 +1603,6 @@ msgstr "Anna toimiva nimimerkki (2-40 merkkiä)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Nimimerkki on jo käytössä"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Kirjanmerkit päivitetty"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1675,6 +1710,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1801,6 +1844,22 @@ msgstr "Lähetä"
 msgid "Reset"
 msgstr "Nollaa"
 
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Javascript on pois käytöstä. Onnea vaan."
@@ -1814,9 +1873,8 @@ msgid "Loading…"
 msgstr ""
 
 #: [page]communities
-#, fuzzy
 msgid "Communities"
-msgstr "Kommentit"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1847,9 +1905,8 @@ msgid "Public Groups"
 msgstr "Julkiset ryhmät"
 
 #: [page]post
-#, fuzzy
 msgid "Post"
-msgstr "Julkaisut"
+msgstr ""
 
 #: [page]blog
 msgid "Blog"
@@ -2698,34 +2755,3 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
-
-#~ msgid "This server use an external system for the registration, please click on the following URL."
-#~ msgstr "Palvelin käyttää ulkoista rekisteröitymistä, klikkaa seuraavaa linkkiä"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Lisää keskusteluhuone"
-
-#, fuzzy
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Nimi"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Asetukset"
-
-#, fuzzy
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Nimi"
-
-#, fuzzy
-#~ msgid "This is not a valid url"
-#~ msgstr "Anna toimiva osoite"
-
-#~ msgid "Come in!"
-#~ msgstr "Tule sisään!"
-
-#~ msgid "Status"
-#~ msgstr "Tila"

@@ -1,6 +1,7 @@
 #
 # Translators:
 # Lazalatin <inactive+Lazalatin@transifex.com>, 2015
+# Christian <christian-pauly@posteo.de>, 2017
 # Fabian Thiele <fabian.thiele@posteo.de>, 2016
 # Jaussoin Timothée <edhelas@movim.eu>, 2017
 # j k <yky.yode@gmail.com>, 2016
@@ -33,6 +34,8 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -88,6 +91,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -105,16 +110,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2017-02-01 18:35+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"Last-Translator: Christian <christian-pauly@posteo.de>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.0.0rc1\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -531,6 +536,69 @@ msgstr "Dieser Benutzer hat noch nichts veröffentlicht"
 msgid "This content is private, please login to see it"
 msgstr "Dieser Inhalt ist privat, bitte anmelden um ihn zu sehen"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr "Konferenz"
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Gruppen"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "Neuen Gruppenchat hinzufügen"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Chatraum Adresse"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Name"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Spitzname"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Willst du diesem Gruppenchat automatisch hinzugefügt werden?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Falsche Chatraumkennung"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Leerer Name"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Lesezeichen aktualisiert"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "Ein Fehler ist aufgetreten :"
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Einstellen"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Neue URL hinzufügen"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Name"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Nachricht veröffentlicht"
@@ -638,7 +706,7 @@ msgstr "Entdecken, folgen und teilen"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%s Gruppen"
 
 #: [communities]search_server [group]search_server
 msgid "Search for a new server"
@@ -646,7 +714,7 @@ msgstr "Einen neuen Server suchen"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr ""
+msgstr "Gruppenserver"
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
@@ -656,7 +724,7 @@ msgstr "Dieser Server existiert nicht"
 msgid "Group created successfully"
 msgstr "Gruppe erfolgreich erstellt"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr "Auf diesem Server sind keine Gruppen"
 
@@ -703,27 +771,27 @@ msgstr "Anscheinend existiert diese Gruppe nicht mehr. Soll diese Gruppe abbeste
 
 #: [communityaffiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Besitzer"
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "Besitzer"
 
 #: [communityaffiliation]publisher
 msgid "Publisher"
-msgstr ""
+msgstr "Herausgeber"
 
 #: [communityaffiliation]publishers
 msgid "Publishers"
-msgstr ""
+msgstr "Herausgeber"
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "Rollen"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "Rolle richtig gesetzt"
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -751,27 +819,27 @@ msgstr "Abgemeldet"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr ""
+msgstr "Abonnierung ist für diese Gruppe deaktiviert"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr ""
+msgstr "Der Gruppe eine Bezeichnung geben"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "Mein Gruppenname"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Dieses Abonnement öffentlich teilen"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Es wird auf Ihrem Profil angezeigt"
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr ""
+msgstr "Du bist dabei, diese Gruppe zu deabonnieren"
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
@@ -840,10 +908,6 @@ msgstr "Allgemeine Angaben"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Name"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Spitzname"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -996,10 +1060,6 @@ msgstr "Machen Sie die Mitgliedschaft zu dieser Gruppe für Ihre Freunde öffent
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "Der Gruppe eine Bezeichnung geben"
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Gruppen"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1231,11 +1291,11 @@ msgstr "Ungültiger Spitzname (zwischen 4 und 40 Zeichen)"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr ""
+msgstr "Nichts Neues bisher ..."
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr ""
+msgstr "Willkommen auf unserem neuen Newsfeed. Hier siehst du alle Posts, die von deinen Kontakten oder den Gruppen die du abonniert hast, veröffentlicht wurden."
 
 #: [menu]discover [button]discover
 msgid "Discover"
@@ -1267,43 +1327,43 @@ msgstr "Ein Posting hinzufügen"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
-msgstr ""
+msgstr "Benachrichtigungen"
 
 #: [notifs]empty
 msgid "No new notifications"
-msgstr ""
+msgstr "Keine neuen Benachrichtigungen"
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
-msgstr ""
+msgstr "Movim kann dich benachrichtigen, wenn ein neuer Post veröffentlicht wird oder du eine neue Nachricht erhälst"
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr ""
+msgstr "Du kannst Sie später jederzeit wieder ausstellen"
 
 #: [onboarding]public_title
 msgid "Public profile"
-msgstr ""
+msgstr "Öffentliches Profil"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr ""
+msgstr "Mach dein Profil öffentlich und erlaube anderen Benutzern dich zu finden und mache dadurch neue Freundschaften einfacher"
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
-msgstr ""
+msgstr "Du kannst das in den Einstellungen jederzeit wieder deaktivieren"
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr ""
+msgstr "Popups"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
-msgstr ""
+msgstr "Movim benutzt Popups für die Videokonferenz, manchmal werden diese vom Browser geblockt"
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
-msgstr ""
+msgstr "Stelle bitte sicher, dass sie aktiviert sind, um dieses Feature zu nutzen"
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1331,7 +1391,7 @@ msgstr "Spannendes"
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr ""
+msgstr "Posts die vor kurzem in Gruppen veröffentlicht wurden, die du (bisher) noch nicht abonniert hast"
 
 #: [post]new [publish]new
 msgid "New post"
@@ -1371,7 +1431,7 @@ msgstr "Sie sind dabei Ihren Beitrag zu löschen. Möchten Sie fortfahren?"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
-msgstr ""
+msgstr "Entdecke mehr Artikel auf der Gruppenseite"
 
 #: [post]more
 msgid "Read more"
@@ -1541,21 +1601,9 @@ msgstr "Zum Hinzufügen klicken Sie oben auf den Hinzufügen-Knopf."
 msgid "Chatrooms"
 msgstr "Chaträume"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Chatraum Adresse"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Unser Treffpunkt"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Falsche Chatraumkennung"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Leerer Name"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1568,10 +1616,6 @@ msgstr "Bitte geben Sie einen korrekten Spitznamen ein (zwischen 2 und 40 Zeiche
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Benutzername bereits vergeben"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Lesezeichen aktualisiert"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1680,6 +1724,14 @@ msgstr "Was suchen Sie?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Mit Ctrl+M zu öffnen"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr "Das ist keine gültige URL"
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr "Teile diese URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1805,6 +1857,22 @@ msgstr "Absenden"
 msgid "Reset"
 msgstr "Zurücksetzen"
 
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr "Movim arbeitet gerade im eingeschränkten Modus"
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr "Dein Server unterstützt keine permanenten XMPP-Pubsubs"
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr "Newsfeed, Gruppen und Profile wurden vorerst deaktiviert"
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr "Bitte kontaktieren Sie den Administrators Ihres Servers, um dieses Feature zu ermöglichen"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Javascript ist im Browser deaktiviert. Das könnte Probleme verursachen."
@@ -1851,7 +1919,7 @@ msgstr "Öffentliche Gruppen"
 
 #: [page]post
 msgid "Post"
-msgstr ""
+msgstr "Post"
 
 #: [page]blog
 msgid "Blog"
@@ -2033,11 +2101,11 @@ msgstr ""
 
 #: [button]not_now
 msgid "Not Now"
-msgstr ""
+msgstr "Nicht jetzt"
 
 #: [button]enable
 msgid "Enable"
-msgstr ""
+msgstr "Aktivieren"
 
 #: [day]title
 msgid "Day"

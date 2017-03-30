@@ -22,6 +22,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -76,6 +78,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -93,8 +97,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2017-02-01 18:35+0000\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
 "Language: da\n"
@@ -102,7 +106,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.0.0rc1\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -519,6 +523,69 @@ msgstr "Denne bruger har ikke delt noget endnu"
 msgid "This content is private, please login to see it"
 msgstr "Dette indhold er privat, log ind for at se det"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Grupper"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID for chatrum"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr ""
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Kaldenavn"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Ugyldigt ID for Chatrum"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tomt navn"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Bogmærker opdateret"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr ""
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr ""
+
 #: [message]published
 msgid "Message Published"
 msgstr "Besked publiceret"
@@ -644,7 +711,7 @@ msgstr "Denne server eksisterer ikke"
 msgid "Group created successfully"
 msgstr "Gruppe er oprettet"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr ""
 
@@ -749,11 +816,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -828,10 +895,6 @@ msgstr "Generelle Informationer"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Navn"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Kaldenavn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -984,10 +1047,6 @@ msgstr "Gør dit medlemskab af denne gruppe offentligt for dine venner"
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "Giv denne gruppe en label"
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Grupper"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1529,21 +1588,9 @@ msgstr "Tilføj ved at klikke på tilføj-knappen"
 msgid "Chatrooms"
 msgstr "Chatrum"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID for chatrum"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mit favoritrum"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Ugyldigt ID for Chatrum"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tomt navn"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1556,10 +1603,6 @@ msgstr "Angiv venligst et gyldigt kælenavn (2 til 40 tegn)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Brugernavn er allerede i brug"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Bogmærker opdateret"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1667,6 +1710,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1792,6 +1843,22 @@ msgstr "Indsend"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Nulstil"
+
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."

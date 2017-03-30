@@ -22,6 +22,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -76,6 +78,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -93,8 +97,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Greek (http://www.transifex.com/movim/movim/language/el/)\n"
 "Language: el\n"
@@ -102,7 +106,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -519,6 +523,69 @@ msgstr ""
 msgid "This content is private, please login to see it"
 msgstr ""
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr ""
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr ""
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Ψευδώνυμο"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr ""
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Άδειο όνομα"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr ""
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr ""
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr ""
+
 #: [message]published
 msgid "Message Published"
 msgstr ""
@@ -644,7 +711,7 @@ msgstr ""
 msgid "Group created successfully"
 msgstr ""
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr ""
 
@@ -698,14 +765,12 @@ msgid "Owners"
 msgstr ""
 
 #: [communityaffiliation]publisher
-#, fuzzy
 msgid "Publisher"
-msgstr "Δημοσίευση"
+msgstr ""
 
 #: [communityaffiliation]publishers
-#, fuzzy
 msgid "Publishers"
-msgstr "Δημοσίευση"
+msgstr ""
 
 #: [communityaffiliation]roles
 msgid "Roles"
@@ -751,11 +816,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -830,10 +895,6 @@ msgstr "Γενικές πληροφορίες"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Όνομα"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Ψευδώνυμο"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -985,10 +1046,6 @@ msgstr ""
 
 #: [group]label_label
 msgid "Give a label for this group"
-msgstr ""
-
-#: [group]empty_title [page]groups
-msgid "Groups"
 msgstr ""
 
 #: [group]empty
@@ -1220,9 +1277,8 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
 
 #: [menu]empty_title
-#, fuzzy
 msgid "No news yet…"
-msgstr "Δεν υπάρχουν σχόλια ακόμα"
+msgstr ""
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
@@ -1257,9 +1313,8 @@ msgid "Add a post"
 msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Ρύθμιση"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1274,9 +1329,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "Προφίλ"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1534,21 +1588,9 @@ msgstr "Πρόσθεσε ένα κάνοντας κλικ στο κουμπί π
 msgid "Chatrooms"
 msgstr "Δωμάτιο συνομιλίας"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Το αγαπημένο μου δωμάτιο"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Άδειο όνομα"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1561,10 +1603,6 @@ msgstr ""
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Το όνομα χρήστη υπάρχει ήδη"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr ""
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1672,6 +1710,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1798,6 +1844,22 @@ msgstr "Υποβολή"
 msgid "Reset"
 msgstr "Επαναφορά"
 
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Δεν έχεις ενεργοποιημένο το javascript. Καλή τύχη με αυτό."
@@ -1811,9 +1873,8 @@ msgid "Loading…"
 msgstr ""
 
 #: [page]communities
-#, fuzzy
 msgid "Communities"
-msgstr "Σχόλια"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -2694,24 +2755,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Πληκτρολογήστε εδώ"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Προσθήκη δωμάτιου συνομιλίας"
-
-#, fuzzy
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Όνομα"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Ρύθμιση"
-
-#, fuzzy
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Όνομα"
-
-#~ msgid "Come in!"
-#~ msgstr "Έλα μέσα!"

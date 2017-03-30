@@ -23,6 +23,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -77,6 +79,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -94,8 +98,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2017-02-01 18:35+0000\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
@@ -103,7 +107,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Translate Toolkit 2.0.0rc1\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -520,6 +524,69 @@ msgstr "Ten użytkownik niczego teraz nie opublikował"
 msgid "This content is private, please login to see it"
 msgstr "Niniejsza zawartość jest prywatna. Zaloguj się, by ją zobaczyć"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Grupy"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID Pokoju Rozmów"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr ""
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Nick"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Złe ID Pokoju Rozmów"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Pusta nazwa"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Zakładki zaktualizowane"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr ""
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr ""
+
 #: [message]published
 msgid "Message Published"
 msgstr "Wiadomość Opublikowana"
@@ -645,7 +712,7 @@ msgstr "Serwer nie istnieje"
 msgid "Group created successfully"
 msgstr "Pomyślnie utworzono Grupę"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr "Dotychczas brak grup na tym serwerze"
 
@@ -750,11 +817,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Udostępnij tą subskrypcję publicznie"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Pojawi się w twoim profilu"
 
@@ -829,10 +896,6 @@ msgstr "Ogólne Informacje"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nazwa"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Nick"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -985,10 +1048,6 @@ msgstr "Zmień swoje członkostwo w tej grupie na publiczne dla twoich przyjaci�
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "Dodaj notkę do tej grupy"
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Grupy"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1530,21 +1589,9 @@ msgstr "Dodaj coś poprzez kliknięcie na przycisku Dodaj"
 msgid "Chatrooms"
 msgstr "Pokoje Czatowe"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID Pokoju Rozmów"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mój Ulubiony Pokój"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Złe ID Pokoju Rozmów"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Pusta nazwa"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1557,10 +1604,6 @@ msgstr "Proszę wpisać poprawny nick (2 do 40 znaków)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Nazwa użytkownika jest już zajęta"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Zakładki zaktualizowane"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1669,6 +1712,14 @@ msgstr "Czego szukasz?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Otwórz mnie używając Ctrl + M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1793,6 +1844,22 @@ msgstr "Wyślij"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Resetuj"
+
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."

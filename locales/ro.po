@@ -1,5 +1,6 @@
 #
 # Translators:
+# Marvin42 Marvin <h2g2.marvin.42@gmail.com>, 2017
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -20,6 +21,8 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -75,6 +78,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -92,56 +97,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-07-29 20:30+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"Last-Translator: Marvin42 Marvin <h2g2.marvin.42@gmail.com>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Mulțumesc"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "Dezvoltatori"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Traducători"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Mulțumiri la toți traducătorii"
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "Programe"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "Resurse"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim este o platformă de comunicare bazată pe XMPP. Tot proiectul, cu excepția următoarelor programe și resurse, este sub"
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Cont"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Schimbă-mi parola"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -150,35 +155,35 @@ msgstr "Parola"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Cofirmare parolă"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Parola a fost actualizată"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Vă rugăm să furnizați o parolă validă (6 caractere minimum)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "Parolele furnizate nu sunt la fel"
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "Șterge contul meu"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Șterge contul tău"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "Vei șterge contul tău XMPP și toate informațiile relative legate de acesta (profil, contacte și publicații)"
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Ești sigur că vrei să-l ștergi?"
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -186,11 +191,11 @@ msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "Creează un nou cont"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "Nici un formular de creare a contului nu a fost găsit pe server"
 
 #: [create]server_on
 msgid "on"
@@ -198,11 +203,11 @@ msgstr ""
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "Contul a fost înregistrat cu succes"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Încărcare"
 
 #: [create]placeholder
 msgid "…and start playing"
@@ -210,47 +215,47 @@ msgstr ""
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Nu este acceptat"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "Sistemul de înregistrare pe acest server este deocamdată indisponibil"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Înregistrare interzisă"
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "Acțiuni"
 
 #: [db]legend [schema]database
 msgid "Database"
-msgstr ""
+msgstr "Bază de date"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
-msgstr ""
+msgstr "Modl nu a fost capabil să se conecteze la baza de date"
 
 #: [db]connect_success
 msgid "Movim is connected to the database"
-msgstr ""
+msgstr "Movim este conectat la baza de date"
 
 #: [db]update
 msgid "The database need to be updated"
-msgstr ""
+msgstr "Baza de date trebuie să fie actualizată"
 
 #: [db]up_to_date
 msgid "Movim database is up to date"
-msgstr ""
+msgstr "Baza de date Movim este actualizată"
 
 #: [db]type
 msgid "Database Type"
-msgstr ""
+msgstr "Tip bază de date"
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "Utilizator"
 
 #: [db]host
 msgid "Host"
@@ -262,19 +267,19 @@ msgstr ""
 
 #: [db]name
 msgid "Database Name"
-msgstr ""
+msgstr "Nume bază de date"
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Setări generale"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Temă"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "Limba implicită"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -518,13 +523,76 @@ msgstr ""
 msgid "This content is private, please login to see it"
 msgstr ""
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr ""
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Nume"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Porecla"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Doriți să aderați în mod automat la acest Chat Room?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "ID Chatroom greșit"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Nume necompletat"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr ""
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "A survenit o eroare"
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Configurare"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Adaugați un nou URL"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Nume"
+
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "Mesaj publicat"
 
 #: [message]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "Mesaj criptat"
 
 #: [message]composing [chats]composing
 msgid "Composing..."
@@ -548,7 +616,7 @@ msgstr ""
 
 #: [chat]placeholder
 msgid "Your message here..."
-msgstr ""
+msgstr "Mesajul dumneavoastră aici..."
 
 #: [chat]smileys
 msgid "Smileys"
@@ -564,19 +632,19 @@ msgstr ""
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "Contacte frecvente"
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "Membri"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "Conectat la chatroom"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "Decontactat de la chatroom"
 
 #: [chatroom]config [communityaffiliation]configuration [group]configuration
 #: [page]configuration
@@ -585,19 +653,19 @@ msgstr "Configurare"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "Configurare salvată"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "Subiect"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "Subiect schimbat"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr ""
+msgstr "Administrare"
 
 #: [chats]empty_title
 msgid "No chats yet..."
@@ -605,7 +673,7 @@ msgstr ""
 
 #: [chats]empty
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr ""
+msgstr "Deschideți o nouă conversație făcând clic pe butonul %s de mai jos sau vizitând pagina de Contacte."
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -613,23 +681,23 @@ msgstr ""
 
 #: [chats]more
 msgid "Load more contacts"
-msgstr ""
+msgstr "Încărcați mai multe contacte"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "Conversație nouă"
 
 #: [communities]empty_text [group]empty_text
 msgid "Discover, follow and share"
-msgstr ""
+msgstr "Descoperiți, urmăriți și distribuiți"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%s comunități"
 
 #: [communities]search_server [group]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "Caută un nou server"
 
 #: [communities]servers
 msgid "Communities servers"
@@ -637,23 +705,23 @@ msgstr ""
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
-msgstr ""
+msgstr "Acest server nu există"
 
 #: [communitiesserver]created [groups]created
 msgid "Group created successfully"
-msgstr ""
+msgstr "Grup creat cu succes"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
-msgstr ""
+msgstr "Nu sunt încă Grupuri pe acest server."
 
 #: [communitiesserver]add [groups]add
 msgid "Create a new Group on %s"
-msgstr ""
+msgstr "Creează un nou Grup pe %s"
 
 #: [communitiesserver]name [groups]name
 msgid "Group name"
-msgstr ""
+msgstr "Nume Grup"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -661,32 +729,32 @@ msgstr ""
 
 #: [communitiesserver]name_error [groups]name_error
 msgid "Please provide a valid group name (4 characters minimum)"
-msgstr ""
+msgstr "Vă rugăm să furnizați un nume de grup valabil (4 caractere minimum)"
 
 #: [communitiesserver]no_creation [groups]no_creation
 msgid "You cannot create a new Group on this server"
-msgstr ""
+msgstr "Nu puteți crea un nou Grup pe acest server"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "Abonamente"
 
 #: [communityaffiliation]deleted [groups]deleted
 msgid "Group deleted successfully"
-msgstr ""
+msgstr "Grup șters cu succes"
 
 #: [communityaffiliation]delete_title [group]delete_title
 msgid "Delete the group"
-msgstr ""
+msgstr "Ștergeți acest grup"
 
 #: [communityaffiliation]delete_text [group]delete_text
 msgid "You are going to delete the following group. Please confirm your action."
-msgstr ""
+msgstr "Veți șterge acest grup. Vă rugăm confirmați acțiunea."
 
 #: [communityaffiliation]delete_clean_text [group]delete_clean_text
 msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr ""
+msgstr "Se pare că acest grup nu mai există. Vreți sa îl scoateți din abonamente?"
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -722,71 +790,71 @@ msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
-msgstr ""
+msgstr "Abonare"
 
 #: [communityheader]unsubscribe [group]unsubscribe
 msgid "Unsubscribe"
-msgstr ""
+msgstr "Dezabonare"
 
 #: [communityheader]subscribed [group]subscribed
 msgid "Subscribed"
-msgstr ""
+msgstr "Abonat"
 
 #: [communityheader]unsubscribed [group]unsubscribed
 msgid "Unsubscribed"
-msgstr ""
+msgstr "Dezabonat"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr ""
+msgstr "Abonamentele sunt dezactivate pentru această comunitate"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr ""
+msgstr "Adaugă o etichetă pentru aceasta comunitate"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "Numele comunității mele"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr ""
+msgstr "Distribuie public acest abonament"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr ""
+msgstr "Va apărea pe profilul dumneavoastră"
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr ""
+msgstr "Sunteți pe cale să vă dezabonați de la această comunitate"
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
-msgstr ""
+msgstr "Sunteți sigur(ă)?"
 
 #: [communityposts]empty
 msgid "This community seems empty"
-msgstr ""
+msgstr "Această comunitate pare goală"
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
 msgid "My Subscriptions"
-msgstr ""
+msgstr "Abonamentele mele"
 
 #: [communitysubscriptions]empty_title [groups]empty_title
 msgid "Hello"
-msgstr ""
+msgstr "Bună"
 
 #: [communitysubscriptions]empty_text1 [groups]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
-msgstr ""
+msgstr "Aici veți putea să gestionați toate abonamentele dumneavoastră."
 
 #: [communitysubscriptions]empty_text2 [groups]empty_text2
 msgid "You don't have any group subscriptions yet."
-msgstr ""
+msgstr "Nu aveți nici un grup de abonamente încă."
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "General"
 
 #: [config]language
 msgid "Language"
@@ -798,27 +866,27 @@ msgstr ""
 
 #: [config]roster_show
 msgid "Show the offline contacts"
-msgstr ""
+msgstr "Afișați contactele deconectate"
 
 #: [config]roster_hide
 msgid "Hide the offline contacts"
-msgstr ""
+msgstr "Ascunde contactele deconectate"
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "Aspect"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr ""
+msgstr "Configurare invalidă"
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "Configurare avansată"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
-msgstr ""
+msgstr "URL personalizat pentru CSS-ul blogului dumneavoastră"
 
 #: [general]legend
 msgid "General Informations"
@@ -828,25 +896,21 @@ msgstr "Informatii generale"
 msgid "Name"
 msgstr "Nume"
 
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Porecla"
-
 #: [general]date_of_birth
 msgid "Date of Birth"
 msgstr "Data nasterii"
 
 #: [general]gender
 msgid "Gender"
-msgstr ""
+msgstr "Gen"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr ""
+msgstr "Starea civilă"
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: [general]website
 msgid "Website"
@@ -854,11 +918,11 @@ msgstr "Website"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "Despre Mine"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "Alte conturi"
 
 #: [general]tune
 msgid "Is Listening"
@@ -866,19 +930,19 @@ msgstr ""
 
 #: [position]legend
 msgid "Geographic Position"
-msgstr ""
+msgstr "Poziție geografică"
 
 #: [position]locality
 msgid "Locality"
-msgstr ""
+msgstr "Localitate"
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "Țară"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "Stare"
 
 #: [mood]im
 msgid "I'm "
@@ -890,23 +954,23 @@ msgstr ""
 
 #: [last]title
 msgid "Last seen"
-msgstr ""
+msgstr "Ultima oară văzut(ă)"
 
 #: [client]title
 msgid "Client Informations"
-msgstr ""
+msgstr "Informații client"
 
 #: [explore]last_registered
 msgid "Last registered"
-msgstr ""
+msgstr "Înregistrat ultima oară"
 
 #: [explore]explore
 msgid "Find some new friends"
-msgstr ""
+msgstr "Găsește noi prieteni"
 
 #: [edit]title [button]edit
 msgid "Edit"
-msgstr ""
+msgstr "Editați"
 
 #: [edit]alias
 msgid "Alias"
@@ -914,31 +978,31 @@ msgstr "Alias"
 
 #: [edit]group
 msgid "Group"
-msgstr ""
+msgstr "Grup"
 
 #: [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "Sunteți sigur(ă)?"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr ""
+msgstr "Veți șterge unul din contactele dumneavoastră, vă rugăm sa confirmați acțiunea"
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%s ani"
 
 #: [blog]last
 msgid "Last public post"
-msgstr ""
+msgstr "Ultima postare publică"
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
-msgstr ""
+msgstr "Vizitați blogul pentru a vedea toate postările publice"
 
 #: [subscription]to
 msgid "You can see this contact status"
-msgstr ""
+msgstr "Puteți vedea status-ul acestui contact"
 
 #: [subscription]to_button
 msgid "Share my status"
@@ -950,43 +1014,39 @@ msgstr ""
 
 #: [subscription]from
 msgid "You are not subscribed to this contact"
-msgstr ""
+msgstr "Nu sunteți abonat la acest contact"
 
 #: [subscription]from_button
 msgid "Ask to subscribe"
-msgstr ""
+msgstr "Cereți să vă abonați"
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
-msgstr ""
+msgstr "Dar acest contact poate vedea în continuare dacă sunteți online"
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr ""
+msgstr "Fără abonamente"
 
 #: [subscription]nil_button
 msgid "Invite"
-msgstr ""
+msgstr "Invitați"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-msgstr ""
+msgstr "Acest contact este în lista de contacte dar nu este nici un abonament între cele două conturi"
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
-msgstr ""
+msgstr "Vă veți dezabona de la acest Grup"
 
 #: [group]share_label
 msgid "Make your membership to this group public to your friends"
-msgstr ""
+msgstr "Faceți apartenența la acest grup publică cu prietenii dumneavoastră"
 
 #: [group]label_label
 msgid "Give a label for this group"
-msgstr ""
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr ""
+msgstr "Adăugați o etichetă la acest grup"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -994,11 +1054,11 @@ msgstr ""
 
 #: [group]config_saved
 msgid "Group configuration saved"
-msgstr ""
+msgstr "Configurația grupului salvată"
 
 #: [group]counter
 msgid "%s groups on this server"
-msgstr ""
+msgstr "%s grupuri pe acest server"
 
 #: [group]servers
 msgid "Groups servers"
@@ -1006,19 +1066,19 @@ msgstr ""
 
 #: [group]help_info1
 msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-msgstr ""
+msgstr "Grupurile sunt modul perfect de a împărtăși postări despre subiectele care vă plac, cu toți ceilalți utilizatori Movim."
 
 #: [group]help_info2
 msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-msgstr ""
+msgstr "Alegeți un server și un grup și abonați-vă la acesta folosind butonul %s din antet. De asemenea, puteți crea unul nou folosind butonul %s."
 
 #: [group]help_info3
 msgid "Done? You can now publish a new post in the Group by using the %s button."
-msgstr ""
+msgstr "Terminat? Vă puteți publica acum o nouă postare în cadrul grupului, folosind butonul %s."
 
 #: [group]help_info4
 msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-msgstr ""
+msgstr "Veți găsi o listă cu toate Grupurile abonate în Abonamentele mele și veți primi instant toate postările noi în pagina de %sȘtiri%s"
 
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
@@ -1026,7 +1086,7 @@ msgstr ""
 
 #: [help]faq
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "Întrebări frecvente"
 
 #: [banner]title
 msgid "What do the little banners refer to ?"
@@ -1062,11 +1122,11 @@ msgstr ""
 
 #: [wiki]button
 msgid "Read the Wiki"
-msgstr ""
+msgstr "Citiți Wiki"
 
 #: [ml]question
 msgid "Talk with us by email ?"
-msgstr ""
+msgstr "Discutați cu noi prin e-mail?"
 
 #: [ml]button
 msgid "Join the Mailing List"
@@ -1098,7 +1158,7 @@ msgstr ""
 
 #: [init]subscriptions
 msgid "Subscriptions node created"
-msgstr ""
+msgstr "Nod abonamente creat"
 
 #: [init]microblog
 msgid "Microblog node created"
@@ -1114,7 +1174,7 @@ msgstr ""
 
 #: [error]username
 msgid "Wrong username"
-msgstr ""
+msgstr "Nume utilizator greșit"
 
 #: [error]jid
 msgid "Invalid JID"
@@ -1253,9 +1313,8 @@ msgid "Add a post"
 msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Configurare"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1270,9 +1329,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "Profil"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1508,7 +1566,7 @@ msgstr ""
 
 #: [publish]add_text_label
 msgid "Add some text"
-msgstr ""
+msgstr "Adaugă niște text"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1530,20 +1588,8 @@ msgstr ""
 msgid "Chatrooms"
 msgstr ""
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: [chatrooms]empty_name
-msgid "Empty name"
 msgstr ""
 
 #: [chatrooms]users
@@ -1556,11 +1602,7 @@ msgstr ""
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr ""
+msgstr "Nume utilizator deja folosit"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1576,55 +1618,55 @@ msgstr ""
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
-msgstr ""
+msgstr "Vă puteți alătura cu ajutorul contului dvs. propriu sau creați unul pe pagina de conectare deconectându-vă folosind crucea din colțul dreapta sus."
 
 #: [room]anonymous_login
 msgid "Login on %s"
-msgstr ""
+msgstr "Conectare pe %s"
 
 #: [room]nick
 msgid "Your nickname"
-msgstr ""
+msgstr "Porecla ta"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
-msgstr ""
+msgstr "Negrupate"
 
 #: [roster]show_disconnected
 msgid "Show disconnected contacts"
-msgstr ""
+msgstr "Arată contactele deconectate"
 
 #: [roster]hide_disconnected
 msgid "Hide disconnected contacts"
-msgstr ""
+msgstr "Ascunde contactele deconectate"
 
 #: [roster]show_group
 msgid "Show group %s"
-msgstr ""
+msgstr "Arată grupul %s"
 
 #: [roster]hide_group
 msgid "Hide group %s"
-msgstr ""
+msgstr "Ascunde grupul %s"
 
 #: [roster]jid_error
 msgid "Please enter a valid Jabber ID"
-msgstr ""
+msgstr "Vă rugăm să introduceți un cont de Jabber valabil"
 
 #: [roster]no_contacts_title
 msgid "No contacts ?"
-msgstr ""
+msgstr "Nici un contact?"
 
 #: [roster]no_contacts_text
 msgid "You can add one using the + button below"
-msgstr ""
+msgstr "Aveți posibilitatea să adăugați unul utilizând butonul + de mai jos"
 
 #: [roster]show_hide
 msgid "Show/Hide"
-msgstr ""
+msgstr "Arată/Ascunde"
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr ""
+msgstr "Adaugă un contact"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
@@ -1632,7 +1674,7 @@ msgstr ""
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
-msgstr ""
+msgstr "Apăsați pe Enter pentru a valida"
 
 #: [roster]jid
 msgid "JID"
@@ -1640,34 +1682,42 @@ msgstr ""
 
 #: [roster]results
 msgid "Results"
-msgstr ""
+msgstr "Rezultate"
 
 #: [roster]added
 msgid "Contact added"
-msgstr ""
+msgstr "Contact adăugat"
 
 #: [roster]updated
 msgid "Contact updated"
-msgstr ""
+msgstr "Contact actualizat"
 
 #: [roster]deleted
 msgid "Contact deleted"
-msgstr ""
+msgstr "Contact șters"
 
 #: [roster]search
 msgid "Search in your contacts"
-msgstr ""
+msgstr "Caută în contactele tale"
 
 #: [roster]search_pod
 msgid "Search a contact"
-msgstr ""
+msgstr "Caută un contact"
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr ""
+msgstr "Ce cauți?"
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr "Deschide-mă folosind Ctrl + M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1696,7 +1746,7 @@ msgstr ""
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
-msgstr ""
+msgstr "Movim este a rețea descentralizată, înainte de a crea un cont, trebuie sa alegi un server pentru înregistrare"
 
 #: [subscribe]server_question
 msgid "Your server here ?"
@@ -1712,27 +1762,27 @@ msgstr ""
 
 #: [feed]nope_contact
 msgid "No contact specified"
-msgstr ""
+msgstr "Nici un contact specificat"
 
 #: [upload]title
 msgid "Upload a file"
-msgstr ""
+msgstr "Încarcă un fișier"
 
 #: [upload]choose
 msgid "Choose a file to upload"
-msgstr ""
+msgstr "Alege un fișier pentru a-l încărca"
 
 #: [upload]info
 msgid "Large pictures will be resized and compressed"
-msgstr ""
+msgstr "Pozele mari vor fi redimensionate și comprimate"
 
 #: [upload]error_filesize
 msgid "File too large"
-msgstr ""
+msgstr "Fișier prea mare"
 
 #: [upload]error_failed
 msgid "Upload failed"
-msgstr ""
+msgstr "Încărcarea a eșuat"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1788,11 +1838,27 @@ msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
-msgstr "Inregistrare"
+msgstr "Înregistrare"
 
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Reinitializeaza"
+
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1804,11 +1870,11 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
-msgstr ""
+msgstr "Se încarcă..."
 
 #: [page]communities
 msgid "Communities"
-msgstr ""
+msgstr "Comunități"
 
 #: [page]home
 msgid "Home"
@@ -1816,7 +1882,7 @@ msgstr "Pagina Principala"
 
 #: [page]explore
 msgid "Explore"
-msgstr ""
+msgstr "Explorează"
 
 #: [page]account_creation
 msgid "Account Creation"
@@ -1824,7 +1890,7 @@ msgstr "Cont nou"
 
 #: [page]news
 msgid "News"
-msgstr ""
+msgstr "Știri"
 
 #: [page]avatar
 msgid "Avatar"
@@ -1836,11 +1902,11 @@ msgstr ""
 
 #: [page]public_groups
 msgid "Public Groups"
-msgstr ""
+msgstr "Grupuri publice"
 
 #: [page]post
 msgid "Post"
-msgstr ""
+msgstr "Postare"
 
 #: [page]blog
 msgid "Blog"
@@ -1848,7 +1914,7 @@ msgstr ""
 
 #: [page]about
 msgid "About"
-msgstr ""
+msgstr "Despre"
 
 #: [page]login
 msgid "Login"
@@ -1860,7 +1926,7 @@ msgstr ""
 
 #: [page]posts
 msgid "Posts"
-msgstr ""
+msgstr "Postări"
 
 #: [page]gallery
 msgid "Gallery"
@@ -2689,20 +2755,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#, fuzzy
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Nume"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "Configurare"
-
-#, fuzzy
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Nume"
-
-#~ msgid "Come in!"
-#~ msgstr "Intrati!"

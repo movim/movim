@@ -21,6 +21,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -75,6 +77,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -92,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
@@ -518,6 +522,73 @@ msgstr ""
 msgid "This content is private, please login to see it"
 msgstr ""
 
+#: [title]conferences
+#, fuzzy
+msgid "Conferences"
+msgstr "設置"
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr ""
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "名称"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "檔名"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr ""
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr ""
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "設置"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "名称"
+
 #: [message]published
 msgid "Message Published"
 msgstr ""
@@ -643,7 +714,7 @@ msgstr ""
 msgid "Group created successfully"
 msgstr ""
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr ""
 
@@ -748,11 +819,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -827,10 +898,6 @@ msgstr "一般資訊"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "名称"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "檔名"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -982,10 +1049,6 @@ msgstr ""
 
 #: [group]label_label
 msgid "Give a label for this group"
-msgstr ""
-
-#: [group]empty_title [page]groups
-msgid "Groups"
 msgstr ""
 
 #: [group]empty
@@ -1530,20 +1593,8 @@ msgstr ""
 msgid "Chatrooms"
 msgstr ""
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: [chatrooms]empty_name
-msgid "Empty name"
 msgstr ""
 
 #: [chatrooms]users
@@ -1556,10 +1607,6 @@ msgstr ""
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
 msgstr ""
 
 #: [room]anonymous_title
@@ -1668,6 +1715,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1793,6 +1848,22 @@ msgstr "確認"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "重設"
+
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2689,20 +2760,6 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#, fuzzy
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "名称"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "設置"
-
-#, fuzzy
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "名称"
 
 #~ msgid "Come in!"
 #~ msgstr "登录"

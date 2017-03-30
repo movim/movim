@@ -25,6 +25,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -79,6 +81,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -96,8 +100,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2017-02-01 18:35+0000\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
 "Language: es\n"
@@ -105,7 +109,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.0.0rc1\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -522,6 +526,69 @@ msgstr "Este usuario no ha publicado nada ahora mismo"
 msgid "This content is private, please login to see it"
 msgstr "Este contenido es privado, ingresa para verlo"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Grupos"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Id. de la sala de chat"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr ""
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Apodo"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "ID de la Chatroom incorrecto"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Nombre vacío"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Marcadores actualizados"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr ""
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr ""
+
 #: [message]published
 msgid "Message Published"
 msgstr "Mensaje publicado"
@@ -647,7 +714,7 @@ msgstr "Este servidor no existe"
 msgid "Group created successfully"
 msgstr "Grupo creado exitosamente"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr "Aún no hay Grupos en este servidor."
 
@@ -752,11 +819,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -831,10 +898,6 @@ msgstr "Informaciones generales"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nombre"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Apodo"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -987,10 +1050,6 @@ msgstr "Hacer la membresía a este grupo pública a tus amigos"
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "Establecer una etiqueta para este grupo"
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Grupos"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1532,21 +1591,9 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "Salas de conversación"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Id. de la sala de chat"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "My sala favorita"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "ID de la Chatroom incorrecto"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Nombre vacío"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1559,10 +1606,6 @@ msgstr "Por favor, introduzca un nombre correcto (2 a 40 carácteres)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Nombre de usuario en uso"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Marcadores actualizados"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1671,6 +1714,14 @@ msgstr "¿Qué es lo que buscas?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Abreme usando Ctrl + M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1795,6 +1846,22 @@ msgstr "Enviar"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Reiniciar"
+
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."

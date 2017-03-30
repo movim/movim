@@ -23,6 +23,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -77,6 +79,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -94,8 +98,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
 "Language: he\n"
@@ -103,7 +107,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -520,6 +524,69 @@ msgstr ""
 msgid "This content is private, please login to see it"
 msgstr ""
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "קבוצות"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr ""
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "מזהה חדר שיחה"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr ""
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "שם כינוי"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "מזהה חדר שיחה רע"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "שם ריק"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "סימניות עודכנו"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr ""
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr ""
+
 #: [message]published
 msgid "Message Published"
 msgstr "הודעה פורסמה"
@@ -634,9 +701,8 @@ msgid "Search for a new server"
 msgstr "חפש שרת חדש"
 
 #: [communities]servers
-#, fuzzy
 msgid "Communities servers"
-msgstr "שרתי קבוצות"
+msgstr ""
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
@@ -646,7 +712,7 @@ msgstr "שרת זה לא קיים"
 msgid "Group created successfully"
 msgstr "קבוצה נוצרה בהצלחה"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr ""
 
@@ -700,14 +766,12 @@ msgid "Owners"
 msgstr ""
 
 #: [communityaffiliation]publisher
-#, fuzzy
 msgid "Publisher"
-msgstr "פרסם"
+msgstr ""
 
 #: [communityaffiliation]publishers
-#, fuzzy
 msgid "Publishers"
-msgstr "פרסם"
+msgstr ""
 
 #: [communityaffiliation]roles
 msgid "Roles"
@@ -753,12 +817,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
-#, fuzzy
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr "לפרסם את פרסום זה בפומבי?"
+msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -833,10 +896,6 @@ msgstr "מידע כללי"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "שם"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "שם כינוי"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -989,10 +1048,6 @@ msgstr ""
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr ""
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "קבוצות"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1175,9 +1230,8 @@ msgid "Invalid password format"
 msgstr ""
 
 #: [error]unauthorized
-#, fuzzy
 msgid "Your XMPP server is unauthorized"
-msgstr "שרתך כאן ?"
+msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1224,9 +1278,8 @@ msgid "Bad nickname (between 4 and 40 characters)"
 msgstr ""
 
 #: [menu]empty_title
-#, fuzzy
 msgid "No news yet…"
-msgstr "אין חדשות עדיין..."
+msgstr ""
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
@@ -1261,14 +1314,12 @@ msgid "Add a post"
 msgstr "הוסף פרסום"
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "השתמש בהתראות שולחן עבודה"
+msgstr ""
 
 #: [notifs]empty
-#, fuzzy
 msgid "No new notifications"
-msgstr "השתמש בהתראות שולחן עבודה"
+msgstr ""
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
@@ -1279,9 +1330,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "קבוצות פומביות"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1539,21 +1589,9 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "חדרי שיחה"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "מזהה חדר שיחה"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "החדר המועדף עליי"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "מזהה חדר שיחה רע"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "שם ריק"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1566,10 +1604,6 @@ msgstr ""
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "שם משתמש כבר תפוס"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "סימניות עודכנו"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1677,6 +1711,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1803,6 +1845,22 @@ msgstr "שלח"
 msgid "Reset"
 msgstr "אפס"
 
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "אין לך Javascript מאופשר.  עליך לאפשר Javascript בכדי להשתמש באתר זה."
@@ -1816,9 +1874,8 @@ msgid "Loading…"
 msgstr ""
 
 #: [page]communities
-#, fuzzy
 msgid "Communities"
-msgstr "תגובות"
+msgstr ""
 
 #: [page]home
 msgid "Home"
@@ -1849,9 +1906,8 @@ msgid "Public Groups"
 msgstr "קבוצות פומביות"
 
 #: [page]post
-#, fuzzy
 msgid "Post"
-msgstr "פרסומים"
+msgstr ""
 
 #: [page]blog
 msgid "Blog"
@@ -2700,40 +2756,3 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
-
-#~ msgid "This server use an external system for the registration, please click on the following URL."
-#~ msgstr "שרת זה משתמש במערכת חיצונית לצורך הרשמה, אנא לחצו על URL להלן."
-
-#, fuzzy
-#~ msgid "Conferences"
-#~ msgstr "ועידת וידאו"
-
-#, fuzzy
-#~ msgid "Add a new Chat Room"
-#~ msgstr "הוסף חדר שיחה"
-
-#, fuzzy
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "שם"
-
-#, fuzzy
-#~ msgid "Configure"
-#~ msgstr "תצורה"
-
-#, fuzzy
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "שם"
-
-#~ msgid "Notify on incoming message"
-#~ msgstr "התראה בעת הודעה נכנסת"
-
-#~ msgid "Come in!"
-#~ msgstr "כניסה!"
-
-#~ msgid "Status"
-#~ msgstr "מצב"
-
-#~ msgid "Online with Movim"
-#~ msgstr "מקוון עם Movim"

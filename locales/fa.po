@@ -1,5 +1,6 @@
 #
 # Translators:
+# Alireza Mirsepassy <alirezamirsepassy@gmail.com>, 2017
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -21,6 +22,8 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -76,6 +79,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -93,85 +98,85 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2016-07-29 20:30+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"Last-Translator: Alireza Mirsepassy <alirezamirsepassy@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "باتشکر"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "توسعه دهندگان"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "مترجم ها"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "با تشکر از همه ترجمه گرها"
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "نرم افزار"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "منابع"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "موویم یک پلتفرم براساس پروتوکل XMPP است.تمام پروژه ها ،بجز این نرم افزار و منابع زیر"
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "حساب کاربری"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "تغییر رمز عبور"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
 msgid "Password"
-msgstr ""
+msgstr "رمز عبور"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "تایید رمزعبور"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "رمز عبور تغییر یافت"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "لطفا رمزعبور درستی را وارد کنید ( حداقل 6 کاراکتر )"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "رمز عبور ها یکسان نیست"
 
 #: [account]delete_title
 msgid "Delete my account"
-msgstr ""
+msgstr "حساب کاربری من را حذف کن"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "حساب کاربریتان را حذف کنید"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
@@ -183,147 +188,147 @@ msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "دروازه"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "ساخت حساب کاربری جدید"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "فرم ساخت اکانتی در این سرور یافت نشد"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "روی"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "حساب کاربری شما با موفقیت ثبت شد"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "درحال بارگیری"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...و شروع به بازی کنید"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "قابل قبول نیست"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "سیستم ثبت نام سرور فعلا در دسترس نیست"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "ثبت نام ممنوع است"
 
 #: [adhoc]title
 msgid "Actions"
-msgstr ""
+msgstr "اعمال"
 
 #: [db]legend [schema]database
 msgid "Database"
-msgstr ""
+msgstr "پایگاه داده"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
-msgstr ""
+msgstr "مودل نتوانست با پایگاه داده ارتباط برقرار کند"
 
 #: [db]connect_success
 msgid "Movim is connected to the database"
-msgstr ""
+msgstr "موویم به پایگاه داده متصل شده اس"
 
 #: [db]update
 msgid "The database need to be updated"
-msgstr ""
+msgstr "پایگاه داده احتیاج به بروز رسانی دارد"
 
 #: [db]up_to_date
 msgid "Movim database is up to date"
-msgstr ""
+msgstr "پایگاه داده موویم بروز است"
 
 #: [db]type
 msgid "Database Type"
-msgstr ""
+msgstr "نوع پایگاه داده"
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "نام کاربری"
 
 #: [db]host
 msgid "Host"
-msgstr ""
+msgstr "هاست"
 
 #: [db]port
 msgid "Port"
-msgstr ""
+msgstr "پورت"
 
 #: [db]name
 msgid "Database Name"
-msgstr ""
+msgstr "نام پایگاه داده"
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "تنظیمات عمومی"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "نمای کاربری"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "زبان پیشفرض"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "میزان لاگ کردن"
 
 #: [general]timezone
 msgid "Server Timezone"
-msgstr ""
+msgstr "زمان محلی سرور"
 
 #: [general]limit
 msgid "User folder size limit (in bytes)"
-msgstr ""
+msgstr "حجم پوشه کاربر ( بایت )"
 
 #: [websocket]title
 msgid "WebSocket Configuration"
-msgstr ""
+msgstr "تنظیمات وب سوکت"
 
 #: [websocket]info
 msgid "Enter here a valid WebSocket URI in the form"
-msgstr ""
+msgstr "یک URI وب سوکت معتبر وارد کنید"
 
 #: [websocket]label
 msgid "WebSocket URI"
-msgstr ""
+msgstr "Websocket URI"
 
 #: [websocket]save_info
 msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr ""
+msgstr "اگر URI را عوض کردید daemon را ریستارت کنید تا تنظیمات اعمال شود"
 
 #: [websocket]publics
 msgid "Public WebSockets"
-msgstr ""
+msgstr "وب سوکت های عمومی"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "اعتبار مدیریت"
 
 #: [credentials]info
 msgid "Change the default credentials admin/password"
-msgstr ""
+msgstr "نام کاربری و رمز عبور پیش فرض admin/password را عوض کنید"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "دوباره رمز عبور را بنویسید"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "سرور های XMPP مجاز"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -331,89 +336,89 @@ msgstr ""
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "اگر میخواهید به همه سرور ها اجازه بدهید اینجا را خالی بگذارید"
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "لیست سرورهای XMPP مجاز"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "پیام اطلاع رسانی"
 
 #: [information]description
 msgid "Description"
-msgstr ""
+msgstr "توضیحات"
 
 #: [information]info1
 msgid "This message will be displayed on the login page"
-msgstr ""
+msgstr "این پیام در صفحه ورود نمایش داده میشود"
 
 #: [information]info2
 msgid "Leave this field blank if you dont want to show any message."
-msgstr ""
+msgstr "خالی بگذارید تا پیامی نمایش داده نشود"
 
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "پیام اطلاع رسانی"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "سرور XMPP پیشفرض"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "دامنه سرور اصلی"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "توضیحات سرور اصلی"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "کشور سرور اصلی"
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "خالی"
 
 #: [log]syslog
 msgid "Syslog"
-msgstr ""
+msgstr "Syslog"
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr ""
+msgstr "Sys log and files"
 
 #: [admin]compatibility
 msgid "General Overview"
-msgstr ""
+msgstr "بررسی اجمالی عمومی"
 
 #: [compatibility]info
 msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr ""
+msgstr "موویم یکسری مشکلات پیدا کرد که باید درست یا بهتر بشوند"
 
 #: [compatibility]php1
 msgid "Update your PHP-Version: %s"
-msgstr ""
+msgstr "نسخه PHP خود را بروز کنید : %s"
 
 #: [compatibility]php2
 msgid "Required: 5.3.0"
-msgstr ""
+msgstr "Required: 5.3.0"
 
 #: [compatibility]curl
 msgid "Install the php5-curl library"
-msgstr ""
+msgstr "Install the php5-curl library"
 
 #: [compatibility]imagick
 msgid "Install the php5-imagick library"
-msgstr ""
+msgstr "Install the php5-imagick library"
 
 #: [compatibility]gd
 msgid "Install the php5-gd library"
-msgstr ""
+msgstr "Install the php5-gd library"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
@@ -433,19 +438,19 @@ msgstr ""
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "مرورگر"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "هسته موویم"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "سیستم موویم"
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
@@ -473,23 +478,23 @@ msgstr ""
 
 #: [api]conf_updated [config]updated
 msgid "Configuration updated"
-msgstr ""
+msgstr "تنظیمات ذخیره شد"
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "فایل"
 
 #: [avatar]use_it
 msgid "Use it"
-msgstr ""
+msgstr "استفاده"
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr ""
+msgstr "دوربین"
 
 #: [avatar]cheese
 msgid "Cheese !"
-msgstr ""
+msgstr "پنیر!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -497,15 +502,15 @@ msgstr ""
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "آواتار تغییر یافت"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "آواتار تغییر نیافت"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "هنوز هیچ آواتاری تعریف نشده"
 
 #: [blog]title [feed]title
 msgid "%s's feed"
@@ -513,27 +518,90 @@ msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
-msgstr ""
+msgstr "این کاربر تا الان هنوز نوشته ای ارسال نکرده است"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "این محتوا خصوصی است ،برای مشاهده لطفا وارد شوید"
+
+#: [title]conferences
+msgid "Conferences"
+msgstr "کنفرانس ها"
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "گروه ها"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "ایجاد اتاق گپ"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "آیدی اتاق گپ"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "نام"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "اسم مستعار"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "میخواهید خودکار به این اتاق گپ بپیوندید ؟"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "آیدی اتاق چت اشتباه است"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "نام خالی است"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "نشان ها بروز شد"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "خطایی رخ داد :"
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "تنظیم"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "اضافه کردن URL"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "نام"
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "پیام منتشر شد"
 
 #: [message]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "پیام رمز گذاری شده"
 
 #: [message]composing [chats]composing
 msgid "Composing..."
-msgstr ""
+msgstr "درحال ارایه"
 
 #: [message]paused [chats]paused
 msgid "Paused..."
-msgstr ""
+msgstr "متوقف شده ..."
 
 #: [message]gone
 msgid "Contact gone"
@@ -549,15 +617,15 @@ msgstr ""
 
 #: [chat]placeholder
 msgid "Your message here..."
-msgstr ""
+msgstr "پیام شما در این مکان ..."
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "خندانک ها"
 
 #: [chat]empty_title [button]chat
 msgid "Chat"
-msgstr ""
+msgstr "گپ"
 
 #: [chat]empty_text
 msgid "Discuss with your contacts"
@@ -565,44 +633,44 @@ msgstr ""
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "مخاطبین اخیر"
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "اعض"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "متصل به اتاق گپ"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "از اتاق گپ قطع شدید"
 
 #: [chatroom]config [communityaffiliation]configuration [group]configuration
 #: [page]configuration
 msgid "Configuration"
-msgstr ""
+msgstr "تنظیمات"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "تنظیمات ذخیره شد"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "موضوع"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "موضوع عوض شد"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr ""
+msgstr "مدیریت"
 
 #: [chats]empty_title
 msgid "No chats yet..."
-msgstr ""
+msgstr "هنوز گپی ثبت نشده است"
 
 #: [chats]empty
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
@@ -610,19 +678,19 @@ msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr ""
+msgstr "با مخاطب گپ بزنید"
 
 #: [chats]more
 msgid "Load more contacts"
-msgstr ""
+msgstr "مخاطبین بیشتر ..."
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "گفتگوجدید"
 
 #: [communities]empty_text [group]empty_text
 msgid "Discover, follow and share"
-msgstr ""
+msgstr "کشف کنید، دنبال کنید و به اشتراک بگذارید"
 
 #: [communities]counter
 msgid "%s communities"
@@ -630,7 +698,7 @@ msgstr ""
 
 #: [communities]search_server [group]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "جستجو برای سرور جدید"
 
 #: [communities]servers
 msgid "Communities servers"
@@ -642,11 +710,11 @@ msgstr ""
 
 #: [communitiesserver]created [groups]created
 msgid "Group created successfully"
-msgstr ""
+msgstr "گروه با موفقیت ذخیره شد"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
-msgstr ""
+msgstr "هنوز هیچ گروهی روی این سرور وجود ندارد"
 
 #: [communitiesserver]add [groups]add
 msgid "Create a new Group on %s"
@@ -654,32 +722,32 @@ msgstr ""
 
 #: [communitiesserver]name [groups]name
 msgid "Group name"
-msgstr ""
+msgstr "نام گروه"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
-msgstr ""
+msgstr "تسویه حساب کوچک من - باشگاه"
 
 #: [communitiesserver]name_error [groups]name_error
 msgid "Please provide a valid group name (4 characters minimum)"
-msgstr ""
+msgstr "لطفا یک نام معتبر برای گروه انتخاب کنید ( حداقل 4 کاراکتر )"
 
 #: [communitiesserver]no_creation [groups]no_creation
 msgid "You cannot create a new Group on this server"
-msgstr ""
+msgstr "شما نمیتوانید گروه جدیدی روی این سرور بسازید"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
 msgid "Subscriptions"
-msgstr ""
+msgstr "مشترک ها"
 
 #: [communityaffiliation]deleted [groups]deleted
 msgid "Group deleted successfully"
-msgstr ""
+msgstr "گروه با موفقیت حذف شد"
 
 #: [communityaffiliation]delete_title [group]delete_title
 msgid "Delete the group"
-msgstr ""
+msgstr "حذف گروه"
 
 #: [communityaffiliation]delete_text [group]delete_text
 msgid "You are going to delete the following group. Please confirm your action."
@@ -691,27 +759,27 @@ msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "مالک"
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "مالک ها"
 
 #: [communityaffiliation]publisher
 msgid "Publisher"
-msgstr ""
+msgstr "منتشر کننده"
 
 #: [communityaffiliation]publishers
 msgid "Publishers"
-msgstr ""
+msgstr "منتشر کننده ها"
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "نقش ها"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "نقش ها بدرستی تنظیم شده اند"
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -723,19 +791,19 @@ msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
-msgstr ""
+msgstr "مشترک شدن"
 
 #: [communityheader]unsubscribe [group]unsubscribe
 msgid "Unsubscribe"
-msgstr ""
+msgstr "لغو اشتراک"
 
 #: [communityheader]subscribed [group]subscribed
 msgid "Subscribed"
-msgstr ""
+msgstr "مشترک"
 
 #: [communityheader]unsubscribed [group]unsubscribed
 msgid "Unsubscribed"
-msgstr ""
+msgstr "اشتراک را لغو کرد"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
@@ -749,11 +817,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -763,7 +831,7 @@ msgstr ""
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
-msgstr ""
+msgstr "مطمئن هستید ؟"
 
 #: [communityposts]empty
 msgid "This community seems empty"
@@ -771,11 +839,11 @@ msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
 msgid "My Subscriptions"
-msgstr ""
+msgstr "اشتراک های من"
 
 #: [communitysubscriptions]empty_title [groups]empty_title
 msgid "Hello"
-msgstr ""
+msgstr "سلام"
 
 #: [communitysubscriptions]empty_text1 [groups]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
@@ -787,11 +855,11 @@ msgstr ""
 
 #: [config]general
 msgid "General"
-msgstr ""
+msgstr "عمومی"
 
 #: [config]language
 msgid "Language"
-msgstr ""
+msgstr "زبان"
 
 #: [config]roster
 msgid "Roster display"
@@ -807,7 +875,7 @@ msgstr ""
 
 #: [config]appearence
 msgid "Appearence"
-msgstr ""
+msgstr "ظاهر"
 
 #: [config]not_valid
 msgid "Configuration invalid"
@@ -815,7 +883,7 @@ msgstr ""
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr ""
+msgstr "تنظیمات پیشرفته"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -827,39 +895,35 @@ msgstr ""
 
 #: [general]name [chatrooms]name
 msgid "Name"
-msgstr ""
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr ""
+msgstr "نام"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
-msgstr ""
+msgstr "تاریخ تولد"
 
 #: [general]gender
 msgid "Gender"
-msgstr ""
+msgstr "جنسیت"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr ""
+msgstr "وضعیت تاهل"
 
 #: [general]email
 msgid "Email"
-msgstr ""
+msgstr "ایمیل"
 
 #: [general]website
 msgid "Website"
-msgstr ""
+msgstr "وبسایت"
 
 #: [general]about
 msgid "About Me"
-msgstr ""
+msgstr "درباره من"
 
 #: [general]accounts
 msgid "Other Accounts"
-msgstr ""
+msgstr "اکانت های دیگر"
 
 #: [general]tune
 msgid "Is Listening"
@@ -875,15 +939,15 @@ msgstr ""
 
 #: [position]country
 msgid "Country"
-msgstr ""
+msgstr "کشور"
 
 #: [mood]title
 msgid "Mood"
-msgstr ""
+msgstr "حال و حوصله"
 
 #: [mood]im
 msgid "I'm "
-msgstr ""
+msgstr "من"
 
 #: [listen]title
 msgid "Listening"
@@ -891,7 +955,7 @@ msgstr ""
 
 #: [last]title
 msgid "Last seen"
-msgstr ""
+msgstr "آخرین بازدید"
 
 #: [client]title
 msgid "Client Informations"
@@ -907,7 +971,7 @@ msgstr ""
 
 #: [edit]title [button]edit
 msgid "Edit"
-msgstr ""
+msgstr "ویرایش"
 
 #: [edit]alias
 msgid "Alias"
@@ -915,11 +979,11 @@ msgstr ""
 
 #: [edit]group
 msgid "Group"
-msgstr ""
+msgstr "گروه"
 
 #: [delete]title
 msgid "Are you sure?"
-msgstr ""
+msgstr "مطمئن هستید ؟"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
@@ -927,11 +991,11 @@ msgstr ""
 
 #: [age]years
 msgid "%s years"
-msgstr ""
+msgstr "%s سال"
 
 #: [blog]last
 msgid "Last public post"
-msgstr ""
+msgstr "آخرین نوشته عمومی"
 
 #: [blog]visit
 msgid "Visit the blog to see all the public posts"
@@ -955,19 +1019,19 @@ msgstr ""
 
 #: [subscription]from_button
 msgid "Ask to subscribe"
-msgstr ""
+msgstr "درخواست عضویت"
 
 #: [subscription]from_text
 msgid "But this contact can still see if you are online"
-msgstr ""
+msgstr "ولی این مخاطب هنوز میتواند وضعیت آنلاین بودنتان را ببیند"
 
 #: [subscription]nil
 msgid "No subscriptions"
-msgstr ""
+msgstr "بدون عضو"
 
 #: [subscription]nil_button
 msgid "Invite"
-msgstr ""
+msgstr "دعوت"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
@@ -983,10 +1047,6 @@ msgstr ""
 
 #: [group]label_label
 msgid "Give a label for this group"
-msgstr ""
-
-#: [group]empty_title [page]groups
-msgid "Groups"
 msgstr ""
 
 #: [group]empty
@@ -1027,7 +1087,7 @@ msgstr ""
 
 #: [help]faq
 msgid "Frequently Asked Questions"
-msgstr ""
+msgstr "سوال هایی که اخیرا پرسیده شده"
 
 #: [banner]title
 msgid "What do the little banners refer to ?"
@@ -1067,7 +1127,7 @@ msgstr ""
 
 #: [ml]question
 msgid "Talk with us by email ?"
-msgstr ""
+msgstr "با ایمیل با ما گفتگو کنید ؟"
 
 #: [ml]button
 msgid "Join the Mailing List"
@@ -1075,11 +1135,11 @@ msgstr ""
 
 #: [chatroom]question
 msgid "Chat with the team ?"
-msgstr ""
+msgstr "میخواهید با گروهتان گپ بزنید ؟"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr ""
+msgstr "اتاق گپ را اضافه کنید"
 
 #: [init]location
 msgid "Location node created"
@@ -1107,15 +1167,15 @@ msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
-msgstr ""
+msgstr "دعوت های در انتظار"
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
-msgstr ""
+msgstr "%s میخواهد با شما گفتگو کند"
 
 #: [error]username
 msgid "Wrong username"
-msgstr ""
+msgstr "نام کاربری اشتباه است"
 
 #: [error]jid
 msgid "Invalid JID"
@@ -1135,7 +1195,7 @@ msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
-msgstr ""
+msgstr "رمزعبور اشتباه است"
 
 #: [error]internal
 msgid "Internal server error"
@@ -1147,7 +1207,7 @@ msgstr ""
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr ""
+msgstr "حساب کاربری با موفقیت ایجاد شد"
 
 #: [error]mec_error
 msgid "The server takes too much time to respond"
@@ -1155,11 +1215,11 @@ msgstr ""
 
 #: [error]impossible
 msgid "Impossible login"
-msgstr ""
+msgstr "ورود غیر ممکن است"
 
 #: [error]default
 msgid "Unknown error"
-msgstr ""
+msgstr "خطای ناشناخته"
 
 #: [error]login_format
 msgid "Invalid username format"
@@ -1187,31 +1247,31 @@ msgstr ""
 
 #: [form]username
 msgid "My address"
-msgstr ""
+msgstr "آدرس من"
 
 #: [form]create_one
 msgid "Create one !"
-msgstr ""
+msgstr "یکی بسازید!"
 
 #: [form]another_account
 msgid "Another account"
-msgstr ""
+msgstr "حساب کاربری دیگر"
 
 #: [form]no_account
 msgid "No account yet ?"
-msgstr ""
+msgstr "هنوز حساب کاربری ندارید ؟"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from theses servers"
-msgstr ""
+msgstr "شما میتوانید با اکانت از سرور های زیر وارد شوید"
 
 #: [form]connected
 msgid "Connected"
-msgstr ""
+msgstr "متصل"
 
 #: [form]population
 msgid "Population"
-msgstr ""
+msgstr "جمعیت"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1227,7 +1287,7 @@ msgstr ""
 
 #: [menu]discover [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "کشف کردن"
 
 #: [menu]refresh
 msgid "Refresh all the streams"
@@ -1235,11 +1295,11 @@ msgstr ""
 
 #: [menu]public [post]public_yes
 msgid "This post is public"
-msgstr ""
+msgstr "این نوشته عمومی است"
 
 #: [menu]all
 msgid "All"
-msgstr ""
+msgstr "همه"
 
 #: [menu]mine
 msgid "My publications"
@@ -1247,15 +1307,15 @@ msgstr ""
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
-msgstr ""
+msgstr "مخاطبین"
 
 #: [menu]add_post
 msgid "Add a post"
-msgstr ""
+msgstr "ایجاد یک نوشته"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
-msgstr ""
+msgstr "اعلان ها"
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1271,7 +1331,7 @@ msgstr ""
 
 #: [onboarding]public_title
 msgid "Public profile"
-msgstr ""
+msgstr "پروفایل عمومی"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1283,7 +1343,7 @@ msgstr ""
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr ""
+msgstr "پاپ آپ ها"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
@@ -1303,7 +1363,7 @@ msgstr ""
 
 #: [post]content [publish]content_label
 msgid "Content"
-msgstr ""
+msgstr "محتوا"
 
 #: [post]published
 msgid "Post published"
@@ -1323,7 +1383,7 @@ msgstr ""
 
 #: [post]new [publish]new
 msgid "New post"
-msgstr ""
+msgstr "نوشته جدید"
 
 #: [post]repost
 msgid "This is a re-post from %s"
@@ -1335,27 +1395,27 @@ msgstr ""
 
 #: [post]blog_last
 msgid "Public posts from users"
-msgstr ""
+msgstr "نوشته های عمومی از کاربر"
 
 #: [post]public
 msgid "Publish this post publicly?"
-msgstr ""
+msgstr "این نوشته به صورت عمومی منتشر شود ؟"
 
 #: [post]public_no
 msgid "This post is private"
-msgstr ""
+msgstr "این نوشته خصوصی است"
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr ""
+msgstr "لینک عمومی این نوشته"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
-msgstr ""
+msgstr "پاک کرنت این نوشته"
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr ""
+msgstr "شما درحال حذف این نوشته هستید ،لطفا تایید کنید"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1363,19 +1423,19 @@ msgstr ""
 
 #: [post]more
 msgid "Read more"
-msgstr ""
+msgstr "بیشتر ..."
 
 #: [post]comments_disabled
 msgid "Comments disabled"
-msgstr ""
+msgstr "نظر دادن خاموش است"
 
 #: [post]comment_published
 msgid "Comment published"
-msgstr ""
+msgstr "نظر منتشر شد"
 
 #: [post]comment_deleted
 msgid "Comment deleted"
-msgstr ""
+msgstr "نظر حذف شد"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1399,7 +1459,7 @@ msgstr ""
 
 #: [hello]enter_title
 msgid "Oh! Hello!"
-msgstr ""
+msgstr "اوه! سلام!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you're new there! Welcome on Movim!"
@@ -1439,15 +1499,15 @@ msgstr ""
 
 #: [publish]preview
 msgid "Preview"
-msgstr ""
+msgstr "پیش نمایش"
 
 #: [publish]help [page]help
 msgid "Help"
-msgstr ""
+msgstr "کمک"
 
 #: [publish]help_more
 msgid "More help"
-msgstr ""
+msgstr "کمک بیشتر"
 
 #: [publish]help_manual
 msgid "Markdown syntax manual"
@@ -1459,11 +1519,11 @@ msgstr ""
 
 #: [publish]link
 msgid "Link"
-msgstr ""
+msgstr "لینک"
 
 #: [publish]tags
 msgid "Tags"
-msgstr ""
+msgstr "تگ ها"
 
 #: [publish]gallery
 msgid "This picture will be added to your gallery"
@@ -1483,11 +1543,11 @@ msgstr ""
 
 #: [publish]edit
 msgid "Edit post"
-msgstr ""
+msgstr "ویرایش نوشته"
 
 #: [publish]title [page]publish
 msgid "Publish"
-msgstr ""
+msgstr "منتشر کردن"
 
 #: [publish]attach
 msgid "Add a file or a picture to your post"
@@ -1507,47 +1567,35 @@ msgstr ""
 
 #: [publish]add_text_label
 msgid "Add some text"
-msgstr ""
+msgstr "نوشته ای اضافه کنید"
 
 #: [rooms]add
 msgid "Add a chatroom"
-msgstr ""
+msgstr "یک اتاق گپ ثبت کنید"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
-msgstr ""
+msgstr "ویرایش اتاق گپ"
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
-msgstr ""
+msgstr "هنوز اتاق گپی ندارید"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr ""
+msgstr "با کلیک کردن روی دکمه اضافه کنید"
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr ""
-
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
+msgstr "اتاق های چت"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr ""
+msgstr "اتاق مورد علاقه من"
 
 #: [chatrooms]users
 msgid "Users in the room"
-msgstr ""
+msgstr "کاربران در اتاق"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1555,15 +1603,11 @@ msgstr ""
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr ""
+msgstr "نام کاربری قبلا استفاده شده است"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr ""
+msgstr "اتاق های گپ عمومی"
 
 #: [room]no_room
 msgid "Please provide a room address"
@@ -1587,7 +1631,7 @@ msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
-msgstr ""
+msgstr "گروه بندی نشده"
 
 #: [roster]show_disconnected
 msgid "Show disconnected contacts"
@@ -1619,7 +1663,7 @@ msgstr ""
 
 #: [roster]show_hide
 msgid "Show/Hide"
-msgstr ""
+msgstr "نمایش/مخفی"
 
 #: [roster]add_title
 msgid "Add a contact"
@@ -1639,34 +1683,42 @@ msgstr ""
 
 #: [roster]results
 msgid "Results"
-msgstr ""
+msgstr "نتیجه"
 
 #: [roster]added
 msgid "Contact added"
-msgstr ""
+msgstr "مخاطب اضافه شد"
 
 #: [roster]updated
 msgid "Contact updated"
-msgstr ""
+msgstr "مخاطب بروز شد"
 
 #: [roster]deleted
 msgid "Contact deleted"
-msgstr ""
+msgstr "مخاطب حذف شد"
 
 #: [roster]search
 msgid "Search in your contacts"
-msgstr ""
+msgstr "جستجو در مخاطبین"
 
 #: [roster]search_pod
 msgid "Search a contact"
-msgstr ""
+msgstr "جستجو مخاطبین"
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr ""
+msgstr "دنبال چی میگردی؟"
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1675,7 +1727,7 @@ msgstr ""
 
 #: [statistics]since
 msgid "Since"
-msgstr ""
+msgstr "از"
 
 #: [statistics]sessions
 msgid "Sessions"
@@ -1715,7 +1767,7 @@ msgstr ""
 
 #: [upload]title
 msgid "Upload a file"
-msgstr ""
+msgstr "آپلود کردن فایل"
 
 #: [upload]choose
 msgid "Choose a file to upload"
@@ -1727,15 +1779,15 @@ msgstr ""
 
 #: [upload]error_filesize
 msgid "File too large"
-msgstr ""
+msgstr "فایل بیش از حد بزرگ است"
 
 #: [upload]error_failed
 msgid "Upload failed"
-msgstr ""
+msgstr "آپلود ناموفق بود"
 
 #: [vcard]title [page]profile
 msgid "Profile"
-msgstr ""
+msgstr "پروفایل"
 
 #: [vcard]updated
 msgid "Profile Updated"
@@ -1793,6 +1845,22 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
@@ -1831,7 +1899,7 @@ msgstr ""
 
 #: [page]chats
 msgid "Chats"
-msgstr ""
+msgstr "گپ ها"
 
 #: [page]public_groups
 msgid "Public Groups"
@@ -1839,7 +1907,7 @@ msgstr ""
 
 #: [page]post
 msgid "Post"
-msgstr ""
+msgstr "نوشته"
 
 #: [page]blog
 msgid "Blog"
@@ -1859,7 +1927,7 @@ msgstr ""
 
 #: [page]posts
 msgid "Posts"
-msgstr ""
+msgstr "نوشته ها"
 
 #: [page]gallery
 msgid "Gallery"
@@ -2029,7 +2097,7 @@ msgstr ""
 
 #: [day]title
 msgid "Day"
-msgstr ""
+msgstr "روز"
 
 #: [day]monday
 msgid "Monday"
@@ -2057,7 +2125,7 @@ msgstr "شنبه"
 
 #: [day]sunday
 msgid "Sunday"
-msgstr ""
+msgstr "یکشنبه"
 
 #: [gender]nil
 msgctxt "[gender]nil"
@@ -2066,11 +2134,11 @@ msgstr ""
 
 #: [gender]male
 msgid "Male"
-msgstr ""
+msgstr "مرد"
 
 #: [gender]female
 msgid "Female"
-msgstr ""
+msgstr "زن"
 
 #: [gender]other
 msgid "Other"
@@ -2078,23 +2146,23 @@ msgstr ""
 
 #: [client]bot
 msgid "Bot"
-msgstr ""
+msgstr "بات"
 
 #: [client]desktop
 msgid "Desktop"
-msgstr ""
+msgstr "دسکتاپ"
 
 #: [client]phone
 msgid "Phone"
-msgstr ""
+msgstr "تلفن"
 
 #: [client]web
 msgid "Web"
-msgstr ""
+msgstr "وب"
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
+msgstr "ثبت شده"
 
 #: [marital]nil
 msgctxt "[marital]nil"
@@ -2103,19 +2171,19 @@ msgstr ""
 
 #: [marital]single
 msgid "Single"
-msgstr ""
+msgstr "مجرد"
 
 #: [marital]relationship
 msgid "In a relationship"
-msgstr ""
+msgstr "در رابطه"
 
 #: [marital]married
 msgid "Married"
-msgstr ""
+msgstr "مزدوج"
 
 #: [marital]divorced
 msgid "Divorced"
-msgstr ""
+msgstr "طلاق گرفته"
 
 #: [marital]widowed
 msgid "Widowed"
@@ -2151,7 +2219,7 @@ msgstr ""
 
 #: [presence]online
 msgid "Online"
-msgstr ""
+msgstr "آنلاین"
 
 #: [presence]away
 msgid "Away"
@@ -2159,7 +2227,7 @@ msgstr ""
 
 #: [presence]dnd
 msgid "Do Not Disturb"
-msgstr ""
+msgstr "مزاحم نشوید"
 
 #: [presence]xa
 msgid "Extended Away"
@@ -2167,7 +2235,7 @@ msgstr ""
 
 #: [presence]offline
 msgid "Offline"
-msgstr ""
+msgstr "آفلاین"
 
 #: [presence]error
 msgid "Error"
@@ -2559,19 +2627,19 @@ msgstr ""
 
 #: [year]title
 msgid "Year"
-msgstr ""
+msgstr "سال"
 
 #: [date]today
 msgid "Today"
-msgstr ""
+msgstr "امروز"
 
 #: [date]tomorrow
 msgid "Tomorrow"
-msgstr ""
+msgstr "فردا"
 
 #: [date]yesterday
 msgid "Yesterday"
-msgstr ""
+msgstr "دیروز"
 
 #: [date]ago
 msgid "%d days ago"
@@ -2579,11 +2647,11 @@ msgstr ""
 
 #: [date]day
 msgid "day"
-msgstr ""
+msgstr "روز"
 
 #: [post]title
 msgid "Title"
-msgstr ""
+msgstr "عنوان"
 
 #: [post]whats_new
 msgid "What's new ?"
@@ -2591,7 +2659,7 @@ msgstr ""
 
 #: [post]place
 msgid "Place"
-msgstr ""
+msgstr "مکان"
 
 #: [post]by
 msgid "by"
@@ -2603,15 +2671,15 @@ msgstr ""
 
 #: [post]email
 msgid "email"
-msgstr ""
+msgstr "ایمیل"
 
 #: [post]empty
 msgid "No content"
-msgstr ""
+msgstr "بدون محتوا"
 
 #: [post]no_comments
 msgid "No comments yet"
-msgstr ""
+msgstr "هنوز نظری ثبت نشده است."
 
 #: [post]no_comments_stream
 msgid "No comments stream"
@@ -2623,7 +2691,7 @@ msgstr ""
 
 #: [post]older
 msgid "Get older posts"
-msgstr ""
+msgstr "دریافت نوشته های قدیمی تر"
 
 #: [post]new_items
 msgid "%s new items"
@@ -2675,11 +2743,11 @@ msgstr ""
 
 #: [post]comments
 msgid "Comments"
-msgstr ""
+msgstr "نظرها"
 
 #: [post]original_deleted
 msgid "Original post deleted"
-msgstr ""
+msgstr "نوشته اصلی حذف شده است"
 
 #: [api]error
 msgid "The API is not reachable, try again later"

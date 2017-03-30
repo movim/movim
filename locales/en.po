@@ -21,6 +21,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -75,6 +77,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -92,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -519,6 +523,69 @@ msgstr "This user has not posted anything right now"
 msgid "This content is private, please login to see it"
 msgstr "This content is private, please login to see it"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr "Conferences"
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Groups"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "Add a new Chat Room"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Chat Room ID"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Name"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Nickname"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Do you want do join automaticaly this Chat Room ?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Bad Chatroom ID"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Empty name"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Bookmarks updated"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "An error occured :"
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Configure"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Add a new URL"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Name"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Message Published"
@@ -645,7 +712,7 @@ msgstr "This server doesn't exists"
 msgid "Group created successfully"
 msgstr "Group created successfully"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 #, fuzzy
 msgid "There is no Groups yet on this server."
 msgstr "%s groups on this server"
@@ -755,12 +822,12 @@ msgstr "Give a label for this group"
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 #, fuzzy
 msgid "Share this subscription publicly"
 msgstr "Publish this post publicly?"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -836,10 +903,6 @@ msgstr "General Informations"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Name"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Nickname"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -992,10 +1055,6 @@ msgstr "Make your membership to this group public to your friends"
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "Give a label for this group"
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Groups"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1547,21 +1606,9 @@ msgstr "Add one by clicking on the add button."
 msgid "Chatrooms"
 msgstr "Chatrooms"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Chat Room ID"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "My Favorite Room"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Bad Chatroom ID"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Empty name"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1574,10 +1621,6 @@ msgstr "Please enter a correct nickname (2 to 40 characters)"
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Username already taken"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Bookmarks updated"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1687,6 +1730,14 @@ msgstr "What are you looking for?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Open me using Ctrl + M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr "This is not a valid url"
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr "Sharing the URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1812,6 +1863,22 @@ msgstr "Submit"
 #: [save]reset [button]reset
 msgid "Reset"
 msgstr "Reset"
+
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr ""
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr ""
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr ""
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2719,43 +2786,8 @@ msgstr "Type here"
 #~ msgid "This server use an external system for the registration, please click on the following URL."
 #~ msgstr "This server use an external system for the registration, please click on the following URL."
 
-#~ msgid "Conferences"
-#~ msgstr "Conferences"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Add a new Chat Room"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Do you want do join automaticaly this Chat Room ?"
-
-#~ msgid "An error occured :"
-#~ msgstr "An error occured :"
-
-#~ msgid "Configure"
-#~ msgstr "Configure"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Add a new URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Name"
-
 #~ msgid "Notify on incoming message"
 #~ msgstr "Notify on incoming message"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "This is not a valid url"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "Sharing the URL"
 
 #~ msgid "Come in!"
 #~ msgstr "Come in!"

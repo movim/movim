@@ -2,6 +2,7 @@
 # Translators:
 # Alexander Popov <alex.wayfer@gmail.com>, 2016
 # Alexander Radchenko <radchenkosasha@gmail.com>, 2016
+# yanislavb <bstar99@gustaw.ml>, 2017
 # Qim Armnov <hoakimartamonov@gmail.com>, 2016
 # Stanislav N. <pztrn@pztrn.name>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -24,6 +25,8 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -79,6 +82,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -96,16 +101,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-01 19:34+0200\n"
-"PO-Revision-Date: 2017-02-01 18:35+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"Last-Translator: yanislavb <bstar99@gustaw.ml>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 2.0.0rc1\n"
+"X-Generator: Translate Toolkit 2.0.0rc3\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -242,7 +247,7 @@ msgstr "Movim подключился к базе данных"
 
 #: [db]update
 msgid "The database need to be updated"
-msgstr "База данных нуждается в обновление"
+msgstr "База данных нуждается в обновлении"
 
 #: [db]up_to_date
 msgid "Movim database is up to date"
@@ -306,7 +311,7 @@ msgstr "WebSocket URI"
 
 #: [websocket]save_info
 msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Если вы изменили URI, пожалуйста, перезапустите демон для перезагрузки конфигурации"
+msgstr "Если вы изменили URI, пожалуйста, перезапустите демон для считывания новой  конфигурации"
 
 #: [websocket]publics
 msgid "Public WebSockets"
@@ -420,7 +425,7 @@ msgstr "Установите библиотеку php5-gd"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr ""
+msgstr "Нужны права чтения и записи для вебсервера в папке %s"
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -521,6 +526,69 @@ msgstr "Этот пользователь ещё ничего не публик�
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "Этот контент приватный, пожалуйста авторизуйтесь, чтобы посмотреть его"
+
+#: [title]conferences
+msgid "Conferences"
+msgstr "Конференции"
+
+#: [title]groups [group]empty_title [page]groups
+msgid "Groups"
+msgstr "Группы"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "Добавить новую комнату"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID комнаты"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Имя"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+#: [accounts]accounts_nickname
+msgid "Nickname"
+msgstr "Псевдоним"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Хотите вступить в эту комнату автоматически?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Неверный ID комнаты"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Имя не задано"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Закладки обновлены"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "Произошла ошибка: "
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Конфигурация"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Добавить новый URL"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Имя"
 
 #: [message]published
 msgid "Message Published"
@@ -629,7 +697,7 @@ msgstr "Изучайте новое, подписывайтесь и делит�
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%s сообществ"
 
 #: [communities]search_server [group]search_server
 msgid "Search for a new server"
@@ -637,7 +705,7 @@ msgstr "Поиск нового сервера"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr ""
+msgstr "Сервера сообществ"
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
@@ -647,7 +715,7 @@ msgstr "Такой сервер не существует"
 msgid "Group created successfully"
 msgstr "Группа успешно создана"
 
-#: [communitiesserver]empty_server [groups]empty_server
+#: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
 msgstr "На этом сервере пока нет групп"
 
@@ -694,27 +762,27 @@ msgstr "Похоже эта группа больше не существует.
 
 #: [communityaffiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Владелец"
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "Владельцы"
 
 #: [communityaffiliation]publisher
 msgid "Publisher"
-msgstr ""
+msgstr "Автор"
 
 #: [communityaffiliation]publishers
 msgid "Publishers"
-msgstr ""
+msgstr "Авторы"
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "Роли"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
-msgstr ""
+msgstr "Роли установлены верно."
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -742,27 +810,27 @@ msgstr "Неподписанный"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr ""
+msgstr "Подписки отключены для этого сообщества"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr ""
+msgstr "Дайте название этому сообществу"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
-msgstr ""
+msgstr "Мое имя сообщества"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr ""
+msgstr "Поделится этой подпиской публично"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr ""
+msgstr "Оно будет отражено в Вашем профиле"
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr ""
+msgstr "Вы собираетесь отписаться от этого сообщества"
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
@@ -770,7 +838,7 @@ msgstr "Вы уверены?"
 
 #: [communityposts]empty
 msgid "This community seems empty"
-msgstr ""
+msgstr "Это сообщество, кажется, пустое"
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
 msgid "My Subscriptions"
@@ -831,10 +899,6 @@ msgstr "Общая информация"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Имя"
-
-#: [general]nickname [chatrooms]nickname [accounts]accounts_nickname
-msgid "Nickname"
-msgstr "Псевдоним"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -987,10 +1051,6 @@ msgstr "Раскрыть ваше членство в данной группе 
 #: [group]label_label
 msgid "Give a label for this group"
 msgstr "Дайте название для этой группы"
-
-#: [group]empty_title [page]groups
-msgid "Groups"
-msgstr "Группы"
 
 #: [group]empty
 msgid "Something bad happened to this group"
@@ -1174,7 +1234,7 @@ msgstr "Неверный формат пароля"
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "Ваш XMPP сервер не авторизован"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1222,15 +1282,15 @@ msgstr "Неподходящий псевдоним (от 4 до 40 символ
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr ""
+msgstr "Пока нет новостей"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr ""
+msgstr "Добро пожаловать в Вашу новостную ленту. Здесь Вы будете видеть посты, опубликованные Вашими контактами и те сообщества, на которые Вы подписаны"
 
 #: [menu]discover [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "Открывай"
 
 #: [menu]refresh
 msgid "Refresh all the streams"
@@ -1258,43 +1318,43 @@ msgstr "Добавить публикацию"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
-msgstr ""
+msgstr "Уведомления"
 
 #: [notifs]empty
 msgid "No new notifications"
-msgstr ""
+msgstr "Нет новых уведомлений"
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
-msgstr ""
+msgstr "Movim может уведомлять Вас, когда будет опубликован новый пост, или Вы получите сообщение"
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr ""
+msgstr "Вы всегда, впоследствии, можете отключить это."
 
 #: [onboarding]public_title
 msgid "Public profile"
-msgstr ""
+msgstr "Публичный профиль"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr ""
+msgstr "Сделайте Ваш профиль публичным и разрешите другим пользователям находить Вас и заводить новые контакты еще легче!"
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
-msgstr ""
+msgstr "Вы всегда можете выключить это в конфигурации"
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr ""
+msgstr "Всплывающие окна"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
-msgstr ""
+msgstr "Movim использует всплывающие окна для возможности видео конференций, однако они могут быть заблокированы Вашим браузером."
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
-msgstr ""
+msgstr "Пожалуйста, убедитесь, что они разрешены, для использования данной опции."
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1322,7 +1382,7 @@ msgstr "Что актуально"
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
-msgstr ""
+msgstr "Посты, недавно опубликованные в сообществе, на которые Вы (пока) не подписались"
 
 #: [post]new [publish]new
 msgid "New post"
@@ -1362,11 +1422,11 @@ msgstr "Вы собираетесь удалить этот пост. Пожал
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
-msgstr ""
+msgstr "Находите больше записей на странице сообщества"
 
 #: [post]more
 msgid "Read more"
-msgstr ""
+msgstr "Читать больше"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1532,21 +1592,9 @@ msgstr "Добавьте с помощью кнопки \"Добавить\""
 msgid "Chatrooms"
 msgstr "Комнаты"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID комнаты"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Мои любимые комнаты"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Неверный ID комнаты"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Имя не задано"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1559,10 +1607,6 @@ msgstr "Введите корректный псевдоним (от 2 до 40 �
 #: [chatrooms]conflict
 msgid "Username already taken"
 msgstr "Имя пользователя уже используется"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Закладки обновлены"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1626,7 +1670,7 @@ msgstr "Показать/Скрыть"
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr ""
+msgstr "Добавить контакт"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
@@ -1671,6 +1715,14 @@ msgstr "Что вы хотите найти?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Откройте меня, используя Ctrl+M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr "Это неправильный URL"
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr "Поделиться этим URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1774,7 +1826,7 @@ msgstr "Аккаунт Yahoo"
 
 #: [privacy]my_profile
 msgid "Go to my profile page"
-msgstr ""
+msgstr "Перейти в мой профиль"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -1796,6 +1848,22 @@ msgstr "Отправить"
 msgid "Reset"
 msgstr "Сброс"
 
+#: [degraded]title
+msgid "Movim is currently working in degraded mode"
+msgstr "Movim временно работает в режиме деградации"
+
+#: [degraded]text_1
+msgid "Your server doesn't support XMPP Pubsub persistance."
+msgstr "Ваш сервер не имеет модуля PubSub."
+
+#: [degraded]text_2
+msgid "The communities, news feed and profile have been disabled for the moment."
+msgstr "Сообщества, новости и профили на данный момент, отключены."
+
+#: [degraded]text_3
+msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr "Пожалуйста, свяжитесь с Вашим администратором для устранения данной проблемы"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "У вас не активирован javascript. Удачи вам в этом."
@@ -1810,7 +1878,7 @@ msgstr "Загрузка..."
 
 #: [page]communities
 msgid "Communities"
-msgstr ""
+msgstr "Сообщества"
 
 #: [page]home
 msgid "Home"
@@ -1842,7 +1910,7 @@ msgstr "Открытые Группы"
 
 #: [page]post
 msgid "Post"
-msgstr ""
+msgstr "Запис"
 
 #: [page]blog
 msgid "Blog"
@@ -1911,7 +1979,7 @@ msgstr "Ой-ой!"
 
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later"
-msgstr ""
+msgstr "Movim не может установить связь с сервером, зайдите позже"
 
 #: [error]oops
 msgid "Oops!"
@@ -1919,7 +1987,7 @@ msgstr "Упс!"
 
 #: [button]call
 msgid "Call"
-msgstr ""
+msgstr "Звонок"
 
 #: [button]validate
 msgid "Validate"
@@ -2020,15 +2088,15 @@ msgstr "Поделиться"
 
 #: [button]like
 msgid "Like"
-msgstr ""
+msgstr "Нравится"
 
 #: [button]not_now
 msgid "Not Now"
-msgstr ""
+msgstr "Не сейчас"
 
 #: [button]enable
 msgid "Enable"
-msgstr ""
+msgstr "Включить"
 
 #: [day]title
 msgid "Day"
@@ -2682,7 +2750,7 @@ msgstr "Комментарии"
 
 #: [post]original_deleted
 msgid "Original post deleted"
-msgstr ""
+msgstr "Первичный пост удален"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
