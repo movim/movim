@@ -4,8 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ac4eeb24c92122c900a78d6453312867",
-    "content-hash": "706a9a1f199029a0887b0ddc407939d3",
+    "content-hash": "a314e78ef54cbfd4b638cb07a0724d5b",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -113,7 +112,7 @@
                 "http client",
                 "reactphp"
             ],
-            "time": "2016-10-21 10:29:37"
+            "time": "2016-10-21T10:29:37+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -177,7 +176,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2017-03-23 21:52:55"
+            "time": "2017-03-23T21:52:55+00:00"
         },
         {
             "name": "dflydev/fig-cookies",
@@ -229,7 +228,7 @@
                 "psr-7",
                 "psr7"
             ],
-            "time": "2016-03-28 09:10:18"
+            "time": "2016-03-28T09:10:18+00:00"
         },
         {
             "name": "embed/embed",
@@ -327,7 +326,7 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "time": "2012-11-02 14:49:47"
+            "time": "2012-11-02T14:49:47+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -374,7 +373,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2017-03-13 06:30:53"
+            "time": "2017-03-13T06:30:53+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -439,7 +438,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20 17:10:46"
+            "time": "2017-03-20T17:10:46+00:00"
         },
         {
             "name": "heyupdate/emoji",
@@ -531,7 +530,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2016-10-29 18:58:20"
+            "time": "2016-10-29T18:58:20+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -599,7 +598,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-03-23 19:50:26"
+            "time": "2014-03-23T19:50:26+00:00"
         },
         {
             "name": "movim/modl",
@@ -790,7 +789,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13 16:27:32"
+            "time": "2017-03-13T16:27:32+00:00"
         },
         {
             "name": "pear/net_dns2",
@@ -834,7 +833,7 @@
                 "dns",
                 "network"
             ],
-            "time": "2017-02-12 21:14:52"
+            "time": "2017-02-12T21:14:52+00:00"
         },
         {
             "name": "psr/http-message",
@@ -884,7 +883,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06 14:39:51"
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/log",
@@ -931,7 +930,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10 12:19:37"
+            "time": "2016-10-10T12:19:37+00:00"
         },
         {
             "name": "rain/raintpl",
@@ -1056,7 +1055,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2017-03-26 20:37:53"
+            "time": "2017-03-26T20:37:53+00:00"
         },
         {
             "name": "ratchet/rfc6455",
@@ -1104,7 +1103,7 @@
                 "rfc6455",
                 "websocket"
             ],
-            "time": "2017-01-01 15:41:18"
+            "time": "2017-01-01T15:41:18+00:00"
         },
         {
             "name": "react/cache",
@@ -1138,7 +1137,7 @@
             "keywords": [
                 "cache"
             ],
-            "time": "2016-02-25 18:17:16"
+            "time": "2016-02-25T18:17:16+00:00"
         },
         {
             "name": "react/child-process",
@@ -1220,7 +1219,7 @@
                 "dns",
                 "dns-resolver"
             ],
-            "time": "2017-03-11 13:46:09"
+            "time": "2017-03-11T13:46:09+00:00"
         },
         {
             "name": "react/event-loop",
@@ -1264,7 +1263,7 @@
                 "asynchronous",
                 "event-loop"
             ],
-            "time": "2016-03-08 02:09:32"
+            "time": "2016-03-08T02:09:32+00:00"
         },
         {
             "name": "react/http",
@@ -1283,7 +1282,8 @@
             "require": {
                 "evenement/evenement": "^2.0 || ^1.0",
                 "php": ">=5.3.0",
-                "react/socket": "^0.5",
+                "react/promise": "^2.0 || ^1.1",
+                "react/socket": "^0.7 || ^0.6 || ^0.5",
                 "react/stream": "^0.6 || ^0.5 || ^0.4.4",
                 "ringcentral/psr7": "^1.2"
             },
@@ -1344,7 +1344,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2017-03-20 09:55:48"
+            "time": "2017-03-20T09:55:48+00:00"
         },
         {
             "name": "react/promise",
@@ -1390,7 +1390,7 @@
                 "promise",
                 "promises"
             ],
-            "time": "2017-03-25 12:08:31"
+            "time": "2017-03-25T12:08:31+00:00"
         },
         {
             "name": "react/promise-timer",
@@ -1440,7 +1440,7 @@
                 "timeout",
                 "timer"
             ],
-            "time": "2016-12-27 08:12:19"
+            "time": "2016-12-27T08:12:19+00:00"
         },
         {
             "name": "react/socket",
@@ -1482,7 +1482,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2017-03-09 12:13:07"
+            "time": "2017-03-09T12:13:07+00:00"
         },
         {
             "name": "react/socket-client",
@@ -1523,7 +1523,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-12-24 11:19:15"
+            "time": "2016-12-24T11:19:15+00:00"
         },
         {
             "name": "react/stream",
@@ -1567,7 +1567,7 @@
                 "pipe",
                 "stream"
             ],
-            "time": "2017-01-25 14:44:14"
+            "time": "2017-01-25T14:44:14+00:00"
         },
         {
             "name": "respect/validation",
@@ -1632,7 +1632,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2017-03-14 09:28:03"
+            "time": "2017-03-14T09:28:03+00:00"
         },
         {
             "name": "ringcentral/psr7",
@@ -1690,7 +1690,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-03-25 17:36:49"
+            "time": "2016-03-25T17:36:49+00:00"
         },
         {
             "name": "symfony/console",
@@ -1753,7 +1753,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-06 19:30:27"
+            "time": "2017-03-06T19:30:27+00:00"
         },
         {
             "name": "symfony/debug",
@@ -1810,7 +1810,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-02-18 17:28:00"
+            "time": "2017-02-18T17:28:00+00:00"
         },
         {
             "name": "symfony/http-foundation",
@@ -1863,7 +1863,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-03-04 12:23:14"
+            "time": "2017-03-04T12:23:14+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -1922,7 +1922,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-11-14 01:06:16"
+            "time": "2016-11-14T01:06:16+00:00"
         },
         {
             "name": "symfony/routing",
@@ -1997,7 +1997,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-03-02 15:58:09"
+            "time": "2017-03-02T15:58:09+00:00"
         }
     ],
     "packages-dev": [],
@@ -2017,7 +2017,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.0",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-imagick": "*"
