@@ -83,6 +83,10 @@
 <div id="{$jid|cleanupId}-discussion" class="contained" data-muc="{$muc}">
     <section id="{$jid|cleanupId}-messages">
         <ul class="list {if="$muc"}thin simple{else}middle{/if}" id="{$jid|cleanupId}-conversation"></ul>
+        <div class="placeholder icon chat">
+            <h1>{$c->__('chat.new_title')}</h1>
+            <h4>{$c->___('chat.new_text')}</h4>
+        </div>
     </section>
 </div>
 <div class="chat_box">

@@ -140,12 +140,21 @@
     display: none;
 }
 
-#chat_widget .placeholder {
+#chat_widget > .placeholder {
     padding-top: 37em;
     background-size: 35rem 35rem;
     background-position: center 7rem;
     background-image: url('img/chat.svg');
 }
+
+#chat_widget ul ~ .placeholder {
+    display: none;
+}
+
+#chat_widget ul:empty ~ .placeholder {
+    display: block;
+}
+
 
 table.emojis td {
     width: 10%;

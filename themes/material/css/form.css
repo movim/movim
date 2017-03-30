@@ -376,6 +376,10 @@ header.big ~ .button.action {
     main > section > div:first-child:nth-last-child(2) .button.action {
         right: calc(70% + 3rem);
     }
+
+    aside ~ * .button.action {
+        right: calc(50% - 25rem);
+    }
 }
 
 .button.action .actions {

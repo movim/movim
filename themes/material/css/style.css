@@ -416,6 +416,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 .icon.blog      { background-image: url(../img/icons/description.svg); }
 .icon.gallery   { background-image: url(../img/icons/collections.svg); }
 .icon.share     { background-image: url(../img/icons/share.svg); }
+.icon.chat      { background-image: url(../img/icons/comment.svg); }
 
 /* Padded */
 
