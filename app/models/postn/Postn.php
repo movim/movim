@@ -73,7 +73,7 @@ class Postn extends Model
 
     public function __construct()
     {
-        $this->hash = md5(openssl_random_pseudo_bytes(5));
+        $this->hash = hash('sha256', openssl_random_pseudo_bytes(5));
     }
 
     private function getContent($contents)
@@ -217,8 +217,9 @@ class Postn extends Model
             }
         }
 
-        if(!isset($this->commentorigin))
+        if(!isset($this->commentorigin)) {
             $this->commentorigin = $this->origin;
+        }
 
         $this->content = trim($content);
         $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
@@ -259,21 +260,15 @@ class Postn extends Model
             if(is_array($results) && !empty($results)) {
                 $extra = (string)$results[0];
 
-                return $check->run($extra)
-                    ->then(function($small) use($extra, $entry) {
-                        if($small) $this->picture = $extra;
-                        $this->setAttachments($entry->entry->link, $extra);
-                    });
+                if($small) $this->picture = $extra;
+                $this->setAttachments($entry->entry->link, $extra);
             } else {
                 $results = $xml->xpath('//video/@poster');
                 if(is_array($results) && !empty($results)) {
                     $extra = (string)$results[0];
 
-                    return $check->run($extra)
-                        ->then(function($small) use($extra, $entry) {
-                            $this->picture = $extra;
-                            $this->setAttachments($entry->entry->link, $extra);
-                        });
+                    $this->picture = $extra;
+                    $this->setAttachments($entry->entry->link, $extra);
                 }
             }
 
