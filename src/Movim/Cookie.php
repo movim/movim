@@ -7,22 +7,22 @@ class Cookie
     public static function set()
     {
         if(SESSION_ID == false) {
-            self::setCookie(generateKey(32));
+            $this->setCookie(generateKey(32));
         } else {
-            self::setCookie(SESSION_ID);
+            $this->setCookie(SESSION_ID);
         }
     }
 
     public static function refresh()
     {
         if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
-            self::setCookie($_COOKIE['MOVIM_SESSION_ID']);
+            $this->setCookie($_COOKIE['MOVIM_SESSION_ID']);
         }
     }
 
     public static function renew()
     {
-        self::setCookie(generateKey(32));
+        $this->setCookie(generateKey(32));
     }
 
     public static function getTime()

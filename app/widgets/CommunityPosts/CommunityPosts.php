@@ -120,7 +120,7 @@ class CommunityPosts extends \Movim\Widget\Base
         return $pw->preparePost($p, true, true, true);
     }
 
-    private function prepareCommunity($server, $node, $page = 0, $ids)
+    private function prepareCommunity($server, $node, $page = 0, $ids = false)
     {
         $pd = new \Modl\PostnDAO;
 
