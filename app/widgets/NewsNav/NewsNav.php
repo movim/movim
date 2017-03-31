@@ -22,6 +22,8 @@ class NewsNav extends \Movim\Widget\Base
             $this->get('s') : false;
 
         $posts = $nd->getLastPublished($origin, rand(0, 5), $count);
+        $posts = is_array($posts) ? $posts : [];
+
         shuffle($posts);
 
         $this->view->assign('posts', $posts);
