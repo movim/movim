@@ -51,6 +51,8 @@ class Menu extends \Movim\Widget\Base
         $count = $pd->getCountSince($since);
         $post = $packet->content;
 
+        if(!is_object($post)) return;
+
         // We reload a fresh Post
         $post = $pd->get($post->origin, $post->node, $post->nodeid);
 

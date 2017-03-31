@@ -24,9 +24,12 @@ class Picture
      */
     public function fromPath($path)
     {
-        $handle = fopen($path, "r");
-        $this->_bin = fread($handle, filesize($path));
-        fclose($handle);
+        $size = filesize($path);
+        if($size > 0) {
+            $handle = fopen($path, "r");
+            $this->_bin = fread($handle, $size);
+            fclose($handle);
+        }
     }
 
     /**

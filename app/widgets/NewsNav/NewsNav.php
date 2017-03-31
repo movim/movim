@@ -11,6 +11,8 @@ class NewsNav extends \Movim\Widget\Base
         $nd = new \Modl\PostnDAO;
 
         $blogs = $nd->getLastBlogPublic(rand(0, 5), 4);
+        $blogs = is_array($blogs) ? $blogs : [];
+
         shuffle($blogs);
 
         $this->view->assign('blogs', $blogs);

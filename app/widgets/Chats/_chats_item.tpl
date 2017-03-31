@@ -3,7 +3,7 @@
     data-jid="{$contact->jid}"
     class="
         {if="isset($message)"}condensed{/if}
-        {if="$contact->value > 4"}faded{/if}
+        {if="isset($contact->value) && $contact->value > 4"}faded{/if}
         {if="isset($contact->last) && $contact->last > 60"} inactive{/if}
         {if="$caps && in_array($caps->type, array('handheld', 'phone', 'web'))"}
             action

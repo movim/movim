@@ -255,12 +255,9 @@ class Postn extends Model
         if($xml) {
             $results = $xml->xpath('//img/@src');
 
-            $check = new \Movim\Task\CheckSmallPicture;
-
             if(is_array($results) && !empty($results)) {
                 $extra = (string)$results[0];
 
-                if($small) $this->picture = $extra;
                 $this->setAttachments($entry->entry->link, $extra);
             } else {
                 $results = $xml->xpath('//video/@poster');
