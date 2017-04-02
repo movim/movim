@@ -8,9 +8,11 @@ class Help extends \Movim\Widget\Base
 
     function ajaxAddChatroom()
     {
+        $room = 'movim@conference.movim.eu';
+
         $r = new Rooms;
         $r->ajaxChatroomAdd([
-                'jid' => 'movim@conference.movim.eu',
+                'jid' => $room,
                 'name'=> 'Movim Chatroom',
                 'nick' => false,
                 'autojoin' => 0
@@ -18,7 +20,7 @@ class Help extends \Movim\Widget\Base
 
         $r->ajaxJoin('movim@conference.movim.eu');
 
-        $this->rpc('MovimUtils.redirect', $this->route('chat'));
+        $this->rpc('MovimUtils.redirect', $this->route('chat', [$room, 'room']));
     }
 
     function display()
