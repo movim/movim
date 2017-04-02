@@ -39,8 +39,6 @@ class Login extends \Movim\Widget\Base
             $p = new Presence;
             $p->start();
 
-            $this->rpc('Login.rememberSession', $this->user->getLogin());
-
             // We get the configuration
             $s = new Get;
             $s->setXmlns('movim:prefs')
@@ -209,35 +207,5 @@ class Login extends \Movim\Widget\Base
         $this->rpc('register', $host);
 
         \Moxl\Stanza\Stream::init($host);
-    }
-
-    function ajaxGetRememberedSession($sessions)
-    {
-        $sessions = json_decode($sessions);
-
-        $sessions_grabbed = [];
-
-        $cd = new \Modl\ContactDAO;
-
-        if(is_array($sessions)) {
-            foreach($sessions as $s) {
-                $c = $cd->get($s);
-
-                if($c != null) {
-                    array_push($sessions_grabbed, $c);
-                } else {
-                    $c = new \Modl\Contact;
-                    $c->jid = $s;
-                    array_push($sessions_grabbed, $c);
-                }
-            }
-        }
-
-        $sessionshtml = $this->tpl();
-        $sessionshtml->assign('sessions', $sessions_grabbed);
-        $sessionshtml->assign('empty', new \Modl\Contact);
-
-        $this->rpc('MovimTpl.fill', '#sessions', $sessionshtml->draw('_login_sessions', true));
-        $this->rpc('Login.refresh');
     }
 }

@@ -43,9 +43,6 @@
                     <ul class="list thin">
                         <li>
                             <p class="center">
-                                <a id="return_sessions" class="button flat" href="#" onclick="Login.toChoose()">
-                                    {$c->__('accounts.accounts_title')}
-                                </a>
                                 <input
                                     type="submit"
                                     disabled
