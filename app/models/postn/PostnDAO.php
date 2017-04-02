@@ -629,8 +629,8 @@ class PostnDAO extends SQL
             select count(*) from postn
             where origin = :origin
                 and node = :node
-                and title != :contentraw
-                and contentraw != :contentraw
+                and (title != :contentraw
+                or contentraw != :contentraw)
                 ';
 
         $this->prepare(
