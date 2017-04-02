@@ -103,6 +103,27 @@ class Roster extends \Movim\Widget\Base
         Dialog::fill($view->draw('_roster_search', true));
     }
 
+    protected function gateways()
+    {
+        $cd = new \Modl\CapsDAO;
+        $pd = new \Modl\PresenceDAO;
+        $gateways = [];
+
+        foreach($pd->getAll() as $presence) {
+            $caps = $cd->get($presence->node . '#' . $presence->ver);
+            if($caps && (
+                $caps->category === "gateway" || (
+                    $caps->category !== "client" &&
+                    in_array("jabber:iq:gateway", $caps->features)
+                )
+            )) {
+                $gateways[$presence->jid] = $caps;
+            }
+        }
+
+        return $gateways;
+    }
+
     /**
      * @brief Return the found jid
      */
