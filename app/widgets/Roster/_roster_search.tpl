@@ -5,7 +5,7 @@
             <form name="add" onsubmit="return false;">
                 {if="isset($gateways) && count($gateways) > 0"}
                     <div>
-                        <select name="gateway" class="select">
+                        <select onchange="Roster.drawGatewayPrompt()" name="gateway" class="select">
                             <option class="xmpp" value="">{$c->__('roster.add_contact_info1')}</option>
                             {loop="$gateways"}
                                 <option class="{$key}" value="{$key}">{$value->type} ({$value->name})</option>
@@ -25,9 +25,7 @@
                         {/if}
                         onkeyup="{$search}"
                     />
-                    {if="!isset($gateways) || count($gateways) < 1"}
-                        <label for="searchjid">{$c->__('roster.add_contact_info1')}</label>
-                    {/if}
+                    <label for="searchjid">{$c->__('roster.add_contact_info1')}</label>
                 </div>
                 <div>
                     <input

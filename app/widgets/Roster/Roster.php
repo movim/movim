@@ -123,6 +123,8 @@ class Roster extends \Movim\Widget\Base
         }
 
         Dialog::fill($view->draw('_roster_search', true));
+        $this->rpc('Roster.addGatewayPrompt', '', 'Jabber ID', 'JID');
+        $this->rpc('Roster.drawGatewayPrompt');
     }
 
     protected function gateways()

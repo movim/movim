@@ -38,6 +38,16 @@ var Roster = {
         var ctx = document.querySelector('select[name=gateway]');
         ctx.prompts = ctx.prompts || {};
         ctx.prompts[jid] = { prompt: prompt, desc: desc };
+    },
+    drawGatewayPrompt : function() {
+        var ctx = document.querySelector('select[name=gateway]');
+        if(!ctx) return;
+        var prompt = (ctx.prompts && ctx.prompts[ctx.value]) || {};
+        document.querySelector('label[for=searchjid]').textContent = prompt.prompt;
+
+        var searchjid = document.querySelector('input[name=searchjid]');
+        searchjid.title = prompt.desc;
+        searchjid.placeholder = prompt.desc === 'JID' ? 'user@server.tld' : '';
     }
 };
 
