@@ -366,6 +366,10 @@
     </div>
 </div>
 
+<div id="{$contact->jid|cleanupId}_contact_subscriptions">
+
+</div>
+
 {else}
     <ul class="thick">
         <li>
@@ -375,6 +379,3 @@
     </ul>
 {/if}
 
-<div id="contact_subscriptions">
-
-</div>

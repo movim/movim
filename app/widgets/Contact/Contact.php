@@ -33,7 +33,11 @@ class Contact extends \Movim\Widget\Base
         $id = new \Modl\ItemDAO;
         $view->assign('subscriptions', $id->getSharedItems($packet->content));
 
-        $this->rpc('MovimTpl.fill', '#contact_subscriptions', $view->draw('_contact_subscriptions', true));
+        $this->rpc(
+            'MovimTpl.fill',
+            '#'.cleanupId($packet->content).'_contact_subscriptions',
+            $view->draw('_contact_subscriptions', true)
+        );
     }
 
     function ajaxClear($page = 0)
