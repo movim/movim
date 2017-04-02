@@ -33,6 +33,11 @@ var Roster = {
     },
     setFound : function(jid) {
         document.querySelector('input[name=searchjid]').value = jid;
+    },
+    addGatewayPrompt : function(jid, prompt, desc) {
+        var ctx = document.querySelector('select[name=gateway]');
+        ctx.prompts = ctx.prompts || {};
+        ctx.prompts[jid] = { prompt: prompt, desc: desc };
     }
 };
 

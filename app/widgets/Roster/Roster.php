@@ -5,6 +5,7 @@ use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 use Moxl\Xec\Action\Presence\Unsubscribe;
+use Moxl\Xec\Action\IqGateway;
 
 class Roster extends \Movim\Widget\Base
 {
@@ -16,6 +17,7 @@ class Roster extends \Movim\Widget\Base
         $this->registerEvent('roster_additem_handle', 'onAdd');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
+        $this->registerEvent('iqgateway_get_handle', 'onIqGatewayGet');
         $this->registerEvent('roster', 'onChange');
         $this->registerEvent('presence', 'onPresence', 'contacts');
     }
@@ -64,6 +66,16 @@ class Roster extends \Movim\Widget\Base
         $this->onUpdate();
     }
 
+    function onIqGatewayGet($packet)
+    {
+        $this->rpc(
+            'Roster.addGatewayPrompt',
+            $packet->from,
+            (string)$packet->content->prompt,
+            (string)$packet->content->desc
+        );
+    }
+
     /**
      * @brief Force the roster refresh
      * @returns
@@ -103,6 +115,11 @@ class Roster extends \Movim\Widget\Base
         if($jid === null) {
             $gateways = $this->gateways();
             $view->assign('gateways', $gateways);
+
+            foreach($gateways as $gateway => $caps) {
+                $get = new IqGateway\Get;
+                $get->setTo($gateway)->request();
+            }
         }
 
         Dialog::fill($view->draw('_roster_search', true));
