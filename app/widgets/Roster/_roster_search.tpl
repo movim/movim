@@ -3,9 +3,20 @@
     <ul class="list">
         <li>
             <form name="add" onsubmit="return false;">
+                {if="isset($gateways) && count($gateways) > 0"}
+                    <div>
+                        <select name="gateway" class="select">
+                            <option class="xmpp" value="">{$c->__('roster.add_contact_info1')}</option>
+                            {loop="$gateways"}
+                                <option class="{$key}" value="{$key}">{$value->type} ({$value->name})</option>
+                            {/loop}
+                        </select>
+                    </div>
+                {/if}
                 <div>
                     <input
                         name="searchjid"
+                        id="searchjid"
                         type="email"
                         title="{$c->__('roster.jid')}"
                         placeholder="user@server.tld"
@@ -14,7 +25,9 @@
                         {/if}
                         onkeyup="{$search}"
                     />
-                    <label for="searchjid">{$c->__('roster.add_contact_info1')}</label>
+                    {if="!isset($gateways) || count($gateways) < 1"}
+                        <label for="searchjid">{$c->__('roster.add_contact_info1')}</label>
+                    {/if}
                 </div>
                 <div>
                     <input

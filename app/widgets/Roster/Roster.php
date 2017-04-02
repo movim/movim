@@ -100,6 +100,11 @@ class Roster extends \Movim\Widget\Base
         $view->assign('groups', $rd->getGroups());
         $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
 
+        if($jid === null) {
+            $gateways = $this->gateways();
+            $view->assign('gateways', $gateways);
+        }
+
         Dialog::fill($view->draw('_roster_search', true));
     }
 
