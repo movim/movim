@@ -19,6 +19,7 @@ class Roster extends \Movim\Widget\Base
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
         $this->registerEvent('iqgateway_get_handle', 'onIqGatewayGet');
+        $this->registerEvent('iqgateway_set_handle', 'onIqGatewaySet');
         $this->registerEvent('roster', 'onChange');
         $this->registerEvent('presence', 'onPresence', 'contacts');
     }
@@ -75,6 +76,15 @@ class Roster extends \Movim\Widget\Base
             (string)$packet->content->prompt,
             (string)$packet->content->desc
         );
+    }
+
+    function onIqGatewaySet($packet)
+    {
+        $form = $packet->content['extra'];
+        unset($form->gatewayprompt);
+        unset($form->gateway);
+        $form->searchjid->value = $packet->content['query']->jid;
+        $this->ajaxAdd($form);
     }
 
     /**
@@ -171,6 +181,16 @@ class Roster extends \Movim\Widget\Base
      */
     function ajaxAdd($form)
     {
+        // If there was a prompt, resolve using jabber:iq:gateway
+        if($form->gatewayprompt->value && $form->gateway->value) {
+            $set = new IqGateway\Set;
+            $set->setTo($form->gateway->value)
+                ->setPrompt((string)$form->searchjid->value)
+                ->setExtra($form)
+                ->request();
+            return;
+        }
+
         // If a gateway was selected, and it has a domain-only JID
         // Then we can use either new-style or old-style escaping
         if($form->gateway->value && strpos($form->gateway->value, '@') === false) {
@@ -191,6 +211,8 @@ class Roster extends \Movim\Widget\Base
         $p = new Subscribe;
         $p->setTo((string)$form->searchjid->value)
           ->request();
+
+        Dialog::ajaxClear();
     }
 
     /**

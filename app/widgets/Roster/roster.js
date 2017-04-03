@@ -44,6 +44,7 @@ var Roster = {
         if(!ctx) return;
         var prompt = (ctx.prompts && ctx.prompts[ctx.value]) || {};
         document.querySelector('label[for=searchjid]').textContent = prompt.prompt;
+        document.querySelector('input[name=gatewayprompt]').value = prompt.prompt ? 1 : '';
 
         var searchjid = document.querySelector('input[name=searchjid]');
         searchjid.title = prompt.desc;

@@ -4,6 +4,7 @@
         <li>
             <form name="add" onsubmit="return false;">
                 {if="isset($gateways) && count($gateways) > 0"}
+                    <input type="hidden" name="gatewayprompt" value="" />
                     <div>
                         <select onchange="Roster.drawGatewayPrompt()" name="gateway" class="select">
                             <option class="xmpp" value="">{$c->__('roster.add_contact_info1')}</option>
@@ -68,7 +69,7 @@
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </button>
-    <button onclick="Roster_ajaxAdd(MovimUtils.formToJson('add')); Dialog_ajaxClear()" class="button flat">
+    <button onclick="Roster_ajaxAdd(MovimUtils.formToJson('add'))" class="button flat">
         {$c->__('button.add')}
     </button>
 </div>
