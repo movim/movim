@@ -20,6 +20,7 @@ class Roster extends \Movim\Widget\Base
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
         $this->registerEvent('iqgateway_get_handle', 'onIqGatewayGet');
         $this->registerEvent('iqgateway_set_handle', 'onIqGatewaySet');
+        $this->registerEvent('iqgateway_set_error', 'onIqGatewaySetError');
         $this->registerEvent('roster', 'onChange');
         $this->registerEvent('presence', 'onPresence', 'contacts');
     }
@@ -85,6 +86,15 @@ class Roster extends \Movim\Widget\Base
         unset($form->gateway);
         $form->searchjid->value = $packet->content['query']->jid;
         $this->ajaxAdd($form);
+    }
+
+    function onIqGatewaySetError($packet)
+    {
+       $this->rpc(
+            'Roster.errorGatewayPrompt',
+            $packet->content['errorid'],
+            $packet->content['message']
+        );
     }
 
     /**

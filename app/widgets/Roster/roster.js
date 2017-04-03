@@ -49,6 +49,9 @@ var Roster = {
         var searchjid = document.querySelector('input[name=searchjid]');
         searchjid.title = prompt.desc;
         searchjid.placeholder = prompt.desc === 'JID' ? 'user@server.tld' : '';
+    },
+    errorGatewayPrompt : function(errorid, message) {
+        document.querySelector('input[name=searchjid] ~ .error').textContent = message || errorid;
     }
 };
 

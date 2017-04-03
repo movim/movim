@@ -27,6 +27,7 @@
                         onkeyup="{$search}"
                     />
                     <label for="searchjid">{$c->__('roster.add_contact_info1')}</label>
+                    <p class="error"></p>
                 </div>
                 <div>
                     <input
