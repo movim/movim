@@ -6,6 +6,7 @@ use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 use Moxl\Xec\Action\Presence\Unsubscribe;
 use Moxl\Xec\Action\IqGateway;
+use Moxl\Utils;
 
 class Roster extends \Movim\Widget\Base
 {
@@ -170,6 +171,16 @@ class Roster extends \Movim\Widget\Base
      */
     function ajaxAdd($form)
     {
+        // If a gateway was selected, and it has a domain-only JID
+        // Then we can use either new-style or old-style escaping
+        if($form->gateway->value && strpos($form->gateway->value, '@') === false) {
+            if(in_array('jid\20escaping', $this->gateways()[$form->gateway->value]->features)) {
+                $form->searchjid->value = Utils::escapeJidLocalpart($form->searchjid->value).'@'.$form->gateway->value;
+            } else {
+                $form->searchjid->value = str_replace('@', '%', $form->searchjid->value).'@'.$form->gateway->value;
+            }
+        }
+
         $r = new AddItem;
         $r->setTo($form->searchjid->value)
           ->setFrom($this->user->getLogin())
