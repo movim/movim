@@ -182,14 +182,14 @@ class Roster extends \Movim\Widget\Base
         }
 
         $r = new AddItem;
-        $r->setTo($form->searchjid->value)
+        $r->setTo((string)$form->searchjid->value)
           ->setFrom($this->user->getLogin())
-          ->setName($form->alias->value)
-          ->setGroup($form->group->value)
+          ->setName((string)$form->alias->value)
+          ->setGroup((string)$form->group->value)
           ->request();
 
         $p = new Subscribe;
-        $p->setTo($form->searchjid->value)
+        $p->setTo((string)$form->searchjid->value)
           ->request();
     }
 
