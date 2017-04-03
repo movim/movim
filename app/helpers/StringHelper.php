@@ -47,7 +47,7 @@ class MovimEmoji
 function addUrls($string, $preview = false) {
     // Add missing links
     return preg_replace_callback(
-        "/([\w\"'>]+\:\/\/[\w-\*?'&;!#+,%:~=\.\/\@\(\)]+)/u", function ($match) use($preview) {
+        "/([\w\"'>]+\:\/\/[\w-\*?'&;!#+,%:~=\.\/\@]+)/u", function ($match) use($preview) {
             if(!in_array(substr($match[0], 0, 1), array('>', '"', '\''))) {
                 $content = $match[0];
 

@@ -13,6 +13,7 @@ class MessageDAO extends SQL
                     html            = :html,
                     published       = :published,
                     delivered       = :delivered,
+                    displayed       = :displayed,
                     edited          = :edited,
                     picture         = :picture,
                     quoted          = :quoted,
@@ -38,7 +39,8 @@ class MessageDAO extends SQL
                 'body'      => $message->body,
                 'html'      => $message->html,
                 'published' => $message->published,
-                'delivered' => $message->delivered
+                'delivered' => $message->delivered,
+                'displayed' => $message->displayed
             ]
         );
 
@@ -61,6 +63,7 @@ class MessageDAO extends SQL
                 file,
                 published,
                 delivered,
+                displayed,
                 sticker,
                 picture,
                 quoted)
@@ -78,6 +81,7 @@ class MessageDAO extends SQL
                     :file,
                     :published,
                     :delivered,
+                    :displayed,
                     :sticker,
                     :picture,
                     :quoted
@@ -99,6 +103,7 @@ class MessageDAO extends SQL
                     'file'      => $message->file,
                     'published' => $message->published,
                     'delivered' => $message->delivered,
+                    'displayed' => $message->displayed,
                     'sticker'   => $message->sticker,
                     'picture'   => $message->picture,
                     'quoted'    => $message->quoted

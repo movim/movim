@@ -327,7 +327,9 @@ var Chat = {
         if (data.edited) {
             span.appendChild(Chat.getEditedIcoHtml());
         }
-        if (data.delivered) {
+        if (data.displayed) {
+            span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
+        } else if (data.delivered) {
             span.appendChild(Chat.getDeliveredIcoHtml(data.delivered));
         }
 
@@ -448,6 +450,12 @@ var Chat = {
         var i = document.createElement("i");
         i.setAttribute("class", "zmdi zmdi-check");
         i.setAttribute("title", delivered);
+        return i;
+    },
+    getDisplayedIcoHtml: function(displayed) {
+        var i = document.createElement("i");
+        i.setAttribute("class", "zmdi zmdi-check-all");
+        i.setAttribute("title", displayed);
         return i;
     },
     toggleAction: function(l) {

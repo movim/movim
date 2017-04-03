@@ -2,7 +2,8 @@
 
 namespace Modl;
 
-class Presence extends Model {
+class Presence extends Model
+{
     public $id;
 
     public $session;
@@ -73,6 +74,8 @@ class Presence extends Model {
 
         if(isset($jid[1])) {
             $this->resource = $jid[1];
+        } else {
+            $this->resource = '';
         }
 
         if($stanza->status) {
@@ -152,23 +155,20 @@ class Presence extends Model {
             ];
 
         $arr = [];
-        $arr['jid'] = $this->jid;
-        $arr['resource'] = $this->resource;
-        $arr['presence'] = $this->value;
+        $arr['jid']          = $this->jid;
+        $arr['resource']     = $this->resource;
+        $arr['presence']     = $this->value;
         $arr['presence_txt'] = $txt[$this->value];
-        $arr['priority'] = $this->priority;
-        $arr['status'] = $this->status;
-        $arr['node'] = $this->node;
-        $arr['ver'] = $this->ver;
+        $arr['priority']     = $this->priority;
+        $arr['status']       = $this->status;
+        $arr['node']         = $this->node;
+        $arr['ver']          = $this->ver;
 
         return $arr;
     }
 
     public function isChatroom()
     {
-        if(filter_var($this->jid, FILTER_VALIDATE_EMAIL))
-            return false;
-        else
-            return true;
+        return (!filter_var($this->jid, FILTER_VALIDATE_EMAIL));
     }
 }

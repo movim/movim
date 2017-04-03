@@ -30,6 +30,7 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('receipt', 'onMessage');
+        $this->registerEvent('displayed', 'onMessage');
         $this->registerEvent('mamresult', 'onMessageHistory');
         $this->registerEvent('composing', 'onComposing');
         $this->registerEvent('paused', 'onPaused');
@@ -663,6 +664,10 @@ class Chat extends \Movim\Widget\Base
 
         if ($message->delivered) {
             $message->delivered = prepareDate(strtotime($message->delivered), true);
+        }
+
+        if ($message->displayed) {
+            $message->displayed = prepareDate(strtotime($message->displayed), true);
         }
 
         $date = prepareDate(strtotime($message->published), false, false, true);

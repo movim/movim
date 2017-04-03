@@ -52,6 +52,7 @@ class Message extends Model
         'body'      => ['type' => 'text'],'html' => ['type' => 'text'],
         'published' => ['type' => 'date','mandatory' => true],
         'delivered' => ['type' => 'date'],
+        'displayed' => ['type' => 'date'],
         'edited'    => ['type' => 'int','size' => 1],
         'picture'   => ['type' => 'text'],
         'sticker'   => ['type' => 'string','size' => 128],
@@ -76,19 +77,26 @@ class Message extends Model
             $this->jidto      = $to;
             $this->jidfrom    = $jid[0];
 
-            if(isset($jid[1]))
+            if(isset($jid[1])) {
                 $this->resource = $jid[1];
+            }
 
             $this->type = 'chat';
             if($stanza->attributes()->type) {
                 $this->type = (string)$stanza->attributes()->type;
             }
 
-            if($stanza->body)
+            if($stanza->body) {
                 $this->body = (string)$stanza->body;
+            }
 
-            if($stanza->subject)
+            if($stanza->subject) {
                 $this->subject = (string)$stanza->subject;
+            }
+
+            if($stanza->thread) {
+                $this->thread = (string)$stanza->thread;
+            }
 
             if($this->type == 'groupchat') {
                 $pd = new \Modl\PresenceDAO;
