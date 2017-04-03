@@ -25,6 +25,9 @@ class Message
         $root->setAttribute('to', str_replace(' ', '\40', $to));
         $root->setAttribute('type', $type);
 
+        $markable = $dom->createElementNS('urn:xmpp:chat-markers:0', 'markable');
+        $root->appendChild($markable);
+
         if($id != false) {
             $root->setAttribute('id', $id);
         } else {

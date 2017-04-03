@@ -83,8 +83,6 @@ class GetItem extends Errors
                     $pd = new \Modl\PostnDAO;
                     $pd->set($p);
 
-                    $post = true;
-
                     if(is_array($this->_askreply)) {
                         $this->pack([
                             'origin' => $this->_askreply['origin'],

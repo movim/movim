@@ -157,6 +157,7 @@ class Handler {
             '78e731027d8fd50ed642340b7c9a63b3' => 'Message',// TLS
 
             'f9e18585fd0e0873c52e880c800f267a' => 'Receipt',
+            '3ca6c24643a9389b91323ddd1aaa84d0' => 'Displayed',
 
             '0977b7387b95f69007332a3e9b386f93' => 'MAMResult',
 
