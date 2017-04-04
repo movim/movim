@@ -1,6 +1,4 @@
 <div id="login_widget">
-    <div id="sessions" class="dialog actions"></div>
-
     <script type="text/javascript">
         /*if(typeof navigator.registerProtocolHandler == 'function') {
             navigator.registerProtocolHandler('xmpp',
