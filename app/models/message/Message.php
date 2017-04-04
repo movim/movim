@@ -27,6 +27,7 @@ class Message extends Model
 
     public $published;
     public $delivered;
+    public $displayed;
 
     public $color; // Only for chatroom purpose
     public $publishedPrepared; // Only for chat purpose
