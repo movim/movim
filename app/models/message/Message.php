@@ -29,6 +29,8 @@ class Message extends Model
     public $delivered;
     public $displayed;
 
+    public $markable;
+
     public $color; // Only for chatroom purpose
     public $publishedPrepared; // Only for chat purpose
     public $edited;
@@ -54,6 +56,7 @@ class Message extends Model
         'published' => ['type' => 'date','mandatory' => true],
         'delivered' => ['type' => 'date'],
         'displayed' => ['type' => 'date'],
+        'markable'  => ['type' => 'int','size' => 1],
         'edited'    => ['type' => 'int','size' => 1],
         'picture'   => ['type' => 'text'],
         'sticker'   => ['type' => 'string','size' => 128],
@@ -89,6 +92,12 @@ class Message extends Model
 
             if($stanza->body) {
                 $this->body = (string)$stanza->body;
+            }
+
+            if($stanza->markable) {
+                $this->markable = true;
+            } else {
+                $this->markable = false;
             }
 
             if($stanza->subject) {

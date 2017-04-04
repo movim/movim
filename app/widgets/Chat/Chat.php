@@ -282,6 +282,9 @@ class Chat extends \Movim\Widget\Base
         $m->jidto   = echapJid($to);
         $m->jidfrom = $this->user->getLogin();
 
+        // TODO: make this boolean configurable
+        $m->markable = true;
+
         if($replace != false) {
             $m->newid     = Uuid::uuid4();
             $m->id        = $replace->id;
@@ -493,6 +496,21 @@ class Chat extends \Movim\Widget\Base
         $p->setTo($room)
           ->setSubject($form->subject->value)
           ->request();
+    }
+
+    /**
+     * @brief Set last displayed message
+     */
+    function ajaxDisplayed($jid, $id)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $md = new \Modl\MessageDAO;
+        $m = $md->getId($id);
+
+        if($m && $m->markable == true) {
+            \Moxl\Stanza\Message::displayed($jid, $id);
+        }
     }
 
     function prepareChat($jid, $muc = false)

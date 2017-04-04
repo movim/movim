@@ -198,6 +198,11 @@ var Chat = {
                 discussion.scrollTop += scrollDiff;
                 Chat.lastScroll = discussion.scrollHeight;
             }
+
+            Chat_ajaxDisplayed(
+                document.querySelector('#chat_widget').dataset.jid,
+                document.querySelector('#chat_widget ul li:last-child div.bubble > div:last-child').id
+            );
         }
     },
     appendMucMessage : function(message) {
