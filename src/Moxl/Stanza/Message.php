@@ -25,9 +25,6 @@ class Message
         $root->setAttribute('to', str_replace(' ', '\40', $to));
         $root->setAttribute('type', $type);
 
-        $markable = $dom->createElementNS('urn:xmpp:chat-markers:0', 'markable');
-        $root->appendChild($markable);
-
         if($id != false) {
             $root->setAttribute('id', $id);
         } else {
@@ -66,12 +63,27 @@ class Message
         if($receipts != false) {
             if($receipts == 'request') {
                 $request = $dom->createElement('request');
-            } else {
+            } elseif($receipts == 'received') {
                 $request = $dom->createElement('received');
-                $request->setAttribute('id', $receipts);
+                $request->setAttribute('id', $id);
+                $request->setAttribute('xmlns', 'urn:xmpp:receipts');
+                $root->appendChild($request);
+
+                $request = $dom->createElement('received');
+                $request->setAttribute('id', $id);
+                $request->setAttribute('xmlns', 'urn:xmpp:chat-markers:0');
+            } elseif($receipts == 'displayed') {
+                $request = $dom->createElement('displayed');
+                $request->setAttribute('id', $id);
+                $request->setAttribute('xmlns', 'urn:xmpp:chat-markers:0');
             }
-            $request->setAttribute('xmlns', 'urn:xmpp:receipts');
             $root->appendChild($request);
+        }
+
+        if(!in_array($receipts, ['received', 'displayed'])
+        && $chatstates == 'active') {
+            $markable = $dom->createElementNS('urn:xmpp:chat-markers:0', 'markable');
+            $root->appendChild($markable);
         }
 
         if($file != false) {
@@ -123,6 +135,11 @@ class Message
 
     static function receipt($to, $id)
     {
-        self::maker($to, false, false, 'chat', false, $id);
+        self::maker($to, false, false, 'chat', false, 'received', $id);
+    }
+
+    static function displayed($to, $id)
+    {
+        self::maker($to, false, false, 'chat', false, 'displayed', $id);
     }
 }

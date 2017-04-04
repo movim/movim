@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Moxl\Xec\Payload;
 
 class Displayed extends Payload

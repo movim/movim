@@ -40,12 +40,6 @@ class Message extends Payload
         if($stanza->gone)
             $this->event('gone', array($jid[0], $to));
         if($stanza->body || $stanza->subject) {
-            if($stanza->request) {
-                $from = (string)$stanza->attributes()->from;
-                $id = (string)$stanza->attributes()->id;
-                \Moxl\Stanza\Message::receipt($from, $id);
-            }
-
             $m = new \Modl\Message;
             $m->set($stanza, $parent);
 
