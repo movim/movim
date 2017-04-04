@@ -34,6 +34,8 @@ var Chat = {
     {
         if(jid) {
             document.querySelector('#chat_widget').dataset.jid = jid;
+        } else {
+            delete document.querySelector('#chat_widget').dataset.jid;
         }
 
         var textarea = document.querySelector('#chat_textarea');
@@ -199,10 +201,14 @@ var Chat = {
                 Chat.lastScroll = discussion.scrollHeight;
             }
 
-            Chat_ajaxDisplayed(
-                document.querySelector('#chat_widget').dataset.jid,
-                document.querySelector('#chat_widget ul li:last-child div.bubble > div:last-child').id
-            );
+            var chat = document.querySelector('#chat_widget');
+
+            if(chat.dataset.jid) {
+                Chat_ajaxDisplayed(
+                    chat.dataset.jid,
+                    chat.querySelector('ul li:last-child div.bubble > div:last-child').id
+                );
+            }
         }
     },
     appendMucMessage : function(message) {
