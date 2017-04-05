@@ -77,10 +77,13 @@ class Message
                 $request->setAttribute('id', $id);
                 $request->setAttribute('xmlns', 'urn:xmpp:chat-markers:0');
             }
+
             $root->appendChild($request);
 
-            $nostore = $dom->createElementNS('urn:xmpp:hints', 'no-store');
-            $root->appendChild($nostore);
+            if($receipts != 'request') {
+                $nostore = $dom->createElementNS('urn:xmpp:hints', 'no-store');
+                $root->appendChild($nostore);
+            }
         }
 
         if(!in_array($receipts, ['received', 'displayed'])
