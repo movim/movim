@@ -62,7 +62,7 @@ class Message
 
         if($receipts != false) {
             if($receipts == 'request') {
-                $request = $dom->createElement('request');
+                $request = $dom->createElementNS('urn:xmpp:receipts', 'request');
             } elseif($receipts == 'received') {
                 $request = $dom->createElement('received');
                 $request->setAttribute('id', $id);
@@ -78,6 +78,9 @@ class Message
                 $request->setAttribute('xmlns', 'urn:xmpp:chat-markers:0');
             }
             $root->appendChild($request);
+
+            $nostore = $dom->createElementNS('urn:xmpp:hints', 'no-store');
+            $root->appendChild($nostore);
         }
 
         if(!in_array($receipts, ['received', 'displayed'])
