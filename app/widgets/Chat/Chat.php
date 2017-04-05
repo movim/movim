@@ -503,14 +503,19 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxDisplayed($jid, $id)
     {
-        if(!$this->validateJid($jid)) return;
+        /*if(!$this->validateJid($jid)) return;
 
         $md = new \Modl\MessageDAO;
         $m = $md->getId($id);
+\movim_log(serialize($m));
+        if($m
+        && $m->markable == true
+        && $m->displayed == null) {
+            $m->displayed = gmdate('Y-m-d H:i:s');
+            $md->set($m);
 
-        if($m && $m->markable == true) {
             \Moxl\Stanza\Message::displayed($jid, $id);
-        }
+        }*/
     }
 
     function prepareChat($jid, $muc = false)
