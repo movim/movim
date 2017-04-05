@@ -102,6 +102,7 @@ function getXepNamespace()
         '0327' => array('name' => 'Rayo', 'category' => 'rayo',       'ns' => 'urn:xmpp:rayo:0'),
         '0330' => array('name' => 'Pubsub Subscription',    'category' => 'social',     'ns' => 'urn:xmpp:pubsub:subscription'),
         '0332' => array('name' => 'HTTP over XMPP transport', 'category' => 'client',   'ns' => 'urn:xmpp:http'),
+        '0333' => ['name' => 'Chat Markers', 'category' => 'chat', 'ns' => 'urn:xmpp:chat-markers:0'],
         '0337' => array('name' => 'Event Logging over XMPP', 'category' => 'client',    'ns' => 'urn:xmpp:eventlog'),
         '0338' => array('name' => 'Jingle Grouping Framework', 'category' => 'jingle',  'ns' => 'urn:ietf:rfc:5888'),
         '0339' => array('name' => 'Source-Specific Media Attributes in Jingle', 'category' => 'jingle',     'ns' => 'urn:ietf:rfc:5576'),
