@@ -6,6 +6,10 @@ class MessageDAO extends SQL
 {
     function set(Message $message)
     {
+        if(empty($message->newid)) {
+            $message->newid = $message->id;
+        }
+
         $this->_sql = '
             update message
                 set id              = :thread,

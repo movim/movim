@@ -115,6 +115,7 @@ class Chat extends \Movim\Widget\Base
             $n = new Notification;
             $n->ajaxClear('chat|'.$from);
         }
+
         if(!preg_match('#^\?OTR#', $message->body)) {
             $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
@@ -292,7 +293,7 @@ class Chat extends \Movim\Widget\Base
             $m->published = $replace->published;
             $m->delivered = $replace->delivered;
         } else {
-            $m->id      = Uuid::uuid4();
+            $m->id        = Uuid::uuid4();
             $m->published = gmdate('Y-m-d H:i:s');
         }
 
@@ -340,6 +341,7 @@ class Chat extends \Movim\Widget\Base
         /* Is it really clean ? */
         if(!$p->getMuc()) {
             if(!preg_match('#^\?OTR#', $m->body)) {
+
                 $md = new \Modl\MessageDAO;
                 $md->set($m);
             }
@@ -503,11 +505,11 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxDisplayed($jid, $id)
     {
-        /*if(!$this->validateJid($jid)) return;
+        if(!$this->validateJid($jid)) return;
 
         $md = new \Modl\MessageDAO;
         $m = $md->getId($id);
-\movim_log(serialize($m));
+
         if($m
         && $m->markable == true
         && $m->displayed == null) {
@@ -515,7 +517,7 @@ class Chat extends \Movim\Widget\Base
             $md->set($m);
 
             \Moxl\Stanza\Message::displayed($jid, $id);
-        }*/
+        }
     }
 
     function prepareChat($jid, $muc = false)

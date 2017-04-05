@@ -202,11 +202,12 @@ var Chat = {
             }
 
             var chat = document.querySelector('#chat_widget');
+            var lastMessage = chat.querySelector('ul li:not(.oppose):last-child div.bubble > div:last-child');
 
-            if(chat.dataset.jid) {
+            if(chat.dataset.jid && lastMessage) {
                 Chat_ajaxDisplayed(
                     chat.dataset.jid,
-                    chat.querySelector('ul li:last-child div.bubble > div:last-child').id
+                    lastMessage.id
                 );
             }
         }
@@ -338,10 +339,13 @@ var Chat = {
         if (data.edited) {
             span.appendChild(Chat.getEditedIcoHtml());
         }
-        if (data.displayed) {
-            span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
-        } else if (data.delivered) {
-            span.appendChild(Chat.getDeliveredIcoHtml(data.delivered));
+
+        if (data.session == data.jidfrom) {
+            if (data.displayed) {
+                span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
+            } else if (data.delivered) {
+                span.appendChild(Chat.getDeliveredIcoHtml(data.delivered));
+            }
         }
 
         msg.appendChild(p);
