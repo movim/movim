@@ -88,6 +88,7 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0313](http://xmpp.org/extensions/xep-0313.html) | Message Archive Management | Yes | Only up to urn:xmpp:mam:0 |
 | [XEP-0330](http://xmpp.org/extensions/xep-0330.html) | Pubsub Subscription | Yes | Using PEP, proposed by the Movim team|
 | [XEP-0333](http://xmpp.org/extensions/xep-0333.html) | Chat Markers | Yes | |
+| [XEP-0334](http://xmpp.org/extensions/xep-0334.html) | Message Processing Hints | Yes | |
 | [XEP-0363](http://xmpp.org/extensions/xep-0363.html) | HTTP File Upload | Yes | |
 | [XEP-0385](http://xmpp.org/extensions/xep-0385.html) | Stateless Inline Media Sharing (SIMS) | Yes | Partially, working with XEP-0363 |
 

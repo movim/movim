@@ -83,6 +83,9 @@ class Message
             if($receipts != 'request') {
                 $nostore = $dom->createElementNS('urn:xmpp:hints', 'no-store');
                 $root->appendChild($nostore);
+
+                $nocopy = $dom->createElementNS('urn:xmpp:hints', 'no-copy');
+                $root->appendChild($nocopy);
             }
         }
 
