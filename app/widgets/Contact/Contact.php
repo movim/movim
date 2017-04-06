@@ -87,8 +87,17 @@ class Contact extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $pd = new \Modl\PostnDAO;
+        $rd = new \Modl\RosterLinkDAO;
+
+        $link = $rd->get($jid);
+
         $view->assign('jid', $jid);
-        $view->assign('blog', $pd->getPublic($jid, 'urn:xmpp:microblog:0', 0, 18));
+
+        if($link && in_array($link->rostersubscription, ['to', 'both'])) {
+            $view->assign('blog', $pd->getNodeUnfiltered($jid, 'urn:xmpp:microblog:0', 0, 18));
+        } else {
+            $view->assign('blog', $pd->getPublic($jid, 'urn:xmpp:microblog:0', 0, 18));
+        }
 
         $this->rpc('MovimTpl.fill', '#contact_tab', $view->draw('_contact_blog', true));
     }

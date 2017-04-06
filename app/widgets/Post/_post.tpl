@@ -190,7 +190,7 @@
                                             <i class="zmdi zmdi-mail-reply"></i>
                                         </span>
                                     {else}
-                                        <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
+                                        <span class="primary icon thumb color {$reply->getContact()->jid|stringToColor}">
                                             <i class="zmdi zmdi-mail-reply"></i>
                                         </span>
                                     {/if}

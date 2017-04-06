@@ -132,6 +132,22 @@
                         <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                     </a>
                 {/if}
+
+                {if="$post->isMine()"}
+                    {if="$post->isEditable()"}
+                        <a class="button flat oppose gray"
+                           href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid])}"
+                           title="{$c->__('button.edit')}">
+                            <i class="zmdi zmdi-edit"></i>
+                        </a>
+                    {/if}
+                    <a class="button flat gray oppose"
+                       href="#"
+                       onclick="Post_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
+                       title="{$c->__('button.delete')}">
+                        <i class="zmdi zmdi-delete"></i>
+                    </a>
+                {/if}
             </p>
         </li>
     </ul>

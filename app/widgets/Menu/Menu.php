@@ -194,12 +194,6 @@ class Menu extends \Movim\Widget\Base
 
         $html = $view->draw('_menu_list', true);
 
-        if($page == 0 || $page == ""){
-            $view = $this->tpl();
-            $view->assign('to', $this->user->getLogin());
-            $html .= $view->draw('_menu_add', true);
-        }
-
         return $html;
     }
 

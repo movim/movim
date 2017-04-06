@@ -262,7 +262,7 @@ var MovimUtils = {
             return decodeURIComponent(param);
         });
 
-        var parts = {'page': page, 'params': str};
+        var parts = {'page': page, 'params': str, 'hash': window.location.hash.substr(1)};
         return parts;
     }
 };

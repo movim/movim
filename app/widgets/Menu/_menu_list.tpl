@@ -1,14 +1,15 @@
 {if="$page == 0"}
     <header>
-        <ul class="list middle">
-            <li>
+        <ul class="list middle list card shadow active">
+            <br />
+            <li class="block">
                 <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()">
                     <i class="zmdi zmdi-menu"></i>
                 </span>
-                <!--<span class="control icon active gray on_mobile" onclick="MovimTpl.showPanel()">
-                    <i class="zmdi zmdi-eye"></i>
-                </span>-->
-                <p class="center line">{$c->__('page.news')}</p>
+                <span class="primary on_desktop icon gray">
+                    <i class="zmdi zmdi-edit"></i>
+                </span>
+                <p onclick="MovimUtils.redirect('{$c->route('publish')}')" class="normal">{$c->__('menu.add_post')}</p>
             </li>
         </ul>
         <ul class="tabs wide">
@@ -16,23 +17,23 @@
                 <a href="#" onclick="Menu_ajaxGetAll()">{$c->__('menu.all')}</a>
             </li>
             <li {if="$type == 'news'"}class="active"{/if} >
-                <a href="#" class="on_desktop" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}">
+                <a href="#communities" class="on_desktop" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}">
                     {$c->__('page.communities')}
                 </a>
-                <a href="#" class="on_mobile" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}">
+                <a href="#communities" class="on_mobile" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}">
                     <i class="zmdi zmdi-group-work"></i>
                 </a>
             </li>
             <li {if="$type == 'feed'"}class="active"{/if}>
-                <a href="#" class="on_desktop" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}">
+                <a href="#contacts" class="on_desktop" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}">
                     {$c->__('page.contacts')}
                 </a>
-                <a href="#" class="on_mobile" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}">
+                <a href="#contacts" class="on_mobile" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}">
                     <i class="zmdi zmdi-accounts"></i>
                 </a>
             </li>
             <li {if="$type == 'me'"}class="active"{/if}>
-                <a href="#" onclick="Menu_ajaxGetMe()" title="{$c->__('menu.mine')}">
+                <a href="#blog" onclick="Menu_ajaxGetMe()" title="{$c->__('menu.mine')}">
                     {$c->__('page.blog')}
                 </a>
             </li>
@@ -104,5 +105,4 @@
             </a>
         </div>
     </ul>
-
 {/if}

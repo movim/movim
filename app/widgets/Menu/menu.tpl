@@ -1,3 +1,1 @@
-<div id="menu_widget">
-    {$c->prepareList('all')}
-</div>
+<div id="menu_widget" class="spin"></div>
