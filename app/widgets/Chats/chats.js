@@ -26,6 +26,7 @@ var Chats = {
                         Chats_ajaxClose(this.dataset.jid);
                         delete document.querySelector('#chat_widget').dataset.jid;
                         MovimTpl.hidePanel();
+                        e.preventDefault();
                     }
                 }
             }
