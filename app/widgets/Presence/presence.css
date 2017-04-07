@@ -8,7 +8,3 @@ form[name=presence] ul {
         display: none;
     }
 }
-
-#presence_widget li {
-    padding: 2.5rem 0;
-}

@@ -1,4 +1,4 @@
-<li onclick="{$dialog} MovimTpl.hideMenu()">
+<li>
     {$url = $me->getPhoto('s')}
     {if="$url"}
         <span
@@ -11,15 +11,5 @@
         </span>
     {/if}
 
-    <span class="control icon">
-        <i class="zmdi zmdi-caret-down"></i>
-    </span>
-    <p class="line bold">{$me->getTrueName()}</p>
-    <p class="line">
-        {if="$presence->status"}
-            {$presence->status}
-        {else}
-            …
-        {/if}
-    </p>
+    <p class="line bold normal">{$me->getTrueName()}</p>
 </li>

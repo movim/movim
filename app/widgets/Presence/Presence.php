@@ -26,7 +26,8 @@ class Presence extends \Movim\Widget\Base
 
     function onSessionUp()
     {
-        $this->ajaxSet();
+        $p = new Chat;
+        $p->request();
     }
 
     function onSessionDown()
@@ -40,7 +41,6 @@ class Presence extends \Movim\Widget\Base
         $html = $this->preparePresence();
         $this->rpc('MovimTpl.fill', '#presence_widget', $html);
         Notification::append(null, $this->__('status.updated'));
-        $this->rpc('Presence.refresh');
         $this->rpc('MovimUtils.removeClass', '#presence_widget', 'unfolded');
     }
 
@@ -49,7 +49,7 @@ class Presence extends \Movim\Widget\Base
         $this->rpc('Notification.inhibit', 10);
 
         $this->ajaxClear();
-        $this->ajaxSet();
+        $this->onSessionUp();
         $this->ajaxServerCapsGet();
         $this->ajaxBookmarksGet();
         $this->ajaxUserRefresh();
@@ -61,52 +61,6 @@ class Presence extends \Movim\Widget\Base
     {
         $pd = new \Modl\PresenceDAO();
         $pd->clearPresence();
-    }
-
-    function ajaxSet($form = false)
-    {
-        if($form == false) {
-            // We update the cache with our status and presence
-            $presence = \Movim\Cache::c('presence');
-
-            $value = $presence['show'];
-            $status = $presence['status'];
-
-            if($presence == null || !isset($presence['show']) || $presence['show'] == '')
-                $value = 'chat';
-        } else {
-            $status = $form['status'];
-            $value = $form['value'];
-        }
-
-        if(in_array($value, array('chat', 'away', 'dnd', 'xa'))) {
-            switch($value) {
-                case 'chat':
-                    $p = new Chat;
-                    $p->setStatus($status)->request();
-                    break;
-                case 'away':
-                    $p = new Away;
-                    $p->setStatus($status)->request();
-                    break;
-                case 'dnd':
-                    $p = new DND;
-                    $p->setStatus($status)->request();
-                    break;
-                case 'xa':
-                    $p = new XA;
-                    $p->setStatus($status)->request();
-                    break;
-            }
-        }
-
-        \Movim\Cache::c(
-            'presence',
-            [
-                'status' => $status,
-                'show' => $value
-            ]
-        );
     }
 
     function ajaxLogout()
@@ -178,12 +132,6 @@ class Presence extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxOpenDialog()
-    {
-        Dialog::fill($this->preparePresenceList());
-        $this->rpc('Presence.refresh');
-    }
-
     function preparePresence()
     {
         $cd = new \Modl\ContactDAO;
@@ -213,37 +161,8 @@ class Presence extends \Movim\Widget\Base
         $presencetpl->assign('me', $contact);
         $presencetpl->assign('presence', $presence);
         $presencetpl->assign('presencetxt', getPresencesTxt());
-        $presencetpl->assign('dialog',      $this->call('ajaxOpenDialog'));
 
         $html = $presencetpl->draw('_presence', true);
-
-        return $html;
-    }
-
-    function preparePresenceList()
-    {
-        $txt = getPresences();
-        $txts = getPresencesTxt();
-
-        $session = Session::start();
-
-        $pd = new \Modl\PresenceDAO;
-        $p = $pd->getPresence($session->get('jid'), $session->get('resource'));
-
-        $cd = new \Modl\ContactDAO;
-        $contact = $cd->get($session->get('jid'));
-        if($contact == null) {
-            $contact = new \Modl\Contact;
-        }
-
-        $presencetpl = $this->tpl();
-
-        $presencetpl->assign('contact', $contact);
-        $presencetpl->assign('p', $p);
-        $presencetpl->assign('txt', $txt);
-        $presencetpl->assign('txts', $txts);
-
-        $html = $presencetpl->draw('_presence_list', true);
 
         return $html;
     }
