@@ -40,7 +40,7 @@ class Builder
      */
     function linkFile($file, $return = false)
     {
-        $path = BASE_URI . 'themes/' . $this->theme . '/' . $file;
+        $path = urilize('themes/' . $this->theme . '/' . $file);
 
         if($return) {
             return $path;
@@ -205,7 +205,7 @@ class Builder
 
     function addScript($script)
     {
-        $this->scripts[] = BASE_URI . 'app/assets/js/' . $script;
+        $this->scripts[] = urilize('app/assets/js/' . $script);
     }
 
     /**

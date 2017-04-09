@@ -286,7 +286,8 @@ function invertSign($num)
  * @param string
  * @return string
  */
-function firstLetterCapitalize($string, $firstOnly = false) {
+function firstLetterCapitalize($string, $firstOnly = false)
+{
     $size = ($firstOnly) ? 1 : 2;
     return ucfirst(strtolower(mb_substr($string, 0, $size)));
 }
@@ -295,7 +296,8 @@ function firstLetterCapitalize($string, $firstOnly = false) {
  * @param string
  * @return string
  */
-function cleanupId($string) {
+function cleanupId($string)
+{
     return "id-" . strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
 }
 
@@ -306,6 +308,18 @@ function cleanupId($string) {
  * @param int $width The number of chars at which the string will be truncated.
  * @return string
  */
-function truncate($str, $width) {
+function truncate($str, $width)
+{
     return strtok(wordwrap($str, $width, "…\n"), "\n");
+}
+
+/**
+ * Return the URI of a path with a timestamp
+ *
+ * @param string $path
+ * @return string
+ */
+function urilize($path)
+{
+    return BASE_URI . $path . '?t='.filemtime(DOCUMENT_ROOT . '/'.$path);
 }

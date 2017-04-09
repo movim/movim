@@ -176,17 +176,18 @@ class Base
      */
     protected function respath($file, $fspath = false, $parent = false)
     {
-        if($parent == false)
+        if($parent == false) {
             $folder = get_class($this);
-        else
+        } else {
             $folder = get_parent_class($this);
+        }
 
         $path = 'app/widgets/' . $folder . '/' . $file;
 
         if($fspath) {
             $path = DOCUMENT_ROOT . '/'.$path;
         } else {
-            $path = BASE_URI . $path;
+            $path = urilize($path);
         }
 
         return $path;
