@@ -132,6 +132,10 @@ ul.list li > p.normal {
     font-size: 2rem;
 }
 
+ul.list li > p:nth-last-of-type(2) + p.normal {
+    margin-top: 1rem;
+}
+
 ul.list li > p.bold {
     font-weight: bold;
 }
@@ -146,8 +150,8 @@ ul.list li > p:nth-last-of-type(2) {
     font-size: 2rem;
 }
 
-ul.list li > p:nth-last-of-type(3) + p,
-ul.list li > p:nth-last-of-type(2) + p {
+ul.list li > p:nth-last-of-type(3) + p:not(.normal),
+ul.list li > p:nth-last-of-type(2) + p:not(.normal) {
     line-height: 2.5rem;
     font-size: 1.75rem;
     max-height: 7.5rem;

@@ -87,8 +87,8 @@ form textarea:focus:invalid + label {
     color: #F44336;
 }
 
-ul.list li > p:nth-last-of-type(3) + p,
-ul.list li > p:nth-last-of-type(2) + p {
+ul.list li > p:nth-last-of-type(3) + p:not(.normal),
+ul.list li > p:nth-last-of-type(2) + p:not(.normal) {
     color: rgba(0, 0, 0, 0.60);
 }
 

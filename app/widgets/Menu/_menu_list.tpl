@@ -1,17 +1,5 @@
 {if="$page == 0"}
     <header>
-        <ul class="list middle list card shadow active">
-            <br />
-            <li class="block">
-                <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()">
-                    <i class="zmdi zmdi-menu"></i>
-                </span>
-                <span class="primary on_desktop icon gray">
-                    <i class="zmdi zmdi-edit"></i>
-                </span>
-                <p onclick="MovimUtils.redirect('{$c->route('publish')}')" class="normal">{$c->__('menu.add_post')}</p>
-            </li>
-        </ul>
         <ul class="tabs wide">
             <li {if="$type == 'all'"}class="active"{/if}>
                 <a href="#" onclick="Menu_ajaxGetAll()">{$c->__('menu.all')}</a>

@@ -26,7 +26,13 @@
                 </span>
             {/if}
 
-            <p class="normal">{$post->title}</p>
+            {if="!$post->isBrief()"}
+                <p class="normal">
+                    {$post->title}
+                </p>
+            {else}
+                <p></p>
+            {/if}
             <p>
                 {if="$post->isMicroblog()"}
                     <a href="{$c->route('contact', $post->getContact()->jid)}">
@@ -45,12 +51,16 @@
                      – <i class="zmdi zmdi-edit"></i> {$post->updated|strtotime|prepareDate:true,true}
                 {/if}
             </p>
+            {if="$post->isBrief()"}
+                <p class="normal">
+                    {$post->title|addUrls}
+                </p>
+            {/if}
         </li>
     </ul>
     <ul class="list">
+        {if="!$post->isBrief()"}
         <li class="active">
-            <p>
-            </p>
             <p>
                 <section {if="!$post->isShort()"}class="limited"{/if}>
                     {if="$post->isReply()"}
@@ -64,6 +74,17 @@
                                             style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
                                             <i class="zmdi zmdi-mail-reply"></i>
                                         </span>
+                                    {elseif="$reply->isMicroblog()"}
+                                        {$url = $reply->getContact()->getPhoto('l')}
+                                        {if="$url"}
+                                            <span class="primary icon thumb color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
+                                                <i class="zmdi zmdi-mail-reply"></i>
+                                            </span>
+                                        {else}
+                                            <span class="primary icon thumb color {$reply->getContact()->jid|stringToColor}">
+                                                <i class="zmdi zmdi-mail-reply"></i>
+                                            </span>
+                                        {/if}
                                     {/if}
                                     <p class="line">{$reply->title}</p>
                                     <p>{$reply->contentcleaned|html_entity_decode|stripTags}</p>
@@ -110,25 +131,28 @@
                 <section>
             </p>
         </li>
+        {/if}
 
         <li>
-            <p class="normal center">
-                <a class="button flat" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
-                    <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
-                </a>
-            </p>
             <p class="normal">
-                <a class="button flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
-                    {$post->countLikes()} <i class="zmdi zmdi-favorite-outline"></i>
-                </a>
-                <a class="button flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
-                    {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
-                </a>
+                {if="!$post->isBrief()"}
+                    <a class="button flat oppose" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                        <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
+                    </a>
+                {/if}
+                {if="!$post->isBrief()"}
+                    <a class="button flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                        {$post->countLikes()} <i class="zmdi zmdi-favorite-outline"></i>
+                    </a>
+                    <a class="button flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                        {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
+                    </a>
+                {/if}
                 <a class="button flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
-                    <i class="zmdi zmdi-share"></i>
+                    <i class="zmdi zmdi-mail-reply"></i>
                 </a>
                 {if="$post->isPublic()"}
-                    <a class="button flat gray" target="_blank" href="{$post->getPublicUrl()}">
+                    <a class="button flat gray on_desktop" target="_blank" href="{$post->getPublicUrl()}">
                         <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                     </a>
                 {/if}
@@ -141,9 +165,10 @@
                             <i class="zmdi zmdi-edit"></i>
                         </a>
                     {/if}
-                    <a class="button flat gray oppose"
+
+                    <a class="button flat oppose gray"
                        href="#"
-                       onclick="Post_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
+                       onclick="PostActions_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
                        title="{$c->__('button.delete')}">
                         <i class="zmdi zmdi-delete"></i>
                     </a>

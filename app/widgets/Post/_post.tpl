@@ -27,7 +27,9 @@
                             <i class="zmdi zmdi-edit"></i>
                         </span>
                     {/if}
-                    <span class="control icon active gray" onclick="Post_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')" title="{$c->__('button.delete')}">
+                    <span class="control icon active gray"
+                          onclick="PostActions_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
+                          title="{$c->__('button.delete')}">
                         <i class="zmdi zmdi-delete"></i>
                     </span>
                 {/if}

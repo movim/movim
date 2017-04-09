@@ -10,7 +10,7 @@
     <button
         name="submit"
         class="button flat"
-        onclick="Post_ajaxDeleteConfirm('{$to}', '{$node}', '{$id}'); Dialog_ajaxClear()">
+        onclick="PostActions_ajaxDeleteConfirm('{$to}', '{$node}', '{$id}'); Dialog_ajaxClear()">
         {$c->__('button.delete')}
     </button>
 </div>

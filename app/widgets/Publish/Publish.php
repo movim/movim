@@ -24,9 +24,9 @@ class Publish extends \Movim\Widget\Base
     {
         Notification::append(false, $this->__('post.published'));
 
-        list($to, $node, $id, $repost) = array_values($packet->content);
+        list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
-        if(!$repost) {
+        if(!$repost && $comments) {
             $this->ajaxCreateComments($to, $id);
         }
 
@@ -220,8 +220,6 @@ class Publish extends \Movim\Widget\Base
               ->setNode($form->node->value);
               //->setLocation($geo)
 
-            $p->enableComments();
-
             $content = $content_xhtml = '';
 
             if(Validator::stringType()->notEmpty()->validate(trim($form->content->value))) {
@@ -278,6 +276,7 @@ class Publish extends \Movim\Widget\Base
             }
 
             if($content != '') {
+                $p->enableComments();
                 $p->setContent(htmlspecialchars($content));
             }
 

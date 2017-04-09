@@ -1,8 +1,6 @@
 <?php
 
 use Moxl\Xec\Action\Pubsub\PostPublish;
-use Moxl\Xec\Action\Pubsub\PostDelete;
-use Moxl\Xec\Action\Pubsub\Delete;
 use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use Moxl\Xec\Action\Microblog\CommentPublish;
@@ -17,8 +15,6 @@ class Post extends \Movim\Widget\Base
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
-        $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
-        $this->registerEvent('pubsub_postdelete', 'onDelete');
         $this->registerEvent('pubsub_getitem_handle', 'onHandle');
     }
 
@@ -45,24 +41,6 @@ class Post extends \Movim\Widget\Base
     {
         Notification::append(false, $this->__('post.comment_published'));
         $this->onComments($packet);
-    }
-
-    function onDelete($packet)
-    {
-        list($server, $node, $id) = array_values($packet->content);
-
-        if(substr($node, 0, 29) == 'urn:xmpp:microblog:0:comments') {
-            Notification::append(false, $this->__('post.comment_deleted'));
-            $this->ajaxGetComments($server, substr($node, 30));
-        } else {
-            Notification::append(false, $this->__('post.deleted'));
-
-            if($node == 'urn:xmpp:microblog:0') {
-                $this->rpc('MovimUtils.redirect', $this->route('news'));
-            } else {
-                $this->rpc('MovimUtils.redirect', $this->route('community', [$server, $node]));
-            }
-        }
     }
 
     function onComments($packet)
@@ -145,17 +123,6 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function ajaxDelete($to, $node, $id)
-    {
-        $view = $this->tpl();
-
-        $view->assign('to', $to);
-        $view->assign('node', $node);
-        $view->assign('id', $id);
-
-        Dialog::fill($view->draw('_post_delete', true));
-    }
-
     function ajaxShare($origin, $node, $id)
     {
         $pd = new \Modl\PostnDAO;
@@ -164,19 +131,6 @@ class Post extends \Movim\Widget\Base
         if($p) {
             $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node, $id, 'share']));
         }
-    }
-
-    function ajaxDeleteConfirm($to, $node, $id) {
-        $p = new PostDelete;
-        $p->setTo($to)
-          ->setNode($node)
-          ->setId($id)
-          ->request();
-
-        $p = new Delete;
-        $p->setTo($to)
-          ->setNode('urn:xmpp:microblog:0:comments/'.$id)
-          ->request();
     }
 
     function ajaxGetComments($jid, $id)
