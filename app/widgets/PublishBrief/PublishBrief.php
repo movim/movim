@@ -35,6 +35,15 @@ class PublishBrief extends \Movim\Widget\Base
         }
     }
 
+    function ajaxDisplayPrivacy($open)
+    {
+        if($open) {
+            Notification::append(false, $this->__('post.public_yes'));
+        } else {
+            Notification::append(false, $this->__('post.public_no'));
+        }
+    }
+
     function display()
     {
     }

@@ -17,7 +17,8 @@
         {if="$value->title || $value->contentraw"}
         <li>
             {if="$value->isMine()"}
-                <span class="control icon gray active" onclick="Post_ajaxDelete('{$value->origin}', '{$value->node}', '{$value->nodeid}')">
+                <span class="control icon gray active"
+                      onclick="PostActions_ajaxDelete('{$value->origin}', '{$value->node}', '{$value->nodeid}')">
                     <i class="zmdi zmdi-delete"></i>
                 </span>
             {/if}
