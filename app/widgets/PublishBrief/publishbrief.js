@@ -31,7 +31,6 @@ var PublishBrief = {
         var embed = document.querySelector('#embed');
         embed.value = url.value;
         embed.onchange();
-        Dialog_ajaxClear();
     },
     clearEmbed: function() {
         document.querySelector('input[name=embed]').value = '';
@@ -42,4 +41,5 @@ var PublishBrief = {
 Upload.attach(function() {
     var embed = document.querySelector('input[name=embed]');
     embed.value = Upload.get;
+    embed.onchange();
 });

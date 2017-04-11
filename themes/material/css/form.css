@@ -428,9 +428,12 @@ header.big ~ .button.action {
 
 .button i {
     margin: 0 0.5rem;
-    /*position: relative;
+}
+
+.button.icon i {
+    position: relative;
     font-size: 2.8rem;
-    top: 0.3rem;*/
+    top: 0.3rem;
 }
 
 /* The textarea hidden div */

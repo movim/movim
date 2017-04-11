@@ -53,7 +53,7 @@
             </p>
             {if="$post->isBrief()"}
                 <p class="normal">
-                    {$post->title|addUrls}
+                    {$post->title|addUrls|trim|nl2br}
                 </p>
             {/if}
         </li>
@@ -145,6 +145,32 @@
                     {/if}
                 </content>
             </section>
+        {/if}
+
+        {if="isset($attachments.links)"}
+            {loop="$attachments.links"}
+                {if="!empty($value.title)"}
+                <ul class="list">
+                    <li>
+                        <span class="primary icon gray">
+                            {if="isset($value.logo)"}
+                                <img src="{$value.logo}"/>
+                            {else}
+                                <i class="zmdi zmdi-link"></i>
+                            {/if}
+                        </span>
+                        <p class="normal line">
+                            <a target="_blank" href="{$value.href}" title="{$value.href}">
+                                {$value.title}
+                            </a>
+                        </p>
+                        {if="isset($value.description)"}
+                            <p>{$value.description}</p>
+                        {/if}
+                    </li>
+                </ul>
+                {/if}
+            {/loop}
         {/if}
 
         <li>

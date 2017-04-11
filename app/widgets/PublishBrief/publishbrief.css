@@ -6,6 +6,11 @@ header#publishbrief form > div textarea {
     border-radius: 0.5rem;
 }
 
+#publishbrief textarea:focus,
+#publishbrief textarea:valid {
+    min-height: 8rem;
+}
+
 #publishbrief .embed li.block {
     border: 1px solid #EEE;
     border-radius: 0.5rem;

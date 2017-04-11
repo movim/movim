@@ -10,7 +10,7 @@
                 </span>
                 <span id="button_send"
                       class="control icon gray active"
-                      onclick="PublishBrief_ajaxPublish(MovimUtils.formToJson('brief'));">
+                      onclick="Publish.disableSend(); PublishBrief_ajaxPublish(MovimUtils.formToJson('brief'));">
                     <i class="zmdi zmdi-mail-send"></i>
                 </span>
                 <form onsubmit="return false;" name="brief">
@@ -18,8 +18,8 @@
                         <textarea
                             name="title"
                             id="title"
-                            autofocus
                             rows="1"
+                            required
                             onkeyup="MovimUtils.textareaAutoheight(this);"
                             placeholder="{$c->__('publishbrief.placeholder')}"
                             type="text"></textarea>

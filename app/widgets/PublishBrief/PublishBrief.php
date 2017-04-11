@@ -32,10 +32,14 @@ class PublishBrief extends \Movim\Widget\Base
             if(Validator::notEmpty()->url()->validate($form->embed->value)) {
                 try {
                     $embed = Embed\Embed::create($form->embed->value);
-                    $p->setLink($form->embed->value);
 
-                    if(in_array($embed->type, ['photo', 'rich'])) {
+                    if($embed->type == 'photo') {
                         $p->setImage($embed->images[0]['url'], $embed->title, $embed->images[0]['mime']);
+                    } else {
+                        if(isset($embed->images)) {
+                            $p->setImage($embed->images[0]['url'], $embed->title, $embed->images[0]['mime']);
+                        }
+                        $p->setLink($form->embed->value, $embed->title, 'text/html', $embed->description, $embed->providerIcon);
                     }
                 } catch(Exception $e) {
                     error_log($e->getMessage());
@@ -61,9 +65,11 @@ class PublishBrief extends \Movim\Widget\Base
             $embed = Embed\Embed::create($url);
             $html = $this->prepareEmbed($embed);
 
-            if(in_array($embed->type, ['photo', 'rich'])) {
+            $this->rpc('Dialog_ajaxClear');
+
+            //if(in_array($embed->type, ['photo', 'rich'])) {
                 $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
-            }
+            //}
         } catch(Exception $e) {
             error_log($e->getMessage());
         }

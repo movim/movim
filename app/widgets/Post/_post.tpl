@@ -277,14 +277,21 @@
                     {loop="$attachments.links"}
                         {if="$value.rel != 'alternate' && $post->picture != $value['href'] && $post->open != $value['href']"}
                             <li>
-                                <span class="primary icon">
-                                    <img src="https://icons.duckduckgo.com/ip2/{$value.url.host}.ico"/>
+                                <span class="primary icon gray">
+                                    {if="isset($value.logo)"}
+                                        <img src="{$value.logo}"/>
+                                    {else}
+                                        <i class="zmdi zmdi-link"/>
+                                    {/if}
                                 </span>
                                 <p class="normal line">
-                                    <a title="{$value.href|urldecode}" href="{$value.href}" class="alternate" target="_blank">
-                                        {$value.href|urldecode}
+                                    <a target="_blank" href="{$value.href}" title="{$value.href}">
+                                        {$value.title}
                                     </a>
                                 </p>
+                                {if="isset($value.description)"}
+                                    <p>{$value.description}</p>
+                                {/if}
                             </li>
                         {/if}
                     {/loop}
