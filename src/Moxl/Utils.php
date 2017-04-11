@@ -206,4 +206,29 @@ class Utils
             foreach ($errlines as $txt) { $log->addDebug($txt); }
         }
     }
+
+    // XEP-0106: JID Escaping
+    public static function escapeJidLocalpart($s)
+    {
+        $result = '';
+
+        $chars = [' ', '"', '&', '\'', '/', ':', '<', '>', '@'];
+        $escapes = ['20', '22', '26', '27', '2f', '3a', '3c', '3e', '40', '5c'];
+
+        for($i = 0; $i < strlen($s); $i++) {
+            if($s{$i} === '\\') {
+                if(in_array($s{$i+1}.$s{$i+2}, $escapes)) {
+                    $result .= '\\5c';
+                } else {
+                    $result .= $s{$i};
+                }
+            } else if(in_array($s{$i}, $chars)) {
+                $result .= '\\'.dechex(ord($s{$i}));
+            } else {
+                $result .= $s{$i};
+            }
+        }
+
+        return $result;
+    }
 }

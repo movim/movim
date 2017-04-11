@@ -84,9 +84,20 @@ class PostPublish extends Errors
         return $this;
     }
 
-    public function setLink($link)
+    public function setLink(
+        $href,
+        $title = null,
+        $type = 'text/html',
+        $description = null,
+        $logo = null)
     {
-        $this->_atom->link = $link;
+        $this->_atom->link = [
+            'href'  => $href,
+            'title' => $title,
+            'type'  => $type,
+            'description' => $description,
+            'logo'  => $logo
+        ];
         return $this;
     }
 
@@ -111,10 +122,12 @@ class PostPublish extends Errors
 
     public function setImage($href, $title = null, $type = null)
     {
-        $this->_atom->image = array(
+        $this->_atom->image = [
             'href' => $href,
             'title' => $title,
-            'type' => $type);
+            'type' => $type
+        ];
+
         return $this;
     }
 
@@ -160,14 +173,20 @@ class PostPublish extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $g = new GetItem;
         $g->setTo($this->_to)
           ->setNode($this->_node)
           ->setId($this->_atom->id)
           ->request();
 
-        $this->pack(['to' => $this->_to, 'node' => $this->_node, 'id' => $this->_atom->id, 'repost' => $this->_repost]);
+        $this->pack([
+            'to'        => $this->_to,
+            'node'      => $this->_node,
+            'id'        => $this->_atom->id,
+            'repost'    => $this->_repost,
+            'comments'  => $this->_atom->comments]);
         $this->deliver();
     }
 }

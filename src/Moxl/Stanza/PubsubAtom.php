@@ -92,10 +92,22 @@ class PubsubAtom {
             $entry->appendChild($link);
         }
 
-        if($this->link) {
+        if($this->link && is_array($this->link)) {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'related');
-            $link->setAttribute('href', $this->link);
+            $link->setAttribute('href', $this->link['href']);
+            if($this->link['type'] != null) {
+                $link->setAttribute('type', $this->link['type']);
+            }
+            if($this->link['title'] != null) {
+                $link->setAttribute('title', $this->link['title']);
+            }
+            if($this->link['description'] != null) {
+                $link->setAttribute('description', $this->link['description']);
+            }
+            if($this->link['logo'] != null) {
+                $link->setAttribute('logo', $this->link['logo']);
+            }
             $entry->appendChild($link);
         }
 
@@ -116,10 +128,12 @@ class PubsubAtom {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'enclosure');
             $link->setAttribute('href', $this->image['href']);
-            if($this->image['type'] != null)
+            if($this->image['type'] != null) {
                 $link->setAttribute('type', $this->image['type']);
-            if($this->image['title'] != null)
+            }
+            if($this->image['title'] != null) {
                 $link->setAttribute('title', $this->image['title']);
+            }
             $entry->appendChild($link);
         }
 
