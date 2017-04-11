@@ -1,7 +1,7 @@
 <ul class="list thick">
     {if="$embed->images != null"}
     <li>
-        <span class="primary icon bubble" style="background-image: url({$embed->images[0]['url']|htmlspecialchars});">
+        <span class="primary icon bubble white" style="background-image: url({$embed->images[0]['url']|htmlspecialchars});">
             <i class="zmdi zmdi-image"></i>
         </span>
         <p>{$c->__('publish.gallery')}</p>

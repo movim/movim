@@ -1,6 +1,7 @@
 <?php
 
-function getTimezoneCorrection() {
+function getTimezoneCorrection()
+{
     $timezones = getTimezoneList();
     return $timezones[date_default_timezone_get()];
 }
@@ -11,7 +12,8 @@ function getTimezoneCorrection() {
  * @param timestamp $string
  * @return string
  */
-function prepareDate($time = false, $hours = true, $compact = false, $dateOnly = false) {
+function prepareDate($time = false, $hours = true, $compact = false, $dateOnly = false)
+{
     $time = $time ? $time : time();
     $t = $time + TIMEZONE_OFFSET;
 
@@ -65,7 +67,8 @@ function prepareDate($time = false, $hours = true, $compact = false, $dateOnly =
  * @param timestamp $string
  * @return string
  */
-function prepareTime($time = false) {
+function prepareTime($time = false)
+{
     $time = $time ? $time : time();
     $t = $time + TIMEZONE_OFFSET;
 

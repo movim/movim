@@ -131,6 +131,20 @@
                 <section>
             </p>
         </li>
+        {else}
+            <section>
+                <content>
+                    {if="$post->isShort() && isset($attachments.pictures)"}
+                        {loop="$attachments.pictures"}
+                            {if="$value.type != 'picture'"}
+                            <a href="{$value.href}" class="alternate" target="_blank">
+                                <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
+                            </a>
+                            {/if}
+                        {/loop}
+                    {/if}
+                </content>
+            </section>
         {/if}
 
         <li>

@@ -1,3 +1,12 @@
 header#publishbrief form > div textarea {
     padding-top: 1rem;
 }
+
+#publishbrief img.preview {
+    border-radius: 0.5rem;
+}
+
+#publishbrief .embed li.block {
+    border: 1px solid #EEE;
+    border-radius: 0.5rem;
+}

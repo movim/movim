@@ -29,10 +29,70 @@ class PublishBrief extends \Movim\Widget\Base
                 $p->isOpen();
             }
 
+            if(Validator::notEmpty()->url()->validate($form->embed->value)) {
+                try {
+                    $embed = Embed\Embed::create($form->embed->value);
+                    $p->setLink($form->embed->value);
+
+                    if(in_array($embed->type, ['photo', 'rich'])) {
+                        $p->setImage($embed->images[0]['url'], $embed->title, $embed->images[0]['mime']);
+                    }
+                } catch(Exception $e) {
+                    error_log($e->getMessage());
+                }
+            }
+
             $p->request();
         } else {
             $this->rpc('PublishBrief.enableSend');
         }
+    }
+
+    function ajaxEmbedTest($url)
+    {
+        if($url == '') {
+            return;
+        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
+            Notification::append(false, $this->__('publish.valid_url'));
+            return;
+        }
+
+        try {
+            $embed = Embed\Embed::create($url);
+            $html = $this->prepareEmbed($embed);
+
+            $this->rpc('MovimTpl.fill', '#publishbrief p.embed', '');
+
+            if(in_array($embed->type, ['photo', 'rich'])) {
+                $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
+            }
+        } catch(Exception $e) {
+            error_log($e->getMessage());
+        }
+    }
+
+    function ajaxClearEmbed()
+    {
+        $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbedDefault());
+    }
+
+    function prepareEmbedDefault()
+    {
+        $view = $this->tpl();
+        return $view->draw('_publishbrief_embed_default', true);
+    }
+
+    function prepareEmbed($embed)
+    {
+        $view = $this->tpl();
+        $view->assign('embed', $embed);
+        return $view->draw('_publishbrief_embed', true);
+    }
+
+    function ajaxLink()
+    {
+        $view = $this->tpl();
+        Dialog::fill($view->draw('_publishbrief_link', true));
     }
 
     function ajaxDisplayPrivacy($open)
@@ -46,5 +106,6 @@ class PublishBrief extends \Movim\Widget\Base
 
     function display()
     {
+        $this->view->assign('embed', $this->prepareEmbedDefault());
     }
 }

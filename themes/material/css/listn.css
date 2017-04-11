@@ -133,7 +133,7 @@ ul.list li > p.normal {
 }
 
 ul.list li > p:nth-last-of-type(2) + p.normal {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 ul.list li > p.bold {

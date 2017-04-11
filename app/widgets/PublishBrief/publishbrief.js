@@ -1,10 +1,13 @@
-var PublishBrief = {
+var Publish = {
     enableSend: function() {
         MovimUtils.removeClass('#button_send', 'disabled');
     },
     disableSend: function() {
         MovimUtils.addClass('#button_send', 'disabled');
-    },
+    }
+}
+
+var PublishBrief = {
     togglePrivacy: function() {
         var checked = document.querySelector('#publishbrief form #open');
 
@@ -22,6 +25,21 @@ var PublishBrief = {
         }
 
         PublishBrief_ajaxDisplayPrivacy(checked.checked);
+    },
+    addUrl: function() {
+        var url = document.querySelector('#url');
+        var embed = document.querySelector('#embed');
+        embed.value = url.value;
+        embed.onchange();
+        Dialog_ajaxClear();
+    },
+    clearEmbed: function() {
+        document.querySelector('input[name=embed]').value = '';
+        PublishBrief_ajaxClearEmbed();
     }
 }
 
+Upload.attach(function() {
+    var embed = document.querySelector('input[name=embed]');
+    embed.value = Upload.get;
+});

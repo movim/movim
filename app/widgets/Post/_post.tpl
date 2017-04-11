@@ -3,7 +3,7 @@
 {/if}
 
 {if="isset($post->picture)"}
-    {if="($public && $post->isPublic()) || !$public"}
+    {if="($public && $post->isPublic() && !$post->isBrief()) || !$public"}
         <header
             class="big"
             style="
@@ -41,6 +41,7 @@
                         {$c->__('post.default_title')}
                     {/if}
                 </p>
+
             </li>
         </ul>
     {/if}
@@ -84,24 +85,31 @@
                     </span>
                 {/if}
             {/if}
-            <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
+            <span class="control icon active">
                 <a  {if="$public"}
-                        {if="$post->isMicroblog()"}
-                        href="{$c->route('blog', [$post->origin, $post->nodeid])}"
-                        {else}
-                        href="{$c->route('node', [$post->origin, $post->node, $post->nodeid])}"
-                        {/if}
+                    {if="$post->isMicroblog()"}
+                    href="{$c->route('blog', [$post->origin, $post->nodeid])}"
                     {else}
-                        href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}"
+                    href="{$c->route('node', [$post->origin, $post->node, $post->nodeid])}"
                     {/if}
-                    >
+                {else}
+                    href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}"
+                {/if}
+                >
+                    <i class="zmdi zmdi-chevron-right"></i>
+                </a>
+            </span>
+            {if="!$post->isBrief()"}
+                <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                     {if="$post->title != null"}
                         {$post->title}
                     {else}
                         {$c->__('post.default_title')}
                     {/if}
-                </a>
-            </p>
+                </p>
+            {else}
+                <p></p>
+            {/if}
             <p>
                 {if="$contact->getTrueName() != ''"}
                     {if="!$public"}
@@ -128,6 +136,11 @@
                 {/if}
             </p>
 
+            {if="$post->isBrief()"}
+                <p class="normal">
+                    {$post->title|addUrls}
+                </p>
+            {/if}
         </li>
     </ul>
     {/if}
