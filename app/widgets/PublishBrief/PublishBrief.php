@@ -61,8 +61,6 @@ class PublishBrief extends \Movim\Widget\Base
             $embed = Embed\Embed::create($url);
             $html = $this->prepareEmbed($embed);
 
-            $this->rpc('MovimTpl.fill', '#publishbrief p.embed', '');
-
             if(in_array($embed->type, ['photo', 'rich'])) {
                 $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
             }
