@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a7a5f708f019014b72e66a92fef2037",
+    "content-hash": "c35922d0646d6fb25baa09b537bbd8ed",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -179,6 +179,65 @@
             "time": "2017-03-23T21:52:55+00:00"
         },
         {
+            "name": "composer/ca-bundle",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/ca-bundle.git",
+                "reference": "b17e6153cb7f33c7e44eb59578dc12eee5dc8e12"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/b17e6153cb7f33c7e44eb59578dc12eee5dc8e12",
+                "reference": "b17e6153cb7f33c7e44eb59578dc12eee5dc8e12",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "ext-pcre": "*",
+                "php": "^5.3.2 || ^7.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5",
+                "psr/log": "^1.0",
+                "symfony/process": "^2.5 || ^3.0"
+            },
+            "suggest": {
+                "symfony/process": "This is necessary to reliably check whether openssl_x509_parse is vulnerable on older php versions, but can be ignored on PHP 5.5.6+"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Composer\\CaBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be",
+                    "homepage": "http://seld.be"
+                }
+            ],
+            "description": "Lets you find a path to the system CA bundle, and includes a fallback to the Mozilla CA bundle.",
+            "keywords": [
+                "cabundle",
+                "cacert",
+                "certificate",
+                "ssl",
+                "tls"
+            ],
+            "time": "2017-03-06T11:59:08+00:00"
+        },
+        {
             "name": "dflydev/fig-cookies",
             "version": "v1.0.2",
             "source": {
@@ -236,15 +295,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "7a72fa97b4f11b9579309a1d5d5142c35723f72a"
+                "reference": "e17920b1f5d8e534f4f4f0f1c837c14dcc13129d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/7a72fa97b4f11b9579309a1d5d5142c35723f72a",
-                "reference": "7a72fa97b4f11b9579309a1d5d5142c35723f72a",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/e17920b1f5d8e534f4f4f0f1c837c14dcc13129d",
+                "reference": "e17920b1f5d8e534f4f4f0f1c837c14dcc13129d",
                 "shasum": ""
             },
             "require": {
+                "composer/ca-bundle": "^1.0",
                 "ext-curl": "*",
                 "ext-mbstring": "*",
                 "php": "^5.5|^7.0"
@@ -280,7 +340,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-03-27 07:00:00"
+            "time": "2017-04-11 21:43:33"
         },
         {
             "name": "evenement/evenement",
@@ -650,12 +710,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "cbc4a942773f8f2c5029ee3d614c5fada4eca676"
+                "reference": "a5853a4d38fcaa86f9babceacef785e17a5747cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/cbc4a942773f8f2c5029ee3d614c5fada4eca676",
-                "reference": "cbc4a942773f8f2c5029ee3d614c5fada4eca676",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/a5853a4d38fcaa86f9babceacef785e17a5747cc",
+                "reference": "a5853a4d38fcaa86f9babceacef785e17a5747cc",
                 "shasum": ""
             },
             "require": {
@@ -690,7 +750,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-04-06 20:52:01"
+            "time": "2017-04-11 21:44:05"
         },
         {
             "name": "movim/sasl2",
