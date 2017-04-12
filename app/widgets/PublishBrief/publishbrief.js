@@ -38,6 +38,10 @@ var PublishBrief = {
     }
 }
 
+MovimWebsocket.attach(function() {
+    PublishBrief_ajaxClearEmbed();
+});
+
 Upload.attach(function() {
     var embed = document.querySelector('input[name=embed]');
     embed.value = Upload.get;
