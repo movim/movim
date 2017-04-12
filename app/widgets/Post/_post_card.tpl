@@ -166,6 +166,8 @@
                         </p>
                         {if="isset($value.description)"}
                             <p>{$value.description}</p>
+                        {else}
+                            <p>{$value.url.host}</p>
                         {/if}
                     </li>
                 </ul>
