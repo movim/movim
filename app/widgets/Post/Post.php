@@ -204,7 +204,20 @@ class Post extends \Movim\Widget\Base
             }
 
             $view->assign('repost', false);
-            $view->assign('external', $external);
+
+            $view->assign('prevnext', '');
+            $view->assign('comments', '');
+
+            if(!$external) {
+                $prevnext = $this->tpl();
+                $prevnext->assign('next', $p->getNext());
+                $prevnext->assign('previous', $p->getPrevious());
+                $view->assign('prevnext', $prevnext->draw('_post_prevnext', true));
+            } else {
+                $comments = $this->tpl();
+                $comments->assign('comments', $this->getComments($p));
+                $view->assign('comments', $comments->draw('_post_comments_external', true));
+            }
             $view->assign('public', $public);
 
             $view->assign('reply', $p->isReply() ? $p->getReply() : false);

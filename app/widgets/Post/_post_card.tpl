@@ -53,7 +53,7 @@
             </p>
             {if="$post->isBrief()"}
                 <p class="normal">
-                    {$post->title|addUrls|trim|nl2br}
+                    {$post->title|addUrls|nl2br}
                 </p>
             {/if}
         </li>
@@ -175,24 +175,22 @@
 
         <li>
             <p class="normal">
+                <a class="button flat oppose" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                    <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
+                </a>
                 {if="!$post->isBrief()"}
-                    <a class="button flat oppose" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
-                        <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
-                    </a>
-                {/if}
-                {if="!$post->isBrief()"}
-                    <a class="button flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                    <a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
                         {$post->countLikes()} <i class="zmdi zmdi-favorite-outline"></i>
                     </a>
-                    <a class="button flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                    <a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
                         {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
                     </a>
                 {/if}
-                <a class="button flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
+                <a class="button icon flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
                     <i class="zmdi zmdi-mail-reply"></i>
                 </a>
                 {if="$post->isPublic()"}
-                    <a class="button flat gray on_desktop" target="_blank" href="{$post->getPublicUrl()}">
+                    <a class="button icon flat gray on_desktop" target="_blank" href="{$post->getPublicUrl()}">
                         <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                     </a>
                 {/if}

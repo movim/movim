@@ -552,6 +552,16 @@ class Postn extends Model
         return $pd->countLikes($this->commentorigin, $this->commentnodeid);
     }
 
+    /*public function countReplies()
+    {
+        $pd = new \Modl\PostnDAO;
+        return $pd->countReplies([
+            'origin'    => $this->origin,
+            'node'      => $this->node,
+            'nodeid'    => $this->nodeid
+        ]);
+    }*/
+
     public function getTags()
     {
         $td = new \Modl\TagDAO;

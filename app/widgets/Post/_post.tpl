@@ -2,7 +2,7 @@
 <article class="block">
 {/if}
 
-{if="isset($post->picture)"}
+{if="isset($post->picture) && !$post->isBrief()"}
     {if="($public && $post->isPublic() && !$post->isBrief()) || !$public"}
         <header
             class="big"
@@ -19,7 +19,7 @@
                     <i class="zmdi zmdi-arrow-back"></i>
                 </span>
 
-                {if="$post->isMine() && !$public"}
+                {if="$post->isMine()"}
                     {if="$post->isEditable()"}
                         <span class="control icon active gray"
                               onclick="MovimUtils.redirect('{$c->route('publish', [$post->origin, $post->node, $post->nodeid])}')"
@@ -35,13 +35,12 @@
                 {/if}
 
                 <p class="line">
-                    {if="$post->title != null"}
+                    {if="$post->title != null && !$post->isBrief()"}
                         {$post->title}
                     {else}
                         {$c->__('post.default_title')}
                     {/if}
                 </p>
-
             </li>
         </ul>
     {/if}
@@ -55,7 +54,7 @@
                 {$contact = $post->getContact()}
             {/if}
 
-            {if="$post->node == 'urn:xmpp:microblog:0'"}
+            {if="$post->isMicroblog()"}
                 {$url = $contact->getPhoto('s')}
                 {if="$url"}
                     <span class="icon primary bubble">
@@ -85,6 +84,7 @@
                     </span>
                 {/if}
             {/if}
+            {if="$public"}
             <span class="control icon active">
                 <a  {if="$public"}
                     {if="$post->isMicroblog()"}
@@ -99,6 +99,7 @@
                     <i class="zmdi zmdi-chevron-right"></i>
                 </a>
             </span>
+            {/if}
             {if="!$post->isBrief()"}
                 <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                     {if="$post->title != null"}
@@ -135,10 +136,9 @@
                     - <i class="zmdi zmdi-edit"></i> {$post->updated|strtotime|prepareDate}
                 {/if}
             </p>
-
             {if="$post->isBrief()"}
                 <p class="normal">
-                    {$post->title|addUrls}
+                    {$post->title|addUrls|nl2br}
                 </p>
             {/if}
         </li>
@@ -258,30 +258,16 @@
             </content>
         </section>
         <footer>
-            {$tags = $post->getTags()}
-            {if="isset($tags)"}
-                <ul class="list thick">
-                    <li>
-                        <span class="primary icon zmdi zmdi-tag gray"></span>
-                        <p></p>
-                        <p class="normal">
-                            {loop="$tags"}
-                                <a target="_blank" href="{$c->route('tag', [$value])}">#{$value}</a>
-                            {/loop}
-                        </p>
-                    </li>
-                </ul>
-            {/if}
             <ul class="list middle divided spaced">
                 {if="isset($attachments.links)"}
                     {loop="$attachments.links"}
-                        {if="$value.rel != 'alternate' && $post->picture != $value['href'] && $post->open != $value['href']"}
+                        {if="$post->picture != $value['href']"}
                             <li>
                                 <span class="primary icon gray">
                                     {if="isset($value.logo)"}
                                         <img src="{$value.logo}"/>
                                     {else}
-                                        <i class="zmdi zmdi-link"/>
+                                        <i class="zmdi zmdi-link"></i>
                                     {/if}
                                 </span>
                                 <p class="normal line">
@@ -291,6 +277,8 @@
                                 </p>
                                 {if="isset($value.description)"}
                                     <p>{$value.description}</p>
+                                {else}
+                                    <p>{$value.url.host}</p>
                                 {/if}
                             </li>
                         {/if}
@@ -317,7 +305,7 @@
                     {/loop}
                 {/if}
             </ul>
-            {if="!$post->isShort() && isset($attachments.pictures)"}
+            {if="isset($attachments.pictures) && !$post->isBrief()"}
                 <ul class="list flex middle">
                 {loop="$attachments.pictures"}
                     {if="$value.type != 'picture'"}
@@ -350,129 +338,31 @@
                     </li>
                 </ul>
             {/if}
-        </footer>
-
-        {if="$external"}
-            {$comments = $c->getComments($post)}
-            {if="$comments"}
-                <ul class="list divided spaced middle">
-                    <li class="subheader">
-                        <p>
-                            <span class="info">{$comments|count}</span>
-                            {$c->__('post.comments')}
+            {$tags = $post->getTags()}
+            {if="isset($tags)"}
+                <ul class="list thick">
+                    <li>
+                        <span class="primary icon zmdi zmdi-tag gray"></span>
+                        <p></p>
+                        <p class="normal">
+                            {loop="$tags"}
+                                <a target="_blank" href="{$c->route('tag', [$value])}">#{$value}</a>
+                            {/loop}
                         </p>
                     </li>
-                    {loop="$comments"}
-                        {if="$value->title || $value->contentraw"}
-                        <li>
-                            {if="$value->isLike()"}
-                                <span class="primary icon small red">
-                                    <i class="zmdi zmdi-favorite"></i>
-                                </span>
-                            {else}
-                                {$url = $value->getContact()->getPhoto('s')}
-                                {if="$url"}
-                                    <span class="primary icon small bubble">
-                                        <img src="{$url}">
-                                    </span>
-                                {else}
-                                    <span class="primary icon small bubble color {$value->getContact()->jid|stringToColor}">
-                                        <i class="zmdi zmdi-account"></i>
-                                    </span>
-                                {/if}
-                            {/if}
-                            <p class="normal line">
-                                <span class="info" title="{$value->published|strtotime|prepareDate}">
-                                    {$value->published|strtotime|prepareDate:true,true}
-                                </span>
-                                {$value->getContact()->getTrueName()}
-                            </p>
-                            {if="!$value->isLike()"}
-                                <p class="all">
-                                    {if="$value->title"}
-                                        {$value->title}
-                                    {else}
-                                        {$value->contentraw}
-                                    {/if}
-                                </p>
-                            {/if}
-                        </li>
-                        {/if}
-                    {/loop}
-                </ul><br />
+                </ul>
             {/if}
-        {elseif="$commentsdisabled"}
+        </footer>
+
+        {$comments}
+
+        {if="$commentsdisabled"}
             {$commentsdisabled}
         {else}
             <div id="comments" class="spin"></div>
         {/if}
     {/if}
 
-    {if="!$external"}
-        {$next = $post->getNext()}
-        {$previous = $post->getPrevious()}
-        {if="$next || $previous"}
-            <ul class="list card flex active">
-                {if="$previous"}
-                    <li class="block"
-                        onclick="MovimUtils.redirect('{$c->route('post', [$previous->origin, $previous->node, $previous->nodeid])}')">
-                        <span class="primary icon gray">
-                            <i class="zmdi zmdi-arrow-left"></i>
-                        </span>
-                        <p class="line" {if="isset($previous->title)"}title="{$previous->title}"{/if}>
-                        {if="isset($previous->title)"}
-                            {$previous->title}
-                        {else}
-                            {$previous->node}
-                        {/if}
-                        </p>
-                        <p class="line">{$previous->getSummary()}</p>
-                        <p>
-                            {$likes = $previous->countLikes()}
-                            {if="$likes > 0"}
-                                {$likes} <i class="zmdi zmdi-favorite-outline"></i>
-                            {/if}
-                            {$count = $previous->countComments()}
-                            {if="$count > 0"}
-                                {$count} <i class="zmdi zmdi-comment-outline"></i>
-                            {/if}
-                            <span class="info">
-                                {$previous->published|strtotime|prepareDate}
-                            </span>
-                        </p>
-                    </li>
-                {/if}
-                {if="$next"}
-                    <li class="block"
-                        onclick="MovimUtils.redirect('{$c->route('post', [$next->origin, $next->node, $next->nodeid])}')">
-                        <span class="control icon gray">
-                            <i class="zmdi zmdi-arrow-right"></i>
-                        </span>
-                        <p class="line" {if="isset($next->title)"}title="{$next->title}"{/if}>
-                        {if="isset($next->title)"}
-                            {$next->title}
-                        {else}
-                            {$next->node}
-                        {/if}
-                        </p>
-                        <p class="line">{$next->getSummary()}</p>
-                        <p>
-                            {$likes = $next->countLikes()}
-                            {if="$likes > 0"}
-                                {$likes} <i class="zmdi zmdi-favorite-outline"></i>
-                            {/if}
-                            {$count = $next->countComments()}
-                            {if="$count > 0"}
-                                {$count} <i class="zmdi zmdi-comment-outline"></i>
-                            {/if}
-                            <span class="info">
-                                {$next->published|strtotime|prepareDate}
-                            </span>
-                        </p>
-                    </li>
-                {/if}
-            </ul>
-        {/if}
-    {/if}
+    {$prevnext}
     <span class="clear padded"></span>
 </article>
