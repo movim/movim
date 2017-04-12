@@ -261,7 +261,7 @@
             <ul class="list middle divided spaced">
                 {if="isset($attachments.links)"}
                     {loop="$attachments.links"}
-                        {if="$post->picture != $value['href']"}
+                        {if="$post->picture != $value['href'] && $value.href != $post->getPublicUrl()"}
                             <li>
                                 <span class="primary icon gray">
                                     {if="isset($value.logo)"}
@@ -272,7 +272,11 @@
                                 </span>
                                 <p class="normal line">
                                     <a target="_blank" href="{$value.href}" title="{$value.href}">
-                                        {$value.title}
+                                        {if="$value.title"}
+                                            {$value.title}
+                                        {else}
+                                            {$value.href}
+                                        {/if}
                                     </a>
                                 </p>
                                 {if="isset($value.description)"}
