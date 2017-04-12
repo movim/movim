@@ -112,7 +112,11 @@
                         {/if}
                     {/if}
                     <content>
-                        {if="$post->isShort() && isset($attachments.pictures)"}
+                        {if="$post->getYoutube()"}
+                            <div class="video_embed">
+                                <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        {elseif="$post->isShort() && isset($attachments.pictures)"}
                             {loop="$attachments.pictures"}
                                 {if="$value.type != 'picture'"}
                                 <a href="{$value.href}" class="alternate" target="_blank">
@@ -120,11 +124,6 @@
                                 </a>
                                 {/if}
                             {/loop}
-                        {/if}
-                        {if="$post->getYoutube()"}
-                            <div class="video_embed">
-                                <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
-                            </div>
                         {/if}
                         {$post->contentcleaned}
                     </content>
@@ -134,7 +133,11 @@
         {else}
             <section>
                 <content>
-                    {if="$post->isShort() && isset($attachments.pictures)"}
+                    {if="$post->getYoutube()"}
+                        <div class="video_embed">
+                            <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    {elseif="$post->isShort() && isset($attachments.pictures)"}
                         {loop="$attachments.pictures"}
                             {if="$value.type != 'picture'"}
                             <a href="{$value.href}" class="alternate" target="_blank">
