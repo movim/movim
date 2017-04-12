@@ -850,7 +850,6 @@ class PostnDAO extends SQL
                             node = \'urn:xmpp:microblog:0\'
                             and postn.origin not in (select jid from rosterlink where session = :origin)
                             and postn.open = true
-                            and content != \'\'
                     ) p
                     order by published desc
                     ';

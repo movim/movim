@@ -509,7 +509,11 @@ class Postn extends Model
 
     public function getSummary()
     {
-        return truncate(stripTags(html_entity_decode($this->contentcleaned)), 140);
+        if($this->isBrief()) {
+            return truncate(html_entity_decode($this->title), 140);
+        } else {
+            return truncate(stripTags(html_entity_decode($this->contentcleaned)), 140);
+        }
     }
 
     public function getReply()
