@@ -397,6 +397,16 @@ class Postn extends Model
     {
         $attachments = $this->getAttachments();
 
+        if(array_key_exists('links', $attachments)) {
+            foreach($attachments['links'] as $attachment) {
+                if(in_array($attachment['rel'], ['enclosure', 'related'])) {
+                    return $attachment;
+                }
+            }
+        }
+
+        unset($attachments['links']);
+
         foreach($attachments as $key => $group) {
             foreach($group as $attachment) {
                 if(in_array($attachment['rel'], ['enclosure', 'related'])) {
