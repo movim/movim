@@ -20,7 +20,9 @@
         <p class="line">{$embed->images[0]['width']} x {$embed->images[0]['height']}</p>
         <p class="line">{$embed->images[0]['size']|sizeToCleanSize}</p>
     {else}
-        <p class="line">{$embed->title}</p>
-        <p class="line">{$embed->description}</p>
+        <p class="line normal">{$embed->title}</p>
+        {if="$embed->description"}
+            <p class="line">{$embed->description}</p>
+        {/if}
     {/if}
 </li>
