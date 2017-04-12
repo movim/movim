@@ -359,10 +359,12 @@
 
         {$comments}
 
-        {if="$commentsdisabled"}
-            {$commentsdisabled}
-        {else}
-            <div id="comments" class="spin"></div>
+        {if="!$public"}
+            {if="$commentsdisabled"}
+                {$commentsdisabled}
+            {else}
+                <div id="comments" class="spin"></div>
+            {/if}
         {/if}
     {/if}
 
