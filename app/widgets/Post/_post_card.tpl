@@ -202,14 +202,14 @@
 
                 {if="$post->isMine()"}
                     {if="$post->isEditable()"}
-                        <a class="button flat oppose gray"
+                        <a class="button icon flat oppose gray"
                            href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid])}"
                            title="{$c->__('button.edit')}">
                             <i class="zmdi zmdi-edit"></i>
                         </a>
                     {/if}
 
-                    <a class="button flat oppose gray"
+                    <a class="button icon flat oppose gray"
                        href="#"
                        onclick="PostActions_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
                        title="{$c->__('button.delete')}">
