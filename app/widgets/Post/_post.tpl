@@ -308,7 +308,7 @@
                     {/loop}
                 {/if}
             </ul>
-            {if="isset($attachments.pictures) && !$post->isBrief()"}
+            {if="isset($attachments.pictures) && !$post->isBrief() && !$post->isShort()"}
                 <ul class="list flex middle">
                 {loop="$attachments.pictures"}
                     {if="$value.type != 'picture'"}
