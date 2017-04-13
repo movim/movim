@@ -14,7 +14,7 @@
     <button onclick="Dialog_ajaxClear();" class="button flat">
         {$c->__('button.close')}
     </button>
-    <button onclick="PublishBrief.addUrl();" class="button flat">
+    <button onclick="PublishBrief.addUrl(); this.classList.add('disabled')" class="button flat">
         {$c->__('button.add')}
     </button>
 </div>

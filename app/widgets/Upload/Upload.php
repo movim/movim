@@ -9,7 +9,10 @@ class Upload extends \Movim\Widget\Base
         $this->addjs('upload.js');
         $this->registerEvent('upload_request_handle', 'onRequested');
         $this->registerEvent('upload_request_errornotacceptable', 'onErrorNotAcceptable');
-        header('Access-Control-Allow-Origin: *');
+
+        if(php_sapi_name() != 'cli') {
+            header('Access-Control-Allow-Origin: *');
+        }
     }
 
     function onRequested($package)

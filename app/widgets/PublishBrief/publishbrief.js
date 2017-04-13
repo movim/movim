@@ -35,15 +35,17 @@ var PublishBrief = {
     clearEmbed: function() {
         document.querySelector('input[name=embed]').value = '';
         PublishBrief_ajaxClearEmbed();
+    },
+    checkEmbed: function() {
+        var embed = document.querySelector('input[name=embed]');
+        embed.onchange();
     }
 }
 
 MovimWebsocket.attach(function() {
-    PublishBrief_ajaxClearEmbed();
+    PublishBrief_ajaxGet();
 });
 
 Upload.attach(function() {
-    var embed = document.querySelector('input[name=embed]');
-    embed.value = Upload.get;
-    embed.onchange();
+    PublishBrief.checkEmbed();
 });

@@ -14,6 +14,12 @@ class PublishBrief extends \Movim\Widget\Base
         $this->addcss('publishbrief.css');
     }
 
+    function ajaxGet()
+    {
+        $this->rpc('MovimTpl.fill', '#publishbrief', $this->preparePublishBrief());
+        $this->rpc('PublishBrief.checkEmbed');
+    }
+
     function ajaxPublish($form)
     {
         $this->rpc('PublishBrief.disableSend');
@@ -67,9 +73,7 @@ class PublishBrief extends \Movim\Widget\Base
 
             $this->rpc('Dialog_ajaxClear');
 
-            //if(in_array($embed->type, ['photo', 'rich'])) {
-                $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
-            //}
+            $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
         } catch(Exception $e) {
             error_log($e->getMessage());
         }
@@ -93,6 +97,16 @@ class PublishBrief extends \Movim\Widget\Base
         return $view->draw('_publishbrief_embed', true);
     }
 
+    function preparePublishBrief()
+    {
+        $view = $this->tpl();
+
+        $session = Session::start();
+        $view->assign('url', $session->get('share_url'));
+        $view->assign('embed', $this->prepareEmbedDefault());
+        return $view->draw('_publishbrief', true);
+    }
+
     function ajaxLink()
     {
         $view = $this->tpl();
@@ -110,6 +124,5 @@ class PublishBrief extends \Movim\Widget\Base
 
     function display()
     {
-        $this->view->assign('embed', $this->prepareEmbedDefault());
     }
 }

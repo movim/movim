@@ -360,10 +360,10 @@ class Postn extends Model
                             [
                                 'href' => $l['href'],
                                 'url'  => parse_url($l['href']),
-                                'title'=> $l['title'],
+                                'title'=> (isset($l['description'])) ? $l['title'] : false,
                                 'rel'  => 'related',
-                                'description' => $l['description'],
-                                'logo' => $l['logo']
+                                'description' => (isset($l['description'])) ? $l['description'] : false,
+                                'logo' => (isset($l['logo'])) ? $l['logo'] : false
                             ]
                         );
                         break;
