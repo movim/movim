@@ -61,6 +61,8 @@ var Publish = {
 }
 
 MovimWebsocket.attach(function() {
+    Notification_ajaxCurrent('publish');
+
     if(!Publish.checkFilled()) {
         var parts = MovimUtils.urlParts();
         if(parts.params.length > 3 && parts.params[3] == 'share') {

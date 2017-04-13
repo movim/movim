@@ -16,7 +16,7 @@ class Publish extends \Movim\Widget\Base
     {
         $this->addjs('publish.js');
         $this->addcss('publish.css');
-        $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
+        $this->registerEvent('pubsub_postpublish_handle', 'onPublish', 'publish');
         $this->registerEvent('microblog_commentcreatenode_handle', 'onCommentNodeCreated');
     }
 
