@@ -21,7 +21,7 @@ ul.list li {
     position: relative;
 }
 
-ul.list li > *:not(p, .hide) {
+ul.list li > *:not(p, .hide, form) {
     display: inline-block;
     top: 0;
 }
