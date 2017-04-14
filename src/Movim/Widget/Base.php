@@ -174,7 +174,7 @@ class Base
      * @param file is the file's name to make up the path for.
      * @param fspath is optional, returns the OS path if true, the URL by default.
      */
-    protected function respath($file, $fspath = false, $parent = false)
+    protected function respath($file, $fspath = false, $parent = false, $notime = false)
     {
         if($parent == false) {
             $folder = get_class($this);
@@ -187,7 +187,7 @@ class Base
         if($fspath) {
             $path = DOCUMENT_ROOT . '/'.$path;
         } else {
-            $path = urilize($path);
+            $path = urilize($path, $notime);
         }
 
         return $path;

@@ -117,7 +117,7 @@ class Stickers extends \Movim\Widget\Base
             $view->assign('packs', $packs);
             $view->assign('pack', $pack);
             $view->assign('info', parse_ini_file(dirname(__FILE__).'/stickers/'.$pack.'/info.ini'));
-            $view->assign('path', $this->respath('stickers'));
+            $view->assign('path', $this->respath('stickers', false, false, true));
 
             Drawer::fill($view->draw('_stickers', true), true);
         }

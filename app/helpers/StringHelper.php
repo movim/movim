@@ -319,7 +319,11 @@ function truncate($str, $width)
  * @param string $path
  * @return string
  */
-function urilize($path)
+function urilize($path, $notime = false)
 {
-    return BASE_URI . $path . '?t='.filemtime(DOCUMENT_ROOT . '/'.$path);
+    if($notime) {
+        return BASE_URI . $path;
+    } else {
+        return BASE_URI . $path . '?t='.filemtime(DOCUMENT_ROOT . '/'.$path);
+    }
 }
