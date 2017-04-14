@@ -3,6 +3,7 @@
 namespace Moxl\Stanza;
 
 use Movim\Session;
+use Ramsey\Uuid\Uuid;
 
 class Message
 {
@@ -25,7 +26,9 @@ class Message
         $root->setAttribute('to', str_replace(' ', '\40', $to));
         $root->setAttribute('type', $type);
 
-        if($id != false) {
+        if(in_array($receipts, ['received', 'displayed'])) {
+            $root->setAttribute('id', Uuid::uuid4());
+        } elseif($id != false) {
             $root->setAttribute('id', $id);
         } else {
             $root->setAttribute('id', $session->get('id'));
@@ -68,10 +71,6 @@ class Message
                 $request->setAttribute('id', $id);
                 $request->setAttribute('xmlns', 'urn:xmpp:receipts');
                 $root->appendChild($request);
-
-                $request = $dom->createElement('received');
-                $request->setAttribute('id', $id);
-                $request->setAttribute('xmlns', 'urn:xmpp:chat-markers:0');
             } elseif($receipts == 'displayed') {
                 $request = $dom->createElement('displayed');
                 $request->setAttribute('id', $id);

@@ -31,7 +31,8 @@ use Moxl\Utils;
 
 use Movim\Session;
 
-class Handler {
+class Handler
+{
     /**
      * Constructor of class Handler.
      *
@@ -152,12 +153,12 @@ class Handler {
 
     static public function searchPayload($hash, $s, $sparent = false)
     {
-        $hashToClass = array(
+        $hashToClass = [
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
             '78e731027d8fd50ed642340b7c9a63b3' => 'Message',// TLS
 
-            '73e598290725d8f5be907734d2b42b8f' => 'Markable',
             'f9e18585fd0e0873c52e880c800f267a' => 'Receipt',
+            '004a75eb0a92fca2b868732b56863e66' => 'Receipt',
             '3ca6c24643a9389b91323ddd1aaa84d0' => 'Displayed',
 
             '0977b7387b95f69007332a3e9b386f93' => 'MAMResult',
@@ -220,7 +221,7 @@ class Handler {
             'de175adc9063997df5b79817576ff659' => 'SASLFailure',
             '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',#
             '128477f50347d98ee1213d71f27e8886' => 'SessionBind',
-        );
+        ];
         if(isset($hashToClass[$hash])) {
             //if(file_exists($base.'Payload/'.$hashToClass[$hash].'.php')) {
             //    require_once($base.'Payload/'.$hashToClass[$hash].'.php');
@@ -246,12 +247,14 @@ class Handler {
     /* A simple function to format a error-string-text to a
      * camelTypeText
      */
-    static public function formatError($string) {
-
+    static public function formatError($string)
+    {
         $words = explode('-', $string);
         $f = 'error';
-        foreach($words as $word)
+
+        foreach($words as $word) {
             $f .= ucfirst($word);
+        }
 
         return $f;
     }
