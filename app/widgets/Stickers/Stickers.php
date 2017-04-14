@@ -133,7 +133,7 @@ class Stickers extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('jid', $to);
         $view->assign('packs', $this->getPacks());
-        $view->assign('path', $this->respath('stickers'));
+        $view->assign('path', $this->respath('stickers', false, false, true));
         Drawer::fill($view->draw('_stickers_smiley', true));
     }
 
@@ -147,7 +147,7 @@ class Stickers extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('jid', $to);
         $view->assign('packs', $this->getPacks());
-        $view->assign('path', $this->respath('stickers'));
+        $view->assign('path', $this->respath('stickers', false, false, true));
         Drawer::fill($view->draw('_stickers_smiley_two', true));
     }
 
