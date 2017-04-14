@@ -60,7 +60,9 @@ class PublishBrief extends \Movim\Widget\Base
 
     function ajaxEmbedTest($url)
     {
-        if($url == ''|| !filter_var($url, FILTER_VALIDATE_URL)) {
+        if($url == '') {
+            return;
+        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
             Notification::append(false, $this->__('publish.valid_url'));
             return;
         }
