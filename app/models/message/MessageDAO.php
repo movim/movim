@@ -176,9 +176,9 @@ class MessageDAO extends SQL
 
         $this->prepare(
             'Message',
-            array(
+            [
                 'session' => $this->_user
-            )
+            ]
         );
 
         return $this->run('Message');

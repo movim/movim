@@ -60,18 +60,16 @@ class PublishBrief extends \Movim\Widget\Base
 
     function ajaxEmbedTest($url)
     {
-        if($url == '') {
-            return;
-        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
+        if($url == ''|| !filter_var($url, FILTER_VALIDATE_URL)) {
             Notification::append(false, $this->__('publish.valid_url'));
             return;
         }
 
+        $this->rpc('Dialog_ajaxClear');
+
         try {
             $embed = Embed\Embed::create($url);
             $html = $this->prepareEmbed($embed);
-
-            $this->rpc('Dialog_ajaxClear');
 
             $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
         } catch(Exception $e) {

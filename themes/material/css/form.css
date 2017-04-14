@@ -1,5 +1,9 @@
 /* Form */
 
+li > form {
+    display: block;
+}
+
 form > div:not(.clear):not(.control) {
     min-height: 9rem;
     position: relative;
