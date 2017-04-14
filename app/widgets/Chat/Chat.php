@@ -19,7 +19,7 @@ use Movim\Session;
 
 class Chat extends \Movim\Widget\Base
 {
-    private $_pagination = 30;
+    private $_pagination = 50;
     private $_wrapper = [];
 
     function load()
