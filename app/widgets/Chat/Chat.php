@@ -78,12 +78,15 @@ class Chat extends \Movim\Widget\Base
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
 
+            $notify = true;
             $contact = $cd->getRosterItem($from);
             if($contact == null) {
+                $notify = false;
                 $contact = $cd->get($from);
             }
 
             if($contact != null
+            && $notify
             && !preg_match('#^\?OTR#', $message->body)
             && $message->type != 'groupchat') {
                 $avatar = $contact->getPhoto('s');
