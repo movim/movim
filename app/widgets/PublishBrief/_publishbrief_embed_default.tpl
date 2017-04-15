@@ -3,6 +3,6 @@
 </a>
 {if="$c->supported('upload')"}
 <a class="button flat icon gray" href="#" onclick="Upload_ajaxRequest()">
-    <i class="zmdi zmdi-upload"></i>
+    <i class="zmdi zmdi-attachment-alt"></i>
 </a>
 {/if}
