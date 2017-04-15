@@ -29,7 +29,7 @@ class Chat extends \Movim\Widget\Base
         $this->addcss('chat.css');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
-        $this->registerEvent('receipt', 'onMessage');
+        $this->registerEvent('receiptack', 'onMessage');
         $this->registerEvent('displayed', 'onMessage');
         $this->registerEvent('mamresult', 'onMessageHistory');
         $this->registerEvent('composing', 'onComposing');
@@ -79,8 +79,9 @@ class Chat extends \Movim\Widget\Base
             $from = $message->jidfrom;
 
             $contact = $cd->getRosterItem($from);
-            if($contact == null)
+            if($contact == null) {
                 $contact = $cd->get($from);
+            }
 
             if($contact != null
             && !preg_match('#^\?OTR#', $message->body)
