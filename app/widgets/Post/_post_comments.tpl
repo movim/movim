@@ -56,7 +56,7 @@
                     {if="$value->contentraw"}
                         {$value->contentraw|addHFR}
                     {else}
-                        {$value->title}
+                        {$value->title|addUrls|nl2br}
                     {/if}
                 </p>
             {/if}

@@ -18,6 +18,7 @@ class Login extends \Movim\Widget\Base
         $this->registerEvent('saslfailure', 'onSASLFailure');
         $this->registerEvent('storage_get_handle', 'onConfig');
         $this->registerEvent('storage_get_errorfeaturenotimplemented', 'onConfig');
+        $this->registerEvent('storage_get_errorserviceunavailable', 'onConfig');
     }
 
     function onStart($packet)

@@ -17,7 +17,9 @@ class PostActions extends \Movim\Widget\Base
 
         if(substr($node, 0, 29) == 'urn:xmpp:microblog:0:comments') {
             Notification::append(false, $this->__('post.comment_deleted'));
-            $this->ajaxGetComments($server, substr($node, 30));
+
+            $p = new Post;
+            $p->ajaxGetComments($server, substr($node, 30));
         } else {
             Notification::append(false, $this->__('post.deleted'));
 

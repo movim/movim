@@ -338,8 +338,8 @@ class Bootstrap
         'CommunityHeader','CommunityPosts','CommunitiesServer','Chat','Chats',
         'Config','Contact','Dialog','Drawer','Header','Init','Login',
         'LoginAnonymous','Menu','Notifs','Invitations','Post','PostActions',
-        'Presence','Publish','Rooms','Roster','Stickers','Upload','Vcard4',
-        'Visio','VisioLink'];
+        'Presence','Publish','PublishBrief','Rooms','Roster','Stickers','Upload',
+        'Vcard4','Visio','VisioLink'];
     }
 
     /**

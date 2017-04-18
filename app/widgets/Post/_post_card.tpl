@@ -183,14 +183,11 @@
                 <a class="button flat oppose" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
                     <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
                 </a>
-                {if="!$post->isBrief()"}
-                    <a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
-                        {$post->countLikes()} <i class="zmdi zmdi-favorite-outline"></i>
-                    </a>
-                    <a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
-                        {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
-                    </a>
-                {/if}
+                <a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                    {$post->countLikes()} <i class="zmdi zmdi-favorite-outline"></i>
+                </a><a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                    {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
+                </a>
                 <a class="button icon flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
                     <i class="zmdi zmdi-mail-reply"></i>
                 </a>
@@ -202,14 +199,13 @@
 
                 {if="$post->isMine()"}
                     {if="$post->isEditable()"}
-                        <a class="button icon flat oppose gray"
+                        <a class="button icon flat oppose gray on_desktop"
                            href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid])}"
                            title="{$c->__('button.edit')}">
                             <i class="zmdi zmdi-edit"></i>
                         </a>
                     {/if}
-
-                    <a class="button icon flat oppose gray"
+                    <a class="button icon flat oppose gray on_desktop"
                        href="#"
                        onclick="PostActions_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
                        title="{$c->__('button.delete')}">

@@ -10,8 +10,22 @@ class PublishBrief extends \Movim\Widget\Base
 {
     function load()
     {
+        $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
+
         $this->addjs('publishbrief.js');
         $this->addcss('publishbrief.css');
+    }
+
+    function onPublish($packet)
+    {
+        Notification::append(false, $this->__('post.published'));
+
+        list($to, $node, $id, $repost, $comments) = array_values($packet->content);
+
+        if(!$repost && $comments) {
+            $p = new Publish;
+            $p->ajaxCreateComments($to, $id);
+        }
     }
 
     function ajaxGet()
@@ -29,7 +43,8 @@ class PublishBrief extends \Movim\Widget\Base
             $p->setFrom($this->user->getLogin())
               ->setTo($this->user->getLogin())
               ->setTitle(htmlspecialchars($form->title->value))
-              ->setNode('urn:xmpp:microblog:0');
+              ->setNode('urn:xmpp:microblog:0')
+              ->enableComments();
 
             if($form->open->value === true) {
                 $p->isOpen();
