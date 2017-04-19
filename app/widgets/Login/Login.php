@@ -50,7 +50,7 @@ class Login extends \Movim\Widget\Base
     function onConfig($packet)
     {
         $this->user->createDir();
-        $this->rpc('MovimUtils.redirect', $this->route('root'));
+        $this->rpc('MovimUtils.reloadThis'/*, $this->route('root')*/);
     }
 
     function display()
