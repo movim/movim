@@ -1,7 +1,19 @@
 Movim Changelog
 ================
 
-v0.11 (trunk)
+v0.11.1
+---------------------------
+ * New PublishBrief widget
+ * Add support for MUC invitations
+ * Don't notify if the user is not in the Roster
+ * UI optimisations
+ * Better integration for Youtube videos
+ * Add support of XEP-0333: Chat Markers
+ * Update the translations
+ * New design for the post Material Design cards
+ * New UI for adding a contact through a Gateway (by singpolyma)
+
+v0.11
 ---------------------------
  * Navigation improvement
  * Add previous/next post shortcut in the footer of each posts
