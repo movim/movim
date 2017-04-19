@@ -24,7 +24,7 @@ class SASL extends Payload
 
         if($user) {
             if(!is_array($mec)) {
-                $mec = array($mec);
+                $mec = [$mec];
             }
 
             $mecchoice = str_replace('-', '', \Moxl\Auth::mechanismChoice($mec));

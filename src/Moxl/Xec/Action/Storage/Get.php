@@ -72,4 +72,11 @@ class Get extends Action
         $user->setConfig(['config' => false]);
         $this->deliver();
     }
+
+    public function errorServiceUnavailable($stanza)
+    {
+        $user = new User;
+        $user->setConfig(['config' => false]);
+        $this->deliver();
+    }
 }

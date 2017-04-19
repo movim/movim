@@ -43,7 +43,8 @@ class Message extends Payload
             $m = new \Modl\Message;
             $m->set($stanza, $parent);
 
-            if(!preg_match('#^\?OTR#', $m->body)) {
+            if(!preg_match('#^\?OTR#', $m->body)
+            && $stanza->x->invite == null) {
                 $md = new \Modl\MessageDAO;
                 $md->set($m);
 
