@@ -78,7 +78,7 @@ class Invitations extends \Movim\Widget\Base
     {
         $jid = echapJid($jid);
 
-        $rd = new \Modl\RosterLinkDAO();
+        $rd = new \Modl\RosterLinkDAO;
         $c  = $rd->get($jid);
 
         if(isset($c) && $c->groupname) {
@@ -110,7 +110,8 @@ class Invitations extends \Movim\Widget\Base
         unset($notifs[$jid]);
 
         $session->set('activenotifs', $notifs);
-        Notification::ajaxClear('invite|'.$jid);
+        $n = new Notification;
+        $n->ajaxClear('invite|'.$jid);
     }
 
     function ajaxRefuse($jid)
@@ -130,6 +131,7 @@ class Invitations extends \Movim\Widget\Base
         $session->set('activenotifs', $notifs);
 
         $this->onInvitations();
-        Notification::ajaxClear('invite|'.$jid);
+        $n = new Notification;
+        $n->ajaxClear('invite|'.$jid);
     }
 }
