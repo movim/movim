@@ -27,6 +27,7 @@ class Chat extends \Movim\Widget\Base
         $this->addjs('chat.js');
         //$this->addjs('chat_otr.js');
         $this->addcss('chat.css');
+        $this->registerEvent('invitation', 'onMessage');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('receiptack', 'onMessage');
@@ -720,6 +721,12 @@ class Chat extends \Movim\Widget\Base
             $counter = count($this->_wrapper[$date]);
 
             $this->_wrapper[$date][$counter.$msgkey] = $message;
+        }
+
+        if ($message->type == 'invitation') {
+            $view = $this->tpl();
+            $view->assign('message', $message);
+            $message->body = $view->draw('_chat_invitation', true);
         }
 
         return $this->_wrapper;

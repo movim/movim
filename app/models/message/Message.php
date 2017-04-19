@@ -181,11 +181,11 @@ class Message extends Model
                 }
             }
 
-            return $this->checkPicture();
+            //return $this->checkPicture();
         }
     }
 
-    public function checkPicture()
+    /*public function checkPicture()
     {
         $body = trim($this->body);
 
@@ -200,7 +200,7 @@ class Message extends Model
         return new \React\Promise\Promise(function($resolve) {
             $resolve(true);
         });
-    }
+    }*/
 
     public function convertEmojis()
     {
