@@ -5,6 +5,8 @@ use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 use Moxl\Xec\Action\Presence\Unsubscribe;
+use Moxl\Xec\Action\IqGateway;
+use Moxl\Utils;
 
 class Roster extends \Movim\Widget\Base
 {
@@ -16,6 +18,9 @@ class Roster extends \Movim\Widget\Base
         $this->registerEvent('roster_additem_handle', 'onAdd');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
+        $this->registerEvent('iqgateway_get_handle', 'onIqGatewayGet');
+        $this->registerEvent('iqgateway_set_handle', 'onIqGatewaySet');
+        $this->registerEvent('iqgateway_set_error', 'onIqGatewaySetError');
         $this->registerEvent('roster', 'onChange');
         $this->registerEvent('presence', 'onPresence', 'contacts');
     }
@@ -64,6 +69,34 @@ class Roster extends \Movim\Widget\Base
         $this->onUpdate();
     }
 
+    function onIqGatewayGet($packet)
+    {
+        $this->rpc(
+            'Roster.addGatewayPrompt',
+            $packet->from,
+            (string)$packet->content->prompt,
+            (string)$packet->content->desc
+        );
+    }
+
+    function onIqGatewaySet($packet)
+    {
+        $form = $packet->content['extra'];
+        unset($form->gatewayprompt);
+        unset($form->gateway);
+        $form->searchjid->value = $packet->content['query']->jid;
+        $this->ajaxAdd($form);
+    }
+
+    function onIqGatewaySetError($packet)
+    {
+       $this->rpc(
+            'Roster.errorGatewayPrompt',
+            $packet->content['errorid'],
+            $packet->content['message']
+        );
+    }
+
     /**
      * @brief Force the roster refresh
      * @returns
@@ -100,7 +133,40 @@ class Roster extends \Movim\Widget\Base
         $view->assign('groups', $rd->getGroups());
         $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
 
+        if($jid === null) {
+            $gateways = $this->gateways();
+            $view->assign('gateways', $gateways);
+
+            foreach($gateways as $gateway => $caps) {
+                $get = new IqGateway\Get;
+                $get->setTo($gateway)->request();
+            }
+        }
+
         Dialog::fill($view->draw('_roster_search', true));
+        $this->rpc('Roster.addGatewayPrompt', '', 'Jabber ID', 'JID');
+        $this->rpc('Roster.drawGatewayPrompt');
+    }
+
+    protected function gateways()
+    {
+        $cd = new \Modl\CapsDAO;
+        $pd = new \Modl\PresenceDAO;
+        $gateways = [];
+
+        foreach($pd->getAll() as $presence) {
+            $caps = $cd->get($presence->node . '#' . $presence->ver);
+            if($caps && (
+                $caps->category === "gateway" || (
+                    $caps->category !== "client" &&
+                    in_array("jabber:iq:gateway", $caps->features)
+                )
+            )) {
+                $gateways[$presence->jid] = $caps;
+            }
+        }
+
+        return $gateways;
     }
 
     /**
@@ -125,16 +191,38 @@ class Roster extends \Movim\Widget\Base
      */
     function ajaxAdd($form)
     {
+        // If there was a prompt, resolve using jabber:iq:gateway
+        if($form->gatewayprompt->value && $form->gateway->value) {
+            $set = new IqGateway\Set;
+            $set->setTo($form->gateway->value)
+                ->setPrompt((string)$form->searchjid->value)
+                ->setExtra($form)
+                ->request();
+            return;
+        }
+
+        // If a gateway was selected, and it has a domain-only JID
+        // Then we can use either new-style or old-style escaping
+        if($form->gateway->value && strpos($form->gateway->value, '@') === false) {
+            if(in_array('jid\20escaping', $this->gateways()[$form->gateway->value]->features)) {
+                $form->searchjid->value = Utils::escapeJidLocalpart($form->searchjid->value).'@'.$form->gateway->value;
+            } else {
+                $form->searchjid->value = str_replace('@', '%', $form->searchjid->value).'@'.$form->gateway->value;
+            }
+        }
+
         $r = new AddItem;
-        $r->setTo($form->searchjid->value)
+        $r->setTo((string)$form->searchjid->value)
           ->setFrom($this->user->getLogin())
-          ->setName($form->alias->value)
-          ->setGroup($form->group->value)
+          ->setName((string)$form->alias->value)
+          ->setGroup((string)$form->group->value)
           ->request();
 
         $p = new Subscribe;
-        $p->setTo($form->searchjid->value)
+        $p->setTo((string)$form->searchjid->value)
           ->request();
+
+        Dialog::ajaxClear();
     }
 
     /**
