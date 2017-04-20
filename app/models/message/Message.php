@@ -181,6 +181,12 @@ class Message extends Model
                 }
             }
 
+            if(isset($stanza->x->invite)) {
+                $this->type = 'invitation';
+                $this->subject = $this->jidfrom;
+                $this->jidfrom = current(explode('/',(string)$stanza->x->invite->attributes()->from));
+            }
+
             //return $this->checkPicture();
         }
     }
