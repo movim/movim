@@ -157,8 +157,6 @@ class Handler
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
             '78e731027d8fd50ed642340b7c9a63b3' => 'Message',// TLS
 
-            '89d8bb4741fd3a62e8b20e0d52a85a36' => 'Invitation',
-
             'f9e18585fd0e0873c52e880c800f267a' => 'ReceiptAck',
             '004a75eb0a92fca2b868732b56863e66' => 'ReceiptRequest',
             '3ca6c24643a9389b91323ddd1aaa84d0' => 'Displayed',
