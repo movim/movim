@@ -21,7 +21,7 @@ class Notification extends \Movim\Widget\Base
      * @param integer $action An action
      * @return void
      */
-    static function append($key = null, $title = null, $body = null, $picture = null, $time = 2, $action = null)
+    static function append($key = null, $title = null, $body = null, $picture = null, $time = 2, $action = null, $group = null)
     {
         // In this case we have an action confirmation
         if($key == null && $title != null) {
@@ -48,6 +48,7 @@ class Notification extends \Movim\Widget\Base
 
         // What we receive is not what it's on the screen on Android
         if($key != null && $key != $notifs_key && $title != null) {
+            if($group != null) $action = $group;
             RPC::call('Notification.android', $title, $body, $picture, $action);
         }
 
