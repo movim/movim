@@ -1,12 +1,3 @@
-var Publish = {
-    enableSend: function() {
-        MovimUtils.removeClass('#button_send', 'disabled');
-    },
-    disableSend: function() {
-        MovimUtils.addClass('#button_send', 'disabled');
-    }
-}
-
 var PublishBrief = {
     togglePrivacy: function() {
         var checked = document.querySelector('#publishbrief form #open');
@@ -39,6 +30,12 @@ var PublishBrief = {
     checkEmbed: function() {
         var embed = document.querySelector('input[name=embed]');
         embed.onchange();
+    },
+enableSend: function() {
+        MovimUtils.removeClass('#button_send', 'disabled');
+    },
+    disableSend: function() {
+        MovimUtils.addClass('#button_send', 'disabled');
     }
 }
 

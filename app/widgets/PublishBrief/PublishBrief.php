@@ -68,6 +68,7 @@ class PublishBrief extends \Movim\Widget\Base
             }
 
             $p->request();
+            $this->ajaxGet();
         } else {
             $this->rpc('PublishBrief.enableSend');
         }

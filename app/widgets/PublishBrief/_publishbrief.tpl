@@ -10,7 +10,7 @@
             </span>
             <span id="button_send"
                   class="control icon gray active"
-                  onclick="Publish.disableSend(); PublishBrief_ajaxPublish(MovimUtils.formToJson('brief'));">
+                  onclick="PublishBrief.disableSend(); PublishBrief_ajaxPublish(MovimUtils.formToJson('brief'));">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>
             <form onsubmit="return false;" name="brief">
