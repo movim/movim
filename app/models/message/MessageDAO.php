@@ -142,24 +142,30 @@ class MessageDAO extends SQL
         return $this->run('Message', 'item');
     }
 
-    function getLastItem($to)
+    function getLastItem($to = false)
     {
+        $params = ['session' => $this->_user];
+
         $this->_sql = '
             select * from message
-            where session = :session
+            where session = :session';
+
+        if($to !== false) {
+            $this->_sql .= '
                 and jidto = :jidto
-                and jidfrom = :jidfrom
+                and jidfrom = :jidfrom';
+
+            $params += [
+                'jidto'   => $to,
+                'jidfrom' => $this->_user
+            ];
+        }
+
+        $this->_sql .= '
             order by published desc
             limit 1';
 
-        $this->prepare(
-            'Message',
-            [
-                'session' => $this->_user,
-                'jidto'   => $to,
-                'jidfrom' => $this->_user
-            ]
-        );
+        $this->prepare('Message', $params);
 
         return $this->run('Message', 'item');
     }

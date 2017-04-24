@@ -34,8 +34,8 @@ class Login extends \Movim\Widget\Base
             $r->request();
 
             // We refresh the messages
-            //$c = new Chats;
-            //$c->ajaxGetHistory();
+            $c = new Chats;
+            $c->ajaxGetHistory();
 
             $p = new Presence;
             $p->start();

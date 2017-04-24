@@ -90,18 +90,13 @@ class Chats extends \Movim\Widget\Base
         $md = new \Modl\MessageDAO();
 
         if($jid == false) {
-            $chats = \Movim\Cache::c('chats');
+            $message = $md->getLastItem();
 
-            foreach($chats as $jid => $value) {
-                $messages = $md->getContact(echapJid($jid), 0, 1);
-                $g->setJid(echapJid($jid));
-
-                if(!empty($messages)) {
-                    $g->setStart(strtotime($messages[0]->published)+10);
-                }
-
-                $g->request();
+            if(!empty($message)) {
+                $g->setStart(strtotime($message->published)+10);
             }
+
+            $g->request();
         } elseif($this->validateJid($jid)) {
             $messages = $md->getContact(echapJid($jid), 0, 1);
 
