@@ -46,7 +46,7 @@ class Request extends Action
 
     public function setTo($to)
     {
-        $this->_to = echapJid($to);
+        $this->_to = $to;
         return $this;
     }
 

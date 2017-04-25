@@ -30,10 +30,6 @@ use Moxl\Xec\Action\Disco\Request;
 
 class Caps extends Payload
 {
-    private $exclude = [
-        'http://www.android.com/gtalk/client/caps#1.1'
-        ];
-
     public function handle($stanza, $parent = false)
     {
         $node = $stanza->attributes()->node.'#'.$stanza->attributes()->ver;
@@ -42,8 +38,7 @@ class Caps extends Payload
         $cd = new \Modl\CapsDAO;
         $c = $cd->get($node);
 
-        if(!$c && $parent->getName() != 'streamfeatures'
-        && !in_array($node, $this->exclude)) {
+        if(!$c && $parent->getName() != 'streamfeatures') {
             $d = new Request;
             $d->setTo($to)
               ->setNode($node)

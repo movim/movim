@@ -40,11 +40,14 @@ class Items extends Action
             }
 
             if($jid != $n->jid) {
-                if(isset($n->node)) {
+                if(isset($n->node)
+                && $n->node != ''
+                && $n->node != 'urn:xmpp:microblog:0') {
                     $r = new Request;
                     $r->setTo($n->jid)
                       ->setNode($n->node)
                       ->request();
+
                 }
 
                 $r = new Request;

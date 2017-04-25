@@ -4,7 +4,8 @@ namespace Moxl\Stanza;
 
 use Moxl\Utils;
 
-class Disco {
+class Disco
+{
     static function answer($to, $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

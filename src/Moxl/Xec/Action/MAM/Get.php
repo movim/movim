@@ -5,7 +5,8 @@ namespace Moxl\Xec\Action\MAM;
 use Moxl\Xec\Action;
 use Moxl\Stanza\MAM;
 
-class Get extends Action {
+class Get extends Action
+{
     private $_jid;
     private $_start;
     private $_end;
