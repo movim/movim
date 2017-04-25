@@ -23,7 +23,6 @@ class Contact extends \Movim\Widget\Base
     {
         $contact = $packet->content;
         $this->ajaxGetContact($contact->jid);
-        $this->ajaxRefreshSubscriptions($contact->jid);
     }
 
     public function onSubscriptions($packet)
