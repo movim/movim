@@ -22,20 +22,22 @@ class Items extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
-        $nd = new \Modl\ItemDAO();
+    public function handle($stanza, $parent = false)
+    {
+        $nd = new \Modl\ItemDAO;
 
         $jid = null;
 
         foreach($stanza->query->item as $item) {
             $n = $nd->getItem($this->_to, (string)$item->attributes()->node);
             if(!$n) {
-                $n = new \modl\Item();
+                $n = new \Modl\Item;
             }
 
             $n->set($item, $this->_to);
-            if(substr($n->node, 0, 29) != 'urn:xmpp:microblog:0:comments')
+            if(substr($n->node, 0, 29) != 'urn:xmpp:microblog:0:comments') {
                 $nd->set($n, true);
+            }
 
             if($jid != $n->jid) {
                 if(isset($n->node)) {
@@ -57,7 +59,8 @@ class Items extends Action
         $this->deliver();
     }
 
-    public function error($error) {
+    public function error($error)
+    {
         $this->pack($this->_to);
         $this->deliver();
     }
