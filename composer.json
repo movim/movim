@@ -17,7 +17,7 @@
 
         "movim/modl": "dev-master#77a0d357b939bb7000ed9b590b04a82d04d14c06",
         "movim/sasl2": "dev-master",
-        "movim/moxl": "dev-master#873edd70bea53e6c1b4164bc1a4e2156e00fe5a7",
+        "movim/moxl": "dev-master#34c904e096a42fbd56b49731ae8d66bdfdcc793e",
 
         "embed/embed": "dev-master",
         "heyupdate/emoji": "dev-master",
@@ -32,6 +32,7 @@
         "symfony/console": "^3.2",
         "cocur/slugify": "^2.3",
         "clue/buzz-react": "^1.1",
-        "dflydev/fig-cookies": "^1.0"
+        "dflydev/fig-cookies": "^1.0",
+        "defuse/php-encryption": "^2.0"
     }
 }

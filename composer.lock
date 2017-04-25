@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "22e26a771b837a0049214f177f511157",
+    "content-hash": "bd5c351f771b796c859e5bdf0f0fccf6",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -239,6 +239,65 @@
                 "tls"
             ],
             "time": "2017-03-06T11:59:08+00:00"
+        },
+        {
+            "name": "defuse/php-encryption",
+            "version": "2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/defuse/php-encryption.git",
+                "reference": "2c6fea3d9a4eaaa8cef86b2a89f3660818117b33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/defuse/php-encryption/zipball/2c6fea3d9a4eaaa8cef86b2a89f3660818117b33",
+                "reference": "2c6fea3d9a4eaaa8cef86b2a89f3660818117b33",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "paragonie/random_compat": "~2.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "nikic/php-parser": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Hornby",
+                    "email": "taylor@defuse.ca",
+                    "homepage": "https://defuse.ca/"
+                },
+                {
+                    "name": "Scott Arciszewski",
+                    "email": "info@paragonie.com",
+                    "homepage": "https://paragonie.com"
+                }
+            ],
+            "description": "Secure PHP Encryption Library",
+            "keywords": [
+                "aes",
+                "authenticated encryption",
+                "cipher",
+                "crypto",
+                "cryptography",
+                "encrypt",
+                "encryption",
+                "openssl",
+                "security",
+                "symmetric key cryptography"
+            ],
+            "time": "2016-10-10T15:20:26+00:00"
         },
         {
             "name": "dflydev/fig-cookies",
@@ -713,12 +772,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "873edd70bea53e6c1b4164bc1a4e2156e00fe5a7"
+                "reference": "34c904e096a42fbd56b49731ae8d66bdfdcc793e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/873edd70bea53e6c1b4164bc1a4e2156e00fe5a7",
-                "reference": "873edd70bea53e6c1b4164bc1a4e2156e00fe5a7",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/34c904e096a42fbd56b49731ae8d66bdfdcc793e",
+                "reference": "34c904e096a42fbd56b49731ae8d66bdfdcc793e",
                 "shasum": ""
             },
             "require": {
@@ -753,7 +812,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-04-25 07:13:29"
+            "time": "2017-04-25 21:58:57"
         },
         {
             "name": "movim/sasl2",

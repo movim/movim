@@ -87,7 +87,7 @@ class Chats extends \Movim\Widget\Base
     function ajaxGetHistory($jid = false)
     {
         $g = new \Moxl\Xec\Action\MAM\Get;
-        $md = new \Modl\MessageDAO();
+        $md = new \Modl\MessageDAO;
 
         if($jid == false) {
             $message = $md->getLastItem();
@@ -96,6 +96,7 @@ class Chats extends \Movim\Widget\Base
                 $g->setStart(strtotime($message->published)+10);
             }
 
+            $g->setLimit(150);
             $g->request();
         } elseif($this->validateJid($jid)) {
             $messages = $md->getContact(echapJid($jid), 0, 1);
