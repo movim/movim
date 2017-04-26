@@ -252,7 +252,7 @@ ul.tabs {
 }
 
 ul.tabs.wide > li {
-    width: 25%;
+    width: 33.33%;
     float: left;
 }
 

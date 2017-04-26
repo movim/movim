@@ -20,11 +20,6 @@
                     <i class="zmdi zmdi-accounts"></i>
                 </a>
             </li>
-            <li {if="$type == 'me'"}class="active"{/if}>
-                <a href="#blog" onclick="Menu_ajaxGetMe()" title="{$c->__('menu.mine')}">
-                    {$c->__('page.blog')}
-                </a>
-            </li>
         </ul>
     </header>
 {/if}

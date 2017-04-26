@@ -25,7 +25,7 @@
         </li>
     </ul>
 </header>
-<ul id="rosterlist" class="list active thin">
+<ul id="rosterlist" class="list active thin flex">
     {loop="$contacts"}
         {$c->prepareItem($value)}
     {/loop}

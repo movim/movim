@@ -336,7 +336,7 @@ class Bootstrap
         return ['Account','AccountNext','Ack','AdHoc','Avatar','Bookmark',
         'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
         'CommunityHeader','CommunityPosts','CommunitiesServer','Chat','Chats',
-        'Config','Contact','Dialog','Drawer','Header','Init','Login',
+        'Config','Contact','ContactHeader','Dialog','Drawer','Header','Init','Login',
         'LoginAnonymous','Menu','Notifs','Invitations','Post','PostActions',
         'Presence','Publish','PublishBrief','Rooms','Roster','Stickers','Upload',
         'Vcard4','Visio','VisioLink'];

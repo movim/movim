@@ -12,7 +12,6 @@
         <i class="zmdi zmdi-comment-text-alt"></i>
     </button>
 
-
     <ul class="list middle">
         <li>
             <span class="primary icon active" onclick="MovimTpl.hidePanel(); Contact_ajaxClear({$page});">

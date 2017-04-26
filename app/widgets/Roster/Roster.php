@@ -226,20 +226,6 @@ class Roster extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Remove a contact to the roster and unsubscribe
-     */
-    function ajaxDelete($jid)
-    {
-        $r = new RemoveItem;
-        $r->setTo($jid)
-          ->request();
-
-        $p = new Unsubscribe;
-        $p->setTo($jid)
-          ->request();
-    }
-
-    /**
      *  @brief Search for a contact to add
      */
     function ajaxSearchContact($jid)

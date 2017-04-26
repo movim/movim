@@ -20,7 +20,7 @@ class Route extends Base
                 'tag'           => ['t', 'i'],
                 'chat'          => ['f', 'r'],
                 'conf'          => false,
-                'contact'       => ['f'],
+                'contact'       => ['s'],
                 'disconnect'    => ['err'],
                 'feed'          => ['s', 'n'],
                 'main'          => false,

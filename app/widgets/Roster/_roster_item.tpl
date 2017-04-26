@@ -2,10 +2,9 @@
     id="{$contact->jid|cleanupId}"
     title="{$contact->jid}{if="$contact->value"} - {$presences[$contact->value]}{/if}"
     name="{$contact->getSearchTerms()}"
-    class="{if="$contact->value == null || $contact->value > 4"}faded{/if}"
+    class="block {if="$contact->value == null || $contact->value > 4"}faded{/if}"
     onclick="
-        Contact_ajaxGetContact('{$contact->jid}');
-        Contact_ajaxRefreshFeed('{$contact->jid}');
+        MovimUtils.redirect('{$c->route('contact', $contact->jid)}')
     ">
     {$url = $contact->getPhoto('m')}
     {if="$url"}

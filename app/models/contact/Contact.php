@@ -5,6 +5,7 @@ namespace Modl;
 use Respect\Validation\Validator;
 
 use Movim\Picture;
+use Movim\User;
 
 class Contact extends Model
 {
@@ -454,6 +455,12 @@ class Contact extends Model
         } else {
             return false;
         }
+    }
+
+    function isMe()
+    {
+        $user = new User;
+        return ($this->jid == $user->getLogin());
     }
 }
 

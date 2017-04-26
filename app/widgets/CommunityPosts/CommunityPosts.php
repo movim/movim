@@ -1,6 +1,7 @@
 <?php
 
 use Moxl\Xec\Action\Pubsub\GetItemsId;
+use Moxl\Xec\Action\Pubsub\GetItems;
 use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
@@ -16,6 +17,7 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         $this->registerEvent('pubsub_getitem_handle', 'onItem');
         $this->registerEvent('pubsub_getitemsid_handle', 'onItemsId');
+        //$this->registerEvent('pubsub_getitems_handle', 'onItems');
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
 
@@ -30,6 +32,12 @@ class CommunityPosts extends \Movim\Widget\Base
         $this->rpc('MovimUtils.enableVideos');*/
         $this->displayItems($server, $node);
     }
+
+    /*function onItems($packet)
+    {
+        list($server, $node) = array_values($packet->content);
+        $this->displayItems($server, $node);
+    }*/
 
     function onItemsId($packet)
     {
@@ -56,14 +64,16 @@ class CommunityPosts extends \Movim\Widget\Base
                 $id->deleteItem($server, $node);
                 $this->ajaxClear();
             }
+        } else {
+            $this->displayItems($server, $node, false, true);
         }
     }
 
-    private function displayItems($server, $node, $ids = false)
+    private function displayItems($server, $node, $ids = false, $public = false)
     {
         if(!$this->validateServerNode($server, $node)) return;
 
-        $html = $this->prepareCommunity($server, $node, 0, $ids);
+        $html = $this->prepareCommunity($server, $node, 0, $ids, $public);
 
         $slugify = new Slugify;
         $this->rpc('MovimTpl.fill', '#communityposts.'.$slugify->slugify($server.'_'.$node), $html);
@@ -81,7 +91,13 @@ class CommunityPosts extends \Movim\Widget\Base
         if(!$this->validateServerNode($server, $node)) return;
         $slugify = new Slugify;
 
-        $r = new GetItemsId;
+        // https://github.com/maranda/metronome/issues/236
+        /*if($node == 'urn:xmpp:microblog:0') {
+            $r = new GetItems;
+        } else {*/
+            $r = new GetItemsId;
+        //}
+
         $r->setTo($server)
           ->setNode($node);
 
@@ -120,12 +136,16 @@ class CommunityPosts extends \Movim\Widget\Base
         return $pw->preparePost($p, true, true, true);
     }
 
-    private function prepareCommunity($server, $node, $page = 0, $ids = false)
+    private function prepareCommunity($server, $node, $page = 0, $ids = false, $public = false)
     {
         $pd = new \Modl\PostnDAO;
 
         /*if($ids == false) {*/
+        if($public) {
+            $posts = $pd->getPublic($server, $node, $page*$this->_paging, $this->_paging);
+        } else {
             $posts = $pd->getNodeUnfiltered($server, $node, $page*$this->_paging, $this->_paging);
+        }
         /*
         } else {
             $posts = $pd->getIds($server, $node, $ids);
@@ -172,7 +192,9 @@ class CommunityPosts extends \Movim\Widget\Base
     function display()
     {
         $slugify = new Slugify;
-        $this->view->assign('class', $slugify->slugify($this->get('s').'_'.$this->get('n')));
+
+        $node = $this->get('n') != null ? $this->get('n') : 'urn:xmpp:microblog:0';
+        $this->view->assign('class', $slugify->slugify($this->get('s').'_'.$node));
     }
 }
 
