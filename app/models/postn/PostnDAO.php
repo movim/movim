@@ -852,9 +852,7 @@ class PostnDAO extends SQL
                     left outer join contact on postn.aid = contact.jid
                     where
                         node = \'urn:xmpp:microblog:0\'
-                        and postn.origin not in (select jid from rosterlink where session = :origin)
                         and postn.open = true
-                        and content != \'\'
                     group by origin
                     order by published desc
                     ';
@@ -869,8 +867,8 @@ class PostnDAO extends SQL
                         left outer join contact on postn.aid = contact.jid
                         where
                             node = \'urn:xmpp:microblog:0\'
-                            and postn.origin not in (select jid from rosterlink where session = :origin)
                             and postn.open = true
+                            order by origin, published desc
                     ) p
                     order by published desc
                     ';
