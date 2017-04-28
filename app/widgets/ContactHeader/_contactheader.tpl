@@ -23,7 +23,13 @@
         <p class="line">{$contact->jid}</p>
     </li>
 </ul>
-{if="!$contact->isMe()"}
+{if="$contact->isMe()"}
+<button class="button action color"
+    title="{$c->__('publishbrief.post')}"
+    onclick="MovimUtils.reload('{$c->route('publish')}')">
+    <i class="zmdi zmdi-edit"></i>
+</button>
+{else}
 <button onclick="ContactHeader_ajaxChat('{$contact->jid|echapJS}')" class="button action color">
     <i class="zmdi zmdi-comment-text-alt"></i>
 </button>
