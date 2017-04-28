@@ -202,7 +202,7 @@ class Menu extends \Movim\Widget\Base
     function preparePost($p)
     {
         $pw = new \Post;
-        return $pw->preparePost($p, true, true, true);
+        return $pw->preparePost($p, true, false, true);
     }
 
     function display()

@@ -30,7 +30,7 @@
     <i class="zmdi zmdi-edit"></i>
 </button>
 {else}
-<button onclick="ContactHeader_ajaxChat('{$contact->jid|echapJS}')" class="button action color">
+<button onclick="ContactHeader_ajaxChat('{$contact->jid|echapJS}')" class="button action color on_mobile">
     <i class="zmdi zmdi-comment-text-alt"></i>
 </button>
 {/if}
