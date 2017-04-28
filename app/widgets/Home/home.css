@@ -1,0 +1,12 @@
+body main {
+    background-color: #3F51B5;
+
+        background-image: url(img/logo_cloud.svg);
+        background-size: auto 2.6rem, 100% 100%;
+        background-position: center 2.25rem;
+        background-repeat: no-repeat;
+}
+
+header ul:first-child > li:first-child {
+    text-align: left;
+}

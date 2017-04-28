@@ -35,13 +35,22 @@
             {/if}
             <p>
                 {if="$post->isMicroblog()"}
-                    <a href="{$c->route('contact', $post->getContact()->jid)}">
+                    <a  {if="$public"}
+                            href="{$c->route('blog', $post->getContact()->jid)}"
+                        {else}
+                            href="{$c->route('contact', $post->getContact()->jid)}"
+                        {/if}
+                    >
                         {$post->getContact()->getTrueName()}
                     </a> –
                 {else}
-                    <a href="{$c->route('community', $post->origin)}">
+                    {if="$public"}
                         {$post->origin}
-                    </a> /
+                    {else}
+                        <a href="{$c->route('community', $post->origin)}">
+                            {$post->origin}
+                        </a>
+                    {/if} /
                     <a href="{$c->route('community', [$post->origin, $post->node])}">
                         {$post->node}
                     </a> –
@@ -180,7 +189,16 @@
 
         <li>
             <p class="normal">
-                <a class="button flat oppose" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                <a class="button flat oppose"
+                {if="$public"}
+                    {if="$post->isMicroblog()"}
+                    href="{$c->route('blog', [$post->origin, $post->nodeid])}"
+                    {else}
+                    href="{$c->route('node', [$post->origin, $post->node, $post->nodeid])}"
+                    {/if}
+                {else}
+                    href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}"
+                {/if}>
                     <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
                 </a>
                 <a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
@@ -188,13 +206,15 @@
                 </a><a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
                     {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
                 </a>
+                {if="!$public"}
                 <a class="button icon flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
                     <i class="zmdi zmdi-mail-reply"></i>
                 </a>
-                {if="$post->isPublic()"}
-                    <a class="button icon flat gray on_desktop" target="_blank" href="{$post->getPublicUrl()}">
-                        <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
-                    </a>
+                    {if="$post->isPublic()"}
+                        <a class="button icon flat gray on_desktop" target="_blank" href="{$post->getPublicUrl()}">
+                            <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
+                        </a>
+                    {/if}
                 {/if}
 
                 {if="$post->isMine()"}

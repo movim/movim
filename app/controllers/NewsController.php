@@ -35,7 +35,7 @@ class NewsController extends Base
                     $this->redirect('node', [$p->origin, $p->node, $p->nodeid]);
                 }
             } else {
-                $this->redirect('login');
+                $this->redirect('home');
             }
         }
     }
