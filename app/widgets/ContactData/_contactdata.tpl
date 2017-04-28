@@ -54,6 +54,8 @@
                 {/if}
             </li>
         {/if}
+    </ul>
+    <ul class="list thin active">
         {if="isset($caps) && $caps->isJingle()"}
             <li onclick="VisioLink.openVisio('{$contactr->getFullResource()}');">
                 <span class="primary icon green">
