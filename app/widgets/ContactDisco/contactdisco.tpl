@@ -3,7 +3,7 @@
         <p>{$c->__('explore.explore')}</p>
     </li>
 {loop="$users"}
-    <li class="block" title="{$value->jid}" style="background-image: url();" onclick="Contact_ajaxGetContact('{$value->jid}', {if="$page"}{$page}{else}0{/if});">
+    <li class="block" title="{$value->jid}" onclick="MovimUtils.redirect('{$c->route('contact', $contact->jid)}')">
         {$url = $value->getPhoto('l')}
         {if="$url"}
             <span class="primary icon bubble

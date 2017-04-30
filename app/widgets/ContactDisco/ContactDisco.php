@@ -18,6 +18,7 @@ class ContactDisco extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $users = $cd->getAllPublic(0, 10);
 
+        $this->view->assign('presencestxt', getPresencesTxt());
         $this->view->assign('blogs', $blogs);
         $this->view->assign('users', $users);
     }
