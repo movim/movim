@@ -12,6 +12,7 @@
     <section style="background-color: #EEE;">
         <?php if(empty($_GET['s'])) { ?>
             <aside>
+                <?php $this->widget('ContactDisco');?>
             </aside>
             <div>
                 <?php $this->widget('Invitations');?>
