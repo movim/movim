@@ -3,7 +3,7 @@
         <p>{$c->__('explore.explore')}</p>
     </li>
 {loop="$users"}
-    <li class="block" title="{$value->jid}" onclick="MovimUtils.redirect('{$c->route('contact', $contact->jid)}')">
+    <li class="block" title="{$value->jid}" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
         {$url = $value->getPhoto('l')}
         {if="$url"}
             <span class="primary icon bubble
