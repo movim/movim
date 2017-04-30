@@ -202,8 +202,8 @@ class Chats extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
-        $md = new \modl\MessageDAO();
-        $cad = new \modl\CapsDAO();
+        $md = new \Modl\MessageDAO;
+        $cad = new \Modl\CapsDAO;
 
         $presencestxt = getPresencesTxt();
 

@@ -14,10 +14,16 @@ class ContactData extends \Movim\Widget\Base
 
         $id = new \Modl\ItemDAO;
         $cd = new \Modl\ContactDAO;
+        $md = new \Modl\MessageDAO;
 
         $view = $this->tpl();
 
         $contactr = $cd->getRosterItem($jid);
+
+        $m = $md->getContact($jid, 0, 1);
+        if(isset($m)) {
+            $view->assign('message', $m[0]);
+        }
 
         $view->assign('mood', getMood());
         $view->assign('clienttype', getClientTypes());
