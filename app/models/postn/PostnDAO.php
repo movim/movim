@@ -896,12 +896,7 @@ class PostnDAO extends SQL
             break;
         }
 
-        $this->prepare(
-            'Postn',
-            [
-                'origin' => $this->_user
-            ]
-        );
+        $this->prepare('Postn');
 
         return $this->run('ContactPostn');
     }

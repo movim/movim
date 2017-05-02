@@ -1,8 +1,9 @@
 Movim Changelog
 ================
 
-v0.11.1
+v0.11.1 (trunk)
 ---------------------------
+ * New system to recover the session quickly
  * New PublishBrief widget
  * Add support for MUC invitations
  * Don't notify if the user is not in the Roster

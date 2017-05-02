@@ -280,6 +280,7 @@ class Bootstrap
         \Modl\Utils::loadModel('RosterLink');
         \Modl\Utils::loadModel('Cache');
         \Modl\Utils::loadModel('Postn');
+        \Modl\Utils::loadModel('Key');
         \Modl\Utils::loadModel('Subscription');
         \Modl\Utils::loadModel('SharedSubscription');
         \Modl\Utils::loadModel('Caps');

@@ -34,13 +34,34 @@ var Login = {
     /**
      * @brief Set the Movim cookie
      */
-    setCookie : function(value, expires) {
-        document.cookie = 'MOVIM_SESSION_ID=' + value + '; expires=' + expires + '; path=/';
+    setCookie : function(key, value, expires) {
+        document.cookie = key + '=' + value + '; expires=' + expires + '; path=/';
+    },
+
+    setQuick : function(deviceId, login, host, key) {
+        localStorage.setItem('quickDeviceId', deviceId);
+        localStorage.setItem('quickLogin', login);
+        localStorage.setItem('quickHost', host);
+        localStorage.setItem('quickKey', key);
+    },
+
+    clearQuick : function() {
+        localStorage.removeItem('quickDeviceId');
+        localStorage.removeItem('quickLogin');
+        localStorage.removeItem('quickHost');
+        localStorage.removeItem('quickKey');
+    },
+
+    quickLogin : function() {
+        if(localStorage.getItem('quickHost') != null) {
+            MovimWebsocket.connection.register(localStorage.getItem('quickHost'));
+        }
     }
 }
 
 MovimWebsocket.attach(function()
 {
+    Login.quickLogin();
     Login.init();
 
     // We enable the form
@@ -53,6 +74,14 @@ MovimWebsocket.attach(function()
 
 MovimWebsocket.register(function()
 {
+    if(localStorage.getItem('quickKey') != null) {
+        Login_ajaxQuickLogin(
+            localStorage.getItem('quickDeviceId'),
+            localStorage.getItem('quickLogin'),
+            localStorage.getItem('quickKey')
+        );
+    }
+
     form = document.querySelector('form[name="login"]');
     if(Login.submitted) {
         eval(form.dataset.action);

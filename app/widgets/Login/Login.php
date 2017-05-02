@@ -4,6 +4,8 @@ use Moxl\Xec\Action\Storage\Get;
 use Moxl\Xec\Action\Roster\GetList;
 
 use Respect\Validation\Validator;
+use Defuse\Crypto\Key;
+use Defuse\Crypto\Crypto;
 
 use Movim\Cookie;
 use Movim\Session;
@@ -55,7 +57,9 @@ class Login extends \Movim\Widget\Base
 
     function display()
     {
-        $submit = $this->call('ajaxLogin', "MovimUtils.formToJson('login')");
+        $submit = $this->call(
+            'ajaxLogin',
+            "MovimUtils.formToJson('login')");
 
         $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
@@ -93,6 +97,10 @@ class Login extends \Movim\Widget\Base
 
     function showErrorBlock($error)
     {
+        $kd = new \Modl\KeyDAO;
+        $kd->delete();
+
+        $this->rpc('Login.clearQuick');
         $this->rpc('MovimTpl.fill', '#error', $this->prepareError($error));
         $this->rpc('MovimUtils.addClass', '#login_widget', 'error');
     }
@@ -152,7 +160,34 @@ class Login extends \Movim\Widget\Base
         $this->doLogin($login, $password);
     }
 
-    private function doLogin($login, $password)
+    function ajaxQuickLogin($deviceId, $login, $key)
+    {
+        $validate_login = Validator::stringType()->length(1, 254);
+
+        if(!$validate_login->validate($login)) {
+            $this->showErrorBlock('login_format');
+            return;
+        }
+
+        $db = \Modl\Modl::getInstance();
+        $db->setUser($login);
+
+        try {
+            $key = Key::loadFromAsciiSafeString($key);
+
+            $kd = new \Modl\KeyDAO;
+            $ciphertext = $kd->get($deviceId);
+
+            if($ciphertext) {
+                $password = Crypto::decrypt($ciphertext->data, $key);
+                $this->doLogin($login, $password, $deviceId);
+            }
+        } catch(Exception $e) {
+            $this->rpc('Login.clearQuick');
+        }
+    }
+
+    private function doLogin($login, $password, $deviceId = false)
     {
         // We get the Server Configuration
         $cd = new \Modl\ConfigDAO;
@@ -193,8 +228,23 @@ class Login extends \Movim\Widget\Base
         $sd = new \Modl\SessionxDAO;
         $here = $sd->getHash(sha1($username.$password.$host));
 
+        $rkey = Key::createNewRandomKey();
+
+        $kd = new \Modl\KeyDAO;
+
+        $deviceId = generateKey(16);
+        $ciphertext = Crypto::encrypt($password, $rkey);
+
+        $key = new \Modl\Key;
+        $key->id = $deviceId;
+        $key->data = $ciphertext;
+
+        $kd->set($key);
+
+        $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
+
         if($here) {
-            $this->rpc('Login.setCookie', $here->session, date(DATE_COOKIE, Cookie::getTime()));
+            $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->session, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
         }
