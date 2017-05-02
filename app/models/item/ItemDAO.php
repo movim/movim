@@ -87,6 +87,7 @@ class ItemDAO extends SQL
             select server, count(node) as number
             from item
             where node not like :node
+            and node not like \'/%\'
             group by server
             order by number desc';
 
@@ -110,6 +111,7 @@ class ItemDAO extends SQL
                 count(*) as number from item
                 where node != \'\'
                 and node not like \'urn:xmpp:microblog:0:comments%\'
+                and node not like \'/%\'
                 group by jid)
                 as counter on item.jid = counter.jid
             where caps.category = \'pubsub\'
@@ -163,6 +165,7 @@ class ItemDAO extends SQL
                 and s.node = item.node
             where item.node != \'\'
                 and item.node not like \'urn:xmpp:microblog:0:comments%\'
+                and item.node not like \'/%\'
                 and item.node != \'urn:xmpp:microblog:0\'';
 
         if($server) {
