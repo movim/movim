@@ -3,6 +3,8 @@
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('Upload'); ?>
 
+<?php $this->widget('PostActions');?>
+
 <nav class="color dark">
     <?php $this->widget('Presence');?>
     <?php $this->widget('Navigation');?>
