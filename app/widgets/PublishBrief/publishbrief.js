@@ -4,7 +4,7 @@ var PublishBrief = {
 
         var button = document.querySelector('#publishbrief span.privacy i');
         MovimUtils.removeClass(button, 'zmdi-lock-outline');
-        MovimUtils.removeClass(button, 'zmdi-lock-globe');
+        MovimUtils.removeClass(button, 'zmdi-portable-wifi');
 
         // Public
         if(checked.checked) {
@@ -12,7 +12,7 @@ var PublishBrief = {
             MovimUtils.addClass(button, 'zmdi-lock-outline');
         } else {
             checked.checked = true;
-            MovimUtils.addClass(button, 'zmdi-globe');
+            MovimUtils.addClass(button, 'zmdi-portable-wifi');
         }
 
         PublishBrief_ajaxDisplayPrivacy(checked.checked);
@@ -31,7 +31,7 @@ var PublishBrief = {
         var embed = document.querySelector('input[name=embed]');
         embed.onchange();
     },
-enableSend: function() {
+    enableSend: function() {
         MovimUtils.removeClass('#button_send', 'disabled');
     },
     disableSend: function() {

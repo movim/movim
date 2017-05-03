@@ -1,4 +1,4 @@
-<ul class="list flex active middle">
+<ul class="list flex active">
     <li class="subheader">
         <p>{$c->__('explore.explore')}</p>
     </li>
@@ -22,13 +22,13 @@
             </span>
         {/if}
 
-        <p class="normal">
+        <p class="normal line">
             {$value->getTrueName()}
-        </p>
-
-        <p>
-            {$value->description|strip_tags|truncate:80}
-            {if="empty($value->description)"}-{/if}
+            {if="!empty($value->description)"}
+                <span class="second" title="{$value->description|strip_tags}">
+                    {$value->description|strip_tags|truncate:80}
+                </span>
+            {/if}
         </p>
     </li>
 {/loop}

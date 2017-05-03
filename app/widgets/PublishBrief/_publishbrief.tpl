@@ -28,6 +28,7 @@
                     type="checkbox"
                     id="open"
                     name="open"
+                    checked
                     style="display: none;"
                 >
                 <input type="hidden"
@@ -42,9 +43,9 @@
 
     <ul class="list middle">
         <li>
-            <span class="primary icon gray bubble active privacy"
+            <span class="primary icon gray bubble active privacy color"
                   onclick="PublishBrief.togglePrivacy()">
-                <i class="zmdi zmdi-lock-outline"></i>
+                <i class="zmdi zmdi-portable-wifi"></i>
             </span>
             <span class="control icon active gray"
                 title="{$c->__('publishbrief.post')}"
