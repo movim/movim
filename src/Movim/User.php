@@ -54,7 +54,7 @@ class User
     function isLogged()
     {
         $s = Session::start();
-        return ($s->get('jid'));
+        return (bool)$s->get('jid');
     }
 
     function createDir()

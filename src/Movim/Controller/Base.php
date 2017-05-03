@@ -80,12 +80,8 @@ class Base
             $this->page->addScript('pako_inflate.js');
         }
 
-        if($this->session_only) {
-            $user = new User;
-            $content = new Builder($user);
-        } else {
-            $content = new Builder;
-        }
+        $user = new User;
+        $content = new Builder($user);
 
         if($this->raw) {
             echo $content->build($this->name);

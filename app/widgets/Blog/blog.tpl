@@ -1,6 +1,6 @@
 <header>
+    {if="$mode == 'blog'"}
     <ul class="list thick">
-        {if="$mode == 'blog'"}
         <li>
             <span class="primary icon gray">
                 <i class="zmdi zmdi-edit"></i>
@@ -31,57 +31,71 @@
                 <p>{$contact->description}</p>
             {/if}
         </li>
-        {elseif="$mode == 'tag'"}
+    </ul>
+    {elseif="$mode == 'tag'"}
+    <ul class="list middle">
         <li>
+            {if="$c->getUser()->isLogged()"}
+            <span class="primary icon active gray" onclick="history.back()">
+                <i class="zmdi zmdi-arrow-back"></i>
+            </span>
+            {else}
             <span class="primary icon gray">
                 <i class="zmdi zmdi-tag"></i>
             </span>
-            <h2>
+            {/if}
+            <p>
                 <a href="{$c->route('tag', array($tag))}">
                     #{$tag}
                 </a>
-            </h2>
+            </p>
         </li>
-        {else}
-            <li>
-                <span class="primary icon gray">
-                    <i class="zmdi zmdi-pages"></i>
-                </span>
-                <span class="control icon active">
-                    <a
-                        href="{$c->route('feed', array($server, $node))}"
-                        target="_blank"
-                        title="Atom"
-                    >
-                        <i class="zmdi zmdi-rss"></i>
-                    </a>
-                </span>
-                <p>
-                    <a href="{$c->route('node', array($server, $node))}">
-                        {if="$item != null"}
-                            {if="$item->name"}
-                                {$item->name}
-                            {else}
-                                {$item->node}
-                            {/if}
-                        {/if}
-                    </a>
-                </p>
-                {if="$item->description"}
-                    <p title="{$item->description|stripTags}">
-                        {$item->description|stripTags}
-                    </p>
-                {else}
-                    <p>{$item->server}</p>
-                {/if}
-            </li>
-        {/if}
     </ul>
+    {else}
+    <ul class="list thick">
+        <li>
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-pages"></i>
+            </span>
+            <span class="control icon active">
+                <a
+                    href="{$c->route('feed', array($server, $node))}"
+                    target="_blank"
+                    title="Atom"
+                >
+                    <i class="zmdi zmdi-rss"></i>
+                </a>
+            </span>
+            <p>
+                <a href="{$c->route('node', array($server, $node))}">
+                    {if="$item != null"}
+                        {if="$item->name"}
+                            {$item->name}
+                        {else}
+                            {$item->node}
+                        {/if}
+                    {/if}
+                </a>
+            </p>
+            {if="$item->description"}
+                <p title="{$item->description|stripTags}">
+                    {$item->description|stripTags}
+                </p>
+            {else}
+                <p>{$item->server}</p>
+            {/if}
+        </li>
+    </ul>
+    {/if}
 </header>
 
 <div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
     {loop="$posts"}
-        {$c->preparePost($value)}
+        {if="$c->getUser()->isLogged()"}
+            {$c->prepareCard($value)}
+        {else}
+            {$c->preparePost($value)}
+        {/if}
     {/loop}
     {if="isset($more)"}
         <article>
@@ -111,13 +125,4 @@
             </li>
         </ul>
     {/if}
-
-    <ul class="list">
-        <li>
-            <span class="primary icon gray">
-                <i class="zmdi zmdi-cloud-outline"></i>
-            </span>
-            <p class="center normal"><a target="_blank" href="https://movim.eu">Powered by Movim</a></p>
-        </li>
-    </ul>
 </div>

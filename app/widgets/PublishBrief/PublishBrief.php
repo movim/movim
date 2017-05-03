@@ -50,6 +50,11 @@ class PublishBrief extends \Movim\Widget\Base
                 $p->isOpen();
             }
 
+            $tags = getHashtags(htmlspecialchars($form->title->value));
+            if(is_array($tags)) {
+                $p->setTags($tags);
+            }
+
             if(Validator::notEmpty()->url()->validate($form->embed->value)) {
                 try {
                     $embed = Embed\Embed::create($form->embed->value);

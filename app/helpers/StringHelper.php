@@ -75,7 +75,18 @@ function addUrls($string, $preview = false) {
     );
 }
 
-function addHFR($string) {
+function addHashtagsLinks($string)
+{
+    return preg_replace_callback("/(#\w+)/u", function($match) {
+        return
+            '<a href="'.\Movim\Route::urlize('tag', substr($match[0], 1)).'">'.
+            $match[0].
+            '</a>';
+    }, $string);
+}
+
+function addHFR($string)
+{
     // HFR EasterEgg
     return preg_replace_callback(
             '/\[:([\w\s-]+)([:\d])*\]/', function ($match) {
@@ -95,11 +106,32 @@ function addHFR($string) {
  * @param check the links and convert them to pictures (heavy)
  * @return string
  */
-function prepareString($string, $large = false, $preview = false) {
+function prepareString($string, $large = false, $preview = false)
+{
     $string = addUrls($string, $preview);
 
     // We add some smileys...
     return trim((string)requestURL('http://localhost:1560/emojis/', 2, ['string' => $string]));
+}
+
+/**
+ * @desc Return the tags in a string
+ *
+ * @param string $string
+ * @return array
+ */
+function getHashtags($string)
+{
+    $hashtags = false;
+    preg_match_all("/(#\w+)/u", $string, $matches);
+    if ($matches) {
+        $hashtagsArray = array_count_values($matches[0]);
+        $hashtags = array_map(function($tag) {
+            return substr($tag, 1);
+        } ,array_keys($hashtagsArray));
+    }
+
+    return $hashtags;
 }
 
 /*

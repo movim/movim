@@ -349,7 +349,7 @@
                         <p></p>
                         <p class="normal">
                             {loop="$tags"}
-                                <a target="_blank" href="{$c->route('tag', [$value])}">#{$value}</a>
+                                <a href="{$c->route('tag', [$value])}">#{$value}</a>
                             {/loop}
                         </p>
                     </li>

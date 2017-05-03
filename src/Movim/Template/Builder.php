@@ -23,7 +23,7 @@ class Builder
     {
         $this->user = $user;
 
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
         $this->theme = $config->theme;
     }
@@ -221,7 +221,8 @@ class Builder
         echo '<%scripts%>';
     }
 
-    function printScripts() {
+    function printScripts()
+    {
         $out = '';
         $widgets = Wrapper::getInstance();
         $scripts = array_merge($this->scripts, $widgets->loadjs());
@@ -237,7 +238,8 @@ class Builder
         return $out;
     }
 
-    function printCss() {
+    function printCss()
+    {
         $out = '';
         $widgets = Wrapper::getInstance();
         $csss = array_merge($this->css, $widgets->loadcss()); // Note the 3rd s, there are many.

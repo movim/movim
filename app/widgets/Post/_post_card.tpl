@@ -62,7 +62,7 @@
             </p>
             {if="$post->isBrief()"}
                 <p class="normal">
-                    {$post->title|addUrls|nl2br}
+                    {$post->title|addHashtagsLinks|addUrls|nl2br}
                 </p>
             {/if}
         </li>

@@ -119,6 +119,12 @@ class Blog extends \Movim\Widget\Base
         return $pw->preparePost($p, true, true);
     }
 
+    public function prepareCard($p)
+    {
+        $pw = new Post;
+        return $pw->preparePost($p, true, false, true);
+    }
+
     function display()
     {
         $this->view->assign('server', $this->_from);
@@ -146,7 +152,7 @@ class Blog extends \Movim\Widget\Base
 
     private function validateTag($tag)
     {
-        return Validator::stringType()->notEmpty()->alnum('_-')->validate($tag);
+        return Validator::stringType()->notEmpty()->noWhitespace()->validate($tag);
     }
 
     function getComments($post)
