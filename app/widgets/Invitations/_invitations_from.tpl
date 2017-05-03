@@ -28,7 +28,7 @@
             <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Invitations_ajaxRefuse('{$value->jid}');">
                 <i class="zmdi zmdi-close"></i>
             </span>
-            <span class="control icon gray active" onclick="Contact_ajaxGetContact('{$value->jid}');">
+            <span class="control icon gray active" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
                 <i class="zmdi zmdi-account"></i>
             </span>
             <p class="line normal">
