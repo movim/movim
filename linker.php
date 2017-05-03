@@ -44,7 +44,7 @@ function handleSSLErrors($errno, $errstr) {
 
 // Temporary linker killer
 $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
-    if($timestamp < time() - 1800) {
+    if($timestamp < time() - 3600*6) {
         $conn->close();
     }
 });
@@ -97,8 +97,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
     if(substr($data, -1) == "") {
         $messages = explode("", $buffer . substr($data, 0, -1));
         $buffer = '';
-
-        $timestamp = time();
 
         foreach ($messages as $message) {
             #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
@@ -236,6 +234,8 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             }
 
             #fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");
+
+            $timestamp = time();
 
             if($restart) {
                 $session = Session::start();
