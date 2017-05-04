@@ -2,38 +2,38 @@
 
 namespace Modl;
 
-class KeyDAO extends SQL
+class EncryptedPassDAO extends SQL
 {
     function get($id)
     {
         $this->_sql = '
-            select * from key
+            select * from encryptedpass
             where
                 session = :session
             and id    = :id';
 
         $this->prepare(
-            'Key',
+            'EncryptedPass',
             [
                 'session' => $this->_user,
                 'id' => $id
             ]
         );
 
-        return $this->run('Key', 'item');
+        return $this->run('EncryptedPass', 'item');
     }
 
-    function set(Key $key)
+    function set(EncryptedPass $key)
     {
         $this->_sql = '
-            update key
+            update encryptedpass
                 set data = :data,
                     timestamp = :timestamp
                 where session = :session
                 and id = :id';
 
         $this->prepare(
-            'Key',
+            'EncryptedPass',
             [
                 'session'   => $this->_user,
                 'data'      => $key->data,
@@ -42,16 +42,16 @@ class KeyDAO extends SQL
             ]
         );
 
-        $this->run('Key');
+        $this->run('EncryptedPass');
 
         if(!$this->_effective) {
             $this->_sql = '
-                insert into key
+                insert into encryptedpass
                 (session, id, data, timestamp)
                 values (:session, :id, :data, :timestamp)';
 
             $this->prepare(
-                'Key',
+                'EncryptedPass',
                 [
                     'session'   => $this->_user,
                     'id'        => $key->id,
@@ -67,16 +67,16 @@ class KeyDAO extends SQL
     function delete()
     {
         $this->_sql = '
-            delete from key
+            delete from encryptedpass
             where session = :session';
 
         $this->prepare(
-            'Key',
+            'EncryptedPass',
             [
                 'session' => $this->_user
             ]
         );
 
-        return $this->run('Key');
+        return $this->run('EncryptedPass');
     }
 }

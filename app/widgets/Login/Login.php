@@ -97,8 +97,8 @@ class Login extends \Movim\Widget\Base
 
     function showErrorBlock($error)
     {
-        $kd = new \Modl\KeyDAO;
-        $kd->delete();
+        $ed = new \Modl\EncryptedPassDAO;
+        $ed->delete();
 
         $this->rpc('Login.clearQuick');
         $this->rpc('MovimTpl.fill', '#error', $this->prepareError($error));
@@ -175,8 +175,8 @@ class Login extends \Movim\Widget\Base
         try {
             $key = Key::loadFromAsciiSafeString($key);
 
-            $kd = new \Modl\KeyDAO;
-            $ciphertext = $kd->get($deviceId);
+            $ed = new \Modl\EncryptedPassDAO;
+            $ciphertext = $ed->get($deviceId);
 
             if($ciphertext) {
                 $password = Crypto::decrypt($ciphertext->data, $key);
@@ -230,16 +230,16 @@ class Login extends \Movim\Widget\Base
 
         $rkey = Key::createNewRandomKey();
 
-        $kd = new \Modl\KeyDAO;
+        $ed = new \Modl\EncryptedPassDAO;
 
         $deviceId = generateKey(16);
         $ciphertext = Crypto::encrypt($password, $rkey);
 
-        $key = new \Modl\Key;
+        $key = new \Modl\EncryptedPass;
         $key->id = $deviceId;
         $key->data = $ciphertext;
 
-        $kd->set($key);
+        $ed->set($key);
 
         $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
 

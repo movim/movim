@@ -2,7 +2,7 @@
 
 namespace Modl;
 
-class Key extends Model
+class EncryptedPass extends Model
 {
     public $session;
     public $id;
