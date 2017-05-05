@@ -11,7 +11,7 @@
                 </span>
             {else}
                 <span class="primary icon bubble color {$contact->jid|stringToColor}
-                     {if="isset($presence)"}status {$presence}{/if}"
+                     {if="isset($presence)"}status {$presence}{/if}
                 ">
                     {$contact->getTrueName()|firstLetterCapitalize}
                 </span>
@@ -60,7 +60,7 @@
     {/if}
 </div>
 <div class="block">
-    <ul class="list middle active">
+    <ul class="list middle active divided spaced">
         {if="isset($caps) && $caps->isJingle()"}
             <li onclick="VisioLink.openVisio('{$contactr->getFullResource()}');">
                 <span class="primary icon green">
@@ -97,7 +97,8 @@
                 <span class="control icon">
                     <i class="zmdi zmdi-chevron-right"></i>
                 </span>
-                <p class="normal line">{$c->__('blog.visit')}</p>
+                <p></p>
+                <p class="normal">{$c->__('blog.visit')}</p>
             </li>
         </a>
     </ul>

@@ -31,11 +31,11 @@ class ContactData extends \Movim\Widget\Base
         $view->assign('contactr', $contactr);
         $view->assign('subscriptions', $id->getSharedItems($jid));
 
-        if($contactr->value != null) {
-            $view->assign('presence', getPresencesTxt()[$contactr->value]);
-        }
-
         if(isset($contactr)) {
+            if($contactr->value != null) {
+                $view->assign('presence', getPresencesTxt()[$contactr->value]);
+            }
+
             $view->assign('caps', $contactr->getCaps());
         }
 

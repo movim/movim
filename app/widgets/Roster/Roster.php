@@ -123,7 +123,7 @@ class Roster extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $rd = new \Modl\RosterLinkDAO();
+        $rd = new \Modl\RosterLinkDAO;
 
         $view->assign('jid', $jid);
         $view->assign('add',
@@ -175,7 +175,7 @@ class Roster extends \Movim\Widget\Base
     function ajaxDisplayFound($jid)
     {
         if($jid != '') {
-            $cd = new \Modl\ContactDAO();
+            $cd = new \Modl\ContactDAO;
             $contacts = $cd->searchJid($jid);
 
             $view = $this->tpl();

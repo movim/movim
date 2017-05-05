@@ -2,6 +2,7 @@
 <?php $this->widget('Search');?>
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('PostActions');?>
+<?php $this->widget('ContactActions');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>
