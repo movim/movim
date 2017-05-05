@@ -47,7 +47,6 @@ class Items extends Action
                     $r->setTo($n->jid)
                       ->setNode($n->node)
                       ->request();
-
                 }
 
                 $r = new Request;

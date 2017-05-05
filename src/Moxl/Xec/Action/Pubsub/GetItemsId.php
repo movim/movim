@@ -58,7 +58,7 @@ class GetItemsId extends Errors
     {
         $evt = new Event;
 
-        $pd = new \Modl\PostnDAO();
+        $pd = new \Modl\PostnDAO;
 
         $ids = [];
 
@@ -80,8 +80,8 @@ class GetItemsId extends Errors
         $this->deliver();
     }
 
-    public function error($errorid, $message) {
-
+    public function error($errorid, $message)
+    {
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }

@@ -34,41 +34,41 @@ class Errors extends Action
     // Generic Pubsub errors handlers
     public function errorItemNotFound($error)
     {
-        $this->event('pubsuberror', "The node does not exist");
+        $this->deliver();
     }
 
     public function errorFeatureNotImplemented($error)
     {
-        $this->event('pubsuberror', "Your server doesn't support this feature");
+        $this->deliver();
     }
 
     public function errorNotAuthorized($error)
     {
-        $this->event('pubsuberror', "You are not autorized to do this action");
+        $this->deliver();
     }
 
     public function errorServiceUnavailable($error)
     {
-        $this->event('pubsuberror', "This service is unavailable");
+        $this->deliver();
     }
 
     public function errorForbidden($error)
     {
-        $this->event('pubsuberror', "You are not autorized to do this action");
+        $this->deliver();
     }
 
     public function errorRemoteServerNotFound($error)
     {
-        $this->event('pubsuberror', "The server does not exist");
+        $this->deliver();
     }
 
     public function errorUnexpectedRequest($error)
     {
-        $this->event('pubsuberror', "Unexpected request");
+        $this->deliver();
     }
 
     public function errorNotAcceptable($error)
     {
-        $this->event('pubsuberror', "The server cannot accept this action");
+        $this->deliver();
     }
 }

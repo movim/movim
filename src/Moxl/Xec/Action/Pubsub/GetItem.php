@@ -107,4 +107,14 @@ class GetItem extends Errors
             $pd->handle($stanza);
         }
     }
+
+    public function errorServiceUnavailable($stanza, $parent = false)
+    {
+        $pd = new PostDelete;
+        $pd->setTo($this->_to)
+           ->setNode($this->_node)
+           ->setId($this->_id);
+
+        $pd->handle($stanza);
+    }
 }

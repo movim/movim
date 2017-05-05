@@ -58,8 +58,9 @@ class PostDelete extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
-        $pd = new \modl\PostnDAO();
+    public function handle($stanza, $parent = false)
+    {
+        $pd = new \modl\PostnDAO;
         $pd->delete($this->_id);
 
         $td = new \Modl\TagDAO;
@@ -73,8 +74,9 @@ class PostDelete extends Errors
         $this->deliver();
     }
 
-    public function error($stanza) {
-        $pd = new \modl\PostnDAO();
+    public function error($stanza)
+    {
+        $pd = new \Modl\PostnDAO;
         $pd->delete($this->_id);
     }
 }
