@@ -34,7 +34,7 @@ class Blog extends \Movim\Widget\Base
             $this->url = $this->route('node', [$this->_from, $this->_node]);
         } elseif($this->_view == 'tag' && $this->validateTag($this->get('t'))) {
             $this->_mode = 'tag';
-            $this->_tag = $this->get('t');
+            $this->_tag = strtolower($this->get('t'));
             $this->title = '#'.$this->_tag;
         } else {
             $this->_from = $this->get('f');
@@ -58,7 +58,7 @@ class Blog extends \Movim\Widget\Base
         if($this->_id = $this->get('i')) {
             if(Validator::stringType()->between('1', '100')->validate($this->_id)) {
                 if(isset($this->_tag)) {
-                    $this->_messages = $pd->getPublicTag($this->get('t'), $this->_id * $this->_paging, $this->_paging + 1);
+                    $this->_messages = $pd->getPublicTag($this->_tag, $this->_id * $this->_paging, $this->_paging + 1);
                 } else {
                     $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, $this->_id * $this->_paging, $this->_paging + 1);
                 }
@@ -89,7 +89,7 @@ class Blog extends \Movim\Widget\Base
         } else {
             $this->_page = 1;
             if(isset($this->_tag)) {
-                $this->_messages = $pd->getPublicTag($this->get('t'), 0, $this->_paging + 1);
+                $this->_messages = $pd->getPublicTag($this->_tag, 0, $this->_paging + 1);
             } else {
                 $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, 0, $this->_paging + 1);
             }
