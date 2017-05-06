@@ -39,15 +39,23 @@
                 placeholder="{$username}"/>
             <label>{$c->__('chatrooms.nickname')}</label>
         </div>
-        <!--
-        <div class="element large mini">
-            <label>{$c->__('chatroom.autojoin_label')}</label>
-            <div class="checkbox">
-                <input type="checkbox" id="autojoin" name="autojoin"/>
-                <label for="autojoin"></label>
-            </div>
+        <div>
+            <ul class="list thick">
+                <li>
+                    <span class="primary">
+                        <div class="checkbox">
+                            <input
+                                {if="$room->autojoin"}checked{/if}
+                                type="checkbox"
+                                id="autojoin"
+                                name="autojoin"/>
+                            <label for="autojoin"></label>
+                        </div>
+                    </span>
+                    <p class="normal line">{$c->__('chatrooms.autojoin')}</p>
+                </li>
+            </ul>
         </div>
-        -->
     </section>
     <div>
         <button class="button flat" onclick="Dialog_ajaxClear()">

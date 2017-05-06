@@ -3,6 +3,9 @@ Movim Changelog
 
 v0.11.1 (trunk)
 ---------------------------
+ * Add autojoin support for chatrooms
+ * New Contact page
+ * Improve Posts tags detection and navigation
  * New system to recover the session quickly
  * New PublishBrief widget
  * Add support for MUC invitations

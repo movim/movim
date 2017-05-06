@@ -16,6 +16,7 @@ class Rooms extends \Movim\Widget\Base
         $this->addjs('rooms.js');
         $this->addcss('rooms.css');
         $this->registerEvent('message', 'onMessage');
+        $this->registerEvent('bookmark_get_handle', 'onGetBookmark');
         $this->registerEvent('bookmark_set_handle', 'onBookmark');
         $this->registerEvent('presence_muc_handle', 'onConnected');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected');
@@ -36,6 +37,19 @@ class Rooms extends \Movim\Widget\Base
                 0,
                 null
             );
+        }
+    }
+
+    function onGetBookmark()
+    {
+        $cod = new \Modl\ConferenceDAO;
+        $rooms = $cod->getAll();
+
+        foreach($rooms as $room) {
+            if ($room->autojoin
+            && !$this->checkConnected($room->conference, $room->nick)) {
+                $this->ajaxJoin($room->conference, $room->nick);
+            }
         }
     }
 
