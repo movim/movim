@@ -43,6 +43,9 @@ MovimWebsocket.attach(function() {
     PublishBrief_ajaxGet();
 });
 
-Upload.attach(function() {
-    PublishBrief.checkEmbed();
-});
+if(typeof Upload != 'undefined') {
+    Upload.attach(function(file) {
+        document.querySelector('input[name=embed]').value = file.uri;
+        PublishBrief.checkEmbed();
+    });
+}

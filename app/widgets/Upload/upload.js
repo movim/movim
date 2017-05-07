@@ -116,7 +116,8 @@ var Upload = {
             }
 
             if(Upload.xhr.readyState == 4
-            && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)) {
+            && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)
+            && Upload.file != null) {
                 Upload_ajaxFailed();
             }
         }
@@ -124,7 +125,10 @@ var Upload = {
         Upload.xhr.open("PUT", put, true);
 
         Upload.xhr.setRequestHeader('Content-Type', 'text/plain');
-        Upload.xhr.send(Upload.file);
+
+        if(Upload.file != null) {
+            Upload.xhr.send(Upload.file);
+        }
     },
 
     abort : function() {
