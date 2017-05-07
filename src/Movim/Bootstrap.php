@@ -337,10 +337,10 @@ class Bootstrap
         return ['Account','AccountNext','Ack','AdHoc','Avatar','Bookmark',
         'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
         'CommunityHeader','CommunityPosts','CommunitiesServer','Chat','Chats',
-        'Config','Contact','ContactHeader','Dialog','Drawer','Header','Init','Login',
-        'LoginAnonymous','Menu','Notifs','Invitations','Post','PostActions',
-        'Presence','Publish','PublishBrief','Rooms','Roster','Stickers','Upload',
-        'Vcard4','Visio','VisioLink'];
+        'Config','Contact','ContactData','ContactHeader','Dialog','Drawer',
+        'Header','Init','Login','LoginAnonymous','Menu','Notifs','Invitations',
+        'Post','PostActions','Presence','Publish','PublishBrief','Rooms',
+        'Roster','Stickers','Upload','Vcard4','Visio','VisioLink'];
     }
 
     /**

@@ -111,5 +111,21 @@
             <p>{$contact->date|strtotime|prepareDate:false}</p>
         </li>
         {/if}
+
+        {if="$contact->getMarital() != null"}
+        <li class="block">
+            <span class="primary icon gray"><i class="zmdi zmdi-accounts"></i></span>
+            <p>{$c->__('general.marital')}</p>
+            <p>{$contact->getMarital()}</p>
+        </li>
+        {/if}
+
+        {if="$contact->getGender() != null"}
+        <li class="block">
+            <span class="primary icon gray"><i class="zmdi zmdi-face"></i></span>
+            <p>{$c->__('general.gender')}</p>
+            <p>{$contact->getGender()}</p>
+        </li>
+        {/if}
     </ul>
 </section>

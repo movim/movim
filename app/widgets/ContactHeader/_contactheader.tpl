@@ -14,6 +14,9 @@
             </span>
             {/if}
         {/if}
+	        <span class="control active icon gray on_mobile" onclick="ContactActions_ajaxGetDrawer('{$contact->jid}')">
+            <i class="zmdi zmdi-more"></i>
+        </span>
         <span class="primary icon active gray" onclick="history.back()">
             <i class="zmdi zmdi-arrow-back"></i>
         </span>

@@ -16,6 +16,9 @@
                     {$contact->getTrueName()|firstLetterCapitalize}
                 </span>
             {/if}
+            <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->jid}')">
+                <i class="zmdi zmdi-more"></i>
+            </span>
             <p class="normal">
                 {$contact->getTrueName()}
             </p>
