@@ -268,8 +268,9 @@ class Publish extends \Movim\Widget\Base
                 $p->isOpen();
             }
 
+            $p->enableComments();
+
             if($content != '') {
-                $p->enableComments();
                 $p->setContent(htmlspecialchars($content));
             }
 
