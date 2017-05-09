@@ -101,7 +101,6 @@ class Publish extends \Movim\Widget\Base
 
         $this->rpc('MovimTpl.fill', '#publish', $view->draw('_publish_create', true));
 
-
         /*$pd = new \Modl\ItemDAO;
         $item = $pd->getItem($server, $node);
 
@@ -222,9 +221,18 @@ class Publish extends \Movim\Widget\Base
 
             $content = $content_xhtml = '';
 
+            $tags = [];
+
+            $tagsTitle = getHashtags(htmlspecialchars($form->title->value));
+            if(is_array($tagsTitle)) $tags += $tagsTitle;
+
             if(Validator::stringType()->notEmpty()->validate(trim($form->content->value))) {
                 $content = $form->content->value;
                 $content_xhtml = addHFR(MarkdownExtra::defaultTransform($content));
+
+                $tagsContent = getHashtags(htmlspecialchars($form->content->value));
+                movim_log(serialize($tagsContent));
+                if(is_array($tagsContent)) $tags = array_merge($tags, $tagsContent);
             }
 
             if(Validator::stringType()->notEmpty()->validate(trim($form->id->value))) {
@@ -236,22 +244,6 @@ class Publish extends \Movim\Widget\Base
                 if(isset($post)) {
                     $p->setPublished(strtotime($post->published));
                 }
-            }
-
-            if(Validator::stringType()->notEmpty()->validate($form->tags->value)) {
-                $p->setTags(array_unique(
-                    array_filter(
-                        array_map(
-                            function($value) {
-                                if(Validator::stringType()->notEmpty()->validate($value)) {
-                                    preg_match('/([^\s[:punct:]]|_|-){3,30}/', trim($value), $matches);
-                                    if(isset($matches[0])) return strtolower($matches[0]);
-                                }
-                            },
-                            explode(',', $form->tags->value)
-                        )
-                    )
-                ));
             }
 
             if(Validator::notEmpty()->url()->validate($form->embed->value)) {
@@ -290,6 +282,8 @@ class Publish extends \Movim\Widget\Base
                 $post = $pd->get($form->replyorigin->value, $form->replynode->value, $form->replynodeid->value);
                 $p->setReply($post->getRef());
             }
+
+            $p->setTags($tags);
 
             $session = Session::start();
             $session->remove('share_url');

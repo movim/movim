@@ -56,7 +56,8 @@ var Publish = {
     initEdit: function() {
         Publish.enableContent();
         Publish_ajaxEmbedTest(document.querySelector('#content_link input').value);
-        MovimUtils.textareaAutoheight(document.querySelector('#content_field textarea'));
+        MovimUtils.textareaAutoheight(document.querySelector('textarea[name=title]'));
+        MovimUtils.textareaAutoheight(document.querySelector('textarea[name=content]'));
     }
 }
 

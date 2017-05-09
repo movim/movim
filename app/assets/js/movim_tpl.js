@@ -1,12 +1,6 @@
 /**
  * Movim Javascript Template functions
- *
- * These are the default callback functions that users may (or may not) use.
- *
- * Note that all of them take only one parameter. Don't be fooled by this, the
- * expected parameter is actually an array containing the real parameters. These
- * are checked before use.
- *
+
  * Look at the comments for help.
  */
 

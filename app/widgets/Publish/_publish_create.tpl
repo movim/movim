@@ -75,15 +75,11 @@
     <input type="hidden" name="id" value="{if="$item != false"}{$item->nodeid}{/if}">
 
     <div>
-        <input
-            type="text"
+        <textarea
             name="title"
             placeholder="{$c->__('post.title')}"
-            {if="$item != false"}
-                value="{$item->title}"
-            {elseif="$reply"}
-                value="{$reply->title}"
-            {/if}>
+            style="height: 68px"
+            oninput="MovimUtils.textareaAutoheight(this);">{if="$item != false"}{$item->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
         <label for="title">{$c->__('post.title')}</label>
     </div>
 
@@ -133,20 +129,6 @@
     </div>
 
     <hr class="clear" />
-
-    <div>
-        {if="$item != false"}
-            {$tags = $item->getTagsImploded()}
-        {/if}
-        <input
-            type="text"
-            name="tags"
-            placeholder="write, comma separated, tags"
-            {if="isset($tags)"}
-                value="{$tags}"
-            {/if}>
-        <label for="title">{$c->__('publish.tags')}</label>
-    </div>
 
     <ul class="list middle active {if="$reply"}hide{/if}">
         {if="$c->supported('upload')"}

@@ -341,20 +341,6 @@
                     </li>
                 </ul>
             {/if}
-            {$tags = $post->getTags()}
-            {if="isset($tags)"}
-                <ul class="list thick">
-                    <li>
-                        <span class="primary icon zmdi zmdi-tag gray"></span>
-                        <p></p>
-                        <p class="normal">
-                            {loop="$tags"}
-                                <a href="{$c->route('tag', [$value])}">#{$value}</a>
-                            {/loop}
-                        </p>
-                    </li>
-                </ul>
-            {/if}
         </footer>
 
         {$comments}

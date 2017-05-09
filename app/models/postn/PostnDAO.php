@@ -34,7 +34,9 @@ class PostnDAO extends SQL
                     links           = :links,
                     picture         = :picture,
 
-                    hash            = :hash
+                    hash            = :hash,
+
+                    nsfw            = :nsfw
 
                 where origin = :origin
                     and node = :node
@@ -70,6 +72,8 @@ class PostnDAO extends SQL
                 'picture'           => $post->picture,
 
                 'hash'              => $post->hash,
+
+                'nsfw'              => $post->nsfw,
 
                 'origin'            => $post->origin,
                 'node'              => $post->node,
@@ -113,7 +117,9 @@ class PostnDAO extends SQL
                 links,
                 picture,
 
-                hash)
+                hash,
+
+                nsfw)
                 values(
                     :origin,
                     :node,
@@ -145,7 +151,9 @@ class PostnDAO extends SQL
                     :links,
                     :picture,
 
-                    :hash
+                    :hash,
+
+                    :nsfw
                 )';
 
             $this->prepare(
@@ -178,6 +186,8 @@ class PostnDAO extends SQL
                     'picture'           => $post->picture,
 
                     'hash'              => $post->hash,
+
+                    'nsfw'              => $post->nsfw,
 
                     'origin'            => $post->origin,
                     'node'              => $post->node,
