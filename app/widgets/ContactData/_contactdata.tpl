@@ -104,6 +104,47 @@
                 <p class="normal">{$c->__('blog.visit')}</p>
             </li>
         </a>
+        {if="$contactr && $contactr->rostersubscription != 'both'"}
+            <li>
+                {if="$contactr->rostersubscription == 'to'"}
+                    <span class="primary icon gray">
+                        <i class="zmdi zmdi-arrow-in"></i>
+                    </span>
+                    <p>{$c->__('subscription.to')}</p>
+                    <p>{$c->__('subscription.to_text')}</p>
+                    <p>
+                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contactr->jid}')">
+                            {$c->__('subscription.to_button')}
+                        </button>
+                    </p>
+                {/if}
+                {if="$contactr->rostersubscription == 'from'"}
+                    <span class="primary icon gray">
+                        <i class="zmdi zmdi-arrow-out"></i>
+                    </span>
+                    <p>{$c->__('subscription.from')}</p>
+                    <p>{$c->__('subscription.from_text')}</p>
+                    <p>
+                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contactr->jid}')">
+                            {$c->__('subscription.from_button')}
+                        </button>
+                    </p>
+                {/if}
+                {if="$contactr->rostersubscription == 'none'"}
+                    <span class="primary icon gray">
+                        <i class="zmdi zmdi-block"></i>
+                    </span>
+
+                    <p>{$c->__('subscription.nil')}</p>
+                    <p>{$c->__('subscription.nil_text')}</p>
+                    <p>
+                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contactr->jid}')">
+                            {$c->__('subscription.nil_button')}
+                        </button>
+                    </p>
+                {/if}
+            </li>
+        {/if}
     </ul>
 </div>
 

@@ -77,6 +77,12 @@ class ContactData extends \Movim\Widget\Base
         }
     }
 
+    function ajaxAccept($jid)
+    {
+        $i = new Invitations;
+        $i->ajaxAccept($jid);
+    }
+
     /**
      * @brief Validate the jid
      *
