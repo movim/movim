@@ -224,6 +224,8 @@ class Postn extends Model
             }
         }
 
+        if(current(explode('.', $this->origin)) == 'nsfw') $this->nsfw = true;
+
         if(!isset($this->commentorigin)) {
             $this->commentorigin = $this->origin;
         }
@@ -506,9 +508,7 @@ class Postn extends Model
 
     public function isNSFW()
     {
-        return (
-            current(explode('.', $this->origin)) == 'nsfw'
-            || $this->nsfw);
+        return $this->nsfw;
     }
 
     public function isReply()
