@@ -71,7 +71,7 @@ class Postn extends Model
         'links'         => ['type' => 'serialized'],
         'picture'       => ['type' => 'text'],
         'hash'          => ['type' => 'string','size' => 128,'mandatory' => true],
-        'nsfw'          => ['type' => 'int','size' => 1]
+        'nsfw'          => ['type' => 'bool']
     ];
 
     public function __construct()

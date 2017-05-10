@@ -29,7 +29,7 @@ class Config extends Model
         'loglevel'      => ['type' => 'string','size' => 16,'mandatory' => true],
         'timezone'      => ['type' => 'string','size' => 32,'mandatory' => true],
         'info'          => ['type' => 'text'],
-        'unregister'    => ['type' => 'int','size' => 1],
+        'unregister'    => ['type' => 'bool'],
         'username'      => ['type' => 'string','size' => 32,'mandatory' => true],
         'password'      => ['type' => 'string','size' => 64,'mandatory' => true],
         'sizelimit'     => ['type' => 'int','size' => 16],

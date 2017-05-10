@@ -51,7 +51,7 @@ class Presence extends Model
         'delay'     => ['type' => 'date'],
         'last'      => ['type' => 'int',    'size' => 11],
         'publickey' => ['type' => 'text'],
-        'muc'       => ['type' => 'int',    'size' => 1],
+        'muc'       => ['type' => 'bool'],
         'mucjid'    => ['type' => 'string', 'size' => 64],
         'mucaffiliation' => ['type' => 'string','size' => 32],
         'mucrole'   => ['type' => 'string', 'size' => 32],

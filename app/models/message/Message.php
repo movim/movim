@@ -56,11 +56,11 @@ class Message extends Model
         'published' => ['type' => 'date','mandatory' => true],
         'delivered' => ['type' => 'date'],
         'displayed' => ['type' => 'date'],
-        'markable'  => ['type' => 'int','size' => 1],
-        'edited'    => ['type' => 'int','size' => 1],
+        'markable'  => ['type' => 'bool'],
+        'edited'    => ['type' => 'bool'],
         'picture'   => ['type' => 'text'],
         'sticker'   => ['type' => 'string','size' => 128],
-        'quoted'    => ['type' => 'int','size' => 1],
+        'quoted'    => ['type' => 'bool'],
         'file'      => ['type' => 'serialized']
     ];
 

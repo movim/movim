@@ -27,7 +27,7 @@ class Subscription extends Model
         'subid'     => ['type' => 'string', 'size' => 128],
         'title'     => ['type' => 'string', 'size' => 128],
         'tags'      => ['type' => 'serialized'],
-        'timestamp' => ['type' => 'date',]
+        'timestamp' => ['type' => 'date']
     ];
 
     public function getLogo()

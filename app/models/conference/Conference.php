@@ -18,7 +18,7 @@ class Conference extends Model
         'conference'    => ['type' => 'string','size' => 128,'key' => true],
         'name'          => ['type' => 'string','size' => 128,'mandatory' => true],
         'nick'          => ['type' => 'string','size' => 128],
-        'autojoin'      => ['type' => 'int','size' => 1],
-        'status'        => ['type' => 'int','size' => 1],
+        'autojoin'      => ['type' => 'bool'],
+        'status'        => ['type' => 'bool'],
     ];
 }
