@@ -4,7 +4,7 @@
     <article>
         <section>
             <content>
-                {$content}
+                {$content|addHashtagsLinks}
             </content>
         </section>
     </article>

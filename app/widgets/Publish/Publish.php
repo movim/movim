@@ -238,7 +238,7 @@ class Publish extends \Movim\Widget\Base
             if(Validator::stringType()->notEmpty()->validate(trim($form->id->value))) {
                 $p->setId($form->id->value);
 
-                $pd = new \modl\PostnDAO();
+                $pd = new \Modl\PostnDAO;
                 $post = $pd->get($form->to->value, $form->node->value, $form->id->value);
 
                 if(isset($post)) {

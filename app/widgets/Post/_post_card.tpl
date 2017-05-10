@@ -28,7 +28,7 @@
 
             {if="!$post->isBrief()"}
                 <p class="normal">
-                    {$post->title}
+                    {$post->title|addHashtagsLinks}
                 </p>
             {else}
                 <p></p>
@@ -134,7 +134,7 @@
                                 {/if}
                             {/loop}
                         {/if}
-                        {$post->contentcleaned}
+                        {$post->contentcleaned|addHashtagsLinks}
                     </content>
                 <section>
             </p>
