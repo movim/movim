@@ -54,9 +54,9 @@
             {if="!$value->isLike()"}
                 <p class="all">
                     {if="$value->contentraw"}
-                        {$value->contentraw|addHFR}
+                        {$value->contentraw|addHashtagsLinks|addHFR}
                     {else}
-                        {$value->title|addUrls|nl2br}
+                        {$value->title|addUrls|addHashtagsLinks|nl2br}
                     {/if}
                 </p>
             {/if}
