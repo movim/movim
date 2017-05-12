@@ -68,6 +68,11 @@
             id="back" class="primary icon active">
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
+
+            <span class="control icon show_context_menu active">
+                <i class="zmdi zmdi-more-vert"></i>
+            </span>
+
             <span class="control icon active" onclick="Chats_ajaxClose('{$jid|echapJS}'); MovimTpl.hidePanel();">
                 <i class="zmdi zmdi-close"></i>
             </span>
@@ -75,6 +80,14 @@
                 {$contact->getTrueName()}
             </p>
             <p class="line" id="{$jid|cleanupId}-state">{$contact->jid}</p>
+        </li>
+    </ul>
+    <ul class="list context_menu active">
+        <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+            <p class="normal">{$c->__('chat.profile')}</p>
+        </li>
+        <li onclick="Chat_ajaxClearHistory('{$contact->jid}')">
+            <p class="normal">{$c->__('chat.clear')}</p>
         </li>
     </ul>
     {/if}

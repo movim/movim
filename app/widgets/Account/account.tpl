@@ -42,7 +42,7 @@
                 </a>
             </form>
         </li>
-        <li class="subheader clear">
+        <li class="subheader">
             <p>{$c->__('account.clear')}</p>
         </li>
         <li onclick="Account_ajaxClearAccount()">

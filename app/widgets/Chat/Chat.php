@@ -525,6 +525,21 @@ class Chat extends \Movim\Widget\Base
         }
     }
 
+    /**
+     * @brief Save the room configuration
+     *
+     * @param string $room
+     */
+    function ajaxClearHistory($jid)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $md = new \Modl\MessageDAO;
+        $md->deleteContact($jid);
+
+        $this->ajaxGet($jid);
+    }
+
     function prepareChat($jid, $muc = false)
     {
         $view = $this->tpl();
