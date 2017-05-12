@@ -253,7 +253,7 @@
                         {/if}
                     {/loop}
                 {/if}
-                {$post->contentcleaned|addHashtagsLinks}
+                {$post->contentcleaned}
             </content>
         </section>
         <footer>
