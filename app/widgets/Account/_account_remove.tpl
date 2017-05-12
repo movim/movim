@@ -1,5 +1,5 @@
 <section>
-    <h3>{$c->__('account.delete_title')}</h3>
+    <h3>{$c->__('account.delete')}</h3>
     <br />
     <h4 class="gray">{$c->__('account.delete_text')}</h4>
     <br />

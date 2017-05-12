@@ -28,7 +28,7 @@ class Account extends \Movim\Widget\Base
         $md->clearMessage();
         $pd = new Modl\PostnDAO;
         $pd->deleteNode($this->user->getLogin(), 'urn:xmpp:microblog:0');
-        $this->rpc('Account.clearAccount');
+        $this->rpc('Presence_ajaxLogout');
     }
 
     function onRegister($package)
@@ -85,6 +85,18 @@ class Account extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('jid', $this->user->getLogin());
         Dialog::fill($view->draw('_account_remove', true));
+    }
+
+    function ajaxClearAccount()
+    {
+        $view = $this->tpl();
+        $view->assign('jid', $this->user->getLogin());
+        Dialog::fill($view->draw('_account_clear', true));
+    }
+
+    function ajaxClearAccountConfirm()
+    {
+        $this->onRemoved();
     }
 
     function ajaxRemoveAccountConfirm()

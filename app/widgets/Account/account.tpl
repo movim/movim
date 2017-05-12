@@ -43,7 +43,19 @@
             </form>
         </li>
         <li class="subheader">
-            <p>{$c->__('account.delete_title')}</p>
+            <p>{$c->__('account.clear')}</p>
+        </li>
+        <li onclick="Account_ajaxClearAccount()">
+            <span class="primary icon orange">
+                <i class="zmdi zmdi-eject"></i>
+            </span>
+            <span class="control icon gray">
+                <i class="zmdi zmdi-chevron-right"></i>
+            </span>
+            <p class="normal">{$c->__('account.clear')}</p>
+        </li>
+        <li class="subheader">
+            <p>{$c->__('account.delete')}</p>
         </li>
         <li onclick="Account_ajaxRemoveAccount()">
             <span class="primary icon red">
