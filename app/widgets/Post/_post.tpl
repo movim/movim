@@ -103,7 +103,7 @@
             {if="!$post->isBrief()"}
                 <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                     {if="$post->title != null"}
-                        {$post->title}
+                        {$post->title|addHashtagsLinks}
                     {else}
                         {$c->__('post.default_title')}
                     {/if}
@@ -253,7 +253,7 @@
                         {/if}
                     {/loop}
                 {/if}
-                {$post->contentcleaned}
+                {$post->contentcleaned|addHashtagsLinks}
             </content>
         </section>
         <footer>
