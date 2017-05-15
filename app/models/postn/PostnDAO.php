@@ -583,7 +583,7 @@ class PostnDAO extends SQL
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
             where postn.open = true
-            and postn.origin not like \'nsfw%\'
+            and postn.nsfw is false
             and aid is not null
             order by postn.published desc';
 
@@ -823,24 +823,16 @@ class PostnDAO extends SQL
     function getLastPublished($origin = false, $limitf = false, $limitr = false)
     {
         $this->_sql = '
-            select * from postn
-            left outer join item on postn.origin = item.server
-                and postn.node = item.node
-            where
-                postn.node != \'urn:xmpp:microblog:0\'
-                and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
-                and postn.node not like \'urn:xmpp:inbox\'
-                and postn.origin not like \'nsfw%\'
-                and (
-                    (postn.origin, postn.node) not in
-                    (select server, node
-                        from subscription
-                        where subscription.jid = :jid
-                    )
-                )
-                and (postn.origin, postn.node) in
-                    (select server, node from sharedsubscription)
-                and aid is not null';
+            select * from (
+                select distinct on (origin, postn.node) * from postn
+                left outer join item on postn.origin = item.server
+                    and postn.node = item.node
+                where
+                    postn.node != \'urn:xmpp:microblog:0\'
+                    and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                    and postn.node not like \'urn:xmpp:inbox\'
+                    and postn.nsfw is false
+                    and aid is not null';
 
         if($origin) {
             $this->_sql .= '
@@ -849,8 +841,9 @@ class PostnDAO extends SQL
         }
 
         $this->_sql .= '
-            order by published desc
-            ';
+                order by origin, postn.node, published desc
+            ) p
+            order by published desc';
 
         if($limitr) {
             $this->_sql .= ' limit '.$limitr.' offset '.$limitf;
@@ -858,14 +851,10 @@ class PostnDAO extends SQL
 
         if($origin) {
             $this->prepare(
-                'Postn',
-                [
-                    'origin' => $origin,
-                    'subscription.jid' => $this->_user
-                ]
+                'Postn', ['origin' => $origin]
             );
         } else {
-            $this->prepare('Postn', ['subscription.jid' => $this->_user]);
+            $this->prepare('Postn');
         }
 
         return $this->run('Postn');
@@ -884,9 +873,6 @@ class PostnDAO extends SQL
                     group by origin
                     order by published desc
                     ';
-
-                if($limitr)
-                    $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
             break;
             case 'pgsql':
                 $this->_sql = '
@@ -900,11 +886,11 @@ class PostnDAO extends SQL
                     ) p
                     order by published desc
                     ';
-
-                if($limitr)
-                    $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
             break;
         }
+
+        if($limitr)
+            $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare('Postn');
 

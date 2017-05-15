@@ -21,7 +21,7 @@ class NewsNav extends \Movim\Widget\Base
         $origin = ($this->get('s') && $this->get('s') != 'subscriptions') ?
             $this->get('s') : false;
 
-        $posts = $nd->getLastPublished($origin, rand(0, 5), $count);
+        $posts = $nd->getLastPublished($origin, 0, $count);
         $posts = is_array($posts) ? $posts : [];
 
         shuffle($posts);
