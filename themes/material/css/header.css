@@ -27,7 +27,7 @@ header.relative {
     }
 }
 
-header ul:first-child > li:first-child {
+header ul:first-child > li:first-child p:not(.normal) {
     text-align: center;
 }
 

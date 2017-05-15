@@ -128,4 +128,60 @@
         </li>
         {/if}
     </ul>
+
+    {if="$contact->twitter != null || $contact->skype != null || $contact->yahoo != null"}
+    <ul class="list">
+        <li class="subheader block">
+            <p>{$c->__('general.accounts')}</p>
+        </li>
+
+        {if="$contact->twitter != null"}
+        <li>
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-twitter"></i>
+            </span>
+            <p>Twitter</p>
+            <p>
+                <a
+                    target="_blank"
+                    href="https://twitter.com/{$contact->twitter}">
+                    @{$contact->twitter}
+                </a>
+            </p>
+        </li>
+        {/if}
+        {if="$contact->skype != null"}
+        <li>
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-skype"></i>
+            </span>
+            <p>Skype</p>
+            <p>
+                <a
+                    target="_blank"
+                    href="callto://{$contact->skype}">
+                    {$contact->skype}
+                </a>
+            </p>
+        </li>
+        {/if}
+        {if="$contact->yahoo != null"}
+        <li>
+            <span class="primary icon gray">
+                <i class="zmdi zmdi-yahoo"></i>
+            </span>
+            <p>Yahoo!</p>
+            <p>
+                <a
+                    target="_blank"
+                    href="ymsgr:sendIM?{$contact->yahoo}">
+                    {$contact->yahoo}
+                </a>
+            </p>
+        </li>
+        {/if}
+    </ul>
+    {/if}
+
+    <br />
 </section>
