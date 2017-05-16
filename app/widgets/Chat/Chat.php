@@ -17,6 +17,8 @@ use Ramsey\Uuid\Uuid;
 use Movim\Picture;
 use Movim\Session;
 
+include_once WIDGETS_PATH.'Contact/Contact.php';
+
 class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 50;
