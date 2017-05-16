@@ -8,7 +8,9 @@
     <li class="block large">
         <p>{$item->name}</p>
         <p>
-            <!--{$item->created|strtotime|prepareDate:true,true}-->
+            {if="$item->created"}
+                {$item->created|strtotime|prepareDate:true,true}
+            {/if}
             {if="$item->num > 0"}
                  {$c->__('communitydata.num', $item->num)}
             {/if}
