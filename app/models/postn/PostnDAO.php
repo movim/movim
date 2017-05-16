@@ -870,15 +870,25 @@ class PostnDAO extends SQL
                     postn.node != \'urn:xmpp:microblog:0\'
                     and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                     and postn.node not like \'urn:xmpp:inbox\'
-                    and (
-                        postn.nsfw = (select nsfw from setting where session = :origin)
-                        or postn.nsfw = false)
                     and aid is not null';
+
+        $params = [];
+
+        if(isset($this->_user)) {
+            $this->_sql .= '
+                and (
+                    postn.nsfw = (select nsfw from setting where session = :session)
+                    or postn.nsfw = false)';
+
+            $params += ['setting.session' => $this->_user];
+        }
 
         if($origin) {
             $this->_sql .= '
                 and origin = :origin
             ';
+
+            $params += ['origin' => $origin];
         }
 
         $this->_sql .= '
@@ -890,13 +900,7 @@ class PostnDAO extends SQL
             $this->_sql .= ' limit '.$limitr.' offset '.$limitf;
         }
 
-        if($origin) {
-            $this->prepare(
-                'Postn', ['origin' => $origin]
-            );
-        } else {
-            $this->prepare('Postn');
-        }
+        $this->prepare('Postn', $params);
 
         return $this->run('Postn');
     }
