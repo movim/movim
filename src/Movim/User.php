@@ -7,9 +7,7 @@ use Movim\i18n\Locale;
 class User
 {
     private $config = [];
-
     public $caps;
-
     public $userdir;
 
     /**
@@ -32,9 +30,8 @@ class User
         $sd = new \Modl\SessionxDAO;
         $session = $sd->get(SESSION_ID);
 
-        if($session && $session->config) {
+        if($session) {
             if($language) {
-                $this->config = $session->config;
                 $lang = $this->getConfig('language');
                 if(isset($lang)) {
                     $l = Locale::start();
@@ -90,10 +87,13 @@ class User
 
     function setConfig(array $config)
     {
-        $sd = new \Modl\SessionxDAO;
-        $session = $sd->get(SESSION_ID);
-        $session->config = $config;
-        $sd->set($session);
+        $s = new \Modl\Setting;
+        $s->language = $config['language'];
+        $s->cssurl   = $config['cssurl'];
+        $s->nsfw     = $config['nsfw'];
+
+        $sd = new \Modl\SettingDAO;
+        $sd->set($s);
 
         $this->createDir();
 
@@ -104,10 +104,17 @@ class User
 
     function getConfig($key = false)
     {
+        $sd = new \Modl\SettingDAO;
+        $s = $sd->get();
+
         if($key == false) {
-            return $this->config;
-        } if(isset($this->config[$key])) {
-            return $this->config[$key];
+            return $s;
+        }
+
+        if(is_object($s)
+        && property_exists($s, $key)
+        && isset($s->$key)) {
+            return $s->$key;
         }
     }
 

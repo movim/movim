@@ -52,7 +52,6 @@ class Presence extends \Movim\Widget\Base
         $this->onSessionUp();
         $this->ajaxServerCapsGet();
         $this->ajaxBookmarksGet();
-        $this->ajaxUserRefresh();
         $this->ajaxFeedRefresh();
         $this->ajaxServerDisco();
     }
@@ -117,15 +116,6 @@ class Presence extends \Movim\Widget\Base
         $b = new \Moxl\Xec\Action\Bookmark\Get;
         $b->setTo($session->get('jid'))
           ->request();
-    }
-
-    // We refresh the user (local) configuration
-    function ajaxUserRefresh()
-    {
-        $language = $this->user->getConfig('language');
-        if(isset($language)) {
-            loadLanguage($language);
-        }
     }
 
     // We refresh our personnal feed

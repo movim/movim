@@ -204,7 +204,8 @@ class PostnDAO extends SQL
         $params = [
                 'origin' => $origin,
                 'node' => $node,
-                'nodeid' => $nodeid
+                'nodeid' => $nodeid,
+                'setting.session' => $this->_user
             ];
 
         $this->_sql = '
@@ -215,6 +216,15 @@ class PostnDAO extends SQL
                 and postn.node = item.node
             where postn.origin = :origin
                 and postn.node = :node';
+
+        if(isset($this->_user)) {
+            $this->_sql .= '
+                and (
+                    postn.nsfw = (select nsfw from setting where session = :session)
+                    or postn.nsfw = false)';
+
+            $params += ['setting.session' => $this->_user];
+        }
 
         if(!$around) {
             $this->_sql .= ' and postn.nodeid = :nodeid';
@@ -360,6 +370,9 @@ class PostnDAO extends SQL
                 and postn.origin = :origin
                 and postn.node = :node
                 and postn.node != \'urn:xmpp:microblog:0\'
+                and (
+                    postn.nsfw = (select nsfw from setting where session = :jid)
+                    or postn.nsfw = false)
             order by postn.published desc';
 
         if($limitr !== false)
@@ -387,14 +400,19 @@ class PostnDAO extends SQL
                 and postn.node = item.node
             where postn.origin = :origin
                 and postn.node = :node
+                and (
+                    postn.nsfw = (select nsfw from setting where session = :session)
+                    or postn.nsfw = false)
             order by postn.published desc';
 
-        if($limitr !== false)
+        if($limitr !== false) {
             $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
+        }
 
         $this->prepare(
             'Postn',
             [
+                'setting.session' => $this->_user,
                 'origin' => $from,
                 'node' => $node
             ]
@@ -405,27 +423,36 @@ class PostnDAO extends SQL
 
     function getPublicTag($tag, $limitf = false, $limitr = false)
     {
+        $params = ['tag.tag' => $tag];
+
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
             where nodeid in (select nodeid from tag where tag = :tag)
-                and postn.open = true
-            order by postn.published desc';
+                and postn.open = true';
+
+        if(isset($this->_user)) {
+            $this->_sql .= '
+                    and (
+                        postn.nsfw = (select nsfw from setting where session = :session)
+                        or postn.nsfw = false)
+                order by postn.published desc';
+
+            $params += ['setting.session' => $this->_user];
+        }
 
         if($limitr !== false)
             $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
 
         $this->prepare(
             'Postn',
-            [
-                'tag.tag' => $tag
-            ]
+            $params
         );
 
         return $this->run('ContactPostn');
     }
 
-    function getGallery($from, $limitf = false, $limitr = false)
+    /*function getGallery($from, $limitf = false, $limitr = false)
     {
         $this->_sql = '
             select *, postn.aid from postn
@@ -445,7 +472,7 @@ class PostnDAO extends SQL
         );
 
         return $this->run('ContactPostn');
-    }
+    }*/
 
     function getGroupPicture($origin, $node)
     {
@@ -537,6 +564,9 @@ class PostnDAO extends SQL
                 on postn.origin = item.server
                 and postn.node = item.node
             where ((postn.origin, postn.node) in (select server, node from subscription where jid = :origin))
+                and (
+                    postn.nsfw = (select nsfw from setting where session = :origin)
+                    or postn.nsfw = false)
             order by postn.published desc
             ';
 
@@ -561,6 +591,9 @@ class PostnDAO extends SQL
             left outer join contact on postn.aid = contact.jid
 
             where postn.origin = :origin and postn.node = \'urn:xmpp:microblog:0\'
+                and (
+                    postn.nsfw = (select nsfw from setting where session = :origin)
+                    or postn.nsfw = false)
             order by postn.published desc
             ';
 
@@ -750,6 +783,9 @@ class PostnDAO extends SQL
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
                 and published > :published
+                and (
+                    postn.nsfw = (select nsfw from setting where session = :origin)
+                    or postn.nsfw = false)
                 ';
 
         $this->prepare(
@@ -805,6 +841,9 @@ class PostnDAO extends SQL
                 )
                 and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                 and postn.node not like \'urn:xmpp:inbox\'
+                and (
+                    postn.nsfw = (select nsfw from setting where session = :origin)
+                    or postn.nsfw = false)
             order by postn.published desc
             limit 1 offset 0';
 
@@ -831,7 +870,9 @@ class PostnDAO extends SQL
                     postn.node != \'urn:xmpp:microblog:0\'
                     and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                     and postn.node not like \'urn:xmpp:inbox\'
-                    and postn.nsfw is false
+                    and (
+                        postn.nsfw = (select nsfw from setting where session = :origin)
+                        or postn.nsfw = false)
                     and aid is not null';
 
         if($origin) {

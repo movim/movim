@@ -287,6 +287,7 @@ class Bootstrap
         \Modl\Utils::loadModel('Item');
         \Modl\Utils::loadModel('Message');
         \Modl\Utils::loadModel('Sessionx');
+        \Modl\Utils::loadModel('Setting');
         \Modl\Utils::loadModel('Conference');
         \Modl\Utils::loadModel('Tag');
 

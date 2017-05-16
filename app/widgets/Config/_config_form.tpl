@@ -16,10 +16,10 @@
 
     <div class="block">
         <div class="select">
-            <select name="language" id="language" value="{$conf.language}">
+            <select name="language" id="language" value="{$conf->language}">
                 <option value="en">English (default)</option>
                     {loop="$languages"}
-                        {if="$key == $conf.language"}
+                        {if="$key == $conf->language"}
                             <option
                                 value="{$key}"
                                 dir="auto"
@@ -39,11 +39,30 @@
         <label for="language">{$c->__('config.language')}</label>
     </div>
 
+    <div class="block">
+        <ul class="list thick">
+            <li>
+                <span class="primary">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->nsfw"}checked{/if}
+                            type="checkbox"
+                            id="nsfw"
+                            name="nsfw"/>
+                        <label for="nsfw"></label>
+                    </div>
+                </span>
+                <p class="line">{$c->__('config.nsfw')}</p>
+                <p class="line">{$c->__('config.nsfw_text')}</p>
+            </li>
+        </ul>
+    </div>
+
     <br />
     <h3>{$c->__('config.advanced')}</h3>
 
     <div class="block">
-        <input name="cssurl" class="content" placeholder="http://myserver.com/style.css" value="{$conf.cssurl}" type="url">
+        <input name="cssurl" class="content" placeholder="http://myserver.com/style.css" value="{$conf->cssurl}" type="url">
         <label for="cssurl">{$c->__('cssurl.label')}</label>
     </div>
 
