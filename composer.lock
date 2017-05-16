@@ -357,12 +357,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "bf12eaadff32d205663c4c5b01020756168d474a"
+                "reference": "cbe2faad8ed3049264bf0f9c0d7f42496012dfb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/bf12eaadff32d205663c4c5b01020756168d474a",
-                "reference": "bf12eaadff32d205663c4c5b01020756168d474a",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/cbe2faad8ed3049264bf0f9c0d7f42496012dfb7",
+                "reference": "cbe2faad8ed3049264bf0f9c0d7f42496012dfb7",
                 "shasum": ""
             },
             "require": {
@@ -402,7 +402,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-05-07 18:52:23"
+            "time": "2017-05-14 09:32:22"
         },
         {
             "name": "evenement/evenement",
@@ -1403,8 +1403,8 @@
                 "evenement/evenement": "^2.0 || ^1.0",
                 "php": ">=5.3.0",
                 "react/promise": "^2.0 || ^1.1",
-                "react/socket": "^0.7 || ^0.6 || ^0.5",
-                "react/stream": "^0.6 || ^0.5 || ^0.4.4",
+                "react/socket": "^1.0 || ^0.8 || ^0.7 || ^0.6 || ^0.5",
+                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.6",
                 "ringcentral/psr7": "^1.2"
             },
             "type": "library",
