@@ -17,6 +17,7 @@ v0.11.1 (trunk)
  * New design for the post Material Design cards
  * New UI for adding a contact through a Gateway (by singpolyma)
  * Allow users to clear their information on the instance and leave it properly
+ * Add NSFW filter configuration
 
 v0.11
 ---------------------------

@@ -9,7 +9,13 @@
                     {$nodes|count}
                 </span>
             {/if}
-            <p class="center">{$c->__('page.communities')}</p>
+            <p class="center">
+                {if="isset($item->name)"}
+                    {$item->name}
+                {else}
+                    {$c->__('page.communities')}
+                {/if}
+            </p>
             <p class="center line">{$server}</p>
         </li>
     </ul>

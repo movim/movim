@@ -317,10 +317,11 @@ class ItemDAO extends SQL
     function getJid($jid)
     {
         $this->_sql = '
-            select * from item
+            select item.*, caps.name from item
+            left outer join caps on caps.node = item.jid
             where
-                jid = :jid
-                and node = \'\'';
+                item.jid = :jid
+                and item.node = \'\'';
 
         $this->prepare(
             'Item',
