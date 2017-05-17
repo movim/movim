@@ -32,10 +32,18 @@ class Request extends Action
     private $_node;
     private $_to;
 
+    // Excluded nodes
+    private $_excluded = [
+        'http://www.android.com/gtalk/client/caps#1.1'
+    ];
+
     public function request()
     {
         $this->store();
-        Disco::request($this->_to, $this->_node);
+
+        if(!in_array($this->_node, $this->_excluded)) {
+            Disco::request($this->_to, $this->_node);
+        }
     }
 
     public function setNode($node)

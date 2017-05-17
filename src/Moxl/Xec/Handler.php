@@ -196,7 +196,7 @@ class Handler
 
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
-            'c2a75c460d99bcad64e81e7730abddef' => 'PubsubSubscription',
+            //'c2a75c460d99bcad64e81e7730abddef' => 'PubsubSubscription',
 
             //'da6b60476aeab672ac0afe3ff27dc6a4' => 'OMEMODevices',
             //'c5685812e4af902631769b013dc3512d' => 'OMEMOMessage',
