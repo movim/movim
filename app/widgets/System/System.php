@@ -6,7 +6,6 @@ class System extends \Movim\Widget\Base
 {
     function load()
     {
-
     }
 
     function display()

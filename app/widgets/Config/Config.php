@@ -52,10 +52,6 @@ class Config extends \Movim\Widget\Base
             return;
         }
 
-        /*$config = $this->user->getConfig();
-        if(isset($config))
-            $data = array_merge($config, $data);*/
-
         $s = new Set;
         $s->setXmlns('movim:prefs')
           ->setData(serialize($data))

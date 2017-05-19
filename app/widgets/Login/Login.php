@@ -1,7 +1,6 @@
 <?php
 
 use Moxl\Xec\Action\Storage\Get;
-use Moxl\Xec\Action\Roster\GetList;
 
 use Respect\Validation\Validator;
 use Defuse\Crypto\Key;
@@ -28,20 +27,6 @@ class Login extends \Movim\Widget\Base
         $session = Session::start();
 
         if($session->get('mechanism') != 'ANONYMOUS') {
-            // http://xmpp.org/extensions/xep-0280.html
-            \Moxl\Stanza\Carbons::enable();
-
-            // We refresh the roster
-            $r = new GetList;
-            $r->request();
-
-            // We refresh the messages
-            $c = new Chats;
-            $c->ajaxGetHistory();
-
-            $p = new Presence;
-            $p->start();
-
             // We get the configuration
             $s = new Get;
             $s->setXmlns('movim:prefs')
@@ -52,7 +37,10 @@ class Login extends \Movim\Widget\Base
     function onConfig($packet)
     {
         $this->user->createDir();
-        $this->rpc('MovimUtils.reloadThis'/*, $this->route('root')*/);
+        $this->rpc('MovimUtils.reloadThis');
+
+        $p = new Presence;
+        $p->start();
     }
 
     function display()

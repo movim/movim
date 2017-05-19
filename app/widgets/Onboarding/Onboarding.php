@@ -33,7 +33,5 @@ class Onboarding extends \Movim\Widget\Base
     {
         \Modl\Privacy::set($this->user->getLogin(), 1);
         Notification::append(null, $this->__('vcard.public'));
-
-        //$this->rpc('Onboarding.check');
     }
 }
