@@ -13,7 +13,6 @@ class SessionxDAO extends SQL
                 hash        = :hash,
                 resource    = :resource,
                 host        = :host,
-                config      = :config,
                 active      = :active,
                 start       = :start,
                 timestamp   = :timestamp
@@ -28,7 +27,6 @@ class SessionxDAO extends SQL
                 'hash'      => $s->hash,
                 'resource'  => $s->resource,
                 'host'      => $s->host,
-                'config'    => $s->config,
                 'active'    => $s->active,
                 'start'     => $s->start,
                 'timestamp' => date(SQL::SQL_DATE)
@@ -46,7 +44,6 @@ class SessionxDAO extends SQL
                  hash,
                  resource,
                  host,
-                 config,
                  active,
                  start,
                  timestamp)
@@ -57,7 +54,6 @@ class SessionxDAO extends SQL
                  :hash,
                  :resource,
                  :host,
-                 :config,
                  :active,
                  :start,
                  :timestamp)';
@@ -71,7 +67,6 @@ class SessionxDAO extends SQL
                     'hash'      => $s->hash,
                     'resource'  => $s->resource,
                     'host'      => $s->host,
-                    'config'    => $s->config,
                     'active'    => $s->active,
                     'start'     => $s->start,
                     'timestamp' => date(SQL::SQL_DATE)
