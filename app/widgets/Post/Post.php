@@ -193,8 +193,7 @@ class Post extends \Movim\Widget\Base
         $view = $this->tpl();
 
         if(isset($p)) {
-            if(isset($p->commentorigin)
-            && isset($p->commentnodeid)
+            if($p->hasCommentsNode()
             && !$external) {
                 $this->ajaxGetComments($p->commentorigin, $p->commentnodeid); // Broken in case of repost
                 $view->assign('commentsdisabled', false);

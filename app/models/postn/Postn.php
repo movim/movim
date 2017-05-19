@@ -526,6 +526,12 @@ class Postn extends Model
         return isRTL($this->contentraw);
     }
 
+    public function hasCommentsNode()
+    {
+        return (isset($this->commentorigin)
+             && isset($this->commentnodeid));
+    }
+
     public function getSummary()
     {
         if($this->isBrief()) {

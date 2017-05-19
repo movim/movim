@@ -201,11 +201,13 @@
                 {/if}>
                     <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
                 </a>
+                {if="$post->hasCommentsNode()"}
                 <a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
                     {$post->countLikes()} <i class="zmdi zmdi-favorite-outline"></i>
                 </a><a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
                     {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
                 </a>
+                {/if}
                 {if="!$public"}
                 <a class="button icon flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
                     <i class="zmdi zmdi-mail-reply"></i>
