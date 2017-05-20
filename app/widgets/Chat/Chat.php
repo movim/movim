@@ -17,7 +17,7 @@ use Ramsey\Uuid\Uuid;
 use Movim\Picture;
 use Movim\Session;
 
-include_once WIDGETS_PATH.'Contact/Contact.php';
+include_once WIDGETS_PATH.'ContactActions/ContactActions.php';
 
 class Chat extends \Movim\Widget\Base
 {
@@ -227,7 +227,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxGetContact($jid)
     {
-        $c = new Contact;
+        $c = new ContactActions;
         $c->ajaxGetDrawer($jid);
     }
 

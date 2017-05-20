@@ -85,7 +85,7 @@ class Post extends \Movim\Widget\Base
 
     function ajaxGetContact($jid)
     {
-        $c = new Contact;
+        $c = new ContactActions;
         $c->ajaxGetDrawer($jid);
     }
 
