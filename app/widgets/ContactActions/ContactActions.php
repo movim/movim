@@ -55,6 +55,16 @@ class ContactActions extends \Movim\Widget\Base
         $roster->ajaxAdd($form);
     }
 
+    function ajaxChat($jid)
+    {
+        if(!$this->validateJid($jid)) return;
+
+        $c = new Chats;
+        $c->ajaxOpen($jid);
+
+        $this->rpc('MovimUtils.redirect', $this->route('chat', $jid));
+    }
+
     /**
      * @brief Validate the jid
      *

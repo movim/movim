@@ -177,7 +177,7 @@
                             </a>
                         </p>
                         {if="isset($value.description)"}
-                            <p>{$value.description}</p>
+                            <p title="{$value.description}">{$value.description}</p>
                         {else}
                             <p>{$value.url.host}</p>
                         {/if}

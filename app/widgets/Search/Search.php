@@ -58,7 +58,7 @@ class Search extends \Movim\Widget\Base
 
     function ajaxChat($jid)
     {
-        $contact = new Contact;
+        $contact = new ContactActions;
         $contact->ajaxChat($jid);
     }
 
