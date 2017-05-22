@@ -77,7 +77,7 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $slugify = new Slugify;
         $this->rpc('MovimTpl.fill', '#communityposts.'.$slugify->slugify($server.'_'.$node), $html);
-        $this->rpc('MovimUtils.enableVideos');
+        $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
     function ajaxGetContact($jid)
@@ -108,7 +108,7 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         $html = $this->prepareCommunity($server, $node, $page);
         $this->rpc('MovimTpl.append', '#communityposts', $html);
-        $this->rpc('MovimUtils.enableVideos');
+        $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
     function ajaxClear()

@@ -134,6 +134,7 @@ class Menu extends \Movim\Widget\Base
             $this->rpc('movim_posts_unread', 0);
         }
 
+        $this->rpc('MovimUtils.enhanceArticlesContent');
         $this->rpc('Menu.refresh');
     }
 

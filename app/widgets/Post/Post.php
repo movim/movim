@@ -98,7 +98,7 @@ class Post extends \Movim\Widget\Base
             $html = $this->preparePost($p);
 
             $this->rpc('MovimTpl.fill', '#post_widget', $html);
-            $this->rpc('MovimUtils.enableVideos');
+            $this->rpc('MovimUtils.enhanceArticlesContent');
 
             // If the post is a reply but we don't have the original
             if($p->isReply() && !$p->getReply()) {

@@ -243,13 +243,22 @@ var MovimUtils = {
                 MovimUtils.showElement(node);
         }
     },
-    enableVideos: function() {
-        var items = document.querySelectorAll('video');
+    enhanceArticlesContent: function() {
+        var items = document.querySelectorAll('article section content video');
 
         var i = 0;
         while(i < items.length)
         {
             items[i].setAttribute('controls', 'controls');
+            i++;
+        }
+
+        var links = document.querySelectorAll('article section content a');
+
+        var i = 0;
+        while(i < links.length)
+        {
+            links[i].setAttribute('target', '_blank');
             i++;
         }
     },
