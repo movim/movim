@@ -435,14 +435,18 @@ class PostnDAO extends SQL
             $this->_sql .= '
                     and (
                         postn.nsfw = (select nsfw from setting where session = :session)
-                        or postn.nsfw = false)
-                order by postn.published desc';
+                        or postn.nsfw = false)';
 
             $params += ['setting.session' => $this->_user];
         }
 
-        if($limitr !== false)
-            $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
+        $this->_sql .= '
+            order by postn.published desc';
+
+        if($limitr !== false) {
+            $this->_sql .= ' limit '.(int)$limitr.' offset '.(int)$limitf;
+
+        }
 
         $this->prepare(
             'Postn',
