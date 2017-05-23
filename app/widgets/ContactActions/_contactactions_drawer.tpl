@@ -18,9 +18,11 @@
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
-                <span class="control icon active" onclick="MovimUtils.reload('{$c->route('chat', $contact->jid)}')">
-                    <i class="zmdi zmdi-comment-text-alt"></i>
-                </span>
+                {if="!$contact->isMe()"}
+                    <span class="control icon active" onclick="MovimUtils.reload('{$c->route('chat', $contact->jid)}')">
+                        <i class="zmdi zmdi-comment-text-alt"></i>
+                    </span>
+                {/if}
                 <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
                     <i class="zmdi zmdi-account"></i>
                 </span>
