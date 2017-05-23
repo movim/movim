@@ -11,12 +11,13 @@ class Message
         $to,
         $content = false,
         $html = false,
-        $type = 'chat',
+        $type = false,
         $chatstates = false,
         $receipts = false,
         $id = false,
         $replace = false,
-        $file = false)
+        $file = false,
+        $invite = false)
     {
         $session = Session::start();
 
@@ -24,7 +25,10 @@ class Message
         $root = $dom->createElementNS('jabber:client', 'message');
         $dom->appendChild($root);
         $root->setAttribute('to', str_replace(' ', '\40', $to));
-        $root->setAttribute('type', $type);
+
+        if($type != false) {
+            $root->setAttribute('type', $type);
+        }
 
         if(in_array($receipts, ['received', 'displayed'])) {
             $root->setAttribute('id', Uuid::uuid4());
@@ -123,6 +127,16 @@ class Message
             $sources->appendChild($reference);
         }
 
+        if($invite != false) {
+            $x = $dom->createElement('x');
+            $x->setAttribute('xmlns', 'http://jabber.org/protocol/muc#user');
+            $root->appendChild($x);
+
+            $xinvite = $dom->createElement('invite');
+            $xinvite->setAttribute('to', $invite);
+            $x->appendChild($xinvite);
+        }
+
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
@@ -149,5 +163,10 @@ class Message
     static function displayed($to, $id)
     {
         self::maker($to, false, false, 'chat', false, 'displayed', $id);
+    }
+
+    static function invite($to, $id, $invite)
+    {
+        self::maker($to, false, false, false, false, false, $id, false, false, $invite);
     }
 }
