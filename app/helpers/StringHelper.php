@@ -80,7 +80,7 @@ function addHashtagsLinks($string)
     return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function($match) {
         return
             $match[1].
-            '<a href="'.\Movim\Route::urlize('tag', $match[2]).'">'.
+            '<a class="innertag" href="'.\Movim\Route::urlize('tag', $match[2]).'">'.
             '#'.$match[2].
             '</a>';
     }, $string);

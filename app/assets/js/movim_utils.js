@@ -253,7 +253,7 @@ var MovimUtils = {
             i++;
         }
 
-        var links = document.querySelectorAll('article section content a');
+        var links = document.querySelectorAll('article section content a:not(.innertag)');
 
         var i = 0;
         while(i < links.length)
