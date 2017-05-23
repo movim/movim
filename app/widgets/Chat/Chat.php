@@ -348,7 +348,6 @@ class Chat extends \Movim\Widget\Base
         /* Is it really clean ? */
         if(!$p->getMuc()) {
             if(!preg_match('#^\?OTR#', $m->body)) {
-
                 $md = new \Modl\MessageDAO;
                 $md->set($m);
             }

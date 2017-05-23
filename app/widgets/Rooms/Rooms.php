@@ -4,6 +4,9 @@ use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Bookmark\Get;
 use Moxl\Xec\Action\Bookmark\Set;
 use Moxl\Xec\Action\Presence\Unavailable;
+use Moxl\Xec\Action\Message\Invite;
+
+use Ramsey\Uuid\Uuid;
 
 use Respect\Validation\Validator;
 
@@ -111,6 +114,42 @@ class Rooms extends \Movim\Widget\Base
         $view->assign('username', $this->user->getUser());
 
         Dialog::fill($view->draw('_rooms_add', true));
+    }
+
+    /**
+     * @brief Display the add room form
+     */
+    function ajaxAskInvite($room = false)
+    {
+        $view = $this->tpl();
+
+        $cd = new \Modl\ContactDAO;
+        $view->assign('contacts', $cd->getRosterSimple());
+        $view->assign('room', $room);
+
+        Dialog::fill($view->draw('_rooms_invite', true));
+    }
+
+
+    /**
+     * @brief Invite someone to a room
+     */
+    function ajaxInvite($form)
+    {
+        if(!$this->validateRoom($form->to->value)) return;
+
+        $cd = new \Modl\ContactDAO;
+        if(!empty($form->invite->value)
+        && !empty($cd->getRoster($form->invite->value))) {
+            $i = new Invite;
+            $i->setTo($form->to->value)
+              ->setId(Uuid::uuid4())
+              ->setInvite($form->invite->value)
+              ->request();
+
+            Notification::append(null, $this->__('room.invited'));
+            $this->rpc('Dialog_ajaxClear');
+        }
     }
 
     /**

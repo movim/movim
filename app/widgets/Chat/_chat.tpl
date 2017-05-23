@@ -54,6 +54,9 @@
                 <p class="normal">{$c->__('button.delete')}</p>
             </li>
         {/if}
+        <li onclick="Rooms_ajaxAskInvite('{$room}');">
+            <p class="normal">{$c->__('room.invite')}</p>
+        </li>
         <li onclick="Rooms_ajaxEdit('{$room}');">
             <p class="normal">{$c->__('chatroom.config')}</p>
         </li>
