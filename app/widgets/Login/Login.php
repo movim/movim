@@ -20,6 +20,7 @@ class Login extends \Movim\Widget\Base
         $this->registerEvent('storage_get_handle', 'onConfig');
         $this->registerEvent('storage_get_errorfeaturenotimplemented', 'onConfig');
         $this->registerEvent('storage_get_errorserviceunavailable', 'onConfig');
+        $this->registerEvent('ssl_error', 'onSSLError');
     }
 
     function onStart($packet)
@@ -65,9 +66,21 @@ class Login extends \Movim\Widget\Base
 
         $pop = 0;
 
-        foreach(scandir(USERS_PATH) as $f)
-            if(is_dir(USERS_PATH.'/'.$f))
+        foreach(scandir(USERS_PATH) as $f) {
+            if(is_dir(USERS_PATH.'/'.$f)) {
                 $pop++;
+            }
+        }
+
+        $this->view->assign('invitation', null);
+
+        if($this->get('i') && Validator::length(8)->validate($this->get('i'))) {
+            $invitation = \Modl\Invite::get($this->get('i'));
+            $this->view->assign('invitation', $invitation);
+
+            $cd = new \Modl\ContactDAO;
+            $this->view->assign('contact', $cd->get($invitation->jid));
+        }
 
         $this->view->assign('pop', $pop-2);
         $this->view->assign('connected', (int)requestURL('http://localhost:1560/started/', 2));
@@ -109,24 +122,23 @@ class Login extends \Movim\Widget\Base
         return $view->draw('_login_error', true);
     }
 
+    function onSSLError()
+    {
+        $this->showErrorBlock('fail_auth');
+    }
+
     function onSASLFailure($packet)
     {
         switch($packet->content) {
-            case 'not-authorized':
-                $error = 'wrong_account';
-                break;
             case 'invalid-mechanism':
-                $error = 'mechanism';
-                break;
             case 'malformed-request':
                 $error = 'mechanism';
                 break;
-            case 'bad-protocol':
-                $error = 'fail_auth';
-                break;
+            case 'not-authorized':
             case 'bad-auth':
                 $error = 'wrong_account';
                 break;
+            case 'bad-protocol':
             default :
                 $error = 'fail_auth';
                 break;

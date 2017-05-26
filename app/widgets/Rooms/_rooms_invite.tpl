@@ -3,6 +3,13 @@
         <h3>{$c->__('room.invite')}</h3>
         <h4>{$room}</h4>
         <div>
+            <input
+                readonly
+                value="{$c->route('login', $invite->code)}">
+            <label>{$c->__('room.invite_code')}</label>
+        </div>
+        <h2 style="text-align: center;">{$c->__('global.or')}</h2>
+        <div>
             <input type="hidden" value="{$room}" name="to" id="to"/>
             <datalist id="contact_list" style="display: none;">
                 {if="is_array($contacts)"}
@@ -31,5 +38,4 @@
             {$c->__('button.invite')}
         </button>
     </div>
-
 </div>

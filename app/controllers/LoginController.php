@@ -3,6 +3,8 @@
 use Movim\Controller\Base;
 use Movim\User;
 
+use Respect\Validation\Validator;
+
 class LoginController extends Base
 {
     function load()
@@ -16,7 +18,12 @@ class LoginController extends Base
 
         $user = new User;
         if($user->isLogged()) {
-            $this->redirect('root');
+            if($this->fetchGet('i') && Validator::length(8)->validate($this->fetchGet('i'))) {
+                $invitation = \Modl\Invite::get($this->fetchGet('i'));
+                $this->redirect('chat', [$invitation->resource, 'room']);
+            } else {
+                $this->redirect('root');
+            }
         }
     }
 }

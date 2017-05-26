@@ -222,6 +222,9 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 restore_error_handler();
 
                 if($out !== true) {
+                    $evt = new Movim\Widget\Event;
+                    $evt->run('ssl_error');
+
                     $loop->stop();
                     return;
                 }

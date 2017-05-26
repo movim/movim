@@ -151,7 +151,7 @@
 </div>
 
 {if="count($subscriptions) > 0"}
-    <ul class="list active middle large">
+    <ul class="list active large">
         <li class="subheader large">
             <p>
                 <span class="info">{$subscriptions|count}</span>

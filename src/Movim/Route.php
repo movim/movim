@@ -26,7 +26,7 @@ class Route extends Base
                 'help'          => false,
                 'home'          => ['i'],
                 'infos'         => false,
-                'login'         => ['err'],
+                'login'         => ['i'],
                 'main'          => false,
                 'node'          => ['s', 'n', 'i'],
                 'news'          => ['s', 'n', 'i'],

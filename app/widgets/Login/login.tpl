@@ -22,6 +22,25 @@
         <section>
             <span class="info">{$c->__('form.connected')} {$connected} / {$pop}</span>
             <h3>{$c->__('page.login')}</h3>
+            {if="$invitation != null"}
+                <br />
+                <ul class="list middle">
+                    <li>
+                        {$url = $contact->getPhoto('m')}
+                        {if="$url"}
+                            <span class="primary icon bubble" style="background-image: url({$url});">
+                            </span>
+                        {else}
+                            <span class="primary icon bubble color {$contact->jid|stringToColor}">
+                                {$contact->getTrueName()|firstLetterCapitalize}
+                            </span>
+                        {/if}
+                        <p class="line">{$c->__('form.invite_chatroom', $contact->getTrueName())}</p>
+                        <p class="line">{$invitation->resource}</p>
+                    </li>
+                </ul>
+            {/if}
+
             <form
                 data-action="{$submit}"
                 method="post" action="login"
