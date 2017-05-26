@@ -1,9 +1,9 @@
 var AdminTest = {
     databaseOK : false,
-    weksocketOK : false,
+    websocketOK : false,
     apiOK : false,
     movimOK : true,
-    
+
     toggleConfiguration : function() {
         if(this.databaseOK && this.websocketOK && this.movimOK) {
             MovimUtils.removeClass('li.admingen', 'disabled');
