@@ -56,7 +56,11 @@
 
             {if="$post->isMicroblog()"}
                 {$url = $contact->getPhoto('s')}
-                {if="$url"}
+                {if="$post->isNSFW()"}
+                    <span class="primary icon bubble color red tiny">
+                        +18
+                    </span>
+                {elseif="$url"}
                     <span class="icon primary bubble">
                         <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
                             <img src="{$url}">
@@ -70,7 +74,11 @@
                     </span>
                 {/if}
             {else}
-                {if="$post->logo"}
+                {if="$post->isNSFW()"}
+                    <span class="primary icon bubble color red tiny">
+                        +18
+                    </span>
+                {elseif="$post->logo"}
                     <span class="primary icon bubble">
                         <a href="{$c->route('community', [$post->origin, $post->node])}">
                             <img src="{$post->getLogo()}">
