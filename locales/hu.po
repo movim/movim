@@ -49,6 +49,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -75,6 +77,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -100,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -172,10 +176,6 @@ msgstr "Kérlek adj meg egy érvényes jelszót (minimum 6 karakter)"
 msgid "The provided passwords are not the same"
 msgstr "A megadott jelszavak nem egyeznek"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "Törlöm a felhasználói fiókom"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "Felhasználói fiókod törlése"
@@ -191,6 +191,19 @@ msgstr "Biztosan törölni akarod?"
 #: [account]gateway_title
 msgid "Gateway"
 msgstr "Átjáró"
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr "Törölni fogod az XMPP felhasználód és minden vele kapcsolatos információt (profil, kapcsolatok, és megosztások)."
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -410,18 +423,6 @@ msgstr "A PHP verziód: %s"
 msgid "Required: 5.3.0"
 msgstr "Szükséges verzió: 5.3.0"
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr "Telepítsd a php5-curl könyvtárat"
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr "Telepítsd a php5-imagick könyvtárat"
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr "Telepítsd a php5-gd könyvtárat"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -613,6 +614,10 @@ msgstr "A partner elment"
 msgid "%s messages retrieved"
 msgstr "%s üzenet betöltve"
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%snek a figyelmedre van szüksége"
@@ -636,6 +641,32 @@ msgstr "Vitasd meg ismerőseiddel"
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Gyakori kapcsolatok"
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+#, fuzzy
+msgid "Join %s"
+msgstr "Bejelentkezés %s-n"
+
+#: [chat]profile
+#, fuzzy
+msgid "See the profile"
+msgstr "%s profilja"
+
+#: [chat]clear
+msgid "Clear the history"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -722,9 +753,10 @@ msgstr ""
 msgid "Create a new Group on %s"
 msgstr "Készítsd egy új csoportot itt: %s"
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr "Csoport neve"
+#: [communitiesserver]name
+#, fuzzy
+msgid "Community name"
+msgstr "Név üres"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -887,6 +919,14 @@ msgstr "Érvénytelen beállítások"
 msgid "Advanced Configuration"
 msgstr "Haladó beállítások"
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "A blogod CSS URL-je"
@@ -1031,7 +1071,7 @@ msgstr "De ez az ismerős még mindig láthatja ha online vagy"
 msgid "No subscriptions"
 msgstr "Nincsenek feliratkozók"
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Meghívás"
 
@@ -1086,6 +1126,10 @@ msgstr "A Feliratkozásaim menüben találhatod a feliratkozott csoportjaid list
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
+
+#: [groups]name
+msgid "Group name"
+msgstr "Csoport neve"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1255,10 +1299,6 @@ msgstr "Én címem"
 msgid "Create one !"
 msgstr "Hozz létre egyet!"
 
-#: [form]another_account
-msgid "Another account"
-msgstr "Másik felhasználói fiók"
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr "Nincs még felhasználói fiókod ?"
@@ -1312,8 +1352,9 @@ msgid "Contacts"
 msgstr "Kapcsolatok"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr "Bejegyzés írása"
+#, fuzzy
+msgid "Write a new post…"
+msgstr "Felhasználó létrehozása"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1487,10 +1528,6 @@ msgstr ""
 msgid "Disconnect"
 msgstr "Lecsatlakozás"
 
-#: [status]here
-msgid "Your status here !"
-msgstr "Állapotfrissítés itt!"
-
 #: [status]updated
 msgid "Status updated"
 msgstr "Állapot frissítve"
@@ -1526,10 +1563,6 @@ msgstr "Link"
 #: [publish]tags
 msgid "Tags"
 msgstr "Címkék"
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
-msgstr "Ez a kép a galériádhoz lesz adva"
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
@@ -1571,6 +1604,21 @@ msgstr ""
 msgid "Add some text"
 msgstr ""
 
+#: [publishbrief]placeholder
+#, fuzzy
+msgid "What's new?"
+msgstr "Mi történt?"
+
+#: [publishbrief]post
+#, fuzzy
+msgid "Write a post"
+msgstr "Bejegyzés szerkesztése"
+
+#: [publishbrief]add_link
+#, fuzzy
+msgid "Add a link"
+msgstr "Hozzászólok"
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "Chatszoba hozzáadása"
@@ -1607,6 +1655,10 @@ msgstr "Adj meg egy helyes becenevet (2-40 karakter hosszú)"
 msgid "Username already taken"
 msgstr "A felhasználónév már használatban van"
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Nyilvános chatszoba"
@@ -1630,6 +1682,16 @@ msgstr "Bejelentkezés %s-n"
 #: [room]nick
 msgid "Your nickname"
 msgstr "Beceneved"
+
+#: [room]invite
+#, fuzzy
+msgid "Invite a contact"
+msgstr "Ismerős keresése"
+
+#: [room]invited
+#, fuzzy
+msgid "Invitation sent"
+msgstr "Várakozó meghívások"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2027,6 +2089,10 @@ msgstr "Közzétesz"
 #: [button]register
 msgid "Register"
 msgstr "Regisztráció"
+
+#: [button]reply
+msgid "Reply"
+msgstr ""
 
 #: [button]unregister
 msgid "Unregister"
@@ -2758,3 +2824,27 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Delete my account"
+#~ msgstr "Törlöm a felhasználói fiókom"
+
+#~ msgid "Install the php5-curl library"
+#~ msgstr "Telepítsd a php5-curl könyvtárat"
+
+#~ msgid "Install the php5-imagick library"
+#~ msgstr "Telepítsd a php5-imagick könyvtárat"
+
+#~ msgid "Install the php5-gd library"
+#~ msgstr "Telepítsd a php5-gd könyvtárat"
+
+#~ msgid "Another account"
+#~ msgstr "Másik felhasználói fiók"
+
+#~ msgid "Add a post"
+#~ msgstr "Bejegyzés írása"
+
+#~ msgid "Your status here !"
+#~ msgstr "Állapotfrissítés itt!"
+
+#~ msgid "This picture will be added to your gallery"
+#~ msgstr "Ez a kép a galériádhoz lesz adva"

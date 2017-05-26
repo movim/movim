@@ -48,6 +48,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -74,6 +76,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -99,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: RACER\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -171,10 +175,6 @@ msgstr "適正なパスワードを記入してください（最低６文字）
 msgid "The provided passwords are not the same"
 msgstr "記入されたパスワードが異なっています"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "アカウントを削除する"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "アカウントを削除する"
@@ -189,6 +189,19 @@ msgstr "削除してよろしいですか"
 
 #: [account]gateway_title
 msgid "Gateway"
+msgstr ""
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr "XMPP アカウントと関連しているデータ、プロファイル、コンタクトや投稿などが削除されます。"
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -409,18 +422,6 @@ msgstr "PHPをアップデートしてください： %s"
 msgid "Required: 5.3.0"
 msgstr ""
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr ""
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr ""
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr ""
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -612,6 +613,10 @@ msgstr ""
 msgid "%s messages retrieved"
 msgstr ""
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr ""
@@ -634,6 +639,30 @@ msgstr ""
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
+msgstr ""
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+msgid "Join %s"
+msgstr ""
+
+#: [chat]profile
+msgid "See the profile"
+msgstr ""
+
+#: [chat]clear
+msgid "Clear the history"
 msgstr ""
 
 #: [chatroom]members
@@ -721,9 +750,10 @@ msgstr ""
 msgid "Create a new Group on %s"
 msgstr ""
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr "グループ名"
+#: [communitiesserver]name
+#, fuzzy
+msgid "Community name"
+msgstr "名前が空です"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -886,6 +916,14 @@ msgstr ""
 msgid "Advanced Configuration"
 msgstr ""
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr ""
@@ -1030,7 +1068,7 @@ msgstr ""
 msgid "No subscriptions"
 msgstr ""
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr ""
 
@@ -1085,6 +1123,10 @@ msgstr ""
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "コンタクトの投稿"
+
+#: [groups]name
+msgid "Group name"
+msgstr "グループ名"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1254,10 +1296,6 @@ msgstr "マイアドレス"
 msgid "Create one !"
 msgstr ""
 
-#: [form]another_account
-msgid "Another account"
-msgstr "違うアカウント"
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr ""
@@ -1311,8 +1349,9 @@ msgid "Contacts"
 msgstr "知り合い"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr ""
+#, fuzzy
+msgid "Write a new post…"
+msgstr "新しいアカウントを作成する"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1486,10 +1525,6 @@ msgstr ""
 msgid "Disconnect"
 msgstr "切断する"
 
-#: [status]here
-msgid "Your status here !"
-msgstr ""
-
 #: [status]updated
 msgid "Status updated"
 msgstr "ステータスを更新しました"
@@ -1525,10 +1560,6 @@ msgstr "リンク"
 #: [publish]tags
 msgid "Tags"
 msgstr "タグ"
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
-msgstr ""
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
@@ -1570,6 +1601,20 @@ msgstr ""
 msgid "Add some text"
 msgstr ""
 
+#: [publishbrief]placeholder
+msgid "What's new?"
+msgstr ""
+
+#: [publishbrief]post
+#, fuzzy
+msgid "Write a post"
+msgstr "新しい投稿"
+
+#: [publishbrief]add_link
+#, fuzzy
+msgid "Add a link"
+msgstr "新しいURLを追加する"
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "チャットルームを追加する"
@@ -1606,6 +1651,10 @@ msgstr ""
 msgid "Username already taken"
 msgstr ""
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr ""
@@ -1629,6 +1678,16 @@ msgstr ""
 #: [room]nick
 msgid "Your nickname"
 msgstr ""
+
+#: [room]invite
+#, fuzzy
+msgid "Invite a contact"
+msgstr "誰かとチャットする"
+
+#: [room]invited
+#, fuzzy
+msgid "Invitation sent"
+msgstr "管理者認証"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2025,6 +2084,10 @@ msgstr ""
 
 #: [button]register
 msgid "Register"
+msgstr ""
+
+#: [button]reply
+msgid "Reply"
 msgstr ""
 
 #: [button]unregister
@@ -2757,3 +2820,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
+
+#~ msgid "Delete my account"
+#~ msgstr "アカウントを削除する"
+
+#~ msgid "Another account"
+#~ msgstr "違うアカウント"

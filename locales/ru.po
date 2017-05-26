@@ -50,6 +50,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -76,6 +78,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -101,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: yanislavb <bstar99@gustaw.ml>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -173,10 +177,6 @@ msgstr "Пожалуйста, введите корректный пароль (
 msgid "The provided passwords are not the same"
 msgstr "Введенные пароли не совпадают"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "Удалить аккаунт"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "Удалить свой аккаунт"
@@ -192,6 +192,19 @@ msgstr "Вы уверены, что хотите удалить?"
 #: [account]gateway_title
 msgid "Gateway"
 msgstr "Шлюз"
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr "Вы удалите свой аккаунт XMPP и все информацию связанную с ним (профиль, контакты и публикации)."
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -411,18 +424,6 @@ msgstr "Обновите вашу версию PHP: %s"
 msgid "Required: 5.3.0"
 msgstr "Необходима: 5.3.0"
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr "Установите библиотеку php5-curl"
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr "Установите библиотеку php5-imagick"
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr "Установите библиотеку php5-gd"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Нужны права чтения и записи для вебсервера в папке %s"
@@ -614,6 +615,10 @@ msgstr "Контакт ушел"
 msgid "%s messages retrieved"
 msgstr "%s сообщений получено"
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s нуждается в Вашем внимании"
@@ -637,6 +642,33 @@ msgstr "Обсудить с вашими контактами"
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Популярные контакты"
+
+#: [chat]new_title
+#, fuzzy
+msgid "Nothing here yet…"
+msgstr "Пока нет новостей"
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+#, fuzzy
+msgid "Join %s"
+msgstr "Войти на %s"
+
+#: [chat]profile
+#, fuzzy
+msgid "See the profile"
+msgstr "Смотрите профиль %s"
+
+#: [chat]clear
+msgid "Clear the history"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -723,9 +755,10 @@ msgstr "На этом сервере пока нет групп"
 msgid "Create a new Group on %s"
 msgstr "Создать новую Группу на %s"
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr "Название группы"
+#: [communitiesserver]name
+#, fuzzy
+msgid "Community name"
+msgstr "Мое имя сообщества"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -888,6 +921,14 @@ msgstr "Неправильные настройки"
 msgid "Advanced Configuration"
 msgstr "Расширенные настройки"
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "Указать URL собственного CSS для вашего блога"
@@ -1032,7 +1073,7 @@ msgstr "Но этот контакт может видеть ваш онлайн
 msgid "No subscriptions"
 msgstr "Нет подписок"
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Приглашение"
 
@@ -1087,6 +1128,10 @@ msgstr "Вы можете найти список групп на которые
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "Для связи"
+
+#: [groups]name
+msgid "Group name"
+msgstr "Название группы"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1256,10 +1301,6 @@ msgstr "Мой адрес"
 msgid "Create one !"
 msgstr "Создайте учетную запись!"
 
-#: [form]another_account
-msgid "Another account"
-msgstr "Другая учётная запись"
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr "Еще нет учетной записи?"
@@ -1313,8 +1354,9 @@ msgid "Contacts"
 msgstr "Контакты"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr "Добавить публикацию"
+#, fuzzy
+msgid "Write a new post…"
+msgstr "Создать новую учётную запись"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1488,10 +1530,6 @@ msgstr "Вы можете заполнить профиль на страниц�
 msgid "Disconnect"
 msgstr "Отсоединиться"
 
-#: [status]here
-msgid "Your status here !"
-msgstr "Ваш статус здесь !"
-
 #: [status]updated
 msgid "Status updated"
 msgstr "Статус обновлен"
@@ -1527,10 +1565,6 @@ msgstr "Ссылка"
 #: [publish]tags
 msgid "Tags"
 msgstr "Теги"
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
-msgstr "Эта картинка будет добавлена в вашу галерею"
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
@@ -1572,6 +1606,21 @@ msgstr "Текст записи"
 msgid "Add some text"
 msgstr "Добавить текст"
 
+#: [publishbrief]placeholder
+#, fuzzy
+msgid "What's new?"
+msgstr "Что нового?"
+
+#: [publishbrief]post
+#, fuzzy
+msgid "Write a post"
+msgstr "Изменить запись"
+
+#: [publishbrief]add_link
+#, fuzzy
+msgid "Add a link"
+msgstr "Добавить новый URL"
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "Добавить комнату"
@@ -1608,6 +1657,10 @@ msgstr "Введите корректный псевдоним (от 2 до 40 �
 msgid "Username already taken"
 msgstr "Имя пользователя уже используется"
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Публичная комната"
@@ -1631,6 +1684,16 @@ msgstr "Войти на %s"
 #: [room]nick
 msgid "Your nickname"
 msgstr "Ваш псевдоним"
+
+#: [room]invite
+#, fuzzy
+msgid "Invite a contact"
+msgstr "Добавить контакт"
+
+#: [room]invited
+#, fuzzy
+msgid "Invitation sent"
+msgstr "Ожидающие решения приглашения"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2028,6 +2091,10 @@ msgstr "Отправление"
 #: [button]register
 msgid "Register"
 msgstr "Зарегистрировать"
+
+#: [button]reply
+msgid "Reply"
+msgstr ""
 
 #: [button]unregister
 msgid "Unregister"
@@ -2759,3 +2826,27 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "Delete my account"
+#~ msgstr "Удалить аккаунт"
+
+#~ msgid "Install the php5-curl library"
+#~ msgstr "Установите библиотеку php5-curl"
+
+#~ msgid "Install the php5-imagick library"
+#~ msgstr "Установите библиотеку php5-imagick"
+
+#~ msgid "Install the php5-gd library"
+#~ msgstr "Установите библиотеку php5-gd"
+
+#~ msgid "Another account"
+#~ msgstr "Другая учётная запись"
+
+#~ msgid "Add a post"
+#~ msgstr "Добавить публикацию"
+
+#~ msgid "Your status here !"
+#~ msgstr "Ваш статус здесь !"
+
+#~ msgid "This picture will be added to your gallery"
+#~ msgstr "Эта картинка будет добавлена в вашу галерею"

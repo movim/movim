@@ -47,6 +47,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -73,6 +75,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -98,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Arabic (http://www.transifex.com/movim/movim/language/ar/)\n"
@@ -170,10 +174,6 @@ msgstr "المرجو إدخال كلمة سر صحيحة (6 أحرف على ال
 msgid "The provided passwords are not the same"
 msgstr "كلمتي السر  مختلفتين"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "حذف حسابي"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "احذف حسابك"
@@ -188,6 +188,18 @@ msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
+msgstr ""
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr ""
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -408,18 +420,6 @@ msgstr ""
 msgid "Required: 5.3.0"
 msgstr ""
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr ""
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr ""
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr ""
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -611,6 +611,10 @@ msgstr ""
 msgid "%s messages retrieved"
 msgstr ""
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr ""
@@ -633,6 +637,30 @@ msgstr ""
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
+msgstr ""
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+msgid "Join %s"
+msgstr ""
+
+#: [chat]profile
+msgid "See the profile"
+msgstr ""
+
+#: [chat]clear
+msgid "Clear the history"
 msgstr ""
 
 #: [chatroom]members
@@ -720,8 +748,8 @@ msgstr ""
 msgid "Create a new Group on %s"
 msgstr ""
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
+#: [communitiesserver]name
+msgid "Community name"
 msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
@@ -885,6 +913,14 @@ msgstr ""
 msgid "Advanced Configuration"
 msgstr ""
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr ""
@@ -1029,7 +1065,7 @@ msgstr ""
 msgid "No subscriptions"
 msgstr ""
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr ""
 
@@ -1083,6 +1119,10 @@ msgstr ""
 
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
+msgstr ""
+
+#: [groups]name
+msgid "Group name"
 msgstr ""
 
 #: [help]faq
@@ -1253,10 +1293,6 @@ msgstr "عنوان بريدي"
 msgid "Create one !"
 msgstr ""
 
-#: [form]another_account
-msgid "Another account"
-msgstr ""
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr ""
@@ -1310,8 +1346,9 @@ msgid "Contacts"
 msgstr ""
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr ""
+#, fuzzy
+msgid "Write a new post…"
+msgstr "أنشئ حسابًا جديدًا"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1485,10 +1522,6 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: [status]here
-msgid "Your status here !"
-msgstr ""
-
 #: [status]updated
 msgid "Status updated"
 msgstr ""
@@ -1523,10 +1556,6 @@ msgstr ""
 
 #: [publish]tags
 msgid "Tags"
-msgstr ""
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
 msgstr ""
 
 #: [publish]valid_url
@@ -1569,6 +1598,20 @@ msgstr ""
 msgid "Add some text"
 msgstr ""
 
+#: [publishbrief]placeholder
+#, fuzzy
+msgid "What's new?"
+msgstr "ما الجديد؟"
+
+#: [publishbrief]post
+msgid "Write a post"
+msgstr ""
+
+#: [publishbrief]add_link
+#, fuzzy
+msgid "Add a link"
+msgstr "أضف تعليق"
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr ""
@@ -1605,6 +1648,10 @@ msgstr ""
 msgid "Username already taken"
 msgstr ""
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr ""
@@ -1627,6 +1674,14 @@ msgstr ""
 
 #: [room]nick
 msgid "Your nickname"
+msgstr ""
+
+#: [room]invite
+msgid "Invite a contact"
+msgstr ""
+
+#: [room]invited
+msgid "Invitation sent"
 msgstr ""
 
 #: [roster]ungrouped
@@ -2024,6 +2079,10 @@ msgstr "يجري الإيداع"
 
 #: [button]register
 msgid "Register"
+msgstr ""
+
+#: [button]reply
+msgid "Reply"
 msgstr ""
 
 #: [button]unregister
@@ -2756,3 +2815,6 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Delete my account"
+#~ msgstr "حذف حسابي"

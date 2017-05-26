@@ -49,6 +49,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -75,6 +77,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -100,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
@@ -172,10 +176,6 @@ msgstr "Por favor, proporcione una contraseña válida (mínimo 6 carácteres)"
 msgid "The provided passwords are not the same"
 msgstr "Las contraseñas proporcionadas no coinciden"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "Borrar mi cuenta"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "Borrar tu cuenta"
@@ -191,6 +191,19 @@ msgstr "¿Está seguro de que quieres eliminarla?"
 #: [account]gateway_title
 msgid "Gateway"
 msgstr "Puerta de Enlace"
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr "Eliminarás tu cuenta XMPP y toda la información ligada a ella (perfil, contactos y publicaciones)."
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -410,18 +423,6 @@ msgstr "Actualizar su PHP-Version: %s"
 msgid "Required: 5.3.0"
 msgstr "Necesario: 5.3.0"
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr "Instalar la librería php5-curl"
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr "Instalar la librería php5-imagick"
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr "Instalar la librería php5-gd"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -613,6 +614,10 @@ msgstr "Contacto perdido"
 msgid "%s messages retrieved"
 msgstr "%s mensajes obtenidos"
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s necesita tu atención"
@@ -636,6 +641,32 @@ msgstr "Habla con tus contactos"
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Contactos frecuentes"
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+#, fuzzy
+msgid "Join %s"
+msgstr "Iniciar sesión en %s"
+
+#: [chat]profile
+#, fuzzy
+msgid "See the profile"
+msgstr "Ver el perfil de %s"
+
+#: [chat]clear
+msgid "Clear the history"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -722,9 +753,10 @@ msgstr "Aún no hay Grupos en este servidor."
 msgid "Create a new Group on %s"
 msgstr "Crear un nuevo Grupo en %s"
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr "Nombre del grupo"
+#: [communitiesserver]name
+#, fuzzy
+msgid "Community name"
+msgstr "Nombre vacío"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -887,6 +919,14 @@ msgstr "Configuración inválida"
 msgid "Advanced Configuration"
 msgstr "Configuración avanzada"
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr ""
@@ -1031,7 +1071,7 @@ msgstr "Pero este contacto puede verte aún si estás en línea"
 msgid "No subscriptions"
 msgstr "No hay subscripciones"
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Invitar"
 
@@ -1086,6 +1126,10 @@ msgstr "Encontrarás una lista con todos los Grupos a los que te has suscrito en
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "Publicación de contacto"
+
+#: [groups]name
+msgid "Group name"
+msgstr "Nombre del grupo"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1255,10 +1299,6 @@ msgstr "Mi dirección"
 msgid "Create one !"
 msgstr "¡Crear una!"
 
-#: [form]another_account
-msgid "Another account"
-msgstr "Otra cuenta"
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr "¿Aún sin cuenta?"
@@ -1312,8 +1352,9 @@ msgid "Contacts"
 msgstr "Contactos"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr "Agregar una publicación"
+#, fuzzy
+msgid "Write a new post…"
+msgstr "Crear una cuenta nueva"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1487,10 +1528,6 @@ msgstr "Puedes ir a la página de Configuración para describirte y poner una li
 msgid "Disconnect"
 msgstr "Desconectar"
 
-#: [status]here
-msgid "Your status here !"
-msgstr "¡Tu estado aquí!"
-
 #: [status]updated
 msgid "Status updated"
 msgstr "Estado actualizado"
@@ -1526,10 +1563,6 @@ msgstr "Enlace"
 #: [publish]tags
 msgid "Tags"
 msgstr "Etiquetas"
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
-msgstr "Esta imagen será añadida a tu galería"
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
@@ -1571,6 +1604,21 @@ msgstr "Haz click aquí para agregar contenido a tu publicación"
 msgid "Add some text"
 msgstr "Agrega algún texto"
 
+#: [publishbrief]placeholder
+#, fuzzy
+msgid "What's new?"
+msgstr "¿Qué hay de nuevo?"
+
+#: [publishbrief]post
+#, fuzzy
+msgid "Write a post"
+msgstr "Editar publicación"
+
+#: [publishbrief]add_link
+#, fuzzy
+msgid "Add a link"
+msgstr "Añadir un comentario"
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "Añadir una sala de conversación"
@@ -1607,6 +1655,10 @@ msgstr "Por favor, introduzca un nombre correcto (2 a 40 carácteres)"
 msgid "Username already taken"
 msgstr "Nombre de usuario en uso"
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Sala de conversación pública"
@@ -1630,6 +1682,16 @@ msgstr "Iniciar sesión en %s"
 #: [room]nick
 msgid "Your nickname"
 msgstr "Tu apodo"
+
+#: [room]invite
+#, fuzzy
+msgid "Invite a contact"
+msgstr "Buscar un contacto"
+
+#: [room]invited
+#, fuzzy
+msgid "Invitation sent"
+msgstr "Invitaciones pendientes"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2027,6 +2089,10 @@ msgstr "Enviando"
 #: [button]register
 msgid "Register"
 msgstr "Registrar"
+
+#: [button]reply
+msgid "Reply"
+msgstr ""
 
 #: [button]unregister
 msgid "Unregister"
@@ -2758,3 +2824,27 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
+
+#~ msgid "Delete my account"
+#~ msgstr "Borrar mi cuenta"
+
+#~ msgid "Install the php5-curl library"
+#~ msgstr "Instalar la librería php5-curl"
+
+#~ msgid "Install the php5-imagick library"
+#~ msgstr "Instalar la librería php5-imagick"
+
+#~ msgid "Install the php5-gd library"
+#~ msgstr "Instalar la librería php5-gd"
+
+#~ msgid "Another account"
+#~ msgstr "Otra cuenta"
+
+#~ msgid "Add a post"
+#~ msgstr "Agregar una publicación"
+
+#~ msgid "Your status here !"
+#~ msgstr "¡Tu estado aquí!"
+
+#~ msgid "This picture will be added to your gallery"
+#~ msgstr "Esta imagen será añadida a tu galería"

@@ -50,6 +50,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -76,6 +78,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -101,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -173,10 +177,6 @@ msgstr "请输入一个有效的密码 （最少6个字符）"
 msgid "The provided passwords are not the same"
 msgstr "提供两个的密码不是相同的"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "删除我的账号"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "删除我的账号"
@@ -192,6 +192,19 @@ msgstr "你确认你要删除它？"
 #: [account]gateway_title
 msgid "Gateway"
 msgstr "入口"
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr "你将会删除你的XMPP账号跟所有有关的信息(基本资料,联系和公布)"
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -411,18 +424,6 @@ msgstr "更新您的PHP版本: %s"
 msgid "Required: 5.3.0"
 msgstr "需要: 5.3.0"
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr "安装 php5-curl 库"
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr "安装 php5-imagick 库"
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr "安装 php5-gd 库"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -614,6 +615,10 @@ msgstr "联系人已消失"
 msgid "%s messages retrieved"
 msgstr "获取了 %s 条消息"
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s需要您的注意"
@@ -637,6 +642,32 @@ msgstr "同联系人讨论"
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "常用联系人"
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+#, fuzzy
+msgid "Join %s"
+msgstr "登录在%s"
+
+#: [chat]profile
+#, fuzzy
+msgid "See the profile"
+msgstr "查看 %s 档案"
+
+#: [chat]clear
+msgid "Clear the history"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -723,9 +754,10 @@ msgstr "该服务器上还没有任何群组。"
 msgid "Create a new Group on %s"
 msgstr "在 %s 上创建新群组"
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr "群组名称"
+#: [communitiesserver]name
+#, fuzzy
+msgid "Community name"
+msgstr "用户名为空"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -888,6 +920,14 @@ msgstr "配置无效"
 msgid "Advanced Configuration"
 msgstr "高级配置"
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "你的博客的自定义CSS超链接"
@@ -1032,7 +1072,7 @@ msgstr "但该联系人仍可知晓你是否在线"
 msgid "No subscriptions"
 msgstr "没有订阅"
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "邀请"
 
@@ -1087,6 +1127,10 @@ msgstr "你订阅的所有群组在“我的订阅”页面中，它们中的新
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "联系人帖子"
+
+#: [groups]name
+msgid "Group name"
+msgstr "群组名称"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1256,10 +1300,6 @@ msgstr "用户名"
 msgid "Create one !"
 msgstr "新建一个 !"
 
-#: [form]another_account
-msgid "Another account"
-msgstr "另一个账户"
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr "还没有账户 ?"
@@ -1313,8 +1353,9 @@ msgid "Contacts"
 msgstr "联系人"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr "添加帖子"
+#, fuzzy
+msgid "Write a new post…"
+msgstr "建立一个新账户"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1488,10 +1529,6 @@ msgstr "到“设置”页面去补全个人资料并上传一个头像吧。"
 msgid "Disconnect"
 msgstr "断开"
 
-#: [status]here
-msgid "Your status here !"
-msgstr "状态栏"
-
 #: [status]updated
 msgid "Status updated"
 msgstr "更新状态"
@@ -1527,10 +1564,6 @@ msgstr "连接"
 #: [publish]tags
 msgid "Tags"
 msgstr "标签"
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
-msgstr "该图片将被加到你的相册中"
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
@@ -1572,6 +1605,21 @@ msgstr "点击这里添加一些文字"
 msgid "Add some text"
 msgstr "添加一些文字"
 
+#: [publishbrief]placeholder
+#, fuzzy
+msgid "What's new?"
+msgstr "当前最新"
+
+#: [publishbrief]post
+#, fuzzy
+msgid "Write a post"
+msgstr "编辑帖子"
+
+#: [publishbrief]add_link
+#, fuzzy
+msgid "Add a link"
+msgstr "添加评论"
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "添加一个聊天室"
@@ -1608,6 +1656,10 @@ msgstr "请输入正确的昵称(2到40个字母)"
 msgid "Username already taken"
 msgstr "用户名已被使用"
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "公共聊天室"
@@ -1631,6 +1683,16 @@ msgstr "登录在%s"
 #: [room]nick
 msgid "Your nickname"
 msgstr "你的昵称"
+
+#: [room]invite
+#, fuzzy
+msgid "Invite a contact"
+msgstr "搜索联系人"
+
+#: [room]invited
+#, fuzzy
+msgid "Invitation sent"
+msgstr "待处理的邀请"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2028,6 +2090,10 @@ msgstr "提交中"
 #: [button]register
 msgid "Register"
 msgstr "注册"
+
+#: [button]reply
+msgid "Reply"
+msgstr ""
 
 #: [button]unregister
 msgid "Unregister"
@@ -2759,3 +2825,27 @@ msgstr "API无法连接, 请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Delete my account"
+#~ msgstr "删除我的账号"
+
+#~ msgid "Install the php5-curl library"
+#~ msgstr "安装 php5-curl 库"
+
+#~ msgid "Install the php5-imagick library"
+#~ msgstr "安装 php5-imagick 库"
+
+#~ msgid "Install the php5-gd library"
+#~ msgstr "安装 php5-gd 库"
+
+#~ msgid "Another account"
+#~ msgstr "另一个账户"
+
+#~ msgid "Add a post"
+#~ msgstr "添加帖子"
+
+#~ msgid "Your status here !"
+#~ msgstr "状态栏"
+
+#~ msgid "This picture will be added to your gallery"
+#~ msgstr "该图片将被加到你的相册中"

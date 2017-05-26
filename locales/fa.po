@@ -47,6 +47,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -73,6 +75,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -98,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Alireza Mirsepassy <alirezamirsepassy@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
@@ -170,10 +174,6 @@ msgstr "لطفا رمزعبور درستی را وارد کنید ( حداقل 6
 msgid "The provided passwords are not the same"
 msgstr "رمز عبور ها یکسان نیست"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "حساب کاربری من را حذف کن"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "حساب کاربریتان را حذف کنید"
@@ -189,6 +189,18 @@ msgstr ""
 #: [account]gateway_title
 msgid "Gateway"
 msgstr "دروازه"
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr ""
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -408,18 +420,6 @@ msgstr "نسخه PHP خود را بروز کنید : %s"
 msgid "Required: 5.3.0"
 msgstr "Required: 5.3.0"
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr "Install the php5-curl library"
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr "Install the php5-imagick library"
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr "Install the php5-gd library"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -611,6 +611,10 @@ msgstr ""
 msgid "%s messages retrieved"
 msgstr ""
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr ""
@@ -634,6 +638,30 @@ msgstr ""
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "مخاطبین اخیر"
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+msgid "Join %s"
+msgstr ""
+
+#: [chat]profile
+msgid "See the profile"
+msgstr ""
+
+#: [chat]clear
+msgid "Clear the history"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -720,9 +748,10 @@ msgstr "هنوز هیچ گروهی روی این سرور وجود ندارد"
 msgid "Create a new Group on %s"
 msgstr ""
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr "نام گروه"
+#: [communitiesserver]name
+#, fuzzy
+msgid "Community name"
+msgstr "نام خالی است"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -885,6 +914,14 @@ msgstr ""
 msgid "Advanced Configuration"
 msgstr "تنظیمات پیشرفته"
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr ""
@@ -1029,7 +1066,7 @@ msgstr "ولی این مخاطب هنوز میتواند وضعیت آنلاین
 msgid "No subscriptions"
 msgstr "بدون عضو"
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "دعوت"
 
@@ -1084,6 +1121,10 @@ msgstr ""
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
+
+#: [groups]name
+msgid "Group name"
+msgstr "نام گروه"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1253,10 +1294,6 @@ msgstr "آدرس من"
 msgid "Create one !"
 msgstr "یکی بسازید!"
 
-#: [form]another_account
-msgid "Another account"
-msgstr "حساب کاربری دیگر"
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr "هنوز حساب کاربری ندارید ؟"
@@ -1310,8 +1347,9 @@ msgid "Contacts"
 msgstr "مخاطبین"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr "ایجاد یک نوشته"
+#, fuzzy
+msgid "Write a new post…"
+msgstr "ساخت حساب کاربری جدید"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1485,10 +1523,6 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: [status]here
-msgid "Your status here !"
-msgstr ""
-
 #: [status]updated
 msgid "Status updated"
 msgstr ""
@@ -1524,10 +1558,6 @@ msgstr "لینک"
 #: [publish]tags
 msgid "Tags"
 msgstr "تگ ها"
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
-msgstr ""
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
@@ -1569,6 +1599,20 @@ msgstr ""
 msgid "Add some text"
 msgstr "نوشته ای اضافه کنید"
 
+#: [publishbrief]placeholder
+msgid "What's new?"
+msgstr ""
+
+#: [publishbrief]post
+#, fuzzy
+msgid "Write a post"
+msgstr "ویرایش نوشته"
+
+#: [publishbrief]add_link
+#, fuzzy
+msgid "Add a link"
+msgstr "اضافه کردن URL"
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "یک اتاق گپ ثبت کنید"
@@ -1605,6 +1649,10 @@ msgstr ""
 msgid "Username already taken"
 msgstr "نام کاربری قبلا استفاده شده است"
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "اتاق های گپ عمومی"
@@ -1628,6 +1676,16 @@ msgstr ""
 #: [room]nick
 msgid "Your nickname"
 msgstr ""
+
+#: [room]invite
+#, fuzzy
+msgid "Invite a contact"
+msgstr "جستجو مخاطبین"
+
+#: [room]invited
+#, fuzzy
+msgid "Invitation sent"
+msgstr "دعوت های در انتظار"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2024,6 +2082,10 @@ msgstr ""
 
 #: [button]register
 msgid "Register"
+msgstr ""
+
+#: [button]reply
+msgid "Reply"
 msgstr ""
 
 #: [button]unregister
@@ -2756,3 +2818,21 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Delete my account"
+#~ msgstr "حساب کاربری من را حذف کن"
+
+#~ msgid "Install the php5-curl library"
+#~ msgstr "Install the php5-curl library"
+
+#~ msgid "Install the php5-imagick library"
+#~ msgstr "Install the php5-imagick library"
+
+#~ msgid "Install the php5-gd library"
+#~ msgstr "Install the php5-gd library"
+
+#~ msgid "Another account"
+#~ msgstr "حساب کاربری دیگر"
+
+#~ msgid "Add a post"
+#~ msgstr "ایجاد یک نوشته"

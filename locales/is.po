@@ -46,6 +46,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -72,6 +74,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -97,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Icelandic (http://www.transifex.com/movim/movim/language/is/)\n"
@@ -169,10 +173,6 @@ msgstr "Vinsamlegast notist við gilt lykilorð (lágmark 6 stafir)"
 msgid "The provided passwords are not the same"
 msgstr "Lykilorðin eru ekki eins"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "Eyða aðgangi mínum"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "Eyða aðgangi þínum"
@@ -188,6 +188,19 @@ msgstr "Ertu viss um að þú viljir eyða aðganginum?"
 #: [account]gateway_title
 msgid "Gateway"
 msgstr "Gátt"
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr "Þú munt eyða XMPP aðgangionum þínum og öllum upplýsingum tengdum honum (prófíll, tengiliðir og færslur)."
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -407,18 +420,6 @@ msgstr ""
 msgid "Required: 5.3.0"
 msgstr ""
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr ""
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr ""
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr ""
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -610,6 +611,10 @@ msgstr ""
 msgid "%s messages retrieved"
 msgstr ""
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr ""
@@ -632,6 +637,30 @@ msgstr ""
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
+msgstr ""
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+msgid "Join %s"
+msgstr ""
+
+#: [chat]profile
+msgid "See the profile"
+msgstr ""
+
+#: [chat]clear
+msgid "Clear the history"
 msgstr ""
 
 #: [chatroom]members
@@ -719,9 +748,10 @@ msgstr ""
 msgid "Create a new Group on %s"
 msgstr ""
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr ""
+#: [communitiesserver]name
+#, fuzzy
+msgid "Community name"
+msgstr "Autt nafn"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -884,6 +914,14 @@ msgstr ""
 msgid "Advanced Configuration"
 msgstr ""
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr ""
@@ -1028,7 +1066,7 @@ msgstr ""
 msgid "No subscriptions"
 msgstr ""
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr ""
 
@@ -1082,6 +1120,10 @@ msgstr ""
 
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
+msgstr ""
+
+#: [groups]name
+msgid "Group name"
 msgstr ""
 
 #: [help]faq
@@ -1252,10 +1294,6 @@ msgstr ""
 msgid "Create one !"
 msgstr ""
 
-#: [form]another_account
-msgid "Another account"
-msgstr "Annar aðgangur"
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr "Enginn aðgangur?"
@@ -1309,8 +1347,9 @@ msgid "Contacts"
 msgstr "Tengiliðir"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr ""
+#, fuzzy
+msgid "Write a new post…"
+msgstr "Skapa nýjan aðgang"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1484,10 +1523,6 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: [status]here
-msgid "Your status here !"
-msgstr ""
-
 #: [status]updated
 msgid "Status updated"
 msgstr ""
@@ -1523,10 +1558,6 @@ msgstr "Tengill"
 #: [publish]tags
 msgid "Tags"
 msgstr "Mörk"
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
-msgstr "Þessi mynd verður bætt við myndasafnið þitt"
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
@@ -1568,6 +1599,20 @@ msgstr ""
 msgid "Add some text"
 msgstr ""
 
+#: [publishbrief]placeholder
+#, fuzzy
+msgid "What's new?"
+msgstr "Hvað er Heitt"
+
+#: [publishbrief]post
+#, fuzzy
+msgid "Write a post"
+msgstr "Nýjar færslur"
+
+#: [publishbrief]add_link
+msgid "Add a link"
+msgstr ""
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "Bæta við spjallrás"
@@ -1604,6 +1649,10 @@ msgstr ""
 msgid "Username already taken"
 msgstr ""
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Almenn spjallrás"
@@ -1626,6 +1675,14 @@ msgstr ""
 
 #: [room]nick
 msgid "Your nickname"
+msgstr ""
+
+#: [room]invite
+msgid "Invite a contact"
+msgstr ""
+
+#: [room]invited
+msgid "Invitation sent"
 msgstr ""
 
 #: [roster]ungrouped
@@ -2023,6 +2080,10 @@ msgstr ""
 
 #: [button]register
 msgid "Register"
+msgstr ""
+
+#: [button]reply
+msgid "Reply"
 msgstr ""
 
 #: [button]unregister
@@ -2755,3 +2816,12 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Delete my account"
+#~ msgstr "Eyða aðgangi mínum"
+
+#~ msgid "Another account"
+#~ msgstr "Annar aðgangur"
+
+#~ msgid "This picture will be added to your gallery"
+#~ msgstr "Þessi mynd verður bætt við myndasafnið þitt"

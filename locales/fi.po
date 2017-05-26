@@ -46,6 +46,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -72,6 +74,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -97,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
@@ -169,10 +173,6 @@ msgstr "Anna toimiva salasana (vähintään 6 merkkiä)"
 msgid "The provided passwords are not the same"
 msgstr "Salasanat eivät täsmää"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "Poista tili"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "Poista tilisi"
@@ -188,6 +188,19 @@ msgstr "Oletko varma että haluat poistaa sen?"
 #: [account]gateway_title
 msgid "Gateway"
 msgstr "Portti"
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr "Olet poistamassa XMPP-tiliäsi ja kaikkea siihen liittyvää tietoa (profiili, kontaktit ja julkaisut)."
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -407,18 +420,6 @@ msgstr ""
 msgid "Required: 5.3.0"
 msgstr "Vaadittu: 5.3.0"
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr "Asenna php5-curl kirjasto"
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr "Asenna php5-imagick kirjasto"
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr "Asenna php5-gd kirjasto"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -610,6 +611,10 @@ msgstr ""
 msgid "%s messages retrieved"
 msgstr ""
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s tarvitsee huomiosi"
@@ -633,6 +638,30 @@ msgstr "Keskustele kontaktiesi kanssa"
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Usein käytetyt kontaktit"
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+msgid "Join %s"
+msgstr ""
+
+#: [chat]profile
+msgid "See the profile"
+msgstr ""
+
+#: [chat]clear
+msgid "Clear the history"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -719,9 +748,10 @@ msgstr ""
 msgid "Create a new Group on %s"
 msgstr ""
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr "Ryhmän nimi"
+#: [communitiesserver]name
+#, fuzzy
+msgid "Community name"
+msgstr "Tyhä nimi"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -884,6 +914,14 @@ msgstr ""
 msgid "Advanced Configuration"
 msgstr ""
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr ""
@@ -1028,7 +1066,7 @@ msgstr ""
 msgid "No subscriptions"
 msgstr ""
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr ""
 
@@ -1083,6 +1121,10 @@ msgstr ""
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
+
+#: [groups]name
+msgid "Group name"
+msgstr "Ryhmän nimi"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1252,10 +1294,6 @@ msgstr "Oma osoite"
 msgid "Create one !"
 msgstr "Luo uusi!"
 
-#: [form]another_account
-msgid "Another account"
-msgstr "Toinen tili"
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr "Ei tiliä vielä?"
@@ -1309,8 +1347,9 @@ msgid "Contacts"
 msgstr "Kontaktit"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr "Lisää julkaisu"
+#, fuzzy
+msgid "Write a new post…"
+msgstr "Luo uusi tili"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1484,10 +1523,6 @@ msgstr ""
 msgid "Disconnect"
 msgstr "Katkaise yhteys"
 
-#: [status]here
-msgid "Your status here !"
-msgstr "Tilasi tähän!"
-
 #: [status]updated
 msgid "Status updated"
 msgstr "Tila päivitetty"
@@ -1523,10 +1558,6 @@ msgstr "Linkki"
 #: [publish]tags
 msgid "Tags"
 msgstr "Tagit"
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
-msgstr "Tämä kuva lisätään galleriaasi"
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
@@ -1568,6 +1599,21 @@ msgstr "Klikkaa tästä lisätäksesi tekstiä julkaisuusi"
 msgid "Add some text"
 msgstr "Lisää tekstiä"
 
+#: [publishbrief]placeholder
+#, fuzzy
+msgid "What's new?"
+msgstr "Mitä uutta?"
+
+#: [publishbrief]post
+#, fuzzy
+msgid "Write a post"
+msgstr "Muokkaa julkaisua"
+
+#: [publishbrief]add_link
+#, fuzzy
+msgid "Add a link"
+msgstr "Lisää kommentti"
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "Lisää keskusteluhuone"
@@ -1604,6 +1650,10 @@ msgstr "Anna toimiva nimimerkki (2-40 merkkiä)"
 msgid "Username already taken"
 msgstr "Nimimerkki on jo käytössä"
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Julkinen keskusteluhuone"
@@ -1627,6 +1677,15 @@ msgstr ""
 #: [room]nick
 msgid "Your nickname"
 msgstr "Nimimerkkisi"
+
+#: [room]invite
+#, fuzzy
+msgid "Invite a contact"
+msgstr "Etsi kontaktia"
+
+#: [room]invited
+msgid "Invitation sent"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2024,6 +2083,10 @@ msgstr "Lähetetään"
 #: [button]register
 msgid "Register"
 msgstr "Rekisteröidy"
+
+#: [button]reply
+msgid "Reply"
+msgstr ""
 
 #: [button]unregister
 msgid "Unregister"
@@ -2755,3 +2818,27 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
+
+#~ msgid "Delete my account"
+#~ msgstr "Poista tili"
+
+#~ msgid "Install the php5-curl library"
+#~ msgstr "Asenna php5-curl kirjasto"
+
+#~ msgid "Install the php5-imagick library"
+#~ msgstr "Asenna php5-imagick kirjasto"
+
+#~ msgid "Install the php5-gd library"
+#~ msgstr "Asenna php5-gd kirjasto"
+
+#~ msgid "Another account"
+#~ msgstr "Toinen tili"
+
+#~ msgid "Add a post"
+#~ msgstr "Lisää julkaisu"
+
+#~ msgid "Your status here !"
+#~ msgstr "Tilasi tähän!"
+
+#~ msgid "This picture will be added to your gallery"
+#~ msgstr "Tämä kuva lisätään galleriaasi"

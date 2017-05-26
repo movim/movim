@@ -46,6 +46,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -72,6 +74,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -97,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -169,10 +173,6 @@ msgstr "Zadejte prosím validní heslo (minimálně 6 znaků)"
 msgid "The provided passwords are not the same"
 msgstr "Zadaná hesla nejsou stejná"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "Smazat můj účet"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "Smazat váš účet"
@@ -188,6 +188,19 @@ msgstr "Jste si jisti, že jej chcete smazat?"
 #: [account]gateway_title
 msgid "Gateway"
 msgstr "Brána"
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr "Smažete váš XMPP účet a všechna informace propojená s ním (profil, kontakty, články)."
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
+msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -407,18 +420,6 @@ msgstr "Aktualizujte svou PHP-Verzi: %s"
 msgid "Required: 5.3.0"
 msgstr "Požadována: 5.3.0"
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr "Nainstalujte knihovnu php5-curl"
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr "Nainstalujte knihovnu php5-imagick"
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr "Nainstalujte knihovnu php5-gd"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -610,6 +611,10 @@ msgstr "Kontakt pryč"
 msgid "%s messages retrieved"
 msgstr "Získáno %s zpráv"
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s potřebuje vaši pozornost"
@@ -633,6 +638,32 @@ msgstr "Diskutujte s vašemi kontakty"
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Časté kontakty"
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+#, fuzzy
+msgid "Join %s"
+msgstr "Přihlásit na %s"
+
+#: [chat]profile
+#, fuzzy
+msgid "See the profile"
+msgstr "Navštivte profil %s"
+
+#: [chat]clear
+msgid "Clear the history"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -719,9 +750,10 @@ msgstr ""
 msgid "Create a new Group on %s"
 msgstr ""
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr "Název skupiny"
+#: [communitiesserver]name
+#, fuzzy
+msgid "Community name"
+msgstr "Prázdné jméno"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -884,6 +916,14 @@ msgstr "Konfigurace není validní"
 msgid "Advanced Configuration"
 msgstr "Pokročilá konfigurace"
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "Vlastní URL CSS pro váš blog"
@@ -1028,7 +1068,7 @@ msgstr "Ale tento kontakt může vidět, zda jste online"
 msgid "No subscriptions"
 msgstr "Žádné odběry"
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Pozvat"
 
@@ -1083,6 +1123,10 @@ msgstr "Seznam odebíraných skupin najdete v záložce Moje odběry a nové př
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "Odeslat kontakt"
+
+#: [groups]name
+msgid "Group name"
+msgstr "Název skupiny"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1252,10 +1296,6 @@ msgstr "Moje adresa"
 msgid "Create one !"
 msgstr "Vytvořte si jej!"
 
-#: [form]another_account
-msgid "Another account"
-msgstr "Další účet"
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr "Nemáte zatím účet?"
@@ -1309,8 +1349,9 @@ msgid "Contacts"
 msgstr "Kontakty"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr "Přidat příspěvek"
+#, fuzzy
+msgid "Write a new post…"
+msgstr "Vytvořit nový účet"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1484,10 +1525,6 @@ msgstr ""
 msgid "Disconnect"
 msgstr "Odpojit"
 
-#: [status]here
-msgid "Your status here !"
-msgstr "Váš stav sem!"
-
 #: [status]updated
 msgid "Status updated"
 msgstr "Stav aktualizován"
@@ -1523,10 +1560,6 @@ msgstr "Odkaz"
 #: [publish]tags
 msgid "Tags"
 msgstr "Štítky"
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
-msgstr "Tento obrázek bude přidán do vaší galerie"
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
@@ -1568,6 +1601,21 @@ msgstr "Klikněte sem pro přidání textu do vašeho příspěvku"
 msgid "Add some text"
 msgstr "Přidejte nějaký text"
 
+#: [publishbrief]placeholder
+#, fuzzy
+msgid "What's new?"
+msgstr "Co je nového?"
+
+#: [publishbrief]post
+#, fuzzy
+msgid "Write a post"
+msgstr "Upravit příspěvek"
+
+#: [publishbrief]add_link
+#, fuzzy
+msgid "Add a link"
+msgstr "Přidat komentář"
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr "Přidat konverzaci"
@@ -1604,6 +1652,10 @@ msgstr "Zadejte prosím správné uživatelské jméno (2 až 40 znaků)"
 msgid "Username already taken"
 msgstr "Uživatelské jméno již obsazeno"
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Veřejné konverzace"
@@ -1627,6 +1679,16 @@ msgstr "Přihlásit na %s"
 #: [room]nick
 msgid "Your nickname"
 msgstr "Vaše přezdívka"
+
+#: [room]invite
+#, fuzzy
+msgid "Invite a contact"
+msgstr "Vyhledat kontakt"
+
+#: [room]invited
+#, fuzzy
+msgid "Invitation sent"
+msgstr "Nevyřízené pozvánky"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2024,6 +2086,10 @@ msgstr "Odesílám"
 #: [button]register
 msgid "Register"
 msgstr "Registrovat"
+
+#: [button]reply
+msgid "Reply"
+msgstr ""
 
 #: [button]unregister
 msgid "Unregister"
@@ -2755,3 +2821,27 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "Delete my account"
+#~ msgstr "Smazat můj účet"
+
+#~ msgid "Install the php5-curl library"
+#~ msgstr "Nainstalujte knihovnu php5-curl"
+
+#~ msgid "Install the php5-imagick library"
+#~ msgstr "Nainstalujte knihovnu php5-imagick"
+
+#~ msgid "Install the php5-gd library"
+#~ msgstr "Nainstalujte knihovnu php5-gd"
+
+#~ msgid "Another account"
+#~ msgstr "Další účet"
+
+#~ msgid "Add a post"
+#~ msgstr "Přidat příspěvek"
+
+#~ msgid "Your status here !"
+#~ msgstr "Váš stav sem!"
+
+#~ msgid "This picture will be added to your gallery"
+#~ msgstr "Tento obrázek bude přidán do vaší galerie"

@@ -46,6 +46,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/ContactData/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Group/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Groups/locales.ini
@@ -72,6 +74,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Publish/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishBrief/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -97,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
+"POT-Creation-Date: 2017-05-26 10:21+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
@@ -169,10 +173,6 @@ msgstr "Siusplau proporcioni una contrasenya vàlida (6 caràcters mínim)"
 msgid "The provided passwords are not the same"
 msgstr "Les contrasenyes no coincideixen"
 
-#: [account]delete_title
-msgid "Delete my account"
-msgstr "Esborra el meu compte"
-
 #: [account]delete
 msgid "Delete your account"
 msgstr "Esborra el teu compte"
@@ -187,6 +187,19 @@ msgstr "Estàs segur de voler eliminar el compte?"
 
 #: [account]gateway_title
 msgid "Gateway"
+msgstr ""
+
+#: [account]clear
+msgid "Leave this instance"
+msgstr ""
+
+#: [account]clear_text
+#, fuzzy
+msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
+msgstr "Eliminaràs el teu compte XMPP i tota la informació relacionada (perfil, contactes i publicacions)."
+
+#: [account]clear_text_confirm
+msgid "This action will not delete your account but will disconnect you from this instance."
 msgstr ""
 
 #: [create]title [subscribe]title
@@ -407,18 +420,6 @@ msgstr "Actualitza el teu PHP-Version: %s"
 msgid "Required: 5.3.0"
 msgstr "Necessari: 5.3.0"
 
-#: [compatibility]curl
-msgid "Install the php5-curl library"
-msgstr "Instal•la la llibreria php5-curl"
-
-#: [compatibility]imagick
-msgid "Install the php5-imagick library"
-msgstr ""
-
-#: [compatibility]gd
-msgid "Install the php5-gd library"
-msgstr ""
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
@@ -610,6 +611,10 @@ msgstr ""
 msgid "%s messages retrieved"
 msgstr ""
 
+#: [message]edit_help
+msgid "You can use the up arrow ↑ to edit your previous message"
+msgstr ""
+
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%s necessita la teva atenció"
@@ -633,6 +638,30 @@ msgstr ""
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Contactes freqüents"
+
+#: [chat]new_title
+msgid "Nothing here yet…"
+msgstr ""
+
+#: [chat]new_text
+msgid "Don't be shy, send a first message to start the discussion"
+msgstr ""
+
+#: [chat]invitation
+msgid "You received an invitation to join a chatroom"
+msgstr ""
+
+#: [chat]invitation_join
+msgid "Join %s"
+msgstr ""
+
+#: [chat]profile
+msgid "See the profile"
+msgstr ""
+
+#: [chat]clear
+msgid "Clear the history"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -719,9 +748,9 @@ msgstr ""
 msgid "Create a new Group on %s"
 msgstr ""
 
-#: [communitiesserver]name [groups]name
-msgid "Group name"
-msgstr "Nom del Grup"
+#: [communitiesserver]name
+msgid "Community name"
+msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -884,6 +913,14 @@ msgstr "Configuració invàlida"
 msgid "Advanced Configuration"
 msgstr "Configuració avançada"
 
+#: [config]nsfw
+msgid "Display adult content"
+msgstr ""
+
+#: [config]nsfw_text
+msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr ""
@@ -1028,7 +1065,7 @@ msgstr "Però aquest contacte encara pot veure si estas connectat"
 msgid "No subscriptions"
 msgstr "No hi ha subscripcions"
 
-#: [subscription]nil_button
+#: [subscription]nil_button [button]invite
 msgid "Invite"
 msgstr "Convida"
 
@@ -1083,6 +1120,10 @@ msgstr "Trobaràs una llista amb tots els Grups que has subscrit a Les Meves Sub
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
+
+#: [groups]name
+msgid "Group name"
+msgstr "Nom del Grup"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1252,10 +1293,6 @@ msgstr ""
 msgid "Create one !"
 msgstr ""
 
-#: [form]another_account
-msgid "Another account"
-msgstr ""
-
 #: [form]no_account
 msgid "No account yet ?"
 msgstr ""
@@ -1309,8 +1346,9 @@ msgid "Contacts"
 msgstr "Contactes"
 
 #: [menu]add_post
-msgid "Add a post"
-msgstr ""
+#, fuzzy
+msgid "Write a new post…"
+msgstr "Crea un nou compte"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1484,10 +1522,6 @@ msgstr ""
 msgid "Disconnect"
 msgstr ""
 
-#: [status]here
-msgid "Your status here !"
-msgstr ""
-
 #: [status]updated
 msgid "Status updated"
 msgstr ""
@@ -1522,10 +1556,6 @@ msgstr ""
 
 #: [publish]tags
 msgid "Tags"
-msgstr ""
-
-#: [publish]gallery
-msgid "This picture will be added to your gallery"
 msgstr ""
 
 #: [publish]valid_url
@@ -1568,6 +1598,18 @@ msgstr ""
 msgid "Add some text"
 msgstr ""
 
+#: [publishbrief]placeholder
+msgid "What's new?"
+msgstr ""
+
+#: [publishbrief]post
+msgid "Write a post"
+msgstr ""
+
+#: [publishbrief]add_link
+msgid "Add a link"
+msgstr ""
+
 #: [rooms]add
 msgid "Add a chatroom"
 msgstr ""
@@ -1604,6 +1646,10 @@ msgstr ""
 msgid "Username already taken"
 msgstr ""
 
+#: [chatrooms]autojoin
+msgid "Join this chatroom on connect"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr ""
@@ -1627,6 +1673,16 @@ msgstr ""
 #: [room]nick
 msgid "Your nickname"
 msgstr ""
+
+#: [room]invite
+#, fuzzy
+msgid "Invite a contact"
+msgstr "Xateja amb un contacte"
+
+#: [room]invited
+#, fuzzy
+msgid "Invitation sent"
+msgstr "Credencial d'adiministració"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2023,6 +2079,10 @@ msgstr ""
 
 #: [button]register
 msgid "Register"
+msgstr ""
+
+#: [button]reply
+msgid "Reply"
 msgstr ""
 
 #: [button]unregister
@@ -2755,3 +2815,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Delete my account"
+#~ msgstr "Esborra el meu compte"
+
+#~ msgid "Install the php5-curl library"
+#~ msgstr "Instal•la la llibreria php5-curl"
