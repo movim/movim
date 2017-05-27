@@ -865,16 +865,33 @@ class PostnDAO extends SQL
 
     function getLastPublished($origin = false, $limitf = false, $limitr = false)
     {
-        $this->_sql = '
-            select * from (
-                select distinct on (origin, postn.node) * from postn
-                left outer join item on postn.origin = item.server
-                    and postn.node = item.node
-                where
-                    postn.node != \'urn:xmpp:microblog:0\'
-                    and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
-                    and postn.node not like \'urn:xmpp:inbox\'
-                    and aid is not null';
+        switch($this->_dbtype) {
+            case 'mysql':
+                $this->_sql = '
+                    select * from (
+                        select postn.* from postn
+                        left outer join item on postn.origin = item.server
+                            and postn.node = item.node
+                        where
+                            postn.node != \'urn:xmpp:microblog:0\'
+                            and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                            and postn.node not like \'urn:xmpp:inbox\'
+                            and aid is not null
+                    ';
+            break;
+            case 'pgsql':
+                $this->_sql = '
+                    select * from (
+                        select distinct on (origin, postn.node) * from postn
+                        left outer join item on postn.origin = item.server
+                            and postn.node = item.node
+                        where
+                            postn.node != \'urn:xmpp:microblog:0\'
+                            and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
+                            and postn.node not like \'urn:xmpp:inbox\'
+                            and aid is not null';
+            break;
+        }
 
         $params = [];
 
@@ -895,10 +912,20 @@ class PostnDAO extends SQL
             $params += ['origin' => $origin];
         }
 
-        $this->_sql .= '
-                order by origin, postn.node, published desc
-            ) p
-            order by published desc';
+        switch($this->_dbtype) {
+            case 'mysql':
+                $this->_sql .= '
+                        order by published desc
+                    ) p
+                    group by origin, node';
+            break;
+            case 'pgsql':
+                $this->_sql .= '
+                        order by origin, postn.node, published desc
+                    ) p
+                    order by published desc';
+            break;
+        }
 
         if($limitr) {
             $this->_sql .= ' limit '.$limitr.' offset '.$limitf;
