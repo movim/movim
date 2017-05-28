@@ -7,7 +7,7 @@
 # Jaussoin Timothée <edhelas@movim.eu>, 2017
 # MMurzik MMurzik <c4431454@trbvn.com>, 2016
 # Qim Armnov <hoakimartamonov@gmail.com>, 2016
-# Stanislav N. <pztrn@pztrn.name>, 2016
+# Stanislav N. <pztrn@pztrn.name>, 2016-2017
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -109,8 +109,8 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-26 10:21+0200\n"
-"PO-Revision-Date: 2017-05-28 21:37+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"PO-Revision-Date: 2017-05-28 21:42+0000\n"
+"Last-Translator: Stanislav N. <pztrn@pztrn.name>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -198,15 +198,15 @@ msgstr "Шлюз"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Покинуть этот инстанс"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "Это удалит всю вашу информацию с этого инстанса Movim (профиль, контакты и публикации)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "Это действие не удалит ваш аккаунт, а только отсоединит вас от этого инстанса."
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -619,7 +619,7 @@ msgstr "%s сообщений получено"
 
 #: [message]edit_help
 msgid "You can use the up arrow ↑ to edit your previous message"
-msgstr ""
+msgstr "Вы можете использовать \"стрелку вверх\" ↑ для редактирования предыдущего сообщения"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -647,27 +647,27 @@ msgstr "Популярные контакты"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "Пока ничего нет..."
 
 #: [chat]new_text
 msgid "Don't be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "Не будьте застенчивы, пошлите первое сообщение для начала дискуссии"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "Вы получили приглашение в комнату"
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr ""
+msgstr "Зайти в %s"
 
 #: [chat]profile
 msgid "See the profile"
-msgstr ""
+msgstr "Смотреть профиль"
 
 #: [chat]clear
 msgid "Clear the history"
-msgstr ""
+msgstr "Очистить историю"
 
 #: [chatroom]members
 msgid "Members"
@@ -756,7 +756,7 @@ msgstr "Создать новую Группу на %s"
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr ""
+msgstr "Название группы"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -921,11 +921,11 @@ msgstr "Расширенные настройки"
 
 #: [config]nsfw
 msgid "Display adult content"
-msgstr ""
+msgstr "Отображать контект \"для взрослых\""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
-msgstr ""
+msgstr "Это разрешит вам читать посты с тегом #nsfw"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -1353,7 +1353,7 @@ msgstr "Контакты"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr ""
+msgstr "Написать новый пост..."
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1605,15 +1605,15 @@ msgstr "Добавить текст"
 
 #: [publishbrief]placeholder
 msgid "What's new?"
-msgstr ""
+msgstr "Что нового?"
 
 #: [publishbrief]post
 msgid "Write a post"
-msgstr ""
+msgstr "Напишите пост"
 
 #: [publishbrief]add_link
 msgid "Add a link"
-msgstr ""
+msgstr "Добавьте ссылку"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1653,7 +1653,7 @@ msgstr "Имя пользователя уже используется"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
-msgstr ""
+msgstr "Присоединиться к комнате при входе"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1681,11 +1681,11 @@ msgstr "Ваш псевдоним"
 
 #: [room]invite
 msgid "Invite a contact"
-msgstr ""
+msgstr "Пригласить контакт"
 
 #: [room]invited
 msgid "Invitation sent"
-msgstr ""
+msgstr "Приглашение отправлено"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2086,7 +2086,7 @@ msgstr "Зарегистрировать"
 
 #: [button]reply
 msgid "Reply"
-msgstr ""
+msgstr "Ответить"
 
 #: [button]unregister
 msgid "Unregister"
