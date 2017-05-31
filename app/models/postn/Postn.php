@@ -526,6 +526,11 @@ class Postn extends Model
         return isRTL($this->contentraw);
     }
 
+    public function isComment()
+    {
+        return (substr($this->node, 0, 30) == 'urn:xmpp:microblog:0:comments/');
+    }
+
     public function hasCommentsNode()
     {
         return (isset($this->commentorigin)
