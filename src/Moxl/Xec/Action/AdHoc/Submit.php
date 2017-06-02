@@ -44,7 +44,17 @@ class Submit extends Action
 
     public function handle($stanza, $parent = false)
     {
+        $this->prepare($stanza, $parent);
         $this->pack($stanza->command);
+        $this->deliver();
+    }
+
+    public function error($errorid, $message)
+    {
+        $this->pack([
+            "errorid" => $errorid,
+            "message" => $message
+        ]);
         $this->deliver();
     }
 }
