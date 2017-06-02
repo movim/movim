@@ -8,25 +8,16 @@
         {$c->__('button.close')}
     </button>
     {if="$actions != null"}
-        {if="isset($actions->next)"}
-            <button onclick="AdHoc.submit()" class="button flat">
+        <button data-jid="{$jid}" onclick="AdHoc.submit(this.dataset.jid)" class="button flat">
+            {if="isset($actions->next)"}
                 {$c->__('button.next')}
-            </button>
-        {/if}
-        {if="isset($actions->previous)"}
-            <button class="button flat">
+            {elseif="isset($actions->previous)"}
                 {$c->__('button.previous')}
-            </button>
-        {/if}
-        {if="isset($actions->cancel)"}
-            <button class="button flat">
+            {elseif="isset($actions->cancel)"}
                 {$c->__('button.cancel')}
-            </button>
-        {/if}
-        {if="isset($actions->complete)"}
-            <!--<a onclick="" class="button flat">
+            {elseif="isset($actions->complete)"}
                 {$c->__('button.submit')}
-            </a>-->
-        {/if}
+            {/if}
+        </button>
     {/if}
 </div>
