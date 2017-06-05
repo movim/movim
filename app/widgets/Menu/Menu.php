@@ -58,7 +58,9 @@ class Menu extends \Movim\Widget\Base
         // We reload a fresh Post
         $post = $pd->get($post->origin, $post->node, $post->nodeid);
 
-        if($post->isComment() && !$post->isMine()) {
+        if(is_object($post)
+        && $post->isComment()
+        && !$post->isMine()) {
             $contact = $cd->get($post->aid);
             Notification::append(
                 'news',
