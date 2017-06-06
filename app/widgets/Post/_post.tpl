@@ -336,7 +336,6 @@
                 </ul>
             {/if}
             {if="$post->isPublic() && !$public"}
-                <hr />
                 <ul class="list active thick">
                     <li>
                         <span class="primary icon gray">
