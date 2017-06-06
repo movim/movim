@@ -5,6 +5,10 @@ Movim is a decentralized social network, written in PHP and HTML5 and based on t
 
 ![movim logo](https://movim.eu/img/main_top.png)
 
+
+[![Build Status](https://travis-ci.org/BtPht/movim.svg?branch=master)](https://travis-ci.org/BtPht/movim)
+[![Code Climate](https://codeclimate.com/github/BtPht/movim/badges/gpa.svg)](https://codeclimate.com/github/BtPht/movim)
+
 Installation
 ------------
 Please refer to the installation instructions that are available on the GitHub Wiki : https://github.com/movim/movim/wiki .
