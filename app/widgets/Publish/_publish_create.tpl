@@ -79,7 +79,7 @@
             name="title"
             placeholder="{$c->__('post.title')}"
             style="height: 68px"
-            oninput="MovimUtils.textareaAutoheight(this);">{if="$item != false"}{$item->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
+            oninput="MovimUtils.textareaAutoheight(this);">{if="!empty($draft->title)"}{$draft->title}{/if}{if="$item != false"}{$item->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
         <label for="title">{$c->__('post.title')}</label>
     </div>
 
@@ -100,7 +100,9 @@
             name="embed"
             placeholder="http://myawesomewebsite.com/ or http://mynicepictureurl.com/"
             onpaste="var e=this; setTimeout(function(){Publish_ajaxEmbedTest(e.value);}, 4);"
-            {if="isset($attachment) && $attachment != false"}
+            {if="!empty($draft->links)"}
+                value="{$draft->links[0]}"
+            {elseif="isset($attachment) && $attachment != false"}
                 value="{$attachment.href}"
             {elseif="$url"}
                 value="{$url}"
@@ -112,12 +114,24 @@
         <div id="gallery"></div>
     </div>
 
-    <div id="enable_content" onclick="Publish.enableContent();">
+    <div id="enable_content" onclick="Publish.enableContent();"
+        {if="!empty($draft->content)"}
+            class="hide"
+        {else}
+            class="show"
+        {/if}
+        >
         <input type="text" value="{$c->__('publish.add_text')}"/>
         <label>{$c->__('publish.add_text_label')}</label>
     </div>
-    <div id="content_field" class="hide">
-        <textarea name="content" placeholder="{$c->__('publish.content_text')}" oninput="MovimUtils.textareaAutoheight(this);">{if="$item != false"}{$item->contentraw}{/if}</textarea>
+    <div id="content_field"
+        {if="empty($draft->content)"}
+            class="hide"
+        {else}
+            class="show"
+        {/if}
+        >
+        <textarea name="content" placeholder="{$c->__('publish.content_text')}" oninput="MovimUtils.textareaAutoheight(this);">{if="$item != false"}{$item->contentraw}{/if}{if="!empty($draft->content)"}{$draft->content}{/if}</textarea>
         <label for="content">{$c->__('publish.content_label')}</label>
 
         <button class="button oppose flat gray" type="button" onclick="Publish_ajaxHelp()">

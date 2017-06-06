@@ -48,10 +48,12 @@ class Rooms extends \Movim\Widget\Base
         $cod = new \Modl\ConferenceDAO;
         $rooms = $cod->getAll();
 
-        foreach($rooms as $room) {
-            if ($room->autojoin
-            && !$this->checkConnected($room->conference, $room->nick)) {
-                $this->ajaxJoin($room->conference, $room->nick);
+        if(is_array($rooms)) {
+            foreach($rooms as $room) {
+                if ($room->autojoin
+                && !$this->checkConnected($room->conference, $room->nick)) {
+                    $this->ajaxJoin($room->conference, $room->nick);
+                }
             }
         }
     }

@@ -3,6 +3,7 @@
 use Moxl\Xec\Action\Pubsub\PostPublish;
 
 use Movim\Session;
+use Movim\Cache;
 
 use Respect\Validation\Validator;
 
@@ -34,9 +35,20 @@ class PublishBrief extends \Movim\Widget\Base
         $this->rpc('PublishBrief.checkEmbed');
     }
 
+    function ajaxSaveDraft($form)
+    {
+        $p = new \Modl\Postn;
+        $p->title = $form->title->value;
+        array_push($p->links, $form->embed->value);
+
+        Cache::c('draft', $p);
+    }
+
     function ajaxPublish($form)
     {
         $this->rpc('PublishBrief.disableSend');
+
+        Cache::c('draft', null);
 
         if(Validator::stringType()->notEmpty()->validate(trim($form->title->value))) {
             $p = new PostPublish;
@@ -124,6 +136,7 @@ class PublishBrief extends \Movim\Widget\Base
 
         $session = Session::start();
         $view->assign('url', $session->get('share_url'));
+        $view->assign('draft', Cache::c('draft'));
         $view->assign('embed', $this->prepareEmbedDefault());
         return $view->draw('_publishbrief', true);
     }

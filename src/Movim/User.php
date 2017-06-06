@@ -88,9 +88,18 @@ class User
     function setConfig(array $config)
     {
         $s = new \Modl\Setting;
-        $s->language = $config['language'];
-        $s->cssurl   = $config['cssurl'];
-        $s->nsfw     = $config['nsfw'];
+
+        if(isset($config['language'])) {
+            $s->language = $config['language'];
+        }
+
+        if(isset($config['cssurl'])) {
+            $s->cssurl   = $config['cssurl'];
+        }
+
+        if(isset($config['nsfw'])) {
+            $s->nsfw     = $config['nsfw'];
+        }
 
         $sd = new \Modl\SettingDAO;
         $sd->set($s);

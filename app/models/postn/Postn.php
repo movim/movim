@@ -34,7 +34,7 @@ class Postn extends Model
     public $lat;
     public $lon;
 
-    public $links;
+    public $links = [];
 
     public $reply;
 

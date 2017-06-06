@@ -5,6 +5,7 @@ use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 
 use Movim\Session;
+use Movim\Cache;
 
 use Michelf\MarkdownExtra;
 use Respect\Validation\Validator;
@@ -99,6 +100,8 @@ class Publish extends \Movim\Widget\Base
         $session = Session::start();
         $view->assign('url', $session->get('share_url'));
 
+        $view->assign('draft', Cache::c('draft'));
+
         $this->rpc('MovimTpl.fill', '#publish', $view->draw('_publish_create', true));
 
         /*$pd = new \Modl\ItemDAO;
@@ -114,9 +117,11 @@ class Publish extends \Movim\Widget\Base
             $this->rpc('Publish.initEdit');
         }
 
-        if($session->get('share_url')) {
+        if($session->get('share_url') || is_object(Cache::c('draft'))) {
             $this->rpc('Publish.setEmbed');
         }
+
+        $this->rpc('Publish.initDraftBehavior');
     }
 
     function ajaxCreateComments($server, $id)
@@ -207,9 +212,21 @@ class Publish extends \Movim\Widget\Base
         }
     }*/
 
+    function ajaxSaveDraft($form)
+    {
+        $p = new \Modl\Postn;
+        $p->title = $form->title->value;
+        $p->content = $form->content->value;
+        array_push($p->links, $form->embed->value);
+
+        Cache::c('draft', $p);
+    }
+
     function ajaxPublish($form)
     {
         $this->rpc('Publish.disableSend');
+
+        Cache::c('draft', null);
 
         if(Validator::stringType()->notEmpty()->validate(trim($form->title->value))) {
             $p = new PostPublish;

@@ -1,4 +1,5 @@
 var Publish = {
+    timeout: 0,
     setEmbed: function() {
         var embed = document.querySelector('input[name=embed]');
         embed.onpaste();
@@ -53,11 +54,26 @@ var Publish = {
         return false;
     },
 
+    saveDraft: function() {
+        Publish_ajaxSaveDraft(MovimUtils.formToJson('post'));
+    },
+
     initEdit: function() {
         Publish.enableContent();
         Publish_ajaxEmbedTest(document.querySelector('#content_link input').value);
         MovimUtils.textareaAutoheight(document.querySelector('textarea[name=title]'));
         MovimUtils.textareaAutoheight(document.querySelector('textarea[name=content]'));
+    },
+
+    initDraftBehavior: function() {
+        console.log('init');
+        document.querySelector('form[name=post]').onkeyup = function() {
+            if(Publish.timeout) clearTimeout(Publish.timeout);
+            Publish.timeout = setTimeout(function () {
+                Publish.saveDraft();
+                console.log('saved');
+            }, 1000);
+        };
     }
 }
 
