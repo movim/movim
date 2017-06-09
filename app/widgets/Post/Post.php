@@ -192,6 +192,8 @@ class Post extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
+        $view->assign('external', $external);
+
         if(isset($p)) {
             if($p->hasCommentsNode()
             && !$external) {

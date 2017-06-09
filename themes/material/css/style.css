@@ -359,6 +359,12 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
     }
 }
 
+/* Hr */
+
+hr:not(.clear) {
+    border-bottom: 1px solid;
+}
+
 /* Spin */
 
 .spin:empty {

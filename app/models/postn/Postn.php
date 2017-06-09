@@ -34,7 +34,7 @@ class Postn extends Model
     public $lat;
     public $lon;
 
-    public $links;
+    public $links = [];
 
     public $reply;
 
@@ -524,6 +524,11 @@ class Postn extends Model
     public function isRTL()
     {
         return isRTL($this->contentraw);
+    }
+
+    public function isComment()
+    {
+        return (substr($this->node, 0, 30) == 'urn:xmpp:microblog:0:comments/');
     }
 
     public function hasCommentsNode()

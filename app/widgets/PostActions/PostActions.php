@@ -35,11 +35,17 @@ class PostActions extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $view->assign('to', $to);
-        $view->assign('node', $node);
-        $view->assign('id', $id);
+        $pd = new \Modl\PostnDAO;
+        $p = $pd->get($to, $node, $id);
 
-        Dialog::fill($view->draw('_postactions_delete', true));
+        if(isset($p)) {
+            $view->assign('post', $p);
+            $view->assign('to', $to);
+            $view->assign('node', $node);
+            $view->assign('id', $id);
+
+            Dialog::fill($view->draw('_postactions_delete', true));
+        }
     }
 
     function ajaxDeleteConfirm($to, $node, $id)

@@ -20,9 +20,10 @@
                         id="title"
                         rows="1"
                         required
+
                         onkeyup="MovimUtils.textareaAutoheight(this);"
                         placeholder="{$c->__('publishbrief.placeholder')}"
-                        type="text"></textarea>
+                        type="text">{if="!empty($draft->title)"}{$draft->title}{/if}</textarea>
                 </div>
                 <input
                     type="checkbox"
@@ -36,6 +37,7 @@
                     name="embed"
                     onchange="PublishBrief_ajaxEmbedTest(this.value)"
                     {if="$url"}value="{$url}"{/if}
+                    {if="!empty($draft->links)"}value="{$draft->links[0]}"{/if}
                 >
             </form>
         </li>

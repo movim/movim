@@ -5,6 +5,7 @@ body > * {
 }
 
 ul.list li.divided,
+hr:not(.clear),
 *.divided > *:not(:last-child),
 *.divided.spaced > *:not(:last-child):after {
     border-color: rgba(0, 0, 0, 0.12);
