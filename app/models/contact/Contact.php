@@ -390,6 +390,12 @@ class Contact extends Model
         }
     }
 
+    function countSubscribers()
+    {
+        $cd = new \Modl\ContactDAO;
+        return $cd->countSubscribers($this->jid);
+    }
+
     public function getSearchTerms()
     {
         return cleanupId($this->jid).'-'.

@@ -648,6 +648,28 @@ class ContactDAO extends SQL
         return $this->run('PresenceContact');
     }
 
+    function countSubscribers($jid)
+    {
+        $this->_sql = '
+            select count(*) from rosterlink where session = :session
+            and (rostersubscription = \'both\'
+            or rostersubscription = \'from\');
+                ';
+
+        $this->prepare(
+            'RosterLink',
+            [
+                'session' => $jid
+            ]
+        );
+
+        $arr = $this->run(null, 'array');
+        if(is_array($arr) && isset($arr[0])) {
+            $arr = array_values($arr[0]);
+            return (int)$arr[0];
+        }
+    }
+
     function getTop($limit = 6, $filter = false)
     {
         $filter = ($filter != false) ? implode('\',\'', $filter) : '';
