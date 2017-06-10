@@ -19,6 +19,7 @@ class User
         $s = Session::start();
         if($username) {
             $s->set('username', $username);
+            $this->userdir = DOCUMENT_ROOT.'/users/'.$username.'/';
         }
     }
 
