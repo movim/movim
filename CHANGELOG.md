@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.11.1 (trunk)
+v0.12 (trunk)
 ---------------------------
  * Add autojoin support for chatrooms
  * New Contact page
