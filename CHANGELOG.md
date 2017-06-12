@@ -19,6 +19,7 @@ v0.12 (trunk)
  * Allow users to clear their information on the instance and leave it properly
  * Add NSFW filter configuration
  * Save Draft of publications in Publish and PublishBrief
+ * Add touch support to open the menu on mobile devices
 
 v0.11
 ---------------------------

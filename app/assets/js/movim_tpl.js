@@ -5,6 +5,9 @@
  */
 
 var MovimTpl = {
+    dragged : false,
+    moving : false,
+    percent : false,
     init : function() {
         if(document.getElementById('back') != null)
             MovimUtils.hideElement(document.getElementById('back'));
@@ -121,10 +124,59 @@ var MovimTpl = {
     },
     toggleMenu : function() {
         MovimUtils.toggleClass('body > nav', 'active');
+    },
+    touchEvents: function() {
+        nav = document.querySelector('body > nav');
+
+        document.body.addEventListener('touchstart', function(event) {
+            startX = event.targetTouches[0].pageX;
+
+            if(
+            (
+                startX < 25 ||
+                (nav.classList.contains('active') && startX > document.body.clientWidth - 25)
+            )
+            && MovimTpl.dragged == false) {
+                nav.classList.add('moving');
+                MovimTpl.dragged = true;
+            }
+        }, true);
+
+        document.body.addEventListener('touchmove', function(event) {
+            moveX = event.targetTouches[0].pageX;
+
+            if(MovimTpl.dragged) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                position = moveX - document.body.clientWidth;
+
+                MovimTpl.percent = 1 - Math.abs(moveX) / Math.abs(document.body.clientWidth);
+                nav.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '+position+', 0, 0, 1)';
+            }
+        }, true);
+
+        document.body.addEventListener('touchend', function(event) {
+            nav.style.transform = '';
+
+            if(MovimTpl.dragged) {
+                nav.classList.remove('moving');
+
+                if(!nav.classList.contains('active')
+                && MovimTpl.percent < 0.80) {
+                    nav.classList.add('active');
+                } else if(MovimTpl.percent > 0.20) {
+                    nav.classList.remove('active');
+                }
+            }
+
+            MovimTpl.dragged = false;
+        }, true);
     }
 };
 
 movim_add_onload(function() {
     MovimTpl.init();
+    MovimTpl.touchEvents();
     document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
 });
