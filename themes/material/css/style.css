@@ -99,14 +99,16 @@ body > nav li { /* Little hack for the navbar */
 }
 
 @media screen and (max-width: 1024px) {
-    body > nav:not(.active):not(.moving) {
+    body > nav:not(.active) {
         width: 45rem;
-        transition: transform .3s cubic-bezier(.4,0,.2,1);
         transform: translateX(-100%);
     }
 
-    body > nav.active:not(.moving) {
+    body > nav:not(.moving) {
         transition: transform .3s cubic-bezier(.4,0,.2,1);
+    }
+
+    body > nav.active:not(.moving) {
         transform: translateX(0%);
     }
 }
