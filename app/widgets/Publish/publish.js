@@ -66,7 +66,6 @@ var Publish = {
     },
 
     initDraftBehavior: function() {
-        console.log('init');
         document.querySelector('form[name=post]').onkeyup = function() {
             if(Publish.timeout) clearTimeout(Publish.timeout);
             Publish.timeout = setTimeout(function () {
@@ -74,6 +73,8 @@ var Publish = {
                 console.log('saved');
             }, 1000);
         };
+
+        Publish.initEdit();
     }
 }
 
