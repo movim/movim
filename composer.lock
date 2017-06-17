@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fe9fec12ad9a9f432e66aff613ecce3f",
+    "content-hash": "1bfef20462d15bdfbb089cb9d783e783",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -609,30 +609,25 @@
         },
         {
             "name": "michelf/php-markdown",
-            "version": "1.7.0",
+            "version": "dev-lib",
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "1f51cc520948f66cd2af8cbc45a5ee175e774220"
+                "reference": "83caf0b14004da9b8d2b63db86c930f8a2fbb464"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/1f51cc520948f66cd2af8cbc45a5ee175e774220",
-                "reference": "1f51cc520948f66cd2af8cbc45a5ee175e774220",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/83caf0b14004da9b8d2b63db86c930f8a2fbb464",
+                "reference": "83caf0b14004da9b8d2b63db86c930f8a2fbb464",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-lib": "1.4.x-dev"
-                }
-            },
             "autoload": {
-                "psr-0": {
-                    "Michelf": ""
+                "psr-4": {
+                    "Michelf\\": "Michelf/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -656,7 +651,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2016-10-29T18:58:20+00:00"
+            "time": "2017-06-17 11:56:57"
         },
         {
             "name": "monolog/monolog",
@@ -1271,12 +1266,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6"
+                "reference": "eb71e837ad7fb4892109564dc8b0ee3ec6cb8cb6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6",
-                "reference": "b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/eb71e837ad7fb4892109564dc8b0ee3ec6cb8cb6",
+                "reference": "eb71e837ad7fb4892109564dc8b0ee3ec6cb8cb6",
                 "shasum": ""
             },
             "require": {
@@ -1303,7 +1298,7 @@
             "keywords": [
                 "process"
             ],
-            "time": "2017-03-14 13:23:20"
+            "time": "2017-06-16 09:35:19"
         },
         {
             "name": "react/dns",
@@ -2143,6 +2138,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "rain/raintpl": 20,
+        "michelf/php-markdown": 20,
         "movim/modl": 20,
         "movim/sasl2": 20,
         "movim/moxl": 20,

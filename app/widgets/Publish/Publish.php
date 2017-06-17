@@ -149,8 +149,12 @@ class Publish extends \Movim\Widget\Base
         if($form->content->value != '') {
             $view = $this->tpl();
 
-            $doc = new DOMDocument();
-            $doc->loadXML('<div>'.addHFR(MarkdownExtra::defaultTransform($form->content->value)).'</div>');
+            $doc = new DOMDocument;
+
+            $parser = new MarkdownExtra;
+            $parser->hashtag_protection = true;
+
+            $doc->loadXML('<div>'.addHFR(addHFR($parser->transform($form->content->value))).'</div>');
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
             Dialog::fill($view->draw('_publish_preview', true), true);
@@ -245,7 +249,10 @@ class Publish extends \Movim\Widget\Base
 
             if(Validator::stringType()->notEmpty()->validate(trim($form->content->value))) {
                 $content = $form->content->value;
-                $content_xhtml = addHFR(MarkdownExtra::defaultTransform($content));
+
+                $parser = new MarkdownExtra;
+                $parser->hashtag_protection = true;
+                $content_xhtml = addHFR($parser->transform($content));
 
                 $tagsContent = getHashtags(htmlspecialchars($form->content->value));
                 movim_log(serialize($tagsContent));

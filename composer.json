@@ -13,7 +13,7 @@
 
         "monolog/monolog": "1.8.*",
         "rain/raintpl": "dev-master",
-        "michelf/php-markdown": "1.7.0",
+        "michelf/php-markdown": "dev-lib",
 
         "movim/modl": "dev-master#5863813c917d302bd31781965bbd8cbe693d30ae",
         "movim/sasl2": "dev-master",
