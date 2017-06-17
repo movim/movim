@@ -29,7 +29,17 @@ class Command extends Action
     }
 
     public function handle($stanza, $parent = false) {
-        $this->pack($stanza->command);
+        $this->prepare($stanza, $parent);
+        $this->pack($stanza->command, $stanza->from);
+        $this->deliver();
+    }
+
+    public function error($errorid, $message)
+    {
+        $this->pack([
+            "errorid" => $errorid,
+            "message" => $message
+        ]);
         $this->deliver();
     }
 }
