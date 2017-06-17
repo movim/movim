@@ -129,6 +129,8 @@ form > div > textarea {
     background-color: transparent;
     margin-bottom: 1rem;
 
+    -webkit-appearance: none; /* iOS */
+    border-radius: 0; /* iOS */
     overflow: hidden; /* Fixme */
     box-shadow:0px 1px 0px rgba(0, 0, 0, 0.12);
 }
@@ -271,6 +273,7 @@ form > div > input:disabled + label {
 
 .button,
 input[type=button] {
+    -webkit-appearance:none; /* iOS */
     min-width: 5rem; /* 8rem ? */
     text-align: center;
     display: inline-block;
