@@ -2,7 +2,7 @@ var AdHoc = {
     refresh: function() {
         var items = document.querySelectorAll('#adhoc_widget li');
         var i = 0;
-        
+
         while(i < items.length)
         {
             items[i].onclick = function() {
@@ -32,8 +32,7 @@ MovimWebsocket.attach(function() {
     var parts = MovimUtils.urlParts();
     if(parts.page === "contact") {
         AdHoc_ajaxGet(parts.params[0]);
-        document.querySelector('#adhoc_widget').className = 'card';
     } else {
-        AdHoc_ajaxGet(null);
+        AdHoc_ajaxGet();
     }
 });
