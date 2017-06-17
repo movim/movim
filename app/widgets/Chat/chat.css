@@ -31,7 +31,10 @@
 }
 
 #chat_widget .chat_box form textarea {
-    padding: 3rem 0px 1rem;
+    padding: 0rem 0px 1rem;
+    max-height: 11rem;
+    overflow-y: auto;
+    margin-top: 3rem;
 }
 
 #chat_widget .chat_box span.control {
