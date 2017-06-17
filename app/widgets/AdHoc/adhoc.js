@@ -22,12 +22,18 @@ var AdHoc = {
             i++;
         }
     },
-    submit: function() {
+    submit: function(jid) {
         var form = document.querySelector('#dialog form[name=command]');
-        AdHoc_ajaxSubmit(MovimUtils.parseForm('command'), form.dataset.node, form.dataset.sessionid);
+        AdHoc_ajaxSubmit(jid, MovimUtils.parseForm('command'), form.dataset.node, form.dataset.sessionid);
     }
 }
 
 MovimWebsocket.attach(function() {
-    AdHoc_ajaxGet();
+    var parts = MovimUtils.urlParts();
+    if(parts.page === "contact") {
+        AdHoc_ajaxGet(parts.params[0]);
+        document.querySelector('#adhoc_widget').className = 'card';
+    } else {
+        AdHoc_ajaxGet(null);
+    }
 });

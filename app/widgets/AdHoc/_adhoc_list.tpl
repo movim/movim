@@ -1,4 +1,4 @@
-<ul class="list divided active spaced">
+<ul class="list divided active spaced block">
     <li class="subheader">
         <p>{$c->__('adhoc.title')}</p>
     </li>
@@ -10,7 +10,9 @@
             <span class="control icon gray">
                 <i class="zmdi zmdi-chevron-right"></i>
             </span>
-            <p class="normal line">{$value->attributes()->name}</p>
+            <p class="normal line" title="{$value->attributes()->name}">
+                {$value->attributes()->name}
+            </p>
         </li>
     {/loop}
 </ul>

@@ -22,6 +22,7 @@
         <?php } else { ?>
             <aside>
                 <?php $this->widget('ContactData'); ?>
+                <?php $this->widget('AdHoc'); ?>
             </aside>
             <div>
                 <?php $this->widget('ContactHeader'); ?>

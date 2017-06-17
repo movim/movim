@@ -14,6 +14,8 @@ class AdHoc extends \Movim\Widget\Base
         $this->registerEvent('adhoc_get_handle', 'onList');
         $this->registerEvent('adhoc_command_handle', 'onCommand');
         $this->registerEvent('adhoc_submit_handle', 'onCommand');
+        $this->registerEvent('adhoc_command_error', 'onCommandError');
+        $this->registerEvent('adhoc_submit_error', 'onCommandError');
     }
 
     function onList($package)
@@ -29,6 +31,7 @@ class AdHoc extends \Movim\Widget\Base
         $command = $package->content;
 
         $view = $this->tpl();
+        $view->assign('jid', $package->from);
 
         if(isset($command->note)) {
             $view->assign('note', $command->note);
@@ -60,13 +63,28 @@ class AdHoc extends \Movim\Widget\Base
         return $view->draw('_adhoc_list', true);
     }
 
-    function ajaxGet()
+    function onCommandError($package)
     {
-        $session = Session::start();
+        $view = $this->tpl();
+
+        $note = $package->content['errorid'];
+        if($package->content['message']) {
+            $note = $package->content['message'];
+        }
+
+        $view->assign('note', $note);
+        Dialog::fill($view->draw('_adhoc_note', true), true);
+    }
+
+    function ajaxGet($jid)
+    {
+        if(!$jid) {
+            $session = Session::start();
+            $jid = $session->get('host');
+        }
 
         $g = new Get;
-        $g->setTo($session->get('host'))
-          ->request();
+        $g->setTo($jid)->request();
     }
 
     function ajaxCommand($jid, $node)
@@ -77,12 +95,15 @@ class AdHoc extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxSubmit($data, $node, $sessionid)
+    function ajaxSubmit($jid, $data, $node, $sessionid)
     {
-        $session = Session::start();
+        if(!$jid) {
+            $session = Session::start();
+            $jid = $session->get('host');
+        }
 
         $s = new Submit;
-        $s->setTo($session->get('host'))
+        $s->setTo($jid)
           ->setNode($node)
           ->setData($data)
           ->setSessionid($sessionid)
