@@ -30,7 +30,7 @@ class Command extends Action
 
     public function handle($stanza, $parent = false) {
         $this->prepare($stanza, $parent);
-        $this->pack($stanza->command, $stanza->from);
+        $this->pack($stanza->command);
         $this->deliver();
     }
 
