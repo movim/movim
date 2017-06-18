@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f89f6bf42aa37b83e6270498203b747",
+    "content-hash": "4993aee518aba62f2f9ec749df606502",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -361,12 +361,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "7ffd756b4386ea719350e9ae7b589b3752a61000"
+                "reference": "2e585d60b48db0b06cb2a8b18c4258142187429e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/7ffd756b4386ea719350e9ae7b589b3752a61000",
-                "reference": "7ffd756b4386ea719350e9ae7b589b3752a61000",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/2e585d60b48db0b06cb2a8b18c4258142187429e",
+                "reference": "2e585d60b48db0b06cb2a8b18c4258142187429e",
                 "shasum": ""
             },
             "require": {
@@ -406,7 +406,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-05-27 14:13:19"
+            "time": "2017-06-18 17:49:24"
         },
         {
             "name": "evenement/evenement",
@@ -771,12 +771,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "8a090596893d8d050c1b794039f3ac41370dcc36"
+                "reference": "632fb278f20427cabb3aade1c1e2d125ae03b0e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/8a090596893d8d050c1b794039f3ac41370dcc36",
-                "reference": "8a090596893d8d050c1b794039f3ac41370dcc36",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/632fb278f20427cabb3aade1c1e2d125ae03b0e9",
+                "reference": "632fb278f20427cabb3aade1c1e2d125ae03b0e9",
                 "shasum": ""
             },
             "require": {
@@ -811,7 +811,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-06-17 20:06:04"
+            "time": "2017-06-18 21:38:27"
         },
         {
             "name": "movim/sasl2",
@@ -1262,16 +1262,16 @@
         },
         {
             "name": "react/child-process",
-            "version": "dev-master",
+            "version": "v0.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "eb71e837ad7fb4892109564dc8b0ee3ec6cb8cb6"
+                "reference": "b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/eb71e837ad7fb4892109564dc8b0ee3ec6cb8cb6",
-                "reference": "eb71e837ad7fb4892109564dc8b0ee3ec6cb8cb6",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6",
+                "reference": "b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6",
                 "shasum": ""
             },
             "require": {
@@ -1298,7 +1298,7 @@
             "keywords": [
                 "process"
             ],
-            "time": "2017-06-16 09:35:19"
+            "time": "2017-03-14T13:23:20+00:00"
         },
         {
             "name": "react/dns",
@@ -2145,7 +2145,6 @@
         "embed/embed": 20,
         "heyupdate/emoji": 20,
         "cboden/ratchet": 20,
-        "react/child-process": 20,
         "react/http": 20
     },
     "prefer-stable": false,
