@@ -8,11 +8,7 @@
 }
 
 #chat_widget .chat_box {
-    position: fixed;
-    bottom: 0;
     background-color: white;
-    width: inherit;
-    max-width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
 
