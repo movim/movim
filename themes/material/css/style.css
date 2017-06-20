@@ -171,34 +171,15 @@ main > section > div {
 }
 
 main > section > div.fixed {
-    display: grid;
-    grid-template-rows: 7rem 1fr minmax(8rem 100%);
-}
-
-@media screen and (mmax-width: 1024px) {
-    main > section > div.fixed {
-        grid-template-columns: 100%;
-    }
-}
-
-main > section > div.fixed > header {
-    grid-row: 1;
-}
-
-main > section > div.fixed > div {
-    grid-row: 2;
-    overflow: auto;
-}
-
-main > section > div.fixed > div:last-child {
-    grid-row: 3;
+    height: calc(100% - 7rem);
+    top: 7rem;
 }
 
 main > section > div:not(:last-child) {
     border-right: 1px solid #DDD;
 }
 
-main > section  > aside + div > * {
+main > section > div > * {
     max-width: 100rem;
     margin: 0 auto;
 }
@@ -246,6 +227,14 @@ main > section > div:first-child:nth-last-child(2) ~ div {
 main > section > div:first-child:nth-last-child(2) ~ div {
     background-color: white;
 }*/
+
+main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
+    height: calc(100% - 7.5rem);
+    overflow-y: scroll;
+    position: absolute;
+    max-width: 100%;
+    width: 100%;
+}
 
 main > section > div > div.contained > * {
     max-width: 100rem;

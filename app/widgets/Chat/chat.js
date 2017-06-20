@@ -45,6 +45,7 @@ var Chat = {
             textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
 
             MovimUtils.textareaAutoheight(textarea);
+            Chat.adaptDiscussion();
         }, 0); // Fix Me
 
         textarea.onkeydown = function(event) {
@@ -90,16 +91,25 @@ var Chat = {
                 }
             },5000);
 
+            Chat.adaptDiscussion();
             Chat.toggleAction(this.value.length);
         };
 
         textarea.oninput = function() {
             MovimUtils.textareaAutoheight(this);
+            Chat.adaptDiscussion();
         };
 
         if(document.documentElement.clientWidth > 1024) {
             document.querySelector('#chat_textarea').focus();
         }
+    },
+    adaptDiscussion: function()
+    {
+        document.querySelector('main > section > div > div.contained').style.height =
+            'calc(100% - '+
+            document.querySelector('.chat_box').clientHeight +
+            'px)';
     },
     setTextarea: function(value)
     {
