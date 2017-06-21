@@ -56,9 +56,14 @@ class PubsubAtom {
         $author->appendChild($dom->createElement('uri', 'xmpp:'.$this->jid));
         $entry->appendChild($author);
 
-        $link = $dom->createElement('link');
+        /*$link = $dom->createElement('link');
         $link->setAttribute('rel', 'alternate');
         $link->setAttribute('type', 'application/atom+xml');
+        $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.$this->node.';item='.$this->id);
+        $entry->appendChild($link);*/
+
+        $link = $dom->createElement('link');
+        $link->setAttribute('rel', 'alternate');
         $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.$this->node.';item='.$this->id);
         $entry->appendChild($link);
 
@@ -174,11 +179,6 @@ class PubsubAtom {
             $div->appendChild($f);
             $div->setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
         }
-
-        $link = $dom->createElement('link');
-        $link->setAttribute('rel', 'alternate');
-        $link->setAttribute('href', $this->to.'?;node='.$this->node.';item='.$this->id);
-        $entry->appendChild($link);
 
         if($this->published != false) {
             $entry->appendChild($dom->createElement('published', date(DATE_ISO8601, $this->published)));
