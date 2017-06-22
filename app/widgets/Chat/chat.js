@@ -45,7 +45,7 @@ var Chat = {
             textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
 
             MovimUtils.textareaAutoheight(textarea);
-            Chat.adaptDiscussion();
+            //Chat.adaptDiscussion();
         }, 0); // Fix Me
 
         textarea.onkeydown = function(event) {
@@ -91,13 +91,13 @@ var Chat = {
                 }
             },5000);
 
-            Chat.adaptDiscussion();
+            //Chat.adaptDiscussion();
             Chat.toggleAction(this.value.length);
         };
 
         textarea.oninput = function() {
             MovimUtils.textareaAutoheight(this);
-            Chat.adaptDiscussion();
+            //Chat.adaptDiscussion();
         };
 
         if(document.documentElement.clientWidth > 1024) {
