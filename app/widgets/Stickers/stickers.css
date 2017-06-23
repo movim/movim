@@ -4,12 +4,20 @@
     box-sizing: border-box;
 }
 
+#stickers {
+    overflow-x: hidden;
+}
+
+#stickers ul.list > li:hover {
+    cursor: pointer;
+}
+
 #stickers ul.list > li.block:not(.large) {
     transition: all 100ms ease-in;
     transform: scale(1);
 }
 
 #stickers ul.list > li.block.zoomed {
-    transform: scale(1.4);
+    transform: scale(1.5);
     z-index: 2;
 }
