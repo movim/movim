@@ -77,7 +77,7 @@
     </table>
 </section>
 <div>
-    <ul class="tabs">
+    <ul class="tabs narrow">
         {loop="$packs"}
             <li onclick="Stickers_ajaxShow('{$jid}', '{$value}')">
                 <a href="#"><img alt=":sticker:" class="emoji medium" src="{$path}/{$value}/icon.png"></a>

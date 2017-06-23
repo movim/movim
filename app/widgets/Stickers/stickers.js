@@ -21,6 +21,5 @@ var Stickers = {
         }
 
         element.classList.add('zoomed');
-        //
     }
 }
