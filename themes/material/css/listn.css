@@ -277,6 +277,15 @@ ul.tabs > li > * {
     display: block;
 }
 
+ul.tabs.narrow > li {
+    min-width: 8rem;
+}
+
+ul.tabs.narrow > li > * {
+    padding: 0 1rem;
+}
+
+
 ul.tabs > li:hover {
     cursor: pointer;
     background-color: rgba(0, 0, 0, 0.05);

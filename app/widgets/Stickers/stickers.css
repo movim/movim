@@ -1,5 +1,15 @@
-ul.list > li > img.sticker {
+#stickers ul.list > li > img.sticker {
     padding: 1rem;
     width: 100%;
     box-sizing: border-box;
+}
+
+#stickers ul.list > li.block:not(.large) {
+    transition: all 100ms ease-in;
+    transform: scale(1);
+}
+
+#stickers ul.list > li.block.zoomed {
+    transform: scale(1.4);
+    z-index: 2;
 }

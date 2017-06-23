@@ -300,7 +300,7 @@ main footer {
     box-sizing: border-box;
     text-align: right;
     bottom: 0;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem;
     position: absolute;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
 }
