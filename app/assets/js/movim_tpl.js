@@ -133,8 +133,8 @@ var MovimTpl = {
 
             if(
             (
-                startX < 5 ||
-                (nav.classList.contains('active') && startX > document.body.clientWidth - 25)
+                startX < 10 ||
+                (nav.classList.contains('active') && startX > document.body.clientWidth - 50)
             )
             && MovimTpl.dragged == false) {
                 nav.classList.add('moving');
