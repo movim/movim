@@ -25,6 +25,7 @@ class Item extends Model
         'node'      => ['type' => 'string','size' => 96,'key' => true],
         'creator'   => ['type' => 'string','size' => 64],
         'name'      => ['type' => 'string','size' => 128],
+        'subscribers' => ['type' => 'int'],
         'created'   => ['type' => 'date'],
         'description' => ['type' => 'text'],
         'logo'      => ['type' => 'bool'],
@@ -45,15 +46,17 @@ class Item extends Model
         $this->updated  = date(SQL::SQL_DATE);
     }
 
-    public function setMetadata($metadata, $from, $node)
+    public function setMetadata($metadata, $from = false, $node = '')
     {
-        $this->server = $from;
-        $this->jid = $from;
+        if($from) {
+            $this->server = $from;
+            $this->jid = $from;
+        }
+
         $this->node = $node;
 
         foreach($metadata->children() as $i) {
             $key = (string)$i->attributes()->var;
-
             switch ($key) {
                 case 'pubsub#title':
                     $this->name = (string)$i->value;
@@ -64,8 +67,13 @@ class Item extends Model
                 case 'pubsub#creation_date':
                     $this->created = date(SQL::SQL_DATE, strtotime((string)$i->value));
                     break;
+                case 'muc#roominfo_description':
                 case 'pubsub#description':
                     $this->description = (string)$i->value;
+                    break;
+                case 'pubsub#num_subscribers':
+                case 'muc#roominfo_occupants':
+                    $this->subscribers = (int)$i->value;
                     break;
             }
         }

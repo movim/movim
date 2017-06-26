@@ -39,6 +39,12 @@ class Caps extends Model
                 }
             }
 
+            if(isset($query->query->x)) {
+                foreach($query->query->x->field as $field) {
+
+                }
+            }
+
             $fet = [];
             foreach($query->query->feature as $f) {
                 array_push($fet, (string)$f->attributes()->var);

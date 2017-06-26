@@ -1,5 +1,5 @@
 {if="!$c->supported('anonymous') && $c->getView() != 'room'"}
-    <ul class="list divided spaced {if="!$edit"}active{/if}">
+    <ul class="list divided spaced middle {if="!$edit"}active{/if}">
         <li class="subheader">
             {if="$conferences != null"}
             <span class="control icon active gray" onclick="Rooms_ajaxDisplay({if="$edit"}false{else}true{/if});">
@@ -21,9 +21,11 @@
                 class="room {if="$value->connected"}online{/if}"
                 title="{$value->conference}">
                 <span data-key="chat|{$value->conference}" class="counter"></span>
-                <span class="primary {if="!$value->connected"}disabled{/if} icon small bubble color {$value->name|stringToColor}">
-                    {$value->name|firstLetterCapitalize:true}
+                <span class="primary {if="!$value->connected"}disabled{/if} icon bubble color {$value->name|stringToColor}">
+                    {$value->name|firstLetterCapitalize}
                 </span>
+
+                {$item = $value->getItem()}
                 {if="$edit"}
                     <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
                         <i class="zmdi zmdi-delete"></i>
@@ -33,6 +35,22 @@
                     </span>
                 {/if}
                 <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
+                <p>
+                    {if="$value->connected"}
+                        <span title="{$c->__('communitydata.sub', $item->subscribers)}">
+                            {$value->countConnected()} <i class="zmdi zmdi-accounts"></i>  –
+                        </span>
+                    {elseif="isset($item) && $item->subscribers > 0"}
+                        <span title="{$c->__('communitydata.sub', $item->subscribers)}">
+                            {$item->subscribers} <i class="zmdi zmdi-accounts"></i>  –
+                        </span>
+                    {/if}
+                    {if="isset($item) && $item->description"}
+                        {$item->description}
+                    {else}
+                        {$value->conference}
+                    {/if}
+                </p>
             </li>
         {/loop}
     </ul>

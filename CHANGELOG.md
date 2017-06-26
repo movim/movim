@@ -20,6 +20,8 @@ v0.12 (trunk)
  * Add NSFW filter configuration
  * Save Draft of publications in Publish and PublishBrief
  * Add touch support to open the menu on mobile devices
+ * Improve Stickers picker
+ * Display more information in the Rooms list
 
 v0.11
 ---------------------------

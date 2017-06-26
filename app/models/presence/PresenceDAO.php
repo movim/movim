@@ -249,6 +249,24 @@ class PresenceDAO extends SQL
         return $this->run('Presence');
     }
 
+    function countJid($jid)
+    {
+        $this->_sql = '
+            select count(*) from presence
+            where session = :session
+                and jid = :jid';
+
+        $this->prepare(
+            'Presence',
+            [
+                'session' => $this->_user,
+                'jid'   => $jid
+            ]
+        );
+
+        return $this->run(null, 'count');
+    }
+
     function clearMuc($muc)
     {
         $this->_sql = '

@@ -1,6 +1,9 @@
 <?php
 
-namespace modl;
+namespace Modl;
+
+use \Modl\ItemDAO;
+use \Modl\PresenceDAO;
 
 class Conference extends Model
 {
@@ -21,4 +24,16 @@ class Conference extends Model
         'autojoin'      => ['type' => 'bool'],
         'status'        => ['type' => 'bool'],
     ];
+
+    public function getItem()
+    {
+        $id = new ItemDAO;
+        return $id->getJid($this->conference);
+    }
+
+    public function countConnected()
+    {
+        $pd = new PresenceDAO;
+        return $pd->countJid($this->conference);
+    }
 }

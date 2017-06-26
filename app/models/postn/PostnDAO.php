@@ -702,11 +702,7 @@ class PostnDAO extends SQL
             ]
         );
 
-        $arr = $this->run(null, 'array');
-        if(is_array($arr) && isset($arr[0])) {
-            $arr = array_values($arr[0]);
-            return (int)$arr[0];
-        }
+        return $this->run(null, 'count');
     }
 
     function countComments($origin, $id)
@@ -728,11 +724,7 @@ class PostnDAO extends SQL
             ]
         );
 
-        $arr = $this->run(null, 'array');
-        if(is_array($arr) && isset($arr[0])) {
-            $arr = array_values($arr[0]);
-            return (int)$arr[0];
-        }
+        return $this->run(null, 'count');
     }
 
     function countLikes($origin, $id)
@@ -753,14 +745,11 @@ class PostnDAO extends SQL
             ]
         );
 
-        $arr = $this->run(null, 'array');
-        if(is_array($arr) && isset($arr[0])) {
-            $arr = array_values($arr[0]);
-            return (int)$arr[0];
-        }
+        return $this->run(null, 'count');
     }
 
-    function clearPost() {
+    function clearPost()
+    {
         $this->_sql = '
             delete from postn
             where session = :session';
@@ -800,11 +789,7 @@ class PostnDAO extends SQL
             ]
         );
 
-        $arr = $this->run(null, 'array');
-        if(is_array($arr) && isset($arr[0])) {
-            $arr = array_values($arr[0]);
-            return (int)$arr[0];
-        }
+        return $this->run(null, 'count');
     }
 
     function getNotifsSince($date, $limitf = false, $limitr = false)

@@ -15,9 +15,9 @@
         "rain/raintpl": "dev-master",
         "michelf/php-markdown": "dev-lib",
 
-        "movim/modl": "dev-master#5863813c917d302bd31781965bbd8cbe693d30ae",
+        "movim/modl": "dev-master#533e5ed193b1658780ba4a4a5774172c1810a89f",
         "movim/sasl2": "dev-master",
-        "movim/moxl": "dev-master#6817bce6ff44661b3af2ab2f6174aa49a6189231",
+        "movim/moxl": "dev-master#03713e02549714cdc8705206c6b8590891645c1e",
 
         "embed/embed": "dev-master",
         "heyupdate/emoji": "dev-master",
@@ -28,11 +28,11 @@
         "respect/validation": "1.0.*",
         "ezyang/htmlpurifier": "^4.9",
         "ramsey/uuid": "^3.5",
-        "symfony/console": "^3.2",
-        "cocur/slugify": "^2.3",
+        "symfony/console": "^3.3",
+        "cocur/slugify": "^2.5",
         "clue/buzz-react": "^1.1",
         "dflydev/fig-cookies": "^1.0",
-        "defuse/php-encryption": "^2.0",
+        "defuse/php-encryption": "^2.1",
         "react/child-process": "^0.4.3"
     }
 }

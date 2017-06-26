@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e5d3dc2ffbfbfca37ceea7e9071638bb",
+    "hash": "29a090bbb4060bfc0ea07dccc1190a34",
+    "content-hash": "1ea6293f60739db11739d6b4036c1c2e",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -115,7 +116,7 @@
                 "http client",
                 "reactphp"
             ],
-            "time": "2016-10-21T10:29:37+00:00"
+            "time": "2016-10-21 10:29:37"
         },
         {
             "name": "cocur/slugify",
@@ -179,7 +180,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2017-03-23T21:52:55+00:00"
+            "time": "2017-03-23 21:52:55"
         },
         {
             "name": "composer/ca-bundle",
@@ -238,7 +239,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2017-03-06T11:59:08+00:00"
+            "time": "2017-03-06 11:59:08"
         },
         {
             "name": "defuse/php-encryption",
@@ -301,7 +302,7 @@
                 "security",
                 "symmetric key cryptography"
             ],
-            "time": "2017-05-18T21:28:48+00:00"
+            "time": "2017-05-18 21:28:48"
         },
         {
             "name": "dflydev/fig-cookies",
@@ -353,7 +354,7 @@
                 "psr-7",
                 "psr7"
             ],
-            "time": "2016-03-28T09:10:18+00:00"
+            "time": "2016-03-28 09:10:18"
         },
         {
             "name": "embed/embed",
@@ -361,12 +362,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "a116feddd2c87eed42ff805caada1c157b436097"
+                "reference": "9140ac1c6457cac985efb1484922bcdb83addca8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/a116feddd2c87eed42ff805caada1c157b436097",
-                "reference": "a116feddd2c87eed42ff805caada1c157b436097",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/9140ac1c6457cac985efb1484922bcdb83addca8",
+                "reference": "9140ac1c6457cac985efb1484922bcdb83addca8",
                 "shasum": ""
             },
             "require": {
@@ -406,7 +407,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-06-19 21:11:45"
+            "time": "2017-06-26 19:09:44"
         },
         {
             "name": "evenement/evenement",
@@ -452,7 +453,7 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "time": "2012-11-02T14:49:47+00:00"
+            "time": "2012-11-02 14:49:47"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -499,7 +500,7 @@
             "keywords": [
                 "html"
             ],
-            "time": "2017-06-03T02:28:16+00:00"
+            "time": "2017-06-03 02:28:16"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -564,7 +565,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-03-20T17:10:46+00:00"
+            "time": "2017-03-20 17:10:46"
         },
         {
             "name": "heyupdate/emoji",
@@ -719,7 +720,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2014-03-23T19:50:26+00:00"
+            "time": "2014-03-23 19:50:26"
         },
         {
             "name": "movim/modl",
@@ -910,7 +911,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13T16:27:32+00:00"
+            "time": "2017-03-13 16:27:32"
         },
         {
             "name": "pear/net_dns2",
@@ -954,7 +955,7 @@
                 "dns",
                 "network"
             ],
-            "time": "2017-02-12T21:14:52+00:00"
+            "time": "2017-02-12 21:14:52"
         },
         {
             "name": "psr/http-message",
@@ -1004,7 +1005,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06T14:39:51+00:00"
+            "time": "2016-08-06 14:39:51"
         },
         {
             "name": "psr/log",
@@ -1051,7 +1052,7 @@
                 "psr",
                 "psr-3"
             ],
-            "time": "2016-10-10T12:19:37+00:00"
+            "time": "2016-10-10 12:19:37"
         },
         {
             "name": "rain/raintpl",
@@ -1176,7 +1177,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2017-03-26T20:37:53+00:00"
+            "time": "2017-03-26 20:37:53"
         },
         {
             "name": "ratchet/rfc6455",
@@ -1224,7 +1225,7 @@
                 "rfc6455",
                 "websocket"
             ],
-            "time": "2017-01-01T15:41:18+00:00"
+            "time": "2017-01-01 15:41:18"
         },
         {
             "name": "react/cache",
@@ -1258,7 +1259,7 @@
             "keywords": [
                 "cache"
             ],
-            "time": "2016-02-25T18:17:16+00:00"
+            "time": "2016-02-25 18:17:16"
         },
         {
             "name": "react/child-process",
@@ -1298,7 +1299,7 @@
             "keywords": [
                 "process"
             ],
-            "time": "2017-03-14T13:23:20+00:00"
+            "time": "2017-03-14 13:23:20"
         },
         {
             "name": "react/dns",
@@ -1340,7 +1341,7 @@
                 "dns",
                 "dns-resolver"
             ],
-            "time": "2017-05-01T17:21:03+00:00"
+            "time": "2017-05-01 17:21:03"
         },
         {
             "name": "react/event-loop",
@@ -1382,7 +1383,7 @@
                 "asynchronous",
                 "event-loop"
             ],
-            "time": "2017-04-27T10:56:23+00:00"
+            "time": "2017-04-27 10:56:23"
         },
         {
             "name": "react/http",
@@ -1463,7 +1464,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2017-03-20T09:55:48+00:00"
+            "time": "2017-03-20 09:55:48"
         },
         {
             "name": "react/promise",
@@ -1509,7 +1510,7 @@
                 "promise",
                 "promises"
             ],
-            "time": "2017-03-25T12:08:31+00:00"
+            "time": "2017-03-25 12:08:31"
         },
         {
             "name": "react/promise-timer",
@@ -1559,7 +1560,7 @@
                 "timeout",
                 "timer"
             ],
-            "time": "2016-12-27T08:12:19+00:00"
+            "time": "2016-12-27 08:12:19"
         },
         {
             "name": "react/socket",
@@ -1607,7 +1608,7 @@
                 "reactphp",
                 "stream"
             ],
-            "time": "2017-04-24T09:37:03+00:00"
+            "time": "2017-04-24 09:37:03"
         },
         {
             "name": "react/socket-client",
@@ -1648,7 +1649,7 @@
             "keywords": [
                 "Socket"
             ],
-            "time": "2016-12-24T11:19:15+00:00"
+            "time": "2016-12-24 11:19:15"
         },
         {
             "name": "react/stream",
@@ -1692,7 +1693,7 @@
                 "pipe",
                 "stream"
             ],
-            "time": "2017-01-25T14:44:14+00:00"
+            "time": "2017-01-25 14:44:14"
         },
         {
             "name": "respect/validation",
@@ -1757,7 +1758,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2017-03-14T09:28:03+00:00"
+            "time": "2017-03-14 09:28:03"
         },
         {
             "name": "ringcentral/psr7",
@@ -1815,7 +1816,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-03-25T17:36:49+00:00"
+            "time": "2016-03-25 17:36:49"
         },
         {
             "name": "symfony/console",
@@ -1884,7 +1885,7 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-02T19:24:58+00:00"
+            "time": "2017-06-02 19:24:58"
         },
         {
             "name": "symfony/debug",
@@ -1940,7 +1941,7 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-01T21:01:25+00:00"
+            "time": "2017-06-01 21:01:25"
         },
         {
             "name": "symfony/http-foundation",
@@ -1993,7 +1994,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-06-05T13:06:51+00:00"
+            "time": "2017-06-05 13:06:51"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2052,7 +2053,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09T14:24:12+00:00"
+            "time": "2017-06-09 14:24:12"
         },
         {
             "name": "symfony/routing",
@@ -2130,7 +2131,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-06-02T09:51:43+00:00"
+            "time": "2017-06-02 09:51:43"
         }
     ],
     "packages-dev": [],
