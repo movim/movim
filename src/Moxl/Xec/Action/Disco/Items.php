@@ -25,14 +25,12 @@ class Items extends Action
     public function handle($stanza, $parent = false)
     {
         $nd = new \Modl\ItemDAO;
+        $nd->deleteItems($this->_to);
 
         $jid = null;
 
         foreach($stanza->query->item as $item) {
-            $n = $nd->getItem($this->_to, (string)$item->attributes()->node);
-            if(!$n) {
-                $n = new \Modl\Item;
-            }
+            $n = new \Modl\Item;
 
             $n->set($item, $this->_to);
             if(substr($n->node, 0, 29) != 'urn:xmpp:microblog:0:comments') {
@@ -49,9 +47,11 @@ class Items extends Action
                       ->request();
                 }
 
-                $r = new Request;
-                $r->setTo($n->jid)
-                  ->request();
+                if(strpos($n->jid, '/') === false) {
+                    $r = new Request;
+                    $r->setTo($n->jid)
+                      ->request();
+                }
             }
 
             $jid = $n->jid;

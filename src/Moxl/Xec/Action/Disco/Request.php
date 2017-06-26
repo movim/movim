@@ -1,31 +1,10 @@
 <?php
-/*
- * Request.php
- *
- * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- *
- */
 
 namespace Moxl\Xec\Action\Disco;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Disco;
+use Moxl\Xec\Action\Disco\Items;
 
 class Request extends Action
 {
@@ -58,13 +37,30 @@ class Request extends Action
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         $c = new \Modl\Caps;
 
         if(isset($this->_node)) {
             $c->set($stanza, $this->_node);
         } else {
             $c->set($stanza, $this->_to);
+        }
+
+        $id = new \Modl\ItemDAO;
+        $i = $id->getJid($this->_to);
+
+        if(isset($stanza->query->x) && isset($i)) {
+            $i->setMetadata($stanza->query->x);
+            $id->set($i);
+        }
+
+        if($c->category == 'conference'
+        && $c->type == 'text'
+        && strpos($this->_to, '@') === false) {
+            $c = new Items;
+            $c->setTo($this->_to)
+              ->request();
         }
 
         if(
