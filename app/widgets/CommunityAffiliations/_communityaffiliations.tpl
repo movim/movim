@@ -1,24 +1,24 @@
 {if="$role == 'owner'"}
     <ul class="list active">
-        <li onclick="CommunityConfig_ajaxGetConfig('{$item->server|echapJS}', '{$item->node|echapJS}')">
+        <li onclick="CommunityConfig_ajaxGetConfig('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
                 <i class="zmdi zmdi-settings"></i>
             </span>
             <p class="normal">{$c->__('communityaffiliation.configuration')}</p>
         </li>
-        <li onclick="CommunityAffiliations_ajaxGetSubscriptions('{$item->server|echapJS}', '{$item->node|echapJS}', true)">
+        <li onclick="CommunityAffiliations_ajaxGetSubscriptions('{$info->server|echapJS}', '{$info->node|echapJS}', true)">
             <span class="primary icon gray">
                 <i class="zmdi zmdi-accounts-list"></i>
             </span>
             <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
         </li>
-        <li onclick="CommunityAffiliations_ajaxAffiliations('{$item->server|echapJS}', '{$item->node|echapJS}')">
+        <li onclick="CommunityAffiliations_ajaxAffiliations('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
                 <i class="zmdi zmdi-account-box-o"></i>
             </span>
             <p class="normal">{$c->__('communityaffiliation.roles')}</p>
         </li>
-        <li onclick="CommunityAffiliations_ajaxDelete('{$item->server|echapJS}', '{$item->node|echapJS}')">
+        <li onclick="CommunityAffiliations_ajaxDelete('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
                 <i class="zmdi zmdi-delete"></i>
             </span>
