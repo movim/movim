@@ -39,6 +39,7 @@ class Request extends Action
 
     public function handle($stanza, $parent = false)
     {
+        // Caps
         $c = new \Modl\Caps;
 
         if(isset($this->_node)) {
@@ -47,31 +48,24 @@ class Request extends Action
             $c->set($stanza, $this->_to);
         }
 
-        $id = new \Modl\ItemDAO;
-        $i = $id->getJid($this->_to);
+        $cd = new \Modl\CapsDAO;
+        $cd->set($c);
 
-        if(isset($stanza->query->x) && isset($i)) {
-            $i->setMetadata($stanza->query->x);
-            $id->set($i);
-        }
+        // Info
+        $in = new \Modl\Info;
+        $in->set($stanza);
+        $ind = new \Modl\InfoDAO;
+        $ind->set($in);
 
-        if($c->category == 'conference'
-        && $c->type == 'text'
+        if($in->category == 'conference'
+        && $in->type == 'text'
         && strpos($this->_to, '@') === false) {
             $c = new Items;
             $c->setTo($this->_to)
               ->request();
         }
 
-        if(
-            $c->node != ''
-         && $c->category != ''
-         && $c->type != ''
-         && $c->name != '') {
-            $cd = new \Modl\CapsDAO;
-            $cd->set($c);
-            $this->pack($c);
-            $this->deliver();
-        }
+        $this->pack([$this->_to, $this->_node]);
+        $this->deliver();
     }
 }

@@ -51,29 +51,31 @@ class Delete extends Errors
         return $this;
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         if($stanza["type"] == "result"){
             //delete from bookmark
-            $sd = new \Modl\SubscriptionDAO();
+            $sd = new \Modl\SubscriptionDAO;
             $sd->deleteNode($this->_to, $this->_node);
 
-            //delete from item
-            $id = new \Modl\ItemDAO();
-            $id->deleteItem($this->_to, $this->_node);
+            //delete from info
+            $id = new \Modl\InfoDAO;
+            $id->delete($this->_to, $this->_node);
 
             $this->pack(['server' => $this->_to, 'node' => $this->_node]);
             $this->deliver();
         }
     }
 
-    public function error($stanza, $parent = false) {
+    public function error($stanza, $parent = false)
+    {
         //delete from bookmark
-        $sd = new \Modl\SubscriptionDAO();
+        $sd = new \Modl\SubscriptionDAO;
         $sd->deleteNode($this->_to, $this->_node);
 
-        //delete from item
-        $id = new \Modl\ItemDAO();
-        $id->deleteItem($this->_to, $this->_node);
+        //delete from info
+        $id = new \Modl\InfoDAO;
+        $id->delete($this->_to, $this->_node);
 
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();

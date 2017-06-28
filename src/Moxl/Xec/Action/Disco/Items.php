@@ -24,37 +24,37 @@ class Items extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $nd = new \Modl\ItemDAO;
-        $nd->deleteItems($this->_to);
+        $id = new \Modl\InfoDAO;
+        $id->deleteItems($this->_to);
 
         $jid = null;
 
         foreach($stanza->query->item as $item) {
-            $n = new \Modl\Item;
+            $i = new \Modl\Info;
+            $i->setItem($item);
 
-            $n->set($item, $this->_to);
-            if(substr($n->node, 0, 29) != 'urn:xmpp:microblog:0:comments') {
-                $nd->set($n, true);
+            if(substr($i->node, 0, 29) != 'urn:xmpp:microblog:0:comments') {
+                $id->set($i);
             }
 
-            if($jid != $n->jid) {
-                if(isset($n->node)
-                && $n->node != ''
-                && $n->node != 'urn:xmpp:microblog:0') {
+            if($jid != $i->server) {
+                if(isset($i->node)
+                && $i->node != ''
+                && $i->node != 'urn:xmpp:microblog:0') {
                     $r = new Request;
-                    $r->setTo($n->jid)
-                      ->setNode($n->node)
+                    $r->setTo($i->server)
+                      ->setNode($i->node)
                       ->request();
                 }
 
-                if(strpos($n->jid, '/') === false) {
+                if(strpos($i->server, '/') === false) {
                     $r = new Request;
-                    $r->setTo($n->jid)
+                    $r->setTo($i->server)
                       ->request();
                 }
             }
 
-            $jid = $n->jid;
+            $jid = $i->server;
         }
 
         $this->pack($this->_to);
