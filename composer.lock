@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c34771953d26f01b4984a3050ce2b9b8",
+    "content-hash": "3e5982d3d79c72b356ef8eeca28e19db",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -727,12 +727,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "a1bff63256a3e01032e53e7718f07efad4ec8fd8"
+                "reference": "aa949c8106cea5a4ebba51a06f3b48cee85ff9e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/a1bff63256a3e01032e53e7718f07efad4ec8fd8",
-                "reference": "a1bff63256a3e01032e53e7718f07efad4ec8fd8",
+                "url": "https://api.github.com/repos/movim/modl/zipball/aa949c8106cea5a4ebba51a06f3b48cee85ff9e8",
+                "reference": "aa949c8106cea5a4ebba51a06f3b48cee85ff9e8",
                 "shasum": ""
             },
             "require": {
@@ -763,7 +763,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-06-28 07:24:07"
+            "time": "2017-06-28 21:32:36"
         },
         {
             "name": "movim/moxl",
@@ -771,12 +771,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "52d12856dc32280c13dc0cc6228de77c0b9534ba"
+                "reference": "75cc8b353479d268be11d1c1fa48529c5bbd3eab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/52d12856dc32280c13dc0cc6228de77c0b9534ba",
-                "reference": "52d12856dc32280c13dc0cc6228de77c0b9534ba",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/75cc8b353479d268be11d1c1fa48529c5bbd3eab",
+                "reference": "75cc8b353479d268be11d1c1fa48529c5bbd3eab",
                 "shasum": ""
             },
             "require": {
@@ -811,7 +811,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-06-28 07:25:05"
+            "time": "2017-06-28 21:31:36"
         },
         {
             "name": "movim/sasl2",

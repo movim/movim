@@ -756,7 +756,10 @@ class Chat extends \Movim\Widget\Base
         $chats = ($chats == null) ? false : array_keys($chats);
 
         $cd = new \Modl\ContactDAO;
+        $id = new \Modl\InfoDAO;
+
         $view->assign('presencestxt', getPresencesTxt());
+        $view->assign('conferences', $id->getTopConference(8));
         $view->assign('top', $cd->getTop(8, $chats));
         return $view->draw('_chat_empty', true);
     }

@@ -4,6 +4,27 @@ namespace Modl;
 
 class InfoDAO extends SQL
 {
+    function setOccupantsCount($server, $node, $count)
+    {
+        $this->_sql = '
+            update info
+            set occupants = :occupants
+            where
+                info.server = :server
+                and info.node = :node';
+
+        $this->prepare(
+            'Info',
+            [
+                'server' => $server,
+                'node' => $node,
+                'occupants' => $count
+            ]
+        );
+
+        return $this->run('Info');
+    }
+
     function get($server, $node)
     {
         $this->_sql = '
@@ -122,6 +143,28 @@ class InfoDAO extends SQL
         return $this->run('Info', 'item');
     }
 
+    function getTopConference($limit = 10)
+    {
+        $this->_sql = '
+            select * from info
+            where category = \'conference\'
+            and server not in (
+                select conference
+                from conference where jid = :jid)
+            order by occupants desc';
+
+        $this->_sql .= ' limit '.(int)$limit;
+
+        $this->prepare(
+            'Info',
+            [
+                'conference.jid' => $this->_user
+            ]
+        );
+
+        return $this->run('Info');
+    }
+
     function getSharedItems($jid)
     {
         $this->_sql = '
@@ -169,7 +212,7 @@ class InfoDAO extends SQL
     function getConference($server)
     {
         $this->_sql = '
-            select info.* from info
+            select * from info
             where server = :server
             and category = \'conference\'
             and type = \'text\'';

@@ -52,7 +52,7 @@ class ConferenceDAO extends SQL
             ]
         );
 
-        return $this->run('conference');
+        return $this->run('Conference');
     }
 
     function deleteNode($conference)

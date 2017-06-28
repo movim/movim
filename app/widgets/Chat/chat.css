@@ -142,8 +142,8 @@
 }
 
 #chat_widget > .placeholder {
-    padding-top: 37em;
-    background-size: 35rem 35rem;
+    padding-top: 31em;
+    background-size: 27rem;
     background-position: center 7rem;
     background-image: url('img/chat.svg');
 }

@@ -11,8 +11,8 @@
                 {if="isset($room)"}value="{$room->conference}" disabled{/if}
                 {if="isset($id)"}value="{$id}" disabled{/if}
                 name="jid"
-                {if="isset($server)"}
-                    placeholder="chatroom@{$server}"
+                {if="isset($info)"}
+                    placeholder="chatroom@{$info->server}"
                 {else}
                     placeholder="chatroom@server.com"
                 {/if}
@@ -22,7 +22,11 @@
         </div>
         <div>
             <input
-                {if="isset($room)"}value="{$room->name}"{/if}
+                {if="isset($room)"}
+                    value="{$room->name}"
+                {elseif="isset($info)"}
+                    value="{$info->name}"
+                {/if}
                 name="name"
                 placeholder="{$c->__('chatrooms.name_placeholder')}"
                 required />
