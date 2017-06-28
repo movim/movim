@@ -9,11 +9,14 @@
     {/if}
     {loop="$conferences"}
         <li class="block"
-            onclick="Rooms_ajaxAdd('{$value->server}')">
+            onclick="Rooms_ajaxAdd('{$value->server}')"
+            title="{$value->server}">
             <span class="primary icon bubble color {$value->name|stringToColor}">
                 {$value->name|firstLetterCapitalize}
             </span>
-            <p class="line">{$value->name}</p>
+            <p class="line">{$value->name}
+                <span class="second">{$value->server}</span>
+            </p>
             <p class="line" title="{$value->description}">
             {if="$value->occupants > 0"}
                 <span title="{$c->__('communitydata.sub', $value->occupants)}">
