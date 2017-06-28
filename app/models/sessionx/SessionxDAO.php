@@ -1,10 +1,10 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
 class SessionxDAO extends SQL
 {
-    function set(Sessionx $s)
+    function set($s)
     {
         $this->_sql = '
             update sessionx

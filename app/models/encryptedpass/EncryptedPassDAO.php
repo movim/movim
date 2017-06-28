@@ -23,7 +23,7 @@ class EncryptedPassDAO extends SQL
         return $this->run('EncryptedPass', 'item');
     }
 
-    function set(EncryptedPass $key)
+    function set($key)
     {
         $this->_sql = '
             update encryptedpass

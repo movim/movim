@@ -2,7 +2,7 @@
 
 namespace Modl;
 
-use \Modl\ItemDAO;
+use \Modl\InfoDAO;
 use \Modl\PresenceDAO;
 
 class Conference extends Model
@@ -27,7 +27,7 @@ class Conference extends Model
 
     public function getItem()
     {
-        $id = new ItemDAO;
+        $id = new InfoDAO;
         return $id->getJid($this->conference);
     }
 

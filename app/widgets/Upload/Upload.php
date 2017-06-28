@@ -34,8 +34,8 @@ class Upload extends \Movim\Widget\Base
 
     function ajaxSend($file)
     {
-        $id = new \Modl\ItemDAO;
-        $u = $id->getUpload($this->user->getServer());
+        $cd = new \Modl\CapsDAO;
+        $u = $cd->getUpload($this->user->getServer());
 
         if(isset($u)) {
             $r = new Request;

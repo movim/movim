@@ -34,12 +34,12 @@ class CommunityAffiliations extends \Movim\Widget\Base
             }
         }
 
-        $id = new \Modl\ItemDAO;
-        $item = $id->getItem($server, $node);
+        $id = new \Modl\InfoDAO;
+        $info = $id->get($server, $node);
 
         $view = $this->tpl();
         $view->assign('role', $role);
-        $view->assign('item', $item);
+        $view->assign('info', $info);
         $view->assign('affiliations', $affiliations);
 
         $this->rpc('MovimTpl.fill', '#community_affiliation', $view->draw('_communityaffiliations', true));

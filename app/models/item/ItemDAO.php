@@ -1,10 +1,10 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
 class ItemDAO extends SQL
 {
-    function set(Item $item, $insert_only = false)
+    function set($item, $insert_only = false)
     {
         if(!$insert_only) {
             $this->_sql = '

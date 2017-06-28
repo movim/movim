@@ -4,7 +4,7 @@ namespace Modl;
 
 class RosterLinkDAO extends SQL
 {
-    function set(RosterLink $r)
+    function set($r)
     {
         $this->_sql = '
             insert into rosterlink

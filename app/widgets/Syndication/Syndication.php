@@ -12,7 +12,7 @@ class Syndication extends \Movim\Widget\Base
 
         $pd = new \Modl\PostnDAO;
         $cd = new \Modl\ContactDAO;
-        $id = new \Modl\ItemDAO;
+        $id = new \Modl\InfoDAO;
 
         if(!$this->get('s')) {
             return;
@@ -28,7 +28,7 @@ class Syndication extends \Movim\Widget\Base
             return;
         } else {
             $node = $this->get('n');
-            $item = $id->getItem($from, $node);
+            $item = $id->get($from, $node);
         }
 
         $messages = $pd->getPublic($from, $node, 0, 20);

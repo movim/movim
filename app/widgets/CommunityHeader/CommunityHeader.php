@@ -1,6 +1,6 @@
 <?php
 
-use Moxl\Xec\Action\Pubsub\GetMetadata;
+use Moxl\Xec\Action\Disco\Request;
 
 use Moxl\Xec\Action\Pubsub\Subscribe;
 use Moxl\Xec\Action\Pubsub\Unsubscribe;
@@ -16,7 +16,7 @@ class CommunityHeader extends \Movim\Widget\Base
 {
     public function load()
     {
-        $this->registerEvent('pubsub_getmetadata_handle', 'onMetadata');
+        $this->registerEvent('disco_request_handle', 'onDiscoRequest');
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_subscribe_errorunsupported', 'onSubscriptionUnsupported');
         $this->registerEvent('pubsub_unsubscribe_handle', 'onUnsubscribed');
@@ -26,7 +26,7 @@ class CommunityHeader extends \Movim\Widget\Base
         $this->addjs('communityheader.js');
     }
 
-    function onMetadata($packet)
+    function onDiscoRequest($packet)
     {
         list($server, $node) = $packet->content;
 
@@ -77,7 +77,7 @@ class CommunityHeader extends \Movim\Widget\Base
     {
         if(!$this->validateServerNode($server, $node)) return;
 
-        $r = new GetMetadata;
+        $r = new Request;
         $r->setTo($server)->setNode($node)
           ->request();
     }
@@ -91,13 +91,13 @@ class CommunityHeader extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
 
-        $id = new \Modl\ItemDAO;
-        $item = $id->getItem($server, $node);
+        $id = new \Modl\InfoDAO;
+        $info = $id->get($server, $node);
 
-        if(isset($item)) {
-            $view->assign('item', $item);
+        if(isset($info)) {
+            $view->assign('info', $info);
         } else {
-            $view->assign('item', null);
+            $view->assign('info', null);
         }
 
         Dialog::fill($view->draw('_communityheader_subscribe', true));
@@ -132,13 +132,13 @@ class CommunityHeader extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
 
-        $id = new \Modl\ItemDAO;
-        $item = $id->getItem($server, $node);
+        $id = new \Modl\InfoDAO;
+        $info = $id->get($server, $node);
 
-        if(isset($item)) {
-            $view->assign('item', $item);
+        if(isset($info)) {
+            $view->assign('info', $info);
         } else {
-            $view->assign('item', null);
+            $view->assign('info', null);
         }
 
         Dialog::fill($view->draw('_communityheader_unsubscribe', true));
@@ -181,20 +181,21 @@ class CommunityHeader extends \Movim\Widget\Base
 
     public function prepareHeader($server, $node)
     {
-        $id = new \Modl\ItemDAO;
-        $item = $id->getItem($server, $node);
+        $id = new \Modl\InfoDAO;
+        $info = $id->get($server, $node);
 
+        /*
         if($item && !$item->logo) {
             $item->setPicture();
             $id->set($item);
         }
-
+        */
         $pd = new \Modl\SubscriptionDAO;
         $subscription = $pd->get($server, $node);
 
         $view = $this->tpl();
 
-        $view->assign('item', $item);
+        $view->assign('info', $info);
         $view->assign('subscription', $subscription);
         $view->assign('node', $node);
         $view->assign('server', $server);

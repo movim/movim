@@ -280,11 +280,11 @@ class Bootstrap
         \Modl\Utils::loadModel('RosterLink');
         \Modl\Utils::loadModel('Cache');
         \Modl\Utils::loadModel('Postn');
+        \Modl\Utils::loadModel('Info');
         \Modl\Utils::loadModel('EncryptedPass');
         \Modl\Utils::loadModel('Subscription');
         \Modl\Utils::loadModel('SharedSubscription');
         \Modl\Utils::loadModel('Caps');
-        \Modl\Utils::loadModel('Item');
         \Modl\Utils::loadModel('Invite');
         \Modl\Utils::loadModel('Message');
         \Modl\Utils::loadModel('Sessionx');

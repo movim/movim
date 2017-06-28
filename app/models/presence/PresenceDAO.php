@@ -9,7 +9,7 @@ class PresenceDAO extends SQL
         parent::__construct();
     }
 
-    function set(Presence $presence)
+    function set($presence)
     {
         $id = sha1(
                 $presence->session.

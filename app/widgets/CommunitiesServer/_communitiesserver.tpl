@@ -33,7 +33,7 @@
         <li
             class="block
                 {if="$value->subscription == 'subscribed'"}action{/if}
-                {if="$value->sub > 0 || $value->num > 0"}condensed{/if}
+                {if="$value->occupants > 0 || $value->occupants > 0"}condensed{/if}
                 "
             onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
             title="{$value->server} - {$value->node}"
@@ -69,12 +69,12 @@
                 {if="$value->num > 0"}
                      {$c->__('communitydata.num', $value->num)}
                 {/if}
-                {if="$value->sub > 0 && $value->num > 0"}
+                {if="$value->occupants > 0 && $value->num > 0"}
                   -
                 {/if}
-                {if="$value->sub > 0"}
-                    <span title="{$c->__('communitydata.sub', $value->sub)}">
-                        {$value->sub} <i class="zmdi zmdi-accounts"></i>
+                {if="$value->occupants > 0"}
+                    <span title="{$c->__('communitydata.sub', $value->occupants)}">
+                        {$value->occupants} <i class="zmdi zmdi-accounts"></i>
                     </span>
                 {/if}
                 <span class="info">

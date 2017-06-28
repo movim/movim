@@ -4,45 +4,6 @@ namespace Modl;
 
 class PrivacyDAO extends SQL
 {
-    function set(Privacy $p)
-    {
-        $this->_sql = '
-            update privacy
-            set value = :value,
-                hash = :hash
-            where pkey = :pkey';
-
-        $this->prepare(
-            'Privacy',
-            [
-                'pkey'  => $p->pkey,
-                'value' => $p->value,
-                'hash'  => $p->hash
-            ]
-        );
-
-        $this->run('Privacy');
-
-        if(!$this->_effective)
-        {
-            $this->_sql = '
-                insert into privacy
-                (pkey, value, hash)
-                values (:pkey,:value,:hash)';
-
-            $this->prepare(
-                'Privacy',
-                [
-                    'pkey'  => $p->pkey,
-                    'value' => $p->value,
-                    'hash'  => $p->hash
-                ]
-            );
-
-            $this->run('Privacy');
-        }
-    }
-
     function get($key)
     {
         $this->_sql = '

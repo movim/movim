@@ -1,10 +1,10 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
 class MessageDAO extends SQL
 {
-    function set(Message $message)
+    function set($message)
     {
         if(empty($message->newid)) {
             $message->newid = $message->id;

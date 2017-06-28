@@ -1,9 +1,9 @@
 <section>
     <h3>{$c->__('communityheader.sure')}</h3>
-    {if="$item"}
+    {if="$info"}
         <br />
         <h4 class="gray">
-            {$c->__('communityheader.unsubscribe_text')} : {$item->name}
+            {$c->__('communityheader.unsubscribe_text')} : {$info->name}
         </h4>
     {/if}
 </section>

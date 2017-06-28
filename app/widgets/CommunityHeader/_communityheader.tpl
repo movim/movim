@@ -6,12 +6,12 @@
         {if="$c->supported('pubsub')"}
             {if="$subscription == null"}
                 <button class="button oppose green color" title="{$c->__('communityheader.subscribe')}"
-                onclick="CommunityHeader_ajaxAskSubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
+                onclick="CommunityHeader_ajaxAskSubscribe('{$server|echapJS}', '{$node|echapJS}')">
                     {$c->__('communityheader.subscribe')}
                 </button>
             {else}
                 <button class="button oppose flat" title="{$c->__('communityheader.unsubscribe')}"
-                onclick="CommunityHeader_ajaxAskUnsubscribe('{$item->server|echapJS}', '{$item->node|echapJS}')">
+                onclick="CommunityHeader_ajaxAskUnsubscribe('{$server|echapJS}', '{$node|echapJS}')">
                     {$c->__('communityheader.unsubscribe')}
                 </button>
             {/if}
@@ -20,19 +20,19 @@
             <i class="zmdi zmdi-arrow-back"></i>
         </span>
         <p class="line">
-            {if="$item != null"}
-                {if="$item->name"}
-                    {$item->name}
+            {if="$info != null"}
+                {if="$info->name"}
+                    {$info->name}
                 {else}
-                    {$item->node}
+                    {$info->node}
                 {/if}
             {else}
                 {$node}
             {/if}
         </p>
-        {if="$item != null && $item->description"}
-            <p class="line" title="{$item->description|strip_tags}">
-                {$item->description|strip_tags}
+        {if="$info != null && $info->description"}
+            <p class="line" title="{$info->description|strip_tags}">
+                {$info->description|strip_tags}
             </p>
         {else}
             <p class="line">{$server}</p>

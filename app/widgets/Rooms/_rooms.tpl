@@ -25,7 +25,7 @@
                     {$value->name|firstLetterCapitalize}
                 </span>
 
-                {$item = $value->getItem()}
+                {$info = $value->getItem()}
                 {if="$edit"}
                     <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
                         <i class="zmdi zmdi-delete"></i>
@@ -37,16 +37,16 @@
                 <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
                 <p>
                     {if="$value->connected"}
-                        <span title="{$c->__('communitydata.sub', $item->subscribers)}">
+                        <span title="{$c->__('communitydata.sub', $info->occupants)}">
                             {$value->countConnected()} <i class="zmdi zmdi-accounts"></i>  –
                         </span>
-                    {elseif="isset($item) && $item->subscribers > 0"}
-                        <span title="{$c->__('communitydata.sub', $item->subscribers)}">
-                            {$item->subscribers} <i class="zmdi zmdi-accounts"></i>  –
+                    {elseif="isset($info) && $info->occupants > 0"}
+                        <span title="{$c->__('communitydata.sub', $info->occupants)}">
+                            {$info->occupants} <i class="zmdi zmdi-accounts"></i>  –
                         </span>
                     {/if}
-                    {if="isset($item) && $item->description"}
-                        {$item->description}
+                    {if="isset($info) && $info->description"}
+                        {$info->description}
                     {else}
                         {$value->conference}
                     {/if}

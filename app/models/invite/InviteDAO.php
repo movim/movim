@@ -4,7 +4,7 @@ namespace Modl;
 
 class InviteDAO extends SQL
 {
-    function set(Invite $i)
+    function set($i)
     {
         $this->_sql = '
             insert into invite

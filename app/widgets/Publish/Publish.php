@@ -104,8 +104,8 @@ class Publish extends \Movim\Widget\Base
 
         $this->rpc('MovimTpl.fill', '#publish', $view->draw('_publish_create', true));
 
-        /*$pd = new \Modl\ItemDAO;
-        $item = $pd->getItem($server, $node);
+        /*$pd = new \Modl\InfoDAO;
+        $item = $pd->get($server, $node);
 
         $view = $this->tpl();
         $view->assign('server', $server);

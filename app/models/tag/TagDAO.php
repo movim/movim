@@ -1,10 +1,10 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
 class TagDAO extends SQL
 {
-    function set(Tag $t)
+    function set($t)
     {
         $this->_sql = '
             update tag

@@ -4,7 +4,7 @@ namespace Modl;
 
 class ConfigDAO extends SQL
 {
-    function set(Config $c)
+    function set($c)
     {
         $this->_sql = '
             update config

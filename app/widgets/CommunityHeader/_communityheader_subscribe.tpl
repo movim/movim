@@ -1,9 +1,9 @@
 <section>
     <form name="subscribe" onsubmit="return false;">
          <h3>{$c->__('communityheader.subscribe')}</h3>
-        {if="$item"}
+        {if="$info"}
             <h4 class="gray">
-                {$item->name}
+                {$info->name}
             </h4>
         {/if}
         <div>
@@ -12,8 +12,8 @@
                 type="text"
                 title="{$c->__('communityheader.label_label')}"
                 placeholder="{$c->__('communityheader.label_placeholder')}"
-                {if="$item"}
-                    value="{$item->name}"
+                {if="$info"}
+                    value="{$info->name}"
                 {/if}
             />
             <label for="label">{$c->__('communityheader.label_label')}</label>

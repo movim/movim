@@ -1,56 +1,9 @@
 <?php
 
-namespace modl;
+namespace Modl;
 
 class ConferenceDAO extends SQL
 {
-    function set(Conference $c)
-    {
-        $this->_sql = '
-            update conference
-            set name        = :name,
-                nick        = :nick,
-                autojoin    = :autojoin,
-                status      = :status
-            where jid       = :jid
-              and conference= :conference';
-
-        $this->prepare(
-            'Conference',
-            [
-                'jid'           => $c->jid,
-                'conference'    => $c->conference,
-                'name'          => $c->name,
-                'nick'          => $c->nick,
-                'autojoin'      => $c->autojoin,
-                'status'        => $c->status
-            ]
-        );
-
-        $this->run('Conference');
-
-        if(!$this->_effective) {
-            $this->_sql = '
-                insert into conference
-                (jid, conference, name, nick, autojoin, status)
-                values (:jid, :conference, :name, :nick, :autojoin, :status)';
-
-            $this->prepare(
-                'Conference',
-                [
-                    'jid'           => $c->jid,
-                    'conference'    => $c->conference,
-                    'name'          => $c->name,
-                    'nick'          => $c->nick,
-                    'autojoin'      => $c->autojoin,
-                    'status'        => $c->status
-                ]
-            );
-
-            $this->run('Conference');
-        }
-    }
-
     function get($conference)
     {
         $this->_sql = '

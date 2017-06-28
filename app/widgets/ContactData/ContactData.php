@@ -21,7 +21,7 @@ class ContactData extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $id = new \Modl\ItemDAO;
+        $id = new \Modl\InfoDAO;
         $cd = new \Modl\ContactDAO;
         $md = new \Modl\MessageDAO;
 

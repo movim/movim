@@ -4,201 +4,6 @@ namespace Modl;
 
 class PostnDAO extends SQL
 {
-    function set(Postn $post)
-    {
-        $this->_sql = '
-            update postn
-                set aname           = :aname,
-                    aid             = :aid,
-                    aemail          = :aemail,
-
-                    title           = :title,
-                    content         = :content,
-                    contentraw      = :contentraw,
-                    contentcleaned  = :contentcleaned,
-
-                    commentorigin   = :commentorigin,
-                    commentnodeid   = :commentnodeid,
-
-                    open            = :open,
-
-                    published       = :published,
-                    updated         = :updated,
-                    delay           = :delay,
-
-                    reply           = :reply,
-
-                    lat             = :lat,
-                    lon             = :lon,
-
-                    links           = :links,
-                    picture         = :picture,
-
-                    hash            = :hash,
-
-                    nsfw            = :nsfw
-
-                where origin = :origin
-                    and node = :node
-                    and nodeid = :nodeid';
-
-        $this->prepare(
-            'Postn',
-            [
-                'aname'             => $post->aname,
-                'aid'               => $post->aid,
-                'aemail'            => $post->aemail,
-
-                'title'             => $post->title,
-                'content'           => $post->content,
-                'contentraw'        => $post->contentraw,
-                'contentcleaned'    => $post->contentcleaned,
-
-                'commentorigin'     => $post->commentorigin,
-                'commentnodeid'     => $post->commentnodeid,
-
-                'open'              => $post->open,
-
-                'published'         => $post->published,
-                'updated'           => $post->updated,
-                'delay'             => $post->delay,
-
-                'reply'             => $post->reply,
-
-                'lat'               => $post->lat,
-                'lon'               => $post->lon,
-
-                'links'             => $post->links,
-                'picture'           => $post->picture,
-
-                'hash'              => $post->hash,
-
-                'nsfw'              => $post->nsfw,
-
-                'origin'            => $post->origin,
-                'node'              => $post->node,
-                'nodeid'            => $post->nodeid
-            ]
-        );
-
-        $this->run('Postn');
-
-        if(!$this->_effective) {
-            $this->_sql ='
-                insert into postn
-                (
-                origin,
-                node,
-                nodeid,
-
-                aname,
-                aid,
-                aemail,
-
-                title,
-                content,
-                contentraw,
-                contentcleaned,
-
-                commentorigin,
-                commentnodeid,
-
-                open,
-
-                published,
-                updated,
-                delay,
-
-                reply,
-
-                lat,
-                lon,
-
-                links,
-                picture,
-
-                hash,
-
-                nsfw)
-                values(
-                    :origin,
-                    :node,
-                    :nodeid,
-
-                    :aname,
-                    :aid,
-                    :aemail,
-
-                    :title,
-                    :content,
-                    :contentraw,
-                    :contentcleaned,
-
-                    :commentorigin,
-                    :commentnodeid,
-
-                    :open,
-
-                    :published,
-                    :updated,
-                    :delay,
-
-                    :reply,
-
-                    :lat,
-                    :lon,
-
-                    :links,
-                    :picture,
-
-                    :hash,
-
-                    :nsfw
-                )';
-
-            $this->prepare(
-                'Postn',
-                [
-                    'aname'             => $post->aname,
-                    'aid'               => $post->aid,
-                    'aemail'            => $post->aemail,
-
-                    'title'             => $post->title,
-                    'content'           => $post->content,
-                    'contentraw'        => $post->contentraw,
-                    'contentcleaned'    => $post->contentcleaned,
-
-                    'commentorigin'     => $post->commentorigin,
-                    'commentnodeid'     => $post->commentnodeid,
-
-                    'open'              => $post->open,
-
-                    'published'         => $post->published,
-                    'updated'           => $post->updated,
-                    'delay'             => $post->delay,
-
-                    'reply'             => $post->reply,
-
-                    'lat'               => $post->lat,
-                    'lon'               => $post->lon,
-
-                    'links'             => $post->links,
-                    'picture'           => $post->picture,
-
-                    'hash'              => $post->hash,
-
-                    'nsfw'              => $post->nsfw,
-
-                    'origin'            => $post->origin,
-                    'node'              => $post->node,
-                    'nodeid'            => $post->nodeid
-                ]
-            );
-
-            $this->run('Postn');
-        }
-    }
-
     function get($origin, $node, $nodeid, $public = false, $around = false)
     {
         $params = [
@@ -209,11 +14,11 @@ class PostnDAO extends SQL
             ];
 
         $this->_sql = '
-            select postn.*, contact.*, postn.aid, item.logo from postn
+            select postn.*, contact.*, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join item
-                on postn.origin = item.server
-                and postn.node = item.node
+            left outer join info
+                on postn.origin = info.server
+                and postn.node = info.node
             where postn.origin = :origin
                 and postn.node = :node';
 
@@ -304,9 +109,9 @@ class PostnDAO extends SQL
         $this->_sql = '
             select postn.*, contact.*, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join item
-                on postn.origin = item.server
-                and postn.node = item.node
+            left outer join info
+                on postn.origin = info.server
+                and postn.node = info.node
             where postn.origin = :origin
                 and postn.node = :node
                 and postn.nodeid in (\''.$ids.'\')
@@ -363,9 +168,9 @@ class PostnDAO extends SQL
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join item
-                on postn.origin = item.server
-                and postn.node = item.node
+            left outer join info
+                on postn.origin = info.server
+                and postn.node = info.node
             where ((postn.origin, node) in (select server, node from subscription where jid = :jid))
                 and postn.origin = :origin
                 and postn.node = :node
@@ -395,9 +200,9 @@ class PostnDAO extends SQL
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join item
-                on postn.origin = item.server
-                and postn.node = item.node
+            left outer join info
+                on postn.origin = info.server
+                and postn.node = info.node
             where postn.origin = :origin
                 and postn.node = :node
                 and (
@@ -504,9 +309,9 @@ class PostnDAO extends SQL
     {
         $this->_sql = '
             select *, postn.aid from postn
-            left outer join item
-                on postn.origin = item.server
-                and postn.node = item.node
+            left outer join info
+                on postn.origin = info.server
+                and postn.node = info.node
             left outer join contact on postn.aid = contact.jid
             where (
                 (postn.origin in (select jid from rosterlink where session = :origin and rostersubscription in (\'both\', \'to\')) and postn.node = \'urn:xmpp:microblog:0\')
@@ -564,9 +369,9 @@ class PostnDAO extends SQL
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
-            left outer join item
-                on postn.origin = item.server
-                and postn.node = item.node
+            left outer join info
+                on postn.origin = info.server
+                and postn.node = info.node
             where ((postn.origin, postn.node) in (select server, node from subscription where jid = :origin))
                 and (
                     postn.nsfw = (select nsfw from setting where session = :origin)
@@ -855,8 +660,8 @@ class PostnDAO extends SQL
                 $this->_sql = '
                     select * from (
                         select postn.* from postn
-                        left outer join item on postn.origin = item.server
-                            and postn.node = item.node
+                        left outer join info on postn.origin = info.server
+                            and postn.node = info.node
                         where
                             postn.node != \'urn:xmpp:microblog:0\'
                             and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
@@ -868,8 +673,8 @@ class PostnDAO extends SQL
                 $this->_sql = '
                     select * from (
                         select distinct on (origin, postn.node) * from postn
-                        left outer join item on postn.origin = item.server
-                            and postn.node = item.node
+                        left outer join info on postn.origin = info.server
+                            and postn.node = info.node
                         where
                             postn.node != \'urn:xmpp:microblog:0\'
                             and postn.node not like \'urn:xmpp:microblog:0:comments/%\'

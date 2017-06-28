@@ -27,8 +27,8 @@ class Blog extends \Movim\Widget\Base
 
             if(!$this->validateServerNode($this->_from, $this->_node)) return;
 
-            $pd = new \Modl\ItemDAO;
-            $this->_item = $pd->getItem($this->_from, $this->_node);
+            $pd = new \Modl\InfoDAO;
+            $this->_item = $pd->get($this->_from, $this->_node);
             $this->_mode = 'group';
 
             $this->url = $this->route('node', [$this->_from, $this->_node]);

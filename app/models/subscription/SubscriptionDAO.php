@@ -4,7 +4,7 @@ namespace Modl;
 
 class SubscriptionDAO extends SQL
 {
-    function set(Subscription $s)
+    function set($s)
     {
         $this->_sql = '
             update subscription
@@ -100,14 +100,13 @@ class SubscriptionDAO extends SQL
                 subscription.server,
                 subscription.node,
                 subscription,
-                item.name,
-                item.description,
-                item.logo,
+                info.name,
+                info.description,
                 caps.name as servicename
             from subscription
-            left outer join item
-                on item.server = subscription.server
-                and item.node = subscription.node
+            left outer join info
+                on info.server = subscription.server
+                and info.node = subscription.node
             left outer join caps
                 on caps.node = subscription.server
             where subscription.jid = :jid
@@ -118,9 +117,8 @@ class SubscriptionDAO extends SQL
                 subscription.jid,
                 subscription,
                 caps.name,
-                item.name,
-                item.description,
-                item.logo
+                info.name,
+                info.description
             order by
                 subscription.server';
 

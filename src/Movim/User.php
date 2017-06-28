@@ -150,8 +150,8 @@ class User
                     return in_array('http://jabber.org/protocol/pubsub#persistent-items', $this->caps);
                     break;
                 case 'upload':
-                    $id = new \Modl\ItemDAO;
-                    return ($id->getUpload($this->getServer()) != null);
+                    $cd = new \Modl\CapsDAO;
+                    return ($cd->getUpload($this->getServer()) != null);
                     break;
                 default:
                     return false;

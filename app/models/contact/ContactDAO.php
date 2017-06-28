@@ -38,7 +38,7 @@ class ContactDAO extends SQL
         return $contact;
     }
 
-    function set(Contact $contact)
+    function set($contact)
     {
         if(!isset($contact->created)) {
             $contact->created = date(SQL::SQL_DATE);

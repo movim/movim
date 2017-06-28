@@ -105,10 +105,10 @@ class Rooms extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $id = new \Modl\ItemDAO;
-        $item = $id->getConference($this->user->getServer());
+        $id = new \Modl\InfoDAO;
+        $info = $id->getConference($this->user->getServer());
 
-        if($item) {
+        if($info) {
             $view->assign('server', $item->jid);
         }
 

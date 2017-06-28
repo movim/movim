@@ -6,10 +6,10 @@ class CommunityData extends \Movim\Widget\Base
 {
     public function load()
     {
-        $this->registerEvent('pubsub_getmetadata_handle', 'onMetadata');
+        $this->registerEvent('disco_request_handle', 'onDiscoRequest');
     }
 
-    function onMetadata($packet)
+    function onDiscoRequest($packet)
     {
         list($server, $node) = $packet->content;
 
@@ -18,19 +18,19 @@ class CommunityData extends \Movim\Widget\Base
 
     public function prepareData($server, $node)
     {
-        $id = new \Modl\ItemDAO;
-        $item = $id->getItem($server, $node);
-
+        $id = new \Modl\InfoDAO;
+        $info = $id->get($server, $node);
+/*
         if($item && !$item->logo) {
             $item->setPicture();
             $id->set($item);
         }
-
+*/
         $pd = new \Modl\SubscriptionDAO;
         $subscription = $pd->get($server, $node);
 
         $view = $this->tpl();
-        $view->assign('item', $item);
+        $view->assign('info', $info);
         $view->assign('subscription', $subscription);
 
         return $view->draw('_communitydata', true);
