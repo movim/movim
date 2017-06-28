@@ -52,9 +52,14 @@ class Request extends Action
         $cd->set($c);
 
         // Info
-        $in = new \Modl\Info;
-        $in->set($stanza);
         $ind = new \Modl\InfoDAO;
+        $in = $ind->get($this->_to, $this->_node);
+
+        if(!$in) {
+            $in = new \Modl\Info;
+        }
+
+        $in->set($stanza);
         $ind->set($in);
 
         if($in->category == 'conference'

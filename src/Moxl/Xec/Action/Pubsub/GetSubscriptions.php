@@ -88,6 +88,9 @@ class GetSubscriptions extends Errors
             array_push($tab, $sub);
         }
 
+        $id = new \Modl\InfoDAO;
+        $id->setOccupantsCount($server, $node, count($tab));
+
         if(empty($tab)) {
             $sd = new \Modl\SubscriptionDAO;
             $sd->deleteNode($server, $node);
