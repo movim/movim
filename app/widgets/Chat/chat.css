@@ -82,7 +82,7 @@
 }
 
 #chat_widget li.room > p.message.code,
-#chat_widget li div.bubble > p.code {
+#chat_widget li div.bubble p.code {
     display: block;
     margin: 0;
     font-size: 1.6rem;
