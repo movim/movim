@@ -62,14 +62,6 @@ class Request extends Action
         $in->set($stanza);
         $ind->set($in);
 
-        if($in->category == 'conference'
-        && $in->type == 'text'
-        && strpos($this->_to, '@') === false) {
-            $c = new Items;
-            $c->setTo($this->_to)
-              ->request();
-        }
-
         $this->pack([$this->_to, $this->_node]);
         $this->deliver();
     }
