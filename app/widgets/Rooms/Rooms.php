@@ -5,6 +5,7 @@ use Moxl\Xec\Action\Bookmark\Get;
 use Moxl\Xec\Action\Bookmark\Set;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Message\Invite;
+use Moxl\Xec\Action\Disco\Request;
 
 use Ramsey\Uuid\Uuid;
 
@@ -217,6 +218,10 @@ class Rooms extends \Movim\Widget\Base
     function ajaxJoin($room, $nickname = false)
     {
         if(!$this->validateRoom($room)) return;
+
+        $r = new Request;
+        $r->setTo($room)
+          ->request();
 
         $p = new Muc;
         $p->setTo($room);
