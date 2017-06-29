@@ -57,7 +57,7 @@
         <li onclick="Rooms_ajaxAskInvite('{$room}');">
             <p class="normal">{$c->__('room.invite')}</p>
         </li>
-        <li onclick="Rooms_ajaxEdit('{$room}');">
+        <li onclick="Rooms_ajaxAdd('{$room}');">
             <p class="normal">{$c->__('chatroom.config')}</p>
         </li>
     </ul>

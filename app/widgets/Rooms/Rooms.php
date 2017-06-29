@@ -107,13 +107,11 @@ class Rooms extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $id = new \Modl\InfoDAO;
-        $info = $id->getConference($room);
+        $cd = new \Modl\ConferenceDAO;
 
-        if($info) {
-            $view->assign('info', $info);
-        }
-
+        $view->assign('info', $id->getConference($room));
         $view->assign('id', $room);
+        $view->assign('conference', $cd->get($room));
         $view->assign('username', $this->user->getUser());
 
         Dialog::fill($view->draw('_rooms_add', true));
@@ -154,20 +152,6 @@ class Rooms extends \Movim\Widget\Base
             Notification::append(null, $this->__('room.invited'));
             $this->rpc('Dialog_ajaxClear');
         }
-    }
-
-    /**
-     * @brief Edit a room configuration
-     */
-    function ajaxEdit($room)
-    {
-        $view = $this->tpl();
-        $cd = new \Modl\ConferenceDAO;
-
-        $view->assign('room', $cd->get($room));
-        $view->assign('username', $this->user->getUser());
-
-        Dialog::fill($view->draw('_rooms_add', true));
     }
 
     /**

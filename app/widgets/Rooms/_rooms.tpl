@@ -30,7 +30,7 @@
                     <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
                         <i class="zmdi zmdi-delete"></i>
                     </span>
-                    <span class="control icon active gray" onclick="Rooms_ajaxEdit('{$value->conference}');">
+                    <span class="control icon active gray" onclick="Rooms_ajaxAdd('{$value->conference}');">
                         <i class="zmdi zmdi-edit"></i>
                     </span>
                 {/if}

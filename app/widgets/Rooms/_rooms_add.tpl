@@ -1,6 +1,6 @@
 <section>
     <form name="bookmarkmucadd">
-        {if="isset($room)"}
+        {if="isset($conference)"}
             <h3>{$c->__('rooms.edit')}</h3>
         {else}
             <h3>{$c->__('rooms.add')}</h3>
@@ -8,8 +8,11 @@
 
         <div>
             <input
-                {if="isset($room)"}value="{$room->conference}" disabled{/if}
-                {if="isset($id)"}value="{$id}" disabled{/if}
+                {if="isset($conference)"}
+                    value="{$conference->conference}" disabled
+                {elseif="isset($id)"}
+                    value="{$id}" disabled
+                {/if}
                 name="jid"
                 {if="isset($info)"}
                     placeholder="chatroom@{$info->server}"
@@ -22,8 +25,8 @@
         </div>
         <div>
             <input
-                {if="isset($room)"}
-                    value="{$room->name}"
+                {if="isset($conference)"}
+                    value="{$conference->name}"
                 {elseif="isset($info)"}
                     value="{$info->name}"
                 {/if}
@@ -34,8 +37,8 @@
         </div>
         <div>
             <input
-                {if="isset($room) && $room->nick != ''"}
-                    value="{$room->nick}"
+                {if="isset($conference) && !empty($conference->nick)"}
+                    value="{$conference->nick}"
                 {else}
                     value="{$username}"
                 {/if}
@@ -49,7 +52,9 @@
                     <span class="primary">
                         <div class="checkbox">
                             <input
-                                {if="$room->autojoin"}checked{/if}
+                                {if="isset($conference) && $conference->autojoin"}
+                                    checked
+                                {/if}
                                 type="checkbox"
                                 id="autojoin"
                                 name="autojoin"/>
@@ -65,7 +70,7 @@
         <button class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.cancel')}
         </button>
-        {if="isset($room)"}
+        {if="isset($conference)"}
             <button
                 class="button flat"
                 onclick="Rooms_ajaxChatroomAdd(MovimUtils.parseForm('bookmarkmucadd'));">
