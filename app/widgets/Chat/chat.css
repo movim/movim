@@ -81,6 +81,14 @@
     width: auto;
 }
 
+#chat_widget li.room > p.message.code,
+#chat_widget li div.bubble > p.code {
+    display: block;
+    margin: 0;
+    font-size: 1.6rem;
+    margin-top: 0.75rem;
+    color: white;
+}
 
 #chat_widget li.room {
     padding: 0.25rem 0;

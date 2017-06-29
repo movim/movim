@@ -238,6 +238,11 @@ var Chat = {
             message.body = message.body.substr(4);
         }
 
+        if(message.body.match(/^\/code/)) {
+            p.classList.add('code');
+            message.body = message.body.substr(6).trim();
+        }
+
         if (message.quoted) {
             p.classList.add('quoted');
         }
@@ -324,6 +329,11 @@ var Chat = {
         if (data.body.match(/^\/me\s/)) {
             p.className = 'quote';
             data.body = data.body.substr(4);
+        }
+
+        if(data.body.match(/^\/code/)) {
+            p.classList.add('code');
+            data.body = data.body.substr(6).trim();
         }
 
         if (data.id != null) {
