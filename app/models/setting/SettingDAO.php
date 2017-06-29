@@ -4,7 +4,7 @@ namespace Modl;
 
 class SettingDAO extends SQL
 {
-    function set(Setting $s)
+    function set($s)
     {
         $this->_sql = '
             update setting

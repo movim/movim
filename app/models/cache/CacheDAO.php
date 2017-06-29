@@ -4,7 +4,7 @@ namespace Modl;
 
 class CacheDAO extends SQL
 {
-    function set(Cache $cache)
+    function set($cache)
     {
         $this->_sql = '
             update cache
