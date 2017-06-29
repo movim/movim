@@ -151,6 +151,7 @@ class InfoDAO extends SQL
             and server not in (
                 select conference
                 from conference where jid = :jid)
+            and server like \'%@%\'
             order by occupants desc';
 
         $this->_sql .= ' limit '.(int)$limit;
