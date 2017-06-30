@@ -100,8 +100,8 @@ class Syndication extends \Movim\Widget\Base
             $content->setAttribute('type', 'xhtml');
 
             $f = $dom->createDocumentFragment();
-            $f->appendXML(html_entity_decode($message->contentcleaned));
-            if($f->hasChildNodes()) {
+
+            if($f->appendXML($message->contentcleaned)) {
                 $div->appendChild($f);
             }
 
