@@ -25,12 +25,17 @@ class Items extends Action
     public function handle($stanza, $parent = false)
     {
         $id = new \Modl\InfoDAO;
-        $id->deleteItems($this->_to);
+        //$id->deleteItems($this->_to);
 
         $jid = null;
 
         foreach($stanza->query->item as $item) {
-            $i = new \Modl\Info;
+            $i = $id->get($this->_to, (string)$item->attributes()->node);
+
+            if(!isset($i)) {
+                $i = new \Modl\Info;
+            }
+
             $i->setItem($item);
 
             if(substr($i->node, 0, 29) != 'urn:xmpp:microblog:0:comments') {
