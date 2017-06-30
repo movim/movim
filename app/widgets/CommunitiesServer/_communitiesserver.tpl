@@ -33,7 +33,7 @@
         <li
             class="block
                 {if="$value->subscription == 'subscribed'"}action{/if}
-                {if="$value->occupants > 0 || $value->occupants > 0"}condensed{/if}
+                {if="$value->occupants > 0"}condensed{/if}
                 "
             onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
             title="{$value->server} - {$value->node}"

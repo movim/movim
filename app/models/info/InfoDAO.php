@@ -182,7 +182,7 @@ class InfoDAO extends SQL
             ]
         );
 
-        return $this->run('Item');
+        return $this->run('Info');
     }
 
     function getGroupServers()
