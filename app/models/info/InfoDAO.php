@@ -176,7 +176,7 @@ class InfoDAO extends SQL
             )';
 
         $this->prepare(
-            'Item',
+            'SharedSubscription',
             [
                 'jid' => $jid
             ]
