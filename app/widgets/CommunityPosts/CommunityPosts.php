@@ -119,7 +119,7 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function prepareEmpty()
     {
-        $id = new \Modl\InfoDAO();
+        $id = new \Modl\InfoDAO;
 
         $view = $this->tpl();
         $view->assign('servers', $id->getGroupServers());
