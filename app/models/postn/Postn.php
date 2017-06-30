@@ -311,8 +311,10 @@ class Postn extends Model
 
             if((string)$attachment->attributes()->title == 'comments') {
                 $substr = explode('?',substr((string)$attachment->attributes()->href, 5));
-                $this->commentorigin = reset($substr);
-                $this->commentnodeid = substr((string)$substr[1], 36);
+                if(count($substr) > 1) {
+                    $this->commentorigin = reset($substr);
+                    $this->commentnodeid = substr((string)$substr[1], 36);
+                }
             }
         }
 
