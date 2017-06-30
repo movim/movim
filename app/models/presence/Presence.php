@@ -119,8 +119,12 @@ class Presence extends Model
                         else
                             $this->mucjid = (string)$stanza->attributes()->from;
 
-                        $this->mucrole = (string)$c->item->attributes()->role;
-                        $this->mucaffiliation = (string)$c->item->attributes()->affiliation;
+                        if($c->item->attributes()->role) {
+                            $this->mucrole = (string)$c->item->attributes()->role;
+                        }
+                        if($c->item->attributes()->affiliation) {
+                            $this->mucaffiliation = (string)$c->item->attributes()->affiliation;
+                        }
                         break;
                     case 'vcard-temp:x:update' :
                         $this->photo = true;
