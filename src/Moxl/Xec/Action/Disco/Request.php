@@ -49,7 +49,9 @@ class Request extends Action
         }
 
         $cd = new \Modl\CapsDAO;
-        $cd->set($c);
+        if(!empty($c->features)) {
+            $cd->set($c);
+        }
 
         // Info
         $ind = new \Modl\InfoDAO;

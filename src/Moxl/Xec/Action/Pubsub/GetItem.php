@@ -108,6 +108,11 @@ class GetItem extends Errors
         }
     }
 
+    public function errorItemNotFound($stanza, $parent = false)
+    {
+        $this->errorServiceUnavailable($stanza, $parent);
+    }
+
     public function errorServiceUnavailable($stanza, $parent = false)
     {
         $pd = new PostDelete;
