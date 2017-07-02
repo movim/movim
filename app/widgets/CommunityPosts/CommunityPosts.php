@@ -27,10 +27,13 @@ class CommunityPosts extends \Movim\Widget\Base
     function onItem($packet)
     {
         list($server, $node, $id) = array_values($packet->content);
-        /*
-        $this->rpc('MovimTpl.fill', '#'.cleanupId($id), $this->preparePost($server, $node, $id));
-        $this->rpc('MovimUtils.enableVideos');*/
-        $this->displayItems($server, $node);
+
+        $pd = new \Modl\PostnDAO;
+        $p = $pd->get($server, $node, $id);
+
+        if($p) {
+            $this->rpc('MovimTpl.fill', '#'.cleanupId($id), $this->preparePost($p));
+        }
     }
 
     /*function onItems($packet)
@@ -128,10 +131,8 @@ class CommunityPosts extends \Movim\Widget\Base
         return $html;
     }
 
-    public function preparePost($p) {
-        /*$pd = new \Modl\PostnDAO;
-        $p = $pd->get($server, $node, $id);*/
-
+    public function preparePost($p)
+    {
         $pw = new \Post;
         return $pw->preparePost($p, true, false, true);
     }
@@ -161,7 +162,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('server', $server);
         $view->assign('node', $node);
         $view->assign('page', $page);
-        //$view->assign('ids', $ids);
+        $view->assign('ids', $ids);
         $view->assign('posts', $posts);
         $view->assign('info', $info);
         $view->assign('subscription', $subscription);

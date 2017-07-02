@@ -6,6 +6,13 @@
         </div>
     {/loop}
     </ul>
+{elseif="!empty($ids)"}
+    <ul class="list card shadow">
+    {loop="$ids"}
+        <div id="{$value|cleanupId}" class="block large">
+        </div>
+    {/loop}
+    </ul>
 {else}
     <div class="placeholder icon blog">
         <h4>{$c->__('post.empty')}</h4>
