@@ -16,7 +16,6 @@
             <p class="all">
                 <a href="http://edhelas.movim.eu/">Jaussoin Timothée aka edhelas</a><br/>
                 <a href="https://launchpad.net/~nodpounod">Ho Christine aka nodpounod</a><br/>
-                <a href="https://etenil.net/">Pasquet Guillaume aka Etenil</a>
             </p>
         </li>
         <li>
@@ -58,7 +57,6 @@
             <p>{$c->__('about.api')}</p>
             <p class="all">
                 OpenStreetMap - Nominatim <a href="http://nominatim.openstreetmap.org/">nominatim.openstreetmap.org</a><br/>
-                Last.fm API - <a href="http://www.last.fm/api">www.last.fm/api</a><br/>
             </p>
         </li>
     </ul>

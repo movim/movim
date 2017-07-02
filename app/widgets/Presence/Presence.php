@@ -178,6 +178,13 @@ class Presence extends \Movim\Widget\Base
 
     function display()
     {
+        $cd = new \Modl\ContactDAO;
+        $contact = $cd->get();
+        if($contact == null) {
+            $contact = new \Modl\Contact;
+        }
+
+        $this->view->assign('me', $contact);
     }
 }
 

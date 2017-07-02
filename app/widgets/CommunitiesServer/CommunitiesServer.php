@@ -70,7 +70,7 @@ class CommunitiesServer extends \Movim\Widget\Base
             return;
         }
 
-        $this->rpc('MovimTpl.fill', '#communities_server', '');
+        //$this->rpc('MovimTpl.fill', '#communities_server', '');
 
         $r = new Items;
         $r->setTo($server)->request();

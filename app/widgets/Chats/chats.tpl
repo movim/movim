@@ -16,9 +16,7 @@
 </header>
 
 <ul id="chats_widget_list" class="list middle active divided spaced">
-    <div id="spinner">
-        <img src="{$base_uri}/app/widgets/Roster/img/movim_cloud.svg"/>
-    </div>
+    {$c->prepareChats()}
 </ul>
 
 <div class="placeholder icon">

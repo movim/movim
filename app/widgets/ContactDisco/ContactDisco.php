@@ -4,10 +4,18 @@ class ContactDisco extends \Movim\Widget\Base
 {
     public function load()
     {
+        $this->addjs('contactdisco.js');
     }
 
-    public function display()
+    public function ajaxGet()
     {
+        $this->rpc('MovimTpl.fill', '#contactdisco', $this->prepareContacts());
+    }
+
+    public function prepareContacts()
+    {
+        $view = $this->tpl();
+
         $nd = new \Modl\PostnDAO;
 
         $blogs = $nd->getLastBlogPublic(0, 6);
@@ -16,8 +24,16 @@ class ContactDisco extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $users = $cd->getAllPublic(0, 16);
 
-        $this->view->assign('presencestxt', getPresencesTxt());
-        $this->view->assign('blogs', $blogs);
-        $this->view->assign('users', $users);
+
+
+        $view->assign('presencestxt', getPresencesTxt());
+        $view->assign('blogs', $blogs);
+        $view->assign('users', $users);
+
+        return $view->draw('_contactdisco', true);
+    }
+
+    public function display()
+    {
     }
 }
