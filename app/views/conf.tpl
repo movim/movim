@@ -14,8 +14,10 @@
             <header>
                 <ul class="list middle">
                     <li>
-                        <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()"><i class="zmdi zmdi-menu"></i></span>
-                        <span class="primary on_desktop icon gray"><i class="zmdi zmdi-settings"></i></span>
+                        <span id="menu" class="primary icon active gray" >
+                            <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
+                            <i class="zmdi zmdi-settings on_desktop"></i>
+                        </span>
                         <p class="center"><?php echo __('page.configuration'); ?></p>
                     </li>
                 </ul>

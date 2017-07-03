@@ -201,6 +201,20 @@ ul.list li > .top + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.c
     padding-left: 2rem;
 }
 
+/* If we have a second primary control */
+
+ul.list li > .primary + .primary {
+    left: 7rem;
+}
+
+ul.list li > .primary.bubble + .primary {
+    left: 7.5rem;
+}
+
+ul.list li > .primary + .primary ~ *:not(.primary):not(.counter):not(.bubble):not(.control):not(ul) {
+    padding-left: 14rem;
+}
+
 /* Place the other controls */
 
 ul.list li > .control {
@@ -218,15 +232,15 @@ ul.list li > .control ~ .control ~ .control {
 /* Limit the size of the main content */
 
 ul.list li > .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 6rem;
+    margin-right: 5rem;
 }
 
 ul.list li > .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 12rem;
+    margin-right: 11rem;
 }
 
 ul.list li > .control ~ .control ~ .control ~ *:not(.control):not(.bubble):not(.counter) {
-    margin-right: 18rem;
+    margin-right: 17rem;
 }
 
 /* Limit the size of the main content */
@@ -236,7 +250,7 @@ header > ul.list li .primary {
 }
 
 header > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 9rem;
+    padding-left: 8rem;
 }
 
 /* Tabs */

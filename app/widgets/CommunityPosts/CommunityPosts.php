@@ -47,7 +47,6 @@ class CommunityPosts extends \Movim\Widget\Base
         list($server, $node, $ids) = array_values($packet->content);
 
         $ids = array_slice($ids, 0, $this->_paging);
-
         $this->displayItems($server, $node, $ids);
     }
 

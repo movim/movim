@@ -459,6 +459,10 @@ hr:not(.clear) {
     display: inherit !important;
 }
 
+.on_mobile.zmdi {
+    display: inline !important;
+}
+
 .on_desktop {
     display: none !important;
 }

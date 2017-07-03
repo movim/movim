@@ -13,10 +13,10 @@
             <header>
                 <ul class="list middle">
                     <li>
-                        <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()">
-                            <i class="zmdi zmdi-menu"></i>
+                        <span id="menu" class="primary icon active gray">
+                            <i class="zmdi zmdi-help on_desktop"></i>
+                            <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
                         </span>
-                        <span class="primary on_desktop icon gray"><i class="zmdi zmdi-help"></i></span>
                         <p class="center"><?php echo __('page.help'); ?></p>
                     </li>
                 </ul>

@@ -1,12 +1,10 @@
 <header>
     <ul class="list">
         <li>
-            <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()">
-                <i class="zmdi zmdi-menu"></i>
-            </span>
             {if="count($contacts) > 5"}
-            <span class="primary on_desktop icon bubble gray">
-                <i class="zmdi zmdi-search"></i>
+            <span class="primary icon bubble gray active">
+                <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
+                <i class="zmdi zmdi-search on_desktop"></i>
             </span>
             <form onsubmit="return false;">
                 <div onclick="Roster.init();">
@@ -15,7 +13,8 @@
             </form>
             {else}
                 <span class="primary on_desktop icon gray bubble">
-                    <i class="zmdi zmdi-accounts"></i>
+                    <i class="zmdi zmdi-accounts on_desktop"></i>
+                    <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
                 </span>
                 <span class="control icon active gray on_mobile" onclick="MovimTpl.showPanel()">
                     <i class="zmdi zmdi-eye"></i>

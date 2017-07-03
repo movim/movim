@@ -35,7 +35,8 @@
                     </span>
                 {/if}
                 <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
-                <p>
+                <p class="line"
+                    {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
                     {if="$value->connected"}
                         <span title="{$c->__('communitydata.sub', $info->occupants)}">
                             {$value->countConnected()} <i class="zmdi zmdi-accounts"></i>  –
