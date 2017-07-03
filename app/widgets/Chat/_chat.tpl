@@ -17,6 +17,10 @@
                 {/if}
             </span>
 
+            <span class="primary icon bubble color {$conference->name|stringToColor}">
+                {$conference->name|firstLetterCapitalize}
+            </span>
+
             <span class="control icon show_context_menu active">
                 <i class="zmdi zmdi-more-vert"></i>
             </span>
