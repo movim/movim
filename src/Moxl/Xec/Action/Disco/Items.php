@@ -31,12 +31,18 @@ class Items extends Action
 
         foreach($stanza->query->item as $item) {
             $i = $id->get($this->_to, (string)$item->attributes()->node);
+            $parent = $id->get($this->_to, '');
 
             if(!isset($i)) {
                 $i = new \Modl\Info;
             }
 
             $i->setItem($item);
+
+            if($parent->category == 'pubsub'
+            && $parent->type == 'service') {
+                $i->category = 'pubsub';
+            }
 
             if(substr($i->node, 0, 29) != 'urn:xmpp:microblog:0:comments') {
                 $id->set($i);
