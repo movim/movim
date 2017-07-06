@@ -130,10 +130,12 @@ var MovimTpl = {
 
         document.body.addEventListener('touchstart', function(event) {
             startX = event.targetTouches[0].pageX;
+            startY = event.targetTouches[0].pageY;
 
             if(
             (
-                startX < 10 ||
+                (startX < 10 && startY > 56)
+                ||
                 (nav.classList.contains('active') && startX > document.body.clientWidth - 50)
             )
             && MovimTpl.dragged == false) {
