@@ -52,6 +52,11 @@ class Muc extends Action
         $this->deliver();
     }
 
+    public function errorRegistrationRequired($stanza, $parent = false)
+    {
+        $this->deliver();
+    }
+
     public function errorConflict($stanza, $message)
     {
         if(substr_count($this->_nickname, '_') > 5) {
