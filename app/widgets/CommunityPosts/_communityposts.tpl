@@ -1,11 +1,11 @@
 {if="$nsfwMessage"}
-    <ul class="list clear thick">
+    <ul class="list clear middle">
         <li>
             <span class="primary icon color bubble red">
                 18+
             </span>
-            <p>Adult content blocked</p>
-            <p>Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page.</p>
+            <p>{$c->__('communityposts.nsfw_title')}</p>
+            <p class="all">{$c->__('communityposts.nsfw_message')}</p>
         </li>
     </ul>
 {/if}
