@@ -276,6 +276,8 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
+        $this->rpc('Chat.sendedMessage');
+
         if($file != false) {
             $body = $file->uri;
         } else {

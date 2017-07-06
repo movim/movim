@@ -16,7 +16,6 @@ var Chat = {
     {
         var n = document.querySelector('#chat_textarea');
         var text = n.value;
-        n.value = "";
         n.focus();
         MovimUtils.textareaAutoheight(n);
 
@@ -28,6 +27,13 @@ var Chat = {
         } else {
             Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
         }
+    },
+
+    sendedMessage: function()
+    {
+        var n = document.querySelector('#chat_textarea');
+        n.value = "";
+        n.focus();
     },
 
     focus: function(jid)
