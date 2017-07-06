@@ -9,8 +9,7 @@ class PostnDAO extends SQL
         $params = [
                 'origin' => $origin,
                 'node' => $node,
-                'nodeid' => $nodeid,
-                'setting.session' => $this->_user
+                'nodeid' => $nodeid
             ];
 
         $this->_sql = '
@@ -205,9 +204,6 @@ class PostnDAO extends SQL
                 and postn.node = info.node
             where postn.origin = :origin
                 and postn.node = :node
-                and (
-                    postn.nsfw = (select nsfw from setting where session = :session)
-                    or postn.nsfw = false)
             order by postn.published desc';
 
         if($limitr !== false) {
@@ -217,7 +213,6 @@ class PostnDAO extends SQL
         $this->prepare(
             'Postn',
             [
-                'setting.session' => $this->_user,
                 'origin' => $from,
                 'node' => $node
             ]
@@ -260,28 +255,6 @@ class PostnDAO extends SQL
 
         return $this->run('ContactPostn');
     }
-
-    /*function getGallery($from, $limitf = false, $limitr = false)
-    {
-        $this->_sql = '
-            select *, postn.aid from postn
-            left outer join contact on postn.aid = contact.jid
-            where postn.aid = :aid
-                and postn.picture is not null
-            order by postn.published desc';
-
-        if($limitr !== false)
-            $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
-
-        $this->prepare(
-            'Postn',
-            [
-                'aid' => $from
-            ]
-        );
-
-        return $this->run('ContactPostn');
-    }*/
 
     function getGroupPicture($origin, $node)
     {

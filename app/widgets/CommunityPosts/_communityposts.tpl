@@ -1,10 +1,22 @@
+{if="$nsfwMessage"}
+    <ul class="list clear thick">
+        <li>
+            <span class="primary icon color bubble red">
+                18+
+            </span>
+            <p>Adult content blocked</p>
+            <p>Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page.</p>
+        </li>
+    </ul>
+{/if}
+
 {if="!empty($posts)"}
     <ul class="list card shadow">
-    {loop="$posts"}
-        <div id="{$value->nodeid|cleanupId}" class="block large">
-            {$c->preparePost($value)}
-        </div>
-    {/loop}
+        {loop="$posts"}
+            <div id="{$value->nodeid|cleanupId}" class="block large">
+                {$c->preparePost($value)}
+            </div>
+        {/loop}
     </ul>
 {elseif="!empty($ids)"}
     <ul class="list card shadow">

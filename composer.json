@@ -15,7 +15,7 @@
         "rain/raintpl": "dev-master",
         "michelf/php-markdown": "dev-lib",
 
-        "movim/modl": "dev-master#aa949c8106cea5a4ebba51a06f3b48cee85ff9e8",
+        "movim/modl": "dev-master#03c6f6e0c83b494ba33df318a724caf779cd37a8",
         "movim/sasl2": "dev-master",
         "movim/moxl": "dev-master#d680614f9c1b5a604b0ee48fb4f6100fc5ac08f3",
 

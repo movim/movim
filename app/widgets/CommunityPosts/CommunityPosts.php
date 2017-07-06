@@ -157,6 +157,17 @@ class CommunityPosts extends \Movim\Widget\Base
         $pd = new \Modl\SubscriptionDAO;
         $subscription = $pd->get($server, $node);
 
+        $nsfwMessage = false;
+
+        if($this->user->getConfig('nsfw') == false) {
+            foreach($posts as $key => $post) {
+                if($post->nsfw) {
+                    unset($posts[$key]);
+                    $nsfwMessage = true;
+                }
+            }
+        }
+
         $view = $this->tpl();
         $view->assign('server', $server);
         $view->assign('node', $node);
@@ -166,6 +177,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('info', $info);
         $view->assign('subscription', $subscription);
         $view->assign('paging', $this->_paging);
+        $view->assign('nsfwMessage', $nsfwMessage);
 
         $html = $view->draw('_communityposts', true);
 
