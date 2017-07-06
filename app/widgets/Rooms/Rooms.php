@@ -235,6 +235,11 @@ class Rooms extends \Movim\Widget\Base
     {
         if(!$this->validateRoom($room)) return;
 
+        // We reset the Chat view
+        $c = new Chat();
+        $c->ajaxGet();
+
+        // We properly exit
         $s = Session::start();
         $resource = $s->get('username');
 

@@ -24,7 +24,7 @@
 .drawer > section > table,
 .drawer > section > ul.flex {
     margin: 0 auto;
-    padding: 2rem 3rem;
+    padding: 2rem 1.5rem;
 }
 
 .drawer.empty {

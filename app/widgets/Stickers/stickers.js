@@ -9,8 +9,8 @@ var Stickers = {
         var zoomed = document.querySelectorAll('.zoomed');
 
         if(element.classList.contains('zoomed')) {
-            Stickers_ajaxSend(jid, pack, value);
             Drawer.clear();
+            Stickers_ajaxSend(jid, pack, value);
         }
 
         var i = 0;
