@@ -18,8 +18,6 @@ var Chat = {
         var text = n.value;
         n.focus();
 
-        localStorage.removeItem(n.dataset.jid + '_message');
-
         if(Chat.edit) {
             Chat.edit = false;
             Chat_ajaxCorrect(jid, encodeURIComponent(text));
@@ -34,6 +32,8 @@ var Chat = {
         n.value = "";
         n.focus();
         MovimUtils.textareaAutoheight(n);
+
+        localStorage.removeItem(n.dataset.jid + '_message');
     },
 
     focus: function(jid)
