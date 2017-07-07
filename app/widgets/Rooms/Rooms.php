@@ -26,6 +26,7 @@ class Rooms extends \Movim\Widget\Base
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected');
         $this->registerEvent('presence_muc_errorconflict', 'onConflict');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRegistrationRequired');
+        $this->registerEvent('presence_muc_errorremoteservernotfound', 'onRemoteServerNotFound');
     }
 
     function onMessage($packet)
@@ -45,9 +46,16 @@ class Rooms extends \Movim\Widget\Base
         }
     }
 
-    function onRegistrationRequired()
+    function onRegistrationRequired($packet)
     {
         Notification::append(null, $this->__('chatrooms.registrationrequired'));
+        $this->ajaxExit($packet->content);
+    }
+
+    function onRemoteServerNotFound($packet)
+    {
+        Notification::append(null, $this->__('chatrooms.remoteservernotfound'));
+        $this->ajaxExit($packet->content);
     }
 
     function onGetBookmark()
