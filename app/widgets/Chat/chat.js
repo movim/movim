@@ -17,7 +17,6 @@ var Chat = {
         var n = document.querySelector('#chat_textarea');
         var text = n.value;
         n.focus();
-        MovimUtils.textareaAutoheight(n);
 
         localStorage.removeItem(n.dataset.jid + '_message');
 
@@ -34,6 +33,7 @@ var Chat = {
         var n = document.querySelector('#chat_textarea');
         n.value = "";
         n.focus();
+        MovimUtils.textareaAutoheight(n);
     },
 
     focus: function(jid)
