@@ -22,7 +22,7 @@
 }
 
 #chat_widget .chat_box form {
-    margin-right: 6rem;
+    margin-right: 4.5rem;
 }
 
 #chat_widget .chat_box form > div {
@@ -76,9 +76,11 @@
 
 #chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr) {
     border-radius: 0.5rem;
-    max-height: 160px;
     margin-bottom: 0.5rem;
     width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 160px;
 }
 
 #chat_widget li.room > p.message.code,
