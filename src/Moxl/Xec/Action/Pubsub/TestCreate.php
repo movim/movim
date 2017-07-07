@@ -10,13 +10,13 @@ class TestCreate extends Errors
 {
     private $_to;
     private $_node = 'test_node';
-    
-    public function request() 
+
+    public function request()
     {
         $this->store();
-        Pubsub::create($this->_to, $this->_node);
+        Pubsub::create($this->_to, $this->_node, 'Test');
     }
-    
+
     public function setTo($to)
     {
         $this->_to = $to;
@@ -33,7 +33,7 @@ class TestCreate extends Errors
             $this->deliver();
         }
     }
-    
+
     public function error($error) {
         $this->pack($this->_to);
         $this->deliver();
