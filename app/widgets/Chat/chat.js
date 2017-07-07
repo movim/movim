@@ -11,6 +11,7 @@ var Chat = {
     // Chat state
     state: null,
     since: null,
+    sended: false,
 
     sendMessage: function(jid, muc)
     {
@@ -18,16 +19,22 @@ var Chat = {
         var text = n.value;
         n.focus();
 
-        if(Chat.edit) {
-            Chat.edit = false;
-            Chat_ajaxCorrect(jid, encodeURIComponent(text));
-        } else {
-            Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
+        if(!Chat.sended) {
+            Chat.sended = true;
+
+            if(Chat.edit) {
+                Chat.edit = false;
+                Chat_ajaxCorrect(jid, encodeURIComponent(text));
+            } else {
+                Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
+            }
         }
     },
 
     sendedMessage: function()
     {
+        Chat.sended = false;
+
         var n = document.querySelector('#chat_textarea');
         n.value = "";
         n.focus();
@@ -38,6 +45,8 @@ var Chat = {
 
     focus: function(jid)
     {
+        Chat.sended = false;
+
         if(jid) {
             document.querySelector('#chat_widget').dataset.jid = jid;
         } else {
