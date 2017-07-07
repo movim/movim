@@ -54,6 +54,13 @@ class Muc extends Action
 
     public function errorRegistrationRequired($stanza, $parent = false)
     {
+        $this->pack($this->_to);
+        $this->deliver();
+    }
+
+    public function errorRemoteServerNotFound($stanza, $parent = false)
+    {
+        $this->pack($this->_to);
         $this->deliver();
     }
 
