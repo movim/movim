@@ -204,7 +204,10 @@ var Chat = {
                         if(!Chat.currentDate) {
                             Chat.currentDate = page[date][speakertime].published;
                         }
-                        Chat.appendMessage(speakertime, page[date][speakertime], prepend);
+
+                        if(discussion.dataset.muc != 1) {
+                            Chat.appendMessage(speakertime, page[date][speakertime], prepend);
+                        }
                     }
                 }
 
