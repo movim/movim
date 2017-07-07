@@ -8,7 +8,7 @@ class ReceiptAck extends Payload
     public function handle($stanza, $parent = false)
     {
         $from = (string)$parent->attributes()->from;
-        $id = (string)$parent->attributes()->id;
+        $id = (string)$stanza->attributes()->id;
 
         $md = new \Modl\MessageDAO;
         $m = $md->getId($id);
