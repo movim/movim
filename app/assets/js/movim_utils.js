@@ -211,9 +211,17 @@ var MovimUtils = {
             MovimUtils.removeClass(list[i], myclass);
         }
     },
+    htmlEscape: function(string) {
+        return String(string)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+    },
     textareaAutoheight: function(textbox) {
         if(textbox != null) {
-            var val = textbox.value.replace(/\n/g, '<br>');
+            var val = MovimUtils.htmlEscape(textbox.value).replace(/\n/g, '<br>');
             var hidden = document.querySelector('#hiddendiv');
             hidden.innerHTML = val + '<br/>';
 
