@@ -64,6 +64,8 @@ var Chat = {
         }, 0); // Fix Me
 
         textarea.onkeydown = function(event) {
+            if(this.dataset.muc) return;
+
             if(event.keyCode == 38 && this.value == '') {
                 Chat_ajaxLast(this.dataset.jid);
             } else if(event.keyCode == 40
