@@ -21,6 +21,7 @@ class Presence extends \Movim\Widget\Base
     {
         $this->addcss('presence.css');
         $this->addjs('presence.js');
+        $this->registerEvent('avatar_get_handle', 'onMyPresence');
         $this->registerEvent('mypresence', 'onMyPresence');
         $this->registerEvent('session_up', 'onSessionUp');
         $this->registerEvent('session_down', 'onSessionDown');

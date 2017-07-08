@@ -95,7 +95,7 @@ class Avatar extends \Movim\Widget\Base
                 'getavatar',
                 $this->call('ajaxGetAvatar')
                 );
-            $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
+            $this->view->assign('form', $this->prepareForm(new \Modl\Contact));
         } else {
             $this->view->assign('getavatar', '');
         }
