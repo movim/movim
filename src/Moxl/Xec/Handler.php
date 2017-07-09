@@ -174,6 +174,7 @@ class Handler
             '9952d726429340d482ecac82c1496191' => 'BOB',
 
             '4c9681f0e9aca8a5b65f86b8b80d490f' => 'DiscoInfo',
+            '2bf34d156903518b18e58b4786c25d3b' => 'DiscoItems',
             //'482069658b024085fbc4e311fb771fa6' => 'DiscoInfo',//?
 
             '37ff18f136d5826c4426af5a23729e48' => 'Mood',
