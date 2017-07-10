@@ -159,7 +159,8 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $nsfwMessage = false;
 
-        if($this->user->getConfig('nsfw') == false) {
+        if($this->user->getConfig('nsfw') == false
+        && is_array($posts)) {
             foreach($posts as $key => $post) {
                 if($post->nsfw) {
                     unset($posts[$key]);
