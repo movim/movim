@@ -20,6 +20,8 @@ var Rooms = {
 
             i++;
         }
+
+        Notification_ajaxGet();
     },
 
     /**
@@ -52,7 +54,6 @@ var Rooms = {
 }
 
 MovimWebsocket.attach(function() {
-    Rooms.refresh();
     Rooms.anonymousInit();
     Rooms_ajaxDisplay();
 });
