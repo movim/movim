@@ -2,6 +2,7 @@
 
 use HeyUpdate\Emoji\Emoji;
 use HeyUpdate\Emoji\Index\CompiledIndex;
+use Movim\Route;
 
 /**
  * @desc A singleton wrapper for the Emoji library
@@ -44,12 +45,12 @@ class MovimEmoji
     }
 }
 
-function addUrls($string, $preview = false) {
+function addUrls($string, $preview = false)
+{
     // Add missing links
-    return preg_replace_callback(
-        "/([\w\"'>]+\:\/\/[\w-\*?'&;!#+,%:~=\.\/\@]+)/u", function ($match) use($preview) {
-            if(!in_array(substr($match[0], 0, 1), ['>', '"', '\''])) {
-                $content = $match[0];
+    return preg_replace_callback("/<a[^>]*>[^<]*<\/a|\".*?\"|((?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’])))/", function ($match) use ($preview) {
+            if(isset($match[1])) {
+                $content = $match[1];
 
                 if($preview) {
                     try {
@@ -66,13 +67,38 @@ function addUrls($string, $preview = false) {
                     }
                 }
 
-                return stripslashes('<a href=\"'.$match[0].'\" target=\"_blank\">'.$content.'</a>');
+                if(substr($content, 0, 5) == 'xmpp:') {
+                    $link = str_replace(['xmpp://', 'xmpp:'], '', $content);
+
+                    if(substr($link, -5, 5) == '?join') {
+                        return stripslashes(
+                            '<a href=\"'.
+                            Route::urlize('chat', [str_replace('?join', '', $link), 'room']).
+                            '\">'.
+                            $content.
+                            '</a>'
+                        );
+                    } else {
+                        return stripslashes(
+                            '<a href=\"'.
+                            Route::urlize('contact', $link).
+                            '\">'.
+                            $content.
+                            '</a>'
+                        );
+                    }
+                } elseif(filter_var($content, FILTER_VALIDATE_URL)) {
+                    return stripslashes('<a href=\"'.$content.'\" target=\"_blank\">'.$content.'</a>');
+                } else {
+                    return $content;
+                }
             } else {
                 return $match[0];
             }
 
         }, $string
     );
+
 }
 
 function addHashtagsLinks($string)
