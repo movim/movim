@@ -250,7 +250,7 @@ header > ul.list li .primary {
 }
 
 header > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 8rem;
+    padding-left: 9rem;
 }
 
 /* Tabs */

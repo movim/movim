@@ -1,24 +1,17 @@
 <header>
     <ul class="list">
         <li>
-            {if="count($contacts) > 5"}
             <span class="primary icon bubble gray active">
                 <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
                 <i class="zmdi zmdi-search on_desktop"></i>
             </span>
+            {if="count($contacts) > 5"}
             <form onsubmit="return false;">
                 <div onclick="Roster.init();">
                     <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
                 </div>
             </form>
             {else}
-                <span class="primary on_desktop icon gray bubble">
-                    <i class="zmdi zmdi-accounts on_desktop"></i>
-                    <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
-                </span>
-                <span class="control icon active gray on_mobile" onclick="MovimTpl.showPanel()">
-                    <i class="zmdi zmdi-eye"></i>
-                </span>
                 <p class="line">{$c->__('page.contacts')}</p>
             {/if}
         </li>
