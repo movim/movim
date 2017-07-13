@@ -367,7 +367,6 @@ ul li div.bubble p {
     max-width: 100%;
     font-size: 1.75rem;
     word-wrap: break-word;
-    white-space: pre-wrap;
 }
 
 ul li.oppose div.bubble {

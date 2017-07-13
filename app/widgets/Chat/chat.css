@@ -83,6 +83,11 @@
     max-height: 160px;
 }
 
+#chat_widget li.room > p.message,
+#chat_widget li div.bubble p {
+    white-space: pre-wrap;
+}
+
 #chat_widget li.room > p.message.code,
 #chat_widget li div.bubble p.code {
     display: block;
