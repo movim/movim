@@ -290,6 +290,8 @@ var Chat = {
         }
     },
     appendMessage : function(idjidtime, data, prepend) {
+        if(data.body == null) return;
+
         var bubble = null,
             mergeMsg = false,
             msgStack,
@@ -351,7 +353,7 @@ var Chat = {
             data.body = data.body.substr(4);
         }
 
-        if(data.body.match(/^\/code/)) {
+        if (data.body.match(/^\/code/)) {
             p.classList.add('code');
             data.body = data.body.substr(6).trim();
         }
