@@ -6,6 +6,7 @@ class Picture
 {
     private $_path = CACHE_PATH;
     private $_uri  = CACHE_URI;
+    private $_folder = 'cache/';
     private $_key;
     private $_bin  = false;
     private $_formats = ['jpeg' => '.jpg', 'png' => '.png'];
@@ -71,7 +72,7 @@ class Picture
         if($width == false) {
             if(file_exists($original)) {
                 $this->fromPath($original);
-                return $this->_uri.md5($this->_key).$this->_formats[$format];
+                return urilize($this->_folder.md5($this->_key).$this->_formats[$format]);
             } else {
                 return false;
             }
@@ -79,13 +80,13 @@ class Picture
         } else {
             if(file_exists($this->_path.md5($this->_key).'_'.$width.$this->_formats[$format])) {
                 $this->fromPath($this->_path.md5($this->_key).'_'.$width.$this->_formats[$format]);
-                return $this->_uri.md5($this->_key).'_'.$width.$this->_formats[$format];
+                return urilize($this->_folder.md5($this->_key).'_'.$width.$this->_formats[$format]);
             } else {
                 if(file_exists($original)) {
                     $this->fromPath($original);
                     $this->createThumbnail($width, $height);
 
-                    return $this->_uri.md5($this->_key).'_'.$width.$this->_formats[$format];
+                    return urilize($this->_folder.md5($this->_key).'_'.$width.$this->_formats[$format]);
                 } else {
                     return false;
                 }
