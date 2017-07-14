@@ -78,7 +78,7 @@
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
     width: auto;
-    max-height: 160px;
+    max-height: 170px;
 }
 
 #chat_widget li.room > p.message,

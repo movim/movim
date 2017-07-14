@@ -453,7 +453,7 @@ var Chat = {
             if(sticker.height)
                 img.setAttribute("height", sticker.height);
             else {
-                img.setAttribute("height", "150");
+                img.setAttribute("height", "170");
             }
         }
 
