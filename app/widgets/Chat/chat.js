@@ -24,9 +24,9 @@ var Chat = {
 
             if(Chat.edit) {
                 Chat.edit = false;
-                Chat_ajaxCorrect(jid, encodeURIComponent(text));
+                Chat_ajaxCorrect(jid, text);
             } else {
-                Chat_ajaxSendMessage(jid, encodeURIComponent(text), muc);
+                Chat_ajaxSendMessage(jid, text, muc);
             }
         }
     },

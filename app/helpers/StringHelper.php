@@ -52,6 +52,12 @@ function addUrls($string, $preview = false)
             if(isset($match[1])) {
                 $content = $match[1];
 
+                $lastTag = false;
+                if(in_array(substr($content, -3, 3), ['&lt', '&gt'])) {
+                    $lastTag = substr($content, -3, 3);
+                    $content = substr($content, 0, -3);
+                }
+
                 if($preview) {
                     try {
                         $embed = Embed\Embed::create($match[0]);
@@ -88,7 +94,8 @@ function addUrls($string, $preview = false)
                         );
                     }
                 } elseif(filter_var($content, FILTER_VALIDATE_URL)) {
-                    return stripslashes('<a href=\"'.$content.'\" target=\"_blank\">'.$content.'</a>');
+                    return stripslashes('<a href=\"'.$content.'\" target=\"_blank\">'.$content.'</a>').
+                            ($lastTag !== false ? $lastTag : '');
                 } else {
                     return $content;
                 }

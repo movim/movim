@@ -281,7 +281,7 @@ class Chat extends \Movim\Widget\Base
         if($file != false) {
             $body = $file->uri;
         } else {
-            $body = (string)htmlentities(trim(rawurldecode($message)), ENT_XML1, 'UTF-8', false);
+            $body = (string)htmlentities(trim($message), ENT_XML1, 'UTF-8', false);
         }
 
         if($body == '' || $body == '/me')
