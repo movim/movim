@@ -30,20 +30,19 @@ var Chat = {
             }
         }
     },
-
     sendedMessage: function()
     {
         Chat.sended = false;
-        Chat.edit = false;
-
-        var n = document.querySelector('#chat_textarea');
-        n.value = "";
-        n.focus();
-        MovimUtils.textareaAutoheight(n);
-
+        Chat.clearReplace();
         localStorage.removeItem(n.dataset.jid + '_message');
     },
-
+    clearReplace: function()
+    {
+        Chat.edit = false;
+        var textarea = document.querySelector('#chat_textarea');
+        textarea.value = '';
+        MovimUtils.textareaAutoheight(textarea);
+    },
     focus: function(jid)
     {
         Chat.sended = false;
@@ -137,13 +136,6 @@ var Chat = {
         MovimUtils.textareaAutoheight(textarea);
 
     },
-    clearReplace: function()
-    {
-        Chat.edit = false;
-        var textarea = document.querySelector('#chat_textarea');
-        textarea.value = '';
-        MovimUtils.textareaAutoheight(textarea);
-    },
     notify : function(title, body, image)
     {
         if(document_focus == false) {
@@ -183,8 +175,24 @@ var Chat = {
             Chat.lastHeight = this.clientHeight;
         };
     },
+    checkDiscussion : function(page) {
+        var firstDate = Object.values(page)[0];
+        if(firstDate == null) return false;
+
+        var firstMessage = Object.values(firstDate)[0];
+        if(firstMessage == null) return false;
+
+        var contactJid = firstMessage.session == firstMessage.jidfrom
+            ? firstMessage.jidto
+            : firstMessage.jidfrom;
+
+        if(document.getElementById(MovimUtils.cleanupId(contactJid + '-discussion'))
+        == null) return false;
+
+        return true;
+    },
     appendMessagesWrapper : function(page, prepend) {
-        if(page) {
+        if(page && Chat.checkDiscussion(page)) {
             var scrolled = MovimTpl.isPanelScrolled();
 
             var discussion = document.querySelector('#chat_widget div.contained');
@@ -272,8 +280,8 @@ var Chat = {
             MovimUtils.addClass(bubble.querySelector('p.message'), 'sticker');
             bubble.querySelector('p.message').appendChild(Chat.getStickerHtml(message.sticker));
         } else {*/
-        p.innerHTML = message.body.replace(/\r\n?|\n/g, '<br />');
         //}
+        p.innerHTML = message.body;
 
         bubble.querySelector('span.info').innerHTML = message.publishedPrepared;
 
@@ -291,8 +299,6 @@ var Chat = {
         }
     },
     appendMessage : function(idjidtime, data, prepend) {
-        if(data.body == null) return;
-
         var bubble = null,
             mergeMsg = false,
             msgStack,
@@ -350,7 +356,7 @@ var Chat = {
         }
 
         if (data.body.match(/^\/me\s/)) {
-            p.className = 'quote';
+            p.classList.add('quote');
             data.body = data.body.substr(4);
         }
 
@@ -370,7 +376,7 @@ var Chat = {
             MovimUtils.addClass(bubble.querySelector('div.bubble'), 'sticker');
             p.appendChild(Chat.getStickerHtml(data.sticker));
         } else {
-            p.innerHTML = data.body.replace(/\r\n?|\n/g, '<br />');
+            p.innerHTML = data.body;
         }
 
         if (data.audio != null) {
@@ -402,7 +408,7 @@ var Chat = {
             mergeMsg = true;
         } else {
             if(prepend) {
-                bubble.querySelector('div.bubble').insertBefore( msg, bubble.querySelector('div.bubble').firstChild );
+                bubble.querySelector('div.bubble').insertBefore(msg, bubble.querySelector('div.bubble').firstChild);
             } else {
                 bubble.querySelector('div.bubble').appendChild(msg);
             }
