@@ -34,6 +34,7 @@ var Chat = {
     sendedMessage: function()
     {
         Chat.sended = false;
+        Chat.edit = false;
 
         var n = document.querySelector('#chat_textarea');
         n.value = "";
