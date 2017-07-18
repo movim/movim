@@ -15,9 +15,9 @@ var Chat = {
 
     sendMessage: function(jid, muc)
     {
-        var n = document.querySelector('#chat_textarea');
-        var text = n.value;
-        n.focus();
+        var textarea = document.querySelector('#chat_textarea');
+        var text = textarea.value;
+        textarea.focus();
 
         if(!Chat.sended) {
             Chat.sended = true;
@@ -34,7 +34,8 @@ var Chat = {
     {
         Chat.sended = false;
         Chat.clearReplace();
-        localStorage.removeItem(n.dataset.jid + '_message');
+        var textarea = document.querySelector('#chat_textarea');
+        localStorage.removeItem(textarea.dataset.jid + '_message');
     },
     clearReplace: function()
     {
