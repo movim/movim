@@ -177,10 +177,11 @@ var Chat = {
         };
     },
     checkDiscussion : function(page) {
-        var firstDate = Object.values(page)[0];
-        if(firstDate == null) return false;
+        for (var firstKey in page) break;
+        if(page[firstKey] == null) return false;
 
-        var firstMessage = Object.values(firstDate)[0];
+        for (var firstMessageKey in page[firstKey]) break;
+        var firstMessage = page[firstKey][firstMessageKey];
         if(firstMessage == null) return false;
 
         var contactJid = firstMessage.session == firstMessage.jidfrom
