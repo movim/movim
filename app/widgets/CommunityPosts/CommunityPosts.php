@@ -91,7 +91,6 @@ class CommunityPosts extends \Movim\Widget\Base
     function ajaxGetItems($server, $node)
     {
         if(!$this->validateServerNode($server, $node)) return;
-        $slugify = new Slugify;
 
         // https://github.com/maranda/metronome/issues/236
         /*if($node == 'urn:xmpp:microblog:0') {

@@ -5,7 +5,8 @@ use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
 use GuzzleHttp\Client;
 
-class Utils {
+class Utils
+{
     public static function log($message, $priority = '')
     {
         if(LOG_LEVEL != null && LOG_LEVEL > 0) {

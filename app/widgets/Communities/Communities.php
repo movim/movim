@@ -35,7 +35,6 @@ class Communities extends \Movim\Widget\Base
     function prepareCommunities()
     {
         $id = new \Modl\InfoDAO;
-        $pd = new \Modl\PostnDAO;
 
         $view = $this->tpl();
 

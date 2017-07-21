@@ -165,32 +165,21 @@ class Contact extends Model
         }
     }
 
-    public function isPhoto($jid = false, $x = false, $y = false)
-    {
-        if(!$jid) return false;
-
-        $p = new Picture;
-        $url = $p->get($jid, $sizes[$size][0], $sizes[$size][1]);
-        if($url) return $url;
-
-        return false;
-    }
-
-    public function getPhoto($size = 'l', $jid = false)
+    public function getPhoto($size = 'l')
     {
         if($size == 'email') {
             return BASE_URI.'cache/'.strtolower($this->jid).'_email.png';
         } else {
-            $sizes = array(
-                'wall'  => array(1920, 1080),
-                'xxl'   => array(1280, 300),
-                'xl'    => array(512 , false),
-                'l'     => array(210 , false),
-                'm'     => array(120 , false),
-                's'     => array(50  , false),
-                'xs'    => array(28  , false),
-                'xxs'   => array(24  , false)
-            );
+            $sizes = [
+                'wall'  => [1920, 1080],
+                'xxl'   => [1280, 300],
+                'xl'    => [512 , false],
+                'l'     => [210 , false],
+                'm'     => [120 , false],
+                's'     => [50  , false],
+                'xs'    => [28  , false],
+                'xxs'   => [24  , false]
+            ];
 
 
             $p = new Picture;

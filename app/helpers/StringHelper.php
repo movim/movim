@@ -140,7 +140,7 @@ function addHFR($string)
  * @param check the links and convert them to pictures (heavy)
  * @return string
  */
-function prepareString($string, $large = false, $preview = false)
+function prepareString($string, $preview = false)
 {
     $string = addUrls($string, $preview);
 

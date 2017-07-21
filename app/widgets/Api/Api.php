@@ -38,8 +38,6 @@ class Api extends \Movim\Widget\Base
 
     function ajaxRegister()
     {
-        $cd = new \Modl\ConfigDAO;
-
         $json = requestURL(
             MOVIM_API.'pods/register',
             3,

@@ -104,8 +104,6 @@ class PublishBrief extends \Movim\Widget\Base
 
         try {
             $embed = Embed\Embed::create($url);
-            $html = $this->prepareEmbed($embed);
-
             $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
         } catch(Exception $e) {
             error_log($e->getMessage());

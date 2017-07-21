@@ -28,7 +28,7 @@ function getPrettyOffset($offset)
     $offset_prefix = $offset < 0 ? '-' : '+';
     $offset_formatted = gmdate('H:i', abs($offset));
 
-    return "UTC${offset_prefix}${offset_formatted}";
+    return 'UTC'.$offset_prefix.$offset_formatted;
 }
 
 /*
