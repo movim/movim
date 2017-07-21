@@ -99,8 +99,6 @@
 
     <div class="clear padded"></div>
 
-    <h3 class="block large">{$c->__('position.position_title')}</h3>
-
     <div class="block">
         <input type="text" type="locality" name ="locality" class="content" value="{$me->adrlocality}" placeholder="{$c->__('position.locality')}">
         <label for="url">{$c->__('position.locality')}</label>
@@ -144,7 +142,7 @@
             onclick="
                 {$submit}
                 MovimUtils.buttonSave('#vcard4validate');
-                this.value = '{$c->__('Submitting')}';
+                this.value = '{$c->__('button.submitting')}';
                 this.className='button oppose inactive';"
             class="button color oppose"
             type="button"

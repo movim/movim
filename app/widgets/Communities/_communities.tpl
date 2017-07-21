@@ -14,25 +14,6 @@
         </li>
     </ul>
 </header>
-<!--
-<ul class="list card thick">
-    <li></li>
-    <li class="block">
-        <span class="primary icon gray">
-            <i class="zmdi zmdi-help"></i>
-        </span>
-        <p class="all">
-            {$c->__('group.help_info1')}
-        </p>
-        <p>
-            {$c->___('group.help_info2', '<i class="zmdi zmdi-bookmark"></i>', '<i class="zmdi zmdi-plus"></i> ')}<br />
-            {$c->___('group.help_info3', '<i class="zmdi zmdi-edit"></i>')}<br />
-        </p>
-        <p>
-            {$c->___('group.help_info4', '<a href="'.$c->route('news').'"><i class="zmdi zmdi-receipt"></i> ','</a>')}
-        </p>
-    </li>
-</ul>-->
 
 <ul class="list flex middle active">
     {loop="$communities"}
