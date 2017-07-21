@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 10:21+0200\n"
+"POT-Creation-Date: 2017-07-21 18:03+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Fahmi Barnes <itsfahmiegerton@live.co.uk>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
@@ -629,14 +629,6 @@ msgstr "Pesan anda disini..."
 msgid "Smileys"
 msgstr "Smileys"
 
-#: [chat]empty_title [button]chat
-msgid "Chat"
-msgstr "Obrolan"
-
-#: [chat]empty_text
-msgid "Discuss with your contacts"
-msgstr "Diskusi dengan kontak anda"
-
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Kontak yang sering dihubungi"
@@ -715,6 +707,10 @@ msgstr "Mengobrol dengan sebuah kontak"
 #: [chats]more
 msgid "Load more contacts"
 msgstr "Muat kontak lainnya"
+
+#: [button]chat
+msgid "Chat"
+msgstr "Obrolan"
 
 #: [button]new
 msgid "New conversation"
@@ -869,6 +865,15 @@ msgstr "Anda yakin ?"
 #: [communityposts]empty
 msgid "This community seems empty"
 msgstr "Komunitas ini nampaknya kosong"
+
+#: [communityposts]nsfw_title
+#, fuzzy
+msgid "Adult content blocked"
+msgstr "puas"
+
+#: [communityposts]nsfw_message
+msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
+msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
 msgid "My Subscriptions"
@@ -1303,7 +1308,8 @@ msgid "No account yet ?"
 msgstr "Belum ada akun ?"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from theses servers"
+#, fuzzy
+msgid "You can login with accounts from these servers"
 msgstr "Anda dapat masuk dengan akun dari server ini"
 
 #: [form]connected
@@ -1313,6 +1319,10 @@ msgstr "Terhubung"
 #: [form]population
 msgid "Population"
 msgstr "Populasi"
+
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1458,6 +1468,11 @@ msgstr "Hapus post ini"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Anda akan menghapus post ini, mohon konfirmasi aksi anda"
+
+#: [post]delete_comment
+#, fuzzy
+msgid "Are you sure that you want to delete this comment?"
+msgstr "Apakah anda yakin akan menghapus ini?"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1658,6 +1673,10 @@ msgstr ""
 msgid "Join this chatroom on connect"
 msgstr ""
 
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr ""
@@ -1691,6 +1710,11 @@ msgstr "Mengobrol dengan sebuah kontak"
 #, fuzzy
 msgid "Invitation sent"
 msgstr "Undangan Tertunda"
+
+#: [room]invite_code
+#, fuzzy
+msgid "Send this link to your contacts"
+msgstr "Diskusi dengan kontak anda"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1934,6 +1958,10 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
+msgstr ""
+
+#: [global]or
+msgid "Or"
 msgstr ""
 
 #: [page]communities
@@ -2432,9 +2460,10 @@ msgstr "gembira"
 msgid "flirtatious"
 msgstr "genit"
 
-#: [mood]frustated
-msgid "frustated"
-msgstr ""
+#: [mood]frustrated
+#, fuzzy
+msgid "frustrated"
+msgstr "bingung"
 
 #: [mood]grateful
 msgid "grateful"

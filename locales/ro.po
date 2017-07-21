@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 10:21+0200\n"
+"POT-Creation-Date: 2017-07-21 18:03+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Marvin42 Marvin <h2g2.marvin.42@gmail.com>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
@@ -627,14 +627,6 @@ msgstr "Mesajul dumneavoastră aici..."
 msgid "Smileys"
 msgstr ""
 
-#: [chat]empty_title [button]chat
-msgid "Chat"
-msgstr "Chat"
-
-#: [chat]empty_text
-msgid "Discuss with your contacts"
-msgstr ""
-
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Contacte frecvente"
@@ -712,6 +704,10 @@ msgstr ""
 #: [chats]more
 msgid "Load more contacts"
 msgstr "Încărcați mai multe contacte"
+
+#: [button]chat
+msgid "Chat"
+msgstr "Chat"
 
 #: [button]new
 msgid "New conversation"
@@ -866,6 +862,14 @@ msgstr "Sunteți sigur(ă)?"
 #: [communityposts]empty
 msgid "This community seems empty"
 msgstr "Această comunitate pare goală"
+
+#: [communityposts]nsfw_title
+msgid "Adult content blocked"
+msgstr ""
+
+#: [communityposts]nsfw_message
+msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
+msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
 msgid "My Subscriptions"
@@ -1300,8 +1304,9 @@ msgid "No account yet ?"
 msgstr ""
 
 #: [form]whitelist_info
-msgid "You can login with accounts from theses servers"
-msgstr ""
+#, fuzzy
+msgid "You can login with accounts from these servers"
+msgstr "Nu puteți crea un nou Grup pe acest server"
 
 #: [form]connected
 msgid "Connected"
@@ -1309,6 +1314,10 @@ msgstr ""
 
 #: [form]population
 msgid "Population"
+msgstr ""
+
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
 msgstr ""
 
 #: [login_anonymous]bad_username
@@ -1455,6 +1464,11 @@ msgstr ""
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr ""
+
+#: [post]delete_comment
+#, fuzzy
+msgid "Are you sure that you want to delete this comment?"
+msgstr "Ești sigur că vrei să-l ștergi?"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1653,6 +1667,10 @@ msgstr "Nume utilizator deja folosit"
 msgid "Join this chatroom on connect"
 msgstr ""
 
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr ""
@@ -1685,6 +1703,11 @@ msgstr "Adaugă un contact"
 #: [room]invited
 msgid "Invitation sent"
 msgstr ""
+
+#: [room]invite_code
+#, fuzzy
+msgid "Send this link to your contacts"
+msgstr "Caută în contactele tale"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1929,6 +1952,10 @@ msgstr ""
 #: [global]loading
 msgid "Loading…"
 msgstr "Se încarcă..."
+
+#: [global]or
+msgid "Or"
+msgstr ""
 
 #: [page]communities
 msgid "Communities"
@@ -2426,8 +2453,8 @@ msgstr ""
 msgid "flirtatious"
 msgstr ""
 
-#: [mood]frustated
-msgid "frustated"
+#: [mood]frustrated
+msgid "frustrated"
 msgstr ""
 
 #: [mood]grateful

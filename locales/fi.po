@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 10:21+0200\n"
+"POT-Creation-Date: 2017-07-21 18:03+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
@@ -627,14 +627,6 @@ msgstr "Viestisi tähän..."
 msgid "Smileys"
 msgstr "Hymiöt"
 
-#: [chat]empty_title [button]chat
-msgid "Chat"
-msgstr "Keskustelu"
-
-#: [chat]empty_text
-msgid "Discuss with your contacts"
-msgstr "Keskustele kontaktiesi kanssa"
-
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Usein käytetyt kontaktit"
@@ -711,6 +703,10 @@ msgstr "Keskustele kontaktin kanssa"
 #: [chats]more
 msgid "Load more contacts"
 msgstr "Lataa lisää kontakteja"
+
+#: [button]chat
+msgid "Chat"
+msgstr "Keskustelu"
 
 #: [button]new
 msgid "New conversation"
@@ -864,6 +860,14 @@ msgstr "Oletko varma?"
 
 #: [communityposts]empty
 msgid "This community seems empty"
+msgstr ""
+
+#: [communityposts]nsfw_title
+msgid "Adult content blocked"
+msgstr ""
+
+#: [communityposts]nsfw_message
+msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
 msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
@@ -1299,7 +1303,7 @@ msgid "No account yet ?"
 msgstr "Ei tiliä vielä?"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from theses servers"
+msgid "You can login with accounts from these servers"
 msgstr ""
 
 #: [form]connected
@@ -1308,6 +1312,10 @@ msgstr "Yhdistetty"
 
 #: [form]population
 msgid "Population"
+msgstr ""
+
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
 msgstr ""
 
 #: [login_anonymous]bad_username
@@ -1454,6 +1462,11 @@ msgstr "Poista tämä julkaisu"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Varmista julkaisun poistaminen"
+
+#: [post]delete_comment
+#, fuzzy
+msgid "Are you sure that you want to delete this comment?"
+msgstr "Oletko varma että haluat poistaa sen?"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1654,6 +1667,10 @@ msgstr "Nimimerkki on jo käytössä"
 msgid "Join this chatroom on connect"
 msgstr ""
 
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Julkinen keskusteluhuone"
@@ -1686,6 +1703,11 @@ msgstr "Etsi kontaktia"
 #: [room]invited
 msgid "Invitation sent"
 msgstr ""
+
+#: [room]invite_code
+#, fuzzy
+msgid "Send this link to your contacts"
+msgstr "Etsi kontakteistasi"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1929,6 +1951,10 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
+msgstr ""
+
+#: [global]or
+msgid "Or"
 msgstr ""
 
 #: [page]communities
@@ -2427,8 +2453,8 @@ msgstr "innoissaan"
 msgid "flirtatious"
 msgstr ""
 
-#: [mood]frustated
-msgid "frustated"
+#: [mood]frustrated
+msgid "frustrated"
 msgstr ""
 
 #: [mood]grateful
@@ -2818,6 +2844,9 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
+
+#~ msgid "Discuss with your contacts"
+#~ msgstr "Keskustele kontaktiesi kanssa"
 
 #~ msgid "Delete my account"
 #~ msgstr "Poista tili"

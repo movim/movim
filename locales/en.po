@@ -100,7 +100,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 10:21+0200\n"
+"POT-Creation-Date: 2017-07-21 18:03+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -627,14 +627,6 @@ msgstr "Your message here..."
 msgid "Smileys"
 msgstr "Smileys"
 
-#: [chat]empty_title [button]chat
-msgid "Chat"
-msgstr "Chat"
-
-#: [chat]empty_text
-msgid "Discuss with your contacts"
-msgstr "Discuss with your contacts"
-
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Frequent contacts"
@@ -714,6 +706,10 @@ msgstr "Chat with a contact"
 #: [chats]more
 msgid "Load more contacts"
 msgstr "Load more contacts"
+
+#: [button]chat
+msgid "Chat"
+msgstr "Chat"
 
 #: [button]new
 msgid "New conversation"
@@ -875,6 +871,15 @@ msgstr "Are you sure ?"
 
 #: [communityposts]empty
 msgid "This community seems empty"
+msgstr ""
+
+#: [communityposts]nsfw_title
+#, fuzzy
+msgid "Adult content blocked"
+msgstr "contented"
+
+#: [communityposts]nsfw_message
+msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
 msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
@@ -1311,7 +1316,8 @@ msgid "No account yet ?"
 msgstr "No account yet ?"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from theses servers"
+#, fuzzy
+msgid "You can login with accounts from these servers"
 msgstr "You can login with accounts from theses servers"
 
 #: [form]connected
@@ -1321,6 +1327,10 @@ msgstr "Connected"
 #: [form]population
 msgid "Population"
 msgstr "Population"
+
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1473,6 +1483,11 @@ msgstr "Delete this post"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "You are going to delete this post, please confirm your action"
+
+#: [post]delete_comment
+#, fuzzy
+msgid "Are you sure that you want to delete this comment?"
+msgstr "Are you sure that you want to delete it ?"
 
 #: [post]discover
 #, fuzzy
@@ -1675,6 +1690,10 @@ msgstr "Username already taken"
 msgid "Join this chatroom on connect"
 msgstr ""
 
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Public chatroom"
@@ -1708,6 +1727,11 @@ msgstr "Add a comment"
 #, fuzzy
 msgid "Invitation sent"
 msgstr "Pending Invitations"
+
+#: [room]invite_code
+#, fuzzy
+msgid "Send this link to your contacts"
+msgstr "Search in your contacts"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1955,6 +1979,10 @@ msgstr "Movim is a kickass distributed social networking platform that protect y
 #, fuzzy
 msgid "Loading…"
 msgstr "Loading"
+
+#: [global]or
+msgid "Or"
+msgstr ""
 
 #: [page]communities
 #, fuzzy
@@ -2457,8 +2485,9 @@ msgstr "excited"
 msgid "flirtatious"
 msgstr "flirtatious"
 
-#: [mood]frustated
-msgid "frustated"
+#: [mood]frustrated
+#, fuzzy
+msgid "frustrated"
 msgstr "frustated"
 
 #: [mood]grateful
@@ -2849,6 +2878,9 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "Discuss with your contacts"
+#~ msgstr "Discuss with your contacts"
 
 #~ msgid "Delete my account"
 #~ msgstr "Delete my account"

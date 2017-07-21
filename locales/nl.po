@@ -4,6 +4,7 @@
 # Joep Seuren <joepseuren1@gmail.com>, 2015
 # Flevo Polder <flevopolder2@gmail.com>, 2017
 # Jeshua Edgar <jeshua.edgar@hotmail.com>, 2016
+# Rolf Deenen <rolf.deenen@gmail.com>, 2017
 # Steven Roose <stevenroose@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -105,8 +106,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 10:21+0200\n"
-"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"PO-Revision-Date: 2017-07-21 16:04+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
@@ -114,7 +115,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
+"X-Generator: Translate Toolkit 2.0.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -154,7 +155,7 @@ msgstr "Account"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr "Wijzig mijn wachtwoork"
+msgstr "Wijzig mijn wachtwoord"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -171,7 +172,7 @@ msgstr "Je wachtwoord is vernieuwd"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Geef een geldig wachtwoord"
+msgstr "Geef een geldig wachtwoord (minstens 6 tekens)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
@@ -195,16 +196,15 @@ msgstr "Gateway"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Verlaat deze Movim server"
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr "Je verwijdert je XMPP account en alle hieraan gerelateerde informatie (profiel, contacten, publicaties)"
+msgstr "Je verwijdert alle relatieve informatie die gekoppeld is aan je account op deze Movim server (profiel, contacten en berichten)"
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "Hiermee verwijder je niet je account maar verbreek je wel de verbinding met deze Movim server"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -228,7 +228,7 @@ msgstr "Laden"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...en speel af"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -240,7 +240,7 @@ msgstr "Het registratie-systeem van deze server is momenteel niet bereikbaar"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Registratie niet toegestaan"
 
 #: [adhoc]title
 msgid "Actions"
@@ -252,7 +252,7 @@ msgstr "Database"
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
-msgstr "Modl was niet in staat om met de database verbonden te worden"
+msgstr "Modl was niet in staat om met de database te verbinden"
 
 #: [db]connect_success
 msgid "Movim is connected to the database"
@@ -260,7 +260,7 @@ msgstr "Movim is verbonden met de database"
 
 #: [db]update
 msgid "The database need to be updated"
-msgstr "De database vergt een update"
+msgstr "De database heeft een update nodig"
 
 #: [db]up_to_date
 msgid "Movim database is up to date"
@@ -268,7 +268,7 @@ msgstr "De Movim database is up-to-date"
 
 #: [db]type
 msgid "Database Type"
-msgstr "Databasetype"
+msgstr "Soort database"
 
 #: [db]username [credentials]username [input]username
 msgid "Username"
@@ -344,7 +344,7 @@ msgstr "Herhaal wachtwoord"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "Toegestane XMPP servers"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
@@ -361,7 +361,7 @@ msgstr "Lijst met XMPP server op whitelist"
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "Informatieve Mededeling"
+msgstr "Informatieve Melding"
 
 #: [information]description
 msgid "Description"
@@ -378,23 +378,23 @@ msgstr "Laat dit veld leeg als je geen bericht wilt tonen."
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr "Informatieve Mededeling"
+msgstr "Informatieve Melding"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "Standaard XMPP Server"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "Standaard XMPP Server domein"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "Standaard XMPP Server beschrijving"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "Standaard XMPP Server land"
 
 #: [log]empty
 msgid "Empty"
@@ -426,7 +426,7 @@ msgstr "Vereist: 5.3.0"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr ""
+msgstr "Lees- en schrijfrechten voor de webserver in Movim's %s directory."
 
 #: [compatibility]db
 msgid "The database need to be updated, go to the database panel to fix this"
@@ -458,7 +458,7 @@ msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr ""
+msgstr "Registreer hier je pod in de officiële %sMovim API%s"
 
 #: [api]register
 msgid "Your pod is not registered on the API"
@@ -514,7 +514,7 @@ msgstr "Profielfoto niet geüpdated"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "Nog geen avatar gekozen"
 
 #: [blog]title [feed]title
 msgid "%s's feed"
@@ -538,7 +538,7 @@ msgstr "Groepen"
 
 #: [chatroom]add
 msgid "Add a new Chat Room"
-msgstr ""
+msgstr "Voeg een nieuwe chatruimte toe"
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
@@ -547,7 +547,7 @@ msgstr "Chatroom ID"
 #: [chatroom]name
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 #: [accounts]accounts_nickname
@@ -556,7 +556,7 @@ msgstr "bijnaam"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
+msgstr "Wil je de deze chatruimte automatisch in gaan?"
 
 #: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
@@ -572,24 +572,24 @@ msgstr "Favoriet bijgewerkt"
 
 #: [bookmarks]error
 msgid "An error occured :"
-msgstr ""
+msgstr "Er ging wat fout: "
 
 #: [bookmarks]configure
 msgid "Configure"
-msgstr ""
+msgstr "Configureer"
 
 #: [url]add
 msgid "Add a new URL"
-msgstr ""
+msgstr "Voeg een nieuwe URL toe"
 
 #: [url]url
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: [url]name
 msgctxt "[url]name"
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #: [message]published
 msgid "Message Published"
@@ -617,7 +617,7 @@ msgstr "%s berichten ontvangen"
 
 #: [message]edit_help
 msgid "You can use the up arrow ↑ to edit your previous message"
-msgstr ""
+msgstr "Je kan het pijltje naar boven ↑ gebruiken om je laatste bericht nog aan te passen"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -631,43 +631,33 @@ msgstr "Jouw bericht hier.."
 msgid "Smileys"
 msgstr "Smileys"
 
-#: [chat]empty_title [button]chat
-msgid "Chat"
-msgstr "Chat"
-
-#: [chat]empty_text
-msgid "Discuss with your contacts"
-msgstr "Bespreek met je contacten"
-
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Frequente contacten"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "Hier is nog niets..."
 
 #: [chat]new_text
 msgid "Don't be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "Stuur maar een bericht om de discussie te starten"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "Je hebt een uitnodiging ontvangen om lid te worden van  een chatruimte"
 
 #: [chat]invitation_join
-#, fuzzy
 msgid "Join %s"
-msgstr "Login op %s"
+msgstr "Lid worden van %s"
 
 #: [chat]profile
-#, fuzzy
 msgid "See the profile"
-msgstr "zie %s profiel"
+msgstr "Bekijk profiel"
 
 #: [chat]clear
 msgid "Clear the history"
-msgstr ""
+msgstr "Verwijder geschiedenis"
 
 #: [chatroom]members
 msgid "Members"
@@ -708,7 +698,7 @@ msgstr "Nog geen chats..."
 
 #: [chats]empty
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr ""
+msgstr "Start een nieuwe conversaie door op de %s knop hieronder te klikken of bezoek de %Contacts% pagina."
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -717,6 +707,10 @@ msgstr "Chat met een contactpersoon"
 #: [chats]more
 msgid "Load more contacts"
 msgstr "Laad meer contactpersonen"
+
+#: [button]chat
+msgid "Chat"
+msgstr "Chat"
 
 #: [button]new
 msgid "New conversation"
@@ -748,16 +742,15 @@ msgstr "Groep aangemaakt"
 
 #: [communitiesserver]empty_server
 msgid "There is no Groups yet on this server."
-msgstr ""
+msgstr "Op deze server is nog geen groep"
 
 #: [communitiesserver]add [groups]add
 msgid "Create a new Group on %s"
-msgstr ""
+msgstr "Maak een nieuwe groep op %s"
 
 #: [communitiesserver]name
-#, fuzzy
 msgid "Community name"
-msgstr "Lege naam"
+msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -794,11 +787,11 @@ msgstr "Blijkbaar bestaat deze groep niet meer. Verwijder deze groep van je abon
 
 #: [communityaffiliation]owner
 msgid "Owner"
-msgstr ""
+msgstr "Beheerder"
 
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
+msgstr "Beheerders"
 
 #: [communityaffiliation]publisher
 msgid "Publisher"
@@ -810,7 +803,7 @@ msgstr ""
 
 #: [communityaffiliation]roles
 msgid "Roles"
-msgstr ""
+msgstr "Rollen"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
@@ -842,11 +835,11 @@ msgstr "Uitgeschreven"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr ""
+msgstr "Abonneren is voor deze groep uitgeschakeld"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
-msgstr ""
+msgstr "Geef deze groep een label"
 
 #: [communityheader]label_placeholder
 msgid "My Community Name"
@@ -854,15 +847,15 @@ msgstr ""
 
 #: [communityheader]share_subscription
 msgid "Share this subscription publicly"
-msgstr ""
+msgstr "Maak je lidmaatschap openbaar"
 
 #: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
-msgstr ""
+msgstr "Het verschijnt in je profiel"
 
 #: [communityheader]unsubscribe_text
 msgid "You are going to unsubscribe from this community"
-msgstr ""
+msgstr "Je gaat je voor deze groep uitschrijven"
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
@@ -870,6 +863,14 @@ msgstr "Weet je het zeker?"
 
 #: [communityposts]empty
 msgid "This community seems empty"
+msgstr "Deze groep lijkt leeg"
+
+#: [communityposts]nsfw_title
+msgid "Adult content blocked"
+msgstr ""
+
+#: [communityposts]nsfw_message
+msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
 msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
@@ -914,7 +915,7 @@ msgstr "Uiterlijk"
 
 #: [config]not_valid
 msgid "Configuration invalid"
-msgstr ""
+msgstr "Ongeldige configuratie"
 
 #: [config]advanced
 msgid "Advanced Configuration"
@@ -922,15 +923,15 @@ msgstr "Geavanceerde configuratie"
 
 #: [config]nsfw
 msgid "Display adult content"
-msgstr ""
+msgstr "Verberg NSFW niet"
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
-msgstr ""
+msgstr "Hiermee laat je ook berichten als #nsfw zijn aangemerkt"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
-msgstr ""
+msgstr "Link naar eigen CSS voor je openbare blog"
 
 #: [general]legend
 msgid "General Informations"
@@ -1214,7 +1215,7 @@ msgstr ""
 
 #: [invitations]title
 msgid "Pending Invitations"
-msgstr ""
+msgstr "Uitstaande uitnodigingen"
 
 #: [invitations]wants_to_talk
 msgid "%s wants to talk with you"
@@ -1270,27 +1271,27 @@ msgstr "Onbekende fout"
 
 #: [error]login_format
 msgid "Invalid username format"
-msgstr ""
+msgstr "Gebruikersnaam voldoet niet aan eisen"
 
 #: [error]password_format
 msgid "Invalid password format"
-msgstr ""
+msgstr "Wachtwoord voldoet niet aan eisen"
 
 #: [error]unauthorized
 msgid "Your XMPP server is unauthorized"
-msgstr ""
+msgstr "De XMPP Server is niet toegestaan"
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr ""
+msgstr "Movim kon niet aanmelden. Je hebt verkeerde gegevens ingevuld"
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
-msgstr ""
+msgstr "Deze manier van aanmelden wordt door Movim niet ondersteund"
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr ""
+msgstr "Aanmelden bij XMPP is mislukt"
 
 #: [form]username
 msgid "My address"
@@ -1305,7 +1306,7 @@ msgid "No account yet ?"
 msgstr "Nog geen account?"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from theses servers"
+msgid "You can login with accounts from these servers"
 msgstr ""
 
 #: [form]connected
@@ -1316,21 +1317,25 @@ msgstr "Verbonden"
 msgid "Population"
 msgstr "Populatie"
 
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
+msgstr ""
+
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
-msgstr ""
+msgstr "Roepnaam niet mogelijk (moet tussen 4 en 40 tekens zijn)"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr ""
+msgstr "Nog geen nieuws"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr ""
+msgstr "Dit is je nieuwsfeed. Hier vind je alle berichten van je contactpersonen en de groepen waar je lid van bent"
 
 #: [menu]discover [button]discover
 msgid "Discover"
-msgstr ""
+msgstr "Verkennen"
 
 #: [menu]refresh
 msgid "Refresh all the streams"
@@ -1346,52 +1351,51 @@ msgstr "Alles"
 
 #: [menu]mine
 msgid "My publications"
-msgstr ""
+msgstr "Mijn berichten"
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
 msgstr "Contactpersonen"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "Maak een nieuw account aan"
+msgstr "Schrijf een nieuw bericht..."
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
-msgstr ""
+msgstr "Meldingen"
 
 #: [notifs]empty
 msgid "No new notifications"
-msgstr ""
+msgstr "Geen nieuwe meldingen"
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
-msgstr ""
+msgstr "Moving kan melden wanneer er een nieuw bericht is gepubliceerd"
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr ""
+msgstr "Je kan ze altijd later weer uitschakelen"
 
 #: [onboarding]public_title
 msgid "Public profile"
-msgstr ""
+msgstr "Openbare profiel"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr ""
+msgstr "Maak je profiel openbaar. Hiermee kunnen andere gebruikers je makkelijker vinden en leg je makkelijker contact"
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
-msgstr ""
+msgstr "Je kan dit altijd later weer uitschakelen in de instellingen"
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr ""
+msgstr "Pop-ups"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
-msgstr ""
+msgstr "Movim gebruikt pop-ups voor video-conferenties. Sommige browsers blokkeren dit"
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
@@ -1439,7 +1443,7 @@ msgstr "zie %s profiel"
 
 #: [post]blog_last
 msgid "Public posts from users"
-msgstr ""
+msgstr "Openbare berichten van gebruikers"
 
 #: [post]public
 msgid "Publish this post publicly?"
@@ -1447,11 +1451,11 @@ msgstr "Post dit bericht openbaar?"
 
 #: [post]public_no
 msgid "This post is private"
-msgstr ""
+msgstr "Dit bericht is niet openbaar"
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr ""
+msgstr "Openbare URL van dit bericht"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1461,13 +1465,17 @@ msgstr "Verwijder dit bericht"
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Weet je zeker dat je dit bericht wil verwijderen?"
 
+#: [post]delete_comment
+msgid "Are you sure that you want to delete this comment?"
+msgstr ""
+
 #: [post]discover
 msgid "Discover more articles on the communities page"
 msgstr ""
 
 #: [post]more
 msgid "Read more"
-msgstr ""
+msgstr "Lees verder"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
@@ -1479,7 +1487,7 @@ msgstr "Reactie gepubliceerd"
 
 #: [post]comment_deleted
 msgid "Comment deleted"
-msgstr ""
+msgstr "Reactie verwijderd"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1507,11 +1515,11 @@ msgstr "Oh! Hallo!"
 
 #: [hello]enter_paragraph
 msgid "It seems that you're new there! Welcome on Movim!"
-msgstr ""
+msgstr "Het lijkt er op dat je hier nieuw bent! Welkom bij Movim!"
 
 #: [hello]menu_title
 msgid "Check the Menu"
-msgstr ""
+msgstr "Check het menu"
 
 #: [hello]menu_paragraph
 msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
@@ -1519,7 +1527,7 @@ msgstr ""
 
 #: [hello]profile_title
 msgid "Looks like you didn't complete your profile yet"
-msgstr ""
+msgstr "Het lijkt er op dat je je profiel niet helemaal hebt ingevuld"
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
@@ -1575,11 +1583,11 @@ msgstr "Geen voorbeeld beschikbaar"
 
 #: [publish]no_title
 msgid "Please provide a title"
-msgstr ""
+msgstr "Geef een titel in"
 
 #: [publish]edit
 msgid "Edit post"
-msgstr ""
+msgstr "Bewerk dit bericht"
 
 #: [publish]title [page]publish
 msgid "Publish"
@@ -1599,34 +1607,31 @@ msgstr "Er zijn velden ingevuld. Wil je nog steeds terug gaan en de waardes verl
 
 #: [publish]add_text
 msgid "Click here to add some text to your publication"
-msgstr ""
+msgstr "Klik hier om wat tekst toe te voegen"
 
 #: [publish]add_text_label
 msgid "Add some text"
 msgstr "Voeg wat tekst toe"
 
 #: [publishbrief]placeholder
-#, fuzzy
 msgid "What's new?"
-msgstr "Wat is nieuw?"
+msgstr "Wat is er sindsdien gebeurd?"
 
 #: [publishbrief]post
-#, fuzzy
 msgid "Write a post"
-msgstr "nieuwe berichten"
+msgstr "Schrijf een bericht"
 
 #: [publishbrief]add_link
-#, fuzzy
 msgid "Add a link"
-msgstr "Reactie toevoegen"
+msgstr "Voeg een link toe"
 
 #: [rooms]add
 msgid "Add a chatroom"
-msgstr ""
+msgstr "Voeg een chat-ruimte toe"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
-msgstr ""
+msgstr "Bewerk een chat-ruimte"
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
@@ -1634,7 +1639,7 @@ msgstr "Je hebt nog geen chatrooms."
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
-msgstr ""
+msgstr "Klik op toevoegen om er een toe te voegen."
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1642,7 +1647,7 @@ msgstr "Chatrooms"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
+msgstr "Favoriete chat-ruimte"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1654,10 +1659,14 @@ msgstr "Voer een geldige nickname in (2 tot 40 tekens)"
 
 #: [chatrooms]conflict
 msgid "Username already taken"
-msgstr ""
+msgstr "Deze gebruikersnaam wordt al gebruikt"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
+msgstr ""
+
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
 msgstr ""
 
 #: [room]anonymous_title
@@ -1670,7 +1679,7 @@ msgstr "Voer een adres in van een chatroom"
 
 #: [room]anonymous_text1
 msgid "You are currently logued as an anonymous user."
-msgstr ""
+msgstr "Je bent momenteel ingelogd als een anonieme gebruiker"
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
@@ -1685,14 +1694,16 @@ msgid "Your nickname"
 msgstr "Jouw nickname"
 
 #: [room]invite
-#, fuzzy
 msgid "Invite a contact"
-msgstr "Chat met een contactpersoon"
+msgstr "Nodig een contactpersoon uit"
 
 #: [room]invited
-#, fuzzy
 msgid "Invitation sent"
-msgstr "Inloggegevens voor beheer"
+msgstr "Uitnodiging verzonden"
+
+#: [room]invite_code
+msgid "Send this link to your contacts"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1708,11 +1719,11 @@ msgstr "Verberg offline contactpersonen"
 
 #: [roster]show_group
 msgid "Show group %s"
-msgstr ""
+msgstr "Laat groep %s zien"
 
 #: [roster]hide_group
 msgid "Hide group %s"
-msgstr ""
+msgstr "Verberg groep %s"
 
 #: [roster]jid_error
 msgid "Please enter a valid Jabber ID"
@@ -1724,7 +1735,7 @@ msgstr "Geen contactpersonen?"
 
 #: [roster]no_contacts_text
 msgid "You can add one using the + button below"
-msgstr ""
+msgstr "Je kan er een toevoegen met de + knop hieronder"
 
 #: [roster]show_hide
 msgid "Show/Hide"
@@ -1732,7 +1743,7 @@ msgstr "Tonen/Verbergen"
 
 #: [roster]add_title
 msgid "Add a contact"
-msgstr ""
+msgstr "Voeg een contact toe"
 
 #: [roster]add_contact_info1
 msgid "Enter the Jabber ID of your contact."
@@ -1740,11 +1751,11 @@ msgstr "Voer de jabber ID in van je contactpersoon"
 
 #: [roster]add_contact_info2
 msgid "Press enter to validate."
-msgstr ""
+msgstr "Geef een enter om te valideren"
 
 #: [roster]jid
 msgid "JID"
-msgstr ""
+msgstr "JID"
 
 #: [roster]results
 msgid "Results"
@@ -1768,23 +1779,23 @@ msgstr "Zoek in je contacten"
 
 #: [roster]search_pod
 msgid "Search a contact"
-msgstr ""
+msgstr "Zoek een contactpersoon"
 
 #: [search]keyword
 msgid "What are you looking for?"
-msgstr ""
+msgstr "Wat zoek je?"
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
+msgstr "Start me met CTRL + M"
 
 #: [share]error
 msgid "This is not a valid url"
-msgstr ""
+msgstr "Dit is geen geldige URL"
 
 #: [share]success
 msgid "Sharing the URL"
-msgstr ""
+msgstr "Deel de URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1800,15 +1811,15 @@ msgstr "Sessies"
 
 #: [statistics]monthly_sub
 msgid "Monthly Subscriptions"
-msgstr ""
+msgstr "Maandelijkse aanmeldingen"
 
 #: [statistics]monthly_sub_cum
 msgid "Monthly Subscriptions Cumulated"
-msgstr ""
+msgstr "Maandelijkse aanmeldingen opgeteld"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
-msgstr ""
+msgstr "Er is je een sticker toegezonden door Movim"
 
 #: [subscribe]info
 msgid "Movim is a decentralized social network, before creating a new account you need to choose a server to register."
@@ -1840,15 +1851,15 @@ msgstr "Kies een bestand om te uploaden"
 
 #: [upload]info
 msgid "Large pictures will be resized and compressed"
-msgstr ""
+msgstr "Grote afbeeldingen worden automatisch verkleind"
 
 #: [upload]error_filesize
 msgid "File too large"
-msgstr ""
+msgstr "Bestand is te groot"
 
 #: [upload]error_failed
 msgid "Upload failed"
-msgstr ""
+msgstr "Het uploaden is mislukt"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1888,7 +1899,7 @@ msgstr "Yahoo Account"
 
 #: [privacy]my_profile
 msgid "Go to my profile page"
-msgstr ""
+msgstr "Ga naar mijn profiel pagina"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -1900,7 +1911,7 @@ msgstr "Is dit profiel openbaar?"
 
 #: [privacy]privacy_info
 msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr ""
+msgstr "Attentie! Door je profiel openbaar te maken komt alle onderstaande informatie beschikbaar voor alle Movim gebruikers en het het hele internet."
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1912,11 +1923,11 @@ msgstr "Reset"
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
-msgstr ""
+msgstr "Movim werkt niet optimaal"
 
 #: [degraded]text_1
 msgid "Your server doesn't support XMPP Pubsub persistance."
-msgstr ""
+msgstr "De XMPP Server ondersteund geen Pubsub \"persistence\""
 
 #: [degraded]text_2
 msgid "The communities, news feed and profile have been disabled for the moment."
@@ -1924,7 +1935,7 @@ msgstr ""
 
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
-msgstr ""
+msgstr "Contact de server beheerder om te zien of de mogelijkheid kan worden ingeschakeld"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1936,6 +1947,10 @@ msgstr "Movim is een kick-ass gedistribueerd sociaal netwerk dat jouw privacy be
 
 #: [global]loading
 msgid "Loading…"
+msgstr "Laden..."
+
+#: [global]or
+msgid "Or"
 msgstr ""
 
 #: [page]communities
@@ -1972,7 +1987,7 @@ msgstr "Openbare groepen"
 
 #: [page]post
 msgid "Post"
-msgstr ""
+msgstr "Bericht"
 
 #: [page]blog
 msgid "Blog"
@@ -2009,7 +2024,7 @@ msgstr "Pods"
 #: [page]share
 msgctxt "[page]share"
 msgid "Share"
-msgstr ""
+msgstr "Delen"
 
 #: [page]room
 msgid "Room"
@@ -2017,7 +2032,7 @@ msgstr "Chatroom"
 
 #: [page]tag
 msgid "Tag"
-msgstr ""
+msgstr "Tag"
 
 #: [error]error
 msgid "Error: %s"
@@ -2049,7 +2064,7 @@ msgstr "Oeps!"
 
 #: [button]call
 msgid "Call"
-msgstr ""
+msgstr "Bellen"
 
 #: [button]validate
 msgid "Validate"
@@ -2093,7 +2108,7 @@ msgstr "Registreren"
 
 #: [button]reply
 msgid "Reply"
-msgstr ""
+msgstr "Antwoord"
 
 #: [button]unregister
 msgid "Unregister"
@@ -2105,7 +2120,7 @@ msgstr "Opslaan"
 
 #: [button]clear
 msgid "Clear"
-msgstr ""
+msgstr "Opnieuw"
 
 #: [button]upload
 msgid "Upload"
@@ -2113,7 +2128,7 @@ msgstr "Uploaden"
 
 #: [button]connecting
 msgid "Connecting"
-msgstr ""
+msgstr "Verbinden"
 
 #: [button]bool_yes
 msgid "Yes"
@@ -2145,24 +2160,24 @@ msgstr "Vorige"
 
 #: [button]search
 msgid "Search"
-msgstr ""
+msgstr "Zoeken"
 
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
-msgstr ""
+msgstr "Delen"
 
 #: [button]like
 msgid "Like"
-msgstr ""
+msgstr "Vind ik leuk"
 
 #: [button]not_now
 msgid "Not Now"
-msgstr ""
+msgstr "Niet nu"
 
 #: [button]enable
 msgid "Enable"
-msgstr ""
+msgstr "Inschakelen"
 
 #: [day]title
 msgid "Day"
@@ -2434,9 +2449,9 @@ msgstr "opgewonden"
 msgid "flirtatious"
 msgstr "complimenteus"
 
-#: [mood]frustated
-msgid "frustated"
-msgstr "gefrustreerd"
+#: [mood]frustrated
+msgid "frustrated"
+msgstr ""
 
 #: [mood]grateful
 msgid "grateful"
@@ -2752,7 +2767,7 @@ msgstr "Nog geen reacties"
 
 #: [post]no_comments_stream
 msgid "No comments stream"
-msgstr ""
+msgstr "Geen reacties"
 
 #: [post]no_load
 msgid "Your feed cannot be loaded."
@@ -2776,7 +2791,7 @@ msgstr "Toon eerdere reacties"
 
 #: [post]comments_loading
 msgid "Loading comments..."
-msgstr ""
+msgstr "Reacties laden..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2796,7 +2811,7 @@ msgstr "Iedereen"
 
 #: [post]share_your_contacts
 msgid "Your contacts"
-msgstr "Jou contactpersonen"
+msgstr "Jouw contactpersonen"
 
 #: [post]updated
 msgid "Updated"
@@ -2804,7 +2819,7 @@ msgstr "Bijgewerkt"
 
 #: [post]content_not_found
 msgid "Content not found"
-msgstr "Inhoud niet gevonden"
+msgstr "Geen inhoud gevonden"
 
 #: [post]default_title
 msgid "Contact publication"
@@ -2816,7 +2831,7 @@ msgstr "Reacties"
 
 #: [post]original_deleted
 msgid "Original post deleted"
-msgstr ""
+msgstr "Originele bericht verwijderd"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
@@ -2825,21 +2840,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#~ msgid "Delete my account"
-#~ msgstr "Verwijder mijn account"
-
-#~ msgid "Install the php5-curl library"
-#~ msgstr "Installeer de php5-curl library"
-
-#~ msgid "Install the php5-imagick library"
-#~ msgstr "Installeer de php5-imagick library"
-
-#~ msgid "Install the php5-gd library"
-#~ msgstr "Installeer de php5-gd library"
-
-#~ msgid "Your status here !"
-#~ msgstr "jouw status hier!"
-
-#~ msgid "This picture will be added to your gallery"
-#~ msgstr "Deze foto wordt aan je gallerij toegevoegd"

@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 10:21+0200\n"
+"POT-Creation-Date: 2017-07-21 18:03+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -627,14 +627,6 @@ msgstr "Din besked her..."
 msgid "Smileys"
 msgstr "Smileyer"
 
-#: [chat]empty_title [button]chat
-msgid "Chat"
-msgstr "Chat"
-
-#: [chat]empty_text
-msgid "Discuss with your contacts"
-msgstr "Snak med dine kontakter"
-
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Ofte brugte kontakter"
@@ -713,6 +705,10 @@ msgstr "Snak med en kontakt"
 #: [chats]more
 msgid "Load more contacts"
 msgstr "Indlæs flere kontakter"
+
+#: [button]chat
+msgid "Chat"
+msgstr "Chat"
 
 #: [button]new
 msgid "New conversation"
@@ -866,6 +862,15 @@ msgstr "Er du sikker?"
 
 #: [communityposts]empty
 msgid "This community seems empty"
+msgstr ""
+
+#: [communityposts]nsfw_title
+#, fuzzy
+msgid "Adult content blocked"
+msgstr "tilfreds"
+
+#: [communityposts]nsfw_message
+msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
 msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
@@ -1301,7 +1306,8 @@ msgid "No account yet ?"
 msgstr "Ingen konto endnu?"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from theses servers"
+#, fuzzy
+msgid "You can login with accounts from these servers"
 msgstr "Du kan logge ind med konti fra disse servere"
 
 #: [form]connected
@@ -1311,6 +1317,10 @@ msgstr "Forbundet"
 #: [form]population
 msgid "Population"
 msgstr "Befolkning"
+
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1456,6 +1466,11 @@ msgstr "Slet dette indlæg"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Du er ved at slette dette indlæg, bekræft venligst din handling"
+
+#: [post]delete_comment
+#, fuzzy
+msgid "Are you sure that you want to delete this comment?"
+msgstr "Er du sikker på at du vil slette den?"
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1656,6 +1671,10 @@ msgstr "Brugernavn er allerede i brug"
 msgid "Join this chatroom on connect"
 msgstr ""
 
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Offentligt chatrum"
@@ -1689,6 +1708,11 @@ msgstr "Snak med en kontakt"
 #, fuzzy
 msgid "Invitation sent"
 msgstr "Ventende invitationer"
+
+#: [room]invite_code
+#, fuzzy
+msgid "Send this link to your contacts"
+msgstr "Søg i dine kontakter"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1932,6 +1956,10 @@ msgstr "Movim er en brandgod distribueret social netværks-platform, der beskytt
 
 #: [global]loading
 msgid "Loading…"
+msgstr ""
+
+#: [global]or
+msgid "Or"
 msgstr ""
 
 #: [page]communities
@@ -2430,8 +2458,9 @@ msgstr "begejstret"
 msgid "flirtatious"
 msgstr "flirtende"
 
-#: [mood]frustated
-msgid "frustated"
+#: [mood]frustrated
+#, fuzzy
+msgid "frustrated"
 msgstr "frustreret"
 
 #: [mood]grateful
@@ -2821,6 +2850,9 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "Discuss with your contacts"
+#~ msgstr "Snak med dine kontakter"
 
 #~ msgid "Delete my account"
 #~ msgstr "Slet min konto"

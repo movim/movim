@@ -102,16 +102,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 10:21+0200\n"
-"PO-Revision-Date: 2017-03-30 18:46+0000\n"
-"Last-Translator: Ruben Solvang <rsolvang@gmail.com>\n"
+"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"PO-Revision-Date: 2017-07-21 16:04+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
+"X-Generator: Translate Toolkit 2.0.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -195,9 +195,8 @@ msgid "Leave this instance"
 msgstr ""
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr "Du vil slette din XMPP-konto og all relevant informasjon koblet til den (profil, kontakter og publikasjoner)"
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
@@ -628,22 +627,13 @@ msgstr "Skriv meldingen her..."
 msgid "Smileys"
 msgstr "Emojis"
 
-#: [chat]empty_title [button]chat
-msgid "Chat"
-msgstr "Samtale"
-
-#: [chat]empty_text
-msgid "Discuss with your contacts"
-msgstr "Snakk med dine kontakter"
-
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "Ofte brukte kontakter"
 
 #: [chat]new_title
-#, fuzzy
 msgid "Nothing here yet…"
-msgstr "Ingen nyheter enda..."
+msgstr ""
 
 #: [chat]new_text
 msgid "Don't be shy, send a first message to start the discussion"
@@ -654,14 +644,12 @@ msgid "You received an invitation to join a chatroom"
 msgstr ""
 
 #: [chat]invitation_join
-#, fuzzy
 msgid "Join %s"
-msgstr "Logg inn på %s"
+msgstr ""
 
 #: [chat]profile
-#, fuzzy
 msgid "See the profile"
-msgstr "Se profilen til %s"
+msgstr ""
 
 #: [chat]clear
 msgid "Clear the history"
@@ -716,6 +704,10 @@ msgstr "Prat med en kontakt"
 msgid "Load more contacts"
 msgstr "Last inn flere kontakter"
 
+#: [button]chat
+msgid "Chat"
+msgstr "Samtale"
+
 #: [button]new
 msgid "New conversation"
 msgstr "Ny samtale"
@@ -753,9 +745,8 @@ msgid "Create a new Group on %s"
 msgstr "Opprett ny gruppe på %s"
 
 #: [communitiesserver]name
-#, fuzzy
 msgid "Community name"
-msgstr "Mitt samfunnsnavn"
+msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -869,6 +860,14 @@ msgstr "Er du sikker?"
 #: [communityposts]empty
 msgid "This community seems empty"
 msgstr "Dette samfunnet er tomt"
+
+#: [communityposts]nsfw_title
+msgid "Adult content blocked"
+msgstr ""
+
+#: [communityposts]nsfw_message
+msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
+msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
 msgid "My Subscriptions"
@@ -1303,8 +1302,8 @@ msgid "No account yet ?"
 msgstr "Ingen konto?"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from theses servers"
-msgstr "Du kan logge inn med kontoer fra følgende tjenere"
+msgid "You can login with accounts from these servers"
+msgstr ""
 
 #: [form]connected
 msgid "Connected"
@@ -1313,6 +1312,10 @@ msgstr "Tilkoblet"
 #: [form]population
 msgid "Population"
 msgstr "Populasjon"
+
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1351,9 +1354,8 @@ msgid "Contacts"
 msgstr "Kontakter"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "Opprett en ny konto"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1458,6 +1460,10 @@ msgstr "Slett innlegget"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Du er i ferd med å slette innlegget, vennligst bekreft handlingen"
+
+#: [post]delete_comment
+msgid "Are you sure that you want to delete this comment?"
+msgstr ""
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1604,19 +1610,16 @@ msgid "Add some text"
 msgstr "Legg til tekst"
 
 #: [publishbrief]placeholder
-#, fuzzy
 msgid "What's new?"
-msgstr "Hva er nytt?"
+msgstr ""
 
 #: [publishbrief]post
-#, fuzzy
 msgid "Write a post"
-msgstr "Rediger innlegg"
+msgstr ""
 
 #: [publishbrief]add_link
-#, fuzzy
 msgid "Add a link"
-msgstr "Legg til ny URL"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1658,6 +1661,10 @@ msgstr "Brukernavnet er allerede tatt"
 msgid "Join this chatroom on connect"
 msgstr ""
 
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Offentlig samtalerom"
@@ -1683,14 +1690,16 @@ msgid "Your nickname"
 msgstr "Ditt kallenavn"
 
 #: [room]invite
-#, fuzzy
 msgid "Invite a contact"
-msgstr "Legg til kontakt"
+msgstr ""
 
 #: [room]invited
-#, fuzzy
 msgid "Invitation sent"
-msgstr "Ventende invitasjoner"
+msgstr ""
+
+#: [room]invite_code
+msgid "Send this link to your contacts"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1935,6 +1944,10 @@ msgstr "Movim er et distribuert sosialt nettverk som både beskytter privatlivet
 #: [global]loading
 msgid "Loading…"
 msgstr "Laster inn..."
+
+#: [global]or
+msgid "Or"
+msgstr ""
 
 #: [page]communities
 msgid "Communities"
@@ -2432,9 +2445,9 @@ msgstr "opprømt"
 msgid "flirtatious"
 msgstr "flørtende"
 
-#: [mood]frustated
-msgid "frustated"
-msgstr "frustrert"
+#: [mood]frustrated
+msgid "frustrated"
+msgstr ""
 
 #: [mood]grateful
 msgid "grateful"
@@ -2823,27 +2836,3 @@ msgstr "APIet kan ikke nåes, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "Delete my account"
-#~ msgstr "Slett min konto"
-
-#~ msgid "Install the php5-curl library"
-#~ msgstr "Installer 'php5-curl'-biblioteket"
-
-#~ msgid "Install the php5-imagick library"
-#~ msgstr "Installer 'php5-imagick'-biblioteket"
-
-#~ msgid "Install the php5-gd library"
-#~ msgstr "Installer 'php5-gd'-biblioteket"
-
-#~ msgid "Another account"
-#~ msgstr "Annen konto"
-
-#~ msgid "Add a post"
-#~ msgstr "Opprett innlegg"
-
-#~ msgid "Your status here !"
-#~ msgstr "Skriv statusen din her!"
-
-#~ msgid "This picture will be added to your gallery"
-#~ msgstr "Dette bilde vil legges til i galleriet ditt"

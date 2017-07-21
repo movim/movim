@@ -108,9 +108,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 10:21+0200\n"
-"PO-Revision-Date: 2017-05-28 21:42+0000\n"
-"Last-Translator: Stanislav N. <pztrn@pztrn.name>\n"
+"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"PO-Revision-Date: 2017-07-21 16:04+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
@@ -234,7 +234,7 @@ msgstr "... и начать воспроизведение"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr "Не допустимо"
+msgstr "Недопустимо"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
@@ -619,7 +619,7 @@ msgstr "%s сообщений получено"
 
 #: [message]edit_help
 msgid "You can use the up arrow ↑ to edit your previous message"
-msgstr "Вы можете использовать \"стрелку вверх\" ↑ для редактирования предыдущего сообщения"
+msgstr "Вы можете использовать стрелку вверх ↑ для редактирования предыдущего сообщения"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -632,14 +632,6 @@ msgstr "Введите ваше сообщение здесь..."
 #: [chat]smileys
 msgid "Smileys"
 msgstr "Смайлики"
-
-#: [chat]empty_title [button]chat
-msgid "Chat"
-msgstr "Чат"
-
-#: [chat]empty_text
-msgid "Discuss with your contacts"
-msgstr "Обсудить с вашими контактами"
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
@@ -717,6 +709,10 @@ msgstr "Пообщаться с контактом"
 #: [chats]more
 msgid "Load more contacts"
 msgstr "Загрузить еще"
+
+#: [button]chat
+msgid "Chat"
+msgstr "Чат"
 
 #: [button]new
 msgid "New conversation"
@@ -870,6 +866,14 @@ msgstr "Вы уверены?"
 #: [communityposts]empty
 msgid "This community seems empty"
 msgstr "Это сообщество, кажется, пустое"
+
+#: [communityposts]nsfw_title
+msgid "Adult content blocked"
+msgstr ""
+
+#: [communityposts]nsfw_message
+msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
+msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
 msgid "My Subscriptions"
@@ -1304,8 +1308,8 @@ msgid "No account yet ?"
 msgstr "Еще нет учетной записи?"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from theses servers"
-msgstr "Вы можете войти с помощью аккаунтов на этих серверах"
+msgid "You can login with accounts from these servers"
+msgstr ""
 
 #: [form]connected
 msgid "Connected"
@@ -1314,6 +1318,10 @@ msgstr "Соединение установлено"
 #: [form]population
 msgid "Population"
 msgstr "Население"
+
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1458,6 +1466,10 @@ msgstr "Удалить этот пост"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "Вы собираетесь удалить этот пост. Пожалуйста, подтвердите это."
+
+#: [post]delete_comment
+msgid "Are you sure that you want to delete this comment?"
+msgstr ""
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1655,6 +1667,10 @@ msgstr "Имя пользователя уже используется"
 msgid "Join this chatroom on connect"
 msgstr "Присоединиться к комнате при входе"
 
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "Публичная комната"
@@ -1686,6 +1702,10 @@ msgstr "Пригласить контакт"
 #: [room]invited
 msgid "Invitation sent"
 msgstr "Приглашение отправлено"
+
+#: [room]invite_code
+msgid "Send this link to your contacts"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1930,6 +1950,10 @@ msgstr "Movim — пацанская распределенная платфор
 #: [global]loading
 msgid "Loading…"
 msgstr "Загрузка..."
+
+#: [global]or
+msgid "Or"
+msgstr ""
 
 #: [page]communities
 msgid "Communities"
@@ -2427,9 +2451,9 @@ msgstr "возбужденный"
 msgid "flirtatious"
 msgstr "кокетливый"
 
-#: [mood]frustated
-msgid "frustated"
-msgstr "испуган"
+#: [mood]frustrated
+msgid "frustrated"
+msgstr ""
 
 #: [mood]grateful
 msgid "grateful"

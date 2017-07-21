@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-05-26 10:21+0200\n"
+"POT-Creation-Date: 2017-07-21 18:03+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Alireza Mirsepassy <alirezamirsepassy@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
@@ -627,14 +627,6 @@ msgstr "پیام شما در این مکان ..."
 msgid "Smileys"
 msgstr "خندانک ها"
 
-#: [chat]empty_title [button]chat
-msgid "Chat"
-msgstr "گپ"
-
-#: [chat]empty_text
-msgid "Discuss with your contacts"
-msgstr ""
-
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
 msgstr "مخاطبین اخیر"
@@ -711,6 +703,10 @@ msgstr "با مخاطب گپ بزنید"
 #: [chats]more
 msgid "Load more contacts"
 msgstr "مخاطبین بیشتر ..."
+
+#: [button]chat
+msgid "Chat"
+msgstr "گپ"
 
 #: [button]new
 msgid "New conversation"
@@ -864,6 +860,14 @@ msgstr "مطمئن هستید ؟"
 
 #: [communityposts]empty
 msgid "This community seems empty"
+msgstr ""
+
+#: [communityposts]nsfw_title
+msgid "Adult content blocked"
+msgstr ""
+
+#: [communityposts]nsfw_message
+msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
 msgstr ""
 
 #: [communitysubscriptions]subscriptions [groups]subscriptions
@@ -1299,7 +1303,8 @@ msgid "No account yet ?"
 msgstr "هنوز حساب کاربری ندارید ؟"
 
 #: [form]whitelist_info
-msgid "You can login with accounts from theses servers"
+#, fuzzy
+msgid "You can login with accounts from these servers"
 msgstr "شما میتوانید با اکانت از سرور های زیر وارد شوید"
 
 #: [form]connected
@@ -1309,6 +1314,10 @@ msgstr "متصل"
 #: [form]population
 msgid "Population"
 msgstr "جمعیت"
+
+#: [form]invite_chatroom
+msgid "%s invited you to join a chatroom"
+msgstr ""
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1454,6 +1463,10 @@ msgstr "پاک کرنت این نوشته"
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
 msgstr "شما درحال حذف این نوشته هستید ،لطفا تایید کنید"
+
+#: [post]delete_comment
+msgid "Are you sure that you want to delete this comment?"
+msgstr ""
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1653,6 +1666,10 @@ msgstr "نام کاربری قبلا استفاده شده است"
 msgid "Join this chatroom on connect"
 msgstr ""
 
+#: [chatrooms]registrationrequired
+msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
 #: [room]anonymous_title
 msgid "Public chatroom"
 msgstr "اتاق های گپ عمومی"
@@ -1686,6 +1703,11 @@ msgstr "جستجو مخاطبین"
 #, fuzzy
 msgid "Invitation sent"
 msgstr "دعوت های در انتظار"
+
+#: [room]invite_code
+#, fuzzy
+msgid "Send this link to your contacts"
+msgstr "جستجو در مخاطبین"
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1929,6 +1951,10 @@ msgstr ""
 
 #: [global]loading
 msgid "Loading…"
+msgstr ""
+
+#: [global]or
+msgid "Or"
 msgstr ""
 
 #: [page]communities
@@ -2427,8 +2453,8 @@ msgstr ""
 msgid "flirtatious"
 msgstr ""
 
-#: [mood]frustated
-msgid "frustated"
+#: [mood]frustrated
+msgid "frustrated"
 msgstr ""
 
 #: [mood]grateful
