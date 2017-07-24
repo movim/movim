@@ -8,24 +8,40 @@ var Avatar = {
             reader.readAsDataURL(f);
 
             reader.onload = function (ev) {
-                Avatar.preview(ev.target.result);
+                MovimUtils.getOrientation(f, function(orientation) {
+                    Avatar.preview(ev.target.result, orientation);
+                });
             };
         };
     },
-    preview : function(src) {
+    preview : function(src, orientation) {
         var canvas = document.createElement('canvas');
         width = height = canvas.width = canvas.height = 350;
+
         var image = new Image();
         image.src = src;
         image.onload = function(){
+            ctx = canvas.getContext("2d");
+
+            switch (orientation) {
+                case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
+                case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
+                case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
+                case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
+                case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
+                case 7: ctx.transform(0, -1, -1, 0, height , width); break;
+                case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
+                default: ctx.transform(1, 0, 0, 1, 0, 0);
+            }
+
             if (image.width == image.height) {
-                canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+                ctx.drawImage(image, 0, 0, width, height);
             } else {
                 minVal = parseInt(Math.min(image.width, image.height));
                 if (image.width > image.height) {
-                    canvas.getContext("2d").drawImage(image, (parseInt(image.width) - minVal) / 2, 0, minVal, minVal, 0, 0, width, height);
+                    ctx.drawImage(image, (parseInt(image.width) - minVal) / 2, 0, minVal, minVal, 0, 0, width, height);
                 } else {
-                    canvas.getContext("2d").drawImage(image, 0, (parseInt(image.height) - minVal) / 2, minVal, minVal, 0, 0, width, height);
+                    ctx.drawImage(image, 0, (parseInt(image.height) - minVal) / 2, minVal, minVal, 0, 0, width, height);
                 }
             }
 

@@ -37,12 +37,14 @@ var Upload = {
             reader.readAsDataURL(file);
 
             reader.onload = function (ev) {
-                Upload.compress(ev.target.result, file);
+                MovimUtils.getOrientation(file, function(orientation) {
+                    Upload.compress(ev.target.result, file, orientation);
+                });
             };
         };
     },
 
-    compress : function(src, file) {
+    compress : function(src, file, orientation) {
         var image = new Image();
         image.onload = function()
         {
@@ -60,10 +62,29 @@ var Upload = {
                 }
 
                 var canvas = document.createElement('canvas');
-                canvas.width = width;
-                canvas.height = height;
 
-                canvas.getContext("2d").drawImage(image, 0, 0, width, height);
+                if ([5,6,7,8].indexOf(orientation) > -1) {
+                  canvas.width = height;
+                  canvas.height = width;
+                } else {
+                  canvas.width = width;
+                  canvas.height = height;
+                }
+
+                ctx = canvas.getContext("2d");
+
+                switch (orientation) {
+                    case 2: ctx.transform(-1, 0, 0, 1, width, 0); break;
+                    case 3: ctx.transform(-1, 0, 0, -1, width, height ); break;
+                    case 4: ctx.transform(1, 0, 0, -1, 0, height ); break;
+                    case 5: ctx.transform(0, 1, 1, 0, 0, 0); break;
+                    case 6: ctx.transform(0, 1, -1, 0, height , 0); break;
+                    case 7: ctx.transform(0, -1, -1, 0, height , width); break;
+                    case 8: ctx.transform(0, -1, 1, 0, 0, width); break;
+                    default: ctx.transform(1, 0, 0, 1, 0, 0);
+                }
+
+                ctx.drawImage(image, 0, 0, width, height);
 
                 if(typeof canvas.toBlob == 'function') {
                     if(file.type != 'image/jpeg') {
