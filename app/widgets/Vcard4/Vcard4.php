@@ -111,6 +111,8 @@ class Vcard4 extends \Movim\Widget\Base
 
         if(Validator::url()->validate($vcard->url->value)) {
             $c->url     = $vcard->url->value;
+        } else {
+            $c->url     = '';
         }
 
         if(Validator::in(array_keys(getGender()))->validate($vcard->gender->value)) {
