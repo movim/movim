@@ -89,15 +89,5 @@ class Avatar extends \Movim\Widget\Base
 
     function display()
     {
-        $p = new Picture;
-        if(!$p->get($this->user->getLogin())) {
-            $this->view->assign(
-                'getavatar',
-                $this->call('ajaxGetAvatar')
-                );
-            $this->view->assign('form', $this->prepareForm(new \Modl\Contact));
-        } else {
-            $this->view->assign('getavatar', '');
-        }
     }
 }

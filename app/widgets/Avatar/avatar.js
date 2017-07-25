@@ -64,6 +64,10 @@ var Avatar = {
     }
 }
 
+MovimWebsocket.attach(function() {
+    Avatar_ajaxGetAvatar();
+});
+
 /*
 function showVideo(){
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
