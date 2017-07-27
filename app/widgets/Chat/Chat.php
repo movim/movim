@@ -91,7 +91,8 @@ class Chat extends \Movim\Widget\Base
             if($contact != null
             && $notify
             && !preg_match('#^\?OTR#', $message->body)
-            && $message->type != 'groupchat') {
+            && $message->type != 'groupchat'
+            && !$message->edited) {
                 $avatar = $contact->getPhoto('s');
                 if($avatar == false) $avatar = null;
                 Notification::append(
