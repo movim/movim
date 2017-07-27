@@ -44,3 +44,6 @@ var Statistics = {
     }
 }
 
+MovimWebsocket.attach(function() {
+    Statistics_ajaxDisplay();
+});
