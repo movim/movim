@@ -444,18 +444,18 @@ ul.navigation li {
     text-align: center;
     flex: 1;
     padding: 0.75rem;
-    filter: opacity(50%);
+    opacity: 0.5;
     position: relative;
 }
 
 ul.navigation li:hover {
     background-color: rgba(0, 0, 0, 0.1);
-    filter: opacity(100%);
+    opacity: 1;
     cursor: pointer;
 }
 
 ul.navigation li.active {
-    filter: opacity(100%);
+    opacity: 1;
 }
 
 ul.navigation li > span.primary {
