@@ -4,7 +4,7 @@
     </li>
 {loop="$users"}
     <li class="block" title="{$value->jid}" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
-        {$url = $value->getPhoto('l')}
+        {$url = $value->getPhoto('s')}
         {if="$url"}
             <span class="primary icon bubble
             {if="$value->value"}

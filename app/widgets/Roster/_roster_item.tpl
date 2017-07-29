@@ -6,7 +6,7 @@
     onclick="
         MovimUtils.redirect('{$c->route('contact', $contact->jid)}')
     ">
-    {$url = $contact->getPhoto('m')}
+    {$url = $contact->getPhoto('s')}
     {if="$url"}
         <span class="primary icon bubble
             {if="$contact->value == null || $contact->value > 4"}disabled{/if}
