@@ -51,14 +51,9 @@ class Stickers extends \Movim\Widget\Base
 
         if(!file_exists($filepath)) return;
 
-        // We get the base64
-        $base64 = base64_encode(file_get_contents($filepath));
-
         // Caching the picture
         if(!file_exists(CACHE_PATH.md5($key).'.png')) {
-            $p = new Picture;
-            $p->fromBase($base64);
-            $p->set($key, 'png');
+            copy($filepath, CACHE_PATH.md5($key).'.png');
         }
 
         // Creating a message

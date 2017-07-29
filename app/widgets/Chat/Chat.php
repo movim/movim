@@ -686,7 +686,8 @@ class Chat extends \Movim\Widget\Base
             $sticker = $p->get($message->sticker, false, false, 'png');
             $stickerSize = $p->getSize();
 
-            if ($sticker == false) {
+            if ($sticker == false
+            && $message->jidfrom != $message->session) {
                 $r = new Request;
                 $r->setTo($message->jidfrom)
                     ->setResource($message->resource)
