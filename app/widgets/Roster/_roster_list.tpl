@@ -1,10 +1,6 @@
 <header>
     <ul class="list">
         <li>
-            <span class="primary icon bubble gray active">
-                <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
-                <i class="zmdi zmdi-search on_desktop"></i>
-            </span>
             {if="count($contacts) > 5"}
             <form onsubmit="return false;">
                 <div onclick="Roster.init();">

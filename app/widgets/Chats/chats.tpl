@@ -1,7 +1,6 @@
 <header>
     <ul class="list middle on_mobile">
         <li>
-            <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()"><i class="zmdi zmdi-menu"></i></span>
             <p class="center">{$c->__('page.chats')}</p>
         </li>
     </ul>

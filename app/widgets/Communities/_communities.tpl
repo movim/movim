@@ -1,9 +1,6 @@
 <header>
     <ul class="list middle">
         <li>
-            <span id="menu" class="primary on_mobile icon active gray" onclick="MovimTpl.toggleMenu()">
-                <i class="zmdi zmdi-menu"></i>
-            </span>
             {if="$c->supported('pubsub')"}
             <span class="control icon gray active" onclick="MovimUtils.redirect('{$c->route('community', 'subscriptions')}')">
                 <i class="zmdi zmdi-settings"></i>

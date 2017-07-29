@@ -9,6 +9,8 @@
     <?php $this->widget('Navigation');?>
 </nav>
 
+<?php $this->widget('BottomNavigation');?>
+
 <main>
     <section style="background-color: #EEE;">
         <?php if(empty($_GET['s'])) { ?>

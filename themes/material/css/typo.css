@@ -17,8 +17,8 @@ article section p {
     line-height: inherit;
 }
 
-ul:not(.list):not(.tabs):not(.grid):not(.actions) > li,
-ol:not(.list):not(.tabs):not(.grid) > li {
+ul:not(.list):not(.navigation):not(.tabs):not(.grid):not(.actions) > li,
+ol:not(.list):not(.navigation):not(.tabs):not(.grid) > li {
     font-size: 2rem;
     line-height: 3rem;
     padding-left: 2rem;
@@ -27,11 +27,11 @@ ol:not(.list):not(.tabs):not(.grid) > li {
     margin: 1rem auto;
 }
 
-ul:not(.list):not(.tabs):not(.grid) > li > * {
+ul:not(.list):not(.tabs):not(.navigation):not(.grid) > li > * {
     display: inline;
 }
 
-ul:not(.list):not(.tabs):not(.grid):not(.actions) > li {
+ul:not(.list):not(.tabs):not(.navigation):not(.grid):not(.actions) > li {
     list-style-type: disc;
 }
 

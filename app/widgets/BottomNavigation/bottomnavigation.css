@@ -1,0 +1,35 @@
+ul#bottomnavigation {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: auto;
+    width: 100%;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    display: none;
+    transition: transform .2s cubic-bezier(.4,0,.2,1);
+}
+
+ul#bottomnavigation ~ main {
+    transition: height .2s cubic-bezier(.4,0,.2,1);
+}
+
+@media screen and (max-width: 1024px) {
+    ul#bottomnavigation {
+        display: flex;
+    }
+
+    ul#bottomnavigation ~ main {
+        height: calc(100% - 7rem);
+    }
+
+    nav.active + ul#bottomnavigation,
+    ul#bottomnavigation.hidden {
+        transform: translateY(100%);
+    }
+
+    nav.active ~ ul#bottomnavigation ~ main,
+    ul#bottomnavigation.hidden ~ main {
+        height: 100%;
+    }
+}

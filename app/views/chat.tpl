@@ -8,6 +8,8 @@
     <?php $this->widget('Navigation');?>
 </nav>
 
+<?php $this->widget('BottomNavigation');?>
+
 <main>
     <section>
         <div>
@@ -18,3 +20,4 @@
         <?php $this->widget('Chat');?>
     </section>
 </main>
+

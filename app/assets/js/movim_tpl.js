@@ -54,10 +54,12 @@ var MovimTpl = {
     },
     showPanel: function() {
         MovimUtils.addClass('main section', 'enabled');
+        MovimUtils.addClass('ul#bottomnavigation', 'hidden');
         MovimTpl.scrollPanelTop();
     },
     hidePanel: function() {
         MovimUtils.removeClass('main section', 'enabled');
+        MovimUtils.removeClass('ul#bottomnavigation', 'hidden');
     },
     isPanel: function() {
         return MovimUtils.hasClass('main section', 'enabled');

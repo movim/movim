@@ -2,10 +2,6 @@
 <div class="block">
     <ul class="list">
         <li>
-            <span id="menu" class="primary icon active gray">
-                <i class="on_mobile zmdi zmdi-menu" onclick="MovimTpl.toggleMenu()"></i>
-                <i class="on_desktop zmdi zmdi-edit"></i>
-            </span>
             <span id="button_send"
                   class="control icon gray active"
                   onclick="PublishBrief.disableSend(); PublishBrief_ajaxPublish(MovimUtils.formToJson('brief'));">

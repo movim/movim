@@ -40,7 +40,7 @@
     <a class="classic"
        href="{$c->route('community')}"
        title="{$c->__('page.communities')}">
-        <li {if="$page == 'group'"}class="active"{/if}>
+        <li {if="$page == 'community'"}class="active"{/if}>
             <span class="primary icon"><i class="zmdi zmdi-group-work"></i></span>
             <span class="counter"></span>
             <p class="normal">{$c->__('page.communities')}</p>
@@ -89,3 +89,4 @@
         <p class="normal">{$c->__('status.disconnect')}</p>
     </li>
 </ul>
+
