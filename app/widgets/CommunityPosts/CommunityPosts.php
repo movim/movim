@@ -168,6 +168,12 @@ class CommunityPosts extends \Movim\Widget\Base
             }
         }
 
+        foreach($ids as $key => $id) {
+            if(empty($id)) {
+                unset($ids[$key]);
+            }
+        }
+
         $view = $this->tpl();
         $view->assign('server', $server);
         $view->assign('node', $node);
