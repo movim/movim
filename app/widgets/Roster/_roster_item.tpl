@@ -2,13 +2,14 @@
     id="{$contact->jid|cleanupId}"
     title="{$contact->jid}{if="$contact->value"} - {$presences[$contact->value]}{/if}"
     name="{$contact->getSearchTerms()}"
-    class="block {if="$contact->value == null || $contact->value > 4"}faded{/if}"
+    class="block"
     onclick="
         MovimUtils.redirect('{$c->route('contact', $contact->jid)}')
     ">
     {$url = $contact->getPhoto('m')}
     {if="$url"}
         <span class="primary icon bubble
+            {if="$contact->value == null || $contact->value > 4"}disabled{/if}
             {if="$contact->value"}
                 status {$presencestxt[$contact->value]}
             {/if}"
@@ -16,6 +17,7 @@
         </span>
     {else}
         <span class="primary icon bubble color {$contact->jid|stringToColor}
+            {if="$contact->value == null || $contact->value > 4"}disabled{/if}
             {if="$contact->value"}
                 status {$presencestxt[$contact->value]}
             {/if}"
