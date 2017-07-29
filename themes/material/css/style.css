@@ -150,7 +150,7 @@ main {
     overflow-y: none;
 }
 
-nav + main {
+nav ~ main {
     width: calc(100% - 7rem);
     transform: translateZ(0);
 }
