@@ -267,7 +267,7 @@ main > section > div > div.contained > * {
     }
 
     main,
-    nav + main {
+    nav ~ main {
         width: 100%;
     }
 
