@@ -97,8 +97,7 @@ ul.list li > p:nth-last-of-type(2) + p:not(.normal) {
 
 input[type=button].color,
 main > section > div > header.fixed,
-main > header,
-ul#bottomnavigation { background-color: #3F51B5; color: white; border-color: #3F51B5; }
+main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
 
 .tabs a {
     color: #757575;

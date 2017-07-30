@@ -1,4 +1,4 @@
-<ul id="bottomnavigation" class="navigation">
+<ul id="bottomnavigation" class="navigation color dark">
     {if="$c->supported('pubsub')"}
         <li {if="$page == 'news'"}class="active"{/if}
             onclick="MovimUtils.reload('{$c->route('news')}')"
