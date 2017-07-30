@@ -127,8 +127,8 @@ body > nav li span.counter {
         width: 15%;
     }
 
-    body > nav + main,
-    body > nav:hover + main {
+    body > nav ~ main,
+    body > nav:hover ~ main {
         width: 85%;
     }
 }
