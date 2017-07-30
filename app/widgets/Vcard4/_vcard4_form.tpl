@@ -165,9 +165,9 @@
             <i class="zmdi zmdi-alert-triangle"></i>
         </span>
         <p>{$c->__('degraded.title')}</p>
-        <p>{$c->__('degraded.text_1')}</br>
+        <p class="all">{$c->__('degraded.text_1')}</br>
         {$c->__('degraded.text_2')}</p>
-        <p>{$c->__('degraded.text_3')}</p>
+        <p class="all">{$c->__('degraded.text_3')}</p>
     </li>
 </ul>
 {/if}
