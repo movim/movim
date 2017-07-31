@@ -38,9 +38,11 @@ class Info extends Model
 
     public function set($query)
     {
-        $this->server = (string)$query->attributes()->from;
+        $from = (string)$query->attributes()->from;
 
-        if(isset($query->query)) {
+        if(strpos($from, '/') == false
+        && isset($query->query)) {
+            $this->server   = $from;
             $this->node     = (string)$query->query->attributes()->node;
 
             foreach($query->query->identity as $i) {
