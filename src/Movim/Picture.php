@@ -158,6 +158,10 @@ class Picture
                         $im = $im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
                     }
 
+                    if(empty($im->getImageProperties('png:gAMA'))) {
+                        $im->setOption('png:exclude-chunk', 'gAMA');
+                    }
+
                     $im->writeImage($path);
                     $im->clear();
                     return true;
