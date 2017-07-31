@@ -152,6 +152,8 @@ class InfoDAO extends SQL
             and server not in (
                 select conference
                 from conference where jid = :jid)
+            and mucpublic = true
+            and mucpersistent = true
             and server like \'%@%\'
             order by occupants desc';
 

@@ -255,7 +255,6 @@ class Publish extends \Movim\Widget\Base
                 $content_xhtml = addHFR($parser->transform($content));
 
                 $tagsContent = getHashtags(htmlspecialchars($form->content->value));
-                movim_log(serialize($tagsContent));
                 if(is_array($tagsContent)) $tags = array_merge($tags, $tagsContent);
             }
 

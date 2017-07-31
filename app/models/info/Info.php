@@ -20,6 +20,12 @@ class Info extends Model
     public $logo = false;
     public $subscription;
 
+    public $mucpublic = false;
+    public $mucpersistent = false;
+    public $mucpasswordprotected = false;
+    public $mucmembersonly = false;
+    public $mucmoderated = false;
+
     public $_struct = [
         'server'    => ['type' => 'string','size' => 64,'key' => true],
         'node'      => ['type' => 'string','size' => 96,'key' => true],
@@ -34,6 +40,12 @@ class Info extends Model
 
         'created'   => ['type' => 'date'],
         'updated'   => ['type' => 'date','mandatory' => true],
+
+        'mucpublic'             => ['type' => 'bool'],
+        'mucpersistent'         => ['type' => 'bool'],
+        'mucpasswordprotected'  => ['type' => 'bool'],
+        'mucmembersonly'        => ['type' => 'bool'],
+        'mucmoderated'          => ['type' => 'bool'],
     ];
 
     public function set($query)
@@ -55,6 +67,28 @@ class Info extends Model
                     } else {
                         $this->name = $this->node;
                     }
+                }
+            }
+
+            foreach($query->query->feature as $feature) {
+                $key = (string)$feature->attributes()->var;
+
+                switch ($key) {
+                    case 'muc_public':
+                        $this->mucpublic = true;
+                        break;
+                    case 'muc_persistent':
+                        $this->mucpersistent = true;
+                        break;
+                    case 'muc_passwordprotected':
+                        $this->mucpasswordprotected = true;
+                        break;
+                    case 'muc_membersonly':
+                        $this->mucpasswordprotected = true;
+                        break;
+                    case 'muc_moderated':
+                        $this->mucmoderated = true;
+                        break;
                 }
             }
 
