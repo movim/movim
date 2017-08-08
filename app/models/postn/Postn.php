@@ -74,12 +74,14 @@ class Postn extends Model
         'nsfw'          => ['type' => 'bool']
     ];
 
+    private $titleLimit = 200;
+
     public function __construct()
     {
         $this->hash = hash('sha256', openssl_random_pseudo_bytes(5));
     }
 
-    private function getContent($contents)
+    private function extractContent($contents)
     {
         $content = '';
 
@@ -110,7 +112,7 @@ class Postn extends Model
         return $content;
     }
 
-    private function getTitle($titles)
+    private function extractTitle($titles)
     {
         $title = '';
         foreach($titles as $t) {
@@ -167,7 +169,7 @@ class Postn extends Model
         if($entry->entry->source && $entry->entry->source->author->uri)
             $this->aid = substr((string)$entry->entry->source->author->uri, 5);
 
-        $this->title = $this->getTitle($entry->entry->title);
+        $this->title = $this->extractTitle($entry->entry->title);
 
         // Content
         if($entry->entry->summary && (string)$entry->entry->summary != '')
@@ -176,7 +178,7 @@ class Postn extends Model
             $summary = '';
 
         if($entry->entry && $entry->entry->content) {
-            $content = $this->getContent($entry->entry->content);
+            $content = $this->extractContent($entry->entry->content);
         } elseif($summary == '')
             $content = __('');
         else
@@ -505,7 +507,7 @@ class Postn extends Model
 
     public function isBrief()
     {
-        return ($this->content == '');
+        return ($this->content == '' && strlen($this->title) < $this->titleLimit);
     }
 
     public function isNSFW()
@@ -546,6 +548,20 @@ class Postn extends Model
         } else {
             return truncate(stripTags(html_entity_decode($this->contentcleaned)), 140);
         }
+    }
+
+    public function getTitle()
+    {
+        return (strlen($this->title) >= $this->titleLimit)
+            ? __('menu.contact_post')
+            : $this->title;
+    }
+
+    public function getContent()
+    {
+        return (strlen($this->title) >= $this->titleLimit)
+            ? nl2br(addUrls(addHashtagsLinks($this->title)))
+            : $this->contentcleaned;
     }
 
     public function getReply()

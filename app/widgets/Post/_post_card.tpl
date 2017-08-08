@@ -28,7 +28,7 @@
 
             {if="!$post->isBrief()"}
                 <p class="normal">
-                    {$post->title|addHashtagsLinks}
+                    {$post->getTitle()|addHashtagsLinks}
                 </p>
             {else}
                 <p></p>
@@ -62,7 +62,7 @@
             </p>
             {if="$post->isBrief()"}
                 <p class="normal">
-                    {$post->title|addHashtagsLinks|addUrls|nl2br}
+                    {$post->getTitle()|addHashtagsLinks|addUrls|nl2br}
                 </p>
             {/if}
         </li>
@@ -86,7 +86,7 @@
                                 {/if}
                             {/loop}
                         {/if}
-                        {$post->contentcleaned|addHashtagsLinks}
+                        {$post->getContent()|addHashtagsLinks}
                     </content>
                 <section>
             </p>
@@ -136,7 +136,7 @@
                             {/if}
                         {/if}
                         <p class="normal line">{$reply->title}</p>
-                        <p>{$reply->contentcleaned|html_entity_decode|stripTags}</p>
+                        <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
                         <p>
                             {if="$reply->isMicroblog()"}
                                 <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
