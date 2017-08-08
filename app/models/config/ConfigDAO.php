@@ -11,7 +11,6 @@ class ConfigDAO extends SQL
             set description   = :description,
                 theme         = :theme,
                 locale        = :locale,
-                maxusers      = :maxusers,
                 loglevel      = :loglevel,
                 timezone      = :timezone,
                 xmppdomain    = :xmppdomain,
@@ -21,8 +20,7 @@ class ConfigDAO extends SQL
                 info          = :info,
                 unregister    = :unregister,
                 username      = :username,
-                password      = :password,
-                sizelimit     = :sizelimit';
+                password      = :password';
 
         $this->prepare(
             'Config',
@@ -30,7 +28,6 @@ class ConfigDAO extends SQL
                 'description'  => $c->description,
                 'theme'        => $c->theme,
                 'locale'       => $c->locale,
-                'maxusers'     => $c->maxusers,
                 'loglevel'     => $c->loglevel,
                 'timezone'     => $c->timezone,
                 'xmppdomain'   => $c->xmppdomain,
@@ -41,7 +38,6 @@ class ConfigDAO extends SQL
                 'unregister'   => $c->unregister,
                 'username'     => $c->username,
                 'password'     => $c->password,
-                'sizelimit'    => $c->sizelimit
             ]
         );
 
@@ -61,7 +57,6 @@ class ConfigDAO extends SQL
                     description,
                     theme,
                     locale,
-                    maxusers,
                     loglevel,
                     timezone,
                     xmppdomain,
@@ -72,14 +67,12 @@ class ConfigDAO extends SQL
                     unregister,
                     username,
                     password,
-                    sizelimit
                 )
                 values
                 (
                     :description,
                     :theme,
                     :locale,
-                    :maxusers,
                     :loglevel,
                     :timezone,
                     :xmppdomain,
@@ -89,8 +82,7 @@ class ConfigDAO extends SQL
                     :info,
                     :unregister,
                     :username,
-                    :password,
-                    :sizelimit
+                    :password
                 )
                 ';
 
@@ -100,7 +92,6 @@ class ConfigDAO extends SQL
                     'description'  => $c->description,
                     'theme'        => $c->theme,
                     'locale'       => $c->locale,
-                    'maxusers'     => $c->maxusers,
                     'loglevel'     => $c->loglevel,
                     'timezone'     => $c->timezone,
                     'xmppdomain'   => $c->xmppdomain,
@@ -111,7 +102,6 @@ class ConfigDAO extends SQL
                     'unregister'   => $c->unregister,
                     'username'     => $c->username,
                     'password'     => $c->password,
-                    'sizelimit'    => $c->sizelimit
                 ]
             );
 
