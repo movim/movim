@@ -36,7 +36,7 @@
 
                 <p class="line">
                     {if="$post->title != null && !$post->isBrief()"}
-                        {$post->title}
+                        {$post->getTitle()}
                     {else}
                         {$c->__('post.default_title')}
                     {/if}
@@ -110,11 +110,7 @@
             {/if}
             {if="!$post->isBrief()"}
                 <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
-                    {if="$post->title != null"}
-                        {$post->title|addHashtagsLinks}
-                    {else}
-                        {$c->__('post.default_title')}
-                    {/if}
+                    {$post->getTitle()|addHashtagsLinks}
                 </p>
             {else}
                 <p></p>
@@ -146,7 +142,7 @@
             </p>
             {if="$post->isBrief()"}
                 <p class="normal">
-                    {$post->title|addUrls|addHashtagsLinks|nl2br}
+                    {$post->getTitle()|addUrls|addHashtagsLinks|nl2br}
                 </p>
             {/if}
         </li>
@@ -209,7 +205,7 @@
                         {/if}
                     {/loop}
                 {/if}
-                {$post->contentcleaned|addHashtagsLinks}
+                {$post->getContent()|addHashtagsLinks}
             </content>
         </section>
 

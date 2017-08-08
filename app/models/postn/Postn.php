@@ -552,8 +552,9 @@ class Postn extends Model
 
     public function getTitle()
     {
-        return (strlen($this->title) >= $this->titleLimit)
-            ? __('menu.contact_post')
+        return (isset($this->title)
+            && strlen($this->title) >= $this->titleLimit)
+            ? __('post.default_title')
             : $this->title;
     }
 
