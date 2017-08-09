@@ -51,9 +51,4 @@ class Upload extends \Movim\Widget\Base
     {
         Notification::append(null, $this->__('upload.error_failed'));
     }
-
-    function display()
-    {
-
-    }
 }

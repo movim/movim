@@ -150,7 +150,11 @@ class Base
     function draw()
     {
         $this->display();
-        return trim($this->view->draw(strtolower($this->name), true));
+        if(file_exists($this->respath(strtolower($this->name).'.tpl', true))) {
+            return trim($this->view->draw(strtolower($this->name), true));
+        }
+
+        return '';
     }
 
     protected function tpl()

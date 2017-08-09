@@ -53,9 +53,4 @@ class Init extends \Movim\Widget\Base
           ->setAccessPresence()
           ->request();
     }
-
-    function display()
-    {
-
-    }
 }

@@ -192,9 +192,4 @@ class Stickers extends \Movim\Widget\Base
     {
         return getSmileyPath($id);
     }
-
-    function display()
-    {
-
-    }
 }
