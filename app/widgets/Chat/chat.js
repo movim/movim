@@ -301,6 +301,8 @@ var Chat = {
         }
     },
     appendMessage : function(idjidtime, data, prepend) {
+        if(data.body == null) return;
+
         var bubble = null,
             mergeMsg = false,
             msgStack,
