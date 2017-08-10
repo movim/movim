@@ -22,6 +22,8 @@ v0.12 (trunk)
  * Add touch support to open the menu on mobile devices
  * Improve Stickers picker
  * Display more information in the Rooms list
+ * Suggest public and open chatrooms on the Chat page
+ * New navigation menu for mobile devices
 
 v0.11
 ---------------------------
