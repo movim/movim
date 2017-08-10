@@ -285,7 +285,7 @@
                                         {/if}
                                     </a>
                                 </p>
-                                {if="isset($value.description)"}
+                                {if="isset($value.description) && !empty($value.description)"}
                                     <p>{$value.description}</p>
                                 {else}
                                     <p>{$value.url.host}</p>

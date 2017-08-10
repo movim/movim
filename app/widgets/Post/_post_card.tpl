@@ -163,7 +163,6 @@
 
         {if="isset($attachments.links)"}
             {loop="$attachments.links"}
-                {if="!empty($value.title)"}
                 <ul class="list">
                     <li>
                         <span class="primary icon gray">
@@ -175,17 +174,20 @@
                         </span>
                         <p class="normal line">
                             <a target="_blank" href="{$value.href}" title="{$value.href}">
-                                {$value.title}
+                                {if="$value.title"}
+                                    {$value.title}
+                                {else}
+                                    {$value.href}
+                                {/if}
                             </a>
                         </p>
-                        {if="isset($value.description)"}
+                        {if="isset($value.description) && !empty($value.description)"}
                             <p title="{$value.description}">{$value.description}</p>
                         {else}
                             <p>{$value.url.host}</p>
                         {/if}
                     </li>
                 </ul>
-                {/if}
             {/loop}
         {/if}
 
