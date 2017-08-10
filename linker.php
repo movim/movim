@@ -147,7 +147,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
                         if(isset($dns->port) && $dns->port != null) $port = $dns->port;
                         #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
-
+//$port = 5223;
                         $ip = \Moxl\Utils::resolveIp($msg->host);
                         $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
 

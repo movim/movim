@@ -163,6 +163,7 @@
 
         {if="isset($attachments.links)"}
             {loop="$attachments.links"}
+                {if="!empty($value.title)"}
                 <ul class="list">
                     <li>
                         <span class="primary icon gray">
@@ -188,6 +189,7 @@
                         {/if}
                     </li>
                 </ul>
+                {/if}
             {/loop}
         {/if}
 
