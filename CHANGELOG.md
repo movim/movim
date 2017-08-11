@@ -24,6 +24,7 @@ v0.12 (trunk)
  * Display more information in the Rooms list
  * Suggest public and open chatrooms on the Chat page
  * New navigation menu for mobile devices
+ * Rotate correctly the JPEG files when uploading them
 
 v0.11
 ---------------------------
