@@ -122,7 +122,9 @@ class Message extends Model
                 $xml = \simplexml_load_string((string)$stanza->html);
                 if(!$xml) {
                     $xml = \simplexml_load_string((string)$stanza->html->body);
-                    $results = $xml->xpath('//img/@src');
+                    if($xml) {
+                        $results = $xml->xpath('//img/@src');
+                    }
                 } else {
                     $xml->registerXPathNamespace('xhtml', 'http://www.w3.org/1999/xhtml');
                     $results = $xml->xpath('//xhtml:img/@src');
