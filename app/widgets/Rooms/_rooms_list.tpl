@@ -20,14 +20,26 @@
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
+                {if="$value->mucjid != $me"}
+                <span class="control icon active gray" onclick="
+                    Chats_ajaxOpen('{$value->mucjid}');
+                    Chat_ajaxGet('{$value->mucjid}');
+                    Dialog_ajaxClear();">
+                    <i class="zmdi zmdi zmdi-comment-text-alt"></i>
+                </span>
+                {/if}
                 {if="$value->mucaffiliation =='owner'"}
-                    <span class="control icon gray">
+                    <span class="control icon yellow">
                         <i class="zmdi zmdi-star"></i>
                     </span>
                 {/if}
                 {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
                     <p class="line normal">
-                        <a href="{$c->route('contact', $value->mucjid)}">{$value->resource}</a>
+                        {if="$value->mucjid == $me"}
+                            {$value->resource}
+                        {else}
+                            <a href="{$c->route('contact', $value->mucjid)}">{$value->resource}</a>
+                        {/if}
                     </p>
                 {else}
                     <p class="line normal">{$value->resource}</p>

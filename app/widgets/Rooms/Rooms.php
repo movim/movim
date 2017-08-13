@@ -193,6 +193,7 @@ class Rooms extends \Movim\Widget\Base
 
         $cd = new \Modl\ContactDAO;
         $view->assign('list', $cd->getPresences($room));
+        $view->assign('me', $this->user->getLogin());
 
         Dialog::fill($view->draw('_rooms_list', true), true);
     }

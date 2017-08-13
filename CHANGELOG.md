@@ -25,6 +25,7 @@ v0.12 (trunk)
  * Suggest public and open chatrooms on the Chat page
  * New navigation menu for mobile devices
  * Rotate correctly the JPEG files when uploading them
+ * Add support of private MUC messages
 
 v0.11
 ---------------------------

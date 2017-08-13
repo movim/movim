@@ -28,7 +28,11 @@
                 {$message->published|strtotime|prepareDate:true,true}
             </span>
         {/if}
-        {$contact->getTrueName()}
+        {if="strpos($contact->jid, '/') != false"}
+            {$contact->jid}
+        {else}
+            {$contact->getTrueName()}
+        {/if}
         {if="$caps && in_array($caps->type, ['handheld', 'phone'])"}
             <span class="second">
                 <i class="zmdi zmdi-smartphone"></i>

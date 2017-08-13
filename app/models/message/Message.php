@@ -90,6 +90,11 @@ class Message extends Model
                 $this->type = (string)$stanza->attributes()->type;
             }
 
+            if($stanza->x
+            && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user') {
+                $this->jidfrom = $jid[0].'/'.$jid[1];
+            }
+
             if($stanza->body) {
                 $this->body = (string)$stanza->body;
             }
