@@ -119,6 +119,8 @@ class Message extends Model
             }
 
             if($stanza->html) {
+                $results = [];
+
                 $xml = \simplexml_load_string((string)$stanza->html);
                 if(!$xml) {
                     $xml = \simplexml_load_string((string)$stanza->html->body);
@@ -130,7 +132,7 @@ class Message extends Model
                     $results = $xml->xpath('//xhtml:img/@src');
                 }
 
-                if(is_array($results) && !empty($results)) {
+                if(!empty($results)) {
                     if(substr((string)$results[0], 0, 10) == 'data:image') {
                         $str = explode('base64,', $results[0]);
                         if(isset($str[1])) {
