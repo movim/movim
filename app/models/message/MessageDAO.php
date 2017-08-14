@@ -225,6 +225,7 @@ class MessageDAO extends SQL
                 and (jidfrom = :jidfrom
                 or jidto = :jidto)
                 and type = \'groupchat\'
+                and body is not null
             order by published desc';
 
         if($limitr)
