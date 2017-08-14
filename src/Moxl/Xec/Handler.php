@@ -167,7 +167,7 @@ class Handler
             '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',// TLS
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
 
-            'b5e3374e43f6544852f7751dfc529100' => 'Subject',//?
+            //'b5e3374e43f6544852f7751dfc529100' => 'Subject',//?
 
             'fa9d41e26f664d9056618a4afe213861' => 'Post',
 
