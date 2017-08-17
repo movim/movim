@@ -19,7 +19,7 @@
                     </span>
                 {/if}
                 {if="!$contact->isMe()"}
-                    <span class="control icon active" onclick="MovimUtils.reload('{$c->route('chat', $contact->jid)}')">
+                    <span class="control icon active" onclick="ContactActions_ajaxChat('{$contact->jid}')">
                         <i class="zmdi zmdi-comment-text-alt"></i>
                     </span>
                 {/if}

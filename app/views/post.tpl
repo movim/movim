@@ -4,6 +4,7 @@
 <?php $this->widget('Upload');?>
 <?php $this->widget('Search');?>
 
+<?php $this->widget('ContactActions');?>
 <?php $this->widget('PostActions');?>
 
 <nav class="color dark">
