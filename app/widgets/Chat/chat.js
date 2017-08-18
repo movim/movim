@@ -31,6 +31,13 @@ var Chat = {
         var textarea = document.querySelector('#chat_textarea');
         var text = textarea.value.toLowerCase();
 
+        // If user have deleted text from textarea - reinitialize
+        // autocompletion.
+        if (text == "" && Chat.previouslyAutocompleted !== null) {
+            Chat.previouslyAutocompleted = null;
+            Chat.previouslyAutocompletedSeqID = null;
+        }
+
         // Assume that this is what we want to autocomplete if
         // Chat.toAutocomplete is null.
         if (Chat.toAutocomplete === null || (Chat.toAutocomplete != text && text.indexOf(":") === -1)) {
@@ -80,6 +87,7 @@ var Chat = {
             if (!autocompleted_ok) {
                 textarea.value = "";
                 Chat.previouslyAutocompleted = null;
+                Chat.previouslyAutocompletedSeqID = null;
             }
         }
     },
