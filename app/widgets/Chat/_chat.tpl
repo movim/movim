@@ -40,6 +40,8 @@
             {/if}
             {if="$subject != null"}
                 <p class="line" title="{$subject->subject}">{$subject->subject|addUrls}</p>
+            {else}
+                <p class="line">{$room}</p>
             {/if}
         </li>
     </ul>

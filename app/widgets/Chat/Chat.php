@@ -240,7 +240,7 @@ class Chat extends \Movim\Widget\Base
     {
         if(!$this->validateJid($room)) return;
 
-        $cod = new \modl\ConferenceDAO();
+        $cod = new \Modl\ConferenceDAO;
         $r = $cod->get($room);
 
         if($r) {
@@ -596,7 +596,7 @@ class Chat extends \Movim\Widget\Base
         $md = new \Modl\MessageDAO;
 
         if($muc) {
-            $messages = $md->getRoom(echapJid($jid));
+            $messages = $md->getRoom(echapJid($jid), 0, $this->_pagination * 4);
         } else {
             $messages = $md->getContact(echapJid($jid), 0, $this->_pagination);
         }

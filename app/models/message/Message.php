@@ -118,7 +118,8 @@ class Message extends Model
                 $p = $pd->getMyPresenceRoom($this->jidfrom);
 
                 if(is_object($p)
-                && strpos($this->body, $p->resource) !== false) {
+                && strpos($this->body, $p->resource) !== false
+                && $this->resource != $p->resource) {
                     $this->quoted = true;
                 }
             }

@@ -177,7 +177,7 @@ class Core implements MessageComponentInterface
     private function getLanguage(ConnectionInterface $conn)
     {
         $languages = $conn->httpRequest->getHeader('Accept-Language');
-        return (is_array($languages)) ? $languages[0] : false;
+        return (is_array($languages) && !empty($languages)) ? $languages[0] : false;
     }
 
     private function getOffset(ConnectionInterface $conn)
