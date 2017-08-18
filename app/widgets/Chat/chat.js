@@ -18,6 +18,7 @@ var Chat = {
     toAutocomplete: null,
     // What was previously in autocomplete?
     previouslyAutocompleted: null,
+    previouslyAutocompletedSeqID: null,
 
     autocomplete: function(event, jid) {
         event.preventDefault();
@@ -36,6 +37,7 @@ var Chat = {
             console.log("toAutocomplete changed: " + text);
             Chat.toAutocomplete = text;
         }
+        console.log("toAutocomplete: " + Chat.toAutocomplete);
 
         // If it is a first autocomplete attempt and there was no
         // substring to search found in input field - just add
@@ -53,24 +55,25 @@ var Chat = {
                 // If we want to just-scroll thru all people in MUC.
                 if (usersList[i]["resource"] == Chat.previouslyAutocompleted && i !== usersList.length - 1 && Chat.toAutocomplete == "") {
                     autocompleted = usersList[i+1]["resource"];
-                    console.log(autocompleted);
                     textarea.value = autocompleted + ": ";
                     Chat.previouslyAutocompleted = autocompleted;
+                    Chat.previouslyAutocompletedSeqID = i;
                     autocompleted_ok = true;
                     break;
                 } else {
                     // If we have substring to autocomplete.
-                    for (var ii = i; ii < usersList.length; ii++) {
-                        console.log(usersList[ii]["resource"].toLowerCase());
-                        if (usersList[ii]["resource"].toLowerCase().indexOf(text) !== -1) {
-                            autocompleted = usersList[i]["resource"];
-                            console.log(autocompleted);
-                            textarea.value = autocompleted + ": ";
-                            Chat.previouslyAutocompleted = autocompleted;
-                            autocompleted_ok = true;
-                            break;
-                        }
+                    if (i > Chat.previouslyAutocompletedSeqID && usersList[i]["resource"].toLowerCase().indexOf(Chat.toAutocomplete) !== -1 && usersList[i]["resource"] != Chat.previouslyAutocompleted) {
+                        console.log("BREAK")
+                        autocompleted = usersList[i]["resource"];
+                        textarea.value = autocompleted + ": ";
+                        Chat.previouslyAutocompleted = autocompleted;
+                        Chat.previouslyAutocompletedSeqID = i;
+                        autocompleted_ok = true;
+                        break;
                     }
+                }
+                if (autocompleted_ok) {
+                    break;
                 }
             }
             // If autocompletion failed - emptify input field.
