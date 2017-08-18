@@ -13,6 +13,73 @@ var Chat = {
     since: null,
     sended: false,
 
+    // Autocomplete vars.
+    // What user want to autocomplete?
+    toAutocomplete: null,
+    // What was previously in autocomplete?
+    previouslyAutocompleted: null,
+
+    autocomplete: function(event, jid) {
+        event.preventDefault();
+        Rooms_ajaxMucUsersAutocomplete(jid);
+    },
+    onAutocomplete: function(usersList) {
+        console.log("onAutocomplete");
+        console.log(usersList);
+
+        var textarea = document.querySelector('#chat_textarea');
+        var text = textarea.value.toLowerCase();
+
+        // Assume that this is what we want to autocomplete if
+        // Chat.toAutocomplete is null.
+        if (Chat.toAutocomplete === null || (Chat.toAutocomplete != text && text.indexOf(":") === -1)) {
+            console.log("toAutocomplete changed: " + text);
+            Chat.toAutocomplete = text;
+        }
+
+        // If it is a first autocomplete attempt and there was no
+        // substring to search found in input field - just add
+        // first element from users list to input field.
+        if (Chat.previouslyAutocompleted === null && Chat.toAutocomplete == "") {
+            var autocompleted = usersList[0]["resource"];
+            textarea.value = autocompleted + ": ";
+            Chat.previouslyAutocompleted = autocompleted;
+        } else {
+            // Otherwise we should autocomplete next to
+            // previouslyAutocompleted.
+            var autocompleted_ok = false;
+            for (var i = 0; i < usersList.length; i++) {
+                var autocompleted = "";
+                // If we want to just-scroll thru all people in MUC.
+                if (usersList[i]["resource"] == Chat.previouslyAutocompleted && i !== usersList.length - 1 && Chat.toAutocomplete == "") {
+                    autocompleted = usersList[i+1]["resource"];
+                    console.log(autocompleted);
+                    textarea.value = autocompleted + ": ";
+                    Chat.previouslyAutocompleted = autocompleted;
+                    autocompleted_ok = true;
+                    break;
+                } else {
+                    // If we have substring to autocomplete.
+                    for (var ii = i; ii < usersList.length; ii++) {
+                        console.log(usersList[ii]["resource"].toLowerCase());
+                        if (usersList[ii]["resource"].toLowerCase().indexOf(text) !== -1) {
+                            autocompleted = usersList[i]["resource"];
+                            console.log(autocompleted);
+                            textarea.value = autocompleted + ": ";
+                            Chat.previouslyAutocompleted = autocompleted;
+                            autocompleted_ok = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            // If autocompletion failed - emptify input field.
+            if (!autocompleted_ok) {
+                textarea.value = "";
+                Chat.previouslyAutocompleted = null;
+            }
+        }
+    },
     sendMessage: function(jid, muc)
     {
         var textarea = document.querySelector('#chat_textarea');
@@ -65,7 +132,12 @@ var Chat = {
         }, 0); // Fix Me
 
         textarea.onkeydown = function(event) {
-            if(this.dataset.muc) return;
+            if (this.dataset.muc) {
+                if (event.keyCode == 9) {
+                    Chat.autocomplete(event, this.dataset.jid);
+                }
+                return;
+            }
 
             if(event.keyCode == 38 && this.value == '') {
                 Chat_ajaxLast(this.dataset.jid);
