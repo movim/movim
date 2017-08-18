@@ -25,9 +25,6 @@ var Chat = {
         Rooms_ajaxMucUsersAutocomplete(jid);
     },
     onAutocomplete: function(usersList) {
-        console.log("onAutocomplete");
-        console.log(usersList);
-
         var textarea = document.querySelector('#chat_textarea');
         var text = textarea.value.toLowerCase();
 
@@ -41,10 +38,8 @@ var Chat = {
         // Assume that this is what we want to autocomplete if
         // Chat.toAutocomplete is null.
         if (Chat.toAutocomplete === null || (Chat.toAutocomplete != text && text.indexOf(":") === -1)) {
-            console.log("toAutocomplete changed: " + text);
             Chat.toAutocomplete = text;
         }
-        console.log("toAutocomplete: " + Chat.toAutocomplete);
 
         // If it is a first autocomplete attempt and there was no
         // substring to search found in input field - just add
@@ -69,8 +64,7 @@ var Chat = {
                     break;
                 } else {
                     // If we have substring to autocomplete.
-                    if (i > Chat.previouslyAutocompletedSeqID && usersList[i]["resource"].toLowerCase().indexOf(Chat.toAutocomplete) !== -1 && usersList[i]["resource"] != Chat.previouslyAutocompleted) {
-                        console.log("BREAK")
+                    if (i > Chat.previouslyAutocompletedSeqID && usersList[i]["resource"].substring(0, Chat.toAutocomplete.length).toLowerCase().indexOf(Chat.toAutocomplete) !== -1 && usersList[i]["resource"] != Chat.previouslyAutocompleted) {
                         autocompleted = usersList[i]["resource"];
                         textarea.value = autocompleted + ": ";
                         Chat.previouslyAutocompleted = autocompleted;
