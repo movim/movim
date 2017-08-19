@@ -30,56 +30,67 @@ var Chat = {
 
         // If user have deleted text from textarea - reinitialize
         // autocompletion.
-        if (text == "" && Chat.previouslyAutocompleted !== null) {
+        if (text == '' && Chat.previouslyAutocompleted !== null) {
             Chat.previouslyAutocompleted = null;
             Chat.previouslyAutocompletedSeqID = null;
         }
 
         // Assume that this is what we want to autocomplete if
         // Chat.toAutocomplete is null.
-        if (Chat.toAutocomplete === null || (Chat.toAutocomplete != text && text.indexOf(":") === -1)) {
+        if (Chat.toAutocomplete === null
+            || (
+                Chat.toAutocomplete != text
+                && text.indexOf(':') === -1)
+            ) {
             Chat.toAutocomplete = text;
         }
 
         // If it is a first autocomplete attempt and there was no
         // substring to search found in input field - just add
         // first element from users list to input field.
-        if (Chat.previouslyAutocompleted === null && Chat.toAutocomplete == "") {
-            var autocompleted = usersList[0]["resource"];
-            textarea.value = autocompleted + ": ";
+        if (Chat.previouslyAutocompleted === null
+            && Chat.toAutocomplete == '') {
+            var autocompleted = usersList[0]['resource'];
+            textarea.value = autocompleted + ': ';
             Chat.previouslyAutocompleted = autocompleted;
         } else {
             // Otherwise we should autocomplete next to
             // previouslyAutocompleted.
-            var autocompleted_ok = false;
+            var autocompletedOk = false;
             for (var i = 0; i < usersList.length; i++) {
-                var autocompleted = "";
+                var autocompleted = '';
                 // If we want to just-scroll thru all people in MUC.
-                if (usersList[i]["resource"] == Chat.previouslyAutocompleted && i !== usersList.length - 1 && Chat.toAutocomplete == "") {
-                    autocompleted = usersList[i+1]["resource"];
-                    textarea.value = autocompleted + ": ";
+                if (usersList[i]['resource'] == Chat.previouslyAutocompleted
+                    && i !== usersList.length - 1
+                    && Chat.toAutocomplete == '') {
+                    autocompleted = usersList[i+1]['resource'];
+                    textarea.value = autocompleted + ': ';
                     Chat.previouslyAutocompleted = autocompleted;
                     Chat.previouslyAutocompletedSeqID = i;
-                    autocompleted_ok = true;
+                    autocompletedOk = true;
                     break;
                 } else {
                     // If we have substring to autocomplete.
-                    if (i > Chat.previouslyAutocompletedSeqID && usersList[i]["resource"].substring(0, Chat.toAutocomplete.length).toLowerCase().indexOf(Chat.toAutocomplete) !== -1 && usersList[i]["resource"] != Chat.previouslyAutocompleted) {
-                        autocompleted = usersList[i]["resource"];
-                        textarea.value = autocompleted + ": ";
+                    var user_substr = usersList[i]['resource'].substring(0,
+                        Chat.toAutocomplete.length)
+                    if (i > Chat.previouslyAutocompletedSeqID
+                        && user_substr.toLowerCase().indexOf(Chat.toAutocomplete) !== -1
+                        && usersList[i]['resource'] != Chat.previouslyAutocompleted) {
+                        autocompleted = usersList[i]['resource'];
+                        textarea.value = autocompleted + ': ';
                         Chat.previouslyAutocompleted = autocompleted;
                         Chat.previouslyAutocompletedSeqID = i;
-                        autocompleted_ok = true;
+                        autocompletedOk = true;
                         break;
                     }
                 }
-                if (autocompleted_ok) {
+                if (autocompletedOk) {
                     break;
                 }
             }
             // If autocompletion failed - emptify input field.
-            if (!autocompleted_ok) {
-                textarea.value = "";
+            if (!autocompletedOk) {
+                textarea.value = '';
                 Chat.previouslyAutocompleted = null;
                 Chat.previouslyAutocompletedSeqID = null;
             }
@@ -144,10 +155,8 @@ var Chat = {
         }, 0); // Fix Me
 
         textarea.onkeydown = function(event) {
-            if (this.dataset.muc) {
-                if (event.keyCode == 9) {
-                    Chat.autocomplete(event, this.dataset.jid);
-                }
+            if (this.dataset.muc && event.keyCode == 9) {
+                Chat.autocomplete(event, this.dataset.jid);
                 return;
             }
 
