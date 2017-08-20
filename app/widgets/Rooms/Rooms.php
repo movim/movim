@@ -191,11 +191,19 @@ class Rooms extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $cd = new \Modl\ContactDAO;
-        $view->assign('list', $cd->getPresences($room));
+        $userslist = $this->getUsersList($room);
+        $view->assign('list', $userslist);
         $view->assign('me', $this->user->getLogin());
 
         Dialog::fill($view->draw('_rooms_list', true), true);
+    }
+
+    /**
+     * @brief Autocomplete users in MUC
+     */
+    function ajaxMucUsersAutocomplete($room) {
+        $usersForAutocomplete = $this->getUsersList($room);
+        $this->rpc("Chat.onAutocomplete", $usersForAutocomplete);
     }
 
     /**
@@ -353,6 +361,15 @@ class Rooms extends \Movim\Widget\Base
         } else {
             return false;
         }
+    }
+
+    /**
+     * @brief Get rooms users list
+     */
+    function getUsersList($room)
+    {
+        $cd = new \Modl\ContactDAO;
+        return $cd->getPresences($room);
     }
 
     function prepareRooms($edit = false)
