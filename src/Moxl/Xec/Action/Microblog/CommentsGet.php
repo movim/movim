@@ -34,6 +34,7 @@ class CommentsGet extends Action
     private $_to;
     private $_id;
     private $_node;
+    private $_parentnode;
 
     public function request()
     {
@@ -51,6 +52,12 @@ class CommentsGet extends Action
     {
         $this->_id = $id;
         $this->_node = 'urn:xmpp:microblog:0:comments/'.$this->_id;
+        return $this;
+    }
+
+    public function setParentNode($parentnode)
+    {
+        $this->_parentnode = $parentnode;
         return $this;
     }
 
@@ -75,7 +82,8 @@ class CommentsGet extends Action
             [
                 'server' => $this->_to,
                 'node' => $this->_node,
-                'id' => $this->_id
+                'id' => $this->_id,
+                'parentnode' => $this->_parentnode
             ]);
 
         $this->deliver();

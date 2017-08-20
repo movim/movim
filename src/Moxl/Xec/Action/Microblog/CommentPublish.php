@@ -28,6 +28,7 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Stanza\PubsubAtom;
 use Moxl\Xec\Action\Pubsub\Errors;
+use Moxl\Xec\Action\Pubsub\GetItem;
 
 class CommentPublish extends Errors
 {
@@ -37,7 +38,8 @@ class CommentPublish extends Errors
 
     private $_atom;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->_atom = new PubsubAtom;
     }
@@ -89,16 +91,18 @@ class CommentPublish extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $cd = new CommentsGet;
-        $cd->setTo($this->_to)
-           ->setId($this->_parentid)
-           ->request();
+        $g = new GetItem;
+        $g->setTo($this->_to)
+          ->setNode($this->_node)
+          ->setId($this->_atom->id)
+          ->request();
 
         $this->pack([
                 'server' => $this->_to,
                 'node' => $this->_node,
                 'id' => $this->_parentid
             ]);
+
         $this->deliver();
     }
 

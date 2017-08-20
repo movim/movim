@@ -67,7 +67,6 @@ class GetItem extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $to = current(explode('/',(string)$stanza->attributes()->to));
         $from = $this->_to;
         $node = $this->_node;
 
@@ -94,7 +93,7 @@ class GetItem extends Errors
                         $this->event('post', $this->packet);
                     }
 
-                    $this->pack(['server' => $this->_to, 'node' => $this->_node, 'id' => $this->_id]);
+                    $this->pack(['origin' => $this->_to, 'node' => $this->_node, 'nodeid' => $this->_id]);
                     $this->deliver();
                 }
             }
