@@ -26,59 +26,61 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function onItem($packet)
     {
-        list($server, $node, $id) = array_values($packet->content);
+        list($origin, $node, $id) = array_values($packet->content);
 
         $pd = new \Modl\PostnDAO;
-        $p = $pd->get($server, $node, $id);
+        $p = $pd->get($origin, $node, $id);
+
+        if($p && $p->isComment()) $p = $p->getParent();
 
         if($p) {
-            $this->rpc('MovimTpl.fill', '#'.cleanupId($id), $this->preparePost($p));
+            $this->rpc('MovimTpl.fill', '#'.cleanupId($p->nodeid), $this->preparePost($p));
         }
     }
 
     /*function onItems($packet)
     {
-        list($server, $node) = array_values($packet->content);
-        $this->displayItems($server, $node);
+        list($origin, $node) = array_values($packet->content);
+        $this->displayItems($origin, $node);
     }*/
 
     function onItemsId($packet)
     {
-        list($server, $node, $ids) = array_values($packet->content);
+        list($origin, $node, $ids) = array_values($packet->content);
 
         $ids = array_slice($ids, 0, $this->_paging);
-        $this->displayItems($server, $node, $ids);
+        $this->displayItems($origin, $node, $ids);
     }
 
     function onItemsError($packet)
     {
-        list($server, $node) = array_values($packet->content);
+        list($origin, $node) = array_values($packet->content);
         Notification::append(false, $this->__('group.empty'));
 
         if($node != 'urn:xmpp:microblog:0') {
             $sd = new \Modl\SubscriptionDAO;
 
-            if($sd->get($server, $node)) {
-                $this->rpc('CommunityAffiliations_ajaxDelete', $server, $node, true);
-                $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $server, $node);
+            if($sd->get($origin, $node)) {
+                $this->rpc('CommunityAffiliations_ajaxDelete', $origin, $node, true);
+                $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $origin, $node);
             } else {
                 $id = new \Modl\InfoDAO;
-                $id->delete($server, $node);
+                $id->delete($origin, $node);
                 $this->ajaxClear();
             }
         } else {
-            $this->displayItems($server, $node, false, true);
+            $this->displayItems($origin, $node, false, true);
         }
     }
 
-    private function displayItems($server, $node, $ids = false, $public = false)
+    private function displayItems($origin, $node, $ids = false, $public = false)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
-        $html = $this->prepareCommunity($server, $node, 0, $ids, $public);
+        $html = $this->prepareCommunity($origin, $node, 0, $ids, $public);
 
         $slugify = new Slugify;
-        $this->rpc('MovimTpl.fill', '#communityposts.'.$slugify->slugify($server.'_'.$node), $html);
+        $this->rpc('MovimTpl.fill', '#communityposts.'.$slugify->slugify($origin.'_'.$node), $html);
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
@@ -88,9 +90,9 @@ class CommunityPosts extends \Movim\Widget\Base
         $c->ajaxGetDrawer($jid);
     }
 
-    function ajaxGetItems($server, $node)
+    function ajaxGetItems($origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         // https://github.com/maranda/metronome/issues/236
         /*if($node == 'urn:xmpp:microblog:0') {
@@ -99,15 +101,15 @@ class CommunityPosts extends \Movim\Widget\Base
             $r = new GetItemsId;
         //}
 
-        $r->setTo($server)
+        $r->setTo($origin)
           ->setNode($node);
 
         $r->request();
     }
 
-    function ajaxGetHistory($server, $node, $page)
+    function ajaxGetHistory($origin, $node, $page)
     {
-        $html = $this->prepareCommunity($server, $node, $page);
+        $html = $this->prepareCommunity($origin, $node, $page);
         $this->rpc('MovimTpl.append', '#communityposts', $html);
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
@@ -135,26 +137,26 @@ class CommunityPosts extends \Movim\Widget\Base
         return $pw->preparePost($p, true, false, true);
     }
 
-    private function prepareCommunity($server, $node, $page = 0, $ids = false, $public = false)
+    private function prepareCommunity($origin, $node, $page = 0, $ids = false, $public = false)
     {
         $pd = new \Modl\PostnDAO;
 
         /*if($ids == false) {*/
         if($public) {
-            $posts = $pd->getPublic($server, $node, $page*$this->_paging, $this->_paging);
+            $posts = $pd->getPublic($origin, $node, $page*$this->_paging, $this->_paging);
         } else {
-            $posts = $pd->getNodeUnfiltered($server, $node, $page*$this->_paging, $this->_paging);
+            $posts = $pd->getNodeUnfiltered($origin, $node, $page*$this->_paging, $this->_paging);
         }
         /*
         } else {
-            $posts = $pd->getIds($server, $node, $ids);
+            $posts = $pd->getIds($origin, $node, $ids);
         }*/
 
         $id = new \Modl\InfoDAO;
-        $info = $id->get($server, $node);
+        $info = $id->get($origin, $node);
 
         $pd = new \Modl\SubscriptionDAO;
-        $subscription = $pd->get($server, $node);
+        $subscription = $pd->get($origin, $node);
 
         $nsfwMessage = false;
 
@@ -175,7 +177,7 @@ class CommunityPosts extends \Movim\Widget\Base
         }
 
         $view = $this->tpl();
-        $view->assign('server', $server);
+        $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('page', $page);
         $view->assign('ids', $ids);
@@ -190,12 +192,12 @@ class CommunityPosts extends \Movim\Widget\Base
         return $html;
     }
 
-    private function validateServerNode($server, $node)
+    private function validateServerNode($origin, $node)
     {
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if(!$validate_server->validate($server)
+        if(!$validate_server->validate($origin)
         || !$validate_node->validate($node)
         ) return false;
         else return true;

@@ -143,7 +143,7 @@ class Menu extends \Movim\Widget\Base
             $this->rpc('MovimTpl.append', '#menu_wrapper', $html);
         } else {
             $this->rpc('MovimTpl.fill', '#menu_widget', $html);
-            $this->rpc('movim_posts_unread', 0);
+            //$this->rpc('movim_posts_unread', 0);
         }
 
         $this->rpc('MovimUtils.enhanceArticlesContent');

@@ -25,35 +25,35 @@ class CommunitiesServer extends \Movim\Widget\Base
     {
         Notification::append(null, $this->__('communitiesserver.created'));
 
-        list($server, $node) = array_values($packet->content);
-        $this->ajaxDisco($server);
+        list($origin, $node) = array_values($packet->content);
+        $this->ajaxDisco($origin);
     }
 
     function onDisco($packet)
     {
-        $server = $packet->content;
+        $origin = $packet->content;
 
-        $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($server));
+        $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($origin));
     }
 
     function onDiscoError($packet)
     {
-        $server = $packet->content;
+        $origin = $packet->content;
 
         $id = new \Modl\InfoDAO;
-        $id->deleteItems($server);
+        $id->deleteItems($origin);
 
-        $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($server));
+        $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($origin));
 
         Notification::append(null, $this->__('communitiesserver.disco_error'));
     }
 
     function onTestCreate($packet)
     {
-        $server = $packet->content;
+        $origin = $packet->content;
 
         $view = $this->tpl();
-        $view->assign('server', $server);
+        $view->assign('server', $origin);
 
         Dialog::fill($view->draw('_communitiesserver_add', true));
     }
@@ -63,9 +63,9 @@ class CommunitiesServer extends \Movim\Widget\Base
         Notification::append(null, $this->__('communitiesserver.no_creation'));
     }
 
-    function ajaxDisco($server)
+    function ajaxDisco($origin)
     {
-        if(!$this->validateServer($server)) {
+        if(!$this->validateServer($origin)) {
             Notification::append(null, $this->__('communitiesserver.disco_error'));
             return;
         }
@@ -73,24 +73,24 @@ class CommunitiesServer extends \Movim\Widget\Base
         //$this->rpc('MovimTpl.fill', '#communities_server', '');
 
         $r = new Items;
-        $r->setTo($server)->request();
+        $r->setTo($origin)->request();
     }
 
     /*
      * Seriously ? We need to put this hack because of buggy XEP-0060...
      */
-    function ajaxTestAdd($server)
+    function ajaxTestAdd($origin)
     {
-        if(!$this->validateServer($server)) return;
+        if(!$this->validateServer($origin)) return;
 
         $t = new TestCreate;
-        $t->setTo($server)
+        $t->setTo($origin)
           ->request();
     }
 
-    function ajaxAddConfirm($server, $form)
+    function ajaxAddConfirm($origin, $form)
     {
-        if(!$this->validateServer($server)) return;
+        if(!$this->validateServer($origin)) return;
 
         $validate_name = Validator::stringType()->length(4, 80);
         if(!$validate_name->validate($form->name->value)) {
@@ -107,20 +107,20 @@ class CommunitiesServer extends \Movim\Widget\Base
         }
 
         $c = new Create;
-        $c->setTo($server)
+        $c->setTo($origin)
           ->setNode($uri)
           ->setName($form->name->value)
           ->request();
     }
 
-    public function prepareCommunitiesServer($server)
+    public function prepareCommunitiesServer($origin)
     {
         $id = new \Modl\InfoDAO;
 
         $view = $this->tpl();
-        $view->assign('item', $id->getJid($server));
-        $view->assign('nodes', $id->getItems($server));
-        $view->assign('server', $server);
+        $view->assign('item', $id->getJid($origin));
+        $view->assign('nodes', $id->getItems($origin));
+        $view->assign('server', $origin);
 
         return $view->draw('_communitiesserver', true);
     }
@@ -128,12 +128,12 @@ class CommunitiesServer extends \Movim\Widget\Base
     /**
      * @brief Validate the server
      *
-     * @param string $server
+     * @param string $origin
      */
-    private function validateServer($server)
+    private function validateServer($origin)
     {
         $validate_server = Validator::noWhitespace()->alnum('.-_')->length(6, 40);
-        return ($validate_server->validate($server));
+        return ($validate_server->validate($origin));
     }
 
     public function display()

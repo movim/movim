@@ -505,6 +505,29 @@ class PostnDAO extends SQL
         return $this->run(null, 'count');
     }
 
+    function isLiked($origin, $id)
+    {
+        $this->_sql = '
+            select count(*) from postn
+            where origin = :origin
+                and node = :node
+                and aid = :aid
+                and (contentraw = :contentraw
+                or title = :contentraw)';
+
+        $this->prepare(
+            'Postn',
+            [
+                'origin' => $origin,
+                'node'   => 'urn:xmpp:microblog:0:comments/'.$id,
+                'aid'    => $this->_user,
+                'contentraw' => '♥'
+            ]
+        );
+
+        return ($this->run(null, 'count') > 0);
+    }
+
     function countLikes($origin, $id)
     {
         $this->_sql = '

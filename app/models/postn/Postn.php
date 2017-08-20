@@ -579,6 +579,12 @@ class Postn extends Model
         return $this->openlink;
     }
 
+    public function getComments()
+    {
+        $pd = new \Modl\PostnDAO;
+        return $pd->getComments($this);
+    }
+
     public function countComments()
     {
         $pd = new \Modl\PostnDAO;
@@ -589,6 +595,12 @@ class Postn extends Model
     {
         $pd = new \Modl\PostnDAO;
         return $pd->countLikes($this->commentorigin, $this->commentnodeid);
+    }
+
+    public function isLiked()
+    {
+        $pd = new \Modl\PostnDAO;
+        return $pd->isLiked($this->commentorigin, $this->commentnodeid);
     }
 
     /*public function countReplies()

@@ -16,7 +16,7 @@ class CommunityHeader extends \Movim\Widget\Base
 {
     public function load()
     {
-        $this->registerEvent('disco_request_handle', 'onDiscoRequest');
+        $this->registerEvent('disco_request_handle', 'onDiscoRequest', 'community');
         $this->registerEvent('pubsub_subscribe_handle', 'onSubscribed');
         $this->registerEvent('pubsub_subscribe_errorunsupported', 'onSubscriptionUnsupported');
         $this->registerEvent('pubsub_unsubscribe_handle', 'onUnsubscribed');
@@ -28,15 +28,15 @@ class CommunityHeader extends \Movim\Widget\Base
 
     function onDiscoRequest($packet)
     {
-        list($server, $node) = $packet->content;
+        list($origin, $node) = $packet->content;
 
-        $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($server, $node));
+        $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($origin, $node));
     }
 
     function onTestPublish($packet)
     {
-        list($server, $node) = array_values($packet->content);
-        $this->rpc('MovimUtils.redirect', $this->route('publish', [$server, $node]));
+        list($origin, $node) = array_values($packet->content);
+        $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node]));
     }
 
     function onTestPublishError($packet)
@@ -46,12 +46,12 @@ class CommunityHeader extends \Movim\Widget\Base
 
     function onSubscribed($packet)
     {
-        list($server, $node) = array_values($packet->content);
+        list($origin, $node) = array_values($packet->content);
 
         $r = new Rooms;
         $r->setBookmark();
 
-        $this->ajaxGetMetadata($server, $node);
+        $this->ajaxGetMetadata($origin, $node);
 
         Notification::append(null, $this->__('communityheader.subscribed'));
     }
@@ -63,36 +63,36 @@ class CommunityHeader extends \Movim\Widget\Base
 
     function onUnsubscribed($packet)
     {
-        list($server, $node) = array_values($packet->content);
+        list($origin, $node) = array_values($packet->content);
 
         $r = new Rooms;
         $r->setBookmark();
 
-        $this->ajaxGetMetadata($server, $node);
+        $this->ajaxGetMetadata($origin, $node);
 
         Notification::append(null, $this->__('communityheader.unsubscribed'));
     }
 
-    function ajaxGetMetadata($server, $node)
+    function ajaxGetMetadata($origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $r = new Request;
-        $r->setTo($server)->setNode($node)
+        $r->setTo($origin)->setNode($node)
           ->request();
     }
 
-    function ajaxAskSubscribe($server, $node)
+    function ajaxAskSubscribe($origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $view = $this->tpl();
 
-        $view->assign('server', $server);
+        $view->assign('server', $origin);
         $view->assign('node', $node);
 
         $id = new \Modl\InfoDAO;
-        $info = $id->get($server, $node);
+        $info = $id->get($origin, $node);
 
         if(isset($info)) {
             $view->assign('info', $info);
@@ -103,12 +103,12 @@ class CommunityHeader extends \Movim\Widget\Base
         Dialog::fill($view->draw('_communityheader_subscribe', true));
     }
 
-    function ajaxSubscribe($form, $server, $node)
+    function ajaxSubscribe($form, $origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $g = new Subscribe;
-        $g->setTo($server)
+        $g->setTo($origin)
           ->setNode($node)
           ->setFrom($this->user->getLogin())
           ->setData($form)
@@ -116,24 +116,24 @@ class CommunityHeader extends \Movim\Widget\Base
 
         if($form->share->value) {
             $a = new SubscriptionAdd;
-            $a->setServer($server)
+            $a->setServer($origin)
               ->setNode($node)
               ->setFrom($this->user->getLogin())
               ->request();
         }
     }
 
-    function ajaxAskUnsubscribe($server, $node)
+    function ajaxAskUnsubscribe($origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $view = $this->tpl();
 
-        $view->assign('server', $server);
+        $view->assign('server', $origin);
         $view->assign('node', $node);
 
         $id = new \Modl\InfoDAO;
-        $info = $id->get($server, $node);
+        $info = $id->get($origin, $node);
 
         if(isset($info)) {
             $view->assign('info', $info);
@@ -144,15 +144,15 @@ class CommunityHeader extends \Movim\Widget\Base
         Dialog::fill($view->draw('_communityheader_unsubscribe', true));
     }
 
-    function ajaxUnsubscribe($server, $node)
+    function ajaxUnsubscribe($origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $sd = new \Modl\SubscriptionDAO;
 
-        foreach($sd->get($server, $node) as $s) {
+        foreach($sd->get($origin, $node) as $s) {
             $g = new Unsubscribe;
-            $g->setTo($server)
+            $g->setTo($origin)
               ->setNode($node)
               ->setSubid($s->subid)
               ->setFrom($this->user->getLogin())
@@ -160,7 +160,7 @@ class CommunityHeader extends \Movim\Widget\Base
         }
 
         $r = new SubscriptionRemove;
-        $r->setServer($server)
+        $r->setServer($origin)
           ->setNode($node)
           ->setFrom($this->user->getLogin())
           ->request();
@@ -169,20 +169,20 @@ class CommunityHeader extends \Movim\Widget\Base
     /*
      * Sic, doing this hack and wait to have a proper way to test it in the standard
      */
-    function ajaxTestPublish($server, $node)
+    function ajaxTestPublish($origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $t = new TestPostPublish;
-        $t->setTo($server)
+        $t->setTo($origin)
           ->setNode($node)
           ->request();
     }
 
-    public function prepareHeader($server, $node)
+    public function prepareHeader($origin, $node)
     {
         $id = new \Modl\InfoDAO;
-        $info = $id->get($server, $node);
+        $info = $id->get($origin, $node);
 
         /*
         if($item && !$item->logo) {
@@ -191,24 +191,24 @@ class CommunityHeader extends \Movim\Widget\Base
         }
         */
         $pd = new \Modl\SubscriptionDAO;
-        $subscription = $pd->get($server, $node);
+        $subscription = $pd->get($origin, $node);
 
         $view = $this->tpl();
 
         $view->assign('info', $info);
         $view->assign('subscription', $subscription);
         $view->assign('node', $node);
-        $view->assign('server', $server);
+        $view->assign('server', $origin);
 
         return $view->draw('_communityheader', true);
     }
 
-    private function validateServerNode($server, $node)
+    private function validateServerNode($origin, $node)
     {
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if(!$validate_server->validate($server)
+        if(!$validate_server->validate($origin)
         || !$validate_node->validate($node)
         ) return false;
         else return true;

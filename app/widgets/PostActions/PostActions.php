@@ -18,8 +18,7 @@ class PostActions extends \Movim\Widget\Base
         if(substr($node, 0, 29) == 'urn:xmpp:microblog:0:comments') {
             Notification::append(false, $this->__('post.comment_deleted'));
 
-            $p = new Post;
-            $p->ajaxGetComments($server, substr($node, 30));
+            $this->rpc('MovimTpl.remove', '#'.cleanupId($id));
         } else {
             Notification::append(false, $this->__('post.deleted'));
 
@@ -29,6 +28,16 @@ class PostActions extends \Movim\Widget\Base
                 $this->rpc('MovimUtils.redirect', $this->route('community', [$server, $node]));
             }
         }
+    }
+
+    function ajaxLike($to, $node, $id)
+    {
+        $pd = new \Modl\PostnDAO;
+        $p = $pd->get($to, $node, $id);
+        if($p->isLiked()) return;
+
+        $post = new Post;
+        $post->publishComment('♥', $to, $node, $id);
     }
 
     function ajaxDelete($to, $node, $id)
@@ -60,10 +69,5 @@ class PostActions extends \Movim\Widget\Base
         $p->setTo($to)
           ->setNode('urn:xmpp:microblog:0:comments/'.$id)
           ->request();
-    }
-
-
-    function display()
-    {
     }
 }

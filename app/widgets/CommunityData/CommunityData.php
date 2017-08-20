@@ -6,20 +6,20 @@ class CommunityData extends \Movim\Widget\Base
 {
     public function load()
     {
-        $this->registerEvent('disco_request_handle', 'onDiscoRequest');
+        $this->registerEvent('disco_request_handle', 'onDiscoRequest', 'community');
     }
 
     function onDiscoRequest($packet)
     {
-        list($server, $node) = $packet->content;
+        list($origin, $node) = $packet->content;
 
-        $this->rpc('MovimTpl.fill', '#community_data', $this->prepareData($server, $node));
+        $this->rpc('MovimTpl.fill', '#community_data', $this->prepareData($origin, $node));
     }
 
-    public function prepareData($server, $node)
+    public function prepareData($origin, $node)
     {
         $id = new \Modl\InfoDAO;
-        $info = $id->get($server, $node);
+        $info = $id->get($origin, $node);
 /*
         if($item && !$item->logo) {
             $item->setPicture();
@@ -27,7 +27,7 @@ class CommunityData extends \Movim\Widget\Base
         }
 */
         $pd = new \Modl\SubscriptionDAO;
-        $subscription = $pd->get($server, $node);
+        $subscription = $pd->get($origin, $node);
 
         $view = $this->tpl();
         $view->assign('info', $info);

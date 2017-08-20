@@ -49,7 +49,7 @@ class Presence extends \Movim\Widget\Base
 
     function start()
     {
-        $this->rpc('Notification.inhibit', 10);
+        $this->rpc('Notification.inhibit', 15);
 
         // http://xmpp.org/extensions/xep-0280.html
         \Moxl\Stanza\Carbons::enable();

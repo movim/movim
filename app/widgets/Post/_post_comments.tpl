@@ -7,15 +7,9 @@
         </li>
     {/if}
 
-    {$liked = false}
-
     {loop="$comments"}
-        {if="$value->isMine(true) && $value->isLike()"}
-            {$liked = true}
-        {/if}
-
         {if="$value->title || $value->contentraw"}
-        <li>
+        <li id="{$value->nodeid|cleanupId}" {if="$value->isMine(true)"}class="mine"{/if}>
             {if="$value->isMine()"}
                 <span class="control icon gray active"
                       onclick="PostActions_ajaxDelete('{$value->origin}', '{$value->node}', '{$value->nodeid}')">
@@ -63,13 +57,12 @@
         </li>
         {/if}
     {/loop}
-</ul>
-<ul class="list">
+
     <li class="hide" id="comment_add">
-        <span class="primary icon gray">
+        <span class="primary icon small gray">
             <i class="zmdi zmdi-comment"></i>
         </span>
-        <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$server}', '{$node}', '{$id}')">
+        <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->origin}', '{$post->node}', '{$post->nodeid}')">
             <i class="zmdi zmdi-mail-send"></i>
         </span>
         <form name="comment">
@@ -87,7 +80,7 @@
     <li>
         <p class="center">
             {if="!$liked"}
-            <button class="button red flat" id="like" onclick="MovimUtils.addClass('#like', 'disabled'); Post_ajaxLike('{$server}', '{$node}', '{$id}')">
+            <button class="button red flat" id="like" onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
                 <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
             </button>
             {/if}
@@ -102,3 +95,4 @@
         </p>
     </li>
 </ul>
+

@@ -24,7 +24,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     function onAffiliations($packet)
     {
-        list($affiliations, $server, $node) = array_values($packet->content);
+        list($affiliations, $origin, $node) = array_values($packet->content);
 
         $role = null;
 
@@ -35,7 +35,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         }
 
         $id = new \Modl\InfoDAO;
-        $info = $id->get($server, $node);
+        $info = $id->get($origin, $node);
 
         $view = $this->tpl();
         $view->assign('role', $role);
@@ -50,12 +50,12 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $cd = new \Modl\CapsDAO;
         $sd = new \Modl\SubscriptionDAO;
 
-        $view->assign('subscriptions', $sd->getAll($server, $node));
-        $view->assign('server', $server);
+        $view->assign('subscriptions', $sd->getAll($origin, $node));
+        $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
         $view->assign('me', $this->user->getLogin());
-        $view->assign('roles', $cd->get($server)->getPubsubRoles());
+        $view->assign('roles', $cd->get($origin)->getPubsubRoles());
 
         $this->rpc(
             'MovimTpl.fill',
@@ -71,14 +71,14 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     function onSubscriptions($packet)
     {
-        list($subscriptions, $server, $node) = array_values($packet->content);
+        list($subscriptions, $origin, $node) = array_values($packet->content);
 
         $sd = new \Modl\SubscriptionDAO;
 
         $view = $this->tpl();
 
-        $view->assign('subscriptions', $sd->getAll($server, $node));
-        $view->assign('server', $server);
+        $view->assign('subscriptions', $sd->getAll($origin, $node));
+        $view->assign('server', $origin);
         $view->assign('node', $node);
 
         Dialog::fill($view->draw('_communityaffiliations_subscriptions', true), true);
@@ -119,79 +119,80 @@ class CommunityAffiliations extends \Movim\Widget\Base
         return $cd->get($jid);
     }
 
-    function ajaxGetAffiliations($server, $node){
-        if(!$this->validateServerNode($server, $node)) return;
+    function ajaxGetAffiliations($origin, $node)
+    {
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $r = new GetAffiliations;
-        $r->setTo($server)->setNode($node)
+        $r->setTo($origin)->setNode($node)
           ->request();
     }
 
-    function ajaxGetSubscriptions($server, $node, $notify = true)
+    function ajaxGetSubscriptions($origin, $node, $notify = true)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $r = new GetSubscriptions;
-        $r->setTo($server)
+        $r->setTo($origin)
           ->setNode($node)
           ->setNotify($notify)
           ->request();
     }
 
-    function ajaxDelete($server, $node, $clean = false)
+    function ajaxDelete($origin, $node, $clean = false)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $view = $this->tpl();
-        $view->assign('server', $server);
+        $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('clean', $clean);
 
         Dialog::fill($view->draw('_communityaffiliations_delete', true));
     }
 
-    function ajaxDeleteConfirm($server, $node)
+    function ajaxDeleteConfirm($origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $d = new Delete;
-        $d->setTo($server)->setNode($node)
+        $d->setTo($origin)->setNode($node)
           ->request();
     }
 
-    function ajaxAffiliations($server, $node)
+    function ajaxAffiliations($origin, $node)
     {
         $view = $this->tpl();
-        $view->assign('server', $server);
+        $view->assign('server', $origin);
         $view->assign('node', $node);
 
         Dialog::fill($view->draw('_communityaffiliations_config', true));
 
-        $this->ajaxGetAffiliations($server, $node);
+        $this->ajaxGetAffiliations($origin, $node);
     }
 
-    function ajaxChangeAffiliation($server, $node, $form)
+    function ajaxChangeAffiliation($origin, $node, $form)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $cd = new \Modl\CapsDAO;
 
-        if(Validator::in($cd->get($server)->getPubsubRoles())->validate($form->role->value)
+        if(Validator::in($cd->get($origin)->getPubsubRoles())->validate($form->role->value)
         && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
-            $sa->setTo($server)
+            $sa->setTo($origin)
                ->setNode($node)
                ->setData([$form->jid->value => $form->role->value])
                ->request();
         }
     }
 
-    private function validateServerNode($server, $node)
+    private function validateServerNode($origin, $node)
     {
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if(!$validate_server->validate($server)
+        if(!$validate_server->validate($origin)
         || !$validate_node->validate($node)
         ) return false;
         else return true;

@@ -7,7 +7,7 @@ class Communities extends \Movim\Widget\Base
 {
     public function load()
     {
-        $this->registerEvent('disco_items_handle', 'onDisco');
+        $this->registerEvent('disco_items_handle', 'onDisco', 'community');
         $this->addjs('communities.js');
     }
 
@@ -16,15 +16,15 @@ class Communities extends \Movim\Widget\Base
         $this->ajaxGet();
     }
 
-    function ajaxDisco($server)
+    function ajaxDisco($origin)
     {
-        if(!$this->validateServer($server)) {
+        if(!$this->validateServer($origin)) {
             Notification::append(null, $this->__('communities.disco_error'));
             return;
         }
 
         $r = new Items;
-        $r->setTo($server)->request();
+        $r->setTo($origin)->request();
     }
 
     function ajaxGet()
@@ -47,12 +47,12 @@ class Communities extends \Movim\Widget\Base
     /**
      * @brief Validate the server
      *
-     * @param string $server
+     * @param string $origin
      */
-    private function validateServer($server)
+    private function validateServer($origin)
     {
         $validate_server = Validator::noWhitespace()->alnum('.-_')->length(6, 40);
-        return ($validate_server->validate($server));
+        return ($validate_server->validate($origin));
     }
 
     public function display()

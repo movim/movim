@@ -15,7 +15,7 @@ class CommunityConfig extends \Movim\Widget\Base
 
     function onConfig($packet)
     {
-        list($config, $server, $node) = array_values($packet->content);
+        list($config, $origin, $node) = array_values($packet->content);
 
         $view = $this->tpl();
 
@@ -23,7 +23,7 @@ class CommunityConfig extends \Movim\Widget\Base
         $form = $xml->getHTML($config->x->asXML());
 
         $view->assign('form', $form);
-        $view->assign('server', $server);
+        $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('attributes', $config->attributes());
 
@@ -35,33 +35,33 @@ class CommunityConfig extends \Movim\Widget\Base
         Notification::append(false, $this->__('communityaffiliation.config_saved'));
     }
 
-    function ajaxGetConfig($server, $node)
+    function ajaxGetConfig($origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $r = new GetConfig;
-        $r->setTo($server)
+        $r->setTo($origin)
           ->setNode($node)
           ->request();
     }
 
-    function ajaxSetConfig($data, $server, $node)
+    function ajaxSetConfig($data, $origin, $node)
     {
-        if(!$this->validateServerNode($server, $node)) return;
+        if(!$this->validateServerNode($origin, $node)) return;
 
         $r = new SetConfig;
-        $r->setTo($server)
+        $r->setTo($origin)
           ->setNode($node)
           ->setData($data)
           ->request();
     }
 
-    private function validateServerNode($server, $node)
+    private function validateServerNode($origin, $node)
     {
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if(!$validate_server->validate($server)
+        if(!$validate_server->validate($origin)
         || !$validate_node->validate($node)
         ) return false;
         else return true;

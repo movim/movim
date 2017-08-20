@@ -12,6 +12,7 @@ class Post extends \Movim\Widget\Base
     function load()
     {
         $this->addjs('post.js');
+        $this->addcss('post.css');
         $this->registerEvent('microblog_commentsget_handle', 'onComments');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
@@ -27,12 +28,17 @@ class Post extends \Movim\Widget\Base
             $p  = $pd->get($content['origin'], $content['node'], $content['nodeid']);
 
             if($p) {
-                $html = $this->preparePost($p);
-
-                $this->rpc('MovimUtils.pushState', $this->route('news', [$p->origin, $p->node, $p->nodeid]));
-
-                $this->rpc('MovimTpl.fill', '#post_widget', $html);
-                $this->rpc('MovimUtils.enableVideos');
+                if($p->isComment()) {
+                    $this->rpc(
+                        'MovimTpl.fill',
+                        '#comments',
+                        $this->prepareComments($p->getParent())
+                    );
+                } else {
+                    //$this->rpc('MovimUtils.pushState', $this->route('post', [$p->origin, $p->node, $p->nodeid]));
+                    $this->rpc('MovimTpl.fill', '#post_widget', $this->preparePost($p));
+                    $this->rpc('MovimUtils.enableVideos');
+                }
             }
         }
     }
@@ -40,31 +46,16 @@ class Post extends \Movim\Widget\Base
     function onCommentPublished($packet)
     {
         Notification::append(false, $this->__('post.comment_published'));
-        $this->onComments($packet);
     }
 
     function onComments($packet)
     {
-        list($server, $node, $id) = array_values($packet->content);
-
-        $p = new \Modl\ContactPostn;
-        $p->nodeid = $id;
+        list($server, $node, $id, $parentnode) = array_values($packet->content);
 
         $pd = new \Modl\PostnDAO;
-        $comments = $pd->getComments($p);
+        $p = $pd->get($server, $parentnode, $id);
 
-        $emoji = \MovimEmoji::getInstance();
-
-        $view = $this->tpl();
-        $view->assign('post', $p);
-        $view->assign('comments', $comments);
-        $view->assign('server', $server);
-        $view->assign('node', $node);
-        $view->assign('hearth', $emoji->replace('♥'));
-        $view->assign('id', $id);
-
-        $html = $view->draw('_post_comments', true);
-        $this->rpc('MovimTpl.fill', '#comments', $html);
+        $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($p));
     }
 
     function onCommentsError($packet)
@@ -120,6 +111,8 @@ class Post extends \Movim\Widget\Base
                ->setNode($p->node)
                ->setId($p->nodeid)
                ->request();
+        } else {
+            $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareNotFound());
         }
     }
 
@@ -133,18 +126,19 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function ajaxGetComments($jid, $id)
+    function requestComments(\Modl\ContactPostn $post)
     {
-        $pd = new \Modl\PostnDAO();
-        $pd->deleteNode($jid, "urn:xmpp:microblog:0:comments/".$id);
+        $pd = new \Modl\PostnDAO;
+        $pd->deleteNode($post->commentorigin, "urn:xmpp:microblog:0:comments/".$post->commentnodeid);
 
         $c = new CommentsGet;
-        $c->setTo($jid)
-          ->setId($id)
+        $c->setTo($post->commentorigin)
+          ->setId($post->commentnodeid)
+          ->setParentNode($post->node)
           ->request();
     }
 
-    private function publishComment($comment, $to, $node, $id)
+    public function publishComment($comment, $to, $node, $id)
     {
         if(!Validator::stringType()->notEmpty()->validate($comment)
         || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)) return;
@@ -157,7 +151,7 @@ class Post extends \Movim\Widget\Base
            ->request();
     }
 
-    function ajaxPublishComment($form, $to, $node, $id)
+    public function ajaxPublishComment($form, $to, $node, $id)
     {
         $comment = trim($form->comment->value);
 
@@ -166,12 +160,19 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function ajaxLike($to, $node, $id)
+    public function prepareComments($post)
     {
-        $this->publishComment('♥', $to, $node, $id);
+        $emoji = \MovimEmoji::getInstance();
+
+        $view = $this->tpl();
+        $view->assign('post', $post);
+        $view->assign('comments', $post->getComments());
+        $view->assign('hearth', $emoji->replace('♥'));
+
+        return $view->draw('_post_comments', true);
     }
 
-    function prepareEmpty()
+    public function prepareEmpty()
     {
         $nd = new \Modl\PostnDAO;
         $cd = new \Modl\ContactDAO;
@@ -188,6 +189,20 @@ class Post extends \Movim\Widget\Base
         return $view->draw('_post_empty', true);
     }
 
+    function prepareNotFound()
+    {
+        $nd = new \Modl\PostnDAO;
+
+        $view = $this->tpl();
+
+        $view->assign('presencestxt', getPresencesTxt());
+        $view->assign('blogs', $nd->getLastBlogPublic(0, 8));
+        $view->assign('posts', $nd->getLastPublished(false, false, 0, 6));
+        $view->assign('jid', $this->user->getLogin());
+
+        return $view->draw('_post_not_found', true);
+    }
+
     function preparePost($p, $external = false, $public = false, $card = false)
     {
         $view = $this->tpl();
@@ -197,7 +212,7 @@ class Post extends \Movim\Widget\Base
         if(isset($p)) {
             if($p->hasCommentsNode()
             && !$external) {
-                $this->ajaxGetComments($p->commentorigin, $p->commentnodeid); // Broken in case of repost
+                $this->requestComments($p); // Broken in case of repost
                 $view->assign('commentsdisabled', false);
             } else {
                 $viewd = $this->tpl();
@@ -216,7 +231,7 @@ class Post extends \Movim\Widget\Base
                 $view->assign('prevnext', $prevnext->draw('_post_prevnext', true));
             } else {
                 $comments = $this->tpl();
-                $comments->assign('comments', $this->getComments($p));
+                $comments->assign('comments', $p->getComments());
                 $view->assign('comments', $comments->draw('_post_comments_external', true));
             }
             $view->assign('public', $public);
@@ -240,12 +255,6 @@ class Post extends \Movim\Widget\Base
         } elseif(!$external) {
             return $this->prepareEmpty();
         }
-    }
-
-    function getComments($post)
-    {
-        $pd = new \Modl\PostnDAO;
-        return $pd->getComments($post);
     }
 
     function display()

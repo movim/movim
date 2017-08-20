@@ -183,7 +183,8 @@ var MovimWebsocket = {
                 } else if(funcall.func != null) {
                     var funcs  = funcall.func.split('.');
                     var called = funcs[0];
-                    if(typeof window[called] == 'object') {
+                    if(typeof window[called] == 'object'
+                    && typeof window[funcs[0]][funcs[1]] != 'undefined') {
                         window[funcs[0]][funcs[1]].apply(null, funcall.params);
                     }
                 }

@@ -58,7 +58,9 @@
     {/if}
 
     {loop="$items"}
-        {$c->preparePost($value)}
+        <div id="{$value->nodeid|cleanupId}" class="block large">
+            {$c->preparePost($value)}
+        </div>
     {/loop}
     {if="count($items) == $paging"}
         <ul class="list active thick">
