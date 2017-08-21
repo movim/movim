@@ -9,6 +9,7 @@ class PostActions extends \Movim\Widget\Base
     {
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
         $this->registerEvent('pubsub_postdelete', 'onDelete');
+        $this->addjs('postactions.js');
     }
 
     function onDelete($packet)
@@ -17,17 +18,17 @@ class PostActions extends \Movim\Widget\Base
 
         if(substr($node, 0, 29) == 'urn:xmpp:microblog:0:comments') {
             Notification::append(false, $this->__('post.comment_deleted'));
-
-            $this->rpc('MovimTpl.remove', '#'.cleanupId($id));
         } else {
             Notification::append(false, $this->__('post.deleted'));
 
-            if($node == 'urn:xmpp:microblog:0') {
-                $this->rpc('MovimUtils.redirect', $this->route('news'));
-            } else {
-                $this->rpc('MovimUtils.redirect', $this->route('community', [$server, $node]));
-            }
+            $this->rpc('PostActions.handleDelete',
+                ($node == 'urn:xmpp:microblog:0') ?
+                $this->route('news') :
+                $this->route('community', [$server, $node])
+            );
         }
+
+        $this->rpc('MovimTpl.remove', '#'.cleanupId($id));
     }
 
     function ajaxLike($to, $node, $id)

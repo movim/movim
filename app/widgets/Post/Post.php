@@ -13,10 +13,10 @@ class Post extends \Movim\Widget\Base
     {
         $this->addjs('post.js');
         $this->addcss('post.css');
-        $this->registerEvent('microblog_commentsget_handle', 'onComments');
+        $this->registerEvent('microblog_commentsget_handle', 'onComments', 'post');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
-        $this->registerEvent('pubsub_getitem_handle', 'onHandle');
+        $this->registerEvent('pubsub_getitem_handle', 'onHandle', 'post');
     }
 
     function onHandle($packet)

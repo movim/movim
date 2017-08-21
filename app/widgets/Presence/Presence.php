@@ -44,7 +44,6 @@ class Presence extends \Movim\Widget\Base
         $html = $this->preparePresence();
         $this->rpc('MovimTpl.fill', '#presence_widget', $html);
         Notification::append(null, $this->__('status.updated'));
-        $this->rpc('MovimUtils.removeClass', '#presence_widget', 'unfolded');
     }
 
     function start()

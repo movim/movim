@@ -14,7 +14,6 @@ class ContactHeader extends \Movim\Widget\Base
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
         $this->registerEvent('roster_removeitem_handle', 'onUpdate');
         $this->registerEvent('roster_getlist_handle', 'onUpdate');
-        $this->addjs('contactheader.js');
     }
 
     function onUpdate($packet)

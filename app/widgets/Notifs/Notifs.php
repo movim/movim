@@ -4,7 +4,7 @@ class Notifs extends \Movim\Widget\Base
 {
     function load()
     {
-        $this->registerEvent('post', 'onNotifs');
+        $this->registerEvent('post', 'onNotifs', 'news');
     }
 
     function onNotifs()

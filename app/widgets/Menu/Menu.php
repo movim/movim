@@ -10,23 +10,13 @@ class Menu extends \Movim\Widget\Base
 
     function load()
     {
-        $this->registerEvent('post', 'onPost');
-        $this->registerEvent('post_retract', 'onRetract');
-        $this->registerEvent('pubsub_postdelete', 'onRetract');
-        $this->registerEvent('pubsub_getitem_handle', 'onHandle');
+        $this->registerEvent('post', 'onPost', 'news');
+        $this->registerEvent('post_retract', 'onRetract', 'news');
+        $this->registerEvent('pubsub_postdelete', 'onRetract', 'news');
+        $this->registerEvent('pubsub_getitem_handle', 'onPost', 'news');
 
         $this->addjs('menu.js');
         $this->addcss('menu.css');
-    }
-
-    function onHandle($packet)
-    {
-        if(is_array($packet->content)
-        && isset($packet->content['nodeid'])) {
-            $this->onRetract($packet);
-        } else {
-            $this->onPost($packet);
-        }
     }
 
     function onRetract($packet)
@@ -143,7 +133,6 @@ class Menu extends \Movim\Widget\Base
             $this->rpc('MovimTpl.append', '#menu_wrapper', $html);
         } else {
             $this->rpc('MovimTpl.fill', '#menu_widget', $html);
-            //$this->rpc('movim_posts_unread', 0);
         }
 
         $this->rpc('MovimUtils.enhanceArticlesContent');
