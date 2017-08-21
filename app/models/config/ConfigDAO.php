@@ -66,7 +66,7 @@ class ConfigDAO extends SQL
                     info,
                     unregister,
                     username,
-                    password,
+                    password
                 )
                 values
                 (
