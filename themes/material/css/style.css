@@ -180,7 +180,7 @@ main > section > div:not(:last-child) {
 }
 
 main > section > div > * {
-    max-width: 100rem;
+    max-width: 84rem;
     margin: 0 auto;
 }
 
@@ -201,7 +201,7 @@ main > section > div:first-child:nth-last-child(2) ~ div {
 
 @media screen and (min-width: 1025px) {
     main > section > aside {
-        width: calc(50% - 28rem);
+        width: calc(50% - 20rem);
         float: right;
         max-height: 100%;
     }
@@ -213,13 +213,13 @@ main > section > div:first-child:nth-last-child(2) ~ div {
 
     main > section > aside + div {
         overflow-y: hidden;
-        width: calc(50% + 28rem);
+        width: calc(50% + 20rem);
         float: left;
         height: auto;
     }
 
     main > section > aside + div > * {
-        max-width: 100rem;
+        max-width: 84rem;
         margin-right: 1rem;
     }
 }
@@ -354,7 +354,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 }
 
 .actions.fixed > div:last-child > * { /* Little hack to fake the 100% width that overflow the parent */
-    max-width: 100rem;
+    max-width: 84rem;
     margin: 0 auto;
 }
 

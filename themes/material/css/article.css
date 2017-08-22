@@ -19,7 +19,7 @@ article section {
 
 article section.limited {
     display: block;
-    max-height: 80rem;
+    max-height: 60rem;
     overflow: hidden;
 }
 
