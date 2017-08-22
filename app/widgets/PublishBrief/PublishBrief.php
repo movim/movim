@@ -91,6 +91,11 @@ class PublishBrief extends \Movim\Widget\Base
         }
     }
 
+    function ajaxEmbedLoading()
+    {
+        $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->__('global.loading'));
+    }
+
     function ajaxEmbedTest($url)
     {
         if($url == '') {
