@@ -16,6 +16,21 @@
     <section style="background-color: #EEE;">
         <?php if(empty($_GET['s'])) { ?>
             <div>
+                <header>
+                    <ul class="list middle">
+                        <li>
+                            <?php if($this->user->isSupported('pubsub')) { ?>
+                                <span
+                                    class="control icon gray active"
+                                    onclick="MovimUtils.redirect('<?php echo \Movim\Route::urlize('community', 'subscriptions'); ?>')">
+                                    <i class="zmdi zmdi-settings"></i>
+                                </span>
+                            <?php } ?>
+                            <p class="center"><?php echo __('page.communities'); ?></p>
+                            <p class="center line"><?php echo __('communities.empty_text'); ?></p>
+                        </li>
+                    </ul>
+                </header>
                 <?php $this->widget('Tabs');?>
                 <?php $this->widget('CommunitiesDiscover'); ?>
                 <?php $this->widget('Communities'); ?>

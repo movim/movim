@@ -57,7 +57,7 @@ var Tabs = {
         MovimUtils.showElement(tabOn);
 
         var baseUrl = window.location.href.split('#')[0];
-        window.location.replace(baseUrl + '#' + n);
+        MovimUtils.pushState(baseUrl + '#' + n);
 
         // We try to call ajaxDisplay
         if(typeof window[tabOn.title + '_ajaxDisplay'] == 'function') {

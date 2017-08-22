@@ -1,17 +1,3 @@
-<header>
-    <ul class="list middle">
-        <li>
-            {if="$c->supported('pubsub')"}
-            <span class="control icon gray active" onclick="MovimUtils.redirect('{$c->route('community', 'subscriptions')}')">
-                <i class="zmdi zmdi-settings"></i>
-            </span>
-            {/if}
-            <p class="center">{$c->__('page.communities')}</p>
-            <p class="center line">{$c->__('communities.empty_text')}</p>
-        </li>
-    </ul>
-</header>
-
 <ul class="list flex middle active">
     {loop="$communities"}
         <li
