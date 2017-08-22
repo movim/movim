@@ -34,6 +34,7 @@
                 <?php $this->widget('Tabs');?>
                 <?php $this->widget('CommunitiesDiscover'); ?>
                 <?php $this->widget('Communities'); ?>
+                <?php $this->widget('CommunitiesServers'); ?>
             </div>
         <?php } elseif($_GET['s'] == 'subscriptions'
                     && $this->user->isSupported('pubsub')) { ?>

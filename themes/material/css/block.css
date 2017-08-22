@@ -8,11 +8,6 @@
     overflow: hidden;
 }
 
-/*
-.flex.card {
-    padding: 0;
-}
-*/
 .flex.card .block:not(.subheader) {
     margin: 0.75rem;
     flex: 0 1 calc(50% - 1.5rem);
@@ -42,7 +37,8 @@
 
 @media screen and (max-width: 1024px) {
     .flex.card .block:not(.subheader),
-    .flex .block:not(.subheader) {
+    .flex .block:not(.subheader),
+    .flex.third .block:not(.subheader) {
         margin-bottom: 0;
         flex: 0 1 100%;
         max-width: 100%;
