@@ -35,10 +35,10 @@ class PostActions extends \Movim\Widget\Base
     {
         $pd = new \Modl\PostnDAO;
         $p = $pd->get($to, $node, $id);
-        if($p->isLiked()) return;
+        if(!isset($p) || $p->isLiked()) return;
 
         $post = new Post;
-        $post->publishComment('♥', $to, $node, $id);
+        $post->publishComment('♥', $p->origin, $p->node, $p->nodeid);
     }
 
     function ajaxDelete($to, $node, $id)

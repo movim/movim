@@ -30,7 +30,9 @@ class CommunityHeader extends \Movim\Widget\Base
     {
         list($origin, $node) = $packet->content;
 
-        $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($origin, $node));
+        if((substr($node, 0, 30) != 'urn:xmpp:microblog:0:comments/')) {
+            $this->rpc('MovimTpl.fill', '#community_header', $this->prepareHeader($origin, $node));
+        }
     }
 
     function onTestPublish($packet)

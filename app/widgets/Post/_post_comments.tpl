@@ -9,7 +9,8 @@
 
     {loop="$comments"}
         {if="$value->title || $value->contentraw"}
-        <li id="{$value->nodeid|cleanupId}" {if="$value->isMine(true)"}class="mine"{/if}>
+        <li id="{$value->nodeid|cleanupId}"
+            {if="$value->isMine(true) && $value->isLike()"}class="mine"{/if}>
             {if="$value->isMine()"}
                 <span class="control icon gray active"
                       onclick="PostActions_ajaxDelete('{$value->origin}', '{$value->node}', '{$value->nodeid}')">
@@ -79,11 +80,9 @@
 
     <li>
         <p class="center">
-            {if="!$liked"}
             <button class="button red flat" id="like" onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
                 <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
             </button>
-            {/if}
             <button class="button flat gray" onclick="Post.comment()">
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
             </button>

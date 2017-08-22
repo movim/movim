@@ -25,6 +25,10 @@ class Postn extends Model
     public $commentorigin;
     public $commentnodeid;
 
+    public $parentorigin;
+    public $parentnode;
+    public $parentnodeid;
+
     public $published;
     public $updated;
     public $delay;
@@ -58,9 +62,12 @@ class Postn extends Model
         'title'         => ['type' => 'text'],
         'content'       => ['type' => 'text'],
         'contentraw'    => ['type' => 'text'],
-        'contentcleaned' => ['type' => 'text'],
+        'contentcleaned'=> ['type' => 'text'],
         'commentorigin' => ['type' => 'string','size' => 64],
         'commentnodeid' => ['type' => 'string','size' => 96],
+        'parentorigin'  => ['type' => 'string','size' => 64],
+        'parentnode'    => ['type' => 'string','size' => 96],
+        'parentnodeid'  => ['type' => 'string','size' => 96],
         'open'          => ['type' => 'bool'],
         'published'     => ['type' => 'date'],
         'updated'       => ['type' => 'date'],
@@ -470,7 +477,7 @@ class Postn extends Model
     public function getParent()
     {
         $pd = new PostnDAO;
-        return $pd->get($this->origin, 'urn:xmpp:microblog:0', preg_replace("/urn:xmpp:microblog:0:comments\/(.*)/", "$1", $this->node));
+        return $pd->get($this->parentorigin, $this->parentnode, $this->parentnodeid);
     }
 
     public function isMine($force = false)

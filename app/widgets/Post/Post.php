@@ -50,10 +50,10 @@ class Post extends \Movim\Widget\Base
 
     function onComments($packet)
     {
-        list($server, $node, $id, $parentnode) = array_values($packet->content);
+        list($server, $node, $id) = array_values($packet->content);
 
         $pd = new \Modl\PostnDAO;
-        $p = $pd->get($server, $parentnode, $id);
+        $p = $pd->get($server, $node, $id);
 
         $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($p));
     }
@@ -134,7 +134,9 @@ class Post extends \Movim\Widget\Base
         $c = new CommentsGet;
         $c->setTo($post->commentorigin)
           ->setId($post->commentnodeid)
+          ->setParentOrigin($post->origin)
           ->setParentNode($post->node)
+          ->setParentNodeId($post->nodeid)
           ->request();
     }
 
@@ -143,12 +145,20 @@ class Post extends \Movim\Widget\Base
         if(!Validator::stringType()->notEmpty()->validate($comment)
         || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)) return;
 
-        $cp = new CommentPublish;
-        $cp->setTo($to)
-           ->setFrom($this->user->getLogin())
-           ->setParentId($id)
-           ->setTitle(htmlspecialchars(rawurldecode($comment)))
-           ->request();
+        $pd = new \Modl\PostnDAO;
+        $p = $pd->get($to, $node, $id);
+
+        if($p) {
+            $cp = new CommentPublish;
+            $cp->setTo($p->commentorigin)
+               ->setFrom($this->user->getLogin())
+               ->setParentId($p->commentnodeid)
+               ->setTitle(htmlspecialchars(rawurldecode($comment)))
+               ->setParentOrigin($p->origin)
+               ->setParentNode($p->node)
+               ->setParentNodeId($p->nodeid)
+               ->request();
+        }
     }
 
     public function ajaxPublishComment($form, $to, $node, $id)

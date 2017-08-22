@@ -13,19 +13,21 @@ class CommunityData extends \Movim\Widget\Base
     {
         list($origin, $node) = $packet->content;
 
-        $this->rpc('MovimTpl.fill', '#community_data', $this->prepareData($origin, $node));
+        if((substr($node, 0, 30) != 'urn:xmpp:microblog:0:comments/')) {
+            $this->rpc('MovimTpl.fill', '#community_data', $this->prepareData($origin, $node));
+        }
     }
 
     public function prepareData($origin, $node)
     {
         $id = new \Modl\InfoDAO;
         $info = $id->get($origin, $node);
-/*
+        /*
         if($item && !$item->logo) {
             $item->setPicture();
             $id->set($item);
         }
-*/
+        */
         $pd = new \Modl\SubscriptionDAO;
         $subscription = $pd->get($origin, $node);
 
