@@ -34,7 +34,9 @@ class CommentsGet extends Action
     private $_to;
     private $_id;
     private $_node;
+    private $_parentorigin;
     private $_parentnode;
+    private $_parentnodeid;
 
     public function request()
     {
@@ -55,9 +57,21 @@ class CommentsGet extends Action
         return $this;
     }
 
+    public function setParentOrigin($parentorigin)
+    {
+        $this->_parentorigin = $parentorigin;
+        return $this;
+    }
+
     public function setParentNode($parentnode)
     {
         $this->_parentnode = $parentnode;
+        return $this;
+    }
+
+    public function setParentNodeId($parentnodeid)
+    {
+        $this->_parentnodeid = $parentnodeid;
         return $this;
     }
 
@@ -73,6 +87,10 @@ class CommentsGet extends Action
                 $p = new \Modl\Postn;
                 $p->set($item, $this->_to, false, $node);
 
+                $p->parentorigin    = $this->_parentorigin;
+                $p->parentnode      = $this->_parentnode;
+                $p->parentnodeid    = $this->_parentnodeid;
+
                 $pd = new \Modl\PostnDAO;
                 $pd->set($p);
             }
@@ -80,10 +98,9 @@ class CommentsGet extends Action
 
         $this->pack(
             [
-                'server' => $this->_to,
-                'node' => $this->_node,
-                'id' => $this->_id,
-                'parentnode' => $this->_parentnode
+                'server' => $this->_parentorigin,
+                'node' => $this->_parentnode,
+                'id' => $this->_parentnodeid
             ]);
 
         $this->deliver();

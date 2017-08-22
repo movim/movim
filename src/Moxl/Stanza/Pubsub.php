@@ -225,20 +225,6 @@ class Pubsub
 
     static function unsubscribe($to, $from, $node, $subid)
     {
-        /*if($subid != '')
-            $subid = 'subid="'.$subid.'"';
-        $xml = '
-            <pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <unsubscribe
-                    node="'.$node.'"
-                    jid="'.$from.'"
-                    '.$subid.'/>
-            </pubsub>';
-
-        $xml = \Moxl\API::iqWrapper($xml, $to, 'set');
-
-        \Moxl\API::request($xml);*/
-
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
         $unsubscribe = $dom->createElement('unsubscribe');

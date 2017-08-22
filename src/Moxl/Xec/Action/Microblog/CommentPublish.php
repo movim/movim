@@ -38,6 +38,10 @@ class CommentPublish extends Errors
 
     private $_atom;
 
+    private $_parentorigin;
+    private $_parentnode;
+    private $_parentnodeid;
+
     public function __construct()
     {
         parent::__construct();
@@ -54,6 +58,24 @@ class CommentPublish extends Errors
     {
         $this->_to = $to;
         $this->_atom->to = $to;
+        return $this;
+    }
+
+    public function setParentOrigin($parentorigin)
+    {
+        $this->_parentorigin = $parentorigin;
+        return $this;
+    }
+
+    public function setParentNode($parentnode)
+    {
+        $this->_parentnode = $parentnode;
+        return $this;
+    }
+
+    public function setParentNodeId($parentnodeid)
+    {
+        $this->_parentnodeid = $parentnodeid;
         return $this;
     }
 
@@ -95,13 +117,10 @@ class CommentPublish extends Errors
         $g->setTo($this->_to)
           ->setNode($this->_node)
           ->setId($this->_atom->id)
+          ->setParentOrigin($this->_parentorigin)
+          ->setParentNode($this->_parentnode)
+          ->setParentNodeId($this->_parentid)
           ->request();
-
-        $this->pack([
-                'server' => $this->_to,
-                'node' => $this->_node,
-                'id' => $this->_parentid
-            ]);
 
         $this->deliver();
     }

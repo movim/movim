@@ -35,6 +35,10 @@ class GetItem extends Errors
     private $_id;
     private $_askreply;
 
+    private $_parentorigin;
+    private $_parentnode;
+    private $_parentnodeid;
+
     public function request()
     {
         $this->store();
@@ -65,6 +69,24 @@ class GetItem extends Errors
         return $this;
     }
 
+    public function setParentOrigin($parentorigin)
+    {
+        $this->_parentorigin = $parentorigin;
+        return $this;
+    }
+
+    public function setParentNode($parentnode)
+    {
+        $this->_parentnode = $parentnode;
+        return $this;
+    }
+
+    public function setParentNodeId($parentnodeid)
+    {
+        $this->_parentnodeid = $parentnodeid;
+        return $this;
+    }
+
     public function handle($stanza, $parent = false)
     {
         $from = $this->_to;
@@ -78,6 +100,10 @@ class GetItem extends Errors
                 &&(string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
                     $p = new \Modl\Postn;
                     $p->set($item, $from, false, $node);
+
+                    $p->parentorigin    = $this->_parentorigin;
+                    $p->parentnode      = $this->_parentnode;
+                    $p->parentnodeid    = $this->_parentnodeid;
 
                     $pd = new \Modl\PostnDAO;
                     $pd->set($p);
