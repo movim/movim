@@ -15,21 +15,24 @@
 <main>
     <section style="background-color: #EEE;">
         <?php if(empty($_GET['s'])) { ?>
-            <aside>
-                <?php $this->widget('NewsNav');?>
-            </aside>
-            <?php $this->widget('Communities'); ?>
+            <div>
+                <?php $this->widget('Tabs');?>
+                <?php $this->widget('CommunitiesDiscover'); ?>
+                <?php $this->widget('Communities'); ?>
+            </div>
         <?php } elseif($_GET['s'] == 'subscriptions'
                     && $this->user->isSupported('pubsub')) { ?>
             <aside>
                 <?php $this->widget('NewsNav');?>
             </aside>
             <?php $this->widget('CommunitySubscriptions'); ?>
+
         <?php } elseif(empty($_GET['n'])) { ?>
             <aside>
                 <?php $this->widget('NewsNav');?>
             </aside>
             <?php $this->widget('CommunitiesServer'); ?>
+
         <?php } else { ?>
             <aside>
                 <?php $this->widget('CommunityData'); ?>

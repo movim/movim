@@ -14,8 +14,8 @@
 }
 */
 .flex.card .block:not(.subheader) {
-    margin: 1rem;
-    flex: 0 1 calc(50% - 2rem);
+    margin: 0.75rem;
+    flex: 0 1 calc(50% - 1.5rem);
     min-height: 5rem;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
@@ -30,8 +30,8 @@
 }
 
 .flex.third .block:not(.large) {
-    flex: 0 1 33.33%;
-    max-width: 33.33%;
+    flex: 0 1 calc(33.33% - 1.5rem);
+    max-width: calc(33.33% - 1.5rem);
 }
 
 

@@ -1,1 +1,1 @@
-<div id="communities" class="spin"></div>
+<div id="communities" class="tabelem spin" title="{$c->__('page.communities')}"></div>
