@@ -29,7 +29,7 @@
                 <input type="hidden"
                     id="embed"
                     name="embed"
-                    onchange="PublishBrief_ajaxEmbedLoading(); PublishBrief_ajaxEmbedTest(this.value)"
+                    onchange="if(this.value != '') { PublishBrief_ajaxEmbedLoading(); PublishBrief_ajaxEmbedTest(this.value); }"
                     {if="$url"}value="{$url}"{/if}
                     {if="!empty($draft->links)"}value="{$draft->links[0]}"{/if}
                 >
