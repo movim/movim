@@ -25,7 +25,7 @@ class PublishBrief extends \Movim\Widget\Base
 
         if(!$repost && $comments) {
             $p = new Publish;
-            $p->ajaxCreateComments($to, $id);
+            $p->ajaxCreateComments(($comments === true) ? $to : $comments, $id);
         }
     }
 
@@ -55,8 +55,16 @@ class PublishBrief extends \Movim\Widget\Base
             $p->setFrom($this->user->getLogin())
               ->setTo($this->user->getLogin())
               ->setTitle(htmlspecialchars($form->title->value))
-              ->setNode('urn:xmpp:microblog:0')
-              ->enableComments();
+              ->setNode('urn:xmpp:microblog:0');
+
+            $cd = new \Modl\CapsDAO;
+            $comments = $cd->getComments($this->user->getServer());
+
+            if($comments) {
+                $p->enableComments($comments->node);
+            } else {
+                $p->enableComments();
+            }
 
             if($form->open->value === true) {
                 $p->isOpen();

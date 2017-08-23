@@ -28,7 +28,7 @@ class Publish extends \Movim\Widget\Base
         list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
         if(!$repost && $comments) {
-            $this->ajaxCreateComments($to, $id);
+            $this->ajaxCreateComments(($comments === true) ? $to : $comments, $id);
         }
 
         if($node == 'urn:xmpp:microblog:0') {
@@ -291,7 +291,14 @@ class Publish extends \Movim\Widget\Base
                 $p->isOpen();
             }
 
-            $p->enableComments();
+            $cd = new \Modl\CapsDAO;
+            $comments = $cd->getComments($this->user->getServer());
+
+            if($comments) {
+                $p->enableComments($comments->node);
+            } else {
+                $p->enableComments();
+            }
 
             if($content != '') {
                 $p->setContent(htmlspecialchars($content));
