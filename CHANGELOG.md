@@ -26,6 +26,8 @@ v0.12 (trunk)
  * New navigation menu for mobile devices
  * Rotate correctly the JPEG files when uploading them
  * Add support of private MUC messages
+ * Redesign of the Community main page
+ * Refactor and cleanup the management of the comments internaly
 
 v0.11
 ---------------------------
