@@ -35,7 +35,7 @@
     flex: 0 1 100%;
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 612px) {
     .flex.card .block:not(.subheader),
     .flex .block:not(.subheader),
     .flex.third .block:not(.subheader) {
@@ -44,3 +44,13 @@
         max-width: 100%;
     }
 }
+
+@media screen and (min-width: 613px) and (max-width: 1024px) {
+    .flex.card .block:not(.subheader),
+    .flex .block:not(.subheader),
+    .flex.third .block:not(.subheader) {
+        flex: 0 1 calc(50% - 1.5rem);
+        max-width: 100%;
+    }
+}
+

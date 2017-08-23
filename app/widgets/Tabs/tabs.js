@@ -32,7 +32,7 @@ var Tabs = {
             tab = document.querySelector('.tabelem').id;
             menuTab = document.querySelector('li.'+tab);
         }
-window.addEventListener('popstate', function(e){console.log('url changed')});
+
         Tabs.change(menuTab, tab);
     },
 
