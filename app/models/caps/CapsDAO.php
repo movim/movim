@@ -25,7 +25,8 @@ class CapsDAO extends SQL
     {
         $this->_sql = '
             select * from caps
-            where category = :category';
+            where category = :category
+            order by name';
 
         $this->prepare(
             'Caps',
@@ -59,6 +60,21 @@ class CapsDAO extends SQL
             select * from caps
             where node like \'%'.$server.'%\'
             and features like \'%urn:xmpp:http:upload%\'';
+
+        $this->prepare(
+            'Caps'
+        );
+
+        return $this->run('Caps', 'item');
+    }
+
+    function getComments($server)
+    {
+        $this->_sql = '
+            select * from caps
+            where node = \'comments.'.$server.'\'
+            and category = \'pubsub\'
+            and type = \'service\'';
 
         $this->prepare(
             'Caps'

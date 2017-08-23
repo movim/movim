@@ -34,7 +34,17 @@ class Caps extends \Movim\Widget\Base
         $cd = new \modl\CapsDAO;
         $clients = $cd->getClients();
 
-        foreach($clients as $c) {
+        $oldname = '';
+
+        foreach(array_reverse($clients) as $c) {
+            $clientname = reset(explode(
+                    '#',
+                    reset(explode(' ', $c->name))
+                    )
+                );
+
+            if($oldname == $clientname) continue;
+
             if(!isset($this->_table[$c->name])) {
                 $this->_table[$c->name] = [];
             }
@@ -44,6 +54,8 @@ class Caps extends \Movim\Widget\Base
                     array_push($this->_table[$c->name], (string)$f);
                 }
             }
+
+            $oldname = $clientname;
         }
 
         ksort($this->_table);
