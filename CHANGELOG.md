@@ -28,6 +28,7 @@ v0.12 (trunk)
  * Add support of private MUC messages
  * Redesign of the Community main page
  * Refactor and cleanup the management of the comments internaly
+ * Autocomplete nicknames in MUC using tabulation (by pztrn)
 
 v0.11
 ---------------------------
