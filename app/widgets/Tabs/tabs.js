@@ -8,7 +8,7 @@ var Tabs = {
         // We create the list
         var html = '';
         for (var i=0; i<tabs.length; i++){
-            if(window.location.hash == '#'+tabs[i].id)
+            if(window.location.hash == '#' + tabs[i].id + '_tab')
                 current = tabs[i].id;
 
             html += '<li class="' + tabs[i].id + '" onclick="Tabs.change(this, \'' + tabs[i].id + '\');">';
@@ -32,7 +32,7 @@ var Tabs = {
             tab = document.querySelector('.tabelem').id;
             menuTab = document.querySelector('li.'+tab);
         }
-
+window.addEventListener('popstate', function(e){console.log('url changed')});
         Tabs.change(menuTab, tab);
     },
 
@@ -56,8 +56,10 @@ var Tabs = {
         var tabOn = document.getElementById(n);
         MovimUtils.showElement(tabOn);
 
-        var baseUrl = window.location.href.split('#')[0];
-        MovimUtils.pushState(baseUrl + '#' + n);
+        //var baseUrl = window.location.href.split('#')[0];
+        //window.location.replace(baseUrl + '#' + n);
+        //MovimUtils.pushState(baseUrl + '#' + n);
+        window.history.pushState(null, null, '#' + n + '_tab');
 
         // We try to call ajaxDisplay
         if(typeof window[tabOn.title + '_ajaxDisplay'] == 'function') {
