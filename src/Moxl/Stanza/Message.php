@@ -99,6 +99,7 @@ class Message
         }
 
         if($file != false) {
+            // SIMS
             $reference = $dom->createElement('reference');
             $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
             $reference->setAttribute('type', 'data');
@@ -125,6 +126,13 @@ class Message
             $reference->setAttribute('uri', $file->uri);
 
             $sources->appendChild($reference);
+
+            // OOB
+            $x = $dom->createElement('x');
+            $x->setAttribute('xmlns', 'jabber:x:oob');
+            $x->appendChild($dom->createElement('url', $file->uri));
+
+            $root->appendChild($x);
         }
 
         if($invite != false) {
