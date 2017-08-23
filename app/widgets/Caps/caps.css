@@ -54,6 +54,10 @@
 
 #caps_widget table td {
     padding: 0 0.5rem;
+    max-width: 15rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 main > section > div > #caps_widget {

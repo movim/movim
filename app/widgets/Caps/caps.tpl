@@ -28,6 +28,7 @@
         <thead>
             <tr>
                 <th>Client</th>
+                <th>Count</th>
                 {loop="$nslist"}
                     <th><a href="{$c->route('about', $key, 'xep_widget')}">{$key}</a></th>
                 {/loop}
@@ -37,11 +38,12 @@
         <tbody>
             {loop="$table"}
             <tr>
-                <td>{$key}</td>
+                <td title="{$key}">{$key}</td>
+                <td>{$value|count}</td>
                 {$client = $value}
                 {loop="$nslist"}
                     {$c->isImplemented($client, $key)}
-                {/loop}                
+                {/loop}
             </tr>
             {/loop}
         </tbody>
