@@ -4,7 +4,8 @@ namespace Moxl\Stanza;
 
 use Ramsey\Uuid\Uuid;
 
-class PubsubAtom {
+class PubsubAtom
+{
     public $id;
     public $name;
     public $jid;
@@ -29,19 +30,23 @@ class PubsubAtom {
 
     public $published = false;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->id = (string)Uuid::uuid4();
     }
 
-    public function enableComments() {
-        $this->comments = true;
+    public function enableComments($server = true)
+    {
+        $this->comments = $server;
     }
 
-    public function isOpen() {
+    public function isOpen()
+    {
         $this->open = true;
     }
 
-    public function getDom() {
+    public function getDom()
+    {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $entry = $dom->createElement('entry');
         $dom->appendChild($entry);
@@ -74,8 +79,10 @@ class PubsubAtom {
 
             if($this->repost) {
                 $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node=urn:xmpp:microblog:0:comments/'.$this->repost[2]);
-            } else {
+            } elseif($this->comments === true) {
                 $link->setAttribute('href', 'xmpp:'.$this->to.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
+            } else {
+                $link->setAttribute('href', 'xmpp:'.$this->comments.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
             }
 
             $entry->appendChild($link);
@@ -203,7 +210,8 @@ class PubsubAtom {
         return $dom->documentElement;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return $dom->saveXML($this->getDom());
     }
 }

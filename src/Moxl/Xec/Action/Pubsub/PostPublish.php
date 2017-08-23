@@ -161,9 +161,9 @@ class PostPublish extends Errors
         return $this;
     }
 
-    public function enableComments()
+    public function enableComments($server = true)
     {
-        $this->_atom->enableComments();
+        $this->_atom->enableComments($server);
         return $this;
     }
 
