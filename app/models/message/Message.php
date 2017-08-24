@@ -70,10 +70,6 @@ class Message extends Model
             $jid = explode('/',(string)$stanza->attributes()->from);
             $to = current(explode('/',(string)$stanza->attributes()->to));
 
-            if(isset($stanza->attributes()->id)) {
-                $this->id = (string)$stanza->attributes()->id;
-            }
-
             // This is not very beautiful
             $user = new User;
             $this->session    = $user->getLogin();
@@ -88,6 +84,11 @@ class Message extends Model
             $this->type = 'chat';
             if($stanza->attributes()->type) {
                 $this->type = (string)$stanza->attributes()->type;
+            }
+
+            if(isset($stanza->attributes()->id)
+            && $this->type == 'chat') {
+                $this->id = (string)$stanza->attributes()->id;
             }
 
             if($stanza->x
