@@ -663,7 +663,7 @@ class PostnDAO extends SQL
                             and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                             and postn.node not like \'urn:xmpp:inbox\'
                             and aid is not null
-                    ';
+                            and postn.open = true';
             break;
             case 'pgsql':
                 $this->_sql = '
@@ -675,7 +675,8 @@ class PostnDAO extends SQL
                             postn.node != \'urn:xmpp:microblog:0\'
                             and postn.node not like \'urn:xmpp:microblog:0:comments/%\'
                             and postn.node not like \'urn:xmpp:inbox\'
-                            and aid is not null';
+                            and aid is not null
+                            and postn.open = true';
             break;
         }
 
