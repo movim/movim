@@ -172,6 +172,8 @@ class Post extends \Movim\Widget\Base
 
     public function prepareComments($post)
     {
+        if($post == null) return;
+
         $emoji = \MovimEmoji::getInstance();
 
         $view = $this->tpl();
