@@ -6,7 +6,7 @@ class MAM {
     static function get($jid = false, $start = false, $end = false, $limit = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $query = $dom->createElementNS('urn:xmpp:mam:0', 'query');
+        $query = $dom->createElementNS('urn:xmpp:mam:1', 'query');
         $x = $dom->createElement('x');
         $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
@@ -14,7 +14,7 @@ class MAM {
 
         $field_type = $dom->createElement('field');
         $field_type->setAttribute('var', 'FORM_TYPE');
-        $field_type->appendChild($dom->createElement('value', 'urn:xmpp:mam:0'));
+        $field_type->appendChild($dom->createElement('value', 'urn:xmpp:mam:1'));
         $x->appendChild($field_type);
 
         if($jid) {
@@ -49,10 +49,10 @@ class MAM {
         }
 
         if($limit) {
-            $field_limit = $dom->createElement('field');
-            $field_limit->setAttribute('var', 'limit');
-            $field_limit->appendChild($dom->createElement('value', $limit));
-            $x->appendChild($field_limit);
+            $set_limit = $dom->createElement('set');
+            $set_limit->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
+            $set_limit->appendChild($dom->createElement('max', $limit));
+            $query->appendChild($set_limit);
         }
 
         $xml = \Moxl\API::iqWrapper($query, null, 'set');

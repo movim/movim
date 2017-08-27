@@ -161,7 +161,8 @@ class Handler
             '004a75eb0a92fca2b868732b56863e66' => 'ReceiptRequest',
             '3ca6c24643a9389b91323ddd1aaa84d0' => 'Displayed',
 
-            '0977b7387b95f69007332a3e9b386f93' => 'MAMResult',
+            '0977b7387b95f69007332a3e9b386f93' => 'MAMResult', // mam:0
+            'fd60f5fdd5d2a06d1c4dd723032fb41a' => 'MAMResult', // mam:1
 
             '1040105fc01bfac8a5ab81324875e382' => 'Presence',
             '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',// TLS
