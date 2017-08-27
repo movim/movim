@@ -40,7 +40,7 @@ var Chat = {
         if (Chat.toAutocomplete === null
             || (
                 Chat.toAutocomplete != text
-                && text.indexOf(':') === -1)
+                && text.indexOf(',') === -1)
             ) {
             Chat.toAutocomplete = text;
         }
@@ -51,7 +51,7 @@ var Chat = {
         if (Chat.previouslyAutocompleted === null
             && Chat.toAutocomplete == '') {
             var autocompleted = usersList[0]['resource'];
-            textarea.value = autocompleted + ': ';
+            textarea.value = autocompleted + ', ';
             Chat.previouslyAutocompleted = autocompleted;
         } else {
             // Otherwise we should autocomplete next to
@@ -64,7 +64,7 @@ var Chat = {
                     && i !== usersList.length - 1
                     && Chat.toAutocomplete == '') {
                     autocompleted = usersList[i+1]['resource'];
-                    textarea.value = autocompleted + ': ';
+                    textarea.value = autocompleted + ', ';
                     Chat.previouslyAutocompleted = autocompleted;
                     Chat.previouslyAutocompletedSeqID = i;
                     autocompletedOk = true;
@@ -77,7 +77,7 @@ var Chat = {
                         && user_substr.toLowerCase().indexOf(Chat.toAutocomplete) !== -1
                         && usersList[i]['resource'] != Chat.previouslyAutocompleted) {
                         autocompleted = usersList[i]['resource'];
-                        textarea.value = autocompleted + ': ';
+                        textarea.value = autocompleted + ', ';
                         Chat.previouslyAutocompleted = autocompleted;
                         Chat.previouslyAutocompletedSeqID = i;
                         autocompletedOk = true;
