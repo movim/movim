@@ -1,9 +1,8 @@
-<form name="data">
+<form name="data" onsubmit="javascript:{$submitdata}" action="javascript:;">
     {$formh}
     <button
-        type="button"
+        type="submit"
         class="button color oppose"
-        onclick="{$submitdata}"
     >
         {$c->__('button.validate')}
     </button>

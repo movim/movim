@@ -43,6 +43,12 @@ class AccountNext extends \Movim\Widget\Base {
 
                     $formview->assign('formh', $formh);
                     $html = $formview->draw('_accountnext_form', true);
+
+		    //pvincent@libre.re
+		    $html = preg_replace('/<p>.*CAPTCHA.*<\/p>/', '', $html);
+		    $html = preg_replace('/<input id="url".*value="(.*)".*>/U', '<img style="margin-top: 5em;" alt="captcha" src="$1"/>', $html);
+			
+
                     break;
                 case 'jabber:x:oob' :
                     $this->rpc('MovimUtils.redirect', (string)$form->x->url);
