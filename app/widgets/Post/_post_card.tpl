@@ -12,7 +12,7 @@
             {elseif="$post->isMicroblog()"}
                 {$url = $post->getContact()->getPhoto('m')}
                 {if="$url"}
-                    <span class="primary icon bubble color white">
+                    <span class="primary icon bubble">
                         <img src="{$url}"/>
                     </span>
                 {else}
