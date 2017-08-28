@@ -375,10 +375,11 @@ var Chat = {
 
         icon.classList.add(message.color);
         icon.innerHTML = message.icon;
+        icon.dataset.resource = message.resource;
 
         icon.onclick = function(n) {
             var textarea = document.querySelector('#chat_textarea');
-            textarea.value = this.innerHTML + ', ' + textarea.value;
+            textarea.value = this.dataset.resource + ', ' + textarea.value;
             textarea.focus();
         };
 
