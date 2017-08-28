@@ -373,8 +373,17 @@ var Chat = {
 
         icon = bubble.querySelector('span.primary.icon');
 
-        icon.classList.add(message.color);
-        icon.innerHTML = message.icon;
+        if(message.icon_url) {
+            var img = document.createElement("img");
+            img.setAttribute("src", message.icon_url);
+
+            icon.appendChild(img);
+        } else {
+            icon.classList.add('color');
+            icon.classList.add(message.color);
+            icon.innerHTML = message.icon;
+        }
+
         icon.dataset.resource = message.resource;
 
         icon.onclick = function(n) {

@@ -1,6 +1,6 @@
 <li {if="$me"}class="oppose"{/if}>
     {if="$muc"}
-        <span class="primary icon color bubble active"></span>
+        <span class="primary icon bubble active"></span>
     {else}
         {$url = $contact->getPhoto('s')}
         {if="$url"}

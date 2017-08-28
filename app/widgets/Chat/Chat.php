@@ -736,6 +736,17 @@ class Chat extends \Movim\Widget\Base
                 array_push($this->_wrapper[$date], $message);
             }
 
+            $cd = new \Modl\ContactDAO;
+            $contact = $cd->getPresence($message->jidfrom, $message->resource);
+
+            if($contact) {
+                $url = $contact->getPhoto('s');
+
+                if($url) {
+                    $message->icon_url = $url;
+                }
+            }
+
             $message->icon = firstLetterCapitalize($message->resource);
         } else {
             $msgkey = '<' . $message->jidfrom . '>' . substr($message->published, 11, 5);
