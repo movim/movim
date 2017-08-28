@@ -10,7 +10,9 @@ var Stickers = {
 
         if(element.classList.contains('zoomed')) {
             Drawer.clear();
-            Stickers_ajaxSend(jid, pack, value);
+
+            var textarea = document.querySelector('#chat_textarea');
+            Stickers_ajaxSend(jid, pack, value, Boolean(textarea.dataset.muc));
         }
 
         var i = 0;

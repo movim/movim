@@ -115,9 +115,9 @@
     {/if}
 </header>
 
-<div id="{$jid|cleanupId}-discussion" class="contained" data-muc="{$muc}">
+<div id="{$jid|cleanupId}-discussion" class="contained {if="$muc"}muc{/if}" data-muc="{$muc}">
     <section id="{$jid|cleanupId}-messages">
-        <ul class="list {if="$muc"}thin simple{else}middle{/if}" id="{$jid|cleanupId}-conversation"></ul>
+        <ul class="list middle" id="{$jid|cleanupId}-conversation"></ul>
         <div class="placeholder icon chat">
             <h1>{$c->__('chat.new_title')}</h1>
             <h4>{$c->___('chat.new_text')}</h4>
@@ -128,11 +128,9 @@
 <div class="chat_box">
     <ul class="list thin">
         <li>
-            {if="!$muc"}
             <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
-            {/if}
             {if="$c->supported('upload')"}
                 <span class="control icon" onclick="Upload_ajaxRequest()">
                     <i class="zmdi zmdi-attachment-alt"></i>
@@ -140,7 +138,7 @@
             {/if}
             <span class="control icon gray {if="$c->supported('upload')"}hide{else}show{/if}"
                   data-jid="{$jid}"
-                  onclick="Chat.sendMessage(this.dataset.jid, {if="$muc"}true{else}false{/if})">
+                  onclick="Chat.sendMessage()">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>
             <form>

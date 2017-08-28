@@ -73,7 +73,6 @@
     display: block;
 }
 
-
 #chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr) {
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
@@ -151,10 +150,10 @@
     clear: both;
 }
 
-#chat_widget .contained ul li.oppose + li.oppose span.icon,
-#chat_widget .contained ul li.oppose + li.oppose .bubble::before,
-#chat_widget .contained ul li:not(.oppose) + li:not(.oppose) span.icon,
-#chat_widget .contained ul li:not(.oppose) + li:not(.oppose) .bubble::before {
+#chat_widget .contained:not(.muc) ul li.oppose + li.oppose span.icon,
+#chat_widget .contained:not(.muc) ul li.oppose + li.oppose .bubble::before,
+#chat_widget .contained:not(.muc) ul li:not(.oppose) + li:not(.oppose) span.icon,
+#chat_widget .contained:not(.muc) ul li:not(.oppose) + li:not(.oppose) .bubble::before {
     display: none;
 }
 

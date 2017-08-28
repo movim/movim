@@ -1,7 +1,6 @@
 var Chat = {
     left : null,
     right: null,
-    room: null,
     date: null,
     currentDate: null,
     lastScroll: null,
@@ -96,10 +95,14 @@ var Chat = {
             }
         }
     },
-    sendMessage: function(jid, muc)
+    sendMessage: function()
     {
         var textarea = document.querySelector('#chat_textarea');
+
         var text = textarea.value;
+        var muc = Boolean(textarea.dataset.muc);
+        var jid = textarea.dataset.jid;
+
         textarea.focus();
 
         if(!Chat.sended) {
@@ -151,7 +154,6 @@ var Chat = {
             textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
 
             MovimUtils.textareaAutoheight(textarea);
-            //Chat.adaptDiscussion();
         }, 0); // Fix Me
 
         textarea.onkeydown = function(event) {
@@ -174,7 +176,7 @@ var Chat = {
                     return;
                 }
                 Chat.state = 0;
-                Chat.sendMessage(this.dataset.jid, Boolean(this.dataset.muc));
+                Chat.sendMessage();
 
                 return false;
             } else if(!Boolean(this.dataset.muc)) {
@@ -202,25 +204,16 @@ var Chat = {
                 }
             },5000);
 
-            //Chat.adaptDiscussion();
             Chat.toggleAction(this.value.length);
         };
 
         textarea.oninput = function() {
             MovimUtils.textareaAutoheight(this);
-            //Chat.adaptDiscussion();
         };
 
         if(document.documentElement.clientWidth > 1024) {
             document.querySelector('#chat_textarea').focus();
         }
-    },
-    adaptDiscussion: function()
-    {
-        document.querySelector('main > section > div > div.contained').style.height =
-            'calc(100% - '+
-            document.querySelector('.chat_box').clientHeight +
-            'px)';
     },
     setTextarea: function(value)
     {
@@ -241,7 +234,7 @@ var Chat = {
     {
         Chat_ajaxGet();
     },
-    setBubbles : function(left, right, room, date) {
+    setBubbles : function(left, right, date) {
         var div = document.createElement('div');
 
         Chat.currentDate = null;
@@ -250,8 +243,6 @@ var Chat = {
         Chat.left = div.firstChild.cloneNode(true);
         div.innerHTML = right;
         Chat.right = div.firstChild.cloneNode(true);
-        div.innerHTML = room;
-        Chat.room = div.firstChild.cloneNode(true);
         div.innerHTML = date;
         Chat.date = div.firstChild.cloneNode(true);
 
@@ -287,6 +278,7 @@ var Chat = {
         return true;
     },
     appendMessagesWrapper : function(page, prepend) {
+        console.log(page);
         if(page && Chat.checkDiscussion(page)) {
             var scrolled = MovimTpl.isPanelScrolled();
 
@@ -353,9 +345,8 @@ var Chat = {
             MovimUtils.cleanupId(message.jidfrom + '_conversation')
         );
 
-        bubble = Chat.room.cloneNode(true);
-
-        var p = bubble.querySelector('p.message');
+        bubble = Chat.left.cloneNode(true);
+        var p = bubble.querySelector('div.bubble p');
 
         if(message.body.match(/^\/me/)) {
             p.classList.add('quote');
@@ -371,19 +362,21 @@ var Chat = {
             p.classList.add('quoted');
         }
 
-        /*if (message.sticker != null) {
-            MovimUtils.addClass(bubble.querySelector('p.message'), 'sticker');
-            bubble.querySelector('p.message').appendChild(Chat.getStickerHtml(message.sticker));
-        } else {*/
-        //}
-        p.innerHTML = message.body;
+        if (message.sticker != null) {
+            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'sticker');
+            p.appendChild(Chat.getStickerHtml(message.sticker));
+        } else {
+            p.innerHTML = message.body;
+        }
 
-        bubble.querySelector('span.info').innerHTML = message.publishedPrepared;
+        bubble.querySelector('div.bubble').dataset.publishedprepared = message.resource + ' – ' + message.publishedPrepared;
 
-        var user = bubble.querySelector('p.user');
-        user.className = 'user ' + message.color;
-        user.innerHTML = message.resource;
-        user.onclick = function(n) {
+        icon = bubble.querySelector('span.primary.icon');
+
+        icon.classList.add(message.color);
+        icon.innerHTML = message.icon;
+
+        icon.onclick = function(n) {
             var textarea = document.querySelector('#chat_textarea');
             textarea.value = this.innerHTML + ', ' + textarea.value;
             textarea.focus();

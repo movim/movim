@@ -41,7 +41,7 @@ class Stickers extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxSend($to, $pack, $file)
+    function ajaxSend($to, $pack, $file, $muc = false)
     {
         if(!$this->validateJid($to)) return;
 
@@ -79,8 +79,13 @@ class Stickers extends \Movim\Widget\Base
         $p->setTo($m->jidto)
           ->setContent($m->body)
           ->setHTML($html)
-          ->setId($m->id)
-          ->request();
+          ->setId($m->id);
+
+        if($muc) {
+            $p->setMuc();
+        }
+
+        $p->request();
 
         $md = new \Modl\MessageDAO;
         $md->set($m);

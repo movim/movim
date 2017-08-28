@@ -621,17 +621,17 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('contact', $contact);
         $view->assign('me', false);
+        $view->assign('muc', $muc);
         $left = $view->draw('_chat_bubble', true);
 
         $view->assign('contact', $me);
         $view->assign('me', true);
+        $view->assign('muc', $muc);
         $right = $view->draw('_chat_bubble', true);
-
-        $room = $view->draw('_chat_bubble_room', true);
 
         $date = $view->draw('_chat_date', true);
 
-        $this->rpc('Chat.setBubbles', $left, $right, $room, $date);
+        $this->rpc('Chat.setBubbles', $left, $right, $date);
         $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper);
         $this->rpc('MovimTpl.scrollPanel');
         $this->rpc('Chat.clearReplace');
@@ -735,6 +735,8 @@ class Chat extends \Movim\Widget\Base
             if (!empty($message->body)) {
                 array_push($this->_wrapper[$date], $message);
             }
+
+            $message->icon = firstLetterCapitalize($message->resource);
         } else {
             $msgkey = '<' . $message->jidfrom . '>' . substr($message->published, 11, 5);
 
