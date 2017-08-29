@@ -24,7 +24,7 @@ var Chat = {
         Rooms_ajaxMucUsersAutocomplete(jid);
     },
     onAutocomplete: function(usersList) {
-        var textarea = document.querySelector('#chat_textarea');
+        var textarea = Chat.getTextarea();
         var text = textarea.value.toLowerCase();
 
         // If user have deleted text from textarea - reinitialize
@@ -56,37 +56,34 @@ var Chat = {
             // Otherwise we should autocomplete next to
             // previouslyAutocompleted.
             var autocompletedOk = false;
+
             for (var i = 0; i < usersList.length; i++) {
                 var autocompleted = '';
-                // If we want to just-scroll thru all people in MUC.
+
+                // If we have substring to autocomplete.
+                var user_substr = usersList[i]['resource'].substring(0, Chat.toAutocomplete.length);
+
+                // If we want to just-scroll through all people in MUC.
                 if (usersList[i]['resource'] == Chat.previouslyAutocompleted
                     && i !== usersList.length - 1
                     && Chat.toAutocomplete == '') {
                     autocompleted = usersList[i+1]['resource'];
+                    autocompletedOk = true;
+                } else if (i > Chat.previouslyAutocompletedSeqID
+                    && user_substr.toLowerCase().indexOf(Chat.toAutocomplete) !== -1
+                    && usersList[i]['resource'] != Chat.previouslyAutocompleted) {
+                    autocompleted = usersList[i]['resource'];
+                    autocompletedOk = true;
+                }
+
+                if (autocompletedOk) {
                     textarea.value = autocompleted + ', ';
                     Chat.previouslyAutocompleted = autocompleted;
                     Chat.previouslyAutocompletedSeqID = i;
-                    autocompletedOk = true;
-                    break;
-                } else {
-                    // If we have substring to autocomplete.
-                    var user_substr = usersList[i]['resource'].substring(0,
-                        Chat.toAutocomplete.length)
-                    if (i > Chat.previouslyAutocompletedSeqID
-                        && user_substr.toLowerCase().indexOf(Chat.toAutocomplete) !== -1
-                        && usersList[i]['resource'] != Chat.previouslyAutocompleted) {
-                        autocompleted = usersList[i]['resource'];
-                        textarea.value = autocompleted + ', ';
-                        Chat.previouslyAutocompleted = autocompleted;
-                        Chat.previouslyAutocompletedSeqID = i;
-                        autocompletedOk = true;
-                        break;
-                    }
-                }
-                if (autocompletedOk) {
                     break;
                 }
             }
+
             // If autocompletion failed - emptify input field.
             if (!autocompletedOk) {
                 textarea.value = '';
@@ -133,7 +130,7 @@ var Chat = {
     clearReplace: function()
     {
         Chat.edit = false;
-        var textarea = document.querySelector('#chat_textarea');
+        var textarea = Chat.getTextarea();
         textarea.value = '';
         MovimUtils.textareaAutoheight(textarea);
     },
