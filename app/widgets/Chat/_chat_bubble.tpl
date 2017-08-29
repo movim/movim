@@ -1,6 +1,6 @@
 <li {if="$me"}class="oppose"{/if}>
     {if="$muc"}
-        <span class="primary icon bubble"></span>
+        <span class="primary icon bubble" onclick="Chat.quoteMUC(this.dataset.resource, true);"></span>
     {else}
         {$url = $contact->getPhoto('s')}
         {if="$url"}

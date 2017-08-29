@@ -201,9 +201,13 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Autocomplete users in MUC
      */
-    function ajaxMucUsersAutocomplete($room) {
+    function ajaxMucUsersAutocomplete($room)
+    {
         $usersForAutocomplete = $this->getUsersList($room);
-        $this->rpc("Chat.onAutocomplete", $usersForAutocomplete);
+
+        if($usersForAutocomplete) {
+            $this->rpc("Chat.onAutocomplete", $usersForAutocomplete);
+        }
     }
 
     /**

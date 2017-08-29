@@ -50,7 +50,7 @@ var Chat = {
         if (Chat.previouslyAutocompleted === null
             && Chat.toAutocomplete == '') {
             var autocompleted = usersList[0]['resource'];
-            textarea.value = autocompleted + ', ';
+            Chat.quoteMUC(autocompleted);
             Chat.previouslyAutocompleted = autocompleted;
         } else {
             // Otherwise we should autocomplete next to
@@ -77,7 +77,7 @@ var Chat = {
                 }
 
                 if (autocompletedOk) {
-                    textarea.value = autocompleted + ', ';
+                    Chat.quoteMUC(autocompleted);
                     Chat.previouslyAutocompleted = autocompleted;
                     Chat.previouslyAutocompletedSeqID = i;
                     break;
@@ -91,6 +91,19 @@ var Chat = {
                 Chat.previouslyAutocompletedSeqID = null;
             }
         }
+    },
+    quoteMUC: function(nickname, add)
+    {
+        var textarea = Chat.getTextarea();
+        if(add) {
+            if(textarea.value.search(nickname) === -1) {
+                textarea.value = nickname + ', ' + textarea.value;
+            }
+        } else {
+            textarea.value = nickname + ', ';
+        }
+
+        textarea.focus();
     },
     sendMessage: function()
     {

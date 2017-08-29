@@ -150,6 +150,10 @@
     clear: both;
 }
 
+#chat_widget .contained.muc ul li span.primary:hover {
+    cursor: pointer;
+}
+
 #chat_widget .contained:not(.muc) ul li.oppose + li.oppose span.icon,
 #chat_widget .contained:not(.muc) ul li.oppose + li.oppose .bubble::before,
 #chat_widget .contained:not(.muc) ul li:not(.oppose) + li:not(.oppose) span.icon,
