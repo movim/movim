@@ -92,7 +92,7 @@ class Chat extends \Movim\Widget\Base
 
             if($contact != null
             && $notify
-            && !preg_match('#^\?OTR#', $message->body)
+            && !$message->isOTR()
             && $message->type != 'groupchat'
             && !$message->edited) {
                 $avatar = $contact->getPhoto('s');
@@ -126,7 +126,7 @@ class Chat extends \Movim\Widget\Base
             $n->ajaxClear('chat|'.$from);
         }
 
-        if(!preg_match('#^\?OTR#', $message->body)) {
+        if(!$message->isOTR()) {
             $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
     }
@@ -352,7 +352,7 @@ class Chat extends \Movim\Widget\Base
 
         /* Is it really clean ? */
         if(!$p->getMuc()) {
-            if(!preg_match('#^\?OTR#', $m->body)) {
+            if(!$m->isOTR()) {
                 $md = new \Modl\MessageDAO;
                 $md->set($m);
             }
@@ -439,7 +439,7 @@ class Chat extends \Movim\Widget\Base
             Notification::append(false, $this->__('message.history', count($messages)));
 
             foreach($messages as $message) {
-                if(!preg_match('#^\?OTR#', $message->body)) {
+                if(!$message->isOTR()) {
                     $this->prepareMessage($message);
                 }
             }
