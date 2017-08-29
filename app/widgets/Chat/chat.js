@@ -245,7 +245,8 @@ var Chat = {
     setScrollBehaviour : function() {
         var discussion = document.querySelector('#chat_widget div.contained');
         discussion.onscroll = function() {
-            if(this.scrollTop < 1) {
+            if(this.scrollTop < 1
+            && discussion.querySelectorAll('ul li p').length >= Chat.pagination) {
                 Chat_ajaxGetHistory(Chat.getTextarea().dataset.jid, Chat.currentDate);
             }
 

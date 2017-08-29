@@ -800,5 +800,6 @@ class Chat extends \Movim\Widget\Base
 
     function display()
     {
+        $this->view->assign('pagination', $this->_pagination);
     }
 }
