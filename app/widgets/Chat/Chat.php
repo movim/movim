@@ -218,7 +218,7 @@ class Chat extends \Movim\Widget\Base
 
             $this->rpc('MovimUtils.addClass', '#chat_widget', 'fixed');
             $this->rpc('MovimTpl.fill', '#chat_widget', $html);
-            $this->rpc('Chat.focus', $jid);
+            $this->rpc('Chat.focus');
             $this->rpc('MovimTpl.showPanel');
 
             $this->prepareMessages($jid);
@@ -598,7 +598,7 @@ class Chat extends \Movim\Widget\Base
         $md = new \Modl\MessageDAO;
 
         if($muc) {
-            $messages = $md->getRoom(echapJid($jid), 0, $this->_pagination * 4);
+            $messages = $md->getRoom(echapJid($jid), 0, $this->_pagination);
         } else {
             $messages = $md->getContact(echapJid($jid), 0, $this->_pagination);
         }

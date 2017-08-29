@@ -97,7 +97,7 @@ var Chat = {
     },
     sendMessage: function()
     {
-        var textarea = document.querySelector('#chat_textarea');
+        var textarea = Chat.getTextarea();
 
         var text = textarea.value;
         var muc = Boolean(textarea.dataset.muc);
@@ -127,7 +127,7 @@ var Chat = {
     {
         Chat.sended = false;
         Chat.clearReplace();
-        var textarea = document.querySelector('#chat_textarea');
+        var textarea = Chat.getTextarea();
         localStorage.removeItem(textarea.dataset.jid + '_message');
     },
     clearReplace: function()
@@ -137,20 +137,14 @@ var Chat = {
         textarea.value = '';
         MovimUtils.textareaAutoheight(textarea);
     },
-    focus: function(jid)
+    focus: function()
     {
         Chat.sended = false;
 
-        if(jid) {
-            document.querySelector('#chat_widget').dataset.jid = jid;
-        } else {
-            delete document.querySelector('#chat_widget').dataset.jid;
-        }
-
-        var textarea = document.querySelector('#chat_textarea');
+        var textarea = Chat.getTextarea();
 
         setTimeout(function() {
-            var textarea = document.querySelector('#chat_textarea');
+            var textarea = Chat.getTextarea();
             textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
 
             MovimUtils.textareaAutoheight(textarea);
@@ -251,12 +245,10 @@ var Chat = {
     setScrollBehaviour : function() {
         var discussion = document.querySelector('#chat_widget div.contained');
         discussion.onscroll = function() {
-            if(discussion.dataset.muc != true) {
-                if(this.scrollTop < 1) {
-                    var chat = document.querySelector('#chat_widget');
-                    Chat_ajaxGetHistory(chat.dataset.jid, Chat.currentDate);
-                }
+            if(this.scrollTop < 1) {
+                Chat_ajaxGetHistory(Chat.getTextarea().dataset.jid, Chat.currentDate);
             }
+
             Chat.lastHeight = this.clientHeight;
         };
     },
@@ -322,10 +314,11 @@ var Chat = {
 
             var chat = document.querySelector('#chat_widget');
             var lastMessage = chat.querySelector('ul li:not(.oppose):last-child div.bubble > div:last-child');
+            var textarea = Chat.getTextarea();
 
-            if(chat.dataset.jid && lastMessage) {
+            if(textarea && lastMessage) {
                 Chat_ajaxDisplayed(
-                    chat.dataset.jid,
+                    textarea.dataset.jid,
                     lastMessage.id
                 );
             }
@@ -436,6 +429,21 @@ var Chat = {
             }
         }
 
+        msg.appendChild(p);
+        msg.appendChild(span);
+
+        var elem = document.getElementById(data.id);
+        if (elem) {
+            elem.parentElement.replaceChild(msg, elem);
+            mergeMsg = true;
+        } else {
+            if(prepend) {
+                bubble.querySelector('div.bubble').insertBefore(msg, bubble.querySelector('div.bubble').firstChild);
+            } else {
+                bubble.querySelector('div.bubble').appendChild(msg);
+            }
+        }
+
         /* MUC specific */
         if(isMuc) {
             bubble.querySelector('div.bubble').dataset.publishedprepared = data.resource + ' – ' + data.publishedPrepared;
@@ -455,28 +463,13 @@ var Chat = {
                 }
 
                 icon.dataset.resource = data.resource;
-
-                icon.onclick = function(n) {
-                    var textarea = document.querySelector('#chat_textarea');
-                    textarea.value = this.dataset.resource + ', ' + textarea.value;
-                    textarea.focus();
-                };
             }
-        }
 
-        msg.appendChild(p);
-        msg.appendChild(span);
-
-        var elem = document.getElementById(data.id);
-        if (elem) {
-            elem.parentElement.replaceChild(msg, elem);
-            mergeMsg = true;
-        } else {
-            if(prepend) {
-                bubble.querySelector('div.bubble').insertBefore(msg, bubble.querySelector('div.bubble').firstChild);
-            } else {
-                bubble.querySelector('div.bubble').appendChild(msg);
-            }
+            /*icon.onclick = function(n) {
+                var textarea = document.querySelector('#chat_textarea');
+                textarea.value = this.dataset.resource + ', ' + textarea.value;
+                textarea.focus();
+            };*/
         }
 
         if(prepend){
@@ -601,6 +594,10 @@ var Chat = {
                 MovimUtils.hideElement(send_button);
             }
         }
+    },
+    getTextarea: function() {
+        var textarea = document.querySelector('#chat_textarea');
+        if(textarea) return textarea;
     }
 };
 
@@ -621,14 +618,12 @@ MovimWebsocket.attach(function() {
 
 if(typeof Upload != 'undefined') {
     Upload.attach(function(file) {
-        var textarea = document.querySelector('#chat_textarea');
-
-        Chat_ajaxSendMessage(textarea.dataset.jid, false, Boolean(textarea.dataset.muc), false, false, file);
+        Chat_ajaxSendMessage(Chat.getTextarea().dataset.jid, false, Boolean(Chat.getTextarea().dataset.muc), false, false, file);
     });
 }
 
 document.addEventListener('focus', function() {
-    var textarea = document.querySelector('#chat_textarea');
+    var textarea = Chat.getTextarea();
     if(textarea) textarea.focus();
 });
 

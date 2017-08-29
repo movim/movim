@@ -45,11 +45,12 @@ var Rooms = {
      * @param The jid to remember
      */
     anonymousJoin : function() {
-        // We display the room
-        Chat_ajaxGetRoom(Rooms.anonymous_room);
         // And finally we join
         Rooms_ajaxExit(Rooms.anonymous_room);
         Rooms_ajaxJoin(Rooms.anonymous_room);
+
+        // We display the room
+        Chat_ajaxGetRoom(Rooms.anonymous_room);
     }
 }
 
