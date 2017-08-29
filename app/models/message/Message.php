@@ -238,6 +238,14 @@ class Message extends Model
             || $rd->get($this->jidfrom) !== null);
     }
 
+    public function isEmpty()
+    {
+        return (empty($this->body)
+            && empty($this->picture)
+            && empty($this->sticker)
+        );
+    }
+
     public function addUrls()
     {
         $this->body = addUrls($this->body);

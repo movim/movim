@@ -77,6 +77,8 @@ class Chat extends \Movim\Widget\Base
         $message = $packet->content;
         $cd = new \Modl\ContactDAO;
 
+        if($message->isEmpty()) return;
+
         if($message->session == $message->jidto && !$history
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
@@ -224,15 +226,6 @@ class Chat extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Get a Drawer view of a contact
-     */
-    function ajaxGetContact($jid)
-    {
-        $c = new ContactActions;
-        $c->ajaxGetDrawer($jid);
-    }
-
-    /**
      * @brief Get a chatroom
      * @param string $jid
      */
@@ -266,6 +259,15 @@ class Chat extends \Movim\Widget\Base
         } else {
             $this->rpc('Rooms_ajaxAdd', $room);
         }
+    }
+
+    /**
+     * @brief Get a Drawer view of a contact
+     */
+    function ajaxGetContact($jid)
+    {
+        $c = new ContactActions;
+        $c->ajaxGetDrawer($jid);
     }
 
     /**
@@ -732,10 +734,6 @@ class Chat extends \Movim\Widget\Base
         if ($message->type == 'groupchat') {
             $message->color = stringToColor($message->session . $message->resource . $message->jidfrom . $message->type);
 
-            if (!empty($message->body)) {
-                array_push($this->_wrapper[$date], $message);
-            }
-
             $cd = new \Modl\ContactDAO;
             $contact = $cd->getPresence($message->jidfrom, $message->resource);
 
@@ -748,13 +746,15 @@ class Chat extends \Movim\Widget\Base
             }
 
             $message->icon = firstLetterCapitalize($message->resource);
-        } else {
-            $msgkey = '<' . $message->jidfrom . '>' . substr($message->published, 11, 5);
-
-            $counter = count($this->_wrapper[$date]);
-
-            $this->_wrapper[$date][$counter.$msgkey] = $message;
         }
+
+        $msgkey = '<' . $message->jidfrom;
+        $msgkey .= ($message->type == 'groupchat') ? $message->resource : '';
+        $msgkey .= '>' . substr($message->published, 11, 5);
+
+        $counter = count($this->_wrapper[$date]);
+
+        $this->_wrapper[$date][$counter.$msgkey] = $message;
 
         if ($message->type == 'invitation') {
             $view = $this->tpl();

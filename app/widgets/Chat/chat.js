@@ -278,7 +278,6 @@ var Chat = {
         return true;
     },
     appendMessagesWrapper : function(page, prepend) {
-        console.log(page);
         if(page && Chat.checkDiscussion(page)) {
             var scrolled = MovimTpl.isPanelScrolled();
 
@@ -293,20 +292,12 @@ var Chat = {
                     Chat.appendDate(date, prepend);
                 }
 
-                if (page[date].constructor == Array) {
-                    for(id in page[date]) {
-                        Chat.appendMucMessage(page[date][id]);
+                for(speakertime in page[date]) {
+                    if(!Chat.currentDate) {
+                        Chat.currentDate = page[date][speakertime].published;
                     }
-                } else {
-                    for(speakertime in page[date]) {
-                        if(!Chat.currentDate) {
-                            Chat.currentDate = page[date][speakertime].published;
-                        }
 
-                        if(discussion.dataset.muc != 1) {
-                            Chat.appendMessage(speakertime, page[date][speakertime], prepend);
-                        }
-                    }
+                    Chat.appendMessage(speakertime, page[date][speakertime], prepend);
                 }
 
                 if(prepend && date) {
@@ -340,62 +331,6 @@ var Chat = {
             }
         }
     },
-    appendMucMessage : function(message) {
-        var conversation = document.getElementById(
-            MovimUtils.cleanupId(message.jidfrom + '_conversation')
-        );
-
-        bubble = Chat.left.cloneNode(true);
-        var p = bubble.querySelector('div.bubble p');
-
-        if(message.body.match(/^\/me/)) {
-            p.classList.add('quote');
-            message.body = message.body.substr(4);
-        }
-
-        if(message.body.match(/^\/code/)) {
-            p.classList.add('code');
-            message.body = message.body.substr(6).trim();
-        }
-
-        if (message.quoted) {
-            p.classList.add('quoted');
-        }
-
-        if (message.sticker != null) {
-            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'sticker');
-            p.appendChild(Chat.getStickerHtml(message.sticker));
-        } else {
-            p.innerHTML = message.body;
-        }
-
-        bubble.querySelector('div.bubble').dataset.publishedprepared = message.resource + ' – ' + message.publishedPrepared;
-
-        icon = bubble.querySelector('span.primary.icon');
-
-        if(message.icon_url) {
-            var img = document.createElement("img");
-            img.setAttribute("src", message.icon_url);
-
-            icon.appendChild(img);
-        } else {
-            icon.classList.add('color');
-            icon.classList.add(message.color);
-            icon.innerHTML = message.icon;
-        }
-
-        icon.dataset.resource = message.resource;
-
-        icon.onclick = function(n) {
-            var textarea = document.querySelector('#chat_textarea');
-            textarea.value = this.dataset.resource + ', ' + textarea.value;
-            textarea.focus();
-        };
-
-        if(conversation) {
-            conversation.appendChild(bubble);
-        }
-    },
     appendMessage : function(idjidtime, data, prepend) {
         if(data.body == null) return;
 
@@ -403,6 +338,8 @@ var Chat = {
             mergeMsg = false,
             msgStack,
             refBubble;
+
+        var isMuc = (document.querySelector('#chat_widget div.contained').dataset.muc == 1);
         var jidtime = idjidtime.substring(idjidtime.indexOf('<') + 1);
 
         if(prepend) {
@@ -496,6 +433,34 @@ var Chat = {
                 span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
             } else if (data.delivered) {
                 span.appendChild(Chat.getDeliveredIcoHtml(data.delivered));
+            }
+        }
+
+        /* MUC specific */
+        if(isMuc) {
+            bubble.querySelector('div.bubble').dataset.publishedprepared = data.resource + ' – ' + data.publishedPrepared;
+
+            icon = bubble.querySelector('span.primary.icon');
+
+            if(icon.querySelector('img') == undefined) {
+                if(data.icon_url) {
+                    var img = document.createElement("img");
+                    img.setAttribute("src", data.icon_url);
+
+                    icon.appendChild(img);
+                } else {
+                    icon.classList.add('color');
+                    icon.classList.add(data.color);
+                    icon.innerHTML = data.icon;
+                }
+
+                icon.dataset.resource = data.resource;
+
+                icon.onclick = function(n) {
+                    var textarea = document.querySelector('#chat_textarea');
+                    textarea.value = this.dataset.resource + ', ' + textarea.value;
+                    textarea.focus();
+                };
             }
         }
 
@@ -676,4 +641,3 @@ window.addEventListener('resize', function() {
 });
 
 var state = 0;
-
