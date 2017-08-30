@@ -23,7 +23,7 @@
                 {$contact->getTrueName()}
             </p>
             {if="$contact->email != null"}
-                <p><img src="{$contact->getPhoto('email')}"/></p>
+                <p><a href="mailto:{$contact->email}">{$contact->email}</a></p>
             {/if}
             {if="$contact->description != null && trim($contact->description) != ''"}
                 <p title="{$contact->description}">{$contact->description}</p>

@@ -94,7 +94,7 @@
         <li>
             <span class="primary icon gray"><i class="zmdi zmdi-email"></i></span>
             <p>{$c->__('general.email')}</p>
-            <p><img src="{$contact->getPhoto('email')}"/></p>
+            <p><a href="mailto:{$contact->email}">{$contact->email}</a></p>
         </li>
         {/if}
 

@@ -159,32 +159,24 @@ class Contact extends Model
         $p = new Picture;
         $p->fromBase($this->photobin);
         $p->set($this->jid);
-
-        if(isset($this->email) && $this->email != '') {
-            \createEmailPic(strtolower($this->jid), $this->email);
-        }
     }
 
     public function getPhoto($size = 'l')
     {
-        if($size == 'email') {
-            return BASE_URI.'cache/'.strtolower($this->jid).'_email.png';
-        } else {
-            $sizes = [
-                'wall'  => [1920, 1080],
-                'xxl'   => [1280, 300],
-                'xl'    => [512 , false],
-                'l'     => [210 , false],
-                'm'     => [120 , false],
-                's'     => [50  , false],
-                'xs'    => [28  , false],
-                'xxs'   => [24  , false]
-            ];
+        $sizes = [
+            'wall'  => [1920, 1080],
+            'xxl'   => [1280, 300],
+            'xl'    => [512 , false],
+            'l'     => [210 , false],
+            'm'     => [120 , false],
+            's'     => [50  , false],
+            'xs'    => [28  , false],
+            'xxs'   => [24  , false]
+        ];
 
 
-            $p = new Picture;
-            return $p->get($this->jid, $sizes[$size][0], $sizes[$size][1]);
-        }
+        $p = new Picture;
+        return $p->get($this->jid, $sizes[$size][0], $sizes[$size][1]);
     }
 
     public function setLocation($stanza)
