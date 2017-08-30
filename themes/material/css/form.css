@@ -385,7 +385,7 @@ header.big ~ .button.action {
     }
 
     aside ~ * .button.action {
-        right: calc(50% - 25rem);
+        right: calc(50% - 18rem);
     }
 }
 
