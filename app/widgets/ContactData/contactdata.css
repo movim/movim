@@ -4,4 +4,10 @@
     margin-top: 1rem;
     margin-left: 5rem;
     margin-bottom: -2rem;
+    transition: height 0.3s, border-radius 0.3s ease-in-out;
+}
+
+#contact_data li:first-child img:hover {
+    height: 25rem;
+    border-radius: 1rem;
 }
