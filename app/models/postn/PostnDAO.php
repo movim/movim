@@ -25,7 +25,8 @@ class PostnDAO extends SQL
             $this->_sql .= '
                 and (
                     postn.nsfw = (select nsfw from setting where session = :session)
-                    or postn.nsfw = false)';
+                    or postn.nsfw = false
+                    or postn.nsfw is null)';
 
             $params += ['setting.session' => $this->_user];
         }
@@ -176,7 +177,8 @@ class PostnDAO extends SQL
                 and postn.node != \'urn:xmpp:microblog:0\'
                 and (
                     postn.nsfw = (select nsfw from setting where session = :jid)
-                    or postn.nsfw = false)
+                    or postn.nsfw = false
+                    or postn.nsfw is null)
             order by postn.published desc';
 
         if($limitr !== false)
@@ -235,7 +237,8 @@ class PostnDAO extends SQL
             $this->_sql .= '
                     and (
                         postn.nsfw = (select nsfw from setting where session = :session)
-                        or postn.nsfw = false)';
+                        or postn.nsfw = false
+                        or postn.nsfw is null)';
 
             $params += ['setting.session' => $this->_user];
         }
@@ -348,7 +351,8 @@ class PostnDAO extends SQL
             where ((postn.origin, postn.node) in (select server, node from subscription where jid = :origin))
                 and (
                     postn.nsfw = (select nsfw from setting where session = :origin)
-                    or postn.nsfw = false)
+                    or postn.nsfw = false
+                    or postn.nsfw is null)
             order by postn.published desc
             ';
 
@@ -375,7 +379,8 @@ class PostnDAO extends SQL
             where postn.origin = :origin and postn.node = \'urn:xmpp:microblog:0\'
                 and (
                     postn.nsfw = (select nsfw from setting where session = :origin)
-                    or postn.nsfw = false)
+                    or postn.nsfw = false
+                    or postn.nsfw is null)
             order by postn.published desc
             ';
 
@@ -579,7 +584,8 @@ class PostnDAO extends SQL
                 and published > :published
                 and (
                     postn.nsfw = (select nsfw from setting where session = :origin)
-                    or postn.nsfw = false)
+                    or postn.nsfw = false
+                    or postn.nsfw is null)
                 ';
 
         $this->prepare(
@@ -633,7 +639,8 @@ class PostnDAO extends SQL
                 and postn.node not like \'urn:xmpp:inbox\'
                 and (
                     postn.nsfw = (select nsfw from setting where session = :origin)
-                    or postn.nsfw = false)
+                    or postn.nsfw = false
+                    or postn.nsfw is null)
             order by postn.published desc
             limit 1 offset 0';
 
@@ -686,7 +693,8 @@ class PostnDAO extends SQL
             $this->_sql .= '
                 and (
                     postn.nsfw = (select nsfw from setting where session = :session)
-                    or postn.nsfw = false)';
+                    or postn.nsfw = false
+                    or postn.nsfw is null)';
 
             $params += ['setting.session' => $this->_user];
         }
