@@ -55,7 +55,7 @@ class Avatar {
         $publish->appendChild($item);
 
         $metadata = $dom->createElement('metadata');
-        $metadata->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
+        $metadata->setAttribute('xmlns', 'urn:xmpp:avatar:metadata');
         $item->appendChild($metadata);
 
         $info = $dom->createElement('info');
