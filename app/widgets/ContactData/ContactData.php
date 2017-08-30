@@ -7,6 +7,7 @@ class ContactData extends \Movim\Widget\Base
     public function load()
     {
         $this->addjs('contactdata.js');
+        $this->addcss('contactdata.css');
         $this->registerEvent('vcard_get_handle', 'onVcardReceived');
         $this->registerEvent('vcard4_get_handle', 'onVcardReceived');
     }

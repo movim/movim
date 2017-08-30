@@ -1,0 +1,7 @@
+#contact_data li:first-child img {
+    height: 10rem;
+    border-radius: 100%;
+    margin-top: 1rem;
+    margin-left: 5rem;
+    margin-bottom: -2rem;
+}

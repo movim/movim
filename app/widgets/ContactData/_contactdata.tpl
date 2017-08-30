@@ -1,32 +1,28 @@
 <br />
-{$url = $contact->getPhoto('s')}
+{$url = $contact->getPhoto('l')}
 
 <div class="block">
     <ul class="list middle">
-        <li>
-            {if="$url"}
-                <span class="primary icon bubble
-                    {if="isset($presence)"}status {$presence}{/if}">
+        {if="$url"}
+            <li>
+                <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->jid}')">
+                    <i class="zmdi zmdi-more"></i>
+                </span>
+                <p class="center">
                     <img src="{$url}">
-                </span>
-            {else}
-                <span class="primary icon bubble color {$contact->jid|stringToColor}
-                     {if="isset($presence)"}status {$presence}{/if}
-                ">
-                    {$contact->getTrueName()|firstLetterCapitalize}
-                </span>
-            {/if}
-            <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->jid}')">
-                <i class="zmdi zmdi-more"></i>
-            </span>
-            <p class="normal">
-                {$contact->getTrueName()}
+                </p>
+            </li>
+        {/if}
+        <li>
+            {$presencestxt = getPresences()}
+            <p class="normal center	">
+                {$contact->getTrueName()} {if="isset($contactr)"}  –  {$presencestxt[$contactr->value]}{/if}
             </p>
             {if="$contact->email != null"}
-                <p><a href="mailto:{$contact->email}">{$contact->email}</a></p>
+                <p class="center"><a href="mailto:{$contact->email}">{$contact->email}</a></p>
             {/if}
             {if="$contact->description != null && trim($contact->description) != ''"}
-                <p title="{$contact->description}">{$contact->description}</p>
+                <p class="center" title="{$contact->description}">{$contact->description}</p>
             {/if}
         </li>
         {$sub = $contact->countSubscribers()}
