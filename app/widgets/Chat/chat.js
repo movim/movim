@@ -476,6 +476,10 @@ var Chat = {
                 icon.dataset.resource = data.resource;
             }
 
+            if(data.quoted) {
+                bubble.querySelector('div.bubble').classList.add('quoted');
+            }
+
             /*icon.onclick = function(n) {
                 var textarea = document.querySelector('#chat_textarea');
                 textarea.value = this.dataset.resource + ', ' + textarea.value;
