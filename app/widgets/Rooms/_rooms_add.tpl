@@ -61,7 +61,8 @@
                             <label for="autojoin"></label>
                         </div>
                     </span>
-                    <p class="normal line">{$c->__('chatrooms.autojoin')}</p>
+                    <p></p>
+                    <p class="normal">{$c->__('chatrooms.autojoin')}</p>
                 </li>
             </ul>
         </div>
