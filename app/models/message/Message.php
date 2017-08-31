@@ -92,7 +92,8 @@ class Message extends Model
             }
 
             if($stanza->x
-            && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user') {
+            && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
+            && isset($jid[1])) {
                 $this->jidfrom = $jid[0].'/'.$jid[1];
             }
 
