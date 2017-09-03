@@ -10,7 +10,7 @@
         {loop="$notifs"}
             {$parent = $value->getParent()}
             {if="$parent"}
-                <a href="{$c->route('post', [$value->origin, 'urn:xmpp:microblog:0', $parent->nodeid])}">
+                <a href="{$c->route('post', [$value->parentorigin, $value->parentnode, $value->parentnodeid])}">
                     <li>
                         {if="$value->isLike()"}
                             <span class="primary icon red small">

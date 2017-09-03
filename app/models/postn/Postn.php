@@ -296,6 +296,16 @@ class Postn extends Model
         }
 
         $this->setAttachments($entry->entry->link, $extra);
+
+        if($this->isComment()) {
+            $pd = new \Modl\PostnDAO;
+            $p = $pd->getParent($this->origin, substr($this->node, 30));
+            if($p) {
+                $this->parentorigin = $p->origin;
+                $this->parentnode   = $p->node;
+                $this->parentnodeid = $p->nodeid;
+            }
+        }
     }
 
     private function setAttachments($links, $extra = false)

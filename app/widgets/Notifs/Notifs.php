@@ -40,6 +40,5 @@ class Notifs extends \Movim\Widget\Base
 
     function display()
     {
-
     }
 }

@@ -163,6 +163,24 @@ class PostnDAO extends SQL
         return $this->run('Postn');
     }
 
+    function getParent($commentorigin, $commentnodeid)
+    {
+        $this->_sql = '
+            select * from postn
+            where commentorigin = :commentorigin
+                and commentnodeid = :commentnodeid';
+
+        $this->prepare(
+            'Postn',
+            [
+                'commentorigin' => $commentorigin,
+                'commentnodeid' => $commentnodeid
+            ]
+        );
+
+        return $this->run('Postn', 'item');
+    }
+
     function getNode($from, $node, $limitf = false, $limitr = false)
     {
         $this->_sql = '
@@ -604,9 +622,8 @@ class PostnDAO extends SQL
         $this->_sql = '
             select * from postn
             left outer join contact on postn.aid = contact.jid
-            where origin = :origin
+            where parentorigin = :origin
             and commentnodeid is null
-            and node != \'urn:xmpp:microblog:0\'
             and published > :published
             order by published desc
                 ';
