@@ -60,15 +60,20 @@ class PostActions extends \Movim\Widget\Base
 
     function ajaxDeleteConfirm($to, $node, $id)
     {
-        $p = new PostDelete;
-        $p->setTo($to)
-          ->setNode($node)
-          ->setId($id)
-          ->request();
+        $pd = new \Modl\PostnDAO;
+        $post = $pd->get($to, $node, $id);
 
-        $p = new Delete;
-        $p->setTo($to)
-          ->setNode('urn:xmpp:microblog:0:comments/'.$id)
-          ->request();
+        if(isset($post)) {
+            $p = new PostDelete;
+            $p->setTo($post->origin)
+              ->setNode($post->node)
+              ->setId($post->nodeid)
+              ->request();
+
+            $p = new Delete;
+            $p->setTo($post->commentorigin)
+              ->setNode('urn:xmpp:microblog:0:comments/'.$post->commentnodeid)
+              ->request();
+        }
     }
 }
