@@ -46,7 +46,9 @@ class Message extends Payload
         $md = new \Modl\MessageDAO;
         $md->set($m);
 
-        $this->pack($m);
-        $this->deliver();
+        if($m->body || $m->subject) {
+            $this->pack($m);
+            $this->deliver();
+        }
     }
 }
