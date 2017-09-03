@@ -49,6 +49,10 @@
   100% {-webkit-transform:rotate(0deg);}
 }
 
+#drawer {
+    display: none;
+}
+
 @keyframes Rotate {
   0% {transform:rotate(0deg);}
   4% {transform:rotate(-22.5deg);}
