@@ -66,21 +66,29 @@ class Message extends Model
 
     public function set($stanza, $parent = false)
     {
+        $jid = explode('/',(string)$stanza->attributes()->from);
+        $to = current(explode('/',(string)$stanza->attributes()->to));
+
+        // This is not very beautiful
+        $user = new User;
+        $this->session    = $user->getLogin();
+
+        $this->jidto      = $to;
+        $this->jidfrom    = $jid[0];
+
+        if(isset($jid[1])) {
+            $this->resource = $jid[1];
+        }
+
+        if($stanza->delay) {
+            $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
+        } elseif($parent && $parent->delay) {
+            $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
+        } else {
+            $this->published = gmdate('Y-m-d H:i:s');
+        }
+
         if($stanza->body || $stanza->subject) {
-            $jid = explode('/',(string)$stanza->attributes()->from);
-            $to = current(explode('/',(string)$stanza->attributes()->to));
-
-            // This is not very beautiful
-            $user = new User;
-            $this->session    = $user->getLogin();
-
-            $this->jidto      = $to;
-            $this->jidfrom    = $jid[0];
-
-            if(isset($jid[1])) {
-                $this->resource = $jid[1];
-            }
-
             $this->type = 'chat';
             if($stanza->attributes()->type) {
                 $this->type = (string)$stanza->attributes()->type;
@@ -163,13 +171,6 @@ class Message extends Model
                 $this->edited = true;
             }
 
-            if($stanza->delay)
-                $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
-            elseif($parent && $parent->delay)
-                $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
-            else
-                $this->published = gmdate('Y-m-d H:i:s');
-
             if($stanza->reference) {
                 $filetmp = [];
 
@@ -205,6 +206,11 @@ class Message extends Model
             }
 
             //return $this->checkPicture();
+        } elseif(isset($stanza->x)
+        && $stanza->x->attributes()->xmlns == 'jabber:x:conference') {
+            $this->type = 'invitation';
+            $this->body = (string)$stanza->x->attributes()->reason;
+            $this->subject = (string)$stanza->x->attributes()->jid;
         }
     }
 
@@ -234,8 +240,10 @@ class Message extends Model
     public function isTrusted()
     {
         $rd = new \Modl\RosterLinkDAO;
+        $from = explode('.', end(explode('@',(string)$this->jidfrom)));
 
         return ($this->session == $this->jidfrom
+            || end(explode('@',(string)$this->session)) == $from[count($from)-2].'.'.$from[count($from)-1]
             || $rd->get($this->jidfrom) !== null);
     }
 

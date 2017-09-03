@@ -83,15 +83,13 @@ class Chat extends \Movim\Widget\Base
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
 
-            $notify = true;
             $contact = $cd->getRosterItem($from);
             if($contact == null) {
-                $notify = false;
                 $contact = $cd->get($from);
             }
 
             if($contact != null
-            && $notify
+            && $message->isTrusted()
             && !$message->isOTR()
             && $message->type != 'groupchat'
             && !$message->edited) {
