@@ -34,22 +34,19 @@ class Message extends Payload
         $to = current(explode('/',(string)$stanza->attributes()->to));
 
         if($stanza->composing)
-            $this->event('composing', array($jid[0], $to));
+            $this->event('composing', [$jid[0], $to]);
         if($stanza->paused)
-            $this->event('paused', array($jid[0], $to));
+            $this->event('paused', [$jid[0], $to]);
         if($stanza->gone)
-            $this->event('gone', array($jid[0], $to));
-        if($stanza->body || $stanza->subject) {
-            $m = new \Modl\Message;
-            $m->set($stanza, $parent);
+            $this->event('gone', [$jid[0], $to]);
 
-            if(!preg_match('#^\?OTR#', $m->body)) {
-                $md = new \Modl\MessageDAO;
-                $md->set($m);
+        $m = new \Modl\Message;
+        $m->set($stanza, $parent);
 
-                $this->pack($m);
-                $this->deliver();
-            }
-        }
+        $md = new \Modl\MessageDAO;
+        $md->set($m);
+
+        $this->pack($m);
+        $this->deliver();
     }
 }
