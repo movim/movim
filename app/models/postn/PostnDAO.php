@@ -622,8 +622,8 @@ class PostnDAO extends SQL
         $this->_sql = '
             select * from postn
             left outer join contact on postn.aid = contact.jid
-            where parentorigin = :origin
-            and commentnodeid is null
+            where (parentorigin, parentnode, parentnodeid) in (
+                select origin, node, nodeid from postn where aid = :aid)
             and published > :published
             order by published desc
                 ';
@@ -635,7 +635,7 @@ class PostnDAO extends SQL
         $this->prepare(
             'Postn',
             [
-                'origin' => $this->_user,
+                'aid' => $this->_user,
                 'published' => $date
             ]
         );

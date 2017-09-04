@@ -32,7 +32,7 @@ class Notifs extends \Movim\Widget\Base
         $view->assign('hearth',  $emoji->replace('♥'));
         $view->assign('notifs', $pd->getNotifsSince(
             $since,
-            0, 6)
+            0, 8)
         );
 
         return $view->draw('_notifs', true);
