@@ -36,6 +36,34 @@ class Pubsub
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#deliver_payloads');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'false');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#send_last_published_item');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'never');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#notification_type');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'normal');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#max_items');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 1000);
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#title');
         $x->appendChild($field);
 
@@ -172,6 +200,13 @@ class Pubsub
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#deliver_payloads');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'false');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#persist_items');
         $x->appendChild($field);
 
@@ -197,6 +232,20 @@ class Pubsub
         $x->appendChild($field);
 
         $value = $dom->createElement('value', 1000);
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#send_last_published_item');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'never');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#notification_type');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'message');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');

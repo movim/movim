@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Avatar {
+class Avatar
+{
     static function get($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
