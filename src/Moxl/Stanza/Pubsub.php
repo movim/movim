@@ -50,13 +50,6 @@ class Pubsub
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#notification_type');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'normal');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#max_items');
         $x->appendChild($field);
 
@@ -239,13 +232,6 @@ class Pubsub
         $x->appendChild($field);
 
         $value = $dom->createElement('value', 'never');
-        $field->appendChild($value);
-
-        $field = $dom->createElement('field');
-        $field->setAttribute('var', 'pubsub#notification_type');
-        $x->appendChild($field);
-
-        $value = $dom->createElement('value', 'message');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
