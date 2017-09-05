@@ -65,17 +65,17 @@ body > nav {
     left: 0;
 }
 
-body > nav:before {
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.3), transparent);
+/*body > nav:before {
+    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent);
     pointer-events:none;
     content: "";
     display: block;
     position: absolute;
     top: 0;
     right: 0;
-    width: 1rem;
+    width: 2rem;
     height: 100%;
-}
+}*/
 
 body > nav header {
     padding: 0.5rem;

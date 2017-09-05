@@ -66,7 +66,7 @@
     <a class="classic"
        href="{$c->route('conf')}"
        title="{$c->__('page.configuration')}">
-        <li>
+        <li {if="$page == 'conf'"}class="active"{/if}>
             <span class="primary icon">
                 <i class="zmdi zmdi-settings"></i>
             </span>
@@ -76,7 +76,7 @@
     <a class="classic on_desktop"
        href="{$c->route('help')}"
        title="{$c->__('page.help')}">
-        <li>
+        <li {if="$page == 'help'"}class="active"{/if}>
             <span class="primary icon">
                 <i class="zmdi zmdi-help"></i>
             </span>
