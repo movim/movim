@@ -22,7 +22,7 @@
     <a class="classic"
        href="{$c->route('news')}"
        title="{$c->__('page.news')}">
-        <li {if="$page == 'news'"}class="active"{/if}>
+        <li {if="$page == 'news' || $page == 'post'"}class="active"{/if}>
             <span class="primary icon"><i class="zmdi zmdi-receipt"></i></span>
             <span data-key="news" class="counter"></span>
             <p class="normal">{$c->__('page.news')}</p>
