@@ -108,6 +108,9 @@
         <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
             <p class="normal">{$c->__('chat.profile')}</p>
         </li>
+        <li class="on_mobile" onclick="Chat.editPrevious()">
+            <p class="normal">{$c->__('chat.edit_previous')}</p>
+        </li>
         <li onclick="Chat_ajaxClearHistory('{$contact->jid}')">
             <p class="normal">{$c->__('chat.clear')}</p>
         </li>

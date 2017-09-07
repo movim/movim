@@ -147,6 +147,13 @@ var Chat = {
         textarea.value = '';
         MovimUtils.textareaAutoheight(textarea);
     },
+    editPrevious: function()
+    {
+        var textarea = Chat.getTextarea();
+        if(textarea.value == '') {
+            Chat_ajaxLast(textarea.dataset.jid);
+        }
+    },
     focus: function()
     {
         Chat.sended = false;
@@ -166,8 +173,8 @@ var Chat = {
                 return;
             }
 
-            if(event.keyCode == 38 && this.value == '') {
-                Chat_ajaxLast(this.dataset.jid);
+            if(event.keyCode == 38) {
+                Chat.editPrevious();
             } else if(event.keyCode == 40
             && (this.value == '' || Chat.edit == true)) {
                 Chat.clearReplace();
@@ -216,16 +223,16 @@ var Chat = {
         };
 
         if(document.documentElement.clientWidth > 1024) {
-            document.querySelector('#chat_textarea').focus();
+            textarea.focus();
         }
     },
     setTextarea: function(value)
     {
         Chat.edit = true;
-        var textarea = document.querySelector('#chat_textarea');
+        var textarea = Chat.getTextarea();
         textarea.value = value;
         MovimUtils.textareaAutoheight(textarea);
-
+        textarea.focus();
     },
     notify : function(title, body, image)
     {
