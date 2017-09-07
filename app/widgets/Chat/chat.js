@@ -417,7 +417,8 @@ var Chat = {
             MovimUtils.addClass(bubble.querySelector('div.bubble'), 'sticker');
             p.appendChild(Chat.getStickerHtml(data.sticker));
         } else {
-            p.innerHTML = data.body;
+            var t = document.createTextNode(data.body);     // Create a text node
+            p.appendChild(t);
         }
 
         if (data.audio != null) {
