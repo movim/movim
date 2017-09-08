@@ -370,6 +370,12 @@ ul li div.bubble p {
     white-space: pre-wrap;
 }
 
+ul li div.bubble p.code {
+    display: inline-block;
+    margin: 0.5rem 0;
+    margin-bottom: 0;
+}
+
 ul li.oppose div.bubble {
     margin-right: 9rem;
     float: right;
