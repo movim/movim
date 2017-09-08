@@ -680,8 +680,6 @@ class Chat extends \Movim\Widget\Base
             $message->body = $message->subject.': '.$message->body;
         }
 
-        $message->body = htmlspecialchars_decode($message->body);
-
         // Sticker message
         if (isset($message->sticker)) {
             $p = new Picture;
