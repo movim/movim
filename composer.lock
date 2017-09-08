@@ -64,16 +64,16 @@
         },
         {
             "name": "clue/buzz-react",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/php-buzz-react.git",
-                "reference": "693c96d35f0cd0e4f0e1a51b976433a91792eff9"
+                "reference": "a89735b0fc53d97d1b43e539c2555ef18d9b137e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/693c96d35f0cd0e4f0e1a51b976433a91792eff9",
-                "reference": "693c96d35f0cd0e4f0e1a51b976433a91792eff9",
+                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/a89735b0fc53d97d1b43e539c2555ef18d9b137e",
+                "reference": "a89735b0fc53d97d1b43e539c2555ef18d9b137e",
                 "shasum": ""
             },
             "require": {
@@ -89,7 +89,11 @@
             },
             "require-dev": {
                 "clue/block-react": "^1.0",
-                "phpunit/phpunit": "^4.5"
+                "clue/socks-react": "^0.6",
+                "phpunit/phpunit": "^4.5",
+                "react/http": "^0.7.2",
+                "react/promise-stream": "^0.1.1",
+                "react/socket": "^0.8"
             },
             "type": "library",
             "autoload": {
@@ -107,15 +111,16 @@
                     "email": "christian@lueck.tv"
                 }
             ],
-            "description": "Simple, async HTTP client for concurrently processing any number of HTTP requests, built on top of React PHP",
+            "description": "Simple, async PSR-7 HTTP client for concurrently processing any number of HTTP requests, built on top of ReactPHP",
             "homepage": "https://github.com/clue/php-buzz-react",
             "keywords": [
                 "async",
                 "http",
                 "http client",
+                "psr-7",
                 "reactphp"
             ],
-            "time": "2016-10-21T10:29:37+00:00"
+            "time": "2017-09-05T10:49:02+00:00"
         },
         {
             "name": "cocur/slugify",
