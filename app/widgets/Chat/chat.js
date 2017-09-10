@@ -183,7 +183,8 @@ var Chat = {
 
         textarea.onkeypress = function(event) {
             if(event.keyCode == 13) {
-                if(event.shiftKey) {
+                if(window.matchMedia("(max-width: 1024px)").matches
+                || event.shiftKey) {
                     return;
                 }
                 Chat.state = 0;
