@@ -9,7 +9,7 @@
             action
         {/if}
         "
-    title="{$contact->jid}{if="isset($message)"} - {$message->published|strtotime|prepareDate}{/if}">
+    title="{$contact->jid}{if="isset($message)"} – {$message->published|strtotime|prepareDate}{/if}">
     {$url = $contact->getPhoto('s')}
     {if="$url"}
         <span class="primary icon bubble {if="isset($presence)"}status {$presence}{/if}">
@@ -33,26 +33,30 @@
         {else}
             {$contact->getTrueName()}
         {/if}
-        {if="$caps && in_array($caps->type, ['handheld', 'phone'])"}
-            <span class="second">
-                <i class="zmdi zmdi-smartphone"></i>
-            </span>
-        {/if}
-        {if="$caps && $caps->type == 'web'"}
-            <span class="second">
-                <i class="zmdi zmdi-globe-alt"></i>
-            </span>
+
+        {if="$caps"}
+            <span class="second"><i class="zmdi
+            {if="in_array($caps->type, ['handheld', 'phone'])"}
+                zmdi-smartphone
+            {elseif="$caps->type == 'bot'"}
+                zmdi-memory
+            {elseif="$caps->type == 'web'"}
+                {if="$caps->name == 'Movim'"}
+                    zmdi-cloud-outline
+                {else}
+                    zmdi-globe-alt
+                {/if}
+            {/if}
+            "></i></span>
         {/if}
     </p>
     {if="isset($status)"}
         <p>{$status}</p>
-    {else}
-        {if="isset($message)"}
-            {if="preg_match('#^\?OTR#', $message->body)"}
-                <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
-            {elseif="stripTags($message->body) != ''"}
-                <p class="line">{$message->body|stripTags}</p>
-            {/if}
+    {elseif="isset($message)"}
+        {if="preg_match('#^\?OTR#', $message->body)"}
+            <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
+        {elseif="stripTags($message->body) != ''"}
+            <p class="line">{$message->body|stripTags}</p>
         {/if}
     {/if}
 </li>
