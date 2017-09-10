@@ -115,7 +115,8 @@
             <hr />
             {$reply = $post->getReply()}
             {if="$reply"}
-                <ul class="list thick active faded">
+                <ul class="list thick active recessed"
+                    onclick="MovimUtils.reload('{$c->route('post', [$reply->origin, $reply->node, $reply->nodeid])}')">
                     <li>
                         {if="$reply->picture"}
                             <span
@@ -135,6 +136,9 @@
                                 </span>
                             {/if}
                         {/if}
+                        <span class="control icon gray">
+                            <i class="zmdi zmdi-chevron-right"></i>
+                        </span>
                         <p class="normal line">{$reply->title}</p>
                         <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
                         <p>

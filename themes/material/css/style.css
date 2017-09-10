@@ -485,6 +485,10 @@ hr:not(.clear) {
     opacity: 0.5;
 }
 
+.recessed {
+    opacity: 0.75;
+}
+
 .disabled {
     opacity: 0.5;
     pointer-events: none;
