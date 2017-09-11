@@ -156,11 +156,11 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                                 STDERR,
                                 colorize(
                                     getenv('sid'), 'yellow')." : ".
-                                    colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
+                                    colorize('Connection to '.$msg->host.' ('.$ip.':'.$port.')', 'blue').
                                     "\n");
                         }
 
-                        $connector->create($ip, $port)->then($xmpp_behaviour);
+                        $connector->connect($ip.':'.$port)->then($xmpp_behaviour);
                         break;
                 }
 
