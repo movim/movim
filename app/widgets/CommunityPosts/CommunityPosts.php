@@ -15,16 +15,16 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function load()
     {
-        $this->registerEvent('pubsub_getitem_handle', 'onItem');
-        $this->registerEvent('pubsub_getitemsid_handle', 'onItemsId');
-        //$this->registerEvent('pubsub_getitems_handle', 'onItems');
+        //$this->registerEvent('pubsub_getitem_handle', 'onItem');
+        //$this->registerEvent('pubsub_getitemsid_handle', 'onItemsId');
+        $this->registerEvent('pubsub_getitems_handle', 'onItemsId');
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
         $this->registerEvent('pubsub_getitemsid_error', 'onItemsError');
 
         $this->addjs('communityposts.js');
     }
 
-    function onItem($packet)
+    /*function onItem($packet)
     {
         list($origin, $node, $id) = array_values($packet->content);
 
@@ -36,7 +36,7 @@ class CommunityPosts extends \Movim\Widget\Base
         if($p) {
             $this->rpc('MovimTpl.fill', '#'.cleanupId($p->nodeid), $this->preparePost($p));
         }
-    }
+    }*/
 
     /*function onItems($packet)
     {
@@ -48,7 +48,7 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         list($origin, $node, $ids) = array_values($packet->content);
 
-        $ids = array_slice($ids, 0, $this->_paging);
+        //$ids = array_slice($ids, 0, $this->_paging);
         $this->displayItems($origin, $node, $ids);
     }
 
@@ -90,7 +90,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $c->ajaxGetDrawer($jid);
     }
 
-    function ajaxGetItems($origin, $node)
+    function ajaxGetItems($origin, $node, $after = false)
     {
         if(!$this->validateServerNode($origin, $node)) return;
 
@@ -98,11 +98,13 @@ class CommunityPosts extends \Movim\Widget\Base
         /*if($node == 'urn:xmpp:microblog:0') {
             $r = new GetItems;
         } else {*/
-            $r = new GetItemsId;
+            $r = new GetItems;
         //}
 
         $r->setTo($origin)
-          ->setNode($node);
+          ->setNode($node)
+          ->setPaging($this->_paging)
+          ->setAfter($after);
 
         $r->request();
     }
@@ -141,16 +143,24 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         $pd = new \Modl\PostnDAO;
 
-        /*if($ids == false) {*/
         if($public) {
             $posts = $pd->getPublic($origin, $node, $page*$this->_paging, $this->_paging);
-        } else {
+
+        } elseif($ids == false) {
+            return $this->prepareEmpty();
+        /*} else {
             $posts = $pd->getNodeUnfiltered($origin, $node, $page*$this->_paging, $this->_paging);
-        }
-        /*
-        } else {
-            $posts = $pd->getIds($origin, $node, $ids);
         }*/
+
+        } else {
+            foreach($ids as $key => $id) {
+                if(empty($id)) {
+                    unset($ids[$key]);
+                }
+            }
+
+            $posts = $pd->getIds($origin, $node, $ids);
+        }
 
         $id = new \Modl\InfoDAO;
         $info = $id->get($origin, $node);
@@ -170,9 +180,10 @@ class CommunityPosts extends \Movim\Widget\Base
             }
         }
 
-        foreach($ids as $key => $id) {
-            if(empty($id)) {
-                unset($ids[$key]);
+        if(is_array($posts)) {
+            foreach($posts as $key => $post) {
+                $posts[$post->nodeid] = $post;
+                unset($posts[$key]);
             }
         }
 

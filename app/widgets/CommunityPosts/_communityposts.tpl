@@ -10,18 +10,13 @@
     </ul>
 {/if}
 
-{if="!empty($posts)"}
-    <ul class="list card shadow">
-        {loop="$posts"}
-            <div id="{$value->nodeid|cleanupId}" class="block large">
-                {$c->preparePost($value)}
-            </div>
-        {/loop}
-    </ul>
-{elseif="!empty($ids)"}
+{if="!empty($ids)"}
     <ul class="list card shadow">
     {loop="$ids"}
         <div id="{$value|cleanupId}" class="block large">
+            {if="isset($posts[$value])"}
+                {$c->preparePost($posts[$value])}
+            {/if}
         </div>
     {/loop}
     </ul>

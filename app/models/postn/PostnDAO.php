@@ -114,8 +114,8 @@ class PostnDAO extends SQL
                 and postn.node = info.node
             where postn.origin = :origin
                 and postn.node = :node
-                and postn.nodeid in (\''.$ids.'\')
-            order by published';
+                and postn.nodeid in (\''.$ids.'\')';
+//            order by published';
 
 
         $this->prepare(
