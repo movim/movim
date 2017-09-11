@@ -143,6 +143,21 @@ class Picture
         if($this->_bin) {
             $im = new \Imagick;
             try {
+                $finfo = new \finfo(FILEINFO_MIME_TYPE);
+
+                // Convert the picture to PNG with GD if Imagick doesn't handle WEBP
+                if($finfo->buffer($this->_bin) == 'image/webp'
+                && empty(\Imagick::queryFormats('WEBP'))
+                && array_key_exists('WebP Support', gd_info())) {
+                    $temp = tmpfile();
+                    fwrite($temp , $this->_bin);
+                    $resource = imagecreatefromwebp(stream_get_meta_data($temp)['uri']);
+                    fclose($temp);
+
+                    imagepng($resource, $path.'.temp', 0);
+                    $this->fromPath($path.'.temp');
+                }
+
                 $im->readImageBlob($this->_bin);
                 if($im != false) {
                     $im->setImageFormat($format);
