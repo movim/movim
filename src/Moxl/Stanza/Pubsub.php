@@ -314,13 +314,24 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function getItems($to, $node)
+    static function getItems($to, $node, $paging = 10, $after = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
         $items = $dom->createElement('items');
         $items->setAttribute('node', $node);
-        $items->setAttribute('max_items', 40);
+
+        if($after) {
+            $set = $dom->createElement('set');
+            $set->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
+            $set->appendChild($dom->createElement('after', $after));
+            $set->appendChild($dom->createElement('max', $paging));
+
+            $pubsub->appendChild($set);
+        } else {
+            $items->setAttribute('max_items', $paging);
+        }
+
         $pubsub->appendChild($items);
 
         $xml = \Moxl\API::iqWrapper($pubsub, $to, 'get');

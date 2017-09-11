@@ -33,11 +33,13 @@ class GetItems extends Errors
     private $_to;
     private $_node;
     private $_since;
+    private $_paging;
+    private $_after;
 
     public function request()
     {
         $this->store();
-        Pubsub::getItems($this->_to, $this->_node);
+        Pubsub::getItems($this->_to, $this->_node, $this->_paging, $this->_after);
     }
 
     public function setTo($to)
@@ -52,6 +54,18 @@ class GetItems extends Errors
         return $this;
     }
 
+    public function setPaging($paging)
+    {
+        $this->_paging = $paging;
+        return $this;
+    }
+
+    public function setAfter($after)
+    {
+        $this->_after = $after;
+        return $after;
+    }
+
     public function setSince($since)
     {
         $this->_since = $since;
@@ -61,6 +75,8 @@ class GetItems extends Errors
     public function handle($stanza, $parent = false)
     {
         $pd = new \Modl\PostnDAO;
+
+        $ids = [];
 
         foreach($stanza->pubsub->items->item as $item) {
             if(isset($item->entry)
@@ -72,11 +88,20 @@ class GetItems extends Errors
 
                     $pd->set($p);
 
-                    $this->pack(['server' => $this->_to, 'node' => $this->_node]);
-                    $this->deliver();
+                    array_push($ids, $p->nodeid);
                 }
             }
         }
+
+        $this->pack([
+            'server' => $this->_to,
+            'node' => $this->_node,
+            'ids' => $ids,
+            'paging' => $this->_paging,
+            'after' => $this->_after
+        ]);
+
+        $this->deliver();
     }
 
     public function error($errorid, $message)

@@ -24,8 +24,10 @@ class Roster {
         $item->setAttribute('name', $name);
         $roster->appendChild($item);
 
-        $group = $dom->createElement('group', $group);
-        $item->appendChild($group);
+        if(!empty($group)) {
+            $group = $dom->createElement('group', $group);
+            $item->appendChild($group);
+        }
 
         $xml = \Moxl\API::iqWrapper($roster, false, 'set');
         \Moxl\API::request($xml);

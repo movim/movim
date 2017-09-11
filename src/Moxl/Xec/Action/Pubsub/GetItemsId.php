@@ -56,13 +56,11 @@ class GetItemsId extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $evt = new Event;
-
         $pd = new \Modl\PostnDAO;
 
         $ids = [];
 
-        foreach(array_reverse($stanza->query->xpath('item')) as $item) {
+        foreach($stanza->query->xpath('item') as $item) {
             $id = (string)$item->attributes()->name;
             if(!$pd->exists($this->_to, $this->_node, $id)
             && !empty($id)) {
