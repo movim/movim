@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c0b5710cdd929665525312ea43422758",
+    "content-hash": "0f3dcbfa95b2e1171333f8056c0ebf34",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -60,7 +60,7 @@
                 "sockets",
                 "websocket"
             ],
-            "time": "2017-04-19 21:05:46"
+            "time": "2017-04-19T21:05:46+00:00"
         },
         {
             "name": "clue/buzz-react",
@@ -411,7 +411,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-08-08 18:58:33"
+            "time": "2017-08-08T18:58:33+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -612,7 +612,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-08-27 14:02:32"
+            "time": "2016-08-27T14:02:32+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -658,7 +658,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2017-06-17 11:56:57"
+            "time": "2017-06-17T11:56:57+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -770,7 +770,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-07-06 11:04:24"
+            "time": "2017-07-06T11:04:24+00:00"
         },
         {
             "name": "movim/moxl",
@@ -778,12 +778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "27d9d14dd43d3b5c1dac128c3a61619c1aa645b1"
+                "reference": "331bd7c45f5e5e67e3a7836017295c0770ab2852"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/27d9d14dd43d3b5c1dac128c3a61619c1aa645b1",
-                "reference": "27d9d14dd43d3b5c1dac128c3a61619c1aa645b1",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/331bd7c45f5e5e67e3a7836017295c0770ab2852",
+                "reference": "331bd7c45f5e5e67e3a7836017295c0770ab2852",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +818,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-09-04 13:50:52"
+            "time": "2017-09-11T16:04:02+00:00"
         },
         {
             "name": "movim/sasl2",
@@ -869,7 +869,7 @@
                 "sasl2",
                 "scram"
             ],
-            "time": "2014-06-05 21:19:06"
+            "time": "2014-06-05T21:19:06+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1101,7 +1101,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15 14:21:40"
+            "time": "2016-12-15T14:21:40+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -1431,7 +1431,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2016-07-06 23:51:32"
+            "time": "2016-07-06T23:51:32+00:00"
         },
         {
             "name": "react/http-client",
