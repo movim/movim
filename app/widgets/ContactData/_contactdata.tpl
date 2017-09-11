@@ -16,7 +16,10 @@
         <li>
             {$presencestxt = getPresences()}
             <p class="normal center	">
-                {$contact->getTrueName()} {if="isset($contactr)"}  –  {$presencestxt[$contactr->value]}{/if}
+                {$contact->getTrueName()}
+                {if="isset($contactr) && array_key_exists($contactr->value, $presencestxt)"}
+                    –  {$presencestxt[$contactr->value]}
+                {/if}
             </p>
             {if="$contact->email != null"}
                 <p class="center"><a href="mailto:{$contact->email}">{$contact->email}</a></p>
