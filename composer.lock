@@ -64,35 +64,36 @@
         },
         {
             "name": "clue/buzz-react",
-            "version": "v1.3.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/php-buzz-react.git",
-                "reference": "4fb7d56b0ea351645c8e6d3027537110a575b489"
+                "reference": "a89735b0fc53d97d1b43e539c2555ef18d9b137e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/4fb7d56b0ea351645c8e6d3027537110a575b489",
-                "reference": "4fb7d56b0ea351645c8e6d3027537110a575b489",
+                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/a89735b0fc53d97d1b43e539c2555ef18d9b137e",
+                "reference": "a89735b0fc53d97d1b43e539c2555ef18d9b137e",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4",
+                "php": ">=5.3",
                 "psr/http-message": "^1.0",
+                "react/dns": "^0.4.1 || ^0.3",
                 "react/event-loop": "^0.4 || ^0.3",
-                "react/http-client": "^0.5",
-                "react/promise": "^2.2.1",
-                "react/promise-stream": "^0.1.1",
-                "react/socket": "^0.8",
-                "react/socket-client": "^0.7 || ^0.6",
-                "react/stream": "^0.6 || ^0.5 || ^0.4.6",
+                "react/http-client": "^0.4 || ^0.3",
+                "react/promise": "^2 || ^1.1",
+                "react/socket-client": "^0.5 || ^0.4.5",
+                "react/stream": "^0.4 || ^0.3.1",
                 "ringcentral/psr7": "^1.2"
             },
             "require-dev": {
                 "clue/block-react": "^1.0",
-                "clue/socks-react": "^0.8 || ^0.7",
+                "clue/socks-react": "^0.6",
                 "phpunit/phpunit": "^4.5",
-                "react/http": "^0.7.2"
+                "react/http": "^0.7.2",
+                "react/promise-stream": "^0.1.1",
+                "react/socket": "^0.8"
             },
             "type": "library",
             "autoload": {
@@ -119,7 +120,7 @@
                 "psr-7",
                 "reactphp"
             ],
-            "time": "2017-09-08T12:20:50+00:00"
+            "time": "2017-09-05T10:49:02+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -1434,26 +1435,27 @@
         },
         {
             "name": "react/http-client",
-            "version": "v0.5.4",
+            "version": "v0.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/http-client.git",
-                "reference": "e11eef9c82595a42a8523252bafe4bb5cbfb306d"
+                "reference": "75ee8a113f156834aaabfe0055e8db531cb4892c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http-client/zipball/e11eef9c82595a42a8523252bafe4bb5cbfb306d",
-                "reference": "e11eef9c82595a42a8523252bafe4bb5cbfb306d",
+                "url": "https://api.github.com/repos/reactphp/http-client/zipball/75ee8a113f156834aaabfe0055e8db531cb4892c",
+                "reference": "75ee8a113f156834aaabfe0055e8db531cb4892c",
                 "shasum": ""
             },
             "require": {
-                "evenement/evenement": "^3.0 || ^2.0",
+                "evenement/evenement": "~2.0",
                 "guzzlehttp/psr7": "^1.0",
                 "php": ">=5.4.0",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
+                "react/dns": "0.4.*",
+                "react/event-loop": "0.4.*",
                 "react/promise": "~2.2",
-                "react/socket": "^1.0 || ^0.8.2",
-                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.2"
+                "react/socket-client": "^0.5 || ^0.4 || ^0.3",
+                "react/stream": "0.4.*"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.0 || ^4.8.10"
@@ -1468,11 +1470,11 @@
             "license": [
                 "MIT"
             ],
-            "description": "Event-driven, streaming HTTP client for ReactPHP",
+            "description": "Asynchronous HTTP client library.",
             "keywords": [
                 "http"
             ],
-            "time": "2017-08-25T12:20:26+00:00"
+            "time": "2017-03-20T09:55:48+00:00"
         },
         {
             "name": "react/promise",
@@ -1519,62 +1521,6 @@
                 "promises"
             ],
             "time": "2017-03-25T12:08:31+00:00"
-        },
-        {
-            "name": "react/promise-stream",
-            "version": "v0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/promise-stream.git",
-                "reference": "45eaf9f20247fb1113b714b39d7b9e4bde733b60"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/45eaf9f20247fb1113b714b39d7b9e4bde733b60",
-                "reference": "45eaf9f20247fb1113b714b39d7b9e4bde733b60",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3",
-                "react/promise": "^2.1 || ^1.2",
-                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4 || ^0.3"
-            },
-            "require-dev": {
-                "clue/block-react": "^1.0",
-                "phpunit/phpunit": "^4.8",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
-                "react/promise-timer": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\Promise\\Stream\\": "src/"
-                },
-                "files": [
-                    "src/functions_include.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Christian Lück",
-                    "email": "christian@lueck.tv"
-                }
-            ],
-            "description": "The missing link between Promise-land and Stream-land for React PHP",
-            "homepage": "https://github.com/reactphp/promise-stream",
-            "keywords": [
-                "Buffer",
-                "async",
-                "promise",
-                "reactphp",
-                "stream",
-                "unwrap"
-            ],
-            "time": "2017-05-15T19:37:05+00:00"
         },
         {
             "name": "react/promise-timer",
@@ -1631,31 +1577,31 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.8.2",
+            "version": "v0.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "ee817e348abcf35c55b448a5cd3ef4eec88379e9"
+                "reference": "05b2fa7df1f87ba1d7d3c703c77b1eed02b171f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/ee817e348abcf35c55b448a5cd3ef4eec88379e9",
-                "reference": "ee817e348abcf35c55b448a5cd3ef4eec88379e9",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/05b2fa7df1f87ba1d7d3c703c77b1eed02b171f2",
+                "reference": "05b2fa7df1f87ba1d7d3c703c77b1eed02b171f2",
                 "shasum": ""
             },
             "require": {
-                "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
+                "evenement/evenement": "~2.0|~1.0",
                 "php": ">=5.3.0",
-                "react/dns": "^0.4.11",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
+                "react/dns": "0.4.*|0.3.*",
+                "react/event-loop": "0.4.*|0.3.*",
                 "react/promise": "^2.1 || ^1.2",
                 "react/promise-timer": "~1.0",
-                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.5"
+                "react/stream": "^0.6 || ^0.5 || ^0.4.5"
             },
             "require-dev": {
                 "clue/block-react": "^1.1",
                 "phpunit/phpunit": "~4.8",
-                "react/stream": "^1.0 || ^0.7 || ^0.6"
+                "react/stream": "^0.6"
             },
             "type": "library",
             "autoload": {
@@ -1675,20 +1621,20 @@
                 "reactphp",
                 "stream"
             ],
-            "time": "2017-08-25T09:08:33+00:00"
+            "time": "2017-04-24T09:37:03+00:00"
         },
         {
             "name": "react/socket-client",
-            "version": "v0.7.0",
+            "version": "v0.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "8ad621ef80fb23d10330c8cc9232c5a5e17af60c"
+                "reference": "5570838d436f056695e9a5eaf01dd5f80386dd26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/8ad621ef80fb23d10330c8cc9232c5a5e17af60c",
-                "reference": "8ad621ef80fb23d10330c8cc9232c5a5e17af60c",
+                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/5570838d436f056695e9a5eaf01dd5f80386dd26",
+                "reference": "5570838d436f056695e9a5eaf01dd5f80386dd26",
                 "shasum": ""
             },
             "require": {
@@ -1697,13 +1643,10 @@
                 "react/event-loop": "0.4.*|0.3.*",
                 "react/promise": "^2.1 || ^1.2",
                 "react/promise-timer": "~1.0",
-                "react/stream": "^0.6 || ^0.5 || ^0.4.5"
+                "react/stream": "^0.4.5"
             },
             "require-dev": {
-                "clue/block-react": "^1.1",
-                "phpunit/phpunit": "~4.8",
-                "react/socket": "^0.5",
-                "react/stream": "^0.6"
+                "clue/block-react": "^1.1"
             },
             "type": "library",
             "autoload": {
@@ -1715,28 +1658,24 @@
             "license": [
                 "MIT"
             ],
-            "description": "Async, streaming plaintext TCP/IP and secure TLS based connections for ReactPHP",
+            "description": "Async connector to open TCP/IP and SSL/TLS based connections.",
             "keywords": [
-                "Connection",
-                "Socket",
-                "async",
-                "reactphp",
-                "stream"
+                "Socket"
             ],
-            "time": "2017-04-02T20:32:08+00:00"
+            "time": "2016-12-24T11:19:15+00:00"
         },
         {
             "name": "react/stream",
-            "version": "v0.5.0",
+            "version": "v0.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "6ccc4bd601e362aebfe5f449411a08b5f38b229d"
+                "reference": "44dc7f51ea48624110136b535b9ba44fd7d0c1ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/6ccc4bd601e362aebfe5f449411a08b5f38b229d",
-                "reference": "6ccc4bd601e362aebfe5f449411a08b5f38b229d",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/44dc7f51ea48624110136b535b9ba44fd7d0c1ee",
+                "reference": "44dc7f51ea48624110136b535b9ba44fd7d0c1ee",
                 "shasum": ""
             },
             "require": {
@@ -1745,7 +1684,6 @@
             },
             "require-dev": {
                 "clue/stream-filter": "~1.2",
-                "phpunit/phpunit": "^5.0 || ^4.8.10",
                 "react/event-loop": "^0.4|^0.3",
                 "react/promise": "^2.0|^1.0"
             },
@@ -1768,7 +1706,7 @@
                 "pipe",
                 "stream"
             ],
-            "time": "2017-03-08T08:17:17+00:00"
+            "time": "2017-01-25T14:44:14+00:00"
         },
         {
             "name": "respect/validation",
