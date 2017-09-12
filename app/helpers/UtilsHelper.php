@@ -589,6 +589,28 @@ function requestURL($url, $timeout = 10, $post = false, $json = false)
 }
 
 /*
+ * Request the headers of a URL
+ */
+function requestHeaders($url, $timeout = 2)
+{
+    $ch = curl_init($url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_ENCODING, 'gzip,deflate');
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+    curl_setopt($ch, CURLOPT_HEADER, 1);
+    curl_setopt($ch, CURLOPT_NOBODY, 1);
+    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0');
+
+    $rs = [];
+
+    curl_exec($ch);
+
+    return curl_getinfo($ch);
+}
+
+/*
  * @desc Get the URI of a smiley
  */
 function getSmileyPath($id)

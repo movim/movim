@@ -279,6 +279,19 @@ class Chat extends \Movim\Widget\Base
     {
         $this->rpc('Chat.sendedMessage');
 
+        if(filter_var($message, FILTER_VALIDATE_URL)) {
+            $headers = requestHeaders($message);
+
+            if($headers['http_code'] == 200
+            && typeIsPicture($headers['content_type'])) {
+                $file = new \stdClass;
+                $file->name = $message;
+                $file->type = $headers['content_type'];
+                $file->size = $headers['download_content_length'];
+                $file->uri  = $message;
+            }
+        }
+
         if($file != false) {
             $body = $file->uri;
         } else {
