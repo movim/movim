@@ -43,7 +43,7 @@ class Publish extends Action
     {
         $this->store();
         if($this->_muc) {
-            Muc::message($this->_to, $this->_content, $this->_html, $this->_id);
+            Muc::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_file);
         } elseif($this->_encrypted) {
             Message::encrypted($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace);
         } else {
