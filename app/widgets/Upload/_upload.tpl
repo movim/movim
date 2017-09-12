@@ -7,9 +7,10 @@
             </span>
             <p>{$c->__('upload.choose')}</p>
             <p>
-                <input type="file" id="file" />
+                <input type="file" id="file" onchange="Upload.preview(this)"/>
             </p>
         </li>
+        <img class="preview_picture" />
         <li>
             <span class="primary icon gray">
                 <i class="zmdi zmdi-photo-size-select-small"></i>

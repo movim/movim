@@ -7,6 +7,8 @@ class Upload extends \Movim\Widget\Base
     function load()
     {
         $this->addjs('upload.js');
+        $this->addcss('upload.css');
+
         $this->registerEvent('upload_request_handle', 'onRequested');
         $this->registerEvent('upload_request_errornotacceptable', 'onErrorNotAcceptable');
 

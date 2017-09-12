@@ -8,7 +8,7 @@ var Upload = {
     init : function() {
         var file = document.getElementById('file').files[0];
         Upload.name = file.name;
-        Upload.preview(file);
+        Upload.check(file);
     },
 
     attach : function(func) {
@@ -28,7 +28,17 @@ var Upload = {
         }
     },
 
-    preview : function(file) {
+    preview : function() {
+        var file = document.getElementById('file').files[0];
+        var preview = document.querySelector('#upload img.preview_picture');
+        if (file.type.match(/image.*/)) {
+            preview.src = URL.createObjectURL(file);
+        } else {
+            preview.src = '';
+        }
+    },
+
+    check : function(file) {
         if (!file.type.match(/image.*/)) {
             console.log("Not a picture !");
             Upload.initiate(file);
