@@ -15,7 +15,6 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function load()
     {
-        //$this->registerEvent('pubsub_getitem_handle', 'onItem');
         //$this->registerEvent('pubsub_getitemsid_handle', 'onItemsId');
         $this->registerEvent('pubsub_getitems_handle', 'onItemsId');
         $this->registerEvent('pubsub_getitems_error', 'onItemsError');
@@ -23,20 +22,6 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $this->addjs('communityposts.js');
     }
-
-    /*function onItem($packet)
-    {
-        list($origin, $node, $id) = array_values($packet->content);
-
-        $pd = new \Modl\PostnDAO;
-        $p = $pd->get($origin, $node, $id);
-
-        if($p && $p->isComment()) $p = $p->getParent();
-
-        if($p) {
-            $this->rpc('MovimTpl.fill', '#'.cleanupId($p->nodeid), $this->preparePost($p));
-        }
-    }*/
 
     /*function onItems($packet)
     {

@@ -13,7 +13,7 @@ class Menu extends \Movim\Widget\Base
         $this->registerEvent('post', 'onPost', 'news');
         $this->registerEvent('post_retract', 'onRetract', 'news');
         $this->registerEvent('pubsub_postdelete', 'onRetract', 'news');
-        $this->registerEvent('pubsub_getitem_handle', 'onPost', 'news');
+        $this->registerEvent('pubsub_getitem_handle', 'onPost');
 
         $this->addjs('menu.js');
         $this->addcss('menu.css');

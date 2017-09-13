@@ -7,9 +7,24 @@ class PostActions extends \Movim\Widget\Base
 {
     function load()
     {
+        $this->registerEvent('pubsub_getitem_handle', 'onItem');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
         $this->registerEvent('pubsub_postdelete', 'onDelete');
         $this->addjs('postactions.js');
+    }
+
+    function onItem($packet)
+    {
+        list($origin, $node, $id) = array_values($packet->content);
+
+        $pd = new \Modl\PostnDAO;
+        $p = $pd->get($origin, $node, $id);
+
+        if($p && $p->isComment()) $p = $p->getParent();
+
+        if($p) {
+            $this->rpc('MovimTpl.fill', '#'.cleanupId($p->nodeid), $this->preparePost($p));
+        }
     }
 
     function onDelete($packet)
@@ -75,5 +90,11 @@ class PostActions extends \Movim\Widget\Base
               ->setNode('urn:xmpp:microblog:0:comments/'.$post->commentnodeid)
               ->request();
         }
+    }
+
+    public function preparePost($p)
+    {
+        $pw = new \Post;
+        return $pw->preparePost($p, true, false, true);
     }
 }
