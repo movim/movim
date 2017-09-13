@@ -29,6 +29,11 @@ v0.12 (trunk)
  * Redesign of the Community main page
  * Refactor and cleanup the management of the comments internaly
  * Autocomplete nicknames in MUC using tabulation (by pztrn)
+ * Add picture preview when posting links in MUC
+ * Redesign the MUC bubbles to unify the style with the simple chats
+ * Enable history for MUC
+ * Pictures can be previewed before upload
+ * Do not send the message when carriage return is pressed on mobile
 
 v0.11
 ---------------------------

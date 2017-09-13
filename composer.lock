@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff08aad3cb62bba12def7f2306d8cff2",
+    "content-hash": "c2b5f94e473e115fd0d0d080c2834abd",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -778,12 +778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "ec29a5b51af0159c7de7107e62643ed7ec221436"
+                "reference": "f96d1c7664a0cb447440397edb10353da859a83a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/ec29a5b51af0159c7de7107e62643ed7ec221436",
-                "reference": "ec29a5b51af0159c7de7107e62643ed7ec221436",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/f96d1c7664a0cb447440397edb10353da859a83a",
+                "reference": "f96d1c7664a0cb447440397edb10353da859a83a",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +818,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-09-12 08:24:11"
+            "time": "2017-09-13 20:23:33"
         },
         {
             "name": "movim/sasl2",
