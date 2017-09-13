@@ -46,7 +46,14 @@ class Pubsub
         $field->setAttribute('var', 'pubsub#send_last_published_item');
         $x->appendChild($field);
 
-        $value = $dom->createElement('value', 'never');
+        $value = $dom->createElement('value', 'on_sub');
+        $field->appendChild($value);
+
+        $field = $dom->createElement('field');
+        $field->setAttribute('var', 'pubsub#access_model');
+        $x->appendChild($field);
+
+        $value = $dom->createElement('value', 'open');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');
@@ -231,7 +238,7 @@ class Pubsub
         $field->setAttribute('var', 'pubsub#send_last_published_item');
         $x->appendChild($field);
 
-        $value = $dom->createElement('value', 'never');
+        $value = $dom->createElement('value', 'on_sub');
         $field->appendChild($value);
 
         $field = $dom->createElement('field');

@@ -74,12 +74,17 @@ class Unsubscribe extends Errors
         $this->deliver();
     }
 
-    public function errorUnexpectedRequest($error)
+    public function errorNotSubscribed($stanza)
     {
         $this->handle($stanza, $parent = false);
     }
 
-    public function errorItemNotFound($error)
+    public function errorUnexpectedRequest($stanza)
+    {
+        $this->handle($stanza, $parent = false);
+    }
+
+    public function errorItemNotFound($stanza)
     {
         $this->handle($stanza, $parent = false);
     }
