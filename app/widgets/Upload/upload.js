@@ -6,9 +6,13 @@ var Upload = {
     file : null,
 
     init : function() {
-        var file = document.getElementById('file').files[0];
-        Upload.name = file.name;
-        Upload.check(file);
+        if(Upload.file) {
+            Upload_ajaxSend({
+                name: Upload.name,
+                size: Upload.file.size,
+                type: Upload.file.type
+            });
+        }
     },
 
     attach : function(func) {
@@ -30,18 +34,14 @@ var Upload = {
 
     preview : function() {
         var file = document.getElementById('file').files[0];
-        var preview = document.querySelector('#upload img.preview_picture');
-        if (file.type.match(/image.*/)) {
-            preview.src = URL.createObjectURL(file);
-        } else {
-            preview.src = '';
-        }
+        Upload.name = file.name;
+        Upload.check(file);
     },
 
     check : function(file) {
         if (!file.type.match(/image.*/)) {
             console.log("Not a picture !");
-            Upload.initiate(file);
+            Upload.prepare(file);
         } else {
             var reader = new FileReader();
             reader.readAsDataURL(file);
@@ -103,29 +103,31 @@ var Upload = {
 
                     canvas.toBlob(
                         function (blob) {
-                            Upload.initiate(blob);
+                            Upload.prepare(blob);
                         },
                         'image/jpeg',
                         0.85
                     );
                 } else {
-                    Upload.initiate(file);
+                    Upload.prepare(file);
                 }
             } else {
-                Upload.initiate(file);
+                Upload.prepare(file);
             }
+
         }
         image.src = src;
     },
 
-    initiate : function(file) {
+    prepare : function(file) {
         Upload.file = file;
 
-        Upload_ajaxSend({
-            name: Upload.name,
-            size: file.size,
-            type: file.type
-        });
+        var preview = document.querySelector('#upload img.preview_picture');
+        if (Upload.file.type.match(/image.*/)) {
+            preview.src = URL.createObjectURL(Upload.file);
+        } else {
+            preview.src = '';
+        }
     },
 
     request : function(get, put) {

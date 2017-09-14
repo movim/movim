@@ -7,7 +7,7 @@
             </span>
             <p>{$c->__('upload.choose')}</p>
             <p>
-                <input type="file" id="file" onchange="Upload.preview(this)"/>
+                <input type="file" id="file" onchange="Upload.preview()"/>
             </p>
         </li>
         <img class="preview_picture" />
