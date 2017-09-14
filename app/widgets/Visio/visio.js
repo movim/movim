@@ -344,7 +344,7 @@ var Visio = {
 }
 
 MovimWebsocket.attach(function() {
-    Visio.init();
+    Visio_ajaxAskInit();
 });
 
 window.onbeforeunload = function() {

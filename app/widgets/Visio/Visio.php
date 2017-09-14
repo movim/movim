@@ -38,6 +38,11 @@ class Visio extends \Movim\Widget\Base
         }
     }
 
+    function ajaxAskInit()
+    {
+        $this->rpc('Visio.init');
+    }
+
     function onAccept($stanza)
     {
         $jts = new JingletoSDP($stanza);

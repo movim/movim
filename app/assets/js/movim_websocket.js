@@ -23,6 +23,7 @@ var MovimWebsocket = {
     registered: new Array(),
     attempts: 1,
     pong: false,
+    closed: false,
 
     launchAttached : function() {
         // We hide the Websocket error
@@ -64,7 +65,7 @@ var MovimWebsocket = {
             MovimWebsocket.launchAttached();
             setTimeout(function(){
                 MovimWebsocket.ping();
-            }, 15000);
+            }, 5000);
         };
 
         this.connection.onmessage = function(e) {
@@ -98,7 +99,12 @@ var MovimWebsocket = {
         this.connection.onclose = function(e) {
             console.log("Connection closed by the server or session closed");
 
-            if(e.code == 1006) {
+            if(e.code == 1008) {
+                // The server closed the connection and asked to keep it this way
+                this.closed = true;
+                MovimUtils.showElement(document.getElementById('error_websocket'));
+                MovimWebsocket.connection.close();
+            } if(e.code == 1006) {
                 MovimWebsocket.reconnect();
             } else if(e.code == 1000) {
                 MovimUtils.disconnect();
@@ -108,9 +114,8 @@ var MovimWebsocket = {
         this.connection.onerror = function(e) {
             console.log("Connection error!");
 
-            // We hide the Websocket error
+            // We show the Websocket error
             MovimUtils.showElement(document.getElementById('error_websocket'));
-
             MovimWebsocket.reconnect();
 
             // We prevent the onclose launch
@@ -136,7 +141,7 @@ var MovimWebsocket = {
 
     // A ping/pong system to handle socket errors for buggy browser (Chrome on Linux…)
     ping : function() {
-        if(this.connection.readyState == 1) {
+        if(this.connection.readyState == 1 && !this.closed) {
             this.connection.send(
                 JSON.stringify(
                     {'func' : 'ping'}
@@ -150,7 +155,7 @@ var MovimWebsocket = {
                     MovimWebsocket.pong = false;
                     MovimWebsocket.ping();
                 }
-            }, 15000);
+            }, 5000);
         }
     },
 

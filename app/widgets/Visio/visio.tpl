@@ -19,7 +19,7 @@
     <video id="remote_video" autoplay></video>
     <canvas class="level"></canvas>
     <div class="controls">
-        <a id="main" class="button action color green">
+        <a id="main" class="button action color gray">
             <i class="zmdi zmdi-phone"></i>
         </a>
     </div>
