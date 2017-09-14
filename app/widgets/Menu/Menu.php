@@ -10,7 +10,7 @@ class Menu extends \Movim\Widget\Base
 
     function load()
     {
-        $this->registerEvent('post', 'onPost', 'news');
+        $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract', 'news');
         $this->registerEvent('pubsub_postdelete', 'onRetract', 'news');
         $this->registerEvent('pubsub_getitem_handle', 'onPost');
