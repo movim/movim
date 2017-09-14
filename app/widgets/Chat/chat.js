@@ -139,6 +139,7 @@ var Chat = {
         Chat.clearReplace();
         var textarea = Chat.getTextarea();
         localStorage.removeItem(textarea.dataset.jid + '_message');
+        Chat.toggleAction(textarea.value.length);
     },
     clearReplace: function()
     {
