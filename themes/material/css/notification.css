@@ -72,7 +72,7 @@
 
 .snackbar#error_websocket:not(.hide) ~ main,
 .snackbar#error_websocket:not(.hide) ~ nav,
-.snackbar#error_websocket:not(.hide) ~ div {
+.snackbar#error_websocket:not(.hide) ~ div:not(.toast) {
     opacity: 0.5;
     pointer-events: none;
 }
