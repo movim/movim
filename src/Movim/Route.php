@@ -36,7 +36,7 @@ class Route extends Base
                 'room'          => ['r'],
                 'share'         => ['url'],
                 'tag'           => ['t', 'i'],
-                'visio'         => false,
+                'visio'         => ['f', 's'],
             ];
     }
 

@@ -140,5 +140,7 @@ class Visio extends \Movim\Widget\Base
 
     function display()
     {
+        $cd = new \Modl\ContactDAO;
+        $this->view->assign('contact', $cd->get($this->get('f')));
     }
 }

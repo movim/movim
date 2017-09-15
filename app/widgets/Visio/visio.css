@@ -1,7 +1,23 @@
 #visio video {
     width: 100%;
     height: 100%;
+}
+
+body {
     background-color: #111;
+}
+
+#visio .infos {
+    color: white;
+    position: absolute;
+    top: calc(50% - 15rem);
+    width: 100%;
+    z-index: -1;
+}
+
+#visio .infos img {
+    border-radius: 100%;
+    width: 15rem;
 }
 
 #visio .level,
@@ -39,27 +55,27 @@
 }
 
 @-webkit-keyframes Rotate {
-  0% {-webkit-transform:rotate(0deg);}
-  4% {-webkit-transform:rotate(-22.5deg);}
-  8% {-webkit-transform:rotate(0deg);}
-  12% {-webkit-transform:rotate(22.5deg);}
-  16% {-webkit-transform:rotate(0deg);}
-  20% {-webkit-transform:rotate(-22.5deg);}
-  24% {-webkit-transform:rotate(0deg);}
-  100% {-webkit-transform:rotate(0deg);}
+    0% {-webkit-transform:rotate(0deg);}
+    4% {-webkit-transform:rotate(-22.5deg);}
+    8% {-webkit-transform:rotate(0deg);}
+    12% {-webkit-transform:rotate(22.5deg);}
+    16% {-webkit-transform:rotate(0deg);}
+    20% {-webkit-transform:rotate(-22.5deg);}
+    24% {-webkit-transform:rotate(0deg);}
+    100% {-webkit-transform:rotate(0deg);}
+}
+
+@keyframes Rotate {
+    0% {transform:rotate(0deg);}
+    4% {transform:rotate(-22.5deg);}
+    8% {transform:rotate(0deg);}
+    12% {transform:rotate(-22.5deg);}
+    16% {transform:rotate(0deg);}
+    20% {transform:rotate(-22.5deg);}
+    24% {transform:rotate(0deg);}
+    100% {transform:rotate(0deg);}
 }
 
 #drawer {
     display: none;
-}
-
-@keyframes Rotate {
-  0% {transform:rotate(0deg);}
-  4% {transform:rotate(-22.5deg);}
-  8% {transform:rotate(0deg);}
-  12% {transform:rotate(-22.5deg);}
-  16% {transform:rotate(0deg);}
-  20% {transform:rotate(-22.5deg);}
-  24% {transform:rotate(0deg);}
-  100% {transform:rotate(0deg);}
 }

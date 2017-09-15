@@ -14,8 +14,23 @@
             </li>
         </ul>
     </header>
+
+    <ul class="list infos" class="list middle">
+        {$url = $contact->getPhoto('l')}
+        <li>
+            {if="$url"}
+                <p class="center">
+                    <img src="{$url}">
+                </p>
+            {/if}
+
+            <p class="normal center	">
+                {$contact->getTrueName()}
+            </p>
+        </li>
+    </ul>
+
     <video id="video" autoplay muted></video>
-    <canvas class="level"></canvas>
     <video id="remote_video" autoplay></video>
     <canvas class="level"></canvas>
     <div class="controls">
