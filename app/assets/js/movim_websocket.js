@@ -65,7 +65,7 @@ var MovimWebsocket = {
             MovimWebsocket.launchAttached();
             setTimeout(function(){
                 MovimWebsocket.ping();
-            }, 5000);
+            }, 10000);
         };
 
         this.connection.onmessage = function(e) {
@@ -155,7 +155,7 @@ var MovimWebsocket = {
                     MovimWebsocket.pong = false;
                     MovimWebsocket.ping();
                 }
-            }, 5000);
+            }, 10000);
         }
     },
 
