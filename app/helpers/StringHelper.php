@@ -300,11 +300,19 @@ function stringToColor($string)
         4 => 'green',
         5 => 'orange',
         6 => 'yellow',
-        7 => 'brown'
+        7 => 'brown',
+        8 => 'lime',
+        9 => 'cyan',
+        10 => 'teal',
+        11 => 'pink',
+        12 => 'dorange',
+        13 => 'lblue',
+        14 => 'amber',
+        15 => 'bgray',
     ];
 
     $s = abs(crc32($string));
-    return $colors[$s%8];
+    return $colors[$s%16];
 }
 
 /**

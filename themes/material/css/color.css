@@ -75,6 +75,15 @@ span.icon.status.server_error:after,
 .color.brown    { color: white; background-color: #795548; border-color: #795548 }
 .color.gray     { color: white; background-color: #9E9E9E; border-color: #9E9E9E }
 .color.black    { color: white; background-color: #000;    border-color: #000 }
+.color.lime     { color: white; background-color: #CDDC39; border-color: #CDDC39 }
+.color.cyan     { color: white; background-color: #00bcd4; border-color: #00bcd4 }
+.color.teal     { color: white; background-color: #009688; border-color: #009688 }
+.color.pink     { color: white; background-color: #e91e63; border-color: #e91e63 }
+.color.dorange  { color: white; background-color: #ff5722; border-color: #ff5722 }
+.color.lblue    { color: white; background-color: #03a9f4; border-color: #03a9f4 }
+.color.amber    { color: white; background-color: #ffc107; border-color: #ffc107 }
+.color.bgray    { color: white; background-color: #607d8b; border-color: #607d8b }
+
 .color.transparent { color: white; background-color: rgba(0, 0, 0, 0); }
 
 form > div > input:focus:invalid,
