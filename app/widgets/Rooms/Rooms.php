@@ -21,7 +21,7 @@ class Rooms extends \Movim\Widget\Base
         $this->addcss('rooms.css');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('bookmark_get_handle', 'onGetBookmark');
-        $this->registerEvent('bookmark_set_handle', 'onBookmark', 'chat');
+        $this->registerEvent('bookmark_set_handle', 'onBookmark');
         $this->registerEvent('presence_muc_handle', 'onConnected', 'chat');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected', 'chat');
         $this->registerEvent('presence_muc_errorconflict', 'onConflict');
