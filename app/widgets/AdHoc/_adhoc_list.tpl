@@ -1,7 +1,9 @@
 <ul class="list divided active spaced">
+    {if="!empty($list)"}
     <li class="subheader">
         <p>{$c->__('adhoc.title')}</p>
     </li>
+    {/if}
     {loop="$list"}
         {if="isset($value->attributes()->name)"}
             <li data-node="{$value->attributes()->node}" data-jid="{$value->attributes()->jid}">
