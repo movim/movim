@@ -363,7 +363,7 @@ var Chat = {
             mergeMsg = true;
         } else {
             if (data.session == data.jidfrom
-            || data.mine == true) {
+            || data.mine) {
                 bubble = Chat.right.cloneNode(true);
                 if(data.mine) {
                     id = data.jidfrom + '_conversation';
