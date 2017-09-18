@@ -6,18 +6,6 @@
             <p class="normal">Movim</p>
         </li>
     </a>
-    <!--<a class="classic on_desktop" href="{$c->route('root')}">
-        <li class="{if="$page == 'main'"}active{/if}">
-            <span class="primary icon bubble"><i class="zmdi zmdi-cloud-outline"></i></span>
-            <p class="normal">{$c->__('page.home')}</p>
-        </li>
-    </a>
-    <a class="classic on_mobile" href="{$c->route('root')}">
-        <li class="{if="$page == 'main'"}active{/if}">
-            <span class="primary icon bubble"><i class="zmdi zmdi-home"></i></span>
-            <p class="normal">{$c->__('page.home')}</p>
-        </li>
-    </a>-->
     {if="$c->supported('pubsub')"}
     <a class="classic"
        href="{$c->route('news')}"
@@ -57,7 +45,9 @@
 </ul>
 
 <ul class="list divided oppose active" dir="ltr">
-    <li onclick="Search_ajaxRequest()">
+    <li onclick="Search_ajaxRequest()"
+        title="{$c->__('button.search')}"
+    >
         <span class="primary icon">
             <i class="zmdi zmdi-search"></i>
         </span>

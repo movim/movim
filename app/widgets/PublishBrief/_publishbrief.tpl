@@ -40,6 +40,7 @@
     <ul class="list middle">
         <li>
             <span class="primary icon gray bubble active privacy color"
+                  title="{$c->__('post.public')}"
                   onclick="PublishBrief.togglePrivacy()">
                 <i class="zmdi zmdi-portable-wifi"></i>
             </span>

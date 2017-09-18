@@ -22,6 +22,7 @@
                             <?php if($this->user->isSupported('pubsub')) { ?>
                                 <span
                                     class="control icon gray active"
+                                    title="<?php echo __('communitysubscriptions.subscriptions'); ?>"
                                     onclick="MovimUtils.redirect('<?php echo \Movim\Route::urlize('community', 'subscriptions'); ?>')">
                                     <i class="zmdi zmdi-settings"></i>
                                 </span>

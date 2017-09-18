@@ -1,5 +1,5 @@
 <a href="{$c->route('contact', $me->jid)}">
-    <li>
+    <li title="{$c->__('privacy.my_profile')}">
         {$url = $me->getPhoto('s')}
         {if="$url"}
             <span

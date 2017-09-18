@@ -144,7 +144,7 @@ var Chat = {
         Chat.clearReplace();
         var textarea = Chat.getTextarea();
         localStorage.removeItem(textarea.dataset.jid + '_message');
-        Chat.toggleAction(textarea.value.length);
+        Chat.toggleAction();
     },
     clearReplace: function()
     {
@@ -171,6 +171,8 @@ var Chat = {
             textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
 
             MovimUtils.textareaAutoheight(textarea);
+
+            Chat.toggleAction();
         }, 0); // Fix Me
 
         textarea.onkeydown = function(event) {
@@ -222,7 +224,7 @@ var Chat = {
                 }
             },5000);
 
-            Chat.toggleAction(this.value.length);
+            Chat.toggleAction();
         };
 
         textarea.oninput = function() {
@@ -611,11 +613,11 @@ var Chat = {
         i.setAttribute("title", displayed);
         return i;
     },
-    toggleAction: function(l) {
+    toggleAction: function() {
         var send_button = document.querySelector(".chat_box span.send");
         var attachment_button = document.querySelector(".chat_box span.upload");
         if(send_button && attachment_button) {
-            if(l > 0){
+            if(Chat.getTextarea().value.length > 0){
                 MovimUtils.showElement(send_button);
                 MovimUtils.hideElement(attachment_button);
             } else {

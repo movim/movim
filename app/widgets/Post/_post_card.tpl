@@ -234,11 +234,17 @@
                     </a>
                 {/if}
                 {if="!$public"}
-                <a class="button icon flat gray" href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
+                <a
+                    title="{$c->__('button.reply')}"
+                    class="button icon flat gray"
+                    href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
                     <i class="zmdi zmdi-mail-reply"></i>
                 </a>
                     {if="$post->isPublic()"}
-                        <a class="button icon flat gray on_desktop" target="_blank" href="{$post->getPublicUrl()}">
+                        <a  title="{$c->__('post.public_yes')}"
+                            class="button icon flat gray on_desktop"
+                            target="_blank"
+                            href="{$post->getPublicUrl()}">
                             <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                         </a>
                     {/if}

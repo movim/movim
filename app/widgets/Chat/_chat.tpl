@@ -25,7 +25,10 @@
                 <i class="zmdi zmdi-more-vert"></i>
             </span>
 
-            <span class="control icon active" onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel(); {if="$anon"}Presence_ajaxLogout(){/if}">
+            <span
+                title="{$c->__('button.close')}"
+                class="control icon active"
+                onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel(); {if="$anon"}Presence_ajaxLogout(){/if}">
                 <i class="zmdi zmdi-close"></i>
             </span>
 
@@ -95,7 +98,10 @@
                 <i class="zmdi zmdi-more-vert"></i>
             </span>
 
-            <span class="control icon active" onclick="Chats_ajaxClose('{$jid|echapJS}'); MovimTpl.hidePanel();">
+            <span
+                title="{$c->__('button.close')}"
+                class="control icon active"
+                onclick="Chats_ajaxClose('{$jid|echapJS}'); MovimTpl.hidePanel();">
                 <i class="zmdi zmdi-close"></i>
             </span>
             <p class="line">
@@ -137,11 +143,14 @@
             </span>
             {/if}
             {if="$c->supported('upload')"}
-                <span class="upload control icon" onclick="Upload_ajaxRequest()">
+                <span class="upload control icon"
+                    title="{$c->__('publish.attach')}"
+                    onclick="Upload_ajaxRequest()">
                     <i class="zmdi zmdi-attachment-alt"></i>
                 </span>
             {/if}
-            <span class="send control icon gray {if="$c->supported('upload')"}hide{else}show{/if}"
+            <span title="{$c->__('button.submit')}"
+                class="send control icon gray {if="$c->supported('upload')"}hide{else}show{/if}"
                   onclick="Chat.sendMessage()">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>
