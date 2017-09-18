@@ -13,82 +13,55 @@ var Chat = {
     sended: false,
 
     // Autocomplete vars.
-    // What user want to autocomplete?
-    toAutocomplete: null,
-    // What was previously in autocomplete?
-    previouslyAutocompleted: null,
-    previouslyAutocompletedSeqID: null,
+    autocompleteList: null,
+    lastAutocomplete: null,
+    searchAutocomplete: null,
 
-    autocomplete: function(event, jid) {
-        event.preventDefault();
+    autocomplete: function(event, jid)
+    {
         Rooms_ajaxMucUsersAutocomplete(jid);
     },
-    onAutocomplete: function(usersList) {
+    onAutocomplete: function(usersList)
+    {
+        Chat.autocompleteList = usersList;
+        usersList = Object.values(usersList);
+
         var textarea = Chat.getTextarea();
-        var text = textarea.value.toLowerCase();
 
-        // If user have deleted text from textarea - reinitialize
-        // autocompletion.
-        if (text == '' && Chat.previouslyAutocompleted !== null) {
-            Chat.previouslyAutocompleted = null;
-            Chat.previouslyAutocompletedSeqID = null;
-        }
+        var words = textarea.value.toLowerCase().split(' ');
+        var last = words[words.length - 1].trim();
 
-        // Assume that this is what we want to autocomplete if
-        // Chat.toAutocomplete is null.
-        if (Chat.toAutocomplete === null
-            || (
-                Chat.toAutocomplete != text
-                && text.indexOf(',') === -1)
-            ) {
-            Chat.toAutocomplete = text;
-        }
-
-        // If it is a first autocomplete attempt and there was no
-        // substring to search found in input field - just add
-        // first element from users list to input field.
-        if (Chat.previouslyAutocompleted === null
-            && Chat.toAutocomplete == '') {
-            var autocompleted = usersList[0]['resource'];
-            Chat.quoteMUC(autocompleted);
-            Chat.previouslyAutocompleted = autocompleted;
+        if (last == '') {
+            // Space or nothing, so we put the first one in the list
+            textarea.value += usersList[0];
+            Chat.lastAutocomplete = usersList[0];
+            Chat.searchAutocomplete = null;
+        } else if (typeof Chat.lastAutocomplete === 'string'
+        && Chat.lastAutocomplete.toLowerCase() == last
+        && Chat.searchAutocomplete == null) {
+            // Full complete, so we iterate
+            Chat.lastAutocomplete = usersList[usersList.indexOf(Chat.lastAutocomplete) + 1];
+            textarea.value = textarea.value.slice(0, -last.length) + Chat.lastAutocomplete;
+            Chat.searchAutocomplete = null;
         } else {
-            // Otherwise we should autocomplete next to
-            // previouslyAutocompleted.
-            var autocompletedOk = false;
-
-            for (var i = 0; i < usersList.length; i++) {
-                var autocompleted = '';
-
-                // If we have substring to autocomplete.
-                var user_substr = usersList[i]['resource'].substring(0, Chat.toAutocomplete.length);
-
-                // If we want to just-scroll through all people in MUC.
-                if (usersList[i]['resource'] == Chat.previouslyAutocompleted
-                    && i !== usersList.length - 1
-                    && Chat.toAutocomplete == '') {
-                    autocompleted = usersList[i+1]['resource'];
-                    autocompletedOk = true;
-                } else if (i > Chat.previouslyAutocompletedSeqID
-                    && user_substr.toLowerCase().indexOf(Chat.toAutocomplete) !== -1
-                    && usersList[i]['resource'] != Chat.previouslyAutocompleted) {
-                    autocompleted = usersList[i]['resource'];
-                    autocompletedOk = true;
-                }
-
-                if (autocompletedOk) {
-                    Chat.quoteMUC(autocompleted);
-                    Chat.previouslyAutocompleted = autocompleted;
-                    Chat.previouslyAutocompletedSeqID = i;
-                    break;
-                }
+            // Searching for nicknames starting with
+            if (last != Chat.lastAutocomplete) {
+                Chat.searchAutocomplete = last;
+                Chat.lastAutocomplete = null;
             }
 
-            // If autocompletion failed - emptify input field.
-            if (!autocompletedOk) {
-                textarea.value = '';
-                Chat.previouslyAutocompleted = null;
-                Chat.previouslyAutocompletedSeqID = null;
+            if (typeof Chat.lastAutocomplete === 'string') {
+                var start = usersList.indexOf(Chat.lastAutocomplete) + 1;
+            } else {
+                var start = 0;
+            }
+
+            for (var i = start; i < usersList.length; i++) {
+                if(Chat.searchAutocomplete == usersList[i].substring(0, Chat.searchAutocomplete.length).toLowerCase()) {
+                    textarea.value = textarea.value.slice(0, -last.length) + usersList[i];
+                    Chat.lastAutocomplete = usersList[i];
+                    break;
+                }
             }
         }
     },
@@ -176,8 +149,14 @@ var Chat = {
         }, 0); // Fix Me
 
         textarea.onkeydown = function(event) {
-            if (this.dataset.muc && event.keyCode == 9) {
-                Chat.autocomplete(event, this.dataset.jid);
+            if (this.dataset.muc
+            && event.keyCode == 9) {
+                event.preventDefault();
+                if(Chat.autocompleteList == null) {
+                    Chat.autocomplete(event, this.dataset.jid);
+                } else {
+                    Chat.onAutocomplete(Chat.autocompleteList);
+                }
                 return;
             }
 
@@ -234,6 +213,8 @@ var Chat = {
         if(document.documentElement.clientWidth > 1024) {
             textarea.focus();
         }
+
+        Chat.autocompleteList = null;
     },
     setTextarea: function(value)
     {
