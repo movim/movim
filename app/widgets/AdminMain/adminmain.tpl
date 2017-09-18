@@ -127,6 +127,24 @@
         </li>
     </ul>
 
+    <br />
+    <h3>{$c->__('credentials.title')}</h3>
+
+    <div>
+        <label for="username">{$c->__('credentials.username')}</label>
+        <input type="text" id="username" name="username" value="{$conf->username}"/>
+    </div>
+    <div class="clear"></div>
+
+    <div>
+        <input type="password" id="password" name="password" value="" placeholder="{$c->__('credentials.password')}"/>
+        <label for="password">{$c->__('credentials.password')}</label>
+    </div>
+    <div>
+        <input type="password" id="repassword" name="repassword" value="" placeholder="{$c->__('credentials.re_password')}"/>
+        <label for="repassword">{$c->__('credentials.re_password')}</label>
+    </div>
+
     <input
     type="submit"
     class="button color green oppose"
