@@ -137,12 +137,11 @@
             </span>
             {/if}
             {if="$c->supported('upload')"}
-                <span class="control icon" onclick="Upload_ajaxRequest()">
+                <span class="upload control icon" onclick="Upload_ajaxRequest()">
                     <i class="zmdi zmdi-attachment-alt"></i>
                 </span>
             {/if}
-            <span class="control icon gray {if="$c->supported('upload')"}hide{else}show{/if}"
-                  data-jid="{$jid}"
+            <span class="send control icon gray {if="$c->supported('upload')"}hide{else}show{/if}"
                   onclick="Chat.sendMessage()">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>

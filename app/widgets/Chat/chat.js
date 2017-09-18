@@ -118,6 +118,8 @@ var Chat = {
         if(!Chat.sended) {
             Chat.sended = true;
 
+            document.querySelector(".chat_box span.send").classList.add('sending');
+
             if(Chat.edit) {
                 Chat.edit = false;
                 Chat_ajaxCorrect(jid, text);
@@ -136,6 +138,9 @@ var Chat = {
     sendedMessage: function()
     {
         Chat.sended = false;
+
+        document.querySelector(".chat_box span.send").classList.remove('sending');
+
         Chat.clearReplace();
         var textarea = Chat.getTextarea();
         localStorage.removeItem(textarea.dataset.jid + '_message');
@@ -607,8 +612,8 @@ var Chat = {
         return i;
     },
     toggleAction: function(l) {
-        var send_button = document.querySelector(".chat_box span[data-jid]");
-        var attachment_button = document.querySelector(".chat_box span.control:not([data-jid])");
+        var send_button = document.querySelector(".chat_box span.send");
+        var attachment_button = document.querySelector(".chat_box span.upload");
         if(send_button && attachment_button) {
             if(l > 0){
                 MovimUtils.showElement(send_button);

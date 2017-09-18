@@ -42,7 +42,20 @@
 
 #chat_widget .chat_box span.control:hover {
     cursor: pointer;
+    color: #666;
+}
+
+#chat_widget .chat_box span.control:active {
     color: #333;
+}
+
+#chat_widget .chat_box span.control.send.sending {
+    animation: loading_opacity 1s infinite alternate;
+}
+
+@keyframes loading_opacity {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
 }
 
 #chat_widget section {
