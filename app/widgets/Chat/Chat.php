@@ -754,6 +754,8 @@ class Chat extends \Movim\Widget\Base
                 if($url) {
                     $message->icon_url = $url;
                 }
+
+                $message->mine = ($contact->mucjid == $message->session);
             }
 
             $message->icon = firstLetterCapitalize($message->resource);

@@ -362,9 +362,14 @@ var Chat = {
             bubble = msgStack.parentNode;
             mergeMsg = true;
         } else {
-            if (data.session == data.jidfrom) {
+            if (data.session == data.jidfrom
+            || data.mine == true) {
                 bubble = Chat.right.cloneNode(true);
-                id = data.jidto + '_conversation';
+                if(data.mine) {
+                    id = data.jidfrom + '_conversation';
+                } else {
+                    id = data.jidto + '_conversation';
+                }
             } else {
                 bubble = Chat.left.cloneNode(true);
                 id = data.jidfrom + '_conversation';
@@ -456,7 +461,11 @@ var Chat = {
         if(isMuc) {
             bubble.querySelector('div.bubble').dataset.publishedprepared = data.resource + ' – ' + data.publishedPrepared;
 
-            icon = bubble.querySelector('span.primary.icon');
+            if(data.mine) {
+                icon = bubble.querySelector('span.control.icon');
+            } else {
+                icon = bubble.querySelector('span.primary.icon');
+            }
 
             if(icon.querySelector('img') == undefined) {
                 if(data.icon_url) {
