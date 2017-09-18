@@ -11,16 +11,8 @@ class AdminMain extends \Movim\Widget\Base
         $config = $cd->get();
 
         if(isset($form) && !empty($form)) {
-            if(isset($form['password'])
-            && isset($form['repassword'])
-            && $form['password'] != '' && $form['repassword'] != ''
-            && $form['password'] == $form['repassword']) {
-                $form['password'] = sha1($form['password']);
-            } else {
-                $form['password'] = $config->password;
-            }
-
-            unset($form['repassword']);
+            unset($form['username']);
+            unset($form['password']);
 
             foreach($form as $key => $value) {
                 $config->$key = $value;

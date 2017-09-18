@@ -45,7 +45,7 @@ class Config extends Model
         $this->xmppwhitelist    = '';
         $this->info             = '';
         $this->unregister       = false;
-        $this->username         = 'admin';
-        $this->password         = sha1('password');
+        $this->username         = '';
+        $this->password         = '';
     }
 }

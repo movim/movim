@@ -127,35 +127,6 @@
         </li>
     </ul>
 
-    <br />
-    <h3>{$c->__('credentials.title')}</h3>
-
-    {if="$conf->username == 'admin' || $conf->password == sha1('password')"}
-        <ul class="list thick">
-            <li>
-                <span class="primary icon orange color bubble">
-                    <i class="zmdi zmdi-alert-triangle"></i>
-                </span>
-                <p class="normal">{$c->__('credentials.info')}</p>
-            </li>
-        </ul>
-    {/if}
-
-    <div>
-        <label for="username">{$c->__('credentials.username')}</label>
-        <input type="text" id="username" name="username" value="{$conf->username}"/>
-    </div>
-    <div class="clear"></div>
-
-    <div>
-        <input type="password" id="password" name="password" value=""/>
-        <label for="password">{$c->__('credentials.password')}</label>
-    </div>
-    <div>
-        <input type="password" id="repassword" name="repassword" value=""/>
-        <label for="repassword">{$c->__('credentials.re_password')}</label>
-    </div>
-
     <input
     type="submit"
     class="button color green oppose"

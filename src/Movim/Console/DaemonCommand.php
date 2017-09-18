@@ -78,6 +78,17 @@ class DaemonCommand extends Command
 
         $baseuri = rtrim($input->getOption('url'), '/') . '/';
 
+        $cd = new \Modl\ConfigDAO;
+        $config = $cd->get();
+
+        if(empty($config->username) || empty($config->password)) {
+            $output->writeln('<comment>Please set a username and password for the admin panel ('.$baseuri.'?admin)</comment>');
+
+            $output->writeln('<info>To set those credentials run</info>');
+            $output->writeln('<info>php mud.php config --username=USERNAME --password=PASSWORD</info>');
+            exit;
+        }
+
         $output->writeln('<info>Movim daemon launched</info>');
         $output->writeln('<info>Base URL: '.$baseuri.'</info>');
 
