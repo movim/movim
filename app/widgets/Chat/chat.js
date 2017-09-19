@@ -28,37 +28,42 @@ var Chat = {
 
         var textarea = Chat.getTextarea();
 
-        var words = textarea.value.toLowerCase().split(' ');
+        var words = textarea.value.toLowerCase().trim().split(' ');
         var last = words[words.length - 1].trim();
 
         if (last == '') {
             // Space or nothing, so we put the first one in the list
-            textarea.value += usersList[0];
+            textarea.value += usersList[0] + ' ';
             Chat.lastAutocomplete = usersList[0];
             Chat.searchAutocomplete = null;
         } else if (typeof Chat.lastAutocomplete === 'string'
         && Chat.lastAutocomplete.toLowerCase() == last
         && Chat.searchAutocomplete == null) {
+            var index = (usersList.indexOf(Chat.lastAutocomplete) == usersList.length - 1)
+                ? -1
+                : usersList.indexOf(Chat.lastAutocomplete);
+
             // Full complete, so we iterate
-            Chat.lastAutocomplete = usersList[usersList.indexOf(Chat.lastAutocomplete) + 1];
-            textarea.value = textarea.value.slice(0, -last.length) + Chat.lastAutocomplete;
+            Chat.lastAutocomplete = usersList[index + 1];
+            textarea.value = textarea.value.slice(0, -last.length - 1) + Chat.lastAutocomplete + ' ';
             Chat.searchAutocomplete = null;
         } else {
             // Searching for nicknames starting with
-            if (last != Chat.lastAutocomplete) {
+            if (Chat.lastAutocomplete ==  null
+            || last != Chat.lastAutocomplete.toLowerCase()) {
                 Chat.searchAutocomplete = last;
                 Chat.lastAutocomplete = null;
             }
 
-            if (typeof Chat.lastAutocomplete === 'string') {
-                var start = usersList.indexOf(Chat.lastAutocomplete) + 1;
-            } else {
-                var start = 0;
-            }
+            var start = (typeof Chat.lastAutocomplete === 'string')
+                ? usersList.indexOf(Chat.lastAutocomplete) + 1
+                : start = 0;
 
             for (var i = start; i < usersList.length; i++) {
                 if(Chat.searchAutocomplete == usersList[i].substring(0, Chat.searchAutocomplete.length).toLowerCase()) {
-                    textarea.value = textarea.value.slice(0, -last.length) + usersList[i];
+                    if(textarea.value.slice(-1) != ' ') textarea.value = textarea.value.trim() + ' ';
+
+                    textarea.value = textarea.value.slice(0, -last.length - 1) + usersList[i] + ' ';
                     Chat.lastAutocomplete = usersList[i];
                     break;
                 }
