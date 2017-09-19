@@ -63,9 +63,7 @@ var Chat = {
 
             for (var i = start; i < usersList.length; i++) {
                 if(Chat.searchAutocomplete == usersList[i].substring(0, Chat.searchAutocomplete.length).toLowerCase()) {
-                    if(textarea.value.slice(-1) != ' ') textarea.value = textarea.value.trim() + ' ';
-
-                    textarea.value = textarea.value.slice(0, -last.length - 1) + usersList[i] + ' ';
+                    textarea.value = textarea.value.trim().slice(0, -last.length) + usersList[i] + ' ';
                     Chat.lastAutocomplete = usersList[i];
                     break;
                 }
