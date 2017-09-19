@@ -75,10 +75,10 @@ var Chat = {
         var textarea = Chat.getTextarea();
         if(add) {
             if(textarea.value.search(nickname) === -1) {
-                textarea.value = nickname + ', ' + textarea.value;
+                textarea.value = nickname + ' ' + textarea.value;
             }
         } else {
-            textarea.value = nickname + ', ';
+            textarea.value = nickname + ' ';
         }
 
         textarea.focus();
