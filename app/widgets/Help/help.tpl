@@ -1,34 +1,80 @@
 <div class="tabelem" title="{$c->__('page.help')}" id="help_widget">
-    <ul class="list thick active">
-        <li>
+    <ul class="list thick block divided">
+        <li class="subheader">
+            <p>{$c->__('apps.question')}</p>
+        </li>
+        <li class="block">
+            <span class="primary icon bubble color green">
+                <i class="zmdi zmdi-android"></i>
+            </span>
+            <p>{$c->__('apps.phone')}<p>
+            <p class="all">
+                {$c->__('apps.android')}
+                <br />
+                <a class="button flat" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
+                    <i class="zmdi zmdi-google-play"></i> Play Store
+                </a>
+                <a class="button flat" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
+                    <i class="zmdi zmdi-android-alt"></i> F-Droid
+                </a>
+                <br />
+                {$c->__('apps.recommend')} Conversations
+                <br />
+                <a class="button flat" href="https://play.google.com/store/apps/details?id=eu.siacs.conversations" target="_blank">
+                    <i class="zmdi zmdi-google-play"></i> Play Store
+                </a>
+            </p>
+        </li>
+        <li class="block">
+            <span class="primary icon bubble color purple">
+                <i class="zmdi zmdi-desktop-windows"></i>
+            </span>
+            <p>{$c->__('apps.computer')}<p>
+            <p class="all">
+                <a href="https://movim.eu/#apps" target="_blank">
+                    {$c->__('apps.computer_text')}
+                </a>
+            </p>
+        </li>
+        <li class="subheader">
+            <p>{$c->__('page.help')}</p>
+        </li>
+        <li class="block">
             <span class="primary icon bubble color blue">
                 <i class="zmdi zmdi-github-alt"></i>
             </span>
-            <span class="control icon gray">
-                <i class="zmdi zmdi-chevron-right"></i>
-            </span>
-            <p>{$c->__('wiki.question')}</p>
-            <p><a href="https://github.com/edhelas/movim/wiki" target="_blank">{$c->__('wiki.button')}</a></p>
+            <p>
+                {$c->__('wiki.question')}
+            </p>
+            <p>
+                <a href="https://github.com/edhelas/movim/wiki" target="_blank">
+                    {$c->__('wiki.button')}
+                </a>
+            </p>
         </li>
-        <li>
+        <li class="block">
             <span class="primary icon bubble color orange">
                 <i class="zmdi zmdi-email"></i>
             </span>
-            <span class="control icon gray">
-                <i class="zmdi zmdi-chevron-right"></i>
-            </span>
-            <p>{$c->__('ml.question')}</p>
-            <p><a href="https://github.com/edhelas/movim/wiki/Mailing-List" target="_blank">{$c->__('ml.button')}</a></p>
+            <p>
+                {$c->__('ml.question')}
+            </p>
+            <p>
+                <a href="https://github.com/edhelas/movim/wiki/Mailing-List" target="_blank">
+                    {$c->__('ml.button')}
+                </a>
+            </p>
         </li>
-        <li class="condensed action" onclick="Help_ajaxAddChatroom()">
-            <span class="primary icon bubble color green">
+        <li class="block">
+            <span class="primary icon bubble color teal">
                 <i class="zmdi zmdi-comment-text-alt"></i>
             </span>
-            <span class="control icon gray">
-                <i class="zmdi zmdi-accounts-add"></i>
-            </span>
             <p>{$c->__('chatroom.question')}</p>
-            <p>{$c->__('chatroom.button')}<br/>movim@conference.movim.eu</p>
+            <p class="all">
+                <a href="#" onclick="Help_ajaxAddChatroom()">
+                    {$c->__('chatroom.button')} movim@conference.movim.eu
+                </a>
+            </p>
         </li>
     </ul>
     <!--
