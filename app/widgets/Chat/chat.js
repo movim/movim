@@ -43,6 +43,8 @@ var Chat = {
                 ? -1
                 : usersList.indexOf(Chat.lastAutocomplete);
 
+            if(textarea.value.slice(-1) == ' ') textarea.value = textarea.value.trim() + ' ';
+
             // Full complete, so we iterate
             Chat.lastAutocomplete = usersList[index + 1];
             textarea.value = textarea.value.slice(0, -last.length - 1) + Chat.lastAutocomplete + ' ';
