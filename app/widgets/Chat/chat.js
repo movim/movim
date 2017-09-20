@@ -530,9 +530,15 @@ var Chat = {
         }
     },
     getStickerHtml: function(sticker) {
+        console.log(sticker);
         var img = document.createElement("img");
         if(sticker.url) {
-            img.setAttribute("src", sticker.url);
+            if(sticker.thumb) {
+                img.setAttribute("src", sticker.thumb);
+            } else {
+                img.setAttribute("src", sticker.url);
+            }
+
             if(sticker.width)  img.setAttribute("width", sticker.width);
             if(sticker.height)
                 img.setAttribute("height", sticker.height);

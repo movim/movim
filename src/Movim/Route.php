@@ -31,6 +31,7 @@ class Route extends Base
                 'node'          => ['s', 'n', 'i'],
                 'news'          => ['s', 'n', 'i'],
                 'post'          => ['s', 'n', 'i'],
+                'picture'       => ['url'],
                 'popuptest'     => false,
                 'publish'       => ['s', 'n', 'i', 'sh'],
                 'room'          => ['r'],
