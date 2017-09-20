@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
@@ -302,10 +302,6 @@ msgstr ""
 msgid "Server Timezone"
 msgstr "Zona horaria del servidor"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "Mida màxima de la carpeta d'usuari (en bytes)"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "Configuració de WebSocket"
@@ -329,10 +325,6 @@ msgstr ""
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Credencial d'adiministració"
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
-msgstr "Canvia les credencials per defecte admin/password"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -655,6 +647,10 @@ msgstr ""
 msgid "Clear the history"
 msgstr ""
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Membres"
@@ -732,17 +728,19 @@ msgstr ""
 msgid "This server doesn't exists"
 msgstr "Aquest servidor no existeix"
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
+#: [communitiesserver]created
+#, fuzzy
+msgid "Community created successfully"
 msgstr "Grup creat correctament"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
+msgid "There is no Communities yet on this server."
 msgstr ""
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
-msgstr ""
+#: [communitiesserver]add
+#, fuzzy
+msgid "Create a new community on %s"
+msgstr "Crea un nou compte"
 
 #: [communitiesserver]name
 msgid "Community name"
@@ -752,12 +750,14 @@ msgstr ""
 msgid "My Little Pony - Fan Club"
 msgstr ""
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
+#: [communitiesserver]name_error
+#, fuzzy
+msgid "Please provide a valid community name (4 characters minimum)"
 msgstr "Siusplau dona un nom de grup vàlid (4 caràcters mínim)"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
+#: [communitiesserver]no_creation
+#, fuzzy
+msgid "You cannot create a new community on this server"
 msgstr "No pots crear un Grup en aquest servidor"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
@@ -765,20 +765,24 @@ msgstr "No pots crear un Grup en aquest servidor"
 msgid "Subscriptions"
 msgstr "Subscripcions"
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
+#: [communityaffiliation]deleted
+#, fuzzy
+msgid "Community deleted successfully"
 msgstr "Grup esborrat correctament"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
+#: [communityaffiliation]delete_title
+#, fuzzy
+msgid "Delete the community"
 msgstr "Esborra el grup"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
+#: [communityaffiliation]delete_text
+#, fuzzy
+msgid "You are going to delete the following community. Please confirm your action."
 msgstr "Esborraràs el següent grup. Siusplau confirma la teva acció"
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#: [communityaffiliation]delete_clean_text
+#, fuzzy
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Sembla que aquest grup ja no existeix. Vols esborrar-lo de les teves subscripcions?"
 
 #: [communityaffiliation]owner
@@ -1097,6 +1101,18 @@ msgstr "Hi ha hagut un problema amb aquest grup"
 msgid "Group configuration saved"
 msgstr "Configuració del grup guardada"
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "Esborra el grup"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Esborraràs el següent grup. Siusplau confirma la teva acció"
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Sembla que aquest grup ja no existeix. Vols esborrar-lo de les teves subscripcions?"
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s grups en aquest servidor"
@@ -1125,9 +1141,29 @@ msgstr "Trobaràs una llista amb tots els Grups que has subscrit a Les Meves Sub
 msgid "Contact post"
 msgstr ""
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr ""
+
 #: [groups]name
 msgid "Group name"
 msgstr "Nom del Grup"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "Grup creat correctament"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Grup esborrat correctament"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Siusplau dona un nom de grup vàlid (4 caràcters mínim)"
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "No pots crear un Grup en aquest servidor"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1159,6 +1195,30 @@ msgstr ""
 
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
+msgstr ""
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr ""
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr ""
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr ""
+
+#: [apps]recommend
+msgid "We also recommend"
+msgstr ""
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr ""
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
 msgstr ""
 
 #: [wiki]question
@@ -2842,6 +2902,12 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "User folder size limit (in bytes)"
+#~ msgstr "Mida màxima de la carpeta d'usuari (en bytes)"
+
+#~ msgid "Change the default credentials admin/password"
+#~ msgstr "Canvia les credencials per defecte admin/password"
 
 #~ msgid "Delete my account"
 #~ msgstr "Esborra el meu compte"

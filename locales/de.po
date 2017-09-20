@@ -114,7 +114,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
 "PO-Revision-Date: 2017-07-21 16:04+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -314,10 +314,6 @@ msgstr "Protokollstufe"
 msgid "Server Timezone"
 msgstr "Server-Zeitzone"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "Speicherlimit des Nutzerverzeichnis (in Bytes)"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "WebSocket-Konfiguration"
@@ -341,10 +337,6 @@ msgstr "Öffentliche WebSockets"
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Systemverwaltungsberechtigung"
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
-msgstr "Vorgegebene Systemverwaltungsberechtigung/-passwort ändern"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -667,6 +659,10 @@ msgstr ""
 msgid "Clear the history"
 msgstr ""
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Mitglieder"
@@ -744,16 +740,19 @@ msgstr "Gruppenserver"
 msgid "This server doesn't exists"
 msgstr "Dieser Server existiert nicht"
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
+#: [communitiesserver]created
+#, fuzzy
+msgid "Community created successfully"
 msgstr "Gruppe erfolgreich erstellt"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
+#, fuzzy
+msgid "There is no Communities yet on this server."
 msgstr "Auf diesem Server sind keine Gruppen"
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
+#: [communitiesserver]add
+#, fuzzy
+msgid "Create a new community on %s"
 msgstr "Eine neue Gruppe auf %s einrichten"
 
 #: [communitiesserver]name
@@ -764,12 +763,14 @@ msgstr ""
 msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony - Fanclub"
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
+#: [communitiesserver]name_error
+#, fuzzy
+msgid "Please provide a valid community name (4 characters minimum)"
 msgstr "Bitte geben Sie einen gültigen Gruppennamen ein (mindestens 4 Zeichen)"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
+#: [communitiesserver]no_creation
+#, fuzzy
+msgid "You cannot create a new community on this server"
 msgstr "Sie können keine neue Gruppe auf diesem Server erstellen"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
@@ -777,20 +778,24 @@ msgstr "Sie können keine neue Gruppe auf diesem Server erstellen"
 msgid "Subscriptions"
 msgstr "Anmeldungen"
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
+#: [communityaffiliation]deleted
+#, fuzzy
+msgid "Community deleted successfully"
 msgstr "Gruppe erfolgreich gelöscht"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
+#: [communityaffiliation]delete_title
+#, fuzzy
+msgid "Delete the community"
 msgstr "Die Gruppe löschen"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
+#: [communityaffiliation]delete_text
+#, fuzzy
+msgid "You are going to delete the following community. Please confirm your action."
 msgstr "Sie sind dabei die folgende Gruppe zu löschen. Bitte bestätigen Sie die Aktion."
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#: [communityaffiliation]delete_clean_text
+#, fuzzy
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Anscheinend existiert diese Gruppe nicht mehr. Soll diese Gruppe abbestellt werden?"
 
 #: [communityaffiliation]owner
@@ -1109,6 +1114,18 @@ msgstr "Etwas Schlechtes ist dieser Gruppe zugestoßen"
 msgid "Group configuration saved"
 msgstr "Gruppeneinstellung gespeichert"
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "Die Gruppe löschen"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Sie sind dabei die folgende Gruppe zu löschen. Bitte bestätigen Sie die Aktion."
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Anscheinend existiert diese Gruppe nicht mehr. Soll diese Gruppe abbestellt werden?"
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s Gruppen auf diesem Server"
@@ -1137,9 +1154,29 @@ msgstr "Sie finden eine Liste mit allen Ihren Gruppen in Meine Abonnements und e
 msgid "Contact post"
 msgstr "Kontaktnachricht"
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr "Eine neue Gruppe auf %s einrichten"
+
 #: [groups]name
 msgid "Group name"
 msgstr "Gruppenname"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "Gruppe erfolgreich erstellt"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Gruppe erfolgreich gelöscht"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Bitte geben Sie einen gültigen Gruppennamen ein (mindestens 4 Zeichen)"
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "Sie können keine neue Gruppe auf diesem Server erstellen"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1172,6 +1209,31 @@ msgstr "Rot, jeder im XMPP-Netzwerk kann Ihre Information sehen"
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "Schwarz, das vollständige Internet kann Ihre Information sehen"
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr ""
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr ""
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr ""
+
+#: [apps]recommend
+#, fuzzy
+msgid "We also recommend"
+msgstr "Einen Kommentar hinzufügen"
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr ""
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
+msgstr ""
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -2848,3 +2910,9 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "User folder size limit (in bytes)"
+#~ msgstr "Speicherlimit des Nutzerverzeichnis (in Bytes)"
+
+#~ msgid "Change the default credentials admin/password"
+#~ msgstr "Vorgegebene Systemverwaltungsberechtigung/-passwort ändern"

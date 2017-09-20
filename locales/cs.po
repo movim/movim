@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -302,10 +302,6 @@ msgstr ""
 msgid "Server Timezone"
 msgstr "Časová zóna serveru"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "Maximální velikost složky uživatele (v bytech)"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "Konfigurace WebSocket"
@@ -329,10 +325,6 @@ msgstr "Veřejné WebSockety"
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Administrační přístupové údaje"
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
-msgstr "Změnit standardní přístupové údaje admin/heslo"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -657,6 +649,10 @@ msgstr "Navštivte profil %s"
 msgid "Clear the history"
 msgstr ""
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Členi"
@@ -734,17 +730,19 @@ msgstr ""
 msgid "This server doesn't exists"
 msgstr "Tento server neexistuje"
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
+#: [communitiesserver]created
+#, fuzzy
+msgid "Community created successfully"
 msgstr "Skupina úspěšně vytvořena"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
+msgid "There is no Communities yet on this server."
 msgstr ""
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
-msgstr ""
+#: [communitiesserver]add
+#, fuzzy
+msgid "Create a new community on %s"
+msgstr "Vytvořit nový účet"
 
 #: [communitiesserver]name
 #, fuzzy
@@ -755,12 +753,14 @@ msgstr "Prázdné jméno"
 msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony - Klub fanoušků"
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
+#: [communitiesserver]name_error
+#, fuzzy
+msgid "Please provide a valid community name (4 characters minimum)"
 msgstr "Poskytněte prosím validní název skupiny (minimálně 4 znaky)"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
+#: [communitiesserver]no_creation
+#, fuzzy
+msgid "You cannot create a new community on this server"
 msgstr "Na tomto serveru nemůžete vytvořit novou skupinu"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
@@ -768,20 +768,24 @@ msgstr "Na tomto serveru nemůžete vytvořit novou skupinu"
 msgid "Subscriptions"
 msgstr "Odběry"
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
+#: [communityaffiliation]deleted
+#, fuzzy
+msgid "Community deleted successfully"
 msgstr "Skupina úspěšně odstraněna"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
+#: [communityaffiliation]delete_title
+#, fuzzy
+msgid "Delete the community"
 msgstr "Odstranit tuto skupinu"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
+#: [communityaffiliation]delete_text
+#, fuzzy
+msgid "You are going to delete the following community. Please confirm your action."
 msgstr "Odstraníte následující skupinu, prosím potvrďte akci"
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#: [communityaffiliation]delete_clean_text
+#, fuzzy
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Vypadá to, že tako skupina již neexistuje. Přejete si odstranit ji z vašich odběrů?"
 
 #: [communityaffiliation]owner
@@ -1100,6 +1104,18 @@ msgstr "Této skupině se stalo něco špatného"
 msgid "Group configuration saved"
 msgstr "Konfigurace skupiny uložena"
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "Odstranit tuto skupinu"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Odstraníte následující skupinu, prosím potvrďte akci"
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Vypadá to, že tako skupina již neexistuje. Přejete si odstranit ji z vašich odběrů?"
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s skupin na tomto serveru"
@@ -1128,9 +1144,29 @@ msgstr "Seznam odebíraných skupin najdete v záložce Moje odběry a nové př
 msgid "Contact post"
 msgstr "Odeslat kontakt"
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr ""
+
 #: [groups]name
 msgid "Group name"
 msgstr "Název skupiny"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "Skupina úspěšně vytvořena"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Skupina úspěšně odstraněna"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Poskytněte prosím validní název skupiny (minimálně 4 znaky)"
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "Na tomto serveru nemůžete vytvořit novou skupinu"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1163,6 +1199,31 @@ msgstr "Červená, kdokoliv na XMPP síti může vidět vaše informace"
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "Černá, celý Internet vidí vaše informace"
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr ""
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr ""
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr ""
+
+#: [apps]recommend
+#, fuzzy
+msgid "We also recommend"
+msgstr "Přidat komentář"
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr ""
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
+msgstr ""
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -2848,6 +2909,12 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "User folder size limit (in bytes)"
+#~ msgstr "Maximální velikost složky uživatele (v bytech)"
+
+#~ msgid "Change the default credentials admin/password"
+#~ msgstr "Změnit standardní přístupové údaje admin/heslo"
 
 #~ msgid "Discuss with your contacts"
 #~ msgstr "Diskutujte s vašemi kontakty"

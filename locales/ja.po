@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: RACER\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -304,10 +304,6 @@ msgstr "ログ"
 msgid "Server Timezone"
 msgstr "サーバータイムゾーン"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "ユーザーフォルダのサイズ上限（バイト）"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "ウェブソケット設定"
@@ -331,10 +327,6 @@ msgstr ""
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "管理者認証"
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
-msgstr "デフォルトの管理者・パスワードを変更する"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -657,6 +649,10 @@ msgstr ""
 msgid "Clear the history"
 msgstr ""
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "メンバー"
@@ -734,17 +730,19 @@ msgstr ""
 msgid "This server doesn't exists"
 msgstr ""
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
+#: [communitiesserver]created
+#, fuzzy
+msgid "Community created successfully"
 msgstr "グループが正常に作成されました"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
+msgid "There is no Communities yet on this server."
 msgstr ""
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
-msgstr ""
+#: [communitiesserver]add
+#, fuzzy
+msgid "Create a new community on %s"
+msgstr "新しいアカウントを作成する"
 
 #: [communitiesserver]name
 #, fuzzy
@@ -755,12 +753,13 @@ msgstr "名前が空です"
 msgid "My Little Pony - Fan Club"
 msgstr "ママチャリ部活"
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr ""
+#: [communitiesserver]name_error
+#, fuzzy
+msgid "Please provide a valid community name (4 characters minimum)"
+msgstr "適正なパスワードを記入してください（最低６文字）"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
+#: [communitiesserver]no_creation
+msgid "You cannot create a new community on this server"
 msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
@@ -768,20 +767,23 @@ msgstr ""
 msgid "Subscriptions"
 msgstr ""
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
+#: [communityaffiliation]deleted
+#, fuzzy
+msgid "Community deleted successfully"
 msgstr "グループが正常に削除されました"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
+#: [communityaffiliation]delete_title
+#, fuzzy
+msgid "Delete the community"
 msgstr "グループを削除する"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
+#: [communityaffiliation]delete_text
+#, fuzzy
+msgid "You are going to delete the following community. Please confirm your action."
 msgstr "このグループを削除しますが、よろしいですか"
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#: [communityaffiliation]delete_clean_text
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
 #: [communityaffiliation]owner
@@ -1100,6 +1102,18 @@ msgstr ""
 msgid "Group configuration saved"
 msgstr "グループの設定が保存されました"
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "グループを削除する"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "このグループを削除しますが、よろしいですか"
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr ""
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr ""
@@ -1128,9 +1142,29 @@ msgstr ""
 msgid "Contact post"
 msgstr "コンタクトの投稿"
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr ""
+
 #: [groups]name
 msgid "Group name"
 msgstr "グループ名"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "グループが正常に作成されました"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "グループが正常に削除されました"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr ""
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr ""
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1163,6 +1197,31 @@ msgstr "XMPPを使っている人全員が見られる"
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "黒、誰でも見られる"
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr ""
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr ""
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr ""
+
+#: [apps]recommend
+#, fuzzy
+msgid "We also recommend"
+msgstr "コメントを投稿する"
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr ""
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
+msgstr ""
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -2846,6 +2905,12 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
+
+#~ msgid "User folder size limit (in bytes)"
+#~ msgstr "ユーザーフォルダのサイズ上限（バイト）"
+
+#~ msgid "Change the default credentials admin/password"
+#~ msgstr "デフォルトの管理者・パスワードを変更する"
 
 #~ msgid "Delete my account"
 #~ msgstr "アカウントを削除する"

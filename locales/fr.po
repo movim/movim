@@ -106,8 +106,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
-"PO-Revision-Date: 2017-07-21 16:08+0000\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
+"PO-Revision-Date: 2017-09-20 08:02+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -115,7 +115,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.0.0\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -306,10 +306,6 @@ msgstr "Niveau de détails des journaux"
 msgid "Server Timezone"
 msgstr "Fuseau horaire du serveur"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "Taille limite du dossier des utilisateurs (en octets)"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "Configuration du WebSocket"
@@ -333,10 +329,6 @@ msgstr "WebSockets publics"
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Identification de l’administrateur"
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
-msgstr "Modifiez les paramètres d’identification admin/mot de passe"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -659,6 +651,10 @@ msgstr "Voir le profil"
 msgid "Clear the history"
 msgstr "Supprimer l'historique"
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr "Éditer le dernier message"
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Membres"
@@ -736,17 +732,17 @@ msgstr "Serveurs de Communautés"
 msgid "This server doesn't exists"
 msgstr "Ce serveur n'existe pas"
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
-msgstr "Groupe créé avec succès"
+#: [communitiesserver]created
+msgid "Community created successfully"
+msgstr "Communauté créée avec succès"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
-msgstr "Il n'y a pas encore de Groupes sur ce serveur."
+msgid "There is no Communities yet on this server."
+msgstr "Il n'y a pas de Communautés pour le moment sur ce serveur"
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
-msgstr "Créer un nouveau Groupe sur %s"
+#: [communitiesserver]add
+msgid "Create a new community on %s"
+msgstr "Créer une nouvelle communauté sur %s "
 
 #: [communitiesserver]name
 msgid "Community name"
@@ -756,34 +752,34 @@ msgstr "Nom de la Communauté"
 msgid "My Little Pony - Fan Club"
 msgstr "Mon Petit Poney – Fan-club"
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr "Merci d'entrer un nom de groupe valide (4 caractères minimum)"
+#: [communitiesserver]name_error
+msgid "Please provide a valid community name (4 characters minimum)"
+msgstr "Veuillez renseigner un nom valide pour votre communauté (4 caractères minimum)"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
-msgstr "Aucun formulaire de création de compte n’a été trouvé sur le serveur"
+#: [communitiesserver]no_creation
+msgid "You cannot create a new community on this server"
+msgstr "Vous ne pouvez pas créer de communauté sur ce serveur"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
 msgid "Subscriptions"
 msgstr "Abonnements"
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
-msgstr "Groupe supprimé avec succès"
+#: [communityaffiliation]deleted
+msgid "Community deleted successfully"
+msgstr "Communauté supprimée avec succès"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
-msgstr "Supprimer ce groupe"
+#: [communityaffiliation]delete_title
+msgid "Delete the community"
+msgstr "Supprimer la communauté"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
-msgstr "Vous allez supprimer ce groupe. Veuillez confirmer votre action."
+#: [communityaffiliation]delete_text
+msgid "You are going to delete the following community. Please confirm your action."
+msgstr "Vous allez supprimer la communauté suivante. Êtes-vous sûr ?"
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Il semblerait que que groupe n'existe plus. Souhaitez-vous le supprimer de vos favoris?"
+#: [communityaffiliation]delete_clean_text
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Il semblerait que cette communauté n'existe plus. Souhaitez-vous la supprimer de vos souscriptions."
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -1101,6 +1097,18 @@ msgstr "Ce groupe ne semble pas disponible pour le moment"
 msgid "Group configuration saved"
 msgstr "Configuration du groupe sauvegardée"
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "Supprimer ce groupe"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Vous allez supprimer ce groupe. Veuillez confirmer votre action."
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Il semblerait que que groupe n'existe plus. Souhaitez-vous le supprimer de vos favoris?"
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s groupes sur ce serveur"
@@ -1129,9 +1137,29 @@ msgstr "Vous trouverez la liste des Groupes auxquels vous avez souscrit dans Mes
 msgid "Contact post"
 msgstr "Billet d’un contact"
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr "Créer un nouveau Groupe sur %s"
+
 #: [groups]name
 msgid "Group name"
 msgstr "Nom du Groupe"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "Groupe créé avec succès"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Groupe supprimé avec succès"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Merci d'entrer un nom de groupe valide (4 caractères minimum)"
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "Aucun formulaire de création de compte n’a été trouvé sur le serveur"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1164,6 +1192,30 @@ msgstr "Rouge, les données sont visibles par tout le monde au sein du réseau X
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "Noir, les données sont visibles par tout le monde sur internet"
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr "Avez-vous déjà essayé Movim sur d'autres plateformes ?"
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr "Applications pour votre téléphone"
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr "Essayer notre application Android officielle"
+
+#: [apps]recommend
+msgid "We also recommend"
+msgstr "Nous recommandons également"
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr "Applications pour votre ordinateur"
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
+msgstr "Nos applications officielles sont disponibles sur le site officiel"
 
 #: [wiki]question
 msgid "Looking for some documentation ?"

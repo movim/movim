@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -305,10 +305,6 @@ msgstr ""
 msgid "Server Timezone"
 msgstr "Szerver Időzóna"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "Felhasználói mappa méret korlátja (bájtokban)"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "WebSocket beállítása"
@@ -331,10 +327,6 @@ msgstr "Nyilvános WebSocketek"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
 msgstr ""
 
 #: [credentials]re_password
@@ -660,6 +652,10 @@ msgstr "%s profilja"
 msgid "Clear the history"
 msgstr ""
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Tagok"
@@ -737,16 +733,18 @@ msgstr ""
 msgid "This server doesn't exists"
 msgstr "Ez a szerver nem létezik"
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
+#: [communitiesserver]created
+#, fuzzy
+msgid "Community created successfully"
 msgstr "Csoport sikeresen létrehozva"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
+msgid "There is no Communities yet on this server."
 msgstr ""
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
+#: [communitiesserver]add
+#, fuzzy
+msgid "Create a new community on %s"
 msgstr "Készítsd egy új csoportot itt: %s"
 
 #: [communitiesserver]name
@@ -758,12 +756,14 @@ msgstr "Név üres"
 msgid "My Little Pony - Fan Club"
 msgstr "Én Kicsi Pónim - Rajongói Klub"
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
+#: [communitiesserver]name_error
+#, fuzzy
+msgid "Please provide a valid community name (4 characters minimum)"
 msgstr "Adj meg egy érvényes csoportnevet (legalább 4 karakter)"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
+#: [communitiesserver]no_creation
+#, fuzzy
+msgid "You cannot create a new community on this server"
 msgstr "Nem tudsz új csoportot létrehozni ezen a szerveren"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
@@ -771,20 +771,24 @@ msgstr "Nem tudsz új csoportot létrehozni ezen a szerveren"
 msgid "Subscriptions"
 msgstr "Feliratkozások"
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
+#: [communityaffiliation]deleted
+#, fuzzy
+msgid "Community deleted successfully"
 msgstr "Csoport sikeresen törölve"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
+#: [communityaffiliation]delete_title
+#, fuzzy
+msgid "Delete the community"
 msgstr "Csoport törlése"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
+#: [communityaffiliation]delete_text
+#, fuzzy
+msgid "You are going to delete the following community. Please confirm your action."
 msgstr "Törölni fogod a következő csoportot. Kérlek erősítsd meg szándékod!"
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#: [communityaffiliation]delete_clean_text
+#, fuzzy
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Úgy tűnik ez a csoport már nem létezik. El akarod távolítani a feliratkozásaid közül?"
 
 #: [communityaffiliation]owner
@@ -1103,6 +1107,18 @@ msgstr "Valami rossz történt a csoporttal"
 msgid "Group configuration saved"
 msgstr "Csoportbeállítások elmentve."
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "Csoport törlése"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Törölni fogod a következő csoportot. Kérlek erősítsd meg szándékod!"
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Úgy tűnik ez a csoport már nem létezik. El akarod távolítani a feliratkozásaid közül?"
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s csoportok a szerveren."
@@ -1131,9 +1147,29 @@ msgstr "A Feliratkozásaim menüben találhatod a feliratkozott csoportjaid list
 msgid "Contact post"
 msgstr ""
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr "Készítsd egy új csoportot itt: %s"
+
 #: [groups]name
 msgid "Group name"
 msgstr "Csoport neve"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "Csoport sikeresen létrehozva"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Csoport sikeresen törölve"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Adj meg egy érvényes csoportnevet (legalább 4 karakter)"
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "Nem tudsz új csoportot létrehozni ezen a szerveren"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1166,6 +1202,31 @@ msgstr "Piros - az XMPP hálózaton mindenki láthatja"
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "Fekete - bárki láthatja az Interneten"
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr ""
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr ""
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr ""
+
+#: [apps]recommend
+#, fuzzy
+msgid "We also recommend"
+msgstr "Hozzászólok"
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr ""
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
+msgstr ""
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -2852,6 +2913,9 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "User folder size limit (in bytes)"
+#~ msgstr "Felhasználói mappa méret korlátja (bájtokban)"
 
 #~ msgid "Discuss with your contacts"
 #~ msgstr "Vitasd meg ismerőseiddel"

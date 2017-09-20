@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
 "PO-Revision-Date: 2017-07-21 16:04+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -305,10 +305,6 @@ msgstr "日志输出"
 msgid "Server Timezone"
 msgstr "服务器时区"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "用户文件夹大小限制(以字节为单位)"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "WebSocket 配置"
@@ -332,10 +328,6 @@ msgstr "公共 WebSocket"
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "管理证书"
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
-msgstr "更改默认密码"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -658,6 +650,10 @@ msgstr ""
 msgid "Clear the history"
 msgstr ""
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "成员"
@@ -735,16 +731,19 @@ msgstr ""
 msgid "This server doesn't exists"
 msgstr "此服务器不存在"
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
+#: [communitiesserver]created
+#, fuzzy
+msgid "Community created successfully"
 msgstr "成功建立群组"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
+#, fuzzy
+msgid "There is no Communities yet on this server."
 msgstr "该服务器上还没有任何群组。"
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
+#: [communitiesserver]add
+#, fuzzy
+msgid "Create a new community on %s"
 msgstr "在 %s 上创建新群组"
 
 #: [communitiesserver]name
@@ -755,12 +754,14 @@ msgstr ""
 msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony - Fan Club"
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
+#: [communitiesserver]name_error
+#, fuzzy
+msgid "Please provide a valid community name (4 characters minimum)"
 msgstr "请输入一个有效的群组名称(最少4个字符)"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
+#: [communitiesserver]no_creation
+#, fuzzy
+msgid "You cannot create a new community on this server"
 msgstr "您不能在此服务器上建立新群组"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
@@ -768,20 +769,24 @@ msgstr "您不能在此服务器上建立新群组"
 msgid "Subscriptions"
 msgstr "订阅"
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
+#: [communityaffiliation]deleted
+#, fuzzy
+msgid "Community deleted successfully"
 msgstr "成功删除群组"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
+#: [communityaffiliation]delete_title
+#, fuzzy
+msgid "Delete the community"
 msgstr "删除群组"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
+#: [communityaffiliation]delete_text
+#, fuzzy
+msgid "You are going to delete the following community. Please confirm your action."
 msgstr "您将移除一下的群组, 请确认"
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#: [communityaffiliation]delete_clean_text
+#, fuzzy
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "看起来这个组不再存在了。你想将它从你的订阅中删除么？"
 
 #: [communityaffiliation]owner
@@ -1100,6 +1105,18 @@ msgstr "该群组出错了"
 msgid "Group configuration saved"
 msgstr "保存分组结构"
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "删除群组"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "您将移除一下的群组, 请确认"
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "看起来这个组不再存在了。你想将它从你的订阅中删除么？"
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "该服务器上有%s个群组"
@@ -1128,9 +1145,29 @@ msgstr "你订阅的所有群组在“我的订阅”页面中，它们中的新
 msgid "Contact post"
 msgstr "联系人帖子"
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr "在 %s 上创建新群组"
+
 #: [groups]name
 msgid "Group name"
 msgstr "群组名称"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "成功建立群组"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "成功删除群组"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "请输入一个有效的群组名称(最少4个字符)"
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "您不能在此服务器上建立新群组"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1163,6 +1200,31 @@ msgstr "红色，XMPP上的用户能看见您的信息"
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "黑色，整个互联网可以看见您的信息"
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr ""
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr ""
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr ""
+
+#: [apps]recommend
+#, fuzzy
+msgid "We also recommend"
+msgstr "添加评论"
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr ""
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
+msgstr ""
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -2839,3 +2901,9 @@ msgstr "API无法连接, 请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "User folder size limit (in bytes)"
+#~ msgstr "用户文件夹大小限制(以字节为单位)"
+
+#~ msgid "Change the default credentials admin/password"
+#~ msgstr "更改默认密码"

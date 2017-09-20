@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
@@ -303,10 +303,6 @@ msgstr "גיבוב רשומת יומן"
 msgid "Server Timezone"
 msgstr "אזור זמן שרת"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "מגבלת גודל תיקיית משתמש (בתים)"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "תצורת WebSocket"
@@ -330,10 +326,6 @@ msgstr "WebSocket פומבי"
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "נתוני התחברות מנהל"
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
-msgstr "שנה נתוני התחברות מנהל/סיסמה"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -656,6 +648,10 @@ msgstr ""
 msgid "Clear the history"
 msgstr ""
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "חברים"
@@ -733,17 +729,19 @@ msgstr ""
 msgid "This server doesn't exists"
 msgstr "שרת זה לא קיים"
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
+#: [communitiesserver]created
+#, fuzzy
+msgid "Community created successfully"
 msgstr "קבוצה נוצרה בהצלחה"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
+msgid "There is no Communities yet on this server."
 msgstr ""
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
-msgstr ""
+#: [communitiesserver]add
+#, fuzzy
+msgid "Create a new community on %s"
+msgstr "יצירת חשבון חדש"
 
 #: [communitiesserver]name
 #, fuzzy
@@ -754,12 +752,14 @@ msgstr "שם ריק"
 msgid "My Little Pony - Fan Club"
 msgstr "אין כמו אבא שבעולם - מועדון מעריצים"
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
+#: [communitiesserver]name_error
+#, fuzzy
+msgid "Please provide a valid community name (4 characters minimum)"
 msgstr "אנא ספק שם קבוצה קביל (4 תווים לפחות)"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
+#: [communitiesserver]no_creation
+#, fuzzy
+msgid "You cannot create a new community on this server"
 msgstr "אין באפשרותך ליצור קבוצה חדשה על שרת זה"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
@@ -767,20 +767,22 @@ msgstr "אין באפשרותך ליצור קבוצה חדשה על שרת זה"
 msgid "Subscriptions"
 msgstr "הרשמות"
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
+#: [communityaffiliation]deleted
+#, fuzzy
+msgid "Community deleted successfully"
 msgstr "קבוצה נמחקה בהצלחה"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
+#: [communityaffiliation]delete_title
+#, fuzzy
+msgid "Delete the community"
 msgstr "מחק את הקבוצה"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
+#: [communityaffiliation]delete_text
+msgid "You are going to delete the following community. Please confirm your action."
 msgstr ""
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#: [communityaffiliation]delete_clean_text
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
 #: [communityaffiliation]owner
@@ -1100,6 +1102,18 @@ msgstr "משהו רע קרה לקבוצה זו"
 msgid "Group configuration saved"
 msgstr "תצורת קבוצה נשמרה"
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "מחק את הקבוצה"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr ""
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr ""
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s קבוצות על שרת זה"
@@ -1128,9 +1142,29 @@ msgstr ""
 msgid "Contact post"
 msgstr "פרסום איש קשר"
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr ""
+
 #: [groups]name
 msgid "Group name"
 msgstr "שם קבוצה"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "קבוצה נוצרה בהצלחה"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "קבוצה נמחקה בהצלחה"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "אנא ספק שם קבוצה קביל (4 תווים לפחות)"
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "אין באפשרותך ליצור קבוצה חדשה על שרת זה"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1163,6 +1197,31 @@ msgstr "אדום, כל אחד ברשת התקשורת XMPP יכול לראות �
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "שחור, כל המרשתת יכולה לראות את המידע שלך"
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr ""
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr ""
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr ""
+
+#: [apps]recommend
+#, fuzzy
+msgid "We also recommend"
+msgstr "הוסף תגובה"
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr ""
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
+msgstr ""
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -2849,6 +2908,12 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
+
+#~ msgid "User folder size limit (in bytes)"
+#~ msgstr "מגבלת גודל תיקיית משתמש (בתים)"
+
+#~ msgid "Change the default credentials admin/password"
+#~ msgstr "שנה נתוני התחברות מנהל/סיסמה"
 
 #~ msgid "Discuss with your contacts"
 #~ msgstr "שוחח עם האנשי קשר שלך"

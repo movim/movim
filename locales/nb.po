@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
 "PO-Revision-Date: 2017-07-21 16:04+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -302,10 +302,6 @@ msgstr "Detaljrikdom i loggen"
 msgid "Server Timezone"
 msgstr "Tjenertidssone"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "Størrelsesgrense på brukermappe (i bytes)"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "WebSocket-konfigurasjon"
@@ -329,10 +325,6 @@ msgstr "Offentlig WebSockets"
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Administrasjonsakkreditiv"
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
-msgstr "Endre forhåndslagrede akkreditiv (admin/password)"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -655,6 +647,10 @@ msgstr ""
 msgid "Clear the history"
 msgstr ""
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Medlemer"
@@ -732,16 +728,19 @@ msgstr "Samfunns-tjenere"
 msgid "This server doesn't exists"
 msgstr "Denne serveren finnes ikke"
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
+#: [communitiesserver]created
+#, fuzzy
+msgid "Community created successfully"
 msgstr "Gruppen ble opprettet"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
+#, fuzzy
+msgid "There is no Communities yet on this server."
 msgstr "Det finnes ingen grupper på denne tjeneren enda."
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
+#: [communitiesserver]add
+#, fuzzy
+msgid "Create a new community on %s"
 msgstr "Opprett ny gruppe på %s"
 
 #: [communitiesserver]name
@@ -752,12 +751,14 @@ msgstr ""
 msgid "My Little Pony - Fan Club"
 msgstr "Fanklubb for SKAM-serien"
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
+#: [communitiesserver]name_error
+#, fuzzy
+msgid "Please provide a valid community name (4 characters minimum)"
 msgstr "Oppgi et gyldig gruppenavn (minst 4 tegn)"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
+#: [communitiesserver]no_creation
+#, fuzzy
+msgid "You cannot create a new community on this server"
 msgstr "Du kan ikke opprette en ny gruppe på denne tjeneren"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
@@ -765,20 +766,24 @@ msgstr "Du kan ikke opprette en ny gruppe på denne tjeneren"
 msgid "Subscriptions"
 msgstr "Abonementer "
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
+#: [communityaffiliation]deleted
+#, fuzzy
+msgid "Community deleted successfully"
 msgstr "Gruppen ble slettet"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
+#: [communityaffiliation]delete_title
+#, fuzzy
+msgid "Delete the community"
 msgstr "Slett gruppen"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
+#: [communityaffiliation]delete_text
+#, fuzzy
+msgid "You are going to delete the following community. Please confirm your action."
 msgstr "Vennligst bekreft at du ønsker å slette denne gruppen."
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#: [communityaffiliation]delete_clean_text
+#, fuzzy
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Det ser ut til at denne gruppen ikke eksisterer lenger. Ønsker du å avslutte abonnementet?"
 
 #: [communityaffiliation]owner
@@ -1097,6 +1102,18 @@ msgstr "Noe gikk feil i denne gruppen"
 msgid "Group configuration saved"
 msgstr "Konfigurasjonen for gruppen ble lagret"
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "Slett gruppen"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Vennligst bekreft at du ønsker å slette denne gruppen."
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Det ser ut til at denne gruppen ikke eksisterer lenger. Ønsker du å avslutte abonnementet?"
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s grupper på denne tjeneren"
@@ -1125,9 +1142,29 @@ msgstr "Du finner en liste over alle gruppene du abonnerer på under \"Mine abon
 msgid "Contact post"
 msgstr "Kontaktpost"
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr "Opprett ny gruppe på %s"
+
 #: [groups]name
 msgid "Group name"
 msgstr "Gruppenavn"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "Gruppen ble opprettet"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Gruppen ble slettet"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Oppgi et gyldig gruppenavn (minst 4 tegn)"
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "Du kan ikke opprette en ny gruppe på denne tjeneren"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1160,6 +1197,31 @@ msgstr "Rød: alle i XMPP-nettverket kan se informasjonen"
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "Svart: alle på internett kan se informasjonen"
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr ""
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr ""
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr ""
+
+#: [apps]recommend
+#, fuzzy
+msgid "We also recommend"
+msgstr "Legg til kommentar"
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr ""
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
+msgstr ""
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -2836,3 +2898,9 @@ msgstr "APIet kan ikke nåes, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "User folder size limit (in bytes)"
+#~ msgstr "Størrelsesgrense på brukermappe (i bytes)"
+
+#~ msgid "Change the default credentials admin/password"
+#~ msgstr "Endre forhåndslagrede akkreditiv (admin/password)"

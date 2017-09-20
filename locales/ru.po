@@ -108,7 +108,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-21 18:03+0200\n"
+"POT-Creation-Date: 2017-09-20 09:54+0200\n"
 "PO-Revision-Date: 2017-07-21 16:04+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -308,10 +308,6 @@ msgstr "Детализация лога"
 msgid "Server Timezone"
 msgstr "Часовой пояс сервера"
 
-#: [general]limit
-msgid "User folder size limit (in bytes)"
-msgstr "Предельный размер папки пользователя (в байтах)"
-
 #: [websocket]title
 msgid "WebSocket Configuration"
 msgstr "Конфигурация WebSocket"
@@ -335,10 +331,6 @@ msgstr "Публичные WebSockets"
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Управление учетными данными"
-
-#: [credentials]info
-msgid "Change the default credentials admin/password"
-msgstr "Изменение учетных данных по умолчанию admin/password"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -661,6 +653,10 @@ msgstr "Смотреть профиль"
 msgid "Clear the history"
 msgstr "Очистить историю"
 
+#: [chat]edit_previous
+msgid "Edit last message"
+msgstr ""
+
 #: [chatroom]members
 msgid "Members"
 msgstr "Участники"
@@ -738,16 +734,19 @@ msgstr "Сервера сообществ"
 msgid "This server doesn't exists"
 msgstr "Такой сервер не существует"
 
-#: [communitiesserver]created [groups]created
-msgid "Group created successfully"
+#: [communitiesserver]created
+#, fuzzy
+msgid "Community created successfully"
 msgstr "Группа успешно создана"
 
 #: [communitiesserver]empty_server
-msgid "There is no Groups yet on this server."
+#, fuzzy
+msgid "There is no Communities yet on this server."
 msgstr "На этом сервере пока нет групп"
 
-#: [communitiesserver]add [groups]add
-msgid "Create a new Group on %s"
+#: [communitiesserver]add
+#, fuzzy
+msgid "Create a new community on %s"
 msgstr "Создать новую Группу на %s"
 
 #: [communitiesserver]name
@@ -758,12 +757,14 @@ msgstr "Название группы"
 msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony -Фан Клуб"
 
-#: [communitiesserver]name_error [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
+#: [communitiesserver]name_error
+#, fuzzy
+msgid "Please provide a valid community name (4 characters minimum)"
 msgstr "Введите допустимое название группы (минимум 4 символа)"
 
-#: [communitiesserver]no_creation [groups]no_creation
-msgid "You cannot create a new Group on this server"
+#: [communitiesserver]no_creation
+#, fuzzy
+msgid "You cannot create a new community on this server"
 msgstr "Вы не можете создать новую Группу на этом сервере"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
@@ -771,20 +772,24 @@ msgstr "Вы не можете создать новую Группу на эт�
 msgid "Subscriptions"
 msgstr "Подписки"
 
-#: [communityaffiliation]deleted [groups]deleted
-msgid "Group deleted successfully"
+#: [communityaffiliation]deleted
+#, fuzzy
+msgid "Community deleted successfully"
 msgstr "Группа удалена успешно"
 
-#: [communityaffiliation]delete_title [group]delete_title
-msgid "Delete the group"
+#: [communityaffiliation]delete_title
+#, fuzzy
+msgid "Delete the community"
 msgstr "Удалить группу"
 
-#: [communityaffiliation]delete_text [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
+#: [communityaffiliation]delete_text
+#, fuzzy
+msgid "You are going to delete the following community. Please confirm your action."
 msgstr "Вы собираетесь  удалить следующую группу. Подтвердите ваше действие."
 
-#: [communityaffiliation]delete_clean_text [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#: [communityaffiliation]delete_clean_text
+#, fuzzy
+msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Похоже эта группа больше не существует. Удалить ее из списка ваших подписок?"
 
 #: [communityaffiliation]owner
@@ -1103,6 +1108,18 @@ msgstr "Что то случилось с этой группой"
 msgid "Group configuration saved"
 msgstr "Настройки группы сохранены"
 
+#: [group]delete_title
+msgid "Delete the group"
+msgstr "Удалить группу"
+
+#: [group]delete_text
+msgid "You are going to delete the following group. Please confirm your action."
+msgstr "Вы собираетесь  удалить следующую группу. Подтвердите ваше действие."
+
+#: [group]delete_clean_text
+msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgstr "Похоже эта группа больше не существует. Удалить ее из списка ваших подписок?"
+
 #: [group]counter
 msgid "%s groups on this server"
 msgstr "%s групп на этом сервере"
@@ -1131,9 +1148,29 @@ msgstr "Вы можете найти список групп на которые
 msgid "Contact post"
 msgstr "Для связи"
 
+#: [groups]add
+msgid "Create a new Group on %s"
+msgstr "Создать новую Группу на %s"
+
 #: [groups]name
 msgid "Group name"
 msgstr "Название группы"
+
+#: [groups]created
+msgid "Group created successfully"
+msgstr "Группа успешно создана"
+
+#: [groups]deleted
+msgid "Group deleted successfully"
+msgstr "Группа удалена успешно"
+
+#: [groups]name_error
+msgid "Please provide a valid group name (4 characters minimum)"
+msgstr "Введите допустимое название группы (минимум 4 символа)"
+
+#: [groups]no_creation
+msgid "You cannot create a new Group on this server"
+msgstr "Вы не можете создать новую Группу на этом сервере"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1166,6 +1203,31 @@ msgstr "Красный: любой в сети ХМРР может видеть 
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
 msgstr "Черный: весь Интернет может видеть вашу информацию"
+
+#: [apps]question
+msgid "Did you already tried Movim on the other platforms?"
+msgstr ""
+
+#: [apps]phone
+msgid "Apps for your phone"
+msgstr ""
+
+#: [apps]android
+msgid "Try out our official Android app"
+msgstr ""
+
+#: [apps]recommend
+#, fuzzy
+msgid "We also recommend"
+msgstr "Добавить комментарий"
+
+#: [apps]computer
+msgid "Apps for your computer"
+msgstr ""
+
+#: [apps]computer_text
+msgid "Our official apps are available on our website"
+msgstr ""
 
 #: [wiki]question
 msgid "Looking for some documentation ?"
@@ -2842,3 +2904,9 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "User folder size limit (in bytes)"
+#~ msgstr "Предельный размер папки пользователя (в байтах)"
+
+#~ msgid "Change the default credentials admin/password"
+#~ msgstr "Изменение учетных данных по умолчанию admin/password"
