@@ -5,7 +5,7 @@ class PictureController extends Base
 {
     function load()
     {
-        $this->session_only = false;
+        $this->session_only = true;
         $this->raw = true;
     }
 
