@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2b5f94e473e115fd0d0d080c2834abd",
+    "content-hash": "ba9eddba8c8305590294374e90b31c62",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -575,16 +575,16 @@
         },
         {
             "name": "heyupdate/emoji",
-            "version": "dev-master",
+            "version": "dev-twemoji2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heyupdate/emoji.git",
-                "reference": "78f6f7e20c4685107e57fb11f1356a7d8e9bd661"
+                "reference": "99dda1bed08472046cac1498221f08684ad83d55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heyupdate/emoji/zipball/78f6f7e20c4685107e57fb11f1356a7d8e9bd661",
-                "reference": "78f6f7e20c4685107e57fb11f1356a7d8e9bd661",
+                "url": "https://api.github.com/repos/heyupdate/emoji/zipball/99dda1bed08472046cac1498221f08684ad83d55",
+                "reference": "99dda1bed08472046cac1498221f08684ad83d55",
                 "shasum": ""
             },
             "require": {
@@ -612,7 +612,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-08-27 14:02:32"
+            "time": "2016-11-15 20:35:47"
         },
         {
             "name": "michelf/php-markdown",

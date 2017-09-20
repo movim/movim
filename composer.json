@@ -4,7 +4,6 @@
             "Movim": "src"
         }
     },
-
     "require": {
         "php": ">=5.5.0",
         "ext-curl": "*",
@@ -20,7 +19,7 @@
         "movim/moxl": "dev-master#f96d1c7664a0cb447440397edb10353da859a83a",
 
         "embed/embed": "dev-master",
-        "heyupdate/emoji": "dev-master",
+        "heyupdate/emoji": "dev-twemoji2#99dda1bed08472046cac1498221f08684ad83d55",
 
         "cboden/ratchet": "0.4.x-dev",
         "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
