@@ -209,6 +209,7 @@ main > section > div:first-child:nth-last-child(2) ~ div {
     main > section > aside > * {
         max-width: 45rem;
         margin-left: 1rem;
+        margin-right: auto;
     }
 
     main > section > aside + div {
