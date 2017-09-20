@@ -34,6 +34,9 @@ v0.12 (trunk)
  * Enable history for MUC
  * Pictures can be previewed before upload
  * Do not send the message when carriage return is pressed on mobile
+ * More colors!
+ * Protect pictures URLs with a HTTP HEAD check
+ * Add Miho sticker pack
 
 v0.11
 ---------------------------
