@@ -105,13 +105,6 @@ var Chat = {
                 Chat_ajaxSendMessage(jid, text, muc);
             }
         }
-
-        // Emptify autocomplete data on message sending.
-        if (Chat.previouslyAutocompleted !== null) {
-            Chat.previouslyAutocompleted = null;
-            Chat.previouslyAutocompletedSeqID = null;
-            Chat.toAutocomplete = null;
-        }
     },
     sendedMessage: function()
     {
