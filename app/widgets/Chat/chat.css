@@ -103,7 +103,7 @@
     clear: both;
 }
 
-#chat_widget .contained.muc ul li span.primary:hover {
+#chat_widget .contained.muc ul li span.primary:not(:empty):hover {
     cursor: pointer;
 }
 
