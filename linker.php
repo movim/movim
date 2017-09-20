@@ -86,12 +86,6 @@ function writeXMPP($xml)
     }
 }
 
-function tick()
-{
-    global $loop;
-    $loop->tick();
-}
-
 $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser, &$timestamp)
 {
     if(substr($data, -1) == "") {
@@ -160,7 +154,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                                     "\n");
                         }
 
-                        $connector->create($ip, $port)->then($xmpp_behaviour);
+                        $connector->connect($ip.':'.$port)->then($xmpp_behaviour);
                         break;
                 }
 
@@ -254,26 +248,19 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             while($parser->nodes && !$parser->nodes->isEmpty()) {
                 $node = $parser->nodes->dequeue();
                 \Moxl\Xec\Handler::handle($node);
-
-                $loop->tick();
-
                 unset($node);
             }
 
             writeOut();
             //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." end data : ".\sizeToCleanSize(memory_get_usage())."\n");
         }
-
-        $loop->tick();
     });
 
-    $conn->on('error', function($msg) use ($conn, $loop) {
-        #fwrite(STDERR, colorize(serialize($msg), 'red')." : ".colorize('error', 'green')."\n");
+    $conn->on('error', function() use ($conn, $loop) {
         $loop->stop();
     });
 
-    $conn->on('close', function($msg) use ($conn, $loop) {
-        #fwrite(STDERR, colorize(serialize($msg), 'red')." : ".colorize('closed', 'green')."\n");
+    $conn->on('close', function() use ($conn, $loop) {
         $loop->stop();
     });
 
