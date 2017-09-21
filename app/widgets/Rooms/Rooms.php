@@ -249,8 +249,12 @@ class Rooms extends \Movim\Widget\Base
         $jid = explodeJid($room);
         $caps = $cd->get($jid['server']);
 
-        if($caps && $caps->isMAM()) {
+        if($caps && ($caps->isMAM() || $caps->isMAM2())) {
             $p->enableMAM();
+
+            if($caps->isMAM2()) {
+                $p->enableMAM2();
+            }
         }
 
         $p->setNickname($nickname);
