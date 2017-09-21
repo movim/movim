@@ -84,7 +84,7 @@ class ConfigCommand extends Command
 
         foreach($input->getOptions() as $key => $value) {
             if(property_exists($config, $key) && isset($value)) {
-                if($key == 'password') $value = password_hash($value, PASSWORD_BCRYPT);
+                if($key == 'password') $value = password_hash($value, PASSWORD_DEFAULT);
 
                 $old = $config->$key;
                 $config->$key = $value;
