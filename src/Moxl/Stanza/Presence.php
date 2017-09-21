@@ -110,7 +110,7 @@ class Presence
     /*
      * Enter a chat room
      */
-    static function muc($to, $nickname = false)
+    static function muc($to, $nickname = false, $mam = false)
     {
         $session = Session::start();
 
@@ -122,7 +122,15 @@ class Presence
         $presence->setAttribute('id', $session->get('id'));
         $presence->setAttribute('to', $to.'/'.$nickname);
 
-        $presence->appendChild($dom->createElementNS('http://jabber.org/protocol/muc', 'x'));
+        $x = $dom->createElementNS('http://jabber.org/protocol/muc', 'x');
+
+        if($mam) {
+            $history = $dom->createElement('history');
+            $history->setAttribute('maxchars', 0);
+            $x->appendChild($history);
+        }
+
+        $presence->appendChild($x);
 
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }

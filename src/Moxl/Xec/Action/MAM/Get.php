@@ -5,17 +5,34 @@ namespace Moxl\Xec\Action\MAM;
 use Moxl\Xec\Action;
 use Moxl\Stanza\MAM;
 
+use Movim\Session;
+
 class Get extends Action
 {
+    private $_queryid;
+    private $_to;
     private $_jid;
     private $_start;
     private $_end;
     private $_limit;
-    
-    public function request() 
+
+    public function request()
     {
+        $sess = Session::start();
+
+        // Generating the queryid key.
+        $this->_queryid = \generateKey(12);
+        $sess->set('mamid'.$this->_queryid, true);
+
         $this->store();
-        MAM::get($this->_jid, $this->_start, $this->_end, $this->_limit);
+
+        MAM::get($this->_to, $this->_queryid, $this->_jid, $this->_start, $this->_end, $this->_limit);
+    }
+
+    public function setTo($to)
+    {
+        $this->_to = $to;
+        return $this;
     }
 
     public function setJid($jid)
@@ -41,13 +58,15 @@ class Get extends Action
         $this->_limit = $limit;
         return $this;
     }
-    
-    public function handle($stanza, $parent = false) {
 
+    public function handle($stanza, $parent = false)
+    {
+        $sess = Session::start();
+        $sess->remove('mamid'.$this->_queryid);
     }
-    
+
     public function error($error) {
-  
+
     }
 
 }

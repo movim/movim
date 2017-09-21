@@ -2,11 +2,14 @@
 
 namespace Moxl\Stanza;
 
-class MAM {
-    static function get($jid = false, $start = false, $end = false, $limit = false)
+class MAM
+{
+    static function get($to = null, $id, $jid = false, $start = false, $end = false, $limit = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('urn:xmpp:mam:1', 'query');
+        $query->setAttribute('queryid', $id);
+
         $x = $dom->createElement('x');
         $x->setAttribute('xmlns', 'jabber:x:data');
         $x->setAttribute('type', 'submit');
@@ -55,7 +58,7 @@ class MAM {
             $query->appendChild($set_limit);
         }
 
-        $xml = \Moxl\API::iqWrapper($query, null, 'set');
+        $xml = \Moxl\API::iqWrapper($query, $to, 'set');
         \Moxl\API::request($xml);
     }
 }
