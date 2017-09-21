@@ -79,7 +79,7 @@ class Rooms extends \Movim\Widget\Base
         $this->rpc('MovimTpl.hidePanel');
     }
 
-    function onConnected()
+    function onConnected($packet)
     {
         $this->refreshRooms();
     }
@@ -245,8 +245,15 @@ class Rooms extends \Movim\Widget\Base
             $nickname = $s->get('username');
         }
 
-        $p->setNickname($nickname);
+        $cd = new \Modl\CapsDAO;
+        $jid = explodeJid($room);
+        $caps = $cd->get($jid['server']);
 
+        if($caps && $caps->isMAM()) {
+            $p->enableMAM();
+        }
+
+        $p->setNickname($nickname);
         $p->request();
     }
 

@@ -170,6 +170,27 @@ class MessageDAO extends SQL
         return $this->run('Message', 'item');
     }
 
+    function getLastReceivedItem($from)
+    {
+        $this->_sql = '
+            select * from message
+            where session = :session
+            and jidfrom = :jidfrom
+            and subject is null
+            order by published desc
+            limit 1';
+
+        $this->prepare(
+            'Message',
+            [
+                'session' => $this->_user,
+                'jidfrom' => $from
+            ]
+        );
+
+        return $this->run('Message', 'item');
+    }
+
     function getAll($limitf = false, $limitr = false)
     {
         $this->_sql = '

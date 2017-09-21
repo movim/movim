@@ -530,7 +530,6 @@ var Chat = {
         }
     },
     getStickerHtml: function(sticker) {
-        console.log(sticker);
         var img = document.createElement("img");
         if(sticker.url) {
             if(sticker.thumb) {

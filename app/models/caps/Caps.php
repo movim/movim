@@ -75,4 +75,10 @@ class Caps extends Model
         $features = $this->features;
         return (in_array('http://jabber.org/protocol/jingle', $features));
     }
+
+    public function isMAM()
+    {
+        $features = $this->features;
+        return (in_array('urn:xmpp:mam:1', $features));
+    }
 }
