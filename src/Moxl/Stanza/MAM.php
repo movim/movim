@@ -4,10 +4,10 @@ namespace Moxl\Stanza;
 
 class MAM
 {
-    static function get($to = null, $id, $jid = false, $start = false, $end = false, $limit = false)
+    static function get($to = null, $id, $jid = false, $start = false, $end = false, $limit = false, $version = '1')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
-        $query = $dom->createElementNS('urn:xmpp:mam:1', 'query');
+        $query = $dom->createElementNS('urn:xmpp:mam:'.$version, 'query');
         $query->setAttribute('queryid', $id);
 
         $x = $dom->createElement('x');
@@ -17,7 +17,7 @@ class MAM
 
         $field_type = $dom->createElement('field');
         $field_type->setAttribute('var', 'FORM_TYPE');
-        $field_type->appendChild($dom->createElement('value', 'urn:xmpp:mam:1'));
+        $field_type->appendChild($dom->createElement('value', 'urn:xmpp:mam:'.$version));
         $x->appendChild($field_type);
 
         if($jid) {

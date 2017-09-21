@@ -15,6 +15,7 @@ class Get extends Action
     private $_start;
     private $_end;
     private $_limit;
+    private $_version = '1';
 
     public function request()
     {
@@ -26,7 +27,7 @@ class Get extends Action
 
         $this->store();
 
-        MAM::get($this->_to, $this->_queryid, $this->_jid, $this->_start, $this->_end, $this->_limit);
+        MAM::get($this->_to, $this->_queryid, $this->_jid, $this->_start, $this->_end, $this->_limit, $this->_version);
     }
 
     public function setTo($to)
@@ -56,6 +57,12 @@ class Get extends Action
     public function setLimit($limit)
     {
         $this->_limit = $limit;
+        return $this;
+    }
+
+    public function setVersion($version)
+    {
+        $this->_version = $version;
         return $this;
     }
 

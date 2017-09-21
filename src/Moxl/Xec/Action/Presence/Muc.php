@@ -12,6 +12,7 @@ class Muc extends Action
     private $_to;
     private $_nickname;
     private $_mam = false;
+    private $_mam2 = false;
 
     public function request()
     {
@@ -50,6 +51,12 @@ class Muc extends Action
         return $this;
     }
 
+    public function enableMAM2()
+    {
+        $this->_mam2 = true;
+        return $this;
+    }
+
     public function handle($stanza, $parent = false)
     {
         $p = new \Modl\Presence;
@@ -69,6 +76,10 @@ class Muc extends Action
 
             if(!empty($message)) {
                 $g->setStart(strtotime($message->published));
+            }
+
+            if($this->_mam2) {
+                $g->setVersion('2');
             }
 
             $g->request();
