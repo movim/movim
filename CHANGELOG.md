@@ -37,6 +37,7 @@ v0.12 (trunk)
  * More colors!
  * Protect pictures URLs with a HTTP HEAD check
  * Add Miho sticker pack
+ * Add support of MAM (up to mam:2) for the MUCs
 
 v0.11
 ---------------------------
