@@ -16,9 +16,7 @@ Fundamentally, Moxl always works as an asynchronous library.
 
 ### Sessions
 
-To keep the session open between the Moxl requests, all the session variables are stored into database at each request. Its integration is therefore based on the Session class which is itself based on Modl (https://github.com/edhelas/modl).
-
-It can be interesting to know that all the session parameters (session hash, id, user, target server...) are stored in memory throughout the daemon execution, for performance reasons.
+To keep the session open between the Moxl requests, all the session variables are stored into memory at each request. Its integration is therefore based on the Session class.
 
 ### Namespaces
 Unlike a whole lot of XMPP libraries, Moxl prefers treating messages through XMPP namespaces than via extensions (XEP).
@@ -52,45 +50,46 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 
 | Number | Name | Implemented | Comments |
 |--------|------|-------------|----------|
-| [XEP-0004](http://xmpp.org/extensions/xep-0004.html) | Data Forms | Yes | For account creation form + all Pubsub configuration |
-| [XEP-0012](http://xmpp.org/extensions/xep-0012.html) | Last Activity | Yes |  |
-| [XEP-0030](http://xmpp.org/extensions/xep-0030.html) | Service Discovery | Yes |   |
-| [XEP-0045](http://xmpp.org/extensions/xep-0045.html) | Multi-User Chat | Yes |   |
-| [XEP-0048](http://xmpp.org/extensions/xep-0048.html) | Bookmarks | Yes | MUC + URL + PubsubSuscription support |
-| [XEP-0049](http://xmpp.org/extensions/xep-0049.html) | Private XML Storage | Yes | To store Movim account configuration |
-| [XEP-0050](http://xmpp.org/extensions/xep-0050.html) | Ad-Hoc Commands | Yes | |
-| [XEP-0054](http://xmpp.org/extensions/xep-0054.html) | vcard-temp | Yes | Add Gender + Marital elements (non-standard) |
-| [XEP-0060](http://xmpp.org/extensions/xep-0060.html) | Publish-Subscribe | Yes | Implemented for the Groups + Microblog |
-| [XEP-0071](http://xmpp.org/extensions/xep-0071.html) | XHTML-IM | Yes | Used for Pubsub publication |
-| [XEP-0077](http://xmpp.org/extensions/xep-0077.html) | In-Band Registration | Yes | jabber: x:oob support |
-| [XEP-0080](http://xmpp.org/extensions/xep-0080.html) | User Location | Not yet | For message reception in XEP-0277 + Contact Location |
-| [XEP-0084](http://xmpp.org/extensions/xep-0084.html) | User Avatar | Yes | Read and Write |
-| [XEP-0085](http://xmpp.org/extensions/xep-0085.html) | Chat State Notifications | Yes | composing/paused only |
-| [XEP-0092](http://xmpp.org/extensions/xep-0092.html) | Software Version | Partially | Send only |
-| [XEP-0100](http://xmpp.org/extensions/xep-0100.html) | Gateway Interaction | Yes | |
-| [XEP-0107](http://xmpp.org/extensions/xep-0107.html) | User Mood | Yes | Read only |
-| [XEP-0108](http://xmpp.org/extensions/xep-0108.html) | User Activity | Yes | Read only |
-| [XEP-0115](http://xmpp.org/extensions/xep-0115.html) | Entity Capabilities | Yes |  |
-| [XEP-0118](http://xmpp.org/extensions/xep-0118.html) | User Tune | Yes | Read only |
-| [XEP-0124](http://xmpp.org/extensions/xep-0124.html) | Bidirectional-streams Over Synchronous HTTP (BOSH) | Not anymore | |
-| [XEP-0163](http://xmpp.org/extensions/xep-0163.html) | Personal Eventing Protocol | Yes | See XEP-0277 |
-| [XEP-0172](http://xmpp.org/extensions/xep-0172.html) | User Nickname | Yes | Contact Nickname |
-| [XEP-0184](http://xmpp.org/extensions/xep-0184.html) | Message Delivery Receipts | Yes | |
-| [XEP-0199](http://xmpp.org/extensions/xep-0199.html) | XMPP Ping | Yes |  |
-| [XEP-0206](http://xmpp.org/extensions/xep-0206.html) | XMPP Over BOSH | Not anymore | |
-| [XEP-0224](http://xmpp.org/extensions/xep-0224.html) | Attention | Yes |  |
-| [XEP-0231](http://xmpp.org/extensions/xep-0231.html) | Bits of Binary | Yes | For the Stickers feature |
-| [XEP-0245](http://xmpp.org/extensions/xep-0245.html) | The /me Command | Yes |  |
-| [XEP-0256](http://xmpp.org/extensions/xep-0256.html) | Last Activity in Presence | Yes |  |
-| [XEP-0277](http://xmpp.org/extensions/xep-0277.html) | Microblogging over XMPP | Yes | |
-| [XEP-0280](http://xmpp.org/extensions/xep-0280.html) | Message Carbons | Yes | |
-| [XEP-0292](http://xmpp.org/extensions/xep-0292.html) | vCard4 Over XMPP | Yes | |
-| [XEP-0313](http://xmpp.org/extensions/xep-0313.html) | Message Archive Management | Yes | Only up to urn:xmpp:mam:0 |
-| [XEP-0330](http://xmpp.org/extensions/xep-0330.html) | Pubsub Subscription | Yes | Using PEP, proposed by the Movim team|
-| [XEP-0333](http://xmpp.org/extensions/xep-0333.html) | Chat Markers | Yes | |
-| [XEP-0334](http://xmpp.org/extensions/xep-0334.html) | Message Processing Hints | Yes | |
-| [XEP-0363](http://xmpp.org/extensions/xep-0363.html) | HTTP File Upload | Yes | |
-| [XEP-0385](http://xmpp.org/extensions/xep-0385.html) | Stateless Inline Media Sharing (SIMS) | Yes | Partially, working with XEP-0363 |
+| [XEP-0004](https://xmpp.org/extensions/xep-0004.html) | Data Forms | Yes | For account creation form + all Pubsub configuration |
+| [XEP-0012](https://xmpp.org/extensions/xep-0012.html) | Last Activity | Yes |  |
+| [XEP-0030](https://xmpp.org/extensions/xep-0030.html) | Service Discovery | Yes |   |
+| [XEP-0045](https://xmpp.org/extensions/xep-0045.html) | Multi-User Chat | Yes |   |
+| [XEP-0048](https://xmpp.org/extensions/xep-0048.html) | Bookmarks | Yes | MUC + URL + PubsubSuscription support |
+| [XEP-0049](https://xmpp.org/extensions/xep-0049.html) | Private XML Storage | Yes | To store Movim account configuration |
+| [XEP-0050](https://xmpp.org/extensions/xep-0050.html) | Ad-Hoc Commands | Yes | |
+| [XEP-0054](https://xmpp.org/extensions/xep-0054.html) | vcard-temp | Yes | Add Gender + Marital elements (non-standard) |
+| [XEP-0060](https://xmpp.org/extensions/xep-0060.html) | Publish-Subscribe | Yes | Implemented for the Groups + Microblog |
+| [XEP-0071](https://xmpp.org/extensions/xep-0071.html) | XHTML-IM | Yes | Used for Pubsub publication |
+| [XEP-0077](https://xmpp.org/extensions/xep-0077.html) | In-Band Registration | Yes | jabber: x:oob support |
+| [XEP-0080](https://xmpp.org/extensions/xep-0080.html) | User Location | Not yet | For message reception in XEP-0277 + Contact Location |
+| [XEP-0084](https://xmpp.org/extensions/xep-0084.html) | User Avatar | Yes | Read and Write |
+| [XEP-0085](https://xmpp.org/extensions/xep-0085.html) | Chat State Notifications | Yes | composing/paused only |
+| [XEP-0092](https://xmpp.org/extensions/xep-0092.html) | Software Version | Partially | Send only |
+| [XEP-0100](https://xmpp.org/extensions/xep-0100.html) | Gateway Interaction | Yes | |
+| [XEP-0107](https://xmpp.org/extensions/xep-0107.html) | User Mood | Yes | Read only |
+| [XEP-0108](https://xmpp.org/extensions/xep-0108.html) | User Activity | Yes | Read only |
+| [XEP-0115](https://xmpp.org/extensions/xep-0115.html) | Entity Capabilities | Yes |  |
+| [XEP-0118](https://xmpp.org/extensions/xep-0118.html) | User Tune | Yes | Read only |
+| [XEP-0124](https://xmpp.org/extensions/xep-0124.html) | Bidirectional-streams Over Synchronous HTTP (BOSH) | Not anymore | |
+| [XEP-0163](https://xmpp.org/extensions/xep-0163.html) | Personal Eventing Protocol | Yes | See XEP-0277 |
+| [XEP-0172](https://xmpp.org/extensions/xep-0172.html) | User Nickname | Yes | Contact Nickname |
+| [XEP-0184](https://xmpp.org/extensions/xep-0184.html) | Message Delivery Receipts | Yes | |
+| [XEP-0199](https://xmpp.org/extensions/xep-0199.html) | XMPP Ping | Yes |  |
+| [XEP-0206](https://xmpp.org/extensions/xep-0206.html) | XMPP Over BOSH | Not anymore | |
+| [XEP-0224](https://xmpp.org/extensions/xep-0224.html) | Attention | Yes |  |
+| [XEP-0231](https://xmpp.org/extensions/xep-0231.html) | Bits of Binary | Yes | For the Stickers feature |
+| [XEP-0245](https://xmpp.org/extensions/xep-0245.html) | The /me Command | Yes |  |
+| [XEP-0256](https://xmpp.org/extensions/xep-0256.html) | Last Activity in Presence | Yes |  |
+| [XEP-0277](https://xmpp.org/extensions/xep-0277.html) | Microblogging over XMPP | Yes | |
+| [XEP-0280](https://xmpp.org/extensions/xep-0280.html) | Message Carbons | Yes | |
+| [XEP-0292](https://xmpp.org/extensions/xep-0292.html) | vCard4 Over XMPP | Yes | |
+| [XEP-0313](https://xmpp.org/extensions/xep-0313.html) | Message Archive Management | Yes | Only up to urn:xmpp:mam:0 |
+| [XEP-0330](https://xmpp.org/extensions/xep-0330.html) | Pubsub Subscription | Yes | Using PEP, proposed by the Movim team|
+| [XEP-0333](https://xmpp.org/extensions/xep-0333.html) | Chat Markers | Yes | |
+| [XEP-0334](https://xmpp.org/extensions/xep-0334.html) | Message Processing Hints | Yes | |
+| [XEP-0363](https://xmpp.org/extensions/xep-0363.html) | HTTP File Upload | Yes | |
+| [XEP-0313](https://xmpp.org/extensions/xep-0313.html) | Message Archive Management | Yes | Up to mam:2 |
+| [XEP-0385](https://xmpp.org/extensions/xep-0385.html) | Stateless Inline Media Sharing (SIMS) | Yes | Partially, working with XEP-0363 |
 
 ## Internal Operation
 ### Structure of the library
@@ -159,7 +158,7 @@ This example shows the "add a contact to the contacts list" action, and this act
 ```php
 use Moxl\Xec\Action\Roster\AddItem;
 
-$c = new AddItem();
+$c = new AddItem;
 $c->setTo('contact@serveur.com')
   ->request();
 ```

@@ -4,6 +4,7 @@ Moxl Changelog
 v1.7 (trunk)
 ---------------------------
 * Add XEP-0385: Stateless Inline Media Sharing (SIMS)
+* Add XEP-0313: Message Archive Management
 
 v1.6
 ---------------------------
