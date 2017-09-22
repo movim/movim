@@ -63,7 +63,7 @@ var Upload = {
             var width = image.naturalWidth;
             var height = image.naturalHeight;
 
-            var ratio = (limit*limit)/(width*height);
+            var ratio = Math.min(limit / width, limit / height);
 
             if(ratio < 1 || file.size > SMALL_PICTURE_LIMIT) {
                 if(ratio < 1) {
