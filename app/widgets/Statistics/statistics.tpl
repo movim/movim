@@ -16,7 +16,9 @@
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
-                <p>{$user->getTrueName()} <span class="second">{$value->username}@{$value->host}</a></p>
+                <p class="line" title="{$value->username}@{$value->host}">
+                    {$user->getTrueName()} <span class="second">{$value->username}@{$value->host}</span>
+                </p>
                 <p>
                     {if="isset($value->start)"}
                         {$c->getTime($value->start)}
