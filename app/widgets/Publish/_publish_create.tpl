@@ -79,7 +79,7 @@
             name="title"
             placeholder="{$c->__('post.title')}"
             style="height: 68px"
-            oninput="MovimUtils.textareaAutoheight(this);">{if="!empty($draft->title)"}{$draft->title}{/if}{if="$item != false"}{$item->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
+            oninput="MovimUtils.textareaAutoheight(this);">{if="!empty($draft->title)"}{$draft->title}{elseif="$item != false"}{$item->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
         <label for="title">{$c->__('post.title')}</label>
     </div>
 
@@ -131,7 +131,7 @@
             class="show"
         {/if}
         >
-        <textarea name="content" placeholder="{$c->__('publish.content_text')}" oninput="MovimUtils.textareaAutoheight(this);">{if="$item != false"}{$item->contentraw}{/if}{if="!empty($draft->content)"}{$draft->content}{/if}</textarea>
+        <textarea name="content" placeholder="{$c->__('publish.content_text')}" oninput="MovimUtils.textareaAutoheight(this);">{if="!empty($draft->content)"}{$draft->content}{elseif="$item != false"}{$item->contentraw}{/if}</textarea>
         <label for="content">{$c->__('publish.content_label')}</label>
 
         <button class="button oppose flat gray" type="button" onclick="Publish_ajaxHelp()">
