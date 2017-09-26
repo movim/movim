@@ -83,12 +83,11 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0277](https://xmpp.org/extensions/xep-0277.html) | Microblogging over XMPP | Yes | |
 | [XEP-0280](https://xmpp.org/extensions/xep-0280.html) | Message Carbons | Yes | |
 | [XEP-0292](https://xmpp.org/extensions/xep-0292.html) | vCard4 Over XMPP | Yes | |
-| [XEP-0313](https://xmpp.org/extensions/xep-0313.html) | Message Archive Management | Yes | Only up to urn:xmpp:mam:0 |
+| [XEP-0313](https://xmpp.org/extensions/xep-0313.html) | Message Archive Management | Yes | Up to urn:xmpp:mam:2  |
 | [XEP-0330](https://xmpp.org/extensions/xep-0330.html) | Pubsub Subscription | Yes | Using PEP, proposed by the Movim team|
 | [XEP-0333](https://xmpp.org/extensions/xep-0333.html) | Chat Markers | Yes | |
 | [XEP-0334](https://xmpp.org/extensions/xep-0334.html) | Message Processing Hints | Yes | |
 | [XEP-0363](https://xmpp.org/extensions/xep-0363.html) | HTTP File Upload | Yes | |
-| [XEP-0313](https://xmpp.org/extensions/xep-0313.html) | Message Archive Management | Yes | Up to mam:2 |
 | [XEP-0385](https://xmpp.org/extensions/xep-0385.html) | Stateless Inline Media Sharing (SIMS) | Yes | Partially, working with XEP-0363 |
 
 ## Internal Operation
