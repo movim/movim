@@ -100,7 +100,7 @@
             name="embed"
             placeholder="http://myawesomewebsite.com/ or http://mynicepictureurl.com/"
             onpaste="var e=this; setTimeout(function(){Publish_ajaxEmbedTest(e.value);}, 4);"
-            {if="!empty($draft->links)"}
+            {if="!empty($draft->links) && !empty($draft->links[0])"}
                 value="{$draft->links[0]}"
             {elseif="isset($attachment) && $attachment != false"}
                 value="{$attachment.href}"
