@@ -130,6 +130,8 @@ var MovimTpl = {
     touchEvents: function() {
         nav = document.querySelector('body > nav');
 
+        if(nav == null) return;
+
         document.body.addEventListener('touchstart', function(event) {
             startX = event.targetTouches[0].pageX;
             startY = event.targetTouches[0].pageY;
