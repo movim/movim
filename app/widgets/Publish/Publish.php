@@ -271,7 +271,8 @@ class Publish extends \Movim\Widget\Base
 
             if(Validator::notEmpty()->url()->validate($form->embed->value)) {
                 try {
-                    $embed = Embed\Embed::create($form->embed->value);
+                    $murl = new \Modl\Url;
+                    $embed = $murl->resolve($form->embed->value);
                     $p->setLink($form->embed->value);
 
                     if($embed->type == 'photo') {
@@ -336,7 +337,8 @@ class Publish extends \Movim\Widget\Base
         }
 
         try {
-            $embed = Embed\Embed::create($url);
+            $murl = new \Modl\Url;
+            $embed = $murl->resolve($url);
             $html = $this->prepareEmbed($embed);
 
             $this->rpc('MovimTpl.fill', '#preview', '');

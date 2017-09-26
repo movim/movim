@@ -77,7 +77,8 @@ class PublishBrief extends \Movim\Widget\Base
 
             if(Validator::notEmpty()->url()->validate($form->embed->value)) {
                 try {
-                    $embed = Embed\Embed::create($form->embed->value);
+                    $murl = new \Modl\Url;
+                    $embed = $murl->resolve($form->embed->value);
 
                     if($embed->type == 'photo') {
                         $p->setImage($embed->images[0]['url'], $embed->title, $embed->images[0]['mime']);
@@ -116,7 +117,8 @@ class PublishBrief extends \Movim\Widget\Base
         $this->rpc('Dialog_ajaxClear');
 
         try {
-            $embed = Embed\Embed::create($url);
+            $murl = new \Modl\Url;
+            $embed = $murl->resolve($url);
             $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
         } catch(Exception $e) {
             error_log($e->getMessage());
