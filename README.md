@@ -58,6 +58,7 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0049](https://xmpp.org/extensions/xep-0049.html) | Private XML Storage | Yes | To store Movim account configuration |
 | [XEP-0050](https://xmpp.org/extensions/xep-0050.html) | Ad-Hoc Commands | Yes | |
 | [XEP-0054](https://xmpp.org/extensions/xep-0054.html) | vcard-temp | Yes | Add Gender + Marital elements (non-standard) |
+| [XEP-0059](https://xmpp.org/extensions/xep-0059.html) | Result Set Management | Yes | To query Pubsub and PEP items |
 | [XEP-0060](https://xmpp.org/extensions/xep-0060.html) | Publish-Subscribe | Yes | Implemented for the Groups + Microblog |
 | [XEP-0071](https://xmpp.org/extensions/xep-0071.html) | XHTML-IM | Yes | Used for Pubsub publication |
 | [XEP-0077](https://xmpp.org/extensions/xep-0077.html) | In-Band Registration | Yes | jabber: x:oob support |

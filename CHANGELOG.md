@@ -1,7 +1,11 @@
 Moxl Changelog
 ================
 
-v1.7 (trunk)
+v1.8 (trunk)
+---------------------------
+* Add XEP-0059: Result Set Management
+
+v1.7
 ---------------------------
 * Add XEP-0385: Stateless Inline Media Sharing (SIMS)
 * Add XEP-0313: Message Archive Management

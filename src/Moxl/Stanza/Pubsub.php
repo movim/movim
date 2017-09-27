@@ -130,7 +130,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function configurePersistentStorage($to, $node, $access_model = 'whitelist')
+    static function configurePersistentStorage($to, $node, $access_model = 'whitelist', $max_items = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -159,6 +159,15 @@ class Pubsub
 
         $value = $dom->createElement('value', 'true');
         $field->appendChild($value);
+
+        if($max_items) {
+            $field = $dom->createElement('field');
+            $field->setAttribute('var', 'pubsub#max_items');
+            $x->appendChild($field);
+
+            $value = $dom->createElement('value', $max_items);
+            $field->appendChild($value);
+        }
 
         if(empty($access_model)) $access_model = 'whitelist';
 
@@ -321,7 +330,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function getItems($to, $node, $paging = 10, $after = false)
+    static function getItems($to, $node, $paging = 10, $after = false, $before = 'empty')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -332,6 +341,13 @@ class Pubsub
             $set = $dom->createElement('set');
             $set->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
             $set->appendChild($dom->createElement('after', $after));
+            $set->appendChild($dom->createElement('max', $paging));
+
+            $pubsub->appendChild($set);
+        } elseif($before) {
+            $set = $dom->createElement('set');
+            $set->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
+            $set->appendChild($dom->createElement('before', ($before == 'empty') ? null : $before));
             $set->appendChild($dom->createElement('max', $paging));
 
             $pubsub->appendChild($set);

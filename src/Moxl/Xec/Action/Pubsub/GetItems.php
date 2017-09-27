@@ -35,11 +35,14 @@ class GetItems extends Errors
     private $_since;
     private $_paging;
     private $_after;
+    private $_before;
+
+    private $_paginated = false;
 
     public function request()
     {
         $this->store();
-        Pubsub::getItems($this->_to, $this->_node, $this->_paging, $this->_after);
+        Pubsub::getItems($this->_to, $this->_node, $this->_paging, $this->_after, $this->_before);
     }
 
     public function setTo($to)
@@ -63,7 +66,15 @@ class GetItems extends Errors
     public function setAfter($after)
     {
         $this->_after = $after;
-        return $after;
+        $this->_paginated = true;
+        return $this;
+    }
+
+    public function setBefore($before = 'empty')
+    {
+        $this->_before = $before;
+        $this->_paginated = true;
+        return $this;
     }
 
     public function setSince($since)
@@ -93,12 +104,23 @@ class GetItems extends Errors
             }
         }
 
+        $first = $last = $count = null;
+
+        if($stanza->pubsub->set
+        && $stanza->pubsub->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm') {
+            $first = (string)$stanza->pubsub->set->first;
+            $last = (string)$stanza->pubsub->set->last;
+            $count = (string)$stanza->pubsub->set->count;
+        }
+
         $this->pack([
-            'server' => $this->_to,
-            'node' => $this->_node,
-            'ids' => $ids,
-            'paging' => $this->_paging,
-            'after' => $this->_after
+            'server'    => $this->_to,
+            'node'      => $this->_node,
+            'ids'       => $ids,
+            'first'     => $first,
+            'last'      => $last,
+            'count'     => $count,
+            'paginated' => $this->_paginated
         ]);
 
         $this->deliver();
