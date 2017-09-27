@@ -53,4 +53,16 @@ class Init extends \Movim\Widget\Base
           ->setAccessPresence()
           ->request();
     }
+
+    function ajaxCreatePersistentPEPStorage($node)
+    {
+        $this->createPersistentStorage($node);
+
+        $p = new ConfigurePersistentStorage;
+        $p->setTo($this->user->getLogin())
+          ->setNode($node)
+          ->setAccessPresence()
+          ->setMaxItems(1)
+          ->request();
+    }
 }

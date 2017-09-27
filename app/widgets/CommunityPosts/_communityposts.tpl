@@ -26,9 +26,9 @@
     </div>
 {/if}
 
-{if="isset($posts) && count($posts) >= $paging-1"}
+{if="$last"}
 <ul class="list active thick">
-    <li onclick="CommunityPosts_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.parentNode.removeChild(this.parentNode);">
+    <li onclick="CommunityPosts_ajaxGetItems('{$server}', '{$node}', '{$last}'); this.parentNode.parentNode.removeChild(this.parentNode);">
         <span class="icon primary gray">
             <i class="zmdi zmdi-time-restore"></i>
         </span>
