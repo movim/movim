@@ -7,7 +7,7 @@ var Init = {
         var jid = username.replace("@", "at");
         var init = localStorage.getObject(jid + "_Init3") || {};
         if(init.initialized != 'true') {
-            Init_ajaxCreatePersistentStorage('storage:bookmarks', 1);
+            Init_ajaxCreatePersistentStorage('storage:bookmarks');
             Init_ajaxCreatePersistentPEPStorage('urn:xmpp:vcard4');
             Init_ajaxCreatePersistentPEPStorage('urn:xmpp:avatar:data');
             Init_ajaxCreatePersistentPEPStorage('http://jabber.org/protocol/geoloc');
