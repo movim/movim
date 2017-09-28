@@ -1,5 +1,7 @@
 {if="isset($action)"}
 <a href="{$action}">
+{elseif="isset($onclick)"}
+<a href="#" onclick="{$onclick}; Notification.snackbarClear();">
 {/if}
     <ul class="list">
         <li>
@@ -12,6 +14,6 @@
         {/if}
         </li>
     </ul>
-{if="isset($action)"}
+{if="isset($action) || isset($onclick)"}
 </a>
 {/if}

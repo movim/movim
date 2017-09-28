@@ -21,7 +21,15 @@ class Notification extends \Movim\Widget\Base
      * @param integer $action An action
      * @return void
      */
-    static function append($key = null, $title = null, $body = null, $picture = null, $time = 2, $action = null, $group = null)
+    static function append(
+        $key = null,
+        $title = null,
+        $body = null,
+        $picture = null,
+        $time = 2,
+        $action = null,
+        $group = null,
+        $execute = null)
     {
         // In this case we have an action confirmation
         if($key == null && $title != null) {
@@ -36,8 +44,9 @@ class Notification extends \Movim\Widget\Base
         $session = Session::start();
         $notifs = $session->get('notifs');
 
-        if($title != null)
-            RPC::call('Notification.desktop', $title, $body, $picture, $action);
+        if($title != null) {
+            RPC::call('Notification.desktop', $title, $body, $picture, $action, $execute);
+        }
 
         $notifs_key = $session->get('notifs_key');
 
@@ -74,7 +83,10 @@ class Notification extends \Movim\Widget\Base
 
         if($title != null) {
             $n = new Notification;
-            RPC::call('Notification.snackbar', $n->prepareSnackbar($title, $body, $picture, $action), $time);
+            RPC::call(
+                'Notification.snackbar',
+                $n->prepareSnackbar($title, $body, $picture, $action, $execute),
+                $time);
         }
 
         $session->set('notifs', $notifs);
@@ -138,7 +150,7 @@ class Notification extends \Movim\Widget\Base
         $session->set('notifs_key', $key);
     }
 
-    function prepareSnackbar($title, $body = null, $picture = null, $action = null)
+    function prepareSnackbar($title, $body = null, $picture = null, $action = null, $execute = null)
     {
         $view = $this->tpl();
 
@@ -146,6 +158,7 @@ class Notification extends \Movim\Widget\Base
         $view->assign('body', $body);
         $view->assign('picture', $picture);
         $view->assign('action', $action);
+        $view->assign('onclick', $execute);
 
         return $view->draw('_notification', true);
     }

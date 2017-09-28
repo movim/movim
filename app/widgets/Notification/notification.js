@@ -73,7 +73,13 @@ var Notification = {
             if(Notification.electron != null)
                 Notification.electron.notification(false);
         } else {
-            document.title = '(' + Notification.tab_counter1 + '/' + Notification.tab_counter2 + ') ' + Notification.document_title;
+            document.title =
+                '('
+                + Notification.tab_counter1
+                + '/'
+                + Notification.tab_counter2
+                + ') '
+                + Notification.document_title;
 
             if(Notification.favicon != null)
                 Notification.favicon.badge(Notification.tab_counter1 + Notification.tab_counter2);
@@ -116,12 +122,15 @@ var Notification = {
         }
 
         setTimeout(function() {
-            target = document.getElementById('snackbar');
-            target.innerHTML = '';
+                Notification.snackbarClear();
             },
             time*1000);
     },
-    desktop : function(title, body, picture, action) {
+    snackbarClear : function() {
+        target = document.getElementById('snackbar');
+        target.innerHTML = '';
+    },
+    desktop : function(title, body, picture, action, execute) {
         if(Notification.inhibed == true
         || Notification.focused
         || typeof DesktopNotification === 'undefined') return;
@@ -131,6 +140,16 @@ var Notification = {
         if(action !== null) {
             notification.onclick = function() {
                 window.location.href = action;
+                Notification.snackbarClear();
+                this.close();
+            }
+        }
+
+        if(execute !== null) {
+            notification.onclick = function() {
+                eval(execute);
+                Notification.snackbarClear();
+                this.close();
             }
         }
     },
