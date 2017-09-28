@@ -1,12 +1,12 @@
 {loop="$posts"}
     <li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
-        {if="$value->picture"}
-            <span class="primary thumb icon" style="background-image: url('{$value->picture}');"></span>
-        {else}
-            <span class="primary thumb color icon color {$value->node|stringToColor}">
+            <span class="primary thumb color icon color {$value->node|stringToColor}"
+            {if="$value->picture"}
+                 style="background-image: url('{$value->picture}');"
+            {/if}
+            >
                 {$value->node|firstLetterCapitalize}
             </span>
-        {/if}
         <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
         {if="isset($value->title)"}
             {$value->title}

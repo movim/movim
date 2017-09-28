@@ -41,21 +41,19 @@
     {loop="$blogs"}
         {$attachments = $value->getAttachments()}
         <li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
+            <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}"
             {$picture = $value->getPicture()}
             {if="$picture != null"}
-                <span class="primary icon thumb color white" style="background-image: url({$picture});">
-                </span>
+                style="background-image: url({$picture});"
             {else}
                 {$url = $value->getContact()->getPhoto('l')}
                 {if="$url"}
-                    <span class="primary icon thumb color white" style="background-image: url({$url});">
-                    </span>
-                {else}
-                    <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
-                        {$value->getContact()->getTrueName()|firstLetterCapitalize}
-                    </span>
+                    style="background-image: url({$url});"
                 {/if}
             {/if}
+            >
+                {$value->getContact()->getTrueName()|firstLetterCapitalize}
+            </span>
             <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
             {if="isset($value->title)"}
                 {$value->title}
