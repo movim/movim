@@ -742,7 +742,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($message->type == 'groupchat') {
-            $message->color = stringToColor($message->session . $message->resource . $message->jidfrom . $message->type);
+            $message->color = stringToColor($message->session . $message->resource . $message->type);
 
             $cd = new \Modl\ContactDAO;
             $contact = $cd->getPresence($message->jidfrom, $message->resource);
