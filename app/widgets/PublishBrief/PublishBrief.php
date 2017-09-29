@@ -39,7 +39,10 @@ class PublishBrief extends \Movim\Widget\Base
     {
         $p = new \Modl\Postn;
         $p->title = $form->title->value;
-        array_push($p->links, $form->embed->value);
+
+        if(Validator::notEmpty()->url()->validate($form->embed->value)) {
+            array_push($p->links, $form->embed->value);
+        }
 
         Cache::c('draft', $p);
     }
@@ -109,8 +112,9 @@ class PublishBrief extends \Movim\Widget\Base
     {
         if($url == '') {
             return;
-        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
+        } elseif(!Validator::url()->validate($url)) {
             Notification::append(false, $this->__('publish.valid_url'));
+            $this->ajaxClearEmbed();
             return;
         }
 

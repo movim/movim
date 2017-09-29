@@ -1,7 +1,14 @@
 <header class="relative">
     <ul class="list middle">
         <li>
-            <span class="primary icon active" onclick="Publish.headerBack('{$to}', '{$node}', false);  Publish_ajaxClearShareUrl();">
+            <span
+                class="primary icon active"
+                {if="$node == 'urn:xmpp:microblog:0'"}
+                    onclick="MovimUtils.redirect('{$c->route('news')}');"
+                {else}
+                    onclick="history.back();"
+                {/if}
+            >
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
 

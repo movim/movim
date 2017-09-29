@@ -35,7 +35,6 @@ class Post extends \Movim\Widget\Base
                         $this->prepareComments($p->getParent())
                     );
                 } else {
-                    //$this->rpc('MovimUtils.pushState', $this->route('post', [$p->origin, $p->node, $p->nodeid]));
                     $this->rpc('MovimTpl.fill', '#post_widget', $this->preparePost($p));
                     $this->rpc('MovimUtils.enableVideos');
                 }
@@ -63,15 +62,6 @@ class Post extends \Movim\Widget\Base
         $view = $this->tpl();
         $html = $view->draw('_post_comments_error', true);
         $this->rpc('MovimTpl.fill', '#comments', $html);
-    }
-
-    function ajaxClear()
-    {
-        $this->rpc('MovimUtils.pushState', $this->route('news'));
-
-        $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareEmpty());
-        $this->rpc('Menu.refresh');
-        //$this->rpc('Menu_ajaxGetAll');
     }
 
     function ajaxGetContact($jid)
