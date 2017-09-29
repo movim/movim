@@ -12,14 +12,19 @@ class Avatar extends \Movim\Widget\Base
         $this->addcss('avatar.css');
         $this->addjs('avatar.js');
 
-        $this->registerEvent('avatar_get_handle', 'onMyAvatar');
-        $this->registerEvent('avatar_set_handle', 'onMyAvatar');
+        $this->registerEvent('avatar_get_handle', 'onGetAvatar');
+        $this->registerEvent('avatar_set_handle', 'onSetAvatar');
         $this->registerEvent('avatar_set_errorfeaturenotimplemented', 'onMyAvatarError');
         $this->registerEvent('avatar_set_errorbadrequest', 'onMyAvatarError');
         $this->registerEvent('avatar_set_errornotallowed', 'onMyAvatarError');
     }
 
-    function onMyAvatar($packet)
+    function onSetAvatar($packet)
+    {
+        $this->ajaxGetAvatar();
+    }
+
+    function onGetAvatar($packet)
     {
         $me = $packet->content;
         $html = $this->prepareForm($me);
