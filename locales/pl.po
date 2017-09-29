@@ -97,13 +97,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
-"PO-Revision-Date: 2017-07-21 16:04+0000\n"
+"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
@@ -111,7 +113,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
-"X-Generator: Translate Toolkit 2.0.0\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -729,19 +731,16 @@ msgid "This server doesn't exists"
 msgstr "Serwer nie istnieje"
 
 #: [communitiesserver]created
-#, fuzzy
 msgid "Community created successfully"
-msgstr "Pomyślnie utworzono Grupę"
+msgstr ""
 
 #: [communitiesserver]empty_server
-#, fuzzy
 msgid "There is no Communities yet on this server."
-msgstr "Dotychczas brak grup na tym serwerze"
+msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "Stwórz nową grupę na %s"
+msgstr ""
 
 #: [communitiesserver]name
 msgid "Community name"
@@ -752,14 +751,12 @@ msgid "My Little Pony - Fan Club"
 msgstr "Fanklub Kucyków Pony"
 
 #: [communitiesserver]name_error
-#, fuzzy
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "Proszę podać właściwą nazwę grupy (minimum 4 znaki)"
+msgstr ""
 
 #: [communitiesserver]no_creation
-#, fuzzy
 msgid "You cannot create a new community on this server"
-msgstr "Nie możesz założyć nowej Grupy na tym serwerze"
+msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
@@ -767,24 +764,20 @@ msgid "Subscriptions"
 msgstr "Subskrypcje"
 
 #: [communityaffiliation]deleted
-#, fuzzy
 msgid "Community deleted successfully"
-msgstr "Pomyślnie usunięto Grupę"
+msgstr ""
 
 #: [communityaffiliation]delete_title
-#, fuzzy
 msgid "Delete the community"
-msgstr "Usuń grupę"
+msgstr ""
 
 #: [communityaffiliation]delete_text
-#, fuzzy
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "Zamierzasz usunąć następującą grupę. Potwierdź swoje zamiary."
+msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Najwyraźniej ta grupa już nie istnieje. Chcesz ją usunąć z twoich subskrypcji?"
+msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -1211,9 +1204,8 @@ msgid "Try out our official Android app"
 msgstr ""
 
 #: [apps]recommend
-#, fuzzy
 msgid "We also recommend"
-msgstr "Dodaj komentarz"
+msgstr ""
 
 #: [apps]computer
 msgid "Apps for your computer"
@@ -1994,6 +1986,10 @@ msgstr "Społeczności, feed'y newsów oraz profile zostały chwilowo wyłączon
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
 msgstr "Proszę powiadomić administratora twojego serwera w sprawie włączenia tej funkcji."
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2898,9 +2894,3 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
-
-#~ msgid "User folder size limit (in bytes)"
-#~ msgstr "Limit rozmiaru folderu użytkownika (w bajtach)"
-
-#~ msgid "Change the default credentials admin/password"
-#~ msgstr "Zmień domyślne upoważnienia admin/hasło"
