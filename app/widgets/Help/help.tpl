@@ -23,6 +23,9 @@
                 <a class="button flat" href="https://play.google.com/store/apps/details?id=eu.siacs.conversations" target="_blank">
                     <i class="zmdi zmdi-google-play"></i> Play Store
                 </a>
+                <a class="button flat" href="https://f-droid.org/packages/eu.siacs.conversations/" target="_blank">
+                    <i class="zmdi zmdi-android-alt"></i> F-Droid
+                </a>
             </p>
         </li>
         <li class="block">
