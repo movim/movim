@@ -18,6 +18,7 @@ class Picture extends \Movim\Widget\Base
             if($headers['http_code'] == 200
             && $headers["download_content_length"] <= SMALL_PICTURE_LIMIT
             && typeIsPicture($headers['content_type'])) {
+                header("HTTP/1.1 301 Moved Permanently");
                 header('Location: '.$url);
             }
         }
