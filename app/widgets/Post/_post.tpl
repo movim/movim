@@ -267,8 +267,9 @@
             <ul class="list middle divided spaced">
                 {if="isset($attachments.links)"}
                     {loop="$attachments.links"}
-                        {if="$post->picture != $value['href'] && $value.href != $post->getPublicUrl()"}
-                            <li>
+                        {if="$post->picture != protectPicture($value['href'])
+                          && $value.href != $post->getPublicUrl()"}
+                            <li>{$post->picture}
                                 <span class="primary icon gray">
                                     {if="isset($value.logo)"}
                                         <img src="{$value.logo}"/>
