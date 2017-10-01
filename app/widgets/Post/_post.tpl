@@ -269,7 +269,7 @@
                     {loop="$attachments.links"}
                         {if="$post->picture != protectPicture($value['href'])
                           && $value.href != $post->getPublicUrl()"}
-                            <li>{$post->picture}
+                            <li>
                                 <span class="primary icon gray">
                                     {if="isset($value.logo)"}
                                         <img src="{$value.logo}"/>
