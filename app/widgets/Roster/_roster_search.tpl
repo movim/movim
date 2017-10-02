@@ -35,11 +35,7 @@
                         id="alias"
                         class="tiny"
                         placeholder="{$c->__('edit.alias')}"
-                        {if="$contact->rostername"}
-                            value="{$contact->rostername}"
-                        {else}
-                            value="{$contact->jid}"
-                        {/if}"/>
+                    />
                     <label for="alias">{$c->__('edit.alias')}</label>
                 </div>
                 <div>
@@ -56,7 +52,7 @@
                         id="group"
                         class="tiny"
                         placeholder="{$c->__('edit.group')}"
-                        value="{$contact->groupname}"/>
+                    />
                     <label for="group">{$c->__('edit.group')}</label>
                 </div>
             </form>

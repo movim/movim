@@ -174,7 +174,7 @@ class Roster extends \Movim\Widget\Base
      */
     function ajaxDisplayFound($jid)
     {
-        if($jid != '') {
+        if(!empty($jid)) {
             $cd = new \Modl\ContactDAO;
             $contacts = $cd->searchJid($jid);
 
