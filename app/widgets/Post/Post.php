@@ -35,7 +35,9 @@ class Post extends \Movim\Widget\Base
                         $this->prepareComments($p->getParent())
                     );
                 } else {
-                    $this->rpc('MovimTpl.fill', '#post_widget', $this->preparePost($p));
+                    $this->rpc('MovimTpl.fill',
+                        '#post_widget.'.cleanupId($p->nodeid),
+                        $this->preparePost($p));
                     $this->rpc('MovimUtils.enableVideos');
                 }
             }
@@ -78,7 +80,7 @@ class Post extends \Movim\Widget\Base
         if($p) {
             $html = $this->preparePost($p);
 
-            $this->rpc('MovimTpl.fill', '#post_widget', $html);
+            $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
 
             // If the post is a reply but we don't have the original
@@ -264,8 +266,8 @@ class Post extends \Movim\Widget\Base
         $validate_nodeid = Validator::stringType()->length(10, 100);
 
         $this->view->assign('nodeid', false);
-        if($validate_nodeid->validate($this->get('n'))) {
-            $this->view->assign('nodeid', $this->get('n'));
+        if($validate_nodeid->validate($this->get('i'))) {
+            $this->view->assign('nodeid', $this->get('i'));
         }
     }
 }
