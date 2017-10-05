@@ -230,6 +230,14 @@ var MovimUtils = {
                 MovimUtils.showElement(node);
         }
     },
+    htmlEscape: function(string) {
+        return String(string)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+    },
     enhanceArticlesContent: function() {
         document.querySelectorAll('article section content video')
             .forEach(item => item.setAttribute('controls', 'controls'));
