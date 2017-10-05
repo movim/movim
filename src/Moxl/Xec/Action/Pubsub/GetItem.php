@@ -101,9 +101,13 @@ class GetItem extends Errors
                     $p = new \Modl\Postn;
                     $p->set($item, $from, false, $node);
 
-                    $p->parentorigin    = $this->_parentorigin;
-                    $p->parentnode      = $this->_parentnode;
-                    $p->parentnodeid    = $this->_parentnodeid;
+                    if(isset($this->_parentorigin)
+                    && isset($this->_parentnode)
+                    && isset($this->_parentnodeid)) {
+                        $p->parentorigin    = $this->_parentorigin;
+                        $p->parentnode      = $this->_parentnode;
+                        $p->parentnodeid    = $this->_parentnodeid;
+                    }
 
                     $pd = new \Modl\PostnDAO;
                     $pd->set($p);

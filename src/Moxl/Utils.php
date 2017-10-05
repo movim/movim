@@ -111,8 +111,8 @@ class Utils
         return [
             'urn:xmpp:microblog:0',
             'urn:xmpp:microblog:0+notify',
-            'urn:xmpp:inbox',
-            'urn:xmpp:inbox+notify',
+            //'urn:xmpp:inbox',
+            //'urn:xmpp:inbox+notify',
             'urn:xmpp:pubsub:subscription',
             'urn:xmpp:pubsub:subscription+notify',
 

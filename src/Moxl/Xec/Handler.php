@@ -168,15 +168,12 @@ class Handler
             '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',// TLS
             'a0e8e987b067b6b0470606f4f90d5362' => 'Roster',
 
-            //'b5e3374e43f6544852f7751dfc529100' => 'Subject',//?
-
             'fa9d41e26f664d9056618a4afe213861' => 'Post',
 
             '9952d726429340d482ecac82c1496191' => 'BOB',
 
             '4c9681f0e9aca8a5b65f86b8b80d490f' => 'DiscoInfo',
             '2bf34d156903518b18e58b4786c25d3b' => 'DiscoItems',
-            //'482069658b024085fbc4e311fb771fa6' => 'DiscoInfo',//?
 
             '37ff18f136d5826c4426af5a23729e48' => 'Mood',
             '6b38ed328fb77617c6e4a5ac9dda0ad2' => 'Tune',
@@ -184,7 +181,6 @@ class Handler
             '9c8ed44d4528a66484b0fbd44b0a9070' => 'Nickname',
 
             'd8ea912a151202700bb399c9e04d205f' => 'Caps',
-            //'4a8a08f09d37b73795649038408b5f33' => 'Caps',//?
 
             '40ed26a65a25ab8bf809dd998d541d95' => 'PingPong',
 
@@ -199,12 +195,6 @@ class Handler
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
             //'c2a75c460d99bcad64e81e7730abddef' => 'PubsubSubscription',
-
-            //'da6b60476aeab672ac0afe3ff27dc6a4' => 'OMEMODevices',
-            //'c5685812e4af902631769b013dc3512d' => 'OMEMOMessage',
-            // Non standard
-            //'bf6fdcbb9c8df6480076113d4865c3c2' => 'OMEMOMovim',
-            //'c978b9c87e224e5817b0dde65fec8cd1' => 'OMEMOMessage',
 
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
             '201fa54dd93e3403611830213f5f9fbc' => 'Carbons',//?
