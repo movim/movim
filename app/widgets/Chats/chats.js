@@ -13,10 +13,11 @@ var Chats = {
                     Rooms.refresh();
 
                     Chat_ajaxGet(this.dataset.jid);
-                    MovimUtils.removeClassInList('active', items);
                     Notification_ajaxClear('chat|' + this.dataset.jid);
                     Notification.current('chat|' + this.dataset.jid);
-                    MovimUtils.addClass(this, 'active');
+
+                    items.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
                 };
 
                 items[i].onmousedown = function(e) {
@@ -31,8 +32,7 @@ var Chats = {
                 }
             }
 
-            MovimUtils.removeClass(items[i], 'active');
-
+            items[i].classList.remove('active');
             i++;
         }
 

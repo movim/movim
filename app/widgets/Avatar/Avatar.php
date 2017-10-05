@@ -51,9 +51,7 @@ class Avatar extends \Movim\Widget\Base
         $p->get($this->user->getLogin());
 
         $avatarform->assign('photobin', $p->toBase());
-
         $avatarform->assign('me',       $me);
-
         $avatarform->assign(
             'submit',
             $this->call('ajaxSubmit', "MovimUtils.formToJson('avatarform')")

@@ -354,8 +354,8 @@ var Chat = {
             && msgStack.parentNode == refBubble
             && data.file === null
             && data.sticker === null
-            && !MovimUtils.hasClass(refBubble.querySelector('div.bubble'), "sticker")
-            && !MovimUtils.hasClass(refBubble.querySelector('div.bubble'), "file")
+            && !refBubble.querySelector('div.bubble').classList.contains('sticker')
+            && !refBubble.querySelector('div.bubble').classList.contains('file')
         ){
             bubble = msgStack.parentNode;
             mergeMsg = true;

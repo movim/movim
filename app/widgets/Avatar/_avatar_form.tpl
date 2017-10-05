@@ -81,7 +81,6 @@
         type="button"
         onclick="
             {$submit}
-            MovimUtils.buttonSave('#avatarvalidate');
             this.value = '{$c->__('button.submitting')}';
             this.className='button inactive oppose';"
         class="button color oppose"

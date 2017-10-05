@@ -10,9 +10,10 @@ var Rooms = {
                 items[i].onclick = function(e) {
                     Chats.refresh();
 
+                    items.forEach(item => item.classList.remove('active'));
+                    this.classList.add('active');
+
                     Chat_ajaxGetRoom(this.dataset.jid);
-                    MovimUtils.removeClassInList('active', items);
-                    MovimUtils.addClass(this, 'active');
                 }
             }
 
