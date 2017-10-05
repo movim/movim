@@ -109,20 +109,14 @@ var MovimTpl = {
         MovimUtils.toggleClass('.button.action', 'active');
     },
     toggleContextMenu : function(e) {
-        var element = 'ul.context_menu';
-        var classname = 'shown';
-
-        if(document.querySelector(element) == null) {
-            return;
-        }
+        var contextMenu = document.querySelector('ul.context_menu');
+        if(contextMenu == null) return;
 
         if(document.querySelector('.show_context_menu').contains(e.target)) {
-            MovimUtils.addClass(element, classname);
-            return;
+            contextMenu.classList.add('shown');
+        } else {
+            contextMenu.classList.remove('shown');
         }
-
-        //if(!document.querySelector(element).contains(e.target))
-        MovimUtils.removeClass(element, classname);
     },
     toggleMenu : function() {
         MovimUtils.toggleClass('body > nav', 'active');

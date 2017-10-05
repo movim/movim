@@ -220,16 +220,6 @@ var MovimUtils = {
         else
             MovimUtils.addClass(element, classname);
     },
-    toggleDisplay: function(element) {
-        var node = MovimUtils.getNode(element);
-
-        if(node != null) {
-            if(node.style.display == 'block')
-                MovimUtils.hideElement(node);
-            else
-                MovimUtils.showElement(node);
-        }
-    },
     htmlEscape: function(string) {
         return String(string)
                 .replace(/&/g, '&amp;')
