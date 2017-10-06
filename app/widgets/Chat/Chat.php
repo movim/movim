@@ -283,7 +283,8 @@ class Chat extends \Movim\Widget\Base
             $headers = requestHeaders($message);
 
             if($headers['http_code'] == 200
-            && typeIsPicture($headers['content_type'])) {
+            && typeIsPicture($headers['content_type'])
+            && $headers['download_content_length'] > 100) {
                 $file = new \stdClass;
                 $file->name = $message;
                 $file->type = $headers['content_type'];
