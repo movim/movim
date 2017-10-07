@@ -91,11 +91,6 @@ class Rooms extends \Movim\Widget\Base
 
     function onDisconnected()
     {
-        // We reset the Chat view
-        $c = new Chat();
-        $c->ajaxGet();
-
-        $this->refreshRooms();
         Notification::append(null, $this->__('chatrooms.disconnected'));
     }
 
@@ -271,12 +266,27 @@ class Rooms extends \Movim\Widget\Base
         if(!$this->validateRoom($room)) return;
 
         // We reset the Chat view
-        $c = new Chat();
+        $c = new Chat;
         $c->ajaxGet();
 
         // We properly exit
         $s = Session::start();
         $resource = $s->get('username');
+
+        $cd = new \Modl\CapsDAO;
+        $jid = explodeJid($room);
+        $caps = $cd->get($jid['server']);
+
+        if(!isset($caps) || !$caps->isMAM()) {
+            // We clear all the old messages
+            $md = new \Modl\MessageDAO;
+            $md->deleteContact($room);
+        }
+
+        $md = new \Modl\PresenceDAO;
+        $md->clearMuc($room);
+
+        $this->refreshRooms();
 
         $pu = new Unavailable;
         $pu->setTo($room)
