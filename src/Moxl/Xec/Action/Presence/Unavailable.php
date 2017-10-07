@@ -73,21 +73,6 @@ class Unavailable extends Action
 
     public function handle($stanza, $parent = false)
     {
-        if($this->_muc) {
-            $cd = new \Modl\CapsDAO;
-            $jid = explodeJid($this->_to);
-            $caps = $cd->get($jid['server']);
-
-            if(!isset($caps) || !$caps->isMAM()) {
-                // We clear all the old messages
-                $md = new \Modl\MessageDAO;
-                $md->deleteContact($this->_to);
-            }
-
-            $md = new \Modl\PresenceDAO;
-            $md->clearMuc($this->_to);
-        }
-
         $this->deliver();
     }
 }
