@@ -207,9 +207,6 @@ class Chat extends \Movim\Widget\Base
             //$chats = new Chats;
             //$chats->ajaxGetHistory($jid);
 
-            $notif = new Notification;
-            $notif->ajaxClear('chat|'.$jid);
-
             $html = $this->prepareChat($jid);
 
             $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));
@@ -645,8 +642,15 @@ class Chat extends \Movim\Widget\Base
 
         $date = $view->draw('_chat_date', true);
 
-        $this->rpc('Chat.setBubbles', $left, $right, $date);
+        $separator = $view->draw('_chat_separator', true);
+
+        $this->rpc('Chat.setBubbles', $left, $right, $date, $separator);
         $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper);
+
+        $notif = new Notification;
+        $this->rpc('Chat.insertSeparator', $notif->getCounter('chat|'.$jid));
+        $notif->ajaxClear('chat|'.$jid);
+
         $this->rpc('MovimTpl.scrollPanel');
         $this->rpc('Chat.clearReplace');
     }

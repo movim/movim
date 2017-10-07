@@ -139,6 +139,21 @@ class Notification extends \Movim\Widget\Base
     }
 
     /**
+     * @brief Get all the keys
+     * @return void
+     */
+    function getCounter($key)
+    {
+        $session = Session::start();
+        $notifs = $session->get('notifs');
+        if($notifs != null && array_key_exists($key, $notifs)) {
+            return $notifs[$key];
+        }
+
+        return 0;
+    }
+
+    /**
      * @brief Set the current used key (to prevent notifications on current view)
      *
      * @param string $key

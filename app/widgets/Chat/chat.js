@@ -2,6 +2,7 @@ var Chat = {
     left : null,
     right: null,
     date: null,
+    separator: null,
     currentDate: null,
     lastScroll: null,
     lastHeight: null,
@@ -131,6 +132,10 @@ var Chat = {
             Chat_ajaxLast(textarea.dataset.jid);
         }
     },
+    counter: function(counter)
+    {
+        console.log(counter);
+    },
     focus: function()
     {
         Chat.sended = false;
@@ -233,7 +238,7 @@ var Chat = {
     {
         Chat_ajaxGet();
     },
-    setBubbles : function(left, right, date) {
+    setBubbles : function(left, right, date, separator) {
         var div = document.createElement('div');
 
         Chat.currentDate = null;
@@ -244,6 +249,8 @@ var Chat = {
         Chat.right = div.firstChild.cloneNode(true);
         div.innerHTML = date;
         Chat.date = div.firstChild.cloneNode(true);
+        div.innerHTML = separator;
+        Chat.separator = div.firstChild.cloneNode(true);
 
         Chat.setScrollBehaviour();
     },
@@ -527,6 +534,17 @@ var Chat = {
             }
 
             list.appendChild(dateNode);
+        }
+    },
+    insertSeparator: function(counter) {
+        separatorNode = Chat.separator.cloneNode(true);
+
+        var list = document.querySelector('#chat_widget > div ul');
+        var messages = document.querySelectorAll('#chat_widget > div ul div.bubble p');
+
+        if(messages.length > counter && counter > 0) {
+            var p = messages[messages.length - counter];
+            list.insertBefore(separatorNode, p.parentNode.parentNode.parentNode);
         }
     },
     getStickerHtml: function(sticker) {
