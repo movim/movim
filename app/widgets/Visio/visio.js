@@ -225,7 +225,6 @@ var Visio = {
 
     goodbye: function() {
         Visio.onTerminate();
-
         Visio_ajaxTerminate(Visio.from);
     },
 
@@ -234,6 +233,7 @@ var Visio = {
      */
     toggleMainButton: function() {
         button = document.getElementById('main');
+        state = document.querySelector('p.state');
 
         i = button.querySelector('i');
 
@@ -250,7 +250,8 @@ var Visio = {
                 if(Visio.pc.iceGatheringState == 'gathering'
                 || Visio.pc.iceGatheringState == 'complete') {
                     button.classList.add('orange');
-                    i.className = 'zmdi zmdi-phone-ring';
+                    i.className = 'zmdi zmdi-phone-ring ring';
+                    state.innerHTML = Visio.states.ringing;
 
                     button.onclick = function() { Visio.goodbye(); };
                 } else {
@@ -262,8 +263,10 @@ var Visio = {
             } else if(Visio.pc.iceConnectionState == 'checking') {
                 button.classList.add('green');
                 i.className = 'zmdi zmdi-phone-end ring';
+                state.innerHTML = Visio.states.calling;
 
-                button.onclick = function() { Visio.answer(); };
+                Visio.answer();
+                //button.onclick = function() { Visio.answer(); };
             } else if(Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');
                 i.className = 'zmdi zmdi-phone-end';
@@ -274,6 +277,12 @@ var Visio = {
                    || Visio.pc.iceConnectionState == 'failed') {
                 button.classList.add('red');
                 i.className = 'zmdi zmdi-phone-end';
+
+                if(Visio.pc.iceConnectionState == 'failed') {
+                    state.innerHTML = Visio.states.failed;
+                } else {
+                    state.innerHTML = Visio.states.in_call;
+                }
 
                 button.onclick = function() { Visio.goodbye(); };
             }
