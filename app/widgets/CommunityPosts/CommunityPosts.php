@@ -40,7 +40,6 @@ class CommunityPosts extends \Movim\Widget\Base
     function onItemsError($packet)
     {
         list($origin, $node) = array_values($packet->content);
-        Notification::append(false, $this->__('communityposts.empty'));
 
         if($node != 'urn:xmpp:microblog:0') {
             $sd = new \Modl\SubscriptionDAO;
