@@ -22,3 +22,17 @@
         </p>
     </li>
 {/if}
+
+<ul class="list block middle active">
+    <a href="{$c->route('node', [$info->server, $info->node])}" target="_blank" class="block">
+        <li>
+            <span class="primary icon">
+                <i class="zmdi zmdi-portable-wifi"></i>
+            </span>
+            <span class="control icon">
+                <i class="zmdi zmdi-chevron-right"></i>
+            </span>
+            <p class="normal">{$c->__('communitydata.public')}</p>
+        </li>
+    </a>
+</ul>
