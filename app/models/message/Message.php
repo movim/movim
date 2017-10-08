@@ -112,7 +112,10 @@ class Message extends Model
             }
 
             # HipChat MUC specific cards
-            if(explodeJid($this->jidfrom)['server'] == 'conf.hipchat.com'
+            if(in_array(
+                explodeJid($this->jidfrom)['server'],
+                ['conf.hipchat.com', 'conf.btf.hipchat.com']
+            )
             && $this->type == 'groupchat'
             && $stanza->x
             && $stanza->x->attributes()->xmlns == 'http://hipchat.com/protocol/muc#room'
