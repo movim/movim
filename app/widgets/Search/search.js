@@ -1,4 +1,6 @@
 var Search = {
+    timer : null,
+
     init : function() {
         document.querySelector('input[name=keyword]').focus();
     },
@@ -22,6 +24,24 @@ var Search = {
         } else if(subheader) {
             subheader.classList.remove('found');
         }
+    },
+
+    searchSomething : function(value) {
+        clearTimeout(Search.timer);
+
+        if(value !== '') {
+            document.querySelector('#searchbar span.primary i').className = 'zmdi zmdi-rotate-right zmdi-hc-spin';
+        }
+
+        Search.timer = setTimeout(() => {
+            Search_ajaxSearch(value);
+            Search.roster(value);
+        },
+        700);
+    },
+
+    searchClear : function() {
+        document.querySelector('#searchbar span.primary i').className = 'zmdi zmdi-search';
     }
 }
 
@@ -30,3 +50,4 @@ document.addEventListener('keydown', function(e) {
         Search_ajaxRequest();
     }
 });
+

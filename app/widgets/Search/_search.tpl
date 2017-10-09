@@ -48,7 +48,7 @@
         {/loop}
     </ul>
 </section>
-<div>
+<div id="searchbar">
     <ul class="list">
         <li>
             <span class="primary icon gray">
@@ -56,7 +56,10 @@
             </span>
             <form name="search" onsubmit="return false;">
                 <div>
-                    <input name="keyword" placeholder="{$c->__('search.keyword')}" onkeyup="Search_ajaxSearch(this.value); Search.roster(this.value)" type="text">
+                    <input name="keyword"
+                        placeholder="{$c->__('search.keyword')}"
+                        onkeyup="Search.searchSomething(this.value)"
+                        type="text">
                 </div>
             </form>
         </li>
