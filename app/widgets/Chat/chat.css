@@ -109,8 +109,8 @@
 
 #chat_widget .contained:not(.muc) ul li.oppose + li.oppose span.icon,
 #chat_widget .contained:not(.muc) ul li.oppose + li.oppose .bubble::before,
-#chat_widget .contained:not(.muc) ul li:not(.oppose) + li:not(.oppose) span.icon,
-#chat_widget .contained:not(.muc) ul li:not(.oppose) + li:not(.oppose) .bubble::before {
+#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator) + li:not(.oppose) span.icon,
+#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator) + li:not(.oppose) .bubble::before {
     display: none;
 }
 
