@@ -5,6 +5,7 @@
     <title><?php $this->title();?></title>
 
     <meta name="theme-color" content="#1C1D5B" />
+    <meta http-equiv="Content-Security-Policy" content="font-src 'self'; child-src https://youtube.com; ">
 
     <?php $this->meta();?>
 
@@ -38,8 +39,6 @@
         $this->addCss('typo.css');
         $this->addCss('material-design-iconic-font.min.css');
 
-        $this->widget('System');
-
         $this->scripts();
     ?>
     </head>
@@ -69,6 +68,5 @@
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Drawer');?>
         <?php $this->content();?>
-        <script type="text/javascript">if(typeof movim_onload == 'function') { movim_onload(); }</script>
     </body>
 </html>

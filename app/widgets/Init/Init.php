@@ -51,6 +51,7 @@ class Init extends \Movim\Widget\Base
         $p->setTo($this->user->getLogin())
           ->setNode($node)
           ->setAccessPresence()
+          ->setMaxItems(10000)
           ->request();
     }
 

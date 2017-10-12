@@ -1,9 +1,13 @@
 var Upload = {
     xhr : null,
-    attached : new Array(),
+    attached : [],
     get : null,
     name : null,
     file : null,
+
+    setLimit : function(limit) {
+        Upload.limit = limit;
+    },
 
     init : function() {
         if(Upload.file) {
@@ -65,7 +69,7 @@ var Upload = {
 
             var ratio = Math.min(limit / width, limit / height);
 
-            if(ratio < 1 || file.size > SMALL_PICTURE_LIMIT) {
+            if(ratio < 1 || file.size > Upload.limit) {
                 if(ratio < 1) {
                     width = Math.round(width*ratio);
                     height = Math.round(height*ratio);
@@ -169,3 +173,6 @@ var Upload = {
     }
 }
 
+MovimWebsocket.attach(function() {
+    Upload_ajaxGetLimit();
+});

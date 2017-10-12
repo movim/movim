@@ -86,7 +86,7 @@ var MovimUtils = {
         }
     },
     disconnect: function() {
-        window.location.replace(ERROR_URI);
+        window.location.replace(window.location.origin + '/?disconnect');
     },
     formToJson: function(formname) {
         var form = document.forms[formname];
