@@ -69,7 +69,7 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            var obj = JSON.parse(e.data);
+            var obj = JSON.parse(pako.ungzip(atob(e.data), { to: 'string' }));
 
             if(obj != null) {
                 if(obj.func == 'registered') {
@@ -91,7 +91,6 @@ var MovimWebsocket = {
 
                 MovimWebsocket.handle(obj);
             }
-
         };
 
         this.connection.onclose = function(e) {
