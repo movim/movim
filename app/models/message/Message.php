@@ -254,7 +254,7 @@ class Message extends Model
     public function isTrusted()
     {
         $rd = new \Modl\RosterLinkDAO;
-        $from = explode('@',(string)$this->jidfrom);
+        $from = explode('@', cleanJid((string)$this->jidfrom));
         $from = explode('.', end($from));
 
         $session = explode('@',(string)$this->session);
