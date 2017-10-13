@@ -69,7 +69,8 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            var obj = JSON.parse(pako.ungzip(atob(e.data), { to: 'string' }));
+            data = pako.ungzip(atob(e.data), { to: 'string' });
+            var obj = JSON.parse(data);
 
             if(obj != null) {
                 if(obj.func == 'registered') {
