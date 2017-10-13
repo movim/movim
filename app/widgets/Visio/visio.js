@@ -16,7 +16,6 @@ var Visio = {
         Visio.from = from;
     },
 
-
     /*
      * Jingle and WebRTC
      */

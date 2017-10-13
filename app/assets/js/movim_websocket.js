@@ -69,7 +69,7 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            data = pako.ungzip(MovimUtils.base64Decode(e.data), { to: 'string' });
+            data = pako.ungzip(atob(e.data), { to: 'string' });
 
             var obj = JSON.parse(data);
 
