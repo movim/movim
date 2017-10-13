@@ -84,7 +84,7 @@ MovimWebsocket.register(function()
 
     form = document.querySelector('form[name="login"]');
     if(Login.submitted) {
-        eval(form.dataset.action);
+        Login_ajaxLogin(MovimUtils.formToJson('login'));
     }
 });
 

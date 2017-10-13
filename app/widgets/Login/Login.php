@@ -46,14 +46,9 @@ class Login extends \Movim\Widget\Base
 
     function display()
     {
-        $submit = $this->call(
-            'ajaxLogin',
-            "MovimUtils.formToJson('login')");
-
         $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
-        $this->view->assign('submit',   $submit);
         $this->view->assign('info',     $config->info);
         $this->view->assign('whitelist',$config->xmppwhitelist);
 
