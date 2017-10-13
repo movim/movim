@@ -19,8 +19,8 @@ WebSocket.prototype.register = function(host) {
 
 var MovimWebsocket = {
     connection: null,
-    attached: new Array(),
-    registered: new Array(),
+    attached: [],
+    registered: [],
     attempts: 1,
     pong: false,
     closed: false,
@@ -69,9 +69,7 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            data = pako.ungzip(atob(e.data), { to: 'string' });
-
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(e.data);
 
             if(obj != null) {
                 if(obj.func == 'registered') {
@@ -172,7 +170,7 @@ var MovimWebsocket = {
     },
 
     clearAttached : function() {
-        this.attached = new Array();
+        this.attached = [];
     },
 
     handle : function(funcalls) {
@@ -183,7 +181,13 @@ var MovimWebsocket = {
                     try {
                         window[funcall.func].apply(null, funcall.params);
                     } catch(err) {
-                        console.log("Error caught: " + err.toString() + " - " + funcall.func + ":" + JSON.stringify(funcall.params));
+                        console.log("Error caught: "
+                            + err.toString()
+                            + " - "
+                            + funcall.func
+                            + ":"
+                            + JSON.stringify(funcall.params)
+                        );
                     }
                 } else if(funcall.func != null) {
                     var funcs  = funcall.func.split('.');

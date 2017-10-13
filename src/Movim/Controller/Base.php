@@ -77,7 +77,6 @@ class Base
         if(!$this->public) {
             $this->page->addScript('movim_tpl.js');
             $this->page->addScript('movim_websocket.js');
-            $this->page->addScript('pako_inflate.js');
         }
 
         $user = new User;

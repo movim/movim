@@ -23,10 +23,7 @@ class RPC
                 'params' => $args,
             ];
 
-            //echo base64_encode(gzcompress(json_encode([$funcall]), 9))."";
             self::$funcalls[] = $funcall;
-        } elseif(isset($args[0])) {
-            //\system\Logs\Logger::log('RPC cleaning system : '.$funcname.', '.$args[0].' cleared');
         }
     }
 

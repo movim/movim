@@ -66,7 +66,7 @@ function writeOut()
     $msg = RPC::commit();
 
     if(!empty($msg)) {
-        echo base64_encode(gzcompress(json_encode($msg), 9))."";
+        echo json_encode($msg)."";
         //fwrite(STDERR, colorize(json_encode($msg).' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
     }
 
@@ -113,7 +113,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         // And we say that we are ready !
                         $obj = new \StdClass;
                         $obj->func = 'pong';
-                        echo base64_encode(gzcompress(json_encode($obj), 9))."";
+                        echo json_encode($obj)."";
                         break;
 
                     case 'down':
@@ -285,7 +285,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
 
     //fwrite(STDERR, colorize(json_encode($obj).' '.strlen($obj), 'yellow')." : ".colorize('obj sent to browser', 'green')."\n");
 
-    echo base64_encode(gzcompress(json_encode($obj), 9))."";
+    echo json_encode($obj)."";
 };
 
 $stdin->on('data', $stdin_behaviour);
