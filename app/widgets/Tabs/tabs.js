@@ -77,8 +77,8 @@ var Tabs = {
     }
 };
 
-movim_add_onload(function()
-{
+
+document.addEventListener("DOMContentLoaded", function(event) {
     Tabs.create();
 });
 
