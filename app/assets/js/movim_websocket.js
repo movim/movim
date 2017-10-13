@@ -230,7 +230,7 @@ window.onbeforeunload = function() {
     MovimWebsocket.connection.close()
 };
 
-movim_add_onload(function() {
+document.addEventListener("DOMContentLoaded", function(event) {
     // And we start it
     MovimWebsocket.init();
 });

@@ -182,17 +182,17 @@ if(typeof MovimWebsocket != 'undefined') {
         Notification.tab_counter1 = Notification.tab_counter2 = 0;
         Notification_ajaxGet();
         Notification.current(Notification.notifs_key);
+
+        document.addEventListener('blur', function() {
+            Notification.focused = false;
+            Notification_ajaxCurrent('blurred');
+        });
+
+        document.addEventListener('focus', function() {
+            Notification.focused = true;
+            Notification.current(Notification.notifs_key);
+            Notification_ajaxClear(Notification.notifs_key);
+        });
     });
 }
-
-document.addEventListener('blur', function() {
-    Notification.focused = false;
-    Notification_ajaxCurrent('blurred');
-});
-
-document.addEventListener('focus', function() {
-    Notification.focused = true;
-    Notification.current(Notification.notifs_key);
-    Notification_ajaxClear(Notification.notifs_key);
-});
 
