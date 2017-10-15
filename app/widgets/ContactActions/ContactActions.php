@@ -41,6 +41,8 @@ class ContactActions extends \Movim\Widget\Base
             $tpl->assign('contactr', $cr);
             $tpl->assign('caps', $cr->getCaps());
             $tpl->assign('clienttype', getClientTypes());
+        } else {
+            $tpl->assign('caps', null);
         }
 
         $c  = $cd->get($jid);
