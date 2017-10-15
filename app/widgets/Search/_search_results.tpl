@@ -31,6 +31,7 @@
             </li>
         {/loop}
     </ul>
+
     {if="$contacts != null"}
     <ul class="list">
         <li class="subheader">
@@ -59,6 +60,9 @@
                     <i class="zmdi zmdi-comment-text-alt"></i>
                 </span>
                 <p class="normal line">{$value->getTrueName()}</p>
+                {if="$value->isEmpty()"}
+                    <p>{$value->jid}</p>
+                {/if}
             </li>
         {/loop}
         </ul>

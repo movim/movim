@@ -50,7 +50,15 @@ class Search extends \Movim\Widget\Base
 
         if(!empty($key)) {
             $cd = new \Modl\ContactDAO;
-            $view->assign('contacts', $cd->searchJid($key));
+            $contacts = $cd->searchJid($key);
+
+            if($contacts)
+                $view->assign('contacts', $contacts);
+            if(Validator::email()->validate($key)) {
+                $c = new \Modl\Contact($key);
+                $c->jid = $key;
+                $view->assign('contacts', [$c]);
+            }
         } else {
             $view->assign('contacts', null);
         }
