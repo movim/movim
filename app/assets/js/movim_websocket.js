@@ -41,10 +41,10 @@ var MovimWebsocket = {
     },
 
     init : function() {
-        if(document.location.protocol == 'https:') {
-            var uri = 'wss://' + window.location.host + '/ws/';
+        if(SECURE_WEBSOCKET) {
+            var uri = 'wss://' + BASE_HOST + '/ws/';
         } else {
-            var uri = 'ws://' + window.location.host + '/ws/';
+            var uri = 'ws://' + BASE_HOST + '/ws/';
         }
 
         if(this.connection

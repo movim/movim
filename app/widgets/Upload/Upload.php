@@ -28,11 +28,6 @@ class Upload extends \Movim\Widget\Base
         Notification::append(null, $this->__('upload.error_filesize'));
     }
 
-    function ajaxGetLimit()
-    {
-        $this->rpc('Upload.setLimit', SMALL_PICTURE_LIMIT);
-    }
-
     function ajaxRequest()
     {
         $view = $this->tpl();

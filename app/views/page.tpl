@@ -15,6 +15,7 @@
     <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/96.png');?>" sizes="96x96">
     <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/128.png');?>" sizes="128x128">
     <script src="<?php echo BASE_URI; ?>app/assets/js/favico.js"></script>
+    <script src="<?php echo \Movim\Route::urlize('system'); ?>"></script>
 
     <meta name="viewport" content="width=device-width, user-scalable=no">
 

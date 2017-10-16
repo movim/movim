@@ -36,6 +36,7 @@ class Route extends Base
                 'publish'       => ['s', 'n', 'i', 'sh'],
                 'room'          => ['r'],
                 'share'         => ['url'],
+                'system'        => false,
                 'tag'           => ['t', 'i'],
                 'visio'         => ['f', 's'],
             ];
