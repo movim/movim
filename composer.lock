@@ -60,7 +60,7 @@
                 "sockets",
                 "websocket"
             ],
-            "time": "2017-09-10 18:41:56"
+            "time": "2017-09-10T18:41:56+00:00"
         },
         {
             "name": "clue/buzz-react",
@@ -411,7 +411,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-09-25 20:57:58"
+            "time": "2017-09-25T20:57:58+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -612,7 +612,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-11-15 20:35:47"
+            "time": "2016-11-15T20:35:47+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -658,7 +658,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2017-06-17 11:56:57"
+            "time": "2017-06-17T11:56:57+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -770,7 +770,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-07-06 11:04:24"
+            "time": "2017-07-06T11:04:24+00:00"
         },
         {
             "name": "movim/moxl",
@@ -818,7 +818,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-10-08 21:07:37"
+            "time": "2017-10-08T21:07:37+00:00"
         },
         {
             "name": "movim/sasl2",
@@ -869,7 +869,7 @@
                 "sasl2",
                 "scram"
             ],
-            "time": "2014-06-05 21:19:06"
+            "time": "2014-06-05T21:19:06+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1101,7 +1101,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15 14:21:40"
+            "time": "2016-12-15T14:21:40+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -1431,7 +1431,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2016-07-06 23:51:32"
+            "time": "2016-07-06T23:51:32+00:00"
         },
         {
             "name": "react/http-client",
@@ -1710,16 +1710,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.17",
+            "version": "1.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "dc869ac3757af7de801f1c7dbe16c6493d537a9e"
+                "reference": "c013fac277e94b816163146b459d9a63c56eb499"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/dc869ac3757af7de801f1c7dbe16c6493d537a9e",
-                "reference": "dc869ac3757af7de801f1c7dbe16c6493d537a9e",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/c013fac277e94b816163146b459d9a63c56eb499",
+                "reference": "c013fac277e94b816163146b459d9a63c56eb499",
                 "shasum": ""
             },
             "require": {
@@ -1771,7 +1771,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2017-03-14T09:28:03+00:00"
+            "time": "2017-10-16T08:16:47+00:00"
         },
         {
             "name": "ringcentral/psr7",
