@@ -25,7 +25,6 @@ class Get extends Action
         // Generating the queryid key.
         $this->_queryid = \generateKey(12);
         $sess->set('mamid'.$this->_queryid, true);
-
         $this->store();
 
         MAM::get($this->_to, $this->_queryid, $this->_jid,
@@ -80,16 +79,16 @@ class Get extends Action
         $sess = Session::start();
         $sess->remove('mamid'.$this->_queryid);
 
-        if(isset($stanza->fin)
+        /*if(isset($stanza->fin)
         && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
         && isset($stanza->fin->set->last)
+        && !isset($this->_jid)
         && (string)$stanza->fin->set->last != $this->_after) {
             $g = new Get;
             $g->setLimit($this->_limit);
-            $g->setStart($this->_start);
             $g->setAfter((string)$stanza->fin->set->last);
             $g->request();
-        }
+        }*/
     }
 
     public function error($error) {
