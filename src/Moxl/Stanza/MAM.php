@@ -4,7 +4,10 @@ namespace Moxl\Stanza;
 
 class MAM
 {
-    static function get($to = null, $id, $jid = false, $start = false, $end = false, $limit = false, $version = '1')
+    static function get(
+        $to = null, $id, $jid = false,
+        $start = false, $end = false,
+        $limit = false, $after = false, $version = '1')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('urn:xmpp:mam:'.$version, 'query');
@@ -51,10 +54,18 @@ class MAM
             $x->appendChild($field_end);
         }
 
-        if($limit) {
+        if($limit || $after) {
             $set_limit = $dom->createElement('set');
             $set_limit->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
-            $set_limit->appendChild($dom->createElement('max', $limit));
+
+            if($limit) {
+                $set_limit->appendChild($dom->createElement('max', $limit));
+            }
+
+            if($after) {
+                $set_limit->appendChild($dom->createElement('after', $after));
+            }
+
             $query->appendChild($set_limit);
         }
 

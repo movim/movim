@@ -15,6 +15,7 @@ class Get extends Action
     private $_start;
     private $_end;
     private $_limit;
+    private $_after;
     private $_version = '1';
 
     public function request()
@@ -27,7 +28,9 @@ class Get extends Action
 
         $this->store();
 
-        MAM::get($this->_to, $this->_queryid, $this->_jid, $this->_start, $this->_end, $this->_limit, $this->_version);
+        MAM::get($this->_to, $this->_queryid, $this->_jid,
+            $this->_start, $this->_end,
+            $this->_limit, $this->_after, $this->_version);
     }
 
     public function setTo($to)
@@ -54,6 +57,12 @@ class Get extends Action
         return $this;
     }
 
+    public function setAfter($after)
+    {
+        $this->_after = $after;
+        return $this;
+    }
+
     public function setLimit($limit)
     {
         $this->_limit = $limit;
@@ -70,6 +79,17 @@ class Get extends Action
     {
         $sess = Session::start();
         $sess->remove('mamid'.$this->_queryid);
+
+        if(isset($stanza->fin)
+        && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
+        && isset($stanza->fin->set->last)
+        && (string)$stanza->fin->set->last != $this->_after) {
+            $g = new Get;
+            $g->setLimit($this->_limit);
+            $g->setStart($this->_start);
+            $g->setAfter((string)$stanza->fin->set->last);
+            $g->request();
+        }
     }
 
     public function error($error) {
