@@ -108,7 +108,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
@@ -815,6 +815,11 @@ msgstr "%s sottoscrittori"
 msgid "%s posts"
 msgstr "%s articoli"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Profilo pubblico"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Iscriviti"
@@ -858,10 +863,6 @@ msgstr "Ti stai disiscrivendo da questa comunità"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Sei sicuro?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "La comunità sembra essere vuota"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -1995,6 +1996,19 @@ msgstr "Per favore, contatta l'amministratore del tuo server per sapere se quest
 msgid "…is calling you"
 msgstr ""
 
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "Caricamento fallito"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Non hai abilitato javascript. Buona fortuna!"
@@ -2898,3 +2912,6 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
+
+#~ msgid "This community seems empty"
+#~ msgstr "La comunità sembra essere vuota"

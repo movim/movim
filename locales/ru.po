@@ -111,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -818,6 +818,11 @@ msgstr "%s подписчиков"
 msgid "%s posts"
 msgstr "%s публикаций"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Публичный профиль"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Подписаться"
@@ -861,10 +866,6 @@ msgstr "Вы собираетесь отписаться от этого соо�
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Вы уверены?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "Это сообщество, кажется, пустое"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -1998,6 +1999,19 @@ msgstr "Пожалуйста, свяжитесь с Вашим админист�
 msgid "…is calling you"
 msgstr ""
 
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "Загрузка не удалась"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "У вас не активирован javascript. Удачи вам в этом."
@@ -2901,3 +2915,6 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "This community seems empty"
+#~ msgstr "Это сообщество, кажется, пустое"

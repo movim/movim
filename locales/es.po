@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
@@ -814,6 +814,11 @@ msgstr "%s suscriptores"
 msgid "%s posts"
 msgstr "%s publicaciones"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Perfil público"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Suscribirse"
@@ -857,10 +862,6 @@ msgstr ""
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "¿Estás seguro?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr ""
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -1993,6 +1994,19 @@ msgstr ""
 #: [visio]calling
 msgid "…is calling you"
 msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "Subida fallida"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."

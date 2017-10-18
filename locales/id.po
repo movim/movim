@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Fahmi Barnes <itsfahmiegerton@live.co.uk>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
@@ -825,6 +825,11 @@ msgstr "%s pelanggan"
 msgid "%s posts"
 msgstr "%s postingan"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Profil publik"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Berlanganan"
@@ -868,10 +873,6 @@ msgstr "Anda akan membatalkan langganan dari komunitas ini"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Anda yakin ?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "Komunitas ini nampaknya kosong"
 
 #: [communityposts]nsfw_title
 #, fuzzy
@@ -2015,6 +2016,18 @@ msgstr ""
 msgid "…is calling you"
 msgstr ""
 
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+msgid "failed"
+msgstr ""
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
@@ -2919,6 +2932,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "This community seems empty"
+#~ msgstr "Komunitas ini nampaknya kosong"
 
 #~ msgid "User folder size limit (in bytes)"
 #~ msgstr "Batas limit ukuran folder (dalam bytes)"

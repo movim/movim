@@ -108,7 +108,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -815,6 +815,11 @@ msgstr "%s 订阅者"
 msgid "%s posts"
 msgstr "%s 帖子"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "公开个人资料"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "订阅"
@@ -858,10 +863,6 @@ msgstr "你将要取消订阅这个社群"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "您确定吗 ?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "这个社群看起来是空的"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -1995,6 +1996,19 @@ msgstr "请尝试联系你的服务器管理员看看能否开启这些特性"
 msgid "…is calling you"
 msgstr ""
 
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "上传失败"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "您的浏览器没有开启javascript，请排查一下"
@@ -2898,3 +2912,6 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "This community seems empty"
+#~ msgstr "这个社群看起来是空的"

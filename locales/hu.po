@@ -106,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -825,6 +825,11 @@ msgstr "%s feliratkozó"
 msgid "%s posts"
 msgstr "%s poszt"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Nyilvános csoportok"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Feliratkozás"
@@ -868,10 +873,6 @@ msgstr ""
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Biztos vagy benne ?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr ""
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -2013,6 +2014,18 @@ msgstr ""
 
 #: [visio]calling
 msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+msgid "failed"
 msgstr ""
 
 #: [global]no_js

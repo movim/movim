@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -811,6 +811,11 @@ msgstr "%s abonnenter"
 msgid "%s posts"
 msgstr "%s innlegg"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Offentlig profil"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Abonnér"
@@ -854,10 +859,6 @@ msgstr "Du forsøker å melde deg ut av dette samfunnet"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Er du sikker?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "Dette samfunnet er tomt"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -1991,6 +1992,19 @@ msgstr "Vennligst kontakt administratoren av tjeneren for å sjekke om funksjona
 msgid "…is calling you"
 msgstr ""
 
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "Opplastingen feilet"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Du har ikke aktivert javascript. Lykke til!"
@@ -2894,3 +2908,6 @@ msgstr "APIet kan ikke nåes, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "This community seems empty"
+#~ msgstr "Dette samfunnet er tomt"

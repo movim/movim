@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2016-11-06 11:15+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Bengali (http://www.transifex.com/movim/movim/language/bn/)\n"
@@ -810,6 +810,10 @@ msgstr ""
 msgid "%s posts"
 msgstr ""
 
+#: [communitydata]public
+msgid "Public page"
+msgstr ""
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr ""
@@ -852,10 +856,6 @@ msgstr ""
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
-msgstr ""
-
-#: [communityposts]empty
-msgid "This community seems empty"
 msgstr ""
 
 #: [communityposts]nsfw_title
@@ -1989,6 +1989,18 @@ msgstr ""
 
 #: [visio]calling
 msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+msgid "failed"
 msgstr ""
 
 #: [global]no_js

@@ -117,7 +117,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -824,6 +824,11 @@ msgstr "%s Abonnenten"
 msgid "%s posts"
 msgstr "%s Beiträge"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Öffentliches Profil"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Abonnieren"
@@ -867,10 +872,6 @@ msgstr "Du bist dabei, diese Gruppe zu deabonnieren"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Sind Sie sicher?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "Diese Gruppe scheint leer zu sein"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -2004,6 +2005,19 @@ msgstr "Bitte kontaktieren Sie den Administrators Ihres Servers, um dieses Featu
 msgid "…is calling you"
 msgstr ""
 
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "Heraufladen gescheitert"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Javascript ist im Browser deaktiviert. Das könnte Probleme verursachen."
@@ -2907,3 +2921,6 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "This community seems empty"
+#~ msgstr "Diese Gruppe scheint leer zu sein"

@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-29 11:38+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
@@ -811,6 +811,11 @@ msgstr "%s subskrybujących"
 msgid "%s posts"
 msgstr "%s wpisów"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Profil publiczny"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Subskrybuj"
@@ -854,10 +859,6 @@ msgstr "Zamierzasz usunąć subskrypcję dla tej społeczności"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Jesteś pewny/a ?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "Ta społeczność jest pusta"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -1991,6 +1992,19 @@ msgstr "Proszę powiadomić administratora twojego serwera w sprawie włączenia
 msgid "…is calling you"
 msgstr ""
 
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "Wysyłanie nie powiodło się"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Nie masz włączonego javascript.  Zatem powodzenia."
@@ -2894,3 +2908,6 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
+
+#~ msgid "This community seems empty"
+#~ msgstr "Ta społeczność jest pusta"
