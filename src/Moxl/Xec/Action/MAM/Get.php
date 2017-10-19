@@ -79,16 +79,17 @@ class Get extends Action
         $sess = Session::start();
         $sess->remove('mamid'.$this->_queryid);
 
-        /*if(isset($stanza->fin)
+        if(isset($stanza->fin)
         && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
         && isset($stanza->fin->set->last)
         && !isset($this->_jid)
+        && !isset($this->_to)
         && (string)$stanza->fin->set->last != $this->_after) {
             $g = new Get;
             $g->setLimit($this->_limit);
             $g->setAfter((string)$stanza->fin->set->last);
             $g->request();
-        }*/
+        }
     }
 
     public function error($error) {
