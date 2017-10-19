@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.12 – Lovejoy (trunk)
+v0.13 (trunk)
+---------------------------
+
+v0.12 – Lovejoy
 ---------------------------
  * Add autojoin support for chatrooms
  * New Contact page
