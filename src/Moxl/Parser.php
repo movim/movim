@@ -6,14 +6,15 @@ class Parser
 {
     private $parser;
     private $depth = 0;
-    public  $nodes = null;
     private $node = null;
     private $handler = null;
     private $raw = false;
+    private $callback = null;
 
-    public function __construct()
+    public function __construct($callback)
     {
         $this->reset();
+        $this->callback = $callback;
     }
 
     public function reset()
@@ -33,8 +34,6 @@ class Parser
 
         $this->depth = 0;
         $this->node = $this->handler = null;
-
-        $this->nodes = new \SplQueue;
     }
 
     public function parse($data, $end = false)
@@ -100,8 +99,7 @@ class Parser
         }
 
         if($this->depth == 1) {
-            $this->nodes->enqueue($this->node);
-            unset($this->node);
+            call_user_func_array($this->callback, [$this->node]);
         } elseif($this->depth > 1 && $this->raw == false) {
             $this->handler = current($this->handler->xpath("parent::*"));
         }
