@@ -11,4 +11,3 @@ class Event
         $widgets->iterate($key, $data);
     }
 }
-

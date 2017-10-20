@@ -2,6 +2,7 @@
 require __DIR__ . '/vendor/autoload.php';
 
 define('DOCUMENT_ROOT', dirname(__FILE__));
+define('EOT', 0x04);
 
 gc_enable();
 
@@ -67,7 +68,7 @@ function writeOut()
     $msg = RPC::commit();
 
     if(!empty($msg)) {
-        echo base64_encode(gzcompress(json_encode($msg), 9))."";
+        echo base64_encode(gzcompress(json_encode($msg), 9)).EOT;
     }
 
     RPC::clear();
@@ -94,8 +95,8 @@ function tick()
 
 $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser, &$timestamp)
 {
-    if(substr($data, -1) == "") {
-        $messages = explode("", $buffer . substr($data, 0, -1));
+    if(substr($data, -1) == EOT) {
+        $messages = explode(EOT, $buffer . substr($data, 0, -1));
         $buffer = '';
 
         foreach ($messages as $message) {
@@ -111,7 +112,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         // And we say that we are ready !
                         $obj = new \StdClass;
                         $obj->func = 'pong';
-                        echo base64_encode(gzcompress(json_encode($obj), 9))."";
+                        echo base64_encode(gzcompress(json_encode($obj), 9)).EOT;
                         break;
 
                     case 'down':
@@ -266,7 +267,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
 
     fwrite(STDERR, 'registered');
 
-    echo base64_encode(gzcompress(json_encode($obj), 9))."";
+    echo base64_encode(gzcompress(json_encode($obj), 9)).EOT;
 };
 
 $stdin->on('data', $stdin_behaviour);

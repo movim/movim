@@ -141,4 +141,3 @@ class Api
         return $emoji->replace($string);
     }
 }
-

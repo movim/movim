@@ -16,4 +16,3 @@ $daemon = new DaemonCommand;
 $application = new Application;
 $application->add($daemon);
 $application->run();
-
