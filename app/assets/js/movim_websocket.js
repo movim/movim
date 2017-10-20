@@ -173,30 +173,25 @@ var MovimWebsocket = {
         this.attached = [];
     },
 
-    handle : function(funcalls) {
-        if(funcalls != null) {
-            for(h = 0; h < funcalls.length; h++) {
-                var funcall = funcalls[h];
-                if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
-                    try {
-                        window[funcall.func].apply(null, funcall.params);
-                    } catch(err) {
-                        console.log("Error caught: "
-                            + err.toString()
-                            + " - "
-                            + funcall.func
-                            + ":"
-                            + JSON.stringify(funcall.params)
-                        );
-                    }
-                } else if(funcall.func != null) {
-                    var funcs  = funcall.func.split('.');
-                    var called = funcs[0];
-                    if(typeof window[called] == 'object'
-                    && typeof window[funcs[0]][funcs[1]] != 'undefined') {
-                        window[funcs[0]][funcs[1]].apply(null, funcall.params);
-                    }
-                }
+    handle : function(funcall) {
+        if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
+            try {
+                window[funcall.func].apply(null, funcall.params);
+            } catch(err) {
+                console.log("Error caught: "
+                    + err.toString()
+                    + " - "
+                    + funcall.func
+                    + ":"
+                    + JSON.stringify(funcall.params)
+                );
+            }
+        } else if(funcall.func != null) {
+            var funcs  = funcall.func.split('.');
+            var called = funcs[0];
+            if(typeof window[called] == 'object'
+            && typeof window[funcs[0]][funcs[1]] != 'undefined') {
+                window[funcs[0]][funcs[1]].apply(null, funcall.params);
             }
         }
     },

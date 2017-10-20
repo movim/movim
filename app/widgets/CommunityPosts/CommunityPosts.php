@@ -103,13 +103,6 @@ class CommunityPosts extends \Movim\Widget\Base
           ->request();
     }
 
-    /*function ajaxGetHistory($origin, $node, $page)
-    {
-        $html = $this->prepareCommunity($origin, $node, $page);
-        $this->rpc('MovimTpl.append', '#communityposts', $html);
-        $this->rpc('MovimUtils.enhanceArticlesContent');
-    }*/
-
     function ajaxClear()
     {
         $html = $this->prepareEmpty();

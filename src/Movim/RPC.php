@@ -6,41 +6,19 @@ use Movim\Widget\Wrapper;
 
 class RPC
 {
-    protected static $funcalls;
+    protected static $funcall;
 
     public static function call($funcname)
     {
-        if(!is_array(self::$funcalls)) {
-            self::$funcalls = [];
-        }
-
         $args = func_get_args();
         array_shift($args);
 
-        if(self::filter($funcname, $args)) {
-            $funcall = [
-                'func' => $funcname,
-                'params' => $args,
-            ];
+        self::$funcall = [
+            'func' => $funcname,
+            'params' => $args,
+        ];
 
-            self::$funcalls[] = $funcall;
-        }
-    }
-
-    /**
-     * Check if the event is not already called
-     */
-    private static function filter($funcname, $args)
-    {
-        foreach(self::$funcalls as $f) {
-            if(isset($f['func']) &&
-               isset($f['params']) &&
-               $f['func'] == $funcname &&
-               $f['params'] === $args)
-               return false;
-        }
-
-        return true;
+        writeOut();
     }
 
     /**
@@ -48,18 +26,13 @@ class RPC
      */
     public static function commit()
     {
-        return self::$funcalls;
-    }
-
-    public static function clear()
-    {
-        self::$funcalls = [];
+        return self::$funcall;
     }
 
     /**
      * Handles incoming requests.
      */
-    public function handle_json($request)
+    public function handleJSON($request)
     {
         // Loading the widget.
         if(isset($request->widget)) {
@@ -75,10 +48,11 @@ class RPC
             $params = (array)$request->params;
 
             foreach($params as $p) {
-                if(is_object($p) && isset($p->container))
+                if(is_object($p) && isset($p->container)) {
                     array_push($result, (array)$p->container);
-                else
+                } else {
                     array_push($result, $p);
+                }
             }
         }
 

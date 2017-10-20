@@ -10,14 +10,12 @@ use Movim\RPC;
 use Movim\Session;
 
 $bootstrap = new Bootstrap;
-$booted = $bootstrap->boot();
+$bootstrap->boot();
 
 $loop = React\EventLoop\Factory::create();
 
-$connector = new React\SocketClient\TcpConnector($loop);
-$stdin = new React\Stream\Stream(STDIN, $loop);
-
-\Movim\Task\Engine::init($loop);
+$connector = new React\Socket\TcpConnector($loop);
+$stdin = new React\Stream\ReadableResourceStream(STDIN, $loop);
 
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();
@@ -25,7 +23,9 @@ $wrapper->registerAll($bootstrap->getWidgets());
 
 $conn = null;
 
-$parser = new \Moxl\Parser;
+$parser = new \Moxl\Parser(function ($node) {
+    \Moxl\Xec\Handler::handle($node);
+});
 
 $buffer = '';
 
@@ -50,28 +50,13 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
     }
 });
 
-// One connected ping each 5 mins
-/*$loop->addPeriodicTimer(5*60, function() use (&$conn) {
-    if(isset($conn)
-    && is_resource($conn->stream)) {
-        $ping = new \Moxl\Xec\Action\Ping\Server;
-        $ping->request();
-
-        $conn->write(trim(\Moxl\API::commit()));
-        \Moxl\API::clear();
-    }
-});*/
-
 function writeOut()
 {
     $msg = RPC::commit();
 
     if(!empty($msg)) {
         echo base64_encode(gzcompress(json_encode($msg), 9))."";
-        //fwrite(STDERR, colorize(json_encode($msg).' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
     }
-
-    RPC::clear();
 }
 
 function writeXMPP($xml)
@@ -87,15 +72,13 @@ function writeXMPP($xml)
     }
 }
 
-$stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser, &$timestamp)
+$stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour)
 {
     if(substr($data, -1) == "") {
         $messages = explode("", $buffer . substr($data, 0, -1));
         $buffer = '';
 
         foreach ($messages as $message) {
-            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
-
             $msg = json_decode($message);
 
             if(isset($msg)) {
@@ -141,7 +124,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         $dns = \Moxl\Utils::resolveHost($msg->host);
                         if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
                         if(isset($dns->port) && $dns->port != null) $port = $dns->port;
-                        #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
 
                         $ip = \Moxl\Utils::resolveIp($msg->host);
                         $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
@@ -160,7 +142,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                 }
 
                 $rpc = new RPC;
-                $rpc->handle_json($msg);
+                $rpc->handleJSON($msg);
 
                 writeOut();
             } else {
@@ -172,7 +154,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
     }
 };
 
-$xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser, &$timestamp)
+$xmpp_behaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser, &$timestamp)
 {
     $conn = $stream;
 
@@ -231,8 +213,6 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 $restart = true;
             }
 
-            #fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");
-
             $timestamp = time();
 
             if($restart) {
@@ -246,14 +226,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
             }
 
-            while($parser->nodes && !$parser->nodes->isEmpty()) {
-                $node = $parser->nodes->dequeue();
-                \Moxl\Xec\Handler::handle($node);
-                unset($node);
-            }
-
             writeOut();
-            //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." end data : ".\sizeToCleanSize(memory_get_usage())."\n");
         }
     });
 
@@ -270,8 +243,6 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
     $obj->func = 'registered';
 
     fwrite(STDERR, 'registered');
-
-    //fwrite(STDERR, colorize(json_encode($obj).' '.strlen($obj), 'yellow')." : ".colorize('obj sent to browser', 'green')."\n");
 
     echo base64_encode(gzcompress(json_encode($obj), 9))."";
 };

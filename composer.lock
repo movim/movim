@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "84aacc4818a026dd9d4a25eec868a799",
+    "content-hash": "854095a21174b2a26516d115fc0b2380",
     "packages": [
         {
             "name": "cboden/ratchet",
-            "version": "0.4.x-dev",
+            "version": "v0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ratchetphp/Ratchet.git",
-                "reference": "0cde24bae7cb1d396d1ea82e862e826dee85d438"
+                "reference": "c03b1b0f56d1732a4bffcdbef5eae444f8c9e73b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/0cde24bae7cb1d396d1ea82e862e826dee85d438",
-                "reference": "0cde24bae7cb1d396d1ea82e862e826dee85d438",
+                "url": "https://api.github.com/repos/ratchetphp/Ratchet/zipball/c03b1b0f56d1732a4bffcdbef5eae444f8c9e73b",
+                "reference": "c03b1b0f56d1732a4bffcdbef5eae444f8c9e73b",
                 "shasum": ""
             },
             "require": {
@@ -30,9 +30,6 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8"
-            },
-            "suggest": {
-                "ext-pecl_http": "^2.0"
             },
             "type": "library",
             "autoload": {
@@ -60,37 +57,36 @@
                 "sockets",
                 "websocket"
             ],
-            "time": "2017-09-10 18:41:56"
+            "time": "2017-09-14T12:18:28+00:00"
         },
         {
             "name": "clue/buzz-react",
-            "version": "v1.4.0",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/php-buzz-react.git",
-                "reference": "924516a6631a7ba492496acb7eaedbaffd6167c5"
+                "reference": "3aadd4636448765b242b5c56fb02196e6c63dc06"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/924516a6631a7ba492496acb7eaedbaffd6167c5",
-                "reference": "924516a6631a7ba492496acb7eaedbaffd6167c5",
+                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/3aadd4636448765b242b5c56fb02196e6c63dc06",
+                "reference": "3aadd4636448765b242b5c56fb02196e6c63dc06",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.4",
                 "psr/http-message": "^1.0",
-                "react/event-loop": "^0.4 || ^0.3",
-                "react/http-client": "^0.5",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
+                "react/http-client": "^0.5.6",
                 "react/promise": "^2.2.1",
                 "react/promise-stream": "^0.1.1",
-                "react/socket": "^0.8",
-                "react/socket-client": "^0.7 || ^0.6",
-                "react/stream": "^0.6 || ^0.5 || ^0.4.6",
+                "react/socket": "^1.0 || ^0.8.4",
+                "react/stream": "^1.0 || ^0.7",
                 "ringcentral/psr7": "^1.2"
             },
             "require-dev": {
                 "clue/block-react": "^1.0",
-                "clue/socks-react": "^0.8 || ^0.7",
+                "clue/socks-react": "^0.8",
                 "phpunit/phpunit": "^4.5",
                 "react/http": "^0.7.2"
             },
@@ -119,23 +115,24 @@
                 "psr-7",
                 "reactphp"
             ],
-            "time": "2017-09-15T10:13:52+00:00"
+            "time": "2017-09-17T17:16:22+00:00"
         },
         {
             "name": "cocur/slugify",
-            "version": "v2.5",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "e8167e9a3236044afebd6e8ab13ebeb3ec9ca145"
+                "reference": "1fdf2b1219a199301db3d7c60c16d895bba6ccde"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/e8167e9a3236044afebd6e8ab13ebeb3ec9ca145",
-                "reference": "e8167e9a3236044afebd6e8ab13ebeb3ec9ca145",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/1fdf2b1219a199301db3d7c60c16d895bba6ccde",
+                "reference": "1fdf2b1219a199301db3d7c60c16d895bba6ccde",
                 "shasum": ""
             },
             "require": {
+                "ext-mbstring": "*",
                 "php": ">=5.5.9"
             },
             "require-dev": {
@@ -183,7 +180,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2017-03-23T21:52:55+00:00"
+            "time": "2017-09-24T10:29:04+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -414,30 +411,25 @@
         },
         {
             "name": "evenement/evenement",
-            "version": "v2.1.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/igorw/evenement.git",
-                "reference": "6ba9a777870ab49f417e703229d53931ed40fd7a"
+                "reference": "531bfb9d15f8aa57454f5f0285b18bec903b8fb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/igorw/evenement/zipball/6ba9a777870ab49f417e703229d53931ed40fd7a",
-                "reference": "6ba9a777870ab49f417e703229d53931ed40fd7a",
+                "url": "https://api.github.com/repos/igorw/evenement/zipball/531bfb9d15f8aa57454f5f0285b18bec903b8fb7",
+                "reference": "531bfb9d15f8aa57454f5f0285b18bec903b8fb7",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0||^5.7||^4.8.35"
+                "phpunit/phpunit": "^6.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Evenement": "src"
@@ -458,7 +450,7 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "time": "2017-07-17T17:39:19+00:00"
+            "time": "2017-07-23T21:35:13+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -619,12 +611,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "83caf0b14004da9b8d2b63db86c930f8a2fbb464"
+                "reference": "f7bc32eefb7f1ac446d94fb057e9da24d6176e67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/83caf0b14004da9b8d2b63db86c930f8a2fbb464",
-                "reference": "83caf0b14004da9b8d2b63db86c930f8a2fbb464",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/f7bc32eefb7f1ac446d94fb057e9da24d6176e67",
+                "reference": "f7bc32eefb7f1ac446d94fb057e9da24d6176e67",
                 "shasum": ""
             },
             "require": {
@@ -657,7 +649,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2017-06-17 11:56:57"
+            "time": "2017-10-11 00:04:05"
         },
         {
             "name": "monolog/monolog",
@@ -777,12 +769,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "261dba9b568c90f823c6020ce8ffa9c3acdbaf52"
+                "reference": "7bfff234c0407f63e6dae56f8252d3bbd7688b4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/261dba9b568c90f823c6020ce8ffa9c3acdbaf52",
-                "reference": "261dba9b568c90f823c6020ce8ffa9c3acdbaf52",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/7bfff234c0407f63e6dae56f8252d3bbd7688b4e",
+                "reference": "7bfff234c0407f63e6dae56f8252d3bbd7688b4e",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +809,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-10-19 06:13:35"
+            "time": "2017-10-20 21:55:52"
         },
         {
             "name": "movim/sasl2",
@@ -872,16 +864,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.10",
+            "version": "v2.0.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d"
+                "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/634bae8e911eefa89c1abfbf1b66da679ac8f54d",
-                "reference": "634bae8e911eefa89c1abfbf1b66da679ac8f54d",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/5da4d3c796c275c55f057af5a643ae297d96b4d8",
+                "reference": "5da4d3c796c275c55f057af5a643ae297d96b4d8",
                 "shasum": ""
             },
             "require": {
@@ -916,7 +908,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2017-03-13T16:27:32+00:00"
+            "time": "2017-09-27T21:40:39+00:00"
         },
         {
             "name": "pear/net_dns2",
@@ -1104,16 +1096,16 @@
         },
         {
             "name": "ramsey/uuid",
-            "version": "3.7.0",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ramsey/uuid.git",
-                "reference": "0ef23d1b10cf1bc576e9d865a7e9c47982c5715e"
+                "reference": "45cffe822057a09e05f7bd09ec5fb88eeecd2334"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ramsey/uuid/zipball/0ef23d1b10cf1bc576e9d865a7e9c47982c5715e",
-                "reference": "0ef23d1b10cf1bc576e9d865a7e9c47982c5715e",
+                "url": "https://api.github.com/repos/ramsey/uuid/zipball/45cffe822057a09e05f7bd09ec5fb88eeecd2334",
+                "reference": "45cffe822057a09e05f7bd09ec5fb88eeecd2334",
                 "shasum": ""
             },
             "require": {
@@ -1182,7 +1174,7 @@
                 "identifier",
                 "uuid"
             ],
-            "time": "2017-08-04T13:39:04+00:00"
+            "time": "2017-09-22T20:46:04+00:00"
         },
         {
             "name": "ratchet/rfc6455",
@@ -1269,23 +1261,23 @@
         },
         {
             "name": "react/child-process",
-            "version": "v0.4.3",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6"
+                "reference": "3b8790deaa0e738dd4bdfb99e4da7c439240cd7d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6",
-                "reference": "b81d06daaafb5d7d592b6f7f8b1b7905cdef9ac6",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/3b8790deaa0e738dd4bdfb99e4da7c439240cd7d",
+                "reference": "3b8790deaa0e738dd4bdfb99e4da7c439240cd7d",
                 "shasum": ""
             },
             "require": {
-                "evenement/evenement": "^2.0 || ^1.0",
+                "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
                 "php": ">=5.3.0",
-                "react/event-loop": "^0.4 || ^0.3",
-                "react/stream": "^0.5 || ^0.4.4"
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
+                "react/stream": "^1.0 || ^0.7.2"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.0 || ^4.8.10",
@@ -1305,7 +1297,7 @@
             "keywords": [
                 "process"
             ],
-            "time": "2017-03-14T13:23:20+00:00"
+            "time": "2017-08-15T15:31:31+00:00"
         },
         {
             "name": "react/dns",
@@ -1413,6 +1405,7 @@
                 "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
                 "php": ">=5.3.0",
                 "react/promise": "^2.3 || ^1.2.1",
+                "react/promise-stream": "^0.1.1",
                 "react/socket": "^1.0 || ^0.8 || ^0.7 || ^0.6 || ^0.5",
                 "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.6",
                 "ringcentral/psr7": "^1.2"
@@ -1435,16 +1428,16 @@
         },
         {
             "name": "react/http-client",
-            "version": "v0.5.4",
+            "version": "v0.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/http-client.git",
-                "reference": "e11eef9c82595a42a8523252bafe4bb5cbfb306d"
+                "reference": "eb521c0f9de9b9780b9ced78d90314085632377f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http-client/zipball/e11eef9c82595a42a8523252bafe4bb5cbfb306d",
-                "reference": "e11eef9c82595a42a8523252bafe4bb5cbfb306d",
+                "url": "https://api.github.com/repos/reactphp/http-client/zipball/eb521c0f9de9b9780b9ced78d90314085632377f",
+                "reference": "eb521c0f9de9b9780b9ced78d90314085632377f",
                 "shasum": ""
             },
             "require": {
@@ -1453,8 +1446,8 @@
                 "php": ">=5.4.0",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
                 "react/promise": "~2.2",
-                "react/socket": "^1.0 || ^0.8.2",
-                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.2"
+                "react/socket": "^1.0 || ^0.8.4",
+                "react/stream": "^1.0 || ^0.7.1"
             },
             "require-dev": {
                 "phpunit/phpunit": "^5.0 || ^4.8.10"
@@ -1473,7 +1466,7 @@
             "keywords": [
                 "http"
             ],
-            "time": "2017-08-25T12:20:26+00:00"
+            "time": "2017-09-17T14:41:00+00:00"
         },
         {
             "name": "react/promise",
@@ -1523,16 +1516,16 @@
         },
         {
             "name": "react/promise-stream",
-            "version": "v0.1.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-stream.git",
-                "reference": "45eaf9f20247fb1113b714b39d7b9e4bde733b60"
+                "reference": "f4123898734cfa532099efceaf91d5592e5afe74"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/45eaf9f20247fb1113b714b39d7b9e4bde733b60",
-                "reference": "45eaf9f20247fb1113b714b39d7b9e4bde733b60",
+                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/f4123898734cfa532099efceaf91d5592e5afe74",
+                "reference": "f4123898734cfa532099efceaf91d5592e5afe74",
                 "shasum": ""
             },
             "require": {
@@ -1575,7 +1568,7 @@
                 "stream",
                 "unwrap"
             ],
-            "time": "2017-05-15T19:37:05+00:00"
+            "time": "2017-10-18T15:23:47+00:00"
         },
         {
             "name": "react/promise-timer",
@@ -1632,16 +1625,16 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.8.2",
+            "version": "v0.8.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "ee817e348abcf35c55b448a5cd3ef4eec88379e9"
+                "reference": "ce2b577c2d69ee071c3f9e552942c320caa87e0a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/ee817e348abcf35c55b448a5cd3ef4eec88379e9",
-                "reference": "ee817e348abcf35c55b448a5cd3ef4eec88379e9",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/ce2b577c2d69ee071c3f9e552942c320caa87e0a",
+                "reference": "ce2b577c2d69ee071c3f9e552942c320caa87e0a",
                 "shasum": ""
             },
             "require": {
@@ -1651,12 +1644,11 @@
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
                 "react/promise": "^2.1 || ^1.2",
                 "react/promise-timer": "~1.0",
-                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.5"
+                "react/stream": "^1.0 || ^0.7.1"
             },
             "require-dev": {
                 "clue/block-react": "^1.1",
-                "phpunit/phpunit": "~4.8",
-                "react/stream": "^1.0 || ^0.7 || ^0.6"
+                "phpunit/phpunit": "~4.8"
             },
             "type": "library",
             "autoload": {
@@ -1676,83 +1668,33 @@
                 "reactphp",
                 "stream"
             ],
-            "time": "2017-08-25T09:08:33+00:00"
-        },
-        {
-            "name": "react/socket-client",
-            "version": "v0.7.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp/socket-client.git",
-                "reference": "8ad621ef80fb23d10330c8cc9232c5a5e17af60c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket-client/zipball/8ad621ef80fb23d10330c8cc9232c5a5e17af60c",
-                "reference": "8ad621ef80fb23d10330c8cc9232c5a5e17af60c",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0",
-                "react/dns": "0.4.*|0.3.*",
-                "react/event-loop": "0.4.*|0.3.*",
-                "react/promise": "^2.1 || ^1.2",
-                "react/promise-timer": "~1.0",
-                "react/stream": "^0.6 || ^0.5 || ^0.4.5"
-            },
-            "require-dev": {
-                "clue/block-react": "^1.1",
-                "phpunit/phpunit": "~4.8",
-                "react/socket": "^0.5",
-                "react/stream": "^0.6"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "React\\SocketClient\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Async, streaming plaintext TCP/IP and secure TLS based connections for ReactPHP",
-            "keywords": [
-                "Connection",
-                "Socket",
-                "async",
-                "reactphp",
-                "stream"
-            ],
-            "time": "2017-04-02T20:32:08+00:00"
+            "time": "2017-09-16T17:16:49+00:00"
         },
         {
             "name": "react/stream",
-            "version": "v0.5.0",
+            "version": "v0.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "6ccc4bd601e362aebfe5f449411a08b5f38b229d"
+                "reference": "5c7db5261b3cc7e11b8ba765bed8ba31ee745f5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/6ccc4bd601e362aebfe5f449411a08b5f38b229d",
-                "reference": "6ccc4bd601e362aebfe5f449411a08b5f38b229d",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/5c7db5261b3cc7e11b8ba765bed8ba31ee745f5c",
+                "reference": "5c7db5261b3cc7e11b8ba765bed8ba31ee745f5c",
                 "shasum": ""
             },
             "require": {
-                "evenement/evenement": "^2.0|^1.0",
-                "php": ">=5.3.8"
+                "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
+                "php": ">=5.3.8",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3"
             },
             "require-dev": {
                 "clue/stream-filter": "~1.2",
-                "phpunit/phpunit": "^5.0 || ^4.8.10",
-                "react/event-loop": "^0.4|^0.3",
-                "react/promise": "^2.0|^1.0"
+                "phpunit/phpunit": "^5.0 || ^4.8.10"
             },
             "suggest": {
-                "react/event-loop": "^0.4",
-                "react/promise": "^2.0"
+                "react/event-loop": "^0.4"
             },
             "type": "library",
             "autoload": {
@@ -1764,25 +1706,31 @@
             "license": [
                 "MIT"
             ],
-            "description": "Basic readable and writable stream interfaces that support piping.",
+            "description": "Event-driven readable and writable streams for non-blocking I/O in ReactPHP",
             "keywords": [
+                "event-driven",
+                "io",
+                "non-blocking",
                 "pipe",
-                "stream"
+                "reactphp",
+                "readable",
+                "stream",
+                "writable"
             ],
-            "time": "2017-03-08T08:17:17+00:00"
+            "time": "2017-10-11T17:58:46+00:00"
         },
         {
             "name": "respect/validation",
-            "version": "1.0.18",
+            "version": "1.1.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "c013fac277e94b816163146b459d9a63c56eb499"
+                "reference": "22f1f14430155c21c1d6ba271a652f28c5057851"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/c013fac277e94b816163146b459d9a63c56eb499",
-                "reference": "c013fac277e94b816163146b459d9a63c56eb499",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/22f1f14430155c21c1d6ba271a652f28c5057851",
+                "reference": "22f1f14430155c21c1d6ba271a652f28c5057851",
                 "shasum": ""
             },
             "require": {
@@ -1809,7 +1757,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0-dev"
+                    "dev-master": "1.1-dev"
                 }
             },
             "autoload": {
@@ -1828,13 +1776,13 @@
                 }
             ],
             "description": "The most awesome validation engine ever created for PHP",
-            "homepage": "http://respect.li",
+            "homepage": "http://respect.github.io/Validation/",
             "keywords": [
                 "respect",
                 "validation",
                 "validator"
             ],
-            "time": "2017-10-16T08:16:47+00:00"
+            "time": "2017-10-17T10:15:51+00:00"
         },
         {
             "name": "ringcentral/psr7",
@@ -1896,16 +1844,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.3.9",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "a1e1b01293a090cb9ae2ddd221a3251a4a7e4abf"
+                "reference": "116bc56e45a8e5572e51eb43ab58c769a352366c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/a1e1b01293a090cb9ae2ddd221a3251a4a7e4abf",
-                "reference": "a1e1b01293a090cb9ae2ddd221a3251a4a7e4abf",
+                "url": "https://api.github.com/repos/symfony/console/zipball/116bc56e45a8e5572e51eb43ab58c769a352366c",
+                "reference": "116bc56e45a8e5572e51eb43ab58c769a352366c",
                 "shasum": ""
             },
             "require": {
@@ -1960,20 +1908,20 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-09-06T16:40:18+00:00"
+            "time": "2017-10-02T06:42:24+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.3.9",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "8beb24eec70b345c313640962df933499373a944"
+                "reference": "eb95d9ce8f18dcc1b3dfff00cb624c402be78ffd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/8beb24eec70b345c313640962df933499373a944",
-                "reference": "8beb24eec70b345c313640962df933499373a944",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/eb95d9ce8f18dcc1b3dfff00cb624c402be78ffd",
+                "reference": "eb95d9ce8f18dcc1b3dfff00cb624c402be78ffd",
                 "shasum": ""
             },
             "require": {
@@ -2016,20 +1964,20 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2017-09-01T13:23:39+00:00"
+            "time": "2017-10-02T06:42:24+00:00"
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.3.9",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "2cdc7de1921d1a1c805a13dc05e44a2cd58f5ad3"
+                "reference": "22cf9c2b1d9f67cc8e75ae7f4eaa60e4c1eff1f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/2cdc7de1921d1a1c805a13dc05e44a2cd58f5ad3",
-                "reference": "2cdc7de1921d1a1c805a13dc05e44a2cd58f5ad3",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/22cf9c2b1d9f67cc8e75ae7f4eaa60e4c1eff1f8",
+                "reference": "22cf9c2b1d9f67cc8e75ae7f4eaa60e4c1eff1f8",
                 "shasum": ""
             },
             "require": {
@@ -2069,20 +2017,20 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-09-06T17:07:39+00:00"
+            "time": "2017-10-05T23:10:23+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.5.0",
+            "version": "v1.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
-                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
+                "reference": "2ec8b39c38cb16674bbf3fea2b6ce5bf117e1296",
                 "shasum": ""
             },
             "require": {
@@ -2094,7 +2042,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.5-dev"
+                    "dev-master": "1.6-dev"
                 }
             },
             "autoload": {
@@ -2128,20 +2076,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-14T15:44:48+00:00"
+            "time": "2017-10-11T12:05:26+00:00"
         },
         {
             "name": "symfony/routing",
-            "version": "v3.3.9",
+            "version": "v3.3.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "970326dcd04522e1cd1fe128abaee54c225e27f9"
+                "reference": "2e26fa63da029dab49bf9377b3b4f60a8fecb009"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/970326dcd04522e1cd1fe128abaee54c225e27f9",
-                "reference": "970326dcd04522e1cd1fe128abaee54c225e27f9",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/2e26fa63da029dab49bf9377b3b4f60a8fecb009",
+                "reference": "2e26fa63da029dab49bf9377b3b4f60a8fecb009",
                 "shasum": ""
             },
             "require": {
@@ -2206,7 +2154,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-07-29T21:54:42+00:00"
+            "time": "2017-10-02T07:25:00+00:00"
         }
     ],
     "packages-dev": [],
@@ -2220,7 +2168,6 @@
         "movim/moxl": 20,
         "embed/embed": 20,
         "heyupdate/emoji": 20,
-        "cboden/ratchet": 20,
         "react/http": 20
     },
     "prefer-stable": false,
