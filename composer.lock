@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c2b5f94e473e115fd0d0d080c2834abd",
+    "content-hash": "84aacc4818a026dd9d4a25eec868a799",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -365,12 +365,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "ee9369886514094c456b485582d7e211a2aba741"
+                "reference": "f951eb15872b05fef056f48442efef2dbb5d51ed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/ee9369886514094c456b485582d7e211a2aba741",
-                "reference": "ee9369886514094c456b485582d7e211a2aba741",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/f951eb15872b05fef056f48442efef2dbb5d51ed",
+                "reference": "f951eb15872b05fef056f48442efef2dbb5d51ed",
                 "shasum": ""
             },
             "require": {
@@ -410,7 +410,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-08-08 18:58:33"
+            "time": "2017-09-25 20:57:58"
         },
         {
             "name": "evenement/evenement",
@@ -574,16 +574,16 @@
         },
         {
             "name": "heyupdate/emoji",
-            "version": "dev-master",
+            "version": "dev-twemoji2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/heyupdate/emoji.git",
-                "reference": "78f6f7e20c4685107e57fb11f1356a7d8e9bd661"
+                "reference": "99dda1bed08472046cac1498221f08684ad83d55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/heyupdate/emoji/zipball/78f6f7e20c4685107e57fb11f1356a7d8e9bd661",
-                "reference": "78f6f7e20c4685107e57fb11f1356a7d8e9bd661",
+                "url": "https://api.github.com/repos/heyupdate/emoji/zipball/99dda1bed08472046cac1498221f08684ad83d55",
+                "reference": "99dda1bed08472046cac1498221f08684ad83d55",
                 "shasum": ""
             },
             "require": {
@@ -611,7 +611,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-08-27 14:02:32"
+            "time": "2016-11-15 20:35:47"
         },
         {
             "name": "michelf/php-markdown",
@@ -777,12 +777,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "f96d1c7664a0cb447440397edb10353da859a83a"
+                "reference": "261dba9b568c90f823c6020ce8ffa9c3acdbaf52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/f96d1c7664a0cb447440397edb10353da859a83a",
-                "reference": "f96d1c7664a0cb447440397edb10353da859a83a",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/261dba9b568c90f823c6020ce8ffa9c3acdbaf52",
+                "reference": "261dba9b568c90f823c6020ce8ffa9c3acdbaf52",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-09-13 20:23:33"
+            "time": "2017-10-19 06:13:35"
         },
         {
             "name": "movim/sasl2",
@@ -1773,16 +1773,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.0.17",
+            "version": "1.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "dc869ac3757af7de801f1c7dbe16c6493d537a9e"
+                "reference": "c013fac277e94b816163146b459d9a63c56eb499"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/dc869ac3757af7de801f1c7dbe16c6493d537a9e",
-                "reference": "dc869ac3757af7de801f1c7dbe16c6493d537a9e",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/c013fac277e94b816163146b459d9a63c56eb499",
+                "reference": "c013fac277e94b816163146b459d9a63c56eb499",
                 "shasum": ""
             },
             "require": {
@@ -1834,7 +1834,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2017-03-14T09:28:03+00:00"
+            "time": "2017-10-16T08:16:47+00:00"
         },
         {
             "name": "ringcentral/psr7",

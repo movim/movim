@@ -1,1 +1,1 @@
-<div id="post_widget" class="spin"></div>
+<div id="post_widget" class="{$nodeid|cleanupId} spin"></div>

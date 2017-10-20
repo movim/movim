@@ -41,33 +41,7 @@
     display: list-item;
 }
 
-/* Chat button */
-/*
-#roster ul#rosterlist li .chat {
-    width: 2rem;
-    height: 2rem;
-    left: 5.5rem;
-    top: 3.5rem;
-    position: absolute;
-
-    border-radius: 2em;
-    background-color: #DDD;
-}
-*/
 /* Search */
-
-/*
-#roster ul li.subheader.search,
-#roster.search ul#rosterlist div.groupshown > li {
-    display: none;
-}
-
-#roster.search ul li.subheader.search,
-#roster.search ul#rosterlist div > li.found {
-    display: list-item;
-}
-*/
-
 #roster.search ul#rosterlist li:not(.found) {
     display: none;
 }

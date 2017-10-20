@@ -97,12 +97,14 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Ido (http://www.transifex.com/movim/movim/language/io/)\n"
@@ -815,6 +817,10 @@ msgstr ""
 msgid "%s posts"
 msgstr ""
 
+#: [communitydata]public
+msgid "Public page"
+msgstr ""
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Abonar"
@@ -858,10 +864,6 @@ msgstr ""
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Ka vu esas certa ?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr ""
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -1991,6 +1993,22 @@ msgstr ""
 
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+msgid "failed"
 msgstr ""
 
 #: [global]no_js

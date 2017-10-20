@@ -7,28 +7,19 @@ var Roster = {
         var rosterlist  = document.querySelector('#rosterlist');
 
         search.oninput = function(event) {
-
             if(search.value.length > 0) {
-                MovimUtils.addClass(roster, 'search');
+                roster.classList.add('search');
             } else {
-                MovimUtils.removeClass(roster, 'search');
+                roster.classList.remove('search');
             }
 
-            // We clear the old search
-            var selector_clear = '#rosterlist > li.found';
-            var li = document.querySelectorAll(selector_clear);
+            document.querySelectorAll(
+                '#rosterlist > li.found'
+            ).forEach(item => item.classList.remove('found'));
 
-            MovimUtils.removeClassInList('found', li);
-
-            var founds = document.querySelectorAll(
+            document.querySelectorAll(
                 '#rosterlist > li[name*="' + MovimUtils.cleanupId(search.value).slice(3) + '"]'
-            );
-
-            if(founds) {
-                for(i = 0; i < founds.length; i++) {
-                    MovimUtils.addClass(founds[i], 'found');
-                }
-            }
+            ).forEach(item => item.classList.add('found'));;
         };
     },
     setFound : function(jid) {

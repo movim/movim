@@ -96,12 +96,14 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Marvin42 Marvin <h2g2.marvin.42@gmail.com>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
@@ -820,6 +822,11 @@ msgstr ""
 msgid "%s posts"
 msgstr ""
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Grupuri publice"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Abonare"
@@ -863,10 +870,6 @@ msgstr "Sunteți pe cale să vă dezabonați de la această comunitate"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Sunteți sigur(ă)?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "Această comunitate pare goală"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -2002,6 +2005,23 @@ msgstr ""
 msgid "Please contact your server administrator to see if this feature can be enabled."
 msgstr ""
 
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "Încărcarea a eșuat"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
@@ -2905,6 +2925,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "This community seems empty"
+#~ msgstr "Această comunitate pare goală"
 
 #~ msgid "Delete my account"
 #~ msgstr "Șterge contul meu"

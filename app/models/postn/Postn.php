@@ -322,7 +322,7 @@ class Postn extends Model
             && isset($enc['type'])
             && typeIsPicture($enc['type'])
             /*&& isSmallPicture($enc['href'])*/) {
-                $this->picture = $enc['href'];
+                $this->picture = protectPicture($enc['href']);
             }
 
             if($enc['rel'] == 'alternate'

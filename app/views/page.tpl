@@ -5,6 +5,7 @@
     <title><?php $this->title();?></title>
 
     <meta name="theme-color" content="#1C1D5B" />
+    <meta http-equiv="Content-Security-Policy" content="font-src 'self'; child-src https://youtube.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 
     <?php $this->meta();?>
 
@@ -14,6 +15,7 @@
     <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/96.png');?>" sizes="96x96">
     <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/128.png');?>" sizes="128x128">
     <script src="<?php echo BASE_URI; ?>app/assets/js/favico.js"></script>
+    <script src="<?php echo \Movim\Route::urlize('system'); ?>"></script>
 
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
@@ -37,8 +39,6 @@
         $this->addCss('title.css');
         $this->addCss('typo.css');
         $this->addCss('material-design-iconic-font.min.css');
-
-        $this->widget('System');
 
         $this->scripts();
     ?>
@@ -69,6 +69,5 @@
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Drawer');?>
         <?php $this->content();?>
-        <script type="text/javascript">if(typeof movim_onload == 'function') { movim_onload(); }</script>
     </body>
 </html>

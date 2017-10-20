@@ -67,6 +67,7 @@ class Presence extends \Movim\Widget\Base
         $this->ajaxBookmarksGet();
         $this->ajaxFeedRefresh();
         $this->ajaxServerDisco();
+        $this->ajaxProfileRefresh();
     }
 
     function ajaxClear()
@@ -119,6 +120,19 @@ class Presence extends \Movim\Widget\Base
         $session = Session::start();
         $c = new \Moxl\Xec\Action\Disco\Items;
         $c->setTo($session->get('host'))
+          ->request();
+    }
+
+    // We refresh the profile
+    function ajaxProfileRefresh()
+    {
+        $session = Session::start();
+        $a = new \Moxl\Xec\Action\Avatar\Get;
+        $a->setTo($session->get('jid'))
+          ->request();
+
+        $v = new \Moxl\Xec\Action\Vcard4\Get;
+        $v->setTo($session->get('jid'))
           ->request();
     }
 

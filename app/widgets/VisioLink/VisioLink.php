@@ -6,8 +6,4 @@ class VisioLink extends \Movim\Widget\Base
     {
         $this->addjs('visiolink.js');
     }
-
-    function display()
-    {
-    }
 }

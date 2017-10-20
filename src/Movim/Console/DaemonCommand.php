@@ -78,6 +78,12 @@ class DaemonCommand extends Command
 
         $baseuri = rtrim($input->getOption('url'), '/') . '/';
 
+        $output->writeln('<info>Movim daemon launched</info>');
+        $output->writeln('<info>Base URL: '.$baseuri.'</info>');
+
+        $core = new Core($loop, $baseuri, $input);
+        $app  = new HttpServer(new WsServer($core));
+
         $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
@@ -86,14 +92,7 @@ class DaemonCommand extends Command
 
             $output->writeln('<info>To set those credentials run</info>');
             $output->writeln('<info>php mud.php config --username=USERNAME --password=PASSWORD</info>');
-            exit;
         }
-
-        $output->writeln('<info>Movim daemon launched</info>');
-        $output->writeln('<info>Base URL: '.$baseuri.'</info>');
-
-        $core = new Core($loop, $baseuri, $input);
-        $app  = new HttpServer(new WsServer($core));
 
         $socket = new Reactor(
             $input->getOption('interface').':'.$input->getOption('port'),

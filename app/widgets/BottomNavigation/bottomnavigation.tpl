@@ -27,7 +27,7 @@
     </li>
     <li {if="$page == 'chat'"}class="active"{/if}
         onclick="MovimUtils.reload('{$c->route('chat')}')"
-        title="{$c->__('page.chat')}"
+        title="{$c->__('page.chats')}"
     >
         <span class="primary icon"><i class="zmdi zmdi-comments"></i></span>
         <span data-key="chat" class="counter"></span>

@@ -78,14 +78,6 @@ var MovimUtils = {
 
         return dec.replace(/\0+$/, '');
     },
-    buttonReset: function(element) {
-        var elt = document.querySelector(element);
-        elt.className = elt.dataset.oldclassname;
-    },
-    buttonSave: function(element) {
-        var elt = document.querySelector(element);
-        elt.dataset.oldclassname = elt.className;
-    },
     checkString: function(str) {
         if (typeof str == 'object') {
             return str instanceof String;
@@ -206,19 +198,6 @@ var MovimUtils = {
             element.classList.remove(classname);
         }
     },
-    removeClassInList: function(myclass, list) {
-        for(i = 0; i < list.length; i++) {
-            MovimUtils.removeClass(list[i], myclass);
-        }
-    },
-    htmlEscape: function(string) {
-        return String(string)
-                .replace(/&/g, '&amp;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
-    },
     textareaAutoheight: function(textbox) {
         if(textbox != null) {
             var val = MovimUtils.htmlEscape(textbox.value).replace(/\n/g, '<br>');
@@ -241,46 +220,29 @@ var MovimUtils = {
         else
             MovimUtils.addClass(element, classname);
     },
-    toggleDisplay: function(element) {
-        var node = MovimUtils.getNode(element);
-
-        if(node != null) {
-            if(node.style.display == 'block')
-                MovimUtils.hideElement(node);
-            else
-                MovimUtils.showElement(node);
-        }
+    htmlEscape: function(string) {
+        return String(string)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
     },
     enhanceArticlesContent: function() {
-        var items = document.querySelectorAll('article section content video');
+        document.querySelectorAll('article section content video')
+            .forEach(item => item.setAttribute('controls', 'controls'));
 
-        var i = 0;
-        while(i < items.length)
-        {
-            items[i].setAttribute('controls', 'controls');
-            i++;
-        }
-
-        var links = document.querySelectorAll('article section content a:not(.innertag)');
-
-        var i = 0;
-        while(i < links.length)
-        {
-            links[i].setAttribute('target', '_blank');
-            i++;
-        }
+        document.querySelectorAll('article section content a:not(.innertag)')
+            .forEach(link => link.setAttribute('target', '_blank'));
     },
     urlParts : function() {
         var str = window.location.search.split('/');
         var page = str[0].substr(1);
         str.shift();
 
-        var str = str.map(function(param) {
-            return decodeURIComponent(param);
-        });
+        var str = str.map(param => decodeURIComponent(param));
 
-        var parts = {'page': page, 'params': str, 'hash': window.location.hash.substr(1)};
-        return parts;
+        return {'page': page, 'params': str, 'hash': window.location.hash.substr(1)};
     },
     getOrientation : function(file, callback) {
         var reader = new FileReader();

@@ -361,13 +361,20 @@ class ContactDAO extends SQL
             left outer join privacy
                 on contact.jid = privacy.pkey
             where jid like :jid
+            and jid not in (
+                select jid
+                from rosterlink
+                where session = :session
+            )
             and privacy.value = 1
-            order by jid';
+            order by jid
+            limit 5';
 
         $this->prepare(
             'Contact',
             [
-                'jid' => '%'.$search.'%'
+                'jid' => '%'.$search.'%',
+                'rosterlink.session' => $this->_user
             ]
         );
         return $this->run('Contact');

@@ -27,6 +27,7 @@
             <p class="normal center	">
                 {$contact->getTrueName()}
             </p>
+            <p class="normal state center"></p>
         </li>
     </ul>
 
@@ -39,3 +40,11 @@
         </a>
     </div>
 </div>
+<script type="text/javascript">
+Visio.states = {
+    calling: '{$c->__('visio.calling')}',
+    ringing: '{$c->__('visio.ringing')}',
+    in_call: '{$c->__('visio.in_call')}',
+    failed: '{$c->__('failed')}'
+}
+</script>

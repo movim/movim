@@ -291,6 +291,7 @@ class Bootstrap
         \Modl\Utils::loadModel('Setting');
         \Modl\Utils::loadModel('Conference');
         \Modl\Utils::loadModel('Tag');
+        \Modl\Utils::loadModel('Url');
 
         if(file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
             require DOCUMENT_ROOT.'/config/db.inc.php';

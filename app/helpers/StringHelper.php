@@ -94,7 +94,7 @@ function addUrls($string, $preview = false)
                         );
                     }
                 } elseif(filter_var($content, FILTER_VALIDATE_URL)) {
-                    return stripslashes('<a href=\"'.$content.'\" target=\"_blank\">'.$content.'</a>').
+                    return stripslashes('<a href=\"'.$content.'\" target=\"_blank\" rel=\"noopener\">'.$content.'</a>').
                             ($lastTag !== false ? $lastTag : '');
                 } else {
                     return $content;

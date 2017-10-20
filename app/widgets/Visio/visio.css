@@ -20,6 +20,11 @@ body {
     width: 15rem;
 }
 
+#visio .infos p.state {
+    margin: 0;
+    font-size: 1.8rem;
+}
+
 #visio .level,
 #visio video#video {
     position: fixed;

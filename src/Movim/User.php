@@ -42,7 +42,9 @@ class User
 
             $cd = new \Modl\CapsDAO;
             $caps = $cd->get($session->host);
-            $this->caps = $caps->features;
+            if($caps) {
+                $this->caps = $caps->features;
+            }
         }
     }
 

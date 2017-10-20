@@ -235,14 +235,9 @@ class Chats extends \Movim\Widget\Base
 
     private function validateJid($jid)
     {
-        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 40);
-
-        if($validate_jid->validate($jid)) return true;
-        else return false;
-    }
-
-    function display()
-    {
-        $this->view->assign('base_uri',  BASE_URI);
+        return (Validator::stringType()
+            ->noWhitespace()
+            ->length(6, 80)
+            ->validate($jid));
     }
 }

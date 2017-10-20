@@ -174,7 +174,7 @@ class Roster extends \Movim\Widget\Base
      */
     function ajaxDisplayFound($jid)
     {
-        if($jid != '') {
+        if(!empty($jid)) {
             $cd = new \Modl\ContactDAO;
             $contacts = $cd->searchJid($jid);
 
@@ -192,7 +192,7 @@ class Roster extends \Movim\Widget\Base
     function ajaxAdd($form)
     {
         // If there was a prompt, resolve using jabber:iq:gateway
-        if($form->gatewayprompt->value && $form->gateway->value) {
+        if(isset($form->gatewayprompt) && isset($form->gateway)) {
             $set = new IqGateway\Set;
             $set->setTo($form->gateway->value)
                 ->setPrompt((string)$form->searchjid->value)
@@ -203,7 +203,7 @@ class Roster extends \Movim\Widget\Base
 
         // If a gateway was selected, and it has a domain-only JID
         // Then we can use either new-style or old-style escaping
-        if($form->gateway->value && strpos($form->gateway->value, '@') === false) {
+        if(isset($form->gateway) && strpos($form->gateway->value, '@') === false) {
             if(in_array('jid\20escaping', $this->gateways()[$form->gateway->value]->features)) {
                 $form->searchjid->value = Utils::escapeJidLocalpart($form->searchjid->value).'@'.$form->gateway->value;
             } else {

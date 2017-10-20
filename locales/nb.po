@@ -97,13 +97,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
-"PO-Revision-Date: 2017-07-21 16:04+0000\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
@@ -111,7 +113,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.0.0\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -729,19 +731,16 @@ msgid "This server doesn't exists"
 msgstr "Denne serveren finnes ikke"
 
 #: [communitiesserver]created
-#, fuzzy
 msgid "Community created successfully"
-msgstr "Gruppen ble opprettet"
+msgstr ""
 
 #: [communitiesserver]empty_server
-#, fuzzy
 msgid "There is no Communities yet on this server."
-msgstr "Det finnes ingen grupper på denne tjeneren enda."
+msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "Opprett ny gruppe på %s"
+msgstr ""
 
 #: [communitiesserver]name
 msgid "Community name"
@@ -752,14 +751,12 @@ msgid "My Little Pony - Fan Club"
 msgstr "Fanklubb for SKAM-serien"
 
 #: [communitiesserver]name_error
-#, fuzzy
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "Oppgi et gyldig gruppenavn (minst 4 tegn)"
+msgstr ""
 
 #: [communitiesserver]no_creation
-#, fuzzy
 msgid "You cannot create a new community on this server"
-msgstr "Du kan ikke opprette en ny gruppe på denne tjeneren"
+msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
@@ -767,24 +764,20 @@ msgid "Subscriptions"
 msgstr "Abonementer "
 
 #: [communityaffiliation]deleted
-#, fuzzy
 msgid "Community deleted successfully"
-msgstr "Gruppen ble slettet"
+msgstr ""
 
 #: [communityaffiliation]delete_title
-#, fuzzy
 msgid "Delete the community"
-msgstr "Slett gruppen"
+msgstr ""
 
 #: [communityaffiliation]delete_text
-#, fuzzy
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "Vennligst bekreft at du ønsker å slette denne gruppen."
+msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Det ser ut til at denne gruppen ikke eksisterer lenger. Ønsker du å avslutte abonnementet?"
+msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -817,6 +810,11 @@ msgstr "%s abonnenter"
 #: [communitydata]num [groups]num
 msgid "%s posts"
 msgstr "%s innlegg"
+
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Offentlig profil"
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -861,10 +859,6 @@ msgstr "Du forsøker å melde deg ut av dette samfunnet"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Er du sikker?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "Dette samfunnet er tomt"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -1211,9 +1205,8 @@ msgid "Try out our official Android app"
 msgstr ""
 
 #: [apps]recommend
-#, fuzzy
 msgid "We also recommend"
-msgstr "Legg til kommentar"
+msgstr ""
 
 #: [apps]computer
 msgid "Apps for your computer"
@@ -1994,6 +1987,23 @@ msgstr "Samfunnene, nyhetsstrømmene og profilene har blitt deaktivert inntil vi
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
 msgstr "Vennligst kontakt administratoren av tjeneren for å sjekke om funksjonaliteten kan aktiveres."
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "Opplastingen feilet"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2899,8 +2909,5 @@ msgstr "APIet kan ikke nåes, prøv igjen senere"
 msgid "Type here"
 msgstr "Skriv her"
 
-#~ msgid "User folder size limit (in bytes)"
-#~ msgstr "Størrelsesgrense på brukermappe (i bytes)"
-
-#~ msgid "Change the default credentials admin/password"
-#~ msgstr "Endre forhåndslagrede akkreditiv (admin/password)"
+#~ msgid "This community seems empty"
+#~ msgstr "Dette samfunnet er tomt"

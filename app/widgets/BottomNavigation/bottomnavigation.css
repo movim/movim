@@ -25,7 +25,7 @@ ul#bottomnavigation ~ main {
 
     nav.active + ul#bottomnavigation,
     ul#bottomnavigation.hidden {
-        transform: translateY(100%);
+        transform: translateY(120%);
     }
 
     nav.active ~ ul#bottomnavigation ~ main,

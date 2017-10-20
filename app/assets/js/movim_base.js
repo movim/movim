@@ -1,8 +1,8 @@
 /**
  * Movim Base
- * 
+ *
  * Some basic functions essential for Movim
- */ 
+ */
 
 var onloaders = new Array();
 
@@ -25,3 +25,5 @@ function movim_onload()
             onloaders[i]();
     }
 }
+
+window.onload = function() { movim_onload(); };

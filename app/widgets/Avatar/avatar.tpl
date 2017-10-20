@@ -1,4 +1,4 @@
-<div class="tabelem padded" title="{$c->__('page.avatar')}" id="avatar" >
+<div class="tabelem padded_top_bottom" title="{$c->__('page.avatar')}" id="avatar" >
     <div id="avatar_form">
         <ul class="list thick">
             <li>

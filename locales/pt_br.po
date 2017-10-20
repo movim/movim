@@ -100,12 +100,14 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2017-07-21 16:04+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -821,6 +823,11 @@ msgstr "%s inscritos"
 msgid "%s posts"
 msgstr "%s artigos"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Grupos Públicos"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Inscrever"
@@ -864,10 +871,6 @@ msgstr ""
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Tem certeza?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr ""
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -1997,6 +2000,23 @@ msgstr ""
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
 msgstr ""
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "O envio falhou"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."

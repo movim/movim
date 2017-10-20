@@ -141,7 +141,6 @@
         <button
             onclick="
                 {$submit}
-                MovimUtils.buttonSave('#vcard4validate');
                 this.value = '{$c->__('button.submitting')}';
                 this.className='button oppose inactive';"
             class="button color oppose"

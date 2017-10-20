@@ -456,6 +456,14 @@ ul li.date > p.normal {
     margin: 1rem;
 }
 
+ul.list.middle li.separator:not(.subheader):not(.date) {
+    display: block;
+    min-height: 0;
+    padding: 0;
+    border-top: 0.15rem dashed #BBB;
+    margin: 0 1.5rem;
+}
+
 /* Icon */
 
 .icon.tiny {

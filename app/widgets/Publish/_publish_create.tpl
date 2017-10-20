@@ -1,7 +1,14 @@
 <header class="relative">
     <ul class="list middle">
         <li>
-            <span class="primary icon active" onclick="Publish.headerBack('{$to}', '{$node}', false);  Publish_ajaxClearShareUrl();">
+            <span
+                class="primary icon active"
+                {if="$node == 'urn:xmpp:microblog:0'"}
+                    onclick="MovimUtils.redirect('{$c->route('news')}');"
+                {else}
+                    onclick="history.back();"
+                {/if}
+            >
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
 
@@ -79,7 +86,7 @@
             name="title"
             placeholder="{$c->__('post.title')}"
             style="height: 68px"
-            oninput="MovimUtils.textareaAutoheight(this);">{if="!empty($draft->title)"}{$draft->title}{/if}{if="$item != false"}{$item->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
+            oninput="MovimUtils.textareaAutoheight(this);">{if="!empty($draft->title)"}{$draft->title}{elseif="$item != false"}{$item->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
         <label for="title">{$c->__('post.title')}</label>
     </div>
 
@@ -100,7 +107,7 @@
             name="embed"
             placeholder="http://myawesomewebsite.com/ or http://mynicepictureurl.com/"
             onpaste="var e=this; setTimeout(function(){Publish_ajaxEmbedTest(e.value);}, 4);"
-            {if="!empty($draft->links)"}
+            {if="!empty($draft->links) && !empty($draft->links[0])"}
                 value="{$draft->links[0]}"
             {elseif="isset($attachment) && $attachment != false"}
                 value="{$attachment.href}"
@@ -131,7 +138,7 @@
             class="show"
         {/if}
         >
-        <textarea name="content" placeholder="{$c->__('publish.content_text')}" oninput="MovimUtils.textareaAutoheight(this);">{if="$item != false"}{$item->contentraw}{/if}{if="!empty($draft->content)"}{$draft->content}{/if}</textarea>
+        <textarea name="content" placeholder="{$c->__('publish.content_text')}" oninput="MovimUtils.textareaAutoheight(this);">{if="!empty($draft->content)"}{$draft->content}{elseif="$item != false"}{$item->contentraw}{/if}</textarea>
         <label for="content">{$c->__('publish.content_label')}</label>
 
         <button class="button oppose flat gray" type="button" onclick="Publish_ajaxHelp()">

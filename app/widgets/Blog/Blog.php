@@ -122,7 +122,7 @@ class Blog extends \Movim\Widget\Base
     public function prepareCard($p)
     {
         $pw = new Post;
-        return $pw->preparePost($p, true, false, true);
+        return $pw->preparePost($p, true, ($this->_view != 'tag'), true);
     }
 
     function display()

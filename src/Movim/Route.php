@@ -31,10 +31,12 @@ class Route extends Base
                 'node'          => ['s', 'n', 'i'],
                 'news'          => ['s', 'n', 'i'],
                 'post'          => ['s', 'n', 'i'],
+                'picture'       => ['url'],
                 'popuptest'     => false,
                 'publish'       => ['s', 'n', 'i', 'sh'],
                 'room'          => ['r'],
                 'share'         => ['url'],
+                'system'        => false,
                 'tag'           => ['t', 'i'],
                 'visio'         => ['f', 's'],
             ];

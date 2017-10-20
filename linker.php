@@ -44,7 +44,8 @@ function handleSSLErrors($errno, $errstr) {
 
 // Temporary linker killer
 $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
-    if($timestamp < time() - 3600*4) {
+    if($timestamp < time() - 3600*4
+    && isset($conn)) {
         $conn->close();
     }
 });

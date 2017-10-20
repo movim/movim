@@ -2,36 +2,36 @@
     <li class="subheader">
         <p>{$c->__('explore.explore')}</p>
     </li>
-{loop="$users"}
-    <li class="block" title="{$value->jid}" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
-        {$url = $value->getPhoto('s')}
-        {if="$url"}
-            <span class="primary icon bubble
-            {if="$value->value"}
-                status {$presencestxt[$value->value]}
-            {/if}
-            " style="background-image: url({$url});">
-            </span>
-        {else}
-            <span class="primary icon bubble color {$value->jid|stringToColor}
-            {if="$value->value"}
-                status {$presencestxt[$value->value]}
-            {/if}
-            ">
-                <i class="zmdi zmdi-account"></i>
-            </span>
-        {/if}
-
-        <p class="normal line">
-            {$value->getTrueName()}
-            {if="!empty($value->description)"}
-                <span class="second" title="{$value->description|strip_tags}">
-                    {$value->description|strip_tags|truncate:80}
+    {loop="$users"}
+        <li class="block" title="{$value->jid}" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
+            {$url = $value->getPhoto('s')}
+            {if="$url"}
+                <span class="primary icon bubble
+                {if="$value->value"}
+                    status {$presencestxt[$value->value]}
+                {/if}
+                " style="background-image: url({$url});">
+                </span>
+            {else}
+                <span class="primary icon bubble color {$value->jid|stringToColor}
+                {if="$value->value"}
+                    status {$presencestxt[$value->value]}
+                {/if}
+                ">
+                    <i class="zmdi zmdi-account"></i>
                 </span>
             {/if}
-        </p>
-    </li>
-{/loop}
+
+            <p class="normal line">
+                {$value->getTrueName()}
+                {if="!empty($value->description)"}
+                    <span class="second" title="{$value->description|strip_tags}">
+                        {$value->description|strip_tags|truncate:80}
+                    </span>
+                {/if}
+            </p>
+        </li>
+    {/loop}
 </ul>
 
 <ul class="list active middle card shadow">
@@ -41,21 +41,19 @@
     {loop="$blogs"}
         {$attachments = $value->getAttachments()}
         <li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$value->origin, $value->node, $value->nodeid])}')">
+            <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}"
             {$picture = $value->getPicture()}
             {if="$picture != null"}
-                <span class="primary icon thumb color white" style="background-image: url({$picture});">
-                </span>
+                style="background-image: url({$picture});"
             {else}
                 {$url = $value->getContact()->getPhoto('l')}
                 {if="$url"}
-                    <span class="primary icon thumb color white" style="background-image: url({$url});">
-                    </span>
-                {else}
-                    <span class="primary icon thumb color {$value->getContact()->jid|stringToColor}">
-                        {$value->getContact()->getTrueName()|firstLetterCapitalize}
-                    </span>
+                    style="background-image: url({$url});"
                 {/if}
             {/if}
+            >
+                {$value->getContact()->getTrueName()|firstLetterCapitalize}
+            </span>
             <p class="line" {if="isset($value->title)"}title="{$value->title}"{/if}>
             {if="isset($value->title)"}
                 {$value->title}

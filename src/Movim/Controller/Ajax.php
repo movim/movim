@@ -54,11 +54,11 @@ class Ajax extends Base
     public function defun($widget, $funcname, array $params)
     {
         array_push($this->widgetlist, $widget);
-        $this->funclist[$widget.$funcname] = array(
+        $this->funclist[$widget.$funcname] = [
             'object' => $widget,
             'funcname' => $funcname,
             'params' => $params,
-            );
+        ];
     }
 }
 

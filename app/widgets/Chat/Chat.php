@@ -207,9 +207,6 @@ class Chat extends \Movim\Widget\Base
             //$chats = new Chats;
             //$chats->ajaxGetHistory($jid);
 
-            $notif = new Notification;
-            $notif->ajaxClear('chat|'.$jid);
-
             $html = $this->prepareChat($jid);
 
             $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));
@@ -283,7 +280,8 @@ class Chat extends \Movim\Widget\Base
             $headers = requestHeaders($message);
 
             if($headers['http_code'] == 200
-            && typeIsPicture($headers['content_type'])) {
+            && typeIsPicture($headers['content_type'])
+            && $headers['download_content_length'] > 100) {
                 $file = new \stdClass;
                 $file->name = $message;
                 $file->type = $headers['content_type'];
@@ -644,8 +642,15 @@ class Chat extends \Movim\Widget\Base
 
         $date = $view->draw('_chat_date', true);
 
-        $this->rpc('Chat.setBubbles', $left, $right, $date);
+        $separator = $view->draw('_chat_separator', true);
+
+        $this->rpc('Chat.setBubbles', $left, $right, $date, $separator);
         $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper);
+
+        $notif = new Notification;
+        $this->rpc('Chat.insertSeparator', $notif->getCounter('chat|'.$jid));
+        $notif->ajaxClear('chat|'.$jid);
+
         $this->rpc('MovimTpl.scrollPanel');
         $this->rpc('Chat.clearReplace');
     }
@@ -661,25 +666,23 @@ class Chat extends \Movim\Widget\Base
 
         // Attached file
         if (isset($message->file)) {
-            if (!$message->isTrusted()) {
-                $message->file = null;
-            } else {
-                if($message->body == $message->file['uri']) {
-                    $message->body = null;
-                }
-
-                if(typeIsPicture($message->file['type'])
-                && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
-                    $message->picture = $message->file['uri'];
-                }
-
-                if(typeIsAudio($message->file['type'])
-                && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
-                    $message->audio = $message->file['uri'];
-                }
-
-                $message->file['size'] = sizeToCleanSize($message->file['size']);
+            if($message->body == $message->file['uri']) {
+                $message->body = null;
             }
+
+            // We proxify pictures links even if they are advertized as small ones
+            if(typeIsPicture($message->file['type'])
+            && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
+                $message->thumb   = $this->route('picture', urlencode($message->file['uri']));
+                $message->picture = $message->file['uri'];
+            }
+
+            if(typeIsAudio($message->file['type'])
+            && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
+                $message->audio = $message->file['uri'];
+            }
+
+            $message->file['size'] = sizeToCleanSize($message->file['size']);
         }
 
         if (isset($message->html)) {
@@ -717,6 +720,7 @@ class Chat extends \Movim\Widget\Base
 
         if (isset($message->picture)) {
             $message->sticker = [
+                'thumb' => $message->thumb,
                 'url' => $message->picture,
                 'picture' => true
             ];
@@ -743,7 +747,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($message->type == 'groupchat') {
-            $message->color = stringToColor($message->session . $message->resource . $message->jidfrom . $message->type);
+            $message->color = stringToColor($message->session . $message->resource . $message->type);
 
             $cd = new \Modl\ContactDAO;
             $contact = $cd->getPresence($message->jidfrom, $message->resource);

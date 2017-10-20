@@ -22,10 +22,6 @@
         <div ng-if="contacts == null" class="empty placeholder icon contacts">
             <h1>{$c->__('roster.no_contacts_title')}</h1>
             <h4>{$c->__('roster.no_contacts_text')}</h4>
-            <a class="button flat on_mobile"
-               onclick="MovimTpl.showPanel()">
-               <i class="zmdi zmdi-eye"></i>  {$c->__('button.discover')}
-            </a>
         </div>
     {/if}
 </ul>

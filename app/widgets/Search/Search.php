@@ -48,21 +48,33 @@ class Search extends \Movim\Widget\Base
             if(!$posts) $view->assign('empty', true);
         }
 
+        if(!empty($key)) {
+            $cd = new \Modl\ContactDAO;
+            $contacts = $cd->searchJid($key);
+
+            if($contacts)
+                $view->assign('contacts', $contacts);
+            if(Validator::email()->validate($key)) {
+                $c = new \Modl\Contact($key);
+                $c->jid = $key;
+                $view->assign('contacts', [$c]);
+            }
+        } else {
+            $view->assign('contacts', null);
+        }
+
         return $view->draw('_search_results', true);
     }
 
     function ajaxSearch($key)
     {
         $this->rpc('MovimTpl.fill', '#results', $this->prepareSearch($key));
+        $this->rpc('Search.searchClear');
     }
 
     function ajaxChat($jid)
     {
         $contact = new ContactActions;
         $contact->ajaxChat($jid);
-    }
-
-    function display()
-    {
     }
 }

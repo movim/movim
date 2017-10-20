@@ -619,6 +619,14 @@ function getSmileyPath($id)
 }
 
 /*
+ * @desc Protect a picture URL by using the internal Proxy
+ */
+function protectPicture($url)
+{
+    return \Movim\Route::urlize('picture', urlencode($url));
+}
+
+/*
  * @desc Translate something
  */
 function __()

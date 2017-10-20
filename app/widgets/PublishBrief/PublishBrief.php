@@ -39,7 +39,10 @@ class PublishBrief extends \Movim\Widget\Base
     {
         $p = new \Modl\Postn;
         $p->title = $form->title->value;
-        array_push($p->links, $form->embed->value);
+
+        if(Validator::notEmpty()->url()->validate($form->embed->value)) {
+            array_push($p->links, $form->embed->value);
+        }
 
         Cache::c('draft', $p);
     }
@@ -77,7 +80,8 @@ class PublishBrief extends \Movim\Widget\Base
 
             if(Validator::notEmpty()->url()->validate($form->embed->value)) {
                 try {
-                    $embed = Embed\Embed::create($form->embed->value);
+                    $murl = new \Modl\Url;
+                    $embed = $murl->resolve($form->embed->value);
 
                     if($embed->type == 'photo') {
                         $p->setImage($embed->images[0]['url'], $embed->title, $embed->images[0]['mime']);
@@ -108,15 +112,17 @@ class PublishBrief extends \Movim\Widget\Base
     {
         if($url == '') {
             return;
-        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
+        } elseif(!Validator::url()->validate($url)) {
             Notification::append(false, $this->__('publish.valid_url'));
+            $this->ajaxClearEmbed();
             return;
         }
 
         $this->rpc('Dialog_ajaxClear');
 
         try {
-            $embed = Embed\Embed::create($url);
+            $murl = new \Modl\Url;
+            $embed = $murl->resolve($url);
             $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
         } catch(Exception $e) {
             error_log($e->getMessage());

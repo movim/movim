@@ -42,7 +42,6 @@
             {/if}
 
             <form
-                data-action="{$submit}"
                 method="post" action="login"
                 name="login">
                 <div>

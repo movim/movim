@@ -95,12 +95,14 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
+"POT-Creation-Date: 2017-10-18 21:20+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -825,6 +827,11 @@ msgstr "%s subscribers"
 msgid "%s posts"
 msgstr "%s posts"
 
+#: [communitydata]public
+#, fuzzy
+msgid "Public page"
+msgstr "Public Groups"
+
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
 msgstr "Subscribe"
@@ -872,10 +879,6 @@ msgstr "You are going to unsubscribe from this Group"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Are you sure ?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr ""
 
 #: [communityposts]nsfw_title
 #, fuzzy
@@ -2027,6 +2030,23 @@ msgstr ""
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
 msgstr ""
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+#, fuzzy
+msgid "failed"
+msgstr "Upload a file"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."

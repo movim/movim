@@ -8,6 +8,7 @@ var Publish = {
     clearEmbed: function() {
         var embed = document.querySelector('input[name=embed]').value = '';
         MovimTpl.fill('#preview', '');
+        Publish.saveDraft();
     },
 
     enableSend: function() {
@@ -24,7 +25,7 @@ var Publish = {
         MovimUtils.showElement(document.getElementById('content_field'));
     },
 
-    headerBack: function(server, node, ok) {
+    /*headerBack: function(server, node, ok) {
         // We check if the form is filled
         if(Publish.checkFilled() && ok == false) {
             Publish_ajaxFormFilled(server, node);
@@ -32,7 +33,7 @@ var Publish = {
         }
 
         history.back();
-    },
+    },*/
 
     checkFilled: function() {
         var form = document.querySelector('form[name=post]');
