@@ -5,6 +5,8 @@ use Ratchet\ConnectionInterface;
 use React\EventLoop\Timer\Timer;
 use Movim\Controller\Front;
 
+define('EOT', 0x04);
+
 class Session
 {
     protected   $clients;
@@ -99,7 +101,7 @@ class Session
 
         // Buffering the incoming data and fire it once its complete
         $this->process->stdout->on('data', function($output) use ($me, &$buffer) {
-            if(substr($output, -1) == "") {
+            if(substr($output, -1) == EOT) {
                 $out = $buffer . substr($output, 0, -1);
                 $buffer = '';
                 $me->messageOut($out);
@@ -161,7 +163,7 @@ class Session
             $msg = new \stdClass;
             $msg->func = $this->state;
             $msg = json_encode($msg);
-            $this->process->stdin->write($msg."");
+            $this->process->stdin->write($msg.EOT);
         }
     }
 
@@ -169,7 +171,7 @@ class Session
     {
         $this->timestamp = time();
         if(isset($this->process)) {
-            $this->process->stdin->write($msg."");
+            $this->process->stdin->write($msg.EOT);
         }
         unset($msg);
     }

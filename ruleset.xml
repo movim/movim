@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ruleset name="PHPMD rule set"
+         xmlns="http://pmd.sf.net/ruleset/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0
+			     http://pmd.sf.net/ruleset_xml_schema.xsd"
+         xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
+  <!--
+      Copying and distribution of this file, with or without modification,
+      are permitted in any medium without royalty provided this notice is
+      preserved.  This file is offered as-is, without any warranty.
+      Names of contributors must not be used to endorse or promote products
+      derived from this file without specific prior written permission.
+  -->
+  
+  <description>
+    Rule set that checks the source code.
+  </description>
+  
+  <rule ref="rulesets/naming.xml">
+    <exclude name="ShortVariable" />
+    <exclude name="LongVariable" />
+    <exclude name="ShortMethodName" />
+  </rule>
+  <rule ref="rulesets/codesize.xml">
+    <exclude name="ExcessiveClassComplexity" />
+    <exclude name="ExcessivePublicCount" />
+    <exclude name="TooManyFields" />
+    <exclude name="TooManyMethods" />
+    <exclude name="TooManyPublicMethods" />
+    <exclude name="ExcessiveMethodLength" />
+    <exclude name="NPathComplexity" />
+    <exclude name="CyclomaticComplexity" />
+  </rule>
+  <rule ref="rulesets/unusedcode.xml">
+    <exclude name="UnusedPrivateField" />
+    <exclude name="UnusedFormalParameter" />
+    <exclude name="UnusedLocalVariable" />
+  </rule>
+  <rule ref="rulesets/design.xml">
+    <exclude name="CouplingBetweenObjects" />
+    <exclude name="ExitExpression" />
+  </rule>
+  <rule ref="rulesets/cleancode.xml">
+    <exclude name="StaticAccess" />
+    <exclude name="ElseExpression" />
+    <exclude name="BooleanArgumentFlag" />
+  </rule>
+  <rule ref="rulesets/controversial.xml">
+    <exclude name="CamelCaseVariableName" />
+    <exclude name="CamelCasePropertyName" />
+    <exclude name="CamelCaseMethodName" />
+    <exclude name="CamelCaseParameterName" />
+    <exclude name="Superglobals" />
+  </rule>
+</ruleset>

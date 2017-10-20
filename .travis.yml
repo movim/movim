@@ -1,0 +1,37 @@
+# Copying and distribution of this file, with or without modification,
+# are permitted in any medium without royalty provided this notice is
+# preserved.  This file is offered as-is, without any warranty.
+# Names of contributors must not be used to endorse or promote products
+# derived from this file without specific prior written permission.
+
+
+# See YAML format https://en.wikipedia.org/wiki/YAML
+# See Travis CI (Continuous Integration) https://docs.travis-ci.com/
+# For Jenkins: https://wiki.jenkins-ci.org/display/JENKINS/Travis+YML+Plugin
+
+
+language: php
+
+php:
+  - 7.0
+  - 7.1
+
+os:
+  - linux
+
+addons:
+  apt:
+    packages:
+      - php
+      - KWStyle
+      - vera++
+      - phpmd
+
+script:
+  - ./tools/encoding-tests.sh .
+  - ./tools/kwstyle-files.sh *.php
+  - KWStyle -v -gcc -d -R src
+  - ./tools/vera++-tests.sh app/ src/ *.php
+  - ./tools/php-syntax-check.sh app/ src/ *.php
+  - phpmd app xml ruleset.xml
+  - phpmd src xml ruleset.xml

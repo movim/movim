@@ -25,7 +25,6 @@ class ContactDisco extends \Movim\Widget\Base
         $users = $cd->getAllPublic(0, 16);
 
 
-
         $view->assign('presencestxt', getPresencesTxt());
         $view->assign('blogs', $blogs);
         $view->assign('users', $users);
