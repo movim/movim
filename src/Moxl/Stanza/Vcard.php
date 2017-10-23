@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Vcard {
+class Vcard
+{
     static function get($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -31,11 +32,6 @@ class Vcard {
         $vcard->appendChild($adr);
 
         $vcard->appendChild($dom->createElement('DESC', $data->desc->value));
-        $vcard->appendChild($dom->createElement('X-GENDER', $data->gender->value));
-
-        $marital = $dom->createElement('MARITAL');
-        $marital->appendChild($dom->createElement('STATUS', $data->marital->value));
-        $vcard->appendChild($marital);
 
         $photo = $dom->createElement('PHOTO');
         $photo->appendChild($dom->createElement('TYPE', $data->phototype->value));

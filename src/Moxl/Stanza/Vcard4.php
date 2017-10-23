@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Vcard4 {
+class Vcard4
+{
     static function get($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -51,26 +52,8 @@ class Vcard4 {
         $note->appendChild($dom->createElement('text', $data->description));
         $vcard->appendChild($note);
 
-        $gender = $dom->createElement('gender');
-        $sex = $dom->createElement('sex');
-        $gender->appendChild($sex);
-        $sex->appendChild($dom->createElement('text', $data->gender));
-        $vcard->appendChild($gender);
-
-        $marital = $dom->createElement('marital');
-        $status = $dom->createElement('status');
-        $marital->appendChild($status);
-        $status->appendChild($dom->createElement('text', $data->marital));
-        $vcard->appendChild($marital);
-
         $impp = $dom->createElement('impp');
         $impp->appendChild($dom->createElement('uri', 'xmpp:'.$data->jid));
-        if($data->twitter)
-            $impp->appendChild($dom->createElement('uri', 'twitter:'.$data->twitter));
-        if($data->yahoo)
-            $impp->appendChild($dom->createElement('uri', 'ymsgr:'.$data->yahoo));
-        if($data->skype)
-            $impp->appendChild($dom->createElement('uri', 'skype:'.$data->skype));
         $vcard->appendChild($impp);
 
         $email = $dom->createElement('email');
