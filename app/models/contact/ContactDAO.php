@@ -57,9 +57,6 @@ class ContactDAO extends SQL
                 adrpostalcode   = :adrpostalcode,
                 adrcountry      = :adrcountry,
 
-                gender          = :gender,
-                marital         = :marital,
-
                 description     = :description,
 
                 mood            = :mood,
@@ -88,9 +85,6 @@ class ContactDAO extends SQL
                 loctext         = :loctext,
                 locuri          = :locuri,
                 loctimestamp    = :loctimestamp,
-                twitter         = :twitter,
-                skype           = :skype,
-                yahoo           = :yahoo,
                 avatarhash      = :avatarhash,
                 created         = :created,
                 updated         = :updated
@@ -109,9 +103,6 @@ class ContactDAO extends SQL
                 'adrlocality'    => $contact->adrlocality,
                 'adrpostalcode'  => $contact->adrpostalcode,
                 'adrcountry'     => $contact->adrcountry,
-
-                'gender'   => $contact->gender,
-                'marital'  => $contact->marital,
 
                 'description'    => $contact->description,
 
@@ -147,10 +138,6 @@ class ContactDAO extends SQL
                 'locuri'            => $contact->locuri,
                 'loctimestamp'      => $contact->loctimestamp,
 
-                'twitter'           => $contact->twitter,
-                'skype'             => $contact->skype,
-                'yahoo'             => $contact->yahoo,
-
                 'avatarhash'        => $contact->avatarhash,
 
                 'created'           => $contact->created,
@@ -176,9 +163,6 @@ class ContactDAO extends SQL
                 adrlocality,
                 adrpostalcode,
                 adrcountry,
-
-                gender,
-                marital,
 
                 description,
 
@@ -209,10 +193,6 @@ class ContactDAO extends SQL
                 locuri,
                 loctimestamp,
 
-                twitter,
-                skype,
-                yahoo,
-
                 avatarhash,
 
                 created,
@@ -230,9 +210,6 @@ class ContactDAO extends SQL
                     :adrlocality,
                     :adrpostalcode,
                     :adrcountry,
-
-                    :gender,
-                    :marital,
 
                     :description,
 
@@ -263,10 +240,6 @@ class ContactDAO extends SQL
                     :locuri,
                     :loctimestamp,
 
-                    :twitter,
-                    :skype,
-                    :yahoo,
-
                     :avatarhash,
 
                     :created,
@@ -288,9 +261,6 @@ class ContactDAO extends SQL
                     'adrlocality'    => $contact->adrlocality,
                     'adrpostalcode'  => $contact->adrpostalcode,
                     'adrcountry'     => $contact->adrcountry,
-
-                    'gender'   => $contact->gender,
-                    'marital'  => $contact->marital,
 
                     'description'    => $contact->description,
 
@@ -325,10 +295,6 @@ class ContactDAO extends SQL
                     'loctext'           => $contact->loctext,
                     'locuri'            => $contact->locuri,
                     'loctimestamp'      => $contact->loctimestamp,
-
-                    'twitter'           => $contact->twitter,
-                    'skype'             => $contact->skype,
-                    'yahoo'             => $contact->yahoo,
 
                     'avatarhash'        => $contact->avatarhash,
 
