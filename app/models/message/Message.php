@@ -228,23 +228,6 @@ class Message extends Model
         }
     }
 
-    /*public function checkPicture()
-    {
-        $body = trim($this->body);
-
-        if(Validator::url()->notEmpty()->validate($body)) {
-            $check = new \Movim\Task\CheckSmallPicture;
-            return $check->run($body)
-                ->then(function($small) use($body) {
-                    if($small) $this->picture = $body;
-                });
-        }
-
-        return new \React\Promise\Promise(function($resolve) {
-            $resolve(true);
-        });
-    }*/
-
     public function convertEmojis()
     {
         $emoji = \MovimEmoji::getInstance();
