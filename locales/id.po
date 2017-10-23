@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Fahmi Barnes <itsfahmiegerton@live.co.uk>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
@@ -524,7 +524,7 @@ msgstr "Konten ini bersifat pribadi, mohon masuk terlebih dahulu untuk melihatny
 msgid "Conferences"
 msgstr "Konferensi"
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Grup"
 
@@ -542,7 +542,6 @@ msgid "Name"
 msgstr "Nama"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Panggilan"
 
@@ -1956,22 +1955,6 @@ msgstr ""
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr ""
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr ""
-
-#: [accounts]skype
-msgid "Skype"
-msgstr ""
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr ""
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2072,10 +2055,6 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr ""
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr ""
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2106,10 +2085,6 @@ msgstr ""
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
-
-#: [page]pods
-msgid "Pods"
 msgstr ""
 
 #: [page]share
@@ -2302,23 +2277,6 @@ msgstr "Sabtu"
 msgid "Sunday"
 msgstr ""
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr ""
-
-#: [gender]male
-msgid "Male"
-msgstr "Pria"
-
-#: [gender]female
-msgid "Female"
-msgstr "Wanita"
-
-#: [gender]other
-msgid "Other"
-msgstr "Lainnya"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
@@ -2338,59 +2296,6 @@ msgstr "Web"
 #: [client]registered
 msgid "Registered"
 msgstr "Terdaftar"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr ""
-
-#: [marital]single
-msgid "Single"
-msgstr "Lajang"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "Sedang berhubungan"
-
-#: [marital]married
-msgid "Married"
-msgstr "Menikah"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Bercerai"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Janda"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Tinggal bersama"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Hubungan sejenis"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Tidak dibagikan"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Dibagikan ke satu kontak"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Dibagikan ke seluruh kontak"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Dibagikan ke jaringan XMPP"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Dibagikan ke seluruh Internet"
 
 #: [presence]online
 msgid "Online"
@@ -2829,10 +2734,6 @@ msgstr "hari"
 msgid "Title"
 msgstr ""
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr ""
-
 #: [post]place
 msgid "Place"
 msgstr ""
@@ -2857,14 +2758,6 @@ msgstr ""
 msgid "No comments yet"
 msgstr ""
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Feed mu tidak dapat dimuat."
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Tampilkan posting lawas"
@@ -2876,14 +2769,6 @@ msgstr ""
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Kesalahan publikasikan komentar"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr ""
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr ""
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2899,10 +2784,6 @@ msgstr ""
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
-
-#: [post]share_your_contacts
-msgid "Your contacts"
 msgstr ""
 
 #: [post]updated
@@ -2932,6 +2813,54 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Male"
+#~ msgstr "Pria"
+
+#~ msgid "Female"
+#~ msgstr "Wanita"
+
+#~ msgid "Other"
+#~ msgstr "Lainnya"
+
+#~ msgid "Single"
+#~ msgstr "Lajang"
+
+#~ msgid "In a relationship"
+#~ msgstr "Sedang berhubungan"
+
+#~ msgid "Married"
+#~ msgstr "Menikah"
+
+#~ msgid "Divorced"
+#~ msgstr "Bercerai"
+
+#~ msgid "Widowed"
+#~ msgstr "Janda"
+
+#~ msgid "Cohabiting"
+#~ msgstr "Tinggal bersama"
+
+#~ msgid "Civil Union"
+#~ msgstr "Hubungan sejenis"
+
+#~ msgid "Not shared"
+#~ msgstr "Tidak dibagikan"
+
+#~ msgid "Shared with one contact"
+#~ msgstr "Dibagikan ke satu kontak"
+
+#~ msgid "Shared with all contacts"
+#~ msgstr "Dibagikan ke seluruh kontak"
+
+#~ msgid "Shared with the XMPP network"
+#~ msgstr "Dibagikan ke jaringan XMPP"
+
+#~ msgid "Shared with the whole Internet"
+#~ msgstr "Dibagikan ke seluruh Internet"
+
+#~ msgid "Your feed cannot be loaded."
+#~ msgstr "Feed mu tidak dapat dimuat."
 
 #~ msgid "This community seems empty"
 #~ msgstr "Komunitas ini nampaknya kosong"

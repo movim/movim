@@ -108,8 +108,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
-"PO-Revision-Date: 2017-09-29 09:39+0000\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"PO-Revision-Date: 2017-10-23 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
@@ -526,7 +526,7 @@ msgstr "Deze data is privé, log in om dit te zien."
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Groepen"
 
@@ -544,7 +544,6 @@ msgid "Name"
 msgstr "Naam"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "bijnaam"
 
@@ -816,9 +815,8 @@ msgid "%s posts"
 msgstr "%s berichten"
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "Openbare profiel"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -1936,22 +1934,6 @@ msgstr "Je profiel is nu openbaar"
 msgid "Your profile is now restricted"
 msgstr "Je profiel is nu afgeschermd"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Accounts"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Yahoo Account"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr "Ga naar mijn profiel pagina"
@@ -2005,9 +1987,8 @@ msgid "in call"
 msgstr ""
 
 #: [visio]failed
-#, fuzzy
 msgid "failed"
-msgstr "Het uploaden is mislukt"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2053,10 +2034,6 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr "Chats"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Openbare groepen"
-
 #: [page]post
 msgid "Post"
 msgstr "Bericht"
@@ -2088,10 +2065,6 @@ msgstr "Gallerij"
 #: [page]visio
 msgid "Visio-conference"
 msgstr "Visioconferentie"
-
-#: [page]pods
-msgid "Pods"
-msgstr "Pods"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2283,23 +2256,6 @@ msgstr "zaterdag"
 msgid "Sunday"
 msgstr "zondag"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Geen"
-
-#: [gender]male
-msgid "Male"
-msgstr "Mannelijk"
-
-#: [gender]female
-msgid "Female"
-msgstr "Vrouwelijk"
-
-#: [gender]other
-msgid "Other"
-msgstr "Anders"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
@@ -2319,59 +2275,6 @@ msgstr "Web"
 #: [client]registered
 msgid "Registered"
 msgstr "Geregistreerd"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "Geen"
-
-#: [marital]single
-msgid "Single"
-msgstr "Vrijgezel"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "In een relatie"
-
-#: [marital]married
-msgid "Married"
-msgstr "Getrouwd"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Gescheiden"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Weduwe/weduwnaar"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Samenwonend"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Samenlevend"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Niet gedeeld"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Gedeeld met één contact"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Gedeeld met alle contacten"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Gedeeld met het XMPP-netwerk"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Gedeeld met het hele internet"
 
 #: [presence]online
 msgid "Online"
@@ -2809,10 +2712,6 @@ msgstr "dag"
 msgid "Title"
 msgstr "Titel"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Wat is nieuw?"
-
 #: [post]place
 msgid "Place"
 msgstr "Plaats"
@@ -2837,14 +2736,6 @@ msgstr "Geen inhoud"
 msgid "No comments yet"
 msgstr "Nog geen reacties"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr "Geen reacties"
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Jouw feed kan niet worden geladen"
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Haal oudere berichten op"
@@ -2856,14 +2747,6 @@ msgstr "%s nieuwe items"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Fout bij publiceren van reactie"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Toon eerdere reacties"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Reacties laden..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2880,10 +2763,6 @@ msgstr "Delen met"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Iedereen"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Jouw contactpersonen"
 
 #: [post]updated
 msgid "Updated"
@@ -2912,6 +2791,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#~ msgid "This community seems empty"
-#~ msgstr "Deze groep lijkt leeg"

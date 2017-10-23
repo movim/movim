@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -522,7 +522,7 @@ msgstr "Dette indhold er privat, log ind for at se det"
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Grupper"
 
@@ -540,7 +540,6 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Kaldenavn"
 
@@ -1954,22 +1953,6 @@ msgstr "Din profil er nu offentlig"
 msgid "Your profile is now restricted"
 msgstr "Din profil er nu begrænset"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Konti"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Yahoo-konto"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2070,10 +2053,6 @@ msgstr "Profilbillede"
 msgid "Chats"
 msgstr "Chats"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Offentlige Grupper"
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2105,10 +2084,6 @@ msgstr "Galleri"
 #: [page]visio
 msgid "Visio-conference"
 msgstr "Visio-konference"
-
-#: [page]pods
-msgid "Pods"
-msgstr "Pods"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2300,23 +2275,6 @@ msgstr "Lørdag"
 msgid "Sunday"
 msgstr "Søndag"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Ingen"
-
-#: [gender]male
-msgid "Male"
-msgstr "Mand"
-
-#: [gender]female
-msgid "Female"
-msgstr "Kvinde"
-
-#: [gender]other
-msgid "Other"
-msgstr "Andet"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
@@ -2336,59 +2294,6 @@ msgstr "Web"
 #: [client]registered
 msgid "Registered"
 msgstr "Registreret"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "Ingen"
-
-#: [marital]single
-msgid "Single"
-msgstr "Single"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "I forhold"
-
-#: [marital]married
-msgid "Married"
-msgstr "Gift"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Fraskilt"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Enke eller enkemand"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Samboende"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Borgerlig Vielse"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Ikke delt"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Delt med en kontakt"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Delt med alle kontakter"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Delt med XMPP-netværket"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Delt med hele internettet"
 
 #: [presence]online
 msgid "Online"
@@ -2827,10 +2732,6 @@ msgstr "dag"
 msgid "Title"
 msgstr "Titel"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Hvad er nyt?"
-
 #: [post]place
 msgid "Place"
 msgstr "Sted"
@@ -2855,14 +2756,6 @@ msgstr "Intet indhold"
 msgid "No comments yet"
 msgstr "Endnu ingen kommentarer"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr "Ingen kommentarstrøm"
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Din strøm kan ikke indlæses."
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Hent ældre indlæg"
@@ -2874,14 +2767,6 @@ msgstr "%s nye elementer"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Kommentar udgivelsesfejl"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Vis ældre kommentarer"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Indlæser kommentarer..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2898,10 +2783,6 @@ msgstr "Del med"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Alle"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Dine kontakter"
 
 #: [post]updated
 msgid "Updated"
@@ -2930,6 +2811,95 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "Accounts"
+#~ msgstr "Konti"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Skype"
+#~ msgstr "Skype"
+
+#~ msgid "Yahoo Account"
+#~ msgstr "Yahoo-konto"
+
+#~ msgid "Public Groups"
+#~ msgstr "Offentlige Grupper"
+
+#~ msgid "Pods"
+#~ msgstr "Pods"
+
+#~ msgctxt "[gender]nil"
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "Male"
+#~ msgstr "Mand"
+
+#~ msgid "Female"
+#~ msgstr "Kvinde"
+
+#~ msgid "Other"
+#~ msgstr "Andet"
+
+#~ msgctxt "[marital]nil"
+#~ msgid "None"
+#~ msgstr "Ingen"
+
+#~ msgid "Single"
+#~ msgstr "Single"
+
+#~ msgid "In a relationship"
+#~ msgstr "I forhold"
+
+#~ msgid "Married"
+#~ msgstr "Gift"
+
+#~ msgid "Divorced"
+#~ msgstr "Fraskilt"
+
+#~ msgid "Widowed"
+#~ msgstr "Enke eller enkemand"
+
+#~ msgid "Cohabiting"
+#~ msgstr "Samboende"
+
+#~ msgid "Civil Union"
+#~ msgstr "Borgerlig Vielse"
+
+#~ msgid "Not shared"
+#~ msgstr "Ikke delt"
+
+#~ msgid "Shared with one contact"
+#~ msgstr "Delt med en kontakt"
+
+#~ msgid "Shared with all contacts"
+#~ msgstr "Delt med alle kontakter"
+
+#~ msgid "Shared with the XMPP network"
+#~ msgstr "Delt med XMPP-netværket"
+
+#~ msgid "Shared with the whole Internet"
+#~ msgstr "Delt med hele internettet"
+
+#~ msgid "What's new ?"
+#~ msgstr "Hvad er nyt?"
+
+#~ msgid "No comments stream"
+#~ msgstr "Ingen kommentarstrøm"
+
+#~ msgid "Your feed cannot be loaded."
+#~ msgstr "Din strøm kan ikke indlæses."
+
+#~ msgid "Show the older comments"
+#~ msgstr "Vis ældre kommentarer"
+
+#~ msgid "Loading comments..."
+#~ msgstr "Indlæser kommentarer..."
+
+#~ msgid "Your contacts"
+#~ msgstr "Dine kontakter"
 
 #~ msgid "User folder size limit (in bytes)"
 #~ msgstr "Brugermappes maks-størrelse (i bytes)"

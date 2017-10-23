@@ -106,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -525,7 +525,7 @@ msgstr "Ez a tartalom nem nyilvános, jelentkezz be, hogy láthasd"
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Csoportok"
 
@@ -543,7 +543,6 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Becenév"
 
@@ -1956,22 +1955,6 @@ msgstr "A profilod mostantól nyilvános"
 msgid "Your profile is now restricted"
 msgstr "Korlátozva van a profilod"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Felhasználók"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Yahoo Account"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2072,10 +2055,6 @@ msgstr "Avatár"
 msgid "Chats"
 msgstr "Beszélgetések"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Nyilvános csoportok"
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2107,10 +2086,6 @@ msgstr "Galéria"
 #: [page]visio
 msgid "Visio-conference"
 msgstr "Videó-konferencia"
-
-#: [page]pods
-msgid "Pods"
-msgstr "Podok"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2302,23 +2277,6 @@ msgstr "Szombat"
 msgid "Sunday"
 msgstr "Vasárnap"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Nincs"
-
-#: [gender]male
-msgid "Male"
-msgstr "Férfi"
-
-#: [gender]female
-msgid "Female"
-msgstr "Nő"
-
-#: [gender]other
-msgid "Other"
-msgstr "Egyéb"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Robot"
@@ -2338,59 +2296,6 @@ msgstr "Webcím"
 #: [client]registered
 msgid "Registered"
 msgstr "Regisztrálva"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "Nincs"
-
-#: [marital]single
-msgid "Single"
-msgstr "Egyedülálló"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "Kapcsolatban"
-
-#: [marital]married
-msgid "Married"
-msgstr "Házas"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Elvált"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Özvegy"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Élettársak"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr ""
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Nem publikus"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Megosztva egy ismerőssel"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Minden ismerőssel megosztva"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Megosztva az XMPP hálózattal"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Megosztva az egész Internettel"
 
 #: [presence]online
 msgid "Online"
@@ -2829,10 +2734,6 @@ msgstr "nap"
 msgid "Title"
 msgstr "Cím"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Mi történt?"
-
 #: [post]place
 msgid "Place"
 msgstr "Hely"
@@ -2857,14 +2758,6 @@ msgstr "Nincs tartalom"
 msgid "No comments yet"
 msgstr "Még nincs hozzászólás"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Nem sikerül betölteni a hírfolyamodat."
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Régebbi bejegyzések"
@@ -2876,14 +2769,6 @@ msgstr "%s új elem"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Hozzászólás megosztási hiba"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Mutasd a régebbi hozzászólásokat"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Hozzászólások betöltése..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2900,10 +2785,6 @@ msgstr "Megosztás vele:"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Mindenki"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Ismerőseid"
 
 #: [post]updated
 msgid "Updated"
@@ -2932,6 +2813,89 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Accounts"
+#~ msgstr "Felhasználók"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Skype"
+#~ msgstr "Skype"
+
+#~ msgid "Yahoo Account"
+#~ msgstr "Yahoo Account"
+
+#~ msgid "Public Groups"
+#~ msgstr "Nyilvános csoportok"
+
+#~ msgid "Pods"
+#~ msgstr "Podok"
+
+#~ msgctxt "[gender]nil"
+#~ msgid "None"
+#~ msgstr "Nincs"
+
+#~ msgid "Male"
+#~ msgstr "Férfi"
+
+#~ msgid "Female"
+#~ msgstr "Nő"
+
+#~ msgid "Other"
+#~ msgstr "Egyéb"
+
+#~ msgctxt "[marital]nil"
+#~ msgid "None"
+#~ msgstr "Nincs"
+
+#~ msgid "Single"
+#~ msgstr "Egyedülálló"
+
+#~ msgid "In a relationship"
+#~ msgstr "Kapcsolatban"
+
+#~ msgid "Married"
+#~ msgstr "Házas"
+
+#~ msgid "Divorced"
+#~ msgstr "Elvált"
+
+#~ msgid "Widowed"
+#~ msgstr "Özvegy"
+
+#~ msgid "Cohabiting"
+#~ msgstr "Élettársak"
+
+#~ msgid "Not shared"
+#~ msgstr "Nem publikus"
+
+#~ msgid "Shared with one contact"
+#~ msgstr "Megosztva egy ismerőssel"
+
+#~ msgid "Shared with all contacts"
+#~ msgstr "Minden ismerőssel megosztva"
+
+#~ msgid "Shared with the XMPP network"
+#~ msgstr "Megosztva az XMPP hálózattal"
+
+#~ msgid "Shared with the whole Internet"
+#~ msgstr "Megosztva az egész Internettel"
+
+#~ msgid "What's new ?"
+#~ msgstr "Mi történt?"
+
+#~ msgid "Your feed cannot be loaded."
+#~ msgstr "Nem sikerül betölteni a hírfolyamodat."
+
+#~ msgid "Show the older comments"
+#~ msgstr "Mutasd a régebbi hozzászólásokat"
+
+#~ msgid "Loading comments..."
+#~ msgstr "Hozzászólások betöltése..."
+
+#~ msgid "Your contacts"
+#~ msgstr "Ismerőseid"
 
 #~ msgid "User folder size limit (in bytes)"
 #~ msgstr "Felhasználói mappa méret korlátja (bájtokban)"

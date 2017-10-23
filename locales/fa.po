@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Alireza Mirsepassy <alirezamirsepassy@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
@@ -522,7 +522,7 @@ msgstr "این محتوا خصوصی است ،برای مشاهده لطفا و�
 msgid "Conferences"
 msgstr "کنفرانس ها"
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "گروه ها"
 
@@ -540,7 +540,6 @@ msgid "Name"
 msgstr "نام"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "اسم مستعار"
 
@@ -1948,22 +1947,6 @@ msgstr ""
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr ""
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr ""
-
-#: [accounts]skype
-msgid "Skype"
-msgstr ""
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr ""
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2065,10 +2048,6 @@ msgstr ""
 msgid "Chats"
 msgstr "گپ ها"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr ""
-
 #: [page]post
 msgid "Post"
 msgstr "نوشته"
@@ -2099,10 +2078,6 @@ msgstr ""
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
-
-#: [page]pods
-msgid "Pods"
 msgstr ""
 
 #: [page]share
@@ -2295,23 +2270,6 @@ msgstr "شنبه"
 msgid "Sunday"
 msgstr "یکشنبه"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr ""
-
-#: [gender]male
-msgid "Male"
-msgstr "مرد"
-
-#: [gender]female
-msgid "Female"
-msgstr "زن"
-
-#: [gender]other
-msgid "Other"
-msgstr ""
-
 #: [client]bot
 msgid "Bot"
 msgstr "بات"
@@ -2331,59 +2289,6 @@ msgstr "وب"
 #: [client]registered
 msgid "Registered"
 msgstr "ثبت شده"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr ""
-
-#: [marital]single
-msgid "Single"
-msgstr "مجرد"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "در رابطه"
-
-#: [marital]married
-msgid "Married"
-msgstr "مزدوج"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "طلاق گرفته"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr ""
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr ""
-
-#: [marital]union
-msgid "Civil Union"
-msgstr ""
-
-#: [flag]white
-msgid "Not shared"
-msgstr ""
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr ""
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr ""
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr ""
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr ""
 
 #: [presence]online
 msgid "Online"
@@ -2821,10 +2726,6 @@ msgstr "روز"
 msgid "Title"
 msgstr "عنوان"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr ""
-
 #: [post]place
 msgid "Place"
 msgstr "مکان"
@@ -2849,14 +2750,6 @@ msgstr "بدون محتوا"
 msgid "No comments yet"
 msgstr "هنوز نظری ثبت نشده است."
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr ""
-
 #: [post]older
 msgid "Get older posts"
 msgstr "دریافت نوشته های قدیمی تر"
@@ -2867,14 +2760,6 @@ msgstr ""
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr ""
-
-#: [post]comments_loading
-msgid "Loading comments..."
 msgstr ""
 
 #: [post]comments_get
@@ -2891,10 +2776,6 @@ msgstr ""
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
-
-#: [post]share_your_contacts
-msgid "Your contacts"
 msgstr ""
 
 #: [post]updated
@@ -2924,6 +2805,24 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Male"
+#~ msgstr "مرد"
+
+#~ msgid "Female"
+#~ msgstr "زن"
+
+#~ msgid "Single"
+#~ msgstr "مجرد"
+
+#~ msgid "In a relationship"
+#~ msgstr "در رابطه"
+
+#~ msgid "Married"
+#~ msgstr "مزدوج"
+
+#~ msgid "Divorced"
+#~ msgstr "طلاق گرفته"
 
 #~ msgid "User folder size limit (in bytes)"
 #~ msgstr "حجم پوشه کاربر ( بایت )"

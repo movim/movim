@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/movim/movim/language/oc/)\n"
@@ -520,7 +520,7 @@ msgstr ""
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Gropes"
 
@@ -538,7 +538,6 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Escais"
 
@@ -1937,22 +1936,6 @@ msgstr ""
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr ""
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr ""
-
-#: [accounts]skype
-msgid "Skype"
-msgstr ""
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr ""
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2053,10 +2036,6 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr ""
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Gropes publics"
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2088,10 +2067,6 @@ msgstr ""
 #: [page]visio
 msgid "Visio-conference"
 msgstr "Visioconferéncia"
-
-#: [page]pods
-msgid "Pods"
-msgstr ""
 
 #: [page]share
 msgctxt "[page]share"
@@ -2283,23 +2258,6 @@ msgstr "Dissabte"
 msgid "Sunday"
 msgstr ""
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr ""
-
-#: [gender]male
-msgid "Male"
-msgstr "Òme"
-
-#: [gender]female
-msgid "Female"
-msgstr "Femna"
-
-#: [gender]other
-msgid "Other"
-msgstr "Autre"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Robòt"
@@ -2319,59 +2277,6 @@ msgstr "Internet"
 #: [client]registered
 msgid "Registered"
 msgstr "Enregistrat"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr ""
-
-#: [marital]single
-msgid "Single"
-msgstr "Celibatari(ària)"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "En parelh"
-
-#: [marital]married
-msgid "Married"
-msgstr "Maridat(ada)"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Divorciat(ada)"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Veuse(a)"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Associat"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Union civila"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Pas partejat"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Partejat amb un contacte"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Partejat amb totes los contactes"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Partejat amb la ret XMPP"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Partejat amb tot Internet"
 
 #: [presence]online
 msgid "Online"
@@ -2810,10 +2715,6 @@ msgstr "jorn"
 msgid "Title"
 msgstr ""
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr ""
-
 #: [post]place
 msgid "Place"
 msgstr "Luòc"
@@ -2838,14 +2739,6 @@ msgstr "Pas cap de contengut"
 msgid "No comments yet"
 msgstr ""
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Vòstre fial es pas accessible."
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Recuperar los ancians pòsts"
@@ -2856,14 +2749,6 @@ msgstr ""
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Afichar los autres comentaris"
-
-#: [post]comments_loading
-msgid "Loading comments..."
 msgstr ""
 
 #: [post]comments_get
@@ -2880,10 +2765,6 @@ msgstr ""
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
-
-#: [post]share_your_contacts
-msgid "Your contacts"
 msgstr ""
 
 #: [post]updated
@@ -2913,6 +2794,60 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Public Groups"
+#~ msgstr "Gropes publics"
+
+#~ msgid "Male"
+#~ msgstr "Òme"
+
+#~ msgid "Female"
+#~ msgstr "Femna"
+
+#~ msgid "Other"
+#~ msgstr "Autre"
+
+#~ msgid "Single"
+#~ msgstr "Celibatari(ària)"
+
+#~ msgid "In a relationship"
+#~ msgstr "En parelh"
+
+#~ msgid "Married"
+#~ msgstr "Maridat(ada)"
+
+#~ msgid "Divorced"
+#~ msgstr "Divorciat(ada)"
+
+#~ msgid "Widowed"
+#~ msgstr "Veuse(a)"
+
+#~ msgid "Cohabiting"
+#~ msgstr "Associat"
+
+#~ msgid "Civil Union"
+#~ msgstr "Union civila"
+
+#~ msgid "Not shared"
+#~ msgstr "Pas partejat"
+
+#~ msgid "Shared with one contact"
+#~ msgstr "Partejat amb un contacte"
+
+#~ msgid "Shared with all contacts"
+#~ msgstr "Partejat amb totes los contactes"
+
+#~ msgid "Shared with the XMPP network"
+#~ msgstr "Partejat amb la ret XMPP"
+
+#~ msgid "Shared with the whole Internet"
+#~ msgstr "Partejat amb tot Internet"
+
+#~ msgid "Your feed cannot be loaded."
+#~ msgstr "Vòstre fial es pas accessible."
+
+#~ msgid "Show the older comments"
+#~ msgstr "Afichar los autres comentaris"
 
 #~ msgid "Your status here !"
 #~ msgstr "Vòstre estatut aicí !"
