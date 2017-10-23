@@ -17,15 +17,15 @@ $loop = React\EventLoop\Factory::create();
 $connector = new React\SocketClient\TcpConnector($loop);
 $stdin = new React\Stream\Stream(STDIN, $loop);
 
-\Movim\Task\Engine::init($loop);
-
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();
 $wrapper->registerAll($bootstrap->getWidgets());
 
 $conn = null;
 
-$parser = new \Moxl\Parser;
+$parser = new \Moxl\Parser(function ($node) {
+    \Moxl\Xec\Handler::handle($node);
+});
 
 $buffer = '';
 
@@ -68,7 +68,6 @@ function writeOut()
 
     if(!empty($msg)) {
         echo base64_encode(gzcompress(json_encode($msg), 9))."";
-        //fwrite(STDERR, colorize(json_encode($msg).' '.strlen($msg), 'yellow')." : ".colorize('sent to browser', 'green')."\n");
     }
 
     RPC::clear();
@@ -100,8 +99,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
         $buffer = '';
 
         foreach ($messages as $message) {
-            #fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received from the browser', 'green')."\n");
-
             $msg = json_decode($message);
 
             if(isset($msg)) {
@@ -147,7 +144,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         $dns = \Moxl\Utils::resolveHost($msg->host);
                         if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
                         if(isset($dns->port) && $dns->port != null) $port = $dns->port;
-                        #fwrite(STDERR, colorize('open a socket to '.$domain, 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
 
                         $ip = \Moxl\Utils::resolveIp($msg->host);
                         $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
@@ -237,8 +233,6 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 $restart = true;
             }
 
-            #fwrite(STDERR, colorize(getenv('sid'), 'yellow')." widgets : ".\sizeToCleanSize(memory_get_usage())."\n");
-
             $timestamp = time();
 
             if($restart) {
@@ -252,29 +246,17 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
             }
 
-            while($parser->nodes && !$parser->nodes->isEmpty()) {
-                $node = $parser->nodes->dequeue();
-                \Moxl\Xec\Handler::handle($node);
-
-                $loop->tick();
-
-                unset($node);
-            }
-
             writeOut();
-            //fwrite(STDERR, colorize(getenv('sid'), 'yellow')." end data : ".\sizeToCleanSize(memory_get_usage())."\n");
         }
 
         $loop->tick();
     });
 
     $conn->on('error', function($msg) use ($conn, $loop) {
-        #fwrite(STDERR, colorize(serialize($msg), 'red')." : ".colorize('error', 'green')."\n");
         $loop->stop();
     });
 
     $conn->on('close', function($msg) use ($conn, $loop) {
-        #fwrite(STDERR, colorize(serialize($msg), 'red')." : ".colorize('closed', 'green')."\n");
         $loop->stop();
     });
 
@@ -283,8 +265,6 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
     $obj->func = 'registered';
 
     fwrite(STDERR, 'registered');
-
-    //fwrite(STDERR, colorize(json_encode($obj).' '.strlen($obj), 'yellow')." : ".colorize('obj sent to browser', 'green')."\n");
 
     echo base64_encode(gzcompress(json_encode($obj), 9))."";
 };
