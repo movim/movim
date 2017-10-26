@@ -9,6 +9,7 @@
 # Qim Armnov <hoakimartamonov@gmail.com>, 2016
 # Stanislav N. <pztrn@pztrn.name>, 2016-2017
 # Yan B <its@dark0ff.ru>, 2017
+# Yan B <its@dark0ff.ru>, 2017
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -111,8 +112,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
-"PO-Revision-Date: 2017-09-29 09:39+0000\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"PO-Revision-Date: 2017-10-23 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
@@ -529,7 +530,7 @@ msgstr "Этот контент приватный, пожалуйста авт�
 msgid "Conferences"
 msgstr "Конференции"
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Группы"
 
@@ -547,7 +548,6 @@ msgid "Name"
 msgstr "Имя"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Псевдоним"
 
@@ -819,9 +819,8 @@ msgid "%s posts"
 msgstr "%s публикаций"
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "Публичный профиль"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -1939,22 +1938,6 @@ msgstr "Ваш профиль теперь общедоступен"
 msgid "Your profile is now restricted"
 msgstr "Ваш профиль теперь скрыт"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Учётные записи"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Твиттер"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Аккаунт Yahoo"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr "Перейти в мой профиль"
@@ -1997,7 +1980,7 @@ msgstr "Пожалуйста, свяжитесь с Вашим админист�
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr ""
+msgstr "... звонит Вам"
 
 #: [visio]ringing
 msgid "…ringing"
@@ -2008,9 +1991,8 @@ msgid "in call"
 msgstr ""
 
 #: [visio]failed
-#, fuzzy
 msgid "failed"
-msgstr "Загрузка не удалась"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2056,10 +2038,6 @@ msgstr "Фотография"
 msgid "Chats"
 msgstr "Чаты"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Открытые Группы"
-
 #: [page]post
 msgid "Post"
 msgstr "Запис"
@@ -2091,10 +2069,6 @@ msgstr "Галерея"
 #: [page]visio
 msgid "Visio-conference"
 msgstr "Visio-конференция"
-
-#: [page]pods
-msgid "Pods"
-msgstr "Поды"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2286,23 +2260,6 @@ msgstr "Суббота"
 msgid "Sunday"
 msgstr "Воскресенье"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Нет"
-
-#: [gender]male
-msgid "Male"
-msgstr "Мужчина"
-
-#: [gender]female
-msgid "Female"
-msgstr "Женщина"
-
-#: [gender]other
-msgid "Other"
-msgstr "Прочее"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Бот"
@@ -2322,59 +2279,6 @@ msgstr "Веб"
 #: [client]registered
 msgid "Registered"
 msgstr "Зарегистрировано"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "Нет"
-
-#: [marital]single
-msgid "Single"
-msgstr "Холост(не замужем)"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "В отношениях"
-
-#: [marital]married
-msgid "Married"
-msgstr "В браке"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Разведён (разведена)"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Вдовец (вдова)"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Живём вместе"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "В гражданском браке"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Не является общим"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Общий с одним контактом"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Общий со всеми контактами"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Общий с сетью XMPP"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Общий со всей Интернете"
 
 #: [presence]online
 msgid "Online"
@@ -2812,10 +2716,6 @@ msgstr "день"
 msgid "Title"
 msgstr "Название"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Что нового?"
-
 #: [post]place
 msgid "Place"
 msgstr "Место"
@@ -2840,14 +2740,6 @@ msgstr "Нет данных"
 msgid "No comments yet"
 msgstr "Комментариев пока нет"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr "Нет потока комментариев"
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Ваша лента не может быть загружена."
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Получить предыдущие сообщения"
@@ -2859,14 +2751,6 @@ msgstr "%s новых записей"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Ошибка добавления комментария"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Показать более старые комментарии"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Загрузка комментариев..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2883,10 +2767,6 @@ msgstr "Поделиться с"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Все"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Ваши контакты"
 
 #: [post]updated
 msgid "Updated"
@@ -2915,6 +2795,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
-
-#~ msgid "This community seems empty"
-#~ msgstr "Это сообщество, кажется, пустое"

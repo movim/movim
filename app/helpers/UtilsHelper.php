@@ -26,19 +26,6 @@ class Utils
 }
 
 /**
- * Return the list of gender
- */
-function getGender()
-{
-    return [
-        'N' => __('gender.nil'),
-        'M' => __('gender.male'),
-        'F' => __('gender.female'),
-        'O' => __('gender.other')
-    ];
-}
-
-/**
  * Return the list of client types
  */
 function getClientTypes()
@@ -368,22 +355,6 @@ function getCountries()
         'ZM' => 'Zambia',
         'ZW' => 'Zimbabwe'
     ];
-}
-
-/**
- * Return the list of marital status
- */
-function getMarital() {
-    return [
-            'none'          => __('marital.nil'),
-            'single'        => __('marital.single'),
-            'relationship'  => __('marital.relationship'),
-            'married'       => __('marital.married'),
-            'divorced'      => __('marital.divorced'),
-            'widowed'       => __('marital.widowed'),
-            'cohabiting'    => __('marital.cohabiting'),
-            'union'         => __('marital.union')
-        ];
 }
 
 function getPresences() {

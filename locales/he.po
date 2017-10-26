@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
@@ -523,7 +523,7 @@ msgstr ""
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "קבוצות"
 
@@ -541,7 +541,6 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "שם כינוי"
 
@@ -1951,22 +1950,6 @@ msgstr "הדיוקן שלך הינו פומבי כעת"
 msgid "Your profile is now restricted"
 msgstr "הדיוקן שלך הינו מוגבל כעת"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "חשבונות"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "חשבון Yahoo"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2067,10 +2050,6 @@ msgstr "אווטאר"
 msgid "Chats"
 msgstr "שיחות"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "קבוצות פומביות"
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2102,10 +2081,6 @@ msgstr "גלריה"
 #: [page]visio
 msgid "Visio-conference"
 msgstr "ועידת וידאו"
-
-#: [page]pods
-msgid "Pods"
-msgstr "שרתים"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2297,23 +2272,6 @@ msgstr "יום שבת"
 msgid "Sunday"
 msgstr "יום ראשון"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr ""
-
-#: [gender]male
-msgid "Male"
-msgstr "זכר"
-
-#: [gender]female
-msgid "Female"
-msgstr "נקבה"
-
-#: [gender]other
-msgid "Other"
-msgstr "אחר"
-
 #: [client]bot
 msgid "Bot"
 msgstr "בוט"
@@ -2333,59 +2291,6 @@ msgstr "רשת"
 #: [client]registered
 msgid "Registered"
 msgstr "רשום"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr ""
-
-#: [marital]single
-msgid "Single"
-msgstr "רווק/ה"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "במערכת יחסים"
-
-#: [marital]married
-msgid "Married"
-msgstr "נישואים"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "גרוש/ה"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "אלמן/ה"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "חיים במשותף"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "נישואים אזרחיים"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "לא שותף"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "שותף עם איש קשר אחד"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "שותף עם כל אנשי הקשר"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "שותף עם רשת התקשורת XMPP"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "שותף עם כל המרשתת"
 
 #: [presence]online
 msgid "Online"
@@ -2824,10 +2729,6 @@ msgstr "יום"
 msgid "Title"
 msgstr "כותרת"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "מה חדש ?"
-
 #: [post]place
 msgid "Place"
 msgstr "מיקום"
@@ -2852,14 +2753,6 @@ msgstr "אין איש קשר"
 msgid "No comments yet"
 msgstr "אין תגובות עדיין"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr "אין זרם תגובות"
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "ערוצך לא יכול להיטען."
-
 #: [post]older
 msgid "Get older posts"
 msgstr "השג רשומות נושנות"
@@ -2871,14 +2764,6 @@ msgstr "%s פריטים חדשים"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "שגיאת פרסום תגובה"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "הצג את התגובות הישנות יותר"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "כעת טוען תגובות..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2895,10 +2780,6 @@ msgstr "שתף בעזרת"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "כולם"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "אנשי הקשר שלך"
 
 #: [post]updated
 msgid "Updated"
@@ -2927,6 +2808,87 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
+
+#~ msgid "Accounts"
+#~ msgstr "חשבונות"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Skype"
+#~ msgstr "Skype"
+
+#~ msgid "Yahoo Account"
+#~ msgstr "חשבון Yahoo"
+
+#~ msgid "Public Groups"
+#~ msgstr "קבוצות פומביות"
+
+#~ msgid "Pods"
+#~ msgstr "שרתים"
+
+#~ msgid "Male"
+#~ msgstr "זכר"
+
+#~ msgid "Female"
+#~ msgstr "נקבה"
+
+#~ msgid "Other"
+#~ msgstr "אחר"
+
+#~ msgid "Single"
+#~ msgstr "רווק/ה"
+
+#~ msgid "In a relationship"
+#~ msgstr "במערכת יחסים"
+
+#~ msgid "Married"
+#~ msgstr "נישואים"
+
+#~ msgid "Divorced"
+#~ msgstr "גרוש/ה"
+
+#~ msgid "Widowed"
+#~ msgstr "אלמן/ה"
+
+#~ msgid "Cohabiting"
+#~ msgstr "חיים במשותף"
+
+#~ msgid "Civil Union"
+#~ msgstr "נישואים אזרחיים"
+
+#~ msgid "Not shared"
+#~ msgstr "לא שותף"
+
+#~ msgid "Shared with one contact"
+#~ msgstr "שותף עם איש קשר אחד"
+
+#~ msgid "Shared with all contacts"
+#~ msgstr "שותף עם כל אנשי הקשר"
+
+#~ msgid "Shared with the XMPP network"
+#~ msgstr "שותף עם רשת התקשורת XMPP"
+
+#~ msgid "Shared with the whole Internet"
+#~ msgstr "שותף עם כל המרשתת"
+
+#~ msgid "What's new ?"
+#~ msgstr "מה חדש ?"
+
+#~ msgid "No comments stream"
+#~ msgstr "אין זרם תגובות"
+
+#~ msgid "Your feed cannot be loaded."
+#~ msgstr "ערוצך לא יכול להיטען."
+
+#~ msgid "Show the older comments"
+#~ msgstr "הצג את התגובות הישנות יותר"
+
+#~ msgid "Loading comments..."
+#~ msgstr "כעת טוען תגובות..."
+
+#~ msgid "Your contacts"
+#~ msgstr "אנשי הקשר שלך"
 
 #~ msgid "User folder size limit (in bytes)"
 #~ msgstr "מגבלת גודל תיקיית משתמש (בתים)"

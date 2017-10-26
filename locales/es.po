@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
@@ -525,7 +525,7 @@ msgstr "Este contenido es privado, ingresa para verlo"
 msgid "Conferences"
 msgstr "Conferencias"
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Grupos"
 
@@ -543,7 +543,6 @@ msgid "Name"
 msgstr "Nombre"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Apodo"
 
@@ -1935,22 +1934,6 @@ msgstr "Tu perfil es ahora público"
 msgid "Your profile is now restricted"
 msgstr "Tu perfil está ahora restringido"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Cuentas"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Cuenta de Yahoo"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2052,10 +2035,6 @@ msgstr "Imagen de perfil"
 msgid "Chats"
 msgstr "Conversaciones"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Grupos públicos"
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2087,10 +2066,6 @@ msgstr "Galería"
 #: [page]visio
 msgid "Visio-conference"
 msgstr "Visio-conferencia"
-
-#: [page]pods
-msgid "Pods"
-msgstr "Pods"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2282,23 +2257,6 @@ msgstr "Sábado"
 msgid "Sunday"
 msgstr "Domingo"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr ""
-
-#: [gender]male
-msgid "Male"
-msgstr "Masculino"
-
-#: [gender]female
-msgid "Female"
-msgstr "Femenino"
-
-#: [gender]other
-msgid "Other"
-msgstr "Otro"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
@@ -2318,59 +2276,6 @@ msgstr "Web"
 #: [client]registered
 msgid "Registered"
 msgstr "Registrado"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr ""
-
-#: [marital]single
-msgid "Single"
-msgstr "Soltero (a)"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "En una relación"
-
-#: [marital]married
-msgid "Married"
-msgstr "Casado (a)"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Divorciado (a)"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Viudo (a)"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Cohabitando"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Unión civil"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "No compartido"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Compartir con un contacto"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Compartir con todos los contactos"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Compartir con la red XMPP"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Compartir con todos en internet"
 
 #: [presence]online
 msgid "Online"
@@ -2808,10 +2713,6 @@ msgstr "día"
 msgid "Title"
 msgstr "Título"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "¿Qué hay de nuevo?"
-
 #: [post]place
 msgid "Place"
 msgstr "Lugar"
@@ -2836,14 +2737,6 @@ msgstr "No hay contenido"
 msgid "No comments yet"
 msgstr "Sin comentarios"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Tu canal no se pudo cargar"
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Recibir las entradas más antiguas"
@@ -2855,14 +2748,6 @@ msgstr "%s nuevos objetos"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Error al publicar comentario"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Mostrar los comentarios antiguos"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Cargando comentarios..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2879,10 +2764,6 @@ msgstr "Compartir con"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Todos"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Tus contactos"
 
 #: [post]updated
 msgid "Updated"
@@ -2911,3 +2792,81 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
+
+#~ msgid "Accounts"
+#~ msgstr "Cuentas"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Skype"
+#~ msgstr "Skype"
+
+#~ msgid "Yahoo Account"
+#~ msgstr "Cuenta de Yahoo"
+
+#~ msgid "Public Groups"
+#~ msgstr "Grupos públicos"
+
+#~ msgid "Pods"
+#~ msgstr "Pods"
+
+#~ msgid "Male"
+#~ msgstr "Masculino"
+
+#~ msgid "Female"
+#~ msgstr "Femenino"
+
+#~ msgid "Other"
+#~ msgstr "Otro"
+
+#~ msgid "Single"
+#~ msgstr "Soltero (a)"
+
+#~ msgid "In a relationship"
+#~ msgstr "En una relación"
+
+#~ msgid "Married"
+#~ msgstr "Casado (a)"
+
+#~ msgid "Divorced"
+#~ msgstr "Divorciado (a)"
+
+#~ msgid "Widowed"
+#~ msgstr "Viudo (a)"
+
+#~ msgid "Cohabiting"
+#~ msgstr "Cohabitando"
+
+#~ msgid "Civil Union"
+#~ msgstr "Unión civil"
+
+#~ msgid "Not shared"
+#~ msgstr "No compartido"
+
+#~ msgid "Shared with one contact"
+#~ msgstr "Compartir con un contacto"
+
+#~ msgid "Shared with all contacts"
+#~ msgstr "Compartir con todos los contactos"
+
+#~ msgid "Shared with the XMPP network"
+#~ msgstr "Compartir con la red XMPP"
+
+#~ msgid "Shared with the whole Internet"
+#~ msgstr "Compartir con todos en internet"
+
+#~ msgid "What's new ?"
+#~ msgstr "¿Qué hay de nuevo?"
+
+#~ msgid "Your feed cannot be loaded."
+#~ msgstr "Tu canal no se pudo cargar"
+
+#~ msgid "Show the older comments"
+#~ msgstr "Mostrar los comentarios antiguos"
+
+#~ msgid "Loading comments..."
+#~ msgstr "Cargando comentarios..."
+
+#~ msgid "Your contacts"
+#~ msgstr "Tus contactos"

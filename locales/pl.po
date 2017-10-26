@@ -104,8 +104,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
-"PO-Revision-Date: 2017-09-29 09:39+0000\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"PO-Revision-Date: 2017-10-23 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
@@ -522,7 +522,7 @@ msgstr "Niniejsza zawartość jest prywatna. Zaloguj się, by ją zobaczyć"
 msgid "Conferences"
 msgstr "Konferencje"
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Grupy"
 
@@ -540,7 +540,6 @@ msgid "Name"
 msgstr "Nazwa"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Nick"
 
@@ -812,9 +811,8 @@ msgid "%s posts"
 msgstr "%s wpisów"
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "Profil publiczny"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -1932,22 +1930,6 @@ msgstr "Twój profil jest teraz publiczny"
 msgid "Your profile is now restricted"
 msgstr "Twój profil jest teraz zablokowany"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Konta"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Konto Yahoo"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr "Przejdź do strony mojego profilu"
@@ -2001,9 +1983,8 @@ msgid "in call"
 msgstr ""
 
 #: [visio]failed
-#, fuzzy
 msgid "failed"
-msgstr "Wysyłanie nie powiodło się"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2049,10 +2030,6 @@ msgstr "Awatar"
 msgid "Chats"
 msgstr "Czaty"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Publiczne Grupy"
-
 #: [page]post
 msgid "Post"
 msgstr "Opublikuj"
@@ -2084,10 +2061,6 @@ msgstr "Galeria"
 #: [page]visio
 msgid "Visio-conference"
 msgstr "Visio-konferencja"
-
-#: [page]pods
-msgid "Pods"
-msgstr "Pody"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2279,23 +2252,6 @@ msgstr "Sobota"
 msgid "Sunday"
 msgstr "Niedziela"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Żadne"
-
-#: [gender]male
-msgid "Male"
-msgstr "Mężczyzna"
-
-#: [gender]female
-msgid "Female"
-msgstr "Kobieta"
-
-#: [gender]other
-msgid "Other"
-msgstr "Inne"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
@@ -2315,59 +2271,6 @@ msgstr "Strona"
 #: [client]registered
 msgid "Registered"
 msgstr "Zarejestrowany"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "Żaden"
-
-#: [marital]single
-msgid "Single"
-msgstr "Singiel"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "W związku"
-
-#: [marital]married
-msgid "Married"
-msgstr "Po ślubie"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Rozwiedziony/a"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Wdowa/iec"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "W konkubinacie"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Stan Cywilny"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Nie opublikowano"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Opublikowano jednemu kontaktowi"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Opublikowano wszystkim kontaktom"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Opublikowano w sieci XMPP"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Opublikowano w całym Internecie"
 
 #: [presence]online
 msgid "Online"
@@ -2805,10 +2708,6 @@ msgstr "dzień"
 msgid "Title"
 msgstr "Tytuł"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Co nowego ?"
-
 #: [post]place
 msgid "Place"
 msgstr "Miejsce"
@@ -2833,14 +2732,6 @@ msgstr "Brak zawartości"
 msgid "No comments yet"
 msgstr "Chwilowy brak komentarzy"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr "Brak komentarzy"
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Nie można załadować twoich treści."
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Zobacz starsze wpisy"
@@ -2852,14 +2743,6 @@ msgstr "%s nowych przedmiotów"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Błąd publikacji komentarza"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Pokaż starsze komentarze"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Wczytywanie komentarzy..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2876,10 +2759,6 @@ msgstr "Udostępnij"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Każdy"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Twoje kontakty"
 
 #: [post]updated
 msgid "Updated"
@@ -2908,6 +2787,3 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
-
-#~ msgid "This community seems empty"
-#~ msgstr "Ta społeczność jest pusta"

@@ -22,9 +22,6 @@ class Contact extends Model
     public $adrpostalcode;
     public $adrcountry;
 
-    public $gender;
-    public $marital;
-
     public $photobin;
 
     public $description;
@@ -64,11 +61,6 @@ class Contact extends Model
     public $locuri;
     public $loctimestamp;
 
-    // Accounts
-    public $twitter;
-    public $skype;
-    public $yahoo;
-
     public $avatarhash;
 
     // Datetime
@@ -86,8 +78,6 @@ class Contact extends Model
         'adrlocality' =>    ['type' => 'string','size' => 128],
         'adrpostalcode' =>  ['type' => 'string','size' => 12],
         'adrcountry' =>     ['type' => 'string','size' => 64],
-        'gender' =>         ['type' => 'string','size' => 1],
-        'marital' =>        ['type' => 'string','size' => 16],
         'description' =>    ['type' => 'text'],
         'mood' =>           ['type' => 'serialized','size' => 64],
         'activity' =>       ['type' => 'string','size' => 128],
@@ -111,9 +101,6 @@ class Contact extends Model
         'loctext' =>        ['type' => 'text'],
         'locuri' =>         ['type' => 'string','size' => 128],
         'loctimestamp' =>   ['type' => 'date','size' => 11],
-        'twitter' =>        ['type' => 'string','size' => 128],
-        'skype' =>          ['type' => 'string','size' => 128],
-        'yahoo' =>          ['type' => 'string','size' => 128],
         'avatarhash' =>     ['type' => 'string','size' => 128],
         'created' =>        ['type' => 'date','mandatory' => true],
         'updated' =>        ['type' => 'date','mandatory' => true],
@@ -129,14 +116,9 @@ class Contact extends Model
             $this->date = (string)$vcard->vCard->BDAY;
         }
 
-        //$this->date = date(SQL::SQL_DATE, strtotime($this->date));
-
         $this->name = (string)$vcard->vCard->NICKNAME;
         $this->fn = (string)$vcard->vCard->FN;
         $this->url = (string)$vcard->vCard->URL;
-
-        $this->gender = (string)$vcard->vCard->{'X-GENDER'};
-        $this->marital = (string)$vcard->vCard->MARITAL->STATUS;
 
         $this->email = (string)$vcard->vCard->EMAIL->USERID;
 
@@ -229,24 +211,6 @@ class Contact extends Model
         $this->adrcountry = (string)$vcard->adr->country;
         $this->adrpostalcode = (string)$vcard->adr->code;
 
-        if(isset($vcard->impp)) {
-            foreach($vcard->impp->children() as $c) {
-                list($key, $value) = explode(':', (string)$c);
-
-                switch($key) {
-                    case 'twitter' :
-                        $this->twitter = str_replace('@', '', $value);
-                        break;
-                    case 'skype' :
-                        $this->skype = (string)$value;
-                        break;
-                    case 'ymsgr' :
-                        $this->yahoo = (string)$value;
-                        break;
-                }
-            }
-        }
-
         $this->email = (string)$vcard->email->text;
         $this->description = trim((string)$vcard->note->text);
     }
@@ -331,24 +295,6 @@ class Contact extends Model
 
         $dt = new \DateTime($this->date);
         return $dt->format('d-m-Y');
-    }
-
-    function getGender()
-    {
-        $gender = getGender();
-
-        if($this->gender != null && $this->gender != 'N') {
-            return $gender[$this->gender];
-        }
-    }
-
-    function getMarital()
-    {
-        $marital = getMarital();
-
-        if($this->marital != null && $this->marital != 'none') {
-            return $marital[$this->marital];
-        }
     }
 
     function getAlbum()

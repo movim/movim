@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2016-07-29 20:30+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Galician (http://www.transifex.com/movim/movim/language/gl/)\n"
@@ -521,7 +521,7 @@ msgstr ""
 msgid "Conferences"
 msgstr "Configuración"
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr ""
 
@@ -539,7 +539,6 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr ""
 
@@ -1932,22 +1931,6 @@ msgstr ""
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr ""
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr ""
-
-#: [accounts]skype
-msgid "Skype"
-msgstr ""
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr ""
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2048,10 +2031,6 @@ msgstr ""
 msgid "Chats"
 msgstr ""
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr ""
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2082,10 +2061,6 @@ msgstr ""
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
-
-#: [page]pods
-msgid "Pods"
 msgstr ""
 
 #: [page]share
@@ -2278,23 +2253,6 @@ msgstr "Sábado"
 msgid "Sunday"
 msgstr ""
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr ""
-
-#: [gender]male
-msgid "Male"
-msgstr ""
-
-#: [gender]female
-msgid "Female"
-msgstr ""
-
-#: [gender]other
-msgid "Other"
-msgstr ""
-
 #: [client]bot
 msgid "Bot"
 msgstr ""
@@ -2313,59 +2271,6 @@ msgstr ""
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr ""
-
-#: [marital]single
-msgid "Single"
-msgstr ""
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr ""
-
-#: [marital]married
-msgid "Married"
-msgstr ""
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr ""
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr ""
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr ""
-
-#: [marital]union
-msgid "Civil Union"
-msgstr ""
-
-#: [flag]white
-msgid "Not shared"
-msgstr ""
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr ""
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr ""
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr ""
-
-#: [flag]black
-msgid "Shared with the whole Internet"
 msgstr ""
 
 #: [presence]online
@@ -2804,10 +2709,6 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr ""
-
 #: [post]place
 msgid "Place"
 msgstr ""
@@ -2832,14 +2733,6 @@ msgstr ""
 msgid "No comments yet"
 msgstr ""
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr ""
-
 #: [post]older
 msgid "Get older posts"
 msgstr ""
@@ -2850,14 +2743,6 @@ msgstr ""
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr ""
-
-#: [post]comments_loading
-msgid "Loading comments..."
 msgstr ""
 
 #: [post]comments_get
@@ -2874,10 +2759,6 @@ msgstr ""
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
-
-#: [post]share_your_contacts
-msgid "Your contacts"
 msgstr ""
 
 #: [post]updated

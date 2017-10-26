@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "854095a21174b2a26516d115fc0b2380",
+    "content-hash": "db6bb35b0d3940d30cbf306c4c543bce",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -61,16 +61,16 @@
         },
         {
             "name": "clue/buzz-react",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/clue/php-buzz-react.git",
-                "reference": "3aadd4636448765b242b5c56fb02196e6c63dc06"
+                "reference": "3fec9c17ffd4f7443f853de986e734b4c131f98e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/3aadd4636448765b242b5c56fb02196e6c63dc06",
-                "reference": "3aadd4636448765b242b5c56fb02196e6c63dc06",
+                "url": "https://api.github.com/repos/clue/php-buzz-react/zipball/3fec9c17ffd4f7443f853de986e734b4c131f98e",
+                "reference": "3fec9c17ffd4f7443f853de986e734b4c131f98e",
                 "shasum": ""
             },
             "require": {
@@ -79,7 +79,7 @@
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
                 "react/http-client": "^0.5.6",
                 "react/promise": "^2.2.1",
-                "react/promise-stream": "^0.1.1",
+                "react/promise-stream": "^1.0 || ^0.1.1",
                 "react/socket": "^1.0 || ^0.8.4",
                 "react/stream": "^1.0 || ^0.7",
                 "ringcentral/psr7": "^1.2"
@@ -115,7 +115,7 @@
                 "psr-7",
                 "reactphp"
             ],
-            "time": "2017-09-17T17:16:22+00:00"
+            "time": "2017-10-24T17:53:40+00:00"
         },
         {
             "name": "cocur/slugify",
@@ -769,12 +769,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "7bfff234c0407f63e6dae56f8252d3bbd7688b4e"
+                "reference": "35568d33db5bfef845bd9fcbf93d67d4657367f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/7bfff234c0407f63e6dae56f8252d3bbd7688b4e",
-                "reference": "7bfff234c0407f63e6dae56f8252d3bbd7688b4e",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/35568d33db5bfef845bd9fcbf93d67d4657367f8",
+                "reference": "35568d33db5bfef845bd9fcbf93d67d4657367f8",
                 "shasum": ""
             },
             "require": {
@@ -809,7 +809,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-10-20 21:55:52"
+            "time": "2017-10-23 21:22:50"
         },
         {
             "name": "movim/sasl2",
@@ -1625,16 +1625,16 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.8.4",
+            "version": "v0.8.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "ce2b577c2d69ee071c3f9e552942c320caa87e0a"
+                "reference": "d169d1ed24e39bf182781d72ddd224dbbd449aa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/ce2b577c2d69ee071c3f9e552942c320caa87e0a",
-                "reference": "ce2b577c2d69ee071c3f9e552942c320caa87e0a",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/d169d1ed24e39bf182781d72ddd224dbbd449aa8",
+                "reference": "d169d1ed24e39bf182781d72ddd224dbbd449aa8",
                 "shasum": ""
             },
             "require": {
@@ -1647,8 +1647,8 @@
                 "react/stream": "^1.0 || ^0.7.1"
             },
             "require-dev": {
-                "clue/block-react": "^1.1",
-                "phpunit/phpunit": "~4.8"
+                "clue/block-react": "^1.2",
+                "phpunit/phpunit": "^5.0 || ^4.8"
             },
             "type": "library",
             "autoload": {
@@ -1668,7 +1668,7 @@
                 "reactphp",
                 "stream"
             ],
-            "time": "2017-09-16T17:16:49+00:00"
+            "time": "2017-10-23T21:45:58+00:00"
         },
         {
             "name": "react/stream",

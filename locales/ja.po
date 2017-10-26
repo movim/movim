@@ -105,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: RACER\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -524,7 +524,7 @@ msgstr ""
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "グループ"
 
@@ -542,7 +542,6 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "ニックネーム"
 
@@ -1948,22 +1947,6 @@ msgstr "あなたのプロファイルは公開されました"
 msgid "Your profile is now restricted"
 msgstr "あなたのプロファイルは非公開されました"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "アカウント"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr ""
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2064,10 +2047,6 @@ msgstr "アバター"
 msgid "Chats"
 msgstr "チャット"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr ""
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2098,10 +2077,6 @@ msgstr ""
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
-
-#: [page]pods
-msgid "Pods"
 msgstr ""
 
 #: [page]share
@@ -2294,23 +2269,6 @@ msgstr "土曜日"
 msgid "Sunday"
 msgstr "日曜日"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr ""
-
-#: [gender]male
-msgid "Male"
-msgstr "男性"
-
-#: [gender]female
-msgid "Female"
-msgstr "女性"
-
-#: [gender]other
-msgid "Other"
-msgstr "その他"
-
 #: [client]bot
 msgid "Bot"
 msgstr "ボット"
@@ -2330,59 +2288,6 @@ msgstr "ウェブ"
 #: [client]registered
 msgid "Registered"
 msgstr "登録済み"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr ""
-
-#: [marital]single
-msgid "Single"
-msgstr "独身"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "カップル"
-
-#: [marital]married
-msgid "Married"
-msgstr "既婚"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "離婚"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "死別"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "共有"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "市民結合"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "共有されていません"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "一人のコンタクトと共有"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "全てのコンタクトと共有"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "XMPPネットワークと共有"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "全てと共有"
 
 #: [presence]online
 msgid "Online"
@@ -2820,10 +2725,6 @@ msgstr "日"
 msgid "Title"
 msgstr "件名"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr ""
-
 #: [post]place
 msgid "Place"
 msgstr ""
@@ -2848,14 +2749,6 @@ msgstr ""
 msgid "No comments yet"
 msgstr ""
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "フィードがロードできませんでした。"
-
 #: [post]older
 msgid "Get older posts"
 msgstr "前の投稿を見る"
@@ -2866,14 +2759,6 @@ msgstr ""
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "前のコメントを見る"
-
-#: [post]comments_loading
-msgid "Loading comments..."
 msgstr ""
 
 #: [post]comments_get
@@ -2891,10 +2776,6 @@ msgstr ""
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "全て"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr ""
 
 #: [post]updated
 msgid "Updated"
@@ -2923,6 +2804,66 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
+
+#~ msgid "Accounts"
+#~ msgstr "アカウント"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Skype"
+#~ msgstr "Skype"
+
+#~ msgid "Male"
+#~ msgstr "男性"
+
+#~ msgid "Female"
+#~ msgstr "女性"
+
+#~ msgid "Other"
+#~ msgstr "その他"
+
+#~ msgid "Single"
+#~ msgstr "独身"
+
+#~ msgid "In a relationship"
+#~ msgstr "カップル"
+
+#~ msgid "Married"
+#~ msgstr "既婚"
+
+#~ msgid "Divorced"
+#~ msgstr "離婚"
+
+#~ msgid "Widowed"
+#~ msgstr "死別"
+
+#~ msgid "Cohabiting"
+#~ msgstr "共有"
+
+#~ msgid "Civil Union"
+#~ msgstr "市民結合"
+
+#~ msgid "Not shared"
+#~ msgstr "共有されていません"
+
+#~ msgid "Shared with one contact"
+#~ msgstr "一人のコンタクトと共有"
+
+#~ msgid "Shared with all contacts"
+#~ msgstr "全てのコンタクトと共有"
+
+#~ msgid "Shared with the XMPP network"
+#~ msgstr "XMPPネットワークと共有"
+
+#~ msgid "Shared with the whole Internet"
+#~ msgstr "全てと共有"
+
+#~ msgid "Your feed cannot be loaded."
+#~ msgstr "フィードがロードできませんでした。"
+
+#~ msgid "Show the older comments"
+#~ msgstr "前のコメントを見る"
 
 #~ msgid "User folder size limit (in bytes)"
 #~ msgstr "ユーザーフォルダのサイズ上限（バイト）"

@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Greek (http://www.transifex.com/movim/movim/language/el/)\n"
@@ -521,7 +521,7 @@ msgstr ""
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr ""
 
@@ -539,7 +539,6 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Ψευδώνυμο"
 
@@ -1941,22 +1940,6 @@ msgstr "Το προφίλ είναι πλέον δημόσιο"
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Λογαριασμοί"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Λογαριασμός Yahoo"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2057,10 +2040,6 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr ""
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr ""
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2091,10 +2070,6 @@ msgstr ""
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
-
-#: [page]pods
-msgid "Pods"
 msgstr ""
 
 #: [page]share
@@ -2287,23 +2262,6 @@ msgstr "Σάββατο"
 msgid "Sunday"
 msgstr "Κυριακή"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Κανένα"
-
-#: [gender]male
-msgid "Male"
-msgstr "Άνδρας"
-
-#: [gender]female
-msgid "Female"
-msgstr "Γυναίκα"
-
-#: [gender]other
-msgid "Other"
-msgstr "Άλλο"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Ρομπότ"
@@ -2322,59 +2280,6 @@ msgstr "Διαδίκτυο"
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "Κανένα"
-
-#: [marital]single
-msgid "Single"
-msgstr "Μόνος/η"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "Σε σχέση"
-
-#: [marital]married
-msgid "Married"
-msgstr "Παντρεμένος/η"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Διαζευγμένος/η"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr ""
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr ""
-
-#: [marital]union
-msgid "Civil Union"
-msgstr ""
-
-#: [flag]white
-msgid "Not shared"
-msgstr ""
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr ""
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr ""
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr ""
-
-#: [flag]black
-msgid "Shared with the whole Internet"
 msgstr ""
 
 #: [presence]online
@@ -2813,10 +2718,6 @@ msgstr "ημέρα"
 msgid "Title"
 msgstr "Τίτλος"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Κανένα νέο;"
-
 #: [post]place
 msgid "Place"
 msgstr "Μέρος"
@@ -2841,14 +2742,6 @@ msgstr "Δεν υπάρχει περιεχόμενο"
 msgid "No comments yet"
 msgstr "Δεν υπάρχουν σχόλια ακόμα"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr ""
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Ανάκτηση παλαιότερων αναρτήσεων"
@@ -2860,14 +2753,6 @@ msgstr ""
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr ""
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Εμφάνιση παλαιότερων σχόλιων"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Φόρτωση σχόλιων...."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2884,10 +2769,6 @@ msgstr ""
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Όλοι"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Οι επαφές σου"
 
 #: [post]updated
 msgid "Updated"
@@ -2916,6 +2797,59 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Πληκτρολογήστε εδώ"
+
+#~ msgid "Accounts"
+#~ msgstr "Λογαριασμοί"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Skype"
+#~ msgstr "Skype"
+
+#~ msgid "Yahoo Account"
+#~ msgstr "Λογαριασμός Yahoo"
+
+#~ msgctxt "[gender]nil"
+#~ msgid "None"
+#~ msgstr "Κανένα"
+
+#~ msgid "Male"
+#~ msgstr "Άνδρας"
+
+#~ msgid "Female"
+#~ msgstr "Γυναίκα"
+
+#~ msgid "Other"
+#~ msgstr "Άλλο"
+
+#~ msgctxt "[marital]nil"
+#~ msgid "None"
+#~ msgstr "Κανένα"
+
+#~ msgid "Single"
+#~ msgstr "Μόνος/η"
+
+#~ msgid "In a relationship"
+#~ msgstr "Σε σχέση"
+
+#~ msgid "Married"
+#~ msgstr "Παντρεμένος/η"
+
+#~ msgid "Divorced"
+#~ msgstr "Διαζευγμένος/η"
+
+#~ msgid "What's new ?"
+#~ msgstr "Κανένα νέο;"
+
+#~ msgid "Show the older comments"
+#~ msgstr "Εμφάνιση παλαιότερων σχόλιων"
+
+#~ msgid "Loading comments..."
+#~ msgstr "Φόρτωση σχόλιων...."
+
+#~ msgid "Your contacts"
+#~ msgstr "Οι επαφές σου"
 
 #~ msgid "Delete my account"
 #~ msgstr "Διέγραψε τον λογαριασμό μου"

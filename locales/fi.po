@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
@@ -522,7 +522,7 @@ msgstr "Tämä sisältö on yksityistä, kirjaudu sisään nähdäksesi"
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Ryhmät"
 
@@ -540,7 +540,6 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Nimimerkki"
 
@@ -1948,22 +1947,6 @@ msgstr "Profiilisi on nyt julkinen"
 msgid "Your profile is now restricted"
 msgstr "Profiilisi on nyt rajattu"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Tili"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Yahoo!"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2064,10 +2047,6 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr "Keskustelut"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Julkiset ryhmät"
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2099,10 +2078,6 @@ msgstr "Galleria"
 #: [page]visio
 msgid "Visio-conference"
 msgstr ""
-
-#: [page]pods
-msgid "Pods"
-msgstr "Podit"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2294,23 +2269,6 @@ msgstr "Launtai"
 msgid "Sunday"
 msgstr "Sunnuntai"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Ei mitään"
-
-#: [gender]male
-msgid "Male"
-msgstr "Mies"
-
-#: [gender]female
-msgid "Female"
-msgstr "Nainen"
-
-#: [gender]other
-msgid "Other"
-msgstr "Muu"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Botti"
@@ -2330,59 +2288,6 @@ msgstr "Netti"
 #: [client]registered
 msgid "Registered"
 msgstr "Rekisteröity"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "Ei mitään"
-
-#: [marital]single
-msgid "Single"
-msgstr "Sinkku"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "Parisuhteessa"
-
-#: [marital]married
-msgid "Married"
-msgstr "Naimisissa"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Eronnut"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Leski"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Avoliitossa"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Rekisteröity parisuhde"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Ei jaettu"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Jaettu yhden kontaktin kanssa"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Jaettu kaikkien kontaktien kanssa"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Jaettu XMPP-verkoston kanssa"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Jaettu koko internetin kanssa"
 
 #: [presence]online
 msgid "Online"
@@ -2820,10 +2725,6 @@ msgstr "päivä"
 msgid "Title"
 msgstr "Otsikko"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Mitä uutta?"
-
 #: [post]place
 msgid "Place"
 msgstr "Paikka"
@@ -2848,14 +2749,6 @@ msgstr "Ei sisältöä"
 msgid "No comments yet"
 msgstr "Ei kommentteja vielä"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Syötettäsi ei voitu ladata"
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Hae vanhat postaukset"
@@ -2867,14 +2760,6 @@ msgstr "%s uutta julkaisua"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Virhe kommentin julkaisussa"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Näytä vanhemmat kommentit"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Ladataan kommentteja..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2891,10 +2776,6 @@ msgstr "Kenen kanssa jaetaan?"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Kaikki"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Kontaktisi"
 
 #: [post]updated
 msgid "Updated"
@@ -2923,6 +2804,92 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
+
+#~ msgid "Accounts"
+#~ msgstr "Tili"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Skype"
+#~ msgstr "Skype"
+
+#~ msgid "Yahoo Account"
+#~ msgstr "Yahoo!"
+
+#~ msgid "Public Groups"
+#~ msgstr "Julkiset ryhmät"
+
+#~ msgid "Pods"
+#~ msgstr "Podit"
+
+#~ msgctxt "[gender]nil"
+#~ msgid "None"
+#~ msgstr "Ei mitään"
+
+#~ msgid "Male"
+#~ msgstr "Mies"
+
+#~ msgid "Female"
+#~ msgstr "Nainen"
+
+#~ msgid "Other"
+#~ msgstr "Muu"
+
+#~ msgctxt "[marital]nil"
+#~ msgid "None"
+#~ msgstr "Ei mitään"
+
+#~ msgid "Single"
+#~ msgstr "Sinkku"
+
+#~ msgid "In a relationship"
+#~ msgstr "Parisuhteessa"
+
+#~ msgid "Married"
+#~ msgstr "Naimisissa"
+
+#~ msgid "Divorced"
+#~ msgstr "Eronnut"
+
+#~ msgid "Widowed"
+#~ msgstr "Leski"
+
+#~ msgid "Cohabiting"
+#~ msgstr "Avoliitossa"
+
+#~ msgid "Civil Union"
+#~ msgstr "Rekisteröity parisuhde"
+
+#~ msgid "Not shared"
+#~ msgstr "Ei jaettu"
+
+#~ msgid "Shared with one contact"
+#~ msgstr "Jaettu yhden kontaktin kanssa"
+
+#~ msgid "Shared with all contacts"
+#~ msgstr "Jaettu kaikkien kontaktien kanssa"
+
+#~ msgid "Shared with the XMPP network"
+#~ msgstr "Jaettu XMPP-verkoston kanssa"
+
+#~ msgid "Shared with the whole Internet"
+#~ msgstr "Jaettu koko internetin kanssa"
+
+#~ msgid "What's new ?"
+#~ msgstr "Mitä uutta?"
+
+#~ msgid "Your feed cannot be loaded."
+#~ msgstr "Syötettäsi ei voitu ladata"
+
+#~ msgid "Show the older comments"
+#~ msgstr "Näytä vanhemmat kommentit"
+
+#~ msgid "Loading comments..."
+#~ msgstr "Ladataan kommentteja..."
+
+#~ msgid "Your contacts"
+#~ msgstr "Kontaktisi"
 
 #~ msgid "Discuss with your contacts"
 #~ msgstr "Keskustele kontaktiesi kanssa"

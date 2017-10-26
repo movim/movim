@@ -103,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -522,7 +522,7 @@ msgstr "Tento obsah je soukromý, přihlašte se pro zobrazení"
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Skupiny"
 
@@ -540,7 +540,6 @@ msgid "Name"
 msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Přezdívka"
 
@@ -1953,22 +1952,6 @@ msgstr "Váš profil je nyní veřejný"
 msgid "Your profile is now restricted"
 msgstr "Váš profil je nyní omezený"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Účty"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Yahoo Účet"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2069,10 +2052,6 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr "Konverzace"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Veřejné skupiny"
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2104,10 +2083,6 @@ msgstr "Galerie"
 #: [page]visio
 msgid "Visio-conference"
 msgstr ""
-
-#: [page]pods
-msgid "Pods"
-msgstr "Pody"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2299,23 +2274,6 @@ msgstr "Sobota"
 msgid "Sunday"
 msgstr "Neděle"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Nic"
-
-#: [gender]male
-msgid "Male"
-msgstr "Muž"
-
-#: [gender]female
-msgid "Female"
-msgstr "Žena"
-
-#: [gender]other
-msgid "Other"
-msgstr "Jiné"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
@@ -2335,59 +2293,6 @@ msgstr "Web"
 #: [client]registered
 msgid "Registered"
 msgstr "Registrován"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "NicNic"
-
-#: [marital]single
-msgid "Single"
-msgstr "Nezadaný"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "Ve vztahu"
-
-#: [marital]married
-msgid "Married"
-msgstr "Ženatý/Vdaná"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Rozvedený/á"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Ovdovělý/á"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Žijící ve společné domácnosti"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Lidové milice"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Nesdílené"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Sdílené s jedním kontaktem"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Sdílené se všemi kontakty"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Sdílené s celou sítí XMPP"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Sdílené s celým Internetem"
 
 #: [presence]online
 msgid "Online"
@@ -2825,10 +2730,6 @@ msgstr "den"
 msgid "Title"
 msgstr "Nadpis"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Co je nového?"
-
 #: [post]place
 msgid "Place"
 msgstr "Místo"
@@ -2853,14 +2754,6 @@ msgstr "Žádný obsah"
 msgid "No comments yet"
 msgstr "Zatím žádné komentáře"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr "Žádný proud komentářů"
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Nepodařilo se načíst vaši zeď."
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Získat starší příspěvky"
@@ -2872,14 +2765,6 @@ msgstr "%s nových věcí"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Chyba při zveřejňování komentáře"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Zobrazit starší komentáře"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Načítám komentáře..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2896,10 +2781,6 @@ msgstr "Sdílet s"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Všichni"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Vaše kontakty"
 
 #: [post]updated
 msgid "Updated"
@@ -2928,6 +2809,95 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "Accounts"
+#~ msgstr "Účty"
+
+#~ msgid "Twitter"
+#~ msgstr "Twitter"
+
+#~ msgid "Skype"
+#~ msgstr "Skype"
+
+#~ msgid "Yahoo Account"
+#~ msgstr "Yahoo Účet"
+
+#~ msgid "Public Groups"
+#~ msgstr "Veřejné skupiny"
+
+#~ msgid "Pods"
+#~ msgstr "Pody"
+
+#~ msgctxt "[gender]nil"
+#~ msgid "None"
+#~ msgstr "Nic"
+
+#~ msgid "Male"
+#~ msgstr "Muž"
+
+#~ msgid "Female"
+#~ msgstr "Žena"
+
+#~ msgid "Other"
+#~ msgstr "Jiné"
+
+#~ msgctxt "[marital]nil"
+#~ msgid "None"
+#~ msgstr "NicNic"
+
+#~ msgid "Single"
+#~ msgstr "Nezadaný"
+
+#~ msgid "In a relationship"
+#~ msgstr "Ve vztahu"
+
+#~ msgid "Married"
+#~ msgstr "Ženatý/Vdaná"
+
+#~ msgid "Divorced"
+#~ msgstr "Rozvedený/á"
+
+#~ msgid "Widowed"
+#~ msgstr "Ovdovělý/á"
+
+#~ msgid "Cohabiting"
+#~ msgstr "Žijící ve společné domácnosti"
+
+#~ msgid "Civil Union"
+#~ msgstr "Lidové milice"
+
+#~ msgid "Not shared"
+#~ msgstr "Nesdílené"
+
+#~ msgid "Shared with one contact"
+#~ msgstr "Sdílené s jedním kontaktem"
+
+#~ msgid "Shared with all contacts"
+#~ msgstr "Sdílené se všemi kontakty"
+
+#~ msgid "Shared with the XMPP network"
+#~ msgstr "Sdílené s celou sítí XMPP"
+
+#~ msgid "Shared with the whole Internet"
+#~ msgstr "Sdílené s celým Internetem"
+
+#~ msgid "What's new ?"
+#~ msgstr "Co je nového?"
+
+#~ msgid "No comments stream"
+#~ msgstr "Žádný proud komentářů"
+
+#~ msgid "Your feed cannot be loaded."
+#~ msgstr "Nepodařilo se načíst vaši zeď."
+
+#~ msgid "Show the older comments"
+#~ msgstr "Zobrazit starší komentáře"
+
+#~ msgid "Loading comments..."
+#~ msgstr "Načítám komentáře..."
+
+#~ msgid "Your contacts"
+#~ msgstr "Vaše kontakty"
 
 #~ msgid "User folder size limit (in bytes)"
 #~ msgstr "Maximální velikost složky uživatele (v bytech)"

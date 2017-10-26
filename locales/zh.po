@@ -108,8 +108,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-18 21:20+0200\n"
-"PO-Revision-Date: 2017-09-29 09:39+0000\n"
+"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"PO-Revision-Date: 2017-10-23 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -526,7 +526,7 @@ msgstr "私密内容，请登录后查看"
 msgid "Conferences"
 msgstr "会议"
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "分组"
 
@@ -544,7 +544,6 @@ msgid "Name"
 msgstr "名称"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "昵称"
 
@@ -816,9 +815,8 @@ msgid "%s posts"
 msgstr "%s 帖子"
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "公开个人资料"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -1936,22 +1934,6 @@ msgstr "您的档案现在是公开的"
 msgid "Your profile is now restricted"
 msgstr "现在您的档案是保密的"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "帐户"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "雅虎帐户"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr "前往我的个人信息页"
@@ -2005,9 +1987,8 @@ msgid "in call"
 msgstr ""
 
 #: [visio]failed
-#, fuzzy
 msgid "failed"
-msgstr "上传失败"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2053,10 +2034,6 @@ msgstr "头像"
 msgid "Chats"
 msgstr "聊天"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "公共分组"
-
 #: [page]post
 msgid "Post"
 msgstr "发布"
@@ -2088,10 +2065,6 @@ msgstr "相册"
 #: [page]visio
 msgid "Visio-conference"
 msgstr "视频"
-
-#: [page]pods
-msgid "Pods"
-msgstr ""
 
 #: [page]share
 msgctxt "[page]share"
@@ -2283,23 +2256,6 @@ msgstr "星期六"
 msgid "Sunday"
 msgstr "星期日"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "无"
-
-#: [gender]male
-msgid "Male"
-msgstr "男性"
-
-#: [gender]female
-msgid "Female"
-msgstr "女性"
-
-#: [gender]other
-msgid "Other"
-msgstr "其他"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
@@ -2319,59 +2275,6 @@ msgstr "网站"
 #: [client]registered
 msgid "Registered"
 msgstr "已注册"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "无"
-
-#: [marital]single
-msgid "Single"
-msgstr "单身"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "热恋中"
-
-#: [marital]married
-msgid "Married"
-msgstr "已婚"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "离异"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "丧偶"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "同居"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "伴侣关系"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "私密"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "与一个联系人共享"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "与所有联系人共享"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "在XMPP网络共享"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "完全公开"
 
 #: [presence]online
 msgid "Online"
@@ -2809,10 +2712,6 @@ msgstr "日期"
 msgid "Title"
 msgstr "标题"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "当前最新"
-
 #: [post]place
 msgid "Place"
 msgstr "地点"
@@ -2837,14 +2736,6 @@ msgstr "没有内容"
 msgid "No comments yet"
 msgstr "尚无评论"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr "没有评论集"
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "无法加载您的 feed"
-
 #: [post]older
 msgid "Get older posts"
 msgstr "查看以前公告"
@@ -2856,14 +2747,6 @@ msgstr "%s 新条目"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "发表评论失败"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "显示以前的评论"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "载入评论..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2880,10 +2763,6 @@ msgstr "分享与"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "每个人"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "您的联系人"
 
 #: [post]updated
 msgid "Updated"
@@ -2912,6 +2791,3 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "This community seems empty"
-#~ msgstr "这个社群看起来是空的"
