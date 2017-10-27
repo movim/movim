@@ -142,7 +142,7 @@ class Wrapper
             $params = [];
         }
 
-        return call_user_func_array([$widget, $method], $params);
+        return $widget->$method(...$params);
     }
 
     /**

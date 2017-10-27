@@ -79,12 +79,12 @@ class ConfigCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         foreach($input->getOptions() as $key => $value) {
-            if(property_exists($config, $key) && isset($value)) {
-                if($key == 'password') $value = sha1($value);
+            if (property_exists($config, $key) && isset($value)) {
+                if ($key == 'password') $value = sha1($value);
 
                 $old = $config->$key;
                 $config->$key = $value;

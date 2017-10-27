@@ -27,14 +27,14 @@ class DatabaseCommand extends Command
     {
         $md = \Modl\Modl::getInstance();
 
-        if($input->getOption('set')) {
+        if ($input->getOption('set')) {
             $md->check(true);
             $output->writeln('<info>Database updated</info>');
         } else {
             $toDo = $md->check();
-            if($toDo != null) {
+            if ($toDo != null) {
                 $output->writeln('<comment>The database needs to be updated</comment>');
-                foreach($toDo as $do) {
+                foreach ($toDo as $do) {
                     $output->writeln('<question>'.$do.'</question>');
                 }
             } else {

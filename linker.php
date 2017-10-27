@@ -50,10 +50,8 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
     }
 });
 
-function writeOut()
+function writeOut($msg = null)
 {
-    $msg = RPC::commit();
-
     if(!empty($msg)) {
         echo base64_encode(gzcompress(json_encode($msg), 9))."";
     }
@@ -84,7 +82,7 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
             if(isset($msg)) {
                 switch ($msg->func) {
                     case 'message':
-                        $msg = $msg->body;
+                        (new RPC)->handleJSON($msg->body);
                         break;
 
                     case 'ping':
@@ -140,11 +138,6 @@ $stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &
                         $connector->connect($ip.':'.$port)->then($xmpp_behaviour);
                         break;
                 }
-
-                $rpc = new RPC;
-                $rpc->handleJSON($msg);
-
-                writeOut();
             } else {
                 return;
             }
@@ -225,8 +218,6 @@ $xmpp_behaviour = function (React\Socket\Connection $stream) use (&$conn, $loop,
             if(!$parser->parse($message)) {
                 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
             }
-
-            writeOut();
         }
     });
 

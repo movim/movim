@@ -45,11 +45,11 @@ class Session
     {
         $this->clients->attach($conn);
 
-        if($this->verbose) {
+        if ($this->verbose) {
             echo colorize($this->sid, 'yellow'). " : ".colorize($conn->resourceId." connected\n", 'green');
         }
 
-        if($this->countClients() > 0) {
+        if ($this->countClients() > 0) {
             $this->stateOut('up');
         }
     }
@@ -58,13 +58,13 @@ class Session
     {
         $this->clients->detach($conn);
 
-        if($this->verbose) {
+        if ($this->verbose) {
             echo colorize($this->sid, 'yellow'). " : ".colorize($conn->resourceId." deconnected\n", 'red');
         }
 
-        if($this->countClients() == 0) {
+        if ($this->countClients() == 0) {
             $loop->addPeriodicTimer(20, function($timer) {
-                if($this->countClients() == 0) {
+                if ($this->countClients() == 0) {
                     $this->stateOut('down');
                 }
                 $timer->cancel();
@@ -99,7 +99,7 @@ class Session
 
         // Buffering the incoming data and fire it once its complete
         $this->process->stdout->on('data', function($output) use ($me, &$buffer) {
-            if(substr($output, -1) == "") {
+            if (substr($output, -1) == "") {
                 $out = $buffer . substr($output, 0, -1);
                 $buffer = '';
                 $me->messageOut($out);
@@ -110,26 +110,23 @@ class Session
 
         // The linker died, we close properly the session
         $this->process->on('exit', function($output) use ($me) {
-            if($me->verbose) {
+            if ($me->verbose) {
                 echo colorize($this->sid, 'yellow'). " : ".colorize("linker killed \n", 'red');
             }
 
             $me->process = null;
             $me->closeAll();
 
-            $pd = new \Modl\PresenceDAO;
-            $pd->clearPresence();
-
-            $sd = new \Modl\SessionxDAO;
-            $sd->delete($this->sid);
+            (new \Modl\PresenceDAO)->clearPresence();
+            (new \Modl\SessionxDAO)->delete($this->sid);
         });
 
         $self = $this;
 
         $this->process->stderr->on('data', function($output) use ($me, $self) {
-            if(strpos($output, 'registered') !== false) {
+            if (strpos($output, 'registered') !== false) {
                 $self->registered = true;
-            } elseif(strpos($output, 'started') !== false) {
+            } elseif (strpos($output, 'started') !== false) {
                 $self->started = true;
             } else {
                 echo $output;
@@ -139,7 +136,7 @@ class Session
 
     public function killLinker()
     {
-        if(isset($this->process)) {
+        if (isset($this->process)) {
             $this->process->terminate();
             $this->process = null;
         }
@@ -154,9 +151,9 @@ class Session
 
     public function stateOut($state)
     {
-        if($this->state == $state) return;
+        if ($this->state == $state) return;
 
-        if(isset($this->process)) {
+        if (isset($this->process)) {
             $this->state = $state;
             $msg = new \stdClass;
             $msg->func = $this->state;
@@ -168,7 +165,7 @@ class Session
     public function messageIn($msg)
     {
         $this->timestamp = time();
-        if(isset($this->process)) {
+        if (isset($this->process)) {
             $this->process->stdin->write($msg."");
         }
         unset($msg);

@@ -28,8 +28,7 @@ class Core implements MessageComponentInterface
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
 
-        $sd = new \Modl\SessionxDAO;
-        $sd->clear();
+        (new \Modl\SessionxDAO)->clear();
 
         $this->registerCleaner();
     }
@@ -66,7 +65,7 @@ class Core implements MessageComponentInterface
 
         $path = $explode['host'].$explode['path'];
 
-        if($explode['scheme'] == 'https') {
+        if ($explode['scheme'] == 'https') {
             $ws = 'wss://'.$path.'ws/';
             $secured = 'true';
             echo colorize("Encrypted ", 'green')."\n";
@@ -84,11 +83,11 @@ class Core implements MessageComponentInterface
     public function onOpen(ConnectionInterface $conn)
     {
         $sid = $this->getSid($conn);
-        if($sid != null) {
+        if ($sid != null) {
             $path = $this->getPath($conn);
 
-            if(in_array($path, $this->single)) {
-                if(array_key_exists($sid, $this->singlelocks)
+            if (in_array($path, $this->single)) {
+                if (array_key_exists($sid, $this->singlelocks)
                 && array_key_exists($path, $this->singlelocks[$sid])) {
                     $this->singlelocks[$sid][$path]++;
                     $conn->close(1008);
@@ -97,7 +96,7 @@ class Core implements MessageComponentInterface
                 }
             }
 
-            if(!array_key_exists($sid, $this->sessions)) {
+            if (!array_key_exists($sid, $this->sessions)) {
                 $language = $this->getLanguage($conn);
                 $offset = $this->getOffset($conn);
                 $this->sessions[$sid] = new Session(
@@ -118,7 +117,7 @@ class Core implements MessageComponentInterface
     public function onMessage(ConnectionInterface $from, $msg)
     {
         $sid = $this->getSid($from);
-        if($sid != null && isset($this->sessions[$sid])) {
+        if ($sid != null && isset($this->sessions[$sid])) {
             $this->sessions[$sid]->messageIn($msg);
         }
     }
@@ -127,10 +126,10 @@ class Core implements MessageComponentInterface
     {
         $sid = $this->getSid($conn);
 
-        if($sid != null && isset($this->sessions[$sid])) {
+        if ($sid != null && isset($this->sessions[$sid])) {
             $path = $this->getPath($conn);
 
-            if(in_array($path, $this->single)) {
+            if (in_array($path, $this->single)) {
                 if(array_key_exists($sid, $this->singlelocks)
                 && array_key_exists($path, $this->singlelocks[$sid])) {
                     $this->singlelocks[$sid][$path]--;
@@ -141,7 +140,7 @@ class Core implements MessageComponentInterface
             }
 
             $this->sessions[$sid]->detach($this->loop, $conn);
-            if($this->sessions[$sid]->process == null) {
+            if ($this->sessions[$sid]->process == null) {
                 unset($this->sessions[$sid]);
             }
         }
@@ -149,7 +148,7 @@ class Core implements MessageComponentInterface
 
     public function forceClose($sid)
     {
-        if(array_key_exists($sid, $this->sessions)) {
+        if (array_key_exists($sid, $this->sessions)) {
             $this->sessions[$sid]->killLinker();
             unset($this->sessions[$sid]);
         }
@@ -159,12 +158,12 @@ class Core implements MessageComponentInterface
     {
         $this->loop->addPeriodicTimer(5, function() {
             foreach($this->sessions as $sid => $session) {
-                if($session->countClients() == 0
+                if ($session->countClients() == 0
                 && $session->registered == null) {
                     $session->killLinker();
                 }
 
-                if($session->process == null) {
+                if ($session->process == null) {
                     unset($this->sessions[$sid]);
                 }
             }
@@ -175,11 +174,8 @@ class Core implements MessageComponentInterface
 
     private function cleanupDBSessions()
     {
-        $sd = new \Modl\SessionxDAO;
-        $sd->deleteEmpty();
-
-        $pd = new \Modl\PresenceDAO;
-        $pd->cleanPresences();
+        (new \Modl\SessionxDAO)->deleteEmpty();
+        (new \Modl\PresenceDAO)->cleanPresences();
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e)
@@ -216,14 +212,14 @@ class Core implements MessageComponentInterface
     private function getPath(ConnectionInterface $conn)
     {
         parse_str($conn->httpRequest->getUri()->getQuery(), $arr);
-        return (isset($arr['path'])) ? $arr['path'] : false;
+        return $arr['path'] ?? false;
     }
 
     private function getSid(ConnectionInterface $conn)
     {
         $cookies = Cookies::fromRequest($conn->httpRequest);
 
-        if($cookies->get('MOVIM_SESSION_ID')) {
+        if ($cookies->get('MOVIM_SESSION_ID')) {
             return $cookies->get('MOVIM_SESSION_ID')->getValue();
         } else {
             return null;
