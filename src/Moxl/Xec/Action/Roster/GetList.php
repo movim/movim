@@ -27,8 +27,6 @@ namespace Moxl\Xec\Action\Roster;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Roster;
 
-use Movim\Widget\Event;
-
 class GetList extends Action
 {
     private $_from;
@@ -47,8 +45,6 @@ class GetList extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $evt = new Event;
-
         $rd = new \Modl\RosterLinkDAO;
         $list = [];
 

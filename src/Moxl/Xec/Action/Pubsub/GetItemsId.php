@@ -29,8 +29,6 @@ use Moxl\Stanza\Disco;
 use Moxl\Xec\Action\Pubsub\Errors;
 use Moxl\Xec\Action\Pubsub\GetItem;
 
-use Movim\Widget\Event;
-
 class GetItemsId extends Errors
 {
     private $_to;

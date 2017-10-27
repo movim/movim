@@ -27,8 +27,6 @@ namespace Moxl\Xec\Action\Microblog;
 use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 
-use Movim\Widget\Event;
-
 class CommentsGet extends Action
 {
     private $_to;
@@ -77,8 +75,6 @@ class CommentsGet extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $evt = new Event;
-
         $node = (string)$stanza->pubsub->items->attributes()->node;
         list($xmlns, $parent) = explode("/", $node);
 

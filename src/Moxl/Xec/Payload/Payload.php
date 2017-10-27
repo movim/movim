@@ -24,7 +24,7 @@
 
 namespace Moxl\Xec\Payload;
 
-use Movim\Widget\Event;
+use Movim\Widget\Wrapper;
 
 use Moxl\Xec\Payload\Packet;
 use Moxl\Utils;
@@ -78,9 +78,9 @@ abstract class Payload
             $key = $key . '_' . $this->method;
 
         if(!empty($this->packet->from)) {
-            Utils::log('Package : Event "'.$key.'" from "'.$this->packet->from.'" fired');
+            Utils::log('Package : "'.$key.'" from "'.$this->packet->from.'" fired');
         } else {
-            Utils::log('Package : Event "'.$key);
+            Utils::log('Package : "'.$key);
         }
 
         $this->event($key, $this->packet);
@@ -93,8 +93,7 @@ abstract class Payload
      */
     final public function event($key, $packet = null)
     {
-        $evt = new Event;
-        $evt->run($key, $packet);
+        (Wrapper::getInstance())->iterate($key, $packet);
     }
 
     /**
