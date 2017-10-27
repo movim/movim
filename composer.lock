@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "db6bb35b0d3940d30cbf306c4c543bce",
+    "content-hash": "0bfccd43258d9d743bf360f601d72a0b",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -769,12 +769,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "35568d33db5bfef845bd9fcbf93d67d4657367f8"
+                "reference": "d786a7080ed4e0ef5d7e5b8263c856dd0e7023c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/35568d33db5bfef845bd9fcbf93d67d4657367f8",
-                "reference": "35568d33db5bfef845bd9fcbf93d67d4657367f8",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/d786a7080ed4e0ef5d7e5b8263c856dd0e7023c9",
+                "reference": "d786a7080ed4e0ef5d7e5b8263c856dd0e7023c9",
                 "shasum": ""
             },
             "require": {
@@ -809,7 +809,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-10-23 21:22:50"
+            "time": "2017-10-27 09:17:06"
         },
         {
             "name": "movim/sasl2",
@@ -2173,7 +2173,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.0",
+        "php": ">=5.6.0",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-imagick": "*"
