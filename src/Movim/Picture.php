@@ -2,6 +2,9 @@
 
 namespace Movim;
 
+define('DEFAULT_PICTURE_FORMAT', 'jpeg');
+define('DEFAULT_PICTURE_QUALITY', 95);
+
 class Picture
 {
     private $_path = CACHE_PATH;
@@ -52,9 +55,8 @@ class Picture
     {
         if ($this->_bin) {
             return base64_encode($this->_bin);
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -64,10 +66,10 @@ class Picture
      * @param $height The height requested
      * @return The url of the picture
      */
-    public function get($key, $width = false, $height = false, $format = 'jpeg')
+    public function get($key, $width = false, $height = false, $format = DEFAULT_PICTURE_FORMAT)
     {
         if (!in_array($format, array_keys($this->_formats))) {
-            $format = 'jpeg';
+            $format = DEFAULT_PICTURE_FORMAT;
         }
 
         $this->_key = $key;
@@ -81,38 +83,35 @@ class Picture
                 return urilize(
                     $this->_folder . md5($this->_key) . $this->_formats[$format]
                 );
-            } else {
-                return false;
             }
-        } else { // We request a specific size
-            if (file_exists(
+            return false;
+        }
+        // We request a specific size
+        if (file_exists(
+            $this->_path.md5($this->_key) .
+            '_' . $width.$this->_formats[$format]
+        )
+        ) {
+            $this->fromPath(
                 $this->_path.md5($this->_key) .
                 '_' . $width.$this->_formats[$format]
-                )
-            ) {
-                $this->fromPath(
-                    $this->_path.md5($this->_key) .
-                    '_' . $width.$this->_formats[$format]
-                );
+            );
 
-                return urilize(
-                    $this->_folder.md5($this->_key) .
-                    '_' . $width.$this->_formats[$format]
-                );
-            } else {
-                if (file_exists($original)) {
-                    $this->fromPath($original);
-                    $this->_createThumbnail($width, $height);
-
-                    return urilize(
-                        $this->_folder.md5($this->_key) .
-                        '_' . $width . $this->_formats[$format]
-                    );
-                } else {
-                    return false;
-                }
-            }
+            return urilize(
+                $this->_folder.md5($this->_key) .
+                '_' . $width.$this->_formats[$format]
+            );
         }
+        if (file_exists($original)) {
+            $this->fromPath($original);
+            $this->_createThumbnail($width, $height);
+
+            return urilize(
+                $this->_folder.md5($this->_key) .
+                '_' . $width . $this->_formats[$format]
+            );
+        }
+        return false;
     }
 
     /**
@@ -138,10 +137,10 @@ class Picture
      * @desc Save a picture (original size)
      * @param $key The key of the picture
      */
-    public function set($key, $format = 'jpeg', $quality = 95)
+    public function set($key, $format = DEFAULT_PICTURE_FORMAT, $quality = DEFAULT_PICTURE_QUALITY)
     {
         if (!in_array($format, array_keys($this->_formats))) {
-            $format = 'jpeg';
+            $format = DEFAULT_PICTURE_FORMAT;
         }
 
         $this->_key = $key;
@@ -204,9 +203,8 @@ class Picture
                     $im->writeImage($path);
                     $im->clear();
                     return true;
-                } else {
-                    return false;
                 }
+                return false;
             } catch (\ImagickException $e) {
                 error_log($e->getMessage());
             }
@@ -217,10 +215,10 @@ class Picture
      * @desc Create a thumbnail of the picture and save it
      * @param $size The size requested
      */
-    private function _createThumbnail($width, $height = false, $format = 'jpeg')
+    private function _createThumbnail($width, $height = false, $format = DEFAULT_PICTURE_FORMAT)
     {
         if (!in_array($format, array_keys($this->_formats))) {
-            $format = 'jpeg';
+            $format = DEFAULT_PICTURE_FORMAT;
         }
 
         if (!$height) {

@@ -7,7 +7,7 @@ class Cookie
     public static function set()
     {
         if (SESSION_ID == false) {
-            self::setCookie(generateKey(32));
+            self::renew();
         } else {
             self::setCookie(SESSION_ID);
         }
@@ -34,7 +34,7 @@ class Cookie
     {
         if (!headers_sent()) {
             header_remove('Set-Cookie');
-            setcookie("MOVIM_SESSION_ID", $key, self::getTime(), '/');
+            setcookie('MOVIM_SESSION_ID', $key, self::getTime(), '/');
         }
     }
 }
