@@ -15,12 +15,11 @@ class DatabaseCommand extends Command
             ->setName('db')
             ->setDescription('Database updater')
             ->addOption(
-               'set',
-               's',
-               InputOption::VALUE_NONE,
-               'Will apply updates on the database'
-            )
-        ;
+                'set',
+                's',
+                InputOption::VALUE_NONE,
+                'Will apply updates on the database'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)

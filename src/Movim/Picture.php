@@ -17,7 +17,9 @@ class Picture
     public function fromURL($url)
     {
         $bin = requestURL($url, 10);
-        if($bin) $this->_bin = $bin;
+        if ($bin) {
+            $this->_bin = $bin;
+        }
     }
 
     /**
@@ -26,7 +28,7 @@ class Picture
     public function fromPath($path)
     {
         $size = filesize($path);
-        if($size > 0) {
+        if ($size > 0) {
             $handle = fopen($path, "r");
             $this->_bin = fread($handle, $size);
             fclose($handle);
@@ -38,7 +40,7 @@ class Picture
      */
     public function fromBase($base = false)
     {
-        if($base) {
+        if ($base) {
             $this->_bin = (string)base64_decode((string)$base);
         }
     }
@@ -48,10 +50,11 @@ class Picture
      */
     public function toBase()
     {
-        if($this->_bin)
+        if ($this->_bin) {
             return base64_encode($this->_bin);
-        else
+        } else {
             return false;
+        }
     }
 
     /**
@@ -63,30 +66,48 @@ class Picture
      */
     public function get($key, $width = false, $height = false, $format = 'jpeg')
     {
-        if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
+        if (!in_array($format, array_keys($this->_formats))) {
+            $format = 'jpeg';
+        }
+
         $this->_key = $key;
 
         $original = $this->_path.md5($this->_key).$this->_formats[$format];
 
         // We request the original picture
-        if($width == false) {
-            if(file_exists($original)) {
+        if ($width == false) {
+            if (file_exists($original)) {
                 $this->fromPath($original);
-                return urilize($this->_folder.md5($this->_key).$this->_formats[$format]);
+                return urilize(
+                    $this->_folder . md5($this->_key) . $this->_formats[$format]
+                );
             } else {
                 return false;
             }
-        // We request a specific size
-        } else {
-            if(file_exists($this->_path.md5($this->_key).'_'.$width.$this->_formats[$format])) {
-                $this->fromPath($this->_path.md5($this->_key).'_'.$width.$this->_formats[$format]);
-                return urilize($this->_folder.md5($this->_key).'_'.$width.$this->_formats[$format]);
-            } else {
-                if(file_exists($original)) {
-                    $this->fromPath($original);
-                    $this->createThumbnail($width, $height);
+        } else { // We request a specific size
+            if (file_exists(
+                $this->_path.md5($this->_key) .
+                '_' . $width.$this->_formats[$format]
+                )
+            ) {
+                $this->fromPath(
+                    $this->_path.md5($this->_key) .
+                    '_' . $width.$this->_formats[$format]
+                );
 
-                    return urilize($this->_folder.md5($this->_key).'_'.$width.$this->_formats[$format]);
+                return urilize(
+                    $this->_folder.md5($this->_key) .
+                    '_' . $width.$this->_formats[$format]
+                );
+            } else {
+                if (file_exists($original)) {
+                    $this->fromPath($original);
+                    $this->_createThumbnail($width, $height);
+
+                    return urilize(
+                        $this->_folder.md5($this->_key) .
+                        '_' . $width . $this->_formats[$format]
+                    );
                 } else {
                     return false;
                 }
@@ -100,11 +121,11 @@ class Picture
      */
     public function getSize()
     {
-        if($this->_bin) {
+        if ($this->_bin) {
             $im = new \Imagick;
             try {
                 $im->readImageBlob($this->_bin);
-                if($im != false) {
+                if ($im != false) {
                     return $im->getImageGeometry();
                 }
             } catch (\ImagickException $e) {
@@ -119,36 +140,39 @@ class Picture
      */
     public function set($key, $format = 'jpeg', $quality = 95)
     {
-        if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
+        if (!in_array($format, array_keys($this->_formats))) {
+            $format = 'jpeg';
+        }
 
         $this->_key = $key;
         $path = $this->_path.md5($this->_key).$this->_formats[$format];
 
         // If the file exist we replace it
-        if(file_exists($path) && $this->_bin) {
+        if (file_exists($path) && $this->_bin) {
             unlink($path);
 
             // And destroy all the thumbnails
-            foreach(
+            foreach (
                 glob(
                     $this->_path.
                     md5($key).
                     '*'.$this->_formats[$format],
                     GLOB_NOSORT
-                    ) as $path_thumb) {
+                ) as $path_thumb) {
                 unlink($path_thumb);
             }
         }
 
-        if($this->_bin) {
+        if ($this->_bin) {
             $im = new \Imagick;
             try {
                 $finfo = new \finfo(FILEINFO_MIME_TYPE);
 
                 // Convert the picture to PNG with GD if Imagick doesn't handle WEBP
-                if($finfo->buffer($this->_bin) == 'image/webp'
-                && empty(\Imagick::queryFormats('WEBP'))
-                && array_key_exists('WebP Support', gd_info())) {
+                if ($finfo->buffer($this->_bin) == 'image/webp'
+                    && empty(\Imagick::queryFormats('WEBP'))
+                    && array_key_exists('WebP Support', gd_info())
+                ) {
                     $temp = tmpfile();
                     fwrite($temp , $this->_bin);
                     $resource = imagecreatefromwebp(stream_get_meta_data($temp)['uri']);
@@ -159,10 +183,10 @@ class Picture
                 }
 
                 $im->readImageBlob($this->_bin);
-                if($im != false) {
+                if ($im != false) {
                     $im->setImageFormat($format);
 
-                    if($format == 'jpeg') {
+                    if ($format == 'jpeg') {
                         $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
                         $im->setImageAlphaChannel(11);
                         $im->setInterlaceScheme(\Imagick::INTERLACE_PLANE);
@@ -173,7 +197,7 @@ class Picture
                         $im = $im->mergeImageLayers(\Imagick::LAYERMETHOD_FLATTEN);
                     }
 
-                    if(empty($im->getImageProperties('png:gAMA'))) {
+                    if (empty($im->getImageProperties('png:gAMA'))) {
                         $im->setOption('png:exclude-chunk', 'gAMA');
                     }
 
@@ -193,10 +217,15 @@ class Picture
      * @desc Create a thumbnail of the picture and save it
      * @param $size The size requested
      */
-    private function createThumbnail($width, $height = false, $format = 'jpeg')
+    private function _createThumbnail($width, $height = false, $format = 'jpeg')
     {
-        if(!in_array($format, array_keys($this->_formats))) $format = 'jpeg';
-        if(!$height) $height = $width;
+        if (!in_array($format, array_keys($this->_formats))) {
+            $format = 'jpeg';
+        }
+
+        if (!$height) {
+            $height = $width;
+        }
 
         $path = $this->_path.md5($this->_key).'_'.$width.$this->_formats[$format];
 
@@ -206,7 +235,7 @@ class Picture
             $im->readImageBlob($this->_bin);
             $im->setImageFormat($format);
 
-            if($format == 'jpeg') {
+            if ($format == 'jpeg') {
                 $im->setImageCompression(\Imagick::COMPRESSION_JPEG);
                 $im->setImageAlphaChannel(11);
                 // Put 11 as a value for now, see http://php.net/manual/en/imagick.flattenimages.php#116956
@@ -218,7 +247,7 @@ class Picture
             $geo = $im->getImageGeometry();
 
             $im->cropThumbnailImage($width, $height);
-            if($width > $geo['width']) {
+            if ($width > $geo['width']) {
                 $factor = floor($width/$geo['width']);
                 $im->blurImage($factor, 10);
             }

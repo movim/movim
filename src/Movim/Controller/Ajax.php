@@ -14,9 +14,10 @@ class Ajax extends Base
 
     public static function getInstance()
     {
-        if(!is_object(self::$instance)) {
+        if (!is_object(self::$instance)) {
             self::$instance = new Ajax;
         }
+
         return self::$instance;
     }
 
@@ -25,18 +26,20 @@ class Ajax extends Base
      */
     public function genJs()
     {
-        if(empty($this->funclist)) {
+        if (empty($this->funclist)) {
             return '';
         }
 
         $buffer = '<script type="text/javascript">';
-        foreach($this->funclist as $key => $funcdef) {
+        foreach ($this->funclist as $key => $funcdef) {
             $parlist = implode(', ', $funcdef['params']);
 
-            $buffer .= "function " . $funcdef['object'] . '_'
+            $buffer .= 'function ' . $funcdef['object'] . '_'
                 . $funcdef['funcname'] . "(${parlist}) {";
-            $buffer .= "MovimWebsocket.send('".$funcdef['object']."', '".$funcdef['funcname']."', [${parlist}]);}\n";
+            $buffer .= "MovimWebsocket.send('" . $funcdef['object'] . "', '" .
+                $funcdef['funcname'] . "', [${parlist}]);}\n";
         }
+
         return $buffer . "</script>\n";
     }
 
