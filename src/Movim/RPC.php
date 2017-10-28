@@ -10,14 +10,14 @@ class RPC
 
     public static function call($funcname)
     {
-        if(!is_array(self::$funcalls)) {
+        if (!is_array(self::$funcalls)) {
             self::$funcalls = [];
         }
 
         $args = func_get_args();
         array_shift($args);
 
-        if(self::filter($funcname, $args)) {
+        if (self::filter($funcname, $args)) {
             $funcall = [
                 'func' => $funcname,
                 'params' => $args,
@@ -32,12 +32,14 @@ class RPC
      */
     private static function filter($funcname, $args)
     {
-        foreach(self::$funcalls as $f) {
-            if(isset($f['func']) &&
-               isset($f['params']) &&
-               $f['func'] == $funcname &&
-               $f['params'] === $args)
-               return false;
+        foreach (self::$funcalls as $f) {
+            if (isset($f['func'])
+                && isset($f['params'])
+                && $f['func'] == $funcname
+                && $f['params'] === $args
+            ) {
+                return false;
+            }
         }
 
         return true;
@@ -62,7 +64,7 @@ class RPC
     public function handle_json($request)
     {
         // Loading the widget.
-        if(isset($request->widget)) {
+        if (isset($request->widget)) {
             $widget_name = (string)$request->widget;
         } else {
             return;
@@ -71,14 +73,15 @@ class RPC
         $result = [];
 
         // Preparing the parameters and calling the function.
-        if(isset($request->params)) {
+        if (isset($request->params)) {
             $params = (array)$request->params;
 
-            foreach($params as $p) {
-                if(is_object($p) && isset($p->container))
+            foreach ($params as $p) {
+                if (is_object($p) && isset($p->container)) {
                     array_push($result, (array)$p->container);
-                else
+                } else {
                     array_push($result, $p);
+                }
             }
         }
 
