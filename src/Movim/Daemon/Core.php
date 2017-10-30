@@ -30,6 +30,7 @@ class Core implements MessageComponentInterface
 
         (new \Modl\SessionxDAO)->clear();
 
+        $this->cleanupIPCs();
         $this->registerCleaner();
     }
 
@@ -176,6 +177,13 @@ class Core implements MessageComponentInterface
     {
         (new \Modl\SessionxDAO)->deleteEmpty();
         (new \Modl\PresenceDAO)->cleanPresences();
+    }
+
+    private function cleanupIPCs()
+    {
+        foreach (glob('/tmp/movim_feeds_*') as $ipc) {
+            unlink($ipc);
+        }
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e)

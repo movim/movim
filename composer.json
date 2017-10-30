@@ -22,7 +22,9 @@
         "heyupdate/emoji": "dev-twemoji2#99dda1bed08472046cac1498221f08684ad83d55",
 
         "cboden/ratchet": "^0.4.0",
+
         "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
+        "react/zmq": "^0.3.0",
 
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.9",

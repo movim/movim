@@ -12,6 +12,8 @@ class Session
     protected   $sid;
     protected   $baseuri;
     public      $process;
+    public      $pullSocket;
+    public      $pushSocket;
 
     public      $registered;
     public      $started;
@@ -81,6 +83,20 @@ class Session
     {
         $buffer = '';
 
+        // Communication sockets with the linker
+        $file = '/tmp/movim_feeds_' . $this->sid . '.ipc';
+
+        $context = new \React\ZMQ\Context($loop);
+        $this->pullSocket = $context->getSocket(\ZMQ::SOCKET_PULL);
+        $this->pullSocket->bind('ipc://' . $file . '_pull');
+
+        $this->pushSocket = $context->getSocket(\ZMQ::SOCKET_PUSH);
+        $this->pushSocket->bind('ipc://' . $file . '_push');
+
+        $this->pullSocket->on('message', function($msg) use ($me) {
+            $me->messageOut($msg);
+        });
+
         // Launching the linker
         $this->process = new \React\ChildProcess\Process(
                             'exec php linker.php ' . $this->sid,
@@ -94,28 +110,19 @@ class Session
                                 'debug'     => $this->debug
                             ]
                         );
-
         $this->process->start($loop);
 
-        // Buffering the incoming data and fire it once its complete
-        $this->process->stdout->on('data', function($output) use ($me, &$buffer) {
-            if (substr($output, -1) == "") {
-                $out = $buffer . substr($output, 0, -1);
-                $buffer = '';
-                $me->messageOut($out);
-            } else {
-                $buffer .= $output;
-            }
-        });
-
         // The linker died, we close properly the session
-        $this->process->on('exit', function($output) use ($me) {
+        $this->process->on('exit', function($output) use ($me, $file) {
             if ($me->verbose) {
                 echo colorize($this->sid, 'yellow'). " : ".colorize("linker killed \n", 'red');
             }
 
             $me->process = null;
             $me->closeAll();
+
+            $this->pullSocket->unbind('ipc://' . $file . '_pull');
+            $this->pushSocket->unbind('ipc://' . $file . '_push');
 
             (new \Modl\PresenceDAO)->clearPresence();
             (new \Modl\SessionxDAO)->delete($this->sid);
@@ -158,16 +165,14 @@ class Session
             $msg = new \stdClass;
             $msg->func = $this->state;
             $msg = json_encode($msg);
-            $this->process->stdin->write($msg."");
+            $this->pushSocket->send($msg);
         }
     }
 
     public function messageIn($msg)
     {
         $this->timestamp = time();
-        if (isset($this->process)) {
-            $this->process->stdin->write($msg."");
-        }
+        $this->pushSocket->send($msg);
         unset($msg);
     }
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0bfccd43258d9d743bf360f601d72a0b",
+    "content-hash": "798990b91c19375ff94287d53decea75",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -407,29 +407,34 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-09-25 20:57:58"
+            "time": "2017-09-25T20:57:58+00:00"
         },
         {
             "name": "evenement/evenement",
-            "version": "v3.0.1",
+            "version": "v2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/igorw/evenement.git",
-                "reference": "531bfb9d15f8aa57454f5f0285b18bec903b8fb7"
+                "reference": "6ba9a777870ab49f417e703229d53931ed40fd7a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/igorw/evenement/zipball/531bfb9d15f8aa57454f5f0285b18bec903b8fb7",
-                "reference": "531bfb9d15f8aa57454f5f0285b18bec903b8fb7",
+                "url": "https://api.github.com/repos/igorw/evenement/zipball/6ba9a777870ab49f417e703229d53931ed40fd7a",
+                "reference": "6ba9a777870ab49f417e703229d53931ed40fd7a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=5.4.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0"
+                "phpunit/phpunit": "^6.0||^5.7||^4.8.35"
             },
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
             "autoload": {
                 "psr-0": {
                     "Evenement": "src"
@@ -450,7 +455,7 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "time": "2017-07-23T21:35:13+00:00"
+            "time": "2017-07-17T17:39:19+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -603,7 +608,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-11-15 20:35:47"
+            "time": "2016-11-15T20:35:47+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -649,7 +654,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2017-10-11 00:04:05"
+            "time": "2017-10-11T00:04:05+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -761,7 +766,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-07-06 11:04:24"
+            "time": "2017-07-06T11:04:24+00:00"
         },
         {
             "name": "movim/moxl",
@@ -809,7 +814,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-10-27 09:17:06"
+            "time": "2017-10-27T09:17:06+00:00"
         },
         {
             "name": "movim/sasl2",
@@ -860,7 +865,7 @@
                 "sasl2",
                 "scram"
             ],
-            "time": "2014-06-05 21:19:06"
+            "time": "2014-06-05T21:19:06+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1092,7 +1097,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15 14:21:40"
+            "time": "2016-12-15T14:21:40+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -1410,6 +1415,11 @@
                 "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.6",
                 "ringcentral/psr7": "^1.2"
             },
+            "require-dev": {
+                "clue/block-react": "^1.1",
+                "phpunit/phpunit": "^4.8.10||^5.0",
+                "react/socket": "^1.0 || ^0.8 || ^0.7"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1420,11 +1430,16 @@
             "license": [
                 "MIT"
             ],
-            "description": "Library for building an evented http server.",
+            "description": "Event-driven, streaming plaintext HTTP and secure HTTPS server for ReactPHP",
             "keywords": [
-                "http"
+                "event-driven",
+                "http",
+                "https",
+                "reactphp",
+                "server",
+                "streaming"
             ],
-            "time": "2016-07-06 23:51:32"
+            "time": "2016-07-06T23:51:32+00:00"
         },
         {
             "name": "react/http-client",
@@ -1718,6 +1733,51 @@
                 "writable"
             ],
             "time": "2017-10-11T17:58:46+00:00"
+        },
+        {
+            "name": "react/zmq",
+            "version": "v0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/zmq.git",
+                "reference": "2865e3b23000751ed443d3f108da2735abf80716"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/zmq/zipball/2865e3b23000751ed443d3f108da2735abf80716",
+                "reference": "2865e3b23000751ed443d3f108da2735abf80716",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "~2.0",
+                "ext-zmq": "*",
+                "php": ">=5.4.0",
+                "react/event-loop": "0.4.*"
+            },
+            "require-dev": {
+                "ext-pcntl": "*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "React\\ZMQ": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ZeroMQ bindings for React.",
+            "keywords": [
+                "zeromq",
+                "zmq"
+            ],
+            "time": "2014-05-25T17:54:51+00:00"
         },
         {
             "name": "respect/validation",
