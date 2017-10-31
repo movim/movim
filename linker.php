@@ -63,7 +63,7 @@ function writeOut($msg = null)
     global $pullSocket;
 
     if(!empty($msg)) {
-        $pullSocket->send(base64_encode(gzcompress(json_encode($msg), 9)));
+        $pullSocket->send(json_encode($msg));
     }
 }
 
@@ -96,7 +96,7 @@ $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector
                 // And we say that we are ready !
                 $obj = new \StdClass;
                 $obj->func = 'pong';
-                $pullSocket->send(base64_encode(gzcompress(json_encode($obj), 9)));
+                $pullSocket->send(json_encode($obj));
                 break;
 
             case 'down':
@@ -237,7 +237,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
 
     fwrite(STDERR, 'registered');
 
-    $pullSocket->send(base64_encode(gzcompress(json_encode($obj), 9)));
+    $pullSocket->send(json_encode($obj));
 };
 
 $pushSocket->on('message', $pushSocketBehaviour);
