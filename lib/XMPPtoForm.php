@@ -328,7 +328,7 @@ class FormtoXMPP
     private $_form;
     private $_inputs;
 
-    public function __construct(array $inputs)
+    public function __construct($inputs)
     {
         $this->_form = new \DOMDocument('1.0', 'UTF-8');
         $this->_inputs = $inputs;
@@ -339,7 +339,7 @@ class FormtoXMPP
         $fields = $this->_form->getElementsByTagName('field');
         $list = $dom->getElementsByTagName('x');
 
-        foreach($fields as $field) {
+        foreach ($fields as $field) {
             $field = $dom->importNode($field, true);
             $list[0]->appendChild($field);
         }
@@ -357,22 +357,22 @@ class FormtoXMPP
             $val = $this->_form->createElement('value');
             $field->appendChild($val);
 
-            if($value === 'true') {
+            if ($value->value === 'true') {
                 $val->nodeValue = '1';
             }
 
-            if($value === 'false') {
+            if ($value->value === 'false') {
                 $val->nodeValue = '0';
             }
 
-            if(is_bool($value)) {
+            if (is_bool($value->value)) {
                 $val->nodeValue = ($value) ? '1' : '0';
             }
 
-            if(empty($val->nodeValue)
-            && $value !== 'false' // WTF PHP !!!
+            if (empty($val->nodeValue)
+                && $value !== 'false' // WTF PHP !!!
             ) {
-                $val->nodeValue = trim($value);
+                $val->nodeValue = trim($value->value);
             }
 
             $field->setAttribute('var', trim($key));

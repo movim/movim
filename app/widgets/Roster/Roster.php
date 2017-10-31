@@ -126,10 +126,6 @@ class Roster extends \Movim\Widget\Base
         $rd = new \Modl\RosterLinkDAO;
 
         $view->assign('jid', $jid);
-        $view->assign('add',
-            $this->call(
-                'ajaxAdd',
-                "MovimUtils.parseForm('add')"));
         $view->assign('groups', $rd->getGroups());
         $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
 

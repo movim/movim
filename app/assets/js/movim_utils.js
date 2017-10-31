@@ -95,32 +95,6 @@ var MovimUtils = {
         if(MovimUtils.hasClass(element, "show"))
             MovimUtils.removeClass(element, "show");
     },
-    parseForm: function(formname) {
-        var form = document.forms[formname];
-        if(!form)
-            return false;
-
-        var data = H();
-        for(var i = 0; i < form.elements.length; i++) {
-            if(form.elements[i].type == 'checkbox') {
-                data.set(
-                    form.elements[i].name,
-                    form.elements[i].checked
-                );
-            } else if(form.elements[i].type == 'radio' && form.elements[i].checked ) {
-                data.set(
-                    form.elements[i].name,
-                    form.elements[i].value
-                );
-            } else if(form.elements[i].type != 'radio'){
-                data.set(
-                    form.elements[i].name,
-                    form.elements[i].value
-                );
-            }
-        }
-        return data;
-    },
     pushState: function(url) {
         window.history.pushState(null, "", url);
     },

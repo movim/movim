@@ -25,10 +25,10 @@ class Config extends \Movim\Widget\Base
         $view->assign('submit',
             $this->call(
                 'ajaxSubmit',
-                "MovimUtils.parseForm('general')"
+                "MovimUtils.formToJson('general')"
             )
-                . "this.className='button color orange inactive oppose';
-                    this.onclick=null;"
+            . "this.className='button color orange inactive oppose';
+                this.onclick=null;"
         );
 
         return $view->draw('_config_form', true);
@@ -46,15 +46,20 @@ class Config extends \Movim\Widget\Base
 
     function ajaxSubmit($data)
     {
-        if(!$this->validateForm($data)) {
+        if (!$this->validateForm($data)) {
             $this->refreshConfig();
             Notification::append(null, $this->__('config.not_valid'));
             return;
         }
 
+        $config = [];
+        foreach ($data as $key => $value) {
+            $config[$key] = $value->value;
+        }
+
         $s = new Set;
         $s->setXmlns('movim:prefs')
-          ->setData(serialize($data))
+          ->setData(serialize($config))
           ->request();
     }
 
@@ -70,10 +75,8 @@ class Config extends \Movim\Widget\Base
     {
         $l = Movim\i18n\Locale::start();
 
-        if(Validator::in(array_keys($l->getList()))->validate($data['language'])
-        && ($data['cssurl'] == '' || Validator::url()->validate($data['cssurl'])))
-            return true;
-        return false;
+        return (Validator::in(array_keys($l->getList()))->validate($data->language->value)
+            && ($data->cssurl->value == '' || Validator::url()->validate($data->cssurl->value)));
     }
 
     function display()

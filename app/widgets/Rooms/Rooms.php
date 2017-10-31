@@ -300,20 +300,20 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxChatroomAdd($form)
     {
-        if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
+        if(!filter_var($form->jid->value, FILTER_VALIDATE_EMAIL)) {
             Notification::append(null, $this->__('chatrooms.bad_id'));
-        } elseif(trim($form['name']) == '') {
+        } elseif(trim($form->name->value) == '') {
             Notification::append(null, $this->__('chatrooms.empty_name'));
         } else {
             $cd = new \Modl\ConferenceDAO;
-            $cd->deleteNode($form['jid']);
+            $cd->deleteNode($form->jid->value);
 
             $item = [
                     'type'      => 'conference',
-                    'name'      => $form['name'],
-                    'autojoin'  => $form['autojoin'],
-                    'nick'      => $form['nick'],
-                    'jid'       => strtolower($form['jid'])
+                    'name'      => $form->name->value,
+                    'autojoin'  => $form->autojoin->value,
+                    'nick'      => $form->nick->value,
+                    'jid'       => strtolower($form->jid->value)
                     ];
             $this->setBookmark($item);
             $this->rpc('Dialog_ajaxClear');
