@@ -507,6 +507,14 @@ div#spinner{
 .show{
     display: block;
 }
+
 .hide{
     display: none;
+}
+
+/* Animations */
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

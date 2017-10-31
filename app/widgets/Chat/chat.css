@@ -121,14 +121,18 @@
     background-image: url('img/chat.svg');
 }
 
+#chat_widget .contained ul {
+    animation: fadein 0.5s;
+}
+
 #chat_widget ul ~ .placeholder {
     display: none;
 }
 
 #chat_widget ul:empty ~ .placeholder {
     display: block;
+    animation: fadein 1s;
 }
-
 
 table.emojis td {
     width: 10%;
