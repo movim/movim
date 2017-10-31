@@ -142,7 +142,7 @@ $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector
                             "\n");
                 }
 
-                $connector->connect($ip.':'.$port)->then($xmppBehaviour);
+                $connector->connect('['.$ip.']:'.$port)->then($xmppBehaviour);
                 break;
         }
     } else {
