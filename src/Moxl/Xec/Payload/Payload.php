@@ -93,7 +93,8 @@ abstract class Payload
      */
     final public function event($key, $packet = null)
     {
-        (Wrapper::getInstance())->iterate($key, $packet);
+        $wrapper = Wrapper::getInstance();
+        $wrapper->iterate($key, $packet);
     }
 
     /**
