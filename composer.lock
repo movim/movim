@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5b7658052cd961b82b18a365bd6ad93",
+    "content-hash": "ed89f15957f4895e5d00a2399602b9ff",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -778,12 +778,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "d786a7080ed4e0ef5d7e5b8263c856dd0e7023c9"
+                "reference": "53d120506f488831ca9d672dda4ec490fdb23fb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/d786a7080ed4e0ef5d7e5b8263c856dd0e7023c9",
-                "reference": "d786a7080ed4e0ef5d7e5b8263c856dd0e7023c9",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/53d120506f488831ca9d672dda4ec490fdb23fb4",
+                "reference": "53d120506f488831ca9d672dda4ec490fdb23fb4",
                 "shasum": ""
             },
             "require": {
@@ -818,7 +818,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-10-27 09:17:06"
+            "time": "2017-11-02 20:47:32"
         },
         {
             "name": "movim/sasl2",
@@ -1417,6 +1417,11 @@
                 "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.6",
                 "ringcentral/psr7": "^1.2"
             },
+            "require-dev": {
+                "clue/block-react": "^1.1",
+                "phpunit/phpunit": "^4.8.10||^5.0",
+                "react/socket": "^1.0 || ^0.8 || ^0.7"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1427,9 +1432,14 @@
             "license": [
                 "MIT"
             ],
-            "description": "Library for building an evented http server.",
+            "description": "Event-driven, streaming plaintext HTTP and secure HTTPS server for ReactPHP",
             "keywords": [
-                "http"
+                "event-driven",
+                "http",
+                "https",
+                "reactphp",
+                "server",
+                "streaming"
             ],
             "time": "2016-07-06 23:51:32"
         },
