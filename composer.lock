@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "798990b91c19375ff94287d53decea75",
+    "content-hash": "0a3bc37ef8fe3bed627f6145a2d8d171",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -407,34 +407,29 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-09-25T20:57:58+00:00"
+            "time": "2017-09-25 20:57:58"
         },
         {
             "name": "evenement/evenement",
-            "version": "v2.1.0",
+            "version": "v3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/igorw/evenement.git",
-                "reference": "6ba9a777870ab49f417e703229d53931ed40fd7a"
+                "reference": "531bfb9d15f8aa57454f5f0285b18bec903b8fb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/igorw/evenement/zipball/6ba9a777870ab49f417e703229d53931ed40fd7a",
-                "reference": "6ba9a777870ab49f417e703229d53931ed40fd7a",
+                "url": "https://api.github.com/repos/igorw/evenement/zipball/531bfb9d15f8aa57454f5f0285b18bec903b8fb7",
+                "reference": "531bfb9d15f8aa57454f5f0285b18bec903b8fb7",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.0||^5.7||^4.8.35"
+                "phpunit/phpunit": "^6.0"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
             "autoload": {
                 "psr-0": {
                     "Evenement": "src"
@@ -455,7 +450,7 @@
                 "event-dispatcher",
                 "event-emitter"
             ],
-            "time": "2017-07-17T17:39:19+00:00"
+            "time": "2017-07-23T21:35:13+00:00"
         },
         {
             "name": "ezyang/htmlpurifier",
@@ -608,7 +603,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-11-15T20:35:47+00:00"
+            "time": "2016-11-15 20:35:47"
         },
         {
             "name": "michelf/php-markdown",
@@ -654,7 +649,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2017-10-11T00:04:05+00:00"
+            "time": "2017-10-11 00:04:05"
         },
         {
             "name": "monolog/monolog",
@@ -766,7 +761,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-07-06T11:04:24+00:00"
+            "time": "2017-07-06 11:04:24"
         },
         {
             "name": "movim/moxl",
@@ -814,7 +809,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-10-27T09:17:06+00:00"
+            "time": "2017-10-27 09:17:06"
         },
         {
             "name": "movim/sasl2",
@@ -865,7 +860,7 @@
                 "sasl2",
                 "scram"
             ],
-            "time": "2014-06-05T21:19:06+00:00"
+            "time": "2014-06-05 21:19:06"
         },
         {
             "name": "paragonie/random_compat",
@@ -1097,7 +1092,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15T14:21:40+00:00"
+            "time": "2016-12-15 14:21:40"
         },
         {
             "name": "ramsey/uuid",
@@ -1439,7 +1434,7 @@
                 "server",
                 "streaming"
             ],
-            "time": "2016-07-06T23:51:32+00:00"
+            "time": "2016-07-06 23:51:32"
         },
         {
             "name": "react/http-client",
@@ -1736,36 +1731,32 @@
         },
         {
             "name": "react/zmq",
-            "version": "v0.3.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/zmq.git",
-                "reference": "2865e3b23000751ed443d3f108da2735abf80716"
+                "reference": "3926b258de0d6e31b15087b926bf2baf2e9540a2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/zmq/zipball/2865e3b23000751ed443d3f108da2735abf80716",
-                "reference": "2865e3b23000751ed443d3f108da2735abf80716",
+                "url": "https://api.github.com/repos/reactphp/zmq/zipball/3926b258de0d6e31b15087b926bf2baf2e9540a2",
+                "reference": "3926b258de0d6e31b15087b926bf2baf2e9540a2",
                 "shasum": ""
             },
             "require": {
-                "evenement/evenement": "~2.0",
+                "evenement/evenement": "^3.0 || ^2.0",
                 "ext-zmq": "*",
                 "php": ">=5.4.0",
                 "react/event-loop": "0.4.*"
             },
             "require-dev": {
-                "ext-pcntl": "*"
+                "ext-pcntl": "*",
+                "phpunit/phpunit": "~4.5"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.4-dev"
-                }
-            },
             "autoload": {
-                "psr-0": {
-                    "React\\ZMQ": "src"
+                "psr-4": {
+                    "React\\ZMQ\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1777,7 +1768,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2014-05-25T17:54:51+00:00"
+            "time": "2017-09-30 22:09:26"
         },
         {
             "name": "respect/validation",
@@ -2228,7 +2219,8 @@
         "movim/moxl": 20,
         "embed/embed": 20,
         "heyupdate/emoji": 20,
-        "react/http": 20
+        "react/http": 20,
+        "react/zmq": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
