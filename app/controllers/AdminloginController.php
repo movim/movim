@@ -3,6 +3,16 @@ use Movim\Controller\Base;
 
 class AdminloginController extends Base
 {
+    private static function getHashedPassword($password)
+    {
+        return sha1($password);
+    }
+
+    private static function isCorrectPassword($exceptedPassword, $givenPassword)
+    {
+        return $exceptedPassword == self::getHashedPassword($givenPassword);
+    }
+
     function load()
     {
         $this->session_only = false;
@@ -17,7 +27,7 @@ class AdminloginController extends Base
 
         if(isset($_POST['username'])
         && $config->username == $_POST['username']
-        && $config->password == sha1($_POST['password'])) {
+        && self::isCorrectPassword($config->password, $_POST['password'])) {
             $_SESSION['admin'] = true;
             $this->name = 'admin';
         }

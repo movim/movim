@@ -3,7 +3,7 @@
         <li>
             <span class="primary icon bubble color green"><i class="zmdi zmdi-info"></i></span>
             <p>Movim {$version} - {$c->__('page.about')}</p>
-            <p class="all">{$c->__('about.info')} <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3</a>.</p>
+            <p class="all">{$c->__('about.info')} <a href="https://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3</a>.</p>
         </li>
         <li class="subheader">
             <p>{$c->__('about.thanks')}</p>

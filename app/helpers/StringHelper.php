@@ -84,24 +84,21 @@ function addUrls($string, $preview = false)
                             $content.
                             '</a>'
                         );
-                    } else {
-                        return stripslashes(
-                            '<a href=\"'.
-                            Route::urlize('contact', $link).
-                            '\">'.
-                            $content.
-                            '</a>'
-                        );
                     }
-                } elseif(filter_var($content, FILTER_VALIDATE_URL)) {
+                    return stripslashes(
+                        '<a href=\"'.
+                        Route::urlize('contact', $link).
+                        '\">'.
+                        $content.
+                        '</a>'
+                    );
+                } if(filter_var($content, FILTER_VALIDATE_URL)) {
                     return stripslashes('<a href=\"'.$content.'\" target=\"_blank\" rel=\"noopener\">'.$content.'</a>').
                             ($lastTag !== false ? $lastTag : '');
-                } else {
-                    return $content;
                 }
-            } else {
-                return $match[0];
+                return $content;
             }
+            return $match[0];
 
         }, $string
     );
@@ -352,7 +349,7 @@ function isRTL($string)
  */
 function invertSign($num)
 {
-    return ($num <= 0) ? abs($num) : -$num ;
+    return - $num ;
 }
 
 /**
@@ -397,7 +394,6 @@ function urilize($path, $notime = false)
 {
     if($notime) {
         return BASE_URI . $path;
-    } else {
-        return BASE_URI . $path . '?t='.filemtime(DOCUMENT_ROOT . '/'.$path);
     }
+    return BASE_URI . $path . '?t='.filemtime(DOCUMENT_ROOT . '/'.$path);
 }
