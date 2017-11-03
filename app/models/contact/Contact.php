@@ -16,7 +16,7 @@ class Contact extends Model
     public $date;
     public $url;
 
-    public    $email;
+    public $email;
 
     public $adrlocality;
     public $adrpostalcode;
@@ -297,26 +297,6 @@ class Contact extends Model
         return $dt->format('d-m-Y');
     }
 
-    function getAlbum()
-    {
-        $uri = str_replace(
-            ' ',
-            '%20',
-            'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=80c1aa3abfa9e3d06f404a2e781e38f9&artist='.
-                $this->tuneartist.
-                '&album='.
-                $this->tunesource.
-                '&format=json'
-            );
-
-        $json = json_decode(requestURL($uri, 2));
-
-        if(isset($json->album)) {
-            $json->album->url = $json->album->image[2]->{'#text'};
-            return $json->album;
-        }
-    }
-
     function countSubscribers()
     {
         $cd = new \Modl\ContactDAO;
@@ -347,16 +327,14 @@ class Contact extends Model
     {
         $this->isValidDate();
 
-        if($this->fn == null
-        && $this->name == null
-        && $this->date == null
-        && $this->url == null
-        && $this->email == null
-        && $this->description == null) {
-            return true;
-        } else {
-            return false;
-        }
+        return (
+            $this->fn == null
+         && $this->name == null
+         && $this->date == null
+         && $this->url == null
+         && $this->email == null
+         && $this->description == null
+        );
     }
 
     function isValidDate()
@@ -367,27 +345,23 @@ class Contact extends Model
             && $this->date != '1970-01-01 01:00:00'
             && $this->date != '1970-01-01T00:00:00+0000') {
             return true;
-        } else {
-            $this->date = null;
-            return false;
         }
+        $this->date = null;
+        return false;
     }
 
     function isOld()
     {
-        if(strtotime($this->updated) < mktime( // We update the 1 day old vcards
-                                        gmdate("H"),
-                                        gmdate("i")-10,
-                                        gmdate("s"),
-                                        gmdate("m"),
-                                        gmdate("d"),
-                                        gmdate("Y")
-                                    )
-            ) {
-            return true;
-        } else {
-            return false;
-        }
+        return(
+             mktime( // We update the 1 day old vcards
+                gmdate("H"),
+                gmdate("i")-10,
+                gmdate("s"),
+                gmdate("m"),
+                gmdate("d"),
+                gmdate("Y")
+            ) > strtotime($this->updated)
+        );
     }
 
     function isMe()

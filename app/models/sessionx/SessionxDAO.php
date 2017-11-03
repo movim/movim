@@ -168,4 +168,19 @@ class SessionxDAO extends SQL
 
         return $this->run('Sessionx');
     }
+
+    function getSome($nb)
+    {
+        $this->_sql = '
+            select * from sessionx order by start desc limit :nb';
+
+        $this->prepare(
+            'Sessionx',
+            [
+                'nb' => $nb
+            ]
+        );
+
+        return $this->run('Sessionx');
+    }
 }
