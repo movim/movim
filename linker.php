@@ -51,11 +51,14 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
 });
 
 $zmq = new \React\ZMQ\Context($loop);
-$file = '/tmp/movim_feeds_' . getenv('sid') . '.ipc';
+$file = CACHE_PATH . 'movim_feeds_' . getenv('sid') . '.ipc';
 
 $pullSocket = $zmq->getSocket(ZMQ::SOCKET_PUSH);
+$pullSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
 $pullSocket->connect('ipc://' . $file . '_pull');
+
 $pushSocket = $zmq->getSocket(ZMQ::SOCKET_PULL);
+$pushSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
 $pushSocket->connect('ipc://'.$file . '_push');
 
 function writeOut($msg = null)
@@ -78,6 +81,19 @@ function writeXMPP($xml)
             fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
         }
     }
+}
+
+function shutdown()
+{
+    global $conn;
+    global $pullSocket;
+    global $pushSocket;
+    global $loop;
+
+    $pullSocket->disconnect('ipc://' . $file . '_pull');
+    $pushSocket->disconnect('ipc://'.$file . '_push');
+
+    $loop->stop();
 }
 
 $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, &$xmppBehaviour)
@@ -118,7 +134,7 @@ $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector
             case 'unregister':
                 \Moxl\Stanza\Stream::end();
                 if(isset($conn)) $conn->close();
-                $loop->stop();
+                shutdown();
                 break;
 
             case 'register':
@@ -172,7 +188,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
 
             if($message == '</stream:stream>') {
                 $conn->close();
-                $loop->stop();
+                shutdown();
             } elseif($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
                 $session = Session::start();
@@ -197,7 +213,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
                     $evt = new Movim\Widget\Event;
                     $evt->run('ssl_error');
 
-                    $loop->stop();
+                    shutdown();
                     return;
                 }
 
@@ -224,11 +240,11 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
     });
 
     $conn->on('error', function() use ($conn, $loop) {
-        $loop->stop();
+        shutdown();
     });
 
     $conn->on('close', function() use ($conn, $loop) {
-        $loop->stop();
+        shutdown();
     });
 
     // And we say that we are ready !
@@ -242,7 +258,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
 
 $pushSocket->on('message', $pushSocketBehaviour);
 
-$stdin->on('error', function() use($loop) { $loop->stop(); } );
-$stdin->on('close', function() use($loop) { $loop->stop(); } );
+$stdin->on('error', function() use($loop) { shutdown(); } );
+$stdin->on('close', function() use($loop) { shutdown(); } );
 
 $loop->run();

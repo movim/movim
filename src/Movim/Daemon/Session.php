@@ -84,13 +84,15 @@ class Session
         $buffer = '';
 
         // Communication sockets with the linker
-        $file = '/tmp/movim_feeds_' . $this->sid . '.ipc';
+        $file = CACHE_PATH . 'movim_feeds_' . $this->sid . '.ipc';
 
-        $context = new \React\ZMQ\Context($loop);
+        $context = new \React\ZMQ\Context($loop, new \ZMQContext(1, false));
         $this->pullSocket = $context->getSocket(\ZMQ::SOCKET_PULL);
+        $this->pullSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
         $this->pullSocket->bind('ipc://' . $file . '_pull');
 
         $this->pushSocket = $context->getSocket(\ZMQ::SOCKET_PUSH);
+        $this->pushSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
         $this->pushSocket->bind('ipc://' . $file . '_push');
 
         $this->pullSocket->on('message', function($msg) use ($me) {
