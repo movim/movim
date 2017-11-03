@@ -27,9 +27,8 @@ class Session
     {
         if (array_key_exists($varname, $this->values)) {
             return unserialize(base64_decode($this->values[$varname]));
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -59,9 +58,8 @@ class Session
         if (isset(self::$instance)) {
             self::$instance = null;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }
 

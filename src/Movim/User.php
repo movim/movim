@@ -154,20 +154,17 @@ class User
             switch ($key) {
                 case 'pubsub':
                     return in_array('http://jabber.org/protocol/pubsub#persistent-items', $this->caps);
-                    break;
                 case 'upload':
                     $cd = new \Modl\CapsDAO;
                     return ($cd->getUpload($this->getServer()) != null);
-                    break;
                 default:
                     return false;
-                    break;
             }
-        } elseif ($key == 'anonymous') {
+        }
+        if ($key == 'anonymous') {
             $session = Session::start();
             return ($session->get('mechanism') == 'ANONYMOUS');
-        } else {
-            return false;
         }
+        return false;
     }
 }
