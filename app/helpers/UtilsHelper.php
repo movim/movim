@@ -554,9 +554,8 @@ function requestURL($url, $timeout = 10, $post = false, $json = false)
 
     if($rs['errno'] == 0) {
         return $rs['content'];
-    } else {
-        return false;
     }
+    return false;
 }
 
 /*

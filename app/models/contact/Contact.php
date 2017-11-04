@@ -354,9 +354,8 @@ class Contact extends Model
         && $this->email == null
         && $this->description == null) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     function isValidDate()
@@ -367,10 +366,9 @@ class Contact extends Model
             && $this->date != '1970-01-01 01:00:00'
             && $this->date != '1970-01-01T00:00:00+0000') {
             return true;
-        } else {
-            $this->date = null;
-            return false;
         }
+        $this->date = null;
+        return false;
     }
 
     function isOld()
@@ -385,9 +383,8 @@ class Contact extends Model
                                     )
             ) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     function isMe()

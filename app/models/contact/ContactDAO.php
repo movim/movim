@@ -575,8 +575,7 @@ class ContactDAO extends SQL
 
         if($item)
             return $this->run('RosterContact');
-        else
-            return $this->run('RosterContact', 'item');
+        return $this->run('RosterContact', 'item');
     }
 
     function getPresence($jid, $resource)
