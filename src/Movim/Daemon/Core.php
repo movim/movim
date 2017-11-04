@@ -15,6 +15,7 @@ class Core implements MessageComponentInterface
 
     public $loop;
     public $baseuri;
+    public $context;
 
     public $single = ['visio'];
     public $singlelocks = [];
@@ -28,6 +29,7 @@ class Core implements MessageComponentInterface
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
 
+        $this->context = new \React\ZMQ\Context($loop, new \ZMQContext(2, false));
         (new \Modl\SessionxDAO)->clear();
 
         $this->cleanupIPCs();
@@ -103,6 +105,7 @@ class Core implements MessageComponentInterface
                 $this->sessions[$sid] = new Session(
                     $this->loop,
                     $sid,
+                    $this->context,
                     $this->baseuri,
                     $language,
                     $offset,

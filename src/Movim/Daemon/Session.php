@@ -24,10 +24,13 @@ class Session
     private     $verbose;
     private     $debug;
 
+    private     $context;
+
     private     $language;
     private     $offset;
 
-    public function __construct($loop, $sid, $baseuri, $language = false, $offset = 0, $verbose = false, $debug = false)
+    public function __construct($loop, $sid, $context, $baseuri, $language = false,
+        $offset = 0, $verbose = false, $debug = false)
     {
         $this->sid     = $sid;
         $this->baseuri = $baseuri;
@@ -36,6 +39,8 @@ class Session
 
         $this->verbose = $verbose;
         $this->debug = $debug;
+
+        $this->context = $context;
 
         $this->clients = new \SplObjectStorage;
         $this->register($loop, $this);
@@ -86,14 +91,13 @@ class Session
         // Communication sockets with the linker
         $file = CACHE_PATH . 'movim_feeds_' . $this->sid . '.ipc';
 
-        $context = new \React\ZMQ\Context($loop, new \ZMQContext(1, false));
-        $this->pullSocket = $context->getSocket(\ZMQ::SOCKET_PULL);
+        $this->pullSocket = $this->context->getSocket(\ZMQ::SOCKET_PULL);
         $this->pullSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
-        $this->pullSocket->bind('ipc://' . $file . '_pull');
+        $this->pullSocket->bind('ipc://' . $file . '_pull', true);
 
-        $this->pushSocket = $context->getSocket(\ZMQ::SOCKET_PUSH);
+        $this->pushSocket = $this->context->getSocket(\ZMQ::SOCKET_PUSH);
         $this->pushSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
-        $this->pushSocket->bind('ipc://' . $file . '_push');
+        $this->pushSocket->bind('ipc://' . $file . '_push', true);
 
         $this->pullSocket->on('message', function($msg) use ($me) {
             $me->messageOut($msg);
@@ -125,6 +129,9 @@ class Session
 
             $this->pullSocket->unbind('ipc://' . $file . '_pull');
             $this->pushSocket->unbind('ipc://' . $file . '_push');
+
+            $this->pullSocket->close();
+            $this->pushSocket->close();
 
             (new \Modl\PresenceDAO)->clearPresence();
             (new \Modl\SessionxDAO)->delete($this->sid);

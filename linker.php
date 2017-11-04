@@ -55,11 +55,11 @@ $file = CACHE_PATH . 'movim_feeds_' . getenv('sid') . '.ipc';
 
 $pullSocket = $zmq->getSocket(ZMQ::SOCKET_PUSH);
 $pullSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
-$pullSocket->connect('ipc://' . $file . '_pull');
+$pullSocket->connect('ipc://' . $file . '_pull', true);
 
 $pushSocket = $zmq->getSocket(ZMQ::SOCKET_PULL);
 $pushSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
-$pushSocket->connect('ipc://'.$file . '_push');
+$pushSocket->connect('ipc://'.$file . '_push', true);
 
 function writeOut($msg = null)
 {
@@ -91,9 +91,12 @@ function shutdown()
     global $loop;
 
     $pullSocket->disconnect('ipc://' . $file . '_pull');
-    $pushSocket->disconnect('ipc://'.$file . '_push');
+    $pushSocket->disconnect('ipc://' . $file . '_push');
 
-    $loop->stop();
+    $pullSocket->close();
+    $pushSocket->close();
+
+    //$loop->stop();
 }
 
 $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, &$xmppBehaviour)
