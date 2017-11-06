@@ -1,5 +1,6 @@
 #upload img.preview_picture {
     max-height: 25rem;
+    max-width: calc(100% - 4rem);
     margin: 0 auto;
     display: block;
 }
