@@ -73,7 +73,8 @@
             <p class="normal">{$c->__('page.help')}</p>
         </li>
     </a>
-    <li onclick="Presence_ajaxLogout()"
+    <li class="on_desktop"
+        onclick="Presence_ajaxLogout()"
         title="{$c->__('status.disconnect')}">
         <span class="primary icon"><i class="zmdi zmdi-sign-in"></i></span>
         <p class="normal">{$c->__('status.disconnect')}</p>

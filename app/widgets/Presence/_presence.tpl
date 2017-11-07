@@ -11,7 +11,7 @@
                 <i class="zmdi zmdi-account"></i>
             </span>
         {/if}
-
+        <span class="control icon active on_mobile"><i class="zmdi zmdi-sign-in"></i></span>
         <p class="line bold normal">{$me->getTrueName()}</p>
     </li>
 </a>
