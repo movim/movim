@@ -1,4 +1,7 @@
 <ul id="bottomnavigation" class="navigation color dark">
+    <li onclick="MovimTpl.toggleMenu()">
+        <span class="primary icon"><i class="zmdi zmdi-more-vert"></i></span>
+    </li>
     {if="$c->supported('pubsub')"}
         <li {if="$page == 'news'"}class="active"{/if}
             onclick="MovimUtils.reload('{$c->route('news')}')"
