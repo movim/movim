@@ -2,12 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title><?php $this->title();?></title>
+    <title><?php $this->title(); ?></title>
 
     <meta name="theme-color" content="#1C1D5B" />
     <meta http-equiv="Content-Security-Policy" content="font-src 'self'; child-src https://youtube.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
 
-    <?php $this->meta();?>
+    <?php $this->meta(); ?>
 
     <meta name="application-name" content="Movim">
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />

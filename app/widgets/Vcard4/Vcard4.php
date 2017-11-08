@@ -22,7 +22,7 @@ class Vcard4 extends \Movim\Widget\Base
         $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
 
         if($me == null) {
-            $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
+            $this->view->assign('form', $this->prepareForm(new \Modl\Contact));
         } else {
             $this->view->assign('form', $this->prepareForm($me));
         }

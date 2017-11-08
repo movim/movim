@@ -14,6 +14,14 @@ ul#bottomnavigation ~ main {
     /*transition: height .2s cubic-bezier(.4,0,.2,1);*/
 }
 
+ul#bottomnavigation li:first-child {
+    flex: 0.45;
+}
+
+ul#bottomnavigation li:first-child span {
+    line-height: 5.5rem;
+}
+
 @media screen and (max-width: 1024px) {
     ul#bottomnavigation {
         display: flex;
