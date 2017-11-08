@@ -320,7 +320,7 @@ class ContactDAO extends SQL
         return $this->run('Contact');
     }
 
-    function searchJid($search)
+    function searchJid($search, $limit = 5)
     {
         $this->_sql =
             'select *, privacy.value as privacy from contact
@@ -334,13 +334,14 @@ class ContactDAO extends SQL
             )
             and privacy.value = true
             order by jid
-            limit 5';
+            limit :limit';
 
         $this->prepare(
             'Contact',
             [
                 'jid' => '%'.$search.'%',
-                'rosterlink.session' => $this->_user
+                'rosterlink.session' => $this->_user,
+                'limit' => $limit
             ]
         );
         return $this->run('Contact');
@@ -575,8 +576,7 @@ class ContactDAO extends SQL
 
         if($item)
             return $this->run('RosterContact');
-        else
-            return $this->run('RosterContact', 'item');
+        return $this->run('RosterContact', 'item');
     }
 
     function getPresence($jid, $resource)

@@ -2,6 +2,11 @@
 
 namespace Modl;
 
+define('DEFAULT_CONFIG_THEME',    'material');
+define('DEFAULT_CONFIG_LOCALE',   'en');
+define('DEFAULT_CONFIG_LOGLEVEL', 0);
+define('DEFAULT_CONFIG_TIMEZONE', 'Etc/GMT');
+
 class Config extends Model
 {
     public $description;
@@ -38,10 +43,10 @@ class Config extends Model
     public function __construct()
     {
         $this->description      = 'Description';//__('global.description');
-        $this->theme            = 'material';
-        $this->locale           = 'en';
-        $this->loglevel         = 0;
-        $this->timezone         = 'Etc/GMT';
+        $this->theme            = DEFAULT_CONFIG_THEME;
+        $this->locale           = DEFAULT_CONFIG_LOCALE;
+        $this->loglevel         = DEFAULT_CONFIG_LOGLEVEL;
+        $this->timezone         = DEFAULT_CONFIG_TIMEZONE;
         $this->xmppwhitelist    = '';
         $this->info             = '';
         $this->unregister       = false;

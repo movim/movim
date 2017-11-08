@@ -64,6 +64,17 @@ class Message extends Model
         'file'      => ['type' => 'serialized']
     ];
 
+    private function setPublished($stanza, $parent)
+    {
+        if($stanza->delay) {
+            $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
+        } elseif($parent && $parent->delay) {
+            $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
+        } else {
+            $this->published = gmdate('Y-m-d H:i:s');
+        }
+    }
+
     public function set($stanza, $parent = false)
     {
         $jid = explode('/',(string)$stanza->attributes()->from);
@@ -82,13 +93,7 @@ class Message extends Model
             $this->resource = $jid[1];
         }
 
-        if($stanza->delay) {
-            $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
-        } elseif($parent && $parent->delay) {
-            $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
-        } else {
-            $this->published = gmdate('Y-m-d H:i:s');
-        }
+        $this->setPublished($stanza, $parent);
 
         if($stanza->body || $stanza->subject) {
             $this->type = 'chat';
@@ -123,11 +128,7 @@ class Message extends Model
                 $this->body = trim(html_entity_decode($this->body));
             }
 
-            if($stanza->markable) {
-                $this->markable = true;
-            } else {
-                $this->markable = false;
-            }
+            $this->markable = $stanza->markable;
 
             if($stanza->subject) {
                 $this->subject = (string)$stanza->subject;
