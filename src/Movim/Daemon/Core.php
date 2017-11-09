@@ -15,7 +15,10 @@ class Core implements MessageComponentInterface
 
     public $loop;
     public $baseuri;
+
     public $context;
+    public $pullContext;
+    public $pushContext;
 
     public $single = ['visio'];
     public $singlelocks = [];
@@ -28,8 +31,11 @@ class Core implements MessageComponentInterface
 
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
-
+echo 'before context ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
         $this->context = new \React\ZMQ\Context($loop, new \ZMQContext(2, false));
+
+echo 'after context ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
+
         (new \Modl\SessionxDAO)->clear();
 
         $this->cleanupIPCs();
@@ -102,6 +108,7 @@ class Core implements MessageComponentInterface
             if (!array_key_exists($sid, $this->sessions)) {
                 $language = $this->getLanguage($conn);
                 $offset = $this->getOffset($conn);
+
                 $this->sessions[$sid] = new Session(
                     $this->loop,
                     $sid,

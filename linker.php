@@ -50,7 +50,7 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
     }
 });
 
-$zmq = new \React\ZMQ\Context($loop);
+$zmq = new \React\ZMQ\Context($loop, new \ZMQContext(2, false));
 $file = CACHE_PATH . 'movim_feeds_' . getenv('sid') . '.ipc';
 
 $pullSocket = $zmq->getSocket(ZMQ::SOCKET_PUSH);
