@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c1ef7c04758a258b328b40a3544cb43f",
+    "content-hash": "3a87904a3cb5a2679671575c4d9e274d",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -861,17 +861,6 @@
                 "scram"
             ],
             "time": "2014-06-05 21:19:06"
-        },
-        {
-            "name": "movim/zmq",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/edhelas/zmq.git",
-                "reference": "master"
-            },
-            "type": "library",
-            "time": "2017-11-10 07:56:37"
         },
         {
             "name": "paragonie/random_compat",
@@ -1741,6 +1730,47 @@
             "time": "2017-10-11T17:58:46+00:00"
         },
         {
+            "name": "react/zmq",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/zmq.git",
+                "reference": "85eb278e1303f27a4538580c95ce3453a751b23f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/zmq/zipball/85eb278e1303f27a4538580c95ce3453a751b23f",
+                "reference": "85eb278e1303f27a4538580c95ce3453a751b23f",
+                "shasum": ""
+            },
+            "require": {
+                "evenement/evenement": "^3.0 || ^2.0",
+                "ext-zmq": "*",
+                "php": ">=5.4.0",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4"
+            },
+            "require-dev": {
+                "ext-pcntl": "*",
+                "phpunit/phpunit": "~4.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "React\\ZMQ\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "ZeroMQ bindings for React.",
+            "keywords": [
+                "zeromq",
+                "zmq"
+            ],
+            "time": "2017-11-08 07:15:45"
+        },
+        {
             "name": "respect/validation",
             "version": "1.1.14",
             "source": {
@@ -2190,7 +2220,7 @@
         "embed/embed": 20,
         "heyupdate/emoji": 20,
         "react/http": 20,
-        "movim/zmq": 20
+        "react/zmq": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
