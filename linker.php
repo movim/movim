@@ -85,18 +85,14 @@ function writeXMPP($xml)
 
 function shutdown()
 {
-    global $conn;
     global $pullSocket;
     global $pushSocket;
     global $loop;
 
-    $pullSocket->disconnect('ipc://' . $file . '_pull');
-    $pushSocket->disconnect('ipc://' . $file . '_push');
-
     $pullSocket->close();
     $pushSocket->close();
 
-    //$loop->stop();
+    $loop->stop();
 }
 
 $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, &$xmppBehaviour)

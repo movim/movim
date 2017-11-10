@@ -31,10 +31,8 @@ class Core implements MessageComponentInterface
 
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
-echo 'before context ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-        $this->context = new \React\ZMQ\Context($loop, new \ZMQContext(2, false));
 
-echo 'after context ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
+        $this->context = new \React\ZMQ\Context($loop, new \ZMQContext(2, false));
 
         (new \Modl\SessionxDAO)->clear();
 

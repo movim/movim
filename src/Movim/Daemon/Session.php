@@ -83,20 +83,15 @@ class Session
 
     private function register($loop, $me, $context)
     {
-echo 'begin ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
+        $file = CACHE_PATH . 'movim_feeds_' . $this->sid . '.ipc';
+
         $this->pullSocket = $context->getSocket(\ZMQ::SOCKET_PULL);
         $this->pushSocket = $context->getSocket(\ZMQ::SOCKET_PUSH);
 
         // Communication sockets with the linker
-        $file = CACHE_PATH . 'movim_feeds_' . $this->sid . '.ipc';
-echo 'pull ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-        //$this->pullSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
         $this->pullSocket->bind('ipc://' . $file . '_pull', true);
-        var_dump(get_class($this->pullSocket));
-echo 'push ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-        //$this->pushSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
         $this->pushSocket->bind('ipc://' . $file . '_push', true);
-echo 'pushbind ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
+
         $this->pullSocket->on('message', function($msg) use ($me) {
             $me->messageOut($msg);
         });
@@ -115,27 +110,21 @@ echo 'pushbind ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
                             ]
                         );
         $this->process->start($loop);
-echo 'al ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
+
         // The linker died, we close properly the session
-        $this->process->on('exit', function($output) use ($me, $file, $context) {
-            if ($me->verbose) {
+        $this->process->on('exit', function($output) use ($file) {
+            if ($this->verbose) {
                 echo colorize($this->sid, 'yellow'). " : ".colorize("linker killed \n", 'red');
             }
-echo 'process end ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-            $me->process = null;
-            $me->closeAll();
-echo 'process clean ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-            $me->pullSocket->unbind('ipc://' . $file . '_pull');
-echo 'pull unbind ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-            $me->pushSocket->unbind('ipc://' . $file . '_push');
-echo 'push unbind ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-            $me->pullSocket->close();
-echo 'pull close ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-            $me->pushSocket->close();
-echo 'push close ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-            unset($me->pullSocket);
-            unset($me->pushSocket);
-            unset($context);
+
+            $this->process = null;
+            $this->closeAll();
+
+            $this->pullSocket->unbind('ipc://' . $file . '_pull');
+            $this->pushSocket->unbind('ipc://' . $file . '_push');
+            $this->pullSocket->close();
+            $this->pushSocket->close();
+
 echo 'end ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
 
             (new \Modl\PresenceDAO)->clearPresence();
@@ -144,7 +133,7 @@ echo 'end ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
 
         $self = $this;
 
-        $this->process->stderr->on('data', function($output) use ($me, $self) {
+        $this->process->stderr->on('data', function($output) use ($self) {
             if (strpos($output, 'registered') !== false) {
                 $self->registered = true;
             } elseif (strpos($output, 'started') !== false) {

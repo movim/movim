@@ -1,6 +1,7 @@
 /* Card */
 
 .card > .block:not(.subheader):not(.simple) {
+    animation: fadein 0.5s;
     background-color: white;
     border-radius: 2px;
     border: 1px solid rgba(0, 0, 0, 0.12);
