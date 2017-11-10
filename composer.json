@@ -4,6 +4,18 @@
             "Movim": "src"
         }
     },
+    "repositories": [{
+        "type": "package",
+        "package": {
+            "name": "movim/zmq",
+            "version": "dev-master",
+            "source": {
+                "url": "https://github.com/edhelas/zmq.git",
+                "type": "git",
+                "reference": "master"
+            }
+        }
+    }],
     "require": {
         "php": ">=5.6.0",
         "ext-curl": "*",
@@ -24,7 +36,7 @@
         "cboden/ratchet": "^0.4.0",
 
         "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
-        "react/zmq": "dev-master",
+        "movim/zmq": "dev-master",
 
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.9",
