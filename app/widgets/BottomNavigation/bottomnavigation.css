@@ -14,11 +14,11 @@ ul#bottomnavigation ~ main {
     /*transition: height .2s cubic-bezier(.4,0,.2,1);*/
 }
 
-ul#bottomnavigation li:first-child {
-    flex: 0.45;
+ul#bottomnavigation li {
+    padding: 0.5rem;
 }
 
-ul#bottomnavigation li:first-child span {
+ul#bottomnavigation li span {
     line-height: 5.5rem;
 }
 
@@ -28,16 +28,11 @@ ul#bottomnavigation li:first-child span {
     }
 
     ul#bottomnavigation ~ main {
-        height: calc(100% - 7rem);
+        height: calc(100% - 6.5rem);
     }
 
     nav.active + ul#bottomnavigation,
     ul#bottomnavigation.hidden {
-        transform: translateY(120%);
-    }
-
-    nav.active ~ ul#bottomnavigation ~ main,
-    ul#bottomnavigation.hidden ~ main {
-        height: 100%;
+        pointer-events: none;
     }
 }

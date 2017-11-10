@@ -1,11 +1,4 @@
 <ul class="list active" dir="ltr">
-    <a class="classic on_mobile" href="#">
-        <li onclick="MovimTpl.toggleMenu()">
-            <span class="primary icon bubble on_mobile"><i class="zmdi zmdi-menu"></i></span>
-            <span class="control icon bubble"><i class="zmdi zmdi-arrow-back"></i></span>
-            <p class="normal">Movim</p>
-        </li>
-    </a>
     {if="$c->supported('pubsub')"}
     <a class="classic"
        href="{$c->route('news')}"
@@ -61,6 +54,12 @@
                 <i class="zmdi zmdi-settings"></i>
             </span>
             <p class="normal">{$c->__('page.configuration')}</p>
+        </li>
+    </a>
+    <a class="classic on_mobile" href="#">
+        <li onclick="MovimTpl.toggleMenu()">
+            <span class="primary icon bubble"><i class="zmdi zmdi-arrow-back"></i></span>
+            <p class="normal">{$c->__('button.close')}</p>
         </li>
     </a>
     <a class="classic on_desktop"
