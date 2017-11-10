@@ -7,18 +7,16 @@ ul#bottomnavigation {
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
     z-index: 1;
     display: none;
-    /*transition: transform .2s cubic-bezier(.4,0,.2,1);*/
 }
 
 ul#bottomnavigation ~ main {
-    /*transition: height .2s cubic-bezier(.4,0,.2,1);*/
 }
 
 ul#bottomnavigation li {
     padding: 0.5rem;
 }
 
-ul#bottomnavigation li span {
+ul#bottomnavigation li span:not(.counter) {
     line-height: 5.5rem;
 }
 
