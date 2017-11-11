@@ -5,7 +5,7 @@
     <title><?php $this->title(); ?></title>
 
     <meta name="theme-color" content="#1C1D5B" />
-    <meta http-equiv="Content-Security-Policy" content="font-src 'self'; child-src *.youtube.com; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <meta http-equiv="Content-Security-Policy" content="font-src <?php echo BASE_URI; ?>; child-src *.youtube.com; script-src <?php echo BASE_URI; ?> 'unsafe-inline' 'unsafe-eval'">
 
     <?php $this->meta(); ?>
 
