@@ -9,9 +9,6 @@ ul#bottomnavigation {
     display: none;
 }
 
-ul#bottomnavigation ~ main {
-}
-
 ul#bottomnavigation li {
     padding: 0.5rem;
 }
@@ -32,5 +29,13 @@ ul#bottomnavigation li span:not(.counter) {
     nav.active + ul#bottomnavigation,
     ul#bottomnavigation.hidden {
         pointer-events: none;
+    }
+
+    ul#bottomnavigation.hidden {
+        display: none;
+    }
+
+    ul#bottomnavigation.hidden ~ main {
+        height: 100%;
     }
 }
