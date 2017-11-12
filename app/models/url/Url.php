@@ -26,13 +26,12 @@ class Url extends Model
 
             if($cached) {
                 return unserialize(base64_decode($cached->cache));
-            } else {
-                $embed = new EmbedLight(\Embed\Embed::create($url));
-                $this->cache = base64_encode(serialize($embed));
-                $md->set($this);
-
-                return $embed;
             }
+
+            $embed = new EmbedLight(\Embed\Embed::create($url));
+            $this->cache = base64_encode(serialize($embed));
+            $md->set($this);
+            return $embed;
         }
     }
 }
