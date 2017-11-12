@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 
 class Core implements MessageComponentInterface
 {
-    private $sessions = [];
+    public $sessions = [];
     private $input;
 
     public $loop;

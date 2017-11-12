@@ -272,7 +272,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
+    function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
         $this->rpc('Chat.sendedMessage');
 
@@ -385,7 +385,7 @@ class Chat extends \Movim\Widget\Base
         $m = $md->getLastItem($to);
 
         if($m) {
-            $this->ajaxSendMessage($to, $message, false, false, $m);
+            $this->ajaxHttpSendMessage($to, $message, false, false, $m);
         }
     }
 

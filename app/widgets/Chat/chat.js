@@ -103,7 +103,7 @@ var Chat = {
                 Chat.edit = false;
                 Chat_ajaxCorrect(jid, text);
             } else {
-                Chat_ajaxSendMessage(jid, text, muc);
+                Chat_ajaxHttpSendMessage(jid, text, muc);
             }
         }
     },
@@ -660,7 +660,7 @@ MovimWebsocket.attach(function() {
 
 if(typeof Upload != 'undefined') {
     Upload.attach(function(file) {
-        Chat_ajaxSendMessage(Chat.getTextarea().dataset.jid, false, Boolean(Chat.getTextarea().dataset.muc), false, false, file);
+        Chat_ajaxHttpSendMessage(Chat.getTextarea().dataset.jid, false, Boolean(Chat.getTextarea().dataset.muc), false, false, file);
     });
 }
 

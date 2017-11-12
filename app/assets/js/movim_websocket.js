@@ -136,6 +136,24 @@ var MovimWebsocket = {
         }
     },
 
+    sendAjax : function(widget, func, params) {
+        let xhr = new XMLHttpRequest;
+
+        xhr.open('POST', '?ajax');
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xhr.send(JSON.stringify(
+            {'func' : 'message', 'body' :
+                {
+                    'widget' : widget,
+                    'func' : func,
+                    'params' : params
+                }
+            }
+        ));
+
+        return xhr;
+    },
+
     // A ping/pong system to handle socket errors for buggy browser (Chrome on Linux…)
     ping : function() {
         if(this.connection.readyState == 1 && !this.closed) {

@@ -2,8 +2,9 @@
 
 namespace Movim\Daemon;
 
-use \React\Http\Server;
-use \React\Socket\Server as Reactor;
+use React\Http\Server;
+use React\Socket\Server as Reactor;
+use Movim\RPC;
 
 class Api
 {
@@ -23,6 +24,9 @@ class Api
             $url = explode('/', $request->getUrl()->getPath());
 
             switch($url[1]) {
+                case 'ajax':
+                    $api->handleAjax($request->getPost());
+                    break;
                 case 'exists':
                     $response->write($api->sessionExists($request->getPost()));
                     break;
@@ -51,6 +55,15 @@ class Api
 
             $response->end();
         });
+    }
+
+    public function handleAjax($post)
+    {
+        $sid = $post['sid'];
+
+        if(array_key_exists($sid, $this->_core->sessions)) {
+            $this->_core->sessions[$sid]->messageIn($post['json']);
+        }
     }
 
     public function sessionExists($post)

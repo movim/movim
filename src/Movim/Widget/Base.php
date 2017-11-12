@@ -57,7 +57,12 @@ class Base
                         $params[] = $param->name;
                     }
 
-                    $this->ajax->defun($this->name, $method->name, $params);
+                    $this->ajax->defun(
+                        $this->name,
+                        $method->name,
+                        $params,
+                        preg_match('#^ajaxHttp#', $method->name)
+                    );
                 }
             }
         }

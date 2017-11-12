@@ -36,7 +36,8 @@ class Ajax extends Base
 
             $buffer .= 'function ' . $funcdef['object'] . '_'
                 . $funcdef['funcname'] . "(${parlist}) {";
-            $buffer .= "MovimWebsocket.send('" . $funcdef['object'] . "', '" .
+            $buffer .= ($funcdef['http'] ? " return MovimWebsocket.sendAjax('" : "MovimWebsocket.send('") .
+                $funcdef['object'] . "', '" .
                 $funcdef['funcname'] . "', [${parlist}]);}\n";
         }
 
@@ -54,13 +55,14 @@ class Ajax extends Base
     /**
      * Defines a new function.
      */
-    public function defun($widget, $funcname, array $params)
+    public function defun($widget, $funcname, array $params, $http = false)
     {
         array_push($this->widgetlist, $widget);
         $this->funclist[$widget.$funcname] = [
             'object' => $widget,
             'funcname' => $funcname,
             'params' => $params,
+            'http' => $http
         ];
     }
 }
