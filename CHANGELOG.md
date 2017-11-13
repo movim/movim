@@ -1,8 +1,16 @@
 Movim Changelog
 ================
 
-v0.13 (trunk)
+v0.12.1 (trunk)
 ---------------------------
+ * Add xmpp: uri to public pages headers
+ * Code cleanup (by RyDroid)
+ * Remove gender, marital and the Skype/Twitter/Yahoo account info
+ * Fix Content-Security-Policy
+ * UI improvement for the bottom navigation on mobile
+ * Cleanup the Privacy Model
+ * Set a max-width for the picture preview in Upload
+ * Add application/javascript header to prevent MIME type checking issue
 
 v0.12 – Lovejoy
 ---------------------------
