@@ -35,6 +35,16 @@
     flex: 0 1 100%;
 }
 
+.column {
+    column-count: 3;
+    margin: 1rem 0;
+}
+
+.column > * {
+    display: inline-block;
+    width: 100%;
+}
+
 @media screen and (max-width: 612px) {
     .flex.card .block:not(.subheader),
     .flex .block:not(.subheader),
@@ -42,6 +52,10 @@
         margin-bottom: 0;
         flex: 0 1 100%;
         max-width: 100%;
+    }
+
+    .column {
+        column-count: 1;
     }
 }
 
@@ -51,6 +65,10 @@
     .flex.third .block:not(.subheader) {
         flex: 0 1 calc(50% - 1.5rem);
         max-width: 100%;
+    }
+
+    .column {
+        column-count: 2;
     }
 }
 

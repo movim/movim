@@ -25,7 +25,6 @@
                     </ul>
                 </header>
                 <?php $this->widget('Tabs');?>
-                <?php $this->widget('CommunitiesDiscover'); ?>
                 <?php $this->widget('Communities'); ?>
                 <?php $this->widget('CommunitiesServers'); ?>
                 <?php if($this->user->isSupported('pubsub')) { ?>
