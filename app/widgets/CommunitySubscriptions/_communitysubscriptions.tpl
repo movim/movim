@@ -1,16 +1,3 @@
-<header>
-    <ul class="list middle">
-        <li>
-            <span class="primary icon active gray" onclick="history.back()">
-                <i class="zmdi zmdi-arrow-back"></i>
-            </span>
-            <span class="control on_mobile"></span>
-            <p class="center">{$c->__('page.communities')}</p>
-            <p class="center">{$c->__('communitysubscriptions.subscriptions')}</p>
-        </li>
-    </ul>
-</header>
-
 {if="$subscriptions == null"}
     <ul class="thick">
         <div class="placeholder icon bookmark">
