@@ -21,6 +21,7 @@ class Picture extends \Movim\Widget\Base
             && typeIsPicture($headers['content_type'])) {
                 header("HTTP/1.1 301 Moved Permanently");
                 header('Location: ' . $url);
+                return;
             }
 
             header("HTTP/1.1 301 Moved Permanently");
