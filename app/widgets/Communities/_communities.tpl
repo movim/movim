@@ -49,7 +49,7 @@
                 </li>
                 {if="$last"}
                     <li>
-                        <p class="line">{$last->title}</p>
+                        <p class="line" title="{$last->title}">{$last->title}</p>
                         <p dir="auto" class="all">
                             {if="$last->picture"}
                                 <img class="preview" src="{$last->picture}" alt=""/>
