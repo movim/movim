@@ -11,6 +11,7 @@ v0.12.1 (trunk)
  * Cleanup the Privacy Model
  * Set a max-width for the picture preview in Upload
  * Add application/javascript header to prevent MIME type checking issue
+ * Redesign the Communities page
 
 v0.12 – Lovejoy
 ---------------------------
