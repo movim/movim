@@ -1,4 +1,4 @@
-<ul class="list thick" id="presence_widget" dir="ltr">
+<ul class="list thick active" id="presence_widget" dir="ltr">
     <li>
         {$url = $me->getPhoto('s')}
         {if="$url"}
