@@ -276,6 +276,7 @@ class Postn extends Model
             if(is_array($results) && !empty($results)) {
                 $extra = (string)$results[0];
 
+                $this->picture = protectPicture($extra);
                 $this->setAttachments($entry->entry->link, $extra);
             } else {
                 $results = $xml->xpath('//video/@poster');

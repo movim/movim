@@ -28,9 +28,9 @@ ul.list li > *:not(p, .hide, form) {
 
 /* Active list */
 
-ul.list.active li:hover:not(.subheader),
-ul.list.active.all li:hover,
-ul.list.active li.active:not(.subheader) {
+ul.list.active > li:hover:not(.subheader),
+ul.list.active.all > li:hover,
+ul.list.active > li.active:not(.subheader) {
     background-color: rgba(0, 0, 0, 0.03);
     cursor: pointer;
 }
@@ -564,3 +564,9 @@ ul.list li.divided,
     margin-right: 0;
     margin-left: 18rem;
 }*/
+
+ul li img.preview {
+    max-width: 100%;
+    margin: 1rem 0;
+}
+
