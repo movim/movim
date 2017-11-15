@@ -20,9 +20,7 @@ class Communities extends \Movim\Widget\Base
         $id = new \Modl\InfoDAO;
 
         $view = $this->tpl();
-
-        $view->assign('communities', $id->getItems(false, 0, 40));
-        $view->assign('servers', $id->getGroupServers());
+        $view->assign('communities', $id->getItems(false, 0, 40, true));
 
         return $view->draw('_communities', true);
     }

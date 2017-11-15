@@ -11,7 +11,7 @@ include_once WIDGETS_PATH.'Post/Post.php';
 
 class CommunityPosts extends \Movim\Widget\Base
 {
-    private $_paging = 5;
+    private $_paging = 10;
 
     function load()
     {
@@ -114,7 +114,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $id = new \Modl\InfoDAO;
 
         $view = $this->tpl();
-        $view->assign('servers', $id->getGroupServers());
+        $view->assign('servers', $id->getCommunitiesServers());
         $html = $view->draw('_communityposts_empty', true);
 
         return $html;

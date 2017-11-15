@@ -49,7 +49,7 @@ class InfoDAO extends SQL
         return $this->run('Info', 'item');
     }
 
-    function getItems($server = false, $limitf = false, $limitr = false)
+    function getItems($server = false, $limitf = false, $limitr = false, $withPostsOnly = false)
     {
         $this->_sql = '
             select *, postn.published from info
@@ -95,6 +95,11 @@ class InfoDAO extends SQL
         if($server) {
             $this->_sql .= '
                 and info.server = :server';
+        }
+
+        if($withPostsOnly) {
+            $this->_sql .= '
+                and postn.published is not null';
         }
 
         $this->_sql .= '
@@ -188,7 +193,7 @@ class InfoDAO extends SQL
         return $this->run('Info');
     }
 
-    function getGroupServers()
+    function getCommunitiesServers()
     {
         $this->_sql = '
             select info.server, counter.number, caps.name from info
@@ -203,6 +208,7 @@ class InfoDAO extends SQL
                 as counter on info.server = counter.server
             where caps.category = \'pubsub\'
             and caps.type = \'service\'
+            and counter.number > 0
             group by info.server, counter.number, caps.name
             order by counter.number is null, counter.number desc';
 
