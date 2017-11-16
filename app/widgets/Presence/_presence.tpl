@@ -2,11 +2,14 @@
     {$url = $me->getPhoto('s')}
     {if="$url"}
         <span
+            onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')"
             class="primary icon bubble status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}"
             style="background-image: url({$me->getPhoto('s')})">
         </span>
     {else}
-        <span class="primary icon bubble color {$me->jid|stringToColor} status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}">
+        <span
+            onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')"
+            class="primary icon bubble color {$me->jid|stringToColor} status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}">
             <i class="zmdi zmdi-account"></i>
         </span>
     {/if}
