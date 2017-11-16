@@ -12,6 +12,7 @@ v0.12.1 (trunk)
  * Set a max-width for the picture preview in Upload
  * Add application/javascript header to prevent MIME type checking issue
  * Redesign the Communities page
+ * Remove the CommunitiesDiscover widget
 
 v0.12 – Lovejoy
 ---------------------------
