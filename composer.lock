@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a87904a3cb5a2679671575c4d9e274d",
+    "content-hash": "1c9de9539820e49a71063ed6e8e16151",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -184,16 +184,16 @@
         },
         {
             "name": "composer/ca-bundle",
-            "version": "1.0.8",
+            "version": "1.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/ca-bundle.git",
-                "reference": "9dd73a03951357922d8aee6cc084500de93e2343"
+                "reference": "36344aeffdc37711335563e6108cda86566432a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/9dd73a03951357922d8aee6cc084500de93e2343",
-                "reference": "9dd73a03951357922d8aee6cc084500de93e2343",
+                "url": "https://api.github.com/repos/composer/ca-bundle/zipball/36344aeffdc37711335563e6108cda86566432a6",
+                "reference": "36344aeffdc37711335563e6108cda86566432a6",
                 "shasum": ""
             },
             "require": {
@@ -239,7 +239,7 @@
                 "ssl",
                 "tls"
             ],
-            "time": "2017-09-11T07:24:36+00:00"
+            "time": "2017-11-13T15:51:25+00:00"
         },
         {
             "name": "defuse/php-encryption",
@@ -362,12 +362,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "b8bb0ca7115dec0b73f311f0866d6b20b41b040a"
+                "reference": "f772982c26034d3d58cd82c4b18e1410dd74625e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/b8bb0ca7115dec0b73f311f0866d6b20b41b040a",
-                "reference": "b8bb0ca7115dec0b73f311f0866d6b20b41b040a",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/f772982c26034d3d58cd82c4b18e1410dd74625e",
+                "reference": "f772982c26034d3d58cd82c4b18e1410dd74625e",
                 "shasum": ""
             },
             "require": {
@@ -407,7 +407,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2017-11-06 20:30:55"
+            "time": "2017-11-13 17:56:44"
         },
         {
             "name": "evenement/evenement",
@@ -1406,8 +1406,8 @@
                 "php": ">=5.3.0",
                 "react/promise": "^2.3 || ^1.2.1",
                 "react/promise-stream": "^0.1.1",
-                "react/socket": "^1.0 || ^0.8 || ^0.7 || ^0.6 || ^0.5",
-                "react/stream": "^1.0 || ^0.7 || ^0.6 || ^0.5 || ^0.4.6",
+                "react/socket": "^1.0 || ^0.8.3",
+                "react/stream": "^1.0 || ^0.7.1",
                 "ringcentral/psr7": "^1.2"
             },
             "require-dev": {
@@ -1735,12 +1735,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/zmq.git",
-                "reference": "85eb278e1303f27a4538580c95ce3453a751b23f"
+                "reference": "3aeb44f6b106514fc0bf60846f0f518bc3bd8299"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/zmq/zipball/85eb278e1303f27a4538580c95ce3453a751b23f",
-                "reference": "85eb278e1303f27a4538580c95ce3453a751b23f",
+                "url": "https://api.github.com/repos/reactphp/zmq/zipball/3aeb44f6b106514fc0bf60846f0f518bc3bd8299",
+                "reference": "3aeb44f6b106514fc0bf60846f0f518bc3bd8299",
                 "shasum": ""
             },
             "require": {
@@ -1768,7 +1768,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2017-11-08 07:15:45"
+            "time": "2017-11-16 16:19:14"
         },
         {
             "name": "respect/validation",
@@ -1895,16 +1895,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "fd684d68f83568d8293564b4971928a2c4bdfc5c"
+                "reference": "63cd7960a0a522c3537f6326706d7f3b8de65805"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/fd684d68f83568d8293564b4971928a2c4bdfc5c",
-                "reference": "fd684d68f83568d8293564b4971928a2c4bdfc5c",
+                "url": "https://api.github.com/repos/symfony/console/zipball/63cd7960a0a522c3537f6326706d7f3b8de65805",
+                "reference": "63cd7960a0a522c3537f6326706d7f3b8de65805",
                 "shasum": ""
             },
             "require": {
@@ -1959,11 +1959,11 @@
             ],
             "description": "Symfony Console Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-07T14:16:22+00:00"
+            "time": "2017-11-16T15:24:32+00:00"
         },
         {
             "name": "symfony/debug",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -2019,16 +2019,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "873ccdf8c1cae20da0184862820c434e20fdc8ce"
+                "reference": "5943f0f19817a7e05992d20a90729b0dc93faf36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/873ccdf8c1cae20da0184862820c434e20fdc8ce",
-                "reference": "873ccdf8c1cae20da0184862820c434e20fdc8ce",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/5943f0f19817a7e05992d20a90729b0dc93faf36",
+                "reference": "5943f0f19817a7e05992d20a90729b0dc93faf36",
                 "shasum": ""
             },
             "require": {
@@ -2068,7 +2068,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2017-11-05T19:07:00+00:00"
+            "time": "2017-11-13T18:13:16+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2131,7 +2131,7 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
