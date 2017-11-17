@@ -607,7 +607,7 @@ class ContactDAO extends SQL
             right outer join presence on contact.jid = presence.mucjid
             where presence.session = :session
             and presence.jid = :jid
-            order by mucaffiliation desc';
+            order by mucaffiliation desc, presence.resource';
 
         $this->prepare(
             'Presence',
