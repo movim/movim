@@ -121,8 +121,8 @@
     background-image: url('img/chat.svg');
 }
 
-#chat_widget .contained ul {
-    animation: fadein 0.5s;
+#chat_widget .contained ul li {
+    animation: fadein 0.3s;
 }
 
 #chat_widget ul ~ .placeholder {

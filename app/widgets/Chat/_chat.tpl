@@ -126,7 +126,7 @@
 
 <div id="{$jid|cleanupId}-discussion" class="contained {if="$muc"}muc{/if}" data-muc="{$muc}">
     <section id="{$jid|cleanupId}-messages">
-        <ul class="list middle" id="{$jid|cleanupId}-conversation"></ul>
+        <ul class="list middle spin" id="{$jid|cleanupId}-conversation"></ul>
         <div class="placeholder icon chat">
             <h1>{$c->__('chat.new_title')}</h1>
             <h4>{$c->___('chat.new_text')}</h4>
