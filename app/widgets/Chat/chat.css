@@ -125,10 +125,9 @@
     display: none;
 }
 
-#chat_widget ul:empty ~ .placeholder {
+#chat_widget ul:empty ~ .placeholder.show {
     display: block;
 }
-
 
 table.emojis td {
     width: 10%;

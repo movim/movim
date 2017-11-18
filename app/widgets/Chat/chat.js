@@ -283,10 +283,10 @@ var Chat = {
         return true;
     },
     appendMessagesWrapper : function(page, prepend) {
+        var discussion = document.querySelector('#chat_widget div.contained');
+
         if(page && Chat.checkDiscussion(page)) {
             var scrolled = MovimTpl.isPanelScrolled();
-
-            var discussion = document.querySelector('#chat_widget div.contained');
 
             if(discussion == null) return;
 
@@ -334,6 +334,11 @@ var Chat = {
                     textarea.dataset.jid,
                     lastMessage.id
                 );
+            }
+        } else if(discussion !== null) {
+            let messages = document.querySelector('#chat_widget .contained');
+            if(discussion.querySelector('ul').innerHTML === '') {
+                discussion.querySelector('.placeholder').classList.add('show');
             }
         }
     },
