@@ -129,7 +129,7 @@
     display: none;
 }
 
-#chat_widget ul:empty ~ .placeholder {
+#chat_widget ul:empty ~ .placeholder.show {
     display: block;
     animation: fadein 1s;
 }
