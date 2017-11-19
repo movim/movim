@@ -338,6 +338,7 @@ var Chat = {
         } else if(discussion !== null) {
             let messages = document.querySelector('#chat_widget .contained');
             if(discussion.querySelector('ul').innerHTML === '') {
+                discussion.querySelector('ul').classList.remove('spin');
                 discussion.querySelector('.placeholder').classList.add('show');
             }
         }
