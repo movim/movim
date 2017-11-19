@@ -1635,16 +1635,16 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.8.5",
+            "version": "v0.8.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "d169d1ed24e39bf182781d72ddd224dbbd449aa8"
+                "reference": "2e8660111d14df908a913a058bce4a1786de489f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/d169d1ed24e39bf182781d72ddd224dbbd449aa8",
-                "reference": "d169d1ed24e39bf182781d72ddd224dbbd449aa8",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/2e8660111d14df908a913a058bce4a1786de489f",
+                "reference": "2e8660111d14df908a913a058bce4a1786de489f",
                 "shasum": ""
             },
             "require": {
@@ -1658,7 +1658,7 @@
             },
             "require-dev": {
                 "clue/block-react": "^1.2",
-                "phpunit/phpunit": "^5.0 || ^4.8"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -1678,7 +1678,7 @@
                 "reactphp",
                 "stream"
             ],
-            "time": "2017-10-23T21:45:58+00:00"
+            "time": "2017-11-18T16:47:56+00:00"
         },
         {
             "name": "react/stream",
@@ -1735,12 +1735,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/zmq.git",
-                "reference": "3aeb44f6b106514fc0bf60846f0f518bc3bd8299"
+                "reference": "aa0e33f18e324a344b3d8946e35966e5fdb9fd85"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/zmq/zipball/3aeb44f6b106514fc0bf60846f0f518bc3bd8299",
-                "reference": "3aeb44f6b106514fc0bf60846f0f518bc3bd8299",
+                "url": "https://api.github.com/repos/reactphp/zmq/zipball/aa0e33f18e324a344b3d8946e35966e5fdb9fd85",
+                "reference": "aa0e33f18e324a344b3d8946e35966e5fdb9fd85",
                 "shasum": ""
             },
             "require": {
@@ -1751,7 +1751,7 @@
             },
             "require-dev": {
                 "ext-pcntl": "*",
-                "phpunit/phpunit": "~4.5"
+                "phpunit/phpunit": "~4.8.35 || ~5.7 || ~6.4"
             },
             "type": "library",
             "autoload": {
@@ -1768,7 +1768,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2017-11-16 16:19:14"
+            "time": "2017-11-18 11:25:56"
         },
         {
             "name": "respect/validation",
