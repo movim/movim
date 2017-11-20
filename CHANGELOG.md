@@ -1,7 +1,15 @@
 Movim Changelog
 ================
 
-v0.12.1 (trunk)
+v0.13 (trunk)
+---------------------------
+ * Update ReactPHP
+ * Use PHP ZeroMQ to manage the communications between the processes
+ * Cleanup some existing buffers
+ * Add a pure HTTP ajax endpoint for some futur requests that needs it
+ * Add some slight animations in the UI
+
+v0.12.1
 ---------------------------
  * Add xmpp: uri to public pages headers
  * Code cleanup (by RyDroid)
