@@ -95,6 +95,7 @@
 
 #chat_widget li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
     max-height: 170px;
+    object-fit: cover;
 }
 
 #chat_widget ul:after {
