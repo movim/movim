@@ -1405,7 +1405,7 @@
                 "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
                 "php": ">=5.3.0",
                 "react/promise": "^2.3 || ^1.2.1",
-                "react/promise-stream": "^0.1.1",
+                "react/promise-stream": "^1.0 || ^0.1.2",
                 "react/socket": "^1.0 || ^0.8.3",
                 "react/stream": "^1.0 || ^0.7.1",
                 "ringcentral/psr7": "^1.2"
@@ -1526,16 +1526,16 @@
         },
         {
             "name": "react/promise-stream",
-            "version": "v0.1.2",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-stream.git",
-                "reference": "f4123898734cfa532099efceaf91d5592e5afe74"
+                "reference": "1503761d01116bf893f86b9843b3bc7a80682587"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/f4123898734cfa532099efceaf91d5592e5afe74",
-                "reference": "f4123898734cfa532099efceaf91d5592e5afe74",
+                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/1503761d01116bf893f86b9843b3bc7a80682587",
+                "reference": "1503761d01116bf893f86b9843b3bc7a80682587",
                 "shasum": ""
             },
             "require": {
@@ -1568,7 +1568,7 @@
                     "email": "christian@lueck.tv"
                 }
             ],
-            "description": "The missing link between Promise-land and Stream-land for React PHP",
+            "description": "The missing link between Promise-land and Stream-land for ReactPHP",
             "homepage": "https://github.com/reactphp/promise-stream",
             "keywords": [
                 "Buffer",
@@ -1578,7 +1578,7 @@
                 "stream",
                 "unwrap"
             ],
-            "time": "2017-10-18T15:23:47+00:00"
+            "time": "2017-10-24T14:35:40+00:00"
         },
         {
             "name": "react/promise-timer",
@@ -1682,16 +1682,16 @@
         },
         {
             "name": "react/stream",
-            "version": "v0.7.4",
+            "version": "v0.7.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "5c7db5261b3cc7e11b8ba765bed8ba31ee745f5c"
+                "reference": "a41bbffdda5e3f4282012f8e346cef48ecb28b24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/5c7db5261b3cc7e11b8ba765bed8ba31ee745f5c",
-                "reference": "5c7db5261b3cc7e11b8ba765bed8ba31ee745f5c",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/a41bbffdda5e3f4282012f8e346cef48ecb28b24",
+                "reference": "a41bbffdda5e3f4282012f8e346cef48ecb28b24",
                 "shasum": ""
             },
             "require": {
@@ -1701,7 +1701,7 @@
             },
             "require-dev": {
                 "clue/stream-filter": "~1.2",
-                "phpunit/phpunit": "^5.0 || ^4.8.10"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
             },
             "suggest": {
                 "react/event-loop": "^0.4"
@@ -1727,7 +1727,7 @@
                 "stream",
                 "writable"
             ],
-            "time": "2017-10-11T17:58:46+00:00"
+            "time": "2017-11-20T11:55:48+00:00"
         },
         {
             "name": "react/zmq",

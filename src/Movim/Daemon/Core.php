@@ -17,8 +17,6 @@ class Core implements MessageComponentInterface
     public $baseuri;
 
     public $context;
-    public $pullContext;
-    public $pushContext;
 
     public $single = ['visio'];
     public $singlelocks = [];

@@ -125,8 +125,6 @@ class Session
             $this->pullSocket->close();
             $this->pushSocket->close();
 
-echo 'end ' . shell_exec('ls /proc/'.getmypid().'/fd | wc -l');
-
             (new \Modl\PresenceDAO)->clearPresence();
             (new \Modl\SessionxDAO)->delete($this->sid);
         });
