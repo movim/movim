@@ -213,8 +213,8 @@ class Chat extends \Movim\Widget\Base
 
             $this->rpc('MovimUtils.addClass', '#chat_widget', 'fixed');
             $this->rpc('MovimTpl.fill', '#chat_widget', $html);
-            $this->rpc('Chat.focus');
             $this->rpc('MovimTpl.showPanel');
+            $this->rpc('Chat.focus');
 
             $this->prepareMessages($jid);
         }
@@ -652,7 +652,6 @@ class Chat extends \Movim\Widget\Base
         $notif->ajaxClear('chat|'.$jid);
 
         $this->rpc('MovimTpl.scrollPanel');
-        $this->rpc('Chat.clearReplace');
     }
 
     function prepareMessage(&$message, $jid = null)

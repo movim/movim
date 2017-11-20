@@ -113,16 +113,16 @@ var Chat = {
 
         document.querySelector(".chat_box span.send").classList.remove('sending');
 
-        Chat.clearReplace();
         var textarea = Chat.getTextarea();
         localStorage.removeItem(textarea.dataset.jid + '_message');
+        Chat.clearReplace();
         Chat.toggleAction();
     },
     clearReplace: function()
     {
         Chat.edit = false;
         var textarea = Chat.getTextarea();
-        textarea.value = '';
+        textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
         MovimUtils.textareaAutoheight(textarea);
     },
     editPrevious: function()
@@ -132,25 +132,13 @@ var Chat = {
             Chat_ajaxLast(textarea.dataset.jid);
         }
     },
-    counter: function(counter)
-    {
-        console.log(counter);
-    },
     focus: function()
     {
         Chat.sended = false;
+        Chat.clearReplace();
+        Chat.toggleAction();
 
         var textarea = Chat.getTextarea();
-
-        setTimeout(function() {
-            var textarea = Chat.getTextarea();
-            textarea.value = localStorage.getItem(textarea.dataset.jid + '_message');
-
-            MovimUtils.textareaAutoheight(textarea);
-
-            Chat.toggleAction();
-        }, 0); // Fix Me
-
         textarea.onkeydown = function(event) {
             if (this.dataset.muc
             && event.keyCode == 9) {
@@ -192,7 +180,6 @@ var Chat = {
 
         textarea.onkeyup = function(event) {
             localStorage.setItem(this.dataset.jid + '_message', this.value);
-
             setTimeout(function()
             {
                 var textarea = document.querySelector('#chat_textarea');
