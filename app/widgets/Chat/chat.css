@@ -123,7 +123,7 @@
 }
 
 #chat_widget .contained ul li {
-    animation: fadein 0.3s;
+    animation: fadein 0.2s;
 }
 
 #chat_widget ul ~ .placeholder {
