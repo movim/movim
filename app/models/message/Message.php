@@ -69,8 +69,6 @@ class Message extends Model
         $jid = explode('/',(string)$stanza->attributes()->from);
         $to = current(explode('/',(string)$stanza->attributes()->to));
 
-        if((string)$stanza->attributes()->type == 'headline') return;
-
         // This is not very beautiful
         $user = new User;
         $this->session    = $user->getLogin();
