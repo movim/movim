@@ -65,7 +65,6 @@
                     <p class="normal">{$c->__('chatrooms.autojoin')}</p>
                 </li>
             </ul>
-            <label>{$c->__('page.configuration')}</label>
         </div>
     </section>
     <div>

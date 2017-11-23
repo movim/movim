@@ -11,7 +11,7 @@
             <label for="pubsub#description">{$c->__('general.about')}</label>
         </div>
         <div>
-            <ul class="list middle">
+            <ul class="list middle labeled">
                 <li class="wide">
                     <span class="control">
                         <div class="radio">

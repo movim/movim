@@ -119,7 +119,7 @@ form > div > textarea {
     outline-width: 0;
 }
 
-form > div > ul.list,
+form > div > .labeled,
 form > div > .select,
 form > div > input:not([type=submit]),
 form > div > textarea {
