@@ -19,6 +19,17 @@ class XMPPtoForm
         return $this->html->saveXML();
     }
 
+    public function getArray($xmpp)
+    {
+        $array = [];
+
+        foreach ($xmpp->children() as $element) {
+            $array[(string)$element->attributes()->var] = (string)$element->value;
+        }
+
+        return $array;
+    }
+
     public function setXMPP($xmpp)
     {
         $this->xmpp = $xmpp;
@@ -146,7 +157,8 @@ class XMPPtoForm
         $this->fieldset ++;
     }
     */
-    private function outCheckbox($s){
+    private function outCheckbox($s)
+    {
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
 
@@ -160,20 +172,20 @@ class XMPPtoForm
         $select->setAttribute('id', $s['var']);
         $select->setAttribute('name', $s['var']);
 
-        if($s->required)
+        if ($s->required)
             $select->setAttribute('required', 'required');
 
         $div->appendChild($select);
 
         $option = $this->html->createElement('option', __('button.bool_yes'));
         $option->setAttribute('value', 'true');
-        if(isset($s->value) || $s->value == "true" || $s->value == "1")
+        if (isset($s->value) || $s->value == "true" || $s->value == "1")
             $option->setAttribute('selected', 'selected');
         $select->appendChild($option);
 
         $option = $this->html->createElement('option', __('button.bool_no'));
         $option->setAttribute('value', 'false');
-        if(!isset($s->value) || $s->value == "false" || $s->value == "0")
+        if (!isset($s->value) || $s->value == "false" || $s->value == "0")
             $option->setAttribute('selected', 'selected');
         $select->appendChild($option);
 
@@ -183,7 +195,8 @@ class XMPPtoForm
         $container->appendChild($label);
     }
 
-    private function outTextarea($s){
+    private function outTextarea($s)
+    {
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
 
@@ -193,16 +206,16 @@ class XMPPtoForm
         $textarea->setAttribute('id', $s['var']);
         $textarea->setAttribute('name', $s['var']);
 
-        if($s->required)
+        if ($s->required)
             $textarea->setAttribute('required', 'required');
 
-        foreach($s->children() as $value){
+        foreach ($s->children() as $value){
             if($value->getName() == "value"){
                 $textarea->nodeValue .= $value . "\n";
             }
         }
 
-        if(empty($textarea->nodeValue)) {
+        if (empty($textarea->nodeValue)) {
             $textarea->nodeValue = ' ';
         }
 

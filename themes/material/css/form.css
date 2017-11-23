@@ -119,6 +119,7 @@ form > div > textarea {
     outline-width: 0;
 }
 
+form > div > ul.list,
 form > div > .select,
 form > div > input:not([type=submit]),
 form > div > textarea {
@@ -132,6 +133,11 @@ form > div > textarea {
     -webkit-appearance: none; /* iOS */
     border-radius: 0; /* iOS */
     overflow: hidden; /* Fixme */
+}
+
+form > div > .select,
+form > div > input:not([type=submit]),
+form > div > textarea {
     box-shadow:0px 1px 0px rgba(0, 0, 0, 0.12);
 }
 

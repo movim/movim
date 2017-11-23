@@ -53,6 +53,9 @@
     padding-top: 0;
 }
 
+.dialog > section form h3 {
+    padding-bottom: 0;
+}
 
 @media screen and (max-width: 600px) {
     .dialog {

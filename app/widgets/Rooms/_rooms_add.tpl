@@ -48,8 +48,8 @@
         </div>
         <div>
             <ul class="list thick">
-                <li>
-                    <span class="primary">
+                <li class="wide">
+                    <span class="control">
                         <div class="checkbox">
                             <input
                                 {if="isset($conference) && $conference->autojoin"}
@@ -65,6 +65,7 @@
                     <p class="normal">{$c->__('chatrooms.autojoin')}</p>
                 </li>
             </ul>
+            <label>{$c->__('page.configuration')}</label>
         </div>
     </section>
     <div>

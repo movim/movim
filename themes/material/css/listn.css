@@ -77,6 +77,10 @@ ul.list li.subheader p {
     padding-left: 2rem;
 }
 
+ul.list > li.wide > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul):not(article) {
+    padding-left: 0;
+}
+
 ul.list li .primary > a,
 ul.list li .control > a {
     display: block;
