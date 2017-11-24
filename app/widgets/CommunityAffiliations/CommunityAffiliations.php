@@ -74,7 +74,6 @@ class CommunityAffiliations extends \Movim\Widget\Base
         list($subscriptions, $origin, $node) = array_values($packet->content);
 
         $sd = new \Modl\SubscriptionDAO;
-
         $view = $this->tpl();
 
         $view->assign('subscriptions', $sd->getAll($origin, $node));

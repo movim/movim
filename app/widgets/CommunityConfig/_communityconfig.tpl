@@ -3,12 +3,16 @@
         <h3>{$c->__('communityaffiliation.configuration')}</h3>
         {if="$config"}
         <div>
-            <input id="pubsub#title" name="pubsub#title" label="{$c->__('general.name')}" placeholder="{$c->__('general.name')}" type="text-single" value="{$config['pubsub#title']}">
+            <input id="pubsub#title" name="pubsub#title" label="{$c->__('general.name')}"
+                   placeholder="{$c->__('general.name')}" type="text-single"
+                   value="{$config['pubsub#title']}">
             <label for="pubsub#title">{$c->__('general.name')}</label>
         </div>
         <div>
-            <textarea id="pubsub#description" name="pubsub#description" onkeyup="MovimUtils.textareaAutoheight(this);">{$config['pubsub#description']}</textarea>
-            <label for="pubsub#description">{$c->__('general.about')}</label>
+            <textarea id="pubsub#description" name="pubsub#description"
+                      onkeyup="MovimUtils.textareaAutoheight(this);"
+                      placeholder="{$c->__('communityconfig.description')}">{$config['pubsub#description']}</textarea>
+            <label for="pubsub#description">{$c->__('communityconfig.description')}</label>
         </div>
         <div>
             <ul class="list middle labeled">
@@ -21,8 +25,8 @@
                             <label for="publish_model_open"></label>
                         </div>
                     </span>
-                    <p>Open</p>
-                    <p>Everyone can publish</p>
+                    <p>{$c->__('communityconfig.publish_model_open_title')}</p>
+                    <p>{$c->__('communityconfig.publish_model_open_text')}</p>
                 </li>
                 <li class="wide">
                     <span class="control">
@@ -33,8 +37,8 @@
                             <label for="publish_model_publishers"></label>
                         </div>
                     </span>
-                    <p>Publishers</p>
-                    <p>The publishers can publish</p>
+                    <p>{$c->__('communityconfig.publish_model_publishers_title')}</p>
+                    <p>{$c->__('communityconfig.publish_model_publishers_text')}</p>
                 </li>
                 <li class="wide">
                     <span class="control">
@@ -45,11 +49,11 @@
                             <label for="publish_model_subscribers"></label>
                         </div>
                     </span>
-                    <p>Subscribers</p>
-                    <p>The subscribers can publish</p>
+                    <p>{$c->__('communityconfig.publish_model_subscribers_title')}</p>
+                    <p>{$c->__('communityconfig.publish_model_subscribers_text')}</p>
                 </li>
             </ul>
-            <label>Publication</label>
+            <label>{$c->__('communityconfig.publication')}</label>
         </div>
         {else}
             {$form}

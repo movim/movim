@@ -79,7 +79,8 @@ class SubscriptionDAO extends SQL
         $this->_sql = '
             select * from subscription
             where server = :server
-                and node = :node';
+                and node = :node
+            order by jid';
 
         $this->prepare(
             'Subscription',
