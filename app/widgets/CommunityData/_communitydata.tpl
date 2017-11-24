@@ -9,7 +9,7 @@
             </li>
         {/if}
         <li class="large">
-            <p class="normal center">{$info->name}</p>
+            <p class="normal center line" title="{$info->name}">{$info->name}</p>
             {if="$info->description != null && trim($info->description) != ''"}
                 <p class="center" title="{$info->description}">{$info->description}</p>
             {/if}

@@ -135,7 +135,7 @@
     </section>
 </div>
 <div class="chat_box">
-    <ul class="list thin">
+    <ul class="list">
         <li>
             {if="!$muc"}
             <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
