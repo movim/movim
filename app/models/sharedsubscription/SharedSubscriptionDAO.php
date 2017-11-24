@@ -4,7 +4,7 @@ namespace Modl;
 
 class SharedSubscriptionDAO extends SQL
 {
-    function getAll()
+    function getAll($server, $node)
     {
         $this->_sql = '
             select * from contact

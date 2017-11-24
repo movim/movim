@@ -13,6 +13,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
     public function load()
     {
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
+        $this->registerEvent('disco_request_affiliations', 'onAffiliations');
         $this->registerEvent('pubsub_setaffiliations_handle', 'onAffiliationsSet');
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
         $this->registerEvent('pubsub_delete_error', 'onDeleteError');
@@ -37,10 +38,13 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $id = new \Modl\InfoDAO;
         $info = $id->get($origin, $node);
 
+        $ssd = new \Modl\SharedSubscriptionDAO;
+
         $view = $this->tpl();
         $view->assign('role', $role);
         $view->assign('info', $info);
         $view->assign('affiliations', $affiliations);
+        $view->assign('subscriptions', $ssd->getAll($origin, $node));
 
         $this->rpc('MovimTpl.fill', '#community_affiliation', $view->draw('_communityaffiliations', true));
 

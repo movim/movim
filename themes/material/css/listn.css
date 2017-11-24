@@ -3,6 +3,10 @@ ul.list {
     padding: 0;
 }
 
+ul.list.thin li:not(.subheader) {
+    padding: 0;
+}
+
 ul.list li:not(.subheader) {
     padding: 0.25rem 0;
 }
