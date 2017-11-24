@@ -66,5 +66,34 @@ class Request extends Action
 
         $this->pack([$this->_to, $this->_node]);
         $this->deliver();
+
+        // Affiliations
+        $affiliations = [];
+
+        $owners = $stanza->query->xpath("//field[@var='pubsub#owner']/value/text()");
+        if(!empty($owners)) {
+            $affiliations['owner'] = [];
+            foreach($owners as $owner) {
+                array_push($affiliations['owner'], ['jid' => (string)$owner]);
+            }
+        }
+
+        $publishers = $stanza->query->xpath("//field[@var='pubsub#publisher']/value/text()");
+        if(!empty($publishers)) {
+            $affiliations['publisher'] = [];
+            foreach($publishers as $publisher) {
+                array_push($affiliations['publisher'], ['jid' => (string)$publisher]);
+            }
+        }
+
+        if(!empty($affiliations)) {
+            $this->pack([
+                'affiliations' => $affiliations,
+                'server' => $this->_to,
+                'node' => $this->_node
+            ]);
+            $this->method('affiliations');
+            $this->deliver();
+        }
     }
 }
