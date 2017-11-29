@@ -83,13 +83,16 @@ class PublishBrief extends \Movim\Widget\Base
                     $murl = new \Modl\Url;
                     $embed = $murl->resolve($form->embed->value);
 
-                    if($embed->type == 'photo') {
-                        $p->setImage($embed->images[0]['url'], $embed->title, $embed->images[0]['mime']);
+                    if($embed->type == 'photo' || isset($embed->images)) {
+                        $p->setImage($embed->images[0]['url'],
+                                     $embed->title,
+                                     $embed->images[0]['mime']);
                     } else {
-                        if(isset($embed->images)) {
-                            $p->setImage($embed->images[0]['url'], $embed->title, $embed->images[0]['mime']);
-                        }
-                        $p->setLink($form->embed->value, $embed->title, 'text/html', $embed->description, $embed->providerIcon);
+                        $p->setLink($form->embed->value,
+                                    $embed->title,
+                                    'text/html',
+                                    $embed->description,
+                                    $embed->providerIcon);
                     }
                 } catch(Exception $e) {
                     error_log($e->getMessage());
@@ -131,6 +134,8 @@ class PublishBrief extends \Movim\Widget\Base
 
     function ajaxClearEmbed()
     {
+        $session = Session::start();
+        $session->remove('share_url');
         $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbedDefault());
     }
 
@@ -166,11 +171,9 @@ class PublishBrief extends \Movim\Widget\Base
 
     function ajaxDisplayPrivacy($open)
     {
-        if($open) {
-            Notification::append(false, $this->__('post.public_yes'));
-        } else {
-            Notification::append(false, $this->__('post.public_no'));
-        }
+        Notification::append(false, ($open)
+            ? $this->__('post.public_yes')
+            : $this->__('post.public_no'));
     }
 
     function display()
