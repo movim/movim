@@ -66,8 +66,8 @@ class Picture
     public function isOld($key, $format = DEFAULT_PICTURE_FORMAT)
     {
         $original = $this->_path.md5($key).$this->_formats[$format];
-        return (file_exists($original)
-             && filemtime($original) < time() - 3600 * DEFAULT_PICTURE_EXPIRATION_HOURS);
+        return (!file_exists($original) || (file_exists($original)
+             && filemtime($original) < time() - 3600 * DEFAULT_PICTURE_EXPIRATION_HOURS));
     }
 
     /**
