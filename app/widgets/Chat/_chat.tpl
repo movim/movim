@@ -17,9 +17,16 @@
                 {/if}
             </span>
 
-            <span class="primary icon bubble color {$conference->name|stringToColor}">
-                {$conference->name|firstLetterCapitalize}
-            </span>
+            {$curl = $conference->getPhoto('s')}
+            {if="$curl"}
+                <span class="primary icon bubble color {$conference->name|stringToColor}"
+                    style="background-image: url({$curl});">
+                </span>
+            {else}
+                <span class="primary icon bubble color {$conference->name|stringToColor}">
+                    {$conference->name|firstLetterCapitalize}
+                </span>
+            {/if}
 
             <span class="control icon show_context_menu active">
                 <i class="zmdi zmdi-more-vert"></i>

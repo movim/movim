@@ -4,6 +4,7 @@ namespace Movim;
 
 define('DEFAULT_PICTURE_FORMAT', 'jpeg');
 define('DEFAULT_PICTURE_QUALITY', 95);
+define('DEFAULT_PICTURE_EXPIRATION_HOURS', 12);
 
 class Picture
 {
@@ -57,6 +58,16 @@ class Picture
             return base64_encode($this->_bin);
         }
         return false;
+    }
+
+    /**
+     * @desc check if a picture is old
+     */
+    public function isOld($key, $format = DEFAULT_PICTURE_FORMAT)
+    {
+        $original = $this->_path.md5($key).$this->_formats[$format];
+        return (file_exists($original)
+             && filemtime($original) < time() - 3600 * DEFAULT_PICTURE_EXPIRATION_HOURS);
     }
 
     /**

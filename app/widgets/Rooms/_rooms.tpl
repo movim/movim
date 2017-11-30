@@ -21,9 +21,20 @@
                 class="room {if="$value->connected"}online{/if}"
                 title="{$value->conference}">
                 <span data-key="chat|{$value->conference}" class="counter"></span>
-                <span class="primary {if="!$value->connected"}disabled{/if} icon bubble color {$value->name|stringToColor}">
-                    {$value->name|firstLetterCapitalize}
-                </span>
+                {$url = $value->getPhoto('s')}
+                {if="$url"}
+                    <span class="primary
+                        {if="!$value->connected"}disabled{/if} icon bubble color
+                        {$value->name|stringToColor}"
+                        style="background-image: url({$url});">
+                    </span>
+                {else}
+                    <span class="primary
+                        {if="!$value->connected"}disabled{/if} icon bubble color
+                        {$value->name|stringToColor}">
+                        {$value->name|firstLetterCapitalize}
+                    </span>
+                {/if}
 
                 {$info = $value->getItem()}
                 {if="$edit"}

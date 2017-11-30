@@ -228,6 +228,11 @@ class Rooms extends \Movim\Widget\Base
     {
         if(!$this->validateRoom($room)) return;
 
+        if((new \Movim\Picture)->isOld($room . '_muc')) {
+            $v = new Moxl\Xec\Action\Vcard\Get;
+            $v->setTo(echapJid($room))->isMuc()->request();
+        }
+
         $r = new Request;
         $r->setTo($room)
           ->request();
