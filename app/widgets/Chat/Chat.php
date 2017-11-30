@@ -274,8 +274,6 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
-        $this->rpc('Chat.sendedMessage');
-
         if(filter_var($message, FILTER_VALIDATE_URL)) {
             $headers = requestHeaders($message);
 
@@ -296,8 +294,9 @@ class Chat extends \Movim\Widget\Base
             $body = (string)htmlentities(trim($message), ENT_XML1, 'UTF-8');
         }
 
-        if($body == '' || $body == '/me')
+        if($body == '' || $body == '/me') {
             return;
+        }
 
         $m = new \Modl\Message;
         $m->session = $this->user->getLogin();
@@ -379,7 +378,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxCorrect($to, $message)
+    function ajaxHttpCorrect($to, $message)
     {
         $md = new \Modl\MessageDAO;
         $m = $md->getLastItem($to);
@@ -412,7 +411,8 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    function ajaxSendComposing($to) {
+    function ajaxSendComposing($to)
+    {
         if(!$this->validateJid($to)) return;
 
         $mc = new Composing;
@@ -425,7 +425,8 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    function ajaxSendPaused($to) {
+    function ajaxSendPaused($to)
+    {
         if(!$this->validateJid($to)) return;
 
         $mp = new Paused;
