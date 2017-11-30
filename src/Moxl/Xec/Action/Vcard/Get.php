@@ -31,6 +31,7 @@ class Get extends Action
 {
     private $_to;
     private $_me = false;
+    private $_muc = false;
 
     public function request()
     {
@@ -50,14 +51,24 @@ class Get extends Action
         return $this;
     }
 
+    public function isMuc()
+    {
+        $this->_muc = true;
+        return $this;
+    }
+
     public function handle($stanza, $parent = false)
     {
-        if($stanza->attributes()->from)
+        if($stanza->attributes()->from) {
             $jid = current(explode('/',(string)$stanza->attributes()->from));
-        else
+        } else {
             $jid = $this->_to;
+        }
 
-        if($jid) {
+        if($this->_muc) {
+            $c = new \Modl\Conference;
+            $c->setAvatar($stanza, $this->_to);
+        } elseif($jid) {
             $cd = new \Modl\ContactDAO;
 
             $c = $cd->get($this->_to);
