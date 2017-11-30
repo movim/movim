@@ -359,8 +359,4 @@ class Publish extends \Movim\Widget\Base
         return ($validate_server->validate($server)
              && $validate_node->validate($node));
     }
-
-    function display()
-    {
-    }
 }

@@ -175,8 +175,4 @@ class PublishBrief extends \Movim\Widget\Base
             ? $this->__('post.public_yes')
             : $this->__('post.public_no'));
     }
-
-    function display()
-    {
-    }
 }
