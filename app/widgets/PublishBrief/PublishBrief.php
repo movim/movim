@@ -115,7 +115,9 @@ class PublishBrief extends \Movim\Widget\Base
     {
         if($url == '') {
             return;
-        } elseif(!Validator::url()->validate($url)) {
+        }
+
+        if(!Validator::url()->validate($url)) {
             Notification::append(false, $this->__('publish.valid_url'));
             $this->ajaxClearEmbed();
             return;

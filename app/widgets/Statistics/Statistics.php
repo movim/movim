@@ -62,12 +62,6 @@ class Statistics extends \Movim\Widget\Base
         $this->rpc('Statistics.drawGraphs', $data);
     }
 
-    function display()
-    {
-        $sd = new SessionxDAO;
-        $this->view->assign('sessions', $sd->getAll());
-    }
-
     public function getContact($username, $host)
     {
         $jid = $username.'@'.$host;
@@ -78,5 +72,11 @@ class Statistics extends \Movim\Widget\Base
     function getTime($date)
     {
         return prepareDate(strtotime($date));
+    }
+
+    function display()
+    {
+        $sd = new SessionxDAO;
+        $this->view->assign('sessions', $sd->getAll());
     }
 }

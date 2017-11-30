@@ -384,11 +384,7 @@ class Rooms extends \Movim\Widget\Base
 
         $presence = $pd->getPresence($room, $resource);
 
-        if($presence != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($presence != null);
     }
 
     /**
@@ -436,8 +432,7 @@ class Rooms extends \Movim\Widget\Base
     private function validateRoom($room)
     {
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 80);
-        if(!$validate_server->validate($room)) return false;
-        else return true;
+        return ($validate_server->validate($room));
     }
 
     /**
@@ -448,11 +443,6 @@ class Rooms extends \Movim\Widget\Base
     private function validateResource($resource)
     {
         $validate_resource = Validator::stringType()->length(2, 40);
-        if(!$validate_resource->validate($resource)) return false;
-        else return true;
-    }
-
-    function display()
-    {
+        return ($validate_resource->validate($resource));
     }
 }

@@ -24,8 +24,4 @@ class Drawer extends \Movim\Widget\Base
         RPC::call('MovimUtils.addClass', '#drawer', 'empty');
         RPC::call('MovimUtils.removeClass', '#drawer', 'actions');
     }
-
-    function display()
-    {
-    }
 }

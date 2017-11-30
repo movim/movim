@@ -40,8 +40,4 @@ class Share extends \Movim\Widget\Base
             }
         }
     }
-
-    function display()
-    {
-    }
 }

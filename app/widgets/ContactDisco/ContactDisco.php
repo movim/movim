@@ -29,8 +29,4 @@ class ContactDisco extends \Movim\Widget\Base
 
         return $view->draw('_contactdisco', true);
     }
-
-    public function display()
-    {
-    }
 }

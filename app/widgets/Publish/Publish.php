@@ -326,7 +326,9 @@ class Publish extends \Movim\Widget\Base
     {
         if($url == '') {
             return;
-        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
+        }
+
+        if(!filter_var($url, FILTER_VALIDATE_URL)) {
             Notification::append(false, $this->__('publish.valid_url'));
             return;
         }

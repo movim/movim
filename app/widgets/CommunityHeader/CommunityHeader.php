@@ -210,10 +210,8 @@ class CommunityHeader extends \Movim\Widget\Base
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if(!$validate_server->validate($origin)
-        || !$validate_node->validate($node)
-        ) return false;
-        else return true;
+        return ($validate_server->validate($origin)
+             && $validate_node->validate($node));
     }
 
     public function display()

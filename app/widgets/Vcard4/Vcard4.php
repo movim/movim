@@ -14,20 +14,6 @@ class Vcard4 extends \Movim\Widget\Base
         $this->registerEvent('vcard4_set_handle', 'onMyVcard4');
     }
 
-    function display()
-    {
-        $cd = new \Modl\ContactDAO;
-        $me = $cd->get();
-
-        $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
-
-        if($me == null) {
-            $this->view->assign('form', $this->prepareForm(new \Modl\Contact));
-        } else {
-            $this->view->assign('form', $this->prepareForm($me));
-        }
-    }
-
     function prepareForm($me)
     {
         $vcardform = $this->tpl();
@@ -142,6 +128,20 @@ class Vcard4 extends \Movim\Widget\Base
         } else {
             \Modl\Privacy::set($this->user->getLogin(), 0);
             Notification::append(null, $this->__('vcard.restricted'));
+        }
+    }
+
+    function display()
+    {
+        $cd = new \Modl\ContactDAO;
+        $me = $cd->get();
+
+        $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
+
+        if($me == null) {
+            $this->view->assign('form', $this->prepareForm(new \Modl\Contact));
+        } else {
+            $this->view->assign('form', $this->prepareForm($me));
         }
     }
 }

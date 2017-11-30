@@ -267,8 +267,4 @@ class Roster extends \Movim\Widget\Base
 
         return $view->draw('_roster_item', true);
     }
-
-    function display()
-    {
-    }
 }

@@ -23,8 +23,4 @@ class Dialog extends \Movim\Widget\Base
         RPC::call('MovimUtils.removeClass', '#dialog', 'scroll');
         RPC::call('MovimTpl.fill', '#dialog', '');
     }
-
-    function display()
-    {
-    }
 }
