@@ -99,32 +99,26 @@ var Chat = {
 
             document.querySelector(".chat_box span.send").classList.add('sending');
 
+            let xhr;
+
             if(Chat.edit) {
                 Chat.edit = false;
-                Chat_ajaxHttpCorrect(jid, text).onreadystatechange = function() {
-                    if (this.readyState == 4) {
-                        if (this.status >= 200 && this.status < 400) {
-                            Chat.sendedMessage();
-                        }
-
-                        if (this.status >= 400 || this.status == 0) {
-                            Chat.failedMessage();
-                        }
-                    }
-                };
+                xhr = Chat_ajaxHttpCorrect(jid, text);
             } else {
-                Chat_ajaxHttpSendMessage(jid, text, muc).onreadystatechange = function() {
-                    if (this.readyState == 4) {
-                        if (this.status >= 200 && this.status < 400) {
-                            Chat.sendedMessage();
-                        }
-
-                        if (this.status >= 400 || this.status == 0) {
-                            Chat.failedMessage();
-                        }
-                    }
-                };
+                xhr = Chat_ajaxHttpSendMessage(jid, text, muc);
             }
+
+            xhr.onreadystatechange = function() {
+                if (this.readyState == 4) {
+                    if (this.status >= 200 && this.status < 400) {
+                        Chat.sendedMessage();
+                    }
+
+                    if (this.status >= 400 || this.status == 0) {
+                        Chat.failedMessage();
+                    }
+                }
+            };
         }
     },
     sendedMessage: function()
