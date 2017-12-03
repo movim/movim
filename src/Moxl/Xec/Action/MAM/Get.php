@@ -16,7 +16,7 @@ class Get extends Action
     private $_end;
     private $_limit;
     private $_after;
-    private $_version = '1';
+    private $_version = '2';
 
     public function request()
     {

@@ -163,6 +163,7 @@ class Handler
 
             '0977b7387b95f69007332a3e9b386f93' => 'MAMResult', // mam:0
             'fd60f5fdd5d2a06d1c4dd723032fb41a' => 'MAMResult', // mam:1
+            '0e49eb65ba266051d2a2287660e22ab1' => 'MAMResult', // mam:2
 
             '1040105fc01bfac8a5ab81324875e382' => 'Presence',
             '362b908ec9432a506f86bed0bae7bbb6' => 'Presence',// TLS
