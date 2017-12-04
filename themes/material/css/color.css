@@ -1,5 +1,10 @@
 /* Color */
 
+:root {
+  --movim-main: #FF5722;
+  --movim-accent: #3F51B5;
+}
+
 body > * {
     color: rgba(0, 0, 0, 0.87);
 }
@@ -38,8 +43,8 @@ main > header a,
 .color,
 ul li span.counter,
 form > div .radio > input[type="radio"]:checked + label {
-    border-color: #FF5722;
-    background-color: #FF5722;
+    border-color: var(--movim-main);
+    background-color: var(--movim-main);
     color: white;
 }
 
@@ -102,11 +107,11 @@ ul.list li > p:nth-last-of-type(2) + p:not(.normal) {
     color: rgba(0, 0, 0, 0.60);
 }
 
-/* Default color : violet */
+/* Default color : indigo */
 
 input[type=button].color,
 main > section > div > header.fixed,
-main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
+main > header { background-color: var(--movim-accent); color: white; border-color: var(--movim-accent); }
 
 .tabs a {
     color: #757575;
@@ -114,8 +119,8 @@ main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; 
 
 .tabs,
 .tabs li.active a:not(.classic):not(.activity):not(.action) {
-    border-color: #3F51B5;
-    color: #3F51B5;
+    border-color: var(--movim-accent);
+    color: var(--movim-accent);
 }
 
 main > section > div > header.scroll {
@@ -134,18 +139,18 @@ header.big ul.list li > p:nth-last-of-type(2) + p {
 
 .button,
 header:not(.big) .icon a,
-a { color: #FF5722; border-color: #FF5722; }
+a { color: var(--movim-main); border-color: var(--movim-main); }
 
 form > div .checkbox:before { background-color: #FFE0B2; }
-form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #FF5722; }
+form > div .checkbox > input[type="checkbox"]:checked + label { background-color: var(--movim-main); }
 
 form input:focus:not(:invalid) + label,
 form textarea:focus:not(:invalid) + label {
-    color: #FF5722;
+    color: var(--movim-main);
 }
 
 form input:focus:not(:invalid):not(.button),
 form textarea:focus:not(:invalid):not(.button) {
-    box-shadow:0px 2px 0px #FF5722;
+    box-shadow:0px 2px 0px var(--movim-main);
 }
 
