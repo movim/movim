@@ -365,7 +365,7 @@ ul li div.bubble:not(.sticker):not(.file) {
     padding: 1rem 1.75rem 0.5rem;
     border-radius: 0.5rem;
     line-height: 2.75rem;
-    border-color: rgba(var(--movim-background-main));
+    border-color: rgba(var(--movim-background-main), 1);
     margin-bottom: 0.75rem;
 }
 
@@ -437,10 +437,8 @@ ul li div.bubble:not(.sticker):not(.file):before {
     position: absolute;
     top: 0;
     left: -1.5rem;
-    border-top: 1.5rem solid black;
+    border: 1.5rem solid transparent;
     border-top-color: inherit;
-    border-left: 1.5rem solid transparent;
-    border-right: 1.5rem solid transparent;
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file):before {
