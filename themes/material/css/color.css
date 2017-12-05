@@ -44,7 +44,7 @@ ul li.date > p.normal,
 ul li div.bubble:not(.sticker):not(.file),
 .card > .block:not(.subheader):not(.simple),
 main {
-    background-color: rgba(var(--movim-background-main));
+    background-color: rgba(var(--movim-background-main), 1);
 }
 
 main > header a,
