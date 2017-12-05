@@ -40,6 +40,10 @@
         $this->addCss('typo.css');
         $this->addCss('material-design-iconic-font.min.css');
 
+        if((new \Movim\User)->getConfig('nightmode')) {
+            $this->addCss('nightmode.css');
+        }
+
         $this->scripts();
     ?>
     </head>

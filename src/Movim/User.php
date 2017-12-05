@@ -103,6 +103,10 @@ class User
             $s->nsfw     = $config['nsfw'];
         }
 
+        if (isset($config['nightmode'])) {
+            $s->nightmode= $config['nightmode'];
+        }
+
         $sd = new \Modl\SettingDAO;
         $sd->set($s);
 

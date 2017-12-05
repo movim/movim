@@ -3,21 +3,27 @@
 :root {
   --movim-main: #FF5722;
   --movim-accent: #3F51B5;
+  --movim-background-main: 255, 255, 255;
+  --movim-background: #EEE;
+  --movim-font: 0, 0, 0;
 }
 
-body > * {
-    color: rgba(0, 0, 0, 0.87);
+body > *,
+input, textarea, select {
+    color: rgba(var(--movim-font), 0.87);
 }
 
 ul.list li.divided,
 hr:not(.clear),
 *.divided > *:not(:last-child),
 *.divided.spaced > *:not(:last-child):after {
-    border-color: rgba(0, 0, 0, 0.12);
+    border-color: rgba(var(--movim-font), 0.12);
 }
 
+label, span.info,
+.tabs a,
 table tr th {
-    color: rgba(0, 0, 0, 0.54);
+    color: rgba(var(--movim-font), 0.54);
 }
 
 .color {
@@ -31,6 +37,14 @@ table tr th {
 
 .color.dark *.divided > *:not(:last-child) {
     border-color: rgba(255, 255, 255, 0.05);
+}
+
+ul li.date > p.normal,
+.dialog, .drawer, ul.context_menu,
+ul li div.bubble:not(.sticker):not(.file),
+.card > .block:not(.subheader):not(.simple),
+main {
+    background-color: rgba(var(--movim-background-main));
 }
 
 main > header a,
@@ -104,27 +118,20 @@ form textarea:focus:invalid + label {
 
 ul.list li > p:nth-last-of-type(3) + p:not(.normal),
 ul.list li > p:nth-last-of-type(2) + p:not(.normal) {
-    color: rgba(0, 0, 0, 0.60);
+    color: rgba(var(--movim-font), 0.60);
 }
 
 /* Default color : indigo */
 
 input[type=button].color,
 main > section > div > header.fixed,
-main > header { background-color: var(--movim-accent); color: white; border-color: var(--movim-accent); }
-
-.tabs a {
-    color: #757575;
-}
-
-.tabs,
-.tabs li.active a:not(.classic):not(.activity):not(.action) {
-    border-color: var(--movim-accent);
-    color: var(--movim-accent);
+main > header {
+    background-color: var(--movim-accent);
+    color: white; border-color: var(--movim-accent);
 }
 
 main > section > div > header.scroll {
-    background-color: #EEE;
+    background-color: var(--movim-background);
 }
 
 header.fixed ul.list li > p:nth-last-of-type(2) + p,
@@ -137,9 +144,14 @@ header.big ul.list li > p:nth-last-of-type(2) + p {
 
 /* Gray accent : orange */
 
+.tabs,
+.tabs li.active a:not(.classic):not(.action),
 .button,
 header:not(.big) .icon a,
-a { color: var(--movim-main); border-color: var(--movim-main); }
+a {
+    color: var(--movim-main);
+    border-color: var(--movim-main);
+}
 
 form > div .checkbox:before { background-color: #FFE0B2; }
 form > div .checkbox > input[type="checkbox"]:checked + label { background-color: var(--movim-main); }
@@ -151,6 +163,6 @@ form textarea:focus:not(:invalid) + label {
 
 form input:focus:not(:invalid):not(.button),
 form textarea:focus:not(:invalid):not(.button) {
-    box-shadow:0px 2px 0px var(--movim-main);
+    box-shadow: 0px 2px 0px var(--movim-main);
 }
 

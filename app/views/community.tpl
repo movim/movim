@@ -13,7 +13,7 @@
 <?php $this->widget('BottomNavigation');?>
 
 <main>
-    <section style="background-color: #EEE;">
+    <section style="background-color: var(--movim-background)">
         <?php if(empty($_GET['s'])) { ?>
             <div>
                 <header>

@@ -16,7 +16,6 @@ class Menu extends \Movim\Widget\Base
         $this->registerEvent('pubsub_getitem_handle', 'onPost');
 
         $this->addjs('menu.js');
-        $this->addcss('menu.css');
     }
 
     function onRetract($packet)

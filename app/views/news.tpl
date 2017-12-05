@@ -15,7 +15,7 @@
 <?php $this->widget('BottomNavigation');?>
 
 <main>
-    <section style="background-color: #EEE;">
+    <section style="background-color: var(--movim-background);">
         <aside>
             <?php $this->widget('Notifs');?>
             <?php $this->widget('NewsNav');?>

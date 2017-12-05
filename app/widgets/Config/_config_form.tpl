@@ -58,6 +58,25 @@
         </ul>
     </div>
 
+    <div class="block">
+        <ul class="list thick">
+            <li>
+                <span class="primary">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->nightmode"}checked{/if}
+                            type="checkbox"
+                            id="nightmode"
+                            name="nightmode"/>
+                        <label for="nightmode"></label>
+                    </div>
+                </span>
+                <p class="line">{$c->__('config.night_mode')}</p>
+                <p class="line">{$c->__('config.night_mode')}</p>
+            </li>
+        </ul>
+    </div>
+
     <br />
     <h3>{$c->__('config.advanced')}</h3>
 

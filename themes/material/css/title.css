@@ -70,7 +70,6 @@ h3 + small {
 
 label, span.info { /* Caption */
     font-size: 1.5rem;
-    color: rgba(0, 0, 0, 0.54);
 }
 
 span.info i+i {
