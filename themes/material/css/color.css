@@ -23,6 +23,7 @@ input, textarea, select {
 
 ul.list li.divided,
 hr:not(.clear),
+.card > .block:not(.subheader):not(.simple),
 *.divided > *:not(:last-child),
 *.divided.spaced > *:not(:last-child):after {
     border-color: rgba(var(--movim-font), 0.12);
