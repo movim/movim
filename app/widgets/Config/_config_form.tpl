@@ -67,6 +67,7 @@
                             {if="$conf->nightmode"}checked{/if}
                             type="checkbox"
                             id="nightmode"
+                            onchange="Config.switchNightMode()"
                             name="nightmode"/>
                         <label for="nightmode"></label>
                     </div>

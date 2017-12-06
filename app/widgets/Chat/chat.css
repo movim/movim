@@ -163,11 +163,7 @@ table.emojis td:hover {
 }
 
 #chat_widget div.quoted {
-    background-color: #fff59d;
-}
-
-#chat_widget div.quoted:before {
-    border-top-color: #fff59d;
+    border-right: 4px solid var(--movim-main);
 }
 
 /* File preview */

@@ -1,11 +1,19 @@
 /* Color */
 
-:root {
-  --movim-main: #FF5722;
-  --movim-accent: #3F51B5;
-  --movim-background-main: 255, 255, 255;
-  --movim-background: #EEE;
-  --movim-font: 0, 0, 0;
+body {
+    --movim-main: #FF5722;
+    --movim-accent: #3F51B5;
+    --movim-background-main: 255, 255, 255;
+    --movim-background: #EEE;
+    --movim-font: 0, 0, 0;
+}
+
+body.nightmode {
+    --movim-main: #FF5722;
+    --movim-accent: #222;
+    --movim-background-main: 27, 27, 27;
+    --movim-background: #333;
+    --movim-font: 255, 255, 255;
 }
 
 body > *,

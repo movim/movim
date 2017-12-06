@@ -8,6 +8,7 @@ class Config extends \Movim\Widget\Base
     function load()
     {
         $this->registerEvent('storage_set_handle', 'onConfig');
+        $this->addjs('config.js');
     }
 
     function prepareConfigForm()

@@ -40,14 +40,11 @@
         $this->addCss('typo.css');
         $this->addCss('material-design-iconic-font.min.css');
 
-        if((new \Movim\User)->getConfig('nightmode')) {
-            $this->addCss('nightmode.css');
-        }
-
         $this->scripts();
     ?>
     </head>
-    <body dir="<?php $this->dir();?>">
+    <body dir="<?php $this->dir();?>"
+          class="<?php if((new \Movim\User)->getConfig('nightmode')) { ?>nightmode<?php } ?>">
         <noscript>
             <style type="text/css">
                 nav {display:none;} #content {display: none;}
