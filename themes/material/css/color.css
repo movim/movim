@@ -136,7 +136,8 @@ input[type=button].color,
 main > section > div > header.fixed,
 main > header {
     background-color: var(--movim-accent);
-    color: white; border-color: var(--movim-accent);
+    color: rgba(var(--movim-font), 1);
+    border-color: var(--movim-accent);
 }
 
 main > section > div > header.scroll {
