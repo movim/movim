@@ -11,8 +11,8 @@ body {
 body.nightmode {
     --movim-main: #FF5722;
     --movim-accent: #222;
-    --movim-background-main: 27, 27, 27;
-    --movim-background: #333;
+    --movim-background-main: 41, 41, 41;
+    --movim-background: #393939;
     --movim-font: 255, 255, 255;
 }
 
