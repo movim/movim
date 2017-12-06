@@ -363,7 +363,7 @@ ul li div.bubble[dir="rtl"] {
 
 ul li div.bubble:not(.sticker):not(.file) {
     padding: 1rem 1.75rem 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0 0.5rem 0.5rem;
     line-height: 2.75rem;
     border-color: rgba(var(--movim-background-main), 1);
     margin-bottom: 0.75rem;
@@ -397,6 +397,7 @@ ul li.oppose div.bubble.file {
 ul li.oppose div.bubble:not(.sticker):not(.file) {
     background-color: rgba(var(--movim-background-main), 0.5);
     border-color: rgba(var(--movim-background-main), 0.5);
+    border-radius: 0.5rem 0 0.5rem 0.5rem;
 }
 
 ul li div.bubble span.info {
@@ -437,13 +438,16 @@ ul li div.bubble:not(.sticker):not(.file):before {
     position: absolute;
     top: 0;
     left: -1.5rem;
-    border: 1.5rem solid transparent;
+    border: 0.75rem solid transparent;
     border-top-color: inherit;
+    border-right-color: inherit;
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file):before {
-    left: calc(100% - 10.5rem);
+    left: calc(100% - 9rem);
     top: 0.75rem;
+    border-right-color: transparent;
+    border-left-color: inherit;
 }
 
 /* Date separator */

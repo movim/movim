@@ -63,7 +63,7 @@
     </div>
 
     <div class="block large">
-        <textarea name="desc" id="desctext" class="content" onkeyup="MovimUtils.textareaAutoheight(this);">{$desc}</textarea>
+        <textarea name="desc" id="desctext" class="content" placeholder="{$c->__('general.about')}" onkeyup="MovimUtils.textareaAutoheight(this);">{$desc}</textarea>
         <label for="desc">{$c->__('general.about')}</label>
     </div>
 

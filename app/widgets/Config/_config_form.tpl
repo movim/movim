@@ -42,7 +42,10 @@
     <div class="block">
         <ul class="list thick">
             <li>
-                <span class="primary">
+                <span class="primary icon gray">
+                    18+
+                </span>
+                <span class="control">
                     <div class="checkbox">
                         <input
                             {if="$conf->nsfw"}checked{/if}
@@ -61,7 +64,10 @@
     <div class="block">
         <ul class="list thick">
             <li>
-                <span class="primary">
+                <span class="primary icon gray">
+                    <i class="zmdi zmdi-brightness-2"></i>
+                </span>
+                <span class="control">
                     <div class="checkbox">
                         <input
                             {if="$conf->nightmode"}checked{/if}
@@ -73,7 +79,7 @@
                     </div>
                 </span>
                 <p class="line">{$c->__('config.night_mode')}</p>
-                <p class="line">{$c->__('config.night_mode')}</p>
+                <p class="line">{$c->__('config.night_mode_text')}</p>
             </li>
         </ul>
     </div>

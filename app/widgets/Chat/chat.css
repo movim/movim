@@ -41,7 +41,7 @@
 
 #chat_widget .chat_box span.control {
     font-size: 4rem;
-    color: gray;
+    color: rgba(var(--movim-font), 0.54);
 }
 
 #chat_widget .chat_box span.control:hover {
