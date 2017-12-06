@@ -51,7 +51,8 @@ table tr th {
 
 ::-webkit-scrollbar-button,
 ::-webkit-scrollbar {
-    background-color: rgb(var(--movim-background-main))
+    background-color: transparent;
+    width: 1.25rem;
 }
 
 ul li.date > p.normal,
