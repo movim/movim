@@ -174,10 +174,6 @@ main > section > div.fixed {
     top: 7rem;
 }
 
-main > section > div:not(:last-child) {
-    border-right: 1px solid #DDD;
-}
-
 main > section > div > * {
     max-width: 84rem;
     margin: 0 auto;
