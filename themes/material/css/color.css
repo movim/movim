@@ -1,7 +1,7 @@
 /* Color */
 
 body {
-    --movim-main: #FF5722;
+    --movim-main: 255, 87, 34;
     --movim-accent: #3F51B5;
     --movim-background-main: 255, 255, 255;
     --movim-background: #EEE;
@@ -9,7 +9,6 @@ body {
 }
 
 body.nightmode {
-    --movim-main: #FF5722;
     --movim-accent: #222;
     --movim-background-main: 41, 41, 41;
     --movim-background: #393939;
@@ -77,8 +76,8 @@ main > header a,
 .color,
 ul li span.counter,
 form > div .radio > input[type="radio"]:checked + label {
-    border-color: var(--movim-main);
-    background-color: var(--movim-main);
+    border-color: rgb(var(--movim-main));
+    background-color: rgb(var(--movim-main));
     color: white;
 }
 
@@ -175,20 +174,20 @@ header.big ul.list li > p:nth-last-of-type(2) + p {
 .button,
 header:not(.big) .icon a,
 a {
-    color: var(--movim-main);
-    border-color: var(--movim-main);
+    color: rgb(var(--movim-main));
+    border-color: rgb(var(--movim-main));
 }
 
-form > div .checkbox:before { background-color: #FFE0B2; }
-form > div .checkbox > input[type="checkbox"]:checked + label { background-color: var(--movim-main); }
+form > div .checkbox:before { background-color: rgba(var(--movim-main), 0.5); }
+form > div .checkbox > input[type="checkbox"]:checked + label { background-color: rgb(var(--movim-main)); }
 
 form input:focus:not(:invalid) + label,
 form textarea:focus:not(:invalid) + label {
-    color: var(--movim-main);
+    color: rgb(var(--movim-main));
 }
 
 form input:focus:not(:invalid):not(.button),
 form textarea:focus:not(:invalid):not(.button) {
-    box-shadow: 0px 2px 0px var(--movim-main);
+    box-shadow: 0px 2px 0px rgb(var(--movim-main));
 }
 

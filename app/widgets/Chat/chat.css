@@ -163,7 +163,7 @@ table.emojis td:hover {
 }
 
 #chat_widget div.quoted {
-    border-right: 4px solid var(--movim-main);
+    border-right: 4px solid rgb(var(--movim-main));
 }
 
 /* File preview */
