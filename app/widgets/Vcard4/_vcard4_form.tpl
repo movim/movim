@@ -10,7 +10,7 @@
         </p>
     </li>
     <li>
-        <span class="primary">
+        <span class="control">
             <form>
                 <div class="control action">
                     <div class="checkbox">

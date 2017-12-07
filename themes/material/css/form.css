@@ -173,7 +173,7 @@ form > div .checkbox {
     position: relative;
     width: 4.5rem;
     height: 5rem;
-    top: calc(50% - 0.9rem);
+    margin-top: calc(50% - 0.9rem);
     direction: ltr;
 }
 
