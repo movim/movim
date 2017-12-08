@@ -49,11 +49,11 @@ h4 {
 }
 
 h4.gray {
-    color: rgba(0, 0, 0, 0.54);
+    color: rgba(var(--movim-font), 0.54);
 }
 
 small {
-    color: rgba(0, 0, 0, 0.7);
+    color: rgba(var(--movim-font), 0.7);
     font-size: 0.75em;
     font-weight: normal;
 }
