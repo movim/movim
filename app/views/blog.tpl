@@ -1,6 +1,6 @@
 <main>
     <section>
-        <div style="background-color: #EEE;">
+        <div style="background-color: var(--movim-background);">
             <?php $this->widget('Blog');?>
             <ul class="list">
                 <li>

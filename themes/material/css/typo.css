@@ -64,8 +64,8 @@ xmp {
 }
 
 code {
-    background-color: rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(var(--movim-font), 0.1);
+    color: rgba(var(--movim-font), 0.6);
     padding: 0.25rem 0.5rem;
     border-radius: 0.3rem;
 }
