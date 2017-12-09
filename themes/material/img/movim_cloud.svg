@@ -14,7 +14,7 @@
    height="58.824287"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    sodipodi:docname="movim_cloud.svg">
   <defs
      id="defs4">
@@ -162,15 +162,15 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.979899"
-     inkscape:cx="120.57711"
+     inkscape:cx="12.23825"
      inkscape:cy="-68.910547"
      inkscape:document-units="px"
      inkscape:current-layer="layer1-1"
      showgrid="false"
-     inkscape:window-width="1871"
-     inkscape:window-height="1056"
-     inkscape:window-x="1969"
-     inkscape:window-y="24"
+     inkscape:window-width="1600"
+     inkscape:window-height="873"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -184,7 +184,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -200,11 +200,16 @@
          id="layer1-1"
          transform="matrix(0.21011019,0,0,0.21011019,616.04715,830.41892)">
         <path
-           style="fill:none; stroke-opacity:1; stroke:#dddddd; stroke-width: 28.55644417; stroke-dasharray: 600;"
+           style="fill:none;stroke-opacity:0.55326462;stroke:#c4c4c4;stroke-width:28.55644417;stroke-dasharray:600;stroke-linecap:round"
            id="path3053"
            d="m -6641.655,-1161.4187 c -49.1292,0 -88.9559,39.8269 -88.9559,88.9559 0,3.8181 0.2561,7.5949 0.7227,11.2863 -0.7036,-0.019 -1.4042,-0.056 -2.1127,-0.056 -41.7597,0 -75.6125,33.8528 -75.6125,75.61241 0,41.75961 33.8528,75.61247 75.6125,75.61247 l 293.2763,0 c 34.3902,0 62.2692,-27.87881 62.2692,-62.26909 0,-34.39029 -27.879,-62.26909 -62.2692,-62.26909 -0.1124,0 -0.2225,-6e-4 -0.3335,0 0.08,-1.5529 0.1673,-3.0972 0.1673,-4.6702 0,-49.1289 -39.827,-88.9558 -88.956,-88.9558 -13.7113,0 -26.7078,3.1324 -38.3065,8.6732 -15.7124,-25.1679 -43.6455,-41.9205 -75.5015,-41.9205 z"
-           inkscape:connector-curvature="0" >
-           <animate attributeName="stroke-dashoffset" dur="1000ms" from="0" to="1200" repeatCount="indefinite"/>
+           inkscape:connector-curvature="0">
+          <animate
+             attributeName="stroke-dashoffset"
+             dur="1000ms"
+             from="0"
+             to="1200"
+             repeatCount="indefinite" />
         </path>
       </g>
     </g>
