@@ -61,7 +61,7 @@ class Api
     {
         $sid = $post['sid'];
         if(array_key_exists($sid, $this->_core->sessions)) {
-            $this->_core->sessions[$sid]->messageIn(urldecode($post['json']));
+            $this->_core->sessions[$sid]->messageIn(rawurldecode($post['json']));
         }
     }
 
