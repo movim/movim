@@ -269,13 +269,13 @@ class Publish extends \Movim\Widget\Base
                         $p->setImage($embed->images[0]['url'],
                                      $embed->title,
                                      $embed->images[0]['mime']);
-                    } else {
-                        $p->setLink($form->embed->value,
-                                    $embed->title,
-                                    'text/html',
-                                    $embed->description,
-                                    $embed->providerIcon);
                     }
+
+                    $p->setLink($form->embed->value,
+                                $embed->title,
+                                'text/html',
+                                $embed->description,
+                                $embed->providerIcon);
                 } catch(Exception $e) {
                     error_log($e->getMessage());
                 }

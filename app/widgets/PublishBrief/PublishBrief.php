@@ -82,18 +82,19 @@ class PublishBrief extends \Movim\Widget\Base
                 try {
                     $murl = new \Modl\Url;
                     $embed = $murl->resolve($form->embed->value);
+                    $p->setLink($form->embed->value);
 
                     if($embed->type == 'photo' || isset($embed->images)) {
                         $p->setImage($embed->images[0]['url'],
                                      $embed->title,
                                      $embed->images[0]['mime']);
-                    } else {
-                        $p->setLink($form->embed->value,
-                                    $embed->title,
-                                    'text/html',
-                                    $embed->description,
-                                    $embed->providerIcon);
                     }
+
+                    $p->setLink($form->embed->value,
+                                $embed->title,
+                                'text/html',
+                                $embed->description,
+                                $embed->providerIcon);
                 } catch(Exception $e) {
                     error_log($e->getMessage());
                 }
