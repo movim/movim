@@ -54,12 +54,14 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $cd = new \Modl\CapsDAO;
         $sd = new \Modl\SubscriptionDAO;
 
+        $caps = $cd->get($origin);
+
         $view->assign('subscriptions', $sd->getAll($origin, $node));
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
         $view->assign('me', $this->user->getLogin());
-        $view->assign('roles', $cd->get($origin)->getPubsubRoles());
+        $view->assign('roles', ($caps) ? $caps->getPubsubRoles() : []);
 
         $this->rpc(
             'MovimTpl.fill',
