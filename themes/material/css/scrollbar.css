@@ -1,0 +1,19 @@
+/* Webkit specific CSS for the scrollbars */
+
+@media screen and (min-width: 1025px) {
+    ::-webkit-scrollbar {
+        width: 1.3rem;
+    }
+
+    ::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: rgba(var(--movim-font), 0.2);
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: rgba(var(--movim-font), 0.05);
+    }
+}

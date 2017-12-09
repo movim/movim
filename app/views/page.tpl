@@ -38,6 +38,7 @@
         $this->addCss('fonts.css');
         $this->addCss('title.css');
         $this->addCss('typo.css');
+        $this->addCss('scrollbar.css');
         $this->addCss('material-design-iconic-font.min.css');
 
         $this->scripts();

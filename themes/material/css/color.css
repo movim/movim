@@ -35,6 +35,10 @@ table tr th {
     color: rgba(var(--movim-font), 0.54);
 }
 
+main > section > div > header.scroll {
+    background-color: var(--movim-background);
+}
+
 .color {
     background-color: #607D8B;
     color: white;
@@ -48,22 +52,12 @@ table tr th {
     border-color: rgba(255, 255, 255, 0.05);
 }
 
-::-webkit-scrollbar-button,
-::-webkit-scrollbar {
-    background-color: transparent;
-    width: 0.75rem;
-}
-
 ul li.date > p.normal,
 .dialog, .drawer, ul.context_menu,
 ul li div.bubble:not(.sticker):not(.file),
 .card > .block:not(.subheader):not(.simple),
 main {
     background-color: rgb(var(--movim-background-main));
-}
-
-::-webkit-scrollbar-button {
-    display: none;
 }
 
 main > header a,
@@ -148,15 +142,6 @@ main > header {
     background-color: var(--movim-accent);
     color: white;
     border-color: var(--movim-accent);
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(var(--movim-font), 0.2);
-}
-
-::-webkit-scrollbar-track,
-main > section > div > header.scroll {
-    background-color: var(--movim-background);
 }
 
 header.fixed ul.list li > p:nth-last-of-type(2) + p,
