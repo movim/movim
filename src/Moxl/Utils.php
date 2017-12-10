@@ -138,6 +138,7 @@ class Utils
             'urn:xmpp:message-correct:0',
             'urn:xmpp:bob',
             'urn:xmpp:chat-markers:0',
+            'urn:xmpp:reference:0',
 
             // Jingle
             'http://jabber.org/protocol/jingle',

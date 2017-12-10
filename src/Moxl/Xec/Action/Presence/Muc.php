@@ -62,6 +62,10 @@ class Muc extends Action
         $p = new \Modl\Presence;
         $p->setPresence($stanza);
 
+        if($stanza->attributes()->to) {
+            $p->mucjid = current(explode('/',(string)$stanza->attributes()->to));
+        }
+
         $pd = new \Modl\PresenceDAO;
         $pd->set($p);
 
