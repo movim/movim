@@ -27,6 +27,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
         list($origin, $node) = array_values($packet->content);
         $this->ajaxDisco($origin);
+        $this->rpc('MovimUtils.redirect', $this->route('community', [$origin, $node]));
     }
 
     function onDisco($packet)
