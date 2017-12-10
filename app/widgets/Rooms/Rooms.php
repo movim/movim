@@ -381,7 +381,14 @@ class Rooms extends \Movim\Widget\Base
         }
 
         $pd = new \Modl\PresenceDAO;
-        return ($pd->getMyPresenceRoom($room) != null);
+
+        if($resource == false) {
+            $session = Session::start();
+            $resource = $session->get('username');
+        }
+
+        return ($pd->getMyPresenceRoom($room) != null
+             || $pd->getPresence($room, $resource) != null);
     }
 
     /**
