@@ -24,7 +24,6 @@ class Conference extends Model
         'name'          => ['type' => 'string','size' => 128,'mandatory' => true],
         'nick'          => ['type' => 'string','size' => 128],
         'autojoin'      => ['type' => 'bool'],
-        'status'        => ['type' => 'bool'],
     ];
 
     public function setAvatar($vcard, $conference)
