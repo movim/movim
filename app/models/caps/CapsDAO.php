@@ -72,7 +72,7 @@ class CapsDAO extends SQL
     {
         $this->_sql = '
             select * from caps
-            where node = \'comments.'.$server.'\'
+            where node = \'pubsub.'.$server.'\'
             and category = \'pubsub\'
             and type = \'service\'';
 
