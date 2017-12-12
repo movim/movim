@@ -73,7 +73,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $slugify = new Slugify;
         $this->rpc(
             ($paginated) ? 'MovimTpl.append' : 'MovimTpl.fill',
-            '#communityposts.'.$slugify->slugify($origin.'_'.$node), $html);
+            '#communityposts.'.$slugify->slugify('c'.$origin.'_'.$node), $html);
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
@@ -217,7 +217,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $slugify = new Slugify;
 
         $node = $this->get('n') != null ? $this->get('n') : 'urn:xmpp:microblog:0';
-        $this->view->assign('class', $slugify->slugify($this->get('s').'_'.$node));
+        $this->view->assign('class', $slugify->slugify('c'.$this->get('s').'_'.$node));
     }
 }
 

@@ -99,7 +99,7 @@ class CommunitiesServer extends \Movim\Widget\Base
             return;
         }
 
-        $slugify = new Slugify();
+        $slugify = new Slugify;
         $uri = $slugify->slugify($form->name->value);
 
         if($uri == '') {
