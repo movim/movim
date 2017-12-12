@@ -109,6 +109,15 @@ class Rooms extends \Movim\Widget\Base
     }
 
     /**
+     * @brief Get the default servers
+     */
+    public function ajaxGetDefaultServices()
+    {
+        $cd = new \Modl\CapsDAO;
+        $this->rpc('Rooms.setDefaultServices', $cd->getMUC($this->user->getServer()));
+    }
+
+    /**
      * @brief Display the add room form
      */
     function ajaxAdd($room = false)

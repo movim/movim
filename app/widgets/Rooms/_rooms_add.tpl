@@ -20,9 +20,15 @@
                     placeholder="chatroom@server.com"
                 {/if}
                 type="email"
+                list="suggestions"
+                oninput="Rooms.suggest()"
                 required />
             <label>{$c->__('chatrooms.id')}</label>
         </div>
+
+        <datalist id="suggestions">
+        </datalist>
+
         <div>
             <input
                 {if="isset($conference)"}

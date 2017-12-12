@@ -68,6 +68,21 @@ class CapsDAO extends SQL
         return $this->run('Caps', 'item');
     }
 
+    function getMUC($server)
+    {
+        $this->_sql = '
+            select * from caps
+            where node like \'%'.$server.'%\'
+            and category = \'conference\'
+            and node not like \'%@%\'';
+
+        $this->prepare(
+            'Caps'
+        );
+
+        return $this->run('Caps');
+    }
+
     function getComments($server)
     {
         $this->_sql = '
