@@ -26,7 +26,6 @@ class MovimEmoji
     {
         $this->_emoji->setImageHtmlTemplate('<img alt="{{name}}" class="emoji" src="'.$this->getPath().'">');
         $string = $this->_emoji->replaceEmojiWithImages($string);
-        $this->_emoji->setImageHtmlTemplate('<img alt=":%s:" class="emoji" src="'.$this->getPath().'">');
 
         return $string;
     }

@@ -41,12 +41,12 @@
 
 #chat_widget .chat_box span.control {
     font-size: 4rem;
-    color: rgba(var(--movim-font), 0.54);
+    color: rgba(var(--movim-font), 0.68);
 }
 
 #chat_widget .chat_box span.control:hover {
     cursor: pointer;
-    color: #666;
+    color: rgba(var(--movim-font), 0.54);
 }
 
 #chat_widget .chat_box span.control:active {
