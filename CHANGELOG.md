@@ -11,6 +11,9 @@ v0.13 (trunk)
  * Add a nightmode
  * Cleanup and refactorize some CSS (colors, forms)
  * Improve the connectivity UX status of chatrooms
+ * Publish the chat messages using Ajax
+ * Improve the configuration of Communities
+ * Update the OpenSans font
 
 v0.12.1
 ---------------------------
