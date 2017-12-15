@@ -14,6 +14,7 @@ class Builder
     private $css = [];
     private $scripts = [];
     private $dir = 'ltr';
+    private $public;
 
     /**
      * Constructor. Determines whether to show the login page to the user or the
@@ -65,6 +66,7 @@ class Builder
     function build($view, $public = false)
     {
         $this->_view = $view;
+        $this->public = $public;
         $template = $this->_view.'.tpl';
 
         ob_start();

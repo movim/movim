@@ -9,7 +9,7 @@
         <div>
             <input
                 {if="isset($conference)"}
-                    value="{$conference->conference}" disabled
+                    value="{$conference->node}" disabled
                 {elseif="isset($id)"}
                     value="{$id}" disabled
                 {/if}
