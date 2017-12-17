@@ -1,8 +1,25 @@
 <ul class="list divided spaced middle">
-    {if="count($comments) > 0"}
+    {if="count($comments) > 0 || count($likes) > 0"}
         <li class="subheader center">
             <p>
                 <span class="info">{$comments|count}</span> {$c->__('post.comments')}
+            </p>
+        </li>
+    {/if}
+
+    {if="count($likes) > 0"}
+        <li>
+            <span class="primary icon small red">
+                <i class="zmdi zmdi-favorite"></i>
+            </span>
+            <p>{$likes|count}</span> {$c->__('button.like')}</p>
+            <p class="all">
+                {loop="$likes"}
+                    <a title="{$value->published|strtotime|prepareDate:true,true}"
+                       href="{$c->route('contact', $value->getContact()->jid)}">
+                        {$value->getContact()->getTrueName()}</a>{if="$key + 1 < count($likes)"},
+                    {/if}
+                {/loop}
             </p>
         </li>
     {/if}
@@ -18,25 +35,19 @@
                 </span>
             {/if}
 
-            {if="$value->isLike()"}
-                <span class="primary icon small red">
-                    <i class="zmdi zmdi-favorite"></i>
+            {$url = $value->getContact()->getPhoto('s')}
+            {if="$url"}
+                <span class="primary icon bubble small">
+                    <a href="{$c->route('contact', $value->getContact()->jid)}">
+                        <img src="{$url}">
+                    </a>
                 </span>
             {else}
-                {$url = $value->getContact()->getPhoto('s')}
-                {if="$url"}
-                    <span class="primary icon bubble small">
-                        <a href="{$c->route('contact', $value->getContact()->jid)}">
-                            <img src="{$url}">
-                        </a>
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$value->getContact()->jid|stringToColor} small">
-                        <a href="{$c->route('contact', $value->getContact()->jid)}">
-                            <i class="zmdi zmdi-account"></i>
-                        </a>
-                    </span>
-                {/if}
+                <span class="primary icon bubble color {$value->getContact()->jid|stringToColor} small">
+                    <a href="{$c->route('contact', $value->getContact()->jid)}">
+                        <i class="zmdi zmdi-account"></i>
+                    </a>
+                </span>
             {/if}
             <p class="normal line">
                 <span class="info" title="{$value->published|strtotime|prepareDate}">
@@ -46,15 +57,13 @@
                     {$value->getContact()->getTrueName()}
                 </a>
             </p>
-            {if="!$value->isLike()"}
-                <p class="all">
-                    {if="$value->contentraw"}
-                        {$value->contentraw|addHashtagsLinks|addHFR}
-                    {else}
-                        {$value->title|addUrls|addHashtagsLinks|nl2br}
-                    {/if}
-                </p>
-            {/if}
+            <p class="all">
+                {if="$value->contentraw"}
+                    {$value->contentraw|addHashtagsLinks|addHFR}
+                {else}
+                    {$value->title|addUrls|addHashtagsLinks|nl2br}
+                {/if}
+            </p>
         </li>
         {/if}
     {/loop}

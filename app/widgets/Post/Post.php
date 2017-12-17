@@ -168,9 +168,20 @@ class Post extends \Movim\Widget\Base
 
         $emoji = \MovimEmoji::getInstance();
 
+        $comments = $post->getComments();
+
+        $likes = [];
+        foreach($comments as $key => $comment) {
+            if($comment->isLike()) {
+                $likes[] = $comment;
+                unset($comments[$key]);
+            }
+        }
+
         $view = $this->tpl();
         $view->assign('post', $post);
-        $view->assign('comments', $post->getComments());
+        $view->assign('comments', $comments);
+        $view->assign('likes', $likes);
         $view->assign('hearth', $emoji->replace('♥'));
 
         return $view->draw('_post_comments', true);
