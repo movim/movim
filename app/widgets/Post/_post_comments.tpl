@@ -99,7 +99,7 @@
             {if="$liked"}
                 <button class="button red flat"
                     id="like"
-                    onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxDelete('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
+                    onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
                         <i class="zmdi zmdi-favorite-outline"></i>
                 </button>
             {else}
