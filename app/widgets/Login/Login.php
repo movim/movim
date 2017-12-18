@@ -69,19 +69,23 @@ class Login extends \Movim\Widget\Base
 
         $this->view->assign('invitation', null);
 
-        if($this->get('i') && Validator::length(8)->validate($this->get('i'))) {
+        if ($this->get('i')
+        && Validator::length(8)->validate($this->get('i'))) {
             $invitation = \Modl\Invite::get($this->get('i'));
-            $this->view->assign('invitation', $invitation);
 
-            $cd = new \Modl\ContactDAO;
-            $this->view->assign('contact', $cd->get($invitation->jid));
+            if($invitation) {
+                $this->view->assign('invitation', $invitation);
+
+                $cd = new \Modl\ContactDAO;
+                $this->view->assign('contact', $cd->get($invitation->jid));
+            }
         }
 
         $this->view->assign('pop', $pop-2);
         $this->view->assign('connected', (int)requestURL('http://localhost:1560/started/', 2));
         $this->view->assign('error', $this->prepareError());
 
-        if(isset($_SERVER['PHP_AUTH_USER'])
+        if (isset($_SERVER['PHP_AUTH_USER'])
         && isset($_SERVER['PHP_AUTH_PW'])
         && Validator::email()->length(6, 40)->validate($_SERVER['HTTP_EMAIL'])) {
             list($username, $host) = explode('@', $_SERVER['HTTP_EMAIL']);

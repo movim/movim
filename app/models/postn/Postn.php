@@ -601,7 +601,8 @@ class Postn extends Model
     public function getComments()
     {
         $pd = new \Modl\PostnDAO;
-        return $pd->getComments($this);
+        $comments = $pd->getComments($this);
+        return $comments ? $comments : [];
     }
 
     public function countComments()
