@@ -1,25 +1,32 @@
-<ul class="list divided spaced middle">
-    {if="count($comments) > 0 || count($likes) > 0"}
-        <li class="subheader center">
-            <p>
-                <span class="info">{$comments|count}</span> {$c->__('post.comments')}
-            </p>
-        </li>
-    {/if}
+{$liked = false}
 
-    {if="count($likes) > 0"}
+{if="count($likes) > 0"}
+    <ul class="list divided spaced middle">
         <li>
-            <span class="primary icon small red">
+            <span class="primary icon red">
                 <i class="zmdi zmdi-favorite"></i>
             </span>
             <p>{$likes|count}</span> {$c->__('button.like')}</p>
             <p class="all">
                 {loop="$likes"}
-                    <a title="{$value->published|strtotime|prepareDate:true,true}"
-                       href="{$c->route('contact', $value->getContact()->jid)}">
-                        {$value->getContact()->getTrueName()}</a>{if="$key + 1 < count($likes)"},
+                    {if="$value->isMine()"}{$liked = [$value->origin, $value->node, $value->nodeid]}{/if}
+                        <span id="{$value->nodeid|cleanupId}">
+                            <a title="{$value->published|strtotime|prepareDate:true,true}"
+                               href="{$c->route('contact', $value->getContact()->jid)}">
+                                {$value->getContact()->getTrueName()}</a>{if="$key + 1 < count($likes)"},
+                        </span>
                     {/if}
                 {/loop}
+            </p>
+        </li>
+    </ul>
+{/if}
+
+<ul class="list divided spaced middle">
+    {if="count($comments) > 0"}
+        <li class="subheader center">
+            <p>
+                <span class="info">{$comments|count}</span> {$c->__('post.comments')}
             </p>
         </li>
     {/if}
@@ -89,9 +96,19 @@
 
     <li>
         <p class="center">
-            <button class="button red flat" id="like" onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
-                <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
-            </button>
+            {if="$liked"}
+                <button class="button red flat"
+                    id="like"
+                    onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxDelete('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
+                        <i class="zmdi zmdi-favorite-outline"></i>
+                </button>
+            {else}
+                <button class="button red flat"
+                    id="like"
+                    onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                        <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
+                </button>
+            {/if}
             <button class="button flat gray" onclick="Post.comment()">
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
             </button>
