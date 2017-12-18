@@ -14,7 +14,7 @@ class Blog extends \Movim\Widget\Base
     private $_item;
     private $_id;
     private $_contact;
-    private $_messages;
+    private $_messages = [];
     private $_page;
     private $_mode;
     private $_tag;

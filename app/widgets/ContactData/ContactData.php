@@ -37,7 +37,7 @@ class ContactData extends \Movim\Widget\Base
         $view->assign('clienttype', getClientTypes());
         $view->assign('contact', $cd->get($jid));
         $view->assign('contactr', $contactr);
-        $view->assign('subscriptions', $id->getSharedItems($jid));
+        $view->assign('subscriptions', $id->getSharedItems($jid) ?? []);
 
         if(isset($contactr)) {
             if($contactr->value != null) {
