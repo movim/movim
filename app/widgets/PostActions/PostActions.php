@@ -85,10 +85,12 @@ class PostActions extends \Movim\Widget\Base
               ->setId($post->nodeid)
               ->request();
 
-            $p = new Delete;
-            $p->setTo($post->commentorigin)
-              ->setNode('urn:xmpp:microblog:0:comments/'.$post->commentnodeid)
-              ->request();
+            if(!$post->isComment()) {
+                $p = new Delete;
+                $p->setTo($post->commentorigin)
+                  ->setNode('urn:xmpp:microblog:0:comments/'.$post->commentnodeid)
+                  ->request();
+            }
         }
     }
 

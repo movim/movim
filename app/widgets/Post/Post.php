@@ -17,6 +17,7 @@ class Post extends \Movim\Widget\Base
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_getitem_handle', 'onHandle', 'post');
+        $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
     }
 
     function onHandle($packet)
@@ -66,6 +67,11 @@ class Post extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#comments', $html);
     }
 
+    function onDelete($packet)
+    {
+        $this->rpc('Post.refreshComments');
+    }
+
     function ajaxGetContact($jid)
     {
         $c = new ContactActions;
@@ -105,6 +111,16 @@ class Post extends \Movim\Widget\Base
                ->request();
         } else {
             $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareNotFound());
+        }
+    }
+
+    function ajaxGetPostComments($origin, $node, $id)
+    {
+        $pd = new \Modl\PostnDAO;
+        $p  = $pd->get($origin, $node, $id);
+
+        if($p) {
+            $this->requestComments($p);
         }
     }
 
