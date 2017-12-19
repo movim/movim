@@ -35,7 +35,7 @@ ul.list li > *:not(p, .hide, form) {
 ul.list.active > li:hover:not(.subheader),
 ul.list.active.all > li:hover,
 ul.list.active > li.active:not(.subheader) {
-    background-color: rgba(var(--movim-font), 0.03);
+    background-color: rgba(var(--movim-font), 0.04);
     cursor: pointer;
 }
 
@@ -105,7 +105,7 @@ ul.list li > span.active {
 
 ul.list li > span.active:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(var(--movim-font), 0.05);
 }
 
 ul.list li > p > span.second {
@@ -311,7 +311,7 @@ ul.tabs.narrow > li > * {
 
 ul.tabs > li:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(var(--movim-font), 0.05);
 }
 
 ul.tabs > li.active {
