@@ -1224,61 +1224,67 @@
         },
         {
             "name": "react/cache",
-            "version": "v0.4.1",
+            "version": "v0.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/cache.git",
-                "reference": "558f614891341b1d817a8cdf9a358948ec49638f"
+                "reference": "75494f26b4ef089db9bf8c90b63c296246e099e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/cache/zipball/558f614891341b1d817a8cdf9a358948ec49638f",
-                "reference": "558f614891341b1d817a8cdf9a358948ec49638f",
+                "url": "https://api.github.com/repos/reactphp/cache/zipball/75494f26b4ef089db9bf8c90b63c296246e099e8",
+                "reference": "75494f26b4ef089db9bf8c90b63c296246e099e8",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
                 "react/promise": "~2.0|~1.1"
             },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "React\\Cache\\": "src\\"
+                    "React\\Cache\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
-            "description": "Async caching.",
+            "description": "Async, Promise-based cache interface for ReactPHP",
             "keywords": [
-                "cache"
+                "cache",
+                "caching",
+                "promise",
+                "reactphp"
             ],
-            "time": "2016-02-25T18:17:16+00:00"
+            "time": "2017-12-20T16:47:13+00:00"
         },
         {
             "name": "react/child-process",
-            "version": "v0.5.0",
+            "version": "v0.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "3b8790deaa0e738dd4bdfb99e4da7c439240cd7d"
+                "reference": "7d1f765d6caa0303272c7f4bcef1b1bbc1b38c42"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/3b8790deaa0e738dd4bdfb99e4da7c439240cd7d",
-                "reference": "3b8790deaa0e738dd4bdfb99e4da7c439240cd7d",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/7d1f765d6caa0303272c7f4bcef1b1bbc1b38c42",
+                "reference": "7d1f765d6caa0303272c7f4bcef1b1bbc1b38c42",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
                 "php": ">=5.3.0",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
-                "react/stream": "^1.0 || ^0.7.2"
+                "react/stream": "^1.0 || ^0.7.6"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.0 || ^4.8.10",
-                "sebastian/environment": "~1.0"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35",
+                "sebastian/environment": "^3.0 || ^2.0 || ^1.0"
             },
             "type": "library",
             "autoload": {
@@ -1290,11 +1296,13 @@
             "license": [
                 "MIT"
             ],
-            "description": "Library for executing child processes.",
+            "description": "Event-driven library for executing child processes with ReactPHP.",
             "keywords": [
-                "process"
+                "event-driven",
+                "process",
+                "reactphp"
             ],
-            "time": "2017-08-15T15:31:31+00:00"
+            "time": "2017-12-22T08:11:14+00:00"
         },
         {
             "name": "react/dns",
@@ -1523,16 +1531,16 @@
         },
         {
             "name": "react/promise-stream",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-stream.git",
-                "reference": "77ca2a233db59d671864c88e2b716d875cfbeb1f"
+                "reference": "00e269d611e9c9a29356aef64c07f7e513e73dc9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/77ca2a233db59d671864c88e2b716d875cfbeb1f",
-                "reference": "77ca2a233db59d671864c88e2b716d875cfbeb1f",
+                "url": "https://api.github.com/repos/reactphp/promise-stream/zipball/00e269d611e9c9a29356aef64c07f7e513e73dc9",
+                "reference": "00e269d611e9c9a29356aef64c07f7e513e73dc9",
                 "shasum": ""
             },
             "require": {
@@ -1542,7 +1550,7 @@
             },
             "require-dev": {
                 "clue/block-react": "^1.0",
-                "phpunit/phpunit": "^4.8",
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
                 "react/promise-timer": "^1.0"
             },
@@ -1575,20 +1583,20 @@
                 "stream",
                 "unwrap"
             ],
-            "time": "2017-11-28T18:31:39+00:00"
+            "time": "2017-12-22T12:02:05+00:00"
         },
         {
             "name": "react/promise-timer",
-            "version": "v1.2.0",
+            "version": "v1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise-timer.git",
-                "reference": "3bc527fbd1201a193ab41c19b9a770d71a3514af"
+                "reference": "9b4cd9cbe7457e0d87fe8aa7ccceab8a2c830fbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/3bc527fbd1201a193ab41c19b9a770d71a3514af",
-                "reference": "3bc527fbd1201a193ab41c19b9a770d71a3514af",
+                "url": "https://api.github.com/repos/reactphp/promise-timer/zipball/9b4cd9cbe7457e0d87fe8aa7ccceab8a2c830fbd",
+                "reference": "9b4cd9cbe7457e0d87fe8aa7ccceab8a2c830fbd",
                 "shasum": ""
             },
             "require": {
@@ -1597,7 +1605,7 @@
                 "react/promise": "~2.1|~1.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.0 || ^4.8"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -1618,7 +1626,7 @@
                     "email": "christian@lueck.tv"
                 }
             ],
-            "description": "Trivial timeout implementation for Promises",
+            "description": "A trivial implementation of timeouts for Promises, built on top of ReactPHP.",
             "homepage": "https://github.com/react/promise-timer",
             "keywords": [
                 "async",
@@ -1628,7 +1636,7 @@
                 "timeout",
                 "timer"
             ],
-            "time": "2017-08-08T16:30:19+00:00"
+            "time": "2017-12-22T15:41:41+00:00"
         },
         {
             "name": "react/socket",
@@ -1679,16 +1687,16 @@
         },
         {
             "name": "react/stream",
-            "version": "v0.7.5",
+            "version": "v0.7.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/stream.git",
-                "reference": "a41bbffdda5e3f4282012f8e346cef48ecb28b24"
+                "reference": "4e07a0014896cbbb73e2f2b2c28e86174b6e1d4d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/stream/zipball/a41bbffdda5e3f4282012f8e346cef48ecb28b24",
-                "reference": "a41bbffdda5e3f4282012f8e346cef48ecb28b24",
+                "url": "https://api.github.com/repos/reactphp/stream/zipball/4e07a0014896cbbb73e2f2b2c28e86174b6e1d4d",
+                "reference": "4e07a0014896cbbb73e2f2b2c28e86174b6e1d4d",
                 "shasum": ""
             },
             "require": {
@@ -1699,9 +1707,6 @@
             "require-dev": {
                 "clue/stream-filter": "~1.2",
                 "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
-            },
-            "suggest": {
-                "react/event-loop": "^0.4"
             },
             "type": "library",
             "autoload": {
@@ -1724,7 +1729,7 @@
                 "stream",
                 "writable"
             ],
-            "time": "2017-11-20T11:55:48+00:00"
+            "time": "2017-12-21T14:12:01+00:00"
         },
         {
             "name": "react/zmq",
