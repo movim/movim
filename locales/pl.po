@@ -107,7 +107,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-10-23 21:34+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
@@ -583,9 +583,8 @@ msgid "Message Published"
 msgstr "Wiadomość Opublikowana"
 
 #: [message]error
-#, fuzzy
 msgid "Your message could not be sent, please try again later"
-msgstr "Movim nie może skomunikować się z serwerem, spróbuj później"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -807,9 +806,8 @@ msgid "Role correctly set"
 msgstr "Role poprawnie ustawione"
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "Moje publikacje"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -824,9 +822,8 @@ msgid "The publishers can publish"
 msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "Subskrybuj"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
@@ -1113,19 +1110,16 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr "Ten kontakt jest na liście twoich kontaktów, lecz nie ma pomiędzy waszymi kontami subskrypcji"
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Ogólne Informacje"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Informacje o Kliencie"
+msgstr ""
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr "Ten kontakt jest na liście twoich kontaktów, lecz nie ma pomiędzy waszymi kontami subskrypcji"
+msgstr ""
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -2836,12 +2830,3 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
-
-#~ msgid "The database need to be updated, go to the database panel to fix this"
-#~ msgstr "Baza danych musi być zaktualizowana. Idź do panelu baz danych by to naprawić"
-
-#~ msgid "Create one !"
-#~ msgstr "Utwórz je !"
-
-#~ msgid "No account yet ?"
-#~ msgstr "Nie masz jeszcze konta ?"

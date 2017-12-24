@@ -105,7 +105,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2016-07-29 20:30+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Belarusian (http://www.transifex.com/movim/movim/language/be/)\n"
 "Language: be\n"
@@ -113,7 +113,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -515,9 +515,8 @@ msgid "This content is private, please login to see it"
 msgstr ""
 
 #: [title]conferences
-#, fuzzy
 msgid "Conferences"
-msgstr "Канфігурацыя"
+msgstr ""
 
 #: [title]groups [group]empty_title
 msgid "Groups"
@@ -561,9 +560,8 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
-#, fuzzy
 msgid "Configure"
-msgstr "Канфігурацыя"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
@@ -1450,9 +1448,8 @@ msgid "Write a new post…"
 msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Канфігурацыя"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -2831,6 +2828,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Come in!"
-#~ msgstr "Заходзьце!"

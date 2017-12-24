@@ -105,7 +105,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Esperanto (http://www.transifex.com/movim/movim/language/eo/)\n"
 "Language: eo\n"
@@ -113,7 +113,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -515,9 +515,8 @@ msgid "This content is private, please login to see it"
 msgstr ""
 
 #: [title]conferences
-#, fuzzy
 msgid "Conferences"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: [title]groups [group]empty_title
 msgid "Groups"
@@ -532,10 +531,9 @@ msgid "Chat Room ID"
 msgstr ""
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Nomo"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -562,9 +560,8 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
-#, fuzzy
 msgid "Configure"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
@@ -575,10 +572,9 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Nomo"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -808,9 +804,8 @@ msgid "Role correctly set"
 msgstr ""
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "Profilo"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -841,9 +836,8 @@ msgid "%s posts"
 msgstr ""
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "Profilo"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -1114,14 +1108,12 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr ""
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Generalaj informoj"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Generalaj informoj"
+msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
@@ -1456,9 +1448,8 @@ msgid "Write a new post…"
 msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Agordaĵoj"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1473,9 +1464,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "Profilo"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -2838,21 +2828,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Male"
-#~ msgstr "Malina"
-
-#~ msgid "Female"
-#~ msgstr "Ina"
-
-#~ msgid "Other"
-#~ msgstr "Alia"
-
-#~ msgid "Single"
-#~ msgstr "Unuope"
-
-#~ msgid "Married"
-#~ msgstr "Edz(in)iĝinta"
-
-#~ msgid "Come in!"
-#~ msgstr "Envenu!"

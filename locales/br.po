@@ -1,5 +1,6 @@
 #
 # Translators:
+# Irriep Nala Novram <allannkorh@yahoo.fr>, 2017
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -105,7 +106,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Breton (http://www.transifex.com/movim/movim/language/br/)\n"
 "Language: br\n"
@@ -113,27 +114,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Trugarez"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "Diorroerien"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Troerien"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Trugarez d'an holl droerien"
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "Meziant"
 
 #: [about]resources
 msgid "Resources"
@@ -141,7 +142,7 @@ msgstr ""
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
@@ -149,11 +150,11 @@ msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Kont"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Kemm ma ger-tremen"
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -162,43 +163,43 @@ msgstr "Ger-tremen"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Kadarnadur ar ger-tremen"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Hizivaet eo bet ar ger-tremen"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Roit ur ger-tremen reizh mar plij (6 arouezenn da vihanañ)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "N'eo ket heñvel ar gerioù-tremen roet"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Dilemel ho kont"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "Emaoc'h o vont da zilemel ho kont XMPP hag an holl ditouroù liammet outañ (profil, darempredoù hag embannadennoù)."
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Ha sur oc'h e fell deoc'h da zilemel anezhi?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "Treuzell"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Kuitaat an instañs-mañ"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "Emaoc'h o vont da zilemel an holl ditouroù liammet gant ho kont war an instañs-mañ eus Movin (profil, darempredoù hag embannadennoù)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
@@ -515,9 +516,8 @@ msgid "This content is private, please login to see it"
 msgstr ""
 
 #: [title]conferences
-#, fuzzy
 msgid "Conferences"
-msgstr "Kefluniadur"
+msgstr ""
 
 #: [title]groups [group]empty_title
 msgid "Groups"
@@ -532,10 +532,9 @@ msgid "Chat Room ID"
 msgstr ""
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Anv"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -562,9 +561,8 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
-#, fuzzy
 msgid "Configure"
-msgstr "Kefluniadur"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
@@ -575,10 +573,9 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Anv"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -594,7 +591,7 @@ msgstr ""
 
 #: [message]composing [chats]composing
 msgid "Composing..."
-msgstr "O kompozañ"
+msgstr "O kompozañ..."
 
 #: [message]paused [chats]paused
 msgid "Paused..."
@@ -707,7 +704,7 @@ msgstr ""
 
 #: [button]chat
 msgid "Chat"
-msgstr "Tchat"
+msgstr "Flapva"
 
 #: [button]new
 msgid "New conversation"
@@ -742,9 +739,8 @@ msgid "There is no Communities yet on this server."
 msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "Kouiñ ur gont nevez"
+msgstr ""
 
 #: [communitiesserver]name
 msgid "Community name"
@@ -809,9 +805,8 @@ msgid "Role correctly set"
 msgstr ""
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "Profil"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -842,9 +837,8 @@ msgid "%s posts"
 msgstr ""
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "Profil"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -980,11 +974,11 @@ msgstr "Devezh ganedigezh"
 
 #: [general]gender
 msgid "Gender"
-msgstr "Rev"
+msgstr "Jener"
 
 #: [general]marital
 msgid "Marital Status"
-msgstr "Statud-dimez"
+msgstr "Statud Familh"
 
 #: [general]email
 msgid "Email"
@@ -1036,7 +1030,7 @@ msgstr ""
 
 #: [client]title
 msgid "Client Informations"
-msgstr "Titouroù an arval"
+msgstr "Titouroù an implijer"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1115,14 +1109,12 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr ""
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Titouroù hollek"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Titouroù an arval"
+msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
@@ -1218,11 +1210,11 @@ msgstr ""
 
 #: [banner]title
 msgid "What do the little banners refer to ?"
-msgstr "Petra dalv ar bannelioù bhan ?"
+msgstr "Petra dalv ar bannieloù bihan?"
 
 #: [banner]info1
 msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "A-drugarez d'ar pemp banielig-se ez eus tu deoc'h kavout al live prevezded war an titour roet ganeoc'h"
+msgstr "A-drugarez d'ar pemp bannielig-se e c'heller anavezout buan al live prevezded war an titour roet ganeoc'h."
 
 #: [banner]white
 msgid "White, only you can see the information"
@@ -1234,7 +1226,7 @@ msgstr "Gwer, choazet ho peus an darempredoù a c'hell gwelet ho titouroù"
 
 #: [banner]orange
 msgid "Orange, all your contact list can see your information"
-msgstr "Orañjez, tout ho darempredoù a c'hell gwelet ho titouroù"
+msgstr "Orañjez, hollad ho tarempredoù a c'hell gwelet ho titouroù"
 
 #: [banner]red
 msgid "Red, everybody in the XMPP network can see your information"
@@ -1326,7 +1318,7 @@ msgstr ""
 
 #: [error]username
 msgid "Wrong username"
-msgstr "Anv implijer direizh"
+msgstr "Anv-implijer direizh"
 
 #: [error]jid
 msgid "Invalid JID"
@@ -1338,11 +1330,11 @@ msgstr ""
 
 #: [error]dns
 msgid "XMPP Domain error, your account is not a correct Jabber ID"
-msgstr "Kudenn Domani XMPP, ho gont n'eo ket un ID Jabber reizh"
+msgstr "Kudenn Domani XMPP, ho kont n'eo ket un ID Jabber reizh"
 
 #: [error]data_missings
 msgid "Some data are missing !"
-msgstr "Roadennoù 'zo a vank !"
+msgstr "Roadennoù 'zo a vank!"
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -1350,15 +1342,15 @@ msgstr "Ger-tremen direizh"
 
 #: [error]internal
 msgid "Internal server error"
-msgstr "Kudenn servijer diabarzh"
+msgstr "Fazi diabarzh ar servijer"
 
 #: [error]session
 msgid "Session error"
-msgstr "Kudenn dalc'h"
+msgstr "Fazi dalc'h"
 
 #: [error]account_created
 msgid "Account successfully created"
-msgstr "Kont krouet gant berzh."
+msgstr "Kont krouet gant berzh"
 
 #: [error]mec_error
 msgid "The server takes too much time to respond"
@@ -1370,7 +1362,7 @@ msgstr ""
 
 #: [error]default
 msgid "Unknown error"
-msgstr "Kudenn dianavezet"
+msgstr "Fazi dianavezet"
 
 #: [error]login_format
 msgid "Invalid username format"
@@ -1386,7 +1378,7 @@ msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
-msgstr "N'eo ket deuet a-benn Movim da gennaskañ. Lakaet ho peus roadennoù fall."
+msgstr "N'eo ket deuet a-benn Movim da vezañ anavezet. Roadennoù fall ho peus ebarzhet."
 
 #: [error]mechanism
 msgid "Authentication mechanism not supported by Movim"
@@ -1394,11 +1386,11 @@ msgstr ""
 
 #: [error]fail_auth
 msgid "The XMPP authentification failed"
-msgstr "Ar c'hennaskañ XMPP a zo c'hwitet"
+msgstr "An dilesadur XMPP a zo c'hwitet"
 
 #: [form]username
 msgid "My address"
-msgstr "Ho chomlec'h"
+msgstr "Ma chomlec'h"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -1453,14 +1445,12 @@ msgid "Contacts"
 msgstr ""
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "Kouiñ ur gont nevez"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Kefluniadur"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1475,9 +1465,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "Profil"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1997,11 +1986,11 @@ msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
-msgstr "Kinnig"
+msgstr "Kas"
 
 #: [save]reset [button]reset
 msgid "Reset"
-msgstr "Adkregiñ"
+msgstr " Adderaouekaat "
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
@@ -2069,7 +2058,7 @@ msgstr "Krouadur ar gont"
 
 #: [page]news
 msgid "News"
-msgstr "Nevezadennoù"
+msgstr "Nevezenti"
 
 #: [page]avatar
 msgid "Avatar"
@@ -2126,11 +2115,11 @@ msgstr ""
 
 #: [error]error
 msgid "Error: %s"
-msgstr "Kudenn: %s"
+msgstr "Fazi: %s"
 
 #: [error]cannot_load_file
 msgid "Cannot load file '%s'"
-msgstr "Neus ket tu kargañ ar restr '%s'"
+msgstr "N'haller ket kargañ ar restr '%s'"
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
@@ -2190,7 +2179,7 @@ msgstr ""
 
 #: [button]submitting
 msgid "Submitting"
-msgstr "Kinngadenn"
+msgstr "O kas"
 
 #: [button]register
 msgid "Register"
@@ -2311,7 +2300,7 @@ msgstr "Robot"
 
 #: [client]desktop
 msgid "Desktop"
-msgstr "Burev"
+msgstr "Urzhiataer"
 
 #: [client]phone
 msgid "Phone"
@@ -2343,7 +2332,7 @@ msgstr "Ezvezant e-pad pell"
 
 #: [presence]offline
 msgid "Offline"
-msgstr "Digennasket"
+msgstr "Digevreet"
 
 #: [presence]error
 msgid "Error"
@@ -2707,7 +2696,7 @@ msgstr "Mae"
 
 #: [month]june
 msgid "June"
-msgstr "Even"
+msgstr "Mezheven"
 
 #: [month]july
 msgid "July"
@@ -2787,7 +2776,7 @@ msgstr ""
 
 #: [post]older
 msgid "Get older posts"
-msgstr "Kaout an embanadennoù kozhoc'h"
+msgstr "Kaout postadurioù koshoc'h"
 
 #: [post]new_items
 msgid "%s new items"
@@ -2840,39 +2829,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Male"
-#~ msgstr "Paotr"
-
-#~ msgid "Female"
-#~ msgstr "Plac'h"
-
-#~ msgid "Other"
-#~ msgstr "All"
-
-#~ msgid "Single"
-#~ msgstr "E-unan"
-
-#~ msgid "In a relationship"
-#~ msgstr "E kouplad"
-
-#~ msgid "Married"
-#~ msgstr "Dimezet"
-
-#~ msgid "Divorced"
-#~ msgstr "Dizimezet"
-
-#~ msgid "Widowed"
-#~ msgstr "Intañv(ez)"
-
-#~ msgid "Cohabiting"
-#~ msgstr "Kenlojañ"
-
-#~ msgid "Civil Union"
-#~ msgstr "Unvaniezh keodedel"
-
-#~ msgid "Your feed cannot be loaded."
-#~ msgstr "Ho gwazh n'hall ket bezañ karget"
-
-#~ msgid "Come in!"
-#~ msgstr "Deuit e-barzh !"

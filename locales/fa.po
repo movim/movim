@@ -107,15 +107,15 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-03-30 18:46+0000\n"
-"Last-Translator: Alireza Mirsepassy <alirezamirsepassy@gmail.com>\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -732,38 +732,32 @@ msgid "This server doesn't exists"
 msgstr ""
 
 #: [communitiesserver]created
-#, fuzzy
 msgid "Community created successfully"
-msgstr "گروه با موفقیت ذخیره شد"
+msgstr ""
 
 #: [communitiesserver]empty_server
-#, fuzzy
 msgid "There is no Communities yet on this server."
-msgstr "هنوز هیچ گروهی روی این سرور وجود ندارد"
+msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "ساخت حساب کاربری جدید"
+msgstr ""
 
 #: [communitiesserver]name
-#, fuzzy
 msgid "Community name"
-msgstr "نام خالی است"
+msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
 msgstr "تسویه حساب کوچک من - باشگاه"
 
 #: [communitiesserver]name_error
-#, fuzzy
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "لطفا یک نام معتبر برای گروه انتخاب کنید ( حداقل 4 کاراکتر )"
+msgstr ""
 
 #: [communitiesserver]no_creation
-#, fuzzy
 msgid "You cannot create a new community on this server"
-msgstr "شما نمیتوانید گروه جدیدی روی این سرور بسازید"
+msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
@@ -771,19 +765,16 @@ msgid "Subscriptions"
 msgstr "مشترک ها"
 
 #: [communityaffiliation]deleted
-#, fuzzy
 msgid "Community deleted successfully"
-msgstr "گروه با موفقیت حذف شد"
+msgstr ""
 
 #: [communityaffiliation]delete_title
-#, fuzzy
 msgid "Delete the community"
-msgstr "حذف گروه"
+msgstr ""
 
 #: [communityaffiliation]delete_text
-#, fuzzy
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "شما درحال حذف این نوشته هستید ،لطفا تایید کنید"
+msgstr ""
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
@@ -815,9 +806,8 @@ msgid "Role correctly set"
 msgstr "نقش ها بدرستی تنظیم شده اند"
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "جمعیت"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -832,9 +822,8 @@ msgid "The publishers can publish"
 msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "مشترک شدن"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
@@ -849,9 +838,8 @@ msgid "%s posts"
 msgstr ""
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "پروفایل عمومی"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -1122,9 +1110,8 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr ""
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "تنظیمات عمومی"
+msgstr ""
 
 #: [client]title
 msgid "Client Information"
@@ -1407,9 +1394,8 @@ msgid "My address"
 msgstr "آدرس من"
 
 #: [form]whitelist_info
-#, fuzzy
 msgid "You can login with accounts from these servers"
-msgstr "شما میتوانید با اکانت از سرور های زیر وارد شوید"
+msgstr ""
 
 #: [form]connected
 msgid "Connected"
@@ -1460,9 +1446,8 @@ msgid "Contacts"
 msgstr "مخاطبین"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "ساخت حساب کاربری جدید"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1721,14 +1706,12 @@ msgid "What's new?"
 msgstr ""
 
 #: [publishbrief]post
-#, fuzzy
 msgid "Write a post"
-msgstr "ویرایش نوشته"
+msgstr ""
 
 #: [publishbrief]add_link
-#, fuzzy
 msgid "Add a link"
-msgstr "اضافه کردن URL"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1799,19 +1782,16 @@ msgid "Your nickname"
 msgstr ""
 
 #: [room]invite
-#, fuzzy
 msgid "Invite a contact"
-msgstr "جستجو مخاطبین"
+msgstr ""
 
 #: [room]invited
-#, fuzzy
 msgid "Invitation sent"
-msgstr "دعوت های در انتظار"
+msgstr ""
 
 #: [room]invite_code
-#, fuzzy
 msgid "Send this link to your contacts"
-msgstr "جستجو در مخاطبین"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2042,9 +2022,8 @@ msgid "in call"
 msgstr ""
 
 #: [visio]failed
-#, fuzzy
 msgid "failed"
-msgstr "آپلود ناموفق بود"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2851,51 +2830,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Create one !"
-#~ msgstr "یکی بسازید!"
-
-#~ msgid "No account yet ?"
-#~ msgstr "هنوز حساب کاربری ندارید ؟"
-
-#~ msgid "Male"
-#~ msgstr "مرد"
-
-#~ msgid "Female"
-#~ msgstr "زن"
-
-#~ msgid "Single"
-#~ msgstr "مجرد"
-
-#~ msgid "In a relationship"
-#~ msgstr "در رابطه"
-
-#~ msgid "Married"
-#~ msgstr "مزدوج"
-
-#~ msgid "Divorced"
-#~ msgstr "طلاق گرفته"
-
-#~ msgid "User folder size limit (in bytes)"
-#~ msgstr "حجم پوشه کاربر ( بایت )"
-
-#~ msgid "Change the default credentials admin/password"
-#~ msgstr "نام کاربری و رمز عبور پیش فرض admin/password را عوض کنید"
-
-#~ msgid "Delete my account"
-#~ msgstr "حساب کاربری من را حذف کن"
-
-#~ msgid "Install the php5-curl library"
-#~ msgstr "Install the php5-curl library"
-
-#~ msgid "Install the php5-imagick library"
-#~ msgstr "Install the php5-imagick library"
-
-#~ msgid "Install the php5-gd library"
-#~ msgstr "Install the php5-gd library"
-
-#~ msgid "Another account"
-#~ msgstr "حساب کاربری دیگر"
-
-#~ msgid "Add a post"
-#~ msgstr "ایجاد یک نوشته"

@@ -1,6 +1,7 @@
 #
 # Translators:
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2014
+# Jans Petersons <martinstomsons2@gmail.com>, 2017
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -106,7 +107,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Latvian (http://www.transifex.com/movim/movim/language/lv/)\n"
 "Language: lv\n"
@@ -114,7 +115,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -130,7 +131,7 @@ msgstr "Tulkotāji"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Paldies visiem tulkotājiem "
 
 #: [about]software
 msgid "Software"
@@ -150,11 +151,11 @@ msgstr ""
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "Konts"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "Mainīt paroli "
 
 #: [account]password [db]password [credentials]password [form]password
 #: [input]password
@@ -163,23 +164,23 @@ msgstr "Parole"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "Paroles apstiprinājums "
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "Parole tika atjaunināta "
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "Lūdzu ievadiet derīgu paroli (minimums 6 zīmes)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "Ievadītās paroles nav vienādas"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Izdzēst kontu "
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
@@ -187,15 +188,15 @@ msgstr ""
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "Vai tiešām vēlaties dzēst šo?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "Vārteja "
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Pamest šo instanci "
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
@@ -203,7 +204,7 @@ msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "Šī darbība neizdzēsīs jūsu kontu, bet pārtrauks savienojumu ar šo instanci."
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -211,7 +212,7 @@ msgstr "Izveidot jaunu kontu"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "Konta izveides forma netika atrasta šajā serverī"
 
 #: [create]server_on
 msgid "on"
@@ -219,27 +220,27 @@ msgstr ""
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "Jūsu konts tika veiksmīgi reģistrēts"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "Ielādē"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...un uzsākt atskaņošanu "
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "Nav Pieņemams "
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "Šī servera reģistrācijas sistēma pašlaik nav pieejama "
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Reģistrācija liegta "
 
 #: [adhoc]title
 msgid "Actions"
@@ -247,7 +248,7 @@ msgstr "Darbības"
 
 #: [db]legend [schema]database
 msgid "Database"
-msgstr ""
+msgstr "Datubāze "
 
 #: [db]connect_error
 msgid "Modl wasn't able to connect to the database"
@@ -283,7 +284,7 @@ msgstr "Ports"
 
 #: [db]name
 msgid "Database Name"
-msgstr ""
+msgstr "Datubāzes Nosaukums"
 
 #: [admin]general
 msgid "General Settings"
@@ -516,9 +517,8 @@ msgid "This content is private, please login to see it"
 msgstr ""
 
 #: [title]conferences
-#, fuzzy
 msgid "Conferences"
-msgstr "Atjaunināta konfigurācija"
+msgstr ""
 
 #: [title]groups [group]empty_title
 msgid "Groups"
@@ -533,10 +533,9 @@ msgid "Chat Room ID"
 msgstr ""
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Nosaukums"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -563,9 +562,8 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
-#, fuzzy
 msgid "Configure"
-msgstr "Atjaunināta konfigurācija"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
@@ -576,10 +574,9 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Nosaukums"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -743,14 +740,12 @@ msgid "There is no Communities yet on this server."
 msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "Izveidot jaunu kontu"
+msgstr ""
 
 #: [communitiesserver]name
-#, fuzzy
 msgid "Community name"
-msgstr "Tukšs vārds"
+msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -827,9 +822,8 @@ msgid "The publishers can publish"
 msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "Pierakstīties"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
@@ -1116,14 +1110,12 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr ""
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Vispārīgā Informācija"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Vispārīgā Informācija"
+msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
@@ -1258,9 +1250,8 @@ msgid "Try out our official Android app"
 msgstr ""
 
 #: [apps]recommend
-#, fuzzy
 msgid "We also recommend"
-msgstr "Pievienot komentāru"
+msgstr ""
 
 #: [apps]computer
 msgid "Apps for your computer"
@@ -1383,9 +1374,8 @@ msgid "Invalid password format"
 msgstr ""
 
 #: [error]unauthorized
-#, fuzzy
 msgid "Your XMPP server is unauthorized"
-msgstr "Jūsu serveris šeit ?"
+msgstr ""
 
 #: [error]wrong_account
 msgid "Movim failed to authenticate. You entered wrong data"
@@ -1456,14 +1446,12 @@ msgid "Contacts"
 msgstr "Kontakti"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "Izveidot jaunu kontu"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Darbības"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1722,9 +1710,8 @@ msgid "Write a post"
 msgstr ""
 
 #: [publishbrief]add_link
-#, fuzzy
 msgid "Add a link"
-msgstr "Pievienot komentāru"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -2083,9 +2070,8 @@ msgid "Chats"
 msgstr ""
 
 #: [page]post
-#, fuzzy
 msgid "Post"
-msgstr "Ieraksti"
+msgstr ""
 
 #: [page]blog
 msgid "Blog"
@@ -2844,21 +2830,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Create one !"
-#~ msgstr "Izveidot vienu !"
-
-#~ msgid "No account yet ?"
-#~ msgstr "Vēl nav konts ?"
-
-#~ msgid "Accounts"
-#~ msgstr "Konti"
-
-#~ msgid "Twitter"
-#~ msgstr "Twitter"
-
-#~ msgid "Skype"
-#~ msgstr "Skype"
-
-#~ msgid "Your contacts"
-#~ msgstr "Jūsu kontakti"

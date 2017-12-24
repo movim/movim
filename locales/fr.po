@@ -111,7 +111,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-10-18 19:27+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -587,9 +587,8 @@ msgid "Message Published"
 msgstr "Message publié"
 
 #: [message]error
-#, fuzzy
 msgid "Your message could not be sent, please try again later"
-msgstr "Movim ne peut pas communiquer avec le serveur, veuillez réessayer plus tard"
+msgstr "Le message ne peut être envoyé, veuillez réessayer plus tard"
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -811,30 +810,28 @@ msgid "Role correctly set"
 msgstr "Rôle sauvegardé"
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "Mes publications"
+msgstr "Publication"
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
-msgstr ""
+msgstr "Ouvert"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr ""
+msgstr "Tous les membres peuvent publier"
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
-msgstr ""
+msgstr "Les rédacteurs peuvent publier"
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "S’abonner"
+msgstr "Souscrits"
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr ""
+msgstr "Les souscrits peuvent publier"
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -958,11 +955,11 @@ msgstr "Autoriser l'affichage des billets possédant la catégorie #nsfw"
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr ""
+msgstr "Mode Nuit"
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
-msgstr ""
+msgstr "Des couleurs sombres pour reposer vos yeux"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -1117,19 +1114,16 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr "Ce contact est dans votre liste de contacts mais il n’y a pas d’abonnements entre les deux comptes"
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Informations générales"
+msgstr "Informations Générales"
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Informations sur le client"
+msgstr "Informations sur le Client"
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr "Ce contact est dans votre liste de contacts mais il n’y a pas d’abonnements entre les deux comptes"
+msgstr "Ce contact est présent dans votre liste mais il n'y a aucune souscriptions entre vos deux comptes"
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -1248,9 +1242,8 @@ msgid "Black, the whole Internet can see your information"
 msgstr "Noir, les données sont visibles par tout le monde sur internet"
 
 #: [apps]question
-#, fuzzy
 msgid "Have you already tried Movim on other platforms?"
-msgstr "Avez-vous déjà essayé Movim sur d'autres plateformes ?"
+msgstr "Avez vous déjà essayé Movim sur d'autres plateformes ?"
 
 #: [apps]phone
 msgid "Apps for your phone"
@@ -2272,7 +2265,7 @@ msgstr "Activer"
 
 #: [button]sign_up
 msgid "Sign Up"
-msgstr ""
+msgstr "Souscrire"
 
 #: [day]title
 msgid "Day"
@@ -2841,101 +2834,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "The database need to be updated, go to the database panel to fix this"
-#~ msgstr "La base de données doit être mise à jour, allez dans son panneau pour résoudre ce problème"
-
-#~ msgid "Create one !"
-#~ msgstr "Créez-en un !"
-
-#~ msgid "No account yet ?"
-#~ msgstr "Pas encore de compte ?"
-
-#~ msgid "Accounts"
-#~ msgstr "Comptes"
-
-#~ msgid "Twitter"
-#~ msgstr "Twitter"
-
-#~ msgid "Skype"
-#~ msgstr "Skype"
-
-#~ msgid "Yahoo Account"
-#~ msgstr "Compte Yahoo"
-
-#~ msgid "Public Groups"
-#~ msgstr "Groupes publics"
-
-#~ msgid "Pods"
-#~ msgstr "Pods"
-
-#~ msgctxt "[gender]nil"
-#~ msgid "None"
-#~ msgstr "Aucun"
-
-#~ msgid "Male"
-#~ msgstr "Homme"
-
-#~ msgid "Female"
-#~ msgstr "Femme"
-
-#~ msgid "Other"
-#~ msgstr "Autre"
-
-#~ msgctxt "[marital]nil"
-#~ msgid "None"
-#~ msgstr "Aucun"
-
-#~ msgid "Single"
-#~ msgstr "Célibataire"
-
-#~ msgid "In a relationship"
-#~ msgstr "En couple"
-
-#~ msgid "Married"
-#~ msgstr "Marié(e)"
-
-#~ msgid "Divorced"
-#~ msgstr "Divorcé(e)"
-
-#~ msgid "Widowed"
-#~ msgstr "Veuf(ve)"
-
-#~ msgid "Cohabiting"
-#~ msgstr "En concubinage"
-
-#~ msgid "Civil Union"
-#~ msgstr "Union civile"
-
-#~ msgid "Not shared"
-#~ msgstr "Non partagé"
-
-#~ msgid "Shared with one contact"
-#~ msgstr "Partagé avec un contact"
-
-#~ msgid "Shared with all contacts"
-#~ msgstr "Partagé avec tous les contacts"
-
-#~ msgid "Shared with the XMPP network"
-#~ msgstr "Partagé avec le réseau XMPP"
-
-#~ msgid "Shared with the whole Internet"
-#~ msgstr "Partagé avec tout Internet"
-
-#~ msgid "What's new ?"
-#~ msgstr "Quoi de neuf ?"
-
-#~ msgid "No comments stream"
-#~ msgstr "Pas de flux de commentaires"
-
-#~ msgid "Your feed cannot be loaded."
-#~ msgstr "Votre flux n’est pas accessible."
-
-#~ msgid "Show the older comments"
-#~ msgstr "Afficher les commentaires plus anciens"
-
-#~ msgid "Loading comments..."
-#~ msgstr "Chargement des commentaires…"
-
-#~ msgid "Your contacts"
-#~ msgstr "Vos contacts"

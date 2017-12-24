@@ -111,7 +111,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-10-23 21:34+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -587,9 +587,8 @@ msgid "Message Published"
 msgstr "消息已发布"
 
 #: [message]error
-#, fuzzy
 msgid "Your message could not be sent, please try again later"
-msgstr "Movim 无法与服务器通信，请稍后再试"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -811,9 +810,8 @@ msgid "Role correctly set"
 msgstr "角色已被正确设置"
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "我的发布"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -828,9 +826,8 @@ msgid "The publishers can publish"
 msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "订阅"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
@@ -1117,19 +1114,16 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "一般信息"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "客户端信息"
+msgstr ""
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
+msgstr ""
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -1248,9 +1242,8 @@ msgid "Black, the whole Internet can see your information"
 msgstr "黑色，整个互联网可以看见您的信息"
 
 #: [apps]question
-#, fuzzy
 msgid "Have you already tried Movim on other platforms?"
-msgstr "你是否已经准备好在其他平台上尝试 Movim？"
+msgstr ""
 
 #: [apps]phone
 msgid "Apps for your phone"
@@ -2841,12 +2834,3 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "The database need to be updated, go to the database panel to fix this"
-#~ msgstr "数据库需要更新，前往数据库面板以修复。"
-
-#~ msgid "Create one !"
-#~ msgstr "新建一个 !"
-
-#~ msgid "No account yet ?"
-#~ msgstr "还没有账户 ?"

@@ -107,7 +107,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Arabic (http://www.transifex.com/movim/movim/language/ar/)\n"
 "Language: ar\n"
@@ -115,7 +115,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -740,9 +740,8 @@ msgid "There is no Communities yet on this server."
 msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "أنشئ حسابًا جديدًا"
+msgstr ""
 
 #: [communitiesserver]name
 msgid "Community name"
@@ -753,9 +752,8 @@ msgid "My Little Pony - Fan Club"
 msgstr ""
 
 #: [communitiesserver]name_error
-#, fuzzy
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "المرجو إدخال كلمة سر صحيحة (6 أحرف على الأقل)"
+msgstr ""
 
 #: [communitiesserver]no_creation
 msgid "You cannot create a new community on this server"
@@ -771,9 +769,8 @@ msgid "Community deleted successfully"
 msgstr ""
 
 #: [communityaffiliation]delete_title
-#, fuzzy
 msgid "Delete the community"
-msgstr "الحصول على تعليقات"
+msgstr ""
 
 #: [communityaffiliation]delete_text
 msgid "You are going to delete the following community. Please confirm your action."
@@ -809,9 +806,8 @@ msgid "Role correctly set"
 msgstr ""
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "مجموعات عامة"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -842,9 +838,8 @@ msgid "%s posts"
 msgstr ""
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "مجموعات عامة"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -1115,14 +1110,12 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr ""
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "معلومات عامة"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "بيانات العميل"
+msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
@@ -1257,9 +1250,8 @@ msgid "Try out our official Android app"
 msgstr ""
 
 #: [apps]recommend
-#, fuzzy
 msgid "We also recommend"
-msgstr "أضف تعليق"
+msgstr ""
 
 #: [apps]computer
 msgid "Apps for your computer"
@@ -1454,9 +1446,8 @@ msgid "Contacts"
 msgstr ""
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "أنشئ حسابًا جديدًا"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1711,18 +1702,16 @@ msgid "Add some text"
 msgstr ""
 
 #: [publishbrief]placeholder
-#, fuzzy
 msgid "What's new?"
-msgstr "ما الجديد؟"
+msgstr ""
 
 #: [publishbrief]post
 msgid "Write a post"
 msgstr ""
 
 #: [publishbrief]add_link
-#, fuzzy
 msgid "Add a link"
-msgstr "أضف تعليق"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -2841,48 +2830,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Public Groups"
-#~ msgstr "مجموعات عامة"
-
-#~ msgid "Male"
-#~ msgstr "ذكر"
-
-#~ msgid "Female"
-#~ msgstr "أنثى"
-
-#~ msgid "Other"
-#~ msgstr "غير ذلك"
-
-#~ msgid "Single"
-#~ msgstr "عَزَب"
-
-#~ msgid "In a relationship"
-#~ msgstr "مرتبط"
-
-#~ msgid "Married"
-#~ msgstr "متزوّج"
-
-#~ msgid "Divorced"
-#~ msgstr "مطلّق"
-
-#~ msgid "Widowed"
-#~ msgstr "أرمل"
-
-#~ msgid "Cohabiting"
-#~ msgstr "مُساكِن"
-
-#~ msgid "Civil Union"
-#~ msgstr "علاقة مدنية"
-
-#~ msgid "What's new ?"
-#~ msgstr "ما الجديد؟"
-
-#~ msgid "Your feed cannot be loaded."
-#~ msgstr "تعذّر تنزيل تلقيمتك"
-
-#~ msgid "Your contacts"
-#~ msgstr "اتصالاتكم"
-
-#~ msgid "Delete my account"
-#~ msgstr "حذف حسابي"

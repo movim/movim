@@ -120,7 +120,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-10-23 21:34+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
@@ -596,9 +596,8 @@ msgid "Message Published"
 msgstr "Nachricht veröffentlicht"
 
 #: [message]error
-#, fuzzy
 msgid "Your message could not be sent, please try again later"
-msgstr "Movim kann den Server nicht erreichen, bitte versuchen Sie es später nochmal"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -820,9 +819,8 @@ msgid "Role correctly set"
 msgstr "Rolle richtig gesetzt"
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "Meine Veröffentlichungen"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -837,9 +835,8 @@ msgid "The publishers can publish"
 msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "Abonnieren"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
@@ -855,7 +852,7 @@ msgstr "%s Beiträge"
 
 #: [communitydata]public
 msgid "Public page"
-msgstr ""
+msgstr "Öffentliche Seite"
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -1126,19 +1123,16 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr "Dieser Kontakt ist in Ihrer Kontaktliste, aber es existieren noch keine Abonnements zwischen diesen beiden Konten."
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Allgemeine Angaben"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Programminformationen"
+msgstr ""
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr "Dieser Kontakt ist in Ihrer Kontaktliste, aber es existieren noch keine Abonnements zwischen diesen beiden Konten."
+msgstr ""
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -1257,9 +1251,8 @@ msgid "Black, the whole Internet can see your information"
 msgstr "Schwarz, das vollständige Internet kann Ihre Information sehen"
 
 #: [apps]question
-#, fuzzy
 msgid "Have you already tried Movim on other platforms?"
-msgstr "Haben Sie schon Movim auf anderen Plattformen ausprobiert?"
+msgstr ""
 
 #: [apps]phone
 msgid "Apps for your phone"
@@ -2035,15 +2028,15 @@ msgstr "…ruft Sie an"
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr ""
+msgstr "…klingelt"
 
 #: [visio]in_call
 msgid "in call"
-msgstr ""
+msgstr "im Gespräch"
 
 #: [visio]failed
 msgid "failed"
-msgstr ""
+msgstr "fehlgeschlagen"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2850,12 +2843,3 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
-
-#~ msgid "The database need to be updated, go to the database panel to fix this"
-#~ msgstr "Die Datenbank muss aktualisiert werden. Bitte zur Datenbankverwaltung gehen, um das zu reparieren."
-
-#~ msgid "Create one !"
-#~ msgstr "Eines erstellen!"
-
-#~ msgid "No account yet ?"
-#~ msgstr "Noch kein Konto?"

@@ -105,7 +105,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/movim/movim/language/oc/)\n"
 "Language: oc\n"
@@ -113,7 +113,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -738,14 +738,12 @@ msgid "There is no Communities yet on this server."
 msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "Crear un compte novèl"
+msgstr ""
 
 #: [communitiesserver]name
-#, fuzzy
 msgid "Community name"
-msgstr "Nom void"
+msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -806,9 +804,8 @@ msgid "Role correctly set"
 msgstr ""
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "Gropes publics"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -823,9 +820,8 @@ msgid "The publishers can publish"
 msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "Abonat"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
@@ -840,9 +836,8 @@ msgid "%s posts"
 msgstr ""
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "Gropes publics"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -889,9 +884,8 @@ msgid "Are you sure ?"
 msgstr ""
 
 #: [communityposts]nsfw_title
-#, fuzzy
 msgid "Adult content blocked"
-msgstr "satisfach(a)"
+msgstr ""
 
 #: [communityposts]nsfw_message
 msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
@@ -1114,14 +1108,12 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr ""
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Informacions Generalas"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Informacions sul client"
+msgstr ""
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
@@ -1452,9 +1444,8 @@ msgid "Contacts"
 msgstr ""
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "Crear un compte novèl"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1789,19 +1780,16 @@ msgid "Your nickname"
 msgstr ""
 
 #: [room]invite
-#, fuzzy
 msgid "Invite a contact"
-msgstr "Partejat amb totes los contactes"
+msgstr ""
 
 #: [room]invited
-#, fuzzy
 msgid "Invitation sent"
-msgstr "Identificacion de l'administrator"
+msgstr ""
 
 #: [room]invite_code
-#, fuzzy
 msgid "Send this link to your contacts"
-msgstr "Partejat amb totes los contactes"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2474,9 +2462,8 @@ msgid "flirtatious"
 msgstr "seductor"
 
 #: [mood]frustrated
-#, fuzzy
 msgid "frustrated"
-msgstr "distrach(a)"
+msgstr ""
 
 #: [mood]grateful
 msgid "grateful"
@@ -2841,60 +2828,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Public Groups"
-#~ msgstr "Gropes publics"
-
-#~ msgid "Male"
-#~ msgstr "Òme"
-
-#~ msgid "Female"
-#~ msgstr "Femna"
-
-#~ msgid "Other"
-#~ msgstr "Autre"
-
-#~ msgid "Single"
-#~ msgstr "Celibatari(ària)"
-
-#~ msgid "In a relationship"
-#~ msgstr "En parelh"
-
-#~ msgid "Married"
-#~ msgstr "Maridat(ada)"
-
-#~ msgid "Divorced"
-#~ msgstr "Divorciat(ada)"
-
-#~ msgid "Widowed"
-#~ msgstr "Veuse(a)"
-
-#~ msgid "Cohabiting"
-#~ msgstr "Associat"
-
-#~ msgid "Civil Union"
-#~ msgstr "Union civila"
-
-#~ msgid "Not shared"
-#~ msgstr "Pas partejat"
-
-#~ msgid "Shared with one contact"
-#~ msgstr "Partejat amb un contacte"
-
-#~ msgid "Shared with all contacts"
-#~ msgstr "Partejat amb totes los contactes"
-
-#~ msgid "Shared with the XMPP network"
-#~ msgstr "Partejat amb la ret XMPP"
-
-#~ msgid "Shared with the whole Internet"
-#~ msgstr "Partejat amb tot Internet"
-
-#~ msgid "Your feed cannot be loaded."
-#~ msgstr "Vòstre fial es pas accessible."
-
-#~ msgid "Show the older comments"
-#~ msgstr "Afichar los autres comentaris"
-
-#~ msgid "Your status here !"
-#~ msgstr "Vòstre estatut aicí !"

@@ -111,7 +111,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-10-23 21:34+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
@@ -810,9 +810,8 @@ msgid "Role correctly set"
 msgstr ""
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "Mijn berichten"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -827,9 +826,8 @@ msgid "The publishers can publish"
 msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "Abbonneer"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
@@ -1116,19 +1114,16 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr "Deze contactpersoon zit in je contactenlijst, maar deze is niet geabonneerd"
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Algemene informatie"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Informatie over verbonden computer"
+msgstr ""
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr "Deze contactpersoon zit in je contactenlijst, maar deze is niet geabonneerd"
+msgstr ""
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -2839,12 +2834,3 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
-
-#~ msgid "The database need to be updated, go to the database panel to fix this"
-#~ msgstr "De database moet geüpdate worden, ga haar het databse-paneel om dit op te lossen"
-
-#~ msgid "Create one !"
-#~ msgstr "Maak er een aan!"
-
-#~ msgid "No account yet ?"
-#~ msgstr "Nog geen account?"

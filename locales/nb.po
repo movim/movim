@@ -1,5 +1,7 @@
 #
 # Translators:
+# Allan Nordhøy <epost@anotheragency.no>, 2017
+# Dominik George <nik@naturalnet.de>, 2017
 # pere <pere-transifex@hungry.com>, 2017
 # Ruben Solvang <rsolvang@gmail.com>, 2016-2017
 # tyler moss <inactive+protonbeta@transifex.com>, 2016
@@ -108,7 +110,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-10-23 21:34+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
@@ -173,7 +175,7 @@ msgstr "Passordet er oppdatert"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr "Vennligst oppgi et gyldig passord (må inneholde minst 6 tegn)"
+msgstr "Oppgi et gyldig passord (må inneholde minst 6 tegn)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
@@ -193,7 +195,7 @@ msgstr "Er du sikker på at du vil slette den?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr "Gateway"
+msgstr "Portner"
 
 #: [account]clear
 msgid "Leave this instance"
@@ -229,7 +231,7 @@ msgstr "Laster"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr "...og start leken"
+msgstr "…og start leken"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -293,11 +295,11 @@ msgstr "Generelle innstillinger"
 
 #: [general]theme
 msgid "Theme"
-msgstr "Tema"
+msgstr "Drakt"
 
 #: [general]language
 msgid "Default language"
-msgstr "Standard språk"
+msgstr "Forvalgt språk"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -321,7 +323,7 @@ msgstr "WebSocket URI"
 
 #: [websocket]save_info
 msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Hvis URIen forandres må tjenesten omstartes for å laste inn den nye konfigurasjonen"
+msgstr "Hvis URI-en forandres må tjenesten omstartes for å laste inn det nye oppsettet"
 
 #: [websocket]publics
 msgid "Public WebSockets"
@@ -337,11 +339,11 @@ msgstr "Gjenta passord"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr "Hvitelistede XMPP-tjenere"
+msgstr "Hvitlistede XMPP-tjenere"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr "Hvis du ønsker å spesifisere én eller flere XMPP-tjenere på Movim-kapselen og samtidig blokkere alle andre tilkoblinger, må du oppgi domene(ne) her, separert med komma (f.eks.: movim.eu, jabber.fr)"
+msgstr "Hvis du ønsker å spesifisere én eller flere XMPP-tjenere på Movim-kapselen og samtidig blokkere alle andre tilkoblinger, må du oppgi domenene deres kommainndelt her (f.eks.: movim.eu, jabber.fr)"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
@@ -349,12 +351,12 @@ msgstr "La dette feltet stå tomt for å gi tilgang til alle XMPP-kontoer"
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr "Liste over hvitelistede XMPP-tjenere"
+msgstr "Liste over hvitlistede XMPP-tjenere"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr "Informasjonsbeskjed"
+msgstr "Informasjonsmelding"
 
 #: [information]description [communityconfig]description
 msgid "Description"
@@ -371,7 +373,7 @@ msgstr "La feltet stå tomt hvis du ikke ønsker å vise en melding"
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr "Informasjonsbeskjed"
+msgstr "Informasjonsmelding"
 
 #: [xmpp]title
 msgid "Default XMPP server"
@@ -379,15 +381,15 @@ msgstr "Standard XMPP-tjener"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr "Forvalgt XMPP tjenerdomene"
+msgstr "Forvalgt XMPP-tjenerdomene"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr "Forvalgt XMPP tjenerbeskrivelse"
+msgstr "Forvalgt XMPP-tjenerbeskrivelse"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr "Forvalgt XMPP tjenerland"
+msgstr "Forvalgt XMPP-tjenerland"
 
 #: [log]empty
 msgid "Empty"
@@ -411,7 +413,7 @@ msgstr "Movim har funnet problemer eller uoverensstemmelser som må fikses eller
 
 #: [compatibility]php1
 msgid "Update your PHP-Version: %s"
-msgstr "Oppdater din PHP-versjon: %s"
+msgstr "Oppgrader din PHP-versjon: %s"
 
 #: [compatibility]php2
 msgid "Required: 5.3.0"
@@ -427,7 +429,7 @@ msgstr "Klarer ikke koble til WebSocket, kontroller at Movim-tjenesten kjører o
 
 #: [compatibility]xmpp_websocket
 msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr "Får ikke kontakt med XMPP Websocket, vennligst kontroller at lenken i 'Generelle innstillinger' er riktig."
+msgstr "Får ikke kontakt med XMPP Websocket, kontroller at lenken i 'Generelle innstillinger' er riktig."
 
 #: [schema]browser
 msgid "Browser"
@@ -451,11 +453,11 @@ msgstr "Her kan du registrere kapselen din på den offisielle %sMovim API%s"
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr "Kapselen din er ikke registrert på APIet"
+msgstr "Kapselen din er ikke registrert på API-et"
 
 #: [api]registered
 msgid "Your pod is registered on the API"
-msgstr "Kapselen din er registrert på APIet"
+msgstr "Kapselen din er registrert på API-et"
 
 #: [api]wait
 msgid "Your pod is not yet validated"
@@ -467,11 +469,11 @@ msgstr "Kapselen din er godkjent"
 
 #: [api]unregister
 msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr "Du spurte om å bli fjernet fra APIet og forespørselen din vil behandles i løpet av et par timer"
+msgstr "Du spurte om å bli fjernet fra API-et og forespørselen din vil behandles i løpet av et par timer"
 
 #: [api]conf_updated [config]updated
 msgid "Configuration updated"
-msgstr "Konfigurasjonen er oppdatert"
+msgstr "Oppsettet er oppdatert"
 
 #: [avatar]file
 msgid "File"
@@ -483,7 +485,7 @@ msgstr "Ta i bruk"
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr "Webkamera"
+msgstr "Nettkamera"
 
 #: [avatar]cheese
 msgid "Cheese !"
@@ -491,7 +493,7 @@ msgstr "Trekk på smilebåndet!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr "Ta bilde med webkameraet"
+msgstr "Ta bilde med nettkameraet"
 
 #: [avatar]updated
 msgid "Avatar Updated"
@@ -515,7 +517,7 @@ msgstr "Denne brukeren har ikke postet noe enda"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr "Dette innholdet er privat, vennligst logg på for å se det"
+msgstr "Dette innholdet er privat, logg på for å se det"
 
 #: [title]conferences
 msgid "Conferences"
@@ -564,15 +566,15 @@ msgstr "En feil oppstod:"
 
 #: [bookmarks]configure
 msgid "Configure"
-msgstr "Konfigurer"
+msgstr "Sett opp"
 
 #: [url]add
 msgid "Add a new URL"
-msgstr "Legg til ny URL"
+msgstr "Legg til ny nettadresse"
 
 #: [url]url
 msgid "URL"
-msgstr "URL"
+msgstr "Nettadresse"
 
 #: [url]name
 msgctxt "[url]name"
@@ -584,9 +586,8 @@ msgid "Message Published"
 msgstr "Melding publisert"
 
 #: [message]error
-#, fuzzy
 msgid "Your message could not be sent, please try again later"
-msgstr "Movim får ikke kontakt med tjeneren, vennligst prøv igjen senere"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -594,11 +595,11 @@ msgstr "Kryptert melding"
 
 #: [message]composing [chats]composing
 msgid "Composing..."
-msgstr "Oppretter..."
+msgstr "Oppretter…"
 
 #: [message]paused [chats]paused
 msgid "Paused..."
-msgstr "Venter..."
+msgstr "Venter…"
 
 #: [message]gone
 msgid "Contact gone"
@@ -618,11 +619,11 @@ msgstr "%s trenger din oppmerksomhet"
 
 #: [chat]placeholder
 msgid "Your message here..."
-msgstr "Skriv meldingen her..."
+msgstr "Skriv meldingen her…"
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr "Emojis"
+msgstr "Emoji-er"
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
@@ -630,7 +631,7 @@ msgstr "Ofte brukte kontakter"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr "Ennå intet her..."
+msgstr "Ennå intet her…"
 
 #: [chat]new_text
 msgid "Don't be shy, send a first message to start the discussion"
@@ -654,7 +655,7 @@ msgstr "Nullstill historien"
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr "Endre på siste melding"
+msgstr "Endre siste melding"
 
 #: [chatroom]members
 msgid "Members"
@@ -671,11 +672,11 @@ msgstr "Frakoblet fra samtalerommet"
 #: [chatroom]config [communityaffiliation]configuration [group]configuration
 #: [page]configuration
 msgid "Configuration"
-msgstr "Konfigurasjon"
+msgstr "Oppsett"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr "Konfigurasjon lagret"
+msgstr "Oppsett lagret"
 
 #: [chatroom]subject
 msgid "Subject"
@@ -691,7 +692,7 @@ msgstr "Administrasjon"
 
 #: [chats]empty_title
 msgid "No chats yet..."
-msgstr "Ingen samtaler enda..."
+msgstr "Ingen samtaler enda…"
 
 #: [chats]empty
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
@@ -723,7 +724,7 @@ msgstr "%s samfunn"
 
 #: [communities]search_server [group]search_server
 msgid "Search for a new server"
-msgstr "Søk etter en ny server"
+msgstr "Søk etter en ny tjener"
 
 #: [communities]servers
 msgid "Communities servers"
@@ -731,7 +732,7 @@ msgstr "Samfunns-tjenere"
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
-msgstr "Denne serveren finnes ikke"
+msgstr "Denne tjeneren finnes ikke"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -764,7 +765,7 @@ msgstr "Du kan ikke opprette et nytt fellesskap på denne tjeneren"
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
 msgid "Subscriptions"
-msgstr "Abonementer "
+msgstr "Abonnementer "
 
 #: [communityaffiliation]deleted
 msgid "Community deleted successfully"
@@ -808,9 +809,8 @@ msgid "Role correctly set"
 msgstr "Rollen riktig satt"
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "Mine innlegg"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -825,9 +825,8 @@ msgid "The publishers can publish"
 msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "Abonnér"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
@@ -843,11 +842,11 @@ msgstr "%s innlegg"
 
 #: [communitydata]public
 msgid "Public page"
-msgstr ""
+msgstr "Offentlig side"
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
-msgstr "Abonnér"
+msgstr "Abonner"
 
 #: [communityheader]unsubscribe [group]unsubscribe
 msgid "Unsubscribe"
@@ -863,7 +862,7 @@ msgstr "Avmeldt"
 
 #: [communityheader]subscription_unsupported
 msgid "The subscriptions are disabled for this community"
-msgstr "Dette samfunnet har deaktivert muligheten for å abonnere"
+msgstr "Dette samfunnet har skrudd av muligheten for å abonnere"
 
 #: [communityheader]label_label
 msgid "Give a label for this community"
@@ -943,7 +942,7 @@ msgstr "Konfigurasjonen ikke godtatt"
 
 #: [config]advanced
 msgid "Advanced Configuration"
-msgstr "Avansert konfigurasjon"
+msgstr "Avansert oppsett"
 
 #: [config]nsfw
 msgid "Display adult content"
@@ -963,7 +962,7 @@ msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
-msgstr "Egen CSS URL for din blogg"
+msgstr "Egen CSS-nettadresse for din blogg"
 
 #: [general]legend
 msgid "General Informations"
@@ -987,7 +986,7 @@ msgstr "Sivilstatus"
 
 #: [general]email
 msgid "Email"
-msgstr "Epost"
+msgstr "E-post"
 
 #: [general]website
 msgid "Website"
@@ -1011,7 +1010,7 @@ msgstr "Geografisk posisjon"
 
 #: [position]locality
 msgid "Locality"
-msgstr "Lokalitet"
+msgstr "Plassering"
 
 #: [position]country
 msgid "Country"
@@ -1063,7 +1062,7 @@ msgstr "Er du sikker?"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
-msgstr "Du er i ferd med å slette en kontakt, vennligst bekreft handlingen"
+msgstr "Du er i ferd med å slette en kontakt, bekreft handlingen"
 
 #: [age]years
 msgid "%s years"
@@ -1114,19 +1113,16 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr "Denne kontakten er i kontaktlisten din, men det er ingen abonnement mellom kontiene."
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Generell informasjon"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Klientinformasjon"
+msgstr ""
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr "Denne kontakten er i kontaktlisten din, men det er ingen abonnement mellom kontiene."
+msgstr ""
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -1146,7 +1142,7 @@ msgstr "Noe gikk feil i denne gruppen"
 
 #: [group]config_saved
 msgid "Group configuration saved"
-msgstr "Konfigurasjonen for gruppen ble lagret"
+msgstr "Oppsettet for gruppen ble lagret"
 
 #: [group]delete_title
 msgid "Delete the group"
@@ -1222,19 +1218,19 @@ msgstr "Hva henviser de små bannerne til?"
 
 #: [banner]info1
 msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Disse fem små merkelappene gjør det lett å identifisere hvilket nivå av konfidensialitet som gjelder for informasjonen du oppgir."
+msgstr "Disse fem små merkelappene gjør det lett å identifisere hvilket konfidensialitetsnivå som gjelder for informasjonen du oppgir."
 
 #: [banner]white
 msgid "White, only you can see the information"
-msgstr "Hvit: bare du kan se informasjonen."
+msgstr "Hvit: Informasjonen er kun synlig for deg"
 
 #: [banner]green
 msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Grønn: kun utvalgte kontakter kan se informasjonen"
+msgstr "Grønn: Kun utvalgte kontakter kan se informasjonen"
 
 #: [banner]orange
 msgid "Orange, all your contact list can see your information"
-msgstr "Oransje: alle dine kontakter kan se informasjonen"
+msgstr "Oransje: Alle dine kontakter kan se informasjonen"
 
 #: [banner]red
 msgid "Red, everybody in the XMPP network can see your information"
@@ -1242,12 +1238,11 @@ msgstr "Rød: alle i XMPP-nettverket kan se informasjonen"
 
 #: [banner]black
 msgid "Black, the whole Internet can see your information"
-msgstr "Svart: alle på internett kan se informasjonen"
+msgstr "Svart: Alle på Internett kan se informasjonen"
 
 #: [apps]question
-#, fuzzy
 msgid "Have you already tried Movim on other platforms?"
-msgstr "Har du allerede forsøkte Movim på de andre platformene?"
+msgstr ""
 
 #: [apps]phone
 msgid "Apps for your phone"
@@ -1263,7 +1258,7 @@ msgstr "Vi anbefaler også"
 
 #: [apps]computer
 msgid "Apps for your computer"
-msgstr "Apper til datamaskinen din"
+msgstr "App-er til datamaskinen din"
 
 #: [apps]computer_text
 msgid "Our official apps are available on our website"
@@ -1275,19 +1270,19 @@ msgstr "Ser du etter dokumentasjon?"
 
 #: [wiki]button
 msgid "Read the Wiki"
-msgstr "Les wikien"
+msgstr "Les wiki-en"
 
 #: [ml]question
 msgid "Talk with us by email ?"
-msgstr "Kontakte oss via epost?"
+msgstr "Kontakt oss via e-post?"
 
 #: [ml]button
 msgid "Join the Mailing List"
-msgstr "Meld deg på epostlisten"
+msgstr "Meld deg på e-postlisten"
 
 #: [chatroom]question
 msgid "Chat with the team ?"
-msgstr "Prate med teamet?"
+msgstr "Prate med laget?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1355,7 +1350,7 @@ msgstr "Intern tjenerfeil"
 
 #: [error]session
 msgid "Session error"
-msgstr "Sesjonsfeil"
+msgstr "Øktfeil"
 
 #: [error]account_created
 msgid "Account successfully created"
@@ -1415,7 +1410,7 @@ msgstr "Populasjon"
 
 #: [form]invite_chatroom
 msgid "%s invited you to join a chatroom"
-msgstr "%s inviterte deg til å bli med i et samtalerom"
+msgstr "%s inviterte deg til å ta del i et samtalerom"
 
 #: [login_anonymous]bad_username
 msgid "Bad nickname (between 4 and 40 characters)"
@@ -1423,7 +1418,7 @@ msgstr "Ugyldig kallenavn (må være mellom 4 og 40 tegn)"
 
 #: [menu]empty_title
 msgid "No news yet…"
-msgstr "Ingen nyheter enda..."
+msgstr "Ingen nyheter enda…"
 
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
@@ -1455,7 +1450,7 @@ msgstr "Kontakter"
 
 #: [menu]add_post
 msgid "Write a new post…"
-msgstr "Skriv en ny melding..."
+msgstr "Skriv en ny melding…"
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1463,7 +1458,7 @@ msgstr "Varsel"
 
 #: [notifs]empty
 msgid "No new notifications"
-msgstr "Ingen nye varsel"
+msgstr "Ingen nye varsler"
 
 #: [onboarding]notifications_text
 msgid "Movim can notify you when a new post is published or if you receive messages"
@@ -1471,7 +1466,7 @@ msgstr "Movim kan varsle deg når nye innlegg publiseres og når du mottar meldi
 
 #: [onboarding]notifications_text_second
 msgid "You can always disable them afterwards"
-msgstr "Du kan alltids deaktivere dem senere"
+msgstr "Du kan alltids skru dem av senere"
 
 #: [onboarding]public_title
 msgid "Public profile"
@@ -1479,15 +1474,15 @@ msgstr "Offentlig profil"
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
-msgstr "Gjør profilen din offentlig så andre brukere lettere kan finne deg og ta kontakt"
+msgstr "Gjør profilen din offentlig, slik at andre brukere lettere kan finne deg og ta kontakt"
 
 #: [onboarding]public_text_second
 msgid "You can always disable this in the configuration afterwards"
-msgstr "Du kan alltids deaktivere dette i konfigurasjonen senere"
+msgstr "Du kan alltids skru dette av i oppsettet senere"
 
 #: [onboarding]popups_title
 msgid "Popups"
-msgstr "Sprettoppvindu"
+msgstr "Oppsprettsvindu"
 
 #: [onboarding]popups_text
 msgid "Movim is using popups for the video-conference feature, they are sometime blocked by the browsers"
@@ -1495,7 +1490,7 @@ msgstr "Movim bruker sprettoppvinduer for videokonferanser, men en del nettleser
 
 #: [onboarding]popups_text_second
 msgid "Please be sure that they are enabled to use this feature properly"
-msgstr "Vennligst sørg for at Movim har tillatelse til å vise sprettoppvinduer, slik at denne funksjonen fungerer som den skal."
+msgstr "Sørg for at Movim har tillatelse til å vise sprettoppvinduer, slik at denne funksjonen fungerer som den skal."
 
 #: [post]news_feed
 msgid "News Feed"
@@ -1551,7 +1546,7 @@ msgstr "Dette innlegget er privat"
 
 #: [post]public_url
 msgid "Public URL of this post"
-msgstr "Dette innleggets offentlig URL"
+msgstr "Dette innleggets offentlige nettadresse"
 
 #: [post]delete_title [post]delete
 msgid "Delete this post"
@@ -1559,7 +1554,7 @@ msgstr "Slett innlegget"
 
 #: [post]delete_text
 msgid "You are going to delete this post, please confirm your action"
-msgstr "Du er i ferd med å slette innlegget, vennligst bekreft handlingen"
+msgstr "Du er i ferd med å slette innlegget, bekreft handlingen"
 
 #: [post]delete_comment
 msgid "Are you sure that you want to delete this comment?"
@@ -1575,7 +1570,7 @@ msgstr "Les mer"
 
 #: [post]comments_disabled
 msgid "Comments disabled"
-msgstr "Kommentarer er deaktivert"
+msgstr "Kommentarer er avskrudd"
 
 #: [post]comment_published
 msgid "Comment published"
@@ -1671,7 +1666,7 @@ msgstr "Merkelapp"
 
 #: [publish]valid_url
 msgid "Please enter a valid url"
-msgstr "Oppgi en gyldig URL"
+msgstr "Oppgi en gyldig nettadresse"
 
 #: [publish]no_content_preview
 msgid "No content to preview"
@@ -1887,11 +1882,11 @@ msgstr "Åpne meg med Ctrl + M"
 
 #: [share]error
 msgid "This is not a valid url"
-msgstr "URL er ugyldig"
+msgstr "Dette er ikke en gyldig nettadresse"
 
 #: [share]success
 msgid "Sharing the URL"
-msgstr "Del URLen"
+msgstr "Deling av nettadressen"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1991,7 +1986,7 @@ msgstr "Er denne profilen offentlig?"
 
 #: [privacy]privacy_info
 msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "OBS! Ved å gjøre profilen din offentlig, vil all informasjonen nedenfor bli tilgjengelig for alle brukere av Movim, samt for hele internett."
+msgstr "OBS! Ved å gjøre profilen din offentlig, vil all informasjonen nedenfor bli tilgjengelig for alle brukere av Movim, samt for hele Internett."
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2015,27 +2010,27 @@ msgstr "Samfunnene, nyhetsstrømmene og profilene har blitt deaktivert inntil vi
 
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
-msgstr "Vennligst kontakt administratoren av tjeneren for å sjekke om funksjonaliteten kan aktiveres."
+msgstr "Kontakt administratoren av tjeneren for å sjekke om funksjonaliteten kan aktiveres."
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr "...ringer deg"
+msgstr "…ringer deg"
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr ""
+msgstr "…ringer"
 
 #: [visio]in_call
 msgid "in call"
-msgstr ""
+msgstr "i en samtale"
 
 #: [visio]failed
 msgid "failed"
-msgstr ""
+msgstr "mislyktes"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
-msgstr "Du har ikke aktivert javascript. Lykke til!"
+msgstr "Du har ikke aktivert JavaScript. Lykke til!"
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
@@ -2043,7 +2038,7 @@ msgstr "Movim er et distribuert sosialt nettverk som både beskytter privatlivet
 
 #: [global]loading
 msgid "Loading…"
-msgstr "Laster inn..."
+msgstr "Laster inn…"
 
 #: [global]or
 msgid "Or"
@@ -2132,11 +2127,11 @@ msgstr "Kan ikke laste filen '%s'"
 
 #: [error]widget_load_error
 msgid "Requested widget '%s' doesn't exist."
-msgstr "Den etterspurte widgeten '%s' finnes ikke."
+msgstr "Det etterspurte miniprogrammet '%s' finnes ikke."
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
-msgstr "Den etterspurte eventen '%s' finnes ikke."
+msgstr "Den etterspurte hendelsen '%s' finnes ikke."
 
 #: [error]whoops
 msgid "Whoops!"
@@ -2144,7 +2139,7 @@ msgstr "Oida!"
 
 #: [error]websocket
 msgid "Movim cannot talk with the server, please try again later"
-msgstr "Movim får ikke kontakt med tjeneren, vennligst prøv igjen senere"
+msgstr "Movim får ikke kontakt med tjeneren, prøv igjen senere"
 
 #: [error]oops
 msgid "Oops!"
@@ -2168,7 +2163,7 @@ msgstr "Legg til"
 
 #: [button]delete
 msgid "Delete"
-msgstr "Slet"
+msgstr "Slett"
 
 #: [button]cancel
 msgid "Cancel"
@@ -2773,7 +2768,7 @@ msgstr "Plassering"
 
 #: [post]email
 msgid "email"
-msgstr "epost"
+msgstr "e-post"
 
 #: [post]empty
 msgid "No content"
@@ -2833,17 +2828,8 @@ msgstr "Opprinnelig post slettet"
 
 #: [api]error
 msgid "The API is not reachable, try again later"
-msgstr "APIet kan ikke nåes, prøv igjen senere"
+msgstr "API-et kan ikke nås, prøv igjen senere"
 
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "The database need to be updated, go to the database panel to fix this"
-#~ msgstr "Databasen må oppdateres. Gå til databasepanelet for å fikse dette"
-
-#~ msgid "Create one !"
-#~ msgstr "Opprett konto!"
-
-#~ msgid "No account yet ?"
-#~ msgstr "Ingen konto?"

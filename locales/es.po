@@ -4,6 +4,7 @@
 # Daniel D <Daniel.Dona@alu.uclm.es>, 2017
 # kosciuk <nhk.web@gmail.com>, 2016
 # Raúl <gomezromanr@gmail.com>, 2015
+# sergio, 2017
 # Xals Xaloc <33xaloc@gmail.com>, 2016
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
@@ -110,7 +111,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-09-29 09:39+0000\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
 "Language: es\n"
@@ -183,7 +184,7 @@ msgstr "Las contraseñas proporcionadas no coinciden"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr "Borrar tu cuenta"
+msgstr "Eliminar tu cuenta"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
@@ -199,15 +200,15 @@ msgstr "Puerta de Enlace"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Salir de esta instancia"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "Vas a eliminar toda la información relativa a tu cuenta en esta instancia de movim (perfil, contactos y publicaciones)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "Esta acción no eliminará tu cuenta pero serás desconectado de esta instancia."
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -529,11 +530,11 @@ msgstr "Grupos"
 
 #: [chatroom]add
 msgid "Add a new Chat Room"
-msgstr "Añadir nueva sala de chat"
+msgstr "Añadir nueva Conversación en grupo"
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
-msgstr "Id. de la sala de chat"
+msgstr "Id. de la conversación en grupo"
 
 #: [chatroom]name
 msgctxt "[chatroom]name"
@@ -546,11 +547,11 @@ msgstr "Apodo"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "¿Quiere unirse automáticamente a esta sala de chat?"
+msgstr "¿Quiere unirse automáticamente a esta Conversación en grupo?"
 
 #: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
-msgstr "ID de la Chatroom incorrecto"
+msgstr "ID de la Conversación en grupo incorrecto"
 
 #: [chatroom]empty_name [chatrooms]empty_name
 msgid "Empty name"
@@ -611,7 +612,7 @@ msgstr "%s mensajes obtenidos"
 
 #: [message]edit_help
 msgid "You can use the up arrow ↑ to edit your previous message"
-msgstr ""
+msgstr "Puedes usar el cursor hacia arriba ↑ para modificar tu último mensaje"
 
 #: [chat]attention
 msgid "%s needs your attention"
@@ -635,11 +636,11 @@ msgstr "No hay nada aún aquí..."
 
 #: [chat]new_text
 msgid "Don't be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "No seas tímido, envía un mensaje para empezar la conversación"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "Has recibido una invitación para unirte a una conversación en grupo"
 
 #: [chat]invitation_join
 msgid "Join %s"
@@ -655,7 +656,7 @@ msgstr "Limpiar el historial"
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr ""
+msgstr "Modificar el último mensaje"
 
 #: [chatroom]members
 msgid "Members"
@@ -663,11 +664,11 @@ msgstr "Miembros"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr "Conectado a la sala de chat"
+msgstr "Conectado a la Conversación en grupo"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr "Desconectado de la sala de chat"
+msgstr "Desconectado de la Conversación en grupo"
 
 #: [chatroom]config [communityaffiliation]configuration [group]configuration
 #: [page]configuration
@@ -696,11 +697,11 @@ msgstr "Aún no hay conversaciones..."
 
 #: [chats]empty
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr ""
+msgstr "Abre una nueva conversación haciendo click en el botón%sdebajo o visita la %s página de contactos %s."
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr "Hablar con un contacto"
+msgstr "Añadir nueva conversación"
 
 #: [chats]more
 msgid "Load more contacts"
@@ -708,7 +709,7 @@ msgstr "Cargar más contactos"
 
 #: [button]chat
 msgid "Chat"
-msgstr "Chat"
+msgstr "Conversación"
 
 #: [button]new
 msgid "New conversation"
@@ -728,7 +729,7 @@ msgstr "Busca un nuevo Servidor"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr ""
+msgstr "Servidores de las Comunidades"
 
 #: [communities]disco_error [groups]disco_error
 msgid "This server doesn't exists"
@@ -736,11 +737,11 @@ msgstr "Este servidor no existe"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
-msgstr ""
+msgstr "Comunidad creada correctamente"
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
-msgstr ""
+msgstr "No hay ninguna Comunidad en este servidor todavía."
 
 #: [communitiesserver]add
 msgid "Create a new community on %s"
@@ -748,7 +749,7 @@ msgstr ""
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr ""
+msgstr "Nombre de la Comunidad"
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
@@ -809,9 +810,8 @@ msgid "Role correctly set"
 msgstr "Rol establecido correctamente"
 
 #: [communityconfig]publication
-#, fuzzy
 msgid "Publication"
-msgstr "Mis publicaciones"
+msgstr ""
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -826,9 +826,8 @@ msgid "The publishers can publish"
 msgstr ""
 
 #: [communityconfig]publish_model_subscribers_title
-#, fuzzy
 msgid "Subscribers"
-msgstr "Suscribirse"
+msgstr ""
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
@@ -843,9 +842,8 @@ msgid "%s posts"
 msgstr "%s publicaciones"
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "Perfil público"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -1116,19 +1114,16 @@ msgid "This contact is in your contact list but there is no subscriptions betwee
 msgstr "Este contacto está en tu lista de contactos pero no hay suscripciones entre las dos cuentas"
 
 #: [general]legend
-#, fuzzy
 msgid "General Information"
-msgstr "Informaciones generales"
+msgstr ""
 
 #: [client]title
-#, fuzzy
 msgid "Client Information"
-msgstr "Información del Cliente"
+msgstr ""
 
 #: [subscription]nil_text
-#, fuzzy
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr "Este contacto está en tu lista de contactos pero no hay suscripciones entre las dos cuentas"
+msgstr ""
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -1292,7 +1287,7 @@ msgstr "¿Conversar con el equipo?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
-msgstr "Añadir la sala de conversación"
+msgstr "Añadir la Conversación en grupo"
 
 #: [init]location
 msgid "Location node created"
@@ -1724,15 +1719,15 @@ msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
-msgstr "Añadir una sala de conversación"
+msgstr "Añadir nueva Conversación en grupo"
 
 #: [rooms]edit
 msgid "Edit a chatroom"
-msgstr "Editar una sala de chat"
+msgstr "Editar Conversación en grupo"
 
 #: [rooms]empty_text1
 msgid "You don't have any chatroom yet."
-msgstr "No tienes ninguna sala de chat aún"
+msgstr "No tienes ninguna Conversación en grupo todavía"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1740,15 +1735,15 @@ msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
-msgstr "Salas de conversación"
+msgstr "Conversaciones en grupo"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr "My sala favorita"
+msgstr "Mi Conversación favorita"
 
 #: [chatrooms]users
 msgid "Users in the room"
-msgstr "Usuarios en la sala"
+msgstr "Usuarios de la Conversación"
 
 #: [chatrooms]bad_nickname
 msgid "Please enter a correct nickname (2 to 40 characters)"
@@ -1760,19 +1755,19 @@ msgstr "Nombre de usuario en uso"
 
 #: [chatrooms]autojoin
 msgid "Join this chatroom on connect"
-msgstr ""
+msgstr "Unirse a esta conversación al conectar"
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
-msgstr ""
+msgstr "No se puede unir a esta conversación, requiere registro"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
-msgstr "Sala de conversación pública"
+msgstr "Conversación pública"
 
 #: [room]no_room
 msgid "Please provide a room address"
-msgstr "Por favor, introduzca la dirección de una sala"
+msgstr "Por favor, introduzca la dirección de la Conversación en grupo"
 
 #: [room]anonymous_text1
 msgid "You are currently logued as an anonymous user."
@@ -1792,11 +1787,11 @@ msgstr "Tu apodo"
 
 #: [room]invite
 msgid "Invite a contact"
-msgstr ""
+msgstr "Invitar a un contacto"
 
 #: [room]invited
 msgid "Invitation sent"
-msgstr ""
+msgstr "Invitación enviada"
 
 #: [room]invite_code
 msgid "Send this link to your contacts"
@@ -2031,9 +2026,8 @@ msgid "in call"
 msgstr ""
 
 #: [visio]failed
-#, fuzzy
 msgid "failed"
-msgstr "Subida fallida"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2053,7 +2047,7 @@ msgstr ""
 
 #: [page]communities
 msgid "Communities"
-msgstr ""
+msgstr "Comunidades"
 
 #: [page]home
 msgid "Home"
@@ -2118,7 +2112,7 @@ msgstr "Compartir"
 
 #: [page]room
 msgid "Room"
-msgstr "Sala"
+msgstr "Conversación en grupo"
 
 #: [page]tag
 msgid "Tag"
@@ -2840,90 +2834,3 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
-
-#~ msgid "The database need to be updated, go to the database panel to fix this"
-#~ msgstr "La base de datos necesita ser actualizada, ve al panel de la base de datos para reparar esto"
-
-#~ msgid "Create one !"
-#~ msgstr "¡Crear una!"
-
-#~ msgid "No account yet ?"
-#~ msgstr "¿Aún sin cuenta?"
-
-#~ msgid "Accounts"
-#~ msgstr "Cuentas"
-
-#~ msgid "Twitter"
-#~ msgstr "Twitter"
-
-#~ msgid "Skype"
-#~ msgstr "Skype"
-
-#~ msgid "Yahoo Account"
-#~ msgstr "Cuenta de Yahoo"
-
-#~ msgid "Public Groups"
-#~ msgstr "Grupos públicos"
-
-#~ msgid "Pods"
-#~ msgstr "Pods"
-
-#~ msgid "Male"
-#~ msgstr "Masculino"
-
-#~ msgid "Female"
-#~ msgstr "Femenino"
-
-#~ msgid "Other"
-#~ msgstr "Otro"
-
-#~ msgid "Single"
-#~ msgstr "Soltero (a)"
-
-#~ msgid "In a relationship"
-#~ msgstr "En una relación"
-
-#~ msgid "Married"
-#~ msgstr "Casado (a)"
-
-#~ msgid "Divorced"
-#~ msgstr "Divorciado (a)"
-
-#~ msgid "Widowed"
-#~ msgstr "Viudo (a)"
-
-#~ msgid "Cohabiting"
-#~ msgstr "Cohabitando"
-
-#~ msgid "Civil Union"
-#~ msgstr "Unión civil"
-
-#~ msgid "Not shared"
-#~ msgstr "No compartido"
-
-#~ msgid "Shared with one contact"
-#~ msgstr "Compartir con un contacto"
-
-#~ msgid "Shared with all contacts"
-#~ msgstr "Compartir con todos los contactos"
-
-#~ msgid "Shared with the XMPP network"
-#~ msgstr "Compartir con la red XMPP"
-
-#~ msgid "Shared with the whole Internet"
-#~ msgstr "Compartir con todos en internet"
-
-#~ msgid "What's new ?"
-#~ msgstr "¿Qué hay de nuevo?"
-
-#~ msgid "Your feed cannot be loaded."
-#~ msgstr "Tu canal no se pudo cargar"
-
-#~ msgid "Show the older comments"
-#~ msgstr "Mostrar los comentarios antiguos"
-
-#~ msgid "Loading comments..."
-#~ msgstr "Cargando comentarios..."
-
-#~ msgid "Your contacts"
-#~ msgstr "Tus contactos"
