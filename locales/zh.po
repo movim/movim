@@ -39,6 +39,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -108,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"POT-Creation-Date: 2017-12-24 15:12+0200\n"
 "PO-Revision-Date: 2017-10-23 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -260,7 +262,7 @@ msgstr "Modl 无法连接数据库"
 msgid "Movim is connected to the database"
 msgstr "Movim 已经连接到数据库"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "数据库需要更新"
 
@@ -357,7 +359,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "通知消息"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "描述"
 
@@ -421,10 +423,6 @@ msgstr "需要： 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Web 服务器上 Movim 所在目录 %s 的读写权限"
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "数据库需要更新，前往数据库面板以修复。"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -587,6 +585,11 @@ msgstr "名称"
 #: [message]published
 msgid "Message Published"
 msgstr "消息已发布"
+
+#: [message]error
+#, fuzzy
+msgid "Your message could not be sent, please try again later"
+msgstr "Movim 无法与服务器通信，请稍后再试"
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -795,6 +798,7 @@ msgid "Publisher"
 msgstr "发布者"
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr "发布者"
 
@@ -805,6 +809,32 @@ msgstr "角色"
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
 msgstr "角色已被正确设置"
+
+#: [communityconfig]publication
+#, fuzzy
+msgid "Publication"
+msgstr "我的发布"
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+#, fuzzy
+msgid "Subscribers"
+msgstr "订阅"
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -925,6 +955,14 @@ msgstr "显示成人内容"
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "这将会允许你阅读带有 #nsfw 标签的帖子"
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
+msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -1078,6 +1116,21 @@ msgstr "邀请"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
 
+#: [general]legend
+#, fuzzy
+msgid "General Information"
+msgstr "一般信息"
+
+#: [client]title
+#, fuzzy
+msgid "Client Information"
+msgstr "客户端信息"
+
+#: [subscription]nil_text
+#, fuzzy
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "你将取消订阅该群组"
@@ -1195,7 +1248,8 @@ msgid "Black, the whole Internet can see your information"
 msgstr "黑色，整个互联网可以看见您的信息"
 
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+#, fuzzy
+msgid "Have you already tried Movim on other platforms?"
 msgstr "你是否已经准备好在其他平台上尝试 Movim？"
 
 #: [apps]phone
@@ -1349,14 +1403,6 @@ msgstr "XMPP鉴别错误"
 #: [form]username
 msgid "My address"
 msgstr "用户名"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr "新建一个 !"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "还没有账户 ?"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -2224,6 +2270,10 @@ msgstr "稍后"
 msgid "Enable"
 msgstr "开启"
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr "天"
@@ -2791,3 +2841,12 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "The database need to be updated, go to the database panel to fix this"
+#~ msgstr "数据库需要更新，前往数据库面板以修复。"
+
+#~ msgid "Create one !"
+#~ msgstr "新建一个 !"
+
+#~ msgid "No account yet ?"
+#~ msgstr "还没有账户 ?"

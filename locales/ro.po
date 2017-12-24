@@ -34,6 +34,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -103,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"POT-Creation-Date: 2017-12-24 15:12+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Marvin42 Marvin <h2g2.marvin.42@gmail.com>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
@@ -256,7 +258,7 @@ msgstr "Modl nu a fost capabil să se conecteze la baza de date"
 msgid "Movim is connected to the database"
 msgstr "Movim este conectat la baza de date"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "Baza de date trebuie să fie actualizată"
 
@@ -353,7 +355,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr ""
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr ""
 
@@ -416,10 +418,6 @@ msgstr ""
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr ""
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
 msgstr ""
 
 #: [compatibility]websocket
@@ -583,6 +581,10 @@ msgstr "Nume"
 #: [message]published
 msgid "Message Published"
 msgstr "Mesaj publicat"
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -802,6 +804,7 @@ msgid "Publisher"
 msgstr ""
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr ""
 
@@ -811,6 +814,32 @@ msgstr ""
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
+msgstr ""
+
+#: [communityconfig]publication
+#, fuzzy
+msgid "Publication"
+msgstr "Grupuri publice"
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+#, fuzzy
+msgid "Subscribers"
+msgstr "Abonare"
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
 msgstr ""
 
 #: [communitydata]sub [groups]sub
@@ -932,6 +961,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1086,6 +1123,21 @@ msgstr "Invitați"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Acest contact este în lista de contacte dar nu este nici un abonament între cele două conturi"
 
+#: [general]legend
+#, fuzzy
+msgid "General Information"
+msgstr "Informatii generale"
+
+#: [client]title
+#, fuzzy
+msgid "Client Information"
+msgstr "Informații client"
+
+#: [subscription]nil_text
+#, fuzzy
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr "Acest contact este în lista de contacte dar nu este nici un abonament între cele două conturi"
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Vă veți dezabona de la acest Grup"
@@ -1203,7 +1255,7 @@ msgid "Black, the whole Internet can see your information"
 msgstr ""
 
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1357,14 +1409,6 @@ msgstr ""
 #: [form]username
 msgid "My address"
 msgstr "Adresa mea"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr ""
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr ""
 
 #: [form]whitelist_info
 #, fuzzy
@@ -2237,6 +2281,10 @@ msgstr ""
 
 #: [button]enable
 msgid "Enable"
+msgstr ""
+
+#: [button]sign_up
+msgid "Sign Up"
 msgstr ""
 
 #: [day]title

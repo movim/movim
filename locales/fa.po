@@ -35,6 +35,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -104,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"POT-Creation-Date: 2017-12-24 15:12+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: Alireza Mirsepassy <alirezamirsepassy@gmail.com>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
@@ -256,7 +258,7 @@ msgstr "مودل نتوانست با پایگاه داده ارتباط برقر
 msgid "Movim is connected to the database"
 msgstr "موویم به پایگاه داده متصل شده اس"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "پایگاه داده احتیاج به بروز رسانی دارد"
 
@@ -353,7 +355,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "پیام اطلاع رسانی"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "توضیحات"
 
@@ -416,10 +418,6 @@ msgstr "Required: 5.3.0"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr ""
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
 msgstr ""
 
 #: [compatibility]websocket
@@ -583,6 +581,10 @@ msgstr "نام"
 #: [message]published
 msgid "Message Published"
 msgstr "پیام منتشر شد"
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -800,6 +802,7 @@ msgid "Publisher"
 msgstr "منتشر کننده"
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr "منتشر کننده ها"
 
@@ -810,6 +813,32 @@ msgstr "نقش ها"
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
 msgstr "نقش ها بدرستی تنظیم شده اند"
+
+#: [communityconfig]publication
+#, fuzzy
+msgid "Publication"
+msgstr "جمعیت"
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+#, fuzzy
+msgid "Subscribers"
+msgstr "مشترک شدن"
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -930,6 +959,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1084,6 +1121,19 @@ msgstr "دعوت"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr ""
 
+#: [general]legend
+#, fuzzy
+msgid "General Information"
+msgstr "تنظیمات عمومی"
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr ""
@@ -1201,7 +1251,7 @@ msgid "Black, the whole Internet can see your information"
 msgstr ""
 
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1355,14 +1405,6 @@ msgstr ""
 #: [form]username
 msgid "My address"
 msgstr "آدرس من"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr "یکی بسازید!"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "هنوز حساب کاربری ندارید ؟"
 
 #: [form]whitelist_info
 #, fuzzy
@@ -2238,6 +2280,10 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr "روز"
@@ -2805,6 +2851,12 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Create one !"
+#~ msgstr "یکی بسازید!"
+
+#~ msgid "No account yet ?"
+#~ msgstr "هنوز حساب کاربری ندارید ؟"
 
 #~ msgid "Male"
 #~ msgstr "مرد"

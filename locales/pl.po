@@ -35,6 +35,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -104,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"POT-Creation-Date: 2017-12-24 15:12+0200\n"
 "PO-Revision-Date: 2017-10-23 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
@@ -256,7 +258,7 @@ msgstr "Modl nie mógł się połączyć z bazą danych"
 msgid "Movim is connected to the database"
 msgstr "Movim jest połączony z bazą danych"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "Baza danych musi być zaktualizowana"
 
@@ -353,7 +355,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "Wiadomość Informacyjna"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "Opis"
 
@@ -417,10 +419,6 @@ msgstr "Wymagane: 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Prawa odczytu i zapisu dla serwera w katalogu %s Movim"
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "Baza danych musi być zaktualizowana. Idź do panelu baz danych by to naprawić"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -583,6 +581,11 @@ msgstr "Nazwa"
 #: [message]published
 msgid "Message Published"
 msgstr "Wiadomość Opublikowana"
+
+#: [message]error
+#, fuzzy
+msgid "Your message could not be sent, please try again later"
+msgstr "Movim nie może skomunikować się z serwerem, spróbuj później"
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -791,6 +794,7 @@ msgid "Publisher"
 msgstr "Publikujący"
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr "Publikujący"
 
@@ -801,6 +805,32 @@ msgstr "Role"
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
 msgstr "Role poprawnie ustawione"
+
+#: [communityconfig]publication
+#, fuzzy
+msgid "Publication"
+msgstr "Moje publikacje"
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+#, fuzzy
+msgid "Subscribers"
+msgstr "Subskrybuj"
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -921,6 +951,14 @@ msgstr "Pokazuj treść dla pełnoletnich"
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "Pozwoli ci czytać posty otagowane jako #nsfw"
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
+msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -1074,6 +1112,21 @@ msgstr "Zaproś"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Ten kontakt jest na liście twoich kontaktów, lecz nie ma pomiędzy waszymi kontami subskrypcji"
 
+#: [general]legend
+#, fuzzy
+msgid "General Information"
+msgstr "Ogólne Informacje"
+
+#: [client]title
+#, fuzzy
+msgid "Client Information"
+msgstr "Informacje o Kliencie"
+
+#: [subscription]nil_text
+#, fuzzy
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr "Ten kontakt jest na liście twoich kontaktów, lecz nie ma pomiędzy waszymi kontami subskrypcji"
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Zamierzasz odsubskrybować z tej Grupy"
@@ -1191,7 +1244,7 @@ msgid "Black, the whole Internet can see your information"
 msgstr "Czarny, cały Internet widzi twoje informacje"
 
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1345,14 +1398,6 @@ msgstr "Uwierzytelnienie XMPP nieudane"
 #: [form]username
 msgid "My address"
 msgstr "Mój adres"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr "Utwórz je !"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "Nie masz jeszcze konta ?"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -2220,6 +2265,10 @@ msgstr "Nie Teraz"
 msgid "Enable"
 msgstr "Zezwól"
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr "Dzień"
@@ -2787,3 +2836,12 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
+
+#~ msgid "The database need to be updated, go to the database panel to fix this"
+#~ msgstr "Baza danych musi być zaktualizowana. Idź do panelu baz danych by to naprawić"
+
+#~ msgid "Create one !"
+#~ msgstr "Utwórz je !"
+
+#~ msgid "No account yet ?"
+#~ msgstr "Nie masz jeszcze konta ?"

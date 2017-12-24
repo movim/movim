@@ -39,6 +39,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -108,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"POT-Creation-Date: 2017-12-24 15:12+0200\n"
 "PO-Revision-Date: 2017-10-23 21:34+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -260,7 +262,7 @@ msgstr "Modl was niet in staat om met de database te verbinden"
 msgid "Movim is connected to the database"
 msgstr "Movim is verbonden met de database"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "De database heeft een update nodig"
 
@@ -357,7 +359,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "Informatieve Melding"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "Beschrijving"
 
@@ -421,10 +423,6 @@ msgstr "Vereist: 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Lees- en schrijfrechten voor de webserver in Movim's %s directory."
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "De database moet geüpdate worden, ga haar het databse-paneel om dit op te lossen"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -587,6 +585,10 @@ msgstr "Naam"
 #: [message]published
 msgid "Message Published"
 msgstr "Bericht gepubliceerd"
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -795,6 +797,7 @@ msgid "Publisher"
 msgstr ""
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr ""
 
@@ -804,6 +807,32 @@ msgstr "Rollen"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
+msgstr ""
+
+#: [communityconfig]publication
+#, fuzzy
+msgid "Publication"
+msgstr "Mijn berichten"
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+#, fuzzy
+msgid "Subscribers"
+msgstr "Abbonneer"
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
 msgstr ""
 
 #: [communitydata]sub [groups]sub
@@ -925,6 +954,14 @@ msgstr "Verberg NSFW niet"
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "Hiermee laat je ook berichten als #nsfw zijn aangemerkt"
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
+msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -1078,6 +1115,21 @@ msgstr "Uitnodigen"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Deze contactpersoon zit in je contactenlijst, maar deze is niet geabonneerd"
 
+#: [general]legend
+#, fuzzy
+msgid "General Information"
+msgstr "Algemene informatie"
+
+#: [client]title
+#, fuzzy
+msgid "Client Information"
+msgstr "Informatie over verbonden computer"
+
+#: [subscription]nil_text
+#, fuzzy
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr "Deze contactpersoon zit in je contactenlijst, maar deze is niet geabonneerd"
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Je gaat je uitschrijven uit deze Groep"
@@ -1195,7 +1247,7 @@ msgid "Black, the whole Internet can see your information"
 msgstr "Zwart, iedereen op het internet kan je gegevens zien"
 
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1349,14 +1401,6 @@ msgstr "Aanmelden bij XMPP is mislukt"
 #: [form]username
 msgid "My address"
 msgstr "Mijn adres"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr "Maak er een aan!"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "Nog geen account?"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -2224,6 +2268,10 @@ msgstr "Niet nu"
 msgid "Enable"
 msgstr "Inschakelen"
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr "Dag"
@@ -2791,3 +2839,12 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "The database need to be updated, go to the database panel to fix this"
+#~ msgstr "De database moet geüpdate worden, ga haar het databse-paneel om dit op te lossen"
+
+#~ msgid "Create one !"
+#~ msgstr "Maak er een aan!"
+
+#~ msgid "No account yet ?"
+#~ msgstr "Nog geen account?"

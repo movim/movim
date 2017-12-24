@@ -38,6 +38,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -107,7 +109,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"POT-Creation-Date: 2017-12-24 15:12+0200\n"
 "PO-Revision-Date: 2017-09-29 09:39+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
@@ -259,7 +261,7 @@ msgstr "Modl no se pudo conectar con la base de datos"
 msgid "Movim is connected to the database"
 msgstr "Movim está conectado con la base de datos"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "La base de datos necesita ser actualizada"
 
@@ -356,7 +358,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "Mensaje de información"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "Descripción"
 
@@ -420,10 +422,6 @@ msgstr "Necesario: 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Permisos de lectura y escritura para el servidor web en el directorio %s de Movim"
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "La base de datos necesita ser actualizada, ve al panel de la base de datos para reparar esto"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -586,6 +584,10 @@ msgstr "Nombre"
 #: [message]published
 msgid "Message Published"
 msgstr "Mensaje publicado"
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -794,6 +796,7 @@ msgid "Publisher"
 msgstr "Editor"
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr "Editores"
 
@@ -804,6 +807,32 @@ msgstr "Roles"
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
 msgstr "Rol establecido correctamente"
+
+#: [communityconfig]publication
+#, fuzzy
+msgid "Publication"
+msgstr "Mis publicaciones"
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+#, fuzzy
+msgid "Subscribers"
+msgstr "Suscribirse"
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -924,6 +953,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1078,6 +1115,21 @@ msgstr "Invitar"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Este contacto está en tu lista de contactos pero no hay suscripciones entre las dos cuentas"
 
+#: [general]legend
+#, fuzzy
+msgid "General Information"
+msgstr "Informaciones generales"
+
+#: [client]title
+#, fuzzy
+msgid "Client Information"
+msgstr "Información del Cliente"
+
+#: [subscription]nil_text
+#, fuzzy
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr "Este contacto está en tu lista de contactos pero no hay suscripciones entre las dos cuentas"
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Vas a desuscribirte de este grupo"
@@ -1195,7 +1247,7 @@ msgid "Black, the whole Internet can see your information"
 msgstr "Negro, toda la Internet puede ver su información"
 
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1349,14 +1401,6 @@ msgstr "La autentificación de XMPP ha fallado"
 #: [form]username
 msgid "My address"
 msgstr "Mi dirección"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr "¡Crear una!"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "¿Aún sin cuenta?"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -2225,6 +2269,10 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr "Día"
@@ -2792,6 +2840,15 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
+
+#~ msgid "The database need to be updated, go to the database panel to fix this"
+#~ msgstr "La base de datos necesita ser actualizada, ve al panel de la base de datos para reparar esto"
+
+#~ msgid "Create one !"
+#~ msgstr "¡Crear una!"
+
+#~ msgid "No account yet ?"
+#~ msgstr "¿Aún sin cuenta?"
 
 #~ msgid "Accounts"
 #~ msgstr "Cuentas"
