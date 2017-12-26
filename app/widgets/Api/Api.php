@@ -2,10 +2,6 @@
 
 class Api extends \Movim\Widget\Base
 {
-    function load()
-    {
-    }
-
     function ajaxRegister()
     {
         $json = requestURL(
@@ -23,7 +19,7 @@ class Api extends \Movim\Widget\Base
 
     function ajaxUnregister()
     {
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         $config->unregister = !$config->unregister;
@@ -41,7 +37,7 @@ class Api extends \Movim\Widget\Base
                 '<a href="http://api.movim.eu/" target="_blank">',
                 '</a>'));
 
-        $json = requestURL(MOVIM_API.'pods/status', 3, ['url' => BASE_URI]);
+        $json = requestURL(MOVIM_API.'pods/status', 2, ['url' => BASE_URI]);
         $json = json_decode($json);
 
         $cd = new \Modl\ConfigDAO();

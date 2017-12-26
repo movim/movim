@@ -9,6 +9,7 @@
                 <option value="en">English (default)</option>
                 {loop="$langs"}
                     <option value="{$key}"
+                            dir="auto"
                     {if="$conf->locale == $key"}
                         selected="selected"
                     {/if}>
@@ -70,7 +71,7 @@
     <div>
         <div class="select">
             <select id="xmppcountry" name="xmppcountry">
-                <option value=""></option>
+                <option value="">{$c->__('xmpp.country_pick')}</option>
                 {loop="$countries"}
                     <option value="{$key}"
                     {if="$conf->xmppcountry == $key"}
