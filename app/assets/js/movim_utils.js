@@ -28,9 +28,9 @@ var MovimUtils = {
     checkString: function(str) {
         if (typeof str == 'object') {
             return str instanceof String;
-        } else {
-            return typeof str == 'string';
         }
+
+        return typeof str == 'string';
     },
     disconnect: function() {
         window.location.replace(ERROR_URI);
@@ -71,10 +71,11 @@ var MovimUtils = {
         return json;
     },
     getNode: function(str) {
-        if(MovimUtils.checkString(str))
+        if(MovimUtils.checkString(str)) {
             return document.querySelector(str);
-        else
-            return str;
+        }
+
+        return str;
     },
     hasClass: function(element, classname) {
         var node = element;

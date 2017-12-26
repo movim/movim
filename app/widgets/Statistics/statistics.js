@@ -9,7 +9,7 @@ var Statistics = {
             scaleShowGridLines : true,
 
             //String - Colour of the grid lines
-            scaleGridLineColor : "rgba(0,0,0,.05)",
+            scaleGridLineColor : 'rgba(0,0,0,.05)',
 
             //Number - Width of the grid lines
             scaleGridLineWidth : 1,
@@ -35,11 +35,10 @@ var Statistics = {
             barDatasetSpacing : 1,
 
             //String - A legend template
-            legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
-
+            legendTemplate : '<ul class="<%=name.toLowerCase()%>-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
         };
 
-        var ctx = document.getElementById("monthly").getContext("2d");
+        var ctx = document.getElementById('monthly').getContext('2d');
         var chart = new Chart(ctx).Line(data, options);
     }
 }
