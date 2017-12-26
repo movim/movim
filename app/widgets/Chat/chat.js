@@ -434,17 +434,17 @@ var Chat = {
         }
 
         if (data.sticker != null) {
-            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'sticker');
+            bubble.querySelector('div.bubble').classList.add('sticker');
             p.appendChild(Chat.getStickerHtml(data.sticker));
         } else {
             p.innerHTML = data.body;
         }
 
         if (data.audio != null) {
-            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'file');
+            bubble.querySelector('div.bubble').classList.add('file');
             p.appendChild(Chat.getAudioHtml(data.file));
         } else if (data.file != null) {
-            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'file');
+            bubble.querySelector('div.bubble').classList.add('file');
             p.appendChild(Chat.getFileHtml(data.file, data.sticker));
         }
 

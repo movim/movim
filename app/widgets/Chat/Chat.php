@@ -27,7 +27,6 @@ class Chat extends \Movim\Widget\Base
     function load()
     {
         $this->addjs('chat.js');
-        //$this->addjs('chat_otr.js');
         $this->addcss('chat.css');
         $this->registerEvent('invitation', 'onMessage');
         $this->registerEvent('carbons', 'onMessage');

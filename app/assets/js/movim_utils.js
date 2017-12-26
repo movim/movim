@@ -23,7 +23,7 @@ Storage.prototype.getObject = function(key) {
 
 var MovimUtils = {
     cleanupId: function(string) {
-        return "id-" + string.replace(/([^a-z0-9]+)/gi, '-').toLowerCase();
+        return 'id-' + string.replace(/([^a-z0-9]+)/gi, '-').toLowerCase();
     },
     checkString: function(str) {
         if (typeof str == 'object') {
@@ -79,25 +79,25 @@ var MovimUtils = {
     },
     hasClass: function(element, classname) {
         var node = element;
-        if(typeof node == "string")
+        if(typeof node == 'string')
             node = MovimUtils.getNode(node);
         if(!node) return false;
         return node.classList.contains(classname);
     },
     showElement: function(element) {
-        if(!MovimUtils.hasClass(element, "show"))
-            MovimUtils.addClass(element, "show");
-        if(MovimUtils.hasClass(element, "hide"))
-            MovimUtils.removeClass(element, "hide");
+        if(!MovimUtils.hasClass(element, 'show'))
+            MovimUtils.addClass(element, 'show');
+        if(MovimUtils.hasClass(element, 'hide'))
+            MovimUtils.removeClass(element, 'hide');
     },
     hideElement: function(element) {
-        if(!MovimUtils.hasClass(element, "hide"))
-            MovimUtils.addClass(element, "hide");
-        if(MovimUtils.hasClass(element, "show"))
-            MovimUtils.removeClass(element, "show");
+        if(!MovimUtils.hasClass(element, 'hide'))
+            MovimUtils.addClass(element, 'hide');
+        if(MovimUtils.hasClass(element, 'show'))
+            MovimUtils.removeClass(element, 'show');
     },
     pushState: function(url) {
-        window.history.pushState(null, "", url);
+        window.history.pushState(null, '', url);
     },
     redirect: function(url) {
         window.location.href = url;
@@ -133,14 +133,8 @@ var MovimUtils = {
             hidden.style.width = textboxStyle.width;
             hidden.style.fontSize = textboxStyle.fontSize;
 
-            textbox.style.height = hidden.scrollHeight + "px";
+            textbox.style.height = hidden.scrollHeight + 'px';
         }
-    },
-    toggleClass: function(element, classname) {
-        if(MovimUtils.hasClass(element, classname))
-            MovimUtils.removeClass(element,classname);
-        else
-            MovimUtils.addClass(element, classname);
     },
     htmlEscape: function(string) {
         return String(string)

@@ -37,7 +37,7 @@ var Rooms = {
                 }
             }
 
-            MovimUtils.removeClass(items[i], 'active');
+            items[i].classList.remove('active');
 
             i++;
         }

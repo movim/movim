@@ -86,7 +86,7 @@ var MovimWebsocket = {
 
                 if(obj.func == 'block') {
                     MovimWebsocket.clearAttached();
-                    MovimUtils.addClass('body', 'disabled');
+                    document.body.classList.add('disabled');
                 }
 
                 MovimWebsocket.handle(obj);

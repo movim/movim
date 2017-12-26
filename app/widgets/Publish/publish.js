@@ -12,11 +12,11 @@ var Publish = {
     },
 
     enableSend: function() {
-        MovimUtils.removeClass('#button_send', 'disabled');
+        document.querySelector('#button_send').classList.remove('disabled');
     },
 
     disableSend: function() {
-        MovimUtils.addClass('#button_send', 'disabled');
+        document.querySelector('#button_send').classList.add('disabled');
     },
 
     enableContent: function() {

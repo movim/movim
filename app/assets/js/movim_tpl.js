@@ -106,7 +106,7 @@ var MovimTpl = {
         }
     },
     toggleActionButton : function() {
-        MovimUtils.toggleClass('.button.action', 'active');
+        document.querySelector('.button.action').classList.toggle('active');
     },
     toggleContextMenu : function(e) {
         var contextMenu = document.querySelector('ul.context_menu');
@@ -119,7 +119,7 @@ var MovimTpl = {
         }
     },
     toggleMenu : function() {
-        MovimUtils.toggleClass('body > nav', 'active');
+        document.querySelector('body > nav').classList.toggle('active');
     },
     touchEvents: function() {
         nav = document.querySelector('body > nav');
