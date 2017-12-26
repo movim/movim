@@ -1,16 +1,6 @@
 <?php
 
 /*
- * Get the timezone list
- */
-function getTimezoneList()
-{
-    global $timezones;
-    require_once(HELPERS_PATH.'TimezoneList.php');
-    return $timezones;
-}
-
-/*
  * Get the offset of a timezone
  */
 function getTimezoneOffset($timezone)
@@ -86,22 +76,3 @@ function generateTimezoneList()
     return $timezone_list;
 }
 
-/*
- * Get the user local timezone
- */
-function getLocalTimezone()
-{
-    date_default_timezone_set('UTC');
-    $iTime = time();
-    $arr = localtime($iTime);
-    $arr[5] += 1900;
-    $arr[4]++;
-    $iTztime = gmmktime($arr[2], $arr[1], $arr[0], $arr[4], $arr[3], $arr[5]);
-    $offset = doubleval(($iTztime-$iTime)/(60*60));
-    $zonelist = getTimezoneList();
-
-    $index = array_keys($zonelist, $offset);
-    if(sizeof($index)!=1)
-        return false;
-    return $index[0];
-}

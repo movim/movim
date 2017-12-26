@@ -61,17 +61,7 @@ class AdminMain extends \Movim\Widget\Base
                 2 => $this->__('log.syslog_files')
         ]);
 
-        $this->view->assign('bosh_info4',
-            $this->__('bosh.info4', '<a href="http://wiki.movim.eu/en:install">', '</a>'));
-
-        $json = requestURL(MOVIM_API.'websockets', 3);
-        $json = json_decode($json);
-
-        if(isset($json) && $json->status != 404) {
-            $this->view->assign('websockets', $json);
-        }
-
-        $this->view->assign('timezones', getTimezoneList());
+        $this->view->assign('timezones', generateTimezoneList());
         $this->view->assign('langs', $l->getList());
         $this->view->assign('countries', getCountries());
     }
