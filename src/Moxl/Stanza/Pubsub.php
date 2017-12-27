@@ -337,17 +337,17 @@ class Pubsub
         $items = $dom->createElement('items');
         $items->setAttribute('node', $node);
 
-        if($after) {
+        if ($after) {
             $set = $dom->createElement('set');
             $set->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
             $set->appendChild($dom->createElement('after', $after));
             $set->appendChild($dom->createElement('max', $paging));
 
             $pubsub->appendChild($set);
-        } elseif($before) {
+        } elseif ($before && $before != 'empty') {
             $set = $dom->createElement('set');
             $set->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
-            $set->appendChild($dom->createElement('before', ($before == 'empty') ? null : $before));
+            $set->appendChild($dom->createElement('before', $before));
             $set->appendChild($dom->createElement('max', $paging));
 
             $pubsub->appendChild($set);
