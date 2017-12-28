@@ -324,11 +324,11 @@ class Publish extends \Movim\Widget\Base
 
     function ajaxEmbedTest($url)
     {
-        if($url == '') {
+        if ($url == '') {
             return;
         }
 
-        if(!filter_var($url, FILTER_VALIDATE_URL)) {
+        if (!filter_var($url, FILTER_VALIDATE_URL)) {
             Notification::append(false, $this->__('publish.valid_url'));
             return;
         }
@@ -338,7 +338,10 @@ class Publish extends \Movim\Widget\Base
             $embed = $murl->resolve($url);
             $html = $this->prepareEmbed($embed);
 
-            $this->rpc('Publish.setTitle', $embed->title);
+            if ($embed->type == 'link') {
+                $this->rpc('Publish.setTitle', $embed->title);
+            }
+
             $this->rpc('MovimTpl.fill', '#preview', '');
             $this->rpc('MovimTpl.fill', '#gallery', '');
             $this->rpc('MovimTpl.fill', '#preview', $html);

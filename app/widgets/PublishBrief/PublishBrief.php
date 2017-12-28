@@ -130,7 +130,9 @@ class PublishBrief extends \Movim\Widget\Base
             $murl = new \Modl\Url;
             $embed = $murl->resolve($url);
             $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
-            $this->rpc('PublishBrief.setTitle', $embed->title);
+            if ($embed->type == 'link') {
+                $this->rpc('PublishBrief.setTitle', $embed->title);
+            }
         } catch(Exception $e) {
             error_log($e->getMessage());
         }
