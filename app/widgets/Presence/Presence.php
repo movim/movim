@@ -119,7 +119,7 @@ class Presence extends \Movim\Widget\Base
     {
         $session = Session::start();
         $c = new \Moxl\Xec\Action\Disco\Items;
-        $c->setTo($session->get('host'))
+        $c->setTo($session->get('jid'))
           ->request();
     }
 
