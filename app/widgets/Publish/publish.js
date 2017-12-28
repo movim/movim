@@ -19,6 +19,13 @@ var Publish = {
         document.querySelector('#button_send').classList.add('disabled');
     },
 
+    setTitle: function(value) {
+        let title = document.querySelector('textarea[name=title]');
+        if (title.value == '') {
+            title.value = value;
+        }
+    },
+
     enableContent: function() {
         MovimUtils.hideElement(document.getElementById('enable_content'));
         MovimUtils.showElement(document.getElementById('content_field'));

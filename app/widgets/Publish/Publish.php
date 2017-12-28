@@ -338,6 +338,7 @@ class Publish extends \Movim\Widget\Base
             $embed = $murl->resolve($url);
             $html = $this->prepareEmbed($embed);
 
+            $this->rpc('Publish.setTitle', $embed->title);
             $this->rpc('MovimTpl.fill', '#preview', '');
             $this->rpc('MovimTpl.fill', '#gallery', '');
             $this->rpc('MovimTpl.fill', '#preview', $html);
