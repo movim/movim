@@ -35,7 +35,7 @@
 
             <span
                 title="{$c->__('button.close')}"
-                class="control icon active {if="!$connected"}disabled{/if}"
+                class="control icon active"
                 onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel(); {if="$anon"}Presence_ajaxLogout(){/if}">
                 <i class="zmdi zmdi-close"></i>
             </span>
