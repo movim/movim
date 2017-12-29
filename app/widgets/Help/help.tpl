@@ -43,19 +43,6 @@
             <p>{$c->__('page.help')}</p>
         </li>
         <li class="block">
-            <span class="primary icon bubble color blue">
-                <i class="zmdi zmdi-github-alt"></i>
-            </span>
-            <p>
-                {$c->__('wiki.question')}
-            </p>
-            <p>
-                <a href="https://github.com/edhelas/movim/wiki" target="_blank">
-                    {$c->__('wiki.button')}
-                </a>
-            </p>
-        </li>
-        <li class="block">
             <span class="primary icon bubble color orange">
                 <i class="zmdi zmdi-email"></i>
             </span>
@@ -76,6 +63,19 @@
             <p class="all">
                 <a href="#" onclick="Help_ajaxAddChatroom()">
                     {$c->__('chatroom.button')} movim@conference.movim.eu
+                </a>
+            </p>
+        </li>
+        <li class="block">
+            <span class="primary icon bubble color blue">
+                <i class="zmdi zmdi-github-alt"></i>
+            </span>
+            <p>
+                {$c->__('wiki.question')}
+            </p>
+            <p>
+                <a href="https://github.com/edhelas/movim/wiki" target="_blank">
+                    {$c->__('wiki.button')}
                 </a>
             </p>
         </li>
