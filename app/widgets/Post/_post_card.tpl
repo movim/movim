@@ -220,7 +220,7 @@
                         </a>
                     {else}
                         <a class="button icon flat gray" href="#"
-                           onclick="PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                           onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
                             {$post->countLikes()}
                             {if="$liked"}
                                 <i class="zmdi zmdi-favorite"></i>

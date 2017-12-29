@@ -97,13 +97,13 @@
             {if="$liked"}
                 <button class="button red flat"
                     id="like"
-                    onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
+                    onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
                         <i class="zmdi zmdi-favorite-outline"></i>
                 </button>
             {else}
                 <button class="button red flat"
                     id="like"
-                    onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                    onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
                         <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
                 </button>
             {/if}
