@@ -208,7 +208,6 @@ class InfoDAO extends SQL
                 as counter on info.server = counter.server
             where caps.category = \'pubsub\'
             and caps.type = \'service\'
-            and counter.number > 0
             group by info.server, counter.number, caps.name
             order by counter.number is null, counter.number desc';
 
