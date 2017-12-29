@@ -181,10 +181,11 @@ var Chat = {
 
         textarea.onkeypress = function(event) {
             if(event.keyCode == 13) {
-                if(window.matchMedia("(max-width: 1024px)").matches
-                || event.shiftKey) {
+                if((window.matchMedia("(max-width: 1024px)").matches && !event.shiftKey)
+                || (window.matchMedia("(min-width: 1025px)").matches && event.shiftKey)) {
                     return;
                 }
+
                 Chat.state = 0;
                 Chat.sendMessage();
 
