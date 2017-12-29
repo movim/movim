@@ -35,5 +35,10 @@
         "defuse/php-encryption": "^2.1",
         "react/child-process": "^0.5.0",
         "clue/buzz-react": "^2.1"
+    },
+    "config": {
+        "platform": {
+            "php": "5.6"
+        }
     }
 }
