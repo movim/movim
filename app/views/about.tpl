@@ -4,7 +4,6 @@
             <header>
                 <ul class="list middle">
                     <li>
-
                         <span class="primary active icon gray">
                             <a href="<?php echo \Movim\Route::urlize('main'); ?>">
                                 <i class="zmdi zmdi-arrow-left"></i>

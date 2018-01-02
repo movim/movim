@@ -82,10 +82,16 @@ class InfoDAO extends SQL
         $this->_sql .= '
                 group by node
             ) as sub
-              on sub.node = info.node
-            left outer join (select server, node, subscription from subscription where jid = :jid)
+              on sub.node = info.node';
+
+        if($this->_user) {
+            $this->_sql .= '
+                left outer join (select server, node, subscription from subscription where jid = :jid)
                 as s on s.server = info.server
-                and s.node = info.node
+                and s.node = info.node';
+        }
+
+        $this->_sql .= '
             where info.node != \'\'
                 and info.category = \'pubsub\'
                 and info.node not like \'urn:xmpp:microblog:0:comments%\'
@@ -110,22 +116,11 @@ class InfoDAO extends SQL
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
         }
 
-        if($server) {
-            $this->prepare(
-                'Info',
-                [
-                    'subscription.jid' => $this->_user,
-                    'server' => $server
-                ]
-            );
-        } else {
-            $this->prepare(
-                'Info',
-                [
-                    'subscription.jid' => $this->_user
-                ]
-            );
-        }
+        $params = [];
+        if($server) $params['server'] = $server;
+        if($this->_user) $params['subscription.jid'] = $this->_user;
+
+        $this->prepare('Info', $params);
 
         return $this->run('Server');
     }
