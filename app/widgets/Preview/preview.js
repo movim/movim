@@ -10,4 +10,13 @@ movim_add_onload(function() {
             Preview.clear();
         }
     }, false);
+
+    document.addEventListener('click', function(e) {
+        if (document.querySelector('#preview').innerHTML == '') return;
+
+        if (!document.querySelector('#preview img').contains(e.target)
+        && !document.querySelector('#preview .buttons').contains(e.target)) {
+            Preview.clear();
+        }
+    }, false);
 });
