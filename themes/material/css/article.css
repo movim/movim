@@ -101,6 +101,10 @@ article section content img.big_picture {
     margin-bottom: 1rem;
 }
 
+article section content img.big_picture:hover {
+    cursor: pointer;
+}
+
 article section content div.video_embed {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */

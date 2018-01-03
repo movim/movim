@@ -70,6 +70,7 @@
         </div>
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Drawer');?>
+        <?php $this->widget('Preview');?>
         <?php $this->content();?>
     </body>
 </html>

@@ -80,9 +80,9 @@
                         {elseif="$post->isShort() && isset($attachments.pictures)"}
                             {loop="$attachments.pictures"}
                                 {if="$value.type != 'picture'"}
-                                <a href="{$value.href}" class="alternate" target="_blank">
-                                    <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
-                                </a>
+                                    <img onclick="Preview_ajaxShow('{$value.href|urldecode}')"
+                                         class="big_picture" type="{$value.type}"
+                                         src="{$value.href|urldecode}"/>
                                 {/if}
                             {/loop}
                         {/if}
@@ -101,9 +101,9 @@
                     {elseif="$post->isShort() && isset($attachments.pictures)"}
                         {loop="$attachments.pictures"}
                             {if="$value.type != 'picture'"}
-                            <a href="{$value.href}" class="alternate" target="_blank">
-                                <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
-                            </a>
+                                <img onclick="Preview_ajaxShow('{$value.href|urldecode}')"
+                                     class="big_picture" type="{$value.type}"
+                                     src="{$value.href|urldecode}" />
                             {/if}
                         {/loop}
                     {/if}
