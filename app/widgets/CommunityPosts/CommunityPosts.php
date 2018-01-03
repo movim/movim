@@ -178,6 +178,16 @@ class CommunityPosts extends \Movim\Widget\Base
         }
 
         $view = $this->tpl();
+
+        if($nsfwMessage) {
+            $this->rpc('MovimTpl.remove', '#nsfwmessage');
+            $this->rpc(
+                'MovimTpl.prepend',
+                '#communityposts',
+                $view->draw('_communityposts_nsfw', true)
+            );
+        }
+
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('page', $page);
@@ -186,7 +196,6 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('info', $info);
         $view->assign('subscription', $subscription);
         $view->assign('paging', $this->_paging);
-        $view->assign('nsfwMessage', $nsfwMessage);
 
         $view->assign('first', $first);
         $view->assign('last', $last);
