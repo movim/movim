@@ -19,4 +19,9 @@ class Preview extends \Movim\Widget\Base
 
         $this->rpc('MovimTpl.fill', '#preview', $view->draw('_preview', true));
     }
+
+    public function ajaxHide()
+    {
+        $this->rpc('MovimTpl.fill', '#preview', '');
+    }
 }
