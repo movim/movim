@@ -153,8 +153,10 @@ var MovimUtils = {
 
         document.querySelectorAll('article section content img')
             .forEach(img => {
-                img.classList.add('active');
-                img.addEventListener('click', e => Preview_ajaxShow(img.src))
+                if(img.parentNode.localName != 'a') {
+                    img.classList.add('active');
+                    img.addEventListener('click', e => Preview_ajaxShow(img.src))
+                }
             });
     },
     urlParts : function() {
