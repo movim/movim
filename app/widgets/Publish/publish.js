@@ -7,7 +7,7 @@ var Publish = {
 
     clearEmbed: function() {
         var embed = document.querySelector('input[name=embed]').value = '';
-        MovimTpl.fill('#preview', '');
+        MovimTpl.fill('#preview_embed', '');
         Publish.saveDraft();
     },
 

@@ -342,9 +342,9 @@ class Publish extends \Movim\Widget\Base
                 $this->rpc('Publish.setTitle', $embed->title);
             }
 
-            $this->rpc('MovimTpl.fill', '#preview', '');
+            $this->rpc('MovimTpl.fill', '#preview_embed', '');
             $this->rpc('MovimTpl.fill', '#gallery', '');
-            $this->rpc('MovimTpl.fill', '#preview', $html);
+            $this->rpc('MovimTpl.fill', '#preview_embed', $html);
         } catch(Exception $e) {
             error_log($e->getMessage());
         }

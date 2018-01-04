@@ -117,7 +117,7 @@
         >
         <label for="embed">{$c->__('publish.link')}</label>
 
-        <ul class="list middle" id="preview"></ul>
+        <ul class="list middle" id="preview_embed"></ul>
         <div id="gallery"></div>
     </div>
 
