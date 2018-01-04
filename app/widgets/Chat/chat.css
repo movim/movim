@@ -90,6 +90,10 @@
     display: block;
 }
 
+#chat_widget li div.bubble.sticker.file img.active:hover {
+    cursor: pointer;
+}
+
 #chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr) {
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;

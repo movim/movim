@@ -150,6 +150,12 @@ var MovimUtils = {
 
         document.querySelectorAll('article section content a:not(.innertag)')
             .forEach(link => link.setAttribute('target', '_blank'));
+
+        document.querySelectorAll('article section content img')
+            .forEach(img => {
+                img.classList.add('active');
+                img.addEventListener('click', e => Preview_ajaxShow(img.src))
+            });
     },
     urlParts : function() {
         var str = window.location.search.split('/');

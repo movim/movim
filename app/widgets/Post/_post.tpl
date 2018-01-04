@@ -199,8 +199,7 @@
                 {elseif="$post->isShort() && isset($attachments.pictures)"}
                     {loop="$attachments.pictures"}
                         {if="$value.type != 'picture'"}
-                            <img onclick="Preview_ajaxShow('{$value.href|urldecode}')"
-                                 class="big_picture" type="{$value.type}"
+                            <img class="big_picture" type="{$value.type}"
                                  src="{$value.href|urldecode}"/>
                         {/if}
                     {/loop}

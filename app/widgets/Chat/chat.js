@@ -579,14 +579,11 @@ var Chat = {
         }
 
         if(sticker.picture) {
-            var a = document.createElement("a");
-            a.setAttribute("href", sticker.url);
-            a.setAttribute("target", "_blank");
-            a.appendChild(img);
-            return a;
-        } else {
-            return img;
+            img.classList.add('active');
+            img.setAttribute('onclick', 'Preview_ajaxShow("' + sticker.url + '")');
         }
+
+        return img;
     },
     getAudioHtml: function(file) {
         var audio = document.createElement("audio");
