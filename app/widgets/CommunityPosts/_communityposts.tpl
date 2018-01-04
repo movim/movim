@@ -8,6 +8,14 @@
         {/if}
     {/loop}
     </ul>
+{elseif="$publicposts != false"}
+    <ul class="list card shadow">
+    {loop="$publicposts"}
+        <div id="{$value->nodeid|cleanupId}" class="block large">
+            {$c->preparePost($value)}
+        </div>
+    {/loop}
+    </ul>
 {else}
     <div class="placeholder icon blog">
         <h4>{$c->__('post.empty')}</h4>
