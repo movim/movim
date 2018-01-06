@@ -56,7 +56,7 @@
             </span>
             <form name="search" onsubmit="return false;">
                 <div>
-                    <input name="keyword"
+                    <input name="keyword" autocomplete="off"
                         placeholder="{$c->__('search.keyword')}"
                         onkeyup="Search.searchSomething(this.value)"
                         type="text">
