@@ -1,4 +1,4 @@
-#avatar_form div#preview {
+#avatar_form div#avatar_preview {
     flex: 1 1 20%;
     text-align: center;
     padding-top: 2rem;
@@ -8,13 +8,13 @@
     max-width: 200px;
 }
 
-#avatar_form div#preview > div,
-#avatar_form div#preview img {
+#avatar_form div#avatar_preview > div,
+#avatar_form div#avatar_preview img {
     max-width: 250px;
     border-radius: 0.25rem;
     margin: 0 auto;
 }
 
-#avatar_form div#preview img.error {
+#avatar_form div#avatar_preview img.error {
     display: none;
 }
