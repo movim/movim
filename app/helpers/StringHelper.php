@@ -48,16 +48,16 @@ function addUrls($string, $preview = false)
 {
     // Add missing links
     return preg_replace_callback("/<a[^>]*>[^<]*<\/a|\".*?\"|((?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’])))/", function ($match) use ($preview) {
-            if(isset($match[1])) {
+            if (isset($match[1])) {
                 $content = $match[1];
 
                 $lastTag = false;
-                if(in_array(substr($content, -3, 3), ['&lt', '&gt'])) {
+                if (in_array(substr($content, -3, 3), ['&lt', '&gt'])) {
                     $lastTag = substr($content, -3, 3);
                     $content = substr($content, 0, -3);
                 }
 
-                if($preview) {
+                if ($preview) {
                     try {
                         $embed = Embed\Embed::create($match[0]);
                         if($embed->type == 'photo'
@@ -72,10 +72,10 @@ function addUrls($string, $preview = false)
                     }
                 }
 
-                if(substr($content, 0, 5) == 'xmpp:') {
+                if (substr($content, 0, 5) == 'xmpp:') {
                     $link = str_replace(['xmpp://', 'xmpp:'], '', $content);
 
-                    if(substr($link, -5, 5) == '?join') {
+                    if (substr($link, -5, 5) == '?join') {
                         return stripslashes(
                             '<a href=\"'.
                             Route::urlize('chat', [str_replace('?join', '', $link), 'room']).
@@ -92,10 +92,12 @@ function addUrls($string, $preview = false)
                         '</a>'
                     );
                 }
-                if(filter_var($content, FILTER_VALIDATE_URL)) {
+
+                if (in_array(parse_url($content, PHP_URL_SCHEME), ['http', 'https'])) {
                     return stripslashes('<a href=\"'.$content.'\" target=\"_blank\" rel=\"noopener\">'.$content.'</a>').
                             ($lastTag !== false ? $lastTag : '');
                 }
+
                 return $content;
             }
             return $match[0];
