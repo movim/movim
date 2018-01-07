@@ -75,8 +75,8 @@ var Visio = {
         Visio.type = type;
 
         // TODO Remove ?
-        if(Visio.pc.iceConnectionState == 'completed') return;
-        console.log(pc);
+        //if(Visio.pc.signalingState == 'stable') return;
+        console.log(Visio.pc);
 
         console.log('SDP');
         console.log(sdp);
