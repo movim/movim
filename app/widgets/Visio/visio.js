@@ -269,9 +269,6 @@ var Visio = {
                 i.className = 'zmdi zmdi-phone-end ring disabled';
                 state.innerHTML = Visio.states.calling;
 
-                // Visio.pc.ontrack seems buggy for now
-                document.getElementById('remote_video').srcObject = Visio.pc.getRemoteStreams()[0];
-
             } else if(Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');
                 i.className = 'zmdi zmdi-phone-end';
@@ -286,6 +283,9 @@ var Visio = {
                 if(Visio.pc.iceConnectionState == 'failed') {
                     state.innerHTML = Visio.states.failed;
                 } else {
+                    // Visio.pc.ontrack seems buggy for now
+                    document.getElementById('remote_video').srcObject = Visio.pc.getRemoteStreams()[0];
+
                     state.innerHTML = Visio.states.in_call;
                 }
 
