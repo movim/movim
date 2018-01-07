@@ -1,5 +1,6 @@
 function logError(error) {
     console.log(error.name + ': ' + error.message);
+    console.log(error);
 }
 
 var Visio = {
@@ -10,7 +11,6 @@ var Visio = {
     old_level_L: 0,
     from: null,
     type: null,
-    start: false,
 
     setFrom: function(from) {
         Visio.from = from;
@@ -66,12 +66,16 @@ var Visio = {
         }
 
         // if we received an offer, we need to answer
-        if (Visio.pc.remoteDescription.type == 'offer')
+        if (Visio.pc.remoteDescription.type == 'offer') {
             Visio.pc.createAnswer(Visio.localDescCreated, logError);
+        }
     },
 
     onSDP: function(sdp, type) {
         Visio.type = type;
+
+        // TODO Remove ?
+        if(Visio.pc.iceConnectionState == 'completed') return;
 
         console.log('SDP');
         console.log(sdp);
@@ -91,7 +95,7 @@ var Visio = {
         console.log('candidate');
         console.log(candidate);
 
-        Visio_ajaxGetCandidates();
+        //Visio_ajaxGetCandidates();
 
         if(mid == '') mlineindex = 1;
 
@@ -125,11 +129,7 @@ var Visio = {
         }
     },
 
-    init: function(start) {
-        Visio.start = start;
-
-        Visio_ajaxGetSDP();
-
+    init: function(sdp, type) {
         Visio.toggleMainButton();
 
         Visio.setFrom(MovimUtils.urlParts().params.join('/'));
@@ -159,10 +159,10 @@ var Visio = {
         };
 
         // WebRTC
-        if(typeof webkitRTCPeerConnection == 'function') {
-            Visio.pc = new webkitRTCPeerConnection(configuration);
-        } else {
-            Visio.pc = new RTCPeerConnection(configuration);
+        Visio.pc = new RTCPeerConnection(configuration);
+
+        if(sdp && type) {
+            Visio.onSDP(sdp, type);
         }
 
         Visio.pc.onicecandidate = function (evt) {
@@ -181,11 +181,8 @@ var Visio = {
             Visio.toggleMainButton();
         };
 
-        /*Visio.pc.ontrack = function (evt) {
-            document.getElementById('remote_video').src = URL.createObjectURL(evt.streams[0]);
-        };*/
-        Visio.pc.onaddstream = function(evt) {
-            document.getElementById('remote_video').src = URL.createObjectURL(evt.stream);
+        Visio.pc.ontrack = function(evt) {
+            document.getElementById('remote_video').srcObject = evt.stream;
         };
 
         Visio.audioContext = new AudioContext();
@@ -238,8 +235,12 @@ var Visio = {
         button.classList.add('disabled');
 
         if(Visio.pc) {
+            let length = Visio.pc.getSenders
+                ? Visio.pc.getSenders().length
+                : Visio.pc.getLocalStreams().length;
+
             if(Visio.pc.iceConnectionState != 'closed'
-            && Visio.pc.getLocalStreams().length > 0) {
+            && length > 0) {
                 button.classList.remove('disabled');
             }
 

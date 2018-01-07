@@ -44,18 +44,15 @@ class Visio extends \Movim\Widget\Base
         );
     }
 
-    function ajaxGetSDP()
+    function ajaxAskInit()
     {
         $s = Session::start();
         if($s->get('sdp')) {
-            $this->rpc('Visio.onSDP', $s->get('sdp'), 'offer');
+            $this->rpc('Visio.init', $s->get('sdp'), 'offer');
             $s->remove('sdp');
+        } else {
+            $this->rpc('Visio.init');
         }
-    }
-
-    function ajaxAskInit()
-    {
-        $this->rpc('Visio.init');
     }
 
     function onAccept($stanza)
@@ -78,6 +75,8 @@ class Visio extends \Movim\Widget\Base
         array_push($candidates, [$sdp, $jts->name, substr($jts->name, -1, 1)]);
 
         $s->set('candidates', $candidates);
+
+        $this->rpc('Visio.onCandidate', $sdp, $jts->name, substr($jts->name, -1, 1));
     }
 
     function ajaxGetCandidates()
