@@ -24,8 +24,6 @@ var Visio = {
 
         Visio.toggleMainButton();
 
-        Visio_ajaxGetSDP();
-
         // Video
         var videoTracks = stream.getVideoTracks();
         console.log('Got stream with constraints:', constraints);
@@ -66,6 +64,10 @@ var Visio = {
             cnvs_cntxt.fillStyle = 'white';
             cnvs_cntxt.fillRect(0, 0,(cnvs.width)*(instant_L/Visio.max_level_L),(cnvs.height)); // x,y,w,h
         }
+
+        // if we received an offer, we need to answer
+        if (Visio.pc.remoteDescription.type == 'offer')
+            Visio.pc.createAnswer(Visio.localDescCreated, logError);
     },
 
     onSDP: function(sdp, type) {
@@ -76,13 +78,7 @@ var Visio = {
 
         Visio.pc.setRemoteDescription(
             new RTCSessionDescription({'sdp': sdp + "\n", 'type': type}),
-            function () {
-                Visio_ajaxGetCandidates();
-
-                // if we received an offer, we need to answer
-                if (Visio.pc.remoteDescription.type == 'offer')
-                    Visio.pc.createAnswer(Visio.localDescCreated, logError);
-            },
+            function () { Visio_ajaxGetCandidates(); },
             logError
         );
     },
@@ -131,6 +127,8 @@ var Visio = {
 
     init: function(start) {
         Visio.start = start;
+
+        Visio_ajaxGetSDP();
 
         Visio.toggleMainButton();
 
