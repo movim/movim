@@ -24,10 +24,6 @@ var Visio = {
 
         Visio.toggleMainButton();
 
-        if(Visio.remoteSDP && Visio.remoteType) {
-            Visio.onSDP(Visio.remoteSDP, Visio.remoteType);
-        }
-
         // Video
         var videoTracks = stream.getVideoTracks();
         console.log('Got stream with constraints:', constraints);
@@ -80,6 +76,7 @@ var Visio = {
 
         // TODO Remove ?
         if(Visio.pc.iceConnectionState == 'completed') return;
+        console.log(pc);
 
         console.log('SDP');
         console.log(sdp);
@@ -98,6 +95,8 @@ var Visio = {
     onCandidate: function(candidate, mid, mlineindex) {
         console.log('candidate');
         console.log(candidate);
+
+        Visio_ajaxGetCandidates();
 
         if(mid == '') mlineindex = 1;
 
