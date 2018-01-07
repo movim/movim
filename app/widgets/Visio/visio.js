@@ -77,9 +77,6 @@ var Visio = {
     onSDP: function(sdp, type) {
         Visio.type = type;
 
-        // TODO Remove ?
-        //if(Visio.pc.signalingState == 'stable') return;
-
         console.log('SDP');
         console.log(sdp);
 
