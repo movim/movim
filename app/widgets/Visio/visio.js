@@ -237,19 +237,22 @@ var Visio = {
         button.classList.add('disabled');
 
         if(Visio.pc) {
-            if(Visio.localCreated) Visio.answer();
+            if (Visio.localCreated) Visio.answer();
 
             let length = Visio.pc.getSenders
                 ? Visio.pc.getSenders().length
                 : Visio.pc.getLocalStreams().length;
 
-            if(Visio.pc.iceConnectionState != 'closed'
+            if (Visio.pc.iceConnectionState != 'closed'
             && length > 0) {
                 button.classList.remove('disabled');
             }
 
-            if(Visio.pc.iceConnectionState == 'new') {
-                if(Visio.pc.iceGatheringState == 'gathering'
+            if (length == 0) {
+                button.classList.add('gray');
+                i.className = 'zmdi zmdi-more';
+            } else if (Visio.pc.iceConnectionState == 'new') {
+                if (Visio.pc.iceGatheringState == 'gathering'
                 || Visio.pc.iceGatheringState == 'complete') {
                     button.classList.add('orange');
                     i.className = 'zmdi zmdi-phone-ring ring';
@@ -260,32 +263,29 @@ var Visio = {
                     button.classList.add('green');
                     i.className = 'zmdi zmdi-phone';
 
-                    if(length == 0) i.classList.add('disabled');
-
                     button.onclick = function() { Visio.hello(); };
                 }
-            } else if(Visio.pc.iceConnectionState == 'checking') {
+            } else if (Visio.pc.iceConnectionState == 'checking') {
                 button.classList.add('green');
                 i.className = 'zmdi zmdi-phone-end ring disabled';
                 state.innerHTML = Visio.states.calling;
 
-            } else if(Visio.pc.iceConnectionState == 'closed') {
+            } else if (Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');
                 i.className = 'zmdi zmdi-phone-end';
 
                 button.onclick = function() { MovimUtils.reloadThis(); };
-            } else if(Visio.pc.iceConnectionState == 'connected'
+            } else if (Visio.pc.iceConnectionState == 'connected'
                    || Visio.pc.iceConnectionState == 'complete'
                    || Visio.pc.iceConnectionState == 'failed') {
                 button.classList.add('red');
                 i.className = 'zmdi zmdi-phone-end';
 
-                if(Visio.pc.iceConnectionState == 'failed') {
+                if (Visio.pc.iceConnectionState == 'failed') {
                     state.innerHTML = Visio.states.failed;
                 } else {
                     // Visio.pc.ontrack seems buggy for now
                     document.getElementById('remote_video').srcObject = Visio.pc.getRemoteStreams()[0];
-
                     state.innerHTML = Visio.states.in_call;
                 }
 
