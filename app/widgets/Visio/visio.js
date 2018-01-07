@@ -68,7 +68,8 @@ var Visio = {
         }
 
         // if we received an offer, we need to answer
-        if (Visio.pc.remoteDescription.type == 'offer') {
+        if (Visio.pc.remoteDescription
+        && Visio.pc.remoteDescription.type == 'offer') {
             Visio.pc.createAnswer(Visio.localDescCreated, logError);
         }
     },
@@ -84,9 +85,7 @@ var Visio = {
 
         Visio.pc.setRemoteDescription(
             new RTCSessionDescription({'sdp': sdp + "\n", 'type': type}),
-            function () {
-                Visio_ajaxGetCandidates();
-            },
+            function () { Visio_ajaxGetCandidates(); },
             logError
         );
     },
@@ -166,10 +165,6 @@ var Visio = {
         // WebRTC
         Visio.pc = new RTCPeerConnection(configuration);
 
-        if(sdp && type) {
-            Visio.onSDP(sdp, type);
-        }
-
         Visio.pc.onicecandidate = function (evt) {
             Visio.toggleMainButton();
 
@@ -186,9 +181,9 @@ var Visio = {
             Visio.toggleMainButton();
         };
 
-        Visio.pc.ontrack = function(evt) {
+        /*Visio.pc.ontrack = function(evt) {
             document.getElementById('remote_video').srcObject = evt.streams[0];
-        };
+        };*/
 
         Visio.audioContext = new AudioContext();
 
@@ -198,6 +193,10 @@ var Visio = {
         };
 
         Visio.toggleMainButton();
+
+        if(sdp && type) {
+            Visio.onSDP(sdp, type);
+        }
 
         if(typeof navigator.webkitGetUserMedia == 'function') {
             navigator.webkitGetUserMedia(constraints, Visio.handleSuccess, logError);
@@ -219,6 +218,7 @@ var Visio = {
     },
 
     answer: function() {
+        Visio.localCreated = false;
         Visio_ajaxAccept(Visio.pc.localDescription, Visio.from);
     },
 
@@ -271,6 +271,9 @@ var Visio = {
                 button.classList.add('green');
                 i.className = 'zmdi zmdi-phone-end ring disabled';
                 state.innerHTML = Visio.states.calling;
+
+                // Visio.pc.ontrack seems buggy for now
+                document.getElementById('remote_video').srcObject = Visio.pc.getRemoteStreams()[0];
 
             } else if(Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');
