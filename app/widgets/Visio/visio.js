@@ -12,6 +12,8 @@ var Visio = {
     from: null,
     type: null,
 
+    localCreated: false,
+
     setFrom: function(from) {
         Visio.from = from;
     },
@@ -76,19 +78,21 @@ var Visio = {
 
         // TODO Remove ?
         //if(Visio.pc.signalingState == 'stable') return;
-        console.log(Visio.pc);
 
         console.log('SDP');
         console.log(sdp);
 
         Visio.pc.setRemoteDescription(
             new RTCSessionDescription({'sdp': sdp + "\n", 'type': type}),
-            function () { Visio_ajaxGetCandidates(); },
+            function () {
+                Visio_ajaxGetCandidates();
+            },
             logError
         );
     },
 
     localDescCreated: function(desc) {
+        Visio.localCreated = true;
         Visio.pc.setLocalDescription(desc, Visio.toggleMainButton, logError);
     },
 
@@ -236,6 +240,8 @@ var Visio = {
         button.classList.add('disabled');
 
         if(Visio.pc) {
+            if(Visio.localCreated) Visio.answer();
+
             let length = Visio.pc.getSenders
                 ? Visio.pc.getSenders().length
                 : Visio.pc.getLocalStreams().length;
@@ -257,15 +263,15 @@ var Visio = {
                     button.classList.add('green');
                     i.className = 'zmdi zmdi-phone';
 
+                    if(length == 0) i.classList.add('disabled');
+
                     button.onclick = function() { Visio.hello(); };
                 }
             } else if(Visio.pc.iceConnectionState == 'checking') {
                 button.classList.add('green');
-                i.className = 'zmdi zmdi-phone-end ring';
+                i.className = 'zmdi zmdi-phone-end ring disabled';
                 state.innerHTML = Visio.states.calling;
 
-                Visio.answer();
-                //button.onclick = function() { Visio.answer(); };
             } else if(Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');
                 i.className = 'zmdi zmdi-phone-end';
