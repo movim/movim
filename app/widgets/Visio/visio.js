@@ -24,6 +24,10 @@ var Visio = {
 
         Visio.toggleMainButton();
 
+        if(Visio.remoteSDP && Visio.remoteType) {
+            Visio.onSDP(Visio.remoteSDP, Visio.remoteType);
+        }
+
         // Video
         var videoTracks = stream.getVideoTracks();
         console.log('Got stream with constraints:', constraints);
@@ -94,8 +98,6 @@ var Visio = {
     onCandidate: function(candidate, mid, mlineindex) {
         console.log('candidate');
         console.log(candidate);
-
-        //Visio_ajaxGetCandidates();
 
         if(mid == '') mlineindex = 1;
 
@@ -182,7 +184,7 @@ var Visio = {
         };
 
         Visio.pc.ontrack = function(evt) {
-            document.getElementById('remote_video').srcObject = evt.stream;
+            document.getElementById('remote_video').srcObject = evt.streams[0];
         };
 
         Visio.audioContext = new AudioContext();
