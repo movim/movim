@@ -1,6 +1,9 @@
 <header>
     <ul class="list">
         <li>
+            <span class="primary icon bubble gray">
+                <i class="zmdi zmdi-search"></i>
+            </span>
             {if="count($contacts) > 5"}
             <form onsubmit="return false;">
                 <div onclick="Roster.init();">

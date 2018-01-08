@@ -18,8 +18,11 @@
                 <?php $this->widget('ContactDisco');?>
             </aside>
             <div>
+                <?php $this->widget('Tabs');?>
+
                 <?php $this->widget('Invitations');?>
                 <?php $this->widget('Roster');?>
+                <?php $this->widget('ContactDiscoPosts');?>
             </div>
         <?php } else { ?>
             <aside>

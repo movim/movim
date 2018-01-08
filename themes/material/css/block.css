@@ -40,6 +40,10 @@
     margin: 1rem 0;
 }
 
+.column.half {
+    column-count: 2;
+}
+
 .column > * {
     display: inline-block;
     width: 100%;
@@ -54,7 +58,8 @@
         max-width: 100%;
     }
 
-    .column {
+    .column,
+    .column.half {
         column-count: 1;
     }
 }
