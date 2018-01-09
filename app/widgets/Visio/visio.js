@@ -238,6 +238,8 @@ var Visio = {
                 button.classList.remove('disabled');
             }
 
+            button.onclick = function() {};
+
             if (length == 0) {
                 button.classList.add('gray');
                 i.className = 'zmdi zmdi-more';
@@ -322,10 +324,10 @@ var Visio = {
 
         if(Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled) {
             Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled = 0;
-            button.className = 'zmdi zmdi-volume-off';
+            button.className = 'zmdi zmdi-mic-off';
         } else {
             Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled = 1;
-            button.className = 'zmdi zmdi-volume-up';
+            button.className = 'zmdi zmdi-mic';
         }
     },
 
@@ -334,10 +336,10 @@ var Visio = {
 
         if(Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled) {
             Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 0;
-            button.className = 'zmdi zmdi-eye-off';
+            button.className = 'zmdi zmdi-videocam-off';
         } else {
             Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 1;
-            button.className = 'zmdi zmdi-eye';
+            button.className = 'zmdi zmdi-videocam';
         }
     },
 }

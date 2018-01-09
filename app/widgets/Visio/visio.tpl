@@ -6,10 +6,10 @@
                     <i class="zmdi zmdi-fullscreen"></i>
                 </span>
                 <span id="toggle_audio" class="control icon color transparent active" onclick="Visio.toggleAudio()">
-                    <i class="zmdi zmdi-volume-up"></i>
+                    <i class="zmdi zmdi-mic"></i>
                 </span>
                 <span id="toggle_video" class="control icon color transparent active" onclick="Visio.toggleVideo()">
-                    <i class="zmdi zmdi-eye"></i>
+                    <i class="zmdi zmdi-videocam"></i>
                 </span>
             </li>
         </ul>
