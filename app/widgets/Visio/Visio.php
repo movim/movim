@@ -58,7 +58,6 @@ class Visio extends \Movim\Widget\Base
     function onAccept($stanza)
     {
         $jts = new JingletoSDP($stanza);
-
         $this->rpc('Visio.onSDP', $jts->generate(), 'answer');
     }
 

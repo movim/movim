@@ -22,20 +22,10 @@ var Visio = {
      * Jingle and WebRTC
      */
     handleSuccess: function(stream) {
-        Visio.pc.addStream(stream);
+        stream.getTracks().forEach(track => Visio.pc.addTrack(track, stream));
 
         Visio.toggleMainButton();
 
-        // Video
-        var videoTracks = stream.getVideoTracks();
-        console.log('Got stream with constraints:', constraints);
-        console.log('Using video device: ' + videoTracks[0].label);
-
-        stream.oninactive = function() {
-            console.log('Stream inactive');
-        };
-
-        window.stream = stream; // make variable available to browser console
         document.getElementById('video').srcObject = stream;
 
         // Audio
@@ -80,7 +70,7 @@ var Visio = {
         console.log('SDP');
         console.log(sdp);
 
-        Visio.pc.setRemoteDescription(
+        return Visio.pc.setRemoteDescription(
             new RTCSessionDescription({'sdp': sdp + "\n", 'type': type}),
             function () { Visio_ajaxGetCandidates(); },
             logError
@@ -102,12 +92,11 @@ var Visio = {
 
         if(Visio.pc.remoteDescription == null) return;
 
-        candidate = new RTCIceCandidate(
-            {
-                'candidate': candidate,
-                'sdpMid': mid,
-                'sdpMLineIndex' : mlineindex
-            });
+        candidate = new RTCIceCandidate({
+            'candidate': candidate,
+            'sdpMid': mid,
+            'sdpMLineIndex' : mlineindex
+        });
 
         Visio.pc.addIceCandidate(candidate);
     },
@@ -198,8 +187,9 @@ var Visio = {
         if(typeof navigator.webkitGetUserMedia == 'function') {
             navigator.webkitGetUserMedia(constraints, Visio.handleSuccess, logError);
         } else {
-            navigator.mediaDevices.getUserMedia(constraints).
-            then(Visio.handleSuccess).catch(logError);
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(Visio.handleSuccess)
+                .catch(logError);
         }
     },
 
