@@ -22,7 +22,11 @@ var Visio = {
      * Jingle and WebRTC
      */
     handleSuccess: function(stream) {
-        stream.getTracks().forEach(track => Visio.pc.addTrack(track, stream));
+        if (Visio.pc.addTrack) {
+            stream.getTracks().forEach(track => Visio.pc.addTrack(track, stream));
+        } else {
+            Visio.pc.addStream(stream);
+        }
 
         Visio.toggleMainButton();
 
