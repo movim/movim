@@ -70,25 +70,29 @@
     <ul class="list">
         {if="!$post->isBrief()"}
         <li class="active">
-            <p>
-                <section {if="!$post->isShort()"}class="limited"{/if}>
-                    <content>
-                        {if="$post->getYoutube()"}
-                            <div class="video_embed">
-                                <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        {elseif="$post->isShort() && isset($attachments.pictures)"}
-                            {loop="$attachments.pictures"}
-                                {if="$value.type != 'picture'"}
-                                    <img class="big_picture" type="{$value.type}"
-                                         src="{$value.href|urldecode}"/>
-                                {/if}
-                            {/loop}
-                        {/if}
-                        {$post->getContent()|addHashtagsLinks}
-                    </content>
-                <section>
-            </p>
+            {if="$nsfw == false && $post->isNSFW()"}
+                <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
+            {/if}
+            <section {if="!$post->isShort()"}class="limited"{/if}>
+                <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
+                    <i class="zmdi zmdi-eye"></i>
+                </label>
+                <content>
+                    {if="$post->getYoutube()"}
+                        <div class="video_embed">
+                            <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    {elseif="$post->isShort() && isset($attachments.pictures)"}
+                        {loop="$attachments.pictures"}
+                            {if="$value.type != 'picture'"}
+                                <img class="big_picture" type="{$value.type}"
+                                     src="{$value.href|urldecode}"/>
+                            {/if}
+                        {/loop}
+                    {/if}
+                    {$post->getContent()|addHashtagsLinks}
+                </content>
+            <section>
         </li>
         {else}
             {if="$nsfw == false && $post->isNSFW()"}
