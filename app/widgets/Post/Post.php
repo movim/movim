@@ -275,6 +275,8 @@ class Post extends \Movim\Widget\Base
                 $view->assign('repost', $cd->get($p->origin));
             }
 
+            $view->assign('nsfw', $this->user->getConfig('nsfw'));
+
             $view->assign('post', $p);
             $view->assign('attachments', $p->getAttachments());
 

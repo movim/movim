@@ -91,7 +91,13 @@
             </p>
         </li>
         {else}
+            {if="$nsfw == false && $post->isNSFW()"}
+                <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
+            {/if}
             <section>
+                <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
+                    <i class="zmdi zmdi-eye"></i>
+                </label>
                 <content>
                     {if="$post->getYoutube()"}
                         <div class="video_embed">
