@@ -20,6 +20,8 @@ class AdminMain extends \Movim\Widget\Base
                 $form['password'] = $config->password;
             }
 
+            $form['restrictsuggestions'] = (isset($form['restrictsuggestions']));
+
             unset($form['repassword']);
 
             foreach($form as $key => $value) {

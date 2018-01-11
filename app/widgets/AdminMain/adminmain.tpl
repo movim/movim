@@ -50,8 +50,27 @@
             </select>
         </div>
         <label for="timezone">{$c->__('general.timezone')} - <span class="dTimezone">{$c->date($conf->timezone)}</span></label>
-        <br /><br />
+    </div>
 
+    <div>
+        <ul class="list thick">
+            <li class="wide">
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->restrictsuggestions"}
+                                checked
+                            {/if}
+                            type="checkbox"
+                            id="restrictsuggestions"
+                            name="restrictsuggestions"/>
+                        <label for="restrictsuggestions"></label>
+                    </div>
+                </span>
+                <p>{$c->__('restrictsuggestions.title')}</p>
+                <p class="all">{$c->__('restrictsuggestions.text')}</p>
+            </li>
+        </ul>
     </div>
 
     <br />

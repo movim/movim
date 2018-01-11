@@ -49,7 +49,7 @@ class InfoDAO extends SQL
         return $this->run('Info', 'item');
     }
 
-    function getItems($server = false, $limitf = false, $limitr = false, $withPostsOnly = false)
+    function getItems($server = false, $limitf = false, $limitr = false, $withPostsOnly = false, $host = false)
     {
         $this->_sql = '
             select *, postn.published from info
@@ -103,6 +103,10 @@ class InfoDAO extends SQL
                 and info.server = :server';
         }
 
+        if($host) {
+            $this->_sql .= ' and info.server like \'%.' . $host . '\'';
+        }
+
         if($withPostsOnly) {
             $this->_sql .= '
                 and postn.published is not null';
@@ -144,7 +148,7 @@ class InfoDAO extends SQL
         return $this->run('Info', 'item');
     }
 
-    function getTopConference($limit = 10)
+    function getTopConference($limit = 10, $host = false)
     {
         $this->_sql = '
             select * from info
@@ -154,7 +158,13 @@ class InfoDAO extends SQL
                 from conference where jid = :jid)
             and mucpublic = true
             and mucpersistent = true
-            and server like \'%@%\'
+            and server like \'%@%\'';
+
+        if($host) {
+            $this->_sql .= ' and server like \'%@%.' . $host . '\'';
+        }
+
+        $this->_sql .= '
             order by occupants desc';
 
         $this->_sql .= ' limit '.(int)$limit;

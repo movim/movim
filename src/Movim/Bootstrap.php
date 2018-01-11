@@ -324,6 +324,8 @@ class Bootstrap
 
                 $s = Session::start();
                 $s->set('jid', $session->jid);
+                $s->set('host', $session->host);
+                $s->set('username', $session->username);
             } elseif ($process) {
                 // A process but no session in the db
                 requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);

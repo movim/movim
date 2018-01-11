@@ -782,9 +782,14 @@ class Chat extends \Movim\Widget\Base
 
         $cd = new \Modl\ContactDAO;
         $id = new \Modl\InfoDAO;
+        $cod = new \Modl\ConfigDAO;
+        $config = $cod->get();
 
         $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('conferences', $id->getTopConference(8));
+        $view->assign('conferences', $id->getTopConference(
+            8,
+            ($config->restrictsuggestions == true) ? $this->user->getServer() : false
+        ));
         $view->assign('top', $cd->getTop(8, $chats));
         return $view->draw('_chat_empty', true);
     }
