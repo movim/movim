@@ -1,7 +1,16 @@
 Movim Changelog
 ================
 
-v0.13 (trunk)
+v0.13.1 (trunk)
+---------------------------
+ * Show a spoiler on NSFW posts when the filter is enabled in News
+ * Enhancements on Visio and CSS improvements
+ * Fix date display in Chat on instable connectivity
+ * Add a Preview widget to allow previsualisation of pictures in Movim
+ * Fix compatibility with PHP 5.6
+ * Code cleanup
+
+v0.13
 ---------------------------
  * Update ReactPHP
  * Use PHP ZeroMQ to manage the communications between the processes
