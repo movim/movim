@@ -227,7 +227,7 @@ var Visio = {
 
         i = button.querySelector('i');
 
-        button.classList.remove('red', 'green', 'gray', 'orange', 'ring');
+        button.classList.remove('red', 'green', 'gray', 'orange', 'ring', 'blue');
         button.classList.add('disabled');
 
         if(Visio.pc) {
@@ -262,9 +262,9 @@ var Visio = {
                     button.onclick = function() { Visio.hello(); };
                 }
             } else if (Visio.pc.iceConnectionState == 'checking') {
-                button.classList.add('green');
-                i.className = 'zmdi zmdi-phone-end ring disabled';
-                state.innerHTML = Visio.states.calling;
+                button.classList.add('blue');
+                i.className = 'zmdi zmdi-more disabled';
+                state.innerHTML = Visio.states.connecting;
 
             } else if (Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');

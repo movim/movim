@@ -26,8 +26,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -88,8 +86,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -109,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-24 15:12+0200\n"
+"POT-Creation-Date: 2018-01-14 15:02+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -309,25 +305,13 @@ msgstr "Detaljrikdom i loggen"
 msgid "Server Timezone"
 msgstr "Tjenertidssone"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "WebSocket-konfigurasjon"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "Fyll inn en gyldig WebSocket URI i skjemaet"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "WebSocket URI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Hvis URI-en forandres må tjenesten omstartes for å laste inn det nye oppsettet"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "Offentlig WebSockets"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -390,6 +374,10 @@ msgstr "Forvalgt XMPP-tjenerbeskrivelse"
 #: [xmpp]country
 msgid "Main XMPP server country"
 msgstr "Forvalgt XMPP-tjenerland"
+
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -518,68 +506,6 @@ msgstr "Denne brukeren har ikke postet noe enda"
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "Dette innholdet er privat, logg på for å se det"
-
-#: [title]conferences
-msgid "Conferences"
-msgstr "Konferanser"
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "Grupper"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "Opprett nytt samtalerom"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Samtalerom-ID"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Navn"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Kallenavn"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Ønsker du å bli lagt automatisk til i dette samtalerommet?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Feil samtalerom-ID"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tomt navn"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Bokmerke oppdatert"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "En feil oppstod:"
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "Sett opp"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "Legg til ny nettadresse"
-
-#: [url]url
-msgid "URL"
-msgstr "Nettadresse"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Navn"
 
 #: [message]published
 msgid "Message Published"
@@ -872,11 +798,11 @@ msgstr "Gi et navn til dette samfunnet"
 msgid "My Community Name"
 msgstr "Mitt samfunnsnavn"
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Del påmeldingen offentlig"
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Det vil vises på din profil"
 
@@ -971,6 +897,10 @@ msgstr "Generell informasjon"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Navn"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Kallenavn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1136,6 +1066,10 @@ msgstr "Annonser medlemskapet til denne gruppen offentlig til dine kontakter"
 msgid "Give a label for this group"
 msgstr "Gi et navn til gruppen"
 
+#: [group]empty_title
+msgid "Groups"
+msgstr "Grupper"
+
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Noe gikk feil i denne gruppen"
@@ -1183,6 +1117,11 @@ msgstr "Du finner en liste over alle gruppene du abonnerer på under \"Mine abon
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "Kontaktpost"
+
+#: [groups]empty_server
+#, fuzzy
+msgid "There is no Groups yet on this server."
+msgstr "Det er ennå ingen fellesskap på denne tjeneren."
 
 #: [groups]add
 msgid "Create a new Group on %s"
@@ -1265,8 +1204,8 @@ msgid "Our official apps are available on our website"
 msgstr "Våre offisielle app-er er tilgjengelig fra nettstedet vårt"
 
 #: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "Ser du etter dokumentasjon?"
+msgid "Want to contribute to the project?"
+msgstr ""
 
 #: [wiki]button
 msgid "Read the Wiki"
@@ -1665,7 +1604,8 @@ msgid "Tags"
 msgstr "Merkelapp"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+#, fuzzy
+msgid "Please enter a valid URL"
 msgstr "Oppgi en gyldig nettadresse"
 
 #: [publish]no_content_preview
@@ -1736,9 +1676,21 @@ msgstr "Legg til en ved å trykke på \"Legg til\"-knappen"
 msgid "Chatrooms"
 msgstr "Samtalerom"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Samtalerom-ID"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mine favorittrom"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Feil samtalerom-ID"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tomt navn"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1759,6 +1711,10 @@ msgstr "Bli med i dette samtalerommet ved oppkobling"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Kunne ikke bli med i samtalerommet, registrering er påkrevd."
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Bokmerke oppdatert"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1879,14 +1835,6 @@ msgstr "Hva leter du etter?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Åpne meg med Ctrl + M"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "Dette er ikke en gyldig nettadresse"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "Deling av nettadressen"
 
 #: [statistics]title
 msgid "Statistics"
@@ -2027,6 +1975,11 @@ msgstr "i en samtale"
 #: [visio]failed
 msgid "failed"
 msgstr "mislyktes"
+
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "Kobler til"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2833,3 +2786,56 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "WebSocket-konfigurasjon"
+
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "Fyll inn en gyldig WebSocket URI i skjemaet"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "WebSocket URI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "Hvis URI-en forandres må tjenesten omstartes for å laste inn det nye oppsettet"
+
+#~ msgid "Public WebSockets"
+#~ msgstr "Offentlig WebSockets"
+
+#~ msgid "Conferences"
+#~ msgstr "Konferanser"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Opprett nytt samtalerom"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Navn"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "Ønsker du å bli lagt automatisk til i dette samtalerommet?"
+
+#~ msgid "An error occured :"
+#~ msgstr "En feil oppstod:"
+
+#~ msgid "Configure"
+#~ msgstr "Sett opp"
+
+#~ msgid "Add a new URL"
+#~ msgstr "Legg til ny nettadresse"
+
+#~ msgid "URL"
+#~ msgstr "Nettadresse"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Navn"
+
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "Ser du etter dokumentasjon?"
+
+#~ msgid "This is not a valid url"
+#~ msgstr "Dette er ikke en gyldig nettadresse"
+
+#~ msgid "Sharing the URL"
+#~ msgstr "Deling av nettadressen"

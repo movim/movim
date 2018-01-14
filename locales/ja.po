@@ -24,8 +24,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -86,8 +84,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -107,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-24 15:12+0200\n"
+"POT-Creation-Date: 2018-01-14 15:02+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: RACER\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -308,24 +304,12 @@ msgstr "ログ"
 msgid "Server Timezone"
 msgstr "サーバータイムゾーン"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "ウェブソケット設定"
-
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
 msgstr ""
 
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "ウェブソケットURI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "URLを変更した場合はデーモンを再起動してください"
-
-#: [websocket]publics
-msgid "Public WebSockets"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
 msgstr ""
 
 #: [credentials]title
@@ -388,6 +372,10 @@ msgstr ""
 
 #: [xmpp]country
 msgid "Main XMPP server country"
+msgstr ""
+
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
 msgstr ""
 
 #: [log]empty
@@ -516,68 +504,6 @@ msgstr "このユーザがまだ投稿していません"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
-
-#: [title]conferences
-msgid "Conferences"
-msgstr ""
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "グループ"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr ""
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr ""
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "ニックネーム"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "不正チャットルームID"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "名前が空です"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "ブックマークを更新しました"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr ""
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "新しいURLを追加する"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
 msgstr ""
 
 #: [message]published
@@ -880,11 +806,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -979,6 +905,10 @@ msgstr "一般情報"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "名前"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "ニックネーム"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1146,6 +1076,10 @@ msgstr ""
 msgid "Give a label for this group"
 msgstr ""
 
+#: [group]empty_title
+msgid "Groups"
+msgstr "グループ"
+
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr ""
@@ -1193,6 +1127,10 @@ msgstr ""
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "コンタクトの投稿"
+
+#: [groups]empty_server
+msgid "There is no Groups yet on this server."
+msgstr ""
 
 #: [groups]add
 msgid "Create a new Group on %s"
@@ -1276,8 +1214,8 @@ msgid "Our official apps are available on our website"
 msgstr ""
 
 #: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "ドキュメンテーションお探しですか"
+msgid "Want to contribute to the project?"
+msgstr ""
 
 #: [wiki]button
 msgid "Read the Wiki"
@@ -1678,8 +1616,9 @@ msgid "Tags"
 msgstr "タグ"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
-msgstr ""
+#, fuzzy
+msgid "Please enter a valid URL"
+msgstr "正しいJabber IDを入力してください"
 
 #: [publish]no_content_preview
 msgid "No content to preview"
@@ -1751,9 +1690,21 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "チャットルーム"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr ""
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "不正チャットルームID"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "名前が空です"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1774,6 +1725,10 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "ブックマークを更新しました"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1896,14 +1851,6 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr ""
-
-#: [share]success
-msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2045,6 +1992,11 @@ msgstr ""
 #: [visio]failed
 msgid "failed"
 msgstr ""
+
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "切断する"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2851,6 +2803,24 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "ウェブソケット設定"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "ウェブソケットURI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "URLを変更した場合はデーモンを再起動してください"
+
+#~ msgid "Add a new URL"
+#~ msgstr "新しいURLを追加する"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "ドキュメンテーションお探しですか"
 
 #~ msgid "Accounts"
 #~ msgstr "アカウント"

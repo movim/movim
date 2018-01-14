@@ -45,6 +45,7 @@ Visio.states = {
     calling: '{$c->__('visio.calling')}',
     ringing: '{$c->__('visio.ringing')}',
     in_call: '{$c->__('visio.in_call')}',
-    failed: '{$c->__('failed')}'
+    failed: '{$c->__('visio.failed')}',
+    connecting: '{$c->__('visio.connecting')}'
 }
 </script>

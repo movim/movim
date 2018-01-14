@@ -27,8 +27,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -89,8 +87,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -110,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-24 15:12+0200\n"
+"POT-Creation-Date: 2018-01-14 15:02+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -310,25 +306,13 @@ msgstr "日志输出"
 msgid "Server Timezone"
 msgstr "服务器时区"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "WebSocket 配置"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "在表格中输入一个有效的 WebSocket 地址"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "WebSocket URI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "如果你更改了 URI， 请重启守护进程（Daemon）来重载配置"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "公共 WebSocket"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -391,6 +375,10 @@ msgstr "主 XMPP 服务器描述"
 #: [xmpp]country
 msgid "Main XMPP server country"
 msgstr "主 XMPP 服务器国家"
+
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -519,68 +507,6 @@ msgstr "这个用户还没发布任何东西"
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "私密内容，请登录后查看"
-
-#: [title]conferences
-msgid "Conferences"
-msgstr "会议"
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "分组"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "添加一个新的聊天室"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "聊天室 ID"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "名称"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "昵称"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "你想要自动加入这个聊天室吗？"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "无效的聊天室 ID"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "用户名为空"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "书签已更新"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "出现了一个错误："
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "配置"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "添加一个新的 URL"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "名称"
 
 #: [message]published
 msgid "Message Published"
@@ -873,11 +799,11 @@ msgstr "给此社群添加一个标签"
 msgid "My Community Name"
 msgstr "我的社群名称"
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 msgid "Share this subscription publicly"
 msgstr "公开分享此订阅"
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "它将会在你的个人资料中显示"
 
@@ -972,6 +898,10 @@ msgstr "一般信息"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "姓名"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "昵称"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1137,6 +1067,10 @@ msgstr "将你对该群组的订阅状况公开给你的朋友"
 msgid "Give a label for this group"
 msgstr "给该群组加上标签"
 
+#: [group]empty_title
+msgid "Groups"
+msgstr "分组"
+
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "该群组出错了"
@@ -1184,6 +1118,11 @@ msgstr "你订阅的所有群组在“我的订阅”页面中，它们中的新
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "联系人帖子"
+
+#: [groups]empty_server
+#, fuzzy
+msgid "There is no Groups yet on this server."
+msgstr "此服务器上没有社群。"
 
 #: [groups]add
 msgid "Create a new Group on %s"
@@ -1266,8 +1205,8 @@ msgid "Our official apps are available on our website"
 msgstr "我们的官方应用可以从我们的网站获取"
 
 #: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "需要查找一些帮助文档?"
+msgid "Want to contribute to the project?"
+msgstr ""
 
 #: [wiki]button
 msgid "Read the Wiki"
@@ -1666,7 +1605,8 @@ msgid "Tags"
 msgstr "标签"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+#, fuzzy
+msgid "Please enter a valid URL"
 msgstr "请输入一个有效的URL"
 
 #: [publish]no_content_preview
@@ -1737,9 +1677,21 @@ msgstr "点击新建按钮来添加一个。"
 msgid "Chatrooms"
 msgstr "聊天室"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "聊天室 ID"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "收藏的聊天室"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "无效的聊天室 ID"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "用户名为空"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1760,6 +1712,10 @@ msgstr "在连线后加入此聊天室"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "无法加入聊天室，需要注册"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "书签已更新"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1880,14 +1836,6 @@ msgstr "想找什么？"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "使用 Ctrl + M 打开我"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "这不是一个有效的 URL"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "分享 URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -2028,6 +1976,11 @@ msgstr ""
 #: [visio]failed
 msgid "failed"
 msgstr ""
+
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "连接中"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2834,3 +2787,56 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "WebSocket 配置"
+
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "在表格中输入一个有效的 WebSocket 地址"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "WebSocket URI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "如果你更改了 URI， 请重启守护进程（Daemon）来重载配置"
+
+#~ msgid "Public WebSockets"
+#~ msgstr "公共 WebSocket"
+
+#~ msgid "Conferences"
+#~ msgstr "会议"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "添加一个新的聊天室"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "名称"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "你想要自动加入这个聊天室吗？"
+
+#~ msgid "An error occured :"
+#~ msgstr "出现了一个错误："
+
+#~ msgid "Configure"
+#~ msgstr "配置"
+
+#~ msgid "Add a new URL"
+#~ msgstr "添加一个新的 URL"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "名称"
+
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "需要查找一些帮助文档?"
+
+#~ msgid "This is not a valid url"
+#~ msgstr "这不是一个有效的 URL"
+
+#~ msgid "Sharing the URL"
+#~ msgstr "分享 URL"
