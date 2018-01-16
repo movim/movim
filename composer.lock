@@ -404,7 +404,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2018-01-11T22:43:43+00:00"
+            "time": "2018-01-11 22:43:43"
         },
         {
             "name": "evenement/evenement",
@@ -605,7 +605,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-11-15T20:35:47+00:00"
+            "time": "2016-11-15 20:35:47"
         },
         {
             "name": "michelf/php-markdown",
@@ -613,12 +613,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
-                "reference": "f7bc32eefb7f1ac446d94fb057e9da24d6176e67"
+                "reference": "01ab082b355bf188d907b9929cd99b2923053495"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/f7bc32eefb7f1ac446d94fb057e9da24d6176e67",
-                "reference": "f7bc32eefb7f1ac446d94fb057e9da24d6176e67",
+                "url": "https://api.github.com/repos/michelf/php-markdown/zipball/01ab082b355bf188d907b9929cd99b2923053495",
+                "reference": "01ab082b355bf188d907b9929cd99b2923053495",
                 "shasum": ""
             },
             "require": {
@@ -651,7 +651,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2017-10-11T00:04:05+00:00"
+            "time": "2018-01-15 00:49:33"
         },
         {
             "name": "monolog/monolog",
@@ -763,7 +763,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-07-06T11:04:24+00:00"
+            "time": "2017-07-06 11:04:24"
         },
         {
             "name": "movim/moxl",
@@ -811,7 +811,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-12-27T19:44:09+00:00"
+            "time": "2017-12-27 19:44:09"
         },
         {
             "name": "movim/sasl2",
@@ -862,7 +862,7 @@
                 "sasl2",
                 "scram"
             ],
-            "time": "2014-06-05T21:19:06+00:00"
+            "time": "2014-06-05 21:19:06"
         },
         {
             "name": "paragonie/random_compat",
@@ -1094,7 +1094,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15T14:21:40+00:00"
+            "time": "2016-12-15 14:21:40"
         },
         {
             "name": "ramsey/uuid",
@@ -1420,6 +1420,11 @@
                 "react/stream": "^1.0 || ^0.7.1",
                 "ringcentral/psr7": "^1.2"
             },
+            "require-dev": {
+                "clue/block-react": "^1.1",
+                "phpunit/phpunit": "^4.8.10||^5.0",
+                "react/socket": "^1.0 || ^0.8 || ^0.7"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1430,11 +1435,16 @@
             "license": [
                 "MIT"
             ],
-            "description": "Library for building an evented http server.",
+            "description": "Event-driven, streaming plaintext HTTP and secure HTTPS server for ReactPHP",
             "keywords": [
-                "http"
+                "event-driven",
+                "http",
+                "https",
+                "reactphp",
+                "server",
+                "streaming"
             ],
-            "time": "2016-07-06T23:51:32+00:00"
+            "time": "2016-07-06 23:51:32"
         },
         {
             "name": "react/http-client",
@@ -1765,7 +1775,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2017-11-18T11:25:56+00:00"
+            "time": "2017-11-18 11:25:56"
         },
         {
             "name": "respect/validation",
@@ -1832,16 +1842,16 @@
         },
         {
             "name": "ringcentral/psr7",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ringcentral/psr7.git",
-                "reference": "2594fb47cdc659f3fcf0aa1559b7355460555303"
+                "reference": "dcd84bbb49b96c616d1dcc8bfb9bef3f2cd53d1c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ringcentral/psr7/zipball/2594fb47cdc659f3fcf0aa1559b7355460555303",
-                "reference": "2594fb47cdc659f3fcf0aa1559b7355460555303",
+                "url": "https://api.github.com/repos/ringcentral/psr7/zipball/dcd84bbb49b96c616d1dcc8bfb9bef3f2cd53d1c",
+                "reference": "dcd84bbb49b96c616d1dcc8bfb9bef3f2cd53d1c",
                 "shasum": ""
             },
             "require": {
@@ -1886,7 +1896,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-03-25T17:36:49+00:00"
+            "time": "2018-01-15T21:00:49+00:00"
         },
         {
             "name": "symfony/console",
