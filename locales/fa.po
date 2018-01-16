@@ -23,8 +23,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -85,8 +83,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -106,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-24 15:12+0200\n"
+"POT-Creation-Date: 2018-01-14 15:02+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
@@ -306,25 +302,13 @@ msgstr "میزان لاگ کردن"
 msgid "Server Timezone"
 msgstr "زمان محلی سرور"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "تنظیمات وب سوکت"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "یک URI وب سوکت معتبر وارد کنید"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "Websocket URI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "اگر URI را عوض کردید daemon را ریستارت کنید تا تنظیمات اعمال شود"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "وب سوکت های عمومی"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -387,6 +371,10 @@ msgstr "توضیحات سرور اصلی"
 #: [xmpp]country
 msgid "Main XMPP server country"
 msgstr "کشور سرور اصلی"
+
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -515,68 +503,6 @@ msgstr "این کاربر تا الان هنوز نوشته ای ارسال نک
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "این محتوا خصوصی است ،برای مشاهده لطفا وارد شوید"
-
-#: [title]conferences
-msgid "Conferences"
-msgstr "کنفرانس ها"
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "گروه ها"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "ایجاد اتاق گپ"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "آیدی اتاق گپ"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "نام"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "اسم مستعار"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "میخواهید خودکار به این اتاق گپ بپیوندید ؟"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "آیدی اتاق چت اشتباه است"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "نام خالی است"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "نشان ها بروز شد"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "خطایی رخ داد :"
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "تنظیم"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "اضافه کردن URL"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "نام"
 
 #: [message]published
 msgid "Message Published"
@@ -869,11 +795,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -968,6 +894,10 @@ msgstr ""
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "نام"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "اسم مستعار"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1133,6 +1063,10 @@ msgstr ""
 msgid "Give a label for this group"
 msgstr ""
 
+#: [group]empty_title
+msgid "Groups"
+msgstr "گروه ها"
+
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr ""
@@ -1180,6 +1114,11 @@ msgstr ""
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
+
+#: [groups]empty_server
+#, fuzzy
+msgid "There is no Groups yet on this server."
+msgstr "شما نمیتوانید گروه جدیدی روی این سرور بسازید"
 
 #: [groups]add
 msgid "Create a new Group on %s"
@@ -1262,7 +1201,7 @@ msgid "Our official apps are available on our website"
 msgstr ""
 
 #: [wiki]question
-msgid "Looking for some documentation ?"
+msgid "Want to contribute to the project?"
 msgstr ""
 
 #: [wiki]button
@@ -1662,7 +1601,7 @@ msgid "Tags"
 msgstr "تگ ها"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+msgid "Please enter a valid URL"
 msgstr ""
 
 #: [publish]no_content_preview
@@ -1733,9 +1672,21 @@ msgstr "با کلیک کردن روی دکمه اضافه کنید"
 msgid "Chatrooms"
 msgstr "اتاق های چت"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "آیدی اتاق گپ"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "اتاق مورد علاقه من"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "آیدی اتاق چت اشتباه است"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "نام خالی است"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1756,6 +1707,10 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "نشان ها بروز شد"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1875,14 +1830,6 @@ msgstr "دنبال چی میگردی؟"
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr ""
-
-#: [share]success
-msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2023,6 +1970,10 @@ msgstr ""
 
 #: [visio]failed
 msgid "failed"
+msgstr ""
+
+#: [visio]connecting
+msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
@@ -2830,3 +2781,47 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "تنظیمات وب سوکت"
+
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "یک URI وب سوکت معتبر وارد کنید"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "Websocket URI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "اگر URI را عوض کردید daemon را ریستارت کنید تا تنظیمات اعمال شود"
+
+#~ msgid "Public WebSockets"
+#~ msgstr "وب سوکت های عمومی"
+
+#~ msgid "Conferences"
+#~ msgstr "کنفرانس ها"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "ایجاد اتاق گپ"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "نام"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "میخواهید خودکار به این اتاق گپ بپیوندید ؟"
+
+#~ msgid "An error occured :"
+#~ msgstr "خطایی رخ داد :"
+
+#~ msgid "Configure"
+#~ msgstr "تنظیم"
+
+#~ msgid "Add a new URL"
+#~ msgstr "اضافه کردن URL"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "نام"

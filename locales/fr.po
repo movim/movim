@@ -2,7 +2,7 @@
 # Translators:
 # Cypouz, 2015
 # Éfrit, 2015
-# Jaussoin Timothée <edhelas@movim.eu>, 2015-2017
+# Jaussoin Timothée <edhelas@movim.eu>, 2015-2018
 # Maxime Buquet <tidusx62@gmail.com>, 2015
 # Thirty Thirds <thirtythirds@gmail.com>, 2015-2017
 # Tom <caporaldead@gmail.com>, 2015
@@ -26,8 +26,6 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -89,8 +87,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -110,8 +106,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-24 15:12+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"PO-Revision-Date: 2018-01-14 14:06+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -310,25 +306,13 @@ msgstr "Niveau de détails des journaux"
 msgid "Server Timezone"
 msgstr "Fuseau horaire du serveur"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "Configuration du WebSocket"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr "Restreindre les suggestions"
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "Veuillez saisir une URI du WebSocket valide dans le formulaire"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "URI du WebSocket"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Veuillez relancer le démon si vous changer l’URI, afin de prendre en compte la configuration"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "WebSockets publics"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr "Ne suggérer que les salons de discussions, Communautés et contenus disponibles sur le serveur XMPP de l'utilisateur et services liés"
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -391,6 +375,10 @@ msgstr "Description du serveur XMPP par défaut"
 #: [xmpp]country
 msgid "Main XMPP server country"
 msgstr "Pays du serveur XMPP par défaut"
+
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr "Choisissez un pays"
 
 #: [log]empty
 msgid "Empty"
@@ -519,68 +507,6 @@ msgstr "Cet utilisateur n’a rien publié pour le moment"
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "Ce contenu est privé, veuillez vous connecter pour le consulter"
-
-#: [title]conferences
-msgid "Conferences"
-msgstr "Conférences"
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "Groupes"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "Ajouter un nouveau salon de discussion"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Identifiant du salon"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Nom"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Pseudonyme"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Voulez vous rejoindre automatiquement ce salon ?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Mauvais identifiant de salon de discussion"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Nom vide"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Signets mis à jour"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "Une erreur s’est produite : "
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "Configurer"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "Ajouter un nouveau lien"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Nom"
 
 #: [message]published
 msgid "Message Published"
@@ -873,11 +799,11 @@ msgstr "Donnez un nom personnalisé pour cette communauté"
 msgid "My Community Name"
 msgstr "Ma Communauté"
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Partager cette souscription publiquement"
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Elle apparaîtra sur votre profil"
 
@@ -972,6 +898,10 @@ msgstr "Informations générales"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nom"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Pseudonyme"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1137,6 +1067,10 @@ msgstr "Partagez votre adhésion à ce groupe avec vos amis"
 msgid "Give a label for this group"
 msgstr "Donnez un nom personnalisé pour ce Groupe"
 
+#: [group]empty_title
+msgid "Groups"
+msgstr "Groupes"
+
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Ce groupe ne semble pas disponible pour le moment"
@@ -1184,6 +1118,10 @@ msgstr "Vous trouverez la liste des Groupes auxquels vous avez souscrit dans Mes
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr "Billet d’un contact"
+
+#: [groups]empty_server
+msgid "There is no Groups yet on this server."
+msgstr "Il n'y a pas de Communautés pour le moment sur ce serveur"
 
 #: [groups]add
 msgid "Create a new Group on %s"
@@ -1266,8 +1204,8 @@ msgid "Our official apps are available on our website"
 msgstr "Nos applications officielles sont disponibles sur le site officiel"
 
 #: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "Vous cherchez de la documentation?"
+msgid "Want to contribute to the project?"
+msgstr "Vous souhaitez contribuer ?"
 
 #: [wiki]button
 msgid "Read the Wiki"
@@ -1666,7 +1604,7 @@ msgid "Tags"
 msgstr "Étiquettes"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+msgid "Please enter a valid URL"
 msgstr "Veuillez entrer une URL valide"
 
 #: [publish]no_content_preview
@@ -1737,9 +1675,21 @@ msgstr "Ajoutez en un en cliquant sur le bouton ajouter."
 msgid "Chatrooms"
 msgstr "Salons de discussion"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Identifiant du salon"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mon salon préféré"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Mauvais identifiant de salon de discussion"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Nom vide"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1760,6 +1710,10 @@ msgstr "Rejoindre ce salon de discussion lors de la connexion"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Une inscription est requise pour rejoindre ce salon"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Signets mis à jour"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1880,14 +1834,6 @@ msgstr "Que cherchez vous ?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Ouvrez moi en faisant Ctrl + M"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "Cette URL n'est pas valide"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "Partage de l'URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -2028,6 +1974,10 @@ msgstr "en communication"
 #: [visio]failed
 msgid "failed"
 msgstr "la mise en communication a échoué"
+
+#: [visio]connecting
+msgid "…connecting"
+msgstr "…mise en relation"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."

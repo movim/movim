@@ -404,7 +404,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2018-01-11 22:43:43"
+            "time": "2018-01-11T22:43:43+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -605,7 +605,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-11-15 20:35:47"
+            "time": "2016-11-15T20:35:47+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -651,7 +651,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2017-10-11 00:04:05"
+            "time": "2017-10-11T00:04:05+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -763,7 +763,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-07-06 11:04:24"
+            "time": "2017-07-06T11:04:24+00:00"
         },
         {
             "name": "movim/moxl",
@@ -811,7 +811,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-12-27 19:44:09"
+            "time": "2017-12-27T19:44:09+00:00"
         },
         {
             "name": "movim/sasl2",
@@ -862,7 +862,7 @@
                 "sasl2",
                 "scram"
             ],
-            "time": "2014-06-05 21:19:06"
+            "time": "2014-06-05T21:19:06+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1094,7 +1094,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15 14:21:40"
+            "time": "2016-12-15T14:21:40+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -1420,11 +1420,6 @@
                 "react/stream": "^1.0 || ^0.7.1",
                 "ringcentral/psr7": "^1.2"
             },
-            "require-dev": {
-                "clue/block-react": "^1.1",
-                "phpunit/phpunit": "^4.8.10||^5.0",
-                "react/socket": "^1.0 || ^0.8 || ^0.7"
-            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1435,16 +1430,11 @@
             "license": [
                 "MIT"
             ],
-            "description": "Event-driven, streaming plaintext HTTP and secure HTTPS server for ReactPHP",
+            "description": "Library for building an evented http server.",
             "keywords": [
-                "event-driven",
-                "http",
-                "https",
-                "reactphp",
-                "server",
-                "streaming"
+                "http"
             ],
-            "time": "2016-07-06 23:51:32"
+            "time": "2016-07-06T23:51:32+00:00"
         },
         {
             "name": "react/http-client",
@@ -1775,7 +1765,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2017-11-18 11:25:56"
+            "time": "2017-11-18T11:25:56+00:00"
         },
         {
             "name": "respect/validation",

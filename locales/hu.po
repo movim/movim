@@ -25,8 +25,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -87,8 +85,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -108,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-24 15:12+0200\n"
+"POT-Creation-Date: 2018-01-14 15:02+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -308,25 +304,13 @@ msgstr ""
 msgid "Server Timezone"
 msgstr "Szerver Időzóna"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "WebSocket beállítása"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "Adj meg a mezőben egy érvényes WebSocket URI-t"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "WebSocket URI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Ha megváltoztatod az URI-t, a beállítások újratöltéséhez indítsd újra a démont"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "Nyilvános WebSocketek"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -389,6 +373,10 @@ msgstr "Fő XMPP szerver leírása"
 #: [xmpp]country
 msgid "Main XMPP server country"
 msgstr "Fő XMPP szerver országa"
+
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
 
 #: [log]empty
 msgid "Empty"
@@ -517,68 +505,6 @@ msgstr "Ez a felhasználó nem osztott meg semmit sem eddig."
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "Ez a tartalom nem nyilvános, jelentkezz be, hogy láthasd"
-
-#: [title]conferences
-msgid "Conferences"
-msgstr ""
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "Csoportok"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr ""
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Chat szoba azonosítója:"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr ""
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Becenév"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Rossz Chat szoba azonosító"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Név üres"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Könyvjelzők frissítve"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr ""
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -871,11 +797,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription
+#: [communityheader]share_subscription [group]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text
+#: [communityheader]share_subscription_text [group]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -970,6 +896,10 @@ msgstr "Általános információk"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Név"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Becenév"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1135,6 +1065,10 @@ msgstr "Tedd publikussá, hogy ennek a csoportnak tagja vagy a barátaid számá
 msgid "Give a label for this group"
 msgstr "Adj meg címkéket ehhez a csoporthoz"
 
+#: [group]empty_title
+msgid "Groups"
+msgstr "Csoportok"
+
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Valami rossz történt a csoporttal"
@@ -1182,6 +1116,11 @@ msgstr "A Feliratkozásaim menüben találhatod a feliratkozott csoportjaid list
 #: [groups]contact_post [menu]contact_post [hello]contact_post
 msgid "Contact post"
 msgstr ""
+
+#: [groups]empty_server
+#, fuzzy
+msgid "There is no Groups yet on this server."
+msgstr "%s csoportok a szerveren."
 
 #: [groups]add
 msgid "Create a new Group on %s"
@@ -1264,8 +1203,8 @@ msgid "Our official apps are available on our website"
 msgstr ""
 
 #: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "Dokumentációt keresel?"
+msgid "Want to contribute to the project?"
+msgstr ""
 
 #: [wiki]button
 msgid "Read the Wiki"
@@ -1664,7 +1603,8 @@ msgid "Tags"
 msgstr "Címkék"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+#, fuzzy
+msgid "Please enter a valid URL"
 msgstr "Érvényes url-t adj meg"
 
 #: [publish]no_content_preview
@@ -1735,9 +1675,21 @@ msgstr "Vegyél fel egyet a hozzáadás gombra kattintva."
 msgid "Chatrooms"
 msgstr "Chatszobák"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Chat szoba azonosítója:"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Kedvenc szobám"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Rossz Chat szoba azonosító"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Név üres"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1758,6 +1710,10 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Könyvjelzők frissítve"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1878,14 +1834,6 @@ msgstr "Mit keresel?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "A Ctrl + M gombbal nyithatsz meg"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr ""
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -2026,6 +1974,11 @@ msgstr ""
 #: [visio]failed
 msgid "failed"
 msgstr ""
+
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "Csatlakozás"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2832,3 +2785,21 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "WebSocket beállítása"
+
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "Adj meg a mezőben egy érvényes WebSocket URI-t"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "WebSocket URI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "Ha megváltoztatod az URI-t, a beállítások újratöltéséhez indítsd újra a démont"
+
+#~ msgid "Public WebSockets"
+#~ msgstr "Nyilvános WebSocketek"
+
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "Dokumentációt keresel?"
