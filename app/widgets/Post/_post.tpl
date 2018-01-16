@@ -218,17 +218,17 @@
                                 <span
                                     class="primary icon bubble white color"
                                     style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture|echapJS});">
-                                    <i class="zmdi zmdi-mail-reply"></i>
+                                    <i class="zmdi zmdi-share"></i>
                                 </span>
                             {elseif="$reply->isMicroblog()"}
                                 {$url = $reply->getContact()->getPhoto('l')}
                                 {if="$url"}
                                     <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
-                                        <i class="zmdi zmdi-mail-reply"></i>
+                                        <i class="zmdi zmdi-share"></i>
                                     </span>
                                 {else}
                                     <span class="primary icon bubble color {$reply->getContact()->jid|stringToColor}">
-                                        <i class="zmdi zmdi-mail-reply"></i>
+                                        <i class="zmdi zmdi-share"></i>
                                     </span>
                                 {/if}
                             {/if}

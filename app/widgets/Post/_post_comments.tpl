@@ -112,7 +112,7 @@
             </button>
             {if="$c->supported('pubsub')"}
             <button class="button flat gray" onclick="Post.share()">
-                <i class="zmdi zmdi-mail-reply"></i> {$c->__('button.reply')}
+                <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
             </button>
             {/if}
         </p>

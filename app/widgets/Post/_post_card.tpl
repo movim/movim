@@ -130,17 +130,17 @@
                             <span
                                 class="primary icon bubble color white"
                                 style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
-                                <i class="zmdi zmdi-mail-reply"></i>
+                                <i class="zmdi zmdi-share"></i>
                             </span>
                         {elseif="$reply->isMicroblog()"}
                             {$url = $reply->getContact()->getPhoto('l')}
                             {if="$url"}
                                 <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
-                                    <i class="zmdi zmdi-mail-reply"></i>
+                                    <i class="zmdi zmdi-share"></i>
                                 </span>
                             {else}
                                 <span class="primary icon bubble color {$reply->getContact()->jid|stringToColor}">
-                                    <i class="zmdi zmdi-mail-reply"></i>
+                                    <i class="zmdi zmdi-share"></i>
                                 </span>
                             {/if}
                         {/if}
@@ -243,10 +243,10 @@
                 {/if}
                 {if="!$public"}
                 <a
-                    title="{$c->__('button.reply')}"
+                    title="{$c->__('button.share')}"
                     class="button icon flat gray"
                     href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
-                    <i class="zmdi zmdi-mail-reply"></i>
+                    <i class="zmdi zmdi-share"></i>
                 </a>
                     {if="$post->isPublic()"}
                         <a  title="{$c->__('post.public_yes')}"
