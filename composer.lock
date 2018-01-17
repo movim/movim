@@ -359,12 +359,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "c71e62f3c15d8693e045eccad987038eba8a22ea"
+                "reference": "2644cb5557d32fc1f5e40710e10d95034f3699e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/c71e62f3c15d8693e045eccad987038eba8a22ea",
-                "reference": "c71e62f3c15d8693e045eccad987038eba8a22ea",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/2644cb5557d32fc1f5e40710e10d95034f3699e6",
+                "reference": "2644cb5557d32fc1f5e40710e10d95034f3699e6",
                 "shasum": ""
             },
             "require": {
@@ -404,7 +404,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2018-01-11 22:43:43"
+            "time": "2018-01-17 16:20:41"
         },
         {
             "name": "evenement/evenement",
