@@ -117,14 +117,14 @@ class Rooms extends \Movim\Widget\Base
 
         $id = new \Modl\InfoDAO;
         $cd = new \Modl\ConferenceDAO;
-        $cd = new \Modl\CapsDAO;
+        $cad = new \Modl\CapsDAO;
 
         $view->assign('info', $id->getConference($room));
         $view->assign('id', $room);
         $view->assign('conference', $cd->get($room));
         $view->assign('username', $this->user->getUser());
 
-        $this->rpc('Rooms.setDefaultServices', $cd->getMUC($this->user->getServer()));
+        $this->rpc('Rooms.setDefaultServices', $cad->getMUC($this->user->getServer()));
 
         Dialog::fill($view->draw('_rooms_add', true));
     }
