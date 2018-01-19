@@ -269,7 +269,7 @@
                         {if="$post->picture != protectPicture($value['href']) && $value.href != $post->getPublicUrl()"}
                             <li>
                                 <span class="primary icon gray">
-                                    {if="isset($value.logo)"}
+                                    {if="!empty($value.logo)"}
                                         <img src="{$value.logo}"/>
                                     {else}
                                         <i class="zmdi zmdi-link"></i>

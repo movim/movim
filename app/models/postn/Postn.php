@@ -392,7 +392,7 @@ class Postn extends Model
                             [
                                 'href' => $l['href'],
                                 'url'  => parse_url($l['href']),
-                                'title'=> (isset($l['description'])) ? $l['title'] : false,
+                                'title'=> (isset($l['title'])) ? $l['title'] : false,
                                 'rel'  => 'related',
                                 'description' => (isset($l['description'])) ? $l['description'] : false,
                                 'logo' => (isset($l['logo'])) ? $l['logo'] : false
