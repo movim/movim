@@ -404,7 +404,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2018-01-17 16:20:41"
+            "time": "2018-01-17T16:20:41+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -605,7 +605,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-11-15 20:35:47"
+            "time": "2016-11-15T20:35:47+00:00"
         },
         {
             "name": "michelf/php-markdown",
@@ -651,7 +651,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2018-01-15 00:49:33"
+            "time": "2018-01-15T00:49:33+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -763,7 +763,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-07-06 11:04:24"
+            "time": "2017-07-06T11:04:24+00:00"
         },
         {
             "name": "movim/moxl",
@@ -811,7 +811,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2017-12-27 19:44:09"
+            "time": "2017-12-27T19:44:09+00:00"
         },
         {
             "name": "movim/sasl2",
@@ -862,7 +862,7 @@
                 "sasl2",
                 "scram"
             ],
-            "time": "2014-06-05 21:19:06"
+            "time": "2014-06-05T21:19:06+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -1094,7 +1094,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15 14:21:40"
+            "time": "2016-12-15T14:21:40+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -1269,22 +1269,22 @@
         },
         {
             "name": "react/child-process",
-            "version": "v0.5.1",
+            "version": "v0.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/child-process.git",
-                "reference": "7d1f765d6caa0303272c7f4bcef1b1bbc1b38c42"
+                "reference": "aae49d7f1340bafb695b9af3ce4421ea41a39620"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/child-process/zipball/7d1f765d6caa0303272c7f4bcef1b1bbc1b38c42",
-                "reference": "7d1f765d6caa0303272c7f4bcef1b1bbc1b38c42",
+                "url": "https://api.github.com/repos/reactphp/child-process/zipball/aae49d7f1340bafb695b9af3ce4421ea41a39620",
+                "reference": "aae49d7f1340bafb695b9af3ce4421ea41a39620",
                 "shasum": ""
             },
             "require": {
                 "evenement/evenement": "^3.0 || ^2.0 || ^1.0",
                 "php": ">=5.3.0",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3",
+                "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
                 "react/stream": "^1.0 || ^0.7.6"
             },
             "require-dev": {
@@ -1307,7 +1307,7 @@
                 "process",
                 "reactphp"
             ],
-            "time": "2017-12-22T08:11:14+00:00"
+            "time": "2018-01-18T14:53:06+00:00"
         },
         {
             "name": "react/dns",
@@ -1444,7 +1444,7 @@
                 "server",
                 "streaming"
             ],
-            "time": "2016-07-06 23:51:32"
+            "time": "2016-07-06T23:51:32+00:00"
         },
         {
             "name": "react/http-client",
@@ -1645,16 +1645,16 @@
         },
         {
             "name": "react/socket",
-            "version": "v0.8.8",
+            "version": "v0.8.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "e9e206b6277023bf4afd910a764f0cd3d470e7ed"
+                "reference": "9db38c58cbb1343bbe6523d1b930a40d0e110839"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/e9e206b6277023bf4afd910a764f0cd3d470e7ed",
-                "reference": "e9e206b6277023bf4afd910a764f0cd3d470e7ed",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/9db38c58cbb1343bbe6523d1b930a40d0e110839",
+                "reference": "9db38c58cbb1343bbe6523d1b930a40d0e110839",
                 "shasum": ""
             },
             "require": {
@@ -1688,7 +1688,7 @@
                 "reactphp",
                 "stream"
             ],
-            "time": "2018-01-06T12:13:20+00:00"
+            "time": "2018-01-18T11:29:21+00:00"
         },
         {
             "name": "react/stream",
@@ -1775,7 +1775,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2017-11-18 11:25:56"
+            "time": "2017-11-18T11:25:56+00:00"
         },
         {
             "name": "respect/validation",
