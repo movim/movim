@@ -137,6 +137,7 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         $pd = new \Modl\PostnDAO;
 
+        $ids = is_array($ids) ? $ids : [];
         foreach($ids as $key => $id) {
             if(empty($id)) {
                 unset($ids[$key]);
