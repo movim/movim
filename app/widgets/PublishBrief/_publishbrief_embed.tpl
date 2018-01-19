@@ -3,7 +3,6 @@
         <i class="zmdi zmdi-close"></i>
     </span>
     {if="!empty($embed->images)"}
-        {$embed->images|var_dump}
         <span class="primary icon thumb"
             style="background-image: url({$embed->images[0]['url']})"
             title="{$embed->images[0]['width']} x {$embed->images[0]['height']} - {$embed->images[0]['size']|sizeToCleanSize}">
