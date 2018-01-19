@@ -189,6 +189,7 @@ class Rooms extends \Movim\Widget\Base
 
         $userslist = $this->getUsersList($room);
         $view->assign('list', $userslist);
+        $view->assign('room', $room);
         $view->assign('me', $this->user->getLogin());
 
         Dialog::fill($view->draw('_rooms_list', true), true);

@@ -582,7 +582,7 @@ class ContactDAO extends SQL
     {
         $this->_sql = '
             select * from contact
-            right outer join presence on contact.jid = presence.mucjid
+            join presence on contact.jid = presence.mucjid
             where presence.session = :session
             and presence.jid = :jid
             and presence.resource = :resource
