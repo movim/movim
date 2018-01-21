@@ -13,5 +13,11 @@ class Help extends \Movim\Widget\Base
             $this->route('chat', ['movim@conference.movim.eu', 'room'])
         );
     }
+
+    function display()
+    {
+        $id = new \Modl\InfoDAO;
+        $this->view->assign('info', $id->getJid($this->user->getServer()));
+    }
 }
 

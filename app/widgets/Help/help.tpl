@@ -39,24 +39,47 @@
                 </a>
             </p>
         </li>
+    </ul>
+    {if="!empty($info->adminaddresses)"}
+        <hr />
+        <ul class="list thin flex">
+            <li class="subheader block large">
+                <p class="normal">{$c->__('adminaddresses.title')}</p>
+            </li>
+            <hr />
+            {loop="$info->adminaddresses"}
+                <li class="block">
+                    {$parsed = parse_url($value)}
+                    {if="$parsed['scheme'] == 'xmpp'"}
+                        <span class="primary icon gray">
+                            <i class="zmdi zmdi-comment"></i>
+                        </span>
+                        <p class="normal">
+                            <a href="{$c->route('chat', $parsed['path'])}">
+                                {$parsed['path']}
+                            </a>
+                        </p>
+                    {else}
+                        <span class="primary icon gray">
+                            <i class="zmdi zmdi-email"></i>
+                        </span>
+                        <p class="normal">
+                            <a href="{$value}" target="_blank" rel="noopener noreferrer">
+                                {$parsed['path']}
+                            </a>
+                        </p>
+                    {/if}
+                </li>
+            {/loop}
+        </ul>
+    {/if}
+    <hr />
+    <ul class="list divided middle">
         <li class="subheader">
             <p>{$c->__('page.help')}</p>
         </li>
         <li class="block">
-            <span class="primary icon bubble color orange">
-                <i class="zmdi zmdi-email"></i>
-            </span>
-            <p>
-                {$c->__('ml.question')}
-            </p>
-            <p>
-                <a href="https://github.com/edhelas/movim/wiki/Mailing-List" target="_blank">
-                    {$c->__('ml.button')}
-                </a>
-            </p>
-        </li>
-        <li class="block">
-            <span class="primary icon bubble color teal">
+            <span class="primary icon gray">
                 <i class="zmdi zmdi-comment-text-alt"></i>
             </span>
             <p>{$c->__('chatroom.question')}</p>
@@ -66,58 +89,5 @@
                 </a>
             </p>
         </li>
-        <li class="block">
-            <span class="primary icon bubble color blue">
-                <i class="zmdi zmdi-github-alt"></i>
-            </span>
-            <p>
-                {$c->__('wiki.question')}
-            </p>
-            <p>
-                <a href="https://github.com/edhelas/movim/wiki" target="_blank">
-                    {$c->__('wiki.button')}
-                </a>
-            </p>
-        </li>
     </ul>
-    <!--
-    <div class="clear spacetop"></div>
-
-    <h2 class="padded_top_bottom">{$c->__('help.faq')}</h2>
-
-    <div class="card">
-        <article>
-            <header>
-                <ul class="simple">
-                    <li><h3>{$c->__('banner.title')}</h3></li>
-                </ul>
-            </header>
-            <section>
-                <p>{$c->__('banner.info1')}</p>
-                <ul class="thin">
-                    <li>
-                        <span class="color icon bubble gray small"></span>
-                        <span>{$c->__('banner.white')}</span>
-                    </li>
-                    <li>
-                        <span class="color icon bubble green small"></span>
-                        <span>{$c->__('banner.green')}</span>
-                    </li>
-                    <li>
-                        <span class="color icon bubble orange small"></span>
-                        <span>{$c->__('banner.orange')}</span>
-                    </li>
-                    <li>
-                        <span class="color icon bubble red small"></span>
-                        <span>{$c->__('banner.red')}</span>
-                    </li>
-                    <li>
-                        <span class="color icon bubble black small"></span>
-                        <span>{$c->__('banner.black')}</span>
-                    </li>
-                </ul>
-            </section>
-        </article>
-
-    </div>-->
 </div>
