@@ -42,14 +42,14 @@ class Request extends Action
         // Caps
         $c = new \Modl\Caps;
 
-        if(isset($this->_node)) {
+        if (isset($this->_node)) {
             $c->set($stanza, $this->_node);
         } else {
             $c->set($stanza, $this->_to);
         }
 
         $cd = new \Modl\CapsDAO;
-        if(!empty($c->features)) {
+        if (!empty($c->features)) {
             $cd->set($c);
         }
 
@@ -57,12 +57,15 @@ class Request extends Action
         $ind = new \Modl\InfoDAO;
         $in = $ind->get($this->_to, $this->_node);
 
-        if(!$in) {
+        if (!$in) {
             $in = new \Modl\Info;
         }
 
         $in->set($stanza);
-        $ind->set($in);
+        if (!empty($in->category)
+        && $in->category !== 'account') {
+            $ind->set($in);
+        }
 
         $this->pack([$this->_to, $this->_node]);
         $this->deliver();
@@ -71,7 +74,7 @@ class Request extends Action
         $affiliations = [];
 
         $owners = $stanza->query->xpath("//field[@var='pubsub#owner']/value/text()");
-        if(!empty($owners)) {
+        if (!empty($owners)) {
             $affiliations['owner'] = [];
             foreach($owners as $owner) {
                 array_push($affiliations['owner'], ['jid' => (string)$owner]);
@@ -79,14 +82,14 @@ class Request extends Action
         }
 
         $publishers = $stanza->query->xpath("//field[@var='pubsub#publisher']/value/text()");
-        if(!empty($publishers)) {
+        if (!empty($publishers)) {
             $affiliations['publisher'] = [];
             foreach($publishers as $publisher) {
                 array_push($affiliations['publisher'], ['jid' => (string)$publisher]);
             }
         }
 
-        if(!empty($affiliations)) {
+        if (!empty($affiliations)) {
             $this->pack([
                 'affiliations' => $affiliations,
                 'server' => $this->_to,

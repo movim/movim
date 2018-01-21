@@ -29,27 +29,28 @@ class Items extends Action
 
         $jid = null;
 
-        foreach($stanza->query->item as $item) {
+        foreach ($stanza->query->item as $item) {
             $i = $id->get($this->_to, (string)$item->attributes()->node);
             $parent = $id->get($this->_to, '');
 
-            if(!isset($i)) {
+            if (!isset($i)) {
                 $i = new \Modl\Info;
             }
 
             $i->setItem($item);
 
-            if($parent->category == 'pubsub'
+            if ($parent
+            && $parent->category == 'pubsub'
             && $parent->type == 'service') {
                 $i->category = 'pubsub';
             }
 
-            if(substr($i->node, 0, 29) != 'urn:xmpp:microblog:0:comments') {
+            if (substr($i->node, 0, 29) != 'urn:xmpp:microblog:0:comments') {
                 $id->set($i);
             }
 
-            if($jid != $i->server) {
-                if(isset($i->node)
+            if ($jid != $i->server) {
+                if (isset($i->node)
                 && $i->node != ''
                 && $i->node != 'urn:xmpp:microblog:0') {
                     $r = new Request;
@@ -58,7 +59,7 @@ class Items extends Action
                       ->request();
                 }
 
-                if(strpos($i->server, '/') === false) {
+                if (strpos($i->server, '/') === false) {
                     $r = new Request;
                     $r->setTo($i->server)
                       ->request();
