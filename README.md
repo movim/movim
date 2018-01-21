@@ -72,6 +72,7 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0115](https://xmpp.org/extensions/xep-0115.html) | Entity Capabilities | Yes |  |
 | [XEP-0118](https://xmpp.org/extensions/xep-0118.html) | User Tune | Yes | Read only |
 | [XEP-0124](https://xmpp.org/extensions/xep-0124.html) | Bidirectional-streams Over Synchronous HTTP (BOSH) | Not anymore | |
+| [XEP-0157](https://xmpp.org/extensions/xep-0157.html) | Contact Addresses for XMPP Services | Yes | Handled in Movim |
 | [XEP-0163](https://xmpp.org/extensions/xep-0163.html) | Personal Eventing Protocol | Yes | See XEP-0277 |
 | [XEP-0172](https://xmpp.org/extensions/xep-0172.html) | User Nickname | Yes | Contact Nickname |
 | [XEP-0184](https://xmpp.org/extensions/xep-0184.html) | Message Delivery Receipts | Yes | |
