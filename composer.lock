@@ -119,16 +119,16 @@
         },
         {
             "name": "cocur/slugify",
-            "version": "v3.0.1",
+            "version": "v3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cocur/slugify.git",
-                "reference": "1fdf2b1219a199301db3d7c60c16d895bba6ccde"
+                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cocur/slugify/zipball/1fdf2b1219a199301db3d7c60c16d895bba6ccde",
-                "reference": "1fdf2b1219a199301db3d7c60c16d895bba6ccde",
+                "url": "https://api.github.com/repos/cocur/slugify/zipball/b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
+                "reference": "b2ccf7b735f4f3df3979aef2e1ebf8e19ca772f7",
                 "shasum": ""
             },
             "require": {
@@ -180,7 +180,7 @@
                 "slug",
                 "slugify"
             ],
-            "time": "2017-09-24T10:29:04+00:00"
+            "time": "2018-01-22T09:00:48+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -404,7 +404,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2018-01-17T16:20:41+00:00"
+            "time": "2018-01-17 16:20:41"
         },
         {
             "name": "evenement/evenement",
@@ -605,7 +605,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-11-15T20:35:47+00:00"
+            "time": "2016-11-15 20:35:47"
         },
         {
             "name": "michelf/php-markdown",
@@ -651,7 +651,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2018-01-15T00:49:33+00:00"
+            "time": "2018-01-15 00:49:33"
         },
         {
             "name": "monolog/monolog",
@@ -763,7 +763,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2017-07-06T11:04:24+00:00"
+            "time": "2017-07-06 11:04:24"
         },
         {
             "name": "movim/moxl",
@@ -811,7 +811,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2018-01-21T17:19:29+00:00"
+            "time": "2018-01-21 17:19:29"
         },
         {
             "name": "movim/sasl2",
@@ -862,7 +862,7 @@
                 "sasl2",
                 "scram"
             ],
-            "time": "2014-06-05T21:19:06+00:00"
+            "time": "2014-06-05 21:19:06"
         },
         {
             "name": "paragonie/random_compat",
@@ -1094,7 +1094,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15T14:21:40+00:00"
+            "time": "2016-12-15 14:21:40"
         },
         {
             "name": "ramsey/uuid",
@@ -1418,6 +1418,11 @@
                 "react/stream": "^1.0 || ^0.7.1",
                 "ringcentral/psr7": "^1.2"
             },
+            "require-dev": {
+                "clue/block-react": "^1.1",
+                "phpunit/phpunit": "^4.8.10||^5.0",
+                "react/socket": "^1.0 || ^0.8 || ^0.7"
+            },
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -1428,11 +1433,16 @@
             "license": [
                 "MIT"
             ],
-            "description": "Library for building an evented http server.",
+            "description": "Event-driven, streaming plaintext HTTP and secure HTTPS server for ReactPHP",
             "keywords": [
-                "http"
+                "event-driven",
+                "http",
+                "https",
+                "reactphp",
+                "server",
+                "streaming"
             ],
-            "time": "2016-07-06T23:51:32+00:00"
+            "time": "2016-07-06 23:51:32"
         },
         {
             "name": "react/http-client",
@@ -1763,7 +1773,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2017-11-18T11:25:56+00:00"
+            "time": "2017-11-18 11:25:56"
         },
         {
             "name": "respect/validation",
