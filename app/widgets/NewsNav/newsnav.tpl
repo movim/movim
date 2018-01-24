@@ -58,6 +58,7 @@
     </ul>
 {/if}
 
+{if="!empty($posts)"}
 <ul class="list active middle card shadow">
     <li class="subheader active">
         {if="$c->getView() == 'news'"}
@@ -107,6 +108,7 @@
         </li>
     {/loop}
 </ul>
+{/if}
 
 {if="$c->getView() == 'news' && $c->supported('pubsub')"}
     <ul class="list thick on_desktop card">

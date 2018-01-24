@@ -574,6 +574,9 @@ class Chat extends \Movim\Widget\Base
         $view->assign('muc', $muc);
         $view->assign('anon', false);
 
+        $id = new \Modl\InfoDAO;
+        $view->assign('info', $id->getJid($this->user->getServer()));
+
         if($muc) {
             $md = new \Modl\MessageDAO;
             $cd = new \Modl\ConferenceDAO;

@@ -40,17 +40,28 @@
             </p>
         </li>
     </ul>
-    {if="!empty($info->adminaddresses)"}
+    {if="!empty($info->adminaddresses) || !empty($info->abuseaddresses) || !empty($info->supportaddresses)  || !empty($info->securityaddresses)"}
         <hr />
         <ul class="list thin flex">
             <li class="subheader block large">
-                <p class="normal">{$c->__('adminaddresses.title')}</p>
+                <p class="normal">{$c->__('contact.title')}</p>
             </li>
             <hr />
-            {loop="$info->adminaddresses"}
+            {$addresses = array_unique(array_merge($info->adminaddresses, $info->abuseaddresses, $info->supportaddresses, $info->securityaddresses))}
+            {loop="$addresses"}
                 <li class="block">
                     {$parsed = parse_url($value)}
                     {if="$parsed['scheme'] == 'xmpp'"}
+                        {if="isset($parsed['query']) && $parsed['query'] == 'join'"}
+                        <span class="primary icon gray">
+                            <i class="zmdi zmdi-comments"></i>
+                        </span>
+                        <p class="normal">
+                            <a href="{$c->route('chat', [$parsed['path'], 'room'])}">
+                                {$parsed['path']}
+                            </a>
+                        </p>
+                        {else}
                         <span class="primary icon gray">
                             <i class="zmdi zmdi-comment"></i>
                         </span>
@@ -59,6 +70,7 @@
                                 {$parsed['path']}
                             </a>
                         </p>
+                        {/if}
                     {else}
                         <span class="primary icon gray">
                             <i class="zmdi zmdi-email"></i>

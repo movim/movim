@@ -82,6 +82,20 @@
         <li onclick="Rooms_ajaxAdd('{$room}');">
             <p class="normal">{$c->__('chatroom.config')}</p>
         </li>
+        {if="!empty($info->abuseaddresses)"}
+            {$parsed = parse_url($info->abuseaddresses[0])}
+            {if="$parsed['scheme'] == 'xmpp'"}
+                {if="isset($parsed['query']) && $parsed['query'] == 'join'"}
+                <li onclick="MovimUtils.reload('{$c->route('chat', [$parsed['path'], 'room'])}')">
+                {else}
+                <li onclick="MovimUtils.reload('{$c->route('chat', $parsed['path'])}')">
+                {/if}
+            {else}
+                <li onclick="MovimUtils.reload('{$value}')">
+            {/if}
+                <p class="normal">{$c->__('chat.report_abuse')}</p>
+            </li>
+        {/if}
     </ul>
     {else}
     <ul class="list middle">
@@ -133,6 +147,20 @@
         <li onclick="Chat_ajaxClearHistory('{$contact->jid}')">
             <p class="normal">{$c->__('chat.clear')}</p>
         </li>
+        {if="!empty($info->abuseaddresses)"}
+            {$parsed = parse_url($info->abuseaddresses[0])}
+            {if="$parsed['scheme'] == 'xmpp'"}
+                {if="isset($parsed['query']) && $parsed['query'] == 'join'"}
+                <li onclick="MovimUtils.reload('{$c->route('chat', [$parsed['path'], 'room'])}')">
+                {else}
+                <li onclick="MovimUtils.reload('{$c->route('chat', $parsed['path'])}')">
+                {/if}
+            {else}
+                <li onclick="MovimUtils.reload('{$value}')">
+            {/if}
+                <p class="normal">{$c->__('chat.report_abuse')}</p>
+            </li>
+        {/if}
     </ul>
     {/if}
 </header>
