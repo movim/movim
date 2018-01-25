@@ -22,6 +22,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -82,6 +84,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -101,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -503,6 +507,73 @@ msgstr "Denne bruger har ikke delt noget endnu"
 msgid "This content is private, please login to see it"
 msgstr "Dette indhold er privat, log ind for at se det"
 
+#: [title]conferences
+#, fuzzy
+msgid "Conferences"
+msgstr "Visio-konference"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "Grupper"
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "Tilføj et chatrum"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID for chatrum"
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Navn"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Kaldenavn"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Ugyldigt ID for Chatrum"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tomt navn"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Bogmærker opdateret"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "Opsætning"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Navn"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Besked publiceret"
@@ -577,6 +648,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -794,11 +869,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -893,10 +968,6 @@ msgstr "Generelle Informationer"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Navn"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Kaldenavn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1062,10 +1133,6 @@ msgstr "Gør dit medlemskab af denne gruppe offentligt for dine venner"
 msgid "Give a label for this group"
 msgstr "Giv denne gruppe en label"
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "Grupper"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Noget skidt er sket med denne gruppe"
@@ -1114,11 +1181,6 @@ msgstr "Du finder en liste over alle grupper du abonnerer på i Mine Abonnemente
 msgid "Contact post"
 msgstr "Kontakt indlæg"
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "%s grupper på denne server"
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr ""
@@ -1147,34 +1209,6 @@ msgstr "Du kan ikke oprette en ny gruppe på denne server"
 msgid "Frequently Asked Questions"
 msgstr "Ofte Stillede Spørgsmål"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Hvad refererer de små bannere til?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Takket være disse fem små bannere, kan du hurtigt identificere niveauet af fortrolighed der tillægges den information du giver."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Hvid, kun du kan se denne information"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Grøn, du har valgt nogle kontakter der kan se din information"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Orange, alle dine kontakter kan se din information"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Rød, alle på XMPP-netværket kan se din information"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Sort, hele internettet kan se din information"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1199,24 +1233,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Læs Wiki'en"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Skriv til os på email?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Tilmeld dig maillisten"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Administrations legitimationsstyring"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Chat med holdet bag?"
 
 #: [chatroom]button
@@ -1672,21 +1696,9 @@ msgstr "Tilføj ved at klikke på tilføj-knappen"
 msgid "Chatrooms"
 msgstr "Chatrum"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID for chatrum"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mit favoritrum"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Ugyldigt ID for Chatrum"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tomt navn"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1707,10 +1719,6 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Bogmærker opdateret"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1830,6 +1838,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2782,6 +2798,41 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Hvad refererer de små bannere til?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Takket være disse fem små bannere, kan du hurtigt identificere niveauet af fortrolighed der tillægges den information du giver."
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Hvid, kun du kan se denne information"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Grøn, du har valgt nogle kontakter der kan se din information"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Orange, alle dine kontakter kan se din information"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Rød, alle på XMPP-netværket kan se din information"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Sort, hele internettet kan se din information"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s grupper på denne server"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Læs Wiki'en"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Skriv til os på email?"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Tilmeld dig maillisten"
 
 #~ msgid "WebSocket Configuration"
 #~ msgstr "WebSocket opsætning"

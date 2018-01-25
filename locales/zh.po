@@ -27,6 +27,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -87,6 +89,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -106,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -508,6 +512,68 @@ msgstr "这个用户还没发布任何东西"
 msgid "This content is private, please login to see it"
 msgstr "私密内容，请登录后查看"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr "会议"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "分组"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "添加一个新的聊天室"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "聊天室 ID"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "名称"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "昵称"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "你想要自动加入这个聊天室吗？"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "无效的聊天室 ID"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "用户名为空"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "书签已更新"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "出现了一个错误："
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "配置"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "添加一个新的 URL"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "名称"
+
 #: [message]published
 msgid "Message Published"
 msgstr "消息已发布"
@@ -583,6 +649,10 @@ msgstr "清除历史"
 #: [chat]edit_previous
 msgid "Edit last message"
 msgstr "编辑最后一条消息"
+
+#: [chat]report_abuse
+msgid "Report abuse"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -799,11 +869,11 @@ msgstr "给此社群添加一个标签"
 msgid "My Community Name"
 msgstr "我的社群名称"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr "公开分享此订阅"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "它将会在你的个人资料中显示"
 
@@ -898,10 +968,6 @@ msgstr "一般信息"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "姓名"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "昵称"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1067,10 +1133,6 @@ msgstr "将你对该群组的订阅状况公开给你的朋友"
 msgid "Give a label for this group"
 msgstr "给该群组加上标签"
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "分组"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "该群组出错了"
@@ -1119,11 +1181,6 @@ msgstr "你订阅的所有群组在“我的订阅”页面中，它们中的新
 msgid "Contact post"
 msgstr "联系人帖子"
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "此服务器上没有社群。"
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr "在 %s 上创建新群组"
@@ -1152,34 +1209,6 @@ msgstr "您不能在此服务器上建立新群组"
 msgid "Frequently Asked Questions"
 msgstr "常见问题"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "这些小横幅与什么相关"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "根据一下五种颜色，您可以快速设置个人信息的私密等级"
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "白色，仅自己可见"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "绿色，指定联系人可见"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "橙色，对所有联系人可见"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "红色，XMPP 上的用户能看见您的信息"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "黑色，整个互联网可以看见您的信息"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1204,24 +1233,14 @@ msgstr "电脑上的应用"
 msgid "Our official apps are available on our website"
 msgstr "我们的官方应用可以从我们的网站获取"
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "阅读 Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "用 email 同我们联系"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "加入邮件列表"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "管理证书"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "同开发团队交流？"
 
 #: [chatroom]button
@@ -1677,21 +1696,9 @@ msgstr "点击新建按钮来添加一个。"
 msgid "Chatrooms"
 msgstr "聊天室"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "聊天室 ID"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "收藏的聊天室"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "无效的聊天室 ID"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "用户名为空"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1712,10 +1719,6 @@ msgstr "在连线后加入此聊天室"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "无法加入聊天室，需要注册"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "书签已更新"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1836,6 +1839,14 @@ msgstr "想找什么？"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "使用 Ctrl + M 打开我"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr "这不是一个有效的 URL"
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr "分享 URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -2788,6 +2799,41 @@ msgstr "API 无法连接，请稍后重试"
 msgid "Type here"
 msgstr "在此输入"
 
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "这些小横幅与什么相关"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "根据一下五种颜色，您可以快速设置个人信息的私密等级"
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "白色，仅自己可见"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "绿色，指定联系人可见"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "橙色，对所有联系人可见"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "红色，XMPP 上的用户能看见您的信息"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "黑色，整个互联网可以看见您的信息"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "此服务器上没有社群。"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "阅读 Wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "用 email 同我们联系"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "加入邮件列表"
+
 #~ msgid "WebSocket Configuration"
 #~ msgstr "WebSocket 配置"
 
@@ -2803,40 +2849,5 @@ msgstr "在此输入"
 #~ msgid "Public WebSockets"
 #~ msgstr "公共 WebSocket"
 
-#~ msgid "Conferences"
-#~ msgstr "会议"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "添加一个新的聊天室"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "名称"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "你想要自动加入这个聊天室吗？"
-
-#~ msgid "An error occured :"
-#~ msgstr "出现了一个错误："
-
-#~ msgid "Configure"
-#~ msgstr "配置"
-
-#~ msgid "Add a new URL"
-#~ msgstr "添加一个新的 URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "名称"
-
 #~ msgid "Looking for some documentation ?"
 #~ msgstr "需要查找一些帮助文档?"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "这不是一个有效的 URL"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "分享 URL"

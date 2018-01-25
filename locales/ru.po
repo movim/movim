@@ -32,6 +32,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -92,6 +94,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -111,7 +115,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -513,6 +517,68 @@ msgstr "Этот пользователь ещё ничего не публик�
 msgid "This content is private, please login to see it"
 msgstr "Этот контент приватный, пожалуйста авторизуйтесь, чтобы посмотреть его"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr "Конференции"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "Группы"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "Добавить новую комнату"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID комнаты"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Имя"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Псевдоним"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Хотите вступить в эту комнату автоматически?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Неверный ID комнаты"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Имя не задано"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Закладки обновлены"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "Произошла ошибка: "
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Конфигурация"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Добавить новый URL"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Имя"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Сообщение опубликовано"
@@ -588,6 +654,10 @@ msgstr "Очистить историю"
 #: [chat]edit_previous
 msgid "Edit last message"
 msgstr "Редактировать последнее сообщение"
+
+#: [chat]report_abuse
+msgid "Report abuse"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -804,11 +874,11 @@ msgstr "Дайте название этому сообществу"
 msgid "My Community Name"
 msgstr "Мое имя сообщества"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Поделится этой подпиской публично"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Оно будет отражено в Вашем профиле"
 
@@ -903,10 +973,6 @@ msgstr "Общая информация"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Имя"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Псевдоним"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1072,10 +1138,6 @@ msgstr "Раскрыть ваше членство в данной группе 
 msgid "Give a label for this group"
 msgstr "Дайте название для этой группы"
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "Группы"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Что то случилось с этой группой"
@@ -1124,11 +1186,6 @@ msgstr "Вы можете найти список групп на которые
 msgid "Contact post"
 msgstr "Для связи"
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "На сервере пока нет сообществ."
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr "Создать новую Группу на %s"
@@ -1157,34 +1214,6 @@ msgstr "Вы не можете создать новую Группу на эт�
 msgid "Frequently Asked Questions"
 msgstr "Часто Задаваемые Вопросы (FAQ)"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Зачем нужны небольшие баннеры?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "при помощи этих пяти небольших баннеров Вы можете быстро определить уровень конфиденциальности информации, которую вы представляете"
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Белый: только вы можете видеть эту информацию"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Зеленый: вы выбрали несколько своих контактов, которые увидят эту информацию"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Оранжевый: все из вашего контактного листа могут видеть эту информацию"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Красный: любой в сети ХМРР может видеть вашу информацию"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Черный: весь Интернет может видеть вашу информацию"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1209,24 +1238,14 @@ msgstr "Приложение для компьютера"
 msgid "Our official apps are available on our website"
 msgstr "Наши официальные приложения доступны на нашем сайте."
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Почитать Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Желаете связаться с нами по email?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Присоединиться к списку рассылки"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Управление учетными данными"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Желаете пообщаться с нашей командой?"
 
 #: [chatroom]button
@@ -1682,21 +1701,9 @@ msgstr "Добавьте с помощью кнопки \"Добавить\""
 msgid "Chatrooms"
 msgstr "Комнаты"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID комнаты"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Мои любимые комнаты"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Неверный ID комнаты"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Имя не задано"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1717,10 +1724,6 @@ msgstr "Присоединиться к комнате при входе"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Невозможно войти в комнату, необходима регистрация"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Закладки обновлены"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1841,6 +1844,14 @@ msgstr "Что вы хотите найти?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Откройте меня, используя Ctrl+M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr "Это неправильный URL"
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr "Поделиться этим URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -2793,6 +2804,41 @@ msgstr "API недоступен, попробуйте позже"
 msgid "Type here"
 msgstr "Введите здесь"
 
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Зачем нужны небольшие баннеры?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "при помощи этих пяти небольших баннеров Вы можете быстро определить уровень конфиденциальности информации, которую вы представляете"
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Белый: только вы можете видеть эту информацию"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Зеленый: вы выбрали несколько своих контактов, которые увидят эту информацию"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Оранжевый: все из вашего контактного листа могут видеть эту информацию"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Красный: любой в сети ХМРР может видеть вашу информацию"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Черный: весь Интернет может видеть вашу информацию"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "На сервере пока нет сообществ."
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Почитать Wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Желаете связаться с нами по email?"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Присоединиться к списку рассылки"
+
 #~ msgid "WebSocket Configuration"
 #~ msgstr "Конфигурация WebSocket"
 
@@ -2808,40 +2854,5 @@ msgstr "Введите здесь"
 #~ msgid "Public WebSockets"
 #~ msgstr "Публичные WebSockets"
 
-#~ msgid "Conferences"
-#~ msgstr "Конференции"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Добавить новую комнату"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Имя"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Хотите вступить в эту комнату автоматически?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Произошла ошибка: "
-
-#~ msgid "Configure"
-#~ msgstr "Конфигурация"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Добавить новый URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Имя"
-
 #~ msgid "Looking for some documentation ?"
 #~ msgstr "Ищите документацию?"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "Это неправильный URL"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "Поделиться этим URL"

@@ -26,6 +26,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -86,6 +88,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -105,7 +109,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -507,6 +511,68 @@ msgstr "Denne brukeren har ikke postet noe enda"
 msgid "This content is private, please login to see it"
 msgstr "Dette innholdet er privat, logg på for å se det"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr "Konferanser"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "Grupper"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "Opprett nytt samtalerom"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Samtalerom-ID"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Navn"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Kallenavn"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Ønsker du å bli lagt automatisk til i dette samtalerommet?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Feil samtalerom-ID"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tomt navn"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Bokmerke oppdatert"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "En feil oppstod:"
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Sett opp"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Legg til ny nettadresse"
+
+#: [url]url
+msgid "URL"
+msgstr "Nettadresse"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Navn"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Melding publisert"
@@ -582,6 +648,10 @@ msgstr "Nullstill historien"
 #: [chat]edit_previous
 msgid "Edit last message"
 msgstr "Endre siste melding"
+
+#: [chat]report_abuse
+msgid "Report abuse"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -798,11 +868,11 @@ msgstr "Gi et navn til dette samfunnet"
 msgid "My Community Name"
 msgstr "Mitt samfunnsnavn"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Del påmeldingen offentlig"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Det vil vises på din profil"
 
@@ -897,10 +967,6 @@ msgstr "Generell informasjon"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Navn"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Kallenavn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1066,10 +1132,6 @@ msgstr "Annonser medlemskapet til denne gruppen offentlig til dine kontakter"
 msgid "Give a label for this group"
 msgstr "Gi et navn til gruppen"
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "Grupper"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Noe gikk feil i denne gruppen"
@@ -1118,11 +1180,6 @@ msgstr "Du finner en liste over alle gruppene du abonnerer på under \"Mine abon
 msgid "Contact post"
 msgstr "Kontaktpost"
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "Det er ennå ingen fellesskap på denne tjeneren."
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr "Opprett ny gruppe på %s"
@@ -1151,34 +1208,6 @@ msgstr "Du kan ikke opprette en ny gruppe på denne tjeneren"
 msgid "Frequently Asked Questions"
 msgstr "Ofte stilte spørsmål"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Hva henviser de små bannerne til?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Disse fem små merkelappene gjør det lett å identifisere hvilket konfidensialitetsnivå som gjelder for informasjonen du oppgir."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Hvit: Informasjonen er kun synlig for deg"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Grønn: Kun utvalgte kontakter kan se informasjonen"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Oransje: Alle dine kontakter kan se informasjonen"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Rød: alle i XMPP-nettverket kan se informasjonen"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Svart: Alle på Internett kan se informasjonen"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1203,24 +1232,14 @@ msgstr "App-er til datamaskinen din"
 msgid "Our official apps are available on our website"
 msgstr "Våre offisielle app-er er tilgjengelig fra nettstedet vårt"
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Les wiki-en"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Kontakt oss via e-post?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Meld deg på e-postlisten"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Administrasjonsakkreditiv"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Prate med laget?"
 
 #: [chatroom]button
@@ -1676,21 +1695,9 @@ msgstr "Legg til en ved å trykke på \"Legg til\"-knappen"
 msgid "Chatrooms"
 msgstr "Samtalerom"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Samtalerom-ID"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mine favorittrom"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Feil samtalerom-ID"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tomt navn"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1711,10 +1718,6 @@ msgstr "Bli med i dette samtalerommet ved oppkobling"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Kunne ikke bli med i samtalerommet, registrering er påkrevd."
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Bokmerke oppdatert"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1835,6 +1838,14 @@ msgstr "Hva leter du etter?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Åpne meg med Ctrl + M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr "Dette er ikke en gyldig nettadresse"
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr "Deling av nettadressen"
 
 #: [statistics]title
 msgid "Statistics"
@@ -2787,6 +2798,41 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 msgid "Type here"
 msgstr "Skriv her"
 
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Hva henviser de små bannerne til?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Disse fem små merkelappene gjør det lett å identifisere hvilket konfidensialitetsnivå som gjelder for informasjonen du oppgir."
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Hvit: Informasjonen er kun synlig for deg"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Grønn: Kun utvalgte kontakter kan se informasjonen"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Oransje: Alle dine kontakter kan se informasjonen"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Rød: alle i XMPP-nettverket kan se informasjonen"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Svart: Alle på Internett kan se informasjonen"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "Det er ennå ingen fellesskap på denne tjeneren."
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Les wiki-en"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Kontakt oss via e-post?"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Meld deg på e-postlisten"
+
 #~ msgid "WebSocket Configuration"
 #~ msgstr "WebSocket-konfigurasjon"
 
@@ -2802,40 +2848,5 @@ msgstr "Skriv her"
 #~ msgid "Public WebSockets"
 #~ msgstr "Offentlig WebSockets"
 
-#~ msgid "Conferences"
-#~ msgstr "Konferanser"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Opprett nytt samtalerom"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Navn"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Ønsker du å bli lagt automatisk til i dette samtalerommet?"
-
-#~ msgid "An error occured :"
-#~ msgstr "En feil oppstod:"
-
-#~ msgid "Configure"
-#~ msgstr "Sett opp"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Legg til ny nettadresse"
-
-#~ msgid "URL"
-#~ msgstr "Nettadresse"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Navn"
-
 #~ msgid "Looking for some documentation ?"
 #~ msgstr "Ser du etter dokumentasjon?"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "Dette er ikke en gyldig nettadresse"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "Deling av nettadressen"

@@ -24,6 +24,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -84,6 +86,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -103,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: RACER\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -506,6 +510,72 @@ msgstr "このユーザがまだ投稿していません"
 msgid "This content is private, please login to see it"
 msgstr ""
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "グループ"
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "チャットルームを追加する"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "名前"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "ニックネーム"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "不正チャットルームID"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "名前が空です"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "ブックマークを更新しました"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "設定"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "新しいURLを追加する"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "名前"
+
 #: [message]published
 msgid "Message Published"
 msgstr "メッセージが公開されました"
@@ -580,6 +650,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -806,11 +880,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -905,10 +979,6 @@ msgstr "一般情報"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "名前"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "ニックネーム"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1076,10 +1146,6 @@ msgstr ""
 msgid "Give a label for this group"
 msgstr ""
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "グループ"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr ""
@@ -1128,10 +1194,6 @@ msgstr ""
 msgid "Contact post"
 msgstr "コンタクトの投稿"
 
-#: [groups]empty_server
-msgid "There is no Groups yet on this server."
-msgstr ""
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr ""
@@ -1160,34 +1222,6 @@ msgstr ""
 msgid "Frequently Asked Questions"
 msgstr "よくある質問"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "この標の意味はなんですか"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "この標で、あなとが公開しているデータの機密性が分かります。"
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "白、あなた以外見られない"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "緑、共有している知り合いしか見られない"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "橙、あなたの知り合い全員が見られる"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "XMPPを使っている人全員が見られる"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "黒、誰でも見られる"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1213,24 +1247,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Wiki へ"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "メールで連絡したいと思っていますか"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Mailing List に登録する"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "管理者認証"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "チャットがいいですか"
 
 #: [chatroom]button
@@ -1690,21 +1714,9 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "チャットルーム"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr ""
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "不正チャットルームID"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "名前が空です"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1725,10 +1737,6 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "ブックマークを更新しました"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1851,6 +1859,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2804,6 +2820,37 @@ msgstr ""
 msgid "Type here"
 msgstr "ここに入力を"
 
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "この標の意味はなんですか"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "この標で、あなとが公開しているデータの機密性が分かります。"
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "白、あなた以外見られない"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "緑、共有している知り合いしか見られない"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "橙、あなたの知り合い全員が見られる"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "XMPPを使っている人全員が見られる"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "黒、誰でも見られる"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Wiki へ"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "メールで連絡したいと思っていますか"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Mailing List に登録する"
+
 #~ msgid "WebSocket Configuration"
 #~ msgstr "ウェブソケット設定"
 
@@ -2812,12 +2859,6 @@ msgstr "ここに入力を"
 
 #~ msgid "If you change the URI, please restart the daemon to reload the configuration"
 #~ msgstr "URLを変更した場合はデーモンを再起動してください"
-
-#~ msgid "Add a new URL"
-#~ msgstr "新しいURLを追加する"
-
-#~ msgid "URL"
-#~ msgstr "URL"
 
 #~ msgid "Looking for some documentation ?"
 #~ msgstr "ドキュメンテーションお探しですか"

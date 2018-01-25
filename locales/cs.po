@@ -24,6 +24,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -84,6 +86,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -103,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -505,6 +509,68 @@ msgstr "Tento uživatel nyní nezveřejnil žádný příspěvek"
 msgid "This content is private, please login to see it"
 msgstr "Tento obsah je soukromý, přihlašte se pro zobrazení"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr "Konference"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "Skupiny"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "Přidat novou chatovací místnost"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID konverzace"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Jméno"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Přezdívka"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Chcete se automaticky přidat do této chatovací místnosti?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Chybné ID konverzace"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Prázdné jméno"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Záložky aktualizovány"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "Vyskytla se chyba :"
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Konfigurovat"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Přidat novou adresu URL"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Jméno"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Zpráva zveřejněna"
@@ -579,6 +645,10 @@ msgstr "Vymazat historii"
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -796,11 +866,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr "Název mé komunity"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Objeví se na Vašem profilu"
 
@@ -895,10 +965,6 @@ msgstr "Obecné informace"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Jméno"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Přezdívka"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1064,10 +1130,6 @@ msgstr "Zveřejnit vaše členství v této skupině vašim přátelům"
 msgid "Give a label for this group"
 msgstr "Dát této skupině označení"
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "Skupiny"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Této skupině se stalo něco špatného"
@@ -1116,11 +1178,6 @@ msgstr "Seznam odebíraných skupin najdete v záložce Moje odběry a nové př
 msgid "Contact post"
 msgstr "Odeslat kontakt"
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "%s skupin na tomto serveru"
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr "Vytvořit novou skupinu na %"
@@ -1149,34 +1206,6 @@ msgstr "Na tomto serveru nemůžete vytvořit novou skupinu"
 msgid "Frequently Asked Questions"
 msgstr "Často kladené dotazy (FAQ)"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Co znamenají tyto malé bannery?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Díky těmto pěti malým bannerům můžete rychle určit úroveň důvěrnosti aplikované na informace, které poskytnete."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Bílá, jen vy můžete vidět tyto informace"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Zelená, vybrali jste některé kontakty, které mohou vidět tyto informace"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Oranžová, všechny vaše kontakty mohou vidět vaše informace"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Červená, kdokoliv na XMPP síti může vidět vaše informace"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Černá, celý Internet vidí vaše informace"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1201,24 +1230,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Číst Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Mluvit s námi přes e-mail?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Přihlásit se k odebírání e-mailů"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Administrační přístupové údaje"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Připojit se do konverzace s týmem?"
 
 #: [chatroom]button
@@ -1674,21 +1693,9 @@ msgstr "Přidejte konverzaci kliknutím na tlačítko přidat."
 msgid "Chatrooms"
 msgstr "Konverzace"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID konverzace"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Moje oblíbená konverzace"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Chybné ID konverzace"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Prázdné jméno"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1709,10 +1716,6 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Záložky aktualizovány"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1832,6 +1835,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2785,6 +2796,41 @@ msgstr "API je nedostupná, zkuste to znovu později"
 msgid "Type here"
 msgstr "Pište sem"
 
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Co znamenají tyto malé bannery?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Díky těmto pěti malým bannerům můžete rychle určit úroveň důvěrnosti aplikované na informace, které poskytnete."
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Bílá, jen vy můžete vidět tyto informace"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Zelená, vybrali jste některé kontakty, které mohou vidět tyto informace"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Oranžová, všechny vaše kontakty mohou vidět vaše informace"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Červená, kdokoliv na XMPP síti může vidět vaše informace"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Černá, celý Internet vidí vaše informace"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s skupin na tomto serveru"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Číst Wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Mluvit s námi přes e-mail?"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Přihlásit se k odebírání e-mailů"
+
 #~ msgid "WebSocket Configuration"
 #~ msgstr "Konfigurace WebSocket"
 
@@ -2799,35 +2845,6 @@ msgstr "Pište sem"
 
 #~ msgid "Public WebSockets"
 #~ msgstr "Veřejné WebSockety"
-
-#~ msgid "Conferences"
-#~ msgstr "Konference"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Přidat novou chatovací místnost"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Jméno"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Chcete se automaticky přidat do této chatovací místnosti?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Vyskytla se chyba :"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurovat"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Přidat novou adresu URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Jméno"
 
 #~ msgid "Looking for some documentation ?"
 #~ msgstr "Hledáte dokumentaci?"

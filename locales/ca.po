@@ -22,6 +22,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -82,6 +84,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -101,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
@@ -503,6 +507,72 @@ msgstr "Aquest usuari no ha publicat res en aquest moment"
 msgid "This content is private, please login to see it"
 msgstr "Aquest contingut és privat, siusplau connectat per poder veure-ho."
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "Grups"
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "Afegeix la sala de xat"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID de la sala de xat"
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Nom "
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Sobrenom"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "ID de la sala de xat incorrecta"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr ""
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "Configuració"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Nom "
+
 #: [message]published
 msgid "Message Published"
 msgstr "Missatge publicat"
@@ -577,6 +647,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -794,11 +868,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -893,10 +967,6 @@ msgstr "Informació general"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nom "
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Sobrenom"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1062,10 +1132,6 @@ msgstr "Fes la teva afiliació a aquest grup pública per als teus amics"
 msgid "Give a label for this group"
 msgstr ""
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "Grups"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Hi ha hagut un problema amb aquest grup"
@@ -1114,11 +1180,6 @@ msgstr "Trobaràs una llista amb tots els Grups que has subscrit a Les Meves Sub
 msgid "Contact post"
 msgstr ""
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "%s grups en aquest servidor"
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr ""
@@ -1147,34 +1208,6 @@ msgstr "No pots crear un Grup en aquest servidor"
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr ""
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr ""
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr ""
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr ""
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr ""
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1199,24 +1232,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr ""
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Parla amb nosaltres per correu electrònic?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr ""
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Credencial d'adiministració"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Xateja amb l'equip?"
 
 #: [chatroom]button
@@ -1671,20 +1694,8 @@ msgstr ""
 msgid "Chatrooms"
 msgstr ""
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID de la sala de xat"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
-msgstr ""
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "ID de la sala de xat incorrecta"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
 msgstr ""
 
 #: [chatrooms]users
@@ -1705,10 +1716,6 @@ msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
-msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
 msgstr ""
 
 #: [room]anonymous_title
@@ -1829,6 +1836,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2780,6 +2795,13 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s grups en aquest servidor"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Parla amb nosaltres per correu electrònic?"
 
 #~ msgid "WebSocket Configuration"
 #~ msgstr "Configuració de WebSocket"

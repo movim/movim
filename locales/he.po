@@ -23,6 +23,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -83,6 +85,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -102,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
@@ -504,6 +508,73 @@ msgstr ""
 msgid "This content is private, please login to see it"
 msgstr ""
 
+#: [title]conferences
+#, fuzzy
+msgid "Conferences"
+msgstr "ועידת וידאו"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "קבוצות"
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "הוסף חדר שיחה"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "מזהה חדר שיחה"
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "שם"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "שם כינוי"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "מזהה חדר שיחה רע"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "שם ריק"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "סימניות עודכנו"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "תצורה"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "שם"
+
 #: [message]published
 msgid "Message Published"
 msgstr "הודעה פורסמה"
@@ -578,6 +649,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -795,11 +870,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -894,10 +969,6 @@ msgstr "מידע כללי"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "שם"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "שם כינוי"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1063,10 +1134,6 @@ msgstr ""
 msgid "Give a label for this group"
 msgstr ""
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "קבוצות"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "משהו רע קרה לקבוצה זו"
@@ -1115,11 +1182,6 @@ msgstr ""
 msgid "Contact post"
 msgstr "פרסום איש קשר"
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "%s קבוצות על שרת זה"
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr ""
@@ -1148,34 +1210,6 @@ msgstr "אין באפשרותך ליצור קבוצה חדשה על שרת זה"
 msgid "Frequently Asked Questions"
 msgstr "שאלות נפוצות"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "מה כרזות קטנות אלו מייחסות ?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "הודות לחמשת כרזות אלו, באפשרותך לברר במהירות את רמת החיסיון שחלה על המידע אותו בחרת לספק."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "לבן, רק לך האפשרות לראות את המידע"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "ירוק, בחרת אנשי קשר מסוימים אשר יכולים לראות את המידע שלך"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "כתום, כל רשימת הקשר שלך יכולה לראות את המידע שלך"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "אדום, כל אחד ברשת התקשורת XMPP יכול לראות את המידע שלך"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "שחור, כל המרשתת יכולה לראות את המידע שלך"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1200,24 +1234,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "קרא את הויקי"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "שוחח עמנו באמצעות דוא״ל ?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "הצטרף לרשימת דיוור"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "נתוני התחברות מנהל"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "שיחה עם הצוות ?"
 
 #: [chatroom]button
@@ -1673,21 +1697,9 @@ msgstr ""
 msgid "Chatrooms"
 msgstr "חדרי שיחה"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "מזהה חדר שיחה"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "החדר המועדף עליי"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "מזהה חדר שיחה רע"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "שם ריק"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1708,10 +1720,6 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "סימניות עודכנו"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1831,6 +1839,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2783,6 +2799,41 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
+
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "מה כרזות קטנות אלו מייחסות ?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "הודות לחמשת כרזות אלו, באפשרותך לברר במהירות את רמת החיסיון שחלה על המידע אותו בחרת לספק."
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "לבן, רק לך האפשרות לראות את המידע"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "ירוק, בחרת אנשי קשר מסוימים אשר יכולים לראות את המידע שלך"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "כתום, כל רשימת הקשר שלך יכולה לראות את המידע שלך"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "אדום, כל אחד ברשת התקשורת XMPP יכול לראות את המידע שלך"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "שחור, כל המרשתת יכולה לראות את המידע שלך"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s קבוצות על שרת זה"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "קרא את הויקי"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "שוחח עמנו באמצעות דוא״ל ?"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "הצטרף לרשימת דיוור"
 
 #~ msgid "WebSocket Configuration"
 #~ msgstr "תצורת WebSocket"

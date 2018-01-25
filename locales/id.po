@@ -24,6 +24,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -84,6 +86,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -103,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
@@ -505,6 +509,68 @@ msgstr "Pengguna ini belum ada memposting apapun"
 msgid "This content is private, please login to see it"
 msgstr "Konten ini bersifat pribadi, mohon masuk terlebih dahulu untuk melihatnya"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr "Konferensi"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "Grup"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "Tambahkan Ruang Obrolan baru"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID Ruang Obrolan"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Nama"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Panggilan"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Apakah anda ingin tergabung secara otomatis ke Ruang Obrolan ini ?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "ID Chatroom Salah"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Nama kosong"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Bookmark diperbarui"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "Sebuah galat terjadi :"
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Konfigurasi"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Tambahkan URL baru"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Nama"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Pesan Diterbitkan"
@@ -579,6 +645,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -796,11 +866,11 @@ msgstr "Berikan lable untuk komunitas ini"
 msgid "My Community Name"
 msgstr "Nama Komunitas Saya"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Bagikan langganan ini secara publik"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Akan tampil dalam profil anda"
 
@@ -895,10 +965,6 @@ msgstr "Informasi Umum"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nama"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Panggilan"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1064,10 +1130,6 @@ msgstr "Jadikan keanggotaan anda di grup ini terlihat publik ke teman-teman anda
 msgid "Give a label for this group"
 msgstr "Berikan sebuah label untuk grup ini"
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "Grup"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Sesuatu yang buruk terjadi di grup ini"
@@ -1116,11 +1178,6 @@ msgstr "Anda akan menemukan sebuah daftar dari langganan grup anda di Langganan 
 msgid "Contact post"
 msgstr "Post kontak"
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "%s grup di server ini"
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr "Buat Grup baru di %s"
@@ -1149,34 +1206,6 @@ msgstr "Anda tidak dapat membuat grup baru di server ini"
 msgid "Frequently Asked Questions"
 msgstr "Pertanyaan Seputar"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Spanduk kecil tersebut mengacu kepada apa?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Terima kasih untuk lima banner kecil ini, sekarang anda dapat dengan cepat mengidentifikasi tingkat kerahasiaan yang berlaku untuk informasi yang anda berikan."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Putih, hanya anda yang dapat melihat informasi"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Hijau, anda dapat menentukan beberapa kontak yang dapat melihat informasi anda"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Oranye, semua daftar kontak anda dapat melihat informasi anda"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Merah, semua orang di jaringan XMPP dapat melihat informasi anda"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Hitam, seluruh Internet dapat melihat informasi anda"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1201,24 +1230,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Baca Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Berbicara dengan kami lewat email ?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Berlangganan"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Administrasi"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Berbicara dengan tim?"
 
 #: [chatroom]button
@@ -1673,21 +1692,9 @@ msgstr ""
 msgid "Chatrooms"
 msgstr ""
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID Ruang Obrolan"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr ""
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "ID Chatroom Salah"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Nama kosong"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1708,10 +1715,6 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Bookmark diperbarui"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1831,6 +1834,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2784,6 +2795,41 @@ msgstr ""
 msgid "Type here"
 msgstr ""
 
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Spanduk kecil tersebut mengacu kepada apa?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Terima kasih untuk lima banner kecil ini, sekarang anda dapat dengan cepat mengidentifikasi tingkat kerahasiaan yang berlaku untuk informasi yang anda berikan."
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Putih, hanya anda yang dapat melihat informasi"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Hijau, anda dapat menentukan beberapa kontak yang dapat melihat informasi anda"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Oranye, semua daftar kontak anda dapat melihat informasi anda"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Merah, semua orang di jaringan XMPP dapat melihat informasi anda"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Hitam, seluruh Internet dapat melihat informasi anda"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s grup di server ini"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Baca Wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Berbicara dengan kami lewat email ?"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Berlangganan"
+
 #~ msgid "WebSocket Configuration"
 #~ msgstr "Konfigurasi WebSocket"
 
@@ -2798,35 +2844,6 @@ msgstr ""
 
 #~ msgid "Public WebSockets"
 #~ msgstr "Publik WebSocket"
-
-#~ msgid "Conferences"
-#~ msgstr "Konferensi"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Tambahkan Ruang Obrolan baru"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Nama"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Apakah anda ingin tergabung secara otomatis ke Ruang Obrolan ini ?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Sebuah galat terjadi :"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurasi"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Tambahkan URL baru"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Nama"
 
 #~ msgid "Looking for some documentation ?"
 #~ msgstr "Mencari dokumentasi?"

@@ -28,6 +28,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -88,6 +90,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -107,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -509,6 +513,68 @@ msgstr "Este usuário não publicou nada até agora"
 msgid "This content is private, please login to see it"
 msgstr "Este conteúdo é privado, por favor entre entre em sua conta para visualizá-lo"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr "Conferências"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "Grupos"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "Adicionar nova sala de chat"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID da Sala de Bate-papo"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Nome"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Apelido"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Deseja automaticamente entrar nessa sala de chat? "
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "ID de Sala de Bate-papo inválido"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Nome vazio"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Favoritos atualizados"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "Ocorreu um erro:"
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Configure"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Adicionar nova URL"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Nome"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Mensagem publicada"
@@ -584,6 +650,10 @@ msgstr "Limpar o histórico"
 #: [chat]edit_previous
 msgid "Edit last message"
 msgstr "Editar a mensagem anterior"
+
+#: [chat]report_abuse
+msgid "Report abuse"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -800,11 +870,11 @@ msgstr "Atribuir uma etiqueta para este grupo"
 msgid "My Community Name"
 msgstr "Nome da minha comunidade"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Compartilhar esta inscrição publicamente"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Irá aparecer em seu perfil"
 
@@ -899,10 +969,6 @@ msgstr "Informações Gerais"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nome"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Apelido"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1068,10 +1134,6 @@ msgstr "Tornar sua filiação a este grupo pública a seus amigos"
 msgid "Give a label for this group"
 msgstr "Atribuir uma etiqueta para este grupo"
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "Grupos"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Alguma coisa ruim aconteceu a este grupo"
@@ -1120,11 +1182,6 @@ msgstr "Você encontrará uma lista de todos os Grupos em que está inscrito em 
 msgid "Contact post"
 msgstr "Artigo de um contato"
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "Não há ainda comunidades neste servidor"
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr "Criar um novo Grupo"
@@ -1153,34 +1210,6 @@ msgstr "Você não pode criar um novo Grupo neste servidor"
 msgid "Frequently Asked Questions"
 msgstr "Dúvidas mais comuns"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "A que os pequenos banners se referem ?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Graças  a estes pequenos banners, você pode rapidamente identificar o nível de confiabilidade aplicada à informação que você provê."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Branco, só você pode ver a informação"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Verde, você tem que escolher alguns contatos que possam ver suas informações"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Laranja, toda a sua lista de contatos pode ver suas informações"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Vermelho, todos na rede XMPP podem ver suas informações"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Preto, a internet inteira pode ver suas informações"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1205,24 +1234,14 @@ msgstr "Apps para seu computador"
 msgid "Our official apps are available on our website"
 msgstr "Nossos aplicativos oficiais estão disponíveis em nosso website"
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Leia a Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Falar conosco por email?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Juntar-se à Lista de Email"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Credenciais de Administração"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Conversar com o time?"
 
 #: [chatroom]button
@@ -1678,21 +1697,9 @@ msgstr "Adicione pressionando o botão adicionar"
 msgid "Chatrooms"
 msgstr "Salas de Bate-papo"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID da Sala de Bate-papo"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Minha Sala Favorita"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "ID de Sala de Bate-papo inválido"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Nome vazio"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1713,10 +1720,6 @@ msgstr "Juntar-se à sala de Chat"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Você não pode entrar nesta sala de chat, é necessário registro prévio"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Favoritos atualizados"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1837,6 +1840,14 @@ msgstr "O que você esta procurando?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Me abra utilizando Ctrl + M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr "Esta não é uma URL válida"
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr "Compartilhando a URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -2789,6 +2800,41 @@ msgstr "A API está inalcançável, tente mais tarde"
 msgid "Type here"
 msgstr "Digite aqui"
 
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "A que os pequenos banners se referem ?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Graças  a estes pequenos banners, você pode rapidamente identificar o nível de confiabilidade aplicada à informação que você provê."
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Branco, só você pode ver a informação"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Verde, você tem que escolher alguns contatos que possam ver suas informações"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Laranja, toda a sua lista de contatos pode ver suas informações"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Vermelho, todos na rede XMPP podem ver suas informações"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Preto, a internet inteira pode ver suas informações"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "Não há ainda comunidades neste servidor"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Leia a Wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Falar conosco por email?"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Juntar-se à Lista de Email"
+
 #~ msgid "WebSocket Configuration"
 #~ msgstr "Configuração do WebSocket"
 
@@ -2804,40 +2850,5 @@ msgstr "Digite aqui"
 #~ msgid "Public WebSockets"
 #~ msgstr "WebSockets públicos"
 
-#~ msgid "Conferences"
-#~ msgstr "Conferências"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Adicionar nova sala de chat"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Nome"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Deseja automaticamente entrar nessa sala de chat? "
-
-#~ msgid "An error occured :"
-#~ msgstr "Ocorreu um erro:"
-
-#~ msgid "Configure"
-#~ msgstr "Configure"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Adicionar nova URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Nome"
-
 #~ msgid "Looking for some documentation ?"
 #~ msgstr "Procurando por alguma documentação?"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "Esta não é uma URL válida"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "Compartilhando a URL"

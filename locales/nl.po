@@ -27,6 +27,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -87,6 +89,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -106,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -508,6 +512,69 @@ msgstr "Deze gebruiker heeft momenteel niets gepost"
 msgid "This content is private, please login to see it"
 msgstr "Deze data is privé, log in om dit te zien."
 
+#: [title]conferences
+#, fuzzy
+msgid "Conferences"
+msgstr "Visioconferentie"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "Groepen"
+
+#: [chatroom]add
+msgid "Add a new Chat Room"
+msgstr "Voeg een nieuwe chatruimte toe"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Chatroom ID"
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Naam"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "bijnaam"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Wil je de deze chatruimte automatisch in gaan?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Onjuist Chatroom-ID"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Lege naam"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Favoriet bijgewerkt"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "Er ging wat fout: "
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Configureer"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Voeg een nieuwe URL toe"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Naam"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Bericht gepubliceerd"
@@ -582,6 +649,10 @@ msgstr "Verwijder geschiedenis"
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -799,11 +870,11 @@ msgstr "Geef deze groep een label"
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Maak je lidmaatschap openbaar"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Het verschijnt in je profiel"
 
@@ -898,10 +969,6 @@ msgstr "Algemene informatie"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Naam"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "bijnaam"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1067,10 +1134,6 @@ msgstr "Maak je lidmaadschap op deze groep publiek naar je vrienden"
 msgid "Give a label for this group"
 msgstr "geef een label voor deze groep"
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "Groepen"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr "Iets slechts is gebeurd met deze groep"
@@ -1119,11 +1182,6 @@ msgstr "Je kunt een lijst van al je geabonneerde groepen vinden onder Mijn Abonn
 msgid "Contact post"
 msgstr ""
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "%s groepen op deze server"
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr "Maak een nieuwe groep op %s"
@@ -1152,34 +1210,6 @@ msgstr "Je kunt geen nieuwe groep maken op deze server"
 msgid "Frequently Asked Questions"
 msgstr "Veelgestelde vragen"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Waar verwijzen de kleine banners naar ?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Bedankt voor deze vijf kleine banners, kun je kort toelichten wat de mate van betrouwbaarheid is van de informatie die je beschikbaar stelt."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Wit, alleen jij kan deze informatie zien"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Groen, je hebt een aantal contacten gekozen die jouw gegevens kunnen zien"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Oranje, alle contactlijsten kunnen je informatie zien"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Rood, iedereen in het XMPP-netwerk kan je gegevens zien"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Zwart, iedereen op het internet kan je gegevens zien"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1204,24 +1234,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Lees de Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Spreek met ons via email?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr ""
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Inloggegevens voor beheer"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Chatten met het team?"
 
 #: [chatroom]button
@@ -1677,21 +1697,9 @@ msgstr "Klik op toevoegen om er een toe te voegen."
 msgid "Chatrooms"
 msgstr "Chatrooms"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Chatroom ID"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Favoriete chat-ruimte"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Onjuist Chatroom-ID"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Lege naam"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1712,10 +1720,6 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Favoriet bijgewerkt"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1836,6 +1840,14 @@ msgstr "Wat zoek je?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Start me met CTRL + M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr "Dit is geen geldige URL"
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr "Deel de URL"
 
 #: [statistics]title
 msgid "Statistics"
@@ -2788,6 +2800,38 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 msgid "Type here"
 msgstr "Typ hier"
 
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Waar verwijzen de kleine banners naar ?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Bedankt voor deze vijf kleine banners, kun je kort toelichten wat de mate van betrouwbaarheid is van de informatie die je beschikbaar stelt."
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Wit, alleen jij kan deze informatie zien"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Groen, je hebt een aantal contacten gekozen die jouw gegevens kunnen zien"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Oranje, alle contactlijsten kunnen je informatie zien"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Rood, iedereen in het XMPP-netwerk kan je gegevens zien"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Zwart, iedereen op het internet kan je gegevens zien"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s groepen op deze server"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Lees de Wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Spreek met ons via email?"
+
 #~ msgid "WebSocket Configuration"
 #~ msgstr "WebSocket Configuratie"
 
@@ -2803,37 +2847,5 @@ msgstr "Typ hier"
 #~ msgid "Public WebSockets"
 #~ msgstr "Publieke WebSockets"
 
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Voeg een nieuwe chatruimte toe"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Naam"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Wil je de deze chatruimte automatisch in gaan?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Er ging wat fout: "
-
-#~ msgid "Configure"
-#~ msgstr "Configureer"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Voeg een nieuwe URL toe"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Naam"
-
 #~ msgid "Looking for some documentation ?"
 #~ msgstr "Op zoek naar wat documentatie?"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "Dit is geen geldige URL"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "Deel de URL"

@@ -22,6 +22,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -82,6 +84,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -101,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
@@ -503,6 +507,70 @@ msgstr ""
 msgid "This content is private, please login to see it"
 msgstr ""
 
+#: [title]conferences
+#, fuzzy
+msgid "Conferences"
+msgstr "Configurare"
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr ""
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "Adaugați un nou URL"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
+#: [chatroom]name
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Nume"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Porecla"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr "Doriți să aderați în mod automat la acest Chat Room?"
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "ID Chatroom greșit"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Nume necompletat"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr ""
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr "A survenit o eroare"
+
+#: [bookmarks]configure
+msgid "Configure"
+msgstr "Configurare"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr "Adaugați un nou URL"
+
+#: [url]url
+msgid "URL"
+msgstr "URL"
+
+#: [url]name
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Nume"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Mesaj publicat"
@@ -577,6 +645,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -794,11 +866,11 @@ msgstr "Adaugă o etichetă pentru aceasta comunitate"
 msgid "My Community Name"
 msgstr "Numele comunității mele"
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr "Distribuie public acest abonament"
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr "Va apărea pe profilul dumneavoastră"
 
@@ -893,10 +965,6 @@ msgstr "Informatii generale"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nume"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Porecla"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1062,10 +1130,6 @@ msgstr "Faceți apartenența la acest grup publică cu prietenii dumneavoastră"
 msgid "Give a label for this group"
 msgstr "Adăugați o etichetă la acest grup"
 
-#: [group]empty_title
-msgid "Groups"
-msgstr ""
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr ""
@@ -1114,11 +1178,6 @@ msgstr "Veți găsi o listă cu toate Grupurile abonate în Abonamentele mele ș
 msgid "Contact post"
 msgstr ""
 
-#: [groups]empty_server
-#, fuzzy
-msgid "There is no Groups yet on this server."
-msgstr "%s grupuri pe acest server"
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr "Creează un nou Grup pe %s"
@@ -1147,34 +1206,6 @@ msgstr "Nu puteți crea un nou Grup pe acest server"
 msgid "Frequently Asked Questions"
 msgstr "Întrebări frecvente"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr ""
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr ""
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr ""
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr ""
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr ""
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1199,24 +1230,13 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Citiți Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Discutați cu noi prin e-mail?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr ""
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Administrare"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+msgid "Chat with the Movim team?"
 msgstr ""
 
 #: [chatroom]button
@@ -1672,21 +1692,9 @@ msgstr ""
 msgid "Chatrooms"
 msgstr ""
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr ""
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "ID Chatroom greșit"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Nume necompletat"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1706,10 +1714,6 @@ msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
-msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
 msgstr ""
 
 #: [room]anonymous_title
@@ -1831,6 +1835,14 @@ msgstr "Ce cauți?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Deschide-mă folosind Ctrl + M"
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -2782,25 +2794,12 @@ msgstr ""
 msgid "Type here"
 msgstr ""
 
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Nume"
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s grupuri pe acest server"
 
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Doriți să aderați în mod automat la acest Chat Room?"
+#~ msgid "Read the Wiki"
+#~ msgstr "Citiți Wiki"
 
-#~ msgid "An error occured :"
-#~ msgstr "A survenit o eroare"
-
-#~ msgid "Configure"
-#~ msgstr "Configurare"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Adaugați un nou URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Nume"
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Discutați cu noi prin e-mail?"

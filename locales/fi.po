@@ -22,6 +22,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Bookmark/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chats/locales.ini
@@ -82,6 +84,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Share/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Stickers/locales.ini
@@ -101,7 +105,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-14 15:02+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
@@ -503,6 +507,72 @@ msgstr "Tämä käyttäjä ei ole julkaissut vielä mitään"
 msgid "This content is private, please login to see it"
 msgstr "Tämä sisältö on yksityistä, kirjaudu sisään nähdäksesi"
 
+#: [title]conferences
+msgid "Conferences"
+msgstr ""
+
+#: [title]groups [group]empty_title
+msgid "Groups"
+msgstr "Ryhmät"
+
+#: [chatroom]add
+#, fuzzy
+msgid "Add a new Chat Room"
+msgstr "Lisää keskusteluhuone"
+
+#: [chatroom]id [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Keskusteluhuoneen ID"
+
+#: [chatroom]name
+#, fuzzy
+msgctxt "[chatroom]name"
+msgid "Name"
+msgstr "Nimi"
+
+#: [chatroom]nickname [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Nimimerkki"
+
+#: [chatroom]autojoin_label
+msgid "Do you want do join automaticaly this Chat Room ?"
+msgstr ""
+
+#: [chatroom]bad_id [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Huono keskusteluhuoneen ID"
+
+#: [chatroom]empty_name [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tyhä nimi"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Kirjanmerkit päivitetty"
+
+#: [bookmarks]error
+msgid "An error occured :"
+msgstr ""
+
+#: [bookmarks]configure
+#, fuzzy
+msgid "Configure"
+msgstr "Asetukset"
+
+#: [url]add
+msgid "Add a new URL"
+msgstr ""
+
+#: [url]url
+msgid "URL"
+msgstr ""
+
+#: [url]name
+#, fuzzy
+msgctxt "[url]name"
+msgid "Name"
+msgstr "Nimi"
+
 #: [message]published
 msgid "Message Published"
 msgstr "Viesti julkaistu"
@@ -577,6 +647,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -794,11 +868,11 @@ msgstr ""
 msgid "My Community Name"
 msgstr ""
 
-#: [communityheader]share_subscription [group]share_subscription
+#: [communityheader]share_subscription
 msgid "Share this subscription publicly"
 msgstr ""
 
-#: [communityheader]share_subscription_text [group]share_subscription_text
+#: [communityheader]share_subscription_text
 msgid "It will appear on your profile"
 msgstr ""
 
@@ -893,10 +967,6 @@ msgstr "Perustiedot"
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Nimi"
-
-#: [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Nimimerkki"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1062,10 +1132,6 @@ msgstr ""
 msgid "Give a label for this group"
 msgstr ""
 
-#: [group]empty_title
-msgid "Groups"
-msgstr "Ryhmät"
-
 #: [group]empty
 msgid "Something bad happened to this group"
 msgstr ""
@@ -1114,10 +1180,6 @@ msgstr ""
 msgid "Contact post"
 msgstr ""
 
-#: [groups]empty_server
-msgid "There is no Groups yet on this server."
-msgstr ""
-
 #: [groups]add
 msgid "Create a new Group on %s"
 msgstr ""
@@ -1146,34 +1208,6 @@ msgstr ""
 msgid "Frequently Asked Questions"
 msgstr "Usein kysytyt kysymykset"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Mitä nämä pienet bannerit ovat?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Kiitos näiden viiden pienen bannerin, näet yksityisyyden tason jakamallesi tiedolle."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Valkoinen, vain sinä voit tähdä tämän"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Vihreä, olet valinnut joitakin kontakteja jotka voivat nähdä tämän"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Oranssi, kaikki jotka ovat kontaktilistallasi voivat nähdä tämän"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Punainen, vain ne jotka ovat XMPP verkossa voivat nähdä tämän"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Musta, avoinna kaikille internet käyttäjille"
-
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
 msgstr ""
@@ -1198,25 +1232,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Want to contribute to the project?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr ""
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr ""
-
-#: [ml]button
-msgid "Join the Mailing List"
+#: [contact]title
+msgid "Administrators & Contact"
 msgstr ""
 
 #: [chatroom]question
-msgid "Chat with the team ?"
-msgstr ""
+#, fuzzy
+msgid "Chat with the Movim team?"
+msgstr "Keskustele kontaktin kanssa"
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1671,21 +1694,9 @@ msgstr "Lisää yksi painamalla lisäyspainiketta."
 msgid "Chatrooms"
 msgstr "Keskusteluhuoneet"
 
-#: [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Keskusteluhuoneen ID"
-
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Lempihuoneeni"
-
-#: [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Huono keskusteluhuoneen ID"
-
-#: [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tyhä nimi"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1706,10 +1717,6 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Kirjanmerkit päivitetty"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1829,6 +1836,14 @@ msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [share]error
+msgid "This is not a valid url"
+msgstr ""
+
+#: [share]success
+msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2781,3 +2796,25 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
+
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Mitä nämä pienet bannerit ovat?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Kiitos näiden viiden pienen bannerin, näet yksityisyyden tason jakamallesi tiedolle."
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Valkoinen, vain sinä voit tähdä tämän"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Vihreä, olet valinnut joitakin kontakteja jotka voivat nähdä tämän"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Oranssi, kaikki jotka ovat kontaktilistallasi voivat nähdä tämän"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Punainen, vain ne jotka ovat XMPP verkossa voivat nähdä tämän"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Musta, avoinna kaikille internet käyttäjille"
