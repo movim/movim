@@ -4,12 +4,12 @@
     </span>
     {if="!empty($embed->images)"}
         <span class="primary icon thumb active"
-            {if="count($embed->images) > 0"}
+            {if="count($embed->images) > 1"}
                 onclick="PublishBrief_ajaxEmbedChooseImage('{$embed->url}')"
             {/if}
             style="background-image: url({$embed->images[$imagenumber]['url']})"
             title="{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']} - {$embed->images[$imagenumber]['size']|sizeToCleanSize}">
-            {if="count($embed->images) > 0"}
+            {if="count($embed->images) > 1"}
                 <i class="zmdi zmdi-slideshow"></i>
             {/if}
         </span>
