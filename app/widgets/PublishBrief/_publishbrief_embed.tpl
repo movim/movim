@@ -3,9 +3,15 @@
         <i class="zmdi zmdi-close"></i>
     </span>
     {if="!empty($embed->images)"}
-        <span class="primary icon thumb"
-            style="background-image: url({$embed->images[0]['url']})"
-            title="{$embed->images[0]['width']} x {$embed->images[0]['height']} - {$embed->images[0]['size']|sizeToCleanSize}">
+        <span class="primary icon thumb active"
+            {if="count($embed->images) > 0"}
+                onclick="PublishBrief_ajaxEmbedChooseImage('{$embed->url}')"
+            {/if}
+            style="background-image: url({$embed->images[$imagenumber]['url']})"
+            title="{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']} - {$embed->images[$imagenumber]['size']|sizeToCleanSize}">
+            {if="count($embed->images) > 0"}
+                <i class="zmdi zmdi-slideshow"></i>
+            {/if}
         </span>
     {else}
         <span class="primary icon bubble gray">
@@ -22,8 +28,8 @@
     {/if}
 
     {if="$embed->type == 'photo'"}
-        <p class="line">{$embed->images[0]['width']} x {$embed->images[0]['height']}</p>
-        <p class="line">{$embed->images[0]['size']|sizeToCleanSize}</p>
+        <p class="line">{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']}</p>
+        <p class="line">{$embed->images[$imagenumber]['size']|sizeToCleanSize}</p>
     {else}
         <p class="line">{$embed->title}</p>
         <p class="line">{$embed->description}</p>

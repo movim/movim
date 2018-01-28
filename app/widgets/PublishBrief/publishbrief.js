@@ -32,6 +32,7 @@ var PublishBrief = {
     },
     clearEmbed: function() {
         document.querySelector('input[name=embed]').value = '';
+        document.querySelector('input[name=imagenumber]').value = 0;
         PublishBrief_ajaxClearEmbed();
         PublishBrief.saveDraft();
     },
@@ -45,6 +46,11 @@ var PublishBrief = {
                 PublishBrief.saveDraft();
             }, 1000);
         };
+    },
+    setEmbedImage: function(imagenumber) {
+        Drawer.clear();
+        document.querySelector('input[name=imagenumber]').value = imagenumber;
+        document.querySelector('input[name=embed]').onchange();
     },
     saveDraft: function() {
         PublishBrief_ajaxSaveDraft(MovimUtils.formToJson('brief'));

@@ -84,10 +84,12 @@ class PublishBrief extends \Movim\Widget\Base
                     $embed = $murl->resolve($form->embed->value);
                     $p->setLink($form->embed->value);
 
+                    $imagenumber = $form->imagenumber->value;
+
                     if($embed->type == 'photo' || isset($embed->images)) {
-                        $p->setImage($embed->images[0]['url'],
+                        $p->setImage($embed->images[$imagenumber]['url'],
                                      $embed->title,
-                                     $embed->images[0]['mime']);
+                                     $embed->images[$imagenumber]['mime']);
                     }
 
                     $p->setLink($form->embed->value,
@@ -112,7 +114,7 @@ class PublishBrief extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->__('global.loading'));
     }
 
-    function ajaxEmbedTest($url)
+    function ajaxEmbedTest($url, $imagenumber = 0)
     {
         if($url == '') {
             return;
@@ -129,10 +131,22 @@ class PublishBrief extends \Movim\Widget\Base
         try {
             $murl = new \Modl\Url;
             $embed = $murl->resolve($url);
-            $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed));
+            $this->rpc('MovimTpl.fill', '#publishbrief p.embed', $this->prepareEmbed($embed, $imagenumber));
             if ($embed->type == 'link') {
                 $this->rpc('PublishBrief.setTitle', $embed->title);
             }
+        } catch(Exception $e) {
+            error_log($e->getMessage());
+        }
+    }
+
+    function ajaxEmbedChooseImage($url)
+    {
+        try {
+            $view = $this->tpl();
+            $murl = new \Modl\Url;
+            $view->assign('embed', $murl->resolve($url));
+            Drawer::fill($view->draw('_publishbrief_images', true), true);
         } catch(Exception $e) {
             error_log($e->getMessage());
         }
@@ -151,10 +165,11 @@ class PublishBrief extends \Movim\Widget\Base
         return $view->draw('_publishbrief_embed_default', true);
     }
 
-    function prepareEmbed($embed)
+    function prepareEmbed($embed, $imagenumber = 0)
     {
         $view = $this->tpl();
         $view->assign('embed', $embed);
+        $view->assign('imagenumber', $imagenumber);
         return $view->draw('_publishbrief_embed', true);
     }
 
