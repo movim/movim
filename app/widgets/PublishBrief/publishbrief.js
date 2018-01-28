@@ -64,7 +64,19 @@ var PublishBrief = {
 }
 
 MovimWebsocket.attach(function() {
-    PublishBrief_ajaxGet();
+    var parts = MovimUtils.urlParts();
+
+    if (parts.page == 'news' || parts.page == '') {
+        PublishBrief_ajaxGet(false, false, false, false, true);
+    } else if (parts.params.length > 3 && parts.params[3] == 'share') {
+        PublishBrief_ajaxGet(parts.params[0], parts.params[1], parts.params[2], true);
+    } else if (parts.params.length > 2) {
+        PublishBrief_ajaxGet(parts.params[0], parts.params[1], parts.params[2]);
+    } else if (parts.params.length > 0) {
+        PublishBrief_ajaxGet(parts.params[0], parts.params[1]);
+    } else {
+        PublishBrief_ajaxGet();
+    }
 });
 
 if(typeof Upload != 'undefined') {

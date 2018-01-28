@@ -13,6 +13,8 @@
        <aside>
             <?php $this->widget('PublishHelp');?>
         </aside>
-        <?php $this->widget('Publish');?>
+        <div>
+            <?php $this->widget('PublishBrief');?>
+        </div>
     </section>
 </main>

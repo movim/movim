@@ -343,7 +343,7 @@ class Bootstrap
         'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
         'Chat','Chats','Config','ContactData','ContactHeader','Dialog','Drawer',
         'Header','Init','Login','LoginAnonymous','Menu','Notifs','Invitations',
-        'Post','PostActions','Presence','Publish','PublishBrief','Rooms',
+        'Post','PostActions','Presence','PublishBrief','Rooms',
         'Roster','Stickers','Upload','Vcard4','Visio','VisioLink'];
     }
 
