@@ -1,4 +1,33 @@
-<br class="on_desktop"/>
+{if="!$light"}
+    <header class="relative">
+        <ul class="list middle">
+            <li>
+                <span
+                    class="primary icon active"
+                    {if="$node == 'urn:xmpp:microblog:0'"}
+                        onclick="MovimUtils.redirect('{$c->route('news')}');"
+                    {else}
+                        onclick="history.back();"
+                    {/if}
+                >
+                    <i class="zmdi zmdi-arrow-back"></i>
+                </span>
+
+                <p class="line">
+                    {if="$item != false"}
+                        {$c->__('publish.edit')}
+                    {elseif="$reply"}
+                        {$c->__('button.share')}
+                    {else}
+                        {$c->__('publish.new')}
+                    {/if}
+                </p>
+            </li>
+        </ul>
+    </header>
+{else}
+    <br class="on_desktop"/>
+{/if}
 <div class="block">
     <ul class="list">
         <li>
