@@ -171,7 +171,7 @@ class Bootstrap
 
         if (getenv('baseuri') != null
         && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)
-        && sizeof(getenv('baseuri')) < 32) {
+        && strlen(getenv('baseuri')) < 32) {
             return getenv('baseuri');
         }
         return $uri;
