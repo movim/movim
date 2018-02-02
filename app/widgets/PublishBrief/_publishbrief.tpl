@@ -15,11 +15,11 @@
 
                 <p class="line">
                     {if="$item != false"}
-                        {$c->__('publish.edit')}
+                        {$c->__('button.edit')}
                     {elseif="$reply"}
                         {$c->__('button.share')}
                     {else}
-                        {$c->__('publish.new')}
+                        {$c->__('publishbrief.new')}
                     {/if}
                 </p>
             </li>
@@ -59,7 +59,7 @@
                 <div {if="$light"}class="hide"{/if}>
                     <textarea
                         name="content"
-                        placeholder="{$c->__('publish.content_text')}"
+                        placeholder="{$c->__('publishbrief.content_text')}"
                         oninput="MovimUtils.textareaAutoheight(this);"
                         >{if="$item != false"}{$item->contentraw}{elseif="!empty($draft->content)"}{$draft->content}{/if}</textarea>
                 </div>

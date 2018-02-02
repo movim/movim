@@ -101,7 +101,7 @@ class PublishBrief extends \Movim\Widget\Base
 
             Dialog::fill($view->draw('_publishbrief_preview', true), true);
         } else {
-            Notification::append(false, $this->__('publish.no_content_preview'));
+            Notification::append(false, $this->__('publishbrief.no_content_preview'));
         }
     }
 
@@ -224,7 +224,7 @@ class PublishBrief extends \Movim\Widget\Base
         }
 
         if(!Validator::url()->validate($url)) {
-            Notification::append(false, $this->__('publish.valid_url'));
+            Notification::append(false, $this->__('publishbrief.valid_url'));
             $this->ajaxClearEmbed();
             return;
         }

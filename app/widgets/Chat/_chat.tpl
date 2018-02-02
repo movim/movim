@@ -185,7 +185,7 @@
             {/if}
             {if="$c->supported('upload')"}
                 <span class="upload control icon"
-                    title="{$c->__('publish.attach')}"
+                    title="{$c->__('publishbrief.attach')}"
                     onclick="Upload_ajaxRequest()">
                     <i class="zmdi zmdi-attachment-alt"></i>
                 </span>

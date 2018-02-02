@@ -43,7 +43,7 @@ class CommunityHeader extends \Movim\Widget\Base
 
     function onTestPublishError($packet)
     {
-        Notification::append(null, $this->__('publish.no_publication'));
+        Notification::append(null, $this->__('publishbrief.no_publication'));
     }
 
     function onSubscribed($packet)
