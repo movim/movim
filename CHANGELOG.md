@@ -3,6 +3,11 @@ Movim Changelog
 
 v0.13.1 (trunk)
 ---------------------------
+ * Add a picture picker when sharing a URL in a post
+ * Merge Publish in PublishBrief
+ * Implement XEP-0157 to allow users to contact their administrators
+ * Change the Reply button to Share
+ * Add a spoiler on NSFW articles in the news feed
  * Show a spoiler on NSFW posts when the filter is enabled in News
  * Enhancements on Visio and CSS improvements
  * Fix date display in Chat on instable connectivity
