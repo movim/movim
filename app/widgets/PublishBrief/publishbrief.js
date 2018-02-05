@@ -37,6 +37,8 @@ var PublishBrief = {
         PublishBrief.saveDraft();
     },
     checkEmbed: function() {
+        MovimUtils.textareaAutoheight(document.querySelector('textarea[name=content]'));
+
         var embed = document.querySelector('input[name=embed]');
         embed.onchange();
 
