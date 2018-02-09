@@ -1,4 +1,4 @@
-{if="!$light"}
+{if="$extended"}
     <header class="relative">
         <ul class="list middle">
             <li>
@@ -56,7 +56,7 @@
                         placeholder="{$c->__('publishbrief.placeholder')}"
                         type="text">{if="$item != false"}{$item->title}{elseif="!empty($draft->title)"}{$draft->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
                 </div>
-                <div {if="$light"}class="hide"{/if}>
+                <div {if="!$extended"}class="hide"{/if}>
                     <textarea
                         name="content"
                         placeholder="{$c->__('publishbrief.content_text')}"
@@ -100,17 +100,17 @@
                   onclick="PublishBrief.togglePrivacy()">
                 <i class="zmdi zmdi-portable-wifi"></i>
             </span>
-            {if="$light"}
-                <span class="control icon active gray"
-                    title="{$c->__('publishbrief.post')}"
-                    onclick="MovimUtils.reload('{$c->route('publish')}')">
-                    <i class="zmdi zmdi-plus-circle"></i>
-                </span>
-            {else}
+            {if="$extended"}
                 <span class="control icon active gray"
                     title="{$c->__('publishbrief.preview')}"
                     onclick="PublishBrief_ajaxPreview(MovimUtils.formToJson('brief'))">
                     <i class="zmdi zmdi-eye"></i>
+                </span>
+            {else}
+                <span class="control icon active gray"
+                    title="{$c->__('publishbrief.post')}"
+                    onclick="MovimUtils.reload('{$c->route('publish')}')">
+                    <i class="zmdi zmdi-plus-circle"></i>
                 </span>
             {/if}
             <div>

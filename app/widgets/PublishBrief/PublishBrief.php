@@ -64,12 +64,12 @@ class PublishBrief extends \Movim\Widget\Base
         $node = false,
         $id = false,
         $reply = false,
-        $light = false
+        $extended = false
     ) {
         $this->rpc(
             'MovimTpl.fill',
             '#publishbrief',
-            $this->preparePublishBrief($server, $node, $id, $reply, $light)
+            $this->preparePublishBrief($server, $node, $id, $reply, $extended)
         );
         $this->rpc('PublishBrief.checkEmbed');
     }
@@ -288,7 +288,7 @@ class PublishBrief extends \Movim\Widget\Base
         $node = false,
         $id = false,
         $reply = false,
-        $light = false
+        $extended = false
     ) {
         if($server == false
         && $node == false) {
@@ -334,7 +334,7 @@ class PublishBrief extends \Movim\Widget\Base
             $view->assign('embed', $this->prepareEmbedDefault());
         }
 
-        $view->assign('light', $light);
+        $view->assign('extended', $extended);
 
         return $view->draw('_publishbrief', true);
     }

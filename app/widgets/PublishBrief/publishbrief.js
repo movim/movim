@@ -68,14 +68,14 @@ var PublishBrief = {
 MovimWebsocket.attach(function() {
     var parts = MovimUtils.urlParts();
 
-    if (parts.page == 'news' || parts.page == '') {
-        PublishBrief_ajaxGet(false, false, false, false, true);
-    } else if (parts.params.length > 3 && parts.params[3] == 'share') {
-        PublishBrief_ajaxGet(parts.params[0], parts.params[1], parts.params[2], true);
+    if (parts.params.length > 3 && parts.params[3] == 'share') {
+        PublishBrief_ajaxGet(parts.params[0], parts.params[1], parts.params[2], true, true);
     } else if (parts.params.length > 2) {
-        PublishBrief_ajaxGet(parts.params[0], parts.params[1], parts.params[2]);
+        PublishBrief_ajaxGet(parts.params[0], parts.params[1], parts.params[2], false, true);
     } else if (parts.params.length > 0) {
-        PublishBrief_ajaxGet(parts.params[0], parts.params[1]);
+        PublishBrief_ajaxGet(parts.params[0], parts.params[1], false, false, true);
+    } else if (parts.page == 'publish') {
+        PublishBrief_ajaxGet(false, false, false, false, true);
     } else {
         PublishBrief_ajaxGet();
     }
