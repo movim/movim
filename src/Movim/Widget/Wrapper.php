@@ -21,6 +21,7 @@ class Wrapper
     public $image = null; // If a widget has defined a particular image
     public $description = null; // If a widget has defined a particular description
     public $url = null; // If a widget has defined a particular url
+    public $links = []; // If a widget have to inject a link in the header
 
     public function __construct()
     {
@@ -119,6 +120,7 @@ class Wrapper
                 if(isset($widget->image)) $this->image = $widget->image;
                 if(isset($widget->description)) $this->description = $widget->description;
                 if(isset($widget->url)) $this->url = $widget->url;
+                if(isset($widget->links)) $this->links += $widget->links;
             }
 
             return $widget;
@@ -142,7 +144,7 @@ class Wrapper
             $params = [];
         }
 
-        return call_user_func_array([$widget, $method], $params);
+        return $widget->$method(...$params);
     }
 
     /**

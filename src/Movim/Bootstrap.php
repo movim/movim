@@ -133,18 +133,15 @@ class Bootstrap
 
     private function isServerSecured()
     {
-        if ((
+        return ((
             isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "")
-        || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == "https")) {
-            return true;
-        }
-
-        return false;
+        || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
+        ));
     }
 
     private function getVersion()
     {
-        $file = "VERSION";
+        $file = 'VERSION';
         if ($f = fopen(DOCUMENT_ROOT.'/'.$file, 'r')) {
             return trim(fgets($f));
         }
@@ -176,9 +173,8 @@ class Bootstrap
         && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)
         && sizeof(getenv('baseuri')) < 32) {
             return getenv('baseuri');
-        } else {
-            return $uri;
         }
+        return $uri;
     }
 
     private function loadCommonLibraries()

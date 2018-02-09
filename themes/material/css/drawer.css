@@ -1,6 +1,5 @@
 .drawer {
     position: fixed;
-    background-color: white;
     z-index: 3;
 
     bottom: 0;

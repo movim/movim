@@ -32,10 +32,7 @@ class DatabaseCommand extends Command
         } else {
             $toDo = $md->check();
             if ($toDo != null) {
-                $output->writeln(
-                    '<comment>The database needs to be updated</comment>'
-                );
-
+                $output->writeln('<comment>The database needs to be updated</comment>');
                 foreach ($toDo as $do) {
                     $output->writeln('<question>'.$do.'</question>');
                 }

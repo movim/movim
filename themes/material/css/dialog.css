@@ -4,7 +4,6 @@
     position: fixed;
     top: 5%;
     left: 50%;
-    background-color: white;
     height: initial;
     max-height: 90%;
     width: 50rem;
@@ -53,6 +52,9 @@
     padding-top: 0;
 }
 
+.dialog > section form h3 {
+    padding-bottom: 0;
+}
 
 @media screen and (max-width: 600px) {
     .dialog {

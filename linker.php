@@ -11,12 +11,12 @@ use Movim\RPC;
 use Movim\Session;
 
 $bootstrap = new Bootstrap;
-$booted = $bootstrap->boot();
+$bootstrap->boot();
 
 $loop = React\EventLoop\Factory::create();
 
-$connector = new React\SocketClient\TcpConnector($loop);
-$stdin = new React\Stream\Stream(STDIN, $loop);
+$connector = new React\Socket\TcpConnector($loop);
+$stdin = new React\Stream\ReadableResourceStream(STDIN, $loop);
 
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();
@@ -51,27 +51,24 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
     }
 });
 
-// One connected ping each 5 mins
-/*$loop->addPeriodicTimer(5*60, function() use (&$conn) {
-    if(isset($conn)
-    && is_resource($conn->stream)) {
-        $ping = new \Moxl\Xec\Action\Ping\Server;
-        $ping->request();
+$zmq = new \React\ZMQ\Context($loop, new \ZMQContext(2, false));
+$file = CACHE_PATH . 'movim_feeds_' . getenv('sid') . '.ipc';
 
-        $conn->write(trim(\Moxl\API::commit()));
-        \Moxl\API::clear();
-    }
-});*/
+$pullSocket = $zmq->getSocket(ZMQ::SOCKET_PUSH);
+$pullSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
+$pullSocket->connect('ipc://' . $file . '_pull', true);
 
-function writeOut()
+$pushSocket = $zmq->getSocket(ZMQ::SOCKET_PULL);
+$pushSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
+$pushSocket->connect('ipc://'.$file . '_push', true);
+
+function writeOut($msg = null)
 {
-    $msg = RPC::commit();
+    global $pullSocket;
 
     if(!empty($msg)) {
-        echo base64_encode(gzcompress(json_encode($msg), 9)).EOT;
+        $pullSocket->send(json_encode($msg));
     }
-
-    RPC::clear();
 }
 
 function writeXMPP($xml)
@@ -87,105 +84,98 @@ function writeXMPP($xml)
     }
 }
 
-function tick()
+function shutdown()
 {
+    global $pullSocket;
+    global $pushSocket;
     global $loop;
-    $loop->tick();
+
+    $pullSocket->close();
+    $pushSocket->close();
+
+    $loop->stop();
 }
 
-$stdin_behaviour = function ($data) use (&$conn, $loop, &$buffer, &$connector, &$xmpp_behaviour, &$parser, &$timestamp)
+$pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, &$xmppBehaviour)
 {
-    if(substr($data, -1) == EOT) {
-        $messages = explode(EOT, $buffer . substr($data, 0, -1));
-        $buffer = '';
+    global $pullSocket;
 
-        foreach ($messages as $message) {
-            $msg = json_decode($message);
+    $msg = json_decode($msg);
 
-            if(isset($msg)) {
-                switch ($msg->func) {
-                    case 'message':
-                        $msg = $msg->body;
-                        break;
+    if(isset($msg)) {
+        switch ($msg->func) {
+            case 'message':
+                (new RPC)->handleJSON($msg->body);
+                break;
 
-                    case 'ping':
-                        // And we say that we are ready !
-                        $obj = new \StdClass;
-                        $obj->func = 'pong';
-                        echo base64_encode(gzcompress(json_encode($obj), 9)).EOT;
-                        break;
+            case 'ping':
+                // And we say that we are ready !
+                $obj = new \StdClass;
+                $obj->func = 'pong';
+                $pullSocket->send(json_encode($obj));
+                break;
 
-                    case 'down':
-                        if(isset($conn)
-                        && is_resource($conn->stream)) {
-                            $evt = new Movim\Widget\Event;
-                            $evt->run('session_down');
-                        }
-                        break;
+            case 'down':
+                if(isset($conn)
+                && is_resource($conn->stream)) {
+                    $evt = new Movim\Widget\Event;
+                    $evt->run('session_down');
+                }
+                break;
 
-                    case 'up':
-                        if(isset($conn)
-                        && is_resource($conn->stream)) {
-                            $evt = new Movim\Widget\Event;
-                            $evt->run('session_up');
-                        }
-                        break;
+            case 'up':
+                if(isset($conn)
+                && is_resource($conn->stream)) {
+                    $evt = new Movim\Widget\Event;
+                    $evt->run('session_up');
+                }
+                break;
 
-                    case 'unregister':
-                        \Moxl\Stanza\Stream::end();
-                        if(isset($conn)) $conn->close();
-                        $loop->stop();
-                        break;
+            case 'unregister':
+                \Moxl\Stanza\Stream::end();
+                if(isset($conn)) $conn->close();
+                shutdown();
+                break;
 
-                    case 'register':
-                        $cd = new \Modl\ConfigDAO;
-                        $config = $cd->get();
+            case 'register':
+                $cd = new \Modl\ConfigDAO;
+                $config = $cd->get();
 
-                        $port = 5222;
-                        $dns = \Moxl\Utils::resolveHost($msg->host);
-                        if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
-                        if(isset($dns->port) && $dns->port != null) $port = $dns->port;
+                $port = 5222;
+                $dns = \Moxl\Utils::resolveHost($msg->host);
+                if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
+                if(isset($dns->port) && $dns->port != null) $port = $dns->port;
 
-                        $ip = \Moxl\Utils::resolveIp($msg->host);
-                        $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
+                $ip = \Moxl\Utils::resolveIp($msg->host);
+                $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
 
-                        if(getenv('verbose')) {
-                            fwrite(
-                                STDERR,
-                                colorize(
-                                    getenv('sid'), 'yellow')." : ".
-                                    colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
-                                    "\n");
-                        }
-
-                        $connector->create($ip, $port)->then($xmpp_behaviour);
-                        break;
+                if(getenv('verbose')) {
+                    fwrite(
+                        STDERR,
+                        colorize(
+                            getenv('sid'), 'yellow')." : ".
+                            colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
+                            "\n");
                 }
 
-                $rpc = new RPC;
-                $rpc->handle_json($msg);
-
-                writeOut();
-            } else {
-                return;
-            }
+                $connector->connect('['.$ip.']:'.$port)->then($xmppBehaviour);
+                break;
         }
     } else {
-        $buffer .= $data;
+        return;
     }
 };
 
-$xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$stdin, $stdin_behaviour, $parser, &$timestamp)
+$xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, &$stdin, $pushSocketBehaviour, $parser, &$timestamp)
 {
+    global $pullSocket;
+
     $conn = $stream;
 
     if(getenv('verbose')) {
         fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
         fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
     }
-
-    $stdin->removeAllListeners('data');
-    $stdin->on('data', $stdin_behaviour);
 
     // We define a huge buffer to prevent issues with SSL streams, see https://bugs.php.net/bug.php?id=65137
     $conn->on('data', function($message) use (&$conn, $loop, $parser, &$timestamp) {
@@ -198,7 +188,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
 
             if($message == '</stream:stream>') {
                 $conn->close();
-                $loop->stop();
+                shutdown();
             } elseif($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
                 $session = Session::start();
@@ -223,7 +213,7 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
                     $evt = new Movim\Widget\Event;
                     $evt->run('ssl_error');
 
-                    $loop->stop();
+                    shutdown();
                     return;
                 }
 
@@ -246,19 +236,15 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
             if(!$parser->parse($message)) {
                 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
             }
-
-            writeOut();
         }
-
-        $loop->tick();
     });
 
-    $conn->on('error', function($msg) use ($conn, $loop) {
-        $loop->stop();
+    $conn->on('error', function() use ($conn, $loop) {
+        shutdown();
     });
 
-    $conn->on('close', function($msg) use ($conn, $loop) {
-        $loop->stop();
+    $conn->on('close', function() use ($conn, $loop) {
+        shutdown();
     });
 
     // And we say that we are ready !
@@ -267,11 +253,12 @@ $xmpp_behaviour = function (React\Stream\Stream $stream) use (&$conn, $loop, &$s
 
     fwrite(STDERR, 'registered');
 
-    echo base64_encode(gzcompress(json_encode($obj), 9)).EOT;
+    $pullSocket->send(json_encode($obj));
 };
 
-$stdin->on('data', $stdin_behaviour);
-$stdin->on('error', function() use($loop) { $loop->stop(); } );
-$stdin->on('close', function() use($loop) { $loop->stop(); } );
+$pushSocket->on('message', $pushSocketBehaviour);
+
+$stdin->on('error', function() use($loop) { shutdown(); } );
+$stdin->on('close', function() use($loop) { shutdown(); } );
 
 $loop->run();

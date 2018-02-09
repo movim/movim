@@ -1,7 +1,3 @@
 main > section > div > * {
     max-width: 130rem;
 }
-
-#communitiesdiscover {
-    padding: 0.25rem;
-}

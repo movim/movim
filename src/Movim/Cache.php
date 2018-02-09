@@ -61,11 +61,10 @@ class Cache
 
         if (func_num_args() == 2) {
             return $this->_writeCache($key, $arglist[1]);
-        } else {
-            // Cutting a piece of the args.
-            $content = array_slice($arglist, 1);
-            return $this->_writeCache($key, $content);
         }
+        // Cutting a piece of the args.
+        $content = array_slice($arglist, 1);
+        return $this->_writeCache($key, $content);
     }
 
     /**
@@ -101,9 +100,8 @@ class Cache
             return unserialize(
                 gzuncompress(base64_decode(str_replace("\\'", "'", $var->data)))
             );
-        } else {
-            return false;
         }
+        return false;
     }
 }
 

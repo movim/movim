@@ -1,18 +1,42 @@
 /* Color */
 
-body > * {
-    color: rgba(0, 0, 0, 0.87);
+body {
+    --movim-main: 255, 87, 34;
+    --movim-accent: #3F51B5;
+    --movim-background-main: 255, 255, 255;
+    --movim-background: #EEE;
+    --movim-font: 0, 0, 0;
+}
+
+body.nightmode {
+    --movim-accent: #222;
+    --movim-background-main: 41, 41, 41;
+    --movim-background: #393939;
+    --movim-font: 255, 255, 255;
+}
+
+body > *,
+.context_menu,
+input, textarea, select {
+    color: rgba(var(--movim-font), 0.87);
 }
 
 ul.list li.divided,
 hr:not(.clear),
+.card > .block:not(.subheader):not(.simple),
 *.divided > *:not(:last-child),
 *.divided.spaced > *:not(:last-child):after {
-    border-color: rgba(0, 0, 0, 0.12);
+    border-color: rgba(var(--movim-font), 0.12);
 }
 
+label, span.info,
+.tabs a,
 table tr th {
-    color: rgba(0, 0, 0, 0.54);
+    color: rgba(var(--movim-font), 0.54);
+}
+
+main > section > div > header.scroll {
+    background-color: var(--movim-background);
 }
 
 .color {
@@ -28,6 +52,14 @@ table tr th {
     border-color: rgba(255, 255, 255, 0.05);
 }
 
+ul li.date > p.normal,
+.dialog, .drawer, ul.context_menu,
+ul li div.bubble:not(.sticker):not(.file),
+.card > .block:not(.subheader):not(.simple),
+main {
+    background-color: rgb(var(--movim-background-main));
+}
+
 main > header a,
 .icon:not(.placeholder):not(.active) a,
 .color input {
@@ -38,8 +70,8 @@ main > header a,
 .color,
 ul li span.counter,
 form > div .radio > input[type="radio"]:checked + label {
-    border-color: #FF5722;
-    background-color: #FF5722;
+    border-color: rgb(var(--movim-main));
+    background-color: rgb(var(--movim-main));
     color: white;
 }
 
@@ -99,27 +131,17 @@ form textarea:focus:invalid + label {
 
 ul.list li > p:nth-last-of-type(3) + p:not(.normal),
 ul.list li > p:nth-last-of-type(2) + p:not(.normal) {
-    color: rgba(0, 0, 0, 0.60);
+    color: rgba(var(--movim-font), 0.60);
 }
 
-/* Default color : violet */
+/* Default color : indigo */
 
 input[type=button].color,
 main > section > div > header.fixed,
-main > header { background-color: #3F51B5; color: white; border-color: #3F51B5; }
-
-.tabs a {
-    color: #757575;
-}
-
-.tabs,
-.tabs li.active a:not(.classic):not(.activity):not(.action) {
-    border-color: #3F51B5;
-    color: #3F51B5;
-}
-
-main > section > div > header.scroll {
-    background-color: #EEE;
+main > header {
+    background-color: var(--movim-accent);
+    color: white;
+    border-color: var(--movim-accent);
 }
 
 header.fixed ul.list li > p:nth-last-of-type(2) + p,
@@ -132,20 +154,25 @@ header.big ul.list li > p:nth-last-of-type(2) + p {
 
 /* Gray accent : orange */
 
+.tabs,
+.tabs li.active a:not(.classic):not(.action),
 .button,
 header:not(.big) .icon a,
-a { color: #FF5722; border-color: #FF5722; }
+a {
+    color: rgb(var(--movim-main));
+    border-color: rgb(var(--movim-main));
+}
 
-form > div .checkbox:before { background-color: #FFE0B2; }
-form > div .checkbox > input[type="checkbox"]:checked + label { background-color: #FF5722; }
+form > div .checkbox:before { background-color: rgba(var(--movim-main), 0.5); }
+form > div .checkbox > input[type="checkbox"]:checked + label { background-color: rgb(var(--movim-main)); }
 
 form input:focus:not(:invalid) + label,
 form textarea:focus:not(:invalid) + label {
-    color: #FF5722;
+    color: rgb(var(--movim-main));
 }
 
 form input:focus:not(:invalid):not(.button),
 form textarea:focus:not(:invalid):not(.button) {
-    box-shadow:0px 2px 0px #FF5722;
+    box-shadow: 0px 2px 0px rgb(var(--movim-main));
 }
 

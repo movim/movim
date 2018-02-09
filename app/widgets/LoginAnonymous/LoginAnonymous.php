@@ -48,8 +48,4 @@ class LoginAnonymous extends \Movim\Widget\Base
 
         \Moxl\Stanza\Stream::init($host);
     }
-
-    function display()
-    {
-    }
 }

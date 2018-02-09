@@ -11,7 +11,7 @@ include_once WIDGETS_PATH.'Post/Post.php';
 
 class CommunityPosts extends \Movim\Widget\Base
 {
-    private $_paging = 5;
+    private $_paging = 10;
 
     function load()
     {
@@ -73,7 +73,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $slugify = new Slugify;
         $this->rpc(
             ($paginated) ? 'MovimTpl.append' : 'MovimTpl.fill',
-            '#communityposts.'.$slugify->slugify($origin.'_'.$node), $html);
+            '#communityposts.'.$slugify->slugify('c'.$origin.'_'.$node), $html);
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
@@ -114,7 +114,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $id = new \Modl\InfoDAO;
 
         $view = $this->tpl();
-        $view->assign('servers', $id->getGroupServers());
+        $view->assign('servers', $id->getCommunitiesServers());
         $html = $view->draw('_communityposts_empty', true);
 
         return $html;
@@ -202,10 +202,8 @@ class CommunityPosts extends \Movim\Widget\Base
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if(!$validate_server->validate($origin)
-        || !$validate_node->validate($node)
-        ) return false;
-        else return true;
+        return ($validate_server->validate($origin)
+             && $validate_node->validate($node));
     }
 
     function getComments($post)
@@ -219,7 +217,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $slugify = new Slugify;
 
         $node = $this->get('n') != null ? $this->get('n') : 'urn:xmpp:microblog:0';
-        $this->view->assign('class', $slugify->slugify($this->get('s').'_'.$node));
+        $this->view->assign('class', $slugify->slugify('c'.$this->get('s').'_'.$node));
     }
 }
 

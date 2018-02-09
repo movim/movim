@@ -20,8 +20,6 @@ class ContactData extends \Movim\Widget\Base
 
     public function prepareData($jid)
     {
-        $view = $this->tpl();
-
         $id = new \Modl\InfoDAO;
         $cd = new \Modl\ContactDAO;
         $md = new \Modl\MessageDAO;
@@ -92,8 +90,7 @@ class ContactData extends \Movim\Widget\Base
     private function validateJid($jid)
     {
         $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        if(!$validate_jid->validate($jid)) return false;
-        else return true;
+        return ($validate_jid->validate($jid));
     }
 
     public function display()

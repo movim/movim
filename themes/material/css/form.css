@@ -119,6 +119,7 @@ form > div > textarea {
     outline-width: 0;
 }
 
+form > div > .labeled,
 form > div > .select,
 form > div > input:not([type=submit]),
 form > div > textarea {
@@ -132,7 +133,12 @@ form > div > textarea {
     -webkit-appearance: none; /* iOS */
     border-radius: 0; /* iOS */
     overflow: hidden; /* Fixme */
-    box-shadow:0px 1px 0px rgba(0, 0, 0, 0.12);
+}
+
+form > div > .select,
+form > div > input:not([type=submit]),
+form > div > textarea {
+    box-shadow: 0px 1px 0px rgba(var(--movim-font), 0.12);
 }
 
 form > div > .select {
@@ -167,7 +173,7 @@ form > div .checkbox {
     position: relative;
     width: 4.5rem;
     height: 5rem;
-    top: 1rem;
+    margin-top: calc(50% - 0.9rem);
     direction: ltr;
 }
 
@@ -186,7 +192,7 @@ form > div .checkbox:before {
 
 form > div .checkbox:after {
     border-radius: 0 2rem 2rem 0;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: rgba(var(--movim-font), 0.25);
     right: 0;
     top: 0;
 }
@@ -199,7 +205,7 @@ form > div .checkbox > input[type="checkbox"] + label {
     width: 3rem;
     height: 3rem;
     border-radius: 2rem;
-    top: -0.5rem;
+    top: -0.4rem;
     left: -0.2rem;
     position: relative;
     font-size: 2rem;
@@ -211,7 +217,7 @@ form > div .checkbox > input[type="checkbox"] + label {
 form > div .checkbox > input[type="checkbox"] + label:hover,
 form > div .checkbox > input[type="checkbox"]:checked + label:hover {
     cursor: pointer;
-    box-shadow: 0  0 0 1.75rem rgba(0, 0, 0, 0.05), 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 0 1.75rem rgba(0, 0, 0, 0.05), 0 0.2rem 0.5rem rgba(0, 0, 0, 0.5);
 }
 
 form > div .checkbox > input[type="checkbox"]:checked + label {
@@ -236,20 +242,20 @@ form > div .radio > input[type="radio"] + label {
 
 form > div .radio > input[type="radio"] + label:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 0  0 0 1.5rem rgba(0, 0, 0, 0.1);
+    background-color: rgba(var(--movim-font), 0.1);
+    box-shadow: 0 0 0 1.5rem rgba(var(--movim-font), 0.1);
 }
 
 form > div .radio > input[type="radio"]:checked + label {
     background-color: blue;
     background-color: #009688;
     border-color: #009688;
-    box-shadow: inset 0 0 0 0.4rem white;
+    box-shadow: inset 0 0 0 0.4rem rgb(var(--movim-background-main));
 
 }
 
 form > div .radio > input[type="radio"]:checked + label:hover {
-    box-shadow: inset 0 0 0rem 0.4rem white, 0 0 0 1.5rem rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 0rem 0.4rem rgb(var(--movim-background-main)), 0 0 0 1.5rem rgba(var(--movim-font), 0.1);
 }
 
 /* Disabled */
@@ -424,15 +430,6 @@ header.big ~ .button.action {
     background-color: white;
 }
 
-.button.activity {
-    display: inline-block;
-    margin: 0;
-    font-size: 3rem;
-    line-height: 7rem;
-    height: auto;
-    width: 7rem;
-}
-
 .button i {
     margin: 0 0.5rem;
 }
@@ -444,6 +441,7 @@ header.big ~ .button.action {
 }
 
 /* The textarea hidden div */
+
 #hiddendiv {
     position: fixed;
     display: block;

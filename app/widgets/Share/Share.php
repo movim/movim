@@ -15,33 +15,62 @@ class Share extends \Movim\Widget\Base
     {
         $validate_url = Validator::url();
 
-        if($validate_url->validate($link)
+        if ($validate_url->validate($link)
         && substr($link, 0, 4) == 'http') {
             $session = Session::start();
             $session->set('share_url', $link);
             $this->rpc('Share.redirect', $this->route('news'));
-        } elseif(substr($link, 0, 5) == 'xmpp:') {
-            $link = str_replace(['xmpp://', 'xmpp:'], '', $link);
+        } else {
+            $uri = parse_url($link);
 
-            if(substr($link, -5, 5) == '?join') {
-                $this->rpc(
-                    'MovimUtils.redirect',
-                    $this->route(
-                        'chat', [str_replace('?join', '', $link), 'room']
-                    )
-                );
-            } else {
-                $this->rpc(
-                    'MovimUtils.redirect',
-                    $this->route(
-                        'contact', $link
-                    )
-                );
+            if ($uri && $uri['scheme'] == 'xmpp') {
+                if (isset($uri['query'])) {
+                    if ($uri['query'] == 'join') {
+                        $this->rpc(
+                            'MovimUtils.redirect',
+                            $this->route(
+                                'chat', [$uri['path'], 'room']
+                            )
+                        );
+
+                        return;
+                    }
+
+                    $params = [];
+
+                    foreach(explode(';', $uri['query']) as $param) {
+                        $result = explode('=', $param);
+                        if(count($result) == 2) {
+                            $params[$result[0]] = $result[1];
+                        }
+                    }
+
+                    if (isset($params['node']) && isset($params['item'])) {
+                        $this->rpc(
+                            'MovimUtils.redirect',
+                            $this->route(
+                                'post', [$uri['path'], $params['node'], $params['item']]
+                            )
+                        );
+                    }
+
+                    if (isset($params['node'])) {
+                        $this->rpc(
+                            'MovimUtils.redirect',
+                            $this->route(
+                                'community', [$uri['path'], $params['node']]
+                            )
+                        );
+                    }
+                } else {
+                    $this->rpc(
+                        'MovimUtils.redirect',
+                        $this->route(
+                            'contact', $uri['path']
+                        )
+                    );
+                }
             }
         }
-    }
-
-    function display()
-    {
     }
 }

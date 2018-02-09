@@ -26,7 +26,7 @@ article section.limited {
 article section.limited:after {
     content: "";
     display: block;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), white);
+    background: linear-gradient(to bottom, rgba(var(--movim-background-main), 0), rgba(var(--movim-background-main), 1));
     width: 100%;
     height: 10rem;
     position: absolute;

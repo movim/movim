@@ -266,7 +266,6 @@ class PostnDAO extends SQL
 
         if($limitr !== false) {
             $this->_sql .= ' limit '.(int)$limitr.' offset '.(int)$limitf;
-
         }
 
         $this->prepare(
@@ -435,24 +434,35 @@ class PostnDAO extends SQL
 
     function getPublic($origin, $node, $limitf = false, $limitr = false)
     {
+        $params = [
+            'origin' => $origin,
+            'node' => $node
+        ];
+
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
             where postn.origin = :origin
                 and postn.node = :node
-                and postn.open = true
+                and postn.open = true';
+
+        if(isset($this->_user)) {
+            $this->_sql .= '
+                    and (
+                        postn.nsfw = (select nsfw from setting where session = :session)
+                        or postn.nsfw = false
+                        or postn.nsfw is null)';
+
+            $params += ['setting.session' => $this->_user];
+        }
+
+        $this->_sql .= '
             order by postn.published desc';
 
         if($limitr !== false)
             $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
 
-        $this->prepare(
-            'Postn',
-            [
-                'origin' => $origin,
-                'node' => $node
-            ]
-        );
+        $this->prepare('Postn', $params);
 
         return $this->run('ContactPostn');
     }

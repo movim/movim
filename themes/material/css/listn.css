@@ -3,6 +3,10 @@ ul.list {
     padding: 0;
 }
 
+ul.list.thin li:not(.subheader) {
+    padding: 0;
+}
+
 ul.list li:not(.subheader) {
     padding: 0.25rem 0;
 }
@@ -28,10 +32,10 @@ ul.list li > *:not(p, .hide, form) {
 
 /* Active list */
 
-ul.list.active li:hover:not(.subheader),
-ul.list.active.all li:hover,
-ul.list.active li.active:not(.subheader) {
-    background-color: rgba(0, 0, 0, 0.03);
+ul.list.active > li:hover:not(.subheader),
+ul.list.active.all > li:hover,
+ul.list.active > li.active:not(.subheader) {
+    background-color: rgba(var(--movim-font), 0.03);
     cursor: pointer;
 }
 
@@ -75,6 +79,10 @@ ul.list li.subheader p {
     box-sizing: border-box;
     padding-right: 2rem;
     padding-left: 2rem;
+}
+
+ul.list > li.wide > *:not(img):not(.counter):not(span):not(.bubble):not(.button):not(ul):not(article) {
+    padding-left: 0;
 }
 
 ul.list li .primary > a,
@@ -258,7 +266,7 @@ header > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.
 
 ul.tabs {
     text-align: center;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(var(--movim-font), 0.12);
     overflow: hidden;
     white-space: nowrap;
     height: 6rem;
@@ -355,10 +363,9 @@ ul li div.bubble[dir="rtl"] {
 
 ul li div.bubble:not(.sticker):not(.file) {
     padding: 1rem 1.75rem 0.5rem;
-    border-radius: 0.5rem;
+    border-radius: 0 0.5rem 0.5rem;
     line-height: 2.75rem;
-    background-color: white;
-    border-color: white;
+    border-color: rgb(var(--movim-background-main));
     margin-bottom: 0.75rem;
 }
 
@@ -388,7 +395,9 @@ ul li.oppose div.bubble.file {
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file) {
-    background-color: #f5f5f5;
+    background-color: rgba(var(--movim-background-main), 0.5);
+    border-color: rgba(var(--movim-background-main), 0.5);
+    border-radius: 0.5rem 0 0.5rem 0.5rem;
 }
 
 ul li div.bubble span.info {
@@ -429,16 +438,16 @@ ul li div.bubble:not(.sticker):not(.file):before {
     position: absolute;
     top: 0;
     left: -1.5rem;
-    border-top: 1.5rem solid black;
+    border: 0.75rem solid transparent;
     border-top-color: inherit;
-    border-left: 1.5rem solid transparent;
-    border-right: 1.5rem solid transparent;
+    border-right-color: rgb(var(--movim-background-main));
 }
 
 ul li.oppose div.bubble:not(.sticker):not(.file):before {
-    left: calc(100% - 10.5rem);
+    left: calc(100% - 9rem);
     top: 0.75rem;
-    border-top-color: #f5f5f5;
+    border-right-color: transparent;
+    border-left-color: inherit;
 }
 
 /* Date separator */
@@ -451,7 +460,6 @@ ul li.date > p.normal {
     line-height: 2.5rem;
     font-size: 1.5rem;
     display: inline-block;
-    background-color: #E3E3E3;
     border-radius: 2rem;
     margin: 1rem;
 }
@@ -476,8 +484,6 @@ ul.list.middle li.separator:not(.subheader):not(.date) {
 ul.context_menu {
     border-radius: 0.25rem;
     overflow: hidden;
-    background-color: white;
-    color: #333;
     position: absolute;
     top: 0;
     right: 0;
@@ -564,3 +570,9 @@ ul.list li.divided,
     margin-right: 0;
     margin-left: 18rem;
 }*/
+
+ul li img.preview {
+    max-width: 100%;
+    margin: 1rem 0;
+}
+

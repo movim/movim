@@ -6,6 +6,32 @@ class Api extends \Movim\Widget\Base
     {
     }
 
+    function ajaxRegister()
+    {
+        $json = requestURL(
+            MOVIM_API.'pods/register',
+            3,
+            ['url' => BASE_URI]);
+
+        $json = json_decode($json);
+
+        if(isset($json) && $json->status == 200) {
+            $this->rpc('MovimUtils.reloadThis');
+            Notification::append(null, $this->__('api.conf_updated'));
+        }
+    }
+
+    function ajaxUnregister()
+    {
+        $cd = new \Modl\ConfigDAO();
+        $config = $cd->get();
+
+        $config->unregister = !$config->unregister;
+        $cd->set($config);
+
+        $this->rpc('MovimUtils.reloadThis');
+    }
+
     function display()
     {
         $this->view->assign(
@@ -34,31 +60,5 @@ class Api extends \Movim\Widget\Base
         } else {
             $this->view->assign('json', null);
         }
-    }
-
-    function ajaxRegister()
-    {
-        $json = requestURL(
-            MOVIM_API.'pods/register',
-            3,
-            ['url' => BASE_URI]);
-
-        $json = json_decode($json);
-
-        if(isset($json) && $json->status == 200) {
-            $this->rpc('MovimUtils.reloadThis');
-            Notification::append(null, $this->__('api.conf_updated'));
-        }
-    }
-
-    function ajaxUnregister()
-    {
-        $cd = new \Modl\ConfigDAO();
-        $config = $cd->get();
-
-        $config->unregister = !$config->unregister;
-        $cd->set($config);
-
-        $this->rpc('MovimUtils.reloadThis');
     }
 }

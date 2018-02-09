@@ -10,12 +10,9 @@ class CommunitySubscriptions extends \Movim\Widget\Base
     {
     }
 
-    function checkNewServer($node) {
-        $r = false;
-
-        if($this->_list_server != $node->server)
-            $r = true;
-
+    function checkNewServer($node)
+    {
+        $r = ($this->_list_server != $node->server);
         $this->_list_server = $node->server;
         return $r;
     }
@@ -29,9 +26,5 @@ class CommunitySubscriptions extends \Movim\Widget\Base
         $html = $view->draw('_communitysubscriptions', true);
 
         return $html;
-    }
-
-    public function display()
-    {
     }
 }

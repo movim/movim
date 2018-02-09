@@ -69,8 +69,7 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            data = pako.ungzip(MovimUtils.base64Decode(e.data), { to: 'string' });
-            var obj = JSON.parse(data);
+            var obj = JSON.parse(e.data);
 
             if(obj != null) {
                 if(obj.func == 'registered') {
@@ -137,6 +136,24 @@ var MovimWebsocket = {
         }
     },
 
+    sendAjax : function(widget, func, params) {
+        let xhr = new XMLHttpRequest;
+
+        xhr.open('POST', '?ajax');
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+        xhr.send(JSON.stringify(
+            {'func' : 'message', 'body' :
+                {
+                    'widget' : widget,
+                    'func' : func,
+                    'params' : params
+                }
+            }
+        ));
+
+        return xhr;
+    },
+
     // A ping/pong system to handle socket errors for buggy browser (Chrome on Linux…)
     ping : function() {
         if(this.connection.readyState == 1 && !this.closed) {
@@ -173,30 +190,25 @@ var MovimWebsocket = {
         this.attached = [];
     },
 
-    handle : function(funcalls) {
-        if(funcalls != null) {
-            for(h = 0; h < funcalls.length; h++) {
-                var funcall = funcalls[h];
-                if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
-                    try {
-                        window[funcall.func].apply(null, funcall.params);
-                    } catch(err) {
-                        console.log("Error caught: "
-                            + err.toString()
-                            + " - "
-                            + funcall.func
-                            + ":"
-                            + JSON.stringify(funcall.params)
-                        );
-                    }
-                } else if(funcall.func != null) {
-                    var funcs  = funcall.func.split('.');
-                    var called = funcs[0];
-                    if(typeof window[called] == 'object'
-                    && typeof window[funcs[0]][funcs[1]] != 'undefined') {
-                        window[funcs[0]][funcs[1]].apply(null, funcall.params);
-                    }
-                }
+    handle : function(funcall) {
+        if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
+            try {
+                window[funcall.func].apply(null, funcall.params);
+            } catch(err) {
+                console.log("Error caught: "
+                    + err.toString()
+                    + " - "
+                    + funcall.func
+                    + ":"
+                    + JSON.stringify(funcall.params)
+                );
+            }
+        } else if(funcall.func != null) {
+            var funcs  = funcall.func.split('.');
+            var called = funcs[0];
+            if(typeof window[called] == 'object'
+            && typeof window[funcs[0]][funcs[1]] != 'undefined') {
+                window[funcs[0]][funcs[1]].apply(null, funcall.params);
             }
         }
     },

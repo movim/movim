@@ -78,7 +78,7 @@ class ConfigCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         foreach ($input->getOptions() as $key => $value) {

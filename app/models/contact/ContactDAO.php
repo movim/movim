@@ -332,7 +332,7 @@ class ContactDAO extends SQL
                 from rosterlink
                 where session = :session
             )
-            and privacy.value = 1
+            and privacy.value = true
             order by jid
             limit 5';
 
@@ -360,7 +360,7 @@ class ContactDAO extends SQL
             ) as presence
                 on contact.jid = presence.jid
                 and contact.jid = presence.session
-            where privacy.value = 1
+            where privacy.value = true
               and contact.jid not in (select jid from rosterlink where session = :jid)
               and contact.jid != :jid
             order by presence.value is null, presence.value, contact.jid desc';
@@ -384,7 +384,7 @@ class ContactDAO extends SQL
             'select count(*) from contact
             left outer join privacy
                  on contact.jid = privacy.pkey
-            where privacy.value = 1
+            where privacy.value = true
               and contact.jid not in (select jid from rosterlink where session = :jid)
               and contact.jid != :jid';
 
@@ -575,8 +575,7 @@ class ContactDAO extends SQL
 
         if($item)
             return $this->run('RosterContact');
-        else
-            return $this->run('RosterContact', 'item');
+        return $this->run('RosterContact', 'item');
     }
 
     function getPresence($jid, $resource)
@@ -608,7 +607,7 @@ class ContactDAO extends SQL
             right outer join presence on contact.jid = presence.mucjid
             where presence.session = :session
             and presence.jid = :jid
-            order by mucaffiliation desc';
+            order by mucaffiliation desc, presence.resource';
 
         $this->prepare(
             'Presence',

@@ -57,7 +57,12 @@ class Base
                         $params[] = $param->name;
                     }
 
-                    $this->ajax->defun($this->name, $method->name, $params);
+                    $this->ajax->defun(
+                        $this->name,
+                        $method->name,
+                        $params,
+                        preg_match('#^ajaxHttp#', $method->name)
+                    );
                 }
             }
         }
@@ -88,14 +93,14 @@ class Base
         unset($this->_view);
     }
 
-    function __()
+    function __(...$args)
     {
-        return call_user_func_array('__', func_get_args());
+        return __(...$args);
     }
 
-    function ___()
+    function ___(...$args)
     {
-        echo call_user_func_array([&$this, '__'], func_get_args());
+        echo call_user_func_array([&$this, '__'], $args);
     }
 
     function supported($key)
@@ -103,14 +108,14 @@ class Base
         return $this->user->isSupported($key);
     }
 
-    function route()
+    function route(...$args)
     {
-        return call_user_func_array('\Movim\Route::urlize', func_get_args());
+        return \Movim\Route::urlize(...$args);
     }
 
-    function rpc()
+    function rpc(...$args)
     {
-        return call_user_func_array('\Movim\RPC::call', func_get_args());
+        return \Movim\RPC::call(...$args);
     }
 
     function load() {}

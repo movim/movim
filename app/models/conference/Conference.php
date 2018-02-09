@@ -5,6 +5,8 @@ namespace Modl;
 use \Modl\InfoDAO;
 use \Modl\PresenceDAO;
 
+use Movim\Picture;
+
 class Conference extends Model
 {
     public $jid;
@@ -22,8 +24,16 @@ class Conference extends Model
         'name'          => ['type' => 'string','size' => 128,'mandatory' => true],
         'nick'          => ['type' => 'string','size' => 128],
         'autojoin'      => ['type' => 'bool'],
-        'status'        => ['type' => 'bool'],
     ];
+
+    public function setAvatar($vcard, $conference)
+    {
+        if($vcard->vCard->PHOTO->BINVAL) {
+            $p = new \Movim\Picture;
+            $p->fromBase((string)$vcard->vCard->PHOTO->BINVAL);
+            $p->set($conference . '_muc');
+        }
+    }
 
     public function getItem()
     {
@@ -35,5 +45,18 @@ class Conference extends Model
     {
         $pd = new PresenceDAO;
         return $pd->countJid($this->conference);
+    }
+
+    public function getPhoto($size = 'l')
+    {
+        $sizes = [
+            'm'     => [120 , false],
+            's'     => [50  , false],
+            'xs'    => [28  , false],
+            'xxs'   => [24  , false]
+        ];
+
+        $p = new Picture;
+        return $p->get($this->conference . '_muc', $sizes[$size][0], $sizes[$size][1]);
     }
 }

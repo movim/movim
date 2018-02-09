@@ -1,5 +1,25 @@
 var Rooms = {
     anonymous_room: false,
+    default_services: [],
+
+    setDefaultServices: function(services) {
+        Rooms.default_services = services;
+    },
+
+    suggest: function() {
+        let input = document.querySelector('form[name=bookmarkmucadd] input[name=jid]');
+
+        if(input && input.value != '' && !input.value.includes('@')) {
+            let suggestions = document.querySelector('datalist#suggestions');
+            suggestions.textContent = '';
+
+            Rooms.default_services.forEach(function(item) {
+               var option = document.createElement('option');
+               option.value = input.value + '@' + item.node;
+               suggestions.appendChild(option);
+            });
+        }
+    },
 
     refresh: function() {
         var items = document.querySelectorAll('#rooms_widget ul li:not(.subheader)');
@@ -58,4 +78,5 @@ var Rooms = {
 MovimWebsocket.attach(function() {
     Rooms.anonymousInit();
     Rooms_ajaxDisplay();
+    Rooms_ajaxGetDefaultServices();
 });

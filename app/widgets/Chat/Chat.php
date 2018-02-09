@@ -213,8 +213,8 @@ class Chat extends \Movim\Widget\Base
 
             $this->rpc('MovimUtils.addClass', '#chat_widget', 'fixed');
             $this->rpc('MovimTpl.fill', '#chat_widget', $html);
-            $this->rpc('Chat.focus');
             $this->rpc('MovimTpl.showPanel');
+            $this->rpc('Chat.focus');
 
             $this->prepareMessages($jid);
         }
@@ -272,10 +272,8 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
+    function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
-        $this->rpc('Chat.sendedMessage');
-
         if(filter_var($message, FILTER_VALIDATE_URL)) {
             $headers = requestHeaders($message);
 
@@ -296,8 +294,9 @@ class Chat extends \Movim\Widget\Base
             $body = (string)htmlentities(trim($message), ENT_XML1, 'UTF-8');
         }
 
-        if($body == '' || $body == '/me')
+        if($body == '' || $body == '/me') {
             return;
+        }
 
         $m = new \Modl\Message;
         $m->session = $this->user->getLogin();
@@ -379,13 +378,13 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxCorrect($to, $message)
+    function ajaxHttpCorrect($to, $message)
     {
         $md = new \Modl\MessageDAO;
         $m = $md->getLastItem($to);
 
         if($m) {
-            $this->ajaxSendMessage($to, $message, false, false, $m);
+            $this->ajaxHttpSendMessage($to, $message, false, false, $m);
         }
     }
 
@@ -412,7 +411,8 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    function ajaxSendComposing($to) {
+    function ajaxSendComposing($to)
+    {
         if(!$this->validateJid($to)) return;
 
         $mc = new Composing;
@@ -425,7 +425,8 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    function ajaxSendPaused($to) {
+    function ajaxSendPaused($to)
+    {
         if(!$this->validateJid($to)) return;
 
         $mp = new Paused;
@@ -652,7 +653,6 @@ class Chat extends \Movim\Widget\Base
         $notif->ajaxClear('chat|'.$jid);
 
         $this->rpc('MovimTpl.scrollPanel');
-        $this->rpc('Chat.clearReplace');
     }
 
     function prepareMessage(&$message, $jid = null)

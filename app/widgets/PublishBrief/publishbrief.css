@@ -12,6 +12,6 @@ header#publishbrief form > div textarea {
 }
 
 #publishbrief .embed li.block {
-    border: 1px solid #EEE;
+    border: 1px solid rgba(var(--movim-font), 0.12);
     border-radius: 0.5rem;
 }

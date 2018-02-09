@@ -9,7 +9,7 @@
 </nav>
 
 <main>
-    <section style="background-color: #EEE;">
+    <section style="background-color: var(--movim-background);">
        <aside>
             <?php $this->widget('PublishHelp');?>
         </aside>

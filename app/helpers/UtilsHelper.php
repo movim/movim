@@ -515,6 +515,8 @@ function generateKey($size)
     return $hash;
 }
 
+define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0');
+
 /*
  * @desc Request a simple url
  */
@@ -527,7 +529,7 @@ function requestURL($url, $timeout = 10, $post = false, $json = false)
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
     curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0');
+    curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
 
     if($json) {
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json']);
@@ -554,9 +556,8 @@ function requestURL($url, $timeout = 10, $post = false, $json = false)
 
     if($rs['errno'] == 0) {
         return $rs['content'];
-    } else {
-        return false;
     }
+    return false;
 }
 
 /*
@@ -572,7 +573,7 @@ function requestHeaders($url, $timeout = 2)
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_HEADER, 1);
     curl_setopt($ch, CURLOPT_NOBODY, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) Gecko/20100101 Firefox/31.0');
+    curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
 
     $rs = [];
 

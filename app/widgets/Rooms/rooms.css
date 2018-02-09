@@ -1,3 +1,7 @@
+#rooms_widget {
+    animation: fadein 0.5s;
+}
+
 #rooms_widget ul li.room {
     white-space: nowrap;
 }

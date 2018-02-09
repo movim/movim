@@ -185,6 +185,16 @@ class Builder
             $metas->appendChild($meta);
         }
 
+        if(isset($widgets->links)) {
+            foreach($widgets->links as $l) {
+                $link = $dom->createElement('link');
+                $link->setAttribute('rel',  $l['rel']);
+                $link->setAttribute('type', $l['type']);
+                $link->setAttribute('href', $l['href']);
+                $metas->appendChild($link);
+            }
+        }
+
         $meta = $dom->createElement('meta');
         $meta->setAttribute('property', 'og:type');
         $meta->setAttribute('content', 'article');
@@ -200,7 +210,7 @@ class Builder
         $meta->setAttribute('content', 'MovimNetwork');
         $metas->appendChild($meta);
 
-        echo strip_tags($dom->saveXML($dom->documentElement), '<meta>');
+        echo strip_tags($dom->saveXML($dom->documentElement), '<meta><link>');
     }
 
     function addScript($script)

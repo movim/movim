@@ -4,7 +4,7 @@
  * Some basic functions essential for Movim
  */
 
-var onloaders = new Array();
+var onloaders = [];
 
 /**
  * @brief Adds a function to the onload event

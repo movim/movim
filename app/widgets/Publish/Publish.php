@@ -99,19 +99,9 @@ class Publish extends \Movim\Widget\Base
 
         $session = Session::start();
         $view->assign('url', $session->get('share_url'));
-
         $view->assign('draft', Cache::c('draft'));
 
         $this->rpc('MovimTpl.fill', '#publish', $view->draw('_publish_create', true));
-
-        /*$pd = new \Modl\InfoDAO;
-        $item = $pd->get($server, $node);
-
-        $view = $this->tpl();
-        $view->assign('server', $server);
-        $view->assign('node', $node);
-        $view->assign('post', $post);
-        $view->assign('item', $item);*/
 
         if($id) {
             $this->rpc('Publish.initEdit');
@@ -275,14 +265,17 @@ class Publish extends \Movim\Widget\Base
                     $embed = $murl->resolve($form->embed->value);
                     $p->setLink($form->embed->value);
 
-                    if($embed->type == 'photo') {
-                        $p->setImage($embed->images[0]['url'], $embed->title, $embed->images[0]['mime']);
-                    } else {
-                        if(isset($embed->images)) {
-                            $p->setImage($embed->images[0]['url'], $embed->title, $embed->images[0]['mime']);
-                        }
-                        $p->setLink($form->embed->value, $embed->title, 'text/html', $embed->description, $embed->providerIcon);
+                    if($embed->type == 'photo' || isset($embed->images)) {
+                        $p->setImage($embed->images[0]['url'],
+                                     $embed->title,
+                                     $embed->images[0]['mime']);
                     }
+
+                    $p->setLink($form->embed->value,
+                                $embed->title,
+                                'text/html',
+                                $embed->description,
+                                $embed->providerIcon);
                 } catch(Exception $e) {
                     error_log($e->getMessage());
                 }
@@ -311,7 +304,9 @@ class Publish extends \Movim\Widget\Base
 
             if($form->reply->value) {
                 $pd = new \Modl\PostnDAO;
-                $post = $pd->get($form->replyorigin->value, $form->replynode->value, $form->replynodeid->value);
+                $post = $pd->get($form->replyorigin->value,
+                                 $form->replynode->value,
+                                 $form->replynodeid->value);
                 $p->setReply($post->getRef());
             }
 
@@ -331,7 +326,9 @@ class Publish extends \Movim\Widget\Base
     {
         if($url == '') {
             return;
-        } elseif(!filter_var($url, FILTER_VALIDATE_URL)) {
+        }
+
+        if(!filter_var($url, FILTER_VALIDATE_URL)) {
             Notification::append(false, $this->__('publish.valid_url'));
             return;
         }
@@ -363,9 +360,5 @@ class Publish extends \Movim\Widget\Base
 
         return ($validate_server->validate($server)
              && $validate_node->validate($node));
-    }
-
-    function display()
-    {
     }
 }

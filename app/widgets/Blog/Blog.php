@@ -21,6 +21,8 @@ class Blog extends \Movim\Widget\Base
 
     function load()
     {
+        $this->links = [];
+
         if($this->_view == 'node') {
             $this->_from = $this->get('s');
             $this->_node = $this->get('n');
@@ -32,6 +34,20 @@ class Blog extends \Movim\Widget\Base
             $this->_mode = 'group';
 
             $this->url = $this->route('node', [$this->_from, $this->_node]);
+
+            $this->links[] = [
+                'rel' => 'alternate',
+                'type' => 'application/atom+xml',
+                'href' => $this->route('feed', [$this->_from, $this->_node])
+            ];
+
+            if(!$this->get('i')) {
+                $this->links[] = [
+                    'rel' => 'alternate',
+                    'type' => 'application/atom+xml',
+                    'href' => 'xmpp:' . rawurlencode($this->_from) . '?;node=' . rawurlencode($this->_node)
+                ];
+            }
         } elseif($this->_view == 'tag' && $this->validateTag($this->get('t'))) {
             $this->_mode = 'tag';
             $this->_tag = strtolower($this->get('t'));
@@ -51,6 +67,20 @@ class Blog extends \Movim\Widget\Base
             $this->_mode = 'blog';
 
             $this->url = $this->route('blog', $this->_from);
+
+            $this->links[] = [
+                'rel' => 'alternate',
+                'type' => 'application/atom+xml',
+                'href' => $this->route('feed', [$this->_from])
+            ];
+
+            if(!$this->get('i')) {
+                $this->links[] = [
+                    'rel' => 'alternate',
+                    'type' => 'application/atom+xml',
+                    'href' => 'xmpp:' . rawurlencode($this->_from) . '?;node=' . rawurlencode($this->_node)
+                ];
+            }
         }
 
         $pd = new \Modl\PostnDAO;
@@ -85,6 +115,17 @@ class Blog extends \Movim\Widget\Base
                 } else {
                     $this->url = $this->route('blog', [$this->_from, $this->_id]);
                 }
+
+                $this->links[] = [
+                    'rel' => 'alternate',
+                    'type' => 'application/atom+xml',
+                    'href' => 'xmpp:'
+                        . rawurlencode($this->_from)
+                        . '?;node='
+                        . rawurlencode($this->_node)
+                        . ';item='
+                        . rawurlencode($this->_id)
+                ];
             }
         } else {
             $this->_page = 1;

@@ -102,7 +102,7 @@
         <li>
             <span class="primary icon gray"><i class="zmdi zmdi-format-align-justify"></i></span>
             <p>{$c->__('general.about')}</p>
-            <p class="all">{$contact->description}</p>
+            <p class="all">{$contact->description|nl2br}</p>
         </li>
         {/if}
 

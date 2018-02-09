@@ -1,4 +1,7 @@
 <ul id="bottomnavigation" class="navigation color dark">
+    <li onclick="MovimTpl.toggleMenu()">
+        <span class="primary icon"><i class="zmdi zmdi-menu"></i></span>
+    </li>
     {if="$c->supported('pubsub')"}
         <li {if="$page == 'news'"}class="active"{/if}
             onclick="MovimUtils.reload('{$c->route('news')}')"
@@ -6,7 +9,6 @@
         >
             <span class="primary icon"><i class="zmdi zmdi-receipt"></i></span>
             <span data-key="news" class="counter"></span>
-            <p class="normal">{$c->__('page.news')}</p>
         </li>
     {/if}
     <li {if="$page == 'contact'"}class="active"{/if}
@@ -15,7 +17,6 @@
     >
         <span class="primary icon"><i class="zmdi zmdi-accounts"></i></span>
         <span data-key="invite" class="counter"></span>
-        <p class="normal">{$c->__('page.contacts')}</p>
     </li>
     <li {if="$page == 'community'"}class="active"{/if}
         onclick="MovimUtils.reload('{$c->route('community')}')"
@@ -23,7 +24,6 @@
     >
         <span class="primary icon"><i class="zmdi zmdi-group-work"></i></span>
         <span class="counter"></span>
-        <p class="normal">{$c->__('page.communities')}</p>
     </li>
     <li {if="$page == 'chat'"}class="active"{/if}
         onclick="MovimUtils.reload('{$c->route('chat')}')"
@@ -31,6 +31,5 @@
     >
         <span class="primary icon"><i class="zmdi zmdi-comments"></i></span>
         <span data-key="chat" class="counter"></span>
-        <p class="normal">{$c->__('page.chats')}</p>
     </li>
 </ul>

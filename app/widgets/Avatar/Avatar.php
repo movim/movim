@@ -89,8 +89,4 @@ class Avatar extends \Movim\Widget\Base
         $r = new Set;
         $r->setData($p->toBase())->request();
     }
-
-    function display()
-    {
-    }
 }

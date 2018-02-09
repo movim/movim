@@ -83,8 +83,7 @@ class DaemonCommand extends Command
         $core = new Core($loop, $baseuri, $input);
         $app  = new HttpServer(new WsServer($core));
 
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $config = (new \Modl\ConfigDAO)->get();
 
         if (empty($config->username) || empty($config->password)) {
             $output->writeln('<comment>Please set a username and password for the admin panel (' . $baseuri . '?admin)</comment>');
@@ -101,8 +100,6 @@ class DaemonCommand extends Command
         $socketApi = new Reactor(1560, $loop);
         new Api($socketApi, $core);
 
-        $server = new IoServer($app, $socket, $loop);
-
-        $server->run();
+        (new IoServer($app, $socket, $loop))->run();
     }
 }

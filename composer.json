@@ -5,7 +5,7 @@
         }
     },
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=5.6.0",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-imagick": "*",
@@ -16,22 +16,24 @@
 
         "movim/modl": "dev-master#03c6f6e0c83b494ba33df318a724caf779cd37a8",
         "movim/sasl2": "dev-master",
-        "movim/moxl": "dev-master#d786a7080ed4e0ef5d7e5b8263c856dd0e7023c9",
+        "movim/moxl": "dev-master#5eaf633fe9e23e7103a121f8d141236df9368ad2",
 
         "embed/embed": "dev-master",
         "heyupdate/emoji": "dev-twemoji2#99dda1bed08472046cac1498221f08684ad83d55",
 
-        "cboden/ratchet": "0.4.x-dev",
-        "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
+        "cboden/ratchet": "^0.4.0",
 
-        "respect/validation": "1.0.*",
+        "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
+        "react/zmq": "dev-master",
+
+        "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.9",
-        "ramsey/uuid": "^3.5",
+        "ramsey/uuid": "^3.7",
         "symfony/console": "^3.3",
-        "cocur/slugify": "^2.5",
-        "clue/buzz-react": "^1.1",
+        "cocur/slugify": "^3.0",
         "dflydev/fig-cookies": "^1.0",
         "defuse/php-encryption": "^2.1",
-        "react/child-process": "^0.4.3"
+        "react/child-process": "^0.5.0",
+        "clue/buzz-react": "^2.1"
     }
 }

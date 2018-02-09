@@ -92,24 +92,23 @@ var Notification = {
         Notification.notifs_key = key;
         Notification_ajaxCurrent(Notification.notifs_key);
     },
-    toast : function(html) {
+    toast : function(title) {
         // Android notification
         if(typeof Android !== 'undefined') {
-            Android.showToast(html);
+            Android.showToast(title);
             return;
         }
 
         target = document.getElementById('toast');
 
         if(target) {
-            target.innerHTML = html;
+            target.innerHTML = title;
         }
 
         setTimeout(function() {
             target = document.getElementById('toast');
             target.innerHTML = '';
-            },
-            3000);
+        }, 3000);
     },
     snackbar : function(html, time) {
         if(typeof Android !== 'undefined'
@@ -122,9 +121,8 @@ var Notification = {
         }
 
         setTimeout(function() {
-                Notification.snackbarClear();
-            },
-            time*1000);
+            Notification.snackbarClear();
+        }, time*1000);
     },
     snackbarClear : function() {
         target = document.getElementById('snackbar');

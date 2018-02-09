@@ -9,7 +9,7 @@
     </nav>
 <?php } ?>
 
-<main style="background-color: #EEE;">
+<main style="background-color: var(--movim-background);">
     <section>
         <?php if($this->user->isLogged()) { ?>
             <aside>

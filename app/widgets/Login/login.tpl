@@ -75,7 +75,7 @@
             <ul class="list thin card">
                 <li class="info">
                     <p></p>
-                    <p class="center normal">{$info}</p>
+                    <p class="center normal">{$info|addUrls}</p>
                 </li>
             </ul>
             {/if}

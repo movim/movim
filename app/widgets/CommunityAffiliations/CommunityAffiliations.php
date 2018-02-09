@@ -13,6 +13,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
     public function load()
     {
         $this->registerEvent('pubsub_getaffiliations_handle', 'onAffiliations');
+        $this->registerEvent('disco_request_affiliations', 'onAffiliations');
         $this->registerEvent('pubsub_setaffiliations_handle', 'onAffiliationsSet');
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
         $this->registerEvent('pubsub_delete_error', 'onDeleteError');
@@ -37,10 +38,13 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $id = new \Modl\InfoDAO;
         $info = $id->get($origin, $node);
 
+        $ssd = new \Modl\SharedSubscriptionDAO;
+
         $view = $this->tpl();
         $view->assign('role', $role);
         $view->assign('info', $info);
         $view->assign('affiliations', $affiliations);
+        $view->assign('subscriptions', $ssd->getAll($origin, $node));
 
         $this->rpc('MovimTpl.fill', '#community_affiliation', $view->draw('_communityaffiliations', true));
 
@@ -50,12 +54,14 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $cd = new \Modl\CapsDAO;
         $sd = new \Modl\SubscriptionDAO;
 
+        $caps = $cd->get($origin);
+
         $view->assign('subscriptions', $sd->getAll($origin, $node));
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
         $view->assign('me', $this->user->getLogin());
-        $view->assign('roles', $cd->get($origin)->getPubsubRoles());
+        $view->assign('roles', ($caps) ? $caps->getPubsubRoles() : []);
 
         $this->rpc(
             'MovimTpl.fill',
@@ -74,7 +80,6 @@ class CommunityAffiliations extends \Movim\Widget\Base
         list($subscriptions, $origin, $node) = array_values($packet->content);
 
         $sd = new \Modl\SubscriptionDAO;
-
         $view = $this->tpl();
 
         $view->assign('subscriptions', $sd->getAll($origin, $node));
@@ -192,13 +197,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if(!$validate_server->validate($origin)
-        || !$validate_node->validate($node)
-        ) return false;
-        else return true;
-    }
-
-    public function display()
-    {
+        return ($validate_server->validate($origin)
+             && $validate_node->validate($node));
     }
 }

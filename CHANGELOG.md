@@ -3,6 +3,24 @@ Movim Changelog
 
 v0.13 (trunk)
 ---------------------------
+ * Update ReactPHP
+ * Use PHP ZeroMQ to manage the communications between the processes
+ * Cleanup some existing buffers
+ * Add a pure HTTP ajax endpoint for some futur requests that needs it
+ * Add some slight animations in the UI
+
+v0.12.1
+---------------------------
+ * Add xmpp: uri to public pages headers
+ * Code cleanup (by RyDroid)
+ * Remove gender, marital and the Skype/Twitter/Yahoo account info
+ * Fix Content-Security-Policy
+ * UI improvement for the bottom navigation on mobile
+ * Cleanup the Privacy Model
+ * Set a max-width for the picture preview in Upload
+ * Add application/javascript header to prevent MIME type checking issue
+ * Redesign the Communities page
+ * Remove the CommunitiesDiscover widget
 
 v0.12 – Lovejoy
 ---------------------------

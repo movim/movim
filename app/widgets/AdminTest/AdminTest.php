@@ -10,7 +10,7 @@ class AdminTest extends \Movim\Widget\Base
 
     public function version()
     {
-        return (version_compare(PHP_VERSION, '5.4.0') >= 0);
+        return (version_compare(PHP_VERSION, '5.6.0') >= 0);
     }
 
     public function testDir($dir)

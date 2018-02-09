@@ -37,8 +37,4 @@ class Notifs extends \Movim\Widget\Base
 
         return $view->draw('_notifs', true);
     }
-
-    function display()
-    {
-    }
 }

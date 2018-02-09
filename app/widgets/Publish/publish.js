@@ -16,7 +16,6 @@ var Publish = {
     },
 
     disableSend: function() {
-        localStorage.removeItem('share_url');
         MovimUtils.addClass('#button_send', 'disabled');
     },
 
