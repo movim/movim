@@ -15,7 +15,7 @@ class AdminMain extends \Movim\Widget\Base
             && isset($form['repassword'])
             && $form['password'] != '' && $form['repassword'] != ''
             && $form['password'] == $form['repassword']) {
-                $form['password'] = sha1($form['password']);
+                $form['password'] = password_hash($form['password'], PASSWORD_DEFAULT);
             } else {
                 $form['password'] = $config->password;
             }
