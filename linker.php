@@ -2,7 +2,6 @@
 require __DIR__ . '/vendor/autoload.php';
 
 define('DOCUMENT_ROOT', dirname(__FILE__));
-define('EOT', 0x04);
 
 gc_enable();
 

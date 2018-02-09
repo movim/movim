@@ -5,8 +5,6 @@ use Ratchet\ConnectionInterface;
 use React\EventLoop\Timer\Timer;
 use Movim\Controller\Front;
 
-define('EOT', 0x04);
-
 class Session
 {
     protected   $clients;
