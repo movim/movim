@@ -25,7 +25,7 @@
                 <p class="center"><a href="mailto:{$contact->email}">{$contact->email}</a></p>
             {/if}
             {if="$contact->description != null && trim($contact->description) != ''"}
-                <p class="center" title="{$contact->description}">{$contact->description}</p>
+                <p class="center all" title="{$contact->description}">{$contact->description|nl2br}</p>
             {/if}
         </li>
         {$sub = $contact->countSubscribers()}

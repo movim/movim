@@ -79,7 +79,7 @@ class Rooms extends \Movim\Widget\Base
         $this->rpc('MovimTpl.hidePanel');
     }
 
-    function onConnected()
+    function onConnected($packet)
     {
         $this->refreshRooms();
     }
@@ -91,11 +91,6 @@ class Rooms extends \Movim\Widget\Base
 
     function onDisconnected()
     {
-        // We reset the Chat view
-        $c = new Chat();
-        $c->ajaxGet();
-
-        $this->refreshRooms();
         Notification::append(null, $this->__('chatrooms.disconnected'));
     }
 
@@ -122,11 +117,14 @@ class Rooms extends \Movim\Widget\Base
 
         $id = new \Modl\InfoDAO;
         $cd = new \Modl\ConferenceDAO;
+        $cad = new \Modl\CapsDAO;
 
         $view->assign('info', $id->getConference($room));
         $view->assign('id', $room);
         $view->assign('conference', $cd->get($room));
         $view->assign('username', $this->user->getUser());
+
+        $this->rpc('Rooms.setDefaultServices', $cad->getMUC($this->user->getServer()));
 
         Dialog::fill($view->draw('_rooms_add', true));
     }
@@ -191,6 +189,7 @@ class Rooms extends \Movim\Widget\Base
 
         $userslist = $this->getUsersList($room);
         $view->assign('list', $userslist);
+        $view->assign('room', $room);
         $view->assign('me', $this->user->getLogin());
 
         Dialog::fill($view->draw('_rooms_list', true), true);
@@ -233,6 +232,11 @@ class Rooms extends \Movim\Widget\Base
     {
         if(!$this->validateRoom($room)) return;
 
+        if((new \Movim\Picture)->isOld($room . '_muc')) {
+            $v = new Moxl\Xec\Action\Vcard\Get;
+            $v->setTo(echapJid($room))->isMuc()->request();
+        }
+
         $r = new Request;
         $r->setTo($room)
           ->request();
@@ -245,8 +249,19 @@ class Rooms extends \Movim\Widget\Base
             $nickname = $s->get('username');
         }
 
-        $p->setNickname($nickname);
+        $cd = new \Modl\CapsDAO;
+        $jid = explodeJid($room);
+        $caps = $cd->get($jid['server']);
 
+        if($caps && ($caps->isMAM() || $caps->isMAM2())) {
+            $p->enableMAM();
+
+            if($caps->isMAM2()) {
+                $p->enableMAM2();
+            }
+        }
+
+        $p->setNickname($nickname);
         $p->request();
     }
 
@@ -260,12 +275,27 @@ class Rooms extends \Movim\Widget\Base
         if(!$this->validateRoom($room)) return;
 
         // We reset the Chat view
-        $c = new Chat();
+        $c = new Chat;
         $c->ajaxGet();
 
         // We properly exit
         $s = Session::start();
         $resource = $s->get('username');
+
+        $cd = new \Modl\CapsDAO;
+        $jid = explodeJid($room);
+        $caps = $cd->get($jid['server']);
+
+        if(!isset($caps) || !$caps->isMAM()) {
+            // We clear all the old messages
+            $md = new \Modl\MessageDAO;
+            $md->deleteContact($room);
+        }
+
+        $md = new \Modl\PresenceDAO;
+        $md->clearMuc($room);
+
+        $this->refreshRooms();
 
         $pu = new Unavailable;
         $pu->setTo($room)
@@ -279,20 +309,20 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxChatroomAdd($form)
     {
-        if(!filter_var($form['jid'], FILTER_VALIDATE_EMAIL)) {
+        if(!filter_var($form->jid->value, FILTER_VALIDATE_EMAIL)) {
             Notification::append(null, $this->__('chatrooms.bad_id'));
-        } elseif(trim($form['name']) == '') {
+        } elseif(trim($form->name->value) == '') {
             Notification::append(null, $this->__('chatrooms.empty_name'));
         } else {
             $cd = new \Modl\ConferenceDAO;
-            $cd->deleteNode($form['jid']);
+            $cd->deleteNode($form->jid->value);
 
             $item = [
                     'type'      => 'conference',
-                    'name'      => $form['name'],
-                    'autojoin'  => $form['autojoin'],
-                    'nick'      => $form['nick'],
-                    'jid'       => strtolower($form['jid'])
+                    'name'      => $form->name->value,
+                    'autojoin'  => $form->autojoin->value,
+                    'nick'      => $form->nick->value,
+                    'jid'       => strtolower($form->jid->value)
                     ];
             $this->setBookmark($item);
             $this->rpc('Dialog_ajaxClear');
@@ -361,13 +391,8 @@ class Rooms extends \Movim\Widget\Base
             $resource = $session->get('username');
         }
 
-        $presence = $pd->getPresence($room, $resource);
-
-        if($presence != null) {
-            return true;
-        } else {
-            return false;
-        }
+        return ($pd->getMyPresenceRoom($room) != null
+             || $pd->getPresence($room, $resource) != null);
     }
 
     /**
@@ -415,8 +440,7 @@ class Rooms extends \Movim\Widget\Base
     private function validateRoom($room)
     {
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 80);
-        if(!$validate_server->validate($room)) return false;
-        else return true;
+        return ($validate_server->validate($room));
     }
 
     /**
@@ -427,11 +451,6 @@ class Rooms extends \Movim\Widget\Base
     private function validateResource($resource)
     {
         $validate_resource = Validator::stringType()->length(2, 40);
-        if(!$validate_resource->validate($resource)) return false;
-        else return true;
-    }
-
-    function display()
-    {
+        return ($validate_resource->validate($resource));
     }
 }

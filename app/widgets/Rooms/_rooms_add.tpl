@@ -20,9 +20,15 @@
                     placeholder="chatroom@server.com"
                 {/if}
                 type="email"
+                list="suggestions"
+                oninput="Rooms.suggest()"
                 required />
             <label>{$c->__('chatrooms.id')}</label>
         </div>
+
+        <datalist id="suggestions">
+        </datalist>
+
         <div>
             <input
                 {if="isset($conference)"}
@@ -48,8 +54,8 @@
         </div>
         <div>
             <ul class="list thick">
-                <li>
-                    <span class="primary">
+                <li class="wide">
+                    <span class="control">
                         <div class="checkbox">
                             <input
                                 {if="isset($conference) && $conference->autojoin"}
@@ -71,19 +77,14 @@
         <button class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.cancel')}
         </button>
-        {if="isset($conference)"}
-            <button
-                class="button flat"
-                onclick="Rooms_ajaxChatroomAdd(MovimUtils.parseForm('bookmarkmucadd'));">
+        <button
+            class="button flat"
+            onclick="Rooms_ajaxChatroomAdd(MovimUtils.formToJson('bookmarkmucadd'));">
+            {if="isset($conference)"}
                 {$c->__('button.edit')}
-            </button>
-        {else}
-            <button
-                class="button flat"
-                onclick="Rooms_ajaxChatroomAdd(MovimUtils.parseForm('bookmarkmucadd'));">
+            {else}
                 {$c->__('button.add')}
-            </button>
-        {/if}
+            {/if}
+        </button>
     </div>
-
 </div>

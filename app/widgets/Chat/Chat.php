@@ -27,21 +27,21 @@ class Chat extends \Movim\Widget\Base
     function load()
     {
         $this->addjs('chat.js');
-        //$this->addjs('chat_otr.js');
         $this->addcss('chat.css');
         $this->registerEvent('invitation', 'onMessage');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('receiptack', 'onMessage');
         $this->registerEvent('displayed', 'onMessage');
-        $this->registerEvent('mamresult', 'onMessageHistory');
-        $this->registerEvent('composing', 'onComposing');
-        $this->registerEvent('paused', 'onPaused');
-        $this->registerEvent('gone', 'onGone');
-        $this->registerEvent('subject', 'onConferenceSubject');
+        $this->registerEvent('mamresult', 'onMessageHistory', 'chat');
+        $this->registerEvent('composing', 'onComposing', 'chat');
+        $this->registerEvent('paused', 'onPaused', 'chat');
+        $this->registerEvent('gone', 'onGone', 'chat');
+        $this->registerEvent('subject', 'onConferenceSubject', 'chat');
 
-        $this->registerEvent('muc_getconfig_handle', 'onRoomConfig');
-        $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved');
+        $this->registerEvent('muc_getconfig_handle', 'onRoomConfig', 'chat');
+        $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved', 'chat');
+        $this->registerEvent('presence_muc_handle', 'onMucConnected', 'chat');
 
         $this->registerEvent('bob_request_handle', 'onSticker');
         //$this->registerEvent('presence', 'onPresence');
@@ -155,6 +155,11 @@ class Chat extends \Movim\Widget\Base
         $this->ajaxGetRoom($packet->content->jidfrom);
     }
 
+    function onMucConnected($packet)
+    {
+        $this->ajaxGetRoom($packet->content->jid);
+    }
+
     function onRoomConfig($packet)
     {
         list($config, $room) = array_values($packet->content);
@@ -207,17 +212,14 @@ class Chat extends \Movim\Widget\Base
             //$chats = new Chats;
             //$chats->ajaxGetHistory($jid);
 
-            $notif = new Notification;
-            $notif->ajaxClear('chat|'.$jid);
-
             $html = $this->prepareChat($jid);
 
             $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));
 
             $this->rpc('MovimUtils.addClass', '#chat_widget', 'fixed');
             $this->rpc('MovimTpl.fill', '#chat_widget', $html);
-            $this->rpc('Chat.focus');
             $this->rpc('MovimTpl.showPanel');
+            $this->rpc('Chat.focus');
 
             $this->prepareMessages($jid);
         }
@@ -275,15 +277,14 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
+    function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
-        $this->rpc('Chat.sendedMessage');
-
         if(filter_var($message, FILTER_VALIDATE_URL)) {
             $headers = requestHeaders($message);
 
             if($headers['http_code'] == 200
-            && typeIsPicture($headers['content_type'])) {
+            && typeIsPicture($headers['content_type'])
+            && $headers['download_content_length'] > 100) {
                 $file = new \stdClass;
                 $file->name = $message;
                 $file->type = $headers['content_type'];
@@ -298,8 +299,9 @@ class Chat extends \Movim\Widget\Base
             $body = (string)htmlentities(trim($message), ENT_XML1, 'UTF-8');
         }
 
-        if($body == '' || $body == '/me')
+        if($body == '' || $body == '/me') {
             return;
+        }
 
         $m = new \Modl\Message;
         $m->session = $this->user->getLogin();
@@ -381,13 +383,13 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxCorrect($to, $message)
+    function ajaxHttpCorrect($to, $message)
     {
         $md = new \Modl\MessageDAO;
         $m = $md->getLastItem($to);
 
         if($m) {
-            $this->ajaxSendMessage($to, $message, false, false, $m);
+            $this->ajaxHttpSendMessage($to, $message, false, false, $m);
         }
     }
 
@@ -414,7 +416,8 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    function ajaxSendComposing($to) {
+    function ajaxSendComposing($to)
+    {
         if(!$this->validateJid($to)) return;
 
         $mc = new Composing;
@@ -427,7 +430,8 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    function ajaxSendPaused($to) {
+    function ajaxSendPaused($to)
+    {
         if(!$this->validateJid($to)) return;
 
         $mp = new Paused;
@@ -566,37 +570,26 @@ class Chat extends \Movim\Widget\Base
         $jid = echapJS($jid);
 
         $view->assign('smiley', $this->call('ajaxSmiley'));
-
         $view->assign('emoji', prepareString('😀'));
         $view->assign('muc', $muc);
         $view->assign('anon', false);
 
+        $id = new \Modl\InfoDAO;
+        $view->assign('info', $id->getJid($this->user->getServer()));
+
         if($muc) {
             $md = new \Modl\MessageDAO;
-            $s = $md->getRoomSubject($jid);
-
             $cd = new \Modl\ConferenceDAO;
-            $c = $cd->get($jid);
-
             $pd = new \Modl\PresenceDAO;
-            $p = $pd->getMyPresenceRoom($jid);
 
             $view->assign('room', $jid);
-            $view->assign('subject', $s);
-            $view->assign('presence', $p);
-            $view->assign('conference', $c);
+            $view->assign('subject', $md->getRoomSubject($jid));
+            $view->assign('presence', $pd->getMyPresenceRoom($jid));
+            $view->assign('conference', $cd->get($jid));
         } else {
             $cd = new \Modl\ContactDAO;
-
             $cr = $cd->getRosterItem($jid);
-            if(isset($cr)) {
-                $contact = $cr;
-            } else {
-                $contact = $cd->get($jid);
-            }
-
-            $view->assign('contact', $contact);
-            $view->assign('jid', $jid);
+            $view->assign('contact', isset($cr) ? $cr : $cd->get($jid));
         }
 
         return $view->draw('_chat', true);
@@ -644,10 +637,16 @@ class Chat extends \Movim\Widget\Base
 
         $date = $view->draw('_chat_date', true);
 
-        $this->rpc('Chat.setBubbles', $left, $right, $date);
+        $separator = $view->draw('_chat_separator', true);
+
+        $this->rpc('Chat.setBubbles', $left, $right, $date, $separator);
         $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper);
+
+        $notif = new Notification;
+        $this->rpc('Chat.insertSeparator', $notif->getCounter('chat|'.$jid));
+        $notif->ajaxClear('chat|'.$jid);
+
         $this->rpc('MovimTpl.scrollPanel');
-        $this->rpc('Chat.clearReplace');
     }
 
     function prepareMessage(&$message, $jid = null)
@@ -742,7 +741,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($message->type == 'groupchat') {
-            $message->color = stringToColor($message->session . $message->resource . $message->jidfrom . $message->type);
+            $message->color = stringToColor($message->session . $message->resource . $message->type);
 
             $cd = new \Modl\ContactDAO;
             $contact = $cd->getPresence($message->jidfrom, $message->resource);
@@ -786,9 +785,14 @@ class Chat extends \Movim\Widget\Base
 
         $cd = new \Modl\ContactDAO;
         $id = new \Modl\InfoDAO;
+        $cod = new \Modl\ConfigDAO;
+        $config = $cod->get();
 
         $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('conferences', $id->getTopConference(8));
+        $view->assign('conferences', $id->getTopConference(
+            8,
+            ($config->restrictsuggestions == true) ? $this->user->getServer() : false
+        ));
         $view->assign('top', $cd->getTop(8, $chats));
         return $view->draw('_chat_empty', true);
     }

@@ -8,6 +8,13 @@ var Post = {
         if(parts.params.length) {
             Post_ajaxShare(parts.params[0], parts.params[1], parts.params[2]);
         }
+    },
+    refreshComments : function() {
+        var parts = MovimUtils.urlParts();
+
+        if(parts.params.length) {
+            Post_ajaxGetPostComments(parts.params[0], parts.params[1], parts.params[2]);
+        }
     }
 };
 

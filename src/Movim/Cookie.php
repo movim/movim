@@ -6,8 +6,8 @@ class Cookie
 {
     public static function set()
     {
-        if(SESSION_ID == false) {
-            self::setCookie(generateKey(32));
+        if (SESSION_ID == false) {
+            self::renew();
         } else {
             self::setCookie(SESSION_ID);
         }
@@ -15,7 +15,7 @@ class Cookie
 
     public static function refresh()
     {
-        if(isset($_COOKIE['MOVIM_SESSION_ID'])) {
+        if (isset($_COOKIE['MOVIM_SESSION_ID'])) {
             self::setCookie($_COOKIE['MOVIM_SESSION_ID']);
         }
     }
@@ -32,9 +32,9 @@ class Cookie
 
     private static function setCookie($key)
     {
-        if(!headers_sent()) {
+        if (!headers_sent()) {
             header_remove('Set-Cookie');
-            setcookie("MOVIM_SESSION_ID", $key, self::getTime(), '/'/*, BASE_HOST, APP_SECURED*/);
+            setcookie('MOVIM_SESSION_ID', $key, self::getTime(), '/');
         }
     }
 }

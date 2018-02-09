@@ -17,9 +17,15 @@ class Picture extends \Movim\Widget\Base
 
             if($headers['http_code'] == 200
             && $headers["download_content_length"] <= SMALL_PICTURE_LIMIT
+            && $headers["download_content_length"] > 2000
             && typeIsPicture($headers['content_type'])) {
-                header('Location: '.$url);
+                header("HTTP/1.1 301 Moved Permanently");
+                header('Location: ' . $url);
+                return;
             }
+
+            header("HTTP/1.1 301 Moved Permanently");
+            header('Location: ' . $this->respath('empty.png'));
         }
     }
 }

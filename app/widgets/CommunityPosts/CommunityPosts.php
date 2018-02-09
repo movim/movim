@@ -31,16 +31,15 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function onItemsId($packet)
     {
-        list($origin, $node, $ids) = array_values($packet->content);
+        list($origin, $node, $ids, $first, $last, $count, $paginated)
+            = array_values($packet->content);
 
-        //$ids = array_slice($ids, 0, $this->_paging);
-        $this->displayItems($origin, $node, $ids);
+        $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated);
     }
 
     function onItemsError($packet)
     {
         list($origin, $node) = array_values($packet->content);
-        Notification::append(false, $this->__('group.empty'));
 
         if($node != 'urn:xmpp:microblog:0') {
             $sd = new \Modl\SubscriptionDAO;
@@ -58,14 +57,23 @@ class CommunityPosts extends \Movim\Widget\Base
         }
     }
 
-    private function displayItems($origin, $node, $ids = false, $public = false)
+    private function displayItems(
+        $origin,
+        $node,
+        $ids = false,
+        $first = false,
+        $last = false,
+        $count = false,
+        $paginated = false)
     {
         if(!$this->validateServerNode($origin, $node)) return;
 
-        $html = $this->prepareCommunity($origin, $node, 0, $ids, $public);
+        $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count);
 
         $slugify = new Slugify;
-        $this->rpc('MovimTpl.fill', '#communityposts.'.$slugify->slugify($origin.'_'.$node), $html);
+        $this->rpc(
+            ($paginated) ? 'MovimTpl.append' : 'MovimTpl.fill',
+            '#communityposts.'.$slugify->slugify('c'.$origin.'_'.$node), $html);
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
@@ -75,7 +83,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $c->ajaxGetDrawer($jid);
     }
 
-    function ajaxGetItems($origin, $node, $after = false)
+    function ajaxGetItems($origin, $node, $before = 'empty')
     {
         if(!$this->validateServerNode($origin, $node)) return;
 
@@ -86,19 +94,13 @@ class CommunityPosts extends \Movim\Widget\Base
             $r = new GetItems;
         //}
 
+        if(!isset($before)) $before = 'empty';
+
         $r->setTo($origin)
           ->setNode($node)
           ->setPaging($this->_paging)
-          ->setAfter($after);
-
-        $r->request();
-    }
-
-    function ajaxGetHistory($origin, $node, $page)
-    {
-        $html = $this->prepareCommunity($origin, $node, $page);
-        $this->rpc('MovimTpl.append', '#communityposts', $html);
-        $this->rpc('MovimUtils.enhanceArticlesContent');
+          ->setBefore($before)
+          ->request();
     }
 
     function ajaxClear()
@@ -112,7 +114,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $id = new \Modl\InfoDAO;
 
         $view = $this->tpl();
-        $view->assign('servers', $id->getGroupServers());
+        $view->assign('servers', $id->getCommunitiesServers());
         $html = $view->draw('_communityposts_empty', true);
 
         return $html;
@@ -124,34 +126,31 @@ class CommunityPosts extends \Movim\Widget\Base
         return $pw->preparePost($p, true, false, true);
     }
 
-    private function prepareCommunity($origin, $node, $page = 0, $ids = false, $public = false)
+    private function prepareCommunity(
+        $origin,
+        $node,
+        $page = 0,
+        $ids = false,
+        $first = false,
+        $last = false,
+        $count = false)
     {
         $pd = new \Modl\PostnDAO;
 
-        if($public) {
-            $posts = $pd->getPublic($origin, $node, $page*$this->_paging, $this->_paging);
-
-        } elseif($ids == false) {
-            return $this->prepareEmpty();
-        /*} else {
-            $posts = $pd->getNodeUnfiltered($origin, $node, $page*$this->_paging, $this->_paging);
-        }*/
-
-        } else {
-            foreach($ids as $key => $id) {
-                if(empty($id)) {
-                    unset($ids[$key]);
-                }
+        $ids = is_array($ids) ? $ids : [];
+        foreach($ids as $key => $id) {
+            if(empty($id)) {
+                unset($ids[$key]);
             }
-
-            $posts = $pd->getIds($origin, $node, $ids);
         }
+
+        $posts = $pd->getIds($origin, $node, $ids);
 
         $id = new \Modl\InfoDAO;
         $info = $id->get($origin, $node);
 
-        $pd = new \Modl\SubscriptionDAO;
-        $subscription = $pd->get($origin, $node);
+        $sd = new \Modl\SubscriptionDAO;
+        $subscription = $sd->get($origin, $node);
 
         $nsfwMessage = false;
 
@@ -173,6 +172,16 @@ class CommunityPosts extends \Movim\Widget\Base
         }
 
         $view = $this->tpl();
+
+        if($nsfwMessage) {
+            $this->rpc('MovimTpl.remove', '#nsfwmessage');
+            $this->rpc(
+                'MovimTpl.prepend',
+                '#communityposts',
+                $view->draw('_communityposts_nsfw', true)
+            );
+        }
+
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('page', $page);
@@ -181,7 +190,14 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('info', $info);
         $view->assign('subscription', $subscription);
         $view->assign('paging', $this->_paging);
-        $view->assign('nsfwMessage', $nsfwMessage);
+
+        $view->assign('publicposts', ($ids == false)
+            ? $pd->getPublic($origin, $node, $page*$this->_paging, $this->_paging)
+            : false);
+
+        $view->assign('first', $first);
+        $view->assign('last', $last);
+        $view->assign('count', $count);
 
         $html = $view->draw('_communityposts', true);
 
@@ -193,10 +209,8 @@ class CommunityPosts extends \Movim\Widget\Base
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if(!$validate_server->validate($origin)
-        || !$validate_node->validate($node)
-        ) return false;
-        else return true;
+        return ($validate_server->validate($origin)
+             && $validate_node->validate($node));
     }
 
     function getComments($post)
@@ -210,7 +224,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $slugify = new Slugify;
 
         $node = $this->get('n') != null ? $this->get('n') : 'urn:xmpp:microblog:0';
-        $this->view->assign('class', $slugify->slugify($this->get('s').'_'.$node));
+        $this->view->assign('class', $slugify->slugify('c'.$this->get('s').'_'.$node));
     }
 }
 

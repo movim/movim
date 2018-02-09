@@ -78,3 +78,28 @@
     {/loop}
 </ul>
 {/if}
+
+{if="$subscriptions"}
+<ul class="list card active thin">
+    <li class="subheader">
+        <p>{$c->__('communityaffiliation.subscriptions')}</p>
+    </li>
+    {loop="$subscriptions"}
+        <li title="{$value->jid}"
+            onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
+            {$url = $value->getPhoto('m')}
+            {if="$url"}
+                <span class="primary icon bubble small"
+                    style="background-image: url({$url});">
+                </span>
+            {else}
+                <span class="primary icon bubble small color {$value->jid|stringToColor}">
+                    {$value->getTrueName()|firstLetterCapitalize:true}
+                </span>
+            {/if}
+            <p class="normal">{$value->getTrueName()}</p>
+        </li>
+    {/loop}
+</ul>
+{/if}
+

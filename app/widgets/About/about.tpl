@@ -1,10 +1,8 @@
 <div class="tabelem" title="{$c->__('page.about')}" id="about">
-    <h2 class="padded_top_bottom">Movim {$version} - {$c->__('page.about')} </h2>
-
     <ul class="list thick divided">
         <li>
             <span class="primary icon bubble color green"><i class="zmdi zmdi-info"></i></span>
-            <p>{$c->__('page.about')}</p>
+            <p>Movim {$version} - {$c->__('page.about')}</p>
             <p class="all">{$c->__('about.info')} <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero General Public License v3</a>.</p>
         </li>
         <li class="subheader">

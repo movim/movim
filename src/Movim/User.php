@@ -6,7 +6,6 @@ use Movim\i18n\Locale;
 
 class User
 {
-    private $config = [];
     public $caps;
     public $userdir;
 
@@ -17,7 +16,7 @@ class User
     function __construct($username = false)
     {
         $s = Session::start();
-        if($username) {
+        if ($username) {
             $s->set('username', $username);
             $this->userdir = DOCUMENT_ROOT.'/users/'.$username.'/';
         }
@@ -31,10 +30,10 @@ class User
         $sd = new \Modl\SessionxDAO;
         $session = $sd->get(SESSION_ID);
 
-        if($session) {
-            if($language) {
+        if ($session) {
+            if ($language) {
                 $lang = $this->getConfig('language');
-                if(isset($lang)) {
+                if (isset($lang)) {
                     $l = Locale::start();
                     $l->load($lang);
                 }
@@ -42,7 +41,9 @@ class User
 
             $cd = new \Modl\CapsDAO;
             $caps = $cd->get($session->host);
-            $this->caps = $caps->features;
+            if ($caps) {
+                $this->caps = $caps->features;
+            }
         }
     }
 
@@ -58,10 +59,10 @@ class User
     function createDir()
     {
         $s = Session::start();
-        if($s->get('jid')) {
+        if ($s->get('jid')) {
             $this->userdir = DOCUMENT_ROOT.'/users/'.$s->get('jid').'/';
 
-            if(!is_dir($this->userdir)) {
+            if (!is_dir($this->userdir)) {
                 mkdir($this->userdir);
                 touch($this->userdir.'index.html');
             }
@@ -90,16 +91,20 @@ class User
     {
         $s = new \Modl\Setting;
 
-        if(isset($config['language'])) {
+        if (isset($config['language'])) {
             $s->language = $config['language'];
         }
 
-        if(isset($config['cssurl'])) {
+        if (isset($config['cssurl'])) {
             $s->cssurl   = $config['cssurl'];
         }
 
-        if(isset($config['nsfw'])) {
+        if (isset($config['nsfw'])) {
             $s->nsfw     = $config['nsfw'];
+        }
+
+        if (isset($config['nightmode'])) {
+            $s->nightmode= $config['nightmode'];
         }
 
         $sd = new \Modl\SettingDAO;
@@ -117,26 +122,31 @@ class User
         $sd = new \Modl\SettingDAO;
         $s = $sd->get();
 
-        if($key == false) {
+        if ($key == false) {
             return $s;
         }
 
-        if(is_object($s)
-        && property_exists($s, $key)
-        && isset($s->$key)) {
+        if (is_object($s)
+            && property_exists($s, $key)
+            && isset($s->$key)
+        ) {
             return $s->$key;
         }
     }
 
     function getDumpedConfig($key = false)
     {
-        if(!file_exists($this->userdir.'config.dump')) return [];
+        if (!file_exists($this->userdir.'config.dump')) {
+            return [];
+        }
 
         $config = unserialize(file_get_contents($this->userdir.'config.dump'));
 
-        if($key == false) {
+        if ($key == false) {
             return $config;
-        } if(isset($config[$key])) {
+        }
+
+        if (isset($config[$key])) {
             return $config[$key];
         }
     }
@@ -144,24 +154,21 @@ class User
     function isSupported($key)
     {
         $this->reload();
-        if($this->caps != null) {
-            switch($key) {
+        if ($this->caps != null) {
+            switch ($key) {
                 case 'pubsub':
                     return in_array('http://jabber.org/protocol/pubsub#persistent-items', $this->caps);
-                    break;
                 case 'upload':
                     $cd = new \Modl\CapsDAO;
                     return ($cd->getUpload($this->getServer()) != null);
-                    break;
                 default:
                     return false;
-                    break;
             }
-        } elseif($key == 'anonymous') {
+        }
+        if ($key == 'anonymous') {
             $session = Session::start();
             return ($session->get('mechanism') == 'ANONYMOUS');
-        } else {
-            return false;
         }
+        return false;
     }
 }

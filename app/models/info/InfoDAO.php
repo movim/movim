@@ -49,7 +49,7 @@ class InfoDAO extends SQL
         return $this->run('Info', 'item');
     }
 
-    function getItems($server = false, $limitf = false, $limitr = false)
+    function getItems($server = false, $limitf = false, $limitr = false, $withPostsOnly = false, $host = false)
     {
         $this->_sql = '
             select *, postn.published from info
@@ -82,10 +82,16 @@ class InfoDAO extends SQL
         $this->_sql .= '
                 group by node
             ) as sub
-              on sub.node = info.node
-            left outer join (select server, node, subscription from subscription where jid = :jid)
+              on sub.node = info.node';
+
+        if($this->_user) {
+            $this->_sql .= '
+                left outer join (select server, node, subscription from subscription where jid = :jid)
                 as s on s.server = info.server
-                and s.node = info.node
+                and s.node = info.node';
+        }
+
+        $this->_sql .= '
             where info.node != \'\'
                 and info.category = \'pubsub\'
                 and info.node not like \'urn:xmpp:microblog:0:comments%\'
@@ -97,6 +103,15 @@ class InfoDAO extends SQL
                 and info.server = :server';
         }
 
+        if($host) {
+            $this->_sql .= ' and info.server like \'%.' . $host . '\'';
+        }
+
+        if($withPostsOnly) {
+            $this->_sql .= '
+                and postn.published is not null';
+        }
+
         $this->_sql .= '
             order by postn.published is null, postn.published desc, name, info.node
             ';
@@ -105,22 +120,11 @@ class InfoDAO extends SQL
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
         }
 
-        if($server) {
-            $this->prepare(
-                'Info',
-                [
-                    'subscription.jid' => $this->_user,
-                    'server' => $server
-                ]
-            );
-        } else {
-            $this->prepare(
-                'Info',
-                [
-                    'subscription.jid' => $this->_user
-                ]
-            );
-        }
+        $params = [];
+        if($server) $params['server'] = $server;
+        if($this->_user) $params['subscription.jid'] = $this->_user;
+
+        $this->prepare('Info', $params);
 
         return $this->run('Server');
     }
@@ -144,7 +148,7 @@ class InfoDAO extends SQL
         return $this->run('Info', 'item');
     }
 
-    function getTopConference($limit = 10)
+    function getTopConference($limit = 10, $host = false)
     {
         $this->_sql = '
             select * from info
@@ -154,7 +158,13 @@ class InfoDAO extends SQL
                 from conference where jid = :jid)
             and mucpublic = true
             and mucpersistent = true
-            and server like \'%@%\'
+            and server like \'%@%\'';
+
+        if($host) {
+            $this->_sql .= ' and server like \'%@%.' . $host . '\'';
+        }
+
+        $this->_sql .= '
             order by occupants desc';
 
         $this->_sql .= ' limit '.(int)$limit;
@@ -188,7 +198,7 @@ class InfoDAO extends SQL
         return $this->run('Info');
     }
 
-    function getGroupServers()
+    function getCommunitiesServers()
     {
         $this->_sql = '
             select info.server, counter.number, caps.name from info

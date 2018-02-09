@@ -7,8 +7,8 @@
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.close')}
     </button>
-    {if="$actions != null"}
-        <button data-jid="{$jid}" onclick="AdHoc.submit(this.dataset.jid)" class="button flat">
+    <button data-jid="{$jid}" onclick="AdHoc.submit(this.dataset.jid)" class="button flat">
+        {if="$actions != null"}
             {if="isset($actions->next)"}
                 {$c->__('button.next')}
             {elseif="isset($actions->previous)"}
@@ -18,6 +18,8 @@
             {elseif="isset($actions->complete)"}
                 {$c->__('button.submit')}
             {/if}
-        </button>
-    {/if}
+        {else}
+            {$c->__('button.submit')}
+        {/if}
+    </button>
 </div>

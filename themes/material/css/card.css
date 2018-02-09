@@ -1,9 +1,9 @@
 /* Card */
 
 .card > .block:not(.subheader):not(.simple) {
-    background-color: white;
+    animation: fadein 0.3s;
     border-radius: 2px;
-    border: 1px solid rgba(0, 0, 0, 0.12);
+    border: 1px solid;
     overflow: hidden;
     margin-bottom: 1rem;
     box-sizing: border-box;

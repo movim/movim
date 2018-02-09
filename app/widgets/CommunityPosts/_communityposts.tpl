@@ -1,22 +1,18 @@
-{if="$nsfwMessage"}
-    <ul class="list clear middle">
-        <li>
-            <span class="primary icon color bubble red">
-                18+
-            </span>
-            <p>{$c->__('communityposts.nsfw_title')}</p>
-            <p class="all">{$c->__('communityposts.nsfw_message')}</p>
-        </li>
-    </ul>
-{/if}
-
 {if="!empty($ids)"}
     <ul class="list card shadow">
     {loop="$ids"}
-        <div id="{$value|cleanupId}" class="block large">
-            {if="isset($posts[$value])"}
+        {if="isset($posts[$value])"}
+            <div id="{$value|cleanupId}" class="block large">
                 {$c->preparePost($posts[$value])}
-            {/if}
+            </div>
+        {/if}
+    {/loop}
+    </ul>
+{elseif="$publicposts != false"}
+    <ul class="list card shadow">
+    {loop="$publicposts"}
+        <div id="{$value->nodeid|cleanupId}" class="block large">
+            {$c->preparePost($value)}
         </div>
     {/loop}
     </ul>
@@ -26,9 +22,9 @@
     </div>
 {/if}
 
-{if="isset($posts) && count($posts) >= $paging-1"}
+{if="$last"}
 <ul class="list active thick">
-    <li onclick="CommunityPosts_ajaxGetHistory('{$server}', '{$node}', {$page+1}); this.parentNode.parentNode.removeChild(this.parentNode);">
+    <li onclick="CommunityPosts_ajaxGetItems('{$server}', '{$node}', '{$last}'); this.parentNode.parentNode.removeChild(this.parentNode);">
         <span class="icon primary gray">
             <i class="zmdi zmdi-time-restore"></i>
         </span>

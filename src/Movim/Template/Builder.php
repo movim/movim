@@ -14,6 +14,7 @@ class Builder
     private $css = [];
     private $scripts = [];
     private $dir = 'ltr';
+    private $public;
 
     /**
      * Constructor. Determines whether to show the login page to the user or the
@@ -65,6 +66,7 @@ class Builder
     function build($view, $public = false)
     {
         $this->_view = $view;
+        $this->public = $public;
         $template = $this->_view.'.tpl';
 
         ob_start();
@@ -170,7 +172,7 @@ class Builder
             $meta->setAttribute('content', $widgets->description);
             $metas->appendChild($meta);
         } else {
-            $cd = new \Modl\ConfigDAO();
+            $cd = new \Modl\ConfigDAO;
             $config = $cd->get();
 
             $meta = $dom->createElement('meta');
@@ -183,6 +185,16 @@ class Builder
             $meta->setAttribute('property', 'og:url');
             $meta->setAttribute('content', $widgets->url);
             $metas->appendChild($meta);
+        }
+
+        if(isset($widgets->links)) {
+            foreach($widgets->links as $l) {
+                $link = $dom->createElement('link');
+                $link->setAttribute('rel',  $l['rel']);
+                $link->setAttribute('type', $l['type']);
+                $link->setAttribute('href', $l['href']);
+                $metas->appendChild($link);
+            }
         }
 
         $meta = $dom->createElement('meta');
@@ -200,7 +212,7 @@ class Builder
         $meta->setAttribute('content', 'MovimNetwork');
         $metas->appendChild($meta);
 
-        echo strip_tags($dom->saveXML($dom->documentElement), '<meta>');
+        echo strip_tags($dom->saveXML($dom->documentElement), '<meta><link>');
     }
 
     function addScript($script)

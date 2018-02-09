@@ -16,7 +16,9 @@
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
-                <p>{$user->getTrueName()} <span class="second">{$value->username}@{$value->host}</a></p>
+                <p class="line" title="{$value->username}@{$value->host}">
+                    {$user->getTrueName()} <span class="second">{$value->username}@{$value->host}</span>
+                </p>
                 <p>
                     {if="isset($value->start)"}
                         {$c->getTime($value->start)}
@@ -25,9 +27,4 @@
             </li>
         {/loop}
     </ul>
-
-    <h3 class="padded_top_bottom">{$c->__('statistics.subscriptions')}</h3>
-
-    <br />
-    <canvas id="monthly" width="800" height="400"></canvas>
 </div>

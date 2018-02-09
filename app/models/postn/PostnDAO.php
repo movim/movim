@@ -266,7 +266,6 @@ class PostnDAO extends SQL
 
         if($limitr !== false) {
             $this->_sql .= ' limit '.(int)$limitr.' offset '.(int)$limitf;
-
         }
 
         $this->prepare(
@@ -415,44 +414,37 @@ class PostnDAO extends SQL
         return $this->run('ContactPostn');
     }
 
-    function getAllPublishedPublic($limitf = false, $limitr = false)
-    {
-        $this->_sql = '
-            select *, postn.aid from postn
-            left outer join contact on postn.aid = contact.jid
-            where postn.open = true
-            and postn.nsfw is false
-            and aid is not null
-            order by postn.published desc';
-
-        if($limitr !== false)
-            $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
-
-        $this->prepare();
-
-        return $this->run('ContactPostn');
-    }
-
     function getPublic($origin, $node, $limitf = false, $limitr = false)
     {
+        $params = [
+            'origin' => $origin,
+            'node' => $node
+        ];
+
         $this->_sql = '
             select *, postn.aid from postn
             left outer join contact on postn.aid = contact.jid
             where postn.origin = :origin
                 and postn.node = :node
-                and postn.open = true
+                and postn.open = true';
+
+        if(isset($this->_user)) {
+            $this->_sql .= '
+                    and (
+                        postn.nsfw = (select nsfw from setting where session = :session)
+                        or postn.nsfw = false
+                        or postn.nsfw is null)';
+
+            $params += ['setting.session' => $this->_user];
+        }
+
+        $this->_sql .= '
             order by postn.published desc';
 
         if($limitr !== false)
             $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
 
-        $this->prepare(
-            'Postn',
-            [
-                'origin' => $origin,
-                'node' => $node
-            ]
-        );
+        $this->prepare('Postn', $params);
 
         return $this->run('ContactPostn');
     }
@@ -673,7 +665,7 @@ class PostnDAO extends SQL
             return $arr[0]['published'];
     }
 
-    function getLastPublished($origin = false, $limitf = false, $limitr = false)
+    function getLastPublished($origin = false, $limitf = false, $limitr = false, $host = false)
     {
         switch($this->_dbtype) {
             case 'mysql':
@@ -706,7 +698,7 @@ class PostnDAO extends SQL
 
         $params = [];
 
-        if(isset($this->_user)) {
+        if($this->_user) {
             $this->_sql .= '
                 and (
                     postn.nsfw = (select nsfw from setting where session = :session)
@@ -714,6 +706,10 @@ class PostnDAO extends SQL
                     or postn.nsfw is null)';
 
             $params += ['setting.session' => $this->_user];
+        }
+
+        if($host) {
+            $this->_sql .= ' and postn.origin like \'%.' . $host . '\'';
         }
 
         if($origin) {
@@ -748,7 +744,7 @@ class PostnDAO extends SQL
         return $this->run('Postn');
     }
 
-    function getLastBlogPublic($limitf = false, $limitr = false)
+    function getLastBlogPublic($limitf = false, $limitr = false, $host = false)
     {
         switch($this->_dbtype) {
             case 'mysql':
@@ -757,7 +753,13 @@ class PostnDAO extends SQL
                     left outer join contact on postn.aid = contact.jid
                     where
                         node = \'urn:xmpp:microblog:0\'
-                        and postn.open = true
+                        and postn.open = true';
+
+                if($host) {
+                    $this->_sql .= ' and postn.origin like \'%@' . $host . '\'';
+                }
+
+                $this->_sql .= '
                     group by origin
                     order by published desc
                     ';
@@ -769,7 +771,13 @@ class PostnDAO extends SQL
                         left outer join contact on postn.aid = contact.jid
                         where
                             node = \'urn:xmpp:microblog:0\'
-                            and postn.open = true
+                            and postn.open = true';
+
+                if($host) {
+                    $this->_sql .= ' and postn.origin = \'' . $host . '\'';
+                }
+
+                $this->_sql .= '
                             order by origin, published desc
                     ) p
                     order by published desc

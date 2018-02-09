@@ -24,7 +24,8 @@ var AdHoc = {
     },
     submit: function(jid) {
         var form = document.querySelector('#dialog form[name=command]');
-        AdHoc_ajaxSubmit(jid, MovimUtils.parseForm('command'), form.dataset.node, form.dataset.sessionid);
+        AdHoc_ajaxSubmit(jid, MovimUtils.formToJson('command'),
+            form.dataset.node, form.dataset.sessionid);
     }
 }
 

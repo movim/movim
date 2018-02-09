@@ -1,3 +1,3 @@
-<ul id="community_data" class="list card thick">
+<ul id="community_data" class="list card">
     {$c->prepareData($server, $node)}
 </ul>

@@ -57,9 +57,6 @@ class ContactDAO extends SQL
                 adrpostalcode   = :adrpostalcode,
                 adrcountry      = :adrcountry,
 
-                gender          = :gender,
-                marital         = :marital,
-
                 description     = :description,
 
                 mood            = :mood,
@@ -88,9 +85,6 @@ class ContactDAO extends SQL
                 loctext         = :loctext,
                 locuri          = :locuri,
                 loctimestamp    = :loctimestamp,
-                twitter         = :twitter,
-                skype           = :skype,
-                yahoo           = :yahoo,
                 avatarhash      = :avatarhash,
                 created         = :created,
                 updated         = :updated
@@ -109,9 +103,6 @@ class ContactDAO extends SQL
                 'adrlocality'    => $contact->adrlocality,
                 'adrpostalcode'  => $contact->adrpostalcode,
                 'adrcountry'     => $contact->adrcountry,
-
-                'gender'   => $contact->gender,
-                'marital'  => $contact->marital,
 
                 'description'    => $contact->description,
 
@@ -147,10 +138,6 @@ class ContactDAO extends SQL
                 'locuri'            => $contact->locuri,
                 'loctimestamp'      => $contact->loctimestamp,
 
-                'twitter'           => $contact->twitter,
-                'skype'             => $contact->skype,
-                'yahoo'             => $contact->yahoo,
-
                 'avatarhash'        => $contact->avatarhash,
 
                 'created'           => $contact->created,
@@ -176,9 +163,6 @@ class ContactDAO extends SQL
                 adrlocality,
                 adrpostalcode,
                 adrcountry,
-
-                gender,
-                marital,
 
                 description,
 
@@ -209,10 +193,6 @@ class ContactDAO extends SQL
                 locuri,
                 loctimestamp,
 
-                twitter,
-                skype,
-                yahoo,
-
                 avatarhash,
 
                 created,
@@ -230,9 +210,6 @@ class ContactDAO extends SQL
                     :adrlocality,
                     :adrpostalcode,
                     :adrcountry,
-
-                    :gender,
-                    :marital,
 
                     :description,
 
@@ -263,10 +240,6 @@ class ContactDAO extends SQL
                     :locuri,
                     :loctimestamp,
 
-                    :twitter,
-                    :skype,
-                    :yahoo,
-
                     :avatarhash,
 
                     :created,
@@ -288,9 +261,6 @@ class ContactDAO extends SQL
                     'adrlocality'    => $contact->adrlocality,
                     'adrpostalcode'  => $contact->adrpostalcode,
                     'adrcountry'     => $contact->adrcountry,
-
-                    'gender'   => $contact->gender,
-                    'marital'  => $contact->marital,
 
                     'description'    => $contact->description,
 
@@ -326,10 +296,6 @@ class ContactDAO extends SQL
                     'locuri'            => $contact->locuri,
                     'loctimestamp'      => $contact->loctimestamp,
 
-                    'twitter'           => $contact->twitter,
-                    'skype'             => $contact->skype,
-                    'yahoo'             => $contact->yahoo,
-
                     'avatarhash'        => $contact->avatarhash,
 
                     'created'           => date(SQL::SQL_DATE),
@@ -361,13 +327,20 @@ class ContactDAO extends SQL
             left outer join privacy
                 on contact.jid = privacy.pkey
             where jid like :jid
-            and privacy.value = 1
-            order by jid';
+            and jid not in (
+                select jid
+                from rosterlink
+                where session = :session
+            )
+            and privacy.value = true
+            order by jid
+            limit 5';
 
         $this->prepare(
             'Contact',
             [
-                'jid' => '%'.$search.'%'
+                'jid' => '%'.$search.'%',
+                'rosterlink.session' => $this->_user
             ]
         );
         return $this->run('Contact');
@@ -387,7 +360,7 @@ class ContactDAO extends SQL
             ) as presence
                 on contact.jid = presence.jid
                 and contact.jid = presence.session
-            where privacy.value = 1
+            where privacy.value = true
               and contact.jid not in (select jid from rosterlink where session = :jid)
               and contact.jid != :jid
             order by presence.value is null, presence.value, contact.jid desc';
@@ -411,7 +384,7 @@ class ContactDAO extends SQL
             'select count(*) from contact
             left outer join privacy
                  on contact.jid = privacy.pkey
-            where privacy.value = 1
+            where privacy.value = true
               and contact.jid not in (select jid from rosterlink where session = :jid)
               and contact.jid != :jid';
 
@@ -602,15 +575,14 @@ class ContactDAO extends SQL
 
         if($item)
             return $this->run('RosterContact');
-        else
-            return $this->run('RosterContact', 'item');
+        return $this->run('RosterContact', 'item');
     }
 
     function getPresence($jid, $resource)
     {
         $this->_sql = '
             select * from contact
-            right outer join presence on contact.jid = presence.mucjid
+            join presence on contact.jid = presence.mucjid
             where presence.session = :session
             and presence.jid = :jid
             and presence.resource = :resource
@@ -635,7 +607,7 @@ class ContactDAO extends SQL
             right outer join presence on contact.jid = presence.mucjid
             where presence.session = :session
             and presence.jid = :jid
-            order by mucaffiliation desc';
+            order by mucaffiliation desc, presence.resource';
 
         $this->prepare(
             'Presence',

@@ -9,6 +9,7 @@
                 <option value="en">English (default)</option>
                 {loop="$langs"}
                     <option value="{$key}"
+                            dir="auto"
                     {if="$conf->locale == $key"}
                         selected="selected"
                     {/if}>
@@ -49,8 +50,27 @@
             </select>
         </div>
         <label for="timezone">{$c->__('general.timezone')} - <span class="dTimezone">{$c->date($conf->timezone)}</span></label>
-        <br /><br />
+    </div>
 
+    <div>
+        <ul class="list thick">
+            <li class="wide">
+                <span class="control">
+                    <div class="checkbox">
+                        <input
+                            {if="$conf->restrictsuggestions"}
+                                checked
+                            {/if}
+                            type="checkbox"
+                            id="restrictsuggestions"
+                            name="restrictsuggestions"/>
+                        <label for="restrictsuggestions"></label>
+                    </div>
+                </span>
+                <p>{$c->__('restrictsuggestions.title')}</p>
+                <p class="all">{$c->__('restrictsuggestions.text')}</p>
+            </li>
+        </ul>
     </div>
 
     <br />
@@ -70,7 +90,7 @@
     <div>
         <div class="select">
             <select id="xmppcountry" name="xmppcountry">
-                <option value=""></option>
+                <option value="">{$c->__('xmpp.country_pick')}</option>
                 {loop="$countries"}
                     <option value="{$key}"
                     {if="$conf->xmppcountry == $key"}

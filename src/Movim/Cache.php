@@ -7,18 +7,20 @@ namespace Movim;
  */
 class Cache
 {
-    private static $instance;
+    private static $_instance;
 
     public static function create()
     {
-        if(!is_object(self::$instance)) {
-            self::$instance = new Cache;
+        if (!is_object(self::$_instance)) {
+            self::$_instance = new Cache;
         }
 
-        return self::$instance;
+        return self::$_instance;
     }
 
-    // Helper function to access cache.
+    /**
+     * Helper function to access cache.
+     */
     public static function c()
     {
         $cache = self::create();
@@ -47,32 +49,33 @@ class Cache
         $arglist = func_get_args();
         $key = $arglist[0];
 
-        if(func_num_args() == 1) {
-            $content = $this->readCache($key);
+        if (func_num_args() == 1) {
+            $content = $this->_readCache($key);
 
-            if(isset($content) && $content != "") {
+            if (isset($content) && $content != "") {
                 return $content;
             } else {
                 return null;
             }
         }
 
-        if(func_num_args() == 2) {
-            return $this->writeCache($key, $arglist[1]);
+        if (func_num_args() == 2) {
+            return $this->_writeCache($key, $arglist[1]);
         }
-        else {
-            // Cutting a piece of the args.
-            $content = array_slice($arglist, 1);
-            return $this->writeCache($key, $content);
-        }
+        // Cutting a piece of the args.
+        $content = array_slice($arglist, 1);
+        return $this->_writeCache($key, $content);
     }
 
     /**
      * Serializes data in a proper fashion.
      */
-    private function writeCache($key, $object)
+    private function _writeCache($key, $object)
     {
-        $data = str_replace("'", "\\'", base64_encode(gzcompress(serialize($object))));
+        $data = str_replace(
+            "'", "\\'",
+            base64_encode(gzcompress(serialize($object)))
+        );
         $time = date(\Modl\SQL::SQL_DATE);
 
         $cd = new \Modl\CacheDAO;
@@ -88,16 +91,17 @@ class Cache
     /**
      * Unserializes data.
      */
-    private function readCache($key)
+    private function _readCache($key)
     {
         $cd = new \Modl\CacheDAO;
         $var = $cd->get($key);
 
-        if(isset($var)) {
-            return unserialize(gzuncompress(base64_decode(str_replace("\\'", "'", $var->data))));
-        } else {
-            return false;
+        if (isset($var)) {
+            return unserialize(
+                gzuncompress(base64_decode(str_replace("\\'", "'", $var->data)))
+            );
         }
+        return false;
     }
 }
 

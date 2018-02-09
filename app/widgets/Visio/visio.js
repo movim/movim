@@ -1,5 +1,6 @@
 function logError(error) {
     console.log(error.name + ': ' + error.message);
+    console.log(error);
 }
 
 var Visio = {
@@ -10,33 +11,25 @@ var Visio = {
     old_level_L: 0,
     from: null,
     type: null,
-    start: false,
+
+    localCreated: false,
 
     setFrom: function(from) {
         Visio.from = from;
     },
 
-
     /*
      * Jingle and WebRTC
      */
     handleSuccess: function(stream) {
-        Visio.pc.addStream(stream);
+        if (Visio.pc.addTrack) {
+            stream.getTracks().forEach(track => Visio.pc.addTrack(track, stream));
+        } else {
+            Visio.pc.addStream(stream);
+        }
 
         Visio.toggleMainButton();
 
-        Visio_ajaxGetSDP();
-
-        // Video
-        var videoTracks = stream.getVideoTracks();
-        console.log('Got stream with constraints:', constraints);
-        console.log('Using video device: ' + videoTracks[0].label);
-
-        stream.oninactive = function() {
-            console.log('Stream inactive');
-        };
-
-        window.stream = stream; // make variable available to browser console
         document.getElementById('video').srcObject = stream;
 
         // Audio
@@ -67,6 +60,12 @@ var Visio = {
             cnvs_cntxt.fillStyle = 'white';
             cnvs_cntxt.fillRect(0, 0,(cnvs.width)*(instant_L/Visio.max_level_L),(cnvs.height)); // x,y,w,h
         }
+
+        // if we received an offer, we need to answer
+        if (Visio.pc.remoteDescription
+        && Visio.pc.remoteDescription.type == 'offer') {
+            Visio.pc.createAnswer(Visio.localDescCreated, logError);
+        }
     },
 
     onSDP: function(sdp, type) {
@@ -75,20 +74,15 @@ var Visio = {
         console.log('SDP');
         console.log(sdp);
 
-        Visio.pc.setRemoteDescription(
+        return Visio.pc.setRemoteDescription(
             new RTCSessionDescription({'sdp': sdp + "\n", 'type': type}),
-            function () {
-                Visio_ajaxGetCandidates();
-
-                // if we received an offer, we need to answer
-                if (Visio.pc.remoteDescription.type == 'offer')
-                    Visio.pc.createAnswer(Visio.localDescCreated, logError);
-            },
+            function () { Visio_ajaxGetCandidates(); },
             logError
         );
     },
 
     localDescCreated: function(desc) {
+        Visio.localCreated = true;
         Visio.pc.setLocalDescription(desc, Visio.toggleMainButton, logError);
     },
 
@@ -102,12 +96,11 @@ var Visio = {
 
         if(Visio.pc.remoteDescription == null) return;
 
-        candidate = new RTCIceCandidate(
-            {
-                'candidate': candidate,
-                'sdpMid': mid,
-                'sdpMLineIndex' : mlineindex
-            });
+        candidate = new RTCIceCandidate({
+            'candidate': candidate,
+            'sdpMid': mid,
+            'sdpMLineIndex' : mlineindex
+        });
 
         Visio.pc.addIceCandidate(candidate);
     },
@@ -130,9 +123,7 @@ var Visio = {
         }
     },
 
-    init: function(start) {
-        Visio.start = start;
-
+    init: function(sdp, type) {
         Visio.toggleMainButton();
 
         Visio.setFrom(MovimUtils.urlParts().params.join('/'));
@@ -162,11 +153,7 @@ var Visio = {
         };
 
         // WebRTC
-        if(typeof webkitRTCPeerConnection == 'function') {
-            Visio.pc = new webkitRTCPeerConnection(configuration);
-        } else {
-            Visio.pc = new RTCPeerConnection(configuration);
-        }
+        Visio.pc = new RTCPeerConnection(configuration);
 
         Visio.pc.onicecandidate = function (evt) {
             Visio.toggleMainButton();
@@ -184,12 +171,9 @@ var Visio = {
             Visio.toggleMainButton();
         };
 
-        /*Visio.pc.ontrack = function (evt) {
-            document.getElementById('remote_video').src = URL.createObjectURL(evt.streams[0]);
+        /*Visio.pc.ontrack = function(evt) {
+            document.getElementById('remote_video').srcObject = evt.streams[0];
         };*/
-        Visio.pc.onaddstream = function(evt) {
-            document.getElementById('remote_video').src = URL.createObjectURL(evt.stream);
-        };
 
         Visio.audioContext = new AudioContext();
 
@@ -200,11 +184,16 @@ var Visio = {
 
         Visio.toggleMainButton();
 
+        if(sdp && type) {
+            Visio.onSDP(sdp, type);
+        }
+
         if(typeof navigator.webkitGetUserMedia == 'function') {
             navigator.webkitGetUserMedia(constraints, Visio.handleSuccess, logError);
         } else {
-            navigator.mediaDevices.getUserMedia(constraints).
-            then(Visio.handleSuccess).catch(logError);
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(Visio.handleSuccess)
+                .catch(logError);
         }
     },
 
@@ -220,12 +209,12 @@ var Visio = {
     },
 
     answer: function() {
+        Visio.localCreated = false;
         Visio_ajaxAccept(Visio.pc.localDescription, Visio.from);
     },
 
     goodbye: function() {
         Visio.onTerminate();
-
         Visio_ajaxTerminate(Visio.from);
     },
 
@@ -234,51 +223,67 @@ var Visio = {
      */
     toggleMainButton: function() {
         button = document.getElementById('main');
+        state = document.querySelector('p.state');
 
         i = button.querySelector('i');
 
-        MovimUtils.removeClass(button, 'red');
-        MovimUtils.removeClass(button, 'green');
-        MovimUtils.removeClass(button, 'gray');
-        MovimUtils.removeClass(button, 'orange');
-        MovimUtils.removeClass(button, 'ring');
-
-        MovimUtils.addClass(button, 'disabled');
+        button.classList.remove('red', 'green', 'gray', 'orange', 'ring', 'blue');
+        button.classList.add('disabled');
 
         if(Visio.pc) {
-            if(Visio.pc.iceConnectionState != 'closed'
-            && Visio.pc.getLocalStreams().length > 0) {
-                MovimUtils.removeClass(button, 'disabled');
+            if (Visio.localCreated) Visio.answer();
+
+            let length = Visio.pc.getSenders
+                ? Visio.pc.getSenders().length
+                : Visio.pc.getLocalStreams().length;
+
+            if (Visio.pc.iceConnectionState != 'closed'
+            && length > 0) {
+                button.classList.remove('disabled');
             }
 
-            if(Visio.pc.iceConnectionState == 'new') {
-                if(Visio.pc.iceGatheringState == 'gathering'
+            button.onclick = function() {};
+
+            if (length == 0) {
+                button.classList.add('gray');
+                i.className = 'zmdi zmdi-more';
+            } else if (Visio.pc.iceConnectionState == 'new') {
+                if (Visio.pc.iceGatheringState == 'gathering'
                 || Visio.pc.iceGatheringState == 'complete') {
-                    MovimUtils.addClass(button, 'orange');
-                    i.className = 'zmdi zmdi-phone-ring';
+                    button.classList.add('orange');
+                    i.className = 'zmdi zmdi-phone-ring ring';
+                    state.innerHTML = Visio.states.ringing;
 
                     button.onclick = function() { Visio.goodbye(); };
                 } else {
-                    MovimUtils.addClass(button, 'green');
+                    button.classList.add('green');
                     i.className = 'zmdi zmdi-phone';
 
                     button.onclick = function() { Visio.hello(); };
                 }
-            } else if(Visio.pc.iceConnectionState == 'checking') {
-                MovimUtils.addClass(button, 'green');
-                i.className = 'zmdi zmdi-phone-end ring';
+            } else if (Visio.pc.iceConnectionState == 'checking') {
+                button.classList.add('blue');
+                i.className = 'zmdi zmdi-more disabled';
+                state.innerHTML = Visio.states.connecting;
 
-                button.onclick = function() { Visio.answer(); };
-            } else if(Visio.pc.iceConnectionState == 'closed') {
-                MovimUtils.addClass(button, 'gray');
+            } else if (Visio.pc.iceConnectionState == 'closed') {
+                button.classList.add('gray');
                 i.className = 'zmdi zmdi-phone-end';
 
                 button.onclick = function() { MovimUtils.reloadThis(); };
-            } else if(Visio.pc.iceConnectionState == 'connected'
+            } else if (Visio.pc.iceConnectionState == 'connected'
                    || Visio.pc.iceConnectionState == 'complete'
                    || Visio.pc.iceConnectionState == 'failed') {
-                MovimUtils.addClass(button, 'red');
+                button.classList.add('red');
                 i.className = 'zmdi zmdi-phone-end';
+
+                if (Visio.pc.iceConnectionState == 'failed') {
+                    state.innerHTML = Visio.states.failed;
+                } else {
+                    // Visio.pc.ontrack seems buggy for now
+                    document.getElementById('remote_video').srcObject = Visio.pc.getRemoteStreams()[0];
+                    state.innerHTML = Visio.states.in_call;
+                }
 
                 button.onclick = function() { Visio.goodbye(); };
             }
@@ -323,10 +328,10 @@ var Visio = {
 
         if(Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled) {
             Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled = 0;
-            button.className = 'zmdi zmdi-volume-off';
+            button.className = 'zmdi zmdi-mic-off';
         } else {
             Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled = 1;
-            button.className = 'zmdi zmdi-volume-up';
+            button.className = 'zmdi zmdi-mic';
         }
     },
 
@@ -335,10 +340,10 @@ var Visio = {
 
         if(Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled) {
             Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 0;
-            button.className = 'zmdi zmdi-eye-off';
+            button.className = 'zmdi zmdi-videocam-off';
         } else {
             Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 1;
-            button.className = 'zmdi zmdi-eye';
+            button.className = 'zmdi zmdi-videocam';
         }
     },
 }

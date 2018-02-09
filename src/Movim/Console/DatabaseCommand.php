@@ -15,26 +15,25 @@ class DatabaseCommand extends Command
             ->setName('db')
             ->setDescription('Database updater')
             ->addOption(
-               'set',
-               's',
-               InputOption::VALUE_NONE,
-               'Will apply updates on the database'
-            )
-        ;
+                'set',
+                's',
+                InputOption::VALUE_NONE,
+                'Will apply updates on the database'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $md = \Modl\Modl::getInstance();
 
-        if($input->getOption('set')) {
+        if ($input->getOption('set')) {
             $md->check(true);
             $output->writeln('<info>Database updated</info>');
         } else {
             $toDo = $md->check();
-            if($toDo != null) {
+            if ($toDo != null) {
                 $output->writeln('<comment>The database needs to be updated</comment>');
-                foreach($toDo as $do) {
+                foreach ($toDo as $do) {
                     $output->writeln('<question>'.$do.'</question>');
                 }
             } else {

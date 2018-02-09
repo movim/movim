@@ -12,14 +12,17 @@
 <?php $this->widget('BottomNavigation');?>
 
 <main>
-    <section style="background-color: #EEE;">
+    <section style="background-color: var(--movim-background);">
         <?php if(empty($_GET['s'])) { ?>
             <aside>
                 <?php $this->widget('ContactDisco');?>
             </aside>
             <div>
                 <?php $this->widget('Invitations');?>
+                <?php $this->widget('Tabs');?>
+
                 <?php $this->widget('Roster');?>
+                <?php $this->widget('ContactDiscoPosts');?>
             </div>
         <?php } else { ?>
             <aside>
@@ -31,13 +34,5 @@
                 <?php $this->widget('CommunityPosts'); ?>
             </div>
         <?php } ?>
-        <!--
-        <div style="background-color: #EEE;">
-            <?php //$this->widget('Invitations');?>
-            <?php //$this->widget('Roster');?>
-        </div>
-        <div id="contact_widget" class="spin">
-            <?php //$this->widget('Contact');?>
-        </div>-->
     </section>
 </main>

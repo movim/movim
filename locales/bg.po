@@ -34,6 +34,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -96,13 +98,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
-"PO-Revision-Date: 2016-11-06 11:15+0000\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/movim/movim/language/bg/)\n"
 "Language: bg\n"
@@ -110,7 +114,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -253,7 +257,7 @@ msgstr ""
 msgid "Movim is connected to the database"
 msgstr ""
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr ""
 
@@ -301,24 +305,12 @@ msgstr ""
 msgid "Server Timezone"
 msgstr ""
 
-#: [websocket]title
-msgid "WebSocket Configuration"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
 msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr ""
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr ""
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr ""
-
-#: [websocket]publics
-msgid "Public WebSockets"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
 msgstr ""
 
 #: [credentials]title
@@ -350,7 +342,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr ""
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr ""
 
@@ -383,6 +375,10 @@ msgstr ""
 msgid "Main XMPP server country"
 msgstr ""
 
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr ""
@@ -413,10 +409,6 @@ msgstr ""
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr ""
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
 msgstr ""
 
 #: [compatibility]websocket
@@ -516,11 +508,10 @@ msgid "This content is private, please login to see it"
 msgstr ""
 
 #: [title]conferences
-#, fuzzy
 msgid "Conferences"
-msgstr "Настройки"
+msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr ""
 
@@ -539,7 +530,6 @@ msgid "Name"
 msgstr "Име"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Псевдоним"
 
@@ -584,6 +574,10 @@ msgstr "Име"
 
 #: [message]published
 msgid "Message Published"
+msgstr ""
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
 msgstr ""
 
 #: [message]encrypted
@@ -652,6 +646,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -793,6 +791,7 @@ msgid "Publisher"
 msgstr ""
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr ""
 
@@ -804,12 +803,40 @@ msgstr ""
 msgid "Role correctly set"
 msgstr ""
 
+#: [communityconfig]publication
+msgid "Publication"
+msgstr ""
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+msgid "Subscribers"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr ""
 
 #: [communitydata]num [groups]num
 msgid "%s posts"
+msgstr ""
+
+#: [communitydata]public
+msgid "Public page"
 msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
@@ -854,10 +881,6 @@ msgstr ""
 
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
-msgstr ""
-
-#: [communityposts]empty
-msgid "This community seems empty"
 msgstr ""
 
 #: [communityposts]nsfw_title
@@ -922,6 +945,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1076,6 +1107,18 @@ msgstr ""
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr ""
 
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr ""
@@ -1164,36 +1207,8 @@ msgstr ""
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr ""
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr ""
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr ""
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr ""
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr ""
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1216,24 +1231,12 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr ""
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr ""
-
-#: [ml]button
-msgid "Join the Mailing List"
+#: [contact]title
+msgid "Administrators & Contact"
 msgstr ""
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+msgid "Chat with the Movim team?"
 msgstr ""
 
 #: [chatroom]button
@@ -1348,14 +1351,6 @@ msgstr "Грешка при автентикацията по XMPP"
 msgid "My address"
 msgstr "Моят адрес"
 
-#: [form]create_one
-msgid "Create one !"
-msgstr ""
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr ""
-
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
 msgstr ""
@@ -1413,9 +1408,8 @@ msgid "Write a new post…"
 msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
-#, fuzzy
 msgid "Notifications"
-msgstr "Настройки"
+msgstr ""
 
 #: [notifs]empty
 msgid "No new notifications"
@@ -1430,9 +1424,8 @@ msgid "You can always disable them afterwards"
 msgstr ""
 
 #: [onboarding]public_title
-#, fuzzy
 msgid "Public profile"
-msgstr "Профил"
+msgstr ""
 
 #: [onboarding]public_text
 msgid "Make your profile public and allow other users to find you and make new contacts more easily"
@@ -1627,7 +1620,7 @@ msgid "Tags"
 msgstr ""
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+msgid "Please enter a valid URL"
 msgstr ""
 
 #: [publish]no_content_preview
@@ -1934,22 +1927,6 @@ msgstr ""
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr ""
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr ""
-
-#: [accounts]skype
-msgid "Skype"
-msgstr ""
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr ""
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -1988,6 +1965,26 @@ msgstr ""
 
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+msgid "failed"
+msgstr ""
+
+#: [visio]connecting
+msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
@@ -2034,10 +2031,6 @@ msgstr "Аватар"
 msgid "Chats"
 msgstr ""
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr ""
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2068,10 +2061,6 @@ msgstr ""
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
-
-#: [page]pods
-msgid "Pods"
 msgstr ""
 
 #: [page]share
@@ -2232,6 +2221,10 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr ""
@@ -2264,23 +2257,6 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr ""
-
-#: [gender]male
-msgid "Male"
-msgstr ""
-
-#: [gender]female
-msgid "Female"
-msgstr ""
-
-#: [gender]other
-msgid "Other"
-msgstr ""
-
 #: [client]bot
 msgid "Bot"
 msgstr ""
@@ -2299,59 +2275,6 @@ msgstr ""
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr ""
-
-#: [marital]single
-msgid "Single"
-msgstr ""
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr ""
-
-#: [marital]married
-msgid "Married"
-msgstr ""
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr ""
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr ""
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr ""
-
-#: [marital]union
-msgid "Civil Union"
-msgstr ""
-
-#: [flag]white
-msgid "Not shared"
-msgstr ""
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr ""
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr ""
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr ""
-
-#: [flag]black
-msgid "Shared with the whole Internet"
 msgstr ""
 
 #: [presence]online
@@ -2790,10 +2713,6 @@ msgstr "ден"
 msgid "Title"
 msgstr ""
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr ""
-
 #: [post]place
 msgid "Place"
 msgstr ""
@@ -2818,14 +2737,6 @@ msgstr ""
 msgid "No comments yet"
 msgstr ""
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Емисията не може да бъде заредена"
-
 #: [post]older
 msgid "Get older posts"
 msgstr ""
@@ -2836,14 +2747,6 @@ msgstr ""
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr ""
-
-#: [post]comments_loading
-msgid "Loading comments..."
 msgstr ""
 
 #: [post]comments_get
@@ -2860,10 +2763,6 @@ msgstr ""
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
-
-#: [post]share_your_contacts
-msgid "Your contacts"
 msgstr ""
 
 #: [post]updated

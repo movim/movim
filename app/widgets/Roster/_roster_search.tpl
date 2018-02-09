@@ -3,17 +3,6 @@
     <ul class="list">
         <li>
             <form name="add" onsubmit="return false;">
-                {if="isset($gateways) && count($gateways) > 0"}
-                    <input type="hidden" name="gatewayprompt" value="" />
-                    <div>
-                        <select onchange="Roster.drawGatewayPrompt()" name="gateway" class="select">
-                            <option class="xmpp" value="">{$c->__('roster.add_contact_info1')}</option>
-                            {loop="$gateways"}
-                                <option class="{$key}" value="{$key}">{$value->type} ({$value->name})</option>
-                            {/loop}
-                        </select>
-                    </div>
-                {/if}
                 <div>
                     <input
                         name="searchjid"
@@ -35,11 +24,7 @@
                         id="alias"
                         class="tiny"
                         placeholder="{$c->__('edit.alias')}"
-                        {if="$contact->rostername"}
-                            value="{$contact->rostername}"
-                        {else}
-                            value="{$contact->jid}"
-                        {/if}"/>
+                    />
                     <label for="alias">{$c->__('edit.alias')}</label>
                 </div>
                 <div>
@@ -56,7 +41,7 @@
                         id="group"
                         class="tiny"
                         placeholder="{$c->__('edit.group')}"
-                        value="{$contact->groupname}"/>
+                    />
                     <label for="group">{$c->__('edit.group')}</label>
                 </div>
             </form>

@@ -14,28 +14,12 @@ class Vcard4 extends \Movim\Widget\Base
         $this->registerEvent('vcard4_set_handle', 'onMyVcard4');
     }
 
-    function display()
-    {
-        $cd = new \Modl\ContactDAO;
-        $me = $cd->get();
-
-        $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
-
-        if($me == null) {
-            $this->view->assign('form', $this->prepareForm(new \modl\Contact()));
-        } else {
-            $this->view->assign('form', $this->prepareForm($me));
-        }
-    }
-
     function prepareForm($me)
     {
         $vcardform = $this->tpl();
 
         $vcardform->assign('me',       $me);
         $vcardform->assign('desc',     trim($me->description));
-        $vcardform->assign('gender',   getGender());
-        $vcardform->assign('marital',  getMarital());
         $vcardform->assign('countries',getCountries());
 
         $me->isValidDate();
@@ -65,7 +49,6 @@ class Vcard4 extends \Movim\Widget\Base
 
     function onMyVcard4Received()
     {
-        $this->rpc('MovimUtils.buttonReset', '#vcard4validate');
         Notification::append(null, $this->__('vcard.updated'));
     }
 
@@ -115,14 +98,6 @@ class Vcard4 extends \Movim\Widget\Base
             $c->url     = '';
         }
 
-        if(Validator::in(array_keys(getGender()))->validate($vcard->gender->value)) {
-            $c->gender  = $vcard->gender->value;
-        }
-
-        if(Validator::in(array_keys(getMarital()))->validate($vcard->marital->value)) {
-            $c->marital = $vcard->marital->value;
-        }
-
         $c->adrlocality     = $vcard->locality->value;
         $c->adrcountry      = $vcard->country->value;
 
@@ -131,10 +106,6 @@ class Vcard4 extends \Movim\Widget\Base
         } else {
             $c->email = '';
         }
-
-        $c->twitter = $vcard->twitter->value;
-        $c->skype   = $vcard->skype->value;
-        $c->yahoo   = $vcard->yahoo->value;
 
         if(Validator::stringType()->validate($vcard->desc->value)) {
             $c->description     = trim($vcard->desc->value);
@@ -157,6 +128,20 @@ class Vcard4 extends \Movim\Widget\Base
         } else {
             \Modl\Privacy::set($this->user->getLogin(), 0);
             Notification::append(null, $this->__('vcard.restricted'));
+        }
+    }
+
+    function display()
+    {
+        $cd = new \Modl\ContactDAO;
+        $me = $cd->get();
+
+        $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
+
+        if($me == null) {
+            $this->view->assign('form', $this->prepareForm(new \Modl\Contact));
+        } else {
+            $this->view->assign('form', $this->prepareForm($me));
         }
     }
 }

@@ -13,7 +13,7 @@ class Session
      */
     public static function start()
     {
-        if(!isset(self::$instance)) {
+        if (!isset(self::$instance)) {
             self::$instance = new self();
         }
 
@@ -25,11 +25,10 @@ class Session
      */
     public function get($varname)
     {
-        if(array_key_exists($varname, $this->values)) {
+        if (array_key_exists($varname, $this->values)) {
             return unserialize(base64_decode($this->values[$varname]));
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
@@ -56,12 +55,11 @@ class Session
      */
     public static function dispose()
     {
-        if(isset(self::$instance)) {
+        if (isset(self::$instance)) {
             self::$instance = null;
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 }
 

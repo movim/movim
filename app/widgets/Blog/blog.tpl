@@ -91,7 +91,7 @@
 
 <div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
     {loop="$posts"}
-        {if="$c->getUser()->isLogged()"}
+        {if="$mode == 'tag'"}
             {$c->prepareCard($value)}
         {else}
             {$c->preparePost($value)}

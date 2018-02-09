@@ -12,6 +12,6 @@ class NodeController extends Base
 
     function dispatch()
     {
-        $this->page->setTitle(__('page.groups'));
+        $this->page->setTitle(__('page.communities'));
     }
 }

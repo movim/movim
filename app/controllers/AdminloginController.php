@@ -12,7 +12,7 @@ class AdminloginController extends Base
     {
         $this->page->setTitle(__('page.administration'));
 
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         if(isset($_POST['username'])

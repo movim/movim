@@ -1,6 +1,6 @@
 <section>
     <h3>{$c->__('publishbrief.add_link')}</h3>
-    <form name="link">
+    <form name="link" onsubmit="return false;">
         <div>
             <input name="url"
                 id="url"

@@ -15,6 +15,7 @@ class Route extends Base
                 'about'         => ['x'],
                 'account'       => false,
                 'accountnext'   => ['s', 'err'],
+                'ajax'          => false,
                 'admin'         => false,
                 'blog'          => ['f', 'i'],
                 'chat'          => ['f', 'r'],
@@ -24,7 +25,6 @@ class Route extends Base
                 'disconnect'    => ['err'],
                 'feed'          => ['s', 'n'],
                 'help'          => false,
-                'home'          => ['i'],
                 'infos'         => false,
                 'login'         => ['i'],
                 'main'          => false,
@@ -36,6 +36,7 @@ class Route extends Base
                 'publish'       => ['s', 'n', 'i', 'sh'],
                 'room'          => ['r'],
                 'share'         => ['url'],
+                'system'        => false,
                 'tag'           => ['t', 'i'],
                 'visio'         => ['f', 's'],
             ];
@@ -52,14 +53,15 @@ class Route extends Base
 
         $this->_page = array_shift($request);
 
-        if(isset($this->_routes[$this->_page])) {
+        if (isset($this->_routes[$this->_page])) {
             $route = $this->_routes[$this->_page];
         }
 
-        if(count($request)
-        && is_array($route)) {
+        if (count($request)
+            && is_array($route)
+        ) {
             $i = 0;
-            foreach($route as $key) {
+            foreach ($route as $key) {
                 if (isset($request[$i])) {
                     $_GET[$key] = $request[$i];
                 }
@@ -67,11 +69,13 @@ class Route extends Base
             }
         }
 
-        if(empty($this->_page) || $this->_page == 'main')
+        if (empty($this->_page) || $this->_page == 'main') {
             $this->_page = 'news';
+        }
 
-        if(!isset($this->_routes[$this->_page]))
+        if (!isset($this->_routes[$this->_page])) {
             $this->_page = 'notfound';
+        }
 
         return $this->_page;
     }
@@ -84,22 +88,21 @@ class Route extends Base
         if($page === 'root')
             return BASE_URI;
 
-        if(isset($routes[$page])) {
+        if (isset($routes[$page])) {
             $uri = '';
 
-            if($tab != false) {
+            if ($tab != false) {
                 $tab = '#'.$tab;
-
-            //We construct a classic URL if the rewriting is disabled
             } else {
+                //We construct a classic URL if the rewriting is disabled
                 $uri = BASE_URI . '?'. $page;
             }
 
-            if($params != false && is_array($params)) {
-                foreach($params as $value) {
+            if ($params != false && is_array($params)) {
+                foreach ($params as $value) {
                     $uri .= '/' . rawurlencode($value);
                 }
-            } elseif($params != false) {
+            } elseif ($params != false) {
                 $uri .= '/' . rawurlencode($params);
             }
 
@@ -116,12 +119,16 @@ class Route extends Base
 
         $source = preg_replace_callback(
             '/(^|(?<=&))[^=[&]+/',
-            function($key) { return bin2hex(urldecode($key[0])); },
+            function ($key) {
+                return bin2hex(urldecode($key[0]));
+            },
             $source
         );
 
         parse_str($source, $post);
-        foreach($post as $key => $val)
+        foreach ($post as $key => $val) {
             $target[ hex2bin($key) ] = $val;
+        }
     }
 }
+

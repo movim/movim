@@ -5,12 +5,12 @@ var Init = {
         if(username == null) return;
 
         var jid = username.replace("@", "at");
-        var init = localStorage.getObject(jid + "_Init2") || {};
+        var init = localStorage.getObject(jid + "_Init3") || {};
         if(init.initialized != 'true') {
             Init_ajaxCreatePersistentStorage('storage:bookmarks');
-            Init_ajaxCreatePersistentPresenceStorage('urn:xmpp:vcard4');
-            Init_ajaxCreatePersistentPresenceStorage('urn:xmpp:avatar:data');
-            Init_ajaxCreatePersistentPresenceStorage('http://jabber.org/protocol/geoloc');
+            Init_ajaxCreatePersistentPEPStorage('urn:xmpp:vcard4');
+            Init_ajaxCreatePersistentPEPStorage('urn:xmpp:avatar:data');
+            Init_ajaxCreatePersistentPEPStorage('http://jabber.org/protocol/geoloc');
             Init_ajaxCreatePersistentPresenceStorage('urn:xmpp:pubsub:subscription');
             Init_ajaxCreatePersistentPresenceStorage('urn:xmpp:microblog:0');
         }
@@ -21,9 +21,9 @@ var Init = {
         if(username == null) return;
 
         var jid = username.replace("@", "at");
-        var init = localStorage.getObject(jid + "_Init2") || {};
+        var init = localStorage.getObject(jid + "_Init3") || {};
         init.initialized = 'true';
-        localStorage.setObject(jid + "_Init2", init);
+        localStorage.setObject(jid + "_Init3", init);
     }
 }
 

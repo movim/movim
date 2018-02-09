@@ -23,12 +23,12 @@ class Base
     /**
      * Returns the value of a $_GET variable. Mainly used to avoid getting
      * notices from PHP when attempting to fetch an empty variable.
-     * @param name is the desired variable's name.
+     * @param  name is the desired variable's name.
      * @return the value of the requested variable, or FALSE.
      */
     protected function fetchGet($name)
     {
-        if(isset($_GET[$name])) {
+        if (isset($_GET[$name])) {
             return htmlentities($_GET[$name]);
         } else {
             return false;
@@ -38,12 +38,12 @@ class Base
     /**
      * Returns the value of a $_POST variable. Mainly used to avoid getting
      * notices from PHP when attempting to fetch an empty variable.
-     * @param name is the desired variable's name.
+     * @param  name is the desired variable's name.
      * @return the value of the requested variable, or FALSE.
      */
     protected function fetchPost($name)
     {
-        if(isset($_POST[$name])) {
+        if (isset($_POST[$name])) {
             return htmlentities($_POST[$name]);
         } else {
             return false;
@@ -52,10 +52,10 @@ class Base
 
     function checkSession()
     {
-        if($this->session_only) {
+        if ($this->session_only) {
             $user = new User;
 
-            if(!$user->isLogged()) {
+            if (!$user->isLogged()) {
                 $this->name = 'login';
             }
         }
@@ -69,21 +69,19 @@ class Base
 
     function display()
     {
-        $this->page->addScript('movim_hash.js');
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_electron.js');
 
-        if(!$this->public) {
+        if (!$this->public) {
             $this->page->addScript('movim_tpl.js');
             $this->page->addScript('movim_websocket.js');
-            $this->page->addScript('pako_inflate.js');
         }
 
         $user = new User;
         $content = new Builder($user);
 
-        if($this->raw) {
+        if ($this->raw) {
             echo $content->build($this->name);
             exit;
         } else {

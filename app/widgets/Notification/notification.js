@@ -73,7 +73,13 @@ var Notification = {
             if(Notification.electron != null)
                 Notification.electron.notification(false);
         } else {
-            document.title = '(' + Notification.tab_counter1 + '/' + Notification.tab_counter2 + ') ' + Notification.document_title;
+            document.title =
+                '('
+                + Notification.tab_counter1
+                + '/'
+                + Notification.tab_counter2
+                + ') '
+                + Notification.document_title;
 
             if(Notification.favicon != null)
                 Notification.favicon.badge(Notification.tab_counter1 + Notification.tab_counter2);
@@ -86,24 +92,23 @@ var Notification = {
         Notification.notifs_key = key;
         Notification_ajaxCurrent(Notification.notifs_key);
     },
-    toast : function(html) {
+    toast : function(title) {
         // Android notification
         if(typeof Android !== 'undefined') {
-            Android.showToast(html);
+            Android.showToast(title);
             return;
         }
 
         target = document.getElementById('toast');
 
         if(target) {
-            target.innerHTML = html;
+            target.innerHTML = title;
         }
 
         setTimeout(function() {
             target = document.getElementById('toast');
             target.innerHTML = '';
-            },
-            3000);
+        }, 3000);
     },
     snackbar : function(html, time) {
         if(typeof Android !== 'undefined'
@@ -116,12 +121,14 @@ var Notification = {
         }
 
         setTimeout(function() {
-            target = document.getElementById('snackbar');
-            target.innerHTML = '';
-            },
-            time*1000);
+            Notification.snackbarClear();
+        }, time*1000);
     },
-    desktop : function(title, body, picture, action) {
+    snackbarClear : function() {
+        target = document.getElementById('snackbar');
+        target.innerHTML = '';
+    },
+    desktop : function(title, body, picture, action, execute) {
         if(Notification.inhibed == true
         || Notification.focused
         || typeof DesktopNotification === 'undefined') return;
@@ -131,6 +138,16 @@ var Notification = {
         if(action !== null) {
             notification.onclick = function() {
                 window.location.href = action;
+                Notification.snackbarClear();
+                this.close();
+            }
+        }
+
+        if(execute !== null) {
+            notification.onclick = function() {
+                eval(execute);
+                Notification.snackbarClear();
+                this.close();
             }
         }
     },
@@ -163,17 +180,17 @@ if(typeof MovimWebsocket != 'undefined') {
         Notification.tab_counter1 = Notification.tab_counter2 = 0;
         Notification_ajaxGet();
         Notification.current(Notification.notifs_key);
+
+        document.addEventListener('blur', function() {
+            Notification.focused = false;
+            Notification_ajaxCurrent('blurred');
+        });
+
+        document.addEventListener('focus', function() {
+            Notification.focused = true;
+            Notification.current(Notification.notifs_key);
+            Notification_ajaxClear(Notification.notifs_key);
+        });
     });
 }
-
-document.addEventListener('blur', function() {
-    Notification.focused = false;
-    Notification_ajaxCurrent('blurred');
-});
-
-document.addEventListener('focus', function() {
-    Notification.focused = true;
-    Notification.current(Notification.notifs_key);
-    Notification_ajaxClear(Notification.notifs_key);
-});
 

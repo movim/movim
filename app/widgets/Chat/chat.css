@@ -7,10 +7,14 @@
     margin-left: 1rem;
 }
 
+#chat_widget {
+    background-color: var(--movim-background);
+}
+
 #chat_widget .chat_box {
     position: fixed;
     bottom: 0;
-    background-color: white;
+    background-color: rgba(var(--movim-background-main), 1);
     width: inherit;
     max-width: 100%;
     border-top: 1px solid rgba(0, 0, 0, 0.12);
@@ -37,12 +41,12 @@
 
 #chat_widget .chat_box span.control {
     font-size: 4rem;
-    color: gray;
+    color: rgba(var(--movim-font), 0.68);
 }
 
 #chat_widget .chat_box span.control:hover {
     cursor: pointer;
-    color: #666;
+    color: rgba(var(--movim-font), 0.54);
 }
 
 #chat_widget .chat_box span.control:active {
@@ -86,6 +90,10 @@
     display: block;
 }
 
+#chat_widget li div.bubble.sticker.file img.active:hover {
+    cursor: pointer;
+}
+
 #chat_widget li div.bubble.sticker img:not(.emoji):not(.hfr) {
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
@@ -95,6 +103,7 @@
 
 #chat_widget li div.bubble.sticker.file img:not(.emoji):not(.hfr) {
     max-height: 170px;
+    object-fit: cover;
 }
 
 #chat_widget ul:after {
@@ -109,8 +118,8 @@
 
 #chat_widget .contained:not(.muc) ul li.oppose + li.oppose span.icon,
 #chat_widget .contained:not(.muc) ul li.oppose + li.oppose .bubble::before,
-#chat_widget .contained:not(.muc) ul li:not(.oppose) + li:not(.oppose) span.icon,
-#chat_widget .contained:not(.muc) ul li:not(.oppose) + li:not(.oppose) .bubble::before {
+#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator) + li:not(.oppose) span.icon,
+#chat_widget .contained:not(.muc) ul li:not(.oppose):not(.separator) + li:not(.oppose) .bubble::before {
     display: none;
 }
 
@@ -121,14 +130,18 @@
     background-image: url('img/chat.svg');
 }
 
+#chat_widget .contained ul li {
+    animation: fadein 0.2s;
+}
+
 #chat_widget ul ~ .placeholder {
     display: none;
 }
 
-#chat_widget ul:empty ~ .placeholder {
+#chat_widget ul:empty ~ .placeholder.show {
     display: block;
+    animation: fadein 1s;
 }
-
 
 table.emojis td {
     width: 10%;
@@ -154,11 +167,7 @@ table.emojis td:hover {
 }
 
 #chat_widget div.quoted {
-    background-color: #fff59d;
-}
-
-#chat_widget div.quoted:before {
-    border-top-color: #fff59d;
+    border-right: 4px solid rgb(var(--movim-main));
 }
 
 /* File preview */

@@ -1,11 +1,6 @@
 <section>
     <form name="subscribe" onsubmit="return false;">
          <h3>{$c->__('communityheader.subscribe')}</h3>
-        {if="$info"}
-            <h4 class="gray">
-                {$info->name}
-            </h4>
-        {/if}
         <div>
             <input
                 name="label"
@@ -21,8 +16,8 @@
 
         <div class="checkbox">
             <ul class="list thick">
-                <li>
-                    <span class="primary">
+                <li class="wide">
+                    <span class="control">
                         <div class="control action">
                             <div class="checkbox">
                                 <input id="share" name="share" type="checkbox">

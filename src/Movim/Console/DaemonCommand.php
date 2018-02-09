@@ -28,32 +28,31 @@ class DaemonCommand extends Command
             ->setName('start')
             ->setDescription('Start the daemon')
             ->addOption(
-               'url',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'Public URL of your Movim instance'
+                'url',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Public URL of your Movim instance'
             )
             ->addOption(
-               'port',
-               'p',
-               InputOption::VALUE_OPTIONAL,
-               'Port on which the daemon will listen',
-               8080
+                'port',
+                'p',
+                InputOption::VALUE_OPTIONAL,
+                'Port on which the daemon will listen',
+                8080
             )
             ->addOption(
-               'interface',
-               'i',
-               InputOption::VALUE_OPTIONAL,
-               'Interface on which the daemon will listen',
-               '127.0.0.1'
+                'interface',
+                'i',
+                InputOption::VALUE_OPTIONAL,
+                'Interface on which the daemon will listen',
+                '127.0.0.1'
             )
             ->addOption(
-               'debug',
-               'd',
-               InputOption::VALUE_NONE,
-               'Output XMPP logs'
-            )
-        ;
+                'debug',
+                'd',
+                InputOption::VALUE_NONE,
+                'Output XMPP logs'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -61,7 +60,7 @@ class DaemonCommand extends Command
         $md = \Modl\Modl::getInstance();
         $infos = $md->check();
 
-        if($infos != null) {
+        if ($infos != null) {
             $output->writeln('<comment>The database needs to be updated before running the daemon</comment>');
 
             $output->writeln('<info>To update the database run</info>');
@@ -71,29 +70,27 @@ class DaemonCommand extends Command
 
         $loop = Factory::create();
 
-        if(!Validator::url()->notEmpty()->validate($input->getOption('url'))) {
+        if (!Validator::url()->notEmpty()->validate($input->getOption('url'))) {
             $output->writeln('<error>Invalid or missing url parameter</error>');
             exit;
         }
 
         $baseuri = rtrim($input->getOption('url'), '/') . '/';
 
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
-
-        if(empty($config->username) || empty($config->password)) {
-            $output->writeln('<comment>Please set a username and password for the admin panel ('.$baseuri.'?admin)</comment>');
-
-            $output->writeln('<info>To set those credentials run</info>');
-            $output->writeln('<info>php mud.php config --username=USERNAME --password=PASSWORD</info>');
-            exit;
-        }
-
         $output->writeln('<info>Movim daemon launched</info>');
         $output->writeln('<info>Base URL: '.$baseuri.'</info>');
 
         $core = new Core($loop, $baseuri, $input);
         $app  = new HttpServer(new WsServer($core));
+
+        $config = (new \Modl\ConfigDAO)->get();
+
+        if (empty($config->username) || empty($config->password)) {
+            $output->writeln('<comment>Please set a username and password for the admin panel (' . $baseuri . '?admin)</comment>');
+
+            $output->writeln('<info>To set those credentials run</info>');
+            $output->writeln('<info>php mud.php config --username=USERNAME --password=PASSWORD</info>');
+        }
 
         $socket = new Reactor(
             $input->getOption('interface').':'.$input->getOption('port'),
@@ -103,8 +100,6 @@ class DaemonCommand extends Command
         $socketApi = new Reactor(1560, $loop);
         new Api($socketApi, $core);
 
-        $server = new IoServer($app, $socket, $loop);
-
-        $server->run();
+        (new IoServer($app, $socket, $loop))->run();
     }
 }

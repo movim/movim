@@ -16,24 +16,12 @@ class ContactDisco extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $nd = new \Modl\PostnDAO;
-
-        $blogs = $nd->getLastBlogPublic(0, 6);
-        $blogs = is_array($blogs) ? $blogs : [];
-
         $cd = new \Modl\ContactDAO;
-        $users = $cd->getAllPublic(0, 16);
-
-
+        $users = $cd->getAllPublic(0, 40);
 
         $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('blogs', $blogs);
         $view->assign('users', $users);
 
         return $view->draw('_contactdisco', true);
-    }
-
-    public function display()
-    {
     }
 }

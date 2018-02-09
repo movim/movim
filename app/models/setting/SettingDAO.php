@@ -10,7 +10,8 @@ class SettingDAO extends SQL
             update setting
             set language   = :language,
                 cssurl     = :cssurl,
-                nsfw       = :nsfw
+                nsfw       = :nsfw,
+                nightmode  = :nightmode
             where session  = :session';
 
         $this->prepare(
@@ -19,6 +20,7 @@ class SettingDAO extends SQL
                 'language'  => $s->language,
                 'cssurl'    => $s->cssurl,
                 'nsfw'      => $s->nsfw,
+                'nightmode' => $s->nightmode,
                 'session'   => $this->_user
             ]
         );
@@ -32,6 +34,7 @@ class SettingDAO extends SQL
                     language,
                     cssurl,
                     nsfw,
+                    nightmode,
                     session
                 )
                 values
@@ -39,6 +42,7 @@ class SettingDAO extends SQL
                     :language,
                     :cssurl,
                     :nsfw,
+                    :nightmode,
                     :session
                 )
                 ';
@@ -49,6 +53,7 @@ class SettingDAO extends SQL
                     'language'  => $s->language,
                     'cssurl'    => $s->cssurl,
                     'nsfw'      => $s->nsfw,
+                    'nightmode' => $s->nightmode,
                     'session'   => $this->_user
                 ]
             );

@@ -17,6 +17,7 @@ class Post extends \Movim\Widget\Base
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_getitem_handle', 'onHandle', 'post');
+        $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
     }
 
     function onHandle($packet)
@@ -35,8 +36,9 @@ class Post extends \Movim\Widget\Base
                         $this->prepareComments($p->getParent())
                     );
                 } else {
-                    //$this->rpc('MovimUtils.pushState', $this->route('post', [$p->origin, $p->node, $p->nodeid]));
-                    $this->rpc('MovimTpl.fill', '#post_widget', $this->preparePost($p));
+                    $this->rpc('MovimTpl.fill',
+                        '#post_widget.'.cleanupId($p->nodeid),
+                        $this->preparePost($p));
                     $this->rpc('MovimUtils.enableVideos');
                 }
             }
@@ -65,13 +67,9 @@ class Post extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#comments', $html);
     }
 
-    function ajaxClear()
+    function onDelete($packet)
     {
-        $this->rpc('MovimUtils.pushState', $this->route('news'));
-
-        $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareEmpty());
-        $this->rpc('Menu.refresh');
-        //$this->rpc('Menu_ajaxGetAll');
+        $this->rpc('Post.refreshComments');
     }
 
     function ajaxGetContact($jid)
@@ -88,7 +86,7 @@ class Post extends \Movim\Widget\Base
         if($p) {
             $html = $this->preparePost($p);
 
-            $this->rpc('MovimTpl.fill', '#post_widget', $html);
+            $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
 
             // If the post is a reply but we don't have the original
@@ -113,6 +111,16 @@ class Post extends \Movim\Widget\Base
                ->request();
         } else {
             $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareNotFound());
+        }
+    }
+
+    function ajaxGetPostComments($origin, $node, $id)
+    {
+        $pd = new \Modl\PostnDAO;
+        $p  = $pd->get($origin, $node, $id);
+
+        if($p) {
+            $this->requestComments($p);
         }
     }
 
@@ -176,9 +184,20 @@ class Post extends \Movim\Widget\Base
 
         $emoji = \MovimEmoji::getInstance();
 
+        $comments = $post->getComments();
+
+        $likes = [];
+        foreach($comments as $key => $comment) {
+            if($comment->isLike()) {
+                $likes[] = $comment;
+                unset($comments[$key]);
+            }
+        }
+
         $view = $this->tpl();
         $view->assign('post', $post);
-        $view->assign('comments', $post->getComments());
+        $view->assign('comments', $comments);
+        $view->assign('likes', $likes);
         $view->assign('hearth', $emoji->replace('♥'));
 
         return $view->draw('_post_comments', true);
@@ -256,6 +275,8 @@ class Post extends \Movim\Widget\Base
                 $view->assign('repost', $cd->get($p->origin));
             }
 
+            $view->assign('nsfw', $this->user->getConfig('nsfw'));
+
             $view->assign('post', $p);
             $view->assign('attachments', $p->getAttachments());
 
@@ -274,8 +295,8 @@ class Post extends \Movim\Widget\Base
         $validate_nodeid = Validator::stringType()->length(10, 100);
 
         $this->view->assign('nodeid', false);
-        if($validate_nodeid->validate($this->get('n'))) {
-            $this->view->assign('nodeid', $this->get('n'));
+        if($validate_nodeid->validate($this->get('i'))) {
+            $this->view->assign('nodeid', $this->get('i'));
         }
     }
 }

@@ -39,6 +39,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -101,13 +103,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
-"PO-Revision-Date: 2017-07-21 16:04+0000\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
 "Language: it\n"
@@ -115,7 +119,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.0.0\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -258,7 +262,7 @@ msgstr "Modl non è riuscito a collegarsi al database"
 msgid "Movim is connected to the database"
 msgstr "Movim è collegato al database"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "Il database deve essere aggiornato"
 
@@ -306,25 +310,13 @@ msgstr "Verbosità dei log"
 msgid "Server Timezone"
 msgstr "Fuso orario del server"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "Configurazione WebSocket"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "Inserisci un WebSocket URI valido nel form"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "WebSocket URI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Se cambi l'URI, riavvia il deamon per ricaricare la configurazione"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "Public WebSockets"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -355,7 +347,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "Informazione"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "Descrizione"
 
@@ -388,6 +380,10 @@ msgstr "Descrizione del server XMPP principale"
 msgid "Main XMPP server country"
 msgstr "Paese del server XMPP principale"
 
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr "Vuoto"
@@ -419,10 +415,6 @@ msgstr "Richiesto: 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "I diritti di lettura e scrittura per il webserver nella %s directory di Movim"
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "Il database deve essere aggiornato, vai nel pannello del database per correggere"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -524,7 +516,7 @@ msgstr "Questo contenuto è privato, per visualizzarlo accedi al tuo profilo."
 msgid "Conferences"
 msgstr "Conferenze"
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Gruppi"
 
@@ -542,7 +534,6 @@ msgid "Name"
 msgstr "Nome"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Nickname"
 
@@ -586,6 +577,10 @@ msgstr "Nome"
 #: [message]published
 msgid "Message Published"
 msgstr "Messaggio pubblicato"
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -653,6 +648,10 @@ msgstr "Cancella la cronologia"
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -733,19 +732,16 @@ msgid "This server doesn't exists"
 msgstr "Questo server non esiste"
 
 #: [communitiesserver]created
-#, fuzzy
 msgid "Community created successfully"
-msgstr "Gruppo creato con successo"
+msgstr ""
 
 #: [communitiesserver]empty_server
-#, fuzzy
 msgid "There is no Communities yet on this server."
-msgstr "Non ci sono ancora Gruppi su questo server"
+msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "Crea un nuovo Gruppo su %s"
+msgstr ""
 
 #: [communitiesserver]name
 msgid "Community name"
@@ -756,14 +752,12 @@ msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony - Fan Club"
 
 #: [communitiesserver]name_error
-#, fuzzy
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "Inserire un nome valido per il gruppo (minimo 4 caratteri)"
+msgstr ""
 
 #: [communitiesserver]no_creation
-#, fuzzy
 msgid "You cannot create a new community on this server"
-msgstr "Non puoi creare un nuovo gruppo su questo server"
+msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
@@ -771,24 +765,20 @@ msgid "Subscriptions"
 msgstr "Sottoscrizioni"
 
 #: [communityaffiliation]deleted
-#, fuzzy
 msgid "Community deleted successfully"
-msgstr "Gruppo cancellato con successo"
+msgstr ""
 
 #: [communityaffiliation]delete_title
-#, fuzzy
 msgid "Delete the community"
-msgstr "Cancella il gruppo"
+msgstr ""
 
 #: [communityaffiliation]delete_text
-#, fuzzy
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "Stai per eliminare il seguente gruppo. Sei sicuro di volerlo fare?"
+msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Sembra che questo gruppo non esista più. Vuoi rimuoverlo dalle tue sottoscrizioni?"
+msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -803,6 +793,7 @@ msgid "Publisher"
 msgstr "Autore"
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr "Autori"
 
@@ -814,6 +805,30 @@ msgstr "Ruoli"
 msgid "Role correctly set"
 msgstr "Ruolo impostato correttamente"
 
+#: [communityconfig]publication
+msgid "Publication"
+msgstr ""
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+msgid "Subscribers"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr "%s sottoscrittori"
@@ -821,6 +836,10 @@ msgstr "%s sottoscrittori"
 #: [communitydata]num [groups]num
 msgid "%s posts"
 msgstr "%s articoli"
+
+#: [communitydata]public
+msgid "Public page"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -865,10 +884,6 @@ msgstr "Ti stai disiscrivendo da questa comunità"
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Sei sicuro?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr "La comunità sembra essere vuota"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -932,6 +947,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1086,6 +1109,18 @@ msgstr "Invita"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Questo contatto è nella tua lista contatti ma non c'è nessuna iscrizione tra i due account"
 
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Stai per cancellare l'iscrizione a questo Gruppo"
@@ -1174,36 +1209,8 @@ msgstr "Non puoi creare un nuovo gruppo su questo server"
 msgid "Frequently Asked Questions"
 msgstr "Domande poste di frequente"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "A cosa si riferiscono i piccoli banner?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Grazie a questi cinque piccoli banner, puoi facilmente identificare il livello di confidenzialità applicato alle informazioni che pubblichi"
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Bianco, solo tu puoi vedere l'informazione"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Verde, hai scelto alcuni contatti che possono vedere la tua informazione"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Arancione, tutti i tuoi contatti possono vedere la tua informazione"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Rosso, tutti nella rete XMPP possono vedere la tua informazione"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Nero, tutto il web può vedere la tua informazione"
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1215,9 +1222,8 @@ msgid "Try out our official Android app"
 msgstr ""
 
 #: [apps]recommend
-#, fuzzy
 msgid "We also recommend"
-msgstr "Aggiungi un commento"
+msgstr ""
 
 #: [apps]computer
 msgid "Apps for your computer"
@@ -1227,24 +1233,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "Cerchi la documentazione ?"
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Leggi il wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Contattarci tramite email ?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Unisciti alla Mailing List"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Credenziali dell' amministratore."
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Chattare con il team?"
 
 #: [chatroom]button
@@ -1358,14 +1354,6 @@ msgstr "L'autenticazione XMPP è fallita"
 #: [form]username
 msgid "My address"
 msgstr "Il mio indirizzo"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr "Crearne uno!"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "Non hai un account ?"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -1636,7 +1624,8 @@ msgid "Tags"
 msgstr "Etichette"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+#, fuzzy
+msgid "Please enter a valid URL"
 msgstr "Inserisci un URL valido"
 
 #: [publish]no_content_preview
@@ -1943,22 +1932,6 @@ msgstr "Il tuo profilo è ora pubblico"
 msgid "Your profile is now restricted"
 msgstr "Il tuo profilo ha ora restrizioni"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Account"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Account Yahoo"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr "Vai alla pagina del mio profilo"
@@ -1998,6 +1971,27 @@ msgstr "Le Comunità, i feed delle novità ed il profilo sono stati disabilitati
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
 msgstr "Per favore, contatta l'amministratore del tuo server per sapere se questa funzione può essere abilitata."
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+msgid "failed"
+msgstr ""
+
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "Connessione"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2043,10 +2037,6 @@ msgstr "Foto profilo"
 msgid "Chats"
 msgstr "Conversazioni"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Gruppi pubblici"
-
 #: [page]post
 msgid "Post"
 msgstr "Post"
@@ -2078,10 +2068,6 @@ msgstr "Galleria"
 #: [page]visio
 msgid "Visio-conference"
 msgstr "Videoconferenza"
-
-#: [page]pods
-msgid "Pods"
-msgstr "Pod"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2241,6 +2227,10 @@ msgstr "Non adesso"
 msgid "Enable"
 msgstr "Attiva"
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr "Giorno"
@@ -2273,23 +2263,6 @@ msgstr "Sabato"
 msgid "Sunday"
 msgstr "Domenica"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Nessuno"
-
-#: [gender]male
-msgid "Male"
-msgstr "Maschio"
-
-#: [gender]female
-msgid "Female"
-msgstr "Femmina"
-
-#: [gender]other
-msgid "Other"
-msgstr "Altro"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Bot"
@@ -2309,59 +2282,6 @@ msgstr "Web"
 #: [client]registered
 msgid "Registered"
 msgstr "Registrato"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "Nessuno"
-
-#: [marital]single
-msgid "Single"
-msgstr "Single"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "Impegnato in una relazione"
-
-#: [marital]married
-msgid "Married"
-msgstr "Sposato/a"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Divorziato/a"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Vedovo/a"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Coabito"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Unione Civile"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Non condiviso"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Condiviso con un contatto"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Condiviso con tutti i contatti"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Condiviso con la rete XMPP"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Condiviso con tutti"
 
 #: [presence]online
 msgid "Online"
@@ -2799,10 +2719,6 @@ msgstr "giorno"
 msgid "Title"
 msgstr "Titolo"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Cosa c'è di nuovo?"
-
 #: [post]place
 msgid "Place"
 msgstr "Luogo"
@@ -2827,14 +2743,6 @@ msgstr "Nessun contenuto"
 msgid "No comments yet"
 msgstr "Ancora nessun commento"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr "Nessun flusso di commenti"
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Il tuo feed non può essere caricato"
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Carica i post più vecchi"
@@ -2846,14 +2754,6 @@ msgstr "%s nuovi elementi"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Errore nella pubblicazione del commento"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Mostra i commenti più recenti"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Caricamento dei commenti"
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2870,10 +2770,6 @@ msgstr "Condividi con"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Tutti"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "I tuoi contatti"
 
 #: [post]updated
 msgid "Updated"
@@ -2903,8 +2799,55 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 msgid "Type here"
 msgstr "Digita qui"
 
-#~ msgid "User folder size limit (in bytes)"
-#~ msgstr "Limite raggiunto per la cartella dell'utente (in bytes)"
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "A cosa si riferiscono i piccoli banner?"
 
-#~ msgid "Change the default credentials admin/password"
-#~ msgstr "Modifica le credenziali admin/password di default"
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Grazie a questi cinque piccoli banner, puoi facilmente identificare il livello di confidenzialità applicato alle informazioni che pubblichi"
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Bianco, solo tu puoi vedere l'informazione"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Verde, hai scelto alcuni contatti che possono vedere la tua informazione"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Arancione, tutti i tuoi contatti possono vedere la tua informazione"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Rosso, tutti nella rete XMPP possono vedere la tua informazione"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Nero, tutto il web può vedere la tua informazione"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s gruppi su questo server"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Leggi il wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Contattarci tramite email ?"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Unisciti alla Mailing List"
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "Configurazione WebSocket"
+
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "Inserisci un WebSocket URI valido nel form"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "WebSocket URI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "Se cambi l'URI, riavvia il deamon per ricaricare la configurazione"
+
+#~ msgid "Public WebSockets"
+#~ msgstr "Public WebSockets"
+
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "Cerchi la documentazione ?"

@@ -23,75 +23,14 @@ Storage.prototype.getObject = function(key) {
 
 var MovimUtils = {
     cleanupId: function(string) {
-        return "id-" + string.replace(/([^a-z0-9]+)/gi, '-').toLowerCase();
-    },
-    base64Decode: function(data) {
-        //  discuss at: http://phpjs.org/functions/base64_decode/
-        // original by: Tyler Akins (http://rumkin.com)
-        // improved by: Thunder.m
-        // improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-        // improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-        //    input by: Aman Gupta
-        //    input by: Brett Zamir (http://brett-zamir.me)
-        // bugfixed by: Onno Marsman
-        // bugfixed by: Pellentesque Malesuada
-        // bugfixed by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-        //   example 1: base64_decode('S2V2aW4gdmFuIFpvbm5ldmVsZA==');
-        //   returns 1: 'Kevin van Zonneveld'
-        //   example 2: base64_decode('YQ===');
-        //   returns 2: 'a'
-
-        var b64 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-        var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
-            ac = 0,
-            dec = '',
-            tmp_arr = [];
-
-        if (!data) {
-            return data;
-        }
-
-        data += '';
-
-        do { // unpack four hexets into three octets using index points in b64
-            h1 = b64.indexOf(data.charAt(i++));
-            h2 = b64.indexOf(data.charAt(i++));
-            h3 = b64.indexOf(data.charAt(i++));
-            h4 = b64.indexOf(data.charAt(i++));
-
-            bits = h1 << 18 | h2 << 12 | h3 << 6 | h4;
-
-            o1 = bits >> 16 & 0xff;
-            o2 = bits >> 8 & 0xff;
-            o3 = bits & 0xff;
-
-            if (h3 == 64) {
-                tmp_arr[ac++] = String.fromCharCode(o1);
-            } else if (h4 == 64) {
-                tmp_arr[ac++] = String.fromCharCode(o1, o2);
-            } else {
-                tmp_arr[ac++] = String.fromCharCode(o1, o2, o3);
-            }
-        } while (i < data.length);
-
-        dec = tmp_arr.join('');
-
-        return dec.replace(/\0+$/, '');
-    },
-    buttonReset: function(element) {
-        var elt = document.querySelector(element);
-        elt.className = elt.dataset.oldclassname;
-    },
-    buttonSave: function(element) {
-        var elt = document.querySelector(element);
-        elt.dataset.oldclassname = elt.className;
+        return 'id-' + string.replace(/([^a-z0-9]+)/gi, '-').toLowerCase();
     },
     checkString: function(str) {
         if (typeof str == 'object') {
             return str instanceof String;
-        } else {
-            return typeof str == 'string';
         }
+
+        return typeof str == 'string';
     },
     disconnect: function() {
         window.location.replace(ERROR_URI);
@@ -132,58 +71,33 @@ var MovimUtils = {
         return json;
     },
     getNode: function(str) {
-        if(MovimUtils.checkString(str))
+        if(MovimUtils.checkString(str)) {
             return document.querySelector(str);
-        else
-            return str;
+        }
+
+        return str;
     },
     hasClass: function(element, classname) {
         var node = element;
-        if(typeof node == "string")
+        if(typeof node == 'string')
             node = MovimUtils.getNode(node);
         if(!node) return false;
         return node.classList.contains(classname);
     },
     showElement: function(element) {
-        if(!MovimUtils.hasClass(element, "show"))
-            MovimUtils.addClass(element, "show");
-        if(MovimUtils.hasClass(element, "hide"))
-            MovimUtils.removeClass(element, "hide");
+        if(!MovimUtils.hasClass(element, 'show'))
+            MovimUtils.addClass(element, 'show');
+        if(MovimUtils.hasClass(element, 'hide'))
+            MovimUtils.removeClass(element, 'hide');
     },
     hideElement: function(element) {
-        if(!MovimUtils.hasClass(element, "hide"))
-            MovimUtils.addClass(element, "hide");
-        if(MovimUtils.hasClass(element, "show"))
-            MovimUtils.removeClass(element, "show");
-    },
-    parseForm: function(formname) {
-        var form = document.forms[formname];
-        if(!form)
-            return false;
-
-        var data = H();
-        for(var i = 0; i < form.elements.length; i++) {
-            if(form.elements[i].type == 'checkbox') {
-                data.set(
-                    form.elements[i].name,
-                    form.elements[i].checked
-                );
-            } else if(form.elements[i].type == 'radio' && form.elements[i].checked ) {
-                data.set(
-                    form.elements[i].name,
-                    form.elements[i].value
-                );
-            } else if(form.elements[i].type != 'radio'){
-                data.set(
-                    form.elements[i].name,
-                    form.elements[i].value
-                );
-            }
-        }
-        return data;
+        if(!MovimUtils.hasClass(element, 'hide'))
+            MovimUtils.addClass(element, 'hide');
+        if(MovimUtils.hasClass(element, 'show'))
+            MovimUtils.removeClass(element, 'show');
     },
     pushState: function(url) {
-        window.history.pushState(null, "", url);
+        window.history.pushState(null, '', url);
     },
     redirect: function(url) {
         window.location.href = url;
@@ -206,19 +120,6 @@ var MovimUtils = {
             element.classList.remove(classname);
         }
     },
-    removeClassInList: function(myclass, list) {
-        for(i = 0; i < list.length; i++) {
-            MovimUtils.removeClass(list[i], myclass);
-        }
-    },
-    htmlEscape: function(string) {
-        return String(string)
-                .replace(/&/g, '&amp;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;');
-    },
     textareaAutoheight: function(textbox) {
         if(textbox != null) {
             var val = MovimUtils.htmlEscape(textbox.value).replace(/\n/g, '<br>');
@@ -232,55 +133,40 @@ var MovimUtils = {
             hidden.style.width = textboxStyle.width;
             hidden.style.fontSize = textboxStyle.fontSize;
 
-            textbox.style.height = hidden.scrollHeight + "px";
+            textbox.style.height = hidden.scrollHeight + 'px';
         }
     },
-    toggleClass: function(element, classname) {
-        if(MovimUtils.hasClass(element, classname))
-            MovimUtils.removeClass(element,classname);
-        else
-            MovimUtils.addClass(element, classname);
-    },
-    toggleDisplay: function(element) {
-        var node = MovimUtils.getNode(element);
-
-        if(node != null) {
-            if(node.style.display == 'block')
-                MovimUtils.hideElement(node);
-            else
-                MovimUtils.showElement(node);
-        }
+    htmlEscape: function(string) {
+        return String(string)
+                .replace(/&/g, '&amp;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
     },
     enhanceArticlesContent: function() {
-        var items = document.querySelectorAll('article section content video');
+        document.querySelectorAll('article section content video')
+            .forEach(item => item.setAttribute('controls', 'controls'));
 
-        var i = 0;
-        while(i < items.length)
-        {
-            items[i].setAttribute('controls', 'controls');
-            i++;
-        }
+        document.querySelectorAll('article section content a:not(.innertag)')
+            .forEach(link => link.setAttribute('target', '_blank'));
 
-        var links = document.querySelectorAll('article section content a:not(.innertag)');
-
-        var i = 0;
-        while(i < links.length)
-        {
-            links[i].setAttribute('target', '_blank');
-            i++;
-        }
+        document.querySelectorAll('article section content img')
+            .forEach(img => {
+                if(img.parentNode.localName != 'a') {
+                    img.classList.add('active');
+                    img.addEventListener('click', e => Preview_ajaxShow(img.src))
+                }
+            });
     },
     urlParts : function() {
         var str = window.location.search.split('/');
         var page = str[0].substr(1);
         str.shift();
 
-        var str = str.map(function(param) {
-            return decodeURIComponent(param);
-        });
+        var str = str.map(param => decodeURIComponent(param));
 
-        var parts = {'page': page, 'params': str, 'hash': window.location.hash.substr(1)};
-        return parts;
+        return {'page': page, 'params': str, 'hash': window.location.hash.substr(1)};
     },
     getOrientation : function(file, callback) {
         var reader = new FileReader();

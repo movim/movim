@@ -8,8 +8,7 @@ class PrivacyDAO extends SQL
     {
         $this->_sql = '
             select * from privacy
-            where
-                pkey = :pkey';
+            where pkey = :pkey';
 
         $this->prepare(
             'Privacy',

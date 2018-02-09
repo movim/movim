@@ -41,6 +41,8 @@ class ContactActions extends \Movim\Widget\Base
             $tpl->assign('contactr', $cr);
             $tpl->assign('caps', $cr->getCaps());
             $tpl->assign('clienttype', getClientTypes());
+        } else {
+            $tpl->assign('caps', null);
         }
 
         $c  = $cd->get($jid);
@@ -73,11 +75,6 @@ class ContactActions extends \Movim\Widget\Base
     private function validateJid($jid)
     {
         $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        if(!$validate_jid->validate($jid)) return false;
-        else return true;
-    }
-
-    function display()
-    {
+        return ($validate_jid->validate($jid));
     }
 }

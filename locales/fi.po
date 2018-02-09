@@ -34,6 +34,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -96,13 +98,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
-"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
 "Language: fi\n"
@@ -110,7 +114,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -194,9 +198,8 @@ msgid "Leave this instance"
 msgstr ""
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr "Olet poistamassa XMPP-tiliäsi ja kaikkea siihen liittyvää tietoa (profiili, kontaktit ja julkaisut)."
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
@@ -254,7 +257,7 @@ msgstr "Modl ei pystynyt yhdistämään tietokantaan"
 msgid "Movim is connected to the database"
 msgstr "Movim on yhdistetty tietokantaan"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "Tietokanta pitää päivittää"
 
@@ -302,24 +305,12 @@ msgstr ""
 msgid "Server Timezone"
 msgstr "Palvelimen aikavyöhyke"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
 msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr ""
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr ""
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr ""
-
-#: [websocket]publics
-msgid "Public WebSockets"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
 msgstr ""
 
 #: [credentials]title
@@ -351,7 +342,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr ""
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr ""
 
@@ -384,6 +375,10 @@ msgstr ""
 msgid "Main XMPP server country"
 msgstr ""
 
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr "Tyhjä"
@@ -414,10 +409,6 @@ msgstr "Vaadittu: 5.3.0"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr ""
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
 msgstr ""
 
 #: [compatibility]websocket
@@ -520,25 +511,26 @@ msgstr "Tämä sisältö on yksityistä, kirjaudu sisään nähdäksesi"
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Ryhmät"
 
 #: [chatroom]add
+#, fuzzy
 msgid "Add a new Chat Room"
-msgstr ""
+msgstr "Lisää keskusteluhuone"
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
 msgstr "Keskusteluhuoneen ID"
 
 #: [chatroom]name
+#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Nimimerkki"
 
@@ -563,8 +555,9 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
+#, fuzzy
 msgid "Configure"
-msgstr ""
+msgstr "Asetukset"
 
 #: [url]add
 msgid "Add a new URL"
@@ -575,13 +568,18 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
+#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #: [message]published
 msgid "Message Published"
 msgstr "Viesti julkaistu"
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -649,6 +647,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -729,37 +731,32 @@ msgid "This server doesn't exists"
 msgstr ""
 
 #: [communitiesserver]created
-#, fuzzy
 msgid "Community created successfully"
-msgstr "Ryhmän luonti onnistui"
+msgstr ""
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
 msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "Luo uusi tili"
+msgstr ""
 
 #: [communitiesserver]name
-#, fuzzy
 msgid "Community name"
-msgstr "Tyhä nimi"
+msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony -faniryhmä"
 
 #: [communitiesserver]name_error
-#, fuzzy
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "Anna toimiva salasana (vähintään 6 merkkiä)"
+msgstr ""
 
 #: [communitiesserver]no_creation
-#, fuzzy
 msgid "You cannot create a new community on this server"
-msgstr "Palvelimelta ei löytynyt tilin luontikaavaketta"
+msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
@@ -767,19 +764,16 @@ msgid "Subscriptions"
 msgstr ""
 
 #: [communityaffiliation]deleted
-#, fuzzy
 msgid "Community deleted successfully"
-msgstr "Ryhmän poisto onnistui"
+msgstr ""
 
 #: [communityaffiliation]delete_title
-#, fuzzy
 msgid "Delete the community"
-msgstr "Poista tämä ryhmä"
+msgstr ""
 
 #: [communityaffiliation]delete_text
-#, fuzzy
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "Varmista ryhmän poistaminen"
+msgstr ""
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
@@ -798,6 +792,7 @@ msgid "Publisher"
 msgstr ""
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr ""
 
@@ -809,6 +804,30 @@ msgstr ""
 msgid "Role correctly set"
 msgstr ""
 
+#: [communityconfig]publication
+msgid "Publication"
+msgstr ""
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+msgid "Subscribers"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr ""
@@ -816,6 +835,10 @@ msgstr ""
 #: [communitydata]num [groups]num
 msgid "%s posts"
 msgstr "%s julkaisua"
+
+#: [communitydata]public
+msgid "Public page"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -860,10 +883,6 @@ msgstr ""
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "Oletko varma?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr ""
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -927,6 +946,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1081,6 +1108,18 @@ msgstr ""
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr ""
 
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr ""
@@ -1169,36 +1208,8 @@ msgstr ""
 msgid "Frequently Asked Questions"
 msgstr "Usein kysytyt kysymykset"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Mitä nämä pienet bannerit ovat?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Kiitos näiden viiden pienen bannerin, näet yksityisyyden tason jakamallesi tiedolle."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Valkoinen, vain sinä voit tähdä tämän"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Vihreä, olet valinnut joitakin kontakteja jotka voivat nähdä tämän"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Oranssi, kaikki jotka ovat kontaktilistallasi voivat nähdä tämän"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Punainen, vain ne jotka ovat XMPP verkossa voivat nähdä tämän"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Musta, avoinna kaikille internet käyttäjille"
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1210,9 +1221,8 @@ msgid "Try out our official Android app"
 msgstr ""
 
 #: [apps]recommend
-#, fuzzy
 msgid "We also recommend"
-msgstr "Lisää kommentti"
+msgstr ""
 
 #: [apps]computer
 msgid "Apps for your computer"
@@ -1222,25 +1232,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr ""
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr ""
-
-#: [ml]button
-msgid "Join the Mailing List"
+#: [contact]title
+msgid "Administrators & Contact"
 msgstr ""
 
 #: [chatroom]question
-msgid "Chat with the team ?"
-msgstr ""
+#, fuzzy
+msgid "Chat with the Movim team?"
+msgstr "Keskustele kontaktin kanssa"
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1354,14 +1353,6 @@ msgstr "XMPP autentikointi epäonnistui"
 msgid "My address"
 msgstr "Oma osoite"
 
-#: [form]create_one
-msgid "Create one !"
-msgstr "Luo uusi!"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "Ei tiliä vielä?"
-
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
 msgstr ""
@@ -1415,9 +1406,8 @@ msgid "Contacts"
 msgstr "Kontaktit"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "Luo uusi tili"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1524,9 +1514,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "Varmista julkaisun poistaminen"
 
 #: [post]delete_comment
-#, fuzzy
 msgid "Are you sure that you want to delete this comment?"
-msgstr "Oletko varma että haluat poistaa sen?"
+msgstr ""
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1633,7 +1622,8 @@ msgid "Tags"
 msgstr "Tagit"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+#, fuzzy
+msgid "Please enter a valid URL"
 msgstr "Anna toimiva osoite"
 
 #: [publish]no_content_preview
@@ -1673,19 +1663,16 @@ msgid "Add some text"
 msgstr "Lisää tekstiä"
 
 #: [publishbrief]placeholder
-#, fuzzy
 msgid "What's new?"
-msgstr "Mitä uutta?"
+msgstr ""
 
 #: [publishbrief]post
-#, fuzzy
 msgid "Write a post"
-msgstr "Muokkaa julkaisua"
+msgstr ""
 
 #: [publishbrief]add_link
-#, fuzzy
 msgid "Add a link"
-msgstr "Lisää kommentti"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1756,18 +1743,16 @@ msgid "Your nickname"
 msgstr "Nimimerkkisi"
 
 #: [room]invite
-#, fuzzy
 msgid "Invite a contact"
-msgstr "Etsi kontaktia"
+msgstr ""
 
 #: [room]invited
 msgid "Invitation sent"
 msgstr ""
 
 #: [room]invite_code
-#, fuzzy
 msgid "Send this link to your contacts"
-msgstr "Etsi kontakteistasi"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1945,22 +1930,6 @@ msgstr "Profiilisi on nyt julkinen"
 msgid "Your profile is now restricted"
 msgstr "Profiilisi on nyt rajattu"
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr "Tili"
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr "Twitter"
-
-#: [accounts]skype
-msgid "Skype"
-msgstr "Skype"
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr "Yahoo!"
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -2000,6 +1969,27 @@ msgstr ""
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
 msgstr ""
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+msgid "failed"
+msgstr ""
+
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "Yhdistetään"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2045,10 +2035,6 @@ msgstr "Avatar"
 msgid "Chats"
 msgstr "Keskustelut"
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr "Julkiset ryhmät"
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2080,10 +2066,6 @@ msgstr "Galleria"
 #: [page]visio
 msgid "Visio-conference"
 msgstr ""
-
-#: [page]pods
-msgid "Pods"
-msgstr "Podit"
 
 #: [page]share
 msgctxt "[page]share"
@@ -2243,6 +2225,10 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr "Päivä"
@@ -2275,23 +2261,6 @@ msgstr "Launtai"
 msgid "Sunday"
 msgstr "Sunnuntai"
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr "Ei mitään"
-
-#: [gender]male
-msgid "Male"
-msgstr "Mies"
-
-#: [gender]female
-msgid "Female"
-msgstr "Nainen"
-
-#: [gender]other
-msgid "Other"
-msgstr "Muu"
-
 #: [client]bot
 msgid "Bot"
 msgstr "Botti"
@@ -2311,59 +2280,6 @@ msgstr "Netti"
 #: [client]registered
 msgid "Registered"
 msgstr "Rekisteröity"
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr "Ei mitään"
-
-#: [marital]single
-msgid "Single"
-msgstr "Sinkku"
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr "Parisuhteessa"
-
-#: [marital]married
-msgid "Married"
-msgstr "Naimisissa"
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr "Eronnut"
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr "Leski"
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr "Avoliitossa"
-
-#: [marital]union
-msgid "Civil Union"
-msgstr "Rekisteröity parisuhde"
-
-#: [flag]white
-msgid "Not shared"
-msgstr "Ei jaettu"
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr "Jaettu yhden kontaktin kanssa"
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr "Jaettu kaikkien kontaktien kanssa"
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr "Jaettu XMPP-verkoston kanssa"
-
-#: [flag]black
-msgid "Shared with the whole Internet"
-msgstr "Jaettu koko internetin kanssa"
 
 #: [presence]online
 msgid "Online"
@@ -2801,10 +2717,6 @@ msgstr "päivä"
 msgid "Title"
 msgstr "Otsikko"
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr "Mitä uutta?"
-
 #: [post]place
 msgid "Place"
 msgstr "Paikka"
@@ -2829,14 +2741,6 @@ msgstr "Ei sisältöä"
 msgid "No comments yet"
 msgstr "Ei kommentteja vielä"
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr "Syötettäsi ei voitu ladata"
-
 #: [post]older
 msgid "Get older posts"
 msgstr "Hae vanhat postaukset"
@@ -2848,14 +2752,6 @@ msgstr "%s uutta julkaisua"
 #: [post]comment_error
 msgid "Comment publication error"
 msgstr "Virhe kommentin julkaisussa"
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr "Näytä vanhemmat kommentit"
-
-#: [post]comments_loading
-msgid "Loading comments..."
-msgstr "Ladataan kommentteja..."
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2872,10 +2768,6 @@ msgstr "Kenen kanssa jaetaan?"
 #: [post]share_everyone
 msgid "Everyone"
 msgstr "Kaikki"
-
-#: [post]share_your_contacts
-msgid "Your contacts"
-msgstr "Kontaktisi"
 
 #: [post]updated
 msgid "Updated"
@@ -2905,29 +2797,24 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 msgid "Type here"
 msgstr "Kirjoita tähän"
 
-#~ msgid "Discuss with your contacts"
-#~ msgstr "Keskustele kontaktiesi kanssa"
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Mitä nämä pienet bannerit ovat?"
 
-#~ msgid "Delete my account"
-#~ msgstr "Poista tili"
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Kiitos näiden viiden pienen bannerin, näet yksityisyyden tason jakamallesi tiedolle."
 
-#~ msgid "Install the php5-curl library"
-#~ msgstr "Asenna php5-curl kirjasto"
+#~ msgid "White, only you can see the information"
+#~ msgstr "Valkoinen, vain sinä voit tähdä tämän"
 
-#~ msgid "Install the php5-imagick library"
-#~ msgstr "Asenna php5-imagick kirjasto"
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Vihreä, olet valinnut joitakin kontakteja jotka voivat nähdä tämän"
 
-#~ msgid "Install the php5-gd library"
-#~ msgstr "Asenna php5-gd kirjasto"
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Oranssi, kaikki jotka ovat kontaktilistallasi voivat nähdä tämän"
 
-#~ msgid "Another account"
-#~ msgstr "Toinen tili"
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Punainen, vain ne jotka ovat XMPP verkossa voivat nähdä tämän"
 
-#~ msgid "Add a post"
-#~ msgstr "Lisää julkaisu"
-
-#~ msgid "Your status here !"
-#~ msgstr "Tilasi tähän!"
-
-#~ msgid "This picture will be added to your gallery"
-#~ msgstr "Tämä kuva lisätään galleriaasi"
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Musta, avoinna kaikille internet käyttäjille"

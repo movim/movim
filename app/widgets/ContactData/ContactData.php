@@ -20,8 +20,6 @@ class ContactData extends \Movim\Widget\Base
 
     public function prepareData($jid)
     {
-        $view = $this->tpl();
-
         $id = new \Modl\InfoDAO;
         $cd = new \Modl\ContactDAO;
         $md = new \Modl\MessageDAO;
@@ -35,11 +33,13 @@ class ContactData extends \Movim\Widget\Base
             $view->assign('message', $m[0]);
         }
 
+        $subscriptions = $id->getSharedItems($jid);
+
         $view->assign('mood', getMood());
         $view->assign('clienttype', getClientTypes());
         $view->assign('contact', $cd->get($jid));
         $view->assign('contactr', $contactr);
-        $view->assign('subscriptions', $id->getSharedItems($jid));
+        $view->assign('subscriptions', $subscriptions ? $subscriptions : []);
 
         if(isset($contactr)) {
             if($contactr->value != null) {
@@ -92,8 +92,7 @@ class ContactData extends \Movim\Widget\Base
     private function validateJid($jid)
     {
         $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        if(!$validate_jid->validate($jid)) return false;
-        else return true;
+        return ($validate_jid->validate($jid));
     }
 
     public function display()

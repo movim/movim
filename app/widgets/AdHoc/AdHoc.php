@@ -129,13 +129,8 @@ class AdHoc extends \Movim\Widget\Base
 
         if(array_key_exists($command, $icons)) {
             return $icons[$command];
-        } else {
-            return 'zmdi-chevron-right';
         }
-    }
 
-    function display()
-    {
-
+        return 'zmdi-chevron-right';
     }
 }

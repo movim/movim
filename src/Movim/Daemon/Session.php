@@ -12,20 +12,24 @@ class Session
     protected   $sid;
     protected   $baseuri;
     public      $process;
+    public      $pullSocket;
+    public      $pushSocket;
 
     public      $registered;
     public      $started;
 
-    protected   $buffer;
     private     $state;
 
     private     $verbose;
     private     $debug;
 
+    private     $context;
+
     private     $language;
     private     $offset;
 
-    public function __construct($loop, $sid, $baseuri, $language = false, $offset = 0, $verbose = false, $debug = false)
+    public function __construct($loop, $sid, $context, $baseuri,
+        $language = false, $offset = 0, $verbose = false, $debug = false)
     {
         $this->sid     = $sid;
         $this->baseuri = $baseuri;
@@ -36,7 +40,7 @@ class Session
         $this->debug = $debug;
 
         $this->clients = new \SplObjectStorage;
-        $this->register($loop, $this);
+        $this->register($loop, $this, $context);
 
         $this->timestamp = time();
     }
@@ -45,11 +49,11 @@ class Session
     {
         $this->clients->attach($conn);
 
-        if($this->verbose) {
+        if ($this->verbose) {
             echo colorize($this->sid, 'yellow'). " : ".colorize($conn->resourceId." connected\n", 'green');
         }
 
-        if($this->countClients() > 0) {
+        if ($this->countClients() > 0) {
             $this->stateOut('up');
         }
     }
@@ -58,13 +62,13 @@ class Session
     {
         $this->clients->detach($conn);
 
-        if($this->verbose) {
+        if ($this->verbose) {
             echo colorize($this->sid, 'yellow'). " : ".colorize($conn->resourceId." deconnected\n", 'red');
         }
 
-        if($this->countClients() == 0) {
+        if ($this->countClients() == 0) {
             $loop->addPeriodicTimer(20, function($timer) {
-                if($this->countClients() == 0) {
+                if ($this->countClients() == 0) {
                     $this->stateOut('down');
                 }
                 $timer->cancel();
@@ -77,9 +81,20 @@ class Session
         return $this->clients->count();
     }
 
-    private function register($loop, $me)
+    private function register($loop, $me, $context)
     {
-        $buffer = '';
+        $file = CACHE_PATH . 'movim_feeds_' . $this->sid . '.ipc';
+
+        $this->pullSocket = $context->getSocket(\ZMQ::SOCKET_PULL);
+        $this->pushSocket = $context->getSocket(\ZMQ::SOCKET_PUSH);
+
+        // Communication sockets with the linker
+        $this->pullSocket->bind('ipc://' . $file . '_pull', true);
+        $this->pushSocket->bind('ipc://' . $file . '_push', true);
+
+        $this->pullSocket->on('message', function($msg) use ($me) {
+            $me->messageOut($msg);
+        });
 
         // Launching the linker
         $this->process = new \React\ChildProcess\Process(
@@ -94,42 +109,32 @@ class Session
                                 'debug'     => $this->debug
                             ]
                         );
-
         $this->process->start($loop);
 
-        // Buffering the incoming data and fire it once its complete
-        $this->process->stdout->on('data', function($output) use ($me, &$buffer) {
-            if(substr($output, -1) == "") {
-                $out = $buffer . substr($output, 0, -1);
-                $buffer = '';
-                $me->messageOut($out);
-            } else {
-                $buffer .= $output;
-            }
-        });
-
         // The linker died, we close properly the session
-        $this->process->on('exit', function($output) use ($me) {
-            if($me->verbose) {
+        $this->process->on('exit', function($output) use ($file) {
+            if ($this->verbose) {
                 echo colorize($this->sid, 'yellow'). " : ".colorize("linker killed \n", 'red');
             }
 
-            $me->process = null;
-            $me->closeAll();
+            $this->process = null;
+            $this->closeAll();
 
-            $pd = new \Modl\PresenceDAO;
-            $pd->clearPresence();
+            $this->pullSocket->unbind('ipc://' . $file . '_pull');
+            $this->pushSocket->unbind('ipc://' . $file . '_push');
+            $this->pullSocket->close();
+            $this->pushSocket->close();
 
-            $sd = new \Modl\SessionxDAO;
-            $sd->delete($this->sid);
+            (new \Modl\PresenceDAO)->clearPresence();
+            (new \Modl\SessionxDAO)->delete($this->sid);
         });
 
         $self = $this;
 
-        $this->process->stderr->on('data', function($output) use ($me, $self) {
-            if(strpos($output, 'registered') !== false) {
+        $this->process->stderr->on('data', function($output) use ($self) {
+            if (strpos($output, 'registered') !== false) {
                 $self->registered = true;
-            } elseif(strpos($output, 'started') !== false) {
+            } elseif (strpos($output, 'started') !== false) {
                 $self->started = true;
             } else {
                 echo $output;
@@ -139,7 +144,7 @@ class Session
 
     public function killLinker()
     {
-        if(isset($this->process)) {
+        if (isset($this->process)) {
             $this->process->terminate();
             $this->process = null;
         }
@@ -154,23 +159,21 @@ class Session
 
     public function stateOut($state)
     {
-        if($this->state == $state) return;
+        if ($this->state == $state) return;
 
-        if(isset($this->process)) {
+        if (isset($this->process)) {
             $this->state = $state;
             $msg = new \stdClass;
             $msg->func = $this->state;
             $msg = json_encode($msg);
-            $this->process->stdin->write($msg."");
+            $this->pushSocket->send($msg);
         }
     }
 
     public function messageIn($msg)
     {
         $this->timestamp = time();
-        if(isset($this->process)) {
-            $this->process->stdin->write($msg."");
-        }
+        $this->pushSocket->send($msg);
         unset($msg);
     }
 

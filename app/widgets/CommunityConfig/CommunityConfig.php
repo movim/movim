@@ -15,16 +15,17 @@ class CommunityConfig extends \Movim\Widget\Base
 
     function onConfig($packet)
     {
-        list($config, $origin, $node) = array_values($packet->content);
+        list($config, $origin, $node, $advanced) = array_values($packet->content);
 
         $view = $this->tpl();
 
-        $xml = new \XMPPtoForm();
+        $xml = new \XMPPtoForm;
         $form = $xml->getHTML($config->x->asXML());
 
         $view->assign('form', $form);
         $view->assign('server', $origin);
         $view->assign('node', $node);
+        $view->assign('config', ($advanced) ? false : $xml->getArray($config->x));
         $view->assign('attributes', $config->attributes());
 
         Dialog::fill($view->draw('_communityconfig', true), true);
@@ -35,14 +36,19 @@ class CommunityConfig extends \Movim\Widget\Base
         Notification::append(false, $this->__('communityaffiliation.config_saved'));
     }
 
-    function ajaxGetConfig($origin, $node)
+    function ajaxGetConfig($origin, $node, $advanced = false)
     {
         if(!$this->validateServerNode($origin, $node)) return;
 
         $r = new GetConfig;
         $r->setTo($origin)
-          ->setNode($node)
-          ->request();
+          ->setNode($node);
+
+        if($advanced) {
+            $r->enableAdvanced();
+        }
+
+        $r->request();
     }
 
     function ajaxSetConfig($data, $origin, $node)
@@ -61,13 +67,7 @@ class CommunityConfig extends \Movim\Widget\Base
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if(!$validate_server->validate($origin)
-        || !$validate_node->validate($node)
-        ) return false;
-        else return true;
-    }
-
-    public function display()
-    {
+        return ($validate_server->validate($origin)
+             && $validate_node->validate($node));
     }
 }

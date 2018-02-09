@@ -34,6 +34,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -96,13 +98,15 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Vcard4/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Visio/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../locales/locales.ini
 msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-20 09:54+0200\n"
-"PO-Revision-Date: 2017-03-30 18:46+0000\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
 "Language: ca\n"
@@ -110,7 +114,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -194,9 +198,8 @@ msgid "Leave this instance"
 msgstr ""
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr "Eliminaràs el teu compte XMPP i tota la informació relacionada (perfil, contactes i publicacions)."
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
@@ -254,7 +257,7 @@ msgstr "Modl no s'ha pogut connectar a la base de dades"
 msgid "Movim is connected to the database"
 msgstr "Movim està connectat a la base de dades"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "La base de dades necessita una actualització"
 
@@ -302,24 +305,12 @@ msgstr ""
 msgid "Server Timezone"
 msgstr "Zona horaria del servidor"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "Configuració de WebSocket"
-
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "Introdueixi aquí una URI de WebSocket vàlida"
-
-#: [websocket]label
-msgid "WebSocket URI"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
 msgstr ""
 
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Si canvies la URI, reinicia el daemon per tornar a carregar la configuració siusplau"
-
-#: [websocket]publics
-msgid "Public WebSockets"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
 msgstr ""
 
 #: [credentials]title
@@ -351,7 +342,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "Missatge d'infofmació"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "Descripció"
 
@@ -382,6 +373,10 @@ msgstr ""
 
 #: [xmpp]country
 msgid "Main XMPP server country"
+msgstr ""
+
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
 msgstr ""
 
 #: [log]empty
@@ -415,10 +410,6 @@ msgstr "Necessari: 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "La base de dades necessita ser actualitzada, ves al taulell de la base de dades per arreglar-ho"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -520,25 +511,26 @@ msgstr "Aquest contingut és privat, siusplau connectat per poder veure-ho."
 msgid "Conferences"
 msgstr ""
 
-#: [title]groups [group]empty_title [page]groups
+#: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Grups"
 
 #: [chatroom]add
+#, fuzzy
 msgid "Add a new Chat Room"
-msgstr ""
+msgstr "Afegeix la sala de xat"
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
 msgstr "ID de la sala de xat"
 
 #: [chatroom]name
+#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr ""
+msgstr "Nom "
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
-#: [accounts]accounts_nickname
 msgid "Nickname"
 msgstr "Sobrenom"
 
@@ -563,8 +555,9 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
+#, fuzzy
 msgid "Configure"
-msgstr ""
+msgstr "Configuració"
 
 #: [url]add
 msgid "Add a new URL"
@@ -575,13 +568,18 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
+#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr ""
+msgstr "Nom "
 
 #: [message]published
 msgid "Message Published"
 msgstr "Missatge publicat"
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -649,6 +647,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -729,18 +731,16 @@ msgid "This server doesn't exists"
 msgstr "Aquest servidor no existeix"
 
 #: [communitiesserver]created
-#, fuzzy
 msgid "Community created successfully"
-msgstr "Grup creat correctament"
+msgstr ""
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
 msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "Crea un nou compte"
+msgstr ""
 
 #: [communitiesserver]name
 msgid "Community name"
@@ -751,14 +751,12 @@ msgid "My Little Pony - Fan Club"
 msgstr ""
 
 #: [communitiesserver]name_error
-#, fuzzy
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "Siusplau dona un nom de grup vàlid (4 caràcters mínim)"
+msgstr ""
 
 #: [communitiesserver]no_creation
-#, fuzzy
 msgid "You cannot create a new community on this server"
-msgstr "No pots crear un Grup en aquest servidor"
+msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
@@ -766,24 +764,20 @@ msgid "Subscriptions"
 msgstr "Subscripcions"
 
 #: [communityaffiliation]deleted
-#, fuzzy
 msgid "Community deleted successfully"
-msgstr "Grup esborrat correctament"
+msgstr ""
 
 #: [communityaffiliation]delete_title
-#, fuzzy
 msgid "Delete the community"
-msgstr "Esborra el grup"
+msgstr ""
 
 #: [communityaffiliation]delete_text
-#, fuzzy
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "Esborraràs el següent grup. Siusplau confirma la teva acció"
+msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Sembla que aquest grup ja no existeix. Vols esborrar-lo de les teves subscripcions?"
+msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -798,6 +792,7 @@ msgid "Publisher"
 msgstr ""
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr ""
 
@@ -809,6 +804,30 @@ msgstr ""
 msgid "Role correctly set"
 msgstr ""
 
+#: [communityconfig]publication
+msgid "Publication"
+msgstr ""
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+msgid "Subscribers"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr "%s subscriptors"
@@ -816,6 +835,10 @@ msgstr "%s subscriptors"
 #: [communitydata]num [groups]num
 msgid "%s posts"
 msgstr "%s publicacions"
+
+#: [communitydata]public
+msgid "Public page"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -860,10 +883,6 @@ msgstr ""
 #: [communityheader]sure [group]sure
 msgid "Are you sure ?"
 msgstr "N'estàs segur?"
-
-#: [communityposts]empty
-msgid "This community seems empty"
-msgstr ""
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -927,6 +946,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1081,6 +1108,18 @@ msgstr "Convida"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Aquest contacte està rn la teva llista de contactes però no hi ha cap subscripció entre els dos comptes"
 
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Cancel·laràs la teva subscripció a aquest grup"
@@ -1169,36 +1208,8 @@ msgstr "No pots crear un Grup en aquest servidor"
 msgid "Frequently Asked Questions"
 msgstr ""
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr ""
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr ""
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr ""
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr ""
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr ""
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1221,24 +1232,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr ""
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Parla amb nosaltres per correu electrònic?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr ""
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Credencial d'adiministració"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Xateja amb l'equip?"
 
 #: [chatroom]button
@@ -1353,18 +1354,9 @@ msgstr ""
 msgid "My address"
 msgstr ""
 
-#: [form]create_one
-msgid "Create one !"
-msgstr ""
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr ""
-
 #: [form]whitelist_info
-#, fuzzy
 msgid "You can login with accounts from these servers"
-msgstr "No pots crear un Grup en aquest servidor"
+msgstr ""
 
 #: [form]connected
 msgid "Connected"
@@ -1415,9 +1407,8 @@ msgid "Contacts"
 msgstr "Contactes"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "Crea un nou compte"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1524,9 +1515,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr ""
 
 #: [post]delete_comment
-#, fuzzy
 msgid "Are you sure that you want to delete this comment?"
-msgstr "Estàs segur de voler eliminar el compte?"
+msgstr ""
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1633,7 +1623,7 @@ msgid "Tags"
 msgstr ""
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+msgid "Please enter a valid URL"
 msgstr ""
 
 #: [publish]no_content_preview
@@ -1753,19 +1743,16 @@ msgid "Your nickname"
 msgstr ""
 
 #: [room]invite
-#, fuzzy
 msgid "Invite a contact"
-msgstr "Xateja amb un contacte"
+msgstr ""
 
 #: [room]invited
-#, fuzzy
 msgid "Invitation sent"
-msgstr "Credencial d'adiministració"
+msgstr ""
 
 #: [room]invite_code
-#, fuzzy
 msgid "Send this link to your contacts"
-msgstr "Busca en els teus contactes"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -1943,22 +1930,6 @@ msgstr ""
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: [accounts]accounts_title
-msgid "Accounts"
-msgstr ""
-
-#: [accounts]twitter
-msgid "Twitter"
-msgstr ""
-
-#: [accounts]skype
-msgid "Skype"
-msgstr ""
-
-#: [accounts]yahoo
-msgid "Yahoo Account"
-msgstr ""
-
 #: [privacy]my_profile
 msgid "Go to my profile page"
 msgstr ""
@@ -1997,6 +1968,26 @@ msgstr ""
 
 #: [degraded]text_3
 msgid "Please contact your server administrator to see if this feature can be enabled."
+msgstr ""
+
+#: [visio]calling
+msgid "…is calling you"
+msgstr ""
+
+#: [visio]ringing
+msgid "…ringing"
+msgstr ""
+
+#: [visio]in_call
+msgid "in call"
+msgstr ""
+
+#: [visio]failed
+msgid "failed"
+msgstr ""
+
+#: [visio]connecting
+msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
@@ -2043,10 +2034,6 @@ msgstr ""
 msgid "Chats"
 msgstr ""
 
-#: [page]public_groups
-msgid "Public Groups"
-msgstr ""
-
 #: [page]post
 msgid "Post"
 msgstr ""
@@ -2077,10 +2064,6 @@ msgstr ""
 
 #: [page]visio
 msgid "Visio-conference"
-msgstr ""
-
-#: [page]pods
-msgid "Pods"
 msgstr ""
 
 #: [page]share
@@ -2241,6 +2224,10 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr ""
@@ -2273,23 +2260,6 @@ msgstr ""
 msgid "Sunday"
 msgstr ""
 
-#: [gender]nil
-msgctxt "[gender]nil"
-msgid "None"
-msgstr ""
-
-#: [gender]male
-msgid "Male"
-msgstr ""
-
-#: [gender]female
-msgid "Female"
-msgstr ""
-
-#: [gender]other
-msgid "Other"
-msgstr ""
-
 #: [client]bot
 msgid "Bot"
 msgstr ""
@@ -2308,59 +2278,6 @@ msgstr ""
 
 #: [client]registered
 msgid "Registered"
-msgstr ""
-
-#: [marital]nil
-msgctxt "[marital]nil"
-msgid "None"
-msgstr ""
-
-#: [marital]single
-msgid "Single"
-msgstr ""
-
-#: [marital]relationship
-msgid "In a relationship"
-msgstr ""
-
-#: [marital]married
-msgid "Married"
-msgstr ""
-
-#: [marital]divorced
-msgid "Divorced"
-msgstr ""
-
-#: [marital]widowed
-msgid "Widowed"
-msgstr ""
-
-#: [marital]cohabiting
-msgid "Cohabiting"
-msgstr ""
-
-#: [marital]union
-msgid "Civil Union"
-msgstr ""
-
-#: [flag]white
-msgid "Not shared"
-msgstr ""
-
-#: [flag]green
-msgid "Shared with one contact"
-msgstr ""
-
-#: [flag]orange
-msgid "Shared with all contacts"
-msgstr ""
-
-#: [flag]red
-msgid "Shared with the XMPP network"
-msgstr ""
-
-#: [flag]black
-msgid "Shared with the whole Internet"
 msgstr ""
 
 #: [presence]online
@@ -2799,10 +2716,6 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: [post]whats_new
-msgid "What's new ?"
-msgstr ""
-
 #: [post]place
 msgid "Place"
 msgstr ""
@@ -2827,14 +2740,6 @@ msgstr ""
 msgid "No comments yet"
 msgstr ""
 
-#: [post]no_comments_stream
-msgid "No comments stream"
-msgstr ""
-
-#: [post]no_load
-msgid "Your feed cannot be loaded."
-msgstr ""
-
 #: [post]older
 msgid "Get older posts"
 msgstr ""
@@ -2845,14 +2750,6 @@ msgstr ""
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr ""
-
-#: [post]comments_older
-msgid "Show the older comments"
-msgstr ""
-
-#: [post]comments_loading
-msgid "Loading comments..."
 msgstr ""
 
 #: [post]comments_get
@@ -2869,10 +2766,6 @@ msgstr ""
 
 #: [post]share_everyone
 msgid "Everyone"
-msgstr ""
-
-#: [post]share_your_contacts
-msgid "Your contacts"
 msgstr ""
 
 #: [post]updated
@@ -2903,14 +2796,18 @@ msgstr ""
 msgid "Type here"
 msgstr ""
 
-#~ msgid "User folder size limit (in bytes)"
-#~ msgstr "Mida màxima de la carpeta d'usuari (en bytes)"
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s grups en aquest servidor"
 
-#~ msgid "Change the default credentials admin/password"
-#~ msgstr "Canvia les credencials per defecte admin/password"
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Parla amb nosaltres per correu electrònic?"
 
-#~ msgid "Delete my account"
-#~ msgstr "Esborra el meu compte"
+#~ msgid "WebSocket Configuration"
+#~ msgstr "Configuració de WebSocket"
 
-#~ msgid "Install the php5-curl library"
-#~ msgstr "Instal•la la llibreria php5-curl"
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "Introdueixi aquí una URI de WebSocket vàlida"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "Si canvies la URI, reinicia el daemon per tornar a carregar la configuració siusplau"

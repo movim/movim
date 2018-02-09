@@ -2,6 +2,9 @@ form[name=presence] ul {
     margin: 0 -2rem;
 }
 
+ul#presence_widget li span.primary {
+    opacity: 1;
+}
 
 @media screen and (min-width: 1024px) and (max-width: 1680px) {
     ul#presence_widget li span.control {

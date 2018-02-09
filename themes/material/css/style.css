@@ -144,7 +144,6 @@ main {
     position: absolute;
     right: 0;
     top: 0;
-    background-color: white;
     transition: opacity 0.3s ease-in-out;
     transform: translateZ(0);
     overflow-y: none;
@@ -173,10 +172,6 @@ main > section > div {
 main > section > div.fixed {
     height: calc(100% - 7rem);
     top: 7rem;
-}
-
-main > section > div:not(:last-child) {
-    border-right: 1px solid #DDD;
 }
 
 main > section > div > * {
@@ -208,7 +203,6 @@ main > section > div:first-child:nth-last-child(2) ~ div {
 
     main > section > aside > * {
         max-width: 45rem;
-        margin-left: 1rem;
         margin-right: auto;
     }
 
@@ -296,14 +290,13 @@ main footer {
 }
 
 .actions > div:last-child {
-    background-color: white;
     width: 100%;
     box-sizing: border-box;
     text-align: right;
     bottom: 0;
     padding: 0.5rem;
     position: absolute;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-top: 1px solid rgba(var(--movim-font), 0.12);
 }
 
 .actions > div.no_bar:last-child {
@@ -369,6 +362,7 @@ main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last
 
 hr:not(.clear) {
     border-bottom: 1px solid;
+    width: 100%;
 }
 
 /* Spin */
@@ -507,6 +501,15 @@ div#spinner{
 .show{
     display: block;
 }
+
 .hide{
     display: none;
 }
+
+/* Animations */
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+

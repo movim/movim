@@ -15,76 +15,77 @@ class ConfigCommand extends Command
             ->setName('config')
             ->setDescription('Change the configuration')
             ->addOption(
-               'info',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'Content of the info box on the login page'
+                'info',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Content of the info box on the login page'
             )
             ->addOption(
-               'username',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'Username for the admin area'
+                'username',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Username for the admin area'
             )
             ->addOption(
-               'password',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'Password for the admin area'
+                'password',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'Password for the admin area'
             )
             ->addOption(
-               'timezone',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'The server timezone'
+                'timezone',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The server timezone'
             )
             ->addOption(
-               'loglevel',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'The server loglevel, default 0'
+                'loglevel',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The server loglevel, default 0'
             )
             ->addOption(
-               'locale',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'The server main locale'
+                'locale',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The server main locale'
             )
             ->addOption(
-               'xmppdomain',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'The default XMPP server domain'
+                'xmppdomain',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The default XMPP server domain'
             )
             ->addOption(
-               'xmppdescription',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'The default XMPP server description'
+                'xmppdescription',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The default XMPP server description'
             )
             ->addOption(
-               'xmppcountry',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'The default XMPP server country'
+                'xmppcountry',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The default XMPP server country'
             )
             ->addOption(
-               'xmppwhitelist',
-               null,
-               InputOption::VALUE_REQUIRED,
-               'The whitelisted XMPP servers'
-            )
-        ;
+                'xmppwhitelist',
+                null,
+                InputOption::VALUE_REQUIRED,
+                'The whitelisted XMPP servers'
+            );
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
-        foreach($input->getOptions() as $key => $value) {
-            if(property_exists($config, $key) && isset($value)) {
-                if($key == 'password') $value = password_hash($value, PASSWORD_DEFAULT);
+        foreach ($input->getOptions() as $key => $value) {
+            if (property_exists($config, $key) && isset($value)) {
+                if ($key == 'password') {
+                    $value = password_hash($value, PASSWORD_DEFAULT);
+                }
 
                 $old = $config->$key;
                 $config->$key = $value;
@@ -96,7 +97,8 @@ class ConfigCommand extends Command
                     ' <info>has been updated from</info> '.
                     $old.
                     ' <info>to</info> '.
-                    $value);
+                    $value
+                );
             }
         }
     }

@@ -6,6 +6,7 @@ use Respect\Validation\Validator;
 
 use Movim\Picture;
 use Movim\User;
+use Movim\Route;
 
 class Message extends Model
 {
@@ -69,8 +70,6 @@ class Message extends Model
         $jid = explode('/',(string)$stanza->attributes()->from);
         $to = current(explode('/',(string)$stanza->attributes()->to));
 
-        if((string)$stanza->attributes()->type == 'headline') return;
-
         // This is not very beautiful
         $user = new User;
         $this->session    = $user->getLogin();
@@ -109,6 +108,18 @@ class Message extends Model
 
             if($stanza->body) {
                 $this->body = (string)$stanza->body;
+            }
+
+            # HipChat MUC specific cards
+            if(in_array(
+                explodeJid($this->jidfrom)['server'],
+                ['conf.hipchat.com', 'conf.btf.hipchat.com']
+            )
+            && $this->type == 'groupchat'
+            && $stanza->x
+            && $stanza->x->attributes()->xmlns == 'http://hipchat.com/protocol/muc#room'
+            && $stanza->x->card) {
+                $this->body = trim(html_entity_decode($this->body));
             }
 
             if($stanza->markable) {
@@ -176,28 +187,46 @@ class Message extends Model
             if($stanza->reference) {
                 $filetmp = [];
 
-                $file = $stanza->reference->{'media-sharing'}->file;
-                if(isset($file)) {
-                    if(preg_match('/\w+\/[-+.\w]+/', $file->{'media-type'}) == 1) {
-                        $filetmp['type'] = (string)$file->{'media-type'};
+                if($stanza->reference->{'media-sharing'}) {
+                    $file = $stanza->reference->{'media-sharing'}->file;
+                    if(isset($file)) {
+                        if(preg_match('/\w+\/[-+.\w]+/', $file->{'media-type'}) == 1) {
+                            $filetmp['type'] = (string)$file->{'media-type'};
+                        }
+                        $filetmp['size'] = (int)$file->size;
+                        $filetmp['name'] = (string)$file->name;
                     }
-                    $filetmp['size'] = (int)$file->size;
-                    $filetmp['name'] = (string)$file->name;
-                }
 
-                if($stanza->reference->{'media-sharing'}->sources) {
-                    $source = $stanza->reference->{'media-sharing'}->sources->reference;
+                    if ($stanza->reference->{'media-sharing'}->sources) {
+                        $source = $stanza->reference->{'media-sharing'}->sources->reference;
 
-                    if(!filter_var((string)$source->attributes()->uri, FILTER_VALIDATE_URL) === false) {
-                        $filetmp['uri'] = (string)$source->attributes()->uri;
+                        if (!filter_var((string)$source->attributes()->uri, FILTER_VALIDATE_URL) === false) {
+                            $filetmp['uri'] = (string)$source->attributes()->uri;
+                        }
                     }
-                }
 
-                if(array_key_exists('uri', $filetmp)
-                && array_key_exists('type', $filetmp)
-                && array_key_exists('size', $filetmp)
-                && array_key_exists('name', $filetmp)) {
-                    $this->file = $filetmp;
+                    if(array_key_exists('uri', $filetmp)
+                    && array_key_exists('type', $filetmp)
+                    && array_key_exists('size', $filetmp)
+                    && array_key_exists('name', $filetmp)) {
+                        $this->file = $filetmp;
+                    }
+                } elseif ($stanza->reference->attributes()->type == 'mention'
+                    && parse_url($stanza->reference->attributes()->uri !== false)) {
+                    $begin = '<a href="' . Route::urlize('share', $stanza->reference->attributes()->uri) . '">';
+
+                    $this->html = substr_replace(
+                        $this->body,
+                        $begin,
+                        (int)$stanza->reference->attributes()->begin,
+                        0
+                    );
+                    $this->html = substr_replace(
+                        $this->html,
+                        '</a>',
+                        (int)$stanza->reference->attributes()->end + strlen($begin),
+                        0
+                    );
                 }
             }
 
@@ -216,23 +245,6 @@ class Message extends Model
         }
     }
 
-    /*public function checkPicture()
-    {
-        $body = trim($this->body);
-
-        if(Validator::url()->notEmpty()->validate($body)) {
-            $check = new \Movim\Task\CheckSmallPicture;
-            return $check->run($body)
-                ->then(function($small) use($body) {
-                    if($small) $this->picture = $body;
-                });
-        }
-
-        return new \React\Promise\Promise(function($resolve) {
-            $resolve(true);
-        });
-    }*/
-
     public function convertEmojis()
     {
         $emoji = \MovimEmoji::getInstance();
@@ -242,7 +254,7 @@ class Message extends Model
     public function isTrusted()
     {
         $rd = new \Modl\RosterLinkDAO;
-        $from = explode('@',(string)$this->jidfrom);
+        $from = explode('@', cleanJid((string)$this->jidfrom));
         $from = explode('.', end($from));
 
         $session = explode('@',(string)$this->session);

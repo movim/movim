@@ -10,7 +10,7 @@
         </p>
     </li>
     <li>
-        <span class="primary">
+        <span class="control">
             <form>
                 <div class="control action">
                     <div class="checkbox">
@@ -57,43 +57,13 @@
         <label for="date">{$c->__('general.date_of_birth')}</label>
     </div>
 
-    <div class="block">
-        <div class="select">
-            <select name="gender">
-            {loop="$gender"}
-                <option
-                {if="$key == $me->gender"}
-                    selected
-                {/if}
-                value="{$key}">{$value}</option>
-            {/loop}
-            </select>
-        </div>
-        <label for="gender">{$c->__('general.gender')}</label>
-    </div>
-
-    <div class="block">
-        <label for="marital">{$c->__('general.marital')}</label>
-        <div class="select">
-            <select name="marital">
-            {loop="$marital"}
-                <option
-                {if="$key == $me->marital"}
-                    selected
-                {/if}
-                value="{$key}">{$value}</option>
-            {/loop}
-            </select>
-        </div>
-    </div>
-
     <div class="block large">
         <input type="url" name ="url" class="content" value="{$me->url}" placeholder="https://mywebsite.com/">
         <label for="url">{$c->__('general.website')}</label>
     </div>
 
     <div class="block large">
-        <textarea name="desc" id="desctext" class="content" onkeyup="MovimUtils.textareaAutoheight(this);">{$desc}</textarea>
+        <textarea name="desc" id="desctext" class="content" placeholder="{$c->__('general.about')}" onkeyup="MovimUtils.textareaAutoheight(this);">{$desc}</textarea>
         <label for="desc">{$c->__('general.about')}</label>
     </div>
 
@@ -120,28 +90,10 @@
         <label for="country">{$c->__('position.country')}</label>
     </div>
 
-    <h3 class="block large">{$c->__('accounts.accounts_title')}</h3>
-
-    <div class="block">
-        <input type="text" name="twitter" class="content" value="{$me->twitter}" placeholder="{$c->__('accounts.twitter')}">
-        <label for="twitter"><i class="fa fa-twitter"></i> {$c->__('accounts.twitter')}</label>
-    </div>
-
-    <div class="block">
-        <input type="text" name="skype" class="content" value="{$me->skype}" placeholder="{$c->__('accounts.skype')}">
-        <label for="skype"><i class="fa fa-skype"></i> {$c->__('accounts.skype')}</label>
-    </div>
-
-    <div class="block">
-        <input type="email" name="yahoo" class="content" value="{$me->yahoo}" placeholder="{$c->__('accounts.yahoo')}">
-        <label for="skype"><i class="fa fa-yahoo"></i> {$c->__('accounts.yahoo')}</label>
-    </div>
-
     <div class="block large">
         <button
             onclick="
                 {$submit}
-                MovimUtils.buttonSave('#vcard4validate');
                 this.value = '{$c->__('button.submitting')}';
                 this.className='button oppose inactive';"
             class="button color oppose"

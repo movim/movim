@@ -27,6 +27,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
         list($origin, $node) = array_values($packet->content);
         $this->ajaxDisco($origin);
+        $this->rpc('MovimUtils.reload', $this->route('community', [$origin, $node]));
     }
 
     function onDisco($packet)
@@ -98,7 +99,7 @@ class CommunitiesServer extends \Movim\Widget\Base
             return;
         }
 
-        $slugify = new Slugify();
+        $slugify = new Slugify;
         $uri = $slugify->slugify($form->name->value);
 
         if($uri == '') {

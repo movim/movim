@@ -26,27 +26,38 @@ class Visio extends \Movim\Widget\Base
         $s = Session::start();
         $s->set('sdp', $jts->generate());
 
-        $this->rpc('VisioLink.openVisio', $from);
-    }
+        $cd = new \Modl\ContactDAO;
+        $contact = $cd->get(cleanJid($from));
 
-    function ajaxGetSDP()
-    {
-        $s = Session::start();
-        if($s->get('sdp')) {
-            $this->rpc('Visio.onSDP', $s->get('sdp'), 'offer');
-            $s->remove('sdp');
-        }
+        $avatar = $contact->getPhoto('s');
+        if($avatar == false) $avatar = null;
+
+        Notification::append(
+            'call',
+            $contact->getTrueName(),
+            $this->__('visio.calling'),
+            $avatar,
+            25,
+            null,
+            null,
+            "VisioLink.openVisio('".$from."')"
+        );
     }
 
     function ajaxAskInit()
     {
-        $this->rpc('Visio.init');
+        $s = Session::start();
+        if($s->get('sdp')) {
+            $this->rpc('Visio.init', $s->get('sdp'), 'offer');
+            $s->remove('sdp');
+        } else {
+            $this->rpc('Visio.init');
+        }
     }
 
     function onAccept($stanza)
     {
         $jts = new JingletoSDP($stanza);
-
         $this->rpc('Visio.onSDP', $jts->generate(), 'answer');
     }
 
@@ -63,6 +74,8 @@ class Visio extends \Movim\Widget\Base
         array_push($candidates, [$sdp, $jts->name, substr($jts->name, -1, 1)]);
 
         $s->set('candidates', $candidates);
+
+        $this->rpc('Visio.onCandidate', $sdp, $jts->name, substr($jts->name, -1, 1));
     }
 
     function ajaxGetCandidates()

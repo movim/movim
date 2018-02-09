@@ -19,7 +19,10 @@ class Onboarding extends \Movim\Widget\Base
     {
         $tpl = $this->tpl();
         $this->rpc('Onboarding.setPublic');
-        Dialog::fill($tpl->draw('_onboarding_public', true));
+
+        if (!\Modl\Privacy::exists($this->user->getLogin())) {
+            Dialog::fill($tpl->draw('_onboarding_public', true));
+        }
     }
 
     public function ajaxAskPopups()
