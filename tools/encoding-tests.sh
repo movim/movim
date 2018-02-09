@@ -36,10 +36,10 @@ do
 	    is_valid=$(echo "$file" | \
 			      grep -e '*.ico' -e '*.png' -e '*.jpg' -e '*.jpeg' -e '*.gif' \
 			      | wc -l)
-	    if test $is_valid = 0
+	    if test "$is_valid" = 0
 	    then
 		file_size=$(stat --format=%s "$file")
-		if test $file_size != 0
+		if test "$file_size" != 0
 		then
 		    nb_invalid=$($cmd "$file" | \
 					grep -ivc 'ascii\|utf-8' | \
