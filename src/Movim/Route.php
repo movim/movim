@@ -25,7 +25,6 @@ class Route extends Base
                 'disconnect'    => ['err'],
                 'feed'          => ['s', 'n'],
                 'help'          => false,
-                'home'          => ['i'],
                 'infos'         => false,
                 'login'         => ['i'],
                 'main'          => false,

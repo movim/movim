@@ -39,6 +39,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -108,8 +110,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
-"PO-Revision-Date: 2017-10-23 21:34+0000\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
 "Language: nl\n"
@@ -260,7 +262,7 @@ msgstr "Modl was niet in staat om met de database te verbinden"
 msgid "Movim is connected to the database"
 msgstr "Movim is verbonden met de database"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "De database heeft een update nodig"
 
@@ -308,25 +310,13 @@ msgstr "Log verbosity"
 msgid "Server Timezone"
 msgstr "Server tijdzone"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "WebSocket Configuratie"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "Vul een geldige WebSocket URI in in het formulier"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "WebSocket URI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Als je de URI wijzigt, gelieve dan de deamon te herstarten om de configuratie te herladen"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "Publieke WebSockets"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -357,7 +347,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "Informatieve Melding"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "Beschrijving"
 
@@ -390,6 +380,10 @@ msgstr "Standaard XMPP Server beschrijving"
 msgid "Main XMPP server country"
 msgstr "Standaard XMPP Server land"
 
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr "Leeg"
@@ -421,10 +415,6 @@ msgstr "Vereist: 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Lees- en schrijfrechten voor de webserver in Movim's %s directory."
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "De database moet geüpdate worden, ga haar het databse-paneel om dit op te lossen"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -523,8 +513,9 @@ msgid "This content is private, please login to see it"
 msgstr "Deze data is privé, log in om dit te zien."
 
 #: [title]conferences
+#, fuzzy
 msgid "Conferences"
-msgstr ""
+msgstr "Visioconferentie"
 
 #: [title]groups [group]empty_title
 msgid "Groups"
@@ -587,6 +578,10 @@ msgstr "Naam"
 #: [message]published
 msgid "Message Published"
 msgstr "Bericht gepubliceerd"
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -654,6 +649,10 @@ msgstr "Verwijder geschiedenis"
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -795,6 +794,7 @@ msgid "Publisher"
 msgstr ""
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr ""
 
@@ -804,6 +804,30 @@ msgstr "Rollen"
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
+msgstr ""
+
+#: [communityconfig]publication
+msgid "Publication"
+msgstr ""
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+msgid "Subscribers"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
 msgstr ""
 
 #: [communitydata]sub [groups]sub
@@ -925,6 +949,14 @@ msgstr "Verberg NSFW niet"
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "Hiermee laat je ook berichten als #nsfw zijn aangemerkt"
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
+msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -1078,6 +1110,18 @@ msgstr "Uitnodigen"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Deze contactpersoon zit in je contactenlijst, maar deze is niet geabonneerd"
 
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Je gaat je uitschrijven uit deze Groep"
@@ -1166,36 +1210,8 @@ msgstr "Je kunt geen nieuwe groep maken op deze server"
 msgid "Frequently Asked Questions"
 msgstr "Veelgestelde vragen"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Waar verwijzen de kleine banners naar ?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Bedankt voor deze vijf kleine banners, kun je kort toelichten wat de mate van betrouwbaarheid is van de informatie die je beschikbaar stelt."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Wit, alleen jij kan deze informatie zien"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Groen, je hebt een aantal contacten gekozen die jouw gegevens kunnen zien"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Oranje, alle contactlijsten kunnen je informatie zien"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Rood, iedereen in het XMPP-netwerk kan je gegevens zien"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Zwart, iedereen op het internet kan je gegevens zien"
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1218,24 +1234,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "Op zoek naar wat documentatie?"
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Lees de Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Spreek met ons via email?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr ""
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Inloggegevens voor beheer"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Chatten met het team?"
 
 #: [chatroom]button
@@ -1349,14 +1355,6 @@ msgstr "Aanmelden bij XMPP is mislukt"
 #: [form]username
 msgid "My address"
 msgstr "Mijn adres"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr "Maak er een aan!"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "Nog geen account?"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -1627,7 +1625,8 @@ msgid "Tags"
 msgstr "Tag"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+#, fuzzy
+msgid "Please enter a valid URL"
 msgstr "Voer een geldig url in alstublieft"
 
 #: [publish]no_content_preview
@@ -1990,6 +1989,11 @@ msgstr ""
 msgid "failed"
 msgstr ""
 
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "Verbinden"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Je hebt javascript uit staan. Veel succes daarmee."
@@ -2223,6 +2227,10 @@ msgstr "Niet nu"
 #: [button]enable
 msgid "Enable"
 msgstr "Inschakelen"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2791,3 +2799,53 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Waar verwijzen de kleine banners naar ?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Bedankt voor deze vijf kleine banners, kun je kort toelichten wat de mate van betrouwbaarheid is van de informatie die je beschikbaar stelt."
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Wit, alleen jij kan deze informatie zien"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Groen, je hebt een aantal contacten gekozen die jouw gegevens kunnen zien"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Oranje, alle contactlijsten kunnen je informatie zien"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Rood, iedereen in het XMPP-netwerk kan je gegevens zien"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Zwart, iedereen op het internet kan je gegevens zien"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s groepen op deze server"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Lees de Wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Spreek met ons via email?"
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "WebSocket Configuratie"
+
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "Vul een geldige WebSocket URI in in het formulier"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "WebSocket URI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "Als je de URI wijzigt, gelieve dan de deamon te herstarten om de configuratie te herladen"
+
+#~ msgid "Public WebSockets"
+#~ msgstr "Publieke WebSockets"
+
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "Op zoek naar wat documentatie?"

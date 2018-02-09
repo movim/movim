@@ -33,6 +33,7 @@
             </div>
         <?php } elseif(empty($_GET['n'])) { ?>
             <aside>
+                <?php $this->widget('CommunitiesServerInfo'); ?>
                 <?php $this->widget('NewsNav');?>
             </aside>
             <?php $this->widget('CommunitiesServer'); ?>

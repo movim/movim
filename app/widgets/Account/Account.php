@@ -82,6 +82,7 @@ class Account extends \Movim\Widget\Base
 
     function ajaxRemoveAccount()
     {
+        $this->rpc('Presence.clearQuick');
         $view = $this->tpl();
         $view->assign('jid', $this->user->getLogin());
         Dialog::fill($view->draw('_account_remove', true));

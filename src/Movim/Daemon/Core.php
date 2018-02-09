@@ -226,7 +226,7 @@ class Core implements MessageComponentInterface
     private function getPath(ConnectionInterface $conn)
     {
         parse_str($conn->httpRequest->getUri()->getQuery(), $arr);
-        return $arr['path'] ?? false;
+        return isset($arr['path']) ? $arr['path'] : false;
     }
 
     private function getSid(ConnectionInterface $conn)

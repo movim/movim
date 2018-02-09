@@ -70,29 +70,13 @@
     <ul class="list">
         {if="!$post->isBrief()"}
         <li class="active">
-            <p>
-                <section {if="!$post->isShort()"}class="limited"{/if}>
-                    <content>
-                        {if="$post->getYoutube()"}
-                            <div class="video_embed">
-                                <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
-                            </div>
-                        {elseif="$post->isShort() && isset($attachments.pictures)"}
-                            {loop="$attachments.pictures"}
-                                {if="$value.type != 'picture'"}
-                                <a href="{$value.href}" class="alternate" target="_blank">
-                                    <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
-                                </a>
-                                {/if}
-                            {/loop}
-                        {/if}
-                        {$post->getContent()|addHashtagsLinks}
-                    </content>
-                <section>
-            </p>
-        </li>
-        {else}
-            <section>
+            {if="$nsfw == false && $post->isNSFW()"}
+                <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
+            {/if}
+            <section {if="!$post->isShort()"}class="limited"{/if}>
+                <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
+                    <i class="zmdi zmdi-eye"></i>
+                </label>
                 <content>
                     {if="$post->getYoutube()"}
                         <div class="video_embed">
@@ -101,9 +85,33 @@
                     {elseif="$post->isShort() && isset($attachments.pictures)"}
                         {loop="$attachments.pictures"}
                             {if="$value.type != 'picture'"}
-                            <a href="{$value.href}" class="alternate" target="_blank">
-                                <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
-                            </a>
+                                <img class="big_picture" type="{$value.type}"
+                                     src="{$value.href|urldecode}"/>
+                            {/if}
+                        {/loop}
+                    {/if}
+                    {$post->getContent()|addHashtagsLinks}
+                </content>
+            <section>
+        </li>
+        {else}
+            {if="$nsfw == false && $post->isNSFW()"}
+                <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
+            {/if}
+            <section>
+                <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
+                    <i class="zmdi zmdi-eye"></i>
+                </label>
+                <content>
+                    {if="$post->getYoutube()"}
+                        <div class="video_embed">
+                            <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
+                        </div>
+                    {elseif="$post->isShort() && isset($attachments.pictures)"}
+                        {loop="$attachments.pictures"}
+                            {if="$value.type != 'picture'"}
+                                <img class="big_picture" type="{$value.type}"
+                                     src="{$value.href|urldecode}" />
                             {/if}
                         {/loop}
                     {/if}
@@ -122,17 +130,17 @@
                             <span
                                 class="primary icon bubble color white"
                                 style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
-                                <i class="zmdi zmdi-mail-reply"></i>
+                                <i class="zmdi zmdi-share"></i>
                             </span>
                         {elseif="$reply->isMicroblog()"}
                             {$url = $reply->getContact()->getPhoto('l')}
                             {if="$url"}
                                 <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
-                                    <i class="zmdi zmdi-mail-reply"></i>
+                                    <i class="zmdi zmdi-share"></i>
                                 </span>
                             {else}
                                 <span class="primary icon bubble color {$reply->getContact()->jid|stringToColor}">
-                                    <i class="zmdi zmdi-mail-reply"></i>
+                                    <i class="zmdi zmdi-share"></i>
                                 </span>
                             {/if}
                         {/if}
@@ -167,11 +175,11 @@
 
         {if="isset($attachments.links)"}
             {loop="$attachments.links"}
-                {if="!empty($value.title)"}
+                {if="$post->picture != protectPicture($value['href']) && $value.href != $post->getPublicUrl()"}
                 <ul class="list">
                     <li>
                         <span class="primary icon gray">
-                            {if="isset($value.logo)"}
+                            {if="!empty($value.logo)"}
                                 <img src="{$value.logo}"/>
                             {else}
                                 <i class="zmdi zmdi-link"></i>
@@ -220,7 +228,7 @@
                         </a>
                     {else}
                         <a class="button icon flat gray" href="#"
-                           onclick="PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                           onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
                             {$post->countLikes()}
                             {if="$liked"}
                                 <i class="zmdi zmdi-favorite"></i>
@@ -235,10 +243,10 @@
                 {/if}
                 {if="!$public"}
                 <a
-                    title="{$c->__('button.reply')}"
+                    title="{$c->__('button.share')}"
                     class="button icon flat gray"
                     href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
-                    <i class="zmdi zmdi-mail-reply"></i>
+                    <i class="zmdi zmdi-share"></i>
                 </a>
                     {if="$post->isPublic()"}
                         <a  title="{$c->__('post.public_yes')}"

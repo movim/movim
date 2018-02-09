@@ -35,6 +35,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -104,16 +106,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
-"PO-Revision-Date: 2017-03-30 18:46+0000\n"
-"Last-Translator: Alireza Mirsepassy <alirezamirsepassy@gmail.com>\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -256,7 +258,7 @@ msgstr "مودل نتوانست با پایگاه داده ارتباط برقر
 msgid "Movim is connected to the database"
 msgstr "موویم به پایگاه داده متصل شده اس"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "پایگاه داده احتیاج به بروز رسانی دارد"
 
@@ -304,25 +306,13 @@ msgstr "میزان لاگ کردن"
 msgid "Server Timezone"
 msgstr "زمان محلی سرور"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "تنظیمات وب سوکت"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "یک URI وب سوکت معتبر وارد کنید"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "Websocket URI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "اگر URI را عوض کردید daemon را ریستارت کنید تا تنظیمات اعمال شود"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "وب سوکت های عمومی"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -353,7 +343,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "پیام اطلاع رسانی"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "توضیحات"
 
@@ -386,6 +376,10 @@ msgstr "توضیحات سرور اصلی"
 msgid "Main XMPP server country"
 msgstr "کشور سرور اصلی"
 
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr "خالی"
@@ -416,10 +410,6 @@ msgstr "Required: 5.3.0"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr ""
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
 msgstr ""
 
 #: [compatibility]websocket
@@ -584,6 +574,10 @@ msgstr "نام"
 msgid "Message Published"
 msgstr "پیام منتشر شد"
 
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
+
 #: [message]encrypted
 msgid "Encrypted message"
 msgstr "پیام رمز گذاری شده"
@@ -650,6 +644,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -730,38 +728,32 @@ msgid "This server doesn't exists"
 msgstr ""
 
 #: [communitiesserver]created
-#, fuzzy
 msgid "Community created successfully"
-msgstr "گروه با موفقیت ذخیره شد"
+msgstr ""
 
 #: [communitiesserver]empty_server
-#, fuzzy
 msgid "There is no Communities yet on this server."
-msgstr "هنوز هیچ گروهی روی این سرور وجود ندارد"
+msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "ساخت حساب کاربری جدید"
+msgstr ""
 
 #: [communitiesserver]name
-#, fuzzy
 msgid "Community name"
-msgstr "نام خالی است"
+msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
 msgstr "تسویه حساب کوچک من - باشگاه"
 
 #: [communitiesserver]name_error
-#, fuzzy
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "لطفا یک نام معتبر برای گروه انتخاب کنید ( حداقل 4 کاراکتر )"
+msgstr ""
 
 #: [communitiesserver]no_creation
-#, fuzzy
 msgid "You cannot create a new community on this server"
-msgstr "شما نمیتوانید گروه جدیدی روی این سرور بسازید"
+msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
@@ -769,19 +761,16 @@ msgid "Subscriptions"
 msgstr "مشترک ها"
 
 #: [communityaffiliation]deleted
-#, fuzzy
 msgid "Community deleted successfully"
-msgstr "گروه با موفقیت حذف شد"
+msgstr ""
 
 #: [communityaffiliation]delete_title
-#, fuzzy
 msgid "Delete the community"
-msgstr "حذف گروه"
+msgstr ""
 
 #: [communityaffiliation]delete_text
-#, fuzzy
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "شما درحال حذف این نوشته هستید ،لطفا تایید کنید"
+msgstr ""
 
 #: [communityaffiliation]delete_clean_text
 msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
@@ -800,6 +789,7 @@ msgid "Publisher"
 msgstr "منتشر کننده"
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr "منتشر کننده ها"
 
@@ -811,6 +801,30 @@ msgstr "نقش ها"
 msgid "Role correctly set"
 msgstr "نقش ها بدرستی تنظیم شده اند"
 
+#: [communityconfig]publication
+msgid "Publication"
+msgstr ""
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+msgid "Subscribers"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr ""
@@ -820,9 +834,8 @@ msgid "%s posts"
 msgstr ""
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "پروفایل عمومی"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -930,6 +943,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1084,6 +1105,18 @@ msgstr "دعوت"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr ""
 
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr ""
@@ -1172,36 +1205,8 @@ msgstr "شما نمیتوانید گروه جدیدی روی این سرور ب�
 msgid "Frequently Asked Questions"
 msgstr "سوال هایی که اخیرا پرسیده شده"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr ""
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr ""
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr ""
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr ""
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr ""
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr ""
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr ""
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1224,24 +1229,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr ""
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr ""
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "با ایمیل با ما گفتگو کنید ؟"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr ""
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "اعتبار مدیریت"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "میخواهید با گروهتان گپ بزنید ؟"
 
 #: [chatroom]button
@@ -1356,18 +1351,9 @@ msgstr ""
 msgid "My address"
 msgstr "آدرس من"
 
-#: [form]create_one
-msgid "Create one !"
-msgstr "یکی بسازید!"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "هنوز حساب کاربری ندارید ؟"
-
 #: [form]whitelist_info
-#, fuzzy
 msgid "You can login with accounts from these servers"
-msgstr "شما میتوانید با اکانت از سرور های زیر وارد شوید"
+msgstr ""
 
 #: [form]connected
 msgid "Connected"
@@ -1418,9 +1404,8 @@ msgid "Contacts"
 msgstr "مخاطبین"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "ساخت حساب کاربری جدید"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1635,7 +1620,7 @@ msgid "Tags"
 msgstr "تگ ها"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+msgid "Please enter a valid URL"
 msgstr ""
 
 #: [publish]no_content_preview
@@ -1679,14 +1664,12 @@ msgid "What's new?"
 msgstr ""
 
 #: [publishbrief]post
-#, fuzzy
 msgid "Write a post"
-msgstr "ویرایش نوشته"
+msgstr ""
 
 #: [publishbrief]add_link
-#, fuzzy
 msgid "Add a link"
-msgstr "اضافه کردن URL"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1757,19 +1740,16 @@ msgid "Your nickname"
 msgstr ""
 
 #: [room]invite
-#, fuzzy
 msgid "Invite a contact"
-msgstr "جستجو مخاطبین"
+msgstr ""
 
 #: [room]invited
-#, fuzzy
 msgid "Invitation sent"
-msgstr "دعوت های در انتظار"
+msgstr ""
 
 #: [room]invite_code
-#, fuzzy
 msgid "Send this link to your contacts"
-msgstr "جستجو در مخاطبین"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2000,9 +1980,12 @@ msgid "in call"
 msgstr ""
 
 #: [visio]failed
-#, fuzzy
 msgid "failed"
-msgstr "آپلود ناموفق بود"
+msgstr ""
+
+#: [visio]connecting
+msgid "…connecting"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2236,6 +2219,10 @@ msgstr ""
 
 #: [button]enable
 msgid "Enable"
+msgstr ""
+
+#: [button]sign_up
+msgid "Sign Up"
 msgstr ""
 
 #: [day]title
@@ -2806,44 +2793,24 @@ msgstr ""
 msgid "Type here"
 msgstr ""
 
-#~ msgid "Male"
-#~ msgstr "مرد"
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "شما نمیتوانید گروه جدیدی روی این سرور بسازید"
 
-#~ msgid "Female"
-#~ msgstr "زن"
+#~ msgid "Talk with us by email ?"
+#~ msgstr "با ایمیل با ما گفتگو کنید ؟"
 
-#~ msgid "Single"
-#~ msgstr "مجرد"
+#~ msgid "WebSocket Configuration"
+#~ msgstr "تنظیمات وب سوکت"
 
-#~ msgid "In a relationship"
-#~ msgstr "در رابطه"
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "یک URI وب سوکت معتبر وارد کنید"
 
-#~ msgid "Married"
-#~ msgstr "مزدوج"
+#~ msgid "WebSocket URI"
+#~ msgstr "Websocket URI"
 
-#~ msgid "Divorced"
-#~ msgstr "طلاق گرفته"
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "اگر URI را عوض کردید daemon را ریستارت کنید تا تنظیمات اعمال شود"
 
-#~ msgid "User folder size limit (in bytes)"
-#~ msgstr "حجم پوشه کاربر ( بایت )"
-
-#~ msgid "Change the default credentials admin/password"
-#~ msgstr "نام کاربری و رمز عبور پیش فرض admin/password را عوض کنید"
-
-#~ msgid "Delete my account"
-#~ msgstr "حساب کاربری من را حذف کن"
-
-#~ msgid "Install the php5-curl library"
-#~ msgstr "Install the php5-curl library"
-
-#~ msgid "Install the php5-imagick library"
-#~ msgstr "Install the php5-imagick library"
-
-#~ msgid "Install the php5-gd library"
-#~ msgstr "Install the php5-gd library"
-
-#~ msgid "Another account"
-#~ msgstr "حساب کاربری دیگر"
-
-#~ msgid "Add a post"
-#~ msgstr "ایجاد یک نوشته"
+#~ msgid "Public WebSockets"
+#~ msgstr "وب سوکت های عمومی"

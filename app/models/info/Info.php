@@ -26,11 +26,18 @@ class Info extends Model
     public $mucmembersonly = false;
     public $mucmoderated = false;
 
+    public $abuseaddresses = [];
+    public $adminaddresses = [];
+    public $feedbackaddresses = [];
+    public $salesaddresses = [];
+    public $securityaddresses = [];
+    public $supportaddresses = [];
+
     public $_struct = [
         'server'    => ['type' => 'string','size' => 64,'key' => true],
         'node'      => ['type' => 'string','size' => 96,'key' => true],
 
-        'category'  => ['type' => 'string','size' => 16],
+        'category'  => ['type' => 'string','size' => 16, 'mandatory' => true],
         'type'      => ['type' => 'string','size' => 16],
         'name'      => ['type' => 'string','size' => 128],
 
@@ -39,13 +46,21 @@ class Info extends Model
         'occupants' => ['type' => 'int'],
 
         'created'   => ['type' => 'date'],
-        'updated'   => ['type' => 'date','mandatory' => true],
+        'updated'   => ['type' => 'date', 'mandatory' => true],
 
         'mucpublic'             => ['type' => 'bool'],
         'mucpersistent'         => ['type' => 'bool'],
         'mucpasswordprotected'  => ['type' => 'bool'],
         'mucmembersonly'        => ['type' => 'bool'],
         'mucmoderated'          => ['type' => 'bool'],
+
+        // XEP-0157: Contact Addresses for XMPP Services
+        'abuseaddresses'       => ['type' => 'serialized','size' => 512],
+        'adminaddresses'       => ['type' => 'serialized','size' => 512],
+        'feedbackaddresses'    => ['type' => 'serialized','size' => 512],
+        'salesaddresses'       => ['type' => 'serialized','size' => 512],
+        'securityaddresses'    => ['type' => 'serialized','size' => 512],
+        'supportaddresses'     => ['type' => 'serialized','size' => 512],
     ];
 
     public function set($query)
@@ -109,6 +124,37 @@ class Info extends Model
                         case 'pubsub#num_subscribers':
                         case 'muc#roominfo_occupants':
                             $this->occupants = (int)$field->value;
+                            break;
+
+                        case 'abuse-addresses':
+                            foreach($field->children() as $value) {
+                                $this->abuseaddresses[] = (string)$value;
+                            }
+                            break;
+                        case 'admin-addresses':
+                            foreach($field->children() as $value) {
+                                $this->adminaddresses[] = (string)$value;
+                            }
+                            break;
+                        case 'feedback-addresses':
+                            foreach($field->children() as $value) {
+                                $this->feedbackaddresses[] = (string)$value;
+                            }
+                            break;
+                        case 'sales-addresses':
+                            foreach($field->children() as $value) {
+                                $this->salesaddresses[] = (string)$value;
+                            }
+                            break;
+                        case 'security-addresses':
+                            foreach($field->children() as $value) {
+                                $this->securityaddresses[] = (string)$value;
+                            }
+                            break;
+                        case 'support-addresses':
+                            foreach($field->children() as $value) {
+                                $this->supportaddresses[] = (string)$value;
+                            }
                             break;
                     }
                 }

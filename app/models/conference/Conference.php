@@ -6,6 +6,7 @@ use \Modl\InfoDAO;
 use \Modl\PresenceDAO;
 
 use Movim\Picture;
+use Movim\Session;
 
 class Conference extends Model
 {
@@ -45,6 +46,21 @@ class Conference extends Model
     {
         $pd = new PresenceDAO;
         return $pd->countJid($this->conference);
+    }
+
+    public function checkConnected()
+    {
+        $pd = new \Modl\PresenceDAO;
+
+        if (!$this->nick) {
+            $session = Session::start();
+            $resource = $session->get('username');
+        } else {
+            $resource = $this->nick;
+        }
+
+        return ($pd->getMyPresenceRoom($this->conference) != null
+             || $pd->getPresence($this->conference, $resource) != null);
     }
 
     public function getPhoto($size = 'l')

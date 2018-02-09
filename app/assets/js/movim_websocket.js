@@ -27,7 +27,7 @@ var MovimWebsocket = {
 
     launchAttached : function() {
         // We hide the Websocket error
-        MovimUtils.hideElement(document.getElementById('error_websocket'));
+        document.getElementById('error_websocket').classList.add('hide');
 
         for(var i = 0; i < MovimWebsocket.attached.length; i++) {
             MovimWebsocket.attached[i]();
@@ -86,7 +86,7 @@ var MovimWebsocket = {
 
                 if(obj.func == 'block') {
                     MovimWebsocket.clearAttached();
-                    MovimUtils.addClass('body', 'disabled');
+                    document.body.classList.add('disabled');
                 }
 
                 MovimWebsocket.handle(obj);
@@ -99,7 +99,7 @@ var MovimWebsocket = {
             if(e.code == 1008) {
                 // The server closed the connection and asked to keep it this way
                 this.closed = true;
-                MovimUtils.showElement(document.getElementById('error_websocket'));
+                document.getElementById('error_websocket').classList.remove('hide');
                 MovimWebsocket.connection.close();
             } if(e.code == 1006) {
                 MovimWebsocket.reconnect();
@@ -112,7 +112,8 @@ var MovimWebsocket = {
             console.log("Connection error!");
 
             // We show the Websocket error
-            MovimUtils.showElement(document.getElementById('error_websocket'));
+            document.getElementById('error_websocket').classList.remove('hide');
+
             MovimWebsocket.reconnect();
 
             // We prevent the onclose launch

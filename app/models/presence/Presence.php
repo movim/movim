@@ -113,19 +113,20 @@ class Presence extends Model
                         $this->publickey = (string)$c;
                         break;
                     case 'http://jabber.org/protocol/muc#user' :
-                        if(!isset($c->item)) break;
+                        if (!isset($c->item)) break;
 
                         $this->muc = true;
-                        if($c->item->attributes()->jid) {
+                        if ($c->item->attributes()->jid
+                        && $c->item->attributes()->jid) {
                             $this->mucjid = cleanJid((string)$c->item->attributes()->jid);
                         } else {
                             $this->mucjid = (string)$stanza->attributes()->from;
                         }
 
-                        if($c->item->attributes()->role) {
+                        if ($c->item->attributes()->role) {
                             $this->mucrole = (string)$c->item->attributes()->role;
                         }
-                        if($c->item->attributes()->affiliation) {
+                        if ($c->item->attributes()->affiliation) {
                             $this->mucaffiliation = (string)$c->item->attributes()->affiliation;
                         }
                         break;

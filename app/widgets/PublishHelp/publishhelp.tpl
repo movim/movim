@@ -1,6 +1,6 @@
 <ul class="list thin">
     <li class="subheader">
-        <p>{$c->__('publish.help')}</p>
+        <p>{$c->__('publishhelp.title')}</p>
     </li>
     <li>
         <span class="primary icon">
@@ -65,7 +65,7 @@
 </ul>
 <ul class="list active">
     <li class="subheader">
-        <p>{$c->__('publish.help_more')}</p>
+        <p>{$c->__('publishhelp.more')}</p>
     </li>
     <li>
         <span class="primary icon color bubble blue">
@@ -75,7 +75,7 @@
             <i class="zmdi zmdi-chevron-right"></i>
         </span>
         <p class="line">
-            {$c->__('publish.help_manual')}
+            {$c->__('publishhelp.manual')}
         </p>
         <p class="line">
             <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">

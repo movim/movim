@@ -39,6 +39,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -108,8 +110,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
-"PO-Revision-Date: 2017-10-23 21:34+0000\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -260,7 +262,7 @@ msgstr "Modl 无法连接数据库"
 msgid "Movim is connected to the database"
 msgstr "Movim 已经连接到数据库"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "数据库需要更新"
 
@@ -308,25 +310,13 @@ msgstr "日志输出"
 msgid "Server Timezone"
 msgstr "服务器时区"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "WebSocket 配置"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "在表格中输入一个有效的 WebSocket 地址"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "WebSocket URI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "如果你更改了 URI， 请重启守护进程（Daemon）来重载配置"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "公共 WebSocket"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -357,7 +347,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "通知消息"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "描述"
 
@@ -390,6 +380,10 @@ msgstr "主 XMPP 服务器描述"
 msgid "Main XMPP server country"
 msgstr "主 XMPP 服务器国家"
 
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr "空的"
@@ -421,10 +415,6 @@ msgstr "需要： 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Web 服务器上 Movim 所在目录 %s 的读写权限"
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "数据库需要更新，前往数据库面板以修复。"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -588,6 +578,10 @@ msgstr "名称"
 msgid "Message Published"
 msgstr "消息已发布"
 
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
+
 #: [message]encrypted
 msgid "Encrypted message"
 msgstr "消息已加密"
@@ -655,6 +649,10 @@ msgstr "清除历史"
 #: [chat]edit_previous
 msgid "Edit last message"
 msgstr "编辑最后一条消息"
+
+#: [chat]report_abuse
+msgid "Report abuse"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -795,6 +793,7 @@ msgid "Publisher"
 msgstr "发布者"
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr "发布者"
 
@@ -805,6 +804,30 @@ msgstr "角色"
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
 msgstr "角色已被正确设置"
+
+#: [communityconfig]publication
+msgid "Publication"
+msgstr ""
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+msgid "Subscribers"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -925,6 +948,14 @@ msgstr "显示成人内容"
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "这将会允许你阅读带有 #nsfw 标签的帖子"
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
+msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -1078,6 +1109,18 @@ msgstr "邀请"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
 
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "你将取消订阅该群组"
@@ -1166,37 +1209,9 @@ msgstr "您不能在此服务器上建立新群组"
 msgid "Frequently Asked Questions"
 msgstr "常见问题"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "这些小横幅与什么相关"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "根据一下五种颜色，您可以快速设置个人信息的私密等级"
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "白色，仅自己可见"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "绿色，指定联系人可见"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "橙色，对所有联系人可见"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "红色，XMPP 上的用户能看见您的信息"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "黑色，整个互联网可以看见您的信息"
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
-msgstr "你是否已经准备好在其他平台上尝试 Movim？"
+msgid "Have you already tried Movim on other platforms?"
+msgstr ""
 
 #: [apps]phone
 msgid "Apps for your phone"
@@ -1218,24 +1233,14 @@ msgstr "电脑上的应用"
 msgid "Our official apps are available on our website"
 msgstr "我们的官方应用可以从我们的网站获取"
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "需要查找一些帮助文档?"
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "阅读 Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "用 email 同我们联系"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "加入邮件列表"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "管理证书"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "同开发团队交流？"
 
 #: [chatroom]button
@@ -1349,14 +1354,6 @@ msgstr "XMPP鉴别错误"
 #: [form]username
 msgid "My address"
 msgstr "用户名"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr "新建一个 !"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "还没有账户 ?"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -1627,7 +1624,8 @@ msgid "Tags"
 msgstr "标签"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+#, fuzzy
+msgid "Please enter a valid URL"
 msgstr "请输入一个有效的URL"
 
 #: [publish]no_content_preview
@@ -1990,6 +1988,11 @@ msgstr ""
 msgid "failed"
 msgstr ""
 
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "连接中"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "您的浏览器没有开启javascript，请排查一下"
@@ -2223,6 +2226,10 @@ msgstr "稍后"
 #: [button]enable
 msgid "Enable"
 msgstr "开启"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2791,3 +2798,56 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "这些小横幅与什么相关"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "根据一下五种颜色，您可以快速设置个人信息的私密等级"
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "白色，仅自己可见"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "绿色，指定联系人可见"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "橙色，对所有联系人可见"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "红色，XMPP 上的用户能看见您的信息"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "黑色，整个互联网可以看见您的信息"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "此服务器上没有社群。"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "阅读 Wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "用 email 同我们联系"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "加入邮件列表"
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "WebSocket 配置"
+
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "在表格中输入一个有效的 WebSocket 地址"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "WebSocket URI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "如果你更改了 URI， 请重启守护进程（Daemon）来重载配置"
+
+#~ msgid "Public WebSockets"
+#~ msgstr "公共 WebSocket"
+
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "需要查找一些帮助文档?"

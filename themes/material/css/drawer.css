@@ -35,15 +35,13 @@
     padding: 2rem;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 35rem) {
     .drawer {
         border-radius: 0.5rem 0.5rem 0 0;
         width: 70rem;
         left: calc(50% - 35rem);
     }
-}
 
-@media screen and (min-width: 40rem) {
     .drawer .flex .block:not(.subheader):not(.large) {
         flex: 0 1 25%;
     }

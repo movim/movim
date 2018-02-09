@@ -16,7 +16,7 @@ class Contact extends Model
     public $date;
     public $url;
 
-    public    $email;
+    public $email;
 
     public $adrlocality;
     public $adrpostalcode;
@@ -347,15 +347,12 @@ class Contact extends Model
     {
         $this->isValidDate();
 
-        if($this->fn == null
-        && $this->name == null
-        && $this->date == null
-        && $this->url == null
-        && $this->email == null
-        && $this->description == null) {
-            return true;
-        }
-        return false;
+        return ($this->fn == null
+            && $this->name == null
+            && $this->date == null
+            && $this->url == null
+            && $this->email == null
+            && $this->description == null);
     }
 
     function isValidDate()
@@ -373,18 +370,15 @@ class Contact extends Model
 
     function isOld()
     {
-        if(strtotime($this->updated) < mktime( // We update the 1 day old vcards
-                                        gmdate("H"),
-                                        gmdate("i")-10,
-                                        gmdate("s"),
-                                        gmdate("m"),
-                                        gmdate("d"),
-                                        gmdate("Y")
-                                    )
-            ) {
-            return true;
-        }
-        return false;
+        return (strtotime($this->updated) < mktime( // We update the 1 day old vcards
+                                    gmdate("H"),
+                                    gmdate("i")-10,
+                                    gmdate("s"),
+                                    gmdate("m"),
+                                    gmdate("d"),
+                                    gmdate("Y")
+                                )
+        );
     }
 
     function isMe()

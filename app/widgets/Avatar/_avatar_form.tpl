@@ -3,7 +3,7 @@
 <h3 class="block large">{$c->__('page.avatar')}</h3>
 
 <div class="flex">
-    <div id="preview" class="block">
+    <div id="avatar_preview" class="block">
         <div>
             <form name="avatarform" id="avatarform">
                 {if="isset($photobin) && $photobin != ''"}

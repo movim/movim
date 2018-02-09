@@ -1,1 +1,1 @@
-<header  id="publishbrief" class="card shadow"></header>
+<header id="publishbrief" class="card shadow"></header>

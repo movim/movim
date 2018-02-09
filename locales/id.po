@@ -36,6 +36,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -105,16 +107,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
-"PO-Revision-Date: 2017-03-30 18:46+0000\n"
-"Last-Translator: Fahmi Barnes <itsfahmiegerton@live.co.uk>\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
+"X-Generator: Translate Toolkit 2.2.5\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -198,9 +200,8 @@ msgid "Leave this instance"
 msgstr ""
 
 #: [account]clear_text
-#, fuzzy
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr "Anda akan menghapus akun XMPP anda dan semua yang informasi yang berhubungan dengannya (profil, kontak dan publikasi)"
+msgstr ""
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
@@ -258,7 +259,7 @@ msgstr "Modl tidak dapat menyambungkan ke database"
 msgid "Movim is connected to the database"
 msgstr "Movim telah terkoneksi ke database"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "Database perlu diperbarui"
 
@@ -306,25 +307,13 @@ msgstr ""
 msgid "Server Timezone"
 msgstr "Zona Waktu Server"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "Konfigurasi WebSocket"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "Masukkan URI WebSocket yang valid di form berikut"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "URI WebSocket"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Jika anda mengganti URI, mohon hidupkan ulang daemon untuk memuat ulang konfigurasi"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "Publik WebSocket"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -355,7 +344,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "Pesan Informasi"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "Deskripsi"
 
@@ -388,6 +377,10 @@ msgstr "Deskripsi utama server XMPP"
 msgid "Main XMPP server country"
 msgstr "Negara utama server XMPP"
 
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr "Kosong"
@@ -419,10 +412,6 @@ msgstr "Dibutuhkan: 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Hak baca dan tulis untuk webserver di direktori Movim %s"
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "Database perlu diperbarui, pergi ke panel database untuk memperbaiki ini"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -586,6 +575,10 @@ msgstr "Nama"
 msgid "Message Published"
 msgstr "Pesan Diterbitkan"
 
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
+
 #: [message]encrypted
 msgid "Encrypted message"
 msgstr "Pesan yang dienkripsi"
@@ -627,9 +620,8 @@ msgid "Frequent contacts"
 msgstr "Kontak yang sering dihubungi"
 
 #: [chat]new_title
-#, fuzzy
 msgid "Nothing here yet…"
-msgstr "Belum ada berita..."
+msgstr ""
 
 #: [chat]new_text
 msgid "Don't be shy, send a first message to start the discussion"
@@ -644,9 +636,8 @@ msgid "Join %s"
 msgstr ""
 
 #: [chat]profile
-#, fuzzy
 msgid "See the profile"
-msgstr "Lihat profil %s"
+msgstr ""
 
 #: [chat]clear
 msgid "Clear the history"
@@ -654,6 +645,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -734,38 +729,32 @@ msgid "This server doesn't exists"
 msgstr "Server ini tidak ada"
 
 #: [communitiesserver]created
-#, fuzzy
 msgid "Community created successfully"
-msgstr "Grup telah dibuat"
+msgstr ""
 
 #: [communitiesserver]empty_server
-#, fuzzy
 msgid "There is no Communities yet on this server."
-msgstr "Tidak ada grup di server ini"
+msgstr ""
 
 #: [communitiesserver]add
-#, fuzzy
 msgid "Create a new community on %s"
-msgstr "Buat Grup baru di %s"
+msgstr ""
 
 #: [communitiesserver]name
-#, fuzzy
 msgid "Community name"
-msgstr "Nama Komunitas Saya"
+msgstr ""
 
 #: [communitiesserver]name_example [groups]name_example
 msgid "My Little Pony - Fan Club"
 msgstr "Pony Kecilku - Fan Klub"
 
 #: [communitiesserver]name_error
-#, fuzzy
 msgid "Please provide a valid community name (4 characters minimum)"
-msgstr "Mohon sertakan nama grup yang benar (minimal 4 karakter)"
+msgstr ""
 
 #: [communitiesserver]no_creation
-#, fuzzy
 msgid "You cannot create a new community on this server"
-msgstr "Anda tidak dapat membuat grup baru di server ini"
+msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
 #: [statistics]subscriptions
@@ -773,24 +762,20 @@ msgid "Subscriptions"
 msgstr "Langganan"
 
 #: [communityaffiliation]deleted
-#, fuzzy
 msgid "Community deleted successfully"
-msgstr "Grup berhasil dihapus"
+msgstr ""
 
 #: [communityaffiliation]delete_title
-#, fuzzy
 msgid "Delete the community"
-msgstr "Hapus grup"
+msgstr ""
 
 #: [communityaffiliation]delete_text
-#, fuzzy
 msgid "You are going to delete the following community. Please confirm your action."
-msgstr "Anda akan menhapus grup berikut ini. Mohon konfirmasi aksi anda."
+msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Nampaknya grup ini sudah tidak ada lagi. Apakah anda menghapusnya dari langganan anda?"
+msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -805,6 +790,7 @@ msgid "Publisher"
 msgstr "Penerbit"
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr "Penerbit"
 
@@ -816,6 +802,30 @@ msgstr "Peran"
 msgid "Role correctly set"
 msgstr "Peran dibetulkan"
 
+#: [communityconfig]publication
+msgid "Publication"
+msgstr ""
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+msgid "Subscribers"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
+
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
 msgstr "%s pelanggan"
@@ -825,9 +835,8 @@ msgid "%s posts"
 msgstr "%s postingan"
 
 #: [communitydata]public
-#, fuzzy
 msgid "Public page"
-msgstr "Profil publik"
+msgstr ""
 
 #: [communityheader]subscribe [group]subscribe
 msgid "Subscribe"
@@ -874,9 +883,8 @@ msgid "Are you sure ?"
 msgstr "Anda yakin ?"
 
 #: [communityposts]nsfw_title
-#, fuzzy
 msgid "Adult content blocked"
-msgstr "puas"
+msgstr ""
 
 #: [communityposts]nsfw_message
 msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
@@ -936,6 +944,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1090,6 +1106,18 @@ msgstr "Undang"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Kontak ini ada di dalam daftar kontak anda tetapi tidak ada langganan diantara dua akun"
 
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Anda akan membatalkan langganan dari grup ini"
@@ -1178,36 +1206,8 @@ msgstr "Anda tidak dapat membuat grup baru di server ini"
 msgid "Frequently Asked Questions"
 msgstr "Pertanyaan Seputar"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Spanduk kecil tersebut mengacu kepada apa?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Terima kasih untuk lima banner kecil ini, sekarang anda dapat dengan cepat mengidentifikasi tingkat kerahasiaan yang berlaku untuk informasi yang anda berikan."
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Putih, hanya anda yang dapat melihat informasi"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Hijau, anda dapat menentukan beberapa kontak yang dapat melihat informasi anda"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Oranye, semua daftar kontak anda dapat melihat informasi anda"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Merah, semua orang di jaringan XMPP dapat melihat informasi anda"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Hitam, seluruh Internet dapat melihat informasi anda"
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1230,24 +1230,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "Mencari dokumentasi?"
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Baca Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Berbicara dengan kami lewat email ?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Berlangganan"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Administrasi"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Berbicara dengan tim?"
 
 #: [chatroom]button
@@ -1362,18 +1352,9 @@ msgstr "Autentikasi XMPP gagal"
 msgid "My address"
 msgstr "Alamat saya"
 
-#: [form]create_one
-msgid "Create one !"
-msgstr "Buat satu !"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "Belum ada akun ?"
-
 #: [form]whitelist_info
-#, fuzzy
 msgid "You can login with accounts from these servers"
-msgstr "Anda dapat masuk dengan akun dari server ini"
+msgstr ""
 
 #: [form]connected
 msgid "Connected"
@@ -1424,9 +1405,8 @@ msgid "Contacts"
 msgstr "Kontak"
 
 #: [menu]add_post
-#, fuzzy
 msgid "Write a new post…"
-msgstr "Buat akun baru"
+msgstr ""
 
 #: [notifs]title [onboarding]notifications_title
 msgid "Notifications"
@@ -1533,9 +1513,8 @@ msgid "You are going to delete this post, please confirm your action"
 msgstr "Anda akan menghapus post ini, mohon konfirmasi aksi anda"
 
 #: [post]delete_comment
-#, fuzzy
 msgid "Are you sure that you want to delete this comment?"
-msgstr "Apakah anda yakin akan menghapus ini?"
+msgstr ""
 
 #: [post]discover
 msgid "Discover more articles on the communities page"
@@ -1642,7 +1621,7 @@ msgid "Tags"
 msgstr ""
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+msgid "Please enter a valid URL"
 msgstr ""
 
 #: [publish]no_content_preview
@@ -1682,19 +1661,16 @@ msgid "Add some text"
 msgstr ""
 
 #: [publishbrief]placeholder
-#, fuzzy
 msgid "What's new?"
-msgstr "Sedang hangat"
+msgstr ""
 
 #: [publishbrief]post
-#, fuzzy
 msgid "Write a post"
-msgstr "Tambahkan post"
+msgstr ""
 
 #: [publishbrief]add_link
-#, fuzzy
 msgid "Add a link"
-msgstr "Tambahkan URL baru"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1765,19 +1741,16 @@ msgid "Your nickname"
 msgstr ""
 
 #: [room]invite
-#, fuzzy
 msgid "Invite a contact"
-msgstr "Mengobrol dengan sebuah kontak"
+msgstr ""
 
 #: [room]invited
-#, fuzzy
 msgid "Invitation sent"
-msgstr "Undangan Tertunda"
+msgstr ""
 
 #: [room]invite_code
-#, fuzzy
 msgid "Send this link to your contacts"
-msgstr "Diskusi dengan kontak anda"
+msgstr ""
 
 #: [roster]ungrouped
 msgid "Ungrouped"
@@ -2010,6 +1983,11 @@ msgstr ""
 #: [visio]failed
 msgid "failed"
 msgstr ""
+
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "Terputus"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2245,6 +2223,10 @@ msgstr ""
 msgid "Enable"
 msgstr ""
 
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
+
 #: [day]title
 msgid "Day"
 msgstr "Hari"
@@ -2446,9 +2428,8 @@ msgid "flirtatious"
 msgstr "genit"
 
 #: [mood]frustrated
-#, fuzzy
 msgid "frustrated"
-msgstr "bingung"
+msgstr ""
 
 #: [mood]grateful
 msgid "grateful"
@@ -2814,77 +2795,55 @@ msgstr ""
 msgid "Type here"
 msgstr ""
 
-#~ msgid "Male"
-#~ msgstr "Pria"
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Spanduk kecil tersebut mengacu kepada apa?"
 
-#~ msgid "Female"
-#~ msgstr "Wanita"
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Terima kasih untuk lima banner kecil ini, sekarang anda dapat dengan cepat mengidentifikasi tingkat kerahasiaan yang berlaku untuk informasi yang anda berikan."
 
-#~ msgid "Other"
-#~ msgstr "Lainnya"
+#~ msgid "White, only you can see the information"
+#~ msgstr "Putih, hanya anda yang dapat melihat informasi"
 
-#~ msgid "Single"
-#~ msgstr "Lajang"
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Hijau, anda dapat menentukan beberapa kontak yang dapat melihat informasi anda"
 
-#~ msgid "In a relationship"
-#~ msgstr "Sedang berhubungan"
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Oranye, semua daftar kontak anda dapat melihat informasi anda"
 
-#~ msgid "Married"
-#~ msgstr "Menikah"
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Merah, semua orang di jaringan XMPP dapat melihat informasi anda"
 
-#~ msgid "Divorced"
-#~ msgstr "Bercerai"
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Hitam, seluruh Internet dapat melihat informasi anda"
 
-#~ msgid "Widowed"
-#~ msgstr "Janda"
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s grup di server ini"
 
-#~ msgid "Cohabiting"
-#~ msgstr "Tinggal bersama"
+#~ msgid "Read the Wiki"
+#~ msgstr "Baca Wiki"
 
-#~ msgid "Civil Union"
-#~ msgstr "Hubungan sejenis"
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Berbicara dengan kami lewat email ?"
 
-#~ msgid "Not shared"
-#~ msgstr "Tidak dibagikan"
+#~ msgid "Join the Mailing List"
+#~ msgstr "Berlangganan"
 
-#~ msgid "Shared with one contact"
-#~ msgstr "Dibagikan ke satu kontak"
+#~ msgid "WebSocket Configuration"
+#~ msgstr "Konfigurasi WebSocket"
 
-#~ msgid "Shared with all contacts"
-#~ msgstr "Dibagikan ke seluruh kontak"
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "Masukkan URI WebSocket yang valid di form berikut"
 
-#~ msgid "Shared with the XMPP network"
-#~ msgstr "Dibagikan ke jaringan XMPP"
+#~ msgid "WebSocket URI"
+#~ msgstr "URI WebSocket"
 
-#~ msgid "Shared with the whole Internet"
-#~ msgstr "Dibagikan ke seluruh Internet"
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "Jika anda mengganti URI, mohon hidupkan ulang daemon untuk memuat ulang konfigurasi"
 
-#~ msgid "Your feed cannot be loaded."
-#~ msgstr "Feed mu tidak dapat dimuat."
+#~ msgid "Public WebSockets"
+#~ msgstr "Publik WebSocket"
 
-#~ msgid "This community seems empty"
-#~ msgstr "Komunitas ini nampaknya kosong"
-
-#~ msgid "User folder size limit (in bytes)"
-#~ msgstr "Batas limit ukuran folder (dalam bytes)"
-
-#~ msgid "Change the default credentials admin/password"
-#~ msgstr "Ubah admin/kata sandi credentials bawaan"
-
-#~ msgid "Delete my account"
-#~ msgstr "Hapus akun saya"
-
-#~ msgid "Install the php5-curl library"
-#~ msgstr "Pasang library php5-curl"
-
-#~ msgid "Install the php5-imagick library"
-#~ msgstr "Pasang library php5-imagick"
-
-#~ msgid "Install the php5-gd library"
-#~ msgstr "Pasang library php5-gd"
-
-#~ msgid "Another account"
-#~ msgstr "Akun lainnya"
-
-#~ msgid "Your status here !"
-#~ msgstr "Status anda disini !"
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "Mencari dokumentasi?"

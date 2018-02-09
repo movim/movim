@@ -8,8 +8,6 @@ article header {
     position: relative;
 }
 
-/* We hide the main title because it's already here ? */
-
 article section {
     font-size: 2rem;
     line-height: 3rem;
@@ -101,6 +99,10 @@ article section content img.big_picture {
     margin-bottom: 1rem;
 }
 
+article section content img.active:hover {
+    cursor: pointer;
+}
+
 article section content div.video_embed {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
@@ -119,4 +121,44 @@ article section content div.video_embed iframe {
 article ul li.pic img {
     max-width: 30rem;
     max-height: 30rem;
+}
+
+/* Spoiler */
+
+article input[type=checkbox].spoiler {
+    display: none;
+}
+
+article input[type=checkbox].spoiler:not(:checked) + section {
+    position: relative;
+}
+
+article input[type=checkbox].spoiler:not(:checked) + section content > * {
+    opacity: 0.05;
+    pointer-events: none;
+}
+
+article section label.spoiler,
+article input[type=checkbox].spoiler:checked + section label.spoiler {
+    display: none;
+}
+
+article input[type=checkbox].spoiler + section label.spoiler {
+    text-align: center;
+    display: block;
+    position: absolute;
+    top: calc(50% - 5rem);
+    left: calc(50% - 5rem);
+    width: 10rem;
+    height: 10rem;
+    line-height: 10rem;
+    font-size: 4rem;
+    border-radius: 100%;
+    opacity: 0.9;
+    background-color: gray;
+    color: white;
+}
+
+article section label.spoiler:hover {
+    cursor: pointer;
 }

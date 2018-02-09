@@ -17,6 +17,7 @@ class Post extends \Movim\Widget\Base
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_getitem_handle', 'onHandle', 'post');
+        $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
     }
 
     function onHandle($packet)
@@ -66,6 +67,11 @@ class Post extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#comments', $html);
     }
 
+    function onDelete($packet)
+    {
+        $this->rpc('Post.refreshComments');
+    }
+
     function ajaxGetContact($jid)
     {
         $c = new ContactActions;
@@ -105,6 +111,16 @@ class Post extends \Movim\Widget\Base
                ->request();
         } else {
             $this->rpc('MovimTpl.fill', '#post_widget', $this->prepareNotFound());
+        }
+    }
+
+    function ajaxGetPostComments($origin, $node, $id)
+    {
+        $pd = new \Modl\PostnDAO;
+        $p  = $pd->get($origin, $node, $id);
+
+        if($p) {
+            $this->requestComments($p);
         }
     }
 
@@ -168,9 +184,20 @@ class Post extends \Movim\Widget\Base
 
         $emoji = \MovimEmoji::getInstance();
 
+        $comments = $post->getComments();
+
+        $likes = [];
+        foreach($comments as $key => $comment) {
+            if($comment->isLike()) {
+                $likes[] = $comment;
+                unset($comments[$key]);
+            }
+        }
+
         $view = $this->tpl();
         $view->assign('post', $post);
-        $view->assign('comments', $post->getComments());
+        $view->assign('comments', $comments);
+        $view->assign('likes', $likes);
         $view->assign('hearth', $emoji->replace('♥'));
 
         return $view->draw('_post_comments', true);
@@ -247,6 +274,8 @@ class Post extends \Movim\Widget\Base
                 $cd = new \Modl\ContactDAO;
                 $view->assign('repost', $cd->get($p->origin));
             }
+
+            $view->assign('nsfw', $this->user->getConfig('nsfw'));
 
             $view->assign('post', $p);
             $view->assign('attachments', $p->getAttachments());

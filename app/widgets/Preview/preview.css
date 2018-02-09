@@ -1,0 +1,34 @@
+#preview {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s cubic-bezier(.4,0,.2,1) .05s;
+}
+
+#preview:not(:empty) {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+#preview img {
+    max-height: calc(100% - 12rem);
+    margin-top: -3rem;
+    max-width: 90%;
+    align-self: center;
+    border-radius: 0.5rem;
+}
+
+#preview .buttons {
+    position: absolute;
+    bottom: 1rem;
+    text-align: center;
+}

@@ -27,9 +27,4 @@
             </li>
         {/loop}
     </ul>
-
-    <h3 class="padded_top_bottom">{$c->__('statistics.subscriptions')}</h3>
-
-    <br />
-    <canvas id="monthly" width="800" height="400"></canvas>
 </div>

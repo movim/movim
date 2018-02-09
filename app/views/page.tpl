@@ -45,7 +45,7 @@
     ?>
     </head>
     <body dir="<?php $this->dir();?>"
-          class="<?php if((new \Movim\User)->getConfig('nightmode')) { ?>nightmode<?php } ?>">
+          class="<?php if(!$this->public && (new \Movim\User)->getConfig('nightmode')) { ?>nightmode<?php } ?>">
         <noscript>
             <style type="text/css">
                 nav {display:none;} #content {display: none;}
@@ -70,6 +70,7 @@
         </div>
         <?php $this->widget('Dialog');?>
         <?php $this->widget('Drawer');?>
+        <?php $this->widget('Preview');?>
         <?php $this->content();?>
     </body>
 </html>

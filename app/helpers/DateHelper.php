@@ -1,11 +1,5 @@
 <?php
 
-function getTimezoneCorrection()
-{
-    $timezones = getTimezoneList();
-    return $timezones[date_default_timezone_get()];
-}
-
 /**
  * Return a human-readable date
  *

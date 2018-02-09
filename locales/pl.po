@@ -35,6 +35,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -104,8 +106,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
-"PO-Revision-Date: 2017-10-23 21:34+0000\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Polish (http://www.transifex.com/movim/movim/language/pl/)\n"
 "Language: pl\n"
@@ -256,7 +258,7 @@ msgstr "Modl nie mógł się połączyć z bazą danych"
 msgid "Movim is connected to the database"
 msgstr "Movim jest połączony z bazą danych"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "Baza danych musi być zaktualizowana"
 
@@ -304,25 +306,13 @@ msgstr "Szczegółowość logów"
 msgid "Server Timezone"
 msgstr "Strefa Czasowa Serwera"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "Konfiguracja WebSocket"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
+msgstr ""
 
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
-msgstr "Wpisz tutaj ważny WebSocket URI"
-
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "WebSocket URI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "Jeśli zmienisz URI, zrestartuj daemona w celu przeładowania konfiguracji"
-
-#: [websocket]publics
-msgid "Public WebSockets"
-msgstr "Publiczne WebSockets"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
+msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -353,7 +343,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr "Wiadomość Informacyjna"
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr "Opis"
 
@@ -386,6 +376,10 @@ msgstr "Opis głównego serwera XMPP"
 msgid "Main XMPP server country"
 msgstr "Kraj głównego serwera XMPP"
 
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr "Puste"
@@ -417,10 +411,6 @@ msgstr "Wymagane: 5.3.0"
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Prawa odczytu i zapisu dla serwera w katalogu %s Movim"
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
-msgstr "Baza danych musi być zaktualizowana. Idź do panelu baz danych by to naprawić"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -584,6 +574,10 @@ msgstr "Nazwa"
 msgid "Message Published"
 msgstr "Wiadomość Opublikowana"
 
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
+
 #: [message]encrypted
 msgid "Encrypted message"
 msgstr "Wiadomość zaszyfrowana"
@@ -650,6 +644,10 @@ msgstr "Wyczyść historię"
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -791,6 +789,7 @@ msgid "Publisher"
 msgstr "Publikujący"
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr "Publikujący"
 
@@ -801,6 +800,30 @@ msgstr "Role"
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
 msgstr "Role poprawnie ustawione"
+
+#: [communityconfig]publication
+msgid "Publication"
+msgstr ""
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+msgid "Subscribers"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
+msgstr ""
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -921,6 +944,14 @@ msgstr "Pokazuj treść dla pełnoletnich"
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
 msgstr "Pozwoli ci czytać posty otagowane jako #nsfw"
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
+msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -1074,6 +1105,18 @@ msgstr "Zaproś"
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr "Ten kontakt jest na liście twoich kontaktów, lecz nie ma pomiędzy waszymi kontami subskrypcji"
 
+#: [general]legend
+msgid "General Information"
+msgstr ""
+
+#: [client]title
+msgid "Client Information"
+msgstr ""
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr "Zamierzasz odsubskrybować z tej Grupy"
@@ -1162,36 +1205,8 @@ msgstr "Nie możesz założyć nowej Grupy na tym serwerze"
 msgid "Frequently Asked Questions"
 msgstr "Często Zadawane Pytania"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "Do czego odnoszą się małe bannery ?"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "Dzięki tym pięciu bannerom możesz szybko zidentyfikować poziom poufności podanych przez ciebie informacji"
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "Biały, tylko ty widzisz tą informację"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "Zielony, wybrałeś kilka kontaktów, które widzą twoje informacje"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "Pomarańczowy, wszystkie twoje kontakty widzą twoje informacje"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "Czerwony, wszyscy w sieci XMPP widzą twoje informacje"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "Czarny, cały Internet widzi twoje informacje"
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1214,24 +1229,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "Szukasz dokumentacji ?"
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Przeczytaj Wiki"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "Napisz do nas maila ?"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Dołącz do Listy Mailingowej"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "Upoważnienia Administratora"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "Porozmawiaj z ekipą ?"
 
 #: [chatroom]button
@@ -1345,14 +1350,6 @@ msgstr "Uwierzytelnienie XMPP nieudane"
 #: [form]username
 msgid "My address"
 msgstr "Mój adres"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr "Utwórz je !"
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr "Nie masz jeszcze konta ?"
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -1623,7 +1620,8 @@ msgid "Tags"
 msgstr "Tagi"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
+#, fuzzy
+msgid "Please enter a valid URL"
 msgstr "Proszę wpisać poprawny adres URL"
 
 #: [publish]no_content_preview
@@ -1986,6 +1984,11 @@ msgstr ""
 msgid "failed"
 msgstr ""
 
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "Łączenie"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "Nie masz włączonego javascript.  Zatem powodzenia."
@@ -2219,6 +2222,10 @@ msgstr "Nie Teraz"
 #: [button]enable
 msgid "Enable"
 msgstr "Zezwól"
+
+#: [button]sign_up
+msgid "Sign Up"
+msgstr ""
 
 #: [day]title
 msgid "Day"
@@ -2787,3 +2794,56 @@ msgstr "Interfejs nieosiągalny, spróbuj ponownie później"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pisz tutaj"
+
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "Do czego odnoszą się małe bannery ?"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "Dzięki tym pięciu bannerom możesz szybko zidentyfikować poziom poufności podanych przez ciebie informacji"
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "Biały, tylko ty widzisz tą informację"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "Zielony, wybrałeś kilka kontaktów, które widzą twoje informacje"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "Pomarańczowy, wszystkie twoje kontakty widzą twoje informacje"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "Czerwony, wszyscy w sieci XMPP widzą twoje informacje"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "Czarny, cały Internet widzi twoje informacje"
+
+#, fuzzy
+#~ msgid "There is no Groups yet on this server."
+#~ msgstr "%s grup na serwerze"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Przeczytaj Wiki"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "Napisz do nas maila ?"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Dołącz do Listy Mailingowej"
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "Konfiguracja WebSocket"
+
+#~ msgid "Enter here a valid WebSocket URI in the form"
+#~ msgstr "Wpisz tutaj ważny WebSocket URI"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "WebSocket URI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "Jeśli zmienisz URI, zrestartuj daemona w celu przeładowania konfiguracji"
+
+#~ msgid "Public WebSockets"
+#~ msgstr "Publiczne WebSockets"
+
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "Szukasz dokumentacji ?"

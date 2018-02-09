@@ -24,6 +24,12 @@ class EmbedLight
         $this->publishedTime    = $embed->publishedTime;
         $this->license          = $embed->license;
 
+        foreach ($this->images as $key => $image) {
+            if ($key != 0 && $image['width'] < 512 && $image['height'] < 512) {
+                unset($this->images[$key]);
+            }
+        }
+
         return $this;
     }
 }

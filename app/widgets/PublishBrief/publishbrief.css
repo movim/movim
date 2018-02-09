@@ -15,3 +15,9 @@ header#publishbrief form > div textarea {
     border: 1px solid rgba(var(--movim-font), 0.12);
     border-radius: 0.5rem;
 }
+
+#publishbriefimages li div {
+    padding-top: 100%;
+    background-size: cover;
+    background-position: center center;
+}

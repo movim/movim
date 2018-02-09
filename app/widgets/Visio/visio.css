@@ -32,6 +32,7 @@ body {
     bottom: 0;
     width: 25rem;
     height: auto;
+    border-radius: 0.25rem 0 0 0;
 }
 
 @media screen and (max-width: 800px) {
@@ -43,6 +44,10 @@ body {
 
 #visio header {
     top: 2.5rem;
+}
+
+#visio header i {
+    text-shadow: 0 0 3rem black;
 }
 
 #visio .button.action {

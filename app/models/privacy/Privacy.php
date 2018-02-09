@@ -28,4 +28,10 @@ class Privacy extends Model
         $pd = new PrivacyDAO;
         return (bool)$pd->get($key)->value;
     }
+
+    static function exists($key)
+    {
+        $pd = new PrivacyDAO;
+        return ($pd->get($key) !== null);
+    }
 }

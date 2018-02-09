@@ -170,10 +170,10 @@ class Bootstrap
         }
 
         if (getenv('baseuri') != null
-        && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)
-        && sizeof(getenv('baseuri')) < 32) {
+        && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)) {
             return getenv('baseuri');
         }
+
         return $uri;
     }
 
@@ -324,6 +324,8 @@ class Bootstrap
 
                 $s = Session::start();
                 $s->set('jid', $session->jid);
+                $s->set('host', $session->host);
+                $s->set('username', $session->username);
             } elseif ($process) {
                 // A process but no session in the db
                 requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);
@@ -341,7 +343,7 @@ class Bootstrap
         'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
         'Chat','Chats','Config','ContactData','ContactHeader','Dialog','Drawer',
         'Header','Init','Login','LoginAnonymous','Menu','Notifs','Invitations',
-        'Post','PostActions','Presence','Publish','PublishBrief','Rooms',
+        'Post','PostActions','Presence','PublishBrief','Rooms',
         'Roster','Stickers','Upload','Vcard4','Visio','VisioLink'];
     }
 

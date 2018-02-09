@@ -36,6 +36,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityAffiliations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/CommunityConfig/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/CommunityHeader/locales.ini
@@ -105,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
+"POT-Creation-Date: 2018-01-25 23:47+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: RACER\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -258,7 +260,7 @@ msgstr "Modlがデータベースに接続できませんでした"
 msgid "Movim is connected to the database"
 msgstr "Movimがデータベースに接続しました"
 
-#: [db]update
+#: [db]update [compatibility]db
 msgid "The database need to be updated"
 msgstr "データベースをアップデートする必要があります"
 
@@ -306,24 +308,12 @@ msgstr "ログ"
 msgid "Server Timezone"
 msgstr "サーバータイムゾーン"
 
-#: [websocket]title
-msgid "WebSocket Configuration"
-msgstr "ウェブソケット設定"
-
-#: [websocket]info
-msgid "Enter here a valid WebSocket URI in the form"
+#: [restrictsuggestions]title
+msgid "Restrict suggestions"
 msgstr ""
 
-#: [websocket]label
-msgid "WebSocket URI"
-msgstr "ウェブソケットURI"
-
-#: [websocket]save_info
-msgid "If you change the URI, please restart the daemon to reload the configuration"
-msgstr "URLを変更した場合はデーモンを再起動してください"
-
-#: [websocket]publics
-msgid "Public WebSockets"
+#: [restrictsuggestions]text
+msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
 msgstr ""
 
 #: [credentials]title
@@ -355,7 +345,7 @@ msgctxt "[information]title"
 msgid "Information Message"
 msgstr ""
 
-#: [information]description
+#: [information]description [communityconfig]description
 msgid "Description"
 msgstr ""
 
@@ -388,6 +378,10 @@ msgstr ""
 msgid "Main XMPP server country"
 msgstr ""
 
+#: [xmpp]country_pick
+msgid "Pick a country in the list"
+msgstr ""
+
 #: [log]empty
 msgid "Empty"
 msgstr "空"
@@ -418,10 +412,6 @@ msgstr ""
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr ""
-
-#: [compatibility]db
-msgid "The database need to be updated, go to the database panel to fix this"
 msgstr ""
 
 #: [compatibility]websocket
@@ -529,17 +519,19 @@ msgid "Groups"
 msgstr "グループ"
 
 #: [chatroom]add
+#, fuzzy
 msgid "Add a new Chat Room"
-msgstr ""
+msgstr "チャットルームを追加する"
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
 msgstr ""
 
 #: [chatroom]name
+#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -566,8 +558,9 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
+#, fuzzy
 msgid "Configure"
-msgstr ""
+msgstr "設定"
 
 #: [url]add
 msgid "Add a new URL"
@@ -578,13 +571,18 @@ msgid "URL"
 msgstr "URL"
 
 #: [url]name
+#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr ""
+msgstr "名前"
 
 #: [message]published
 msgid "Message Published"
 msgstr "メッセージが公開されました"
+
+#: [message]error
+msgid "Your message could not be sent, please try again later"
+msgstr ""
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -652,6 +650,10 @@ msgstr ""
 
 #: [chat]edit_previous
 msgid "Edit last message"
+msgstr ""
+
+#: [chat]report_abuse
+msgid "Report abuse"
 msgstr ""
 
 #: [chatroom]members
@@ -800,6 +802,7 @@ msgid "Publisher"
 msgstr ""
 
 #: [communityaffiliation]publishers
+#: [communityconfig]publish_model_publishers_title
 msgid "Publishers"
 msgstr ""
 
@@ -809,6 +812,32 @@ msgstr ""
 
 #: [communityaffiliation]role_set
 msgid "Role correctly set"
+msgstr ""
+
+#: [communityconfig]publication
+#, fuzzy
+msgid "Publication"
+msgstr "人口"
+
+#: [communityconfig]publish_model_open_title
+msgid "Open"
+msgstr ""
+
+#: [communityconfig]publish_model_open_text
+msgid "Everyone can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_publishers_text
+msgid "The publishers can publish"
+msgstr ""
+
+#: [communityconfig]publish_model_subscribers_title
+#, fuzzy
+msgid "Subscribers"
+msgstr "参加申請する"
+
+#: [communityconfig]publish_model_subscribers_text
+msgid "The subscribers can publish"
 msgstr ""
 
 #: [communitydata]sub [groups]sub
@@ -929,6 +958,14 @@ msgstr ""
 
 #: [config]nsfw_text
 msgid "Will allow you to read the posts tagged with the #nsfw tag"
+msgstr ""
+
+#: [config]night_mode
+msgid "Night Mode"
+msgstr ""
+
+#: [config]night_mode_text
+msgid "Use dark colors to rest your eyes"
 msgstr ""
 
 #: [cssurl]label
@@ -1083,6 +1120,20 @@ msgstr ""
 msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
 msgstr ""
 
+#: [general]legend
+#, fuzzy
+msgid "General Information"
+msgstr "一般情報"
+
+#: [client]title
+#, fuzzy
+msgid "Client Information"
+msgstr "クライアントインフォメーション"
+
+#: [subscription]nil_text
+msgid "This contact is in your contact list but there is no subscription between the two accounts"
+msgstr ""
+
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
 msgstr ""
@@ -1171,36 +1222,8 @@ msgstr ""
 msgid "Frequently Asked Questions"
 msgstr "よくある質問"
 
-#: [banner]title
-msgid "What do the little banners refer to ?"
-msgstr "この標の意味はなんですか"
-
-#: [banner]info1
-msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-msgstr "この標で、あなとが公開しているデータの機密性が分かります。"
-
-#: [banner]white
-msgid "White, only you can see the information"
-msgstr "白、あなた以外見られない"
-
-#: [banner]green
-msgid "Green, you have chosen some contacts who can see your information"
-msgstr "緑、共有している知り合いしか見られない"
-
-#: [banner]orange
-msgid "Orange, all your contact list can see your information"
-msgstr "橙、あなたの知り合い全員が見られる"
-
-#: [banner]red
-msgid "Red, everybody in the XMPP network can see your information"
-msgstr "XMPPを使っている人全員が見られる"
-
-#: [banner]black
-msgid "Black, the whole Internet can see your information"
-msgstr "黒、誰でも見られる"
-
 #: [apps]question
-msgid "Did you already tried Movim on the other platforms?"
+msgid "Have you already tried Movim on other platforms?"
 msgstr ""
 
 #: [apps]phone
@@ -1224,24 +1247,14 @@ msgstr ""
 msgid "Our official apps are available on our website"
 msgstr ""
 
-#: [wiki]question
-msgid "Looking for some documentation ?"
-msgstr "ドキュメンテーションお探しですか"
-
-#: [wiki]button
-msgid "Read the Wiki"
-msgstr "Wiki へ"
-
-#: [ml]question
-msgid "Talk with us by email ?"
-msgstr "メールで連絡したいと思っていますか"
-
-#: [ml]button
-msgid "Join the Mailing List"
-msgstr "Mailing List に登録する"
+#: [contact]title
+#, fuzzy
+msgid "Administrators & Contact"
+msgstr "管理者認証"
 
 #: [chatroom]question
-msgid "Chat with the team ?"
+#, fuzzy
+msgid "Chat with the Movim team?"
 msgstr "チャットがいいですか"
 
 #: [chatroom]button
@@ -1355,14 +1368,6 @@ msgstr "XMPP認証に失敗しました"
 #: [form]username
 msgid "My address"
 msgstr "マイアドレス"
-
-#: [form]create_one
-msgid "Create one !"
-msgstr ""
-
-#: [form]no_account
-msgid "No account yet ?"
-msgstr ""
 
 #: [form]whitelist_info
 msgid "You can login with accounts from these servers"
@@ -1635,8 +1640,9 @@ msgid "Tags"
 msgstr "タグ"
 
 #: [publish]valid_url
-msgid "Please enter a valid url"
-msgstr ""
+#, fuzzy
+msgid "Please enter a valid URL"
+msgstr "正しいJabber IDを入力してください"
 
 #: [publish]no_content_preview
 msgid "No content to preview"
@@ -2003,6 +2009,11 @@ msgstr ""
 msgid "failed"
 msgstr ""
 
+#: [visio]connecting
+#, fuzzy
+msgid "…connecting"
+msgstr "切断する"
+
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
 msgstr ""
@@ -2235,6 +2246,10 @@ msgstr ""
 
 #: [button]enable
 msgid "Enable"
+msgstr ""
+
+#: [button]sign_up
+msgid "Sign Up"
 msgstr ""
 
 #: [day]title
@@ -2804,6 +2819,49 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
+
+#, fuzzy
+#~ msgid "What do the little banners refer to"
+#~ msgstr "この標の意味はなんですか"
+
+#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgstr "この標で、あなとが公開しているデータの機密性が分かります。"
+
+#~ msgid "White, only you can see the information"
+#~ msgstr "白、あなた以外見られない"
+
+#~ msgid "Green, you have chosen some contacts who can see your information"
+#~ msgstr "緑、共有している知り合いしか見られない"
+
+#~ msgid "Orange, all your contact list can see your information"
+#~ msgstr "橙、あなたの知り合い全員が見られる"
+
+#~ msgid "Red, everybody in the XMPP network can see your information"
+#~ msgstr "XMPPを使っている人全員が見られる"
+
+#~ msgid "Black, the whole Internet can see your information"
+#~ msgstr "黒、誰でも見られる"
+
+#~ msgid "Read the Wiki"
+#~ msgstr "Wiki へ"
+
+#~ msgid "Talk with us by email ?"
+#~ msgstr "メールで連絡したいと思っていますか"
+
+#~ msgid "Join the Mailing List"
+#~ msgstr "Mailing List に登録する"
+
+#~ msgid "WebSocket Configuration"
+#~ msgstr "ウェブソケット設定"
+
+#~ msgid "WebSocket URI"
+#~ msgstr "ウェブソケットURI"
+
+#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
+#~ msgstr "URLを変更した場合はデーモンを再起動してください"
+
+#~ msgid "Looking for some documentation ?"
+#~ msgstr "ドキュメンテーションお探しですか"
 
 #~ msgid "Accounts"
 #~ msgstr "アカウント"

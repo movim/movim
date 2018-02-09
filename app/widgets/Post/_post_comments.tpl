@@ -1,3 +1,25 @@
+{$liked = false}
+
+{if="count($likes) > 0"}
+    <ul class="list divided spaced middle">
+        <li>
+            <span class="primary icon red">
+                <i class="zmdi zmdi-favorite"></i>
+            </span>
+            <p>{$likes|count}</span> {$c->__('button.like')}</p>
+            <p class="all">
+                {loop="$likes"}
+                    {if="$value->isMine()"}{$liked = [$value->origin, $value->node, $value->nodeid]}{/if}
+                        <a title="{$value->published|strtotime|prepareDate:true,true}"
+                           href="{$c->route('contact', $value->getContact()->jid)}">
+                            {$value->getContact()->getTrueName()}</a>{if="$key + 1 < count($likes)"},
+                    {/if}
+                {/loop}
+            </p>
+        </li>
+    </ul>
+{/if}
+
 <ul class="list divided spaced middle">
     {if="count($comments) > 0"}
         <li class="subheader center">
@@ -11,32 +33,26 @@
         {if="$value->title || $value->contentraw"}
         <li id="{$value->nodeid|cleanupId}"
             {if="$value->isMine(true) && $value->isLike()"}class="mine"{/if}>
-            {if="$value->isMine()"}
+            {if="$value->isMine() || $post->isMine()"}
                 <span class="control icon gray active"
                       onclick="PostActions_ajaxDelete('{$value->origin}', '{$value->node}', '{$value->nodeid}')">
                     <i class="zmdi zmdi-delete"></i>
                 </span>
             {/if}
 
-            {if="$value->isLike()"}
-                <span class="primary icon small red">
-                    <i class="zmdi zmdi-favorite"></i>
+            {$url = $value->getContact()->getPhoto('s')}
+            {if="$url"}
+                <span class="primary icon bubble small">
+                    <a href="{$c->route('contact', $value->getContact()->jid)}">
+                        <img src="{$url}">
+                    </a>
                 </span>
             {else}
-                {$url = $value->getContact()->getPhoto('s')}
-                {if="$url"}
-                    <span class="primary icon bubble small">
-                        <a href="{$c->route('contact', $value->getContact()->jid)}">
-                            <img src="{$url}">
-                        </a>
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$value->getContact()->jid|stringToColor} small">
-                        <a href="{$c->route('contact', $value->getContact()->jid)}">
-                            <i class="zmdi zmdi-account"></i>
-                        </a>
-                    </span>
-                {/if}
+                <span class="primary icon bubble color {$value->getContact()->jid|stringToColor} small">
+                    <a href="{$c->route('contact', $value->getContact()->jid)}">
+                        <i class="zmdi zmdi-account"></i>
+                    </a>
+                </span>
             {/if}
             <p class="normal line">
                 <span class="info" title="{$value->published|strtotime|prepareDate}">
@@ -46,15 +62,13 @@
                     {$value->getContact()->getTrueName()}
                 </a>
             </p>
-            {if="!$value->isLike()"}
-                <p class="all">
-                    {if="$value->contentraw"}
-                        {$value->contentraw|addHashtagsLinks|addHFR}
-                    {else}
-                        {$value->title|addUrls|addHashtagsLinks|nl2br}
-                    {/if}
-                </p>
-            {/if}
+            <p class="all">
+                {if="$value->contentraw"}
+                    {$value->contentraw|addHashtagsLinks|addHFR}
+                {else}
+                    {$value->title|addUrls|addHashtagsLinks|nl2br}
+                {/if}
+            </p>
         </li>
         {/if}
     {/loop}
@@ -80,15 +94,25 @@
 
     <li>
         <p class="center">
-            <button class="button red flat" id="like" onclick="MovimUtils.addClass('#like', 'disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
-                <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
-            </button>
+            {if="$liked"}
+                <button class="button red flat"
+                    id="like"
+                    onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
+                        <i class="zmdi zmdi-favorite-outline"></i>
+                </button>
+            {else}
+                <button class="button red flat"
+                    id="like"
+                    onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                        <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
+                </button>
+            {/if}
             <button class="button flat gray" onclick="Post.comment()">
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
             </button>
             {if="$c->supported('pubsub')"}
             <button class="button flat gray" onclick="Post.share()">
-                <i class="zmdi zmdi-mail-reply"></i> {$c->__('button.reply')}
+                <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
             </button>
             {/if}
         </p>

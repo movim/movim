@@ -33,6 +33,7 @@ class AccountNext extends \Movim\Widget\Base {
         $form = $package->content;
 
         $xtf = new \XMPPtoForm;
+        $html = '';
         if(!empty($form->x)){
             switch($form->x->attributes()->xmlns) {
                 case 'jabber:x:data' :

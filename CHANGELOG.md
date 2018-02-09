@@ -1,13 +1,33 @@
 Movim Changelog
 ================
 
-v0.13 (trunk)
+v0.13.1 (trunk)
+---------------------------
+ * Add a picture picker when sharing a URL in a post
+ * Merge Publish in PublishBrief
+ * Implement XEP-0157 to allow users to contact their administrators
+ * Change the Reply button to Share
+ * Add a spoiler on NSFW articles in the news feed
+ * Show a spoiler on NSFW posts when the filter is enabled in News
+ * Enhancements on Visio and CSS improvements
+ * Fix date display in Chat on instable connectivity
+ * Add a Preview widget to allow previsualisation of pictures in Movim
+ * Fix compatibility with PHP 5.6
+ * Code cleanup
+
+v0.13
 ---------------------------
  * Update ReactPHP
  * Use PHP ZeroMQ to manage the communications between the processes
  * Cleanup some existing buffers
  * Add a pure HTTP ajax endpoint for some futur requests that needs it
  * Add some slight animations in the UI
+ * Add a nightmode
+ * Cleanup and refactorize some CSS (colors, forms)
+ * Improve the connectivity UX status of chatrooms
+ * Publish the chat messages using Ajax
+ * Improve the configuration of Communities
+ * Update the OpenSans font
 
 v0.12.1
 ---------------------------

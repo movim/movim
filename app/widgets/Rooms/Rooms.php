@@ -109,15 +109,6 @@ class Rooms extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Get the default servers
-     */
-    public function ajaxGetDefaultServices()
-    {
-        $cd = new \Modl\CapsDAO;
-        $this->rpc('Rooms.setDefaultServices', $cd->getMUC($this->user->getServer()));
-    }
-
-    /**
      * @brief Display the add room form
      */
     function ajaxAdd($room = false)
@@ -126,11 +117,14 @@ class Rooms extends \Movim\Widget\Base
 
         $id = new \Modl\InfoDAO;
         $cd = new \Modl\ConferenceDAO;
+        $cad = new \Modl\CapsDAO;
 
         $view->assign('info', $id->getConference($room));
         $view->assign('id', $room);
         $view->assign('conference', $cd->get($room));
         $view->assign('username', $this->user->getUser());
+
+        $this->rpc('Rooms.setDefaultServices', $cad->getMUC($this->user->getServer()));
 
         Dialog::fill($view->draw('_rooms_add', true));
     }
@@ -195,6 +189,7 @@ class Rooms extends \Movim\Widget\Base
 
         $userslist = $this->getUsersList($room);
         $view->assign('list', $userslist);
+        $view->assign('room', $room);
         $view->assign('me', $this->user->getLogin());
 
         Dialog::fill($view->draw('_rooms_list', true), true);

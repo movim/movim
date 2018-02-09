@@ -10,8 +10,9 @@
         {loop="$list"}
             <li class="{if="$value->last > 60"} inactive{/if}"
                 title="{$value->resource}">
+
                 {$url = $value->getPhoto('s')}
-                {if="$url"}
+                {if="$url && $value->jid != $room"}
                     <span class="primary icon bubble status {$presence[$value->value]}">
                         <img src="{$url}">
                     </span>

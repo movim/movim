@@ -1,5 +1,6 @@
 <header class="fixed">
     {if="$muc"}
+        {$connected = $conference->checkConnected()}
     <ul class="list middle">
         <li>
             <span id="back" class="primary icon active"
@@ -28,7 +29,7 @@
                 </span>
             {/if}
 
-            <span class="control icon show_context_menu active">
+            <span class="control icon show_context_menu active {if="!$connected"}disabled{/if}">
                 <i class="zmdi zmdi-more-vert"></i>
             </span>
 
@@ -39,7 +40,9 @@
                 <i class="zmdi zmdi-close"></i>
             </span>
 
-            <span class="control icon active" onclick="Rooms_ajaxList('{$jid|echapJS}')">
+            <span
+                class="control icon active {if="!$connected"}disabled{/if}"
+                onclick="Rooms_ajaxList('{$jid|echapJS}')">
                 <i class="zmdi zmdi-accounts"></i>
             </span>
 
@@ -48,7 +51,10 @@
             {else}
                 <p class="line">{$room}</p>
             {/if}
-            {if="$subject != null"}
+
+            {if="!$connected"}
+                <p>{$c->__('button.connecting')}…</p>
+            {elseif="$subject != null"}
                 <p class="line" title="{$subject->subject}">{$subject->subject|addUrls}</p>
             {else}
                 <p class="line">{$room}</p>
@@ -76,6 +82,20 @@
         <li onclick="Rooms_ajaxAdd('{$room}');">
             <p class="normal">{$c->__('chatroom.config')}</p>
         </li>
+        {if="!empty($info->abuseaddresses)"}
+            {$parsed = parse_url($info->abuseaddresses[0])}
+            {if="$parsed['scheme'] == 'xmpp'"}
+                {if="isset($parsed['query']) && $parsed['query'] == 'join'"}
+                <li onclick="MovimUtils.reload('{$c->route('chat', [$parsed['path'], 'room'])}')">
+                {else}
+                <li onclick="MovimUtils.reload('{$c->route('chat', $parsed['path'])}')">
+                {/if}
+            {else}
+                <li onclick="MovimUtils.reload('{$value}')">
+            {/if}
+                <p class="normal">{$c->__('chat.report_abuse')}</p>
+            </li>
+        {/if}
     </ul>
     {else}
     <ul class="list middle">
@@ -127,6 +147,20 @@
         <li onclick="Chat_ajaxClearHistory('{$contact->jid}')">
             <p class="normal">{$c->__('chat.clear')}</p>
         </li>
+        {if="!empty($info->abuseaddresses)"}
+            {$parsed = parse_url($info->abuseaddresses[0])}
+            {if="$parsed['scheme'] == 'xmpp'"}
+                {if="isset($parsed['query']) && $parsed['query'] == 'join'"}
+                <li onclick="MovimUtils.reload('{$c->route('chat', [$parsed['path'], 'room'])}')">
+                {else}
+                <li onclick="MovimUtils.reload('{$c->route('chat', $parsed['path'])}')">
+                {/if}
+            {else}
+                <li onclick="MovimUtils.reload('{$info->abuseaddresses[0]}')">
+            {/if}
+                <p class="normal">{$c->__('chat.report_abuse')}</p>
+            </li>
+        {/if}
     </ul>
     {/if}
 </header>
@@ -143,7 +177,7 @@
 </div>
 <div class="chat_box">
     <ul class="list">
-        <li>
+        <li class="{if="$muc && !$connected"}disabled{/if}">
             {if="!$muc"}
             <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
@@ -151,7 +185,7 @@
             {/if}
             {if="$c->supported('upload')"}
                 <span class="upload control icon"
-                    title="{$c->__('publish.attach')}"
+                    title="{$c->__('publishbrief.attach')}"
                     onclick="Upload_ajaxRequest()">
                     <i class="zmdi zmdi-attachment-alt"></i>
                 </span>

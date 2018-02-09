@@ -17,7 +17,7 @@ var Tabs = {
         }
 
         // We show the first tab
-        MovimUtils.showElement(tabs[0]);
+        tabs[0].classList.remove('hide');
 
         // We insert the list
         document.querySelector('#navtabs').innerHTML = html;
@@ -58,12 +58,12 @@ var Tabs = {
         // We hide all the div
         var tabs = document.querySelectorAll('.tabelem');
         for (var i = 0; i < tabs.length; i++){
-            MovimUtils.hideElement(tabs[i]);
+            tabs[i].classList.add('hide');
         }
 
         // We show the selected div
         var tabOn = document.getElementById(selected);
-        MovimUtils.showElement(tabOn);
+        tabOn.classList.remove('hide');
 
         window.history.pushState(null, null, '#' + selected + '_tab');
 

@@ -199,9 +199,8 @@
                 {elseif="$post->isShort() && isset($attachments.pictures)"}
                     {loop="$attachments.pictures"}
                         {if="$value.type != 'picture'"}
-                        <a href="{$value.href}" class="alternate" target="_blank">
-                            <img class="big_picture" type="{$value.type}" src="{$value.href|urldecode}"/>
-                        </a>
+                            <img class="big_picture" type="{$value.type}"
+                                 src="{$value.href|urldecode}"/>
                         {/if}
                     {/loop}
                 {/if}
@@ -219,17 +218,17 @@
                                 <span
                                     class="primary icon bubble white color"
                                     style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture|echapJS});">
-                                    <i class="zmdi zmdi-mail-reply"></i>
+                                    <i class="zmdi zmdi-share"></i>
                                 </span>
                             {elseif="$reply->isMicroblog()"}
                                 {$url = $reply->getContact()->getPhoto('l')}
                                 {if="$url"}
                                     <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
-                                        <i class="zmdi zmdi-mail-reply"></i>
+                                        <i class="zmdi zmdi-share"></i>
                                     </span>
                                 {else}
                                     <span class="primary icon bubble color {$reply->getContact()->jid|stringToColor}">
-                                        <i class="zmdi zmdi-mail-reply"></i>
+                                        <i class="zmdi zmdi-share"></i>
                                     </span>
                                 {/if}
                             {/if}
@@ -270,7 +269,7 @@
                         {if="$post->picture != protectPicture($value['href']) && $value.href != $post->getPublicUrl()"}
                             <li>
                                 <span class="primary icon gray">
-                                    {if="isset($value.logo)"}
+                                    {if="!empty($value.logo)"}
                                         <img src="{$value.logo}"/>
                                     {else}
                                         <i class="zmdi zmdi-link"></i>

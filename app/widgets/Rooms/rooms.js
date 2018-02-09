@@ -37,7 +37,7 @@ var Rooms = {
                 }
             }
 
-            MovimUtils.removeClass(items[i], 'active');
+            items[i].classList.remove('active');
 
             i++;
         }
@@ -78,5 +78,4 @@ var Rooms = {
 MovimWebsocket.attach(function() {
     Rooms.anonymousInit();
     Rooms_ajaxDisplay();
-    Rooms_ajaxGetDefaultServices();
 });

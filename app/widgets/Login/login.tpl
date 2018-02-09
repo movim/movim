@@ -20,7 +20,6 @@
 
     <div id="form" class="dialog">
         <section>
-            <span class="info">{$c->__('form.connected')} {$connected} / {$pop}</span>
             <h3>{$c->__('page.login')}</h3>
             {if="$invitation != null"}
                 <br />
@@ -35,8 +34,8 @@
                                 {$contact->getTrueName()|firstLetterCapitalize}
                             </span>
                         {/if}
-                        <p class="line">{$c->__('form.invite_chatroom', $contact->getTrueName())}</p>
-                        <p class="line">{$invitation->resource}</p>
+                        <p></p>
+                        <p class="all">{$c->__('form.invite_chatroom', $contact->getTrueName())} - {$invitation->resource}</p>
                     </li>
                 </ul>
             {/if}
@@ -64,7 +63,10 @@
                                     disabled
                                     data-loading="{$c->__('button.connecting')}…"
                                     value="{$c->__('page.login')}"
-                                    class="button flat"/>
+                                    class="button color"/>
+                                <a class="button flat" href="{$c->route('account')}">
+                                    {$c->__('button.sign_up')}
+                                </a>
                             </p>
                         </li>
                     </ul>
@@ -89,21 +91,26 @@
             </ul>
             {/if}
 
-            <ul class="list thin">
-                <li>
-                    <p class="normal center">
-                        {$c->__('form.no_account')}
-                        <a class="button flat" href="{$c->route('account')}">
-                            {$c->__('form.create_one')}
-                        </a>
-                    </p>
-                </li>
-            </ul>
+            <span class="info">{$c->__('form.connected')} {$connected} / {$pop}</span>
         </section>
     </div>
 
     <div id="error" class="dialog actions">
         {$error}
     </div>
+
+    <footer>
+        <a href="https://movim.eu" target="_blank" class="on_desktop"></a>
+        <a class="button flat color green" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
+            <i class="zmdi zmdi-google-play"></i> Play Store
+        </a>
+        <a class="button flat color blue" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
+            <i class="zmdi zmdi-android-alt"></i> F-Droid
+        </a>
+        <a class="button flat color purple on_desktop" href="https://movim.eu/#apps" target="_blank">
+            <i class="zmdi zmdi-desktop-windows"></i> Apps
+        </a>
+        <br />
+    </footer>
 </div>
 

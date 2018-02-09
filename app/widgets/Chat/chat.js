@@ -181,10 +181,11 @@ var Chat = {
 
         textarea.onkeypress = function(event) {
             if(event.keyCode == 13) {
-                if(window.matchMedia("(max-width: 1024px)").matches
-                || event.shiftKey) {
+                if((window.matchMedia("(max-width: 1024px)").matches && !event.shiftKey)
+                || (window.matchMedia("(min-width: 1025px)").matches && event.shiftKey)) {
                     return;
                 }
+
                 Chat.state = 0;
                 Chat.sendMessage();
 
@@ -434,17 +435,17 @@ var Chat = {
         }
 
         if (data.sticker != null) {
-            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'sticker');
+            bubble.querySelector('div.bubble').classList.add('sticker');
             p.appendChild(Chat.getStickerHtml(data.sticker));
         } else {
             p.innerHTML = data.body;
         }
 
         if (data.audio != null) {
-            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'file');
+            bubble.querySelector('div.bubble').classList.add('file');
             p.appendChild(Chat.getAudioHtml(data.file));
         } else if (data.file != null) {
-            MovimUtils.addClass(bubble.querySelector('div.bubble'), 'file');
+            bubble.querySelector('div.bubble').classList.add('file');
             p.appendChild(Chat.getFileHtml(data.file, data.sticker));
         }
 
@@ -526,9 +527,13 @@ var Chat = {
     },
     appendDate: function(date, prepend) {
         var list = document.querySelector('#chat_widget > div ul');
+
+        if(document.getElementById(MovimUtils.cleanupId(date))) return;
+
         dateNode = Chat.date.cloneNode(true);
         dateNode.dataset.value = date;
         dateNode.querySelector('p').innerHTML = date;
+        dateNode.id = MovimUtils.cleanupId(date);
 
         var dates = list.querySelectorAll('li.date');
 
@@ -553,6 +558,9 @@ var Chat = {
         separatorNode = Chat.separator.cloneNode(true);
 
         var list = document.querySelector('#chat_widget > div ul');
+
+        if(list.querySelector('li.separator')) return;
+
         var messages = document.querySelectorAll('#chat_widget > div ul div.bubble p');
 
         if(messages.length > counter && counter > 0) {
@@ -578,14 +586,11 @@ var Chat = {
         }
 
         if(sticker.picture) {
-            var a = document.createElement("a");
-            a.setAttribute("href", sticker.url);
-            a.setAttribute("target", "_blank");
-            a.appendChild(img);
-            return a;
-        } else {
-            return img;
+            img.classList.add('active');
+            img.setAttribute('onclick', 'Preview_ajaxShow("' + sticker.url + '")');
         }
+
+        return img;
     },
     getAudioHtml: function(file) {
         var audio = document.createElement("audio");

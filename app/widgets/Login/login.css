@@ -1,10 +1,10 @@
 body main {
     background-color: #3F51B5;
+}
 
-    background-image: url(img/logo.svg);
-    background-repeat: no-repeat;
-    background-position: center 90%;
-    background-size: 30rem auto, 100% 100%;
+#login_widget .dialog {
+    position: relative;
+    margin-top: 10%;
 }
 
 @media screen and (max-width: 600px) {
@@ -12,13 +12,32 @@ body main {
         background-image: url(img/logo_cloud.svg);
         background-size: auto 2.6rem, 100% 100%;
         background-position: center 2.25rem;
+        background-repeat: no-repeat;
     }
 
-    .dialog {
-        top: 12.5%;
-        max-height: 92.5%;
-        height: 82.5%;
+    #login_widget .dialog {
+        margin-top: 17.5%;
     }
+}
+
+#login_widget .dialog h3 {
+    text-align: center;
+}
+
+#login_widget footer {
+    position: relative;
+    text-align: center;
+    padding-top: 3rem;
+}
+
+#login_widget footer > *:first-child {
+    background-image: url(img/logo.svg);
+    background-repeat: no-repeat;
+    background-position: center 0;
+    background-size: 22rem auto, 100% 100%;
+    height: 10rem;
+    width: 100%;
+    display: block;
 }
 
 #login_widget > div {
@@ -31,12 +50,10 @@ body main {
 }
 
 #login_widget span.info {
-    float: right;
-    margin-top: 2.5rem;
-}
-
-#login_widget span.info + h3 {
-    margin-top: 2rem;
+    text-align: center;
+    display: block;
+    line-height: 4rem;
+    margin-bottom: 1.5rem;
 }
 
 #login_widget form > div:last-child {

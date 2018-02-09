@@ -137,26 +137,20 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         $pd = new \Modl\PostnDAO;
 
-        /*if($public) {
-            $posts = $pd->getPublic($origin, $node, $page*$this->_paging, $this->_paging);
-        } else*/
-        if($ids == false) {
-            return $this->prepareEmpty();
-        } else {
-            foreach($ids as $key => $id) {
-                if(empty($id)) {
-                    unset($ids[$key]);
-                }
+        $ids = is_array($ids) ? $ids : [];
+        foreach($ids as $key => $id) {
+            if(empty($id)) {
+                unset($ids[$key]);
             }
-
-            $posts = $pd->getIds($origin, $node, $ids);
         }
+
+        $posts = $pd->getIds($origin, $node, $ids);
 
         $id = new \Modl\InfoDAO;
         $info = $id->get($origin, $node);
 
-        $pd = new \Modl\SubscriptionDAO;
-        $subscription = $pd->get($origin, $node);
+        $sd = new \Modl\SubscriptionDAO;
+        $subscription = $sd->get($origin, $node);
 
         $nsfwMessage = false;
 
@@ -178,6 +172,16 @@ class CommunityPosts extends \Movim\Widget\Base
         }
 
         $view = $this->tpl();
+
+        if($nsfwMessage) {
+            $this->rpc('MovimTpl.remove', '#nsfwmessage');
+            $this->rpc(
+                'MovimTpl.prepend',
+                '#communityposts',
+                $view->draw('_communityposts_nsfw', true)
+            );
+        }
+
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('page', $page);
@@ -186,7 +190,10 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('info', $info);
         $view->assign('subscription', $subscription);
         $view->assign('paging', $this->_paging);
-        $view->assign('nsfwMessage', $nsfwMessage);
+
+        $view->assign('publicposts', ($ids == false)
+            ? $pd->getPublic($origin, $node, $page*$this->_paging, $this->_paging)
+            : false);
 
         $view->assign('first', $first);
         $view->assign('last', $last);
