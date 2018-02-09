@@ -31,7 +31,7 @@ class Config extends Model
         'unregister'            => ['type' => 'bool'],
         'restrictsuggestions'   => ['type' => 'bool'],
         'username'              => ['type' => 'string','size' => 32,'mandatory' => true],
-        'password'              => ['type' => 'string','size' => 64,'mandatory' => true],
+        'password'              => ['type' => 'string','size' => 256,'mandatory' => true],
         'xmppdomain'            => ['type' => 'string','size' => 32],
         'xmppdescription'       => ['type' => 'text'],
         'xmppcountry'           => ['type' => 'string','size' => 4],
