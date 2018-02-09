@@ -40,7 +40,7 @@ class Api extends \Movim\Widget\Base
         $json = requestURL(MOVIM_API.'pods/status', 2, ['url' => BASE_URI]);
         $json = json_decode($json);
 
-        $cd = new \Modl\ConfigDAO();
+        $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
         if(isset($json)) {

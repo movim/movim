@@ -172,7 +172,7 @@ class Builder
             $meta->setAttribute('content', $widgets->description);
             $metas->appendChild($meta);
         } else {
-            $cd = new \Modl\ConfigDAO();
+            $cd = new \Modl\ConfigDAO;
             $config = $cd->get();
 
             $meta = $dom->createElement('meta');

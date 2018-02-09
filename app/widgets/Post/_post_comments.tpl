@@ -33,7 +33,7 @@
         {if="$value->title || $value->contentraw"}
         <li id="{$value->nodeid|cleanupId}"
             {if="$value->isMine(true) && $value->isLike()"}class="mine"{/if}>
-            {if="$value->isMine()"}
+            {if="$value->isMine() || $post->isMine()"}
                 <span class="control icon gray active"
                       onclick="PostActions_ajaxDelete('{$value->origin}', '{$value->node}', '{$value->nodeid}')">
                     <i class="zmdi zmdi-delete"></i>
