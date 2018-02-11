@@ -575,9 +575,10 @@ class Chat extends \Movim\Widget\Base
         $view->assign('anon', false);
 
         $id = new \Modl\InfoDAO;
-        $view->assign('info', $id->getJid($this->user->getServer()));
+        $info = $id->getJid($this->user->getServer());
+        $view->assign('info', $info);
 
-        if($muc) {
+        if ($muc) {
             $md = new \Modl\MessageDAO;
             $cd = new \Modl\ConferenceDAO;
             $pd = new \Modl\PresenceDAO;
@@ -586,6 +587,11 @@ class Chat extends \Movim\Widget\Base
             $view->assign('subject', $md->getRoomSubject($jid));
             $view->assign('presence', $pd->getMyPresenceRoom($jid));
             $view->assign('conference', $cd->get($jid));
+
+            $mucinfo = $id->getJid(explodeJid($jid)['server']);
+            if ($mucinfo) {
+                $view->assign('info', $mucinfo);
+            }
         } else {
             $cd = new \Modl\ContactDAO;
             $cr = $cd->getRosterItem($jid);
@@ -597,20 +603,20 @@ class Chat extends \Movim\Widget\Base
 
     function prepareMessages($jid, $muc = false)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $md = new \Modl\MessageDAO;
 
-        if($muc) {
+        if ($muc) {
             $messages = $md->getRoom(echapJid($jid), 0, $this->_pagination);
         } else {
             $messages = $md->getContact(echapJid($jid), 0, $this->_pagination);
         }
 
-        if(is_array($messages)) {
+        if (is_array($messages)) {
             $messages = array_reverse($messages);
 
-            foreach($messages as $message) {
+            foreach ($messages as $message) {
                 $this->prepareMessage($message);
             }
         }
@@ -621,7 +627,8 @@ class Chat extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $contact = $cd->get($jid);
         $me = $cd->get();
-        if($me == null) {
+
+        if ($me == null) {
             $me = new \Modl\Contact;
         }
 

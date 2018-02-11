@@ -91,7 +91,7 @@
                 <li onclick="MovimUtils.reload('{$c->route('chat', $parsed['path'])}')">
                 {/if}
             {else}
-                <li onclick="MovimUtils.reload('{$value}')">
+                <li onclick="MovimUtils.reload('{$info->abuseaddresses[0]}')">
             {/if}
                 <p class="normal">{$c->__('chat.report_abuse')}</p>
             </li>
