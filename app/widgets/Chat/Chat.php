@@ -589,7 +589,7 @@ class Chat extends \Movim\Widget\Base
             $view->assign('conference', $cd->get($jid));
 
             $mucinfo = $id->getJid(explodeJid($jid)['server']);
-            if ($mucinfo) {
+            if ($mucinfo && !empty($mucinfo->abuseaddresses)) {
                 $view->assign('info', $mucinfo);
             }
         } else {
