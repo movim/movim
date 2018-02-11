@@ -78,6 +78,7 @@ class PublishBrief extends \Movim\Widget\Base
     {
         $p = new \Modl\Postn;
         $p->title = $form->title->value;
+        $p->content = $form->content->value;
 
         if(Validator::notEmpty()->url()->validate($form->embed->value)) {
             array_push($p->links, $form->embed->value);
