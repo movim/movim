@@ -297,26 +297,6 @@ class Contact extends Model
         return $dt->format('d-m-Y');
     }
 
-    function getAlbum()
-    {
-        $uri = str_replace(
-            ' ',
-            '%20',
-            'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=80c1aa3abfa9e3d06f404a2e781e38f9&artist='.
-                $this->tuneartist.
-                '&album='.
-                $this->tunesource.
-                '&format=json'
-            );
-
-        $json = json_decode(requestURL($uri, 2));
-
-        if(isset($json->album)) {
-            $json->album->url = $json->album->image[2]->{'#text'};
-            return $json->album;
-        }
-    }
-
     function countSubscribers()
     {
         $cd = new \Modl\ContactDAO;
