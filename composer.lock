@@ -914,16 +914,16 @@
         },
         {
             "name": "pear/net_dns2",
-            "version": "v1.4.3",
+            "version": "v1.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mikepultz/netdns2.git",
-                "reference": "24c84c98c8a85a1f3b6aa9b17df60d32a2d254e9"
+                "reference": "9596a781b4358ee7c1ee0d6b884667c6c4d9a204"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mikepultz/netdns2/zipball/24c84c98c8a85a1f3b6aa9b17df60d32a2d254e9",
-                "reference": "24c84c98c8a85a1f3b6aa9b17df60d32a2d254e9",
+                "url": "https://api.github.com/repos/mikepultz/netdns2/zipball/9596a781b4358ee7c1ee0d6b884667c6c4d9a204",
+                "reference": "9596a781b4358ee7c1ee0d6b884667c6c4d9a204",
                 "shasum": ""
             },
             "require": {
@@ -954,7 +954,7 @@
                 "dns",
                 "network"
             ],
-            "time": "2017-02-12T21:14:52+00:00"
+            "time": "2018-02-13T03:07:54+00:00"
         },
         {
             "name": "psr/http-message",
