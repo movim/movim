@@ -10,7 +10,7 @@ class BOB extends Payload
         $cid = (string)$stanza->attributes()->cid;
         $id = (string)$parent->attributes()->id;
 
-        $this->pack(array($from, $id, $cid));
+        $this->pack([$from, $id, $cid]);
         $this->deliver();
     }
 }

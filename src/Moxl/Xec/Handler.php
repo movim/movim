@@ -171,6 +171,8 @@ class Handler
 
             'fa9d41e26f664d9056618a4afe213861' => 'Post',
 
+            '53b95afd89dcb7199dfcca39a90592eb' => 'Confirm', // XEP-0070
+
             '9952d726429340d482ecac82c1496191' => 'BOB',
 
             '4c9681f0e9aca8a5b65f86b8b80d490f' => 'DiscoInfo',

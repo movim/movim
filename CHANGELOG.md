@@ -4,6 +4,7 @@ Moxl Changelog
 v1.8 (trunk)
 ---------------------------
 * Add XEP-0059: Result Set Management
+* Add XEP-0070: Verifying HTTP Requests via XMPP
 
 v1.7
 ---------------------------

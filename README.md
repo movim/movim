@@ -60,6 +60,7 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0054](https://xmpp.org/extensions/xep-0054.html) | vcard-temp | Yes | Add Gender + Marital elements (non-standard) |
 | [XEP-0059](https://xmpp.org/extensions/xep-0059.html) | Result Set Management | Yes | To query Pubsub and PEP items |
 | [XEP-0060](https://xmpp.org/extensions/xep-0060.html) | Publish-Subscribe | Yes | Implemented for the Groups + Microblog |
+| [XEP-0070](https://xmpp.org/extensions/xep-0070.html) | Verifying HTTP Requests via XMPP | Yes | Only the message part |
 | [XEP-0071](https://xmpp.org/extensions/xep-0071.html) | XHTML-IM | Yes | Used for Pubsub publication |
 | [XEP-0077](https://xmpp.org/extensions/xep-0077.html) | In-Band Registration | Yes | jabber: x:oob support |
 | [XEP-0080](https://xmpp.org/extensions/xep-0080.html) | User Location | Not yet | For message reception in XEP-0277 + Contact Location |

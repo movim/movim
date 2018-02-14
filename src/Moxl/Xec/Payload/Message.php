@@ -33,11 +33,16 @@ class Message extends Payload
         $jid = explode('/',(string)$stanza->attributes()->from);
         $to = current(explode('/',(string)$stanza->attributes()->to));
 
-        if($stanza->composing)
+        if ($stanza->confirm
+        && $stanza->confirm->attributes()->xmlns == 'http://jabber.org/protocol/http-auth') {
+            return;
+        }
+
+        if ($stanza->composing)
             $this->event('composing', [$jid[0], $to]);
-        if($stanza->paused)
+        if ($stanza->paused)
             $this->event('paused', [$jid[0], $to]);
-        if($stanza->gone)
+        if ($stanza->gone)
             $this->event('gone', [$jid[0], $to]);
 
         $m = new \Modl\Message;
@@ -46,7 +51,7 @@ class Message extends Payload
         $md = new \Modl\MessageDAO;
         $md->set($m);
 
-        if($m->body || $m->subject) {
+        if ($m->body || $m->subject) {
             $this->pack($m);
             $this->deliver();
         }
