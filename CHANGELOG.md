@@ -14,6 +14,7 @@ v0.13.1 (trunk)
  * Add a Preview widget to allow previsualisation of pictures in Movim
  * Fix compatibility with PHP 5.6
  * Code cleanup
+ * Add support of XEP-0070: Verifying HTTP Requests via XMPP
 
 v0.13
 ---------------------------
