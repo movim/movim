@@ -3,7 +3,7 @@
     {if="$info"}
         <br />
         <h4 class="gray">
-            {$c->__('communityheader.unsubscribe_text')} : {$info->name}
+            {$c->__('communityheader.unsubscribe_text')}: {$info->name}
         </h4>
     {/if}
 </section>
