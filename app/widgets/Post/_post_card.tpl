@@ -73,7 +73,7 @@
             {if="$nsfw == false && $post->isNSFW()"}
                 <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
             {/if}
-            <section {if="!$post->isShort()"}class="limited"{/if}>
+            <section {if="!$post->isShort()"}class="limited"{/if} dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
                 <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
                     <i class="zmdi zmdi-eye"></i>
                 </label>
@@ -98,7 +98,7 @@
             {if="$nsfw == false && $post->isNSFW()"}
                 <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
             {/if}
-            <section>
+            <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
                 <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
                     <i class="zmdi zmdi-eye"></i>
                 </label>
