@@ -9,6 +9,7 @@ use Movim\Cache;
 
 use Respect\Validation\Validator;
 use Michelf\MarkdownExtra;
+use Cocur\Slugify\Slugify;
 
 class PublishBrief extends \Movim\Widget\Base
 {
@@ -124,9 +125,9 @@ class PublishBrief extends \Movim\Widget\Base
 
             $tags = [];
             $tagsTitle = getHashtags(htmlspecialchars($form->title->value));
-            if(is_array($tagsTitle)) array_merge($tags, $tagsTitle);
+            if (is_array($tagsTitle)) array_merge($tags, $tagsTitle);
 
-            if(Validator::stringType()->notEmpty()->validate(trim($form->content->value))) {
+            if (Validator::stringType()->notEmpty()->validate(trim($form->content->value))) {
                 $content = $form->content->value;
 
                 $parser = new MarkdownExtra;
@@ -134,18 +135,18 @@ class PublishBrief extends \Movim\Widget\Base
                 $content_xhtml = addHFR($parser->transform($content));
 
                 $tagsContent = getHashtags(htmlspecialchars($form->content->value));
-                if(is_array($tagsContent)) $tags = array_merge($tags, $tagsContent);
+                if (is_array($tagsContent)) $tags = array_merge($tags, $tagsContent);
 
-                if(!empty($content)) {
+                if (!empty($content)) {
                     $p->setContent(htmlspecialchars($content));
                 }
 
-                if(!empty($content_xhtml)) {
+                if (!empty($content_xhtml)) {
                     $p->setContentXhtml($content_xhtml);
                 }
             }
 
-            if(Validator::stringType()->notEmpty()->validate(trim($form->id->value))) {
+            if (Validator::stringType()->notEmpty()->validate(trim($form->id->value))) {
                 $p->setId($form->id->value);
 
                 $pd = new \Modl\PostnDAO;
@@ -154,23 +155,32 @@ class PublishBrief extends \Movim\Widget\Base
                 if(isset($post)) {
                     $p->setPublished(strtotime($post->published));
                 }
+            } else {
+                $slugify = new Slugify;
+                $slug = $slugify->slugify(
+                    strtok(wordwrap($form->title->value, 80, "\n"), "\n")
+                );
+
+                if (!empty($slug) && strlen($slug) > 32) {
+                    $p->setId($slug. '-'. \generateKey(6));
+                }
             }
 
-            if($comments) {
+            if ($comments) {
                 $p->enableComments($comments->node);
             } else {
                 $p->enableComments();
             }
 
-            if($form->open->value === true) {
+            if ($form->open->value === true) {
                 $p->isOpen();
             }
 
-            if(is_array($tags)) {
+            if (is_array($tags)) {
                 $p->setTags($tags);
             }
 
-            if($form->reply->value) {
+            if ($form->reply->value) {
                 $pd = new \Modl\PostnDAO;
                 $post = $pd->get($form->replyorigin->value,
                                  $form->replynode->value,

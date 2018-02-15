@@ -546,7 +546,7 @@ class Postn extends Model
 
     public function isRTL()
     {
-        return isRTL($this->contentraw);
+        return (isRTL($this->contentraw) || isRTL($this->title));
     }
 
     public function isComment()
