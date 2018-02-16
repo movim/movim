@@ -39,7 +39,7 @@ class Post extends \Movim\Widget\Base
                     $this->rpc('MovimTpl.fill',
                         '#post_widget.'.cleanupId($p->nodeid),
                         $this->preparePost($p));
-                    $this->rpc('MovimUtils.enableVideos');
+                    $this->rpc('MovimUtils.enhanceArticlesContent');
                 }
             }
         }
