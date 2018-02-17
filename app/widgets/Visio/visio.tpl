@@ -31,7 +31,7 @@
         </li>
     </ul>
 
-    <video id="video" autoplay muted width="400" height="300"></video>
+    <video id="video" autoplay muted></video>
     <video id="remote_video" autoplay></video>
     <canvas class="level"></canvas>
     <div class="controls">

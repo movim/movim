@@ -341,23 +341,8 @@ class Rooms extends \Movim\Widget\Base
             array_push($arr, $item);
         }
 
-        //$sd = new \Modl\SubscriptionDAO;
         $cd = new \Modl\ConferenceDAO;
         $session = Session::start();
-
-        /*$subscribed = $sd->getSubscribed();
-        if($subscribed) {
-            foreach($subscribed as $s) {
-                array_push($arr,
-                    [
-                        'type'      => 'subscription',
-                        'server'    => $s->server,
-                        'title'     => $s->title,
-                        'subid'     => $s->subid,
-                        'tags'      => $s->tags,
-                        'node'      => $s->node]);
-            }
-        }*/
 
         $conferences = $cd->getAll();
         if($conferences) {

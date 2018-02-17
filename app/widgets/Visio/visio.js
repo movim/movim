@@ -13,15 +13,9 @@ var Visio = {
     type: null,
 
     localCreated: false,
-    ctrack: false,
 
     setFrom: function(from) {
         Visio.from = from;
-    },
-
-    positionLoop: function () {
-        requestAnimationFrame(Visio.positionLoop);
-        console.log(Visio.ctrack.getCurrentPosition());
     },
 
     /*
@@ -44,8 +38,6 @@ var Visio = {
 
         var cnvs = document.querySelector('#visio .level');
         var cnvs_cntxt = cnvs.getContext("2d");
-
-        Visio.positionLoop();
 
         microphone.connect(javascriptNode);
         javascriptNode.connect(Visio.audioContext.destination);
@@ -358,10 +350,6 @@ var Visio = {
 
 MovimWebsocket.attach(function() {
     Visio_ajaxAskInit();
-
-    Visio.ctrack = new clm.tracker();
-    Visio.ctrack.init();
-    Visio.ctrack.start(document.getElementById('video'));
 });
 
 window.onbeforeunload = function() {
