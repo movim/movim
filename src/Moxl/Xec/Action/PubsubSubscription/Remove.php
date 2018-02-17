@@ -11,11 +11,14 @@ class Remove extends Errors
     private $_server;
     private $_from;
     private $_node;
+    private $_pepnode = 'urn:xmpp:pubsub:subscription';
 
     public function request()
     {
         $this->store();
-        PubsubSubscription::listRemove($this->_server, $this->_from, $this->_node);
+        PubsubSubscription::listRemove(
+            $this->_server, $this->_from, $this->_node, $this->_pepnode
+        );
     }
 
     public function setServer($server)
@@ -36,8 +39,19 @@ class Remove extends Errors
         return $this;
     }
 
+    public function setPEPNode($pepnode)
+    {
+        $this->_pepnode = $pepnode;
+        return $this;
+    }
+
     public function handle($stanza, $parent = false)
     {
+        if ($this->_pepnode == 'urn:xmpp:pubsub:movim-public-subscription') {
+            $sd = new \Modl\SubscriptionDAO;
+            $sd->deleteNode($this->_server, $this->_node);
+        }
+
         $this->deliver();
     }
 }

@@ -14,14 +14,14 @@ class PubsubSubscription
         return sha1($id);
     }
 
-    static function listAdd($server, $jid, $node, $title)
+    static function listAdd($server, $jid, $node, $title, $pepnode = 'urn:xmpp:pubsub:subscription')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', 'urn:xmpp:pubsub:subscription');
+        $publish->setAttribute('node', $pepnode);
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
@@ -41,14 +41,14 @@ class PubsubSubscription
         \Moxl\API::request($xml);
     }
 
-    static function listRemove($server, $jid, $node)
+    static function listRemove($server, $jid, $node, $pepnode = 'urn:xmpp:pubsub:subscription')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
 
         $retract = $dom->createElement('retract');
-        $retract->setAttribute('node', 'urn:xmpp:pubsub:subscription');
+        $retract->setAttribute('node', $pepnode);
         $pubsub->appendChild($retract);
 
         $item = $dom->createElement('item');
@@ -56,15 +56,6 @@ class PubsubSubscription
         $retract->appendChild($item);
 
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
-        \Moxl\API::request($xml);
-    }
-
-    static function listGetOwned() {
-        $xml = '<pubsub xmlns="http://jabber.org/protocol/pubsub">
-                <affiliations/>
-            </pubsub>';
-
-        $xml = \Moxl\API::iqWrapper($xml, false, 'get');
         \Moxl\API::request($xml);
     }
 }
