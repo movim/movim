@@ -11,6 +11,8 @@ use Moxl\Xec\Action\Roster\GetList;
 use Moxl\Xec\Action\Pubsub\GetItems;
 use Moxl\Xec\Action\Storage\Get;
 
+use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
+
 use Moxl\Stanza\Stream;
 
 use Movim\Session;
@@ -65,6 +67,7 @@ class Presence extends \Movim\Widget\Base
         $this->onSessionUp();
         $this->ajaxServerCapsGet();
         $this->ajaxBookmarksGet();
+        $this->ajaxPubsubSubscriptionsGet();
         $this->ajaxFeedRefresh();
         $this->ajaxServerDisco();
         $this->ajaxProfileRefresh();
@@ -99,10 +102,20 @@ class Presence extends \Movim\Widget\Base
         if($html) $this->rpc('MovimTpl.fill', '#presence_widget', $html);
     }
 
-    function ajaxConfigGet() {
+    function ajaxConfigGet()
+    {
         $s = new Get;
         $s->setXmlns('movim:prefs')
           ->request();
+    }
+
+    function ajaxPubsubSubscriptionsGet()
+    {
+        $session = Session::start();
+        $ps = new GetPubsubSubscriptions;
+        $ps->setTo($session->get('jid'))
+           ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
+           ->request();
     }
 
     // We get the server capabilities

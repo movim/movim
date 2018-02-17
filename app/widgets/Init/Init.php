@@ -33,14 +33,19 @@ class Init extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxCreatePersistentStorage($node)
+    function ajaxCreatePersistentStorage($node, $max = false)
     {
         $this->createPersistentStorage($node);
 
         $p = new ConfigurePersistentStorage;
         $p->setTo($this->user->getLogin())
-          ->setNode($node)
-          ->request();
+          ->setNode($node);
+
+        if(is_int($max)) {
+            $p->setMaxItems($max);
+        }
+
+        $p->request();
     }
 
     function ajaxCreatePersistentPresenceStorage($node)

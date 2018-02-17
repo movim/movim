@@ -11,6 +11,7 @@ class Visio extends \Movim\Widget\Base
     {
         $this->addcss('visio.css');
         $this->addjs('visio.js');
+        $this->addjs('clmtrackr.js');
 
         $this->registerEvent('jingle_sessioninitiate', 'onSDP');
         $this->registerEvent('jingle_transportinfo', 'onCandidate');

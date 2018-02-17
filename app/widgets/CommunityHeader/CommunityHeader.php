@@ -50,9 +50,6 @@ class CommunityHeader extends \Movim\Widget\Base
     {
         list($origin, $node) = array_values($packet->content);
 
-        $r = new Rooms;
-        $r->setBookmark();
-
         $this->ajaxGetMetadata($origin, $node);
 
         Notification::append(null, $this->__('communityheader.subscribed'));
@@ -66,9 +63,6 @@ class CommunityHeader extends \Movim\Widget\Base
     function onUnsubscribed($packet)
     {
         list($origin, $node) = array_values($packet->content);
-
-        $r = new Rooms;
-        $r->setBookmark();
 
         $this->ajaxGetMetadata($origin, $node);
 

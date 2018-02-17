@@ -341,11 +341,11 @@ class Rooms extends \Movim\Widget\Base
             array_push($arr, $item);
         }
 
-        $sd = new \Modl\SubscriptionDAO;
+        //$sd = new \Modl\SubscriptionDAO;
         $cd = new \Modl\ConferenceDAO;
         $session = Session::start();
 
-        $subscribed = $sd->getSubscribed();
+        /*$subscribed = $sd->getSubscribed();
         if($subscribed) {
             foreach($subscribed as $s) {
                 array_push($arr,
@@ -357,7 +357,7 @@ class Rooms extends \Movim\Widget\Base
                         'tags'      => $s->tags,
                         'node'      => $s->node]);
             }
-        }
+        }*/
 
         $conferences = $cd->getAll();
         if($conferences) {
