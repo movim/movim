@@ -52,6 +52,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Confirm/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
@@ -84,6 +86,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishHelp/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -111,7 +115,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"POT-Creation-Date: 2018-02-19 22:43+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
@@ -761,7 +765,6 @@ msgid "You cannot create a new community on this server"
 msgstr "Você não pode criar uma nova comunidade neste servidor"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
-#: [statistics]subscriptions
 msgid "Subscriptions"
 msgstr "Inscrições"
 
@@ -961,6 +964,18 @@ msgstr ""
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "URL com CSS personalizado para seu blog"
+
+#: [confirm]title
+msgid "Confirmation of authentication"
+msgstr ""
+
+#: [confirm]description
+msgid "The following platform would like your confirmation to authentify this account"
+msgstr ""
+
+#: [confirm]code
+msgid "Authentication code"
+msgstr ""
 
 #: [general]legend
 msgid "General Informations"
@@ -1480,7 +1495,7 @@ msgstr "Novidades"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Postagens recentemente publicadas em comunidades nas quais ainda não está inscrito"
 
-#: [post]new [publish]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "Novo artigo"
 
@@ -1596,23 +1611,23 @@ msgstr "Estado atualizado"
 msgid "Presence"
 msgstr "Presente"
 
-#: [publish]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "Visualizar"
 
-#: [publish]help [page]help
+#: [publish]help [publishhelp]title [page]help
 msgid "Help"
 msgstr "Ajuda"
 
-#: [publish]help_more
+#: [publish]help_more [publishhelp]more
 msgid "More help"
 msgstr "Mais ajuda"
 
-#: [publish]help_manual
+#: [publish]help_manual [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "Manual de sintaxe Markdown"
 
-#: [publish]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "Você pode formatar o seu conteúdo utilizando Markdown"
 
@@ -1624,16 +1639,16 @@ msgstr "Link"
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: [publish]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 #, fuzzy
 msgid "Please enter a valid URL"
 msgstr "Por favor informe uma URL válida"
 
-#: [publish]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr "Sem conteúdo para visualizar"
 
-#: [publish]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr "Por favor forneça um título"
 
@@ -1676,6 +1691,16 @@ msgstr "Escrever uma postagem"
 #: [publishbrief]add_link
 msgid "Add a link"
 msgstr "Adicionar um novo endereço"
+
+#: [publishbrief]attach
+#, fuzzy
+msgid "Add a file or a picture"
+msgstr "Adicionar um arquivo ou uma imagem ao seu artigo"
+
+#: [publishbrief]no_publication
+#, fuzzy
+msgid "You cannot publish a post here"
+msgstr "Você não pode publicar um artigo neste Grupo"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1860,14 +1885,6 @@ msgstr "Desde"
 #: [statistics]sessions
 msgid "Sessions"
 msgstr "Sessões"
-
-#: [statistics]monthly_sub
-msgid "Monthly Subscriptions"
-msgstr "Inscrições Mensais"
-
-#: [statistics]monthly_sub_cum
-msgid "Monthly Subscriptions Cumulated"
-msgstr "Inscrições Mensais Acumuladas"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -2799,6 +2816,12 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
+
+#~ msgid "Monthly Subscriptions"
+#~ msgstr "Inscrições Mensais"
+
+#~ msgid "Monthly Subscriptions Cumulated"
+#~ msgstr "Inscrições Mensais Acumuladas"
 
 #, fuzzy
 #~ msgid "What do the little banners refer to"

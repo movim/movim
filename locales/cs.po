@@ -48,6 +48,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Confirm/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
@@ -80,6 +82,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishHelp/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -107,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"POT-Creation-Date: 2018-02-19 22:43+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -757,7 +761,6 @@ msgid "You cannot create a new community on this server"
 msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
-#: [statistics]subscriptions
 msgid "Subscriptions"
 msgstr "Odběry"
 
@@ -957,6 +960,18 @@ msgstr ""
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "Vlastní URL CSS pro váš blog"
+
+#: [confirm]title
+msgid "Confirmation of authentication"
+msgstr ""
+
+#: [confirm]description
+msgid "The following platform would like your confirmation to authentify this account"
+msgstr ""
+
+#: [confirm]code
+msgid "Authentication code"
+msgstr ""
 
 #: [general]legend
 msgid "General Informations"
@@ -1476,7 +1491,7 @@ msgstr "Co je žhavé"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
-#: [post]new [publish]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "Nové příspěvky"
 
@@ -1592,23 +1607,23 @@ msgstr "Stav aktualizován"
 msgid "Presence"
 msgstr "Přítomnost"
 
-#: [publish]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "Ukázka"
 
-#: [publish]help [page]help
+#: [publish]help [publishhelp]title [page]help
 msgid "Help"
 msgstr "Pomoc"
 
-#: [publish]help_more
+#: [publish]help_more [publishhelp]more
 msgid "More help"
 msgstr "Další pomoc"
 
-#: [publish]help_manual
+#: [publish]help_manual [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "Návod na syntaxi Markdown"
 
-#: [publish]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "Můžete svůj obsah formátovat syntaxí Markdown"
 
@@ -1620,16 +1635,16 @@ msgstr "Odkaz"
 msgid "Tags"
 msgstr "Štítky"
 
-#: [publish]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 #, fuzzy
 msgid "Please enter a valid URL"
 msgstr "Uveďte prosím validní URL"
 
-#: [publish]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr "Žádný obsah k nahlédnutí"
 
-#: [publish]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr "Zadejte prosím nadpis"
 
@@ -1672,6 +1687,16 @@ msgstr "Napsat příspěvek"
 #: [publishbrief]add_link
 msgid "Add a link"
 msgstr "Přidat odkaz"
+
+#: [publishbrief]attach
+#, fuzzy
+msgid "Add a file or a picture"
+msgstr "Přidat soubor nebo obrázek k vašemu příspěvku"
+
+#: [publishbrief]no_publication
+#, fuzzy
+msgid "You cannot publish a post here"
+msgstr "Nemůžete publikovat příspěvek v této Skupině"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1856,14 +1881,6 @@ msgstr "Od"
 #: [statistics]sessions
 msgid "Sessions"
 msgstr "Sezení"
-
-#: [statistics]monthly_sub
-msgid "Monthly Subscriptions"
-msgstr "Měsíční předplatné"
-
-#: [statistics]monthly_sub_cum
-msgid "Monthly Subscriptions Cumulated"
-msgstr "Měsíční předplatné kumulativně"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -2795,6 +2812,12 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "Monthly Subscriptions"
+#~ msgstr "Měsíční předplatné"
+
+#~ msgid "Monthly Subscriptions Cumulated"
+#~ msgstr "Měsíční předplatné kumulativně"
 
 #, fuzzy
 #~ msgid "What do the little banners refer to"

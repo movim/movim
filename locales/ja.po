@@ -48,6 +48,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Confirm/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
@@ -80,6 +82,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishHelp/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -107,7 +111,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"POT-Creation-Date: 2018-02-19 22:43+0200\n"
 "PO-Revision-Date: 2017-03-30 18:46+0000\n"
 "Last-Translator: RACER\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -766,7 +770,6 @@ msgid "You cannot create a new community on this server"
 msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
-#: [statistics]subscriptions
 msgid "Subscriptions"
 msgstr ""
 
@@ -970,6 +973,18 @@ msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
+msgstr ""
+
+#: [confirm]title
+msgid "Confirmation of authentication"
+msgstr ""
+
+#: [confirm]description
+msgid "The following platform would like your confirmation to authentify this account"
+msgstr ""
+
+#: [confirm]code
+msgid "Authentication code"
 msgstr ""
 
 #: [general]legend
@@ -1494,7 +1509,7 @@ msgstr ""
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
-#: [post]new [publish]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "新しい投稿"
 
@@ -1611,23 +1626,23 @@ msgstr "ステータスを更新しました"
 msgid "Presence"
 msgstr ""
 
-#: [publish]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "プレビュー"
 
-#: [publish]help [page]help
+#: [publish]help [publishhelp]title [page]help
 msgid "Help"
 msgstr "ヘルプ"
 
-#: [publish]help_more
+#: [publish]help_more [publishhelp]more
 msgid "More help"
 msgstr ""
 
-#: [publish]help_manual
+#: [publish]help_manual [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr ""
 
-#: [publish]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr ""
 
@@ -1639,16 +1654,16 @@ msgstr "リンク"
 msgid "Tags"
 msgstr "タグ"
 
-#: [publish]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 #, fuzzy
 msgid "Please enter a valid URL"
 msgstr "正しいJabber IDを入力してください"
 
-#: [publish]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr ""
 
-#: [publish]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr ""
 
@@ -1693,6 +1708,14 @@ msgstr "新しい投稿"
 #, fuzzy
 msgid "Add a link"
 msgstr "新しいURLを追加する"
+
+#: [publishbrief]attach
+msgid "Add a file or a picture"
+msgstr ""
+
+#: [publishbrief]no_publication
+msgid "You cannot publish a post here"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1880,14 +1903,6 @@ msgstr ""
 #: [statistics]sessions
 msgid "Sessions"
 msgstr "セッション"
-
-#: [statistics]monthly_sub
-msgid "Monthly Subscriptions"
-msgstr ""
-
-#: [statistics]monthly_sub_cum
-msgid "Monthly Subscriptions Cumulated"
-msgstr ""
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"

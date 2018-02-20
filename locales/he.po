@@ -47,6 +47,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Confirm/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
@@ -79,6 +81,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishHelp/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -106,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"POT-Creation-Date: 2018-02-19 22:43+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
@@ -761,7 +765,6 @@ msgid "You cannot create a new community on this server"
 msgstr ""
 
 #: [communityaffiliation]subscriptions [group]subscriptions
-#: [statistics]subscriptions
 msgid "Subscriptions"
 msgstr "הרשמות"
 
@@ -960,6 +963,18 @@ msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
+msgstr ""
+
+#: [confirm]title
+msgid "Confirmation of authentication"
+msgstr ""
+
+#: [confirm]description
+msgid "The following platform would like your confirmation to authentify this account"
+msgstr ""
+
+#: [confirm]code
+msgid "Authentication code"
 msgstr ""
 
 #: [general]legend
@@ -1480,7 +1495,7 @@ msgstr "מה חם"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
-#: [post]new [publish]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "פרסום חדש"
 
@@ -1596,23 +1611,23 @@ msgstr "מצב עודכן"
 msgid "Presence"
 msgstr "נוכחות"
 
-#: [publish]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "תצוגה מקדימה"
 
-#: [publish]help [page]help
+#: [publish]help [publishhelp]title [page]help
 msgid "Help"
 msgstr "עזרה"
 
-#: [publish]help_more
+#: [publish]help_more [publishhelp]more
 msgid "More help"
 msgstr "עוד עזרה"
 
-#: [publish]help_manual
+#: [publish]help_manual [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr ""
 
-#: [publish]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr ""
 
@@ -1624,16 +1639,16 @@ msgstr "קישור"
 msgid "Tags"
 msgstr "תגיות"
 
-#: [publish]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 #, fuzzy
 msgid "Please enter a valid URL"
 msgstr "אנא הזן מזהה Jabber תקף"
 
-#: [publish]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr ""
 
-#: [publish]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr "אנא ספק כותרת"
 
@@ -1676,6 +1691,16 @@ msgstr ""
 #: [publishbrief]add_link
 msgid "Add a link"
 msgstr ""
+
+#: [publishbrief]attach
+#, fuzzy
+msgid "Add a file or a picture"
+msgstr "הוסף קובץ או תמונה לפרסום שלך"
+
+#: [publishbrief]no_publication
+#, fuzzy
+msgid "You cannot publish a post here"
+msgstr "אין באפשרותך לפרסם בקבוצה זו"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1860,14 +1885,6 @@ msgstr "מאז"
 #: [statistics]sessions
 msgid "Sessions"
 msgstr "הפעלות"
-
-#: [statistics]monthly_sub
-msgid "Monthly Subscriptions"
-msgstr "הרשמות חודשיות"
-
-#: [statistics]monthly_sub_cum
-msgid "Monthly Subscriptions Cumulated"
-msgstr "הרשמות חודשיות שהצטברו"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -2799,6 +2816,12 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
+
+#~ msgid "Monthly Subscriptions"
+#~ msgstr "הרשמות חודשיות"
+
+#~ msgid "Monthly Subscriptions Cumulated"
+#~ msgstr "הרשמות חודשיות שהצטברו"
 
 #, fuzzy
 #~ msgid "What do the little banners refer to"

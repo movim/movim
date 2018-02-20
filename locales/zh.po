@@ -51,6 +51,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Config/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Confirm/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Contact/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
@@ -83,6 +85,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/PublishHelp/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Roster/locales.ini
@@ -110,7 +114,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 23:47+0200\n"
+"POT-Creation-Date: 2018-02-19 22:43+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -760,7 +764,6 @@ msgid "You cannot create a new community on this server"
 msgstr "你不能在此服务器上创建社群"
 
 #: [communityaffiliation]subscriptions [group]subscriptions
-#: [statistics]subscriptions
 msgid "Subscriptions"
 msgstr "订阅"
 
@@ -960,6 +963,18 @@ msgstr ""
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
 msgstr "你博客自定义 CSS 的 URL"
+
+#: [confirm]title
+msgid "Confirmation of authentication"
+msgstr ""
+
+#: [confirm]description
+msgid "The following platform would like your confirmation to authentify this account"
+msgstr ""
+
+#: [confirm]code
+msgid "Authentication code"
+msgstr ""
 
 #: [general]legend
 msgid "General Informations"
@@ -1479,7 +1494,7 @@ msgstr "当前热门"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "在你（还）没订阅的群组中发表的新帖子"
 
-#: [post]new [publish]new
+#: [post]new [publish]new [publishbrief]new
 msgid "New post"
 msgstr "新帖子"
 
@@ -1595,23 +1610,23 @@ msgstr "状态已更新"
 msgid "Presence"
 msgstr "在线"
 
-#: [publish]preview
+#: [publish]preview [publishbrief]preview
 msgid "Preview"
 msgstr "预览"
 
-#: [publish]help [page]help
+#: [publish]help [publishhelp]title [page]help
 msgid "Help"
 msgstr "帮助"
 
-#: [publish]help_more
+#: [publish]help_more [publishhelp]more
 msgid "More help"
 msgstr "更多帮助"
 
-#: [publish]help_manual
+#: [publish]help_manual [publishhelp]manual
 msgid "Markdown syntax manual"
 msgstr "Markdown 语法手册"
 
-#: [publish]content_text
+#: [publish]content_text [publishbrief]content_text
 msgid "You can format your content using Markdown"
 msgstr "你可以使用 Markdown 来格式化内容"
 
@@ -1623,16 +1638,16 @@ msgstr "连接"
 msgid "Tags"
 msgstr "标签"
 
-#: [publish]valid_url
+#: [publish]valid_url [publishbrief]valid_url
 #, fuzzy
 msgid "Please enter a valid URL"
 msgstr "请输入一个有效的URL"
 
-#: [publish]no_content_preview
+#: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr "无内容可预览"
 
-#: [publish]no_title
+#: [publish]no_title [publishbrief]no_title
 msgid "Please provide a title"
 msgstr "请提供一个标题"
 
@@ -1675,6 +1690,16 @@ msgstr "发一篇帖子…"
 #: [publishbrief]add_link
 msgid "Add a link"
 msgstr "添加链接"
+
+#: [publishbrief]attach
+#, fuzzy
+msgid "Add a file or a picture"
+msgstr "给你的帖子附加文件或图片"
+
+#: [publishbrief]no_publication
+#, fuzzy
+msgid "You cannot publish a post here"
+msgstr "你不能在这个群组里发帖"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1859,14 +1884,6 @@ msgstr "自"
 #: [statistics]sessions
 msgid "Sessions"
 msgstr "会话"
-
-#: [statistics]monthly_sub
-msgid "Monthly Subscriptions"
-msgstr "月度订阅"
-
-#: [statistics]monthly_sub_cum
-msgid "Monthly Subscriptions Cumulated"
-msgstr "月度订阅累计"
 
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
@@ -2798,6 +2815,12 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Monthly Subscriptions"
+#~ msgstr "月度订阅"
+
+#~ msgid "Monthly Subscriptions Cumulated"
+#~ msgstr "月度订阅累计"
 
 #, fuzzy
 #~ msgid "What do the little banners refer to"
