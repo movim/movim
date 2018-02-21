@@ -54,8 +54,8 @@ class Postn extends Model
 
     public $_struct = [
         'origin'        => ['type' => 'string','size' => 64,'key' => true],
-        'node'          => ['type' => 'string','size' => 96,'key' => true],
-        'nodeid'        => ['type' => 'string','size' => 96,'key' => true],
+        'node'          => ['type' => 'string','size' => 256,'key' => true],
+        'nodeid'        => ['type' => 'string','size' => 128,'key' => true],
         'aname'         => ['type' => 'string','size' => 128],
         'aid'           => ['type' => 'string','size' => 64],
         'aemail'        => ['type' => 'string','size' => 64],
