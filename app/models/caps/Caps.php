@@ -20,18 +20,19 @@ class Caps extends Model
 
     public function set($query, $node = false)
     {
-        if(!$node)
+        if (!$node) {
             $this->node     = (string)$query->query->attributes()->node;
-        else
+        } else {
             $this->node     = $node;
+        }
 
-        if(isset($query->query)) {
-            foreach($query->query->identity as $i) {
-                if($i->attributes()) {
+        if (isset($query->query)) {
+            foreach ($query->query->identity as $i) {
+                if ($i->attributes()) {
                     $this->category = (string)$i->attributes()->category;
                     $this->type     = (string)$i->attributes()->type;
 
-                    if($i->attributes()->name) {
+                    if ($i->attributes()->name) {
                         $this->name = (string)$i->attributes()->name;
                     } else {
                         $this->name = $this->node;
@@ -39,14 +40,14 @@ class Caps extends Model
                 }
             }
 
-            if(isset($query->query->x)) {
-                foreach($query->query->x->field as $field) {
+            if (isset($query->query->x)) {
+                foreach ($query->query->x->field as $field) {
 
                 }
             }
 
             $fet = [];
-            foreach($query->query->feature as $f) {
+            foreach ($query->query->feature as $f) {
                 array_push($fet, (string)$f->attributes()->var);
             }
 
@@ -60,9 +61,9 @@ class Caps extends Model
 
         $roles = ['owner', 'none'];
 
-        foreach($features as $feature) {
+        foreach ($features as $feature) {
             preg_match("/http:\/\/jabber.org\/protocol\/pubsub#(.*)-affiliation$/", $feature, $matches);
-            if(!empty($matches)){
+            if (!empty($matches)){
                 array_push($roles, $matches[1]);
             }
         }

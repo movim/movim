@@ -29,7 +29,7 @@ class Conference extends Model
 
     public function setAvatar($vcard, $conference)
     {
-        if($vcard->vCard->PHOTO->BINVAL) {
+        if ($vcard->vCard->PHOTO->BINVAL) {
             $p = new \Movim\Picture;
             $p->fromBase((string)$vcard->vCard->PHOTO->BINVAL);
             $p->set($conference . '_muc');

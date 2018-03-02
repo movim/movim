@@ -21,7 +21,7 @@ class PostnDAO extends SQL
             where postn.origin = :origin
                 and postn.node = :node';
 
-        if(isset($this->_user)) {
+        if (isset($this->_user)) {
             $this->_sql .= '
                 and (
                     postn.nsfw = (select nsfw from setting where session = :session)
@@ -31,7 +31,7 @@ class PostnDAO extends SQL
             $params += ['setting.session' => $this->_user];
         }
 
-        if(!$around) {
+        if (!$around) {
             $this->_sql .= ' and postn.nodeid = :nodeid';
         } else {
             $compare = ($around == 1) ? '>' : '<';
@@ -78,7 +78,7 @@ class PostnDAO extends SQL
             $params['contact.jid'] = $this->_user;
         }
 
-        if($public) $this->_sql .= ' and postn.open = true';
+        if ($public) $this->_sql .= ' and postn.open = true';
 
         $this->prepare(
             'Postn',
@@ -115,8 +115,6 @@ class PostnDAO extends SQL
             where postn.origin = :origin
                 and postn.node = :node
                 and postn.nodeid in (\''.$ids.'\')';
-//            order by published';
-
 
         $this->prepare(
             'Postn',
@@ -199,7 +197,7 @@ class PostnDAO extends SQL
                     or postn.nsfw is null)
             order by postn.published desc';
 
-        if($limitr !== false)
+        if ($limitr !== false)
             $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
 
         $this->prepare(
@@ -226,7 +224,7 @@ class PostnDAO extends SQL
                 and postn.node = :node
             order by postn.published desc';
 
-        if($limitr !== false) {
+        if ($limitr !== false) {
             $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
         }
 
@@ -251,7 +249,7 @@ class PostnDAO extends SQL
             where nodeid in (select nodeid from tag where tag = :tag)
                 and postn.open = true';
 
-        if(isset($this->_user)) {
+        if (isset($this->_user)) {
             $this->_sql .= '
                     and (
                         postn.nsfw = (select nsfw from setting where session = :session)
@@ -264,7 +262,7 @@ class PostnDAO extends SQL
         $this->_sql .= '
             order by postn.published desc';
 
-        if($limitr !== false) {
+        if ($limitr !== false) {
             $this->_sql .= ' limit '.(int)$limitr.' offset '.(int)$limitf;
         }
 
@@ -316,10 +314,10 @@ class PostnDAO extends SQL
             order by postn.published desc
             ';
 
-        if($limitr)
+        if ($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
-        if($jid == false)
+        if ($jid == false)
             $jid = $this->_user;
 
         $this->prepare(
@@ -344,7 +342,7 @@ class PostnDAO extends SQL
             order by postn.published desc
             ';
 
-        if($limitr)
+        if ($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare(
@@ -373,7 +371,7 @@ class PostnDAO extends SQL
             order by postn.published desc
             ';
 
-        if($limitr)
+        if ($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare(
@@ -401,7 +399,7 @@ class PostnDAO extends SQL
             order by postn.published desc
             ';
 
-        if($limitr)
+        if ($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare(
@@ -428,7 +426,7 @@ class PostnDAO extends SQL
                 and postn.node = :node
                 and postn.open = true';
 
-        if(isset($this->_user)) {
+        if (isset($this->_user)) {
             $this->_sql .= '
                     and (
                         postn.nsfw = (select nsfw from setting where session = :session)
@@ -441,7 +439,7 @@ class PostnDAO extends SQL
         $this->_sql .= '
             order by postn.published desc';
 
-        if($limitr !== false)
+        if ($limitr !== false)
             $this->_sql = $this->_sql.' limit '.(int)$limitr.' offset '.(int)$limitf;
 
         $this->prepare('Postn', $params);
@@ -453,10 +451,10 @@ class PostnDAO extends SQL
     function getComments($posts)
     {
         $commentsid = '';
-        if(is_array($posts)) {
+        if (is_array($posts)) {
             $i = 0;
             foreach($posts as $post) {
-                if($i == 0)
+                if ($i == 0)
                     $commentsid = "'urn:xmpp:microblog:0:comments/".$post->nodeid."'";
                 else
                     $commentsid .= ",'urn:xmpp:microblog:0:comments/".$post->nodeid."'";
@@ -620,7 +618,7 @@ class PostnDAO extends SQL
             order by published desc
                 ';
 
-        if($limitr) {
+        if ($limitr) {
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
         }
 
@@ -661,7 +659,7 @@ class PostnDAO extends SQL
         );
 
         $arr = $this->run(null, 'array');
-        if(is_array($arr) && isset($arr[0]))
+        if (is_array($arr) && isset($arr[0]))
             return $arr[0]['published'];
     }
 
@@ -698,7 +696,7 @@ class PostnDAO extends SQL
 
         $params = [];
 
-        if($this->_user) {
+        if ($this->_user) {
             $this->_sql .= '
                 and (
                     postn.nsfw = (select nsfw from setting where session = :session)
@@ -708,11 +706,11 @@ class PostnDAO extends SQL
             $params += ['setting.session' => $this->_user];
         }
 
-        if($host) {
+        if ($host) {
             $this->_sql .= ' and postn.origin like \'%.' . $host . '\'';
         }
 
-        if($origin) {
+        if ($origin) {
             $this->_sql .= '
                 and origin = :origin
             ';
@@ -735,7 +733,7 @@ class PostnDAO extends SQL
             break;
         }
 
-        if($limitr) {
+        if ($limitr) {
             $this->_sql .= ' limit '.$limitr.' offset '.$limitf;
         }
 
@@ -755,7 +753,7 @@ class PostnDAO extends SQL
                         node = \'urn:xmpp:microblog:0\'
                         and postn.open = true';
 
-                if($host) {
+                if ($host) {
                     $this->_sql .= ' and postn.origin like \'%@' . $host . '\'';
                 }
 
@@ -773,7 +771,7 @@ class PostnDAO extends SQL
                             node = \'urn:xmpp:microblog:0\'
                             and postn.open = true';
 
-                if($host) {
+                if ($host) {
                     $this->_sql .= ' and postn.origin = \'' . $host . '\'';
                 }
 
@@ -785,7 +783,7 @@ class PostnDAO extends SQL
             break;
         }
 
-        if($limitr)
+        if ($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare('Postn');
@@ -840,7 +838,7 @@ class PostnDAO extends SQL
         );
 
         $arr = $this->run(null, 'array');
-        if(is_array($arr) && isset($arr[0])) {
+        if (is_array($arr) && isset($arr[0])) {
             $arr = array_values($arr[0]);
             return (bool)$arr[0];
         }

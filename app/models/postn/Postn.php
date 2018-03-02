@@ -53,9 +53,9 @@ class Postn extends Model
     public $nsfw = false;
 
     public $_struct = [
-        'origin'        => ['type' => 'string','size' => 64,'key' => true],
-        'node'          => ['type' => 'string','size' => 256,'key' => true],
-        'nodeid'        => ['type' => 'string','size' => 128,'key' => true],
+        'origin'        => ['type' => 'string','size' => 64,'mandatory' => true],
+        'node'          => ['type' => 'string','size' => 256,'mandatory' => true],
+        'nodeid'        => ['type' => 'string','size' => 128,'mandatory' => true],
         'aname'         => ['type' => 'string','size' => 128],
         'aid'           => ['type' => 'string','size' => 64],
         'aemail'        => ['type' => 'string','size' => 64],
@@ -81,6 +81,10 @@ class Postn extends Model
         'nsfw'          => ['type' => 'bool']
     ];
 
+    public $_uniques = [
+        ['origin', 'node','nodeid']
+    ];
+
     private $titleLimit = 200;
 
     public function __construct()
@@ -98,7 +102,7 @@ class Postn extends Model
                 case 'xhtml':
                     $dom = new \DOMDocument('1.0', 'utf-8');
                     $import = @dom_import_simplexml($c->children());
-                    if($import == null) {
+                    if ($import == null) {
                         $import = dom_import_simplexml($c);
                     }
                     $element = $dom->importNode($import, true);
@@ -106,7 +110,7 @@ class Postn extends Model
                     return (string)$dom->saveHTML();
                     break;
                 case 'text':
-                    if(trim($c) != '') {
+                    if (trim($c) != '') {
                         $this->contentraw = trim($c);
                     }
                     break;
@@ -129,7 +133,7 @@ class Postn extends Model
                     $title = strip_tags((string)$t->children()->asXML());
                     break;
                 case 'text':
-                    if(trim($t) != '') {
+                    if (trim($t) != '') {
                         $title = trim($t);
                     }
                     break;
@@ -144,83 +148,83 @@ class Postn extends Model
 
     public function set($item, $from, $delay = false, $node = false)
     {
-        if($item->item)
+        if ($item->item)
             $entry = $item->item;
         else
             $entry = $item;
 
-        if($from != '')
+        if ($from != '')
             $this->origin = $from;
 
-        if($node)
+        if ($node)
             $this->node = $node;
         else
             $this->node = (string)$item->attributes()->node;
 
         $this->nodeid = (string)$entry->attributes()->id;
 
-        if($entry->entry->id)
+        if ($entry->entry->id)
             $this->nodeid = (string)$entry->entry->id;
 
         // Get some informations on the author
-        if($entry->entry->author->name)
+        if ($entry->entry->author->name)
             $this->aname = (string)$entry->entry->author->name;
-        if($entry->entry->author->uri)
+        if ($entry->entry->author->uri)
             $this->aid = substr((string)$entry->entry->author->uri, 5);
-        if($entry->entry->author->email)
+        if ($entry->entry->author->email)
             $this->aemail = (string)$entry->entry->author->email;
 
         // Non standard support
-        if($entry->entry->source && $entry->entry->source->author->name)
+        if ($entry->entry->source && $entry->entry->source->author->name)
             $this->aname = (string)$entry->entry->source->author->name;
-        if($entry->entry->source && $entry->entry->source->author->uri)
+        if ($entry->entry->source && $entry->entry->source->author->uri)
             $this->aid = substr((string)$entry->entry->source->author->uri, 5);
 
         $this->title = $this->extractTitle($entry->entry->title);
 
         // Content
-        if($entry->entry->summary && (string)$entry->entry->summary != '')
+        if ($entry->entry->summary && (string)$entry->entry->summary != '')
             $summary = '<p class="summary">'.(string)$entry->entry->summary.'</p>';
         else
             $summary = '';
 
-        if($entry->entry && $entry->entry->content) {
+        if ($entry->entry && $entry->entry->content) {
             $content = $this->extractContent($entry->entry->content);
-        } elseif($summary == '')
+        } elseif ($summary == '')
             $content = __('');
         else
             $content = '';
 
         $content = $summary.$content;
 
-        if($entry->entry->updated)
+        if ($entry->entry->updated)
             $this->updated = (string)$entry->entry->updated;
         else
             $this->updated = gmdate(SQL::SQL_DATE);
 
-        if($entry->entry->published)
+        if ($entry->entry->published)
             $this->published = (string)$entry->entry->published;
-        elseif($entry->entry->updated)
+        elseif ($entry->entry->updated)
             $this->published = (string)$entry->entry->updated;
         else
             $this->published = gmdate(SQL::SQL_DATE);
 
-        if($delay)
+        if ($delay)
             $this->delay = $delay;
 
         // Tags parsing
-        if($entry->entry->category) {
+        if ($entry->entry->category) {
             $td = new \Modl\TagDAO;
             $td->delete($this->nodeid);
 
-            if($entry->entry->category->count() == 1
+            if ($entry->entry->category->count() == 1
             && isset($entry->entry->category->attributes()->term)) {
                 $tag = new \Modl\Tag;
                 $tag->nodeid = $this->nodeid;
                 $tag->tag    = strtolower((string)$entry->entry->category->attributes()->term);
                 $td->set($tag);
 
-                if($tag->tag == 'nsfw') $this->nsfw = true;
+                if ($tag->tag == 'nsfw') $this->nsfw = true;
             } else {
                 foreach($entry->entry->category as $cat) {
                     $tag = new \Modl\Tag;
@@ -228,34 +232,34 @@ class Postn extends Model
                     $tag->tag    = strtolower((string)$cat->attributes()->term);
                     $td->set($tag);
 
-                    if($tag->tag == 'nsfw') $this->nsfw = true;
+                    if ($tag->tag == 'nsfw') $this->nsfw = true;
                 }
             }
         }
 
-        if(current(explode('.', $this->origin)) == 'nsfw') $this->nsfw = true;
+        if (current(explode('.', $this->origin)) == 'nsfw') $this->nsfw = true;
 
-        if(!isset($this->commentorigin)) {
+        if (!isset($this->commentorigin)) {
             $this->commentorigin = $this->origin;
         }
 
         $this->content = trim($content);
         $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
 
-        if($entry->entry->geoloc) {
-            if($entry->entry->geoloc->lat != 0)
+        if ($entry->entry->geoloc) {
+            if ($entry->entry->geoloc->lat != 0)
                 $this->lat = (string)$entry->entry->geoloc->lat;
-            if($entry->entry->geoloc->lon != 0)
+            if ($entry->entry->geoloc->lon != 0)
                 $this->lon = (string)$entry->entry->geoloc->lon;
         }
 
         // We fill empty aid
-        if($this->isMicroblog() && empty($this->aid)) {
+        if ($this->isMicroblog() && empty($this->aid)) {
             $this->aid = $this->origin;
         }
 
         // We check if this is a reply
-        if($entry->entry->{'in-reply-to'}) {
+        if ($entry->entry->{'in-reply-to'}) {
             $href = (string)$entry->entry->{'in-reply-to'}->attributes()->href;
             $arr = explode(';', $href);
             $reply = [
@@ -270,17 +274,17 @@ class Postn extends Model
         $extra = false;
         // We try to extract a picture
         $xml = \simplexml_load_string('<div>'.$this->contentcleaned.'</div>');
-        if($xml) {
+        if ($xml) {
             $results = $xml->xpath('//img/@src');
 
-            if(is_array($results) && !empty($results)) {
+            if (is_array($results) && !empty($results)) {
                 $extra = (string)$results[0];
 
                 $this->picture = protectPicture($extra);
                 $this->setAttachments($entry->entry->link, $extra);
             } else {
                 $results = $xml->xpath('//video/@poster');
-                if(is_array($results) && !empty($results)) {
+                if (is_array($results) && !empty($results)) {
                     $extra = (string)$results[0];
 
                     $this->picture = $extra;
@@ -289,7 +293,7 @@ class Postn extends Model
             }
 
             $results = $xml->xpath('//a');
-            if(is_array($results) && !empty($results)) {
+            if (is_array($results) && !empty($results)) {
                 foreach($results as $link) {
                     $link->addAttribute('target', '_blank');
                 }
@@ -298,10 +302,10 @@ class Postn extends Model
 
         $this->setAttachments($entry->entry->link, $extra);
 
-        if($this->isComment()) {
+        if ($this->isComment()) {
             $pd = new \Modl\PostnDAO;
             $p = $pd->getParent($this->origin, substr($this->node, 30));
-            if($p) {
+            if ($p) {
                 $this->parentorigin = $p->origin;
                 $this->parentnode   = $p->node;
                 $this->parentnodeid = $p->nodeid;
@@ -319,27 +323,27 @@ class Postn extends Model
             $enc = $enc['@attributes'];
             array_push($l, $enc);
 
-            if($this->picture == null
+            if ($this->picture == null
             && isset($enc['type'])
             && typeIsPicture($enc['type'])
             /*&& isSmallPicture($enc['href'])*/) {
                 $this->picture = protectPicture($enc['href']);
             }
 
-            if($enc['rel'] == 'alternate'
+            if ($enc['rel'] == 'alternate'
             && Validator::url()->validate($enc['href'])) $this->open = true;
 
-            if((string)$attachment->attributes()->title == 'comments') {
+            if ((string)$attachment->attributes()->title == 'comments') {
                 $url = parse_url(urldecode((string)$attachment->attributes()->href));
 
-                if($url) {
+                if ($url) {
                     $this->commentorigin = $url['path'];
                     $this->commentnodeid = substr($url['query'], 36);
                 }
             }
         }
 
-        if($extra) {
+        if ($extra) {
             array_push(
                 $l,
                 [
@@ -349,7 +353,7 @@ class Postn extends Model
                 ]);
         }
 
-        if(!empty($l)) {
+        if (!empty($l)) {
             $this->links = $l;
         }
     }
@@ -359,7 +363,7 @@ class Postn extends Model
         $attachments = null;
         $this->openlink = null;
 
-        if(isset($this->links)) {
+        if (isset($this->links)) {
             $links = $this->links;
             $attachments = [
                 'pictures' => [],
@@ -369,21 +373,21 @@ class Postn extends Model
 
             foreach($links as $l) {
                 // If the href is not a valid URL we skip
-                if(!Validator::url()->validate($l['href'])) continue;
+                if (!Validator::url()->validate($l['href'])) continue;
 
                 // Prepare the switch
                 $rel = isset($l['rel']) ? $l['rel'] : null;
                 switch($rel) {
                     case 'enclosure':
-                        if(typeIsPicture($l['type'])) {
+                        if (typeIsPicture($l['type'])) {
                             array_push($attachments['pictures'], $l);
-                        } elseif($l['type'] != 'picture') {
+                        } elseif ($l['type'] != 'picture') {
                             array_push($attachments['files'], $l);
                         }
                         break;
 
                     case 'related':
-                        if(preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
+                        if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
                             $this->youtube = $match[1];
                         }
 
@@ -403,7 +407,7 @@ class Postn extends Model
                     case 'alternate':
                     default:
                         $this->openlink = $l['href'];
-                        if(!$this->isMicroblog()) {
+                        if (!$this->isMicroblog()) {
                             array_push(
                                 $attachments['links'],
                                 [
@@ -418,9 +422,9 @@ class Postn extends Model
             }
         }
 
-        if(empty($attachments['pictures'])) unset($attachments['pictures']);
-        if(empty($attachments['files']))    unset($attachments['files']);
-        if(empty($attachments['links']))    unset($attachments['links']);
+        if (empty($attachments['pictures'])) unset($attachments['pictures']);
+        if (empty($attachments['files']))    unset($attachments['files']);
+        if (empty($attachments['links']))    unset($attachments['links']);
 
         return $attachments;
     }
@@ -429,9 +433,9 @@ class Postn extends Model
     {
         $attachments = $this->getAttachments();
 
-        if(array_key_exists('links', $attachments)) {
+        if (array_key_exists('links', $attachments)) {
             foreach($attachments['links'] as $attachment) {
-                if(in_array($attachment['rel'], ['enclosure', 'related'])) {
+                if (in_array($attachment['rel'], ['enclosure', 'related'])) {
                     return $attachment;
                 }
             }
@@ -441,7 +445,7 @@ class Postn extends Model
 
         foreach($attachments as $key => $group) {
             foreach($group as $attachment) {
-                if(in_array($attachment['rel'], ['enclosure', 'related'])) {
+                if (in_array($attachment['rel'], ['enclosure', 'related'])) {
                     return $attachment;
                 }
             }
@@ -473,7 +477,7 @@ class Postn extends Model
 
     public function getUUID()
     {
-        if(substr($this->nodeid, 10) == 'urn:uuid:') {
+        if (substr($this->nodeid, 10) == 'urn:uuid:') {
             return $this->nodeid;
         } else {
             return 'urn:uuid:'.generateUUID($this->nodeid);
@@ -496,7 +500,7 @@ class Postn extends Model
     {
         $user = new User;
 
-        if($force) {
+        if ($force) {
             return ($this->aid == $user->getLogin());
         } else {
             return ($this->aid == $user->getLogin()
@@ -562,7 +566,7 @@ class Postn extends Model
 
     public function getSummary()
     {
-        if($this->isBrief()) {
+        if ($this->isBrief()) {
             return truncate(html_entity_decode($this->title), 140);
         } else {
             return truncate(stripTags(html_entity_decode($this->contentcleaned)), 140);
@@ -586,7 +590,7 @@ class Postn extends Model
 
     public function getReply()
     {
-        if(!$this->reply) return;
+        if (!$this->reply) return;
 
         $reply = $this->reply;
         $pd = new \Modl\PostnDAO;
@@ -637,7 +641,7 @@ class Postn extends Model
     {
         $td = new \Modl\TagDAO;
         $tags = $td->getTags($this->nodeid);
-        if(is_array($tags)) {
+        if (is_array($tags)) {
             return array_map(function($tag) { return $tag->tag; }, $tags);
         }
     }
@@ -645,7 +649,7 @@ class Postn extends Model
     public function getTagsImploded()
     {
         $tags = $this->getTags();
-        if(is_array($tags)) {
+        if (is_array($tags)) {
             return implode(', ', $tags);
         }
     }

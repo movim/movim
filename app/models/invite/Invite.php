@@ -21,7 +21,7 @@ class Invite extends Model
         $id = new InviteDAO;
         $i = $id->getCode($jid, $resource);
 
-        if($i == null) {
+        if ($i == null) {
             $i = new Invite;
             $i->code        = generateKey(8);
             $i->jid         = $jid;
