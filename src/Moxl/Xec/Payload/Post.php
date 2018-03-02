@@ -36,10 +36,10 @@ class Post extends Payload
     {
         $from   = (string)$parent->attributes()->from;
 
-        if($stanza->items->item
+        if ($stanza->items->item
         && isset($stanza->items->item->entry)
         && (string)$stanza->items->item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
-            if($parent->delay) {
+            if ($parent->delay) {
                 $delay = gmdate('Y-m-d H:i:s', strtotime((string)$parent->delay->attributes()->stamp));
             } else {
                 $delay = false;
@@ -49,15 +49,15 @@ class Post extends Payload
             $p->set($stanza->items, $from, $delay);
 
             // We limit the very old posts (2 months old)
-            if(strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
+            if (strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
             && $p->nodeid != $this->testid) {
                 $pd = new \Modl\PostnDAO;
-                $pd->set($p, $from);
+                $pd->setWithUniques($p, $from);
 
                 $this->pack($p);
                 $this->deliver();
             }
-        } elseif($stanza->items->retract) {
+        } elseif ($stanza->items->retract) {
             $pd = new \Modl\PostnDAO;
             $pd->delete($stanza->items->retract->attributes()->id);
 
@@ -68,7 +68,7 @@ class Post extends Payload
                     'node' => $stanza->attributes()->node
                 ]);
             $this->deliver();
-        } elseif($stanza->items->item && isset($stanza->items->item->attributes()->id)
+        } elseif ($stanza->items->item && isset($stanza->items->item->attributes()->id)
             && !filter_var($from, FILTER_VALIDATE_EMAIL)) {
             // In this case we only get the header, so we request the full content
             $p = new \Modl\PostnDAO;
@@ -77,7 +77,7 @@ class Post extends Payload
             $id = (string)$stanza->items->item->attributes()->id;
             $here = $p->exists($from, $node, $id);
 
-            if(!$here && $id != $this->testid) {
+            if (!$here && $id != $this->testid) {
                 $d = new GetItem;
                 $d->setTo($from)
                   ->setNode($node)

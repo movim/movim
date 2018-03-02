@@ -90,14 +90,14 @@ class GetItems extends Errors
         $ids = [];
 
         foreach($stanza->pubsub->items->item as $item) {
-            if(isset($item->entry)
+            if (isset($item->entry)
             && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
-                if($this->_since == null
+                if ($this->_since == null
                 || strtotime($this->_since) < strtotime($item->entry->published)) {
                     $p = new \Modl\Postn;
                     $p->set($item, $this->_to, false, $this->_node);
 
-                    $pd->set($p);
+                    $pd->setWithUniques($p);
 
                     array_push($ids, $p->nodeid);
                 }
@@ -106,7 +106,7 @@ class GetItems extends Errors
 
         $first = $last = $count = null;
 
-        if($stanza->pubsub->set
+        if ($stanza->pubsub->set
         && $stanza->pubsub->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm') {
             $first = (string)$stanza->pubsub->set->first;
             $last = (string)$stanza->pubsub->set->last;

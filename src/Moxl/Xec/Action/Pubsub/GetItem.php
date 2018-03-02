@@ -92,16 +92,16 @@ class GetItem extends Errors
         $from = $this->_to;
         $node = $this->_node;
 
-        if($stanza->pubsub->items->item) {
+        if ($stanza->pubsub->items->item) {
             $post = false;
 
             foreach($stanza->pubsub->items->item as $item) {
-                if(isset($item->entry)
+                if (isset($item->entry)
                 &&(string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
                     $p = new \Modl\Postn;
                     $p->set($item, $from, false, $node);
 
-                    if(isset($this->_parentorigin)
+                    if (isset($this->_parentorigin)
                     && isset($this->_parentnode)
                     && isset($this->_parentnodeid)) {
                         $p->parentorigin    = $this->_parentorigin;
@@ -110,9 +110,9 @@ class GetItem extends Errors
                     }
 
                     $pd = new \Modl\PostnDAO;
-                    $pd->set($p);
+                    $pd->setWithUniques($p);
 
-                    if(is_array($this->_askreply)) {
+                    if (is_array($this->_askreply)) {
                         $this->pack([
                             'origin' => $this->_askreply['origin'],
                             'node'   => $this->_askreply['node'],
