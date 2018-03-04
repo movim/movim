@@ -12,13 +12,13 @@
 
         "monolog/monolog": "1.8.*",
         "rain/raintpl": "dev-master",
-        "michelf/php-markdown": "dev-lib",
+        "michelf/php-markdown": "^1.8",
 
         "movim/modl": "dev-master#fd824f0ddb5cb824f33da7a92bf3e9c566401444",
         "movim/sasl2": "dev-master",
         "movim/moxl": "dev-master#1a1b1daf11a9734cf9b19108d08422890a7e6e3d",
 
-        "embed/embed": "dev-master",
+        "embed/embed": "^v3.3",
         "heyupdate/emoji": "dev-twemoji2#99dda1bed08472046cac1498221f08684ad83d55",
 
         "cboden/ratchet": "^0.4.0",

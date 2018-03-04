@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "13622ba63c78332d66195ee19d66d347",
+    "content-hash": "a7a61af67f575062c3f2bf91280b1672",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -355,7 +355,7 @@
         },
         {
             "name": "embed/embed",
-            "version": "dev-master",
+            "version": "v3.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
@@ -404,7 +404,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2018-02-24 11:23:18"
+            "time": "2018-02-24T11:23:18+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -609,7 +609,7 @@
         },
         {
             "name": "michelf/php-markdown",
-            "version": "dev-lib",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/michelf/php-markdown.git",
@@ -651,7 +651,7 @@
             "keywords": [
                 "markdown"
             ],
-            "time": "2018-01-15 00:49:33"
+            "time": "2018-01-15T00:49:33+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -2276,11 +2276,9 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "rain/raintpl": 20,
-        "michelf/php-markdown": 20,
         "movim/modl": 20,
         "movim/sasl2": 20,
         "movim/moxl": 20,
-        "embed/embed": 20,
         "heyupdate/emoji": 20,
         "react/http": 20,
         "react/zmq": 20
