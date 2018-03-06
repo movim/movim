@@ -14,9 +14,9 @@
         "rain/raintpl": "dev-master",
         "michelf/php-markdown": "^1.8",
 
-        "movim/modl": "dev-master#fd824f0ddb5cb824f33da7a92bf3e9c566401444",
-        "movim/sasl2": "dev-master",
+        "movim/modl": "dev-master#94adaebe5be715677746ed0ef95feff5d220181b",
         "movim/moxl": "dev-master#1a1b1daf11a9734cf9b19108d08422890a7e6e3d",
+        "movim/sasl2": "dev-master",
 
         "embed/embed": "^v3.3",
         "heyupdate/emoji": "dev-twemoji2#99dda1bed08472046cac1498221f08684ad83d55",

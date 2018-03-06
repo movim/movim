@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7a61af67f575062c3f2bf91280b1672",
+    "content-hash": "5ccf6ec4b79ea8fd9cd2710bb82e212b",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -727,12 +727,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/modl.git",
-                "reference": "fd824f0ddb5cb824f33da7a92bf3e9c566401444"
+                "reference": "94adaebe5be715677746ed0ef95feff5d220181b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/fd824f0ddb5cb824f33da7a92bf3e9c566401444",
-                "reference": "fd824f0ddb5cb824f33da7a92bf3e9c566401444",
+                "url": "https://api.github.com/repos/movim/modl/zipball/94adaebe5be715677746ed0ef95feff5d220181b",
+                "reference": "94adaebe5be715677746ed0ef95feff5d220181b",
                 "shasum": ""
             },
             "require": {
@@ -763,7 +763,7 @@
                 "database",
                 "sql"
             ],
-            "time": "2018-03-02 13:16:15"
+            "time": "2018-03-06 07:28:13"
         },
         {
             "name": "movim/moxl",
@@ -1897,7 +1897,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v3.4.5",
+            "version": "v3.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -1966,7 +1966,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v3.4.5",
+            "version": "v3.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -2022,7 +2022,7 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v3.4.5",
+            "version": "v3.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
@@ -2194,7 +2194,7 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v3.4.5",
+            "version": "v3.4.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
@@ -2277,8 +2277,8 @@
     "stability-flags": {
         "rain/raintpl": 20,
         "movim/modl": 20,
-        "movim/sasl2": 20,
         "movim/moxl": 20,
+        "movim/sasl2": 20,
         "heyupdate/emoji": 20,
         "react/http": 20,
         "react/zmq": 20
