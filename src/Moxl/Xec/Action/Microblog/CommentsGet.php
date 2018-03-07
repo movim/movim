@@ -88,7 +88,7 @@ class CommentsGet extends Action
                 $p->parentnodeid    = $this->_parentnodeid;
 
                 $pd = new \Modl\PostnDAO;
-                $pd->setWithUniques($p);
+                $pd->set($p);
             }
         }
 

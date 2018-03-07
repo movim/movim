@@ -97,7 +97,7 @@ class GetItems extends Errors
                     $p = new \Modl\Postn;
                     $p->set($item, $this->_to, false, $this->_node);
 
-                    $pd->setWithUniques($p);
+                    $pd->set($p);
 
                     array_push($ids, $p->nodeid);
                 }

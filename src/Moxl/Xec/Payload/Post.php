@@ -52,7 +52,7 @@ class Post extends Payload
             if (strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
             && $p->nodeid != $this->testid) {
                 $pd = new \Modl\PostnDAO;
-                $pd->setWithUniques($p, $from);
+                $pd->set($p, $from);
 
                 $this->pack($p);
                 $this->deliver();

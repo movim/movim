@@ -110,7 +110,7 @@ class GetItem extends Errors
                     }
 
                     $pd = new \Modl\PostnDAO;
-                    $pd->setWithUniques($p);
+                    $pd->set($p);
 
                     if (is_array($this->_askreply)) {
                         $this->pack([
