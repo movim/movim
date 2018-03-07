@@ -53,6 +53,7 @@ class Postn extends Model
     public $nsfw = false;
 
     public $_struct = [
+        'hash'          => ['type' => 'string','size' => 128,'key' => true],
         'origin'        => ['type' => 'string','size' => 64,'mandatory' => true],
         'node'          => ['type' => 'string','size' => 256,'mandatory' => true],
         'nodeid'        => ['type' => 'string','size' => 128,'mandatory' => true],
@@ -77,20 +78,10 @@ class Postn extends Model
         'lon'           => ['type' => 'string','size' => 32],
         'links'         => ['type' => 'serialized'],
         'picture'       => ['type' => 'text'],
-        'hash'          => ['type' => 'string','size' => 128,'mandatory' => true],
         'nsfw'          => ['type' => 'bool']
     ];
 
-    public $_uniques = [
-        ['origin', 'node','nodeid']
-    ];
-
     private $titleLimit = 200;
-
-    public function __construct()
-    {
-        $this->hash = hash('sha256', openssl_random_pseudo_bytes(5));
-    }
 
     private function extractContent($contents)
     {
@@ -311,6 +302,8 @@ class Postn extends Model
                 $this->parentnodeid = $p->nodeid;
             }
         }
+
+        $this->hash = hash('sha256', $this->server.$this->node.$this->nodeid);
     }
 
     private function setAttachments($links, $extra = false)
