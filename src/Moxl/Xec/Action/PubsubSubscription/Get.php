@@ -14,7 +14,7 @@ class Get extends Errors
     public function request()
     {
         $this->store();
-        Pubsub::getItems($this->_to, $this->_pepnode);
+        Pubsub::getItems($this->_to, $this->_pepnode, 1000);
     }
 
     public function setTo($to)
