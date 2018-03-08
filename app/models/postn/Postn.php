@@ -83,6 +83,11 @@ class Postn extends Model
 
     private $titleLimit = 200;
 
+    public function __construct()
+    {
+        // Override the parent constructor
+    }
+
     private function extractContent($contents)
     {
         $content = '';
