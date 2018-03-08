@@ -303,7 +303,7 @@ class Postn extends Model
             }
         }
 
-        $this->hash = hash('sha256', $this->server.$this->node.$this->nodeid);
+        $this->hash = hash('sha256', (string)$this->origin.$this->node.$this->nodeid);
     }
 
     private function setAttachments($links, $extra = false)

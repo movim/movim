@@ -42,14 +42,6 @@
         <input type="hidden" name="photobin"  value="{$photobin}"/>
     </div>
 
-    {if="isset($gravatar)"}
-    <div class="block">
-        <h4>Gravatar</h4>
-        {$gravatar->entry[0]|var_dump}
-        <img src="http://www.gravatar.com/avatar/{$gravatar->entry[0]->hash}?s=500" />
-    </div>
-    {/if}
-
     <div class="block" id="result">
         <img id="vCardPhotoPreview" src="data:image/jpeg;base64,{$photobin}">
         <span id="picturesize" class="clean"></span>
