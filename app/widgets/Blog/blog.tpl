@@ -77,12 +77,14 @@
                     {/if}
                 </a>
             </p>
-            {if="$item->description"}
-                <p title="{$item->description|stripTags}">
-                    {$item->description|stripTags}
-                </p>
-            {else}
-                <p>{$item->server}</p>
+            {if="$item != null"}
+                {if="$item->description"}
+                    <p title="{$item->description|stripTags}">
+                        {$item->description|stripTags}
+                    </p>
+                {else}
+                    <p>{$item->server}</p>
+                {/if}
             {/if}
         </li>
     </ul>
