@@ -21,7 +21,7 @@
     "require": {
         "php": ">=5.3.0",
         "monolog/monolog": "1.8.*",
-        "movim/sasl2": "dev-master",
+        "fabiang/sasl": "^1.0",
         "pear/net_dns2": "^1.4",
         "ramsey/uuid": "^3.2"
     }
