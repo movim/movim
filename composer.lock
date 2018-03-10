@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "60031195791c321592e3f526c8eb22da",
+    "content-hash": "b7728f593559f521a9d574d3dffcf231",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -502,6 +502,72 @@
             "time": "2018-02-23T01:58:20+00:00"
         },
         {
+            "name": "fabiang/sasl",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/fabiang/sasl.git",
+                "reference": "cb49ffc81aa179420e1c7ed36dd06caa0ad3624b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/fabiang/sasl/zipball/cb49ffc81aa179420e1c7ed36dd06caa0ad3624b",
+                "reference": "cb49ffc81aa179420e1c7ed36dd06caa0ad3624b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "behat/behat": "~3.0",
+                "codeclimate/php-test-reporter": "@dev",
+                "phpunit/phpunit": "~4.4",
+                "satooshi/php-coveralls": "~0.6"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Fabiang\\Sasl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Anish Mistry",
+                    "email": "amistry@am-productions.biz"
+                },
+                {
+                    "name": "Richard Heyes",
+                    "email": "richard@php.net"
+                },
+                {
+                    "name": "Michael Bretterklieber",
+                    "email": "michael@bretterklieber.com"
+                },
+                {
+                    "name": "Fabian Grutschus",
+                    "email": "f.grutschus@lubyte.de"
+                }
+            ],
+            "description": "Abstraction of various SASL mechanism responses.",
+            "homepage": "https://github.com/fabiang/sasl",
+            "keywords": [
+                "Authentication",
+                "auth",
+                "sasl",
+                "scram"
+            ],
+            "time": "2015-01-02T09:00:34+00:00"
+        },
+        {
             "name": "guzzlehttp/psr7",
             "version": "1.4.2",
             "source": {
@@ -771,17 +837,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "0ff25ac435d0e5996c33225de4796e46968acdbd"
+                "reference": "6697e281b242348cb78a0fda4b37372ce3fc1ebe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/0ff25ac435d0e5996c33225de4796e46968acdbd",
-                "reference": "0ff25ac435d0e5996c33225de4796e46968acdbd",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/6697e281b242348cb78a0fda4b37372ce3fc1ebe",
+                "reference": "6697e281b242348cb78a0fda4b37372ce3fc1ebe",
                 "shasum": ""
             },
             "require": {
+                "fabiang/sasl": "^1.0",
                 "monolog/monolog": "1.8.*",
-                "movim/sasl2": "dev-master",
                 "pear/net_dns2": "^1.4",
                 "php": ">=5.3.0",
                 "ramsey/uuid": "^3.2"
@@ -811,58 +877,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2018-03-08 18:02:05"
-        },
-        {
-            "name": "movim/sasl2",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/edhelas/sasl2.git",
-                "reference": "b9c7cecb1ebb6086262304b901bbc71dff435504"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/edhelas/sasl2/zipball/b9c7cecb1ebb6086262304b901bbc71dff435504",
-                "reference": "b9c7cecb1ebb6086262304b901bbc71dff435504",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "SASL2\\": "src/SASL2"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD"
-            ],
-            "authors": [
-                {
-                    "name": "Anish Mistry",
-                    "email": "amistry@am-productions.biz"
-                },
-                {
-                    "name": "Richard Heyes",
-                    "email": "richard@php.net"
-                },
-                {
-                    "name": "Michael Bretterklieber",
-                    "email": "michael@bretterklieber.com"
-                }
-            ],
-            "description": "Abstraction of various SASL mechanism responses. From the Auth_SASL2 Pear package",
-            "homepage": "https://github.com/edhelas/sasl2",
-            "keywords": [
-                "Authentication",
-                "auth",
-                "sasl2",
-                "scram"
-            ],
-            "time": "2014-06-05 21:19:06"
+            "time": "2018-03-10 22:27:42"
         },
         {
             "name": "paragonie/random_compat",
@@ -2278,7 +2293,6 @@
         "rain/raintpl": 20,
         "movim/modl": 20,
         "movim/moxl": 20,
-        "movim/sasl2": 20,
         "heyupdate/emoji": 20,
         "react/http": 20,
         "react/zmq": 20
