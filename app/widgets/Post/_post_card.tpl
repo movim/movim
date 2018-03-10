@@ -187,7 +187,7 @@
                         </span>
                         <p class="normal line">
                             <a target="_blank" href="{$value.href}" title="{$value.href}">
-                                {if="$value.title"}
+                                {if="isset($value.title)"}
                                     {$value.title}
                                 {else}
                                     {$value.href}

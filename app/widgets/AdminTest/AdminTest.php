@@ -27,7 +27,9 @@ class AdminTest extends \Movim\Widget\Base
     {
         $md = \Modl\Modl::getInstance();
 
+        $infos = $md->check();
+
         $this->view->assign('dbconnected', $md->_connected);
-        $this->view->assign('dbinfos', sizeof($md->check()));
+        $this->view->assign('dbinfos', is_array($infos) ? count($infos) : 0);
     }
 }

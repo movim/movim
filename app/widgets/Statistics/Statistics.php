@@ -23,6 +23,7 @@ class Statistics extends \Movim\Widget\Base
     function display()
     {
         $sd = new SessionxDAO;
-        $this->view->assign('sessions', $sd->getAll());
+        $sessions = $sd->getAll();
+        $this->view->assign('sessions', is_array($sessions) ? $sessions : []);
     }
 }
