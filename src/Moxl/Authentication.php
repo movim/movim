@@ -25,10 +25,8 @@ class Authentication
     {
         $choices = [
             'SCRAM-SHA-1',
-            'DIGEST-MD5',
-            'CRAM-MD5',
             'PLAIN',
-            'ANONYMOUS'
+            //'ANONYMOUS'
          ];
 
         foreach ($choices as $choice) {

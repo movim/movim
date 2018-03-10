@@ -197,16 +197,10 @@ class Handler
 
             'd84d4b89d43e88a244197ccf499de8d8' => 'Jingle',
 
-            //'c2a75c460d99bcad64e81e7730abddef' => 'PubsubSubscription',
-
             '09ef1b34cf40fdd954f10d6e5075ee5c' => 'Carbons',
             '201fa54dd93e3403611830213f5f9fbc' => 'Carbons',//?
 
-            //'1ad670e043c710f0ce8e6472114fb4be' => 'Register',
-
             'b95746de5ddc3fa5fbf28906c017d9d8' => 'STARTTLS',
-            //'637dd61b00a5ae25ea8d50639f100e7a' => 'STARTTLS',
-            //'2d6b4b9deec3c87c88839d3e76491a38' => 'STARTTLSProceed',
 
             'f728271d924a04b0355379b28c3183a1' => 'SASL',
             '5e291b72f7160dabd1aa28f90cbde769' => 'SASLChallenge',

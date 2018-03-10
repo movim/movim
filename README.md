@@ -24,14 +24,8 @@ Unlike a whole lot of XMPP libraries, Moxl prefers treating messages through XMP
 ### Details on the features
 
 #### Authentification
-For the authentification, Moxl can currently connect in several modes :
-  * PLAIN : plain authentification, without encryption of the password
-  * DIGEST-MD5 : secured authentification based on secret exchange between the client and the server
-  * CRAM-MD5
-  * SCRAM-SHA1
-  * ANONYMOUS
 
-The Moxl authentication sequence is based on the SASL2 library. You can find it here [GitHub The PHP SASL2 Authentification Library](https://github.com/edhelas/sasl2).
+The Moxl authentication sequence is based on the SASL2 library. You can find it here [GitHub The PHP SASL2 Authentification Library](https://github.com/fabiang/sasl).
 
 ### XMPP Resources
 

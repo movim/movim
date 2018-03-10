@@ -1,7 +1,12 @@
 Moxl Changelog
 ================
 
-v1.8 (trunk)
+v1.9
+---------------------------
+* Replace movim/sasl2 with fabiang/sasl
+* Remove the support of DIGEST-MD5 and CRAM-MD5
+
+v1.8
 ---------------------------
 * Add XEP-0059: Result Set Management
 * Add XEP-0070: Verifying HTTP Requests via XMPP

@@ -31,15 +31,15 @@ class Start extends Action
         $session->set('active', true);
 
         $sd = new \Modl\SessionxDAO;
-        $session = $sd->get(SESSION_ID);
-        $session->active = true;
-        $sd->set($session);
+        $sessionx = $sd->get(SESSION_ID);
+
+        if ($sessionx) {
+            $sessionx->active = true;
+            $sd->set($sessionx);
+        }
 
         Utils::log("/// AUTH SUCCESSFULL");
-
         fwrite(STDERR, 'started');
-
-        $this->pack($session);
         $this->deliver();
     }
 }

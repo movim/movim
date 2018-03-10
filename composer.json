@@ -1,6 +1,6 @@
 {
     "name": "movim/moxl",
-    "version": "1.8.0",
+    "version": "1.9.0",
     "description": " Moxl is a light PHP XMPP library especially made for the Movim project ",
     "keywords": ["xmpp", "php"],
     "homepage": "https://github.com/movim/moxl",
