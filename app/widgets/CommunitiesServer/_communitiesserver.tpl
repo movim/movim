@@ -4,7 +4,7 @@
             <span class="primary icon icon gray active" onclick="history.back()">
                 <i class="zmdi zmdi-arrow-back"></i>
             </span>
-            {if="count($nodes) > 0"}
+            {if="is_array($nodes) && count($nodes) > 0"}
                 <span class="control icon gray">
                     {$nodes|count}
                 </span>

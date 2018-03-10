@@ -27,12 +27,12 @@ class Login extends \Movim\Widget\Base
     {
         $session = Session::start();
 
-        if($session->get('mechanism') != 'ANONYMOUS') {
+        //if($session->get('mechanism') != 'ANONYMOUS') {
             // We get the configuration
             $s = new Get;
             $s->setXmlns('movim:prefs')
               ->request();
-        }
+        //}
     }
 
     function onConfig($packet)

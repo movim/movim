@@ -38,7 +38,7 @@ class Sessionx extends Model
         $this->resource    = 'moxl'.\generateKey(6);
         $this->start       = date(SQL::SQL_DATE);
         $this->hash        = sha1($this->username.$this->password.$this->host);
-        $this->active      = 0;
+        $this->active      = false;
         $this->timestamp   = date(SQL::SQL_DATE);
     }
 
