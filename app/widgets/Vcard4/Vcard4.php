@@ -70,29 +70,29 @@ class Vcard4 extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $c = $cd->get($this->user->getLogin());
 
-        if($c == null) {
+        if ($c == null) {
             $c = new \Modl\Contact();
         }
 
         $c->jid     = $this->user->getLogin();
         $c->date = $vcard->date->value;
 
-        if(Validator::stringType()->length(0, 40)->validate($vcard->name->value)) {
+        if (Validator::stringType()->length(0, 40)->validate($vcard->name->value)) {
             $c->name    = $vcard->name->value;
             $n = new Nickname;
             $n->setNickname($c->name)
               ->request();
         }
 
-        if(Validator::date('d-m-Y')->validate($vcard->date->value)) {
+        if (Validator::date('d-m-Y')->validate($vcard->date->value)) {
             $c->date    = $vcard->date->value;
         }
 
-        if(Validator::stringType()->length(0, 40)->validate($vcard->fn->value)) {
+        if (Validator::stringType()->length(0, 40)->validate($vcard->fn->value)) {
             $c->fn      = $vcard->fn->value;
         }
 
-        if(Validator::url()->validate($vcard->url->value)) {
+        if (Validator::url()->validate($vcard->url->value)) {
             $c->url     = $vcard->url->value;
         } else {
             $c->url     = '';
@@ -101,13 +101,13 @@ class Vcard4 extends \Movim\Widget\Base
         $c->adrlocality     = $vcard->locality->value;
         $c->adrcountry      = $vcard->country->value;
 
-        if(Validator::email()->validate($vcard->email->value)) {
+        if (Validator::email()->validate($vcard->email->value)) {
             $c->email   = $vcard->email->value;
         } else {
             $c->email = '';
         }
 
-        if(Validator::stringType()->validate($vcard->desc->value)) {
+        if (Validator::stringType()->validate($vcard->desc->value)) {
             $c->description     = trim($vcard->desc->value);
         }
 
@@ -122,7 +122,7 @@ class Vcard4 extends \Movim\Widget\Base
 
     function ajaxChangePrivacy($value)
     {
-        if($value == true) {
+        if ($value == true) {
             \Modl\Privacy::set($this->user->getLogin(), 1);
             Notification::append(null, $this->__('vcard.public'));
         } else {
@@ -138,7 +138,7 @@ class Vcard4 extends \Movim\Widget\Base
 
         $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
 
-        if($me == null) {
+        if ($me == null) {
             $this->view->assign('form', $this->prepareForm(new \Modl\Contact));
         } else {
             $this->view->assign('form', $this->prepareForm($me));

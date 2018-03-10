@@ -12,7 +12,7 @@ class Upload extends \Movim\Widget\Base
         $this->registerEvent('upload_request_handle', 'onRequested');
         $this->registerEvent('upload_request_errornotacceptable', 'onErrorNotAcceptable');
 
-        if(php_sapi_name() != 'cli') {
+        if (php_sapi_name() != 'cli') {
             header('Access-Control-Allow-Origin: *');
         }
     }
@@ -39,7 +39,7 @@ class Upload extends \Movim\Widget\Base
         $cd = new \Modl\CapsDAO;
         $u = $cd->getUpload($this->user->getServer());
 
-        if(isset($u)) {
+        if (isset($u)) {
             $r = new Request;
             $r->setTo($u->node)
               ->setName($file->name)

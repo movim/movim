@@ -8,7 +8,7 @@ var Stickers = {
     zoom: function(element, jid, pack, value) {
         var zoomed = document.querySelectorAll('.zoomed');
 
-        if(element.classList.contains('zoomed')) {
+        if (element.classList.contains('zoomed')) {
             Drawer.clear();
 
             var textarea = document.querySelector('#chat_textarea');

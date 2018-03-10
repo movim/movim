@@ -42,12 +42,12 @@ class Menu extends \Movim\Widget\Base
         $count = $pd->getCountSince($since);
         $post = $packet->content;
 
-        if(!is_object($post)) return;
+        if (!is_object($post)) return;
 
         // We reload a fresh Post
         $post = $pd->get($post->origin, $post->node, $post->nodeid);
 
-        if(is_object($post)
+        if (is_object($post)
         && $post->isComment()
         && !$post->isMine()) {
             $contact = $cd->get($post->aid);
@@ -58,19 +58,19 @@ class Menu extends \Movim\Widget\Base
                 $contact->getPhoto('s'),
                 2
             );
-        } elseif($count > 0
+        } elseif ($count > 0
         && is_object($post)
         && (strtotime($post->published) > strtotime($since))) {
-            if($post->isMicroblog()) {
+            if ($post->isMicroblog()) {
                 $contact = $cd->get($post->origin);
 
-                if($post->title == null) {
+                if ($post->title == null) {
                     $title = __('post.default_title');
                 } else {
                     $title = $post->title;
                 }
 
-                if(!$post->isMine()) {
+                if (!$post->isMine()) {
                     Notification::append(
                         'news',
                         $contact->getTrueName(),
@@ -128,7 +128,7 @@ class Menu extends \Movim\Widget\Base
     {
         $html = $this->prepareList($type, $server, $node, $page);
 
-        if($page > 0) {
+        if ($page > 0) {
             $this->rpc('MovimTpl.append', '#menu_wrapper', $html);
         } else {
             $this->rpc('MovimTpl.fill', '#menu_widget', $html);
@@ -145,7 +145,7 @@ class Menu extends \Movim\Widget\Base
         $sd = new \modl\SubscriptionDAO();
         $subscriptions = $sd->getSubscribed();
 
-        foreach($subscriptions as $s) {
+        foreach ($subscriptions as $s) {
             $r = new GetItems;
             $r->setTo($s->server)
               ->setNode($s->node)
@@ -159,14 +159,14 @@ class Menu extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(\Movim\Cache::c('since'));
         // getting newer, not older
-        if($page == 0 || $page == ""){
+        if ($page == 0 || $page == ""){
             $count = 0;
             \Movim\Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
         }
 
         $next = $page + 1;
 
-        switch($type) {
+        switch ($type) {
             case 'all' :
                 $view->assign('history', $this->call('ajaxGetAll', $next));
                 $items  = $pd->getAllPosts(false, $page * $this->_paging + $count, $this->_paging);

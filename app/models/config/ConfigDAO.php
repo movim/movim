@@ -45,7 +45,7 @@ class ConfigDAO extends SQL
 
         $this->run('Config');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 truncate table config;';
 
@@ -123,7 +123,7 @@ class ConfigDAO extends SQL
 
         $conf = $this->run('Config', 'item');
 
-        if(!isset($conf)) {
+        if (!isset($conf)) {
             return new Config;
         }
 

@@ -25,7 +25,7 @@ class Notifs extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $since = \Movim\Cache::c('notifs_since');
 
-        if(!$since) $since = date(\Modl\SQL::SQL_DATE, 0);
+        if (!$since) $since = date(\Modl\SQL::SQL_DATE, 0);
 
         $emoji = \MovimEmoji::getInstance();
 

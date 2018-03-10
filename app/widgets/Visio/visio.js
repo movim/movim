@@ -92,9 +92,9 @@ var Visio = {
 
         Visio_ajaxGetCandidates();
 
-        if(mid == '') mlineindex = 1;
+        if (mid == '') mlineindex = 1;
 
-        if(Visio.pc.remoteDescription == null) return;
+        if (Visio.pc.remoteDescription == null) return;
 
         candidate = new RTCIceCandidate({
             'candidate': candidate,
@@ -118,7 +118,7 @@ var Visio = {
 
         Visio.pc.close();
 
-        if(window.opener) {
+        if (window.opener) {
             window.close();
         }
     },
@@ -184,11 +184,11 @@ var Visio = {
 
         Visio.toggleMainButton();
 
-        if(sdp && type) {
+        if (sdp && type) {
             Visio.onSDP(sdp, type);
         }
 
-        if(typeof navigator.webkitGetUserMedia == 'function') {
+        if (typeof navigator.webkitGetUserMedia == 'function') {
             navigator.webkitGetUserMedia(constraints, Visio.handleSuccess, logError);
         } else {
             navigator.mediaDevices.getUserMedia(constraints)
@@ -230,7 +230,7 @@ var Visio = {
         button.classList.remove('red', 'green', 'gray', 'orange', 'ring', 'blue');
         button.classList.add('disabled');
 
-        if(Visio.pc) {
+        if (Visio.pc) {
             if (Visio.localCreated) Visio.answer();
 
             let length = Visio.pc.getSenders
@@ -326,7 +326,7 @@ var Visio = {
     toggleAudio: function() {
         var button = document.querySelector('#toggle_audio i');
 
-        if(Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled) {
+        if (Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled) {
             Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled = 0;
             button.className = 'zmdi zmdi-mic-off';
         } else {
@@ -338,7 +338,7 @@ var Visio = {
     toggleVideo: function() {
         var button = document.querySelector('#toggle_video i');
 
-        if(Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled) {
+        if (Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled) {
             Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 0;
             button.className = 'zmdi zmdi-videocam-off';
         } else {

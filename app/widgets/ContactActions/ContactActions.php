@@ -13,7 +13,7 @@ class ContactActions extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $contact = $cd->get($jid);
 
-        if($contact) {
+        if ($contact) {
             $view = $this->tpl();
             $rd = new \Modl\RosterLinkDAO;
 
@@ -26,15 +26,15 @@ class ContactActions extends \Movim\Widget\Base
 
     function ajaxGetDrawer($jid)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $tpl = $this->tpl();
 
         $cd = new \Modl\ContactDAO;
         $cr = $cd->getRosterItem($jid);
 
-        if(isset($cr)) {
-            if($cr->value != null) {
+        if (isset($cr)) {
+            if ($cr->value != null) {
                 $tpl->assign('presence', getPresencesTxt()[$cr->value]);
             }
 
@@ -59,7 +59,7 @@ class ContactActions extends \Movim\Widget\Base
 
     function ajaxChat($jid)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $c = new Chats;
         $c->ajaxOpen($jid);

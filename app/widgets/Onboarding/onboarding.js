@@ -1,17 +1,17 @@
 var Onboarding = {
     check: function() {
-        if(localStorage.getItem('onboardingPublic') === null) {
+        if (localStorage.getItem('onboardingPublic') === null) {
             Onboarding_ajaxAskPublic();
-        } else if(localStorage.getItem('onboardingNotifications') === null) {
+        } else if (localStorage.getItem('onboardingNotifications') === null) {
             Onboarding_ajaxAskNotifications();
-        } else if(localStorage.getItem('onboardingPopups') === null) {
+        } else if (localStorage.getItem('onboardingPopups') === null) {
             Onboarding_ajaxAskPopups();
         }
     },
 
     enableNotifications: function() {
         DesktopNotification.requestPermission(function (status) {
-            if(DesktopNotification.permission !== status) {
+            if (DesktopNotification.permission !== status) {
                 DesktopNotification.permission = status;
             }
         });

@@ -2,8 +2,8 @@ var Menu = {
     init: function() {
         var parts = MovimUtils.urlParts();
 
-        if(parts.hash != '') {
-            switch(parts.hash) {
+        if (parts.hash != '') {
+            switch (parts.hash) {
                 case 'communities':
                     Menu_ajaxGetNews();
                     break;

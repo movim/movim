@@ -14,17 +14,17 @@ class Syndication extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $id = new \Modl\InfoDAO;
 
-        if(!$this->get('s')) {
+        if (!$this->get('s')) {
             return;
         }
 
         $from = $this->get('s');
         $item = $contact = null;
 
-        if(filter_var($from, FILTER_VALIDATE_EMAIL)) {
+        if (filter_var($from, FILTER_VALIDATE_EMAIL)) {
             $node = 'urn:xmpp:microblog:0';
             $contact = $cd->get($from);
-        } elseif(!$this->get('n')) {
+        } elseif (!$this->get('n')) {
             return;
         } else {
             $node = $this->get('n');
@@ -47,7 +47,7 @@ class Syndication extends \Movim\Widget\Base
         $feed->appendChild($alternate = $dom->createElement('link'));
         $alternate->setAttribute('rel', 'alternate');
 
-        if($contact != null) {
+        if ($contact != null) {
             $feed->appendChild($dom->createElement('title', __('feed.title', $contact->getTrueName())));
 
             $feed->appendChild($author = $dom->createElement('author'));
@@ -87,7 +87,7 @@ class Syndication extends \Movim\Widget\Base
             foreach ($messages as $message) {
                 $feed->appendChild($entry = $dom->createElement('entry'));
 
-                if($message->title) {
+                if ($message->title) {
                     $entry->appendChild($dom->createElement('title', $message->title));
                 } else {
                     $entry->appendChild($dom->createElement('title', __('post.default_title')));
@@ -102,14 +102,14 @@ class Syndication extends \Movim\Widget\Base
 
                 $f = $dom->createDocumentFragment();
 
-                if($f->appendXML($message->contentcleaned)) {
+                if ($f->appendXML($message->contentcleaned)) {
                     $div->appendChild($f);
                 }
 
                 $attachments = $message->getAttachments();
 
-                if(isset($attachments['pictures'])) {
-                    foreach($attachments['pictures'] as $value) {
+                if (isset($attachments['pictures'])) {
+                    foreach ($attachments['pictures'] as $value) {
                         $entry->appendChild($link = $dom->createElement('link'));
                         $link->setAttribute('rel', 'enclosure');
                         $link->setAttribute('type', $value['type']);
@@ -117,8 +117,8 @@ class Syndication extends \Movim\Widget\Base
                     }
                 }
 
-                if(isset($attachments['files'])) {
-                    foreach($attachments['files'] as $value) {
+                if (isset($attachments['files'])) {
+                    foreach ($attachments['files'] as $value) {
                         $entry->appendChild($link = $dom->createElement('link'));
                         $link->setAttribute('rel', 'enclosure');
                         $link->setAttribute('type', $value['type']);
@@ -126,8 +126,8 @@ class Syndication extends \Movim\Widget\Base
                     }
                 }
 
-                if(isset($attachments['links'])) {
-                    foreach($attachments['links'] as $value) {
+                if (isset($attachments['links'])) {
+                    foreach ($attachments['links'] as $value) {
                         $entry->appendChild($link = $dom->createElement('link'));
                         $link->setAttribute('rel', 'alternate');
                         $link->setAttribute('href', $value['href']);

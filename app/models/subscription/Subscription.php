@@ -46,7 +46,7 @@ class Subscription extends Model
         $this->subid        = (string)$s->attributes()->subid;
         $this->tags         = [];
 
-        if($this->subid = '') {
+        if ($this->subid = '') {
             $this->subid = 'default';
         }
     }

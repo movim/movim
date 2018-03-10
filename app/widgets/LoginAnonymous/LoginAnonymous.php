@@ -15,7 +15,7 @@ class LoginAnonymous extends \Movim\Widget\Base
     function onStart($packet)
     {
         $session = Session::start();
-        if($session->get('mechanism') == 'ANONYMOUS') {
+        if ($session->get('mechanism') == 'ANONYMOUS') {
             $this->rpc('Rooms.anonymousJoin');
         }
     }
@@ -23,7 +23,7 @@ class LoginAnonymous extends \Movim\Widget\Base
     function ajaxLogin($username)
     {
         $validate_user = Validator::stringType()->length(4, 40);
-        if(!$validate_user->validate($username)) {
+        if (!$validate_user->validate($username)) {
             Notification::append(null, $this->__('login_anonymous.bad_username'));
             return;
         }

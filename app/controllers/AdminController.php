@@ -12,7 +12,7 @@ class AdminController extends Base
     {
         session_start();
 
-        if(isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
+        if (isset($_SESSION['admin']) && $_SESSION['admin'] == true) {
             $this->page->setTitle(__('page.administration'));
         } else {
             $this->name = 'adminlogin';

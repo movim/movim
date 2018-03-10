@@ -44,7 +44,7 @@ class EncryptedPassDAO extends SQL
 
         $this->run('EncryptedPass');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 insert into encryptedpass
                 (session, id, data, timestamp)

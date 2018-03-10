@@ -37,7 +37,7 @@ class Account extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        if(isset($content->x)) {
+        if (isset($content->x)) {
             $xml = new \XMPPtoForm();
             $form = $xml->getHTML($content->x->asXML());
 
@@ -45,7 +45,7 @@ class Account extends \Movim\Widget\Base
             $view->assign('from', $package->from);
             $view->assign('attributes', $content->attributes());
             $view->assign('actions', null);
-            if(isset($content->actions)) {
+            if (isset($content->actions)) {
                 $view->assign('actions', $content->actions);
             }
 
@@ -60,9 +60,9 @@ class Account extends \Movim\Widget\Base
         $p1 = $form->password->value;
         $p2 = $form->password_confirmation->value;
 
-        if($validate->validate($p1)
+        if ($validate->validate($p1)
         && $validate->validate($p2)) {
-            if($p1 == $p2) {
+            if ($p1 == $p2) {
                 $arr = explodeJid($this->user->getLogin());
 
                 $cp = new ChangePassword;
@@ -108,7 +108,7 @@ class Account extends \Movim\Widget\Base
 
     function ajaxGetRegistration($server)
     {
-        if(!$this->validateServer($server)) return;
+        if (!$this->validateServer($server)) return;
 
         $da = new Get;
         $da->setTo($server)
@@ -117,7 +117,7 @@ class Account extends \Movim\Widget\Base
 
     function ajaxRegister($server, $form)
     {
-        if(!$this->validateServer($server)) return;
+        if (!$this->validateServer($server)) return;
         $s = new Set;
         $s->setTo($server)
           ->setData($form)
@@ -127,7 +127,7 @@ class Account extends \Movim\Widget\Base
     private function validateServer($server)
     {
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 80);
-        if(!$validate_server->validate($server)) return false;
+        if (!$validate_server->validate($server)) return false;
         else return true;
     }
 

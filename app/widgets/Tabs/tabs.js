@@ -7,7 +7,7 @@ var Tabs = {
         // We create the list
         var html = '';
         for (var i=0; i<tabs.length; i++){
-            if(window.location.hash == '#' + tabs[i].id + '_tab') {
+            if (window.location.hash == '#' + tabs[i].id + '_tab') {
                 current = tabs[i].id;
             }
 
@@ -22,7 +22,7 @@ var Tabs = {
         // We insert the list
         document.querySelector('#navtabs').innerHTML = html;
 
-        if(current != null){
+        if (current != null){
             tab = current;
             menuTab = document.querySelector('li.' + current);
         }
@@ -37,7 +37,7 @@ var Tabs = {
 
         window.onhashchange = function() {
             var hash = window.location.hash.slice(1, -4);
-            if(hash) {
+            if (hash) {
                 Tabs.change(document.querySelector('li.' + hash));
             }
         }
@@ -68,7 +68,7 @@ var Tabs = {
         window.history.pushState(null, null, '#' + selected + '_tab');
 
         // We try to call ajaxDisplay
-        if(typeof window[tabOn.title + '_ajaxDisplay'] == 'function') {
+        if (typeof window[tabOn.title + '_ajaxDisplay'] == 'function') {
             window[tabOn.title + '_ajaxDisplay'].apply();
         }
 

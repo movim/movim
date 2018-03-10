@@ -23,7 +23,7 @@ class ContactHeader extends \Movim\Widget\Base
 
     function ajaxEditContact($jid)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $rd = new \Modl\RosterLinkDAO;
         $groups = $rd->getGroups();
@@ -31,7 +31,7 @@ class ContactHeader extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        if(isset($rl)) {
+        if (isset($rl)) {
             $view->assign('submit',
                 $this->call(
                     'ajaxEditSubmit',
@@ -55,7 +55,7 @@ class ContactHeader extends \Movim\Widget\Base
 
     function ajaxDeleteContact($jid)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $view = $this->tpl();
         $view->assign('jid', $jid);
@@ -79,7 +79,7 @@ class ContactHeader extends \Movim\Widget\Base
 
     function ajaxChat($jid)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $c = new Chats;
         $c->ajaxOpen($jid);

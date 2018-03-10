@@ -8,7 +8,7 @@ var Chats = {
 
         while(i < items.length)
         {
-            if(items[i].dataset.jid != null) {
+            if (items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
                     Rooms.refresh();
 
@@ -21,7 +21,7 @@ var Chats = {
                 };
 
                 items[i].onmousedown = function(e) {
-                    if(e.which == 2) {
+                    if (e.which == 2) {
                         Notification_ajaxClear('chat|' + this.dataset.jid);
                         Notification.current('');
                         Chats_ajaxClose(this.dataset.jid);

@@ -6,7 +6,7 @@ var Upload = {
     file : null,
 
     init : function() {
-        if(Upload.file) {
+        if (Upload.file) {
             Upload_ajaxSend({
                 name: Upload.name,
                 size: Upload.file.size,
@@ -16,7 +16,7 @@ var Upload = {
     },
 
     attach : function(func) {
-        if(typeof(func) === "function") {
+        if (typeof(func) === "function") {
             this.attached.push(func);
         }
     },
@@ -65,8 +65,8 @@ var Upload = {
 
             var ratio = Math.min(limit / width, limit / height);
 
-            if(ratio < 1 || file.size > SMALL_PICTURE_LIMIT) {
-                if(ratio < 1) {
+            if (ratio < 1 || file.size > SMALL_PICTURE_LIMIT) {
+                if (ratio < 1) {
                     width = Math.round(width*ratio);
                     height = Math.round(height*ratio);
                 }
@@ -96,8 +96,8 @@ var Upload = {
 
                 ctx.drawImage(image, 0, 0, width, height);
 
-                if(typeof canvas.toBlob == 'function') {
-                    if(file.type != 'image/jpeg') {
+                if (typeof canvas.toBlob == 'function') {
+                    if (file.type != 'image/jpeg') {
                         Upload.name += '.jpg';
                     }
 
@@ -138,17 +138,17 @@ var Upload = {
         Upload.xhr.upload.addEventListener('progress', function(evt) {
             var percent = Math.floor(evt.loaded/evt.total*100);
             var progress = document.querySelector('#dialog ul li p');
-            if(progress) progress.innerHTML = percent + '%';
+            if (progress) progress.innerHTML = percent + '%';
         }, false);
 
         Upload.xhr.onreadystatechange = function() {
-            if(Upload.xhr.readyState == 4
+            if (Upload.xhr.readyState == 4
             && (Upload.xhr.status >= 200 && Upload.xhr.status < 400)) {
                 Dialog.clear();
                 Upload.launchAttached();
             }
 
-            if(Upload.xhr.readyState == 4
+            if (Upload.xhr.readyState == 4
             && (Upload.xhr.status >= 400 || Upload.xhr.status == 0)
             && Upload.file != null) {
                 Upload_ajaxFailed();
@@ -159,13 +159,13 @@ var Upload = {
 
         Upload.xhr.setRequestHeader('Content-Type', 'text/plain');
 
-        if(Upload.file != null) {
+        if (Upload.file != null) {
             Upload.xhr.send(Upload.file);
         }
     },
 
     abort : function() {
-        if(Upload.xhr) Upload.xhr.abort();
+        if (Upload.xhr) Upload.xhr.abort();
     }
 }
 

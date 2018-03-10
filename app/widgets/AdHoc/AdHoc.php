@@ -33,20 +33,20 @@ class AdHoc extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('jid', $package->from);
 
-        if(isset($command->note)) {
+        if (isset($command->note)) {
             $view->assign('note', $command->note);
 
             Dialog::fill($view->draw('_adhoc_note', true));
         }
 
-        if(isset($command->x)) {
+        if (isset($command->x)) {
             $xml = new \XMPPtoForm();
             $form = $xml->getHTML($command->x->asXML());
 
             $view->assign('form', $form);
             $view->assign('attributes', $command->attributes());
             $view->assign('actions', null);
-            if(isset($command->actions)) {
+            if (isset($command->actions)) {
                 $view->assign('actions', $command->actions);
             }
 
@@ -68,7 +68,7 @@ class AdHoc extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $note = $package->content['errorid'];
-        if($package->content['message']) {
+        if ($package->content['message']) {
             $note = $package->content['message'];
         }
 
@@ -78,7 +78,7 @@ class AdHoc extends \Movim\Widget\Base
 
     function ajaxGet($jid)
     {
-        if(!$jid) {
+        if (!$jid) {
             $session = Session::start();
             $jid = $session->get('host');
         }
@@ -97,7 +97,7 @@ class AdHoc extends \Movim\Widget\Base
 
     function ajaxSubmit($jid, $data, $node, $sessionid)
     {
-        if(!$jid) {
+        if (!$jid) {
             $session = Session::start();
             $jid = $session->get('host');
         }
@@ -127,7 +127,7 @@ class AdHoc extends \Movim\Widget\Base
             'http://jabber.org/protocol/admin#announce' => 'zmdi-notifications',
         ];
 
-        if(array_key_exists($command, $icons)) {
+        if (array_key_exists($command, $icons)) {
             return $icons[$command];
         }
 

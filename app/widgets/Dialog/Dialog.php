@@ -13,7 +13,7 @@ class Dialog extends \Movim\Widget\Base
     {
         RPC::call('MovimTpl.fill', '#dialog', $html);
 
-        if($scroll) {
+        if ($scroll) {
             RPC::call('Dialog.addScroll');
         }
     }

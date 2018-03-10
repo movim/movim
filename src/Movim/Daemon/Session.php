@@ -180,7 +180,7 @@ class Session
     public function messageOut($msg)
     {
         $this->timestamp = time();
-        if(!empty($msg)) {
+        if (!empty($msg)) {
             foreach ($this->clients as $client) {
                 $client->send($msg);
             }

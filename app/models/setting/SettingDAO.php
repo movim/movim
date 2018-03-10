@@ -27,7 +27,7 @@ class SettingDAO extends SQL
 
         $this->run('Config');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 insert into setting
                 (

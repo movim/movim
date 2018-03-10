@@ -122,7 +122,7 @@ class RosterLinkDAO extends SQL
     {
         $this->update($r);
 
-        if(!$this->_effective)
+        if (!$this->_effective)
             $this->set($r);
     }
 
@@ -162,7 +162,7 @@ class RosterLinkDAO extends SQL
 
         $results = $this->run('RosterLink');
 
-        if(is_array($results)) {
+        if (is_array($results)) {
             $arr = [];
 
             foreach($results as $r)
@@ -176,7 +176,7 @@ class RosterLinkDAO extends SQL
 
     function getRoster($to = null)
     {
-        if($to != null)
+        if ($to != null)
             $session = $to;
         else
             $session = $this->_user;

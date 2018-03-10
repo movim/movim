@@ -30,7 +30,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $role = null;
 
         foreach($affiliations['owner'] as $r) {
-            if($r['jid'] == $this->user->getLogin()) {
+            if ($r['jid'] == $this->user->getLogin()) {
                 $role = 'owner';
             }
         }
@@ -91,7 +91,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     private function deleted($packet)
     {
-        if($packet->content['server'] != $this->user->getLogin()
+        if ($packet->content['server'] != $this->user->getLogin()
         && substr($packet->content['node'], 0, 29) != 'urn:xmpp:microblog:0:comments') {
             Notification::append(null, $this->__('communityaffiliation.deleted'));
 
@@ -126,7 +126,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     function ajaxGetAffiliations($origin, $node)
     {
-        if(!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) return;
 
         $r = new GetAffiliations;
         $r->setTo($origin)->setNode($node)
@@ -135,7 +135,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     function ajaxGetSubscriptions($origin, $node, $notify = true)
     {
-        if(!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) return;
 
         $r = new GetSubscriptions;
         $r->setTo($origin)
@@ -146,7 +146,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     function ajaxDelete($origin, $node, $clean = false)
     {
-        if(!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) return;
 
         $view = $this->tpl();
         $view->assign('server', $origin);
@@ -158,7 +158,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     function ajaxDeleteConfirm($origin, $node)
     {
-        if(!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) return;
 
         $d = new Delete;
         $d->setTo($origin)->setNode($node)
@@ -178,11 +178,11 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     function ajaxChangeAffiliation($origin, $node, $form)
     {
-        if(!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) return;
 
         $cd = new \Modl\CapsDAO;
 
-        if(Validator::in($cd->get($origin)->getPubsubRoles())->validate($form->role->value)
+        if (Validator::in($cd->get($origin)->getPubsubRoles())->validate($form->role->value)
         && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
             $sa->setTo($origin)

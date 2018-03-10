@@ -41,7 +41,7 @@ class Init extends \Movim\Widget\Base
         $p->setTo($this->user->getLogin())
           ->setNode($node);
 
-        if(is_int($max)) {
+        if (is_int($max)) {
             $p->setMaxItems($max);
         }
 

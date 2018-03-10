@@ -31,7 +31,7 @@ class SubscriptionDAO extends SQL
 
         $this->run('Subscription');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 insert into subscription
                 (jid, server, node, subscription, subid, tags, timestamp)

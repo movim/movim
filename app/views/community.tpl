@@ -14,7 +14,7 @@
 
 <main>
     <section style="background-color: var(--movim-background)">
-        <?php if(empty($_GET['s'])) { ?>
+        <?php if (empty($_GET['s'])) { ?>
             <div>
                 <header>
                     <ul class="list middle">
@@ -27,11 +27,11 @@
                 <?php $this->widget('Tabs');?>
                 <?php $this->widget('Communities'); ?>
                 <?php $this->widget('CommunitiesServers'); ?>
-                <?php if($this->user->isSupported('pubsub')) { ?>
+                <?php if ($this->user->isSupported('pubsub')) { ?>
                     <?php $this->widget('CommunitySubscriptions'); ?>
                 <?php } ?>
             </div>
-        <?php } elseif(empty($_GET['n'])) { ?>
+        <?php } elseif (empty($_GET['n'])) { ?>
             <aside>
                 <?php $this->widget('CommunitiesServerInfo'); ?>
                 <?php $this->widget('NewsNav');?>

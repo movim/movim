@@ -35,7 +35,7 @@ class SessionxDAO extends SQL
 
         $this->run('Sessionx');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 insert into sessionx
                 (session,

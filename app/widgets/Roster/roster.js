@@ -1,13 +1,13 @@
 var Roster = {
     init : function() {
         var search      = document.querySelector('#rostersearch');
-        if(search == null) return;
+        if (search == null) return;
 
         var roster      = document.querySelector('#roster');
         var rosterlist  = document.querySelector('#rosterlist');
 
         search.oninput = function(event) {
-            if(search.value.length > 0) {
+            if (search.value.length > 0) {
                 roster.classList.add('search');
             } else {
                 roster.classList.remove('search');

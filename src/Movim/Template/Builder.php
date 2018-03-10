@@ -43,7 +43,7 @@ class Builder
     {
         $path = urilize('themes/' . $this->theme . '/' . $file);
 
-        if($return) {
+        if ($return) {
             return $path;
         } else {
             echo $path;
@@ -75,7 +75,7 @@ class Builder
         $outp = ob_get_clean();
 
         $scripts = $this->printCss();
-        if(!$public) {
+        if (!$public) {
             $scripts .= $this->printScripts();
         }
 
@@ -100,7 +100,7 @@ class Builder
     function title()
     {
         $widgets = Wrapper::getInstance();
-        if(isset($widgets->title)) {
+        if (isset($widgets->title)) {
             $this->title .= ' - ' . $widgets->title;
         }
         echo $this->title;
@@ -114,7 +114,7 @@ class Builder
         $this->user->reload(true);
         $lang = $this->user->getConfig('language');
 
-        if(in_array($lang, ['ar', 'he', 'fa'])) {
+        if (in_array($lang, ['ar', 'he', 'fa'])) {
             $this->dir = 'rtl';
         }
 
@@ -134,7 +134,7 @@ class Builder
 
         $widgets = Wrapper::getInstance();
 
-        if(isset($widgets->title)) {
+        if (isset($widgets->title)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('property', 'og:title');
             $meta->setAttribute('content', $widgets->title);
@@ -145,7 +145,7 @@ class Builder
             $meta->setAttribute('content', $widgets->title);
             $metas->appendChild($meta);
         }
-        if(isset($widgets->image)) {
+        if (isset($widgets->image)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('property', 'og:image');
             $meta->setAttribute('content', $widgets->image);
@@ -156,7 +156,7 @@ class Builder
             $meta->setAttribute('content', $widgets->image);
             $metas->appendChild($meta);
         }
-        if(isset($widgets->description)) {
+        if (isset($widgets->description)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('property', 'og:description');
             $meta->setAttribute('content', $widgets->description);
@@ -180,14 +180,14 @@ class Builder
             $meta->setAttribute('content', $config->description);
             $metas->appendChild($meta);
         }
-        if(isset($widgets->url)) {
+        if (isset($widgets->url)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('property', 'og:url');
             $meta->setAttribute('content', $widgets->url);
             $metas->appendChild($meta);
         }
 
-        if(isset($widgets->links)) {
+        if (isset($widgets->links)) {
             foreach($widgets->links as $l) {
                 $link = $dom->createElement('link');
                 $link->setAttribute('rel',  $l['rel']);

@@ -63,7 +63,7 @@ class Presence extends Model
     {
         $jid = explode('/',(string)$stanza->attributes()->from);
 
-        if($stanza->attributes()->to) {
+        if ($stanza->attributes()->to) {
             $to = current(explode('/',(string)$stanza->attributes()->to));
         } else {
             $to = $jid[0];
@@ -72,43 +72,43 @@ class Presence extends Model
         $this->session = $to;
         $this->jid = $jid[0];
 
-        if(isset($jid[1])) {
+        if (isset($jid[1])) {
             $this->resource = $jid[1];
         } else {
             $this->resource = '';
         }
 
-        if($stanza->status) {
+        if ($stanza->status) {
             $this->status = (string)$stanza->status;
         }
 
-        if($stanza->c) {
+        if ($stanza->c) {
             $this->node = (string)$stanza->c->attributes()->node;
             $this->ver = (string)$stanza->c->attributes()->ver;
         }
 
-        if($stanza->priority) {
+        if ($stanza->priority) {
             $this->priority = (string)$stanza->priority;
         }
 
-        if((string)$stanza->attributes()->type == 'error') {
+        if ((string)$stanza->attributes()->type == 'error') {
             $this->value = 6;
-        } elseif((string)$stanza->attributes()->type == 'unavailable') {
+        } elseif ((string)$stanza->attributes()->type == 'unavailable') {
             $this->value = 5;
-        } elseif((string)$stanza->show == 'away') {
+        } elseif ((string)$stanza->show == 'away') {
             $this->value = 2;
-        } elseif((string)$stanza->show == 'dnd') {
+        } elseif ((string)$stanza->show == 'dnd') {
             $this->value = 3;
-        } elseif((string)$stanza->show == 'xa') {
+        } elseif ((string)$stanza->show == 'xa') {
             $this->value = 4;
         } else {
             $this->value = 1;
         }
 
         // Specific XEP
-        if($stanza->x) {
-            foreach($stanza->children() as $name => $c) {
-                switch($c->attributes()->xmlns) {
+        if ($stanza->x) {
+            foreach ($stanza->children() as $name => $c) {
+                switch ($c->attributes()->xmlns) {
                     case 'jabber:x:signed' :
                         $this->publickey = (string)$c;
                         break;
@@ -137,7 +137,7 @@ class Presence extends Model
             }
         }
 
-        if($stanza->delay) {
+        if ($stanza->delay) {
             $this->delay = gmdate(
                 'Y-m-d H:i:s',
                 strtotime(
@@ -146,7 +146,7 @@ class Presence extends Model
             );
         }
 
-        if($stanza->query) {
+        if ($stanza->query) {
             $this->last = (int)$stanza->query->attributes()->seconds;
         }
     }

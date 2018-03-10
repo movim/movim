@@ -31,7 +31,7 @@ var AdHoc = {
 
 MovimWebsocket.attach(function() {
     var parts = MovimUtils.urlParts();
-    if(parts.page === "contact") {
+    if (parts.page === "contact") {
         AdHoc_ajaxGet(parts.params[0]);
     } else {
         AdHoc_ajaxGet();

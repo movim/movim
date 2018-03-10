@@ -76,7 +76,7 @@
                 <input type="hidden"
                     id="embed"
                     name="embed"
-                    onchange="if(this.value != '') { PublishBrief_ajaxEmbedLoading(); PublishBrief_ajaxEmbedTest(this.value, document.querySelector('form[name=brief] input#imagenumber').value); }"
+                    onchange="if (this.value != '') { PublishBrief_ajaxEmbedLoading(); PublishBrief_ajaxEmbedTest(this.value, document.querySelector('form[name=brief] input#imagenumber').value); }"
                     {if="!empty($draft->links) && !empty($draft->links[0])"}
                          value="{$draft->links[0]}"
                     {elseif="isset($attachment) && $attachment != false"}

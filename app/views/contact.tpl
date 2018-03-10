@@ -13,7 +13,7 @@
 
 <main>
     <section style="background-color: var(--movim-background);">
-        <?php if(empty($_GET['s'])) { ?>
+        <?php if (empty($_GET['s'])) { ?>
             <aside>
                 <?php $this->widget('ContactDisco');?>
             </aside>

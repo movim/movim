@@ -38,7 +38,7 @@ class Front extends Base
      */
     public function runRequest($request)
     {
-        if($request === 'ajax') {
+        if ($request === 'ajax') {
             requestURL('http://localhost:1560/ajax/', 2, [
                 'sid' => SESSION_ID,
                 'json' => rawurlencode(file_get_contents('php://input'))

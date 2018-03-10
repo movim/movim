@@ -6,7 +6,7 @@ var Drawer = {
         Drawer_ajaxClear();
     },
     toggle : function(e) {
-        if(Drawer.filled()
+        if (Drawer.filled()
         && document.querySelector('body') == e.target) {
             Drawer_ajaxClear();
         }
@@ -16,7 +16,7 @@ var Drawer = {
 movim_add_onload(function() {
     document.body.addEventListener('click', Drawer.toggle, false);
     document.addEventListener('keydown', function(e) {
-        if(Drawer.filled()
+        if (Drawer.filled()
         && e.keyCode == 27) {
             Drawer.clear();
         }

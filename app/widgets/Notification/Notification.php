@@ -32,47 +32,47 @@ class Notification extends \Movim\Widget\Base
         $execute = null)
     {
         // In this case we have an action confirmation
-        if($key == null && $title != null) {
+        if ($key == null && $title != null) {
             RPC::call('Notification.toast', $title);
             return;
         }
 
-        if($picture == null) {
+        if ($picture == null) {
             $picture = BASE_URI . '/themes/material/img/app/128.png';
         }
 
         $session = Session::start();
         $notifs = $session->get('notifs');
 
-        if($title != null) {
+        if ($title != null) {
             RPC::call('Notification.desktop', $title, $body, $picture, $action, $execute);
         }
 
         $notifs_key = $session->get('notifs_key');
 
-        if($notifs == null) $notifs = [];
+        if ($notifs == null) $notifs = [];
 
         $explode = explode('|', $key);
         $first = reset($explode);
 
         // What we receive is not what it's on the screen on Android
-        if($key != null && $key != $notifs_key && $title != null) {
-            if($group != null) $action = $group;
+        if ($key != null && $key != $notifs_key && $title != null) {
+            if ($group != null) $action = $group;
             RPC::call('Notification.android', $title, $body, $picture, $action);
         }
 
-        if(array_key_exists($first, $notifs)) {
+        if (array_key_exists($first, $notifs)) {
             $notifs[$first]++;
         } else {
             $notifs[$first] = 1;
         }
 
-        if($notifs_key != null && $key == $notifs_key) return;
+        if ($notifs_key != null && $key == $notifs_key) return;
 
         RPC::call('Notification.counter', $first, $notifs[$first]);
 
-        if($first != $key) {
-            if(array_key_exists($key, $notifs)) {
+        if ($first != $key) {
+            if (array_key_exists($key, $notifs)) {
                 $notifs[$key]++;
             } else {
                 $notifs[$key] = 1;
@@ -81,7 +81,7 @@ class Notification extends \Movim\Widget\Base
             RPC::call('Notification.counter', $key, $notifs[$key]);
         }
 
-        if($title != null) {
+        if ($title != null) {
             $n = new Notification;
             RPC::call(
                 'Notification.snackbar',
@@ -103,7 +103,7 @@ class Notification extends \Movim\Widget\Base
         $session = Session::start();
         $notifs = $session->get('notifs');
 
-        if($notifs != null && array_key_exists($key, $notifs)) {
+        if ($notifs != null && array_key_exists($key, $notifs)) {
             $counter = $notifs[$key];
             unset($notifs[$key]);
 
@@ -112,10 +112,10 @@ class Notification extends \Movim\Widget\Base
             $explode = explode('|', $key);
             $first = reset($explode);
 
-            if(array_key_exists($first, $notifs)) {
+            if (array_key_exists($first, $notifs)) {
                 $notifs[$first] = $notifs[$first] - $counter;
 
-                if($notifs[$first] <= 0) {
+                if ($notifs[$first] <= 0) {
                     unset($notifs[$first]);
                     RPC::call('Notification.counter', $first, '');
                 } else {
@@ -135,7 +135,7 @@ class Notification extends \Movim\Widget\Base
     {
         $session = Session::start();
         $notifs = $session->get('notifs');
-        if($notifs != null) RPC::call('Notification.refresh', $notifs);
+        if ($notifs != null) RPC::call('Notification.refresh', $notifs);
     }
 
     /**
@@ -146,7 +146,7 @@ class Notification extends \Movim\Widget\Base
     {
         $session = Session::start();
         $notifs = $session->get('notifs');
-        if($notifs != null && array_key_exists($key, $notifs)) {
+        if ($notifs != null && array_key_exists($key, $notifs)) {
             return $notifs[$key];
         }
 

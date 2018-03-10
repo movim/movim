@@ -38,13 +38,13 @@ class Roster extends \Movim\Widget\Base
     function onPresence($packet)
     {
         $contacts = $packet->content;
-        if($contacts != null){
+        if ($contacts != null){
             $cd = new \Modl\ContactDAO;
 
             $contact = $contacts[0];
 
             $html = $this->prepareItem($cd->getRoster($contact->jid)[0]);
-            if($html) {
+            if ($html) {
                 $this->rpc('MovimTpl.replace', '#'.cleanupId($contact->jid), $html);
             }
         }
@@ -105,7 +105,7 @@ class Roster extends \Movim\Widget\Base
      */
     function ajaxDisplayFound($jid)
     {
-        if(!empty($jid)) {
+        if (!empty($jid)) {
             $cd = new \Modl\ContactDAO;
             $contacts = $cd->searchJid($jid);
 
@@ -141,7 +141,7 @@ class Roster extends \Movim\Widget\Base
      */
     function ajaxSearchContact($jid)
     {
-        if(filter_var($jid, FILTER_VALIDATE_EMAIL)) {
+        if (filter_var($jid, FILTER_VALIDATE_EMAIL)) {
             $this->rpc('MovimUtils.redirect', $this->route('contact', $jid));
         } else {
             Notification::append(null, $this->__('roster.jid_error'));

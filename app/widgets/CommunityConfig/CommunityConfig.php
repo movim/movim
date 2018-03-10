@@ -38,13 +38,13 @@ class CommunityConfig extends \Movim\Widget\Base
 
     function ajaxGetConfig($origin, $node, $advanced = false)
     {
-        if(!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) return;
 
         $r = new GetConfig;
         $r->setTo($origin)
           ->setNode($node);
 
-        if($advanced) {
+        if ($advanced) {
             $r->enableAdvanced();
         }
 
@@ -53,7 +53,7 @@ class CommunityConfig extends \Movim\Widget\Base
 
     function ajaxSetConfig($data, $origin, $node)
     {
-        if(!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) return;
 
         $r = new SetConfig;
         $r->setTo($origin)

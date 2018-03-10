@@ -23,7 +23,7 @@ class TagDAO extends SQL
 
         $this->run('Tag');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 insert into tag
                 (nodeid, tag)

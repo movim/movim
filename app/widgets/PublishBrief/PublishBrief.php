@@ -28,11 +28,11 @@ class PublishBrief extends \Movim\Widget\Base
 
         list($to, $node, $id, $repost, $comments) = array_values($packet->content);
 
-        if(!$repost && $comments) {
+        if (!$repost && $comments) {
             $this->ajaxCreateComments(($comments === true) ? $to : $comments, $id);
         }
 
-        if($node == 'urn:xmpp:microblog:0') {
+        if ($node == 'urn:xmpp:microblog:0') {
             $this->rpc('MovimUtils.redirect', $this->route('news'));
         } else {
             $this->rpc('MovimUtils.redirect', $this->route('community', [$to, $node]));
@@ -52,7 +52,7 @@ class PublishBrief extends \Movim\Widget\Base
 
     function ajaxCreateComments($server, $id)
     {
-        if(!$this->validateServerNode($server, $id)) return;
+        if (!$this->validateServerNode($server, $id)) return;
 
         $cn = new CommentCreateNode;
         $cn->setTo($server)
@@ -81,7 +81,7 @@ class PublishBrief extends \Movim\Widget\Base
         $p->title = $form->title->value;
         $p->content = $form->content->value;
 
-        if(Validator::notEmpty()->url()->validate($form->embed->value)) {
+        if (Validator::notEmpty()->url()->validate($form->embed->value)) {
             array_push($p->links, $form->embed->value);
         }
 
@@ -90,7 +90,7 @@ class PublishBrief extends \Movim\Widget\Base
 
     function ajaxPreview($form)
     {
-        if($form->content->value != '') {
+        if ($form->content->value != '') {
             $view = $this->tpl();
 
             $doc = new DOMDocument;
@@ -113,7 +113,7 @@ class PublishBrief extends \Movim\Widget\Base
 
         Cache::c('draft', null);
 
-        if(Validator::stringType()->notEmpty()->validate(trim($form->title->value))) {
+        if (Validator::stringType()->notEmpty()->validate(trim($form->title->value))) {
             $p = new PostPublish;
             $p->setFrom($this->user->getLogin())
               ->setTo($form->to->value)
@@ -152,7 +152,7 @@ class PublishBrief extends \Movim\Widget\Base
                 $pd = new \Modl\PostnDAO;
                 $post = $pd->get($form->to->value, $form->node->value, $form->id->value);
 
-                if(isset($post)) {
+                if (isset($post)) {
                     $p->setPublished(strtotime($post->published));
                 }
             } else {
@@ -188,7 +188,7 @@ class PublishBrief extends \Movim\Widget\Base
                 $p->setReply($post->getRef());
             }
 
-            if(Validator::notEmpty()->url()->validate($form->embed->value)) {
+            if (Validator::notEmpty()->url()->validate($form->embed->value)) {
                 try {
                     $murl = new \Modl\Url;
                     $embed = $murl->resolve($form->embed->value);
@@ -196,7 +196,7 @@ class PublishBrief extends \Movim\Widget\Base
 
                     $imagenumber = $form->imagenumber->value;
 
-                    if($embed->type == 'photo' || isset($embed->images)) {
+                    if ($embed->type == 'photo' || isset($embed->images)) {
                         $p->setImage($embed->images[$imagenumber]['url'],
                                      $embed->title,
                                      $embed->images[$imagenumber]['mime']);
@@ -230,11 +230,11 @@ class PublishBrief extends \Movim\Widget\Base
 
     function ajaxEmbedTest($url, $imagenumber = 0)
     {
-        if($url == '') {
+        if ($url == '') {
             return;
         }
 
-        if(!Validator::url()->validate($url)) {
+        if (!Validator::url()->validate($url)) {
             Notification::append(false, $this->__('publishbrief.valid_url'));
             $this->ajaxClearEmbed();
             return;
@@ -301,7 +301,7 @@ class PublishBrief extends \Movim\Widget\Base
         $reply = false,
         $extended = false
     ) {
-        if($server == false
+        if ($server == false
         && $node == false) {
             $server = $this->user->getLogin();
             $node = 'urn:xmpp:microblog:0';
@@ -310,18 +310,18 @@ class PublishBrief extends \Movim\Widget\Base
         $post = false;
         $view = $this->tpl();
 
-        if($id) {
+        if ($id) {
             $pd = new \Modl\PostnDAO;
             $p = $pd->get($server, $node, $id);
 
-            if($p) {
-                if($p->isEditable() && !$reply) {
+            if ($p) {
+                if ($p->isEditable() && !$reply) {
                     $post = $p;
                 }
 
-                if($p->isReply()) {
+                if ($p->isReply()) {
                     $reply = $p->getReply();
-                } elseif($reply) {
+                } elseif ($reply) {
                     $reply = $p;
                 }
             }
@@ -331,7 +331,7 @@ class PublishBrief extends \Movim\Widget\Base
         $view->assign('url', $session->get('share_url'));
         $view->assign('draft', Cache::c('draft'));
 
-        if($reply) {
+        if ($reply) {
             $view->assign('to', $this->user->getLogin());
             $view->assign('node', 'urn:xmpp:microblog:0');
             $view->assign('item', $post);

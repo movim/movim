@@ -24,7 +24,7 @@ class Subscribe extends \Movim\Widget\Base
         $cd = new \Modl\ConfigDAO;
         $this->view->assign('config', $cd->get());
 
-        if(is_object($json) && $json->status == 200) {
+        if (is_object($json) && $json->status == 200) {
             $this->view->assign('servers', $json->servers);
         }
     }

@@ -9,7 +9,7 @@ var Rooms = {
     suggest: function() {
         let input = document.querySelector('form[name=bookmarkmucadd] input[name=jid]');
 
-        if(input && input.value != '' && !input.value.includes('@')) {
+        if (input && input.value != '' && !input.value.includes('@')) {
             let suggestions = document.querySelector('datalist#suggestions');
             suggestions.textContent = '';
 
@@ -26,7 +26,7 @@ var Rooms = {
         var i = 0;
         while(i < items.length)
         {
-            if(items[i].dataset.jid != null) {
+            if (items[i].dataset.jid != null) {
                 items[i].onclick = function(e) {
                     Chats.refresh();
 

@@ -111,7 +111,7 @@ class Contact extends Model
         $this->jid = \echapJid($jid);
 
         $validate_date = Validator::date('Y-m-d');
-        if(isset($vcard->vCard->BDAY)
+        if (isset($vcard->vCard->BDAY)
         && $validate_date->validate($vcard->vCard->BDAY)) {
             $this->date = (string)$vcard->vCard->BDAY;
         }
@@ -126,7 +126,7 @@ class Contact extends Model
         $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
         $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
 
-        if(filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
+        if (filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
             $this->photobin = base64_encode(
                 requestUrl((string)$vcard->vCard->PHOTO, 1));
         } else {
@@ -193,7 +193,7 @@ class Contact extends Model
     public function setVcard4($vcard)
     {
         $validate_date = Validator::date('Y-m-d');
-        if(isset($vcard->bday->date)
+        if (isset($vcard->bday->date)
         && $validate_date->validate($vcard->bday->date)) {
             $this->date = (string)$vcard->bday->date;
         }
@@ -202,9 +202,9 @@ class Contact extends Model
         $this->fn = (string)$vcard->fn->text;
         $this->url = (string)$vcard->url->uri;
 
-        if(isset($vcard->gender))
+        if (isset($vcard->gender))
             $this->gender  = (string)$vcard->gender->sex->text;
-        if(isset($vcard->marital))
+        if (isset($vcard->marital))
             $this->marital = (string)$vcard->marital->status->text;
 
         $this->adrlocality = (string)$vcard->adr->locality;
@@ -219,20 +219,20 @@ class Contact extends Model
     {
         $place = null;
 
-        if($this->loctext != '')
+        if ($this->loctext != '')
             $place .= $this->loctext.' ';
         else {
-            if($this->locbuilding != '')
+            if ($this->locbuilding != '')
                 $place .= $this->locbuilding.' ';
-            if($this->locstreet != '')
+            if ($this->locstreet != '')
                 $place .= $this->locstreet.'<br />';
-            if($this->locpostalcode != '')
+            if ($this->locpostalcode != '')
                 $place .= $this->locpostalcode.' ';
-            if($this->loclocality != '')
+            if ($this->loclocality != '')
                 $place .= $this->loclocality.'<br />';
-            if($this->locregion != '')
+            if ($this->locregion != '')
                 $place .= $this->locregion.' - ';
-            if($this->loccountry != '')
+            if ($this->loccountry != '')
                 $place .= $this->loccountry;
         }
 
@@ -243,30 +243,30 @@ class Contact extends Model
     {
         $truename = '';
 
-        if(isset($this->rostername))
+        if (isset($this->rostername))
             $rostername = str_replace('\40', '', $this->rostername);
         else
             $rostername = '';
 
-        if(
+        if (
             isset($this->rostername)
             && $rostername != ''
             && !filter_var($rostername, FILTER_VALIDATE_EMAIL)
           )
             $truename = $rostername;
-        elseif(
+        elseif (
             isset($this->fn)
             && $this->fn != ''
             && !filter_var($this->fn, FILTER_VALIDATE_EMAIL)
           )
             $truename = $this->fn;
-        elseif(
+        elseif (
             isset($this->nickname)
             && $this->nickname != ''
             && !filter_var($this->nickname, FILTER_VALIDATE_EMAIL)
           )
             $truename = $this->nickname;
-        elseif(
+        elseif (
             isset($this->name)
             && $this->name != ''
             && !filter_var($this->name, FILTER_VALIDATE_EMAIL)
@@ -282,16 +282,16 @@ class Contact extends Model
 
     function getAge()
     {
-        if($this->isValidDate()) {
+        if ($this->isValidDate()) {
             $age = intval(substr(date('Ymd') - date('Ymd', strtotime($this->date)), 0, -4));
-            if($age != 0)
+            if ($age != 0)
                 return $age;
         }
     }
 
     public function getDate()
     {
-        if($this->date == null) return null;
+        if ($this->date == null) return null;
 
         $dt = new \DateTime($this->date);
         return $dt->format('d-m-Y');
@@ -337,7 +337,7 @@ class Contact extends Model
 
     function isValidDate()
     {
-        if(isset($this->date)
+        if (isset($this->date)
             && $this->date != '0000-00-00T00:00:00+0000'
             && $this->date != '1970-01-01 00:00:00'
             && $this->date != '1970-01-01 01:00:00'
@@ -466,7 +466,7 @@ class RosterContact extends Contact
 
     public function getCaps()
     {
-        if(!empty($this->node)
+        if (!empty($this->node)
         && !empty($this->ver)) {
             $node = $this->node.'#'.$this->ver;
 

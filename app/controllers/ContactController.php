@@ -15,7 +15,7 @@ class ContactController extends Base
         $this->page->setTitle(__('page.contacts'));
 
         $user = new User;
-        if(!$user->isLogged() && $this->fetchGet('s')) {
+        if (!$user->isLogged() && $this->fetchGet('s')) {
             $this->redirect('blog', [$this->fetchGet('s')]);
         }
     }

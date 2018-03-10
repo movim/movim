@@ -9,7 +9,7 @@ var Dialog = {
         Dialog_ajaxClear();
     },
     toggle : function(e) {
-        if(Dialog.filled()
+        if (Dialog.filled()
         && document.querySelector('body') == e.target) {
             Dialog_ajaxClear();
         }
@@ -19,7 +19,7 @@ var Dialog = {
 movim_add_onload(function() {
     document.body.addEventListener('click', Dialog.toggle, false);
     document.addEventListener('keydown', function(e) {
-        if(Dialog.filled()
+        if (Dialog.filled()
         && e.keyCode == 27) {
             Dialog.clear();
         }

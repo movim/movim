@@ -67,17 +67,17 @@ class Info extends Model
     {
         $from = (string)$query->attributes()->from;
 
-        if(strpos($from, '/') == false
+        if (strpos($from, '/') == false
         && isset($query->query)) {
             $this->server   = $from;
             $this->node     = (string)$query->query->attributes()->node;
 
-            foreach($query->query->identity as $i) {
-                if($i->attributes()) {
+            foreach ($query->query->identity as $i) {
+                if ($i->attributes()) {
                     $this->category = (string)$i->attributes()->category;
                     $this->type     = (string)$i->attributes()->type;
 
-                    if($i->attributes()->name) {
+                    if ($i->attributes()->name) {
                         $this->name = (string)$i->attributes()->name;
                     } else {
                         $this->name = $this->node;
@@ -85,7 +85,7 @@ class Info extends Model
                 }
             }
 
-            foreach($query->query->feature as $feature) {
+            foreach ($query->query->feature as $feature) {
                 $key = (string)$feature->attributes()->var;
 
                 switch ($key) {
@@ -107,7 +107,7 @@ class Info extends Model
                 }
             }
 
-            if(isset($query->query->x)) {
+            if (isset($query->query->x)) {
                 foreach($query->query->x->field as $field) {
                     $key = (string)$field->attributes()->var;
                     switch ($key) {

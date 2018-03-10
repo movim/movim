@@ -6,7 +6,7 @@ class MessageDAO extends SQL
 {
     function set($message)
     {
-        if(empty($message->newid)) {
+        if (empty($message->newid)) {
             $message->newid = $message->id;
         }
 
@@ -52,7 +52,7 @@ class MessageDAO extends SQL
 
         $this->run('Message');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 insert into message
                 (
@@ -150,7 +150,7 @@ class MessageDAO extends SQL
             select * from message
             where session = :session';
 
-        if($to !== false) {
+        if ($to !== false) {
             $this->_sql .= '
                 and jidto = :jidto
                 and jidfrom = :jidfrom';
@@ -198,7 +198,7 @@ class MessageDAO extends SQL
             where session = :session
             order by published desc';
 
-        if($limitr)
+        if ($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare(
@@ -223,7 +223,7 @@ class MessageDAO extends SQL
                 or type = \'invitation\')
             order by published desc';
 
-        if($limitr)
+        if ($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare(
@@ -249,7 +249,7 @@ class MessageDAO extends SQL
                 and body is not null
             order by published desc';
 
-        if($limitr)
+        if ($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare(

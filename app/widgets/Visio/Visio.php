@@ -30,7 +30,7 @@ class Visio extends \Movim\Widget\Base
         $contact = $cd->get(cleanJid($from));
 
         $avatar = $contact->getPhoto('s');
-        if($avatar == false) $avatar = null;
+        if ($avatar == false) $avatar = null;
 
         Notification::append(
             'call',
@@ -47,7 +47,7 @@ class Visio extends \Movim\Widget\Base
     function ajaxAskInit()
     {
         $s = Session::start();
-        if($s->get('sdp')) {
+        if ($s->get('sdp')) {
             $this->rpc('Visio.init', $s->get('sdp'), 'offer');
             $s->remove('sdp');
         } else {
@@ -69,7 +69,7 @@ class Visio extends \Movim\Widget\Base
         $s = Session::start();
         $candidates = $s->get('candidates');
 
-        if(!$candidates) $candidates = [];
+        if (!$candidates) $candidates = [];
 
         array_push($candidates, [$sdp, $jts->name, substr($jts->name, -1, 1)]);
 
@@ -83,8 +83,8 @@ class Visio extends \Movim\Widget\Base
         $s = Session::start();
         $candidates = $s->get('candidates');
 
-        if(is_array($candidates)) {
-            foreach($candidates as $candidate) {
+        if (is_array($candidates)) {
+            foreach ($candidates as $candidate) {
                 $this->rpc('Visio.onCandidate', $candidate[0], $candidate[1], $candidate[2]);
             }
         }

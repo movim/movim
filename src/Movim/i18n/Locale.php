@@ -17,7 +17,7 @@ class Locale {
         $dir = scandir(WIDGETS_PATH);
         foreach($dir as $widget) {
             $path = WIDGETS_PATH . $widget . '/locales.ini';
-            if(file_exists($path)) {
+            if (file_exists($path)) {
                 $this->loadIni($path);
             }
         }
@@ -41,7 +41,7 @@ class Locale {
 
     public static function start()
     {
-        if(!isset(self::$_instance)) {
+        if (!isset(self::$_instance)) {
             self::$_instance = new self();
         }
 
@@ -61,7 +61,7 @@ class Locale {
         $po = [];
         foreach($dir as $files) {
             $explode = explode('.', $files);
-            if(end($explode) == 'po'
+            if (end($explode) == 'po'
             && array_key_exists($explode[0], $lang_list)) {
                 $po[$explode[0]] = $lang_list[$explode[0]];
             }
@@ -79,29 +79,29 @@ class Locale {
      */
     public function translate($key, $args = false)
     {
-        if(empty($key)) return $key;
+        if (empty($key)) return $key;
 
         $arr = explode('.', $key);
-        if(is_array($this->hash)
+        if (is_array($this->hash)
         && array_key_exists($arr[0], $this->hash)
         && array_key_exists($arr[1], $this->hash[$arr[0]])) {
             $skey = $this->hash[$arr[0]][$arr[1]];
 
-            if($this->language == 'en') {
-                if(is_string($skey)) {
+            if ($this->language == 'en') {
+                if (is_string($skey)) {
                     $string = $skey;
                 } else {
                     $string = $skey[0];
                 }
-            } elseif(is_array($this->translations)
+            } elseif (is_array($this->translations)
             && array_key_exists($skey, $this->translations)
             && isset($this->translations[$skey])) {
                 $string = $this->translations[$skey];
             } else {
-                if($this->language != 'en') {
+                if ($this->language != 'en') {
                     \Utils::log('Locale: Translation not found in ['.$this->language.'] for "'.$key.'" : "'.$skey.'"');
                 }
-                if(is_string($skey)) {
+                if (is_string($skey)) {
                     $string = $skey;
                 } else {
                     \Utils::log('Locale: Double definition for "'.$key.'" got '.serialize($skey));
@@ -109,7 +109,7 @@ class Locale {
                 }
             }
 
-            if($args != false) {
+            if ($args != false) {
                 array_unshift($args, $string);
                 $string = call_user_func_array("sprintf", $args);
             }
@@ -144,7 +144,7 @@ class Locale {
         }
 
         while((list($key, $value) = each($langs))) {
-            if(file_exists(LOCALES_PATH . $key . '.po')) {
+            if (file_exists(LOCALES_PATH . $key . '.po')) {
                 $this->language = $key;
                 return;
             }
@@ -152,7 +152,7 @@ class Locale {
             $exploded = explode('-', $key);
             $key = reset($exploded);
 
-            if(file_exists(LOCALES_PATH . $key . '.po')) {
+            if (file_exists(LOCALES_PATH . $key . '.po')) {
                 $this->language = $key;
                 return;
             }
@@ -179,7 +179,7 @@ class Locale {
     public function loadPo()
     {
         $pofile = LOCALES_PATH.$this->language.'.po';
-        if(!file_exists($pofile)) {
+        if (!file_exists($pofile)) {
             return false;
         }
 
@@ -194,20 +194,20 @@ class Locale {
         $last_token = "";
 
         while($line = fgets($handle)) {
-            if($line[0] == "#"
+            if ($line[0] == "#"
             || trim(rtrim($line)) == ""
             || preg_match('#^msgctxt#', $line)) {
                 continue;
             }
 
-            if(preg_match('#^msgid#', $line)) {
-                if($last_token == "msgstr") {
+            if (preg_match('#^msgid#', $line)) {
+                if ($last_token == "msgstr") {
                     $this->translations[$msgid] = $msgstr;
                 }
                 $last_token = "msgid";
                 $msgid = $this->getQuotedString($line);
             }
-            else if(preg_match('#^msgstr#', $line)) {
+            else if (preg_match('#^msgstr#', $line)) {
                 $last_token = "msgstr";
                 $msgstr = $this->getQuotedString($line);
             }
@@ -215,7 +215,7 @@ class Locale {
                 $last_token .= $this->getQuotedString($line);
             }
         }
-        if($last_token == "msgstr") {
+        if ($last_token == "msgstr") {
             $this->translations[$msgid] = $msgstr;
         }
 
@@ -227,7 +227,7 @@ class Locale {
         $matches = [];
         preg_match('#"(.+)"#', $string, $matches);
 
-        if(isset($matches[1]))
+        if (isset($matches[1]))
             return $matches[1];
     }
 }

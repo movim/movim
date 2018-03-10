@@ -25,7 +25,7 @@ class RosterLink extends Model
     {
         $this->jid = (string)$stanza->attributes()->jid;
 
-        if(isset($stanza->attributes()->name)
+        if (isset($stanza->attributes()->name)
         && (string)$stanza->attributes()->name != '')
             $this->rostername = (string)$stanza->attributes()->name;
         else

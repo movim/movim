@@ -14,7 +14,7 @@ class Drawer extends \Movim\Widget\Base
         RPC::call('MovimTpl.fill', '#drawer', $html);
         RPC::call('MovimTpl.hideMenu');
         RPC::call('MovimUtils.removeClass', '#drawer', 'empty');
-        if($actions) {
+        if ($actions) {
             RPC::call('MovimUtils.addClass', '#drawer', 'actions');
         }
     }

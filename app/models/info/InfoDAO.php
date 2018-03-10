@@ -57,7 +57,7 @@ class InfoDAO extends SQL
                 select node, count(node) as num from postn
             ';
 
-        if($server) {
+        if ($server) {
             $this->_sql .= '
                 where origin = :server';
         }
@@ -74,7 +74,7 @@ class InfoDAO extends SQL
             left outer join (
                 select node, count(node) as sub from subscription';
 
-        if($server) {
+        if ($server) {
             $this->_sql .= '
                 where server = :server';
         }
@@ -84,7 +84,7 @@ class InfoDAO extends SQL
             ) as sub
               on sub.node = info.node';
 
-        if($this->_user) {
+        if ($this->_user) {
             $this->_sql .= '
                 left outer join (select server, node, subscription from subscription where jid = :jid)
                 as s on s.server = info.server
@@ -98,16 +98,16 @@ class InfoDAO extends SQL
                 and info.node not like \'/%\'
                 and info.node != \'urn:xmpp:microblog:0\'';
 
-        if($server) {
+        if ($server) {
             $this->_sql .= '
                 and info.server = :server';
         }
 
-        if($host) {
+        if ($host) {
             $this->_sql .= ' and info.server like \'%.' . $host . '\'';
         }
 
-        if($withPostsOnly) {
+        if ($withPostsOnly) {
             $this->_sql .= '
                 and postn.published is not null';
         }
@@ -116,13 +116,13 @@ class InfoDAO extends SQL
             order by postn.published is null, postn.published desc, name, info.node
             ';
 
-        if($limitr) {
+        if ($limitr) {
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
         }
 
         $params = [];
-        if($server) $params['server'] = $server;
-        if($this->_user) $params['subscription.jid'] = $this->_user;
+        if ($server) $params['server'] = $server;
+        if ($this->_user) $params['subscription.jid'] = $this->_user;
 
         $this->prepare('Info', $params);
 
@@ -160,7 +160,7 @@ class InfoDAO extends SQL
             and mucpersistent = true
             and server like \'%@%\'';
 
-        if($host) {
+        if ($host) {
             $this->_sql .= ' and server like \'%@%.' . $host . '\'';
         }
 

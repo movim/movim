@@ -29,7 +29,7 @@ class ContactData extends \Movim\Widget\Base
         $contactr = $cd->getRosterItem($jid);
 
         $m = $md->getContact($jid, 0, 1);
-        if(isset($m)) {
+        if (isset($m)) {
             $view->assign('message', $m[0]);
         }
 
@@ -41,8 +41,8 @@ class ContactData extends \Movim\Widget\Base
         $view->assign('contactr', $contactr);
         $view->assign('subscriptions', $subscriptions ? $subscriptions : []);
 
-        if(isset($contactr)) {
-            if($contactr->value != null) {
+        if (isset($contactr)) {
+            if ($contactr->value != null) {
                 $view->assign('presence', getPresencesTxt()[$contactr->value]);
             }
 
@@ -54,15 +54,15 @@ class ContactData extends \Movim\Widget\Base
 
     public function ajaxRefresh($jid)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $cd = new \Modl\ContactDAO;
         $c  = $cd->get($jid, true);
 
-        if($c == null
+        if ($c == null
         || $c->created == null
         || $c->isOld()) {
-            if($c == null) {
+            if ($c == null) {
                 $c = new \Modl\Contact;
                 $c->jid = $jid;
             }

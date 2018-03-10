@@ -81,7 +81,7 @@ MovimWebsocket.attach(function() {
     }
 });
 
-if(typeof Upload != 'undefined') {
+if (typeof Upload != 'undefined') {
     Upload.attach(function(file) {
         document.querySelector('input[name=embed]').value = file.uri;
         PublishBrief.checkEmbed();

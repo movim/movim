@@ -11,7 +11,7 @@ class Api extends \Movim\Widget\Base
 
         $json = json_decode($json);
 
-        if(isset($json) && $json->status == 200) {
+        if (isset($json) && $json->status == 200) {
             $this->rpc('MovimUtils.reloadThis');
             Notification::append(null, $this->__('api.conf_updated'));
         }
@@ -43,9 +43,9 @@ class Api extends \Movim\Widget\Base
         $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
-        if(isset($json)) {
+        if (isset($json)) {
             $this->view->assign('json', $json);
-            if($json->status == 200) {
+            if ($json->status == 200) {
                 $this->view->assign('unregister', $this->call('ajaxUnregister'));
                 $this->view->assign('unregister_status', $config->unregister);
             } else {

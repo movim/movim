@@ -85,7 +85,7 @@ class Route extends Base
         $r = new Route();
         $routes = $r->_routes;
 
-        if($page === 'root')
+        if ($page === 'root')
             return BASE_URI;
 
         if (isset($routes[$page])) {

@@ -9,12 +9,12 @@ class Utils
 {
     public static function log($message, $priority = '')
     {
-        if(LOG_LEVEL != null && LOG_LEVEL > 0) {
+        if (LOG_LEVEL != null && LOG_LEVEL > 0) {
             $log = new Logger('movim');
 
             $handler = new SyslogHandler('movim');
 
-            if(LOG_LEVEL > 1)
+            if (LOG_LEVEL > 1)
                 $log->pushHandler(new StreamHandler(LOG_PATH.'/movim.log', Logger::DEBUG));
 
             $log->pushHandler($handler, Logger::DEBUG);
@@ -476,7 +476,7 @@ function getMood()
  */
 function generateUUID($string = false)
 {
-    if($string != false)
+    if ($string != false)
         $data = $string;
     else
         $data = openssl_random_pseudo_bytes(16);
@@ -493,7 +493,7 @@ function movim_log($logs)
     $log->pushHandler(new SyslogHandler('movim'));
 
     $log->pushHandler(new StreamHandler(LOG_PATH.'/logger.log', Logger::DEBUG));
-    if(is_array($logs))
+    if (is_array($logs))
         $log->addInfo('', $logs);
     else
         $log->addInfo($logs);
@@ -532,11 +532,11 @@ function requestURL($url, $timeout = 10, $post = false, $json = false)
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
     curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
 
-    if($json) {
+    if ($json) {
         curl_setopt($ch, CURLOPT_HTTPHEADER, ['Accept: application/json']);
     }
 
-    if(is_array($post)) {
+    if (is_array($post)) {
         $params = '';
 
         foreach($post as $key => $value) {
@@ -555,7 +555,7 @@ function requestURL($url, $timeout = 10, $post = false, $json = false)
     $rs['errmsg'] = curl_error($ch);
     $rs['header'] = curl_getinfo($ch);
 
-    if($rs['errno'] == 0) {
+    if ($rs['errno'] == 0) {
         return $rs['content'];
     }
     return false;

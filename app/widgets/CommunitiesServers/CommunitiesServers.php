@@ -18,7 +18,7 @@ class CommunitiesServers extends \Movim\Widget\Base
 
     function ajaxDisco($origin)
     {
-        if(!$this->validateServer($origin)) {
+        if (!$this->validateServer($origin)) {
             Notification::append(null, $this->__('communities.disco_error'));
             return;
         }

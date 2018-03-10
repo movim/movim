@@ -30,7 +30,7 @@ class Search extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $validate_subject = Validator::stringType()->length(1, 15);
-        if(!$validate_subject->validate($key)) {
+        if (!$validate_subject->validate($key)) {
             $view->assign('empty', true);
         } else {
             $view->assign('empty', false);
@@ -38,22 +38,22 @@ class Search extends \Movim\Widget\Base
 
             $posts = false;
 
-            if($this->user->isSupported('pubsub')) {
+            if ($this->user->isSupported('pubsub')) {
                 $pd = new PostnDAO;
                 $posts = $pd->search($key);
             }
 
             $view->assign('posts', $posts);
 
-            if(!$posts) $view->assign('empty', true);
+            if (!$posts) $view->assign('empty', true);
         }
 
-        if(!empty($key)) {
+        if (!empty($key)) {
             $cd = new \Modl\ContactDAO;
             $contacts = $cd->searchJid($key);
             $view->assign('contacts', $contacts);
 
-            if(Validator::email()->validate($key)) {
+            if (Validator::email()->validate($key)) {
                 $c = new \Modl\Contact($key);
                 $c->jid = $key;
                 $view->assign('contacts', [$c]);

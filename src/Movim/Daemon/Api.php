@@ -60,7 +60,7 @@ class Api
     public function handleAjax($post)
     {
         $sid = $post['sid'];
-        if(array_key_exists($sid, $this->_core->sessions)) {
+        if (array_key_exists($sid, $this->_core->sessions)) {
             $this->_core->sessions[$sid]->messageIn(rawurldecode($post['json']));
         }
     }
@@ -88,7 +88,7 @@ class Api
     {
         $started = 0;
         foreach($this->_core->getSessions() as $s) {
-            if($s == true) $started++;
+            if ($s == true) $started++;
         }
         return $started;
     }
@@ -98,7 +98,7 @@ class Api
         $sid = $post['sid'];
 
         $session = $this->_core->getSession($sid);
-        if($session) {
+        if ($session) {
             $session->messageIn(json_encode(['func' => 'unregister']));
         }
     }

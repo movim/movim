@@ -25,7 +25,7 @@
 
             <?php $this->widget('Tabs');?>
             <?php $this->widget('Vcard4');?>
-            <?php if($this->user->isSupported('pubsub')) { ?>
+            <?php if ($this->user->isSupported('pubsub')) { ?>
                 <?php $this->widget('Avatar');?>
                 <?php $this->widget('Config');?>
             <?php } ?>

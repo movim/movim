@@ -37,7 +37,7 @@ var MovimUtils = {
     },
     formToJson: function(formname) {
         var form = document.forms[formname];
-        if(!form)
+        if (!form)
             return false;
 
         var json = {};
@@ -49,18 +49,18 @@ var MovimUtils = {
                 json_att[form.elements[i].attributes[j].name] = form.elements[i].attributes[j].value;
             }
 
-            if(form.elements[i].name.length != 0) {
-                if(form.elements[i].type == 'checkbox')
+            if (form.elements[i].name.length != 0) {
+                if (form.elements[i].type == 'checkbox')
                     json[form.elements[i].name] = {
                         'value' : form.elements[i].checked,
                         'attributes' : json_att
                     };
-                else if(form.elements[i].type == 'radio' && form.elements[i].checked )
+                else if (form.elements[i].type == 'radio' && form.elements[i].checked )
                     json[form.elements[i].name] = {
                         'value' : form.elements[i].value,
                         'attributes' : json_att
                     };
-                else if(form.elements[i].type != 'radio')
+                else if (form.elements[i].type != 'radio')
                     json[form.elements[i].name] = {
                         'value' : form.elements[i].value,
                         'attributes' : json_att
@@ -71,7 +71,7 @@ var MovimUtils = {
         return json;
     },
     getNode: function(str) {
-        if(MovimUtils.checkString(str)) {
+        if (MovimUtils.checkString(str)) {
             return document.querySelector(str);
         }
 
@@ -79,21 +79,21 @@ var MovimUtils = {
     },
     hasClass: function(element, classname) {
         var node = element;
-        if(typeof node == 'string')
+        if (typeof node == 'string')
             node = MovimUtils.getNode(node);
-        if(!node) return false;
+        if (!node) return false;
         return node.classList.contains(classname);
     },
     showElement: function(element) {
-        if(!MovimUtils.hasClass(element, 'show'))
+        if (!MovimUtils.hasClass(element, 'show'))
             MovimUtils.addClass(element, 'show');
-        if(MovimUtils.hasClass(element, 'hide'))
+        if (MovimUtils.hasClass(element, 'hide'))
             MovimUtils.removeClass(element, 'hide');
     },
     hideElement: function(element) {
-        if(!MovimUtils.hasClass(element, 'hide'))
+        if (!MovimUtils.hasClass(element, 'hide'))
             MovimUtils.addClass(element, 'hide');
-        if(MovimUtils.hasClass(element, 'show'))
+        if (MovimUtils.hasClass(element, 'show'))
             MovimUtils.removeClass(element, 'show');
     },
     pushState: function(url) {
@@ -109,7 +109,7 @@ var MovimUtils = {
         window.location.reload();
     },
     addClass: function(element, classname) {
-        if(!MovimUtils.hasClass(element, classname)) {
+        if (!MovimUtils.hasClass(element, classname)) {
             element = MovimUtils.getNode(element);
             element.classList.add(classname);
         }
@@ -121,7 +121,7 @@ var MovimUtils = {
         }
     },
     textareaAutoheight: function(textbox) {
-        if(textbox != null) {
+        if (textbox != null) {
             var val = MovimUtils.htmlEscape(textbox.value).replace(/\n/g, '<br>');
             var hidden = document.querySelector('#hiddendiv');
             hidden.innerHTML = val + '<br/>';
@@ -153,7 +153,7 @@ var MovimUtils = {
 
         document.querySelectorAll('article section content img')
             .forEach(img => {
-                if(img.parentNode.localName != 'a') {
+                if (img.parentNode.localName != 'a') {
                     img.classList.add('active');
                     img.addEventListener('click', e => Preview_ajaxShow(img.src))
                 }

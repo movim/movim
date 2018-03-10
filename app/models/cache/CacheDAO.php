@@ -25,7 +25,7 @@ class CacheDAO extends SQL
 
         $this->run('Cache');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 insert into cache
                 (session, name, data, timestamp)

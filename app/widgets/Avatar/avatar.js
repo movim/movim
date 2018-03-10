@@ -50,11 +50,11 @@ var Avatar = {
             var preview = document.querySelector('form[name=avatarform] img');
 
             var list = document.querySelector('form[name=avatarform] ul');
-            if(list) MovimUtils.hideElement(list);
+            if (list) MovimUtils.hideElement(list);
 
             var input = document.querySelector('input[name="photobin"]');
 
-            if(preview.className == 'error') preview.className = '';
+            if (preview.className == 'error') preview.className = '';
 
             preview.src = base64;
 

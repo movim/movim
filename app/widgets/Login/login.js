@@ -53,7 +53,7 @@ var Login = {
     },
 
     quickLogin : function() {
-        if(localStorage.getItem('quickHost') != null) {
+        if (localStorage.getItem('quickHost') != null) {
             MovimWebsocket.connection.register(localStorage.getItem('quickHost'));
         }
     }
@@ -74,7 +74,7 @@ MovimWebsocket.attach(function()
 
 MovimWebsocket.register(function()
 {
-    if(localStorage.getItem('quickKey') != null) {
+    if (localStorage.getItem('quickKey') != null) {
         Login_ajaxQuickLogin(
             localStorage.getItem('quickDeviceId'),
             localStorage.getItem('quickLogin'),
@@ -83,7 +83,7 @@ MovimWebsocket.register(function()
     }
 
     form = document.querySelector('form[name="login"]');
-    if(Login.submitted) {
+    if (Login.submitted) {
         Login_ajaxLogin(MovimUtils.formToJson('login'));
     }
 });
@@ -93,13 +93,13 @@ movim_add_onload(function()
     // We had the autocomplete system
     var login = document.querySelector('input#username');
     login.addEventListener('input', function() {
-        if(this.value.indexOf('@') == -1) {
+        if (this.value.indexOf('@') == -1) {
             document.querySelector('input#complete').value = this.value + '@' + Login.domain;
         } else {
             document.querySelector('input#complete').value = this.value;
         }
 
-        if(this.value.length == 0) {
+        if (this.value.length == 0) {
             document.querySelector('input#complete').value = '';
         }
     });

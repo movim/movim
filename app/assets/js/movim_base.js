@@ -20,8 +20,8 @@ function movim_add_onload(func)
  */
 function movim_onload()
 {
-    for(var i = 0; i < onloaders.length; i++) {
-        if(typeof(onloaders[i]) === "function")
+    for (var i = 0; i < onloaders.length; i++) {
+        if (typeof(onloaders[i]) === "function")
             onloaders[i]();
     }
 }

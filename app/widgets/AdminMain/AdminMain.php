@@ -10,8 +10,8 @@ class AdminMain extends \Movim\Widget\Base
         $cd = new \Modl\ConfigDAO;
         $config = $cd->get();
 
-        if(isset($form) && !empty($form)) {
-            if(isset($form['password'])
+        if (isset($form) && !empty($form)) {
+            if (isset($form['password'])
             && isset($form['repassword'])
             && $form['password'] != '' && $form['repassword'] != ''
             && $form['password'] == $form['repassword']) {
@@ -24,14 +24,14 @@ class AdminMain extends \Movim\Widget\Base
 
             unset($form['repassword']);
 
-            foreach($form as $key => $value) {
+            foreach ($form as $key => $value) {
                 $config->$key = $value;
             }
 
             $cd->set($config);
 
             //set timezone
-            if(isset($form['timezone'])) {
+            if (isset($form['timezone'])) {
                 date_default_timezone_set($form['timezone']);
             }
         }

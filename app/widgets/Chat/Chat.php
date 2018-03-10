@@ -52,12 +52,12 @@ class Chat extends \Movim\Widget\Base
     function onPresence($packet)
     {
         $contacts = $packet->content;
-        if($contacts != null){
+        if ($contacts != null){
             $contact = $contacts[0];
 
-            if($contact->value < 5) {
+            if ($contact->value < 5) {
                 $avatar = $contact->getPhoto('s');
-                if($avatar == false) $avatar = null;
+                if ($avatar == false) $avatar = null;
 
                 $presences = getPresences();
                 $presence = $presences[$contact->value];
@@ -77,24 +77,24 @@ class Chat extends \Movim\Widget\Base
         $message = $packet->content;
         $cd = new \Modl\ContactDAO;
 
-        if($message->isEmpty()) return;
+        if ($message->isEmpty()) return;
 
-        if($message->session == $message->jidto && !$history
+        if ($message->session == $message->jidto && !$history
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
 
             $contact = $cd->getRosterItem($from);
-            if($contact == null) {
+            if ($contact == null) {
                 $contact = $cd->get($from);
             }
 
-            if($contact != null
+            if ($contact != null
             && $message->isTrusted()
             && !$message->isOTR()
             && $message->type != 'groupchat'
             && !$message->edited) {
                 $avatar = $contact->getPhoto('s');
-                if($avatar == false) $avatar = null;
+                if ($avatar == false) $avatar = null;
                 Notification::append(
                     'chat|'.$from,
                     $contact->getTrueName(),
@@ -124,7 +124,7 @@ class Chat extends \Movim\Widget\Base
             $n->ajaxClear('chat|'.$from);
         }
 
-        if(!$message->isOTR()) {
+        if (!$message->isOTR()) {
             $this->rpc('Chat.appendMessagesWrapper', $this->prepareMessage($message, $from));
         }
     }
@@ -183,7 +183,7 @@ class Chat extends \Movim\Widget\Base
     private function setState($array, $message)
     {
         list($from, $to) = $array;
-        if($from == $this->user->getLogin()) {
+        if ($from == $this->user->getLogin()) {
             $jid = $to;
         } else {
             $jid = $from;
@@ -203,7 +203,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxGet($jid = null)
     {
-        if($jid == null) {
+        if ($jid == null) {
             $this->rpc('MovimUtils.pushState', $this->route('chat'));
 
             $this->rpc('MovimUtils.removeClass', '#chat_widget', 'fixed');
@@ -231,14 +231,14 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxGetRoom($room)
     {
-        if(!$this->validateJid($room)) return;
+        if (!$this->validateJid($room)) return;
 
         $cod = new \Modl\ConferenceDAO;
         $r = $cod->get($room);
 
-        if($r) {
+        if ($r) {
             $rooms = new Rooms;
-            if(!$rooms->checkConnected($r->conference, $r->nick)) {
+            if (!$rooms->checkConnected($r->conference, $r->nick)) {
                 $this->rpc('Rooms_ajaxJoin', $r->conference, $r->nick);
             }
 
@@ -279,10 +279,10 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
-        if(filter_var($message, FILTER_VALIDATE_URL)) {
+        if (filter_var($message, FILTER_VALIDATE_URL)) {
             $headers = requestHeaders($message);
 
-            if($headers['http_code'] == 200
+            if ($headers['http_code'] == 200
             && typeIsPicture($headers['content_type'])
             && $headers['download_content_length'] > 100) {
                 $file = new \stdClass;
@@ -293,13 +293,13 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
-        if($file != false) {
+        if ($file != false) {
             $body = $file->uri;
         } else {
             $body = (string)htmlentities(trim($message), ENT_XML1, 'UTF-8');
         }
 
-        if($body == '' || $body == '/me') {
+        if ($body == '' || $body == '/me') {
             return;
         }
 
@@ -311,7 +311,7 @@ class Chat extends \Movim\Widget\Base
         // TODO: make this boolean configurable
         $m->markable = true;
 
-        if($replace != false) {
+        if ($replace != false) {
             $m->newid     = Uuid::uuid4();
             $m->id        = $replace->id;
             $m->edited    = true;
@@ -327,7 +327,7 @@ class Chat extends \Movim\Widget\Base
         $m->type    = 'chat';
         $m->resource = $session->get('resource');
 
-        if($muc) {
+        if ($muc) {
             $m->type        = 'groupchat';
             $m->resource    = $session->get('username');
             $m->jidfrom     = $to;
@@ -335,7 +335,7 @@ class Chat extends \Movim\Widget\Base
 
         $m->body      = $body;
 
-        if($resource != false) {
+        if ($resource != false) {
             $to = $to . '/' . $resource;
         }
 
@@ -345,18 +345,18 @@ class Chat extends \Movim\Widget\Base
         //$p->setHTML($m->html);
         $p->setContent($m->body);
 
-        if($replace != false) {
+        if ($replace != false) {
             $p->setId($m->newid);
             $p->setReplace($m->id);
         } else {
             $p->setId($m->id);
         }
 
-        if($muc) {
+        if ($muc) {
             $p->setMuc();
         }
 
-        if($file) {
+        if ($file) {
             $m->file = (array)$file;
             $p->setFile($file);
         }
@@ -364,8 +364,8 @@ class Chat extends \Movim\Widget\Base
         $p->request();
 
         /* Is it really clean ? */
-        if(!$p->getMuc()) {
-            if(!$m->isOTR()) {
+        if (!$p->getMuc()) {
+            if (!$m->isOTR()) {
                 $md = new \Modl\MessageDAO;
                 $md->set($m);
             }
@@ -388,7 +388,7 @@ class Chat extends \Movim\Widget\Base
         $md = new \Modl\MessageDAO;
         $m = $md->getLastItem($to);
 
-        if($m) {
+        if ($m) {
             $this->ajaxHttpSendMessage($to, $message, false, false, $m);
         }
     }
@@ -404,7 +404,7 @@ class Chat extends \Movim\Widget\Base
         $md = new \Modl\MessageDAO;
         $m = $md->getLastItem($to);
 
-        if(!isset($m->sticker)
+        if (!isset($m->sticker)
         && !isset($m->file)) {
             $this->rpc('Chat.setTextarea',htmlspecialchars_decode($m->body));
         }
@@ -418,7 +418,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxSendComposing($to)
     {
-        if(!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) return;
 
         $mc = new Composing;
         $mc->setTo($to)->request();
@@ -432,7 +432,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxSendPaused($to)
     {
-        if(!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) return;
 
         $mp = new Paused;
         $mp->setTo($to)->request();
@@ -446,15 +446,15 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxGetHistory($jid, $date)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
         $md = new \Modl\MessageDAO;
         $messages = $md->getHistory(echapJid($jid), $date, $this->_pagination);
 
-        if(count($messages) > 0) {
+        if (count($messages) > 0) {
             Notification::append(false, $this->__('message.history', count($messages)));
 
             foreach($messages as $message) {
-                if(!$message->isOTR()) {
+                if (!$message->isOTR()) {
                     $this->prepareMessage($message);
                 }
             }
@@ -470,7 +470,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxGetRoomConfig($room)
     {
-        if(!$this->validateJid($room)) return;
+        if (!$this->validateJid($room)) return;
 
         $gc = new GetConfig;
         $gc->setTo($room)
@@ -484,7 +484,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxSetRoomConfig($data, $room)
     {
-        if(!$this->validateJid($room)) return;
+        if (!$this->validateJid($room)) return;
 
         $sc = new SetConfig;
         $sc->setTo($room)
@@ -497,7 +497,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxGetSubject($room)
     {
-        if(!$this->validateJid($room)) return;
+        if (!$this->validateJid($room)) return;
 
         $view = $this->tpl();
 
@@ -515,10 +515,10 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxSetSubject($room, $form)
     {
-        if(!$this->validateJid($room)) return;
+        if (!$this->validateJid($room)) return;
 
         $validate_subject = Validator::stringType()->length(0, 200);
-        if(!$validate_subject->validate($form->subject->value)) return;
+        if (!$validate_subject->validate($form->subject->value)) return;
 
         $p = new SetSubject;
         $p->setTo($room)
@@ -531,12 +531,12 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxDisplayed($jid, $id)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $md = new \Modl\MessageDAO;
         $m = $md->getId($id);
 
-        if($m
+        if ($m
         && $m->markable == true
         && $m->displayed == null) {
             $m->displayed = gmdate('Y-m-d H:i:s');
@@ -553,7 +553,7 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxClearHistory($jid)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $md = new \Modl\MessageDAO;
         $md->deleteContact($jid);
@@ -667,18 +667,18 @@ class Chat extends \Movim\Widget\Base
 
         // Attached file
         if (isset($message->file)) {
-            if($message->body == $message->file['uri']) {
+            if ($message->body == $message->file['uri']) {
                 $message->body = null;
             }
 
             // We proxify pictures links even if they are advertized as small ones
-            if(typeIsPicture($message->file['type'])
+            if (typeIsPicture($message->file['type'])
             && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
                 $message->thumb   = $this->route('picture', urlencode($message->file['uri']));
                 $message->picture = $message->file['uri'];
             }
 
-            if(typeIsAudio($message->file['type'])
+            if (typeIsAudio($message->file['type'])
             && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
                 $message->audio = $message->file['uri'];
             }
@@ -740,7 +740,7 @@ class Chat extends \Movim\Widget\Base
 
         $date = prepareDate(strtotime($message->published), false, false, true);
 
-        if(empty($date)) $date = $this->__('date.today');
+        if (empty($date)) $date = $this->__('date.today');
 
         // We create the date wrapper
         if (!array_key_exists($date, $this->_wrapper)) {
@@ -753,10 +753,10 @@ class Chat extends \Movim\Widget\Base
             $cd = new \Modl\ContactDAO;
             $contact = $cd->getPresence($message->jidfrom, $message->resource);
 
-            if($contact) {
+            if ($contact) {
                 $url = $contact->getPhoto('s');
 
-                if($url) {
+                if ($url) {
                     $message->icon_url = $url;
                 }
 
@@ -812,7 +812,7 @@ class Chat extends \Movim\Widget\Base
     private function validateJid($jid)
     {
         $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        if(!$validate_jid->validate($jid)) return false;
+        if (!$validate_jid->validate($jid)) return false;
         else return true;
     }
 

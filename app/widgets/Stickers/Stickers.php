@@ -43,16 +43,16 @@ class Stickers extends \Movim\Widget\Base
 
     function ajaxSend($to, $pack, $file, $muc = false)
     {
-        if(!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) return;
 
         list($key, $ext) = explode('.', $file);
 
         $filepath = dirname(__FILE__).'/stickers/'.$pack.'/'.$key.'.png';
 
-        if(!file_exists($filepath)) return;
+        if (!file_exists($filepath)) return;
 
         // Caching the picture
-        if(!file_exists(CACHE_PATH.md5($key).'.png')) {
+        if (!file_exists(CACHE_PATH.md5($key).'.png')) {
             copy($filepath, CACHE_PATH.md5($key).'.png');
         }
 
@@ -81,7 +81,7 @@ class Stickers extends \Movim\Widget\Base
           ->setHTML($html)
           ->setId($m->id);
 
-        if($muc) {
+        if ($muc) {
             $p->setMuc();
         }
 
@@ -99,13 +99,13 @@ class Stickers extends \Movim\Widget\Base
 
     function ajaxShow($to, $pack = null)
     {
-        if(!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) return;
 
         $packs = $this->getPacks();
 
         $pack = isset($pack) ? $pack : current($packs);
 
-        if(in_array($pack, $packs)) {
+        if (in_array($pack, $packs)) {
             $files = scandir(dirname(__FILE__).'/stickers/'.$pack);
 
             array_shift($files);
@@ -128,7 +128,7 @@ class Stickers extends \Movim\Widget\Base
      */
     function ajaxSmiley($to)
     {
-        if(!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) return;
 
         $view = $this->tpl();
         $view->assign('jid', $to);
@@ -142,7 +142,7 @@ class Stickers extends \Movim\Widget\Base
      */
     function ajaxSmileyTwo($to)
     {
-        if(!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) return;
 
         $view = $this->tpl();
         $view->assign('jid', $to);
@@ -173,7 +173,7 @@ class Stickers extends \Movim\Widget\Base
 
         // Get the packs
         foreach($dirs as $dir) {
-            if(is_dir(dirname(__FILE__).'/stickers/'.$dir)) {
+            if (is_dir(dirname(__FILE__).'/stickers/'.$dir)) {
                 array_push($packs, $dir);
             }
         }
@@ -189,7 +189,7 @@ class Stickers extends \Movim\Widget\Base
     private function validateJid($jid)
     {
         $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        if(!$validate_jid->validate($jid)) return false;
+        if (!$validate_jid->validate($jid)) return false;
         else return true;
     }
 

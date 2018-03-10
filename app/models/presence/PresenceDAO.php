@@ -56,7 +56,7 @@ class PresenceDAO extends SQL
 
         $this->run('Presence');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 insert into presence
                 (id,

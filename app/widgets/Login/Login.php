@@ -27,7 +27,7 @@ class Login extends \Movim\Widget\Base
     {
         $session = Session::start();
 
-        //if($session->get('mechanism') != 'ANONYMOUS') {
+        //if ($session->get('mechanism') != 'ANONYMOUS') {
             // We get the configuration
             $s = new Get;
             $s->setXmlns('movim:prefs')
@@ -52,7 +52,7 @@ class Login extends \Movim\Widget\Base
         $this->view->assign('info',     $config->info);
         $this->view->assign('whitelist',$config->xmppwhitelist);
 
-        if(isset($config->xmppdomain)
+        if (isset($config->xmppdomain)
         && !empty($config->xmppdomain)) {
             $this->view->assign('domain', $config->xmppdomain);
         } else {
@@ -62,7 +62,7 @@ class Login extends \Movim\Widget\Base
         $pop = 0;
 
         foreach(scandir(USERS_PATH) as $f) {
-            if(is_dir(USERS_PATH.'/'.$f)) {
+            if (is_dir(USERS_PATH.'/'.$f)) {
                 $pop++;
             }
         }
@@ -73,7 +73,7 @@ class Login extends \Movim\Widget\Base
         && Validator::length(8)->validate($this->get('i'))) {
             $invitation = \Modl\Invite::get($this->get('i'));
 
-            if($invitation) {
+            if ($invitation) {
                 $this->view->assign('invitation', $invitation);
 
                 $cd = new \Modl\ContactDAO;
@@ -112,7 +112,7 @@ class Login extends \Movim\Widget\Base
         $key = 'error.'.$error;
         $error_text = $this->__($key);
 
-        if($error_text == $key) {
+        if ($error_text == $key) {
             $view->assign('error', $this->__('error.default'));
         } else {
             $view->assign('error', $error_text);
@@ -163,7 +163,7 @@ class Login extends \Movim\Widget\Base
     {
         $validate_login = Validator::stringType()->length(1, 254);
 
-        if(!$validate_login->validate($login)) {
+        if (!$validate_login->validate($login)) {
             $this->showErrorBlock('login_format');
             return;
         }
@@ -177,7 +177,7 @@ class Login extends \Movim\Widget\Base
             $ed = new \Modl\EncryptedPassDAO;
             $ciphertext = $ed->get($deviceId);
 
-            if($ciphertext) {
+            if ($ciphertext) {
                 $password = Crypto::decrypt($ciphertext->data, $key);
                 $this->doLogin($login, $password, $deviceId);
             }
@@ -196,12 +196,12 @@ class Login extends \Movim\Widget\Base
         $validate_login   = Validator::stringType()->length(1, 254);
         $validate_password = Validator::stringType()->length(1, 128);
 
-        if(!$validate_login->validate($login)) {
+        if (!$validate_login->validate($login)) {
             $this->showErrorBlock('login_format');
             return;
         }
 
-        if(!$validate_password->validate($password)) {
+        if (!$validate_password->validate($password)) {
             $this->showErrorBlock('password_format');
             return;
         }
@@ -212,7 +212,7 @@ class Login extends \Movim\Widget\Base
         list($username, $host) = explode('@', $login);
 
         // Check whitelisted server
-        if(
+        if (
             $config->xmppwhitelist != '' &&!
             in_array(
                 $host,
@@ -242,7 +242,7 @@ class Login extends \Movim\Widget\Base
 
         $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
 
-        if($here) {
+        if ($here) {
             $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->session, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;

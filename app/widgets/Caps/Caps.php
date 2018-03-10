@@ -12,7 +12,7 @@ class Caps extends \Movim\Widget\Base
 
     function isImplemented($client, $key)
     {
-        if(in_array($this->_nslist[$key]['ns'], $client)) {
+        if (in_array($this->_nslist[$key]['ns'], $client)) {
             return '
                 <td
                     class="yes '.$this->_nslist[$key]['category'].'"
@@ -36,21 +36,21 @@ class Caps extends \Movim\Widget\Base
 
         $oldname = '';
 
-        foreach(array_reverse($clients) as $c) {
+        foreach (array_reverse($clients) as $c) {
             $clientname = reset(explode(
                     '#',
                     reset(explode(' ', $c->name))
                     )
                 );
 
-            if($oldname == $clientname) continue;
+            if ($oldname == $clientname) continue;
 
-            if(!isset($this->_table[$c->name])) {
+            if (!isset($this->_table[$c->name])) {
                 $this->_table[$c->name] = [];
             }
 
-            foreach($c->features as $f) {
-                if(!in_array($f, $this->_table[$c->name])) {
+            foreach ($c->features as $f) {
+                if (!in_array($f, $this->_table[$c->name])) {
                     array_push($this->_table[$c->name], (string)$f);
                 }
             }

@@ -99,7 +99,7 @@ class Presence extends \Movim\Widget\Base
     function ajaxGetPresence()
     {
         $html = $this->preparePresence();
-        if($html) $this->rpc('MovimTpl.fill', '#presence_widget', $html);
+        if ($html) $this->rpc('MovimTpl.fill', '#presence_widget', $html);
     }
 
     function ajaxConfigGet()
@@ -179,7 +179,7 @@ class Presence extends \Movim\Widget\Base
         $session = Session::start();
 
         // If the user is still on a logued-in page after a daemon restart
-        if($session->get('jid') == false) {
+        if ($session->get('jid') == false) {
             $this->rpc('MovimUtils.disconnect');
             return false;
         }
@@ -189,11 +189,11 @@ class Presence extends \Movim\Widget\Base
         $presencetpl = $this->tpl();
 
         $contact = $cd->get();
-        if($contact == null) {
+        if ($contact == null) {
             $contact = new \Modl\Contact;
         }
 
-        if($presence == null) {
+        if ($presence == null) {
             $presence = new \Modl\Presence;
         }
 
@@ -210,7 +210,7 @@ class Presence extends \Movim\Widget\Base
     {
         $cd = new \Modl\ContactDAO;
         $contact = $cd->get();
-        if($contact == null) {
+        if ($contact == null) {
             $contact = new \Modl\Contact;
         }
 

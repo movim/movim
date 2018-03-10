@@ -41,10 +41,10 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         list($origin, $node) = array_values($packet->content);
 
-        if($node != 'urn:xmpp:microblog:0') {
+        if ($node != 'urn:xmpp:microblog:0') {
             $sd = new \Modl\SubscriptionDAO;
 
-            if($sd->get($origin, $node)) {
+            if ($sd->get($origin, $node)) {
                 $this->rpc('CommunityAffiliations_ajaxDelete', $origin, $node, true);
                 $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $origin, $node);
             } else {
@@ -66,7 +66,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $count = false,
         $paginated = false)
     {
-        if(!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) return;
 
         $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count);
 
@@ -85,16 +85,16 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function ajaxGetItems($origin, $node, $before = 'empty')
     {
-        if(!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) return;
 
         // https://github.com/maranda/metronome/issues/236
-        /*if($node == 'urn:xmpp:microblog:0') {
+        /*if ($node == 'urn:xmpp:microblog:0') {
             $r = new GetItems;
         } else {*/
             $r = new GetItems;
         //}
 
-        if(!isset($before)) $before = 'empty';
+        if (!isset($before)) $before = 'empty';
 
         $r->setTo($origin)
           ->setNode($node)
@@ -139,7 +139,7 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $ids = is_array($ids) ? $ids : [];
         foreach($ids as $key => $id) {
-            if(empty($id)) {
+            if (empty($id)) {
                 unset($ids[$key]);
             }
         }
@@ -154,18 +154,18 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $nsfwMessage = false;
 
-        if($this->user->getConfig('nsfw') == false
+        if ($this->user->getConfig('nsfw') == false
         && is_array($posts)) {
-            foreach($posts as $key => $post) {
-                if($post->nsfw) {
+            foreach ($posts as $key => $post) {
+                if ($post->nsfw) {
                     unset($posts[$key]);
                     $nsfwMessage = true;
                 }
             }
         }
 
-        if(is_array($posts)) {
-            foreach($posts as $key => $post) {
+        if (is_array($posts)) {
+            foreach ($posts as $key => $post) {
                 $posts[$post->nodeid] = $post;
                 unset($posts[$key]);
             }
@@ -173,7 +173,7 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        if($nsfwMessage) {
+        if ($nsfwMessage) {
             $this->rpc('MovimTpl.remove', '#nsfwmessage');
             $this->rpc(
                 'MovimTpl.prepend',

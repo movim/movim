@@ -18,13 +18,13 @@ class Url extends Model
 
     public function resolve($url)
     {
-        if(Validator::url()->validate($url)) {
+        if (Validator::url()->validate($url)) {
             $this->hash = hash('sha256', $url);
 
             $md = new UrlDAO;
             $cached = $md->get($this->hash);
 
-            if($cached) {
+            if ($cached) {
                 return unserialize(base64_decode($cached->cache));
             }
 

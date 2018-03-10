@@ -34,7 +34,7 @@ class AccountNext extends \Movim\Widget\Base {
 
         $xtf = new \XMPPtoForm;
         $html = '';
-        if(!empty($form->x)){
+        if (!empty($form->x)){
             switch($form->x->attributes()->xmlns) {
                 case 'jabber:x:data' :
                     $formview = $this->tpl();
@@ -117,7 +117,7 @@ class AccountNext extends \Movim\Widget\Base {
 
     function ajaxRegister($form)
     {
-        if(isset($form->re_password)
+        if (isset($form->re_password)
         && $form->re_password->value != $form->password->value) {
             Notification::append(null, $this->__('account.password_not_same'));
             return;

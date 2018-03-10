@@ -137,10 +137,10 @@ class Core implements MessageComponentInterface
             $path = $this->getPath($conn);
 
             if (in_array($path, $this->single)) {
-                if(array_key_exists($sid, $this->singlelocks)
+                if (array_key_exists($sid, $this->singlelocks)
                 && array_key_exists($path, $this->singlelocks[$sid])) {
                     $this->singlelocks[$sid][$path]--;
-                    if($this->singlelocks[$sid][$path] == 0) {
+                    if ($this->singlelocks[$sid][$path] == 0) {
                         unset($this->singlelocks[$sid][$path]);
                     }
                 }
@@ -206,7 +206,7 @@ class Core implements MessageComponentInterface
 
     public function getSession($sid)
     {
-        if(isset($this->sessions[$sid])) {
+        if (isset($this->sessions[$sid])) {
             return $this->sessions[$sid];
         }
     }

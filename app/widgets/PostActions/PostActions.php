@@ -20,9 +20,9 @@ class PostActions extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $p = $pd->get($origin, $node, $id);
 
-        if($p && $p->isComment()) $p = $p->getParent();
+        if ($p && $p->isComment()) $p = $p->getParent();
 
-        if($p) {
+        if ($p) {
             $this->rpc('MovimTpl.fill', '#'.cleanupId($p->nodeid), $this->preparePost($p));
         }
     }
@@ -31,7 +31,7 @@ class PostActions extends \Movim\Widget\Base
     {
         list($server, $node, $id) = array_values($packet->content);
 
-        if(substr($node, 0, 29) == 'urn:xmpp:microblog:0:comments') {
+        if (substr($node, 0, 29) == 'urn:xmpp:microblog:0:comments') {
             Notification::append(false, $this->__('post.comment_deleted'));
         } else {
             Notification::append(false, $this->__('post.deleted'));
@@ -50,7 +50,7 @@ class PostActions extends \Movim\Widget\Base
     {
         $pd = new \Modl\PostnDAO;
         $p = $pd->get($to, $node, $id);
-        if(!isset($p) || $p->isLiked()) return;
+        if (!isset($p) || $p->isLiked()) return;
 
         $post = new Post;
         $post->publishComment('♥', $p->origin, $p->node, $p->nodeid);
@@ -63,7 +63,7 @@ class PostActions extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $p = $pd->get($to, $node, $id);
 
-        if(isset($p)) {
+        if (isset($p)) {
             $view->assign('post', $p);
             $view->assign('to', $to);
             $view->assign('node', $node);
@@ -78,14 +78,14 @@ class PostActions extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $post = $pd->get($to, $node, $id);
 
-        if(isset($post)) {
+        if (isset($post)) {
             $p = new PostDelete;
             $p->setTo($post->origin)
               ->setNode($post->node)
               ->setId($post->nodeid)
               ->request();
 
-            if(!$post->isComment()) {
+            if (!$post->isComment()) {
                 $p = new Delete;
                 $p->setTo($post->commentorigin)
                   ->setNode('urn:xmpp:microblog:0:comments/'.$post->commentnodeid)

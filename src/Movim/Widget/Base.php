@@ -31,7 +31,7 @@ class Base
      */
     function __construct($light = false, $view = null)
     {
-        if($view != null) $this->_view = $view;
+        if ($view != null) $this->_view = $view;
 
         $this->user = new User;
         $this->load();
@@ -39,18 +39,18 @@ class Base
         $this->name = get_class($this);
 
         // If light loading enabled, we stop here
-        if($light) return;
+        if ($light) return;
 
         // Put default widget init here.
         $this->ajax = Ajax::getInstance();
 
-        if(!$this->ajax->isRegistered($this->name)) {
+        if (!$this->ajax->isRegistered($this->name)) {
             // Generating Ajax calls.
             $refl = new \ReflectionClass($this->name);
             $meths = $refl->getMethods();
 
             foreach($meths as $method) {
-                if(preg_match('#^ajax#', $method->name)) {
+                if (preg_match('#^ajax#', $method->name)) {
                     $pars = $method->getParameters();
                     $params = [];
                     foreach($pars as $param) {
@@ -67,7 +67,7 @@ class Base
             }
         }
 
-        if(php_sapi_name() != 'cli') {
+        if (php_sapi_name() != 'cli') {
             $config = [
                 'tpl_dir'       => $this->respath('', true),
                 'cache_dir'     => CACHE_PATH,
@@ -155,7 +155,7 @@ class Base
     function draw()
     {
         $this->display();
-        if(file_exists($this->respath(strtolower($this->name).'.tpl', true))) {
+        if (file_exists($this->respath(strtolower($this->name).'.tpl', true))) {
             return trim($this->view->draw(strtolower($this->name), true));
         }
 
@@ -185,7 +185,7 @@ class Base
      */
     protected function respath($file, $fspath = false, $parent = false, $notime = false)
     {
-        if($parent == false) {
+        if ($parent == false) {
             $folder = get_class($this);
         } else {
             $folder = get_parent_class($this);
@@ -193,7 +193,7 @@ class Base
 
         $path = 'app/widgets/' . $folder . '/' . $file;
 
-        if($fspath) {
+        if ($fspath) {
             $path = DOCUMENT_ROOT . '/'.$path;
         } else {
             $path = urilize($path, $notime);
@@ -217,7 +217,7 @@ class Base
 
     protected function makeCall($params, $widget = false)
     {
-        if(!$widget) {
+        if (!$widget) {
             $widget = $this->name;
         }
 
@@ -272,7 +272,7 @@ class Base
      */
     protected function get($name)
     {
-        if(isset($_GET[$name])) {
+        if (isset($_GET[$name])) {
             return htmlentities($_GET[$name]);
         } else {
             return false;
@@ -287,15 +287,15 @@ class Base
      */
     protected function registerEvent($type, $function, $filter = null)
     {
-        if(!is_array($this->events)
+        if (!is_array($this->events)
         || !array_key_exists($type, $this->events)) {
             $this->events[$type] = [$function];
         } else {
             $this->events[$type][] = $function;
         }
 
-        if($filter != null) {
-            if(!is_array($this->filters)) {
+        if ($filter != null) {
+            if (!is_array($this->filters)) {
                 $this->filters = [];
             }
             $this->filters[$function] = $filter;

@@ -41,13 +41,13 @@ var MovimWebsocket = {
     },
 
     init : function() {
-        if(SECURE_WEBSOCKET) {
+        if (SECURE_WEBSOCKET) {
             var uri = 'wss://' + BASE_HOST + '/ws/';
         } else {
             var uri = 'ws://' + BASE_HOST + '/ws/';
         }
 
-        if(this.connection
+        if (this.connection
         && this.connection.readyState == 1) {
             this.connection.onclose = null;
             this.connection.close();
@@ -71,20 +71,20 @@ var MovimWebsocket = {
         this.connection.onmessage = function(e) {
             var obj = JSON.parse(e.data);
 
-            if(obj != null) {
-                if(obj.func == 'registered') {
+            if (obj != null) {
+                if (obj.func == 'registered') {
                     MovimWebsocket.launchRegistered();
                 }
 
-                if(obj.func == 'disconnected') {
+                if (obj.func == 'disconnected') {
                     MovimUtils.disconnect();
                 }
 
-                if(obj.func == 'pong') {
+                if (obj.func == 'pong') {
                     MovimWebsocket.pong = true;
                 }
 
-                if(obj.func == 'block') {
+                if (obj.func == 'block') {
                     MovimWebsocket.clearAttached();
                     document.body.classList.add('disabled');
                 }
@@ -96,14 +96,14 @@ var MovimWebsocket = {
         this.connection.onclose = function(e) {
             console.log("Connection closed by the server or session closed");
 
-            if(e.code == 1008) {
+            if (e.code == 1008) {
                 // The server closed the connection and asked to keep it this way
                 this.closed = true;
                 document.getElementById('error_websocket').classList.remove('hide');
                 MovimWebsocket.connection.close();
-            } if(e.code == 1006) {
+            } if (e.code == 1006) {
                 MovimWebsocket.reconnect();
-            } else if(e.code == 1000) {
+            } else if (e.code == 1000) {
                 MovimUtils.disconnect();
             }
         };
@@ -122,7 +122,7 @@ var MovimWebsocket = {
     },
 
     send : function(widget, func, params) {
-        if(this.connection.readyState == 1) {
+        if (this.connection.readyState == 1) {
             this.connection.send(
                 JSON.stringify(
                     {'func' : 'message', 'body' :
@@ -157,7 +157,7 @@ var MovimWebsocket = {
 
     // A ping/pong system to handle socket errors for buggy browser (Chrome on Linux…)
     ping : function() {
-        if(this.connection.readyState == 1 && !this.closed) {
+        if (this.connection.readyState == 1 && !this.closed) {
             this.connection.send(
                 JSON.stringify(
                     {'func' : 'ping'}
@@ -165,7 +165,7 @@ var MovimWebsocket = {
             );
 
             setTimeout(function(){
-                if(MovimWebsocket.pong == false) {
+                if (MovimWebsocket.pong == false) {
                     MovimWebsocket.connection.onerror();
                 } else {
                     MovimWebsocket.pong = false;
@@ -176,13 +176,13 @@ var MovimWebsocket = {
     },
 
     attach : function(func) {
-        if(typeof(func) === "function") {
+        if (typeof(func) === "function") {
             this.attached.push(func);
         }
     },
 
     register : function(func) {
-        if(typeof(func) === "function") {
+        if (typeof(func) === "function") {
             this.registered.push(func);
         }
     },
@@ -192,7 +192,7 @@ var MovimWebsocket = {
     },
 
     handle : function(funcall) {
-        if(funcall.func != null && (typeof window[funcall.func] == 'function')) {
+        if (funcall.func != null && (typeof window[funcall.func] == 'function')) {
             try {
                 window[funcall.func].apply(null, funcall.params);
             } catch(err) {
@@ -204,10 +204,10 @@ var MovimWebsocket = {
                     + JSON.stringify(funcall.params)
                 );
             }
-        } else if(funcall.func != null) {
+        } else if (funcall.func != null) {
             var funcs  = funcall.func.split('.');
             var called = funcs[0];
-            if(typeof window[called] == 'object'
+            if (typeof window[called] == 'object'
             && typeof window[funcs[0]][funcs[1]] != 'undefined') {
                 window[funcs[0]][funcs[1]].apply(null, funcall.params);
             }

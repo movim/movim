@@ -12,16 +12,16 @@ var Search = {
         document.querySelectorAll(selector_clear)
             .forEach(item => item.classList.remove('found'));
 
-        if(key == '') return;
+        if (key == '') return;
 
         var founds = document.querySelectorAll(
             '#search > #roster > li[name*="' + MovimUtils.cleanupId(key).slice(3) + '"]'
         )
 
-        if(founds.length > 0) {
+        if (founds.length > 0) {
             subheader.classList.add('found');
             founds.forEach(item => item.classList.add('found'));
-        } else if(subheader) {
+        } else if (subheader) {
             subheader.classList.remove('found');
         }
     },
@@ -29,7 +29,7 @@ var Search = {
     searchSomething : function(value) {
         clearTimeout(Search.timer);
 
-        if(value !== '') {
+        if (value !== '') {
             document.querySelector('#searchbar span.primary i').className = 'zmdi zmdi-rotate-right zmdi-hc-spin';
         }
 

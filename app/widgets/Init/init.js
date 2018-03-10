@@ -4,11 +4,11 @@ var Init = {
     checkNode : function() {
         // TODO : very ugly, need to refactor this
         var username = localStorage.getItem('username');
-        if(username == null) return;
+        if (username == null) return;
 
         var jid = username.replace('@', 'at');
         var init = localStorage.getObject(jid + '_Init' + Init.version) || {};
-        if(init.initialized != 'true') {
+        if (init.initialized != 'true') {
             Init_ajaxCreatePersistentStorage('storage:bookmarks');
             Init_ajaxCreatePersistentStorage('urn:xmpp:pubsub:movim-public-subscription', 1000);
             Init_ajaxCreatePersistentPEPStorage('urn:xmpp:vcard4');
@@ -22,7 +22,7 @@ var Init = {
     setNode : function(node) {
         // TODO : need to refactor this too
         var username = localStorage.getItem('username');
-        if(username == null) return;
+        if (username == null) return;
 
         var jid = username.replace('@', 'at');
         var init = localStorage.getObject(jid + '_Init' + Init.version) || {};

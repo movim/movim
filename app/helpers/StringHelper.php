@@ -60,11 +60,11 @@ function addUrls($string, $preview = false)
                 if ($preview) {
                     try {
                         $embed = Embed\Embed::create($match[0]);
-                        if($embed->type == 'photo'
+                        if ($embed->type == 'photo'
                         && $embed->images[0]['width'] <= 1024
                         && $embed->images[0]['height'] <= 1024) {
                             $content = '<img src="'.$match[0].'"/>';
-                        } elseif($embed->type == 'link') {
+                        } elseif ($embed->type == 'link') {
                             $content .= ' - '. $embed->title . ' - ' . $embed->providerName;
                         }
                     } catch(Exception $e) {
@@ -124,7 +124,7 @@ function addHFR($string)
     return preg_replace_callback(
             '/\[:([\w\s-]+)([:\d])*\]/', function ($match) {
                 $num = '';
-                if(count($match) == 3)
+                if (count($match) == 3)
                     $num = $match[2].'/';
                 return '<img class="hfr" title="'.$match[0].'" alt="'.$match[0].'" src="http://forum-images.hardware.fr/images/perso/'.$num.$match[1].'.gif"/>';
             }, $string
@@ -198,7 +198,7 @@ function cleanJid($jid)
 function getCid($string)
 {
     preg_match("/(\w+)\@/", $string, $matches);
-    if(is_array($matches)) {
+    if (is_array($matches)) {
         return $matches[1];
     }
 }
@@ -211,14 +211,14 @@ function explodeJid($jid)
     $arr = explode('/', $jid);
     $jid = $arr[0];
 
-    if(isset($arr[1])) $resource = $arr[1];
+    if (isset($arr[1])) $resource = $arr[1];
     else $resource = null;
 
     $server = '';
 
     $arr = explode('@', $jid);
     $username = $arr[0];
-    if(isset($arr[1])) $server = $arr[1];
+    if (isset($arr[1])) $server = $arr[1];
 
     return [
         'username'  => $username,
@@ -394,7 +394,7 @@ function truncate($str, $width)
  */
 function urilize($path, $notime = false)
 {
-    if($notime) {
+    if ($notime) {
         return BASE_URI . $path;
     }
     return BASE_URI . $path . '?t='.filemtime(DOCUMENT_ROOT . '/'.$path);

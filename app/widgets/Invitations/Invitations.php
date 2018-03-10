@@ -27,12 +27,12 @@ class Invitations extends \Movim\Widget\Base
         $html = $this->prepareInvitations();
         $this->rpc('MovimTpl.fill', '#invitations_widget', $html);
 
-        if(is_string($from)) {
+        if (is_string($from)) {
             $cd = new \Modl\ContactDAO;
             $contact = $cd->get($from);
 
             $avatar = $contact->getPhoto('s');
-            if($avatar == false) $avatar = null;
+            if ($avatar == false) $avatar = null;
 
             Notification::append(
                 'invite|'.$from, $contact->getTrueName(),
@@ -61,7 +61,7 @@ class Invitations extends \Movim\Widget\Base
 
         $session = Session::start();
         $notifs = $session->get('activenotifs');
-        if(is_array($notifs)) {
+        if (is_array($notifs)) {
             foreach($notifs as $key => $value) {
                 array_push($invitations, $cd->get($key));
             }
@@ -81,7 +81,7 @@ class Invitations extends \Movim\Widget\Base
         $rd = new \Modl\RosterLinkDAO;
         $c  = $rd->get($jid);
 
-        if(isset($c) && $c->groupname) {
+        if (isset($c) && $c->groupname) {
             $ui = new UpdateItem;
             $ui->setTo($jid)
                ->setFrom($this->user->getLogin())

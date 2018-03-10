@@ -17,7 +17,7 @@ class ContactDAO extends SQL
                 on contact.jid = privacy.pkey
             where jid = :jid';
 
-        if($jid == null) $jid = $this->_user;
+        if ($jid == null) $jid = $this->_user;
 
         $this->prepare(
             'Contact',
@@ -29,7 +29,7 @@ class ContactDAO extends SQL
         $contact = $this->run('Contact', 'item');
 
         // If we cannot find the contact
-        if($contact == null && $empty == false) {
+        if ($contact == null && $empty == false) {
             $contact = new Contact;
             $contact->jid = $jid;
             return $contact;
@@ -40,7 +40,7 @@ class ContactDAO extends SQL
 
     function set($contact)
     {
-        if(!isset($contact->created)) {
+        if (!isset($contact->created)) {
             $contact->created = date(SQL::SQL_DATE);
         }
 
@@ -149,7 +149,7 @@ class ContactDAO extends SQL
 
         $this->run('Contact');
 
-        if(!$this->_effective) {
+        if (!$this->_effective) {
             $this->_sql = '
                 insert into contact
                 (
@@ -365,7 +365,7 @@ class ContactDAO extends SQL
               and contact.jid != :jid
             order by presence.value is null, presence.value, contact.jid desc';
 
-        if($limitr)
+        if ($limitr)
             $this->_sql = $this->_sql.' limit '.$limitr.' offset '.$limitf;
 
         $this->prepare(
@@ -418,7 +418,7 @@ class ContactDAO extends SQL
             on rosterlink.jid = contact.jid
             where rosterlink.session = :session';
 
-        if($jid) {
+        if ($jid) {
             $this->_sql .= '
             and rosterlink.jid = :jid';
         }
@@ -426,7 +426,7 @@ class ContactDAO extends SQL
         $this->_sql .= '
             order by rostername';
 
-        if($jid) {
+        if ($jid) {
             $this->prepare(
                 'RosterLink', ['session' => $this->_user, 'jid' => $jid]
             );
@@ -573,7 +573,7 @@ class ContactDAO extends SQL
             ]
         );
 
-        if($item)
+        if ($item)
             return $this->run('RosterContact');
         return $this->run('RosterContact', 'item');
     }
@@ -636,7 +636,7 @@ class ContactDAO extends SQL
         );
 
         $arr = $this->run(null, 'array');
-        if(is_array($arr) && isset($arr[0])) {
+        if (is_array($arr) && isset($arr[0])) {
             $arr = array_values($arr[0]);
             return (int)$arr[0];
         }

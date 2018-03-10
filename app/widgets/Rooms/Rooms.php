@@ -33,7 +33,7 @@ class Rooms extends \Movim\Widget\Base
     {
         $message = $packet->content;
 
-        if($message->session == $message->jidto
+        if ($message->session == $message->jidto
         && $message->type == 'groupchat') {
             Notification::append(
                 'chat|'.$message->jidfrom,
@@ -63,7 +63,7 @@ class Rooms extends \Movim\Widget\Base
         $cod = new \Modl\ConferenceDAO;
         $rooms = $cod->getAll();
 
-        if(is_array($rooms)) {
+        if (is_array($rooms)) {
             foreach($rooms as $room) {
                 if ($room->autojoin
                 && !$this->checkConnected($room->conference, $room->nick)) {
@@ -150,9 +150,9 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxInvite($form)
     {
-        if(!$this->validateRoom($form->to->value)) return;
+        if (!$this->validateRoom($form->to->value)) return;
 
-        if(!empty($form->invite->value)) {
+        if (!empty($form->invite->value)) {
             $i = new Invite;
             $i->setTo($form->to->value)
               ->setId(Uuid::uuid4())
@@ -169,7 +169,7 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxRemoveConfirm($room)
     {
-        if(!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) return;
 
         $view = $this->tpl();
 
@@ -183,7 +183,7 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxList($room)
     {
-        if(!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) return;
 
         $view = $this->tpl();
 
@@ -202,7 +202,7 @@ class Rooms extends \Movim\Widget\Base
     {
         $users = $this->getUsersList($room);
 
-        if($users) {
+        if ($users) {
             $resources = [];
             foreach($users as $user) {
                 array_push($resources, $user->resource);
@@ -217,7 +217,7 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxRemove($room)
     {
-        if(!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) return;
 
         $cd = new \Modl\ConferenceDAO;
         $cd->deleteNode($room);
@@ -230,9 +230,9 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxJoin($room, $nickname = false)
     {
-        if(!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) return;
 
-        if((new \Movim\Picture)->isOld($room . '_muc')) {
+        if ((new \Movim\Picture)->isOld($room . '_muc')) {
             $v = new Moxl\Xec\Action\Vcard\Get;
             $v->setTo(echapJid($room))->isMuc()->request();
         }
@@ -248,7 +248,7 @@ class Rooms extends \Movim\Widget\Base
         $c->setTo(explodeJid($room)['server'])
           ->request();
 
-        if($nickname == false) {
+        if ($nickname == false) {
             $s = Session::start();
             $nickname = $s->get('username');
         }
@@ -257,10 +257,10 @@ class Rooms extends \Movim\Widget\Base
         $jid = explodeJid($room);
         $caps = $cd->get($jid['server']);
 
-        if($caps && ($caps->isMAM() || $caps->isMAM2())) {
+        if ($caps && ($caps->isMAM() || $caps->isMAM2())) {
             $p->enableMAM();
 
-            if($caps->isMAM2()) {
+            if ($caps->isMAM2()) {
                 $p->enableMAM2();
             }
         }
@@ -276,7 +276,7 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxExit($room)
     {
-        if(!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) return;
 
         // We reset the Chat view
         $c = new Chat;
@@ -290,7 +290,7 @@ class Rooms extends \Movim\Widget\Base
         $jid = explodeJid($room);
         $caps = $cd->get($jid['server']);
 
-        if(!isset($caps) || !$caps->isMAM()) {
+        if (!isset($caps) || !$caps->isMAM()) {
             // We clear all the old messages
             $md = new \Modl\MessageDAO;
             $md->deleteContact($room);
@@ -313,9 +313,9 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxChatroomAdd($form)
     {
-        if(!filter_var($form->jid->value, FILTER_VALIDATE_EMAIL)) {
+        if (!filter_var($form->jid->value, FILTER_VALIDATE_EMAIL)) {
             Notification::append(null, $this->__('chatrooms.bad_id'));
-        } elseif(trim($form->name->value) == '') {
+        } elseif (trim($form->name->value) == '') {
             Notification::append(null, $this->__('chatrooms.empty_name'));
         } else {
             $cd = new \Modl\ConferenceDAO;
@@ -337,7 +337,7 @@ class Rooms extends \Movim\Widget\Base
     {
         $arr = [];
 
-        if($item) {
+        if ($item) {
             array_push($arr, $item);
         }
 
@@ -345,8 +345,8 @@ class Rooms extends \Movim\Widget\Base
         $session = Session::start();
 
         $conferences = $cd->getAll();
-        if($conferences) {
-            foreach($conferences as $c) {
+        if ($conferences) {
+            foreach ($conferences as $c) {
                 array_push($arr,
                     [
                         'type'      => 'conference',
@@ -367,15 +367,15 @@ class Rooms extends \Movim\Widget\Base
 
     function checkConnected($room, $resource = false)
     {
-        if(!$this->validateRoom($room)) return;
-        if($resource && !$this->validateResource($resource)) {
+        if (!$this->validateRoom($room)) return;
+        if ($resource && !$this->validateResource($resource)) {
             Notification::append(null, $this->__('chatrooms.bad_id'));
             return;
         }
 
         $pd = new \Modl\PresenceDAO;
 
-        if($resource == false) {
+        if ($resource == false) {
             $session = Session::start();
             $resource = $session->get('username');
         }
@@ -402,9 +402,9 @@ class Rooms extends \Movim\Widget\Base
 
         $connected = [];
 
-        if(is_array($list)) {
-            foreach($list as $key => $room) {
-                if($this->checkConnected($room->conference, $room->nick)) {
+        if (is_array($list)) {
+            foreach ($list as $key => $room) {
+                if ($this->checkConnected($room->conference, $room->nick)) {
                     $room->connected = true;
                     array_push($connected, $room);
                     unset($list[$key]);

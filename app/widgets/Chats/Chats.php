@@ -24,9 +24,9 @@ class Chats extends \Movim\Widget\Base
     {
         $message = $packet->content;
 
-        if($message->type != 'groupchat') {
+        if ($message->type != 'groupchat') {
             // If the message is from me
-            if($message->session == $message->jidto) {
+            if ($message->session == $message->jidto) {
                 $from = $message->jidfrom;
             } else {
                 $from = $message->jidto;
@@ -39,10 +39,10 @@ class Chats extends \Movim\Widget\Base
     function onPresence($packet)
     {
         $contacts = $packet->content;
-        if($contacts != null){
+        if ($contacts != null){
             $c = $contacts[0];
             $chats = \Movim\Cache::c('chats');
-            if(is_array($chats) &&  array_key_exists($c->jid, $chats)) {
+            if (is_array($chats) &&  array_key_exists($c->jid, $chats)) {
                 $this->rpc('MovimTpl.replace', '#' . cleanupId($c->jid.'_chat_item'), $this->prepareChat($c->jid));
                 $this->rpc('Chats.refresh');
 
@@ -65,7 +65,7 @@ class Chats extends \Movim\Widget\Base
     private function setState($array, $message)
     {
         list($from, $to) = $array;
-        if($from == $this->user->getLogin()) {
+        if ($from == $this->user->getLogin()) {
             $jid = $to;
         } else {
             $jid = $from;
@@ -89,21 +89,21 @@ class Chats extends \Movim\Widget\Base
         $g = new \Moxl\Xec\Action\MAM\Get;
         $md = new \Modl\MessageDAO;
 
-        if($jid == false) {
+        if ($jid == false) {
             $message = $md->getLastItem();
 
-            if(!empty($message)) {
+            if (!empty($message)) {
                 $g->setStart(strtotime($message->published)+10);
             }
 
             $g->setLimit(150);
             $g->request();
-        } elseif($this->validateJid($jid)) {
+        } elseif ($this->validateJid($jid)) {
             $messages = $md->getContact(echapJid($jid), 0, 1);
 
             $g->setJid(echapJid($jid));
 
-            if(!empty($messages)) {
+            if (!empty($messages)) {
                 // We add a little delay of 10sec to prevent some sync issues
                 $g->setStart(strtotime($messages[0]->published)+10);
             }
@@ -114,18 +114,18 @@ class Chats extends \Movim\Widget\Base
 
     function ajaxOpen($jid, $history = true)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $chats = \Movim\Cache::c('chats');
-        if($chats == null) $chats = [];
+        if ($chats == null) $chats = [];
 
         unset($chats[$jid]);
 
-        if(/*!array_key_exists($jid, $chats)
+        if (/*!array_key_exists($jid, $chats)
                 && */$jid != $this->user->getLogin()) {
             $chats[$jid] = 1;
 
-            if($history) $this->ajaxGetHistory($jid);
+            if ($history) $this->ajaxGetHistory($jid);
 
             \Movim\Cache::c('chats', $chats);
             $this->rpc('Chats.prepend', $jid, $this->prepareChat($jid));
@@ -134,7 +134,7 @@ class Chats extends \Movim\Widget\Base
 
     function ajaxClose($jid)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $chats = \Movim\Cache::c('chats');
         unset($chats[$jid]);
@@ -157,7 +157,7 @@ class Chats extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $chats = \Movim\Cache::c('chats');
 
-        if(!isset($chats)) $chats = [];
+        if (!isset($chats)) $chats = [];
 
         $view->assign('chats', array_keys($chats));
         $view->assign('top', $cd->getTop(15));
@@ -186,7 +186,7 @@ class Chats extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        if(!isset($chats)) {
+        if (!isset($chats)) {
             return '';
         }
 
@@ -197,7 +197,7 @@ class Chats extends \Movim\Widget\Base
 
     function prepareChat($jid, $status = null)
     {
-        if(!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) return;
 
         $view = $this->tpl();
 
@@ -208,8 +208,8 @@ class Chats extends \Movim\Widget\Base
         $presencestxt = getPresencesTxt();
 
         $cr = $cd->getRosterItem($jid);
-        if(isset($cr)) {
-            if($cr->value != null) {
+        if (isset($cr)) {
+            if ($cr->value != null) {
                 $view->assign('presence', $presencestxt[$cr->value]);
             }
             $view->assign('contact', $cr);
@@ -222,7 +222,7 @@ class Chats extends \Movim\Widget\Base
         $view->assign('status', $status);
 
         $m = $md->getContact($jid, 0, 1);
-        if(isset($m)) {
+        if (isset($m)) {
             $view->assign('message', $m[0]);
         }
 

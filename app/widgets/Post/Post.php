@@ -24,12 +24,12 @@ class Post extends \Movim\Widget\Base
     {
         $content = $packet->content;
 
-        if(is_array($content) && isset($content['nodeid'])) {
+        if (is_array($content) && isset($content['nodeid'])) {
             $pd = new \Modl\PostnDAO;
             $p  = $pd->get($content['origin'], $content['node'], $content['nodeid']);
 
-            if($p) {
-                if($p->isComment()) {
+            if ($p) {
+                if ($p->isComment()) {
                     $this->rpc(
                         'MovimTpl.fill',
                         '#comments',
@@ -83,14 +83,14 @@ class Post extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $p  = $pd->get($origin, $node, $id);
 
-        if($p) {
+        if ($p) {
             $html = $this->preparePost($p);
 
             $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
 
             // If the post is a reply but we don't have the original
-            if($p->isReply() && !$p->getReply()) {
+            if ($p->isReply() && !$p->getReply()) {
                 $reply = $p->reply;
 
                 $gi = new GetItem;
@@ -119,7 +119,7 @@ class Post extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $p  = $pd->get($origin, $node, $id);
 
-        if($p) {
+        if ($p) {
             $this->requestComments($p);
         }
     }
@@ -129,7 +129,7 @@ class Post extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $p  = $pd->get($origin, $node, $id);
 
-        if($p) {
+        if ($p) {
             $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node, $id, 'share']));
         }
     }
@@ -150,13 +150,13 @@ class Post extends \Movim\Widget\Base
 
     public function publishComment($comment, $to, $node, $id)
     {
-        if(!Validator::stringType()->notEmpty()->validate($comment)
+        if (!Validator::stringType()->notEmpty()->validate($comment)
         || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)) return;
 
         $pd = new \Modl\PostnDAO;
         $p = $pd->get($to, $node, $id);
 
-        if($p) {
+        if ($p) {
             $cp = new CommentPublish;
             $cp->setTo($p->commentorigin)
                ->setFrom($this->user->getLogin())
@@ -173,22 +173,22 @@ class Post extends \Movim\Widget\Base
     {
         $comment = trim($form->comment->value);
 
-        if($comment != '♥') {
+        if ($comment != '♥') {
             $this->publishComment($comment, $to, $node, $id);
         }
     }
 
     public function prepareComments($post)
     {
-        if($post == null) return;
+        if ($post == null) return;
 
         $emoji = \MovimEmoji::getInstance();
 
         $comments = $post->getComments();
 
         $likes = [];
-        foreach($comments as $key => $comment) {
-            if($comment->isLike()) {
+        foreach ($comments as $key => $comment) {
+            if ($comment->isLike()) {
                 $likes[] = $comment;
                 unset($comments[$key]);
             }
@@ -240,8 +240,8 @@ class Post extends \Movim\Widget\Base
 
         $view->assign('external', $external);
 
-        if(isset($p)) {
-            if($p->hasCommentsNode()
+        if (isset($p)) {
+            if ($p->hasCommentsNode()
             && !$external) {
                 $this->requestComments($p); // Broken in case of repost
                 $view->assign('commentsdisabled', false);
@@ -255,7 +255,7 @@ class Post extends \Movim\Widget\Base
             $view->assign('prevnext', '');
             $view->assign('comments', '');
 
-            if(!$external) {
+            if (!$external) {
                 $prevnext = $this->tpl();
                 $prevnext->assign('next', $p->getNext());
                 $prevnext->assign('previous', $p->getPrevious());
@@ -270,7 +270,7 @@ class Post extends \Movim\Widget\Base
             $view->assign('reply', $p->isReply() ? $p->getReply() : false);
 
             // Is it a repost ?
-            if($p->isRecycled()) {
+            if ($p->isRecycled()) {
                 $cd = new \Modl\ContactDAO;
                 $view->assign('repost', $cd->get($p->origin));
             }
@@ -280,12 +280,12 @@ class Post extends \Movim\Widget\Base
             $view->assign('post', $p);
             $view->assign('attachments', $p->getAttachments());
 
-            if($card) {
+            if ($card) {
                 return $view->draw('_post_card', true);
-            } else {
-                return $view->draw('_post', true);
             }
-        } elseif(!$external) {
+
+            return $view->draw('_post', true);
+        } elseif (!$external) {
             return $this->prepareEmpty();
         }
     }
@@ -295,7 +295,7 @@ class Post extends \Movim\Widget\Base
         $validate_nodeid = Validator::stringType()->length(10, 100);
 
         $this->view->assign('nodeid', false);
-        if($validate_nodeid->validate($this->get('i'))) {
+        if ($validate_nodeid->validate($this->get('i'))) {
             $this->view->assign('nodeid', $this->get('i'));
         }
     }
