@@ -4,12 +4,13 @@ namespace Moxl\Xec\Payload;
 
 use Moxl\Xec\Action\Register\Get;
 use Movim\Session;
+use Moxl\Authentication;
 
 class SASL extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $mec = (array)$stanza->mechanism;
+        $mechanisms = (array)$stanza->mechanism;
 
         /*
          * Weird behaviour on old eJabberd servers, fixed on the new versions
@@ -23,21 +24,13 @@ class SASL extends Payload
         $user = $session->get('username');
 
         if($user) {
-            if(!is_array($mec)) {
-                $mec = [$mec];
+            if(!is_array($mechanisms)) {
+                $mechanisms = [$mechanisms];
             }
 
-            $mecchoice = str_replace('-', '', \Moxl\Auth::mechanismChoice($mec));
-
-            $session->set('mecchoice', $mecchoice);
-
-            \Moxl\Utils::log("/// MECANISM CHOICE ".$mecchoice);
-
-            if(method_exists('\Moxl\Auth','mechanism'.$mecchoice)) {
-                call_user_func('Moxl\Auth::mechanism'.$mecchoice);
-            } else {
-                \Moxl\Utils::log("/// MECANISM CHOICE NOT FOUND");
-            }
+            $auth = Authentication::getInstance();
+            $auth->choose($mechanisms);
+            $auth->response();
         } else {
             $g = new Get;
             $g->setTo($session->get('host'))->request();

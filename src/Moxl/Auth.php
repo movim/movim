@@ -3,6 +3,7 @@
 namespace Moxl;
 
 use \SASL2\SASL2;
+use Fabiang\Sasl\Sasl;
 use Movim\Session;
 
 class Auth
@@ -87,16 +88,24 @@ class Auth
 
     static function mechanismSCRAMSHA1()
     {
-        $s = new SASL2;
-        $fa = $s->factory('SCRAM-SHA1');
+        //$s = new SASL2;
+        //$fa = $s->factory('SCRAM-SHA1');
 
         $session = Session::start();
 
         Utils::log("/// INITIAL MESSAGE");
 
-        $response = base64_encode($fa->getResponse($session->get('username'), $session->get('password')));
+        $factory = new Sasl;
+        $mechanism = $factory->factory('SCRAM-SHA-1', [
+            'authcid'  => $session->get('username'),
+            'secret'   => $session->get('password')
+        ]);
 
-        $session->set('saslfa', $fa);
+        $response = base64_encode($mechanism->createResponse());
+
+        //$response = base64_encode($fa->getResponse($session->get('username'), $session->get('password')));
+
+        $session->set('saslfa', $mechanism);
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $auth = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-sasl', 'auth', $response);
@@ -104,6 +113,5 @@ class Auth
         $dom->appendChild($auth);
 
         API::request($dom->saveXML($dom->documentElement));
-
     }
 }
