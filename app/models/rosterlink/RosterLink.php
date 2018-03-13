@@ -18,7 +18,7 @@ class RosterLink extends Model
         'rostername'    => ['type' => 'string','size' => 96],
         'rosterask'     => ['type' => 'string','size' => 16],
         'rostersubscription' => ['type' => 'string','size' => 4,'mandatory' => true],
-        'groupname'     => ['type' => 'string','size' => 64]
+        'groupname'     => ['type' => 'string','size' => 256]
     ];
 
     function set($stanza)
