@@ -1,7 +1,7 @@
 Movim Changelog
 ================
 
-v0.13.1 (trunk)
+v0.14 (trunk)
 ---------------------------
  * Add a picture picker when sharing a URL in a post
  * Merge Publish in PublishBrief
@@ -15,6 +15,10 @@ v0.13.1 (trunk)
  * Fix compatibility with PHP 5.6
  * Code cleanup
  * Add support of XEP-0070: Verifying HTTP Requests via XMPP
+ * Use longer varchar for some columns in the database (Roster and Posts)
+ * Replace movim/sasl with fabiang/sasl
+ * Fix several Warnings and Errors
+ * Move Pubsub subscriptions to a specific PEP nodes to prevent overwritting by another client
 
 v0.13
 ---------------------------
