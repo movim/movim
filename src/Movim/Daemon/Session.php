@@ -4,6 +4,7 @@ namespace Movim\Daemon;
 use Ratchet\ConnectionInterface;
 use React\EventLoop\Timer\Timer;
 use Movim\Controller\Front;
+use App\Session as DBSession;
 
 class Session
 {
@@ -126,7 +127,8 @@ class Session
             $this->pushSocket->close();
 
             (new \Modl\PresenceDAO)->clearPresence();
-            (new \Modl\SessionxDAO)->delete($this->sid);
+            $session = DBSession::find($this->sid);
+            if ($session) $session->delete();
         });
 
         $self = $this;

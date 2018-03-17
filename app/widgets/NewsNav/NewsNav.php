@@ -1,21 +1,19 @@
 <?php
 
-class NewsNav extends \Movim\Widget\Base
-{
-    public function load()
-    {
-    }
+use App\Configuration;
+use Movim\Widget\Base;
 
+class NewsNav extends Base
+{
     public function display()
     {
         $nd = new \Modl\PostnDAO;
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $configuration = Configuration::findOrNew(1);
 
         $blogs = $nd->getLastBlogPublic(
             rand(0, 5),
             5,
-            ($config->restrictsuggestions == true) ? $this->user->getServer() : false
+            ($configuration->restrictsuggestions) ? $this->user->getServer() : false
         );
         $blogs = is_array($blogs) ? $blogs : [];
 
@@ -30,7 +28,7 @@ class NewsNav extends \Movim\Widget\Base
             $origin,
             0,
             6,
-            ($config->restrictsuggestions == true) ? $this->user->getServer() : false
+            ($configuration->restrictsuggestions) ? $this->user->getServer() : false
         );
 
         $posts = is_array($posts) ? $posts : [];

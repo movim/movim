@@ -82,11 +82,14 @@
             </ul>
             {/if}
 
-            {if="isset($whitelist) && $whitelist != ''"}
+            {if="!empty($whitelist)"}
             <ul class="list thin">
                 <li class="info">
                     <p></p>
-                    <p class="center normal">{$c->__('form.whitelist_info')} : {$whitelist}</p>
+                    <p class="center normal">{$c->__('form.whitelist_info')} :
+                    {loop="$whitelist"}
+                        {$value}
+                    {/loop}</p>
                 </li>
             </ul>
             {/if}

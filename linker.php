@@ -1,13 +1,12 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-define('DOCUMENT_ROOT', dirname(__FILE__));
-
 gc_enable();
 
 use Movim\Bootstrap;
 use Movim\RPC;
 use Movim\Session;
+use App\Configuration;
 
 $bootstrap = new Bootstrap;
 $bootstrap->boot();
@@ -137,9 +136,6 @@ $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector
                 break;
 
             case 'register':
-                $cd = new \Modl\ConfigDAO;
-                $config = $cd->get();
-
                 $port = 5222;
                 $dns = \Moxl\Utils::resolveHost($msg->host);
                 if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;

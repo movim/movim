@@ -1,4 +1,5 @@
 <?php
+
 use Movim\Controller\Base;
 
 class AboutController extends Base

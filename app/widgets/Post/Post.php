@@ -214,7 +214,7 @@ class Post extends \Movim\Widget\Base
         $view->assign('top', $cd->getTop(6));
         $view->assign('blogs', $nd->getLastBlogPublic(0, 8));
         $view->assign('posts', $nd->getLastPublished(false, false, 0, 6));
-        $view->assign('me', $cd->get($this->user->getLogin()), true);
+        $view->assign('me', \App\Contact::firstOrNew(['jid' => $this->user->getLogin()]));
         $view->assign('jid', $this->user->getLogin());
 
         return $view->draw('_post_empty', true);
@@ -271,8 +271,7 @@ class Post extends \Movim\Widget\Base
 
             // Is it a repost ?
             if ($p->isRecycled()) {
-                $cd = new \Modl\ContactDAO;
-                $view->assign('repost', $cd->get($p->origin));
+                $view->assign('repost', \App\Contact::find($p->origin));
             }
 
             $view->assign('nsfw', $this->user->getConfig('nsfw'));

@@ -1,5 +1,7 @@
 <?php
 
+use App\Configuration;
+
 class AdminMain extends \Movim\Widget\Base
 {
     function load()
@@ -7,33 +9,28 @@ class AdminMain extends \Movim\Widget\Base
         $this->addjs('admin.js');
 
         $form = $_POST;
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+
+        $configuration = Configuration::findOrNew(1);
 
         if (isset($form) && !empty($form)) {
             if (isset($form['password'])
             && isset($form['repassword'])
             && $form['password'] != '' && $form['repassword'] != ''
             && $form['password'] == $form['repassword']) {
-                $form['password'] = password_hash($form['password'], PASSWORD_DEFAULT);
-            } else {
-                $form['password'] = $config->password;
+                $configuration->password = password_hash($form['password'], PASSWORD_DEFAULT);
             }
 
             $form['restrictsuggestions'] = (isset($form['restrictsuggestions']));
 
+            unset($form['password']);
             unset($form['repassword']);
+            unset($form['submit']);
 
             foreach ($form as $key => $value) {
-                $config->$key = $value;
+                $configuration->$key = $value;
             }
 
-            $cd->set($config);
-
-            //set timezone
-            if (isset($form['timezone'])) {
-                date_default_timezone_set($form['timezone']);
-            }
+            $configuration->save();
         }
     }
 
@@ -52,11 +49,9 @@ class AdminMain extends \Movim\Widget\Base
 
     function display()
     {
-        $cd = new \Modl\ConfigDAO;
-
         $l = Movim\i18n\Locale::start();
 
-        $this->view->assign('conf', $cd->get());
+        $this->view->assign('conf', Configuration::findOrNew(1));
         $this->view->assign('logs', [
                 0 => $this->__('log.empty'),
                 1 => $this->__('log.syslog'),

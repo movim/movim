@@ -5,6 +5,7 @@ use Ratchet\MessageComponentInterface;
 use Ratchet\ConnectionInterface;
 use Movim\Daemon\Session;
 use Dflydev\FigCookies\Cookies;
+use App\Session as DBSession;
 
 use Symfony\Component\Console\Input\InputInterface;
 
@@ -32,7 +33,7 @@ class Core implements MessageComponentInterface
 
         $this->context = new \React\ZMQ\Context($loop, new \ZMQContext(2, false));
 
-        (new \Modl\SessionxDAO)->clear();
+        DBSession::whereNotNull('id')->delete();
 
         $this->cleanupIPCs();
         $this->registerCleaner();
@@ -181,8 +182,11 @@ class Core implements MessageComponentInterface
 
     private function cleanupDBSessions()
     {
-        (new \Modl\SessionxDAO)->deleteEmpty();
-        (new \Modl\PresenceDAO)->cleanPresences();
+        DBSession::where('active', false)
+            ->where('created_at', date(\Modl\SQL::SQL_DATE, time()-60))
+            ->delete();
+
+        //(new \Modl\PresenceDAO)->cleanPresences();
     }
 
     private function cleanupIPCs()

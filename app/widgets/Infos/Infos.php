@@ -1,37 +1,25 @@
 <?php
 
-class Infos extends \Movim\Widget\Base
-{
-    function load()
-    {
-    }
+use App\Configuration;
+use Movim\Widget\Base;
+use App\User;
 
+class Infos extends Base
+{
     function display()
     {
-        $pop = 0;
-        foreach (scandir(USERS_PATH) as $f) {
-            if (is_dir(USERS_PATH.'/'.$f)) {
-                $pop++;
-            }
-        }
-
-        $pop = $pop-2;
-
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
-
+        $configuration = Configuration::findOrNew(1);
         $connected = (int)requestURL('http://localhost:1560/started/', 2);
 
         $infos = [
             'url'           => BASE_URI,
-            'language'      => $config->locale,
-            'whitelist'     => $config->xmppwhitelist,
-            'timezone'      => $config->timezone,
-            'description'   => $config->description,
-            'unregister'    => $config->unregister,
+            'language'      => $configuration->locale,
+            'whitelist'     => $configuration->xmppwhitelist,
+            'description'   => $configuration->description,
+            'unregister'    => $configuration->unregister,
             'php_version'   => phpversion(),
             'version'       => APP_VERSION,
-            'population'    => $pop,
+            'population'    => User::count(),
             'linked'        => (int)requestURL('http://localhost:1560/linked/', 2),
             'started'       => $connected,
             'connected'     => $connected

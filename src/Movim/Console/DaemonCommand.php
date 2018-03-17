@@ -16,6 +16,7 @@ use Ratchet\WebSocket\WsServer;
 use Movim\Daemon\Core;
 use Movim\Daemon\Api;
 use Movim\Bootstrap;
+use App\Configuration;
 
 use React\EventLoop\Factory;
 use React\Socket\Server as Reactor;
@@ -83,9 +84,9 @@ class DaemonCommand extends Command
         $core = new Core($loop, $baseuri, $input);
         $app  = new HttpServer(new WsServer($core));
 
-        $config = (new \Modl\ConfigDAO)->get();
+        $configuration = Configuration::findOrNew(1);
 
-        if (empty($config->username) || empty($config->password)) {
+        if (empty($configuration->username) || empty($configuration->password)) {
             $output->writeln('<comment>Please set a username and password for the admin panel (' . $baseuri . '?admin)</comment>');
 
             $output->writeln('<info>To set those credentials run</info>');

@@ -1,8 +1,10 @@
 <?php
 
 use Respect\Validation\Validator;
+use App\Configuration;
+use Movim\Widget\Base;
 
-class Communities extends \Movim\Widget\Base
+class Communities extends Base
 {
     public function load()
     {
@@ -18,15 +20,15 @@ class Communities extends \Movim\Widget\Base
     function prepareCommunities()
     {
         $id = new \Modl\InfoDAO;
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
 
         $view = $this->tpl();
         $view->assign('communities', $id->getItems(
             false,
             0,
             40,
-            true, ($config->restrictsuggestions == true) ? $this->user->getServer() : false
+            true, (Configuration::findOrNew(1)->restrictsuggestions)
+                ? $this->user->getServer()
+                : false
         ));
 
         return $view->draw('_communities', true);

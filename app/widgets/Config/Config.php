@@ -15,13 +15,11 @@ class Config extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        /* We load the user configuration */
-        $sd = new \Modl\SettingDAO;
         $l = Movim\i18n\Locale::start();
 
         $view->assign('languages', $l->getList());
         $view->assign('me',        $this->user->getLogin());
-        $view->assign('conf',      $sd->get());
+        $view->assign('conf',      $this->user->getConfig());
 
         $view->assign('submit',
             $this->call(
@@ -37,9 +35,7 @@ class Config extends \Movim\Widget\Base
 
     function onConfig($package)
     {
-        $data = (array)$package->content;
-        $this->user->setConfig($data);
-
+        $this->user->setConfig((array)$package->content);
         $this->refreshConfig();
 
         Notification::append(null, $this->__('config.updated'));

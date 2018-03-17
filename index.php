@@ -37,8 +37,6 @@
  * events-based API.
  */
 
-define('DOCUMENT_ROOT', dirname(__FILE__));
-
 require 'vendor/autoload.php';
 
 use Movim\Bootstrap;

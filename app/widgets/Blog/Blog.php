@@ -54,9 +54,7 @@ class Blog extends \Movim\Widget\Base
             $this->title = '#'.$this->_tag;
         } else {
             $this->_from = $this->get('f');
-
-            $cd = new \Modl\ContactDAO;
-            $this->_contact = $cd->get($this->_from, true);
+            $this->_contact = App\Contact::find($this->_from);
 
             if (filter_var($this->_from, FILTER_VALIDATE_EMAIL)) {
                 $this->_node = 'urn:xmpp:microblog:0';

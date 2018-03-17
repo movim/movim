@@ -6,10 +6,15 @@ use Respect\Validation\Validator;
 use Defuse\Crypto\Key;
 use Defuse\Crypto\Crypto;
 
+use App\Configuration;
+use App\User;
+use App\Session as DBSession;
+use Movim\Widget\Base;
+
 use Movim\Cookie;
 use Movim\Session;
 
-class Login extends \Movim\Widget\Base
+class Login extends Base
 {
     function load()
     {
@@ -46,25 +51,16 @@ class Login extends \Movim\Widget\Base
 
     function display()
     {
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $configuration = Configuration::findOrNew(1);
 
-        $this->view->assign('info',     $config->info);
-        $this->view->assign('whitelist',$config->xmppwhitelist);
+        $this->view->assign('info',     $configuration->info);
+        $this->view->assign('whitelist',$configuration->xmppwhitelist);
 
-        if (isset($config->xmppdomain)
-        && !empty($config->xmppdomain)) {
-            $this->view->assign('domain', $config->xmppdomain);
+        if (isset($configuration->xmppdomain)
+        && !empty($configuration->xmppdomain)) {
+            $this->view->assign('domain', $configuration->xmppdomain);
         } else {
             $this->view->assign('domain', 'movim.eu');
-        }
-
-        $pop = 0;
-
-        foreach(scandir(USERS_PATH) as $f) {
-            if (is_dir(USERS_PATH.'/'.$f)) {
-                $pop++;
-            }
         }
 
         $this->view->assign('invitation', null);
@@ -81,7 +77,7 @@ class Login extends \Movim\Widget\Base
             }
         }
 
-        $this->view->assign('pop', $pop-2);
+        $this->view->assign('pop', User::count());
         $this->view->assign('connected', (int)requestURL('http://localhost:1560/started/', 2));
         $this->view->assign('error', $this->prepareError());
 
@@ -189,8 +185,7 @@ class Login extends \Movim\Widget\Base
     private function doLogin($login, $password, $deviceId = false)
     {
         // We get the Server Configuration
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $configuration = Configuration::findOrNew(1);
 
         // First we check the form
         $validate_login   = Validator::stringType()->length(1, 254);
@@ -212,20 +207,17 @@ class Login extends \Movim\Widget\Base
         list($username, $host) = explode('@', $login);
 
         // Check whitelisted server
-        if (
-            $config->xmppwhitelist != '' &&!
-            in_array(
-                $host,
-                explode(',',$config->xmppwhitelist)
-                )
-            ) {
+        if (!empty($configuration->xmppwhitelist)
+        && !in_array($host, $configuration->xmppwhitelist)) {
             $this->showErrorBlock('unauthorized');
             return;
         }
 
         // We check if we already have an open session
-        $sd = new \Modl\SessionxDAO;
-        $here = $sd->getHash(sha1($username.$password.$host));
+        //$sd = new \Modl\SessionxDAO;
+        //$here = $sd->getHash(sha1($username.$password.$host));
+
+        $here = DBSession::where('hash', sha1($username.$password.$host))->first();
 
         $rkey = Key::createNewRandomKey();
 
@@ -243,15 +235,23 @@ class Login extends \Movim\Widget\Base
         $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
 
         if ($here) {
-            $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->session, date(DATE_COOKIE, Cookie::getTime()));
+            $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
         }
 
-        $s = new \Modl\Sessionx;
+        $s = new DBSession;
+        $s->init($username, $password, $host);
+        $s->save();
+
+        /*$s = new \Modl\Sessionx;
         $s->init($username, $password, $host);
         $s->loadMemory();
-        $sd->set($s);
+        $sd->set($s);*/
+
+        // TEMPORARY
+        $user = User::firstOrNew(['jid' => $login]);
+        $user->save();
 
         // We launch the XMPP socket
         $this->rpc('register', $host);

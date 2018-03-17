@@ -3,6 +3,7 @@
 use HeyUpdate\Emoji\Emoji;
 use HeyUpdate\Emoji\Index\CompiledIndex;
 use Movim\Route;
+use App\Configuration;
 
 /**
  * @desc A singleton wrapper for the Emoji library
@@ -15,10 +16,7 @@ class MovimEmoji
 
     protected function __construct()
     {
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
-        $this->_theme = $config->theme;
-
+        $this->_theme = Configuration::findOrNew(1)->theme;
         $this->_emoji = new Emoji(new CompiledIndex, $this->getPath());
     }
 
@@ -223,7 +221,8 @@ function explodeJid($jid)
     return [
         'username'  => $username,
         'server'    => $server,
-        'resource' => $resource
+        'jid'       => $jid,
+        'resource'  => $resource
     ];
 }
 

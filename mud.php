@@ -3,8 +3,6 @@
 <?php
 require __DIR__ . '/vendor/autoload.php';
 
-define('DOCUMENT_ROOT', dirname(__FILE__));
-
 use Movim\Bootstrap;
 use Movim\Console\DatabaseCommand;
 use Movim\Console\ConfigCommand;

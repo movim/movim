@@ -37,22 +37,6 @@
     </div>
 
     <div>
-        <div class="select">
-            <select id="timezone" name="timezone">
-                {loop="$timezones"}
-                    <option value="{$key}"
-                    {if="$conf->timezone == $key"}
-                        selected="selected"
-                    {/if}>
-                        {$value}
-                    </option>
-                {/loop}
-            </select>
-        </div>
-        <label for="timezone">{$c->__('general.timezone')} - <span class="dTimezone">{$c->date($conf->timezone)}</span></label>
-    </div>
-
-    <div>
         <ul class="list thick">
             <li class="wide">
                 <span class="control">
@@ -109,7 +93,7 @@
     <h3>{$c->__('whitelist.title')}</h3>
 
     <div>
-        <input type="text" name="xmppwhitelist" id="xmppwhitelist" placeholder="{$c->__('whitelist.label')}" value="{$conf->xmppwhitelist}" />
+        <input type="text" name="xmppwhitelist" id="xmppwhitelist" placeholder="{$c->__('whitelist.label')}" value="{$conf->xmppwhitelist_string}" />
         <label for="xmppwhitelist">{$c->__('whitelist.label')}</label>
     </div>
 

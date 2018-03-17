@@ -1,11 +1,10 @@
 <?php
 
-class Subscribe extends \Movim\Widget\Base
-{
-    function load()
-    {
-    }
+use App\Configuration;
+use Movim\Widget\Base;
 
+class Subscribe extends Base
+{
     function flagPath($country)
     {
         return BASE_URI.'themes/material/img/flags/'.strtolower($country).'.png';
@@ -20,9 +19,7 @@ class Subscribe extends \Movim\Widget\Base
     {
         $json = requestURL(MOVIM_API.'servers', 3, false, true);
         $json = json_decode($json);
-
-        $cd = new \Modl\ConfigDAO;
-        $this->view->assign('config', $cd->get());
+        $this->view->assign('config', Configuration::findOrNew(1));
 
         if (is_object($json) && $json->status == 200) {
             $this->view->assign('servers', $json->servers);

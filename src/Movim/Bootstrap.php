@@ -2,17 +2,27 @@
 
 namespace Movim;
 
+define('DOCUMENT_ROOT', dirname(__FILE__, 3));
+
+use App\Configuration;
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
+use Illuminate\Database\Capsule\Manager as Capsule;
+use App\Session as DBSession;
 
 class Bootstrap
 {
-    function boot()
+    function boot($dbOnly = false)
     {
         //define all needed constants
         $this->setConstants();
 
         mb_internal_encoding("UTF-8");
+
+        $loadmodlsuccess = $this->loadModl();
+        $this->loadCapsule();
+
+        if ($dbOnly) return;
 
         //First thing to do, define error management (in case of error forward)
         $this->setLogs();
@@ -23,8 +33,6 @@ class Bootstrap
         $this->loadCommonLibraries();
         $this->loadDispatcher();
         $this->loadHelpers();
-
-        $loadmodlsuccess = $this->loadModl();
 
         $this->setTimezone();
         $this->setLogLevel();
@@ -54,11 +62,6 @@ class Bootstrap
         }
         if (!file_exists(CONFIG_PATH) && !@mkdir(CONFIG_PATH)) {
             $errors[] = 'Couldn\'t create directory config';
-        }
-        if (!file_exists(USERS_PATH) && !@mkdir(USERS_PATH)) {
-            $errors[] = 'Couldn\'t create directory users';
-        } else {
-            touch(USERS_PATH.'/index.html');
         }
 
         if (!empty($errors) && !is_writable(DOCUMENT_ROOT)) {
@@ -93,6 +96,12 @@ class Bootstrap
         define('APP_SECURED',   $this->isServerSecured());
         define('SMALL_PICTURE_LIMIT', 320000);
 
+        if (file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
+            require DOCUMENT_ROOT.'/config/db.inc.php';
+        } else {
+            throw new \Exception('Cannot find config/db.inc.php file');
+        }
+
         if (isset($_SERVER['HTTP_HOST'])) {
             define('BASE_HOST',     $_SERVER['HTTP_HOST']);
         }
@@ -110,8 +119,14 @@ class Bootstrap
             define('SESSION_ID',    getenv('sid'));
         }
 
+        define('DB_TYPE',       $conf['type']);
+        define('DB_HOST',       $conf['host']);
+        define('DB_USERNAME',   $conf['username']);
+        define('DB_PASSWORD',   $conf['password']);
+        define('DB_PORT',       $conf['port']);
+        define('DB_DATABASE',   $conf['database']);
+
         define('THEMES_PATH',   DOCUMENT_ROOT . '/themes/');
-        define('USERS_PATH',    DOCUMENT_ROOT . '/users/');
         define('APP_PATH',      DOCUMENT_ROOT . '/app/');
         define('SYSTEM_PATH',   DOCUMENT_ROOT . '/system/');
         define('LIB_PATH',      DOCUMENT_ROOT . '/lib/');
@@ -177,6 +192,30 @@ class Bootstrap
         return $uri;
     }
 
+    private function loadCapsule()
+    {
+        if (file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
+            require DOCUMENT_ROOT.'/config/db.inc.php';
+        } else {
+            throw new \Exception('Cannot find config/db.inc.php file');
+        }
+
+        $capsule = new Capsule;
+        $capsule->addConnection([
+          'driver' => $conf['type'],
+          'host' => $conf['host'],
+          'port' => $conf['port'],
+          'database' => $conf['database'],
+          'username' => $conf['username'],
+          'password' => $conf['password'],
+          'charset' => 'utf8',
+          'collation' => 'utf8_unicode_ci',
+        ]);
+
+        $capsule->bootEloquent();
+        $capsule->setAsGlobal();
+    }
+
     private function loadCommonLibraries()
     {
         // XMPPtoForm lib
@@ -210,9 +249,6 @@ class Bootstrap
             $user->reload(true);
         }
 
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
-
         $l = \Movim\i18n\Locale::start();
 
         if ($user->isLogged()) {
@@ -228,7 +264,7 @@ class Bootstrap
             $l->detect();
             $l->loadPo();
         } else {
-            $l->load($config->locale);
+            $l->load(Configuration::findOrNew(1)->locale);
         }
     }
 
@@ -243,27 +279,24 @@ class Bootstrap
 
     private function setTimezone()
     {
-        if (getenv('offset') != 0) {
-            define('TIMEZONE_OFFSET', getenv('offset'));
-        } else {
+        define('TIMEZONE_OFFSET', (getenv('offset') != 0)
+            ? getenv('offset')
+            : 0);
+        /*else {
             // We set the default timezone to the server timezone
             $cd = new \Modl\ConfigDAO;
             $config = $cd->get();
 
             // And we set a global offset
             define('TIMEZONE_OFFSET', getTimezoneOffset($config->timezone));
-        }
+        }*/
 
         date_default_timezone_set("UTC");
     }
 
     private function setLogLevel()
     {
-        // We set the default timezone to the server timezone
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
-
-        define('LOG_LEVEL', (int)$config->loglevel);
+        define('LOG_LEVEL', (int)Configuration::findOrNew(1)->loglevel);
     }
 
     private function loadModl()
@@ -272,7 +305,6 @@ class Bootstrap
         $db = \Modl\Modl::getInstance();
         $db->setModelsPath(APP_PATH.'models');
 
-        \Modl\Utils::loadModel('Config');
         \Modl\Utils::loadModel('Presence');
         \Modl\Utils::loadModel('Contact');
         \Modl\Utils::loadModel('Privacy');
@@ -286,8 +318,6 @@ class Bootstrap
         \Modl\Utils::loadModel('Caps');
         \Modl\Utils::loadModel('Invite');
         \Modl\Utils::loadModel('Message');
-        \Modl\Utils::loadModel('Sessionx');
-        \Modl\Utils::loadModel('Setting');
         \Modl\Utils::loadModel('Conference');
         \Modl\Utils::loadModel('Tag');
         \Modl\Utils::loadModel('Url');
@@ -308,14 +338,12 @@ class Bootstrap
     {
         if (SESSION_ID !== null) {
             $process = (bool)requestURL('http://localhost:1560/exists/', 2, ['sid' => SESSION_ID]);
-
-            $sd = new \Modl\SessionxDAO;
-            $session = $sd->get(SESSION_ID);
+            $session = DBSession::find(SESSION_ID);
 
             if ($session) {
                 // There a session in the DB but no process
                 if (!$process) {
-                    $sd->delete(SESSION_ID);
+                    $session->delete();
                     return;
                 }
 

@@ -16,6 +16,7 @@ use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 use Moxl\Stanza\Stream;
 
 use Movim\Session;
+use App\Presence as DBPresence;
 
 class Presence extends \Movim\Widget\Base
 {
@@ -184,7 +185,10 @@ class Presence extends \Movim\Widget\Base
             return false;
         }
 
-        $presence = $pd->getPresence($session->get('jid'), $session->get('resource'));
+        $presence = DBPresence::where('session_id', SESSION_ID)
+                            ->where('jid', $session->get('jid'))
+                            ->where('resource', $session->get('resource'))
+                            ->first();
 
         $presencetpl = $this->tpl();
 
@@ -194,7 +198,7 @@ class Presence extends \Movim\Widget\Base
         }
 
         if ($presence == null) {
-            $presence = new \Modl\Presence;
+            $presence = new DBPresence;
         }
 
         $presencetpl->assign('me', $contact);

@@ -3,11 +3,14 @@
 namespace Movim;
 
 use Movim\i18n\Locale;
+use App\Session as DBSession;
+use App\User as DBUser;
 
 class User
 {
     public $caps;
     public $userdir;
+    public $dbuser;
 
     /**
      * Class constructor. Reloads the user's session or attempts to authenticate
@@ -16,6 +19,8 @@ class User
     function __construct($username = false)
     {
         $s = Session::start();
+        $this->dbuser = DBUser::firstOrNew(['jid' => $s->get('jid')]);
+
         if ($username) {
             $s->set('username', $username);
             $this->userdir = DOCUMENT_ROOT.'/users/'.$username.'/';
@@ -27,8 +32,7 @@ class User
      */
     function reload($language = false)
     {
-        $sd = new \Modl\SessionxDAO;
-        $session = $sd->get(SESSION_ID);
+        $session = DBSession::find(SESSION_ID);
 
         if ($session) {
             if ($language) {
@@ -89,49 +93,33 @@ class User
 
     function setConfig(array $config)
     {
-        $s = new \Modl\Setting;
-
         if (isset($config['language'])) {
-            $s->language = $config['language'];
+            $this->dbuser->language = $config['language'];
         }
 
         if (isset($config['cssurl'])) {
-            $s->cssurl   = $config['cssurl'];
+            $this->dbuser->cssurl = $config['cssurl'];
         }
 
         if (isset($config['nsfw'])) {
-            $s->nsfw     = $config['nsfw'];
+            $this->dbuser->nsfw = $config['nsfw'];
         }
 
         if (isset($config['nightmode'])) {
-            $s->nightmode= $config['nightmode'];
+            $this->dbuser->nightmode = $config['nightmode'];
         }
 
-        $sd = new \Modl\SettingDAO;
-        $sd->set($s);
-
-        $this->createDir();
-
-        file_put_contents($this->userdir.'config.dump', serialize($config));
-
+        $this->dbuser->save();
         $this->reload(true);
     }
 
     function getConfig($key = false)
     {
-        $sd = new \Modl\SettingDAO;
-        $s = $sd->get();
-
         if ($key == false) {
-            return $s;
+            return $this->dbuser;
         }
 
-        if (is_object($s)
-            && property_exists($s, $key)
-            && isset($s->$key)
-        ) {
-            return $s->$key;
-        }
+        return $this->dbuser->{$key};
     }
 
     function getDumpedConfig($key = false)
