@@ -155,7 +155,6 @@ class Roster extends \Movim\Widget\Base
 
         $view = $this->tpl();
         $view->assign('contacts', $cd->getRoster());
-        $view->assign('offlineshown', $this->user->getConfig('roster'));
         $view->assign('presencestxt', getPresencesTxt());
 
         return $view->draw('_roster_list', true);

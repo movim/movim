@@ -9,23 +9,6 @@ use App\User as DBUser;
 class User
 {
     public $caps;
-    public $userdir;
-    public $dbuser;
-
-    /**
-     * Class constructor. Reloads the user's session or attempts to authenticate
-     * the user.
-     */
-    function __construct($username = false)
-    {
-        $s = Session::start();
-        $this->dbuser = DBUser::firstOrNew(['id' => $s->get('jid')]);
-
-        if ($username) {
-            $s->set('username', $username);
-            $this->userdir = DOCUMENT_ROOT.'/users/'.$username.'/';
-        }
-    }
 
     /**
      * @brief Reload the user configuration
@@ -36,7 +19,7 @@ class User
 
         if ($session) {
             if ($language) {
-                $lang = $this->getConfig('language');
+                $lang = DBUser::me()->language;
                 if (isset($lang)) {
                     $l = Locale::start();
                     $l->load($lang);
@@ -76,54 +59,6 @@ class User
     {
         $s = Session::start();
         return $s->get('username');
-    }
-
-    function setConfig(array $config)
-    {
-        if (isset($config['language'])) {
-            $this->dbuser->language = $config['language'];
-        }
-
-        if (isset($config['cssurl'])) {
-            $this->dbuser->cssurl = $config['cssurl'];
-        }
-
-        if (isset($config['nsfw'])) {
-            $this->dbuser->nsfw = $config['nsfw'];
-        }
-
-        if (isset($config['nightmode'])) {
-            $this->dbuser->nightmode = $config['nightmode'];
-        }
-
-        $this->dbuser->save();
-        $this->reload(true);
-    }
-
-    function getConfig($key = false)
-    {
-        if ($key == false) {
-            return $this->dbuser;
-        }
-
-        return $this->dbuser->{$key};
-    }
-
-    function getDumpedConfig($key = false)
-    {
-        if (!file_exists($this->userdir.'config.dump')) {
-            return [];
-        }
-
-        $config = unserialize(file_get_contents($this->userdir.'config.dump'));
-
-        if ($key == false) {
-            return $config;
-        }
-
-        if (isset($config[$key])) {
-            return $config[$key];
-        }
     }
 
     function isSupported($key)

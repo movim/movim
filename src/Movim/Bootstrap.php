@@ -8,7 +8,9 @@ use App\Configuration;
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Illuminate\Database\Capsule\Manager as Capsule;
+
 use App\Session as DBSession;
+use App\User as DBUser;
 
 class Bootstrap
 {
@@ -252,7 +254,7 @@ class Bootstrap
         $l = \Movim\i18n\Locale::start();
 
         if ($user->isLogged()) {
-            $lang = $user->getConfig('language');
+            $lang = DBUser::me()->language;
         }
 
         if (isset($lang)) {
@@ -309,7 +311,6 @@ class Bootstrap
         \Modl\Utils::loadModel('Contact');
         \Modl\Utils::loadModel('Privacy');
         \Modl\Utils::loadModel('RosterLink');
-        \Modl\Utils::loadModel('Cache');
         \Modl\Utils::loadModel('Postn');
         \Modl\Utils::loadModel('Info');
         \Modl\Utils::loadModel('EncryptedPass');

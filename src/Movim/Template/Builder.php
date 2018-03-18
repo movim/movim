@@ -4,6 +4,7 @@ namespace Movim\Template;
 use App\Configuration;
 use Movim\Controller\Ajax;
 use Movim\Widget\Wrapper;
+use App\User;
 
 class Builder
 {
@@ -111,7 +112,7 @@ class Builder
     function dir()
     {
         $this->user->reload(true);
-        $lang = $this->user->getConfig('language');
+        $lang = User::me()->language;
 
         if (in_array($lang, ['ar', 'he', 'fa'])) {
             $this->dir = 'rtl';

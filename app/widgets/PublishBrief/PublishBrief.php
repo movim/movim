@@ -5,7 +5,7 @@ use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 
 use Movim\Session;
-use Movim\Cache;
+use App\Cache;
 
 use Respect\Validation\Validator;
 use Michelf\MarkdownExtra;

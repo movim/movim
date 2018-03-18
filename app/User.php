@@ -24,13 +24,34 @@ class User extends Model
     public static function me()
     {
         $session = Session::start();
-        return self::find($session->get('jid'));
+        $me = self::find($session->get('jid'));
+
+        return ($me) ? $me : new User;
     }
 
     public function init()
     {
         $contact = Contact::firstOrNew(['id' => $this->id]);
         $contact->save();
+    }
+
+    public function setConfig(array $config)
+    {
+        if (isset($config['language'])) {
+            $this->language = $config['language'];
+        }
+
+        if (isset($config['cssurl'])) {
+            $this->cssurl = $config['cssurl'];
+        }
+
+        if (isset($config['nsfw'])) {
+            $this->nsfw = $config['nsfw'];
+        }
+
+        if (isset($config['nightmode'])) {
+            $this->nightmode = $config['nightmode'];
+        }
     }
 
     public function setPublic()

@@ -1,7 +1,7 @@
 <?php
 
 use Respect\Validation\Validator;
-use Movim\User;
+use App\User;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
@@ -142,9 +142,7 @@ class Blog extends \Movim\Widget\Base
         }
 
         if ($this->_node == 'urn:xmpp:microblog:0') {
-            $this->user = new User($this->_from);
-
-            $cssurl = $this->user->getDumpedConfig('cssurl');
+            $cssurl = User::find($this->_from)->cssurl;
             if (isset($cssurl)
             && $cssurl != ''
             && Validator::url()->validate($cssurl)) {

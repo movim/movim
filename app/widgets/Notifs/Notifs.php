@@ -14,7 +14,7 @@ class Notifs extends \Movim\Widget\Base
 
     function ajaxClear()
     {
-        \Movim\Cache::c('notifs_since', date(\Modl\SQL::SQL_DATE));
+        \App\Cache::c('notifs_since', date(\Modl\SQL::SQL_DATE));
         $this->onNotifs();
     }
 
@@ -23,7 +23,7 @@ class Notifs extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $pd = new \Modl\PostnDAO;
-        $since = \Movim\Cache::c('notifs_since');
+        $since = \App\Cache::c('notifs_since');
 
         if (!$since) $since = date(\Modl\SQL::SQL_DATE, 0);
 

@@ -38,7 +38,7 @@ class Menu extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $cd = new \Modl\ContactDAO;
 
-        $since = \Movim\Cache::c('since');
+        $since = \App\Cache::c('since');
         $count = $pd->getCountSince($since);
         $post = $packet->content;
 
@@ -157,11 +157,11 @@ class Menu extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $pd = new \Modl\PostnDAO;
-        $count = $pd->getCountSince(\Movim\Cache::c('since'));
+        $count = $pd->getCountSince(\App\Cache::c('since'));
         // getting newer, not older
         if ($page == 0 || $page == ""){
             $count = 0;
-            \Movim\Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
+            \App\Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
         }
 
         $next = $page + 1;

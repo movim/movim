@@ -789,7 +789,7 @@ class Chat extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $chats = \Movim\Cache::c('chats');
+        $chats = \App\Cache::c('chats');
         $chats = ($chats == null) ? false : array_keys($chats);
 
         $cd = new \Modl\ContactDAO;

@@ -6,6 +6,7 @@ use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
+use App\User;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
@@ -154,7 +155,7 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $nsfwMessage = false;
 
-        if ($this->user->getConfig('nsfw') == false
+        if (User::me()->nsfw == false
         && is_array($posts)) {
             foreach ($posts as $key => $post) {
                 if ($post->nsfw) {
