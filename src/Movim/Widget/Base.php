@@ -5,6 +5,7 @@ namespace Movim\Widget;
 use Rain\Tpl;
 use Movim\Controller\Ajax;
 use Movim\User;
+use App\User as DBUser;
 
 class Base
 {
@@ -36,6 +37,8 @@ class Base
 
         $this->user = new User;
         $this->load();
+
+        $this->dbuser = DBUser::find($this->user->getLogin());
 
         $this->name = get_class($this);
 

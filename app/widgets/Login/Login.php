@@ -234,6 +234,7 @@ class Login extends Base
         $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
 
         $user = User::firstOrNew(['id' => $login]);
+        $user->init();
         $user->save();
 
         if ($here) {

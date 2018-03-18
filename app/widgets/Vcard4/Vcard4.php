@@ -5,6 +5,7 @@ use Moxl\Xec\Action\Vcard4\Set;
 use Moxl\Xec\Action\Nickname\Set as Nickname;
 
 use Respect\Validation\Validator;
+use App\User;
 
 class Vcard4 extends \Movim\Widget\Base
 {
@@ -14,15 +15,16 @@ class Vcard4 extends \Movim\Widget\Base
         $this->registerEvent('vcard4_set_handle', 'onMyVcard4');
     }
 
-    function prepareForm($me)
+    function prepareForm($contact)
     {
         $vcardform = $this->tpl();
 
-        $vcardform->assign('me',       $me);
-        $vcardform->assign('desc',     trim($me->description));
+        $vcardform->assign('me',       User::me());
+        $vcardform->assign('contact',  $contact);
+        $vcardform->assign('desc',     trim($contact->description));
         $vcardform->assign('countries',getCountries());
 
-        $me->isValidDate();
+        $contact->isValidDate();
 
         $vcardform->assign(
             'submit',
@@ -39,8 +41,7 @@ class Vcard4 extends \Movim\Widget\Base
 
     function onMyVcard4($packet)
     {
-        $c = $packet->content;
-        $html = $this->prepareForm($c);
+        $html = $this->prepareForm($packet->content);
 
         Notification::append(null, $this->__('vcard.updated'));
 
@@ -60,22 +61,14 @@ class Vcard4 extends \Movim\Widget\Base
     function ajaxGetVcard()
     {
         $r = new Get;
-        $r->setTo($this->user->getLogin())
+        $r->setTo($this->dbuser->id)
           ->setMe()
           ->request();
     }
 
     function ajaxVcardSubmit($vcard)
     {
-        $cd = new \Modl\ContactDAO;
-        $c = $cd->get($this->user->getLogin());
-
-        if ($c == null) {
-            $c = new \Modl\Contact();
-        }
-
-        $c->jid     = $this->user->getLogin();
-        $c->date = $vcard->date->value;
+        $c = User::me()->contact;
 
         if (Validator::stringType()->length(0, 40)->validate($vcard->name->value)) {
             $c->name    = $vcard->name->value;
@@ -111,7 +104,7 @@ class Vcard4 extends \Movim\Widget\Base
             $c->description     = trim($vcard->desc->value);
         }
 
-        $cd->set($c);
+        $c->save();
 
         $r = new Set;
         $r->setData($c)->request();
@@ -134,6 +127,6 @@ class Vcard4 extends \Movim\Widget\Base
     function display()
     {
         $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
-        $this->view->assign('form', $this->prepareForm($this->dbuser->contact()->first()));
+        $this->view->assign('form', $this->prepareForm(User::me()));
     }
 }
