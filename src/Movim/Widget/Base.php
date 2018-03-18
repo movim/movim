@@ -14,6 +14,7 @@ class Base
     protected $ajax;        // Contains ajax client code
     protected $user;
     protected $name;
+
     protected $pure;        // To render the widget without the container
 
     protected $_view;

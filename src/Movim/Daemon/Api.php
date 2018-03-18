@@ -70,6 +70,7 @@ class Api
         $sid = $post['sid'];
 
         $sessions = $this->_core->getSessions();
+
         return (array_key_exists($sid, $sessions)
         && $sessions[$sid] == true);
     }

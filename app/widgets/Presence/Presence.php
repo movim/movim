@@ -63,7 +63,6 @@ class Presence extends \Movim\Widget\Base
         // We refresh the messages
         $c = new Chats;
         $c->ajaxGetHistory();
-
         $this->ajaxClear();
         $this->onSessionUp();
         $this->ajaxServerCapsGet();

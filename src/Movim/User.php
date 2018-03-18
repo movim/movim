@@ -19,7 +19,7 @@ class User
     function __construct($username = false)
     {
         $s = Session::start();
-        $this->dbuser = DBUser::firstOrNew(['jid' => $s->get('jid')]);
+        $this->dbuser = DBUser::firstOrNew(['id' => $s->get('jid')]);
 
         if ($username) {
             $s->set('username', $username);
@@ -62,7 +62,7 @@ class User
 
     function createDir()
     {
-        $s = Session::start();
+        /*$s = Session::start();
         if ($s->get('jid')) {
             $this->userdir = DOCUMENT_ROOT.'/users/'.$s->get('jid').'/';
 
@@ -70,7 +70,7 @@ class User
                 mkdir($this->userdir);
                 touch($this->userdir.'index.html');
             }
-        }
+        }*/
     }
 
     function getLogin()

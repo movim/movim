@@ -348,12 +348,9 @@ class Bootstrap
                 }
 
                 $db = \Modl\Modl::getInstance();
-                $db->setUser($session->jid);
+                $db->setUser($session->user_id);
 
-                $s = Session::start();
-                $s->set('jid', $session->jid);
-                $s->set('host', $session->host);
-                $s->set('username', $session->username);
+                $session->loadMemory();
             } elseif ($process) {
                 // A process but no session in the db
                 requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);

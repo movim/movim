@@ -123,25 +123,17 @@ class Vcard4 extends \Movim\Widget\Base
     function ajaxChangePrivacy($value)
     {
         if ($value == true) {
-            \Modl\Privacy::set($this->user->getLogin(), 1);
+            $this->user->dbuser->setPublic();
             Notification::append(null, $this->__('vcard.public'));
         } else {
-            \Modl\Privacy::set($this->user->getLogin(), 0);
+            $this->user->dbuser->setPrivate();
             Notification::append(null, $this->__('vcard.restricted'));
         }
     }
 
     function display()
     {
-        $cd = new \Modl\ContactDAO;
-        $me = $cd->get();
-
         $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
-
-        if ($me == null) {
-            $this->view->assign('form', $this->prepareForm(new \Modl\Contact));
-        } else {
-            $this->view->assign('form', $this->prepareForm($me));
-        }
+        $this->view->assign('form', $this->prepareForm($this->dbuser->contact()->first()));
     }
 }

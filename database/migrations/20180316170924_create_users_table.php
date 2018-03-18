@@ -8,14 +8,14 @@ class CreateUsersTable extends Migration
     public function up()
     {
         $this->schema->create('users', function(Blueprint $table) {
-            $table->string('jid');
+            $table->string('id', 64);
             $table->text('configuration')->nullable();
             $table->string('language', 6)->nullable();
             $table->string('cssurl', 128)->nullable();
             $table->boolean('nightmode')->default(false);
             $table->boolean('nsfw')->default(false);
             $table->boolean('public')->default(false);
-            $table->primary('jid');
+            $table->primary('id');
             $table->timestamps();
         });
     }

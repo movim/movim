@@ -6,8 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class User extends Model
 {
-    protected $primaryKey = 'jid';
-    protected $fillable = ['jid', 'language', 'nightmode', 'nsfw', 'cssurl'];
+    protected $fillable = ['id', 'language', 'nightmode', 'nsfw', 'cssurl'];
+    public $incrementing = false;
+
+    public function session()
+    {
+        return $this->hasOne('App\Session');
+    }
+
+    public function contact()
+    {
+        return $this->hasOne('App\Contact', 'id');
+    }
 
     public function setPublic()
     {

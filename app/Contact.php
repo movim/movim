@@ -10,12 +10,16 @@ use Movim\User;
 
 class Contact extends Model
 {
-    protected $primaryKey = 'jid';
-    protected $fillable = ['jid', 'nickname', 'mood'];
+    protected $fillable = ['id', 'nickname', 'mood'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'id');
+    }
 
     public function set($vcard, $jid)
     {
-        $this->jid = \echapJid($jid);
+        $this->id = \echapJid($jid);
 
         $validate_date = Validator::date('Y-m-d');
         if (isset($vcard->vCard->BDAY)
@@ -47,7 +51,7 @@ class Contact extends Model
     {
         $p = new Picture;
         $p->fromBase($this->photobin);
-        $p->set($this->jid);
+        $p->set($this->id);
     }
 
     public function getPhoto($size = 'l')
@@ -65,7 +69,7 @@ class Contact extends Model
 
 
         $p = new Picture;
-        return $p->get($this->jid, $sizes[$size][0], $sizes[$size][1]);
+        return $p->get($this->id, $sizes[$size][0], $sizes[$size][1]);
     }
 
     public function setLocation($stanza)
@@ -174,7 +178,7 @@ class Contact extends Model
           )
             $truename = $this->name;
         else {
-            $truename = explodeJid($this->jid);
+            $truename = explodeJid($this->id);
             $truename = $truename['username'];
         }
 
@@ -201,12 +205,12 @@ class Contact extends Model
     function countSubscribers()
     {
         $cd = new \Modl\ContactDAO;
-        return $cd->countSubscribers($this->jid);
+        return $cd->countSubscribers($this->id);
     }
 
     public function getSearchTerms()
     {
-        return cleanupId($this->jid).'-'.
+        return cleanupId($this->id).'-'.
             cleanupId($this->getTrueName()).'-'.
             cleanupId($this->groupname);
     }
@@ -214,7 +218,7 @@ class Contact extends Model
     function toRoster()
     {
         return [
-            'jid'        => $this->jid,
+            'jid'        => $this->id,
             'rostername' => $this->rostername,
             'rostername' => $this->rostername,
             'groupname'  => $this->groupname,
@@ -265,7 +269,7 @@ class Contact extends Model
     function isMe()
     {
         $user = new User;
-        return ($this->jid == $user->getLogin());
+        return ($this->id == $user->getLogin());
     }
 }
 

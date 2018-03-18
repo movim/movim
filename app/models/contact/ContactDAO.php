@@ -309,7 +309,7 @@ class ContactDAO extends SQL
         }
     }
 
-    function getAll()
+    /*function getAll()
     {
         $this->_sql =
             'select *, privacy.value as privacy from contact
@@ -318,7 +318,7 @@ class ContactDAO extends SQL
 
         $this->prepare('Contact');
         return $this->run('Contact');
-    }
+    }*/
 
     function searchJid($search)
     {
@@ -378,7 +378,7 @@ class ContactDAO extends SQL
         return $this->run('RosterContact');
     }
 
-    function countAllPublic()
+    /*function countAllPublic()
     {
         $this->_sql =
             'select count(*) from contact
@@ -399,7 +399,7 @@ class ContactDAO extends SQL
         $results = array_values($results[0]);
 
         return (int)$results[0];
-    }
+    }*/
 
     function getRoster($jid = false)
     {

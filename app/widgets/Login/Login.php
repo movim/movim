@@ -30,7 +30,7 @@ class Login extends Base
 
     function onStart($packet)
     {
-        $session = Session::start();
+        //$session = Session::start();
 
         //if ($session->get('mechanism') != 'ANONYMOUS') {
             // We get the configuration
@@ -42,7 +42,7 @@ class Login extends Base
 
     function onConfig($packet)
     {
-        $this->user->createDir();
+        //$this->user->createDir();
         $this->rpc('MovimUtils.reloadThis');
 
         $p = new Presence;
@@ -234,24 +234,24 @@ class Login extends Base
 
         $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
 
+        $user = User::firstOrNew(['id' => $login]);
+        $user->save();
+
         if ($here) {
             $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));
-            $this->rpc('MovimUtils.redirect', $this->route('main'));
+            //$this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
+        } else {
+            $s = new DBSession;
+            $s->init($username, $password, $host);
+            $s->loadMemory();
+            $s->save();
         }
-
-        $s = new DBSession;
-        $s->init($username, $password, $host);
-        $s->save();
 
         /*$s = new \Modl\Sessionx;
         $s->init($username, $password, $host);
         $s->loadMemory();
         $sd->set($s);*/
-
-        // TEMPORARY
-        $user = User::firstOrNew(['jid' => $login]);
-        $user->save();
 
         // We launch the XMPP socket
         $this->rpc('register', $host);

@@ -8,7 +8,7 @@ class CreateContactsTable extends Migration
     public function up()
     {
         $this->schema->create('contacts', function(Blueprint $table) {
-            $table->string('jid', 64);
+            $table->string('id', 64);
             $table->string('fn', 64)->nullable();
             $table->string('name')->nullable();
             $table->string('url')->nullable();
@@ -45,7 +45,7 @@ class CreateContactsTable extends Migration
             $table->string('avatarhash', 128)->nullable();
             $table->timestamps();
 
-            $table->primary('jid');
+            $table->primary('id');
         });
     }
 

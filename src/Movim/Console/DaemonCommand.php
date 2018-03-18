@@ -15,7 +15,6 @@ use Ratchet\WebSocket\WsServer;
 
 use Movim\Daemon\Core;
 use Movim\Daemon\Api;
-use Movim\Bootstrap;
 use App\Configuration;
 
 use React\EventLoop\Factory;
