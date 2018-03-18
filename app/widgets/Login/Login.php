@@ -42,7 +42,6 @@ class Login extends Base
 
     function onConfig($packet)
     {
-        //$this->user->createDir();
         $this->rpc('MovimUtils.reloadThis');
 
         $p = new Presence;

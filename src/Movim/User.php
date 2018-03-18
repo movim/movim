@@ -60,19 +60,6 @@ class User
         return (bool)$s->get('jid');
     }
 
-    function createDir()
-    {
-        /*$s = Session::start();
-        if ($s->get('jid')) {
-            $this->userdir = DOCUMENT_ROOT.'/users/'.$s->get('jid').'/';
-
-            if (!is_dir($this->userdir)) {
-                mkdir($this->userdir);
-                touch($this->userdir.'index.html');
-            }
-        }*/
-    }
-
     function getLogin()
     {
         $s = Session::start();

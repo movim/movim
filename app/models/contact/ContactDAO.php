@@ -309,17 +309,6 @@ class ContactDAO extends SQL
         }
     }
 
-    /*function getAll()
-    {
-        $this->_sql =
-            'select *, privacy.value as privacy from contact
-            left outer join privacy
-                on contact.jid = privacy.pkey';
-
-        $this->prepare('Contact');
-        return $this->run('Contact');
-    }*/
-
     function searchJid($search)
     {
         $this->_sql =
@@ -377,29 +366,6 @@ class ContactDAO extends SQL
 
         return $this->run('RosterContact');
     }
-
-    /*function countAllPublic()
-    {
-        $this->_sql =
-            'select count(*) from contact
-            left outer join privacy
-                 on contact.jid = privacy.pkey
-            where privacy.value = true
-              and contact.jid not in (select jid from rosterlink where session = :jid)
-              and contact.jid != :jid';
-
-        $this->prepare(
-            'Contact',
-            [
-                'jid' => $this->_user
-            ]
-        );
-
-        $results = $this->run(null, 'array');
-        $results = array_values($results[0]);
-
-        return (int)$results[0];
-    }*/
 
     function getRoster($jid = false)
     {
