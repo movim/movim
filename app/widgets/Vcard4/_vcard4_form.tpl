@@ -16,13 +16,13 @@
                     <div class="checkbox">
                         <input
                             type="checkbox"
-                            id="privacy"
-                            name="privacy"
-                            {if="$me->privacy"}
+                            id="public"
+                            name="public"
+                            {if="$me->public"}
                                 checked
                             {/if}
-                            onchange="{$privacy}">
-                        <label for="privacy"></label>
+                            onchange="Vcard4_ajaxChangePrivacy(this.checked)">
+                        <label for="public"></label>
                     </div>
                 </div>
             </form>

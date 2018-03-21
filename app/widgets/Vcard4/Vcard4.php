@@ -31,11 +31,6 @@ class Vcard4 extends \Movim\Widget\Base
             $this->call('ajaxVcardSubmit', "MovimUtils.formToJson('vcard4')")
             );
 
-        $vcardform->assign(
-            'privacy',
-            $this->call('ajaxChangePrivacy', "this.checked")
-            );
-
         return $vcardform->draw('_vcard4_form', true);
     }
 
@@ -116,10 +111,10 @@ class Vcard4 extends \Movim\Widget\Base
     function ajaxChangePrivacy($value)
     {
         if ($value == true) {
-            $this->user->dbuser->setPublic();
+            User::me()->setPublic();
             Notification::append(null, $this->__('vcard.public'));
         } else {
-            $this->user->dbuser->setPrivate();
+            User::me()->setPrivate();
             Notification::append(null, $this->__('vcard.restricted'));
         }
     }
@@ -127,6 +122,6 @@ class Vcard4 extends \Movim\Widget\Base
     function display()
     {
         $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
-        $this->view->assign('form', $this->prepareForm(User::me()));
+        $this->view->assign('form', $this->prepareForm(User::me()->contact));
     }
 }
