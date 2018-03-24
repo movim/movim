@@ -92,8 +92,7 @@ class Login extends Base
 
     function showErrorBlock($error)
     {
-        $ed = new \Modl\EncryptedPassDAO;
-        $ed->delete();
+        App\User::me()->encryptedPasswords()->delete();
 
         $this->rpc('Login.clearQuick');
         $this->rpc('MovimTpl.fill', '#error', $this->prepareError($error));
@@ -169,8 +168,7 @@ class Login extends Base
         try {
             $key = Key::loadFromAsciiSafeString($key);
 
-            $ed = new \Modl\EncryptedPassDAO;
-            $ciphertext = $ed->get($deviceId);
+            $ciphertext = App\User::find($login)->encryptedPasswords->find($deviceId);
 
             if ($ciphertext) {
                 $password = Crypto::decrypt($ciphertext->data, $key);
@@ -220,18 +218,17 @@ class Login extends Base
 
         $rkey = Key::createNewRandomKey();
 
-        $ed = new \Modl\EncryptedPassDAO;
+        if (!$deviceId) {
+            $deviceId = generateKey(16);
 
-        $deviceId = generateKey(16);
-        $ciphertext = Crypto::encrypt($password, $rkey);
+            $key = new App\EncryptedPassword;
+            $key->user_id = $login;
+            $key->id = $deviceId;
+            $key->data = Crypto::encrypt($password, $rkey);
+            $key->save();
 
-        $key = new \Modl\EncryptedPass;
-        $key->id = $deviceId;
-        $key->data = $ciphertext;
-
-        $ed->set($key);
-
-        $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
+            $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
+        }
 
         $user = User::firstOrNew(['id' => $login]);
         $user->init();
@@ -239,23 +236,23 @@ class Login extends Base
 
         if ($here) {
             $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));
-            //$this->rpc('MovimUtils.redirect', $this->route('main'));
+            $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
         } else {
             $s = new DBSession;
             $s->init($username, $password, $host);
             $s->loadMemory();
             $s->save();
+
+            /*$s = new \Modl\Sessionx;
+            $s->init($username, $password, $host);
+            $s->loadMemory();
+            $sd->set($s);*/
+
+            // We launch the XMPP socket
+            $this->rpc('register', $host);
+
+            \Moxl\Stanza\Stream::init($host);
         }
-
-        /*$s = new \Modl\Sessionx;
-        $s->init($username, $password, $host);
-        $s->loadMemory();
-        $sd->set($s);*/
-
-        // We launch the XMPP socket
-        $this->rpc('register', $host);
-
-        \Moxl\Stanza\Stream::init($host);
     }
 }

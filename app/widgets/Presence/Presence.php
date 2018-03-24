@@ -74,8 +74,7 @@ class Presence extends \Movim\Widget\Base
     {
         $this->rpc('Presence.clearQuick');
 
-        $ed = new \Modl\EncryptedPassDAO;
-        $ed->delete();
+        App\User::me()->encryptedPasswords()->delete();
 
         $session = Session::start();
         $p = new Unavailable;

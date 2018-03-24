@@ -21,6 +21,11 @@ class User extends Model
         return $this->hasOne('App\Contact', 'id');
     }
 
+    public function encryptedPasswords()
+    {
+        return $this->hasMany('App\EncryptedPassword');
+    }
+
     public static function me()
     {
         $session = Session::start();
