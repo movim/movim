@@ -3,21 +3,23 @@
     data-jid="{$contact->jid}"
     class="
         {if="isset($message)"}condensed{/if}
-        {if="isset($contact->value) && $contact->value > 4"}faded{/if}
-        {if="isset($contact->last) && $contact->last > 60"} inactive{/if}
-        {if="$caps && in_array($caps->type, array('handheld', 'phone', 'web'))"}
-            action
+        {if="$roster && $roster->presence"}
+            {if="$roster->presence->value > 4"}faded{/if}
+            {if="$roster->presence->last > 60"} inactive{/if}
+            {if="$roster->presence->capability && in_array($roster->presence->capability->type, array('handheld', 'phone', 'web'))"}
+                action
+            {/if}
         {/if}
         "
     title="{$contact->jid}{if="isset($message)"} – {$message->published|strtotime|prepareDate}{/if}">
     {$url = $contact->getPhoto('s')}
     {if="$url"}
-        <span class="primary icon bubble {if="isset($presence)"}status {$presence}{/if}">
+        <span class="primary icon bubble {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}">
             <img src="{$url}">
         </span>
     {else}
         <span class="primary icon bubble color {$contact->jid|stringToColor} {if="isset($presence)"}status {$presence}{/if}">
-            {$contact->getTrueName()|firstLetterCapitalize}
+            {$contact->truename|firstLetterCapitalize}
         </span>
     {/if}
 
@@ -28,30 +30,22 @@
                 {$message->published|strtotime|prepareDate:true,true}
             </span>
         {/if}
-        {if="strpos($contact->jid, '/') != false"}
+        {if="$roster"}
+            {$roster->truename}
+        {elseif="strpos($contact->jid, '/') != false"}
             {$contact->jid}
         {else}
-            {$contact->getTrueName()}
+            {$contact->truename}
         {/if}
 
-        {if="$caps"}
-            <span class="second"><i class="zmdi
-            {if="in_array($caps->type, ['handheld', 'phone'])"}
-                zmdi-smartphone
-            {elseif="$caps->type == 'bot'"}
-                zmdi-memory
-            {elseif="$caps->type == 'web'"}
-                {if="$caps->name == 'Movim'"}
-                    zmdi-cloud-outline
-                {else}
-                    zmdi-globe-alt
-                {/if}
-            {/if}
-            "></i></span>
+        {if="$roster && $roster->presence && $roster->presence->capability"}
+            <span class="second">
+                <i class="zmdi {$roster->presence->capability->getDeviceIcon()}"></i>
+            </span>
         {/if}
     </p>
-    {if="isset($status)"}
-        <p>{$status}</p>
+    {if="$roster && $roster->presence && $roster && $roster->presence->status"}
+        <p class="line">{$roster->presence->status}</p>
     {elseif="isset($message)"}
         {if="preg_match('#^\?OTR#', $message->body)"}
             <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>

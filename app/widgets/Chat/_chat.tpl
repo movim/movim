@@ -183,7 +183,7 @@
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
             {/if}
-            {if="$c->supported('upload')"}
+            {if="$c->getUser()->hasUpload()"}
                 <span class="upload control icon"
                     title="{$c->__('publishbrief.attach')}"
                     onclick="Upload_ajaxRequest()">
@@ -191,7 +191,7 @@
                 </span>
             {/if}
             <span title="{$c->__('button.submit')}"
-                class="send control icon gray {if="$c->supported('upload')"}hide{else}show{/if}"
+                class="send control icon gray {if="$c->getUser()->hasUpload()"}hide{else}show{/if}"
                   onclick="Chat.sendMessage()">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>

@@ -1,5 +1,5 @@
 <ul class="list active" dir="ltr">
-    {if="$c->supported('pubsub')"}
+    {if="$c->getUser()->hasPubsub()"}
     <a class="classic"
        href="{$c->route('news')}"
        title="{$c->__('page.news')}">

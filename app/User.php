@@ -44,6 +44,18 @@ class User extends Model
         return (Session::start())->get('jid');
     }
 
+    /* Temporary */
+    public function getLogin()
+    {
+        return $this->getJidAttribute();
+    }
+
+    /* Temporary */
+    public function getServer()
+    {
+        return (Session::start())->get('host');
+    }
+
     public function init()
     {
         $contact = Contact::firstOrNew(['id' => $this->id]);
@@ -72,6 +84,11 @@ class User extends Model
     public function hasPubsub()
     {
         return ($this->capability && $this->capability->isPubsub());
+    }
+
+    public function hasUpload()
+    {
+        return ($this->session && $this->session->getUploadService());
     }
 
     public function setPublic()

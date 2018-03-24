@@ -26,6 +26,11 @@ class Presence extends Model
                     ->where('session_id', $this->session_id);
     }
 
+    public function capability()
+    {
+        return $this->hasOne('App\Capability', 'node', 'node');
+    }
+
     public function getPresencetextAttribute()
     {
         return getPresences()[$this->value];
@@ -63,8 +68,8 @@ class Presence extends Model
         }
 
         if ($stanza->c) {
-            $this->node = (string)$stanza->c->attributes()->node;
-            $this->ver = (string)$stanza->c->attributes()->ver;
+            $this->node = (string)$stanza->c->attributes()->node .
+                     '#'. (string)$stanza->c->attributes()->ver;
         }
 
         $this->priority = ($stanza->priority) ? (int)$stanza->priority : 0;

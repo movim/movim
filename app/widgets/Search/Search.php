@@ -36,7 +36,7 @@ class Search extends \Movim\Widget\Base
 
             $posts = false;
 
-            if ($this->user->isSupported('pubsub')) {
+            if ($this->user->hasPubsub()) {
                 $pd = new PostnDAO;
                 $posts = $pd->search($key);
             }

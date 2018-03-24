@@ -38,7 +38,14 @@
         {/if}
     </span>
     {/if}
-    <p class="normal line">{$contact->truename}</p>
+    <p class="normal line">
+        {$contact->truename}
+        {if="$contact->presence && $contact->presence->capability"}
+            <span class="second">
+                <i class="zmdi {$contact->presence->capability->getDeviceIcon()}"></i>
+            </span>
+        {/if}
+    </p>
     {if="$contact->group"}
     <p>
         <span class="tag color {$contact->group|stringToColor}">

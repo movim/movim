@@ -24,7 +24,7 @@
     </header>
 {/if}
 
-{if="$type == 'me' && $c->supported('pubsub') && $page == 0"}
+{if="$type == 'me' && $c->getUser()->hasPubsub() && $page == 0"}
     <ul class="list active on_desktop flex">
         <a href="{$c->route('contact', $jid)}" class="block">
             <li>

@@ -10,7 +10,7 @@
 
     <li class="block">
         <p class="center">
-            {if="$c->supported('pubsub')"}
+            {if="$c->getUser()->hasPubsub()"}
             <button class="button icon flat gray" onclick="Post.share()">
                 <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
             </button>

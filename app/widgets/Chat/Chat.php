@@ -168,7 +168,7 @@ class Chat extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $xml = new \XMPPtoForm();
+        $xml = new \XMPPtoForm;
         $form = $xml->getHTML($config->x->asXML());
 
         $view->assign('form', $form);
@@ -185,11 +185,8 @@ class Chat extends \Movim\Widget\Base
     private function setState($array, $message)
     {
         list($from, $to) = $array;
-        if ($from == $this->user->getLogin()) {
-            $jid = $to;
-        } else {
-            $jid = $from;
-        }
+
+        $jid = ($from == $this->user->getLogin()) ? $to : $from;
 
         $view = $this->tpl();
         $view->assign('message', $message);

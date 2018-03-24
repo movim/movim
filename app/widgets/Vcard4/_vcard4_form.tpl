@@ -33,7 +33,7 @@
     </li>
 </ul>
 
-{if="$c->getUser()->isSupported('pubsub')"}
+{if="\App\User::me()->hasPubsub()"}
 <div class="clear padded"></div>
 
 <form name="vcard4" id="vcard4form" class="flex">

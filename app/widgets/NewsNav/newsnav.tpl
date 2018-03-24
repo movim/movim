@@ -110,7 +110,7 @@
 </ul>
 {/if}
 
-{if="$c->getView() == 'news' && $c->supported('pubsub')"}
+{if="$c->getView() == 'news' && $c->getUser()->hasPubsub()"}
     <ul class="list thick on_desktop card">
         <li class="block">
             <p class="line">{$c->__('hello.share_title')}</p>

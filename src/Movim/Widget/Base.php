@@ -5,7 +5,6 @@ namespace Movim\Widget;
 use Rain\Tpl;
 use Movim\Controller\Ajax;
 use Movim\User;
-use App\User as DBUser;
 
 class Base
 {
@@ -35,11 +34,10 @@ class Base
     {
         if ($view != null) $this->_view = $view;
 
-        $this->user = new User;
+        //$this->user = new User;
         $this->load();
 
-        $this->dbuser = DBUser::find($this->user->getLogin());
-
+        $this->user = \App\User::me();
         $this->name = get_class($this);
 
         // If light loading enabled, we stop here
@@ -109,7 +107,7 @@ class Base
 
     function supported($key)
     {
-        return $this->user->isSupported($key);
+        return false;
     }
 
     function route(...$args)

@@ -5,7 +5,7 @@
     onclick="PublishBrief_ajaxLink()">
     <i class="zmdi zmdi-link"></i>
 </a>
-{if="$c->supported('upload')"}
+{if="$c->getUser()->hasUpload()"}
 <a
     class="button flat icon gray"
     href="#"

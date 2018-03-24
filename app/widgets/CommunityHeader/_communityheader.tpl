@@ -3,7 +3,7 @@
 </a>
 <ul class="list thick">
     <li>
-        {if="$c->supported('pubsub')"}
+        {if="$c->getUser()->hasPubsub()"}
             {if="$subscription == null"}
                 <button class="button oppose green color" title="{$c->__('communityheader.subscribe')}"
                 onclick="CommunityHeader_ajaxAskSubscribe('{$server|echapJS}', '{$node|echapJS}')">

@@ -2,7 +2,7 @@
     <li onclick="MovimTpl.toggleMenu()">
         <span class="primary icon"><i class="zmdi zmdi-menu"></i></span>
     </li>
-    {if="$c->supported('pubsub')"}
+    {if="$c->getUser()->hasPubsub()"}
         <li {if="$page == 'news'"}class="active"{/if}
             onclick="MovimUtils.reload('{$c->route('news')}')"
             title="{$c->__('page.news')}"

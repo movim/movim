@@ -16,7 +16,7 @@ class NewsController extends Base
 
         $user = new User;
 
-        if (!$user->isSupported('pubsub')) {
+        if (!\App\User::me()->hasPubsub()) {
             $this->redirect('contact');
         }
 

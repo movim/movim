@@ -55,12 +55,12 @@ class Capability extends Model
         return $roles;
     }
 
-    public function isJingle()
+    public function isPubsub()
     {
         return (in_array('http://jabber.org/protocol/pubsub#persistent-items', $this->getFeaturesAttribute()));
     }
 
-    public function isPubsub()
+    public function isJingle()
     {
         return (in_array('http://jabber.org/protocol/jingle', $this->getFeaturesAttribute()));
     }
@@ -73,6 +73,19 @@ class Capability extends Model
     public function isMAM2()
     {
         return (in_array('urn:xmpp:mam:2', $this->getFeaturesAttribute()));
+    }
+
+    public function getDeviceIcon()
+    {
+        if (in_array($this->type, ['handheld', 'phone'])) return 'zmdi-smartphone';
+        if ($this->type == 'bot') return 'zmdi-memory';
+        if ($this->type == 'web') {
+            if ($this->type == 'web') {
+                return 'zmdi-cloud-outline';
+            }
+
+            return 'zmdi-globe-alt';
+        }
     }
 
     public function getFeaturesAttribute()

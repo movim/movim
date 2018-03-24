@@ -24,7 +24,7 @@ class Session extends Model
 
     public function contacts()
     {
-        return $this->hasMany('App\Roster');
+        return $this->hasMany('App\Roster')->orderBy('jid');
     }
 
     public function init($username, $password, $host)
@@ -44,14 +44,14 @@ class Session extends Model
 
     public function getUploadService()
     {
-        return App\Capability::where('node', 'like', '%' . $this->host . '%')
+        return Capability::where('node', 'like', '%' . $this->host . '%')
                               ->where('features', 'like', '%urn:xmpp:http:upload%')
                               ->first();
     }
 
     public function getChatroomsService()
     {
-        return App\Capability::where('node', 'like', '%' . $this->host . '%')
+        return Capability::where('node', 'like', '%' . $this->host . '%')
                               ->where('node', 'not like', '%@%')
                               ->where('category', 'conference')
                               ->first();
@@ -59,7 +59,7 @@ class Session extends Model
 
     public function getCommentsService()
     {
-        return App\Capability::where('node', 'comments.' . $this->host)
+        return Capability::where('node', 'comments.' . $this->host)
                               ->where('category', 'pubsub')
                               ->where('type', 'service')
                               ->first();

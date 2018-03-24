@@ -15,7 +15,6 @@ class CreatePresencesTable extends Migration
             $table->integer('priority');
             $table->string('status')->nullable();
             $table->string('node')->nullable();
-            $table->string('ver')->nullable();
             $table->dateTime('delay')->nullable();
             $table->integer('last')->nullable();
             $table->boolean('muc');

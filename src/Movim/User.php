@@ -60,25 +60,4 @@ class User
         $s = Session::start();
         return $s->get('username');
     }
-
-    function isSupported($key)
-    {
-        $this->reload();
-        if ($this->caps != null) {
-            switch ($key) {
-                case 'pubsub':
-                    return in_array('http://jabber.org/protocol/pubsub#persistent-items', $this->caps);
-                case 'upload':
-                    $cd = new \Modl\CapsDAO;
-                    return ($cd->getUpload($this->getServer()) != null);
-                default:
-                    return false;
-            }
-        }
-        if ($key == 'anonymous') {
-            $session = Session::start();
-            return ($session->get('mechanism') == 'ANONYMOUS');
-        }
-        return false;
-    }
 }

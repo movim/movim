@@ -101,7 +101,7 @@
 {/loop}
 </ul>
 
-{if="$c->supported('pubsub')"}
+{if="$c->getUser()->hasPubsub()"}
     <ul class="list active on_desktop middle">
         <a href="{$c->route('blog', array($jid))}" target="_blank">
             <li>
@@ -174,7 +174,7 @@
     </li>
 {/loop}
 </ul>
-{if="$c->supported('pubsub')"}
+{if="$c->getUser()->hasPubsub()"}
     <ul class="list active middle">
         <a href="{$c->route('community')}">
             <li>

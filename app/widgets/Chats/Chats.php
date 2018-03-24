@@ -168,22 +168,11 @@ class Chats extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $cd = new \Modl\ContactDAO;
         $md = new \Modl\MessageDAO;
 
-        $presencestxt = getPresencesTxt();
-
-        $cr = $cd->getRosterItem($jid);
-        if (isset($cr)) {
-            if ($cr->value != null) {
-                $view->assign('presence', $presencestxt[$cr->value]);
-            }
-            $view->assign('contact', $cr);
-            $view->assign('caps', App\Capability::find($cr->node.'#'.$cr->ver));
-        } else {
-            $view->assign('contact', $cd->get($jid));
-            $view->assign('caps', null);
-        }
+        $contact = App\Contact::find($jid);
+        $view->assign('roster', App\User::me()->session->contacts->find($jid));
+        $view->assign('contact', $contact ? $contact : new App\Contact(['id' => $jid]));
 
         $view->assign('status', $status);
 

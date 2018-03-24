@@ -28,13 +28,12 @@ class Invitations extends \Movim\Widget\Base
 
         if (is_string($from)) {
             $contact = App\Contact::find($from);
-            $avatar = $contact->getPhoto('s');
+            if (!$contact) $contact = new App\Contact(['id' => $from]);
 
             Notification::append(
                 'invite|'.$from, $contact->truename,
-                $this->__('invitations.wants_to_talk',
-                $contact->truename),
-                ($avatar == false) ? null : $avatar,
+                $this->__('invitations.wants_to_talk', $contact->truename),
+                $contact->getPhoto('s'),
                 4);
         }
     }
