@@ -11,6 +11,7 @@ use Movim\User;
 class Contact extends Model
 {
     protected $fillable = ['id', 'nickname', 'mood'];
+    public $incrementing = false;
 
     public function user()
     {
@@ -108,15 +109,23 @@ class Contact extends Model
             $this->date = (string)$vcard->bday->date;
         }
 
-        $this->name = (string)$vcard->nickname->text;
-        $this->fn = (string)$vcard->fn->text;
-        $this->url = (string)$vcard->url->uri;
+        $this->nickname = !empty($vcard->nickname->text)
+            ? (string)$vcard->nickname->text
+            : null;
+        $this->fn = !empty($vcard->fn->text)
+            ? (string)$vcard->fn->text
+            : null;
+        $this->url = !empty($vcard->url->uri)
+            ? (string)$vcard->url->uri
+            : null;
 
         $this->adrlocality = (string)$vcard->adr->locality;
         $this->adrcountry = (string)$vcard->adr->country;
         $this->adrpostalcode = (string)$vcard->adr->code;
 
-        $this->email = (string)$vcard->email->text;
+        $this->email = !empty($vcard->email->text)
+            ? (string)$vcard->email->text
+            : null;
         $this->description = trim((string)$vcard->note->text);
     }
 
@@ -183,6 +192,15 @@ class Contact extends Model
         }
 
         return $truename;
+    }
+
+    public function getTruenameAttribute()
+    {
+        if ($this->fn) return $this->fn;
+        if ($this->nickname) return $this->nickname;
+        if ($this->name) return $this->name;
+
+        return $this->id;
     }
 
     function getAge()

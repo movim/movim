@@ -16,7 +16,6 @@ use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 use Moxl\Stanza\Stream;
 
 use Movim\Session;
-use App\Presence as DBPresence;
 
 class Presence extends \Movim\Widget\Base
 {
@@ -44,8 +43,7 @@ class Presence extends \Movim\Widget\Base
 
     function onMyPresence($packet)
     {
-        $html = $this->preparePresence();
-        $this->rpc('MovimTpl.fill', '#presence_widget', $html);
+        $this->rpc('MovimTpl.fill', '#presence_widget', $this->preparePresence());
         Notification::append(null, $this->__('status.updated'));
     }
 
@@ -173,9 +171,6 @@ class Presence extends \Movim\Widget\Base
 
     function preparePresence()
     {
-        $cd = new \Modl\ContactDAO;
-        $pd = new \Modl\PresenceDAO;
-
         $session = Session::start();
 
         // If the user is still on a logued-in page after a daemon restart
@@ -184,40 +179,22 @@ class Presence extends \Movim\Widget\Base
             return false;
         }
 
-        $presence = DBPresence::where('session_id', SESSION_ID)
-                            ->where('jid', $session->get('jid'))
-                            ->where('resource', $session->get('resource'))
-                            ->first();
+        $presence = App\User::me()->session->presence;
+        $contact = App\User::me()->contact;
 
         $presencetpl = $this->tpl();
 
-        $contact = $cd->get();
-        if ($contact == null) {
-            $contact = new \Modl\Contact;
-        }
-
-        if ($presence == null) {
-            $presence = new DBPresence;
-        }
-
-        $presencetpl->assign('me', $contact);
-        $presencetpl->assign('presence', $presence);
+        $presencetpl->assign('me', ($contact == null) ? new App\Contact : $contact);
+        $presencetpl->assign('presence', ($presence == null) ? new App\Presence : $presence);
         $presencetpl->assign('presencetxt', getPresencesTxt());
 
-        $html = $presencetpl->draw('_presence', true);
-
-        return $html;
+        return $presencetpl->draw('_presence', true);
     }
 
     function display()
     {
-        $cd = new \Modl\ContactDAO;
-        $contact = $cd->get();
-        if ($contact == null) {
-            $contact = new \Modl\Contact;
-        }
-
-        $this->view->assign('me', $contact);
+        $contact = App\User::me()->contact;
+        $this->view->assign('me', ($contact == null) ? new App\Contact : $contact);
     }
 }
 

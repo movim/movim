@@ -84,14 +84,12 @@ class Invitations extends \Movim\Widget\Base
         if (isset($c) && $c->groupname) {
             $ui = new UpdateItem;
             $ui->setTo($jid)
-               ->setFrom($this->user->getLogin())
                ->setName($c->rostername)
                ->setGroup($c->groupname)
                ->request();
         } else {
             $r = new AddItem;
             $r->setTo($jid)
-              ->setFrom($this->user->getLogin())
               ->request();
         }
 

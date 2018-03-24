@@ -29,6 +29,11 @@ class User extends Model
         return ($me) ? $me : new User;
     }
 
+    public function getJidAttribute()
+    {
+        return (Session::start())->get('jid');
+    }
+
     public function init()
     {
         $contact = Contact::firstOrNew(['id' => $this->id]);

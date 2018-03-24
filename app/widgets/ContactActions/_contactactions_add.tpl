@@ -8,14 +8,14 @@
                     <img src="{$url}">
                 </span>
             {else}
-                <span class="primary icon bubble color {$contact->jid|stringToColor}">
+                <span class="primary icon bubble color {$contact->id|stringToColor}">
                     {$contact->getTrueName()|firstLetterCapitalize}
                 </span>
             {/if}
             <p class="line">
                 {$contact->getTrueName()}
             </p>
-            <p>{$contact->jid}</p>
+            <p>{$contact->id}</p>
         </li>
         <li>
             <form name="add" onsubmit="return false;">
@@ -23,7 +23,7 @@
                     name="searchjid"
                     id="searchjid"
                     type="hidden"
-                    value="{$contact->jid}"
+                    value="{$contact->id}"
                 />
                 <div>
                     <datalist id="group_list" style="display: none;">

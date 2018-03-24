@@ -21,12 +21,7 @@ class ContactData extends \Movim\Widget\Base
     public function prepareData($jid)
     {
         $id = new \Modl\InfoDAO;
-        $cd = new \Modl\ContactDAO;
         $md = new \Modl\MessageDAO;
-
-        $view = $this->tpl();
-
-        $contactr = $cd->getRosterItem($jid);
 
         $m = $md->getContact($jid, 0, 1);
         if (isset($m)) {
@@ -35,19 +30,18 @@ class ContactData extends \Movim\Widget\Base
 
         $subscriptions = $id->getSharedItems($jid);
 
-        $view->assign('mood', getMood());
-        $view->assign('clienttype', getClientTypes());
-        $view->assign('contact', $cd->get($jid));
-        $view->assign('contactr', $contactr);
+        $view = $this->tpl();
         $view->assign('subscriptions', $subscriptions ? $subscriptions : []);
+        $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
+        $view->assign('roster', App\User::me()->session->contacts->find($jid));
 
-        if (isset($contactr)) {
+        /*if (isset($contactr)) {
             if ($contactr->value != null) {
                 $view->assign('presence', getPresencesTxt()[$contactr->value]);
             }
 
             $view->assign('caps', $contactr->getCaps());
-        }
+        }*/
 
         return $view->draw('_contactdata', true);
     }

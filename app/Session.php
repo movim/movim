@@ -15,6 +15,18 @@ class Session extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function presence()
+    {
+        return $this->hasOne('App\Presence', 'jid', 'user_id')
+                    ->where('resource', $this->resource)
+                    ->where('session_id', $this->id);
+    }
+
+    public function contacts()
+    {
+        return $this->hasMany('App\Roster');
+    }
+
     public function init($username, $password, $host)
     {
         $this->id          = SESSION_ID;

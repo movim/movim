@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Presence extends Model
 {
     protected $primaryKey = 'session_id';
+    public $incrementing = false;
 
     protected $attributes = [
         'session_id'    => SESSION_ID,
@@ -18,6 +19,22 @@ class Presence extends Model
         'jid',
         'resource'
     ];
+
+    public function roster()
+    {
+        return $this->hasOne('App\Roster', 'jid', 'jid')
+                    ->where('session_id', $this->session_id);
+    }
+
+    public function getPresencetextAttribute()
+    {
+        return getPresences()[$this->value];
+    }
+
+    public function getPresencekeyAttribute()
+    {
+        return getPresencesTxt()[$this->value];
+    }
 
     public static function findByStanza($stanza)
     {
@@ -31,6 +48,7 @@ class Presence extends Model
 
     public function set($stanza)
     {
+        $this->session_id = SESSION_ID;
         $jid = explode('/',(string)$stanza->attributes()->from);
         $this->jid = $jid[0];
 

@@ -2,32 +2,36 @@
     {$url = $contact->getPhoto('s')}
     <header class="big"
         {if="$url"}
-            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%), url('{$contact->getPhoto('xxl')}');"
+            style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%), url('{$contact->getPhoto('xxl')}');"
         {else}
             style="background-color: rgba(62,81,181,1);"
         {/if}
         >
-        <ul class="list thick">
+        <ul class="list middle">
             <li>
                 {if="$url"}
-                    <span class="primary icon bubble color {if="isset($presence)"}status {$presence}{/if}">
+                    <span class="primary icon bubble color
+                        {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
+                    ">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$contact->jid|stringToColor} {if="isset($presence)"}status {$presence}{/if}">
+                    <span class="primary icon bubble color {$contact->id|stringToColor}
+                        {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
+                    ">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
                 {if="!$contact->isMe()"}
-                    <span class="control icon active" onclick="ContactActions_ajaxChat('{$contact->jid}')">
+                    <span class="control icon active" onclick="ContactActions_ajaxChat('{$contact->id}')">
                         <i class="zmdi zmdi-comment-text-alt"></i>
                     </span>
                 {/if}
-                <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+                <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
                     <i class="zmdi zmdi-account"></i>
                 </span>
                 <p>{$contact->getTrueName()}</p>
-                <p>{$contact->jid}</p>
+                <p>{$contact->id}</p>
             </li>
         </ul>
     </header>

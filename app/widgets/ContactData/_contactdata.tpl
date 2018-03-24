@@ -1,11 +1,11 @@
 <br />
-{$url = $contact->getPhoto('l')}
 
+{$url = $contact->getPhoto('l')}
 <div class="block">
     <ul class="list middle">
         {if="$url"}
             <li>
-                <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->jid}')">
+                <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id}')">
                     <i class="zmdi zmdi-more"></i>
                 </span>
                 <p class="center">
@@ -14,14 +14,13 @@
             </li>
         {/if}
         <li>
-            {$presencestxt = getPresences()}
             <p class="normal center	">
-                {$contact->getTrueName()}
-                {if="isset($contactr) && array_key_exists($contactr->value, $presencestxt)"}
-                    –  {$presencestxt[$contactr->value]}
+                {$contact->truename}
+                {if="isset($roster) && isset($roster->presence)"}
+                    –  {$roster->presence->presencetext}
                 {/if}
             </p>
-            {if="$contact->email != null"}
+            {if="$contact->email"}
                 <p class="center"><a href="mailto:{$contact->email}">{$contact->email}</a></p>
             {/if}
             {if="$contact->description != null && trim($contact->description) != ''"}
@@ -115,33 +114,33 @@
                 <p class="normal">{$c->__('blog.visit')}</p>
             </li>
         </a>
-        {if="$contactr && $contactr->rostersubscription != 'both'"}
+        {if="$roster && $roster->subscription != 'both'"}
             <li>
-                {if="$contactr->rostersubscription == 'to'"}
+                {if="$roster->subscription == 'to'"}
                     <span class="primary icon gray">
                         <i class="zmdi zmdi-arrow-in"></i>
                     </span>
                     <p>{$c->__('subscription.to')}</p>
                     <p>{$c->__('subscription.to_text')}</p>
                     <p>
-                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contactr->jid}')">
+                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contact->id}')">
                             {$c->__('subscription.to_button')}
                         </button>
                     </p>
                 {/if}
-                {if="$contactr->rostersubscription == 'from'"}
+                {if="$roster->subscription == 'from'"}
                     <span class="primary icon gray">
                         <i class="zmdi zmdi-arrow-out"></i>
                     </span>
                     <p>{$c->__('subscription.from')}</p>
                     <p>{$c->__('subscription.from_text')}</p>
                     <p>
-                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contactr->jid}')">
+                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contact->id}')">
                             {$c->__('subscription.from_button')}
                         </button>
                     </p>
                 {/if}
-                {if="$contactr->rostersubscription == 'none'"}
+                {if="$roster->subscription == 'none'"}
                     <span class="primary icon gray">
                         <i class="zmdi zmdi-block"></i>
                     </span>
@@ -149,7 +148,7 @@
                     <p>{$c->__('subscription.nil')}</p>
                     <p>{$c->__('subscription.nil_text')}</p>
                     <p>
-                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contactr->jid}')">
+                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contact->id}')">
                             {$c->__('subscription.nil_button')}
                         </button>
                     </p>

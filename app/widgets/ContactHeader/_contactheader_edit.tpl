@@ -7,8 +7,8 @@
                 id="alias"
                 class="tiny"
                 placeholder="{$c->__('edit.alias')}"
-                {if="$contact->rostername"}
-                    value="{$contact->rostername}"
+                {if="$contact->name"}
+                    value="{$contact->name}"
                 {else}
                     value="{$contact->jid}"
                 {/if}"/>
@@ -28,7 +28,7 @@
                 id="group"
                 class="tiny"
                 placeholder="{$c->__('edit.group')}"
-                value="{$contact->groupname}"/>
+                value="{$contact->group}"/>
             <label for="group">{$c->__('edit.group')}</label>
         </div>
         <input type="hidden" name="jid" value="{$contact->jid}"/>
@@ -41,7 +41,7 @@
     <button
         name="submit"
         class="button flat"
-        onclick="{$submit} Dialog_ajaxClear()">
+        onclick="ContactHeader_ajaxEditSubmit(MovimUtils.formToJson('manage')); Dialog_ajaxClear()">
         {$c->__('button.save')}
     </button>
 </div>

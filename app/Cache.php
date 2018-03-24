@@ -6,8 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cache extends Model
 {
-    private static $_instance;
+    public $incrementing = false;
+    protected $fillable = ['user_id', 'name'];
     protected $primaryKey = 'name';
+    private static $_instance;
 
     public static function instanciate()
     {

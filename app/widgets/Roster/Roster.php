@@ -18,7 +18,7 @@ class Roster extends \Movim\Widget\Base
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
         $this->registerEvent('roster', 'onChange');
-        $this->registerEvent('presence', 'onPresence', 'contacts');
+        $this->registerEvent('presence', 'onPresence');
     }
 
     function onChange($packet)
@@ -37,15 +37,13 @@ class Roster extends \Movim\Widget\Base
 
     function onPresence($packet)
     {
-        $contacts = $packet->content;
-        if ($contacts != null){
-            $cd = new \Modl\ContactDAO;
+        if ($packet->content != null){
+            $html = $this->prepareItem(
+                $packet->content
+            );
 
-            $contact = $contacts[0];
-
-            $html = $this->prepareItem($cd->getRoster($contact->jid)[0]);
             if ($html) {
-                $this->rpc('MovimTpl.replace', '#'.cleanupId($contact->jid), $html);
+                $this->rpc('MovimTpl.replace', '#'.cleanupId($packet->content->jid), $html);
             }
         }
     }
@@ -87,7 +85,7 @@ class Roster extends \Movim\Widget\Base
     /**
      * @brief Display the search contact form
      */
-    function ajaxDisplaySearch($jid = null)
+    /*function ajaxDisplaySearch($jid = null)
     {
         $view = $this->tpl();
 
@@ -98,12 +96,12 @@ class Roster extends \Movim\Widget\Base
         $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
 
         Dialog::fill($view->draw('_roster_search', true));
-    }
+    }*/
 
     /**
      * @brief Return the found jid
      */
-    function ajaxDisplayFound($jid)
+    /*function ajaxDisplayFound($jid)
     {
         if (!empty($jid)) {
             $cd = new \Modl\ContactDAO;
@@ -115,7 +113,7 @@ class Roster extends \Movim\Widget\Base
 
             $this->rpc('MovimTpl.fill', '#search_results', $html);
         }
-    }
+    }*/
 
     /**
      * @brief Add a contact to the roster and subscribe
@@ -124,7 +122,6 @@ class Roster extends \Movim\Widget\Base
     {
         $r = new AddItem;
         $r->setTo((string)$form->searchjid->value)
-          ->setFrom($this->user->getLogin())
           ->setName((string)$form->alias->value)
           ->setGroup((string)$form->group->value)
           ->request();
@@ -139,33 +136,30 @@ class Roster extends \Movim\Widget\Base
     /**
      *  @brief Search for a contact to add
      */
-    function ajaxSearchContact($jid)
+    /*function ajaxSearchContact($jid)
     {
         if (filter_var($jid, FILTER_VALIDATE_EMAIL)) {
             $this->rpc('MovimUtils.redirect', $this->route('contact', $jid));
         } else {
             Notification::append(null, $this->__('roster.jid_error'));
         }
-    }
+    }*/
 
     function prepareItems()
     {
-        $cd = new \Modl\ContactDAO;
-        $this->user->reload(true);
-
         $view = $this->tpl();
-        $view->assign('contacts', $cd->getRoster());
-        $view->assign('presencestxt', getPresencesTxt());
+        $view->assign('contacts', \App\User::me()->session->contacts);
+        //$view->assign('presencestxt', getPresencesTxt());
 
         return $view->draw('_roster_list', true);
     }
 
-    function prepareItem($contact)
+    function prepareItem(App\Roster $contact)
     {
         $view = $this->tpl();
         $view->assign('contact', $contact);
         $view->assign('presences', getPresences());
-        $view->assign('presencestxt', getPresencesTxt());
+        //$view->assign('presencestxt', getPresencesTxt());
 
         return $view->draw('_roster_item', true);
     }
