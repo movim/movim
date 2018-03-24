@@ -9,7 +9,7 @@ class CreateCachesTable extends Migration
     {
         $this->schema->create('caches', function(Blueprint $table) {
             $table->string('user_id', 64);
-            $table->string('name', 32);
+            $table->string('name', 64);
             $table->text('data');
             $table->timestamps();
 

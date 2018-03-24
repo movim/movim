@@ -51,10 +51,9 @@ class CommunityAffiliations extends \Movim\Widget\Base
         // If the configuration is open, we fill it
         $view = $this->tpl();
 
-        $cd = new \Modl\CapsDAO;
         $sd = new \Modl\SubscriptionDAO;
 
-        $caps = $cd->get($origin);
+        $caps = App\Capability::find($origin);
 
         $view->assign('subscriptions', $sd->getAll($origin, $node));
         $view->assign('server', $origin);
@@ -180,9 +179,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
-        $cd = new \Modl\CapsDAO;
-
-        if (Validator::in($cd->get($origin)->getPubsubRoles())->validate($form->role->value)
+        if (Validator::in(App\Capability::find($origin)->getPubsubRoles())->validate($form->role->value)
         && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
             $sa->setTo($origin)

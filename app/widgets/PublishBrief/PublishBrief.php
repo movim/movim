@@ -120,8 +120,7 @@ class PublishBrief extends \Movim\Widget\Base
               ->setTitle(htmlspecialchars($form->title->value))
               ->setNode($form->node->value);
 
-            $cd = new \Modl\CapsDAO;
-            $comments = $cd->getComments($this->user->getServer());
+            $comments = App\User::me()->session->getCommentsService();
 
             $tags = [];
             $tagsTitle = getHashtags(htmlspecialchars($form->title->value));

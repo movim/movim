@@ -216,6 +216,10 @@ class Login extends Base
 
         $here = DBSession::where('hash', sha1($username.$password.$host))->first();
 
+        $user = User::firstOrNew(['id' => $login]);
+        $user->init();
+        $user->save();
+
         $rkey = Key::createNewRandomKey();
 
         if (!$deviceId) {
@@ -229,10 +233,6 @@ class Login extends Base
 
             $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
         }
-
-        $user = User::firstOrNew(['id' => $login]);
-        $user->init();
-        $user->save();
 
         if ($here) {
             $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));

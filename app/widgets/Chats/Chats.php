@@ -203,7 +203,6 @@ class Chats extends \Movim\Widget\Base
 
         $cd = new \Modl\ContactDAO;
         $md = new \Modl\MessageDAO;
-        $cad = new \Modl\CapsDAO;
 
         $presencestxt = getPresencesTxt();
 
@@ -213,7 +212,7 @@ class Chats extends \Movim\Widget\Base
                 $view->assign('presence', $presencestxt[$cr->value]);
             }
             $view->assign('contact', $cr);
-            $view->assign('caps', $cad->get($cr->node.'#'.$cr->ver));
+            $view->assign('caps', App\Capability::find($cr->node.'#'.$cr->ver));
         } else {
             $view->assign('contact', $cd->get($jid));
             $view->assign('caps', null);

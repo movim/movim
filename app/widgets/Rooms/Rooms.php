@@ -117,14 +117,13 @@ class Rooms extends \Movim\Widget\Base
 
         $id = new \Modl\InfoDAO;
         $cd = new \Modl\ConferenceDAO;
-        $cad = new \Modl\CapsDAO;
 
         $view->assign('info', $id->getConference($room));
         $view->assign('id', $room);
         $view->assign('conference', $cd->get($room));
         $view->assign('username', $this->user->getUser());
 
-        $this->rpc('Rooms.setDefaultServices', $cad->getMUC($this->user->getServer()));
+        $this->rpc('Rooms.setDefaultServices', App\User::me()->session->getChatroomsService());
 
         Dialog::fill($view->draw('_rooms_add', true));
     }
@@ -253,14 +252,13 @@ class Rooms extends \Movim\Widget\Base
             $nickname = $s->get('username');
         }
 
-        $cd = new \Modl\CapsDAO;
         $jid = explodeJid($room);
-        $caps = $cd->get($jid['server']);
+        $capability = App\Capability::find($jid['server']);
 
-        if ($caps && ($caps->isMAM() || $caps->isMAM2())) {
+        if ($capability && ($capability->isMAM() || $capability->isMAM2())) {
             $p->enableMAM();
 
-            if ($caps->isMAM2()) {
+            if ($capability->isMAM2()) {
                 $p->enableMAM2();
             }
         }
@@ -286,11 +284,10 @@ class Rooms extends \Movim\Widget\Base
         $s = Session::start();
         $resource = $s->get('username');
 
-        $cd = new \Modl\CapsDAO;
         $jid = explodeJid($room);
-        $caps = $cd->get($jid['server']);
+        $capability = App\Capability::find($jid['server']);
 
-        if (!isset($caps) || !$caps->isMAM()) {
+        if (!$capability || !$capability->isMAM()) {
             // We clear all the old messages
             $md = new \Modl\MessageDAO;
             $md->deleteContact($room);

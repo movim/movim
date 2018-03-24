@@ -21,6 +21,11 @@ class User extends Model
         return $this->hasOne('App\Contact', 'id');
     }
 
+    public function capability()
+    {
+        return $this->hasOne('App\Capability', 'node', 'id');
+    }
+
     public function encryptedPasswords()
     {
         return $this->hasMany('App\EncryptedPassword');
@@ -62,6 +67,11 @@ class User extends Model
         if (isset($config['nightmode'])) {
             $this->nightmode = $config['nightmode'];
         }
+    }
+
+    public function hasPubsub()
+    {
+        return ($this->capability && $this->capability->isPubsub());
     }
 
     public function setPublic()

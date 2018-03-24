@@ -42,6 +42,29 @@ class Session extends Model
         $s->set('password', $password);
     }
 
+    public function getUploadService()
+    {
+        return App\Capability::where('node', 'like', '%' . $this->host . '%')
+                              ->where('features', 'like', '%urn:xmpp:http:upload%')
+                              ->first();
+    }
+
+    public function getChatroomsService()
+    {
+        return App\Capability::where('node', 'like', '%' . $this->host . '%')
+                              ->where('node', 'not like', '%@%')
+                              ->where('category', 'conference')
+                              ->first();
+    }
+
+    public function getCommentsService()
+    {
+        return App\Capability::where('node', 'comments.' . $this->host)
+                              ->where('category', 'pubsub')
+                              ->where('type', 'service')
+                              ->first();
+    }
+
     public function loadMemory()
     {
         $s = MemorySession::start();
