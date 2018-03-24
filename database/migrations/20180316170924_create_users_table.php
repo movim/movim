@@ -14,7 +14,7 @@ class CreateUsersTable extends Migration
             $table->string('cssurl', 128)->nullable();
             $table->boolean('nightmode')->default(false);
             $table->boolean('nsfw')->default(false);
-            $table->boolean('public')->default(false);
+            $table->boolean('public')->nullable();
             $table->primary('id');
             $table->timestamps();
         });

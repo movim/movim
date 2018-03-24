@@ -48,8 +48,7 @@
                         style="background-image: url({$url});">
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$value->jid|stringToColor}
-                    ">
+                    <span class="primary icon bubble color {$value->jid|stringToColor}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}

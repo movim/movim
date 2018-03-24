@@ -16,12 +16,10 @@ class Search extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('empty', $this->prepareSearch(''));
-
-        $cd = new ContactDAO;
-        $view->assign('contacts', $cd->getRoster());
-        $view->assign('presencestxt', getPresencesTxt());
+        $view->assign('contacts', App\User::me()->session->contacts);
 
         Drawer::fill($view->draw('_search', true), true);
+
         $this->rpc('Search.init');
     }
 
@@ -49,14 +47,18 @@ class Search extends \Movim\Widget\Base
         }
 
         if (!empty($key)) {
-            $cd = new \Modl\ContactDAO;
-            $contacts = $cd->searchJid($key);
+            $contacts = App\Contact::where('id', function ($query) {
+                $query->select('id')
+                      ->from('users')
+                      ->where('public', true);
+            })->limit(5)->get();
+
             $view->assign('contacts', $contacts);
 
             if (Validator::email()->validate($key)) {
-                $c = new \Modl\Contact($key);
-                $c->jid = $key;
-                $view->assign('contacts', [$c]);
+                $contact = new App\Contact;
+                $contact->jid = $key;
+                $view->assign('contacts', [$contact]);
             }
         } else {
             $view->assign('contacts', null);

@@ -9,24 +9,23 @@
             <li
                 id="{$value->jid|cleanupId}"
                 title="{$value->jid}"
-                name="{$value->jid|cleanupId}-{$value->getTrueName()|cleanupId}-{$value->groupname|cleanupId}"
-                class="{if="$value->value == null || $value->value > 4"}faded{/if}"
-
+                name="{$value->jid|cleanupId}-{$value->truename|cleanupId}-{$value->group|cleanupId}"
+                class="{if="$value->presence && $value->presence->value > 4"}faded{/if}"
             >
                 {$url = $value->getPhoto('m')}
                 {if="$url"}
                     <span class="primary icon bubble
-                        {if="$value->value"}
-                            status {$presencestxt[$value->value]}
+                        {if="$value->presence"}
+                            status {$value->presence->presencekey}
                         {/if}"
                         style="background-image: url({$url});">
                     </span>
                 {else}
                     <span class="primary icon bubble color {$value->jid|stringToColor}
-                        {if="$value->value"}
-                            status {$presencestxt[$value->value]}
+                        {if="$value->presence"}
+                            status {$value->presence->presencekey}
                         {/if}"
-                    ">
+                    >
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
@@ -36,11 +35,11 @@
                 <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
                     <i class="zmdi zmdi-comment-text-alt"></i>
                 </span>
-                <p class="normal line">{$value->getTrueName()}</p>
-                {if="$value->groupname"}
+                <p class="normal line">{$value->truename}</p>
+                {if="$value->group"}
                 <p>
-                    <span class="tag color {$value->groupname|stringToColor}">
-                        {$value->groupname}
+                    <span class="tag color {$value->group|stringToColor}">
+                        {$value->group}
                     </span>
                 </p>
                 {/if}

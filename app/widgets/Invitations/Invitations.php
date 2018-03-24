@@ -24,21 +24,17 @@ class Invitations extends \Movim\Widget\Base
 
     function onInvitations($from = false)
     {
-        $html = $this->prepareInvitations();
-        $this->rpc('MovimTpl.fill', '#invitations_widget', $html);
+        $this->rpc('MovimTpl.fill', '#invitations_widget', $this->prepareInvitations());
 
         if (is_string($from)) {
-            $cd = new \Modl\ContactDAO;
-            $contact = $cd->get($from);
-
+            $contact = App\Contact::find($from);
             $avatar = $contact->getPhoto('s');
-            if ($avatar == false) $avatar = null;
 
             Notification::append(
-                'invite|'.$from, $contact->getTrueName(),
+                'invite|'.$from, $contact->truename,
                 $this->__('invitations.wants_to_talk',
-                $contact->getTrueName()),
-                $avatar,
+                $contact->truename),
+                ($avatar == false) ? null : $avatar,
                 4);
         }
     }
@@ -54,23 +50,18 @@ class Invitations extends \Movim\Widget\Base
      */
     function prepareInvitations()
     {
-        $cd = new \Modl\ContactDAO;
-        $contacts = $cd->getRosterFrom();
-
         $invitations = [];
 
         $session = Session::start();
         $notifs = $session->get('activenotifs');
         if (is_array($notifs)) {
             foreach($notifs as $key => $value) {
-                array_push($invitations, $cd->get($key));
+                array_push($invitations, App\Contact::find($key));
             }
         }
 
         $nft = $this->tpl();
-
         $nft->assign('invitations', $invitations);
-        $nft->assign('contacts', $contacts);
         return $nft->draw('_invitations_from', true);
     }
 
@@ -78,16 +69,7 @@ class Invitations extends \Movim\Widget\Base
     {
         $jid = echapJid($jid);
 
-        $rd = new \Modl\RosterLinkDAO;
-        $c  = $rd->get($jid);
-
-        if (isset($c) && $c->groupname) {
-            $ui = new UpdateItem;
-            $ui->setTo($jid)
-               ->setName($c->rostername)
-               ->setGroup($c->groupname)
-               ->request();
-        } else {
+        if (!App\User::me()->session->contacts->find($jid)) {
             $r = new AddItem;
             $r->setTo($jid)
               ->request();
@@ -110,6 +92,8 @@ class Invitations extends \Movim\Widget\Base
         $session->set('activenotifs', $notifs);
         $n = new Notification;
         $n->ajaxClear('invite|'.$jid);
+
+        $this->onInvitations();
     }
 
     function ajaxRefuse($jid)

@@ -4,10 +4,6 @@ use Modl\SessionxDAO;
 
 class Statistics extends \Movim\Widget\Base
 {
-    function load()
-    {
-    }
-
     public function getContact($username, $host)
     {
         $jid = $username.'@'.$host;

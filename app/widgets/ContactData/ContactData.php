@@ -23,6 +23,8 @@ class ContactData extends \Movim\Widget\Base
         $id = new \Modl\InfoDAO;
         $md = new \Modl\MessageDAO;
 
+        $view = $this->tpl();
+
         $m = $md->getContact($jid, 0, 1);
         if (isset($m)) {
             $view->assign('message', $m[0]);
@@ -30,7 +32,6 @@ class ContactData extends \Movim\Widget\Base
 
         $subscriptions = $id->getSharedItems($jid);
 
-        $view = $this->tpl();
         $view->assign('subscriptions', $subscriptions ? $subscriptions : []);
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('roster', App\User::me()->session->contacts->find($jid));
@@ -56,11 +57,6 @@ class ContactData extends \Movim\Widget\Base
         if ($c == null
         || $c->created == null
         || $c->isOld()) {
-            if ($c == null) {
-                $c = new \Modl\Contact;
-                $c->jid = $jid;
-            }
-
             $a = new Moxl\Xec\Action\Avatar\Get;
             $a->setTo(echapJid($jid))->request();
 

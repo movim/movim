@@ -203,6 +203,11 @@ class Contact extends Model
         return $this->id;
     }
 
+    public function getJidAttribute()
+    {
+        return $this->id;
+    }
+
     function getAge()
     {
         if ($this->isValidDate()) {

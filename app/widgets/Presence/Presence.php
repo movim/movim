@@ -61,7 +61,6 @@ class Presence extends \Movim\Widget\Base
         // We refresh the messages
         $c = new Chats;
         $c->ajaxGetHistory();
-        $this->ajaxClear();
         $this->onSessionUp();
         $this->ajaxServerCapsGet();
         $this->ajaxBookmarksGet();
@@ -69,12 +68,6 @@ class Presence extends \Movim\Widget\Base
         $this->ajaxFeedRefresh();
         $this->ajaxServerDisco();
         $this->ajaxProfileRefresh();
-    }
-
-    function ajaxClear()
-    {
-        $pd = new \Modl\PresenceDAO;
-        $pd->clearPresence();
     }
 
     function ajaxLogout()
