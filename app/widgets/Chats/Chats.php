@@ -147,39 +147,6 @@ class Chats extends \Movim\Widget\Base
         $this->rpc('MovimTpl.hidePanel');
     }
 
-    /**
-     * @brief Display the add chat form
-     */
-    function ajaxAdd()
-    {
-        $view = $this->tpl();
-
-        $cd = new \Modl\ContactDAO;
-        $chats = \App\Cache::c('chats');
-
-        if (!isset($chats)) $chats = [];
-
-        $view->assign('chats', array_keys($chats));
-        $view->assign('top', $cd->getTop(15));
-        $view->assign('presencestxt', getPresencesTxt());
-
-        Dialog::fill($view->draw('_chats_add', true), true);
-    }
-
-    /**
-     * @brief Display the extended list
-     */
-    function ajaxAddExtend()
-    {
-        $view = $this->tpl();
-
-        $cd = new \Modl\ContactDAO;
-        $contacts = $cd->getRosterSimple();
-        $view->assign('contacts', $contacts);
-
-        $this->rpc('MovimTpl.fill', '#add_extend', $view->draw('_chats_add_extend', true));
-    }
-
     function prepareChats()
     {
         $chats = \App\Cache::c('chats');
