@@ -354,8 +354,8 @@ msgid "This message will be displayed on the login page"
 msgstr "This message will be displayed on the login page"
 
 #: [information]info2
-msgid "Leave this field blank if you dont want to show any message."
-msgstr "Leave this field blank if you dont want to show any message."
+msgid "Leave this field blank if you don’t want to show any message."
+msgstr "Leave this field blank if you don’t want to show any message."
 
 #: [information]label
 msgctxt "[information]label"
@@ -479,8 +479,8 @@ msgid "Webcam"
 msgstr "Webcam"
 
 #: [avatar]cheese
-msgid "Cheese !"
-msgstr "Cheese !"
+msgid "Cheese!"
+msgstr "Cheese!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -552,8 +552,8 @@ msgid "Bookmarks updated"
 msgstr "Bookmarks updated"
 
 #: [bookmarks]error
-msgid "An error occured :"
-msgstr "An error occured :"
+msgid "An error occurred :"
+msgstr "An error occurred :"
 
 #: [bookmarks]configure
 msgid "Configure"
@@ -585,12 +585,12 @@ msgid "Encrypted message"
 msgstr "Encrypted message"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
-msgstr "Composing..."
+msgid "Composing…"
+msgstr "Composing…"
 
 #: [message]paused [chats]paused
-msgid "Paused..."
-msgstr "Paused..."
+msgid "Paused…"
+msgstr "Paused…"
 
 #: [message]gone
 msgid "Contact gone"
@@ -609,8 +609,8 @@ msgid "%s needs your attention"
 msgstr "%s needs your attention"
 
 #: [chat]placeholder
-msgid "Your message here..."
-msgstr "Your message here..."
+msgid "Your message here…"
+msgstr "Your message here…"
 
 #: [chat]smileys
 msgid "Smileys"
@@ -686,8 +686,8 @@ msgid "Administration"
 msgstr "Administration"
 
 #: [chats]empty_title
-msgid "No chats yet..."
-msgstr "No chats yet..."
+msgid "No chats yet…"
+msgstr "No chats yet…"
 
 #: [chats]empty
 msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
@@ -1039,8 +1039,8 @@ msgid "Last seen"
 msgstr "Last seen"
 
 #: [client]title
-msgid "Client Informations"
-msgstr "Client Informations"
+msgid "Client Information"
+msgstr "Client Information"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1305,8 +1305,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP Domain error, your account is not a correct Jabber ID"
 
 #: [error]data_missings
-msgid "Some data are missing !"
-msgstr "Some data are missing !"
+msgid "Some data are missing!"
+msgstr "Some data are missing!"
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -1357,8 +1357,8 @@ msgid "Authentication mechanism not supported by Movim"
 msgstr "Authentication mechanism not supported by Movim"
 
 #: [error]fail_auth
-msgid "The XMPP authentification failed"
-msgstr "The XMPP authentification failed"
+msgid "The XMPP authentication failed"
+msgstr "The XMPP authentication failed"
 
 #: [form]username
 msgid "My address"
@@ -1748,8 +1748,8 @@ msgid "Please provide a room address"
 msgstr "Please provide a room address"
 
 #: [room]anonymous_text1
-msgid "You are currently logued as an anonymous user."
-msgstr "You are currently logued as an anonymous user."
+msgid "You are currently logged as an anonymous user."
+msgstr "You are currently logged as an anonymous user."
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
@@ -1956,8 +1956,8 @@ msgid "Is this profile public ?"
 msgstr "Is this profile public ?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgstr "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1972,8 +1972,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim is currently working in degraded mode"
 
 #: [degraded]text_1
-msgid "Your server doesn't support XMPP Pubsub persistance."
-msgstr "Your server doesn't support XMPP Pubsub persistance."
+msgid "Your server doesn't support XMPP Pubsub persistence."
+msgstr "Your server doesn't support XMPP Pubsub persistence."
 
 #: [degraded]text_2
 msgid "The communities, news feed and profile have been disabled for the moment."
@@ -2005,8 +2005,8 @@ msgid "…connecting"
 msgstr "Connecting"
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
-msgstr "You don't have javascript enabled.  Good luck with that."
+msgid "You don't have Javascript enabled.  Good luck with that."
+msgstr "You don't have Javascript enabled.  Good luck with that."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
@@ -2820,8 +2820,8 @@ msgstr "Type here"
 #~ msgid "What do the little banners refer to"
 #~ msgstr "What do the little banners refer to ?"
 
-#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-#~ msgstr "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
+#~ msgid "Thanks to these five little banners, you can quickly identify the level of confidentiality applied to the information you provide."
+#~ msgstr "Thanks to these five little banners, you can quickly identify the level of confidentiality applied to the information you provide."
 
 #~ msgid "White, only you can see the information"
 #~ msgstr "White, only you can see the information"
