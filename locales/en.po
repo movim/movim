@@ -2009,8 +2009,8 @@ msgid "You don't have javascript enabled.  Good luck with that."
 msgstr "You don't have javascript enabled.  Good luck with that."
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
-msgstr "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
+msgstr "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
 
 #: [global]loading
 msgid "Loading…"
