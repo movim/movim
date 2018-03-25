@@ -4,22 +4,13 @@ use Modl\SessionxDAO;
 
 class Statistics extends \Movim\Widget\Base
 {
-    public function getContact($username, $host)
+    public function getContact(\App\User $user)
     {
-        $jid = $username.'@'.$host;
-        $cd = new modl\ContactDAO;
-        return $cd->get($jid);
-    }
-
-    function getTime($date)
-    {
-        return prepareDate(strtotime($date));
+        return \App\Contact::firstOrNew(['id' => $user->id]);
     }
 
     function display()
     {
-        $sd = new SessionxDAO;
-        $sessions = $sd->getAll();
-        $this->view->assign('sessions', is_array($sessions) ? $sessions : []);
+        $this->view->assign('sessions', \App\Session::get());
     }
 }

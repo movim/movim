@@ -56,7 +56,7 @@ class Vcard4 extends \Movim\Widget\Base
     function ajaxGetVcard()
     {
         $r = new Get;
-        $r->setTo($this->dbuser->id)
+        $r->setTo($this->user->id)
           ->setMe()
           ->request();
     }

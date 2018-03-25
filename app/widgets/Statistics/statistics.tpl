@@ -4,25 +4,23 @@
             <p>{$c->__('statistics.sessions')} <span class="second">{$sessions|count}</a></p>
         </li>
         {loop="$sessions"}
-            {$user = $c->getContact($value->username, $value->host)}
-            <li class="block" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
+            {$user = $c->getContact($value->user)}
+            <li class="block" onclick="MovimUtils.redirect('{$c->route('contact', $user->id)}')">
                 {$url = $user->getPhoto('s')}
                 {if="$url"}
                     <span class="primary icon bubble">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$user->jid|stringToColor}">
+                    <span class="primary icon bubble color {$user->id|stringToColor}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
-                <p class="line" title="{$value->username}@{$value->host}">
-                    {$user->getTrueName()} <span class="second">{$value->username}@{$value->host}</span>
+                <p class="line" title="{$user->id}">
+                    {$user->truename} <span class="second">{$user->id}</span>
                 </p>
                 <p>
-                    {if="isset($value->start)"}
-                        {$c->getTime($value->start)}
-                    {/if}
+                    {$value->created_at|strtotime|prepareDate}
                 </p>
             </li>
         {/loop}

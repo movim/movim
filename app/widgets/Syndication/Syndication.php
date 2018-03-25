@@ -11,7 +11,6 @@ class Syndication extends \Movim\Widget\Base
         ob_clean();
 
         $pd = new \Modl\PostnDAO;
-        $cd = new \Modl\ContactDAO;
         $id = new \Modl\InfoDAO;
 
         if (!$this->get('s')) {
@@ -23,7 +22,7 @@ class Syndication extends \Movim\Widget\Base
 
         if (filter_var($from, FILTER_VALIDATE_EMAIL)) {
             $node = 'urn:xmpp:microblog:0';
-            $contact = $cd->get($from);
+            $contact = \App\Contact::firstOrNew(['id' => $from]);
         } elseif (!$this->get('n')) {
             return;
         } else {

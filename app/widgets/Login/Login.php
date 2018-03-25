@@ -70,9 +70,7 @@ class Login extends Base
 
             if ($invitation) {
                 $this->view->assign('invitation', $invitation);
-
-                $cd = new \Modl\ContactDAO;
-                $this->view->assign('contact', $cd->get($invitation->jid));
+                $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $invitation->jid]));
             }
         }
 

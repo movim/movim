@@ -2,7 +2,6 @@
 
 use Respect\Validation\Validator;
 use Modl\PostnDAO;
-use Modl\ContactDAO;
 
 class Search extends \Movim\Widget\Base
 {
