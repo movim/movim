@@ -8,7 +8,7 @@
         }
     },
     "require": {
-        "php": ">=5.6.0",
+        "php": ">=7.0.0",
         "ext-curl": "*",
         "ext-mbstring": "*",
         "ext-imagick": "*",
@@ -38,11 +38,12 @@
         "react/child-process": "^0.5.0",
         "clue/buzz-react": "^2.1",
         "illuminate/database": "^5.2",
-        "robmorgan/phinx": "^0.9.2"
+        "robmorgan/phinx": "^0.9.2",
+        "coenjacobs/eloquent-composite-primary-keys": "^1.0"
     },
     "config": {
         "platform": {
-            "php": "5.6"
+            "php": "7.0"
         }
     }
 }

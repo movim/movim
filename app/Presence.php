@@ -2,11 +2,14 @@
 
 namespace App;
 
+use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
 use Illuminate\Database\Eloquent\Model;
 
 class Presence extends Model
 {
-    protected $primaryKey = 'session_id';
+    use HasCompositePrimaryKey;
+
+    protected $primaryKey = ['session_id', 'jid', 'resource'];
     public $incrementing = false;
 
     protected $attributes = [
@@ -63,7 +66,7 @@ class Presence extends Model
             $this->resource = '';
         }
 
-        if ($stanza->status) {
+        if ($stanza->status && !empty((string)$stanza->status)) {
             $this->status = (string)$stanza->status;
         }
 

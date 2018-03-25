@@ -15,7 +15,7 @@ class CreateCapabilitiesTable extends Migration
             $table->text('features');
             $table->timestamps();
 
-            $table->primary(['node']);
+            $table->primary('node');
         });
     }
 

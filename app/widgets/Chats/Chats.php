@@ -38,12 +38,14 @@ class Chats extends \Movim\Widget\Base
 
     function onPresence($packet)
     {
-        $contacts = $packet->content;
-        if ($contacts != null){
+        if ($packet->content != null){
             $c = $contacts[0];
             $chats = \App\Cache::c('chats');
-            if (is_array($chats) &&  array_key_exists($c->jid, $chats)) {
-                $this->rpc('MovimTpl.replace', '#' . cleanupId($c->jid.'_chat_item'), $this->prepareChat($c->jid));
+            if (is_array($chats) &&  array_key_exists($packet->content->jid, $chats)) {
+                $this->rpc(
+                    'MovimTpl.replace',
+                    '#' . cleanupId($c->jid.'_chat_item'),
+                    $this->prepareChat($packet->content->jid));
                 $this->rpc('Chats.refresh');
 
                 $n = new Notification;
