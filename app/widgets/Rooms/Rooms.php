@@ -60,15 +60,10 @@ class Rooms extends \Movim\Widget\Base
 
     function onGetBookmark()
     {
-        $cod = new \Modl\ConferenceDAO;
-        $rooms = $cod->getAll();
-
-        if (is_array($rooms)) {
-            foreach($rooms as $room) {
-                if ($room->autojoin
-                && !$this->checkConnected($room->conference, $room->nick)) {
-                    $this->ajaxJoin($room->conference, $room->nick);
-                }
+        foreach($this->user->session->conferences as $room) {
+            if ($room->autojoin
+            && !$this->checkConnected($room->conference, $room->nick)) {
+                $this->ajaxJoin($room->conference, $room->nick);
             }
         }
     }
@@ -116,14 +111,15 @@ class Rooms extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $id = new \Modl\InfoDAO;
-        $cd = new \Modl\ConferenceDAO;
 
         $view->assign('info', $id->getConference($room));
         $view->assign('id', $room);
-        $view->assign('conference', $cd->get($room));
-        $view->assign('username', $this->user->getUser());
+        $view->assign('conference',
+            $this->user->session->conferences()
+            ->where('conference', $room)->first());
+        $view->assign('username', $this->user->session->username);
 
-        $this->rpc('Rooms.setDefaultServices', App\User::me()->session->getChatroomsService());
+        $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsService());
 
         Dialog::fill($view->draw('_rooms_add', true));
     }
@@ -138,7 +134,7 @@ class Rooms extends \Movim\Widget\Base
         $cd = new \Modl\ContactDAO;
         $view->assign('contacts', $cd->getRosterSimple());
         $view->assign('room', $room);
-        $view->assign('invite', \Modl\Invite::set($this->user->getLogin(), $room));
+        $view->assign('invite', \Modl\Invite::set($this->user->jid, $room));
 
         Dialog::fill($view->draw('_rooms_invite', true));
     }
@@ -218,8 +214,7 @@ class Rooms extends \Movim\Widget\Base
     {
         if (!$this->validateRoom($room)) return;
 
-        $cd = new \Modl\ConferenceDAO;
-        $cd->deleteNode($room);
+        $this->user->session->conferences()->where('conference', $room)->delete();
 
         $this->setBookmark();
     }
@@ -293,8 +288,9 @@ class Rooms extends \Movim\Widget\Base
             $md->deleteContact($room);
         }
 
-        $md = new \Modl\PresenceDAO;
-        $md->clearMuc($room);
+        $this->user->session->conferences()
+             ->where('conference', $room)
+             ->first()->presences()->delete();
 
         $this->refreshRooms();
 
@@ -315,8 +311,9 @@ class Rooms extends \Movim\Widget\Base
         } elseif (trim($form->name->value) == '') {
             Notification::append(null, $this->__('chatrooms.empty_name'));
         } else {
-            $cd = new \Modl\ConferenceDAO;
-            $cd->deleteNode($form->jid->value);
+            $this->user->session->conferences()
+                 ->where('conference', strtolower($form->jid->value))
+                 ->delete();
 
             $item = [
                     'type'      => 'conference',
@@ -338,10 +335,7 @@ class Rooms extends \Movim\Widget\Base
             array_push($arr, $item);
         }
 
-        $cd = new \Modl\ConferenceDAO;
-        $session = Session::start();
-
-        $conferences = $cd->getAll();
+        $conferences = $this->user->session->conferences;
         if ($conferences) {
             foreach ($conferences as $c) {
                 array_push($arr,
@@ -358,7 +352,6 @@ class Rooms extends \Movim\Widget\Base
 
         $b = new Set;
         $b->setArr($arr)
-          ->setTo($session->get('jid'))
           ->request();
     }
 
@@ -392,27 +385,22 @@ class Rooms extends \Movim\Widget\Base
 
     function prepareRooms($edit = false)
     {
-        $view = $this->tpl();
-        $cod = new \Modl\ConferenceDAO;
+        $list = $this->user->session->conferences;
+        /*$connected = [];
 
-        $list = $cod->getAll();
-
-        $connected = [];
-
-        if (is_array($list)) {
-            foreach ($list as $key => $room) {
-                if ($this->checkConnected($room->conference, $room->nick)) {
-                    $room->connected = true;
-                    array_push($connected, $room);
-                    unset($list[$key]);
-                }
+        foreach ($list as $key => $room) {
+            if ($this->checkConnected($room->conference, $room->nick)) {
+                $room->connected = true;
+                array_push($connected, $room);
+                unset($list[$key]);
             }
-
-            $connected = array_merge($connected, $list);
         }
 
+        $connected = array_merge($connected, $list);*/
+
+        $view = $this->tpl();
         $view->assign('edit', $edit);
-        $view->assign('conferences', $connected);
+        $view->assign('conferences', $list);
         $view->assign('room', $this->get('r'));
 
         return $view->draw('_rooms', true);
@@ -425,8 +413,7 @@ class Rooms extends \Movim\Widget\Base
      */
     private function validateRoom($room)
     {
-        $validate_server = Validator::stringType()->noWhitespace()->length(6, 80);
-        return ($validate_server->validate($room));
+        return (Validator::stringType()->noWhitespace()->length(6, 80)->validate($room));
     }
 
     /**
@@ -436,7 +423,6 @@ class Rooms extends \Movim\Widget\Base
      */
     private function validateResource($resource)
     {
-        $validate_resource = Validator::stringType()->length(2, 40);
-        return ($validate_resource->validate($resource));
+        return (Validator::stringType()->length(2, 40)->validate($resource));
     }
 }

@@ -225,12 +225,6 @@ class Contact extends Model
         return $dt->format('d-m-Y');
     }
 
-    function countSubscribers()
-    {
-        $cd = new \Modl\ContactDAO;
-        return $cd->countSubscribers($this->id);
-    }
-
     public function getSearchTerms()
     {
         return cleanupId($this->id).'-'.

@@ -26,17 +26,13 @@ class Visio extends \Movim\Widget\Base
         $s = Session::start();
         $s->set('sdp', $jts->generate());
 
-        $cd = new \Modl\ContactDAO;
-        $contact = $cd->get(cleanJid($from));
-
-        $avatar = $contact->getPhoto('s');
-        if ($avatar == false) $avatar = null;
+        $contact = \App\Contact::firstOrNew(['id' => cleanJid($from)]);
 
         Notification::append(
             'call',
-            $contact->getTrueName(),
+            $contact->truename,
             $this->__('visio.calling'),
-            $avatar,
+            $contact->getPhoto('s'),
             25,
             null,
             null,
@@ -153,7 +149,6 @@ class Visio extends \Movim\Widget\Base
 
     function display()
     {
-        $cd = new \Modl\ContactDAO;
-        $this->view->assign('contact', $cd->get($this->get('f')));
+        $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $this->get('f')]));
     }
 }

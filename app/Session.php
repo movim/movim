@@ -27,6 +27,11 @@ class Session extends Model
         return $this->hasMany('App\Roster')->orderBy('jid');
     }
 
+    public function conferences()
+    {
+        return $this->hasMany('App\Conference')->orderBy('conference');
+    }
+
     public function init($username, $password, $host)
     {
         $this->id          = SESSION_ID;

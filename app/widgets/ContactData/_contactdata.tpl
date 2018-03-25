@@ -27,16 +27,12 @@
                 <p class="center all" title="{$contact->description}">{$contact->description|nl2br}</p>
             {/if}
         </li>
-        {$sub = $contact->countSubscribers()}
-
-        {if="$sub > 0"}
-        <li>
+        <!--<li>
             <span class="primary icon gray">
                 <i class="zmdi zmdi-accounts"></i>
             </span>
-            <p class="normal">{$c->__('communitydata.sub', $sub)}</p>
-        </li>
-        {/if}
+            <p class="normal">{$c->__('communitydata.sub', 0)}</p>
+        </li>-->
     </ul>
 
     {if="$contact->url != null"}

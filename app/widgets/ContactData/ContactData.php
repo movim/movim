@@ -51,12 +51,9 @@ class ContactData extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $cd = new \Modl\ContactDAO;
-        $c  = $cd->get($jid, true);
+        $contact = \App\Contact::find($jid);
 
-        if ($c == null
-        || $c->created == null
-        || $c->isOld()) {
+        if (!$contact || $contact->isOld()) {
             $a = new Moxl\Xec\Action\Avatar\Get;
             $a->setTo(echapJid($jid))->request();
 
