@@ -1,6 +1,5 @@
 <section class="scroll">
     <ul class="list">
-        {$presence = getPresencesTxt()}
         <li class="subheader">
             <p>
                 <span class="info">{$list|count}</span>
@@ -11,13 +10,12 @@
             <li class="{if="$value->last > 60"} inactive{/if}"
                 title="{$value->resource}">
 
-                {$url = $value->getPhoto('s')}
-                {if="$url && $value->jid != $room"}
-                    <span class="primary icon bubble status {$presence[$value->value]}">
+                {if="$value->contact && $url = $value->contact->getPhoto('s') && $value->jid != $room"}
+                    <span class="primary icon bubble status {$value->presencekey}">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$value->resource|stringToColor} status {$presence[$value->value]}">
+                    <span class="primary icon bubble color {$value->resource|stringToColor} status {$value->presencekey}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}

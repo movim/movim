@@ -181,11 +181,11 @@ class Rooms extends \Movim\Widget\Base
         if (!$this->validateRoom($room)) return;
 
         $view = $this->tpl();
-
-        $userslist = $this->getUsersList($room);
-        $view->assign('list', $userslist);
+        $view->assign('list', $this->user->session->conferences
+                                   ->where('conference', $room)
+                                   ->first()->presences);
         $view->assign('room', $room);
-        $view->assign('me', $this->user->getLogin());
+        $view->assign('me', $this->user->id);
 
         Dialog::fill($view->draw('_rooms_list', true), true);
     }
@@ -195,16 +195,9 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxMucUsersAutocomplete($room)
     {
-        $users = $this->getUsersList($room);
-
-        if ($users) {
-            $resources = [];
-            foreach($users as $user) {
-                array_push($resources, $user->resource);
-            }
-
-            $this->rpc("Chat.onAutocomplete", $resources);
-        }
+        $this->rpc("Chat.onAutocomplete", $this->user->session->conferences
+                                               ->where('conference', $room)
+                                               ->first()->pluck('resource'));
     }
 
     /**
@@ -227,7 +220,7 @@ class Rooms extends \Movim\Widget\Base
         if (!$this->validateRoom($room)) return;
 
         if ((new \Movim\Picture)->isOld($room . '_muc')) {
-            $v = new Moxl\Xec\Action\Vcard\Get;
+            $v = new \Moxl\Xec\Action\Vcard\Get;
             $v->setTo(echapJid($room))->isMuc()->request();
         }
 
@@ -363,24 +356,16 @@ class Rooms extends \Movim\Widget\Base
             return;
         }
 
-        $pd = new \Modl\PresenceDAO;
-
         if ($resource == false) {
             $session = Session::start();
             $resource = $session->get('username');
         }
 
-        return ($pd->getMyPresenceRoom($room) != null
-             || $pd->getPresence($room, $resource) != null);
-    }
+        $conference = $this->user->session->conferences
+                         ->where('conference', $room)->first();
 
-    /**
-     * @brief Get rooms users list
-     */
-    function getUsersList($room)
-    {
-        $cd = new \Modl\ContactDAO;
-        return $cd->getPresences($room);
+        return ($conference->presences->where('mucjid', $this->user->id)->first()
+             || $conference->presences->where('resource', $resource)->first());
     }
 
     function prepareRooms($edit = false)

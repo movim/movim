@@ -44,20 +44,17 @@ class Conference extends Model
         return $id->getJid($this->conference);
     }
 
-    public function checkConnected()
+    public function getConnectedAttribute()
     {
-        /*$pd = new \Modl\PresenceDAO;
-
         if (!$this->nick) {
-            $session = Session::start();
+            $session = \Movim\Session::start();
             $resource = $session->get('username');
         } else {
             $resource = $this->nick;
         }
 
-        return ($pd->getMyPresenceRoom($this->conference) != null
-             || $pd->getPresence($this->conference, $resource) != null);*/
-        return false;
+        return ($this->presences->where('mucjid', \App\User::me()->id)->first()
+             || $this->presences->where('resource', $resource)->first());
     }
 
     public function getPhoto($size = 'l')

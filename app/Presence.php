@@ -34,6 +34,11 @@ class Presence extends Model
         return $this->hasOne('App\Capability', 'node', 'node');
     }
 
+    public function contact()
+    {
+        return $this->hasOne('App\Contact', 'id', 'jid');
+    }
+
     public function getPresencetextAttribute()
     {
         return getPresences()[$this->value];
