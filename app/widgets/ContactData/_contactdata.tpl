@@ -73,8 +73,8 @@
 <div class="block">
     <ul class="list middle active divided spaced">
         {if="!$contact->isMe()"}
-            {if="isset($caps) && $caps->isJingle()"}
-                <li onclick="VisioLink.openVisio('{$contactr->getFullResource()}');">
+            {if="$roster && $roster->presence && $roster->presence->capability && $roster->presence->capability->isJingle()"}
+                <li onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
                     <span class="primary icon green">
                         <i class="zmdi zmdi-phone"></i>
                     </span>

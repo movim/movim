@@ -173,9 +173,8 @@ class Chats extends \Movim\Widget\Base
         $md = new \Modl\MessageDAO;
 
         $contact = App\Contact::find($jid);
-        $view->assign('roster', App\User::me()->session->contacts->find($jid));
+        $view->assign('roster', App\User::me()->session->contacts->where('jid', $jid)->first());
         $view->assign('contact', $contact ? $contact : new App\Contact(['id' => $jid]));
-
         $view->assign('status', $status);
 
         $m = $md->getContact($jid, 0, 1);

@@ -34,7 +34,7 @@ class ContactData extends \Movim\Widget\Base
 
         $view->assign('subscriptions', $subscriptions ? $subscriptions : []);
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
-        $view->assign('roster', App\User::me()->session->contacts->find($jid));
+        $view->assign('roster', App\User::me()->session->contacts->where('jid', $jid)->first());
 
         /*if (isset($contactr)) {
             if ($contactr->value != null) {

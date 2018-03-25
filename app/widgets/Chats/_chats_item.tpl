@@ -18,7 +18,7 @@
             <img src="{$url}">
         </span>
     {else}
-        <span class="primary icon bubble color {$contact->jid|stringToColor} {if="isset($presence)"}status {$presence}{/if}">
+        <span class="primary icon bubble color {$contact->jid|stringToColor} {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}">
             {$contact->truename|firstLetterCapitalize}
         </span>
     {/if}

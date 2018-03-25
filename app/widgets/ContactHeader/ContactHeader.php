@@ -28,7 +28,7 @@ class ContactHeader extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $view->assign('contact', App\User::me()->session->contacts->find($jid));
+        $view->assign('contact', App\User::me()->session->contacts->where('jid', $jid)->first());
         $view->assign('groups', App\User::me()->session->contacts->pluck('group')->toArray());
 
         Dialog::fill($view->draw('_contactheader_edit', true));

@@ -83,39 +83,6 @@ class Roster extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Display the search contact form
-     */
-    /*function ajaxDisplaySearch($jid = null)
-    {
-        $view = $this->tpl();
-
-        $rd = new \Modl\RosterLinkDAO;
-
-        $view->assign('jid', $jid);
-        $view->assign('groups', $rd->getGroups());
-        $view->assign('search', $this->call('ajaxDisplayFound', 'this.value'));
-
-        Dialog::fill($view->draw('_roster_search', true));
-    }*/
-
-    /**
-     * @brief Return the found jid
-     */
-    /*function ajaxDisplayFound($jid)
-    {
-        if (!empty($jid)) {
-            $cd = new \Modl\ContactDAO;
-            $contacts = $cd->searchJid($jid);
-
-            $view = $this->tpl();
-            $view->assign('contacts', $contacts);
-            $html = $view->draw('_roster_search_results', true);
-
-            $this->rpc('MovimTpl.fill', '#search_results', $html);
-        }
-    }*/
-
-    /**
      * @brief Add a contact to the roster and subscribe
      */
     function ajaxAdd($form)
@@ -133,23 +100,10 @@ class Roster extends \Movim\Widget\Base
         Dialog::ajaxClear();
     }
 
-    /**
-     *  @brief Search for a contact to add
-     */
-    /*function ajaxSearchContact($jid)
-    {
-        if (filter_var($jid, FILTER_VALIDATE_EMAIL)) {
-            $this->rpc('MovimUtils.redirect', $this->route('contact', $jid));
-        } else {
-            Notification::append(null, $this->__('roster.jid_error'));
-        }
-    }*/
-
     function prepareItems()
     {
         $view = $this->tpl();
         $view->assign('contacts', \App\User::me()->session->contacts);
-        //$view->assign('presencestxt', getPresencesTxt());
 
         return $view->draw('_roster_list', true);
     }
@@ -158,8 +112,6 @@ class Roster extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('contact', $contact);
-        //$view->assign('presences', getPresences());
-        //$view->assign('presencestxt', getPresencesTxt());
 
         return $view->draw('_roster_item', true);
     }

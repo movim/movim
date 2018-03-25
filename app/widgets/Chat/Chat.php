@@ -77,31 +77,25 @@ class Chat extends \Movim\Widget\Base
     function onMessage($packet, $history = false)
     {
         $message = $packet->content;
-        $cd = new \Modl\ContactDAO;
 
         if ($message->isEmpty()) return;
 
         if ($message->session == $message->jidto && !$history
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
-
-            $contact = $cd->getRosterItem($from);
-            if ($contact == null) {
-                $contact = $cd->get($from);
-            }
+            $roster = $this->user->session->contacts->where('jid', $from)->first();
+            $contact = App\Contact::firstOrNew(['id' => $from]);
 
             if ($contact != null
-            && $message->isTrusted()
+            //&& $message->isTrusted()
             && !$message->isOTR()
             && $message->type != 'groupchat'
             && !$message->edited) {
-                $avatar = $contact->getPhoto('s');
-                if ($avatar == false) $avatar = null;
                 Notification::append(
                     'chat|'.$from,
-                    $contact->getTrueName(),
+                    $roster ? $roster->truename : $contact->truename,
                     $message->body,
-                    $avatar,
+                    $contact->getPhoto('s'),
                     4,
                     $this->route('chat', $contact->jid)
                 );
@@ -186,7 +180,7 @@ class Chat extends \Movim\Widget\Base
     {
         list($from, $to) = $array;
 
-        $jid = ($from == $this->user->getLogin()) ? $to : $from;
+        $jid = ($from == $this->user->jid) ? $to : $from;
 
         $view = $this->tpl();
         $view->assign('message', $message);
@@ -303,9 +297,9 @@ class Chat extends \Movim\Widget\Base
         }
 
         $m = new \Modl\Message;
-        $m->session = $this->user->getLogin();
+        $m->session = $this->user->jid;
         $m->jidto   = echapJid($to);
-        $m->jidfrom = $this->user->getLogin();
+        $m->jidfrom = $this->user->jid;
 
         // TODO: make this boolean configurable
         $m->markable = true;
@@ -592,9 +586,8 @@ class Chat extends \Movim\Widget\Base
                 $view->assign('info', $mucinfo);
             }
         } else {
-            $cd = new \Modl\ContactDAO;
-            $cr = $cd->getRosterItem($jid);
-            $view->assign('contact', isset($cr) ? $cr : $cd->get($jid));
+            $view->assign('roster', $this->user->session->contacts->where('jid', $jid)->first());
+            $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         }
 
         return $view->draw('_chat', true);
@@ -623,20 +616,12 @@ class Chat extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('jid', $jid);
 
-        $cd = new \Modl\ContactDAO;
-        $contact = $cd->get($jid);
-        $me = $cd->get();
-
-        if ($me == null) {
-            $me = new \Modl\Contact;
-        }
-
-        $view->assign('contact', $contact);
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('me', false);
         $view->assign('muc', $muc);
         $left = $view->draw('_chat_bubble', true);
 
-        $view->assign('contact', $me);
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $this->user->jid]));
         $view->assign('me', true);
         $view->assign('muc', $muc);
         $right = $view->draw('_chat_bubble', true);
@@ -749,7 +734,7 @@ class Chat extends \Movim\Widget\Base
         if ($message->type == 'groupchat') {
             $message->color = stringToColor($message->session . $message->resource . $message->type);
 
-            $cd = new \Modl\ContactDAO;
+            /*$cd = new \Modl\ContactDAO;
             $contact = $cd->getPresence($message->jidfrom, $message->resource);
 
             if ($contact) {
@@ -760,7 +745,7 @@ class Chat extends \Movim\Widget\Base
                 }
 
                 $message->mine = ($contact->mucjid == $message->session);
-            }
+            }*/
 
             $message->icon = firstLetterCapitalize($message->resource);
         }
@@ -789,7 +774,7 @@ class Chat extends \Movim\Widget\Base
         $chats = \App\Cache::c('chats');
         $chats = ($chats == null) ? false : array_keys($chats);
 
-        $cd = new \Modl\ContactDAO;
+        //$cd = new \Modl\ContactDAO;
         $id = new \Modl\InfoDAO;
 
         $view->assign('presencestxt', getPresencesTxt());
@@ -797,7 +782,7 @@ class Chat extends \Movim\Widget\Base
             8,
             (Configuration::findOrNew(1)->restrictsuggestions) ? $this->user->getServer() : false
         ));
-        $view->assign('top', $cd->getTop(8, $chats));
+        $view->assign('top', []/*$cd->getTop(8, $chats)*/);
         return $view->draw('_chat_empty', true);
     }
 

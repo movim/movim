@@ -117,7 +117,11 @@
             {else}
                 <span class="primary icon bubble active color {$contact->jid|stringToColor}"
                     onclick="Chat_ajaxGetContact('{$contact->jid}')">
-                    {$contact->getTrueName()|firstLetterCapitalize}
+                    {if="$roster"}
+                        {$roster->truename|firstLetterCapitalize}
+                    {else}
+                        {$contact->truename|firstLetterCapitalize}
+                    {/if}
                 </span>
             {/if}
 
@@ -132,7 +136,11 @@
                 <i class="zmdi zmdi-close"></i>
             </span>
             <p class="line">
-                {$contact->getTrueName()}
+                {if="$roster"}
+                    {$roster->truename}
+                {else}
+                    {$contact->truename}
+                {/if}
             </p>
             <p class="line" id="{$jid|cleanupId}-state">{$contact->jid}</p>
         </li>
