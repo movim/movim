@@ -101,14 +101,15 @@ class Chat extends \Movim\Widget\Base
                 );
             } elseif ($message->type == 'groupchat'
                    && $message->quoted) {
-                $cd = new \Modl\ConferenceDAO;
-                $c = $cd->get($from);
-
-                //$this->user->session->conferences->where('conference', $room)->first();
+                $conference = $this->user->session
+                                   ->conferences->where('conference', $from)
+                                   ->first();
 
                 Notification::append(
                     'chat|'.$from,
-                    ($c != null && $c->name) ? $c->name : $from,
+                    ($conference != null && $conference->name)
+                        ? $conference->name
+                        : $from,
                     $message->resource.': '.$message->body,
                     false,
                     4);
@@ -578,7 +579,6 @@ class Chat extends \Movim\Widget\Base
 
             $view->assign('room', $jid);
             $view->assign('subject', $md->getRoomSubject($jid));
-            $view->assign('presence', $pd->getMyPresenceRoom($jid));
             $view->assign('conference', $this->user->session->conferences
                                              ->where('conference', $jid)
                                              ->first());

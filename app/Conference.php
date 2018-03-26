@@ -31,6 +31,13 @@ class Conference extends Model
                     ->orderBy('value');
     }
 
+    public function presence()
+    {
+        return $this->hasOne('App\Presence', 'jid', 'conference')
+                    ->where('session_id', $this->session_id)
+                    ->where('mucjid', \App\User::me()->id);
+    }
+
     public function setAvatar($vcard)
     {
         if ($vcard->vCard->PHOTO->BINVAL) {
