@@ -197,7 +197,8 @@ class Rooms extends \Movim\Widget\Base
     {
         $this->rpc("Chat.onAutocomplete", $this->user->session->conferences
                                                ->where('conference', $room)
-                                               ->first()->pluck('resource'));
+                                               ->first()->presences
+                                               ->pluck('resource'));
     }
 
     /**
