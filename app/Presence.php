@@ -20,7 +20,8 @@ class Presence extends Model
     protected $fillable = [
         'session_id',
         'jid',
-        'resource'
+        'resource',
+        'mucjid'
     ];
 
     public function roster()

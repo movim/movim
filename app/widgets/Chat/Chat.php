@@ -104,6 +104,8 @@ class Chat extends \Movim\Widget\Base
                 $cd = new \Modl\ConferenceDAO;
                 $c = $cd->get($from);
 
+                //$this->user->session->conferences->where('conference', $room)->first();
+
                 Notification::append(
                     'chat|'.$from,
                     ($c != null && $c->name) ? $c->name : $from,
@@ -226,12 +228,10 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($room)) return;
 
-        $cod = new \Modl\ConferenceDAO;
-        $r = $cod->get($room);
+        $r = $this->user->session->conferences->where('conference', $room)->first();
 
         if ($r) {
-            $rooms = new Rooms;
-            if (!$rooms->checkConnected($r->conference, $r->nick)) {
+            if (!$r->connected) {
                 $this->rpc('Rooms_ajaxJoin', $r->conference, $r->nick);
             }
 
@@ -579,7 +579,9 @@ class Chat extends \Movim\Widget\Base
             $view->assign('room', $jid);
             $view->assign('subject', $md->getRoomSubject($jid));
             $view->assign('presence', $pd->getMyPresenceRoom($jid));
-            $view->assign('conference', $cd->get($jid));
+            $view->assign('conference', $this->user->session->conferences
+                                             ->where('conference', $jid)
+                                             ->first());
 
             $mucinfo = $id->getJid(explodeJid($jid)['server']);
             if ($mucinfo && !empty($mucinfo->abuseaddresses)) {

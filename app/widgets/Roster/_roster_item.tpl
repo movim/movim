@@ -41,7 +41,7 @@
     <p class="normal line">
         {$contact->truename}
         {if="$contact->presence && $contact->presence->capability"}
-            <span class="second">
+            <span class="second" title="{$contact->presence->capability->name}">
                 <i class="zmdi {$contact->presence->capability->getDeviceIcon()}"></i>
             </span>
         {/if}

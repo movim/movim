@@ -1,6 +1,5 @@
 <header class="fixed">
     {if="$muc"}
-        {$connected = $conference->checkConnected()}
     <ul class="list middle">
         <li>
             <span id="back" class="primary icon active"
@@ -29,7 +28,7 @@
                 </span>
             {/if}
 
-            <span class="control icon show_context_menu active {if="!$connected"}disabled{/if}">
+            <span class="control icon show_context_menu active {if="!$conference->connected"}disabled{/if}">
                 <i class="zmdi zmdi-more-vert"></i>
             </span>
 
@@ -41,7 +40,7 @@
             </span>
 
             <span
-                class="control icon active {if="!$connected"}disabled{/if}"
+                class="control icon active {if="!$conference->connected"}disabled{/if}"
                 onclick="Rooms_ajaxList('{$jid|echapJS}')">
                 <i class="zmdi zmdi-accounts"></i>
             </span>
@@ -52,7 +51,7 @@
                 <p class="line">{$room}</p>
             {/if}
 
-            {if="!$connected"}
+            {if="!$conference->connected"}
                 <p>{$c->__('button.connecting')}…</p>
             {elseif="$subject != null"}
                 <p class="line" title="{$subject->subject}">{$subject->subject|addUrls}</p>
@@ -185,7 +184,7 @@
 </div>
 <div class="chat_box">
     <ul class="list">
-        <li class="{if="$muc && !$connected"}disabled{/if}">
+        <li class="{if="$muc && !$conference->connected"}disabled{/if}">
             {if="!$muc"}
             <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">

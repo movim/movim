@@ -32,17 +32,22 @@
                         <i class="zmdi zmdi-star"></i>
                     </span>
                 {/if}
-                {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
-                    <p class="line normal">
+                <p class="line normal">
+                    {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
                         {if="$value->mucjid == $me"}
                             {$value->resource}
                         {else}
                             <a href="{$c->route('contact', $value->mucjid)}">{$value->resource}</a>
                         {/if}
-                    </p>
-                {else}
-                    <p class="line normal">{$value->resource}</p>
-                {/if}
+                    {else}
+                        {$value->resource}
+                    {/if}
+                    {if="$value->capability"}
+                        <span class="second" title="{$value->capability->name}">
+                            <i class="zmdi {$value->capability->getDeviceIcon()}"></i>
+                        </span>
+                    {/if}
+                </p>
                 {if="$value->status"}
                     <p class="line">{$value->status}</p>
                 {/if}

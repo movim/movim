@@ -39,7 +39,7 @@
         {/if}
 
         {if="$roster && $roster->presence && $roster->presence->capability"}
-            <span class="second">
+            <span class="second" title="{$roster->presence->capability->name}">
                 <i class="zmdi {$roster->presence->capability->getDeviceIcon()}"></i>
             </span>
         {/if}

@@ -26,7 +26,9 @@ class Conference extends Model
     public function presences()
     {
         return $this->hasMany('App\Presence', 'jid', 'conference')
-                    ->where('session_id', $this->session_id);
+                    ->where('session_id', $this->session_id)
+                    ->orderBy('mucaffiliation', 'desc')
+                    ->orderBy('value');
     }
 
     public function setAvatar($vcard)
@@ -53,8 +55,8 @@ class Conference extends Model
             $resource = $this->nick;
         }
 
-        return ($this->presences->where('mucjid', \App\User::me()->id)->first()
-             || $this->presences->where('resource', $resource)->first());
+        return ($this->presences->where('mucjid', \App\User::me()->id)->count() > 0
+             || $this->presences->where('resource', $resource)->count() > 0);
     }
 
     public function getPhoto($size = 'l')

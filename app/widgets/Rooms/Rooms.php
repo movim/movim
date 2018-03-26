@@ -10,6 +10,7 @@ use Moxl\Xec\Action\Disco\Request;
 use Ramsey\Uuid\Uuid;
 
 use Respect\Validation\Validator;
+use Illuminate\Support\Collection;
 
 use Movim\Session;
 
@@ -61,8 +62,7 @@ class Rooms extends \Movim\Widget\Base
     function onGetBookmark()
     {
         foreach($this->user->session->conferences as $room) {
-            if ($room->autojoin
-            && !$this->checkConnected($room->conference, $room->nick)) {
+            if ($room->autojoin && !$room->connected) {
                 $this->ajaxJoin($room->conference, $room->nick);
             }
         }
@@ -348,44 +348,22 @@ class Rooms extends \Movim\Widget\Base
           ->request();
     }
 
-    function checkConnected($room, $resource = false)
-    {
-        if (!$this->validateRoom($room)) return;
-        if ($resource && !$this->validateResource($resource)) {
-            Notification::append(null, $this->__('chatrooms.bad_id'));
-            return;
-        }
-
-        if ($resource == false) {
-            $session = Session::start();
-            $resource = $session->get('username');
-        }
-
-        $conference = $this->user->session->conferences
-                         ->where('conference', $room)->first();
-
-        return ($conference->presences->where('mucjid', $this->user->id)->first()
-             || $conference->presences->where('resource', $resource)->first());
-    }
-
     function prepareRooms($edit = false)
     {
-        $list = $this->user->session->conferences;
-        /*$connected = [];
+        $conferences = $this->user->session->conferences;
+        $connected = new Collection;
 
-        foreach ($list as $key => $room) {
-            if ($this->checkConnected($room->conference, $room->nick)) {
-                $room->connected = true;
-                array_push($connected, $room);
-                unset($list[$key]);
+        foreach ($conferences as $key => $conference) {
+            if ($conference->connected) {
+                $connected->push($conferences->pull($key));
             }
         }
 
-        $connected = array_merge($connected, $list);*/
+        $conferences = $connected->merge($conferences);
 
         $view = $this->tpl();
         $view->assign('edit', $edit);
-        $view->assign('conferences', $list);
+        $view->assign('conferences', $conferences);
         $view->assign('room', $this->get('r'));
 
         return $view->draw('_rooms', true);

@@ -50,7 +50,7 @@
                     {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
                     {if="$value->connected"}
                         <span title="{$c->__('communitydata.sub', $info->occupants)}">
-                            {$value->countConnected()} <i class="zmdi zmdi-accounts"></i>  –
+                            {$value->presences->count()} <i class="zmdi zmdi-accounts"></i>  –
                         </span>
                     {elseif="isset($info) && $info->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $info->occupants)}">
