@@ -26,6 +26,11 @@ class User extends Model
         return $this->hasOne('App\Capability', 'node', 'id');
     }
 
+    public function messages()
+    {
+        return $this->hasMany('App\Message');
+    }
+
     public function encryptedPasswords()
     {
         return $this->hasMany('App\EncryptedPassword');
