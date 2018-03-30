@@ -24,8 +24,7 @@ class Account extends \Movim\Widget\Base
 
     function onRemoved()
     {
-        $md = new Modl\MessageDAO;
-        $md->clearMessage();
+        $this->user->messages()->delete();
         $pd = new Modl\PostnDAO;
         $pd->deleteNode($this->user->getLogin(), 'urn:xmpp:microblog:0');
         $this->rpc('Presence_ajaxLogout');

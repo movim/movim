@@ -277,9 +277,7 @@ class Rooms extends \Movim\Widget\Base
         $capability = App\Capability::find($jid['server']);
 
         if (!$capability || !$capability->isMAM()) {
-            // We clear all the old messages
-            $md = new \Modl\MessageDAO;
-            $md->deleteContact($room);
+            $this->user->messages->where('jidfrom', $room)->delete();
         }
 
         $this->user->session->conferences()
@@ -351,7 +349,7 @@ class Rooms extends \Movim\Widget\Base
 
     function prepareRooms($edit = false)
     {
-        $conferences = $this->user->session->conferences;
+        $conferences = $this->user->session->conferences()->get();
         $connected = new Collection;
 
         foreach ($conferences as $key => $conference) {

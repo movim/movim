@@ -21,17 +21,17 @@ class ContactData extends \Movim\Widget\Base
     public function prepareData($jid)
     {
         $id = new \Modl\InfoDAO;
-        $md = new \Modl\MessageDAO;
 
         $view = $this->tpl();
 
-        $m = $md->getContact($jid, 0, 1);
-        if (isset($m)) {
-            $view->assign('message', $m[0]);
-        }
-
         $subscriptions = $id->getSharedItems($jid);
-
+        $view->assign('message', $this->user->messages()
+                                        ->where(function ($query) use ($jid) {
+                                            $query->where('jidfrom', $jid)
+                                                  ->orWhere('jidto', $jid);
+                                        })
+                                        ->orderBy('published', 'desc')
+                                        ->first());
         $view->assign('subscriptions', $subscriptions ? $subscriptions : []);
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('roster', App\User::me()->session->contacts->where('jid', $jid)->first());

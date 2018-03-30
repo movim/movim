@@ -13,32 +13,18 @@ class Message extends Model
     protected $primaryKey = ['user_id', 'id'];
     public $incrementing = false;
 
-    protected $fillable = [
-        'displayed',
-        'delivered',
-        'jidfrom',
-        'jidto',
-        'resource',
-        'type',
-        'body',
-        'subject'
-    ];
+    protected $guarded = [];
 
     protected $attributes = [
         'type'    => 'chat'
     ];
-
-    public function __construct()
-    {
-        $this->id = 'm_'.(string)Uuid::uuid4();
-    }
 
     public function user()
     {
         return $this->belongsTo('App\User');
     }
 
-    public function getFileAttribute()
+    /*public function getFileAttribute()
     {
         return unserialize($this->attributes['file']);
     }
@@ -46,29 +32,30 @@ class Message extends Model
     public function setFileAttribute($file)
     {
         $this->attributes['file'] = serialize($file);
-    }
+    }*/
 
     public static function findByStanza($stanza)
     {
         $id = ($stanza->replace)
             ? (string)$stanza->replace->attributes()->id
             : (string)$stanza->attributes()->id;
-\movim_log(serialize($id));
+
         if (!empty($id)) {
-            \movim_log('HOP '.$id);
             return self::firstOrNew([
                 'user_id' => \App\User::me()->id,
                 'id' => $id
             ]);
         }
 
-        \movim_log('NOPE');
-
         return new Message;
     }
 
     public function set($stanza, $parent = false)
     {
+        if (!isset($this->id)) {
+            $this->id = 'm_'.(string)Uuid::uuid4();
+        }
+
         $jid = explode('/',(string)$stanza->attributes()->from);
         $to = current(explode('/',(string)$stanza->attributes()->to));
 
@@ -94,8 +81,7 @@ class Message extends Model
                 $this->type = (string)$stanza->attributes()->type;
             }
 
-            if (isset($stanza->attributes()->id)
-            && $this->type == 'chat') {
+            if (isset($stanza->attributes()->id)) {
                 $this->id = (string)$stanza->attributes()->id;
             }
 
@@ -223,7 +209,8 @@ class Message extends Model
                 }
             }
 
-            if ($stanza->replace) {
+            if ($stanza->replace
+            && $this->user->messages()->where('id', $this->id)->count() == 0) {
                 Message::where('id', (string)$stanza->replace->attributes()->id)->update([
                     'id' => $this->id,
                     'edited' => true

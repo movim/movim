@@ -88,25 +88,30 @@ class Chats extends \Movim\Widget\Base
     function ajaxGetHistory($jid = false)
     {
         $g = new \Moxl\Xec\Action\MAM\Get;
-        $md = new \Modl\MessageDAO;
 
         if ($jid == false) {
-            $message = $md->getLastItem();
-
-            if (!empty($message)) {
+            $message = \App\User::me()->messages
+                                      ->sortByDesc('published')
+                                      ->first();
+            if ($message) {
                 $g->setStart(strtotime($message->published)+10);
             }
 
             $g->setLimit(150);
             $g->request();
         } elseif ($this->validateJid($jid)) {
-            $messages = $md->getContact(echapJid($jid), 0, 1);
-
+            $message = $this->user->messages()
+                                  ->where(function ($query) use ($jid) {
+                                      $query->where('jidfrom', $jid)
+                                            ->orWhere('jidto', $jid);
+                                  })
+                                  ->orderBy('published', 'desc')
+                                  ->first();
             $g->setJid(echapJid($jid));
 
-            if (!empty($messages)) {
+            if ($message) {
                 // We add a little delay of 10sec to prevent some sync issues
-                $g->setStart(strtotime($messages[0]->published)+10);
+                $g->setStart(strtotime($message->published)+10);
             }
 
             $g->request();
@@ -169,23 +174,18 @@ class Chats extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $md = new \Modl\MessageDAO;
-
         $contact = App\Contact::find($jid);
-        $view->assign('roster', App\User::me()->session->contacts->where('jid', $jid)->first());
-        $view->assign('contact', $contact ? $contact : new App\Contact(['id' => $jid]));
         $view->assign('status', $status);
-
-        $m = $md->getContact($jid, 0, 1);
-        if (isset($m)) {
-            $view->assign('message', $m[0]);
-        }
-
-        $html = $view->draw('_chats_item', true);
-
-        unset($view);
-
-        return $html;
+        $view->assign('contact', $contact ? $contact : new App\Contact(['id' => $jid]));
+        $view->assign('roster', $this->user->session->contacts->where('jid', $jid)->first());
+        $view->assign('message', $this->user->messages()
+                                            ->where(function ($query) use ($jid) {
+                                                $query->where('jidfrom', $jid)
+                                                      ->orWhere('jidto', $jid);
+                                            })
+                                            ->orderBy('published', 'desc')
+                                            ->first());
+        return $view->draw('_chats_item', true);
     }
 
     private function validateJid($jid)

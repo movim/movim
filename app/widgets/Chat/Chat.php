@@ -297,15 +297,32 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $m = new \Modl\Message;
-        $m->session = $this->user->jid;
-        $m->jidto   = echapJid($to);
-        $m->jidfrom = $this->user->jid;
+        $oldid = null;
+
+        if ($replace) {
+            $oldid = $replace->id;
+
+            $m = $replace;
+            $m->id = Uuid::uuid4();
+
+            \App\Message::where('id', $oldid)->update([
+                'id' => $m->id,
+                'edited' => true
+            ]);
+        } else {
+            $m = new \App\Message;
+            $m->id          = Uuid::uuid4();
+            $m->user_id     = $this->user->id;
+            $m->jidto       = echapJid($to);
+            $m->jidfrom     = $this->user->id;
+            $m->published   = gmdate('Y-m-d H:i:s');
+        }
+
 
         // TODO: make this boolean configurable
         $m->markable = true;
 
-        if ($replace != false) {
+        /*if ($replace != false) {
             $m->newid     = Uuid::uuid4();
             $m->id        = $replace->id;
             $m->edited    = true;
@@ -314,7 +331,7 @@ class Chat extends \Movim\Widget\Base
         } else {
             $m->id        = Uuid::uuid4();
             $m->published = gmdate('Y-m-d H:i:s');
-        }
+        }*/
 
         $session    = Session::start();
 
@@ -340,11 +357,10 @@ class Chat extends \Movim\Widget\Base
         $p->setContent($m->body);
 
         if ($replace != false) {
-            $p->setId($m->newid);
-            $p->setReplace($m->id);
-        } else {
-            $p->setId($m->id);
+            $p->setReplace($oldid);
         }
+
+        $p->setId($m->id);
 
         if ($muc) {
             $p->setMuc();
@@ -359,10 +375,12 @@ class Chat extends \Movim\Widget\Base
 
         /* Is it really clean ? */
         if (!$p->getMuc()) {
-            if (!$m->isOTR()) {
+            /*if (!$m->isOTR()) {
                 $md = new \Modl\MessageDAO;
                 $md->set($m);
-            }
+            }*/
+            $m->save();
+            $m->oldid = $oldid;
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
@@ -379,8 +397,13 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxHttpCorrect($to, $message)
     {
-        $md = new \Modl\MessageDAO;
-        $m = $md->getLastItem($to);
+        $m = $this->user->messages()
+                        ->where(function ($query) use ($to) {
+                            $query->where('jidfrom', $to)
+                                  ->orWhere('jidto', $to);
+                        })
+                        ->orderBy('published', 'desc')
+                        ->first();
 
         if ($m) {
             $this->ajaxHttpSendMessage($to, $message, false, false, $m);
@@ -395,12 +418,17 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxLast($to)
     {
-        $md = new \Modl\MessageDAO;
-        $m = $md->getLastItem($to);
+        $m = $this->user->messages()
+                        ->where(function ($query) use ($to) {
+                            $query->where('jidfrom', $to)
+                                  ->orWhere('jidto', $to);
+                        })
+                        ->orderBy('published', 'desc')
+                        ->first();
 
         if (!isset($m->sticker)
         && !isset($m->file)) {
-            $this->rpc('Chat.setTextarea',htmlspecialchars_decode($m->body));
+            $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body));
         }
     }
 
@@ -441,11 +469,19 @@ class Chat extends \Movim\Widget\Base
     function ajaxGetHistory($jid, $date)
     {
         if (!$this->validateJid($jid)) return;
-        $md = new \Modl\MessageDAO;
-        $messages = $md->getHistory(echapJid($jid), $date, $this->_pagination);
 
-        if (count($messages) > 0) {
-            Notification::append(false, $this->__('message.history', count($messages)));
+        $messages = $this->user->messages()
+                         ->where(function ($query) use ($jid) {
+                                $query->where('jidfrom', $jid)
+                                      ->orWhere('jidto', $jid);
+                         })
+                         ->where('published', '<', date(SQL_DATE, strtotime($date)))
+                         ->orderBy('published', 'desc')
+                         ->take($this->_pagination)
+                         ->get();
+
+        if ($messages->count() > 0) {
+            Notification::append(false, $this->__('message.history', $messages->count()));
 
             foreach($messages as $message) {
                 if (!$message->isOTR()) {
@@ -527,21 +563,20 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $md = new \Modl\MessageDAO;
-        $m = $md->getId($id);
+        $message = $this->user->messages()->where('id', $id)->first();
 
-        if ($m
-        && $m->markable == true
-        && $m->displayed == null) {
-            $m->displayed = gmdate('Y-m-d H:i:s');
-            $md->set($m);
+        if ($message
+        && $message->markable == true
+        && $message->displayed == null) {
+            $message->displayed = gmdate('Y-m-d H:i:s');
+            $message->save();
 
             \Moxl\Stanza\Message::displayed($jid, $id);
         }
     }
 
     /**
-     * @brief Save the room configuration
+     * @brief Clear the history
      *
      * @param string $room
      */
@@ -549,8 +584,10 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $md = new \Modl\MessageDAO;
-        $md->deleteContact($jid);
+        $this->user->messages->where(function ($query) use ($jid) {
+            $query->where('jidfrom', $jid)
+                  ->orWhere('jidto', $jid);
+        })->delete();
 
         $this->ajaxGet($jid);
     }
@@ -599,20 +636,22 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $md = new \Modl\MessageDAO;
+        $jid = echapJid($jid);
 
-        if ($muc) {
-            $messages = $md->getRoom(echapJid($jid), 0, $this->_pagination);
-        } else {
-            $messages = $md->getContact(echapJid($jid), 0, $this->_pagination);
-        }
+        $messages = $this->user->messages()->where(function ($query) use ($jid) {
+            $query->where('jidfrom', $jid)
+                  ->orWhere('jidto', $jid);
+        });
 
-        if (is_array($messages)) {
-            $messages = array_reverse($messages);
+        $messages = $muc
+            ? $messages->where('type', 'groupchat')
+            : $messages->whereIn('type', ['chat', 'headline', 'invitation']);
 
-            foreach ($messages as $message) {
-                $this->prepareMessage($message);
-            }
+        $messages = $messages->orderBy('published', 'desc')->take($this->_pagination)->get();
+        $messages = $messages->reverse();
+
+        foreach ($messages as $message) {
+            $this->prepareMessage($message);
         }
 
         $view = $this->tpl();
@@ -652,7 +691,7 @@ class Chat extends \Movim\Widget\Base
         $message->jidfrom = echapJS($message->jidfrom);
 
         // Attached file
-        if (isset($message->file)) {
+        /*if (isset($message->file)) {
             if ($message->body == $message->file['uri']) {
                 $message->body = null;
             }
@@ -670,7 +709,7 @@ class Chat extends \Movim\Widget\Base
             }
 
             $message->file['size'] = sizeToCleanSize($message->file['size']);
-        }
+        }*/
 
         if (isset($message->html)) {
             $message->body = $message->html;
