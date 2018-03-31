@@ -375,10 +375,6 @@ class Chat extends \Movim\Widget\Base
 
         /* Is it really clean ? */
         if (!$p->getMuc()) {
-            /*if (!$m->isOTR()) {
-                $md = new \Modl\MessageDAO;
-                $md->set($m);
-            }*/
             $m->save();
             $m->oldid = $oldid;
 
@@ -525,7 +521,7 @@ class Chat extends \Movim\Widget\Base
     /**
      * @brief Get the subject form of a chatroom
      */
-    function ajaxGetSubject($room)
+    /*function ajaxGetSubject($room)
     {
         if (!$this->validateJid($room)) return;
 
@@ -538,12 +534,12 @@ class Chat extends \Movim\Widget\Base
         $view->assign('subject', $s);
 
         Dialog::fill($view->draw('_chat_subject', true));
-    }
+    }*/
 
     /**
      * @brief Change the subject of a chatroom
      */
-    function ajaxSetSubject($room, $form)
+    /*function ajaxSetSubject($room, $form)
     {
         if (!$this->validateJid($room)) return;
 
@@ -554,7 +550,7 @@ class Chat extends \Movim\Widget\Base
         $p->setTo($room)
           ->setSubject($form->subject->value)
           ->request();
-    }
+    }*/
 
     /**
      * @brief Set last displayed message
@@ -610,12 +606,11 @@ class Chat extends \Movim\Widget\Base
         $view->assign('info', $info);
 
         if ($muc) {
-            $md = new \Modl\MessageDAO;
             $cd = new \Modl\ConferenceDAO;
             $pd = new \Modl\PresenceDAO;
 
             $view->assign('room', $jid);
-            $view->assign('subject', $md->getRoomSubject($jid));
+            //$view->assign('subject', $md->getRoomSubject($jid));
             $view->assign('conference', $this->user->session->conferences
                                              ->where('conference', $jid)
                                              ->first());

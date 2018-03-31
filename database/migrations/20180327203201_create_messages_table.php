@@ -10,6 +10,7 @@ class CreateMessagesTable extends Migration
         $this->schema->create('messages', function(Blueprint $table) {
             $table->string('user_id', 64);
             $table->string('id', 64);
+            $table->string('oldid', 64)->nullable();
             $table->string('jidto', 96);
             $table->string('jidfrom', 96);
             $table->string('resource', 96)->nullable();

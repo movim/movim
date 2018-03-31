@@ -107,11 +107,7 @@ class Message extends Model
                 $this->body = trim(html_entity_decode($this->body));
             }
 
-            if ($stanza->markable) {
-                $this->markable = true;
-            } else {
-                $this->markable = false;
-            }
+            $this->markable = (bool)($stanza->markable);
 
             if ($stanza->subject) {
                 $this->subject = (string)$stanza->subject;
@@ -211,6 +207,8 @@ class Message extends Model
 
             if ($stanza->replace
             && $this->user->messages()->where('id', $this->id)->count() == 0) {
+                $this->oldid = (string)$stanza->replace->attributes()->id;
+                $this->edited = true;
                 Message::where('id', (string)$stanza->replace->attributes()->id)->update([
                     'id' => $this->id,
                     'edited' => true

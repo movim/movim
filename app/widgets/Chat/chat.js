@@ -373,8 +373,8 @@ var Chat = {
 
         if (msgStack != null
             && msgStack.parentNode == refBubble
-            && data.file === null
-            && data.sticker === null
+            && (data.file === undefined || data.file === null)
+            && (data.sticker === undefined || data.sticker === null)
             && !refBubble.querySelector('div.bubble').classList.contains('sticker')
             && !refBubble.querySelector('div.bubble').classList.contains('file')
         ){
@@ -465,6 +465,10 @@ var Chat = {
         msg.appendChild(span);
 
         var elem = document.getElementById(data.oldid);
+        if (!elem) {
+            elem = document.getElementById(data.id);
+        }
+
         if (elem) {
             elem.parentElement.replaceChild(msg, elem);
             mergeMsg = true;
