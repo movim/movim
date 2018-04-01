@@ -131,10 +131,9 @@ class Rooms extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $cd = new \Modl\ContactDAO;
-        $view->assign('contacts', $cd->getRosterSimple());
+        $view->assign('contacts', \App\User::me()->session->contacts()->pluck('jid'));
         $view->assign('room', $room);
-        $view->assign('invite', \Modl\Invite::set($this->user->jid, $room));
+        $view->assign('invite', \App\Invite::set($this->user->id, $room));
 
         Dialog::fill($view->draw('_rooms_invite', true));
     }

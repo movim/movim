@@ -66,11 +66,11 @@ class Login extends Base
 
         if ($this->get('i')
         && Validator::length(8)->validate($this->get('i'))) {
-            $invitation = \Modl\Invite::get($this->get('i'));
+            $invitation = \App\Invite::find($this->get('i'));
 
             if ($invitation) {
                 $this->view->assign('invitation', $invitation);
-                $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $invitation->jid]));
+                $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $invitation->user_id]));
             }
         }
 
