@@ -24,15 +24,21 @@ class Message extends Model
         return $this->belongsTo('App\User');
     }
 
-    /*public function getFileAttribute()
-    {
-        return unserialize($this->attributes['file']);
-    }
-
-    public function setFileAttribute($file)
+    public function setFileAttribute(array $file)
     {
         $this->attributes['file'] = serialize($file);
-    }*/
+    }
+
+    public function getFileAttribute()
+    {
+        if (isset($this->attributes['file'])) {
+            $file = unserialize($this->attributes['file']);
+            $file['size'] = sizeToCleanSize($file['size']);
+            return $file;
+        }
+
+        return null;
+    }
 
     public static function findByStanza($stanza)
     {

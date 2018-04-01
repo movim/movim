@@ -318,20 +318,8 @@ class Chat extends \Movim\Widget\Base
             $m->published   = gmdate('Y-m-d H:i:s');
         }
 
-
         // TODO: make this boolean configurable
         $m->markable = true;
-
-        /*if ($replace != false) {
-            $m->newid     = Uuid::uuid4();
-            $m->id        = $replace->id;
-            $m->edited    = true;
-            $m->published = $replace->published;
-            $m->delivered = $replace->delivered;
-        } else {
-            $m->id        = Uuid::uuid4();
-            $m->published = gmdate('Y-m-d H:i:s');
-        }*/
 
         $session    = Session::start();
 
@@ -686,7 +674,7 @@ class Chat extends \Movim\Widget\Base
         $message->jidfrom = echapJS($message->jidfrom);
 
         // Attached file
-        /*if (isset($message->file)) {
+        if (isset($message->file)) {
             if ($message->body == $message->file['uri']) {
                 $message->body = null;
             }
@@ -702,9 +690,7 @@ class Chat extends \Movim\Widget\Base
             && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
                 $message->audio = $message->file['uri'];
             }
-
-            $message->file['size'] = sizeToCleanSize($message->file['size']);
-        }*/
+        }
 
         if (isset($message->html)) {
             $message->body = $message->html;

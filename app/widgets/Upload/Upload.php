@@ -38,7 +38,7 @@ class Upload extends \Movim\Widget\Base
     {
         $upload = App\User::me()->session->getUploadService();
 
-        if ($uload) {
+        if ($upload) {
             $r = new Request;
             $r->setTo($upload->node)
               ->setName($file->name)
