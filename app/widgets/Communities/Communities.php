@@ -19,7 +19,7 @@ class Communities extends Base
 
     function prepareCommunities()
     {
-        $id = new \Modl\InfoDAO;
+        /*
 
         $view = $this->tpl();
         $view->assign('communities', $id->getItems(
@@ -31,7 +31,7 @@ class Communities extends Base
                 : false
         ));
 
-        return $view->draw('_communities', true);
+        return $view->draw('_communities', true);*/
     }
 
     function getLastPublic($server, $node)

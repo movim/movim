@@ -25,7 +25,7 @@
                     </ul>
                 </header>
                 <?php $this->widget('Tabs');?>
-                <?php $this->widget('Communities'); ?>
+                <?php //$this->widget('Communities'); ?>
                 <?php $this->widget('CommunitiesServers'); ?>
                 <?php if (\App\User::me()->hasPubsub()) { ?>
                     <?php $this->widget('CommunitySubscriptions'); ?>
