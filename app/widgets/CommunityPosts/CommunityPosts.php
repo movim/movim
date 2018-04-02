@@ -43,9 +43,11 @@ class CommunityPosts extends \Movim\Widget\Base
         list($origin, $node) = array_values($packet->content);
 
         if ($node != 'urn:xmpp:microblog:0') {
-            $sd = new \Modl\SubscriptionDAO;
-
-            if ($sd->get($origin, $node)) {
+            if ($this->user->subscriptions()
+                           ->where('server', $origin)
+                           ->where('node', $node)
+                           ->first())
+            {
                 $this->rpc('CommunityAffiliations_ajaxDelete', $origin, $node, true);
                 $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $origin, $node);
             } else {
@@ -141,9 +143,6 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $posts = $pd->getIds($origin, $node, $ids);
 
-        $sd = new \Modl\SubscriptionDAO;
-        $subscription = $sd->get($origin, $node);
-
         $nsfwMessage = false;
 
         if (User::me()->nsfw == false
@@ -182,7 +181,10 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('info', \App\Info::where('server', $origin)
                                        ->where('node', $node)
                                        ->first());
-        $view->assign('subscription', $subscription);
+        $view->assign('subscription', $this->user->subscriptions()
+                                           ->where('server', $origin)
+                                           ->where('node', $node)
+                                           ->first());
         $view->assign('paging', $this->_paging);
 
         $view->assign('publicposts', ($ids == false)

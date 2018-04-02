@@ -12,7 +12,7 @@
                 <li class="subheader block large" onclick="MovimUtils.redirect('{$c->route('community', $value->server)}')">
                     <span class="control icon gray"><i class="zmdi zmdi-chevron-right"></i></span>
                     <p>
-                        {$value->server} - {$value->servicename}
+                        {$value->server}
                     </p>
                 </li>
             {/if}
@@ -21,25 +21,21 @@
                 onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
                 title="{$value->server} - {$value->node}"
             >
-                {if="$value->logo"}
-                    <span class="primary icon bubble">
-                        <img src="{$value->getLogo()}">
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
-                {/if}
+                <span class="primary icon bubble color {$value->node|stringToColor}">
+                    {$value->node|firstLetterCapitalize}
+                </span>
                 <span class="control icon gray">
                     <i class="zmdi zmdi-chevron-right"></i>
                 </span>
                 <p class="line normal">
-                    {if="$value->name"}
-                        {$value->name}
+                    {if="$value->info && $value->info->name"}
+                        {$value->info->name}
                     {else}
                         {$value->node}
                     {/if}
                 </p>
-                {if="$value->description"}
-                    <p class="line">{$value->description|strip_tags}</p>
+                {if="$value->info && $value->info->description"}
+                    <p class="line">{$value->info->description|strip_tags}</p>
                 {/if}
             </li>
         {/loop}

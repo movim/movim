@@ -20,14 +20,10 @@ class CommunityData extends \Movim\Widget\Base
 
     public function prepareData($origin, $node)
     {
-        $pd = new \Modl\SubscriptionDAO;
-        $subscription = $pd->get($origin, $node);
-
         $view = $this->tpl();
         $view->assign('info', \App\Info::where('server', $origin)
                                        ->where('node', $node)
                                        ->first());
-        $view->assign('subscription', $subscription);
 
         return $view->draw('_communitydata', true);
     }

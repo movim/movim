@@ -132,9 +132,12 @@ class CommunityHeader extends \Movim\Widget\Base
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
-        $sd = new \Modl\SubscriptionDAO;
+        $subscriptions = $this->user->subscriptions()
+                              ->where('server', $origin)
+                              ->where('node', $node)
+                              ->get();
 
-        foreach ($sd->get($origin, $node) as $s) {
+        foreach ($subscriptions as $s) {
             $g = new Unsubscribe;
             $g->setTo($origin)
               ->setNode($node)
@@ -165,21 +168,15 @@ class CommunityHeader extends \Movim\Widget\Base
 
     public function prepareHeader($origin, $node)
     {
-        /*
-        if ($item && !$item->logo) {
-            $item->setPicture();
-            $id->set($item);
-        }
-        */
-        $pd = new \Modl\SubscriptionDAO;
-        $subscription = $pd->get($origin, $node);
-
         $view = $this->tpl();
 
         $view->assign('info', \App\Info::where('server', $origin)
                                    ->where('node', $node)
                                    ->first());
-        $view->assign('subscription', $subscription);
+        $view->assign('subscription', $this->user->subscriptions()
+                                           ->where('server', $origin)
+                                           ->where('node', $node)
+                                           ->first());
         $view->assign('node', $node);
         $view->assign('server', $origin);
 

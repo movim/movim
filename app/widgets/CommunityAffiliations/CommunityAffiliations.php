@@ -35,26 +35,31 @@ class CommunityAffiliations extends \Movim\Widget\Base
             }
         }
 
-        $ssd = new \Modl\SharedSubscriptionDAO;
-
         $view = $this->tpl();
         $view->assign('role', $role);
         $view->assign('info', \App\Info::where('server', $origin)
                                        ->where('node', $node)
                                        ->first());
         $view->assign('affiliations', $affiliations);
-        $view->assign('subscriptions', $ssd->getAll($origin, $node));
+        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+                ->where('node', $node)
+                ->where('public', true)
+                ->get());
 
-        $this->rpc('MovimTpl.fill', '#community_affiliation', $view->draw('_communityaffiliations', true));
+        $this->rpc(
+            'MovimTpl.fill',
+            '#community_affiliation',
+            $view->draw('_communityaffiliations', true)
+        );
 
         // If the configuration is open, we fill it
         $view = $this->tpl();
 
-        $sd = new \Modl\SubscriptionDAO;
-
         $caps = App\Capability::find($origin);
 
-        $view->assign('subscriptions', $sd->getAll($origin, $node));
+        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+                ->where('node', $node)
+                ->get());
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
@@ -77,10 +82,11 @@ class CommunityAffiliations extends \Movim\Widget\Base
     {
         list($subscriptions, $origin, $node) = array_values($packet->content);
 
-        $sd = new \Modl\SubscriptionDAO;
         $view = $this->tpl();
 
-        $view->assign('subscriptions', $sd->getAll($origin, $node));
+        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+                ->where('node', $node)
+                ->get());
         $view->assign('server', $origin);
         $view->assign('node', $node);
 

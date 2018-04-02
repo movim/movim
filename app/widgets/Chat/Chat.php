@@ -588,8 +588,7 @@ class Chat extends \Movim\Widget\Base
         $view->assign('emoji', prepareString('😀'));
         $view->assign('muc', $muc);
         $view->assign('anon', false);
-
-        $this->view->assign('info', \App\Info::where('server', $this->user->getServer())
+        $view->assign('info', \App\Info::where('server', $this->user->getServer())
                                              ->where('node', '')
                                              ->first());
 
@@ -600,9 +599,9 @@ class Chat extends \Movim\Widget\Base
                                              ->where('conference', $jid)
                                              ->first());
 
-            $mucinfo = $this->view->assign('info', \App\Info::where('server', explodeJid($jid)['server'])
-                                                            ->where('node', '')
-                                                            ->first());
+            $mucinfo = \App\Info::where('server', explodeJid($jid)['server'])
+                                ->where('node', '')
+                                ->first();
             if ($mucinfo && !empty($mucinfo->abuseaddresses)) {
                 $view->assign('info', $mucinfo);
             }
@@ -794,8 +793,6 @@ class Chat extends \Movim\Widget\Base
 
         $chats = \App\Cache::c('chats');
         $chats = ($chats == null) ? false : array_keys($chats);
-
-        //$cd = new \Modl\ContactDAO;
 
         $conferences = \App\Info::where('category', 'conference')
                                 ->whereNotIn('server', $this->user->session->conferences->pluck('conference')->toArray())

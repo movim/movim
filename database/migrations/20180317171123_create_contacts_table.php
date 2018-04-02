@@ -31,7 +31,7 @@ class CreateContactsTable extends Migration
 
             $table->string('loclatitude', 32)->nullable();
             $table->string('loclongitude', 32)->nullable();
-            $table->integer('localtitude')->nullable();
+            $table->string('localtitude', 32)->nullable();
             $table->string('loccountry', 64)->nullable();
             $table->string('loccountrycode', 2)->nullable();
             $table->string('locregion', 128)->nullable();

@@ -101,10 +101,16 @@ class Presence extends \Movim\Widget\Base
 
     function ajaxPubsubSubscriptionsGet()
     {
+        // Private Subscritions
         $session = Session::start();
         $ps = new GetPubsubSubscriptions;
         $ps->setTo($session->get('jid'))
            ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
+           ->request();
+
+        // Public Subscritions
+        $ps = new GetPubsubSubscriptions;
+        $ps->setTo($session->get('jid'))
            ->request();
     }
 

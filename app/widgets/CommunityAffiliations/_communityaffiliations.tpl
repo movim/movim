@@ -87,17 +87,24 @@
     {loop="$subscriptions"}
         <li title="{$value->jid}"
             onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
-            {$url = $value->getPhoto('m')}
-            {if="$url"}
-                <span class="primary icon bubble small"
-                    style="background-image: url({$url});">
-                </span>
+            {if="$value->contact"}
+                {$url = $value->contact->getPhoto('m')}
+                {if="$url"}
+                    <span class="primary icon bubble small"
+                        style="background-image: url({$url});">
+                    </span>
+                {else}
+                    <span class="primary icon bubble small color {$value->jid|stringToColor}">
+                        {$value->contact->getTrueName()|firstLetterCapitalize:true}
+                    </span>
+                {/if}
+                <p class="normal">{$value->contact->getTrueName()}</p>
             {else}
                 <span class="primary icon bubble small color {$value->jid|stringToColor}">
-                    {$value->getTrueName()|firstLetterCapitalize:true}
+                    {$value->jid|firstLetterCapitalize:true}
                 </span>
+                <p class="normal">{$value->jid}</p>
             {/if}
-            <p class="normal">{$value->getTrueName()}</p>
         </li>
     {/loop}
 </ul>

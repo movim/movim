@@ -10,7 +10,7 @@ class CreateSubscriptionsTable extends Migration
         $this->schema->create('subscriptions', function(Blueprint $table) {
             $table->string('jid', 64);
             $table->string('server', 64);
-            $table->string('node', 96);
+            $table->string('node', 192);
             //$table->string('subscription', 16);
             $table->string('subid', 128)->nullable();
             $table->string('title', 128)->nullable();

@@ -1,7 +1,5 @@
 <?php
 
-use Moxl\Xec\Action\Pubsub\GetItems;
-
 include_once WIDGETS_PATH.'Post/Post.php';
 
 class Menu extends \Movim\Widget\Base
@@ -13,7 +11,6 @@ class Menu extends \Movim\Widget\Base
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract', 'news');
         $this->registerEvent('pubsub_postdelete', 'onRetract', 'news');
-        $this->registerEvent('pubsub_getitem_handle', 'onPost');
 
         $this->addjs('menu.js');
     }
@@ -136,21 +133,6 @@ class Menu extends \Movim\Widget\Base
 
         $this->rpc('MovimUtils.enhanceArticlesContent');
         $this->rpc('Menu.refresh');
-    }
-
-    function ajaxRefresh()
-    {
-        Notification::append(null, $this->__('menu.refresh'));
-
-        $sd = new \modl\SubscriptionDAO();
-        $subscriptions = $sd->getSubscribed();
-
-        foreach ($subscriptions as $s) {
-            $r = new GetItems;
-            $r->setTo($s->server)
-              ->setNode($s->node)
-              ->request();
-        }
     }
 
     function prepareList($type = 'all', $server = null, $node = null, $page = 0)
