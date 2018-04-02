@@ -1,7 +1,5 @@
 <?php
 
-use Modl\SessionxDAO;
-
 class Statistics extends \Movim\Widget\Base
 {
     public function getContact(\App\User $user)

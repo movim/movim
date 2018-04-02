@@ -21,7 +21,6 @@ class ContactActions extends \Movim\Widget\Base
         $tpl->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
         $tpl->assign('roster', App\User::me()->session->contacts->find($jid));
 
-        //$cd = new \Modl\ContactDAO;
         /*$cr = $cd->getRosterItem($jid);
 
         if (isset($cr)) {

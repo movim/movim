@@ -33,7 +33,6 @@ class Menu extends \Movim\Widget\Base
     function onPost($packet)
     {
         $pd = new \Modl\PostnDAO;
-        $cd = new \Modl\ContactDAO;
 
         $since = \App\Cache::c('since');
         $count = $pd->getCountSince($since);
@@ -47,7 +46,7 @@ class Menu extends \Movim\Widget\Base
         if (is_object($post)
         && $post->isComment()
         && !$post->isMine()) {
-            $contact = $cd->get($post->aid);
+            $contact = \App\Contact::firstOrNew(['id' => $post->aid]);
             Notification::append(
                 'news',
                 $contact->getTrueName(),
@@ -59,7 +58,7 @@ class Menu extends \Movim\Widget\Base
         && is_object($post)
         && (strtotime($post->published) > strtotime($since))) {
             if ($post->isMicroblog()) {
-                $contact = $cd->get($post->origin);
+                $contact = \App\Contact::firstOrNew(['id' => $post->origin]);
 
                 if ($post->title == null) {
                     $title = __('post.default_title');

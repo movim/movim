@@ -209,9 +209,6 @@ class Login extends Base
         }
 
         // We check if we already have an open session
-        //$sd = new \Modl\SessionxDAO;
-        //$here = $sd->getHash(sha1($username.$password.$host));
-
         $here = DBSession::where('hash', sha1($username.$password.$host))->first();
 
         $user = User::firstOrNew(['id' => $login]);
@@ -241,11 +238,6 @@ class Login extends Base
             $s->init($username, $password, $host);
             $s->loadMemory();
             $s->save();
-
-            /*$s = new \Modl\Sessionx;
-            $s->init($username, $password, $host);
-            $s->loadMemory();
-            $sd->set($s);*/
 
             // We launch the XMPP socket
             $this->rpc('register', $host);

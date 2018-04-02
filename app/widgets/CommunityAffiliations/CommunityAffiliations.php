@@ -124,8 +124,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     function getContact($jid)
     {
-        $cd = new \Modl\ContactDAO;
-        return $cd->get($jid);
+        return \App\Contact::firstOrNew(['id' => $jid]);
     }
 
     function ajaxGetAffiliations($origin, $node)
