@@ -14,6 +14,11 @@ class Post extends Model
     protected $guarded = [];
     private $titleLimit = 200;
 
+    public function contact()
+    {
+        return $this->hasOne('App\Contact', 'id', 'aid');
+    }
+
     private function extractContent($contents)
     {
         $content = '';
@@ -96,6 +101,8 @@ class Post extends Model
             $this->aname = (string)$entry->entry->source->author->name;
         if ($entry->entry->source && $entry->entry->source->author->uri)
             $this->aid = substr((string)$entry->entry->source->author->uri, 5);
+
+        if (empty($this->aname)) $this->aname = null;
 
         $this->title = $this->extractTitle($entry->entry->title);
 
@@ -532,6 +539,11 @@ class Post extends Model
     {
         /*$pd = new \Modl\PostnDAO;
         return $pd->isLiked($this->commentserver, $this->commentnodeid);*/
+        return false;
+    }
+
+    public function isRecycled()
+    {
         return false;
     }
 

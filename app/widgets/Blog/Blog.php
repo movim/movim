@@ -89,7 +89,11 @@ class Blog extends \Movim\Widget\Base
                 if (isset($this->_tag)) {
                     $this->_messages = $pd->getPublicTag($this->_tag, $this->_id * $this->_paging, $this->_paging + 1);
                 } else {
-                    $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, $this->_id * $this->_paging, $this->_paging + 1);
+                    $this->_messages = \App\Post::where('server', $this->_from)
+                        ->where('node', $this->_node)
+                        ->skip($this->_id * $this->_paging)
+                        ->take($this->_paging + 1)
+                        ->get();
                 }
                 $this->_page = $this->_id + 1;
             } elseif (Validator::stringType()->length(5, 100)->validate($this->_id)) {
@@ -131,7 +135,10 @@ class Blog extends \Movim\Widget\Base
             if (isset($this->_tag)) {
                 $this->_messages = $pd->getPublicTag($this->_tag, 0, $this->_paging + 1);
             } else {
-                $this->_messages = $pd->getNodeUnfiltered($this->_from, $this->_node, 0, $this->_paging + 1);
+                $this->_messages = \App\Post::where('server', $this->_from)
+                        ->where('node', $this->_node)
+                        ->take($this->_paging + 1)
+                        ->get();
             }
         }
 

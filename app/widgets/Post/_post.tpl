@@ -3,7 +3,7 @@
 {/if}
 
 {if="isset($post->picture) && !$post->isBrief()"}
-    {if="($public && $post->isPublic() && !$post->isBrief()) || !$public"}
+    {if="($public && $post->open && !$post->isBrief()) || !$public"}
         <header
             class="big"
             style="
@@ -45,13 +45,13 @@
         </ul>
     {/if}
 
-    {if="($public && $post->isPublic()) || !$public"}
+    {if="($public && $post->open) || !$public"}
     <ul class="list thick">
         <li>
             {if="$repost"}
                 {$contact = $repost}
             {else}
-                {$contact = $post->getContact()}
+                {$contact = $post->contact}
             {/if}
 
             {if="$post->isMicroblog()"}
@@ -154,16 +154,16 @@
 <article class="block">
 {/if}
     {if="$repost"}
-        <a href="{$c->route('contact', $post->getContact()->jid)}">
+        <a href="{$c->route('contact', $post->contact->jid)}">
             <ul class="list active middle">
                 <li>
-                    {$url = $post->getContact()->getPhoto('s')}
+                    {$url = $post->contact->getPhoto('s')}
                     {if="$url"}
                         <span class="primary icon bubble" style="background-image: url('{$url}');">
                             <i class="zmdi zmdi-loop"></i>
                         </span>
                     {else}
-                        <span class="primary icon bubble color {$post->getContact()->jid|stringToColor}">
+                        <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
                             <i class="zmdi zmdi-loop"></i>
                         </span>
                     {/if}
@@ -172,14 +172,14 @@
                         <i class="zmdi zmdi-chevron-right"></i>
                     </span>
 
-                    <p>{$c->__('post.repost', $post->getContact()->getTrueName())}</p>
-                    <p>{$c->__('post.repost_profile', $post->getContact()->getTrueName())}</p>
+                    <p>{$c->__('post.repost', $post->contact->getTrueName())}</p>
+                    <p>{$c->__('post.repost_profile', $post->contact->getTrueName())}</p>
                 </li>
             </ul>
         </a>
     {/if}
 
-    {if="$public && !$post->isPublic()"}
+    {if="$public && !$post->open"}
         <ul class="list thick">
             <li>
                 <span class="primary icon color gray bubble">
@@ -221,13 +221,13 @@
                                     <i class="zmdi zmdi-share"></i>
                                 </span>
                             {elseif="$reply->isMicroblog()"}
-                                {$url = $reply->getContact()->getPhoto('l')}
+                                {$url = $reply->contact->getPhoto('l')}
                                 {if="$url"}
                                     <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
                                         <i class="zmdi zmdi-share"></i>
                                     </span>
                                 {else}
-                                    <span class="primary icon bubble color {$reply->getContact()->jid|stringToColor}">
+                                    <span class="primary icon bubble color {$reply->contact->jid|stringToColor}">
                                         <i class="zmdi zmdi-share"></i>
                                     </span>
                                 {/if}
@@ -239,7 +239,7 @@
                             <p>{$reply->getSummary()}</p>
                             <p>
                                 {if="$reply->isMicroblog()"}
-                                    <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
+                                    <i class="zmdi zmdi-account"></i> {$reply->contact->getTrueName()}
                                 {else}
                                     <i class="zmdi zmdi-pages"></i> {$reply->node}
                                 {/if}
@@ -330,7 +330,7 @@
                 {/loop}
                 </ul>
             {/if}
-            {if="$post->isPublic() && !$public"}
+            {if="$post->open && !$public"}
                 <ul class="list active thick">
                     <li>
                         <span class="primary icon gray">

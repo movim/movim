@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->text('contentcleaned')->nullable();
 
             $table->string('commentserver', 64)->nullable();
-            $table->string('commentnodeid', 96)->nullable();
+            $table->string('commentnodeid', 192)->nullable();
             $table->string('parentorigin', 64)->nullable();
             $table->string('parentnode', 96)->nullable();
             $table->string('parentnodeid', 96)->nullable();
