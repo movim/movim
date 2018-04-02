@@ -11,7 +11,6 @@ class CreateSubscriptionsTable extends Migration
             $table->string('jid', 64);
             $table->string('server', 64);
             $table->string('node', 192);
-            //$table->string('subscription', 16);
             $table->string('subid', 128)->nullable();
             $table->string('title', 128)->nullable();
             $table->boolean('public')->default(false);

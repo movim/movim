@@ -22,7 +22,6 @@ class ContactData extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $subscriptions = $id->getSharedItems($jid);
         $view->assign('message', $this->user->messages()
                                         ->where(function ($query) use ($jid) {
                                             $query->where('jidfrom', $jid)
@@ -30,7 +29,8 @@ class ContactData extends \Movim\Widget\Base
                                         })
                                         ->orderBy('published', 'desc')
                                         ->first());
-        $view->assign('subscriptions', $subscriptions ? $subscriptions : []);
+        $view->assign('subscriptions', \App\Subscription::where('jid', $jid)
+            ->where('public', true)->get());
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('roster', App\User::me()->session->contacts->where('jid', $jid)->first());
 

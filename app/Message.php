@@ -127,11 +127,11 @@ class Message extends Model
                 //$pd = new \Modl\PresenceDAO;
                 //$p = $pd->getMyPresenceRoom($this->jidfrom);
 
-                if (is_object($p)
+                /*if (is_object($p)
                 && strpos($this->body, $p->resource) !== false
                 && $this->resource != $p->resource) {
                     $this->quoted = true;
-                }
+                }*/
             }
 
             if ($stanza->html) {
