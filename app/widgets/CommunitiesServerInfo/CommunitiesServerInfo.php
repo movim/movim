@@ -2,14 +2,11 @@
 
 class CommunitiesServerInfo extends \Movim\Widget\Base
 {
-    function load()
-    {
-    }
-
     function display()
     {
-        $id = new \Modl\InfoDAO;
-        $this->view->assign('info', $id->getJid($this->get('s')));
+        $this->view->assign('info', \App\Info::where('server', $this->get('s'))
+                                             ->where('node', '')
+                                             ->first());
     }
 }
 

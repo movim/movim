@@ -589,21 +589,20 @@ class Chat extends \Movim\Widget\Base
         $view->assign('muc', $muc);
         $view->assign('anon', false);
 
-        $id = new \Modl\InfoDAO;
-        $info = $id->getJid($this->user->getServer());
-        $view->assign('info', $info);
+        $this->view->assign('info', \App\Info::where('server', $this->user->getServer())
+                                             ->where('node', '')
+                                             ->first());
 
         if ($muc) {
-            $cd = new \Modl\ConferenceDAO;
-            $pd = new \Modl\PresenceDAO;
-
             $view->assign('room', $jid);
             //$view->assign('subject', $md->getRoomSubject($jid));
             $view->assign('conference', $this->user->session->conferences
                                              ->where('conference', $jid)
                                              ->first());
 
-            $mucinfo = $id->getJid(explodeJid($jid)['server']);
+            $mucinfo = $this->view->assign('info', \App\Info::where('server', explodeJid($jid)['server'])
+                                                            ->where('node', '')
+                                                            ->first());
             if ($mucinfo && !empty($mucinfo->abuseaddresses)) {
                 $view->assign('info', $mucinfo);
             }
@@ -797,13 +796,20 @@ class Chat extends \Movim\Widget\Base
         $chats = ($chats == null) ? false : array_keys($chats);
 
         //$cd = new \Modl\ContactDAO;
-        $id = new \Modl\InfoDAO;
+
+        $conferences = \App\Info::where('category', 'conference')
+                                ->whereNotIn('server', $this->user->session->conferences->pluck('conference')->toArray())
+                                ->where('mucpublic', true)
+                                ->where('mucpersistent', true);
+
+        $conferences = (Configuration::findOrNew(1)->restrictsuggestions)
+            ? $conferences->where('server', 'like', '%@%.' . $this->user->getServer())
+            : $conferences->where('server', 'like', '%@%');
+
+        $conferences = $conferences->orderBy('occupants', 'desc')->take(8)->get();
 
         $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('conferences', $id->getTopConference(
-            8,
-            (Configuration::findOrNew(1)->restrictsuggestions) ? $this->user->getServer() : false
-        ));
+        $view->assign('conferences', $conferences);
         $view->assign('top', []/*$cd->getTop(8, $chats)*/);
         return $view->draw('_chat_empty', true);
     }
@@ -815,9 +821,7 @@ class Chat extends \Movim\Widget\Base
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        if (!$validate_jid->validate($jid)) return false;
-        else return true;
+        return (Validator::stringType()->noWhitespace()->length(6, 60)->validate($jid));
     }
 
     function getSmileyPath($id)

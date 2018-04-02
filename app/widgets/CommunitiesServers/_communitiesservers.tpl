@@ -2,7 +2,7 @@
     {loop="$servers"}
         {if="!filter_var($value->server, FILTER_VALIDATE_EMAIL)"}
             <li class="block
-                {if="empty($value->number)"}faded{/if}"
+                {if="$value->occupants == 0"}faded{/if}"
                 onclick="MovimUtils.redirect('{$c->route('community', $value->server)}')">
                 <span class="primary icon bubble color {$value->server|stringToColor}">
                     {$value->server|firstLetterCapitalize}
@@ -11,7 +11,7 @@
                     {$value->server}
                     <span class="second">{$value->name}</span>
                 </p>
-                <p>{$c->__('communities.counter', (empty($value->number)) ? 0 : $value->number)}</p>
+                <p>{$c->__('communities.counter', $value->occupants)}</p>
             </li>
         {/if}
     {/loop}

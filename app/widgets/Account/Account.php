@@ -132,7 +132,8 @@ class Account extends \Movim\Widget\Base
 
     function display()
     {
-        $id = new \Modl\InfoDAO;
-        $this->view->assign('gateway', $id->getGateways($this->user->getServer()));
+        $this->view->assign('gateway', \App\Info::where('server', $this->user->getServer())
+                                                ->where('category', 'gateway')
+                                                ->get());
     }
 }

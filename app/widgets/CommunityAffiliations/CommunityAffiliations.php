@@ -35,14 +35,13 @@ class CommunityAffiliations extends \Movim\Widget\Base
             }
         }
 
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
-
         $ssd = new \Modl\SharedSubscriptionDAO;
 
         $view = $this->tpl();
         $view->assign('role', $role);
-        $view->assign('info', $info);
+        $view->assign('info', \App\Info::where('server', $origin)
+                                       ->where('node', $node)
+                                       ->first());
         $view->assign('affiliations', $affiliations);
         $view->assign('subscriptions', $ssd->getAll($origin, $node));
 
@@ -179,7 +178,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
-        if (Validator::in(App\Capability::find($origin)->getPubsubRoles())->validate($form->role->value)
+        if (Validator::in(\App\Capability::find($origin)->getPubsubRoles())->validate($form->role->value)
         && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
             $sa->setTo($origin)

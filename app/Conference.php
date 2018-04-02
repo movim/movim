@@ -38,6 +38,13 @@ class Conference extends Model
                     ->where('mucjid', \App\User::me()->id);
     }
 
+    public function info()
+    {
+        return $this->hasOne('App\Info', 'server', 'conference')
+                    ->where('category', 'conference')
+                    ->where('type', 'text');
+    }
+
     public function setAvatar($vcard)
     {
         if ($vcard->vCard->PHOTO->BINVAL) {
@@ -45,12 +52,6 @@ class Conference extends Model
             $p->fromBase((string)$vcard->vCard->PHOTO->BINVAL);
             $p->set($this->conference . '_muc');
         }
-    }
-
-    public function getItem()
-    {
-        $id = new \Modl\InfoDAO;
-        return $id->getJid($this->conference);
     }
 
     public function getConnectedAttribute()

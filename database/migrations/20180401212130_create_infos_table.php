@@ -14,6 +14,7 @@ class CreateInfosTable extends Migration
             $table->string('type', 16)->nullable();
             $table->string('name', 128)->nullable();
             $table->text('description')->nullable();
+            $table->datetime('created')->nullable();
 
             $table->integer('occupants')->default(0);
             $table->boolean('mucpublic')->default(false);

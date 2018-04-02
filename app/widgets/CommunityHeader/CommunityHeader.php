@@ -86,15 +86,9 @@ class CommunityHeader extends \Movim\Widget\Base
 
         $view->assign('server', $origin);
         $view->assign('node', $node);
-
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
-
-        if (isset($info)) {
-            $view->assign('info', $info);
-        } else {
-            $view->assign('info', null);
-        }
+        $view->assign('info', \App\Info::where('server', $origin)
+                                   ->where('node', $node)
+                                   ->first());
 
         Dialog::fill($view->draw('_communityheader_subscribe', true));
     }
@@ -127,15 +121,9 @@ class CommunityHeader extends \Movim\Widget\Base
 
         $view->assign('server', $origin);
         $view->assign('node', $node);
-
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
-
-        if (isset($info)) {
-            $view->assign('info', $info);
-        } else {
-            $view->assign('info', null);
-        }
+        $view->assign('info', \App\Info::where('server', $origin)
+                                   ->where('node', $node)
+                                   ->first());
 
         Dialog::fill($view->draw('_communityheader_unsubscribe', true));
     }
@@ -177,9 +165,6 @@ class CommunityHeader extends \Movim\Widget\Base
 
     public function prepareHeader($origin, $node)
     {
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
-
         /*
         if ($item && !$item->logo) {
             $item->setPicture();
@@ -191,7 +176,9 @@ class CommunityHeader extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $view->assign('info', $info);
+        $view->assign('info', \App\Info::where('server', $origin)
+                                   ->where('node', $node)
+                                   ->first());
         $view->assign('subscription', $subscription);
         $view->assign('node', $node);
         $view->assign('server', $origin);

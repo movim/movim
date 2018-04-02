@@ -49,8 +49,7 @@ class CommunityPosts extends \Movim\Widget\Base
                 $this->rpc('CommunityAffiliations_ajaxDelete', $origin, $node, true);
                 $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $origin, $node);
             } else {
-                $id = new \Modl\InfoDAO;
-                $id->delete($origin, $node);
+                \App\Info::where('server', $origin)->where('node', $node)->delete();
                 $this->ajaxClear();
             }
         } else {
@@ -112,13 +111,8 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function prepareEmpty()
     {
-        $id = new \Modl\InfoDAO;
-
         $view = $this->tpl();
-        $view->assign('servers', $id->getCommunitiesServers());
-        $html = $view->draw('_communityposts_empty', true);
-
-        return $html;
+        return $view->draw('_communityposts_empty', true);
     }
 
     public function preparePost($p)
@@ -146,9 +140,6 @@ class CommunityPosts extends \Movim\Widget\Base
         }
 
         $posts = $pd->getIds($origin, $node, $ids);
-
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
 
         $sd = new \Modl\SubscriptionDAO;
         $subscription = $sd->get($origin, $node);
@@ -188,7 +179,9 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('page', $page);
         $view->assign('ids', $ids);
         $view->assign('posts', $posts);
-        $view->assign('info', $info);
+        $view->assign('info', \App\Info::where('server', $origin)
+                                       ->where('node', $node)
+                                       ->first());
         $view->assign('subscription', $subscription);
         $view->assign('paging', $this->_paging);
 

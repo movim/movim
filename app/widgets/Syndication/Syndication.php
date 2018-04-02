@@ -11,7 +11,6 @@ class Syndication extends \Movim\Widget\Base
         ob_clean();
 
         $pd = new \Modl\PostnDAO;
-        $id = new \Modl\InfoDAO;
 
         if (!$this->get('s')) {
             return;
@@ -27,7 +26,9 @@ class Syndication extends \Movim\Widget\Base
             return;
         } else {
             $node = $this->get('n');
-            $item = $id->get($from, $node);
+            $item = \App\Info::where('server', $from)
+                             ->where('node', $node)
+                             ->first();
         }
 
         $messages = $pd->getPublic($from, $node, 0, 20);

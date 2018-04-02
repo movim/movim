@@ -41,8 +41,7 @@ class CommunitiesServer extends \Movim\Widget\Base
     {
         $origin = $packet->content;
 
-        $id = new \Modl\InfoDAO;
-        $id->deleteItems($origin);
+        \App\Info::where('server', $origin)->delete();
 
         $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($origin));
 

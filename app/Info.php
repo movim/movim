@@ -12,6 +12,77 @@ class Info extends Model
     protected $primaryKey = ['server', 'node'];
     public $incrementing = false;
 
+    public function setAdminaddressesAttribute(array $arr)
+    {
+        $this->attributes['adminaddresses'] = serialize($arr);
+    }
+
+    public function getAdminaddressesAttribute()
+    {
+        return (isset($this->attributes['adminaddresses']))
+            ? unserialize($this->attributes['adminaddresses'])
+            : null;
+    }
+
+    public function setAbuseaddressesAttribute(array $arr)
+    {
+        $this->attributes['abuseaddresses'] = serialize($arr);
+    }
+
+    public function getAbuseaddressesAttribute()
+    {
+        return (isset($this->attributes['abuseaddresses']))
+            ? unserialize($this->attributes['abuseaddresses'])
+            : null;
+    }
+
+    public function setFeedbackaddressesAttribute(array $arr)
+    {
+        $this->attributes['feedbackaddresses'] = serialize($arr);
+    }
+
+    public function getFeedbackaddressesAttribute()
+    {
+        return (isset($this->attributes['feedbackaddresses']))
+            ? unserialize($this->attributes['feedbackaddresses'])
+            : null;
+    }
+
+    public function setSalesaddressesAttribute(array $arr)
+    {
+        $this->attributes['salesaddresses'] = serialize($arr);
+    }
+
+    public function getSalesaddressesAttribute()
+    {
+        return (isset($this->attributes['salesaddresses']))
+            ? unserialize($this->attributes['salesaddresses'])
+            : null;
+    }
+    public function setSecurityaddressesAttribute(array $arr)
+    {
+        $this->attributes['securityaddresses'] = serialize($arr);
+    }
+
+    public function getSecurityaddressesAttribute()
+    {
+        return (isset($this->attributes['securityaddresses']))
+            ? unserialize($this->attributes['securityaddresses'])
+            : null;
+    }
+
+    public function setSupportaddressesAttribute(array $arr)
+    {
+        $this->attributes['supportaddresses'] = serialize($arr);
+    }
+
+    public function getSupportaddressesAttribute()
+    {
+        return (isset($this->attributes['supportaddresses']))
+            ? unserialize($this->attributes['supportaddresses'])
+            : null;
+    }
+
     public function set($query)
     {
         $from = (string)$query->attributes()->from;
@@ -78,34 +149,46 @@ class Info extends Model
                             break;
 
                         case 'abuse-addresses':
+                            $arr = [];
                             foreach($field->children() as $value) {
-                                $this->abuseaddresses[] = (string)$value;
+                                $arr[] = (string)$value;
                             }
+                            $this->abuseaddresses = $arr;
                             break;
                         case 'admin-addresses':
+                            $arr = [];
                             foreach($field->children() as $value) {
-                                $this->adminaddresses[] = (string)$value;
+                                $arr[] = (string)$value;
                             }
+                            $this->adminaddresses = $arr;
                             break;
                         case 'feedback-addresses':
+                            $arr = [];
                             foreach($field->children() as $value) {
-                                $this->feedbackaddresses[] = (string)$value;
+                                $arr[] = (string)$value;
                             }
+                            $this->feedbackaddresses = $arr;
                             break;
                         case 'sales-addresses':
+                            $arr = [];
                             foreach($field->children() as $value) {
-                                $this->salesaddresses[] = (string)$value;
+                                $arr[] = (string)$value;
                             }
+                            $this->salesaddresses = $arr;
                             break;
                         case 'security-addresses':
+                            $arr = [];
                             foreach($field->children() as $value) {
-                                $this->securityaddresses[] = (string)$value;
+                                $arr[] = (string)$value;
                             }
+                            $this->securityaddresses = $arr;
                             break;
                         case 'support-addresses':
+                            $arr = [];
                             foreach($field->children() as $value) {
-                                $this->supportaddresses[] = (string)$value;
+                                $arr[] = (string)$value;
                             }
+                            $this->supportaddresses = $arr;
                             break;
                     }
                 }
@@ -118,5 +201,15 @@ class Info extends Model
         $this->server = (string)$item->attributes()->jid;
         $this->node   = (string)$item->attributes()->node;
         $this->name   = (string)$item->attributes()->name;
+    }
+
+    public function isPubsubService()
+    {
+        return ($this->category == 'pubsub' && $this->type == 'service');
+    }
+
+    public function isMicroblogCommentsNode()
+    {
+        return (substr($this->node, 0, 29) == 'urn:xmpp:microblog:0:comments');
     }
 }

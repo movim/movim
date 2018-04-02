@@ -36,7 +36,7 @@
                     </span>
                 {/if}
 
-                {$info = $value->getItem()}
+                {$info = $value->info}
                 {if="$edit"}
                     <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
                         <i class="zmdi zmdi-delete"></i>

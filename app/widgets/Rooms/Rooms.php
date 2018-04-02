@@ -110,9 +110,9 @@ class Rooms extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $id = new \Modl\InfoDAO;
-
-        $view->assign('info', $id->getConference($room));
+        $view->assign('info', \App\Info::where('server', $room)
+                                       ->where('category', 'conference')
+                                       ->first());
         $view->assign('id', $room);
         $view->assign('conference',
             $this->user->session->conferences()
