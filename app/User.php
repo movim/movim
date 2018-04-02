@@ -36,6 +36,11 @@ class User extends Model
         return $this->hasMany('App\EncryptedPassword');
     }
 
+    public function subscriptions()
+    {
+        return $this->hasMany('App\Subscription', 'jid', 'id');
+    }
+
     public static function me()
     {
         $session = Session::start();
