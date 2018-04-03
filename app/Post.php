@@ -14,9 +14,40 @@ class Post extends Model
     protected $guarded = [];
     private $titleLimit = 200;
 
+    public $attachments = [];
+
     public function contact()
     {
         return $this->hasOne('App\Contact', 'id', 'aid');
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany('App\Attachment');
+    }
+
+    public function save(array $options = [])
+    {
+        parent::save($options);
+        $this->attachments()->delete();
+        $this->attachments()->saveMany($this->attachments);
+    }
+
+    public function getOpenlinkAttribute()
+    {
+        if (!$this->open) return;
+
+        return $this->attachments()->where('category', 'open')->first()->href;
+    }
+
+    public function getLinksAttribute()
+    {
+        return $this->attachments()->where('category', 'link')->get();
+    }
+
+    public function getPicturesAttribute()
+    {
+        return $this->attachments()->where('category', 'picture')->get();
     }
 
     private function extractContent($contents)
@@ -196,14 +227,12 @@ class Post extends Model
             if (is_array($results) && !empty($results)) {
                 $extra = (string)$results[0];
 
-                $this->picture = protectPicture($extra);
                 $this->setAttachments($entry->entry->link, $extra);
             } else {
                 $results = $xml->xpath('//video/@poster');
                 if (is_array($results) && !empty($results)) {
                     $extra = (string)$results[0];
 
-                    $this->picture = $extra;
                     $this->setAttachments($entry->entry->link, $extra);
                 }
             }
@@ -239,15 +268,34 @@ class Post extends Model
             $enc = $enc['@attributes'];
             array_push($l, $enc);
 
-            if ($this->picture == null
-            && isset($enc['type'])
-            && typeIsPicture($enc['type'])
-            /*&& isSmallPicture($enc['href'])*/) {
-                $this->picture = protectPicture($enc['href']);
+            $att = new \App\Attachment;
+            $att->rel = $enc['rel'];
+            $att->href = $enc['href'];
+            if (isset($enc['title'])) $att->title = $enc['title'];
+            if (isset($enc['description'])) $att->description = $enc['description'];
+            if (isset($enc['type'])) {
+                $att->type = $enc['type'];
+
+                if ($enc['rel'] == 'enclosure' && typeIsPicture($enc['type'])) {
+                    if ($this->picture == null) {
+                        $att->href = protectPicture($enc['href']);
+                    }
+
+                    $att->category = 'picture';
+                }
             }
 
             if ($enc['rel'] == 'alternate'
-            && Validator::url()->validate($enc['href'])) $this->open = true;
+            && Validator::url()->validate($enc['href'])) {
+                $this->open = true;
+                $att->category = 'open';
+            }
+
+            if ($enc['rel'] == 'related') {
+                $att->category = 'link';
+            }
+
+            $this->attachments[] = $att;
 
             if ((string)$attachment->attributes()->title == 'comments') {
                 $url = parse_url(urldecode((string)$attachment->attributes()->href));
@@ -260,17 +308,11 @@ class Post extends Model
         }
 
         if ($extra) {
-            array_push(
-                $l,
-                [
-                    'rel' => 'enclosure',
-                    'href' => $extra,
-                    'type' => 'picture'
-                ]);
-        }
-
-        if (!empty($l)) {
-            $this->links = $l;
+            $attachment = new \App\Attachment;
+            $attachment->rel = 'enclosure';
+            $attachment->href = protectPicture($extra);
+            $attachment->category = 'picture';
+            $this->attachments[] = $attachment;
         }
     }
 
@@ -378,11 +420,6 @@ class Post extends Model
         return $this->youtube;
     }
 
-    public function getPlace()
-    {
-        return (isset($this->lat, $this->lon) && $this->lat != '' && $this->lon != '');
-    }
-
     /*public function getLogo()
     {
         $p = new Picture;
@@ -445,11 +482,6 @@ class Post extends Model
         return ($this->content == '' && strlen($this->title) < $this->titleLimit);
     }
 
-    public function isNSFW()
-    {
-        return $this->nsfw;
-    }
-
     public function isReply()
     {
         return isset($this->reply);
@@ -507,11 +539,6 @@ class Post extends Model
         $reply = $this->reply;
         $pd = new \Modl\PostnDAO;
         return $pd->get($reply['server'], $reply['node'], $reply['nodeid']);
-    }
-
-    public function getPublicUrl()
-    {
-        return $this->openlink;
     }
 
     public function getComments()

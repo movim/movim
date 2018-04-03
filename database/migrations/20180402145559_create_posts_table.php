@@ -41,10 +41,28 @@ class CreatePostsTable extends Migration
 
             $table->unique(['server', 'node', 'nodeid']);
         });
+
+        $this->schema->create('attachments', function(Blueprint $table) {
+            $table->increments('id');
+            $table->integer('post_id');
+            $table->string('category', 16)->nullable();
+            $table->string('rel', 16);
+            $table->string('logo', 256)->nullable();
+            $table->string('type', 32)->nullable();
+            $table->string('href', 512);
+            $table->text('title')->nullable();
+            $table->text('description')->nullable();
+            $table->timestamps();
+
+            $table->foreign('post_id')
+                  ->references('id')->on('posts')
+                  ->onDelete('cascade');
+        });
     }
 
     public function down()
     {
+        $this->schema->drop('attachments');
         $this->schema->drop('posts');
     }
 }

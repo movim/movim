@@ -277,9 +277,7 @@ class Post extends \Movim\Widget\Base
             }
 
             $view->assign('nsfw', User::me()->nsfw);
-
             $view->assign('post', $p);
-            $view->assign('attachments', $p->getAttachments());
 
             if ($card) {
                 return $view->draw('_post_card', true);

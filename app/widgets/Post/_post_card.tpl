@@ -1,7 +1,7 @@
 <article class="block large">
     <ul class="list thick">
         <li>
-            {if="$post->isNSFW()"}
+            {if="$post->nsfw"}
                 <span class="primary icon bubble color red tiny">
                     +18
                 </span>
@@ -70,7 +70,7 @@
     <ul class="list">
         {if="!$post->isBrief()"}
         <li class="active">
-            {if="$nsfw == false && $post->isNSFW()"}
+            {if="$nsfw == false && $post->nsfw"}
                 <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
             {/if}
             <section {if="!$post->isShort()"}class="limited"{/if} dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
@@ -82,12 +82,10 @@
                         <div class="video_embed">
                             <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
                         </div>
-                    {elseif="$post->isShort() && isset($attachments.pictures)"}
-                        {loop="$attachments.pictures"}
-                            {if="$value.type != 'picture'"}
-                                <img class="big_picture" type="{$value.type}"
-                                     src="{$value.href|urldecode}"/>
-                            {/if}
+                    {elseif="$post->isShort()"}
+                        {loop="$post->pictures"}
+                            <img class="big_picture" type="{$value->type}"
+                                 src="{$value->href}"/>
                         {/loop}
                     {/if}
                     {$post->getContent()|addHashtagsLinks}
@@ -95,7 +93,7 @@
             <section>
         </li>
         {else}
-            {if="$nsfw == false && $post->isNSFW()"}
+            {if="$nsfw == false && $post->nsfw"}
                 <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
             {/if}
             <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
@@ -107,12 +105,10 @@
                         <div class="video_embed">
                             <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
                         </div>
-                    {elseif="$post->isShort() && isset($attachments.pictures)"}
-                        {loop="$attachments.pictures"}
-                            {if="$value.type != 'picture'"}
-                                <img class="big_picture" type="{$value.type}"
-                                     src="{$value.href|urldecode}" />
-                            {/if}
+                    {elseif="$post->isShort()"}
+                        {loop="$post->pictures"}
+                            <img class="big_picture" type="{$value->type}"
+                                 src="{$value->href}"/>
                         {/loop}
                     {/if}
                 </content>
@@ -173,37 +169,33 @@
             {/if}
         {/if}
 
-        {if="isset($attachments.links)"}
-            {loop="$attachments.links"}
-                {if="$post->picture != protectPicture($value['href']) && $value.href != $post->getPublicUrl()"}
-                <ul class="list">
-                    <li>
-                        <span class="primary icon gray">
-                            {if="!empty($value.logo)"}
-                                <img src="{$value.logo}"/>
-                            {else}
-                                <i class="zmdi zmdi-link"></i>
-                            {/if}
-                        </span>
-                        <p class="normal line">
-                            <a target="_blank" href="{$value.href}" title="{$value.href}">
-                                {if="isset($value.title)"}
-                                    {$value.title}
-                                {else}
-                                    {$value.href}
-                                {/if}
-                            </a>
-                        </p>
-                        {if="isset($value.description) && !empty($value.description)"}
-                            <p title="{$value.description}">{$value.description}</p>
+        {loop="$post->links"}
+            <ul class="list">
+                <li>
+                    <span class="primary icon gray">
+                        {if="$value->logo"}
+                            <img src="{$value->logo}"/>
                         {else}
-                            <p>{$value.url.host}</p>
+                            <i class="zmdi zmdi-link"></i>
                         {/if}
-                    </li>
-                </ul>
-                {/if}
-            {/loop}
-        {/if}
+                    </span>
+                    <p class="normal line">
+                        <a target="_blank" href="{$value->href}" title="{$value->href}">
+                            {if="isset($value->title)"}
+                                {$value->title}
+                            {else}
+                                {$value->href}
+                            {/if}
+                        </a>
+                    </p>
+                    {if="$value->description"}
+                        <p title="{$value->description}">{$value->description}</p>
+                    {else}
+                        <p>{$value->url.host}</p>
+                    {/if}
+                </li>
+            </ul>
+        {/loop}
 
         <li>
             <p class="normal">
@@ -252,7 +244,7 @@
                         <a  title="{$c->__('post.public_yes')}"
                             class="button icon flat gray on_desktop"
                             target="_blank"
-                            href="{$post->getPublicUrl()}">
+                            href="{$post->openlink}">
                             <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                         </a>
                     {/if}

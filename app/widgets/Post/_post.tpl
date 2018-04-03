@@ -56,7 +56,7 @@
 
             {if="$post->isMicroblog()"}
                 {$url = $contact->getPhoto('s')}
-                {if="$post->isNSFW()"}
+                {if="$post->nsfw"}
                     <span class="primary icon bubble color red tiny">
                         +18
                     </span>
@@ -74,7 +74,7 @@
                     </span>
                 {/if}
             {else}
-                {if="$post->isNSFW()"}
+                {if="$post->nsfw"}
                     <span class="primary icon bubble color red tiny">
                         +18
                     </span>
@@ -116,11 +116,11 @@
                 <p></p>
             {/if}
             <p>
-                {if="$contact->getTrueName() != ''"}
+                {if="$contact->truename != ''"}
                     {if="!$public"}
                     <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                     {/if}
-                    {$contact->getTrueName()}
+                    {$contact->truename}
                     {if="!$public"}</a>{/if} –
                 {/if}
                 {if="!$post->isMicroblog()"}
@@ -172,8 +172,8 @@
                         <i class="zmdi zmdi-chevron-right"></i>
                     </span>
 
-                    <p>{$c->__('post.repost', $post->contact->getTrueName())}</p>
-                    <p>{$c->__('post.repost_profile', $post->contact->getTrueName())}</p>
+                    <p>{$c->__('post.repost', $post->contact->truename)}</p>
+                    <p>{$c->__('post.repost_profile', $post->contact->truename)}</p>
                 </li>
             </ul>
         </a>
@@ -239,7 +239,7 @@
                             <p>{$reply->getSummary()}</p>
                             <p>
                                 {if="$reply->isMicroblog()"}
-                                    <i class="zmdi zmdi-account"></i> {$reply->contact->getTrueName()}
+                                    <i class="zmdi zmdi-account"></i> {$reply->contact->truename}
                                 {else}
                                     <i class="zmdi zmdi-pages"></i> {$reply->node}
                                 {/if}
@@ -266,7 +266,7 @@
             <ul class="list middle divided spaced">
                 {if="isset($attachments.links)"}
                     {loop="$attachments.links"}
-                        {if="$post->picture != protectPicture($value['href']) && $value.href != $post->getPublicUrl()"}
+                        {if="$post->picture != protectPicture($value['href']) && $value.href != $post->openlink"}
                             <li>
                                 <span class="primary icon gray">
                                     {if="!empty($value.logo)"}
@@ -340,7 +340,7 @@
                             {$c->__('post.public_yes')}
                         </p>
                         <p>
-                            <a title="{$post->getPublicUrl()}" target="_blank" href="{$post->getPublicUrl()}">
+                            <a title="{$post->openlink}" target="_blank" href="{$post->openlink}">
                                 {$c->__('post.public_url')}
                             </a>
                         </p>

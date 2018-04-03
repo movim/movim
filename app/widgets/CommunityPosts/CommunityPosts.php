@@ -141,25 +141,24 @@ class CommunityPosts extends \Movim\Widget\Base
             }
         }
 
-        $posts = $pd->getIds($origin, $node, $ids);
+        $posts = \App\Post::where('server', $origin)->where('node', $node)
+                          ->whereIn('nodeid', $ids)->get();
 
         $nsfwMessage = false;
 
-        if (User::me()->nsfw == false
-        && is_array($posts)) {
+        if (User::me()->nsfw == false) {
             foreach ($posts as $key => $post) {
                 if ($post->nsfw) {
-                    unset($posts[$key]);
+                    $posts->forget($key);
                     $nsfwMessage = true;
                 }
             }
         }
 
-        if (is_array($posts)) {
-            foreach ($posts as $key => $post) {
-                $posts[$post->nodeid] = $post;
-                unset($posts[$key]);
-            }
+        $postsWithKeys = [];
+
+        foreach ($posts as $key => $post) {
+            $postsWithKeys[$post->nodeid] = $post;
         }
 
         $view = $this->tpl();
@@ -177,7 +176,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('node', $node);
         $view->assign('page', $page);
         $view->assign('ids', $ids);
-        $view->assign('posts', $posts);
+        $view->assign('posts', $postsWithKeys);
         $view->assign('info', \App\Info::where('server', $origin)
                                        ->where('node', $node)
                                        ->first());
