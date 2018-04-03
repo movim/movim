@@ -10,13 +10,13 @@
                     <img src="{$post->getLogo()}"/>
                 </span>
             {elseif="$post->isMicroblog()"}
-                {$url = $post->getContact()->getPhoto('m')}
+                {$url = $post->contact->getPhoto('m')}
                 {if="$url"}
                     <span class="primary icon bubble">
                         <img src="{$url}"/>
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$post->getContact()->jid|stringToColor}">
+                    <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
@@ -36,22 +36,22 @@
             <p>
                 {if="$post->isMicroblog()"}
                     <a  {if="$public"}
-                            href="{$c->route('blog', $post->getContact()->jid)}"
+                            href="{$c->route('blog', $post->contact->jid)}"
                         {else}
-                            href="{$c->route('contact', $post->getContact()->jid)}"
+                            href="{$c->route('contact', $post->contact->jid)}"
                         {/if}
                     >
-                        {$post->getContact()->getTrueName()}
+                        {$post->contact->truename}
                     </a> –
                 {else}
                     {if="$public"}
-                        {$post->origin}
+                        {$post->server}
                     {else}
-                        <a href="{$c->route('community', $post->origin)}">
-                            {$post->origin}
+                        <a href="{$c->route('community', $post->server)}">
+                            {$post->server}
                         </a>
                     {/if} /
-                    <a href="{$c->route('community', [$post->origin, $post->node])}">
+                    <a href="{$c->route('community', [$post->server, $post->node])}">
                         {$post->node}
                     </a> –
                 {/if}
@@ -124,7 +124,7 @@
             {$reply = $post->getReply()}
             {if="$reply"}
                 <ul class="list thick active recessed"
-                    onclick="MovimUtils.reload('{$c->route('post', [$reply->origin, $reply->node, $reply->nodeid])}')">
+                    onclick="MovimUtils.reload('{$c->route('post', [$reply->server, $reply->node, $reply->nodeid])}')">
                     <li>
                         {if="$reply->picture"}
                             <span
@@ -133,13 +133,13 @@
                                 <i class="zmdi zmdi-share"></i>
                             </span>
                         {elseif="$reply->isMicroblog()"}
-                            {$url = $reply->getContact()->getPhoto('l')}
+                            {$url = $reply->contact->getPhoto('l')}
                             {if="$url"}
                                 <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
                                     <i class="zmdi zmdi-share"></i>
                                 </span>
                             {else}
-                                <span class="primary icon bubble color {$reply->getContact()->jid|stringToColor}">
+                                <span class="primary icon bubble color {$reply->contact->jid|stringToColor}">
                                     <i class="zmdi zmdi-share"></i>
                                 </span>
                             {/if}
@@ -151,7 +151,7 @@
                         <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
                         <p>
                             {if="$reply->isMicroblog()"}
-                                <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
+                                <i class="zmdi zmdi-account"></i> {$reply->contact->truename}
                             {else}
                                 <i class="zmdi zmdi-pages"></i> {$reply->node}
                             {/if}
@@ -167,7 +167,7 @@
                         <span class="primary icon gray">
                             <i class="zmdi zmdi-mail-reply"></i>
                         </span>
-                        <p class="line normal">{$c->__('post.original_deleted')}</p>
+                        <p class="line normal">{$c->__('post.serveral_deleted')}</p>
                     </li>
                 </ul>
             {/if}
@@ -210,12 +210,12 @@
                 <a class="button flat oppose"
                 {if="$public"}
                     {if="$post->isMicroblog()"}
-                    href="{$c->route('blog', [$post->origin, $post->nodeid])}"
+                    href="{$c->route('blog', [$post->server, $post->nodeid])}"
                     {else}
-                    href="{$c->route('node', [$post->origin, $post->node, $post->nodeid])}"
+                    href="{$c->route('node', [$post->server, $post->node, $post->nodeid])}"
                     {/if}
                 {else}
-                    href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}"
+                    href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
                 {/if}>
                     <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
                 </a>
@@ -223,12 +223,12 @@
                     {$liked = $post->isLiked()}
 
                     {if="$liked"}
-                        <a class="button icon flat red" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                        <a class="button icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
                             {$post->countLikes()} <i class="zmdi zmdi-favorite"></i>
                         </a>
                     {else}
                         <a class="button icon flat gray" href="#"
-                           onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                           onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
                             {$post->countLikes()}
                             {if="$liked"}
                                 <i class="zmdi zmdi-favorite"></i>
@@ -237,7 +237,7 @@
                             {/if}
                         </a>
                     {/if}
-                    <a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                    <a class="button icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
                         {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
                     </a>
                 {/if}
@@ -245,10 +245,10 @@
                 <a
                     title="{$c->__('button.share')}"
                     class="button icon flat gray"
-                    href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
+                    href="{$c->route('publish', [$post->server, $post->node, $post->nodeid, 'share'])}">
                     <i class="zmdi zmdi-share"></i>
                 </a>
-                    {if="$post->isPublic()"}
+                    {if="$post->open"}
                         <a  title="{$c->__('post.public_yes')}"
                             class="button icon flat gray on_desktop"
                             target="_blank"
@@ -261,14 +261,14 @@
                 {if="$post->isMine()"}
                     {if="$post->isEditable()"}
                         <a class="button icon flat oppose gray on_desktop"
-                           href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid])}"
+                           href="{$c->route('publish', [$post->server, $post->node, $post->nodeid])}"
                            title="{$c->__('button.edit')}">
                             <i class="zmdi zmdi-edit"></i>
                         </a>
                     {/if}
                     <a class="button icon flat oppose gray on_desktop"
                        href="#"
-                       onclick="PostActions_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
+                       onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
                        title="{$c->__('button.delete')}">
                         <i class="zmdi zmdi-delete"></i>
                     </a>

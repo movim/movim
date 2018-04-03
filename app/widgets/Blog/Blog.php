@@ -97,7 +97,10 @@ class Blog extends \Movim\Widget\Base
                 }
                 $this->_page = $this->_id + 1;
             } elseif (Validator::stringType()->length(5, 100)->validate($this->_id)) {
-                $this->_messages[0] = $pd->getPublicItem($this->_from, $this->_node, $this->_id);
+                $this->_messages[0] = \App\Post::where('server', $this->_from)
+                        ->where('node', $this->_node)
+                        ->where('nodeid', $this->_id)
+                        ->first();
 
                 if (is_object($this->_messages[0])) {
                     $this->title = $this->_messages[0]->title;

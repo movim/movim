@@ -149,10 +149,35 @@ class Menu extends \Movim\Widget\Base
 
         switch ($type) {
             case 'all' :
+                $items = \App\Post::whereIn('server', function($query) {
+                    $query->from('rosters')
+                          ->select('jid')
+                          ->where('session_id', SESSION_ID)
+                          ->where('subscription', 'both');
+                })
+                ->orWhereIn('id', function($query) {
+                    $query->select('id')
+                          ->from('posts')
+                          ->where('node', 'urn:xmpp:microblog:0')
+                          ->where('server', $this->user->id);
+                })
+                ->orWhereIn('id', function($query) {
+                    $query->select('id')
+                          ->from('posts')
+                          ->whereIn('server', function($query) {
+                            $query->select('server')
+                                  ->from('subscriptions')
+                                  ->where('jid', $this->user->id);
+                          })
+                          ->whereIn('node', function($query) {
+                            $query->select('node')
+                                  ->from('subscriptions')
+                                  ->where('jid', $this->user->id);
+                          });
+                });
                 $view->assign('history', $this->call('ajaxGetAll', $next));
-                $items  = $pd->getAllPosts(false, $page * $this->_paging + $count, $this->_paging);
                 break;
-            case 'news' :
+            /*case 'news' :
                 $view->assign('history', $this->call('ajaxGetNews', $next));
                 $items  = $pd->getNews($page * $this->_paging + $count, $this->_paging);
                 break;
@@ -168,10 +193,13 @@ class Menu extends \Movim\Widget\Base
             case 'node' :
                 $view->assign('history', $this->call('ajaxGetNode', '"'.$server.'"', '"'.$node.'"', '"'.$next.'"'));
                 $items  = $pd->getNode($server, $node, $page * $this->_paging + $count, $this->_paging);
-                break;
+                break;*/
         }
 
-        $view->assign('items', $items);
+        $view->assign('items', $items
+            ->orderBy('published', 'desc')
+            ->skip($page * $this->_paging + $count)
+            ->take($this->_paging)->get());
         $view->assign('type', $type);
         $view->assign('page', $page);
         $view->assign('paging', $this->_paging);

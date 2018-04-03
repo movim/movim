@@ -4,7 +4,7 @@
             <li {if="$type == 'all'"}class="active"{/if}>
                 <a href="#" onclick="Menu_ajaxGetAll()">{$c->__('menu.all')}</a>
             </li>
-            <li {if="$type == 'news'"}class="active"{/if} >
+            <!--<li {if="$type == 'news'"}class="active"{/if} >
                 <a href="#communities" class="on_desktop" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}">
                     {$c->__('page.communities')}
                 </a>
@@ -19,7 +19,7 @@
                 <a href="#contacts" class="on_mobile" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}">
                     <i class="zmdi zmdi-accounts"></i>
                 </a>
-            </li>
+            </li>-->
         </ul>
     </header>
 {/if}

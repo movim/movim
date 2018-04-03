@@ -22,13 +22,13 @@
                 {if="$post->isMine()"}
                     {if="$post->isEditable()"}
                         <span class="control icon active gray"
-                              onclick="MovimUtils.redirect('{$c->route('publish', [$post->origin, $post->node, $post->nodeid])}')"
+                              onclick="MovimUtils.redirect('{$c->route('publish', [$post->server, $post->node, $post->nodeid])}')"
                               title="{$c->__('button.edit')}">
                             <i class="zmdi zmdi-edit"></i>
                         </span>
                     {/if}
                     <span class="control icon active gray"
-                          onclick="PostActions_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
+                          onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
                           title="{$c->__('button.delete')}">
                         <i class="zmdi zmdi-delete"></i>
                     </span>
@@ -80,13 +80,13 @@
                     </span>
                 {elseif="$post->logo"}
                     <span class="primary icon bubble">
-                        <a href="{$c->route('community', [$post->origin, $post->node])}">
+                        <a href="{$c->route('community', [$post->server, $post->node])}">
                             <img src="{$post->getLogo()}">
                         </a>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->node|stringToColor}">
-                        <a href="{$c->route('community', [$post->origin, $post->node])}">
+                        <a href="{$c->route('community', [$post->server, $post->node])}">
                             {$post->node|firstLetterCapitalize}
                         </a>
                     </span>
@@ -96,12 +96,12 @@
             <span class="control icon active">
                 <a  {if="$public"}
                     {if="$post->isMicroblog()"}
-                    href="{$c->route('blog', [$post->origin, $post->nodeid])}"
+                    href="{$c->route('blog', [$post->server, $post->nodeid])}"
                     {else}
-                    href="{$c->route('node', [$post->origin, $post->node, $post->nodeid])}"
+                    href="{$c->route('node', [$post->server, $post->node, $post->nodeid])}"
                     {/if}
                 {else}
-                    href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}"
+                    href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
                 {/if}
                 >
                     <i class="zmdi zmdi-chevron-right"></i>
@@ -125,12 +125,12 @@
                 {/if}
                 {if="!$post->isMicroblog()"}
                     {if="!$public"}
-                    <a href="{$c->route('community', $post->origin)}">
+                    <a href="{$c->route('community', $post->server)}">
                     {/if}
-                        {$post->origin}
+                        {$post->server}
                     {if="!$public"}</a>{/if} /
                     {if="!$public"}
-                    <a href="{$c->route('community', [$post->origin, $post->node])}">
+                    <a href="{$c->route('community', [$post->server, $post->node])}">
                     {/if}
                         {$post->node}
                     {if="!$public"}</a>{/if} –
@@ -211,7 +211,7 @@
         {if="$post->isReply()"}
             <hr />
             {if="$reply"}
-                <a href="{$c->route('post', [$reply->origin, $reply->node, $reply->nodeid])}">
+                <a href="{$c->route('post', [$reply->server, $reply->node, $reply->nodeid])}">
                     <ul class="list active thick">
                         <li class="block">
                             {if="$reply->picture"}
@@ -256,7 +256,7 @@
                         <span class="primary icon gray">
                             <i class="zmdi zmdi-mail-reply"></i>
                         </span>
-                        <p class="line normal">{$c->__('post.original_deleted')}</p>
+                        <p class="line normal">{$c->__('post.serveral_deleted')}</p>
                     </li>
                 </ul>
             {/if}
