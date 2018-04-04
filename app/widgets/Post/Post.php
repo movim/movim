@@ -27,22 +27,24 @@ class Post extends \Movim\Widget\Base
         $content = $packet->content;
 
         if (is_array($content) && isset($content['nodeid'])) {
-            $pd = new \Modl\PostnDAO;
-            $p  = $pd->get($content['origin'], $content['node'], $content['nodeid']);
+            $p = \App\Post::where('server', $content['server'])
+                          ->where('node', $content['node'])
+                          ->where('nodeid', $content['nodeid'])
+                          ->first();
 
             if ($p) {
-                if ($p->isComment()) {
-                    $this->rpc(
+                //if ($p->isComment()) {
+                    /*$this->rpc(
                         'MovimTpl.fill',
                         '#comments',
                         $this->prepareComments($p->getParent())
-                    );
-                } else {
+                    );*/
+                //} else {
                     $this->rpc('MovimTpl.fill',
                         '#post_widget.'.cleanupId($p->nodeid),
                         $this->preparePost($p));
                     $this->rpc('MovimUtils.enhanceArticlesContent');
-                }
+                //}
             }
         }
     }
@@ -80,10 +82,12 @@ class Post extends \Movim\Widget\Base
         $c->ajaxGetDrawer($jid);
     }
 
-    function ajaxGetPost($origin, $node, $id)
+    function ajaxGetPost($server, $node, $nodeid)
     {
-        $pd = new \Modl\PostnDAO;
-        $p  = $pd->get($origin, $node, $id);
+        $p = \App\Post::where('server', $server)
+                      ->where('node', $node)
+                      ->where('nodeid', $nodeid)
+                      ->first();
 
         if ($p) {
             $html = $this->preparePost($p);
@@ -91,23 +95,23 @@ class Post extends \Movim\Widget\Base
             $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
 
-            // If the post is a reply but we don't have the original
+            // If the post is a reply but we don't have the serveral
             if ($p->isReply() && !$p->getReply()) {
                 $reply = $p->reply;
 
                 $gi = new GetItem;
-                $gi->setTo($reply['origin'])
+                $gi->setTo($reply['server'])
                    ->setNode($reply['node'])
                    ->setId($reply['nodeid'])
                    ->setAskReply([
-                        'origin' => $p->origin,
+                        'server' => $p->server,
                         'node' => $p->node,
                         'nodeid' => $p->nodeid])
                    ->request();
             }
 
             $gi = new GetItem;
-            $gi->setTo($p->origin)
+            $gi->setTo($p->server)
                ->setNode($p->node)
                ->setId($p->nodeid)
                ->request();
@@ -116,38 +120,38 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function ajaxGetPostComments($origin, $node, $id)
+    function ajaxGetPostComments($server, $node, $id)
     {
-        $pd = new \Modl\PostnDAO;
-        $p  = $pd->get($origin, $node, $id);
+        /*$pd = new \Modl\PostnDAO;
+        $p  = $pd->get($server, $node, $id);
 
         if ($p) {
             $this->requestComments($p);
-        }
+        }*/
     }
 
-    function ajaxShare($origin, $node, $id)
+    function ajaxShare($server, $node, $id)
     {
-        $pd = new \Modl\PostnDAO;
-        $p  = $pd->get($origin, $node, $id);
+        /*$pd = new \Modl\PostnDAO;
+        $p  = $pd->get($server, $node, $id);
 
         if ($p) {
-            $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node, $id, 'share']));
-        }
+            $this->rpc('MovimUtils.redirect', $this->route('publish', [$server, $node, $id, 'share']));
+        }*/
     }
 
     function requestComments(\Modl\ContactPostn $post)
     {
-        $pd = new \Modl\PostnDAO;
-        $pd->deleteNode($post->commentorigin, "urn:xmpp:microblog:0:comments/".$post->commentnodeid);
+        /*$pd = new \Modl\PostnDAO;
+        $pd->deleteNode($post->commentserver, "urn:xmpp:microblog:0:comments/".$post->commentnodeid);
 
         $c = new CommentsGet;
-        $c->setTo($post->commentorigin)
+        $c->setTo($post->commentserver)
           ->setId($post->commentnodeid)
-          ->setParentOrigin($post->origin)
+          ->setParentOrigin($post->server)
           ->setParentNode($post->node)
           ->setParentNodeId($post->nodeid)
-          ->request();
+          ->request();*/
     }
 
     public function publishComment($comment, $to, $node, $id)
@@ -160,11 +164,11 @@ class Post extends \Movim\Widget\Base
 
         if ($p) {
             $cp = new CommentPublish;
-            $cp->setTo($p->commentorigin)
+            $cp->setTo($p->commentserver)
                ->setFrom($this->user->getLogin())
                ->setParentId($p->commentnodeid)
                ->setTitle(htmlspecialchars(rawurldecode($comment)))
-               ->setParentOrigin($p->origin)
+               ->setParentOrigin($p->server)
                ->setParentNode($p->node)
                ->setParentNodeId($p->nodeid)
                ->request();
@@ -205,34 +209,9 @@ class Post extends \Movim\Widget\Base
         return $view->draw('_post_comments', true);
     }
 
-    public function prepareEmpty()
-    {
-        $nd = new \Modl\PostnDAO;
-        $cd = new \Modl\ContactDAO;
-
-        $view = $this->tpl();
-
-        $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('top', $cd->getTop(6));
-        $view->assign('blogs', $nd->getLastBlogPublic(0, 8));
-        $view->assign('posts', $nd->getLastPublished(false, false, 0, 6));
-        $view->assign('me', \App\Contact::firstOrNew(['jid' => $this->user->getLogin()]));
-        $view->assign('jid', $this->user->getLogin());
-
-        return $view->draw('_post_empty', true);
-    }
-
     function prepareNotFound()
     {
-        $nd = new \Modl\PostnDAO;
-
         $view = $this->tpl();
-
-        $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('blogs', $nd->getLastBlogPublic(0, 8));
-        $view->assign('posts', $nd->getLastPublished(false, false, 0, 6));
-        $view->assign('jid', $this->user->getLogin());
-
         return $view->draw('_post_not_found', true);
     }
 
@@ -245,7 +224,7 @@ class Post extends \Movim\Widget\Base
         if (isset($p)) {
             if ($p->hasCommentsNode()
             && !$external) {
-                $this->requestComments($p); // Broken in case of repost
+                //$this->requestComments($p); // Broken in case of repost
                 $view->assign('commentsdisabled', false);
             } else {
                 $viewd = $this->tpl();
@@ -259,21 +238,20 @@ class Post extends \Movim\Widget\Base
 
             if (!$external) {
                 $prevnext = $this->tpl();
-                $prevnext->assign('next', $p->getNext());
-                $prevnext->assign('previous', $p->getPrevious());
+                //$prevnext->assign('next', $p->getNext());
+                //$prevnext->assign('previous', $p->getPrevious());
                 $view->assign('prevnext', $prevnext->draw('_post_prevnext', true));
             } else {
                 $comments = $this->tpl();
-                $comments->assign('comments', $p->getComments());
+                //$comments->assign('comments', $p->getComments());
                 $view->assign('comments', $comments->draw('_post_comments_external', true));
             }
             $view->assign('public', $public);
-
             $view->assign('reply', $p->isReply() ? $p->getReply() : false);
 
             // Is it a repost ?
             if ($p->isRecycled()) {
-                $view->assign('repost', \App\Contact::find($p->origin));
+                $view->assign('repost', \App\Contact::find($p->server));
             }
 
             $view->assign('nsfw', User::me()->nsfw);
@@ -285,7 +263,7 @@ class Post extends \Movim\Widget\Base
 
             return $view->draw('_post', true);
         } elseif (!$external) {
-            return $this->prepareEmpty();
+            return $this->prepareNotFound();
         }
     }
 

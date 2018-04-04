@@ -34,8 +34,6 @@ class CreatePostsTable extends Migration
             $table->datetime('updated')->nullable();
             $table->datetime('delay')->nullable();
             $table->text('reply')->nullable();
-            $table->text('links')->nullable();
-            $table->text('picture')->nullable();
 
             $table->timestamps();
 
@@ -45,7 +43,7 @@ class CreatePostsTable extends Migration
         $this->schema->create('attachments', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id');
-            $table->string('category', 16)->nullable();
+            $table->string('category', 16);
             $table->string('rel', 16);
             $table->string('logo', 256)->nullable();
             $table->string('type', 32)->nullable();

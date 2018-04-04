@@ -5,10 +5,6 @@
                 <span class="primary icon bubble color red tiny">
                     +18
                 </span>
-            {elseif="$post->logo"}
-                <span class="primary icon bubble color white">
-                    <img src="{$post->getLogo()}"/>
-                </span>
             {elseif="$post->isMicroblog()"}
                 {$url = $post->contact->getPhoto('m')}
                 {if="$url"}
@@ -68,31 +64,7 @@
         </li>
     </ul>
     <ul class="list">
-        {if="!$post->isBrief()"}
-        <li class="active">
-            {if="$nsfw == false && $post->nsfw"}
-                <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
-            {/if}
-            <section {if="!$post->isShort()"}class="limited"{/if} dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
-                <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
-                    <i class="zmdi zmdi-eye"></i>
-                </label>
-                <content>
-                    {if="$post->getYoutube()"}
-                        <div class="video_embed">
-                            <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    {elseif="$post->isShort()"}
-                        {loop="$post->pictures"}
-                            <img class="big_picture" type="{$value->type}"
-                                 src="{$value->href}"/>
-                        {/loop}
-                    {/if}
-                    {$post->getContent()|addHashtagsLinks}
-                </content>
-            <section>
-        </li>
-        {else}
+        {if="$post->isBrief()"}
             {if="$nsfw == false && $post->nsfw"}
                 <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
             {/if}
@@ -101,9 +73,9 @@
                     <i class="zmdi zmdi-eye"></i>
                 </label>
                 <content>
-                    {if="$post->getYoutube()"}
+                    {if="$post->youtube"}
                         <div class="video_embed">
-                            <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
                         </div>
                     {elseif="$post->isShort()"}
                         {loop="$post->pictures"}
@@ -113,6 +85,30 @@
                     {/if}
                 </content>
             </section>
+        {else}
+            <li class="active">
+                {if="$nsfw == false && $post->nsfw"}
+                    <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
+                {/if}
+                <section {if="!$post->isShort()"}class="limited"{/if} dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
+                    <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
+                        <i class="zmdi zmdi-eye"></i>
+                    </label>
+                    <content>
+                        {if="$post->youtube"}
+                            <div class="video_embed">
+                                <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        {elseif="$post->isShort()"}
+                            {loop="$post->pictures"}
+                                <img class="big_picture" type="{$value->type}"
+                                     src="{$value->href}"/>
+                            {/loop}
+                        {/if}
+                        {$post->getContent()|addHashtagsLinks}
+                    </content>
+                <section>
+            </li>
         {/if}
 
         {if="$post->isReply()"}
@@ -244,7 +240,7 @@
                         <a  title="{$c->__('post.public_yes')}"
                             class="button icon flat gray on_desktop"
                             target="_blank"
-                            href="{$post->openlink}">
+                            href="{$post->openlink->href}">
                             <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                         </a>
                     {/if}

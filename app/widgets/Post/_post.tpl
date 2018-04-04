@@ -2,16 +2,7 @@
 <article class="block">
 {/if}
 
-{if="isset($post->picture) && !$post->isBrief()"}
-    {if="($public && $post->open && !$post->isBrief()) || !$public"}
-        <header
-            class="big"
-            style="
-                background-image: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url('{$post->picture|echapJS}');">
-    {/if}
-{else}
 <header class="relative">
-{/if}
     {if="!$external && !$public"}
         <ul class="list middle">
             <li>
@@ -185,23 +176,24 @@
                 <span class="primary icon color gray bubble">
                     <i class="zmdi zmdi-lock"></i>
                 </span>
-                <p class="line center normal"> {$c->__('blog.private')} - <a href="{$c->route('main')}">{$c->__('page.login')}</a></p>
+                <p class="line center normal">
+                    {$c->__('blog.private')} -
+                    <a href="{$c->route('main')}">{$c->__('page.login')}</a>
+                </p>
             </li>
         </ul>
         <br />
     {else}
         <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
             <content>
-                {if="$post->getYoutube()"}
+                {if="$post->youtube"}
                     <div class="video_embed">
-                        <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
                     </div>
-                {elseif="$post->isShort() && isset($attachments.pictures)"}
-                    {loop="$attachments.pictures"}
-                        {if="$value.type != 'picture'"}
-                            <img class="big_picture" type="{$value.type}"
-                                 src="{$value.href|urldecode}"/>
-                        {/if}
+                {elseif="$post->isShort()"}
+                    {loop="$post->pictures"}
+                        <img class="big_picture" type="{$value->type}"
+                             src="{$value->href}"/>
                     {/loop}
                 {/if}
                 {$post->getContent()|addHashtagsLinks}
@@ -264,69 +256,36 @@
 
         <footer>
             <ul class="list middle divided spaced">
-                {if="isset($attachments.links)"}
-                    {loop="$attachments.links"}
-                        {if="$post->picture != protectPicture($value['href']) && $value.href != $post->openlink"}
-                            <li>
-                                <span class="primary icon gray">
-                                    {if="!empty($value.logo)"}
-                                        <img src="{$value.logo}"/>
-                                    {else}
-                                        <i class="zmdi zmdi-link"></i>
-                                    {/if}
-                                </span>
-                                <p class="normal line">
-                                    <a target="_blank" href="{$value.href}" title="{$value.href}">
-                                        {if="$value.title"}
-                                            {$value.title}
-                                        {else}
-                                            {$value.href}
-                                        {/if}
-                                    </a>
-                                </p>
-                                {if="isset($value.description) && !empty($value.description)"}
-                                    <p>{$value.description}</p>
-                                {else}
-                                    <p>{$value.url.host}</p>
+                {loop="$post->files"}
+                    <li>
+                        <span class="primary icon gray">
+                            <span class="zmdi zmdi-attachment-alt"></span>
+                        </span>
+                        <p class="normal line">
+                            <a
+                                href="{$value->href}"
+                                class="enclosure"
+                                {if="isset($value->type)"}
+                                    type="{$value->type}"
                                 {/if}
-                            </li>
-                        {/if}
-                    {/loop}
-                {/if}
-                {if="isset($attachments.files)"}
-                    {loop="$attachments.files"}
-                        <li>
-                            <span class="primary icon gray">
-                                <span class="zmdi zmdi-attachment-alt"></span>
-                            </span>
-                            <p class="normal line">
-                                <a
-                                    href="{$value.href}"
-                                    class="enclosure"
-                                    {if="isset($value.type)"}
-                                        type="{$value.type}"
-                                    {/if}
-                                    target="_blank">
-                                {$value.href|urldecode}
-                                </a>
-                            </p>
-                        </li>
-                    {/loop}
-                {/if}
+                                target="_blank">
+                            {$value->href|urldecode}
+                            </a>
+                        </p>
+                    </li>
+                {/loop}
             </ul>
-            {if="isset($attachments.pictures) && !$post->isBrief() && !$post->isShort()"}
+            {if="$post->pictures && !$post->isBrief() && !$post->isShort()"}
                 <ul class="list flex middle">
-                {loop="$attachments.pictures"}
-                    {if="$value.type != 'picture'"}
+                {loop="$post->pictures"}
                     <li class="block pic">
                         <span class="primary icon gray">
                             <i class="zmdi zmdi-image"></i>
                         </span>
-                        <a href="{$value.href}" class="alternate" target="_blank">
-                            <img type="{$value.type}" src="{$value.href|urldecode}"/>
+                        <a href="{$value->href}" class="alternate" target="_blank">
+                            <img type="{$value->type}" src="{$value->href|urldecode}"/>
                         </a>
                     </li>
-                    {/if}
                 {/loop}
                 </ul>
             {/if}
@@ -340,8 +299,8 @@
                             {$c->__('post.public_yes')}
                         </p>
                         <p>
-                            <a title="{$post->openlink}" target="_blank" href="{$post->openlink}">
-                                {$c->__('post.public_url')}
+                            <a target="_blank" href="{$post->openlink->href}">
+                                {$c->__('post.public_url')} – {$post->openlink->url.host}
                             </a>
                         </p>
                     </li>

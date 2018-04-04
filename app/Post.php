@@ -36,13 +36,22 @@ class Post extends Model
     public function getOpenlinkAttribute()
     {
         if (!$this->open) return;
+        return $this->attachments()->where('category', 'open')->first();
+    }
 
-        return $this->attachments()->where('category', 'open')->first()->href;
+    public function getYoutubeAttribute()
+    {
+        return $this->attachments()->where('category', 'youtube')->first();
     }
 
     public function getLinksAttribute()
     {
         return $this->attachments()->where('category', 'link')->get();
+    }
+
+    public function getFilesAttribute()
+    {
+        return $this->attachments()->where('category', 'file')->get();
     }
 
     public function getPicturesAttribute()
@@ -226,14 +235,12 @@ class Post extends Model
 
             if (is_array($results) && !empty($results)) {
                 $extra = (string)$results[0];
-
-                $this->setAttachments($entry->entry->link, $extra);
+                //$this->setAttachments($entry->entry->link, $extra);
             } else {
                 $results = $xml->xpath('//video/@poster');
                 if (is_array($results) && !empty($results)) {
                     $extra = (string)$results[0];
-
-                    $this->setAttachments($entry->entry->link, $extra);
+                    //$this->setAttachments($entry->entry->link, $extra);
                 }
             }
 
@@ -260,59 +267,66 @@ class Post extends Model
 
     private function setAttachments($links, $extra = false)
     {
-        $l = [];
+        /*if ($extra) {
+            $attachment = new \App\Attachment;
+            $attachment->rel = 'enclosure';
+            $attachment->href = protectPicture($extra);
+            $attachment->category = 'picture';
+            $this->attachments[] = $attachment;
+        }*/
 
         foreach($links as $attachment) {
-            $enc = [];
             $enc = (array)$attachment->attributes();
             $enc = $enc['@attributes'];
-            array_push($l, $enc);
 
             $att = new \App\Attachment;
+
             $att->rel = $enc['rel'];
             $att->href = $enc['href'];
+            $att->category = 'other';
+
             if (isset($enc['title'])) $att->title = $enc['title'];
             if (isset($enc['description'])) $att->description = $enc['description'];
-            if (isset($enc['type'])) {
-                $att->type = $enc['type'];
 
-                if ($enc['rel'] == 'enclosure' && typeIsPicture($enc['type'])) {
-                    if ($this->picture == null) {
+            switch ($enc['rel']) {
+                case 'enclosure':
+                    $att->category = 'file';
+
+                    if (typeIsPicture($enc['type'])) {
+                        $att->category = 'picture';
                         $att->href = protectPicture($enc['href']);
                     }
+                    break;
+                case 'alternate':
+                    if (Validator::url()->validate($enc['href'])) {
+                        $this->open = true;
+                        $att->category = 'open';
+                    }
+                    break;
+                case 'related':
+                    $att->category = 'link';
+                    $att->logo = (isset($enc['logo'])) ? $enc['logo'] : null;
 
-                    $att->category = 'picture';
-                }
-            }
-
-            if ($enc['rel'] == 'alternate'
-            && Validator::url()->validate($enc['href'])) {
-                $this->open = true;
-                $att->category = 'open';
-            }
-
-            if ($enc['rel'] == 'related') {
-                $att->category = 'link';
+                    if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $enc['href'], $match)) {
+                        $atty = new \App\Attachment;
+                        $atty->rel = $enc['rel'];
+                        $atty->href = 'https://www.youtube.com/embed/' . $match[1];
+                        $atty->category = 'youtube';
+                        $this->attachments[] = $atty;
+                    }
+                    break;
             }
 
             $this->attachments[] = $att;
 
-            if ((string)$attachment->attributes()->title == 'comments') {
+            /*if ((string)$attachment->attributes()->title == 'comments') {
                 $url = parse_url(urldecode((string)$attachment->attributes()->href));
 
                 if ($url) {
                     $this->commentserver = $url['path'];
                     $this->commentnodeid = substr($url['query'], 36);
                 }
-            }
-        }
-
-        if ($extra) {
-            $attachment = new \App\Attachment;
-            $attachment->rel = 'enclosure';
-            $attachment->href = protectPicture($extra);
-            $attachment->category = 'picture';
-            $this->attachments[] = $attachment;
+            }*/
         }
     }
 
@@ -414,17 +428,6 @@ class Post extends Model
     {
         return $this->picture;
     }
-
-    public function getYoutube()
-    {
-        return $this->youtube;
-    }
-
-    /*public function getLogo()
-    {
-        $p = new Picture;
-        return $p->get($this->server.$this->node, 50);
-    }*/
 
     public function getUUID()
     {

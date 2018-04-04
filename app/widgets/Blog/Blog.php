@@ -109,11 +109,6 @@ class Blog extends \Movim\Widget\Base
                     if (!empty($description)) {
                         $this->description = truncate($description, 100);
                     }
-
-                    $attachments = $this->_messages[0]->getAttachments();
-                    if ($attachments && array_key_exists('pictures', $attachments)) {
-                        $this->image = urldecode($attachments['pictures'][0]['href']);
-                    }
                 }
 
                 if ($this->_view == 'node') {
