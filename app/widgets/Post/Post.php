@@ -267,6 +267,20 @@ class Post extends \Movim\Widget\Base
         }
     }
 
+    public function preparePostLinks(\App\Post $post)
+    {
+        $view = $this->tpl();
+        $view->assign('post', $post);
+        return $view->draw('_post_links', true);
+    }
+
+    public function preparePostReply(\App\Post $post)
+    {
+        $view = $this->tpl();
+        $view->assign('post', $post);
+        return $view->draw('_post_reply', true);
+    }
+
     function display()
     {
         $validate_nodeid = Validator::stringType()->length(10, 100);

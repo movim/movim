@@ -1,7 +1,4 @@
-{if="$external || $public"}
 <article class="block">
-{/if}
-
 <header class="relative">
     {if="!$external && !$public"}
         <ul class="list middle">
@@ -141,184 +138,96 @@
     {/if}
 </header>
 
-{if="!$external && !$public"}
-<article class="block">
-{/if}
-    {if="$repost"}
-        <a href="{$c->route('contact', $post->contact->jid)}">
-            <ul class="list active middle">
-                <li>
-                    {$url = $post->contact->getPhoto('s')}
-                    {if="$url"}
-                        <span class="primary icon bubble" style="background-image: url('{$url}');">
-                            <i class="zmdi zmdi-loop"></i>
-                        </span>
-                    {else}
-                        <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
-                            <i class="zmdi zmdi-loop"></i>
-                        </span>
-                    {/if}
-
-                    <span class="control icon">
-                        <i class="zmdi zmdi-chevron-right"></i>
-                    </span>
-
-                    <p>{$c->__('post.repost', $post->contact->truename)}</p>
-                    <p>{$c->__('post.repost_profile', $post->contact->truename)}</p>
-                </li>
-            </ul>
-        </a>
-    {/if}
-
-    {if="$public && !$post->open"}
-        <ul class="list thick">
+{if="$repost"}
+    <a href="{$c->route('contact', $post->contact->jid)}">
+        <ul class="list active middle">
             <li>
-                <span class="primary icon color gray bubble">
-                    <i class="zmdi zmdi-lock"></i>
+                {$url = $post->contact->getPhoto('s')}
+                {if="$url"}
+                    <span class="primary icon bubble" style="background-image: url('{$url}');">
+                        <i class="zmdi zmdi-loop"></i>
+                    </span>
+                {else}
+                    <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
+                        <i class="zmdi zmdi-loop"></i>
+                    </span>
+                {/if}
+
+                <span class="control icon">
+                    <i class="zmdi zmdi-chevron-right"></i>
                 </span>
-                <p class="line center normal">
-                    {$c->__('blog.private')} -
-                    <a href="{$c->route('main')}">{$c->__('page.login')}</a>
+
+                <p>{$c->__('post.repost', $post->contact->truename)}</p>
+                <p>{$c->__('post.repost_profile', $post->contact->truename)}</p>
+            </li>
+        </ul>
+    </a>
+{/if}
+
+<section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
+    <content>
+        {if="$post->youtube"}
+            <div class="video_embed">
+                <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
+            </div>
+        {elseif="$post->isShort()"}
+            {loop="$post->pictures"}
+                <img class="big_picture" type="{$value->type}"
+                     src="{$value->href}"/>
+            {/loop}
+        {/if}
+        {$post->getContent()|addHashtagsLinks}
+    </content>
+</section>
+
+{$c->preparePostReply($post)}
+
+<footer>
+    {$c->preparePostLinks($post)}
+
+    {if="$post->pictures && !$post->isBrief() && !$post->isShort()"}
+        <ul class="list flex middle">
+        {loop="$post->pictures"}
+            <li class="block pic">
+                <span class="primary icon gray">
+                    <i class="zmdi zmdi-image"></i>
+                </span>
+                <a href="{$value->href}" class="alternate" target="_blank">
+                    <img type="{$value->type}" src="{$value->href}"/>
+                </a>
+            </li>
+        {/loop}
+        </ul>
+    {/if}
+    {if="$post->open && !$public"}
+        <ul class="list active thick">
+            <li>
+                <span class="primary icon gray">
+                    <i class="zmdi zmdi-portable-wifi"></i>
+                </span>
+                <p class="line normal">
+                    {$c->__('post.public_yes')}
+                </p>
+                <p>
+                    <a target="_blank" href="{$post->openlink->href}">
+                        {$c->__('post.public_url')} – {$post->openlink->url.host}
+                    </a>
                 </p>
             </li>
         </ul>
-        <br />
-    {else}
-        <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
-            <content>
-                {if="$post->youtube"}
-                    <div class="video_embed">
-                        <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                {elseif="$post->isShort()"}
-                    {loop="$post->pictures"}
-                        <img class="big_picture" type="{$value->type}"
-                             src="{$value->href}"/>
-                    {/loop}
-                {/if}
-                {$post->getContent()|addHashtagsLinks}
-            </content>
-        </section>
-
-        {if="$post->isReply()"}
-            <hr />
-            {if="$reply"}
-                <a href="{$c->route('post', [$reply->server, $reply->node, $reply->nodeid])}">
-                    <ul class="list active thick">
-                        <li class="block">
-                            {if="$reply->picture"}
-                                <span
-                                    class="primary icon bubble white color"
-                                    style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture|echapJS});">
-                                    <i class="zmdi zmdi-share"></i>
-                                </span>
-                            {elseif="$reply->isMicroblog()"}
-                                {$url = $reply->contact->getPhoto('l')}
-                                {if="$url"}
-                                    <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
-                                        <i class="zmdi zmdi-share"></i>
-                                    </span>
-                                {else}
-                                    <span class="primary icon bubble color {$reply->contact->jid|stringToColor}">
-                                        <i class="zmdi zmdi-share"></i>
-                                    </span>
-                                {/if}
-                            {/if}
-                            <span class="control icon gray">
-                                <i class="zmdi zmdi-chevron-right"></i>
-                            </span>
-                            <p class="line">{$reply->title}</p>
-                            <p>{$reply->getSummary()}</p>
-                            <p>
-                                {if="$reply->isMicroblog()"}
-                                    <i class="zmdi zmdi-account"></i> {$reply->contact->truename}
-                                {else}
-                                    <i class="zmdi zmdi-pages"></i> {$reply->node}
-                                {/if}
-                                <span class="info">
-                                    {$reply->published|strtotime|prepareDate:true,true}
-                                </span>
-                            </p>
-                        </li>
-                    </ul>
-                </a>
-            {else}
-                <ul class="list thick">
-                    <li class="block">
-                        <span class="primary icon gray">
-                            <i class="zmdi zmdi-mail-reply"></i>
-                        </span>
-                        <p class="line normal">{$c->__('post.serveral_deleted')}</p>
-                    </li>
-                </ul>
-            {/if}
-        {/if}
-
-        <footer>
-            <ul class="list middle divided spaced">
-                {loop="$post->files"}
-                    <li>
-                        <span class="primary icon gray">
-                            <span class="zmdi zmdi-attachment-alt"></span>
-                        </span>
-                        <p class="normal line">
-                            <a
-                                href="{$value->href}"
-                                class="enclosure"
-                                {if="isset($value->type)"}
-                                    type="{$value->type}"
-                                {/if}
-                                target="_blank">
-                            {$value->href|urldecode}
-                            </a>
-                        </p>
-                    </li>
-                {/loop}
-            </ul>
-            {if="$post->pictures && !$post->isBrief() && !$post->isShort()"}
-                <ul class="list flex middle">
-                {loop="$post->pictures"}
-                    <li class="block pic">
-                        <span class="primary icon gray">
-                            <i class="zmdi zmdi-image"></i>
-                        </span>
-                        <a href="{$value->href}" class="alternate" target="_blank">
-                            <img type="{$value->type}" src="{$value->href|urldecode}"/>
-                        </a>
-                    </li>
-                {/loop}
-                </ul>
-            {/if}
-            {if="$post->open && !$public"}
-                <ul class="list active thick">
-                    <li>
-                        <span class="primary icon gray">
-                            <i class="zmdi zmdi-portable-wifi"></i>
-                        </span>
-                        <p class="line normal">
-                            {$c->__('post.public_yes')}
-                        </p>
-                        <p>
-                            <a target="_blank" href="{$post->openlink->href}">
-                                {$c->__('post.public_url')} – {$post->openlink->url.host}
-                            </a>
-                        </p>
-                    </li>
-                </ul>
-            {/if}
-        </footer>
-
-        {$comments}
-
-        {if="!$public"}
-            {if="$commentsdisabled"}
-                {$commentsdisabled}
-            {else}
-                <div id="comments" class="spin"></div>
-            {/if}
-        {/if}
     {/if}
+</footer>
 
-    {$prevnext}
-    <span class="clear padded"></span>
+{$comments}
+
+{if="!$public"}
+    {if="$commentsdisabled"}
+        {$commentsdisabled}
+    {else}
+        <div id="comments" class="spin"></div>
+    {/if}
+{/if}
+
+{$prevnext}
 </article>
+<span class="clear padded"></span>

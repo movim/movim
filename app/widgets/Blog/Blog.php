@@ -135,6 +135,7 @@ class Blog extends \Movim\Widget\Base
             } else {
                 $this->_messages = \App\Post::where('server', $this->_from)
                         ->where('node', $this->_node)
+                        ->where('open', true)
                         ->take($this->_paging + 1)
                         ->get();
             }

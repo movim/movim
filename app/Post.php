@@ -281,6 +281,10 @@ class Post extends Model
 
             $att = new \App\Attachment;
 
+            if (empty($enc['href']) || empty($enc['rel'])) {
+                continue;
+            }
+
             $att->rel = $enc['rel'];
             $att->href = $enc['href'];
             $att->category = 'other';
@@ -294,7 +298,6 @@ class Post extends Model
 
                     if (typeIsPicture($enc['type'])) {
                         $att->category = 'picture';
-                        $att->href = protectPicture($enc['href']);
                     }
                     break;
                 case 'alternate':
