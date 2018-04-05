@@ -43,8 +43,14 @@ class Menu extends \Movim\Widget\Base
         // We reload a fresh Post
         $post = $pd->get($post->origin, $post->node, $post->nodeid);
 
-        if (is_object($post)
-        && $post->isComment()
+        $post = \App\Post::where('server', $post->server)
+                          ->where('node', $post->node)
+                          ->where('nodeid', $post->nodeid)
+                          ->first();
+
+        if (!$post) return;
+
+        if ($post->isComment()
         && !$post->isMine()) {
             $contact = \App\Contact::firstOrNew(['id' => $post->aid]);
             Notification::append(
@@ -55,7 +61,6 @@ class Menu extends \Movim\Widget\Base
                 2
             );
         } elseif ($count > 0
-        && is_object($post)
         && (strtotime($post->published) > strtotime($since))) {
             if ($post->isMicroblog()) {
                 $contact = \App\Contact::firstOrNew(['id' => $post->origin]);

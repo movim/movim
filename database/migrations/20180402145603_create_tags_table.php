@@ -9,9 +9,11 @@ class CreateTagsTable extends Migration
     {
         $this->schema->create('tags', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('title', 32);
+            $table->string('name', 64);
 
             $table->timestamps();
+
+            $table->unique('name');
         });
 
         $this->schema->create('post_tag', function(Blueprint $table) {

@@ -15,10 +15,16 @@ class Post extends Model
     private $titleLimit = 200;
 
     public $attachments = [];
+    public $tags = [];
 
     public function contact()
     {
         return $this->hasOne('App\Contact', 'id', 'aid');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 
     public function attachments()
@@ -29,8 +35,10 @@ class Post extends Model
     public function save(array $options = [])
     {
         parent::save($options);
+
         $this->attachments()->delete();
         $this->attachments()->saveMany($this->attachments);
+        $this->tags()->sync($this->tags);
     }
 
     public function getOpenlinkAttribute()
@@ -176,29 +184,28 @@ class Post extends Model
         if ($delay) $this->delay = $delay;
 
         // Tags parsing
-        /*if ($entry->entry->category) {
-            $td = new \Modl\TagDAO;
-            $td->delete($this->nodeid);
-
+        if ($entry->entry->category) {
             if ($entry->entry->category->count() == 1
             && isset($entry->entry->category->attributes()->term)) {
-                $tag = new \Modl\Tag;
-                $tag->nodeid = $this->nodeid;
-                $tag->tag    = strtolower((string)$entry->entry->category->attributes()->term);
-                $td->set($tag);
+                $tag = \App\Tag::firstOrCreate([
+                    'name' => strtolower((string)$entry->entry->category->attributes()->term)
+                ]);
 
-                if ($tag->tag == 'nsfw') $this->nsfw = true;
+                $this->tags[] = $tag->id;
+
+                if ($tag->name == 'nsfw') $this->nsfw = true;
             } else {
                 foreach($entry->entry->category as $cat) {
-                    $tag = new \Modl\Tag;
-                    $tag->nodeid = $this->nodeid;
-                    $tag->tag    = strtolower((string)$cat->attributes()->term);
-                    $td->set($tag);
+                    $tag = \App\Tag::firstOrCreate([
+                        'name' => strtolower((string)$cat->attributes()->term)
+                    ]);
+
+                    $this->tags[] = $tag->id;
 
                     if ($tag->tag == 'nsfw') $this->nsfw = true;
                 }
             }
-        }*/
+        }
 
         if (current(explode('.', $this->server)) == 'nsfw') $this->nsfw = true;
 
@@ -463,11 +470,6 @@ class Post extends Model
             || $this->server == \App\User::me()->id);
     }
 
-    /*public function isPublic()
-    {
-        return ($this->open);
-    }*/
-
     public function isMicroblog()
     {
         return ($this->node == "urn:xmpp:microblog:0");
@@ -549,29 +551,27 @@ class Post extends Model
 
     public function getComments()
     {
-        /*$pd = new \Modl\PostnDAO;
+        /*
         $comments = $pd->getComments($this);
         return $comments ? $comments : [];*/
     }
 
     public function countComments()
     {
-        /*$pd = new \Modl\PostnDAO;
+        /*
         return $pd->countComments($this->commentserver, $this->commentnodeid);*/
         return 0;
     }
 
     public function countLikes()
     {
-        /*$pd = new \Modl\PostnDAO;
-        return $pd->countLikes($this->commentserver, $this->commentnodeid);*/
+        //return $pd->countLikes($this->commentserver, $this->commentnodeid);*/
         return 0;
     }
 
     public function isLiked()
     {
-        /*$pd = new \Modl\PostnDAO;
-        return $pd->isLiked($this->commentserver, $this->commentnodeid);*/
+        //return $pd->isLiked($this->commentserver, $this->commentnodeid);*/
         return false;
     }
 
@@ -582,7 +582,6 @@ class Post extends Model
 
     /*public function countReplies()
     {
-        $pd = new \Modl\PostnDAO;
         return $pd->countReplies([
             'server'    => $this->server,
             'node'      => $this->node,
@@ -609,13 +608,11 @@ class Post extends Model
 
     /*public function getNext()
     {
-        $pd = new PostnDAO;
         return $pd->getNext($this->server, $this->node, $this->nodeid);
     }
 
     public function getPrevious()
     {
-        $pd = new PostnDAO;
         return $pd->getPrevious($this->server, $this->node, $this->nodeid);
     }*/
 }
