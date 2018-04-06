@@ -189,8 +189,7 @@ class PublishBrief extends \Movim\Widget\Base
 
             if (Validator::notEmpty()->url()->validate($form->embed->value)) {
                 try {
-                    $murl = new \Modl\Url;
-                    $embed = $murl->resolve($form->embed->value);
+                    $embed = \App\Url::resolve($form->embed->value);
                     $p->setLink($form->embed->value);
 
                     $imagenumber = $form->imagenumber->value;
@@ -242,8 +241,7 @@ class PublishBrief extends \Movim\Widget\Base
         $this->rpc('Dialog_ajaxClear');
 
         try {
-            $murl = new \Modl\Url;
-            $embed = $murl->resolve($url);
+            $embed = \App\Url::resolve($url);
             $this->rpc('MovimTpl.fill', '#publishbrief ul.embed', $this->prepareEmbed($embed, $imagenumber));
             if ($embed->type == 'link') {
                 $this->rpc('PublishBrief.setTitle', $embed->title);
@@ -257,8 +255,7 @@ class PublishBrief extends \Movim\Widget\Base
     {
         try {
             $view = $this->tpl();
-            $murl = new \Modl\Url;
-            $view->assign('embed', $murl->resolve($url));
+            $view->assign('embed', \App\Url::resolve($url));
             Drawer::fill($view->draw('_publishbrief_images', true), true);
         } catch(Exception $e) {
             error_log($e->getMessage());

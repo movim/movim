@@ -80,7 +80,7 @@ class Chat extends \Movim\Widget\Base
 
         if ($message->isEmpty()) return;
 
-        if ($message->session == $message->jidto && !$history
+        if ($message->user_id == $message->jidto && !$history
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
             $roster = $this->user->session->contacts->where('jid', $from)->first();
@@ -287,11 +287,9 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
-        if ($file != false) {
-            $body = $file->uri;
-        } else {
-            $body = (string)htmlentities(trim($message), ENT_XML1, 'UTF-8');
-        }
+        $body = ($file != false)
+            ? $file->uri
+            : (string)htmlentities(trim($message), ENT_XML1, 'UTF-8');
 
         if ($body == '' || $body == '/me') {
             return;

@@ -166,11 +166,15 @@ class Login extends Base
         try {
             $key = Key::loadFromAsciiSafeString($key);
 
-            $ciphertext = App\User::find($login)->encryptedPasswords->find($deviceId);
+            $user = \App\User::find($login);
 
-            if ($ciphertext) {
-                $password = Crypto::decrypt($ciphertext->data, $key);
-                $this->doLogin($login, $password, $deviceId);
+            if ($user) {
+                $ciphertext = $user->encryptedPasswords()->find($deviceId);
+
+                if ($ciphertext) {
+                    $password = Crypto::decrypt($ciphertext->data, $key);
+                    $this->doLogin($login, $password, $deviceId);
+                }
             }
         } catch(Exception $e) {
             $this->rpc('Login.clearQuick');

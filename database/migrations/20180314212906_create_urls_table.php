@@ -11,6 +11,7 @@ class CreateUrlsTable extends Migration
             $table->string('hash');
             $table->text('cache');
             $table->primary('hash');
+            $table->timestamps();
         });
     }
 
