@@ -1,59 +1,59 @@
-{if="$next || $previous"}
+{if="$post->next || $post->previous"}
     <ul class="list card flex active">
-        {if="$previous"}
+        {if="$post->previous"}
             <li class="block"
-                onclick="MovimUtils.redirect('{$c->route('post', [$previous->origin, $previous->node, $previous->nodeid])}')">
+                onclick="MovimUtils.redirect('{$c->route('post', [$post->previous->server, $post->previous->node, $post->previous->nodeid])}')">
                 <span class="primary icon gray">
                     <i class="zmdi zmdi-arrow-left"></i>
                 </span>
-                <p class="line" {if="isset($previous->title)"}title="{$previous->title}"{/if}>
-                {if="isset($previous->title)"}
-                    {$previous->title}
+                <p class="line" {if="isset($post->previous->title)"}title="{$post->previous->title}"{/if}>
+                {if="isset($post->previous->title)"}
+                    {$post->previous->title}
                 {else}
-                    {$previous->node}
+                    {$post->previous->node}
                 {/if}
                 </p>
-                <p class="line">{$previous->getSummary()}</p>
+                <p class="line">{$post->previous->getSummary()}</p>
                 <p>
-                    {$likes = $previous->countLikes()}
+                    {$likes = $post->previous->countLikes()}
                     {if="$likes > 0"}
                         {$likes} <i class="zmdi zmdi-favorite-outline"></i>
                     {/if}
-                    {$count = $previous->countComments()}
+                    {$count = $post->previous->countComments()}
                     {if="$count > 0"}
                         {$count} <i class="zmdi zmdi-comment-outline"></i>
                     {/if}
                     <span class="info">
-                        {$previous->published|strtotime|prepareDate}
+                        {$post->previous->published|strtotime|prepareDate}
                     </span>
                 </p>
             </li>
         {/if}
-        {if="$next"}
+        {if="$post->next"}
             <li class="block"
-                onclick="MovimUtils.redirect('{$c->route('post', [$next->origin, $next->node, $next->nodeid])}')">
+                onclick="MovimUtils.redirect('{$c->route('post', [$post->next->server, $post->next->node, $post->next->nodeid])}')">
                 <span class="control icon gray">
                     <i class="zmdi zmdi-arrow-right"></i>
                 </span>
-                <p class="line" {if="isset($next->title)"}title="{$next->title}"{/if}>
-                {if="isset($next->title)"}
-                    {$next->title}
+                <p class="line" {if="isset($post->next->title)"}title="{$post->next->title}"{/if}>
+                {if="isset($post->next->title)"}
+                    {$post->next->title}
                 {else}
-                    {$next->node}
+                    {$post->next->node}
                 {/if}
                 </p>
-                <p class="line">{$next->getSummary()}</p>
+                <p class="line">{$post->next->getSummary()}</p>
                 <p>
-                    {$likes = $next->countLikes()}
+                    {$likes = $post->next->countLikes()}
                     {if="$likes > 0"}
                         {$likes} <i class="zmdi zmdi-favorite-outline"></i>
                     {/if}
-                    {$count = $next->countComments()}
+                    {$count = $post->next->countComments()}
                     {if="$count > 0"}
                         {$count} <i class="zmdi zmdi-comment-outline"></i>
                     {/if}
                     <span class="info">
-                        {$next->published|strtotime|prepareDate}
+                        {$post->next->published|strtotime|prepareDate}
                     </span>
                 </p>
             </li>

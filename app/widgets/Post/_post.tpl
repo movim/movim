@@ -228,6 +228,6 @@
     {/if}
 {/if}
 
-{$prevnext}
+{$c->preparePreviousNext($post)}
 </article>
 <span class="clear padded"></span>

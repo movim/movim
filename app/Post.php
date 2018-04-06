@@ -67,6 +67,24 @@ class Post extends Model
         return $this->attachments()->where('category', 'picture')->get();
     }
 
+    public function getPreviousAttribute()
+    {
+        return \App\Post::where('server', $this->server)
+                       ->where('node', $this->node)
+                       ->where('published', '<', $this->published)
+                       ->orderBy('published', 'desc')
+                       ->first();
+    }
+
+    public function getNextAttribute()
+    {
+        return \App\Post::where('server', $this->server)
+                       ->where('node', $this->node)
+                       ->where('published', '>', $this->published)
+                       ->orderBy('published')
+                       ->first();
+    }
+
     private function extractContent($contents)
     {
         $content = '';
