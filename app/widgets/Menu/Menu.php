@@ -40,15 +40,10 @@ class Menu extends \Movim\Widget\Base
 
         if (!is_object($post)) return;
 
-        // We reload a fresh Post
-        $post = $pd->get($post->origin, $post->node, $post->nodeid);
-
         $post = \App\Post::where('server', $post->server)
-                          ->where('node', $post->node)
-                          ->where('nodeid', $post->nodeid)
-                          ->first();
-
-        if (!$post) return;
+                         ->where('node', $post->node)
+                         ->where('nodeid', $post->nodeid)
+                         ->first();
 
         if ($post->isComment()
         && !$post->isMine()) {
@@ -65,11 +60,9 @@ class Menu extends \Movim\Widget\Base
             if ($post->isMicroblog()) {
                 $contact = \App\Contact::firstOrNew(['id' => $post->origin]);
 
-                if ($post->title == null) {
-                    $title = __('post.default_title');
-                } else {
-                    $title = $post->title;
-                }
+                $title = ($post->title == null)
+                    ? __('post.default_title')
+                    : $post->title;
 
                 if (!$post->isMine()) {
                     Notification::append(
@@ -145,73 +138,63 @@ class Menu extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
         $count = $pd->getCountSince(\App\Cache::c('since'));
         // getting newer, not older
-        if ($page == 0 || $page == ""){
+        if ($page == 0 || $page == ''){
             $count = 0;
             \App\Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
         }
 
+        $items = \App\Post::skip($page * $this->_paging + $count);
+
+        if (in_array($type, ['all', 'feed'])) {
+            $items = $items->whereIn('server', function($query) {
+                $query->from('rosters')
+                      ->select('jid')
+                      ->where('session_id', SESSION_ID)
+                      ->where('subscription', 'both');
+            })
+            ->orWhereIn('id', function($query) {
+                $query->select('id')
+                      ->from('posts')
+                      ->where('node', 'urn:xmpp:microblog:0')
+                      ->where('server', $this->user->id);
+            });
+        }
+
+        if (in_array($type, ['all', 'news'])) {
+            $items = $items->orWhereIn('id', function($query) {
+                $query->select('id')
+                      ->from('posts')
+                      ->whereIn('server', function($query) {
+                        $query->select('server')
+                              ->from('subscriptions')
+                              ->where('jid', $this->user->id);
+                      })
+                      ->whereIn('node', function($query) {
+                        $query->select('node')
+                              ->from('subscriptions')
+                              ->where('jid', $this->user->id);
+                      });
+            });
+        }
+
         $next = $page + 1;
 
-        switch ($type) {
-            case 'all' :
-                $items = \App\Post::whereIn('server', function($query) {
-                    $query->from('rosters')
-                          ->select('jid')
-                          ->where('session_id', SESSION_ID)
-                          ->where('subscription', 'both');
-                })
-                ->orWhereIn('id', function($query) {
-                    $query->select('id')
-                          ->from('posts')
-                          ->where('node', 'urn:xmpp:microblog:0')
-                          ->where('server', $this->user->id);
-                })
-                ->orWhereIn('id', function($query) {
-                    $query->select('id')
-                          ->from('posts')
-                          ->whereIn('server', function($query) {
-                            $query->select('server')
-                                  ->from('subscriptions')
-                                  ->where('jid', $this->user->id);
-                          })
-                          ->whereIn('node', function($query) {
-                            $query->select('node')
-                                  ->from('subscriptions')
-                                  ->where('jid', $this->user->id);
-                          });
-                });
-                $view->assign('history', $this->call('ajaxGetAll', $next));
-                break;
-            /*case 'news' :
-                $view->assign('history', $this->call('ajaxGetNews', $next));
-                $items  = $pd->getNews($page * $this->_paging + $count, $this->_paging);
-                break;
-            case 'feed' :
-                $view->assign('history', $this->call('ajaxGetFeed', $next));
-                $items  = $pd->getFeed($page * $this->_paging + $count, $this->_paging);
-                break;
-            case 'me' :
-                $view->assign('jid', $this->user->getLogin());
-                $view->assign('history', $this->call('ajaxGetMe', $next));
-                $items  = $pd->getMe($page * $this->_paging + $count, $this->_paging);
-                break;
-            case 'node' :
-                $view->assign('history', $this->call('ajaxGetNode', '"'.$server.'"', '"'.$node.'"', '"'.$next.'"'));
-                $items  = $pd->getNode($server, $node, $page * $this->_paging + $count, $this->_paging);
-                break;*/
+        $view->assign('history', $this->call('ajaxGetAll', $next));
+
+        if ($type == 'news') {
+            $view->assign('history', $this->call('ajaxGetNews', $next));
+        } elseif ($type == 'feed') {
+            $view->assign('history', $this->call('ajaxGetFeed', $next));
         }
 
         $view->assign('items', $items
             ->orderBy('published', 'desc')
-            ->skip($page * $this->_paging + $count)
             ->take($this->_paging)->get());
         $view->assign('type', $type);
         $view->assign('page', $page);
         $view->assign('paging', $this->_paging);
 
-        $html = $view->draw('_menu_list', true);
-
-        return $html;
+        return $view->draw('_menu_list', true);
     }
 
     function preparePost($p)

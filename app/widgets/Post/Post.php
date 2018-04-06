@@ -218,7 +218,6 @@ class Post extends \Movim\Widget\Base
     function preparePost($p, $external = false, $public = false, $card = false)
     {
         $view = $this->tpl();
-
         $view->assign('external', $external);
 
         if (isset($p)) {
@@ -232,15 +231,11 @@ class Post extends \Movim\Widget\Base
             }
 
             $view->assign('repost', false);
-
-            $view->assign('prevnext', '');
             $view->assign('comments', '');
 
             if (!$external) {
-                $prevnext = $this->tpl();
                 //$prevnext->assign('next', $p->getNext());
                 //$prevnext->assign('previous', $p->getPrevious());
-                $view->assign('prevnext', $prevnext->draw('_post_prevnext', true));
             } else {
                 $comments = $this->tpl();
                 //$comments->assign('comments', $p->getComments());
@@ -257,11 +252,9 @@ class Post extends \Movim\Widget\Base
             $view->assign('nsfw', User::me()->nsfw);
             $view->assign('post', $p);
 
-            if ($card) {
-                return $view->draw('_post_card', true);
-            }
-
-            return $view->draw('_post', true);
+            return ($card)
+                ? $view->draw('_post_card', true)
+                : $view->draw('_post', true);
         } elseif (!$external) {
             return $this->prepareNotFound();
         }
