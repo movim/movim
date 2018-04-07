@@ -68,11 +68,11 @@ class Session
         }
 
         if ($this->countClients() == 0) {
-            $loop->addPeriodicTimer(20, function($timer) {
+            $loop->addPeriodicTimer(20, function($timer) use ($loop) {
                 if ($this->countClients() == 0) {
                     $this->stateOut('down');
                 }
-                $timer->cancel();
+                $loop->cancelTimer($timer);
             });
         }
     }
