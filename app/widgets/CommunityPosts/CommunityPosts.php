@@ -132,8 +132,6 @@ class CommunityPosts extends \Movim\Widget\Base
         $last = false,
         $count = false)
     {
-        $pd = new \Modl\PostnDAO;
-
         $ids = is_array($ids) ? $ids : [];
         foreach($ids as $key => $id) {
             if (empty($id)) {
@@ -187,7 +185,16 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('paging', $this->_paging);
 
         $view->assign('publicposts', ($ids == false)
-            ? $pd->getPublic($origin, $node, $page*$this->_paging, $this->_paging)
+            ? \App\Post::where('server', $origin)
+                       ->where('node', $node)
+                       ->where(function ($query) {
+                            $query->where('nsfw', $this->user->nsfw)
+                                  ->orWhere('nsfw', false);
+                       })
+                       ->orderBy('published', 'desc')
+                       ->skip($page * $this->_paging)
+                       ->take($this->_paging)
+                       ->get()
             : false);
 
         $view->assign('first', $first);
