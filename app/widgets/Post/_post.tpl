@@ -228,6 +228,8 @@
     {/if}
 {/if}
 
-{$c->preparePreviousNext($post)}
+{if="!$external"}
+    {$c->preparePreviousNext($post)}
+{/if}
 </article>
 <span class="clear padded"></span>

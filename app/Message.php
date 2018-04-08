@@ -124,7 +124,6 @@ class Message extends Model
             }
 
             if ($this->type == 'groupchat') {
-                //$pd = new \Modl\PresenceDAO;
                 //$p = $pd->getMyPresenceRoom($this->jidfrom);
 
                 /*if (is_object($p)

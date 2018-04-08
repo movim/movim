@@ -276,8 +276,6 @@ class Base
     {
         if (isset($_GET[$name])) {
             return htmlentities($_GET[$name]);
-        } else {
-            return false;
         }
     }
 

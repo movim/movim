@@ -49,6 +49,11 @@ class User extends Model
         return ($me) ? $me : new User;
     }
 
+    public function isLogged()
+    {
+        return (bool)(Session::start())->get('jid');
+    }
+
     public function getJidAttribute()
     {
         return (Session::start())->get('jid');

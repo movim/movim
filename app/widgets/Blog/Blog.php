@@ -15,7 +15,7 @@ class Blog extends \Movim\Widget\Base
     private $_id;
     private $_contact;
     private $_messages = [];
-    private $_page;
+    private $_page = 0;
     private $_mode;
     private $_tag;
 
@@ -55,7 +55,7 @@ class Blog extends \Movim\Widget\Base
             $this->title = '#'.$this->_tag;
         } else {
             $this->_from = $this->get('f');
-            $this->_contact = App\Contact::find($this->_from);
+            $this->_contact = \App\Contact::find($this->_from);
 
             if (filter_var($this->_from, FILTER_VALIDATE_EMAIL)) {
                 $this->_node = 'urn:xmpp:microblog:0';
@@ -85,67 +85,69 @@ class Blog extends \Movim\Widget\Base
         $pd = new \Modl\PostnDAO;
 
         if ($this->_id = $this->get('i')) {
-            if (Validator::stringType()->between('1', '100')->validate($this->_id)) {
-                if (isset($this->_tag)) {
-                    $this->_messages = $pd->getPublicTag($this->_tag, $this->_id * $this->_paging, $this->_paging + 1);
-                } else {
-                    $this->_messages = \App\Post::where('server', $this->_from)
-                        ->where('node', $this->_node)
-                        ->skip($this->_id * $this->_paging)
-                        ->take($this->_paging + 1)
-                        ->get();
+            $this->_messages[0] = \App\Post::where('server', $this->_from)
+                    ->where('node', $this->_node)
+                    ->where('nodeid', $this->_id)
+                    ->first();
+
+            if (is_object($this->_messages[0])) {
+                $this->title = $this->_messages[0]->title;
+
+                $description = stripTags($this->_messages[0]->contentcleaned);
+                if (!empty($description)) {
+                    $this->description = truncate($description, 100);
                 }
-                $this->_page = $this->_id + 1;
-            } elseif (Validator::stringType()->length(5, 100)->validate($this->_id)) {
-                $this->_messages[0] = \App\Post::where('server', $this->_from)
-                        ->where('node', $this->_node)
-                        ->where('nodeid', $this->_id)
-                        ->first();
-
-                if (is_object($this->_messages[0])) {
-                    $this->title = $this->_messages[0]->title;
-
-                    $description = stripTags($this->_messages[0]->contentcleaned);
-                    if (!empty($description)) {
-                        $this->description = truncate($description, 100);
-                    }
-                }
-
-                if ($this->_view == 'node') {
-                    $this->url = $this->route('node', [$this->_from, $this->_node, $this->_id]);
-                } else {
-                    $this->url = $this->route('blog', [$this->_from, $this->_id]);
-                }
-
-                $this->links[] = [
-                    'rel' => 'alternate',
-                    'type' => 'application/atom+xml',
-                    'href' => 'xmpp:'
-                        . rawurlencode($this->_from)
-                        . '?;node='
-                        . rawurlencode($this->_node)
-                        . ';item='
-                        . rawurlencode($this->_id)
-                ];
             }
+
+            if ($this->_view == 'node') {
+                $this->url = $this->route('node', [$this->_from, $this->_node, $this->_id]);
+            } else {
+                $this->url = $this->route('blog', [$this->_from, $this->_id]);
+            }
+
+            $this->links[] = [
+                'rel' => 'alternate',
+                'type' => 'application/atom+xml',
+                'href' => 'xmpp:'
+                    . rawurlencode($this->_from)
+                    . '?;node='
+                    . rawurlencode($this->_node)
+                    . ';item='
+                    . rawurlencode($this->_id)
+            ];
         } else {
-            $this->_page = 1;
+            $this->_page = ($this->get('page')) ? $this->get('page') : 0;
             if (isset($this->_tag)) {
-                $this->_messages = $pd->getPublicTag($this->_tag, 0, $this->_paging + 1);
+                $tag = \App\Tag::where('name', $this->_tag)->first();
+                if ($tag) {
+                    $this->_messages = $tag->posts()
+                         ->orderBy('published', 'desc')
+                         ->take($this->_paging + 1)
+                         ->skip($this->_page * $this->_paging)->get();
+                }
             } else {
                 $this->_messages = \App\Post::where('server', $this->_from)
                         ->where('node', $this->_node)
                         ->where('open', true)
+                        ->orderBy('published', 'desc')
+                        ->skip($this->_page * $this->_paging)
                         ->take($this->_paging + 1)
                         ->get();
             }
         }
 
-        if (is_array($this->messages)
-        && count($this->_messages) == $this->_paging + 1) {
-            array_pop($this->_messages);
+        if (!is_array($this->_messages)
+        && $this->_messages->count() == $this->_paging + 1) {
+            $this->_messages->pop();
+            if ($this->_mode == 'blog') {
+                $this->_next = $this->route('blog', $this->_from, ['page' => $this->_page + 1]);
+            } elseif ($this->_mode == 'tag') {
+                $this->_next = $this->route('tag', $this->_tag, ['page' => $this->_page + 1]);
+            } else {
+                $this->_next = $this->route('node', [$this->_from, $this->_node], ['page' => $this->_page + 1]);
+            }
         } else {
-            $this->_page = null;
+            $this->_next = null;
         }
 
         if ($this->_node == 'urn:xmpp:microblog:0') {
@@ -160,14 +162,7 @@ class Blog extends \Movim\Widget\Base
 
     public function preparePost($p)
     {
-        $pw = new Post;
-        return $pw->preparePost($p, true, true);
-    }
-
-    public function prepareCard($p)
-    {
-        $pw = new Post;
-        return $pw->preparePost($p, true, ($this->_view != 'tag'), true);
+        return (new Post)->preparePost($p, true, true);
     }
 
     function display()
@@ -178,7 +173,7 @@ class Blog extends \Movim\Widget\Base
         $this->view->assign('item', $this->_item);
         $this->view->assign('contact', $this->_contact);
         $this->view->assign('mode', $this->_mode);
-        $this->view->assign('more', $this->_page);
+        $this->view->assign('next', $this->_next);
         $this->view->assign('posts', $this->_messages);
 
         $this->view->assign('tag', $this->_tag);
@@ -189,20 +184,12 @@ class Blog extends \Movim\Widget\Base
         $validate_server = Validator::stringType()->noWhitespace()->length(6, 40);
         $validate_node = Validator::stringType()->length(3, 100);
 
-        if (!$validate_server->validate($server)
-        || !$validate_node->validate($node)
-        ) return false;
-        else return true;
+        return ($validate_server->validate($server)
+             && $validate_node->validate($node));
     }
 
     private function validateTag($tag)
     {
         return Validator::stringType()->notEmpty()->noWhitespace()->validate($tag);
-    }
-
-    function getComments($post)
-    {
-        $pd = new \Modl\PostnDAO;
-        return $pd->getComments($post);
     }
 }

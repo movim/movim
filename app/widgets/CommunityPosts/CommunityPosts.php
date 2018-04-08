@@ -24,12 +24,6 @@ class CommunityPosts extends \Movim\Widget\Base
         $this->addjs('communityposts.js');
     }
 
-    /*function onItems($packet)
-    {
-        list($origin, $node) = array_values($packet->content);
-        $this->displayItems($origin, $node);
-    }*/
-
     function onItemsId($packet)
     {
         list($origin, $node, $ids, $first, $last, $count, $paginated)
