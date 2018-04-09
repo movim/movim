@@ -29,6 +29,18 @@ class Post extends Model
         return $this->belongsToMany('App\Tag')->withTimestamps();
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Post', 'parent_id', 'id')
+                    ->where('like', false);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany('App\Post', 'parent_id', 'id')
+                    ->where('like', true);
+    }
+
     public function attachments()
     {
         return $this->hasMany('App\Attachment');
@@ -284,6 +296,8 @@ class Post extends Model
             }
         }
 
+        $this->like = $this->isLike();
+
         $this->setAttachments($entry->entry->link, $extra);
 
         if ($this->isComment()) {
@@ -355,14 +369,14 @@ class Post extends Model
 
             $this->attachments[] = $att;
 
-            /*if ((string)$attachment->attributes()->title == 'comments') {
+            if ((string)$attachment->attributes()->title == 'comments') {
                 $url = parse_url(urldecode((string)$attachment->attributes()->href));
 
                 if ($url) {
                     $this->commentserver = $url['path'];
                     $this->commentnodeid = substr($url['query'], 36);
                 }
-            }*/
+            }
         }
     }
 
@@ -584,15 +598,12 @@ class Post extends Model
 
     public function countComments()
     {
-        /*
-        return $pd->countComments($this->commentserver, $this->commentnodeid);*/
-        return 0;
+        return $this->comments()->count();
     }
 
     public function countLikes()
     {
-        //return $pd->countLikes($this->commentserver, $this->commentnodeid);*/
-        return 0;
+        return $this->likes()->count();
     }
 
     public function isLiked()

@@ -218,8 +218,6 @@
     {/if}
 </footer>
 
-{$comments}
-
 {if="!$public"}
     {if="$commentsdisabled"}
         {$commentsdisabled}

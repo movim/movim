@@ -23,12 +23,11 @@ class CreatePostsTable extends Migration
 
             $table->string('commentserver', 64)->nullable();
             $table->string('commentnodeid', 192)->nullable();
-            $table->string('parentorigin', 64)->nullable();
-            $table->string('parentnode', 96)->nullable();
-            $table->string('parentnodeid', 96)->nullable();
+            $table->integer('parent_id')->nullable();
 
             $table->boolean('open')->default(false);
             $table->boolean('nsfw')->default(false);
+            $table->boolean('like')->default(false);
 
             $table->datetime('published')->nullable();
             $table->datetime('updated')->nullable();

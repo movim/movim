@@ -56,12 +56,8 @@ class Post extends \Movim\Widget\Base
 
     function onComments($packet)
     {
-        list($server, $node, $id) = array_values($packet->content);
-
-        $pd = new \Modl\PostnDAO;
-        $p = $pd->get($server, $node, $id);
-
-        $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($p));
+        $post = \App\Post::find($packet->content);
+        $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($post));
     }
 
     function onCommentsError($packet)
@@ -122,12 +118,14 @@ class Post extends \Movim\Widget\Base
 
     function ajaxGetPostComments($server, $node, $id)
     {
-        /*$pd = new \Modl\PostnDAO;
-        $p  = $pd->get($server, $node, $id);
+        $post = \App\Post::where('server', $server)
+                         ->where('node', $node)
+                         ->where('nodeid', $id)
+                         ->first();
 
-        if ($p) {
-            $this->requestComments($p);
-        }*/
+        if ($post) {
+            $this->requestComments($post);
+        }
     }
 
     function ajaxShare($server, $node, $id)
@@ -140,18 +138,15 @@ class Post extends \Movim\Widget\Base
         }*/
     }
 
-    function requestComments(\Modl\ContactPostn $post)
+    function requestComments(\App\Post $post)
     {
-        /*$pd = new \Modl\PostnDAO;
-        $pd->deleteNode($post->commentserver, "urn:xmpp:microblog:0:comments/".$post->commentnodeid);
+        \App\Post::where('parent_id', $post->id)->delete();
 
         $c = new CommentsGet;
         $c->setTo($post->commentserver)
           ->setId($post->commentnodeid)
-          ->setParentOrigin($post->server)
-          ->setParentNode($post->node)
-          ->setParentNodeId($post->nodeid)
-          ->request();*/
+          ->setParentId($post->id)
+          ->request();
     }
 
     public function publishComment($comment, $to, $node, $id)
@@ -184,26 +179,11 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    public function prepareComments($post)
+    public function prepareComments(\App\Post $post)
     {
-        if ($post == null) return;
-
         $emoji = \MovimEmoji::getInstance();
-
-        $comments = $post->getComments();
-
-        $likes = [];
-        foreach ($comments as $key => $comment) {
-            if ($comment->isLike()) {
-                $likes[] = $comment;
-                unset($comments[$key]);
-            }
-        }
-
         $view = $this->tpl();
         $view->assign('post', $post);
-        $view->assign('comments', $comments);
-        $view->assign('likes', $likes);
         $view->assign('hearth', $emoji->replace('♥'));
 
         return $view->draw('_post_comments', true);
@@ -215,7 +195,7 @@ class Post extends \Movim\Widget\Base
         return $view->draw('_post_not_found', true);
     }
 
-    function preparePost($p, $external = false, $public = false, $card = false)
+    function preparePost(\App\Post $p, $external = false, $public = false, $card = false)
     {
         $view = $this->tpl();
         $view->assign('external', $external);
@@ -223,7 +203,7 @@ class Post extends \Movim\Widget\Base
         if (isset($p)) {
             if ($p->hasCommentsNode()
             && !$external) {
-                //$this->requestComments($p); // Broken in case of repost
+                $this->requestComments($p); // Broken in case of repost
                 $view->assign('commentsdisabled', false);
             } else {
                 $viewd = $this->tpl();
@@ -233,8 +213,6 @@ class Post extends \Movim\Widget\Base
             $view->assign('repost', false);
 
             $comments = $this->tpl();
-            //$comments->assign('comments', $p->getComments());
-            $view->assign('comments', $comments->draw('_post_comments_external', true));
             $view->assign('public', $public);
             $view->assign('reply', $p->isReply() ? $p->getReply() : false);
 
