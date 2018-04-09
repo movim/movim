@@ -69,6 +69,11 @@ class Post extends Model
         return $this->attachments()->where('category', 'picture')->get();
     }
 
+    public function getPictureAttribute()
+    {
+        return $this->attachments()->where('category', 'picture')->first();
+    }
+
     public function getPreviousAttribute()
     {
         return \App\Post::where('server', $this->server)
@@ -608,33 +613,6 @@ class Post extends Model
             'node'      => $this->node,
             'nodeid'    => $this->nodeid
         ]);
-    }*/
-
-    /*public function getTags()
-    {
-        $td = new \Modl\TagDAO;
-        $tags = $td->getTags($this->nodeid);
-        if (is_array($tags)) {
-            return array_map(function($tag) { return $tag->tag; }, $tags);
-        }
-    }
-
-    public function getTagsImploded()
-    {
-        $tags = $this->getTags();
-        if (is_array($tags)) {
-            return implode(', ', $tags);
-        }
-    }*/
-
-    /*public function getNext()
-    {
-        return $pd->getNext($this->server, $this->node, $this->nodeid);
-    }
-
-    public function getPrevious()
-    {
-        return $pd->getPrevious($this->server, $this->node, $this->nodeid);
     }*/
 }
 

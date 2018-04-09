@@ -121,6 +121,9 @@ class Presence extends \Movim\Widget\Base
         $c = new \Moxl\Xec\Action\Disco\Request;
         $c->setTo($session->get('host'))
           ->request();
+
+        $c->setTo($session->get('jid'))
+          ->request();
     }
 
     // We discover the server services
@@ -128,8 +131,6 @@ class Presence extends \Movim\Widget\Base
     {
         $session = Session::start();
         $c = new \Moxl\Xec\Action\Disco\Items;
-        $c->setTo($session->get('jid'))
-          ->request();
 
         $c->setTo($session->get('host'))
           ->request();

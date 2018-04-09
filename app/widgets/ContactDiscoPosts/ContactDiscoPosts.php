@@ -12,14 +12,19 @@ class ContactDiscoPosts extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#contactdiscoposts', $this->preparePosts());
     }
 
+    public function prepareTicket(\App\Post $post)
+    {
+        return (new Post)->prepareTicket($post);
+    }
+
     public function preparePosts()
     {
         $view = $this->tpl();
 
-        $nd = new \Modl\PostnDAO;
-        $blogs = $nd->getLastBlogPublic(0, 36);
-        $blogs = is_array($blogs) ? $blogs : [];
-
+        $blogs = \App\Post::where('node', 'urn:xmpp:microblog:0')
+                          ->where('open', true)
+                          ->orderBy('published', 'desc')
+                          ->get();
         $view->assign('blogs', $blogs);
 
         return $view->draw('_contactdiscoposts', true);

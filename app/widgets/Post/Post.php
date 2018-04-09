@@ -254,6 +254,14 @@ class Post extends \Movim\Widget\Base
         }
     }
 
+    function prepareTicket(\App\Post $post)
+    {
+        $view = $this->tpl();
+        $view->assign('post', $post);
+
+        return $view->draw('_post_ticket', true);
+    }
+
     public function preparePostLinks(\App\Post $post)
     {
         $view = $this->tpl();

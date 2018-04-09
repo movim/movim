@@ -104,7 +104,7 @@
                 <p></p>
             {/if}
             <p>
-                {if="$contact->truename != ''"}
+                {if="$contact && $contact->truename != ''"}
                     {if="!$public"}
                     <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                     {/if}
