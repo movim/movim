@@ -11,8 +11,14 @@
                 {loop="$post->likes"}
                     {if="$value->isMine()"}{$liked = [$value->server, $value->node, $value->nodeid]}{/if}
                         <a title="{$value->published|strtotime|prepareDate:true,true}"
-                           href="{$c->route('contact', $value->contact->jid)}">
-                            {$value->contact->truename}</a>{if="$key + 1 < count($likes)"},
+                           href="{$c->route('contact', $value->aid)}">
+                            {if="$value->contact"}
+                                {$value->contact->truename}
+                            {else}
+                                {$value->aid}
+                            {/if}
+                        </a>
+                        {if="$key + 1 < count($post->likes()->count())"},
                     {/if}
                 {/loop}
             </p>

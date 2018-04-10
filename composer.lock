@@ -2205,12 +2205,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/friends-of-reactphp/zmq.git",
-                "reference": "0a8972ebe30b5b0de8a882e59e218968bd8dabb6"
+                "reference": "2b7903b4c6a4bf4c7f23552bec7f24cbb5eeffc2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/friends-of-reactphp/zmq/zipball/0a8972ebe30b5b0de8a882e59e218968bd8dabb6",
-                "reference": "0a8972ebe30b5b0de8a882e59e218968bd8dabb6",
+                "url": "https://api.github.com/repos/friends-of-reactphp/zmq/zipball/2b7903b4c6a4bf4c7f23552bec7f24cbb5eeffc2",
+                "reference": "2b7903b4c6a4bf4c7f23552bec7f24cbb5eeffc2",
                 "shasum": ""
             },
             "require": {
@@ -2238,7 +2238,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2018-03-07 08:05:05"
+            "time": "2018-04-10 05:50:26"
         },
         {
             "name": "respect/validation",

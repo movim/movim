@@ -43,23 +43,34 @@
             {/if}
 
             {if="$post->isMicroblog()"}
-                {$url = $contact->getPhoto('s')}
                 {if="$post->nsfw"}
                     <span class="primary icon bubble color red tiny">
                         +18
                     </span>
-                {elseif="$url"}
-                    <span class="icon primary bubble">
-                        <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
-                            <img src="{$url}">
-                        </a>
-                    </span>
                 {else}
-                    <span class="icon primary bubble color {$contact->jid|stringToColor}">
-                        <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
-                            <i class="zmdi zmdi-account"></i>
-                        </a>
-                    </span>
+                    {if="$post->contact"}
+                        {$url = $contact->getPhoto('s')}
+
+                        {if="$url"}
+                            <span class="icon primary bubble">
+                                <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
+                                    <img src="{$url}">
+                                </a>
+                            </span>
+                        {else}
+                            <span class="icon primary bubble color {$contact->jid|stringToColor}">
+                                <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
+                                    <i class="zmdi zmdi-account"></i>
+                                </a>
+                            </span>
+                        {/if}
+                    {else}
+                        <span class="icon primary bubble color {$post->aid|stringToColor}">
+                            <a href="#" onclick="Post_ajaxGetContact('{$post->aid}')">
+                                <i class="zmdi zmdi-account"></i>
+                            </a>
+                        </span>
+                    {/if}
                 {/if}
             {else}
                 {if="$post->nsfw"}
@@ -104,7 +115,7 @@
                 <p></p>
             {/if}
             <p>
-                {if="$contact && $contact->truename != ''"}
+                {if="$contact"}
                     {if="!$public"}
                     <a href="#" onclick="if (typeof Post_ajaxGetContact == 'function') { Post_ajaxGetContact('{$contact->jid}'); } else { Group_ajaxGetContact('{$contact->jid}'); } ">
                     {/if}

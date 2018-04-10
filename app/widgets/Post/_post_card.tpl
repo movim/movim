@@ -6,11 +6,17 @@
                     +18
                 </span>
             {elseif="$post->isMicroblog()"}
-                {$url = $post->contact->getPhoto('m')}
-                {if="$url"}
-                    <span class="primary icon bubble">
-                        <img src="{$url}"/>
-                    </span>
+                {if="$post->contact"}
+                    {$url = $post->contact->getPhoto('m')}
+                    {if="$url"}
+                        <span class="primary icon bubble">
+                            <img src="{$url}"/>
+                        </span>
+                    {else}
+                        <span class="primary icon bubble color {$post->aid|stringToColor}">
+                            <i class="zmdi zmdi-account"></i>
+                        </span>
+                    {/if}
                 {else}
                     <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
                         <i class="zmdi zmdi-account"></i>
@@ -32,12 +38,16 @@
             <p>
                 {if="$post->isMicroblog()"}
                     <a  {if="$public"}
-                            href="{$c->route('blog', $post->contact->jid)}"
+                            href="{$c->route('blog', $post->aid)}"
                         {else}
-                            href="{$c->route('contact', $post->contact->jid)}"
+                            href="{$c->route('contact', $post->aid)}"
                         {/if}
                     >
-                        {$post->contact->truename}
+                        {if="$post->contact"}
+                            {$post->contact->truename}
+                        {else}
+                            {$post->aid}
+                        {/if}
                     </a> –
                 {else}
                     {if="$public"}
