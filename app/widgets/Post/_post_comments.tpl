@@ -10,12 +10,11 @@
             <p class="all">
                 {loop="$post->likes"}
                     {if="$value->isMine()"}{$liked = [$value->server, $value->node, $value->nodeid]}{/if}
-                        <a title="{$value->published|strtotime|prepareDate:true,true}"
-                           href="{$c->route('contact', $value->aid)}">
-                            {$value->truename}
-                        </a>
-                        {if="$key + 1 < count($post->likes()->count())"},
-                    {/if}
+                    <a title="{$value->published|strtotime|prepareDate:true,true}"
+                       href="{$c->route('contact', $value->aid)}">
+                        {$value->truename}
+                    </a>
+                    {if="$key + 1 < $post->likes()->count()"},{/if}
                 {/loop}
             </p>
         </li>
