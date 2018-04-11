@@ -188,6 +188,7 @@ class Menu extends \Movim\Widget\Base
         }
 
         $view->assign('items', $items
+            ->where('parent_id', null)
             ->orderBy('published', 'desc')
             ->take($this->_paging)->get());
         $view->assign('type', $type);

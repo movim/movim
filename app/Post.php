@@ -504,11 +504,10 @@ class Post extends Model
     }
 
     // Works only for the microblog posts
-    /*public function getParent()
+    public function getParent()
     {
-        $pd = new PostnDAO;
-        return $pd->get($this->parentserver, $this->parentnode, $this->parentnodeid);
-    }*/
+        return \App\Post::find($this->parent_id);
+    }
 
     public function isMine($force = false)
     {
@@ -611,8 +610,7 @@ class Post extends Model
 
     public function isLiked()
     {
-        //return $pd->isLiked($this->commentserver, $this->commentnodeid);*/
-        return false;
+        return ($this->likes()->where('aid', \App\User::me()->id)->count() > 0);
     }
 
     public function isRecycled()

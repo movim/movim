@@ -24,28 +24,19 @@ class Post extends \Movim\Widget\Base
 
     function onHandle($packet)
     {
-        $content = $packet->content;
+        $post = $packet->content;
 
-        if (is_array($content) && isset($content['nodeid'])) {
-            $p = \App\Post::where('server', $content['server'])
-                          ->where('node', $content['node'])
-                          ->where('nodeid', $content['nodeid'])
-                          ->first();
-
-            if ($p) {
-                //if ($p->isComment()) {
-                    /*$this->rpc(
-                        'MovimTpl.fill',
-                        '#comments',
-                        $this->prepareComments($p->getParent())
-                    );*/
-                //} else {
-                    $this->rpc('MovimTpl.fill',
-                        '#post_widget.'.cleanupId($p->nodeid),
-                        $this->preparePost($p));
-                    $this->rpc('MovimUtils.enhanceArticlesContent');
-                //}
-            }
+        if ($post->isComment()) {
+            $this->rpc(
+                'MovimTpl.fill',
+                '#comments',
+                $this->prepareComments($post->getParent())
+            );
+        } else {
+            $this->rpc('MovimTpl.fill',
+                '#post_widget.'.cleanupId($post->nodeid),
+                $this->preparePost($post));
+            $this->rpc('MovimUtils.enhanceArticlesContent');
         }
     }
 
@@ -154,18 +145,18 @@ class Post extends \Movim\Widget\Base
         if (!Validator::stringType()->notEmpty()->validate($comment)
         || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)) return;
 
-        $pd = new \Modl\PostnDAO;
-        $p = $pd->get($to, $node, $id);
+        $p = \App\Post::where('server', $to)
+                      ->where('node', $node)
+                      ->where('nodeid', $id)
+                      ->first();
 
         if ($p) {
             $cp = new CommentPublish;
             $cp->setTo($p->commentserver)
                ->setFrom($this->user->getLogin())
-               ->setParentId($p->commentnodeid)
+               ->setCommentNodeId($p->commentnodeid)
                ->setTitle(htmlspecialchars(rawurldecode($comment)))
-               ->setParentOrigin($p->server)
-               ->setParentNode($p->node)
-               ->setParentNodeId($p->nodeid)
+               ->setParentId($p->id)
                ->request();
         }
     }
