@@ -12,11 +12,7 @@
                     {if="$value->isMine()"}{$liked = [$value->server, $value->node, $value->nodeid]}{/if}
                         <a title="{$value->published|strtotime|prepareDate:true,true}"
                            href="{$c->route('contact', $value->aid)}">
-                            {if="$value->contact"}
-                                {$value->contact->truename}
-                            {else}
-                                {$value->aid}
-                            {/if}
+                            {$value->truename}
                         </a>
                         {if="$key + 1 < count($post->likes()->count())"},
                     {/if}
@@ -71,15 +67,9 @@
                 <span class="info" title="{$value->published|strtotime|prepareDate}">
                     {$value->published|strtotime|prepareDate:true,true}
                 </span>
-                {if="$value->contact"}
-                <a href="{$c->route('contact', $value->contact->jid)}">
-                    {$value->contact->truename}
+                <a href="{$c->route('contact', $value->aid)}">
+                    {$value->truename}
                 </a>
-                {else}
-                    <a href="{$c->route('contact', $value->aid)}">
-                        {$value->aid}
-                    </a>
-                {/if}
             </p>
             <p class="all">
                 {if="$value->contentraw"}

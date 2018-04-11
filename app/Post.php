@@ -104,6 +104,16 @@ class Post extends Model
                        ->first();
     }
 
+    public function getTruenameAttribute()
+    {
+        if ($this->contact) {
+            return $this->contact->truename;
+        }
+
+        $truename = explodeJid($this->aid);
+        return (isset($truename['username'])) ? $truename['username'] : '';
+    }
+
     private function extractContent($contents)
     {
         $content = '';
@@ -587,13 +597,6 @@ class Post extends Model
         $reply = $this->reply;
         $pd = new \Modl\PostnDAO;
         return $pd->get($reply['server'], $reply['node'], $reply['nodeid']);
-    }
-
-    public function getComments()
-    {
-        /*
-        $comments = $pd->getComments($this);
-        return $comments ? $comments : [];*/
     }
 
     public function countComments()

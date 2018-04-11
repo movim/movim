@@ -228,7 +228,7 @@ class Contact extends Model
     public function getSearchTerms()
     {
         return cleanupId($this->id).'-'.
-            cleanupId($this->getTrueName()).'-'.
+            cleanupId($this->truename).'-'.
             cleanupId($this->groupname);
     }
 

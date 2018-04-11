@@ -43,11 +43,7 @@
                             href="{$c->route('contact', $post->aid)}"
                         {/if}
                     >
-                        {if="$post->contact"}
-                            {$post->contact->truename}
-                        {else}
-                            {$post->aid}
-                        {/if}
+                        {$post->truename}
                     </a> –
                 {else}
                     {if="$public"}

@@ -209,12 +209,6 @@ class CommunityPosts extends \Movim\Widget\Base
              && $validate_node->validate($node));
     }
 
-    function getComments($post)
-    {
-        $pd = new \Modl\PostnDAO;
-        return $pd->getComments($post);
-    }
-
     function display()
     {
         $slugify = new Slugify;
