@@ -82,8 +82,6 @@ class Blog extends \Movim\Widget\Base
             }
         }
 
-        $pd = new \Modl\PostnDAO;
-
         if ($this->_id = $this->get('i')) {
             $this->_messages[0] = \App\Post::where('server', $this->_from)
                     ->where('node', $this->_node)

@@ -2,9 +2,8 @@
 
 use Respect\Validation\Validator;
 use App\Configuration;
-use Movim\Widget\Base;
 
-class Communities extends Base
+class Communities extends \Movim\Widget\Base
 {
     public function load()
     {
@@ -19,24 +18,38 @@ class Communities extends Base
 
     function prepareCommunities()
     {
-        /*
-
         $view = $this->tpl();
-        $view->assign('communities', $id->getItems(
+        /*$view->assign('communities', $id->getItems(
             false,
             0,
             40,
             true, (Configuration::findOrNew(1)->restrictsuggestions)
                 ? $this->user->getServer()
                 : false
-        ));
+        ));*/
+        $communities = \App\Post::select('server', 'node', 'published')
+            ->groupBy('server', 'node', 'published')
+            ->orderBy('published', 'desc')
+            ->take(40)
+            ->get();
 
-        return $view->draw('_communities', true);*/
+        $posts = [];
+
+        foreach ($communities as $community) {
+            array_push($posts, \App\Post::where('server', $community->server)
+                                        ->where('node', $community->node)
+                                        ->where('open', true)
+                                        ->orderBy('published', 'desc')
+                                        ->first());
+        }
+
+        $view->assign('posts', $posts);
+
+        return $view->draw('_communities', true);
     }
 
-    function getLastPublic($server, $node)
+    public function prepareTicket(\App\Post $post)
     {
-        $pd = new \Modl\PostnDAO;
-        return $pd->getPublic($server, $node, 0, 1)[0];
+        return (new Post)->prepareTicket($post);
     }
 }

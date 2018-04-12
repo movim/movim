@@ -121,7 +121,7 @@ class Post extends \Movim\Widget\Base
 
     function ajaxShare($server, $node, $id)
     {
-        /*$pd = new \Modl\PostnDAO;
+        /*
         $p  = $pd->get($server, $node, $id);
 
         if ($p) {

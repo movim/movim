@@ -1,7 +1,6 @@
 <?php
 
 use Respect\Validation\Validator;
-use Modl\PostnDAO;
 
 class Search extends \Movim\Widget\Base
 {
@@ -36,8 +35,48 @@ class Search extends \Movim\Widget\Base
             $posts = false;
 
             if ($this->user->hasPubsub()) {
-                $pd = new PostnDAO;
-                $posts = $pd->search($key);
+                $posts = \App\Post::whereIn('id', function($query) use ($key) {
+                    $query->select('post_id')
+                          ->from('post_tag')
+                          ->whereIn('tag_id', function($query) use ($key) {
+                            $query->select('id')
+                                  ->from('tags')
+                                  ->where('name', 'like', '%' . strtolower($key) . '%');
+                          });
+                })
+                ->whereIn('id', function($query) {
+                    $query->select('id')
+                          ->from('posts')
+                          ->whereIn('server', function($query) {
+                            $query->from('rosters')
+                                  ->select('jid')
+                                  ->where('session_id', SESSION_ID)
+                                  ->where('subscription', 'both');
+                          })
+                          ->orWhereIn('id', function($query) {
+                            $query->select('id')
+                                  ->from('posts')
+                                  ->where('node', 'urn:xmpp:microblog:0')
+                                  ->where('server', $this->user->id);
+                          })
+                          ->orWhereIn('id', function($query) {
+                            $query->select('id')
+                                  ->from('posts')
+                                  ->whereIn('server', function($query) {
+                                    $query->select('server')
+                                          ->from('subscriptions')
+                 {$c->prepareTicket($value)}                         ->where('jid', $this->user->id);
+                                  })
+                                  ->whereIn('node', function($query) {
+                                    $query->select('node')
+                                          ->from('subscriptions')
+                                          ->where('jid', $this->user->id);
+                                  });
+                          });
+                })
+                ->orderBy('published', 'desc')
+                ->take(10)
+                ->get();
             }
 
             $view->assign('posts', $posts);
@@ -46,7 +85,7 @@ class Search extends \Movim\Widget\Base
         }
 
         if (!empty($key)) {
-            $contacts = App\Contact::where('id', function ($query) {
+            $contacts = \App\Contact::where('id', function ($query) {
                 $query->select('id')
                       ->from('users')
                       ->where('public', true);
@@ -55,7 +94,7 @@ class Search extends \Movim\Widget\Base
             $view->assign('contacts', $contacts);
 
             if (Validator::email()->validate($key)) {
-                $contact = new App\Contact;
+                $contact = new \App\Contact;
                 $contact->jid = $key;
                 $view->assign('contacts', [$contact]);
             }
@@ -76,5 +115,10 @@ class Search extends \Movim\Widget\Base
     {
         $contact = new ContactActions;
         $contact->ajaxChat($jid);
+    }
+
+    public function prepareTicket(\App\Post $post)
+    {
+        return (new Post)->prepareTicket($post);
     }
 }

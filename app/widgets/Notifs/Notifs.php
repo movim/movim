@@ -22,18 +22,24 @@ class Notifs extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $pd = new \Modl\PostnDAO;
         $since = \App\Cache::c('notifs_since');
 
         if (!$since) $since = date(\Modl\SQL::SQL_DATE, 0);
 
         $emoji = \MovimEmoji::getInstance();
 
+        $notifs = \App\Post::whereIn('parent_id', function ($query) use ($since) {
+            $query->select('id')
+                  ->from('posts')
+                  ->where('aid', $this->user->id)
+                  ->where('published', '>', $since);
+        })
+        ->orderBy('published', 'desc')
+        ->limit(10)
+        ->get();
+
         $view->assign('hearth',  $emoji->replace('♥'));
-        $view->assign('notifs', $pd->getNotifsSince(
-            $since,
-            0, 8)
-        );
+        $view->assign('notifs', $notifs);
 
         return $view->draw('_notifs', true);
     }
