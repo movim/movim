@@ -346,6 +346,17 @@ class Post extends Model
             }
         }
 
+        // Extract more tags if possible
+        $tagsContent = getHashtags(htmlspecialchars($this->title))
+                     + getHashtags(htmlspecialchars($this->contentraw));
+        foreach($tagsContent as $tag) {
+            $tag = \App\Tag::firstOrCreate([
+                'name' => strtolower((string)$tag)
+            ]);
+
+            $this->tags[] = $tag->id;
+        }
+
         if (current(explode('.', $this->server)) == 'nsfw') $this->nsfw = true;
 
         if (!isset($this->commentserver)) {

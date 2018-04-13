@@ -153,7 +153,7 @@ function prepareString($string, $preview = false)
  */
 function getHashtags($string)
 {
-    $hashtags = false;
+    $hashtags = [];
     preg_match_all("/(#\w+)/u", $string, $matches);
     if ($matches) {
         $hashtagsArray = array_count_values($matches[0]);

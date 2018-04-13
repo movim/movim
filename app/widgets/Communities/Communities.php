@@ -26,8 +26,6 @@ class Communities extends \Movim\Widget\Base
             ->restrictToCommunities()
             ->restrictNSFW()
             ->orderBy('published', 'desc')
-            ->orderBy('server', 'desc')
-            ->orderBy('node', 'desc')
             ->where('open', true)
             ->take(40)
             ->get();
