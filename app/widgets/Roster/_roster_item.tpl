@@ -15,6 +15,7 @@
                 status {$contact->presence->presencekey}
             {/if}"
             style="background-image: url({$url});">
+            <span data-key="chat|{$contact->jid}" class="counter"></span>
         </span>
     {else}
         <span class="primary icon bubble color {$contact->jid|stringToColor}
@@ -25,6 +26,7 @@
             {/if}
         ">
             {$contact->truename|firstLetterCapitalize}
+            <span data-key="chat|{$contact->jid}" class="counter"></span>
         </span>
     {/if}
     {if="$contact->subscription != 'both'"}

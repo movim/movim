@@ -16,14 +16,15 @@
     {if="$url"}
         <span class="primary icon bubble {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}">
             <img src="{$url}">
+            <span data-key="chat|{$contact->jid}" class="counter"></span>
         </span>
     {else}
         <span class="primary icon bubble color {$contact->jid|stringToColor} {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}">
             {$contact->truename|firstLetterCapitalize}
+            <span data-key="chat|{$contact->jid}" class="counter"></span>
         </span>
     {/if}
 
-    <span data-key="chat|{$contact->jid}" class="counter bottom"></span>
     <p class="normal line">
         {if="isset($message)"}
             <span class="info" title="{$message->published|strtotime|prepareDate}">

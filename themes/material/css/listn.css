@@ -320,28 +320,6 @@ ul.tabs > li.active {
     border-bottom-style: solid;
 }
 
-/* Counter */
-
-ul li span.counter:empty {
-    display: none;
-}
-
-ul li span.counter {
-    position: absolute;
-    right: 1rem;
-    top: calc(50% - 1.5rem);
-    line-height: 2rem;
-    border-radius: 3rem;
-    padding: 0.5rem;
-    text-align: center;
-    min-width: 2rem;
-    font-size: 2rem;
-}
-
-ul li span.counter.bottom {
-    top: calc(50%);
-}
-
 /* Bubble */
 
 ul li div.bubble {

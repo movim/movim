@@ -68,7 +68,7 @@ main > header a,
 
 .button.color,
 .color,
-ul li span.counter,
+span.icon span.counter,
 form > div .radio > input[type="radio"]:checked + label {
     border-color: rgb(var(--movim-main));
     background-color: rgb(var(--movim-main));

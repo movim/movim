@@ -20,18 +20,19 @@
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
                 class="room {if="$value->connected"}online{/if}"
                 title="{$value->conference}">
-                <span data-key="chat|{$value->conference}" class="counter"></span>
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
                     <span class="primary
                         {if="!$value->connected"}disabled{/if} icon bubble color
                         {$value->name|stringToColor}"
                         style="background-image: url({$url});">
+                        <span data-key="chat|{$value->conference}" class="counter"></span>
                     </span>
                 {else}
                     <span class="primary
                         {if="!$value->connected"}disabled{/if} icon bubble color
                         {$value->name|stringToColor}">
+                        <span data-key="chat|{$value->conference}" class="counter"></span>
                         {$value->name|firstLetterCapitalize}
                     </span>
                 {/if}

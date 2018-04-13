@@ -15,6 +15,7 @@ ul#bottomnavigation li {
 
 ul#bottomnavigation li span:not(.counter) {
     line-height: 5.5rem;
+    display: inline-block;
 }
 
 @media screen and (max-width: 1024px) {

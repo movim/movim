@@ -6,6 +6,8 @@ span.icon {
     text-align: center;
     background-size: cover;
     background-position: center;
+    position: relative;
+    width: 5rem;
 }
 
 span.icon img {
@@ -86,6 +88,7 @@ span.icon.small.bubble i {
     vertical-align: text-top;
 }
 
+span.icon span.counter,
 span.icon.status:after {
     content: '';
     display: block;
@@ -102,3 +105,21 @@ span.icon.status:after {
 main ul li .control > i {
     margin-left: 0;
 }
+
+/* Counter */
+
+span.icon span.counter:empty {
+    display: none;
+}
+
+span.icon span.counter {
+    z-index: 1;
+    font-size: 1.75rem;
+    line-height: 2rem;
+    border-radius: 0.5rem;
+    width: auto;
+    min-width: 1.5rem;
+    padding: 0 0.25rem;
+    height: auto;
+}
+
