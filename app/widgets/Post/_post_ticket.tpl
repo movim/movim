@@ -1,4 +1,4 @@
-<li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
+<li class="block {if="$large"}large{/if}" onclick="MovimUtils.redirect('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
     <span class="primary icon thumb color
         {if="$post->contact"}
             {$post->contact->jid|stringToColor}

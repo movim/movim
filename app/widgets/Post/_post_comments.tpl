@@ -119,9 +119,9 @@
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
             </button>
             {if="$c->getUser()->hasPubsub()"}
-            <button class="button flat gray" onclick="Post.share()">
+            <a class="button flat gray" onclick="Post.share()">
                 <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
-            </button>
+            </a>
             {/if}
         </p>
     </li>

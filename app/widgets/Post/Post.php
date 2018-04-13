@@ -114,12 +114,7 @@ class Post extends \Movim\Widget\Base
 
     function ajaxShare($server, $node, $id)
     {
-        /*
-        $p  = $pd->get($server, $node, $id);
-
-        if ($p) {
-            $this->rpc('MovimUtils.redirect', $this->route('publish', [$server, $node, $id, 'share']));
-        }*/
+        $this->rpc('MovimUtils.redirect', $this->route('publish', [$server, $node, $id, 'share']));
     }
 
     function requestComments(\App\Post $post)
@@ -216,10 +211,11 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function prepareTicket(\App\Post $post)
+    function prepareTicket(\App\Post $post, $large = false)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
+        $view->assign('large', $large);
 
         return $view->draw('_post_ticket', true);
     }

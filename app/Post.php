@@ -410,7 +410,7 @@ class Post extends Model
         $this->setAttachments($entry->entry->link, $extra);
 
         if ($this->isComment()) {
-            /*$pd = new \Modl\PostnDAO;
+            /*
             $p = $pd->getParent($this->server, substr($this->node, 30));
             if ($p) {
                 $this->parentserver = $p->server;
