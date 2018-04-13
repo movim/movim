@@ -13,8 +13,10 @@
     box-sizing: border-box;
     width: 40rem;
     pointer-events: none;
-    transition: opacity 0.2s ease, bottom 0.4s ease;
-    transform: translateX(0);
+    transition: opacity 0.2s ease, transform 0.4s ease;
+    background-color: #333333;
+    transform: translateY(0);
+    bottom: 3rem;
 }
 
 .snackbar > a {
@@ -39,8 +41,6 @@
 }
 
 .snackbar {
-    background-color: #333333;
-    bottom: 3rem;
     left: 3rem;
     border-radius: 0.25rem;
     opacity: 1;
@@ -48,17 +48,14 @@
 }
 
 .toast {
-    background-color: #323232;
-    border-radius: 3rem;
-    left: 50%;
-    bottom: 3rem;
+    left: calc(50% - 20rem);
     line-height: 2.5rem;
-    margin-left: -20rem;
 }
 
 .snackbar:empty,
 .toast:empty {
     opacity: 0;
+    transform: translateY(100%);
 }
 
 .snackbar#error_websocket {
@@ -77,19 +74,12 @@
     pointer-events: none;
 }
 
-@media screen and (max-width: 22rem) {
-    .snackbar {
-        width: 100%;
-        top: 0;
-        left: 0;
-        bottom: auto;
-        border-radius: 0;
-    }
-
+@media screen and (max-width: 1024px) {
+    .snackbar,
     .toast {
-        max-width: 90%;
-        left: 5%;
-        margin-left: 0;
+        width: 100%;
+        left: 0;
+        bottom: 6.5rem;
     }
 }
 
