@@ -24,6 +24,7 @@ class Communities extends \Movim\Widget\Base
 
         $posts = \App\Post::withoutComments()
             ->restrictToCommunities()
+            ->restrictNSFW()
             ->orderBy('published', 'desc')
             ->orderBy('server', 'desc')
             ->orderBy('node', 'desc')

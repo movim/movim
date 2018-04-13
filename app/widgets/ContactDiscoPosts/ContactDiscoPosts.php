@@ -23,6 +23,7 @@ class ContactDiscoPosts extends \Movim\Widget\Base
 
         $blogs = \App\Post::restrictToMicroblog()
                           ->restrictUserHost()
+                          ->restrictNSFW()
                           ->where('open', true)
                           ->orderBy('published', 'desc')
                           ->get();

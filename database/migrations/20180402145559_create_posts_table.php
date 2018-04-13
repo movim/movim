@@ -23,7 +23,11 @@ class CreatePostsTable extends Migration
 
             $table->string('commentserver', 64)->nullable();
             $table->string('commentnodeid', 192)->nullable();
-            $table->integer('parent_id')->nullable();
+            $table->integer('parent_id')->index()->nullable();
+
+            $table->string('replyserver', 64)->nullable();
+            $table->string('replynode', 256)->nullable();
+            $table->string('replynodeid', 192)->nullable();
 
             $table->boolean('open')->default(false);
             $table->boolean('nsfw')->default(false);
@@ -32,7 +36,6 @@ class CreatePostsTable extends Migration
             $table->datetime('published')->nullable();
             $table->datetime('updated')->nullable();
             $table->datetime('delay')->nullable();
-            $table->text('reply')->nullable();
 
             $table->timestamps();
 

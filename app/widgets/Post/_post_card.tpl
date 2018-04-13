@@ -118,7 +118,6 @@
         {/if}
 
         {$c->preparePostReply($post)}
-
         {$c->preparePostLinks($post)}
 
         <li>

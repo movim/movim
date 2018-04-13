@@ -80,18 +80,13 @@ class Post extends \Movim\Widget\Base
             $this->rpc('MovimTpl.fill', '#post_widget.'.cleanupId($p->nodeid), $html);
             $this->rpc('MovimUtils.enhanceArticlesContent');
 
-            // If the post is a reply but we don't have the serveral
+            // If the post is a reply but we don't have the original
             if ($p->isReply() && !$p->getReply()) {
-                $reply = $p->reply;
-
                 $gi = new GetItem;
-                $gi->setTo($reply['server'])
-                   ->setNode($reply['node'])
-                   ->setId($reply['nodeid'])
-                   ->setAskReply([
-                        'server' => $p->server,
-                        'node' => $p->node,
-                        'nodeid' => $p->nodeid])
+                $gi->setTo($p->replyserver)
+                   ->setNode($p->replynode)
+                   ->setId($p->replynodeid)
+                   ->setAskReply($p->id)
                    ->request();
             }
 
@@ -238,8 +233,10 @@ class Post extends \Movim\Widget\Base
 
     public function preparePostReply(\App\Post $post)
     {
+        if (!$post->isReply()) return '';
+
         $view = $this->tpl();
-        $view->assign('post', $post);
+        $view->assign('reply', $post->getReply());
         return $view->draw('_post_reply', true);
     }
 

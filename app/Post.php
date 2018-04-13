@@ -75,13 +75,22 @@ class Post extends Model
         $configuration = Configuration::findOrNew(1);
 
         if ($configuration->restrictsuggestions) {
-            $query->orWhereIn('id', function($query) {
+            $query->whereIn('id', function($query) {
                 $host = \App\User::me()->session->host;
                 $query->select('id')
                         ->from('posts')
                       ->where('server', 'like', '%.' . $host)
                       ->orWhere('server', 'like', '@' . $host);
             });
+        }
+    }
+
+    public function scopeRestrictNSFW($query)
+    {
+        $query->where('nsfw', false);
+
+        if (\App\User::me()->nsfw) {
+            $query->orWhere('nsfw', true);
         }
     }
 
@@ -355,13 +364,9 @@ class Post extends Model
         if ($entry->entry->{'in-reply-to'}) {
             $href = (string)$entry->entry->{'in-reply-to'}->attributes()->href;
             $arr = explode(';', $href);
-            $reply = [
-                'server' => substr($arr[0], 5, -1),
-                'node'   => substr($arr[1], 5),
-                'nodeid' => substr($arr[2], 5)
-            ];
-
-            $this->reply = $reply;
+            $this->replyserver = substr($arr[0], 5, -1);
+            $this->replynode = substr($arr[1], 5);
+            $this->replynodeid = substr($arr[2], 5);
         }
 
         $extra = false;
@@ -624,7 +629,7 @@ class Post extends Model
 
     public function isReply()
     {
-        return isset($this->reply);
+        return isset($this->replynodeid);
     }
 
     public function isLike()
@@ -674,11 +679,12 @@ class Post extends Model
 
     public function getReply()
     {
-        if (!$this->reply) return;
+        if (!$this->replynodeid) return;
 
-        $reply = $this->reply;
-        $pd = new \Modl\PostnDAO;
-        return $pd->get($reply['server'], $reply['node'], $reply['nodeid']);
+        return \App\Post::where('server', $this->replyserver)
+                        ->where('node', $this->replynode)
+                        ->where('nodeid', $this->replynodeid)
+                        ->first();
     }
 
     public function countComments()
@@ -700,14 +706,5 @@ class Post extends Model
     {
         return false;
     }
-
-    /*public function countReplies()
-    {
-        return $pd->countReplies([
-            'server'    => $this->server,
-            'node'      => $this->node,
-            'nodeid'    => $this->nodeid
-        ]);
-    }*/
 }
 

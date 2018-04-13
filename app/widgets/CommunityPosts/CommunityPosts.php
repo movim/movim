@@ -138,7 +138,7 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $nsfwMessage = false;
 
-        if (User::me()->nsfw == false) {
+        if ($this->user->nsfw == false) {
             foreach ($posts as $key => $post) {
                 if ($post->nsfw) {
                     $posts->forget($key);
