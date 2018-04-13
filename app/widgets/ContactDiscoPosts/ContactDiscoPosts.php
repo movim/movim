@@ -21,7 +21,8 @@ class ContactDiscoPosts extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $blogs = \App\Post::where('node', 'urn:xmpp:microblog:0')
+        $blogs = \App\Post::restrictToMicroblog()
+                          ->restrictUserHost()
                           ->where('open', true)
                           ->orderBy('published', 'desc')
                           ->get();

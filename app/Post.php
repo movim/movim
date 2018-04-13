@@ -55,9 +55,29 @@ class Post extends Model
         $this->tags()->sync($this->tags);
     }
 
+    public function scopeRestrictToMicroblog($query)
+    {
+        return $query->where('node', 'urn:xmpp:microblog:0');
+    }
+
     public function scopeWithoutComments($query)
     {
         return $query->whereNull('parent_id');
+    }
+
+    public function scopeRestrictUserHost($query)
+    {
+        $configuration = Configuration::findOrNew(1);
+
+        if ($configuration->restrictsuggestions) {
+            $query->orWhereIn('id', function($query) {
+                $host = \App\User::me()->session->host;
+                $query->select('id')
+                        ->from('posts')
+                      ->where('server', 'like', '%.' . $host)
+                      ->orWhere('server', 'like', '@' . $host);
+            });
+        }
     }
 
     protected function withContactsScope($query)

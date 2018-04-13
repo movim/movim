@@ -35,6 +35,10 @@
             </a>
         {/if}
 
+        {if="!$post->isMicroblog()"}
+            <a href="{$c->route('community', [$post->server, $post->node])}">{$post->node}</a>
+        {/if}
+
         {$count = $post->countLikes()}
         {if="$count > 0"}
             {$count} <i class="zmdi zmdi-favorite-outline"></i>
