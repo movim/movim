@@ -282,9 +282,6 @@ class Bootstrap
             : 0);
         /*else {
             // We set the default timezone to the server timezone
-            $cd = new \Modl\ConfigDAO;
-            $config = $cd->get();
-
             // And we set a global offset
             define('TIMEZONE_OFFSET', getTimezoneOffset($config->timezone));
         }*/

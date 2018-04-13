@@ -8,11 +8,6 @@ class AdminTest extends \Movim\Widget\Base
         $this->addcss('admintest.css');
     }
 
-    public function version()
-    {
-        return (version_compare(PHP_VERSION, '5.6.0') >= 0);
-    }
-
     public function testDir($dir)
     {
         return (file_exists($dir) && is_dir($dir) && is_writable($dir));
@@ -25,11 +20,7 @@ class AdminTest extends \Movim\Widget\Base
 
     function display()
     {
-        $md = \Modl\Modl::getInstance();
-
-        $infos = $md->check();
-
-        $this->view->assign('dbconnected', $md->_connected);
-        $this->view->assign('dbinfos', is_array($infos) ? count($infos) : 0);
+        // Check with Eloquent or delete
+        $this->view->assign('dbconnected', true);
     }
 }

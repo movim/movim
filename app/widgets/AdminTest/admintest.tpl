@@ -8,7 +8,7 @@
             <div id="movim-browser" class="link horizontal success"><i class="zmdi zmdi-open-in-browser"></i></div>
             <div id="browser-daemon" class="link horizontal error"><i class="zmdi zmdi-code-setting"></i></div>
             <div id="xmpp-daemon" class="link horizontal"><i class="zmdi zmdi-import-export"></i></div>
-            <div id="movim-database" class="link vertical {if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
+            <div id="movim-database" class="link vertical {if="$dbconnected"}success{else}error{/if}">
                 <i class="zmdi zmdi-swap"></i>
             </div>
             <div id="movim-api" class="link horizontal disabled"><i class="zmdi zmdi-cloud"></i></div>
@@ -21,7 +21,7 @@
             <div id="daemon_block">
                 {$c->__('schema.daemon')}
             </div>
-            <div id="database_block" class="{if="$dbconnected"}success {if="$dbinfos > 0"}warning{/if} {else}error{/if}">
+            <div id="database_block" class="{if="$dbconnected"}success{else}error{/if}">
                 {$c->__('schema.database')}
             </div>
             <div id="api_block">
@@ -34,22 +34,8 @@
     </div>
 
     <ul class="list">
-        <!--
-        <li class="subheader">
-            {$c->__('compatibility.info')}
-        </li>
-        -->
         {if="$dbconnected"}
-            {if="$dbinfos > 0"}
-                <li>
-                    <span class="primary icon bubble color orange">
-                        <i class="zmdi zmdi-refresh"></i>
-                    </span>
-                    <p class="normal line">{$c->__('compatibility.db')}</p>
-                </li>
-            {else}
-                <script type="text/javascript">AdminTest.databaseOK = true</script>
-            {/if}
+            <script type="text/javascript">AdminTest.databaseOK = true</script>
         {else}
             <li>
                 <span class="primary icon bubble color red">
@@ -68,17 +54,6 @@
                 {$c->__('compatibility.websocket')}
             </p>
         </li>
-
-        {if="!$c->version()"}
-            <li>
-                <span class="primary icon color bubble red">
-                    <i class="zmdi zmdi-sync-problem"></i>
-                </span>
-                <p>{$c->__('compatibility.php1', PHP_VERSION)}</p>
-                <p>{$c->__('compatibility.php2')}</p>
-            </li>
-            <script type="text/javascript">AdminTest.disableMovim()</script>
-        {/if}
 
         {if="!$c->testDir(CACHE_PATH)"}
             <li>

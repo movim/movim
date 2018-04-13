@@ -12,7 +12,6 @@ $bootstrap = new Bootstrap;
 $bootstrap->boot();
 
 $application = new Application;
-$application->add(new DatabaseCommand);
 $application->add(new ConfigCommand);
 $application->run();
 

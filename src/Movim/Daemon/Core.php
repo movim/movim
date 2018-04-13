@@ -189,7 +189,7 @@ class Core implements MessageComponentInterface
 
     private function cleanupIPCs()
     {
-        foreach (glob('/tmp/movim_feeds_*') as $ipc) {
+        foreach (glob(CACHE_PATH . 'movim_feeds_*') as $ipc) {
             unlink($ipc);
         }
     }
