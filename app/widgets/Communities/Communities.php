@@ -3,6 +3,8 @@
 use Respect\Validation\Validator;
 use App\Configuration;
 
+include_once WIDGETS_PATH . 'Post/Post.php';
+
 class Communities extends \Movim\Widget\Base
 {
     public function load()
@@ -19,29 +21,14 @@ class Communities extends \Movim\Widget\Base
     function prepareCommunities()
     {
         $view = $this->tpl();
-        /*$view->assign('communities', $id->getItems(
-            false,
-            0,
-            40,
-            true, (Configuration::findOrNew(1)->restrictsuggestions)
-                ? $this->user->getServer()
-                : false
-        ));*/
-        $communities = \App\Post::select('server', 'node', 'published')
-            ->groupBy('server', 'node', 'published')
+
+        $posts = \App\Post::withoutComments()
             ->orderBy('published', 'desc')
+            ->orderBy('server', 'desc')
+            ->orderBy('node', 'desc')
+            ->where('open', true)
             ->take(40)
             ->get();
-
-        $posts = [];
-
-        foreach ($communities as $community) {
-            array_push($posts, \App\Post::where('server', $community->server)
-                                        ->where('node', $community->node)
-                                        ->where('open', true)
-                                        ->orderBy('published', 'desc')
-                                        ->first());
-        }
 
         $view->assign('posts', $posts);
 
@@ -50,6 +37,6 @@ class Communities extends \Movim\Widget\Base
 
     public function prepareTicket(\App\Post $post)
     {
-        return (new Post)->prepareTicket($post);
+        return (new \Post)->prepareTicket($post);
     }
 }

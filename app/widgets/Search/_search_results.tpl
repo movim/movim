@@ -3,16 +3,16 @@
         <h4>{$c->__('search.subtitle')}</h4>
     </div>
 {else}
+    {if="$posts->isNotEmpty()"}
     <ul class="list active divided middle">
-        {if="$posts"}
-            <li class="subheader"><p>{$c->__('page.news')}</p></li>
-        {/if}
+        <li class="subheader"><p>{$c->__('page.news')}</p></li>
         {loop="$posts"}
             {$c->prepareTicket($value)}
         {/loop}
     </ul>
+    {/if}
 
-    {if="$contacts != null"}
+    {if="$contacts->isNotEmpty()"}
     <ul class="list">
         <li class="subheader">
             <p>{$c->__('explore.explore')}</p>
@@ -38,7 +38,7 @@
                 <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
                     <i class="zmdi zmdi-comment-text-alt"></i>
                 </span>
-                <p class="normal line">{$value->getTrueName()}</p>
+                <p class="normal line">{$value->truename}</p>
                 {if="$value->isEmpty()"}
                     <p>{$value->jid}</p>
                 {/if}

@@ -45,59 +45,37 @@ class Search extends \Movim\Widget\Base
                           });
                 })
                 ->whereIn('id', function($query) {
-                    $query->select('id')
-                          ->from('posts')
-                          ->whereIn('server', function($query) {
-                            $query->from('rosters')
-                                  ->select('jid')
-                                  ->where('session_id', SESSION_ID)
-                                  ->where('subscription', 'both');
-                          })
-                          ->orWhereIn('id', function($query) {
-                            $query->select('id')
-                                  ->from('posts')
-                                  ->where('node', 'urn:xmpp:microblog:0')
-                                  ->where('server', $this->user->id);
-                          })
-                          ->orWhereIn('id', function($query) {
-                            $query->select('id')
-                                  ->from('posts')
-                                  ->whereIn('server', function($query) {
-                                    $query->select('server')
-                                          ->from('subscriptions')
-                 {$c->prepareTicket($value)}                         ->where('jid', $this->user->id);
-                                  })
-                                  ->whereIn('node', function($query) {
-                                    $query->select('node')
-                                          ->from('subscriptions')
-                                          ->where('jid', $this->user->id);
-                                  });
-                          });
+                    $query = $query->select('id')->from('posts');
+
+                    $query = \App\Post::withContactsScope($query);
+                    $query = \App\Post::withMineScope($query);
+                    $query = \App\Post::withSubscriptionsScope($query);
                 })
                 ->orderBy('published', 'desc')
-                ->take(10)
+                ->take(6)
                 ->get();
+
+                $view->assign('posts', $posts);
             }
 
-            $view->assign('posts', $posts);
-
-            if (!$posts) $view->assign('empty', true);
+            if ($posts == false) $view->assign('empty', true);
         }
 
         if (!empty($key)) {
-            $contacts = \App\Contact::where('id', function ($query) {
+            $contacts = \App\Contact::where('id', function ($query) use ($key) {
                 $query->select('id')
                       ->from('users')
-                      ->where('public', true);
+                      ->where('public', true)
+                      ->where('id', 'like', '%'. $key . '%');
             })->limit(5)->get();
-
-            $view->assign('contacts', $contacts);
 
             if (Validator::email()->validate($key)) {
                 $contact = new \App\Contact;
                 $contact->jid = $key;
-                $view->assign('contacts', [$contact]);
+                $contacts->push();
             }
+
+            $view->assign('contacts', $contacts);
         } else {
             $view->assign('contacts', null);
         }

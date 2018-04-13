@@ -1,4 +1,4 @@
-<ul class="list column third active card">
+<ul class="list column third middle active card">
     {loop="$posts"}
         {$c->prepareTicket($value)}
     {/loop}

@@ -143,39 +143,21 @@ class Menu extends \Movim\Widget\Base
             \App\Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
         }
 
-        $items = \App\Post::skip($page * $this->_paging + $count);
+        $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();
 
-        if (in_array($type, ['all', 'feed'])) {
-            $items = $items->whereIn('server', function($query) {
-                $query->from('rosters')
-                      ->select('jid')
-                      ->where('session_id', SESSION_ID)
-                      ->where('subscription', 'both');
-            })
-            ->orWhereIn('id', function($query) {
-                $query->select('id')
-                      ->from('posts')
-                      ->where('node', 'urn:xmpp:microblog:0')
-                      ->where('server', $this->user->id);
-            });
-        }
+        $items->whereIn('id', function ($query) use ($type) {
+            $query = $query->select('id')->from('posts');
 
-        if (in_array($type, ['all', 'news'])) {
-            $items = $items->orWhereIn('id', function($query) {
-                $query->select('id')
-                      ->from('posts')
-                      ->whereIn('server', function($query) {
-                        $query->select('server')
-                              ->from('subscriptions')
-                              ->where('jid', $this->user->id);
-                      })
-                      ->whereIn('node', function($query) {
-                        $query->select('node')
-                              ->from('subscriptions')
-                              ->where('jid', $this->user->id);
-                      });
-            });
-        }
+            if (in_array($type, ['all', 'feed'])) {
+                $query = \App\Post::withContactsScope($query);
+                $query = \App\Post::withMineScope($query);
+            }
+
+            if (in_array($type, ['all', 'news'])) {
+                $query = \App\Post::withSubscriptionsScope($query);
+            }
+
+        });
 
         $next = $page + 1;
 
@@ -188,7 +170,6 @@ class Menu extends \Movim\Widget\Base
         }
 
         $view->assign('items', $items
-            ->where('parent_id', null)
             ->orderBy('published', 'desc')
             ->take($this->_paging)->get());
         $view->assign('type', $type);

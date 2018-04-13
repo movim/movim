@@ -55,6 +55,64 @@ class Post extends Model
         $this->tags()->sync($this->tags);
     }
 
+    public function scopeWithoutComments($query)
+    {
+        return $query->whereNull('parent_id');
+    }
+
+    protected function withContactsScope($query)
+    {
+        return $query->orWhereIn('server', function($query) {
+            $query->from('rosters')
+                  ->select('jid')
+                  ->where('session_id', SESSION_ID)
+                  ->where('subscription', 'both');
+        });
+    }
+
+    public function scopeWithContacts($query)
+    {
+        return $this->withContactsScope($query);
+    }
+
+    protected function withMineScope($query)
+    {
+        return $query->orWhereIn('id', function($query) {
+            $query->select('id')
+                  ->from('posts')
+                  ->where('node', 'urn:xmpp:microblog:0')
+                  ->where('server', \App\User::me()->id);
+        });
+    }
+
+    public function scopeWithMine($query)
+    {
+        return $this->withMineScope($query);
+    }
+
+    protected function withSubscriptionsScope($query)
+    {
+        return $query->orWhereIn('id', function($query) {
+            $query->select('id')
+                  ->from('posts')
+                  ->whereIn('server', function($query) {
+                    $query->select('server')
+                          ->from('subscriptions')
+                          ->where('jid', \App\User::me()->id);
+                  })
+                  ->whereIn('node', function($query) {
+                    $query->select('node')
+                          ->from('subscriptions')
+                          ->where('jid', \App\User::me()->id);
+                  });
+        });
+    }
+
+    public function scopeWithSubscriptions($query)
+    {
+        return $this->withSubscriptionsScope($query);
+    }
+
     public function getOpenlinkAttribute()
     {
         if (!$this->open) return;

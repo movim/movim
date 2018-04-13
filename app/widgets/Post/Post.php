@@ -5,8 +5,6 @@ use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Microblog\CommentsGet;
 use Moxl\Xec\Action\Microblog\CommentPublish;
 
-use App\User;
-
 use Respect\Validation\Validator;
 
 class Post extends \Movim\Widget\Base
@@ -212,7 +210,7 @@ class Post extends \Movim\Widget\Base
                 $view->assign('repost', \App\Contact::find($p->server));
             }
 
-            $view->assign('nsfw', User::me()->nsfw);
+            $view->assign('nsfw', \App\User::me()->nsfw);
             $view->assign('post', $p);
 
             return ($card)
