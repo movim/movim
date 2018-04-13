@@ -183,10 +183,8 @@ class Core implements MessageComponentInterface
     private function cleanupDBSessions()
     {
         DBSession::where('active', false)
-            ->where('created_at', date(\Modl\SQL::SQL_DATE, time()-60))
+            ->where('created_at', date(SQL_DATE, time()-60))
             ->delete();
-
-        //(new \Modl\PresenceDAO)->cleanPresences();
     }
 
     private function cleanupIPCs()

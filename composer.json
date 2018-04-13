@@ -17,7 +17,6 @@
         "rain/raintpl": "dev-master",
         "michelf/php-markdown": "^1.8",
 
-        "movim/modl": "dev-master#7807e563416ddaf93d2da7b1eba85d6cac1a226f",
         "movim/moxl": "dev-master#6697e281b242348cb78a0fda4b37372ce3fc1ebe",
 
         "embed/embed": "^v3.3",

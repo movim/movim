@@ -25,12 +25,6 @@ class User
                     $l->load($lang);
                 }
             }
-
-            $cd = new \Modl\CapsDAO;
-            $caps = $cd->get($session->host);
-            if ($caps) {
-                $this->caps = $caps->features;
-            }
         }
     }
 

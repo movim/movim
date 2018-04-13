@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f334a318bab9c3f5dc91e776a86d7d95",
+    "content-hash": "0f603f97e488c2aec7d166e8d9d66929",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1088,50 +1088,6 @@
                 "psr-3"
             ],
             "time": "2014-03-23T19:50:26+00:00"
-        },
-        {
-            "name": "movim/modl",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/movim/modl.git",
-                "reference": "7807e563416ddaf93d2da7b1eba85d6cac1a226f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/movim/modl/zipball/7807e563416ddaf93d2da7b1eba85d6cac1a226f",
-                "reference": "7807e563416ddaf93d2da7b1eba85d6cac1a226f",
-                "shasum": ""
-            },
-            "require": {
-                "monolog/monolog": "1.8.*",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Modl\\": "src/Modl"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "AGPL-3.0-only"
-            ],
-            "authors": [
-                {
-                    "name": "Jaussoin Timothée",
-                    "email": "edhelas@movim.eu",
-                    "homepage": "https://edhelas.movim.eu"
-                }
-            ],
-            "description": "A light PHP Database layer using DAO pattern",
-            "homepage": "http://github.com/movim/modl",
-            "keywords": [
-                "dao",
-                "database",
-                "sql"
-            ],
-            "time": "2018-03-11 11:19:25"
         },
         {
             "name": "movim/moxl",
@@ -2986,7 +2942,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "rain/raintpl": 20,
-        "movim/modl": 20,
         "movim/moxl": 20,
         "heyupdate/emoji": 20,
         "react/http": 20,

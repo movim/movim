@@ -126,7 +126,6 @@ class Session
             $this->pullSocket->close();
             $this->pushSocket->close();
 
-            (new \Modl\PresenceDAO)->clearPresence();
             $session = DBSession::find($this->sid);
             if ($session) $session->delete();
         });

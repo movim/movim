@@ -57,17 +57,6 @@ class DaemonCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $md = \Modl\Modl::getInstance();
-        $infos = $md->check();
-
-        if ($infos != null) {
-            $output->writeln('<comment>The database needs to be updated before running the daemon</comment>');
-
-            $output->writeln('<info>To update the database run</info>');
-            $output->writeln('<info>php mud.php db --set</info>');
-            exit;
-        }
-
         $loop = Factory::create();
 
         if (!Validator::url()->notEmpty()->validate($input->getOption('url'))) {

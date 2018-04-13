@@ -53,6 +53,8 @@ class Contact extends Model
         $p = new Picture;
         $p->fromBase($this->photobin);
         $p->set($this->id);
+
+        unset($this->photobin);
     }
 
     public function getPhoto($size = 'l')

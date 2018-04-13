@@ -14,7 +14,7 @@ class Notifs extends \Movim\Widget\Base
 
     function ajaxClear()
     {
-        \App\Cache::c('notifs_since', date(\Modl\SQL::SQL_DATE));
+        \App\Cache::c('notifs_since', date(SQL_DATE));
         $this->onNotifs();
     }
 
@@ -24,7 +24,7 @@ class Notifs extends \Movim\Widget\Base
 
         $since = \App\Cache::c('notifs_since');
 
-        if (!$since) $since = date(\Modl\SQL::SQL_DATE, 0);
+        if (!$since) $since = date(SQL_DATE, 0);
 
         $emoji = \MovimEmoji::getInstance();
 

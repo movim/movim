@@ -160,9 +160,6 @@ class Login extends Base
             return;
         }
 
-        $db = \Modl\Modl::getInstance();
-        $db->setUser($login);
-
         try {
             $key = Key::loadFromAsciiSafeString($key);
 
@@ -199,9 +196,6 @@ class Login extends Base
             $this->showErrorBlock('password_format');
             return;
         }
-
-        $db = \Modl\Modl::getInstance();
-        $db->setUser($login);
 
         list($username, $host) = explode('@', $login);
 

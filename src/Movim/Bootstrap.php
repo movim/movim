@@ -21,7 +21,6 @@ class Bootstrap
 
         mb_internal_encoding("UTF-8");
 
-        $loadmodlsuccess = $this->loadModl();
         $this->loadCapsule();
 
         if ($dbOnly) return;
@@ -39,12 +38,8 @@ class Bootstrap
         $this->setTimezone();
         $this->setLogLevel();
 
-        if ($loadmodlsuccess) {
-            $this->startingSession();
-            $this->loadLanguage();
-        } else {
-            throw new \Exception('Error loading Modl');
-        }
+        $this->startingSession();
+        $this->loadLanguage();
     }
 
     private function checkSystem()
@@ -302,40 +297,6 @@ class Bootstrap
         define('LOG_LEVEL', (int)Configuration::findOrNew(1)->loglevel);
     }
 
-    private function loadModl()
-    {
-        // We load Movim Data Layer
-        $db = \Modl\Modl::getInstance();
-        $db->setModelsPath(APP_PATH.'models');
-
-        \Modl\Utils::loadModel('Presence');
-        \Modl\Utils::loadModel('Contact');
-        \Modl\Utils::loadModel('Privacy');
-        \Modl\Utils::loadModel('RosterLink');
-        \Modl\Utils::loadModel('Postn');
-        \Modl\Utils::loadModel('Info');
-        \Modl\Utils::loadModel('EncryptedPass');
-        \Modl\Utils::loadModel('Subscription');
-        \Modl\Utils::loadModel('SharedSubscription');
-        \Modl\Utils::loadModel('Caps');
-        \Modl\Utils::loadModel('Invite');
-        \Modl\Utils::loadModel('Message');
-        \Modl\Utils::loadModel('Conference');
-        \Modl\Utils::loadModel('Tag');
-        \Modl\Utils::loadModel('Url');
-
-        if (file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
-            require DOCUMENT_ROOT.'/config/db.inc.php';
-        } else {
-            throw new \Exception('Cannot find config/db.inc.php file');
-        }
-
-        $db->setConnectionArray($conf);
-        $db->connect();
-
-        return true;
-    }
-
     private function startingSession()
     {
         if (SESSION_ID !== null) {
@@ -348,9 +309,6 @@ class Bootstrap
                     $session->delete();
                     return;
                 }
-
-                $db = \Modl\Modl::getInstance();
-                $db->setUser($session->user_id);
 
                 $session->loadMemory();
             } elseif ($process) {
