@@ -21,6 +21,7 @@ class NewsNav extends Base
 
         $posts = \App\Post::where('open', true)
                           ->orderBy('published', 'desc')
+                          ->restrictToCommunities()
                           ->restrictUserHost()
                           ->take(6);
 

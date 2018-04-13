@@ -60,6 +60,11 @@ class Post extends Model
         return $query->where('node', 'urn:xmpp:microblog:0');
     }
 
+    public function scopeRestrictToCommunities($query)
+    {
+        return $query->where('node', '!=', 'urn:xmpp:microblog:0');
+    }
+
     public function scopeWithoutComments($query)
     {
         return $query->whereNull('parent_id');

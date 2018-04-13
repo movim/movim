@@ -23,6 +23,7 @@ class Communities extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $posts = \App\Post::withoutComments()
+            ->restrictToCommunities()
             ->orderBy('published', 'desc')
             ->orderBy('server', 'desc')
             ->orderBy('node', 'desc')

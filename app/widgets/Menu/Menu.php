@@ -32,10 +32,14 @@ class Menu extends \Movim\Widget\Base
 
     function onPost($packet)
     {
-        $pd = new \Modl\PostnDAO;
-
         $since = \App\Cache::c('since');
-        $count = $pd->getCountSince($since);
+        $count = \App\Post::whereIn('id', function ($query) {
+            $query = $query->select('id')->from('posts');
+            $query = \App\Post::withContactsScope($query);
+            $query = \App\Post::withMineScope($query);
+            $query = \App\Post::withSubscriptionsScope($query);
+        })->where('published', '>', $since)->count();
+
         $post = $packet->content;
 
         if (!is_object($post)) return;
@@ -135,12 +139,25 @@ class Menu extends \Movim\Widget\Base
     function prepareList($type = 'all', $server = null, $node = null, $page = 0)
     {
         $view = $this->tpl();
-        $pd = new \Modl\PostnDAO;
-        $count = $pd->getCountSince(\App\Cache::c('since'));
+
+        $posts = \App\Post::whereIn('id', function ($query) {
+            $query = $query->select('id')->from('posts');
+            $query = \App\Post::withContactsScope($query);
+            $query = \App\Post::withMineScope($query);
+            $query = \App\Post::withSubscriptionsScope($query);
+        });
+
+        $count = $posts->where('published', '>', \App\Cache::c('since'))->count();
+
         // getting newer, not older
-        if ($page == 0 || $page == ''){
+        if ($page == 0){
             $count = 0;
-            \App\Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
+            \App\Cache::c('since',
+                date(
+                    DATE_ISO8601,
+                    strtotime($posts->orderBy('published', 'desc')->first()->published)
+                )
+            );
         }
 
         $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();

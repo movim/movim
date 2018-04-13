@@ -4,10 +4,6 @@ use Respect\Validation\Validator;
 
 class Picture extends \Movim\Widget\Base
 {
-    function load()
-    {
-    }
-
     function display()
     {
         $url = urldecode($this->get('url'));
