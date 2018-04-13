@@ -33,12 +33,17 @@ class Menu extends \Movim\Widget\Base
     function onPost($packet)
     {
         $since = \App\Cache::c('since');
-        $count = \App\Post::whereIn('id', function ($query) {
-            $query = $query->select('id')->from('posts');
-            $query = \App\Post::withContactsScope($query);
-            $query = \App\Post::withMineScope($query);
-            $query = \App\Post::withSubscriptionsScope($query);
-        })->where('published', '>', $since)->count();
+
+        if ($since) {
+            $count = \App\Post::whereIn('id', function ($query) {
+                $query = $query->select('id')->from('posts');
+                $query = \App\Post::withContactsScope($query);
+                $query = \App\Post::withMineScope($query);
+                $query = \App\Post::withSubscriptionsScope($query);
+            })->where('published', '>', $since)->count();
+        } else {
+            $count = 0;
+        }
 
         $post = $packet->content;
 
@@ -147,17 +152,17 @@ class Menu extends \Movim\Widget\Base
             $query = \App\Post::withSubscriptionsScope($query);
         });
 
-        $count = $posts->where('published', '>', \App\Cache::c('since'))->count();
+        $since = \App\Cache::c('since');
+
+        $count = ($since)
+            ? $posts->where('published', '>', $since)->count()
+            : 0;
 
         // getting newer, not older
         if ($page == 0){
             $count = 0;
-            \App\Cache::c('since',
-                date(
-                    DATE_ISO8601,
-                    strtotime($posts->orderBy('published', 'desc')->first()->published)
-                )
-            );
+            $last = $posts->orderBy('published', 'desc')->first();
+            \App\Cache::c('since', ($last) ? $last->published : date(SQL_DATE));
         }
 
         $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();
