@@ -34,7 +34,7 @@ class Rooms extends \Movim\Widget\Base
     {
         $message = $packet->content;
 
-        if ($message->session == $message->jidto
+        if ($message->user_id == $message->jidto
         && $message->type == 'groupchat') {
             Notification::append(
                 'chat|'.$message->jidfrom,

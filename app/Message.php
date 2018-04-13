@@ -124,13 +124,16 @@ class Message extends Model
             }
 
             if ($this->type == 'groupchat') {
-                //$p = $pd->getMyPresenceRoom($this->jidfrom);
+                $presence = $this->user->session->presences()
+                                 ->where('jid', $this->jidfrom)
+                                 ->where('mucjid', $this->user->id)
+                                 ->first();
 
-                /*if (is_object($p)
-                && strpos($this->body, $p->resource) !== false
-                && $this->resource != $p->resource) {
+                if ($presence
+                && strpos($this->body, $presence->resource) !== false
+                && $this->resource != $presence->resource) {
                     $this->quoted = true;
-                }*/
+                }
             }
 
             if ($stanza->html) {

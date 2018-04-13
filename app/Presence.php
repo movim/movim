@@ -40,6 +40,11 @@ class Presence extends Model
         return $this->hasOne('App\Contact', 'id', 'jid');
     }
 
+    public function contactConference()
+    {
+        return $this->hasOne('App\Contact', 'id', 'mucjid');
+    }
+
     public function getPresencetextAttribute()
     {
         return getPresences()[$this->value];

@@ -15,6 +15,11 @@ class Session extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function presences()
+    {
+        return $this->hasMany('App\Presence');
+    }
+
     public function presence()
     {
         return $this->hasOne('App\Presence', 'jid', 'user_id')

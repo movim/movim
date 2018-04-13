@@ -750,20 +750,21 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($message->type == 'groupchat') {
-            $message->color = stringToColor($message->session . $message->resource . $message->type);
+            $message->color = stringToColor($message->session_id . $message->resource . $message->type);
 
-            /*$cd = new \Modl\ContactDAO;
-            $contact = $cd->getPresence($message->jidfrom, $message->resource);
+            $presence = $this->user->session->presences()
+                             ->where('jid', $message->jidfrom)
+                             ->where('resource', $message->resource)
+                             ->first();
 
-            if ($contact) {
-                $url = $contact->getPhoto('s');
-
+            if ($presence && $presence->contactConference) {
+                $url = $presence->contactConference->getPhoto('s');
                 if ($url) {
                     $message->icon_url = $url;
                 }
 
-                $message->mine = ($contact->mucjid == $message->session);
-            }*/
+                $message->mine = ($presence->mucjid == $this->user->id);
+            }
 
             $message->icon = firstLetterCapitalize($message->resource);
         }
