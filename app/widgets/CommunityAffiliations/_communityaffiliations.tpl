@@ -43,10 +43,10 @@
                     </span>
                 {else}
                     <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                        {$contact->getTrueName()|firstLetterCapitalize}
+                        {$contact->truename|firstLetterCapitalize}
                     </span>
                 {/if}
-                <p>{$contact->getTrueName()}</p>
+                <p>{$contact->truename}</p>
                 <p>{$contact->jid}</p>
             </li>
         {/loop}
@@ -69,17 +69,17 @@
                 </span>
             {else}
                 <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                    {$contact->getTrueName()|firstLetterCapitalize}
+                    {$contact->truename|firstLetterCapitalize}
                 </span>
             {/if}
-            <p>{$contact->getTrueName()}</p>
+            <p>{$contact->truename}</p>
             <p>{$contact->jid}</p>
         </li>
     {/loop}
 </ul>
 {/if}
 
-{if="$subscriptions"}
+{if="$subscriptions->isNotEmpty()"}
 <ul class="list card active thin">
     <li class="subheader">
         <p>{$c->__('communityaffiliation.subscriptions')}</p>
@@ -95,10 +95,10 @@
                     </span>
                 {else}
                     <span class="primary icon bubble small color {$value->jid|stringToColor}">
-                        {$value->contact->getTrueName()|firstLetterCapitalize:true}
+                        {$value->contact->truename|firstLetterCapitalize:true}
                     </span>
                 {/if}
-                <p class="normal">{$value->contact->getTrueName()}</p>
+                <p class="normal">{$value->contact->truename}</p>
             {else}
                 <span class="primary icon bubble small color {$value->jid|stringToColor}">
                     {$value->jid|firstLetterCapitalize:true}

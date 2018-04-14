@@ -155,47 +155,6 @@ class Contact extends Model
         return $place;
     }
 
-    public function getTrueName()
-    {
-        $truename = '';
-
-        if (isset($this->rostername))
-            $rostername = str_replace('\40', '', $this->rostername);
-        else
-            $rostername = '';
-
-        if (
-            isset($this->rostername)
-            && $rostername != ''
-            && !filter_var($rostername, FILTER_VALIDATE_EMAIL)
-          )
-            $truename = $rostername;
-        elseif (
-            isset($this->fn)
-            && $this->fn != ''
-            && !filter_var($this->fn, FILTER_VALIDATE_EMAIL)
-          )
-            $truename = $this->fn;
-        elseif (
-            isset($this->nickname)
-            && $this->nickname != ''
-            && !filter_var($this->nickname, FILTER_VALIDATE_EMAIL)
-          )
-            $truename = $this->nickname;
-        elseif (
-            isset($this->name)
-            && $this->name != ''
-            && !filter_var($this->name, FILTER_VALIDATE_EMAIL)
-          )
-            $truename = $this->name;
-        else {
-            $truename = explodeJid($this->id);
-            $truename = $truename['username'];
-        }
-
-        return $truename;
-    }
-
     public function getTruenameAttribute()
     {
         if ($this->fn) return $this->fn;

@@ -64,7 +64,7 @@ class Chat extends \Movim\Widget\Base
                 $presences = getPresences();
                 $presence = $presences[$contact->value];
 
-                Notification::append('presence', $contact->getTrueName(), $presence, $avatar, 4);
+                Notification::append('presence', $contact->truename, $presence, $avatar, 4);
             }
         }
     }*/

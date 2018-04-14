@@ -59,7 +59,7 @@ class Menu extends \Movim\Widget\Base
             $contact = \App\Contact::firstOrNew(['id' => $post->aid]);
             Notification::append(
                 'news',
-                $contact->getTrueName(),
+                $contact->truename,
                 $post->title,
                 $contact->getPhoto('s'),
                 2
@@ -76,7 +76,7 @@ class Menu extends \Movim\Widget\Base
                 if (!$post->isMine()) {
                     Notification::append(
                         'news',
-                        $contact->getTrueName(),
+                        $contact->truename,
                         $title,
                         $contact->getPhoto('s'),
                         2,

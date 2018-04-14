@@ -32,7 +32,7 @@
                 <i class="zmdi zmdi-account"></i>
             </span>
             <p class="line normal">
-                {$c->__('invitations.wants_to_talk', $value->getTrueName())}
+                {$c->__('invitations.wants_to_talk', $value->truename)}
             </p>
             <p>{$value->jid}</p>
         </li>

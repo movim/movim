@@ -9,11 +9,11 @@
                 </span>
             {else}
                 <span class="primary icon bubble color {$contact->id|stringToColor}">
-                    {$contact->getTrueName()|firstLetterCapitalize}
+                    {$contact->truename|firstLetterCapitalize}
                 </span>
             {/if}
             <p class="line">
-                {$contact->getTrueName()}
+                {$contact->truename}
             </p>
             <p>{$contact->id}</p>
         </li>

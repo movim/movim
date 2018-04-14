@@ -30,7 +30,7 @@
                 <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
                     <i class="zmdi zmdi-account"></i>
                 </span>
-                <p>{$contact->getTrueName()}</p>
+                <p>{$contact->truename}</p>
                 <p>{$contact->id}</p>
             </li>
         </ul>

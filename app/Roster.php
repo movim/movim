@@ -102,7 +102,7 @@ class Roster extends Model
 
     public function getTruenameAttribute()
     {
-        if ($this->name) return $this->name;
+        if ($this->name && !filter_var($this->name, FILTER_VALIDATE_EMAIL)) return $this->name;
         if ($this->contact && $this->contact->truename) {
             return $this->contact->truename;
         }

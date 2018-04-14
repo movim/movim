@@ -48,10 +48,10 @@ class Syndication extends \Movim\Widget\Base
         $alternate->setAttribute('rel', 'alternate');
 
         if ($contact != null) {
-            $feed->appendChild($dom->createElement('title', __('feed.title', $contact->getTrueName())));
+            $feed->appendChild($dom->createElement('title', __('feed.title', $contact->truename)));
 
             $feed->appendChild($author = $dom->createElement('author'));
-            $author->appendChild($dom->createElement('name', $contact->getTrueName()));
+            $author->appendChild($dom->createElement('name', $contact->truename));
             $author->appendChild($dom->createElement('uri', $this->route('blog', $from)));
 
             $feed->appendChild($dom->createElement('logo', $contact->getPhoto('l')));

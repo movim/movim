@@ -29,7 +29,7 @@
                     <span class="info" title="{$value->published|strtotime|prepareDate}">
                         {$value->published|strtotime|prepareDate:true,true}
                     </span>
-                    {$value->getContact()->getTrueName()}
+                    {$value->getContact()->truename}
                 </p>
                 {if="!$value->isLike()"}
                     <p class="all">

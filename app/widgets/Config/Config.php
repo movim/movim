@@ -39,6 +39,8 @@ class Config extends \Movim\Widget\Base
         $me->setConfig($package->content);
         $me->save();
 
+        $this->refreshConfig();
+
         Notification::append(null, $this->__('config.updated'));
     }
 

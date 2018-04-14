@@ -163,6 +163,8 @@ class CommunityAffiliations extends \Movim\Widget\Base
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
+        (new CommunityHeader)->ajaxUnsubscribe($origin, $node);
+
         $d = new Delete;
         $d->setTo($origin)->setNode($node)
           ->request();

@@ -13,12 +13,12 @@
                     </span>
                 {else}
                     <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                        {$contact->getTrueName()|firstLetterCapitalize}
+                        {$contact->truename|firstLetterCapitalize}
                     </span>
                 {/if}
                 <p class="normal line">
                     <a href="{$c->route('contact', $value->jid)}">
-                        {$contact->getTrueName()}
+                        {$contact->truename}
                     </a>
                 </p>
                 <p>

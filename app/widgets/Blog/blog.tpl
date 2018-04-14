@@ -17,7 +17,7 @@
             {if="$contact"}
             <p>
                 <a href="{$c->route('blog', $contact->jid)}">
-                    {$c->__('blog.title', $contact->getTrueName())}
+                    {$c->__('blog.title', $contact->truename)}
                 </a>
             </p>
                 {if="$contact->description"}

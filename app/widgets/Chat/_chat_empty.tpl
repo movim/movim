@@ -26,7 +26,7 @@
                     <i class="zmdi zmdi-account"></i>
                 </span>
             {/if}
-            <p class="line">{$value->getTrueName()}</p>
+            <p class="line">{$value->truename}</p>
             <p class="line">{$value->jid}</p>
         </li>
     {/loop}

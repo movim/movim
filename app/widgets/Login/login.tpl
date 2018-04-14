@@ -31,11 +31,11 @@
                             </span>
                         {else}
                             <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                                {$contact->getTrueName()|firstLetterCapitalize}
+                                {$contact->truename|firstLetterCapitalize}
                             </span>
                         {/if}
                         <p></p>
-                        <p class="all">{$c->__('form.invite_chatroom', $contact->getTrueName())} - {$invitation->resource}</p>
+                        <p class="all">{$c->__('form.invite_chatroom', $contact->truename)} - {$invitation->resource}</p>
                     </li>
                 </ul>
             {/if}
