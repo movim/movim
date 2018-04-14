@@ -49,7 +49,7 @@
         {/if}
     </p>
     {if="$contact->group"}
-    <p>
+    <p class="line">
         <span class="tag color {$contact->group|stringToColor}">
             {$contact->group}
         </span>

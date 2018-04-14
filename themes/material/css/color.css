@@ -144,7 +144,6 @@ main > header {
     border-color: var(--movim-accent);
 }
 
-header.fixed ul.list li > p:nth-last-of-type(2) + p,
 main > section > div > header.big *,
 .snackbar ul.list li > p:nth-last-of-type(2) + p,
 main > header ul.list li > p:nth-last-of-type(2) + p,

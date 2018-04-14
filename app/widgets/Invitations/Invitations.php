@@ -55,7 +55,7 @@ class Invitations extends \Movim\Widget\Base
         $notifs = $session->get('activenotifs');
         if (is_array($notifs)) {
             foreach($notifs as $key => $value) {
-                array_push($invitations, App\Contact::find($key));
+                array_push($invitations, \App\Contact::firstOrNew(['id' =>$key]));
             }
         }
 

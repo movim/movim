@@ -1,7 +1,10 @@
 <section class="scroll">
-    <ul class="list thin">
+    <ul class="list">
         <li class="subheader">
-            <p><span class="info">{$subscriptions|count}</span>{$c->__('communityaffiliation.subscriptions')}</p>
+            <p>
+                <span class="info">{$subscriptions|count}</span>
+                {$c->__('communityaffiliation.subscriptions')}
+            </p>
         </li>
         {loop="$subscriptions"}
             {$contact = $c->getContact($value->jid)}
