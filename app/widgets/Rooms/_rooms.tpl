@@ -67,7 +67,7 @@
             </li>
         {/loop}
     </ul>
-    {if="$conferences == null"}
+    {if="$conferences->isEmpty()"}
     <ul class="list thick spaced">
         <li>
             <span class="primary icon green">

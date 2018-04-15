@@ -2,13 +2,17 @@
 
 namespace App;
 
+use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
 use Illuminate\Database\Eloquent\Model;
 
 class Cache extends Model
 {
+    use HasCompositePrimaryKey;
+
+    protected $primaryKey = ['user_id', 'name'];
+
     public $incrementing = false;
     protected $fillable = ['user_id', 'name'];
-    protected $primaryKey = 'name';
     private static $_instance;
 
     public static function instanciate()
