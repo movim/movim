@@ -7,6 +7,7 @@ use Moxl\Stanza\Stream;
 use Moxl\Utils;
 
 use Movim\Session;
+use App\Session as DBSession;
 
 class Bind extends Action
 {
@@ -37,6 +38,10 @@ class Bind extends Action
 
         if($resource) {
             $session->set('resource', $resource);
+
+            /*$dbsession = DBSession::where('id', SESSION_ID)->first();
+            $dbsession->resource = $resource;
+            $dbsession->save();*/
         }
 
         $ss = new Start;

@@ -10,15 +10,14 @@ class AvatarMetadata extends Payload
     {
         $jid = current(explode('/', (string)$parent->attributes()->from));
 
-        $cd = new \Modl\ContactDAO;
-        $c = $cd->get($jid);
+        $c = \App\Contact::firstOrNew(['id' => $jid]);
 
         if(isset($stanza->items->item->metadata->info)) {
             $info = $stanza->items->item->metadata->info->attributes();
 
             if($info->id != $c->avatarhash) {
                 $c->avatarhash = $info->id;
-                $cd->set($c);
+                $c->save();
 
                 $g = new Get;
                 $g->setTo($jid)

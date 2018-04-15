@@ -20,14 +20,12 @@ class Muc extends Action
 
         $session = Session::start();
 
-        if(empty($this->_nickname)) {
+        if (empty($this->_nickname)) {
             $this->_nickname = $session->get('username');
         }
 
-        if($this->_mam == false) {
-            // We clear all the old messages
-            $md = new \Modl\MessageDAO;
-            $md->deleteContact($this->_to);
+        if ($this->_mam == false) {
+            \App\User::me()->messages()->where('jidfrom', $this->_to)->delete();
         }
 
         Presence::muc($this->_to, $this->_nickname, $this->_mam);
@@ -59,36 +57,38 @@ class Muc extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $p = new \Modl\Presence;
-        $p->setPresence($stanza);
+        $presence = \App\Presence::findByStanza($stanza);
+        $presence->set($stanza);
 
-        if($stanza->attributes()->to) {
-            $p->mucjid = current(explode('/',(string)$stanza->attributes()->to));
+        if ($stanza->attributes()->to) {
+            $presence->mucjid = current(explode('/',(string)$stanza->attributes()->to));
         }
 
-        $pd = new \Modl\PresenceDAO;
-        $pd->set($p);
+        $presence->save();
 
-        if($this->_mam) {
-            $md = new \Modl\MessageDAO;
-            $message = $md->getLastReceivedItem($this->_to);
+        if ($this->_mam) {
+            $message = \App\User::me()->messages()
+                                      ->where('jidfrom', $this->_to)
+                                      ->whereNull('subject')
+                                      ->orderBy('published', 'desc')
+                                      ->first();
 
             $g = new \Moxl\Xec\Action\MAM\Get;
             $g->setTo($this->_to)
               ->setLimit(300);
 
-            if(!empty($message)) {
+            if (!empty($message)) {
                 $g->setStart(strtotime($message->published));
             }
 
-            if($this->_mam2) {
+            if ($this->_mam2) {
                 $g->setVersion('2');
             }
 
             $g->request();
         }
 
-        $this->pack($p);
+        $this->pack($presence);
         $this->deliver();
     }
 
@@ -106,7 +106,7 @@ class Muc extends Action
 
     public function errorConflict($stanza, $message)
     {
-        if(substr_count($this->_nickname, '_') > 5) {
+        if (substr_count($this->_nickname, '_') > 5) {
             $this->deliver();
         } else {
             $this->setNickname($this->_nickname.'_');

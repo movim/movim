@@ -7,6 +7,7 @@ use Moxl\Stanza\Stream;
 use Moxl\Utils;
 
 use Movim\Session;
+use App\Session as DBSession;
 
 class Start extends Action
 {
@@ -30,12 +31,11 @@ class Start extends Action
         $session->remove('password');
         $session->set('active', true);
 
-        $sd = new \Modl\SessionxDAO;
-        $sessionx = $sd->get(SESSION_ID);
+        $session = DBSession::find(SESSION_ID);
 
-        if ($sessionx) {
-            $sessionx->active = true;
-            $sd->set($sessionx);
+        if ($session) {
+            $session->active = true;
+            $session->save();
         }
 
         Utils::log("/// AUTH SUCCESSFULL");

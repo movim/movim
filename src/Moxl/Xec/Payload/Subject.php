@@ -4,35 +4,34 @@ namespace Moxl\Xec\Payload;
 
 class Subject extends Payload
 {
-    public function handle($stanza, $parent = false) {        
+    public function handle($stanza, $parent = false)
+    {
         $jid = explode('/',(string)$parent->attributes()->from);
         $to = current(explode('/',(string)$parent->attributes()->to));
 
         if($parent->subject) {
-            $m = new \modl\Message();
+            $message = new \App\Message;
 
-            $m->session     = $to;
-            $m->jidto      = $to;
-            $m->jidfrom    = $jid[0];
+            $message->user_id    = $to;
+            $message->jidto      = $to;
+            $message->jidfrom    = $jid[0];
 
-            if(isset($jid[1]))
-                $m->resource = $jid[1];
-            
-            $m->type    = (string)$parent->attributes()->type;
-            
-            $m->body    = (string)$parent->body;
-            $m->subject = (string)$parent->subject;
+            if(isset($jid[1])) {
+                $message->resource = $jid[1];
+            }
 
-            if($parent->delay)
-                $m->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
-            else
-                $m->published = gmdate('Y-m-d H:i:s');
-            $m->delivered = date('Y-m-d H:i:s');
+            $message->type    = (string)$parent->attributes()->type;
+            $message->body    = (string)$parent->body;
+            $message->subject = (string)$parent->subject;
 
-            $md = new \modl\MessageDAO();
-            $md->set($m);
+            $message->published = ($parent->delay)
+                ? gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp))
+                : gmdate('Y-m-d H:i:s');
+            $message->delivered = date('Y-m-d H:i:s');
 
-            $this->pack($m);
+            $message->save();
+
+            $this->pack($message);
             $this->deliver();
         }
     }

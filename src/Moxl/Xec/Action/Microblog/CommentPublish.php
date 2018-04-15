@@ -1,26 +1,4 @@
 <?php
-/*
- * CommentPublish.php
- *
- * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- *
- */
 
 namespace Moxl\Xec\Action\Microblog;
 
@@ -35,12 +13,9 @@ class CommentPublish extends Errors
     private $_to;
     private $_node;
     private $_parentid;
+    private $_commentnodeid;
 
     private $_atom;
-
-    private $_parentorigin;
-    private $_parentnode;
-    private $_parentnodeid;
 
     public function __construct()
     {
@@ -61,28 +36,16 @@ class CommentPublish extends Errors
         return $this;
     }
 
-    public function setParentOrigin($parentorigin)
-    {
-        $this->_parentorigin = $parentorigin;
-        return $this;
-    }
-
-    public function setParentNode($parentnode)
-    {
-        $this->_parentnode = $parentnode;
-        return $this;
-    }
-
-    public function setParentNodeId($parentnodeid)
-    {
-        $this->_parentnodeid = $parentnodeid;
-        return $this;
-    }
-
-    public function setParentid($parentid)
+    public function setParentId($parentid)
     {
         $this->_parentid = $parentid;
-        $this->_node = 'urn:xmpp:microblog:0:comments/'.$this->_parentid;
+        return $this;
+    }
+
+    public function setCommentNodeId($commentnodeid)
+    {
+        $this->_commentnodeid = $commentnodeid;
+        $this->_node = 'urn:xmpp:microblog:0:comments/'.$this->_commentnodeid;
         $this->_atom->node = $this->_node;
         return $this;
     }
@@ -117,9 +80,7 @@ class CommentPublish extends Errors
         $g->setTo($this->_to)
           ->setNode($this->_node)
           ->setId($this->_atom->id)
-          ->setParentOrigin($this->_parentorigin)
-          ->setParentNode($this->_parentnode)
-          ->setParentNodeId($this->_parentid)
+          ->setParentId($this->_parentid)
           ->request();
 
         $this->deliver();

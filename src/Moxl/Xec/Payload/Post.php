@@ -1,28 +1,4 @@
 <?php
-/*
- * @file Post.php
- *
- * @brief Handle incoming Post (XEP 0277 Microblog)
- *
- * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- *
- */
 
 namespace Moxl\Xec\Payload;
 
@@ -39,27 +15,33 @@ class Post extends Payload
         if ($stanza->items->item
         && isset($stanza->items->item->entry)
         && (string)$stanza->items->item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
-            if ($parent->delay) {
-                $delay = gmdate('Y-m-d H:i:s', strtotime((string)$parent->delay->attributes()->stamp));
-            } else {
-                $delay = false;
-            }
+            $delay = ($parent->delay)
+                ? gmdate('Y-m-d H:i:s', strtotime((string)$parent->delay->attributes()->stamp))
+                : false;
 
-            $p = new \Modl\Postn;
+            $p = \App\Post::firstOrNew([
+                'server' => $from,
+                'node' =>  (string)$stanza->items->attributes()->node,
+                'nodeid' => (string)$stanza->items->item->attributes()->id
+            ]);
             $p->set($stanza->items, $from, $delay);
 
             // We limit the very old posts (2 months old)
-            if (strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
-            && $p->nodeid != $this->testid) {
-                $pd = new \Modl\PostnDAO;
-                $pd->set($p, $from);
+            if (/*strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))
+            &&*/ $p->nodeid != $this->testid
+            && (($p->isComment() && isset($p->parent_id))
+            || !$p->isComment())
+            ) {
+                $p->save();
 
                 $this->pack($p);
                 $this->deliver();
             }
         } elseif ($stanza->items->retract) {
-            $pd = new \Modl\PostnDAO;
-            $pd->delete($stanza->items->retract->attributes()->id);
+            \App\Post::where('nodeid', $stanza->items->retract->attributes()->id)
+                ->where('server', $from)
+                ->where('node', $stanza->attributes()->node)
+                ->delete();
 
             $this->method('retract');
 
@@ -71,13 +53,14 @@ class Post extends Payload
         } elseif ($stanza->items->item && isset($stanza->items->item->attributes()->id)
             && !filter_var($from, FILTER_VALIDATE_EMAIL)) {
             // In this case we only get the header, so we request the full content
-            $p = new \Modl\PostnDAO;
-
             $node = (string)$stanza->items->attributes()->node;
             $id = (string)$stanza->items->item->attributes()->id;
-            $here = $p->exists($from, $node, $id);
 
-            if (!$here && $id != $this->testid) {
+            if (\App\Post::where('server', $from)
+                         ->where('node', $node)
+                         ->where('nodeid', $id)
+                         ->count() == 0
+            && $id != $this->testid) {
                 $d = new GetItem;
                 $d->setTo($from)
                   ->setNode($node)

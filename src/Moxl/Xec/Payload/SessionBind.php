@@ -12,6 +12,7 @@ class SessionBind extends Payload
     public function handle($stanza, $parent = false)
     {
         $session = Session::start();
+
         $ss = new Bind;
         $ss->setResource($session->get('resource'))
            ->request();

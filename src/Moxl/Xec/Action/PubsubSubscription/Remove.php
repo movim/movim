@@ -48,8 +48,10 @@ class Remove extends Errors
     public function handle($stanza, $parent = false)
     {
         if ($this->_pepnode == 'urn:xmpp:pubsub:movim-public-subscription') {
-            $sd = new \Modl\SubscriptionDAO;
-            $sd->deleteNode($this->_server, $this->_node);
+            \App\User::me()->subscriptions()
+                           ->where('server', $this->_server)
+                           ->where('node', $this->_node)
+                           ->delete();
         }
 
         $this->deliver();

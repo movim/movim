@@ -26,6 +26,7 @@ namespace Moxl\Xec\Action\Presence;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Presence;
+use App\Presence as DBPresence;
 
 class DND extends Action
 {
@@ -45,11 +46,9 @@ class DND extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $p = new \Modl\Presence;
-        $p->setPresence($stanza);
-
-        $pd = new \Modl\PresenceDAO;
-        $pd->set($p);
+        $presence = DBPresence::findByStanza($stanza);
+        $presence->set($stanza);
+        $presence->save();
 
         $this->event('mypresence');
     }

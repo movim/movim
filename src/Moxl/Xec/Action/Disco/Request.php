@@ -40,31 +40,33 @@ class Request extends Action
     public function handle($stanza, $parent = false)
     {
         // Caps
-        $c = new \Modl\Caps;
+        $capability = new \App\Capability;
 
         if (isset($this->_node)) {
-            $c->set($stanza, $this->_node);
+            $capability->set($stanza, $this->_node);
         } else {
-            $c->set($stanza, $this->_to);
+            $capability->set($stanza, $this->_to);
         }
 
-        $cd = new \Modl\CapsDAO;
-        if (!empty($c->features)) {
-            $cd->set($c);
+        if ($capability->features != null
+        && $capability->category != null) {
+            $found = \App\Capability::find($capability->node);
+            if ($found) $found->delete();
+
+            $capability->save();
         }
 
         // Info
-        $ind = new \Modl\InfoDAO;
-        $in = $ind->get($this->_to, $this->_node);
+        $info = \App\Info::where('server', $this->_to)
+                         ->where('node', (string)$this->_node)
+                         ->first();
 
-        if (!$in) {
-            $in = new \Modl\Info;
-        }
+        if(!$info) $info = new \App\Info;
+        $info->set($stanza);
 
-        $in->set($stanza);
-        if (!empty($in->category)
-        && $in->category !== 'account') {
-            $ind->set($in);
+        if (!empty($info->category)
+        && $info->category !== 'account') {
+            $info->save();
         }
 
         $this->pack([$this->_to, $this->_node]);

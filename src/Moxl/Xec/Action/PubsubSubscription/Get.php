@@ -31,27 +31,21 @@ class Get extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        if ($this->_pepnode == 'urn:xmpp:pubsub:movim-public-subscription') {
-            $sd = new \Modl\SubscriptionDAO;
-            $sd->delete();
+        \App\User::me()->subscriptions()
+                       ->where('public', ($this->_pepnode == 'urn:xmpp:pubsub:subscription'))
+                       ->delete();
 
-            foreach($stanza->pubsub->items->children() as $i) {
-                $su = new \Modl\Subscription;
-                $su->jid            = $this->_to;
-                $su->server         = (string)$i->subscription->attributes()->server;
-                $su->node           = (string)$i->subscription->attributes()->node;
-                $su->subscription   = 'subscribed';
-                $sd->set($su);
-            }
-        } else {
-            $sd = new \Modl\SharedSubscriptionDAO;
-            $sd->deleteJid($this->_to);
+        foreach($stanza->pubsub->items->children() as $i) {
+            $subscription = \App\Subscription::firstOrNew([
+                'jid' => $this->_to,
+                'server' => (string)$i->subscription->attributes()->server,
+                'node' => (string)$i->subscription->attributes()->node
+            ]);
 
-            foreach($stanza->pubsub->items->children() as $i) {
-                $s = new \Modl\SharedSubscription;
-                $s->set($this->_to, $i->subscription);
-                $sd->set($s);
+            if ($this->_pepnode == 'urn:xmpp:pubsub:subscription') {
+                $subscription->public = true;
             }
+            $subscription->save();
         }
 
         $this->pack($this->_to);

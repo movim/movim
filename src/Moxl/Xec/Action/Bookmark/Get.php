@@ -24,8 +24,6 @@ class Get extends Action
 
     private function saveItem($c)
     {
-        $cd = new \Modl\ConferenceDAO;
-
         if($c->getName() == 'subscription') {
             /*
              * Old deprecated method, moving the subscriptions to
@@ -38,26 +36,21 @@ class Get extends Action
               ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
               ->request();
         } elseif($c->getName() == 'conference') {
-            $co = new \Modl\Conference;
+            $conference = new \App\Conference;
 
-            $co->jid            = $this->_to;
-            $co->conference     = (string)$c->attributes()->jid;
-            $co->name           = (string)$c->attributes()->name;
-            $co->nick           = (string)$c->nick;
-            $co->autojoin       = (int)$c->attributes()->autojoin;
-            $co->status         = 0;
+            $conference->conference     = (string)$c->attributes()->jid;
+            $conference->name           = (string)$c->attributes()->name;
+            $conference->nick           = (string)$c->nick;
+            $conference->autojoin       = (int)$c->attributes()->autojoin;
 
-            $cd->set($co);
+            $conference->save();
         }
     }
 
     public function handle($stanza, $parent = false)
     {
         if($stanza->pubsub->items->item->storage) {
-            $cd = new \Modl\ConferenceDAO;
-
-            // We clear the old Bookmarks
-            $cd->delete();
+            \App\User::me()->session->conferences()->delete();
 
             if($stanza->pubsub->items->item->count() == 1) {
                 // We save the bookmarks as Subscriptions in the database

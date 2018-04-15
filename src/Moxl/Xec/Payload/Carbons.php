@@ -15,23 +15,20 @@ class Carbons extends Payload
         $from = current(explode('/',(string)$message->attributes()->from));
         $to = current(explode('/',(string)$message->attributes()->to));
 
-        $user = new User;
-        if($parentfrom == $user->getLogin()) {
-            if($message->composing)
+        if($parentfrom == \App\User::me()->id) {
+            if ($message->composing)
                 $this->event('composing', [$from, $to]);
-            if($message->paused)
+            if ($message->paused)
                 $this->event('paused', [$from, $to]);
-            if($message->gone)
+            if ($message->gone)
                 $this->event('gone', [$from, $to]);
 
-            if($message->body || $message->subject) {
-                $m = new \Modl\Message;
+            if ($message->body || $message->subject) {
+                $m = \App\Message::findByStanza($message);
                 $m->set($message, $stanza->forwarded);
 
-                if(!preg_match('#^\?OTR#', $m->body)) {
-                    $md = new \Modl\MessageDAO;
-                    $md->set($m);
-
+                if (!$m->isOTR()) {
+                    $m->save();
                     $this->pack($m);
                     $this->deliver();
                 }

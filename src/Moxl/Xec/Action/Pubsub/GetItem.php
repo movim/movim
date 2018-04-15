@@ -35,9 +35,7 @@ class GetItem extends Errors
     private $_id;
     private $_askreply;
 
-    private $_parentorigin;
-    private $_parentnode;
-    private $_parentnodeid;
+    private $_parentid;
 
     public function request()
     {
@@ -69,61 +67,42 @@ class GetItem extends Errors
         return $this;
     }
 
-    public function setParentOrigin($parentorigin)
+    public function setParentId($parentid)
     {
-        $this->_parentorigin = $parentorigin;
-        return $this;
-    }
-
-    public function setParentNode($parentnode)
-    {
-        $this->_parentnode = $parentnode;
-        return $this;
-    }
-
-    public function setParentNodeId($parentnodeid)
-    {
-        $this->_parentnodeid = $parentnodeid;
+        $this->_parentid = $parentid;
         return $this;
     }
 
     public function handle($stanza, $parent = false)
     {
-        $from = $this->_to;
-        $node = $this->_node;
-
         if ($stanza->pubsub->items->item) {
-            $post = false;
-
             foreach($stanza->pubsub->items->item as $item) {
                 if (isset($item->entry)
                 &&(string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
-                    $p = new \Modl\Postn;
-                    $p->set($item, $from, false, $node);
+                    $p = \App\Post::firstOrNew([
+                        'server' => $this->_to,
+                        'node' => $this->_node,
+                        'nodeid' => $this->_id
+                    ]);
+                    $p->set($item, $this->_to, false, $this->_node);
 
-                    if (isset($this->_parentorigin)
-                    && isset($this->_parentnode)
-                    && isset($this->_parentnodeid)) {
-                        $p->parentorigin    = $this->_parentorigin;
-                        $p->parentnode      = $this->_parentnode;
-                        $p->parentnodeid    = $this->_parentnodeid;
+                    if (isset($this->_parentid)) {
+                        $p->parent_id    = $this->_parentid;
                     }
 
-                    $pd = new \Modl\PostnDAO;
-                    $pd->set($p);
+                    if ($p->isComment() && !isset($this->_parentid)) return;
+
+                    $p->save();
 
                     if (is_array($this->_askreply)) {
-                        $this->pack([
-                            'origin' => $this->_askreply['origin'],
-                            'node'   => $this->_askreply['node'],
-                            'nodeid' => $this->_askreply['nodeid']]);
+                        $this->pack(\App\Post::find($this->_askreply));
                         $this->deliver();
                     } else {
                         $this->pack($p);
                         $this->event('post', $this->packet);
                     }
 
-                    $this->pack(['origin' => $this->_to, 'node' => $this->_node, 'nodeid' => $this->_id]);
+                    $this->pack($p);
                     $this->deliver();
                 }
             }

@@ -35,10 +35,8 @@ class Caps extends Payload
         $node = $stanza->attributes()->node.'#'.$stanza->attributes()->ver;
         $to = (string)$parent->attributes()->from;
 
-        $cd = new \Modl\CapsDAO;
-        $c = $cd->get($node);
-
-        if(!$c && $parent->getName() != 'streamfeatures') {
+        if (!\App\Capability::find($node)
+        && $parent->getName() != 'streamfeatures') {
             $d = new Request;
             $d->setTo($to)
               ->setNode($node)

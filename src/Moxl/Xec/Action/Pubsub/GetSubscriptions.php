@@ -66,18 +66,15 @@ class GetSubscriptions extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $jid = current(explode('/',(string)$stanza->attributes()->to));
-        $server = $this->_to;
-        $node = $this->_node;
-
         $tab = [];
 
         foreach($stanza->pubsub->subscriptions->children() as $s) {
-            $su = new \Modl\Subscription;
-            $su->set($jid, $server, $node, $s);
-
-            $sd = new \Modl\SubscriptionDAO;
-            $sd->set($su);
+            $subscription = \App\Subscription::firstOrNew([
+                'jid' => (string)$s->attributes()->jid,
+                'server' => $this->_to,
+                'node' => $this->_node
+            ]);
+            $subscription->save();
 
             $sub = [
                 'jid' => (string)$s["jid"],
@@ -88,12 +85,14 @@ class GetSubscriptions extends Errors
             array_push($tab, $sub);
         }
 
-        $id = new \Modl\InfoDAO;
-        $id->setOccupantsCount($server, $node, count($tab));
+        \App\Info::where('server', $this->_to)
+                 ->where('node', $this->_node)
+                 ->update(['occupants' => count($tab)]);
 
-        if(empty($tab)) {
-            $sd = new \Modl\SubscriptionDAO;
-            $sd->deleteNode($server, $node);
+        if (empty($tab)) {
+            \App\Subscription::where('server', $this->_to)
+                             ->where('node', $this->_node)
+                             ->delete();
         }
 
         $this->pack([

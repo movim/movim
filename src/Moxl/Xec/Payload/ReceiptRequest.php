@@ -12,13 +12,11 @@ class ReceiptRequest extends Payload
 
         \Moxl\Stanza\Message::receipt($from, $id);
 
-        $md = new \Modl\MessageDAO;
-        $m = $md->getId($id);
+        $message = \App\User::me()->messages->where('id', $id)->first();
 
-        if($m) {
-            $m->delivered = gmdate('Y-m-d H:i:s');
-            $m->newid = $id;
-            $md->set($m);
+        if($message) {
+            $message->delivered = gmdate('Y-m-d H:i:s');
+            $message->save();
         }
     }
 }

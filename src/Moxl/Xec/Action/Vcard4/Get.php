@@ -25,6 +25,7 @@ namespace Moxl\Xec\Action\Vcard4;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Vcard4;
+use App\Contact;
 
 class Get extends Action
 {
@@ -51,24 +52,12 @@ class Get extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $cd = new \Modl\ContactDAO;
-
-        $c = $cd->get($this->_to);
-
-        if($c == null)
-            $c = new \Modl\Contact;
-
-        $c->jid       = $this->_to;
-
         if($vcard = $stanza->pubsub->items->item) {
-            $vcard = $stanza->pubsub->items->item->vcard;
-            $c->setVcard4($vcard);
+            $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
+            $contact->setVcard4($stanza->pubsub->items->item->vcard);
+            $contact->save();
 
-            $c->createThumbnails();
-
-            $cd->set($c);
-
-            $this->pack($c);
+            $this->pack($contact);
             $this->deliver();
         } else {
             $this->error(false);

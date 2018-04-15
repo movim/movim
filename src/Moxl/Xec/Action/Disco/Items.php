@@ -24,49 +24,58 @@ class Items extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $id = new \Modl\InfoDAO;
-        //$id->deleteItems($this->_to);
-
         $jid = null;
 
+        $parent = \App\Info::where('server', $this->_to)
+                         ->where('node', '')
+                         ->first();
+        $counter = 0;
+
         foreach ($stanza->query->item as $item) {
-            $i = $id->get($this->_to, (string)$item->attributes()->node);
-            $parent = $id->get($this->_to, '');
+            $info = \App\Info::where('server', $this->_to)
+                             ->where('node', (string)$item->attributes()->node)
+                             ->first();
 
-            if (!isset($i)) {
-                $i = new \Modl\Info;
-            }
+            if(!$info) $info = new \App\Info;
 
-            $i->setItem($item);
+            $info->setItem($item);
 
-            if ($parent
-            && $parent->category == 'pubsub'
-            && $parent->type == 'service') {
-                $i->category = 'pubsub';
-            }
+            if ($parent && $parent->isPubsubService()) {
+                $info->category = 'pubsub';
 
-            if (substr($i->node, 0, 29) != 'urn:xmpp:microblog:0:comments') {
-                $id->set($i);
-            }
-
-            if ($jid != $i->server) {
-                if (isset($i->node)
-                && $i->node != ''
-                && $i->node != 'urn:xmpp:microblog:0') {
-                    $r = new Request;
-                    $r->setTo($i->server)
-                      ->setNode($i->node)
-                      ->request();
-                }
-
-                if (strpos($i->server, '/') === false) {
-                    $r = new Request;
-                    $r->setTo($i->server)
-                      ->request();
+                if (!$info->isMicroblogCommentsNode()) {
+                    $counter++;
                 }
             }
 
-            $jid = $i->server;
+            if (!empty($info->category)
+            && !$info->isMicroblogCommentsNode()) {
+                $info->save();
+            }
+
+            if ($jid != $info->server) {
+                if (isset($info->node)
+                && $info->node != ''
+                && $info->node != 'urn:xmpp:microblog:0') {
+                    $r = new Request;
+                    $r->setTo($info->server)
+                      ->setNode($info->node)
+                      ->request();
+                }
+
+                if (strpos($info->server, '/') === false) {
+                    $r = new Request;
+                    $r->setTo($info->server)
+                      ->request();
+                }
+            }
+
+            $jid = $info->server;
+        }
+
+        if ($parent && $parent->isPubsubService()) {
+            $parent->occupants = $counter;
+            $parent->save();
         }
 
         $this->pack($this->_to);

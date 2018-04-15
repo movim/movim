@@ -2,8 +2,6 @@
 
 namespace Moxl\Xec\Payload;
 
-use Moxl\Xec\Action\Session\Bind;
-
 use Movim\Session;
 
 class SASLSuccess extends Payload

@@ -10,15 +10,15 @@ class ReceiptAck extends Payload
         $from = (string)$parent->attributes()->from;
         $id = (string)$stanza->attributes()->id;
 
-        $md = new \Modl\MessageDAO;
-        $m = $md->getId($id);
+        $message = \App\User::me()->messages
+                                  ->where('id', (string)$stanza->attributes()->id)
+                                  ->first();
 
-        if($m) {
-            $m->delivered = gmdate('Y-m-d H:i:s');
-            $m->newid = $id;
-            $md->set($m);
+        if($message) {
+            $message->delivered = gmdate('Y-m-d H:i:s');
+            $message->save();
 
-            $this->pack($m);
+            $this->pack($message);
             $this->deliver();
         }
     }

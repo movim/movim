@@ -1,26 +1,4 @@
 <?php
-/*
- * CommentsGet.php
- *
- * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- *
- */
 
 namespace Moxl\Xec\Action\Microblog;
 
@@ -32,9 +10,7 @@ class CommentsGet extends Action
     private $_to;
     private $_id;
     private $_node;
-    private $_parentorigin;
-    private $_parentnode;
-    private $_parentnodeid;
+    private $_parentid;
 
     public function request()
     {
@@ -55,50 +31,30 @@ class CommentsGet extends Action
         return $this;
     }
 
-    public function setParentOrigin($parentorigin)
+    public function setParentId($parentid)
     {
-        $this->_parentorigin = $parentorigin;
-        return $this;
-    }
-
-    public function setParentNode($parentnode)
-    {
-        $this->_parentnode = $parentnode;
-        return $this;
-    }
-
-    public function setParentNodeId($parentnodeid)
-    {
-        $this->_parentnodeid = $parentnodeid;
+        $this->_parentid = $parentid;
         return $this;
     }
 
     public function handle($stanza, $parent = false)
     {
         $node = (string)$stanza->pubsub->items->attributes()->node;
-        list($xmlns, $parent) = explode("/", $node);
 
         if($stanza->pubsub->items->item) {
             foreach($stanza->pubsub->items->item as $item) {
-                $p = new \Modl\Postn;
-                $p->set($item, $this->_to, false, $node);
-
-                $p->parentorigin    = $this->_parentorigin;
-                $p->parentnode      = $this->_parentnode;
-                $p->parentnodeid    = $this->_parentnodeid;
-
-                $pd = new \Modl\PostnDAO;
-                $pd->set($p);
+                $p = \App\Post::firstOrNew([
+                    'server' => $this->_to,
+                    'node' => $node,
+                    'nodeid' => (string)$item->attributes()->id
+                ]);
+                $p->set($item, $this->_to, false, $this->_node);
+                $p->parent_id = $this->_parentid;
+                $p->save();
             }
         }
 
-        $this->pack(
-            [
-                'server' => $this->_parentorigin,
-                'node' => $this->_parentnode,
-                'id' => $this->_parentnodeid
-            ]);
-
+        $this->pack($this->_parentid);
         $this->deliver();
     }
 

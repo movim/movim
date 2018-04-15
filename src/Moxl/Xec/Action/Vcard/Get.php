@@ -1,26 +1,4 @@
 <?php
-/*
- * Get.php
- *
- * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- *
- */
 
 namespace Moxl\Xec\Action\Vcard;
 
@@ -66,23 +44,15 @@ class Get extends Action
         }
 
         if($this->_muc) {
-            $c = new \Modl\Conference;
-            $c->setAvatar($stanza, $this->_to);
+            //$c = new \Modl\Conference;
+            //$c->setAvatar($stanza, $this->_to);
         } elseif($jid) {
-            $cd = new \Modl\ContactDAO;
+            $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
+            $contact->set($stanza, $this->_to);
+            $contact->createThumbnails();
+            $contact->save();
 
-            $c = $cd->get($this->_to);
-
-            if($c == null)
-                $c = new \Modl\Contact;
-
-            $c->set($stanza, $this->_to);
-
-            $cd->set($c);
-
-            $c->createThumbnails();
-
-            $this->pack($c);
+            $this->pack($contact);
             $this->deliver();
         }
     }

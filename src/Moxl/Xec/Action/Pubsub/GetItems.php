@@ -85,8 +85,6 @@ class GetItems extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        $pd = new \Modl\PostnDAO;
-
         $ids = [];
 
         foreach($stanza->pubsub->items->item as $item) {
@@ -94,10 +92,13 @@ class GetItems extends Errors
             && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
                 if ($this->_since == null
                 || strtotime($this->_since) < strtotime($item->entry->published)) {
-                    $p = new \Modl\Postn;
+                    $p = \App\Post::firstOrNew([
+                        'server' => $this->_to,
+                        'node' => $this->_node,
+                        'nodeid' => (string)$item->attributes()->id
+                    ]);
                     $p->set($item, $this->_to, false, $this->_node);
-
-                    $pd->set($p);
+                    $p->save();
 
                     array_push($ids, $p->nodeid);
                 }

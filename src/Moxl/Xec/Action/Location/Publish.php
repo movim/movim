@@ -54,7 +54,7 @@ class Publish extends Action
     {
         $from = current(explode('/',(string)$stanza->attributes()->from));
 
-        $cd = new \modl\ContactDAO();
+        /*$cd = new \modl\ContactDAO();
         $c = $cd->get($from);
 
         if($c == null) {
@@ -77,7 +77,7 @@ class Publish extends Action
         $c->loctimestamp = date(
                             'Y-m-d H:i:s',
                             time());
-        $cd->set($c);
+        $cd->set($c);*/
 
         $this->event('locationpublished', $c);
     }

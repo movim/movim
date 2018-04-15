@@ -8,14 +8,15 @@ class Displayed extends Payload
     {
         $id = (string)$stanza->attributes()->id;
 
-        $md = new \Modl\MessageDAO;
-        $m = $md->getId($id);
-        if($m) {
-            $m->displayed = gmdate('Y-m-d H:i:s');
-            $m->newid = $id;
-            $md->set($m);
+        $message = \App\User::me()->messages
+                                  ->where('id', (string)$stanza->attributes()->id)
+                                  ->first();
 
-            $this->pack($m);
+        if($message) {
+            $message->displayed = gmdate('Y-m-d H:i:s');
+            $message->save();
+
+            $this->pack($message);
             $this->deliver();
         }
     }

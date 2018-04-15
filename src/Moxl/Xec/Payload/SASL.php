@@ -16,7 +16,8 @@ class SASL extends Payload
          * Weird behaviour on old eJabberd servers, fixed on the new versions
          * see https://github.com/processone/ejabberd/commit/2d748115
          */
-        if(isset($parent->starttls) && isset($parent->starttls->required)) {
+        if (isset($parent->starttls)
+        && isset($parent->starttls->required)) {
             return;
         }
 

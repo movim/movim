@@ -1,36 +1,15 @@
 <?php
-/*
- * AddItem.php
- *
- * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- *
- */
 
 namespace Moxl\Xec\Action\Roster;
 
 use Moxl\Xec\Action;
 use Moxl\Stanza\Roster;
+use App\Roster as DBRoster;
+use App\User as DBUser;
 
 class AddItem extends Action
 {
     private $_to;
-    private $_from;
     private $_name;
     private $_group;
 
@@ -58,30 +37,14 @@ class AddItem extends Action
         return $this;
     }
 
-    public function setFrom($from)
-    {
-        $this->_from = $from;
-        return $this;
-    }
-
     public function handle($stanza, $parent = false)
     {
-        $r = new \Modl\RosterLink;
-
-        $r->key = $this->_from;
-        $r->jid = $this->_to;
-
-        $rd = new \Modl\RosterLinkDAO;
-        $rd->setNow($r);
+        $roster = DBRoster::firstOrNew(['jid' => $this->_to]);
+        $roster->group = $this->_group;
+        $roster->name = $this->_name;
+        $roster->save();
 
         $this->pack($this->_to);
         $this->deliver();
     }
-
-    public function errorServiceUnavailable()
-    {
-    }
-
-    public function load($key) {}
-    public function save() {}
 }

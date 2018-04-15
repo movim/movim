@@ -55,17 +55,17 @@ class Add extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        if ($this->_pepnode == 'urn:xmpp:pubsub:movim-public-subscription') {
-            $sd = new \Modl\SubscriptionDAO;
-            $su = new \Modl\Subscription;
+        $subscription = \App\Subscription::firstOrNew([
+            'jid' => $this->_from,
+            'server' => $this->_server,
+            'node' => $this->_node
+        ]);
 
-            $su->jid            = $this->_from;
-            $su->server         = $this->_server;
-            $su->node           = $this->_node;
-            $su->subscription   = 'subscribed';
-
-            $sd->set($su);
+        if ($this->_pepnode == 'urn:xmpp:pubsub:subscription') {
+            $subscription->public = true;
         }
+
+        $subscription->save();
 
         $this->deliver();
     }
