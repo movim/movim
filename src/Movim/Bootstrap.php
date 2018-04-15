@@ -16,8 +16,9 @@ class Bootstrap
 {
     function boot($dbOnly = false)
     {
-        //define all needed constants
-        $this->setConstants();
+        if (!defined('APP_TITLE')) {
+            $this->setConstants();
+        }
 
         mb_internal_encoding("UTF-8");
 
