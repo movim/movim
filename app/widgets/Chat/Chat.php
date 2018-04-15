@@ -790,9 +790,6 @@ class Chat extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $chats = \App\Cache::c('chats');
-        $chats = ($chats == null) ? false : array_keys($chats);
-
         $conferences = \App\Info::where('category', 'conference')
                                 ->whereNotIn('server', $this->user->session->conferences->pluck('conference')->toArray())
                                 ->where('mucpublic', true)
@@ -806,7 +803,8 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('presencestxt', getPresencesTxt());
         $view->assign('conferences', $conferences);
-        $view->assign('top', []/*$cd->getTop(8, $chats)*/);
+        $view->assign('top', []);
+
         return $view->draw('_chat_empty', true);
     }
 

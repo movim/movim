@@ -31,7 +31,7 @@
         </li>
     {/loop}
 
-    {if="$conferences"}
+    {if="$conferences->isNotEmpty()"}
         <li class="subheader block large">
             <p>{$c->__('chatrooms.title')}</p>
         </li>
