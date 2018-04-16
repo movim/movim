@@ -16,7 +16,7 @@ class ContactDisco extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $users = \App\Contact::where('id', function ($query) {
+        $users = \App\Contact::whereIn('id', function ($query) {
             $query->select('id')
                   ->from('users')
                   ->where('public', true);
