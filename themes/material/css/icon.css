@@ -94,7 +94,7 @@ span.icon.status:after {
     display: block;
     width: 2rem;
     height: 2rem;
-    left: 3.25rem;
+    right: calc(50% - 2.75rem);
     top: 3.25rem;
     position: absolute;
 

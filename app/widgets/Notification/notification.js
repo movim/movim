@@ -29,6 +29,7 @@ var Notification = {
             var n = counters[i];
             if (n.dataset.key != null
             && keys[n.dataset.key] != null) {
+                if (keys[n.dataset.key] > 100) keys[n.dataset.key] = '+100';
                 n.innerHTML = keys[n.dataset.key];
             }
         }
