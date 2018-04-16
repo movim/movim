@@ -7,7 +7,6 @@ class CreateConfigurationTable extends Migration
 {
     public function up()
     {
-        $this->schema->dropIfExists('config');
         $this->schema->create('configuration', function(Blueprint $table) {
             $table->increments('id');
             $table->text('description')->nullable();
