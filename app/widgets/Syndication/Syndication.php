@@ -111,14 +111,14 @@ class Syndication extends \Movim\Widget\Base
                 $link->setAttribute('href', $value->href);
             }
 
-            foreach ($attachments['files'] as $value) {
+            /*foreach ($attachments['files'] as $value) {
                 $entry->appendChild($link = $dom->createElement('link'));
                 $link->setAttribute('rel', 'enclosure');
                 $link->setAttribute('type', $value->type);
                 $link->setAttribute('href', $value->href);
-            }
+            }*/
 
-            foreach ($attachments->links as $value) {
+            foreach ($post->links as $value) {
                 $entry->appendChild($link = $dom->createElement('link'));
                 $link->setAttribute('rel', 'alternate');
                 $link->setAttribute('href', $value->href);
