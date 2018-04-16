@@ -1,0 +1,86 @@
+<?php
+
+use Phinx\Seed\AbstractSeed;
+use Illuminate\Database\Capsule\Manager as DB;
+
+class FromModlToEloquent extends AbstractSeed
+{
+    public function run()
+    {
+        // Migrating the configuration
+        $configuration = \App\Configuration::firstOrNew(['id' => 1]);
+        $config = DB::table('config')->first();
+
+        if ($config) {
+            $configuration->description     = !empty($config->description)
+                                                ? $config->description : null;
+            $configuration->info            = !empty($config->info)
+                                                ? $config->info : null;
+            $configuration->unregister      = $config->unregister;
+            $configuration->theme           = $config->theme;
+            $configuration->locale          = $config->locale;
+            $configuration->loglevel        = $config->loglevel;
+            $configuration->username        = !empty($config->username)
+                                                ? $config->username : null;
+            $configuration->password        = !empty($config->password)
+                                                ? $config->password : null;
+            $configuration->xmppdomain      = !empty($config->xmppdomain)
+                                                ? $config->xmppdomain : null;
+            $configuration->xmppdescription = !empty($config->xmppdescription)
+                                                ? $config->xmppdescription : null;
+            $configuration->xmppcountry     = !empty($config->xmppcountry)
+                                                ? $config->xmppcountry : null;
+            $configuration->xmppwhitelist   = !empty($config->xmppwhitelist)
+                                                ? $config->xmppwhitelist : null;
+            $configuration->restrictsuggestions = $config->restrictsuggestions;
+        }
+
+        $configuration->save();
+
+        // Migrating the users
+        foreach (array_diff(scandir(DOCUMENT_ROOT . '/users'), ['..', '.']) as $jid) {
+            $user = \App\User::firstOrNew(['id' => $jid]);
+
+            $settings = DB::table('setting')->where('session', $jid)->first();
+            $privacy = DB::table('privacy')->where('pkey', $jid)->first();
+
+            if ($settings) {
+                $user->language = $settings->language;
+                $user->cssurl = $settings->cssurl;
+                $user->nightmode = $settings->nightmode;
+                $user->nsfw = $settings->nsfw;
+            }
+
+            if ($privacy) {
+                $user->public = $privacy->value;
+            }
+
+            $user->save();
+        }
+
+        // Migrating the caches
+        foreach (DB::table('cache')->get() as $c) {
+            $cache = \App\Cache::firstOrNew(['user_id' => $c->session, 'name' => $c->name]);
+            $cache->data = $c->data;
+
+            try {
+                $cache->save();
+            } catch(\Exception $e) {
+                // Best effort
+            }
+        }
+
+        // Migrating the invitations
+        foreach (DB::table('invite')->get() as $i) {
+            $invite = \App\Invite::firstOrNew(['code' => $i->code]);
+            $invite->user_id = $i->jid;
+            $invite->resource = $i->resource;
+
+            try {
+                $invite->save();
+            } catch(\Exception $e) {
+                // Best effort
+            }
+        }
+    }
+}

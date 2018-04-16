@@ -8,6 +8,7 @@ class Invite extends Model
 {
     public $primaryKey = 'code';
     public $incrementing = false;
+    protected $fillable = ['code'];
 
     public function user()
     {
