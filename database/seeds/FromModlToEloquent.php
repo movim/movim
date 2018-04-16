@@ -1,6 +1,7 @@
 <?php
 
 use Phinx\Seed\AbstractSeed;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Capsule\Manager as DB;
 
 class FromModlToEloquent extends AbstractSeed
@@ -33,9 +34,9 @@ class FromModlToEloquent extends AbstractSeed
             $configuration->xmppwhitelist   = !empty($config->xmppwhitelist)
                                                 ? $config->xmppwhitelist : null;
             $configuration->restrictsuggestions = $config->restrictsuggestions;
-        }
 
-        $configuration->save();
+            $configuration->save();
+        }
 
         // Migrating the users
         foreach (array_diff(scandir(DOCUMENT_ROOT . '/users'), ['..', '.']) as $jid) {
@@ -82,5 +83,26 @@ class FromModlToEloquent extends AbstractSeed
                 // Best effort
             }
         }
+
+        // Drop all the Modl tables
+        DB::schema()->dropIfExists('cache');
+        DB::schema()->dropIfExists('caps');
+        DB::schema()->dropIfExists('conference');
+        DB::schema()->dropIfExists('config');
+        DB::schema()->dropIfExists('contact');
+        DB::schema()->dropIfExists('encryptedpass');
+        DB::schema()->dropIfExists('info');
+        DB::schema()->dropIfExists('invite');
+        DB::schema()->dropIfExists('message');
+        DB::schema()->dropIfExists('postn');
+        DB::schema()->dropIfExists('presence');
+        DB::schema()->dropIfExists('privacy');
+        DB::schema()->dropIfExists('rosterlink');
+        DB::schema()->dropIfExists('setting');
+        DB::schema()->dropIfExists('sessionx');
+        DB::schema()->dropIfExists('subscription');
+        DB::schema()->dropIfExists('sharedsubscription');
+        DB::schema()->dropIfExists('tag');
+        DB::schema()->dropIfExists('url');
     }
 }
