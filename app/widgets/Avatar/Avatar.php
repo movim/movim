@@ -26,32 +26,25 @@ class Avatar extends \Movim\Widget\Base
 
     function onGetAvatar($packet)
     {
-        $me = $packet->content;
-        $html = $this->prepareForm($me);
-
-        $this->rpc('MovimTpl.fill', '#avatar_form', $html);
+        $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
         Notification::append(null, $this->__('avatar.updated'));
     }
 
     function onMyAvatarError()
     {
-        $cd = new \Modl\ContactDAO;
-        $me = $cd->get();
-        $html = $this->prepareForm($me);
-
-        $this->rpc('MovimTpl.fill', '#avatar_form', $html);
+        $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
         Notification::append(null, $this->__('avatar.not_updated'));
     }
 
-    function prepareForm($me)
+    function prepareForm()
     {
         $avatarform = $this->tpl();
 
         $p = new Picture;
-        $p->get($this->user->getLogin());
+        $p->get($this->user->jid);
 
         $avatarform->assign('photobin', $p->toBase());
-        $avatarform->assign('me',       $me);
+        $avatarform->assign('me',       \App\Contact::firstOrNew(['id' => $this->user->jid]));
         $avatarform->assign(
             'submit',
             $this->call('ajaxSubmit', "MovimUtils.formToJson('avatarform')")
@@ -63,17 +56,14 @@ class Avatar extends \Movim\Widget\Base
     function ajaxGetAvatar()
     {
         $r = new Get;
-        $r->setTo($this->user->getLogin())
+        $r->setTo($this->user->id)
           ->setMe()
           ->request();
     }
 
     function ajaxDisplay()
     {
-        $cd = new \Modl\ContactDAO;
-        $me = $cd->get();
-
-        $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm($me));
+        $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
     }
 
     function ajaxSubmit($avatar)

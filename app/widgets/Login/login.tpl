@@ -31,11 +31,11 @@
                             </span>
                         {else}
                             <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                                {$contact->getTrueName()|firstLetterCapitalize}
+                                {$contact->truename|firstLetterCapitalize}
                             </span>
                         {/if}
                         <p></p>
-                        <p class="all">{$c->__('form.invite_chatroom', $contact->getTrueName())} - {$invitation->resource}</p>
+                        <p class="all">{$c->__('form.invite_chatroom', $contact->truename)} - {$invitation->resource}</p>
                     </li>
                 </ul>
             {/if}
@@ -82,11 +82,14 @@
             </ul>
             {/if}
 
-            {if="isset($whitelist) && $whitelist != ''"}
+            {if="!empty($whitelist)"}
             <ul class="list thin">
                 <li class="info">
                     <p></p>
-                    <p class="center normal">{$c->__('form.whitelist_info')} : {$whitelist}</p>
+                    <p class="center normal">{$c->__('form.whitelist_info')} :
+                    {loop="$whitelist"}
+                        {$value}
+                    {/loop}</p>
                 </li>
             </ul>
             {/if}

@@ -2,7 +2,7 @@
     <li class="subheader">
         <p>
             <span class="info">
-                <a href="{$c->route('contact', $me->jid)}">
+                <a href="{$c->route('contact', $me->id)}">
                     {$c->__('privacy.my_profile')}
                 </a>
             </span>
@@ -16,13 +16,13 @@
                     <div class="checkbox">
                         <input
                             type="checkbox"
-                            id="privacy"
-                            name="privacy"
-                            {if="$me->privacy"}
+                            id="public"
+                            name="public"
+                            {if="$me->public"}
                                 checked
                             {/if}
-                            onchange="{$privacy}">
-                        <label for="privacy"></label>
+                            onchange="Vcard4_ajaxChangePrivacy(this.checked)">
+                        <label for="public"></label>
                     </div>
                 </div>
             </form>
@@ -33,32 +33,32 @@
     </li>
 </ul>
 
-{if="$c->getUser()->isSupported('pubsub')"}
+{if="\App\User::me()->hasPubsub()"}
 <div class="clear padded"></div>
 
 <form name="vcard4" id="vcard4form" class="flex">
     <h3 class="block large">{$c->__('page.profile')}</h3>
     <div class="block">
-        <input type="text" name="fn" class="content" value="{$me->fn}" placeholder="{$c->__('general.name')}">
+        <input type="text" name="fn" class="content" value="{$contact->fn}" placeholder="{$c->__('general.name')}">
         <label for="fn">{$c->__('general.name')}</label>
     </div>
     <div class="block">
-        <input type="text" name="name" class="content" value="{$me->name}" placeholder="{$c->__('general.nickname')}">
+        <input type="text" name="name" class="content" value="{$contact->name}" placeholder="{$c->__('general.nickname')}">
         <label for="name">{$c->__('general.nickname')}</label>
     </div>
 
     <div class="block">
-        <input type="email" name="email" class="content" value="{$me->email}" placeholder="{$c->__('general.email')}">
+        <input type="email" name="email" class="content" value="{$contact->email}" placeholder="{$c->__('general.email')}">
         <label for="fn">{$c->__('general.email')}</label>
     </div>
 
     <div class="block">
-        <input type="text" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" name="date" class="content" value="{$me->getDate()}" placeholder="DD-MM-YYYY">
+        <input type="text" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01])-(0[1-9]|1[012])-[0-9]{4}" name="date" class="content" value="{$contact->getDate()}" placeholder="DD-MM-YYYY">
         <label for="date">{$c->__('general.date_of_birth')}</label>
     </div>
 
     <div class="block large">
-        <input type="url" name ="url" class="content" value="{$me->url}" placeholder="https://mywebsite.com/">
+        <input type="url" name ="url" class="content" value="{$contact->url}" placeholder="https://mywebsite.com/">
         <label for="url">{$c->__('general.website')}</label>
     </div>
 
@@ -70,7 +70,7 @@
     <div class="clear padded"></div>
 
     <div class="block">
-        <input type="text" type="locality" name ="locality" class="content" value="{$me->adrlocality}" placeholder="{$c->__('position.locality')}">
+        <input type="text" type="locality" name ="locality" class="content" value="{$contact->adrlocality}" placeholder="{$c->__('position.locality')}">
         <label for="url">{$c->__('position.locality')}</label>
     </div>
 
@@ -80,7 +80,7 @@
                 <option value=""></option>
                 {loop="$countries"}
                     <option
-                    {if="$value == $me->adrcountry"}
+                    {if="$value == $contact->adrcountry"}
                         selected
                     {/if}
                     value="{$value}">{$value}</option>

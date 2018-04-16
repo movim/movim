@@ -153,10 +153,5 @@ fixownership "root:www-data" /usr/share/movim
 fixperms 0775 /usr/share/movim/daemon.php
 fixownership "root:www-data" /usr/share/movim/daemon.php
 
-# And we install/update the Movim database
-echo "Creating and/or updating the Movim database… please be patient"
-chmod +x /usr/share/movim/mud.php
-/usr/share/movim/mud.php db set
-
 # We clean some log created by the install to prevent issues
 rm -rf /usr/share/movim/log/*  /usr/share/movim/cache/*

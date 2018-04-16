@@ -1,19 +1,20 @@
 {$liked = false}
 
-{if="count($likes) > 0"}
+{if="$post->likes()->count() > 0"}
     <ul class="list divided spaced middle">
         <li>
             <span class="primary icon red">
                 <i class="zmdi zmdi-favorite"></i>
             </span>
-            <p>{$likes|count}</span> {$c->__('button.like')}</p>
+            <p>{$post->likes()->count()}</span> {$c->__('button.like')}</p>
             <p class="all">
-                {loop="$likes"}
-                    {if="$value->isMine()"}{$liked = [$value->origin, $value->node, $value->nodeid]}{/if}
-                        <a title="{$value->published|strtotime|prepareDate:true,true}"
-                           href="{$c->route('contact', $value->getContact()->jid)}">
-                            {$value->getContact()->getTrueName()}</a>{if="$key + 1 < count($likes)"},
-                    {/if}
+                {loop="$post->likes"}
+                    {if="$value->isMine()"}{$liked = [$value->server, $value->node, $value->nodeid]}{/if}
+                    <a title="{$value->published|strtotime|prepareDate:true,true}"
+                       href="{$c->route('contact', $value->aid)}">
+                        {$value->truename}
+                    </a>
+                    {if="$key + 1 < $post->likes()->count()"},{/if}
                 {/loop}
             </p>
         </li>
@@ -21,35 +22,42 @@
 {/if}
 
 <ul class="list divided spaced middle">
-    {if="count($comments) > 0"}
+    {if="$post->comments()->count() > 0"}
         <li class="subheader center">
             <p>
-                <span class="info">{$comments|count}</span> {$c->__('post.comments')}
+                <span class="info">{$post->comments()->count()}</span> {$c->__('post.comments')}
             </p>
         </li>
     {/if}
 
-    {loop="$comments"}
+    {loop="$post->comments"}
         {if="$value->title || $value->contentraw"}
         <li id="{$value->nodeid|cleanupId}"
             {if="$value->isMine(true) && $value->isLike()"}class="mine"{/if}>
             {if="$value->isMine() || $post->isMine()"}
                 <span class="control icon gray active"
-                      onclick="PostActions_ajaxDelete('{$value->origin}', '{$value->node}', '{$value->nodeid}')">
+                      onclick="PostActions_ajaxDelete('{$value->server}', '{$value->node}', '{$value->nodeid}')">
                     <i class="zmdi zmdi-delete"></i>
                 </span>
             {/if}
-
-            {$url = $value->getContact()->getPhoto('s')}
-            {if="$url"}
-                <span class="primary icon bubble small">
-                    <a href="{$c->route('contact', $value->getContact()->jid)}">
-                        <img src="{$url}">
-                    </a>
-                </span>
+            {if="$value->contact"}
+                {$url = $value->contact->getPhoto('s')}
+                {if="$url"}
+                    <span class="primary icon bubble small">
+                        <a href="{$c->route('contact', $value->contact->jid)}">
+                            <img src="{$url}">
+                        </a>
+                    </span>
+                {else}
+                    <span class="primary icon bubble color {$value->contact->jid|stringToColor} small">
+                        <a href="{$c->route('contact', $value->contact->jid)}">
+                            <i class="zmdi zmdi-account"></i>
+                        </a>
+                    </span>
+                {/if}
             {else}
-                <span class="primary icon bubble color {$value->getContact()->jid|stringToColor} small">
-                    <a href="{$c->route('contact', $value->getContact()->jid)}">
+                <span class="primary icon bubble color {$value->aid|stringToColor} small">
+                    <a href="{$c->route('contact', $value->aid)}">
                         <i class="zmdi zmdi-account"></i>
                     </a>
                 </span>
@@ -58,8 +66,8 @@
                 <span class="info" title="{$value->published|strtotime|prepareDate}">
                     {$value->published|strtotime|prepareDate:true,true}
                 </span>
-                <a href="{$c->route('contact', $value->getContact()->jid)}">
-                    {$value->getContact()->getTrueName()}
+                <a href="{$c->route('contact', $value->aid)}">
+                    {$value->truename}
                 </a>
             </p>
             <p class="all">
@@ -77,7 +85,7 @@
         <span class="primary icon small gray">
             <i class="zmdi zmdi-comment"></i>
         </span>
-        <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+        <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->server}', '{$post->node}', '{$post->nodeid}')">
             <i class="zmdi zmdi-mail-send"></i>
         </span>
         <form name="comment">
@@ -103,17 +111,17 @@
             {else}
                 <button class="button red flat"
                     id="like"
-                    onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                    onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
                         <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
                 </button>
             {/if}
             <button class="button flat gray" onclick="Post.comment()">
                 <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
             </button>
-            {if="$c->supported('pubsub')"}
-            <button class="button flat gray" onclick="Post.share()">
+            {if="$c->getUser()->hasPubsub()"}
+            <a class="button flat gray" onclick="Post.share()">
                 <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
-            </button>
+            </a>
             {/if}
         </p>
     </li>

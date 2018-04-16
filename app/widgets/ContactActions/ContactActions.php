@@ -4,24 +4,13 @@ use Respect\Validation\Validator;
 
 class ContactActions extends \Movim\Widget\Base
 {
-    function load()
-    {
-    }
-
     function ajaxAddAsk($jid)
     {
-        $cd = new \Modl\ContactDAO;
-        $contact = $cd->get($jid);
+        $view = $this->tpl();
+        $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
+        $view->assign('groups', App\User::me()->session->contacts->pluck('group')->toArray());
 
-        if ($contact) {
-            $view = $this->tpl();
-            $rd = new \Modl\RosterLinkDAO;
-
-            $view->assign('contact', $contact);
-            $view->assign('groups', $rd->getGroups());
-
-            Dialog::fill($view->draw('_contactactions_add', true));
-        }
+        Dialog::fill($view->draw('_contactactions_add', true));
     }
 
     function ajaxGetDrawer($jid)
@@ -29,9 +18,10 @@ class ContactActions extends \Movim\Widget\Base
         if (!$this->validateJid($jid)) return;
 
         $tpl = $this->tpl();
+        $tpl->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
+        $tpl->assign('roster', App\User::me()->session->contacts->find($jid));
 
-        $cd = new \Modl\ContactDAO;
-        $cr = $cd->getRosterItem($jid);
+        /*$cr = $cd->getRosterItem($jid);
 
         if (isset($cr)) {
             if ($cr->value != null) {
@@ -46,7 +36,7 @@ class ContactActions extends \Movim\Widget\Base
         }
 
         $c  = $cd->get($jid);
-        $tpl->assign('contact', $c);
+        $tpl->assign('contact', $c);*/
 
         Drawer::fill($tpl->draw('_contactactions_drawer', true));
     }

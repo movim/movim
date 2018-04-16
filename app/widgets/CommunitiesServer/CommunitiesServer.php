@@ -41,8 +41,7 @@ class CommunitiesServer extends \Movim\Widget\Base
     {
         $origin = $packet->content;
 
-        $id = new \Modl\InfoDAO;
-        $id->deleteItems($origin);
+        \App\Info::where('server', $origin)->delete();
 
         $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($origin));
 
@@ -116,11 +115,14 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function prepareCommunitiesServer($origin)
     {
-        $id = new \Modl\InfoDAO;
-
         $view = $this->tpl();
-        $view->assign('item', $id->getJid($origin));
-        $view->assign('nodes', $id->getItems($origin));
+        $view->assign('item', \App\Info::where('server', $origin)
+                                       ->where('node', '')
+                                       ->first());
+        $view->assign('nodes', \App\Info::where('server', $origin)
+                                        ->where('node', '!=', '')
+                                        ->orderBy('occupants', 'desc')
+                                        ->get());
         $view->assign('server', $origin);
 
         return $view->draw('_communitiesserver', true);

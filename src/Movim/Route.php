@@ -80,33 +80,31 @@ class Route extends Base
         return $this->_page;
     }
 
-    public static function urlize($page, $params = false, $tab = false)
+    public static function urlize($page, $params = false, $get = [], $tab = false)
     {
-        $r = new Route();
-        $routes = $r->_routes;
+        $routes = (new Route)->_routes;
 
-        if ($page === 'root')
+        if ($page === 'root') {
             return BASE_URI;
+        }
 
         if (isset($routes[$page])) {
-            $uri = '';
+            $uri = BASE_URI . '?'. $page;
 
-            if ($tab != false) {
-                $tab = '#'.$tab;
-            } else {
-                //We construct a classic URL if the rewriting is disabled
-                $uri = BASE_URI . '?'. $page;
-            }
-
-            if ($params != false && is_array($params)) {
-                foreach ($params as $value) {
-                    $uri .= '/' . rawurlencode($value);
+            if ($params != false) {
+                if (is_array($params)) {
+                    foreach ($params as $value) {
+                        $uri .= '/' . rawurlencode($value);
+                    }
+                } else {
+                    $uri .= '/' . rawurlencode($params);
                 }
-            } elseif ($params != false) {
-                $uri .= '/' . rawurlencode($params);
             }
 
-            return $uri.$tab;
+            $get = ($get !== []) ? '&'.http_build_query($get) : '';
+            $tab = ($tab != false) ? '#'.$tab : '';
+
+            return $uri.$get.$tab;
         } else {
             throw new \Exception(__('Route not set for the page %s', $page));
         }

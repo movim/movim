@@ -1,6 +1,9 @@
 <?php
 
-class Api extends \Movim\Widget\Base
+use App\Configuration;
+use Movim\Widget\Base;
+
+class Api extends Base
 {
     function ajaxRegister()
     {
@@ -19,11 +22,10 @@ class Api extends \Movim\Widget\Base
 
     function ajaxUnregister()
     {
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $configuration = Configuration::findOrNew(1);
 
-        $config->unregister = !$config->unregister;
-        $cd->set($config);
+        $configuration->unregister = !$configuration->unregister;
+        $configuration->save();
 
         $this->rpc('MovimUtils.reloadThis');
     }
@@ -40,17 +42,16 @@ class Api extends \Movim\Widget\Base
         $json = requestURL(MOVIM_API.'pods/status', 2, ['url' => BASE_URI]);
         $json = json_decode($json);
 
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $configuration = Configuration::findOrNew(1);
 
         if (isset($json)) {
             $this->view->assign('json', $json);
             if ($json->status == 200) {
                 $this->view->assign('unregister', $this->call('ajaxUnregister'));
-                $this->view->assign('unregister_status', $config->unregister);
+                $this->view->assign('unregister_status', $configuration->unregister);
             } else {
-                $config->unregister = false;
-                $cd->set($config);
+                $configuration->unregister = false;
+                $configuration->save();
                 $this->view->assign('register', $this->call('ajaxRegister'));
             }
         } else {

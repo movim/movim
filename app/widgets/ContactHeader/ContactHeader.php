@@ -5,6 +5,7 @@ use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Unsubscribe;
 
 use Respect\Validation\Validator;
+use App\Roster as DBRoster;
 
 class ContactHeader extends \Movim\Widget\Base
 {
@@ -25,20 +26,10 @@ class ContactHeader extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $rd = new \Modl\RosterLinkDAO;
-        $groups = $rd->getGroups();
-        $rl     = $rd->get($jid);
-
         $view = $this->tpl();
 
-        if (isset($rl)) {
-            $view->assign('submit',
-                $this->call(
-                    'ajaxEditSubmit',
-                    "MovimUtils.formToJson('manage')"));
-            $view->assign('contact', $rl);
-            $view->assign('groups', $groups);
-        }
+        $view->assign('contact', App\User::me()->session->contacts->where('jid', $jid)->first());
+        $view->assign('groups', App\User::me()->session->contacts->pluck('group')->toArray());
 
         Dialog::fill($view->draw('_contactheader_edit', true));
     }
@@ -47,7 +38,6 @@ class ContactHeader extends \Movim\Widget\Base
     {
         $rd = new UpdateItem;
         $rd->setTo(echapJid($form->jid->value))
-           ->setFrom($this->user->getLogin())
            ->setName($form->alias->value)
            ->setGroup($form->group->value)
            ->request();
@@ -89,11 +79,9 @@ class ContactHeader extends \Movim\Widget\Base
 
     public function prepareHeader($jid)
     {
-        $cd = new \Modl\ContactDAO;
-
         $view = $this->tpl();
-        $view->assign('contact', $cd->get($jid));
-        $view->assign('contactr', $cd->getRosterItem($jid));
+        $view->assign('in_roster', (App\User::me()->session->contacts->where('jid', $jid)->count() > 0));
+        $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
 
         return $view->draw('_contactheader', true);
     }

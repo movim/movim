@@ -14,7 +14,7 @@ class Notifs extends \Movim\Widget\Base
 
     function ajaxClear()
     {
-        \Movim\Cache::c('notifs_since', date(\Modl\SQL::SQL_DATE));
+        \App\Cache::c('notifs_since', date(SQL_DATE));
         $this->onNotifs();
     }
 
@@ -22,18 +22,24 @@ class Notifs extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $pd = new \Modl\PostnDAO;
-        $since = \Movim\Cache::c('notifs_since');
+        $since = \App\Cache::c('notifs_since');
 
-        if (!$since) $since = date(\Modl\SQL::SQL_DATE, 0);
+        if (!$since) $since = date(SQL_DATE, 0);
 
         $emoji = \MovimEmoji::getInstance();
 
+        $notifs = \App\Post::whereIn('parent_id', function ($query) use ($since) {
+            $query->select('id')
+                  ->from('posts')
+                  ->where('aid', $this->user->id)
+                  ->where('published', '>', $since);
+        })
+        ->orderBy('published', 'desc')
+        ->limit(10)
+        ->get();
+
         $view->assign('hearth',  $emoji->replace('♥'));
-        $view->assign('notifs', $pd->getNotifsSince(
-            $since,
-            0, 8)
-        );
+        $view->assign('notifs', $notifs);
 
         return $view->draw('_notifs', true);
     }

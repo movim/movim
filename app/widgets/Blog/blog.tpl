@@ -7,7 +7,7 @@
             </span>
             <span class="control icon active">
                 <a
-                    href="{$c->route('feed', array($contact->jid))}"
+                    href="{$c->route('feed', $contact->jid)}"
                     target="_blank"
                     title="Atom"
                 >
@@ -16,19 +16,19 @@
             </span>
             {if="$contact"}
             <p>
-                <a href="{$c->route('blog', array($contact->jid))}">
-                    {$c->__('blog.title', $contact->getTrueName())}
+                <a href="{$c->route('blog', $contact->jid)}">
+                    {$c->__('blog.title', $contact->truename)}
                 </a>
             </p>
+                {if="$contact->description"}
+                    <p>{$contact->description}</p>
+                {/if}
             {else}
             <p>
-                <a href="{$c->route('blog', array($contact->jid))}">
+                <a href="{$c->route('blog', $contact->jid)}">
                     {$c->__('page.blog')}
                 </a>
             </p>
-            {/if}
-            {if="isset($contact->description)"}
-                <p>{$contact->description}</p>
             {/if}
         </li>
     </ul>
@@ -59,7 +59,7 @@
             </span>
             <span class="control icon active">
                 <a
-                    href="{$c->route('feed', array($server, $node))}"
+                    href="{$c->route('feed', [$server, $node])}"
                     target="_blank"
                     title="Atom"
                 >
@@ -67,7 +67,7 @@
                 </a>
             </span>
             <p>
-                <a href="{$c->route('node', array($server, $node))}">
+                <a href="{$c->route('node', [$server, $node])}">
                     {if="$item != null"}
                         {if="$item->name"}
                             {$item->name}
@@ -93,22 +93,12 @@
 
 <div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
     {loop="$posts"}
-        {if="$mode == 'tag'"}
-            {$c->prepareCard($value)}
-        {else}
-            {$c->preparePost($value)}
-        {/if}
+        {$c->preparePost($value)}
     {/loop}
-    {if="isset($more)"}
+    {if="isset($next)"}
         <article>
             <ul class="list active thick">
-                {if="$mode == 'blog'"}
-                <a href="{$c->route('blog', [$contact->jid, $more])}">
-                {elseif="$mode == 'tag'"}
-                <a href="{$c->route('tag', [$tag, $more])}">
-                {else}
-                <a href="{$c->route('node', [$server, $node, $more])}">
-                {/if}
+                <a href="{$next}">
                     <li id="history" class="block large">
                         <span class="primary icon gray"><i class="zmdi zmdi-time-restore"></i></span>
                         <p class="normal line center">{$c->__('post.older')}</p>

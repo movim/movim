@@ -19,6 +19,6 @@
         <i class="zmdi zmdi-sign-in"></i>
     </span>
     <p class="line bold normal" onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')">
-        {$me->getTrueName()}
+        {$me->truename}
     </p>
 </li>

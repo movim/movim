@@ -31,7 +31,7 @@
             <span class="primary icon gray">
                 <i class="zmdi zmdi-receipt"></i>
             </span>
-            <p class="normal">{$c->__('communitydata.num', ($info->num) ? $info->num : 0)}</p>
+            <p class="normal">{$c->__('communitydata.num', $num)}</p>
         </li>
     </ul>
 

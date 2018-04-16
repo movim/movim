@@ -2,10 +2,6 @@
 
 class Help extends \Movim\Widget\Base
 {
-    function load()
-    {
-    }
-
     function ajaxAddChatroom()
     {
         $this->rpc(
@@ -16,8 +12,9 @@ class Help extends \Movim\Widget\Base
 
     function display()
     {
-        $id = new \Modl\InfoDAO;
-        $this->view->assign('info', $id->getJid($this->user->getServer()));
+        $this->view->assign('info', \App\Info::where('server', $this->user->getServer())
+                                             ->where('node', '')
+                                             ->first());
     }
 }
 

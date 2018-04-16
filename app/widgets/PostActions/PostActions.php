@@ -15,15 +15,12 @@ class PostActions extends \Movim\Widget\Base
 
     function onItem($packet)
     {
-        list($origin, $node, $id) = array_values($packet->content);
+        $post = $packet->content;
 
-        $pd = new \Modl\PostnDAO;
-        $p = $pd->get($origin, $node, $id);
+        if ($post && $post->isComment()) $post = $post->getParent();
 
-        if ($p && $p->isComment()) $p = $p->getParent();
-
-        if ($p) {
-            $this->rpc('MovimTpl.fill', '#'.cleanupId($p->nodeid), $this->preparePost($p));
+        if ($post) {
+            $this->rpc('MovimTpl.fill', '#'.cleanupId($post->nodeid), $this->preparePost($post));
         }
     }
 
@@ -48,23 +45,28 @@ class PostActions extends \Movim\Widget\Base
 
     function ajaxLike($to, $node, $id)
     {
-        $pd = new \Modl\PostnDAO;
-        $p = $pd->get($to, $node, $id);
+        $p = \App\Post::where('server', $to)
+                      ->where('node', $node)
+                      ->where('nodeid', $id)
+                      ->first();
+
         if (!isset($p) || $p->isLiked()) return;
 
         $post = new Post;
-        $post->publishComment('♥', $p->origin, $p->node, $p->nodeid);
+        $post->publishComment('♥', $p->server, $p->node, $p->nodeid);
     }
 
     function ajaxDelete($to, $node, $id)
     {
-        $view = $this->tpl();
+        $post = \App\Post::where('server', $to)
+                         ->where('node', $node)
+                         ->where('nodeid', $id)
+                         ->first();
 
-        $pd = new \Modl\PostnDAO;
-        $p = $pd->get($to, $node, $id);
+        if ($post) {
+            $view = $this->tpl();
 
-        if (isset($p)) {
-            $view->assign('post', $p);
+            $view->assign('post', $post);
             $view->assign('to', $to);
             $view->assign('node', $node);
             $view->assign('id', $id);
@@ -75,19 +77,21 @@ class PostActions extends \Movim\Widget\Base
 
     function ajaxDeleteConfirm($to, $node, $id)
     {
-        $pd = new \Modl\PostnDAO;
-        $post = $pd->get($to, $node, $id);
+        $post = \App\Post::where('server', $to)
+                         ->where('node', $node)
+                         ->where('nodeid', $id)
+                         ->first();
 
         if (isset($post)) {
             $p = new PostDelete;
-            $p->setTo($post->origin)
+            $p->setTo($post->server)
               ->setNode($post->node)
               ->setId($post->nodeid)
               ->request();
 
             if (!$post->isComment()) {
                 $p = new Delete;
-                $p->setTo($post->commentorigin)
+                $p->setTo($post->commentserver)
                   ->setNode('urn:xmpp:microblog:0:comments/'.$post->commentnodeid)
                   ->request();
             }

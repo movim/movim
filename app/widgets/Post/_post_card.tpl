@@ -1,22 +1,24 @@
 <article class="block large">
     <ul class="list thick">
         <li>
-            {if="$post->isNSFW()"}
+            {if="$post->nsfw"}
                 <span class="primary icon bubble color red tiny">
                     +18
                 </span>
-            {elseif="$post->logo"}
-                <span class="primary icon bubble color white">
-                    <img src="{$post->getLogo()}"/>
-                </span>
             {elseif="$post->isMicroblog()"}
-                {$url = $post->getContact()->getPhoto('m')}
-                {if="$url"}
-                    <span class="primary icon bubble">
-                        <img src="{$url}"/>
-                    </span>
+                {if="$post->contact"}
+                    {$url = $post->contact->getPhoto('m')}
+                    {if="$url"}
+                        <span class="primary icon bubble">
+                            <img src="{$url}"/>
+                        </span>
+                    {else}
+                        <span class="primary icon bubble color {$post->aid|stringToColor}">
+                            <i class="zmdi zmdi-account"></i>
+                        </span>
+                    {/if}
                 {else}
-                    <span class="primary icon bubble color {$post->getContact()->jid|stringToColor}">
+                    <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
@@ -36,22 +38,22 @@
             <p>
                 {if="$post->isMicroblog()"}
                     <a  {if="$public"}
-                            href="{$c->route('blog', $post->getContact()->jid)}"
+                            href="{$c->route('blog', $post->aid)}"
                         {else}
-                            href="{$c->route('contact', $post->getContact()->jid)}"
+                            href="{$c->route('contact', $post->aid)}"
                         {/if}
                     >
-                        {$post->getContact()->getTrueName()}
+                        {$post->truename}
                     </a> –
                 {else}
                     {if="$public"}
-                        {$post->origin}
+                        {$post->server}
                     {else}
-                        <a href="{$c->route('community', $post->origin)}">
-                            {$post->origin}
+                        <a href="{$c->route('community', $post->server)}">
+                            {$post->server}
                         </a>
                     {/if} /
-                    <a href="{$c->route('community', [$post->origin, $post->node])}">
+                    <a href="{$c->route('community', [$post->server, $post->node])}">
                         {$post->node}
                     </a> –
                 {/if}
@@ -68,34 +70,8 @@
         </li>
     </ul>
     <ul class="list">
-        {if="!$post->isBrief()"}
-        <li class="active">
-            {if="$nsfw == false && $post->isNSFW()"}
-                <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
-            {/if}
-            <section {if="!$post->isShort()"}class="limited"{/if} dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
-                <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
-                    <i class="zmdi zmdi-eye"></i>
-                </label>
-                <content>
-                    {if="$post->getYoutube()"}
-                        <div class="video_embed">
-                            <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
-                        </div>
-                    {elseif="$post->isShort() && isset($attachments.pictures)"}
-                        {loop="$attachments.pictures"}
-                            {if="$value.type != 'picture'"}
-                                <img class="big_picture" type="{$value.type}"
-                                     src="{$value.href|urldecode}"/>
-                            {/if}
-                        {/loop}
-                    {/if}
-                    {$post->getContent()|addHashtagsLinks}
-                </content>
-            <section>
-        </li>
-        {else}
-            {if="$nsfw == false && $post->isNSFW()"}
+        {if="$post->isBrief()"}
+            {if="$nsfw == false && $post->nsfw"}
                 <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
             {/if}
             <section dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
@@ -103,119 +79,58 @@
                     <i class="zmdi zmdi-eye"></i>
                 </label>
                 <content>
-                    {if="$post->getYoutube()"}
+                    {if="$post->youtube"}
                         <div class="video_embed">
-                            <iframe src="https://www.youtube.com/embed/{$post->getYoutube()}" frameborder="0" allowfullscreen></iframe>
+                            <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
                         </div>
-                    {elseif="$post->isShort() && isset($attachments.pictures)"}
-                        {loop="$attachments.pictures"}
-                            {if="$value.type != 'picture'"}
-                                <img class="big_picture" type="{$value.type}"
-                                     src="{$value.href|urldecode}" />
-                            {/if}
+                    {elseif="$post->isShort()"}
+                        {loop="$post->pictures"}
+                            <img class="big_picture" type="{$value->type}"
+                                 src="{$value->href|protectPicture}"/>
                         {/loop}
                     {/if}
                 </content>
             </section>
-        {/if}
-
-        {if="$post->isReply()"}
-            <hr />
-            {$reply = $post->getReply()}
-            {if="$reply"}
-                <ul class="list thick active recessed"
-                    onclick="MovimUtils.reload('{$c->route('post', [$reply->origin, $reply->node, $reply->nodeid])}')">
-                    <li>
-                        {if="$reply->picture"}
-                            <span
-                                class="primary icon bubble color white"
-                                style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
-                                <i class="zmdi zmdi-share"></i>
-                            </span>
-                        {elseif="$reply->isMicroblog()"}
-                            {$url = $reply->getContact()->getPhoto('l')}
-                            {if="$url"}
-                                <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
-                                    <i class="zmdi zmdi-share"></i>
-                                </span>
-                            {else}
-                                <span class="primary icon bubble color {$reply->getContact()->jid|stringToColor}">
-                                    <i class="zmdi zmdi-share"></i>
-                                </span>
-                            {/if}
-                        {/if}
-                        <span class="control icon gray">
-                            <i class="zmdi zmdi-chevron-right"></i>
-                        </span>
-                        <p class="normal line">{$reply->title}</p>
-                        <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
-                        <p>
-                            {if="$reply->isMicroblog()"}
-                                <i class="zmdi zmdi-account"></i> {$reply->getContact()->getTrueName()}
-                            {else}
-                                <i class="zmdi zmdi-pages"></i> {$reply->node}
-                            {/if}
-                            <span class="info">
-                                {$reply->published|strtotime|prepareDate:true,true}
-                            </span>
-                        </p>
-                    </li>
-                </ul>
-            {else}
-                <ul class="list thick active faded">
-                    <li>
-                        <span class="primary icon gray">
-                            <i class="zmdi zmdi-mail-reply"></i>
-                        </span>
-                        <p class="line normal">{$c->__('post.original_deleted')}</p>
-                    </li>
-                </ul>
-            {/if}
-        {/if}
-
-        {if="isset($attachments.links)"}
-            {loop="$attachments.links"}
-                {if="$post->picture != protectPicture($value['href']) && $value.href != $post->getPublicUrl()"}
-                <ul class="list">
-                    <li>
-                        <span class="primary icon gray">
-                            {if="!empty($value.logo)"}
-                                <img src="{$value.logo}"/>
-                            {else}
-                                <i class="zmdi zmdi-link"></i>
-                            {/if}
-                        </span>
-                        <p class="normal line">
-                            <a target="_blank" href="{$value.href}" title="{$value.href}">
-                                {if="isset($value.title)"}
-                                    {$value.title}
-                                {else}
-                                    {$value.href}
-                                {/if}
-                            </a>
-                        </p>
-                        {if="isset($value.description) && !empty($value.description)"}
-                            <p title="{$value.description}">{$value.description}</p>
-                        {else}
-                            <p>{$value.url.host}</p>
-                        {/if}
-                    </li>
-                </ul>
+        {else}
+            <li class="active">
+                {if="$nsfw == false && $post->nsfw"}
+                    <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
                 {/if}
-            {/loop}
+                <section {if="!$post->isShort()"}class="limited"{/if} dir="{if="$post->isRTL()"}rtl{else}ltr{/if}">
+                    <label class="spoiler" for="spoiler_{$post->nodeid|cleanupId}">
+                        <i class="zmdi zmdi-eye"></i>
+                    </label>
+                    <content>
+                        {if="$post->youtube"}
+                            <div class="video_embed">
+                                <iframe src="{$post->youtube->href}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        {elseif="$post->isShort()"}
+                            {loop="$post->pictures"}
+                                <img class="big_picture" type="{$value->type}"
+                                     src="{$value->href|protectPicture}"/>
+                            {/loop}
+                        {/if}
+                        {$post->getContent()|addHashtagsLinks}
+                    </content>
+                <section>
+            </li>
         {/if}
+
+        {$c->preparePostReply($post)}
+        {$c->preparePostLinks($post)}
 
         <li>
             <p class="normal">
                 <a class="button flat oppose"
                 {if="$public"}
                     {if="$post->isMicroblog()"}
-                    href="{$c->route('blog', [$post->origin, $post->nodeid])}"
+                    href="{$c->route('blog', [$post->server, $post->nodeid])}"
                     {else}
-                    href="{$c->route('node', [$post->origin, $post->node, $post->nodeid])}"
+                    href="{$c->route('node', [$post->server, $post->node, $post->nodeid])}"
                     {/if}
                 {else}
-                    href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}"
+                    href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
                 {/if}>
                     <i class="zmdi zmdi-plus"></i> {$c->__('post.more')}
                 </a>
@@ -223,12 +138,12 @@
                     {$liked = $post->isLiked()}
 
                     {if="$liked"}
-                        <a class="button icon flat red" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                        <a class="button icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
                             {$post->countLikes()} <i class="zmdi zmdi-favorite"></i>
                         </a>
                     {else}
                         <a class="button icon flat gray" href="#"
-                           onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->origin}', '{$post->node}', '{$post->nodeid}')">
+                           onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
                             {$post->countLikes()}
                             {if="$liked"}
                                 <i class="zmdi zmdi-favorite"></i>
@@ -237,7 +152,7 @@
                             {/if}
                         </a>
                     {/if}
-                    <a class="button icon flat gray" href="{$c->route('post', [$post->origin, $post->node, $post->nodeid])}">
+                    <a class="button icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
                         {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
                     </a>
                 {/if}
@@ -245,14 +160,14 @@
                 <a
                     title="{$c->__('button.share')}"
                     class="button icon flat gray"
-                    href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid, 'share'])}">
+                    href="{$c->route('publish', [$post->server, $post->node, $post->nodeid, 'share'])}">
                     <i class="zmdi zmdi-share"></i>
                 </a>
-                    {if="$post->isPublic()"}
+                    {if="$post->open"}
                         <a  title="{$c->__('post.public_yes')}"
                             class="button icon flat gray on_desktop"
                             target="_blank"
-                            href="{$post->getPublicUrl()}">
+                            href="{$post->openlink->href}">
                             <i title="{$c->__('menu.public')}" class="zmdi zmdi-portable-wifi"></i>
                         </a>
                     {/if}
@@ -261,14 +176,14 @@
                 {if="$post->isMine()"}
                     {if="$post->isEditable()"}
                         <a class="button icon flat oppose gray on_desktop"
-                           href="{$c->route('publish', [$post->origin, $post->node, $post->nodeid])}"
+                           href="{$c->route('publish', [$post->server, $post->node, $post->nodeid])}"
                            title="{$c->__('button.edit')}">
                             <i class="zmdi zmdi-edit"></i>
                         </a>
                     {/if}
                     <a class="button icon flat oppose gray on_desktop"
                        href="#"
-                       onclick="PostActions_ajaxDelete('{$post->origin}', '{$post->node}', '{$post->nodeid}')"
+                       onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
                        title="{$c->__('button.delete')}">
                         <i class="zmdi zmdi-delete"></i>
                     </a>

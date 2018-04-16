@@ -16,8 +16,11 @@ class ContactDisco extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $cd = new \Modl\ContactDAO;
-        $users = $cd->getAllPublic(0, 40);
+        $users = \App\Contact::whereIn('id', function ($query) {
+            $query->select('id')
+                  ->from('users')
+                  ->where('public', true);
+        })->limit(40)->get();
 
         $view->assign('presencestxt', getPresencesTxt());
         $view->assign('users', $users);

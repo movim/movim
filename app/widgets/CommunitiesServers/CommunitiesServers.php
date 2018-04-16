@@ -45,11 +45,13 @@ class CommunitiesServers extends \Movim\Widget\Base
 
     function prepareCommunities()
     {
-        $id = new \Modl\InfoDAO;
-        $servers = $id->getCommunitiesServers();
+        $servers = \App\Info::where('category', 'pubsub')
+                            ->where('type', 'service')
+                            ->orderBy('occupants', 'desc')
+                            ->get();
 
         $view = $this->tpl();
-        $view->assign('servers', $servers ? $servers : []);
+        $view->assign('servers', $servers);
 
         return $view->draw('_communitiesservers', true);
     }

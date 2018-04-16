@@ -20,23 +20,24 @@
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
                 class="room {if="$value->connected"}online{/if}"
                 title="{$value->conference}">
-                <span data-key="chat|{$value->conference}" class="counter"></span>
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
                     <span class="primary
                         {if="!$value->connected"}disabled{/if} icon bubble color
                         {$value->name|stringToColor}"
                         style="background-image: url({$url});">
+                        <span data-key="chat|{$value->conference}" class="counter"></span>
                     </span>
                 {else}
                     <span class="primary
                         {if="!$value->connected"}disabled{/if} icon bubble color
                         {$value->name|stringToColor}">
+                        <span data-key="chat|{$value->conference}" class="counter"></span>
                         {$value->name|firstLetterCapitalize}
                     </span>
                 {/if}
 
-                {$info = $value->getItem()}
+                {$info = $value->info}
                 {if="$edit"}
                     <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
                         <i class="zmdi zmdi-delete"></i>
@@ -50,7 +51,7 @@
                     {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
                     {if="$value->connected"}
                         <span title="{$c->__('communitydata.sub', $info->occupants)}">
-                            {$value->countConnected()} <i class="zmdi zmdi-accounts"></i>  –
+                            {$value->presences->count()} <i class="zmdi zmdi-accounts"></i>  –
                         </span>
                     {elseif="isset($info) && $info->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $info->occupants)}">
@@ -66,7 +67,7 @@
             </li>
         {/loop}
     </ul>
-    {if="$conferences == null"}
+    {if="$conferences->isEmpty()"}
     <ul class="list thick spaced">
         <li>
             <span class="primary icon green">

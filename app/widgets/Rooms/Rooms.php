@@ -10,6 +10,7 @@ use Moxl\Xec\Action\Disco\Request;
 use Ramsey\Uuid\Uuid;
 
 use Respect\Validation\Validator;
+use Illuminate\Support\Collection;
 
 use Movim\Session;
 
@@ -33,7 +34,7 @@ class Rooms extends \Movim\Widget\Base
     {
         $message = $packet->content;
 
-        if ($message->session == $message->jidto
+        if ($message->user_id == $message->jidto
         && $message->type == 'groupchat') {
             Notification::append(
                 'chat|'.$message->jidfrom,
@@ -60,15 +61,9 @@ class Rooms extends \Movim\Widget\Base
 
     function onGetBookmark()
     {
-        $cod = new \Modl\ConferenceDAO;
-        $rooms = $cod->getAll();
-
-        if (is_array($rooms)) {
-            foreach($rooms as $room) {
-                if ($room->autojoin
-                && !$this->checkConnected($room->conference, $room->nick)) {
-                    $this->ajaxJoin($room->conference, $room->nick);
-                }
+        foreach($this->user->session->conferences as $room) {
+            if ($room->autojoin && !$room->connected) {
+                $this->ajaxJoin($room->conference, $room->nick);
             }
         }
     }
@@ -115,16 +110,16 @@ class Rooms extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $id = new \Modl\InfoDAO;
-        $cd = new \Modl\ConferenceDAO;
-        $cad = new \Modl\CapsDAO;
-
-        $view->assign('info', $id->getConference($room));
+        $view->assign('info', \App\Info::where('server', $room)
+                                       ->where('category', 'conference')
+                                       ->first());
         $view->assign('id', $room);
-        $view->assign('conference', $cd->get($room));
-        $view->assign('username', $this->user->getUser());
+        $view->assign('conference',
+            $this->user->session->conferences()
+            ->where('conference', $room)->first());
+        $view->assign('username', $this->user->session->username);
 
-        $this->rpc('Rooms.setDefaultServices', $cad->getMUC($this->user->getServer()));
+        $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsService());
 
         Dialog::fill($view->draw('_rooms_add', true));
     }
@@ -136,10 +131,9 @@ class Rooms extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $cd = new \Modl\ContactDAO;
-        $view->assign('contacts', $cd->getRosterSimple());
+        $view->assign('contacts', \App\User::me()->session->contacts()->pluck('jid'));
         $view->assign('room', $room);
-        $view->assign('invite', \Modl\Invite::set($this->user->getLogin(), $room));
+        $view->assign('invite', \App\Invite::set($this->user->id, $room));
 
         Dialog::fill($view->draw('_rooms_invite', true));
     }
@@ -186,11 +180,11 @@ class Rooms extends \Movim\Widget\Base
         if (!$this->validateRoom($room)) return;
 
         $view = $this->tpl();
-
-        $userslist = $this->getUsersList($room);
-        $view->assign('list', $userslist);
+        $view->assign('list', $this->user->session->conferences
+                                   ->where('conference', $room)
+                                   ->first()->presences);
         $view->assign('room', $room);
-        $view->assign('me', $this->user->getLogin());
+        $view->assign('me', $this->user->id);
 
         Dialog::fill($view->draw('_rooms_list', true), true);
     }
@@ -200,16 +194,10 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxMucUsersAutocomplete($room)
     {
-        $users = $this->getUsersList($room);
-
-        if ($users) {
-            $resources = [];
-            foreach($users as $user) {
-                array_push($resources, $user->resource);
-            }
-
-            $this->rpc("Chat.onAutocomplete", $resources);
-        }
+        $this->rpc("Chat.onAutocomplete", $this->user->session->conferences
+                                               ->where('conference', $room)
+                                               ->first()->presences
+                                               ->pluck('resource'));
     }
 
     /**
@@ -219,8 +207,7 @@ class Rooms extends \Movim\Widget\Base
     {
         if (!$this->validateRoom($room)) return;
 
-        $cd = new \Modl\ConferenceDAO;
-        $cd->deleteNode($room);
+        $this->user->session->conferences()->where('conference', $room)->delete();
 
         $this->setBookmark();
     }
@@ -233,7 +220,7 @@ class Rooms extends \Movim\Widget\Base
         if (!$this->validateRoom($room)) return;
 
         if ((new \Movim\Picture)->isOld($room . '_muc')) {
-            $v = new Moxl\Xec\Action\Vcard\Get;
+            $v = new \Moxl\Xec\Action\Vcard\Get;
             $v->setTo(echapJid($room))->isMuc()->request();
         }
 
@@ -253,14 +240,13 @@ class Rooms extends \Movim\Widget\Base
             $nickname = $s->get('username');
         }
 
-        $cd = new \Modl\CapsDAO;
         $jid = explodeJid($room);
-        $caps = $cd->get($jid['server']);
+        $capability = App\Capability::find($jid['server']);
 
-        if ($caps && ($caps->isMAM() || $caps->isMAM2())) {
+        if ($capability && ($capability->isMAM() || $capability->isMAM2())) {
             $p->enableMAM();
 
-            if ($caps->isMAM2()) {
+            if ($capability->isMAM2()) {
                 $p->enableMAM2();
             }
         }
@@ -286,18 +272,16 @@ class Rooms extends \Movim\Widget\Base
         $s = Session::start();
         $resource = $s->get('username');
 
-        $cd = new \Modl\CapsDAO;
         $jid = explodeJid($room);
-        $caps = $cd->get($jid['server']);
+        $capability = App\Capability::find($jid['server']);
 
-        if (!isset($caps) || !$caps->isMAM()) {
-            // We clear all the old messages
-            $md = new \Modl\MessageDAO;
-            $md->deleteContact($room);
+        if (!$capability || !$capability->isMAM()) {
+            $this->user->messages->where('jidfrom', $room)->delete();
         }
 
-        $md = new \Modl\PresenceDAO;
-        $md->clearMuc($room);
+        $this->user->session->conferences()
+             ->where('conference', $room)
+             ->first()->presences()->delete();
 
         $this->refreshRooms();
 
@@ -318,8 +302,9 @@ class Rooms extends \Movim\Widget\Base
         } elseif (trim($form->name->value) == '') {
             Notification::append(null, $this->__('chatrooms.empty_name'));
         } else {
-            $cd = new \Modl\ConferenceDAO;
-            $cd->deleteNode($form->jid->value);
+            $this->user->session->conferences()
+                 ->where('conference', strtolower($form->jid->value))
+                 ->delete();
 
             $item = [
                     'type'      => 'conference',
@@ -341,10 +326,7 @@ class Rooms extends \Movim\Widget\Base
             array_push($arr, $item);
         }
 
-        $cd = new \Modl\ConferenceDAO;
-        $session = Session::start();
-
-        $conferences = $cd->getAll();
+        $conferences = $this->user->session->conferences;
         if ($conferences) {
             foreach ($conferences as $c) {
                 array_push($arr,
@@ -361,61 +343,25 @@ class Rooms extends \Movim\Widget\Base
 
         $b = new Set;
         $b->setArr($arr)
-          ->setTo($session->get('jid'))
           ->request();
-    }
-
-    function checkConnected($room, $resource = false)
-    {
-        if (!$this->validateRoom($room)) return;
-        if ($resource && !$this->validateResource($resource)) {
-            Notification::append(null, $this->__('chatrooms.bad_id'));
-            return;
-        }
-
-        $pd = new \Modl\PresenceDAO;
-
-        if ($resource == false) {
-            $session = Session::start();
-            $resource = $session->get('username');
-        }
-
-        return ($pd->getMyPresenceRoom($room) != null
-             || $pd->getPresence($room, $resource) != null);
-    }
-
-    /**
-     * @brief Get rooms users list
-     */
-    function getUsersList($room)
-    {
-        $cd = new \Modl\ContactDAO;
-        return $cd->getPresences($room);
     }
 
     function prepareRooms($edit = false)
     {
-        $view = $this->tpl();
-        $cod = new \Modl\ConferenceDAO;
+        $conferences = $this->user->session->conferences()->get();
+        $connected = new Collection;
 
-        $list = $cod->getAll();
-
-        $connected = [];
-
-        if (is_array($list)) {
-            foreach ($list as $key => $room) {
-                if ($this->checkConnected($room->conference, $room->nick)) {
-                    $room->connected = true;
-                    array_push($connected, $room);
-                    unset($list[$key]);
-                }
+        foreach ($conferences as $key => $conference) {
+            if ($conference->connected) {
+                $connected->push($conferences->pull($key));
             }
-
-            $connected = array_merge($connected, $list);
         }
 
+        $conferences = $connected->merge($conferences);
+
+        $view = $this->tpl();
         $view->assign('edit', $edit);
-        $view->assign('conferences', $connected);
+        $view->assign('conferences', $conferences);
         $view->assign('room', $this->get('r'));
 
         return $view->draw('_rooms', true);
@@ -428,8 +374,7 @@ class Rooms extends \Movim\Widget\Base
      */
     private function validateRoom($room)
     {
-        $validate_server = Validator::stringType()->noWhitespace()->length(6, 80);
-        return ($validate_server->validate($room));
+        return (Validator::stringType()->noWhitespace()->length(6, 80)->validate($room));
     }
 
     /**
@@ -439,7 +384,6 @@ class Rooms extends \Movim\Widget\Base
      */
     private function validateResource($resource)
     {
-        $validate_resource = Validator::stringType()->length(2, 40);
-        return ($validate_resource->validate($resource));
+        return (Validator::stringType()->length(2, 40)->validate($resource));
     }
 }

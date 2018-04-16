@@ -43,10 +43,10 @@
                     </span>
                 {else}
                     <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                        {$contact->getTrueName()|firstLetterCapitalize}
+                        {$contact->truename|firstLetterCapitalize}
                     </span>
                 {/if}
-                <p>{$contact->getTrueName()}</p>
+                <p>{$contact->truename}</p>
                 <p>{$contact->jid}</p>
             </li>
         {/loop}
@@ -69,17 +69,17 @@
                 </span>
             {else}
                 <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                    {$contact->getTrueName()|firstLetterCapitalize}
+                    {$contact->truename|firstLetterCapitalize}
                 </span>
             {/if}
-            <p>{$contact->getTrueName()}</p>
+            <p>{$contact->truename}</p>
             <p>{$contact->jid}</p>
         </li>
     {/loop}
 </ul>
 {/if}
 
-{if="$subscriptions"}
+{if="$subscriptions->isNotEmpty()"}
 <ul class="list card active thin">
     <li class="subheader">
         <p>{$c->__('communityaffiliation.subscriptions')}</p>
@@ -87,17 +87,24 @@
     {loop="$subscriptions"}
         <li title="{$value->jid}"
             onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
-            {$url = $value->getPhoto('m')}
-            {if="$url"}
-                <span class="primary icon bubble small"
-                    style="background-image: url({$url});">
-                </span>
+            {if="$value->contact"}
+                {$url = $value->contact->getPhoto('m')}
+                {if="$url"}
+                    <span class="primary icon bubble small"
+                        style="background-image: url({$url});">
+                    </span>
+                {else}
+                    <span class="primary icon bubble small color {$value->jid|stringToColor}">
+                        {$value->contact->truename|firstLetterCapitalize:true}
+                    </span>
+                {/if}
+                <p class="normal">{$value->contact->truename}</p>
             {else}
                 <span class="primary icon bubble small color {$value->jid|stringToColor}">
-                    {$value->getTrueName()|firstLetterCapitalize:true}
+                    {$value->jid|firstLetterCapitalize:true}
                 </span>
+                <p class="normal">{$value->jid}</p>
             {/if}
-            <p class="normal">{$value->getTrueName()}</p>
         </li>
     {/loop}
 </ul>

@@ -47,6 +47,7 @@ var Search = {
 
 document.addEventListener('keydown', function(e) {
     if (e.keyCode == 77 && e.ctrlKey) {
+        e.preventDefault();
         Search_ajaxRequest();
     }
 });

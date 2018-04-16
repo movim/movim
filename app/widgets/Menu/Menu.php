@@ -1,7 +1,5 @@
 <?php
 
-use Moxl\Xec\Action\Pubsub\GetItems;
-
 include_once WIDGETS_PATH.'Post/Post.php';
 
 class Menu extends \Movim\Widget\Base
@@ -13,7 +11,6 @@ class Menu extends \Movim\Widget\Base
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract', 'news');
         $this->registerEvent('pubsub_postdelete', 'onRetract', 'news');
-        $this->registerEvent('pubsub_getitem_handle', 'onPost');
 
         $this->addjs('menu.js');
     }
@@ -35,45 +32,51 @@ class Menu extends \Movim\Widget\Base
 
     function onPost($packet)
     {
-        $pd = new \Modl\PostnDAO;
-        $cd = new \Modl\ContactDAO;
+        $since = \App\Cache::c('since');
 
-        $since = \Movim\Cache::c('since');
-        $count = $pd->getCountSince($since);
+        if ($since) {
+            $count = \App\Post::whereIn('id', function ($query) {
+                $query = $query->select('id')->from('posts');
+                $query = \App\Post::withContactsScope($query);
+                $query = \App\Post::withMineScope($query);
+                $query = \App\Post::withSubscriptionsScope($query);
+            })->where('published', '>', $since)->count();
+        } else {
+            $count = 0;
+        }
+
         $post = $packet->content;
 
         if (!is_object($post)) return;
 
-        // We reload a fresh Post
-        $post = $pd->get($post->origin, $post->node, $post->nodeid);
+        $post = \App\Post::where('server', $post->server)
+                         ->where('node', $post->node)
+                         ->where('nodeid', $post->nodeid)
+                         ->first();
 
-        if (is_object($post)
-        && $post->isComment()
+        if ($post->isComment()
         && !$post->isMine()) {
-            $contact = $cd->get($post->aid);
+            $contact = \App\Contact::firstOrNew(['id' => $post->aid]);
             Notification::append(
                 'news',
-                $contact->getTrueName(),
+                $contact->truename,
                 $post->title,
                 $contact->getPhoto('s'),
                 2
             );
         } elseif ($count > 0
-        && is_object($post)
         && (strtotime($post->published) > strtotime($since))) {
             if ($post->isMicroblog()) {
-                $contact = $cd->get($post->origin);
+                $contact = \App\Contact::firstOrNew(['id' => $post->origin]);
 
-                if ($post->title == null) {
-                    $title = __('post.default_title');
-                } else {
-                    $title = $post->title;
-                }
+                $title = ($post->title == null)
+                    ? __('post.default_title')
+                    : $post->title;
 
                 if (!$post->isMine()) {
                     Notification::append(
                         'news',
-                        $contact->getTrueName(),
+                        $contact->truename,
                         $title,
                         $contact->getPhoto('s'),
                         2,
@@ -138,66 +141,64 @@ class Menu extends \Movim\Widget\Base
         $this->rpc('Menu.refresh');
     }
 
-    function ajaxRefresh()
-    {
-        Notification::append(null, $this->__('menu.refresh'));
-
-        $sd = new \modl\SubscriptionDAO();
-        $subscriptions = $sd->getSubscribed();
-
-        foreach ($subscriptions as $s) {
-            $r = new GetItems;
-            $r->setTo($s->server)
-              ->setNode($s->node)
-              ->request();
-        }
-    }
-
     function prepareList($type = 'all', $server = null, $node = null, $page = 0)
     {
         $view = $this->tpl();
-        $pd = new \Modl\PostnDAO;
-        $count = $pd->getCountSince(\Movim\Cache::c('since'));
+
+        $posts = \App\Post::whereIn('id', function ($query) {
+            $query = $query->select('id')->from('posts');
+            $query = \App\Post::withContactsScope($query);
+            $query = \App\Post::withMineScope($query);
+            $query = \App\Post::withSubscriptionsScope($query);
+        });
+
+        $since = \App\Cache::c('since');
+
+        $count = ($since)
+            ? $posts->where('published', '>', $since)->count()
+            : 0;
+
         // getting newer, not older
-        if ($page == 0 || $page == ""){
+        if ($page == 0){
             $count = 0;
-            \Movim\Cache::c('since', date(DATE_ISO8601, strtotime($pd->getLastDate())));
+            $last = $posts->orderBy('published', 'desc')->first();
+            \App\Cache::c('since', ($last) ? $last->published : date(SQL_DATE));
         }
+
+        $items = \App\Post::skip($page * $this->_paging + $count)->withoutComments();
+
+        $items->whereIn('id', function ($query) use ($type) {
+            $query = $query->select('id')->from('posts');
+
+            if (in_array($type, ['all', 'feed'])) {
+                $query = \App\Post::withContactsScope($query);
+                $query = \App\Post::withMineScope($query);
+            }
+
+            if (in_array($type, ['all', 'news'])) {
+                $query = \App\Post::withSubscriptionsScope($query);
+            }
+
+        });
 
         $next = $page + 1;
 
-        switch ($type) {
-            case 'all' :
-                $view->assign('history', $this->call('ajaxGetAll', $next));
-                $items  = $pd->getAllPosts(false, $page * $this->_paging + $count, $this->_paging);
-                break;
-            case 'news' :
-                $view->assign('history', $this->call('ajaxGetNews', $next));
-                $items  = $pd->getNews($page * $this->_paging + $count, $this->_paging);
-                break;
-            case 'feed' :
-                $view->assign('history', $this->call('ajaxGetFeed', $next));
-                $items  = $pd->getFeed($page * $this->_paging + $count, $this->_paging);
-                break;
-            case 'me' :
-                $view->assign('jid', $this->user->getLogin());
-                $view->assign('history', $this->call('ajaxGetMe', $next));
-                $items  = $pd->getMe($page * $this->_paging + $count, $this->_paging);
-                break;
-            case 'node' :
-                $view->assign('history', $this->call('ajaxGetNode', '"'.$server.'"', '"'.$node.'"', '"'.$next.'"'));
-                $items  = $pd->getNode($server, $node, $page * $this->_paging + $count, $this->_paging);
-                break;
+        $view->assign('history', $this->call('ajaxGetAll', $next));
+
+        if ($type == 'news') {
+            $view->assign('history', $this->call('ajaxGetNews', $next));
+        } elseif ($type == 'feed') {
+            $view->assign('history', $this->call('ajaxGetFeed', $next));
         }
 
-        $view->assign('items', $items);
+        $view->assign('items', $items
+            ->orderBy('published', 'desc')
+            ->take($this->_paging)->get());
         $view->assign('type', $type);
         $view->assign('page', $page);
         $view->assign('paging', $this->_paging);
 
-        $html = $view->draw('_menu_list', true);
-
-        return $html;
+        return $view->draw('_menu_list', true);
     }
 
     function preparePost($p)

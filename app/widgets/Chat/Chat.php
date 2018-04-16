@@ -8,6 +8,8 @@ use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
 use Moxl\Xec\Action\Muc\SetSubject;
 
+use App\Configuration;
+
 use Moxl\Xec\Action\BOB\Request;
 
 use Respect\Validation\Validator;
@@ -62,7 +64,7 @@ class Chat extends \Movim\Widget\Base
                 $presences = getPresences();
                 $presence = $presences[$contact->value];
 
-                Notification::append('presence', $contact->getTrueName(), $presence, $avatar, 4);
+                Notification::append('presence', $contact->truename, $presence, $avatar, 4);
             }
         }
     }*/
@@ -75,42 +77,39 @@ class Chat extends \Movim\Widget\Base
     function onMessage($packet, $history = false)
     {
         $message = $packet->content;
-        $cd = new \Modl\ContactDAO;
 
         if ($message->isEmpty()) return;
 
-        if ($message->session == $message->jidto && !$history
+        if ($message->user_id == $message->jidto && !$history
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
-
-            $contact = $cd->getRosterItem($from);
-            if ($contact == null) {
-                $contact = $cd->get($from);
-            }
+            $roster = $this->user->session->contacts->where('jid', $from)->first();
+            $contact = App\Contact::firstOrNew(['id' => $from]);
 
             if ($contact != null
-            && $message->isTrusted()
+            //&& $message->isTrusted()
             && !$message->isOTR()
             && $message->type != 'groupchat'
             && !$message->edited) {
-                $avatar = $contact->getPhoto('s');
-                if ($avatar == false) $avatar = null;
                 Notification::append(
                     'chat|'.$from,
-                    $contact->getTrueName(),
+                    $roster ? $roster->truename : $contact->truename,
                     $message->body,
-                    $avatar,
+                    $contact->getPhoto('s'),
                     4,
                     $this->route('chat', $contact->jid)
                 );
             } elseif ($message->type == 'groupchat'
                    && $message->quoted) {
-                $cd = new \Modl\ConferenceDAO;
-                $c = $cd->get($from);
+                $conference = $this->user->session
+                                   ->conferences->where('conference', $from)
+                                   ->first();
 
                 Notification::append(
                     'chat|'.$from,
-                    ($c != null && $c->name) ? $c->name : $from,
+                    ($conference != null && $conference->name)
+                        ? $conference->name
+                        : $from,
                     $message->resource.': '.$message->body,
                     false,
                     4);
@@ -166,7 +165,7 @@ class Chat extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $xml = new \XMPPtoForm();
+        $xml = new \XMPPtoForm;
         $form = $xml->getHTML($config->x->asXML());
 
         $view->assign('form', $form);
@@ -183,11 +182,8 @@ class Chat extends \Movim\Widget\Base
     private function setState($array, $message)
     {
         list($from, $to) = $array;
-        if ($from == $this->user->getLogin()) {
-            $jid = $to;
-        } else {
-            $jid = $from;
-        }
+
+        $jid = ($from == $this->user->jid) ? $to : $from;
 
         $view = $this->tpl();
         $view->assign('message', $message);
@@ -233,12 +229,10 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($room)) return;
 
-        $cod = new \Modl\ConferenceDAO;
-        $r = $cod->get($room);
+        $r = $this->user->session->conferences->where('conference', $room)->first();
 
         if ($r) {
-            $rooms = new Rooms;
-            if (!$rooms->checkConnected($r->conference, $r->nick)) {
+            if (!$r->connected) {
                 $this->rpc('Rooms_ajaxJoin', $r->conference, $r->nick);
             }
 
@@ -293,34 +287,37 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
-        if ($file != false) {
-            $body = $file->uri;
-        } else {
-            $body = (string)htmlentities(trim($message), ENT_XML1, 'UTF-8');
-        }
+        $body = ($file != false)
+            ? $file->uri
+            : (string)htmlentities(trim($message), ENT_XML1, 'UTF-8');
 
         if ($body == '' || $body == '/me') {
             return;
         }
 
-        $m = new \Modl\Message;
-        $m->session = $this->user->getLogin();
-        $m->jidto   = echapJid($to);
-        $m->jidfrom = $this->user->getLogin();
+        $oldid = null;
+
+        if ($replace) {
+            $oldid = $replace->id;
+
+            $m = $replace;
+            $m->id = Uuid::uuid4();
+
+            \App\Message::where('id', $oldid)->update([
+                'id' => $m->id,
+                'edited' => true
+            ]);
+        } else {
+            $m = new \App\Message;
+            $m->id          = Uuid::uuid4();
+            $m->user_id     = $this->user->id;
+            $m->jidto       = echapJid($to);
+            $m->jidfrom     = $this->user->id;
+            $m->published   = gmdate('Y-m-d H:i:s');
+        }
 
         // TODO: make this boolean configurable
         $m->markable = true;
-
-        if ($replace != false) {
-            $m->newid     = Uuid::uuid4();
-            $m->id        = $replace->id;
-            $m->edited    = true;
-            $m->published = $replace->published;
-            $m->delivered = $replace->delivered;
-        } else {
-            $m->id        = Uuid::uuid4();
-            $m->published = gmdate('Y-m-d H:i:s');
-        }
 
         $session    = Session::start();
 
@@ -346,11 +343,10 @@ class Chat extends \Movim\Widget\Base
         $p->setContent($m->body);
 
         if ($replace != false) {
-            $p->setId($m->newid);
-            $p->setReplace($m->id);
-        } else {
-            $p->setId($m->id);
+            $p->setReplace($oldid);
         }
+
+        $p->setId($m->id);
 
         if ($muc) {
             $p->setMuc();
@@ -365,10 +361,8 @@ class Chat extends \Movim\Widget\Base
 
         /* Is it really clean ? */
         if (!$p->getMuc()) {
-            if (!$m->isOTR()) {
-                $md = new \Modl\MessageDAO;
-                $md->set($m);
-            }
+            $m->save();
+            $m->oldid = $oldid;
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
@@ -385,8 +379,13 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxHttpCorrect($to, $message)
     {
-        $md = new \Modl\MessageDAO;
-        $m = $md->getLastItem($to);
+        $m = $this->user->messages()
+                        ->where(function ($query) use ($to) {
+                            $query->where('jidfrom', $to)
+                                  ->orWhere('jidto', $to);
+                        })
+                        ->orderBy('published', 'desc')
+                        ->first();
 
         if ($m) {
             $this->ajaxHttpSendMessage($to, $message, false, false, $m);
@@ -401,12 +400,17 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxLast($to)
     {
-        $md = new \Modl\MessageDAO;
-        $m = $md->getLastItem($to);
+        $m = $this->user->messages()
+                        ->where(function ($query) use ($to) {
+                            $query->where('jidfrom', $to)
+                                  ->orWhere('jidto', $to);
+                        })
+                        ->orderBy('published', 'desc')
+                        ->first();
 
         if (!isset($m->sticker)
         && !isset($m->file)) {
-            $this->rpc('Chat.setTextarea',htmlspecialchars_decode($m->body));
+            $this->rpc('Chat.setTextarea', htmlspecialchars_decode($m->body));
         }
     }
 
@@ -447,11 +451,19 @@ class Chat extends \Movim\Widget\Base
     function ajaxGetHistory($jid, $date)
     {
         if (!$this->validateJid($jid)) return;
-        $md = new \Modl\MessageDAO;
-        $messages = $md->getHistory(echapJid($jid), $date, $this->_pagination);
 
-        if (count($messages) > 0) {
-            Notification::append(false, $this->__('message.history', count($messages)));
+        $messages = $this->user->messages()
+                         ->where(function ($query) use ($jid) {
+                                $query->where('jidfrom', $jid)
+                                      ->orWhere('jidto', $jid);
+                         })
+                         ->where('published', '<', date(SQL_DATE, strtotime($date)))
+                         ->orderBy('published', 'desc')
+                         ->take($this->_pagination)
+                         ->get();
+
+        if ($messages->count() > 0) {
+            Notification::append(false, $this->__('message.history', $messages->count()));
 
             foreach($messages as $message) {
                 if (!$message->isOTR()) {
@@ -495,7 +507,7 @@ class Chat extends \Movim\Widget\Base
     /**
      * @brief Get the subject form of a chatroom
      */
-    function ajaxGetSubject($room)
+    /*function ajaxGetSubject($room)
     {
         if (!$this->validateJid($room)) return;
 
@@ -508,12 +520,12 @@ class Chat extends \Movim\Widget\Base
         $view->assign('subject', $s);
 
         Dialog::fill($view->draw('_chat_subject', true));
-    }
+    }*/
 
     /**
      * @brief Change the subject of a chatroom
      */
-    function ajaxSetSubject($room, $form)
+    /*function ajaxSetSubject($room, $form)
     {
         if (!$this->validateJid($room)) return;
 
@@ -524,7 +536,7 @@ class Chat extends \Movim\Widget\Base
         $p->setTo($room)
           ->setSubject($form->subject->value)
           ->request();
-    }
+    }*/
 
     /**
      * @brief Set last displayed message
@@ -533,21 +545,20 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $md = new \Modl\MessageDAO;
-        $m = $md->getId($id);
+        $message = $this->user->messages()->where('id', $id)->first();
 
-        if ($m
-        && $m->markable == true
-        && $m->displayed == null) {
-            $m->displayed = gmdate('Y-m-d H:i:s');
-            $md->set($m);
+        if ($message
+        && $message->markable == true
+        && $message->displayed == null) {
+            $message->displayed = gmdate('Y-m-d H:i:s');
+            $message->save();
 
             \Moxl\Stanza\Message::displayed($jid, $id);
         }
     }
 
     /**
-     * @brief Save the room configuration
+     * @brief Clear the history
      *
      * @param string $room
      */
@@ -555,8 +566,10 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $md = new \Modl\MessageDAO;
-        $md->deleteContact($jid);
+        $this->user->messages->where(function ($query) use ($jid) {
+            $query->where('jidfrom', $jid)
+                  ->orWhere('jidto', $jid);
+        })->delete();
 
         $this->ajaxGet($jid);
     }
@@ -573,29 +586,26 @@ class Chat extends \Movim\Widget\Base
         $view->assign('emoji', prepareString('😀'));
         $view->assign('muc', $muc);
         $view->assign('anon', false);
-
-        $id = new \Modl\InfoDAO;
-        $info = $id->getJid($this->user->getServer());
-        $view->assign('info', $info);
+        $view->assign('info', \App\Info::where('server', $this->user->getServer())
+                                             ->where('node', '')
+                                             ->first());
 
         if ($muc) {
-            $md = new \Modl\MessageDAO;
-            $cd = new \Modl\ConferenceDAO;
-            $pd = new \Modl\PresenceDAO;
-
             $view->assign('room', $jid);
-            $view->assign('subject', $md->getRoomSubject($jid));
-            $view->assign('presence', $pd->getMyPresenceRoom($jid));
-            $view->assign('conference', $cd->get($jid));
+            //$view->assign('subject', $md->getRoomSubject($jid));
+            $view->assign('conference', $this->user->session->conferences
+                                             ->where('conference', $jid)
+                                             ->first());
 
-            $mucinfo = $id->getJid(explodeJid($jid)['server']);
+            $mucinfo = \App\Info::where('server', explodeJid($jid)['server'])
+                                ->where('node', '')
+                                ->first();
             if ($mucinfo && !empty($mucinfo->abuseaddresses)) {
                 $view->assign('info', $mucinfo);
             }
         } else {
-            $cd = new \Modl\ContactDAO;
-            $cr = $cd->getRosterItem($jid);
-            $view->assign('contact', isset($cr) ? $cr : $cd->get($jid));
+            $view->assign('roster', $this->user->session->contacts->where('jid', $jid)->first());
+            $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         }
 
         return $view->draw('_chat', true);
@@ -605,39 +615,33 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $md = new \Modl\MessageDAO;
+        $jid = echapJid($jid);
 
-        if ($muc) {
-            $messages = $md->getRoom(echapJid($jid), 0, $this->_pagination);
-        } else {
-            $messages = $md->getContact(echapJid($jid), 0, $this->_pagination);
-        }
+        $messages = $this->user->messages()->where(function ($query) use ($jid) {
+            $query->where('jidfrom', $jid)
+                  ->orWhere('jidto', $jid);
+        });
 
-        if (is_array($messages)) {
-            $messages = array_reverse($messages);
+        $messages = $muc
+            ? $messages->where('type', 'groupchat')
+            : $messages->whereIn('type', ['chat', 'headline', 'invitation']);
 
-            foreach ($messages as $message) {
-                $this->prepareMessage($message);
-            }
+        $messages = $messages->orderBy('published', 'desc')->take($this->_pagination)->get();
+        $messages = $messages->reverse();
+
+        foreach ($messages as $message) {
+            $this->prepareMessage($message);
         }
 
         $view = $this->tpl();
         $view->assign('jid', $jid);
 
-        $cd = new \Modl\ContactDAO;
-        $contact = $cd->get($jid);
-        $me = $cd->get();
-
-        if ($me == null) {
-            $me = new \Modl\Contact;
-        }
-
-        $view->assign('contact', $contact);
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('me', false);
         $view->assign('muc', $muc);
         $left = $view->draw('_chat_bubble', true);
 
-        $view->assign('contact', $me);
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $this->user->jid]));
         $view->assign('me', true);
         $view->assign('muc', $muc);
         $right = $view->draw('_chat_bubble', true);
@@ -682,8 +686,6 @@ class Chat extends \Movim\Widget\Base
             && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
                 $message->audio = $message->file['uri'];
             }
-
-            $message->file['size'] = sizeToCleanSize($message->file['size']);
         }
 
         if (isset($message->html)) {
@@ -748,19 +750,20 @@ class Chat extends \Movim\Widget\Base
         }
 
         if ($message->type == 'groupchat') {
-            $message->color = stringToColor($message->session . $message->resource . $message->type);
+            $message->color = stringToColor($message->session_id . $message->resource . $message->type);
 
-            $cd = new \Modl\ContactDAO;
-            $contact = $cd->getPresence($message->jidfrom, $message->resource);
+            $presence = $this->user->session->presences()
+                             ->where('jid', $message->jidfrom)
+                             ->where('resource', $message->resource)
+                             ->first();
 
-            if ($contact) {
-                $url = $contact->getPhoto('s');
-
+            if ($presence && $presence->contactConference) {
+                $url = $presence->contactConference->getPhoto('s');
                 if ($url) {
                     $message->icon_url = $url;
                 }
 
-                $message->mine = ($contact->mucjid == $message->session);
+                $message->mine = ($presence->mucjid == $this->user->id);
             }
 
             $message->icon = firstLetterCapitalize($message->resource);
@@ -787,20 +790,21 @@ class Chat extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $chats = \Movim\Cache::c('chats');
-        $chats = ($chats == null) ? false : array_keys($chats);
+        $conferences = \App\Info::where('category', 'conference')
+                                ->whereNotIn('server', $this->user->session->conferences->pluck('conference')->toArray())
+                                ->where('mucpublic', true)
+                                ->where('mucpersistent', true);
 
-        $cd = new \Modl\ContactDAO;
-        $id = new \Modl\InfoDAO;
-        $cod = new \Modl\ConfigDAO;
-        $config = $cod->get();
+        $conferences = (Configuration::findOrNew(1)->restrictsuggestions)
+            ? $conferences->where('server', 'like', '%@%.' . $this->user->getServer())
+            : $conferences->where('server', 'like', '%@%');
+
+        $conferences = $conferences->orderBy('occupants', 'desc')->take(8)->get();
 
         $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('conferences', $id->getTopConference(
-            8,
-            ($config->restrictsuggestions == true) ? $this->user->getServer() : false
-        ));
-        $view->assign('top', $cd->getTop(8, $chats));
+        $view->assign('conferences', $conferences);
+        $view->assign('top', []);
+
         return $view->draw('_chat_empty', true);
     }
 
@@ -811,9 +815,7 @@ class Chat extends \Movim\Widget\Base
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        if (!$validate_jid->validate($jid)) return false;
-        else return true;
+        return (Validator::stringType()->noWhitespace()->length(6, 60)->validate($jid));
     }
 
     function getSmileyPath($id)

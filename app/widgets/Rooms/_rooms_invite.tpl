@@ -11,12 +11,10 @@
         <h2 style="text-align: center;">{$c->__('global.or')}</h2>
         <div>
             <input type="hidden" value="{$room}" name="to" id="to"/>
-            <datalist id="contact_list" style="display: none;">
-                {if="is_array($contacts)"}
-                    {loop="$contacts"}
-                        <option value="{$value->jid}"/>
-                    {/loop}
-                {/if}
+            <datalist id="contact_list">
+                {loop="$contacts"}
+                    <option value="{$value}"/>
+                {/loop}
             </datalist>
             <input
                 name="invite"

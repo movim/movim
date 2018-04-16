@@ -23,7 +23,7 @@
             {/if}
 
             <p class="normal line">
-                {$value->getTrueName()}
+                {$value->truename}
                 {if="!empty($value->description)"}
                     <span class="second" title="{$value->description|strip_tags}">
                         {$value->description|strip_tags|truncate:80}

@@ -1,8 +1,10 @@
 <?php
 namespace Movim\Template;
 
+use App\Configuration;
 use Movim\Controller\Ajax;
 use Movim\Widget\Wrapper;
+use App\User;
 
 class Builder
 {
@@ -24,9 +26,7 @@ class Builder
     {
         $this->user = $user;
 
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
-        $this->theme = $config->theme;
+        $this->theme = Configuration::findOrNew(1)->theme;
     }
 
     function viewsPath($file)
@@ -112,7 +112,7 @@ class Builder
     function dir()
     {
         $this->user->reload(true);
-        $lang = $this->user->getConfig('language');
+        $lang = User::me()->language;
 
         if (in_array($lang, ['ar', 'he', 'fa'])) {
             $this->dir = 'rtl';
@@ -145,6 +145,7 @@ class Builder
             $meta->setAttribute('content', $widgets->title);
             $metas->appendChild($meta);
         }
+
         if (isset($widgets->image)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('property', 'og:image');
@@ -156,6 +157,7 @@ class Builder
             $meta->setAttribute('content', $widgets->image);
             $metas->appendChild($meta);
         }
+
         if (isset($widgets->description)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('property', 'og:description');
@@ -172,14 +174,12 @@ class Builder
             $meta->setAttribute('content', $widgets->description);
             $metas->appendChild($meta);
         } else {
-            $cd = new \Modl\ConfigDAO;
-            $config = $cd->get();
-
             $meta = $dom->createElement('meta');
             $meta->setAttribute('name', 'description');
-            $meta->setAttribute('content', $config->description);
+            $meta->setAttribute('content', Configuration::findOrNew(1)->description);
             $metas->appendChild($meta);
         }
+
         if (isset($widgets->url)) {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('property', 'og:url');

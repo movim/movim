@@ -6,10 +6,15 @@ use Respect\Validation\Validator;
 use Defuse\Crypto\Key;
 use Defuse\Crypto\Crypto;
 
+use App\Configuration;
+use App\User;
+use App\Session as DBSession;
+use Movim\Widget\Base;
+
 use Movim\Cookie;
 use Movim\Session;
 
-class Login extends \Movim\Widget\Base
+class Login extends Base
 {
     function load()
     {
@@ -25,7 +30,7 @@ class Login extends \Movim\Widget\Base
 
     function onStart($packet)
     {
-        $session = Session::start();
+        //$session = Session::start();
 
         //if ($session->get('mechanism') != 'ANONYMOUS') {
             // We get the configuration
@@ -37,7 +42,6 @@ class Login extends \Movim\Widget\Base
 
     function onConfig($packet)
     {
-        $this->user->createDir();
         $this->rpc('MovimUtils.reloadThis');
 
         $p = new Presence;
@@ -46,42 +50,31 @@ class Login extends \Movim\Widget\Base
 
     function display()
     {
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $configuration = Configuration::findOrNew(1);
 
-        $this->view->assign('info',     $config->info);
-        $this->view->assign('whitelist',$config->xmppwhitelist);
+        $this->view->assign('info',     $configuration->info);
+        $this->view->assign('whitelist',$configuration->xmppwhitelist);
 
-        if (isset($config->xmppdomain)
-        && !empty($config->xmppdomain)) {
-            $this->view->assign('domain', $config->xmppdomain);
+        if (isset($configuration->xmppdomain)
+        && !empty($configuration->xmppdomain)) {
+            $this->view->assign('domain', $configuration->xmppdomain);
         } else {
             $this->view->assign('domain', 'movim.eu');
-        }
-
-        $pop = 0;
-
-        foreach(scandir(USERS_PATH) as $f) {
-            if (is_dir(USERS_PATH.'/'.$f)) {
-                $pop++;
-            }
         }
 
         $this->view->assign('invitation', null);
 
         if ($this->get('i')
         && Validator::length(8)->validate($this->get('i'))) {
-            $invitation = \Modl\Invite::get($this->get('i'));
+            $invitation = \App\Invite::find($this->get('i'));
 
             if ($invitation) {
                 $this->view->assign('invitation', $invitation);
-
-                $cd = new \Modl\ContactDAO;
-                $this->view->assign('contact', $cd->get($invitation->jid));
+                $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $invitation->user_id]));
             }
         }
 
-        $this->view->assign('pop', $pop-2);
+        $this->view->assign('pop', User::count());
         $this->view->assign('connected', (int)requestURL('http://localhost:1560/started/', 2));
         $this->view->assign('error', $this->prepareError());
 
@@ -97,8 +90,7 @@ class Login extends \Movim\Widget\Base
 
     function showErrorBlock($error)
     {
-        $ed = new \Modl\EncryptedPassDAO;
-        $ed->delete();
+        App\User::me()->encryptedPasswords()->delete();
 
         $this->rpc('Login.clearQuick');
         $this->rpc('MovimTpl.fill', '#error', $this->prepareError($error));
@@ -168,18 +160,18 @@ class Login extends \Movim\Widget\Base
             return;
         }
 
-        $db = \Modl\Modl::getInstance();
-        $db->setUser($login);
-
         try {
             $key = Key::loadFromAsciiSafeString($key);
 
-            $ed = new \Modl\EncryptedPassDAO;
-            $ciphertext = $ed->get($deviceId);
+            $user = \App\User::find($login);
 
-            if ($ciphertext) {
-                $password = Crypto::decrypt($ciphertext->data, $key);
-                $this->doLogin($login, $password, $deviceId);
+            if ($user) {
+                $ciphertext = $user->encryptedPasswords()->find($deviceId);
+
+                if ($ciphertext) {
+                    $password = Crypto::decrypt($ciphertext->data, $key);
+                    $this->doLogin($login, $password, $deviceId);
+                }
             }
         } catch(Exception $e) {
             $this->rpc('Login.clearQuick');
@@ -189,8 +181,7 @@ class Login extends \Movim\Widget\Base
     private function doLogin($login, $password, $deviceId = false)
     {
         // We get the Server Configuration
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $configuration = Configuration::findOrNew(1);
 
         // First we check the form
         $validate_login   = Validator::stringType()->length(1, 254);
@@ -206,56 +197,50 @@ class Login extends \Movim\Widget\Base
             return;
         }
 
-        $db = \Modl\Modl::getInstance();
-        $db->setUser($login);
-
         list($username, $host) = explode('@', $login);
 
         // Check whitelisted server
-        if (
-            $config->xmppwhitelist != '' &&!
-            in_array(
-                $host,
-                explode(',',$config->xmppwhitelist)
-                )
-            ) {
+        if (!empty($configuration->xmppwhitelist)
+        && !in_array($host, $configuration->xmppwhitelist)) {
             $this->showErrorBlock('unauthorized');
             return;
         }
 
         // We check if we already have an open session
-        $sd = new \Modl\SessionxDAO;
-        $here = $sd->getHash(sha1($username.$password.$host));
+        $here = DBSession::where('hash', sha1($username.$password.$host))->first();
+
+        $user = User::firstOrNew(['id' => $login]);
+        $user->init();
+        $user->save();
 
         $rkey = Key::createNewRandomKey();
 
-        $ed = new \Modl\EncryptedPassDAO;
+        if (!$deviceId) {
+            $deviceId = generateKey(16);
 
-        $deviceId = generateKey(16);
-        $ciphertext = Crypto::encrypt($password, $rkey);
+            $key = new App\EncryptedPassword;
+            $key->user_id = $login;
+            $key->id = $deviceId;
+            $key->data = Crypto::encrypt($password, $rkey);
+            $key->save();
 
-        $key = new \Modl\EncryptedPass;
-        $key->id = $deviceId;
-        $key->data = $ciphertext;
-
-        $ed->set($key);
-
-        $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
-
-        if ($here) {
-            $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->session, date(DATE_COOKIE, Cookie::getTime()));
-            $this->rpc('MovimUtils.redirect', $this->route('main'));
-            return;
+            $this->rpc('Login.setQuick', $deviceId, $login, $host, $rkey->saveToAsciiSafeString());
         }
 
-        $s = new \Modl\Sessionx;
-        $s->init($username, $password, $host);
-        $s->loadMemory();
-        $sd->set($s);
+        if ($here) {
+            $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));
+            $this->rpc('MovimUtils.redirect', $this->route('main'));
+            return;
+        } else {
+            $s = new DBSession;
+            $s->init($username, $password, $host);
+            $s->loadMemory();
+            $s->save();
 
-        // We launch the XMPP socket
-        $this->rpc('register', $host);
+            // We launch the XMPP socket
+            $this->rpc('register', $host);
 
-        \Moxl\Stanza\Stream::init($host);
+            \Moxl\Stanza\Stream::init($host);
+        }
     }
 }

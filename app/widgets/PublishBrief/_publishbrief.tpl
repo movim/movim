@@ -42,7 +42,7 @@
                 <input type="hidden" name="id" value="{if="$item != false"}{$item->nodeid}{/if}">
                 <input type="hidden" name="reply" value="{if="$reply"}1{else}0{/if}">
                 {if="$reply"}
-                    <input type="hidden" name="replyorigin" value="{$reply->origin}">
+                    <input type="hidden" name="replyserver" value="{$reply->server}">
                     <input type="hidden" name="replynode" value="{$reply->node}">
                     <input type="hidden" name="replynodeid" value="{$reply->nodeid}">
                 {/if}
@@ -77,8 +77,8 @@
                     id="embed"
                     name="embed"
                     onchange="if (this.value != '') { PublishBrief_ajaxEmbedLoading(); PublishBrief_ajaxEmbedTest(this.value, document.querySelector('form[name=brief] input#imagenumber').value); }"
-                    {if="!empty($draft->links) && !empty($draft->links[0])"}
-                         value="{$draft->links[0]}"
+                    {if="!empty($draft->link)"}
+                         value="{$draft->link}"
                     {elseif="isset($attachment) && $attachment != false"}
                         value="{$attachment.href}"
                     {elseif="$url"}

@@ -95,8 +95,8 @@ class Picture
                     $this->_folder . md5($this->_key) . $this->_formats[$format]
                 );
             }
-            return false;
         }
+
         // We request a specific size
         if (file_exists(
             $this->_path.md5($this->_key) .
@@ -122,7 +122,6 @@ class Picture
                 '_' . $width . $this->_formats[$format]
             );
         }
-        return false;
     }
 
     /**

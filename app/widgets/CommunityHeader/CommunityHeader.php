@@ -86,15 +86,9 @@ class CommunityHeader extends \Movim\Widget\Base
 
         $view->assign('server', $origin);
         $view->assign('node', $node);
-
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
-
-        if (isset($info)) {
-            $view->assign('info', $info);
-        } else {
-            $view->assign('info', null);
-        }
+        $view->assign('info', \App\Info::where('server', $origin)
+                                   ->where('node', $node)
+                                   ->first());
 
         Dialog::fill($view->draw('_communityheader_subscribe', true));
     }
@@ -127,15 +121,9 @@ class CommunityHeader extends \Movim\Widget\Base
 
         $view->assign('server', $origin);
         $view->assign('node', $node);
-
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
-
-        if (isset($info)) {
-            $view->assign('info', $info);
-        } else {
-            $view->assign('info', null);
-        }
+        $view->assign('info', \App\Info::where('server', $origin)
+                                   ->where('node', $node)
+                                   ->first());
 
         Dialog::fill($view->draw('_communityheader_unsubscribe', true));
     }
@@ -144,9 +132,12 @@ class CommunityHeader extends \Movim\Widget\Base
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
-        $sd = new \Modl\SubscriptionDAO;
+        $subscriptions = $this->user->subscriptions()
+                              ->where('server', $origin)
+                              ->where('node', $node)
+                              ->get();
 
-        foreach ($sd->get($origin, $node) as $s) {
+        foreach ($subscriptions as $s) {
             $g = new Unsubscribe;
             $g->setTo($origin)
               ->setNode($node)
@@ -177,22 +168,15 @@ class CommunityHeader extends \Movim\Widget\Base
 
     public function prepareHeader($origin, $node)
     {
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
-
-        /*
-        if ($item && !$item->logo) {
-            $item->setPicture();
-            $id->set($item);
-        }
-        */
-        $pd = new \Modl\SubscriptionDAO;
-        $subscription = $pd->get($origin, $node);
-
         $view = $this->tpl();
 
-        $view->assign('info', $info);
-        $view->assign('subscription', $subscription);
+        $view->assign('info', \App\Info::where('server', $origin)
+                                   ->where('node', $node)
+                                   ->first());
+        $view->assign('subscription', $this->user->subscriptions()
+                                           ->where('server', $origin)
+                                           ->where('node', $node)
+                                           ->first());
         $view->assign('node', $node);
         $view->assign('server', $origin);
 

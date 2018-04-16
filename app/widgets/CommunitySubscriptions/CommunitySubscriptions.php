@@ -6,10 +6,6 @@ class CommunitySubscriptions extends \Movim\Widget\Base
 {
     private $_list_server;
 
-    public function load()
-    {
-    }
-
     function checkNewServer($node)
     {
         $r = ($this->_list_server != $node->server);
@@ -19,10 +15,11 @@ class CommunitySubscriptions extends \Movim\Widget\Base
 
     public function prepareSubscriptions()
     {
-        $sd = new \Modl\SubscriptionDAO;
-
         $view = $this->tpl();
-        $view->assign('subscriptions', $sd->getSubscribed());
+        $view->assign('subscriptions', $this->user->subscriptions()
+            ->where('node', 'not like', 'urn:xmpp:microblog:0:comments/%')
+            ->orderBy('server')->orderBy('node')
+            ->get());
         $html = $view->draw('_communitysubscriptions', true);
 
         return $html;

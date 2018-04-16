@@ -2,6 +2,7 @@
 
 use Moxl\Xec\Action\Storage\Set;
 use Respect\Validation\Validator;
+use App\User;
 
 class Config extends \Movim\Widget\Base
 {
@@ -15,13 +16,10 @@ class Config extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        /* We load the user configuration */
-        $sd = new \Modl\SettingDAO;
         $l = Movim\i18n\Locale::start();
 
         $view->assign('languages', $l->getList());
-        $view->assign('me',        $this->user->getLogin());
-        $view->assign('conf',      $sd->get());
+        $view->assign('conf',      User::me());
 
         $view->assign('submit',
             $this->call(
@@ -37,8 +35,9 @@ class Config extends \Movim\Widget\Base
 
     function onConfig($package)
     {
-        $data = (array)$package->content;
-        $this->user->setConfig($data);
+        $me = User::me();
+        $me->setConfig($package->content);
+        $me->save();
 
         $this->refreshConfig();
 

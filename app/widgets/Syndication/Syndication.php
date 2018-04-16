@@ -2,17 +2,9 @@
 
 class Syndication extends \Movim\Widget\Base
 {
-    function load()
-    {
-    }
-
     function display()
     {
         ob_clean();
-
-        $pd = new \Modl\PostnDAO;
-        $cd = new \Modl\ContactDAO;
-        $id = new \Modl\InfoDAO;
 
         if (!$this->get('s')) {
             return;
@@ -23,15 +15,23 @@ class Syndication extends \Movim\Widget\Base
 
         if (filter_var($from, FILTER_VALIDATE_EMAIL)) {
             $node = 'urn:xmpp:microblog:0';
-            $contact = $cd->get($from);
+            $contact = \App\Contact::firstOrNew(['id' => $from]);
         } elseif (!$this->get('n')) {
             return;
         } else {
             $node = $this->get('n');
-            $item = $id->get($from, $node);
+            $item = \App\Info::where('server', $from)
+                             ->where('node', $node)
+                             ->first();
         }
 
-        $messages = $pd->getPublic($from, $node, 0, 20);
+        $posts = \App\Post::where('server', $from)
+                        ->where('node', $node)
+                        ->where('open', true)
+                        ->orderBy('published', 'desc')
+                        ->take(20)
+                        ->get();
+
         header("Content-Type: application/atom+xml; charset=UTF-8");
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -48,10 +48,10 @@ class Syndication extends \Movim\Widget\Base
         $alternate->setAttribute('rel', 'alternate');
 
         if ($contact != null) {
-            $feed->appendChild($dom->createElement('title', __('feed.title', $contact->getTrueName())));
+            $feed->appendChild($dom->createElement('title', __('feed.title', $contact->truename)));
 
             $feed->appendChild($author = $dom->createElement('author'));
-            $author->appendChild($dom->createElement('name', $contact->getTrueName()));
+            $author->appendChild($dom->createElement('name', $contact->truename));
             $author->appendChild($dom->createElement('uri', $this->route('blog', $from)));
 
             $feed->appendChild($dom->createElement('logo', $contact->getPhoto('l')));
@@ -83,62 +83,51 @@ class Syndication extends \Movim\Widget\Base
         $generator->setAttribute('uri', 'https://movim.eu');
         $generator->setAttribute('version', APP_VERSION);
 
-        if (is_array($messages)) {
-            foreach ($messages as $message) {
-                $feed->appendChild($entry = $dom->createElement('entry'));
+        foreach ($posts as $post) {
+            $feed->appendChild($entry = $dom->createElement('entry'));
 
-                if ($message->title) {
-                    $entry->appendChild($dom->createElement('title', $message->title));
-                } else {
-                    $entry->appendChild($dom->createElement('title', __('post.default_title')));
-                }
+            if ($post->title) {
+                $entry->appendChild($dom->createElement('title', $post->title));
+            } else {
+                $entry->appendChild($dom->createElement('title', __('post.default_title')));
+            }
 
-                $entry->appendChild($dom->createElement('id', $message->getUUID()));
-                $entry->appendChild($dom->createElement('updated', date('c', strtotime($message->updated))));
+            $entry->appendChild($dom->createElement('id', $post->getUUID()));
+            $entry->appendChild($dom->createElement('updated', date('c', strtotime($post->updated))));
 
+            $f = $dom->createDocumentFragment();
+
+            if ($f->appendXML($post->contentcleaned)) {
                 $entry->appendChild($content = $dom->createElement('content'));
                 $content->appendChild($div = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'div'));
                 $content->setAttribute('type', 'xhtml');
+                $div->appendChild($f);
+            }
 
-                $f = $dom->createDocumentFragment();
+            foreach ($post->pictures as $value) {
+                $entry->appendChild($link = $dom->createElement('link'));
+                $link->setAttribute('rel', 'enclosure');
+                $link->setAttribute('type', $value->type);
+                $link->setAttribute('href', $value->href);
+            }
 
-                if ($f->appendXML($message->contentcleaned)) {
-                    $div->appendChild($f);
-                }
+            foreach ($attachments['files'] as $value) {
+                $entry->appendChild($link = $dom->createElement('link'));
+                $link->setAttribute('rel', 'enclosure');
+                $link->setAttribute('type', $value->type);
+                $link->setAttribute('href', $value->href);
+            }
 
-                $attachments = $message->getAttachments();
-
-                if (isset($attachments['pictures'])) {
-                    foreach ($attachments['pictures'] as $value) {
-                        $entry->appendChild($link = $dom->createElement('link'));
-                        $link->setAttribute('rel', 'enclosure');
-                        $link->setAttribute('type', $value['type']);
-                        $link->setAttribute('href', $value['href']);
-                    }
-                }
-
-                if (isset($attachments['files'])) {
-                    foreach ($attachments['files'] as $value) {
-                        $entry->appendChild($link = $dom->createElement('link'));
-                        $link->setAttribute('rel', 'enclosure');
-                        $link->setAttribute('type', $value['type']);
-                        $link->setAttribute('href', $value['href']);
-                    }
-                }
-
-                if (isset($attachments['links'])) {
-                    foreach ($attachments['links'] as $value) {
-                        $entry->appendChild($link = $dom->createElement('link'));
-                        $link->setAttribute('rel', 'alternate');
-                        $link->setAttribute('href', $value['href']);
-                    }
-                }
-
+            foreach ($attachments->links as $value) {
                 $entry->appendChild($link = $dom->createElement('link'));
                 $link->setAttribute('rel', 'alternate');
-                $link->setAttribute('type', 'text/html');
-                $link->setAttribute('href', $message->getPublicUrl());
+                $link->setAttribute('href', $value->href);
             }
+
+            $entry->appendChild($link = $dom->createElement('link'));
+            $link->setAttribute('rel', 'alternate');
+            $link->setAttribute('type', 'text/html');
+            $link->setAttribute('href', $post->openlink);
         }
 
         echo $dom->saveXML();

@@ -19,6 +19,8 @@ v0.14 (trunk)
  * Replace movim/sasl with fabiang/sasl
  * Fix several Warnings and Errors
  * Move Pubsub subscriptions to a specific PEP nodes to prevent overwritting by another client
+ * Replace Modl with Eloquent
+ * Fix IPC cleanup when launching the daemon
 
 v0.13
 ---------------------------

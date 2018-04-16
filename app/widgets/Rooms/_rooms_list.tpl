@@ -1,6 +1,5 @@
 <section class="scroll">
     <ul class="list">
-        {$presence = getPresencesTxt()}
         <li class="subheader">
             <p>
                 <span class="info">{$list|count}</span>
@@ -11,13 +10,12 @@
             <li class="{if="$value->last > 60"} inactive{/if}"
                 title="{$value->resource}">
 
-                {$url = $value->getPhoto('s')}
-                {if="$url && $value->jid != $room"}
-                    <span class="primary icon bubble status {$presence[$value->value]}">
+                {if="$value->contactConference && $url = $value->contactConference->getPhoto('s')"}
+                    <span class="primary icon bubble status {$value->presencekey}">
                         <img src="{$url}">
                     </span>
                 {else}
-                    <span class="primary icon bubble color {$value->resource|stringToColor} status {$presence[$value->value]}">
+                    <span class="primary icon bubble color {$value->resource|stringToColor} status {$value->presencekey}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
@@ -34,17 +32,22 @@
                         <i class="zmdi zmdi-star"></i>
                     </span>
                 {/if}
-                {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
-                    <p class="line normal">
+                <p class="line normal">
+                    {if="$value->mucjid && strpos($value->mucjid, '/') == false && !$c->supported('anonymous')"}
                         {if="$value->mucjid == $me"}
                             {$value->resource}
                         {else}
                             <a href="{$c->route('contact', $value->mucjid)}">{$value->resource}</a>
                         {/if}
-                    </p>
-                {else}
-                    <p class="line normal">{$value->resource}</p>
-                {/if}
+                    {else}
+                        {$value->resource}
+                    {/if}
+                    {if="$value->capability"}
+                        <span class="second" title="{$value->capability->name}">
+                            <i class="zmdi {$value->capability->getDeviceIcon()}"></i>
+                        </span>
+                    {/if}
+                </p>
                 {if="$value->status"}
                     <p class="line">{$value->status}</p>
                 {/if}

@@ -3,7 +3,7 @@
 body > nav > ul:nth-child(2) li p.normal,
 body > nav > ul:nth-child(3) li p.normal {
     height: 6rem;
-    line-height: 6.25rem;
+    line-height: 6rem;
 }
 
 body > nav > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
@@ -83,9 +83,3 @@ ul.navigation li > p {
     font-size: 1.5rem;
 }
 
-ul.navigation li > span.counter {
-    right: calc(50% - 3rem);
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    min-width: 1.5rem;
-}

@@ -1,8 +1,6 @@
 <?php
 
 use Respect\Validation\Validator;
-use Modl\PostnDAO;
-use Modl\ContactDAO;
 
 class Search extends \Movim\Widget\Base
 {
@@ -16,12 +14,10 @@ class Search extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('empty', $this->prepareSearch(''));
-
-        $cd = new ContactDAO;
-        $view->assign('contacts', $cd->getRoster());
-        $view->assign('presencestxt', getPresencesTxt());
+        $view->assign('contacts', App\User::me()->session->contacts);
 
         Drawer::fill($view->draw('_search', true), true);
+
         $this->rpc('Search.init');
     }
 
@@ -38,26 +34,48 @@ class Search extends \Movim\Widget\Base
 
             $posts = false;
 
-            if ($this->user->isSupported('pubsub')) {
-                $pd = new PostnDAO;
-                $posts = $pd->search($key);
+            if ($this->user->hasPubsub()) {
+                $posts = \App\Post::whereIn('id', function($query) use ($key) {
+                    $query->select('post_id')
+                          ->from('post_tag')
+                          ->whereIn('tag_id', function($query) use ($key) {
+                            $query->select('id')
+                                  ->from('tags')
+                                  ->where('name', 'like', '%' . strtolower($key) . '%');
+                          });
+                })
+                ->whereIn('id', function($query) {
+                    $query = $query->select('id')->from('posts');
+
+                    $query = \App\Post::withContactsScope($query);
+                    $query = \App\Post::withMineScope($query);
+                    $query = \App\Post::withSubscriptionsScope($query);
+                })
+                ->orderBy('published', 'desc')
+                ->take(6)
+                ->get();
+
+                $view->assign('posts', $posts);
             }
 
-            $view->assign('posts', $posts);
-
-            if (!$posts) $view->assign('empty', true);
+            if ($posts == false) $view->assign('empty', true);
         }
 
         if (!empty($key)) {
-            $cd = new \Modl\ContactDAO;
-            $contacts = $cd->searchJid($key);
-            $view->assign('contacts', $contacts);
+            $contacts = \App\Contact::where('id', function ($query) use ($key) {
+                $query->select('id')
+                      ->from('users')
+                      ->where('public', true)
+                      ->where('id', 'like', '%'. $key . '%');
+            })->limit(5)->get();
 
             if (Validator::email()->validate($key)) {
-                $c = new \Modl\Contact($key);
-                $c->jid = $key;
-                $view->assign('contacts', [$c]);
+                $contact = new \App\Contact;
+                $contact->jid = $key;
+                $contacts->push();
             }
+
+            $view->assign('contacts', $contacts);
         } else {
             $view->assign('contacts', null);
         }
@@ -75,5 +93,10 @@ class Search extends \Movim\Widget\Base
     {
         $contact = new ContactActions;
         $contact->ajaxChat($jid);
+    }
+
+    public function prepareTicket(\App\Post $post)
+    {
+        return (new Post)->prepareTicket($post);
     }
 }

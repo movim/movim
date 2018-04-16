@@ -5,12 +5,12 @@
         </p>
     </li>
 
-    {if="$notifs"}
+    {if="$notifs->isNotEmpty()"}
         {$old = null}
         {loop="$notifs"}
             {$parent = $value->getParent()}
             {if="$parent"}
-                <a href="{$c->route('post', [$value->parentorigin, $value->parentnode, $value->parentnodeid])}">
+                <a href="{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}">
                     <li>
                         {if="$value->isLike()"}
                             <span class="primary icon red small">
@@ -29,7 +29,7 @@
                         </p>
                         <p class="line normal">
                             <span class="info">{$value->published|strtotime|prepareDate:true,true}</span>
-                            {$value->getContact()->getTrueName()}
+                            {$value->truename}
                         </p>
                     </li>
                 </a>

@@ -15,7 +15,11 @@ use Ratchet\WebSocket\WsServer;
 
 use Movim\Daemon\Core;
 use Movim\Daemon\Api;
-use Movim\Bootstrap;
+use App\Configuration;
+
+use Phinx\Migration\Manager;
+use Phinx\Config\Config;
+use Symfony\Component\Console\Output\NullOutput;
 
 use React\EventLoop\Factory;
 use React\Socket\Server as Reactor;
@@ -57,14 +61,13 @@ class DaemonCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $md = \Modl\Modl::getInstance();
-        $infos = $md->check();
+        $config = new Config(require(DOCUMENT_ROOT . '/phinx.php'));
+        $manager = new Manager($config, $input, new NullOutput);
 
-        if ($infos != null) {
-            $output->writeln('<comment>The database needs to be updated before running the daemon</comment>');
-
-            $output->writeln('<info>To update the database run</info>');
-            $output->writeln('<info>php mud.php db --set</info>');
+        if ($manager->printStatus('movim') > 0) {
+            $output->writeln('<comment>The database needs to be migrated before running the daemon</comment>');
+            $output->writeln('<info>To migrate the database run</info>');
+            $output->writeln('<info>php vendor/bin/phinx migrate</info>');
             exit;
         }
 
@@ -77,20 +80,21 @@ class DaemonCommand extends Command
 
         $baseuri = rtrim($input->getOption('url'), '/') . '/';
 
+        $configuration = Configuration::findOrNew(1);
+
+        if (empty($configuration->username) || empty($configuration->password)) {
+            $output->writeln('<comment>Please set a username and password for the admin panel (' . $baseuri . '?admin)</comment>');
+
+            $output->writeln('<info>To set those credentials run</info>');
+            $output->writeln('<info>php daemon.php config --username=USERNAME --password=PASSWORD</info>');
+            exit;
+        }
+
         $output->writeln('<info>Movim daemon launched</info>');
         $output->writeln('<info>Base URL: '.$baseuri.'</info>');
 
         $core = new Core($loop, $baseuri, $input);
         $app  = new HttpServer(new WsServer($core));
-
-        $config = (new \Modl\ConfigDAO)->get();
-
-        if (empty($config->username) || empty($config->password)) {
-            $output->writeln('<comment>Please set a username and password for the admin panel (' . $baseuri . '?admin)</comment>');
-
-            $output->writeln('<info>To set those credentials run</info>');
-            $output->writeln('<info>php mud.php config --username=USERNAME --password=PASSWORD</info>');
-        }
 
         $socket = new Reactor(
             $input->getOption('interface').':'.$input->getOption('port'),

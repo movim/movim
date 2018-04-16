@@ -24,10 +24,8 @@ class Account extends \Movim\Widget\Base
 
     function onRemoved()
     {
-        $md = new Modl\MessageDAO;
-        $md->clearMessage();
-        $pd = new Modl\PostnDAO;
-        $pd->deleteNode($this->user->getLogin(), 'urn:xmpp:microblog:0');
+        $this->user->messages()->delete();
+        \App\Post::restrictToMicroblog()->where('server', $this->user->id)->delete();
         $this->rpc('Presence_ajaxLogout');
     }
 
@@ -133,7 +131,8 @@ class Account extends \Movim\Widget\Base
 
     function display()
     {
-        $id = new \Modl\InfoDAO;
-        $this->view->assign('gateway', $id->getGateways($this->user->getServer()));
+        $this->view->assign('gateway', \App\Info::where('server', $this->user->getServer())
+                                                ->where('category', 'gateway')
+                                                ->get());
     }
 }

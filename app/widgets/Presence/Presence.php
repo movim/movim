@@ -43,8 +43,7 @@ class Presence extends \Movim\Widget\Base
 
     function onMyPresence($packet)
     {
-        $html = $this->preparePresence();
-        $this->rpc('MovimTpl.fill', '#presence_widget', $html);
+        $this->rpc('MovimTpl.fill', '#presence_widget', $this->preparePresence());
         Notification::append(null, $this->__('status.updated'));
     }
 
@@ -62,8 +61,6 @@ class Presence extends \Movim\Widget\Base
         // We refresh the messages
         $c = new Chats;
         $c->ajaxGetHistory();
-
-        $this->ajaxClear();
         $this->onSessionUp();
         $this->ajaxServerCapsGet();
         $this->ajaxBookmarksGet();
@@ -73,18 +70,11 @@ class Presence extends \Movim\Widget\Base
         $this->ajaxProfileRefresh();
     }
 
-    function ajaxClear()
-    {
-        $pd = new \Modl\PresenceDAO;
-        $pd->clearPresence();
-    }
-
     function ajaxLogout()
     {
         $this->rpc('Presence.clearQuick');
 
-        $ed = new \Modl\EncryptedPassDAO;
-        $ed->delete();
+        App\User::me()->encryptedPasswords()->delete();
 
         $session = Session::start();
         $p = new Unavailable;
@@ -111,10 +101,16 @@ class Presence extends \Movim\Widget\Base
 
     function ajaxPubsubSubscriptionsGet()
     {
+        // Private Subscritions
         $session = Session::start();
         $ps = new GetPubsubSubscriptions;
         $ps->setTo($session->get('jid'))
            ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
+           ->request();
+
+        // Public Subscritions
+        $ps = new GetPubsubSubscriptions;
+        $ps->setTo($session->get('jid'))
            ->request();
     }
 
@@ -125,6 +121,9 @@ class Presence extends \Movim\Widget\Base
         $c = new \Moxl\Xec\Action\Disco\Request;
         $c->setTo($session->get('host'))
           ->request();
+
+        $c->setTo($session->get('jid'))
+          ->request();
     }
 
     // We discover the server services
@@ -132,8 +131,6 @@ class Presence extends \Movim\Widget\Base
     {
         $session = Session::start();
         $c = new \Moxl\Xec\Action\Disco\Items;
-        $c->setTo($session->get('jid'))
-          ->request();
 
         $c->setTo($session->get('host'))
           ->request();
@@ -173,9 +170,6 @@ class Presence extends \Movim\Widget\Base
 
     function preparePresence()
     {
-        $cd = new \Modl\ContactDAO;
-        $pd = new \Modl\PresenceDAO;
-
         $session = Session::start();
 
         // If the user is still on a logued-in page after a daemon restart
@@ -184,37 +178,22 @@ class Presence extends \Movim\Widget\Base
             return false;
         }
 
-        $presence = $pd->getPresence($session->get('jid'), $session->get('resource'));
+        $presence = App\User::me()->session->presence;
+        $contact = App\User::me()->contact;
 
         $presencetpl = $this->tpl();
 
-        $contact = $cd->get();
-        if ($contact == null) {
-            $contact = new \Modl\Contact;
-        }
-
-        if ($presence == null) {
-            $presence = new \Modl\Presence;
-        }
-
-        $presencetpl->assign('me', $contact);
-        $presencetpl->assign('presence', $presence);
+        $presencetpl->assign('me', ($contact == null) ? new App\Contact : $contact);
+        $presencetpl->assign('presence', ($presence == null) ? new App\Presence : $presence);
         $presencetpl->assign('presencetxt', getPresencesTxt());
 
-        $html = $presencetpl->draw('_presence', true);
-
-        return $html;
+        return $presencetpl->draw('_presence', true);
     }
 
     function display()
     {
-        $cd = new \Modl\ContactDAO;
-        $contact = $cd->get();
-        if ($contact == null) {
-            $contact = new \Modl\Contact;
-        }
-
-        $this->view->assign('me', $contact);
+        $contact = App\User::me()->contact;
+        $this->view->assign('me', ($contact == null) ? new App\Contact : $contact);
     }
 }
 

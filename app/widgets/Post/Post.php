@@ -22,26 +22,19 @@ class Post extends \Movim\Widget\Base
 
     function onHandle($packet)
     {
-        $content = $packet->content;
+        $post = $packet->content;
 
-        if (is_array($content) && isset($content['nodeid'])) {
-            $pd = new \Modl\PostnDAO;
-            $p  = $pd->get($content['origin'], $content['node'], $content['nodeid']);
-
-            if ($p) {
-                if ($p->isComment()) {
-                    $this->rpc(
-                        'MovimTpl.fill',
-                        '#comments',
-                        $this->prepareComments($p->getParent())
-                    );
-                } else {
-                    $this->rpc('MovimTpl.fill',
-                        '#post_widget.'.cleanupId($p->nodeid),
-                        $this->preparePost($p));
-                    $this->rpc('MovimUtils.enhanceArticlesContent');
-                }
-            }
+        if ($post->isComment()) {
+            $this->rpc(
+                'MovimTpl.fill',
+                '#comments',
+                $this->prepareComments($post->getParent())
+            );
+        } else {
+            $this->rpc('MovimTpl.fill',
+                '#post_widget.'.cleanupId($post->nodeid),
+                $this->preparePost($post));
+            $this->rpc('MovimUtils.enhanceArticlesContent');
         }
     }
 
@@ -52,12 +45,8 @@ class Post extends \Movim\Widget\Base
 
     function onComments($packet)
     {
-        list($server, $node, $id) = array_values($packet->content);
-
-        $pd = new \Modl\PostnDAO;
-        $p = $pd->get($server, $node, $id);
-
-        $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($p));
+        $post = \App\Post::find($packet->content);
+        $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($post));
     }
 
     function onCommentsError($packet)
@@ -78,10 +67,12 @@ class Post extends \Movim\Widget\Base
         $c->ajaxGetDrawer($jid);
     }
 
-    function ajaxGetPost($origin, $node, $id)
+    function ajaxGetPost($server, $node, $nodeid)
     {
-        $pd = new \Modl\PostnDAO;
-        $p  = $pd->get($origin, $node, $id);
+        $p = \App\Post::where('server', $server)
+                      ->where('node', $node)
+                      ->where('nodeid', $nodeid)
+                      ->first();
 
         if ($p) {
             $html = $this->preparePost($p);
@@ -91,21 +82,16 @@ class Post extends \Movim\Widget\Base
 
             // If the post is a reply but we don't have the original
             if ($p->isReply() && !$p->getReply()) {
-                $reply = $p->reply;
-
                 $gi = new GetItem;
-                $gi->setTo($reply['origin'])
-                   ->setNode($reply['node'])
-                   ->setId($reply['nodeid'])
-                   ->setAskReply([
-                        'origin' => $p->origin,
-                        'node' => $p->node,
-                        'nodeid' => $p->nodeid])
+                $gi->setTo($p->replyserver)
+                   ->setNode($p->replynode)
+                   ->setId($p->replynodeid)
+                   ->setAskReply($p->id)
                    ->request();
             }
 
             $gi = new GetItem;
-            $gi->setTo($p->origin)
+            $gi->setTo($p->server)
                ->setNode($p->node)
                ->setId($p->nodeid)
                ->request();
@@ -114,37 +100,31 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function ajaxGetPostComments($origin, $node, $id)
+    function ajaxGetPostComments($server, $node, $id)
     {
-        $pd = new \Modl\PostnDAO;
-        $p  = $pd->get($origin, $node, $id);
+        $post = \App\Post::where('server', $server)
+                         ->where('node', $node)
+                         ->where('nodeid', $id)
+                         ->first();
 
-        if ($p) {
-            $this->requestComments($p);
+        if ($post) {
+            $this->requestComments($post);
         }
     }
 
-    function ajaxShare($origin, $node, $id)
+    function ajaxShare($server, $node, $id)
     {
-        $pd = new \Modl\PostnDAO;
-        $p  = $pd->get($origin, $node, $id);
-
-        if ($p) {
-            $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node, $id, 'share']));
-        }
+        $this->rpc('MovimUtils.redirect', $this->route('publish', [$server, $node, $id, 'share']));
     }
 
-    function requestComments(\Modl\ContactPostn $post)
+    function requestComments(\App\Post $post)
     {
-        $pd = new \Modl\PostnDAO;
-        $pd->deleteNode($post->commentorigin, "urn:xmpp:microblog:0:comments/".$post->commentnodeid);
+        \App\Post::where('parent_id', $post->id)->delete();
 
         $c = new CommentsGet;
-        $c->setTo($post->commentorigin)
+        $c->setTo($post->commentserver)
           ->setId($post->commentnodeid)
-          ->setParentOrigin($post->origin)
-          ->setParentNode($post->node)
-          ->setParentNodeId($post->nodeid)
+          ->setParentId($post->id)
           ->request();
     }
 
@@ -153,18 +133,18 @@ class Post extends \Movim\Widget\Base
         if (!Validator::stringType()->notEmpty()->validate($comment)
         || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)) return;
 
-        $pd = new \Modl\PostnDAO;
-        $p = $pd->get($to, $node, $id);
+        $p = \App\Post::where('server', $to)
+                      ->where('node', $node)
+                      ->where('nodeid', $id)
+                      ->first();
 
         if ($p) {
             $cp = new CommentPublish;
-            $cp->setTo($p->commentorigin)
+            $cp->setTo($p->commentserver)
                ->setFrom($this->user->getLogin())
-               ->setParentId($p->commentnodeid)
+               ->setCommentNodeId($p->commentnodeid)
                ->setTitle(htmlspecialchars(rawurldecode($comment)))
-               ->setParentOrigin($p->origin)
-               ->setParentNode($p->node)
-               ->setParentNodeId($p->nodeid)
+               ->setParentId($p->id)
                ->request();
         }
     }
@@ -178,66 +158,25 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    public function prepareComments($post)
+    public function prepareComments(\App\Post $post)
     {
-        if ($post == null) return;
-
         $emoji = \MovimEmoji::getInstance();
-
-        $comments = $post->getComments();
-
-        $likes = [];
-        foreach ($comments as $key => $comment) {
-            if ($comment->isLike()) {
-                $likes[] = $comment;
-                unset($comments[$key]);
-            }
-        }
-
         $view = $this->tpl();
         $view->assign('post', $post);
-        $view->assign('comments', $comments);
-        $view->assign('likes', $likes);
         $view->assign('hearth', $emoji->replace('♥'));
 
         return $view->draw('_post_comments', true);
     }
 
-    public function prepareEmpty()
-    {
-        $nd = new \Modl\PostnDAO;
-        $cd = new \Modl\ContactDAO;
-
-        $view = $this->tpl();
-
-        $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('top', $cd->getTop(6));
-        $view->assign('blogs', $nd->getLastBlogPublic(0, 8));
-        $view->assign('posts', $nd->getLastPublished(false, false, 0, 6));
-        $view->assign('me', $cd->get($this->user->getLogin()), true);
-        $view->assign('jid', $this->user->getLogin());
-
-        return $view->draw('_post_empty', true);
-    }
-
     function prepareNotFound()
     {
-        $nd = new \Modl\PostnDAO;
-
         $view = $this->tpl();
-
-        $view->assign('presencestxt', getPresencesTxt());
-        $view->assign('blogs', $nd->getLastBlogPublic(0, 8));
-        $view->assign('posts', $nd->getLastPublished(false, false, 0, 6));
-        $view->assign('jid', $this->user->getLogin());
-
         return $view->draw('_post_not_found', true);
     }
 
-    function preparePost($p, $external = false, $public = false, $card = false)
+    function preparePost(\App\Post $p, $external = false, $public = false, $card = false)
     {
         $view = $this->tpl();
-
         $view->assign('external', $external);
 
         if (isset($p)) {
@@ -252,42 +191,56 @@ class Post extends \Movim\Widget\Base
 
             $view->assign('repost', false);
 
-            $view->assign('prevnext', '');
-            $view->assign('comments', '');
-
-            if (!$external) {
-                $prevnext = $this->tpl();
-                $prevnext->assign('next', $p->getNext());
-                $prevnext->assign('previous', $p->getPrevious());
-                $view->assign('prevnext', $prevnext->draw('_post_prevnext', true));
-            } else {
-                $comments = $this->tpl();
-                $comments->assign('comments', $p->getComments());
-                $view->assign('comments', $comments->draw('_post_comments_external', true));
-            }
+            $comments = $this->tpl();
             $view->assign('public', $public);
-
             $view->assign('reply', $p->isReply() ? $p->getReply() : false);
 
             // Is it a repost ?
             if ($p->isRecycled()) {
-                $cd = new \Modl\ContactDAO;
-                $view->assign('repost', $cd->get($p->origin));
+                $view->assign('repost', \App\Contact::find($p->server));
             }
 
-            $view->assign('nsfw', $this->user->getConfig('nsfw'));
-
+            $view->assign('nsfw', \App\User::me()->nsfw);
             $view->assign('post', $p);
-            $view->assign('attachments', $p->getAttachments());
 
-            if ($card) {
-                return $view->draw('_post_card', true);
-            }
-
-            return $view->draw('_post', true);
+            return ($card)
+                ? $view->draw('_post_card', true)
+                : $view->draw('_post', true);
         } elseif (!$external) {
-            return $this->prepareEmpty();
+            return $this->prepareNotFound();
         }
+    }
+
+    function prepareTicket(\App\Post $post, $large = false)
+    {
+        $view = $this->tpl();
+        $view->assign('post', $post);
+        $view->assign('large', $large);
+
+        return $view->draw('_post_ticket', true);
+    }
+
+    public function preparePostLinks(\App\Post $post)
+    {
+        $view = $this->tpl();
+        $view->assign('post', $post);
+        return $view->draw('_post_links', true);
+    }
+
+    public function preparePostReply(\App\Post $post)
+    {
+        if (!$post->isReply()) return '';
+
+        $view = $this->tpl();
+        $view->assign('reply', $post->getReply());
+        return $view->draw('_post_reply', true);
+    }
+
+    public function preparePreviousNext(\App\Post $post)
+    {
+        $view = $this->tpl();
+        $view->assign('post', $post);
+        return $view->draw('_post_prevnext', true);
     }
 
     function display()

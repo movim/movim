@@ -35,28 +35,31 @@ class CommunityAffiliations extends \Movim\Widget\Base
             }
         }
 
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
-
-        $ssd = new \Modl\SharedSubscriptionDAO;
-
         $view = $this->tpl();
         $view->assign('role', $role);
-        $view->assign('info', $info);
+        $view->assign('info', \App\Info::where('server', $origin)
+                                       ->where('node', $node)
+                                       ->first());
         $view->assign('affiliations', $affiliations);
-        $view->assign('subscriptions', $ssd->getAll($origin, $node));
+        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+                ->where('node', $node)
+                ->where('public', true)
+                ->get());
 
-        $this->rpc('MovimTpl.fill', '#community_affiliation', $view->draw('_communityaffiliations', true));
+        $this->rpc(
+            'MovimTpl.fill',
+            '#community_affiliation',
+            $view->draw('_communityaffiliations', true)
+        );
 
         // If the configuration is open, we fill it
         $view = $this->tpl();
 
-        $cd = new \Modl\CapsDAO;
-        $sd = new \Modl\SubscriptionDAO;
+        $caps = App\Capability::find($origin);
 
-        $caps = $cd->get($origin);
-
-        $view->assign('subscriptions', $sd->getAll($origin, $node));
+        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+                ->where('node', $node)
+                ->get());
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
@@ -79,10 +82,11 @@ class CommunityAffiliations extends \Movim\Widget\Base
     {
         list($subscriptions, $origin, $node) = array_values($packet->content);
 
-        $sd = new \Modl\SubscriptionDAO;
         $view = $this->tpl();
 
-        $view->assign('subscriptions', $sd->getAll($origin, $node));
+        $view->assign('subscriptions', \App\Subscription::where('server', $origin)
+                ->where('node', $node)
+                ->get());
         $view->assign('server', $origin);
         $view->assign('node', $node);
 
@@ -120,8 +124,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     function getContact($jid)
     {
-        $cd = new \Modl\ContactDAO;
-        return $cd->get($jid);
+        return \App\Contact::firstOrNew(['id' => $jid]);
     }
 
     function ajaxGetAffiliations($origin, $node)
@@ -160,6 +163,8 @@ class CommunityAffiliations extends \Movim\Widget\Base
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
+        (new CommunityHeader)->ajaxUnsubscribe($origin, $node);
+
         $d = new Delete;
         $d->setTo($origin)->setNode($node)
           ->request();
@@ -180,9 +185,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
-        $cd = new \Modl\CapsDAO;
-
-        if (Validator::in($cd->get($origin)->getPubsubRoles())->validate($form->role->value)
+        if (Validator::in(\App\Capability::find($origin)->getPubsubRoles())->validate($form->role->value)
         && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
             $sa->setTo($origin)

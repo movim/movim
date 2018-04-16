@@ -14,7 +14,7 @@
                     </span>
                 {else}
                     <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                        {$contact->getTrueName()|firstLetterCapitalize}
+                        {$contact->truename|firstLetterCapitalize}
                     </span>
                 {/if}
                 <form name="{$contact->jid}">
@@ -41,7 +41,7 @@
                             </select>
                         </div>
                         {/if}
-                        <label for="role">{$contact->getTrueName()} role</label>
+                        <label for="role">{$contact->truename} role</label>
                     </div>
                 </form>
             </li>

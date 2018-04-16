@@ -31,12 +31,10 @@ class Caps extends \Movim\Widget\Base
 
     function display()
     {
-        $cd = new \modl\CapsDAO;
-        $clients = $cd->getClients();
-
+        $clients = App\Capability::where('category', 'client')->orderBy('name')->get();
         $oldname = '';
 
-        foreach (array_reverse($clients) as $c) {
+        foreach ($clients as $c) {
             $clientname = reset(explode(
                     '#',
                     reset(explode(' ', $c->name))

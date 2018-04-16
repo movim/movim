@@ -14,6 +14,7 @@ class Base
     protected $ajax;        // Contains ajax client code
     protected $user;
     protected $name;
+
     protected $pure;        // To render the widget without the container
 
     protected $_view;
@@ -33,9 +34,10 @@ class Base
     {
         if ($view != null) $this->_view = $view;
 
-        $this->user = new User;
+        //$this->user = new User;
         $this->load();
 
+        $this->user = \App\User::me();
         $this->name = get_class($this);
 
         // If light loading enabled, we stop here
@@ -105,7 +107,7 @@ class Base
 
     function supported($key)
     {
-        return $this->user->isSupported($key);
+        return false;
     }
 
     function route(...$args)
@@ -274,8 +276,6 @@ class Base
     {
         if (isset($_GET[$name])) {
             return htmlentities($_GET[$name]);
-        } else {
-            return false;
         }
     }
 

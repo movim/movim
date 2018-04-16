@@ -30,15 +30,14 @@
             <span class="primary icon bubble color orange"><i class="zmdi zmdi-archive"></i></span>
             <p>{$c->__('about.software')}</p>
             <p class="all">
-               Modl - Movim DB Layer - <a href="https://github.com/edhelas/modl">GitHub Modl</a> under AGPLv3<br/>
                Moxl - Movim XMPP Library - <a href="https://github.com/edhelas/moxl">GitHub Moxl</a> under AGPLv3<br/>
 
-               Chart.js - Nick Downie <a href="http://www.chartjs.org/">chart.js</a> under MIT<br/>
                Favico.js - Miroslav Magda <a href="http://lab.ejci.net/favico.js/">lab.ejci.net/favico.js</a> under GPL and MIT<br/>
                Markdown - Michel Fortin <a href="http://michelf.ca/projects/php-markdown/">michelf.ca</a> ©Michel Fortin<br/>
                Template Engine - RainTPL - Federico Ulfo <a href="http://www.raintpl.com/">www.raintpl.com</a> under MIT<br/>
                Embed - Oscar Otero <a href="https://github.com/oscarotero/Embed">GitHub Embed</a> under MIT<br/>
                Emoji - <a href="https://github.com/tompedals">Tom Graham</a> <a href="https://github.com/heyupdate/Emoji">GitHub HeyUpdate Emoji</a> under MIT<br/><br />
+               Database engine - Eloquent - <a href="https://github.com/illuminate/database">Illuminate/Database</a> under MIT<br/>
                WebSocket and Daemon engine - ReactPHP -  <a href="http://socketo.me/">socketo.me</a> ©Chris Boden<br/>
             </p>
         </li>

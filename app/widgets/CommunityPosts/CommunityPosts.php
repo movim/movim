@@ -6,6 +6,7 @@ use Moxl\Xec\Action\Pubsub\Delete;
 
 use Respect\Validation\Validator;
 use Cocur\Slugify\Slugify;
+use App\User;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
@@ -23,12 +24,6 @@ class CommunityPosts extends \Movim\Widget\Base
         $this->addjs('communityposts.js');
     }
 
-    /*function onItems($packet)
-    {
-        list($origin, $node) = array_values($packet->content);
-        $this->displayItems($origin, $node);
-    }*/
-
     function onItemsId($packet)
     {
         list($origin, $node, $ids, $first, $last, $count, $paginated)
@@ -42,14 +37,15 @@ class CommunityPosts extends \Movim\Widget\Base
         list($origin, $node) = array_values($packet->content);
 
         if ($node != 'urn:xmpp:microblog:0') {
-            $sd = new \Modl\SubscriptionDAO;
-
-            if ($sd->get($origin, $node)) {
+            if ($this->user->subscriptions()
+                           ->where('server', $origin)
+                           ->where('node', $node)
+                           ->first())
+            {
                 $this->rpc('CommunityAffiliations_ajaxDelete', $origin, $node, true);
                 $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $origin, $node);
             } else {
-                $id = new \Modl\InfoDAO;
-                $id->delete($origin, $node);
+                \App\Info::where('server', $origin)->where('node', $node)->delete();
                 $this->ajaxClear();
             }
         } else {
@@ -111,13 +107,8 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function prepareEmpty()
     {
-        $id = new \Modl\InfoDAO;
-
         $view = $this->tpl();
-        $view->assign('servers', $id->getCommunitiesServers());
-        $html = $view->draw('_communityposts_empty', true);
-
-        return $html;
+        return $view->draw('_communityposts_empty', true);
     }
 
     public function preparePost($p)
@@ -135,8 +126,6 @@ class CommunityPosts extends \Movim\Widget\Base
         $last = false,
         $count = false)
     {
-        $pd = new \Modl\PostnDAO;
-
         $ids = is_array($ids) ? $ids : [];
         foreach($ids as $key => $id) {
             if (empty($id)) {
@@ -144,31 +133,24 @@ class CommunityPosts extends \Movim\Widget\Base
             }
         }
 
-        $posts = $pd->getIds($origin, $node, $ids);
-
-        $id = new \Modl\InfoDAO;
-        $info = $id->get($origin, $node);
-
-        $sd = new \Modl\SubscriptionDAO;
-        $subscription = $sd->get($origin, $node);
+        $posts = \App\Post::where('server', $origin)->where('node', $node)
+                          ->whereIn('nodeid', $ids)->get();
 
         $nsfwMessage = false;
 
-        if ($this->user->getConfig('nsfw') == false
-        && is_array($posts)) {
+        if ($this->user->nsfw == false) {
             foreach ($posts as $key => $post) {
                 if ($post->nsfw) {
-                    unset($posts[$key]);
+                    $posts->forget($key);
                     $nsfwMessage = true;
                 }
             }
         }
 
-        if (is_array($posts)) {
-            foreach ($posts as $key => $post) {
-                $posts[$post->nodeid] = $post;
-                unset($posts[$key]);
-            }
+        $postsWithKeys = [];
+
+        foreach ($posts as $key => $post) {
+            $postsWithKeys[$post->nodeid] = $post;
         }
 
         $view = $this->tpl();
@@ -186,13 +168,27 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('node', $node);
         $view->assign('page', $page);
         $view->assign('ids', $ids);
-        $view->assign('posts', $posts);
-        $view->assign('info', $info);
-        $view->assign('subscription', $subscription);
+        $view->assign('posts', $postsWithKeys);
+        $view->assign('info', \App\Info::where('server', $origin)
+                                       ->where('node', $node)
+                                       ->first());
+        $view->assign('subscription', $this->user->subscriptions()
+                                           ->where('server', $origin)
+                                           ->where('node', $node)
+                                           ->first());
         $view->assign('paging', $this->_paging);
 
         $view->assign('publicposts', ($ids == false)
-            ? $pd->getPublic($origin, $node, $page*$this->_paging, $this->_paging)
+            ? \App\Post::where('server', $origin)
+                       ->where('node', $node)
+                       ->where(function ($query) {
+                            $query->where('nsfw', $this->user->nsfw)
+                                  ->orWhere('nsfw', false);
+                       })
+                       ->orderBy('published', 'desc')
+                       ->skip($page * $this->_paging)
+                       ->take($this->_paging)
+                       ->get()
             : false);
 
         $view->assign('first', $first);
@@ -211,12 +207,6 @@ class CommunityPosts extends \Movim\Widget\Base
 
         return ($validate_server->validate($origin)
              && $validate_node->validate($node));
-    }
-
-    function getComments($post)
-    {
-        $pd = new \Modl\PostnDAO;
-        return $pd->getComments($post);
     }
 
     function display()

@@ -1,5 +1,7 @@
 <?php
+
 use Movim\Controller\Base;
+use App\Configuration;
 
 class AdminloginController extends Base
 {
@@ -12,13 +14,12 @@ class AdminloginController extends Base
     {
         $this->page->setTitle(__('page.administration'));
 
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $configuration = Configuration::findOrNew(1);
 
         if (isset($_POST['username'])
-        && $config->username == $_POST['username']
-        && (password_verify($_POST['password'], $config->password)
-            || $config->password == sha1($_POST['password']))) {
+        && $configuration->username == $_POST['username']
+        && (password_verify($_POST['password'], $configuration->password)
+            || $configuration->password == sha1($_POST['password']))) {
             $_SESSION['admin'] = true;
             $this->name = 'admin';
         }

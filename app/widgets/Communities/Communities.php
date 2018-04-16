@@ -1,6 +1,9 @@
 <?php
 
 use Respect\Validation\Validator;
+use App\Configuration;
+
+include_once WIDGETS_PATH . 'Post/Post.php';
 
 class Communities extends \Movim\Widget\Base
 {
@@ -17,24 +20,23 @@ class Communities extends \Movim\Widget\Base
 
     function prepareCommunities()
     {
-        $id = new \Modl\InfoDAO;
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
-
         $view = $this->tpl();
-        $view->assign('communities', $id->getItems(
-            false,
-            0,
-            40,
-            true, ($config->restrictsuggestions == true) ? $this->user->getServer() : false
-        ));
+
+        $posts = \App\Post::withoutComments()
+            ->restrictToCommunities()
+            ->restrictNSFW()
+            ->orderBy('published', 'desc')
+            ->where('open', true)
+            ->take(40)
+            ->get();
+
+        $view->assign('posts', $posts);
 
         return $view->draw('_communities', true);
     }
 
-    function getLastPublic($server, $node)
+    public function prepareTicket(\App\Post $post)
     {
-        $pd = new \Modl\PostnDAO;
-        return $pd->getPublic($server, $node, 0, 1)[0];
+        return (new \Post)->prepareTicket($post);
     }
 }

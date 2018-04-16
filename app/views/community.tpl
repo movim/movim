@@ -27,7 +27,7 @@
                 <?php $this->widget('Tabs');?>
                 <?php $this->widget('Communities'); ?>
                 <?php $this->widget('CommunitiesServers'); ?>
-                <?php if ($this->user->isSupported('pubsub')) { ?>
+                <?php if (\App\User::me()->hasPubsub()) { ?>
                     <?php $this->widget('CommunitySubscriptions'); ?>
                 <?php } ?>
             </div>

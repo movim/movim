@@ -113,14 +113,6 @@ body > nav li { /* Little hack for the navbar */
     }
 }
 
-body > nav li span.counter {
-    left: 3.5rem;
-    top: calc(50% - 1.25rem);
-    right: auto;
-    font-size: 1.75rem;
-    padding: 0.25rem;
-}
-
 @media screen and (min-width: 1680px) {
     body > nav,
     body > nav:hover {

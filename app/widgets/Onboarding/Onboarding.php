@@ -20,7 +20,7 @@ class Onboarding extends \Movim\Widget\Base
         $tpl = $this->tpl();
         $this->rpc('Onboarding.setPublic');
 
-        if (!\Modl\Privacy::exists($this->user->getLogin())) {
+        if (App\User::me()->public == null) {
             Dialog::fill($tpl->draw('_onboarding_public', true));
         }
     }
@@ -34,7 +34,7 @@ class Onboarding extends \Movim\Widget\Base
 
     public function ajaxEnablePublic()
     {
-        \Modl\Privacy::set($this->user->getLogin(), 1);
+        App\User::me()->setPublic();
         Notification::append(null, $this->__('vcard.public'));
     }
 }

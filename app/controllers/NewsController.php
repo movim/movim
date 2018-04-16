@@ -14,25 +14,21 @@ class NewsController extends Base
     {
         $this->page->setTitle(__('page.news'));
 
-        $user = new User;
-
-        if (!$user->isSupported('pubsub')) {
+        if (!\App\User::me()->hasPubsub()) {
             $this->redirect('contact');
         }
 
-        if (!$user->isLogged()) {
-            $pd = new \Modl\PostnDAO;
-            $p  = $pd->get(
-                $this->fetchGet('s'),
-                $this->fetchGet('n'),
-                $this->fetchGet('i')
-            );
+        if (!\App\User::me()->isLogged()) {
+            $p = \App\Post::where('server', $this->fetchGet('s'))
+                          ->where('node', $this->fetchGet('n'))
+                          ->where('nodeid', $this->fetchGet('i'))
+                          ->first();
 
             if ($p) {
                 if ($p->isMicroblog()) {
-                    $this->redirect('blog', [$p->origin, $p->nodeid]);
+                    $this->redirect('blog', [$p->server, $p->nodeid]);
                 } else {
-                    $this->redirect('node', [$p->origin, $p->node, $p->nodeid]);
+                    $this->redirect('node', [$p->server, $p->node, $p->nodeid]);
                 }
             } else {
                 $this->redirect('login');

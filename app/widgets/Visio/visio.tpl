@@ -25,7 +25,7 @@
             {/if}
 
             <p class="normal center	">
-                {$contact->getTrueName()}
+                {$contact->truename}
             </p>
             <p class="normal state center"></p>
         </li>

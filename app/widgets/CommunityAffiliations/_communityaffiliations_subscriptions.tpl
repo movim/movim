@@ -1,7 +1,10 @@
 <section class="scroll">
-    <ul class="list thin">
+    <ul class="list">
         <li class="subheader">
-            <p><span class="info">{$subscriptions|count}</span>{$c->__('communityaffiliation.subscriptions')}</p>
+            <p>
+                <span class="info">{$subscriptions|count}</span>
+                {$c->__('communityaffiliation.subscriptions')}
+            </p>
         </li>
         {loop="$subscriptions"}
             {$contact = $c->getContact($value->jid)}
@@ -13,12 +16,12 @@
                     </span>
                 {else}
                     <span class="primary icon bubble color {$contact->jid|stringToColor}">
-                        {$contact->getTrueName()|firstLetterCapitalize}
+                        {$contact->truename|firstLetterCapitalize}
                     </span>
                 {/if}
                 <p class="normal line">
                     <a href="{$c->route('contact', $value->jid)}">
-                        {$contact->getTrueName()}
+                        {$contact->truename}
                     </a>
                 </p>
                 <p>

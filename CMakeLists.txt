@@ -23,7 +23,7 @@ install(DIRECTORY "locales"    DESTINATION "/var/lib/${CMAKE_PROJECT_NAME}")
 install(DIRECTORY "themes"     DESTINATION "/var/lib/${CMAKE_PROJECT_NAME}")
 install(DIRECTORY "vendor"     DESTINATION "/var/lib/${CMAKE_PROJECT_NAME}" REGEX ".git" EXCLUDE)
 
-install(FILES index.php bootstrap.php daemon.php linker.php mud.php composer.json "VERSION" DESTINATION "/usr/share/${CMAKE_PROJECT_NAME}")
+install(FILES index.php bootstrap.php daemon.php linker.php composer.json "VERSION" DESTINATION "/usr/share/${CMAKE_PROJECT_NAME}")
 install(FILES "config/db.example.inc.php" DESTINATION "/etc/${CMAKE_PROJECT_NAME}")
 
 # package settings

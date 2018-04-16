@@ -5,7 +5,7 @@ use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 
 use Movim\Session;
-use Movim\Cache;
+use App\Cache;
 
 use Respect\Validation\Validator;
 use Michelf\MarkdownExtra;
@@ -77,12 +77,12 @@ class PublishBrief extends \Movim\Widget\Base
 
     function ajaxSaveDraft($form)
     {
-        $p = new \Modl\Postn;
+        $p = new \App\Post;
         $p->title = $form->title->value;
         $p->content = $form->content->value;
 
         if (Validator::notEmpty()->url()->validate($form->embed->value)) {
-            array_push($p->links, $form->embed->value);
+            $p->link = $form->embed->value;
         }
 
         Cache::c('draft', $p);
@@ -120,8 +120,7 @@ class PublishBrief extends \Movim\Widget\Base
               ->setTitle(htmlspecialchars($form->title->value))
               ->setNode($form->node->value);
 
-            $cd = new \Modl\CapsDAO;
-            $comments = $cd->getComments($this->user->getServer());
+            $comments = App\User::me()->session->getCommentsService();
 
             $tags = [];
             $tagsTitle = getHashtags(htmlspecialchars($form->title->value));
@@ -149,8 +148,10 @@ class PublishBrief extends \Movim\Widget\Base
             if (Validator::stringType()->notEmpty()->validate(trim($form->id->value))) {
                 $p->setId($form->id->value);
 
-                $pd = new \Modl\PostnDAO;
-                $post = $pd->get($form->to->value, $form->node->value, $form->id->value);
+                $post = \App\Post::where('server', $form->to->value)
+                                 ->where('node', $form->node->value)
+                                 ->where('nodeid', $form->id->value)
+                                 ->first();
 
                 if (isset($post)) {
                     $p->setPublished(strtotime($post->published));
@@ -181,17 +182,16 @@ class PublishBrief extends \Movim\Widget\Base
             }
 
             if ($form->reply->value) {
-                $pd = new \Modl\PostnDAO;
-                $post = $pd->get($form->replyorigin->value,
-                                 $form->replynode->value,
-                                 $form->replynodeid->value);
+                $post = \App\Post::where('server', $form->replyserver->value)
+                                 ->where('node', $form->replynode->value)
+                                 ->where('nodeid', $form->replynodeid->value)
+                                 ->first();
                 $p->setReply($post->getRef());
             }
 
             if (Validator::notEmpty()->url()->validate($form->embed->value)) {
                 try {
-                    $murl = new \Modl\Url;
-                    $embed = $murl->resolve($form->embed->value);
+                    $embed = \App\Url::resolve($form->embed->value);
                     $p->setLink($form->embed->value);
 
                     $imagenumber = $form->imagenumber->value;
@@ -243,8 +243,7 @@ class PublishBrief extends \Movim\Widget\Base
         $this->rpc('Dialog_ajaxClear');
 
         try {
-            $murl = new \Modl\Url;
-            $embed = $murl->resolve($url);
+            $embed = \App\Url::resolve($url);
             $this->rpc('MovimTpl.fill', '#publishbrief ul.embed', $this->prepareEmbed($embed, $imagenumber));
             if ($embed->type == 'link') {
                 $this->rpc('PublishBrief.setTitle', $embed->title);
@@ -258,8 +257,7 @@ class PublishBrief extends \Movim\Widget\Base
     {
         try {
             $view = $this->tpl();
-            $murl = new \Modl\Url;
-            $view->assign('embed', $murl->resolve($url));
+            $view->assign('embed', \App\Url::resolve($url));
             Drawer::fill($view->draw('_publishbrief_images', true), true);
         } catch(Exception $e) {
             error_log($e->getMessage());
@@ -277,13 +275,6 @@ class PublishBrief extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         return $view->draw('_publishbrief_embed_default', true);
-    }
-
-    function prepareReply($reply)
-    {
-        $view = $this->tpl();
-        $view->assign('reply', $reply);
-        return $view->draw('_publishbrief_reply', true);
     }
 
     function prepareEmbed($embed, $imagenumber = 0)
@@ -311,8 +302,10 @@ class PublishBrief extends \Movim\Widget\Base
         $view = $this->tpl();
 
         if ($id) {
-            $pd = new \Modl\PostnDAO;
-            $p = $pd->get($server, $node, $id);
+            $p = \App\Post::where('server', $server)
+                          ->where('node', $node)
+                          ->where('nodeid', $id)
+                          ->first();
 
             if ($p) {
                 if ($p->isEditable() && !$reply) {
@@ -336,7 +329,7 @@ class PublishBrief extends \Movim\Widget\Base
             $view->assign('node', 'urn:xmpp:microblog:0');
             $view->assign('item', $post);
             $view->assign('reply', $reply);
-            $view->assign('replyblock', $this->prepareReply($reply));
+            $view->assign('replyblock', (new \Post)->prepareTicket($reply, true));
         } else {
             $view->assign('to', $server);
             $view->assign('node', $node);

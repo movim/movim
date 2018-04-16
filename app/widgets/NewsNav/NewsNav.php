@@ -1,42 +1,41 @@
 <?php
 
-class NewsNav extends \Movim\Widget\Base
-{
-    public function load()
-    {
-    }
+use App\Configuration;
+use Movim\Widget\Base;
 
+include_once WIDGETS_PATH . 'Post/Post.php';
+
+class NewsNav extends Base
+{
     public function display()
     {
-        $nd = new \Modl\PostnDAO;
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
-
-        $blogs = $nd->getLastBlogPublic(
-            rand(0, 5),
-            5,
-            ($config->restrictsuggestions == true) ? $this->user->getServer() : false
-        );
-        $blogs = is_array($blogs) ? $blogs : [];
-
-        shuffle($blogs);
+        $blogs = \App\Post::where('open', true)
+                          ->orderBy('published', 'desc')
+                          ->restrictToMicroblog()
+                          ->restrictUserHost()
+                          ->restrictNSFW()
+                          ->take(6)
+                          ->get()
+                          ->shuffle();
 
         $this->view->assign('blogs', $blogs);
 
-        $origin = ($this->get('s') && $this->get('s') != 'subscriptions') ?
-            $this->get('s') : false;
+        $posts = \App\Post::where('open', true)
+                          ->orderBy('published', 'desc')
+                          ->restrictToCommunities()
+                          ->restrictUserHost()
+                          ->restrictNSFW()
+                          ->take(6);
 
-        $posts = $nd->getLastPublished(
-            $origin,
-            0,
-            6,
-            ($config->restrictsuggestions == true) ? $this->user->getServer() : false
-        );
+        if ($this->get('s') && $this->get('s') != 'subscriptions') {
+            $posts->where('server', $this->get('s'));
+        }
 
-        $posts = is_array($posts) ? $posts : [];
+        $this->view->assign('posts', $posts->get()->shuffle());
+    }
 
-        shuffle($posts);
-
-        $this->view->assign('posts', $posts);
+    public function prepareTicket(\App\Post $post)
+    {
+        return (new \Post)->prepareTicket($post);
     }
 }

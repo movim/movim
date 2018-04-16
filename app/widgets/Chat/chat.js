@@ -281,7 +281,7 @@ var Chat = {
         var firstMessage = page[firstKey][firstMessageKey];
         if (firstMessage == null) return false;
 
-        var contactJid = firstMessage.session == firstMessage.jidfrom
+        var contactJid = firstMessage.user_id == firstMessage.jidfrom
             ? firstMessage.jidto
             : firstMessage.jidfrom;
 
@@ -373,15 +373,15 @@ var Chat = {
 
         if (msgStack != null
             && msgStack.parentNode == refBubble
-            && data.file === null
-            && data.sticker === null
+            && (data.file === undefined || data.file === null)
+            && (data.sticker === undefined || data.sticker === null)
             && !refBubble.querySelector('div.bubble').classList.contains('sticker')
             && !refBubble.querySelector('div.bubble').classList.contains('file')
         ){
             bubble = msgStack.parentNode;
             mergeMsg = true;
         } else {
-            if (data.session == data.jidfrom
+            if (data.user_id == data.jidfrom
             || data.mine) {
                 bubble = Chat.right.cloneNode(true);
                 if (data.mine) {
@@ -429,9 +429,9 @@ var Chat = {
 
         if (data.id != null) {
             msg.setAttribute("id", data.id);
-            if (data.newid != null) {
+            /*if (data.newid != null) {
                 msg.setAttribute("id", data.newid);
-            }
+            }*/
         }
 
         if (data.sticker != null) {
@@ -453,7 +453,7 @@ var Chat = {
             span.appendChild(Chat.getEditedIcoHtml());
         }
 
-        if (data.session == data.jidfrom) {
+        if (data.user_id == data.jidfrom) {
             if (data.displayed) {
                 span.appendChild(Chat.getDisplayedIcoHtml(data.displayed));
             } else if (data.delivered) {
@@ -464,7 +464,11 @@ var Chat = {
         msg.appendChild(p);
         msg.appendChild(span);
 
-        var elem = document.getElementById(data.id);
+        var elem = document.getElementById(data.oldid);
+        if (!elem) {
+            elem = document.getElementById(data.id);
+        }
+
         if (elem) {
             elem.parentElement.replaceChild(msg, elem);
             mergeMsg = true;

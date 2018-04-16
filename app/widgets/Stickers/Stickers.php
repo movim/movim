@@ -57,10 +57,10 @@ class Stickers extends \Movim\Widget\Base
         }
 
         // Creating a message
-        $m = new \Modl\Message;
-        $m->session = $this->user->getLogin();
+        $m = new \App\Message;
+        $m->user_id = $this->user->id;
         $m->jidto   = echapJid($to);
-        $m->jidfrom = $this->user->getLogin();
+        $m->jidfrom = $this->user->id;
         $m->sticker = $key;
         $m->body    = $this->__('sticker.sent');
 
@@ -87,8 +87,7 @@ class Stickers extends \Movim\Widget\Base
 
         $p->request();
 
-        $md = new \Modl\MessageDAO;
-        $md->set($m);
+        $m->save();
 
         // Sending it to Chat
         $packet = new Moxl\Xec\Payload\Packet;

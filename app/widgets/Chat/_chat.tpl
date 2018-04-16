@@ -1,6 +1,5 @@
 <header class="fixed">
     {if="$muc"}
-        {$connected = $conference->checkConnected()}
     <ul class="list middle">
         <li>
             <span id="back" class="primary icon active"
@@ -29,7 +28,7 @@
                 </span>
             {/if}
 
-            <span class="control icon show_context_menu active {if="!$connected"}disabled{/if}">
+            <span class="control icon show_context_menu active {if="!$conference->connected"}disabled{/if}">
                 <i class="zmdi zmdi-more-vert"></i>
             </span>
 
@@ -41,7 +40,7 @@
             </span>
 
             <span
-                class="control icon active {if="!$connected"}disabled{/if}"
+                class="control icon active {if="!$conference->connected"}disabled{/if}"
                 onclick="Rooms_ajaxList('{$jid|echapJS}')">
                 <i class="zmdi zmdi-accounts"></i>
             </span>
@@ -52,7 +51,7 @@
                 <p class="line">{$room}</p>
             {/if}
 
-            {if="!$connected"}
+            {if="!$conference->connected"}
                 <p>{$c->__('button.connecting')}…</p>
             {elseif="$subject != null"}
                 <p class="line" title="{$subject->subject}">{$subject->subject|addUrls}</p>
@@ -63,13 +62,13 @@
     </ul>
 
     <ul class="list context_menu active">
-        {if="$presence != null && $presence->mucrole == 'moderator' && !$anon"}
-            <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
+        {if="$conference->presence && $conference->presence->mucrole == 'moderator' && !$anon"}
+            <li class="divided" onclick="Chat_ajaxGetRoomConfig('{$room}')">
                 <p class="normal">{$c->__('chatroom.administration')}</p>
             </li>
-            <li class="divided" onclick="Chat_ajaxGetSubject('{$room}')">
+            <!--<li class="divided" onclick="Chat_ajaxGetSubject('{$room}')">
                 <p class="normal">{$c->__('chatroom.subject')}</p>
-            </li>
+            </li>-->
         {/if}
         {if="!$anon"}
             <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">
@@ -110,14 +109,18 @@
 
             {$url = $contact->getPhoto('s')}
             {if="$url"}
-                <span class="primary icon bubble active"
+                <span class="primary icon bubble active {if="$roster->presence"}status {$roster->presence->presencekey}{/if}"
                     onclick="Chat_ajaxGetContact('{$contact->jid}')">
                     <img src="{$url}">
                 </span>
             {else}
-                <span class="primary icon bubble active color {$contact->jid|stringToColor}"
+                <span class="primary icon bubble active color {$contact->jid|stringToColor} {if="$roster->presence"}status {$roster->presence->presencekey}{/if}"
                     onclick="Chat_ajaxGetContact('{$contact->jid}')">
-                    {$contact->getTrueName()|firstLetterCapitalize}
+                    {if="$roster"}
+                        {$roster->truename|firstLetterCapitalize}
+                    {else}
+                        {$contact->truename|firstLetterCapitalize}
+                    {/if}
                 </span>
             {/if}
 
@@ -132,7 +135,11 @@
                 <i class="zmdi zmdi-close"></i>
             </span>
             <p class="line">
-                {$contact->getTrueName()}
+                {if="$roster"}
+                    {$roster->truename}
+                {else}
+                    {$contact->truename}
+                {/if}
             </p>
             <p class="line" id="{$jid|cleanupId}-state">{$contact->jid}</p>
         </li>
@@ -177,13 +184,13 @@
 </div>
 <div class="chat_box">
     <ul class="list">
-        <li class="{if="$muc && !$connected"}disabled{/if}">
+        <li class="{if="$muc && !$conference->connected"}disabled{/if}">
             {if="!$muc"}
             <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
                 <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
             {/if}
-            {if="$c->supported('upload')"}
+            {if="$c->getUser()->hasUpload()"}
                 <span class="upload control icon"
                     title="{$c->__('publishbrief.attach')}"
                     onclick="Upload_ajaxRequest()">
@@ -191,7 +198,7 @@
                 </span>
             {/if}
             <span title="{$c->__('button.submit')}"
-                class="send control icon gray {if="$c->supported('upload')"}hide{else}show{/if}"
+                class="send control icon gray {if="$c->getUser()->hasUpload()"}hide{else}show{/if}"
                   onclick="Chat.sendMessage()">
                 <i class="zmdi zmdi-mail-send"></i>
             </span>

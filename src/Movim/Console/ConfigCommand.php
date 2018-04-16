@@ -1,5 +1,8 @@
 <?php
+
 namespace Movim\Console;
+
+use App\Configuration;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -78,26 +81,21 @@ class ConfigCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $cd = new \Modl\ConfigDAO;
-        $config = $cd->get();
+        $configuration = Configuration::findOrNew(1);
 
         foreach ($input->getOptions() as $key => $value) {
-            if (property_exists($config, $key) && isset($value)) {
-                if ($key == 'password') {
-                    $value = password_hash($value, PASSWORD_DEFAULT);
-                }
+            if (in_array($key, $configuration->fillable) && isset($value)) {
+                $old = $configuration->$key;
+                $configuration->$key = $value;
+                $configuration->save();
 
-                $old = $config->$key;
-                $config->$key = $value;
-
-                $cd->set($config);
                 $output->writeln(
                     '<info>The configuration key</info> '.
                     $key.
                     ' <info>has been updated from</info> '.
                     $old.
                     ' <info>to</info> '.
-                    $value
+                    $configuration->$key
                 );
             }
         }

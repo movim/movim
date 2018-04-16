@@ -20,34 +20,19 @@ class ContactData extends \Movim\Widget\Base
 
     public function prepareData($jid)
     {
-        $id = new \Modl\InfoDAO;
-        $cd = new \Modl\ContactDAO;
-        $md = new \Modl\MessageDAO;
-
         $view = $this->tpl();
 
-        $contactr = $cd->getRosterItem($jid);
-
-        $m = $md->getContact($jid, 0, 1);
-        if (isset($m)) {
-            $view->assign('message', $m[0]);
-        }
-
-        $subscriptions = $id->getSharedItems($jid);
-
-        $view->assign('mood', getMood());
-        $view->assign('clienttype', getClientTypes());
-        $view->assign('contact', $cd->get($jid));
-        $view->assign('contactr', $contactr);
-        $view->assign('subscriptions', $subscriptions ? $subscriptions : []);
-
-        if (isset($contactr)) {
-            if ($contactr->value != null) {
-                $view->assign('presence', getPresencesTxt()[$contactr->value]);
-            }
-
-            $view->assign('caps', $contactr->getCaps());
-        }
+        $view->assign('message', $this->user->messages()
+                                        ->where(function ($query) use ($jid) {
+                                            $query->where('jidfrom', $jid)
+                                                  ->orWhere('jidto', $jid);
+                                        })
+                                        ->orderBy('published', 'desc')
+                                        ->first());
+        $view->assign('subscriptions', \App\Subscription::where('jid', $jid)
+            ->where('public', true)->get());
+        $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
+        $view->assign('roster', App\User::me()->session->contacts->where('jid', $jid)->first());
 
         return $view->draw('_contactdata', true);
     }
@@ -56,17 +41,9 @@ class ContactData extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $cd = new \Modl\ContactDAO;
-        $c  = $cd->get($jid, true);
+        $contact = \App\Contact::find($jid);
 
-        if ($c == null
-        || $c->created == null
-        || $c->isOld()) {
-            if ($c == null) {
-                $c = new \Modl\Contact;
-                $c->jid = $jid;
-            }
-
+        if (!$contact || $contact->isOld()) {
             $a = new Moxl\Xec\Action\Avatar\Get;
             $a->setTo(echapJid($jid))->request();
 

@@ -1,4 +1,4 @@
-{if="$invitations"}
+{if="!empty($invitations)"}
 <ul class="list">
     <li class="subheader">
         <p>
@@ -7,11 +7,9 @@
         </p>
     </li>
 </ul>
-{/if}
-<ul class="list middle card stacked shadow flex">
+<ul class="list middle divided spaced flex">
     {loop="$invitations"}
-        {if="isset($value)"}
-        <li data-jid="{$value->jid}" class="block large">
+        <li data-jid="{$value->jid}" class="block">
             {$url = $value->getPhoto('s')}
             {if="$url"}
                 <span class="primary icon bubble">
@@ -32,10 +30,10 @@
                 <i class="zmdi zmdi-account"></i>
             </span>
             <p class="line normal">
-                {$c->__('invitations.wants_to_talk', $value->getTrueName())}
+                {$c->__('invitations.wants_to_talk', $value->truename)}
             </p>
-            <p>{$value->jid}</p>
+            <p class="line">{$value->jid}</p>
         </li>
-        {/if}
     {/loop}
 </ul>
+{/if}

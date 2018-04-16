@@ -26,7 +26,7 @@ class Chats extends \Movim\Widget\Base
 
         if ($message->type != 'groupchat') {
             // If the message is from me
-            if ($message->session == $message->jidto) {
+            if ($message->user_id == $message->jidto) {
                 $from = $message->jidfrom;
             } else {
                 $from = $message->jidto;
@@ -38,12 +38,13 @@ class Chats extends \Movim\Widget\Base
 
     function onPresence($packet)
     {
-        $contacts = $packet->content;
-        if ($contacts != null){
-            $c = $contacts[0];
-            $chats = \Movim\Cache::c('chats');
-            if (is_array($chats) &&  array_key_exists($c->jid, $chats)) {
-                $this->rpc('MovimTpl.replace', '#' . cleanupId($c->jid.'_chat_item'), $this->prepareChat($c->jid));
+        if ($packet->content != null){
+            $chats = \App\Cache::c('chats');
+            if (is_array($chats) &&  array_key_exists($packet->content->jid, $chats)) {
+                $this->rpc(
+                    'MovimTpl.replace',
+                    '#' . cleanupId($packet->content->jid.'_chat_item'),
+                    $this->prepareChat($packet->content->jid));
                 $this->rpc('Chats.refresh');
 
                 $n = new Notification;
@@ -87,25 +88,30 @@ class Chats extends \Movim\Widget\Base
     function ajaxGetHistory($jid = false)
     {
         $g = new \Moxl\Xec\Action\MAM\Get;
-        $md = new \Modl\MessageDAO;
 
         if ($jid == false) {
-            $message = $md->getLastItem();
-
-            if (!empty($message)) {
+            $message = \App\User::me()->messages
+                                      ->sortByDesc('published')
+                                      ->first();
+            if ($message) {
                 $g->setStart(strtotime($message->published)+10);
             }
 
             $g->setLimit(150);
             $g->request();
         } elseif ($this->validateJid($jid)) {
-            $messages = $md->getContact(echapJid($jid), 0, 1);
-
+            $message = $this->user->messages()
+                                  ->where(function ($query) use ($jid) {
+                                      $query->where('jidfrom', $jid)
+                                            ->orWhere('jidto', $jid);
+                                  })
+                                  ->orderBy('published', 'desc')
+                                  ->first();
             $g->setJid(echapJid($jid));
 
-            if (!empty($messages)) {
+            if ($message) {
                 // We add a little delay of 10sec to prevent some sync issues
-                $g->setStart(strtotime($messages[0]->published)+10);
+                $g->setStart(strtotime($message->published)+10);
             }
 
             $g->request();
@@ -116,7 +122,7 @@ class Chats extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $chats = \Movim\Cache::c('chats');
+        $chats = \App\Cache::c('chats');
         if ($chats == null) $chats = [];
 
         unset($chats[$jid]);
@@ -127,7 +133,7 @@ class Chats extends \Movim\Widget\Base
 
             if ($history) $this->ajaxGetHistory($jid);
 
-            \Movim\Cache::c('chats', $chats);
+            \App\Cache::c('chats', $chats);
             $this->rpc('Chats.prepend', $jid, $this->prepareChat($jid));
         }
     }
@@ -136,9 +142,9 @@ class Chats extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $chats = \Movim\Cache::c('chats');
+        $chats = \App\Cache::c('chats');
         unset($chats[$jid]);
-        \Movim\Cache::c('chats', $chats);
+        \App\Cache::c('chats', $chats);
 
         $this->rpc('MovimTpl.remove', '#' . cleanupId($jid . '_chat_item'));
 
@@ -147,42 +153,9 @@ class Chats extends \Movim\Widget\Base
         $this->rpc('MovimTpl.hidePanel');
     }
 
-    /**
-     * @brief Display the add chat form
-     */
-    function ajaxAdd()
-    {
-        $view = $this->tpl();
-
-        $cd = new \Modl\ContactDAO;
-        $chats = \Movim\Cache::c('chats');
-
-        if (!isset($chats)) $chats = [];
-
-        $view->assign('chats', array_keys($chats));
-        $view->assign('top', $cd->getTop(15));
-        $view->assign('presencestxt', getPresencesTxt());
-
-        Dialog::fill($view->draw('_chats_add', true), true);
-    }
-
-    /**
-     * @brief Display the extended list
-     */
-    function ajaxAddExtend()
-    {
-        $view = $this->tpl();
-
-        $cd = new \Modl\ContactDAO;
-        $contacts = $cd->getRosterSimple();
-        $view->assign('contacts', $contacts);
-
-        $this->rpc('MovimTpl.fill', '#add_extend', $view->draw('_chats_add_extend', true));
-    }
-
     function prepareChats()
     {
-        $chats = \Movim\Cache::c('chats');
+        $chats = \App\Cache::c('chats');
 
         $view = $this->tpl();
 
@@ -201,36 +174,18 @@ class Chats extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $cd = new \Modl\ContactDAO;
-        $md = new \Modl\MessageDAO;
-        $cad = new \Modl\CapsDAO;
-
-        $presencestxt = getPresencesTxt();
-
-        $cr = $cd->getRosterItem($jid);
-        if (isset($cr)) {
-            if ($cr->value != null) {
-                $view->assign('presence', $presencestxt[$cr->value]);
-            }
-            $view->assign('contact', $cr);
-            $view->assign('caps', $cad->get($cr->node.'#'.$cr->ver));
-        } else {
-            $view->assign('contact', $cd->get($jid));
-            $view->assign('caps', null);
-        }
-
+        $contact = App\Contact::find($jid);
         $view->assign('status', $status);
-
-        $m = $md->getContact($jid, 0, 1);
-        if (isset($m)) {
-            $view->assign('message', $m[0]);
-        }
-
-        $html = $view->draw('_chats_item', true);
-
-        unset($view);
-
-        return $html;
+        $view->assign('contact', $contact ? $contact : new App\Contact(['id' => $jid]));
+        $view->assign('roster', $this->user->session->contacts->where('jid', $jid)->first());
+        $view->assign('message', $this->user->messages()
+                                            ->where(function ($query) use ($jid) {
+                                                $query->where('jidfrom', $jid)
+                                                      ->orWhere('jidto', $jid);
+                                            })
+                                            ->orderBy('published', 'desc')
+                                            ->first());
+        return $view->draw('_chats_item', true);
     }
 
     private function validateJid($jid)
