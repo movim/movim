@@ -50,6 +50,9 @@ class FromModlToEloquent extends AbstractSeed
                 $user->cssurl = $settings->cssurl;
                 $user->nightmode = (bool)$settings->nightmode;
                 $user->nsfw = (bool)$settings->nsfw;
+            } else {
+                $user->nightmode = false;
+                $user->nsfw = false;
             }
 
             if ($privacy) {
