@@ -5,6 +5,7 @@ namespace App;
 use Ramsey\Uuid\Uuid;
 use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
 use Illuminate\Database\Eloquent\Model;
+use Movim\Picture;
 
 class Message extends Model
 {
