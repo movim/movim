@@ -101,6 +101,6 @@ class PostActions extends \Movim\Widget\Base
     public function preparePost($p)
     {
         $pw = new \Post;
-        return $pw->preparePost($p, true, false, true);
+        return $pw->preparePost($p, false, true);
     }
 }

@@ -158,11 +158,12 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    public function prepareComments(\App\Post $post)
+    public function prepareComments(\App\Post $post, $public = false)
     {
         $emoji = \MovimEmoji::getInstance();
         $view = $this->tpl();
         $view->assign('post', $post);
+        $view->assign('public', $public);
         $view->assign('hearth', $emoji->replace('♥'));
 
         return $view->draw('_post_comments', true);
@@ -174,14 +175,13 @@ class Post extends \Movim\Widget\Base
         return $view->draw('_post_not_found', true);
     }
 
-    function preparePost(\App\Post $p, $external = false, $public = false, $card = false)
+    function preparePost(\App\Post $p, $public = false, $card = false)
     {
         $view = $this->tpl();
-        $view->assign('external', $external);
 
         if (isset($p)) {
             if ($p->hasCommentsNode()
-            && !$external) {
+            && !$public) {
                 $this->requestComments($p); // Broken in case of repost
                 $view->assign('commentsdisabled', false);
             } else {
@@ -189,16 +189,9 @@ class Post extends \Movim\Widget\Base
                 $view->assign('commentsdisabled', $viewd->draw('_post_comments_error', true));
             }
 
-            $view->assign('repost', false);
-
-            $comments = $this->tpl();
             $view->assign('public', $public);
             $view->assign('reply', $p->isReply() ? $p->getReply() : false);
-
-            // Is it a repost ?
-            if ($p->isRecycled()) {
-                $view->assign('repost', \App\Contact::find($p->server));
-            }
+            $view->assign('repost', $p->isRecycled() ? \App\Contact::find($p->server) : false);
 
             $view->assign('nsfw', \App\User::me()->nsfw);
             $view->assign('post', $p);
@@ -206,7 +199,7 @@ class Post extends \Movim\Widget\Base
             return ($card)
                 ? $view->draw('_post_card', true)
                 : $view->draw('_post', true);
-        } elseif (!$external) {
+        } else {
             return $this->prepareNotFound();
         }
     }

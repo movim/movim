@@ -113,8 +113,7 @@ class CommunityPosts extends \Movim\Widget\Base
 
     public function preparePost($p)
     {
-        $pw = new \Post;
-        return $pw->preparePost($p, true, false, true);
+        return (new \Post)->preparePost($p, false, true);
     }
 
     private function prepareCommunity(

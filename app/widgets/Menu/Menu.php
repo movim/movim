@@ -201,9 +201,8 @@ class Menu extends \Movim\Widget\Base
         return $view->draw('_menu_list', true);
     }
 
-    function preparePost($p)
+    function preparePost($post)
     {
-        $pw = new \Post;
-        return $pw->preparePost($p, true, false, true);
+        return (new \Post)->preparePost($post, false, true);
     }
 }

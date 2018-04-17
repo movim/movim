@@ -1,6 +1,6 @@
 <article class="block">
 <header class="relative">
-    {if="!$external && !$public"}
+    {if="!$public"}
         <ul class="list middle">
             <li>
                 <span class="primary icon gray active" onclick="history.back();">
@@ -229,15 +229,17 @@
     {/if}
 </footer>
 
-{if="!$public"}
+{if="$public"}
+    <div id="comments">
+        {$c->prepareComments($post, true)}
+    </div>
+{else}
     {if="$commentsdisabled"}
         {$commentsdisabled}
     {else}
         <div id="comments" class="spin"></div>
     {/if}
-{/if}
 
-{if="!$external"}
     {$c->preparePreviousNext($post)}
 {/if}
 </article>

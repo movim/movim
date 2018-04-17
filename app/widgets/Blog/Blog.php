@@ -14,7 +14,7 @@ class Blog extends \Movim\Widget\Base
     private $_item;
     private $_id;
     private $_contact;
-    private $_messages = [];
+    private $_messages = null;
     private $_page = 0;
     private $_mode;
     private $_next;
@@ -84,15 +84,15 @@ class Blog extends \Movim\Widget\Base
         }
 
         if ($this->_id = $this->get('i')) {
-            $this->_messages[0] = \App\Post::where('server', $this->_from)
+            $this->_messages = \App\Post::where('server', $this->_from)
                     ->where('node', $this->_node)
                     ->where('nodeid', $this->_id)
-                    ->first();
+                    ->get();
 
-            if (is_object($this->_messages[0])) {
-                $this->title = $this->_messages[0]->title;
+            if ($this->_messages->isNotEmpty()) {
+                $this->title = $this->_messages->first()->title;
 
-                $description = stripTags($this->_messages[0]->contentcleaned);
+                $description = stripTags($this->_messages->first()->contentcleaned);
                 if (!empty($description)) {
                     $this->description = truncate($description, 100);
                 }
@@ -135,7 +135,7 @@ class Blog extends \Movim\Widget\Base
             }
         }
 
-        if (!is_array($this->_messages)
+        if ($this->_messages !== null
         && $this->_messages->count() == $this->_paging + 1) {
             $this->_messages->pop();
             if ($this->_mode == 'blog') {
@@ -152,15 +152,15 @@ class Blog extends \Movim\Widget\Base
 
             if ($user
             && !empty($user->cssurl)
-            && Validator::url()->validate($cssurl)) {
-                $this->addrawcss($cssurl);
+            && Validator::url()->validate($user->cssurl)) {
+                $this->addrawcss($user->cssurl);
             }
         }
     }
 
-    public function preparePost($p)
+    public function preparePost(\App\Post $post)
     {
-        return (new Post)->preparePost($p, true, true);
+        return (new Post)->preparePost($post, true);
     }
 
     function display()

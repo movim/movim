@@ -90,9 +90,22 @@
 </header>
 
 <div class="card shadow" title="{$c->__('page.feed')}" id="blog" >
-    {loop="$posts"}
-        {$c->preparePost($value)}
-    {/loop}
+    {if="$posts == null || $posts->isEmpty()"}
+        <article class="block">
+            <ul class="list simple thick">
+                <li>
+                    <span class="primary icon gray">
+                        <i class="zmdi zmdi-comment-outline"></i>
+                    </span>
+                    <p class="normal">{$c->__('blog.empty')}</p>
+                </li>
+            </ul>
+        </article>
+    {else}
+        {loop="$posts"}
+            {$c->preparePost($value)}
+        {/loop}
+    {/if}
     {if="isset($next)"}
         <article>
             <ul class="list active thick">
@@ -104,15 +117,5 @@
                 </a>
             </ul>
         </article>
-    {/if}
-    {if="empty($posts)"}
-        <ul class="list simple thick">
-            <li>
-                <span class="primary icon gray">
-                    <i class="zmdi zmdi-comment-outline"></i>
-                </span>
-                <p class="normal">{$c->__('blog.empty')}</p>
-            </li>
-        </ul>
     {/if}
 </div>

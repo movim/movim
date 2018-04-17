@@ -9,11 +9,15 @@
             <p>{$post->likes()->count()}</span> {$c->__('button.like')}</p>
             <p class="all">
                 {loop="$post->likes"}
-                    {if="$value->isMine()"}{$liked = [$value->server, $value->node, $value->nodeid]}{/if}
-                    <a title="{$value->published|strtotime|prepareDate:true,true}"
-                       href="{$c->route('contact', $value->aid)}">
+                    {if="$public"}
                         {$value->truename}
-                    </a>
+                    {else}
+                        {if="$value->isMine()"}{$liked = [$value->server, $value->node, $value->nodeid]}{/if}
+                        <a title="{$value->published|strtotime|prepareDate:true,true}"
+                           href="{$c->route('contact', $value->aid)}">
+                            {$value->truename}
+                        </a>
+                    {/if}
                     {if="$key + 1 < $post->likes()->count()"},{/if}
                 {/loop}
             </p>
@@ -33,8 +37,8 @@
     {loop="$post->comments"}
         {if="$value->title || $value->contentraw"}
         <li id="{$value->nodeid|cleanupId}"
-            {if="$value->isMine(true) && $value->isLike()"}class="mine"{/if}>
-            {if="$value->isMine() || $post->isMine()"}
+            {if="!$public && $value->isMine(true) && $value->isLike()"}class="mine"{/if}>
+            {if="!$public && ($value->isMine() || $post->isMine())"}
                 <span class="control icon gray active"
                       onclick="PostActions_ajaxDelete('{$value->server}', '{$value->node}', '{$value->nodeid}')">
                     <i class="zmdi zmdi-delete"></i>
@@ -44,31 +48,47 @@
                 {$url = $value->contact->getPhoto('s')}
                 {if="$url"}
                     <span class="primary icon bubble small">
-                        <a href="{$c->route('contact', $value->contact->jid)}">
+                        {if="$public"}
                             <img src="{$url}">
-                        </a>
+                        {else}
+                            <a href="{$c->route('contact', $value->contact->jid)}">
+                                <img src="{$url}">
+                            </a>
+                        {/if}
                     </span>
                 {else}
                     <span class="primary icon bubble color {$value->contact->jid|stringToColor} small">
-                        <a href="{$c->route('contact', $value->contact->jid)}">
+                        {if="$public"}
                             <i class="zmdi zmdi-account"></i>
-                        </a>
+                        {else}
+                            <a href="{$c->route('contact', $value->contact->jid)}">
+                                <i class="zmdi zmdi-account"></i>
+                            </a>
+                        {/if}
                     </span>
                 {/if}
             {else}
                 <span class="primary icon bubble color {$value->aid|stringToColor} small">
-                    <a href="{$c->route('contact', $value->aid)}">
+                    {if="$public"}
                         <i class="zmdi zmdi-account"></i>
-                    </a>
+                    {else}
+                        <a href="{$c->route('contact', $value->aid)}">
+                            <i class="zmdi zmdi-account"></i>
+                        </a>
+                    {/if}
                 </span>
             {/if}
             <p class="normal line">
                 <span class="info" title="{$value->published|strtotime|prepareDate}">
                     {$value->published|strtotime|prepareDate:true,true}
                 </span>
-                <a href="{$c->route('contact', $value->aid)}">
+                {if="$public"}
                     {$value->truename}
-                </a>
+                {else}
+                    <a href="{$c->route('contact', $value->aid)}">
+                        {$value->truename}
+                    </a>
+                {/if}
             </p>
             <p class="all">
                 {if="$value->contentraw"}
@@ -81,6 +101,7 @@
         {/if}
     {/loop}
 
+    {if="!$public"}
     <li class="hide" id="comment_add">
         <span class="primary icon small gray">
             <i class="zmdi zmdi-comment"></i>
@@ -125,5 +146,6 @@
             {/if}
         </p>
     </li>
+    {/if}
 </ul>
 
