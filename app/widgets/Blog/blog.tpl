@@ -5,6 +5,7 @@
             <span class="primary icon gray">
                 <i class="zmdi zmdi-edit"></i>
             </span>
+            {if="$contact"}
             <span class="control icon active">
                 <a
                     href="{$c->route('feed', $contact->jid)}"
@@ -14,7 +15,6 @@
                     <i class="zmdi zmdi-rss"></i>
                 </a>
             </span>
-            {if="$contact"}
             <p>
                 <a href="{$c->route('blog', $contact->jid)}">
                     {$c->__('blog.title', $contact->truename)}
@@ -25,9 +25,7 @@
                 {/if}
             {else}
             <p>
-                <a href="{$c->route('blog', $contact->jid)}">
-                    {$c->__('page.blog')}
-                </a>
+                {$c->__('page.blog')}
             </p>
             {/if}
         </li>
@@ -107,7 +105,7 @@
             </ul>
         </article>
     {/if}
-    {if="$posts == null"}
+    {if="empty($posts)"}
         <ul class="list simple thick">
             <li>
                 <span class="primary icon gray">

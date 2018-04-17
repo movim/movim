@@ -148,9 +148,10 @@ class Blog extends \Movim\Widget\Base
         }
 
         if ($this->_node == 'urn:xmpp:microblog:0') {
-            $cssurl = User::find($this->_from)->cssurl;
-            if (isset($cssurl)
-            && $cssurl != ''
+            $user = User::find($this->_from);
+
+            if ($user
+            && !empty($user->cssurl)
             && Validator::url()->validate($cssurl)) {
                 $this->addrawcss($cssurl);
             }
