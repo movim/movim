@@ -51,8 +51,8 @@ ul.navigation {
     justify-content:center;
 }
 
-body > nav > ul.list.active li:not(.active) span.primary,
-ul.navigation li > span.primary {
+body > nav > ul.list.active li:not(.active) span.primary i,
+ul.navigation li > span.primary i {
     opacity: 0.5;
 }
 
