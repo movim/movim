@@ -67,6 +67,17 @@ class Conference extends Model
              || $this->presences->where('resource', $resource)->count() > 0);
     }
 
+    public function getSubjectAttribute()
+    {
+        $subject = \App\Message::where('jidfrom', $this->conference)
+                               ->whereNotNull('subject')
+                               ->where('type', 'groupchat')
+                               ->orderBy('published', 'desc')
+                               ->first();
+
+        return $subject ? $subject->subject : null;
+    }
+
     public function getPhoto($size = 'l')
     {
         $sizes = [

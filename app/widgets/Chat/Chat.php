@@ -592,7 +592,6 @@ class Chat extends \Movim\Widget\Base
 
         if ($muc) {
             $view->assign('room', $jid);
-            //$view->assign('subject', $md->getRoomSubject($jid));
             $view->assign('conference', $this->user->session->conferences
                                              ->where('conference', $jid)
                                              ->first());
@@ -623,7 +622,7 @@ class Chat extends \Movim\Widget\Base
         });
 
         $messages = $muc
-            ? $messages->where('type', 'groupchat')
+            ? $messages->where('type', 'groupchat')->whereNull('subject')
             : $messages->whereIn('type', ['chat', 'headline', 'invitation']);
 
         $messages = $messages->orderBy('published', 'desc')->take($this->_pagination)->get();

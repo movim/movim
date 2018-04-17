@@ -53,8 +53,8 @@
 
             {if="!$conference->connected"}
                 <p>{$c->__('button.connecting')}…</p>
-            {elseif="$subject != null"}
-                <p class="line" title="{$subject->subject}">{$subject->subject|addUrls}</p>
+            {elseif="$conference->subject"}
+                <p class="line" title="{$conference->subject}">{$conference->subject|addUrls}</p>
             {else}
                 <p class="line">{$room}</p>
             {/if}
