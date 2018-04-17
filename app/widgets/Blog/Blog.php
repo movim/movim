@@ -17,6 +17,7 @@ class Blog extends \Movim\Widget\Base
     private $_messages = [];
     private $_page = 0;
     private $_mode;
+    private $_next;
     private $_tag;
 
     function load()
@@ -144,8 +145,6 @@ class Blog extends \Movim\Widget\Base
             } else {
                 $this->_next = $this->route('node', [$this->_from, $this->_node], ['page' => $this->_page + 1]);
             }
-        } else {
-            $this->_next = null;
         }
 
         if ($this->_node == 'urn:xmpp:microblog:0') {
