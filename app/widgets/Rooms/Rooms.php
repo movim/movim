@@ -276,7 +276,7 @@ class Rooms extends \Movim\Widget\Base
         $capability = App\Capability::find($jid['server']);
 
         if (!$capability || !$capability->isMAM()) {
-            $this->user->messages->where('jidfrom', $room)->delete();
+            $this->user->messages()->where('jidfrom', $room)->delete();
         }
 
         $this->user->session->conferences()

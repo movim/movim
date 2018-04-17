@@ -54,14 +54,14 @@
                         required
                         onkeyup="MovimUtils.textareaAutoheight(this);"
                         placeholder="{$c->__('publishbrief.placeholder')}"
-                        type="text">{if="$item != false"}{$item->title}{elseif="!empty($draft->title)"}{$draft->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
+                        type="text">{if="$item != false"}{$item->title}{elseif="$draft && !empty($draft->title)"}{$draft->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
                 </div>
                 <div {if="!$extended"}class="hide"{/if}>
                     <textarea
                         name="content"
                         placeholder="{$c->__('publishbrief.content_text')}"
                         oninput="MovimUtils.textareaAutoheight(this);"
-                        >{if="$item != false"}{$item->contentraw}{elseif="!empty($draft->content)"}{$draft->content}{/if}</textarea>
+                        >{if="$item != false"}{$item->contentraw}{elseif="$draft && !empty($draft->content)"}{$draft->content}{/if}</textarea>
                 </div>
                 <input
                     type="checkbox"
@@ -70,17 +70,12 @@
                     checked
                     style="display: none;"
                 >
-                {if="$item != false"}
-                    {$attachment = $item->getAttachment()}
-                {/if}
                 <input type="hidden"
                     id="embed"
                     name="embed"
                     onchange="if (this.value != '') { PublishBrief_ajaxEmbedLoading(); PublishBrief_ajaxEmbedTest(this.value, document.querySelector('form[name=brief] input#imagenumber').value); }"
-                    {if="!empty($draft->link)"}
+                    {if="$draft && !empty($draft->link)"}
                          value="{$draft->link}"
-                    {elseif="isset($attachment) && $attachment != false"}
-                        value="{$attachment.href}"
                     {elseif="$url"}
                         value="{$url}"
                     {/if}
