@@ -62,7 +62,7 @@ class Search extends \Movim\Widget\Base
         }
 
         if (!empty($key)) {
-            $contacts = \App\Contact::where('id', function ($query) use ($key) {
+            $contacts = \App\Contact::whereIn('id', function ($query) use ($key) {
                 $query->select('id')
                       ->from('users')
                       ->where('public', true)
