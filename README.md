@@ -34,7 +34,7 @@ You can also use Movim on our official Pods :
 * https://movim.se/ server hosted in Sweden
 
 ### Librairies
-Movim also contains two specific librairies :
+Movim is also coming with a specific library :
 
 * https://github.com/movim/moxl Moxl (for Movim XMPP Library) is a PHP XMPP library especially made for the Movim project
 
