@@ -266,6 +266,11 @@ class Message extends Model
         );
     }
 
+    public function isSubject()
+    {
+        return !empty($this->subject);
+    }
+
     public function isOTR()
     {
         return preg_match('#^\?OTR#', $this->body);
