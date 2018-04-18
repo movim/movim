@@ -135,7 +135,7 @@ class Info extends Model
                             $this->name = (string)$field->value;
                             break;
                         case 'pubsub#creation_date':
-                            $this->created = date(SQL::SQL_DATE, strtotime((string)$field->value));
+                            $this->created = date(SQL_DATE, strtotime((string)$field->value));
                             break;
                         case 'muc#roominfo_description':
                         case 'pubsub#description':

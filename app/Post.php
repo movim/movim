@@ -48,11 +48,19 @@ class Post extends Model
 
     public function save(array $options = [])
     {
-        parent::save($options);
+        try {
+            parent::save($options);
 
-        $this->attachments()->delete();
-        $this->attachments()->saveMany($this->attachments);
-        $this->tags()->sync($this->tags);
+            $this->attachments()->delete();
+            $this->attachments()->saveMany($this->attachments);
+            $this->tags()->sync($this->tags);
+        } catch (\Exception $e) {
+            /*
+             * When an article is received by two accounts simultaenously
+             * in different processes they can be saved using the insert state
+             * in the DB causing an error
+             */
+        }
     }
 
     public function scopeRestrictToMicroblog($query)
@@ -299,14 +307,14 @@ class Post extends Model
 
         $this->updated = ($entry->entry->updated)
             ? (string)$entry->entry->updated
-            : gmdate(SQL::SQL_DATE);
+            : gmdate(SQL_DATE);
 
         if ($entry->entry->published) {
             $this->published = (string)$entry->entry->published;
         } elseif ($entry->entry->updated) {
             $this->published = (string)$entry->entry->updated;
         } else {
-            $this->published = gmdate(SQL::SQL_DATE);
+            $this->published = gmdate(SQL_DATE);
         }
 
         if ($delay) $this->delay = $delay;
