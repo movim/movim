@@ -24,11 +24,14 @@ class Message extends Payload
         $message = \App\Message::findByStanza($stanza);
         $message->set($stanza, $parent);
 
-        $message->save();
+        if (!$message->isOTR()
+        && (!$message->isEmpty() || $message->isSubject())) {
+            $message->save();
 
-        if ($message->body || $message->subject) {
-            $this->pack($message);
-            $this->deliver();
+            if ($message->body || $message->subject) {
+                $this->pack($message);
+                $this->deliver();
+            }
         }
     }
 }

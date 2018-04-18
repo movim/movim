@@ -26,7 +26,8 @@ class MAMResult extends Payload
                 $message->jidto = $to;
             }
 
-            if (!$message->isOTR() && !$message->isEmpty()) {
+            if (!$message->isOTR()
+            && (!$message->isEmpty() || $message->isSubject())) {
                 $message->save();
                 $this->pack($message);
                 $this->deliver();
