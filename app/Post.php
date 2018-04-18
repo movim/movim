@@ -260,20 +260,9 @@ class Post extends Model
         return $title;
     }
 
-    public function set($item, $from, $delay = false, $node = false)
+    public function set($entry, $delay = false)
     {
-        $entry = ($item->item) ? $item->item : $item;
-
-        if ($from != '') {
-            $this->server = $from;
-        }
-
-        $this->node = ($node) ? $node : (string)$item->attributes()->node;
-
         $this->nodeid = (string)$entry->attributes()->id;
-
-        if ($entry->entry->id)
-            $this->nodeid = (string)$entry->entry->id;
 
         // Get some informations on the author
         if ($entry->entry->author->name)
