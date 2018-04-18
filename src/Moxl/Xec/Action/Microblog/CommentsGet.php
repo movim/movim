@@ -45,10 +45,10 @@ class CommentsGet extends Action
             foreach($stanza->pubsub->items->item as $item) {
                 $p = \App\Post::firstOrNew([
                     'server' => $this->_to,
-                    'node' => $node,
+                    'node' => $this->_node,
                     'nodeid' => (string)$item->attributes()->id
                 ]);
-                $p->set($item, $this->_to, false, $this->_node);
+                $p->set($item);
                 $p->parent_id = $this->_parentid;
                 $p->save();
             }

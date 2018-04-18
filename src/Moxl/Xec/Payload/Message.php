@@ -24,7 +24,7 @@ class Message extends Payload
         $message = \App\Message::findByStanza($stanza);
         $message->set($stanza, $parent);
 
-        if (!$message->isEmpty()) $message->save();
+        $message->save();
 
         if ($message->body || $message->subject) {
             $this->pack($message);

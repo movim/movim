@@ -84,7 +84,7 @@ class GetItem extends Errors
                         'node' => $this->_node,
                         'nodeid' => $this->_id
                     ]);
-                    $p->set($item, $this->_to, false, $this->_node);
+                    $p->set($item);
 
                     if (isset($this->_parentid)) {
                         $p->parent_id    = $this->_parentid;

@@ -24,7 +24,7 @@ class Post extends Payload
                 'node' =>  (string)$stanza->items->attributes()->node,
                 'nodeid' => (string)$stanza->items->item->attributes()->id
             ]);
-            $p->set($stanza->items, $from, $delay);
+            $p->set($stanza->items->item, $delay);
 
             // We limit the very old posts (2 months old)
             if (/*strtotime($p->published) > mktime(0, 0, 0, gmdate("m")-2, gmdate("d"), gmdate("Y"))

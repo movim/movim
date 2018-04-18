@@ -97,7 +97,7 @@ class GetItems extends Errors
                         'node' => $this->_node,
                         'nodeid' => (string)$item->attributes()->id
                     ]);
-                    $p->set($item, $this->_to, false, $this->_node);
+                    $p->set($item);
                     $p->save();
 
                     array_push($ids, $p->nodeid);
