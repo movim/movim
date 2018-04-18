@@ -40,7 +40,7 @@ class Menu extends \Movim\Widget\Base
                 $query = \App\Post::withContactsScope($query);
                 $query = \App\Post::withMineScope($query);
                 $query = \App\Post::withSubscriptionsScope($query);
-            })->where('published', '>', $since)->count();
+            })->withoutComments()->where('published', '>', $since)->count();
         } else {
             $count = 0;
         }
