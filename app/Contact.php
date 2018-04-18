@@ -161,7 +161,7 @@ class Contact extends Model
         if ($this->nickname) return $this->nickname;
         if ($this->name) return $this->name;
 
-        return $this->id;
+        return explodeJid($this->id)['username'];
     }
 
     public function getJidAttribute()
