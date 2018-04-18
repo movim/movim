@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "24b34399825b86c23a24f29bf22a5142",
+    "content-hash": "7f57cb19ba56dd30d738b48e50b3014d",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1095,12 +1095,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "19efbc0ae616c03d9eb579a0633da08ac82eadcf"
+                "reference": "48ccb9ca32c773d718fe140fb0070b94817b41d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/19efbc0ae616c03d9eb579a0633da08ac82eadcf",
-                "reference": "19efbc0ae616c03d9eb579a0633da08ac82eadcf",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/48ccb9ca32c773d718fe140fb0070b94817b41d8",
+                "reference": "48ccb9ca32c773d718fe140fb0070b94817b41d8",
                 "shasum": ""
             },
             "require": {
@@ -1118,37 +1118,35 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "AGPLv3"
+                "AGPL-3.0-only"
             ],
             "authors": [
                 {
                     "name": "Jaussoin Timothée",
                     "email": "edhelas@movim.eu",
-                    "homepage": "http://edhelas.movim.eu"
+                    "homepage": "https://edhelas.movim.eu"
                 }
             ],
-            "description": "Moxl (for Movim XMPP Library) is a light PHP XMPP library built to use only BOSH HTTP request",
-            "homepage": "http://github.com/edhelas/moxl",
+            "description": " Moxl is a light PHP XMPP library especially made for the Movim project ",
+            "homepage": "https://github.com/movim/moxl",
             "keywords": [
-                "bosh",
-                "dao",
                 "php",
                 "xmpp"
             ],
-            "time": "2018-04-15 18:11:55"
+            "time": "2018-04-18 09:53:30"
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.25.0",
+            "version": "1.26.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4"
+                "reference": "e3d9014279133a3cccc01f6a691322a2d5a6a87b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cbcf13da0b531767e39eb86e9687f5deba9857b4",
-                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/e3d9014279133a3cccc01f6a691322a2d5a6a87b",
+                "reference": "e3d9014279133a3cccc01f6a691322a2d5a6a87b",
                 "shasum": ""
             },
             "require": {
@@ -1160,14 +1158,9 @@
                 "phpunit/phpunit": "^4.8.35 || ^5.7"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.23-dev"
-                }
-            },
             "autoload": {
                 "psr-4": {
-                    "Carbon\\": "src/Carbon/"
+                    "": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1188,7 +1181,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-03-19T15:50:49+00:00"
+            "time": "2018-04-17T15:35:42+00:00"
         },
         {
             "name": "paragonie/random_compat",
