@@ -54,6 +54,8 @@ class Menu extends \Movim\Widget\Base
                          ->where('nodeid', $post->nodeid)
                          ->first();
 
+        if ($post === null) return;
+
         if ($post->isComment()
         && !$post->isMine()) {
             $contact = \App\Contact::firstOrNew(['id' => $post->aid]);
