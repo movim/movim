@@ -32,6 +32,7 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany('App\Post', 'parent_id', 'id')
+                    ->orderBy('published')
                     ->where('like', false);
     }
 
