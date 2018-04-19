@@ -11,6 +11,7 @@ class Info extends Model
 
     protected $primaryKey = ['server', 'node'];
     public $incrementing = false;
+    protected $fillable = ['server', 'node'];
 
     public function setAdminaddressesAttribute(array $arr)
     {
@@ -135,7 +136,7 @@ class Info extends Model
                             $this->name = (string)$field->value;
                             break;
                         case 'pubsub#creation_date':
-                            $this->created = date(SQL_DATE, strtotime((string)$field->value));
+                            $this->created = toSQLDate($field->value);
                             break;
                         case 'muc#roominfo_description':
                         case 'pubsub#description':

@@ -44,7 +44,7 @@ class CreatePostsTable extends Migration
 
         $this->schema->create('attachments', function(Blueprint $table) {
             $table->increments('id');
-            $table->integer('post_id');
+            $table->integer('post_id')->unsigned();
             $table->string('category', 16);
             $table->string('rel', 16);
             $table->string('logo', 256)->nullable();

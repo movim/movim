@@ -314,13 +314,13 @@ class Post extends Model
         $content = $summary.$content;
 
         $this->updated = ($entry->entry->updated)
-            ? (string)$entry->entry->updated
+            ? toSQLDate($entry->entry->updated)
             : gmdate(SQL_DATE);
 
         if ($entry->entry->published) {
-            $this->published = (string)$entry->entry->published;
+            $this->published = toSQLDate($entry->entry->published);
         } elseif ($entry->entry->updated) {
-            $this->published = (string)$entry->entry->updated;
+            $this->published = toSQLDate($entry->entry->updated);
         } else {
             $this->published = gmdate(SQL_DATE);
         }

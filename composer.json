@@ -17,7 +17,7 @@
         "rain/raintpl": "dev-master",
         "michelf/php-markdown": "^1.8",
 
-        "movim/moxl": "dev-master#823a7bd44a0c6db17124f14a575c5d645aba037b",
+        "movim/moxl": "dev-master#36808867a8b93426c085061df199c365488d78d0",
 
         "embed/embed": "^v3.3",
         "heyupdate/emoji": "dev-twemoji2#99dda1bed08472046cac1498221f08684ad83d55",

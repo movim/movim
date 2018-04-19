@@ -68,3 +68,8 @@ function prepareTime($time = false)
 
     return gmdate('H:i', $t);
 }
+
+function toSQLDate($date)
+{
+    return date(SQL_DATE, strtotime((string)$date));
+}
