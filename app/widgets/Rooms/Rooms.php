@@ -348,6 +348,8 @@ class Rooms extends \Movim\Widget\Base
 
     function prepareRooms($edit = false)
     {
+        if (!$this->user->session) return '';
+
         $conferences = $this->user->session->conferences()->get();
         $connected = new Collection;
 
