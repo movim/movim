@@ -169,7 +169,14 @@ class Post extends Model
 
     public function getLinksAttribute()
     {
-        return $this->attachments()->where('category', 'link')->get();
+        return $this->attachments()->where('category', 'link')
+                    ->whereNotIn('href', function($query) {
+                        $query->select('href')
+                              ->from('attachments')
+                              ->where('post_id', $this->id)
+                              ->where('category', 'picture')
+                              ->get();
+                    })->get();
     }
 
     public function getFilesAttribute()

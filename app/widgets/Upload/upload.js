@@ -58,7 +58,7 @@ var Upload = {
         var image = new Image();
         image.onload = function()
         {
-            var limit = 1600;
+            var limit = 1440;
 
             var width = image.naturalWidth;
             var height = image.naturalHeight;
