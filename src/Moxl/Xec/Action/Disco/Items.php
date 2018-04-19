@@ -32,11 +32,10 @@ class Items extends Action
         $counter = 0;
 
         foreach ($stanza->query->item as $item) {
-            $info = \App\Info::where('server', $this->_to)
-                             ->where('node', (string)$item->attributes()->node)
-                             ->first();
-
-            if(!$info) $info = new \App\Info;
+            $info = \App\Info::firstOrNew([
+                                    'server' => $this->_to,
+                                    'node' => (string)$item->attributes()->node
+                                ]);
 
             $info->setItem($item);
 
