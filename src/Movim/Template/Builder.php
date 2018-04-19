@@ -15,6 +15,7 @@ class Builder
     private $scripts = [];
     private $dir = 'ltr';
     private $public;
+    private $user;
 
     /**
      * Constructor. Determines whether to show the login page to the user or the
@@ -23,6 +24,7 @@ class Builder
     function __construct()
     {
         $this->theme = Configuration::findOrNew(1)->theme;
+        $this->user = \App\User::me();
     }
 
     function viewsPath($file)
