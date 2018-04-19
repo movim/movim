@@ -100,7 +100,7 @@ class CommunityHeader extends \Movim\Widget\Base
         $g = new Subscribe;
         $g->setTo($origin)
           ->setNode($node)
-          ->setFrom($this->user->getLogin())
+          ->setFrom($this->user->jid)
           ->setData($form)
           ->request();
 
@@ -108,7 +108,7 @@ class CommunityHeader extends \Movim\Widget\Base
             $a = new SubscriptionAdd;
             $a->setServer($origin)
               ->setNode($node)
-              ->setFrom($this->user->getLogin())
+              ->setFrom($this->user->jid)
               ->request();
         }
     }
@@ -142,14 +142,14 @@ class CommunityHeader extends \Movim\Widget\Base
             $g->setTo($origin)
               ->setNode($node)
               ->setSubid($s->subid)
-              ->setFrom($this->user->getLogin())
+              ->setFrom($this->user->jid)
               ->request();
         }
 
         $r = new SubscriptionRemove;
         $r->setServer($origin)
           ->setNode($node)
-          ->setFrom($this->user->getLogin())
+          ->setFrom($this->user->jid)
           ->request();
     }
 

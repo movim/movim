@@ -97,7 +97,7 @@ class Visio extends \Movim\Widget\Base
     {
         $stj = new SDPtoJingle(
             $sdp->sdp,
-            $this->user->getLogin(),
+            $this->user->jid,
             $to,
             'session-initiate');
 
@@ -111,7 +111,7 @@ class Visio extends \Movim\Widget\Base
     {
         $stj = new SDPtoJingle(
             $sdp->sdp,
-            $this->user->getLogin(),
+            $this->user->jid,
             $to,
             'session-accept');
 
@@ -125,7 +125,7 @@ class Visio extends \Movim\Widget\Base
     {
         $stj = new SDPtoJingle(
             'a='.$sdp->candidate,
-            $this->user->getLogin(),
+            $this->user->jid,
             $to,
             'transport-info',
             $sdp->sdpMid,

@@ -45,7 +45,7 @@ class PublishBrief extends \Movim\Widget\Base
 
         $s = new Subscribe;
         $s->setTo($server)
-          ->setFrom($this->user->getLogin())
+          ->setFrom($this->user->jid)
           ->setNode('urn:xmpp:microblog:0:comments/'.$parentid)
           ->request();
     }
@@ -115,7 +115,7 @@ class PublishBrief extends \Movim\Widget\Base
 
         if (Validator::stringType()->notEmpty()->validate(trim($form->title->value))) {
             $p = new PostPublish;
-            $p->setFrom($this->user->getLogin())
+            $p->setFrom($this->user->jid)
               ->setTo($form->to->value)
               ->setTitle(htmlspecialchars($form->title->value))
               ->setNode($form->node->value);
@@ -294,7 +294,7 @@ class PublishBrief extends \Movim\Widget\Base
     ) {
         if ($server == false
         && $node == false) {
-            $server = $this->user->getLogin();
+            $server = $this->user->jid;
             $node = 'urn:xmpp:microblog:0';
         }
 
@@ -325,7 +325,7 @@ class PublishBrief extends \Movim\Widget\Base
         $view->assign('draft', Cache::c('draft'));
 
         if ($reply) {
-            $view->assign('to', $this->user->getLogin());
+            $view->assign('to', $this->user->jid);
             $view->assign('node', 'urn:xmpp:microblog:0');
             $view->assign('item', $post);
             $view->assign('reply', $reply);

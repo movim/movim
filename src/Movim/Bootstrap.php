@@ -242,15 +242,9 @@ class Bootstrap
      */
     function loadLanguage()
     {
-        $user = new User;
-
-        if (php_sapi_name() != 'cli') {
-            $user->reload(true);
-        }
-
         $l = \Movim\i18n\Locale::start();
 
-        if ($user->isLogged()) {
+        if (DBUser::me()->isLogged()) {
             $lang = DBUser::me()->language;
         }
 

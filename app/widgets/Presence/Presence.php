@@ -163,7 +163,7 @@ class Presence extends \Movim\Widget\Base
     {
         // Replace me with GetItemsId when moving from Metronome
         $r = new GetItems;
-        $r->setTo($this->user->getLogin())
+        $r->setTo($this->user->jid)
           ->setNode('urn:xmpp:microblog:0')
           ->request();
     }

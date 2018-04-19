@@ -60,12 +60,6 @@ class User extends Model
     }
 
     /* Temporary */
-    public function getLogin()
-    {
-        return $this->getJidAttribute();
-    }
-
-    /* Temporary */
     public function getServer()
     {
         return (Session::start())->get('host');

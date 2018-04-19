@@ -17,7 +17,7 @@ class Base
 
     function __construct()
     {
-        $this->page = new Builder(new User);
+        $this->page = new Builder();
     }
 
     /**
@@ -53,9 +53,7 @@ class Base
     function checkSession()
     {
         if ($this->session_only) {
-            $user = new User;
-
-            if (!$user->isLogged()) {
+            if (!(new \App\User)->isLogged()) {
                 $this->name = 'login';
             }
         }
@@ -78,8 +76,7 @@ class Base
             $this->page->addScript('movim_websocket.js');
         }
 
-        $user = new User;
-        $content = new Builder($user);
+        $content = new Builder;
 
         if ($this->raw) {
             echo $content->build($this->name);

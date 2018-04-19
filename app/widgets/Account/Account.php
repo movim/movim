@@ -61,7 +61,7 @@ class Account extends \Movim\Widget\Base
         if ($validate->validate($p1)
         && $validate->validate($p2)) {
             if ($p1 == $p2) {
-                $arr = explodeJid($this->user->getLogin());
+                $arr = explodeJid($this->user->jid);
 
                 $cp = new ChangePassword;
                 $cp->setTo($arr['server'])
@@ -82,14 +82,14 @@ class Account extends \Movim\Widget\Base
     {
         $this->rpc('Presence.clearQuick');
         $view = $this->tpl();
-        $view->assign('jid', $this->user->getLogin());
+        $view->assign('jid', $this->user->jid);
         Dialog::fill($view->draw('_account_remove', true));
     }
 
     function ajaxClearAccount()
     {
         $view = $this->tpl();
-        $view->assign('jid', $this->user->getLogin());
+        $view->assign('jid', $this->user->jid);
         Dialog::fill($view->draw('_account_clear', true));
     }
 

@@ -30,7 +30,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $role = null;
 
         foreach($affiliations['owner'] as $r) {
-            if ($r['jid'] == $this->user->getLogin()) {
+            if ($r['jid'] == $this->user->jid) {
                 $role = 'owner';
             }
         }
@@ -63,7 +63,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $view->assign('server', $origin);
         $view->assign('node', $node);
         $view->assign('affiliations', $affiliations);
-        $view->assign('me', $this->user->getLogin());
+        $view->assign('me', $this->user->jid);
         $view->assign('roles', ($caps) ? $caps->getPubsubRoles() : []);
 
         $this->rpc(
@@ -95,7 +95,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
 
     private function deleted($packet)
     {
-        if ($packet->content['server'] != $this->user->getLogin()
+        if ($packet->content['server'] != $this->user->jid
         && substr($packet->content['node'], 0, 29) != 'urn:xmpp:microblog:0:comments') {
             Notification::append(null, $this->__('communityaffiliation.deleted'));
 

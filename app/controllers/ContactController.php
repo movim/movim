@@ -1,7 +1,6 @@
 <?php
 
 use Movim\Controller\Base;
-use Movim\User;
 
 class ContactController extends Base
 {
@@ -14,7 +13,7 @@ class ContactController extends Base
     {
         $this->page->setTitle(__('page.contacts'));
 
-        $user = new User;
+        $user = new \App\User;
         if (!$user->isLogged() && $this->fetchGet('s')) {
             $this->redirect('blog', [$this->fetchGet('s')]);
         }

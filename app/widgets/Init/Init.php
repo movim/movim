@@ -28,7 +28,7 @@ class Init extends \Movim\Widget\Base
     private function createPersistentStorage($node)
     {
         $p = new CreatePersistentStorage;
-        $p->setTo($this->user->getLogin())
+        $p->setTo($this->user->jid)
           ->setNode($node)
           ->request();
     }
@@ -38,7 +38,7 @@ class Init extends \Movim\Widget\Base
         $this->createPersistentStorage($node);
 
         $p = new ConfigurePersistentStorage;
-        $p->setTo($this->user->getLogin())
+        $p->setTo($this->user->jid)
           ->setNode($node);
 
         if (is_int($max)) {
@@ -53,7 +53,7 @@ class Init extends \Movim\Widget\Base
         $this->createPersistentStorage($node);
 
         $p = new ConfigurePersistentStorage;
-        $p->setTo($this->user->getLogin())
+        $p->setTo($this->user->jid)
           ->setNode($node)
           ->setAccessPresence()
           ->setMaxItems(10000)
@@ -65,7 +65,7 @@ class Init extends \Movim\Widget\Base
         $this->createPersistentStorage($node);
 
         $p = new ConfigurePersistentStorage;
-        $p->setTo($this->user->getLogin())
+        $p->setTo($this->user->jid)
           ->setNode($node)
           ->setAccessPresence()
           ->setMaxItems(1)
