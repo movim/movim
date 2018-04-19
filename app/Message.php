@@ -20,6 +20,15 @@ class Message extends Model
         'type'    => 'chat'
     ];
 
+    public function save(array $options = [])
+    {
+        try {
+            parent::save($options);
+        } catch (\Exception $e) {
+            // Race condition
+        }
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');
