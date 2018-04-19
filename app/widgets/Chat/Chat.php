@@ -592,7 +592,7 @@ class Chat extends \Movim\Widget\Base
 
         if ($muc) {
             $view->assign('room', $jid);
-            $view->assign('conference', $this->user->session->conferences
+            $view->assign('conference', $this->user->session->conferences()
                                              ->where('conference', $jid)
                                              ->first());
 
@@ -603,7 +603,7 @@ class Chat extends \Movim\Widget\Base
                 $view->assign('info', $mucinfo);
             }
         } else {
-            $view->assign('roster', $this->user->session->contacts->where('jid', $jid)->first());
+            $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
             $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         }
 

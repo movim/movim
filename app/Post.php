@@ -447,11 +447,13 @@ class Post extends Model
 
             switch ($enc['rel']) {
                 case 'enclosure':
-                    $att->category = 'file';
-                    $att->type = $enc['type'];
+                    if (isset($enc['type'])) {
+                        $att->category = 'file';
+                        $att->type = $enc['type'];
 
-                    if (typeIsPicture($enc['type'])) {
-                        $att->category = 'picture';
+                        if (typeIsPicture($enc['type'])) {
+                            $att->category = 'picture';
+                        }
                     }
                     break;
                 case 'alternate':
