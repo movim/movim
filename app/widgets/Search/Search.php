@@ -1,6 +1,7 @@
 <?php
 
 use Respect\Validation\Validator;
+use Illuminate\Database\Eloquent\Collection;
 
 class Search extends \Movim\Widget\Base
 {
@@ -14,7 +15,7 @@ class Search extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('empty', $this->prepareSearch(''));
-        $view->assign('contacts', App\User::me()->session->contacts);
+        $view->assign('contacts', \App\User::me()->session->contacts);
 
         Drawer::fill($view->draw('_search', true), true);
 
@@ -25,14 +26,8 @@ class Search extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $validate_subject = Validator::stringType()->length(1, 15);
-        if (!$validate_subject->validate($key)) {
-            $view->assign('empty', true);
-        } else {
-            $view->assign('empty', false);
-            $view->assign('presencestxt', getPresencesTxt());
-
-            $posts = false;
+        if (Validator::stringType()->length(1, 15)->validate($key)) {
+            $view->assign('posts', new Collection);
 
             if ($this->user->hasPubsub()) {
                 $posts = \App\Post::whereIn('id', function($query) use ($key) {
@@ -58,10 +53,6 @@ class Search extends \Movim\Widget\Base
                 $view->assign('posts', $posts);
             }
 
-            if ($posts == false) $view->assign('empty', true);
-        }
-
-        if (!empty($key)) {
             $contacts = \App\Contact::whereIn('id', function ($query) use ($key) {
                 $query->select('id')
                       ->from('users')
@@ -76,11 +67,17 @@ class Search extends \Movim\Widget\Base
             }
 
             $view->assign('contacts', $contacts);
-        } else {
-            $view->assign('contacts', null);
+
+            return $view->draw('_search_results', true);
         }
 
-        return $view->draw('_search_results', true);
+        return $this->prepareEmpty();
+    }
+
+    public function prepareEmpty()
+    {
+        $view = $this->tpl();
+        return $view->draw('_search_results_empty', true);
     }
 
     function ajaxSearch($key)

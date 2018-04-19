@@ -1,49 +1,47 @@
-{if="$empty == true && $contacts == null"}
-    <div class="placeholder icon search">
-        <h4>{$c->__('search.subtitle')}</h4>
-    </div>
-{else}
-    {if="$posts->isNotEmpty()"}
-    <ul class="list active divided middle">
-        <li class="subheader"><p>{$c->__('page.news')}</p></li>
-        {loop="$posts"}
-            {$c->prepareTicket($value)}
-        {/loop}
-    </ul>
-    {/if}
+{if="$posts->isEmpty() && $contacts->isEmpty()"}
+    {$c->prepareEmpty()}
+{/if}
 
-    {if="$contacts->isNotEmpty()"}
-    <ul class="list">
-        <li class="subheader">
-            <p>{$c->__('explore.explore')}</p>
-        </li>
-        {loop="$contacts"}
-            <li
-                id="{$value->jid|cleanupId}"
-                title="{$value->jid}"
-            >
-                {$url = $value->getPhoto('m')}
-                {if="$url"}
-                    <span class="primary icon bubble"
-                        style="background-image: url({$url});">
-                    </span>
-                {else}
-                    <span class="primary icon bubble color {$value->jid|stringToColor}">
-                        <i class="zmdi zmdi-account"></i>
-                    </span>
-                {/if}
-                <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
+{if="$posts->isNotEmpty()"}
+<ul class="list active divided middle">
+    <li class="subheader"><p>{$c->__('page.news')}</p></li>
+    {loop="$posts"}
+        {$c->prepareTicket($value)}
+    {/loop}
+</ul>
+{/if}
+
+{if="$contacts->isNotEmpty()"}
+<ul class="list">
+    <li class="subheader">
+        <p>{$c->__('explore.explore')}</p>
+    </li>
+    {loop="$contacts"}
+        <li
+            id="{$value->jid|cleanupId}"
+            title="{$value->jid}"
+        >
+            {$url = $value->getPhoto('m')}
+            {if="$url"}
+                <span class="primary icon bubble"
+                    style="background-image: url({$url});">
+                </span>
+            {else}
+                <span class="primary icon bubble color {$value->jid|stringToColor}">
                     <i class="zmdi zmdi-account"></i>
                 </span>
-                <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
-                    <i class="zmdi zmdi-comment-text-alt"></i>
-                </span>
-                <p class="normal line">{$value->truename}</p>
-                {if="$value->isEmpty()"}
-                    <p>{$value->jid}</p>
-                {/if}
-            </li>
-        {/loop}
-        </ul>
-    {/if}
+            {/if}
+            <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
+                <i class="zmdi zmdi-account"></i>
+            </span>
+            <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
+                <i class="zmdi zmdi-comment-text-alt"></i>
+            </span>
+            <p class="normal line">{$value->truename}</p>
+            {if="$value->isEmpty()"}
+                <p>{$value->jid}</p>
+            {/if}
+        </li>
+    {/loop}
+    </ul>
 {/if}
