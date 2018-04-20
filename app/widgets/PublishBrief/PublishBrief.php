@@ -75,7 +75,7 @@ class PublishBrief extends \Movim\Widget\Base
         $this->rpc('PublishBrief.checkEmbed');
     }
 
-    function ajaxSaveDraft($form)
+    function ajaxHttpSaveDraft($form)
     {
         $p = new \App\Post;
         $p->title = $form->title->value;
@@ -107,7 +107,7 @@ class PublishBrief extends \Movim\Widget\Base
         }
     }
 
-    function ajaxPublish($form)
+    function ajaxHttpPublish($form)
     {
         $this->rpc('PublishBrief.disableSend');
 
