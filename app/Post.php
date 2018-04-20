@@ -194,6 +194,13 @@ class Post extends Model
         return $this->attachments()->where('category', 'picture')->first();
     }
 
+    public function getAttachmentAttribute()
+    {
+        return $this->attachments()->whereIn('rel', ['enclosure', 'related'])
+                                   ->orderBy('rel', 'desc') // related first
+                                   ->first();
+    }
+
     public function getPreviousAttribute()
     {
         return \App\Post::where('server', $this->server)
@@ -494,105 +501,6 @@ class Post extends Model
                 }
             }
         }
-    }
-
-    public function getAttachments()
-    {
-        $attachments = null;
-        $this->openlink = null;
-
-        if (isset($this->links)) {
-            $links = $this->links;
-            $attachments = [
-                'pictures' => [],
-                'files' => [],
-                'links' => []
-            ];
-
-            foreach($links as $l) {
-                // If the href is not a valid URL we skip
-                if (!Validator::url()->validate($l['href'])) continue;
-
-                // Prepare the switch
-                $rel = isset($l['rel']) ? $l['rel'] : null;
-                switch($rel) {
-                    case 'enclosure':
-                        if (typeIsPicture($l['type'])) {
-                            array_push($attachments['pictures'], $l);
-                        } elseif ($l['type'] != 'picture') {
-                            array_push($attachments['files'], $l);
-                        }
-                        break;
-
-                    case 'related':
-                        if (preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $l['href'], $match)) {
-                            $this->youtube = $match[1];
-                        }
-
-                        array_push(
-                            $attachments['links'],
-                            [
-                                'href' => $l['href'],
-                                'url'  => parse_url($l['href']),
-                                'title'=> (isset($l['title'])) ? $l['title'] : false,
-                                'rel'  => 'related',
-                                'description' => (isset($l['description'])) ? $l['description'] : false,
-                                'logo' => (isset($l['logo'])) ? $l['logo'] : false
-                            ]
-                        );
-                        break;
-
-                    case 'alternate':
-                    default:
-                        $this->openlink = $l['href'];
-                        if (!$this->isMicroblog()) {
-                            array_push(
-                                $attachments['links'],
-                                [
-                                    'href' => $l['href'],
-                                    'url'  => parse_url($l['href']),
-                                    'rel'  => 'alternate'
-                                ]
-                            );
-                        }
-                        break;
-                }
-            }
-        }
-
-        if (empty($attachments['pictures'])) unset($attachments['pictures']);
-        if (empty($attachments['files']))    unset($attachments['files']);
-        if (empty($attachments['links']))    unset($attachments['links']);
-
-        return $attachments;
-    }
-
-    public function getAttachment()
-    {
-        $attachments = $this->getAttachments();
-
-        if (array_key_exists('links', $attachments)) {
-            foreach($attachments['links'] as $attachment) {
-                if (in_array($attachment['rel'], ['enclosure', 'related'])) {
-                    return $attachment;
-                }
-            }
-        }
-
-        unset($attachments['links']);
-
-        foreach($attachments as $key => $group) {
-            foreach($group as $attachment) {
-                if (in_array($attachment['rel'], ['enclosure', 'related'])) {
-                    return $attachment;
-                }
-            }
-        }
-    }
-
-    public function getPicture()
-    {
-        return $this->picture;
     }
 
     public function getUUID()

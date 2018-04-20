@@ -14,7 +14,7 @@
                 </span>
 
                 <p class="line">
-                    {if="$item != false"}
+                    {if="$post"}
                         {$c->__('button.edit')}
                     {elseif="$reply"}
                         {$c->__('button.share')}
@@ -39,7 +39,7 @@
             <form onsubmit="return false;" name="brief">
                 <input type="hidden" name="to" value="{$to}">
                 <input type="hidden" name="node" value="{$node}">
-                <input type="hidden" name="id" value="{if="$item != false"}{$item->nodeid}{/if}">
+                <input type="hidden" name="id" value="{if="$post"}{$post->nodeid}{/if}">
                 <input type="hidden" name="reply" value="{if="$reply"}1{else}0{/if}">
                 {if="$reply"}
                     <input type="hidden" name="replyserver" value="{$reply->server}">
@@ -54,14 +54,14 @@
                         required
                         onkeyup="MovimUtils.textareaAutoheight(this);"
                         placeholder="{$c->__('publishbrief.placeholder')}"
-                        type="text">{if="$item != false"}{$item->title}{elseif="$draft && !empty($draft->title)"}{$draft->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
+                        type="text">{if="$post"}{$post->title}{elseif="$draft && !empty($draft->title)"}{$draft->title}{elseif="$reply"}{$reply->title}{/if}</textarea>
                 </div>
                 <div {if="!$extended"}class="hide"{/if}>
                     <textarea
                         name="content"
                         placeholder="{$c->__('publishbrief.content_text')}"
                         oninput="MovimUtils.textareaAutoheight(this);"
-                        >{if="$item != false"}{$item->contentraw}{elseif="$draft && !empty($draft->content)"}{$draft->content}{/if}</textarea>
+                        >{if="$post"}{$post->contentraw}{elseif="$draft && !empty($draft->content)"}{$draft->content}{/if}</textarea>
                 </div>
                 <input
                     type="checkbox"
@@ -76,6 +76,8 @@
                     onchange="if (this.value != '') { PublishBrief_ajaxEmbedLoading(); PublishBrief_ajaxEmbedTest(this.value, document.querySelector('form[name=brief] input#imagenumber').value); }"
                     {if="$draft && !empty($draft->link)"}
                          value="{$draft->link}"
+                    {elseif="$post && $post->attachment"}
+                        value="{$post->attachment->href}"
                     {elseif="$url"}
                         value="{$url}"
                     {/if}

@@ -323,17 +323,16 @@ class PublishBrief extends \Movim\Widget\Base
         $session = Session::start();
         $view->assign('url', $session->get('share_url'));
         $view->assign('draft', Cache::c('draft'));
+        $view->assign('post', $post);
 
         if ($reply) {
             $view->assign('to', $this->user->jid);
             $view->assign('node', 'urn:xmpp:microblog:0');
-            $view->assign('item', $post);
             $view->assign('reply', $reply);
             $view->assign('replyblock', (new \Post)->prepareTicket($reply, true));
         } else {
             $view->assign('to', $server);
             $view->assign('node', $node);
-            $view->assign('item', $post);
             $view->assign('reply', false);
             $view->assign('embed', $this->prepareEmbedDefault());
         }
