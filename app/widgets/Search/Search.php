@@ -62,8 +62,8 @@ class Search extends \Movim\Widget\Base
 
             if (Validator::email()->validate($key)) {
                 $contact = new \App\Contact;
-                $contact->jid = $key;
-                $contacts->push();
+                $contact->id = $key;
+                $contacts->push($contact);
             }
 
             $view->assign('contacts', $contacts);
