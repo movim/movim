@@ -139,12 +139,12 @@
 
                     {if="$liked"}
                         <a class="button icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
-                            {$post->countLikes()} <i class="zmdi zmdi-favorite"></i>
+                            {$post->likes()->count()} <i class="zmdi zmdi-favorite"></i>
                         </a>
                     {else}
                         <a class="button icon flat gray" href="#"
                            onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
-                            {$post->countLikes()}
+                            {$post->likes()->count()}
                             {if="$liked"}
                                 <i class="zmdi zmdi-favorite"></i>
                             {else}
@@ -153,7 +153,7 @@
                         </a>
                     {/if}
                     <a class="button icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
-                        {$post->countComments()} <i class="zmdi zmdi-comment-outline"></i>
+                        {$post->comments()->count()} <i class="zmdi zmdi-comment-outline"></i>
                     </a>
                 {/if}
                 {if="!$public"}

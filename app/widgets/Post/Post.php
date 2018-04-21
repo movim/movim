@@ -178,10 +178,9 @@ class Post extends \Movim\Widget\Base
     function preparePost(\App\Post $p, $public = false, $card = false)
     {
         $view = $this->tpl();
-
         if (isset($p)) {
             if ($p->hasCommentsNode()
-            && !$public) {
+            && !$public && !$card) {
                 $this->requestComments($p); // Broken in case of repost
                 $view->assign('commentsdisabled', false);
             } else {

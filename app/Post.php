@@ -613,16 +613,6 @@ class Post extends Model
                         ->first();
     }
 
-    public function countComments()
-    {
-        return $this->comments()->count();
-    }
-
-    public function countLikes()
-    {
-        return $this->likes()->count();
-    }
-
     public function isLiked()
     {
         return ($this->likes()->where('aid', \App\User::me()->id)->count() > 0);

@@ -180,7 +180,6 @@ class Menu extends \Movim\Widget\Base
             if (in_array($type, ['all', 'news'])) {
                 $query = \App\Post::withSubscriptionsScope($query);
             }
-
         });
 
         $next = $page + 1;

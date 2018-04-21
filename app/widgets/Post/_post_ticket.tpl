@@ -39,12 +39,12 @@
             <a href="{$c->route('community', [$post->server, $post->node])}">{$post->node}</a>
         {/if}
 
-        {$count = $post->countLikes()}
+        {$count = $post->likes()->count()}
         {if="$count > 0"}
             {$count} <i class="zmdi zmdi-favorite-outline"></i>
         {/if}
 
-        {$count = $post->countComments()}
+        {$count = $post->comments()->count()}
         {if="$count > 0"}
             {$count} <i class="zmdi zmdi-comment-outline"></i>
         {/if}
