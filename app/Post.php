@@ -186,7 +186,8 @@ class Post extends Model
 
     public function getPicturesAttribute()
     {
-        return $this->attachments()->where('category', 'picture')->get();
+        return $this->attachments()->where('category', 'picture')
+                                   ->where('type', '!=', 'content')->get();
     }
 
     public function getPictureAttribute()
@@ -400,12 +401,10 @@ class Post extends Model
 
             if (is_array($results) && !empty($results)) {
                 $extra = (string)$results[0];
-                //$this->setAttachments($entry->entry->link, $extra);
             } else {
                 $results = $xml->xpath('//video/@poster');
                 if (is_array($results) && !empty($results)) {
                     $extra = (string)$results[0];
-                    //$this->setAttachments($entry->entry->link, $extra);
                 }
             }
 
@@ -434,13 +433,7 @@ class Post extends Model
 
     private function setAttachments($links, $extra = false)
     {
-        /*if ($extra) {
-            $attachment = new \App\Attachment;
-            $attachment->rel = 'enclosure';
-            $attachment->href = protectPicture($extra);
-            $attachment->category = 'picture';
-            $this->attachments[] = $attachment;
-        }*/
+        $picture = false;
 
         foreach($links as $attachment) {
             $enc = (array)$attachment->attributes();
@@ -467,6 +460,7 @@ class Post extends Model
 
                         if (typeIsPicture($enc['type'])) {
                             $att->category = 'picture';
+                            $picture = true;
                         }
                     }
                     break;
@@ -500,6 +494,15 @@ class Post extends Model
                     $this->commentnodeid = substr($url['query'], 36);
                 }
             }
+        }
+
+        if ($picture == false && $extra) {
+            $attachment = new \App\Attachment;
+            $attachment->rel = 'enclosure';
+            $attachment->href = $extra;
+            $attachment->type = 'content';
+            $attachment->category = 'picture';
+            $this->attachments[] = $attachment;
         }
     }
 
