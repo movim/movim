@@ -29,7 +29,7 @@ class Session extends Model
 
     public function contacts()
     {
-        return $this->hasMany('App\Roster')->orderBy('jid');
+        return $this->hasMany('App\Roster');
     }
 
     public function conferences()

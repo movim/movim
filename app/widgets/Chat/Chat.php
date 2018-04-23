@@ -806,12 +806,12 @@ class Chat extends \Movim\Widget\Base
         $chats[$this->user->id] = true;
 
         $top = $this->user->session->contacts()->join(DB::raw('(
-            select jidfrom as id, count(*) as count
+            select jidfrom as id, count(*) as number
             from messages
             group by jidfrom) as top
             '), 'top.id', '=', 'rosters.jid')
             ->whereNotIn('rosters.jid', array_keys($chats))
-            ->orderBy('count', 'desc')
+            ->orderBy('top.number', 'desc')
             ->take(8)
             ->get();
 

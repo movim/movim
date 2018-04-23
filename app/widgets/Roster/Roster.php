@@ -103,7 +103,10 @@ class Roster extends \Movim\Widget\Base
     function prepareItems()
     {
         $view = $this->tpl();
-        $view->assign('contacts', \App\User::me()->session->contacts);
+        $view->assign('contacts', \App\User::me()->session
+                                                 ->contacts()
+                                                 ->orderBy('jid')
+                                                 ->get());
 
         return $view->draw('_roster_list', true);
     }
