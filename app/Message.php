@@ -43,7 +43,7 @@ class Message extends Model
     {
         if (isset($this->attributes['file'])) {
             $file = unserialize($this->attributes['file']);
-            $file['size'] = sizeToCleanSize($file['size']);
+            $file['cleansize'] = sizeToCleanSize($file['size']);
             return $file;
         }
 
