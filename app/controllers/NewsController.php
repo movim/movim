@@ -19,20 +19,7 @@ class NewsController extends Base
         }
 
         if (!\App\User::me()->isLogged()) {
-            $p = \App\Post::where('server', $this->fetchGet('s'))
-                          ->where('node', $this->fetchGet('n'))
-                          ->where('nodeid', $this->fetchGet('i'))
-                          ->first();
-
-            if ($p) {
-                if ($p->isMicroblog()) {
-                    $this->redirect('blog', [$p->server, $p->nodeid]);
-                } else {
-                    $this->redirect('node', [$p->server, $p->node, $p->nodeid]);
-                }
-            } else {
-                $this->redirect('login');
-            }
+            $this->redirect('login');
         }
     }
 }
