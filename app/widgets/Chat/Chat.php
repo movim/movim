@@ -803,13 +803,15 @@ class Chat extends \Movim\Widget\Base
 
         $chats = \App\Cache::c('chats');
         if ($chats == null) $chats = [];
+        $chats[$this->user->id] = true;
 
-        $top = \App\Contact::join(DB::raw('(
+        $top = $this->user->session->contacts()->join(DB::raw('(
             select jidfrom as id, count(*) as count
             from messages
-            where type != \'groupchat\' group by jidfrom) as top
-            '), 'top.id', '=', 'contacts.id')
-            ->whereNotIn('contacts.id', array_keys($chats))
+            group by jidfrom) as top
+            '), 'top.id', '=', 'rosters.jid')
+            ->whereNotIn('rosters.jid', array_keys($chats))
+            ->where('top.type', 'groupchat')
             ->orderBy('count', 'desc')
             ->take(8)
             ->get();
