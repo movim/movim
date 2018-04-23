@@ -2,7 +2,7 @@
 </div>
 
 <ul class="list flex middle active">
-    {if="$top"}
+    {if="$top->isNotEmpty()"}
         <li class="subheader block large">
             <p>{$c->__('chat.frequent')}</p>
         </li>
