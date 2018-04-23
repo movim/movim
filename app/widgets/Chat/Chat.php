@@ -15,6 +15,7 @@ use Moxl\Xec\Action\BOB\Request;
 use Respect\Validation\Validator;
 
 use Ramsey\Uuid\Uuid;
+use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\Picture;
 use Movim\Session;
@@ -800,9 +801,22 @@ class Chat extends \Movim\Widget\Base
 
         $conferences = $conferences->orderBy('occupants', 'desc')->take(8)->get();
 
+        $chats = \App\Cache::c('chats');
+        if ($chats == null) $chats = [];
+
+        $top = \App\Contact::join(DB::raw('(
+            select jidfrom as id, count(*) as count
+            from messages
+            where type != \'groupchat\' group by jidfrom) as top
+            '), 'top.id', '=', 'contacts.id')
+            ->whereNotIn('contacts.id', array_keys($chats))
+            ->orderBy('count', 'desc')
+            ->take(8)
+            ->get();
+
         $view->assign('presencestxt', getPresencesTxt());
         $view->assign('conferences', $conferences);
-        $view->assign('top', []);
+        $view->assign('top', $top);
 
         return $view->draw('_chat_empty', true);
     }
