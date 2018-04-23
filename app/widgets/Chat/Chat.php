@@ -811,7 +811,6 @@ class Chat extends \Movim\Widget\Base
             group by jidfrom) as top
             '), 'top.id', '=', 'rosters.jid')
             ->whereNotIn('rosters.jid', array_keys($chats))
-            ->where('top.type', 'groupchat')
             ->orderBy('count', 'desc')
             ->take(8)
             ->get();
