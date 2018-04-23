@@ -810,7 +810,13 @@ class Chat extends \Movim\Widget\Base
             from messages
             group by jidfrom) as top
             '), 'top.id', '=', 'rosters.jid')
+            ->join(DB::raw('(
+            select min(value) as value, jid
+            from presences
+            group by jid) as presences
+            '), 'presences.jid', '=', 'rosters.jid')
             ->whereNotIn('rosters.jid', array_keys($chats))
+            ->orderBy('presences.value')
             ->orderBy('top.number', 'desc')
             ->take(8)
             ->get();
