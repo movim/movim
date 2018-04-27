@@ -24,8 +24,9 @@ class ContactDiscoPosts extends \Movim\Widget\Base
         $blogs = \App\Post::restrictToMicroblog()
                           ->restrictUserHost()
                           ->restrictNSFW()
+                          ->recents()
                           ->where('open', true)
-                          ->orderBy('published', 'desc')
+                          ->orderBy('posts.published', 'desc')
                           ->get();
         $view->assign('blogs', $blogs);
 

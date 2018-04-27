@@ -8,6 +8,7 @@ use Movim\Picture;
 use Movim\User;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class Post extends Model
 {
@@ -66,17 +67,17 @@ class Post extends Model
 
     public function scopeRestrictToMicroblog($query)
     {
-        return $query->where('node', 'urn:xmpp:microblog:0');
+        return $query->where('posts.node', 'urn:xmpp:microblog:0');
     }
 
     public function scopeRestrictToCommunities($query)
     {
-        return $query->where('node', '!=', 'urn:xmpp:microblog:0');
+        return $query->where('posts.node', '!=', 'urn:xmpp:microblog:0');
     }
 
     public function scopeWithoutComments($query)
     {
-        return $query->whereNull('parent_id');
+        return $query->whereNull('posts.parent_id');
     }
 
     public function scopeRestrictUserHost($query)
@@ -103,9 +104,23 @@ class Post extends Model
         }
     }
 
+    public function scopeRecents($query)
+    {
+        $query->join(DB::raw('(
+            select max(published) as published, server, node
+            from posts
+            group by server, node) as recents
+            '), function($join)
+            {
+                $join->on('posts.node', '=', 'recents.node');
+                $join->on('posts.published', '=', 'recents.published');
+            }
+        );
+    }
+
     protected function withContactsScope($query)
     {
-        return $query->orWhereIn('server', function($query) {
+        return $query->orWhereIn('posts.server', function($query) {
             $query->from('rosters')
                   ->select('jid')
                   ->where('session_id', SESSION_ID)

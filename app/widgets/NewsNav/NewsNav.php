@@ -10,10 +10,11 @@ class NewsNav extends Base
     public function display()
     {
         $blogs = \App\Post::where('open', true)
-                          ->orderBy('published', 'desc')
+                          ->orderBy('posts.published', 'desc')
                           ->restrictToMicroblog()
                           ->restrictUserHost()
                           ->restrictNSFW()
+                          ->recents()
                           ->take(6)
                           ->get()
                           ->shuffle();
@@ -21,14 +22,15 @@ class NewsNav extends Base
         $this->view->assign('blogs', $blogs);
 
         $posts = \App\Post::where('open', true)
-                          ->orderBy('published', 'desc')
+                          ->orderBy('posts.published', 'desc')
                           ->restrictToCommunities()
                           ->restrictUserHost()
                           ->restrictNSFW()
+                          ->recents()
                           ->take(6);
 
         if ($this->get('s') && $this->get('s') != 'subscriptions') {
-            $posts->where('server', $this->get('s'));
+            $posts->where('posts.server', $this->get('s'));
         }
 
         $this->view->assign('posts', $posts->get()->shuffle());
