@@ -30,13 +30,22 @@ span.icon.top.preview {
     height: 25rem;
 }
 
+img.icon.thumb {
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+}
+
 span.icon.primary.thumb {
-    left: 0;
-    width: 7rem;
-    top: 0;
     height: 100%;
+    left: 0;
+    top: 0;
+    width: 7rem;
     margin: 0;
     line-height: 7.5rem;
+    max-height: 100%;
 }
 /*
 *[dir="rtl"] span.icon.primary.thumb {

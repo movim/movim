@@ -111,7 +111,7 @@
                 </span>
             {/if}
             <div>
-                <ul class="normal list embed flex">
+                <ul class="list embed">
                     {if="$reply"}
                         {$replyblock}
                     {else}

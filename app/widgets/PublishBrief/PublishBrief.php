@@ -329,7 +329,7 @@ class PublishBrief extends \Movim\Widget\Base
             $view->assign('to', $this->user->jid);
             $view->assign('node', 'urn:xmpp:microblog:0');
             $view->assign('reply', $reply);
-            $view->assign('replyblock', (new \Post)->prepareTicket($reply, true));
+            $view->assign('replyblock', (new \Post)->prepareTicket($reply));
         } else {
             $view->assign('to', $server);
             $view->assign('node', $node);

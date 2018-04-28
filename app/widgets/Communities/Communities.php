@@ -28,7 +28,7 @@ class Communities extends \Movim\Widget\Base
             ->recents()
             ->orderBy('posts.published', 'desc')
             ->where('open', true)
-            ->take(40)
+            ->take(50)
             ->get();
 
         $view->assign('posts', $posts);
@@ -38,6 +38,6 @@ class Communities extends \Movim\Widget\Base
 
     public function prepareTicket(\App\Post $post)
     {
-        return (new \Post)->prepareTicket($post);
+        return (new \Post)->prepareTicket($post, true);
     }
 }

@@ -203,11 +203,11 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function prepareTicket(\App\Post $post, $large = false)
+    function prepareTicket(\App\Post $post, $big = false)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
-        $view->assign('large', $large);
+        $view->assign('big', $big);
 
         return $view->draw('_post_ticket', true);
     }

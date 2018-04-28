@@ -1,4 +1,7 @@
-<li class="block {if="$large"}large{/if}" onclick="MovimUtils.redirect('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
+<li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
+    {if="$big && $post->picture != null"}
+        <img class="icon thumb" src="{$post->picture->href|protectPicture}">
+    {elseif="!$big"}
     <span class="primary icon thumb color
         {if="$post->contact"}
             {$post->contact->jid|stringToColor}
@@ -20,6 +23,7 @@
             {$post->node|firstLetterCapitalize}
         {/if}
     </span>
+    {/if}
     <p class="line" {if="isset($post->title)"}title="{$post->title}"{/if}>
         {if="isset($post->title)"}
             {$post->title}
@@ -36,7 +40,10 @@
         {/if}
 
         {if="!$post->isMicroblog()"}
-            <a href="{$c->route('community', [$post->server, $post->node])}">{$post->node}</a>
+            <a title="{$post->server} / {$post->node}"
+               href="{$c->route('community', [$post->server, $post->node])}">
+               {$post->node}
+            </a>
         {/if}
 
         {$count = $post->likes()->count()}

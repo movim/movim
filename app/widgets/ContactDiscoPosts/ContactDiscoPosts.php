@@ -14,7 +14,7 @@ class ContactDiscoPosts extends \Movim\Widget\Base
 
     public function prepareTicket(\App\Post $post)
     {
-        return (new Post)->prepareTicket($post);
+        return (new Post)->prepareTicket($post, true);
     }
 
     public function preparePosts()
@@ -27,6 +27,7 @@ class ContactDiscoPosts extends \Movim\Widget\Base
                           ->recents()
                           ->where('open', true)
                           ->orderBy('posts.published', 'desc')
+                          ->take(40)
                           ->get();
         $view->assign('blogs', $blogs);
 
