@@ -120,8 +120,9 @@ class Api
         $config->set('Cache.SerializerPath', '/tmp');
         $config->set('HTML.DefinitionID', 'html5-definitions');
         $config->set('HTML.DefinitionRev', 1);
+        $config->set('CSS.AllowedProperties', ['float']);
         if ($def = $config->maybeGetRawHTMLDefinition()) {
-            $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
+            $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
               'src' => 'URI',
               'type' => 'Text',
               'width' => 'Length',
@@ -129,21 +130,22 @@ class Api
               'poster' => 'URI',
               'preload' => 'Enum#auto,metadata,none',
               'controls' => 'Bool',
-            ));
-            $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', array(
+            ]);
+            $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
               'src' => 'URI',
               'preload' => 'Enum#auto,metadata,none',
               'muted' => 'Bool',
               'controls' => 'Bool',
-            ));
-            $def->addElement('source', 'Block', 'Flow', 'Common', array(
+            ]);
+            $def->addElement('source', 'Block', 'Flow', 'Common', [
               'src' => 'URI',
               'type' => 'Text',
-            ));
+            ]);
         }
 
         $purifier = new \HTMLPurifier($config);
-        return trim($purifier->purify($string));
+        $trimmed = trim($purifier->purify($string));
+        return preg_replace('#(\s*<br\s*/?>)*\s*$#i', '', $trimmed);
     }
 
     public function addEmojis($post)

@@ -113,7 +113,7 @@
                         {/if}
                         {$post->getContent()|addHashtagsLinks}
                     </content>
-                <section>
+                </section>
             </li>
         {/if}
 
