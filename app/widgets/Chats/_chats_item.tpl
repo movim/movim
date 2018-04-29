@@ -45,13 +45,13 @@
             </span>
         {/if}
     </p>
-    {if="$roster && $roster->presence && $roster && $roster->presence->status"}
-        <p class="line">{$roster->presence->status}</p>
-    {elseif="isset($message)"}
+    {if="isset($message)"}
         {if="preg_match('#^\?OTR#', $message->body)"}
             <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
         {elseif="stripTags($message->body) != ''"}
             <p class="line">{$message->body|stripTags}</p>
         {/if}
+    {elseif="$roster && $roster->presence && $roster && $roster->presence->status"}
+        <p class="line">{$roster->presence->status}</p>
     {/if}
 </li>
