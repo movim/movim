@@ -76,8 +76,14 @@ class Message extends Model
         $to = current(explode('/',(string)$stanza->attributes()->to));
 
         $this->user_id    = \App\User::me()->id;
-        $this->jidto      = $to;
-        $this->jidfrom    = $jid[0];
+
+        if (!$this->jidto) {
+            $this->jidto      = $to;
+        }
+
+        if (!$this->jidfrom) {
+            $this->jidfrom    = $jid[0];
+        }
 
         if (isset($jid[1])) {
             $this->resource = $jid[1];
