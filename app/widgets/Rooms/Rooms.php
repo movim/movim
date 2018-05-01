@@ -6,6 +6,7 @@ use Moxl\Xec\Action\Bookmark\Set;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Message\Invite;
 use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\Muc\SetSubject;
 
 use Ramsey\Uuid\Uuid;
 
@@ -125,6 +126,38 @@ class Rooms extends \Movim\Widget\Base
     }
 
     /**
+     * @brief Get the subject form of a chatroom
+     */
+    function ajaxGetSubject($room)
+    {
+        if (!$this->validateRoom($room)) return;
+
+        $view = $this->tpl();
+        $view->assign('room', $this->user->session->conferences()
+                                 ->where('conference', $room)
+                                 ->first());
+
+        Dialog::fill($view->draw('_rooms_subject', true));
+    }
+
+    /**
+     * @brief Change the subject of a chatroom
+     */
+    function ajaxSetSubject($room, $form)
+    {
+        if (!$this->validateRoom($room)
+        || !Validator::stringType()->length(0, 200)->validate($form->subject->value)) {
+            return;
+        }
+
+        $p = new SetSubject;
+        $p->setTo($room)
+          ->setSubject($form->subject->value)
+          ->request();
+    }
+
+
+    /**
      * @brief Display the add room form
      */
     function ajaxAskInvite($room = false)
@@ -180,7 +213,7 @@ class Rooms extends \Movim\Widget\Base
         if (!$this->validateRoom($room)) return;
 
         $view = $this->tpl();
-        $view->assign('list', $this->user->session->conferences
+        $view->assign('list', $this->user->session->conferences()
                                    ->where('conference', $room)
                                    ->first()->presences);
         $view->assign('room', $room);

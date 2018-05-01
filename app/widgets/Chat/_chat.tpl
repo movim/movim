@@ -63,12 +63,12 @@
 
     <ul class="list context_menu active">
         {if="$conference->presence && $conference->presence->mucrole == 'moderator' && !$anon"}
-            <li class="divided" onclick="Chat_ajaxGetRoomConfig('{$room}')">
+            <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
                 <p class="normal">{$c->__('chatroom.administration')}</p>
             </li>
-            <!--<li class="divided" onclick="Chat_ajaxGetSubject('{$room}')">
+            <li class="divided" onclick="Rooms_ajaxGetSubject('{$room}')">
                 <p class="normal">{$c->__('chatroom.subject')}</p>
-            </li>-->
+            </li>
         {/if}
         {if="!$anon"}
             <li onclick="Rooms_ajaxRemoveConfirm('{$room}')">

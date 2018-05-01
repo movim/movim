@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "b26c23952177a2d1c8f16bc973ef4ca6",
+    "content-hash": "45f7e56a4c9c01069f24d5441471b58b",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1095,12 +1095,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "36808867a8b93426c085061df199c365488d78d0"
+                "reference": "7cb9649455fdf8b1872bf2db595e3af39493edb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/36808867a8b93426c085061df199c365488d78d0",
-                "reference": "36808867a8b93426c085061df199c365488d78d0",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/7cb9649455fdf8b1872bf2db595e3af39493edb7",
+                "reference": "7cb9649455fdf8b1872bf2db595e3af39493edb7",
                 "shasum": ""
             },
             "require": {
@@ -1133,7 +1133,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2018-04-19 21:43:47"
+            "time": "2018-05-01 21:36:51"
         },
         {
             "name": "nesbot/carbon",
@@ -2674,16 +2674,16 @@
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.7.0",
+            "version": "v1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b"
+                "reference": "3296adf6a6454a050679cde90f95350ad604b171"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/78be803ce01e55d3491c1397cf1c64beb9c1b63b",
-                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/3296adf6a6454a050679cde90f95350ad604b171",
+                "reference": "3296adf6a6454a050679cde90f95350ad604b171",
                 "shasum": ""
             },
             "require": {
@@ -2695,7 +2695,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.7-dev"
+                    "dev-master": "1.8-dev"
                 }
             },
             "autoload": {
@@ -2729,7 +2729,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2018-01-30T19:27:44+00:00"
+            "time": "2018-04-26T10:06:28+00:00"
         },
         {
             "name": "symfony/routing",

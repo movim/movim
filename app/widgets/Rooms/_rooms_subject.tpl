@@ -3,7 +3,7 @@
         <h3>{$c->__('chatroom.subject')}</h3>
 
         <div>
-            <textarea name="subject" placeholder="{$c->__('chatroom.subject')}">{$subject->subject}</textarea>
+            <textarea name="subject" placeholder="{$c->__('chatroom.subject')}">{$room->subject}</textarea>
             <label for="subject">{$c->__('chatroom.subject')}</label>
         </div>
     </section>
@@ -13,7 +13,7 @@
         </button>
         <button
             class="button flat"
-            onclick="Chat_ajaxSetSubject('{$room}', MovimUtils.formToJson('changesubject')); Dialog_ajaxClear();">
+            onclick="Rooms_ajaxSetSubject('{$room->conference}', MovimUtils.formToJson('changesubject')); Dialog_ajaxClear();">
             {$c->__('button.save')}
         </button>
     </div>

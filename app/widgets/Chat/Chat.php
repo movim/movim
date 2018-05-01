@@ -6,7 +6,6 @@ use Moxl\Xec\Action\Message\Publish;
 
 use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
-use Moxl\Xec\Action\Muc\SetSubject;
 
 use App\Configuration;
 
@@ -41,6 +40,8 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('paused', 'onPaused', 'chat');
         $this->registerEvent('gone', 'onGone', 'chat');
         $this->registerEvent('subject', 'onConferenceSubject', 'chat');
+        $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
+
 
         $this->registerEvent('muc_getconfig_handle', 'onRoomConfig', 'chat');
         $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved', 'chat');
@@ -84,7 +85,7 @@ class Chat extends \Movim\Widget\Base
         if ($message->user_id == $message->jidto && !$history
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
-            $roster = $this->user->session->contacts->where('jid', $from)->first();
+            $roster = $this->user->session->contacts()->where('jid', $from)->first();
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
             if ($contact != null
@@ -103,7 +104,7 @@ class Chat extends \Movim\Widget\Base
             } elseif ($message->type == 'groupchat'
                    && $message->quoted) {
                 $conference = $this->user->session
-                                   ->conferences->where('conference', $from)
+                                   ->conferences()->where('conference', $from)
                                    ->first();
 
                 Notification::append(
@@ -230,7 +231,7 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($room)) return;
 
-        $r = $this->user->session->conferences->where('conference', $room)->first();
+        $r = $this->user->session->conferences()->where('conference', $room)->first();
 
         if ($r) {
             if (!$r->connected) {
@@ -506,40 +507,6 @@ class Chat extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Get the subject form of a chatroom
-     */
-    /*function ajaxGetSubject($room)
-    {
-        if (!$this->validateJid($room)) return;
-
-        $view = $this->tpl();
-
-        $md = new \Modl\MessageDAO;
-        $s = $md->getRoomSubject($room);
-
-        $view->assign('room', $room);
-        $view->assign('subject', $s);
-
-        Dialog::fill($view->draw('_chat_subject', true));
-    }*/
-
-    /**
-     * @brief Change the subject of a chatroom
-     */
-    /*function ajaxSetSubject($room, $form)
-    {
-        if (!$this->validateJid($room)) return;
-
-        $validate_subject = Validator::stringType()->length(0, 200);
-        if (!$validate_subject->validate($form->subject->value)) return;
-
-        $p = new SetSubject;
-        $p->setTo($room)
-          ->setSubject($form->subject->value)
-          ->request();
-    }*/
-
-    /**
      * @brief Set last displayed message
      */
     function ajaxDisplayed($jid, $id)
@@ -567,7 +534,7 @@ class Chat extends \Movim\Widget\Base
     {
         if (!$this->validateJid($jid)) return;
 
-        $this->user->messages->where(function ($query) use ($jid) {
+        $this->user->messages()->where(function ($query) use ($jid) {
             $query->where('jidfrom', $jid)
                   ->orWhere('jidto', $jid);
         })->delete();
@@ -791,7 +758,7 @@ class Chat extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $conferences = \App\Info::where('category', 'conference')
-                                ->whereNotIn('server', $this->user->session->conferences->pluck('conference')->toArray())
+                                ->whereNotIn('server', $this->user->session->conferences()->pluck('conference')->toArray())
                                 ->where('mucpublic', true)
                                 ->where('mucpersistent', true);
 

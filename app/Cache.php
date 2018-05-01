@@ -83,9 +83,11 @@ class Cache extends Model
             base64_encode(gzcompress(serialize($object)))
         );
 
-        $cache = Cache::firstOrNew(['user_id' => User::me()->id, 'name' => $key]);
-        $cache->data = $data;
-        $cache->save();
+        if (User::me()->id) {
+            $cache = Cache::firstOrNew(['user_id' => User::me()->id, 'name' => $key]);
+            $cache->data = $data;
+            $cache->save();
+        }
     }
 
     /**
