@@ -9,13 +9,13 @@ class SetSubject extends Action
 {
     private $_to;
     private $_subject;
-    
-    public function request() 
+
+    public function request()
     {
         $this->store();
         Muc::setSubject($this->_to, $this->_subject);
     }
-    
+
     public function setTo($to)
     {
         $this->_to = $to;
@@ -27,8 +27,17 @@ class SetSubject extends Action
         $this->_subject = $subject;
         return $this;
     }
-    
-    public function handle($stanza, $parent = false) {
-        $this->deliver();
+
+    public function handle($stanza, $parent = false)
+    {
+        $message = \App\Message::findByStanza($stanza);
+        $message->set($stanza, $parent);
+
+        if (!$message->isOTR()
+        && (!$message->isEmpty() || $message->isSubject())) {
+            $message->save();
+            $this->pack($message);
+            $this->deliver();
+        }
     }
 }
