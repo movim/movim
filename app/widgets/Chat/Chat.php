@@ -382,10 +382,7 @@ class Chat extends \Movim\Widget\Base
     function ajaxHttpCorrect($to, $message)
     {
         $m = $this->user->messages()
-                        ->where(function ($query) use ($to) {
-                            $query->where('jidfrom', $to)
-                                  ->orWhere('jidto', $to);
-                        })
+                        ->where('jidto', $to)
                         ->orderBy('published', 'desc')
                         ->first();
 
@@ -403,10 +400,7 @@ class Chat extends \Movim\Widget\Base
     function ajaxLast($to)
     {
         $m = $this->user->messages()
-                        ->where(function ($query) use ($to) {
-                            $query->where('jidfrom', $to)
-                                  ->orWhere('jidto', $to);
-                        })
+                        ->where('jidto', $to)
                         ->orderBy('published', 'desc')
                         ->first();
 
