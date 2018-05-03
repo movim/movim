@@ -30,7 +30,11 @@
                 <th>Client</th>
                 <th>Count</th>
                 {loop="$nslist"}
-                    <th><a href="{$c->route('about', $key, 'xep_widget')}">{$key}</a></th>
+                    <th>
+                        <a target="_blank" href="https://xmpp.org/extensions/xep-{$key}.html">
+                            {$key}
+                        </a>
+                    </th>
                 {/loop}
             </tr>
         </thead>

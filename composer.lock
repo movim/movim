@@ -1594,16 +1594,16 @@
         },
         {
             "name": "ratchet/rfc6455",
-            "version": "v0.2.3",
+            "version": "0.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ratchetphp/RFC6455.git",
-                "reference": "cc8a1a46a703ce01de10fdb5fab387381b66edc8"
+                "reference": "1612f528c3496ad06e910d0f8b6f16ab97696706"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ratchetphp/RFC6455/zipball/cc8a1a46a703ce01de10fdb5fab387381b66edc8",
-                "reference": "cc8a1a46a703ce01de10fdb5fab387381b66edc8",
+                "url": "https://api.github.com/repos/ratchetphp/RFC6455/zipball/1612f528c3496ad06e910d0f8b6f16ab97696706",
+                "reference": "1612f528c3496ad06e910d0f8b6f16ab97696706",
                 "shasum": ""
             },
             "require": {
@@ -1639,7 +1639,7 @@
                 "rfc6455",
                 "websocket"
             ],
-            "time": "2017-09-13T13:49:42+00:00"
+            "time": "2018-05-02T14:52:00+00:00"
         },
         {
             "name": "react/cache",

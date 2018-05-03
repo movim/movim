@@ -35,11 +35,9 @@ class Caps extends \Movim\Widget\Base
         $oldname = '';
 
         foreach ($clients as $c) {
-            $clientname = reset(explode(
-                    '#',
-                    reset(explode(' ', $c->name))
-                    )
-                );
+            $parts = explode(' ', $c->name);
+            $parts = explode('#', reset($parts));
+            $clientname = reset($parts);
 
             if ($oldname == $clientname) continue;
 
