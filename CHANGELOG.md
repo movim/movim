@@ -1,6 +1,10 @@
 Moxl Changelog
 ================
 
+v1.10
+---------------------------
+* XEP-0153: vCard-Based Avatar
+
 v1.9
 ---------------------------
 * Replace movim/sasl2 with fabiang/sasl

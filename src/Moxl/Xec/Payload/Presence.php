@@ -24,10 +24,11 @@ class Presence extends Payload
             $presence->set($stanza);
             $presence->save();
 
-            /*if($p->photo) {
+            $refreshable = $presence->refreshable;
+            if($refreshable) {
                 $r = new Get;
-                $r->setTo(echapJid((string)$stanza->attributes()->from))->request();
-            }*/
+                $r->setTo(echapJid((string)$refreshable))->request();
+            }
 
             if($presence->muc
             && isset($stanza->x)
