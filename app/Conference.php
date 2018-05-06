@@ -88,6 +88,6 @@ class Conference extends Model
         ];
 
         $p = new Picture;
-        return $p->get($this->conference . '_muc', $sizes[$size][0], $sizes[$size][1]);
+        return $p->get($this->conference, $sizes[$size][0], $sizes[$size][1]);
     }
 }

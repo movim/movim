@@ -55,6 +55,18 @@ class Presence extends Model
         return getPresencesTxt()[$this->value];
     }
 
+    public function getRefreshableAttribute()
+    {
+        if (!$this->avatarhash) return false;
+
+        $count = \App\Contact::where('id', ($this->muc) ? $this->jid.'/'.$this->resource : $this->jid)
+                             ->where('avatarhash', (string)$this->avatarhash)
+                             ->count();
+        return ($count == 0)
+            ? ($this->muc) ? $this->jid.'/'.$this->resource : $this->jid
+            : false;
+    }
+
     public static function findByStanza($stanza)
     {
         $jid = explode('/',(string)$stanza->attributes()->from);
@@ -127,9 +139,9 @@ class Presence extends Model
                             $this->mucaffiliation = (string)$c->item->attributes()->affiliation;
                         }
                         break;
-                    /*case 'vcard-temp:x:update' :
-                        $this->photo = true;
-                        break;*/
+                    case 'vcard-temp:x:update' :
+                        $this->avatarhash = (string)$c->photo;
+                        break;
                 }
             }
         }

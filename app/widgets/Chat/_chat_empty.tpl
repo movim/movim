@@ -43,6 +43,7 @@
             <span class="primary icon bubble color {$value->name|stringToColor}">
                 {$value->name|firstLetterCapitalize}
             </span>
+
             <p class="line">{$value->name}
                 <span class="second">{$value->server}</span>
             </p>

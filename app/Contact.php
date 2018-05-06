@@ -42,6 +42,7 @@ class Contact extends Model
                 requestUrl((string)$vcard->vCard->PHOTO, 1));
         } else {
             $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
+            $this->avatarhash = sha1(base64_decode($this->photobin));
         }
 
         $this->description = (string)$vcard->vCard->DESC;

@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "14cad18558a0c82c5c336ab2efa5ce20",
+    "content-hash": "8f4cfc8fd25e13e17fd96e8b69cdcbd2",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1172,7 +1172,7 @@
             "keywords": [
                 "emoji"
             ],
-            "time": "2016-11-15T20:35:47+00:00"
+            "time": "2016-11-15 20:35:47"
         },
         {
             "name": "illuminate/container",
@@ -1498,12 +1498,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "7cb9649455fdf8b1872bf2db595e3af39493edb7"
+                "reference": "91b7771b60d8eac6ae4ed78f5e92e7c744e6f656"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/7cb9649455fdf8b1872bf2db595e3af39493edb7",
-                "reference": "7cb9649455fdf8b1872bf2db595e3af39493edb7",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/91b7771b60d8eac6ae4ed78f5e92e7c744e6f656",
+                "reference": "91b7771b60d8eac6ae4ed78f5e92e7c744e6f656",
                 "shasum": ""
             },
             "require": {
@@ -1536,7 +1536,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2018-05-01T21:36:51+00:00"
+            "time": "2018-05-06 21:24:53"
         },
         {
             "name": "nesbot/carbon",
@@ -1913,7 +1913,7 @@
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15T14:21:40+00:00"
+            "time": "2016-12-15 14:21:40"
         },
         {
             "name": "ramsey/uuid",
@@ -2259,7 +2259,7 @@
                 "server",
                 "streaming"
             ],
-            "time": "2016-07-06T23:51:32+00:00"
+            "time": "2016-07-06 23:51:32"
         },
         {
             "name": "react/http-client",
@@ -2592,7 +2592,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2018-04-10T05:50:26+00:00"
+            "time": "2018-04-10 05:50:26"
         },
         {
             "name": "respect/validation",
