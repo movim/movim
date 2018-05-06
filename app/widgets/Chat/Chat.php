@@ -42,7 +42,6 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('subject', 'onConferenceSubject', 'chat');
         $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
 
-
         $this->registerEvent('muc_getconfig_handle', 'onRoomConfig', 'chat');
         $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved', 'chat');
         $this->registerEvent('presence_muc_handle', 'onMucConnected', 'chat');

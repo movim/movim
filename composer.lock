@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "8f4cfc8fd25e13e17fd96e8b69cdcbd2",
+    "content-hash": "c5cfbe165683cd570359342c250dad20",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1498,19 +1498,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "91b7771b60d8eac6ae4ed78f5e92e7c744e6f656"
+                "reference": "37a3f16e60c3f81539f44fb6ac5f65ffc6511736"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/91b7771b60d8eac6ae4ed78f5e92e7c744e6f656",
-                "reference": "91b7771b60d8eac6ae4ed78f5e92e7c744e6f656",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/37a3f16e60c3f81539f44fb6ac5f65ffc6511736",
+                "reference": "37a3f16e60c3f81539f44fb6ac5f65ffc6511736",
                 "shasum": ""
             },
             "require": {
                 "fabiang/sasl": "^1.0",
                 "monolog/monolog": "1.8.*",
                 "pear/net_dns2": "^1.4",
-                "php": ">=5.3.0",
+                "php": ">=7.0.0",
                 "ramsey/uuid": "^3.2"
             },
             "type": "library",
@@ -1536,7 +1536,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2018-05-06 21:24:53"
+            "time": "2018-05-06 21:51:19"
         },
         {
             "name": "nesbot/carbon",
