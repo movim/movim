@@ -4,6 +4,26 @@ namespace Moxl\Stanza;
 
 class MAM
 {
+    static function getConfig()
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $prefs = $dom->createElementNS('urn:xmpp:mam:2', 'prefs');
+
+        $xml = \Moxl\API::iqWrapper($prefs, false, 'get');
+        \Moxl\API::request($xml);
+    }
+
+    static function setConfig($default)
+    {
+        $dom = new \DOMDocument('1.0', 'UTF-8');
+        $prefs = $dom->createElementNS('urn:xmpp:mam:2', 'prefs');
+        $prefs->setAttribute('default', $default);
+        $dom->appendChild($prefs);
+
+        $xml = \Moxl\API::iqWrapper($prefs, false, 'set');
+        \Moxl\API::request($xml);
+    }
+
     static function get(
         $to = null, $id, $jid = false,
         $start = false, $end = false,
