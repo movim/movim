@@ -21,6 +21,8 @@ v0.14 (trunk)
  * Move Pubsub subscriptions to a specific PEP nodes to prevent overwritting by another client
  * Replace Modl with Eloquent
  * Fix IPC cleanup when launching the daemon
+ * Add support for MAM configuration
+ * Add support for XEP-0153: vCard-Based Avatar
 
 v0.13
 ---------------------------

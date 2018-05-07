@@ -90,6 +90,11 @@ class User extends Model
         }
     }
 
+    public function hasMAM()
+    {
+        return ($this->capability && $this->capability->isMAM2());
+    }
+
     public function hasPubsub()
     {
         return ($this->capability && $this->capability->isPubsub());

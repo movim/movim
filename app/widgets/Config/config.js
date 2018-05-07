@@ -4,3 +4,7 @@ var Config = {
         document.body.classList.toggle('nightmode');
     }
 }
+
+MovimWebsocket.attach(function() {
+    Config_ajaxMAMGetConfig();
+});

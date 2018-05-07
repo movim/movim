@@ -114,7 +114,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-19 22:43+0200\n"
+"POT-Creation-Date: 2018-05-07 23:10+0200\n"
 "PO-Revision-Date: 2018-01-25 22:47+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -407,14 +407,6 @@ msgstr "Aperçu général"
 #: [compatibility]info
 msgid "Movim has found some issues or things that need to be fixed or improved"
 msgstr "Movim a rencontré des problèmes ou des soucis qui doivent être corrigés ou améliorés"
-
-#: [compatibility]php1
-msgid "Update your PHP-Version: %s"
-msgstr "Mettez à jour votre version de PHP : %s"
-
-#: [compatibility]php2
-msgid "Required: 5.3.0"
-msgstr "Requis : 5.3.0"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
@@ -959,6 +951,26 @@ msgstr "Mode Nuit"
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
 msgstr "Des couleurs sombres pour reposer vos yeux"
+
+#: [config]mam
+msgid "Archiving preferences"
+msgstr ""
+
+#: [config]mam_text
+msgid "Server-side archiving preferences"
+msgstr ""
+
+#: [config]mam_always
+msgid "Always"
+msgstr ""
+
+#: [config]mam_never
+msgid "Never"
+msgstr ""
+
+#: [config]mam_saved
+msgid "Archiving preferences saved"
+msgstr ""
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -2811,6 +2823,12 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
+
+#~ msgid "Update your PHP-Version: %s"
+#~ msgstr "Mettez à jour votre version de PHP : %s"
+
+#~ msgid "Required: 5.3.0"
+#~ msgstr "Requis : 5.3.0"
 
 #~ msgid "Monthly Subscriptions"
 #~ msgstr "Souscriptions par mois"

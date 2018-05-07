@@ -110,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-19 22:43+0200\n"
+"POT-Creation-Date: 2018-05-07 23:10+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Ido (http://www.transifex.com/movim/movim/language/io/)\n"
@@ -402,14 +402,6 @@ msgstr ""
 
 #: [compatibility]info
 msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr ""
-
-#: [compatibility]php1
-msgid "Update your PHP-Version: %s"
-msgstr ""
-
-#: [compatibility]php2
-msgid "Required: 5.3.0"
 msgstr ""
 
 #: [compatibility]rights
@@ -956,6 +948,26 @@ msgstr ""
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
+msgstr ""
+
+#: [config]mam
+msgid "Archiving preferences"
+msgstr ""
+
+#: [config]mam_text
+msgid "Server-side archiving preferences"
+msgstr ""
+
+#: [config]mam_always
+msgid "Always"
+msgstr ""
+
+#: [config]mam_never
+msgid "Never"
+msgstr ""
+
+#: [config]mam_saved
+msgid "Archiving preferences saved"
 msgstr ""
 
 #: [cssurl]label

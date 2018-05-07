@@ -112,7 +112,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-19 22:43+0200\n"
+"POT-Creation-Date: 2018-05-07 23:10+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -405,14 +405,6 @@ msgstr "Általános Áttekintés"
 #: [compatibility]info
 msgid "Movim has found some issues or things that need to be fixed or improved"
 msgstr "A Movim talált néhány problémát, amelyet helyre kell hozni vagy amelyen javítani kell"
-
-#: [compatibility]php1
-msgid "Update your PHP-Version: %s"
-msgstr "A PHP verziód: %s"
-
-#: [compatibility]php2
-msgid "Required: 5.3.0"
-msgstr "Szükséges verzió: 5.3.0"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
@@ -961,6 +953,26 @@ msgstr ""
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
+msgstr ""
+
+#: [config]mam
+msgid "Archiving preferences"
+msgstr ""
+
+#: [config]mam_text
+msgid "Server-side archiving preferences"
+msgstr ""
+
+#: [config]mam_always
+msgid "Always"
+msgstr ""
+
+#: [config]mam_never
+msgid "Never"
+msgstr ""
+
+#: [config]mam_saved
+msgid "Archiving preferences saved"
 msgstr ""
 
 #: [cssurl]label
@@ -2818,6 +2830,12 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Update your PHP-Version: %s"
+#~ msgstr "A PHP verziód: %s"
+
+#~ msgid "Required: 5.3.0"
+#~ msgstr "Szükséges verzió: 5.3.0"
 
 #, fuzzy
 #~ msgid "What do the little banners refer to"
