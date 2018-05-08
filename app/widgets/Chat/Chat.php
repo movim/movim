@@ -33,8 +33,8 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('invitation', 'onMessage');
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
-        $this->registerEvent('receiptack', 'onMessage');
-        $this->registerEvent('displayed', 'onMessage');
+        $this->registerEvent('receiptack', 'onMessageReceipt');
+        $this->registerEvent('displayed', 'onMessage', 'chat');
         $this->registerEvent('mamresult', 'onMessageHistory', 'chat');
         $this->registerEvent('composing', 'onComposing', 'chat');
         $this->registerEvent('paused', 'onPaused', 'chat');
@@ -75,7 +75,12 @@ class Chat extends \Movim\Widget\Base
         $this->onMessage($packet, true);
     }
 
-    function onMessage($packet, $history = false)
+    function onMessageReceipt($packet)
+    {
+        $this->onMessage($packet, false, true);
+    }
+
+    function onMessage($packet, $history = false, $receipt = false)
     {
         $message = $packet->content;
 
@@ -101,7 +106,8 @@ class Chat extends \Movim\Widget\Base
                     $this->route('chat', $contact->jid)
                 );
             } elseif ($message->type == 'groupchat'
-                   && $message->quoted) {
+                   && $message->quoted
+                   && !$receipt) {
                 $conference = $this->user->session
                                    ->conferences()->where('conference', $from)
                                    ->first();
@@ -465,6 +471,7 @@ class Chat extends \Movim\Widget\Base
                     $this->prepareMessage($message);
                 }
             }
+
             $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, true);
             $this->_wrapper = [];
         }
