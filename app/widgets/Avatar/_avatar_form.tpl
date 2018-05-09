@@ -30,7 +30,7 @@
                     <i class="zmdi zmdi-attachment-alt"></i>
                 </span>
                 <p>{$c->__('avatar.file')}</p>
-                <p><input type="file" onchange="Avatar.file(this.files);"></p>
+                <p><input type="file" onchange="MovimAvatar.file(this.files, 'avatarform');"></p>
             </li>
         </ul>
     </div>

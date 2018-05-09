@@ -5,3 +5,8 @@
 #rooms_widget ul li.room {
     white-space: nowrap;
 }
+
+form[name=avatarroom] img {
+    margin: 0 auto;
+    display: block;
+}

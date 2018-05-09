@@ -7,6 +7,7 @@ use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Message\Invite;
 use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Muc\SetSubject;
+use Moxl\Xec\Action\Vcard\Set as VcardSet;
 
 use Ramsey\Uuid\Uuid;
 
@@ -14,6 +15,7 @@ use Respect\Validation\Validator;
 use Illuminate\Support\Collection;
 
 use Movim\Session;
+use Movim\Picture;
 
 class Rooms extends \Movim\Widget\Base
 {
@@ -24,6 +26,7 @@ class Rooms extends \Movim\Widget\Base
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('bookmark_get_handle', 'onGetBookmark');
         $this->registerEvent('bookmark_set_handle', 'onBookmark');
+        $this->registerEvent('vcard_set_handle', 'onAvatarSet', 'chat');
         $this->registerEvent('presence_muc_handle', 'onConnected', 'chat');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected', 'chat');
         $this->registerEvent('presence_muc_errorconflict', 'onConflict');
@@ -46,6 +49,12 @@ class Rooms extends \Movim\Widget\Base
                 null
             );
         }
+    }
+
+    function onAvatarSet($packet)
+    {
+        $this->rpc('Dialog_ajaxClear');
+        Notification::append(null, $this->__('avatar.updated'));
     }
 
     function onRegistrationRequired($packet)
@@ -123,6 +132,44 @@ class Rooms extends \Movim\Widget\Base
         $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsService());
 
         Dialog::fill($view->draw('_rooms_add', true));
+    }
+
+    /**
+     * @brief Get the avatar form
+     */
+    function ajaxGetAvatar($room)
+    {
+        if (!$this->validateRoom($room)) return;
+
+        $view = $this->tpl();
+        $view->assign('room', $this->user->session->conferences()
+                                 ->where('conference', $room)
+                                 ->first());
+
+        Dialog::fill($view->draw('_rooms_avatar', true));
+    }
+
+    /**
+     * @brief Set the avatar
+     */
+    function ajaxSetAvatar($room, $form)
+    {
+        if (!$this->validateRoom($room)) return;
+
+        $p = new Picture;
+        $p->fromBase($form->photobin->value);
+
+        $p->set('temp', 'jpeg', 60);
+
+        $p = new Picture;
+        $p->get('temp');
+
+        $vcard = new stdClass;
+        $vcard->photobin->value = $p->toBase();
+        $vcard->phototype->value = 'image/jpeg';
+
+        $r = new VcardSet;
+        $r->setData($vcard)->setTo($room)->request();
     }
 
     /**

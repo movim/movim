@@ -23,6 +23,7 @@ v0.14 (trunk)
  * Fix IPC cleanup when launching the daemon
  * Add support for MAM configuration
  * Add support for XEP-0153: vCard-Based Avatar
+ * Allow avatars to be retrieved and set for chatrooms
 
 v0.13
 ---------------------------

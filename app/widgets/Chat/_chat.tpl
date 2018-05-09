@@ -66,6 +66,9 @@
             <li onclick="Chat_ajaxGetRoomConfig('{$room}')">
                 <p class="normal">{$c->__('chatroom.administration')}</p>
             </li>
+            <li onclick="Rooms_ajaxGetAvatar('{$room}')">
+                <p class="normal">{$c->__('page.avatar')}</p>
+            </li>
             <li class="divided" onclick="Rooms_ajaxGetSubject('{$room}')">
                 <p class="normal">{$c->__('chatroom.subject')}</p>
             </li>

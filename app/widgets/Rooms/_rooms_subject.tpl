@@ -6,7 +6,9 @@
             <textarea name="subject" placeholder="{$c->__('chatroom.subject')}">{$room->subject}</textarea>
             <label for="subject">{$c->__('chatroom.subject')}</label>
         </div>
-    </section>
+    </form>
+</section>
+<div>
     <div>
         <button class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.close')}
