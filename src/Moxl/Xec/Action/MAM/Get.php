@@ -16,6 +16,7 @@ class Get extends Action
     private $_end;
     private $_limit;
     private $_after;
+    private $_before;
     private $_version = '2';
 
     public function request()
@@ -29,7 +30,8 @@ class Get extends Action
 
         MAM::get($this->_to, $this->_queryid, $this->_jid,
             $this->_start, $this->_end,
-            $this->_limit, $this->_after, $this->_version);
+            $this->_limit, $this->_after, $this->_before,
+            $this->_version);
     }
 
     public function setTo($to)
@@ -59,6 +61,12 @@ class Get extends Action
     public function setAfter($after)
     {
         $this->_after = $after;
+        return $this;
+    }
+
+    public function setBefore($before = true)
+    {
+        $this->_before = $before;
         return $this;
     }
 

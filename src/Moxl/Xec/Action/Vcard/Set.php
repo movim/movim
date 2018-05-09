@@ -28,12 +28,13 @@ use Moxl\Stanza\Vcard;
 
 class Set extends Action
 {
+    private $_to;
     private $_data;
 
     public function request()
     {
         $this->store();
-        Vcard::set($this->_data);
+        Vcard::set($this->_to, $this->_data);
     }
 
     public function setData($data)
@@ -42,7 +43,15 @@ class Set extends Action
         return $this;
     }
 
+    public function setTo($to)
+    {
+        $this->_to = $to;
+        return $this;
+    }
+
     public function handle($stanza, $parent = false)
     {
+        $this->pack($this->_to);
+        $this->deliver();
     }
 }
