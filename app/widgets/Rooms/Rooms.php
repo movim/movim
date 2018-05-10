@@ -165,6 +165,8 @@ class Rooms extends \Movim\Widget\Base
         $p->get('temp');
 
         $vcard = new stdClass;
+        $vcard->photobin = new stdClass;
+        $vcard->phototype = new stdClass;
         $vcard->photobin->value = $p->toBase();
         $vcard->phototype->value = 'image/jpeg';
 

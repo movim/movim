@@ -82,6 +82,7 @@ class Conference extends Model
     public function getPhoto($size = 'l')
     {
         $sizes = [
+            'o'     => [false, false],
             'l'     => [210 , false],
             'm'     => [120 , false],
             's'     => [50  , false],
