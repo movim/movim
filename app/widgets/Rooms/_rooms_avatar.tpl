@@ -1,7 +1,7 @@
 <section class="scroll">
     <form name="avatarroom">
         <img src="{$room->getPhoto('l')}">
-        <input type="hidden" name="photobin" value="{$photobin}"/>
+        <input type="hidden" name="photobin"/>
     </form>
     <ul class="list thick divided">
         <li>

@@ -27,15 +27,27 @@ class Contact extends Model
             $this->date = (string)$vcard->vCard->BDAY;
         }
 
-        $this->name = (string)$vcard->vCard->NICKNAME;
-        $this->fn = (string)$vcard->vCard->FN;
-        $this->url = (string)$vcard->vCard->URL;
+        if ($vcard->vCard->NICKNAME) {
+            $this->name = (string)$vcard->vCard->NICKNAME;
+        }
 
-        $this->email = (string)$vcard->vCard->EMAIL->USERID;
+        if ($vcard->vCard->FN) {
+            $this->fn = (string)$vcard->vCard->FN;
+        }
 
-        $this->adrlocality = (string)$vcard->vCard->ADR->LOCALITY;
-        $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
-        $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
+        if ($vcard->vCard->URL) {
+            $this->url = (string)$vcard->vCard->URL;
+        }
+
+        if ($vcard->vCard->EMAIL) {
+            $this->email = (string)$vcard->vCard->EMAIL->USERID;
+        }
+
+        if ($vcard->vCard->ADR) {
+            $this->adrlocality = (string)$vcard->vCard->ADR->LOCALITY;
+            $this->adrpostalcode = (string)$vcard->vCard->ADR->PCODE;
+            $this->adrcountry = (string)$vcard->vCard->ADR->CTRY;
+        }
 
         if (filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
             $this->photobin = base64_encode(
@@ -45,7 +57,9 @@ class Contact extends Model
             $this->avatarhash = sha1(base64_decode($this->photobin));
         }
 
-        $this->description = (string)$vcard->vCard->DESC;
+        if ($vcard->vCard->DESC) {
+            $this->description = (string)$vcard->vCard->DESC;
+        }
     }
 
     public function createThumbnails()
