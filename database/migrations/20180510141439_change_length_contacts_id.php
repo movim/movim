@@ -7,6 +7,8 @@ class ChangeLengthContactsId extends Migration
 {
     public function up()
     {
+        $this->disableForeignKeyCheck();
+
         $this->schema->table('contacts', function(Blueprint $table) {
             $table->string('id', 256)->change();
             $table->string('nickname', 256)->change();
@@ -49,10 +51,14 @@ class ChangeLengthContactsId extends Migration
             $table->string('jidfrom', 256)->change();
             $table->string('resource', 256)->change();
         });
+
+        $this->enableForeignKeyCheck();
     }
 
     public function down()
     {
+        $this->disableForeignKeyCheck();
+
         $this->schema->table('contacts', function(Blueprint $table) {
             $table->string('id', 64)->change();
             $table->string('nickname', 64)->change();
@@ -95,5 +101,7 @@ class ChangeLengthContactsId extends Migration
             $table->string('jidfrom', 96)->change();
             $table->string('resource', 96)->change();
         });
+
+        $this->enableForeignKeyCheck();
     }
 }
