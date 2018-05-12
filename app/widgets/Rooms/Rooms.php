@@ -39,7 +39,8 @@ class Rooms extends \Movim\Widget\Base
         $message = $packet->content;
 
         if ($message->user_id == $message->jidto
-        && $message->type == 'groupchat') {
+        && $message->type == 'groupchat'
+        && $message->subject == null) {
             Notification::append(
                 'chat|'.$message->jidfrom,
                 null,
