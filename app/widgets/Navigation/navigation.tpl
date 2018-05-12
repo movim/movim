@@ -43,7 +43,7 @@
 </ul>
 
 <ul class="list divided oppose active" dir="ltr">
-    <li onclick="Search_ajaxRequest()"
+    <li onclick="Search_ajaxHttpRequest()"
         title="{$c->__('button.search')}"
     >
         <span class="primary icon">

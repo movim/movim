@@ -11,7 +11,7 @@ class Search extends \Movim\Widget\Base
         $this->addcss('search.css');
     }
 
-    function ajaxRequest()
+    function ajaxHttpRequest()
     {
         $view = $this->tpl();
         $view->assign('empty', $this->prepareSearch(''));

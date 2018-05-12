@@ -21,7 +21,7 @@
     <i class="zmdi zmdi-plus"></i>
 
     <ul class="actions">
-        <li onclick="Search_ajaxRequest()" title="{$c->__('chats.add')}">
+        <li onclick="Search_ajaxHttpRequest()" title="{$c->__('chats.add')}">
             <i class="zmdi zmdi-account-add"></i>
         </li>
         <li onclick="Rooms_ajaxAdd()" title="{$c->__('rooms.add')}">
