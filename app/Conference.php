@@ -46,13 +46,9 @@ class Conference extends Model
                     ->where('type', 'text');
     }
 
-    public function setAvatar($vcard)
+    public function contact()
     {
-        if ($vcard->vCard->PHOTO->BINVAL) {
-            $p = new \Movim\Picture;
-            $p->fromBase((string)$vcard->vCard->PHOTO->BINVAL);
-            $p->set($this->conference . '_muc');
-        }
+        return $this->hasOne('App\Contact', 'id', 'conference');
     }
 
     public function getConnectedAttribute()
@@ -81,16 +77,10 @@ class Conference extends Model
 
     public function getPhoto($size = 'l')
     {
-        $sizes = [
-            'o'     => [false, false],
-            'l'     => [210 , false],
-            'm'     => [120 , false],
-            's'     => [50  , false],
-            'xs'    => [28  , false],
-            'xxs'   => [24  , false]
-        ];
+        if ($this->contact) {
+            return $this->contact->getPhoto($size);
+        }
 
-        $p = new Picture;
-        return $p->get($this->conference, $sizes[$size][0], $sizes[$size][1]);
+        return false;
     }
 }

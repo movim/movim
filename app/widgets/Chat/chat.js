@@ -148,7 +148,8 @@ var Chat = {
     editPrevious: function()
     {
         var textarea = Chat.getTextarea();
-        if (textarea.value == '') {
+        if (textarea.value == ''
+        && Boolean(textarea.dataset.muc) == false) {
             Chat_ajaxLast(textarea.dataset.jid);
         }
     },

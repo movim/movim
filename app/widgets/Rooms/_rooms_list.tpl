@@ -10,7 +10,7 @@
             <li class="{if="$value->last > 60"} inactive{/if}"
                 title="{$value->resource}">
 
-                {if="$value->contactConference && $url = $value->contactConference->getPhoto('s')"}
+                {if="$url = $value->conferencePicture"}
                     <span class="primary icon bubble status {$value->presencekey}">
                         <img src="{$url}">
                     </span>

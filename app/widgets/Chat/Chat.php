@@ -724,9 +724,8 @@ class Chat extends \Movim\Widget\Base
                              ->where('resource', $message->resource)
                              ->first();
 
-            if ($presence && $presence->contactConference) {
-                $url = $presence->contactConference->getPhoto('s');
-                if ($url) {
+            if ($presence) {
+                if ($url = $presence->conferencePicture) {
                     $message->icon_url = $url;
                 }
 

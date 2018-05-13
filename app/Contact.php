@@ -17,6 +17,13 @@ class Contact extends Model
         return $this->belongsTo('App\User', 'id');
     }
 
+
+    public function save(array $options = [])
+    {
+        unset($this->photobin);
+        parent::save($options);
+    }
+
     public function set($vcard, $jid)
     {
         $this->id = $jid;
@@ -64,6 +71,8 @@ class Contact extends Model
 
     public function createThumbnails()
     {
+        if (!$this->photobin) return;
+
         $p = new Picture;
         $p->fromBase($this->photobin);
         $p->set($this->id);
@@ -81,7 +90,8 @@ class Contact extends Model
             'm'     => [120 , false],
             's'     => [50  , false],
             'xs'    => [28  , false],
-            'xxs'   => [24  , false]
+            'xxs'   => [24  , false],
+            'o'     => [false, false]
         ];
 
 

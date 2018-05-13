@@ -19,24 +19,8 @@ class ContactActions extends \Movim\Widget\Base
 
         $tpl = $this->tpl();
         $tpl->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
-        $tpl->assign('roster', App\User::me()->session->contacts->find($jid));
-
-        /*$cr = $cd->getRosterItem($jid);
-
-        if (isset($cr)) {
-            if ($cr->value != null) {
-                $tpl->assign('presence', getPresencesTxt()[$cr->value]);
-            }
-
-            $tpl->assign('contactr', $cr);
-            $tpl->assign('caps', $cr->getCaps());
-            $tpl->assign('clienttype', getClientTypes());
-        } else {
-            $tpl->assign('caps', null);
-        }
-
-        $c  = $cd->get($jid);
-        $tpl->assign('contact', $c);*/
+        $tpl->assign('roster', $this->user->session->contacts->where('jid', $jid)->first());
+        $tpl->assign('clienttype', getClientTypes());
 
         Drawer::fill($tpl->draw('_contactactions_drawer', true));
     }

@@ -4,6 +4,7 @@ namespace App;
 
 use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
 use Illuminate\Database\Eloquent\Model;
+use Movim\Picture;
 
 class Presence extends Model
 {
@@ -40,11 +41,6 @@ class Presence extends Model
         return $this->hasOne('App\Contact', 'id', 'jid');
     }
 
-    public function contactConference()
-    {
-        return $this->hasOne('App\Contact', 'id', 'mucjid');
-    }
-
     public function getPresencetextAttribute()
     {
         return getPresences()[$this->value];
@@ -55,20 +51,37 @@ class Presence extends Model
         return getPresencesTxt()[$this->value];
     }
 
+    public function getConferencePictureAttribute()
+    {
+        return (new Picture)->get($this->mucjid, 50);
+    }
+
     public function getRefreshableAttribute()
     {
         if (!$this->avatarhash) return false;
 
-        $count = \App\Contact::where('id', ($this->muc)
-                                ? ($this->mucjid)
-                                    ? $this->mucjid
-                                    : $this->jid.'/'.$this->resource
-                                : $this->jid)
-                             ->where('avatarhash', (string)$this->avatarhash)
-                             ->count();
-        return ($count == 0)
-            ? ($this->muc) ? $this->jid.'/'.$this->resource : $this->jid
-            : false;
+        $jid = ($this->muc)
+                ? ($this->mucjid)
+                    ? $this->mucjid
+                    : $this->jid.'/'.$this->resource
+                : $this->jid;
+
+        $contact = \App\Contact::where('avatarhash', (string)$this->avatarhash)->first();
+
+        /*
+         * Another contact had the same avatar
+         */
+        if ($contact
+        && $contact->id != $jid
+        && $this->muc) {
+            $p = new Picture;
+            $p->fromKey($contact->id);
+            $p->set($jid);
+
+            return false;
+        }
+
+        return ($contact) ? false : $jid;
     }
 
     public static function findByStanza($stanza)

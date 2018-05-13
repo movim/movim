@@ -29,6 +29,18 @@ class Picture
     /**
      * @desc Load a bin picture from a path
      */
+    public function fromKey($key)
+    {
+        return $this->fromPath(
+            $this->_path.
+            md5($key).
+            $this->_formats[DEFAULT_PICTURE_FORMAT]
+        );
+    }
+
+    /**
+     * @desc Load a bin picture from a path
+     */
     public function fromPath($path)
     {
         $size = filesize($path);

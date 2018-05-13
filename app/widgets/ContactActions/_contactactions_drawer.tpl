@@ -37,28 +37,18 @@
     </header>
 
     <ul class="list middle">
-        {if="$caps"}
+        {if="$roster && $roster->presence && $roster->presence->capability"}
             <li class="block">
                 <span class="primary icon gray">
-                    <i class="zmdi
-                        {if="$caps->type == 'handheld' || $caps->type == 'phone'"}
-                            zmdi-smartphone-android
-                        {elseif="$caps->type == 'bot'"}
-                            zmdi-memory
-                        {elseif="$caps->type == 'web'"}
-                            zmdi-globe-alt
-                        {else}
-                            zmdi-laptop
-                        {/if}
-                    ">
+                    <i class="zmdi {$roster->presence->capability->getDeviceIcon()}">
                     </i>
                 </span>
                 <p class="normal line">
-                    {$caps->name}
+                    {$roster->presence->capability->name}
                 </p>
                 <p class="line">
-                    {if="isset($clienttype[$caps->type])"}
-                        {$clienttype[$caps->type]}
+                    {if="isset($clienttype[$roster->presence->capability->type])"}
+                        {$clienttype[$roster->presence->capability->type]}
                     {/if}
                 </p>
             </li>
