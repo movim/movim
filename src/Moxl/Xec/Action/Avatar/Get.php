@@ -32,6 +32,7 @@ class Get extends Action
     {
         $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
         $contact->photobin  = (string)$stanza->pubsub->items->item->data;
+        $contact->avatarhash = sha1(base64_decode($contact->photobin));
         $contact->createThumbnails();
         $contact->save();
 
