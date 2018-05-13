@@ -26,7 +26,7 @@ class Search extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        if (Validator::stringType()->length(1, 15)->validate($key)) {
+        if (Validator::stringType()->length(1, 64)->validate($key)) {
             $view->assign('posts', new Collection);
 
             if ($this->user->hasPubsub()) {
