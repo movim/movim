@@ -37,23 +37,12 @@ class Get extends Action
 
     public function handle($stanza, $parent = false)
     {
-        if($stanza->attributes()->from) {
-            $jid = current(explode('/',(string)$stanza->attributes()->from));
-        } else {
-            $jid = $this->_to;
-        }
+        $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
+        $contact->set($stanza, $this->_to);
+        $contact->createThumbnails();
+        $contact->save();
 
-        if($this->_muc) {
-            //$c = new \Modl\Conference;
-            //$c->setAvatar($stanza, $this->_to);
-        } elseif($jid) {
-            $contact = \App\Contact::firstOrNew(['id' => $this->_to]);
-            $contact->set($stanza, $this->_to);
-            $contact->createThumbnails();
-            $contact->save();
-
-            $this->pack($contact);
-            $this->deliver();
-        }
+        $this->pack($contact);
+        $this->deliver();
     }
 }

@@ -27,7 +27,7 @@ class Presence extends Payload
             $refreshable = $presence->refreshable;
             if($refreshable) {
                 $r = new Get;
-                $r->setTo(echapJid((string)$refreshable))->request();
+                $r->setTo((string)$refreshable)->request();
             }
 
             if($presence->muc
