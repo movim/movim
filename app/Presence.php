@@ -59,7 +59,11 @@ class Presence extends Model
     {
         if (!$this->avatarhash) return false;
 
-        $count = \App\Contact::where('id', ($this->muc) ? $this->jid.'/'.$this->resource : $this->jid)
+        $count = \App\Contact::where('id', ($this->muc)
+                                ? ($this->mucjid)
+                                    ? $this->mucjid
+                                    : $this->jid.'/'.$this->resource
+                                : $this->jid)
                              ->where('avatarhash', (string)$this->avatarhash)
                              ->count();
         return ($count == 0)
@@ -153,6 +157,13 @@ class Presence extends Model
                     (string)$stanza->delay->attributes()->stamp
                 )
             );
+        }
+
+        if ($this->muc && $this->avatarhash) {
+            $resolved = \App\Contact::where('avatarhash', (string)$this->avatarhash)->first();
+            if ($resolved) {
+                $this->mucjid = $resolved->id;
+            }
         }
 
         if ($stanza->query) {

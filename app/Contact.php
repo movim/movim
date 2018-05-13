@@ -19,7 +19,7 @@ class Contact extends Model
 
     public function set($vcard, $jid)
     {
-        $this->id = \echapJid($jid);
+        $this->id = $jid;
 
         $validate_date = Validator::date('Y-m-d');
         if (isset($vcard->vCard->BDAY)
