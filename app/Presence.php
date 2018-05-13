@@ -159,13 +159,6 @@ class Presence extends Model
             );
         }
 
-        if ($this->muc && $this->avatarhash) {
-            $resolved = \App\Contact::where('avatarhash', (string)$this->avatarhash)->first();
-            if ($resolved) {
-                $this->mucjid = $resolved->id;
-            }
-        }
-
         if ($stanza->query) {
             $this->last = (int)$stanza->query->attributes()->seconds;
         }
