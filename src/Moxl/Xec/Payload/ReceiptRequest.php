@@ -12,7 +12,10 @@ class ReceiptRequest extends Payload
 
         \Moxl\Stanza\Message::receipt($from, $id);
 
-        $message = \App\User::me()->messages->where('id', $id)->first();
+        $message = \App\User::me()->messages()
+                                  ->where('id', $id)
+                                  ->where('jidfrom', current(explode('/', $from)))
+                                  ->first();
 
         if($message) {
             $message->delivered = gmdate('Y-m-d H:i:s');

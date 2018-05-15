@@ -87,6 +87,9 @@ class Get extends Action
         $sess = Session::start();
         $sess->remove('mamid'.$this->_queryid);
 
+        $this->pack($this->_to);
+        $this->deliver();
+
         if(isset($stanza->fin)
         && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
         && isset($stanza->fin->set->last)
