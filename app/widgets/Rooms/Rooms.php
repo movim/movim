@@ -77,6 +77,8 @@ class Rooms extends \Movim\Widget\Base
                 $this->ajaxJoin($room->conference, $room->nick);
             }
         }
+
+        $this->refreshRooms();
     }
 
     function onBookmark()

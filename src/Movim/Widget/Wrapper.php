@@ -159,6 +159,7 @@ class Wrapper
         if (array_key_exists($key, $this->_events)) {
             foreach($this->_events[$key] as $widget_name) {
                 $widget = new $widget_name(true);
+
                 if (array_key_exists($key, $widget->events)) {
                     foreach($widget->events[$key] as $method) {
                         /*
@@ -166,7 +167,7 @@ class Wrapper
                          * session notifs_key is set to a specific value
                          */
                         if (is_array($widget->filters)
-                        && array_key_exists($method, $widget->filters)) {
+                        && array_key_exists($key . '_' . $method, $widget->filters)) {
                             $session = Session::start();
                             $notifs_key = $session->get('notifs_key');
 
@@ -175,7 +176,8 @@ class Wrapper
                             } else {
                                 $explode = explode('|', $notifs_key);
                                 $notif_key = reset($explode);
-                                if ($notif_key == $widget->filters[$method]) {
+
+                                if ($notif_key == $widget->filters[$key . '_' . $method]) {
                                     $widget->{$method}($data);
                                 }
                             }

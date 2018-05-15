@@ -23,7 +23,7 @@ var Chats = {
                 items[i].onmousedown = function(e) {
                     if (e.which == 2) {
                         Notification_ajaxClear('chat|' + this.dataset.jid);
-                        Notification.current('');
+                        Notification.current('chat');
                         Chats_ajaxClose(this.dataset.jid);
                         delete document.querySelector('#chat_widget').dataset.jid;
                         MovimTpl.hidePanel();
@@ -48,4 +48,5 @@ var Chats = {
 
 MovimWebsocket.attach(function() {
     Chats_ajaxGet();
+    Notification.current('chat');
 });

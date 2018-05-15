@@ -11,7 +11,7 @@ class Message extends Model
 {
     use HasCompositePrimaryKey;
 
-    protected $primaryKey = ['user_id', 'id'];
+    protected $primaryKey = ['user_id', 'jidfrom', 'id'];
     public $incrementing = false;
 
     protected $guarded = [];
@@ -59,7 +59,8 @@ class Message extends Model
         if (!empty($id)) {
             return self::firstOrNew([
                 'user_id' => \App\User::me()->id,
-                'id' => $id
+                'id' => $id,
+                'jidfrom' => current(explode('/',(string)$stanza->attributes()->from))
             ]);
         }
 
@@ -230,10 +231,16 @@ class Message extends Model
             }
 
             if ($stanza->replace
-            && $this->user->messages()->where('id', $this->id)->count() == 0) {
+            && $this->user->messages()
+                ->where('jidfrom', $this->jidfrom)
+                ->where('id', $this->id)
+                ->count() == 0
+            ) {
                 $this->oldid = (string)$stanza->replace->attributes()->id;
                 $this->edited = true;
-                Message::where('id', (string)$stanza->replace->attributes()->id)->update([
+                Message::where('id', (string)$stanza->replace->attributes()->id)
+                ->where('jidfrom', $this->jidfrom)
+                ->update([
                     'id' => $this->id,
                     'edited' => true
                 ]);

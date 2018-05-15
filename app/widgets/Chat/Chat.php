@@ -35,7 +35,8 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('receiptack', 'onMessageReceipt');
         $this->registerEvent('displayed', 'onMessage', 'chat');
-        $this->registerEvent('mamresult', 'onMessageHistory', 'chat');
+        //$this->registerEvent('mamresult', 'onMessageHistory', 'chat');
+        $this->registerEvent('mam_get_handle', 'onMAMRetrieved', 'chat');
         $this->registerEvent('composing', 'onComposing', 'chat');
         $this->registerEvent('paused', 'onPaused', 'chat');
         $this->registerEvent('gone', 'onGone', 'chat');
@@ -159,6 +160,11 @@ class Chat extends \Movim\Widget\Base
     function onConferenceSubject($packet)
     {
         $this->ajaxGetRoom($packet->content->jidfrom);
+    }
+
+    function onMAMRetrieved($packet)
+    {
+        $this->ajaxGetRoom($packet->content);
     }
 
     function onMucConnected($packet)

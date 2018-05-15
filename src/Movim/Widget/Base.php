@@ -281,24 +281,24 @@ class Base
 
     /**
      * @brief Registers an event handler.
-     * @param $type The event key
-     * @param $function The function to call
+     * @param $key The event key
+     * @param $method The function to call
      * @param $filter Only call this function if the session notif_key is good
      */
-    protected function registerEvent($type, $function, $filter = null)
+    protected function registerEvent($key, $method, $filter = null)
     {
         if (!is_array($this->events)
-        || !array_key_exists($type, $this->events)) {
-            $this->events[$type] = [$function];
+        || !array_key_exists($key, $this->events)) {
+            $this->events[$key] = [$method];
         } else {
-            $this->events[$type][] = $function;
+            $this->events[$key][] = $method;
         }
 
         if ($filter != null) {
             if (!is_array($this->filters)) {
                 $this->filters = [];
             }
-            $this->filters[$function] = $filter;
+            $this->filters[$key . '_' . $method] = $filter;
         }
     }
 }
