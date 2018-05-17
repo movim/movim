@@ -2,7 +2,7 @@
 
 namespace Moxl\Stanza;
 
-use Ramsey\Uuid\Uuid;
+use Moxl\Utils;
 
 class PubsubAtom
 {
@@ -32,7 +32,7 @@ class PubsubAtom
 
     public function __construct()
     {
-        $this->id = (string)Uuid::uuid4();
+        $this->id = Utils::generateUUID();
     }
 
     public function enableComments($server = true)

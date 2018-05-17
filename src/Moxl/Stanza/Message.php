@@ -3,7 +3,6 @@
 namespace Moxl\Stanza;
 
 use Movim\Session;
-use Ramsey\Uuid\Uuid;
 
 class Message
 {
@@ -31,7 +30,7 @@ class Message
         }
 
         if(in_array($receipts, ['received', 'displayed'])) {
-            $root->setAttribute('id', Uuid::uuid4());
+            $root->setAttribute('id', Utils::generateUUID());
         } elseif($id != false) {
             $root->setAttribute('id', $id);
         } else {
