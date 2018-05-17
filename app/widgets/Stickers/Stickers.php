@@ -3,7 +3,6 @@
 use Moxl\Xec\Action\Message\Publish;
 
 use Moxl\Xec\Action\BOB\Answer;
-use Ramsey\Uuid\Uuid;
 
 use Respect\Validation\Validator;
 
@@ -68,7 +67,7 @@ class Stickers extends \Movim\Widget\Base
 
         $session    = Session::start();
 
-        $m->id      = Uuid::uuid4();
+        $m->id      = generateUUID();
         $m->type    = 'chat';
         $m->resource = $session->get('resource');
 

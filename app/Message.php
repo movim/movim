@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Ramsey\Uuid\Uuid;
 use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
 use Illuminate\Database\Eloquent\Model;
 use Movim\Picture;
@@ -70,7 +69,7 @@ class Message extends Model
     public function set($stanza, $parent = false)
     {
         if (!isset($this->id)) {
-            $this->id = 'm_'.(string)Uuid::uuid4();
+            $this->id = 'm_' . generateUUID();
         }
 
         $jid = explode('/',(string)$stanza->attributes()->from);

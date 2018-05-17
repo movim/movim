@@ -9,8 +9,6 @@ use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Muc\SetSubject;
 use Moxl\Xec\Action\Vcard\Set as VcardSet;
 
-use Ramsey\Uuid\Uuid;
-
 use Respect\Validation\Validator;
 use Illuminate\Support\Collection;
 
@@ -234,7 +232,7 @@ class Rooms extends \Movim\Widget\Base
         if (!empty($form->invite->value)) {
             $i = new Invite;
             $i->setTo($form->to->value)
-              ->setId(Uuid::uuid4())
+              ->setId(generateUUID())
               ->setInvite($form->invite->value)
               ->request();
 

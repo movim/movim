@@ -17,7 +17,7 @@
         "rain/raintpl": "dev-master",
         "michelf/php-markdown": "^1.8",
 
-        "movim/moxl": "dev-master#09d770797bdb8fd2c3b7dc05bc37f1649f981bd3",
+        "movim/moxl": "dev-master#5b916fdbbaedad5d70d76c11a6f4ac499a884a72",
 
         "embed/embed": "^v3.3",
         "heyupdate/emoji": "dev-twemoji2#99dda1bed08472046cac1498221f08684ad83d55",
@@ -29,7 +29,6 @@
 
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.9",
-        "ramsey/uuid": "^3.7",
         "symfony/console": "^3.3",
         "cocur/slugify": "^3.0",
         "dflydev/fig-cookies": "^1.0",

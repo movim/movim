@@ -13,7 +13,6 @@ use Moxl\Xec\Action\BOB\Request;
 
 use Respect\Validation\Validator;
 
-use Ramsey\Uuid\Uuid;
 use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\Picture;
@@ -314,7 +313,7 @@ class Chat extends \Movim\Widget\Base
             $oldid = $replace->id;
 
             $m = $replace;
-            $m->id = Uuid::uuid4();
+            $m->id = generateUUID();
 
             \App\Message::where('id', $oldid)->update([
                 'id' => $m->id,
@@ -322,7 +321,7 @@ class Chat extends \Movim\Widget\Base
             ]);
         } else {
             $m = new \App\Message;
-            $m->id          = Uuid::uuid4();
+            $m->id          = generateUUID();
             $m->user_id     = $this->user->id;
             $m->jidto       = echapJid($to);
             $m->jidfrom     = $this->user->id;
