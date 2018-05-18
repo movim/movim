@@ -45,13 +45,13 @@ class MovimEmoji
                |[\x{1F33E}\x{1F373}\x{1F393}\x{1F3A4}\x{1F3A8}\x{1F3EB}\x{1F3ED}\x{1F4BB}\x{1F4BC}\x{1F527}\x{1F52C}\x{1F680}\x{1F692}]
              )
           )/ux',
-        /* some more combinations */
-        '/[\x{261D}\x{26F7}-\x{270D}\x{1F1E6}-\x{1F1FF}\x{1F385}\x{1F3C2}-\x{1F3CC}\x{1F442}-\x{1F487}\x{1F4AA}\x{1F574}-\x{1F596}\x{1F645}-\x{1F6CC}\x{1F918}-\x{1F9DD}]
-          [\x{1F1E6}-\x{1F1FF}\x{1F3FB}-\x{1F3FF}]
-         |[\x{26F9}\x{1F3C3}-\x{1F3CC}\x{1F46E}\x{1F46F}\x{1F461}-\x{1F477}\x{1F481}-\x{1F487}\x{1F575}\x{1F645}-\x{1F64E}\x{1F6A3}\x{1F6B4}-\x{1F6B6}\x{1F926}\x{1F937}-\x{1F93E}\x{1F9D6}-\x{1F9DF}]
+        /* some more combinations (order is important!) */
+        '/[\x{26F9}\x{1F3C3}-\x{1F3CC}\x{1F46E}\x{1F46F}\x{1F461}-\x{1F477}\x{1F481}-\x{1F487}\x{1F575}\x{1F645}-\x{1F64E}\x{1F6A3}\x{1F6B4}-\x{1F6B6}\x{1F926}\x{1F937}-\x{1F93E}\x{1F9D6}-\x{1F9DF}]
           [\x{FE0F}\x{1F3FB}-\x{1F3FF}]?
           \x{200D}[\x{2640}\x{2642}]\x{FE0F}
          /ux',
+        '/[\x{261D}\x{26F7}-\x{270D}\x{1F1E6}-\x{1F1FF}\x{1F385}\x{1F3C2}-\x{1F3CC}\x{1F442}-\x{1F487}\x{1F4AA}\x{1F574}-\x{1F596}\x{1F645}-\x{1F6CC}\x{1F918}-\x{1F9DD}]
+          [\x{1F1E6}-\x{1F1FF}\x{1F3FB}-\x{1F3FF}]/ux',
         /* individual codepoints last */
         '/[\x{203C}\x{2049}\x{2139}-\x{21AA}\x{231A}-\x{23FA}\x{24C2}\x{25AA}-\x{27BF}\x{2934}-\x{2B55}\x{3030}-\x{3299}\x{1F004}-\x{1F9E6}]/u'
       );
