@@ -12,12 +12,12 @@ class Roster extends Payload
         if ((string)$parent->attributes()->type == 'set') {
             $jid = current(explode('/', (string)$stanza->item->attributes()->jid));
 
-            $contact = DBUser::me()->session->contacts->where('jid', $jid)->first();
+            $contact = DBUser::me()->session->contacts()->where('jid', $jid)->first();
 
             if ($contact) $contact->delete();
 
             if ((string)$stanza->item->attributes()->subscription != 'remove') {
-                $roster = new DBRoster;
+                $roster = DBRoster::firstOrNew(['jid' => $jid]);
                 $roster->set($stanza->item);
                 $roster->save();
             }
