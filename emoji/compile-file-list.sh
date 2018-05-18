@@ -1,7 +1,7 @@
 #!/bin/mksh
 #-
 # Copyright © 2018
-#	mirabilos <thorsten.glaser@teckids.org>
+#    mirabilos <thorsten.glaser@teckids.org>
 #
 # Provided that these terms and disclaimer and all copyright notices
 # are retained or reproduced in an accompanying document, permission
@@ -32,44 +32,44 @@ cat >CompiledEmoji.php <<\EOF
 
 /* GENERATED FILE, DO NOT EDIT! */
 
-return array(
+return [
 EOF
 
-tee x | php >>CompiledEmoji.php |&
+php >>CompiledEmoji.php |&
 print -pr -- '<?php
-	$u = array();'
+    $u = array();'
 typeset -l codepoint
 while IFS=';' read codepoint name rest; do
-	[[ $name = *\<* ]] && continue
-	print -pr -- "\$u['${codepoint##*(0)}'] = '$name';"
+    [[ $name = *\<* ]] && continue
+    print -pr -- "\$u['${codepoint##*(0)}'] = '$name';"
 done </usr/share/unicode/UnicodeData.txt
 print -pr -- '
-	function lookup($name) {
-		global $u;
-		$x = "";
-		$s = "";
-		foreach (explode("-", $name) as $cp) {
-			if (isset($u[$cp]))
-				$x .= $s . $u[$cp];
-			else
-				$x .= $x . sprintf("<U%04X>", hexdec($cp));
-			$s = " + ";
-		}
-		return $x;
-	}
-	function handle($name) {
-		printf("\t\"%s\" => \"%s\",\n", $name, lookup($name));
-	}
+    function lookup($name) {
+        global $u;
+        $x = "";
+        $s = "";
+        foreach (explode("-", $name) as $cp) {
+            if (isset($u[$cp]))
+                $x .= $s . $u[$cp];
+            else
+                $x .= $x . sprintf("<U%04X>", hexdec($cp));
+            $s = " + ";
+        }
+        return $x;
+    }
+    function handle($name) {
+        printf("    \"%s\" => \"%s\",\n", $name, lookup($name));
+    }
 '
 for ff in "${files[@]}"; do
-	f=${ff%.svg}
-	if [[ $f != +([0-9a-f-]) ]]; then
-		print -ru2 -- "W: source file $ff does not match pattern!"
-		continue
-	fi
-	print -pr -- "handle('$f');"
+    f=${ff%.svg}
+    if [[ $f != +([0-9a-f-]) ]]; then
+        print -ru2 -- "W: source file $ff does not match pattern!"
+        continue
+    fi
+    print -pr -- "handle('$f');"
 done
 exec 3>&p
 exec 3>&-
 wait
-echo ");" >>CompiledEmoji.php
+echo "];" >>CompiledEmoji.php

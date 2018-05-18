@@ -26,7 +26,7 @@ class MovimEmoji
     private $_urlp1;
     private $_urlp2;
     private $_urlp3;
-    private $_regex = array(
+    private $_regex = [
         /* some easy cases first */
         '/[#*0-9]\x{20E3}
          |\x{1F3F3}(?:\x{FE0F}\x{200D}\x{1F308})?
@@ -54,7 +54,7 @@ class MovimEmoji
           [\x{1F1E6}-\x{1F1FF}\x{1F3FB}-\x{1F3FF}]/ux',
         /* individual codepoints last */
         '/[\x{203C}\x{2049}\x{2139}-\x{21AA}\x{231A}-\x{23FA}\x{24C2}\x{25AA}-\x{27BF}\x{2934}-\x{2B55}\x{3030}-\x{3299}\x{1F004}-\x{1F9E6}]/u'
-      );
+    ];
 
     protected function __construct()
     {
@@ -72,13 +72,15 @@ class MovimEmoji
             $astext = implode('-', array_map('dechex', unpack('N*',
               mb_convert_encoding($matches[0], 'UCS-4BE', 'UTF-8'))));
             /* do we know this character? */
-            if (!isset($this->_emoji[$astext]))
+            if (!isset($this->_emoji[$astext])) {
                 /* no, return match unchanged */
                 return $matches[0];
+            }
+
             /* yes, replace */
             return $this->_urlp1 . $this->_emoji[$astext] . $this->_urlp2 .
-              $astext . $this->_urlp3;
-          }, $string);
+                $astext . $this->_urlp3;
+        }, $string);
     }
 
     public static function getInstance()
@@ -86,6 +88,7 @@ class MovimEmoji
         if (!isset(static::$instance)) {
             static::$instance = new MovimEmoji;
         }
+
         return static::$instance;
     }
 }
