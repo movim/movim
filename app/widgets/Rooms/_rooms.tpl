@@ -53,7 +53,7 @@
                     {if="$connected"}
                         {$count = $value->presences()->count()}
                         <span title="{$c->__('communitydata.sub', $count)}">
-                             <i class="zmdi zmdi-accounts"></i>  –
+                            {$count} <i class="zmdi zmdi-accounts"></i>  –
                         </span>
                     {elseif="isset($info) && $info->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $info->occupants)}">

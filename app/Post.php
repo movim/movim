@@ -15,6 +15,7 @@ class Post extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
+    public $with = ['attachments', 'likes', 'comments'];
     private $titleLimit = 200;
 
     public $attachments = [];

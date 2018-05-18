@@ -9,7 +9,7 @@
                     style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
                     <i class="zmdi zmdi-share"></i>
                 </span>
-            {elseif="$reply->isMicroblog()"}
+            {elseif="$reply->isMicroblog() && $reply->contact"}
                 {$url = $reply->contact->getPhoto('l')}
                 {if="$url"}
                     <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
