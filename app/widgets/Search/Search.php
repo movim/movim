@@ -15,7 +15,7 @@ class Search extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('empty', $this->prepareSearch(''));
-        $view->assign('contacts', \App\User::me()->session->contacts);
+        $view->assign('contacts', $this->user->session->contacts);
 
         Drawer::fill($view->draw('_search', true), true);
 

@@ -5,7 +5,6 @@ use Moxl\Xec\Action\Vcard4\Set;
 use Moxl\Xec\Action\Nickname\Set as Nickname;
 
 use Respect\Validation\Validator;
-use App\User;
 
 class Vcard4 extends \Movim\Widget\Base
 {
@@ -19,7 +18,7 @@ class Vcard4 extends \Movim\Widget\Base
     {
         $vcardform = $this->tpl();
 
-        $vcardform->assign('me',       User::me());
+        $vcardform->assign('me',       $this->user);
         $vcardform->assign('contact',  $contact);
         $vcardform->assign('desc',     trim($contact->description));
         $vcardform->assign('countries',getCountries());
@@ -63,7 +62,7 @@ class Vcard4 extends \Movim\Widget\Base
 
     function ajaxVcardSubmit($vcard)
     {
-        $c = User::me()->contact;
+        $c = $this->user->contact;
 
         if (Validator::stringType()->length(0, 40)->validate($vcard->name->value)) {
             $c->name    = $vcard->name->value;
@@ -111,10 +110,10 @@ class Vcard4 extends \Movim\Widget\Base
     function ajaxChangePrivacy($value)
     {
         if ($value == true) {
-            User::me()->setPublic();
+            $this->user->setPublic();
             Notification::append(null, $this->__('vcard.public'));
         } else {
-            User::me()->setPrivate();
+            $this->user->setPrivate();
             Notification::append(null, $this->__('vcard.restricted'));
         }
     }
@@ -122,6 +121,6 @@ class Vcard4 extends \Movim\Widget\Base
     function display()
     {
         $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
-        $this->view->assign('form', $this->prepareForm(User::me()->contact));
+        $this->view->assign('form', $this->prepareForm($this->user->contact));
     }
 }

@@ -192,7 +192,7 @@ class Post extends \Movim\Widget\Base
             $view->assign('reply', $p->isReply() ? $p->getReply() : false);
             $view->assign('repost', $p->isRecycled() ? \App\Contact::find($p->server) : false);
 
-            $view->assign('nsfw', \App\User::me()->nsfw);
+            $view->assign('nsfw', $this->user->nsfw);
             $view->assign('post', $p);
 
             return ($card)

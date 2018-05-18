@@ -214,7 +214,7 @@ class Rooms extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
-        $view->assign('contacts', \App\User::me()->session->contacts()->pluck('jid'));
+        $view->assign('contacts', $this->user->session->contacts()->pluck('jid'));
         $view->assign('room', $room);
         $view->assign('invite', \App\Invite::set($this->user->id, $room));
 

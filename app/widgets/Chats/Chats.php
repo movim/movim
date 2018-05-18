@@ -90,9 +90,9 @@ class Chats extends \Movim\Widget\Base
         $g = new \Moxl\Xec\Action\MAM\Get;
 
         if ($jid == false) {
-            $message = \App\User::me()->messages()
-                                      ->orderBy('published', 'desc')
-                                      ->first();
+            $message = $this->user->messages()
+                                  ->orderBy('published', 'desc')
+                                  ->first();
             if ($message) {
                 $g->setStart(strtotime($message->published)+10);
             }

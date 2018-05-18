@@ -28,7 +28,7 @@ var Roster = {
 };
 
 MovimWebsocket.attach(function() {
-    Notification.current('contacts');
+    Notification.current('contact');
 });
 
 
