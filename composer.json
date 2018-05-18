@@ -22,22 +22,21 @@
         "embed/embed": "^v3.3",
         "heyupdate/emoji": "dev-twemoji2#99dda1bed08472046cac1498221f08684ad83d55",
 
-        "cboden/ratchet": "^0.4.0",
-
-        "react/zmq": "^0.4.0",
-
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.9",
         "symfony/console": "^3.3",
         "cocur/slugify": "^3.0",
         "dflydev/fig-cookies": "^1.0",
         "defuse/php-encryption": "^2.1",
-        "react/child-process": "^0.5.0",
-        "clue/buzz-react": "^2.1",
-        "illuminate/database": "^5.2",
+
         "robmorgan/phinx": "^0.9.2",
+        "illuminate/database": "^5.2",
         "doctrine/dbal": "^2.5",
-        "react/http": "^0.8.3"
+
+        "cboden/ratchet": "^0.4.0",
+        "react/child-process": "^0.5.0",
+        "react/http": "^0.8.3",
+        "react/zmq": "^0.4.0"
     },
     "config": {
         "platform": {

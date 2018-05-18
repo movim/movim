@@ -13,12 +13,12 @@
                             <img src="{$url}"/>
                         </span>
                     {else}
-                        <span class="primary icon bubble color {$post->aid|stringToColor}">
+                        <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
                             <i class="zmdi zmdi-account"></i>
                         </span>
                     {/if}
                 {else}
-                    <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
+                    <span class="primary icon bubble color {$post->aid|stringToColor}">
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}

@@ -27,7 +27,7 @@
             <p class="normal line">{$reply->title}</p>
             <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
             <p>
-                {if="$reply->isMicroblog()"}
+                {if="$reply->isMicroblog() && $reply->contact"}
                     <i class="zmdi zmdi-account"></i> {$reply->contact->truename}
                 {else}
                     <i class="zmdi zmdi-pages"></i> {$reply->node}
