@@ -1,7 +1,7 @@
 <?php
 /*-
  * Copyright © 2018
- *	mirabilos <thorsten.glaser@teckids.org>
+ * mirabilos <thorsten.glaser@teckids.org>
  *
  * Provided that these terms and disclaimer and all copyright notices
  * are retained or reproduced in an accompanying document, permission
@@ -19,13 +19,12 @@
  * of said person’s immediate fault when using the work as intended.
  */
 
-class MovimEmoji
+namespace Movim;
+
+class Emoji
 {
     protected static $instance = null;
     private $_emoji;
-    private $_urlp1;
-    private $_urlp2;
-    private $_urlp3;
     private $_regex = [
         /* some easy cases first */
         '/[#*0-9]\x{20E3}
@@ -58,35 +57,42 @@ class MovimEmoji
 
     protected function __construct()
     {
-        $this->_emoji = require('CompiledEmoji.php');
-        $this->_urlp1 = '<img alt="';
-        $this->_urlp2 = '" class="emoji" src="' .
-          BASE_URI . 'themes/' . Configuration::findOrNew(1)->theme .
-          '/img/emojis/svg/';
-        $this->_urlp3 = '.svg" />';
+        $this->_emoji = require('Emoji/CompiledEmoji.php');
     }
 
     public function replace($string)
     {
         return preg_replace_callback($this->_regex, function ($matches) {
-            $astext = implode('-', array_map('dechex', unpack('N*',
-              mb_convert_encoding($matches[0], 'UCS-4BE', 'UTF-8'))));
-            /* do we know this character? */
+            $astext = implode('-',
+                array_map('dechex',
+                    unpack('N*', mb_convert_encoding($matches[0], 'UCS-4BE', 'UTF-8'))
+                )
+            );
+
+            /* Do we know this character? */
             if (!isset($this->_emoji[$astext])) {
-                /* no, return match unchanged */
+                /* No, return match unchanged */
                 return $matches[0];
             }
 
-            /* yes, replace */
-            return $this->_urlp1 . $this->_emoji[$astext] . $this->_urlp2 .
-                $astext . $this->_urlp3;
+            /* Yes, replace */
+            return '<img
+                alt="' . $this->_emoji[$astext] . '"
+                class="emoji"
+                src="' .
+                    BASE_URI .
+                    'themes/' .
+                    \App\Configuration::findOrNew(1)->theme .
+                    '/img/emojis/svg/' .
+                    $astext .
+                '.svg" />';
         }, $string);
     }
 
     public static function getInstance()
     {
         if (!isset(static::$instance)) {
-            static::$instance = new MovimEmoji;
+            static::$instance = new Emoji;
         }
 
         return static::$instance;

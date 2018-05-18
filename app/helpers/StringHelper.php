@@ -1,46 +1,7 @@
 <?php
 
-use HeyUpdate\Emoji\Emoji;
-use HeyUpdate\Emoji\Index\CompiledIndex;
 use Movim\Route;
 use App\Configuration;
-
-/**
- * @desc A singleton wrapper for the Emoji library
- */
-class MovimEmoji
-{
-    protected static $instance = null;
-    private $_emoji;
-    private $_theme;
-
-    protected function __construct()
-    {
-        $this->_theme = Configuration::findOrNew(1)->theme;
-        $this->_emoji = new Emoji(new CompiledIndex, $this->getPath());
-    }
-
-    public function replace($string)
-    {
-        $this->_emoji->setImageHtmlTemplate('<img alt="{{name}}" class="emoji" src="'.$this->getPath().'">');
-        $string = $this->_emoji->replaceEmojiWithImages($string);
-
-        return $string;
-    }
-
-    private function getPath()
-    {
-        return BASE_URI . 'themes/' . $this->_theme . '/img/emojis/svg/{{unicode}}.svg';
-    }
-
-    public static function getInstance()
-    {
-        if (!isset(static::$instance)) {
-            static::$instance = new MovimEmoji;
-        }
-        return static::$instance;
-    }
-}
 
 function addUrls($string, $preview = false)
 {

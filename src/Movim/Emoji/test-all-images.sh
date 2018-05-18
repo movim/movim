@@ -19,7 +19,7 @@
 # of said person’s immediate fault when using the work as intended.
 
 cd "$(dirname "$0")"
-srcpath=../themes/material/img/emojis/svg
+srcpath=../../../themes/material/img/emojis/svg
 saveIFS=$IFS
 
 cd "$srcpath"

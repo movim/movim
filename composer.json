@@ -20,7 +20,6 @@
         "movim/moxl": "dev-master#7fa3206eaeb66b0afdabe319fad058a6385df848",
 
         "embed/embed": "^v3.3",
-        "heyupdate/emoji": "dev-twemoji2#99dda1bed08472046cac1498221f08684ad83d55",
 
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.9",

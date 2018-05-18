@@ -13,7 +13,7 @@ class Configuration
     }
 }
 
-require_once 'MovimEmoji.php';
+require_once '../Emoji.php';
 
 $text = file_get_contents('php://stdin');
-echo MovimEmoji::getInstance()->replace($text);
+echo Emoji::getInstance()->replace($text);

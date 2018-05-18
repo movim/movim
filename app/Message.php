@@ -259,7 +259,7 @@ class Message extends Model
 
     public function convertEmojis()
     {
-        $emoji = \MovimEmoji::getInstance();
+        $emoji = \Movim\Emoji::getInstance();
         $this->body = addHFR($emoji->replace($this->body));
     }
 
