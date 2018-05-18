@@ -24,7 +24,7 @@
 
         "cboden/ratchet": "^0.4.0",
 
-        "react/zmq": "dev-master",
+        "react/zmq": "^0.4.0",
 
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.9",

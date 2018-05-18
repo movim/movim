@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0f5d5cda23fee685005a050a6edc519b",
+    "content-hash": "e82c6a842541849e07fa18f5b442cf28",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -2437,16 +2437,16 @@
         },
         {
             "name": "react/zmq",
-            "version": "dev-master",
+            "version": "v0.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/friends-of-reactphp/zmq.git",
-                "reference": "638f9facd0af9ef2d3fb4bc383607d36df0d269e"
+                "reference": "13dec0bd2397adcc5d6aa54c8d7f0982fba66f39"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/friends-of-reactphp/zmq/zipball/638f9facd0af9ef2d3fb4bc383607d36df0d269e",
-                "reference": "638f9facd0af9ef2d3fb4bc383607d36df0d269e",
+                "url": "https://api.github.com/repos/friends-of-reactphp/zmq/zipball/13dec0bd2397adcc5d6aa54c8d7f0982fba66f39",
+                "reference": "13dec0bd2397adcc5d6aa54c8d7f0982fba66f39",
                 "shasum": ""
             },
             "require": {
@@ -2474,7 +2474,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2018-05-18 13:06:01"
+            "time": "2018-05-18T15:27:55+00:00"
         },
         {
             "name": "respect/validation",
@@ -3221,8 +3221,7 @@
     "stability-flags": {
         "rain/raintpl": 20,
         "movim/moxl": 20,
-        "heyupdate/emoji": 20,
-        "react/zmq": 20
+        "heyupdate/emoji": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
