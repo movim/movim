@@ -120,7 +120,7 @@ class PublishBrief extends \Movim\Widget\Base
               ->setTitle(htmlspecialchars($form->title->value))
               ->setNode($form->node->value);
 
-            $comments = App\User::me()->session->getCommentsService();
+            $comments = $this->user->session->getCommentsService();
 
             $tags = [];
             $tagsTitle = getHashtags(htmlspecialchars($form->title->value));

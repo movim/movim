@@ -10,6 +10,7 @@ class User extends Model
 {
     protected $fillable = ['id', 'language', 'nightmode', 'nsfw', 'cssurl'];
     public $incrementing = false;
+    private static $me = null;
 
     public function session()
     {
@@ -41,10 +42,18 @@ class User extends Model
         return $this->hasMany('App\Subscription', 'jid', 'id');
     }
 
-    public static function me()
+    public static function me($reload = false)
     {
         $session = Session::start();
+
+        if (self::$me != null
+        && self::$me->id == $session->get('jid')
+        && $reload == false) {
+            return self::$me;
+        }
+
         $me = self::find($session->get('jid'));
+        self::$me = $me;
 
         return ($me) ? $me : new User;
     }

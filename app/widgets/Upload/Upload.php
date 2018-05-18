@@ -36,7 +36,7 @@ class Upload extends \Movim\Widget\Base
 
     function ajaxSend($file)
     {
-        $upload = App\User::me()->session->getUploadService();
+        $upload = $this->user->session->getUploadService();
 
         if ($upload) {
             $r = new Request;

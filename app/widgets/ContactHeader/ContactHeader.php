@@ -28,8 +28,8 @@ class ContactHeader extends \Movim\Widget\Base
 
         $view = $this->tpl();
 
-        $view->assign('contact', App\User::me()->session->contacts->where('jid', $jid)->first());
-        $view->assign('groups', App\User::me()->session->contacts->pluck('group')->toArray());
+        $view->assign('contact', $this->user->session->contacts->where('jid', $jid)->first());
+        $view->assign('groups', $this->user->session->contacts->pluck('group')->toArray());
 
         Dialog::fill($view->draw('_contactheader_edit', true));
     }
@@ -80,7 +80,7 @@ class ContactHeader extends \Movim\Widget\Base
     public function prepareHeader($jid)
     {
         $view = $this->tpl();
-        $view->assign('in_roster', (App\User::me()->session->contacts->where('jid', $jid)->count() > 0));
+        $view->assign('in_roster', ($this->user->session->contacts()->where('jid', $jid)->count() > 0));
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
 
         return $view->draw('_contactheader', true);

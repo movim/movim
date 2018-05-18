@@ -16,21 +16,22 @@
             </p>
         </li>
         {loop="$conferences"}
+            {$connected = $value->connected}
             <li {if="!$edit"} data-jid="{$value->conference}" {/if}
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
-                class="room {if="$value->connected"}online{/if}"
+                class="room {if="$connected"}online{/if}"
                 title="{$value->conference}">
                 {$url = $value->getPhoto('s')}
                 {if="$url"}
                     <span class="primary
-                        {if="!$value->connected"}disabled{/if} icon bubble color
+                        {if="!$connected"}disabled{/if} icon bubble color
                         {$value->name|stringToColor}"
                         style="background-image: url({$url});">
                         <span data-key="chat|{$value->conference}" class="counter"></span>
                     </span>
                 {else}
                     <span class="primary
-                        {if="!$value->connected"}disabled{/if} icon bubble color
+                        {if="!$connected"}disabled{/if} icon bubble color
                         {$value->name|stringToColor}">
                         <span data-key="chat|{$value->conference}" class="counter"></span>
                         {$value->name|firstLetterCapitalize}
@@ -49,9 +50,10 @@
                 <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
                 <p class="line"
                     {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
-                    {if="$value->connected"}
-                        <span {if="isset($info)"}title="{$c->__('communitydata.sub', $info->occupants)}"{/if}>
-                            {$value->presences()->count()} <i class="zmdi zmdi-accounts"></i>  –
+                    {if="$connected"}
+                        {$count = $value->presences()->count()}
+                        <span title="{$c->__('communitydata.sub', $count)}">
+                             <i class="zmdi zmdi-accounts"></i>  –
                         </span>
                     {elseif="isset($info) && $info->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $info->occupants)}">

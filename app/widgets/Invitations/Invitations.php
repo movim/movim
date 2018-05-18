@@ -68,7 +68,7 @@ class Invitations extends \Movim\Widget\Base
     {
         $jid = echapJid($jid);
 
-        if (!App\User::me()->session->contacts->find($jid)) {
+        if (!$this->user->session->contacts()->find($jid)) {
             $r = new AddItem;
             $r->setTo($jid)
               ->request();

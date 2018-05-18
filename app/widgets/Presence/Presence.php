@@ -74,7 +74,7 @@ class Presence extends \Movim\Widget\Base
     {
         $this->rpc('Presence.clearQuick');
 
-        App\User::me()->encryptedPasswords()->delete();
+        $this->user->encryptedPasswords()->delete();
 
         $session = Session::start();
         $p = new Unavailable;
@@ -178,8 +178,11 @@ class Presence extends \Movim\Widget\Base
             return false;
         }
 
-        $presence = App\User::me()->session->presence;
-        $contact = App\User::me()->contact;
+        // We reload the user instance in memory
+        \App\User::me(true);
+
+        $presence = $this->user->session->presence;
+        $contact = $this->user->contact;
 
         $presencetpl = $this->tpl();
 
@@ -192,7 +195,7 @@ class Presence extends \Movim\Widget\Base
 
     function display()
     {
-        $contact = App\User::me()->contact;
+        $contact = $this->user->contact;
         $this->view->assign('me', ($contact == null) ? new App\Contact : $contact);
     }
 }
