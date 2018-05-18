@@ -58,16 +58,17 @@ class Api
             return new Response(
                 200,
                 ['Content-Type' => 'text/plain'],
-                $response
+                (string)$response
             );
         };
 
-        (new StreamingServer([
+        $httpServer = new StreamingServer([
             new LimitConcurrentRequestsMiddleware(100), // 100 concurrent buffering handlers
             new RequestBodyBufferMiddleware(16 * 1024 * 1024), // 16 MiB
             new RequestBodyParserMiddleware(),
             $handler
-        ]))->listen($socket);
+        ]);
+        $httpServer->listen($socket);
     }
 
     public function handleAjax($post)

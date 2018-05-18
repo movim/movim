@@ -305,7 +305,7 @@ class Bootstrap
                 $session->loadMemory();
             } elseif ($process) {
                 // A process but no session in the db
-                //requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);
+                requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);
             }
         }
 
