@@ -2,13 +2,10 @@
 
 namespace App;
 
-use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
-use Illuminate\Database\Eloquent\Model;
+use Movim\Model;
 
 class Info extends Model
 {
-    use HasCompositePrimaryKey;
-
     protected $primaryKey = ['server', 'node'];
     public $incrementing = false;
     protected $fillable = ['server', 'node'];

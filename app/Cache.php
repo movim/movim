@@ -2,13 +2,10 @@
 
 namespace App;
 
-use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
-use Illuminate\Database\Eloquent\Model;
+use Movim\Model;
 
 class Cache extends Model
 {
-    use HasCompositePrimaryKey;
-
     protected $primaryKey = ['user_id', 'name'];
 
     public $incrementing = false;

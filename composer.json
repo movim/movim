@@ -37,7 +37,6 @@
         "clue/buzz-react": "^2.1",
         "illuminate/database": "^5.2",
         "robmorgan/phinx": "^0.9.2",
-        "coenjacobs/eloquent-composite-primary-keys": "^1.0",
         "doctrine/dbal": "^2.5"
     },
     "config": {

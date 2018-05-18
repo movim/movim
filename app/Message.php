@@ -2,14 +2,11 @@
 
 namespace App;
 
-use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
-use Illuminate\Database\Eloquent\Model;
+use Movim\Model;
 use Movim\Picture;
 
 class Message extends Model
 {
-    use HasCompositePrimaryKey;
-
     protected $primaryKey = ['user_id', 'jidfrom', 'id'];
     public $incrementing = false;
 

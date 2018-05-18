@@ -2,14 +2,11 @@
 
 namespace App;
 
-use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
-use Illuminate\Database\Eloquent\Model;
+use Movim\Model;
 use Movim\Picture;
 
 class Roster extends Model
 {
-    use HasCompositePrimaryKey;
-
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'jid'];
     protected $fillable = ['jid', 'name', 'ask', 'subscription', 'group'];

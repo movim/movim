@@ -2,14 +2,11 @@
 
 namespace App;
 
-use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
-use Illuminate\Database\Eloquent\Model;
+use Movim\Model;
 use Movim\Picture;
 
 class Presence extends Model
 {
-    use HasCompositePrimaryKey;
-
     protected $primaryKey = ['session_id', 'jid', 'resource'];
     public $incrementing = false;
 

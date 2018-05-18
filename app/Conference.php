@@ -2,14 +2,11 @@
 
 namespace App;
 
-use CoenJacobs\EloquentCompositePrimaryKeys\HasCompositePrimaryKey;
-use Illuminate\Database\Eloquent\Model;
+use Movim\Model;
 use Movim\Picture;
 
 class Conference extends Model
 {
-    use HasCompositePrimaryKey;
-
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
     protected $fillable = ['conference', 'name', 'nick', 'autojoin'];
@@ -60,8 +57,8 @@ class Conference extends Model
             $resource = $this->nick;
         }
 
-        return ($this->presences->where('mucjid', \App\User::me()->id)->count() > 0
-             || $this->presences->where('resource', $resource)->count() > 0);
+        return ($this->presences()->where('mucjid', \App\User::me()->id)->count() > 0
+             || $this->presences()->where('resource', $resource)->count() > 0);
     }
 
     public function getSubjectAttribute()
