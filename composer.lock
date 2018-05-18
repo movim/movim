@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "eee8dd24078730a53b48b0d17aa538c7",
+    "content-hash": "cb3c5cd8b0ebaeee1d6557408bd1198e",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1404,12 +1404,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/movim/moxl.git",
-                "reference": "7fa3206eaeb66b0afdabe319fad058a6385df848"
+                "reference": "bfe3e1d83ef3bbbd270150f2f1164e8a662ef716"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/movim/moxl/zipball/7fa3206eaeb66b0afdabe319fad058a6385df848",
-                "reference": "7fa3206eaeb66b0afdabe319fad058a6385df848",
+                "url": "https://api.github.com/repos/movim/moxl/zipball/bfe3e1d83ef3bbbd270150f2f1164e8a662ef716",
+                "reference": "bfe3e1d83ef3bbbd270150f2f1164e8a662ef716",
                 "shasum": ""
             },
             "require": {
@@ -1441,7 +1441,7 @@
                 "php",
                 "xmpp"
             ],
-            "time": "2018-05-18 09:45:02"
+            "time": "2018-05-18 20:58:18"
         },
         {
             "name": "nesbot/carbon",
