@@ -8,7 +8,7 @@ use React\Socket\Server as Reactor;
 use React\Http\Middleware\LimitConcurrentRequestsMiddleware;
 use React\Http\Middleware\RequestBodyBufferMiddleware;
 use React\Http\Middleware\RequestBodyParserMiddleware;
-use React\Http\StreamingServer;
+use React\Http\Server;
 use React\Http\Response;
 
 class Api
@@ -62,13 +62,7 @@ class Api
             );
         };
 
-        $httpServer = new StreamingServer([
-            new LimitConcurrentRequestsMiddleware(100), // 100 concurrent buffering handlers
-            new RequestBodyBufferMiddleware(16 * 1024 * 1024), // 16 MiB
-            new RequestBodyParserMiddleware(),
-            $handler
-        ]);
-        $httpServer->listen($socket);
+        (new Server($handler))->listen($socket);
     }
 
     public function handleAjax($post)
