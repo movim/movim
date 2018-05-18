@@ -2,59 +2,72 @@
 
 namespace Movim\Daemon;
 
-use React\Http\Server;
+use Psr\Http\Message\ServerRequestInterface;
 use React\Socket\Server as Reactor;
-use Movim\RPC;
+
+use React\Http\Middleware\LimitConcurrentRequestsMiddleware;
+use React\Http\Middleware\RequestBodyBufferMiddleware;
+use React\Http\Middleware\RequestBodyParserMiddleware;
+use React\Http\StreamingServer;
+use React\Http\Response;
 
 class Api
 {
-    private $_http;
     private $_core;
 
     public function __construct(Reactor $socket, Core $core)
     {
         $this->_core = &$core;
-        $this->_http = new Server($socket);
-
         $api = &$this;
 
-        $this->_http->on('request', function ($request, $response) use ($api) {
-            $response->writeHead(200, ['Content-Type' => 'text/plain']);
+        $handler = function (ServerRequestInterface $request) use ($api) {
+            $url = explode('/', $request->getUri()->getPath());
 
-            $url = explode('/', $request->getUrl()->getPath());
+            $response = '';
 
             switch($url[1]) {
                 case 'ajax':
-                    $api->handleAjax($request->getPost());
+                    $api->handleAjax($request->getParsedBody());
                     break;
                 case 'exists':
-                    $response->write($api->sessionExists($request->getPost()));
+                    $response = $api->sessionExists($request->getParsedBody());
                     break;
                 case 'linked':
-                    $response->write($api->sessionsLinked());
+                    $response = $api->sessionsLinked();
                     break;
                 case 'started':
-                    $response->write($api->sessionsStarted());
+                    $response = $api->sessionsStarted();
                     break;
                 case 'unregister':
-                    $response->write($api->sessionUnregister($request->getPost()));
+                    $response = $api->sessionUnregister($request->getParsedBody());
                     break;
                 case 'disconnect';
-                    $response->write($api->sessionDisconnect($request->getPost()));
+                    $response = $api->sessionDisconnect($request->getParsedBody());
                     break;
                 case 'purify':
-                    $response->write($api->purifyHTML($request->getPost()));
+                    $response = $api->purifyHTML($request->getParsedBody());
                     break;
                 case 'emojis':
-                    $response->write($api->addEmojis($request->getPost()));
+                    $response = $api->addEmojis($request->getParsedBody());
                     break;
                 case 'session':
-                    $response->write($api->getSession($request->getPost()));
+                    $response = $api->getSession($request->getParsedBody());
                     break;
             }
 
-            $response->end();
-        });
+            return new Response(
+                200,
+                ['Content-Type' => 'text/plain'],
+                $response
+            );
+        };
+
+        (new StreamingServer([
+            new LimitConcurrentRequestsMiddleware(100), // 100 concurrent buffering handlers
+            new RequestBodyBufferMiddleware(16 * 1024 * 1024), // 16 MiB
+            new RequestBodyParserMiddleware(),
+            $handler
+        ]))->listen($socket);
     }
 
     public function handleAjax($post)

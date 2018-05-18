@@ -24,7 +24,6 @@
 
         "cboden/ratchet": "^0.4.0",
 
-        "react/http": "dev-master#cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
         "react/zmq": "dev-master",
 
         "respect/validation": "^1.1",
@@ -37,7 +36,8 @@
         "clue/buzz-react": "^2.1",
         "illuminate/database": "^5.2",
         "robmorgan/phinx": "^0.9.2",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "react/http": "^0.8.3"
     },
     "config": {
         "platform": {

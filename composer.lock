@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "419a6b3bf5d48c8cb00240626ee2003a",
+    "content-hash": "0f5d5cda23fee685005a050a6edc519b",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -2097,16 +2097,16 @@
         },
         {
             "name": "react/http",
-            "version": "dev-master",
+            "version": "v0.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/http.git",
-                "reference": "cd15204bd15d106d7832c680e4fb0ca0ce2f5e30"
+                "reference": "f8bcdab2dc0ecd94f35ff9657a263028b96f0c46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/http/zipball/cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
-                "reference": "cd15204bd15d106d7832c680e4fb0ca0ce2f5e30",
+                "url": "https://api.github.com/repos/reactphp/http/zipball/f8bcdab2dc0ecd94f35ff9657a263028b96f0c46",
+                "reference": "f8bcdab2dc0ecd94f35ff9657a263028b96f0c46",
                 "shasum": ""
             },
             "require": {
@@ -2120,8 +2120,7 @@
             },
             "require-dev": {
                 "clue/block-react": "^1.1",
-                "phpunit/phpunit": "^4.8.10||^5.0",
-                "react/socket": "^1.0 || ^0.8 || ^0.7"
+                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -2142,7 +2141,7 @@
                 "server",
                 "streaming"
             ],
-            "time": "2016-07-06 23:51:32"
+            "time": "2018-04-11T15:03:27+00:00"
         },
         {
             "name": "react/http-client",
@@ -2442,12 +2441,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/friends-of-reactphp/zmq.git",
-                "reference": "2b7903b4c6a4bf4c7f23552bec7f24cbb5eeffc2"
+                "reference": "638f9facd0af9ef2d3fb4bc383607d36df0d269e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/friends-of-reactphp/zmq/zipball/2b7903b4c6a4bf4c7f23552bec7f24cbb5eeffc2",
-                "reference": "2b7903b4c6a4bf4c7f23552bec7f24cbb5eeffc2",
+                "url": "https://api.github.com/repos/friends-of-reactphp/zmq/zipball/638f9facd0af9ef2d3fb4bc383607d36df0d269e",
+                "reference": "638f9facd0af9ef2d3fb4bc383607d36df0d269e",
                 "shasum": ""
             },
             "require": {
@@ -2475,7 +2474,7 @@
                 "zeromq",
                 "zmq"
             ],
-            "time": "2018-04-10 05:50:26"
+            "time": "2018-05-18 13:06:01"
         },
         {
             "name": "respect/validation",
@@ -3223,7 +3222,6 @@
         "rain/raintpl": 20,
         "movim/moxl": 20,
         "heyupdate/emoji": 20,
-        "react/http": 20,
         "react/zmq": 20
     },
     "prefer-stable": false,
