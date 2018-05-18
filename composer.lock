@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb3c5cd8b0ebaeee1d6557408bd1198e",
+    "content-hash": "5f1e42e5e31452e8b3cb6aee677addcb",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1038,47 +1038,6 @@
                 "url"
             ],
             "time": "2017-03-20T17:10:46+00:00"
-        },
-        {
-            "name": "heyupdate/emoji",
-            "version": "dev-twemoji2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/heyupdate/emoji.git",
-                "reference": "99dda1bed08472046cac1498221f08684ad83d55"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/heyupdate/emoji/zipball/99dda1bed08472046cac1498221f08684ad83d55",
-                "reference": "99dda1bed08472046cac1498221f08684ad83d55",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.4"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "HeyUpdate\\Emoji\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Convert unicode and named (i.e. :smile:) Emoji into images",
-            "keywords": [
-                "emoji"
-            ],
-            "time": "2016-11-15 20:35:47"
         },
         {
             "name": "illuminate/container",
@@ -3118,8 +3077,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "rain/raintpl": 20,
-        "movim/moxl": 20,
-        "heyupdate/emoji": 20
+        "movim/moxl": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

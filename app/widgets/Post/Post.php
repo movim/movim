@@ -160,7 +160,7 @@ class Post extends \Movim\Widget\Base
 
     public function prepareComments(\App\Post $post, $public = false)
     {
-        $emoji = \MovimEmoji::getInstance();
+        $emoji = \Movim\Emoji::getInstance();
         $view = $this->tpl();
         $view->assign('post', $post);
         $view->assign('public', $public);

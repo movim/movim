@@ -26,7 +26,7 @@ class Notifs extends \Movim\Widget\Base
 
         if (!$since) $since = date(SQL_DATE, 0);
 
-        $emoji = \MovimEmoji::getInstance();
+        $emoji = \Movim\Emoji::getInstance();
 
         $notifs = \App\Post::whereIn('parent_id', function ($query) use ($since) {
             $query->select('id')

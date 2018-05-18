@@ -166,7 +166,7 @@ class Api
     {
         $string = $post['string'];
 
-        $emoji = \MovimEmoji::getInstance();
+        $emoji = \Movim\Emoji::getInstance();
         return $emoji->replace($string);
     }
 }
