@@ -26,6 +26,11 @@ cd "$srcpath"
 set -A files -- *.svg
 cd "$OLDPWD"
 
+if [[ -n $1 ]]; then
+	set -A files -- "$@"
+	print -ru2 -- "W: only testing $# files from command line"
+fi
+
 for f in "${files[@]}"; do
 	x=${f%.svg}
 	IFS=-
@@ -47,6 +52,7 @@ while IFS= read -pr line; do
 		continue
 	fi
 	print -ru2 -- "W: file ${files[n]} not matched"
+	[[ -n $1 ]] && print -ru2 -- "N: line: $line"
 	rv=1
 	let ++mis
 done
