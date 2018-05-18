@@ -3,6 +3,7 @@
 namespace Moxl\Stanza;
 
 use Movim\Session;
+use Moxl\Utils;
 
 class Message
 {
