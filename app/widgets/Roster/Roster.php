@@ -105,6 +105,7 @@ class Roster extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('contacts', $this->user->session
                                              ->contacts()
+                                             ->with('presence.capability')
                                              ->orderBy('jid')
                                              ->get());
 

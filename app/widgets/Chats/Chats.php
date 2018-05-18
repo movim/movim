@@ -177,7 +177,7 @@ class Chats extends \Movim\Widget\Base
         $contact = App\Contact::find($jid);
         $view->assign('status', $status);
         $view->assign('contact', $contact ? $contact : new App\Contact(['id' => $jid]));
-        $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
+        $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->with('presence.capability')->first());
         $view->assign('message', $this->user->messages()
                                             ->where(function ($query) use ($jid) {
                                                 $query->where('jidfrom', $jid)
