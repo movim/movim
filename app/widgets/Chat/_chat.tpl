@@ -190,7 +190,7 @@
         <li class="{if="$muc && !$conference->connected"}disabled{/if}">
             {if="!$muc"}
             <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
-                <img alt=":smiley:" class="emoji large" src="{$c->getSmileyPath('1f603')}">
+                <img alt="☺" class="emoji large" src="{$c->getSmileyPath('1f603')}">
             </span>
             {/if}
             {if="$c->getUser()->hasUpload()"}
