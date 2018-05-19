@@ -170,14 +170,7 @@ class Bootstrap
         }
 
         $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname).'/';
-
-        $uri = "//";
-
-        if ($path == "/") {
-            $uri .= $_SERVER['HTTP_HOST'] ;
-        } elseif (isset($_SERVER['HTTP_HOST'])) {
-            $uri .= str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path);
-        }
+        $uri = '//' . str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path);
 
         if (getenv('baseuri') != null
         && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)) {
