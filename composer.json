@@ -16,7 +16,7 @@
         "wikimedia/composer-merge-plugin": "^1.0",
 
         "monolog/monolog": "1.8.*",
-        "rain/raintpl": "dev-master",
+        "rain/raintpl": "^3.1.0",
         "michelf/php-markdown": "^1.8",
 
         "embed/embed": "^v3.3",

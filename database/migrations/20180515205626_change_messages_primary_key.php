@@ -7,25 +7,25 @@ class ChangeMessagesPrimaryKey extends Migration
 {
     public function up()
     {
-        $this->disableForeignKeyCheck();
-
         $this->schema->table('messages', function(Blueprint $table) {
+            $table->dropForeign(['user_id']);
             $table->dropPrimary('messages_pkey');
             $table->primary(['user_id', 'jidfrom', 'id']);
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
         });
-
-        $this->enableForeignKeyCheck();
     }
 
     public function down()
     {
-        $this->disableForeignKeyCheck();
-
         $this->schema->table('messages', function(Blueprint $table) {
+            $table->dropForeign(['user_id']);
             $table->dropPrimary('messages_pkey');
             $table->primary(['user_id', 'id']);
+            $table->foreign('user_id')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
         });
-
-        $this->enableForeignKeyCheck();
     }
 }
