@@ -24,6 +24,9 @@ v0.14 (trunk)
  * Add support for MAM configuration
  * Add support for XEP-0153: vCard-Based Avatar
  * Allow avatars to be retrieved and set for chatrooms
+ * Move Websocket URI below the base URI (e.g. /ws → /movim/ws)
+ * Remove preliminary Debian packaging
+ * Bundle moxl
 
 v0.13
 ---------------------------
