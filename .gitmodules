@@ -1,3 +1,3 @@
 [submodule "moxl"]
 	path = moxl
-	url = git@github.com:movim/moxl
+	url = https://github.com/movim/moxl.git
