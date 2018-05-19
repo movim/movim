@@ -42,9 +42,9 @@ var MovimWebsocket = {
 
     init : function() {
         if (SECURE_WEBSOCKET) {
-            var uri = 'wss://' + BASE_HOST + '/ws/';
+            var uri = 'wss:' + BASE_URI + '/ws/';
         } else {
-            var uri = 'ws://' + BASE_HOST + '/ws/';
+            var uri = 'ws:' + BASE_URI + '/ws/';
         }
 
         if (this.connection

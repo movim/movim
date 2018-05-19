@@ -171,11 +171,7 @@ class Bootstrap
 
         $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname).'/';
 
-        // Determining the protocol to use.
-        $uri = "http://";
-        if ($this->isServerSecured()) {
-            $uri = 'https://';
-        }
+        $uri = "//";
 
         if ($path == "/") {
             $uri .= $_SERVER['HTTP_HOST'] ;
