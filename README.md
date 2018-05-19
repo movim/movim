@@ -31,13 +31,6 @@ You can also use Movim on our official Pods :
 * https://fr.movim.eu/ server hosted in France
 * https://nl.movim.eu/ server hosted in The Netherlands
 * https://de.movim.eu/ server hosted in Germany
-* https://movim.se/ server hosted in Sweden
-
-### Librairies
-Movim is also coming with a specific library :
-
-* https://github.com/movim/moxl Moxl (for Movim XMPP Library) is a PHP XMPP library especially made for the Movim project
-
 
 Translations
 ------------

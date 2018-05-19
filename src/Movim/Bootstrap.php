@@ -91,7 +91,6 @@ class Bootstrap
         define('APP_TITLE',     'Movim');
         define('APP_NAME',      'movim');
         define('APP_VERSION',   $this->getVersion());
-        define('APP_SECURED',   $this->isServerSecured());
         define('SMALL_PICTURE_LIMIT', 320000);
 
         if (file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
@@ -145,14 +144,6 @@ class Bootstrap
         }
     }
 
-    private function isServerSecured()
-    {
-        return ((
-            isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != "")
-        || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https'
-        ));
-    }
-
     private function getVersion()
     {
         $file = 'VERSION';
@@ -163,6 +154,11 @@ class Bootstrap
 
     private function getBaseUri()
     {
+        if (getenv('baseuri') != null
+        && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)) {
+            return getenv('baseuri');
+        }
+
         $dirname = dirname($_SERVER['PHP_SELF']);
 
         if (strstr($dirname, 'index.php')) {
@@ -170,12 +166,11 @@ class Bootstrap
         }
 
         $path = (($dirname == DIRECTORY_SEPARATOR) ? '' : $dirname).'/';
-        $uri = '//' . str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path);
 
-        if (getenv('baseuri') != null
-        && filter_var(getenv('baseuri'), FILTER_VALIDATE_URL)) {
-            return getenv('baseuri');
-        }
+        $uri = '//';
+        $uri .= (array_key_exists('HTTP_HOST', $_SERVER))
+            ? str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path)
+            : $path;
 
         return $uri;
     }
