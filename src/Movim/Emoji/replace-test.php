@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 define('BASE_URI', '(base)');
 mb_internal_encoding("UTF-8");
 
@@ -16,4 +18,4 @@ class Configuration
 require_once '../Emoji.php';
 
 $text = file_get_contents('php://stdin');
-echo Emoji::getInstance()->replace($text);
+echo \Movim\Emoji::getInstance()->replace($text);
