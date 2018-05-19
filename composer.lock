@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f1e42e5e31452e8b3cb6aee677addcb",
+    "content-hash": "86aa21de18b7f7b0d30dbdab805a3fdb",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1738,23 +1738,20 @@
         },
         {
             "name": "rain/raintpl",
-            "version": "dev-master",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/feulf/raintpl3.git",
-                "reference": "fed74db70cc2a80df11fc302a2ea0077185be5e8"
+                "url": "https://github.com/rainphp/raintpl3.git",
+                "reference": "5fc655b59cb3d541755116a09fc4c0206b301923"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/feulf/raintpl3/zipball/fed74db70cc2a80df11fc302a2ea0077185be5e8",
-                "reference": "fed74db70cc2a80df11fc302a2ea0077185be5e8",
+                "url": "https://api.github.com/repos/rainphp/raintpl3/zipball/5fc655b59cb3d541755116a09fc4c0206b301923",
+                "reference": "5fc655b59cb3d541755116a09fc4c0206b301923",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.4.*"
             },
             "type": "library",
             "autoload": {
@@ -1768,16 +1765,17 @@
             ],
             "authors": [
                 {
-                    "name": "Rain Community"
+                    "name": "Federico Ulfo",
+                    "email": "rainelemental@gmail.com",
+                    "homepage": "http://github.com/rainphp"
                 },
                 {
-                    "name": "Federico Ulfo",
-                    "email": "rainelemental@gmail.com"
+                    "name": "Rain Community"
                 }
             ],
             "description": "easy and fast template engine",
             "homepage": "http://raintpl.com",
-            "time": "2016-12-15 14:21:40"
+            "time": "2013-11-10T18:36:47+00:00"
         },
         {
             "name": "ratchet/rfc6455",
@@ -3076,7 +3074,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "rain/raintpl": 20,
         "movim/moxl": 20
     },
     "prefer-stable": false,

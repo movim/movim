@@ -14,7 +14,7 @@
         "ext-imagick": "*",
 
         "monolog/monolog": "1.8.*",
-        "rain/raintpl": "dev-master",
+        "rain/raintpl": "^3.1.0",
         "michelf/php-markdown": "^1.8",
 
         "movim/moxl": "dev-master#bfe3e1d83ef3bbbd270150f2f1164e8a662ef716",
