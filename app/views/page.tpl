@@ -39,6 +39,7 @@
         $this->addCss('color.css');
         $this->addCss('block.css');
         $this->addCss('menu.css');
+        $this->addCss('opensans.css');
         $this->addCss('fonts.css');
         $this->addCss('title.css');
         $this->addCss('typo.css');
