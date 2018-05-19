@@ -1,0 +1,15 @@
+This font (the files Material-Design-Iconic-Font.{eot,svg,ttf,woff{,2}}
+is reproduced verbatim from the dist/fonts/ subdirectory of its homepage
+at: https://github.com/zavoloklom/material-design-iconic-font
+(This means that this is not a “Modified Version” in terms of the OFL,
+because it is an “Original Version” in terms of the OFL.)
+
+The font is, according to the CSS file reproduced in the file
+../css/material-design-iconic-font.css, covered by the SIL OFL 1.1,
+a complete copy of which is shipped in the file OFL.txt in this
+directory. The Original Version does not contain any copyright
+notice to reproduce, nor does the homepage.
+
+While the font is unmodified, it is generated (by upstream) from
+a number of SVG files, which can all be inspected in the homepage
+at the above-mentioned URL.
