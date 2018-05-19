@@ -177,7 +177,7 @@ class Bootstrap
             $uri = 'https://';
         }
 
-        if ($path == "") {
+        if ($path == "/") {
             $uri .= $_SERVER['HTTP_HOST'] ;
         } elseif (isset($_SERVER['HTTP_HOST'])) {
             $uri .= str_replace('//', '/', $_SERVER['HTTP_HOST'] . $path);
