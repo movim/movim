@@ -2,10 +2,6 @@
 
 class System extends \Movim\Widget\Base
 {
-    function load()
-    {
-    }
-
     function display()
     {
         header('Cache-Control:public, max-age=31536000');
