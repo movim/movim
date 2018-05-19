@@ -24,6 +24,9 @@ v0.14 (trunk)
  * Add support for MAM configuration
  * Add support for XEP-0153: vCard-Based Avatar
  * Allow avatars to be retrieved and set for chatrooms
+ * Move Websocket URI below the base URI (e.g. /ws → /movim/ws)
+ * Remove preliminary Debian packaging
+ * Bundle moxl
  * Remove several dependencies (heyupdate/emoji, clue/buzz-react, ramsey/uuid) and fix the versions of some of them (react/zmq, rain/raintpl, react/http)
  * Improve handling of Emojis (by mirabilos)
  * Improve performances by using eager loading (for Chats, Posts and Contacts related widgets)

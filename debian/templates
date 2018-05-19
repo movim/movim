@@ -1,6 +1,0 @@
-Template: movim/httpserver
-Type: multiselect
-Choices: apache2
-Description: Web server to reconfigure automatically:
- Please choose the web server that should be automatically configured
- to run Movim.
