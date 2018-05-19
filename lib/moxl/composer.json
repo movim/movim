@@ -1,0 +1,27 @@
+{
+    "name": "movim/moxl",
+    "version": "1.10.0",
+    "description": " Moxl is a light PHP XMPP library especially made for the Movim project ",
+    "keywords": ["xmpp", "php"],
+    "homepage": "https://github.com/movim/moxl",
+    "type": "library",
+    "license": "AGPL-3.0-only",
+    "authors": [
+        {
+            "name": "Jaussoin Timothée",
+            "email": "edhelas@movim.eu",
+            "homepage": "https://edhelas.movim.eu"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Moxl\\": "src/Moxl"
+        }
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "monolog/monolog": "1.8.*",
+        "fabiang/sasl": "^1.0",
+        "pear/net_dns2": "^1.4"
+    }
+}
