@@ -1,0 +1,5 @@
+.editorconfig	export-ignore
+.gitattributes	export-ignore
+.gitcmodule	export-ignore
+.gitignore	export-ignore
+composer.lock	export-ignore
