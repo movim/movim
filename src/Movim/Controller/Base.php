@@ -17,7 +17,7 @@ class Base
 
     function __construct()
     {
-        $this->page = new Builder();
+        $this->page = new Builder;
     }
 
     /**
@@ -30,9 +30,9 @@ class Base
     {
         if (isset($_GET[$name])) {
             return htmlentities($_GET[$name]);
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     /**
@@ -45,17 +45,16 @@ class Base
     {
         if (isset($_POST[$name])) {
             return htmlentities($_POST[$name]);
-        } else {
-            return false;
         }
+
+        return false;
     }
 
     function checkSession()
     {
-        if ($this->session_only) {
-            if (!(new \App\User)->isLogged()) {
-                $this->name = 'login';
-            }
+        if ($this->session_only
+        && !(new \App\User)->isLogged()) {
+            $this->name = 'login';
         }
     }
 

@@ -187,11 +187,9 @@ class Base
      */
     protected function respath($file, $fspath = false, $parent = false, $notime = false)
     {
-        if ($parent == false) {
-            $folder = get_class($this);
-        } else {
-            $folder = get_parent_class($this);
-        }
+        $folder = ($parent == false)
+            ? get_class($this)
+            : get_parent_class($this);
 
         $path = 'app/widgets/' . $folder . '/' . $file;
 
