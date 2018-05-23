@@ -29,7 +29,7 @@ class ContactHeader extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $view->assign('contact', $this->user->session->contacts()->where('jid', $jid)->first());
-        $view->assign('groups', $this->user->session->contacts()->pluck('group')->toArray());
+        $view->assign('groups', $this->user->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray());
 
         Dialog::fill($view->draw('_contactheader_edit', true));
     }

@@ -8,7 +8,7 @@ class ContactActions extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
-        $view->assign('groups', $this->user->session->contacts()->pluck('group')->toArray());
+        $view->assign('groups', $this->user->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray());
 
         Dialog::fill($view->draw('_contactactions_add', true));
     }
