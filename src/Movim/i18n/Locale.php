@@ -179,6 +179,7 @@ class Locale {
     public function loadPo()
     {
         $pofile = LOCALES_PATH.$this->language.'.po';
+
         if (!file_exists($pofile)) {
             return false;
         }
