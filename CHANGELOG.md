@@ -207,7 +207,7 @@ v0.8.0 – Polar Aurora
  * Quite all the Movim widgets are now using a full MVC system
  * Rewrite the core session manager (Sessionx)
  * Add a new localisation system + new translations
- * Move the Movim librairies and dependencies to Composer and convert Modl and Moxl to PSR-0 to simplify the loading and packaging of the libraries
+ * Move the Movim libraries and dependencies to Composer and convert Modl and Moxl to PSR-0 to simplify the loading and packaging of the libraries
  * Monolog is now the new log library for Movim
  * Lots of warnings fixed
  * Add WebRTC threw Jingle audio-video conferencing
