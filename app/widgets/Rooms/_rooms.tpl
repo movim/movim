@@ -1,7 +1,7 @@
 {if="!$c->supported('anonymous') && $c->getView() != 'room'"}
     <ul class="list divided spaced middle {if="!$edit"}active{/if}">
         <li class="subheader" title="{$c->__('page.configuration')}">
-            {if="$conferences != null"}
+            {if="$conferences->isNotEmpty()"}
             <span class="control icon active gray" onclick="Rooms_ajaxDisplay({if="$edit"}false{else}true{/if});">
                 {if="$edit"}
                     <i class="zmdi zmdi-check"></i>
