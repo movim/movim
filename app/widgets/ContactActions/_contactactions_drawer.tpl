@@ -22,16 +22,22 @@
                         <i class="zmdi zmdi-account"></i>
                     </span>
                 {/if}
+                <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
+                    <i class="zmdi zmdi-account"></i>
+                </span>
                 {if="!$contact->isMe()"}
                     <span class="control icon active" onclick="ContactActions_ajaxChat('{$contact->id}')">
                         <i class="zmdi zmdi-comment-text-alt"></i>
                     </span>
                 {/if}
-                <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
-                    <i class="zmdi zmdi-account"></i>
-                </span>
-                <p>{$contact->truename}</p>
-                <p>{$contact->id}</p>
+                {if="$roster && $roster->presence && $roster->presence->capability && $roster->presence->capability->isJingle()"}
+                    <span title="{$c->__('button.call')}" class="control icon active on_desktop"
+                          onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
+                        <i class="zmdi zmdi-phone"></i>
+                    </span>
+                {/if}
+                <p class="line">{$contact->truename}</p>
+                <p class="line">{$contact->id}</p>
             </li>
         </ul>
     </header>

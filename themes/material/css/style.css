@@ -442,19 +442,17 @@ hr:not(.clear) {
 }
 
 @media screen and (max-width: 1024px) {
+    .on_mobile {
+        display: inherit !important;
+    }
 
-.on_mobile {
-    display: inherit !important;
-}
+    .on_mobile.zmdi {
+        display: inline !important;
+    }
 
-.on_mobile.zmdi {
-    display: inline !important;
-}
-
-.on_desktop {
-    display: none !important;
-}
-
+    .on_desktop {
+        display: none !important;
+    }
 }
 
 /* Tag */
