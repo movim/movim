@@ -111,8 +111,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 23:10+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
 "Language: id\n"
@@ -120,7 +120,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -507,7 +507,7 @@ msgstr "Konten ini bersifat pribadi, mohon masuk terlebih dahulu untuk melihatny
 
 #: [title]conferences
 msgid "Conferences"
-msgstr "Konferensi"
+msgstr ""
 
 #: [title]groups [group]empty_title
 msgid "Groups"
@@ -515,7 +515,7 @@ msgstr "Grup"
 
 #: [chatroom]add
 msgid "Add a new Chat Room"
-msgstr "Tambahkan Ruang Obrolan baru"
+msgstr ""
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
@@ -524,7 +524,7 @@ msgstr "ID Ruang Obrolan"
 #: [chatroom]name
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -532,7 +532,7 @@ msgstr "Panggilan"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Apakah anda ingin tergabung secara otomatis ke Ruang Obrolan ini ?"
+msgstr ""
 
 #: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
@@ -548,24 +548,24 @@ msgstr "Bookmark diperbarui"
 
 #: [bookmarks]error
 msgid "An error occured :"
-msgstr "Sebuah galat terjadi :"
+msgstr ""
 
 #: [bookmarks]configure
 msgid "Configure"
-msgstr "Konfigurasi"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
-msgstr "Tambahkan URL baru"
+msgstr ""
 
 #: [url]url
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #: [url]name
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Nama"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -1258,14 +1258,12 @@ msgid "Our official apps are available on our website"
 msgstr ""
 
 #: [contact]title
-#, fuzzy
 msgid "Administrators & Contact"
-msgstr "Administrasi"
+msgstr ""
 
 #: [chatroom]question
-#, fuzzy
 msgid "Chat with the Movim team?"
-msgstr "Berbicara dengan tim?"
+msgstr ""
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -2012,9 +2010,8 @@ msgid "failed"
 msgstr ""
 
 #: [visio]connecting
-#, fuzzy
 msgid "…connecting"
-msgstr "Terputus"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2821,62 +2818,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Update your PHP-Version: %s"
-#~ msgstr "Perbarui versi PHP anda: %s"
-
-#~ msgid "Required: 5.3.0"
-#~ msgstr "Dibutuhkan: 5.3.0"
-
-#, fuzzy
-#~ msgid "What do the little banners refer to"
-#~ msgstr "Spanduk kecil tersebut mengacu kepada apa?"
-
-#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-#~ msgstr "Terima kasih untuk lima banner kecil ini, sekarang anda dapat dengan cepat mengidentifikasi tingkat kerahasiaan yang berlaku untuk informasi yang anda berikan."
-
-#~ msgid "White, only you can see the information"
-#~ msgstr "Putih, hanya anda yang dapat melihat informasi"
-
-#~ msgid "Green, you have chosen some contacts who can see your information"
-#~ msgstr "Hijau, anda dapat menentukan beberapa kontak yang dapat melihat informasi anda"
-
-#~ msgid "Orange, all your contact list can see your information"
-#~ msgstr "Oranye, semua daftar kontak anda dapat melihat informasi anda"
-
-#~ msgid "Red, everybody in the XMPP network can see your information"
-#~ msgstr "Merah, semua orang di jaringan XMPP dapat melihat informasi anda"
-
-#~ msgid "Black, the whole Internet can see your information"
-#~ msgstr "Hitam, seluruh Internet dapat melihat informasi anda"
-
-#, fuzzy
-#~ msgid "There is no Groups yet on this server."
-#~ msgstr "%s grup di server ini"
-
-#~ msgid "Read the Wiki"
-#~ msgstr "Baca Wiki"
-
-#~ msgid "Talk with us by email ?"
-#~ msgstr "Berbicara dengan kami lewat email ?"
-
-#~ msgid "Join the Mailing List"
-#~ msgstr "Berlangganan"
-
-#~ msgid "WebSocket Configuration"
-#~ msgstr "Konfigurasi WebSocket"
-
-#~ msgid "Enter here a valid WebSocket URI in the form"
-#~ msgstr "Masukkan URI WebSocket yang valid di form berikut"
-
-#~ msgid "WebSocket URI"
-#~ msgstr "URI WebSocket"
-
-#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
-#~ msgstr "Jika anda mengganti URI, mohon hidupkan ulang daemon untuk memuat ulang konfigurasi"
-
-#~ msgid "Public WebSockets"
-#~ msgstr "Publik WebSocket"
-
-#~ msgid "Looking for some documentation ?"
-#~ msgstr "Mencari dokumentasi?"

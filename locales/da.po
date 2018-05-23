@@ -109,8 +109,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 23:10+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
 "Language: da\n"
@@ -118,7 +118,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -504,28 +504,25 @@ msgid "This content is private, please login to see it"
 msgstr "Dette indhold er privat, log ind for at se det"
 
 #: [title]conferences
-#, fuzzy
 msgid "Conferences"
-msgstr "Visio-konference"
+msgstr ""
 
 #: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Grupper"
 
 #: [chatroom]add
-#, fuzzy
 msgid "Add a new Chat Room"
-msgstr "Tilføj et chatrum"
+msgstr ""
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
 msgstr "ID for chatrum"
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Navn"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -552,9 +549,8 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
-#, fuzzy
 msgid "Configure"
-msgstr "Opsætning"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
@@ -565,10 +561,9 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Navn"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -1261,14 +1256,12 @@ msgid "Our official apps are available on our website"
 msgstr ""
 
 #: [contact]title
-#, fuzzy
 msgid "Administrators & Contact"
-msgstr "Administrations legitimationsstyring"
+msgstr ""
 
 #: [chatroom]question
-#, fuzzy
 msgid "Chat with the Movim team?"
-msgstr "Chat med holdet bag?"
+msgstr ""
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1651,9 +1644,8 @@ msgid "Tags"
 msgstr "Mærkater"
 
 #: [publish]valid_url [publishbrief]valid_url
-#, fuzzy
 msgid "Please enter a valid URL"
-msgstr "Skriv venligst en gyldig url"
+msgstr ""
 
 #: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
@@ -1704,14 +1696,12 @@ msgid "Add a link"
 msgstr ""
 
 #: [publishbrief]attach
-#, fuzzy
 msgid "Add a file or a picture"
-msgstr "Tilføj en fil eller et billede til dit indlæg"
+msgstr ""
 
 #: [publishbrief]no_publication
-#, fuzzy
 msgid "You cannot publish a post here"
-msgstr "Du kan ikke publicere et indlæg til denne gruppe"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -2018,9 +2008,8 @@ msgid "failed"
 msgstr ""
 
 #: [visio]connecting
-#, fuzzy
 msgid "…connecting"
-msgstr "Forbinder"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2827,68 +2816,3 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "Update your PHP-Version: %s"
-#~ msgstr "Opdater din PHP-version: %s"
-
-#~ msgid "Required: 5.3.0"
-#~ msgstr "Kræver: 5.3.0"
-
-#~ msgid "Monthly Subscriptions"
-#~ msgstr "Månedlige Abonnementer"
-
-#~ msgid "Monthly Subscriptions Cumulated"
-#~ msgstr "Måndelige Akkumulerede Abonnementer"
-
-#, fuzzy
-#~ msgid "What do the little banners refer to"
-#~ msgstr "Hvad refererer de små bannere til?"
-
-#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-#~ msgstr "Takket være disse fem små bannere, kan du hurtigt identificere niveauet af fortrolighed der tillægges den information du giver."
-
-#~ msgid "White, only you can see the information"
-#~ msgstr "Hvid, kun du kan se denne information"
-
-#~ msgid "Green, you have chosen some contacts who can see your information"
-#~ msgstr "Grøn, du har valgt nogle kontakter der kan se din information"
-
-#~ msgid "Orange, all your contact list can see your information"
-#~ msgstr "Orange, alle dine kontakter kan se din information"
-
-#~ msgid "Red, everybody in the XMPP network can see your information"
-#~ msgstr "Rød, alle på XMPP-netværket kan se din information"
-
-#~ msgid "Black, the whole Internet can see your information"
-#~ msgstr "Sort, hele internettet kan se din information"
-
-#, fuzzy
-#~ msgid "There is no Groups yet on this server."
-#~ msgstr "%s grupper på denne server"
-
-#~ msgid "Read the Wiki"
-#~ msgstr "Læs Wiki'en"
-
-#~ msgid "Talk with us by email ?"
-#~ msgstr "Skriv til os på email?"
-
-#~ msgid "Join the Mailing List"
-#~ msgstr "Tilmeld dig maillisten"
-
-#~ msgid "WebSocket Configuration"
-#~ msgstr "WebSocket opsætning"
-
-#~ msgid "Enter here a valid WebSocket URI in the form"
-#~ msgstr "Skriv her en gyldig WebSocket URI i formularen"
-
-#~ msgid "WebSocket URI"
-#~ msgstr "WebSocket URI"
-
-#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
-#~ msgstr "Genstart venligst daemon'en for at genindlæse opsætningen, hvis du ændrer URI'en"
-
-#~ msgid "Public WebSockets"
-#~ msgstr "Offentlige WebSockets"
-
-#~ msgid "Looking for some documentation ?"
-#~ msgstr "Leder du efter dokumentation?"

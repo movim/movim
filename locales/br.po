@@ -109,16 +109,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 23:10+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Breton (http://www.transifex.com/movim/movim/language/br/)\n"
 "Language: br\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"Plural-Forms: nplurals=5; plural=((n%10 == 1) && (n%100 != 11) && (n%100 !=71) && (n%100 !=91) ? 0 :(n%10 == 2) && (n%100 != 12) && (n%100 !=72) && (n%100 !=92) ? 1 :(n%10 ==3 || n%10==4 || n%10==9) && (n%100 < 10 || n% 100 > 19) && (n%100 < 70 || n%100 > 79) && (n%100 < 90 || n%100 > 99) ? 2 :(n != 0 && n % 1000000 == 0) ? 3 : 4);\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -520,10 +520,9 @@ msgid "Chat Room ID"
 msgstr ""
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Anv"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -550,9 +549,8 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
-#, fuzzy
 msgid "Configure"
-msgstr "Kefluniadur"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
@@ -563,10 +561,9 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Anv"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -2819,25 +2816,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#, fuzzy
-#~ msgid "What do the little banners refer to"
-#~ msgstr "Petra dalv ar bannieloù bihan?"
-
-#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-#~ msgstr "A-drugarez d'ar pemp bannielig-se e c'heller anavezout buan al live prevezded war an titour roet ganeoc'h."
-
-#~ msgid "White, only you can see the information"
-#~ msgstr "Gwenn, n'eus nemedoc'h a c'hell gwelout an titour"
-
-#~ msgid "Green, you have chosen some contacts who can see your information"
-#~ msgstr "Gwer, choazet ho peus an darempredoù a c'hell gwelet ho titouroù"
-
-#~ msgid "Orange, all your contact list can see your information"
-#~ msgstr "Orañjez, hollad ho tarempredoù a c'hell gwelet ho titouroù"
-
-#~ msgid "Red, everybody in the XMPP network can see your information"
-#~ msgstr "Ruz, an holl en ho rouedad XMPP a c'hell gwelet ho titouroù"
-
-#~ msgid "Black, the whole Internet can see your information"
-#~ msgstr "Du, an internet a-bezh a c'hell gwelet ho titouroù"

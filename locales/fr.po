@@ -1,9 +1,11 @@
 #
 # Translators:
+# Baudouin Feildel <baudouin_transifex@feildel.fr>, 2018
 # Cypouz, 2015
 # Éfrit, 2015
 # Jaussoin Timothée <edhelas@movim.eu>, 2015-2018
 # Maxime Buquet <tidusx62@gmail.com>, 2015
+# Raphael J <contact@raphael-jolivet.name>, 2018
 # Thirty Thirds <thirtythirds@gmail.com>, 2015-2017
 # Tom <caporaldead@gmail.com>, 2015
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -114,8 +116,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 23:10+0200\n"
-"PO-Revision-Date: 2018-01-25 22:47+0000\n"
+"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -123,7 +125,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -818,15 +820,15 @@ msgstr "Les rédacteurs peuvent publier"
 
 #: [communityconfig]publish_model_subscribers_title
 msgid "Subscribers"
-msgstr "Souscrits"
+msgstr "Abonnés"
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr "Les souscrits peuvent publier"
+msgstr "Les abonnés peuvent publier"
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
-msgstr "%s souscrits"
+msgstr "%s abonnés"
 
 #: [communitydata]num [groups]num
 msgid "%s posts"
@@ -954,23 +956,23 @@ msgstr "Des couleurs sombres pour reposer vos yeux"
 
 #: [config]mam
 msgid "Archiving preferences"
-msgstr ""
+msgstr "Paramètres d'archivage"
 
 #: [config]mam_text
 msgid "Server-side archiving preferences"
-msgstr ""
+msgstr "Paramètres d'archivage du serveur"
 
 #: [config]mam_always
 msgid "Always"
-msgstr ""
+msgstr "Toujours"
 
 #: [config]mam_never
 msgid "Never"
-msgstr ""
+msgstr "Jamais"
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
-msgstr ""
+msgstr "Paramètres d'archivage sauvegardés"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -978,15 +980,15 @@ msgstr "URL CSS personnalisée pour votre blog"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
-msgstr ""
+msgstr "Confirmation d'authentification"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr ""
+msgstr "Cette plateforme requière votre confirmation pour authentifier ce compte"
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr ""
+msgstr "Code d'authentification"
 
 #: [general]legend
 msgid "General Informations"
@@ -1701,14 +1703,12 @@ msgid "Add a link"
 msgstr "Ajouter un lien"
 
 #: [publishbrief]attach
-#, fuzzy
 msgid "Add a file or a picture"
-msgstr "Ajouter un fichier ou une image à vôtre billet"
+msgstr "Ajouter un fichier ou une image"
 
 #: [publishbrief]no_publication
-#, fuzzy
 msgid "You cannot publish a post here"
-msgstr "Vous ne pouvez pas publier de billet sur ce groupe"
+msgstr "Vous ne pouvez pas publier de billet ici"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -2823,15 +2823,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Update your PHP-Version: %s"
-#~ msgstr "Mettez à jour votre version de PHP : %s"
-
-#~ msgid "Required: 5.3.0"
-#~ msgstr "Requis : 5.3.0"
-
-#~ msgid "Monthly Subscriptions"
-#~ msgstr "Souscriptions par mois"
-
-#~ msgid "Monthly Subscriptions Cumulated"
-#~ msgstr "Souscriptions par mois cumulés"

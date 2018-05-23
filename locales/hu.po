@@ -112,8 +112,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 23:10+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
@@ -121,7 +121,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -507,28 +507,25 @@ msgid "This content is private, please login to see it"
 msgstr "Ez a tartalom nem nyilvános, jelentkezz be, hogy láthasd"
 
 #: [title]conferences
-#, fuzzy
 msgid "Conferences"
-msgstr "Videó-konferencia"
+msgstr ""
 
 #: [title]groups [group]empty_title
 msgid "Groups"
 msgstr "Csoportok"
 
 #: [chatroom]add
-#, fuzzy
 msgid "Add a new Chat Room"
-msgstr "Chatszoba hozzáadása"
+msgstr ""
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
 msgstr "Chat szoba azonosítója:"
 
 #: [chatroom]name
-#, fuzzy
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -555,9 +552,8 @@ msgid "An error occured :"
 msgstr ""
 
 #: [bookmarks]configure
-#, fuzzy
 msgid "Configure"
-msgstr "Beállítások"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
@@ -568,10 +564,9 @@ msgid "URL"
 msgstr ""
 
 #: [url]name
-#, fuzzy
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Név"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -1264,14 +1259,12 @@ msgid "Our official apps are available on our website"
 msgstr ""
 
 #: [contact]title
-#, fuzzy
 msgid "Administrators & Contact"
-msgstr "Adminisztráció"
+msgstr ""
 
 #: [chatroom]question
-#, fuzzy
 msgid "Chat with the Movim team?"
-msgstr "Chatelnél a csapatunkkal?"
+msgstr ""
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1654,9 +1647,8 @@ msgid "Tags"
 msgstr "Címkék"
 
 #: [publish]valid_url [publishbrief]valid_url
-#, fuzzy
 msgid "Please enter a valid URL"
-msgstr "Érvényes url-t adj meg"
+msgstr ""
 
 #: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
@@ -1707,14 +1699,12 @@ msgid "Add a link"
 msgstr ""
 
 #: [publishbrief]attach
-#, fuzzy
 msgid "Add a file or a picture"
-msgstr "Csatolj fájlt vagy képet a posztodhoz"
+msgstr ""
 
 #: [publishbrief]no_publication
-#, fuzzy
 msgid "You cannot publish a post here"
-msgstr "Nem írhatsz bejegyzést ebbe a csoportba"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -2021,9 +2011,8 @@ msgid "failed"
 msgstr ""
 
 #: [visio]connecting
-#, fuzzy
 msgid "…connecting"
-msgstr "Csatlakozás"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2830,62 +2819,3 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgid "Update your PHP-Version: %s"
-#~ msgstr "A PHP verziód: %s"
-
-#~ msgid "Required: 5.3.0"
-#~ msgstr "Szükséges verzió: 5.3.0"
-
-#, fuzzy
-#~ msgid "What do the little banners refer to"
-#~ msgstr "Mit jelentenek a kis jelölők?"
-
-#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-#~ msgstr "A kis jelölőknek köszönhetően könnyen láthatod, hogy a megadott információid milyen nyilvánosság előtt jelennek meg."
-
-#~ msgid "White, only you can see the information"
-#~ msgstr "Fehér - csak te láthatod"
-
-#~ msgid "Green, you have chosen some contacts who can see your information"
-#~ msgstr "Zöld - néhány ismerősödnek láthatóvá tetted az információt"
-
-#~ msgid "Orange, all your contact list can see your information"
-#~ msgstr "Narancssárga - minden partnered láthatja"
-
-#~ msgid "Red, everybody in the XMPP network can see your information"
-#~ msgstr "Piros - az XMPP hálózaton mindenki láthatja"
-
-#~ msgid "Black, the whole Internet can see your information"
-#~ msgstr "Fekete - bárki láthatja az Interneten"
-
-#, fuzzy
-#~ msgid "There is no Groups yet on this server."
-#~ msgstr "%s csoportok a szerveren."
-
-#~ msgid "Read the Wiki"
-#~ msgstr "Wiki olvasása"
-
-#~ msgid "Talk with us by email ?"
-#~ msgstr "E-mailben beszélnél velünk?"
-
-#~ msgid "Join the Mailing List"
-#~ msgstr "Csatlakozz a levelezőlistához"
-
-#~ msgid "WebSocket Configuration"
-#~ msgstr "WebSocket beállítása"
-
-#~ msgid "Enter here a valid WebSocket URI in the form"
-#~ msgstr "Adj meg a mezőben egy érvényes WebSocket URI-t"
-
-#~ msgid "WebSocket URI"
-#~ msgstr "WebSocket URI"
-
-#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
-#~ msgstr "Ha megváltoztatod az URI-t, a beállítások újratöltéséhez indítsd újra a démont"
-
-#~ msgid "Public WebSockets"
-#~ msgstr "Nyilvános WebSocketek"
-
-#~ msgid "Looking for some documentation ?"
-#~ msgstr "Dokumentációt keresel?"

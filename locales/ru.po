@@ -4,8 +4,9 @@
 # Alexander Radchenko <radchenkosasha@gmail.com>, 2016
 # Alexey Murz Korepov <murznn@gmail.com>, 2017
 # yanislavb <its@dark0ff.ru>, 2017
-# yanislavb <its@dark0ff.ru>, 2017
+# yanislavb <its@dark0ff.ru>, 2017-2018
 # Jaussoin Timothée <edhelas@movim.eu>, 2017
+# Killy MXI <killy.mxi@gmail.com>, 2018
 # MMurzik MMurzik <c4431454@trbvn.com>, 2016
 # Qim Armnov <hoakimartamonov@gmail.com>, 2016
 # Stanislav N. <pztrn@pztrn.name>, 2016-2017
@@ -119,8 +120,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 23:10+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
 "Language: ru\n"
@@ -128,7 +129,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -321,11 +322,11 @@ msgstr "Часовой пояс сервера"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "Предотвращать подсказки"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr ""
+msgstr "Показывать предложения чат комнат, сообществ и прочего контента, который находится на пользовательском и связанным с пользовательским XMPP сервером"
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -391,7 +392,7 @@ msgstr "Страна нахождения основного XMPP-сервера
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "Выберите страну из списка"
 
 #: [log]empty
 msgid "Empty"
@@ -523,7 +524,7 @@ msgstr "Группы"
 
 #: [chatroom]add
 msgid "Add a new Chat Room"
-msgstr "Добавить новую комнату"
+msgstr "Добавить новую чат комнату"
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
@@ -540,7 +541,7 @@ msgstr "Псевдоним"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Хотите вступить в эту комнату автоматически?"
+msgstr "Хотите ли Вы автоматически подключаться к этой чат комнате?"
 
 #: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
@@ -560,7 +561,7 @@ msgstr "Произошла ошибка: "
 
 #: [bookmarks]configure
 msgid "Configure"
-msgstr "Конфигурация"
+msgstr "Настроить"
 
 #: [url]add
 msgid "Add a new URL"
@@ -581,7 +582,7 @@ msgstr "Сообщение опубликовано"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "Не удалось отправить сообщение, попробуйте позже"
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -653,7 +654,7 @@ msgstr "Редактировать последнее сообщение"
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr ""
+msgstr "Сообщить о нарушении"
 
 #: [chatroom]members
 msgid "Members"
@@ -807,27 +808,27 @@ msgstr "Роли установлены верно."
 
 #: [communityconfig]publication
 msgid "Publication"
-msgstr ""
+msgstr "Публикация"
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
-msgstr ""
+msgstr "Открыть"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
-msgstr ""
+msgstr "Каждый может публиковать"
 
 #: [communityconfig]publish_model_publishers_text
 msgid "The publishers can publish"
-msgstr ""
+msgstr "Редакторы могут публиковать"
 
 #: [communityconfig]publish_model_subscribers_title
 msgid "Subscribers"
-msgstr ""
+msgstr "Подписчики"
 
 #: [communityconfig]publish_model_subscribers_text
 msgid "The subscribers can publish"
-msgstr ""
+msgstr "Подписчики могут публиковать"
 
 #: [communitydata]sub [groups]sub
 msgid "%s subscribers"
@@ -951,11 +952,11 @@ msgstr "Это разрешит вам читать посты с тегом #ns
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr ""
+msgstr "Ночной режим"
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
-msgstr ""
+msgstr "Тёмные цвета дадут отдохнуть вашим глазам"
 
 #: [config]mam
 msgid "Archiving preferences"
@@ -983,15 +984,15 @@ msgstr "Указать URL собственного CSS для вашего бл
 
 #: [confirm]title
 msgid "Confirmation of authentication"
-msgstr ""
+msgstr "Подтверждение аутентификации"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
-msgstr ""
+msgstr "Через данные платформы Вы можете подтвердить аутентификацию Вашего аккаунта"
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr ""
+msgstr "Код аутентификации"
 
 #: [general]legend
 msgid "General Informations"
@@ -1143,15 +1144,15 @@ msgstr "Контакт находится в Вашем контакт-лист�
 
 #: [general]legend
 msgid "General Information"
-msgstr ""
+msgstr "Общая информация"
 
 #: [client]title
 msgid "Client Information"
-msgstr ""
+msgstr "Информация о клиенте"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr ""
+msgstr "Контакт находится в Вашем контакт-листе, однако он не авторизован между аккаунтами"
 
 #: [group]unsubscribe_text
 msgid "You are going to unsubscribe from this Group"
@@ -1243,7 +1244,7 @@ msgstr "Часто Задаваемые Вопросы (FAQ)"
 
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
-msgstr ""
+msgstr "Вы уже пробовали Movim на других платформах?"
 
 #: [apps]phone
 msgid "Apps for your phone"
@@ -1266,14 +1267,12 @@ msgid "Our official apps are available on our website"
 msgstr "Наши официальные приложения доступны на нашем сайте."
 
 #: [contact]title
-#, fuzzy
 msgid "Administrators & Contact"
-msgstr "Управление учетными данными"
+msgstr "Администраторы и связь с ними"
 
 #: [chatroom]question
-#, fuzzy
 msgid "Chat with the Movim team?"
-msgstr "Желаете пообщаться с нашей командой?"
+msgstr "Хотите ли связаться с командой Movim?"
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1656,9 +1655,8 @@ msgid "Tags"
 msgstr "Теги"
 
 #: [publish]valid_url [publishbrief]valid_url
-#, fuzzy
 msgid "Please enter a valid URL"
-msgstr "Введите верную ссылку"
+msgstr "Введите правильный URL"
 
 #: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
@@ -1709,14 +1707,12 @@ msgid "Add a link"
 msgstr "Добавьте ссылку"
 
 #: [publishbrief]attach
-#, fuzzy
 msgid "Add a file or a picture"
-msgstr "Добавить файл или картинку к записи"
+msgstr "Добавить файл или картинку"
 
 #: [publishbrief]no_publication
-#, fuzzy
 msgid "You cannot publish a post here"
-msgstr "Вы не можете публиковать записи в этой группе"
+msgstr "Вы не можете публиковать записи здесь"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1888,7 +1884,7 @@ msgstr "Это неправильный URL"
 
 #: [share]success
 msgid "Sharing the URL"
-msgstr "Поделиться этим URL"
+msgstr "Поделиться этой ссылкой"
 
 #: [statistics]title
 msgid "Statistics"
@@ -2023,13 +2019,12 @@ msgid "failed"
 msgstr "не удалось"
 
 #: [visio]connecting
-#, fuzzy
 msgid "…connecting"
-msgstr "Идет подключение"
+msgstr "... соединение"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
-msgstr "У вас не активирован javascript. Удачи вам в этом."
+msgstr "У вас не активирован JavaScript. Удачи вам в этом."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
@@ -2263,7 +2258,7 @@ msgstr "Включить"
 
 #: [button]sign_up
 msgid "Sign Up"
-msgstr ""
+msgstr "Регистрация"
 
 #: [day]title
 msgid "Day"
@@ -2832,68 +2827,3 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
-
-#~ msgid "Update your PHP-Version: %s"
-#~ msgstr "Обновите вашу версию PHP: %s"
-
-#~ msgid "Required: 5.3.0"
-#~ msgstr "Минимально необходима: 5.3.0"
-
-#~ msgid "Monthly Subscriptions"
-#~ msgstr "Ежемесячные подписки"
-
-#~ msgid "Monthly Subscriptions Cumulated"
-#~ msgstr "Аккумулирующие ежемесячные подписки"
-
-#, fuzzy
-#~ msgid "What do the little banners refer to"
-#~ msgstr "Зачем нужны небольшие баннеры?"
-
-#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-#~ msgstr "при помощи этих пяти небольших баннеров Вы можете быстро определить уровень конфиденциальности информации, которую вы представляете"
-
-#~ msgid "White, only you can see the information"
-#~ msgstr "Белый: только вы можете видеть эту информацию"
-
-#~ msgid "Green, you have chosen some contacts who can see your information"
-#~ msgstr "Зеленый: вы выбрали несколько своих контактов, которые увидят эту информацию"
-
-#~ msgid "Orange, all your contact list can see your information"
-#~ msgstr "Оранжевый: все из вашего контактного листа могут видеть эту информацию"
-
-#~ msgid "Red, everybody in the XMPP network can see your information"
-#~ msgstr "Красный: любой в сети ХМРР может видеть вашу информацию"
-
-#~ msgid "Black, the whole Internet can see your information"
-#~ msgstr "Черный: весь Интернет может видеть вашу информацию"
-
-#, fuzzy
-#~ msgid "There is no Groups yet on this server."
-#~ msgstr "На сервере пока нет сообществ."
-
-#~ msgid "Read the Wiki"
-#~ msgstr "Почитать Wiki"
-
-#~ msgid "Talk with us by email ?"
-#~ msgstr "Желаете связаться с нами по email?"
-
-#~ msgid "Join the Mailing List"
-#~ msgstr "Присоединиться к списку рассылки"
-
-#~ msgid "WebSocket Configuration"
-#~ msgstr "Конфигурация WebSocket"
-
-#~ msgid "Enter here a valid WebSocket URI in the form"
-#~ msgstr "Введите верный WebSocket URI в форму"
-
-#~ msgid "WebSocket URI"
-#~ msgstr "WebSocket URI"
-
-#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
-#~ msgstr "Если вы изменили URI, пожалуйста, перезапустите демон для перезагрузки конфигурации"
-
-#~ msgid "Public WebSockets"
-#~ msgstr "Публичные WebSockets"
-
-#~ msgid "Looking for some documentation ?"
-#~ msgstr "Ищите документацию?"

@@ -114,8 +114,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 23:10+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -123,7 +123,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -510,7 +510,7 @@ msgstr "私密内容，请登录后查看"
 
 #: [title]conferences
 msgid "Conferences"
-msgstr "会议"
+msgstr ""
 
 #: [title]groups [group]empty_title
 msgid "Groups"
@@ -518,7 +518,7 @@ msgstr "分组"
 
 #: [chatroom]add
 msgid "Add a new Chat Room"
-msgstr "添加一个新的聊天室"
+msgstr ""
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
@@ -527,7 +527,7 @@ msgstr "聊天室 ID"
 #: [chatroom]name
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "名称"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -535,7 +535,7 @@ msgstr "昵称"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "你想要自动加入这个聊天室吗？"
+msgstr ""
 
 #: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
@@ -551,24 +551,24 @@ msgstr "书签已更新"
 
 #: [bookmarks]error
 msgid "An error occured :"
-msgstr "出现了一个错误："
+msgstr ""
 
 #: [bookmarks]configure
 msgid "Configure"
-msgstr "配置"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
-msgstr "添加一个新的 URL"
+msgstr ""
 
 #: [url]url
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #: [url]name
 msgctxt "[url]name"
 msgid "Name"
-msgstr "名称"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -1261,14 +1261,12 @@ msgid "Our official apps are available on our website"
 msgstr "我们的官方应用可以从我们的网站获取"
 
 #: [contact]title
-#, fuzzy
 msgid "Administrators & Contact"
-msgstr "管理证书"
+msgstr ""
 
 #: [chatroom]question
-#, fuzzy
 msgid "Chat with the Movim team?"
-msgstr "同开发团队交流？"
+msgstr ""
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1651,9 +1649,8 @@ msgid "Tags"
 msgstr "标签"
 
 #: [publish]valid_url [publishbrief]valid_url
-#, fuzzy
 msgid "Please enter a valid URL"
-msgstr "请输入一个有效的URL"
+msgstr ""
 
 #: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
@@ -1704,14 +1701,12 @@ msgid "Add a link"
 msgstr "添加链接"
 
 #: [publishbrief]attach
-#, fuzzy
 msgid "Add a file or a picture"
-msgstr "给你的帖子附加文件或图片"
+msgstr ""
 
 #: [publishbrief]no_publication
-#, fuzzy
 msgid "You cannot publish a post here"
-msgstr "你不能在这个群组里发帖"
+msgstr ""
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1879,11 +1874,11 @@ msgstr "使用 Ctrl + M 打开我"
 
 #: [share]error
 msgid "This is not a valid url"
-msgstr "这不是一个有效的 URL"
+msgstr ""
 
 #: [share]success
 msgid "Sharing the URL"
-msgstr "分享 URL"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -2018,9 +2013,8 @@ msgid "failed"
 msgstr ""
 
 #: [visio]connecting
-#, fuzzy
 msgid "…connecting"
-msgstr "连接中"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2827,68 +2821,3 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "Update your PHP-Version: %s"
-#~ msgstr "更新您的 PHP 版本： %s"
-
-#~ msgid "Required: 5.3.0"
-#~ msgstr "需要： 5.3.0"
-
-#~ msgid "Monthly Subscriptions"
-#~ msgstr "月度订阅"
-
-#~ msgid "Monthly Subscriptions Cumulated"
-#~ msgstr "月度订阅累计"
-
-#, fuzzy
-#~ msgid "What do the little banners refer to"
-#~ msgstr "这些小横幅与什么相关"
-
-#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-#~ msgstr "根据一下五种颜色，您可以快速设置个人信息的私密等级"
-
-#~ msgid "White, only you can see the information"
-#~ msgstr "白色，仅自己可见"
-
-#~ msgid "Green, you have chosen some contacts who can see your information"
-#~ msgstr "绿色，指定联系人可见"
-
-#~ msgid "Orange, all your contact list can see your information"
-#~ msgstr "橙色，对所有联系人可见"
-
-#~ msgid "Red, everybody in the XMPP network can see your information"
-#~ msgstr "红色，XMPP 上的用户能看见您的信息"
-
-#~ msgid "Black, the whole Internet can see your information"
-#~ msgstr "黑色，整个互联网可以看见您的信息"
-
-#, fuzzy
-#~ msgid "There is no Groups yet on this server."
-#~ msgstr "此服务器上没有社群。"
-
-#~ msgid "Read the Wiki"
-#~ msgstr "阅读 Wiki"
-
-#~ msgid "Talk with us by email ?"
-#~ msgstr "用 email 同我们联系"
-
-#~ msgid "Join the Mailing List"
-#~ msgstr "加入邮件列表"
-
-#~ msgid "WebSocket Configuration"
-#~ msgstr "WebSocket 配置"
-
-#~ msgid "Enter here a valid WebSocket URI in the form"
-#~ msgstr "在表格中输入一个有效的 WebSocket 地址"
-
-#~ msgid "WebSocket URI"
-#~ msgstr "WebSocket URI"
-
-#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
-#~ msgstr "如果你更改了 URI， 请重启守护进程（Daemon）来重载配置"
-
-#~ msgid "Public WebSockets"
-#~ msgstr "公共 WebSocket"
-
-#~ msgid "Looking for some documentation ?"
-#~ msgstr "需要查找一些帮助文档?"

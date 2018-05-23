@@ -109,8 +109,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-07 23:10+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
 "Language: ro\n"
@@ -118,7 +118,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -504,18 +504,16 @@ msgid "This content is private, please login to see it"
 msgstr ""
 
 #: [title]conferences
-#, fuzzy
 msgid "Conferences"
-msgstr "Configurare"
+msgstr ""
 
 #: [title]groups [group]empty_title
 msgid "Groups"
 msgstr ""
 
 #: [chatroom]add
-#, fuzzy
 msgid "Add a new Chat Room"
-msgstr "Adaugați un nou URL"
+msgstr ""
 
 #: [chatroom]id [chatrooms]id
 msgid "Chat Room ID"
@@ -524,7 +522,7 @@ msgstr ""
 #: [chatroom]name
 msgctxt "[chatroom]name"
 msgid "Name"
-msgstr "Nume"
+msgstr ""
 
 #: [chatroom]nickname [general]nickname [chatrooms]nickname
 msgid "Nickname"
@@ -532,7 +530,7 @@ msgstr "Porecla"
 
 #: [chatroom]autojoin_label
 msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Doriți să aderați în mod automat la acest Chat Room?"
+msgstr ""
 
 #: [chatroom]bad_id [chatrooms]bad_id
 msgid "Bad Chatroom ID"
@@ -548,24 +546,24 @@ msgstr ""
 
 #: [bookmarks]error
 msgid "An error occured :"
-msgstr "A survenit o eroare"
+msgstr ""
 
 #: [bookmarks]configure
 msgid "Configure"
-msgstr "Configurare"
+msgstr ""
 
 #: [url]add
 msgid "Add a new URL"
-msgstr "Adaugați un nou URL"
+msgstr ""
 
 #: [url]url
 msgid "URL"
-msgstr "URL"
+msgstr ""
 
 #: [url]name
 msgctxt "[url]name"
 msgid "Name"
-msgstr "Nume"
+msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -1258,9 +1256,8 @@ msgid "Our official apps are available on our website"
 msgstr ""
 
 #: [contact]title
-#, fuzzy
 msgid "Administrators & Contact"
-msgstr "Administrare"
+msgstr ""
 
 #: [chatroom]question
 msgid "Chat with the Movim team?"
@@ -1647,9 +1644,8 @@ msgid "Tags"
 msgstr ""
 
 #: [publish]valid_url [publishbrief]valid_url
-#, fuzzy
 msgid "Please enter a valid URL"
-msgstr "Vă rugăm să introduceți un cont de Jabber valabil"
+msgstr ""
 
 #: [publish]no_content_preview [publishbrief]no_content_preview
 msgid "No content to preview"
@@ -2820,13 +2816,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#, fuzzy
-#~ msgid "There is no Groups yet on this server."
-#~ msgstr "%s grupuri pe acest server"
-
-#~ msgid "Read the Wiki"
-#~ msgstr "Citiți Wiki"
-
-#~ msgid "Talk with us by email ?"
-#~ msgstr "Discutați cu noi prin e-mail?"
