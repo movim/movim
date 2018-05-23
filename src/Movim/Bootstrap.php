@@ -224,7 +224,7 @@ class Bootstrap
     /**
      * Loads up the language, either from the User or default.
      */
-    function loadLanguage()
+    public function loadLanguage()
     {
         $l = \Movim\i18n\Locale::start();
 

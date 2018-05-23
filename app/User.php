@@ -98,6 +98,10 @@ class User extends Model
         if (isset($config['nightmode'])) {
             $this->nightmode = $config['nightmode'];
         }
+
+        // Reload the user
+        self::me(true);
+        (new \Movim\Bootstrap)->loadLanguage();
     }
 
     public function hasMAM()

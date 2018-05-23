@@ -11,6 +11,7 @@ class Config extends \Movim\Widget\Base
     function load()
     {
         $this->registerEvent('storage_set_handle', 'onConfig');
+        $this->registerEvent('storage_get_handle', 'onConfig');
         $this->registerEvent('mam_getconfig_handle', 'onMAMConfig');
         $this->registerEvent('mam_setconfig_handle', 'onMAMConfigSaved');
 
@@ -40,9 +41,8 @@ class Config extends \Movim\Widget\Base
 
     function onConfig($package)
     {
-        $me = User::me();
-        $me->setConfig($package->content);
-        $me->save();
+        $this->user->setConfig($package->content);
+        $this->user->save();
 
         $this->refreshConfig();
 
