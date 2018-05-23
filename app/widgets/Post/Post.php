@@ -119,7 +119,11 @@ class Post extends \Movim\Widget\Base
 
     function requestComments(\App\Post $post)
     {
-        \App\Post::where('parent_id', $post->id)->delete();
+        if ($post->id == null) return;
+
+        \App\Post::whereNotNull('parent_id')
+                 ->where('parent_id', $post->id)
+                 ->delete();
 
         $c = new CommentsGet;
         $c->setTo($post->commentserver)
