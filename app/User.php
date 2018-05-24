@@ -13,6 +13,15 @@ class User extends Model
     public $incrementing = false;
     private static $me = null;
 
+    public function save(array $options = [])
+    {
+        parent::save($options);
+
+        // Reload the user
+        self::me(true);
+        (new \Movim\Bootstrap)->loadLanguage();
+    }
+
     public function session()
     {
         return $this->hasOne('App\Session');
@@ -98,10 +107,6 @@ class User extends Model
         if (isset($config['nightmode'])) {
             $this->nightmode = $config['nightmode'];
         }
-
-        // Reload the user
-        self::me(true);
-        (new \Movim\Bootstrap)->loadLanguage();
     }
 
     public function hasMAM()
