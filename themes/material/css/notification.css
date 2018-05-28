@@ -19,6 +19,13 @@
     bottom: 3rem;
 }
 
+.toast,
+.snackbar p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .snackbar > a {
     pointer-events: auto;
     margin: -1rem -2rem;
@@ -30,14 +37,6 @@
 .snackbar > a:hover {
     border: 3px solid rgba(255, 255, 255, 0.2);
     padding: calc(2rem - 3px) calc(1rem - 3px);
-}
-
-.snackbar p,
-.toast p {
-    color: white;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
 }
 
 .snackbar {

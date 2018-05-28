@@ -46,13 +46,13 @@ class Handler
         $element = '';
 
         // Id verification in the returned stanza
-        if(in_array($child->getName(), ['iq', 'presence', 'message'])) {
+        if (in_array($child->getName(), ['iq', 'presence', 'message'])) {
             $id = (string)$child->attributes()->id;
         }
 
         $sess = Session::start();
 
-        if(
+        if (
             ($id != '' &&
             $sess->get($id) == false) ||
             $id == ''
@@ -68,7 +68,7 @@ class Handler
                     Handler::handleNode($s2, $child);
                 }
             }
-        } elseif(
+        } elseif (
             $id != '' &&
             $sess->get($id) != false
         ) {
@@ -81,33 +81,35 @@ class Handler
             $error = false;
 
             // Handle specific query error
-            if($child->query->error)
+            if ($child->query->error) {
                 $error = $child->query->error;
-            elseif($child->error)
+            } elseif ($child->error) {
                 $error = $child->error;
+            }
 
             // XMPP returned an error
-            if($error) {
+            if ($error) {
                 $errors = $error->children();
 
                 $errorid = Handler::formatError($errors->getName());
 
                 $message = false;
 
-                if($error->text)
+                if ($error->text) {
                     $message = (string)$error->text;
+                }
 
                 Utils::log('Handler : '.get_class($action).' '.$id.' - '.$errorid);
 
                 /* If the action has defined a special handler
                  * for this error
                  */
-                if(method_exists($action, $errorid)) {
+                if (method_exists($action, $errorid)) {
                     $action->method($errorid);
                     $action->$errorid($errorid, $message);
                 }
                 // We also call a global error handler
-                if(method_exists($action, 'error')) {
+                if (method_exists($action, 'error')) {
                     Utils::log('Handler : Global error - '.$id.' - '.$errorid);
                     $action->method('error');
                     $action->error($errorid, $message);
@@ -127,20 +129,20 @@ class Handler
         $name = $s->getName();
         $node = false;
 
-        if($s->items && $s->items->attributes()->node)
+        if ($s->items && $s->items->attributes()->node)
             $node = (string)$s->items->attributes()->node;
 
         $ns = '';
 
         foreach($s->attributes() as $key => $value) {
-            if($key == 'xmlns' && $ns == '') {
+            if ($key == 'xmlns' && $ns == '') {
                 $ns = $value;
-            } elseif('xmlns:' === substr($key, 0, 6)) {
+            } elseif ('xmlns:' === substr($key, 0, 6)) {
                 $ns = $value;
             }
         }
 
-        if($node != false) {
+        if ($node != false) {
             $hash = md5($name.$ns.$node);
             Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . ' [' . $node . ']", "'.$hash.'"');
             Handler::searchPayload($hash, $s, $sparent);
@@ -211,22 +213,12 @@ class Handler
             '0bc0f510b2b6ac432e8605267ebdc812' => 'SessionBind',#
             '128477f50347d98ee1213d71f27e8886' => 'SessionBind',
         ];
-        if(isset($hashToClass[$hash])) {
-            //if(file_exists($base.'Payload/'.$hashToClass[$hash].'.php')) {
-            //    require_once($base.'Payload/'.$hashToClass[$hash].'.php');
-                $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
+        if (isset($hashToClass[$hash])) {
+            $classname = '\\Moxl\\Xec\\Payload\\'.$hashToClass[$hash];
 
-                //if(class_exists($classname)) {
-                    //Utils::log('Handler : Call class "'.$hashToClass[$hash].'"');
-                    $payload_class = new $classname();
-                    $payload_class->prepare($s, $sparent);
-                    $payload_class->handle($s, $sparent);
-                /*} else {
-                   Utils::log('Handler : Payload class "'.$hashToClass[$hash].'" not found');
-                }*/
-            /*} else {
-                Utils::log('Handler : Payload file "'.$hashToClass[$hash].'" not found');
-            }*/
+            $payload_class = new $classname();
+            $payload_class->prepare($s, $sparent);
+            $payload_class->handle($s, $sparent);
         } else {
             Utils::log('Handler : This event is not listed');
             return true;
@@ -247,5 +239,4 @@ class Handler
 
         return $f;
     }
-
 }

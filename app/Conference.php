@@ -15,6 +15,17 @@ class Conference extends Model
         'session_id'    => SESSION_ID
     ];
 
+    public function save(array $options = [])
+    {
+        try {
+            parent::save($options);
+        } catch (\Exception $e) {
+            /*
+             * Race condition
+             */
+        }
+    }
+
     public function session()
     {
         return $this->hasOne('App\Session');

@@ -44,6 +44,7 @@ class Chat extends \Movim\Widget\Base
 
         $this->registerEvent('muc_getconfig_handle', 'onRoomConfig', 'chat');
         $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved', 'chat');
+        $this->registerEvent('muc_setconfig_error', 'onRoomConfigError', 'chat');
         $this->registerEvent('presence_muc_handle', 'onMucConnected', 'chat');
 
         $this->registerEvent('bob_request_handle', 'onSticker');
@@ -169,6 +170,11 @@ class Chat extends \Movim\Widget\Base
     function onMucConnected($packet)
     {
         $this->ajaxGetRoom($packet->content->jid);
+    }
+
+    function onRoomConfigError($packet)
+    {
+        Notification::append(false, $packet->content);
     }
 
     function onRoomConfig($packet)

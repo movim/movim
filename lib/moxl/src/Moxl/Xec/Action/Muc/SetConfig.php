@@ -32,4 +32,12 @@ class SetConfig extends Action
     {
         $this->deliver();
     }
+
+    public function error($id, $message = false)
+    {
+        if ($message) {
+            $this->pack($message);
+            $this->deliver();
+        }
+    }
 }
