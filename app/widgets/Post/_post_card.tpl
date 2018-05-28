@@ -86,7 +86,9 @@
                     {elseif="$post->isShort()"}
                         {loop="$post->pictures"}
                             <img class="big_picture" type="{$value->type}"
-                                 src="{$value->href|protectPicture}"/>
+                                 srcset="{$value->href} 1280w, {$value->href|protectPicture} 800w"
+                                 sizes="(min-width: 1280px), 800w"
+                                 src="{$value->href|protectPicture}" alt="{$value->title}">
                         {/loop}
                     {/if}
                 </content>
@@ -108,7 +110,9 @@
                         {elseif="$post->isShort()"}
                             {loop="$post->pictures"}
                                 <img class="big_picture" type="{$value->type}"
-                                     src="{$value->href|protectPicture}"/>
+                                     srcset="{$value->href} 1280w, {$value->href|protectPicture} 800w"
+                                     sizes="(min-width: 1280px), 800w"
+                                     src="{$value->href|protectPicture}" alt="{$value->title}">
                             {/loop}
                         {/if}
                         {$post->getContent()|addHashtagsLinks}
