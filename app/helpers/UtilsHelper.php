@@ -99,6 +99,8 @@ function getXepNamespace()
         '0342' => ['name' => 'Rayo Fax', 'category' => 'rayo',       'ns' => 'urn:xmpp:rayo:fax:1'],
         '0347' => ['name' => 'Internet of Things - Discovery', 'category' => 'iot',        'ns' => 'urn:xmpp:iot:discovery'],
         '0348' => ['name' => 'Signing Forms', 'category' => 'client',     'ns' => 'urn:xmpp:xdata:signature:oauth1'],
+        '0390' => ['name' => 'Entity Capabilities 2.0', 'category' => 'client',     'ns' => 'urn:xmpp:caps:optimize'],
+        '0391' => ['name' => 'Jingle Encrypted Transports', 'category' => 'jingle',     'ns' => 'urn:xmpp:jingle:jet:0'],
     ];
 }
 

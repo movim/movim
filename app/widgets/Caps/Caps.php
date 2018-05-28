@@ -12,21 +12,14 @@ class Caps extends \Movim\Widget\Base
 
     function isImplemented($client, $key)
     {
-        if (in_array($this->_nslist[$key]['ns'], $client)) {
-            return '
-                <td
-                    class="yes '.$this->_nslist[$key]['category'].'"
-                    title="XEP-'.$key.': '.$this->_nslist[$key]['name'].'">'.
-                    $key.'
-                </td>';
-        } else {
-            return '
-                <td
-                    class="no  '.$this->_nslist[$key]['category'].'"
-                    title="XEP-'.$key.': '.$this->_nslist[$key]['name'].'">'.
-                    $key.'
-                </td>';
-        }
+        $class = in_array($this->_nslist[$key]['ns'], $client) ? 'yes' : 'no';
+
+        return '
+            <td
+                class="'.$class.' '.$this->_nslist[$key]['category'].'"
+                title="XEP-'.$key.': '.$this->_nslist[$key]['name'].'">'.
+                $key.'
+            </td>';
     }
 
     function display()
