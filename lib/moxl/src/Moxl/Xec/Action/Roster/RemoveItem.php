@@ -25,7 +25,7 @@ class RemoveItem extends Action
     {
         $contact = \App\User::me()
               ->session
-              ->contacts
+              ->contacts()
               ->where('jid', $this->_to)
               ->first();
         if ($contact) $contact->delete();

@@ -15,8 +15,8 @@ class Roster extends \Movim\Widget\Base
         $this->addjs('roster.js');
         $this->registerEvent('roster_getlist_handle', 'onRoster', 'contact');
         $this->registerEvent('roster_additem_handle', 'onAdd', 'contact');
-        $this->registerEvent('roster_removeitem_handle', 'onDelete', 'contact');
-        $this->registerEvent('roster_updateitem_handle', 'onUpdate', 'contact');
+        $this->registerEvent('roster_removeitem_handle', 'onDelete');
+        $this->registerEvent('roster_updateitem_handle', 'onUpdate');
         $this->registerEvent('roster', 'onChange', 'contact');
         $this->registerEvent('presence', 'onPresence', 'contact');
     }

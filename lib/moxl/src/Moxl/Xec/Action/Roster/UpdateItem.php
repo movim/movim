@@ -38,12 +38,7 @@ class UpdateItem extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $roster = \App\User::me()
-                      ->session
-                      ->contacts
-                      ->where('jid', $this->_to)
-                      ->first();
-
+        $roster = \App\Roster::firstOrNew(['jid' => $this->_to]);
         $roster->name = $this->_name;
         $roster->group = $this->_group;
         $roster->save();
