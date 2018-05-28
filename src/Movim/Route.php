@@ -30,7 +30,7 @@ class Route extends Base
                 'main'          => false,
                 'notfound'      => false,
                 'node'          => ['s', 'n', 'i'],
-                'news'          => ['s', 'n', 'i'],
+                'news'          => false,
                 'post'          => ['s', 'n', 'i'],
                 'picture'       => ['url'],
                 'popuptest'     => false,

@@ -68,6 +68,11 @@ var PublishBrief = {
 MovimWebsocket.attach(function() {
     var parts = MovimUtils.urlParts();
 
+    if (parts.page == 'news') {
+        PublishBrief_ajaxGet();
+        return;
+    }
+
     if (parts.params.length > 3 && parts.params[3] == 'share') {
         PublishBrief_ajaxGet(parts.params[0], parts.params[1], parts.params[2], true, true);
     } else if (parts.params.length > 2) {
