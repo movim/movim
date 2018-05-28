@@ -265,7 +265,10 @@ class Rooms extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('list', $this->user->session->conferences()
                                    ->where('conference', $room)
-                                   ->first()->presences);
+                                   ->first()
+                                   ->presences()
+                                   ->with('capability')
+                                   ->get());
         $view->assign('room', $room);
         $view->assign('me', $this->user->id);
 
@@ -277,7 +280,7 @@ class Rooms extends \Movim\Widget\Base
      */
     function ajaxMucUsersAutocomplete($room)
     {
-        $this->rpc("Chat.onAutocomplete", $this->user->session->conferences
+        $this->rpc("Chat.onAutocomplete", $this->user->session->conferences()
                                                ->where('conference', $room)
                                                ->first()->presences
                                                ->pluck('resource'));
