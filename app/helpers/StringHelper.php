@@ -163,6 +163,23 @@ function getCid($string)
 }
 
 /*
+ * Explose query parameters into an array
+ */
+function explodeQueryParams($query)
+{
+    $params = [];
+
+    foreach(explode(';', $query) as $param) {
+        $result = explode('=', $param);
+        if (count($result) == 2) {
+            $params[$result[0]] = $result[1];
+        }
+    }
+
+    return $params;
+}
+
+/*
  *  Explode JID
  */
 function explodeJid($jid)

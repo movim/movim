@@ -35,7 +35,37 @@
         </li>
     </ul>
 
-    <ul class="list block middle active">
+    <ul class="list middle active">
+        {if="$info->related"}
+            {$related = $info->related}
+            <li onclick="MovimUtils.redirect('{$c->route('chat', [$related->server,'room'])}')">
+                <span class="primary icon bubble color
+                    {$related->name|stringToColor}">
+                    {$related->name|firstLetterCapitalize}
+                </span>
+
+                <span class="control icon">
+                    <i class="zmdi zmdi-chevron-right"></i>
+                </span>
+
+                <p class="normal line">{$related->name} <span class="second">{$related->server}</span></p>
+                <p class="line"
+                    {if="$related->description"}title="{$related->description}"{/if}>
+
+                    {if="$related->occupants > 0"}
+                        <span title="{$c->__('communitydata.sub', $related->occupants)}">
+                            {$related->occupants} <i class="zmdi zmdi-accounts"></i>  –
+                        </span>
+                    {/if}
+                    {if="$related->description"}
+                        {$related->description}
+                    {else}
+                        {$related->server}
+                    {/if}
+                </p>
+            </li>
+        {/if}
+
         <a href="{$c->route('node', [$info->server, $info->node])}" target="_blank" class="block">
             <li>
                 <span class="primary icon">

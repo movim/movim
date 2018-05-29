@@ -573,6 +573,7 @@ class Chat extends \Movim\Widget\Base
             $view->assign('room', $jid);
             $view->assign('conference', $this->user->session->conferences()
                                              ->where('conference', $jid)
+                                             ->with('info')
                                              ->first());
 
             $mucinfo = \App\Info::where('server', explodeJid($jid)['server'])

@@ -88,6 +88,29 @@ class Info extends Model
             : $this->attributes['node'];
     }
 
+    public function getRelatedAttribute()
+    {
+        if ($this->category == 'pubsub' && $this->type == 'leaf') {
+            return \App\Info::where('related', 'xmpp:'.$this->server.'?;node='.$this->node)
+                ->first();
+        }
+
+        if (isset($this->attributes['related'])
+        && $this->category == 'conference' && $this->type == 'text') {
+            $uri = parse_url($this->attributes['related']);
+
+            if (isset($uri['query']) && isset($uri['path'])) {
+                $params = explodeQueryParams($uri['query']);
+
+                if (isset($params['node'])) {
+                    return \App\Info::where('server', $uri['path'])
+                        ->where('node', $params['node'])
+                        ->first();
+                }
+            }
+        }
+    }
+
     public function set($query)
     {
         $from = (string)$query->attributes()->from;
@@ -141,6 +164,11 @@ class Info extends Model
                             break;
                         case 'pubsub#creation_date':
                             $this->created = toSQLDate($field->value);
+                            break;
+                        case 'muc#roominfo_pubsub':
+                            if (!empty((string)$field->value)) {
+                                $this->related = $field->value;
+                            }
                             break;
                         case 'muc#roominfo_description':
                         case 'pubsub#description':

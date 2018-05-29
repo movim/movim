@@ -36,14 +36,7 @@ class Share extends \Movim\Widget\Base
                         return;
                     }
 
-                    $params = [];
-
-                    foreach(explode(';', $uri['query']) as $param) {
-                        $result = explode('=', $param);
-                        if (count($result) == 2) {
-                            $params[$result[0]] = $result[1];
-                        }
-                    }
+                    $params = explodeQueryParams($uri['query']);
 
                     if (isset($params['node']) && isset($params['item'])) {
                         $this->rpc(

@@ -19,11 +19,15 @@
 
             {$curl = $conference->getPhoto('s')}
             {if="$curl"}
-                <span class="primary icon bubble color {$conference->name|stringToColor}"
-                    style="background-image: url({$curl});">
+                <span class="primary icon bubble color active {$conference->name|stringToColor}
+                    {if="!$conference->connected"}disabled{/if}"
+                    style="background-image: url({$curl});"
+                    onclick="Rooms_ajaxList('{$jid|echapJS}')">
                 </span>
             {else}
-                <span class="primary icon bubble color {$conference->name|stringToColor}">
+                <span class="primary icon bubble color active {$conference->name|stringToColor}
+                    {if="!$conference->connected"}disabled{/if}"
+                    onclick="Rooms_ajaxList('{$jid|echapJS}')">
                     {$conference->name|firstLetterCapitalize}
                 </span>
             {/if}
@@ -39,11 +43,15 @@
                 <i class="zmdi zmdi-close"></i>
             </span>
 
-            <span
-                class="control icon active {if="!$conference->connected"}disabled{/if}"
-                onclick="Rooms_ajaxList('{$jid|echapJS}')">
-                <i class="zmdi zmdi-accounts"></i>
-            </span>
+            {if="$conference->info && $conference->info->related"}
+                {$related = $conference->info->related}
+                <span
+                    class="control icon active"
+                    title="{$c->__('page.communities')} – {$related->name}"
+                    onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')">
+                    <i class="zmdi zmdi-group-work"></i>
+                </span>
+            {/if}
 
             {if="$conference != null && $conference->name"}
                 <p class="line" title="{$room}">{$conference->name}</p>
