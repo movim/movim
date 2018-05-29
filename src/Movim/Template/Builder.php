@@ -89,7 +89,7 @@ class Builder
      */
     function setTitle($name)
     {
-        $this->title = $name;
+        $this->title = APP_TITLE . ' – ' . $name;
     }
 
     /**
@@ -98,10 +98,10 @@ class Builder
     function title()
     {
         $widgets = Wrapper::getInstance();
-        if (isset($widgets->title)) {
-            $this->title .= ' - ' . $widgets->title;
-        }
-        echo $this->title;
+
+        echo isset($widgets->title)
+            ? $this->title . ' – ' . $widgets->title
+            : $this->title;
     }
 
     /**
@@ -132,16 +132,18 @@ class Builder
         $widgets = Wrapper::getInstance();
 
         if (isset($widgets->title)) {
-            $meta = $dom->createElement('meta');
-            $meta->setAttribute('property', 'og:title');
-            $meta->setAttribute('content', $widgets->title);
-            $metas->appendChild($meta);
-
-            $meta = $dom->createElement('meta');
-            $meta->setAttribute('name', 'twitter:title');
-            $meta->setAttribute('content', $widgets->title);
-            $metas->appendChild($meta);
+            $this->title .= ' – ' . $widgets->title;
         }
+
+        $meta = $dom->createElement('meta');
+        $meta->setAttribute('property', 'og:title');
+        $meta->setAttribute('content', $this->title);
+        $metas->appendChild($meta);
+
+        $meta = $dom->createElement('meta');
+        $meta->setAttribute('name', 'twitter:title');
+        $meta->setAttribute('content', $this->title);
+        $metas->appendChild($meta);
 
         if (isset($widgets->image)) {
             $meta = $dom->createElement('meta');
@@ -155,7 +157,9 @@ class Builder
             $metas->appendChild($meta);
         }
 
-        if (isset($widgets->description)) {
+        if (isset($widgets->description) && !empty($widgets->description)) {
+            $widgets->description = truncate(stripTags($widgets->description), 100);
+
             $meta = $dom->createElement('meta');
             $meta->setAttribute('property', 'og:description');
             $meta->setAttribute('content', $widgets->description);

@@ -81,6 +81,13 @@ class Info extends Model
             : null;
     }
 
+    public function getNameAttribute()
+    {
+        return isset($this->attributes['name'])
+            ? $this->attributes['name']
+            : $this->attributes['node'];
+    }
+
     public function set($query)
     {
         $from = (string)$query->attributes()->from;

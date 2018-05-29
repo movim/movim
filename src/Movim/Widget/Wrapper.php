@@ -23,10 +23,6 @@ class Wrapper
     public $url = null; // If a widget has defined a particular url
     public $links = []; // If a widget have to inject a link in the header
 
-    public function __construct()
-    {
-    }
-
     public function registerAll($load = false)
     {
         $widgets_dir = scandir(APP_PATH ."widgets/");

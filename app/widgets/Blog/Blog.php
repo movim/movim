@@ -35,6 +35,9 @@ class Blog extends \Movim\Widget\Base
                                     ->first();
             $this->_mode = 'group';
 
+            $this->title = $this->_item->name;
+            $this->description = $this->_item->description;
+
             $this->url = $this->route('node', [$this->_from, $this->_node]);
 
             $this->links[] = [
@@ -64,6 +67,9 @@ class Blog extends \Movim\Widget\Base
                 return;
             }
 
+            $this->title = __('blog.title', $this->_contact->truename);
+            $this->description = $this->_contact->description;
+
             $this->_mode = 'blog';
 
             $this->url = $this->route('blog', $this->_from);
@@ -91,11 +97,7 @@ class Blog extends \Movim\Widget\Base
 
             if ($this->_messages->isNotEmpty()) {
                 $this->title = $this->_messages->first()->title;
-
-                $description = stripTags($this->_messages->first()->contentcleaned);
-                if (!empty($description)) {
-                    $this->description = truncate($description, 100);
-                }
+                $this->description = $this->_messages->first()->contentcleaned;
             }
 
             if ($this->_view == 'node') {

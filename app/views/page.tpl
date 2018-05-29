@@ -6,9 +6,7 @@
 
     <meta name="theme-color" content="#1C1D5B" />
     <meta http-equiv="Content-Security-Policy" content="font-src <?php echo BASE_HOST; ?>; frame-src *.youtube.com; script-src <?php echo BASE_HOST; ?> 'unsafe-inline' 'unsafe-eval'">
-
     <?php $this->meta(); ?>
-
     <meta name="application-name" content="Movim">
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
     <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/48.png');?>" sizes="48x48">
