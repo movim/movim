@@ -31,6 +31,9 @@ v0.14 (trunk)
  * Improve handling of Emojis (by mirabilos)
  * Improve performances by using eager loading (for Chats, Posts and Contacts related widgets)
  * Redirect the unauthenticated to the correct page when trying to access ?post
+ * Link Chatrooms and Pubsub nodes using muc#roominfo_pubsub in the UI
+ * Update the favicon
+ * Fix the public pages metadata
 
 v0.13
 ---------------------------

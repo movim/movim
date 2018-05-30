@@ -36,7 +36,7 @@
         {if="$post->contact"}
             <a href="{$c->route('contact', $post->contact->jid)}">
                 {$post->contact->truename}
-            </a>
+            </a> –
         {/if}
 
         {if="!$post->isMicroblog()"}
