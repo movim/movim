@@ -7,32 +7,12 @@ use Moxl\Stanza\Vcard;
 
 class Get extends Action
 {
-    private $_to;
-    private $_me = false;
-    private $_muc = false;
+    protected $_to;
 
     public function request()
     {
         $this->store();
         Vcard::get($this->_to);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setMe()
-    {
-        $this->_me = true;
-        return $this;
-    }
-
-    public function isMuc()
-    {
-        $this->_muc = true;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

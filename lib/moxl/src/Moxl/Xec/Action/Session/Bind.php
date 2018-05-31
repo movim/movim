@@ -11,18 +11,12 @@ use App\Session as DBSession;
 
 class Bind extends Action
 {
-    private $_to;
+    protected $_resource;
 
     public function request()
     {
         $this->store();
         Stream::bindSet($this->_resource);
-    }
-
-    public function setResource($resource)
-    {
-        $this->_resource = $resource;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

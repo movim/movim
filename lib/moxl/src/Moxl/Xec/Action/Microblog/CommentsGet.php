@@ -7,10 +7,10 @@ use Moxl\Stanza\Pubsub;
 
 class CommentsGet extends Action
 {
-    private $_to;
-    private $_id;
-    private $_node;
-    private $_parentid;
+    protected $_to;
+    protected $_id;
+    protected $_node;
+    protected $_parentid;
 
     public function request()
     {
@@ -18,22 +18,10 @@ class CommentsGet extends Action
         Pubsub::getItems($this->_to, $this->_node);
     }
 
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
     public function setId($id)
     {
         $this->_id = $id;
         $this->_node = 'urn:xmpp:microblog:0:comments/'.$this->_id;
-        return $this;
-    }
-
-    public function setParentId($parentid)
-    {
-        $this->_parentid = $parentid;
         return $this;
     }
 
@@ -63,5 +51,4 @@ class CommentsGet extends Action
         $this->pack($this->_id);
         $this->deliver();
     }
-
 }

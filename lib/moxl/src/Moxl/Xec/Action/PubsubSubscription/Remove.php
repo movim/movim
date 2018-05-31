@@ -8,10 +8,10 @@ use Moxl\Stanza\PubsubSubscription;
 
 class Remove extends Errors
 {
-    private $_server;
-    private $_from;
-    private $_node;
-    private $_pepnode = 'urn:xmpp:pubsub:subscription';
+    protected $_server;
+    protected $_from;
+    protected $_node;
+    protected $_pepnode = 'urn:xmpp:pubsub:subscription';
 
     public function request()
     {
@@ -19,30 +19,6 @@ class Remove extends Errors
         PubsubSubscription::listRemove(
             $this->_server, $this->_from, $this->_node, $this->_pepnode
         );
-    }
-
-    public function setServer($server)
-    {
-        $this->_server = $server;
-        return $this;
-    }
-
-    public function setFrom($from)
-    {
-        $this->_from = $from;
-        return $this;
-    }
-
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
-    }
-
-    public function setPEPNode($pepnode)
-    {
-        $this->_pepnode = $pepnode;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

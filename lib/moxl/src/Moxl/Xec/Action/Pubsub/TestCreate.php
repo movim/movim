@@ -8,8 +8,8 @@ use Moxl\Stanza\Pubsub;
 
 class TestCreate extends Errors
 {
-    private $_to;
-    private $_node = 'test_node';
+    protected $_to;
+    protected $_node = 'test_node';
 
     public function request()
     {
@@ -17,13 +17,8 @@ class TestCreate extends Errors
         Pubsub::create($this->_to, $this->_node, 'Test');
     }
 
-    public function setTo($to)
+    public function handle($stanza, $parent = false)
     {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function handle($stanza, $parent = false) {
         if($stanza["type"] == "result"){
             // We delete the test node we just created
             Pubsub::delete($this->_to, $this->_node);
@@ -34,7 +29,8 @@ class TestCreate extends Errors
         }
     }
 
-    public function error($error) {
+    public function error($error)
+    {
         $this->pack($this->_to);
         $this->deliver();
     }

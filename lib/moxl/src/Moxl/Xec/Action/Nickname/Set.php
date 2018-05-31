@@ -7,7 +7,7 @@ use Moxl\Stanza\Nickname;
 
 class Set extends Action
 {
-    private $_nickname;
+    protected $_nickname;
 
     public function request()
     {
@@ -15,12 +15,7 @@ class Set extends Action
         Nickname::set($this->_nickname);
     }
 
-    public function setNickname($nickname)
+    public function handle($stanza, $parent = false)
     {
-        $this->_nickname = $nickname;
-        return $this;
-    }
-
-    public function handle($stanza, $parent = false) {
     }
 }

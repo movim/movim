@@ -8,25 +8,13 @@ use Moxl\Stanza\Pubsub;
 
 class Delete extends Errors
 {
-    private $_to;
-    private $_node;
+    protected $_to;
+    protected $_node;
 
     public function request()
     {
         $this->store();
         Pubsub::delete($this->_to, $this->_node);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

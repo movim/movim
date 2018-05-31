@@ -9,8 +9,6 @@ use App\User as DBUser;
 
 class GetList extends Action
 {
-    private $_from;
-
     public function request()
     {
         $this->store();
@@ -32,7 +30,4 @@ class GetList extends Action
 
         $this->deliver();
     }
-
-    public function load($key) {}
-    public function save() {}
 }

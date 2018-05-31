@@ -11,18 +11,12 @@ use App\Session as DBSession;
 
 class Start extends Action
 {
-    private $_to;
+    protected $_to;
 
     public function request()
     {
         $this->store();
         Stream::sessionStart($this->_to);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

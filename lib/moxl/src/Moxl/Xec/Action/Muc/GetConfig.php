@@ -7,18 +7,12 @@ use Moxl\Stanza\Muc;
 
 class GetConfig extends Action
 {
-    private $_to;
+    protected $_to;
 
     public function request()
     {
         $this->store();
         Muc::getConfig($this->_to);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

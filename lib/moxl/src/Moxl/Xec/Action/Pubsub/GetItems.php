@@ -1,26 +1,4 @@
 <?php
-/*
- * GetItems.php
- *
- * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- *
- */
 
 namespace Moxl\Xec\Action\Pubsub;
 
@@ -30,37 +8,19 @@ use Moxl\Xec\Action\Pubsub\Errors;
 
 class GetItems extends Errors
 {
-    private $_to;
-    private $_node;
-    private $_since;
-    private $_paging;
-    private $_after;
-    private $_before;
+    protected $_to;
+    protected $_node;
+    protected $_since;
+    protected $_paging;
+    protected $_after;
+    protected $_before;
 
-    private $_paginated = false;
+    protected $_paginated = false;
 
     public function request()
     {
         $this->store();
         Pubsub::getItems($this->_to, $this->_node, $this->_paging, $this->_after, $this->_before);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
-    }
-
-    public function setPaging($paging)
-    {
-        $this->_paging = $paging;
-        return $this;
     }
 
     public function setAfter($after)
@@ -74,12 +34,6 @@ class GetItems extends Errors
     {
         $this->_before = $before;
         $this->_paginated = true;
-        return $this;
-    }
-
-    public function setSince($since)
-    {
-        $this->_since = $since;
         return $this;
     }
 
@@ -132,5 +86,4 @@ class GetItems extends Errors
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
-
 }

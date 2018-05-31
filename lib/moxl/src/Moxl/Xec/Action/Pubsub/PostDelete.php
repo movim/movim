@@ -8,32 +8,14 @@ use Moxl\Xec\Action\Pubsub\Errors;
 
 class PostDelete extends Errors
 {
-    private $_to;
-    private $_id;
-    private $_node;
+    protected $_to;
+    protected $_id;
+    protected $_node;
 
     public function request()
     {
         $this->store();
         Pubsub::postDelete($this->_to, $this->_node, $this->_id);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setId($id)
-    {
-        $this->_id = $id;
-        return $this;
-    }
-
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

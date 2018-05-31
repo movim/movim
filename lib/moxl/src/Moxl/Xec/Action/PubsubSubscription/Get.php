@@ -8,25 +8,13 @@ use Moxl\Stanza\Pubsub;
 
 class Get extends Errors
 {
-    private $_to;
-    private $_pepnode = 'urn:xmpp:pubsub:subscription';
+    protected $_to;
+    protected $_pepnode = 'urn:xmpp:pubsub:subscription';
 
     public function request()
     {
         $this->store();
         Pubsub::getItems($this->_to, $this->_pepnode, 1000);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setPEPNode($pepnode)
-    {
-        $this->_pepnode = $pepnode;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

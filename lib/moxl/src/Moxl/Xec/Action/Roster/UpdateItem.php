@@ -7,33 +7,15 @@ use Moxl\Stanza\Roster;
 
 class UpdateItem extends Action
 {
-    private $_to;
-    private $_from;
-    private $_name;
-    private $_group;
+    protected $_to;
+    protected $_from;
+    protected $_name;
+    protected $_group;
 
     public function request()
     {
         $this->store();
         Roster::update($this->_to, $this->_name, $this->_group);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setName($name)
-    {
-        $this->_name = $name;
-        return $this;
-    }
-
-    public function setGroup($group)
-    {
-        $this->_group = $group;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

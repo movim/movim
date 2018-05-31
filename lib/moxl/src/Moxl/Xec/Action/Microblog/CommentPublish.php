@@ -10,12 +10,12 @@ use Moxl\Xec\Action\Pubsub\GetItem;
 
 class CommentPublish extends Errors
 {
-    private $_to;
-    private $_node;
-    private $_parentid;
-    private $_commentnodeid;
+    protected $_to;
+    protected $_node;
+    protected $_parentid;
+    protected $_commentnodeid;
 
-    private $_atom;
+    protected $_atom;
 
     public function __construct()
     {
@@ -33,12 +33,6 @@ class CommentPublish extends Errors
     {
         $this->_to = $to;
         $this->_atom->to = $to;
-        return $this;
-    }
-
-    public function setParentId($parentid)
-    {
-        $this->_parentid = $parentid;
         return $this;
     }
 
@@ -105,5 +99,4 @@ class CommentPublish extends Errors
     {
         $this->event('commentpublisherror');
     }
-
 }

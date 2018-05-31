@@ -7,18 +7,12 @@ use Moxl\Stanza\Roster;
 
 class RemoveItem extends Action
 {
-    private $_to;
+    protected $_to;
 
     public function request()
     {
         $this->store();
         Roster::remove($this->_to);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = \echapJid($to);
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

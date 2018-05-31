@@ -9,39 +9,15 @@ use Moxl\Xec\Action\PubsubSubscription\Remove as SubscriptionRemove;
 
 class Unsubscribe extends Errors
 {
-    private $_to;
-    private $_from;
-    private $_node;
-    private $_subid;
+    protected $_to;
+    protected $_from;
+    protected $_node;
+    protected $_subid;
 
     public function request()
     {
         $this->store();
         Pubsub::unsubscribe($this->_to, $this->_from, $this->_node, $this->_subid);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setFrom($from)
-    {
-        $this->_from = $from;
-        return $this;
-    }
-
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
-    }
-
-    public function setSubid($subid)
-    {
-        $this->_subid = $subid;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)
