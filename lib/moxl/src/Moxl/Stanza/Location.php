@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Location {
+class Location
+{
     static function publish($to, $geo)
     {
         $xml = '

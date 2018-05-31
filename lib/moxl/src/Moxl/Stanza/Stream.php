@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Stream {
+class Stream
+{
     static function init($to)
     {
         $xml = '<stream:stream xmlns:stream="http://etherx.jabber.org/streams" version="1.0" xmlns="jabber:client" to="'.$to.'">';

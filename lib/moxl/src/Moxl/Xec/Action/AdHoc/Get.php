@@ -7,21 +7,16 @@ use Moxl\Stanza\AdHoc;
 
 class Get extends Action
 {
-    private $_to;
+    protected $_to;
 
-    public function request() 
+    public function request()
     {
         $this->store();
         AdHoc::get($this->_to);
     }
 
-    public function setTo($to)
+    public function handle($stanza, $parent = false)
     {
-        $this->_to = $to;
-        return $this;
-    }
-    
-    public function handle($stanza, $parent = false) {
         $this->pack($stanza->query->item);
         $this->deliver();
     }

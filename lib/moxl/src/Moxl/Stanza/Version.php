@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Version {
+class Version
+{
     static function send($to, $id, $name, $version, $os)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

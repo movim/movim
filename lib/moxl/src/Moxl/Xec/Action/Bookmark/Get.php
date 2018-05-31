@@ -8,7 +8,7 @@ use Moxl\Xec\Action\PubsubSubscription\Add as SubscriptionAdd;
 
 class Get extends Action
 {
-    private $_to;
+    protected $_to;
 
     public function request()
     {
@@ -16,13 +16,7 @@ class Get extends Action
         Bookmark::get();
     }
 
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    private function saveItem($c)
+    protected function saveItem($c)
     {
         if($c->getName() == 'subscription') {
             /*

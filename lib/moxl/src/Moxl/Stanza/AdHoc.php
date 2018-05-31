@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class AdHoc {
+class AdHoc
+{
     static function get($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

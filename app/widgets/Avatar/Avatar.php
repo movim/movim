@@ -57,7 +57,6 @@ class Avatar extends \Movim\Widget\Base
     {
         $r = new Get;
         $r->setTo($this->user->id)
-          ->setMe()
           ->request();
     }
 

@@ -9,15 +9,15 @@ use Movim\Session;
 
 class Get extends Action
 {
-    private $_queryid;
-    private $_to;
-    private $_jid;
-    private $_start;
-    private $_end;
-    private $_limit;
-    private $_after;
-    private $_before;
-    private $_version = '2';
+    protected $_queryid;
+    protected $_to;
+    protected $_jid;
+    protected $_start;
+    protected $_end;
+    protected $_limit;
+    protected $_after;
+    protected $_before;
+    protected $_version = '2';
 
     public function request()
     {
@@ -34,51 +34,9 @@ class Get extends Action
             $this->_version);
     }
 
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setJid($jid)
-    {
-        $this->_jid = $jid;
-        return $this;
-    }
-
-    public function setStart($start)
-    {
-        $this->_start = $start;
-        return $this;
-    }
-
-    public function setEnd($end)
-    {
-        $this->_end = $end;
-        return $this;
-    }
-
-    public function setAfter($after)
-    {
-        $this->_after = $after;
-        return $this;
-    }
-
     public function setBefore($before = true)
     {
         $this->_before = $before;
-        return $this;
-    }
-
-    public function setLimit($limit)
-    {
-        $this->_limit = $limit;
-        return $this;
-    }
-
-    public function setVersion($version)
-    {
-        $this->_version = $version;
         return $this;
     }
 
@@ -102,9 +60,4 @@ class Get extends Action
             $g->request();
         }
     }
-
-    public function error($error) {
-
-    }
-
 }

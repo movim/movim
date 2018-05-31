@@ -8,11 +8,11 @@ use Moxl\Xec\Action\Disco\Items;
 
 class Request extends Action
 {
-    private $_node;
-    private $_to;
+    protected $_node;
+    protected $_to;
 
     // Excluded nodes
-    private $_excluded = [
+    protected $_excluded = [
         'http://www.android.com/gtalk/client/caps#1.1'
     ];
 
@@ -28,18 +28,6 @@ class Request extends Action
         && (!$info || $info->isOld())) {
             Disco::request($this->_to, $this->_node);
         }
-    }
-
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

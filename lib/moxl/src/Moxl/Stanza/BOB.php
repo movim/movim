@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class BOB {
+class BOB
+{
     static function request($to, $cid)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

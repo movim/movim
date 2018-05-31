@@ -7,28 +7,17 @@ use Moxl\Stanza\AdHoc;
 
 class Command extends Action
 {
-    private $_to;
-    private $_node;
+    protected $_to;
+    protected $_node;
 
-    public function request() 
+    public function request()
     {
         $this->store();
         AdHoc::command($this->_to, $this->_node);
     }
 
-    public function setTo($to)
+    public function handle($stanza, $parent = false)
     {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setNode($node)
-    {
-        $this->_node = $node;
-        return $this;
-    }
-
-    public function handle($stanza, $parent = false) {
         $this->prepare($stanza, $parent);
         $this->pack($stanza->command);
         $this->deliver();

@@ -4,8 +4,10 @@
 
 namespace Moxl\Stanza;
 
-class Carbons {
-    static function enable() {
+class Carbons
+{
+    static function enable()
+    {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $xml = $dom->createElementNS('urn:xmpp:carbons:2', 'enable');
 
@@ -13,7 +15,8 @@ class Carbons {
         \Moxl\API::request($xml);
     }
 
-    static function disable() {
+    static function disable()
+    {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $xml = $dom->createElementNS('urn:xmpp:carbons:2', 'disable');
 

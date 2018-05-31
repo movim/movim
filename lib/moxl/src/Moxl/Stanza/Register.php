@@ -4,7 +4,8 @@ namespace Moxl\Stanza;
 
 use Moxl\Stanza\Form;
 
-class Register {
+class Register
+{
     static function get($to = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

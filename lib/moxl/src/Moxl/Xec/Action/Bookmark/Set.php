@@ -7,18 +7,12 @@ use Moxl\Stanza\Bookmark;
 
 class Set extends Action
 {
-    private $_arr;
+    protected $_arr;
 
     public function request()
     {
         $this->store();
         Bookmark::set($this->_arr);
-    }
-
-    public function setArr($arr)
-    {
-        $this->_arr = $arr;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

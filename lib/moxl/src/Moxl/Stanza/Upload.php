@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Upload {
+class Upload
+{
     static function request($to, $name, $size, $type)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

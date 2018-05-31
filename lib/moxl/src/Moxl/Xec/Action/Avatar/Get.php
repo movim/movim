@@ -7,25 +7,12 @@ use Moxl\Stanza\Avatar;
 
 class Get extends Action
 {
-    private $_to;
-    private $_me = false;
+    protected $_to;
 
     public function request()
     {
         $this->store();
         Avatar::get($this->_to);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setMe()
-    {
-        $this->_me = true;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

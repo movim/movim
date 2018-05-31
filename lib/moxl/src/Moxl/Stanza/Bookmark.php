@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Bookmark {
+class Bookmark
+{
     static function get()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -69,5 +70,4 @@ class Bookmark {
         $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
         \Moxl\API::request($xml);
     }
-
 }
