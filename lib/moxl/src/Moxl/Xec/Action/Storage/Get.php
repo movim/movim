@@ -31,18 +31,12 @@ use App\User;
 
 class Get extends Action
 {
-    private $_xmlns;
+    protected $_xmlns;
 
     public function request()
     {
         $this->store();
         Storage::get($this->_xmlns);
-    }
-
-    public function setXmlns($xmlns)
-    {
-        $this->_xmlns = $xmlns;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

@@ -29,25 +29,13 @@ use Moxl\Stanza\Storage;
 
 class Set extends Action
 {
-    private $_xmlns;
-    private $_data;
+    protected $_xmlns;
+    protected $_data;
 
     public function request()
     {
         $this->store();
         Storage::set($this->_xmlns, $this->_data);
-    }
-
-    public function setXmlns($xmlns)
-    {
-        $this->_xmlns = $xmlns;
-        return $this;
-    }
-
-    public function setData($data)
-    {
-        $this->_data = $data;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

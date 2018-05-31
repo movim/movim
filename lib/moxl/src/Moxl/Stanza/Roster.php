@@ -2,7 +2,8 @@
 
 namespace Moxl\Stanza;
 
-class Roster {
+class Roster
+{
     static function get()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');

@@ -161,7 +161,6 @@ class Presence extends \Movim\Widget\Base
     // We refresh our personnal feed
     function ajaxFeedRefresh()
     {
-        // Replace me with GetItemsId when moving from Metronome
         $r = new GetItemsId;
         $r->setTo($this->user->jid)
           ->setNode('urn:xmpp:microblog:0')

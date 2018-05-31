@@ -9,10 +9,10 @@ use Movim\Session;
 
 class Muc extends Action
 {
-    private $_to;
-    private $_nickname;
-    private $_mam = false;
-    private $_mam2 = false;
+    protected $_to;
+    protected $_nickname;
+    protected $_mam = false;
+    protected $_mam2 = false;
 
     public function request()
     {
@@ -29,18 +29,6 @@ class Muc extends Action
         }
 
         Presence::muc($this->_to, $this->_nickname, $this->_mam);
-    }
-
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
-    public function setNickname($nickname)
-    {
-        $this->_nickname = $nickname;
-        return $this;
     }
 
     public function enableMAM()

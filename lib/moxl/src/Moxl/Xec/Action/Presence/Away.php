@@ -30,18 +30,12 @@ use App\Presence as DBPresence;
 
 class Away extends Action
 {
-    private $_status;
+    protected $_status;
 
     public function request()
     {
         $this->store();
         Presence::away($this->_status);
-    }
-
-    public function setStatus($status)
-    {
-        $this->_status = $status;
-        return $this;
     }
 
     public function handle($stanza, $parent = false)

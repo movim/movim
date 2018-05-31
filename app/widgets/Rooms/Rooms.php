@@ -369,7 +369,6 @@ class Rooms extends \Movim\Widget\Base
         $pu = new Unavailable;
         $pu->setTo($room)
            ->setResource($resource)
-           ->setMuc()
            ->request();
     }
 

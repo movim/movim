@@ -45,5 +45,15 @@ abstract class Action extends Payload
         return $instances;
     }
 
+    public function __call($name, $args)
+    {
+        if (substr($name, 0, 3) == 'set') {
+            $property = '_' . strtolower(substr($name, 3));
+            $this->$property = $args[0];
+
+            return $this;
+        }
+    }
+
     abstract public function request();
 }
