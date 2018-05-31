@@ -245,4 +245,9 @@ class Info extends Model
     {
         return (substr($this->node, 0, 29) == 'urn:xmpp:microblog:0:comments');
     }
+
+    public function isOld()
+    {
+        return (strtotime($this->updated_at) < time() - 3600);
+    }
 }

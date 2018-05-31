@@ -312,9 +312,9 @@ class Rooms extends \Movim\Widget\Base
         $p = new Muc;
         $p->setTo($room);
 
-        $c = new \Moxl\Xec\Action\Disco\Request;
+        /*$c = new \Moxl\Xec\Action\Disco\Request;
         $c->setTo(explodeJid($room)['server'])
-          ->request();
+          ->request();*/
 
         if ($nickname == false) {
             $s = Session::start();

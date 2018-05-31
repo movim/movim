@@ -8,7 +8,7 @@ use Moxl\Xec\Action\Presence\Unavailable;
 
 use Moxl\Xec\Action\Roster\GetList;
 
-use Moxl\Xec\Action\Pubsub\GetItems;
+use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Storage\Get;
 
 use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
@@ -162,7 +162,7 @@ class Presence extends \Movim\Widget\Base
     function ajaxFeedRefresh()
     {
         // Replace me with GetItemsId when moving from Metronome
-        $r = new GetItems;
+        $r = new GetItemsId;
         $r->setTo($this->user->jid)
           ->setNode('urn:xmpp:microblog:0')
           ->request();

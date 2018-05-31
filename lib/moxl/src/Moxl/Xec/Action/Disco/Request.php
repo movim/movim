@@ -20,7 +20,12 @@ class Request extends Action
     {
         $this->store();
 
-        if(!in_array($this->_node, $this->_excluded)) {
+        $info = \App\Info::where('server', $this->_to)
+                         ->where('node', (string)$this->_node)
+                         ->first();
+
+        if (!in_array($this->_node, $this->_excluded)
+        && (!$info || $info->isOld())) {
             Disco::request($this->_to, $this->_node);
         }
     }
@@ -61,7 +66,7 @@ class Request extends Action
                          ->where('node', (string)$this->_node)
                          ->first();
 
-        if(!$info) $info = new \App\Info;
+        if (!$info) $info = new \App\Info;
         $info->set($stanza);
 
         if (!empty($info->category)
