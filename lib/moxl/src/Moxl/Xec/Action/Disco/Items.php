@@ -8,7 +8,7 @@ use Moxl\Stanza\Disco;
 
 class Items extends Action
 {
-    private $_to;
+    protected $_to;
 
     public function request()
     {
