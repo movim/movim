@@ -100,10 +100,8 @@ function addHFR($string)
  */
 function prepareString($string, $preview = false)
 {
-    $string = addUrls($string, $preview);
-
-    // We add some smileys...
-    return trim((string)requestURL('http://localhost:1560/emojis/', 2, ['string' => $string]));
+    $emoji = \Movim\Emoji::getInstance();
+    return $emoji->replace(addUrls($string, $preview));
 }
 
 /**

@@ -47,9 +47,6 @@ class Api
                 case 'purify':
                     $response = $api->purifyHTML($request->getParsedBody());
                     break;
-                case 'emojis':
-                    $response = $api->addEmojis($request->getParsedBody());
-                    break;
                 case 'session':
                     $response = $api->getSession($request->getParsedBody());
                     break;
@@ -154,14 +151,6 @@ class Api
         $purifier = new \HTMLPurifier($config);
         $trimmed = trim($purifier->purify($string));
         return preg_replace('#(\s*<br\s*/?>)*\s*$#i', '', $trimmed);
-    }
-
-    public function addEmojis($post)
-    {
-        $string = $post['string'];
-
-        $emoji = \Movim\Emoji::getInstance();
-        return $emoji->replace($string);
     }
 }
 
