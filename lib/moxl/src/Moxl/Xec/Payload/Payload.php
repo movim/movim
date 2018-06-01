@@ -125,5 +125,5 @@ abstract class Payload
         }
     }
 
-    abstract public function handle($stanza, $parent = false);
+    public function handle($stanza, $parent = false) {}
 }
