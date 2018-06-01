@@ -12,8 +12,4 @@ class Server extends Action
         $this->store();
         Ping::server();
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

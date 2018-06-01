@@ -16,8 +16,4 @@ class Invite extends Action
     {
         Message::invite($this->_to, $this->_id, $this->_invite);
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

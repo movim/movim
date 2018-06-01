@@ -17,8 +17,4 @@ class Send extends Action
     {
         Version::send($this->_to, $this->_id, $this->_name, $this->_version, $this->_os);
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

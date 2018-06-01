@@ -15,8 +15,4 @@ class Send extends Action
         $this->store();
         Ack::send($this->_to, $this->_id);
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

@@ -18,8 +18,4 @@ class Answer extends Action
         $this->store();
         BOB::answer($this->_to, $this->_id, $this->_cid, $this->_type, $this->_base64);
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

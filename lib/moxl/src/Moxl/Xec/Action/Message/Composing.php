@@ -13,8 +13,4 @@ class Composing extends Action
     {
         Message::composing($this->_to);
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

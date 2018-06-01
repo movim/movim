@@ -15,8 +15,4 @@ class Unsubscribe extends Action
         $this->store();
         Presence::unsubscribe($this->_to, $this->_status);
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

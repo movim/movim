@@ -6,7 +6,7 @@ class PubsubSubscription
 {
     private static function generateId($server, $jid, $node)
     {
-        $id = "";
+        $id = '';
         $id .= $server.'<';
         $id .= $node.'<';
         $id .= $jid;

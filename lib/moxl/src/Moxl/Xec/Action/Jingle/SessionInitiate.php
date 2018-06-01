@@ -16,10 +16,6 @@ class SessionInitiate extends Action
         Jingle::sessionInitiate($this->_to, $this->_offer);
     }
 
-    public function handle($stanza, $parent = false)
-    {
-    }
-
     public function errorItemNotFound($stanza)
     {
         $this->deliver();

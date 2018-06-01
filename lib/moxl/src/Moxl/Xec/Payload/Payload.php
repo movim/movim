@@ -33,6 +33,7 @@ abstract class Payload
 {
     protected $method;
     protected $packet;
+
     /**
      * Constructor of class Payload.
      *
@@ -50,11 +51,9 @@ abstract class Payload
      */
     final public function prepare($stanza, $parent = false)
     {
-        if($parent === false) {
-            $this->packet->from = current(explode('/',(string)$stanza->attributes()->from));
-        } else {
-            $this->packet->from = current(explode('/',(string)$parent->attributes()->from));
-        }
+        $this->packet->from = ($parent === false)
+            ? current(explode('/', (string)$stanza->attributes()->from))
+            : current(explode('/',(string)$parent->attributes()->from));
     }
 
     /**
@@ -62,10 +61,14 @@ abstract class Payload
      *
      * @return void
      */
-    final public function deliver()
+    final public function deliver($content = null, $from = null)
     {
+        if ($content !== null) {
+            $this->pack($content, $from);
+        }
+
         $action_ns = 'Moxl\Xec\Action';
-        if(get_parent_class($this) == $action_ns
+        if (get_parent_class($this) == $action_ns
         || get_parent_class(get_parent_class($this)) == $action_ns) {
             $class = str_replace([$action_ns, '\\'], ['', '_'], get_class($this));
             $key = strtolower(substr($class, 1));
@@ -74,10 +77,12 @@ abstract class Payload
             $pos = strrpos($class, '\\');
             $key = substr($class, $pos + 1);
         }
-        if($this->method)
-            $key = $key . '_' . $this->method;
 
-        if(!empty($this->packet->from)) {
+        if ($this->method) {
+            $key = $key . '_' . $this->method;
+        }
+
+        if (!empty($this->packet->from)) {
             Utils::log('Package : "'.$key.'" from "'.$this->packet->from.'" fired');
         } else {
             Utils::log('Package : "'.$key);
@@ -115,7 +120,7 @@ abstract class Payload
     final public function pack($content, $from = null)
     {
         $this->packet->content = $content;
-        if($from != null) {
+        if ($from != null) {
             $this->packet->from = $from;
         }
     }

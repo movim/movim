@@ -28,8 +28,8 @@ class Submit extends Action
     public function error($errorid, $message)
     {
         $this->pack([
-            "errorid" => $errorid,
-            "message" => $message
+            'errorid' => $errorid,
+            'message' => $message
         ]);
         $this->deliver();
     }

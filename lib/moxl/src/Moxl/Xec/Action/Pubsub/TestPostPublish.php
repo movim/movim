@@ -20,14 +20,16 @@ class TestPostPublish extends Errors
         Pubsub::testPostPublish($this->_to, $this->_node, $this->_id);
     }
 
-    public function handle($stanza, $parent = false) {
+    public function handle($stanza, $parent = false)
+    {
         Pubsub::postDelete($this->_to, $this->_node, $this->_id);
 
         $this->pack(['to' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
 
-    public function error($stanza, $parent = false) {
+    public function error($stanza, $parent = false)
+    {
         $this->pack(['to' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }

@@ -114,7 +114,7 @@ class Handler
                     $action->method('error');
                     $action->error($errorid, $message);
                 }
-            } else {
+            } elseif (method_exists($action, 'handle')) {
                 // We launch the object handle
                 $action->method('handle');
                 $action->handle($child);

@@ -70,8 +70,4 @@ class Message extends Action
         $this->_isprekey = $isprekey;
         return $this;
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

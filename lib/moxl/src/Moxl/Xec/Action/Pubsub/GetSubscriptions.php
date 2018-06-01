@@ -43,9 +43,9 @@ class GetSubscriptions extends Errors
             $subscription->save();
 
             $sub = [
-                'jid' => (string)$s["jid"],
-                'subscription' => (string)$s["subscription"],
-                'subid' => (string)$s["subid"]
+                'jid' => (string)$s['jid'],
+                'subscription' => (string)$s['subscription'],
+                'subid' => (string)$s['subid']
             ];
 
             array_push($tab, $sub);

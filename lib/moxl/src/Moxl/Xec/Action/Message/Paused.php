@@ -13,8 +13,4 @@ class Paused extends Action
     {
         Message::paused($this->_to);
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

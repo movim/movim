@@ -17,8 +17,4 @@ class Refuse extends Action
         $this->store();
         Confirm::answer($this->_to, $this->_id, $this->_url, $this->_method, true);
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

@@ -32,7 +32,7 @@ class Start extends Action
             $session->save();
         }
 
-        Utils::log("/// AUTH SUCCESSFULL");
+        Utils::log('/// AUTH SUCCESSFULL');
         fwrite(STDERR, 'started');
         $this->deliver();
     }

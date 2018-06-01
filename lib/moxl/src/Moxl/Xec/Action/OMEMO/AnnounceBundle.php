@@ -54,8 +54,4 @@ class AnnounceBundle extends Action
         $this->_preKeys = $preKeys;
         return $this;
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }

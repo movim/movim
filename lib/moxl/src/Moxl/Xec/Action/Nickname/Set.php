@@ -14,8 +14,4 @@ class Set extends Action
         $this->store();
         Nickname::set($this->_nickname);
     }
-
-    public function handle($stanza, $parent = false)
-    {
-    }
 }
