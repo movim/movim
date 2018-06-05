@@ -301,7 +301,7 @@ ul.tabs > li > * {
 }
 
 ul.tabs > li > * > i {
-    line-height: inherit;
+    font-size: 2.5rem;
 }
 
 ul.tabs.narrow > li {

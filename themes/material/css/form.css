@@ -385,6 +385,10 @@ header.big ~ .button.action {
     top: -6rem;
 }
 
+.button i {
+    font-size: 2.5rem;
+}
+
 @media screen and (min-width: 1025px) {
     main > section > div:first-child:nth-last-child(2) .button.action {
         right: calc(70% + 3rem);
