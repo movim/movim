@@ -17,7 +17,7 @@
     background-color: rgba(var(--movim-background-main), 1);
     width: inherit;
     max-width: 100%;
-    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
 }
 
 #chat_widget .chat_box ul {
@@ -31,16 +31,17 @@
 
 #chat_widget .chat_box form > div {
     min-height: 0;
-    margin-bottom: -1rem;
 }
 
 #chat_widget .chat_box form textarea {
-    padding: 0rem 0px 1rem;
+    padding: 0 0 1rem;
     margin-top: 3rem;
+    margin-bottom: -0.5rem;
 }
 
+#chat_widget .chat_box span.primary,
 #chat_widget .chat_box span.control {
-    font-size: 4rem;
+    font-size: 3.5rem;
     color: rgba(var(--movim-font), 0.68);
 }
 
@@ -152,6 +153,11 @@ table.emojis td {
     text-align: center;
     padding: 1rem 0;
 }
+
+.chat_box ul.list li {
+    padding: 0.01rem 0;
+}
+
 .chat_box ul.list li > .control.control {
     right: 0rem;
 }

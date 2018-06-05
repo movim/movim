@@ -216,7 +216,7 @@ main > section > div:first-child:nth-last-child(2) ~ div {
 }*/
 
 main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
-    height: calc(100% - 7.5rem);
+    height: calc(100% - 6.5rem);
     overflow-y: scroll;
     position: absolute;
     max-width: 100%;
