@@ -6,7 +6,7 @@
                     <li>
                         <span class="primary active icon gray">
                             <a href="<?php echo \Movim\Route::urlize('main'); ?>">
-                                <i class="zmdi zmdi-arrow-left"></i>
+                                <i class="material-icons">arrow_back</i>
                             </a>
                         </span>
                         <p class="center"><?php echo __('page.about'); ?></p>

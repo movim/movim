@@ -14,8 +14,8 @@
                 <ul class="list middle">
                     <li>
                         <span id="menu" class="primary icon active gray">
-                            <i class="zmdi zmdi-help on_desktop"></i>
-                            <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
+                            <i class="material-icons on_desktop">help</i>
+                            <i class="material-icons on_mobile" onclick="MovimTpl.toggleMenu()">menu</i>
                         </span>
                         <p class="center"><?php echo __('page.help'); ?></p>
                     </li>

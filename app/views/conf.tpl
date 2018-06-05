@@ -15,8 +15,8 @@
                 <ul class="list middle">
                     <li>
                         <span id="menu" class="primary icon active gray" >
-                            <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
-                            <i class="zmdi zmdi-settings on_desktop"></i>
+                            <i class="material-icons on_desktop">settings</i>
+                            <i class="material-icons on_mobile" onclick="MovimTpl.toggleMenu()">menu</i>
                         </span>
                         <p><?php echo __('page.configuration'); ?></p>
                     </li>

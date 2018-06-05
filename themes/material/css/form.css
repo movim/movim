@@ -49,8 +49,8 @@ form > div > textarea,
 }
 
 form > div > .select:after {
-    font-family: "Material-Design-Iconic-Font";
-    content: "\f2f2";
+    font-family: 'Material Icons';
+    content: "\e5c5";
     display: block;
     font-size: 4rem;
     color: #999;

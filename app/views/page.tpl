@@ -61,7 +61,7 @@
             <ul class="list">
                 <li>
                     <span class="control icon gray">
-                        <i class="zmdi zmdi-code-setting"></i>
+                        <i class="material-icons">signal_cellular_off</i>
                     </span>
                     <p class="normal">
                         <?php echo __('error.websocket'); ?>
