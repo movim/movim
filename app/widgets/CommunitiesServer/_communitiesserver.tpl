@@ -2,7 +2,7 @@
     <ul class="list middle">
         <li>
             <span class="primary icon icon gray active" onclick="history.back()">
-                <i class="zmdi zmdi-arrow-back"></i>
+                <i class="material-icons">arrow_back</i>
             </span>
             {if="is_array($nodes) && count($nodes) > 0"}
                 <span class="control icon gray">
@@ -40,7 +40,7 @@
         >
             {if="$value->subscription == 'subscribed'"}
                 <span class="control icon gray">
-                    <i class="zmdi zmdi-bookmark"></i>
+                    <i class="material-icons">bookmark</i>
                 </span>
             {/if}
 
@@ -74,7 +74,7 @@
                 {/if}
                 {if="$value->occupants > 0"}
                     <span title="{$c->__('communitydata.sub', $value->occupants)}">
-                        {$value->occupants} <i class="zmdi zmdi-accounts"></i>
+                        {$value->occupants} <i class="material-icons">people</i>
                     </span>
                 {/if}
                 <span class="info">
@@ -86,5 +86,5 @@
     </ul>
 {/if}
 <button onclick="CommunitiesServer_ajaxTestAdd('{$server}')" class="button action color">
-    <i class="zmdi zmdi-plus"></i>
+    <i class="material-icons">plus</i>
 </button>

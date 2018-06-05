@@ -13,7 +13,7 @@
                     </span>
                 {else}
                     <span class="primary icon bubble color {$user->id|stringToColor}">
-                        <i class="zmdi zmdi-account"></i>
+                        <i class="material-icons">person</i>
                     </span>
                 {/if}
                 <p class="line" title="{$user->id}">

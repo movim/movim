@@ -5,10 +5,10 @@
     <ul class="list flex active">
         <!--<li class="block" onclick="Onboarding_ajaxAskNotifications()">
             <span class="primary icon gray">
-                <i class="zmdi zmdi-notifications"></i>
+                <i class="material-icons">notifications"></i>
             </span>
             <span class="control icon gray">
-                <i class="zmdi zmdi-chevron-down"></i>
+                <i class="material-icons">chevron-down"></i>
             </span>
             <p class="normal">{$c->__('notifs.title')}</p>
         </li>-->
@@ -65,7 +65,7 @@
         <ul class="list thick">
             <li>
                 <span class="primary icon gray">
-                    <i class="zmdi zmdi-brightness-2"></i>
+                    <i class="material-icons">brightness_2</i>
                 </span>
                 <span class="control">
                     <div class="checkbox">

@@ -10,13 +10,13 @@
         <span
             onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')"
             class="primary icon bubble color {$me->jid|stringToColor} status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}">
-            <i class="zmdi zmdi-account"></i>
+            <i class="material-icons">person</i>
         </span>
     {/if}
     <span class="control icon active on_mobile"
         onclick="Presence_ajaxLogout()"
         title="{$c->__('status.disconnect')}">
-        <i class="zmdi zmdi-sign-in"></i>
+        <i class="material-icons">exit_to_app</i>
     </span>
     <p class="line bold normal" onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')">
         {$me->truename}

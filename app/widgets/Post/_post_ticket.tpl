@@ -49,12 +49,12 @@
 
         {$count = $post->likes()->count()}
         {if="$count > 0"}
-            {$count} <i class="zmdi zmdi-favorite-outline"></i>
+            {$count} <i class="material-icons">favorite_border</i>
         {/if}
 
         {$count = $post->comments()->count()}
         {if="$count > 0"}
-            {$count} <i class="zmdi zmdi-comment-outline"></i>
+            {$count} <i class="material-icons">chat_bubble_outline</i>
         {/if}
         <span class="info">
             {$post->published|strtotime|prepareDate}

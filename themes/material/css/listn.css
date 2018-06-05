@@ -259,7 +259,7 @@ header > ul.list li .primary {
 }
 
 header > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 9rem;
+    padding-left: 8rem;
 }
 
 /* Tabs */
@@ -298,6 +298,10 @@ ul.tabs > li > * {
     padding: 0 3rem;
     box-sizing: border-box;
     display: block;
+}
+
+ul.tabs > li > * > i {
+    line-height: inherit;
 }
 
 ul.tabs.narrow > li {

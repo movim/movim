@@ -52,7 +52,7 @@
     </li>
     <li>
         <span class="primary icon gray">
-            <i class="zmdi zmdi-plus"></i>
+            <i class="material-icons">plus</i>
         </span>
         <form name="addaffiliation">
             <div>

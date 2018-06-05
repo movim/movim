@@ -631,20 +631,23 @@ var Chat = {
         return div;
     },
     getEditedIcoHtml: function() {
-        var i = document.createElement("i");
-        i.setAttribute("class", "zmdi zmdi-edit");
+        var i = document.createElement('i');
+        i.className = 'material-icons';
+        i.innerText = 'edit';
         return i;
     },
     getDeliveredIcoHtml: function(delivered) {
-        var i = document.createElement("i");
-        i.setAttribute("class", "zmdi zmdi-check");
-        i.setAttribute("title", delivered);
+        var i = document.createElement('i');
+        i.className = 'material-icons';
+        i.innerText = 'check';
+        i.setAttribute('title', delivered);
         return i;
     },
     getDisplayedIcoHtml: function(displayed) {
-        var i = document.createElement("i");
-        i.setAttribute("class", "zmdi zmdi-check-all");
-        i.setAttribute("title", displayed);
+        var i = document.createElement('i');
+        i.className = 'material-icons';
+        i.innerText = 'done_all';
+        i.setAttribute('title', displayed);
         return i;
     },
     toggleAction: function() {

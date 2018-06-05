@@ -105,13 +105,13 @@
     <footer>
         <a href="https://movim.eu" target="_blank" class="on_desktop"></a>
         <a class="button flat color green" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
-            <i class="zmdi zmdi-google-play"></i> Play Store
+            <i class="material-icons">store</i> Play Store
         </a>
         <a class="button flat color blue" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
-            <i class="zmdi zmdi-android-alt"></i> F-Droid
+            <i class="material-icons">android</i> F-Droid
         </a>
         <a class="button flat color purple on_desktop" href="https://movim.eu/#apps" target="_blank">
-            <i class="zmdi zmdi-desktop-windows"></i> Apps
+            <i class="material-icons">face</i> Apps
         </a>
         <br />
     </footer>

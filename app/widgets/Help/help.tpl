@@ -5,32 +5,32 @@
         </li>
         <li class="block">
             <span class="primary icon bubble color green">
-                <i class="zmdi zmdi-android"></i>
+                <i class="material-icons">android"></i>
             </span>
             <p>{$c->__('apps.phone')}<p>
             <p class="all">
                 {$c->__('apps.android')}
                 <br />
                 <a class="button flat" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
-                    <i class="zmdi zmdi-google-play"></i> Play Store
+                    <i class="material-icons">store</i> Play Store
                 </a>
                 <a class="button flat" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
-                    <i class="zmdi zmdi-android-alt"></i> F-Droid
+                    <i class="material-icons">android</i> F-Droid
                 </a>
                 <br />
                 {$c->__('apps.recommend')} Conversations
                 <br />
                 <a class="button flat" href="https://play.google.com/store/apps/details?id=eu.siacs.conversations" target="_blank">
-                    <i class="zmdi zmdi-google-play"></i> Play Store
+                    <i class="material-icons">store</i> Play Store
                 </a>
                 <a class="button flat" href="https://f-droid.org/packages/eu.siacs.conversations/" target="_blank">
-                    <i class="zmdi zmdi-android-alt"></i> F-Droid
+                    <i class="material-icons">android</i> F-Droid
                 </a>
             </p>
         </li>
         <li class="block">
             <span class="primary icon bubble color purple">
-                <i class="zmdi zmdi-desktop-windows"></i>
+                <i class="material-icons">desktop_windows</i>
             </span>
             <p>{$c->__('apps.computer')}<p>
             <p class="all">
@@ -54,7 +54,7 @@
                     {if="$parsed['scheme'] == 'xmpp'"}
                         {if="isset($parsed['query']) && $parsed['query'] == 'join'"}
                         <span class="primary icon gray">
-                            <i class="zmdi zmdi-comments"></i>
+                            <i class="material-icons">mode_comment</i>
                         </span>
                         <p class="normal">
                             <a href="{$c->route('chat', [$parsed['path'], 'room'])}">
@@ -63,7 +63,7 @@
                         </p>
                         {else}
                         <span class="primary icon gray">
-                            <i class="zmdi zmdi-comment"></i>
+                            <i class="material-icons">comment</i>
                         </span>
                         <p class="normal">
                             <a href="{$c->route('chat', $parsed['path'])}">
@@ -73,7 +73,7 @@
                         {/if}
                     {else}
                         <span class="primary icon gray">
-                            <i class="zmdi zmdi-email"></i>
+                            <i class="material-icons">email</i>
                         </span>
                         <p class="normal">
                             <a href="{$value}" target="_blank" rel="noopener noreferrer">
@@ -92,7 +92,7 @@
         </li>
         <li class="block">
             <span class="primary icon gray">
-                <i class="zmdi zmdi-comment-text-alt"></i>
+                <i class="material-icons">comment</i>
             </span>
             <p>{$c->__('chatroom.question')}</p>
             <p class="all">

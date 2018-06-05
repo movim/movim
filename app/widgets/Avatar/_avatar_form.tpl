@@ -13,7 +13,7 @@
                     <ul class="list thick">
                         <li>
                             <span class="primary icon bubble color {$me->jid|stringToColor}">
-                                <i class="zmdi zmdi-account"></i>
+                                <i class="material-icons">person</i>
                             </span>
                             <p class="normal line">{$c->__('avatar.missing')}</p>
                         </li>
@@ -27,7 +27,7 @@
         <ul class="list thick divided">
             <li>
                 <span class="primary icon bubble color green">
-                    <i class="zmdi zmdi-attachment-alt"></i>
+                    <i class="material-icons">attach_file</i>
                 </span>
                 <p>{$c->__('avatar.file')}</p>
                 <p><input type="file" onchange="MovimAvatar.file(this.files, 'avatarform');"></p>

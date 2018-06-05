@@ -1,13 +1,6 @@
 <ul class="list middle">
     <li class="subheader">
-        <p>
-            <span class="info">
-                <a href="{$c->route('contact', $me->id)}">
-                    {$c->__('privacy.my_profile')}
-                </a>
-            </span>
-            {$c->__('privacy.privacy_title')}
-        </p>
+        <p>{$c->__('privacy.privacy_title')}</p>
     </li>
     <li>
         <span class="control">
@@ -114,7 +107,7 @@
 <ul class="list thick">
     <li>
         <span class="primary icon orange bubble color">
-            <i class="zmdi zmdi-alert-triangle"></i>
+            <i class="material-icons">warning</i>
         </span>
         <p>{$c->__('degraded.title')}</p>
         <p class="all">{$c->__('degraded.text_1')}</br>

@@ -9,8 +9,11 @@
     <ul class="list middle flex active all">
         {loop="$subscriptions"}
             {if="$c->checkNewServer($value)"}
-                <li class="subheader block large" onclick="MovimUtils.redirect('{$c->route('community', $value->server)}')">
-                    <span class="control icon gray"><i class="zmdi zmdi-chevron-right"></i></span>
+                <li class="subheader block large"
+                    onclick="MovimUtils.redirect('{$c->route('community', $value->server)}')">
+                    <span class="control icon gray">
+                        <i class="material-icons">chevron_right</i>
+                    </span>
                     <p>
                         {$value->server}
                     </p>
@@ -25,7 +28,7 @@
                     {$value->node|firstLetterCapitalize}
                 </span>
                 <span class="control icon gray">
-                    <i class="zmdi zmdi-chevron-right"></i>
+                    <i class="material-icons">chevron_right</i>
                 </span>
                 <p class="line normal">
                     {if="$value->info && $value->info->name"}

@@ -2,7 +2,7 @@
     <ul class="list">
         <li>
             <span class="primary icon bubble gray">
-                <i class="zmdi zmdi-search"></i>
+                <i class="material-icons">search</i>
             </span>
             {if="count($contacts) > 5"}
             <form onsubmit="return false;">
@@ -29,5 +29,5 @@
     {/if}
 </ul>
 <!--<a onclick="Roster_ajaxDisplaySearch()" class="button action color" title="{$c->__('roster.add_title')}">
-    <i class="zmdi zmdi-account-add"></i>
+    <i class="material-icons">account-add"></i>
 </a>-->

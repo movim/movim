@@ -17,7 +17,7 @@
                 {if="$me == null"}
                     <a href="#" onclick="Chat_ajaxGetContact('{$contact->jid}')">
                 {/if}
-                    <i class="zmdi zmdi-account"></i>
+                    <i class="material-icons">people</i>
                 {if="$me == null"}</a>{/if}
             </span>
         {/if}

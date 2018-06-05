@@ -1,5 +1,5 @@
 <a onclick="CommunityHeader_ajaxTestPublish('{$server}', '{$node}')" class="button action color" title="{$c->__('menu.add_post')}">
-    <i class="zmdi zmdi-edit"></i>
+    <i class="material-icons">edit</i>
 </a>
 <ul class="list thick">
     <li>
@@ -17,7 +17,7 @@
             {/if}
         {/if}
         <span class="primary icon active gray" onclick="history.back()">
-            <i class="zmdi zmdi-arrow-back"></i>
+            <i class="material-icons">arrow_back</i>
         </span>
         <p class="line">
             {if="$info != null"}

@@ -7,30 +7,30 @@
                 <span
                     class="primary icon bubble color white"
                     style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$reply->picture});">
-                    <i class="zmdi zmdi-share"></i>
+                    <i class="material-icons">share</i>
                 </span>
             {elseif="$reply->isMicroblog() && $reply->contact"}
                 {$url = $reply->contact->getPhoto('l')}
                 {if="$url"}
                     <span class="primary icon bubble color white" style="background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%), url({$url});">
-                        <i class="zmdi zmdi-share"></i>
+                        <i class="material-icons">share</i>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$reply->contact->jid|stringToColor}">
-                        <i class="zmdi zmdi-share"></i>
+                        <i class="material-icons">share</i>
                     </span>
                 {/if}
             {/if}
             <span class="control icon gray">
-                <i class="zmdi zmdi-chevron-right"></i>
+                <i class="material-icons">chevron-right"></i>
             </span>
             <p class="normal line">{$reply->title}</p>
             <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
             <p>
                 {if="$reply->isMicroblog() && $reply->contact"}
-                    <i class="zmdi zmdi-account"></i> {$reply->contact->truename}
+                    <i class="material-icons">people</i> {$reply->contact->truename}
                 {else}
-                    <i class="zmdi zmdi-pages"></i> {$reply->node}
+                    <i class="material-icons">group_work</i> {$reply->node}
                 {/if}
                 <span class="info">
                     {$reply->published|strtotime|prepareDate:true,true}
@@ -42,7 +42,7 @@
     <ul class="list thick active faded">
         <li>
             <span class="primary icon gray">
-                <i class="zmdi zmdi-mail-reply"></i>
+                <i class="material-icons">reply</i>
             </span>
             <p class="line normal">{$c->__('post.original_deleted')}</p>
         </li>

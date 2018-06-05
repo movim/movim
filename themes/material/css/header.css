@@ -27,10 +27,6 @@ header.relative {
     }
 }
 
-header > ul:first-child > li:first-child p:not(.normal) {
-    text-align: center;
-}
-
 /* Specific forms in header */
 header form > div:not(.clear):not(.control) {
     min-height: 0;

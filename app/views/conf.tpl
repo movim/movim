@@ -18,7 +18,7 @@
                             <i class="zmdi zmdi-menu on_mobile" onclick="MovimTpl.toggleMenu()"></i>
                             <i class="zmdi zmdi-settings on_desktop"></i>
                         </span>
-                        <p class="center"><?php echo __('page.configuration'); ?></p>
+                        <p><?php echo __('page.configuration'); ?></p>
                     </li>
                 </ul>
             </header>

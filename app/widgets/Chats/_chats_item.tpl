@@ -41,13 +41,13 @@
 
         {if="$roster && $roster->presence && $roster->presence->capability"}
             <span class="second" title="{$roster->presence->capability->name}">
-                <i class="zmdi {$roster->presence->capability->getDeviceIcon()}"></i>
+                <i class="material-icons">{$roster->presence->capability->getDeviceIcon()}</i>
             </span>
         {/if}
     </p>
     {if="isset($message)"}
         {if="preg_match('#^\?OTR#', $message->body)"}
-            <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
+            <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
         {elseif="stripTags($message->body) != ''"}
             <p class="line">{$message->body|stripTags}</p>
         {/if}

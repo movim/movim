@@ -18,7 +18,7 @@
                     status {$presencestxt[$value->value]}
                 {/if}
                 ">
-                    <i class="zmdi zmdi-account"></i>
+                    <i class="material-icons">person</i>
                 </span>
             {/if}
 

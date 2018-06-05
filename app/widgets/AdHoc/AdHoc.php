@@ -113,24 +113,24 @@ class AdHoc extends \Movim\Widget\Base
     function getIcon($command)
     {
         $icons = [
-            'http://jabber.org/protocol/admin#delete-user' => 'zmdi-delete',
-            'http://jabber.org/protocol/admin#end-user-session' => 'zmdi-stop',
-            'http://jabber.org/protocol/admin#change-user-password' => 'zmdi-lock',
-            'ping' => 'zmdi-swap',
-            'http://jabber.org/protocol/admin#shutdown' => 'zmdi-power-off',
-            'http://jabber.org/protocol/admin#add-user' => 'zmdi-account-add',
-            'http://jabber.org/protocol/admin#user-stats' => 'zmdi-accounts',
-            'uptime' => 'zmdi-time',
-            'http://jabber.org/protocol/admin#server-buddy' => 'zmdi-stop',
-            'http://jabber.org/protocol/admin#get-user-roster' => 'zmdi-format-list-bulleted',
-            'http://jabber.org/protocol/admin#get-online-users' => 'zmdi-trending-up',
-            'http://jabber.org/protocol/admin#announce' => 'zmdi-notifications',
+            'http://jabber.org/protocol/admin#delete-user' => 'delete',
+            'http://jabber.org/protocol/admin#end-user-session' => 'stop',
+            'http://jabber.org/protocol/admin#change-user-password' => 'lock',
+            'ping' => 'swap_horiz',
+            'http://jabber.org/protocol/admin#shutdown' => 'power_off',
+            'http://jabber.org/protocol/admin#add-user' => 'person_add',
+            'http://jabber.org/protocol/admin#user-stats' => 'people',
+            'uptime' => 'timer',
+            'http://jabber.org/protocol/admin#server-buddy' => 'stop',
+            'http://jabber.org/protocol/admin#get-user-roster' => 'format_list_bulleted',
+            'http://jabber.org/protocol/admin#get-online-users' => 'trending_up',
+            'http://jabber.org/protocol/admin#announce' => 'notifications',
         ];
 
         if (array_key_exists($command, $icons)) {
             return $icons[$command];
         }
 
-        return 'zmdi-chevron-right';
+        return 'chevron_right';
     }
 }

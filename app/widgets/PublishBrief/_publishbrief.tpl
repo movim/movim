@@ -10,7 +10,7 @@
                         onclick="history.back();"
                     {/if}
                 >
-                    <i class="zmdi zmdi-arrow-back"></i>
+                    <i class="material-icons">arrow_back</i>
                 </span>
 
                 <p class="line">
@@ -34,7 +34,7 @@
             <span id="button_send"
                   class="control icon gray active"
                   onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpPublish(MovimUtils.formToJson('brief'));">
-                <i class="zmdi zmdi-mail-send"></i>
+                <i class="material-icons">send</i>
             </span>
             <form onsubmit="return false;" name="brief">
                 <input type="hidden" name="to" value="{$to}">
@@ -95,19 +95,19 @@
             <span class="primary icon gray bubble active privacy"
                   title="{$c->__('post.public')}"
                   onclick="PublishBrief.togglePrivacy()">
-                <i class="zmdi zmdi-portable-wifi"></i>
+                <i class="material-icons">wifi_tethering</i>
             </span>
             {if="$extended"}
                 <span class="control icon active gray"
                     title="{$c->__('publishbrief.preview')}"
                     onclick="PublishBrief_ajaxPreview(MovimUtils.formToJson('brief'))">
-                    <i class="zmdi zmdi-eye"></i>
+                    <i class="material-icons">visibility</i>
                 </span>
             {else}
                 <span class="control icon active gray"
                     title="{$c->__('publishbrief.post')}"
                     onclick="MovimUtils.reload('{$c->route('publish')}')">
-                    <i class="zmdi zmdi-plus-circle"></i>
+                    <i class="material-icons">add_circle</i>
                 </span>
             {/if}
             <div>

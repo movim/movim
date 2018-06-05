@@ -7,7 +7,7 @@
             </span>
         {else}
             <span class="primary icon bubble color status">
-                <i class="zmdi zmdi-account"></i>
+                <i class="material-icons">person</i>
             </span>
         {/if}
         <p class="line bold"><br /></p>

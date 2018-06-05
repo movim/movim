@@ -8,7 +8,7 @@
         {if="$json->status == 200"}
             <li>
                 <span class="primary icon bubble color green">
-                    <i class="zmdi zmdi-cloud"></i>
+                    <i class="material-icons">cloud</i>
                 </span>
                 {if="!$unregister_status"}
                     <span class="control">
@@ -23,14 +23,14 @@
             {if="$json->pod->activated"}
                 <li>
                     <span class="primary icon bubble color green">
-                        <i class="zmdi zmdi-check"></i>
+                        <i class="material-icons">check</i>
                     </span>
                     <p class="normal">{$c->__('api.validated')}</p>
                 </li>
             {else}
                 <li>
                     <span class="primary icon bubble color gray">
-                        <i class="zmdi zmdi-cloud-off"></i>
+                        <i class="material-icons">cloud_off</i>
                     </span>
                     <p class="normal">{$c->__('api.wait')}</p>
                 </li>
@@ -50,7 +50,7 @@
         {else}
             <li>
                 <span class="primary icon bubble color blue">
-                    <i class="zmdi zmdi-cloud-off"></i>
+                    <i class="material-icons">cloud_off</i>
                 </span>
                 <span class="control">
                     <a class="button oppose" onclick="{$register}">
@@ -63,7 +63,7 @@
     {else}
         <li>
             <span class="primary icon bubble color gray">
-                <i class="zmdi zmdi-cloud-off"></i>
+                <i class="material-icons">cloud_off</i>
             </span>
             <p class="normal">{$c->__('api.error')}</p>
         </li>

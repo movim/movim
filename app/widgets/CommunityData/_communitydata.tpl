@@ -22,14 +22,14 @@
 
         <li>
             <span class="primary icon gray">
-                <i class="zmdi zmdi-accounts"></i>
+                <i class="material-icons">accounts"></i>
             </span>
             <p class="normal">{$c->__('communitydata.sub', $info->occupants)}</p>
         </li>
 
         <li>
             <span class="primary icon gray">
-                <i class="zmdi zmdi-receipt"></i>
+                <i class="material-icons">receipt"></i>
             </span>
             <p class="normal">{$c->__('communitydata.num', $num)}</p>
         </li>
@@ -45,7 +45,7 @@
                 </span>
 
                 <span class="control icon">
-                    <i class="zmdi zmdi-chevron-right"></i>
+                    <i class="material-icons">chevron_right</i>
                 </span>
 
                 <p class="normal line">{$related->name} <span class="second">{$related->server}</span></p>
@@ -54,7 +54,7 @@
 
                     {if="$related->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $related->occupants)}">
-                            {$related->occupants} <i class="zmdi zmdi-accounts"></i>  –
+                            {$related->occupants} <i class="material-icons">people</i>  –
                         </span>
                     {/if}
                     {if="$related->description"}
@@ -69,10 +69,10 @@
         <a href="{$c->route('node', [$info->server, $info->node])}" target="_blank" class="block">
             <li>
                 <span class="primary icon">
-                    <i class="zmdi zmdi-portable-wifi"></i>
+                    <i class="material-icons">wifi_tethering</i>
                 </span>
                 <span class="control icon">
-                    <i class="zmdi zmdi-chevron-right"></i>
+                    <i class="material-icons">chevron_right</i>
                 </span>
                 <p class="normal">{$c->__('communitydata.public')}</p>
             </li>

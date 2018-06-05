@@ -3,7 +3,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon gray">
-                <i class="zmdi zmdi-edit"></i>
+                <i class="material-icons">edit</i>
             </span>
             {if="$contact"}
             <span class="control icon active">
@@ -12,7 +12,7 @@
                     target="_blank"
                     title="Atom"
                 >
-                    <i class="zmdi zmdi-rss"></i>
+                    <i class="material-icons">rss_feed</i>
                 </a>
             </span>
             <p>
@@ -35,11 +35,11 @@
         <li>
             {if="$c->getUser()->isLogged()"}
             <span class="primary icon active gray" onclick="history.back()">
-                <i class="zmdi zmdi-arrow-back"></i>
+                <i class="material-icons">arrow_back</i>
             </span>
             {else}
             <span class="primary icon gray">
-                <i class="zmdi zmdi-tag"></i>
+                <i class="material-icons">category</i>
             </span>
             {/if}
             <p>
@@ -53,7 +53,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon gray">
-                <i class="zmdi zmdi-pages"></i>
+                <i class="material-icons">group_work</i>
             </span>
             <span class="control icon active">
                 <a
@@ -61,7 +61,7 @@
                     target="_blank"
                     title="Atom"
                 >
-                    <i class="zmdi zmdi-rss"></i>
+                    <i class="material-icons">rss_feed</i>
                 </a>
             </span>
             <p>
@@ -91,7 +91,7 @@
             <ul class="list simple thick">
                 <li>
                     <span class="primary icon gray">
-                        <i class="zmdi zmdi-comment-outline"></i>
+                        <i class="material-icons">comment</i>
                     </span>
                     <p class="normal">{$c->__('blog.empty')}</p>
                 </li>
@@ -107,7 +107,7 @@
             <ul class="list active thick">
                 <a href="{$next}">
                     <li id="history" class="block large">
-                        <span class="primary icon gray"><i class="zmdi zmdi-time-restore"></i></span>
+                        <span class="primary icon gray"><i class="material-icons">history</i></span>
                         <p class="normal line center">{$c->__('post.older')}</p>
                     </li>
                 </a>

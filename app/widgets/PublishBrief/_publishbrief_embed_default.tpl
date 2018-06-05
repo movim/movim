@@ -3,7 +3,7 @@
     title="{$c->__('publishbrief.add_link')}"
     href="#"
     onclick="PublishBrief_ajaxLink()">
-    <i class="zmdi zmdi-link"></i>
+    <i class="material-icons">link</i>
 </a>
 {if="$c->getUser()->hasUpload()"}
 <a
@@ -11,7 +11,7 @@
     href="#"
     title="{$c->__('publishbrief.attach')}"
     onclick="Upload_ajaxRequest()">
-    <i class="zmdi zmdi-attachment-alt"></i>
+    <i class="material-icons">attach_file</i>
 </a>
 {/if}
 

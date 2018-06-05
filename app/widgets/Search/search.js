@@ -30,7 +30,7 @@ var Search = {
         clearTimeout(Search.timer);
 
         if (value !== '') {
-            document.querySelector('#searchbar span.primary i').className = 'zmdi zmdi-rotate-right zmdi-hc-spin';
+            document.querySelector('#searchbar span.primary i').innerText = 'rotate_right';
         }
 
         Search.timer = setTimeout(() => {
@@ -41,7 +41,7 @@ var Search = {
     },
 
     searchClear : function() {
-        document.querySelector('#searchbar span.primary i').className = 'zmdi zmdi-search';
+        document.querySelector('#searchbar span.primary i').innerText = 'search';
     }
 }
 

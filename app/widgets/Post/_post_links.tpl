@@ -5,7 +5,7 @@
             {if="$value->logo"}
                 <img src="{$value->logo}"/>
             {else}
-                <i class="zmdi zmdi-link"></i>
+                <i class="material-icons">link</i>
             {/if}
         </span>
         <p class="normal line">
@@ -28,7 +28,7 @@
 {loop="$post->files"}
     <li>
         <span class="primary icon gray">
-            <span class="zmdi zmdi-attachment-alt"></span>
+            <span class="material-icons">attach_file</span>
         </span>
         <p class="normal line">
             <a

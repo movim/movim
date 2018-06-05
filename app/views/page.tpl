@@ -5,7 +5,7 @@
     <title><?php $this->title(); ?></title>
 
     <meta name="theme-color" content="#1C1D5B" />
-    <meta http-equiv="Content-Security-Policy" content="font-src <?php echo BASE_HOST; ?>; frame-src *.youtube.com; script-src <?php echo BASE_HOST; ?> 'unsafe-inline' 'unsafe-eval'">
+    <!--<meta http-equiv="Content-Security-Policy" content="font-src <?php echo BASE_HOST; ?>; frame-src *.youtube.com; script-src <?php echo BASE_HOST; ?> 'unsafe-inline' 'unsafe-eval'">-->
     <?php $this->meta(); ?>
     <meta name="application-name" content="Movim">
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
@@ -37,12 +37,10 @@
         $this->addCss('color.css');
         $this->addCss('block.css');
         $this->addCss('menu.css');
-        $this->addCss('opensans.css');
         $this->addCss('fonts.css');
         $this->addCss('title.css');
         $this->addCss('typo.css');
         $this->addCss('scrollbar.css');
-        $this->addCss('material-design-iconic-font.min.css');
 
         $this->scripts();
     ?>

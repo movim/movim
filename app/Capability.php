@@ -86,14 +86,14 @@ class Capability extends Model
 
     public function getDeviceIcon()
     {
-        if (in_array($this->type, ['handheld', 'phone'])) return 'zmdi-smartphone';
-        if ($this->type == 'bot') return 'zmdi-memory';
+        if (in_array($this->type, ['handheld', 'phone'])) return 'smartphone';
+        if ($this->type == 'bot') return 'memory';
         if ($this->type == 'web') {
             if ($this->type == 'web') {
-                return 'zmdi-cloud-outline';
+                return 'cloud_queue';
             }
 
-            return 'zmdi-globe-alt';
+            return 'language';
         }
     }
 

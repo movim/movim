@@ -100,7 +100,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon bubble color blue">
-                <i class="zmdi zmdi-info"></i>
+                <i class="material-icons">info</i>
             </span>
             <p>{$c->__('whitelist.info1')}</p>
             <p>{$c->__('whitelist.info2')}</p>
@@ -124,7 +124,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon bubble color blue">
-                <i class="zmdi zmdi-info"></i>
+                <i class="material-icons">info</i>
             </span>
             <p>{$c->__('information.info1')}</p>
             <p>{$c->__('information.info2')}</p>

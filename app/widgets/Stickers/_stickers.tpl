@@ -9,7 +9,7 @@
         {/loop}
         <li class="block large">
             <span class="primary icon gray">
-                <i class="zmdi zmdi-account"></i>
+                <i class="material-icons">person</i>
             </span>
             <p class="line">
                 {if="!empty($info.url)"}

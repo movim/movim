@@ -16,7 +16,7 @@
                     </span>
                 {else}
                     <span class="primary icon bubble color {$value->resource|stringToColor} status {$value->presencekey}">
-                        <i class="zmdi zmdi-account"></i>
+                        <i class="material-icons">people</i>
                     </span>
                 {/if}
                 {if="$value->mucjid != $me"}
@@ -24,12 +24,12 @@
                     Chats_ajaxOpen('{$value->mucjid}');
                     Chat_ajaxGet('{$value->mucjid}');
                     Dialog_ajaxClear();">
-                    <i class="zmdi zmdi zmdi-comment-text-alt"></i>
+                    <i class="material-icons">comment</i>
                 </span>
                 {/if}
                 {if="$value->mucaffiliation =='owner'"}
                     <span class="control icon yellow">
-                        <i class="zmdi zmdi-star"></i>
+                        <i class="material-icons">star</i>
                     </span>
                 {/if}
                 <p class="line normal">
@@ -44,7 +44,7 @@
                     {/if}
                     {if="$value->capability"}
                         <span class="second" title="{$value->capability->name}">
-                            <i class="zmdi {$value->capability->getDeviceIcon()}"></i>
+                            <i class="material-icons">{$value->capability->getDeviceIcon()}</i>
                         </span>
                     {/if}
                 </p>

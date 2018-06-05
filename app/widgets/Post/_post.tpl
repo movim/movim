@@ -4,7 +4,7 @@
         <ul class="list middle">
             <li>
                 <span class="primary icon gray active" onclick="history.back();">
-                    <i class="zmdi zmdi-arrow-back"></i>
+                    <i class="material-icons">arrow_back</i>
                 </span>
 
                 {if="$post->isMine()"}
@@ -12,13 +12,13 @@
                         <span class="control icon active gray"
                               onclick="MovimUtils.redirect('{$c->route('publish', [$post->server, $post->node, $post->nodeid])}')"
                               title="{$c->__('button.edit')}">
-                            <i class="zmdi zmdi-edit"></i>
+                            <i class="material-icons">edit</i>
                         </span>
                     {/if}
                     <span class="control icon active gray"
                           onclick="PostActions_ajaxDelete('{$post->server}', '{$post->node}', '{$post->nodeid}')"
                           title="{$c->__('button.delete')}">
-                        <i class="zmdi zmdi-delete"></i>
+                        <i class="material-icons">delete</i>
                     </span>
                 {/if}
 
@@ -60,14 +60,14 @@
                         {else}
                             <span class="icon primary bubble color {$contact->jid|stringToColor}">
                                 <a href="#" onclick="Post_ajaxGetContact('{$contact->jid}')">
-                                    <i class="zmdi zmdi-account"></i>
+                                    <i class="material-icons">person</i>
                                 </a>
                             </span>
                         {/if}
                     {else}
                         <span class="icon primary bubble color {$post->aid|stringToColor}">
                             <a href="#" onclick="Post_ajaxGetContact('{$post->aid}')">
-                                <i class="zmdi zmdi-account"></i>
+                                <i class="material-icons">person</i>
                             </a>
                         </span>
                     {/if}
@@ -103,7 +103,7 @@
                     href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
                 {/if}
                 >
-                    <i class="zmdi zmdi-chevron-right"></i>
+                    <i class="material-icons">chevron_right</i>
                 </a>
             </span>
             {/if}
@@ -136,7 +136,7 @@
                 {/if}
                 {$post->published|strtotime|prepareDate}
                 {if="$post->published != $post->updated"}
-                    - <i class="zmdi zmdi-edit"></i> {$post->updated|strtotime|prepareDate}
+                    - <i class="material-icons">edit</i> {$post->updated|strtotime|prepareDate}
                 {/if}
             </p>
             {if="$post->isBrief()"}
@@ -156,16 +156,16 @@
                 {$url = $post->contact->getPhoto('s')}
                 {if="$url"}
                     <span class="primary icon bubble" style="background-image: url('{$url}');">
-                        <i class="zmdi zmdi-loop"></i>
+                        <i class="material-icons">loop</i>
                     </span>
                 {else}
                     <span class="primary icon bubble color {$post->contact->jid|stringToColor}">
-                        <i class="zmdi zmdi-loop"></i>
+                        <i class="material-icons">loop</i>
                     </span>
                 {/if}
 
                 <span class="control icon">
-                    <i class="zmdi zmdi-chevron-right"></i>
+                    <i class="material-icons">chevron_right</i>
                 </span>
 
                 <p>{$c->__('post.repost', $post->contact->truename)}</p>
@@ -201,7 +201,7 @@
         {loop="$post->pictures"}
             <li class="block pic">
                 <span class="primary icon gray">
-                    <i class="zmdi zmdi-image"></i>
+                    <i class="material-icons">image</i>
                 </span>
                 <a href="{$value->href}" class="alternate" target="_blank">
                     <img type="{$value->type}" src="{$value->href}"/>
@@ -214,7 +214,7 @@
         <ul class="list active thick">
             <li>
                 <span class="primary icon gray">
-                    <i class="zmdi zmdi-portable-wifi"></i>
+                    <i class="material-icons">wifi_tethering</i>
                 </span>
                 <p class="line normal">
                     {$c->__('post.public_yes')}

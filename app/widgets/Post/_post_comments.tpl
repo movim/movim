@@ -4,7 +4,7 @@
     <ul class="list divided spaced middle">
         <li>
             <span class="primary icon red">
-                <i class="zmdi zmdi-favorite"></i>
+                <i class="material-icons">favorite"></i>
             </span>
             <p>{$post->likes()->count()}</span> {$c->__('button.like')}</p>
             <p class="all">
@@ -40,7 +40,7 @@
             {if="!$public && ($value->isMine() || $post->isMine())"}
                 <span class="control icon gray active"
                       onclick="PostActions_ajaxDelete('{$value->server}', '{$value->node}', '{$value->nodeid}')">
-                    <i class="zmdi zmdi-delete"></i>
+                    <i class="material-icons">delete</i>
                 </span>
             {/if}
             {if="$value->contact"}
@@ -58,10 +58,10 @@
                 {else}
                     <span class="primary icon bubble color {$value->contact->jid|stringToColor} small">
                         {if="$public"}
-                            <i class="zmdi zmdi-account"></i>
+                            <i class="material-icons">person</i>
                         {else}
                             <a href="{$c->route('contact', $value->contact->jid)}">
-                                <i class="zmdi zmdi-account"></i>
+                                <i class="material-icons">person</i>
                             </a>
                         {/if}
                     </span>
@@ -69,10 +69,10 @@
             {else}
                 <span class="primary icon bubble color {$value->aid|stringToColor} small">
                     {if="$public"}
-                        <i class="zmdi zmdi-account"></i>
+                        <i class="material-icons">person</i>
                     {else}
                         <a href="{$c->route('contact', $value->aid)}">
-                            <i class="zmdi zmdi-account"></i>
+                            <i class="material-icons">person</i>
                         </a>
                     {/if}
                 </span>
@@ -103,10 +103,10 @@
     {if="!$public"}
     <li class="hide" id="comment_add">
         <span class="primary icon small gray">
-            <i class="zmdi zmdi-comment"></i>
+            <i class="material-icons">comment</i>
         </span>
         <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->server}', '{$post->node}', '{$post->nodeid}')">
-            <i class="zmdi zmdi-mail-send"></i>
+            <i class="material-icons">send</i>
         </span>
         <form name="comment">
             <div>
@@ -126,21 +126,21 @@
                 <button class="button red flat"
                     id="like"
                     onclick="this.classList.add('disabled'); PostActions_ajaxDeleteConfirm('{$liked[0]}', '{$liked[1]}', '{$liked[2]}')">
-                        <i class="zmdi zmdi-favorite-outline"></i>
+                    <i class="material-icons">favorite_border</i>
                 </button>
             {else}
                 <button class="button red flat"
                     id="like"
                     onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
-                        <i class="zmdi zmdi-favorite"></i> {$c->__('button.like')}
+                    <i class="material-icons">favorite</i> {$c->__('button.like')}
                 </button>
             {/if}
             <button class="button flat gray" onclick="Post.comment()">
-                <i class="zmdi zmdi-comment"></i> {$c->__('post.comment_add')}
+                <i class="material-icons">comment</i> {$c->__('post.comment_add')}
             </button>
             {if="$c->getUser()->hasPubsub()"}
             <a class="button flat gray" onclick="Post.share()">
-                <i class="zmdi zmdi-share"></i> {$c->__('button.share')}
+                <i class="material-icons">share</i> {$c->__('button.share')}
             </a>
             {/if}
         </p>

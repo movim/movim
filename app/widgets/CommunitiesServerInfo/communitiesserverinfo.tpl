@@ -10,7 +10,7 @@
                 {if="$parsed['scheme'] == 'xmpp'"}
                     {if="isset($parsed['query']) && $parsed['query'] == 'join'"}
                     <span class="primary icon gray">
-                        <i class="zmdi zmdi-comments"></i>
+                        <i class="material-icons">chat</i>
                     </span>
                     <p class="normal">
                         <a href="{$c->route('chat', [$parsed['path'], 'room'])}">
@@ -19,7 +19,7 @@
                     </p>
                     {else}
                     <span class="primary icon gray">
-                        <i class="zmdi zmdi-comment"></i>
+                        <i class="material-icons">comment</i>
                     </span>
                     <p class="normal">
                         <a href="{$c->route('chat', $parsed['path'])}">
@@ -29,7 +29,7 @@
                     {/if}
                 {else}
                     <span class="primary icon gray">
-                        <i class="zmdi zmdi-email"></i>
+                        <i class="material-icons">email</i>
                     </span>
                     <p class="normal">
                         <a href="{$value}" target="_blank" rel="noopener noreferrer">

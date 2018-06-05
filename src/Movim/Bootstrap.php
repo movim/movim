@@ -332,8 +332,8 @@ class Bootstrap
             if (ob_get_contents()) ob_clean();
 
             echo "Oops... something went wrong.\n";
-            echo colorize($last_error['message'], 'red') . "\n";
-            echo colorize('in ' . $last_error['file'] . ' (line ' . $last_error['line'] . ")\n", 'yellow');
+            echo $last_error['message'] . "\n";
+            echo 'in ' . $last_error['file'] . ' (line ' . $last_error['line'] . ")\n";
             if (ob_get_contents()) ob_end_clean();
         }
     }

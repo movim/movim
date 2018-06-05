@@ -11,9 +11,9 @@
                 {/if}>
 
                 {if="!$anon"}
-                    <i class="zmdi zmdi-arrow-back"></i>
+                    <i class="material-icons">arrow_back</i>
                 {else}
-                    <i class="zmdi zmdi-comment-text-alt"></i>
+                    <i class="material-icons">comments</i>
                 {/if}
             </span>
 
@@ -33,14 +33,14 @@
             {/if}
 
             <span class="control icon show_context_menu active {if="!$conference->connected"}disabled{/if}">
-                <i class="zmdi zmdi-more-vert"></i>
+                <i class="material-icons">more_vert</i>
             </span>
 
             <span
                 title="{$c->__('button.close')}"
                 class="control icon active"
                 onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel(); {if="$anon"}Presence_ajaxLogout(){/if}">
-                <i class="zmdi zmdi-close"></i>
+                <i class="material-icons">close</i>
             </span>
 
             {if="$conference->info && $conference->info->related"}
@@ -49,7 +49,7 @@
                     class="control icon active"
                     title="{$c->__('page.communities')} – {$related->name}"
                     onclick="MovimUtils.redirect('{$c->route('community', [$related->server, $related->node])}')">
-                    <i class="zmdi zmdi-group-work"></i>
+                    <i class="material-icons">group_work</i>
                 </span>
             {/if}
 
@@ -115,7 +115,7 @@
             Notification.current('chat');
             Chat_ajaxGet();"
             id="back" class="primary icon active">
-                <i class="zmdi zmdi-arrow-back"></i>
+                <i class="material-icons">arrow_back</i>
             </span>
 
             {$url = $contact->getPhoto('s')}
@@ -136,14 +136,14 @@
             {/if}
 
             <span class="control icon show_context_menu active">
-                <i class="zmdi zmdi-more-vert"></i>
+                <i class="material-icons">more_vert</i>
             </span>
 
             <span
                 title="{$c->__('button.close')}"
                 class="control icon active"
                 onclick="Chats_ajaxClose('{$jid|echapJS}'); MovimTpl.hidePanel();">
-                <i class="zmdi zmdi-close"></i>
+                <i class="material-icons">close</i>
             </span>
             <p class="line">
                 {if="$roster"}
@@ -205,13 +205,13 @@
                 <span class="upload control icon"
                     title="{$c->__('publishbrief.attach')}"
                     onclick="Upload_ajaxRequest()">
-                    <i class="zmdi zmdi-attachment-alt"></i>
+                    <i class="material-icons">attach_file</i>
                 </span>
             {/if}
             <span title="{$c->__('button.submit')}"
                 class="send control icon gray {if="$c->getUser()->hasUpload()"}hide{else}show{/if}"
                   onclick="Chat.sendMessage()">
-                <i class="zmdi zmdi-mail-send"></i>
+                <i class="material-icons">send</i>
             </span>
             <form>
                 <div>

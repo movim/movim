@@ -4,9 +4,9 @@
             {if="$conferences->isNotEmpty()"}
             <span class="control icon active gray" onclick="Rooms_ajaxDisplay({if="$edit"}false{else}true{/if});">
                 {if="$edit"}
-                    <i class="zmdi zmdi-check"></i>
+                    <i class="material-icons">check</i>
                 {else}
-                    <i class="zmdi zmdi-settings"></i>
+                    <i class="material-icons">settings</i>
                 {/if}
             </span>
             {/if}
@@ -41,10 +41,10 @@
                 {$info = $value->info}
                 {if="$edit"}
                     <span class="control icon active gray" onclick="Rooms_ajaxRemoveConfirm('{$value->conference}');">
-                        <i class="zmdi zmdi-delete"></i>
+                        <i class="material-icons">delete</i>
                     </span>
                     <span class="control icon active gray" onclick="Rooms_ajaxAdd('{$value->conference}');">
-                        <i class="zmdi zmdi-edit"></i>
+                        <i class="material-icons">edit</i>
                     </span>
                 {/if}
                 <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
@@ -53,11 +53,11 @@
                     {if="$connected"}
                         {$count = $value->presences()->count()}
                         <span title="{$c->__('communitydata.sub', $count)}">
-                            {$count} <i class="zmdi zmdi-accounts"></i>  –
+                            {$count} <i class="material-icons">people</i>  –
                         </span>
                     {elseif="isset($info) && $info->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $info->occupants)}">
-                            {$info->occupants} <i class="zmdi zmdi-accounts"></i>  –
+                            {$info->occupants} <i class="material-icons">people</i>  –
                         </span>
                     {/if}
                     {if="isset($info) && $info->description"}
@@ -73,7 +73,7 @@
     <ul class="list thick spaced">
         <li>
             <span class="primary icon green">
-                <i class="zmdi zmdi-accounts-outline"></i>
+                <i class="material-icons">people_outline</i>
             </span>
             <p>{$c->__('rooms.empty_text1')}</p>
             <p>{$c->__('rooms.empty_text2')}</p>

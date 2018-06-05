@@ -6,7 +6,7 @@
         {if="$url"}
             <li>
                 <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id}')">
-                    <i class="zmdi zmdi-more"></i>
+                    <i class="material-icons">more_horiz</i>
                 </span>
                 <p class="center">
                     <img src="{$url}">
@@ -29,7 +29,7 @@
         </li>
         <!--<li>
             <span class="primary icon gray">
-                <i class="zmdi zmdi-accounts"></i>
+                <i class="material-icons">accounts"></i>
             </span>
             <p class="normal">{$c->__('communitydata.sub', 0)}</p>
         </li>-->
@@ -38,7 +38,7 @@
     {if="$contact->url != null"}
         <ul class="list thin">
             <li>
-                <span class="primary icon gray"><i class="zmdi zmdi-link"></i></span>
+                <span class="primary icon gray"><i class="material-icons">link</i></span>
                 <p class="normal line">
                     {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
                         <a href="{$contact->url}" target="_blank">{$contact->url}</a>
@@ -53,7 +53,7 @@
     {if="$contact->adrlocality != null || $contact->adrcountry != null"}
         <ul class="list middle">
             <li>
-                <span class="primary icon gray"><i class="zmdi zmdi-pin"></i></span>
+                <span class="primary icon gray"><i class="material-icons">location_city</i></span>
                 {if="$contact->adrlocality != null"}
                     <p class="normal">{$contact->adrlocality}</p>
                 {/if}
@@ -72,14 +72,14 @@
             {if="$roster && $roster->presence && $roster->presence->capability && $roster->presence->capability->isJingle()"}
                 <li onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
                     <span class="primary icon green">
-                        <i class="zmdi zmdi-phone"></i>
+                        <i class="material-icons">phone</i>
                     </span>
                     <p class="normal">{$c->__('button.call')}</p>
                 </li>
             {/if}
             <li onclick="ContactHeader_ajaxChat('{$contact->jid|echapJS}')">
                 <span class="primary icon gray">
-                    <i class="zmdi zmdi-comment-text-alt"></i>
+                    <i class="material-icons">comment</i>
                 </span>
                 <p class="normal">
                     {if="isset($message)"}
@@ -91,7 +91,7 @@
                 </p>
                 {if="isset($message)"}
                     {if="preg_match('#^\?OTR#', $message->body)"}
-                        <p><i class="zmdi zmdi-lock"></i> {$c->__('message.encrypted')}</p>
+                        <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
                     {elseif="stripTags($message->body) != ''"}
                         <p class="line">{$message->body|stripTags}</p>
                     {/if}
@@ -101,10 +101,10 @@
         <a href="{$c->route('blog', $contact->jid)}" target="_blank" class="block large simple">
             <li>
                 <span class="primary icon">
-                    <i class="zmdi zmdi-portable-wifi"></i>
+                    <i class="material-icons">wifi_tethering</i>
                 </span>
                 <span class="control icon">
-                    <i class="zmdi zmdi-chevron-right"></i>
+                    <i class="material-icons">chevron_right</i>
                 </span>
                 <p></p>
                 <p class="normal">{$c->__('blog.visit')}</p>
@@ -114,7 +114,7 @@
             <li>
                 {if="$roster->subscription == 'to'"}
                     <span class="primary icon gray">
-                        <i class="zmdi zmdi-arrow-in"></i>
+                        <i class="material-icons">arrow_upward</i>
                     </span>
                     <p>{$c->__('subscription.to')}</p>
                     <p>{$c->__('subscription.to_text')}</p>
@@ -126,7 +126,7 @@
                 {/if}
                 {if="$roster->subscription == 'from'"}
                     <span class="primary icon gray">
-                        <i class="zmdi zmdi-arrow-out"></i>
+                        <i class="material-icons">arrow_downward</i>
                     </span>
                     <p>{$c->__('subscription.from')}</p>
                     <p>{$c->__('subscription.from_text')}</p>
@@ -138,7 +138,7 @@
                 {/if}
                 {if="$roster->subscription == 'none'"}
                     <span class="primary icon gray">
-                        <i class="zmdi zmdi-block"></i>
+                        <i class="material-icons">block</i>
                     </span>
 
                     <p>{$c->__('subscription.nil')}</p>
@@ -167,7 +167,7 @@
                 <li title="{$value->server} - {$value->node}">
                     <span class="primary icon bubble color {$value->node|stringToColor}">{$value->node|firstLetterCapitalize}</span>
                     <span class="control icon gray">
-                        <i class="zmdi zmdi-chevron-right"></i>
+                        <i class="material-icons">chevron_right</i>
                     </span>
                     <p class="line normal">
                         {if="$value->name"}

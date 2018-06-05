@@ -1,6 +1,6 @@
 <li class="block large">
     <span class="control active icon gray" onclick="PublishBrief.clearEmbed()">
-        <i class="zmdi zmdi-close"></i>
+        <i class="material-icons">close</i>
     </span>
     {if="!empty($embed->images)"}
         <span class="primary icon thumb active"
@@ -10,18 +10,18 @@
             style="background-image: url({$embed->images[$imagenumber]['url']})"
             title="{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']} - {$embed->images[$imagenumber]['size']|sizeToCleanSize}">
             {if="count($embed->images) > 1"}
-                <i class="zmdi zmdi-slideshow"></i>
+                <i class="material-icons">slideshow</i>
             {/if}
         </span>
     {else}
         <span class="primary icon bubble gray">
         {if="$embed->type == 'photo'"}
-            <i class="zmdi zmdi-image"></i>
+            <i class="material-icons">image</i>
         {else}
             {if="$embed->providerIcon"}
                 <img src="{$embed->providerIcon}"/>
             {else}
-                <i class="zmdi zmdi-link"></i>
+                <i class="material-icons">link</i>
             {/if}
         {/if}
         </span>

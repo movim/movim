@@ -3,13 +3,13 @@
         <ul class="list">
             <li>
                 <span id="toggle_fullscreen" class="control icon color transparent active" onclick="Visio.toggleFullScreen()">
-                    <i class="zmdi zmdi-fullscreen"></i>
+                    <i class="material-icons">fullscreen</i>
                 </span>
                 <span id="toggle_audio" class="control icon color transparent active" onclick="Visio.toggleAudio()">
-                    <i class="zmdi zmdi-mic"></i>
+                    <i class="material-icons">mic</i>
                 </span>
                 <span id="toggle_video" class="control icon color transparent active" onclick="Visio.toggleVideo()">
-                    <i class="zmdi zmdi-videocam"></i>
+                    <i class="material-icons">videocam</i>
                 </span>
             </li>
         </ul>
@@ -36,7 +36,7 @@
     <canvas class="level"></canvas>
     <div class="controls">
         <a id="main" class="button action color gray">
-            <i class="zmdi zmdi-phone"></i>
+            <i class="material-icons">phone</i>
         </a>
     </div>
 </div>

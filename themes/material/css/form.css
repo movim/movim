@@ -430,16 +430,6 @@ header.big ~ .button.action {
     background-color: white;
 }
 
-.button i {
-    margin: 0 0.5rem;
-}
-
-.button.icon i {
-    position: relative;
-    font-size: 2.8rem;
-    top: 0.3rem;
-}
-
 /* The textarea hidden div */
 
 #hiddendiv {

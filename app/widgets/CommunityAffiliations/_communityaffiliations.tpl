@@ -2,25 +2,25 @@
     <ul class="list active">
         <li onclick="CommunityConfig_ajaxGetConfig('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
-                <i class="zmdi zmdi-settings"></i>
+                <i class="material-icons">settings</i>
             </span>
             <p class="normal">{$c->__('communityaffiliation.configuration')}</p>
         </li>
         <li onclick="CommunityAffiliations_ajaxGetSubscriptions('{$info->server|echapJS}', '{$info->node|echapJS}', true)">
             <span class="primary icon gray">
-                <i class="zmdi zmdi-accounts-list"></i>
+                <i class="material-icons">contacts</i>
             </span>
             <p class="normal">{$c->__('communityaffiliation.subscriptions')}</p>
         </li>
         <li onclick="CommunityAffiliations_ajaxAffiliations('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
-                <i class="zmdi zmdi-account-box-o"></i>
+                <i class="material-icons">account_circle</i>
             </span>
             <p class="normal">{$c->__('communityaffiliation.roles')}</p>
         </li>
         <li onclick="CommunityAffiliations_ajaxDelete('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
-                <i class="zmdi zmdi-delete"></i>
+                <i class="material-icons">delete</i>
             </span>
             <p class="normal">{$c->__('button.delete')}</p>
         </li>

@@ -32,11 +32,11 @@
     {if="$contact->subscription != 'both'"}
     <span class="control icon gray">
         {if="$contact->subscription == 'to'"}
-            <i class="zmdi zmdi-arrow-in"></i>
+            <i class="material-icons">arrow_upward</i>
         {elseif="$contact->subscription == 'from'"}
-            <i class="zmdi zmdi-arrow-out"></i>
+            <i class="material-icons">arrow_downward</i>
         {else}
-            <i class="zmdi zmdi-block"></i>
+            <i class="material-icons">block</i>
         {/if}
     </span>
     {/if}
@@ -44,7 +44,7 @@
         {$contact->truename}
         {if="$contact->presence && $contact->presence->capability"}
             <span class="second" title="{$contact->presence->capability->name}">
-                <i class="zmdi {$contact->presence->capability->getDeviceIcon()}"></i>
+                <i class="material-icons">{$contact->presence->capability->getDeviceIcon()}</i>
             </span>
         {/if}
     </p>

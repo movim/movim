@@ -7,10 +7,10 @@
         {loop="$gateway"}
         <li onclick="Account_ajaxGetRegistration('{$value->node}')">
             <span class="primary icon">
-                <i class="zmdi zmdi-swap"></i>
+                <i class="material-icons">swap_horiz</i>
             </span>
             <span class="control icon gray">
-                <i class="zmdi zmdi-chevron-right"></i>
+                <i class="material-icons">chevron_right</i>
             </span>
             <p>{$value->name}</p>
             <p>{$value->node}</p>
@@ -24,7 +24,7 @@
         </li>
         <li>
             <span class="primary icon gray">
-                <i class="zmdi zmdi-key"></i>
+                <i class="material-icons">vpn_key</i>
             </span>
             <form name="password" class="">
                 <div>
@@ -47,24 +47,24 @@
         </li>
         <li onclick="Account_ajaxClearAccount()">
             <span class="primary icon orange">
-                <i class="zmdi zmdi-eject"></i>
+                <i class="material-icons">eject</i>
             </span>
             <span class="control icon gray">
-                <i class="zmdi zmdi-chevron-right"></i>
+                <i class="material-icons">chevron_right</i>
             </span>
-            <p class="normal">{$c->__('account.clear')}</p>
+            <p class="normal line">{$c->__('account.clear')}</p>
         </li>
         <li class="subheader">
             <p>{$c->__('account.delete')}</p>
         </li>
         <li onclick="Account_ajaxRemoveAccount()">
             <span class="primary icon red">
-                <i class="zmdi zmdi-delete"></i>
+                <i class="material-icons">delete</i>
             </span>
             <span class="control icon gray">
-                <i class="zmdi zmdi-chevron-right"></i>
+                <i class="material-icons">chevron_right</i>
             </span>
-            <p class="normal">{$c->__('account.delete')}</p>
+            <p class="normal line">{$c->__('account.delete')}</p>
         </li>
     </ul>
 </div>

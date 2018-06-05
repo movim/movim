@@ -3,7 +3,7 @@
     <ul class="list thick">
         <li>
             <span class="primary icon bubble color green">
-                <i class="zmdi zmdi-upload"></i>
+                <i class="material-icons">cloud_upload</i>
             </span>
             <p>{$c->__('upload.choose')}</p>
             <p>
@@ -13,7 +13,7 @@
         <img class="preview_picture" />
         <li>
             <span class="primary icon gray">
-                <i class="zmdi zmdi-photo-size-select-small"></i>
+                <i class="material-icons">photo_size_select_large</i>
             </span>
             <p></p>
             <p class="normal">

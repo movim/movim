@@ -246,36 +246,38 @@ var Visio = {
 
             if (length == 0) {
                 button.classList.add('gray');
-                i.className = 'zmdi zmdi-more';
+                i.innerText = 'more_horiz';
             } else if (Visio.pc.iceConnectionState == 'new') {
                 if (Visio.pc.iceGatheringState == 'gathering'
                 || Visio.pc.iceGatheringState == 'complete') {
                     button.classList.add('orange');
-                    i.className = 'zmdi zmdi-phone-ring ring';
+                    i.className = 'material-icons ring';
+                    i.innerText = 'call';
                     state.innerHTML = Visio.states.ringing;
 
                     button.onclick = function() { Visio.goodbye(); };
                 } else {
                     button.classList.add('green');
-                    i.className = 'zmdi zmdi-phone';
+                    i.innerText = 'call';
 
                     button.onclick = function() { Visio.hello(); };
                 }
             } else if (Visio.pc.iceConnectionState == 'checking') {
                 button.classList.add('blue');
-                i.className = 'zmdi zmdi-more disabled';
+                i.className = 'material-icons disabled';
+                i.innerText = 'more_horiz';
                 state.innerHTML = Visio.states.connecting;
 
             } else if (Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');
-                i.className = 'zmdi zmdi-phone-end';
+                i.innerText = 'call_end';
 
                 button.onclick = function() { MovimUtils.reloadThis(); };
             } else if (Visio.pc.iceConnectionState == 'connected'
                    || Visio.pc.iceConnectionState == 'complete'
                    || Visio.pc.iceConnectionState == 'failed') {
                 button.classList.add('red');
-                i.className = 'zmdi zmdi-phone-end';
+                i.innerText = 'call_end';
 
                 if (Visio.pc.iceConnectionState == 'failed') {
                     state.innerHTML = Visio.states.failed;
@@ -307,7 +309,7 @@ var Visio = {
                 document.body.webkitRequestFullscreen();
             }
 
-            button.className = 'zmdi zmdi-fullscreen-exit';
+            button.innerText = 'fullscreen_exit';
         } else {
             if (document.exitFullscreen) {
                 document.exitFullscreen();
@@ -319,7 +321,7 @@ var Visio = {
                 document.webkitCancelFullScreen();
             }
 
-            button.className = 'zmdi zmdi-fullscreen';
+            button.innerText = 'fullscreen';
         }
     },
 
@@ -328,10 +330,10 @@ var Visio = {
 
         if (Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled) {
             Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled = 0;
-            button.className = 'zmdi zmdi-mic-off';
+            button.innerText = 'mic_off';
         } else {
             Visio.pc.getLocalStreams()[0].getAudioTracks()[0].enabled = 1;
-            button.className = 'zmdi zmdi-mic';
+            button.innerText = 'mic';
         }
     },
 
@@ -340,10 +342,10 @@ var Visio = {
 
         if (Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled) {
             Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 0;
-            button.className = 'zmdi zmdi-videocam-off';
+            button.innerText = 'videocam-off';
         } else {
             Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 1;
-            button.className = 'zmdi zmdi-videocam';
+            button.innerText = 'videocam';
         }
     },
 }

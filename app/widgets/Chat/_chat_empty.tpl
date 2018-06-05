@@ -23,7 +23,7 @@
                     {if="$value->presence"}
                         status {$value->presence->presencekey}
                     {/if}">
-                    <i class="zmdi zmdi-account"></i>
+                    <i class="material-icons">people</i>
                 </span>
             {/if}
             <p class="line">{$value->truename}</p>
@@ -50,7 +50,7 @@
             <p class="line" title="{$value->description}">
             {if="$value->occupants > 0"}
                 <span title="{$c->__('communitydata.sub', $value->occupants)}">
-                    {$value->occupants} <i class="zmdi zmdi-accounts"></i>
+                    {$value->occupants} <i class="material-icons">people></i>
                 </span>
             {/if}
             {if="$value->occupants > 0 && !empty($value->description)"}  – {/if}

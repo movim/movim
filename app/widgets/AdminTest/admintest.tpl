@@ -1,17 +1,15 @@
 <div id="admincomp" class="tabelem" title="{$c->__('admin.compatibility')}">
     <div>
         <figure>
-            <div id="webserver">
-
-            </div>
-            <div id="movim-daemon" class="link vertical disabled"><i class="zmdi zmdi-settings"></i></div>
-            <div id="movim-browser" class="link horizontal success"><i class="zmdi zmdi-open-in-browser"></i></div>
-            <div id="browser-daemon" class="link horizontal error"><i class="zmdi zmdi-code-setting"></i></div>
-            <div id="xmpp-daemon" class="link horizontal"><i class="zmdi zmdi-import-export"></i></div>
+            <div id="webserver"></div>
+            <div id="movim-daemon" class="link vertical disabled"><i class="material-icons">settings</i></div>
+            <div id="movim-browser" class="link horizontal success"><i class="material-icons">open_in_browser</i></div>
+            <div id="browser-daemon" class="link horizontal error"><i class="material-icons">code</i></div>
+            <div id="xmpp-daemon" class="link horizontal"><i class="material-icons">import_export</i></div>
             <div id="movim-database" class="link vertical {if="$dbconnected"}success{else}error{/if}">
-                <i class="zmdi zmdi-swap"></i>
+                <i class="material-icons">swap_horiz</i>
             </div>
-            <div id="movim-api" class="link horizontal disabled"><i class="zmdi zmdi-cloud"></i></div>
+            <div id="movim-api" class="link horizontal disabled"><i class="material-icons">cloud</i></div>
             <div id="browser_block">
                 {$c->__('schema.browser')}
             </div>
@@ -39,7 +37,7 @@
         {else}
             <li>
                 <span class="primary icon bubble color red">
-                    <i class="zmdi zmdi-data-usage"></i>
+                    <i class="material-icons">data_usage</i>
                 </span>
                 <p>Database connection error</p>
                 <p>Check if database configuration exist in the <code>config/</code> folder and fill it with proper values</p>
@@ -48,7 +46,7 @@
 
         <li id="websocket_error">
             <span class="primary icon bubble color red">
-                <i class="zmdi zmdi-code-setting"></i>
+                <i class="material-icons">code</i>
             </span>
             <p class="normal line">
                 {$c->__('compatibility.websocket')}
@@ -58,7 +56,7 @@
         {if="!$c->testDir(CACHE_PATH)"}
             <li>
                 <span class="primary icon color bubble red">
-                    <i class="zmdi zmdi-folder"></i>
+                    <i class="material-icons">folder</i>
                 </span>
                 <p class="normal line">{$c->__('compatibility.rights', 'cache')}</p>
             </li>
@@ -68,7 +66,7 @@
         {if="!$c->testDir(LOG_PATH)"}
             <li>
                 <span class="primary icon color bubble red">
-                    <i class="zmdi zmdi-folder"></i>
+                    <i class="material-icons">folder</i>
                 </span>
                 <p class="normal line">{$c->__('compatibility.rights', 'log')}</p>
             </li>

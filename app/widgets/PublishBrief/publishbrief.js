@@ -4,15 +4,15 @@ var PublishBrief = {
         var checked = document.querySelector('#publishbrief form #open');
 
         var button = document.querySelector('#publishbrief span.privacy i');
-        button.classList.remove('zmdi-lock-outline', 'zmdi-portable-wifi');
+        button.innerText = '';
 
         // Public
         if (checked.checked) {
             checked.checked = false;
-            button.classList.add('zmdi-lock-outline');
+            button.innerText = 'lock';
         } else {
             checked.checked = true;
-            button.classList.add('zmdi-portable-wifi');
+            button.innerText = 'wifi_tethering';
         }
 
         PublishBrief_ajaxDisplayPrivacy(checked.checked);

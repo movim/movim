@@ -26,14 +26,14 @@
                             status {$value->presence->presencekey}
                         {/if}"
                     >
-                        <i class="zmdi zmdi-account"></i>
+                        <i class="material-icons">person</i>
                     </span>
                 {/if}
                 <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
-                    <i class="zmdi zmdi-account"></i>
+                    <i class="material-icons">person</i>
                 </span>
                 <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
-                    <i class="zmdi zmdi-comment-text-alt"></i>
+                    <i class="material-icons">comment</i>
                 </span>
                 <p class="normal line">{$value->truename}</p>
                 {if="$value->group"}
@@ -51,7 +51,7 @@
     <ul class="list">
         <li>
             <span class="primary icon gray">
-                <i class="zmdi zmdi-search"></i>
+                <i class="material-icons">search</i>
             </span>
             <form name="search" onsubmit="return false;">
                 <div>

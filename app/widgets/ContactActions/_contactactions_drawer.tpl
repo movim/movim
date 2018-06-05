@@ -19,21 +19,21 @@
                     <span class="primary icon bubble color {$contact->id|stringToColor}
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
-                        <i class="zmdi zmdi-account"></i>
+                        <i class="material-icons">person</i>
                     </span>
                 {/if}
                 <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
-                    <i class="zmdi zmdi-account"></i>
+                    <i class="material-icons">person</i>
                 </span>
                 {if="!$contact->isMe()"}
                     <span class="control icon active" onclick="ContactActions_ajaxChat('{$contact->id}')">
-                        <i class="zmdi zmdi-comment-text-alt"></i>
+                        <i class="material-icons">comment</i>
                     </span>
                 {/if}
                 {if="$roster && $roster->presence && $roster->presence->capability && $roster->presence->capability->isJingle()"}
                     <span title="{$c->__('button.call')}" class="control icon active on_desktop"
                           onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
-                        <i class="zmdi zmdi-phone"></i>
+                        <i class="material-icons">phone</i>
                     </span>
                 {/if}
                 <p class="line">{$contact->truename}</p>
@@ -46,7 +46,8 @@
         {if="$roster && $roster->presence && $roster->presence->capability"}
             <li class="block">
                 <span class="primary icon gray">
-                    <i class="zmdi {$roster->presence->capability->getDeviceIcon()}">
+                    <i class="material-icons">
+                        {$roster->presence->capability->getDeviceIcon()}
                     </i>
                 </span>
                 <p class="normal line">
@@ -78,7 +79,7 @@
 
         {if="$contact->url != null"}
         <li>
-            <span class="primary icon gray"><i class="zmdi zmdi-link"></i></span>
+            <span class="primary icon gray"><i class="material-icons">link</i></span>
             <p>{$c->__('general.website')}</p>
             <p>
                 {if="filter_var($contact->url, FILTER_VALIDATE_URL)"}
@@ -92,7 +93,7 @@
 
         {if="$contact->email != null"}
         <li>
-            <span class="primary icon gray"><i class="zmdi zmdi-email"></i></span>
+            <span class="primary icon gray"><i class="material-icons">email</i></span>
             <p>{$c->__('general.email')}</p>
             <p><a href="mailto:{$contact->email}">{$contact->email}</a></p>
         </li>
@@ -100,7 +101,7 @@
 
         {if="$contact->description != null && trim($contact->description) != ''"}
         <li>
-            <span class="primary icon gray"><i class="zmdi zmdi-format-align-justify"></i></span>
+            <span class="primary icon gray"><i class="material-icons">subject</i></span>
             <p>{$c->__('general.about')}</p>
             <p class="all">{$contact->description|nl2br}</p>
         </li>
@@ -108,7 +109,7 @@
 
         {if="strtotime($contact->date) != 0"}
         <li class="block">
-            <span class="primary icon gray"><i class="zmdi zmdi-cake"></i></span>
+            <span class="primary icon gray"><i class="material-icons">cake</i></span>
             <p>{$c->__('general.date_of_birth')}</p>
             <p>{$contact->date|strtotime|prepareDate:false}</p>
         </li>

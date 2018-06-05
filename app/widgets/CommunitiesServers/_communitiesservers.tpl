@@ -17,7 +17,7 @@
     {/loop}
     <li class="block large">
         <span class="primary icon">
-            <i class="zmdi zmdi-search-for"></i>
+            <i class="material-icons">search</i>
         </span>
         <form>
             <div>

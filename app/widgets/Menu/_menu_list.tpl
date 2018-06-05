@@ -9,7 +9,7 @@
                     {$c->__('page.communities')}
                 </a>
                 <a href="#communities" class="on_mobile" onclick="Menu_ajaxGetNews()" title="{$c->__('page.news')}">
-                    <i class="zmdi zmdi-group-work"></i>
+                    <i class="material-icons">group_work</i>
                 </a>
             </li>
             <li {if="$type == 'feed'"}class="active"{/if}>
@@ -17,7 +17,7 @@
                     {$c->__('page.contacts')}
                 </a>
                 <a href="#contacts" class="on_mobile" onclick="Menu_ajaxGetFeed()" title="{$c->__('page.feed')}">
-                    <i class="zmdi zmdi-accounts"></i>
+                    <i class="material-icons">people</i>
                 </a>
             </li>
         </ul>
@@ -29,10 +29,10 @@
         <a href="{$c->route('contact', $jid)}" class="block">
             <li>
                 <span class="primary icon">
-                    <i class="zmdi zmdi-account"></i>
+                    <i class="material-icons">person</i>
                 </span>
                 <span class="control icon">
-                    <i class="zmdi zmdi-chevron-right"></i>
+                    <i class="material-icons">chevron_right</i>
                 </span>
                 <p class="normal line">{$c->__('privacy.my_profile')}</p>
             </li>
@@ -40,10 +40,10 @@
         <a href="{$c->route('blog', $jid)}" target="_blank" class="block">
             <li>
                 <span class="primary icon">
-                    <i class="zmdi zmdi-portable-wifi"></i>
+                    <i class="material-icons">wifi_tethering</i>
                 </span>
                 <span class="control icon">
-                    <i class="zmdi zmdi-chevron-right"></i>
+                    <i class="material-icons">chevron_right</i>
                 </span>
                 <p class="normal line">{$c->__('hello.blog_title')}</p>
             </li>
@@ -66,9 +66,9 @@
         <ul class="list active thick">
             <li id="history" class="large" onclick="{$history} this.parentNode.removeChild(this);">
                 <span class="icon primary gray">
-                    <i class="zmdi zmdi-time-restore"></i>
+                    <i class="material-icons">history</i>
                 </span>
-                <p class="normal center">{$c->__('post.older')}</p>
+                <p class="normal center line">{$c->__('post.older')}</p>
             </li>
         </ul>
     {/if}

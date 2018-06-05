@@ -63,7 +63,7 @@
 <div>
     {if="$config"}
         <button class="button flat" onclick="CommunityConfig_ajaxGetConfig('{$server|echapJS}', '{$node|echapJS}', true)">
-            <i class="zmdi zmdi-more-vert"></i>
+            <i class="material-icons">more_vert</i>
         </button>
     {/if}
     <button onclick="Dialog_ajaxClear()" class="button flat">

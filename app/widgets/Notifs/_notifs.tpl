@@ -14,11 +14,11 @@
                     <li>
                         {if="$value->isLike()"}
                             <span class="primary icon red small">
-                                <i class="zmdi zmdi-favorite"></i>
+                                <i class="material-icons">favorite</i>
                             </span>
                         {else}
                             <span class="primary small icon gray">
-                                <i class="zmdi zmdi-comment"></i>
+                                <i class="material-icons">comment</i>
                             </span>
                         {/if}
                         <p class="line">
@@ -38,14 +38,14 @@
         {/loop}
         <li onclick="Notifs_ajaxClear()">
             <span class="primary icon gray small">
-                <i class="zmdi zmdi-format-clear-all"></i>
+                <i class="material-icons">clear_all</i>
             </span>
             <p class="normal">{$c->__('button.clear')}</p>
         </li>
     {else}
         <li class="disabled">
             <span class="primary icon gray small">
-                <i class="zmdi zmdi-notifications-none"></i>
+                <i class="material-icons">notifications_off</i>
             </span>
             <p class="normal center">{$c->__('notifs.empty')}</p>
         </li>

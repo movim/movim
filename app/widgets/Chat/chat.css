@@ -44,6 +44,10 @@
     color: rgba(var(--movim-font), 0.68);
 }
 
+#chat_widget .chat_box span.control i {
+    font-size: inherit;
+}
+
 #chat_widget .chat_box span.control:hover {
     cursor: pointer;
     color: rgba(var(--movim-font), 0.54);
