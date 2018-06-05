@@ -22,14 +22,14 @@
 
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">accounts"></i>
+                <i class="material-icons">people</i>
             </span>
             <p class="normal">{$c->__('communitydata.sub', $info->occupants)}</p>
         </li>
 
         <li>
             <span class="primary icon gray">
-                <i class="material-icons">receipt"></i>
+                <i class="material-icons">receipt</i>
             </span>
             <p class="normal">{$c->__('communitydata.num', $num)}</p>
         </li>

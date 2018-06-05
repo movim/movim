@@ -18,7 +18,7 @@
         title="{$c->__('page.contacts')}"
     >
         <span class="primary icon">
-            <i class="material-icons">people</i>
+            <i class="material-icons">contacts</i>
             <span data-key="invite" class="counter"></span>
         </span>
     </li>

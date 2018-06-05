@@ -16,7 +16,7 @@
        title="{$c->__('page.contacts')}">
         <li {if="$page == 'contact'"}class="active"{/if}>
             <span class="primary icon">
-                <i class="material-icons">people</i>
+                <i class="material-icons">contacts</i>
                 <span data-key="invite" class="counter"></span>
             </span>
             <p class="normal">{$c->__('page.contacts')}</p>

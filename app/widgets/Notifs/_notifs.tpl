@@ -45,7 +45,7 @@
     {else}
         <li class="disabled">
             <span class="primary icon gray small">
-                <i class="material-icons">notifications_off</i>
+                <i class="material-icons">notifications_none</i>
             </span>
             <p class="normal center">{$c->__('notifs.empty')}</p>
         </li>

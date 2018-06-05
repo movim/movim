@@ -385,7 +385,7 @@ header.big ~ .button.action {
     top: -6rem;
 }
 
-.button i {
+.button:not(.action) i {
     font-size: 2.5rem;
 }
 

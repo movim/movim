@@ -14,7 +14,7 @@
         </li>
         <li onclick="CommunityAffiliations_ajaxAffiliations('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
-                <i class="material-icons">account_circle</i>
+                <i class="material-icons">supervisor_account</i>
             </span>
             <p class="normal">{$c->__('communityaffiliation.roles')}</p>
         </li>

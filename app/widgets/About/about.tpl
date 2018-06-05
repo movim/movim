@@ -42,7 +42,7 @@
             <span class="primary icon bubble color brown"><i class="material-icons">mood</i></span>
             <p>{$c->__('about.resources')}</p>
             <p class="all">
-                Material Design Iconic Font <a href="http://zavoloklom.github.io/material-design-iconic-font/icons.html">by Google and Sergey Kupletsky</a> under SIL OFL 1.1<br/>
+                Material Icons <a href="https://material.io/tools/icons/">by Google</a> under Apache License 2.0<br/>
                 Twemoji <a href="http://twitter.github.io/twemoji/">by Twitter</a> under MIT and CC-BY<br/>
             </p>
         </li>

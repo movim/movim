@@ -5,26 +5,26 @@
         </li>
         <li class="block">
             <span class="primary icon bubble color green">
-                <i class="material-icons">android"></i>
+                <i class="material-icons">android</i>
             </span>
             <p>{$c->__('apps.phone')}<p>
             <p class="all">
                 {$c->__('apps.android')}
                 <br />
                 <a class="button flat" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
-                    <i class="material-icons">store</i> Play Store
+                    <i class="material-icons">android</i> Play Store
                 </a>
                 <a class="button flat" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
-                    <i class="material-icons">android</i> F-Droid
+                    <i class="material-icons">adb</i> F-Droid
                 </a>
                 <br />
                 {$c->__('apps.recommend')} Conversations
                 <br />
                 <a class="button flat" href="https://play.google.com/store/apps/details?id=eu.siacs.conversations" target="_blank">
-                    <i class="material-icons">store</i> Play Store
+                    <i class="material-icons">android</i> Play Store
                 </a>
                 <a class="button flat" href="https://f-droid.org/packages/eu.siacs.conversations/" target="_blank">
-                    <i class="material-icons">android</i> F-Droid
+                    <i class="material-icons">adb</i> F-Droid
                 </a>
             </p>
         </li>
