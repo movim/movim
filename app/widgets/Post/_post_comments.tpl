@@ -4,7 +4,7 @@
     <ul class="list divided spaced middle">
         <li>
             <span class="primary icon red">
-                <i class="material-icons">favorite"></i>
+                <i class="material-icons">favorite</i>
             </span>
             <p>{$post->likes()->count()}</span> {$c->__('button.like')}</p>
             <p class="all">

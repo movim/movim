@@ -5,10 +5,10 @@
     <ul class="list flex active">
         <!--<li class="block" onclick="Onboarding_ajaxAskNotifications()">
             <span class="primary icon gray">
-                <i class="material-icons">notifications"></i>
+                <i class="material-icons">notifications</i>
             </span>
             <span class="control icon gray">
-                <i class="material-icons">chevron-down"></i>
+                <i class="material-icons">chevron-down</i>
             </span>
             <p class="normal">{$c->__('notifs.title')}</p>
         </li>-->

@@ -39,7 +39,7 @@
             onclick="MovimUtils.redirect('{$c->route('accountnext', array($value->domain, false))}')">
             <span class="primary icon bubble color {$value->description|stringToColor}">
                 {if="isset($value->checked) && $value->checked"}
-                    <i class="fa md-star-outline"></i>
+                    <i class="material-icons">star</i>
                 {else}
                     {$value->domain|firstLetterCapitalize}
                 {/if}

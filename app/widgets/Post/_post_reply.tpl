@@ -22,7 +22,7 @@
                 {/if}
             {/if}
             <span class="control icon gray">
-                <i class="material-icons">chevron-right"></i>
+                <i class="material-icons">chevron-right</i>
             </span>
             <p class="normal line">{$reply->title}</p>
             <p>{$reply->getContent()|html_entity_decode|stripTags}</p>
