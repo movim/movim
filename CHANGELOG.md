@@ -34,6 +34,9 @@ v0.14 (trunk)
  * Link Chatrooms and Pubsub nodes using muc#roominfo_pubsub in the UI
  * Update the favicon
  * Fix the public pages metadata
+ * Update the MaterialIcons font to the Google one
+ * Cleanup the CSS
+ * Index some columns in the database (Message) to improve performances
 
 v0.13
 ---------------------------
