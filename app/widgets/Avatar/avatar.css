@@ -4,10 +4,6 @@
     padding-top: 2rem;
 }
 
-#avatar_form input[type=file] {
-    max-width: 200px;
-}
-
 #avatar_form div#avatar_preview > div,
 #avatar_form div#avatar_preview img {
     max-width: 250px;

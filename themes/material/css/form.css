@@ -162,6 +162,13 @@ form > div > input:not([type=submit]):-webkit-autofill:focus {
     -webkit-text-fill-color: #333;
 }
 
+/* File */
+
+input[type=file] {
+    max-width: 100%;
+    margin-top: 1rem;
+}
+
 /* Checkbox element */
 
 form > div .checkbox > input[type="checkbox"],

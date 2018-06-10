@@ -27,7 +27,7 @@
 }
 
 .dialog > section {
-    height: 100%;
+    max-height: calc(100vh - 13rem);
     overflow-y: auto;
     position: relative;
 }
@@ -59,7 +59,6 @@
 @media screen and (max-width: 600px) {
     .dialog {
         width: 90%;
-        height: 90%;
         min-height: 0;
         min-width: 0;
         max-height: 90%;
