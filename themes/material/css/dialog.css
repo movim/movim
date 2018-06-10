@@ -27,7 +27,7 @@
 }
 
 .dialog > section {
-    max-height: calc(100vh - 13rem);
+    max-height: calc(90vh - 7.5rem);
     overflow-y: auto;
     position: relative;
 }
@@ -61,9 +61,6 @@
         width: 90%;
         min-height: 0;
         min-width: 0;
-        max-height: 90%;
         margin-left: -45%;
-        margin-top: 0;
-        top: 5%;
     }
 }
