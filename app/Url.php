@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Respect\Validation\Validator;
 use Movim\EmbedLight;
+use Embed\Http\CurlDispatcher;
 
 class Url extends Model
 {
@@ -38,7 +39,12 @@ class Url extends Model
 
     public function setCacheAttribute($url)
     {
-        $embed = new EmbedLight(\Embed\Embed::create($url));
+        $dispatcher = new CurlDispatcher([
+            CURLOPT_CONNECTTIMEOUT => 5,
+            CURLOPT_TIMEOUT => 5
+        ]);
+
+        $embed = new EmbedLight(\Embed\Embed::create($url, null, $dispatcher));
         $this->attributes['cache'] = base64_encode(serialize($embed));
     }
 }

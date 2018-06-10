@@ -249,6 +249,7 @@ class PublishBrief extends \Movim\Widget\Base
                 $this->rpc('PublishBrief.setTitle', $embed->title);
             }
         } catch(Exception $e) {
+            $this->ajaxClearEmbed();
             error_log($e->getMessage());
         }
     }
@@ -268,6 +269,13 @@ class PublishBrief extends \Movim\Widget\Base
     {
         $session = Session::start();
         $session->remove('share_url');
+
+        $p = Cache::c('draft');
+        if ($p && $p->link) {
+            unset($p->link);
+            Cache::c('draft', $p);
+        }
+
         $this->rpc('MovimTpl.fill', '#publishbrief ul.embed', $this->prepareEmbedDefault());
     }
 
