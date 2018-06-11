@@ -80,6 +80,7 @@
             <li onclick="ContactHeader_ajaxChat('{$contact->jid|echapJS}')">
                 <span class="primary icon gray">
                     <i class="material-icons">comment</i>
+                    <span data-key="chat|{$contact->jid}" class="counter"></span>
                 </span>
                 <p class="normal">
                     {if="isset($message)"}

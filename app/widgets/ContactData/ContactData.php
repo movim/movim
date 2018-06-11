@@ -16,6 +16,7 @@ class ContactData extends \Movim\Widget\Base
     {
         $contact = $packet->content;
         $this->rpc('MovimTpl.fill', '#contact_data', $this->prepareData($contact->jid));
+        $this->rpc('Notification_ajaxGet');
     }
 
     public function prepareData($jid)

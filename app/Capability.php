@@ -95,6 +95,8 @@ class Capability extends Model
 
             return 'language';
         }
+
+        return 'desktop_windows';
     }
 
     public function getFeaturesAttribute()
