@@ -59,12 +59,12 @@ class Session extends Model
                               ->first();
     }
 
-    public function getChatroomsService()
+    public function getChatroomsServices()
     {
         return Capability::where('node', 'like', '%' . $this->host . '%')
                               ->where('node', 'not like', '%@%')
                               ->where('category', 'conference')
-                              ->first();
+                              ->get();
     }
 
     public function getCommentsService()

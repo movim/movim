@@ -130,7 +130,7 @@ class Rooms extends \Movim\Widget\Base
             ->where('conference', $room)->first());
         $view->assign('username', $this->user->session->username);
 
-        $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsService());
+        $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsServices());
 
         Dialog::fill($view->draw('_rooms_add', true));
     }
