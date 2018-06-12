@@ -8,7 +8,6 @@ use Defuse\Crypto\Crypto;
 
 use App\Configuration;
 use App\User;
-use App\Session as DBSession;
 use Movim\Widget\Base;
 
 use Movim\Cookie;
@@ -207,7 +206,7 @@ class Login extends Base
         }
 
         // We check if we already have an open session
-        $here = DBSession::where('hash', sha1($username.$password.$host))->first();
+        $here = App\Session::where('hash', sha1($username.$password.$host))->first();
 
         $user = User::firstOrNew(['id' => $login]);
         $user->init();
@@ -231,8 +230,11 @@ class Login extends Base
             $this->rpc('Login.setCookie', 'MOVIM_SESSION_ID', $here->id, date(DATE_COOKIE, Cookie::getTime()));
             $this->rpc('MovimUtils.redirect', $this->route('main'));
             return;
-        } else {
-            $s = new DBSession;
+        } elseif (App\Session::where('username', $username)->where('host', $host)->exists()) {
+            $this->showErrorBlock('wrong_password');
+            return;
+        } {
+            $s = new App\Session;
             $s->init($username, $password, $host);
             $s->loadMemory();
             $s->save();
