@@ -55,4 +55,3 @@ class CreateContactsTable extends Migration
         $this->schema->drop('contacts');
     }
 }
-

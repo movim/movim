@@ -28,4 +28,3 @@ class CreateConferencesTable extends Migration
         $this->schema->drop('conferences');
     }
 }
-

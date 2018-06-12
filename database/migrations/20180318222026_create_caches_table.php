@@ -25,4 +25,3 @@ class CreateCachesTable extends Migration
         $this->schema->drop('caches');
     }
 }
-

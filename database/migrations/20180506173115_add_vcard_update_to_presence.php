@@ -17,6 +17,5 @@ class AddVcardUpdateToPresence extends Migration
         $this->schema->table('presences', function(Blueprint $table) {
             $table->dropColumn('avatarhash');
         });
-
     }
 }

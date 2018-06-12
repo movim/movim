@@ -66,4 +66,3 @@ class CreatePostsTable extends Migration
         $this->schema->drop('posts');
     }
 }
-

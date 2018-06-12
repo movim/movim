@@ -29,4 +29,3 @@ class CreateSessionsTable extends Migration
         $this->schema->drop('sessions');
     }
 }
-

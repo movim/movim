@@ -42,4 +42,3 @@ class CreateMessagesTable extends Migration
         $this->schema->drop('messages');
     }
 }
-

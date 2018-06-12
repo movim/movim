@@ -35,4 +35,3 @@ class CreatePresencesTable extends Migration
         $this->schema->drop('presences');
     }
 }
-

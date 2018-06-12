@@ -29,4 +29,3 @@ class CreateRostersTable extends Migration
         $this->schema->drop('rosters');
     }
 }
-

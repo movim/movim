@@ -19,6 +19,5 @@ class AddJidtoAndTypeIndexesToMessages extends Migration
             $table->dropIndex('messages_jidto_index');
             $table->dropIndex('messages_type_index');
         });
-
     }
 }

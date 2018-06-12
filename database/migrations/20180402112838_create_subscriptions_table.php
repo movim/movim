@@ -26,4 +26,3 @@ class CreateSubscriptionsTable extends Migration
         $this->schema->drop('subscriptions');
     }
 }
-

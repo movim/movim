@@ -26,4 +26,3 @@ class CreateEncryptedPasswordsTable extends Migration
         $this->schema->drop('encrypted_passwords');
     }
 }
-

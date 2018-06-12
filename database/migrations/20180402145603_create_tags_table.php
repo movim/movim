@@ -37,4 +37,3 @@ class CreateTagsTable extends Migration
         $this->schema->drop('tags');
     }
 }
-

@@ -24,4 +24,3 @@ class CreateCapabilitiesTable extends Migration
         $this->schema->drop('capabilities');
     }
 }
-

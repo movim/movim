@@ -25,4 +25,3 @@ class CreateInvitesTable extends Migration
         $this->schema->drop('invites');
     }
 }
-

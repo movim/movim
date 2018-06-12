@@ -41,4 +41,3 @@ class CreateInfosTable extends Migration
         $this->schema->drop('infos');
     }
 }
-

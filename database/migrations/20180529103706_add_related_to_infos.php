@@ -17,6 +17,5 @@ class AddRelatedToInfos extends Migration
         $this->schema->table('infos', function(Blueprint $table) {
             $table->dropColumn('related');
         });
-
     }
 }
