@@ -17,7 +17,7 @@ var Login = {
             Login.submitted = true;
 
             // We register the socket
-            MovimWebsocket.connection.register(this.querySelector('input#username').value.replace(/.*@/, ""));
+            MovimWebsocket.connection.register(this.querySelector('input#username').value.replace(/.*@/, ''));
 
             var button = this.querySelector('input[type=submit]');
             button.value = button.dataset.loading;
@@ -25,7 +25,7 @@ var Login = {
             localStorage.username = document.querySelector('input#username').value;
 
             // A fallback security
-            setTimeout("MovimWebsocket.unregister()", 20000);
+            setTimeout('MovimWebsocket.unregister()', 20000);
 
             return true;
         }, false);
@@ -53,7 +53,8 @@ var Login = {
     },
 
     quickLogin : function() {
-        if (localStorage.getItem('quickHost') != null) {
+        if (localStorage.getItem('quickHost') != null
+        && localStorage.getItem('quickKey') != null) {
             MovimWebsocket.connection.register(localStorage.getItem('quickHost'));
         }
     }
