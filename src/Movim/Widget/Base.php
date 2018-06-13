@@ -232,7 +232,7 @@ class Base
     /**
      * @brief Adds a javascript file to this widget.
      */
-    protected function addjs(string $filename): void
+    protected function addjs(string $filename)
     {
         $this->js[] = $this->respath($filename);
     }
@@ -248,7 +248,7 @@ class Base
     /**
      * @brief Adds a CSS file to this widget.
      */
-    protected function addcss(string $filename): void
+    protected function addcss(string $filename)
     {
         $this->css[] = $this->respath($filename);
     }
