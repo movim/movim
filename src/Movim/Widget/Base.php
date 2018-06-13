@@ -117,7 +117,7 @@ class Base
 
     function rpc(...$args)
     {
-        return \Movim\RPC::call(...$args);
+        \Movim\RPC::call(...$args);
     }
 
     function load() {}
@@ -125,7 +125,7 @@ class Base
     /**
      * Generates the widget's HTML code.
      */
-    function build()
+    function build(): string
     {
         return $this->draw();
     }
@@ -212,7 +212,7 @@ class Base
     /**
      * @brief Returns the javascript ajax call.
      */
-    protected function call(string $funcname)
+    protected function call(string $funcname): string
     {
         return $this->makeCall(func_get_args());
     }
@@ -240,7 +240,7 @@ class Base
     /**
      * @brief returns the list of javascript files to be loaded for the widget.
      */
-    public function loadjs()
+    public function loadjs(): array
     {
         return $this->js;
     }
@@ -248,7 +248,7 @@ class Base
     /**
      * @brief Adds a CSS file to this widget.
      */
-    protected function addcss(string $filename)
+    protected function addcss(string $filename): void
     {
         $this->css[] = $this->respath($filename);
     }
@@ -256,7 +256,7 @@ class Base
     /**
      * @brief Adds a CSS to the page.
      */
-    protected function addrawcss(string $url)
+    protected function addrawcss(string $url): array
     {
         $this->rawcss[] = $url;
     }
