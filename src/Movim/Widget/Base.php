@@ -30,7 +30,7 @@ class Base
     /**
      * Initialises Widget stuff.
      */
-    function __construct($light = false, $view = null)
+    function __construct(bool $light = false, string $view = null)
     {
         if ($view != null) $this->_view = $view;
 
@@ -105,12 +105,12 @@ class Base
         echo call_user_func_array([&$this, '__'], $args);
     }
 
-    function supported($key)
+    function supported($key): bool
     {
         return false;
     }
 
-    function route(...$args)
+    function route(...$args): string
     {
         return \Movim\Route::urlize(...$args);
     }
@@ -139,7 +139,7 @@ class Base
     }
 
     /**
-     * Get the current view name
+     * Get the current user
      */
     function getUser()
     {
@@ -154,7 +154,7 @@ class Base
     /**
      *  @desc Return the template's HTML code
      */
-    function draw()
+    function draw(): string
     {
         $this->display();
         if (file_exists($this->respath(strtolower($this->name).'.tpl', true))) {
@@ -164,7 +164,7 @@ class Base
         return '';
     }
 
-    protected function tpl()
+    protected function tpl(): Tpl
     {
         $config = [
             'tpl_dir'       => APP_PATH.'widgets/'.$this->name.'/',
@@ -185,7 +185,9 @@ class Base
      * @param file is the file's name to make up the path for.
      * @param fspath is optional, returns the OS path if true, the URL by default.
      */
-    protected function respath($file, $fspath = false, $parent = false, $notime = false)
+    protected function respath(string $file,
+        bool $fspath = false, bool $parent = false,
+        bool $notime = false): string
     {
         $folder = ($parent == false)
             ? get_class($this)
@@ -210,12 +212,12 @@ class Base
     /**
      * @brief Returns the javascript ajax call.
      */
-    protected function call($funcname)
+    protected function call(string $funcname)
     {
         return $this->makeCall(func_get_args());
     }
 
-    protected function makeCall($params, $widget = false)
+    protected function makeCall(array $params, $widget = false): string
     {
         if (!$widget) {
             $widget = $this->name;
@@ -230,7 +232,7 @@ class Base
     /**
      * @brief Adds a javascript file to this widget.
      */
-    protected function addjs($filename)
+    protected function addjs(string $filename): void
     {
         $this->js[] = $this->respath($filename);
     }
@@ -246,7 +248,7 @@ class Base
     /**
      * @brief Adds a CSS file to this widget.
      */
-    protected function addcss($filename)
+    protected function addcss(string $filename)
     {
         $this->css[] = $this->respath($filename);
     }
@@ -254,7 +256,7 @@ class Base
     /**
      * @brief Adds a CSS to the page.
      */
-    protected function addrawcss($url)
+    protected function addrawcss(string $url)
     {
         $this->rawcss[] = $url;
     }
@@ -262,7 +264,7 @@ class Base
     /**
      * @brief returns the list of javascript files to be loaded for the widget.
      */
-    public function loadcss()
+    public function loadcss(): array
     {
         return array_merge($this->css, $this->rawcss);
     }
@@ -270,7 +272,7 @@ class Base
     /*
      * @brief Fetch and return get variables
      */
-    protected function get($name)
+    protected function get(string $name)
     {
         if (isset($_GET[$name])) {
             return htmlentities($_GET[$name]);
@@ -283,7 +285,7 @@ class Base
      * @param $method The function to call
      * @param $filter Only call this function if the session notif_key is good
      */
-    protected function registerEvent($key, $method, $filter = null)
+    protected function registerEvent(string $key, string $method, $filter = null)
     {
         if (!is_array($this->events)
         || !array_key_exists($key, $this->events)) {

@@ -28,7 +28,6 @@
 namespace Moxl\Xec;
 
 use Moxl\Utils;
-
 use Movim\Session;
 
 class Handler
@@ -52,11 +51,8 @@ class Handler
 
         $sess = Session::start();
 
-        if (
-            ($id != '' &&
-            $sess->get($id) == false) ||
-            $id == ''
-          ) {
+        if (($id != '' && $sess->get($id) == false)
+        || $id == '') {
             Utils::log("Handler : Memory instance not found for {$id}");
             Utils::log('Handler : Not an XMPP ACK');
 
@@ -68,10 +64,8 @@ class Handler
                     Handler::handleNode($s2, $child);
                 }
             }
-        } elseif (
-            $id != '' &&
-            $sess->get($id) != false
-        ) {
+        } elseif ($id != ''
+        && $sess->get($id) != false) {
             // We search an existent instance
             Utils::log("Handler : Memory instance found for {$id}");
             $instance = $sess->get($id);
@@ -127,22 +121,17 @@ class Handler
     static public function handleNode($s, $sparent = false)
     {
         $name = $s->getName();
-        $node = false;
-
-        if ($s->items && $s->items->attributes()->node)
-            $node = (string)$s->items->attributes()->node;
-
         $ns = '';
 
         foreach($s->attributes() as $key => $value) {
-            if ($key == 'xmlns' && $ns == '') {
-                $ns = $value;
-            } elseif ('xmlns:' === substr($key, 0, 6)) {
+            if (($key == 'xmlns' && $ns == '')
+            || 'xmlns:' === substr($key, 0, 6)) {
                 $ns = $value;
             }
         }
 
-        if ($node != false) {
+        if ($s->items && $s->items->attributes()->node) {
+            $node = (string)$s->items->attributes()->node;
             $hash = md5($name.$ns.$node);
             Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . ' [' . $node . ']", "'.$hash.'"');
             Handler::searchPayload($hash, $s, $sparent);
@@ -225,7 +214,8 @@ class Handler
         }
     }
 
-    /* A simple function to format a error-string-text to a
+    /**
+     * A simple function to format a error-string-text to a
      * camelTypeText
      */
     static public function formatError($string)

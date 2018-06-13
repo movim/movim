@@ -23,7 +23,7 @@ class Wrapper
     public $url = null; // If a widget has defined a particular url
     public $links = []; // If a widget have to inject a link in the header
 
-    public function registerAll($load = false)
+    public function registerAll(array $load = [])
     {
         $widgets_dir = scandir(APP_PATH ."widgets/");
 
@@ -32,8 +32,7 @@ class Wrapper
                 $widget_dir != '..' &&
                 $widget_dir != '.') {
 
-                if ($load != false
-                && in_array($widget_dir, $load)) {
+                if (in_array($widget_dir, $load)) {
                     $this->loadWidget($widget_dir, true);
                 }
 
@@ -61,7 +60,7 @@ class Wrapper
      * @desc Set the view
      * @param $page the name of the current view
      */
-    public function setView($view)
+    public function setView(string $view)
     {
         $this->_view = $view;
     }
@@ -71,7 +70,7 @@ class Wrapper
      * @param $name the name of the widget
      * @param $register know if we are loading in the daemon or displaying
      */
-    public function loadWidget($name, $register = false)
+    public function loadWidget(string $name, bool $register = false)
     {
         if (file_exists(APP_PATH . "widgets/$name/$name.php")) {
             $path = APP_PATH . "widgets/$name/$name.php";
@@ -132,7 +131,7 @@ class Wrapper
      *   be passed along to the method.
      * @return what the widget's method returns.
      */
-    function runWidget($widget_name, $method, array $params = null)
+    function runWidget(string $widget_name, string $method, array $params = null)
     {
         $widget = $this->loadWidget($widget_name);
 
@@ -150,7 +149,7 @@ class Wrapper
      * @param $key is the key of the incoming event
      * @param $data is the Packet that is sent as a parameter
      */
-    function iterate($key, $data)
+    function iterate(string $key, $data)
     {
         if (array_key_exists($key, $this->_events)) {
             foreach($this->_events[$key] as $widget_name) {
