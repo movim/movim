@@ -42,7 +42,8 @@ class Request extends Action
         }
 
         if ($capability->features != null
-        && $capability->category != null) {
+        && $capability->category != null
+        && $capability->category != 'conference') {
             $found = \App\Capability::find($capability->node);
             if ($found) $found->delete();
 
@@ -50,14 +51,17 @@ class Request extends Action
         }
 
         // Info
-        $info = \App\Info::where('server', $this->_to)
-                         ->where('node', (string)$this->_node)
-                         ->first();
-
-        if (!$info) $info = new \App\Info;
+        $info = new \App\Info;
         $info->set($stanza);
 
-        if (!empty($info->category)
+        $found = \App\Info::where('server', $info->server)
+                          ->where('node', $info->node)
+                          ->first();
+
+        if ($found) {
+            $found->set($stanza);
+            $found->save();
+        } else if (!empty($info->category)
         && $info->category !== 'account') {
             $info->save();
         }

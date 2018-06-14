@@ -137,6 +137,10 @@ class Info extends Model
                 $key = (string)$feature->attributes()->var;
 
                 switch ($key) {
+                    // If it's a MUC we clear the node
+                    case 'http://jabber.org/protocol/muc':
+                        $this->node = '';
+                        break;
                     case 'muc_public':
                         $this->mucpublic = true;
                         break;
