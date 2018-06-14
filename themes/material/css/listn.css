@@ -1,7 +1,6 @@
 ul.list {
     list-style-type: none;
     padding: 0;
-    line-height: 0;
 }
 
 ul.list.thin li:not(.subheader) {
