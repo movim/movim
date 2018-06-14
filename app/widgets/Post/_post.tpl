@@ -227,20 +227,22 @@
             </li>
         </ul>
     {/if}
-</footer>
 
-{if="$public"}
-    <div id="comments">
-        {$c->prepareComments($post, true)}
-    </div>
-{else}
-    {if="$commentsdisabled"}
-        {$commentsdisabled}
+    {if="$public"}
+        <div id="comments">
+            {$c->prepareComments($post, true)}
+        </div>
     {else}
-        <div id="comments" class="spin"></div>
+        {if="$commentsdisabled"}
+            {$commentsdisabled}
+        {else}
+            <div id="comments" class="spin"></div>
+        {/if}
+
+        {$c->preparePreviousNext($post)}
     {/if}
 
-    {$c->preparePreviousNext($post)}
-{/if}
+</footer>
+
 </article>
 <span class="clear padded"></span>

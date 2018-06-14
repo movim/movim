@@ -8,6 +8,10 @@ article header {
     position: relative;
 }
 
+article footer {
+    padding-bottom: 1rem;
+}
+
 article section {
     font-size: 2rem;
     line-height: 3rem;
