@@ -256,7 +256,7 @@ class Base
     /**
      * @brief Adds a CSS to the page.
      */
-    protected function addrawcss(string $url): array
+    protected function addrawcss(string $url)
     {
         $this->rawcss[] = $url;
     }
