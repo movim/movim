@@ -35,9 +35,10 @@ var Search = {
 
         Search.timer = setTimeout(() => {
             Search_ajaxSearch(value);
-            Search.roster(value);
         },
         700);
+
+        Search.roster(value);
     },
 
     searchClear : function() {

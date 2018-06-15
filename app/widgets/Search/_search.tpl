@@ -1,6 +1,4 @@
 <section id="search">
-    <div id="results">{$empty}</div>
-
     <ul id="roster" class="list">
         {if="$contacts"}
             <li class="subheader"><p>{$c->__('page.contacts')}</p></li>
@@ -68,6 +66,9 @@
             </li>
         {/loop}
     </ul>
+
+    <div id="results">{$empty}</div>
+
     <br />
 </section>
 <div id="searchbar">
