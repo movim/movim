@@ -25,7 +25,7 @@ class Request extends Action
                          ->first();
 
         if (!in_array($this->_node, $this->_excluded)
-        && (!$info || $info->isOld())) {
+        /*&& (!$info || $info->isOld())*/) {
             Disco::request($this->_to, $this->_node);
         }
     }

@@ -1,11 +1,11 @@
 <div class="tabelem" title="{$c->__('account.title')}" id="account_widget">
-    {if="isset($gateway)"}
+    {if="$gateways->isNotEmpty()"}
     <ul class="list active middle divided">
         <li class="subheader">
             <p>{$c->__('account.gateway_title')}</p>
         </li>
-        {loop="$gateway"}
-        <li onclick="Account_ajaxGetRegistration('{$value->node}')">
+        {loop="$gateways"}
+        <li onclick="Account_ajaxGetRegistration('{$value->server}')">
             <span class="primary icon">
                 <i class="material-icons">swap_horiz</i>
             </span>
@@ -13,7 +13,7 @@
                 <i class="material-icons">chevron_right</i>
             </span>
             <p>{$value->name}</p>
-            <p>{$value->node}</p>
+            <p>{$value->server}</p>
         </li>
         {/loop}
     </ul>

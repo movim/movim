@@ -127,7 +127,7 @@ class Info extends Model
 
                     if ($i->attributes()->name) {
                         $this->name = (string)$i->attributes()->name;
-                    } else {
+                    } elseif (!empty($this->node)) {
                         $this->name = $this->node;
                     }
                 }
@@ -237,7 +237,10 @@ class Info extends Model
     {
         $this->server = (string)$item->attributes()->jid;
         $this->node   = (string)$item->attributes()->node;
-        $this->name   = (string)$item->attributes()->name;
+
+        if ($item->attributes()->name) {
+            $this->name   = (string)$item->attributes()->name;
+        }
     }
 
     public function isPubsubService()

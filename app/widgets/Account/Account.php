@@ -14,6 +14,7 @@ class Account extends \Movim\Widget\Base
         $this->registerEvent('register_changepassword_handle', 'onPasswordChanged');
         $this->registerEvent('register_remove_handle', 'onRemoved');
         $this->registerEvent('register_get_handle', 'onRegister', 'account');
+        $this->registerEvent('register_get_errorfeaturenotimplemented', 'onRegisterError', 'account');
     }
 
     function onPasswordChanged()
@@ -36,7 +37,7 @@ class Account extends \Movim\Widget\Base
         $view = $this->tpl();
 
         if (isset($content->x)) {
-            $xml = new \XMPPtoForm();
+            $xml = new \XMPPtoForm;
             $form = $xml->getHTML($content->x->asXML());
 
             $view->assign('form', $form);
@@ -49,7 +50,11 @@ class Account extends \Movim\Widget\Base
 
             Dialog::fill($view->draw('_account_form', true), true);
         }
+    }
 
+    function onRegisterError()
+    {
+        Notification::append(null, $this->__('error.oops'));
     }
 
     function ajaxChangePassword($form)
@@ -131,7 +136,7 @@ class Account extends \Movim\Widget\Base
 
     function display()
     {
-        $this->view->assign('gateway', \App\Info::where('server', $this->user->getServer())
+        $this->view->assign('gateways', \App\Info::where('server', 'like', '%' . $this->user->getServer())
                                                 ->where('category', 'gateway')
                                                 ->get());
     }

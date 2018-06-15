@@ -7,7 +7,7 @@ use Moxl\Stanza\Register;
 
 class Get extends Action
 {
-    private $_to;
+    protected $_to;
 
     public function request()
     {
@@ -15,16 +15,15 @@ class Get extends Action
         Register::get($this->_to);
     }
 
-    public function setTo($to)
-    {
-        $this->_to = $to;
-        return $this;
-    }
-
     public function handle($stanza, $parent = false)
     {
         $this->prepare($stanza, $parent);
         $this->pack($stanza->query, $this->_to);
+        $this->deliver();
+    }
+
+    public function errorFeatureNotImplemented()
+    {
         $this->deliver();
     }
 
