@@ -767,16 +767,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v3.3.3",
+            "version": "v3.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "d180045daf923980bf254b2973ea13c421435d11"
+                "reference": "5915ec40a7b7993b4fe9694398fea8196c53bc2a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/d180045daf923980bf254b2973ea13c421435d11",
-                "reference": "d180045daf923980bf254b2973ea13c421435d11",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/5915ec40a7b7993b4fe9694398fea8196c53bc2a",
+                "reference": "5915ec40a7b7993b4fe9694398fea8196c53bc2a",
                 "shasum": ""
             },
             "require": {
@@ -816,7 +816,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2018-05-31T17:17:30+00:00"
+            "time": "2018-06-15T19:04:57+00:00"
         },
         {
             "name": "evenement/evenement",
@@ -1359,16 +1359,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.29.2",
+            "version": "1.30.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "ed6aa898982f441ccc9b2acdec51490f2bc5d337"
+                "reference": "863a1a651ea324e1838da3a52753a4239b9d4bea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/ed6aa898982f441ccc9b2acdec51490f2bc5d337",
-                "reference": "ed6aa898982f441ccc9b2acdec51490f2bc5d337",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/863a1a651ea324e1838da3a52753a4239b9d4bea",
+                "reference": "863a1a651ea324e1838da3a52753a4239b9d4bea",
                 "shasum": ""
             },
             "require": {
@@ -1403,7 +1403,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-05-29T15:23:46+00:00"
+            "time": "2018-06-15T11:52:26+00:00"
         },
         {
             "name": "paragonie/random_compat",

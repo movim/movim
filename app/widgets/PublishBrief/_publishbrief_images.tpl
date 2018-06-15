@@ -3,7 +3,11 @@
     {loop="$embed->images"}
         <li class="block"
             onclick="PublishBrief.setEmbedImage({$key})">
-            <div style="background-image: url('{$value.url}')"></div>
+            <div style="background-image: url('{$value.url}')">
+                <span>
+                    {$value.width} × {$value.height}
+                </span>
+            </div>
         </li>
     {/loop}
     </ul>

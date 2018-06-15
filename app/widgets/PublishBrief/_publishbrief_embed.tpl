@@ -3,14 +3,14 @@
         <i class="material-icons">close</i>
     </span>
     {if="!empty($embed->images)"}
-        <span class="primary icon thumb active"
+        <span class="primary icon thumb active color gray"
             {if="count($embed->images) > 1"}
                 onclick="PublishBrief_ajaxEmbedChooseImage('{$embed->url}')"
             {/if}
             style="background-image: url({$embed->images[$imagenumber]['url']})"
             title="{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']} - {$embed->images[$imagenumber]['size']|sizeToCleanSize}">
             {if="count($embed->images) > 1"}
-                <i class="material-icons">slideshow</i>
+                <i class="material-icons">collections</i>
             {/if}
         </span>
     {else}

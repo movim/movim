@@ -207,11 +207,16 @@ function explodeJid($jid)
  * @param string size in bytes
  * @return string
  */
-function sizeToCleanSize($size, $precision = 2)
+function sizeToCleanSize($bytes, $precision = 2)
 {
-    $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-    $power = $size > 0 ? floor(log($size, 1024)) : 0;
-    return number_format($size / pow(1024, $power), $precision, '.', ',') . ' ' . $units[$power];
+    $units = array('B', 'KB', 'MB', 'GB', 'TB');
+
+    $bytes = max($bytes, 0);
+    $pow = floor(($bytes ? log($bytes) : 0) / log(1024));
+    $pow = min($pow, count($units) - 1);
+    $bytes /= pow(1024, $pow);
+
+    return round($bytes, $precision) . ' ' . $units[$pow];
 }
 
 /**

@@ -21,3 +21,15 @@ header#publishbrief form > div textarea {
     background-size: cover;
     background-position: center center;
 }
+
+#publishbriefimages li div span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    font-size: 2rem;
+    padding: 0 1rem;
+    line-height: 3.5rem;
+    border-radius: 0.3rem 0 0;
+}

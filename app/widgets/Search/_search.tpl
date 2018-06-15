@@ -81,7 +81,7 @@
                 <div>
                     <input name="keyword" autocomplete="off"
                         placeholder="{$c->__('search.keyword')}"
-                        onkeyup="Search.searchSomething(this.value)"
+                        oninput="Search.searchSomething(this.value)"
                         type="text">
                 </div>
             </form>

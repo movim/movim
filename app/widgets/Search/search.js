@@ -30,7 +30,8 @@ var Search = {
         clearTimeout(Search.timer);
 
         if (value !== '') {
-            document.querySelector('#searchbar span.primary i').innerText = 'rotate_right';
+            document.querySelector('#searchbar span.primary i').innerText = 'autorenew';
+            document.querySelector('#searchbar span.primary').classList.add('spin');
         }
 
         Search.timer = setTimeout(() => {
@@ -43,6 +44,7 @@ var Search = {
 
     searchClear : function() {
         document.querySelector('#searchbar span.primary i').innerText = 'search';
+        document.querySelector('#searchbar span.primary').classList.remove('spin');
     }
 }
 

@@ -503,3 +503,6 @@ div#spinner{
     to   { opacity: 1; }
 }
 
+@keyframes spin {
+    100% { transform:rotate(360deg); }
+}

@@ -17,6 +17,10 @@ var Menu = {
         } else {
             Menu_ajaxGetAll();
         }
+    },
+
+    setLoad: function(tab) {
+        tab.innerHTML = '<i class="material-icons spin">autorenew</i>';
     }
 };
 
