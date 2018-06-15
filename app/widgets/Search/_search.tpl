@@ -15,14 +15,18 @@
                 {$url = $value->getPhoto('m')}
                 {if="$url"}
                     <span class="primary icon bubble
-                        {if="$value->presence"}
+                        {if="!$value->presence || $value->presence->value > 4"}
+                            disabled
+                        {else}
                             status {$value->presence->presencekey}
                         {/if}"
                         style="background-image: url({$url});">
                     </span>
                 {else}
                     <span class="primary icon bubble color {$value->jid|stringToColor}
-                        {if="$value->presence"}
+                        {if="!$value->presence || $value->presence->value > 4"}
+                            disabled
+                        {else}
                             status {$value->presence->presencekey}
                         {/if}"
                     >
@@ -35,7 +39,25 @@
                 <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
                     <i class="material-icons">comment</i>
                 </span>
-                <p class="normal line">{$value->truename}</p>
+                {if="$value->subscription != 'both'"}
+                    <span class="control icon gray">
+                        {if="$value->subscription == 'to'"}
+                            <i class="material-icons">arrow_upward</i>
+                        {elseif="$value->subscription == 'from'"}
+                            <i class="material-icons">arrow_downward</i>
+                        {else}
+                            <i class="material-icons">block</i>
+                        {/if}
+                    </span>
+                {/if}
+                <p class="normal line">
+                    {$value->truename}
+                    {if="$value->presence && $value->presence->capability"}
+                        <span class="second" title="{$value->presence->capability->name}">
+                            <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
+                        </span>
+                    {/if}
+                </p>
                 {if="$value->group"}
                 <p>
                     <span class="tag color {$value->group|stringToColor}">
@@ -46,6 +68,7 @@
             </li>
         {/loop}
     </ul>
+    <br />
 </section>
 <div id="searchbar">
     <ul class="list">

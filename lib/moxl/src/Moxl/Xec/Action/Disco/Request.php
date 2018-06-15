@@ -61,7 +61,8 @@ class Request extends Action
             $found->set($stanza);
             $found->save();
         } else if (!empty($info->category)
-        && $info->category !== 'account') {
+        && $info->category !== 'account'
+        && $info->category !== 'client') {
             $info->save();
         }
 

@@ -43,7 +43,7 @@
 </ul>
 
 <ul class="list divided oppose active" dir="ltr">
-    <li onclick="Search_ajaxHttpRequest()"
+    <li onclick="Search_ajaxRequest()"
         title="{$c->__('button.search')}"
     >
         <span class="primary icon">
@@ -84,4 +84,3 @@
         <p class="normal">{$c->__('status.disconnect')}</p>
     </li>
 </ul>
-

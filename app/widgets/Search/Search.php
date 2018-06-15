@@ -11,12 +11,12 @@ class Search extends \Movim\Widget\Base
         $this->addcss('search.css');
     }
 
-    function ajaxHttpRequest()
+    function ajaxRequest()
     {
         $view = $this->tpl();
         $view->assign('empty', $this->prepareSearch(''));
         $view->assign('contacts', $this->user->session->contacts()
-                                             ->with('presence')
+                                             ->with('presence.capability')
                                              ->orderBy('jid')
                                              ->get());
 
