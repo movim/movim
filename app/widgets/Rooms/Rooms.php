@@ -330,6 +330,10 @@ class Rooms extends \Movim\Widget\Base
             if ($capability->isMAM2()) {
                 $p->enableMAM2();
             }
+        } else {
+            $r = new Request;
+            $r->setTo($jid['server'])
+              ->request();
         }
 
         $p->setNickname($nickname);

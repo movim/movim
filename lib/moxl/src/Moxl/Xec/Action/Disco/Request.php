@@ -8,7 +8,7 @@ use Moxl\Xec\Action\Disco\Items;
 
 class Request extends Action
 {
-    protected $_node;
+    protected $_node = false;
     protected $_to;
 
     // Excluded nodes
@@ -20,9 +20,9 @@ class Request extends Action
     {
         $this->store();
 
-        $info = \App\Info::where('server', $this->_to)
+        /*$info = \App\Info::where('server', $this->_to)
                          ->where('node', (string)$this->_node)
-                         ->first();
+                         ->first();*/
 
         if (!in_array($this->_node, $this->_excluded)
         /*&& (!$info || $info->isOld())*/) {
@@ -35,15 +35,14 @@ class Request extends Action
         // Caps
         $capability = new \App\Capability;
 
-        if (isset($this->_node)) {
+        if ($this->_node !== false) {
             $capability->set($stanza, $this->_node);
         } else {
             $capability->set($stanza, $this->_to);
         }
 
         if ($capability->features != null
-        && $capability->category != null
-        && $capability->category != 'conference') {
+        && $capability->category != null) {
             $found = \App\Capability::find($capability->node);
             if ($found) $found->delete();
 

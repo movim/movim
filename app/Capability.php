@@ -88,6 +88,7 @@ class Capability extends Model
     {
         if (in_array($this->type, ['handheld', 'phone'])) return 'smartphone';
         if ($this->type == 'bot') return 'memory';
+        if ($this->type == 'console') return 'video_label';
         if ($this->type == 'web') {
             if ($this->type == 'web') {
                 return 'cloud_queue';
@@ -109,4 +110,3 @@ class Capability extends Model
         $this->attributes['features'] = serialize($features);
     }
 }
-
