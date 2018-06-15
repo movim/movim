@@ -10,7 +10,7 @@
     transition: transform .3s cubic-bezier(.4,0,.2,1) .2s;
 }
 
-.drawer .flex .block:not(.subheader):not(.large) {
+.drawer .flex.quarter .block:not(.subheader):not(.large) {
     flex: 0 1 33.33%;
 }
 
@@ -42,7 +42,7 @@
         left: calc(50% - 35rem);
     }
 
-    .drawer .flex .block:not(.subheader):not(.large) {
+    .drawer .flex.quarter .block:not(.subheader):not(.large) {
         flex: 0 1 25%;
     }
 }
