@@ -15,7 +15,11 @@ class Post extends Model
     protected $primaryKey = 'id';
 
     protected $guarded = [];
-    public $with = ['attachments', 'likes', 'comments'];
+    public $with = ['attachments', 'likes', 'comments',
+                    'contact',  'openlink', 'youtube',
+                    'links', 'files', 'pictures', 'picture',
+                    'attachment'];
+
     private $titleLimit = 200;
 
     public $attachments = [];
@@ -42,6 +46,58 @@ class Post extends Model
     {
         return $this->hasMany('App\Post', 'parent_id', 'id')
                     ->where('like', true);
+    }
+
+    public function openlink()
+    {
+        //if (!$this->open) return;
+        return $this->hasOne('App\Attachment')
+                    ->where('category', 'open');
+    }
+
+    public function youtube()
+    {
+        return $this->hasOne('App\Attachment')
+                    ->where('category', 'youtube');
+    }
+
+    public function links()
+    {
+        return $this->hasMany('App\Attachment')
+                    ->where('category', 'link')
+                    ->whereNotIn('href', function($query) {
+                        $query->select('href')
+                              ->from('attachments')
+                              ->where('post_id', $this->id)
+                              ->where('category', 'picture')
+                              ->get();
+                    });
+    }
+
+    public function files()
+    {
+        return $this->hasMany('App\Attachment')
+                    ->where('category', 'file');
+    }
+
+    public function pictures()
+    {
+        return $this->hasMany('App\Attachment')
+                    ->where('category', 'picture')
+                    ->where('type', '!=', 'content');
+    }
+
+    public function picture()
+    {
+        return $this->hasOne('App\Attachment')
+                    ->where('category', 'picture');
+    }
+
+    public function attachment()
+    {
+        return $this->hasOne('App\Attachment')
+                    ->whereIn('rel', ['enclosure', 'related'])
+                    ->orderBy('rel', 'desc'); // related first
     }
 
     public function attachments()
@@ -170,52 +226,6 @@ class Post extends Model
     public function scopeWithSubscriptions($query)
     {
         return $this->withSubscriptionsScope($query);
-    }
-
-    public function getOpenlinkAttribute()
-    {
-        if (!$this->open) return;
-        return $this->attachments()->where('category', 'open')->first();
-    }
-
-    public function getYoutubeAttribute()
-    {
-        return $this->attachments()->where('category', 'youtube')->first();
-    }
-
-    public function getLinksAttribute()
-    {
-        return $this->attachments()->where('category', 'link')
-                    ->whereNotIn('href', function($query) {
-                        $query->select('href')
-                              ->from('attachments')
-                              ->where('post_id', $this->id)
-                              ->where('category', 'picture')
-                              ->get();
-                    })->get();
-    }
-
-    public function getFilesAttribute()
-    {
-        return $this->attachments()->where('category', 'file')->get();
-    }
-
-    public function getPicturesAttribute()
-    {
-        return $this->attachments()->where('category', 'picture')
-                                   ->where('type', '!=', 'content')->get();
-    }
-
-    public function getPictureAttribute()
-    {
-        return $this->attachments()->where('category', 'picture')->first();
-    }
-
-    public function getAttachmentAttribute()
-    {
-        return $this->attachments()->whereIn('rel', ['enclosure', 'related'])
-                                   ->orderBy('rel', 'desc') // related first
-                                   ->first();
     }
 
     public function getPreviousAttribute()
@@ -642,4 +652,3 @@ class Post extends Model
         return false;
     }
 }
-

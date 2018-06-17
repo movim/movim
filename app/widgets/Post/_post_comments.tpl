@@ -1,12 +1,12 @@
 {$liked = false}
 
-{if="$post->likes()->count() > 0"}
+{if="$post->likes->count() > 0"}
     <ul class="list divided spaced middle">
         <li>
             <span class="primary icon red">
                 <i class="material-icons">favorite</i>
             </span>
-            <p>{$post->likes()->count()}</span> {$c->__('button.like')}</p>
+            <p>{$post->likes->count()}</span> {$c->__('button.like')}</p>
             <p class="all">
                 {loop="$post->likes"}
                     {if="$public"}
@@ -17,7 +17,7 @@
                         {/if}
                         <a title="{$value->published|strtotime|prepareDate:true,true}"
                            href="{$c->route('contact', $value->aid)}">
-                            {$value->truename}</a>{/if}{if="$key + 1 < $post->likes()->count()"},{/if}
+                            {$value->truename}</a>{/if}{if="$key + 1 < $post->likes->count()"},{/if}
                 {/loop}
             </p>
         </li>
@@ -25,10 +25,10 @@
 {/if}
 
 <ul class="list divided spaced middle">
-    {if="$post->comments()->count() > 0"}
+    {if="$post->comments->count() > 0"}
         <li class="subheader center">
             <p>
-                <span class="info">{$post->comments()->count()}</span> {$c->__('post.comments')}
+                <span class="info">{$post->comments->count()}</span> {$c->__('post.comments')}
             </p>
         </li>
     {/if}
@@ -147,4 +147,3 @@
     </li>
     {/if}
 </ul>
-

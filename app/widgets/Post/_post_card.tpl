@@ -143,12 +143,13 @@
 
                     {if="$liked"}
                         <a class="button icon flat red" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
-                            {$post->likes()->count()} <i class="material-icons">favorite</i>
+                            {$post->likes->count()}
+                            <i class="material-icons">favorite</i>
                         </a>
                     {else}
                         <a class="button icon flat gray" href="#"
                            onclick="this.classList.add('disabled'); PostActions_ajaxLike('{$post->server}', '{$post->node}', '{$post->nodeid}')">
-                            {$post->likes()->count()}
+                            {$post->likes->count()}
                             {if="$liked"}
                                 <i class="material-icons">favorite</i>
                             {else}
@@ -157,7 +158,8 @@
                         </a>
                     {/if}
                     <a class="button icon flat gray" href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}">
-                        {$post->comments()->count()} <i class="material-icons">chat_bubble_outline</i>
+                        {$post->comments->count()}
+                        <i class="material-icons">chat_bubble_outline</i>
                     </a>
                 {/if}
                 {if="!$public"}

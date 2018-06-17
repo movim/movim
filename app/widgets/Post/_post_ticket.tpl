@@ -47,12 +47,12 @@
             </a>
         {/if}
 
-        {$count = $post->likes()->count()}
+        {$count = $post->likes->count()}
         {if="$count > 0"}
             {$count} <i class="material-icons">favorite_border</i>
         {/if}
 
-        {$count = $post->comments()->count()}
+        {$count = $post->comments->count()}
         {if="$count > 0"}
             {$count} <i class="material-icons">chat_bubble_outline</i>
         {/if}

@@ -181,13 +181,14 @@ class Post extends \Movim\Widget\Base
 
     function preparePost(\App\Post $p, $public = false, $card = false)
     {
-        $view = $this->tpl();
         if (isset($p)) {
+            $view = $this->tpl();
+
             if ($p->hasCommentsNode()
             && !$public && !$card) {
                 $this->requestComments($p); // Broken in case of repost
                 $view->assign('commentsdisabled', false);
-            } else {
+            } elseif (!$card) {
                 $viewd = $this->tpl();
                 $view->assign('commentsdisabled', $viewd->draw('_post_comments_error', true));
             }
@@ -202,9 +203,9 @@ class Post extends \Movim\Widget\Base
             return ($card)
                 ? $view->draw('_post_card', true)
                 : $view->draw('_post', true);
-        } else {
-            return $this->prepareNotFound();
         }
+
+        return $this->prepareNotFound();
     }
 
     function prepareTicket(\App\Post $post, $big = false)
