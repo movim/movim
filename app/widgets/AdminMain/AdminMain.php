@@ -10,7 +10,7 @@ class AdminMain extends \Movim\Widget\Base
 
         $form = $_POST;
 
-        $configuration = Configuration::findOrNew(1);
+        $configuration = Configuration::get();
 
         if (isset($form) && !empty($form)) {
             if (isset($form['password'])
@@ -51,7 +51,7 @@ class AdminMain extends \Movim\Widget\Base
     {
         $l = Movim\i18n\Locale::start();
 
-        $this->view->assign('conf', Configuration::findOrNew(1));
+        $this->view->assign('conf', Configuration::get());
         $this->view->assign('logs', [
                 0 => $this->__('log.empty'),
                 1 => $this->__('log.syslog'),

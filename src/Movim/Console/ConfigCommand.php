@@ -81,7 +81,7 @@ class ConfigCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $configuration = Configuration::findOrNew(1);
+        $configuration = Configuration::get();
 
         foreach ($input->getOptions() as $key => $value) {
             if (in_array($key, $configuration->fillable) && isset($value)) {

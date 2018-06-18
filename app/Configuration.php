@@ -8,6 +8,8 @@ class Configuration extends Model
 {
     protected $table = 'configuration';
 
+    private static $instance = null;
+
     public $fillable = [
         'description',
         'info',
@@ -33,6 +35,16 @@ class Configuration extends Model
         'locale'                => 'en',
         'xmppwhitelist'         => null
     ];
+
+    public static function get()
+    {
+        if (self::$instance != null) {
+            return self::$instance;
+        }
+
+        self::$instance = self::find(1);
+        return self::$instance;
+    }
 
     public function setPasswordAttribute($value)
     {

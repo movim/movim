@@ -80,7 +80,7 @@ class DaemonCommand extends Command
 
         $baseuri = rtrim($input->getOption('url'), '/') . '/';
 
-        $configuration = Configuration::findOrNew(1);
+        $configuration = Configuration::get();
 
         if (empty($configuration->username) || empty($configuration->password)) {
             $output->writeln('<comment>Please set a username and password for the admin panel (' . $baseuri . '?admin)</comment>');

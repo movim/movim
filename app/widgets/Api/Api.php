@@ -22,7 +22,7 @@ class Api extends Base
 
     function ajaxUnregister()
     {
-        $configuration = Configuration::findOrNew(1);
+        $configuration = Configuration::get();
 
         $configuration->unregister = !$configuration->unregister;
         $configuration->save();
@@ -42,7 +42,7 @@ class Api extends Base
         $json = requestURL(MOVIM_API.'pods/status', 2, ['url' => BASE_URI]);
         $json = json_decode($json);
 
-        $configuration = Configuration::findOrNew(1);
+        $configuration = Configuration::get();
 
         if (isset($json)) {
             $this->view->assign('json', $json);

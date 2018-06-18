@@ -19,7 +19,7 @@ class Subscribe extends Base
     {
         $json = requestURL(MOVIM_API.'servers', 3, false, true);
         $json = json_decode($json);
-        $this->view->assign('config', Configuration::findOrNew(1));
+        $this->view->assign('config', Configuration::get());
 
         if (is_object($json) && $json->status == 200) {
             $this->view->assign('servers', $json->servers);

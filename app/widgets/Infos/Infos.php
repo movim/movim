@@ -8,7 +8,7 @@ class Infos extends Base
 {
     function display()
     {
-        $configuration = Configuration::findOrNew(1);
+        $configuration = Configuration::get();
         $connected = (int)requestURL('http://localhost:1560/started/', 2);
 
         $infos = [

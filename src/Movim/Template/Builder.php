@@ -23,7 +23,7 @@ class Builder
      */
     function __construct()
     {
-        $this->theme = Configuration::findOrNew(1)->theme;
+        $this->theme = Configuration::get()->theme;
         $this->user = \App\User::me();
     }
 
@@ -177,7 +177,7 @@ class Builder
         } else {
             $meta = $dom->createElement('meta');
             $meta->setAttribute('name', 'description');
-            $meta->setAttribute('content', Configuration::findOrNew(1)->description);
+            $meta->setAttribute('content', Configuration::get()->description);
             $metas->appendChild($meta);
         }
 

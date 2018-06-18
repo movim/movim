@@ -139,7 +139,7 @@ class Post extends Model
 
     public function scopeRestrictUserHost($query)
     {
-        $configuration = Configuration::findOrNew(1);
+        $configuration = Configuration::get();
 
         if ($configuration->restrictsuggestions) {
             $query->whereIn('id', function($query) {

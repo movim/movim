@@ -49,7 +49,7 @@ class Login extends Base
 
     function display()
     {
-        $configuration = Configuration::findOrNew(1);
+        $configuration = Configuration::get();
 
         $this->view->assign('info',     $configuration->info);
         $this->view->assign('whitelist',$configuration->xmppwhitelist);
@@ -180,7 +180,7 @@ class Login extends Base
     private function doLogin($login, $password, $deviceId = false)
     {
         // We get the Server Configuration
-        $configuration = Configuration::findOrNew(1);
+        $configuration = Configuration::get();
 
         // First we check the form
         $validate_login   = Validator::stringType()->length(1, 254);

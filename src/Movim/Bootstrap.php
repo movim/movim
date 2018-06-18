@@ -241,7 +241,7 @@ class Bootstrap
             $l->detect();
             $l->loadPo();
         } else {
-            $l->load(Configuration::findOrNew(1)->locale);
+            $l->load(Configuration::get()->locale);
         }
     }
 
@@ -270,7 +270,7 @@ class Bootstrap
 
     private function setLogLevel()
     {
-        define('LOG_LEVEL', (int)Configuration::findOrNew(1)->loglevel);
+        define('LOG_LEVEL', (int)Configuration::get()->loglevel);
     }
 
     private function startingSession()

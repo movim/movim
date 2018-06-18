@@ -81,7 +81,7 @@ class Emoji
             $img->setAttribute('class', 'emoji');
             $img->setAttribute('alt', $this->_emoji[$astext]);
             $img->setAttribute('src', BASE_URI . 'themes/' .
-                \App\Configuration::findOrNew(1)->theme .
+                \App\Configuration::get()->theme .
                 '/img/emojis/svg/' . $astext . '.svg');
 
             return $dom->saveXML($dom->documentElement);
