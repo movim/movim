@@ -7,7 +7,7 @@
     font-size: 2rem;
 }
 
-#caps_widget table tr:not(:first-child):hover{
+#caps_widget table tbody tr:hover{
     background-color: rgba(0, 0, 0, 0.1);
 }
 
