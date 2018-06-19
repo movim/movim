@@ -90,7 +90,7 @@ class Capability extends Model
         if ($this->type == 'bot') return 'memory';
         if ($this->type == 'console') return 'video_label';
         if ($this->type == 'web') {
-            if ($this->type == 'web') {
+            if ($this->name == 'Movim') {
                 return 'cloud_queue';
             }
 
