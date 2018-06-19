@@ -22,6 +22,18 @@ class Caps extends \Movim\Widget\Base
             </td>';
     }
 
+    function getCapabilityName($node)
+    {
+        $capability = App\Capability::where('node', 'like', $node . '%')->first();
+
+        if ($capability) {
+            $parts = explode(' ', $capability->name);
+            return reset($parts);
+        } else {
+            return $node;
+        }
+    }
+
     function display()
     {
         $clients = App\Capability::where('category', 'client')->orderBy('name')->get();
@@ -51,7 +63,26 @@ class Caps extends \Movim\Widget\Base
 
         $this->_nslist = getXepNamespace();
 
+        $presences = App\Presence::where('node', '!=', '')
+                                 ->where('resource', '!=', '')
+                                 ->orderBy('node')
+                                 ->pluck('node')->toArray();
+        $stats = [];
+        $total = 0;
+
+        foreach ($presences as $presence) {
+            list($client, $version) = explode('#', $presence);
+            if (!isset($stats[$client])) $stats[$client] = 0;
+
+            $stats[$client]++;
+            $total++;
+        }
+
+        arsort($stats);
+
         $this->view->assign('table', $this->_table);
         $this->view->assign('nslist', $this->_nslist);
+        $this->view->assign('stats', $stats);
+        $this->view->assign('total', $total);
     }
 }
