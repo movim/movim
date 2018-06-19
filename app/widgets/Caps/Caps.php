@@ -24,14 +24,16 @@ class Caps extends \Movim\Widget\Base
 
     function getCapabilityName($node)
     {
-        $capability = App\Capability::where('node', 'like', $node . '%')->first();
+        //return $node;
 
-        if ($capability) {
+        $capability = App\Capability::where('node', 'like', '%' . $node . '%')->first();
+
+        if ($capability && !filter_var($capability->name, FILTER_VALIDATE_URL)) {
             $parts = explode(' ', $capability->name);
             return reset($parts);
-        } else {
-            return $node;
         }
+
+        return $node;
     }
 
     function display()
@@ -72,9 +74,13 @@ class Caps extends \Movim\Widget\Base
 
         foreach ($presences as $presence) {
             list($client, $version) = explode('#', $presence);
-            if (!isset($stats[$client])) $stats[$client] = 0;
+            $parts = explode('/', $client);
+            $part = isset($parts[2]) ? $parts[2] : $client;
+            //var_dump($parts[2]);
+            //$client = str_replace(['http://', 'https://', '/'], '', $client);
+            if (!isset($stats[$part])) $stats[$part] = 0;
 
-            $stats[$client]++;
+            $stats[$part]++;
             $total++;
         }
 

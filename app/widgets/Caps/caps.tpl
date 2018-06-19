@@ -1,10 +1,12 @@
 <div id="caps_widget" class="tabelem paddedtop" title="Capabilities">
     <h1>Statistics</h1>
 
+    <p>From {$total} users presences retrieved.</p>
+
     <table>
         <thead>
             <tr>
-                <th style="width: 40rem">Client</th>
+                <th style="width: 25rem;">Client</th>
                 <th>Percentage</th>
             </tr>
         </thead>
@@ -12,7 +14,7 @@
         <tbody>
             {loop="$stats"}
             <tr>
-                <td>{$c->getCapabilityName($key)}</td>
+                <td style="text-align: right;">{$c->getCapabilityName($key)}</td>
                 <td>{$value/$total*100|round:1}%</td>
             </tr>
             {/loop}
@@ -20,7 +22,6 @@
     </table>
 
     <h1>Capabilities</h1>
-
 
     <h2>Legend</h2>
     <table>
