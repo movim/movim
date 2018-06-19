@@ -13,10 +13,12 @@
 
         <tbody>
             {loop="$stats"}
-            <tr>
-                <td style="text-align: right;">{$c->getCapabilityName($key)}</td>
-                <td>{$value/$total*100|round:1}%</td>
-            </tr>
+                {if="$value/$total*100 > 0.2"}
+                    <tr>
+                        <td style="text-align: right;">{$c->getCapabilityName($key)}</td>
+                        <td>{$value/$total*100|round:1}%</td>
+                    </tr>
+                {/if}
             {/loop}
         </tbody>
     </table>

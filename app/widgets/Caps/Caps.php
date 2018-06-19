@@ -76,8 +76,6 @@ class Caps extends \Movim\Widget\Base
             list($client, $version) = explode('#', $presence);
             $parts = explode('/', $client);
             $part = isset($parts[2]) ? $parts[2] : $client;
-            //var_dump($parts[2]);
-            //$client = str_replace(['http://', 'https://', '/'], '', $client);
             if (!isset($stats[$part])) $stats[$part] = 0;
 
             $stats[$part]++;
