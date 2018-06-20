@@ -65,15 +65,17 @@ class Caps extends \Movim\Widget\Base
 
         $this->_nslist = getXepNamespace();
 
-        $presences = App\Presence::where('node', '!=', '')
+        $presences = App\Presence::select('jid', 'resource', 'node')
+                                 ->where('node', '!=', '')
                                  ->where('resource', '!=', '')
                                  ->orderBy('node')
-                                 ->pluck('node')->toArray();
+                                 ->groupBy('jid', 'resource', 'node')
+                                 ->get();
         $stats = [];
         $total = 0;
 
         foreach ($presences as $presence) {
-            list($client, $version) = explode('#', $presence);
+            list($client, $version) = explode('#', $presence->node);
             $parts = explode('/', $client);
             $part = isset($parts[2]) ? $parts[2] : $client;
             if (!isset($stats[$part])) $stats[$part] = 0;
