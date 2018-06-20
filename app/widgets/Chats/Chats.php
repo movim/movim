@@ -16,8 +16,8 @@ class Chats extends \Movim\Widget\Base
         $this->registerEvent('carbons', 'onMessage');
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('presence', 'onPresence', 'chat');
-        $this->registerEvent('composing', 'onComposing');
-        $this->registerEvent('paused', 'onPaused');
+        $this->registerEvent('composing', 'onComposing', 'chat');
+        $this->registerEvent('paused', 'onPaused', 'chat');
     }
 
     function onMessage($packet)

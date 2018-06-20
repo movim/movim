@@ -292,6 +292,7 @@ ul.tabs > li {
     opacity: 0.6;
     height: 6rem;
     box-sizing: border-box;
+    border-radius: 0.5rem 0.5rem 0 0;
 }
 
 ul.tabs > li > * {

@@ -45,8 +45,10 @@
             </span>
         {/if}
     </p>
-    {if="isset($message)"}
-        {if="preg_match('#^\?OTR#', $message->body)"}
+    {if="$status"}
+        <p class="line">{$status}</p>
+    {elseif="isset($message)"}
+        {if="$message->isOTR()"}
             <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
         {elseif="stripTags($message->body) != ''"}
             <p class="line">{$message->body|stripTags}</p>

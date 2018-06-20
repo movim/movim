@@ -101,6 +101,7 @@ article section content img.big_picture {
     display: block;
     margin: 0rem auto;
     margin-bottom: 1rem;
+    border-radius: 0.25rem;
 }
 
 article section content img.active:hover {
