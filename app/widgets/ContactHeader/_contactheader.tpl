@@ -1,14 +1,17 @@
 <ul class="list middle">
     <li>
         {if="$in_roster"}
-            <span class="control icon active gray" onclick="ContactHeader_ajaxEditContact('{$contact->id|echapJS}')">
+            <span class="control icon active gray" onclick="ContactHeader_ajaxEditContact('{$contact->id|echapJS}')"
+                title="{$c->__('button.edit')}">
                 <i class="material-icons">edit</i>
             </span>
-            <span class="control icon active gray" onclick="ContactHeader_ajaxDeleteContact('{$contact->id|echapJS}')">
+            <span class="control icon active gray" onclick="ContactHeader_ajaxDeleteContact('{$contact->id|echapJS}')"
+                title="{$c->__('button.delete')}">
                 <i class="material-icons">delete</i>
             </span>
         {else}
-            <span class="control icon active gray" onclick="ContactActions_ajaxAddAsk('{$contact->id}')">
+            <span class="control icon active gray" onclick="ContactActions_ajaxAddAsk('{$contact->id}')"
+                title="{$c->__('button.add')}">
                 <i class="material-icons">person_add</i>
             </span>
         {/if}
@@ -24,4 +27,3 @@
         <p class="line">{$contact->id}</p>
     </li>
 </ul>
-

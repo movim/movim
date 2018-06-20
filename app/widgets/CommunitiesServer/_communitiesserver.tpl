@@ -85,6 +85,7 @@
     {/loop}
     </ul>
 {/if}
-<button onclick="CommunitiesServer_ajaxTestAdd('{$server}')" class="button action color">
-    <i class="material-icons">plus</i>
+<button onclick="CommunitiesServer_ajaxTestAdd('{$server}')" class="button action color"
+    title="{$c->__('communitiesserver.add', $server)}">
+    <i class="material-icons">add</i>
 </button>
