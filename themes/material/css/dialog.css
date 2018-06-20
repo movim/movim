@@ -16,6 +16,7 @@
     z-index: 4;
     box-sizing: border-box;
     transform: translateX(0);
+    animation: zoom .2s;
 }
 
 .dialog:empty {

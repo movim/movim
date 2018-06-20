@@ -28,6 +28,7 @@
         </div>
     {/if}
 </ul>
+<br />
 <!--<a onclick="Roster_ajaxDisplaySearch()" class="button action color" title="{$c->__('roster.add_title')}">
     <i class="material-icons">account-add</i>
 </a>-->

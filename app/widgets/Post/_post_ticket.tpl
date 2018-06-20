@@ -2,7 +2,7 @@
     {if="$big && $post->picture != null"}
         <img class="icon thumb" src="{$post->picture->href|protectPicture}"
              srcset="{$post->picture->href} 1280w, {$post->picture->href|protectPicture} 800w"
-             sizes="(min-width: 1280px), 800w" alt="{$post->picture->title}"
+             sizes="(min-width: 1280px), 800w"
         >
     {elseif="!$big"}
     <span class="primary icon thumb color
