@@ -52,7 +52,7 @@
     </li>
     <li>
         <span class="primary icon gray">
-            <i class="material-icons">plus</i>
+            <i class="material-icons">add</i>
         </span>
         <form name="addaffiliation">
             <div>
