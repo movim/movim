@@ -20,4 +20,3 @@
         <?php $this->widget('Chat');?>
     </section>
 </main>
-

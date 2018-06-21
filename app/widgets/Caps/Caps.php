@@ -24,8 +24,6 @@ class Caps extends \Movim\Widget\Base
 
     function getCapabilityName($node)
     {
-        //return $node;
-
         $capability = App\Capability::where('node', 'like', '%' . $node . '%')->first();
 
         if ($capability && !filter_var($capability->name, FILTER_VALIDATE_URL)) {

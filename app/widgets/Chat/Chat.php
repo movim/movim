@@ -786,6 +786,7 @@ class Chat extends \Movim\Widget\Base
         $top = $this->user->session->contacts()->join(DB::raw('(
             select jidfrom as id, count(*) as number
             from messages
+            where published >= \''.date('Y-m-d', strtotime('-4 week')).'\'
             group by jidfrom) as top
             '), 'top.id', '=', 'rosters.jid')
             ->join(DB::raw('(
@@ -796,10 +797,10 @@ class Chat extends \Movim\Widget\Base
             ->whereNotIn('rosters.jid', array_keys($chats))
             ->orderBy('presences.value')
             ->orderBy('top.number', 'desc')
+            ->with('presence')
             ->take(8)
             ->get();
 
-        $view->assign('presencestxt', getPresencesTxt());
         $view->assign('conferences', $conferences);
         $view->assign('top', $top);
 

@@ -14,7 +14,7 @@
 
 <div class="placeholder icon">
     <h1>{$c->__('chats.empty_title')}</h1>
-    <h4>{$c->___('chats.empty', '<i class="material-icons">plus</i>', '<a href="'.$c->route('contact').'"><i class="material-icons">people</i> ', '</a>')}</h4>
+    <h4>{$c->___('chats.empty', '<i class="material-icons">add</i>', '<a href="'.$c->route('contact').'"><i class="material-icons">people</i> ', '</a>')}</h4>
 </div>
 
 <a class="button action color" onclick="MovimTpl.toggleActionButton()" title="{$c->__('button.chat')}">

@@ -2,7 +2,6 @@
     id="{$contact->jid|cleanupId}-chat-item"
     data-jid="{$contact->jid}"
     class="
-        {if="isset($message)"}condensed{/if}
         {if="$roster && $roster->presence"}
             {if="$roster->presence->value > 4"}faded{/if}
             {if="$roster->presence->last > 60"} inactive{/if}
