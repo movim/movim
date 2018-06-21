@@ -797,7 +797,7 @@ class Chat extends \Movim\Widget\Base
             ->whereNotIn('rosters.jid', array_keys($chats))
             ->orderBy('presences.value')
             ->orderBy('top.number', 'desc')
-            ->with('presence')
+            ->with('presence.capability')
             ->take(8)
             ->get();
 

@@ -26,7 +26,15 @@
                     <i class="material-icons">people</i>
                 </span>
             {/if}
-            <p class="line">{$value->truename}</p>
+            <p class="line">
+                {$value->truename}
+
+                {if="$value->presence && $value->presence->capability"}
+                    <span class="second" title="{$value->presence->capability->name}">
+                        <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
+                    </span>
+                {/if}
+            </p>
             <p class="line">{$value->jid}</p>
         </li>
     {/loop}
