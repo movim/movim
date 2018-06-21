@@ -3,11 +3,10 @@
 .dialog {
     position: fixed;
     top: 5%;
-    left: 50%;
+    left: calc(50% - 25rem);
     height: initial;
     max-height: 90%;
     width: 50rem;
-    margin-left: -25rem;
 
     overflow: hidden;
 
@@ -15,7 +14,6 @@
     border-radius: 0.5rem;
     z-index: 4;
     box-sizing: border-box;
-    transform: translateX(0);
     animation: zoom .2s;
 }
 
@@ -62,6 +60,6 @@
         width: 90%;
         min-height: 0;
         min-width: 0;
-        margin-left: -45%;
+        left: 5%;
     }
 }
