@@ -47,5 +47,6 @@ var Chats = {
 };
 
 MovimWebsocket.attach(function() {
+    Chats_ajaxGet();
     Notification.current('chat');
 });
