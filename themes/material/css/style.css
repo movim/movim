@@ -403,6 +403,18 @@ hr:not(.clear) {
     background-position: center 4em;
 }
 
+@media screen and (max-width: 1024px) {
+    .placeholder.icon {
+        background-size: 15rem;
+        padding-top: 22rem;
+    }
+
+    .placeholder h1 {
+        font-size: 3rem;
+        line-height: 3.5rem;
+    }
+}
+
 .icon.news      { background-image: url(../img/icons/receipt.svg); }
 .icon.forum     { background-image: url(../img/icons/forum.svg); }
 .icon.contacts  { background-image: url(../img/icons/group.svg); }
