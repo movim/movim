@@ -12,7 +12,8 @@
     {$c->prepareChats()}
 </ul>
 
-<div class="placeholder icon">
+<div class="placeholder">
+    <i class="material-icons">chat</i>
     <h1>{$c->__('chats.empty_title')}</h1>
     <h4>{$c->___('chats.empty', '<i class="material-icons">add</i>', '<a href="'.$c->route('contact').'"><i class="material-icons">people</i> ', '</a>')}</h4>
 </div>

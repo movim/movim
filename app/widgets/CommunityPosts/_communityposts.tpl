@@ -8,7 +8,7 @@
         {/if}
     {/loop}
     </ul>
-{elseif="$publicposts != false"}
+{elseif="$publicposts->isNotEmpty()"}
     <ul class="list card shadow">
     {loop="$publicposts"}
         <div id="{$value->nodeid|cleanupId}" class="block large">
@@ -18,6 +18,7 @@
     </ul>
 {else}
     <div class="placeholder icon blog">
+        <i class="material-icons">receipt</i>
         <h4>{$c->__('post.empty')}</h4>
     </div>
 {/if}

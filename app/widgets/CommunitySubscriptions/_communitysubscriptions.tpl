@@ -1,6 +1,7 @@
-{if="$subscriptions == null"}
+{if="$subscriptions->isEmpty()"}
     <ul class="thick">
-        <div class="placeholder icon bookmark">
+        <div class="placeholder">
+            <i class="material-icons">bookmark</i>
             <h1>{$c->__('communitysubscriptions.empty_title')}</h1>
             <h4>{$c->__('communitysubscriptions.empty_text1')} {$c->__('communitysubscriptions.empty_text2')}</h4>
         </li>

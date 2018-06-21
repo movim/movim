@@ -1,17 +1,15 @@
 <header>
     <ul class="list">
         <li>
-            <span class="primary icon bubble gray">
-                <i class="material-icons">search</i>
-            </span>
-            {if="count($contacts) > 5"}
-            <form onsubmit="return false;">
-                <div onclick="Roster.init();">
-                    <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
-                </div>
-            </form>
-            {else}
-                <p class="line">{$c->__('page.contacts')}</p>
+                {if="count($contacts) > 5"}
+                <span class="primary icon bubble gray">
+                    <i class="material-icons">search</i>
+                </span>
+                <form onsubmit="return false;">
+                    <div onclick="Roster.init();">
+                        <input type="text" name="search" id="rostersearch" autocomplete="off" placeholder="{$c->__('roster.search');}"/>
+                    </div>
+                </form>
             {/if}
         </li>
     </ul>
@@ -21,8 +19,9 @@
         {$c->prepareItem($value)}
     {/loop}
 
-    {if="empty($contacts)"}
-        <div ng-if="contacts == null" class="empty placeholder icon contacts">
+    {if="$contacts->isEmpty()"}
+        <div class="placeholder empty">
+            <i class="material-icons">people</i>
             <h1>{$c->__('roster.no_contacts_title')}</h1>
             <h4>{$c->__('roster.no_contacts_text')}</h4>
         </div>

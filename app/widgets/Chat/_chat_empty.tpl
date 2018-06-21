@@ -1,4 +1,5 @@
-<div class="placeholder icon">
+<div class="placeholder">
+    <i class="material-icons">forum</i>
 </div>
 
 <ul class="list flex middle active">

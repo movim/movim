@@ -375,16 +375,22 @@ hr:not(.clear) {
 .placeholder {
     text-align: center;
     font-size: 1.2em;
-    max-width: 400px;
-    padding: 0 2rem;
-    padding-bottom: 2rem;
+    max-width: 55rem;
     margin: 0 auto;
+    padding: 4rem;
+    box-sizing: border-box;
+}
+
+.placeholder > i:first-child {
+    font-size: 18rem;
+    opacity: 0.3;
 }
 
 .placeholder h1 {
     color: #888;
-    line-height: 5rem;
-    padding-bottom: 2rem;
+    font-size: 3rem;
+    line-height: 4rem;
+    margin-bottom: 1rem;
 }
 
 .placeholder h4 {
@@ -394,39 +400,6 @@ hr:not(.clear) {
 .placeholder p {
     text-align: center;
 }
-
-.placeholder.icon {
-    background-image: url(../img/icons/chat.svg);
-    background-size: 25rem;
-    padding-top: 30rem;
-    background-repeat: no-repeat;
-    background-position: center 4em;
-}
-
-@media screen and (max-width: 1024px) {
-    .placeholder.icon {
-        background-size: 15rem;
-        padding-top: 22rem;
-    }
-
-    .placeholder h1 {
-        font-size: 3rem;
-        line-height: 3.5rem;
-    }
-}
-
-.icon.news      { background-image: url(../img/icons/receipt.svg); }
-.icon.forum     { background-image: url(../img/icons/forum.svg); }
-.icon.contacts  { background-image: url(../img/icons/group.svg); }
-.icon.account   { background-image: url(../img/icons/perm_identity.svg); }
-.icon.pages     { background-image: url(../img/icons/pages.svg); }
-.icon.bookmark  { background-image: url(../img/icons/bookmark.svg); }
-.icon.clipboard { background-image: url(../img/icons/person.svg); }
-.icon.search    { background-image: url(../img/icons/search.svg); }
-.icon.blog      { background-image: url(../img/icons/description.svg); }
-.icon.gallery   { background-image: url(../img/icons/collections.svg); }
-.icon.share     { background-image: url(../img/icons/share.svg); }
-.icon.chat      { background-image: url(../img/icons/comment.svg); }
 
 /* Padded */
 

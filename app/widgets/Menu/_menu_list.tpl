@@ -51,7 +51,7 @@
     </ul>
 {/if}
 
-{if="$items"}
+{if="$items->isNotEmpty()"}
     {if="$page == 0"}
         <div id="menu_refresh"></div>
         <div class="list card shadow" id="menu_wrapper">
@@ -81,7 +81,8 @@
     <br/>
 
     <ul class="thick active divided spaced" id="menu_wrapper">
-        <div class="placeholder icon news">
+        <div class="placeholder">
+            <i class="material-icons">receipt</i>
             <h1>{$c->__('menu.empty_title')}</h1>
             <h4>{$c->__('menu.empty')}</h4>
         </div>
