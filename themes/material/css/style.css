@@ -511,3 +511,8 @@ div#spinner{
     from { transform: scale(0.9); opacity: 0; }
     to   { transform: scale(1); opacity: 1; }
 }
+
+@keyframes top-right {
+    from { transform: translate(15%, -25%); }
+    to   { transform: translate(0, 0); }
+}
