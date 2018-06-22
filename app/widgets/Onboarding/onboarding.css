@@ -1,16 +1,18 @@
-#onboarding .placeholder.icon {
+#onboarding .placeholder {
     background-position: center 1rem;
+    background-size: 24rem;
+    background-repeat: no-repeat;
     padding-top: 26rem;
 }
 
-#onboarding.notifications .placeholder.icon {
+#onboarding.notifications .placeholder {
     background-image: url(img/notifications.svg);
 }
 
-#onboarding.public .placeholder.icon {
+#onboarding.public .placeholder {
     background-image: url(img/public.svg);
 }
 
-#onboarding.popups .placeholder.icon {
+#onboarding.popups .placeholder {
     background-image: url(img/popups.svg);
 }

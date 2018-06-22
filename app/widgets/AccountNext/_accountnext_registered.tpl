@@ -1,4 +1,5 @@
-<div class="placeholder icon clipboard">
+<div class="placeholder">
+    <i class="material-icons">account_box</i>
     <h4>{$c->__('create.successfull')}</h4>
 
     <h2 id="username">username@server.com</h2>

@@ -1,9 +1,10 @@
 <div id="subscribe">
     <div class="flex">
         <div class="block on_desktop">
-            <div class="placeholder icon account">
-            <h4>{$c->__('create.title')}</h4>
-            <h4>{$c->__('create.placeholder')}</h4>
+            <div class="placeholder">
+                <i class="material-icons">person_add</i>
+                <h4>{$c->__('create.title')}</h4>
+                <h4>{$c->__('create.placeholder')}</h4>
             </div>
         </div>
 

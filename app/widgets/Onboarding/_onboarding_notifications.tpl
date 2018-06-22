@@ -1,5 +1,5 @@
 <section id="onboarding" class="notifications">
-    <div class="placeholder icon">
+    <div class="placeholder">
         <h3>{$c->__('onboarding.notifications_title')}</h3>
         <h4>{$c->__('onboarding.notifications_text')}</h4>
         <h4>{$c->__('onboarding.notifications_text_second')}</h4>
