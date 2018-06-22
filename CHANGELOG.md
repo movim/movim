@@ -36,7 +36,11 @@ v0.14 (trunk)
  * Fix the public pages metadata
  * Update the MaterialIcons font to the Google one
  * Cleanup the CSS
- * Index some columns in the database (Message) to improve performances
+ * Index some columns in the database (Message, Attachements) to improve performances
+ * Allow to pick no pictures when sharing a link
+ * Add some animations to the CSS
+ * Replace the placeholders with the default icon font
+ * Improve the search feature
 
 v0.13
 ---------------------------
@@ -425,4 +429,3 @@ v0.1.0
  * Configuration
  * XMPP connection
  * Widget system
-
