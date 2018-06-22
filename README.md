@@ -1,5 +1,5 @@
-Movim - Kickass Social Network
-==================================================
+Movim - Decentralized social platform
+=====================================
 
 Movim is a decentralized social platform, written in PHP and HTML5 and based on the XMPP standard protocol.
 
@@ -13,8 +13,8 @@ Support Us
 ----------
 You can help Movim by:
 * Doing a one time donation using Paypal: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=8QHPJDAQXT9UC)
-* Helping us covering our monthly costs on our official Patreon page: [![Donate](https://img.shields.io/badge/Patreon-Become%20a%20Patron-orange.svg)](https://www.patreon.com/movim), or on
-Liberapay [![Donate](https://img.shields.io/liberapay/receives/movim.svg)](https://liberapay.com/movim/donate)
+* Helping us covering our monthly costs on our official Patreon page: [![Donate](https://img.shields.io/badge/Patreon-Become%20a%20Patron-orange.svg)](https://www.patreon.com/movim)
+* …or on Liberapay [![Donate](https://img.shields.io/liberapay/receives/movim.svg)](https://liberapay.com/movim/donate)
 
 
 You can also support us on:
