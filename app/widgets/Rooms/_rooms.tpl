@@ -82,7 +82,8 @@
     {/if}
 {else}
     {if="$c->getView() == 'room' && $room != false"}
-        <div class="placeholder icon">
+        <div class="placeholder">
+            <i class="material-icons">people</i>
             <h1>{$c->__('room.anonymous_title')}</h1>
             <h4>{$c->__('room.anonymous_login', $room)}</h4>
         </div>
@@ -109,12 +110,14 @@
             Rooms.anonymous_room = '{$room}';
         </script>
     {elseif="$c->getView() == 'room'"}
-        <div class="placeholder icon">
+        <div class="placeholder">
+            <i class="material-icons">people</i>
             <h1>{$c->__('room.anonymous_title')}</h1>
             <h4>{$c->__('room.no_room')}</h4>
         </div>
     {else}
-        <div class="placeholder icon">
+        <div class="placeholder">
+            <i class="material-icons">people</i>
             <h1>{$c->__('room.anonymous_title')}</h1>
             <h4>{$c->__('room.anonymous_text1')}</h4>
             <h4>{$c->__('room.anonymous_text2')}</h4>

@@ -9,20 +9,21 @@
                     {$nodes|count}
                 </span>
             {/if}
-            <p class="center">
+            <p>
                 {if="isset($item->name)"}
                     {$item->name}
                 {else}
                     {$c->__('page.communities')}
                 {/if}
             </p>
-            <p class="center line">{$server}</p>
+            <p class="line">{$server}</p>
         </li>
     </ul>
 </header>
-{if="$nodes == null"}
+{if="$nodes->isEmpty()"}
     <ul class="thick">
-        <div class="placeholder icon pages">
+        <div class="placeholder">
+            <i class="material-icons">group_work</i>
             <h1>{$c->__('error.oops')}</h1>
             <h4>{$c->__('communitiesserver.empty_server')}</h4>
         </li>
