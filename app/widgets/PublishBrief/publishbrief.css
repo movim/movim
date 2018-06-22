@@ -20,6 +20,15 @@ header#publishbrief form > div textarea {
     padding-top: 100%;
     background-size: cover;
     background-position: center center;
+    position: relative;
+}
+
+#publishbriefimages li div i {
+    position: absolute;
+    text-align: center;
+    width: calc(100% - 4rem);
+    font-size: 10rem;
+    margin-top: calc(-50% - 5rem);
 }
 
 #publishbriefimages li div span {

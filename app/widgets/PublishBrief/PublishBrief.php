@@ -196,7 +196,8 @@ class PublishBrief extends \Movim\Widget\Base
 
                     $imagenumber = $form->imagenumber->value;
 
-                    if ($embed->type == 'photo' || isset($embed->images)) {
+                    if (($embed->type == 'photo' || isset($embed->images))
+                    && $imagenumber != 'none') {
                         $p->setImage($embed->images[$imagenumber]['url'],
                                      $embed->title,
                                      $embed->images[$imagenumber]['mime']);
