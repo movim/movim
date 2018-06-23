@@ -4,14 +4,13 @@
     </span>
     {if="!empty($embed->images)"}
         <span class="primary icon thumb active color gray"
-            {if="count($embed->images) > 1"}
-                onclick="PublishBrief_ajaxEmbedChooseImage('{$embed->url}')"
-            {/if}
+            onclick="PublishBrief_ajaxEmbedChooseImage('{$embed->url}')"
             style="background-image: url({$embed->images[$imagenumber]['url']})"
-            title="{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']} - {$embed->images[$imagenumber]['size']|sizeToCleanSize}">
-            {if="count($embed->images) > 1"}
-                <i class="material-icons">collections</i>
+            {if="$imagenumber != 'none'"}
+                title="{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']} - {$embed->images[$imagenumber]['size']|sizeToCleanSize}"
             {/if}
+            >
+            <i class="material-icons">collections</i>
         </span>
     {else}
         <span class="primary icon bubble gray">
