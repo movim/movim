@@ -42,7 +42,7 @@ class Configuration extends Model
             return self::$instance;
         }
 
-        self::$instance = self::find(1);
+        self::$instance = self::findOrNew(1);
         return self::$instance;
     }
 
