@@ -10,6 +10,7 @@ class Roster extends Model
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'jid'];
     protected $fillable = ['jid', 'name', 'ask', 'subscription', 'group'];
+    public $with = ['contact'];
 
     protected $attributes = [
         'session_id'    => SESSION_ID
