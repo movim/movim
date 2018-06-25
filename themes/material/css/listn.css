@@ -126,6 +126,12 @@ ul li div.bubble:after {
 
 /* Size automagicaly the content */
 
+ul.list li > p.filler:before {
+    content: "…";
+    width: 100%;
+    display: block;
+}
+
 ul.list li > p {
     box-sizing: border-box;
     width: auto;

@@ -9,7 +9,7 @@
 </header>
 
 <ul id="chats_widget_list" class="list middle active divided spaced">
-    {$c->prepareChats()}
+    {$c->prepareChats(true)}
 </ul>
 
 <div class="placeholder">

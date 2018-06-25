@@ -153,7 +153,7 @@ class Chats extends \Movim\Widget\Base
         $this->rpc('MovimTpl.hidePanel');
     }
 
-    function prepareChats()
+    function prepareChats($emptyItems = false)
     {
         $chats = \App\Cache::c('chats');
 
@@ -164,8 +164,16 @@ class Chats extends \Movim\Widget\Base
         }
 
         $view->assign('chats', array_reverse($chats));
+        $view->assign('emptyItems', $emptyItems);
 
         return $view->draw('_chats', true);
+    }
+
+    function prepareEmptyChat($jid)
+    {
+        $view = $this->tpl();
+        $view->assign('jid', $jid);
+        return $view->draw('_chats_empty_item', true);
     }
 
     function prepareChat($jid, $status = null)
