@@ -53,7 +53,7 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0050](https://xmpp.org/extensions/xep-0050.html) | Ad-Hoc Commands | Yes | |
 | [XEP-0054](https://xmpp.org/extensions/xep-0054.html) | vcard-temp | Yes | Add Gender + Marital elements (non-standard) |
 | [XEP-0059](https://xmpp.org/extensions/xep-0059.html) | Result Set Management | Yes | To query Pubsub and PEP items |
-| [XEP-0060](https://xmpp.org/extensions/xep-0060.html) | Publish-Subscribe | Yes | Implemented for the Groups + Microblog |
+| [XEP-0060](https://xmpp.org/extensions/xep-0060.html) | Publish-Subscribe | Yes | Implemented for the Communities + Microblog (see Pubsub features implemented bellow) |
 | [XEP-0070](https://xmpp.org/extensions/xep-0070.html) | Verifying HTTP Requests via XMPP | Yes | Only the message part |
 | [XEP-0071](https://xmpp.org/extensions/xep-0071.html) | XHTML-IM | Yes | Used for Pubsub publication |
 | [XEP-0077](https://xmpp.org/extensions/xep-0077.html) | In-Band Registration | Yes | jabber: x:oob support |
@@ -87,6 +87,31 @@ Moxl can adapt to the directives of the XMPP server and lets you connect seamles
 | [XEP-0334](https://xmpp.org/extensions/xep-0334.html) | Message Processing Hints | Yes | |
 | [XEP-0363](https://xmpp.org/extensions/xep-0363.html) | HTTP File Upload | Yes | |
 | [XEP-0385](https://xmpp.org/extensions/xep-0385.html) | Stateless Inline Media Sharing (SIMS) | Yes | Partially, working with XEP-0363 |
+
+#### Pubsub support
+
+Movim is implementing [XEP-0060 - Publish-Subscribe](https://xmpp.org/extensions/xep-0060.html) only partially, here are the parts actually handled by Moxl.
+
+All the items mentionned in this list and their subitems are normally fully implemented in Moxl (except some specific error handling that are trigerring a general error). All the *.* items that are not mentionned are not implemented.
+
+* 5.2 Discover Nodes (collections are not supported)
+* 5.4 Discover Node Metadata (pubsub#title, pubsub#num_subscribers and pubsub#description especially)
+* 5.6 Retrieve Subscriptions (the subid is not handled)
+* 5.7 Retrieve Affiliations
+* 6.1 Subscribe to a Node (6.1.5 Configuration Required and 6.1.6 Multiple Subscriptions not supported)
+* 6.2 Unsubscribe from a Node
+* 6.5 Retrive Items from a Node (items are requested with XEP-0059 - Result Set Management)
+* 6.5.8 Requesting a Particular Item (to resolve or refresh some particual items)
+* 7.1 Publish an Item to a Node (all the items published are Atom entries for the Communities and Microblog)
+* 7.1.2.1 Notification With Payload
+* 7.1.2.2 Notification Without Payload (Movim is then resolving the Payload if it's not cached yet using 6.5.8)
+* 7.2 Delete an Item from a Node
+* 8.1 Create a Node
+* 8.1.2 Create a Node With Default Configuration (with pubsub#access_model, pubsub#persist_items, pubsub#max_items)
+* 8.2 Configure a Node
+* 8.4 Delete a Node
+* 8.9 Manage Affiliations (except 8.9.2.4 Multiple Simultaneous Modifications)
+* 9.2 Filtered Notifications (+notify for Microblog and some PEP nodes)
 
 ## Internal Operation
 ### Structure of the library
