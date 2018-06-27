@@ -128,8 +128,17 @@ ul li div.bubble:after {
 
 ul.list li > p.filler:before {
     content: "…";
+    color: transparent;
     width: 100%;
     display: block;
+    background-image: linear-gradient(to right, rgba(var(--movim-font), 0.15), rgba(var(--movim-font), 0.10));
+    background-size: 100% 40%;
+    background-position: center left;
+    background-repeat: no-repeat;
+}
+
+ul.list li > p.filler + p.filler:before {
+    background-size: 70% 40%;
 }
 
 ul.list li > p {
