@@ -91,9 +91,9 @@
             </p>
             <p class="all">
                 {if="$value->contentraw"}
-                    {$value->contentraw|addHashtagsLinks|addHFR}
+                    {$value->contentraw|addHashtagsLinks|addHFR|prepareString}
                 {else}
-                    {$value->title|addUrls|addHashtagsLinks|nl2br}
+                    {$value->title|addUrls|addHashtagsLinks|nl2br|prepareString}
                 {/if}
             </p>
         </li>

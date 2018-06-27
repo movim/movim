@@ -141,7 +141,7 @@
             </p>
             {if="$post->isBrief()"}
                 <p class="normal">
-                    {$post->getTitle()|addUrls|addHashtagsLinks|nl2br}
+                    {$post->getTitle()|addUrls|addHashtagsLinks|nl2br|prepareString}
                 </p>
             {/if}
         </li>

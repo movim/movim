@@ -29,12 +29,12 @@
     {/if}
     <p class="line" {if="isset($post->title)"}title="{$post->title}"{/if}>
         {if="isset($post->title)"}
-            {$post->title}
+            {$post->title|prepareString}
         {else}
             {$post->node}
         {/if}
     </p>
-    <p dir="auto">{$post->getSummary()}</p>
+    <p dir="auto">{$post->getSummary()|prepareString}</p>
     <p>
         {if="$post->contact"}
             <a href="{$c->route('contact', $post->contact->jid)}">
