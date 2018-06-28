@@ -43,6 +43,14 @@
             "php": "7.0"
         }
     },
+    "scripts": {
+        "movim:migrate": "vendor/bin/phinx migrate --ansi",
+        "movim:rollback": "vendor/bin/phinx rollback --ansi"
+    },
+    "scripts-descriptions": {
+        "movim:migrate": "Migrate the database",
+        "movim:rollback": "Rollback the changes"
+    },
     "extra": {
         "merge-plugin": {
             "include": [
