@@ -143,10 +143,10 @@ class Locale {
             arsort($langs, SORT_NUMERIC);
         }
 
-        while((list($key, $value) = each($langs))) {
+        foreach ($langs as $key => $value) {
             if (file_exists(LOCALES_PATH . $key . '.po')) {
                 $this->language = $key;
-                return;
+                break;
             }
 
             $exploded = explode('-', $key);
@@ -154,7 +154,7 @@ class Locale {
 
             if (file_exists(LOCALES_PATH . $key . '.po')) {
                 $this->language = $key;
-                return;
+                break;
             }
 
             $this->language = 'en';
