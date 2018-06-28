@@ -7,7 +7,7 @@ namespace Moxl\Stanza;
 
 class Storage
 {
-    private function prepareQuery($xmlns, $data = false)
+    private static function prepareQuery($xmlns, $data = false)
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
         $query = $dom->createElementNS('jabber:iq:private', 'query');
