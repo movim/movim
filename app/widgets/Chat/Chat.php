@@ -16,7 +16,6 @@ use Respect\Validation\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\Picture;
-use Movim\Session;
 
 include_once WIDGETS_PATH.'ContactActions/ContactActions.php';
 
@@ -337,14 +336,12 @@ class Chat extends \Movim\Widget\Base
         // TODO: make this boolean configurable
         $m->markable = true;
 
-        $session    = Session::start();
-
         $m->type    = 'chat';
-        $m->resource = $session->get('resource');
+        $m->resource = $this->user->session->resource;
 
         if ($muc) {
             $m->type        = 'groupchat';
-            $m->resource    = $session->get('username');
+            $m->resource    = $this->user->session->username;
             $m->jidfrom     = $to;
         }
 

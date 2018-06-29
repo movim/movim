@@ -62,8 +62,7 @@ class Conference extends Model
     public function getConnectedAttribute()
     {
         if (!$this->nick) {
-            $session = \Movim\Session::start();
-            $resource = $session->get('username');
+            $resource = \App\User::me()->session->username;
         } else {
             $resource = $this->nick;
         }

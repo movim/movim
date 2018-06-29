@@ -7,7 +7,6 @@ use Moxl\Xec\Action\BOB\Answer;
 use Respect\Validation\Validator;
 
 use Movim\Picture;
-use Movim\Session;
 
 class Stickers extends \Movim\Widget\Base
 {
@@ -65,11 +64,9 @@ class Stickers extends \Movim\Widget\Base
 
         $m->published = gmdate('Y-m-d H:i:s');
 
-        $session    = Session::start();
-
         $m->id      = generateUUID();
         $m->type    = 'chat';
-        $m->resource = $session->get('resource');
+        $m->resource = $this->user->session->resource;
 
         // Sending the sticker
         $html = "<p><img alt='Sticker' src='cid:sha1+".$key."@bob.xmpp.org'/></p>";

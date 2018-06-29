@@ -11,7 +11,6 @@ use App\User;
 use Movim\Widget\Base;
 
 use Movim\Cookie;
-use Movim\Session;
 
 class Login extends Base
 {

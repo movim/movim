@@ -14,6 +14,10 @@ class API
         $iq = $dom->createElementNS('jabber:client', 'iq');
         $dom->appendChild($iq);
 
+        $iq->setAttribute(
+            'from',
+            $session->get('jid').'/'.$session->get('resource'));
+
         if($to != false) {
             $iq->setAttribute('to', $to);
         }
@@ -29,12 +33,6 @@ class API
 
         if(isset($language)) {
             $iq->setAttribute('xml:lang', $language);
-        }
-
-        if(isset($session->user)) {
-            $iq->setAttribute(
-                'from',
-                $session->get('username').'@'.$session->get('host').'/'.$session->get('resource'));
         }
 
         if($xml != false) {

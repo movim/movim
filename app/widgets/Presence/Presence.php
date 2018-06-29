@@ -15,8 +15,6 @@ use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
 
 use Moxl\Stanza\Stream;
 
-use Movim\Session;
-
 class Presence extends \Movim\Widget\Base
 {
     function load()
@@ -76,11 +74,10 @@ class Presence extends \Movim\Widget\Base
 
         $this->user->encryptedPasswords()->delete();
 
-        $session = Session::start();
         $p = new Unavailable;
         $p->setType('terminate')
-          ->setResource($session->get('resource'))
-          ->setTo($session->get('jid'))
+          ->setResource($this->user->session->resource)
+          ->setTo($this->user->id)
           ->request();
 
         Stream::end();
@@ -102,59 +99,53 @@ class Presence extends \Movim\Widget\Base
     function ajaxPubsubSubscriptionsGet()
     {
         // Private Subscritions
-        $session = Session::start();
         $ps = new GetPubsubSubscriptions;
-        $ps->setTo($session->get('jid'))
+        $ps->setTo($this->user->id)
            ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
            ->request();
 
         // Public Subscritions
         $ps = new GetPubsubSubscriptions;
-        $ps->setTo($session->get('jid'))
+        $ps->setTo($this->user->id)
            ->request();
     }
 
     // We get the server capabilities
     function ajaxServerCapsGet()
     {
-        $session = Session::start();
         $c = new \Moxl\Xec\Action\Disco\Request;
-        $c->setTo($session->get('host'))
+        $c->setTo($this->user->session->host)
           ->request();
 
-        $c->setTo($session->get('jid'))
+        $c->setTo($this->user->id)
           ->request();
     }
 
     // We discover the server services
     function ajaxServerDisco()
     {
-        $session = Session::start();
         $c = new \Moxl\Xec\Action\Disco\Items;
-
-        $c->setTo($session->get('host'))
+        $c->setTo($this->user->session->host)
           ->request();
     }
 
     // We refresh the profile
     function ajaxProfileRefresh()
     {
-        $session = Session::start();
         $a = new \Moxl\Xec\Action\Avatar\Get;
-        $a->setTo($session->get('jid'))
+        $a->setTo($this->user->id)
           ->request();
 
         $v = new \Moxl\Xec\Action\Vcard4\Get;
-        $v->setTo($session->get('jid'))
+        $v->setTo($this->user->id)
           ->request();
     }
 
     // We refresh the bookmarks
     function ajaxBookmarksGet()
     {
-        $session = Session::start();
         $b = new \Moxl\Xec\Action\Bookmark\Get;
-        $b->setTo($session->get('jid'))
+        $b->setTo($this->user->id)
           ->request();
     }
 
@@ -169,10 +160,8 @@ class Presence extends \Movim\Widget\Base
 
     function preparePresence()
     {
-        $session = Session::start();
-
         // If the user is still on a logued-in page after a daemon restart
-        if ($session->get('jid') == false) {
+        if ($this->user->id == false) {
             $this->rpc('MovimUtils.disconnect');
             return false;
         }

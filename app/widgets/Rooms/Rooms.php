@@ -12,7 +12,6 @@ use Moxl\Xec\Action\Vcard\Set as VcardSet;
 use Respect\Validation\Validator;
 use Illuminate\Support\Collection;
 
-use Movim\Session;
 use Movim\Picture;
 
 class Rooms extends \Movim\Widget\Base
@@ -317,8 +316,7 @@ class Rooms extends \Movim\Widget\Base
           ->request();*/
 
         if ($nickname == false) {
-            $s = Session::start();
-            $nickname = $s->get('username');
+            $nickname = $this->user->session->username;
         }
 
         $jid = explodeJid($room);
@@ -354,8 +352,7 @@ class Rooms extends \Movim\Widget\Base
         $c->ajaxGet();
 
         // We properly exit
-        $s = Session::start();
-        $resource = $s->get('username');
+        $resource = $this->user->session->username;
 
         $jid = explodeJid($room);
         $capability = App\Capability::find($jid['server']);
