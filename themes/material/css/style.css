@@ -321,14 +321,15 @@ main footer {
 }
 
 .drawer.actions > div:last-child ul.tabs li {
-    height: 7rem;
-}
-
-.drawer.actions > div:last-child ul.tabs li.active {
     border-top-width: 2px;
     border-top-style: solid;
     border-bottom-width: 0;
+    border-top-color: transparent;
     border-radius: 0 0 0.5rem 0.5rem;
+}
+
+.drawer.actions > div:last-child ul.tabs li.active {
+    border-top-color: inherit;
 }
 
 .actions.scroll > section {
