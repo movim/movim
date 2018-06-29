@@ -153,7 +153,7 @@ class Presence extends \Movim\Widget\Base
     function ajaxFeedRefresh()
     {
         $r = new GetItemsId;
-        $r->setTo($this->user->jid)
+        $r->setTo($this->user->id)
           ->setNode('urn:xmpp:microblog:0')
           ->request();
     }

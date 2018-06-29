@@ -12,9 +12,9 @@ class Help extends \Movim\Widget\Base
 
     function display()
     {
-        $this->view->assign('info', \App\Info::where('server', $this->user->getServer())
-                                             ->where('node', '')
-                                             ->first());
+        $this->view->assign('info',
+            \App\Info::where('server', $this->user->session->host)
+                     ->where('node', '')
+                     ->first());
     }
 }
-

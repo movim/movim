@@ -66,5 +66,3 @@ class Ajax extends Base
         ];
     }
 }
-
-?>

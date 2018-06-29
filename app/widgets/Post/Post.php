@@ -145,7 +145,7 @@ class Post extends \Movim\Widget\Base
         if ($p) {
             $cp = new CommentPublish;
             $cp->setTo($p->commentserver)
-               ->setFrom($this->user->jid)
+               ->setFrom($this->user->id)
                ->setCommentNodeId($p->commentnodeid)
                ->setTitle(htmlspecialchars(rawurldecode($comment)))
                ->setParentId($p->id)

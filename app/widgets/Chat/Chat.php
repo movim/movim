@@ -200,7 +200,7 @@ class Chat extends \Movim\Widget\Base
     {
         list($from, $to) = $array;
 
-        $jid = ($from == $this->user->jid) ? $to : $from;
+        $jid = ($from == $this->user->id) ? $to : $from;
 
         $view = $this->tpl();
         $view->assign('message', $message);
@@ -562,9 +562,10 @@ class Chat extends \Movim\Widget\Base
         $view->assign('emoji', prepareString('😀'));
         $view->assign('muc', $muc);
         $view->assign('anon', false);
-        $view->assign('info', \App\Info::where('server', $this->user->getServer())
-                                             ->where('node', '')
-                                             ->first());
+        $view->assign('info',
+            \App\Info::where('server', $this->user->session->host)
+                     ->where('node', '')
+                     ->first());
 
         if ($muc) {
             $view->assign('room', $jid);
@@ -617,7 +618,7 @@ class Chat extends \Movim\Widget\Base
         $view->assign('muc', $muc);
         $left = $view->draw('_chat_bubble', true);
 
-        $view->assign('contact', \App\Contact::firstOrNew(['id' => $this->user->jid]));
+        $view->assign('contact', \App\Contact::firstOrNew(['id' => $this->user->id]));
         $view->assign('me', true);
         $view->assign('muc', $muc);
         $right = $view->draw('_chat_bubble', true);
@@ -771,7 +772,7 @@ class Chat extends \Movim\Widget\Base
                                 ->where('mucpersistent', true);
 
         $conferences = (Configuration::get()->restrictsuggestions)
-            ? $conferences->where('server', 'like', '%@%.' . $this->user->getServer())
+            ? $conferences->where('server', 'like', '%@%.' . $this->user->session->host)
             : $conferences->where('server', 'like', '%@%');
 
         $conferences = $conferences->orderBy('occupants', 'desc')->take(8)->get();

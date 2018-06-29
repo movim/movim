@@ -73,17 +73,6 @@ class User extends Model
         return (bool)(Session::start())->get('jid');
     }
 
-    public function getJidAttribute()
-    {
-        return (Session::start())->get('jid');
-    }
-
-    /* Temporary */
-    public function getServer()
-    {
-        return (Session::start())->get('host');
-    }
-
     public function init()
     {
         $contact = Contact::firstOrNew(['id' => $this->id]);

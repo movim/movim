@@ -15,7 +15,7 @@ class Base
     protected $public = false;      // It's a public page
     protected $page;
 
-    function __construct()
+    public function __construct()
     {
         $this->page = new Builder;
     }
@@ -50,7 +50,7 @@ class Base
         return false;
     }
 
-    function checkSession()
+    protected function checkSession()
     {
         if ($this->session_only
         && !(new \App\User)->isLogged()) {
@@ -58,13 +58,13 @@ class Base
         }
     }
 
-    function redirect($page, $params = false)
+    protected function redirect($page, $params = false)
     {
         $url = Route::urlize($page, $params);
         header('Location: '. $url);
     }
 
-    function display()
+    public function display()
     {
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_base.js');

@@ -66,7 +66,7 @@ class Account extends \Movim\Widget\Base
         if ($validate->validate($p1)
         && $validate->validate($p2)) {
             if ($p1 == $p2) {
-                $arr = explodeJid($this->user->jid);
+                $arr = explodeJid($this->user->id);
 
                 $cp = new ChangePassword;
                 $cp->setTo($arr['server'])
@@ -87,14 +87,14 @@ class Account extends \Movim\Widget\Base
     {
         $this->rpc('Presence.clearQuick');
         $view = $this->tpl();
-        $view->assign('jid', $this->user->jid);
+        $view->assign('jid', $this->user->id);
         Dialog::fill($view->draw('_account_remove', true));
     }
 
     function ajaxClearAccount()
     {
         $view = $this->tpl();
-        $view->assign('jid', $this->user->jid);
+        $view->assign('jid', $this->user->id);
         Dialog::fill($view->draw('_account_clear', true));
     }
 
@@ -129,15 +129,14 @@ class Account extends \Movim\Widget\Base
 
     private function validateServer($server)
     {
-        $validate_server = Validator::stringType()->noWhitespace()->length(6, 80);
-        if (!$validate_server->validate($server)) return false;
-        else return true;
+        return (Validator::stringType()->noWhitespace()->length(6, 80)->validate($server));
     }
 
     function display()
     {
-        $this->view->assign('gateways', \App\Info::where('server', 'like', '%' . $this->user->getServer())
-                                                ->where('category', 'gateway')
-                                                ->get());
+        $this->view->assign('gateways',
+            \App\Info::where('server', 'like', '%' . $this->user->session->host)
+                     ->where('category', 'gateway')
+                     ->get());
     }
 }

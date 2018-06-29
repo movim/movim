@@ -66,7 +66,7 @@ class Chats extends \Movim\Widget\Base
     private function setState($array, $message)
     {
         list($from, $to) = $array;
-        if ($from == $this->user->jid) {
+        if ($from == $this->user->id) {
             $jid = $to;
         } else {
             $jid = $from;
@@ -128,7 +128,7 @@ class Chats extends \Movim\Widget\Base
         unset($chats[$jid]);
 
         if (/*!array_key_exists($jid, $chats)
-                && */$jid != $this->user->jid) {
+                && */$jid != $this->user->id) {
             $chats[$jid] = 1;
 
             if ($history) $this->ajaxGetHistory($jid);
