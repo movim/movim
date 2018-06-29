@@ -1,13 +1,3 @@
-<header>
-    <ul class="list divided spaced">
-        <li class="subheader">
-            <p class="normal">
-                {$c->__('page.chats')}
-            </p>
-        </li>
-    </ul>
-</header>
-
 <ul id="chats_widget_list" class="list middle active divided spaced">
     {$c->prepareChats(true)}
 </ul>

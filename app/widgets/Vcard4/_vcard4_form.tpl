@@ -1,7 +1,7 @@
+<br />
+
+<h3>{$c->__('privacy.privacy_title')}</h3>
 <ul class="list middle">
-    <li class="subheader">
-        <p>{$c->__('privacy.privacy_title')}</p>
-    </li>
     <li>
         <span class="control">
             <form>

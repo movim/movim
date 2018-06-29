@@ -38,10 +38,12 @@
                 <a onclick="
                         Account_ajaxChangePassword(MovimUtils.formToJson('password'));
                         this.className='button oppose inactive';" class="button color oppose">
-                    {$c->__('button.submit')}
+                    {$c->__('button.save')}
                 </a>
             </form>
         </li>
+    </ul>
+    <ul class="list middle active">
         <li class="subheader">
             <p>{$c->__('account.clear')}</p>
         </li>
@@ -54,6 +56,8 @@
             </span>
             <p class="normal line">{$c->__('account.clear')}</p>
         </li>
+    </ul>
+    <ul class="list middle active">
         <li class="subheader">
             <p>{$c->__('account.delete')}</p>
         </li>
