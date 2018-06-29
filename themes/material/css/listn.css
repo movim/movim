@@ -156,9 +156,9 @@ ul.list li > p.normal {
     font-size: 2rem;
 }
 
-ul.list li > p:nth-last-of-type(2) + p.normal {
+/*ul.list li > p:nth-last-of-type(2) + p.normal {
     margin-top: 0.5rem;
-}
+}*/
 
 ul.list li > p.bold {
     font-weight: bold;
