@@ -42,6 +42,7 @@ img.icon.thumb {
     display: block;
     max-width: 100%;
     object-fit: cover;
+    color: transparent;
 }
 
 span.icon.primary.thumb {
