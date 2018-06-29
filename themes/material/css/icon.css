@@ -43,22 +43,27 @@ img.icon.thumb {
     max-width: 100%;
     object-fit: cover;
     position: relative;
-    min-height: 5rem;
 }
 
-img.icon.thumb:after {
-    position: absolute;
-    width: 100%;
-    background-color: rgb(var(--movim-background-main));
-    top: 0;
-    left: 0;
-    font-family: 'Material Icons';
-    content: "image";
-    color: rgba(var(--movim-font), 0.5);
-    padding-top: 1rem;
-    line-height: 5rem;
-    font-size: 3rem;
-    text-align: center;
+@media screen and (min-width: 1280px) {
+    img.icon.thumb {
+        min-height: 5rem;
+    }
+
+    img.icon.thumb:after {
+        position: absolute;
+        width: 100%;
+        background-color: rgb(var(--movim-background-main));
+        top: 0;
+        left: 0;
+        font-family: 'Material Icons';
+        content: "image";
+        color: rgba(var(--movim-font), 0.5);
+        padding-top: 1rem;
+        line-height: 5rem;
+        font-size: 3rem;
+        text-align: center;
+    }
 }
 
 span.icon.primary.thumb {
