@@ -315,16 +315,20 @@ main footer {
 
 .drawer.actions > div:last-child ul.tabs {
     margin-top: -0.5rem;
-    /*margin-bottom: 0.5rem;*/
     padding-bottom: 0.5rem;
     border-bottom: 0;
     overflow-x: auto;
+}
+
+.drawer.actions > div:last-child ul.tabs li {
+    height: 7rem;
 }
 
 .drawer.actions > div:last-child ul.tabs li.active {
     border-top-width: 2px;
     border-top-style: solid;
     border-bottom-width: 0;
+    border-radius: 0 0 0.5rem 0.5rem;
 }
 
 .actions.scroll > section {
