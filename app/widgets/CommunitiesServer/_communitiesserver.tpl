@@ -78,9 +78,6 @@
                         {$value->occupants} <i class="material-icons">people</i>
                     </span>
                 {/if}
-                <span class="info">
-                    {$value->published|strtotime|prepareDate:true,true}
-                </span>
             </p>
         </li>
     {/loop}
