@@ -138,7 +138,7 @@ ul.list li > p.filler:before {
 }
 
 ul.list li > p.filler + p.filler:before {
-    background-size: 70% 40%;
+    background-size: 70% 35%;
 }
 
 ul.list li > p {
@@ -155,10 +155,6 @@ ul.list > li > p:first-of-type {
 ul.list li > p.normal {
     font-size: 2rem;
 }
-
-/*ul.list li > p:nth-last-of-type(2) + p.normal {
-    margin-top: 0.5rem;
-}*/
 
 ul.list li > p.bold {
     font-weight: bold;
@@ -273,9 +269,9 @@ header > ul.list li .primary {
     left: 0;
 }
 
-header > ul.list li > .primary ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
-    padding-left: 8rem;
-}
+/*header > ul.list li > .primary.icon:not(.bubble) ~ :not(.primary):not(.counter):not(.bubble):not(.control) {
+    padding-left: 7rem;
+}*/
 
 /* Tabs */
 

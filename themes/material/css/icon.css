@@ -83,6 +83,7 @@ ul.list li span.icon.small {
     height: 3rem;
     line-height: 3rem;
     margin-top: -1.5rem;
+    font-size: 1.5rem;
 }
 
 ul.list li span.icon.small:not(.bubble) i {

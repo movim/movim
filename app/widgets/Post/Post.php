@@ -233,15 +233,6 @@ class Post extends \Movim\Widget\Base
         return $view->draw('_post_reply', true);
     }
 
-    public function preparePostHeader(\App\Post $post, $repost = false, $public = false)
-    {
-        $view = $this->tpl();
-        $view->assign('post', $post);
-        $view->assign('repost', $repost);
-        $view->assign('public', $public);
-        return $view->draw('_post_header', true);
-    }
-
     public function preparePreviousNext(\App\Post $post)
     {
         $view = $this->tpl();

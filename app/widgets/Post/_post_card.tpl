@@ -42,6 +42,7 @@
                         {else}
                             href="{$c->route('contact', $post->aid)}"
                         {/if}
+                        class="on_desktop"
                     >
                         {$post->truename}
                     </a> –
@@ -59,7 +60,9 @@
                 {/if}
                 {$post->published|strtotime|prepareDate}
                 {if="$post->published != $post->updated"}
-                     – <i class="material-icons">edit</i> {$post->updated|strtotime|prepareDate:true,true}
+                    <i class="material-icons" title="{$post->updated|strtotime|prepareDate}">
+                         edit
+                    </i>
                 {/if}
             </p>
             {if="$post->isBrief()"}
