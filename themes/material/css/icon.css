@@ -43,7 +43,7 @@ img.icon.thumb {
     max-width: 100%;
     object-fit: cover;
     position: relative;
-    min-height: 4rem;
+    min-height: 5rem;
 }
 
 img.icon.thumb:after {
@@ -56,7 +56,7 @@ img.icon.thumb:after {
     content: "image";
     color: rgba(var(--movim-font), 0.5);
     padding-top: 1rem;
-    line-height: 4rem;
+    line-height: 5rem;
     font-size: 3rem;
     text-align: center;
 }
