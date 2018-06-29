@@ -321,6 +321,7 @@ main footer {
 }
 
 .drawer.actions > div:last-child ul.tabs li {
+    height: 6.5rem;
     border-top-width: 2px;
     border-top-style: solid;
     border-bottom-width: 0;
