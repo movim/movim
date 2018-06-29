@@ -11,7 +11,7 @@
 <a class="button action color" onclick="MovimTpl.toggleActionButton()" title="{$c->__('button.chat')}">
     <i class="material-icons">add</i>
     <ul class="actions">
-        <li onclick="Search_ajaxHttpRequest()" title="{$c->__('chats.add')}">
+        <li onclick="Search_ajaxRequest()" title="{$c->__('chats.add')}">
             <i class="material-icons">person_add</i>
         </li>
         <li onclick="Rooms_ajaxAdd()" title="{$c->__('rooms.add')}">
