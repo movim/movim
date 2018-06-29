@@ -37,14 +37,14 @@
             {/if}
         {/loop}
         <li onclick="Notifs_ajaxClear()">
-            <span class="primary icon gray small">
+            <span class="primary icon gray">
                 <i class="material-icons">clear_all</i>
             </span>
             <p class="normal">{$c->__('button.clear')}</p>
         </li>
     {else}
         <li class="disabled">
-            <span class="primary icon gray small">
+            <span class="primary icon gray">
                 <i class="material-icons">notifications_none</i>
             </span>
             <p class="normal center">{$c->__('notifs.empty')}</p>
