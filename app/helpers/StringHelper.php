@@ -90,6 +90,12 @@ function addHFR($string)
     );
 }
 
+function addEmojis($string)
+{
+    $emoji = \Movim\Emoji::getInstance();
+    return $emoji->replace($string);
+}
+
 /**
  * @desc Prepare the string (add the a to the links and show the smileys)
  *
@@ -100,8 +106,7 @@ function addHFR($string)
  */
 function prepareString($string, $preview = false)
 {
-    $emoji = \Movim\Emoji::getInstance();
-    return $emoji->replace(addUrls($string, $preview));
+    return addEmojis(addUrls($string, $preview));
 }
 
 /**

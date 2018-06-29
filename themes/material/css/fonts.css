@@ -8,6 +8,12 @@
     margin-bottom: -0.7rem;
 }
 
+ul.list p + p .emoji {
+    margin-bottom: -0.5rem;
+    width: 2rem;
+    height: 2rem;
+}
+
 .emoji.medium {
     width: auto;
     height: 3.5rem;
