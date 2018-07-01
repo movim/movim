@@ -37,30 +37,28 @@ span.icon.top.preview {
 
 img.icon.thumb {
     margin: auto;
-    margin-top: -1rem;
-    margin-bottom: 1rem;
+    transform: translateY(-1rem);
     display: block;
     max-width: 100%;
     object-fit: cover;
     position: relative;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 800px) {
     img.icon.thumb {
         min-height: 5rem;
     }
 
-    img.icon.thumb:after {
+    img.icon.thumb:before {
         position: absolute;
         width: 100%;
         background-color: rgb(var(--movim-background-main));
         top: 0;
         left: 0;
         font-family: 'Material Icons';
-        content: "image";
+        content: 'image';
         color: rgba(var(--movim-font), 0.5);
-        padding-top: 1rem;
-        line-height: 5rem;
+        line-height: 6rem;
         font-size: 3rem;
         text-align: center;
     }
