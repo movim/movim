@@ -21,7 +21,6 @@
     "require": {
         "php": ">=7.0.0",
         "monolog/monolog": "1.8.*",
-        "fabiang/sasl": "^1.0",
-        "pear/net_dns2": "^1.4"
+        "fabiang/sasl": "^1.0"
     }
 }

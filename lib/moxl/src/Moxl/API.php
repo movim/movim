@@ -14,9 +14,11 @@ class API
         $iq = $dom->createElementNS('jabber:client', 'iq');
         $dom->appendChild($iq);
 
-        $iq->setAttribute(
-            'from',
-            $session->get('jid').'/'.$session->get('resource'));
+        if ($session->get('jid') && $session->get('resource')) {
+            $iq->setAttribute(
+                'from',
+                $session->get('jid').'/'.$session->get('resource'));
+        }
 
         if($to != false) {
             $iq->setAttribute('to', $to);

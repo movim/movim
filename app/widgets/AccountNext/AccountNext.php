@@ -5,7 +5,8 @@ use Moxl\Xec\Action\Register\Set;
 
 use Movim\Session;
 
-class AccountNext extends \Movim\Widget\Base {
+class AccountNext extends \Movim\Widget\Base
+{
     function load()
     {
         $this->addjs('accountnext.js');
@@ -105,14 +106,20 @@ class AccountNext extends \Movim\Widget\Base {
 
     function ajaxGetForm($host)
     {
-        $domain = \Moxl\Utils::getDomain($host);
+        global $dns;
+        $domain = $host;
 
-        // We create a new session or clear the old one
-        $s = Session::start();
-        $s->set('host', $host);
-        $s->set('domain', $domain);
+        $dns->resolveAll('_xmpp-client._tcp.' . $host, React\Dns\Model\Message::TYPE_SRV)
+        ->then(function ($resolved) use ($host, &$domain) {
+            $domain = $resolved[0]['target'];
+        })->always(function () use ($host, &$domain) {
+            // We create a new session or clear the old one
+            $s = Session::start();
+            $s->set('host', $host);
+            $s->set('domain', $domain);
 
-        \Moxl\Stanza\Stream::init($host);
+            \Moxl\Stanza\Stream::init($host);
+        });
     }
 
     function ajaxRegister($form)

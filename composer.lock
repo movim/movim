@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "4728190ff64382ca64680a230d20184f",
+    "content-hash": "3bc7f1591da1dfc6f187730a751b6ae6",
     "packages": [
         {
             "name": "cboden/ratchet",
@@ -1463,50 +1463,6 @@
             "time": "2018-06-06T05:12:00+00:00"
         },
         {
-            "name": "pear/net_dns2",
-            "version": "v1.4.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/mikepultz/netdns2.git",
-                "reference": "9596a781b4358ee7c1ee0d6b884667c6c4d9a204"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/mikepultz/netdns2/zipball/9596a781b4358ee7c1ee0d6b884667c6c4d9a204",
-                "reference": "9596a781b4358ee7c1ee0d6b884667c6c4d9a204",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.1.2"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Net_DNS2": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Mike Pultz",
-                    "email": "mike@mikepultz.com",
-                    "homepage": "https://mikepultz.com/",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Native PHP5 DNS Resolver and Updater Library",
-            "homepage": "https://netdns2.com/",
-            "keywords": [
-                "PEAR",
-                "dns",
-                "network"
-            ],
-            "time": "2018-02-13T03:07:54+00:00"
-        },
-        {
             "name": "psr/container",
             "version": "1.0.0",
             "source": {
@@ -1874,16 +1830,16 @@
         },
         {
             "name": "react/dns",
-            "version": "v0.4.14",
+            "version": "v0.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "75ae3286c03eb022a6fbf909e6148d5022588ba4"
+                "reference": "319e110a436d26a2fa137cfa3ef2063951715794"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/75ae3286c03eb022a6fbf909e6148d5022588ba4",
-                "reference": "75ae3286c03eb022a6fbf909e6148d5022588ba4",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/319e110a436d26a2fa137cfa3ef2063951715794",
+                "reference": "319e110a436d26a2fa137cfa3ef2063951715794",
                 "shasum": ""
             },
             "require": {
@@ -1915,7 +1871,7 @@
                 "dns-resolver",
                 "reactphp"
             ],
-            "time": "2018-06-26T08:20:02+00:00"
+            "time": "2018-07-02T12:17:56+00:00"
         },
         {
             "name": "react/event-loop",
@@ -2297,16 +2253,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.1.18",
+            "version": "1.1.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "54d17abcee9c6e734691754c77641a5f51ecc608"
+                "reference": "667ed36b4868e785d52d815181ff00c798a61be7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/54d17abcee9c6e734691754c77641a5f51ecc608",
-                "reference": "54d17abcee9c6e734691754c77641a5f51ecc608",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/667ed36b4868e785d52d815181ff00c798a61be7",
+                "reference": "667ed36b4868e785d52d815181ff00c798a61be7",
                 "shasum": ""
             },
             "require": {
@@ -2356,7 +2312,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2018-06-23T19:15:38+00:00"
+            "time": "2018-07-02T06:22:41+00:00"
         },
         {
             "name": "ringcentral/psr7",

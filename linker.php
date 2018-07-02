@@ -16,6 +16,13 @@ $loop = React\EventLoop\Factory::create();
 $connector = new React\Socket\TcpConnector($loop);
 $stdin = new React\Stream\ReadableResourceStream(STDIN, $loop);
 
+// DNS
+$config = React\Dns\Config\Config::loadSystemConfigBlocking();
+$server = $config->nameservers ? reset($config->nameservers) : '8.8.8.8';
+
+$factory = new React\Dns\Resolver\Factory();
+$dns = $factory->createCached($server, $loop);
+
 // We load and register all the widgets
 $wrapper = \Movim\Widget\Wrapper::getInstance();
 $wrapper->registerAll($bootstrap->getWidgets());
@@ -94,7 +101,7 @@ function shutdown()
     $loop->stop();
 }
 
-$pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, &$xmppBehaviour)
+$pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, &$xmppBehaviour, &$dns)
 {
     global $pullSocket;
 
@@ -137,28 +144,44 @@ $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector
 
             case 'register':
                 $port = 5222;
-                $dns = \Moxl\Utils::resolveHost($msg->host);
-                if(isset($dns->target) && $dns->target != null) $msg->host = $dns->target;
-                if(isset($dns->port) && $dns->port != null) $port = $dns->port;
+                $host = $msg->host;
 
-                $ip = \Moxl\Utils::resolveIp($msg->host);
-                $ip = (!$ip || !isset($ip->address)) ? gethostbyname($msg->host) : $ip->address;
+                $dns->resolveAll('_xmpp-client._tcp.' . $msg->host, React\Dns\Model\Message::TYPE_SRV)
+                    ->then(function ($resolved) use (&$host, &$port, &$msg) {
+                        $host = $resolved[0]['target'];
+                        $port = $resolved[0]['port'];
 
-                if(getenv('verbose')) {
-                    fwrite(
-                        STDERR,
-                        colorize(
-                            getenv('sid'), 'yellow')." : ".
-                            colorize('Connection to '.$msg->host.' ('.$ip.')', 'blue').
-                            "\n");
-                }
+                        if(getenv('verbose')) {
+                            fwrite(
+                                STDERR,
+                                colorize(
+                                    getenv('sid'), 'yellow')." : ".
+                                    colorize('Resolved target '.$host.' from '.$msg->host, 'blue').
+                                    "\n");
+                        }
+                    }
+                )->always(function () use (&$connector, &$xmppBehaviour, &$dns, &$host, &$port) {
+                    $dns->resolve($host, React\Dns\Model\Message::TYPE_AAAA)
+                        ->then(function ($ip) use (&$connector, &$xmppBehaviour, $host, $port) {
 
-                $connector->connect('['.$ip.']:'.$port)->then($xmppBehaviour);
+                        if(getenv('verbose')) {
+                            fwrite(
+                                STDERR,
+                                colorize(
+                                    getenv('sid'), 'yellow')." : ".
+                                    colorize('Connection to '.$host.' ('.$ip.')', 'blue').
+                                    "\n");
+                        }
+
+                        $connector->connect('['.$ip.']:'. $port)->then($xmppBehaviour);
+                    });
+                });
+
                 break;
         }
-    } else {
-        return;
     }
+
+    return;
 };
 
 $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, &$stdin, $pushSocketBehaviour, $parser, &$timestamp)

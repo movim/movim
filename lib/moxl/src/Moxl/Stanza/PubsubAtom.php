@@ -32,7 +32,7 @@ class PubsubAtom
 
     public function __construct()
     {
-        $this->id = Utils::generateUUID();
+        $this->id = generateUUID();
     }
 
     public function enableComments($server = true)

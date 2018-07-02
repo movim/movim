@@ -8,114 +8,6 @@ use Monolog\Handler\StreamHandler;
 
 class Utils
 {
-    // Display RAW XML in the browser
-    public static function displayXML($xml)
-    {
-        echo '<pre>'.htmlentities(Utils::cleanXML($xml), ENT_QUOTES, 'UTF-8').'</pre>';
-    }
-
-    // A simple function which clean and reindent an XML string
-    public static function cleanXML($xml)
-    {
-        if($xml != '') {
-            $doc = new \DOMDocument();
-            $doc->loadXML($xml);
-            $doc->formatOutput = true;
-            return $doc->saveXML();
-        } else {
-            return '';
-        }
-    }
-
-    public static function explodeData($data)
-    {
-        $data = explode(',', $data);
-        $pairs = [];
-        $key = false;
-
-        foreach($data as $pair) {
-            $dd = strpos($pair, '=');
-            if($dd) {
-                $key = trim(substr($pair, 0, $dd));
-                $pairs[$key] = trim(trim(substr($pair, $dd + 1)), '"');
-            }
-            else if(strpos(strrev(trim($pair)), '"') === 0 && $key) {
-                $pairs[$key] .= ',' . trim(trim($pair), '"');
-                continue;
-            }
-        }
-
-        return $pairs;
-    }
-
-    public static function resolveHost($host)
-    {
-        $r = new \Net_DNS2_Resolver(['timeout' => 1]);
-        try {
-            $result = $r->query('_xmpp-client._tcp.'.$host, 'SRV');
-
-            if(!empty($result->answer[0])) return $result->answer[0];
-        } catch (\Net_DNS2_Exception $e) {
-            error_log($e->getMessage());
-        }
-
-        return false;
-    }
-
-    public static function getDomain($host)
-    {
-        $result = Utils::resolveHost($host);
-
-        if(isset($result->target) && $result->target != null)
-            return $result->target;
-        else {
-            return $host;
-        }
-    }
-
-    public static function resolveIp($host)
-    {
-        $r = new \Net_DNS2_Resolver(['timeout' => 1]);
-        try {
-            #$result = $r->query($host, 'AAAA');
-            #if(!empty($result->answer[0])) return $result->answer[0];
-
-            $result = $r->query($host, 'A');
-            if(!empty($result->answer[0])) return $result->answer[0];
-        } catch (\Net_DNS2_Exception $e) {
-            error_log($e->getMessage());
-        }
-
-        return false;
-    }
-
-    public static function implodeData($data)
-    {
-        $return = [];
-        foreach($data as $key => $value)
-            $return[] = $key . '="' . $value . '"';
-        return implode(',', $return);
-    }
-
-    public static function generateNonce($binary = true)
-    {
-        $str = '';
-        mt_srand((double) microtime()*10000000);
-        for($i=0; $i<32; $i++)
-            $str .= chr(mt_rand(0, 255));
-        return $binary ? $str : base64_encode($str);
-    }
-
-    public static function generateUUID()
-    {
-        $data = openssl_random_pseudo_bytes(16);
-
-        $data[6] = chr(ord($data[6]) & 0x0f | 0x40); // set version to 0010
-        $data[8] = chr(ord($data[8]) & 0x3f | 0x80); // set bits 6-7 to 10
-
-        return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
-    }
-
     public static function getSupportedServices()
     {
         return [
@@ -194,7 +86,7 @@ class Utils
         $support = Utils::getSupportedServices();
 
         asort($support);
-        foreach($support as $sup ) {
+        foreach ($support as $sup ) {
             $s = $s.$sup.'<';
         }
 
@@ -203,13 +95,14 @@ class Utils
 
     public static function log($message, $priority = '')
     {
-        if(LOG_LEVEL != null && LOG_LEVEL > 0) {
+        if (LOG_LEVEL != null && LOG_LEVEL > 0) {
             $log = new Logger('moxl');
 
             $handler = new SyslogHandler('moxl');
 
-            if(LOG_LEVEL > 1)
+            if (LOG_LEVEL > 1) {
                 $log->pushHandler(new StreamHandler(LOG_PATH.'/xmpp.log', Logger::DEBUG));
+            }
 
             $log->pushHandler($handler, Logger::DEBUG);
 
@@ -226,14 +119,14 @@ class Utils
         $chars = [' ', '"', '&', '\'', '/', ':', '<', '>', '@'];
         $escapes = ['20', '22', '26', '27', '2f', '3a', '3c', '3e', '40', '5c'];
 
-        for($i = 0; $i < strlen($s); $i++) {
-            if($s{$i} === '\\') {
-                if(in_array($s{$i+1}.$s{$i+2}, $escapes)) {
+        for ($i = 0; $i < strlen($s); $i++) {
+            if ($s{$i} === '\\') {
+                if (in_array($s{$i+1}.$s{$i+2}, $escapes)) {
                     $result .= '\\5c';
                 } else {
                     $result .= $s{$i};
                 }
-            } else if(in_array($s{$i}, $chars)) {
+            } else if (in_array($s{$i}, $chars)) {
                 $result .= '\\'.dechex(ord($s{$i}));
             } else {
                 $result .= $s{$i};

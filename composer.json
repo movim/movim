@@ -36,7 +36,8 @@
         "cboden/ratchet": "^0.4.0",
         "react/child-process": "^0.5.0",
         "react/http": "^0.8.3",
-        "react/zmq": "^0.4.0"
+        "react/zmq": "^0.4.0",
+        "react/dns": "^0.4.15"
     },
     "config": {
         "platform": {

@@ -31,7 +31,7 @@ class Message
         }
 
         if(in_array($receipts, ['received', 'displayed'])) {
-            $root->setAttribute('id', Utils::generateUUID());
+            $root->setAttribute('id', generateUUID());
         } elseif($id != false) {
             $root->setAttribute('id', $id);
         } else {
