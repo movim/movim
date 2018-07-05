@@ -115,5 +115,9 @@
         </a>
         <br />
     </footer>
+    <script type="text/javascript">
+        if (typeof Android !== 'undefined') {
+            MovimTpl.remove('#login_widget footer');
+        }
+    </script>
 </div>
-

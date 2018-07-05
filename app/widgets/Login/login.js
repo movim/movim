@@ -108,8 +108,4 @@ movim_add_onload(function()
     login.addEventListener('blur', function() {
         this.value = document.querySelector('input#complete').value;
     });
-
-    if (typeof Android !== 'undefined') {
-        MovimTpl.remove('#login_widget footer');
-    }
 });
