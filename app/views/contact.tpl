@@ -3,6 +3,7 @@
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('PostActions');?>
 <?php $this->widget('ContactActions');?>
+<?php $this->widget('Invitations');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>
@@ -15,14 +16,13 @@
     <section style="background-color: var(--movim-background);">
         <?php if (empty($_GET['s'])) { ?>
             <aside>
-                <?php $this->widget('ContactDisco');?>
+                <?php //$this->widget('ContactDisco');?>
             </aside>
             <div>
-                <?php $this->widget('Invitations');?>
-                <?php $this->widget('Tabs');?>
+                <?php //$this->widget('Tabs');?>
 
-                <?php $this->widget('Roster');?>
-                <?php $this->widget('ContactDiscoPosts');?>
+                <?php //$this->widget('Roster');?>
+                <?php //$this->widget('ContactDiscoPosts');?>
             </div>
         <?php } else { ?>
             <aside>

@@ -1,5 +1,5 @@
 <section id="search">
-    <ul id="roster" class="list">
+    <ul id="roster" class="list thin">
         {if="$contacts"}
             <li class="subheader"><p>{$c->__('page.contacts')}</p></li>
         {/if}

@@ -2,6 +2,7 @@
 <?php $this->widget('Notification');?>
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('Stickers');?>
+<?php $this->widget('Invitations');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>

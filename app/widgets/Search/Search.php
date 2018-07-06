@@ -99,7 +99,7 @@ class Search extends \Movim\Widget\Base
         })
         ->where('id', '!=', $this->user->id)
         ->orderBy('presences.value')
-        ->limit(20)->get();
+        ->limit(15)->get();
 
         $view->assign('presencestxt', getPresencesTxt());
         $view->assign('users', $users);

@@ -43,6 +43,12 @@ class Invitations extends \Movim\Widget\Base
         $this->onInvitations();
     }
 
+
+    function ajaxRequest()
+    {
+        Drawer::fill($this->prepareInvitations(), true);
+    }
+
     /*
      * Create the list of notifications
      * @return string

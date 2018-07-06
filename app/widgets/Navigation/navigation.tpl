@@ -12,16 +12,6 @@
         </li>
     </a>
     {/if}
-    <a class="classic" href="{$c->route('contact')}"
-       title="{$c->__('page.contacts')}">
-        <li {if="$page == 'contact'"}class="active"{/if}>
-            <span class="primary icon">
-                <i class="material-icons">contacts</i>
-                <span data-key="invite" class="counter"></span>
-            </span>
-            <p class="normal">{$c->__('page.contacts')}</p>
-        </li>
-    </a>
     <a class="classic"
        href="{$c->route('community')}"
        title="{$c->__('page.communities')}">
@@ -43,6 +33,18 @@
 </ul>
 
 <ul class="list divided oppose active" dir="ltr">
+    <a class="classic"
+       href="#">
+        <li onclick="Invitations_ajaxRequest()"
+            title="{$c->__('notifs.title')}"
+        >
+            <span class="primary icon">
+                <i class="material-icons">notifications</i>
+                <span data-key="invite" class="counter"></span>
+            </span>
+            <p class="normal">{$c->__('notifs.title')}</p>
+        </li>
+    </a>
     <li onclick="Search_ajaxRequest()"
         title="{$c->__('button.search')}"
     >

@@ -1,6 +1,9 @@
 <ul id="bottomnavigation" class="navigation color dark">
     <li onclick="MovimTpl.toggleMenu()">
-        <span class="primary icon"><i class="material-icons">menu</i></span>
+        <span class="primary icon">
+            <i class="material-icons">menu</i>
+            <span data-key="invite" class="counter"></span>
+        </span>
     </li>
     {if="$c->getUser()->hasPubsub()"}
         <li {if="$page == 'news'"}class="active"{/if}
@@ -13,15 +16,6 @@
             </span>
         </li>
     {/if}
-    <li {if="$page == 'contact'"}class="active"{/if}
-        onclick="MovimUtils.reload('{$c->route('contact')}')"
-        title="{$c->__('page.contacts')}"
-    >
-        <span class="primary icon">
-            <i class="material-icons">contacts</i>
-            <span data-key="invite" class="counter"></span>
-        </span>
-    </li>
     <li {if="$page == 'community'"}class="active"{/if}
         onclick="MovimUtils.reload('{$c->route('community')}')"
         title="{$c->__('page.communities')}"
@@ -35,6 +29,13 @@
         <span class="primary icon">
             <i class="material-icons">forum</i>
             <span data-key="chat" class="counter"></span>
+        </span>
+    </li>
+    <li onclick="Search_ajaxRequest()"
+        title="{$c->__('button.search')}"
+    >
+        <span class="primary icon">
+            <i class="material-icons">search</i>
         </span>
     </li>
 </ul>
