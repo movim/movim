@@ -1,9 +1,34 @@
 <?php
 
+use Moxl\Xec\Action\Roster\AddItem;
+use Moxl\Xec\Action\Presence\Subscribe;
+
 use Respect\Validation\Validator;
 
 class ContactActions extends \Movim\Widget\Base
 {
+    function load()
+    {
+        $this->registerEvent('roster_additem_handle', 'onAdd', 'contact');
+        $this->registerEvent('roster_removeitem_handle', 'onDelete');
+        $this->registerEvent('roster_updateitem_handle', 'onUpdate');
+    }
+
+    function onDelete($packet)
+    {
+        Notification::append(null, $this->__('roster.deleted'));
+    }
+
+    function onAdd($packet)
+    {
+        Notification::append(null, $this->__('roster.added'));
+    }
+
+    function onUpdate($packet = false)
+    {
+        Notification::append(null, $this->__('roster.updated'));
+    }
+
     function ajaxAddAsk($jid)
     {
         $view = $this->tpl();
@@ -27,8 +52,17 @@ class ContactActions extends \Movim\Widget\Base
 
     function ajaxAdd($form)
     {
-        $roster = new Roster;
-        $roster->ajaxAdd($form);
+        $r = new AddItem;
+        $r->setTo((string)$form->searchjid->value)
+          ->setName((string)$form->alias->value)
+          ->setGroup((string)$form->group->value)
+          ->request();
+
+        $p = new Subscribe;
+        $p->setTo((string)$form->searchjid->value)
+          ->request();
+
+        Dialog::ajaxClear();
     }
 
     function ajaxChat($jid)

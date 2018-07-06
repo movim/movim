@@ -13,6 +13,10 @@ class ContactController extends Base
     {
         $this->page->setTitle(__('page.contacts'));
 
+        if (empty($_GET['s'])) {
+            $this->redirect('chat');
+        }
+
         $user = new \App\User;
         if (!$user->isLogged() && $this->fetchGet('s')) {
             $this->redirect('blog', [$this->fetchGet('s')]);

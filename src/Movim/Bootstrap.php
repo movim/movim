@@ -302,10 +302,10 @@ class Bootstrap
         return ['Account','AccountNext','Ack','AdHoc','Avatar','Bookmark',
         'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
         'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
-        'Confirm','Chat','Chats','Config','ContactData','ContactHeader','Dialog',
-        'Drawer','Header','Init','Login','LoginAnonymous','Menu','Notifs',
+        'Confirm','ContactActions','Chat','Chats','Config','ContactData','ContactHeader',
+        'Dialog','Drawer','Header','Init','Login','LoginAnonymous','Menu','Notifs',
         'Invitations','Post','PostActions','Presence','PublishBrief','Rooms',
-        'Roster','Stickers','Upload','Vcard4','Visio','VisioLink'];
+        'Stickers','Upload','Vcard4','Visio','VisioLink'];
     }
 
     /**

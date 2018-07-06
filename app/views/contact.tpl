@@ -14,25 +14,13 @@
 
 <main>
     <section style="background-color: var(--movim-background);">
-        <?php if (empty($_GET['s'])) { ?>
-            <aside>
-                <?php //$this->widget('ContactDisco');?>
-            </aside>
-            <div>
-                <?php //$this->widget('Tabs');?>
-
-                <?php //$this->widget('Roster');?>
-                <?php //$this->widget('ContactDiscoPosts');?>
-            </div>
-        <?php } else { ?>
-            <aside>
-                <?php $this->widget('ContactData'); ?>
-                <?php $this->widget('AdHoc'); ?>
-            </aside>
-            <div>
-                <?php $this->widget('ContactHeader'); ?>
-                <?php $this->widget('CommunityPosts'); ?>
-            </div>
-        <?php } ?>
+        <aside>
+            <?php $this->widget('ContactData'); ?>
+            <?php $this->widget('AdHoc'); ?>
+        </aside>
+        <div>
+            <?php $this->widget('ContactHeader'); ?>
+            <?php $this->widget('CommunityPosts'); ?>
+        </div>
     </section>
 </main>
