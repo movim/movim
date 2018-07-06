@@ -1,13 +1,13 @@
 <?php
 
 namespace Moxl\Xec\Payload;
-use App\Session as DBSession;
+use App\Session;
 
 class SASLFailure extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        DBSession::find(SESSION_ID)->delete();
+        Session::find(SESSION_ID)->delete();
 
         $this->pack($stanza->children()->getName());
         $this->deliver();

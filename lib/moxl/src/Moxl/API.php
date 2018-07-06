@@ -8,16 +8,16 @@ class API
 {
     static function iqWrapper($xml = false, $to = false, $type = false, $id = false)
     {
-        $session = Session::start();
-
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $iq = $dom->createElementNS('jabber:client', 'iq');
         $dom->appendChild($iq);
 
-        if ($session->get('jid') && $session->get('resource')) {
+        $me = \App\User::me();
+
+        if ($me->id && $me->session->resource) {
             $iq->setAttribute(
                 'from',
-                $session->get('jid').'/'.$session->get('resource'));
+                $me->id.'/'.$me->session->resource);
         }
 
         if($to != false) {
@@ -30,6 +30,7 @@ class API
 
         global $language;
 
+        $session = Session::start();
         if($id == false) $id = $session->get('id');
         $iq->setAttribute('id', $id);
 

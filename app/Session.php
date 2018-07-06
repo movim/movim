@@ -81,8 +81,5 @@ class Session extends Model
         $s->set('jid',      $this->user_id);
         $s->set('host',     $this->host);
         $s->set('username', $this->username);
-        $s->set('hash',     $this->hash);
-        $s->set('active',   $this->active);
-        $s->set('resource', $this->resource);
     }
 }

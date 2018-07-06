@@ -6,7 +6,6 @@ gc_enable();
 use Movim\Bootstrap;
 use Movim\RPC;
 use Movim\Session;
-use App\Configuration;
 
 $bootstrap = new Bootstrap;
 $bootstrap->boot();

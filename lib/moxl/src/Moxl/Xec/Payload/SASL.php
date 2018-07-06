@@ -22,9 +22,8 @@ class SASL extends Payload
         }
 
         $session = Session::start();
-        $user = $session->get('username');
 
-        if($user) {
+        if($session->get('password')) {
             if(!is_array($mechanisms)) {
                 $mechanisms = [$mechanisms];
             }
