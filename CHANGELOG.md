@@ -41,6 +41,8 @@ v0.14 (trunk)
  * Add some animations to the CSS
  * Replace the placeholders with the default icon font
  * Improve the search feature
+ * Remove the main Contacts page and related widgets (Roster, ContactDisco…)
+ * Move the invitations to the sidebar
 
 v0.13
 ---------------------------
