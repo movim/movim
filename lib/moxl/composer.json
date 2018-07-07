@@ -20,7 +20,6 @@
     },
     "require": {
         "php": ">=7.0.0",
-        "monolog/monolog": "1.8.*",
         "fabiang/sasl": "^1.0"
     }
 }
