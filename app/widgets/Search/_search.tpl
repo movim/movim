@@ -37,15 +37,10 @@
                 <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
                     <i class="material-icons">comment</i>
                 </span>
-                {if="$value->subscription != 'both'"}
-                    <span class="control icon gray">
-                        {if="$value->subscription == 'to'"}
-                            <i class="material-icons">arrow_upward</i>
-                        {elseif="$value->subscription == 'from'"}
-                            <i class="material-icons">arrow_downward</i>
-                        {else}
-                            <i class="material-icons">block</i>
-                        {/if}
+                {if="$value->presence->capability && $value->presence->capability->isJingle()"}
+                    <span title="{$c->__('button.call')}" class="control icon active gray on_desktop"
+                          onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
+                        <i class="material-icons">phone</i>
                     </span>
                 {/if}
                 <p class="normal line">
@@ -53,6 +48,18 @@
                     {if="$value->presence && $value->presence->capability"}
                         <span class="second" title="{$value->presence->capability->name}">
                             <i class="material-icons">{$value->presence->capability->getDeviceIcon()}</i>
+                        </span>
+                    {/if}
+
+                    {if="$value->subscription != 'both'"}
+                        <span class="second">
+                            {if="$value->subscription == 'to'"}
+                                <i class="material-icons">arrow_upward</i>
+                            {elseif="$value->subscription == 'from'"}
+                                <i class="material-icons">arrow_downward</i>
+                            {else}
+                                <i class="material-icons">block</i>
+                            {/if}
                         </span>
                     {/if}
                 </p>

@@ -2,7 +2,10 @@ var Search = {
     timer : null,
 
     init : function() {
-        document.querySelector('input[name=keyword]').focus();
+        if (window.matchMedia("(min-width: 1025px)").matches) {
+            document.querySelector('input[name=keyword]').focus();
+        }
+
         Search.roster('');
     },
 
