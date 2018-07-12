@@ -42,9 +42,18 @@ class Conference extends Model
 
     public function presence()
     {
+        if (!$this->nick) {
+            $resource = \App\User::me()->session->username;
+        } else {
+            $resource = $this->nick;
+        }
+
         return $this->hasOne('App\Presence', 'jid', 'conference')
                     ->where('session_id', $this->session_id)
-                    ->where('mucjid', \App\User::me()->id);
+                    ->where(function ($query) {
+                        $query->where('mucjid', \App\User::me()->id)
+                              ->orWhere('resource', $resource);
+                    });
     }
 
     public function info()
@@ -61,14 +70,7 @@ class Conference extends Model
 
     public function getConnectedAttribute()
     {
-        if (!$this->nick) {
-            $resource = \App\User::me()->session->username;
-        } else {
-            $resource = $this->nick;
-        }
-
-        return ($this->presences()->where('mucjid', \App\User::me()->id)->count() > 0
-             || $this->presences()->where('resource', $resource)->count() > 0);
+        return isset($this->presence);
     }
 
     public function getSubjectAttribute()

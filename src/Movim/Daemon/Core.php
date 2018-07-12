@@ -235,10 +235,8 @@ class Core implements MessageComponentInterface
     {
         $cookies = Cookies::fromRequest($conn->httpRequest);
 
-        if ($cookies->get('MOVIM_SESSION_ID')) {
-            return $cookies->get('MOVIM_SESSION_ID')->getValue();
-        } else {
-            return null;
-        }
+        return $cookies->get('MOVIM_SESSION_ID')
+            ? $cookies->get('MOVIM_SESSION_ID')->getValue()
+            : null;
     }
 }

@@ -217,19 +217,6 @@ class Contact extends Model
             cleanupId($this->groupname);
     }
 
-    function toRoster()
-    {
-        return [
-            'jid'        => $this->id,
-            'rostername' => $this->rostername,
-            'rostername' => $this->rostername,
-            'groupname'  => $this->groupname,
-            'status'     => $this->status,
-            'resource'   => $this->resource,
-            'value'      => $this->value
-            ];
-    }
-
     function isEmpty()
     {
         $this->isValidDate();
