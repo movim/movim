@@ -55,24 +55,24 @@ class Session extends Model
     public function getUploadService()
     {
         return Capability::where('node', 'like', '%' . $this->host . '%')
-                              ->where('features', 'like', '%urn:xmpp:http:upload%')
-                              ->first();
+                         ->where('features', 'like', '%urn:xmpp:http:upload%')
+                         ->first();
     }
 
     public function getChatroomsServices()
     {
         return Capability::where('node', 'like', '%' . $this->host . '%')
-                              ->where('node', 'not like', '%@%')
-                              ->where('category', 'conference')
-                              ->get();
+                         ->where('node', 'not like', '%@%')
+                         ->where('category', 'conference')
+                         ->get();
     }
 
     public function getCommentsService()
     {
         return Capability::where('node', 'comments.' . $this->host)
-                              ->where('category', 'pubsub')
-                              ->where('type', 'service')
-                              ->first();
+                         ->where('category', 'pubsub')
+                         ->where('type', 'service')
+                         ->first();
     }
 
     public function loadMemory()

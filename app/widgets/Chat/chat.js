@@ -268,7 +268,10 @@ var Chat = {
         discussion.onscroll = function() {
             if (this.scrollTop < 1
             && discussion.querySelectorAll('ul li p').length >= Chat.pagination) {
-                Chat_ajaxGetHistory(Chat.getTextarea().dataset.jid, Chat.currentDate);
+                Chat_ajaxGetHistory(
+                    Chat.getTextarea().dataset.jid,
+                    Chat.currentDate,
+                    Chat.getTextarea().dataset.muc);
             }
 
             Chat.lastHeight = this.clientHeight;

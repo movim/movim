@@ -23,6 +23,7 @@ class Chat extends \Movim\Widget\Base
 {
     private $_pagination = 50;
     private $_wrapper = [];
+    private $_mucPresences = [];
 
     function load()
     {
@@ -457,7 +458,7 @@ class Chat extends \Movim\Widget\Base
      * @param string jid
      * @param string time
      */
-    function ajaxGetHistory($jid, $date)
+    function ajaxGetHistory($jid, $date, $muc = false)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -466,10 +467,16 @@ class Chat extends \Movim\Widget\Base
                                 $query->where('jidfrom', $jid)
                                       ->orWhere('jidto', $jid);
                          })
-                         ->where('published', '<', date(SQL_DATE, strtotime($date)))
-                         ->orderBy('published', 'desc')
-                         ->take($this->_pagination)
-                         ->get();
+                         ->where('published', '<', date(SQL_DATE, strtotime($date)));
+
+
+        $messages = $muc
+            ? $messages->where('type', 'groupchat')->whereNull('subject')
+            : $messages->whereIn('type', ['chat', 'headline', 'invitation']);
+
+        $messages = $messages->orderBy('published', 'desc')
+                             ->take($this->_pagination)
+                             ->get();
 
         if ($messages->count() > 0) {
             Notification::append(false, $this->__('message.history', $messages->count()));
@@ -729,17 +736,24 @@ class Chat extends \Movim\Widget\Base
         if ($message->type == 'groupchat') {
             $message->color = stringToColor($message->session_id . $message->resource . $message->type);
 
-            $presence = $this->user->session->presences()
-                             ->where('jid', $message->jidfrom)
-                             ->where('resource', $message->resource)
-                             ->first();
+            // Cache the resolved presences for a while
+            $key = $message->jidfrom.$message->resource;
+            if (!isset($this->mucPresences[$key])) {
+                $this->mucPresences[$key] = $this->user->session->presences()
+                           ->where('jid', $message->jidfrom)
+                           ->where('resource', $message->resource)
+                           ->where('muc', true)
+                           ->first();
+            }
 
-            if ($presence) {
-                if ($url = $presence->conferencePicture) {
+            if ($this->mucPresences[$key] && $this->mucPresences[$key] !== true) {
+                if ($url = $this->mucPresences[$key]->conferencePicture) {
                     $message->icon_url = $url;
                 }
 
-                $message->mine = ($presence->mucjid == $this->user->id);
+                $message->mine = ($this->mucPresences[$key]->mucjid == $this->user->id);
+            } else {
+                $this->mucPresences[$key] = true;
             }
 
             $message->icon = firstLetterCapitalize($message->resource);
