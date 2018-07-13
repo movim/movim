@@ -50,7 +50,7 @@ class Conference extends Model
 
         return $this->hasOne('App\Presence', 'jid', 'conference')
                     ->where('session_id', $this->session_id)
-                    ->where(function ($query) {
+                    ->where(function ($query) use ($resource) {
                         $query->where('mucjid', \App\User::me()->id)
                               ->orWhere('resource', $resource);
                     });
