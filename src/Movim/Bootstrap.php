@@ -197,6 +197,12 @@ class Bootstrap
 
         $capsule->bootEloquent();
         $capsule->setAsGlobal();
+
+        // if the confirgured database is SQLite, turn on foreign key constraints and set a long busy-timeout
+        if (DB::connection() instanceof \Illuminate\Database\SQLiteConnection) {
+            DB::statement("PRAGMA foreign_keys = on");
+            DB::statement("PRAGMA busy_timeout = ". 30 * 1000); // milliseconds
+        }
     }
 
     private function loadCommonLibraries()
