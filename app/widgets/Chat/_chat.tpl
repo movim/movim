@@ -17,7 +17,10 @@
                 {/if}
             </span>
 
-            {$curl = $conference->getPhoto('s')}
+            {if="$conference"}
+                {$curl = $conference->getPhoto('s')}
+            {/if}
+
             {if="$curl"}
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
@@ -43,7 +46,7 @@
                 <i class="material-icons">close</i>
             </span>
 
-            {if="$conference->info && $conference->info->related"}
+            {if="$conference && $conference->info && $conference->info->related"}
                 {$related = $conference->info->related}
                 <span
                     class="control icon active"
@@ -53,15 +56,15 @@
                 </span>
             {/if}
 
-            {if="$conference != null && $conference->name"}
+            {if="$conference && $conference->name"}
                 <p class="line" title="{$room}">{$conference->name}</p>
             {else}
                 <p class="line">{$room}</p>
             {/if}
 
-            {if="!$conference->connected"}
+            {if="$conference && !$conference->connected"}
                 <p>{$c->__('button.connecting')}…</p>
-            {elseif="$conference->subject"}
+            {elseif="$conference && $conference->subject"}
                 <p class="line" title="{$conference->subject}">{$conference->subject|addUrls}</p>
             {else}
                 <p class="line">{$room}</p>
