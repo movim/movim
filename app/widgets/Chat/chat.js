@@ -536,7 +536,7 @@ var Chat = {
     appendDate: function(date, prepend) {
         var list = document.querySelector('#chat_widget > div ul');
 
-        //if (document.getElementById(MovimUtils.cleanupId(date))) return;
+        if (document.getElementById(MovimUtils.cleanupId(date)) && !prepend) return;
 
         dateNode = Chat.date.cloneNode(true);
         dateNode.dataset.value = date;
