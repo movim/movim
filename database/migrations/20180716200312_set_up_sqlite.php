@@ -3,7 +3,7 @@
 use Movim\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddIndexesPresencesPostsMessagesTables extends Migration
+class SetUpSqlite extends Migration
 {
     public function up()
     {
