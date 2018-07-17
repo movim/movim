@@ -200,8 +200,12 @@ class Bootstrap
 
         // if the confirgured database is SQLite, turn on foreign key constraints and set a long busy-timeout
         if (Capsule::connection() instanceof \Illuminate\Database\SQLiteConnection) {
-            Capsule::statement("PRAGMA foreign_keys = on");
-            Capsule::statement("PRAGMA busy_timeout = ". 30 * 1000); // milliseconds
+            try {
+                Capsule::statement("PRAGMA foreign_keys = on");
+                Capsule::statement("PRAGMA busy_timeout = ". 30 * 1000); // milliseconds
+            } catch (\Illuminate\Database\QueryException $e) {
+                // database does not exist yet; do nothing
+            }
         }
     }
 
