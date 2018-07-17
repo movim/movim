@@ -15,5 +15,8 @@ class SetUpSqlite extends Migration
 
     public function down()
     {
+        if ($this->schema->getConnection()->getDriverName() == 'sqlite') {
+            $this->schema->getConnection()->unprepared('PRAGMA journal_mode = delete');
+        }
     }
 }
