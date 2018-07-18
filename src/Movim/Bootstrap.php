@@ -177,20 +177,14 @@ class Bootstrap
 
     private function loadCapsule()
     {
-        if (file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
-            require DOCUMENT_ROOT.'/config/db.inc.php';
-        } else {
-            throw new \Exception('Cannot find config/db.inc.php file');
-        }
-
         $capsule = new Capsule;
         $capsule->addConnection([
-          'driver' => $conf['type'],
-          'host' => $conf['host'],
-          'port' => $conf['port'],
-          'database' => $conf['database'],
-          'username' => $conf['username'],
-          'password' => $conf['password'],
+          'driver' => \DB_TYPE,
+          'host' => \DB_HOST,
+          'port' => \DB_PORT,
+          'database' => \DB_DATABASE,
+          'username' => \DB_USERNAME,
+          'password' => \DB_PASSWORD,
           'charset' => 'utf8',
           'collation' => 'utf8_unicode_ci',
         ]);
