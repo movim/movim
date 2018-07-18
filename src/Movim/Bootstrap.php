@@ -102,7 +102,7 @@ class Bootstrap
         // apply the configuration atop sensible defaults
         $conf = (isset($conf) && is_array($conf)) ? $conf : [];
         $conf = array_merge([
-            'type' => 'pgsql',
+            'type' => 'undefined',
             'host' => 'localhost',
             'username' => 'movim',
             'password' => '',
