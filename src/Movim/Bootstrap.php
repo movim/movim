@@ -194,12 +194,12 @@ class Bootstrap
     {
         $capsule = new Capsule;
         $capsule->addConnection([
-          'driver' => \DB_TYPE,
-          'host' => \DB_HOST,
-          'port' => \DB_PORT,
-          'database' => \DB_DATABASE,
-          'username' => \DB_USERNAME,
-          'password' => \DB_PASSWORD,
+          'driver' => DB_TYPE,
+          'host' => DB_HOST,
+          'port' => DB_PORT,
+          'database' => DB_DATABASE,
+          'username' => DB_USERNAME,
+          'password' => DB_PASSWORD,
           'charset' => 'utf8',
           'collation' => 'utf8_unicode_ci',
         ]);
