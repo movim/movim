@@ -99,6 +99,18 @@ class Bootstrap
             throw new \Exception('Cannot find config/db.inc.php file');
         }
 
+        // apply the configuration atop sensible defaults
+        $conf = (isset($conf) && is_array($conf)) ? $conf : [];
+        $conf = array_merge([
+            'type' => 'pgsql',
+            'host' => 'localhost',
+            'username' => 'movim',
+            'password' => '',
+            'port' => null,
+            'database' => 'movim'
+        ], $conf);
+        $conf['port'] = $conf['port'] ?? (($conf['type'] == 'mysql') ? 3306 : 5432);
+
         if (isset($_SERVER['HTTP_HOST'])) {
             define('BASE_HOST',     $_SERVER['HTTP_HOST']);
         }
