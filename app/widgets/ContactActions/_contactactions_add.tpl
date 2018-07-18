@@ -1,7 +1,7 @@
 <section>
     <h3>{$c->__('roster.add_title')}</h3>
     <ul class="list thick">
-        {$url = $contact->getPhoto('s')}
+        {$url = $contact->getPhoto()}
         <li>
             {if="$url"}
                 <span class="primary icon bubble">

@@ -1,6 +1,6 @@
 <ul class="list thick active" id="presence_widget" dir="ltr">
     <li>
-        {$url = $me->getPhoto('s')}
+        {$url = $me->getPhoto()}
         {if="$url"}
             <span class="primary icon bubble color status">
                 <img src="{$url}">
@@ -14,4 +14,3 @@
         <p class="line"><br /></p>
     </li>
 </ul>
-

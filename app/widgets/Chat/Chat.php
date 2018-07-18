@@ -60,7 +60,7 @@ class Chat extends \Movim\Widget\Base
             $contact = $contacts[0];
 
             if ($contact->value < 5) {
-                $avatar = $contact->getPhoto('s');
+                $avatar = $contact->getPhoto();
                 if ($avatar == false) $avatar = null;
 
                 $presences = getPresences();
@@ -102,7 +102,7 @@ class Chat extends \Movim\Widget\Base
                     'chat|'.$from,
                     $roster ? $roster->truename : $contact->truename,
                     $message->body,
-                    $contact->getPhoto('s'),
+                    $contact->getPhoto(),
                     4,
                     $this->route('chat', $contact->jid)
                 );

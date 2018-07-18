@@ -32,7 +32,7 @@ class Visio extends \Movim\Widget\Base
             'call',
             $contact->truename,
             $this->__('visio.calling'),
-            $contact->getPhoto('s'),
+            $contact->getPhoto(),
             25,
             null,
             null,

@@ -6,7 +6,7 @@
         {loop="$sessions"}
             {$user = $c->getContact($value->user)}
             <li class="block" onclick="MovimUtils.redirect('{$c->route('contact', $user->id)}')">
-                {$url = $user->getPhoto('s')}
+                {$url = $user->getPhoto()}
                 {if="$url"}
                     <span class="primary icon bubble">
                         <img src="{$url}">

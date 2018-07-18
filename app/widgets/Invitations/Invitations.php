@@ -33,7 +33,7 @@ class Invitations extends \Movim\Widget\Base
             Notification::append(
                 'invite|'.$from, $contact->truename,
                 $this->__('invitations.wants_to_talk', $contact->truename),
-                $contact->getPhoto('s'),
+                $contact->getPhoto(),
                 4);
         }
     }

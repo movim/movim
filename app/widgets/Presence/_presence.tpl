@@ -1,10 +1,10 @@
 <li title="{$c->__('privacy.my_profile')}">
-    {$url = $me->getPhoto('s')}
+    {$url = $me->getPhoto()}
     {if="$url"}
         <span
             onclick="MovimUtils.reload('{$c->route('contact', $me->jid)}')"
             class="primary icon bubble status {if="$presence->value != null"}{$presencetxt[$presence->value]}{/if}"
-            style="background-image: url({$me->getPhoto('s')})">
+            style="background-image: url({$url})">
         </span>
     {else}
         <span

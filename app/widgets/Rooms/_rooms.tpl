@@ -21,7 +21,7 @@
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
                 class="room {if="$connected"}online{/if}"
                 title="{$value->conference}">
-                {$url = $value->getPhoto('s')}
+                {$url = $value->getPhoto()}
                 {if="$url"}
                     <span class="primary
                         {if="!$connected"}disabled{/if} icon bubble color

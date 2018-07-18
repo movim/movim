@@ -3,7 +3,7 @@
         <span class="primary icon bubble" onclick="Chat.quoteMUC(this.dataset.resource, true);"></span>
         <span class="control icon bubble"></span>
     {else}
-        {$url = $contact->getPhoto('s')}
+        {$url = $contact->getPhoto()}
         {if="$url"}
             <span class="{if="$me"}control{else}primary{/if} icon bubble">
                 {if="$me == null"}

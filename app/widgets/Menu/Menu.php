@@ -63,7 +63,7 @@ class Menu extends \Movim\Widget\Base
                 'news',
                 $contact->truename,
                 $post->title,
-                $contact->getPhoto('s'),
+                $contact->getPhoto(),
                 2
             );
         } elseif ($count > 0
@@ -80,7 +80,7 @@ class Menu extends \Movim\Widget\Base
                         'news',
                         $contact->truename,
                         $title,
-                        $contact->getPhoto('s'),
+                        $contact->getPhoto(),
                         2,
                         $this->route('post', [$post->origin, $post->node, $post->nodeid]),
                         $this->route('contact', $post->origin)

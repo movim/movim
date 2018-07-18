@@ -18,7 +18,7 @@
             </span>
 
             {if="$conference"}
-                {$curl = $conference->getPhoto('s')}
+                {$curl = $conference->getPhoto()}
             {/if}
 
             {if="$curl"}
@@ -121,7 +121,7 @@
                 <i class="material-icons">arrow_back</i>
             </span>
 
-            {$url = $contact->getPhoto('s')}
+            {$url = $contact->getPhoto()}
             {if="$url"}
                 <span class="primary icon bubble active {if="$roster->presence"}status {$roster->presence->presencekey}{/if}"
                     onclick="Chat_ajaxGetContact('{$contact->jid}')">

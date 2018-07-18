@@ -11,7 +11,7 @@
     {loop="$top"}
         <li class="block {if="$value->last > 60"} inactive{/if}"
             onclick="Chats_ajaxOpen('{$value->jid}'); Chat_ajaxGet('{$value->jid}');">
-            {$url = $value->getPhoto('s')}
+            {$url = $value->getPhoto('m')}
             {if="$url"}
                 <span class="primary icon bubble
                     {if="$value->presence"}

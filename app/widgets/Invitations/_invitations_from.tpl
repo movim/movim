@@ -11,7 +11,7 @@
     <ul class="list middle divided spaced">
         {loop="$invitations"}
             <li data-jid="{$value->jid}">
-                {$url = $value->getPhoto('s')}
+                {$url = $value->getPhoto()}
                 {if="$url"}
                     <span class="primary icon bubble">
                         <img src="{$url}">

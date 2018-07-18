@@ -49,7 +49,7 @@
                     </span>
                 {else}
                     {if="$post->contact"}
-                        {$url = $contact->getPhoto('s')}
+                        {$url = $contact->getPhoto('m')}
 
                         {if="$url"}
                             <span class="icon primary bubble">
@@ -155,7 +155,7 @@
     <a href="{$c->route('contact', $post->contact->jid)}">
         <ul class="list active middle">
             <li>
-                {$url = $post->contact->getPhoto('s')}
+                {$url = $post->contact->getPhoto('m')}
                 {if="$url"}
                     <span class="primary icon bubble" style="background-image: url('{$url}');">
                         <i class="material-icons">loop</i>

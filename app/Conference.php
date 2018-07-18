@@ -84,7 +84,7 @@ class Conference extends Model
         return $subject ? $subject->subject : null;
     }
 
-    public function getPhoto($size = 'l')
+    public function getPhoto($size = 'm')
     {
         if ($this->contact) {
             return $this->contact->getPhoto($size);
