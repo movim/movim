@@ -107,9 +107,12 @@ class Bootstrap
             'username' => 'movim',
             'password' => '',
             'port' => null,
-            'database' => 'movim'
+            'database' => null
         ], $conf);
+        // supply a default port suitable for either PostgreSQL or MySQL/MariaDB
         $conf['port'] = $conf['port'] ?? (($conf['type'] == 'mysql') ? 3306 : 5432);
+        // supply a default database name (or file path for SQLite)
+        $conf['database'] = $conf['database'] ?? (($conf['type'] == 'sqlite') ? DOCUMENT_ROOT . '/db-storage/movim.sqlite' : 'movim');
 
         if (isset($_SERVER['HTTP_HOST'])) {
             define('BASE_HOST',     $_SERVER['HTTP_HOST']);
