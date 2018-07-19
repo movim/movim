@@ -50,7 +50,7 @@ class Presence extends Model
 
     public function getConferencePictureAttribute()
     {
-        return (new Picture)->get($this->mucjid, 50);
+        return (new Picture)->get($this->mucjid, 120);
     }
 
     public function getRefreshableAttribute()
