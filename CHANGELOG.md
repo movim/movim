@@ -43,6 +43,8 @@ v0.14 (trunk)
  * Improve the search feature
  * Remove the main Contacts page and related widgets (Roster, ContactDisco…)
  * Move the invitations to the sidebar
+ * Add support for SQLite (JKingweb)
+ * Use higher resolution images to have proper avatars in hi-def screens
 
 v0.13
 ---------------------------
