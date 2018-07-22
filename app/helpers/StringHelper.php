@@ -347,7 +347,7 @@ function invertSign($num)
 function firstLetterCapitalize($string, $firstOnly = false)
 {
     $size = ($firstOnly) ? 1 : 2;
-    return ucfirst(strtolower(mb_substr($string, 0, $size)));
+    return mb_convert_case(mb_substr($string, 0, $size), MB_CASE_TITLE);
 }
 
 /** Return a clean string that can be used for HTML ids
