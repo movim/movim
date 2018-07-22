@@ -4,6 +4,7 @@ use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
 use Monolog\Handler\StreamHandler;
 use GuzzleHttp\Client;
+use Movim\Picture;
 
 class Utils
 {
@@ -38,6 +39,23 @@ function getClientTypes()
         'web'           => __('client.web'),
         'registered'    => __('client.registered')
     ];
+}
+
+/**
+ * Return a picture with a specific size
+ */
+function getPhoto($id, $size = 'm')
+{
+    $sizes = [
+        'xxl'   => [1280, 300],
+        'xl'    => [512 , false],
+        'l'     => [210 , false],
+        'm'     => [120 , false],
+        's'     => [50  , false],
+        'o'     => [false, false]
+    ];
+
+    return (new Picture)->get($id, $sizes[$size][0], $sizes[$size][1]);
 }
 
 /**
@@ -609,4 +627,3 @@ function __()
     $string = array_shift($args);
     return $l->translate($string, $args);
 }
-

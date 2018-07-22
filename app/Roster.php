@@ -80,22 +80,9 @@ class Roster extends Model
             cleanupId($this->group);
     }
 
-    public function getPhoto($size = 'l')
+    public function getPhoto($size = 'm')
     {
-        $sizes = [
-            'wall'  => [1920, 1080],
-            'xxl'   => [1280, 300],
-            'xl'    => [512 , false],
-            'l'     => [210 , false],
-            'm'     => [120 , false],
-            's'     => [50  , false],
-            'xs'    => [28  , false],
-            'xxs'   => [24  , false]
-        ];
-
-
-        $p = new Picture;
-        return $p->get($this->jid, $sizes[$size][0], $sizes[$size][1]);
+        return getPhoto($this->jid, $size);
     }
 
     public function getTruenameAttribute()

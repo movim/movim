@@ -82,17 +82,7 @@ class Contact extends Model
 
     public function getPhoto($size = 'm')
     {
-        $sizes = [
-            'xxl'   => [1280, 300],
-            'xl'    => [512 , false],
-            'l'     => [210 , false],
-            'm'     => [120 , false],
-            's'     => [50  , false],
-            'o'     => [false, false]
-        ];
-
-        $p = new Picture;
-        return $p->get($this->id, $sizes[$size][0], $sizes[$size][1]);
+        return getPhoto($this->id, $size);
     }
 
     public function setLocation($stanza)
