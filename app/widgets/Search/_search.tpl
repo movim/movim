@@ -37,7 +37,7 @@
                 <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
                     <i class="material-icons">comment</i>
                 </span>
-                {if="$value->presence->capability && $value->presence->capability->isJingle()"}
+                {if="$value->presence && $value->presence->capability && $value->presence->capability->isJingle()"}
                     <span title="{$c->__('button.call')}" class="control icon active gray on_desktop"
                           onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
                         <i class="material-icons">phone</i>

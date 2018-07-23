@@ -751,6 +751,7 @@ class Chat extends \Movim\Widget\Base
                     $message->icon_url = $url;
                 }
 
+                $message->moderator = ($this->mucPresences[$key]->mucrole == 'moderator');
                 $message->mine = ($this->mucPresences[$key]->mucjid == $this->user->id);
             } else {
                 $this->mucPresences[$key] = true;

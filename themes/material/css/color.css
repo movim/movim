@@ -82,6 +82,7 @@ form > div .radio > input[type="radio"]:checked + label {
 .button.indigo, .icon.indigo, p.user.indigo   { color: #3F51B5; }
 .button.blue,   .icon.blue  , p.user.blue     { color: #2196F3; }
 .button.green,  .icon.green , p.user.green    { color: #689F38; }
+ul li div.bubble.moderator:after,
 .button.orange, .icon.orange, p.user.orange   { color: #FF9800; }
 .button.yellow, .icon.yellow, p.user.yellow   { color: #FBC02D; }
 .button.brown,  .icon.brown , p.user.brown    { color: #795548; }
@@ -176,4 +177,3 @@ form input:focus:not(:invalid):not(.button),
 form textarea:focus:not(:invalid):not(.button) {
     box-shadow: 0px 2px 0px rgb(var(--movim-main));
 }
-

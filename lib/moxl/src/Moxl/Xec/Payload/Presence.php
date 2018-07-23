@@ -39,8 +39,6 @@ class Presence extends Payload
                         $this->method('muc_handle');
                         $this->pack($presence);
                     } elseif($p->value == 5) {
-                        //$pd->clearMuc($p->jid);
-
                         $this->method('unavailable_handle');
                         $this->pack($presence);
                         $this->deliver();

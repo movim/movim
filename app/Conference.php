@@ -42,18 +42,9 @@ class Conference extends Model
 
     public function presence()
     {
-        if (!$this->nick) {
-            $resource = \App\User::me()->session->username;
-        } else {
-            $resource = $this->nick;
-        }
-
         return $this->hasOne('App\Presence', 'jid', 'conference')
                     ->where('session_id', $this->session_id)
-                    ->where(function ($query) use ($resource) {
-                        $query->where('mucjid', \App\User::me()->id)
-                              ->orWhere('resource', $resource);
-                    });
+                    ->where('mucjid', \App\User::me()->id);
     }
 
     public function info()

@@ -432,7 +432,7 @@ class Rooms extends \Movim\Widget\Base
         if (!$this->user->session) return '';
 
         $conferences = $this->user->session->conferences()
-                                           ->with('info', 'contact')
+                                           ->with('info', 'contact', 'presence')
                                            ->get();
         $connected = new Collection;
 

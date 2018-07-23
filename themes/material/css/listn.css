@@ -400,14 +400,10 @@ ul li div.bubble span.info {
 }
 
 ul li div.bubble:after {
-    /*display: block;*/
     content: attr(data-publishedprepared);
     clear: both;
-    /*position: absolute;
-    width: 20rem;*/
     line-height: 3rem;
     text-align: left;
-    /*padding-top: 1rem;*/
 }
 
 ul li div.bubble.sticker:after {

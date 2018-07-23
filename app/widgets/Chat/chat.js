@@ -486,7 +486,12 @@ var Chat = {
 
         /* MUC specific */
         if (isMuc) {
-            bubble.querySelector('div.bubble').dataset.publishedprepared = data.resource + ' – ' + data.publishedPrepared;
+            bubble.querySelector('div.bubble').dataset.publishedprepared =
+                data.resource + ' – ' + data.publishedPrepared;
+
+            if (data.moderator) {
+                bubble.querySelector('div.bubble').classList.add('moderator');
+            }
 
             if (data.mine) {
                 icon = bubble.querySelector('span.control.icon');

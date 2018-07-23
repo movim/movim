@@ -28,6 +28,9 @@ class Muc extends Action
             \App\User::me()->messages()->where('jidfrom', $this->_to)->delete();
         }
 
+        // Save the state in the session to handle the callback later
+        $session->set($this->_to . '/' .$this->_nickname, true);
+
         Presence::muc($this->_to, $this->_nickname, $this->_mam);
     }
 
@@ -45,6 +48,9 @@ class Muc extends Action
 
     public function handle($stanza, $parent = false)
     {
+        $session = Session::start();
+        $session->remove($this->_to . '/' .$this->_nickname);
+
         $presence = \App\Presence::findByStanza($stanza);
         $presence->set($stanza);
 
@@ -81,6 +87,12 @@ class Muc extends Action
 
         $this->pack($presence);
         $this->deliver();
+    }
+
+    public function error($stanza, $parent = false)
+    {
+        $session = Session::start();
+        $session->remove($this->_to . '/' .$this->_nickname);
     }
 
     public function errorRegistrationRequired($stanza, $parent = false)

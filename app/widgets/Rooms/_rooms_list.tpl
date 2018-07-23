@@ -27,7 +27,7 @@
                     <i class="material-icons">comment</i>
                 </span>
                 {/if}
-                {if="$value->mucaffiliation =='owner'"}
+                {if="$value->mucrole =='moderator'"}
                     <span class="control icon yellow">
                         <i class="material-icons">star</i>
                     </span>

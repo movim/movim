@@ -16,7 +16,7 @@
             </p>
         </li>
         {loop="$conferences"}
-            {$connected = $value->connected}
+            {$connected = $value->presence}
             <li {if="!$edit"} data-jid="{$value->conference}" {/if}
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
                 class="room {if="$connected"}online{/if}"
@@ -47,6 +47,13 @@
                         <i class="material-icons">edit</i>
                     </span>
                 {/if}
+
+                {if="$connected && $connected->mucrole == 'moderator'"}
+                    <span class="control icon gray">
+                        <i class="material-icons">star</i>
+                    </span>
+                {/if}
+
                 <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
                 <p class="line"
                     {if="isset($info) && $info->description"}title="{$info->description}"{/if}>

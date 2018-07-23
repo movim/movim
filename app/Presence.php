@@ -4,6 +4,7 @@ namespace App;
 
 use Movim\Model;
 use Movim\Picture;
+use Movim\Session;
 
 class Presence extends Model
 {
@@ -138,10 +139,17 @@ class Presence extends Model
                     case 'http://jabber.org/protocol/muc#user' :
                         if (!isset($c->item)) break;
 
+                        $session = Session::start();
+
                         $this->muc = true;
-                        if ($c->item->attributes()->jid
-                        && $c->item->attributes()->jid) {
-                            $this->mucjid = cleanJid((string)$c->item->attributes()->jid);
+
+                        /**
+                         * If we were trying to connect to that particular MUC
+                         * See Moxl\Xec\Action\Presence\Muc
+                         */
+                        if ($session->get((string)$stanza->attributes()->from)) {
+                            $this->mucjid = \App\User::me()->id;
+                            $session->remove((string)$stanza->attributes()->from);
                         } else {
                             $this->mucjid = (string)$stanza->attributes()->from;
                         }
