@@ -21,7 +21,7 @@ abstract class Action extends Payload
         // We serialize the current object
         $obj = new \StdClass;
         $obj->type   = get_class($this);
-        $obj->object = serialize($this);
+        $obj->object = $this;
         $obj->time   = time();
 
         //$_instances = $this->clean($_instances);

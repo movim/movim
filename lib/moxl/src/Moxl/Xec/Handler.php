@@ -70,7 +70,7 @@ class Handler
             Utils::log("Handler : Memory instance found for {$id}");
             $instance = $sess->get($id);
 
-            $action = unserialize($instance->object);
+            $action = $instance->object;
 
             $error = false;
 
