@@ -1,13 +1,15 @@
+{if="$edit"}
+    <a class="button action color green" onclick="Rooms_ajaxDisplay(false)">
+        <i class="material-icons">check</i>
+    </a>
+{/if}
+
 {if="!$c->supported('anonymous') && $c->getView() != 'room'"}
     <ul class="list divided spaced middle {if="!$edit"}active{/if}">
         <li class="subheader" title="{$c->__('page.configuration')}">
-            {if="$conferences->isNotEmpty()"}
-            <span class="control icon active gray" onclick="Rooms_ajaxDisplay({if="$edit"}false{else}true{/if});">
-                {if="$edit"}
-                    <i class="material-icons">check</i>
-                {else}
-                    <i class="material-icons">settings</i>
-                {/if}
+            {if="$conferences->isNotEmpty() && !$edit"}
+            <span class="control icon active gray" onclick="Rooms_ajaxDisplay(true);">
+                <i class="material-icons">settings</i>
             </span>
             {/if}
             <p>
@@ -87,6 +89,15 @@
         </li>
     </ul>
     {/if}
+
+    <ul class="list thick spaced active {if="$edit"}disabled{/if}">
+        <li onclick="Rooms_ajaxAdd()">
+            <span class="primary icon bubble color orange">
+                <i class="material-icons">add</i>
+            </span>
+            <p class="normal">{$c->__('rooms.add')}</p>
+        </li>
+    </ul>
 {else}
     {if="$c->getView() == 'room' && $room != false"}
         <div class="placeholder">
