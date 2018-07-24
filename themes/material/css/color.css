@@ -83,6 +83,7 @@ form > div .radio > input[type="radio"]:checked + label {
 .button.blue,   .icon.blue  , p.user.blue     { color: #2196F3; }
 .button.green,  .icon.green , p.user.green    { color: #689F38; }
 ul li div.bubble.moderator:after,
+ul li p span.moderator,
 .button.orange, .icon.orange, p.user.orange   { color: #FF9800; }
 .button.yellow, .icon.yellow, p.user.yellow   { color: #FBC02D; }
 .button.brown,  .icon.brown , p.user.brown    { color: #795548; }

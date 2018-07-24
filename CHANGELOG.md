@@ -45,6 +45,8 @@ v0.14 (trunk)
  * Move the invitations to the sidebar
  * Add support for SQLite (JKingweb)
  * Use higher resolution images to have proper avatars in hi-def screens
+ * Handle the MUC self-presences using a session state during the join
+ * Display the moderator messages differently in MUCs
 
 v0.13
 ---------------------------

@@ -48,24 +48,24 @@
                     </span>
                 {/if}
 
-                {if="$connected && $connected->mucrole == 'moderator'"}
-                    <span class="control icon gray">
-                        <i class="material-icons">star</i>
-                    </span>
-                {/if}
-
                 <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
                 <p class="line"
                     {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
                     {if="$connected"}
                         {$count = $value->presences()->count()}
-                        <span title="{$c->__('communitydata.sub', $count)}">
-                            {$count} <i class="material-icons">people</i>  –
-                        </span>
+                        <span title="{$c->__('communitydata.sub', $count)}"
+                            {if="$connected && $connected->mucrole == 'moderator'"}
+                                class="moderator"
+                            {/if}>
+                            {$count} <i class="material-icons">people</i>
+                        </span>  –
                     {elseif="isset($info) && $info->occupants > 0"}
-                        <span title="{$c->__('communitydata.sub', $info->occupants)}">
-                            {$info->occupants} <i class="material-icons">people</i>  –
-                        </span>
+                        <span title="{$c->__('communitydata.sub', $info->occupants)}"
+                            {if="$connected && $connected->mucrole == 'moderator'"}
+                                class="moderator"
+                            {/if}>
+                            {$info->occupants} <i class="material-icons">people</i>
+                        </span>  –
                     {/if}
                     {if="isset($info) && $info->description"}
                         {$info->description}
