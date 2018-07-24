@@ -59,9 +59,13 @@ var PublishBrief = {
     },
     enableSend: function() {
         document.querySelector('#button_send').classList.remove('disabled');
+        document.querySelector('#button_send i').classList.remove('spin');
+        document.querySelector('#button_send i').innerText = 'send';
     },
     disableSend: function() {
         document.querySelector('#button_send').classList.add('disabled');
+        document.querySelector('#button_send i').classList.add('spin');
+        document.querySelector('#button_send i').innerText = 'autorenew';
     }
 }
 

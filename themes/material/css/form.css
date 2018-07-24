@@ -358,6 +358,7 @@ input[type=button].flat:focus {
     width: 7rem;
     z-index: 1;
     font-size: 3.5rem;
+    animation: zoom 0.3s;
 }
 
 .button.action,
@@ -455,4 +456,3 @@ header.big ~ .button.action {
     word-wrap: break-word;
     overflow-wrap: break-word; /* future version of deprecated 'word-wrap' */
 }
-

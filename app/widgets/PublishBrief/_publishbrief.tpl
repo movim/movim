@@ -25,17 +25,23 @@
             </li>
         </ul>
     </header>
+    <a id="button_send" class="button action color"
+       onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpPublish(MovimUtils.formToJson('brief'));">
+        <i class="material-icons">send</i>
+    </a>
 {else}
     <br class="on_desktop"/>
 {/if}
 <div class="block">
     <ul class="list">
         <li>
+            {if="!$extended"}
             <span id="button_send"
                   class="control icon gray active"
                   onclick="PublishBrief.disableSend(); PublishBrief_ajaxHttpPublish(MovimUtils.formToJson('brief'));">
                 <i class="material-icons">send</i>
             </span>
+            {/if}
             <form onsubmit="return false;" name="brief">
                 <input type="hidden" name="to" value="{$to}">
                 <input type="hidden" name="node" value="{$node}">
