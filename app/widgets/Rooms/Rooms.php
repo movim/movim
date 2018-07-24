@@ -13,6 +13,7 @@ use Respect\Validation\Validator;
 use Illuminate\Support\Collection;
 
 use Movim\Picture;
+use Movim\Session;
 
 class Rooms extends \Movim\Widget\Base
 {
@@ -352,7 +353,12 @@ class Rooms extends \Movim\Widget\Base
         $c->ajaxGet();
 
         // We properly exit
-        $resource = $this->user->session->username;
+        $resource = $this->user->session->conferences()
+            ->where('conference', $room)
+            ->first()->presences()
+            ->where('mucjid', $this->user->id)
+            ->first()
+            ->resource;
 
         $jid = explodeJid($room);
         $capability = App\Capability::find($jid['server']);
@@ -366,6 +372,9 @@ class Rooms extends \Movim\Widget\Base
              ->first()->presences()->delete();
 
         $this->refreshRooms();
+
+        $session = Session::start();
+        $session->remove($room . '/' .$resource);
 
         $pu = new Unavailable;
         $pu->setTo($room)

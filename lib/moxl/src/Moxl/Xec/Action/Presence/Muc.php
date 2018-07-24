@@ -48,9 +48,6 @@ class Muc extends Action
 
     public function handle($stanza, $parent = false)
     {
-        $session = Session::start();
-        $session->remove($this->_to . '/' .$this->_nickname);
-
         $presence = \App\Presence::findByStanza($stanza);
         $presence->set($stanza);
 
