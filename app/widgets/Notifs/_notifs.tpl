@@ -13,11 +13,11 @@
                 <a href="{$c->route('post', [$parent->server, $parent->node, $parent->nodeid])}">
                     <li>
                         {if="$value->isLike()"}
-                            <span class="primary icon red small">
+                            <span class="primary icon red">
                                 <i class="material-icons">favorite</i>
                             </span>
                         {else}
-                            <span class="primary small icon gray">
+                            <span class="primary icon gray">
                                 <i class="material-icons">comment</i>
                             </span>
                         {/if}
