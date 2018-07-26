@@ -44,9 +44,6 @@ class Api
                 case 'disconnect';
                     $response = $api->sessionDisconnect($request->getParsedBody());
                     break;
-                case 'purify':
-                    $response = $api->purifyHTML($request->getParsedBody());
-                    break;
                 case 'session':
                     $response = $api->getSession($request->getParsedBody());
                     break;
@@ -115,42 +112,4 @@ class Api
 
         return $this->_core->forceClose($sid);
     }
-
-    public function purifyHTML($post)
-    {
-        $string = urldecode($post['html']);
-
-        $config = \HTMLPurifier_Config::createDefault();
-        $config->set('HTML.Doctype', 'XHTML 1.1');
-        $config->set('Cache.SerializerPath', '/tmp');
-        $config->set('HTML.DefinitionID', 'html5-definitions');
-        $config->set('HTML.DefinitionRev', 1);
-        $config->set('CSS.AllowedProperties', ['float']);
-        if ($def = $config->maybeGetRawHTMLDefinition()) {
-            $def->addElement('video', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
-              'src' => 'URI',
-              'type' => 'Text',
-              'width' => 'Length',
-              'height' => 'Length',
-              'poster' => 'URI',
-              'preload' => 'Enum#auto,metadata,none',
-              'controls' => 'Bool',
-            ]);
-            $def->addElement('audio', 'Block', 'Optional: (source, Flow) | (Flow, source) | Flow', 'Common', [
-              'src' => 'URI',
-              'preload' => 'Enum#auto,metadata,none',
-              'muted' => 'Bool',
-              'controls' => 'Bool',
-            ]);
-            $def->addElement('source', 'Block', 'Flow', 'Common', [
-              'src' => 'URI',
-              'type' => 'Text',
-            ]);
-        }
-
-        $purifier = new \HTMLPurifier($config);
-        $trimmed = trim($purifier->purify($string));
-        return preg_replace('#(\s*<br\s*/?>)*\s*$#i', '', $trimmed);
-    }
 }
-
