@@ -554,13 +554,8 @@ function requestURL($url, $timeout = 10, $post = false, $json = false)
     }
 
     if (is_array($post)) {
-        $params = '';
-
-        foreach($post as $key => $value) {
-            $params .= $key . '=' . $value .'&';
-        }
         curl_setopt ($ch, CURLOPT_POST, 1);
-        curl_setopt ($ch, CURLOPT_POSTFIELDS, $params);
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
     }
 
     $rs = [];
