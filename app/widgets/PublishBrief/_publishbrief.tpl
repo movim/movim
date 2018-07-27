@@ -64,6 +64,9 @@
                 </div>
                 <div {if="!$extended"}class="hide"{/if}>
                     <textarea
+                        {if="$extended"}
+                            class="extended"
+                        {/if}
                         name="content"
                         placeholder="{$c->__('publishbrief.content_text')}"
                         oninput="MovimUtils.textareaAutoheight(this);"

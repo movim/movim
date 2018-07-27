@@ -11,6 +11,10 @@ header#publishbrief form > div textarea {
     min-height: 8rem;
 }
 
+#publishbrief textarea.extended {
+    min-height: 50vh;
+}
+
 #publishbrief .embed li.block {
     border: 1px solid rgba(var(--movim-font), 0.12);
     border-radius: 0.5rem;
