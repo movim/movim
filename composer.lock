@@ -2258,16 +2258,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.1.20",
+            "version": "1.1.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "4f3aa90d1f1bf5d392ae89b0738a7e10b6b98e7b"
+                "reference": "47f21596a5accd73e53f8b34bdc8d14abb2849fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/4f3aa90d1f1bf5d392ae89b0738a7e10b6b98e7b",
-                "reference": "4f3aa90d1f1bf5d392ae89b0738a7e10b6b98e7b",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/47f21596a5accd73e53f8b34bdc8d14abb2849fd",
+                "reference": "47f21596a5accd73e53f8b34bdc8d14abb2849fd",
                 "shasum": ""
             },
             "require": {
@@ -2317,7 +2317,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2018-07-25T10:33:08+00:00"
+            "time": "2018-07-28T03:01:58+00:00"
         },
         {
             "name": "ringcentral/psr7",
