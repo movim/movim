@@ -35,8 +35,6 @@
                 <td class="jingle yes">0xxx</td>
                 <td>Rayo</td>
                 <td class="rayo yes">0xxx</td>
-                <td>IoT</td>
-                <td class="iot yes">0xxx</td>
                 <td>Profile</td>
                 <td class="profile yes">0xxx</td>
                 <td>Client</td>
@@ -55,7 +53,8 @@
                 <th>Count</th>
                 {loop="$nslist"}
                     <th>
-                        <a target="_blank" href="https://xmpp.org/extensions/xep-{$key}.html">
+                        <a target="_blank" title="{$value.name}"
+                           href="https://xmpp.org/extensions/xep-{$key}.html">
                             {$key}
                         </a>
                     </th>
