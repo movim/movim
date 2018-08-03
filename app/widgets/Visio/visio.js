@@ -342,7 +342,7 @@ var Visio = {
 
         if (Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled) {
             Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 0;
-            button.innerText = 'videocam-off';
+            button.innerText = 'videocam_off';
         } else {
             Visio.pc.getLocalStreams()[0].getVideoTracks()[0].enabled = 1;
             button.innerText = 'videocam';
@@ -357,4 +357,3 @@ MovimWebsocket.attach(function() {
 window.onbeforeunload = function() {
     Visio.goodbye();
 }
-
