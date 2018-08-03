@@ -1,1 +1,1 @@
-{$json}
+{autoescape="off"}{$json}{/autoescape}
