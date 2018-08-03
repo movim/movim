@@ -29,13 +29,19 @@ class AdHoc extends \Movim\Widget\Base
     function onCommand($package)
     {
         $command = $package->content;
+        $attributes = (array)$command->attributes();
+
+        if ((string)$command->attributes()->status === 'completed') {
+            $this->rpc('Dialog.clear');
+            Notification::append(false, $this->__('adhoc.completed'));
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('jid', $package->from);
 
         if (isset($command->note)) {
             $view->assign('note', $command->note);
-
             Dialog::fill($view->draw('_adhoc_note'));
         }
 
