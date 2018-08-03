@@ -7,8 +7,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminDB/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
@@ -18,8 +16,6 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -45,17 +41,11 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Confirm/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Contact/locales.ini
+#. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Group/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Invitations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -73,19 +63,13 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Roster/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -105,571 +89,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-23 23:33+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-08 22:24+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.0.0rc3\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-11 17:28+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.0.0b7\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 23:47+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-25 19:30+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 1.13.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
-"#-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#\n"
-"Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"POT-Creation-Date: 2018-08-03 12:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -720,8 +142,7 @@ msgstr ""
 msgid "Change my password"
 msgstr ""
 
-#: [account]password [db]password [credentials]password [form]password
-#: [input]password
+#: [account]password [credentials]password [form]password [input]password
 msgid "Password"
 msgstr ""
 
@@ -815,46 +236,6 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: [db]legend [schema]database
-msgid "Database"
-msgstr ""
-
-#: [db]connect_error
-msgid "Modl wasn't able to connect to the database"
-msgstr ""
-
-#: [db]connect_success
-msgid "Movim is connected to the database"
-msgstr ""
-
-#: [db]update [compatibility]db
-msgid "The database need to be updated"
-msgstr ""
-
-#: [db]up_to_date
-msgid "Movim database is up to date"
-msgstr ""
-
-#: [db]type
-msgid "Database Type"
-msgstr ""
-
-#: [db]username [credentials]username [input]username
-msgid "Username"
-msgstr ""
-
-#: [db]host
-msgid "Host"
-msgstr ""
-
-#: [db]port
-msgid "Port"
-msgstr ""
-
-#: [db]name
-msgid "Database Name"
-msgstr ""
-
 #: [admin]general
 msgid "General Settings"
 msgstr ""
@@ -887,6 +268,10 @@ msgstr ""
 
 #: [credentials]title
 msgid "Administration Credential"
+msgstr ""
+
+#: [credentials]username [input]username
+msgid "Username"
 msgstr ""
 
 #: [credentials]re_password
@@ -979,6 +364,10 @@ msgstr ""
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
 
+#: [compatibility]db
+msgid "The database need to be updated"
+msgstr ""
+
 #: [compatibility]websocket
 msgid ""
 "WebSocket connection error, check if the Movim Daemon is running and is "
@@ -1001,6 +390,10 @@ msgstr ""
 
 #: [schema]daemon
 msgid "Movim Daemon"
+msgstr ""
+
+#: [schema]database
+msgid "Database"
 msgstr ""
 
 #: [schema]xmpp
@@ -1079,68 +472,6 @@ msgstr ""
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
-
-#: [title]conferences
-msgid "Conferences"
-msgstr ""
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr ""
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr ""
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr ""
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr ""
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr ""
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr ""
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr ""
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr ""
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr ""
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
 msgstr ""
 
 #: [message]published
@@ -1235,8 +566,7 @@ msgstr ""
 msgid "Disconnected from the chatroom"
 msgstr ""
 
-#: [chatroom]config [communityaffiliation]configuration [group]configuration
-#: [page]configuration
+#: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
 msgstr ""
 
@@ -1282,7 +612,7 @@ msgstr ""
 msgid "New conversation"
 msgstr ""
 
-#: [communities]empty_text [group]empty_text
+#: [communities]empty_text
 msgid "Discover, follow and share"
 msgstr ""
 
@@ -1290,7 +620,7 @@ msgstr ""
 msgid "%s communities"
 msgstr ""
 
-#: [communities]search_server [group]search_server
+#: [communities]search_server
 msgid "Search for a new server"
 msgstr ""
 
@@ -1298,7 +628,7 @@ msgstr ""
 msgid "Communities servers"
 msgstr ""
 
-#: [communities]disco_error [groups]disco_error
+#: [communities]disco_error
 msgid "This server doesn't exists"
 msgstr ""
 
@@ -1318,7 +648,7 @@ msgstr ""
 msgid "Community name"
 msgstr ""
 
-#: [communitiesserver]name_example [groups]name_example
+#: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
 msgstr ""
 
@@ -1330,7 +660,7 @@ msgstr ""
 msgid "You cannot create a new community on this server"
 msgstr ""
 
-#: [communityaffiliation]subscriptions [group]subscriptions
+#: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr ""
 
@@ -1402,11 +732,11 @@ msgstr ""
 msgid "The subscribers can publish"
 msgstr ""
 
-#: [communitydata]sub [groups]sub
+#: [communitydata]sub
 msgid "%s subscribers"
 msgstr ""
 
-#: [communitydata]num [groups]num
+#: [communitydata]num
 msgid "%s posts"
 msgstr ""
 
@@ -1414,19 +744,19 @@ msgstr ""
 msgid "Public page"
 msgstr ""
 
-#: [communityheader]subscribe [group]subscribe
+#: [communityheader]subscribe
 msgid "Subscribe"
 msgstr ""
 
-#: [communityheader]unsubscribe [group]unsubscribe
+#: [communityheader]unsubscribe
 msgid "Unsubscribe"
 msgstr ""
 
-#: [communityheader]subscribed [group]subscribed
+#: [communityheader]subscribed
 msgid "Subscribed"
 msgstr ""
 
-#: [communityheader]unsubscribed [group]unsubscribed
+#: [communityheader]unsubscribed
 msgid "Unsubscribed"
 msgstr ""
 
@@ -1454,7 +784,7 @@ msgstr ""
 msgid "You are going to unsubscribe from this community"
 msgstr ""
 
-#: [communityheader]sure [group]sure
+#: [communityheader]sure
 msgid "Are you sure ?"
 msgstr ""
 
@@ -1468,19 +798,19 @@ msgid ""
 "of adult content in the configuration page."
 msgstr ""
 
-#: [communitysubscriptions]subscriptions [groups]subscriptions
+#: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr ""
 
-#: [communitysubscriptions]empty_title [groups]empty_title
+#: [communitysubscriptions]empty_title
 msgid "Hello"
 msgstr ""
 
-#: [communitysubscriptions]empty_text1 [groups]empty_text1
+#: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
-#: [communitysubscriptions]empty_text2 [groups]empty_text2
+#: [communitysubscriptions]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr ""
 
@@ -1570,12 +900,40 @@ msgstr ""
 msgid "Authentication code"
 msgstr ""
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr ""
+
+#: [roster]add_contact_info1
+msgid "Enter the Jabber ID of your contact."
+msgstr ""
+
+#: [roster]add_contact_info2
+msgid "Press enter to validate."
+msgstr ""
+
+#: [roster]added
+msgid "Contact added"
+msgstr ""
+
+#: [roster]updated
+msgid "Contact updated"
+msgstr ""
+
+#: [roster]deleted
+msgid "Contact deleted"
+msgstr ""
+
 #: [general]legend
-msgid "General Informations"
+msgid "General Information"
 msgstr ""
 
 #: [general]name [chatrooms]name
 msgid "Name"
+msgstr ""
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
 msgstr ""
 
 #: [general]date_of_birth
@@ -1639,7 +997,7 @@ msgid "Last seen"
 msgstr ""
 
 #: [client]title
-msgid "Client Informations"
+msgid "Client Information"
 msgstr ""
 
 #: [explore]last_registered
@@ -1717,116 +1075,8 @@ msgstr ""
 
 #: [subscription]nil_text
 msgid ""
-"This contact is in your contact list but there is no subscriptions between "
-"the two accounts"
-msgstr ""
-
-#: [general]legend
-msgid "General Information"
-msgstr ""
-
-#: [client]title
-msgid "Client Information"
-msgstr ""
-
-#: [subscription]nil_text
-msgid ""
 "This contact is in your contact list but there is no subscription between "
 "the two accounts"
-msgstr ""
-
-#: [group]unsubscribe_text
-msgid "You are going to unsubscribe from this Group"
-msgstr ""
-
-#: [group]share_label
-msgid "Make your membership to this group public to your friends"
-msgstr ""
-
-#: [group]label_label
-msgid "Give a label for this group"
-msgstr ""
-
-#: [group]empty
-msgid "Something bad happened to this group"
-msgstr ""
-
-#: [group]config_saved
-msgid "Group configuration saved"
-msgstr ""
-
-#: [group]delete_title
-msgid "Delete the group"
-msgstr ""
-
-#: [group]delete_text
-msgid ""
-"You are going to delete the following group. Please confirm your action."
-msgstr ""
-
-#: [group]delete_clean_text
-msgid ""
-"It seems that this group doesn't exists anymore. Do you want to remove it "
-"from your subscriptions?"
-msgstr ""
-
-#: [group]counter
-msgid "%s groups on this server"
-msgstr ""
-
-#: [group]servers
-msgid "Groups servers"
-msgstr ""
-
-#: [group]help_info1
-msgid ""
-"Groups are the perfect way to share posts about topics that you like with "
-"all the other Movim's users."
-msgstr ""
-
-#: [group]help_info2
-msgid ""
-"Choose a server and a Group and subscribe to it using the %s button in the "
-"header. You can also create a new one using the %s button."
-msgstr ""
-
-#: [group]help_info3
-msgid ""
-"Done? You can now publish a new post in the Group by using the %s button."
-msgstr ""
-
-#: [group]help_info4
-msgid ""
-"You will find a list of all your subscribed Groups in My Subscriptions and "
-"receive instantly all the new incoming posts in the %sNews%s page."
-msgstr ""
-
-#: [groups]contact_post [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr ""
-
-#: [groups]add
-msgid "Create a new Group on %s"
-msgstr ""
-
-#: [groups]name
-msgid "Group name"
-msgstr ""
-
-#: [groups]created
-msgid "Group created successfully"
-msgstr ""
-
-#: [groups]deleted
-msgid "Group deleted successfully"
-msgstr ""
-
-#: [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr ""
-
-#: [groups]no_creation
-msgid "You cannot create a new Group on this server"
 msgstr ""
 
 #: [help]faq
@@ -1869,30 +1119,6 @@ msgstr ""
 msgid "Add the chatroom"
 msgstr ""
 
-#: [init]location
-msgid "Location node created"
-msgstr ""
-
-#: [init]bookmark
-msgid "Bookmark node created"
-msgstr ""
-
-#: [init]vcard4
-msgid "Profile node created"
-msgstr ""
-
-#: [init]avatar
-msgid "Avatar node created"
-msgstr ""
-
-#: [init]subscriptions
-msgid "Subscriptions node created"
-msgstr ""
-
-#: [init]microblog
-msgid "Microblog node created"
-msgstr ""
-
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr ""
@@ -1918,7 +1144,7 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: [error]data_missings
-msgid "Some data are missing !"
+msgid "Some data are missing!"
 msgstr ""
 
 #: [error]wrong_password
@@ -1999,6 +1225,10 @@ msgstr ""
 
 #: [menu]empty_title
 msgid "No news yet…"
+msgstr ""
+
+#: [menu]contact_post [hello]contact_post
+msgid "Contact post"
 msgstr ""
 
 #: [menu]empty
@@ -2088,7 +1318,7 @@ msgstr ""
 msgid "Discover and register to the groups you are interested in"
 msgstr ""
 
-#: [post]content [publish]content_label
+#: [post]content
 msgid "Content"
 msgstr ""
 
@@ -2109,7 +1339,7 @@ msgid ""
 "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publishbrief]new
 msgid "New post"
 msgstr ""
 
@@ -2231,76 +1461,6 @@ msgstr ""
 msgid "Presence"
 msgstr ""
 
-#: [publish]preview [publishbrief]preview
-msgid "Preview"
-msgstr ""
-
-#: [publish]help [publishhelp]title [page]help
-msgid "Help"
-msgstr ""
-
-#: [publish]help_more [publishhelp]more
-msgid "More help"
-msgstr ""
-
-#: [publish]help_manual [publishhelp]manual
-msgid "Markdown syntax manual"
-msgstr ""
-
-#: [publish]content_text [publishbrief]content_text
-msgid "You can format your content using Markdown"
-msgstr ""
-
-#: [publish]link
-msgid "Link"
-msgstr ""
-
-#: [publish]tags
-msgid "Tags"
-msgstr ""
-
-#: [publish]valid_url [publishbrief]valid_url
-msgid "Please enter a valid URL"
-msgstr ""
-
-#: [publish]no_content_preview [publishbrief]no_content_preview
-msgid "No content to preview"
-msgstr ""
-
-#: [publish]no_title [publishbrief]no_title
-msgid "Please provide a title"
-msgstr ""
-
-#: [publish]edit
-msgid "Edit post"
-msgstr ""
-
-#: [publish]title [page]publish
-msgid "Publish"
-msgstr ""
-
-#: [publish]attach
-msgid "Add a file or a picture to your post"
-msgstr ""
-
-#: [publish]no_publication
-msgid "You cannot publish a post on this Group"
-msgstr ""
-
-#: [publish]form_filled
-msgid ""
-"Some fields have been filled in. Do you still want to go back and loose "
-"their content?"
-msgstr ""
-
-#: [publish]add_text
-msgid "Click here to add some text to your publication"
-msgstr ""
-
-#: [publish]add_text_label
-msgid "Add some text"
-msgstr ""
-
 #: [publishbrief]placeholder
 msgid "What's new?"
 msgstr ""
@@ -2313,12 +1473,44 @@ msgstr ""
 msgid "Add a link"
 msgstr ""
 
+#: [publishbrief]no_title
+msgid "Please provide a title"
+msgstr ""
+
+#: [publishbrief]preview
+msgid "Preview"
+msgstr ""
+
 #: [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr ""
 
 #: [publishbrief]no_publication
 msgid "You cannot publish a post here"
+msgstr ""
+
+#: [publishbrief]no_content_preview
+msgid "No content to preview"
+msgstr ""
+
+#: [publishbrief]valid_url
+msgid "Please enter a valid URL"
+msgstr ""
+
+#: [publishbrief]content_text
+msgid "You can format your content using Markdown"
+msgstr ""
+
+#: [publishhelp]title [page]help
+msgid "Help"
+msgstr ""
+
+#: [publishhelp]more
+msgid "More help"
+msgstr ""
+
+#: [publishhelp]manual
+msgid "Markdown syntax manual"
 msgstr ""
 
 #: [rooms]add
@@ -2341,8 +1533,20 @@ msgstr ""
 msgid "Chatrooms"
 msgstr ""
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr ""
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
+msgstr ""
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr ""
+
+#: [chatrooms]empty_name
+msgid "Empty name"
 msgstr ""
 
 #: [chatrooms]users
@@ -2363,6 +1567,10 @@ msgstr ""
 
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
+msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
 msgstr ""
 
 #: [room]anonymous_title
@@ -2403,96 +1611,12 @@ msgstr ""
 msgid "Send this link to your contacts"
 msgstr ""
 
-#: [roster]ungrouped
-msgid "Ungrouped"
-msgstr ""
-
-#: [roster]show_disconnected
-msgid "Show disconnected contacts"
-msgstr ""
-
-#: [roster]hide_disconnected
-msgid "Hide disconnected contacts"
-msgstr ""
-
-#: [roster]show_group
-msgid "Show group %s"
-msgstr ""
-
-#: [roster]hide_group
-msgid "Hide group %s"
-msgstr ""
-
-#: [roster]jid_error
-msgid "Please enter a valid Jabber ID"
-msgstr ""
-
-#: [roster]no_contacts_title
-msgid "No contacts ?"
-msgstr ""
-
-#: [roster]no_contacts_text
-msgid "You can add one using the + button below"
-msgstr ""
-
-#: [roster]show_hide
-msgid "Show/Hide"
-msgstr ""
-
-#: [roster]add_title
-msgid "Add a contact"
-msgstr ""
-
-#: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
-msgstr ""
-
-#: [roster]add_contact_info2
-msgid "Press enter to validate."
-msgstr ""
-
-#: [roster]jid
-msgid "JID"
-msgstr ""
-
-#: [roster]results
-msgid "Results"
-msgstr ""
-
-#: [roster]added
-msgid "Contact added"
-msgstr ""
-
-#: [roster]updated
-msgid "Contact updated"
-msgstr ""
-
-#: [roster]deleted
-msgid "Contact deleted"
-msgstr ""
-
-#: [roster]search
-msgid "Search in your contacts"
-msgstr ""
-
-#: [roster]search_pod
-msgid "Search a contact"
-msgstr ""
-
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr ""
-
-#: [share]success
-msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -2571,10 +1695,6 @@ msgstr ""
 
 #: [vcard]restricted
 msgid "Your profile is now restricted"
-msgstr ""
-
-#: [privacy]my_profile
-msgid "Go to my profile page"
 msgstr ""
 
 #: [privacy]privacy_title
@@ -2683,6 +1803,10 @@ msgstr ""
 
 #: [page]chats
 msgid "Chats"
+msgstr ""
+
+#: [page]publish
+msgid "Publish"
 msgstr ""
 
 #: [page]post

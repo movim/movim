@@ -10,8 +10,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminDB/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
@@ -21,8 +19,6 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -48,17 +44,11 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Confirm/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Contact/locales.ini
+#. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Group/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Invitations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -76,19 +66,13 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Roster/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -109,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"POT-Creation-Date: 2018-08-03 12:08+0200\n"
 "PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -160,8 +144,7 @@ msgstr "Konto"
 msgid "Change my password"
 msgstr "Ændr adgangskode"
 
-#: [account]password [db]password [credentials]password [form]password
-#: [input]password
+#: [account]password [credentials]password [form]password [input]password
 msgid "Password"
 msgstr "Adgangskode"
 
@@ -249,46 +232,6 @@ msgstr ""
 msgid "Actions"
 msgstr "Handlinger"
 
-#: [db]legend [schema]database
-msgid "Database"
-msgstr "Database"
-
-#: [db]connect_error
-msgid "Modl wasn't able to connect to the database"
-msgstr "Modl kunne ikke forbinde til databasen"
-
-#: [db]connect_success
-msgid "Movim is connected to the database"
-msgstr "Moovim er forbundet til databasen"
-
-#: [db]update [compatibility]db
-msgid "The database need to be updated"
-msgstr "Databasen bør opdateres"
-
-#: [db]up_to_date
-msgid "Movim database is up to date"
-msgstr "Movim database er i nyeste version"
-
-#: [db]type
-msgid "Database Type"
-msgstr "Databasetype"
-
-#: [db]username [credentials]username [input]username
-msgid "Username"
-msgstr "Brugernavn"
-
-#: [db]host
-msgid "Host"
-msgstr "Vært"
-
-#: [db]port
-msgid "Port"
-msgstr "Port"
-
-#: [db]name
-msgid "Database Name"
-msgstr "Databasenavn"
-
 #: [admin]general
 msgid "General Settings"
 msgstr "Generelle indstillinger"
@@ -320,6 +263,10 @@ msgstr ""
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Administrations legitimationsstyring"
+
+#: [credentials]username [input]username
+msgid "Username"
+msgstr "Brugernavn"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -407,6 +354,10 @@ msgstr "Movim har fundet nogle problemer, eller ting der har brug for at blive o
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
 
+#: [compatibility]db
+msgid "The database need to be updated"
+msgstr "Databasen bør opdateres"
+
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "WebSocket forbindelsesfejl, sørg for at Movim-serveren (daemon) kører og kan tilgås"
@@ -426,6 +377,10 @@ msgstr "Movim Core"
 #: [schema]daemon
 msgid "Movim Daemon"
 msgstr "Movim Daemon"
+
+#: [schema]database
+msgid "Database"
+msgstr "Database"
 
 #: [schema]xmpp
 msgid "XMPP"
@@ -502,68 +457,6 @@ msgstr "Denne bruger har ikke delt noget endnu"
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "Dette indhold er privat, log ind for at se det"
-
-#: [title]conferences
-msgid "Conferences"
-msgstr ""
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "Grupper"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr ""
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID for chatrum"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr ""
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Kaldenavn"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Ugyldigt ID for Chatrum"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tomt navn"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Bogmærker opdateret"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr ""
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr ""
 
 #: [message]published
 msgid "Message Published"
@@ -657,8 +550,7 @@ msgstr "Forbundet til chatrummet"
 msgid "Disconnected from the chatroom"
 msgstr "Afkoblet fra chatrummet"
 
-#: [chatroom]config [communityaffiliation]configuration [group]configuration
-#: [page]configuration
+#: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
 msgstr "Opsætning"
 
@@ -702,7 +594,7 @@ msgstr "Chat"
 msgid "New conversation"
 msgstr ""
 
-#: [communities]empty_text [group]empty_text
+#: [communities]empty_text
 msgid "Discover, follow and share"
 msgstr "Opdag, følg og del"
 
@@ -710,7 +602,7 @@ msgstr "Opdag, følg og del"
 msgid "%s communities"
 msgstr ""
 
-#: [communities]search_server [group]search_server
+#: [communities]search_server
 msgid "Search for a new server"
 msgstr "Led efter en ny server"
 
@@ -718,7 +610,7 @@ msgstr "Led efter en ny server"
 msgid "Communities servers"
 msgstr ""
 
-#: [communities]disco_error [groups]disco_error
+#: [communities]disco_error
 msgid "This server doesn't exists"
 msgstr "Denne server eksisterer ikke"
 
@@ -738,7 +630,7 @@ msgstr ""
 msgid "Community name"
 msgstr ""
 
-#: [communitiesserver]name_example [groups]name_example
+#: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony - Fanklub"
 
@@ -750,7 +642,7 @@ msgstr ""
 msgid "You cannot create a new community on this server"
 msgstr ""
 
-#: [communityaffiliation]subscriptions [group]subscriptions
+#: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Abonnementer"
 
@@ -819,11 +711,11 @@ msgstr ""
 msgid "The subscribers can publish"
 msgstr ""
 
-#: [communitydata]sub [groups]sub
+#: [communitydata]sub
 msgid "%s subscribers"
 msgstr "%s abonnenter"
 
-#: [communitydata]num [groups]num
+#: [communitydata]num
 msgid "%s posts"
 msgstr "%s indlæg"
 
@@ -831,19 +723,19 @@ msgstr "%s indlæg"
 msgid "Public page"
 msgstr ""
 
-#: [communityheader]subscribe [group]subscribe
+#: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "Abonnér"
 
-#: [communityheader]unsubscribe [group]unsubscribe
+#: [communityheader]unsubscribe
 msgid "Unsubscribe"
 msgstr "Opsig abonnement"
 
-#: [communityheader]subscribed [group]subscribed
+#: [communityheader]subscribed
 msgid "Subscribed"
 msgstr "Abonnerer"
 
-#: [communityheader]unsubscribed [group]unsubscribed
+#: [communityheader]unsubscribed
 msgid "Unsubscribed"
 msgstr "Abonnement opsagt"
 
@@ -871,7 +763,7 @@ msgstr ""
 msgid "You are going to unsubscribe from this community"
 msgstr ""
 
-#: [communityheader]sure [group]sure
+#: [communityheader]sure
 msgid "Are you sure ?"
 msgstr "Er du sikker?"
 
@@ -883,19 +775,19 @@ msgstr ""
 msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
 msgstr ""
 
-#: [communitysubscriptions]subscriptions [groups]subscriptions
+#: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr "Mine Abonnementer"
 
-#: [communitysubscriptions]empty_title [groups]empty_title
+#: [communitysubscriptions]empty_title
 msgid "Hello"
 msgstr "Hej"
 
-#: [communitysubscriptions]empty_text1 [groups]empty_text1
+#: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
 msgstr "Her kan du håndtere alle dine abonnementer."
 
-#: [communitysubscriptions]empty_text2 [groups]empty_text2
+#: [communitysubscriptions]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr "Du har endnu ingen abonnementer på grupper."
 
@@ -983,13 +875,41 @@ msgstr ""
 msgid "Authentication code"
 msgstr ""
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr ""
+
+#: [roster]add_contact_info1
+msgid "Enter the Jabber ID of your contact."
+msgstr "Skriv Jabber ID'et på din kontakt."
+
+#: [roster]add_contact_info2
+msgid "Press enter to validate."
+msgstr "Tryk enter vor at validere."
+
+#: [roster]added
+msgid "Contact added"
+msgstr "Kontakt tilføjet"
+
+#: [roster]updated
+msgid "Contact updated"
+msgstr "Kontakt opdateret"
+
+#: [roster]deleted
+msgid "Contact deleted"
+msgstr "Kontakt slettet"
+
 #: [general]legend
-msgid "General Informations"
-msgstr "Generelle Informationer"
+msgid "General Information"
+msgstr ""
 
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Navn"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Kaldenavn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1052,8 +972,8 @@ msgid "Last seen"
 msgstr "Sidst set"
 
 #: [client]title
-msgid "Client Informations"
-msgstr "Klient-infomationer"
+msgid "Client Information"
+msgstr ""
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1128,104 +1048,8 @@ msgid "Invite"
 msgstr "Inviter"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-msgstr "Denne kontakt er i din kontaktliste, men der er ingen abonnementer mellem de to konti"
-
-#: [general]legend
-msgid "General Information"
-msgstr ""
-
-#: [client]title
-msgid "Client Information"
-msgstr ""
-
-#: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr ""
-
-#: [group]unsubscribe_text
-msgid "You are going to unsubscribe from this Group"
-msgstr "Du er ved at opsige dit abonnement på denne gruppe"
-
-#: [group]share_label
-msgid "Make your membership to this group public to your friends"
-msgstr "Gør dit medlemskab af denne gruppe offentligt for dine venner"
-
-#: [group]label_label
-msgid "Give a label for this group"
-msgstr "Giv denne gruppe en label"
-
-#: [group]empty
-msgid "Something bad happened to this group"
-msgstr "Noget skidt er sket med denne gruppe"
-
-#: [group]config_saved
-msgid "Group configuration saved"
-msgstr "Gruppeopsætning gemt"
-
-#: [group]delete_title
-msgid "Delete the group"
-msgstr "Slet denne gruppe"
-
-#: [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
-msgstr "Du er ved at slette følgende gruppe. Bekræft venligst din handling."
-
-#: [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Det ser ud til at denne gruppe ikke eksisterer mere. Vil du fjerne den fra dine abonnementer?"
-
-#: [group]counter
-msgid "%s groups on this server"
-msgstr "%s grupper på denne server"
-
-#: [group]servers
-msgid "Groups servers"
-msgstr "Gruppeservere"
-
-#: [group]help_info1
-msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-msgstr "Grupper er den perfekte måde, hvorpå du kan dele indlæg om emner der interesserer dig med alle andre Movim brugere."
-
-#: [group]help_info2
-msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-msgstr "Vælg en server samt en gruppe, og du kan abonnere på den med %s-knappen i overskriften. Du kan også oprette en ny med %s-knappen."
-
-#: [group]help_info3
-msgid "Done? You can now publish a new post in the Group by using the %s button."
-msgstr "Færdig? Du kan nu publicere et indlæg i gruppen med %s-knappen."
-
-#: [group]help_info4
-msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-msgstr "Du finder en liste over alle grupper du abonnerer på i Mine Abonnementer, og modtager øjeblikkeligt alle nye indlæg på %sNews%s-siden."
-
-#: [groups]contact_post [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr "Kontakt indlæg"
-
-#: [groups]add
-msgid "Create a new Group on %s"
-msgstr ""
-
-#: [groups]name
-msgid "Group name"
-msgstr "Gruppenavn"
-
-#: [groups]created
-msgid "Group created successfully"
-msgstr "Gruppe er oprettet"
-
-#: [groups]deleted
-msgid "Group deleted successfully"
-msgstr "Gruppe er slettet"
-
-#: [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr "Opgiv venligst et gyldigt gruppenavn (mindst 4 tegn)"
-
-#: [groups]no_creation
-msgid "You cannot create a new Group on this server"
-msgstr "Du kan ikke oprette en ny gruppe på denne server"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1267,30 +1091,6 @@ msgstr ""
 msgid "Add the chatroom"
 msgstr "Tilføj chatrummet"
 
-#: [init]location
-msgid "Location node created"
-msgstr "Placerings-node oprettet"
-
-#: [init]bookmark
-msgid "Bookmark node created"
-msgstr "Bogmærke-node oprettet"
-
-#: [init]vcard4
-msgid "Profile node created"
-msgstr "Profil-node oprettet"
-
-#: [init]avatar
-msgid "Avatar node created"
-msgstr "Profilbillede-node oprettet"
-
-#: [init]subscriptions
-msgid "Subscriptions node created"
-msgstr "Abonnement-node oprettet"
-
-#: [init]microblog
-msgid "Microblog node created"
-msgstr "Mikroblog-node oprettet"
-
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr "Ventende invitationer"
@@ -1316,7 +1116,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP domænefejl, din konto er ikke et rigtigt Jabber ID"
 
 #: [error]data_missings
-msgid "Some data are missing !"
+#, fuzzy
+msgid "Some data are missing!"
 msgstr "Nogle data manger !"
 
 #: [error]wrong_password
@@ -1399,6 +1200,10 @@ msgstr "Ugyldigt kælenavn (mellem 4 og 40 tegn)"
 msgid "No news yet…"
 msgstr ""
 
+#: [menu]contact_post [hello]contact_post
+msgid "Contact post"
+msgstr "Kontakt indlæg"
+
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr ""
@@ -1479,7 +1284,7 @@ msgstr "Nyhedsfeed"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Opdag og tilmeld dig til de grupper du er interesseret i"
 
-#: [post]content [publish]content_label
+#: [post]content
 msgid "Content"
 msgstr "Indhold"
 
@@ -1499,7 +1304,7 @@ msgstr "Hvad der snakkes om"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publishbrief]new
 msgid "New post"
 msgstr "Nyt indlæg"
 
@@ -1615,74 +1420,6 @@ msgstr "Status opdateret"
 msgid "Presence"
 msgstr "Tilstedeværelse"
 
-#: [publish]preview [publishbrief]preview
-msgid "Preview"
-msgstr "Forhåndsvisning"
-
-#: [publish]help [publishhelp]title [page]help
-msgid "Help"
-msgstr "Hjælp"
-
-#: [publish]help_more [publishhelp]more
-msgid "More help"
-msgstr "Mere hjælp"
-
-#: [publish]help_manual [publishhelp]manual
-msgid "Markdown syntax manual"
-msgstr "Markdown-syntaksmanual"
-
-#: [publish]content_text [publishbrief]content_text
-msgid "You can format your content using Markdown"
-msgstr "Du kan formatere indhold ved brug af Markdown"
-
-#: [publish]link
-msgid "Link"
-msgstr "Link"
-
-#: [publish]tags
-msgid "Tags"
-msgstr "Mærkater"
-
-#: [publish]valid_url [publishbrief]valid_url
-msgid "Please enter a valid URL"
-msgstr ""
-
-#: [publish]no_content_preview [publishbrief]no_content_preview
-msgid "No content to preview"
-msgstr "Intet indhold at forhåndsvise"
-
-#: [publish]no_title [publishbrief]no_title
-msgid "Please provide a title"
-msgstr "Angiv venligst en titel"
-
-#: [publish]edit
-msgid "Edit post"
-msgstr "Rediger indlæg"
-
-#: [publish]title [page]publish
-msgid "Publish"
-msgstr "Publicer"
-
-#: [publish]attach
-msgid "Add a file or a picture to your post"
-msgstr "Tilføj en fil eller et billede til dit indlæg"
-
-#: [publish]no_publication
-msgid "You cannot publish a post on this Group"
-msgstr "Du kan ikke publicere et indlæg til denne gruppe"
-
-#: [publish]form_filled
-msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-msgstr "Nogle felter er udfyldt. Vil du stadig gå tilbage og miste deres indhold?"
-
-#: [publish]add_text
-msgid "Click here to add some text to your publication"
-msgstr "Klik her for at tilføje tekst til dit indlæg"
-
-#: [publish]add_text_label
-msgid "Add some text"
-msgstr "Tilføj tekst"
-
 #: [publishbrief]placeholder
 msgid "What's new?"
 msgstr ""
@@ -1695,6 +1432,14 @@ msgstr ""
 msgid "Add a link"
 msgstr ""
 
+#: [publishbrief]no_title
+msgid "Please provide a title"
+msgstr "Angiv venligst en titel"
+
+#: [publishbrief]preview
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
 #: [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr ""
@@ -1702,6 +1447,30 @@ msgstr ""
 #: [publishbrief]no_publication
 msgid "You cannot publish a post here"
 msgstr ""
+
+#: [publishbrief]no_content_preview
+msgid "No content to preview"
+msgstr "Intet indhold at forhåndsvise"
+
+#: [publishbrief]valid_url
+msgid "Please enter a valid URL"
+msgstr ""
+
+#: [publishbrief]content_text
+msgid "You can format your content using Markdown"
+msgstr "Du kan formatere indhold ved brug af Markdown"
+
+#: [publishhelp]title [page]help
+msgid "Help"
+msgstr "Hjælp"
+
+#: [publishhelp]more
+msgid "More help"
+msgstr "Mere hjælp"
+
+#: [publishhelp]manual
+msgid "Markdown syntax manual"
+msgstr "Markdown-syntaksmanual"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1723,9 +1492,21 @@ msgstr "Tilføj ved at klikke på tilføj-knappen"
 msgid "Chatrooms"
 msgstr "Chatrum"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID for chatrum"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mit favoritrum"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Ugyldigt ID for Chatrum"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tomt navn"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1746,6 +1527,10 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Bogmærker opdateret"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1783,96 +1568,12 @@ msgstr ""
 msgid "Send this link to your contacts"
 msgstr ""
 
-#: [roster]ungrouped
-msgid "Ungrouped"
-msgstr "Ikke grupperet"
-
-#: [roster]show_disconnected
-msgid "Show disconnected contacts"
-msgstr "Vis offline kontakter"
-
-#: [roster]hide_disconnected
-msgid "Hide disconnected contacts"
-msgstr "Skjul offline kontaker"
-
-#: [roster]show_group
-msgid "Show group %s"
-msgstr "Vis gruppen %s"
-
-#: [roster]hide_group
-msgid "Hide group %s"
-msgstr "Skjul gruppen %s"
-
-#: [roster]jid_error
-msgid "Please enter a valid Jabber ID"
-msgstr "Skriv venligst et gyldigt Jabber ID"
-
-#: [roster]no_contacts_title
-msgid "No contacts ?"
-msgstr "Ingen kontakter?"
-
-#: [roster]no_contacts_text
-msgid "You can add one using the + button below"
-msgstr ""
-
-#: [roster]show_hide
-msgid "Show/Hide"
-msgstr "Vis/skjul"
-
-#: [roster]add_title
-msgid "Add a contact"
-msgstr ""
-
-#: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
-msgstr "Skriv Jabber ID'et på din kontakt."
-
-#: [roster]add_contact_info2
-msgid "Press enter to validate."
-msgstr "Tryk enter vor at validere."
-
-#: [roster]jid
-msgid "JID"
-msgstr "JID"
-
-#: [roster]results
-msgid "Results"
-msgstr "Resultater"
-
-#: [roster]added
-msgid "Contact added"
-msgstr "Kontakt tilføjet"
-
-#: [roster]updated
-msgid "Contact updated"
-msgstr "Kontakt opdateret"
-
-#: [roster]deleted
-msgid "Contact deleted"
-msgstr "Kontakt slettet"
-
-#: [roster]search
-msgid "Search in your contacts"
-msgstr "Søg i dine kontakter"
-
-#: [roster]search_pod
-msgid "Search a contact"
-msgstr ""
-
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr ""
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
-msgstr ""
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr ""
-
-#: [share]success
-msgid "Sharing the URL"
 msgstr ""
 
 #: [statistics]title
@@ -1950,10 +1651,6 @@ msgstr "Din profil er nu offentlig"
 #: [vcard]restricted
 msgid "Your profile is now restricted"
 msgstr "Din profil er nu begrænset"
-
-#: [privacy]my_profile
-msgid "Go to my profile page"
-msgstr ""
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -2054,6 +1751,10 @@ msgstr "Profilbillede"
 #: [page]chats
 msgid "Chats"
 msgstr "Chats"
+
+#: [page]publish
+msgid "Publish"
+msgstr "Publicer"
 
 #: [page]post
 msgid "Post"
@@ -2816,3 +2517,168 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "Modl wasn't able to connect to the database"
+#~ msgstr "Modl kunne ikke forbinde til databasen"
+
+#~ msgid "Movim is connected to the database"
+#~ msgstr "Moovim er forbundet til databasen"
+
+#~ msgid "Movim database is up to date"
+#~ msgstr "Movim database er i nyeste version"
+
+#~ msgid "Database Type"
+#~ msgstr "Databasetype"
+
+#~ msgid "Host"
+#~ msgstr "Vært"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "Database Name"
+#~ msgstr "Databasenavn"
+
+#~ msgid "Groups"
+#~ msgstr "Grupper"
+
+#~ msgid "General Informations"
+#~ msgstr "Generelle Informationer"
+
+#~ msgid "Client Informations"
+#~ msgstr "Klient-infomationer"
+
+#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
+#~ msgstr "Denne kontakt er i din kontaktliste, men der er ingen abonnementer mellem de to konti"
+
+#~ msgid "You are going to unsubscribe from this Group"
+#~ msgstr "Du er ved at opsige dit abonnement på denne gruppe"
+
+#~ msgid "Make your membership to this group public to your friends"
+#~ msgstr "Gør dit medlemskab af denne gruppe offentligt for dine venner"
+
+#~ msgid "Give a label for this group"
+#~ msgstr "Giv denne gruppe en label"
+
+#~ msgid "Something bad happened to this group"
+#~ msgstr "Noget skidt er sket med denne gruppe"
+
+#~ msgid "Group configuration saved"
+#~ msgstr "Gruppeopsætning gemt"
+
+#~ msgid "Delete the group"
+#~ msgstr "Slet denne gruppe"
+
+#~ msgid "You are going to delete the following group. Please confirm your action."
+#~ msgstr "Du er ved at slette følgende gruppe. Bekræft venligst din handling."
+
+#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#~ msgstr "Det ser ud til at denne gruppe ikke eksisterer mere. Vil du fjerne den fra dine abonnementer?"
+
+#~ msgid "%s groups on this server"
+#~ msgstr "%s grupper på denne server"
+
+#~ msgid "Groups servers"
+#~ msgstr "Gruppeservere"
+
+#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
+#~ msgstr "Grupper er den perfekte måde, hvorpå du kan dele indlæg om emner der interesserer dig med alle andre Movim brugere."
+
+#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
+#~ msgstr "Vælg en server samt en gruppe, og du kan abonnere på den med %s-knappen i overskriften. Du kan også oprette en ny med %s-knappen."
+
+#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
+#~ msgstr "Færdig? Du kan nu publicere et indlæg i gruppen med %s-knappen."
+
+#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
+#~ msgstr "Du finder en liste over alle grupper du abonnerer på i Mine Abonnementer, og modtager øjeblikkeligt alle nye indlæg på %sNews%s-siden."
+
+#~ msgid "Group name"
+#~ msgstr "Gruppenavn"
+
+#~ msgid "Group created successfully"
+#~ msgstr "Gruppe er oprettet"
+
+#~ msgid "Group deleted successfully"
+#~ msgstr "Gruppe er slettet"
+
+#~ msgid "Please provide a valid group name (4 characters minimum)"
+#~ msgstr "Opgiv venligst et gyldigt gruppenavn (mindst 4 tegn)"
+
+#~ msgid "You cannot create a new Group on this server"
+#~ msgstr "Du kan ikke oprette en ny gruppe på denne server"
+
+#~ msgid "Location node created"
+#~ msgstr "Placerings-node oprettet"
+
+#~ msgid "Bookmark node created"
+#~ msgstr "Bogmærke-node oprettet"
+
+#~ msgid "Profile node created"
+#~ msgstr "Profil-node oprettet"
+
+#~ msgid "Avatar node created"
+#~ msgstr "Profilbillede-node oprettet"
+
+#~ msgid "Subscriptions node created"
+#~ msgstr "Abonnement-node oprettet"
+
+#~ msgid "Microblog node created"
+#~ msgstr "Mikroblog-node oprettet"
+
+#~ msgid "Link"
+#~ msgstr "Link"
+
+#~ msgid "Tags"
+#~ msgstr "Mærkater"
+
+#~ msgid "Edit post"
+#~ msgstr "Rediger indlæg"
+
+#~ msgid "Add a file or a picture to your post"
+#~ msgstr "Tilføj en fil eller et billede til dit indlæg"
+
+#~ msgid "You cannot publish a post on this Group"
+#~ msgstr "Du kan ikke publicere et indlæg til denne gruppe"
+
+#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
+#~ msgstr "Nogle felter er udfyldt. Vil du stadig gå tilbage og miste deres indhold?"
+
+#~ msgid "Click here to add some text to your publication"
+#~ msgstr "Klik her for at tilføje tekst til dit indlæg"
+
+#~ msgid "Add some text"
+#~ msgstr "Tilføj tekst"
+
+#~ msgid "Ungrouped"
+#~ msgstr "Ikke grupperet"
+
+#~ msgid "Show disconnected contacts"
+#~ msgstr "Vis offline kontakter"
+
+#~ msgid "Hide disconnected contacts"
+#~ msgstr "Skjul offline kontaker"
+
+#~ msgid "Show group %s"
+#~ msgstr "Vis gruppen %s"
+
+#~ msgid "Hide group %s"
+#~ msgstr "Skjul gruppen %s"
+
+#~ msgid "Please enter a valid Jabber ID"
+#~ msgstr "Skriv venligst et gyldigt Jabber ID"
+
+#~ msgid "No contacts ?"
+#~ msgstr "Ingen kontakter?"
+
+#~ msgid "Show/Hide"
+#~ msgstr "Vis/skjul"
+
+#~ msgid "JID"
+#~ msgstr "JID"
+
+#~ msgid "Results"
+#~ msgstr "Resultater"
+
+#~ msgid "Search in your contacts"
+#~ msgstr "Søg i dine kontakter"

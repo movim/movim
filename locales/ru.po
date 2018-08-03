@@ -21,8 +21,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminDB/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
@@ -32,8 +30,6 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -59,17 +55,11 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Confirm/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Contact/locales.ini
+#. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Group/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Invitations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -87,19 +77,13 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Roster/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -120,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"POT-Creation-Date: 2018-08-03 12:08+0200\n"
 "PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -171,8 +155,7 @@ msgstr "Учетная запись"
 msgid "Change my password"
 msgstr "Изменить мой пароль"
 
-#: [account]password [db]password [credentials]password [form]password
-#: [input]password
+#: [account]password [credentials]password [form]password [input]password
 msgid "Password"
 msgstr "Пароль"
 
@@ -260,46 +243,6 @@ msgstr "Регистрация запрещена"
 msgid "Actions"
 msgstr "Действия"
 
-#: [db]legend [schema]database
-msgid "Database"
-msgstr "База данных"
-
-#: [db]connect_error
-msgid "Modl wasn't able to connect to the database"
-msgstr "Modl не смог подключиться к базе данных"
-
-#: [db]connect_success
-msgid "Movim is connected to the database"
-msgstr "Movim подключился к базе данных"
-
-#: [db]update [compatibility]db
-msgid "The database need to be updated"
-msgstr "База данных нуждается в обновление"
-
-#: [db]up_to_date
-msgid "Movim database is up to date"
-msgstr "База данных Movim обновлена"
-
-#: [db]type
-msgid "Database Type"
-msgstr "Тип базы данных"
-
-#: [db]username [credentials]username [input]username
-msgid "Username"
-msgstr "Имя пользователя"
-
-#: [db]host
-msgid "Host"
-msgstr "Сервер"
-
-#: [db]port
-msgid "Port"
-msgstr "Порт"
-
-#: [db]name
-msgid "Database Name"
-msgstr "Название базы данных"
-
 #: [admin]general
 msgid "General Settings"
 msgstr "Общие параметры"
@@ -331,6 +274,10 @@ msgstr "Показывать предложения чат комнат, соо�
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Управление учетными данными"
+
+#: [credentials]username [input]username
+msgid "Username"
+msgstr "Имя пользователя"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -418,6 +365,10 @@ msgstr "Movim обнаружил проблемы или вещи, которы�
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Нужны права чтения и записи для вебсервера в директории %s"
 
+#: [compatibility]db
+msgid "The database need to be updated"
+msgstr "База данных нуждается в обновление"
+
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "Сбой соединения по протоколу WebSocket. Убедитесь, что служба Movim запущена и доступна по сети"
@@ -437,6 +388,10 @@ msgstr "Ядро Movim"
 #: [schema]daemon
 msgid "Movim Daemon"
 msgstr "Служба Movim"
+
+#: [schema]database
+msgid "Database"
+msgstr "База данных"
 
 #: [schema]xmpp
 msgid "XMPP"
@@ -513,68 +468,6 @@ msgstr "Этот пользователь ещё ничего не публик�
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "Этот контент приватный, пожалуйста авторизуйтесь, чтобы посмотреть его"
-
-#: [title]conferences
-msgid "Conferences"
-msgstr "Конференции"
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "Группы"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "Добавить новую чат комнату"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "ID комнаты"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Имя"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Псевдоним"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Хотите ли Вы автоматически подключаться к этой чат комнате?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Неверный ID комнаты"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Имя не задано"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Закладки обновлены"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "Произошла ошибка: "
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "Настроить"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "Добавить новый URL"
-
-#: [url]url
-msgid "URL"
-msgstr "URL"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Имя"
 
 #: [message]published
 msgid "Message Published"
@@ -668,8 +561,7 @@ msgstr "Подключились к комнате"
 msgid "Disconnected from the chatroom"
 msgstr "Отключились от комнаты"
 
-#: [chatroom]config [communityaffiliation]configuration [group]configuration
-#: [page]configuration
+#: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
 msgstr "Настройки"
 
@@ -713,7 +605,7 @@ msgstr "Чат"
 msgid "New conversation"
 msgstr "Новая беседа"
 
-#: [communities]empty_text [group]empty_text
+#: [communities]empty_text
 msgid "Discover, follow and share"
 msgstr "Изучайте новое, подписывайтесь и делитесь"
 
@@ -721,7 +613,7 @@ msgstr "Изучайте новое, подписывайтесь и делит�
 msgid "%s communities"
 msgstr "%s сообществ"
 
-#: [communities]search_server [group]search_server
+#: [communities]search_server
 msgid "Search for a new server"
 msgstr "Поиск нового сервера"
 
@@ -729,7 +621,7 @@ msgstr "Поиск нового сервера"
 msgid "Communities servers"
 msgstr "Сервера сообществ"
 
-#: [communities]disco_error [groups]disco_error
+#: [communities]disco_error
 msgid "This server doesn't exists"
 msgstr "Такой сервер не существует"
 
@@ -749,7 +641,7 @@ msgstr "Создать новое сообщество на сервере %s"
 msgid "Community name"
 msgstr "Название группы"
 
-#: [communitiesserver]name_example [groups]name_example
+#: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony - Фан Клуб"
 
@@ -761,7 +653,7 @@ msgstr "Пожалуйста, введите правильное имя соо�
 msgid "You cannot create a new community on this server"
 msgstr "Вы не можете создать сообщества на этом сервере."
 
-#: [communityaffiliation]subscriptions [group]subscriptions
+#: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Подписки"
 
@@ -830,11 +722,11 @@ msgstr "Подписчики"
 msgid "The subscribers can publish"
 msgstr "Подписчики могут публиковать"
 
-#: [communitydata]sub [groups]sub
+#: [communitydata]sub
 msgid "%s subscribers"
 msgstr "%s подписчиков"
 
-#: [communitydata]num [groups]num
+#: [communitydata]num
 msgid "%s posts"
 msgstr "%s публикаций"
 
@@ -842,19 +734,19 @@ msgstr "%s публикаций"
 msgid "Public page"
 msgstr "Публичная страница"
 
-#: [communityheader]subscribe [group]subscribe
+#: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "Подписаться"
 
-#: [communityheader]unsubscribe [group]unsubscribe
+#: [communityheader]unsubscribe
 msgid "Unsubscribe"
 msgstr "Отписаться"
 
-#: [communityheader]subscribed [group]subscribed
+#: [communityheader]subscribed
 msgid "Subscribed"
 msgstr "Подписано"
 
-#: [communityheader]unsubscribed [group]unsubscribed
+#: [communityheader]unsubscribed
 msgid "Unsubscribed"
 msgstr "Неподписанный"
 
@@ -882,7 +774,7 @@ msgstr "Оно будет отражено в Вашем профиле"
 msgid "You are going to unsubscribe from this community"
 msgstr "Вы собираетесь отписаться от этого сообщества"
 
-#: [communityheader]sure [group]sure
+#: [communityheader]sure
 msgid "Are you sure ?"
 msgstr "Вы уверены?"
 
@@ -894,19 +786,19 @@ msgstr "Контент для взрослых заблокирован"
 msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
 msgstr "Контент для взрослых заблокирован на этой странице. Вы можете включить отображение оного в настройках."
 
-#: [communitysubscriptions]subscriptions [groups]subscriptions
+#: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr "Мои Подписки"
 
-#: [communitysubscriptions]empty_title [groups]empty_title
+#: [communitysubscriptions]empty_title
 msgid "Hello"
 msgstr "Здравствуйте"
 
-#: [communitysubscriptions]empty_text1 [groups]empty_text1
+#: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
 msgstr "Здесь вы можете управлять своими подписками"
 
-#: [communitysubscriptions]empty_text2 [groups]empty_text2
+#: [communitysubscriptions]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr "У вас нет подписок на группы"
 
@@ -994,13 +886,41 @@ msgstr "Через данные платформы Вы можете подтв�
 msgid "Authentication code"
 msgstr "Код аутентификации"
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr "Добавить контакт"
+
+#: [roster]add_contact_info1
+msgid "Enter the Jabber ID of your contact."
+msgstr "Введите Jabber ID"
+
+#: [roster]add_contact_info2
+msgid "Press enter to validate."
+msgstr "Нажмите Enter для проверки."
+
+#: [roster]added
+msgid "Contact added"
+msgstr "Контакт добавлен"
+
+#: [roster]updated
+msgid "Contact updated"
+msgstr "Контакты обновлены"
+
+#: [roster]deleted
+msgid "Contact deleted"
+msgstr "Контакт удалён"
+
 #: [general]legend
-msgid "General Informations"
+msgid "General Information"
 msgstr "Общая информация"
 
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Имя"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Псевдоним"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1063,7 +983,7 @@ msgid "Last seen"
 msgstr "Последнее посещение"
 
 #: [client]title
-msgid "Client Informations"
+msgid "Client Information"
 msgstr "Информация о клиенте"
 
 #: [explore]last_registered
@@ -1139,104 +1059,8 @@ msgid "Invite"
 msgstr "Пригласить"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-msgstr "Контакт находится в Вашем контакт-листе, однако он не авторизован между аккаунтами"
-
-#: [general]legend
-msgid "General Information"
-msgstr "Общая информация"
-
-#: [client]title
-msgid "Client Information"
-msgstr "Информация о клиенте"
-
-#: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr "Контакт находится в Вашем контакт-листе, однако он не авторизован между аккаунтами"
-
-#: [group]unsubscribe_text
-msgid "You are going to unsubscribe from this Group"
-msgstr "Вы собираетесь отписаться от этой группы"
-
-#: [group]share_label
-msgid "Make your membership to this group public to your friends"
-msgstr "Раскрыть ваше членство в данной группе вашим друзьям"
-
-#: [group]label_label
-msgid "Give a label for this group"
-msgstr "Дайте название для этой группы"
-
-#: [group]empty
-msgid "Something bad happened to this group"
-msgstr "Что то случилось с этой группой"
-
-#: [group]config_saved
-msgid "Group configuration saved"
-msgstr "Настройки группы сохранены"
-
-#: [group]delete_title
-msgid "Delete the group"
-msgstr "Удалить группу"
-
-#: [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
-msgstr "Вы собираетесь  удалить следующую группу. Подтвердите ваше действие."
-
-#: [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Похоже, эта группа больше не существует. Удалить ее из списка ваших подписок?"
-
-#: [group]counter
-msgid "%s groups on this server"
-msgstr "%s групп на этом сервере"
-
-#: [group]servers
-msgid "Groups servers"
-msgstr "Серверы групп"
-
-#: [group]help_info1
-msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-msgstr "Группы - отличный способ делиться публикациями по интересующим вас темам с другими пользователями Movim"
-
-#: [group]help_info2
-msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-msgstr "Выберите сервер и Группу и подпишитесь используя %s кнопку в заголовке. Вы также можете создать новую группу используя %s кнопку."
-
-#: [group]help_info3
-msgid "Done? You can now publish a new post in the Group by using the %s button."
-msgstr "Все готово? Теперь вы можете сделать новую Публикацию в Группе используя %s кнопку"
-
-#: [group]help_info4
-msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-msgstr "Вы можете найти список групп на которые вы подписаны в разделе Мои подписки, а также получать мнгновенные уведомления о новых публикациях на %sNews%s странице"
-
-#: [groups]contact_post [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr "Для связи"
-
-#: [groups]add
-msgid "Create a new Group on %s"
-msgstr "Создать новую Группу на %s"
-
-#: [groups]name
-msgid "Group name"
-msgstr "Название группы"
-
-#: [groups]created
-msgid "Group created successfully"
-msgstr "Группа успешно создана"
-
-#: [groups]deleted
-msgid "Group deleted successfully"
-msgstr "Группа успешно удалена"
-
-#: [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr "Введите допустимое название группы (минимум 4 символа)"
-
-#: [groups]no_creation
-msgid "You cannot create a new Group on this server"
-msgstr "Вы не можете создать новую Группу на этом сервере"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1278,30 +1102,6 @@ msgstr "Хотите ли связаться с командой Movim?"
 msgid "Add the chatroom"
 msgstr "Добавить чат-комнату"
 
-#: [init]location
-msgid "Location node created"
-msgstr "Создан узел геолокации"
-
-#: [init]bookmark
-msgid "Bookmark node created"
-msgstr "Создан узел закладок"
-
-#: [init]vcard4
-msgid "Profile node created"
-msgstr "Создан узел профиля"
-
-#: [init]avatar
-msgid "Avatar node created"
-msgstr "Создан узел аватара"
-
-#: [init]subscriptions
-msgid "Subscriptions node created"
-msgstr "Создан узел подписок"
-
-#: [init]microblog
-msgid "Microblog node created"
-msgstr "Создан узел микроблога"
-
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr "Ожидающие решения приглашения"
@@ -1327,7 +1127,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "Ошибочный  XMPP домен, недопустимый JID в вашей учетной записи"
 
 #: [error]data_missings
-msgid "Some data are missing !"
+#, fuzzy
+msgid "Some data are missing!"
 msgstr "Некоторые данные утеряны !"
 
 #: [error]wrong_password
@@ -1410,6 +1211,10 @@ msgstr "Неподходящий псевдоним (от 4 до 40 символ
 msgid "No news yet…"
 msgstr "Пока нет новостей"
 
+#: [menu]contact_post [hello]contact_post
+msgid "Contact post"
+msgstr "Для связи"
+
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Добро пожаловать в Вашу новостную ленту. Здесь Вы будете видеть посты, опубликованные Вашими контактами и те сообщества, на которые Вы подписаны"
@@ -1490,7 +1295,7 @@ msgstr "Новостная лента"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Найдите и зарегистрируйтесь в интересных вам группах"
 
-#: [post]content [publish]content_label
+#: [post]content
 msgid "Content"
 msgstr "Содержание"
 
@@ -1510,7 +1315,7 @@ msgstr "Что актуально"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Посты, недавно опубликованные в сообществе, на которые Вы (пока) не подписались"
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publishbrief]new
 msgid "New post"
 msgstr "Новая запись"
 
@@ -1626,74 +1431,6 @@ msgstr "Статус обновлен"
 msgid "Presence"
 msgstr "Присутствие"
 
-#: [publish]preview [publishbrief]preview
-msgid "Preview"
-msgstr "Предпросмотр"
-
-#: [publish]help [publishhelp]title [page]help
-msgid "Help"
-msgstr "Помощь"
-
-#: [publish]help_more [publishhelp]more
-msgid "More help"
-msgstr "Больше помощи"
-
-#: [publish]help_manual [publishhelp]manual
-msgid "Markdown syntax manual"
-msgstr "Помощник по синтаксису Markdown"
-
-#: [publish]content_text [publishbrief]content_text
-msgid "You can format your content using Markdown"
-msgstr "Вы можете использовать форматирование Markdown"
-
-#: [publish]link
-msgid "Link"
-msgstr "Ссылка"
-
-#: [publish]tags
-msgid "Tags"
-msgstr "Теги"
-
-#: [publish]valid_url [publishbrief]valid_url
-msgid "Please enter a valid URL"
-msgstr "Введите правильный URL"
-
-#: [publish]no_content_preview [publishbrief]no_content_preview
-msgid "No content to preview"
-msgstr "Нет контента для предпросмотра"
-
-#: [publish]no_title [publishbrief]no_title
-msgid "Please provide a title"
-msgstr "Заголовок"
-
-#: [publish]edit
-msgid "Edit post"
-msgstr "Изменить запись"
-
-#: [publish]title [page]publish
-msgid "Publish"
-msgstr "Опубликовать"
-
-#: [publish]attach
-msgid "Add a file or a picture to your post"
-msgstr "Добавить файл или картинку к записи"
-
-#: [publish]no_publication
-msgid "You cannot publish a post on this Group"
-msgstr "Вы не можете публиковать записи в этой группе"
-
-#: [publish]form_filled
-msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-msgstr "Некоторые поля были заполнены. Вы хотите вернуться назад и потерять то, что вы ввели?"
-
-#: [publish]add_text
-msgid "Click here to add some text to your publication"
-msgstr "Текст записи"
-
-#: [publish]add_text_label
-msgid "Add some text"
-msgstr "Добавить текст"
-
 #: [publishbrief]placeholder
 msgid "What's new?"
 msgstr "Что нового?"
@@ -1706,6 +1443,14 @@ msgstr "Напишите пост"
 msgid "Add a link"
 msgstr "Добавьте ссылку"
 
+#: [publishbrief]no_title
+msgid "Please provide a title"
+msgstr "Заголовок"
+
+#: [publishbrief]preview
+msgid "Preview"
+msgstr "Предпросмотр"
+
 #: [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr "Добавить файл или картинку"
@@ -1713,6 +1458,30 @@ msgstr "Добавить файл или картинку"
 #: [publishbrief]no_publication
 msgid "You cannot publish a post here"
 msgstr "Вы не можете публиковать записи здесь"
+
+#: [publishbrief]no_content_preview
+msgid "No content to preview"
+msgstr "Нет контента для предпросмотра"
+
+#: [publishbrief]valid_url
+msgid "Please enter a valid URL"
+msgstr "Введите правильный URL"
+
+#: [publishbrief]content_text
+msgid "You can format your content using Markdown"
+msgstr "Вы можете использовать форматирование Markdown"
+
+#: [publishhelp]title [page]help
+msgid "Help"
+msgstr "Помощь"
+
+#: [publishhelp]more
+msgid "More help"
+msgstr "Больше помощи"
+
+#: [publishhelp]manual
+msgid "Markdown syntax manual"
+msgstr "Помощник по синтаксису Markdown"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1734,9 +1503,21 @@ msgstr "Добавьте с помощью кнопки \"Добавить\""
 msgid "Chatrooms"
 msgstr "Комнаты"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "ID комнаты"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Мои любимые комнаты"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Неверный ID комнаты"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Имя не задано"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1757,6 +1538,10 @@ msgstr "Присоединиться к комнате при входе"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Невозможно войти в комнату, необходима регистрация"
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Закладки обновлены"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1794,82 +1579,6 @@ msgstr "Приглашение отправлено"
 msgid "Send this link to your contacts"
 msgstr "Отправьте эту ссылку своим контактам"
 
-#: [roster]ungrouped
-msgid "Ungrouped"
-msgstr "Разное"
-
-#: [roster]show_disconnected
-msgid "Show disconnected contacts"
-msgstr "Показать отключенные контакты"
-
-#: [roster]hide_disconnected
-msgid "Hide disconnected contacts"
-msgstr "Скрыть отключенные контакты"
-
-#: [roster]show_group
-msgid "Show group %s"
-msgstr "Показать группу %s"
-
-#: [roster]hide_group
-msgid "Hide group %s"
-msgstr "Скрыть группу %s"
-
-#: [roster]jid_error
-msgid "Please enter a valid Jabber ID"
-msgstr "Пожалуйста, введи правильный Jabber ID"
-
-#: [roster]no_contacts_title
-msgid "No contacts ?"
-msgstr "Нет контактов?"
-
-#: [roster]no_contacts_text
-msgid "You can add one using the + button below"
-msgstr "Вы можете добавить контакт используя кнопку \"+\" внизу"
-
-#: [roster]show_hide
-msgid "Show/Hide"
-msgstr "Показать/Скрыть"
-
-#: [roster]add_title
-msgid "Add a contact"
-msgstr "Добавить контакт"
-
-#: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
-msgstr "Введите Jabber ID"
-
-#: [roster]add_contact_info2
-msgid "Press enter to validate."
-msgstr "Нажмите Enter для проверки."
-
-#: [roster]jid
-msgid "JID"
-msgstr "JID"
-
-#: [roster]results
-msgid "Results"
-msgstr "Результаты"
-
-#: [roster]added
-msgid "Contact added"
-msgstr "Контакт добавлен"
-
-#: [roster]updated
-msgid "Contact updated"
-msgstr "Контакты обновлены"
-
-#: [roster]deleted
-msgid "Contact deleted"
-msgstr "Контакт удалён"
-
-#: [roster]search
-msgid "Search in your contacts"
-msgstr "Поиск в контактах"
-
-#: [roster]search_pod
-msgid "Search a contact"
-msgstr "Поиск контакта"
-
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "Что вы хотите найти?"
@@ -1877,14 +1586,6 @@ msgstr "Что вы хотите найти?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Откройте меня, используя Ctrl+M"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "Это неправильный URL"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "Поделиться этой ссылкой"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1961,10 +1662,6 @@ msgstr "Ваш профиль теперь общедоступен"
 #: [vcard]restricted
 msgid "Your profile is now restricted"
 msgstr "Ваш профиль теперь скрыт"
-
-#: [privacy]my_profile
-msgid "Go to my profile page"
-msgstr "Перейти в мой профиль"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -2065,6 +1762,10 @@ msgstr "Фотография"
 #: [page]chats
 msgid "Chats"
 msgstr "Чаты"
+
+#: [page]publish
+msgid "Publish"
+msgstr "Опубликовать"
 
 #: [page]post
 msgid "Post"
@@ -2827,3 +2528,215 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "Modl wasn't able to connect to the database"
+#~ msgstr "Modl не смог подключиться к базе данных"
+
+#~ msgid "Movim is connected to the database"
+#~ msgstr "Movim подключился к базе данных"
+
+#~ msgid "Movim database is up to date"
+#~ msgstr "База данных Movim обновлена"
+
+#~ msgid "Database Type"
+#~ msgstr "Тип базы данных"
+
+#~ msgid "Host"
+#~ msgstr "Сервер"
+
+#~ msgid "Port"
+#~ msgstr "Порт"
+
+#~ msgid "Database Name"
+#~ msgstr "Название базы данных"
+
+#~ msgid "Conferences"
+#~ msgstr "Конференции"
+
+#~ msgid "Groups"
+#~ msgstr "Группы"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Добавить новую чат комнату"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Имя"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "Хотите ли Вы автоматически подключаться к этой чат комнате?"
+
+#~ msgid "An error occured :"
+#~ msgstr "Произошла ошибка: "
+
+#~ msgid "Configure"
+#~ msgstr "Настроить"
+
+#~ msgid "Add a new URL"
+#~ msgstr "Добавить новый URL"
+
+#~ msgid "URL"
+#~ msgstr "URL"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Имя"
+
+#~ msgid "General Informations"
+#~ msgstr "Общая информация"
+
+#~ msgid "Client Informations"
+#~ msgstr "Информация о клиенте"
+
+#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
+#~ msgstr "Контакт находится в Вашем контакт-листе, однако он не авторизован между аккаунтами"
+
+#~ msgid "You are going to unsubscribe from this Group"
+#~ msgstr "Вы собираетесь отписаться от этой группы"
+
+#~ msgid "Make your membership to this group public to your friends"
+#~ msgstr "Раскрыть ваше членство в данной группе вашим друзьям"
+
+#~ msgid "Give a label for this group"
+#~ msgstr "Дайте название для этой группы"
+
+#~ msgid "Something bad happened to this group"
+#~ msgstr "Что то случилось с этой группой"
+
+#~ msgid "Group configuration saved"
+#~ msgstr "Настройки группы сохранены"
+
+#~ msgid "Delete the group"
+#~ msgstr "Удалить группу"
+
+#~ msgid "You are going to delete the following group. Please confirm your action."
+#~ msgstr "Вы собираетесь  удалить следующую группу. Подтвердите ваше действие."
+
+#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#~ msgstr "Похоже, эта группа больше не существует. Удалить ее из списка ваших подписок?"
+
+#~ msgid "%s groups on this server"
+#~ msgstr "%s групп на этом сервере"
+
+#~ msgid "Groups servers"
+#~ msgstr "Серверы групп"
+
+#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
+#~ msgstr "Группы - отличный способ делиться публикациями по интересующим вас темам с другими пользователями Movim"
+
+#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
+#~ msgstr "Выберите сервер и Группу и подпишитесь используя %s кнопку в заголовке. Вы также можете создать новую группу используя %s кнопку."
+
+#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
+#~ msgstr "Все готово? Теперь вы можете сделать новую Публикацию в Группе используя %s кнопку"
+
+#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
+#~ msgstr "Вы можете найти список групп на которые вы подписаны в разделе Мои подписки, а также получать мнгновенные уведомления о новых публикациях на %sNews%s странице"
+
+#~ msgid "Create a new Group on %s"
+#~ msgstr "Создать новую Группу на %s"
+
+#~ msgid "Group name"
+#~ msgstr "Название группы"
+
+#~ msgid "Group created successfully"
+#~ msgstr "Группа успешно создана"
+
+#~ msgid "Group deleted successfully"
+#~ msgstr "Группа успешно удалена"
+
+#~ msgid "Please provide a valid group name (4 characters minimum)"
+#~ msgstr "Введите допустимое название группы (минимум 4 символа)"
+
+#~ msgid "You cannot create a new Group on this server"
+#~ msgstr "Вы не можете создать новую Группу на этом сервере"
+
+#~ msgid "Location node created"
+#~ msgstr "Создан узел геолокации"
+
+#~ msgid "Bookmark node created"
+#~ msgstr "Создан узел закладок"
+
+#~ msgid "Profile node created"
+#~ msgstr "Создан узел профиля"
+
+#~ msgid "Avatar node created"
+#~ msgstr "Создан узел аватара"
+
+#~ msgid "Subscriptions node created"
+#~ msgstr "Создан узел подписок"
+
+#~ msgid "Microblog node created"
+#~ msgstr "Создан узел микроблога"
+
+#~ msgid "Link"
+#~ msgstr "Ссылка"
+
+#~ msgid "Tags"
+#~ msgstr "Теги"
+
+#~ msgid "Edit post"
+#~ msgstr "Изменить запись"
+
+#~ msgid "Add a file or a picture to your post"
+#~ msgstr "Добавить файл или картинку к записи"
+
+#~ msgid "You cannot publish a post on this Group"
+#~ msgstr "Вы не можете публиковать записи в этой группе"
+
+#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
+#~ msgstr "Некоторые поля были заполнены. Вы хотите вернуться назад и потерять то, что вы ввели?"
+
+#~ msgid "Click here to add some text to your publication"
+#~ msgstr "Текст записи"
+
+#~ msgid "Add some text"
+#~ msgstr "Добавить текст"
+
+#~ msgid "Ungrouped"
+#~ msgstr "Разное"
+
+#~ msgid "Show disconnected contacts"
+#~ msgstr "Показать отключенные контакты"
+
+#~ msgid "Hide disconnected contacts"
+#~ msgstr "Скрыть отключенные контакты"
+
+#~ msgid "Show group %s"
+#~ msgstr "Показать группу %s"
+
+#~ msgid "Hide group %s"
+#~ msgstr "Скрыть группу %s"
+
+#~ msgid "Please enter a valid Jabber ID"
+#~ msgstr "Пожалуйста, введи правильный Jabber ID"
+
+#~ msgid "No contacts ?"
+#~ msgstr "Нет контактов?"
+
+#~ msgid "You can add one using the + button below"
+#~ msgstr "Вы можете добавить контакт используя кнопку \"+\" внизу"
+
+#~ msgid "Show/Hide"
+#~ msgstr "Показать/Скрыть"
+
+#~ msgid "JID"
+#~ msgstr "JID"
+
+#~ msgid "Results"
+#~ msgstr "Результаты"
+
+#~ msgid "Search in your contacts"
+#~ msgstr "Поиск в контактах"
+
+#~ msgid "Search a contact"
+#~ msgstr "Поиск контакта"
+
+#~ msgid "This is not a valid url"
+#~ msgstr "Это неправильный URL"
+
+#~ msgid "Sharing the URL"
+#~ msgstr "Поделиться этой ссылкой"
+
+#~ msgid "Go to my profile page"
+#~ msgstr "Перейти в мой профиль"

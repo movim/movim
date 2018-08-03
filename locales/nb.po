@@ -14,8 +14,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminDB/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
@@ -25,8 +23,6 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -52,17 +48,11 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Confirm/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Contact/locales.ini
+#. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Group/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Invitations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -80,19 +70,13 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Roster/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -113,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"POT-Creation-Date: 2018-08-03 12:08+0200\n"
 "PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Dominik George <nik@naturalnet.de>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -164,8 +148,7 @@ msgstr "Konto"
 msgid "Change my password"
 msgstr "Endre passordet mitt"
 
-#: [account]password [db]password [credentials]password [form]password
-#: [input]password
+#: [account]password [credentials]password [form]password [input]password
 msgid "Password"
 msgstr "Passord"
 
@@ -253,46 +236,6 @@ msgstr "Registrering forbudt"
 msgid "Actions"
 msgstr "Handlinger"
 
-#: [db]legend [schema]database
-msgid "Database"
-msgstr "Database"
-
-#: [db]connect_error
-msgid "Modl wasn't able to connect to the database"
-msgstr "Modl kunne ikke koble til databasen"
-
-#: [db]connect_success
-msgid "Movim is connected to the database"
-msgstr "Movim er koblet til databasen"
-
-#: [db]update [compatibility]db
-msgid "The database need to be updated"
-msgstr "Databasen må oppdateres"
-
-#: [db]up_to_date
-msgid "Movim database is up to date"
-msgstr "Movim-databasen er oppdatert"
-
-#: [db]type
-msgid "Database Type"
-msgstr "Databasetype"
-
-#: [db]username [credentials]username [input]username
-msgid "Username"
-msgstr "Brukernavn"
-
-#: [db]host
-msgid "Host"
-msgstr "Vert"
-
-#: [db]port
-msgid "Port"
-msgstr "Port"
-
-#: [db]name
-msgid "Database Name"
-msgstr "Databasenavn"
-
 #: [admin]general
 msgid "General Settings"
 msgstr "Generelle innstillinger"
@@ -324,6 +267,10 @@ msgstr ""
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Administrasjonsakkreditiv"
+
+#: [credentials]username [input]username
+msgid "Username"
+msgstr "Brukernavn"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -411,6 +358,10 @@ msgstr "Movim har funnet problemer eller uoverensstemmelser som må fikses eller
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Tjenerens lese- og skriverettigheter i Movims %s-mappe"
 
+#: [compatibility]db
+msgid "The database need to be updated"
+msgstr "Databasen må oppdateres"
+
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "Klarer ikke koble til WebSocket, kontroller at Movim-tjenesten kjører og kan kontaktes"
@@ -430,6 +381,10 @@ msgstr "Movim Core"
 #: [schema]daemon
 msgid "Movim Daemon"
 msgstr "Movim-tjenesten"
+
+#: [schema]database
+msgid "Database"
+msgstr "Database"
 
 #: [schema]xmpp
 msgid "XMPP"
@@ -506,68 +461,6 @@ msgstr "Denne brukeren har ikke postet noe enda"
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "Dette innholdet er privat, logg på for å se det"
-
-#: [title]conferences
-msgid "Conferences"
-msgstr "Samtalerom"
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "Grupper"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr "Legge til nyt samtalerom"
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Samtalerom-ID"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Navn"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "Kallenavn"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr "Vil du gå inn automatisk i dette samtaleromet?"
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Feil samtalerom-ID"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Tomt navn"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Bokmerke oppdatert"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr ""
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr "Konfigurere"
-
-#: [url]add
-msgid "Add a new URL"
-msgstr "Legge til ny lenke"
-
-#: [url]url
-msgid "URL"
-msgstr "Lenke"
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Navn"
 
 #: [message]published
 msgid "Message Published"
@@ -661,8 +554,7 @@ msgstr "Koble til gruppesamtale"
 msgid "Disconnected from the chatroom"
 msgstr "Frakoblet fra samtalerommet"
 
-#: [chatroom]config [communityaffiliation]configuration [group]configuration
-#: [page]configuration
+#: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
 msgstr "Oppsett"
 
@@ -706,7 +598,7 @@ msgstr "Samtale"
 msgid "New conversation"
 msgstr "Ny samtale"
 
-#: [communities]empty_text [group]empty_text
+#: [communities]empty_text
 msgid "Discover, follow and share"
 msgstr "Oppdag, følg og del"
 
@@ -714,7 +606,7 @@ msgstr "Oppdag, følg og del"
 msgid "%s communities"
 msgstr "%s samfunn"
 
-#: [communities]search_server [group]search_server
+#: [communities]search_server
 msgid "Search for a new server"
 msgstr "Søk etter en ny tjener"
 
@@ -722,7 +614,7 @@ msgstr "Søk etter en ny tjener"
 msgid "Communities servers"
 msgstr "Samfunns-tjenere"
 
-#: [communities]disco_error [groups]disco_error
+#: [communities]disco_error
 msgid "This server doesn't exists"
 msgstr "Denne tjeneren finnes ikke"
 
@@ -742,7 +634,7 @@ msgstr "Lag et nytt fellesskap på %s"
 msgid "Community name"
 msgstr "Navn på fellesskap"
 
-#: [communitiesserver]name_example [groups]name_example
+#: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
 msgstr "Fanklubb for SKAM-serien"
 
@@ -754,7 +646,7 @@ msgstr "Skriv inn et gyldig fellesskapsnavn (minst fire tegn)"
 msgid "You cannot create a new community on this server"
 msgstr "Du kan ikke opprette et nytt fellesskap på denne tjeneren"
 
-#: [communityaffiliation]subscriptions [group]subscriptions
+#: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Abonnementer "
 
@@ -823,11 +715,11 @@ msgstr "Abonnenter"
 msgid "The subscribers can publish"
 msgstr "Abonnentene kan publisere"
 
-#: [communitydata]sub [groups]sub
+#: [communitydata]sub
 msgid "%s subscribers"
 msgstr "%s abonnenter"
 
-#: [communitydata]num [groups]num
+#: [communitydata]num
 msgid "%s posts"
 msgstr "%s innlegg"
 
@@ -835,19 +727,19 @@ msgstr "%s innlegg"
 msgid "Public page"
 msgstr "Offentlig side"
 
-#: [communityheader]subscribe [group]subscribe
+#: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "Abonner"
 
-#: [communityheader]unsubscribe [group]unsubscribe
+#: [communityheader]unsubscribe
 msgid "Unsubscribe"
 msgstr "Avmeld"
 
-#: [communityheader]subscribed [group]subscribed
+#: [communityheader]subscribed
 msgid "Subscribed"
 msgstr "Abonnerer"
 
-#: [communityheader]unsubscribed [group]unsubscribed
+#: [communityheader]unsubscribed
 msgid "Unsubscribed"
 msgstr "Avmeldt"
 
@@ -875,7 +767,7 @@ msgstr "Det vil vises på din profil"
 msgid "You are going to unsubscribe from this community"
 msgstr "Du forsøker å melde deg ut av dette samfunnet"
 
-#: [communityheader]sure [group]sure
+#: [communityheader]sure
 msgid "Are you sure ?"
 msgstr "Er du sikker?"
 
@@ -887,19 +779,19 @@ msgstr "Innhold for voksne blokkert"
 msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
 msgstr "Noe innhold for voksne er blokkert på denne siden.  Du kan aktivere visning av voksent innhold på oppsettsiden."
 
-#: [communitysubscriptions]subscriptions [groups]subscriptions
+#: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr "Mine abonnement"
 
-#: [communitysubscriptions]empty_title [groups]empty_title
+#: [communitysubscriptions]empty_title
 msgid "Hello"
 msgstr "Hei"
 
-#: [communitysubscriptions]empty_text1 [groups]empty_text1
+#: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
 msgstr "Her kan du administrere alle dine abonnement."
 
-#: [communitysubscriptions]empty_text2 [groups]empty_text2
+#: [communitysubscriptions]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr "Du har ikke meldt deg inn i noen grupper enda."
 
@@ -987,13 +879,41 @@ msgstr ""
 msgid "Authentication code"
 msgstr "Autentiseringskode"
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr "Legg til kontakt"
+
+#: [roster]add_contact_info1
+msgid "Enter the Jabber ID of your contact."
+msgstr "Oppgi kontaktens Jabber-ID"
+
+#: [roster]add_contact_info2
+msgid "Press enter to validate."
+msgstr "Trykk enter for å godkjenne"
+
+#: [roster]added
+msgid "Contact added"
+msgstr "Kontakten ble lagt til"
+
+#: [roster]updated
+msgid "Contact updated"
+msgstr "Kontakten ble oppdatert"
+
+#: [roster]deleted
+msgid "Contact deleted"
+msgstr "Kontakten ble slettet"
+
 #: [general]legend
-msgid "General Informations"
-msgstr "Generell informasjon"
+msgid "General Information"
+msgstr "Generelle informasjoner"
 
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Navn"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "Kallenavn"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1056,8 +976,8 @@ msgid "Last seen"
 msgstr "Sist sett"
 
 #: [client]title
-msgid "Client Informations"
-msgstr "Klientinformasjon"
+msgid "Client Information"
+msgstr "Informasjoner om klienten"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1132,104 +1052,8 @@ msgid "Invite"
 msgstr "Inviter"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-msgstr "Denne kontakten er i kontaktlisten din, men det er ingen abonnement mellom kontiene."
-
-#: [general]legend
-msgid "General Information"
-msgstr "Generelle informasjoner"
-
-#: [client]title
-msgid "Client Information"
-msgstr "Informasjoner om klienten"
-
-#: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr ""
-
-#: [group]unsubscribe_text
-msgid "You are going to unsubscribe from this Group"
-msgstr "Du er i ferd med å melde deg av fra denne gruppen"
-
-#: [group]share_label
-msgid "Make your membership to this group public to your friends"
-msgstr "Annonser medlemskapet til denne gruppen offentlig til dine kontakter"
-
-#: [group]label_label
-msgid "Give a label for this group"
-msgstr "Gi et navn til gruppen"
-
-#: [group]empty
-msgid "Something bad happened to this group"
-msgstr "Noe gikk feil i denne gruppen"
-
-#: [group]config_saved
-msgid "Group configuration saved"
-msgstr "Oppsettet for gruppen ble lagret"
-
-#: [group]delete_title
-msgid "Delete the group"
-msgstr "Slett gruppen"
-
-#: [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
-msgstr "Vennligst bekreft at du ønsker å slette denne gruppen."
-
-#: [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Det ser ut til at denne gruppen ikke eksisterer lenger. Ønsker du å avslutte abonnementet?"
-
-#: [group]counter
-msgid "%s groups on this server"
-msgstr "%s grupper på denne tjeneren"
-
-#: [group]servers
-msgid "Groups servers"
-msgstr "Gruppe-tjenere"
-
-#: [group]help_info1
-msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-msgstr "Gruppene passer bra til å dele innlegg om emner du liker, med alle andre brukere på Movim."
-
-#: [group]help_info2
-msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-msgstr "Velg en tjener og en gruppe og abonner på den med %s-knappen i overskriften. Du kan også opprette en ny ved å trykke på %s-knappen."
-
-#: [group]help_info3
-msgid "Done? You can now publish a new post in the Group by using the %s button."
-msgstr "Ferdig? Du kan nå publisere en ny post i gruppen ved å trykke på %s-knappen."
-
-#: [group]help_info4
-msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-msgstr "Du finner en liste over alle gruppene du abonnerer på under \"Mine abonnement\", og du vil motta alle innkommende innlegg under %sNews%s-siden"
-
-#: [groups]contact_post [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr "Kontaktpost"
-
-#: [groups]add
-msgid "Create a new Group on %s"
-msgstr "Opprett ny gruppe på %s"
-
-#: [groups]name
-msgid "Group name"
-msgstr "Gruppenavn"
-
-#: [groups]created
-msgid "Group created successfully"
-msgstr "Gruppen ble opprettet"
-
-#: [groups]deleted
-msgid "Group deleted successfully"
-msgstr "Gruppen ble slettet"
-
-#: [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr "Oppgi et gyldig gruppenavn (minst 4 tegn)"
-
-#: [groups]no_creation
-msgid "You cannot create a new Group on this server"
-msgstr "Du kan ikke opprette en ny gruppe på denne tjeneren"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1271,30 +1095,6 @@ msgstr "Chat med Movim teamet"
 msgid "Add the chatroom"
 msgstr "Legg til samtalerom"
 
-#: [init]location
-msgid "Location node created"
-msgstr "Steds-node opprettet"
-
-#: [init]bookmark
-msgid "Bookmark node created"
-msgstr "Bokmerke-node opprettet"
-
-#: [init]vcard4
-msgid "Profile node created"
-msgstr "Profil-node opprettet"
-
-#: [init]avatar
-msgid "Avatar node created"
-msgstr "Avatar-node opprettet"
-
-#: [init]subscriptions
-msgid "Subscriptions node created"
-msgstr "Abonnement-node opprettet"
-
-#: [init]microblog
-msgid "Microblog node created"
-msgstr "Mikroblogg-node opprettet"
-
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr "Ventende invitasjoner"
@@ -1320,7 +1120,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP-domenefeil: Jabber-IDen du oppgav er ikke korrekt formatert"
 
 #: [error]data_missings
-msgid "Some data are missing !"
+#, fuzzy
+msgid "Some data are missing!"
 msgstr "Noen felter er fortsatt ikke fylt ut!"
 
 #: [error]wrong_password
@@ -1403,6 +1204,10 @@ msgstr "Ugyldig kallenavn (må være mellom 4 og 40 tegn)"
 msgid "No news yet…"
 msgstr "Ingen nyheter enda…"
 
+#: [menu]contact_post [hello]contact_post
+msgid "Contact post"
+msgstr "Kontaktpost"
+
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Velkommen til nyhetsstrømmen din, her vil du se alle innlegg som publiserer av kontakter og samfunn du abonnerer på."
@@ -1483,7 +1288,7 @@ msgstr "Nyhetsstrøm"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Oppdag og abonner på gruppene du liker"
 
-#: [post]content [publish]content_label
+#: [post]content
 msgid "Content"
 msgstr "Innhold"
 
@@ -1503,7 +1308,7 @@ msgstr "Populære innlegg"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr "Siste innlegg fra samfunn du ikke abonnerer på (enda)"
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publishbrief]new
 msgid "New post"
 msgstr "Nytt innlegg"
 
@@ -1619,74 +1424,6 @@ msgstr "Statusen er oppdatert"
 msgid "Presence"
 msgstr "Tilstedeværelse"
 
-#: [publish]preview [publishbrief]preview
-msgid "Preview"
-msgstr "Forhåndsvisning"
-
-#: [publish]help [publishhelp]title [page]help
-msgid "Help"
-msgstr "Hjelp"
-
-#: [publish]help_more [publishhelp]more
-msgid "More help"
-msgstr "Mer hjelp"
-
-#: [publish]help_manual [publishhelp]manual
-msgid "Markdown syntax manual"
-msgstr "Bruksanvisning for tekstformatering"
-
-#: [publish]content_text [publishbrief]content_text
-msgid "You can format your content using Markdown"
-msgstr "Du kan formatere tekst og innhold med Markdown-syntaks"
-
-#: [publish]link
-msgid "Link"
-msgstr "Lenke"
-
-#: [publish]tags
-msgid "Tags"
-msgstr "Merkelapp"
-
-#: [publish]valid_url [publishbrief]valid_url
-msgid "Please enter a valid URL"
-msgstr "Mate en gyldig lenke"
-
-#: [publish]no_content_preview [publishbrief]no_content_preview
-msgid "No content to preview"
-msgstr "Ingen innhold å forhåndsvise"
-
-#: [publish]no_title [publishbrief]no_title
-msgid "Please provide a title"
-msgstr "Lag en overskrift"
-
-#: [publish]edit
-msgid "Edit post"
-msgstr "Rediger innlegg"
-
-#: [publish]title [page]publish
-msgid "Publish"
-msgstr "Publiser"
-
-#: [publish]attach
-msgid "Add a file or a picture to your post"
-msgstr "Legg til en fil eller et bilde"
-
-#: [publish]no_publication
-msgid "You cannot publish a post on this Group"
-msgstr "Du kan ikke publisere innlegg i denne gruppen"
-
-#: [publish]form_filled
-msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-msgstr "Du har skrevet tekst i noen felter. Sikker på at du ønsker å gå tilbake, selv om du mister det du har skrevet?"
-
-#: [publish]add_text
-msgid "Click here to add some text to your publication"
-msgstr "Trykk her for å legge til tekst i innlegget"
-
-#: [publish]add_text_label
-msgid "Add some text"
-msgstr "Legg til tekst"
-
 #: [publishbrief]placeholder
 msgid "What's new?"
 msgstr "Hva er nytt?"
@@ -1699,6 +1436,14 @@ msgstr "Skriv en melding"
 msgid "Add a link"
 msgstr "Legg til lenke"
 
+#: [publishbrief]no_title
+msgid "Please provide a title"
+msgstr "Lag en overskrift"
+
+#: [publishbrief]preview
+msgid "Preview"
+msgstr "Forhåndsvisning"
+
 #: [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr "Legge til en fil eller et bilde"
@@ -1706,6 +1451,30 @@ msgstr "Legge til en fil eller et bilde"
 #: [publishbrief]no_publication
 msgid "You cannot publish a post here"
 msgstr "Du kan ikke publisere et innlegg her"
+
+#: [publishbrief]no_content_preview
+msgid "No content to preview"
+msgstr "Ingen innhold å forhåndsvise"
+
+#: [publishbrief]valid_url
+msgid "Please enter a valid URL"
+msgstr "Mate en gyldig lenke"
+
+#: [publishbrief]content_text
+msgid "You can format your content using Markdown"
+msgstr "Du kan formatere tekst og innhold med Markdown-syntaks"
+
+#: [publishhelp]title [page]help
+msgid "Help"
+msgstr "Hjelp"
+
+#: [publishhelp]more
+msgid "More help"
+msgstr "Mer hjelp"
+
+#: [publishhelp]manual
+msgid "Markdown syntax manual"
+msgstr "Bruksanvisning for tekstformatering"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1727,9 +1496,21 @@ msgstr "Legg til en ved å trykke på \"Legg til\"-knappen"
 msgid "Chatrooms"
 msgstr "Samtalerom"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Samtalerom-ID"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Mine favorittrom"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Feil samtalerom-ID"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Tomt navn"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1750,6 +1531,10 @@ msgstr "Bli med i dette samtalerommet ved oppkobling"
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr "Kunne ikke bli med i samtalerommet, registrering er påkrevd."
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Bokmerke oppdatert"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1787,82 +1572,6 @@ msgstr "Invitasjon er sendt"
 msgid "Send this link to your contacts"
 msgstr "Send denne lenken til dine kontakter"
 
-#: [roster]ungrouped
-msgid "Ungrouped"
-msgstr "Ikke gruppert"
-
-#: [roster]show_disconnected
-msgid "Show disconnected contacts"
-msgstr "Vis frakoblede kontakter"
-
-#: [roster]hide_disconnected
-msgid "Hide disconnected contacts"
-msgstr "Skjul frakoblede kontakter"
-
-#: [roster]show_group
-msgid "Show group %s"
-msgstr "Vis gruppen %s"
-
-#: [roster]hide_group
-msgid "Hide group %s"
-msgstr "Skjul gruppen %s"
-
-#: [roster]jid_error
-msgid "Please enter a valid Jabber ID"
-msgstr "Oppgi en gyldig Jabber ID"
-
-#: [roster]no_contacts_title
-msgid "No contacts ?"
-msgstr "Ingen kontakter?"
-
-#: [roster]no_contacts_text
-msgid "You can add one using the + button below"
-msgstr "Du kan legge til kontakter ved å trykke på +-knappen nedenfor"
-
-#: [roster]show_hide
-msgid "Show/Hide"
-msgstr "Vis/skjul"
-
-#: [roster]add_title
-msgid "Add a contact"
-msgstr "Legg til kontakt"
-
-#: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
-msgstr "Oppgi kontaktens Jabber-ID"
-
-#: [roster]add_contact_info2
-msgid "Press enter to validate."
-msgstr "Trykk enter for å godkjenne"
-
-#: [roster]jid
-msgid "JID"
-msgstr "JID"
-
-#: [roster]results
-msgid "Results"
-msgstr "Resultater"
-
-#: [roster]added
-msgid "Contact added"
-msgstr "Kontakten ble lagt til"
-
-#: [roster]updated
-msgid "Contact updated"
-msgstr "Kontakten ble oppdatert"
-
-#: [roster]deleted
-msgid "Contact deleted"
-msgstr "Kontakten ble slettet"
-
-#: [roster]search
-msgid "Search in your contacts"
-msgstr "Søk i kontaktene dine"
-
-#: [roster]search_pod
-msgid "Search a contact"
-msgstr "Søk kontakten"
-
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "Hva leter du etter?"
@@ -1870,14 +1579,6 @@ msgstr "Hva leter du etter?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Åpne meg med Ctrl + M"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr "Det er ikke en gyldig lenke"
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr "Del lenken"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1954,10 +1655,6 @@ msgstr "Profilen din er nå offentlig"
 #: [vcard]restricted
 msgid "Your profile is now restricted"
 msgstr "Profilen har nå begrenset synlighet"
-
-#: [privacy]my_profile
-msgid "Go to my profile page"
-msgstr "Gå til min profilside"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -2058,6 +1755,10 @@ msgstr "Avatar"
 #: [page]chats
 msgid "Chats"
 msgstr "Samtaler"
+
+#: [page]publish
+msgid "Publish"
+msgstr "Publiser"
 
 #: [page]post
 msgid "Post"
@@ -2820,3 +2521,212 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "Modl wasn't able to connect to the database"
+#~ msgstr "Modl kunne ikke koble til databasen"
+
+#~ msgid "Movim is connected to the database"
+#~ msgstr "Movim er koblet til databasen"
+
+#~ msgid "Movim database is up to date"
+#~ msgstr "Movim-databasen er oppdatert"
+
+#~ msgid "Database Type"
+#~ msgstr "Databasetype"
+
+#~ msgid "Host"
+#~ msgstr "Vert"
+
+#~ msgid "Port"
+#~ msgstr "Port"
+
+#~ msgid "Database Name"
+#~ msgstr "Databasenavn"
+
+#~ msgid "Conferences"
+#~ msgstr "Samtalerom"
+
+#~ msgid "Groups"
+#~ msgstr "Grupper"
+
+#~ msgid "Add a new Chat Room"
+#~ msgstr "Legge til nyt samtalerom"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Navn"
+
+#~ msgid "Do you want do join automaticaly this Chat Room ?"
+#~ msgstr "Vil du gå inn automatisk i dette samtaleromet?"
+
+#~ msgid "Configure"
+#~ msgstr "Konfigurere"
+
+#~ msgid "Add a new URL"
+#~ msgstr "Legge til ny lenke"
+
+#~ msgid "URL"
+#~ msgstr "Lenke"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Navn"
+
+#~ msgid "General Informations"
+#~ msgstr "Generell informasjon"
+
+#~ msgid "Client Informations"
+#~ msgstr "Klientinformasjon"
+
+#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
+#~ msgstr "Denne kontakten er i kontaktlisten din, men det er ingen abonnement mellom kontiene."
+
+#~ msgid "You are going to unsubscribe from this Group"
+#~ msgstr "Du er i ferd med å melde deg av fra denne gruppen"
+
+#~ msgid "Make your membership to this group public to your friends"
+#~ msgstr "Annonser medlemskapet til denne gruppen offentlig til dine kontakter"
+
+#~ msgid "Give a label for this group"
+#~ msgstr "Gi et navn til gruppen"
+
+#~ msgid "Something bad happened to this group"
+#~ msgstr "Noe gikk feil i denne gruppen"
+
+#~ msgid "Group configuration saved"
+#~ msgstr "Oppsettet for gruppen ble lagret"
+
+#~ msgid "Delete the group"
+#~ msgstr "Slett gruppen"
+
+#~ msgid "You are going to delete the following group. Please confirm your action."
+#~ msgstr "Vennligst bekreft at du ønsker å slette denne gruppen."
+
+#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#~ msgstr "Det ser ut til at denne gruppen ikke eksisterer lenger. Ønsker du å avslutte abonnementet?"
+
+#~ msgid "%s groups on this server"
+#~ msgstr "%s grupper på denne tjeneren"
+
+#~ msgid "Groups servers"
+#~ msgstr "Gruppe-tjenere"
+
+#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
+#~ msgstr "Gruppene passer bra til å dele innlegg om emner du liker, med alle andre brukere på Movim."
+
+#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
+#~ msgstr "Velg en tjener og en gruppe og abonner på den med %s-knappen i overskriften. Du kan også opprette en ny ved å trykke på %s-knappen."
+
+#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
+#~ msgstr "Ferdig? Du kan nå publisere en ny post i gruppen ved å trykke på %s-knappen."
+
+#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
+#~ msgstr "Du finner en liste over alle gruppene du abonnerer på under \"Mine abonnement\", og du vil motta alle innkommende innlegg under %sNews%s-siden"
+
+#~ msgid "Create a new Group on %s"
+#~ msgstr "Opprett ny gruppe på %s"
+
+#~ msgid "Group name"
+#~ msgstr "Gruppenavn"
+
+#~ msgid "Group created successfully"
+#~ msgstr "Gruppen ble opprettet"
+
+#~ msgid "Group deleted successfully"
+#~ msgstr "Gruppen ble slettet"
+
+#~ msgid "Please provide a valid group name (4 characters minimum)"
+#~ msgstr "Oppgi et gyldig gruppenavn (minst 4 tegn)"
+
+#~ msgid "You cannot create a new Group on this server"
+#~ msgstr "Du kan ikke opprette en ny gruppe på denne tjeneren"
+
+#~ msgid "Location node created"
+#~ msgstr "Steds-node opprettet"
+
+#~ msgid "Bookmark node created"
+#~ msgstr "Bokmerke-node opprettet"
+
+#~ msgid "Profile node created"
+#~ msgstr "Profil-node opprettet"
+
+#~ msgid "Avatar node created"
+#~ msgstr "Avatar-node opprettet"
+
+#~ msgid "Subscriptions node created"
+#~ msgstr "Abonnement-node opprettet"
+
+#~ msgid "Microblog node created"
+#~ msgstr "Mikroblogg-node opprettet"
+
+#~ msgid "Link"
+#~ msgstr "Lenke"
+
+#~ msgid "Tags"
+#~ msgstr "Merkelapp"
+
+#~ msgid "Edit post"
+#~ msgstr "Rediger innlegg"
+
+#~ msgid "Add a file or a picture to your post"
+#~ msgstr "Legg til en fil eller et bilde"
+
+#~ msgid "You cannot publish a post on this Group"
+#~ msgstr "Du kan ikke publisere innlegg i denne gruppen"
+
+#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
+#~ msgstr "Du har skrevet tekst i noen felter. Sikker på at du ønsker å gå tilbake, selv om du mister det du har skrevet?"
+
+#~ msgid "Click here to add some text to your publication"
+#~ msgstr "Trykk her for å legge til tekst i innlegget"
+
+#~ msgid "Add some text"
+#~ msgstr "Legg til tekst"
+
+#~ msgid "Ungrouped"
+#~ msgstr "Ikke gruppert"
+
+#~ msgid "Show disconnected contacts"
+#~ msgstr "Vis frakoblede kontakter"
+
+#~ msgid "Hide disconnected contacts"
+#~ msgstr "Skjul frakoblede kontakter"
+
+#~ msgid "Show group %s"
+#~ msgstr "Vis gruppen %s"
+
+#~ msgid "Hide group %s"
+#~ msgstr "Skjul gruppen %s"
+
+#~ msgid "Please enter a valid Jabber ID"
+#~ msgstr "Oppgi en gyldig Jabber ID"
+
+#~ msgid "No contacts ?"
+#~ msgstr "Ingen kontakter?"
+
+#~ msgid "You can add one using the + button below"
+#~ msgstr "Du kan legge til kontakter ved å trykke på +-knappen nedenfor"
+
+#~ msgid "Show/Hide"
+#~ msgstr "Vis/skjul"
+
+#~ msgid "JID"
+#~ msgstr "JID"
+
+#~ msgid "Results"
+#~ msgstr "Resultater"
+
+#~ msgid "Search in your contacts"
+#~ msgstr "Søk i kontaktene dine"
+
+#~ msgid "Search a contact"
+#~ msgstr "Søk kontakten"
+
+#~ msgid "This is not a valid url"
+#~ msgstr "Det er ikke en gyldig lenke"
+
+#~ msgid "Sharing the URL"
+#~ msgstr "Del lenken"
+
+#~ msgid "Go to my profile page"
+#~ msgstr "Gå til min profilside"

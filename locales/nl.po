@@ -16,8 +16,6 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdHoc/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/AdminDB/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
@@ -27,8 +25,6 @@
 #. extracted from ../app/widgets/Avatar/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Blog/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Bookmark/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Chat/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -54,17 +50,11 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Confirm/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Contact/locales.ini
+#. extracted from ../app/widgets/ContactActions/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/ContactData/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Group/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Groups/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Help/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Init/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Invitations/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -82,19 +72,13 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Presence/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Publish/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishBrief/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/PublishHelp/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Rooms/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Roster/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Search/locales.ini
-#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
-#. extracted from ../app/widgets/Share/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Statistics/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -115,7 +99,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-23 21:10+0200\n"
+"POT-Creation-Date: 2018-08-03 12:08+0200\n"
 "PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -166,8 +150,7 @@ msgstr "Account"
 msgid "Change my password"
 msgstr "Wijzig mijn wachtwoord"
 
-#: [account]password [db]password [credentials]password [form]password
-#: [input]password
+#: [account]password [credentials]password [form]password [input]password
 msgid "Password"
 msgstr "Wachtwoord"
 
@@ -255,46 +238,6 @@ msgstr "Registratie niet toegestaan"
 msgid "Actions"
 msgstr "Acties"
 
-#: [db]legend [schema]database
-msgid "Database"
-msgstr "Database"
-
-#: [db]connect_error
-msgid "Modl wasn't able to connect to the database"
-msgstr "Modl was niet in staat om met de database te verbinden"
-
-#: [db]connect_success
-msgid "Movim is connected to the database"
-msgstr "Movim is verbonden met de database"
-
-#: [db]update [compatibility]db
-msgid "The database need to be updated"
-msgstr "De database heeft een update nodig"
-
-#: [db]up_to_date
-msgid "Movim database is up to date"
-msgstr "De Movim database is up-to-date"
-
-#: [db]type
-msgid "Database Type"
-msgstr "Soort database"
-
-#: [db]username [credentials]username [input]username
-msgid "Username"
-msgstr "Gebruikersnaam"
-
-#: [db]host
-msgid "Host"
-msgstr "Host"
-
-#: [db]port
-msgid "Port"
-msgstr "Poort"
-
-#: [db]name
-msgid "Database Name"
-msgstr "Databasenaam"
-
 #: [admin]general
 msgid "General Settings"
 msgstr "Algemene instellingen"
@@ -326,6 +269,10 @@ msgstr ""
 #: [credentials]title
 msgid "Administration Credential"
 msgstr "Inloggegevens voor beheer"
+
+#: [credentials]username [input]username
+msgid "Username"
+msgstr "Gebruikersnaam"
 
 #: [credentials]re_password
 msgid "Retype password"
@@ -413,6 +360,10 @@ msgstr "Movim heeft enkele problemen gevonden of dingen die opgelost of verbetel
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Lees- en schrijfrechten voor de webserver in Movim's %s directory."
 
+#: [compatibility]db
+msgid "The database need to be updated"
+msgstr "De database heeft een update nodig"
+
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "Fout met de WebSocket-verbinding, controlleer of de Movim Daemon aanstaat en bereikbaar is"
@@ -432,6 +383,10 @@ msgstr "Movim Core"
 #: [schema]daemon
 msgid "Movim Daemon"
 msgstr "Movim Daemon"
+
+#: [schema]database
+msgid "Database"
+msgstr "Database"
 
 #: [schema]xmpp
 msgid "XMPP"
@@ -508,68 +463,6 @@ msgstr "Deze gebruiker heeft momenteel niets gepost"
 #: [blog]private
 msgid "This content is private, please login to see it"
 msgstr "Deze data is privé, log in om dit te zien."
-
-#: [title]conferences
-msgid "Conferences"
-msgstr ""
-
-#: [title]groups [group]empty_title
-msgid "Groups"
-msgstr "Groepen"
-
-#: [chatroom]add
-msgid "Add a new Chat Room"
-msgstr ""
-
-#: [chatroom]id [chatrooms]id
-msgid "Chat Room ID"
-msgstr "Chatroom ID"
-
-#: [chatroom]name
-msgctxt "[chatroom]name"
-msgid "Name"
-msgstr "Naam"
-
-#: [chatroom]nickname [general]nickname [chatrooms]nickname
-msgid "Nickname"
-msgstr "bijnaam"
-
-#: [chatroom]autojoin_label
-msgid "Do you want do join automaticaly this Chat Room ?"
-msgstr ""
-
-#: [chatroom]bad_id [chatrooms]bad_id
-msgid "Bad Chatroom ID"
-msgstr "Onjuist Chatroom-ID"
-
-#: [chatroom]empty_name [chatrooms]empty_name
-msgid "Empty name"
-msgstr "Lege naam"
-
-#: [bookmarks]updated
-msgid "Bookmarks updated"
-msgstr "Favoriet bijgewerkt"
-
-#: [bookmarks]error
-msgid "An error occured :"
-msgstr "Er is iets mis gegaan :"
-
-#: [bookmarks]configure
-msgid "Configure"
-msgstr ""
-
-#: [url]add
-msgid "Add a new URL"
-msgstr ""
-
-#: [url]url
-msgid "URL"
-msgstr ""
-
-#: [url]name
-msgctxt "[url]name"
-msgid "Name"
-msgstr "Naam"
 
 #: [message]published
 msgid "Message Published"
@@ -663,8 +556,7 @@ msgstr "Verbonden met de chatroom"
 msgid "Disconnected from the chatroom"
 msgstr "Verbinding met de chatroom verbroken"
 
-#: [chatroom]config [communityaffiliation]configuration [group]configuration
-#: [page]configuration
+#: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
 msgstr "Configuratie"
 
@@ -708,7 +600,7 @@ msgstr "Chat"
 msgid "New conversation"
 msgstr "Nieuw gesprek"
 
-#: [communities]empty_text [group]empty_text
+#: [communities]empty_text
 msgid "Discover, follow and share"
 msgstr "Ontdek, volg en deel"
 
@@ -716,7 +608,7 @@ msgstr "Ontdek, volg en deel"
 msgid "%s communities"
 msgstr ""
 
-#: [communities]search_server [group]search_server
+#: [communities]search_server
 msgid "Search for a new server"
 msgstr "Zoek een nieuwe server"
 
@@ -724,7 +616,7 @@ msgstr "Zoek een nieuwe server"
 msgid "Communities servers"
 msgstr ""
 
-#: [communities]disco_error [groups]disco_error
+#: [communities]disco_error
 msgid "This server doesn't exists"
 msgstr "Deze server bestaat niet"
 
@@ -744,7 +636,7 @@ msgstr ""
 msgid "Community name"
 msgstr ""
 
-#: [communitiesserver]name_example [groups]name_example
+#: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
 msgstr "My Little Pony - Fan Club"
 
@@ -756,7 +648,7 @@ msgstr ""
 msgid "You cannot create a new community on this server"
 msgstr ""
 
-#: [communityaffiliation]subscriptions [group]subscriptions
+#: [communityaffiliation]subscriptions
 msgid "Subscriptions"
 msgstr "Abonnementen"
 
@@ -825,11 +717,11 @@ msgstr ""
 msgid "The subscribers can publish"
 msgstr ""
 
-#: [communitydata]sub [groups]sub
+#: [communitydata]sub
 msgid "%s subscribers"
 msgstr "%s geabbonneerde"
 
-#: [communitydata]num [groups]num
+#: [communitydata]num
 msgid "%s posts"
 msgstr "%s berichten"
 
@@ -837,19 +729,19 @@ msgstr "%s berichten"
 msgid "Public page"
 msgstr "Openbare pagina"
 
-#: [communityheader]subscribe [group]subscribe
+#: [communityheader]subscribe
 msgid "Subscribe"
 msgstr "Abbonneer"
 
-#: [communityheader]unsubscribe [group]unsubscribe
+#: [communityheader]unsubscribe
 msgid "Unsubscribe"
 msgstr "Uitschrijven"
 
-#: [communityheader]subscribed [group]subscribed
+#: [communityheader]subscribed
 msgid "Subscribed"
 msgstr "Geabonneerd"
 
-#: [communityheader]unsubscribed [group]unsubscribed
+#: [communityheader]unsubscribed
 msgid "Unsubscribed"
 msgstr "Uitgeschreven"
 
@@ -877,7 +769,7 @@ msgstr "Het verschijnt in je profiel"
 msgid "You are going to unsubscribe from this community"
 msgstr "Je gaat je voor deze groep uitschrijven"
 
-#: [communityheader]sure [group]sure
+#: [communityheader]sure
 msgid "Are you sure ?"
 msgstr "Weet je het zeker?"
 
@@ -889,19 +781,19 @@ msgstr "Volwassen inhoud geblokkeerd"
 msgid "Some adult content has been blocked on this page. You can enable the display of adult content in the configuration page."
 msgstr ""
 
-#: [communitysubscriptions]subscriptions [groups]subscriptions
+#: [communitysubscriptions]subscriptions
 msgid "My Subscriptions"
 msgstr "Mijn abonnementen"
 
-#: [communitysubscriptions]empty_title [groups]empty_title
+#: [communitysubscriptions]empty_title
 msgid "Hello"
 msgstr "Hallo"
 
-#: [communitysubscriptions]empty_text1 [groups]empty_text1
+#: [communitysubscriptions]empty_text1
 msgid "Here you will be able to manage all your subscriptions."
 msgstr "Hier kun je al je abonnementen beheren."
 
-#: [communitysubscriptions]empty_text2 [groups]empty_text2
+#: [communitysubscriptions]empty_text2
 msgid "You don't have any group subscriptions yet."
 msgstr "Je hebt nog geen abonnementen"
 
@@ -989,13 +881,41 @@ msgstr ""
 msgid "Authentication code"
 msgstr ""
 
+#: [roster]add_title
+msgid "Add a contact"
+msgstr "Voeg een contact toe"
+
+#: [roster]add_contact_info1
+msgid "Enter the Jabber ID of your contact."
+msgstr "Voer de jabber ID in van je contactpersoon"
+
+#: [roster]add_contact_info2
+msgid "Press enter to validate."
+msgstr "Geef een enter om te valideren"
+
+#: [roster]added
+msgid "Contact added"
+msgstr "Contactpersoon toegevoegd"
+
+#: [roster]updated
+msgid "Contact updated"
+msgstr "Contactpersoon bijgewerkt"
+
+#: [roster]deleted
+msgid "Contact deleted"
+msgstr "Contactpersoon verwijderd"
+
 #: [general]legend
-msgid "General Informations"
+msgid "General Information"
 msgstr "Algemene informatie"
 
 #: [general]name [chatrooms]name
 msgid "Name"
 msgstr "Naam"
+
+#: [general]nickname [chatrooms]nickname
+msgid "Nickname"
+msgstr "bijnaam"
 
 #: [general]date_of_birth
 msgid "Date of Birth"
@@ -1058,8 +978,8 @@ msgid "Last seen"
 msgstr "Laatst gezien"
 
 #: [client]title
-msgid "Client Informations"
-msgstr "Informatie over verbonden computer"
+msgid "Client Information"
+msgstr ""
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1134,104 +1054,8 @@ msgid "Invite"
 msgstr "Uitnodigen"
 
 #: [subscription]nil_text
-msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-msgstr "Deze contactpersoon zit in je contactenlijst, maar deze is niet geabonneerd"
-
-#: [general]legend
-msgid "General Information"
-msgstr "Algemene informatie"
-
-#: [client]title
-msgid "Client Information"
-msgstr ""
-
-#: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr ""
-
-#: [group]unsubscribe_text
-msgid "You are going to unsubscribe from this Group"
-msgstr "Je gaat je uitschrijven uit deze Groep"
-
-#: [group]share_label
-msgid "Make your membership to this group public to your friends"
-msgstr "Maak je lidmaadschap op deze groep publiek naar je vrienden"
-
-#: [group]label_label
-msgid "Give a label for this group"
-msgstr "geef een label voor deze groep"
-
-#: [group]empty
-msgid "Something bad happened to this group"
-msgstr "Iets slechts is gebeurd met deze groep"
-
-#: [group]config_saved
-msgid "Group configuration saved"
-msgstr "Groep-configuratie opgeslagen"
-
-#: [group]delete_title
-msgid "Delete the group"
-msgstr "Groep verwijderen"
-
-#: [group]delete_text
-msgid "You are going to delete the following group. Please confirm your action."
-msgstr "Weet je zeker dat je deze groep wil verwijderen?"
-
-#: [group]delete_clean_text
-msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Blijkbaar bestaat deze groep niet meer. Verwijder deze groep van je abonnementen"
-
-#: [group]counter
-msgid "%s groups on this server"
-msgstr "%s groepen op deze server"
-
-#: [group]servers
-msgid "Groups servers"
-msgstr "Groep servers"
-
-#: [group]help_info1
-msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-msgstr "Groepen zijn de perfecte manier om jou interesses via berichten te delen met andere Movim gebruikers"
-
-#: [group]help_info2
-msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-msgstr "Kies een server en een groep en abonneer hierop met de %s knop in de header. Ook kun je een nieuwe groep maken door middel van de %s knop."
-
-#: [group]help_info3
-msgid "Done? You can now publish a new post in the Group by using the %s button."
-msgstr "Klaar? Dan kun je nu een nieuwe post in de groep maken met de %s-knop."
-
-#: [group]help_info4
-msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-msgstr "Je kunt een lijst van al je geabonneerde groepen vinden onder Mijn Abonnementen. Alle nieuwe posts zie je op de pagina %sNieuws%s."
-
-#: [groups]contact_post [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr ""
-
-#: [groups]add
-msgid "Create a new Group on %s"
-msgstr "Maak een nieuwe groep op %s"
-
-#: [groups]name
-msgid "Group name"
-msgstr "Groepsnaam"
-
-#: [groups]created
-msgid "Group created successfully"
-msgstr "Groep aangemaakt"
-
-#: [groups]deleted
-msgid "Group deleted successfully"
-msgstr "Groep verwijderd"
-
-#: [groups]name_error
-msgid "Please provide a valid group name (4 characters minimum)"
-msgstr "Voer een geldige groepsnaam in (minimaal 4 karakters)"
-
-#: [groups]no_creation
-msgid "You cannot create a new Group on this server"
-msgstr "Je kunt geen nieuwe groep maken op deze server"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1273,30 +1097,6 @@ msgstr ""
 msgid "Add the chatroom"
 msgstr "Voeg de chatroom toe"
 
-#: [init]location
-msgid "Location node created"
-msgstr ""
-
-#: [init]bookmark
-msgid "Bookmark node created"
-msgstr ""
-
-#: [init]vcard4
-msgid "Profile node created"
-msgstr ""
-
-#: [init]avatar
-msgid "Avatar node created"
-msgstr ""
-
-#: [init]subscriptions
-msgid "Subscriptions node created"
-msgstr ""
-
-#: [init]microblog
-msgid "Microblog node created"
-msgstr ""
-
 #: [invitations]title
 msgid "Pending Invitations"
 msgstr "Uitstaande uitnodigingen"
@@ -1322,7 +1122,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP Domein fout, je account is geen correct Jabber ID"
 
 #: [error]data_missings
-msgid "Some data are missing !"
+#, fuzzy
+msgid "Some data are missing!"
 msgstr "Sommige gegevens zijn verloren !"
 
 #: [error]wrong_password
@@ -1405,6 +1206,10 @@ msgstr "Roepnaam niet mogelijk (moet tussen 4 en 40 tekens zijn)"
 msgid "No news yet…"
 msgstr "Nog geen nieuws"
 
+#: [menu]contact_post [hello]contact_post
+msgid "Contact post"
+msgstr ""
+
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Dit is je nieuwsfeed. Hier vind je alle berichten van je contactpersonen en de groepen waar je lid van bent"
@@ -1485,7 +1290,7 @@ msgstr "nieuwsfeed"
 msgid "Discover and register to the groups you are interested in"
 msgstr "Ontdek en abonneer op de groepen waarop je geinteresseerd bent"
 
-#: [post]content [publish]content_label
+#: [post]content
 msgid "Content"
 msgstr "inhoud"
 
@@ -1505,7 +1310,7 @@ msgstr "Wat is Hot"
 msgid "Posts recently published in communities that you are not subscribed (yet)"
 msgstr ""
 
-#: [post]new [publish]new [publishbrief]new
+#: [post]new [publishbrief]new
 msgid "New post"
 msgstr "nieuwe berichten"
 
@@ -1621,74 +1426,6 @@ msgstr "status bijgewerkt"
 msgid "Presence"
 msgstr "aanwezigheid"
 
-#: [publish]preview [publishbrief]preview
-msgid "Preview"
-msgstr "Voorbeeld"
-
-#: [publish]help [publishhelp]title [page]help
-msgid "Help"
-msgstr "Help"
-
-#: [publish]help_more [publishhelp]more
-msgid "More help"
-msgstr "Meer help"
-
-#: [publish]help_manual [publishhelp]manual
-msgid "Markdown syntax manual"
-msgstr "Markdown syntax handleiding"
-
-#: [publish]content_text [publishbrief]content_text
-msgid "You can format your content using Markdown"
-msgstr "je kunt je inhoud opmaken met Markdown"
-
-#: [publish]link
-msgid "Link"
-msgstr "Link"
-
-#: [publish]tags
-msgid "Tags"
-msgstr "Tag"
-
-#: [publish]valid_url [publishbrief]valid_url
-msgid "Please enter a valid URL"
-msgstr ""
-
-#: [publish]no_content_preview [publishbrief]no_content_preview
-msgid "No content to preview"
-msgstr "Geen voorbeeld beschikbaar"
-
-#: [publish]no_title [publishbrief]no_title
-msgid "Please provide a title"
-msgstr "Geef een titel in"
-
-#: [publish]edit
-msgid "Edit post"
-msgstr "Bewerk dit bericht"
-
-#: [publish]title [page]publish
-msgid "Publish"
-msgstr "Publiceer"
-
-#: [publish]attach
-msgid "Add a file or a picture to your post"
-msgstr "Voeg een bestand of een foto toe aan je bericht"
-
-#: [publish]no_publication
-msgid "You cannot publish a post on this Group"
-msgstr "Je kunt niet posten naar deze groep"
-
-#: [publish]form_filled
-msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-msgstr "Er zijn velden ingevuld. Wil je nog steeds terug gaan en de waardes verliezen?"
-
-#: [publish]add_text
-msgid "Click here to add some text to your publication"
-msgstr "Klik hier om wat tekst toe te voegen"
-
-#: [publish]add_text_label
-msgid "Add some text"
-msgstr "Voeg wat tekst toe"
-
 #: [publishbrief]placeholder
 msgid "What's new?"
 msgstr "Wat is er sindsdien gebeurd?"
@@ -1701,6 +1438,14 @@ msgstr "Schrijf een bericht"
 msgid "Add a link"
 msgstr "Voeg een link toe"
 
+#: [publishbrief]no_title
+msgid "Please provide a title"
+msgstr "Geef een titel in"
+
+#: [publishbrief]preview
+msgid "Preview"
+msgstr "Voorbeeld"
+
 #: [publishbrief]attach
 msgid "Add a file or a picture"
 msgstr ""
@@ -1708,6 +1453,30 @@ msgstr ""
 #: [publishbrief]no_publication
 msgid "You cannot publish a post here"
 msgstr ""
+
+#: [publishbrief]no_content_preview
+msgid "No content to preview"
+msgstr "Geen voorbeeld beschikbaar"
+
+#: [publishbrief]valid_url
+msgid "Please enter a valid URL"
+msgstr ""
+
+#: [publishbrief]content_text
+msgid "You can format your content using Markdown"
+msgstr "je kunt je inhoud opmaken met Markdown"
+
+#: [publishhelp]title [page]help
+msgid "Help"
+msgstr "Help"
+
+#: [publishhelp]more
+msgid "More help"
+msgstr "Meer help"
+
+#: [publishhelp]manual
+msgid "Markdown syntax manual"
+msgstr "Markdown syntax handleiding"
 
 #: [rooms]add
 msgid "Add a chatroom"
@@ -1729,9 +1498,21 @@ msgstr "Klik op toevoegen om er een toe te voegen."
 msgid "Chatrooms"
 msgstr "Chatrooms"
 
+#: [chatrooms]id
+msgid "Chat Room ID"
+msgstr "Chatroom ID"
+
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
 msgstr "Favoriete chat-ruimte"
+
+#: [chatrooms]bad_id
+msgid "Bad Chatroom ID"
+msgstr "Onjuist Chatroom-ID"
+
+#: [chatrooms]empty_name
+msgid "Empty name"
+msgstr "Lege naam"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1752,6 +1533,10 @@ msgstr ""
 #: [chatrooms]registrationrequired
 msgid "Chatroom cannot be joined, registration required"
 msgstr ""
+
+#: [bookmarks]updated
+msgid "Bookmarks updated"
+msgstr "Favoriet bijgewerkt"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -1789,82 +1574,6 @@ msgstr "Uitnodiging verzonden"
 msgid "Send this link to your contacts"
 msgstr ""
 
-#: [roster]ungrouped
-msgid "Ungrouped"
-msgstr "Groep opgeheven"
-
-#: [roster]show_disconnected
-msgid "Show disconnected contacts"
-msgstr "Toon offline contactpersonen"
-
-#: [roster]hide_disconnected
-msgid "Hide disconnected contacts"
-msgstr "Verberg offline contactpersonen"
-
-#: [roster]show_group
-msgid "Show group %s"
-msgstr "Laat groep %s zien"
-
-#: [roster]hide_group
-msgid "Hide group %s"
-msgstr "Verberg groep %s"
-
-#: [roster]jid_error
-msgid "Please enter a valid Jabber ID"
-msgstr "Vul een geldig Jabber ID in"
-
-#: [roster]no_contacts_title
-msgid "No contacts ?"
-msgstr "Geen contactpersonen?"
-
-#: [roster]no_contacts_text
-msgid "You can add one using the + button below"
-msgstr "Je kan er een toevoegen met de + knop hieronder"
-
-#: [roster]show_hide
-msgid "Show/Hide"
-msgstr "Tonen/Verbergen"
-
-#: [roster]add_title
-msgid "Add a contact"
-msgstr "Voeg een contact toe"
-
-#: [roster]add_contact_info1
-msgid "Enter the Jabber ID of your contact."
-msgstr "Voer de jabber ID in van je contactpersoon"
-
-#: [roster]add_contact_info2
-msgid "Press enter to validate."
-msgstr "Geef een enter om te valideren"
-
-#: [roster]jid
-msgid "JID"
-msgstr "JID"
-
-#: [roster]results
-msgid "Results"
-msgstr "Resultaten"
-
-#: [roster]added
-msgid "Contact added"
-msgstr "Contactpersoon toegevoegd"
-
-#: [roster]updated
-msgid "Contact updated"
-msgstr "Contactpersoon bijgewerkt"
-
-#: [roster]deleted
-msgid "Contact deleted"
-msgstr "Contactpersoon verwijderd"
-
-#: [roster]search
-msgid "Search in your contacts"
-msgstr "Zoek in je contacten"
-
-#: [roster]search_pod
-msgid "Search a contact"
-msgstr "Zoek een contactpersoon"
-
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "Wat zoek je?"
@@ -1872,14 +1581,6 @@ msgstr "Wat zoek je?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Start me met CTRL + M"
-
-#: [share]error
-msgid "This is not a valid url"
-msgstr ""
-
-#: [share]success
-msgid "Sharing the URL"
-msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1956,10 +1657,6 @@ msgstr "Je profiel is nu openbaar"
 #: [vcard]restricted
 msgid "Your profile is now restricted"
 msgstr "Je profiel is nu afgeschermd"
-
-#: [privacy]my_profile
-msgid "Go to my profile page"
-msgstr "Ga naar mijn profiel pagina"
 
 #: [privacy]privacy_title
 msgid "Privacy Level"
@@ -2060,6 +1757,10 @@ msgstr "Avatar"
 #: [page]chats
 msgid "Chats"
 msgstr "Chats"
+
+#: [page]publish
+msgid "Publish"
+msgstr "Publiceer"
 
 #: [page]post
 msgid "Post"
@@ -2822,3 +2523,173 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "Modl wasn't able to connect to the database"
+#~ msgstr "Modl was niet in staat om met de database te verbinden"
+
+#~ msgid "Movim is connected to the database"
+#~ msgstr "Movim is verbonden met de database"
+
+#~ msgid "Movim database is up to date"
+#~ msgstr "De Movim database is up-to-date"
+
+#~ msgid "Database Type"
+#~ msgstr "Soort database"
+
+#~ msgid "Host"
+#~ msgstr "Host"
+
+#~ msgid "Port"
+#~ msgstr "Poort"
+
+#~ msgid "Database Name"
+#~ msgstr "Databasenaam"
+
+#~ msgid "Groups"
+#~ msgstr "Groepen"
+
+#~ msgctxt "[chatroom]name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "An error occured :"
+#~ msgstr "Er is iets mis gegaan :"
+
+#~ msgctxt "[url]name"
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "General Informations"
+#~ msgstr "Algemene informatie"
+
+#~ msgid "Client Informations"
+#~ msgstr "Informatie over verbonden computer"
+
+#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
+#~ msgstr "Deze contactpersoon zit in je contactenlijst, maar deze is niet geabonneerd"
+
+#~ msgid "You are going to unsubscribe from this Group"
+#~ msgstr "Je gaat je uitschrijven uit deze Groep"
+
+#~ msgid "Make your membership to this group public to your friends"
+#~ msgstr "Maak je lidmaadschap op deze groep publiek naar je vrienden"
+
+#~ msgid "Give a label for this group"
+#~ msgstr "geef een label voor deze groep"
+
+#~ msgid "Something bad happened to this group"
+#~ msgstr "Iets slechts is gebeurd met deze groep"
+
+#~ msgid "Group configuration saved"
+#~ msgstr "Groep-configuratie opgeslagen"
+
+#~ msgid "Delete the group"
+#~ msgstr "Groep verwijderen"
+
+#~ msgid "You are going to delete the following group. Please confirm your action."
+#~ msgstr "Weet je zeker dat je deze groep wil verwijderen?"
+
+#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#~ msgstr "Blijkbaar bestaat deze groep niet meer. Verwijder deze groep van je abonnementen"
+
+#~ msgid "%s groups on this server"
+#~ msgstr "%s groepen op deze server"
+
+#~ msgid "Groups servers"
+#~ msgstr "Groep servers"
+
+#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
+#~ msgstr "Groepen zijn de perfecte manier om jou interesses via berichten te delen met andere Movim gebruikers"
+
+#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
+#~ msgstr "Kies een server en een groep en abonneer hierop met de %s knop in de header. Ook kun je een nieuwe groep maken door middel van de %s knop."
+
+#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
+#~ msgstr "Klaar? Dan kun je nu een nieuwe post in de groep maken met de %s-knop."
+
+#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
+#~ msgstr "Je kunt een lijst van al je geabonneerde groepen vinden onder Mijn Abonnementen. Alle nieuwe posts zie je op de pagina %sNieuws%s."
+
+#~ msgid "Create a new Group on %s"
+#~ msgstr "Maak een nieuwe groep op %s"
+
+#~ msgid "Group name"
+#~ msgstr "Groepsnaam"
+
+#~ msgid "Group created successfully"
+#~ msgstr "Groep aangemaakt"
+
+#~ msgid "Group deleted successfully"
+#~ msgstr "Groep verwijderd"
+
+#~ msgid "Please provide a valid group name (4 characters minimum)"
+#~ msgstr "Voer een geldige groepsnaam in (minimaal 4 karakters)"
+
+#~ msgid "You cannot create a new Group on this server"
+#~ msgstr "Je kunt geen nieuwe groep maken op deze server"
+
+#~ msgid "Link"
+#~ msgstr "Link"
+
+#~ msgid "Tags"
+#~ msgstr "Tag"
+
+#~ msgid "Edit post"
+#~ msgstr "Bewerk dit bericht"
+
+#~ msgid "Add a file or a picture to your post"
+#~ msgstr "Voeg een bestand of een foto toe aan je bericht"
+
+#~ msgid "You cannot publish a post on this Group"
+#~ msgstr "Je kunt niet posten naar deze groep"
+
+#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
+#~ msgstr "Er zijn velden ingevuld. Wil je nog steeds terug gaan en de waardes verliezen?"
+
+#~ msgid "Click here to add some text to your publication"
+#~ msgstr "Klik hier om wat tekst toe te voegen"
+
+#~ msgid "Add some text"
+#~ msgstr "Voeg wat tekst toe"
+
+#~ msgid "Ungrouped"
+#~ msgstr "Groep opgeheven"
+
+#~ msgid "Show disconnected contacts"
+#~ msgstr "Toon offline contactpersonen"
+
+#~ msgid "Hide disconnected contacts"
+#~ msgstr "Verberg offline contactpersonen"
+
+#~ msgid "Show group %s"
+#~ msgstr "Laat groep %s zien"
+
+#~ msgid "Hide group %s"
+#~ msgstr "Verberg groep %s"
+
+#~ msgid "Please enter a valid Jabber ID"
+#~ msgstr "Vul een geldig Jabber ID in"
+
+#~ msgid "No contacts ?"
+#~ msgstr "Geen contactpersonen?"
+
+#~ msgid "You can add one using the + button below"
+#~ msgstr "Je kan er een toevoegen met de + knop hieronder"
+
+#~ msgid "Show/Hide"
+#~ msgstr "Tonen/Verbergen"
+
+#~ msgid "JID"
+#~ msgstr "JID"
+
+#~ msgid "Results"
+#~ msgstr "Resultaten"
+
+#~ msgid "Search in your contacts"
+#~ msgstr "Zoek in je contacten"
+
+#~ msgid "Search a contact"
+#~ msgstr "Zoek een contactpersoon"
+
+#~ msgid "Go to my profile page"
+#~ msgstr "Ga naar mijn profiel pagina"
