@@ -228,6 +228,11 @@ class Contact extends Model
         return false;
     }
 
+    function isFromMuc()
+    {
+        return strpos($this->jid, '/') !== false;
+    }
+
     function isOld()
     {
         return (strtotime($this->updated) < mktime( // We update the 1 day old vcards

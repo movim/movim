@@ -15,16 +15,18 @@
                     ">
                         <img src="{$url}">
                     </span>
-                {else}
+                {elseif="!$contact->isFromMuc()"}
                     <span class="primary icon bubble color {$contact->id|stringToColor}
                         {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}
                     ">
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
-                <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
-                    <i class="material-icons">person</i>
-                </span>
+                {if="!$contact->isFromMuc()"}
+                    <span class="control icon active" onclick="MovimUtils.reload('{$c->route('contact', $contact->id)}')">
+                        <i class="material-icons">person</i>
+                    </span>
+                {/if}
                 {if="!$contact->isMe()"}
                     <span class="control icon active" onclick="ContactActions_ajaxChat('{$contact->id}')">
                         <i class="material-icons">comment</i>

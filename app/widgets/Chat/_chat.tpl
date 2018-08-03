@@ -159,9 +159,11 @@
         </li>
     </ul>
     <ul class="list context_menu active">
-        <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
-            <p class="normal">{$c->__('chat.profile')}</p>
-        </li>
+        {if="!$contact->isFromMuc()"}
+            <li onclick="MovimUtils.reload('{$c->route('contact', $contact->jid)}')">
+                <p class="normal">{$c->__('chat.profile')}</p>
+            </li>
+        {/if}
         <li class="on_mobile" onclick="Chat.editPrevious()">
             <p class="normal">{$c->__('chat.edit_previous')}</p>
         </li>
