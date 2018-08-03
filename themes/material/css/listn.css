@@ -30,13 +30,25 @@ ul.list li > *:not(p, .hide, form) {
     top: 0;
 }
 
-/* Active list */
+/* Active list items */
 
-ul.list.active > li:hover:not(.subheader),
-ul.list.active.all > li:hover,
-ul.list.active > li.active:not(.subheader) {
+ul.list.active li:hover:not(.subheader),
+ul.list.active.all li:hover,
+ul.list.active li.active:not(.subheader),
+ul.tabs > li:hover,
+ul.list li > span.active:hover {
     background-color: rgba(var(--movim-font), 0.04);
     cursor: pointer;
+}
+
+/* Clicked list items */
+
+ul.list.active li:active:not(.subheader),
+ul.list.active.all li:active,
+ul.tabs > li:active,
+ul.list li > span.active:active {
+    background-color: rgba(var(--movim-font), 0.08);
+    transition: background-color 0.15s ease;
 }
 
 /* Main elements */
@@ -97,15 +109,6 @@ ul.list li > p.line {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-ul.list li > span.active {
-    transition: background-color 0.25s ease;
-}
-
-ul.list li > span.active:hover {
-    cursor: pointer;
-    background-color: rgba(var(--movim-font), 0.05);
 }
 
 ul.list li > p > span.second {
@@ -322,12 +325,6 @@ ul.tabs.narrow > li {
 
 ul.tabs.narrow > li > * {
     padding: 0 1rem;
-}
-
-
-ul.tabs > li:hover {
-    cursor: pointer;
-    background-color: rgba(var(--movim-font), 0.05);
 }
 
 ul.tabs > li.active {
