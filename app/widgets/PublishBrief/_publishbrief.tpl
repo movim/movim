@@ -122,9 +122,13 @@
             <div>
                 <ul class="list embed">
                     {if="$reply"}
-                        {$replyblock}
+                        {autoescape="off"}
+                            {$replyblock}
+                        {/autoescape}
                     {else}
-                        {$embed}
+                        {autoescape="off"}
+                            {$embed}
+                        {/autoescape}
                     {/if}
                 </ul>
             </div>

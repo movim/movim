@@ -132,7 +132,7 @@ class Rooms extends \Movim\Widget\Base
 
         $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsServices());
 
-        Dialog::fill($view->draw('_rooms_add', true));
+        Dialog::fill($view->draw('_rooms_add'));
     }
 
     /**
@@ -147,7 +147,7 @@ class Rooms extends \Movim\Widget\Base
                                  ->where('conference', $room)
                                  ->first());
 
-        Dialog::fill($view->draw('_rooms_avatar', true));
+        Dialog::fill($view->draw('_rooms_avatar'));
     }
 
     /**
@@ -187,7 +187,7 @@ class Rooms extends \Movim\Widget\Base
                                  ->where('conference', $room)
                                  ->first());
 
-        Dialog::fill($view->draw('_rooms_subject', true));
+        Dialog::fill($view->draw('_rooms_subject'));
     }
 
     /**
@@ -218,7 +218,7 @@ class Rooms extends \Movim\Widget\Base
         $view->assign('room', $room);
         $view->assign('invite', \App\Invite::set($this->user->id, $room));
 
-        Dialog::fill($view->draw('_rooms_invite', true));
+        Dialog::fill($view->draw('_rooms_invite'));
     }
 
 
@@ -252,7 +252,7 @@ class Rooms extends \Movim\Widget\Base
 
         $view->assign('room', $room);
 
-        Dialog::fill($view->draw('_rooms_remove', true));
+        Dialog::fill($view->draw('_rooms_remove'));
     }
 
     /**
@@ -272,7 +272,7 @@ class Rooms extends \Movim\Widget\Base
         $view->assign('room', $room);
         $view->assign('me', $this->user->id);
 
-        Dialog::fill($view->draw('_rooms_list', true), true);
+        Dialog::fill($view->draw('_rooms_list'), true);
     }
 
     /**
@@ -458,7 +458,7 @@ class Rooms extends \Movim\Widget\Base
         $view->assign('conferences', $conferences);
         $view->assign('room', $this->get('r'));
 
-        return $view->draw('_rooms', true);
+        return $view->draw('_rooms');
     }
 
     /**

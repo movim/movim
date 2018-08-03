@@ -7,6 +7,8 @@
         </script>
     {/if}
     <div id="vcard_form">
-        {$form}
+        {autoescape="off"}
+            {$form}
+        {/autoescape}
     </div>
 </div>

@@ -175,6 +175,6 @@ class Notification extends \Movim\Widget\Base
         $view->assign('action', $action);
         $view->assign('onclick', $execute);
 
-        return $view->draw('_notification', true);
+        return $view->draw('_notification');
     }
 }

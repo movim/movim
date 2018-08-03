@@ -27,7 +27,7 @@ class Menu extends \Movim\Widget\Base
         $view->assign('refresh', $this->call('ajaxGetAll'));
 
         $this->rpc('movim_posts_unread', $count);
-        $this->rpc('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh', true));
+        $this->rpc('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh'));
     }
 
     function onPost($packet)
@@ -199,7 +199,7 @@ class Menu extends \Movim\Widget\Base
         $view->assign('page', $page);
         $view->assign('paging', $this->_paging);
 
-        return $view->draw('_menu_list', true);
+        return $view->draw('_menu_list');
     }
 
     function preparePost($post)

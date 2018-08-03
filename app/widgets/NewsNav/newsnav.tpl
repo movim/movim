@@ -12,7 +12,9 @@
             <p>{$c->__('post.blog_last')}</p>
         </li>
         {loop="$blogs"}
-            {$c->prepareTicket($value)}
+            {autoescape="off"}
+                {$c->prepareTicket($value)}
+            {/autoescape}
         {/loop}
     </ul>
 {/if}
@@ -31,7 +33,9 @@
     </li>
 
     {loop="$posts"}
-        {$c->prepareTicket($value)}
+        {autoescape="off"}
+            {$c->prepareTicket($value)}
+        {/autoescape}
     {/loop}
 </ul>
 {/if}
@@ -46,4 +50,3 @@
         </li>
     </ul>
 {/if}
-

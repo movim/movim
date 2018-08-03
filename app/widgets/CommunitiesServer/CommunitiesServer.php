@@ -55,7 +55,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('server', $origin);
 
-        Dialog::fill($view->draw('_communitiesserver_add', true));
+        Dialog::fill($view->draw('_communitiesserver_add'));
     }
 
     function onTestCreateError($packet)
@@ -125,7 +125,7 @@ class CommunitiesServer extends \Movim\Widget\Base
                                         ->get());
         $view->assign('server', $origin);
 
-        return $view->draw('_communitiesserver', true);
+        return $view->draw('_communitiesserver');
     }
 
     /**

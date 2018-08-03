@@ -71,7 +71,7 @@ class PostActions extends \Movim\Widget\Base
             $view->assign('node', $node);
             $view->assign('id', $id);
 
-            Dialog::fill($view->draw('_postactions_delete', true));
+            Dialog::fill($view->draw('_postactions_delete'));
         }
     }
 

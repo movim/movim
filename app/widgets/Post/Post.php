@@ -52,7 +52,7 @@ class Post extends \Movim\Widget\Base
     function onCommentsError($packet)
     {
         $view = $this->tpl();
-        $html = $view->draw('_post_comments_error', true);
+        $html = $view->draw('_post_comments_error');
         $this->rpc('MovimTpl.fill', '#comments', $html);
     }
 
@@ -170,13 +170,13 @@ class Post extends \Movim\Widget\Base
         $view->assign('public', $public);
         $view->assign('hearth', $emoji->replace('♥'));
 
-        return $view->draw('_post_comments', true);
+        return $view->draw('_post_comments');
     }
 
     function prepareNotFound()
     {
         $view = $this->tpl();
-        return $view->draw('_post_not_found', true);
+        return $view->draw('_post_not_found');
     }
 
     function preparePost(\App\Post $p, $public = false, $card = false)
@@ -190,7 +190,7 @@ class Post extends \Movim\Widget\Base
                 $view->assign('commentsdisabled', false);
             } elseif (!$card) {
                 $viewd = $this->tpl();
-                $view->assign('commentsdisabled', $viewd->draw('_post_comments_error', true));
+                $view->assign('commentsdisabled', $viewd->draw('_post_comments_error'));
             }
 
             $view->assign('public', $public);
@@ -201,8 +201,8 @@ class Post extends \Movim\Widget\Base
             $view->assign('post', $p);
 
             return ($card)
-                ? $view->draw('_post_card', true)
-                : $view->draw('_post', true);
+                ? $view->draw('_post_card')
+                : $view->draw('_post');
         }
 
         return $this->prepareNotFound();
@@ -214,14 +214,14 @@ class Post extends \Movim\Widget\Base
         $view->assign('post', $post);
         $view->assign('big', $big);
 
-        return $view->draw('_post_ticket', true);
+        return $view->draw('_post_ticket');
     }
 
     public function preparePostLinks(\App\Post $post)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
-        return $view->draw('_post_links', true);
+        return $view->draw('_post_links');
     }
 
     public function preparePostReply(\App\Post $post)
@@ -230,14 +230,14 @@ class Post extends \Movim\Widget\Base
 
         $view = $this->tpl();
         $view->assign('reply', $post->getReply());
-        return $view->draw('_post_reply', true);
+        return $view->draw('_post_reply');
     }
 
     public function preparePreviousNext(\App\Post $post)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
-        return $view->draw('_post_prevnext', true);
+        return $view->draw('_post_prevnext');
     }
 
     function display()

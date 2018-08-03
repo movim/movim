@@ -4,7 +4,9 @@
     <article>
         <section>
             <content>
-                {$content|addHashtagsLinks}
+                {autoescape="off"}
+                    {$content|addHashtagsLinks}
+                {/autoescape}
             </content>
         </section>
     </article>

@@ -1,1 +1,5 @@
-<div id="notifs">{$c->prepareNotifs()}</div>
+<div id="notifs">
+    {autoescape="off"}
+        {$c->prepareNotifs()}
+    {/autoescape}
+</div>

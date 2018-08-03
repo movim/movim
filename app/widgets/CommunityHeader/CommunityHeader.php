@@ -90,7 +90,7 @@ class CommunityHeader extends \Movim\Widget\Base
                                    ->where('node', $node)
                                    ->first());
 
-        Dialog::fill($view->draw('_communityheader_subscribe', true));
+        Dialog::fill($view->draw('_communityheader_subscribe'));
     }
 
     function ajaxSubscribe($form, $origin, $node)
@@ -125,7 +125,7 @@ class CommunityHeader extends \Movim\Widget\Base
                                    ->where('node', $node)
                                    ->first());
 
-        Dialog::fill($view->draw('_communityheader_unsubscribe', true));
+        Dialog::fill($view->draw('_communityheader_unsubscribe'));
     }
 
     function ajaxUnsubscribe($origin, $node)
@@ -180,7 +180,7 @@ class CommunityHeader extends \Movim\Widget\Base
         $view->assign('node', $node);
         $view->assign('server', $origin);
 
-        return $view->draw('_communityheader', true);
+        return $view->draw('_communityheader');
     }
 
     private function validateServerNode($origin, $node)

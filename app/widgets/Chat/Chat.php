@@ -189,7 +189,7 @@ class Chat extends \Movim\Widget\Base
         $view->assign('form', $form);
         $view->assign('room', $room);
 
-        Dialog::fill($view->draw('_chat_config_room', true), true);
+        Dialog::fill($view->draw('_chat_config_room'), true);
     }
 
     function onRoomConfigSaved($packet)
@@ -206,7 +206,7 @@ class Chat extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('message', $message);
 
-        $html = $view->draw('_chat_state', true);
+        $html = $view->draw('_chat_state');
 
         $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_state'), $html);
     }
@@ -592,7 +592,7 @@ class Chat extends \Movim\Widget\Base
             $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         }
 
-        return $view->draw('_chat', true);
+        return $view->draw('_chat');
     }
 
     function prepareMessages($jid, $muc = false)
@@ -623,16 +623,16 @@ class Chat extends \Movim\Widget\Base
         $view->assign('contact', \App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('me', false);
         $view->assign('muc', $muc);
-        $left = $view->draw('_chat_bubble', true);
+        $left = $view->draw('_chat_bubble');
 
         $view->assign('contact', \App\Contact::firstOrNew(['id' => $this->user->id]));
         $view->assign('me', true);
         $view->assign('muc', $muc);
-        $right = $view->draw('_chat_bubble', true);
+        $right = $view->draw('_chat_bubble');
 
-        $date = $view->draw('_chat_date', true);
+        $date = $view->draw('_chat_date');
 
-        $separator = $view->draw('_chat_separator', true);
+        $separator = $view->draw('_chat_separator');
 
         $this->rpc('Chat.setBubbles', $left, $right, $date, $separator);
         $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper);
@@ -771,7 +771,7 @@ class Chat extends \Movim\Widget\Base
         if ($message->type == 'invitation') {
             $view = $this->tpl();
             $view->assign('message', $message);
-            $message->body = $view->draw('_chat_invitation', true);
+            $message->body = $view->draw('_chat_invitation');
         }
 
         return $this->_wrapper;
@@ -817,7 +817,7 @@ class Chat extends \Movim\Widget\Base
         $view->assign('conferences', $conferences);
         $view->assign('top', $top);
 
-        return $view->draw('_chat_empty', true);
+        return $view->draw('_chat_empty');
     }
 
     /**

@@ -1,3 +1,5 @@
 <ul id="contact_data" class="list card">
-    {$c->prepareData($jid)}
+    {autoescape="off"}
+        {$c->prepareData($jid)}
+    {/autoescape}
 </ul>

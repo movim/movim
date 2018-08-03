@@ -48,7 +48,7 @@ class Account extends \Movim\Widget\Base
                 $view->assign('actions', $content->actions);
             }
 
-            Dialog::fill($view->draw('_account_form', true), true);
+            Dialog::fill($view->draw('_account_form'), true);
         }
     }
 
@@ -88,14 +88,14 @@ class Account extends \Movim\Widget\Base
         $this->rpc('Presence.clearQuick');
         $view = $this->tpl();
         $view->assign('jid', $this->user->id);
-        Dialog::fill($view->draw('_account_remove', true));
+        Dialog::fill($view->draw('_account_remove'));
     }
 
     function ajaxClearAccount()
     {
         $view = $this->tpl();
         $view->assign('jid', $this->user->id);
-        Dialog::fill($view->draw('_account_clear', true));
+        Dialog::fill($view->draw('_account_clear'));
     }
 
     function ajaxClearAccountConfirm()

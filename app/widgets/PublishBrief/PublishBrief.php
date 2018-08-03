@@ -101,7 +101,7 @@ class PublishBrief extends \Movim\Widget\Base
             $doc->loadXML('<div>'.addHFR(addHFR($parser->transform($form->content->value))).'</div>');
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
-            Dialog::fill($view->draw('_publishbrief_preview', true), true);
+            Dialog::fill($view->draw('_publishbrief_preview'), true);
         } else {
             Notification::append(false, $this->__('publishbrief.no_content_preview'));
         }
@@ -260,7 +260,7 @@ class PublishBrief extends \Movim\Widget\Base
         try {
             $view = $this->tpl();
             $view->assign('embed', \App\Url::resolve($url));
-            Drawer::fill($view->draw('_publishbrief_images', true), true);
+            Drawer::fill($view->draw('_publishbrief_images'), true);
         } catch(Exception $e) {
             error_log($e->getMessage());
         }
@@ -283,7 +283,7 @@ class PublishBrief extends \Movim\Widget\Base
     function prepareEmbedDefault()
     {
         $view = $this->tpl();
-        return $view->draw('_publishbrief_embed_default', true);
+        return $view->draw('_publishbrief_embed_default');
     }
 
     function prepareEmbed($embed, $imagenumber = 0)
@@ -291,7 +291,7 @@ class PublishBrief extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('embed', $embed);
         $view->assign('imagenumber', $imagenumber);
-        return $view->draw('_publishbrief_embed', true);
+        return $view->draw('_publishbrief_embed');
     }
 
     function preparePublishBrief(
@@ -348,13 +348,13 @@ class PublishBrief extends \Movim\Widget\Base
 
         $view->assign('extended', $extended);
 
-        return $view->draw('_publishbrief', true);
+        return $view->draw('_publishbrief');
     }
 
     function ajaxLink()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_publishbrief_link', true));
+        Dialog::fill($view->draw('_publishbrief_link'));
     }
 
     function ajaxDisplayPrivacy($open)

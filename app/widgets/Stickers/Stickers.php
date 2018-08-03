@@ -114,7 +114,7 @@ class Stickers extends \Movim\Widget\Base
             $view->assign('info', parse_ini_file(dirname(__FILE__).'/stickers/'.$pack.'/info.ini'));
             $view->assign('path', $this->respath('stickers', false, false, true));
 
-            Drawer::fill($view->draw('_stickers', true), true);
+            Drawer::fill($view->draw('_stickers'), true);
         }
     }
 
@@ -129,7 +129,7 @@ class Stickers extends \Movim\Widget\Base
         $view->assign('jid', $to);
         $view->assign('packs', $this->getPacks());
         $view->assign('path', $this->respath('stickers', false, false, true));
-        Drawer::fill($view->draw('_stickers_smiley', true));
+        Drawer::fill($view->draw('_stickers_smiley'));
     }
 
     /**
@@ -143,7 +143,7 @@ class Stickers extends \Movim\Widget\Base
         $view->assign('jid', $to);
         $view->assign('packs', $this->getPacks());
         $view->assign('path', $this->respath('stickers', false, false, true));
-        Drawer::fill($view->draw('_stickers_smiley_two', true));
+        Drawer::fill($view->draw('_stickers_smiley_two'));
     }
 
     /**

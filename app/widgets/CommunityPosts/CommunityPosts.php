@@ -108,7 +108,7 @@ class CommunityPosts extends \Movim\Widget\Base
     function prepareEmpty()
     {
         $view = $this->tpl();
-        return $view->draw('_communityposts_empty', true);
+        return $view->draw('_communityposts_empty');
     }
 
     public function preparePost($p)
@@ -159,7 +159,7 @@ class CommunityPosts extends \Movim\Widget\Base
             $this->rpc(
                 'MovimTpl.prepend',
                 '#communityposts',
-                $view->draw('_communityposts_nsfw', true)
+                $view->draw('_communityposts_nsfw')
             );
         }
 
@@ -194,7 +194,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('last', $last);
         $view->assign('count', $count);
 
-        $html = $view->draw('_communityposts', true);
+        $html = $view->draw('_communityposts');
 
         return $html;
     }
@@ -216,4 +216,3 @@ class CommunityPosts extends \Movim\Widget\Base
         $this->view->assign('class', $slugify->slugify('c'.$this->get('s').'_'.$node));
     }
 }
-

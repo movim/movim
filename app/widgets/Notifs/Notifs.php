@@ -41,6 +41,6 @@ class Notifs extends \Movim\Widget\Base
         $view->assign('hearth',  $emoji->replace('♥'));
         $view->assign('notifs', $notifs);
 
-        return $view->draw('_notifs', true);
+        return $view->draw('_notifs');
     }
 }

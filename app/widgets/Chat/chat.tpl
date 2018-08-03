@@ -3,6 +3,7 @@
         Chat.pagination = {$pagination};
         Chat.delivery_error = '{$c->__("message.error")}';
     </script>
-    {$c->prepareEmpty()}
+    {autoescape="off"}
+        {$c->prepareEmpty()}
+    {/autoescape}
 </div>
-

@@ -1,3 +1,5 @@
 <header id="community_header" class="relative">
-    {$c->prepareHeader($server, $node)}
+    {autoescape="off"}
+        {$c->prepareHeader($server, $node)}
+    {/autoescape}
 </header>

@@ -31,7 +31,7 @@ class Upload extends \Movim\Widget\Base
     function ajaxRequest()
     {
         $view = $this->tpl();
-        Dialog::fill($view->draw('_upload', true));
+        Dialog::fill($view->draw('_upload'));
     }
 
     function ajaxSend($file)

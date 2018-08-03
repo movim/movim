@@ -35,7 +35,7 @@ class ContactActions extends \Movim\Widget\Base
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('groups', $this->user->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray());
 
-        Dialog::fill($view->draw('_contactactions_add', true));
+        Dialog::fill($view->draw('_contactactions_add'));
     }
 
     function ajaxGetDrawer($jid)
@@ -47,7 +47,7 @@ class ContactActions extends \Movim\Widget\Base
         $tpl->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
         $tpl->assign('clienttype', getClientTypes());
 
-        Drawer::fill($tpl->draw('_contactactions_drawer', true));
+        Drawer::fill($tpl->draw('_contactactions_drawer'));
     }
 
     function ajaxAdd($form)

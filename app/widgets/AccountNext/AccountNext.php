@@ -44,7 +44,7 @@ class AccountNext extends \Movim\Widget\Base
                     $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
 
                     $formview->assign('formh', $formh);
-                    $html = $formview->draw('_accountnext_form', true);
+                    $html = $formview->draw('_accountnext_form');
                     break;
                 case 'jabber:x:oob' :
                     $this->rpc('MovimUtils.redirect', (string)$form->x->url);
@@ -57,7 +57,7 @@ class AccountNext extends \Movim\Widget\Base
             $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
 
             $formview->assign('formh', $formh);
-            $html = $formview->draw('_accountnext_form', true);
+            $html = $formview->draw('_accountnext_form');
         }
 
         $this->rpc('MovimTpl.fill', '#subscription_form', $html);
@@ -68,7 +68,7 @@ class AccountNext extends \Movim\Widget\Base
         $data = $packet->content;
 
         $view = $this->tpl();
-        $html = $view->draw('_accountnext_registered', true);
+        $html = $view->draw('_accountnext_registered');
 
         $this->rpc('MovimTpl.fill', '#subscribe', $html);
         $this->rpc('setUsername', $data->username->value);

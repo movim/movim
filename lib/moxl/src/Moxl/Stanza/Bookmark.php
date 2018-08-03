@@ -42,7 +42,9 @@ class Bookmark
                     $nick = $dom->createElement('nick', $elt['nick']);
                     $conference->appendChild($nick);
                     $conference->setAttribute('name', $elt['name']);
-                    $conference->setAttribute('autojoin', $elt['autojoin']);
+                    if ($elt['autojoin']) {
+                        $conference->setAttribute('autojoin', $elt['autojoin']);
+                    }
                     $conference->setAttribute('jid', $elt['jid']);
 
                     $storage->appendChild($conference);

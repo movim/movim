@@ -17,7 +17,7 @@ class Preview extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('url', $url);
 
-        $this->rpc('MovimTpl.fill', '#preview', $view->draw('_preview', true));
+        $this->rpc('MovimTpl.fill', '#preview', $view->draw('_preview'));
     }
 
     public function ajaxHide()

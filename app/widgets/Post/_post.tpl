@@ -24,7 +24,9 @@
 
                 <p class="line">
                     {if="$post->title != null && !$post->isBrief()"}
-                        {$post->getTitle()}
+                        {autoescape="off"}
+                            {$post->getTitle()}
+                        {/autoescape}
                     {else}
                         {$c->__('post.default_title')}
                     {/if}
@@ -109,7 +111,9 @@
             {/if}
             {if="!$post->isBrief()"}
                 <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
-                    {$post->getTitle()|addHashtagsLinks}
+                    {autoescape="off"}
+                        {$post->getTitle()|addHashtagsLinks}
+                    {/autoescape}
                 </p>
             {else}
                 <p></p>
@@ -143,7 +147,9 @@
             </p>
             {if="$post->isBrief()"}
                 <p class="normal">
-                    {$post->getTitle()|addUrls|addHashtagsLinks|nl2br|prepareString}
+                    {autoescape="off"}
+                        {$post->getTitle()|addUrls|addHashtagsLinks|nl2br|prepareString}
+                    {/autoescape}
                 </p>
             {/if}
         </li>
@@ -189,14 +195,20 @@
                      src="{$value->href}"/>
             {/loop}
         {/if}
-        {$post->getContent()|addHashtagsLinks}
+        {autoescape="off"}
+            {$post->getContent()|addHashtagsLinks}
+        {/autoescape}
     </content>
 </section>
 
-{$c->preparePostReply($post)}
+{autoescape="off"}
+    {$c->preparePostReply($post)}
+{/autoescape}
 
 <footer>
-    {$c->preparePostLinks($post)}
+    {autoescape="off"}
+        {$c->preparePostLinks($post)}
+    {/autoescape}
 
     {if="$post->pictures && !$post->isBrief() && !$post->isShort()"}
         <ul class="list flex middle">
@@ -232,16 +244,22 @@
 
     {if="$public"}
         <div id="comments">
-            {$c->prepareComments($post, true)}
+            {autoescape="off"}
+                {$c->prepareComments($post, true)}
+            {/autoescape}
         </div>
     {else}
         {if="$commentsdisabled"}
-            {$commentsdisabled}
+            {autoescape="off"}
+                {$commentsdisabled}
+            {/autoescape}
         {else}
             <div id="comments" class="spin"></div>
         {/if}
 
-        {$c->preparePreviousNext($post)}
+        {autoescape="off"}
+            {$c->preparePreviousNext($post)}
+        {/autoescape}
     {/if}
 
 </footer>

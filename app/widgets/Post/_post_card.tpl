@@ -30,7 +30,9 @@
 
             {if="!$post->isBrief()"}
                 <p class="normal">
-                    {$post->getTitle()|addHashtagsLinks}
+                    {autoescape="off"}
+                        {$post->getTitle()|addHashtagsLinks}
+                    {/autoescape}
                 </p>
             {else}
                 <p></p>
@@ -67,7 +69,9 @@
             </p>
             {if="$post->isBrief()"}
                 <p class="normal">
-                    {$post->getTitle()|addHashtagsLinks|addUrls|nl2br|prepareString}
+                    {autoescape="off"}
+                        {$post->getTitle()|addHashtagsLinks|addUrls|nl2br|prepareString}
+                    {/autoescape}
                 </p>
             {/if}
         </li>
@@ -118,14 +122,18 @@
                                      src="{$value->href|protectPicture}" alt="{$value->title}">
                             {/loop}
                         {/if}
-                        {$post->getContent()|addHashtagsLinks}
+                        {autoescape="off"}
+                            {$post->getContent()|addHashtagsLinks}
+                        {/autoescape}
                     </content>
                 </section>
             </li>
         {/if}
 
-        {$c->preparePostReply($post)}
-        {$c->preparePostLinks($post)}
+        {autoescape="off"}
+            {$c->preparePostReply($post)}
+            {$c->preparePostLinks($post)}
+        {/autoescape}
 
         <li>
             <p class="normal">

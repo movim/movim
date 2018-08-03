@@ -20,7 +20,7 @@ class Confirm extends \Movim\Widget\Base
         $view->assign('url', $package->content['url']);
         $view->assign('method', $package->content['method']);
 
-        Dialog::fill($view->draw('_confirm', true));
+        Dialog::fill($view->draw('_confirm'));
     }
 
     function ajaxAccept($to, $id, $url, $method)
@@ -43,4 +43,3 @@ class Confirm extends \Movim\Widget\Base
                ->request();
     }
 }
-

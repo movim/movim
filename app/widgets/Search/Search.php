@@ -21,7 +21,7 @@ class Search extends \Movim\Widget\Base
                                              ->orderBy('jid')
                                              ->get());
 
-        Drawer::fill($view->draw('_search', true), true);
+        Drawer::fill($view->draw('_search'), true);
 
         $this->rpc('Search.init');
     }
@@ -72,7 +72,7 @@ class Search extends \Movim\Widget\Base
 
             $view->assign('contacts', $contacts);
 
-            return $view->draw('_search_results', true);
+            return $view->draw('_search_results');
         }
 
         return $this->prepareEmpty();
@@ -104,7 +104,7 @@ class Search extends \Movim\Widget\Base
         $view->assign('presencestxt', getPresencesTxt());
         $view->assign('users', $users);
 
-        return $view->draw('_search_results_empty', true);
+        return $view->draw('_search_results_empty');
     }
 
     function ajaxSearch($key)

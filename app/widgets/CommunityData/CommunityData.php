@@ -29,7 +29,7 @@ class CommunityData extends \Movim\Widget\Base
                                       ->where('node', $node)
                                       ->count());
 
-        return $view->draw('_communitydata', true);
+        return $view->draw('_communitydata');
     }
 
     public function display()

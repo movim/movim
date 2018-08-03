@@ -1,6 +1,8 @@
 <section class="scroll">
     <form name="config">
-        {$form}
+        {autoescape="off"}
+            {$form}
+        {/autoescape}
     </form>
 </section>
 <div>

@@ -20,8 +20,7 @@ class CommunitySubscriptions extends \Movim\Widget\Base
             ->where('node', 'not like', 'urn:xmpp:microblog:0:comments/%')
             ->orderBy('server')->orderBy('node')
             ->get());
-        $html = $view->draw('_communitysubscriptions', true);
 
-        return $html;
+        return $view->draw('_communitysubscriptions');
     }
 }

@@ -35,7 +35,7 @@ class ContactData extends \Movim\Widget\Base
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
         $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)->first());
 
-        return $view->draw('_contactdata', true);
+        return $view->draw('_contactdata');
     }
 
     public function ajaxRefresh($jid)

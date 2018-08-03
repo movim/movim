@@ -59,7 +59,7 @@
 
     {loop="$items"}
         <div id="{$value->nodeid|cleanupId}" class="block large">
-            {$c->preparePost($value)}
+            {autoescape="off"}{$c->preparePost($value)}{/autoescape}
         </div>
     {/loop}
     {if="count($items) == $paging"}

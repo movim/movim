@@ -91,9 +91,13 @@
             </p>
             <p class="all">
                 {if="$value->contentraw"}
-                    {$value->contentraw|addHashtagsLinks|addHFR|prepareString}
+                    {autoescape="off"}
+                        {$value->contentraw|addHashtagsLinks|addHFR|prepareString}
+                    {autoescape/}
                 {else}
-                    {$value->title|addUrls|addHashtagsLinks|nl2br|prepareString}
+                    {autoescape="off"}
+                        {$value->title|addUrls|addHashtagsLinks|nl2br|prepareString}
+                    {/autoescape}
                 {/if}
             </p>
         </li>

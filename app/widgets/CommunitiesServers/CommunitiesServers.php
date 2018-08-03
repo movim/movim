@@ -53,6 +53,6 @@ class CommunitiesServers extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('servers', $servers);
 
-        return $view->draw('_communitiesservers', true);
+        return $view->draw('_communitiesservers');
     }
 }

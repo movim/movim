@@ -99,7 +99,9 @@
         </article>
     {else}
         {loop="$posts"}
-            {$c->preparePost($value)}
+            {autoescape="off"}
+                {$c->preparePost($value)}
+            {/autoescape}
         {/loop}
     {/if}
     {if="isset($next)"}

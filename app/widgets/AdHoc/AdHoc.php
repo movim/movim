@@ -36,7 +36,7 @@ class AdHoc extends \Movim\Widget\Base
         if (isset($command->note)) {
             $view->assign('note', $command->note);
 
-            Dialog::fill($view->draw('_adhoc_note', true));
+            Dialog::fill($view->draw('_adhoc_note'));
         }
 
         if (isset($command->x)) {
@@ -50,7 +50,7 @@ class AdHoc extends \Movim\Widget\Base
                 $view->assign('actions', $command->actions);
             }
 
-            Dialog::fill($view->draw('_adhoc_form', true), true);
+            Dialog::fill($view->draw('_adhoc_form'), true);
         }
 
         $this->rpc('AdHoc.initForm');
@@ -60,7 +60,7 @@ class AdHoc extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('list', $list);
-        return $view->draw('_adhoc_list', true);
+        return $view->draw('_adhoc_list');
     }
 
     function onCommandError($package)
@@ -73,7 +73,7 @@ class AdHoc extends \Movim\Widget\Base
         }
 
         $view->assign('note', $note);
-        Dialog::fill($view->draw('_adhoc_note', true), true);
+        Dialog::fill($view->draw('_adhoc_note'), true);
     }
 
     function ajaxGet($jid)

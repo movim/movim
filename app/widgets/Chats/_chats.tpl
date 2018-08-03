@@ -1,7 +1,11 @@
 {loop="$chats"}
     {if="$emptyItems"}
-        {$c->prepareEmptyChat($key)}
+        {autoescape="off"}
+            {$c->prepareEmptyChat($key)}
+        {/autoescape}
     {else}
-        {$c->prepareChat($key)}
+        {autoescape="off"}
+            {$c->prepareChat($key)}
+        {/autoescape}
     {/if}
 {/loop}

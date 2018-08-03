@@ -50,7 +50,7 @@ class Avatar extends \Movim\Widget\Base
             $this->call('ajaxSubmit', "MovimUtils.formToJson('avatarform')")
             );
 
-        return $avatarform->draw('_avatar_form', true);
+        return $avatarform->draw('_avatar_form');
     }
 
     function ajaxGetAvatar()

@@ -33,7 +33,7 @@ class Communities extends \Movim\Widget\Base
 
         $view->assign('posts', $posts);
 
-        return $view->draw('_communities', true);
+        return $view->draw('_communities');
     }
 
     public function prepareTicket(\App\Post $post)

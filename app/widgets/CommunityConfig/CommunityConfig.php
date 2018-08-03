@@ -28,7 +28,7 @@ class CommunityConfig extends \Movim\Widget\Base
         $view->assign('config', ($advanced) ? false : $xml->getArray($config->x));
         $view->assign('attributes', $config->attributes());
 
-        Dialog::fill($view->draw('_communityconfig', true), true);
+        Dialog::fill($view->draw('_communityconfig'), true);
     }
 
     function onConfigSaved()

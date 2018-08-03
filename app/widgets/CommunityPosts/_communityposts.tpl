@@ -3,7 +3,9 @@
     {loop="$ids"}
         {if="isset($posts[$value])"}
             <div id="{$value|cleanupId}" class="block large">
-                {$c->preparePost($posts[$value])}
+                {autoescape="off"}
+                    {$c->preparePost($posts[$value])}
+                {/autoescape}
             </div>
         {/if}
     {/loop}
@@ -12,7 +14,9 @@
     <ul class="list card shadow">
     {loop="$publicposts"}
         <div id="{$value->nodeid|cleanupId}" class="block large">
-            {$c->preparePost($value)}
+            {autoescape="off"}
+                {$c->preparePost($value)}
+            {/autoescape}
         </div>
     {/loop}
     </ul>

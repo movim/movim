@@ -5,6 +5,7 @@ namespace Movim\Widget;
 use Rain\Tpl;
 use Movim\Controller\Ajax;
 use Movim\User;
+use Movim\Template\Partial;
 
 class Base
 {
@@ -74,7 +75,7 @@ class Base
                 'tpl_dir'       => $this->respath('', true),
                 'cache_dir'     => CACHE_PATH,
                 'tpl_ext'       => 'tpl',
-                'auto_escape'   => false
+                'auto_escape'   => true
             ];
 
             // We load the template engine
@@ -166,18 +167,7 @@ class Base
 
     protected function tpl(): Tpl
     {
-        $config = [
-            'tpl_dir'       => APP_PATH.'widgets/'.$this->name.'/',
-            'cache_dir'     => CACHE_PATH,
-            'tpl_ext'       => 'tpl',
-            'auto_escape'   => false
-        ];
-
-        $view = new Tpl;
-        $view->objectConfigure($config);
-        $view->assign('c', $this);
-
-        return $view;
+        return new Partial($this);
     }
 
     /**

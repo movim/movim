@@ -35,7 +35,7 @@ class Config extends \Movim\Widget\Base
                 this.onclick=null;"
         );
 
-        return $view->draw('_config_form', true);
+        return $view->draw('_config_form');
     }
 
     function onConfig($package)
@@ -52,7 +52,7 @@ class Config extends \Movim\Widget\Base
     {
         $view = $this->tpl();
         $view->assign('default', $package->content);
-        $this->rpc('MovimTpl.fill', '#config_widget_mam', $view->draw('_config_mam', true));
+        $this->rpc('MovimTpl.fill', '#config_widget_mam', $view->draw('_config_mam'));
     }
 
     function onMAMConfigSaved()

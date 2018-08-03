@@ -49,7 +49,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $this->rpc(
             'MovimTpl.fill',
             '#community_affiliation',
-            $view->draw('_communityaffiliations', true)
+            $view->draw('_communityaffiliations')
         );
 
         // If the configuration is open, we fill it
@@ -69,7 +69,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $this->rpc(
             'MovimTpl.fill',
             '#community_affiliations_config',
-            $view->draw('_communityaffiliations_config_content', true)
+            $view->draw('_communityaffiliations_config_content')
         );
     }
 
@@ -90,7 +90,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $view->assign('server', $origin);
         $view->assign('node', $node);
 
-        Dialog::fill($view->draw('_communityaffiliations_subscriptions', true), true);
+        Dialog::fill($view->draw('_communityaffiliations_subscriptions'), true);
     }
 
     private function deleted($packet)
@@ -156,7 +156,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $view->assign('node', $node);
         $view->assign('clean', $clean);
 
-        Dialog::fill($view->draw('_communityaffiliations_delete', true));
+        Dialog::fill($view->draw('_communityaffiliations_delete'));
     }
 
     function ajaxDeleteConfirm($origin, $node)
@@ -176,7 +176,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $view->assign('server', $origin);
         $view->assign('node', $node);
 
-        Dialog::fill($view->draw('_communityaffiliations_config', true));
+        Dialog::fill($view->draw('_communityaffiliations_config'));
 
         $this->ajaxGetAffiliations($origin, $node);
     }

@@ -166,14 +166,14 @@ class Chats extends \Movim\Widget\Base
         $view->assign('chats', array_reverse($chats));
         $view->assign('emptyItems', $emptyItems);
 
-        return $view->draw('_chats', true);
+        return $view->draw('_chats');
     }
 
     function prepareEmptyChat($jid)
     {
         $view = $this->tpl();
         $view->assign('jid', $jid);
-        return $view->draw('_chats_empty_item', true);
+        return $view->draw('_chats_empty_item');
     }
 
     function prepareChat($jid, $status = null)
@@ -198,7 +198,7 @@ class Chats extends \Movim\Widget\Base
                 ->first());
         }
 
-        return $view->draw('_chats_item', true);
+        return $view->draw('_chats_item');
     }
 
     private function validateJid($jid)

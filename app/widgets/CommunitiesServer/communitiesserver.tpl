@@ -1,3 +1,5 @@
 <div id="communities_server" class="spin">
-    {$c->prepareCommunitiesServer($server)}
+    {autoescape="off"}
+        {$c->prepareCommunitiesServer($server)}
+    {/autoescape}
 </div>

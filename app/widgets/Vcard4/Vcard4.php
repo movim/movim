@@ -30,7 +30,7 @@ class Vcard4 extends \Movim\Widget\Base
             $this->call('ajaxVcardSubmit', "MovimUtils.formToJson('vcard4')")
             );
 
-        return $vcardform->draw('_vcard4_form', true);
+        return $vcardform->draw('_vcard4_form');
     }
 
     function onMyVcard4($packet)

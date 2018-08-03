@@ -6,7 +6,9 @@
     </li>
 </ul>
 <ul id="chats_widget_list" class="list middle active divided spaced">
-    {$c->prepareChats(true)}
+    {autoescape="off"}
+        {$c->prepareChats(true)}
+    {/autoescape}
 </ul>
 
 <div class="placeholder">

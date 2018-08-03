@@ -30,7 +30,7 @@ class ContactHeader extends \Movim\Widget\Base
         $view->assign('contact', $this->user->session->contacts()->where('jid', $jid)->first());
         $view->assign('groups', $this->user->session->contacts()->select('group')->groupBy('group')->pluck('group')->toArray());
 
-        Dialog::fill($view->draw('_contactheader_edit', true));
+        Dialog::fill($view->draw('_contactheader_edit'));
     }
 
     function ajaxEditSubmit($form)
@@ -49,7 +49,7 @@ class ContactHeader extends \Movim\Widget\Base
         $view = $this->tpl();
         $view->assign('jid', $jid);
 
-        Dialog::fill($view->draw('_contactheader_delete', true));
+        Dialog::fill($view->draw('_contactheader_delete'));
     }
 
     /**
@@ -82,7 +82,7 @@ class ContactHeader extends \Movim\Widget\Base
         $view->assign('in_roster', ($this->user->session->contacts()->where('jid', $jid)->count() > 0));
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
 
-        return $view->draw('_contactheader', true);
+        return $view->draw('_contactheader');
     }
 
     /**

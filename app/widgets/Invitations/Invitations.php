@@ -67,7 +67,7 @@ class Invitations extends \Movim\Widget\Base
 
         $nft = $this->tpl();
         $nft->assign('invitations', $invitations);
-        return $nft->draw('_invitations_from', true);
+        return $nft->draw('_invitations_from');
     }
 
     function ajaxAccept($jid)

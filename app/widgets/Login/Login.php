@@ -108,7 +108,7 @@ class Login extends Base
             $view->assign('error', $error_text);
         }
 
-        return $view->draw('_login_error', true);
+        return $view->draw('_login_error');
     }
 
     function onSSLError()
