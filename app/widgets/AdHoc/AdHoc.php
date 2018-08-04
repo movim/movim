@@ -31,21 +31,14 @@ class AdHoc extends \Movim\Widget\Base
         $command = $package->content;
         $attributes = (array)$command->attributes();
 
-        if ((string)$command->attributes()->status === 'completed') {
-            $this->rpc('Dialog.clear');
-            Notification::append(false, $this->__('adhoc.completed'));
-            return;
-        }
-
         $view = $this->tpl();
         $view->assign('jid', $package->from);
 
         if (isset($command->note)) {
             $view->assign('note', $command->note);
             Dialog::fill($view->draw('_adhoc_note'));
-        }
-
-        if (isset($command->x)) {
+            $this->rpc('AdHoc.initForm');
+        } elseif (isset($command->x)) {
             $xml = new \XMPPtoForm();
             $form = $xml->getHTML($command->x->asXML());
 
@@ -57,9 +50,12 @@ class AdHoc extends \Movim\Widget\Base
             }
 
             Dialog::fill($view->draw('_adhoc_form'), true);
+            $this->rpc('AdHoc.initForm');
+        } elseif ((string)$command->attributes()->status === 'completed') {
+            $this->rpc('Dialog.clear');
+            Notification::append(false, $this->__('adhoc.completed'));
+            return;
         }
-
-        $this->rpc('AdHoc.initForm');
     }
 
     function prepareList($list)
