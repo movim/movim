@@ -56,7 +56,9 @@
             <label>{$c->__('communityconfig.publication')}</label>
         </div>
         {else}
-            {$form}
+            {autoescape="off"}
+                {$form}
+            {/autoescape}
         {/if}
     </form>
 </section>

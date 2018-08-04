@@ -3,7 +3,7 @@
         <h3>{$c->__('communitiesserver.add', $server)}</h3>
 
         <div>
-            <input name="name" placeholder="{$c->__('communitiesserver.name_example')}" type="text" required />
+            <input name="name" minlength="4" maxlength="80" placeholder="{$c->__('communitiesserver.name_example')}" type="text" required />
             <label for="name">{$c->__('communitiesserver.name')}</label>
         </div>
     </section>
