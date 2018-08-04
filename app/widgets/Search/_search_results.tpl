@@ -1,12 +1,16 @@
 {if="$posts->isEmpty() && $contacts->isEmpty()"}
-    {$c->prepareEmpty()}
+    {autoescape="off"}
+        {$c->prepareEmpty()}
+    {/autoescape}
 {/if}
 
 {if="$posts->isNotEmpty()"}
 <ul class="list active divided middle">
     <li class="subheader"><p>{$c->__('page.news')}</p></li>
     {loop="$posts"}
-        {$c->prepareTicket($value)}
+        {autoescape="off"}
+            {$c->prepareTicket($value)}
+        {/autoescape}
     {/loop}
 </ul>
 {/if}

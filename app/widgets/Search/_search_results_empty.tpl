@@ -1,5 +1,3 @@
-<!---->
-
 {if="$users->isNotEmpty()"}
 <ul class="list flex active">
     <li class="subheader block large">

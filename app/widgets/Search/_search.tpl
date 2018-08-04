@@ -74,7 +74,9 @@
         {/loop}
     </ul>
 
-    <div id="results">{$empty}</div>
+    <div id="results">
+        {autoescape="off"}{$empty}{/autoescape}
+    </div>
 
     <br />
 </section>
