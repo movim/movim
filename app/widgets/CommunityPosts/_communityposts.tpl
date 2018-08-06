@@ -30,7 +30,7 @@
 <ul class="list thick" id="goback">
     <li class="block">
         <p class="center">
-            <a class="button flat" href="javascript:history.back()">
+            <a class="button flat" href="#" onclick="history.back()">
                 <i class="material-icons">keyboard_arrow_left</i>
                 {$c->__('button.previous')}
             </a>
