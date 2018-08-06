@@ -133,12 +133,7 @@ class Menu extends \Movim\Widget\Base
     {
         $html = $this->prepareList($type, $server, $node, $page);
 
-        if ($page > 0) {
-            $this->rpc('MovimTpl.append', '#menu_wrapper', $html);
-        } else {
-            $this->rpc('MovimTpl.fill', '#menu_widget', $html);
-        }
-
+        $this->rpc('MovimTpl.fill', '#menu_widget', $html);
         $this->rpc('MovimUtils.enhanceArticlesContent');
         $this->rpc('Menu.refresh');
     }
@@ -184,12 +179,12 @@ class Menu extends \Movim\Widget\Base
 
         $next = $page + 1;
 
-        $view->assign('history', $this->call('ajaxGetAll', $next));
+        $view->assign('goback', $this->route('news', $next));
 
         if ($type == 'news') {
-            $view->assign('history', $this->call('ajaxGetNews', $next));
+            $view->assign('goback', $this->route('news', $next, [], 'communities'));
         } elseif ($type == 'feed') {
-            $view->assign('history', $this->call('ajaxGetFeed', $next));
+            $view->assign('goback', $this->route('news', $next, [], 'contacts'));
         }
 
         $view->assign('items', $items

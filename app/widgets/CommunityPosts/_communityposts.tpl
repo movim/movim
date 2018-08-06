@@ -28,12 +28,14 @@
 {/if}
 
 {if="$last"}
-<ul class="list active thick">
-    <li onclick="CommunityPosts_ajaxGetItems('{$server}', '{$node}', '{$last}'); this.parentNode.parentNode.removeChild(this.parentNode);">
-        <span class="icon primary gray">
-            <i class="material-icons">restore</i>
-        </span>
-        <p class="normal center">{$c->__('post.older')}</p>
-    </li>
+<ul class="list active thick" id="goback">
+    <a href="{$goback}">
+        <li>
+            <span class="icon primary gray">
+                <i class="material-icons">restore</i>
+            </span>
+            <p class="normal center">{$c->__('post.older')}</p>
+        </li>
+    </a>
 </ul>
 {/if}

@@ -68,7 +68,7 @@ class CommunityPosts extends \Movim\Widget\Base
 
         $slugify = new Slugify;
         $this->rpc(
-            ($paginated) ? 'MovimTpl.append' : 'MovimTpl.fill',
+            'MovimTpl.fill',
             '#communityposts.'.$slugify->slugify('c'.$origin.'_'.$node), $html);
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
@@ -83,15 +83,7 @@ class CommunityPosts extends \Movim\Widget\Base
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
-        // https://github.com/maranda/metronome/issues/236
-        /*if ($node == 'urn:xmpp:microblog:0') {
-            $r = new GetItems;
-        } else {*/
-            $r = new GetItems;
-        //}
-
-        if (!isset($before)) $before = 'empty';
-
+        $r = new GetItems;
         $r->setTo($origin)
           ->setNode($node)
           ->setPaging($this->_paging)
@@ -193,6 +185,11 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('first', $first);
         $view->assign('last', $last);
         $view->assign('count', $count);
+
+        $view->assign('goback', $this->route(
+            $node == 'urn:xmpp:microblog:0' ? 'contact' : 'community',
+            [$origin, $node, $last]
+        ));
 
         $html = $view->draw('_communityposts');
 
