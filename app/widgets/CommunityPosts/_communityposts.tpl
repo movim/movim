@@ -27,15 +27,19 @@
     </div>
 {/if}
 
-{if="$last"}
-<ul class="list active thick" id="goback">
-    <a href="{$goback}">
-        <li>
-            <span class="icon primary gray">
-                <i class="material-icons">restore</i>
-            </span>
-            <p class="normal center">{$c->__('post.older')}</p>
-        </li>
-    </a>
+<ul class="list thick" id="goback">
+    <li class="block">
+        <p class="center">
+            <a class="button flat" href="javascript:history.back()">
+                <i class="material-icons">keyboard_arrow_left</i>
+                {$c->__('button.previous')}
+            </a>
+            {if="$last"}
+            <a class="button flat" href="{$goback}" title="{$c->__('post.older')}">
+                {$c->__('button.next')}
+                <i class="material-icons">keyboard_arrow_right</i>
+            </a>
+            {/if}
+        </p>
+    </li>
 </ul>
-{/if}
