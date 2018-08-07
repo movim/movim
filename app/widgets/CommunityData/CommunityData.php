@@ -21,13 +21,16 @@ class CommunityData extends \Movim\Widget\Base
     public function prepareData($origin, $node)
     {
         $view = $this->tpl();
-        $view->assign('info', \App\Info::where('server', $origin)
-                                       ->where('node', $node)
-                                       ->first());
+        $info = \App\Info::where('server', $origin)
+                         ->where('node', $node)
+                         ->first();
 
-        $view->assign('num', \App\Post::where('server', $origin)
-                                      ->where('node', $node)
-                                      ->count());
+        $view->assign('info', $info);
+        $view->assign('num', ($info->items > 0)
+            ? $info->items
+            : \App\Post::where('server', $origin)
+                       ->where('node', $node)
+                       ->count());
 
         return $view->draw('_communitydata');
     }

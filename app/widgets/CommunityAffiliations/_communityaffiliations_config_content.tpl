@@ -51,9 +51,6 @@
         <p>{$c->__('button.add')}</p>
     </li>
     <li>
-        <span class="primary icon gray">
-            <i class="material-icons">add</i>
-        </span>
         <form name="addaffiliation">
             <div>
                 <datalist id="jid_list" style="display: none;">
@@ -68,7 +65,7 @@
             </div>
             <div>
                 <div class="select">
-                    <select name="role" id="role" onchange="CommunityAffiliations.update('addaffiliation')">
+                    <select name="role" id="role" onchange="">
                         {loop="$roles"}
                             {if="$value == 'none'"}
                                 <option
@@ -86,6 +83,12 @@
                 </div>
                 <label for="role">Role</label>
             </div>
+            <p>
+                <a href="#" onclick="CommunityAffiliations.update('addaffiliation')"
+                   class="button green color">
+                    {$c->__('button.add')}
+                </a>
+            </p>
         </form>
     </li>
 </ul>

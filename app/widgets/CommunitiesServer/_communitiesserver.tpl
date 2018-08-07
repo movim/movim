@@ -67,10 +67,10 @@
                 </span>
             </p>
             <p>
-                {if="$value->num > 0"}
-                     {$c->__('communitydata.num', $value->num)}
+                {if="$value->items > 0"}
+                     {$value->items} <i class="material-icons">receipt</i>
                 {/if}
-                {if="$value->occupants > 0 && $value->num > 0"}
+                {if="$value->occupants > 0 && $value->items > 0"}
                   -
                 {/if}
                 {if="$value->occupants > 0"}

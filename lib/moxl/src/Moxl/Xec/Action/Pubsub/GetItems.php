@@ -14,13 +14,14 @@ class GetItems extends Errors
     protected $_paging;
     protected $_after;
     protected $_before;
+    protected $_skip;
 
     protected $_paginated = false;
 
     public function request()
     {
         $this->store();
-        Pubsub::getItems($this->_to, $this->_node, $this->_paging, $this->_after, $this->_before);
+        Pubsub::getItems($this->_to, $this->_node, $this->_paging, $this->_after, $this->_before, $this->_skip);
     }
 
     public function setAfter($after)
@@ -33,6 +34,13 @@ class GetItems extends Errors
     public function setBefore($before = 'empty')
     {
         $this->_before = $before;
+        $this->_paginated = true;
+        return $this;
+    }
+
+    public function setSkip($skip = 0)
+    {
+        $this->_skip = $skip;
         $this->_paginated = true;
         return $this;
     }
@@ -66,6 +74,15 @@ class GetItems extends Errors
             $first = (string)$stanza->pubsub->set->first;
             $last = (string)$stanza->pubsub->set->last;
             $count = (string)$stanza->pubsub->set->count;
+
+            $info = \App\Info::where('server', $this->_to)
+                             ->where('node', $this->_node)
+                             ->first();
+
+            if ($info) {
+                $info->items = $count;
+                $info->save();
+            }
         }
 
         $this->pack([

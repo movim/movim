@@ -1,14 +1,14 @@
 <br />
 {if="$info"}
-    <ul class="list block middle">
+    <ul class="list block middle flex">
         {if="$info->logo"}
-            <li class="large">
+            <li class="block large">
                 <p class="center">
                     <img src="{$info->getLogo()}" style="max-width: 100%"/>
                 </p>
             </li>
         {/if}
-        <li class="large">
+        <li class="block large">
             <p class="normal center line" title="{$info->name}">{$info->name}</p>
             {if="$info->description != null && trim($info->description) != ''"}
                 <p class="center" title="{$info->description}">{$info->description}</p>
@@ -33,15 +33,13 @@
             </span>
             <p class="normal">{$c->__('communitydata.num', $num)}</p>
         </li>
-    </ul>
 
-    <ul class="list middle active">
         {if="$info->related"}
             {$related = $info->related}
-            <li onclick="MovimUtils.redirect('{$c->route('chat', [$related->server,'room'])}')">
-                <span class="primary icon bubble color
-                    {$related->name|stringToColor}">
-                    {$related->name|firstLetterCapitalize}
+            <li onclick="MovimUtils.redirect('{$c->route('chat', [$related->server,'room'])}')"
+                class="block large active">
+                <span class="primary icon bubble">
+                    <i class="material-icons">forum</i>
                 </span>
 
                 <span class="control icon">
@@ -66,8 +64,8 @@
             </li>
         {/if}
 
-        <a href="{$c->route('node', [$info->server, $info->node])}" target="_blank" class="block">
-            <li>
+        <a href="{$c->route('node', [$info->server, $info->node])}" target="_blank" class="block large">
+            <li class="active">
                 <span class="primary icon">
                     <i class="material-icons">wifi_tethering</i>
                 </span>
