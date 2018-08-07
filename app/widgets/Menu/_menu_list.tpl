@@ -58,18 +58,23 @@
             {autoescape="off"}{$c->preparePost($value)}{/autoescape}
         </div>
     {/loop}
-    {if="count($items) == $paging"}
-        <ul class="list active thick">
-            <a href="{$goback}">
-                <li id="history" class="large">
-                        <span class="icon primary gray">
-                            <i class="material-icons">history</i>
-                        </span>
-                    <p class="normal center line">{$c->__('post.older')}</p>
-                </li>
-            </a>
-        </ul>
-    {/if}
+
+    <ul class="list thick">
+        <li class="block">
+            <p class="center">
+                <a class="button flat {if="$page == 0"}disabled{/if}" href="{$previous}">
+                    <i class="material-icons">keyboard_arrow_left</i>
+                    {$c->__('button.previous')}
+                </a>
+                {if="count($items) == $paging"}
+                    <a class="button flat" href="{$next}" title="{$c->__('post.older')}">
+                        {$c->__('button.next')}
+                        <i class="material-icons">keyboard_arrow_right</i>
+                    </a>
+                {/if}
+            </p>
+        </li>
+    </ul>
 
     </div>
 {elseif="$page == 0"}

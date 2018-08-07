@@ -4,7 +4,7 @@ include_once WIDGETS_PATH.'Post/Post.php';
 
 class Menu extends \Movim\Widget\Base
 {
-    private $_paging = 15;
+    private $_paging = 10;
 
     function load()
     {
@@ -177,14 +177,15 @@ class Menu extends \Movim\Widget\Base
             }
         });
 
-        $next = $page + 1;
-
-        $view->assign('goback', $this->route('news', $next));
+        $view->assign('previous', $this->route('news', $page-1));
+        $view->assign('next', $this->route('news', $page+1));
 
         if ($type == 'news') {
-            $view->assign('goback', $this->route('news', $next, [], 'communities'));
+            $view->assign('previous', $this->route('news', $page-1, [], 'communities'));
+            $view->assign('next', $this->route('news', $page+1, [], 'communities'));
         } elseif ($type == 'feed') {
-            $view->assign('goback', $this->route('news', $next, [], 'contacts'));
+            $view->assign('previous', $this->route('news', $page-1, [], 'contacts'));
+            $view->assign('next', $this->route('news', $page+1, [], 'contacts'));
         }
 
         $view->assign('items', $items
