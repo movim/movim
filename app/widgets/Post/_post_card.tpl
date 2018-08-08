@@ -101,7 +101,7 @@
                 </content>
             </section>
         {else}
-            <li class="active">
+            <li>
                 {if="$nsfw == false && $post->nsfw"}
                     <input type="checkbox" class="spoiler" id="spoiler_{$post->nodeid|cleanupId}">
                 {/if}
