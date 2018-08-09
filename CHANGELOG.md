@@ -47,6 +47,9 @@ v0.14 (trunk)
  * Use higher resolution images to have proper avatars in hi-def screens
  * Handle the MUC self-presences using a session state during the join
  * Display the moderator messages differently in MUCs
+ * Move the Communities, Blogs and News articles feeds to paginated ones
+ * Autoescape templates by default in RainTPL
+ * Remove the action buttons in Chat
 
 v0.13
 ---------------------------
