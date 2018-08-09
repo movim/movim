@@ -69,7 +69,9 @@
                 <td>{$value|count}</td>
                 {$client = $value}
                 {loop="$nslist"}
-                    {$c->isImplemented($client, $key)}
+                    {autoescape="off"}
+                        {$c->isImplemented($client, $key)}
+                    {/autoescape}
                 {/loop}
             </tr>
             {/loop}
