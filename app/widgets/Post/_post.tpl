@@ -112,7 +112,7 @@
             {if="!$post->isBrief()"}
                 <p {if="$post->title != null"}title="{$post->title|strip_tags}"{/if}>
                     {autoescape="off"}
-                        {$post->getTitle()|addHashtagsLinks}
+                        {$post->getTitle()|addHashtagsLinks|addEmojis}
                     {/autoescape}
                 </p>
             {else}
@@ -148,7 +148,7 @@
             {if="$post->isBrief()"}
                 <p class="normal">
                     {autoescape="off"}
-                        {$post->getTitle()|addUrls|addHashtagsLinks|nl2br|prepareString}
+                        {$post->getTitle()|addUrls|addHashtagsLinks|nl2br|prepareString|addEmojis}
                     {/autoescape}
                 </p>
             {/if}

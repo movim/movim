@@ -31,7 +31,7 @@
             {if="!$post->isBrief()"}
                 <p class="normal">
                     {autoescape="off"}
-                        {$post->getTitle()|addHashtagsLinks}
+                        {$post->getTitle()|addHashtagsLinks|addEmojis}
                     {/autoescape}
                 </p>
             {else}
