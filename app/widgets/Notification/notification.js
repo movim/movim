@@ -11,7 +11,6 @@ var Notification = {
     document_title : document.title,
     notifs_key : '',
     favicon : null,
-    electron : null,
 
     inhibit : function(sec) {
         Notification.inhibed = true;
@@ -72,8 +71,8 @@ var Notification = {
             if (Notification.favicon != null)
                 Notification.favicon.badge(0);
 
-            if (Notification.electron != null)
-                Notification.electron.notification(false);
+            if (typeof window.electron !== 'undefined')
+                window.electron.notification(false);
         } else {
             document.title =
                 '('
@@ -86,8 +85,8 @@ var Notification = {
             if (Notification.favicon != null)
                 Notification.favicon.badge(Notification.tab_counter1 + Notification.tab_counter2);
 
-            if (Notification.electron != null)
-                Notification.electron.notification(Notification.tab_counter1 + Notification.tab_counter2);
+            if (typeof window.electron !== 'undefined')
+                window.electron.notification(Notification.tab_counter1 + Notification.tab_counter2);
         }
     },
     current : function(key) {
@@ -171,11 +170,6 @@ if (typeof MovimWebsocket != 'undefined') {
                 fontStyle: 'normal',
                 bgColor: '#FF5722'
             });
-        }
-
-        if (typeof require !== 'undefined') {
-            var remote = require('electron').remote;
-            Notification.electron = remote.getCurrentWindow();
         }
 
         Notification.document_title = Notification.document_title_init;
