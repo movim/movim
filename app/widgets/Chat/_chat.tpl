@@ -66,9 +66,7 @@
                 <p>{$c->__('button.connecting')}…</p>
             {elseif="$conference && $conference->subject"}
                 <p class="line" title="{$conference->subject}">
-                    {autoescape="off"}
-                        {$conference->subject|addUrls}
-                    {/autoescape}
+                    {$conference->subject}
                 </p>
             {else}
                 <p class="line">{$room}</p>
