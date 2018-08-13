@@ -50,7 +50,11 @@
         {if="$message->isOTR()"}
             <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
         {elseif="stripTags($message->body) != ''"}
-            <p class="line">{$message->body|stripTags|addEmojis}</p>
+            <p class="line">
+                {autoescape="off"}
+                    {$message->body|stripTags|addEmojis}
+                {/autoescape}
+            </p>
         {/if}
     {elseif="$roster && $roster->presence && $roster && $roster->presence->status"}
         <p class="line">{$roster->presence->status}</p>
