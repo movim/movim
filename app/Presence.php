@@ -149,6 +149,8 @@ class Presence extends Model
                          */
                         if ($session->get((string)$stanza->attributes()->from)) {
                             $this->mucjid = \App\User::me()->id;
+                        } elseif ($c->item->attributes()->jid) {
+                            $this->mucjid = cleanJid((string)$c->item->attributes()->jid);
                         } else {
                             $this->mucjid = (string)$stanza->attributes()->from;
                         }
