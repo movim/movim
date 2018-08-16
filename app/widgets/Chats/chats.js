@@ -13,8 +13,6 @@ var Chats = {
                     Rooms.refresh();
 
                     Chat_ajaxGet(this.dataset.jid);
-                    Notification_ajaxClear('chat|' + this.dataset.jid);
-                    Notification.current('chat|' + this.dataset.jid);
 
                     items.forEach(item => item.classList.remove('active'));
                     this.classList.add('active');

@@ -687,7 +687,6 @@ MovimWebsocket.attach(function() {
             Chat_ajaxGetRoom(jid);
         } else {
             Chat_ajaxGet(jid);
-            Notification.current('chat|' + jid);
         }
     }
 });

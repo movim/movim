@@ -218,13 +218,15 @@ class Chat extends \Movim\Widget\Base
     function ajaxGet($jid = null)
     {
         if ($jid == null) {
+            $this->rpc('Notification.current', 'chat');
             $this->rpc('MovimUtils.pushState', $this->route('chat'));
 
             $this->rpc('MovimUtils.removeClass', '#chat_widget', 'fixed');
             $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
         } else {
-            //$chats = new Chats;
-            //$chats->ajaxGetHistory($jid);
+            $notif = new Notification;
+            $notif->ajaxClear('chat|'.$jid);
+            $this->rpc('Notification.current', 'chat|'.$jid);
 
             $html = $this->prepareChat($jid);
 

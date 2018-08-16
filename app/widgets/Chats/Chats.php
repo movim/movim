@@ -140,6 +140,9 @@ class Chats extends \Movim\Widget\Base
 
     function ajaxClose($jid)
     {
+        $notif = new Notification;
+        $notif->ajaxClear('chat|'.$jid);
+
         if (!$this->validateJid($jid)) return;
 
         $chats = \App\Cache::c('chats');
