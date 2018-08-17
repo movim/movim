@@ -6,8 +6,6 @@ class AdminMain extends \Movim\Widget\Base
 {
     function load()
     {
-        $this->addjs('admin.js');
-
         $form = $_POST;
 
         $configuration = Configuration::get();
@@ -39,14 +37,6 @@ class AdminMain extends \Movim\Widget\Base
         return requestURL($url, 1);
     }
 
-    public function date($timezone)
-    {
-        $t = new DateTimeZone($timezone);
-        $c = new DateTime(null, $t);
-        $current_time = $c->format('D M j Y G:i:s');
-        return $current_time;
-    }
-
     function display()
     {
         $l = Movim\i18n\Locale::start();
@@ -58,7 +48,6 @@ class AdminMain extends \Movim\Widget\Base
                 2 => $this->__('log.syslog_files')
         ]);
 
-        $this->view->assign('timezones', generateTimezoneList());
         $this->view->assign('langs', $l->getList());
         $this->view->assign('countries', getCountries());
     }
