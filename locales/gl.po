@@ -92,7 +92,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Galician (http://www.transifex.com/movim/movim/language/gl/)\n"
@@ -229,6 +229,10 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
+msgstr ""
+
+#: [adhoc]completed
+msgid "Action completed"
 msgstr ""
 
 #: [admin]general
@@ -574,7 +578,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add

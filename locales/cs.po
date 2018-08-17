@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
 "Language: cs_CZ\n"
@@ -233,6 +233,10 @@ msgstr "Registrace zakázána"
 #: [adhoc]title
 msgid "Actions"
 msgstr "Akce"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -577,7 +581,7 @@ msgid "No chats yet..."
 msgstr "Zatím žádné konverzace."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
@@ -1118,9 +1122,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "Chyba XMPP Domény, váš účet není správné Jabber ID"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Některá data chybí!"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2519,174 +2522,3 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl se nemohl připojit do databáze"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim je připojen k databázi"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Movim databáze je aktuální"
-
-#~ msgid "Database Type"
-#~ msgstr "Typ databáze"
-
-#~ msgid "Host"
-#~ msgstr "Hostitel"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Database Name"
-#~ msgstr "Název databáze"
-
-#~ msgid "Groups"
-#~ msgstr "Skupiny"
-
-#~ msgid "General Informations"
-#~ msgstr "Obecné informace"
-
-#~ msgid "Client Informations"
-#~ msgstr "Informace klienta"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "Tento kontakt je ve vašem seznamu kontaktů, ale mezi těmito dvěma účty nejsou žádné odběry"
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "Odhlásíte odběr od této skupiny"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Zveřejnit vaše členství v této skupině vašim přátelům"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "Dát této skupině označení"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "Této skupině se stalo něco špatného"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Konfigurace skupiny uložena"
-
-#~ msgid "Delete the group"
-#~ msgstr "Odstranit tuto skupinu"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Odstraníte následující skupinu, prosím potvrďte akci"
-
-#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-#~ msgstr "Vypadá to, že tako skupina již neexistuje. Přejete si odstranit ji z vašich odběrů?"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s skupin na tomto serveru"
-
-#~ msgid "Groups servers"
-#~ msgstr "Skupiny servery"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "Skupiny jsou perfektní způsob pro sdílení příspěvků týkajících témat, které zajímají ostatní Movim uživatele"
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Zvolte server a skupinu, a přihlašte se k odběru pomocí tlačítka %s v hlavičce. Také můžete vytvořit novou skupinu kliknutím na tlačítko %s."
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "Dokončeno? Nyní můžete v této skupině publikovat nový příspěvek kliknutím na tlačítko %s."
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "Seznam odebíraných skupin najdete v záložce Moje odběry a nové příspěvky vám budou zobrazeny na stránce %sNovinky%."
-
-#~ msgid "Create a new Group on %s"
-#~ msgstr "Vytvořit novou skupinu na %"
-
-#~ msgid "Group name"
-#~ msgstr "Název skupiny"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Skupina úspěšně vytvořena"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Skupina úspěšně odstraněna"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "Poskytněte prosím validní název skupiny (minimálně 4 znaky)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "Na tomto serveru nemůžete vytvořit novou skupinu"
-
-#~ msgid "Location node created"
-#~ msgstr "Uzel lokace vytvořen"
-
-#~ msgid "Bookmark node created"
-#~ msgstr "Uzel záložek vytvořen"
-
-#~ msgid "Profile node created"
-#~ msgstr "Uzel profilu vytvořen"
-
-#~ msgid "Avatar node created"
-#~ msgstr "Uzel avataru vytvořen"
-
-#~ msgid "Subscriptions node created"
-#~ msgstr "Uzel odběrů vytvořen"
-
-#~ msgid "Microblog node created"
-#~ msgstr "Uzel mikroblogu vytvořen"
-
-#~ msgid "Link"
-#~ msgstr "Odkaz"
-
-#~ msgid "Tags"
-#~ msgstr "Štítky"
-
-#~ msgid "Edit post"
-#~ msgstr "Upravit příspěvek"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "Přidat soubor nebo obrázek k vašemu příspěvku"
-
-#~ msgid "You cannot publish a post on this Group"
-#~ msgstr "Nemůžete publikovat příspěvek v této Skupině"
-
-#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-#~ msgstr "Některá pole byla vyplněna. Stále si přejete jít zpět a ztratit jejich obsah?"
-
-#~ msgid "Click here to add some text to your publication"
-#~ msgstr "Klikněte sem pro přidání textu do vašeho příspěvku"
-
-#~ msgid "Add some text"
-#~ msgstr "Přidejte nějaký text"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Neseskupené"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "Zobrazovat odpojené kontakty"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "Skrýt odpojené kontakty"
-
-#~ msgid "Show group %s"
-#~ msgstr "Zobrazovat skupinu %s"
-
-#~ msgid "Hide group %s"
-#~ msgstr "Skrýt skupinu %s"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "Zadejte prosím validní Jabber ID"
-
-#~ msgid "No contacts ?"
-#~ msgstr "Žádné kontakty?"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Zobrazit/Skrýt"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "Výsledky"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Hledat ve vašich kontaktech"
-
-#~ msgid "Search a contact"
-#~ msgstr "Vyhledat kontakt"

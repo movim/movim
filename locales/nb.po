@@ -97,9 +97,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
-"Last-Translator: Dominik George <nik@naturalnet.de>\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
 "MIME-Version: 1.0\n"
@@ -235,6 +235,10 @@ msgstr "Registrering forbudt"
 #: [adhoc]title
 msgid "Actions"
 msgstr "Handlinger"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -579,8 +583,8 @@ msgid "No chats yet..."
 msgstr "Ingen samtaler enda…"
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr "Start en ny samtale ved å klikke på %s-knappen nedenfor, eller gå til %sKontakter%s-siden."
+msgid "Start a new conversation by clicking on the %s button."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1120,9 +1124,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP-domenefeil: Jabber-IDen du oppgav er ikke korrekt formatert"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Noen felter er fortsatt ikke fylt ut!"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2521,212 +2524,3 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl kunne ikke koble til databasen"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim er koblet til databasen"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Movim-databasen er oppdatert"
-
-#~ msgid "Database Type"
-#~ msgstr "Databasetype"
-
-#~ msgid "Host"
-#~ msgstr "Vert"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Database Name"
-#~ msgstr "Databasenavn"
-
-#~ msgid "Conferences"
-#~ msgstr "Samtalerom"
-
-#~ msgid "Groups"
-#~ msgstr "Grupper"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Legge til nyt samtalerom"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Navn"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Vil du gå inn automatisk i dette samtaleromet?"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurere"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Legge til ny lenke"
-
-#~ msgid "URL"
-#~ msgstr "Lenke"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Navn"
-
-#~ msgid "General Informations"
-#~ msgstr "Generell informasjon"
-
-#~ msgid "Client Informations"
-#~ msgstr "Klientinformasjon"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "Denne kontakten er i kontaktlisten din, men det er ingen abonnement mellom kontiene."
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "Du er i ferd med å melde deg av fra denne gruppen"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Annonser medlemskapet til denne gruppen offentlig til dine kontakter"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "Gi et navn til gruppen"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "Noe gikk feil i denne gruppen"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Oppsettet for gruppen ble lagret"
-
-#~ msgid "Delete the group"
-#~ msgstr "Slett gruppen"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Vennligst bekreft at du ønsker å slette denne gruppen."
-
-#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-#~ msgstr "Det ser ut til at denne gruppen ikke eksisterer lenger. Ønsker du å avslutte abonnementet?"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s grupper på denne tjeneren"
-
-#~ msgid "Groups servers"
-#~ msgstr "Gruppe-tjenere"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "Gruppene passer bra til å dele innlegg om emner du liker, med alle andre brukere på Movim."
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Velg en tjener og en gruppe og abonner på den med %s-knappen i overskriften. Du kan også opprette en ny ved å trykke på %s-knappen."
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "Ferdig? Du kan nå publisere en ny post i gruppen ved å trykke på %s-knappen."
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "Du finner en liste over alle gruppene du abonnerer på under \"Mine abonnement\", og du vil motta alle innkommende innlegg under %sNews%s-siden"
-
-#~ msgid "Create a new Group on %s"
-#~ msgstr "Opprett ny gruppe på %s"
-
-#~ msgid "Group name"
-#~ msgstr "Gruppenavn"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Gruppen ble opprettet"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Gruppen ble slettet"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "Oppgi et gyldig gruppenavn (minst 4 tegn)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "Du kan ikke opprette en ny gruppe på denne tjeneren"
-
-#~ msgid "Location node created"
-#~ msgstr "Steds-node opprettet"
-
-#~ msgid "Bookmark node created"
-#~ msgstr "Bokmerke-node opprettet"
-
-#~ msgid "Profile node created"
-#~ msgstr "Profil-node opprettet"
-
-#~ msgid "Avatar node created"
-#~ msgstr "Avatar-node opprettet"
-
-#~ msgid "Subscriptions node created"
-#~ msgstr "Abonnement-node opprettet"
-
-#~ msgid "Microblog node created"
-#~ msgstr "Mikroblogg-node opprettet"
-
-#~ msgid "Link"
-#~ msgstr "Lenke"
-
-#~ msgid "Tags"
-#~ msgstr "Merkelapp"
-
-#~ msgid "Edit post"
-#~ msgstr "Rediger innlegg"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "Legg til en fil eller et bilde"
-
-#~ msgid "You cannot publish a post on this Group"
-#~ msgstr "Du kan ikke publisere innlegg i denne gruppen"
-
-#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-#~ msgstr "Du har skrevet tekst i noen felter. Sikker på at du ønsker å gå tilbake, selv om du mister det du har skrevet?"
-
-#~ msgid "Click here to add some text to your publication"
-#~ msgstr "Trykk her for å legge til tekst i innlegget"
-
-#~ msgid "Add some text"
-#~ msgstr "Legg til tekst"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Ikke gruppert"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "Vis frakoblede kontakter"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "Skjul frakoblede kontakter"
-
-#~ msgid "Show group %s"
-#~ msgstr "Vis gruppen %s"
-
-#~ msgid "Hide group %s"
-#~ msgstr "Skjul gruppen %s"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "Oppgi en gyldig Jabber ID"
-
-#~ msgid "No contacts ?"
-#~ msgstr "Ingen kontakter?"
-
-#~ msgid "You can add one using the + button below"
-#~ msgstr "Du kan legge til kontakter ved å trykke på +-knappen nedenfor"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Vis/skjul"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "Resultater"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Søk i kontaktene dine"
-
-#~ msgid "Search a contact"
-#~ msgstr "Søk kontakten"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "Det er ikke en gyldig lenke"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "Del lenken"
-
-#~ msgid "Go to my profile page"
-#~ msgstr "Gå til min profilside"

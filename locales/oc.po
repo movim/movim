@@ -92,8 +92,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/movim/movim/language/oc/)\n"
 "Language: oc\n"
@@ -230,6 +230,10 @@ msgstr ""
 #: [adhoc]title
 msgid "Actions"
 msgstr "Accions"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -574,7 +578,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
@@ -1115,9 +1119,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Manca d'informacions !"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2516,33 +2519,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Groups"
-#~ msgstr "Gropes"
-
-#~ msgid "General Informations"
-#~ msgstr "Informacions Generalas"
-
-#~ msgid "Client Informations"
-#~ msgstr "Informacions sul client"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Configuracion del grop salvada"
-
-#~ msgid "Link"
-#~ msgstr "Ligam"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Pas agropat"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "Contactes desconnectats afichats"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "Contactes desconnectats amagats"
-
-#~ msgid "Show group %s"
-#~ msgstr "Grop %s afichat"
-
-#~ msgid "Hide group %s"
-#~ msgstr "Grop %s amagat"

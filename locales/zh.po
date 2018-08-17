@@ -6,6 +6,8 @@
 # Wangrui Enderex <jwr030521@gmail.com>, 2016
 # Zhao Rui <renyuneyun@gmail.com>, 2015
 # 三三 <gihub@mail.best33.com>, 2016
+# ヨイツの賢狼ホロ <kenookamihoro@gmail.com>, 2018
+# ヨイツの賢狼ホロ <kenookamihoro@gmail.com>, 2018
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -98,8 +100,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -237,6 +239,10 @@ msgstr "禁止注册"
 msgid "Actions"
 msgstr "操作"
 
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
+
 #: [admin]general
 msgid "General Settings"
 msgstr "一般设置"
@@ -259,11 +265,11 @@ msgstr "服务器时区"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "限制建议"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr ""
+msgstr "只建议可用于此 XMPP 范围和关联服务的聊天室，社区和其它内容。"
 
 #: [credentials]title
 msgid "Administration Credential"
@@ -333,7 +339,7 @@ msgstr "主 XMPP 服务器国家"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "选择一个国家"
 
 #: [log]empty
 msgid "Empty"
@@ -469,7 +475,7 @@ msgstr "消息已发布"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "无法发送消息，请稍后再试"
 
 #: [message]encrypted
 msgid "Encrypted message"
@@ -541,7 +547,7 @@ msgstr "编辑最后一条消息"
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr ""
+msgstr "举报滥用行为"
 
 #: [chatroom]members
 msgid "Members"
@@ -580,8 +586,8 @@ msgid "No chats yet..."
 msgstr "尚无对话"
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr "点击下面的  %s 按钮或者访问 %s联系人%s 页面来发起新对话。"
+msgid "Start a new conversation by clicking on the %s button."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -694,11 +700,11 @@ msgstr "角色已被正确设置"
 
 #: [communityconfig]publication
 msgid "Publication"
-msgstr ""
+msgstr "发布"
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
-msgstr ""
+msgstr "开放"
 
 #: [communityconfig]publish_model_open_text
 msgid "Everyone can publish"
@@ -726,7 +732,7 @@ msgstr "%s 帖子"
 
 #: [communitydata]public
 msgid "Public page"
-msgstr ""
+msgstr "公共页面"
 
 #: [communityheader]subscribe
 msgid "Subscribe"
@@ -838,31 +844,31 @@ msgstr "这将会允许你阅读带有 #nsfw 标签的帖子"
 
 #: [config]night_mode
 msgid "Night Mode"
-msgstr ""
+msgstr "夜间模式"
 
 #: [config]night_mode_text
 msgid "Use dark colors to rest your eyes"
-msgstr ""
+msgstr "通过深色来放松你的眼睛"
 
 #: [config]mam
 msgid "Archiving preferences"
-msgstr ""
+msgstr "存档选项"
 
 #: [config]mam_text
 msgid "Server-side archiving preferences"
-msgstr ""
+msgstr "服务器上的存档选项"
 
 #: [config]mam_always
 msgid "Always"
-msgstr ""
+msgstr "总是"
 
 #: [config]mam_never
 msgid "Never"
-msgstr ""
+msgstr "从不"
 
 #: [config]mam_saved
 msgid "Archiving preferences saved"
-msgstr ""
+msgstr "已保存归档选项"
 
 #: [cssurl]label
 msgid "Custom CSS URL for your blog"
@@ -870,7 +876,7 @@ msgstr "你博客自定义 CSS 的 URL"
 
 #: [confirm]title
 msgid "Confirmation of authentication"
-msgstr ""
+msgstr "验证确认"
 
 #: [confirm]description
 msgid "The following platform would like your confirmation to authentify this account"
@@ -878,7 +884,7 @@ msgstr ""
 
 #: [confirm]code
 msgid "Authentication code"
-msgstr ""
+msgstr "验证代码"
 
 #: [roster]add_title
 msgid "Add a contact"
@@ -906,7 +912,7 @@ msgstr "联系人已删除"
 
 #: [general]legend
 msgid "General Information"
-msgstr ""
+msgstr "一般信息"
 
 #: [general]name [chatrooms]name
 msgid "Name"
@@ -978,7 +984,7 @@ msgstr "最后一次访问"
 
 #: [client]title
 msgid "Client Information"
-msgstr ""
+msgstr "客户端信息"
 
 #: [explore]last_registered
 msgid "Last registered"
@@ -1054,7 +1060,7 @@ msgstr "邀请"
 
 #: [subscription]nil_text
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
-msgstr ""
+msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
 
 #: [help]faq
 msgid "Frequently Asked Questions"
@@ -1062,7 +1068,7 @@ msgstr "常见问题"
 
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
-msgstr ""
+msgstr "你是否已经在其他平台上尝试过 Movim了？"
 
 #: [apps]phone
 msgid "Apps for your phone"
@@ -1086,11 +1092,11 @@ msgstr "我们的官方应用可以从我们的网站获取"
 
 #: [contact]title
 msgid "Administrators & Contact"
-msgstr ""
+msgstr "管理和联络"
 
 #: [chatroom]question
 msgid "Chat with the Movim team?"
-msgstr ""
+msgstr "和 Movim 开发团队交流？"
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1121,9 +1127,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP 域错误，您的账户不是一个正确的 Jabber ID"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "部分数据丢失！"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -1447,11 +1452,11 @@ msgstr "预览"
 
 #: [publishbrief]attach
 msgid "Add a file or a picture"
-msgstr ""
+msgstr "附加文件或图片"
 
 #: [publishbrief]no_publication
 msgid "You cannot publish a post here"
-msgstr ""
+msgstr "你不能在这里发帖"
 
 #: [publishbrief]no_content_preview
 msgid "No content to preview"
@@ -1459,7 +1464,7 @@ msgstr "无内容可预览"
 
 #: [publishbrief]valid_url
 msgid "Please enter a valid URL"
-msgstr ""
+msgstr "请输入一个有效的URL"
 
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
@@ -1679,11 +1684,11 @@ msgstr "重置"
 
 #: [degraded]title
 msgid "Movim is currently working in degraded mode"
-msgstr ""
+msgstr "Movim 正在降级模式中运行"
 
 #: [degraded]text_1
 msgid "Your server doesn't support XMPP Pubsub persistance."
-msgstr ""
+msgstr "你的服务器不支持 XMPP Pubsub 持久化。"
 
 #: [degraded]text_2
 msgid "The communities, news feed and profile have been disabled for the moment."
@@ -1695,23 +1700,23 @@ msgstr "请尝试联系你的服务器管理员看看能否开启这些特性"
 
 #: [visio]calling
 msgid "…is calling you"
-msgstr ""
+msgstr "在呼叫你"
 
 #: [visio]ringing
 msgid "…ringing"
-msgstr ""
+msgstr "响铃中"
 
 #: [visio]in_call
 msgid "in call"
-msgstr ""
+msgstr "通话中"
 
 #: [visio]failed
 msgid "failed"
-msgstr ""
+msgstr "失败"
 
 #: [visio]connecting
 msgid "…connecting"
-msgstr ""
+msgstr "连接中"
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -1953,7 +1958,7 @@ msgstr "开启"
 
 #: [button]sign_up
 msgid "Sign Up"
-msgstr ""
+msgstr "注册"
 
 #: [day]title
 msgid "Day"
@@ -2522,180 +2527,3 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl 无法连接数据库"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim 已经连接到数据库"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Movim 数据库已经是最新"
-
-#~ msgid "Database Type"
-#~ msgstr "数据库类型"
-
-#~ msgid "Host"
-#~ msgstr "主机"
-
-#~ msgid "Port"
-#~ msgstr "端口"
-
-#~ msgid "Database Name"
-#~ msgstr "数据库名称"
-
-#~ msgid "Groups"
-#~ msgstr "分组"
-
-#~ msgid "General Informations"
-#~ msgstr "一般信息"
-
-#~ msgid "Client Informations"
-#~ msgstr "客户端信息"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "该联系人在你的联系人列表中，但两账户之间没有订阅"
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "你将取消订阅该群组"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "将你对该群组的订阅状况公开给你的朋友"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "给该群组加上标签"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "该群组出错了"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "保存分组结构"
-
-#~ msgid "Delete the group"
-#~ msgstr "删除群组"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "您将移除一下的群组, 请确认"
-
-#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-#~ msgstr "看起来这个组不再存在了。你想将它从你的订阅中删除么？"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "该服务器上有%s个群组"
-
-#~ msgid "Groups servers"
-#~ msgstr "群组服务器"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "要与其它 Movim 用户分享同一个主题的帖子，群组是最佳去处。"
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "选择一个服务器及一个群组并使用页眉处的 %s 按钮来订阅它。你也可以使用 %s 按钮来新建一个。"
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "完成了？现在你可以按 %s 来发表一个新帖。"
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "你订阅的所有群组在“我的订阅”页面中，它们中的新帖子将会出现在 %s新闻%s 页面。"
-
-#~ msgid "Create a new Group on %s"
-#~ msgstr "在 %s 上创建新群组"
-
-#~ msgid "Group name"
-#~ msgstr "群组名称"
-
-#~ msgid "Group created successfully"
-#~ msgstr "成功建立群组"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "成功删除群组"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "请输入一个有效的群组名称(最少4个字符)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "您不能在此服务器上建立新群组"
-
-#~ msgid "Location node created"
-#~ msgstr "位置节点已创建"
-
-#~ msgid "Bookmark node created"
-#~ msgstr "书签节点已创建"
-
-#~ msgid "Profile node created"
-#~ msgstr "档案节点已创建"
-
-#~ msgid "Avatar node created"
-#~ msgstr "头像节点已创建"
-
-#~ msgid "Subscriptions node created"
-#~ msgstr "订阅节点已创建"
-
-#~ msgid "Microblog node created"
-#~ msgstr "微博节点已创建"
-
-#~ msgid "Link"
-#~ msgstr "连接"
-
-#~ msgid "Tags"
-#~ msgstr "标签"
-
-#~ msgid "Edit post"
-#~ msgstr "编辑帖子"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "给你的帖子附加文件或图片"
-
-#~ msgid "You cannot publish a post on this Group"
-#~ msgstr "你不能在这个群组里发帖"
-
-#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-#~ msgstr "一些字段已被填写。你坚持要后退并丢弃这些内容么？"
-
-#~ msgid "Click here to add some text to your publication"
-#~ msgstr "点击这里添加一些文字"
-
-#~ msgid "Add some text"
-#~ msgstr "添加一些文字"
-
-#~ msgid "Ungrouped"
-#~ msgstr "未分组"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "显示未联系的联系人"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "隐藏未联系的联系人"
-
-#~ msgid "Show group %s"
-#~ msgstr "显示分组 %s"
-
-#~ msgid "Hide group %s"
-#~ msgstr "隐藏分组 %s"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "请输入有效的Jabber ID"
-
-#~ msgid "No contacts ?"
-#~ msgstr "没联系人"
-
-#~ msgid "You can add one using the + button below"
-#~ msgstr "你可以使用下面的加号按钮来添加一个"
-
-#~ msgid "Show/Hide"
-#~ msgstr "显示/隐藏"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "结果"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "在您的联系人中搜索"
-
-#~ msgid "Search a contact"
-#~ msgstr "搜索联系人"
-
-#~ msgid "Go to my profile page"
-#~ msgstr "前往我的个人信息页"

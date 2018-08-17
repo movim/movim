@@ -93,8 +93,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Greek (http://www.transifex.com/movim/movim/language/el/)\n"
 "Language: el\n"
@@ -231,6 +231,10 @@ msgstr ""
 #: [adhoc]title
 msgid "Actions"
 msgstr "Ενέργειες"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -575,7 +579,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
@@ -1116,9 +1120,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Μερικά δεδομένα λείπουν"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2517,42 +2520,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "Πληκτρολογήστε εδώ"
-
-#~ msgid "General Informations"
-#~ msgstr "Γενικές πληροφορίες"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "Προσθήκη αρχείου ή φωτογραφίας στην δημοσίευση"
-
-#~ msgid "Add some text"
-#~ msgstr "Προσθήκη κειμένου"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "Εμφάνιση επαφών χωρίς σύνδεση"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "Απόκρυψη επαφών χωρίς σύνδεση"
-
-#~ msgid "Show group %s"
-#~ msgstr "Εμφάνιση ομάδας %s"
-
-#~ msgid "Hide group %s"
-#~ msgstr "Απόκρυψη ομάδας %s"
-
-#~ msgid "No contacts ?"
-#~ msgstr "Δεν υπάρχουν επαφές;"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Εμφάνιση/Απόκρυψη"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "Αποτελέσματα"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Αναζήτηση στις επαφές σου"
-
-#~ msgid "Search a contact"
-#~ msgstr "Αναζήτηση επαφής"

@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
 "PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
@@ -231,6 +231,10 @@ msgstr "Înregistrare interzisă"
 #: [adhoc]title
 msgid "Actions"
 msgstr "Acțiuni"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -575,7 +579,8 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+#, fuzzy
+msgid "Start a new conversation by clicking on the %s button."
 msgstr "Deschideți o nouă conversație făcând clic pe butonul %s de mai jos sau vizitând pagina de Contacte."
 
 #: [chats]add

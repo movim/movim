@@ -96,8 +96,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
@@ -234,6 +234,10 @@ msgstr ""
 #: [adhoc]title
 msgid "Actions"
 msgstr "Akciók"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -578,7 +582,7 @@ msgid "No chats yet..."
 msgstr "Nincsenek még beszélgetések..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
@@ -1119,9 +1123,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP domén hiba, a fiókod nem egy megfelelő Jabber ID"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Néhány adat hiányzik!"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2520,150 +2523,3 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl nem tudott kapcsolódni az adatbázishoz."
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim csatlakoztatva az adatbázishoz."
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "A Movim adatbázis napra kész."
-
-#~ msgid "Database Type"
-#~ msgstr "Adatbázis típusa"
-
-#~ msgid "Host"
-#~ msgstr "Host"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Database Name"
-#~ msgstr "Adatbázis neve"
-
-#~ msgid "Groups"
-#~ msgstr "Csoportok"
-
-#~ msgid "General Informations"
-#~ msgstr "Általános információk"
-
-#~ msgid "Client Informations"
-#~ msgstr "Kliens információk"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "Ez az ismerős az ismerős listádon van, de nincsenek feliratkozások a két felhasználó között."
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "Le fogsz iratkozni ennek a csoportnak a frissítéseiről"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Tedd publikussá, hogy ennek a csoportnak tagja vagy a barátaid számára"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "Adj meg címkéket ehhez a csoporthoz"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "Valami rossz történt a csoporttal"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Csoportbeállítások elmentve."
-
-#~ msgid "Delete the group"
-#~ msgstr "Csoport törlése"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Törölni fogod a következő csoportot. Kérlek erősítsd meg szándékod!"
-
-#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-#~ msgstr "Úgy tűnik ez a csoport már nem létezik. El akarod távolítani a feliratkozásaid közül?"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s csoportok a szerveren."
-
-#~ msgid "Groups servers"
-#~ msgstr "Csoportok szerverei"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "A csoportok nagyszerű lehetőséget adnak, hogy a többi Movim felhasználóval együtt írj a kedvenc témáidról"
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Válassz egy szervert és egy csoportot, amelyre feliratkozhatsz a fejléc %s gombjára kattintva. %s gombbal pedig létrehozhatsz újat is."
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "Kész vagy? %s gombbal máris küldhetsz egy új bejegyzést a csoportba."
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "A Feliratkozásaim menüben találhatod a feliratkozott csoportjaid listáját, és a %sNews%s oldalon azonnal láthatsz minden új bejegyzést."
-
-#~ msgid "Create a new Group on %s"
-#~ msgstr "Készítsd egy új csoportot itt: %s"
-
-#~ msgid "Group name"
-#~ msgstr "Csoport neve"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Csoport sikeresen létrehozva"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Csoport sikeresen törölve"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "Adj meg egy érvényes csoportnevet (legalább 4 karakter)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "Nem tudsz új csoportot létrehozni ezen a szerveren"
-
-#~ msgid "Link"
-#~ msgstr "Link"
-
-#~ msgid "Tags"
-#~ msgstr "Címkék"
-
-#~ msgid "Edit post"
-#~ msgstr "Bejegyzés szerkesztése"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "Csatolj fájlt vagy képet a posztodhoz"
-
-#~ msgid "You cannot publish a post on this Group"
-#~ msgstr "Nem írhatsz bejegyzést ebbe a csoportba"
-
-#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-#~ msgstr "Már kitöltöttél néhány mezőt. Akkor is vissza akarsz lépni, ha elvész, amit írtál?"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Nem csoportosított"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "Lecsatlakozott ismerősök mutatása"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "Lecsatlakozott ismerősök rejtése"
-
-#~ msgid "Show group %s"
-#~ msgstr "%s csoport mutatása"
-
-#~ msgid "Hide group %s"
-#~ msgstr "%s csoport elrejtése"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "Adj meg egy érvényes Jabber ID-t"
-
-#~ msgid "No contacts ?"
-#~ msgstr "Nincs még partnered?"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Mutat/Elrejt"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "Eredmények"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Keresés ismerősök között"
-
-#~ msgid "Search a contact"
-#~ msgstr "Ismerős keresése"

@@ -92,7 +92,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -230,6 +230,10 @@ msgstr "Registration forbidden"
 #: [adhoc]title
 msgid "Actions"
 msgstr "Actions"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -574,8 +578,9 @@ msgid "No chats yet..."
 msgstr "No chats yet..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+#, fuzzy
+msgid "Start a new conversation by clicking on the %s button."
+msgstr "Add one by clicking on the add button."
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -2522,6 +2527,9 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+#~ msgstr "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
 
 #~ msgid "Modl wasn't able to connect to the database"
 #~ msgstr "Modl wasn't able to connect to the database"

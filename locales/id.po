@@ -95,8 +95,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
 "Language: id\n"
@@ -233,6 +233,10 @@ msgstr "Pendaftaran dilarang"
 #: [adhoc]title
 msgid "Actions"
 msgstr "Tindakan"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -577,8 +581,8 @@ msgid "No chats yet..."
 msgstr "Belum ada obrolan..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr "Buka percakapan baru dengan klik tombol %s atau kunjungi %sKontak%s halaman."
+msgid "Start a new conversation by clicking on the %s button."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1118,9 +1122,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "Domain XMPP galat, akun anda bukanlah Jabber ID yang benar"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Beberapa data kurang !"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2519,117 +2522,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl tidak dapat menyambungkan ke database"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim telah terkoneksi ke database"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Database Movim telah diperbaharui"
-
-#~ msgid "Database Type"
-#~ msgstr "Tipe Database"
-
-#~ msgid "Host"
-#~ msgstr "Host"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Database Name"
-#~ msgstr "Nama Database"
-
-#~ msgid "Groups"
-#~ msgstr "Grup"
-
-#~ msgid "General Informations"
-#~ msgstr "Informasi Umum"
-
-#~ msgid "Client Informations"
-#~ msgstr "Informasi Klien"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "Kontak ini ada di dalam daftar kontak anda tetapi tidak ada langganan diantara dua akun"
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "Anda akan membatalkan langganan dari grup ini"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Jadikan keanggotaan anda di grup ini terlihat publik ke teman-teman anda"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "Berikan sebuah label untuk grup ini"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "Sesuatu yang buruk terjadi di grup ini"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Konfigurasi grup disimpan"
-
-#~ msgid "Delete the group"
-#~ msgstr "Hapus grup"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Anda akan menhapus grup berikut ini. Mohon konfirmasi aksi anda."
-
-#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-#~ msgstr "Nampaknya grup ini sudah tidak ada lagi. Apakah anda menghapusnya dari langganan anda?"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s grup di server ini"
-
-#~ msgid "Groups servers"
-#~ msgstr "Server Grup"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "Grup adalah tempat terbaik untuk membagikan postingan tentang topik yang anda sukai dengan pengguna Movim lainnya."
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Pilih sebuah server dan sebuah grup dan berlangganan menggunakan tombol %s di header. Anda juga dapat membuat yang baru dengan tombol %s."
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "Sudah? Anda dapat membuat postingan baru di grup dengan tombol %s."
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "Anda akan menemukan sebuah daftar dari langganan grup anda di Langganan Saya dan menerima post baru secara instant di halaman %sNews%s."
-
-#~ msgid "Create a new Group on %s"
-#~ msgstr "Buat Grup baru di %s"
-
-#~ msgid "Group name"
-#~ msgstr "Nama Grup"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Grup telah dibuat"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Grup berhasil dihapus"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "Mohon sertakan nama grup yang benar (minimal 4 karakter)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "Anda tidak dapat membuat grup baru di server ini"
-
-#~ msgid "Location node created"
-#~ msgstr "Lokasi node dibuat"
-
-#~ msgid "Bookmark node created"
-#~ msgstr "Bookmark node dibuat"
-
-#~ msgid "Profile node created"
-#~ msgstr "Profil node dibuat"
-
-#~ msgid "Avatar node created"
-#~ msgstr "Avatar node dibuat"
-
-#~ msgid "Subscriptions node created"
-#~ msgstr "Langganan node dibuat"
-
-#~ msgid "Microblog node created"
-#~ msgstr "Microblog node dibuat"
-
-#~ msgid "Link"
-#~ msgstr "Pranala"

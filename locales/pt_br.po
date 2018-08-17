@@ -99,8 +99,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/movim/movim/language/pt_BR/)\n"
 "Language: pt_BR\n"
@@ -108,7 +108,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -237,6 +237,10 @@ msgstr "Registro proibido"
 #: [adhoc]title
 msgid "Actions"
 msgstr "Ações"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -581,8 +585,8 @@ msgid "No chats yet..."
 msgstr "Sem conversas ainda..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr "Crie uma nova conversa clicando no %s botão abaixo ou visite a pagina dos %sContatos%s"
+msgid "Start a new conversation by clicking on the %s button."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1086,14 +1090,12 @@ msgid "Our official apps are available on our website"
 msgstr "Nossos aplicativos oficiais estão disponíveis em nosso website"
 
 #: [contact]title
-#, fuzzy
 msgid "Administrators & Contact"
-msgstr "Credenciais de Administração"
+msgstr ""
 
 #: [chatroom]question
-#, fuzzy
 msgid "Chat with the Movim team?"
-msgstr "Conversar com o time?"
+msgstr ""
 
 #: [chatroom]button
 msgid "Add the chatroom"
@@ -1124,9 +1126,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "Erro de domínio do XMPP, sua conta não tem um ID jabber valido"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Alguns dados estão incompletos !"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -1449,23 +1450,20 @@ msgid "Preview"
 msgstr "Visualizar"
 
 #: [publishbrief]attach
-#, fuzzy
 msgid "Add a file or a picture"
-msgstr "Adicionar um arquivo ou uma imagem ao seu artigo"
+msgstr ""
 
 #: [publishbrief]no_publication
-#, fuzzy
 msgid "You cannot publish a post here"
-msgstr "Você não pode publicar um artigo neste Grupo"
+msgstr ""
 
 #: [publishbrief]no_content_preview
 msgid "No content to preview"
 msgstr "Sem conteúdo para visualizar"
 
 #: [publishbrief]valid_url
-#, fuzzy
 msgid "Please enter a valid URL"
-msgstr "Por favor informe uma URL válida"
+msgstr ""
 
 #: [publishbrief]content_text
 msgid "You can format your content using Markdown"
@@ -1716,9 +1714,8 @@ msgid "failed"
 msgstr "falhou"
 
 #: [visio]connecting
-#, fuzzy
 msgid "…connecting"
-msgstr "Conectando"
+msgstr ""
 
 #: [global]no_js
 msgid "You don't have javascript enabled.  Good luck with that."
@@ -2529,280 +2526,3 @@ msgstr "A API está inalcançável, tente mais tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digite aqui"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl não consegue conectar-se ao banco de dados"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim está conectado ao banco de dados"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "O banco de dados do movim está atualizada"
-
-#~ msgid "Database Type"
-#~ msgstr "Tipo do Banco de dados"
-
-#~ msgid "Host"
-#~ msgstr "Servidor"
-
-#~ msgid "Port"
-#~ msgstr "Porta"
-
-#~ msgid "Database Name"
-#~ msgstr "Nome do banco de dados"
-
-#~ msgid "Conferences"
-#~ msgstr "Conferências"
-
-#~ msgid "Groups"
-#~ msgstr "Grupos"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Adicionar nova sala de chat"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Nome"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Deseja automaticamente entrar nessa sala de chat? "
-
-#~ msgid "An error occured :"
-#~ msgstr "Ocorreu um erro:"
-
-#~ msgid "Configure"
-#~ msgstr "Configure"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Adicionar nova URL"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Nome"
-
-#~ msgid "General Informations"
-#~ msgstr "Informações Gerais"
-
-#~ msgid "Client Informations"
-#~ msgstr "Informações do Cliente"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "Este contato está na sua lista de contatos mas não há inscrição entre as duas contas"
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "Você irá cancelar sua inscrição neste Grupo"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Tornar sua filiação a este grupo pública a seus amigos"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "Atribuir uma etiqueta para este grupo"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "Alguma coisa ruim aconteceu a este grupo"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Configuração de grupo armazenada"
-
-#~ msgid "Delete the group"
-#~ msgstr "Deletar o grupo"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Você irá deletar o seguinte grupo. Por favor confirme sua ação."
-
-#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-#~ msgstr "Aparentemente este grupo não existe mais. Você gostaria de removê-lo de suas inscrições?"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s grupos neste servidor"
-
-#~ msgid "Groups servers"
-#~ msgstr "Servidores de grupos"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "Grupos são uma forma perfeita de compartilhar artigos sobre assuntos que você gosta com todos os outros usuários do Movim."
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Escolha um servidor e um Grupo e se inscreva utilizando o botão %s no cabeçalho. Você pode também criar um novo utilizando o botão %s."
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "Terminou? Agora você pode publicar um novo artigo no Grupo utilizando o botão %s."
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "Você encontrará uma lista de todos os Grupos em que está inscrito em Minhas Inscrições e receberá instantaneamente todos os novos artigos na página %sNotícias%s."
-
-#~ msgid "Create a new Group on %s"
-#~ msgstr "Criar um novo Grupo"
-
-#~ msgid "Group name"
-#~ msgstr "Nome do Grupo"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Grupo criado com sucesso"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Grupo deletado com sucesso"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "Por favor informe um nome de grupo válido (mínimo 4 caracteres)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "Você não pode criar um novo Grupo neste servidor"
-
-#~ msgid "Location node created"
-#~ msgstr "Nó de localização criado"
-
-#~ msgid "Bookmark node created"
-#~ msgstr "Nó de marca paginas criado"
-
-#~ msgid "Profile node created"
-#~ msgstr "Nó de perfil criado"
-
-#~ msgid "Avatar node created"
-#~ msgstr "Nó de avatar criado"
-
-#~ msgid "Subscriptions node created"
-#~ msgstr "Nó de inscrição criado"
-
-#~ msgid "Microblog node created"
-#~ msgstr "Nó de microblog criado"
-
-#~ msgid "Link"
-#~ msgstr "Link"
-
-#~ msgid "Tags"
-#~ msgstr "Etiquetas"
-
-#~ msgid "Edit post"
-#~ msgstr "Editar artigo"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "Adicionar um arquivo ou uma imagem ao seu artigo"
-
-#~ msgid "You cannot publish a post on this Group"
-#~ msgstr "Você não pode publicar um artigo neste Grupo"
-
-#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-#~ msgstr "Alguns campos foram preenchidos. Você ainda quer voltar e perder o seus conteúdos?"
-
-#~ msgid "Click here to add some text to your publication"
-#~ msgstr "Clique aqui para adicionar algum texto em sua publicação"
-
-#~ msgid "Add some text"
-#~ msgstr "Adicionar texto"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Sem grupo"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "Mostrar contatos desconectados"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "Esconder contatos desconectados"
-
-#~ msgid "Show group %s"
-#~ msgstr "Mostrar grupo %s"
-
-#~ msgid "Hide group %s"
-#~ msgstr "Esconder grupo %s"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "Por favor, entre um ID Jabber válido"
-
-#~ msgid "No contacts ?"
-#~ msgstr "Sem contatos?"
-
-#~ msgid "You can add one using the + button below"
-#~ msgstr "Você pode adicioná-lo pressionando o botão + abaixo"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Mostrar/Esconder"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "Resultados"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Procurar em seus contatos"
-
-#~ msgid "Search a contact"
-#~ msgstr "Procurar um contato"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "Esta não é uma URL válida"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "Compartilhando a URL"
-
-#~ msgid "Go to my profile page"
-#~ msgstr "Ir para minha página de perfil"
-
-#~ msgid "Update your PHP-Version: %s"
-#~ msgstr "Atualize sua versão PHP-Version: %s"
-
-#~ msgid "Required: 5.3.0"
-#~ msgstr "Necessário: 5.3.0"
-
-#~ msgid "Monthly Subscriptions"
-#~ msgstr "Inscrições Mensais"
-
-#~ msgid "Monthly Subscriptions Cumulated"
-#~ msgstr "Inscrições Mensais Acumuladas"
-
-#, fuzzy
-#~ msgid "What do the little banners refer to"
-#~ msgstr "A que os pequenos banners se referem ?"
-
-#~ msgid "Thanks to these five little banners, you can quickly identitfy the level of confdentiality applied to the information you provide."
-#~ msgstr "Graças  a estes pequenos banners, você pode rapidamente identificar o nível de confiabilidade aplicada à informação que você provê."
-
-#~ msgid "White, only you can see the information"
-#~ msgstr "Branco, só você pode ver a informação"
-
-#~ msgid "Green, you have chosen some contacts who can see your information"
-#~ msgstr "Verde, você tem que escolher alguns contatos que possam ver suas informações"
-
-#~ msgid "Orange, all your contact list can see your information"
-#~ msgstr "Laranja, toda a sua lista de contatos pode ver suas informações"
-
-#~ msgid "Red, everybody in the XMPP network can see your information"
-#~ msgstr "Vermelho, todos na rede XMPP podem ver suas informações"
-
-#~ msgid "Black, the whole Internet can see your information"
-#~ msgstr "Preto, a internet inteira pode ver suas informações"
-
-#, fuzzy
-#~ msgid "There is no Groups yet on this server."
-#~ msgstr "Não há ainda comunidades neste servidor"
-
-#~ msgid "Read the Wiki"
-#~ msgstr "Leia a Wiki"
-
-#~ msgid "Talk with us by email ?"
-#~ msgstr "Falar conosco por email?"
-
-#~ msgid "Join the Mailing List"
-#~ msgstr "Juntar-se à Lista de Email"
-
-#~ msgid "WebSocket Configuration"
-#~ msgstr "Configuração do WebSocket"
-
-#~ msgid "Enter here a valid WebSocket URI in the form"
-#~ msgstr "Digite aqui a URI WebSocket válida no formulário"
-
-#~ msgid "WebSocket URI"
-#~ msgstr "WebSocket URI"
-
-#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
-#~ msgstr "Se você mudar a URI, por favor reinicie a aplicação para que a nova configuração tenha efeito"
-
-#~ msgid "Public WebSockets"
-#~ msgstr "WebSockets públicos"
-
-#~ msgid "Looking for some documentation ?"
-#~ msgstr "Procurando por alguma documentação?"

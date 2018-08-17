@@ -93,8 +93,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
 "Language: fi\n"
@@ -231,6 +231,10 @@ msgstr ""
 #: [adhoc]title
 msgid "Actions"
 msgstr "Toimenpiteet"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -575,7 +579,7 @@ msgid "No chats yet..."
 msgstr "Ei keskusteluja vielä..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
@@ -1116,9 +1120,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP domain -virhe, käyttäjätilisi ei ollut oikea Jabber ID"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Joitain tietoja puuttuu"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2517,84 +2520,3 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl ei pystynyt yhdistämään tietokantaan"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim on yhdistetty tietokantaan"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Movim-tietokanta on ajan tasalla"
-
-#~ msgid "Database Type"
-#~ msgstr "Tietokannan tyyppi"
-
-#~ msgid "Host"
-#~ msgstr "Host"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Database Name"
-#~ msgstr "Tietokannan nimi"
-
-#~ msgid "Groups"
-#~ msgstr "Ryhmät"
-
-#~ msgid "General Informations"
-#~ msgstr "Perustiedot"
-
-#~ msgid "Client Informations"
-#~ msgstr "Asiakastiedot"
-
-#~ msgid "Delete the group"
-#~ msgstr "Poista tämä ryhmä"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Varmista ryhmän poistaminen"
-
-#~ msgid "Group name"
-#~ msgstr "Ryhmän nimi"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Ryhmän luonti onnistui"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Ryhmän poisto onnistui"
-
-#~ msgid "Link"
-#~ msgstr "Linkki"
-
-#~ msgid "Tags"
-#~ msgstr "Tagit"
-
-#~ msgid "Edit post"
-#~ msgstr "Muokkaa julkaisua"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "Lisää tiedosto tai kuva julkaisuusi"
-
-#~ msgid "You cannot publish a post on this Group"
-#~ msgstr "Et voi julkaista tässä ryhmässä"
-
-#~ msgid "Click here to add some text to your publication"
-#~ msgstr "Klikkaa tästä lisätäksesi tekstiä julkaisuusi"
-
-#~ msgid "Add some text"
-#~ msgstr "Lisää tekstiä"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Ryhmittämätön"
-
-#~ msgid "No contacts ?"
-#~ msgstr "Ei kontakteja?"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Näytä/Piilota"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Etsi kontakteistasi"
-
-#~ msgid "Search a contact"
-#~ msgstr "Etsi kontaktia"

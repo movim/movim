@@ -93,8 +93,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
 "Language: da\n"
@@ -231,6 +231,10 @@ msgstr ""
 #: [adhoc]title
 msgid "Actions"
 msgstr "Handlinger"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -575,7 +579,7 @@ msgid "No chats yet..."
 msgstr "Ingen chat endnu..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
@@ -1116,9 +1120,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP domænefejl, din konto er ikke et rigtigt Jabber ID"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Nogle data manger !"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2517,168 +2520,3 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl kunne ikke forbinde til databasen"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Moovim er forbundet til databasen"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Movim database er i nyeste version"
-
-#~ msgid "Database Type"
-#~ msgstr "Databasetype"
-
-#~ msgid "Host"
-#~ msgstr "Vært"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "Database Name"
-#~ msgstr "Databasenavn"
-
-#~ msgid "Groups"
-#~ msgstr "Grupper"
-
-#~ msgid "General Informations"
-#~ msgstr "Generelle Informationer"
-
-#~ msgid "Client Informations"
-#~ msgstr "Klient-infomationer"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "Denne kontakt er i din kontaktliste, men der er ingen abonnementer mellem de to konti"
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "Du er ved at opsige dit abonnement på denne gruppe"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Gør dit medlemskab af denne gruppe offentligt for dine venner"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "Giv denne gruppe en label"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "Noget skidt er sket med denne gruppe"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Gruppeopsætning gemt"
-
-#~ msgid "Delete the group"
-#~ msgstr "Slet denne gruppe"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Du er ved at slette følgende gruppe. Bekræft venligst din handling."
-
-#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-#~ msgstr "Det ser ud til at denne gruppe ikke eksisterer mere. Vil du fjerne den fra dine abonnementer?"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s grupper på denne server"
-
-#~ msgid "Groups servers"
-#~ msgstr "Gruppeservere"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "Grupper er den perfekte måde, hvorpå du kan dele indlæg om emner der interesserer dig med alle andre Movim brugere."
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Vælg en server samt en gruppe, og du kan abonnere på den med %s-knappen i overskriften. Du kan også oprette en ny med %s-knappen."
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "Færdig? Du kan nu publicere et indlæg i gruppen med %s-knappen."
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "Du finder en liste over alle grupper du abonnerer på i Mine Abonnementer, og modtager øjeblikkeligt alle nye indlæg på %sNews%s-siden."
-
-#~ msgid "Group name"
-#~ msgstr "Gruppenavn"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Gruppe er oprettet"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Gruppe er slettet"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "Opgiv venligst et gyldigt gruppenavn (mindst 4 tegn)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "Du kan ikke oprette en ny gruppe på denne server"
-
-#~ msgid "Location node created"
-#~ msgstr "Placerings-node oprettet"
-
-#~ msgid "Bookmark node created"
-#~ msgstr "Bogmærke-node oprettet"
-
-#~ msgid "Profile node created"
-#~ msgstr "Profil-node oprettet"
-
-#~ msgid "Avatar node created"
-#~ msgstr "Profilbillede-node oprettet"
-
-#~ msgid "Subscriptions node created"
-#~ msgstr "Abonnement-node oprettet"
-
-#~ msgid "Microblog node created"
-#~ msgstr "Mikroblog-node oprettet"
-
-#~ msgid "Link"
-#~ msgstr "Link"
-
-#~ msgid "Tags"
-#~ msgstr "Mærkater"
-
-#~ msgid "Edit post"
-#~ msgstr "Rediger indlæg"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "Tilføj en fil eller et billede til dit indlæg"
-
-#~ msgid "You cannot publish a post on this Group"
-#~ msgstr "Du kan ikke publicere et indlæg til denne gruppe"
-
-#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-#~ msgstr "Nogle felter er udfyldt. Vil du stadig gå tilbage og miste deres indhold?"
-
-#~ msgid "Click here to add some text to your publication"
-#~ msgstr "Klik her for at tilføje tekst til dit indlæg"
-
-#~ msgid "Add some text"
-#~ msgstr "Tilføj tekst"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Ikke grupperet"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "Vis offline kontakter"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "Skjul offline kontaker"
-
-#~ msgid "Show group %s"
-#~ msgstr "Vis gruppen %s"
-
-#~ msgid "Hide group %s"
-#~ msgstr "Skjul gruppen %s"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "Skriv venligst et gyldigt Jabber ID"
-
-#~ msgid "No contacts ?"
-#~ msgstr "Ingen kontakter?"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Vis/skjul"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "Resultater"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Søg i dine kontakter"

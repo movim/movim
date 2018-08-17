@@ -107,9 +107,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
-"Last-Translator: Dominik George <nik@naturalnet.de>\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
@@ -245,6 +245,10 @@ msgstr "Anmeldung abgelehnt"
 #: [adhoc]title
 msgid "Actions"
 msgstr "Aktionen"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -589,8 +593,8 @@ msgid "No chats yet..."
 msgstr "Noch keine Chats …"
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
-msgstr "Starten Sie eine neue Unterhaltung, indem Sie auf den %s Knopf klicken oder besuchen Sie die %sKontakte%s Seite."
+msgid "Start a new conversation by clicking on the %s button."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -1130,9 +1134,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP-Domänenfehler: Ihr Konto ist keine richtige Jabber-Kennung"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Es fehlen einige Daten!"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2531,215 +2534,3 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl konnte sich nicht mit der Datenbank verbinden"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim ist mit der Datenbank verbunden"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Movim-Datenbank ist aktuell"
-
-#~ msgid "Database Type"
-#~ msgstr "Datenbanktyp"
-
-#~ msgid "Host"
-#~ msgstr "Rechner (Host)"
-
-#~ msgid "Port"
-#~ msgstr "Anschluss (Port)"
-
-#~ msgid "Database Name"
-#~ msgstr "Datenbankname"
-
-#~ msgid "Conferences"
-#~ msgstr "Konferenzen"
-
-#~ msgid "Groups"
-#~ msgstr "Gruppen"
-
-#~ msgid "Add a new Chat Room"
-#~ msgstr "Neuen Chatraum hinzufügen"
-
-#~ msgctxt "[chatroom]name"
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "Do you want do join automaticaly this Chat Room ?"
-#~ msgstr "Diesem Chatraum automatisch beitreten?"
-
-#~ msgid "An error occured :"
-#~ msgstr "Ein Fehler ist aufgetreten:"
-
-#~ msgid "Configure"
-#~ msgstr "Konfigurieren"
-
-#~ msgid "Add a new URL"
-#~ msgstr "Neue URL hinzufügen"
-
-#~ msgid "URL"
-#~ msgstr "URL"
-
-#~ msgctxt "[url]name"
-#~ msgid "Name"
-#~ msgstr "Name"
-
-#~ msgid "General Informations"
-#~ msgstr "Allgemeine Angaben"
-
-#~ msgid "Client Informations"
-#~ msgstr "Programminformationen"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "Dieser Kontakt ist in Ihrer Kontaktliste, aber es existieren noch keine Abonnements zwischen diesen beiden Konten."
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "Sie sind dabei, diese Gemeinschaft abzubestellen"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Machen Sie die Mitgliedschaft in dieser Gemeinschaft für Ihre Freunde öffentlich"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "Der Gruppe eine Bezeichnung geben"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "Etwas Schlechtes ist dieser Gruppe zugestoßen"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Gruppeneinstellung gespeichert"
-
-#~ msgid "Delete the group"
-#~ msgstr "Die Gruppe löschen"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Sie sind dabei die folgende Gruppe zu löschen. Bitte bestätigen Sie die Aktion."
-
-#~ msgid "It seems that this group doesn't exists anymore. Do you want to remove it from your subscriptions?"
-#~ msgstr "Anscheinend existiert diese Gruppe nicht mehr. Soll diese Gruppe abbestellt werden?"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s Gruppen auf diesem Server"
-
-#~ msgid "Groups servers"
-#~ msgstr "Gruppenserver"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "Gruppen sind der perfekte Weg, um Beiträge über Themen, die Sie mögen, mit anderen Movim Benutzern zu teilen."
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Wählen Sie einen Server und eine Gruppe aus und abonnieren Sie diese oben mit dem %s Knopf. Sie können auch eine neue Gruppe erstellen mit dem %s Knopf."
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "Fertig? Sie können den Beitrag nun in der Gruppe veröffentlichen, indem Sie den %s Button benutzen."
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "Sie finden eine Liste mit allen Ihren Gruppen in Meine Abonnements und erhalten sofort alle neuen Beiträge auf der %sNeuigkeiten%s Seite."
-
-#~ msgid "Create a new Group on %s"
-#~ msgstr "Eine neue Gruppe auf %s einrichten"
-
-#~ msgid "Group name"
-#~ msgstr "Gruppenname"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Gruppe erfolgreich erstellt"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Gruppe erfolgreich gelöscht"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "Bitte geben Sie einen gültigen Gruppennamen ein (mindestens 4 Zeichen)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "Sie können keine neue Gruppe auf diesem Server erstellen"
-
-#~ msgid "Location node created"
-#~ msgstr "Ortsknoten erstellt"
-
-#~ msgid "Bookmark node created"
-#~ msgstr "Lesezeichenknoten erstellt"
-
-#~ msgid "Profile node created"
-#~ msgstr "Profilknoten erstellt"
-
-#~ msgid "Avatar node created"
-#~ msgstr "Avatarknoten erstellt"
-
-#~ msgid "Subscriptions node created"
-#~ msgstr "Abonnementknoten erstellt"
-
-#~ msgid "Microblog node created"
-#~ msgstr "Microblogknoten ersellt"
-
-#~ msgid "Link"
-#~ msgstr "Verweis"
-
-#~ msgid "Tags"
-#~ msgstr "Schlagwörter"
-
-#~ msgid "Edit post"
-#~ msgstr "Posting bearbeiten"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "Fügen Sie ein Bild oder eine Datei zu Ihrem Beitrag hinzu."
-
-#~ msgid "You cannot publish a post on this Group"
-#~ msgstr "Sie können in dieser Gruppe keine Beiträge veröffentlichen."
-
-#~ msgid "Some fields have been filled in. Do you still want to go back and loose their content?"
-#~ msgstr "Einige Felder wurden bereits ausgefüllt. Möchten Sie dennoch zurückgehen und die Einträge verwerfen?"
-
-#~ msgid "Click here to add some text to your publication"
-#~ msgstr "Klicken Sie hier um ihrer Veröffentlichung einen Text hinzuzufügen"
-
-#~ msgid "Add some text"
-#~ msgstr "Text hinzufügen"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Nicht gruppiert"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "Abgemeldete Kontakte anzeigen"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "Abgemeldete Kontakte verbergen"
-
-#~ msgid "Show group %s"
-#~ msgstr "Gruppe %s anzeigen"
-
-#~ msgid "Hide group %s"
-#~ msgstr "Gruppe %s verbergen"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "Bitte eine gültige Jabber-Kennung eingeben"
-
-#~ msgid "No contacts ?"
-#~ msgstr "Keine Kontakte?"
-
-#~ msgid "You can add one using the + button below"
-#~ msgstr "Sie können mit Hilfe des + Knopfs einen hinzufügen"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Anzeigen/Ausblenden"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "Suchergebnisse"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Kontakte durchsuchen"
-
-#~ msgid "Search a contact"
-#~ msgstr "Kontakt suchen"
-
-#~ msgid "This is not a valid url"
-#~ msgstr "Das ist keine gültige URL"
-
-#~ msgid "Sharing the URL"
-#~ msgstr "Diese URL teilen"
-
-#~ msgid "Go to my profile page"
-#~ msgstr "Gehe zu meiner Profilseite"

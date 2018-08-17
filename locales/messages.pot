@@ -91,7 +91,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -234,6 +234,10 @@ msgstr ""
 
 #: [adhoc]title
 msgid "Actions"
+msgstr ""
+
+#: [adhoc]completed
+msgid "Action completed"
 msgstr ""
 
 #: [admin]general
@@ -591,9 +595,7 @@ msgid "No chats yet..."
 msgstr ""
 
 #: [chats]empty
-msgid ""
-"Open a new conversation by clicking on the %s button below or visit the "
-"%sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add

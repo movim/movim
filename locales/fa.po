@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
 "Language: fa\n"
@@ -232,6 +232,10 @@ msgstr "ثبت نام ممنوع است"
 #: [adhoc]title
 msgid "Actions"
 msgstr "اعمال"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -576,7 +580,7 @@ msgid "No chats yet..."
 msgstr "هنوز گپی ثبت نشده است"
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
@@ -2517,72 +2521,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "مودل نتوانست با پایگاه داده ارتباط برقرار کند"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "موویم به پایگاه داده متصل شده اس"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "پایگاه داده موویم بروز است"
-
-#~ msgid "Database Type"
-#~ msgstr "نوع پایگاه داده"
-
-#~ msgid "Host"
-#~ msgstr "هاست"
-
-#~ msgid "Port"
-#~ msgstr "پورت"
-
-#~ msgid "Database Name"
-#~ msgstr "نام پایگاه داده"
-
-#~ msgid "Groups"
-#~ msgstr "گروه ها"
-
-#~ msgid "Delete the group"
-#~ msgstr "حذف گروه"
-
-#~ msgid "Group name"
-#~ msgstr "نام گروه"
-
-#~ msgid "Group created successfully"
-#~ msgstr "گروه با موفقیت ذخیره شد"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "گروه با موفقیت حذف شد"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "لطفا یک نام معتبر برای گروه انتخاب کنید ( حداقل 4 کاراکتر )"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "شما نمیتوانید گروه جدیدی روی این سرور بسازید"
-
-#~ msgid "Link"
-#~ msgstr "لینک"
-
-#~ msgid "Tags"
-#~ msgstr "تگ ها"
-
-#~ msgid "Edit post"
-#~ msgstr "ویرایش نوشته"
-
-#~ msgid "Add some text"
-#~ msgstr "نوشته ای اضافه کنید"
-
-#~ msgid "Ungrouped"
-#~ msgstr "گروه بندی نشده"
-
-#~ msgid "Show/Hide"
-#~ msgstr "نمایش/مخفی"
-
-#~ msgid "Results"
-#~ msgstr "نتیجه"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "جستجو در مخاطبین"
-
-#~ msgid "Search a contact"
-#~ msgstr "جستجو مخاطبین"

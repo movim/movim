@@ -1,5 +1,6 @@
 #
 # Translators:
+# akong <akong@aspa.idv.tw>, 2018
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -92,8 +93,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -105,43 +106,43 @@ msgstr ""
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "感謝"
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "開發者"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "翻譯人員"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "感謝所有的翻譯人員"
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "軟體"
 
 #: [about]resources
 msgid "Resources"
-msgstr ""
+msgstr "資源"
 
 #: [about]api [schema]api [api]title
 msgid "API"
-msgstr ""
+msgstr "API"
 
 #: [about]info
 msgid "Movim is an XMPP-based communication platform. All the project, except the following software and resources, is under"
-msgstr ""
+msgstr "Movim 是以 XMPP 為基礎的通訊平台。除了以下的軟體及資源，所有的專案都在其中"
 
 #: [account]title [page]account
 msgid "Account"
-msgstr ""
+msgstr "帳號"
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "變更我的密碼"
 
 #: [account]password [credentials]password [form]password [input]password
 msgid "Password"
@@ -149,47 +150,47 @@ msgstr "密碼"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "確認密碼"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "密碼已更新"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "請提供有效的密碼 (最少6個字元)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "密碼並不一樣"
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "刪除您的帳號"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr ""
+msgstr "您將刪除您的 XMPP 帳號及所有連結在此的資訊 (個人資訊，連絡人及發佈的內容)。"
 
 #: [account]delete_text_confirm
 msgid "Are you sure that you want to delete it ?"
-msgstr ""
+msgstr "您確定要刪除嗎?"
 
 #: [account]gateway_title
 msgid "Gateway"
-msgstr ""
+msgstr "通道"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "離開這個範例"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "您將刪除在這個 Movim 範例中所有連結到您帳號的資訊 (個人資訊，連絡人及發佈的內容)。 "
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "這個動作不會刪除您的帳號但是會中斷您與此範例的連結。"
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -197,277 +198,281 @@ msgstr "建立帳號"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
-msgstr ""
+msgstr "沒有帳號在伺服器上有建立"
 
 #: [create]server_on
 msgid "on"
-msgstr ""
+msgstr "啟用"
 
 #: [create]successfull
 msgid "Your acccount has been successfully registered"
-msgstr ""
+msgstr "您的帳號已成功註冊"
 
 #: [create]loading
 msgid "Loading"
-msgstr ""
+msgstr "讀取中"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "…和開始玩樂吧"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
-msgstr ""
+msgstr "不同意"
 
 #: [error]service_unavailable
 msgid "The registration system of this server is currently unavailable"
-msgstr ""
+msgstr "這個伺服器的註冊系統目前是無效的"
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "禁止註冊"
 
 #: [adhoc]title
 msgid "Actions"
 msgstr "動作"
 
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
+
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "一般設定"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "佈景主題"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "預設語言"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "日誌等級"
 
 #: [general]timezone
 msgid "Server Timezone"
-msgstr ""
+msgstr "伺服器時區"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "有限的建議"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr ""
+msgstr "只有建議的聊天室，社群和其他內容可以使用在 XMPP 伺服器及相關服務"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "管理者憑證"
 
 #: [credentials]username [input]username
 msgid "Username"
-msgstr ""
+msgstr "使用者名稱"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "重新輸入密碼"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
-msgstr ""
+msgstr "XMPP 白名單伺服器"
 
 #: [whitelist]info1
 msgid "If you want to specify a list of authorized XMPP servers on your Movim pod and forbid the connection on all the others please put their domain name here, with comma (ex: movim.eu,jabber.fr)"
-msgstr ""
+msgstr "假如您要指定以下已驗證的 XMPP 伺服器在您的 Movim pod 然後禁止連線到其他的伺服器，請在此輸入他們的網域名稱並用逗號分隔 (例如: movim.eu,jabber.fr)"
 
 #: [whitelist]info2
 msgid "Leave this field blank if you allow the access to all the XMPP accounts."
-msgstr ""
+msgstr "假如您允許存取所有 XMPP 帳號的話，保持欄位空白。"
 
 #: [whitelist]label
 msgid "List of whitelisted XMPP servers"
-msgstr ""
+msgstr "XMPP 白名單伺服器列表"
 
 #: [information]title
 msgctxt "[information]title"
 msgid "Information Message"
-msgstr ""
+msgstr "資訊"
 
 #: [information]description [communityconfig]description
 msgid "Description"
-msgstr ""
+msgstr "描述"
 
 #: [information]info1
 msgid "This message will be displayed on the login page"
-msgstr ""
+msgstr "這個訊息會顯示在登入頁面"
 
 #: [information]info2
 msgid "Leave this field blank if you dont want to show any message."
-msgstr ""
+msgstr "假如您不想顯示任何訊息的話，保持欄位空白。"
 
 #: [information]label
 msgctxt "[information]label"
 msgid "Information Message"
-msgstr ""
+msgstr "資訊"
 
 #: [xmpp]title
 msgid "Default XMPP server"
-msgstr ""
+msgstr "預設 XMPP 伺服器"
 
 #: [xmpp]domain
 msgid "Main XMPP server domain"
-msgstr ""
+msgstr "主要 XMPP 伺服器網域"
 
 #: [xmpp]description
 msgid "Main XMPP server description"
-msgstr ""
+msgstr "主要 XMPP 伺服器描述"
 
 #: [xmpp]country
 msgid "Main XMPP server country"
-msgstr ""
+msgstr "主要 XMPP 伺服器國家"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "在列表中選擇一個國家"
 
 #: [log]empty
 msgid "Empty"
-msgstr ""
+msgstr "空白"
 
 #: [log]syslog
 msgid "Syslog"
-msgstr ""
+msgstr "系統日誌"
 
 #: [log]syslog_files
 msgid "Syslog and files"
-msgstr ""
+msgstr "系統日誌和檔案"
 
 #: [admin]compatibility
 msgid "General Overview"
-msgstr ""
+msgstr "一般概述"
 
 #: [compatibility]info
 msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr ""
+msgstr "Movim 有找到一些問題或是狀況需要修正或是改進"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
-msgstr ""
+msgstr "在Movim網頁伺服器 %s 目錄上讀和寫的權限"
 
 #: [compatibility]db
 msgid "The database need to be updated"
-msgstr ""
+msgstr "資料庫需要更新"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr ""
+msgstr "WebSocket 連線錯誤，確認一下假如 Movim 背景正在執行及可以使用"
 
 #: [compatibility]xmpp_websocket
 msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr ""
+msgstr "XMPP Websocket 連線錯誤，請確認在一般設置裡面提供的有效網址"
 
 #: [schema]browser
 msgid "Browser"
-msgstr ""
+msgstr "瀏覽器"
 
 #: [schema]movim
 msgid "Movim Core"
-msgstr ""
+msgstr "Movim Core"
 
 #: [schema]daemon
 msgid "Movim Daemon"
-msgstr ""
+msgstr "Movim 背景服務"
 
 #: [schema]database
 msgid "Database"
-msgstr ""
+msgstr "資料庫"
 
 #: [schema]xmpp
 msgid "XMPP"
-msgstr ""
+msgstr "XMPP"
 
 #: [api]info
 msgid "Here you can register your pod on the official %sMovim API%s"
-msgstr ""
+msgstr "這裡您可以註冊您的 pod 在公開的 %sMovim API%s"
 
 #: [api]register
 msgid "Your pod is not registered on the API"
-msgstr ""
+msgstr "您的 pod 並沒有註冊在 API"
 
 #: [api]registered
 msgid "Your pod is registered on the API"
-msgstr ""
+msgstr "您的 pod 已註冊在 API"
 
 #: [api]wait
 msgid "Your pod is not yet validated"
-msgstr ""
+msgstr "您的 pod 是無效的"
 
 #: [api]validated
 msgid "Your pod is validated"
-msgstr ""
+msgstr "您的 pod 是有效的"
 
 #: [api]unregister
 msgid "You asked to be removed from the API, this request will be processed in a couple of hours"
-msgstr ""
+msgstr "您要求從 API 中移除，這個要求將會在幾個小時內執行"
 
 #: [api]conf_updated [config]updated
 msgid "Configuration updated"
-msgstr ""
+msgstr "設置已更新"
 
 #: [avatar]file
 msgid "File"
-msgstr ""
+msgstr "檔案"
 
 #: [avatar]use_it
 msgid "Use it"
-msgstr ""
+msgstr "使用這個"
 
 #: [avatar]webcam
 msgid "Webcam"
-msgstr ""
+msgstr "網路攝影機"
 
 #: [avatar]cheese
 msgid "Cheese !"
-msgstr ""
+msgstr "乾杯 !"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
-msgstr ""
+msgstr "用網路攝影機拍照吧"
 
 #: [avatar]updated
 msgid "Avatar Updated"
-msgstr ""
+msgstr "圖示已更新"
 
 #: [avatar]not_updated
 msgid "Avatar Not Updated"
-msgstr ""
+msgstr "圖示未更新"
 
 #: [avatar]missing
 msgid "No avatar defined yet"
-msgstr ""
+msgstr "未定義圖示"
 
 #: [blog]title [feed]title
 msgid "%s's feed"
-msgstr ""
+msgstr "%s的文章"
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
-msgstr ""
+msgstr "這個使用者目前沒有發表任何文章"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
-msgstr ""
+msgstr "這個內容是私人的，請登入後再來看"
 
 #: [message]published
 msgid "Message Published"
-msgstr ""
+msgstr "訊息已發佈"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "您的訊息可能不能送出，請晚點重試"
 
 #: [message]encrypted
 msgid "Encrypted message"
-msgstr ""
+msgstr "已加密訊息"
 
 #: [message]composing [chats]composing
 msgid "Composing..."
@@ -475,79 +480,79 @@ msgstr "輸入中"
 
 #: [message]paused [chats]paused
 msgid "Paused..."
-msgstr ""
+msgstr "已暫停..."
 
 #: [message]gone
 msgid "Contact gone"
-msgstr ""
+msgstr "聯絡消失"
 
 #: [message]history
 msgid "%s messages retrieved"
-msgstr ""
+msgstr "%s 訊息檢索"
 
 #: [message]edit_help
 msgid "You can use the up arrow ↑ to edit your previous message"
-msgstr ""
+msgstr "您可以使用方向鍵的上鍵 ↑ 來編輯您之前的訊息"
 
 #: [chat]attention
 msgid "%s needs your attention"
-msgstr ""
+msgstr "%s 需要您的關注"
 
 #: [chat]placeholder
 msgid "Your message here..."
-msgstr ""
+msgstr "您的訊息在這裡..."
 
 #: [chat]smileys
 msgid "Smileys"
-msgstr ""
+msgstr "笑臉"
 
 #: [chat]frequent [chats]frequent
 msgid "Frequent contacts"
-msgstr ""
+msgstr "常聯絡的"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "這裡沒有..."
 
 #: [chat]new_text
 msgid "Don't be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "不要害羞，送出第一個訊息來開始討論"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "您收到一則加入聊天室的邀請"
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr ""
+msgstr "加入 %s"
 
 #: [chat]profile
 msgid "See the profile"
-msgstr ""
+msgstr "檢視個人設定"
 
 #: [chat]clear
 msgid "Clear the history"
-msgstr ""
+msgstr "清除紀錄"
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr ""
+msgstr "編輯最後的訊息"
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr ""
+msgstr "回報濫用"
 
 #: [chatroom]members
 msgid "Members"
-msgstr ""
+msgstr "成員"
 
 #: [chatroom]connected [chatrooms]connected
 msgid "Connected to the chatroom"
-msgstr ""
+msgstr "已連線到聊天室"
 
 #: [chatroom]disconnected [chatrooms]disconnected
 msgid "Disconnected from the chatroom"
-msgstr ""
+msgstr "已中斷與聊天室的連線"
 
 #: [chatroom]config [communityaffiliation]configuration [page]configuration
 msgid "Configuration"
@@ -555,35 +560,35 @@ msgstr "設置"
 
 #: [chatroom]config_saved [communityaffiliation]config_saved
 msgid "Configuration saved"
-msgstr ""
+msgstr "已儲存設置"
 
 #: [chatroom]subject
 msgid "Subject"
-msgstr ""
+msgstr "主旨"
 
 #: [chatroom]subject_changed
 msgid "Subject changed"
-msgstr ""
+msgstr "已變更主旨"
 
 #: [chatroom]administration [page]administration
 msgid "Administration"
-msgstr ""
+msgstr "管理者"
 
 #: [chats]empty_title
 msgid "No chats yet..."
-msgstr ""
+msgstr "沒有對話..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
-msgstr ""
+msgstr "跟聯絡人聊天"
 
 #: [chats]more
 msgid "Load more contacts"
-msgstr ""
+msgstr "讀取更多的聯絡人"
 
 #: [button]chat
 msgid "Chat"
@@ -591,43 +596,43 @@ msgstr "聊天"
 
 #: [button]new
 msgid "New conversation"
-msgstr ""
+msgstr "新的對話"
 
 #: [communities]empty_text
 msgid "Discover, follow and share"
-msgstr ""
+msgstr "探索，跟隨和分享"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%s 社群"
 
 #: [communities]search_server
 msgid "Search for a new server"
-msgstr ""
+msgstr "搜索新的伺服器"
 
 #: [communities]servers
 msgid "Communities servers"
-msgstr ""
+msgstr "社群伺服器"
 
 #: [communities]disco_error
 msgid "This server doesn't exists"
-msgstr ""
+msgstr "這個伺服器不存在"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
-msgstr ""
+msgstr "社群建立成功"
 
 #: [communitiesserver]empty_server
 msgid "There is no Communities yet on this server."
-msgstr ""
+msgstr "在這個伺服器上沒有社群。"
 
 #: [communitiesserver]add
 msgid "Create a new community on %s"
-msgstr ""
+msgstr "建立社群在 %s"
 
 #: [communitiesserver]name
 msgid "Community name"
-msgstr ""
+msgstr "社群名稱"
 
 #: [communitiesserver]name_example
 msgid "My Little Pony - Fan Club"
@@ -1115,9 +1120,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP網域錯誤, 不正確Jabber ID"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "缺少資料 !"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -1493,7 +1497,7 @@ msgstr ""
 
 #: [chatrooms]id
 msgid "Chat Room ID"
-msgstr ""
+msgstr "聊天室 ID"
 
 #: [chatrooms]name_placeholder
 msgid "My Favorite Room"
@@ -1501,11 +1505,11 @@ msgstr ""
 
 #: [chatrooms]bad_id
 msgid "Bad Chatroom ID"
-msgstr ""
+msgstr "錯誤的聊天室 ID"
 
 #: [chatrooms]empty_name
 msgid "Empty name"
-msgstr ""
+msgstr "空白的名稱"
 
 #: [chatrooms]users
 msgid "Users in the room"
@@ -1529,7 +1533,7 @@ msgstr ""
 
 #: [bookmarks]updated
 msgid "Bookmarks updated"
-msgstr ""
+msgstr "書籤已更新"
 
 #: [room]anonymous_title
 msgid "Public chatroom"
@@ -2516,12 +2520,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "General Informations"
-#~ msgstr "一般資訊"
-
-#~ msgid "Client Informations"
-#~ msgstr "聯絡人的簡訊"
-
-#~ msgid "Ungrouped"
-#~ msgstr "未群組"

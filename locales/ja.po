@@ -96,8 +96,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
 "Language: ja\n"
@@ -234,6 +234,10 @@ msgstr ""
 #: [adhoc]title
 msgid "Actions"
 msgstr "アクション"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -578,7 +582,7 @@ msgid "No chats yet..."
 msgstr "チャットがまだありません…"
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
@@ -1119,9 +1123,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPPドメインエラーが発生しました。使われているアカウントは不可なJabberIDです。"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "いくつかのデータが足りません。"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2520,87 +2523,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modlがデータベースに接続できませんでした"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movimがデータベースに接続しました"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "データベースがアップデートされました"
-
-#~ msgid "Database Type"
-#~ msgstr "データベースタイプ"
-
-#~ msgid "Host"
-#~ msgstr "ホスト"
-
-#~ msgid "Port"
-#~ msgstr "ポート"
-
-#~ msgid "Database Name"
-#~ msgstr "データベース名"
-
-#~ msgid "Groups"
-#~ msgstr "グループ"
-
-#~ msgid "General Informations"
-#~ msgstr "一般情報"
-
-#~ msgid "Client Informations"
-#~ msgstr "クライアントインフォメーション"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "グループの設定が保存されました"
-
-#~ msgid "Delete the group"
-#~ msgstr "グループを削除する"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "このグループを削除しますが、よろしいですか"
-
-#~ msgid "Group name"
-#~ msgstr "グループ名"
-
-#~ msgid "Group created successfully"
-#~ msgstr "グループが正常に作成されました"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "グループが正常に削除されました"
-
-#~ msgid "Link"
-#~ msgstr "リンク"
-
-#~ msgid "Tags"
-#~ msgstr "タグ"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "オフラインの連絡先を表示"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "オフラインの連絡先を非表示"
-
-#~ msgid "Show group %s"
-#~ msgstr "グループ%sを表示"
-
-#~ msgid "Hide group %s"
-#~ msgstr "グループ%sを非表示"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "正しいJabber IDを入力してください"
-
-#~ msgid "Show/Hide"
-#~ msgstr "表示/非表示"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "検索結果"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "コンタクトを検索"
-
-#~ msgid "Search a contact"
-#~ msgstr "コンタクトを検索"

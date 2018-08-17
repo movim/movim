@@ -94,8 +94,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-03 12:08+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
 "Language: he\n"
@@ -232,6 +232,10 @@ msgstr ""
 #: [adhoc]title
 msgid "Actions"
 msgstr "פעולות"
+
+#: [adhoc]completed
+msgid "Action completed"
+msgstr ""
 
 #: [admin]general
 msgid "General Settings"
@@ -576,7 +580,7 @@ msgid "No chats yet..."
 msgstr "אין שיחות עדיין..."
 
 #: [chats]empty
-msgid "Open a new conversation by clicking on the %s button below or visit the %sContacts%s page."
+msgid "Start a new conversation by clicking on the %s button."
 msgstr ""
 
 #: [chats]add
@@ -1117,9 +1121,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "שגיאת מתחם XMPP, חשבונך אינו כתובת JID תקינה"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "חסר מידע מסוים !"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2518,135 +2521,3 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl לא היה מסוגל להתחבר אל מסד נתונים"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim הינו מחובר אל מסד נתונים"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "מסד נתונים Movim הינו עדכני"
-
-#~ msgid "Database Type"
-#~ msgstr "טיפוס מסד נתונים"
-
-#~ msgid "Host"
-#~ msgstr "מארח"
-
-#~ msgid "Port"
-#~ msgstr "פורט"
-
-#~ msgid "Database Name"
-#~ msgstr "שם מסד נתונים"
-
-#~ msgid "Groups"
-#~ msgstr "קבוצות"
-
-#~ msgid "General Informations"
-#~ msgstr "מידע כללי"
-
-#~ msgid "Client Informations"
-#~ msgstr "מידע לקוח"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "משהו רע קרה לקבוצה זו"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "תצורת קבוצה נשמרה"
-
-#~ msgid "Delete the group"
-#~ msgstr "מחק את הקבוצה"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s קבוצות על שרת זה"
-
-#~ msgid "Groups servers"
-#~ msgstr "שרתי קבוצות"
-
-#~ msgid "Group name"
-#~ msgstr "שם קבוצה"
-
-#~ msgid "Group created successfully"
-#~ msgstr "קבוצה נוצרה בהצלחה"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "קבוצה נמחקה בהצלחה"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "אנא ספק שם קבוצה קביל (4 תווים לפחות)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "אין באפשרותך ליצור קבוצה חדשה על שרת זה"
-
-#~ msgid "Location node created"
-#~ msgstr "צומת מיקום נוצר"
-
-#~ msgid "Bookmark node created"
-#~ msgstr "צומת סימנייה נוצר"
-
-#~ msgid "Profile node created"
-#~ msgstr "צומת דיוקן נוצר"
-
-#~ msgid "Avatar node created"
-#~ msgstr "צומת אווטאר נוצר"
-
-#~ msgid "Subscriptions node created"
-#~ msgstr "צומת הרשמות נוצר"
-
-#~ msgid "Microblog node created"
-#~ msgstr "צומת מיקרו-בלוג נוצר"
-
-#~ msgid "Link"
-#~ msgstr "קישור"
-
-#~ msgid "Tags"
-#~ msgstr "תגיות"
-
-#~ msgid "Edit post"
-#~ msgstr "ערוך פרסום"
-
-#~ msgid "Add a file or a picture to your post"
-#~ msgstr "הוסף קובץ או תמונה לפרסום שלך"
-
-#~ msgid "You cannot publish a post on this Group"
-#~ msgstr "אין באפשרותך לפרסם בקבוצה זו"
-
-#~ msgid "Add some text"
-#~ msgstr "הוסף טקסט"
-
-#~ msgid "Ungrouped"
-#~ msgstr "ללא קבוצה"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "הצג אנשי קשר לא מחוברים"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "הסתר אנשי קשר לא מחוברים"
-
-#~ msgid "Show group %s"
-#~ msgstr "הצג את קבוצה %s"
-
-#~ msgid "Hide group %s"
-#~ msgstr "הסתר את קבוצה %s"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "אנא הזן מזהה Jabber תקף"
-
-#~ msgid "No contacts ?"
-#~ msgstr "אין אנשי קשר ?"
-
-#~ msgid "Show/Hide"
-#~ msgstr "הצג/הסתר"
-
-#~ msgid "JID"
-#~ msgstr "JID"
-
-#~ msgid "Results"
-#~ msgstr "תוצאות"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "חפש בתוך אנשי הקשר שלך"
-
-#~ msgid "Search a contact"
-#~ msgstr "חפש איש קשר"
