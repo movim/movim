@@ -62,7 +62,7 @@ class Message extends Model
         /**
          * If not we just create or load a message
          */
-        $id = ($stanza->{'stanza-id'}->attributes()->id)
+        $id = ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id)
             ? (string)$stanza->{'stanza-id'}->attributes()->id
             : 'm_' . generateUUID();
 
@@ -75,7 +75,7 @@ class Message extends Model
 
     public function set($stanza, $parent = false)
     {
-        $this->id = ($stanza->{'stanza-id'}->attributes()->id)
+        $this->id = ($stanza->{'stanza-id'} && $stanza->{'stanza-id'}->attributes()->id)
             ? (string)$stanza->{'stanza-id'}->attributes()->id
             : 'm_' . generateUUID();
 

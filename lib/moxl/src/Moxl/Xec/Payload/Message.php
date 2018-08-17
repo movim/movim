@@ -14,12 +14,17 @@ class Message extends Payload
             return;
         }
 
-        if ($stanza->composing)
+        if ($stanza->composing) {
             $this->event('composing', [$jid[0], $to]);
-        if ($stanza->paused)
+        }
+
+        if ($stanza->paused) {
             $this->event('paused', [$jid[0], $to]);
-        if ($stanza->gone)
+        }
+
+        if ($stanza->gone) {
             $this->event('gone', [$jid[0], $to]);
+        }
 
         $message = \App\Message::findByStanza($stanza);
         $message->set($stanza, $parent);
