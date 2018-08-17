@@ -50,6 +50,7 @@ v0.14 (trunk)
  * Move the Communities, Blogs and News articles feeds to paginated ones
  * Autoescape templates by default in RainTPL
  * Remove the action buttons in Chat
+ * Use XEP-0359: Unique and Stable Stanza IDs as unique identifiers for the Messages in the DB
 
 v0.13
 ---------------------------

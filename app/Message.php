@@ -48,25 +48,39 @@ class Message extends Model
 
     public static function findByStanza($stanza)
     {
-        $id = ($stanza->replace)
-            ? (string)$stanza->replace->attributes()->id
-            : (string)$stanza->attributes()->id;
-
-        if (!empty($id)) {
+        /**
+         * If this stanza replaces another one, we load the original message
+         */
+        if ($stanza->replace) {
             return self::firstOrNew([
                 'user_id' => \App\User::me()->id,
-                'id' => $id,
+                'replaceid' => (string)$stanza->replace->attributes()->id,
                 'jidfrom' => current(explode('/',(string)$stanza->attributes()->from))
             ]);
         }
 
-        return new Message;
+        /**
+         * If not we just create or load a message
+         */
+        $id = ($stanza->{'stanza-id'}->attributes()->id)
+            ? (string)$stanza->{'stanza-id'}->attributes()->id
+            : 'm_' . generateUUID();
+
+        return self::firstOrNew([
+            'user_id' => \App\User::me()->id,
+            'id' => $id,
+            'jidfrom' => current(explode('/',(string)$stanza->attributes()->from))
+        ]);
     }
 
     public function set($stanza, $parent = false)
     {
-        if (!isset($this->id)) {
-            $this->id = 'm_' . generateUUID();
+        $this->id = ($stanza->{'stanza-id'}->attributes()->id)
+            ? (string)$stanza->{'stanza-id'}->attributes()->id
+            : 'm_' . generateUUID();
+
+        if ($stanza->attributes()->id) {
+            $this->replaceid = $stanza->attributes()->id;
         }
 
         $jid = explode('/',(string)$stanza->attributes()->from);
@@ -100,9 +114,9 @@ class Message extends Model
                 $this->type = (string)$stanza->attributes()->type;
             }
 
-            if (isset($stanza->attributes()->id)) {
+            /*if (isset($stanza->attributes()->id)) {
                 $this->id = (string)$stanza->attributes()->id;
-            }
+            }*/
 
             if ($stanza->x
             && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
@@ -229,17 +243,23 @@ class Message extends Model
             if ($stanza->replace
             && $this->user->messages()
                 ->where('jidfrom', $this->jidfrom)
-                ->where('id', $this->id)
+                ->where('replaceid', $this->replaceid)
                 ->count() == 0
             ) {
-                $this->oldid = (string)$stanza->replace->attributes()->id;
+                $message = $this->user->messages()
+                                ->where('jidfrom', $this->jidfrom)
+                                ->where('replaceid', (string)$stanza->replace->attributes()->id)
+                                ->first();
+                $this->oldid = $message->id;
                 $this->edited = true;
-                Message::where('id', (string)$stanza->replace->attributes()->id)
+
+                /**
+                 * We prepare the existing message to be edited in the DB
+                 */
+                Message::where('replaceid', (string)$stanza->replace->attributes()->id)
+                ->where('user_id', $this->user_id)
                 ->where('jidfrom', $this->jidfrom)
-                ->update([
-                    'id' => $this->id,
-                    'edited' => true
-                ]);
+                ->update(['id' => $this->id]);
             }
 
             if (isset($stanza->x->invite)) {
