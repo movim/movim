@@ -177,12 +177,12 @@ if (typeof MovimWebsocket != 'undefined') {
         Notification_ajaxGet();
         Notification.current(Notification.notifs_key);
 
-        document.addEventListener('blur', function() {
+        window.addEventListener('blur', function() {
             Notification.focused = false;
             Notification_ajaxCurrent('blurred');
         });
 
-        document.addEventListener('focus', function() {
+        window.addEventListener('focus', function() {
             Notification.focused = true;
             Notification.current(Notification.notifs_key);
             Notification_ajaxClear(Notification.notifs_key);
