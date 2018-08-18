@@ -16,6 +16,12 @@ class Message extends Model
         'type'    => 'chat'
     ];
 
+    protected $casts = [
+        'edited'   => 'boolean',
+        'quoted'   => 'boolean',
+        'markable' => 'boolean'
+    ];
+
     public function save(array $options = [])
     {
         try {
