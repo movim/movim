@@ -51,11 +51,14 @@ class Get extends Action
         if(isset($stanza->fin)
         && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
         && isset($stanza->fin->set->last)
-        && !isset($this->_jid)
-        && !isset($this->_to)
         && (string)$stanza->fin->set->last != $this->_after) {
             $g = new Get;
+            $g->setJid($this->_jid);
+            $g->setTo($this->_to);
             $g->setLimit($this->_limit);
+            $g->setStart($this->_start);
+            $g->setEnd($this->_end);
+            $g->setBefore($this->_before);
             $g->setAfter((string)$stanza->fin->set->last);
             $g->request();
         }
