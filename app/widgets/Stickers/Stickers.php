@@ -1,7 +1,6 @@
 <?php
 
 use Moxl\Xec\Action\Message\Publish;
-
 use Moxl\Xec\Action\BOB\Answer;
 
 use Respect\Validation\Validator;
@@ -147,7 +146,7 @@ class Stickers extends \Movim\Widget\Base
     }
 
     /**
-     * @brief Get the path of a emoji
+     * @brief Get the path of an emoji
      */
     function ajaxSmileyGet($string)
     {
@@ -183,9 +182,8 @@ class Stickers extends \Movim\Widget\Base
      */
     private function validateJid($jid)
     {
-        $validate_jid = Validator::stringType()->noWhitespace()->length(6, 60);
-        if (!$validate_jid->validate($jid)) return false;
-        else return true;
+        return Validator::stringType()->noWhitespace()
+                        ->length(6, 60)->validate($jid);
     }
 
     function getSmileyPath($id)

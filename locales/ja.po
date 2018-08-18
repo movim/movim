@@ -96,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"POT-Creation-Date: 2018-08-18 19:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -255,10 +255,6 @@ msgstr "標準の言語"
 msgid "Log verbosity"
 msgstr "ログ"
 
-#: [general]timezone
-msgid "Server Timezone"
-msgstr "サーバータイムゾーン"
-
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
 msgstr ""
@@ -353,24 +349,12 @@ msgstr "Syslogとファイル"
 msgid "General Overview"
 msgstr "概要"
 
-#: [compatibility]info
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr ""
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
 
-#: [compatibility]db
-msgid "The database need to be updated"
-msgstr "データベースをアップデートする必要があります"
-
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr ""
-
-#: [compatibility]xmpp_websocket
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
 msgstr ""
 
 #: [schema]browser
@@ -478,11 +462,12 @@ msgid "Encrypted message"
 msgstr "暗号化されたメッセージ"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
+#, fuzzy
+msgid "Composing…"
 msgstr "書き込み中"
 
 #: [message]paused [chats]paused
-msgid "Paused..."
+msgid "Paused…"
 msgstr ""
 
 #: [message]gone
@@ -502,14 +487,15 @@ msgid "%s needs your attention"
 msgstr ""
 
 #: [chat]placeholder
-msgid "Your message here..."
+#, fuzzy
+msgid "Your message here…"
 msgstr "ここに記入を..."
 
 #: [chat]smileys
 msgid "Smileys"
 msgstr "絵文字"
 
-#: [chat]frequent [chats]frequent
+#: [chat]frequent
 msgid "Frequent contacts"
 msgstr ""
 
@@ -578,7 +564,8 @@ msgid "Administration"
 msgstr "システム管理"
 
 #: [chats]empty_title
-msgid "No chats yet..."
+#, fuzzy
+msgid "No chats yet…"
 msgstr "チャットがまだありません…"
 
 #: [chats]empty
@@ -588,10 +575,6 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "誰かとチャットする"
-
-#: [chats]more
-msgid "Load more contacts"
-msgstr ""
 
 #: [button]chat
 msgid "Chat"
@@ -1603,8 +1586,9 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-msgid "Your server here ?"
-msgstr ""
+#, fuzzy
+msgid "Your server here?"
+msgstr "ここに記入を..."
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1663,11 +1647,12 @@ msgid "Privacy Level"
 msgstr ""
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
-msgstr ""
+#, fuzzy
+msgid "Is this profile public?"
+msgstr "あなたのプロファイルは公開されました"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -2523,3 +2508,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
+
+#~ msgid "Server Timezone"
+#~ msgstr "サーバータイムゾーン"
+
+#~ msgid "The database need to be updated"
+#~ msgstr "データベースをアップデートする必要があります"

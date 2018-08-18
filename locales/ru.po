@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"POT-Creation-Date: 2018-08-18 19:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -263,10 +263,6 @@ msgstr "Язык по умолчанию"
 msgid "Log verbosity"
 msgstr "Детализация лога"
 
-#: [general]timezone
-msgid "Server Timezone"
-msgstr "Часовой пояс сервера"
-
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
 msgstr "Предотвращать подсказки"
@@ -361,25 +357,13 @@ msgstr "Syslog и файлы"
 msgid "General Overview"
 msgstr "Общие сведения"
 
-#: [compatibility]info
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr "Movim обнаружил проблемы или вещи, которые должны быть исправлены или улучшены"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Нужны права чтения и записи для вебсервера в директории %s"
 
-#: [compatibility]db
-msgid "The database need to be updated"
-msgstr "База данных нуждается в обновление"
-
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "Сбой соединения по протоколу WebSocket. Убедитесь, что служба Movim запущена и доступна по сети"
-
-#: [compatibility]xmpp_websocket
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr "Ошибка соединения Websocket, проверьте правильность URL адреса в разделе настроек"
 
 #: [schema]browser
 msgid "Browser"
@@ -486,11 +470,13 @@ msgid "Encrypted message"
 msgstr "Зашифрованное сообщение"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
+#, fuzzy
+msgid "Composing…"
 msgstr "Печатает..."
 
 #: [message]paused [chats]paused
-msgid "Paused..."
+#, fuzzy
+msgid "Paused…"
 msgstr "Пауза..."
 
 #: [message]gone
@@ -510,14 +496,15 @@ msgid "%s needs your attention"
 msgstr "%s нуждается в Вашем внимании"
 
 #: [chat]placeholder
-msgid "Your message here..."
+#, fuzzy
+msgid "Your message here…"
 msgstr "Введите ваше сообщение здесь..."
 
 #: [chat]smileys
 msgid "Smileys"
 msgstr "Смайлики"
 
-#: [chat]frequent [chats]frequent
+#: [chat]frequent
 msgid "Frequent contacts"
 msgstr "Популярные контакты"
 
@@ -586,7 +573,8 @@ msgid "Administration"
 msgstr "Администрирование"
 
 #: [chats]empty_title
-msgid "No chats yet..."
+#, fuzzy
+msgid "No chats yet…"
 msgstr "Разговоров пока нет..."
 
 #: [chats]empty
@@ -596,10 +584,6 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Пообщаться с контактом"
-
-#: [chats]more
-msgid "Load more contacts"
-msgstr "Загрузить еще"
 
 #: [button]chat
 msgid "Chat"
@@ -1611,7 +1595,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "Movim — это децентрализованная социальная сеть. Перед созданием учетной записи нужно выбрать сервер."
 
 #: [subscribe]server_question
-msgid "Your server here ?"
+#, fuzzy
+msgid "Your server here?"
 msgstr "Ваш сервер здесь ?"
 
 #: [subscribe]server_contact
@@ -1671,11 +1656,13 @@ msgid "Privacy Level"
 msgstr "Уровень приватности"
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
+#, fuzzy
+msgid "Is this profile public?"
 msgstr "Этот профиль общедоступен?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+#, fuzzy
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr "Пожалуйста прочитайте это! Делая свой профиль публичным, вся информация, указанная ниже, будет доступна всем пользователям Movim в интернете!"
 
 #: [save]submit [button]submit
@@ -2531,3 +2518,18 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "Server Timezone"
+#~ msgstr "Часовой пояс сервера"
+
+#~ msgid "Movim has found some issues or things that need to be fixed or improved"
+#~ msgstr "Movim обнаружил проблемы или вещи, которые должны быть исправлены или улучшены"
+
+#~ msgid "The database need to be updated"
+#~ msgstr "База данных нуждается в обновление"
+
+#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
+#~ msgstr "Ошибка соединения Websocket, проверьте правильность URL адреса в разделе настроек"
+
+#~ msgid "Load more contacts"
+#~ msgstr "Загрузить еще"

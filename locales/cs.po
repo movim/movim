@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"POT-Creation-Date: 2018-08-18 19:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -254,10 +254,6 @@ msgstr "Standardní jazyk"
 msgid "Log verbosity"
 msgstr ""
 
-#: [general]timezone
-msgid "Server Timezone"
-msgstr "Časová zóna serveru"
-
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
 msgstr ""
@@ -352,25 +348,13 @@ msgstr "Syslog a soubory"
 msgid "General Overview"
 msgstr "Obecný přehled"
 
-#: [compatibility]info
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr "Movim našel nějaké chyby nebo věci, které potřebují opravit nebo vylepšit"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
 
-#: [compatibility]db
-msgid "The database need to be updated"
-msgstr "Je potřeba aktualizovat databázi"
-
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "Problém WebSocket připojení; zkontrolujte, zda Movim Daemon běží a je dosažitelný"
-
-#: [compatibility]xmpp_websocket
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr "Chyba připojení XMPP WebSocketu; zkontrolujte prosím validitu URL zadanou v Obecném nastavení"
 
 #: [schema]browser
 msgid "Browser"
@@ -477,11 +461,13 @@ msgid "Encrypted message"
 msgstr "Zašifrovaná zpráva"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
+#, fuzzy
+msgid "Composing…"
 msgstr "Píši..."
 
 #: [message]paused [chats]paused
-msgid "Paused..."
+#, fuzzy
+msgid "Paused…"
 msgstr "Pozastaveno..."
 
 #: [message]gone
@@ -501,14 +487,15 @@ msgid "%s needs your attention"
 msgstr "%s potřebuje vaši pozornost"
 
 #: [chat]placeholder
-msgid "Your message here..."
+#, fuzzy
+msgid "Your message here…"
 msgstr "Vaši zprávu sem..."
 
 #: [chat]smileys
 msgid "Smileys"
 msgstr "Smajlíci"
 
-#: [chat]frequent [chats]frequent
+#: [chat]frequent
 msgid "Frequent contacts"
 msgstr "Časté kontakty"
 
@@ -577,7 +564,8 @@ msgid "Administration"
 msgstr "Administrace"
 
 #: [chats]empty_title
-msgid "No chats yet..."
+#, fuzzy
+msgid "No chats yet…"
 msgstr "Zatím žádné konverzace."
 
 #: [chats]empty
@@ -587,10 +575,6 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Zahájit konverzaci s kontaktem."
-
-#: [chats]more
-msgid "Load more contacts"
-msgstr "Načíst více kontaktů."
 
 #: [button]chat
 msgid "Chat"
@@ -1602,7 +1586,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "Movim je decentralizovaná sociální síť, před vytvořením účtu musíte vybrat server, na který se registrujete."
 
 #: [subscribe]server_question
-msgid "Your server here ?"
+#, fuzzy
+msgid "Your server here?"
 msgstr "Váš server zde?"
 
 #: [subscribe]server_contact
@@ -1662,11 +1647,12 @@ msgid "Privacy Level"
 msgstr "Úroveň soukromí"
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
+#, fuzzy
+msgid "Is this profile public?"
 msgstr "Je tento profil veřejný?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -2522,3 +2508,18 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "Server Timezone"
+#~ msgstr "Časová zóna serveru"
+
+#~ msgid "Movim has found some issues or things that need to be fixed or improved"
+#~ msgstr "Movim našel nějaké chyby nebo věci, které potřebují opravit nebo vylepšit"
+
+#~ msgid "The database need to be updated"
+#~ msgstr "Je potřeba aktualizovat databázi"
+
+#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
+#~ msgstr "Chyba připojení XMPP WebSocketu; zkontrolujte prosím validitu URL zadanou v Obecném nastavení"
+
+#~ msgid "Load more contacts"
+#~ msgstr "Načíst více kontaktů."

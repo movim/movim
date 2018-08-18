@@ -4,9 +4,3 @@
     margin: 0 auto;
     display: block;
 }
-
-#upload div.drop {
-    height: 25rem;
-    width: 100%;
-    background-color: red;
-}

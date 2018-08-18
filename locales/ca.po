@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"POT-Creation-Date: 2018-08-18 19:23+0200\n"
 "PO-Revision-Date: 2018-05-23 19:11+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
@@ -252,10 +252,6 @@ msgstr "Idioma per defecte"
 msgid "Log verbosity"
 msgstr ""
 
-#: [general]timezone
-msgid "Server Timezone"
-msgstr "Zona horaria del servidor"
-
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
 msgstr ""
@@ -350,25 +346,13 @@ msgstr "Syslog i fitxers"
 msgid "General Overview"
 msgstr "Vista general"
 
-#: [compatibility]info
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr "Movim ha trobat alguns problemes o coses que necessiten ser reparats o necessiten una millora"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
 
-#: [compatibility]db
-msgid "The database need to be updated"
-msgstr "La base de dades necessita una actualització"
-
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "Problema de connexió de WebSocket, comprova que el Movim Daemon estigui funcionant i sigui accessible"
-
-#: [compatibility]xmpp_websocket
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr "Problema de connexió XMPP WebSocket, siusplau comprova la validesa de la URL donada en la configuració general"
 
 #: [schema]browser
 msgid "Browser"
@@ -475,11 +459,12 @@ msgid "Encrypted message"
 msgstr "Missatge encriptat"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
+msgid "Composing…"
 msgstr ""
 
 #: [message]paused [chats]paused
-msgid "Paused..."
+#, fuzzy
+msgid "Paused…"
 msgstr "Aturat..."
 
 #: [message]gone
@@ -499,14 +484,15 @@ msgid "%s needs your attention"
 msgstr "%s necessita la teva atenció"
 
 #: [chat]placeholder
-msgid "Your message here..."
+#, fuzzy
+msgid "Your message here…"
 msgstr "Aquí el teu missatge..."
 
 #: [chat]smileys
 msgid "Smileys"
 msgstr ""
 
-#: [chat]frequent [chats]frequent
+#: [chat]frequent
 msgid "Frequent contacts"
 msgstr "Contactes freqüents"
 
@@ -575,7 +561,8 @@ msgid "Administration"
 msgstr ""
 
 #: [chats]empty_title
-msgid "No chats yet..."
+#, fuzzy
+msgid "No chats yet…"
 msgstr "Encara no hi ha cap xat..."
 
 #: [chats]empty
@@ -585,10 +572,6 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Xateja amb un contacte"
-
-#: [chats]more
-msgid "Load more contacts"
-msgstr "Carrega més contactes"
 
 #: [button]chat
 msgid "Chat"
@@ -1600,8 +1583,9 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-msgid "Your server here ?"
-msgstr ""
+#, fuzzy
+msgid "Your server here?"
+msgstr "Aquí el teu missatge..."
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1660,11 +1644,11 @@ msgid "Privacy Level"
 msgstr ""
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
+msgid "Is this profile public?"
 msgstr ""
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -2520,6 +2504,21 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Server Timezone"
+#~ msgstr "Zona horaria del servidor"
+
+#~ msgid "Movim has found some issues or things that need to be fixed or improved"
+#~ msgstr "Movim ha trobat alguns problemes o coses que necessiten ser reparats o necessiten una millora"
+
+#~ msgid "The database need to be updated"
+#~ msgstr "La base de dades necessita una actualització"
+
+#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
+#~ msgstr "Problema de connexió XMPP WebSocket, siusplau comprova la validesa de la URL donada en la configuració general"
+
+#~ msgid "Load more contacts"
+#~ msgstr "Carrega més contactes"
 
 #~ msgid "Modl wasn't able to connect to the database"
 #~ msgstr "Modl no s'ha pogut connectar a la base de dades"

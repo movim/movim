@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"POT-Creation-Date: 2018-08-18 19:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
@@ -254,10 +254,6 @@ msgstr "Bahasa default"
 msgid "Log verbosity"
 msgstr ""
 
-#: [general]timezone
-msgid "Server Timezone"
-msgstr "Zona Waktu Server"
-
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
 msgstr ""
@@ -352,25 +348,13 @@ msgstr "Syslog dan berkas"
 msgid "General Overview"
 msgstr "Gambaran Umum"
 
-#: [compatibility]info
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr "Movim menemukan sebuah isu atau sesuatu yang perlu diperbaiki atau ditingkatkan"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Hak baca dan tulis untuk webserver di direktori Movim %s"
 
-#: [compatibility]db
-msgid "The database need to be updated"
-msgstr "Database perlu diperbarui"
-
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "Terjadi galat koneksi WebSocket, periksa kembali apakah Movim Daemon telah berjalan dan dapat dicapai"
-
-#: [compatibility]xmpp_websocket
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr "Terjadi galat koneksi WebSocket, mohon untuk periksa validasi URL yang diberikan di Konfigurasi Umum"
 
 #: [schema]browser
 msgid "Browser"
@@ -477,11 +461,13 @@ msgid "Encrypted message"
 msgstr "Pesan yang dienkripsi"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
+#, fuzzy
+msgid "Composing…"
 msgstr "Menulis..."
 
 #: [message]paused [chats]paused
-msgid "Paused..."
+#, fuzzy
+msgid "Paused…"
 msgstr "Jeda ..."
 
 #: [message]gone
@@ -501,14 +487,15 @@ msgid "%s needs your attention"
 msgstr "%s butuh perhatian anda"
 
 #: [chat]placeholder
-msgid "Your message here..."
+#, fuzzy
+msgid "Your message here…"
 msgstr "Pesan anda disini..."
 
 #: [chat]smileys
 msgid "Smileys"
 msgstr "Smileys"
 
-#: [chat]frequent [chats]frequent
+#: [chat]frequent
 msgid "Frequent contacts"
 msgstr "Kontak yang sering dihubungi"
 
@@ -577,7 +564,8 @@ msgid "Administration"
 msgstr "Administrasi"
 
 #: [chats]empty_title
-msgid "No chats yet..."
+#, fuzzy
+msgid "No chats yet…"
 msgstr "Belum ada obrolan..."
 
 #: [chats]empty
@@ -587,10 +575,6 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Mengobrol dengan sebuah kontak"
-
-#: [chats]more
-msgid "Load more contacts"
-msgstr "Muat kontak lainnya"
 
 #: [button]chat
 msgid "Chat"
@@ -1602,8 +1586,9 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-msgid "Your server here ?"
-msgstr ""
+#, fuzzy
+msgid "Your server here?"
+msgstr "Pesan anda disini..."
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1662,11 +1647,12 @@ msgid "Privacy Level"
 msgstr "Tingkat Privasi"
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
+#, fuzzy
+msgid "Is this profile public?"
 msgstr "Apakah ini profil publik ?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -2522,3 +2508,18 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Server Timezone"
+#~ msgstr "Zona Waktu Server"
+
+#~ msgid "Movim has found some issues or things that need to be fixed or improved"
+#~ msgstr "Movim menemukan sebuah isu atau sesuatu yang perlu diperbaiki atau ditingkatkan"
+
+#~ msgid "The database need to be updated"
+#~ msgstr "Database perlu diperbarui"
+
+#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
+#~ msgstr "Terjadi galat koneksi WebSocket, mohon untuk periksa validasi URL yang diberikan di Konfigurasi Umum"
+
+#~ msgid "Load more contacts"
+#~ msgstr "Muat kontak lainnya"

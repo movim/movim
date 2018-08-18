@@ -96,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"POT-Creation-Date: 2018-08-18 19:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -255,10 +255,6 @@ msgstr "Alapértelmezett nyelv"
 msgid "Log verbosity"
 msgstr ""
 
-#: [general]timezone
-msgid "Server Timezone"
-msgstr "Szerver Időzóna"
-
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
 msgstr ""
@@ -353,25 +349,13 @@ msgstr "Rendszernapló és fájlok"
 msgid "General Overview"
 msgstr "Általános Áttekintés"
 
-#: [compatibility]info
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr "A Movim talált néhány problémát, amelyet helyre kell hozni vagy amelyen javítani kell"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
 
-#: [compatibility]db
-msgid "The database need to be updated"
-msgstr "Az adatbázis frissítésre szorul."
-
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "WebSocket kapcsolódási hiba, ellenőrizd, hogy fut-e a Movim démon és hogy elérhető-e"
-
-#: [compatibility]xmpp_websocket
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr "XMPP WebSocket kapcsolódási hiba, ellenőrizd az URL érvényességét, amelyet az Általános beállításokban adtál meg"
 
 #: [schema]browser
 msgid "Browser"
@@ -478,11 +462,13 @@ msgid "Encrypted message"
 msgstr "Titkosított üzenet"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
+#, fuzzy
+msgid "Composing…"
 msgstr "Ír..."
 
 #: [message]paused [chats]paused
-msgid "Paused..."
+#, fuzzy
+msgid "Paused…"
 msgstr "Megállt..."
 
 #: [message]gone
@@ -502,14 +488,15 @@ msgid "%s needs your attention"
 msgstr "%snek a figyelmedre van szüksége"
 
 #: [chat]placeholder
-msgid "Your message here..."
+#, fuzzy
+msgid "Your message here…"
 msgstr "Ide írd az üzenetet..."
 
 #: [chat]smileys
 msgid "Smileys"
 msgstr "Hangulatjelek"
 
-#: [chat]frequent [chats]frequent
+#: [chat]frequent
 msgid "Frequent contacts"
 msgstr "Gyakori kapcsolatok"
 
@@ -578,7 +565,8 @@ msgid "Administration"
 msgstr "Adminisztráció"
 
 #: [chats]empty_title
-msgid "No chats yet..."
+#, fuzzy
+msgid "No chats yet…"
 msgstr "Nincsenek még beszélgetések..."
 
 #: [chats]empty
@@ -588,10 +576,6 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Beszélgetés egy partnerrel"
-
-#: [chats]more
-msgid "Load more contacts"
-msgstr "További kapcsolatok betöltése"
 
 #: [button]chat
 msgid "Chat"
@@ -1603,7 +1587,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "A Movim egy decentralizált közösségi hálózat. Mielőtt létrehozod a fiókod válassz egy szervert a regisztrációhoz."
 
 #: [subscribe]server_question
-msgid "Your server here ?"
+#, fuzzy
+msgid "Your server here?"
 msgstr "Itt van a szervered ?"
 
 #: [subscribe]server_contact
@@ -1663,11 +1648,12 @@ msgid "Privacy Level"
 msgstr "Magánszféra szintje"
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
+#, fuzzy
+msgid "Is this profile public?"
 msgstr "Nyilvános ez a profil?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -2523,3 +2509,18 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Server Timezone"
+#~ msgstr "Szerver Időzóna"
+
+#~ msgid "Movim has found some issues or things that need to be fixed or improved"
+#~ msgstr "A Movim talált néhány problémát, amelyet helyre kell hozni vagy amelyen javítani kell"
+
+#~ msgid "The database need to be updated"
+#~ msgstr "Az adatbázis frissítésre szorul."
+
+#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
+#~ msgstr "XMPP WebSocket kapcsolódási hiba, ellenőrizd az URL érvényességét, amelyet az Általános beállításokban adtál meg"
+
+#~ msgid "Load more contacts"
+#~ msgstr "További kapcsolatok betöltése"

@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"POT-Creation-Date: 2018-08-18 19:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
@@ -252,10 +252,6 @@ msgstr "預設語言"
 msgid "Log verbosity"
 msgstr "日誌等級"
 
-#: [general]timezone
-msgid "Server Timezone"
-msgstr "伺服器時區"
-
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
 msgstr "有限的建議"
@@ -350,25 +346,13 @@ msgstr "系統日誌和檔案"
 msgid "General Overview"
 msgstr "一般概述"
 
-#: [compatibility]info
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr "Movim 有找到一些問題或是狀況需要修正或是改進"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "在Movim網頁伺服器 %s 目錄上讀和寫的權限"
 
-#: [compatibility]db
-msgid "The database need to be updated"
-msgstr "資料庫需要更新"
-
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "WebSocket 連線錯誤，確認一下假如 Movim 背景正在執行及可以使用"
-
-#: [compatibility]xmpp_websocket
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr "XMPP Websocket 連線錯誤，請確認在一般設置裡面提供的有效網址"
 
 #: [schema]browser
 msgid "Browser"
@@ -475,11 +459,13 @@ msgid "Encrypted message"
 msgstr "已加密訊息"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
+#, fuzzy
+msgid "Composing…"
 msgstr "輸入中"
 
 #: [message]paused [chats]paused
-msgid "Paused..."
+#, fuzzy
+msgid "Paused…"
 msgstr "已暫停..."
 
 #: [message]gone
@@ -499,14 +485,15 @@ msgid "%s needs your attention"
 msgstr "%s 需要您的關注"
 
 #: [chat]placeholder
-msgid "Your message here..."
+#, fuzzy
+msgid "Your message here…"
 msgstr "您的訊息在這裡..."
 
 #: [chat]smileys
 msgid "Smileys"
 msgstr "笑臉"
 
-#: [chat]frequent [chats]frequent
+#: [chat]frequent
 msgid "Frequent contacts"
 msgstr "常聯絡的"
 
@@ -575,7 +562,8 @@ msgid "Administration"
 msgstr "管理者"
 
 #: [chats]empty_title
-msgid "No chats yet..."
+#, fuzzy
+msgid "No chats yet…"
 msgstr "沒有對話..."
 
 #: [chats]empty
@@ -585,10 +573,6 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "跟聯絡人聊天"
-
-#: [chats]more
-msgid "Load more contacts"
-msgstr "讀取更多的聯絡人"
 
 #: [button]chat
 msgid "Chat"
@@ -1600,8 +1584,9 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-msgid "Your server here ?"
-msgstr ""
+#, fuzzy
+msgid "Your server here?"
+msgstr "您的訊息在這裡..."
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1660,11 +1645,11 @@ msgid "Privacy Level"
 msgstr ""
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
+msgid "Is this profile public?"
 msgstr ""
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -2520,3 +2505,18 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Server Timezone"
+#~ msgstr "伺服器時區"
+
+#~ msgid "Movim has found some issues or things that need to be fixed or improved"
+#~ msgstr "Movim 有找到一些問題或是狀況需要修正或是改進"
+
+#~ msgid "The database need to be updated"
+#~ msgstr "資料庫需要更新"
+
+#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
+#~ msgstr "XMPP Websocket 連線錯誤，請確認在一般設置裡面提供的有效網址"
+
+#~ msgid "Load more contacts"
+#~ msgstr "讀取更多的聯絡人"

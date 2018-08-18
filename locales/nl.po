@@ -100,7 +100,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"POT-Creation-Date: 2018-08-18 19:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -259,10 +259,6 @@ msgstr "Standaardtaal"
 msgid "Log verbosity"
 msgstr "Logniveau"
 
-#: [general]timezone
-msgid "Server Timezone"
-msgstr "Server-tijdzone"
-
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
 msgstr "Suggesties beperken"
@@ -357,25 +353,13 @@ msgstr "Syslog en bestanden"
 msgid "General Overview"
 msgstr "Algemeen Overzicht"
 
-#: [compatibility]info
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr "Movim heeft enkele problemen gevonden of dingen die opgelost of verbeteld moeten worden"
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr "Lees- en schrijfrechten voor de webserver in Movim's %s directory."
 
-#: [compatibility]db
-msgid "The database need to be updated"
-msgstr "De database heeft een update nodig"
-
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
 msgstr "Fout met de WebSocket-verbinding, controlleer of de Movim Daemon aanstaat en bereikbaar is"
-
-#: [compatibility]xmpp_websocket
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-msgstr "XMPP error met WebSocket-verbinding, gelieve de correctheid na te kijken van de URL gegeven in de Algemene Instellingen "
 
 #: [schema]browser
 msgid "Browser"
@@ -482,11 +466,13 @@ msgid "Encrypted message"
 msgstr "Geëncrypteerd bericht"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
+#, fuzzy
+msgid "Composing…"
 msgstr "Bezig met samenstellen..."
 
 #: [message]paused [chats]paused
-msgid "Paused..."
+#, fuzzy
+msgid "Paused…"
 msgstr "Gepauzeerd..."
 
 #: [message]gone
@@ -506,14 +492,15 @@ msgid "%s needs your attention"
 msgstr "%s heeft uw aandacht nodig"
 
 #: [chat]placeholder
-msgid "Your message here..."
+#, fuzzy
+msgid "Your message here…"
 msgstr "Jouw bericht hier.."
 
 #: [chat]smileys
 msgid "Smileys"
 msgstr "Smileys"
 
-#: [chat]frequent [chats]frequent
+#: [chat]frequent
 msgid "Frequent contacts"
 msgstr "Frequente contacten"
 
@@ -582,7 +569,8 @@ msgid "Administration"
 msgstr "Beheer"
 
 #: [chats]empty_title
-msgid "No chats yet..."
+#, fuzzy
+msgid "No chats yet…"
 msgstr "Nog geen chats..."
 
 #: [chats]empty
@@ -592,10 +580,6 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "Chat met een contactpersoon"
-
-#: [chats]more
-msgid "Load more contacts"
-msgstr "Laad meer contactpersonen"
 
 #: [button]chat
 msgid "Chat"
@@ -1607,7 +1591,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-msgid "Your server here ?"
+#, fuzzy
+msgid "Your server here?"
 msgstr "Jouw server hier?"
 
 #: [subscribe]server_contact
@@ -1667,11 +1652,13 @@ msgid "Privacy Level"
 msgstr "Privacy-Niveau"
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
+#, fuzzy
+msgid "Is this profile public?"
 msgstr "Is dit profiel openbaar?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+#, fuzzy
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr "Attentie! Door je profiel openbaar te maken komt alle onderstaande informatie beschikbaar voor alle Movim gebruikers en het het hele internet."
 
 #: [save]submit [button]submit
@@ -2527,3 +2514,18 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "Server Timezone"
+#~ msgstr "Server-tijdzone"
+
+#~ msgid "Movim has found some issues or things that need to be fixed or improved"
+#~ msgstr "Movim heeft enkele problemen gevonden of dingen die opgelost of verbeteld moeten worden"
+
+#~ msgid "The database need to be updated"
+#~ msgstr "De database heeft een update nodig"
+
+#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
+#~ msgstr "XMPP error met WebSocket-verbinding, gelieve de correctheid na te kijken van de URL gegeven in de Algemene Instellingen "
+
+#~ msgid "Load more contacts"
+#~ msgstr "Laad meer contactpersonen"

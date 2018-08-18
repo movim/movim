@@ -1,7 +1,3 @@
-form[name=presence] ul {
-    margin: 0 -2rem;
-}
-
 ul#presence_widget li span.primary {
     opacity: 1;
 }

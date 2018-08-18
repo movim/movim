@@ -94,7 +94,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-17 10:28+0200\n"
+"POT-Creation-Date: 2018-08-18 19:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
@@ -253,10 +253,6 @@ msgstr "שפה משתמטת"
 msgid "Log verbosity"
 msgstr "גיבוב רשומת יומן"
 
-#: [general]timezone
-msgid "Server Timezone"
-msgstr "אזור זמן שרת"
-
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
 msgstr ""
@@ -351,24 +347,12 @@ msgstr "יומן מערכת וקבצים"
 msgid "General Overview"
 msgstr "סקירה כללית"
 
-#: [compatibility]info
-msgid "Movim has found some issues or things that need to be fixed or improved"
-msgstr ""
-
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim's %s directory"
 msgstr ""
 
-#: [compatibility]db
-msgid "The database need to be updated"
-msgstr "על מסד נתונים להתעדכן"
-
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
-msgstr ""
-
-#: [compatibility]xmpp_websocket
-msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
 msgstr ""
 
 #: [schema]browser
@@ -476,11 +460,13 @@ msgid "Encrypted message"
 msgstr "הודעה מוצפנת"
 
 #: [message]composing [chats]composing
-msgid "Composing..."
+#, fuzzy
+msgid "Composing…"
 msgstr "מלחין כעת..."
 
 #: [message]paused [chats]paused
-msgid "Paused..."
+#, fuzzy
+msgid "Paused…"
 msgstr "מושהה..."
 
 #: [message]gone
@@ -500,14 +486,15 @@ msgid "%s needs your attention"
 msgstr "%s רוצה את צומת ליבך"
 
 #: [chat]placeholder
-msgid "Your message here..."
+#, fuzzy
+msgid "Your message here…"
 msgstr "הודעתך כאן..."
 
 #: [chat]smileys
 msgid "Smileys"
 msgstr "סמיילים"
 
-#: [chat]frequent [chats]frequent
+#: [chat]frequent
 msgid "Frequent contacts"
 msgstr "אנשי קשר תדירים"
 
@@ -576,7 +563,8 @@ msgid "Administration"
 msgstr "ניהול"
 
 #: [chats]empty_title
-msgid "No chats yet..."
+#, fuzzy
+msgid "No chats yet…"
 msgstr "אין שיחות עדיין..."
 
 #: [chats]empty
@@ -586,10 +574,6 @@ msgstr ""
 #: [chats]add
 msgid "Chat with a contact"
 msgstr "שיח עם איש קשר"
-
-#: [chats]more
-msgid "Load more contacts"
-msgstr "טען עוד אנשי קשר"
 
 #: [button]chat
 msgid "Chat"
@@ -1601,7 +1585,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "Movim הינה רשת חברתית מבוזרת (א-ריכוזית), טרם יצירת חשבון חדש עליך לבחור שרת להירשם אליו."
 
 #: [subscribe]server_question
-msgid "Your server here ?"
+#, fuzzy
+msgid "Your server here?"
 msgstr "שרתך כאן ?"
 
 #: [subscribe]server_contact
@@ -1661,11 +1646,12 @@ msgid "Privacy Level"
 msgstr "רמת פרטיות"
 
 #: [privacy]privacy_question
-msgid "Is this profile public ?"
+#, fuzzy
+msgid "Is this profile public?"
 msgstr "האם דיוקן זה הינו פומבי ?"
 
 #: [privacy]privacy_info
-msgid "Please pay attention ! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
+msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
 
 #: [save]submit [button]submit
@@ -2521,3 +2507,12 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
+
+#~ msgid "Server Timezone"
+#~ msgstr "אזור זמן שרת"
+
+#~ msgid "The database need to be updated"
+#~ msgstr "על מסד נתונים להתעדכן"
+
+#~ msgid "Load more contacts"
+#~ msgstr "טען עוד אנשי קשר"
