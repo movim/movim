@@ -403,7 +403,12 @@ class Post extends Model
         }
 
         $this->content = trim($content);
-        $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
+        $hash = hash('sha256', $this->content);
+
+        if ($this->contenthash !== $hash) {
+            $this->contentcleaned = purifyHTML(html_entity_decode($this->content));
+            $this->contenthash = $hash;
+        }
 
         // We fill empty aid
         if ($this->isMicroblog() && empty($this->aid)) {
