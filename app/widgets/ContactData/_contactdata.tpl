@@ -24,7 +24,11 @@
                 <p class="center"><a href="mailto:{$contact->email}">{$contact->email}</a></p>
             {/if}
             {if="$contact->description != null && trim($contact->description) != ''"}
-                <p class="center all" title="{$contact->description}">{$contact->description|nl2br}</p>
+                <p class="center all" title="{$contact->description}">
+                    {autoescape="off"}
+                        {$contact->description|nl2br}
+                    {/autoescape}
+                </p>
             {/if}
         </li>
         <!--<li>
@@ -185,4 +189,3 @@
         {/loop}
     </ul>
 {/if}
-

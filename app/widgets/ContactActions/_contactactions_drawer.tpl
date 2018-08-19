@@ -105,7 +105,11 @@
         <li>
             <span class="primary icon gray"><i class="material-icons">subject</i></span>
             <p>{$c->__('general.about')}</p>
-            <p class="all">{$contact->description|nl2br}</p>
+            <p class="all">
+                {autoescape="off"}
+                    {$contact->description|nl2br}
+                {/autoescape}
+            </p>
         </li>
         {/if}
 
