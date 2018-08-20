@@ -24,7 +24,7 @@ class Muc extends Action
             $this->_nickname = $session->get('username');
         }
 
-        if ($this->_mam == false) {
+        if ($this->_mam == false && $this->_mam2 == false) {
             \App\User::me()->messages()->where('jidfrom', $this->_to)->delete();
         }
 

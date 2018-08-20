@@ -94,7 +94,7 @@ class Chats extends \Movim\Widget\Base
                                   ->orderBy('published', 'desc')
                                   ->first();
             if ($message) {
-                $g->setStart(strtotime($message->published)+10);
+                $g->setStart(strtotime($message->published));
             }
 
             $g->setLimit(150);
@@ -110,8 +110,7 @@ class Chats extends \Movim\Widget\Base
             $g->setJid(echapJid($jid));
 
             if ($message) {
-                // We add a little delay of 10sec to prevent some sync issues
-                $g->setStart(strtotime($message->published)+10);
+                $g->setStart(strtotime($message->published));
             }
 
             $g->request();
