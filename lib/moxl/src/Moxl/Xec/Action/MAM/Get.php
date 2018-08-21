@@ -49,9 +49,9 @@ class Get extends Action
         $this->deliver();
 
         if(isset($stanza->fin)
+        && (!isset($stanza->fin->attributes()->complete) || $stanza->fin->attributes()->complete != 'true')
         && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
-        && isset($stanza->fin->set->last)
-        && (string)$stanza->fin->set->last != $this->_after) {
+        && isset($stanza->fin->set->last)) {
             $g = new Get;
             $g->setJid($this->_jid);
             $g->setTo($this->_to);
