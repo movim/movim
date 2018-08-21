@@ -17,7 +17,7 @@ class Roster extends Payload
             if ($contact) $contact->delete();
 
             if ((string)$stanza->item->attributes()->subscription != 'remove') {
-                $roster = DBRoster::firstOrNew(['jid' => $jid]);
+                $roster = DBRoster::firstOrNew(['jid' => $jid, 'session_id' => DBUser::me()->session->id]);
                 $roster->set($stanza->item);
                 $roster->save();
             }
