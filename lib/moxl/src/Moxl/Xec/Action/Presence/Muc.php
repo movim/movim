@@ -75,8 +75,8 @@ class Muc extends Action
                 $g->setStart(strtotime('-3 days'));
             }
 
-            if ($this->_mam2) {
-                $g->setVersion('2');
+            if (!$this->_mam2) {
+                $g->setVersion('1');
             }
 
             $g->request();
