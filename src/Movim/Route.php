@@ -32,7 +32,7 @@ class Route extends Base
                 'node'          => ['s', 'n', 'i'],
                 'news'          => false,
                 'post'          => ['s', 'n', 'i'],
-                'picture'       => ['url'],
+                'picture'       => ['url', 's'],
                 'popuptest'     => false,
                 'publish'       => ['s', 'n', 'i', 'sh'],
                 'room'          => ['r'],

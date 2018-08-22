@@ -631,7 +631,9 @@ var Chat = {
         div.appendChild(a);
 
         var span = document.createElement("span");
-        span.innerHTML = file.cleansize;
+        if (file.size) {
+            span.innerHTML = file.cleansize;
+        }
         span.setAttribute("class", "size");
 
         a.appendChild(span);

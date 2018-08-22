@@ -664,7 +664,7 @@ class Chat extends \Movim\Widget\Base
             // We proxify pictures links even if they are advertized as small ones
             if (typeIsPicture($message->file['type'])
             && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
-                $message->thumb   = $this->route('picture', urlencode($message->file['uri']));
+                $message->thumb   = $this->route('picture', [urlencode($message->file['uri']), $message->file['size']]);
                 $message->picture = $message->file['uri'];
             }
 
