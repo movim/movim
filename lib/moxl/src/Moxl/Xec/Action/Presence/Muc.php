@@ -29,7 +29,7 @@ class Muc extends Action
         }
 
         // Save the state in the session to handle the callback later
-        $session->set($this->_to . '/' .$this->_nickname, true);
+        $session->set($this->_to . '/' .$this->_nickname, $session->get('id'));
 
         Presence::muc($this->_to, $this->_nickname, $this->_mam);
     }

@@ -39,6 +39,25 @@ class Presence extends Payload
                         if($presence->value != 5 && $presence->value != 6) {
                             $this->method('muc_handle');
                             $this->pack($presence);
+
+                            // If the MUC presence handler wasn't fired yet, it means the reply
+                            // didn't contain the same ID, so it has to be handled manually now.
+                            $presenceId = $session->get((string)$stanza->attributes()->from);
+                            if ($presenceId) {
+                                if ($presenceId !== true && $session->get($presenceId) != false) {
+                                    $instance = $session->get($presenceId);
+                                    $action = $instance->object;
+                                    if (method_exists($action, 'handle')) {
+                                        // We launch the object handle
+                                        $action->method('handle');
+                                        $action->handle($stanza);
+                                    }
+                                    $session->remove($presenceId);
+                                    $session->set((string)$stanza->attributes()->from, true);
+                                }
+                            }
+
+
                         } elseif($presence->value == 5) {
                             $this->method('unavailable_handle');
                             $this->pack($presence);
