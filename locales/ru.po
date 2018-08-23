@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 19:23+0200\n"
+"POT-Creation-Date: 2018-08-23 23:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -184,7 +184,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Ваша учетная запись XMPP и вся связанная с ней информация (профиль, контакты, публикации) будет удалена"
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it ?"
+#, fuzzy
+msgid "Are you sure that you want to delete it?"
 msgstr "Вы уверены, что хотите удалить это?"
 
 #: [account]gateway_title
@@ -313,7 +314,8 @@ msgid "This message will be displayed on the login page"
 msgstr "Это сообщение будет отображаться на странице входа"
 
 #: [information]info2
-msgid "Leave this field blank if you dont want to show any message."
+#, fuzzy
+msgid "Leave this field blank if you don’t want to show any message."
 msgstr "Оставьте это поле пустым, если не хотите, чтобы отображалось какое-либо сообщение"
 
 #: [information]label
@@ -358,7 +360,8 @@ msgid "General Overview"
 msgstr "Общие сведения"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim's %s directory"
+#, fuzzy
+msgid "Read and write rights for the webserver in Movim’s %s directory"
 msgstr "Нужны права чтения и записи для вебсервера в директории %s"
 
 #: [compatibility]websocket
@@ -426,7 +429,8 @@ msgid "Webcam"
 msgstr "Веб-камера"
 
 #: [avatar]cheese
-msgid "Cheese !"
+#, fuzzy
+msgid "Cheese!"
 msgstr "Сыыр!"
 
 #: [avatar]snapshot
@@ -446,7 +450,8 @@ msgid "No avatar defined yet"
 msgstr "Аватар не установлен"
 
 #: [blog]title [feed]title
-msgid "%s's feed"
+#, fuzzy
+msgid "%s’s feed"
 msgstr "лента пользователя %s"
 
 #: [blog]empty
@@ -513,7 +518,8 @@ msgid "Nothing here yet…"
 msgstr "Пока ничего нет..."
 
 #: [chat]new_text
-msgid "Don't be shy, send a first message to start the discussion"
+#, fuzzy
+msgid "Don’t be shy, send a first message to start the discussion"
 msgstr "Не будьте застенчивы, пошлите первое сообщение для начала дискуссии"
 
 #: [chat]invitation
@@ -610,7 +616,8 @@ msgid "Communities servers"
 msgstr "Сервера сообществ"
 
 #: [communities]disco_error
-msgid "This server doesn't exists"
+#, fuzzy
+msgid "This server doesn’t exists"
 msgstr "Такой сервер не существует"
 
 #: [communitiesserver]created
@@ -658,7 +665,8 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr "Вы собираетесь удалить это сообщество. Пожалуйста, подтвердите Ваши намерения."
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#, fuzzy
+msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Похоже, сообщество больше не существует. Хотите удалить его из Ваших подписок?"
 
 #: [communityaffiliation]owner
@@ -762,8 +770,8 @@ msgstr "Оно будет отражено в Вашем профиле"
 msgid "You are going to unsubscribe from this community"
 msgstr "Вы собираетесь отписаться от этого сообщества"
 
-#: [communityheader]sure
-msgid "Are you sure ?"
+#: [communityheader]sure [delete]title
+msgid "Are you sure?"
 msgstr "Вы уверены?"
 
 #: [communityposts]nsfw_title
@@ -787,7 +795,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Здесь вы можете управлять своими подписками"
 
 #: [communitysubscriptions]empty_text2
-msgid "You don't have any group subscriptions yet."
+#, fuzzy
+msgid "You don’t have any group subscriptions yet."
 msgstr "У вас нет подписок на группы"
 
 #: [config]general
@@ -959,8 +968,8 @@ msgid "Mood"
 msgstr "Настроение"
 
 #: [mood]im
-msgid "I'm "
-msgstr "Я "
+msgid "I’m "
+msgstr ""
 
 #: [listen]title
 msgid "Listening"
@@ -993,10 +1002,6 @@ msgstr "Псевдоним"
 #: [edit]group
 msgid "Group"
 msgstr "Группа"
-
-#: [delete]title
-msgid "Are you sure?"
-msgstr "Вы уверены?"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
@@ -1295,7 +1300,8 @@ msgid "Post deleted"
 msgstr "Запись удалена"
 
 #: [post]hot
-msgid "What's Hot"
+#, fuzzy
+msgid "What’s Hot"
 msgstr "Что актуально"
 
 #: [post]hot_text
@@ -1387,7 +1393,8 @@ msgid "Oh! Hello!"
 msgstr "Ох! Здравствуйте!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you’re new there! Welcome on Movim!"
 msgstr "Похоже, вы здесь новенкий! Добро пожаловать в Movim!"
 
 #: [hello]menu_title
@@ -1395,11 +1402,13 @@ msgid "Check the Menu"
 msgstr "Посмотрите меню"
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+#, fuzzy
+msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
 msgstr "Все главные возможности Movim доступны здесь. Пройдитесь по станицам чтобы найти еще!"
 
 #: [hello]profile_title
-msgid "Looks like you didn't complete your profile yet"
+#, fuzzy
+msgid "Looks like you didn’t complete your profile yet"
 msgstr "Похоже, вы не заполнили свой профиль"
 
 #: [hello]profile_paragraph
@@ -1419,7 +1428,8 @@ msgid "Presence"
 msgstr "Присутствие"
 
 #: [publishbrief]placeholder
-msgid "What's new?"
+#, fuzzy
+msgid "What’s new?"
 msgstr "Что нового?"
 
 #: [publishbrief]post
@@ -1479,7 +1489,8 @@ msgid "Edit a chatroom"
 msgstr "Изменить комнату"
 
 #: [rooms]empty_text1
-msgid "You don't have any chatroom yet."
+#, fuzzy
+msgid "You don’t have any chatroom yet."
 msgstr "Вы не зашли ни в какую комнату"
 
 #: [rooms]empty_text2
@@ -1539,7 +1550,8 @@ msgid "Please provide a room address"
 msgstr "Адрес комнаты"
 
 #: [room]anonymous_text1
-msgid "You are currently logued as an anonymous user."
+#, fuzzy
+msgid "You are currently logged as an anonymous user."
 msgstr "Вы вошли как анонимный пользователь"
 
 #: [room]anonymous_text2
@@ -1678,7 +1690,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim временно работает в режиме деградации"
 
 #: [degraded]text_1
-msgid "Your server doesn't support XMPP Pubsub persistance."
+#, fuzzy
+msgid "Your server doesn’t support XMPP Pubsub persistence."
 msgstr "Ваш сервер не имеет модуля PubSub."
 
 #: [degraded]text_2
@@ -1710,11 +1723,13 @@ msgid "…connecting"
 msgstr "... соединение"
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
+#, fuzzy
+msgid "You don’t have Javascript enabled. Good luck with that."
 msgstr "У вас не активирован JavaScript. Удачи вам в этом."
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+#, fuzzy
+msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
 msgstr "Movim — пацанская распределенная платформа социальная активности, которая защищает вашу приватность и имеет много классных фишек."
 
 #: [global]loading
@@ -1811,7 +1826,8 @@ msgid "Cannot load file '%s'"
 msgstr "Не удаётся получить файл '%s'"
 
 #: [error]widget_load_error
-msgid "Requested widget '%s' doesn't exist."
+#, fuzzy
+msgid "Requested widget '%s' doesn’t exist."
 msgstr "Запрашиваемый виджет '%s' не существует."
 
 #: [error]widget_call_error
@@ -2518,6 +2534,12 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "Are you sure ?"
+#~ msgstr "Вы уверены?"
+
+#~ msgid "I'm "
+#~ msgstr "Я "
 
 #~ msgid "Server Timezone"
 #~ msgstr "Часовой пояс сервера"

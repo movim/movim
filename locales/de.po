@@ -107,7 +107,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 19:23+0200\n"
+"POT-Creation-Date: 2018-08-23 23:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -187,7 +187,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Sie werden Ihr XMPP-Konto und alle Informationen welche damit verbunden sind löschen (Profil, Kontakte und Veröffentlichungen)."
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it ?"
+#, fuzzy
+msgid "Are you sure that you want to delete it?"
 msgstr "Sind Sie sicher, dass Sie es löschen wollen?"
 
 #: [account]gateway_title
@@ -316,7 +317,8 @@ msgid "This message will be displayed on the login page"
 msgstr "Diese Nachricht wird auf der Anmeldeseite angezeigt"
 
 #: [information]info2
-msgid "Leave this field blank if you dont want to show any message."
+#, fuzzy
+msgid "Leave this field blank if you don’t want to show any message."
 msgstr "Dieses Feld leer lassen, wenn keine Nachricht angezeigt werden soll."
 
 #: [information]label
@@ -361,7 +363,8 @@ msgid "General Overview"
 msgstr "Allgemeiner Überblick"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim's %s directory"
+#, fuzzy
+msgid "Read and write rights for the webserver in Movim’s %s directory"
 msgstr "Lese- und Schreibrechte für den Webserver in Movims %s Verzeichnis"
 
 #: [compatibility]websocket
@@ -429,7 +432,8 @@ msgid "Webcam"
 msgstr "Webcam"
 
 #: [avatar]cheese
-msgid "Cheese !"
+#, fuzzy
+msgid "Cheese!"
 msgstr "Lächeln!"
 
 #: [avatar]snapshot
@@ -449,7 +453,8 @@ msgid "No avatar defined yet"
 msgstr "Noch wurde kein Avatar festgelegt"
 
 #: [blog]title [feed]title
-msgid "%s's feed"
+#, fuzzy
+msgid "%s’s feed"
 msgstr "%ss Datenstrom"
 
 #: [blog]empty
@@ -516,7 +521,8 @@ msgid "Nothing here yet…"
 msgstr "Bisher nichts hier…"
 
 #: [chat]new_text
-msgid "Don't be shy, send a first message to start the discussion"
+#, fuzzy
+msgid "Don’t be shy, send a first message to start the discussion"
 msgstr "Seien Sie nicht schöchtern - senden Sie eine erste Nachricht, um die Unterhaltung zu beginnen"
 
 #: [chat]invitation
@@ -613,7 +619,8 @@ msgid "Communities servers"
 msgstr "Gemeinschaftsserver"
 
 #: [communities]disco_error
-msgid "This server doesn't exists"
+#, fuzzy
+msgid "This server doesn’t exists"
 msgstr "Dieser Server existiert nicht"
 
 #: [communitiesserver]created
@@ -661,7 +668,8 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr "Sie werden die folgende Gemeinschaft löschen. Bitte bestätigen Sie Ihre Aktion."
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
+#, fuzzy
+msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Diese Gemeinschaft existiert anscheinend nicht mehr. Möchten Sie sie aus Ihren Abos entfernen?"
 
 #: [communityaffiliation]owner
@@ -765,8 +773,8 @@ msgstr "Es wird auf Ihrem Profil angezeigt"
 msgid "You are going to unsubscribe from this community"
 msgstr "Du bist dabei, diese Gemeinschaft abzubestellen"
 
-#: [communityheader]sure
-msgid "Are you sure ?"
+#: [communityheader]sure [delete]title
+msgid "Are you sure?"
 msgstr "Sind Sie sicher?"
 
 #: [communityposts]nsfw_title
@@ -790,7 +798,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Hier können Sie Ihre Abonnements verwalten."
 
 #: [communitysubscriptions]empty_text2
-msgid "You don't have any group subscriptions yet."
+#, fuzzy
+msgid "You don’t have any group subscriptions yet."
 msgstr "Sie haben noch keine Gemeinschaften abonniert."
 
 #: [config]general
@@ -962,8 +971,8 @@ msgid "Mood"
 msgstr "Stimmung"
 
 #: [mood]im
-msgid "I'm "
-msgstr "Ich bin "
+msgid "I’m "
+msgstr ""
 
 #: [listen]title
 msgid "Listening"
@@ -996,10 +1005,6 @@ msgstr "Pseudonym"
 #: [edit]group
 msgid "Group"
 msgstr "Gruppe"
-
-#: [delete]title
-msgid "Are you sure?"
-msgstr "Sind Sie sicher?"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
@@ -1298,7 +1303,8 @@ msgid "Post deleted"
 msgstr "Beitrag gelöscht"
 
 #: [post]hot
-msgid "What's Hot"
+#, fuzzy
+msgid "What’s Hot"
 msgstr "Spannendes"
 
 #: [post]hot_text
@@ -1390,7 +1396,8 @@ msgid "Oh! Hello!"
 msgstr "Oh, hallo!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you’re new there! Welcome on Movim!"
 msgstr "Scheint, als sind Sie neu hier. Willkommen bei Movim!"
 
 #: [hello]menu_title
@@ -1398,11 +1405,13 @@ msgid "Check the Menu"
 msgstr "Menü ansehen"
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+#, fuzzy
+msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
 msgstr "Alle wichtigen Funktionen von Movim können Sie hier erreichen. Zögern Sie nicht durch die Seiten zu navigieren, um mehr zu erfahren!"
 
 #: [hello]profile_title
-msgid "Looks like you didn't complete your profile yet"
+#, fuzzy
+msgid "Looks like you didn’t complete your profile yet"
 msgstr "Scheint so, als haben Sie ihr Profil noch nicht vervollständigt"
 
 #: [hello]profile_paragraph
@@ -1422,7 +1431,8 @@ msgid "Presence"
 msgstr "Anwesenend"
 
 #: [publishbrief]placeholder
-msgid "What's new?"
+#, fuzzy
+msgid "What’s new?"
 msgstr "Was gibt es Neues?"
 
 #: [publishbrief]post
@@ -1482,7 +1492,8 @@ msgid "Edit a chatroom"
 msgstr "Chatraum bearbeiten"
 
 #: [rooms]empty_text1
-msgid "You don't have any chatroom yet."
+#, fuzzy
+msgid "You don’t have any chatroom yet."
 msgstr "Sie sind noch keinem Chatraum beigetreten."
 
 #: [rooms]empty_text2
@@ -1542,7 +1553,8 @@ msgid "Please provide a room address"
 msgstr "Bitte eine Raumadresse übermitteln"
 
 #: [room]anonymous_text1
-msgid "You are currently logued as an anonymous user."
+#, fuzzy
+msgid "You are currently logged as an anonymous user."
 msgstr "Sie sind gerade als anonymer Nutzer angemeldet."
 
 #: [room]anonymous_text2
@@ -1681,7 +1693,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim arbeitet gerade im eingeschränkten Modus"
 
 #: [degraded]text_1
-msgid "Your server doesn't support XMPP Pubsub persistance."
+#, fuzzy
+msgid "Your server doesn’t support XMPP Pubsub persistence."
 msgstr "Dein Server unterstützt keine permanenten XMPP-Pubsubs"
 
 #: [degraded]text_2
@@ -1713,11 +1726,13 @@ msgid "…connecting"
 msgstr "…verbinden"
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
+#, fuzzy
+msgid "You don’t have Javascript enabled. Good luck with that."
 msgstr "Javascript ist im Browser deaktiviert. Das könnte Probleme verursachen."
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+#, fuzzy
+msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
 msgstr "Movim ist eine Web Plattform eines verteilten Chat - Netzwerks. Es nutzt das xmpp / Jabber Protokoll und achtet die Privatsphäre."
 
 #: [global]loading
@@ -1814,7 +1829,8 @@ msgid "Cannot load file '%s'"
 msgstr "Datei »%s« kann nicht geladen werden."
 
 #: [error]widget_load_error
-msgid "Requested widget '%s' doesn't exist."
+#, fuzzy
+msgid "Requested widget '%s' doesn’t exist."
 msgstr "Das geforderte Widget »%s« ist nicht vorhanden."
 
 #: [error]widget_call_error
@@ -2521,6 +2537,12 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "Are you sure ?"
+#~ msgstr "Sind Sie sicher?"
+
+#~ msgid "I'm "
+#~ msgstr "Ich bin "
 
 #~ msgid "Server Timezone"
 #~ msgstr "Server-Zeitzone"

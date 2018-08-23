@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 19:23+0200\n"
+"POT-Creation-Date: 2018-08-23 23:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
@@ -175,7 +175,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Anda akan menghapus akun XMPP anda dan semua yang informasi yang berhubungan dengannya (profil, kontak dan publikasi)"
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it ?"
+#, fuzzy
+msgid "Are you sure that you want to delete it?"
 msgstr "Apakah anda yakin akan menghapus ini?"
 
 #: [account]gateway_title
@@ -304,7 +305,8 @@ msgid "This message will be displayed on the login page"
 msgstr "Pesan ini akan ditampilkan didalam halaman masuk"
 
 #: [information]info2
-msgid "Leave this field blank if you dont want to show any message."
+#, fuzzy
+msgid "Leave this field blank if you don’t want to show any message."
 msgstr "Abaikan bidang ini jika anda tidak ingin menampilkan pesan apapun"
 
 #: [information]label
@@ -349,7 +351,8 @@ msgid "General Overview"
 msgstr "Gambaran Umum"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim's %s directory"
+#, fuzzy
+msgid "Read and write rights for the webserver in Movim’s %s directory"
 msgstr "Hak baca dan tulis untuk webserver di direktori Movim %s"
 
 #: [compatibility]websocket
@@ -417,7 +420,8 @@ msgid "Webcam"
 msgstr "Webcam"
 
 #: [avatar]cheese
-msgid "Cheese !"
+#, fuzzy
+msgid "Cheese!"
 msgstr "Senyum !"
 
 #: [avatar]snapshot
@@ -437,7 +441,8 @@ msgid "No avatar defined yet"
 msgstr "Belum ada avatar didefinisikan sebelumnya"
 
 #: [blog]title [feed]title
-msgid "%s's feed"
+#, fuzzy
+msgid "%s’s feed"
 msgstr "Umpan %s"
 
 #: [blog]empty
@@ -504,7 +509,7 @@ msgid "Nothing here yet…"
 msgstr ""
 
 #: [chat]new_text
-msgid "Don't be shy, send a first message to start the discussion"
+msgid "Don’t be shy, send a first message to start the discussion"
 msgstr ""
 
 #: [chat]invitation
@@ -601,7 +606,8 @@ msgid "Communities servers"
 msgstr "Server komunitas"
 
 #: [communities]disco_error
-msgid "This server doesn't exists"
+#, fuzzy
+msgid "This server doesn’t exists"
 msgstr "Server ini tidak ada"
 
 #: [communitiesserver]created
@@ -649,7 +655,7 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
 #: [communityaffiliation]owner
@@ -753,9 +759,9 @@ msgstr "Akan tampil dalam profil anda"
 msgid "You are going to unsubscribe from this community"
 msgstr "Anda akan membatalkan langganan dari komunitas ini"
 
-#: [communityheader]sure
-msgid "Are you sure ?"
-msgstr "Anda yakin ?"
+#: [communityheader]sure [delete]title
+msgid "Are you sure?"
+msgstr "Anda yakin?"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -778,7 +784,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Disini anda dapat mengelola semua langganan anda"
 
 #: [communitysubscriptions]empty_text2
-msgid "You don't have any group subscriptions yet."
+#, fuzzy
+msgid "You don’t have any group subscriptions yet."
 msgstr "Anda tidak berlangganan grup apapun"
 
 #: [config]general
@@ -950,8 +957,8 @@ msgid "Mood"
 msgstr "Mood"
 
 #: [mood]im
-msgid "I'm "
-msgstr "Aku "
+msgid "I’m "
+msgstr ""
 
 #: [listen]title
 msgid "Listening"
@@ -984,10 +991,6 @@ msgstr "Alias"
 #: [edit]group
 msgid "Group"
 msgstr "Grup"
-
-#: [delete]title
-msgid "Are you sure?"
-msgstr "Anda yakin?"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
@@ -1286,7 +1289,8 @@ msgid "Post deleted"
 msgstr "Post dihapus"
 
 #: [post]hot
-msgid "What's Hot"
+#, fuzzy
+msgid "What’s Hot"
 msgstr "Sedang hangat"
 
 #: [post]hot_text
@@ -1378,7 +1382,8 @@ msgid "Oh! Hello!"
 msgstr "Oh! Halo!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you’re new there! Welcome on Movim!"
 msgstr "Nampaknya anda baru disini! Selamat datang di Movim!"
 
 #: [hello]menu_title
@@ -1386,11 +1391,13 @@ msgid "Check the Menu"
 msgstr "Periksa menu"
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+#, fuzzy
+msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
 msgstr "Semua fitur utama Movim dapat diakses disana. Jangan sungkan untuk navigasi lewat halaman untuk jelajahi hal lainnya!"
 
 #: [hello]profile_title
-msgid "Looks like you didn't complete your profile yet"
+#, fuzzy
+msgid "Looks like you didn’t complete your profile yet"
 msgstr "Nampaknya anda belum menyelesaikan profil anda"
 
 #: [hello]profile_paragraph
@@ -1410,7 +1417,7 @@ msgid "Presence"
 msgstr ""
 
 #: [publishbrief]placeholder
-msgid "What's new?"
+msgid "What’s new?"
 msgstr ""
 
 #: [publishbrief]post
@@ -1470,8 +1477,9 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-msgid "You don't have any chatroom yet."
-msgstr ""
+#, fuzzy
+msgid "You don’t have any chatroom yet."
+msgstr "Anda tidak berlangganan grup apapun"
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1530,7 +1538,7 @@ msgid "Please provide a room address"
 msgstr ""
 
 #: [room]anonymous_text1
-msgid "You are currently logued as an anonymous user."
+msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
@@ -1668,7 +1676,7 @@ msgid "Movim is currently working in degraded mode"
 msgstr ""
 
 #: [degraded]text_1
-msgid "Your server doesn't support XMPP Pubsub persistance."
+msgid "Your server doesn’t support XMPP Pubsub persistence."
 msgstr ""
 
 #: [degraded]text_2
@@ -1700,11 +1708,11 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
+msgid "You don’t have Javascript enabled. Good luck with that."
 msgstr ""
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
 msgstr ""
 
 #: [global]loading
@@ -1801,7 +1809,7 @@ msgid "Cannot load file '%s'"
 msgstr "Tidak dapat memuat berkas '%s'"
 
 #: [error]widget_load_error
-msgid "Requested widget '%s' doesn't exist."
+msgid "Requested widget '%s' doesn’t exist."
 msgstr ""
 
 #: [error]widget_call_error
@@ -2508,6 +2516,12 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Are you sure ?"
+#~ msgstr "Anda yakin ?"
+
+#~ msgid "I'm "
+#~ msgstr "Aku "
 
 #~ msgid "Server Timezone"
 #~ msgstr "Zona Waktu Server"

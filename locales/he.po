@@ -94,7 +94,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 19:23+0200\n"
+"POT-Creation-Date: 2018-08-23 23:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
@@ -174,7 +174,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "אתה תמחק את חשבון XMPP שלך ואת כל המידע היחסי אשר קשור אליו (דיוקן, אנשי קשר ופרסומים)."
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it ?"
+#, fuzzy
+msgid "Are you sure that you want to delete it?"
 msgstr "האם אתה בטוח כי ברצונך למחוק אותו ?"
 
 #: [account]gateway_title
@@ -303,7 +304,8 @@ msgid "This message will be displayed on the login page"
 msgstr "הודעה זו תוצג בעמוד הכניסה"
 
 #: [information]info2
-msgid "Leave this field blank if you dont want to show any message."
+#, fuzzy
+msgid "Leave this field blank if you don’t want to show any message."
 msgstr "הותר את שדה זה ריק אם אין ברצונך להציג הודעה."
 
 #: [information]label
@@ -348,7 +350,7 @@ msgid "General Overview"
 msgstr "סקירה כללית"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim's %s directory"
+msgid "Read and write rights for the webserver in Movim’s %s directory"
 msgstr ""
 
 #: [compatibility]websocket
@@ -416,7 +418,8 @@ msgid "Webcam"
 msgstr "מצלמת רשת"
 
 #: [avatar]cheese
-msgid "Cheese !"
+#, fuzzy
+msgid "Cheese!"
 msgstr "חייכו !"
 
 #: [avatar]snapshot
@@ -436,7 +439,8 @@ msgid "No avatar defined yet"
 msgstr "לא הוגדר אווטאר עדיין"
 
 #: [blog]title [feed]title
-msgid "%s's feed"
+#, fuzzy
+msgid "%s’s feed"
 msgstr "הערוץ של %s"
 
 #: [blog]empty
@@ -503,7 +507,7 @@ msgid "Nothing here yet…"
 msgstr ""
 
 #: [chat]new_text
-msgid "Don't be shy, send a first message to start the discussion"
+msgid "Don’t be shy, send a first message to start the discussion"
 msgstr ""
 
 #: [chat]invitation
@@ -600,7 +604,8 @@ msgid "Communities servers"
 msgstr ""
 
 #: [communities]disco_error
-msgid "This server doesn't exists"
+#, fuzzy
+msgid "This server doesn’t exists"
 msgstr "שרת זה לא קיים"
 
 #: [communitiesserver]created
@@ -648,7 +653,7 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
 #: [communityaffiliation]owner
@@ -752,9 +757,9 @@ msgstr ""
 msgid "You are going to unsubscribe from this community"
 msgstr ""
 
-#: [communityheader]sure
-msgid "Are you sure ?"
-msgstr "האם אתה בטוח ?"
+#: [communityheader]sure [delete]title
+msgid "Are you sure?"
+msgstr "האם אתה בטוח?"
 
 #: [communityposts]nsfw_title
 msgid "Adult content blocked"
@@ -777,8 +782,9 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-msgid "You don't have any group subscriptions yet."
-msgstr ""
+#, fuzzy
+msgid "You don’t have any group subscriptions yet."
+msgstr "אין לך חדר שיחה עדיין."
 
 #: [config]general
 msgid "General"
@@ -949,8 +955,8 @@ msgid "Mood"
 msgstr "מצב רוח"
 
 #: [mood]im
-msgid "I'm "
-msgstr "אני "
+msgid "I’m "
+msgstr ""
 
 #: [listen]title
 msgid "Listening"
@@ -983,10 +989,6 @@ msgstr "כינוי"
 #: [edit]group
 msgid "Group"
 msgstr "קבוצה"
-
-#: [delete]title
-msgid "Are you sure?"
-msgstr "האם אתה בטוח?"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
@@ -1285,7 +1287,8 @@ msgid "Post deleted"
 msgstr "פרסום נמחק"
 
 #: [post]hot
-msgid "What's Hot"
+#, fuzzy
+msgid "What’s Hot"
 msgstr "מה חם"
 
 #: [post]hot_text
@@ -1377,7 +1380,8 @@ msgid "Oh! Hello!"
 msgstr "שלום!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you’re new there! Welcome on Movim!"
 msgstr "נראה כי את/ה חדש/ה פה! ברוכים הבאים לפרויקט Movim!"
 
 #: [hello]menu_title
@@ -1385,11 +1389,11 @@ msgid "Check the Menu"
 msgstr ""
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [hello]profile_title
-msgid "Looks like you didn't complete your profile yet"
+msgid "Looks like you didn’t complete your profile yet"
 msgstr ""
 
 #: [hello]profile_paragraph
@@ -1409,7 +1413,7 @@ msgid "Presence"
 msgstr "נוכחות"
 
 #: [publishbrief]placeholder
-msgid "What's new?"
+msgid "What’s new?"
 msgstr ""
 
 #: [publishbrief]post
@@ -1469,7 +1473,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-msgid "You don't have any chatroom yet."
+#, fuzzy
+msgid "You don’t have any chatroom yet."
 msgstr "אין לך חדר שיחה עדיין."
 
 #: [rooms]empty_text2
@@ -1529,7 +1534,8 @@ msgid "Please provide a room address"
 msgstr "אנא ספק כתובת חדר"
 
 #: [room]anonymous_text1
-msgid "You are currently logued as an anonymous user."
+#, fuzzy
+msgid "You are currently logged as an anonymous user."
 msgstr "אתה כעת מחובר בתור משתמש אלמוני."
 
 #: [room]anonymous_text2
@@ -1667,7 +1673,7 @@ msgid "Movim is currently working in degraded mode"
 msgstr ""
 
 #: [degraded]text_1
-msgid "Your server doesn't support XMPP Pubsub persistance."
+msgid "Your server doesn’t support XMPP Pubsub persistence."
 msgstr ""
 
 #: [degraded]text_2
@@ -1699,11 +1705,13 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
+#, fuzzy
+msgid "You don’t have Javascript enabled. Good luck with that."
 msgstr "אין לך Javascript מאופשר.  עליך לאפשר Javascript בכדי להשתמש באתר זה."
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+#, fuzzy
+msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
 msgstr "Movim היא פלטפורמת רשת חברתית מבוזרת אשר שומרת על הפרטיות שלך ומגיעה עם סט של תכונות נהדרות."
 
 #: [global]loading
@@ -1800,7 +1808,8 @@ msgid "Cannot load file '%s'"
 msgstr "לא ניתן לטעון קובץ '%s'"
 
 #: [error]widget_load_error
-msgid "Requested widget '%s' doesn't exist."
+#, fuzzy
+msgid "Requested widget '%s' doesn’t exist."
 msgstr "וידג׳ט מבוקש '%s' לא קיים."
 
 #: [error]widget_call_error
@@ -2507,6 +2516,12 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
+
+#~ msgid "Are you sure ?"
+#~ msgstr "האם אתה בטוח ?"
+
+#~ msgid "I'm "
+#~ msgstr "אני "
 
 #~ msgid "Server Timezone"
 #~ msgstr "אזור זמן שרת"

@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 19:23+0200\n"
+"POT-Creation-Date: 2018-08-23 23:23+0200\n"
 "PO-Revision-Date: 2017-12-24 14:26+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Croatian (http://www.transifex.com/movim/movim/language/hr/)\n"
@@ -173,7 +173,7 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr ""
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it ?"
+msgid "Are you sure that you want to delete it?"
 msgstr ""
 
 #: [account]gateway_title
@@ -302,7 +302,7 @@ msgid "This message will be displayed on the login page"
 msgstr ""
 
 #: [information]info2
-msgid "Leave this field blank if you dont want to show any message."
+msgid "Leave this field blank if you don’t want to show any message."
 msgstr ""
 
 #: [information]label
@@ -347,7 +347,7 @@ msgid "General Overview"
 msgstr ""
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim's %s directory"
+msgid "Read and write rights for the webserver in Movim’s %s directory"
 msgstr ""
 
 #: [compatibility]websocket
@@ -415,7 +415,7 @@ msgid "Webcam"
 msgstr ""
 
 #: [avatar]cheese
-msgid "Cheese !"
+msgid "Cheese!"
 msgstr ""
 
 #: [avatar]snapshot
@@ -435,7 +435,7 @@ msgid "No avatar defined yet"
 msgstr ""
 
 #: [blog]title [feed]title
-msgid "%s's feed"
+msgid "%s’s feed"
 msgstr ""
 
 #: [blog]empty
@@ -499,7 +499,7 @@ msgid "Nothing here yet…"
 msgstr ""
 
 #: [chat]new_text
-msgid "Don't be shy, send a first message to start the discussion"
+msgid "Don’t be shy, send a first message to start the discussion"
 msgstr ""
 
 #: [chat]invitation
@@ -595,7 +595,7 @@ msgid "Communities servers"
 msgstr ""
 
 #: [communities]disco_error
-msgid "This server doesn't exists"
+msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communitiesserver]created
@@ -643,7 +643,7 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
 #: [communityaffiliation]owner
@@ -747,8 +747,8 @@ msgstr ""
 msgid "You are going to unsubscribe from this community"
 msgstr ""
 
-#: [communityheader]sure
-msgid "Are you sure ?"
+#: [communityheader]sure [delete]title
+msgid "Are you sure?"
 msgstr ""
 
 #: [communityposts]nsfw_title
@@ -772,7 +772,7 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-msgid "You don't have any group subscriptions yet."
+msgid "You don’t have any group subscriptions yet."
 msgstr ""
 
 #: [config]general
@@ -944,7 +944,7 @@ msgid "Mood"
 msgstr ""
 
 #: [mood]im
-msgid "I'm "
+msgid "I’m "
 msgstr ""
 
 #: [listen]title
@@ -977,10 +977,6 @@ msgstr ""
 
 #: [edit]group
 msgid "Group"
-msgstr ""
-
-#: [delete]title
-msgid "Are you sure?"
 msgstr ""
 
 #: [delete]text
@@ -1280,7 +1276,7 @@ msgid "Post deleted"
 msgstr ""
 
 #: [post]hot
-msgid "What's Hot"
+msgid "What’s Hot"
 msgstr ""
 
 #: [post]hot_text
@@ -1372,7 +1368,7 @@ msgid "Oh! Hello!"
 msgstr ""
 
 #: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
+msgid "It seems that you’re new there! Welcome on Movim!"
 msgstr ""
 
 #: [hello]menu_title
@@ -1380,11 +1376,11 @@ msgid "Check the Menu"
 msgstr ""
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [hello]profile_title
-msgid "Looks like you didn't complete your profile yet"
+msgid "Looks like you didn’t complete your profile yet"
 msgstr ""
 
 #: [hello]profile_paragraph
@@ -1404,7 +1400,7 @@ msgid "Presence"
 msgstr ""
 
 #: [publishbrief]placeholder
-msgid "What's new?"
+msgid "What’s new?"
 msgstr ""
 
 #: [publishbrief]post
@@ -1464,7 +1460,7 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-msgid "You don't have any chatroom yet."
+msgid "You don’t have any chatroom yet."
 msgstr ""
 
 #: [rooms]empty_text2
@@ -1524,7 +1520,7 @@ msgid "Please provide a room address"
 msgstr ""
 
 #: [room]anonymous_text1
-msgid "You are currently logued as an anonymous user."
+msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
@@ -1660,7 +1656,7 @@ msgid "Movim is currently working in degraded mode"
 msgstr ""
 
 #: [degraded]text_1
-msgid "Your server doesn't support XMPP Pubsub persistance."
+msgid "Your server doesn’t support XMPP Pubsub persistence."
 msgstr ""
 
 #: [degraded]text_2
@@ -1692,11 +1688,11 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
+msgid "You don’t have Javascript enabled. Good luck with that."
 msgstr ""
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
 msgstr ""
 
 #: [global]loading
@@ -1793,7 +1789,7 @@ msgid "Cannot load file '%s'"
 msgstr ""
 
 #: [error]widget_load_error
-msgid "Requested widget '%s' doesn't exist."
+msgid "Requested widget '%s' doesn’t exist."
 msgstr ""
 
 #: [error]widget_call_error

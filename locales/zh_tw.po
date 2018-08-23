@@ -93,7 +93,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 19:23+0200\n"
+"POT-Creation-Date: 2018-08-23 23:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
@@ -173,7 +173,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "您將刪除您的 XMPP 帳號及所有連結在此的資訊 (個人資訊，連絡人及發佈的內容)。"
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it ?"
+#, fuzzy
+msgid "Are you sure that you want to delete it?"
 msgstr "您確定要刪除嗎?"
 
 #: [account]gateway_title
@@ -302,7 +303,8 @@ msgid "This message will be displayed on the login page"
 msgstr "這個訊息會顯示在登入頁面"
 
 #: [information]info2
-msgid "Leave this field blank if you dont want to show any message."
+#, fuzzy
+msgid "Leave this field blank if you don’t want to show any message."
 msgstr "假如您不想顯示任何訊息的話，保持欄位空白。"
 
 #: [information]label
@@ -347,7 +349,8 @@ msgid "General Overview"
 msgstr "一般概述"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim's %s directory"
+#, fuzzy
+msgid "Read and write rights for the webserver in Movim’s %s directory"
 msgstr "在Movim網頁伺服器 %s 目錄上讀和寫的權限"
 
 #: [compatibility]websocket
@@ -415,7 +418,8 @@ msgid "Webcam"
 msgstr "網路攝影機"
 
 #: [avatar]cheese
-msgid "Cheese !"
+#, fuzzy
+msgid "Cheese!"
 msgstr "乾杯 !"
 
 #: [avatar]snapshot
@@ -435,7 +439,8 @@ msgid "No avatar defined yet"
 msgstr "未定義圖示"
 
 #: [blog]title [feed]title
-msgid "%s's feed"
+#, fuzzy
+msgid "%s’s feed"
 msgstr "%s的文章"
 
 #: [blog]empty
@@ -502,7 +507,8 @@ msgid "Nothing here yet…"
 msgstr "這裡沒有..."
 
 #: [chat]new_text
-msgid "Don't be shy, send a first message to start the discussion"
+#, fuzzy
+msgid "Don’t be shy, send a first message to start the discussion"
 msgstr "不要害羞，送出第一個訊息來開始討論"
 
 #: [chat]invitation
@@ -599,7 +605,8 @@ msgid "Communities servers"
 msgstr "社群伺服器"
 
 #: [communities]disco_error
-msgid "This server doesn't exists"
+#, fuzzy
+msgid "This server doesn’t exists"
 msgstr "這個伺服器不存在"
 
 #: [communitiesserver]created
@@ -647,7 +654,7 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
 #: [communityaffiliation]owner
@@ -751,8 +758,8 @@ msgstr ""
 msgid "You are going to unsubscribe from this community"
 msgstr ""
 
-#: [communityheader]sure
-msgid "Are you sure ?"
+#: [communityheader]sure [delete]title
+msgid "Are you sure?"
 msgstr ""
 
 #: [communityposts]nsfw_title
@@ -776,7 +783,7 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-msgid "You don't have any group subscriptions yet."
+msgid "You don’t have any group subscriptions yet."
 msgstr ""
 
 #: [config]general
@@ -948,7 +955,7 @@ msgid "Mood"
 msgstr ""
 
 #: [mood]im
-msgid "I'm "
+msgid "I’m "
 msgstr ""
 
 #: [listen]title
@@ -981,10 +988,6 @@ msgstr "別名"
 
 #: [edit]group
 msgid "Group"
-msgstr ""
-
-#: [delete]title
-msgid "Are you sure?"
 msgstr ""
 
 #: [delete]text
@@ -1284,7 +1287,7 @@ msgid "Post deleted"
 msgstr ""
 
 #: [post]hot
-msgid "What's Hot"
+msgid "What’s Hot"
 msgstr ""
 
 #: [post]hot_text
@@ -1376,7 +1379,7 @@ msgid "Oh! Hello!"
 msgstr ""
 
 #: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
+msgid "It seems that you’re new there! Welcome on Movim!"
 msgstr ""
 
 #: [hello]menu_title
@@ -1384,11 +1387,11 @@ msgid "Check the Menu"
 msgstr ""
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [hello]profile_title
-msgid "Looks like you didn't complete your profile yet"
+msgid "Looks like you didn’t complete your profile yet"
 msgstr ""
 
 #: [hello]profile_paragraph
@@ -1408,7 +1411,7 @@ msgid "Presence"
 msgstr ""
 
 #: [publishbrief]placeholder
-msgid "What's new?"
+msgid "What’s new?"
 msgstr ""
 
 #: [publishbrief]post
@@ -1468,7 +1471,7 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-msgid "You don't have any chatroom yet."
+msgid "You don’t have any chatroom yet."
 msgstr ""
 
 #: [rooms]empty_text2
@@ -1528,7 +1531,7 @@ msgid "Please provide a room address"
 msgstr ""
 
 #: [room]anonymous_text1
-msgid "You are currently logued as an anonymous user."
+msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
@@ -1665,7 +1668,7 @@ msgid "Movim is currently working in degraded mode"
 msgstr ""
 
 #: [degraded]text_1
-msgid "Your server doesn't support XMPP Pubsub persistance."
+msgid "Your server doesn’t support XMPP Pubsub persistence."
 msgstr ""
 
 #: [degraded]text_2
@@ -1697,11 +1700,11 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
+msgid "You don’t have Javascript enabled. Good luck with that."
 msgstr ""
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
 msgstr ""
 
 #: [global]loading
@@ -1798,7 +1801,7 @@ msgid "Cannot load file '%s'"
 msgstr "無法載入檔案'%s'"
 
 #: [error]widget_load_error
-msgid "Requested widget '%s' doesn't exist."
+msgid "Requested widget '%s' doesn’t exist."
 msgstr ""
 
 #: [error]widget_call_error

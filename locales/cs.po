@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 19:23+0200\n"
+"POT-Creation-Date: 2018-08-23 23:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Czech (Czech Republic) (http://www.transifex.com/movim/movim/language/cs_CZ/)\n"
@@ -175,7 +175,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Smažete váš XMPP účet a všechna informace propojená s ním (profil, kontakty, články)."
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it ?"
+#, fuzzy
+msgid "Are you sure that you want to delete it?"
 msgstr "Jste si jisti, že jej chcete smazat?"
 
 #: [account]gateway_title
@@ -304,7 +305,8 @@ msgid "This message will be displayed on the login page"
 msgstr "Tato zpráva bude zobrazena na stránce přihlášení"
 
 #: [information]info2
-msgid "Leave this field blank if you dont want to show any message."
+#, fuzzy
+msgid "Leave this field blank if you don’t want to show any message."
 msgstr "Ponechte toto pole prázdné, pokud nechcete zobrazit žádnou zprávu."
 
 #: [information]label
@@ -349,7 +351,7 @@ msgid "General Overview"
 msgstr "Obecný přehled"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim's %s directory"
+msgid "Read and write rights for the webserver in Movim’s %s directory"
 msgstr ""
 
 #: [compatibility]websocket
@@ -417,7 +419,8 @@ msgid "Webcam"
 msgstr "Webkamera"
 
 #: [avatar]cheese
-msgid "Cheese !"
+#, fuzzy
+msgid "Cheese!"
 msgstr "Sýr!"
 
 #: [avatar]snapshot
@@ -437,7 +440,8 @@ msgid "No avatar defined yet"
 msgstr "Žádný avatar zatím nenastaven"
 
 #: [blog]title [feed]title
-msgid "%s's feed"
+#, fuzzy
+msgid "%s’s feed"
 msgstr "Zeď uživatele %s"
 
 #: [blog]empty
@@ -504,7 +508,8 @@ msgid "Nothing here yet…"
 msgstr "Zatím tu nic není"
 
 #: [chat]new_text
-msgid "Don't be shy, send a first message to start the discussion"
+#, fuzzy
+msgid "Don’t be shy, send a first message to start the discussion"
 msgstr "Nebuďte stydliví, pošlete první zprávu a zahajte diskuzi"
 
 #: [chat]invitation
@@ -601,7 +606,8 @@ msgid "Communities servers"
 msgstr ""
 
 #: [communities]disco_error
-msgid "This server doesn't exists"
+#, fuzzy
+msgid "This server doesn’t exists"
 msgstr "Tento server neexistuje"
 
 #: [communitiesserver]created
@@ -649,7 +655,7 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
 #: [communityaffiliation]owner
@@ -753,8 +759,8 @@ msgstr "Objeví se na Vašem profilu"
 msgid "You are going to unsubscribe from this community"
 msgstr ""
 
-#: [communityheader]sure
-msgid "Are you sure ?"
+#: [communityheader]sure [delete]title
+msgid "Are you sure?"
 msgstr "Jste si jisti?"
 
 #: [communityposts]nsfw_title
@@ -778,7 +784,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Zde budete moci spravovat všechny vaše odběry."
 
 #: [communitysubscriptions]empty_text2
-msgid "You don't have any group subscriptions yet."
+#, fuzzy
+msgid "You don’t have any group subscriptions yet."
 msgstr "Zatím neodebíráte žádné skupiny."
 
 #: [config]general
@@ -950,8 +957,8 @@ msgid "Mood"
 msgstr "Nálada"
 
 #: [mood]im
-msgid "I'm "
-msgstr "Jsem"
+msgid "I’m "
+msgstr ""
 
 #: [listen]title
 msgid "Listening"
@@ -984,10 +991,6 @@ msgstr "Přezdívka"
 #: [edit]group
 msgid "Group"
 msgstr "Skupina"
-
-#: [delete]title
-msgid "Are you sure?"
-msgstr "Jste si jisti?"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
@@ -1286,7 +1289,8 @@ msgid "Post deleted"
 msgstr "Příspěvek smazán"
 
 #: [post]hot
-msgid "What's Hot"
+#, fuzzy
+msgid "What’s Hot"
 msgstr "Co je žhavé"
 
 #: [post]hot_text
@@ -1378,7 +1382,8 @@ msgid "Oh! Hello!"
 msgstr "Ah! Ahoj!"
 
 #: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
+#, fuzzy
+msgid "It seems that you’re new there! Welcome on Movim!"
 msgstr "Vypadá to, že jste tu noví. Vítejte na Movimu!"
 
 #: [hello]menu_title
@@ -1386,11 +1391,12 @@ msgid "Check the Menu"
 msgstr "Prohlédněte si menu"
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+#, fuzzy
+msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
 msgstr "Všechny hlavní vlastnosti Movimu jsou dostupné zde. Neváhejte prohlížet si různé stránky pro objevení více! "
 
 #: [hello]profile_title
-msgid "Looks like you didn't complete your profile yet"
+msgid "Looks like you didn’t complete your profile yet"
 msgstr ""
 
 #: [hello]profile_paragraph
@@ -1410,7 +1416,8 @@ msgid "Presence"
 msgstr "Přítomnost"
 
 #: [publishbrief]placeholder
-msgid "What's new?"
+#, fuzzy
+msgid "What’s new?"
 msgstr "Co je nového?"
 
 #: [publishbrief]post
@@ -1470,7 +1477,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-msgid "You don't have any chatroom yet."
+#, fuzzy
+msgid "You don’t have any chatroom yet."
 msgstr "Zatím nemáte žádné konverzace."
 
 #: [rooms]empty_text2
@@ -1530,7 +1538,8 @@ msgid "Please provide a room address"
 msgstr "Zadejte prosím adresu konverzace"
 
 #: [room]anonymous_text1
-msgid "You are currently logued as an anonymous user."
+#, fuzzy
+msgid "You are currently logged as an anonymous user."
 msgstr "Momentálně jste přihlášeni jako anonymní uživatel"
 
 #: [room]anonymous_text2
@@ -1668,7 +1677,7 @@ msgid "Movim is currently working in degraded mode"
 msgstr ""
 
 #: [degraded]text_1
-msgid "Your server doesn't support XMPP Pubsub persistance."
+msgid "Your server doesn’t support XMPP Pubsub persistence."
 msgstr ""
 
 #: [degraded]text_2
@@ -1700,11 +1709,13 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
+#, fuzzy
+msgid "You don’t have Javascript enabled. Good luck with that."
 msgstr "Nemáte povolený javascript. Tak to hodně štěstí."
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+#, fuzzy
+msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
 msgstr "Movim je drsná distribuovaná sociální síť, která chrání vaše soukromí a obsahuje mnoho úžasných vymožeností."
 
 #: [global]loading
@@ -1801,7 +1812,8 @@ msgid "Cannot load file '%s'"
 msgstr "Nelze načíst soubor \"%s\""
 
 #: [error]widget_load_error
-msgid "Requested widget '%s' doesn't exist."
+#, fuzzy
+msgid "Requested widget '%s' doesn’t exist."
 msgstr "Vyžádaný widget \"%s\" neexistuje."
 
 #: [error]widget_call_error
@@ -2508,6 +2520,12 @@ msgstr "API je nedostupná, zkuste to znovu později"
 #: [field]type_here
 msgid "Type here"
 msgstr "Pište sem"
+
+#~ msgid "Are you sure ?"
+#~ msgstr "Jste si jisti?"
+
+#~ msgid "I'm "
+#~ msgstr "Jsem"
 
 #~ msgid "Server Timezone"
 #~ msgstr "Časová zóna serveru"

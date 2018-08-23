@@ -96,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-18 19:23+0200\n"
+"POT-Creation-Date: 2018-08-23 23:23+0200\n"
 "PO-Revision-Date: 2018-08-17 08:31+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
@@ -176,7 +176,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "XMPP アカウントと関連しているデータ、プロファイル、コンタクトや投稿などが削除されます。"
 
 #: [account]delete_text_confirm
-msgid "Are you sure that you want to delete it ?"
+#, fuzzy
+msgid "Are you sure that you want to delete it?"
 msgstr "削除してよろしいですか"
 
 #: [account]gateway_title
@@ -305,8 +306,9 @@ msgid "This message will be displayed on the login page"
 msgstr "このメッセージはログインページに表示されます"
 
 #: [information]info2
-msgid "Leave this field blank if you dont want to show any message."
-msgstr ""
+#, fuzzy
+msgid "Leave this field blank if you don’t want to show any message."
+msgstr "空のままにするとアクセスできるXMPPアカウントが制限されません"
 
 #: [information]label
 msgctxt "[information]label"
@@ -350,7 +352,7 @@ msgid "General Overview"
 msgstr "概要"
 
 #: [compatibility]rights
-msgid "Read and write rights for the webserver in Movim's %s directory"
+msgid "Read and write rights for the webserver in Movim’s %s directory"
 msgstr ""
 
 #: [compatibility]websocket
@@ -418,7 +420,8 @@ msgid "Webcam"
 msgstr "ウェブカメラ"
 
 #: [avatar]cheese
-msgid "Cheese !"
+#, fuzzy
+msgid "Cheese!"
 msgstr "はい、チーズ！"
 
 #: [avatar]snapshot
@@ -438,7 +441,8 @@ msgid "No avatar defined yet"
 msgstr "アバターが設定されていません"
 
 #: [blog]title [feed]title
-msgid "%s's feed"
+#, fuzzy
+msgid "%s’s feed"
 msgstr "%s のフィード"
 
 #: [blog]empty
@@ -504,7 +508,7 @@ msgid "Nothing here yet…"
 msgstr ""
 
 #: [chat]new_text
-msgid "Don't be shy, send a first message to start the discussion"
+msgid "Don’t be shy, send a first message to start the discussion"
 msgstr ""
 
 #: [chat]invitation
@@ -601,7 +605,7 @@ msgid "Communities servers"
 msgstr ""
 
 #: [communities]disco_error
-msgid "This server doesn't exists"
+msgid "This server doesn’t exists"
 msgstr ""
 
 #: [communitiesserver]created
@@ -649,7 +653,7 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-msgid "It seems that this community doesn't exists anymore. Do you want to remove it from your subscriptions?"
+msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
 #: [communityaffiliation]owner
@@ -753,8 +757,8 @@ msgstr "プロフィルに表示されます"
 msgid "You are going to unsubscribe from this community"
 msgstr ""
 
-#: [communityheader]sure
-msgid "Are you sure ?"
+#: [communityheader]sure [delete]title
+msgid "Are you sure?"
 msgstr "よろしいですか"
 
 #: [communityposts]nsfw_title
@@ -778,8 +782,9 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-msgid "You don't have any group subscriptions yet."
-msgstr ""
+#, fuzzy
+msgid "You don’t have any group subscriptions yet."
+msgstr "チャットルームはまだありません"
 
 #: [config]general
 msgid "General"
@@ -950,7 +955,7 @@ msgid "Mood"
 msgstr "機嫌"
 
 #: [mood]im
-msgid "I'm "
+msgid "I’m "
 msgstr ""
 
 #: [listen]title
@@ -984,10 +989,6 @@ msgstr "アリアス"
 #: [edit]group
 msgid "Group"
 msgstr "グループ"
-
-#: [delete]title
-msgid "Are you sure?"
-msgstr "よろしいですか"
 
 #: [delete]text
 msgid "You are going to delete one of your contacts, please confirm your action"
@@ -1286,7 +1287,7 @@ msgid "Post deleted"
 msgstr ""
 
 #: [post]hot
-msgid "What's Hot"
+msgid "What’s Hot"
 msgstr ""
 
 #: [post]hot_text
@@ -1378,7 +1379,7 @@ msgid "Oh! Hello!"
 msgstr ""
 
 #: [hello]enter_paragraph
-msgid "It seems that you're new there! Welcome on Movim!"
+msgid "It seems that you’re new there! Welcome on Movim!"
 msgstr ""
 
 #: [hello]menu_title
@@ -1386,11 +1387,11 @@ msgid "Check the Menu"
 msgstr ""
 
 #: [hello]menu_paragraph
-msgid "All the main Movim features are accessible there. Don't hesitate to navigate through the pages to discover more!"
+msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
 msgstr ""
 
 #: [hello]profile_title
-msgid "Looks like you didn't complete your profile yet"
+msgid "Looks like you didn’t complete your profile yet"
 msgstr ""
 
 #: [hello]profile_paragraph
@@ -1410,7 +1411,7 @@ msgid "Presence"
 msgstr ""
 
 #: [publishbrief]placeholder
-msgid "What's new?"
+msgid "What’s new?"
 msgstr ""
 
 #: [publishbrief]post
@@ -1470,7 +1471,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-msgid "You don't have any chatroom yet."
+#, fuzzy
+msgid "You don’t have any chatroom yet."
 msgstr "チャットルームはまだありません"
 
 #: [rooms]empty_text2
@@ -1530,7 +1532,7 @@ msgid "Please provide a room address"
 msgstr ""
 
 #: [room]anonymous_text1
-msgid "You are currently logued as an anonymous user."
+msgid "You are currently logged as an anonymous user."
 msgstr ""
 
 #: [room]anonymous_text2
@@ -1668,7 +1670,7 @@ msgid "Movim is currently working in degraded mode"
 msgstr ""
 
 #: [degraded]text_1
-msgid "Your server doesn't support XMPP Pubsub persistance."
+msgid "Your server doesn’t support XMPP Pubsub persistence."
 msgstr ""
 
 #: [degraded]text_2
@@ -1700,11 +1702,11 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-msgid "You don't have javascript enabled.  Good luck with that."
+msgid "You don’t have Javascript enabled. Good luck with that."
 msgstr ""
 
 #: [global]description
-msgid "Movim is a kickass distributed social networking platform that protect your privacy an comes with a set of awesome features."
+msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
 msgstr ""
 
 #: [global]loading
@@ -1801,7 +1803,7 @@ msgid "Cannot load file '%s'"
 msgstr "「%s」というファイルをロードできません。"
 
 #: [error]widget_load_error
-msgid "Requested widget '%s' doesn't exist."
+msgid "Requested widget '%s' doesn’t exist."
 msgstr ""
 
 #: [error]widget_call_error
@@ -2508,6 +2510,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
+
+#~ msgid "Are you sure ?"
+#~ msgstr "よろしいですか"
 
 #~ msgid "Server Timezone"
 #~ msgstr "サーバータイムゾーン"
