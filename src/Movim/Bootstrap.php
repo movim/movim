@@ -45,44 +45,26 @@ class Bootstrap
 
     private function checkSystem()
     {
-        $listWritableFile = [
-            LOG_PATH.'/logger.log',
-            LOG_PATH.'/php.log',
-            CACHE_PATH.'/test.tmp',
-        ];
-        $errors = [];
-
         if (!file_exists(CACHE_PATH) && !@mkdir(CACHE_PATH)) {
-            $errors[] = 'Couldn\'t create directory cache';
-        }
-        if (!file_exists(LOG_PATH) && !@mkdir(LOG_PATH)) {
-            $errors[] = 'Couldn\'t create directory log';
-        }
-        if (!file_exists(CONFIG_PATH) && !@mkdir(CONFIG_PATH)) {
-            $errors[] = 'Couldn\'t create directory config';
+            throw new \Exception('Couldn’t create cache directory');
         }
 
         if (!empty($errors) && !is_writable(DOCUMENT_ROOT)) {
-            $errors[] = 'We\'re unable to write to folder ' .
-                DOCUMENT_ROOT . ': check rights';
+            throw new \Exception('Unable to write to directory ' . DOCUMENT_ROOT);
         }
 
+        $listWritableFile = [
+            LOG_PATH . 'logger.log',
+            LOG_PATH . 'php.log',
+            CACHE_PATH . 'test.tmp',
+        ];
+
         foreach($listWritableFile as $fileName) {
-            if (!file_exists($fileName)) {
-                if (touch($fileName) !== true) {
-                    $errors[] = 'We\'re unable to write to ' .
-                        $fileName . ': check rights';
-                }
-            } elseif (is_writable($fileName) !== true) {
-                $errors[] = 'We\'re unable to write to file ' .
-                    $fileName . ': check rights';
+            if (!file_exists($fileName)
+            || touch($fileName) !== true
+            || is_writable($fileName) !== true) {
+                throw new \Exception('Unable to write to ' . $fileName);
             }
-        }
-        if (!function_exists('json_decode')) {
-             $errors[] = 'You need to install php5-json that\'s not seems to be installed';
-        }
-        if (count($errors)) {
-            throw new \Exception(implode("\n<br />",$errors));
         }
     }
 
