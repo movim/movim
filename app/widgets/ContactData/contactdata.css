@@ -1,4 +1,4 @@
-#contact_data li:first-child img {
+.contact_data li:first-child img {
     height: 10rem;
     border-radius: 100%;
     margin-top: 1rem;
@@ -7,7 +7,7 @@
     transition: height 0.3s, border-radius 0.3s ease-in-out;
 }
 
-#contact_data li:first-child img:hover {
+.contact_data li:first-child img:hover {
     height: 25rem;
     border-radius: 1rem;
 }

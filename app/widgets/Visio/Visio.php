@@ -28,15 +28,18 @@ class Visio extends \Movim\Widget\Base
 
         $contact = \App\Contact::firstOrNew(['id' => cleanJid($from)]);
 
+        $view = $this->tpl();
+        $view->assign('contact', $contact);
+        $view->assign('from', $from);
+
+        Dialog::fill($view->draw('_visio_dialog'));
+
         Notification::append(
             'call',
             $contact->truename,
             $this->__('visio.calling'),
             $contact->getPhoto(),
-            25,
-            null,
-            null,
-            "VisioLink.openVisio('".$from."')"
+            5
         );
     }
 
@@ -137,13 +140,14 @@ class Visio extends \Movim\Widget\Base
            ->request();
     }
 
-    function ajaxTerminate($to)
+    function ajaxTerminate($to, $reason = 'success')
     {
         $s = Session::start();
 
         $st = new SessionTerminate;
         $st->setTo($to)
            ->setJingleSid($s->get('jingleSid'))
+           ->setReason($reason)
            ->request();
     }
 

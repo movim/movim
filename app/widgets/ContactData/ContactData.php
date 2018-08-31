@@ -15,7 +15,7 @@ class ContactData extends \Movim\Widget\Base
     public function onVcardReceived($packet)
     {
         $contact = $packet->content;
-        $this->rpc('MovimTpl.fill', '#contact_data', $this->prepareData($contact->jid));
+        $this->rpc('MovimTpl.fill', '#'.cleanupId($contact->jid) . '_contact_data', $this->prepareData($contact->jid));
         $this->rpc('Notification_ajaxGet');
     }
 

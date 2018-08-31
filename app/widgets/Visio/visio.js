@@ -118,7 +118,12 @@ var Visio = {
 
         Visio.pc.close();
 
-        if (window.opener) {
+        document.querySelector('p.state').innerText = Visio.states.ended;
+        button = document.querySelector('#main i');
+
+        button.className = 'material-icons red';
+        button.innerText = 'close';
+        button.onclick = function() {
             window.close();
         }
     },
@@ -253,7 +258,7 @@ var Visio = {
                     button.classList.add('orange');
                     i.className = 'material-icons ring';
                     i.innerText = 'call';
-                    state.innerHTML = Visio.states.ringing;
+                    state.innerText = Visio.states.ringing;
 
                     button.onclick = function() { Visio.goodbye(); };
                 } else {
@@ -266,7 +271,7 @@ var Visio = {
                 button.classList.add('blue');
                 i.className = 'material-icons disabled';
                 i.innerText = 'more_horiz';
-                state.innerHTML = Visio.states.connecting;
+                state.innerText = Visio.states.connecting;
 
             } else if (Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');
@@ -280,11 +285,11 @@ var Visio = {
                 i.innerText = 'call_end';
 
                 if (Visio.pc.iceConnectionState == 'failed') {
-                    state.innerHTML = Visio.states.failed;
+                    state.innerText = Visio.states.failed;
                 } else {
                     // Visio.pc.ontrack seems buggy for now
                     document.getElementById('remote_video').srcObject = Visio.pc.getRemoteStreams()[0];
-                    state.innerHTML = Visio.states.in_call;
+                    state.innerTest = Visio.states.in_call;
                 }
 
                 button.onclick = function() { Visio.goodbye(); };
