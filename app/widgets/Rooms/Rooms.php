@@ -416,7 +416,7 @@ class Rooms extends \Movim\Widget\Base
             array_push($arr, $item);
         }
 
-        $conferences = $this->user->session->conferences;
+        $conferences = $this->user->session->conferences()->get();
         if ($conferences) {
             foreach ($conferences as $c) {
                 array_push($arr,
