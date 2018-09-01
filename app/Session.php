@@ -54,7 +54,9 @@ class Session extends Model
 
     public function getUploadService()
     {
-        return Capability::where('node', 'like', '%' . $this->host . '%')
+        return Capability::where('node', 'like', '%' . $this->host)
+                         ->where('category', 'store')
+                         ->where('type', 'file')
                          ->where('features', 'like', '%urn:xmpp:http:upload%')
                          ->first();
     }
