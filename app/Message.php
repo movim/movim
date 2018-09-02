@@ -149,6 +149,7 @@ class Message extends Model
             $this->markable = (bool)($stanza->markable);
 
             if ($stanza->subject) {
+                $this->type = 'subject';
                 $this->subject = (string)$stanza->subject;
             }
 

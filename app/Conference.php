@@ -68,7 +68,7 @@ class Conference extends Model
     {
         $subject = \App\Message::where('jidfrom', $this->conference)
                                ->whereNotNull('subject')
-                               ->where('type', 'groupchat')
+                               ->where('type', 'subject')
                                ->orderBy('published', 'desc')
                                ->first();
 
