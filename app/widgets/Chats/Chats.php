@@ -24,7 +24,8 @@ class Chats extends \Movim\Widget\Base
     {
         $message = $packet->content;
 
-        if ($message->type != 'groupchat') {
+        if ($message->type != 'groupchat'
+         && $message->type != 'subject') {
             // If the message is from me
             if ($message->user_id == $message->jidto) {
                 $from = $message->jidfrom;
