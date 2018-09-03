@@ -66,11 +66,13 @@ class Conference extends Model
 
     public function getSubjectAttribute()
     {
-        $subject = \App\Message::where('jidfrom', $this->conference)
-                               ->whereNotNull('subject')
-                               ->where('type', 'subject')
-                               ->orderBy('published', 'desc')
-                               ->first();
+        $subject = \App\User::me()
+                            ->messages()
+                            ->where('jidfrom', $this->conference)
+                            ->whereNotNull('subject')
+                            ->where('type', 'subject')
+                            ->orderBy('published', 'desc')
+                            ->first();
 
         return $subject ? $subject->subject : null;
     }
