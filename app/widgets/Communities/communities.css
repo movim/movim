@@ -1,3 +1,7 @@
+main > section > div {
+    width: 130rem;
+}
+
 main > section > div > * {
-    max-width: 130rem;
+    max-width: 100%;
 }

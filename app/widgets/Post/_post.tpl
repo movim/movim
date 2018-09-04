@@ -1,5 +1,5 @@
 <article class="block">
-<header class="relative">
+<header>
     {if="!$public"}
         <ul class="list middle">
             <li>

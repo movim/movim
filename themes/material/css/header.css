@@ -9,24 +9,6 @@ header.big {
     margin-bottom: 2rem;
 }
 
-header.fixed {
-    position: fixed;
-    width: 100%;
-    max-width: 100%;
-    z-index: 1;
-    top: 0;
-}
-
-header.relative {
-    position: relative;
-}
-
-@media screen and (min-width: 1024px) {
-    main > section > div:first-child:nth-last-child(2) ~ div > header.fixed  {
-        width: inherit;
-    }
-}
-
 /* Specific forms in header */
 header form > div:not(.clear):not(.control) {
     min-height: 0;

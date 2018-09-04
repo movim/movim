@@ -9,14 +9,31 @@
 
 #chat_widget {
     background-color: var(--movim-background);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
-#chat_widget .chat_box {
-    position: fixed;
-    bottom: 0;
-    background-color: rgba(var(--movim-background-main), 1);
-    width: inherit;
+#chat_widget > div,
+#chat_widget > header {
     max-width: 100%;
+    width: 100%;
+}
+
+#chat_widget .contained {
+    overflow-y: scroll;
+    height: 100%;
+}
+
+#chat_widget .contained section {
+    padding-bottom: 1rem;
+    max-width: 100rem;
+    margin: 0 auto;
+}
+
+
+#chat_widget .chat_box {
+    background-color: rgba(var(--movim-background-main), 1);
     box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
 }
 
@@ -73,10 +90,6 @@
 @keyframes loading_opacity {
     from { opacity: 0.4; }
     to { opacity: 1; }
-}
-
-#chat_widget section {
-    padding-bottom: 1rem;
 }
 
 #chat_widget li.oppose span.control {

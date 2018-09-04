@@ -58,24 +58,11 @@ body > nav {
     background-color: #fefefe;
     width: 7rem;
     max-width: 95%;
-    /*transition: width 0.3s cubic-bezier(.4,0,.2,1);*/
     z-index: 2;
     position: absolute;
     overflow-y: auto;
     left: 0;
 }
-
-/*body > nav:before {
-    background-image: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent);
-    pointer-events:none;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 2rem;
-    height: 100%;
-}*/
 
 body > nav header {
     padding: 0.5rem;
@@ -148,22 +135,16 @@ nav ~ main {
 
 main > section {
     height: 100%;
-    position: relative;
     overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
 }
 
 main > section > div {
-    overflow-y: auto;
-    display: block;
-    float: left;
-    height: 100%;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-main > section > div.fixed {
-    height: calc(100% - 7rem);
-    top: 7rem;
+    width: 84rem;
+    max-width: 100%;
 }
 
 main > section > div > * {
@@ -171,108 +152,43 @@ main > section > div > * {
     margin: 0 auto;
 }
 
-/* Prevent fixed issues on Chrome Android */
-main > section > div:first-child:nth-last-child(2) ~ div > div {
-    position: relative;
+main > section > aside {
+    max-width: 45rem;
 }
 
-/* Two blocks*/
+main > section > aside + div {
+    width: 85rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+}
+
+/* Two blocks */
 main > section > div:first-child:nth-last-child(2) {
-    width: 30%;
-}
-main > section > div:first-child:nth-last-child(2) ~ div {
     width: 70%;
-    position: absolute;
-    right: 0;
 }
 
-@media screen and (min-width: 1025px) {
-    main > section > aside {
-        width: calc(50% - 20rem);
-        float: right;
-        max-height: 100%;
-    }
-
-    main > section > aside > * {
-        max-width: 45rem;
-        margin-right: auto;
-    }
-
-    main > section > aside + div {
-        overflow-y: hidden;
-        width: calc(50% + 20rem);
-        float: left;
-        height: auto;
-    }
-
-    main > section > aside + div > * {
-        max-width: 84rem;
-        margin-right: 1rem;
-    }
-}
-/*
-main > section > div:first-child:nth-last-child(2) ~ div {
-    background-color: white;
-}*/
-
-main > section > div > div.contained { /* Specific behaviour when the scroll need to be inside the block */
-    height: calc(100% - 6.5rem);
-    overflow-y: scroll;
-    position: absolute;
-    max-width: 100%;
-    width: 100%;
-}
-
-main > section > div > div.contained > * {
-    max-width: 100rem;
-    margin: 0 auto;
+main > section > div:first-child:nth-last-child(2) + div {
+    width: 30%;
+    overflow-y: auto;
 }
 
 @media screen and (max-width: 1024px) {
-    /* Two blocks*/
-    main > section > div:first-child:nth-last-child(2) {
-        width: 100%;
-    }
-    main > section > div:first-child:nth-last-child(2) ~ div {
-        width: 100%;
-        left: 100%;
-        z-index: 1;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.23), 0 0 10px rgba(0, 0, 0, 0.16);
-        overflow-y: visible;
-    }
-
-    main > section:not(.enabled) > div:not(:first-child) {
-        display: none;
-    }
-
-    main > section.enabled > div:first-child:nth-last-child(2) {
-        display: none;
-    }
-
-    main > section.enabled > div:first-child:nth-last-child(2) ~ div {
-        left: 0;
-    }
-
     main,
-    nav ~ main {
+    nav ~ main,
+    main > section.enabled > div:first-child:nth-last-child(2),
+    main > section:not(.enabled) > div:first-child:nth-last-child(2) + div {
         width: 100%;
     }
 
+    main > section:not(.enabled) > div:first-child:nth-last-child(2),
+    main > section.enabled > div:first-child:nth-last-child(2) + div,
     body > nav {
         width: 0;
     }
 
-    aside {
+    main > section > aside {
         display: none;
     }
-
-    main > section:not(.enabled) > aside + div:not(:first-child) {
-        display: block;
-    }
-}
-
-main footer {
-    font-size: 2rem;
 }
 
 /* Actions bar */
@@ -341,19 +257,9 @@ main footer {
     padding: 0;
 }
 
-main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last-child  {
-    max-width: calc(75% - 5rem);
-}
-
 .actions.fixed > div:last-child > * { /* Little hack to fake the 100% width that overflow the parent */
     max-width: 84rem;
     margin: 0 auto;
-}
-
-@media screen and (max-width: 1024px) { /* Known bug, on some intermediary resolution, the content is cropped */
-    main section > div:first-child:nth-last-child(2) ~ div .actions.fixed > div:last-child {
-        max-width: 100%;
-    }
 }
 
 /* Hr */

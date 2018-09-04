@@ -1,4 +1,4 @@
-<header id="contact_header" class="relative">
+<header id="contact_header">
     {autoescape="off"}
         {$c->prepareHeader($jid)}
     {/autoescape}

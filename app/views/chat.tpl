@@ -13,11 +13,11 @@
 
 <main>
     <section>
+        <?php $this->widget('Upload');?>
+        <?php $this->widget('Chat');?>
         <div>
             <?php $this->widget('Chats');?>
             <?php $this->widget('Rooms');?>
         </div>
-        <?php $this->widget('Upload');?>
-        <?php $this->widget('Chat');?>
     </section>
 </main>

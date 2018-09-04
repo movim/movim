@@ -1,5 +1,5 @@
 {if="$extended"}
-    <header class="relative">
+    <header>
         <ul class="list middle">
             <li>
                 <span
