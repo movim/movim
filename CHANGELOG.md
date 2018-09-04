@@ -51,6 +51,7 @@ v0.14 (trunk)
  * Autoescape templates by default in RainTPL
  * Remove the action buttons in Chat
  * Use XEP-0359: Unique and Stable Stanza IDs as unique identifiers for the Messages in the DB
+ * Improve video call and terminate flows
 
 v0.13
 ---------------------------
