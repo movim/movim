@@ -46,7 +46,7 @@ class Invitations extends \Movim\Widget\Base
 
     function ajaxRequest()
     {
-        Drawer::fill($this->prepareInvitations(), true);
+        Drawer::fill($this->prepareInvitations());
     }
 
     /*

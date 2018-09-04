@@ -31,6 +31,8 @@ class Search extends \Movim\Widget\Base
     {
         $view = $this->tpl();
 
+        $key = str_replace(['#', 'xmpp:'], '', $key);
+
         if (Validator::stringType()->length(1, 64)->validate($key)) {
             $view->assign('posts', new Collection);
 
