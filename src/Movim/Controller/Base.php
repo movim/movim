@@ -85,6 +85,7 @@ class Base
             $built = $content->build($this->name);
             $this->page->setContent($built);
 
+            header('Referrer-Policy: strict-origin-when-cross-origin');
             echo $this->page->build('page', $this->public);
         }
     }
