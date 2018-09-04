@@ -186,6 +186,10 @@ main > section > div:first-child:nth-last-child(2) + div {
         width: 0;
     }
 
+    main > section > aside + div {
+        padding-right: 0;
+    }
+
     main > section > aside {
         display: none;
     }
