@@ -31,7 +31,7 @@ class GetItems extends Errors
         return $this;
     }
 
-    public function setBefore($before = 'empty')
+    public function setBefore($before)
     {
         $this->_before = $before;
         $this->_paginated = true;
@@ -92,7 +92,8 @@ class GetItems extends Errors
             'first'     => $first,
             'last'      => $last,
             'count'     => $count,
-            'paginated' => $this->_paginated
+            'paginated' => $this->_paginated,
+            'before'    => $this->_before
         ]);
 
         $this->deliver();

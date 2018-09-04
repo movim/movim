@@ -30,10 +30,12 @@
 <ul class="list thick" id="goback">
     <li class="block">
         <p class="center">
+            {if="$before != null || $page > 0"}
             <a class="button flat" href="#" onclick="history.back()">
                 <i class="material-icons">keyboard_arrow_left</i>
                 {$c->__('button.previous')}
             </a>
+            {/if}
             {if="$last"}
             <a class="button flat" href="{$goback}" title="{$c->__('post.older')}">
                 {$c->__('button.next')}

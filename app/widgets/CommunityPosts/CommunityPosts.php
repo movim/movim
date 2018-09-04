@@ -26,10 +26,10 @@ class CommunityPosts extends \Movim\Widget\Base
 
     function onItemsId($packet)
     {
-        list($origin, $node, $ids, $first, $last, $count, $paginated)
+        list($origin, $node, $ids, $first, $last, $count, $paginated, $before)
             = array_values($packet->content);
 
-        $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated);
+        $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated, $before);
     }
 
     function onItemsError($packet)
@@ -60,11 +60,12 @@ class CommunityPosts extends \Movim\Widget\Base
         $first = false,
         $last = false,
         $count = false,
-        $paginated = false)
+        $paginated = false,
+        $before = null)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
-        $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count);
+        $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count, $before);
 
         $slugify = new Slugify;
         $this->rpc(
@@ -115,7 +116,8 @@ class CommunityPosts extends \Movim\Widget\Base
         $ids = false,
         $first = false,
         $last = false,
-        $count = false)
+        $count = false,
+        $before = null)
     {
         $ids = is_array($ids) ? $ids : [];
         foreach($ids as $key => $id) {
@@ -160,6 +162,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $view->assign('page', $page);
         $view->assign('ids', $ids);
         $view->assign('posts', $postsWithKeys);
+        $view->assign('before', $before);
         $view->assign('info', \App\Info::where('server', $origin)
                                        ->where('node', $node)
                                        ->first());

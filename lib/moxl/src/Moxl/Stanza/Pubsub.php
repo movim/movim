@@ -330,7 +330,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function getItems($to, $node, $paging = 10, $after = false, $before = 'empty', $skip = 0)
+    static function getItems($to, $node, $paging = 10, $after = false, $before = null, $skip = 0)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -351,7 +351,7 @@ class Pubsub
             $set->appendChild($dom->createElement('max', $paging));
 
             $pubsub->appendChild($set);
-        } elseif ($before && $before != 'empty') {
+        } elseif ($before && $before !== null) {
             $set = $dom->createElement('set');
             $set->setAttribute('xmlns', 'http://jabber.org/protocol/rsm');
             $set->appendChild($dom->createElement('before', $before));
