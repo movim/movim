@@ -9,13 +9,11 @@
     <?php $this->widget('Navigation');?>
 </nav>
 
-<main>
-    <section style="background-color: var(--movim-background);">
-       <aside>
-            <?php $this->widget('PublishHelp');?>
-        </aside>
-        <div>
-            <?php $this->widget('PublishBrief');?>
-        </div>
-    </section>
+<main style="background-color: var(--movim-background);">
+    <aside>
+        <?php $this->widget('PublishHelp');?>
+    </aside>
+    <div>
+        <?php $this->widget('PublishBrief');?>
+    </div>
 </main>

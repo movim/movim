@@ -34,7 +34,7 @@
 
 #chat_widget .chat_box {
     background-color: rgba(var(--movim-background-main), 1);
-    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 
 #chat_widget .chat_box ul {

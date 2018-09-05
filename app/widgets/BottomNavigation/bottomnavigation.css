@@ -4,9 +4,10 @@ ul#bottomnavigation {
     left: 0;
     height: auto;
     width: 100%;
-    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
     z-index: 1;
     display: none;
+    transition: transform .3s cubic-bezier(.4,0,.2,1);
 }
 
 ul#bottomnavigation li {
@@ -33,6 +34,7 @@ ul#bottomnavigation li span:not(.counter) {
 
     nav.active + ul#bottomnavigation,
     ul#bottomnavigation.hidden {
+        transform: translateY(100%);
         pointer-events: none;
     }
 
@@ -40,6 +42,7 @@ ul#bottomnavigation li span:not(.counter) {
         display: none;
     }
 
+    nav.active + ul#bottomnavigation ~ main,
     ul#bottomnavigation.hidden ~ main {
         height: 100%;
     }

@@ -15,15 +15,13 @@
 
 <?php $this->widget('BottomNavigation');?>
 
-<main>
-    <section style="background-color: var(--movim-background);">
-        <aside>
-            <?php $this->widget('Notifs');?>
-            <?php $this->widget('NewsNav');?>
-        </aside>
-        <div>
-        <?php $this->widget('PublishBrief');?>
-        <?php $this->widget('Menu');?>
-        </div>
-    </section>
+<main style="background-color: var(--movim-background);">
+    <aside>
+        <?php $this->widget('Notifs');?>
+        <?php $this->widget('NewsNav');?>
+    </aside>
+    <div>
+    <?php $this->widget('PublishBrief');?>
+    <?php $this->widget('Menu');?>
+    </div>
 </main>

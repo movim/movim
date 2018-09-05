@@ -1,7 +1,5 @@
 <main>
-    <section>
-        <div>
-            <?php $this->widget('NotFound');?>
-        </div>
-    </section>
+    <div>
+        <?php $this->widget('NotFound');?>
+    </div>
 </main>

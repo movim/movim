@@ -55,17 +55,12 @@ a, a:link, a:visited {
 /* Navigation bar */
 
 body > nav {
-    background-color: #fefefe;
     width: 7rem;
     max-width: 95%;
     z-index: 2;
     position: absolute;
     overflow-y: auto;
     left: 0;
-}
-
-body > nav header {
-    padding: 0.5rem;
 }
 
 body > nav.active {
@@ -76,7 +71,7 @@ body > div.drawer:not(.empty) ~ main,
 body > div.drawer:not(.empty) ~ nav,
 body > div.dialog:not(:empty) ~ main,
 body > div.dialog:not(:empty) ~ nav,
-body > nav.active + main {
+body > nav.active ~ main {
     opacity: 0.5;
     pointer-events: none;
 }
@@ -86,6 +81,10 @@ body > nav li { /* Little hack for the navbar */
 }
 
 @media screen and (max-width: 1024px) {
+    body > nav.active {
+        box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+    }
+
     body > nav:not(.active) {
         width: 45rem;
         transform: translateX(-100%);
@@ -125,49 +124,44 @@ main {
     top: 0;
     transition: opacity 0.3s ease-in-out;
     transform: translateZ(0);
-    overflow-y: none;
-}
-
-nav ~ main {
-    width: calc(100% - 7rem);
-    transform: translateZ(0);
-}
-
-main > section {
-    height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
+
     display: flex;
     justify-content: center;
     flex-direction: row-reverse;
 }
 
-main > section > div {
+nav ~ main {
+    width: calc(100% - 7rem);
+}
+
+main > div {
     width: 84rem;
     max-width: 100%;
 }
 
-main > section > div > * {
+main > div > * {
     max-width: 84rem;
     margin: 0 auto;
 }
 
-main > section > aside {
+main > aside {
     max-width: 45rem;
 }
 
-main > section > aside + div {
+main > aside + div {
     width: 85rem;
     padding-right: 1rem;
     box-sizing: border-box;
 }
 
 /* Two blocks */
-main > section > div:first-child:nth-last-child(2) {
+main > div:first-child:nth-last-child(2) {
     width: 70%;
 }
 
-main > section > div:first-child:nth-last-child(2) + div {
+main > div:first-child:nth-last-child(2) + div {
     width: 30%;
     overflow-y: auto;
 }
@@ -175,22 +169,22 @@ main > section > div:first-child:nth-last-child(2) + div {
 @media screen and (max-width: 1024px) {
     main,
     nav ~ main,
-    main > section.enabled > div:first-child:nth-last-child(2),
-    main > section:not(.enabled) > div:first-child:nth-last-child(2) + div {
+    main.enabled > div:first-child:nth-last-child(2),
+    main:not(.enabled) > div:first-child:nth-last-child(2) + div {
         width: 100%;
     }
 
-    main > section:not(.enabled) > div:first-child:nth-last-child(2),
-    main > section.enabled > div:first-child:nth-last-child(2) + div,
+    main:not(.enabled) > div:first-child:nth-last-child(2),
+    main.enabled > div:first-child:nth-last-child(2) + div,
     body > nav {
         width: 0;
     }
 
-    main > section > aside + div {
+    main > aside + div {
         padding-right: 0;
     }
 
-    main > section > aside {
+    main > aside {
         display: none;
     }
 }

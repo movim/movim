@@ -1,23 +1,21 @@
 <main>
-    <section>
-        <div>
-            <header>
-                <ul class="list middle">
-                    <li>
-                        <span class="primary active icon gray">
-                            <a href="<?php echo \Movim\Route::urlize('main'); ?>">
-                                <i class="material-icons">arrow_back</i>
-                            </a>
-                        </span>
-                        <p class="center"><?php echo __('page.about'); ?></p>
-                    </li>
-                </ul>
-            </header>
-            <?php $this->widget('Tabs');?>
+    <div>
+        <header>
+            <ul class="list middle">
+                <li>
+                    <span class="primary active icon gray">
+                        <a href="<?php echo \Movim\Route::urlize('main'); ?>">
+                            <i class="material-icons">arrow_back</i>
+                        </a>
+                    </span>
+                    <p class="center"><?php echo __('page.about'); ?></p>
+                </li>
+            </ul>
+        </header>
+        <?php $this->widget('Tabs');?>
 
-            <?php $this->widget('About');?>
-            <?php $this->widget('Help');?>
-            <?php $this->widget('Caps');?>
-        </div>
-    </section>
+        <?php $this->widget('About');?>
+        <?php $this->widget('Help');?>
+        <?php $this->widget('Caps');?>
+    </div>
 </main>

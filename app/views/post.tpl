@@ -14,7 +14,5 @@
 </nav>
 
 <main>
-    <section>
-        <?php $this->widget('Post');?>
-    </section>
+    <?php $this->widget('Post');?>
 </main>

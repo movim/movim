@@ -11,14 +11,12 @@
 <?php } ?>
 
 <main style="background-color: var(--movim-background);">
-    <section>
-        <?php if ($this->user->isLogged()) { ?>
-            <aside>
-                <?php $this->widget('NewsNav');?>
-            </aside>
-        <?php } ?>
-        <div>
-            <?php $this->widget('Blog');?>
-        </div>
-    </section>
+    <?php if ($this->user->isLogged()) { ?>
+        <aside>
+            <?php $this->widget('NewsNav');?>
+        </aside>
+    <?php } ?>
+    <div>
+        <?php $this->widget('Blog');?>
+    </div>
 </main>

@@ -35,10 +35,6 @@ table tr th {
     color: rgba(var(--movim-font), 0.54);
 }
 
-main > section > div > header.scroll {
-    background-color: var(--movim-background);
-}
-
 .color {
     background-color: #607D8B;
     color: white;
@@ -139,7 +135,7 @@ ul.list li > p:nth-last-of-type(2) + p:not(.normal) {
 /* Default color : indigo */
 
 input[type=button].color,
-main > section > div > header.fixed,
+main > div > header.fixed,
 main > header {
     background-color: var(--movim-accent);
     color: white;
@@ -147,7 +143,6 @@ main > header {
 }
 
 header.fixed ul.list li > p:nth-last-of-type(2) + p,
-main > section > div > header.big *,
 .snackbar ul.list li > p,
 .snackbar ul.list li > p:nth-last-of-type(2) + p,
 main > header ul.list li > p:nth-last-of-type(2) + p,

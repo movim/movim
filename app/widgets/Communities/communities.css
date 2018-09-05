@@ -1,7 +1,7 @@
-main > section > div {
+main > div {
     width: 130rem;
 }
 
-main > section > div > * {
+main > div > * {
     max-width: 100%;
 }

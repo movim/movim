@@ -12,12 +12,10 @@
 <?php $this->widget('BottomNavigation');?>
 
 <main>
-    <section>
-        <?php $this->widget('Upload');?>
-        <?php $this->widget('Chat');?>
-        <div>
-            <?php $this->widget('Chats');?>
-            <?php $this->widget('Rooms');?>
-        </div>
-    </section>
+    <?php $this->widget('Upload');?>
+    <?php $this->widget('Chat');?>
+    <div>
+        <?php $this->widget('Chats');?>
+        <?php $this->widget('Rooms');?>
+    </div>
 </main>

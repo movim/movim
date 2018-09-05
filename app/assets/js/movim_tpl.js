@@ -53,33 +53,33 @@ var MovimTpl = {
         MovimUtils.removeClass('body > nav', 'active');
     },
     showPanel: function() {
-        MovimUtils.addClass('main section', 'enabled');
+        MovimUtils.addClass('main', 'enabled');
         MovimUtils.addClass('ul#bottomnavigation', 'hidden');
         MovimTpl.scrollPanelTop();
     },
     hidePanel: function() {
-        MovimUtils.removeClass('main section', 'enabled');
+        MovimUtils.removeClass('main', 'enabled');
         MovimUtils.removeClass('ul#bottomnavigation', 'hidden');
     },
     isPanel: function() {
-        return MovimUtils.hasClass('main section', 'enabled');
+        return MovimUtils.hasClass('main', 'enabled');
     },
     isPanelScrolled: function() {
-        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) > div');
+        var selector = document.querySelector('main > div:first-child:nth-last-child(2) > div');
 
         if (selector != null) {
             return (selector.scrollHeight - Math.floor(selector.scrollTop) <= selector.clientHeight + 3);
         }
     },
     scrollPanel : function() {
-        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) > div');
+        var selector = document.querySelector('main > div:first-child:nth-last-child(2) > div');
 
         if (selector != null) {
             selector.scrollTop = selector.scrollHeight;
         }
     },
     scrollPanelTop : function() {
-        var selector = document.querySelector('main section > div:first-child:nth-last-child(2) > div');
+        var selector = document.querySelector('main > div:first-child:nth-last-child(2) > div');
 
         if (selector != null) {
             selector.scrollTop = 0;

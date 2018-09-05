@@ -12,15 +12,13 @@
 
 <?php $this->widget('BottomNavigation');?>
 
-<main>
-    <section style="background-color: var(--movim-background);">
-        <aside>
-            <?php $this->widget('ContactData'); ?>
-            <?php $this->widget('AdHoc'); ?>
-        </aside>
-        <div>
-            <?php $this->widget('ContactHeader'); ?>
-            <?php $this->widget('CommunityPosts'); ?>
-        </div>
-    </section>
+<main style="background-color: var(--movim-background);">
+    <aside>
+        <?php $this->widget('ContactData'); ?>
+        <?php $this->widget('AdHoc'); ?>
+    </aside>
+    <div>
+        <?php $this->widget('ContactHeader'); ?>
+        <?php $this->widget('CommunityPosts'); ?>
+    </div>
 </main>
