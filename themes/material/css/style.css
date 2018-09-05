@@ -123,7 +123,6 @@ main {
     right: 0;
     top: 0;
     transition: opacity 0.3s ease-in-out;
-    transform: translateZ(0);
     overflow-y: auto;
     overflow-x: hidden;
 
