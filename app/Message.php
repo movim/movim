@@ -4,6 +4,7 @@ namespace App;
 
 use Movim\Model;
 use Movim\Picture;
+use Movim\Route;
 
 class Message extends Model
 {
