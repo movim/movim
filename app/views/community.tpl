@@ -15,7 +15,7 @@
 
 <main style="background-color: var(--movim-background)">
     <?php if (empty($_GET['s'])) { ?>
-        <div>
+        <div class="large">
             <header>
                 <ul class="list middle">
                     <li>

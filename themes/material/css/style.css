@@ -145,6 +145,14 @@ main > div > * {
     margin: 0 auto;
 }
 
+main > div.large {
+    width: 130rem;
+}
+
+main > div.large > * {
+    max-width: 100%;
+}
+
 main > aside {
     max-width: 45rem;
 }

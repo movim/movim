@@ -1,7 +1,0 @@
-main > div {
-    width: 130rem;
-}
-
-main > div > * {
-    max-width: 100%;
-}

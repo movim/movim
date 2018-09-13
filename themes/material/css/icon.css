@@ -120,7 +120,7 @@ ul.list li > .primary.small {
 span.icon.small.bubble:first-letter,
 span.icon.small.bubble i {
     font-size: 2rem;
-    line-height: 1.5em;
+    line-height: 2rem;
     vertical-align: text-top;
 }
 

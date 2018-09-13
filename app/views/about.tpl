@@ -1,5 +1,5 @@
 <main>
-    <div>
+    <div class="large">
         <header>
             <ul class="list middle">
                 <li>
@@ -17,5 +17,6 @@
         <?php $this->widget('About');?>
         <?php $this->widget('Help');?>
         <?php $this->widget('Caps');?>
+        <?php $this->widget('Statistics');?>
     </div>
 </main>

@@ -1,9 +1,7 @@
 #caps_widget table {
     width: 100%;
     display: block;
-
     overflow: auto;
-
     font-size: 2rem;
 }
 
@@ -54,8 +52,4 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-main > section > div > #caps_widget {
-    max-width: calc(100% - 4rem);
 }

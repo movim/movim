@@ -10,7 +10,6 @@ class Communities extends \Movim\Widget\Base
     public function load()
     {
         $this->addjs('communities.js');
-        $this->addcss('communities.css');
     }
 
     function ajaxGet()
