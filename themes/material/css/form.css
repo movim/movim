@@ -45,7 +45,6 @@ form > div > textarea,
     resize: none;
     font-family: sans-serif;
     line-height: 3rem;
-    min-height: 12rem;
     box-sizing: border-box;
 }
 
