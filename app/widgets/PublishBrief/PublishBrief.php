@@ -98,7 +98,7 @@ class PublishBrief extends \Movim\Widget\Base
             $parser = new MarkdownExtra;
             $parser->hashtag_protection = true;
 
-            $doc->loadXML('<div>'.addHFR(addHFR($parser->transform($form->content->value))).'</div>');
+            $doc->loadXML('<div>'.addHFR($parser->transform($form->content->value)).'</div>');
             $view->assign('content', substr($doc->saveXML($doc->getElementsByTagName('div')->item(0)), 5, -6));
 
             Dialog::fill($view->draw('_publishbrief_preview'), true);

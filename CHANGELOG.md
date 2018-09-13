@@ -52,6 +52,7 @@ v0.14 (trunk)
  * Remove the action buttons in Chat
  * Use XEP-0359: Unique and Stable Stanza IDs as unique identifiers for the Messages in the DB
  * Improve video call and terminate flows
+ * Allow the usage of Markdown for the Login page information
 
 v0.13
 ---------------------------

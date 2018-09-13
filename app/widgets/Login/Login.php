@@ -5,6 +5,7 @@ use Moxl\Xec\Action\Storage\Get;
 use Respect\Validation\Validator;
 use Defuse\Crypto\Key;
 use Defuse\Crypto\Crypto;
+use Michelf\MarkdownExtra;
 
 use App\Configuration;
 use App\User;
@@ -50,7 +51,13 @@ class Login extends Base
     {
         $configuration = Configuration::get();
 
-        $this->view->assign('info',     $configuration->info);
+        if (!empty($configuration->info)) {
+            $parser = new MarkdownExtra;
+            $parser->hashtag_protection = true;
+
+            $this->view->assign('info',     $parser->transform($configuration->info));
+        }
+
         $this->view->assign('whitelist',$configuration->xmppwhitelist);
 
         if (isset($configuration->xmppdomain)

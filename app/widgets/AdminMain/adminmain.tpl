@@ -111,13 +111,18 @@
     <h3>{$c->__('information.title')}</h3>
 
     <div>
-        <textarea type="text" name="description" id="description" placeholder="{$conf->description}"/>{$conf->description}</textarea>
+        <textarea type="text" name="description" id="description" placeholder="{$conf->description}"
+                  onclick="MovimUtils.textareaAutoheight(this);"
+                  oninput="MovimUtils.textareaAutoheight(this);"/>{$conf->description}</textarea>
         <label for="description">{$c->__('information.description')}</label>
     </div>
     <div class="clear"></div>
 
     <div>
-        <textarea type="text" name="info" id="info" placeholder="{$c->__('information.label')}" />{$conf->info}</textarea>
+        <textarea type="text" name="info" id="info"
+                  placeholder="{$c->__('information.label')}"
+                  onclick="MovimUtils.textareaAutoheight(this);"
+                  oninput="MovimUtils.textareaAutoheight(this);"/>{$conf->info}</textarea>
         <label for="info">{$c->__('information.label')}</label>
     </div>
 
@@ -128,6 +133,7 @@
             </span>
             <p>{$c->__('information.info1')}</p>
             <p>{$c->__('information.info2')}</p>
+            <p>{$c->__('publishbrief.content_text')}</p>
         </li>
     </ul>
 

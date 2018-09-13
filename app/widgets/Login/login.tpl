@@ -73,11 +73,13 @@
                 </div>
             </form>
 
-            {if="isset($info) && $info != ''"}
+            {if="isset($info)"}
             <ul class="list thin card">
                 <li class="info">
                     <p></p>
-                    <p class="center normal">{$info|addUrls}</p>
+                    {autoescape="off"}
+                        {$info}
+                    {/autoescape}
                 </li>
             </ul>
             {/if}

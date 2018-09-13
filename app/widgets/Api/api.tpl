@@ -1,7 +1,7 @@
 <div id="api" class="tabelem paddedtop" title="{$c->__("api.title")}">
     <ul class="list">
         <li class="subheader">
-            <p>{$infos}</p>
+            <p>{autoescape="off"}{$infos}{/autoescape}</p>
         </li>
 
     {if="isset($json)"}
