@@ -767,16 +767,16 @@
         },
         {
             "name": "embed/embed",
-            "version": "v3.3.5",
+            "version": "v3.3.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/oscarotero/Embed.git",
-                "reference": "46e19804e330065c899657c047288f792e2bca02"
+                "reference": "4b4ab5f5a02563ba4a0707baad00eef2e376108a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/46e19804e330065c899657c047288f792e2bca02",
-                "reference": "46e19804e330065c899657c047288f792e2bca02",
+                "url": "https://api.github.com/repos/oscarotero/Embed/zipball/4b4ab5f5a02563ba4a0707baad00eef2e376108a",
+                "reference": "4b4ab5f5a02563ba4a0707baad00eef2e376108a",
                 "shasum": ""
             },
             "require": {
@@ -816,7 +816,7 @@
                 "opengraph",
                 "twitter cards"
             ],
-            "time": "2018-06-18T21:12:45+00:00"
+            "time": "2018-09-13T19:10:15+00:00"
         },
         {
             "name": "evenement/evenement",

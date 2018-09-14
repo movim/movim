@@ -365,7 +365,7 @@ class Post extends Model
         if ($entry->entry->category) {
             if ($entry->entry->category->count() == 1
             && isset($entry->entry->category->attributes()->term)) {
-                $tag = \App\Tag::firstOrCreate([
+                $tag = \App\Tag::firstOrCreateSafe([
                     'name' => strtolower((string)$entry->entry->category->attributes()->term)
                 ]);
 
@@ -374,7 +374,7 @@ class Post extends Model
                 if ($tag->name == 'nsfw') $this->nsfw = true;
             } else {
                 foreach($entry->entry->category as $cat) {
-                    $tag = \App\Tag::firstOrCreate([
+                    $tag = \App\Tag::firstOrCreateSafe([
                         'name' => strtolower((string)$cat->attributes()->term)
                     ]);
 
@@ -389,7 +389,7 @@ class Post extends Model
         $tagsContent = getHashtags(htmlspecialchars($this->title))
                      + getHashtags(htmlspecialchars($this->contentraw));
         foreach($tagsContent as $tag) {
-            $tag = \App\Tag::firstOrCreate([
+            $tag = \App\Tag::firstOrCreateSafe([
                 'name' => strtolower((string)$tag)
             ]);
 
