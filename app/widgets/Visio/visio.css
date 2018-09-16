@@ -42,8 +42,8 @@ body {
     }
 }
 
-#visio header {
-    top: 2.5rem;
+#visio header ul.list li {
+    padding: 3rem;
 }
 
 #visio header i {
