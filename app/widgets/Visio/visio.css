@@ -42,6 +42,11 @@ body {
     }
 }
 
+#visio header {
+    position: absolute;
+    right: 0;
+}
+
 #visio header ul.list li {
     padding: 3rem;
 }

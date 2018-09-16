@@ -275,6 +275,7 @@ var Visio = {
 
             } else if (Visio.pc.iceConnectionState == 'closed') {
                 button.classList.add('gray');
+                button.classList.remove('disabled');
                 i.innerText = 'call_end';
 
                 button.onclick = function() { MovimUtils.reloadThis(); };
@@ -282,6 +283,7 @@ var Visio = {
                    || Visio.pc.iceConnectionState == 'complete'
                    || Visio.pc.iceConnectionState == 'failed') {
                 button.classList.add('red');
+                i.className = 'material-icons';
                 i.innerText = 'call_end';
 
                 if (Visio.pc.iceConnectionState == 'failed') {
