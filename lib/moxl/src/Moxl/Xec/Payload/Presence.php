@@ -12,7 +12,7 @@ class Presence extends Payload
     public function handle($stanza, $parent = false)
     {
         // Subscribe request
-        if((string)$stanza->attributes()->type == 'subscribe') {
+        if ((string)$stanza->attributes()->type == 'subscribe') {
             $session = Session::start();
             $notifs = $session->get('activenotifs');
             $notifs[(string)$stanza->attributes()->from] = 'sub';
@@ -30,24 +30,27 @@ class Presence extends Payload
                 $r->setTo((string)$refreshable)->request();
             }
 
-            if($presence->muc
-            && isset($stanza->x)
-            && isset($stanza->x->status)) {
-                $code = (string)$stanza->x->status->attributes()->code;
-                if(isset($code) && $code == '110') {
-                    if($presence->value != 5 && $presence->value != 6) {
-                        $this->method('muc_handle');
-                        $this->pack($presence);
-                    } elseif($p->value == 5) {
-                        $this->method('unavailable_handle');
-                        $this->pack($presence);
+            if ($presence->muc
+            && isset($stanza->x)) {
+                foreach ($stanza->x as $x) {
+                    if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
+                    && isset($stanza->x->status)
+                    && (string)$stanza->x->status->attributes()->code == '110') {
+                        if($presence->value != 5 && $presence->value != 6) {
+                            $this->method('muc_handle');
+                            $this->pack($presence);
+                        } elseif($presence->value == 5) {
+                            $this->method('unavailable_handle');
+                            $this->pack($presence);
+                        }
+
                         $this->deliver();
                     }
                 }
             } else {
                 $this->pack($presence->roster);
 
-                if($presence->value == 5 /*|| $p->value == 6*/) {
+                if ($presence->value == 5 /*|| $p->value == 6*/) {
                     $presence->delete();
                 }
             }

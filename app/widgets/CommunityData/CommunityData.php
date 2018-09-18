@@ -26,11 +26,13 @@ class CommunityData extends \Movim\Widget\Base
                          ->first();
 
         $view->assign('info', $info);
-        $view->assign('num', ($info->items > 0)
-            ? $info->items
-            : \App\Post::where('server', $origin)
+        $view->assign('num', $info ?
+            ($info->items > 0)
+                ? $info->items
+                : \App\Post::where('server', $origin)
                        ->where('node', $node)
-                       ->count());
+                       ->count()
+            : 0);
 
         return $view->draw('_communitydata');
     }

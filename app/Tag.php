@@ -11,7 +11,7 @@ class Tag extends Model
     static public function firstOrCreateSafe(array $attributes, array $values = [])
     {
         try {
-            static::firstOrCreate($attributes, $values);
+            return static::firstOrCreate($attributes, $values);
         } catch (\PDOException $e) {
             /*
              * When an article is received the related tags can be saved
