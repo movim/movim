@@ -87,6 +87,7 @@ span.icon.bubble {
     border-radius: 5rem;
     font-size: 0;
     font-size: 2.25rem;
+    user-select: none;
 }
 
 span.icon.bubble img {
