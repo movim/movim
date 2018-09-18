@@ -30,10 +30,17 @@ class Presence extends Payload
                 $r->setTo((string)$refreshable)->request();
             }
 
-            if($presence->muc
-            && isset($stanza->x)
-            && isset($stanza->x->status)) {
-                $code = (string)$stanza->x->status->attributes()->code;
+            if ($presence->muc && isset($stanza->x)) {
+                foreach ($stanza->children() as $name => $c) {
+                    if ($c->attributes()->xmlns == 'http://jabber.org/protocol/muc#user')  {
+                        $muc_user = $c;
+                        break;
+                    }
+                }
+            }
+
+            if (isset($muc_user) && isset($muc_user->status)) {
+                $code = (string)$muc_user->status->attributes()->code;
                 if(isset($code) && $code == '110') {
                     if($presence->value != 5 && $presence->value != 6) {
                         $this->method('muc_handle');
