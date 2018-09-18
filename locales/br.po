@@ -94,7 +94,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Breton (http://www.transifex.com/movim/movim/language/br/)\n"
 "Language: br\n"
@@ -173,9 +173,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Emaoc'h o vont da zilemel ho kont XMPP hag an holl ditouroù liammet outañ (profil, darempredoù hag embannadennoù)."
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Ha sur oc'h e fell deoc'h da zilemel anezhi?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -460,9 +459,8 @@ msgid "Encrypted message"
 msgstr ""
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "O kompozañ..."
+msgstr ""
 
 #: [message]paused [chats]paused
 msgid "Paused…"
@@ -1098,9 +1096,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "Kudenn Domani XMPP, ho kont n'eo ket un ID Jabber reizh"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Roadennoù 'zo a vank!"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2499,12 +2496,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "General Informations"
-#~ msgstr "Titouroù hollek"
-
-#~ msgid "Client Informations"
-#~ msgstr "Titouroù an implijer"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Distrollet"

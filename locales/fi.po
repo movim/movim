@@ -94,7 +94,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Finnish (http://www.transifex.com/movim/movim/language/fi/)\n"
 "Language: fi\n"
@@ -173,9 +173,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Olet poistamassa XMPP-tiliäsi ja kaikkea siihen liittyvää tietoa (profiili, kontaktit ja julkaisut)."
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Oletko varma että haluat poistaa sen?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -416,9 +415,8 @@ msgid "Webcam"
 msgstr "Webkamera"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "Sano muikku!"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -461,9 +459,8 @@ msgid "Encrypted message"
 msgstr "Salattu viesti"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "Lähetetään"
+msgstr ""
 
 #: [message]paused [chats]paused
 msgid "Paused…"
@@ -486,9 +483,8 @@ msgid "%s needs your attention"
 msgstr "%s tarvitsee huomiosi"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "Viestisi tähän..."
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -563,9 +559,8 @@ msgid "Administration"
 msgstr ""
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "Ei keskusteluja vielä..."
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -777,9 +772,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "Sinulla ei ole vielä yhtään keskusteluhuonetta."
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1282,9 +1276,8 @@ msgid "Post deleted"
 msgstr "Julkaisu poistettu"
 
 #: [post]hot
-#, fuzzy
 msgid "What’s Hot"
-msgstr "Kuumaa juuri nyt"
+msgstr ""
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1375,9 +1368,8 @@ msgid "Oh! Hello!"
 msgstr "Hei vaan!"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "Olet näköjään uusi täällä. Tervetuloa Movimiin!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -1468,9 +1460,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "Sinulla ei ole vielä yhtään keskusteluhuonetta."
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1585,9 +1576,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "Movim on hajautettu sosiaalinen verkosto. Ennen rekisteröitymistä sinun pitää valita serveri jolle rekisteröidyt."
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "Oma serverisi tähän?"
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1646,9 +1636,8 @@ msgid "Privacy Level"
 msgstr "Yksityisyyden taso"
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "Onko tämä profiili julkinen?"
+msgstr ""
 
 #: [privacy]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -1699,9 +1688,8 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-#, fuzzy
 msgid "You don’t have Javascript enabled. Good luck with that."
-msgstr "Javascript on pois käytöstä. Onnea vaan."
+msgstr ""
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
@@ -2508,18 +2496,3 @@ msgstr "API ei ole saatavilla, yritä myöhemmin uudelleen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Kirjoita tähän"
-
-#~ msgid "Are you sure ?"
-#~ msgstr "Oletko varma?"
-
-#~ msgid "I'm "
-#~ msgstr "Olen"
-
-#~ msgid "Server Timezone"
-#~ msgstr "Palvelimen aikavyöhyke"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "Tietokanta pitää päivittää"
-
-#~ msgid "Load more contacts"
-#~ msgstr "Lataa lisää kontakteja"

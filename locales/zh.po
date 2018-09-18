@@ -101,7 +101,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
 "Language: zh_CN\n"
@@ -180,9 +180,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "你将会删除你的 XMPP 账号以及所有相关的信息（基本资料、联系人和已发表的内容）"
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "你确认你要删除它？"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -310,9 +309,8 @@ msgid "This message will be displayed on the login page"
 msgstr "这条信息将显示在登录页面"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "如果您不想显示任何信息，请在此留空。"
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -356,9 +354,8 @@ msgid "General Overview"
 msgstr "概览"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Web 服务器上 Movim 所在目录 %s 的读写权限"
+msgstr ""
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -425,9 +422,8 @@ msgid "Webcam"
 msgstr "摄像头"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "（说）茄——子——！"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -446,9 +442,8 @@ msgid "No avatar defined yet"
 msgstr "暂无头像"
 
 #: [blog]title [feed]title
-#, fuzzy
 msgid "%s’s feed"
-msgstr "%s的 feed"
+msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
@@ -471,14 +466,12 @@ msgid "Encrypted message"
 msgstr "消息已加密"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "输入中…"
+msgstr ""
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "暂停…"
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
@@ -497,9 +490,8 @@ msgid "%s needs your attention"
 msgstr "%s 需要您的注意"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "有您的消息…"
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -514,9 +506,8 @@ msgid "Nothing here yet…"
 msgstr "此处还没有内容…"
 
 #: [chat]new_text
-#, fuzzy
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr "不要害羞，发一条消息来开始讨论吧"
+msgstr ""
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
@@ -575,9 +566,8 @@ msgid "Administration"
 msgstr "管理"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "尚无对话"
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -612,9 +602,8 @@ msgid "Communities servers"
 msgstr "社群服务器"
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "此服务器不存在"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -661,9 +650,8 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr "你将要删除下列的社群。请确认你的操作。"
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "看起来此社群已不存在。你想要从你的订阅中删除它吗？"
+msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -791,9 +779,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "您可以在这里管理您的所有订阅"
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "您尚未订阅任何群组"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1296,9 +1283,8 @@ msgid "Post deleted"
 msgstr "帖子已删除"
 
 #: [post]hot
-#, fuzzy
 msgid "What’s Hot"
-msgstr "当前热门"
+msgstr ""
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1389,23 +1375,20 @@ msgid "Oh! Hello!"
 msgstr "噢！您好！"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "看起来你新加入此处！欢迎来到 Movim！"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
 msgstr "检查菜单"
 
 #: [hello]menu_paragraph
-#, fuzzy
 msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
-msgstr "Movim 的所有主要特性均可在此访问。请不要犹豫，航越该页面来发现更多东西！"
+msgstr ""
 
 #: [hello]profile_title
-#, fuzzy
 msgid "Looks like you didn’t complete your profile yet"
-msgstr "你还没有补全你的个人资料。"
+msgstr ""
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
@@ -1424,9 +1407,8 @@ msgid "Presence"
 msgstr "在线"
 
 #: [publishbrief]placeholder
-#, fuzzy
 msgid "What’s new?"
-msgstr "当前最新"
+msgstr ""
 
 #: [publishbrief]post
 msgid "Write a post"
@@ -1485,9 +1467,8 @@ msgid "Edit a chatroom"
 msgstr "修改聊天室"
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "你尚未拥有任何聊天室。"
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1546,9 +1527,8 @@ msgid "Please provide a room address"
 msgstr "请提供一个聊天室地址"
 
 #: [room]anonymous_text1
-#, fuzzy
 msgid "You are currently logged as an anonymous user."
-msgstr "你现在是匿名身份。"
+msgstr ""
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
@@ -1603,9 +1583,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "Movim 是一个去中心化的社交网络，在建立一个新账户之前，你需要选择一个服务器注册。"
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "这是你的服务器？"
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1664,14 +1643,12 @@ msgid "Privacy Level"
 msgstr "隐私等级"
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "公开您的档案么?"
+msgstr ""
 
 #: [privacy]privacy_info
-#, fuzzy
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "请注意！通过标记您的档案为公开，以下列出的所有信息将对 Movim 的所有用户和整个互联网公开。"
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1686,9 +1663,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim 正在降级模式中运行"
 
 #: [degraded]text_1
-#, fuzzy
 msgid "Your server doesn’t support XMPP Pubsub persistence."
-msgstr "你的服务器不支持 XMPP Pubsub 持久化。"
+msgstr ""
 
 #: [degraded]text_2
 msgid "The communities, news feed and profile have been disabled for the moment."
@@ -1719,14 +1695,12 @@ msgid "…connecting"
 msgstr "连接中"
 
 #: [global]no_js
-#, fuzzy
 msgid "You don’t have Javascript enabled. Good luck with that."
-msgstr "您的浏览器没有开启javascript，请排查一下"
+msgstr ""
 
 #: [global]description
-#, fuzzy
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr "Movim 是一个易用的分布式社交网络平台，致力于保护你的隐私，拥有一系列令人惊艳的特性。"
+msgstr ""
 
 #: [global]loading
 msgid "Loading…"
@@ -1822,9 +1796,8 @@ msgid "Cannot load file '%s'"
 msgstr "不能加载文件 '%s'"
 
 #: [error]widget_load_error
-#, fuzzy
 msgid "Requested widget '%s' doesn’t exist."
-msgstr "请求的小工具 '%s' 不存在."
+msgstr ""
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
@@ -2530,24 +2503,3 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
-
-#~ msgid "Are you sure ?"
-#~ msgstr "您确定吗 ?"
-
-#~ msgid "I'm "
-#~ msgstr "我是 "
-
-#~ msgid "Server Timezone"
-#~ msgstr "服务器时区"
-
-#~ msgid "Movim has found some issues or things that need to be fixed or improved"
-#~ msgstr "Movim 已经发现一些问题需要被修复或改善"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "数据库需要更新"
-
-#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-#~ msgstr "XMPP Websocket 连接错误，请在通用设置中检查 URL 设置是否正确"
-
-#~ msgid "Load more contacts"
-#~ msgstr "加载更多联系人"

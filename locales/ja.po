@@ -97,7 +97,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Japanese (http://www.transifex.com/movim/movim/language/ja/)\n"
 "Language: ja\n"
@@ -176,9 +176,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "XMPP アカウントと関連しているデータ、プロファイル、コンタクトや投稿などが削除されます。"
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "削除してよろしいですか"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -306,9 +305,8 @@ msgid "This message will be displayed on the login page"
 msgstr "このメッセージはログインページに表示されます"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "空のままにするとアクセスできるXMPPアカウントが制限されません"
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -420,9 +418,8 @@ msgid "Webcam"
 msgstr "ウェブカメラ"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "はい、チーズ！"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -441,9 +438,8 @@ msgid "No avatar defined yet"
 msgstr "アバターが設定されていません"
 
 #: [blog]title [feed]title
-#, fuzzy
 msgid "%s’s feed"
-msgstr "%s のフィード"
+msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
@@ -466,9 +462,8 @@ msgid "Encrypted message"
 msgstr "暗号化されたメッセージ"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "書き込み中"
+msgstr ""
 
 #: [message]paused [chats]paused
 msgid "Paused…"
@@ -491,9 +486,8 @@ msgid "%s needs your attention"
 msgstr ""
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "ここに記入を..."
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -568,9 +562,8 @@ msgid "Administration"
 msgstr "システム管理"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "チャットがまだありません…"
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -782,9 +775,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "チャットルームはまだありません"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1471,9 +1463,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "チャットルームはまだありません"
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1588,9 +1579,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "ここに記入を..."
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1649,9 +1639,8 @@ msgid "Privacy Level"
 msgstr ""
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "あなたのプロファイルは公開されました"
+msgstr ""
 
 #: [privacy]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -2510,12 +2499,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr "ここに入力を"
-
-#~ msgid "Are you sure ?"
-#~ msgstr "よろしいですか"
-
-#~ msgid "Server Timezone"
-#~ msgstr "サーバータイムゾーン"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "データベースをアップデートする必要があります"

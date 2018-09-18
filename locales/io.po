@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Ido (http://www.transifex.com/movim/movim/language/io/)\n"
 "Language: io\n"
@@ -174,9 +174,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Vu efacus vua XMPP-uzanto ed omna di la relatanta informi ligita ad olu (profilo, kontakti e publikigi)."
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Ka vu esas certa vu volas efacar olu ?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -417,9 +416,8 @@ msgid "Webcam"
 msgstr "Webcam"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "Ridetez !"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -1371,9 +1369,8 @@ msgid "Oh! Hello!"
 msgstr "Ho! Hola!"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "Olu semblas ke vu esas nova a hike! Bonvenez sur Movim!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -2500,33 +2497,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Are you sure ?"
-#~ msgstr "Ka vu esas certa ?"
-
-#~ msgid "I'm "
-#~ msgstr "Me esas"
-
-#~ msgid "Server Timezone"
-#~ msgstr "Servilo-tempozono"
-
-#~ msgid "Database Type"
-#~ msgstr "Tipo di datumaro"
-
-#~ msgid "Groups"
-#~ msgstr "Grupi"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "Donar etiketo por ica grupo"
-
-#~ msgid "Delete the group"
-#~ msgstr "Efacar ica grupo"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s grupi ye ica servilo"
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Selektas servilo e grupo ed abonar ad olu per la %s-butono an la kapo. Vu anke povas krear nova per %s-butono."
-
-#~ msgid "Group name"
-#~ msgstr "Grupo-nomo"

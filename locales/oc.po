@@ -93,7 +93,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Occitan (post 1500) (http://www.transifex.com/movim/movim/language/oc/)\n"
 "Language: oc\n"
@@ -301,9 +301,8 @@ msgid "This message will be displayed on the login page"
 msgstr ""
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "Daissatz aqueste champ void se desiratz autorizar la connexion a totes los comptes XMPP."
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -415,9 +414,8 @@ msgid "Webcam"
 msgstr "Webcam"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "Sorissètz !"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -460,14 +458,12 @@ msgid "Encrypted message"
 msgstr "Messatge chifrat"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "A escriure..."
+msgstr ""
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "estimulat(ada)"
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
@@ -1639,9 +1635,8 @@ msgid "Privacy Level"
 msgstr "Nivèl de confidencialitat"
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "Es lo perfil public ?"
+msgstr ""
 
 #: [privacy]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -2500,9 +2495,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "I'm "
-#~ msgstr "Soi "
-
-#~ msgid "Server Timezone"
-#~ msgstr "Fus orari del servidor"

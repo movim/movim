@@ -94,7 +94,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
 "Language: zh_TW\n"
@@ -173,9 +173,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "您將刪除您的 XMPP 帳號及所有連結在此的資訊 (個人資訊，連絡人及發佈的內容)。"
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "您確定要刪除嗎?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -303,9 +302,8 @@ msgid "This message will be displayed on the login page"
 msgstr "這個訊息會顯示在登入頁面"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "假如您不想顯示任何訊息的話，保持欄位空白。"
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -349,9 +347,8 @@ msgid "General Overview"
 msgstr "一般概述"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "在Movim網頁伺服器 %s 目錄上讀和寫的權限"
+msgstr ""
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -418,9 +415,8 @@ msgid "Webcam"
 msgstr "網路攝影機"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "乾杯 !"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -439,9 +435,8 @@ msgid "No avatar defined yet"
 msgstr "未定義圖示"
 
 #: [blog]title [feed]title
-#, fuzzy
 msgid "%s’s feed"
-msgstr "%s的文章"
+msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
@@ -464,14 +459,12 @@ msgid "Encrypted message"
 msgstr "已加密訊息"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "輸入中"
+msgstr ""
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "已暫停..."
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
@@ -490,9 +483,8 @@ msgid "%s needs your attention"
 msgstr "%s 需要您的關注"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "您的訊息在這裡..."
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -507,9 +499,8 @@ msgid "Nothing here yet…"
 msgstr "這裡沒有..."
 
 #: [chat]new_text
-#, fuzzy
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr "不要害羞，送出第一個訊息來開始討論"
+msgstr ""
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
@@ -568,9 +559,8 @@ msgid "Administration"
 msgstr "管理者"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "沒有對話..."
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -605,9 +595,8 @@ msgid "Communities servers"
 msgstr "社群伺服器"
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "這個伺服器不存在"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -1587,9 +1576,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "您的訊息在這裡..."
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -2508,18 +2496,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Server Timezone"
-#~ msgstr "伺服器時區"
-
-#~ msgid "Movim has found some issues or things that need to be fixed or improved"
-#~ msgstr "Movim 有找到一些問題或是狀況需要修正或是改進"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "資料庫需要更新"
-
-#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-#~ msgstr "XMPP Websocket 連線錯誤，請確認在一般設置裡面提供的有效網址"
-
-#~ msgid "Load more contacts"
-#~ msgstr "讀取更多的聯絡人"

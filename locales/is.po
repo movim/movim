@@ -94,7 +94,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Icelandic (http://www.transifex.com/movim/movim/language/is/)\n"
 "Language: is\n"
@@ -173,9 +173,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Þú munt eyða XMPP aðgangionum þínum og öllum upplýsingum tengdum honum (prófíll, tengiliðir og færslur)."
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Ertu viss um að þú viljir eyða aðganginum?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -416,9 +415,8 @@ msgid "Webcam"
 msgstr "Vefmyndamél"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "Sís!"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -1278,9 +1276,8 @@ msgid "Post deleted"
 msgstr "Færsla hefur verið eydd"
 
 #: [post]hot
-#, fuzzy
 msgid "What’s Hot"
-msgstr "Hvað er Heitt"
+msgstr ""
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -2499,33 +2496,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "I'm "
-#~ msgstr "Ég er"
-
-#~ msgid "Server Timezone"
-#~ msgstr "Tímabelti Netþjóns"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "Þörf er á að uppfæra gagnagrunninn"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim er tengt við gagnagrunninn"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Movim gagnagrunnur er af nýjustu gerð"
-
-#~ msgid "Database Type"
-#~ msgstr "Gerð Gagnagrunns"
-
-#~ msgid "Host"
-#~ msgstr "Hýsill"
-
-#~ msgid "Groups"
-#~ msgstr "Hópar"
-
-#~ msgid "Link"
-#~ msgstr "Tengill"
-
-#~ msgid "Tags"
-#~ msgstr "Mörk"

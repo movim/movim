@@ -1,5 +1,6 @@
 #
 # Translators:
+# Ali Can <gamalpha112@gmail.com>, 2018
 # alisan alacam <alisanalacam@gmail.com>, 2016
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -95,7 +96,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Turkish (http://www.transifex.com/movim/movim/language/tr/)\n"
 "Language: tr\n"
@@ -107,7 +108,7 @@ msgstr ""
 
 #: [about]thanks
 msgid "Thanks"
-msgstr ""
+msgstr "Teşekkürler"
 
 #: [about]developers
 msgid "Developers"
@@ -115,11 +116,11 @@ msgstr "Geliştiriciler"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "Çeviriciler"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
-msgstr ""
+msgstr "Tüm geliştiricilere teşekkür ederiz"
 
 #: [about]software
 msgid "Software"
@@ -167,16 +168,15 @@ msgstr ""
 
 #: [account]delete
 msgid "Delete your account"
-msgstr ""
+msgstr "Hesabını sil"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
 msgstr ""
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Bunu silmek isteğinize emin misiniz?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -216,7 +216,7 @@ msgstr "Yükleniyor"
 
 #: [create]placeholder
 msgid "…and start playing"
-msgstr ""
+msgstr "...ve oynatılıyor"
 
 #: [error]not_acceptable
 msgid "Not Acceptable"
@@ -228,7 +228,7 @@ msgstr ""
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Kayıt olma başarısız"
 
 #: [adhoc]title
 msgid "Actions"
@@ -240,15 +240,15 @@ msgstr ""
 
 #: [admin]general
 msgid "General Settings"
-msgstr ""
+msgstr "Genel Ayarlar"
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "Tema"
 
 #: [general]language
 msgid "Default language"
-msgstr ""
+msgstr "Varsayılan Dil"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
@@ -272,7 +272,7 @@ msgstr "Kullanıcı adı"
 
 #: [credentials]re_password
 msgid "Retype password"
-msgstr ""
+msgstr "Şifre tekrar"
 
 #: [whitelist]title
 msgid "Whitelisted XMPP Servers"
@@ -461,9 +461,8 @@ msgid "Encrypted message"
 msgstr ""
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "Oluşturuluyor..."
+msgstr ""
 
 #: [message]paused [chats]paused
 msgid "Paused…"
@@ -1099,9 +1098,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "XMPP Alan adı hatası, hesabınız geçerli bir Jabber ID değil"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Bazı veriler eksik !"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2500,18 +2498,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Database Type"
-#~ msgstr "Veritabanı Tipi"
-
-#~ msgid "Port"
-#~ msgstr "Port"
-
-#~ msgid "General Informations"
-#~ msgstr "Genel Bilgiler"
-
-#~ msgid "Client Informations"
-#~ msgstr "İstemci bilgileri"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Gruplanmamış"

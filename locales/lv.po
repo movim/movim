@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Latvian (http://www.transifex.com/movim/movim/language/lv/)\n"
 "Language: lv\n"
@@ -174,9 +174,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr ""
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Vai tiešām vēlaties dzēst šo?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -485,9 +484,8 @@ msgid "%s needs your attention"
 msgstr "%s pieprasa jūsu uzmanību"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "Jūsu serveris šeit ?"
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -1099,9 +1097,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Dažas datnes trūkst !"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -1580,9 +1577,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "Jūsu serveris šeit ?"
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -2501,57 +2497,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Are you sure ?"
-#~ msgstr "Vai esat pārliecināts(a)?"
-
-#~ msgid "I'm "
-#~ msgstr "Esmu "
-
-#~ msgid "Server Timezone"
-#~ msgstr "Servera laika josla"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "Datņu bāze ir jāatjaunina"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl nevarēja pieslēgties datubāzei"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim ir pieslēgts datubāzei"
-
-#~ msgid "Database Type"
-#~ msgstr "Datubāzes tips"
-
-#~ msgid "Host"
-#~ msgstr "Resursdators"
-
-#~ msgid "Port"
-#~ msgstr "Ports"
-
-#~ msgid "Database Name"
-#~ msgstr "Datubāzes Nosaukums"
-
-#~ msgid "Groups"
-#~ msgstr "Grupas"
-
-#~ msgid "General Informations"
-#~ msgstr "Vispārīgā Informācija"
-
-#~ msgid "Link"
-#~ msgstr "Saite"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Negrupēts"
-
-#~ msgid "Show group %s"
-#~ msgstr "Radīt %s grupu"
-
-#~ msgid "Hide group %s"
-#~ msgstr "Slēpt %s grupu"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Rādīt/slēpt"
-
-#~ msgid "JID"
-#~ msgstr "JID"

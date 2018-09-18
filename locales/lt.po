@@ -94,15 +94,15 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Lithuanian (http://www.transifex.com/movim/movim/language/lt/)\n"
 "Language: lt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < 11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? 1 : n % 1 != 0 ? 2: 3);\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -173,9 +173,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Jūs ištrinsite savo XMPP paskyrą ir visą susijusią informaciją su ja (profilį, kontaktus ir publikacijas) "
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Ar tikrai norite ištrinti?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -2497,42 +2496,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Server Timezone"
-#~ msgstr "Serverio Laiko Zona"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "Duomenų bazę reikia atnaujinti"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Mold nepavyko prisijungti prie duomenų bazės"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim prisijungė prie duomenų bazės"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Movim duomenų bazė yra atnaujinta"
-
-#~ msgid "Database Type"
-#~ msgstr "Duomenų bazės tipas"
-
-#~ msgid "Host"
-#~ msgstr "Host'as"
-
-#~ msgid "Port"
-#~ msgstr "Port'as"
-
-#~ msgid "Database Name"
-#~ msgstr "Duomenų bazės pavadinimas"
-
-#~ msgid "WebSocket Configuration"
-#~ msgstr "WebSocket konfigūravimas"
-
-#~ msgid "Enter here a valid WebSocket URI in the form"
-#~ msgstr "Čia įveskite galiojantį WebSocket URI formoje"
-
-#~ msgid "WebSocket URI"
-#~ msgstr "WebSocket URI"
-
-#~ msgid "If you change the URI, please restart the daemon to reload the configuration"
-#~ msgstr "Jei jūs pakeitėte URI, prašome perkrauti "

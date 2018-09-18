@@ -96,7 +96,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
 "Language: id\n"
@@ -175,9 +175,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Anda akan menghapus akun XMPP anda dan semua yang informasi yang berhubungan dengannya (profil, kontak dan publikasi)"
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Apakah anda yakin akan menghapus ini?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -305,9 +304,8 @@ msgid "This message will be displayed on the login page"
 msgstr "Pesan ini akan ditampilkan didalam halaman masuk"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "Abaikan bidang ini jika anda tidak ingin menampilkan pesan apapun"
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -351,9 +349,8 @@ msgid "General Overview"
 msgstr "Gambaran Umum"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Hak baca dan tulis untuk webserver di direktori Movim %s"
+msgstr ""
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -420,9 +417,8 @@ msgid "Webcam"
 msgstr "Webcam"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "Senyum !"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -441,9 +437,8 @@ msgid "No avatar defined yet"
 msgstr "Belum ada avatar didefinisikan sebelumnya"
 
 #: [blog]title [feed]title
-#, fuzzy
 msgid "%s’s feed"
-msgstr "Umpan %s"
+msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
@@ -466,14 +461,12 @@ msgid "Encrypted message"
 msgstr "Pesan yang dienkripsi"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "Menulis..."
+msgstr ""
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "Jeda ..."
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
@@ -492,9 +485,8 @@ msgid "%s needs your attention"
 msgstr "%s butuh perhatian anda"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "Pesan anda disini..."
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -569,9 +561,8 @@ msgid "Administration"
 msgstr "Administrasi"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "Belum ada obrolan..."
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -606,9 +597,8 @@ msgid "Communities servers"
 msgstr "Server komunitas"
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "Server ini tidak ada"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -784,9 +774,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Disini anda dapat mengelola semua langganan anda"
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "Anda tidak berlangganan grup apapun"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1289,9 +1278,8 @@ msgid "Post deleted"
 msgstr "Post dihapus"
 
 #: [post]hot
-#, fuzzy
 msgid "What’s Hot"
-msgstr "Sedang hangat"
+msgstr ""
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1382,23 +1370,20 @@ msgid "Oh! Hello!"
 msgstr "Oh! Halo!"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "Nampaknya anda baru disini! Selamat datang di Movim!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
 msgstr "Periksa menu"
 
 #: [hello]menu_paragraph
-#, fuzzy
 msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
-msgstr "Semua fitur utama Movim dapat diakses disana. Jangan sungkan untuk navigasi lewat halaman untuk jelajahi hal lainnya!"
+msgstr ""
 
 #: [hello]profile_title
-#, fuzzy
 msgid "Looks like you didn’t complete your profile yet"
-msgstr "Nampaknya anda belum menyelesaikan profil anda"
+msgstr ""
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
@@ -1477,9 +1462,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "Anda tidak berlangganan grup apapun"
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1594,9 +1578,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "Pesan anda disini..."
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1655,9 +1638,8 @@ msgid "Privacy Level"
 msgstr "Tingkat Privasi"
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "Apakah ini profil publik ?"
+msgstr ""
 
 #: [privacy]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -2516,24 +2498,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Are you sure ?"
-#~ msgstr "Anda yakin ?"
-
-#~ msgid "I'm "
-#~ msgstr "Aku "
-
-#~ msgid "Server Timezone"
-#~ msgstr "Zona Waktu Server"
-
-#~ msgid "Movim has found some issues or things that need to be fixed or improved"
-#~ msgstr "Movim menemukan sebuah isu atau sesuatu yang perlu diperbaiki atau ditingkatkan"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "Database perlu diperbarui"
-
-#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-#~ msgstr "Terjadi galat koneksi WebSocket, mohon untuk periksa validasi URL yang diberikan di Konfigurasi Umum"
-
-#~ msgid "Load more contacts"
-#~ msgstr "Muat kontak lainnya"

@@ -94,7 +94,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Romanian (http://www.transifex.com/movim/movim/language/ro/)\n"
 "Language: ro\n"
@@ -173,9 +173,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Vei șterge contul tău XMPP și toate informațiile relative legate de acesta (profil, contacte și publicații)"
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Ești sigur că vrei să-l ștergi?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -460,9 +459,8 @@ msgid "Encrypted message"
 msgstr "Mesaj criptat"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "Se încarcă..."
+msgstr ""
 
 #: [message]paused [chats]paused
 msgid "Paused…"
@@ -485,9 +483,8 @@ msgid "%s needs your attention"
 msgstr ""
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "Mesajul dumneavoastră aici..."
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -566,9 +563,8 @@ msgid "No chats yet…"
 msgstr ""
 
 #: [chats]empty
-#, fuzzy
 msgid "Start a new conversation by clicking on the %s button."
-msgstr "Deschideți o nouă conversație făcând clic pe butonul %s de mai jos sau vizitând pagina de Contacte."
+msgstr ""
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -599,9 +595,8 @@ msgid "Communities servers"
 msgstr ""
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "Acest server nu există"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -648,9 +643,8 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Se pare că acest grup nu mai există. Vreți sa îl scoateți din abonamente?"
+msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -778,9 +772,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Aici veți putea să gestionați toate abonamentele dumneavoastră."
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "Nu aveți nici un grup de abonamente încă."
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1467,9 +1460,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "Nu aveți nici un grup de abonamente încă."
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1584,9 +1576,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "Movim este a rețea descentralizată, înainte de a crea un cont, trebuie sa alegi un server pentru înregistrare"
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "Mesajul dumneavoastră aici..."
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -2505,129 +2496,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Are you sure ?"
-#~ msgstr "Sunteți sigur(ă)?"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "Baza de date trebuie să fie actualizată"
-
-#~ msgid "Load more contacts"
-#~ msgstr "Încărcați mai multe contacte"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl nu a fost capabil să se conecteze la baza de date"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim este conectat la baza de date"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Baza de date Movim este actualizată"
-
-#~ msgid "Database Type"
-#~ msgstr "Tip bază de date"
-
-#~ msgid "Database Name"
-#~ msgstr "Nume bază de date"
-
-#~ msgid "General Informations"
-#~ msgstr "Informatii generale"
-
-#~ msgid "Client Informations"
-#~ msgstr "Informații client"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "Acest contact este în lista de contacte dar nu este nici un abonament între cele două conturi"
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "Vă veți dezabona de la acest Grup"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Faceți apartenența la acest grup publică cu prietenii dumneavoastră"
-
-#~ msgid "Give a label for this group"
-#~ msgstr "Adăugați o etichetă la acest grup"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Configurația grupului salvată"
-
-#~ msgid "Delete the group"
-#~ msgstr "Ștergeți acest grup"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Veți șterge acest grup. Vă rugăm confirmați acțiunea."
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s grupuri pe acest server"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "Grupurile sunt modul perfect de a împărtăși postări despre subiectele care vă plac, cu toți ceilalți utilizatori Movim."
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Alegeți un server și un grup și abonați-vă la acesta folosind butonul %s din antet. De asemenea, puteți crea unul nou folosind butonul %s."
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "Terminat? Vă puteți publica acum o nouă postare în cadrul grupului, folosind butonul %s."
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "Veți găsi o listă cu toate Grupurile abonate în Abonamentele mele și veți primi instant toate postările noi în pagina de %sȘtiri%s"
-
-#~ msgid "Create a new Group on %s"
-#~ msgstr "Creează un nou Grup pe %s"
-
-#~ msgid "Group name"
-#~ msgstr "Nume Grup"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Grup creat cu succes"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Grup șters cu succes"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "Vă rugăm să furnizați un nume de grup valabil (4 caractere minimum)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "Nu puteți crea un nou Grup pe acest server"
-
-#~ msgid "Subscriptions node created"
-#~ msgstr "Nod abonamente creat"
-
-#~ msgid "Add some text"
-#~ msgstr "Adaugă niște text"
-
-#~ msgid "Ungrouped"
-#~ msgstr "Negrupate"
-
-#~ msgid "Show disconnected contacts"
-#~ msgstr "Arată contactele deconectate"
-
-#~ msgid "Hide disconnected contacts"
-#~ msgstr "Ascunde contactele deconectate"
-
-#~ msgid "Show group %s"
-#~ msgstr "Arată grupul %s"
-
-#~ msgid "Hide group %s"
-#~ msgstr "Ascunde grupul %s"
-
-#~ msgid "Please enter a valid Jabber ID"
-#~ msgstr "Vă rugăm să introduceți un cont de Jabber valabil"
-
-#~ msgid "No contacts ?"
-#~ msgstr "Nici un contact?"
-
-#~ msgid "You can add one using the + button below"
-#~ msgstr "Aveți posibilitatea să adăugați unul utilizând butonul + de mai jos"
-
-#~ msgid "Show/Hide"
-#~ msgstr "Arată/Ascunde"
-
-#~ msgid "Results"
-#~ msgstr "Rezultate"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Caută în contactele tale"
-
-#~ msgid "Search a contact"
-#~ msgstr "Caută un contact"

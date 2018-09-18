@@ -98,7 +98,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
 "Language: nb_NO\n"
@@ -177,9 +177,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Du vil slette din XMPP-konto og all relevant informasjon koblet til den (profil, kontakter og publikasjoner)"
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Er du sikker på at du vil slette den?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -307,9 +306,8 @@ msgid "This message will be displayed on the login page"
 msgstr "Denne meldingen vil vises på påloggingssiden"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "La feltet stå tomt hvis du ikke ønsker å vise en melding"
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -353,9 +351,8 @@ msgid "General Overview"
 msgstr "Generell oversikt"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Tjenerens lese- og skriverettigheter i Movims %s-mappe"
+msgstr ""
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -422,9 +419,8 @@ msgid "Webcam"
 msgstr "Nettkamera"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "Trekk på smilebåndet!"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -443,9 +439,8 @@ msgid "No avatar defined yet"
 msgstr "Ingen avatar angitt enda"
 
 #: [blog]title [feed]title
-#, fuzzy
 msgid "%s’s feed"
-msgstr "%ss strøm"
+msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
@@ -468,14 +463,12 @@ msgid "Encrypted message"
 msgstr "Kryptert melding"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "Oppretter…"
+msgstr ""
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "Venter…"
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
@@ -494,9 +487,8 @@ msgid "%s needs your attention"
 msgstr "%s trenger din oppmerksomhet"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "Skriv meldingen her…"
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -511,9 +503,8 @@ msgid "Nothing here yet…"
 msgstr "Ennå intet her…"
 
 #: [chat]new_text
-#, fuzzy
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr "Ikke vær sjenert, send første melding for å starte opp diskusjonen"
+msgstr ""
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
@@ -572,9 +563,8 @@ msgid "Administration"
 msgstr "Administrasjon"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "Ingen samtaler enda…"
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -609,9 +599,8 @@ msgid "Communities servers"
 msgstr "Samfunns-tjenere"
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "Denne tjeneren finnes ikke"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -658,9 +647,8 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr "Du er igang med å slette følgende fellesskap.  Vær så snill å bekreft dette."
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Det ser ut til at dette fellesskapet ikke lenger eksisterer.  Ønsker du å fjerne det fra abonnementslisten din?"
+msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -788,9 +776,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Her kan du administrere alle dine abonnement."
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "Du har ikke meldt deg inn i noen grupper enda."
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1293,9 +1280,8 @@ msgid "Post deleted"
 msgstr "Innlegg slettet"
 
 #: [post]hot
-#, fuzzy
 msgid "What’s Hot"
-msgstr "Populære innlegg"
+msgstr ""
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1386,23 +1372,20 @@ msgid "Oh! Hello!"
 msgstr "Å, hei!"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "Det ser ut som du er ny her, velkommen til Movim!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
 msgstr "Sjekk menyen"
 
 #: [hello]menu_paragraph
-#, fuzzy
 msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
-msgstr "Alle de grunnleggende funksjonene er tilgjengelig der. Ikke nøl med å klikke deg rundt på alle sidene for å oppdage mer!"
+msgstr ""
 
 #: [hello]profile_title
-#, fuzzy
 msgid "Looks like you didn’t complete your profile yet"
-msgstr "Det ser ut til at du ikke har fylt ut all profilinformasjonen enda"
+msgstr ""
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
@@ -1421,9 +1404,8 @@ msgid "Presence"
 msgstr "Tilstedeværelse"
 
 #: [publishbrief]placeholder
-#, fuzzy
 msgid "What’s new?"
-msgstr "Hva er nytt?"
+msgstr ""
 
 #: [publishbrief]post
 msgid "Write a post"
@@ -1482,9 +1464,8 @@ msgid "Edit a chatroom"
 msgstr "Rediger et samtalerom"
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "Du har ingen samtalerom enda"
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1543,9 +1524,8 @@ msgid "Please provide a room address"
 msgstr "Oppgi samtalerommets adresse"
 
 #: [room]anonymous_text1
-#, fuzzy
 msgid "You are currently logged as an anonymous user."
-msgstr "Du er logget inn som en anonym bruker"
+msgstr ""
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
@@ -1600,9 +1580,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "Movim er et desentralisert sosialt nettverk. Før du kan lage en ny konto, må du velge en tjener hvor kontoen skal opprettes."
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "Er tjeneren din her?"
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1661,14 +1640,12 @@ msgid "Privacy Level"
 msgstr "Nivå av tilgjengelighet"
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "Er denne profilen offentlig?"
+msgstr ""
 
 #: [privacy]privacy_info
-#, fuzzy
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
-msgstr "OBS! Ved å gjøre profilen din offentlig, vil all informasjonen nedenfor bli tilgjengelig for alle brukere av Movim, samt for hele Internett."
+msgstr ""
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -1683,9 +1660,8 @@ msgid "Movim is currently working in degraded mode"
 msgstr "Movim operere nå i degradert modus"
 
 #: [degraded]text_1
-#, fuzzy
 msgid "Your server doesn’t support XMPP Pubsub persistence."
-msgstr "Tjeneren din støtter ikke XMPP Pubsub-utholdenhet."
+msgstr ""
 
 #: [degraded]text_2
 msgid "The communities, news feed and profile have been disabled for the moment."
@@ -1716,14 +1692,12 @@ msgid "…connecting"
 msgstr "…kobler til"
 
 #: [global]no_js
-#, fuzzy
 msgid "You don’t have Javascript enabled. Good luck with that."
-msgstr "Du har ikke aktivert JavaScript. Lykke til!"
+msgstr ""
 
 #: [global]description
-#, fuzzy
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr "Movim er et distribuert sosialt nettverk som både beskytter privatlivet og tilbyr en rekke råe funksjoner. "
+msgstr ""
 
 #: [global]loading
 msgid "Loading…"
@@ -1819,9 +1793,8 @@ msgid "Cannot load file '%s'"
 msgstr "Kan ikke laste filen '%s'"
 
 #: [error]widget_load_error
-#, fuzzy
 msgid "Requested widget '%s' doesn’t exist."
-msgstr "Det etterspurte miniprogrammet '%s' finnes ikke."
+msgstr ""
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
@@ -2527,24 +2500,3 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
-
-#~ msgid "Are you sure ?"
-#~ msgstr "Er du sikker?"
-
-#~ msgid "I'm "
-#~ msgstr "Jeg"
-
-#~ msgid "Server Timezone"
-#~ msgstr "Tjenertidssone"
-
-#~ msgid "Movim has found some issues or things that need to be fixed or improved"
-#~ msgstr "Movim har funnet problemer eller uoverensstemmelser som må fikses eller utbedres"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "Databasen må oppdateres"
-
-#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-#~ msgstr "Får ikke kontakt med XMPP Websocket, kontroller at lenken i 'Generelle innstillinger' er riktig."
-
-#~ msgid "Load more contacts"
-#~ msgstr "Last inn flere kontakter"

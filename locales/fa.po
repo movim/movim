@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
 "Language: fa\n"
@@ -303,9 +303,8 @@ msgid "This message will be displayed on the login page"
 msgstr "این پیام در صفحه ورود نمایش داده میشود"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "خالی بگذارید تا پیامی نمایش داده نشود"
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -417,9 +416,8 @@ msgid "Webcam"
 msgstr "دوربین"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "پنیر!"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -462,14 +460,12 @@ msgid "Encrypted message"
 msgstr "پیام رمز گذاری شده"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "درحال ارایه"
+msgstr ""
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "متوقف شده ..."
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
@@ -488,9 +484,8 @@ msgid "%s needs your attention"
 msgstr ""
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "پیام شما در این مکان ..."
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -565,9 +560,8 @@ msgid "Administration"
 msgstr "مدیریت"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "هنوز گپی ثبت نشده است"
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -779,9 +773,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "هنوز اتاق گپی ندارید"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1468,9 +1461,8 @@ msgid "Edit a chatroom"
 msgstr "ویرایش اتاق گپ"
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "هنوز اتاق گپی ندارید"
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1585,9 +1577,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "پیام شما در این مکان ..."
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1646,9 +1637,8 @@ msgid "Privacy Level"
 msgstr ""
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "این نوشته به صورت عمومی منتشر شود ؟"
+msgstr ""
 
 #: [privacy]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -2507,21 +2497,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Are you sure ?"
-#~ msgstr "مطمئن هستید ؟"
-
-#~ msgid "I'm "
-#~ msgstr "من"
-
-#~ msgid "Server Timezone"
-#~ msgstr "زمان محلی سرور"
-
-#~ msgid "Movim has found some issues or things that need to be fixed or improved"
-#~ msgstr "موویم یکسری مشکلات پیدا کرد که باید درست یا بهتر بشوند"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "پایگاه داده احتیاج به بروز رسانی دارد"
-
-#~ msgid "Load more contacts"
-#~ msgstr "مخاطبین بیشتر ..."

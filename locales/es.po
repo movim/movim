@@ -100,7 +100,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
 "Language: es\n"
@@ -179,9 +179,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Eliminarás tu cuenta XMPP y toda la información ligada a ella (perfil, contactos y publicaciones)."
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "¿Está seguro de que quieres eliminarla?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -309,9 +308,8 @@ msgid "This message will be displayed on the login page"
 msgstr "Este mensaje se mostrará en la página de inicio"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "Deje este campo en blanco si no quiere mostrar ningún mensaje"
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -355,9 +353,8 @@ msgid "General Overview"
 msgstr "Visión general"
 
 #: [compatibility]rights
-#, fuzzy
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr "Permisos de lectura y escritura para el servidor web en el directorio %s de Movim"
+msgstr ""
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -424,9 +421,8 @@ msgid "Webcam"
 msgstr "Webcam"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "¡ Sonría !"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -445,9 +441,8 @@ msgid "No avatar defined yet"
 msgstr "Aún no se definió un avatar"
 
 #: [blog]title [feed]title
-#, fuzzy
 msgid "%s’s feed"
-msgstr "Contenido de %s"
+msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
@@ -470,14 +465,12 @@ msgid "Encrypted message"
 msgstr "Mensaje encriptado"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "Componiendo..."
+msgstr ""
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "Pausado..."
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
@@ -496,9 +489,8 @@ msgid "%s needs your attention"
 msgstr "%s necesita tu atención"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "Tu mensaje aquí..."
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -513,9 +505,8 @@ msgid "Nothing here yet…"
 msgstr "No hay nada aún aquí..."
 
 #: [chat]new_text
-#, fuzzy
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr "No seas tímido, envía un mensaje para empezar la conversación"
+msgstr ""
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
@@ -574,9 +565,8 @@ msgid "Administration"
 msgstr "Administración"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "Aún no hay conversaciones..."
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -611,9 +601,8 @@ msgid "Communities servers"
 msgstr "Servidores de las Comunidades"
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "Este servidor no existe"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -789,9 +778,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Aquí seras capaz de gestionar todas tus subscripciones"
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "No te has suscrito a un grupo todavía"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1294,9 +1282,8 @@ msgid "Post deleted"
 msgstr "Mensaje eliminado"
 
 #: [post]hot
-#, fuzzy
 msgid "What’s Hot"
-msgstr "Qué está de moda"
+msgstr ""
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1387,9 +1374,8 @@ msgid "Oh! Hello!"
 msgstr "¡Oh! ¡Hola!"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "¡Pareces nuevo aquí! ¡Bienvenido a Movim!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -1400,9 +1386,8 @@ msgid "All the main Movim features are accessible there. Don’t hesitate to nav
 msgstr ""
 
 #: [hello]profile_title
-#, fuzzy
 msgid "Looks like you didn’t complete your profile yet"
-msgstr "Parece como que aún no completaste tu perfil"
+msgstr ""
 
 #: [hello]profile_paragraph
 msgid "You can go in the Configuration page to describe yourself and put a nice picture"
@@ -1481,9 +1466,8 @@ msgid "Edit a chatroom"
 msgstr "Editar Conversación en grupo"
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "No tienes ninguna Conversación en grupo todavía"
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1542,9 +1526,8 @@ msgid "Please provide a room address"
 msgstr "Por favor, introduzca la dirección de la Conversación en grupo"
 
 #: [room]anonymous_text1
-#, fuzzy
 msgid "You are currently logged as an anonymous user."
-msgstr "Has iniciado sesión como usuario anónimo"
+msgstr ""
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
@@ -1599,9 +1582,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "Movim es una red social descentralizada, antes de crear una cuenta nueva necesita elegir un servidor para registrarse."
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "¿Tu servidor aquí?"
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1660,9 +1642,8 @@ msgid "Privacy Level"
 msgstr "Nivel de privacidad"
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "¿ Es público este perfil ?"
+msgstr ""
 
 #: [privacy]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -1713,14 +1694,12 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-#, fuzzy
 msgid "You don’t have Javascript enabled. Good luck with that."
-msgstr "No tienes el javascript activado. Buena suerte."
+msgstr ""
 
 #: [global]description
-#, fuzzy
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr "Movim es una red social distribuida mediante \"kickass\" que protege tu privacidad y que incluye características alucinantes."
+msgstr ""
 
 #: [global]loading
 msgid "Loading…"
@@ -1816,9 +1795,8 @@ msgid "Cannot load file '%s'"
 msgstr "No se pudo cargar el archivo '%s'"
 
 #: [error]widget_load_error
-#, fuzzy
 msgid "Requested widget '%s' doesn’t exist."
-msgstr "Widget requerido '%s? no existe."
+msgstr ""
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
@@ -2524,24 +2502,3 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
-
-#~ msgid "Are you sure ?"
-#~ msgstr "¿Estás seguro?"
-
-#~ msgid "I'm "
-#~ msgstr "Soy "
-
-#~ msgid "Server Timezone"
-#~ msgstr "Zona horaria del servidor"
-
-#~ msgid "Movim has found some issues or things that need to be fixed or improved"
-#~ msgstr "Movin ha encontrado algunos problemas o cuestiones que necesitan ser reparadas o mejoradas"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "La base de datos necesita ser actualizada"
-
-#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-#~ msgstr "Error de conexion con el Websocket de XMPP, por favor, revisa la validez de la URL dada en la Configuración General"
-
-#~ msgid "Load more contacts"
-#~ msgstr "Cargar más contactos"

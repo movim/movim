@@ -94,7 +94,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Catalan (http://www.transifex.com/movim/movim/language/ca/)\n"
 "Language: ca\n"
@@ -173,9 +173,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "Eliminaràs el teu compte XMPP i tota la informació relacionada (perfil, contactes i publicacions)."
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Estàs segur de voler eliminar el compte?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -303,9 +302,8 @@ msgid "This message will be displayed on the login page"
 msgstr "Aquest missatge es mostrarà en la pàgina de login"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "Deixa aquest camo en blanc si no vols mostrar cap missatge"
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -417,9 +415,8 @@ msgid "Webcam"
 msgstr "Webcam"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "Lluís !"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -466,9 +463,8 @@ msgid "Composing…"
 msgstr ""
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "Aturat..."
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
@@ -487,9 +483,8 @@ msgid "%s needs your attention"
 msgstr "%s necessita la teva atenció"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "Aquí el teu missatge..."
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -564,9 +559,8 @@ msgid "Administration"
 msgstr ""
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "Encara no hi ha cap xat..."
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -601,9 +595,8 @@ msgid "Communities servers"
 msgstr ""
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "Aquest servidor no existeix"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -650,9 +643,8 @@ msgid "You are going to delete the following community. Please confirm your acti
 msgstr ""
 
 #: [communityaffiliation]delete_clean_text
-#, fuzzy
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
-msgstr "Sembla que aquest grup ja no existeix. Vols esborrar-lo de les teves subscripcions?"
+msgstr ""
 
 #: [communityaffiliation]owner
 msgid "Owner"
@@ -780,9 +772,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Aquí podràs gestionar totes les teves subscripcions."
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "Encara no estàs subscrit a cap grup"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1377,18 +1368,16 @@ msgid "Oh! Hello!"
 msgstr "Ei! Hola!"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "Sembla que ets nou aquí! Benvingut a Movim!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
 msgstr "Mira el Menú"
 
 #: [hello]menu_paragraph
-#, fuzzy
 msgid "All the main Movim features are accessible there. Don’t hesitate to navigate through the pages to discover more!"
-msgstr "Totes les característiques principals de Movim són accessibles aquí. No dubtis en navegar per les pàgines i descobreix més!"
+msgstr ""
 
 #: [hello]profile_title
 msgid "Looks like you didn’t complete your profile yet"
@@ -1471,9 +1460,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "Encara no estàs subscrit a cap grup"
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1588,9 +1576,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr ""
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "Aquí el teu missatge..."
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -2509,102 +2496,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Are you sure ?"
-#~ msgstr "N'estàs segur?"
-
-#~ msgid "I'm "
-#~ msgstr "Sóc"
-
-#~ msgid "Server Timezone"
-#~ msgstr "Zona horaria del servidor"
-
-#~ msgid "Movim has found some issues or things that need to be fixed or improved"
-#~ msgstr "Movim ha trobat alguns problemes o coses que necessiten ser reparats o necessiten una millora"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "La base de dades necessita una actualització"
-
-#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-#~ msgstr "Problema de connexió XMPP WebSocket, siusplau comprova la validesa de la URL donada en la configuració general"
-
-#~ msgid "Load more contacts"
-#~ msgstr "Carrega més contactes"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl no s'ha pogut connectar a la base de dades"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim està connectat a la base de dades"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "La base de dades de Movim està actualitzada"
-
-#~ msgid "Database Type"
-#~ msgstr "Tipus de base de dades"
-
-#~ msgid "Database Name"
-#~ msgstr "Nom de la base de dades"
-
-#~ msgid "Groups"
-#~ msgstr "Grups"
-
-#~ msgid "General Informations"
-#~ msgstr "Informació general"
-
-#~ msgid "Client Informations"
-#~ msgstr "Informació del client"
-
-#~ msgid "This contact is in your contact list but there is no subscriptions between the two accounts"
-#~ msgstr "Aquest contacte està rn la teva llista de contactes però no hi ha cap subscripció entre els dos comptes"
-
-#~ msgid "You are going to unsubscribe from this Group"
-#~ msgstr "Cancel·laràs la teva subscripció a aquest grup"
-
-#~ msgid "Make your membership to this group public to your friends"
-#~ msgstr "Fes la teva afiliació a aquest grup pública per als teus amics"
-
-#~ msgid "Something bad happened to this group"
-#~ msgstr "Hi ha hagut un problema amb aquest grup"
-
-#~ msgid "Group configuration saved"
-#~ msgstr "Configuració del grup guardada"
-
-#~ msgid "Delete the group"
-#~ msgstr "Esborra el grup"
-
-#~ msgid "You are going to delete the following group. Please confirm your action."
-#~ msgstr "Esborraràs el següent grup. Siusplau confirma la teva acció"
-
-#~ msgid "%s groups on this server"
-#~ msgstr "%s grups en aquest servidor"
-
-#~ msgid "Groups are the perfect way to share posts about topics that you like with all the other Movim's users."
-#~ msgstr "Els grups són la manera ideal per compartir publicacions de temes que t'agraden amb tots els altres usuaris de Movim"
-
-#~ msgid "Choose a server and a Group and subscribe to it using the %s button in the header. You can also create a new one using the %s button."
-#~ msgstr "Tria un servidor i un grup i subscriu-te utilizant el %s botó a la capçalera. També pots crear un nou grup utilitzant aquest botó."
-
-#~ msgid "Done? You can now publish a new post in the Group by using the %s button."
-#~ msgstr "Has acabat? Ara pot publicar en el grup utilitzanr el %s botó."
-
-#~ msgid "You will find a list of all your subscribed Groups in My Subscriptions and receive instantly all the new incoming posts in the %sNews%s page."
-#~ msgstr "Trobaràs una llista amb tots els Grups que has subscrit a Les Meves Subscripcions i rebràs instantàniament totes les noves publicacsions a la pàgina de %sNotícies%s."
-
-#~ msgid "Group name"
-#~ msgstr "Nom del Grup"
-
-#~ msgid "Group created successfully"
-#~ msgstr "Grup creat correctament"
-
-#~ msgid "Group deleted successfully"
-#~ msgstr "Grup esborrat correctament"
-
-#~ msgid "Please provide a valid group name (4 characters minimum)"
-#~ msgstr "Siusplau dona un nom de grup vàlid (4 caràcters mínim)"
-
-#~ msgid "You cannot create a new Group on this server"
-#~ msgstr "No pots crear un Grup en aquest servidor"
-
-#~ msgid "Search in your contacts"
-#~ msgstr "Busca en els teus contactes"

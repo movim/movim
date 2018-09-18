@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2017-12-24 14:26+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Swedish (http://www.transifex.com/movim/movim/language/sv/)\n"
 "Language: sv\n"
@@ -103,7 +103,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Translate Toolkit 2.2.5\n"
+"X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1097,9 +1097,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr ""
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "Det saknas data !"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2498,27 +2497,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "Server Timezone"
-#~ msgstr "Server tidszon"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "Databasen behöver uppdateras"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "Modl kunde inte ansluta till databasen"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "Movim är ansluten till databasen"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "Movim databasen är uppdaterad"
-
-#~ msgid "Database Type"
-#~ msgstr "Databastyp"
-
-#~ msgid "Host"
-#~ msgstr "Värd"
-
-#~ msgid "Port"
-#~ msgstr "Port"

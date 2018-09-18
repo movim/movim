@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-05-23 19:11+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Arabic (http://www.transifex.com/movim/movim/language/ar/)\n"
 "Language: ar\n"
@@ -303,9 +303,8 @@ msgid "This message will be displayed on the login page"
 msgstr ""
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "إترك هذا الحقل فارغا للسماح النفود لجميع حسابات XMPP."
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -461,9 +460,8 @@ msgid "Encrypted message"
 msgstr ""
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "يكتب..."
+msgstr ""
 
 #: [message]paused [chats]paused
 msgid "Paused…"
@@ -1099,9 +1097,8 @@ msgid "XMPP Domain error, your account is not a correct Jabber ID"
 msgstr "عطل متعلّق بنطاق XMPP. حسابك ليس بمعرِّفِ Jabber صحيح"
 
 #: [error]data_missings
-#, fuzzy
 msgid "Some data are missing!"
-msgstr "البيانات ناقصة!"
+msgstr ""
 
 #: [error]wrong_password
 msgid "Wrong password"
@@ -2500,36 +2497,3 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
-
-#~ msgid "The database need to be updated"
-#~ msgstr "إن قاعدة البيانات في حاجة إلى تحديث"
-
-#~ msgid "Modl wasn't able to connect to the database"
-#~ msgstr "لم يستطع Modl أن يتصل بقاعدة البيانات"
-
-#~ msgid "Movim is connected to the database"
-#~ msgstr "إن موفيم متصل بقاعدة البيانات"
-
-#~ msgid "Movim database is up to date"
-#~ msgstr "إن قاعدة بيانات موفيم محدثة"
-
-#~ msgid "Database Type"
-#~ msgstr "نوع قاعدة البيانات"
-
-#~ msgid "Host"
-#~ msgstr "المستضيف"
-
-#~ msgid "Port"
-#~ msgstr "المَنفذ"
-
-#~ msgid "Groups"
-#~ msgstr "المجموعات"
-
-#~ msgid "General Informations"
-#~ msgstr "معلومات عامة"
-
-#~ msgid "Client Informations"
-#~ msgstr "بيانات العميل"
-
-#~ msgid "Ungrouped"
-#~ msgstr "غير مجموع"

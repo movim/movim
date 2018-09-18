@@ -94,7 +94,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Greek (http://www.transifex.com/movim/movim/language/el/)\n"
 "Language: el\n"
@@ -173,9 +173,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr ""
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "Είσαι σίγουρος οτι θέλεις να τον διαγράψεις;"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -460,9 +459,8 @@ msgid "Encrypted message"
 msgstr ""
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "Συνθέτοντας..."
+msgstr ""
 
 #: [message]paused [chats]paused
 msgid "Paused…"
@@ -561,9 +559,8 @@ msgid "Administration"
 msgstr ""
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "Δεν υπάρχουν σχόλια ακόμα"
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -775,9 +772,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "Δεν έχεις κάποιο δωμάτιο συνομιλίας ακόμα"
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1464,9 +1460,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "Δεν έχεις κάποιο δωμάτιο συνομιλίας ακόμα"
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1641,9 +1636,8 @@ msgid "Privacy Level"
 msgstr "Επίπεδο ιδιωτικότητας"
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "Είναι αυτο το προφίλ δημόσιο;"
+msgstr ""
 
 #: [privacy]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -1694,9 +1688,8 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-#, fuzzy
 msgid "You don’t have Javascript enabled. Good luck with that."
-msgstr "Δεν έχεις ενεργοποιημένο το javascript. Καλή τύχη με αυτό."
+msgstr ""
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."

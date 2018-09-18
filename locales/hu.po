@@ -4,6 +4,7 @@
 # Free Bill <fordit.libfrid@antichef.com>, 2016
 # Simon Ede <vargamarci64@gmail.com>, 2015
 # Simon Ede <vargamarci64@gmail.com>, 2015
+# Zsolt <maxigaz@protonmail.com>, 2018
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -97,8 +98,8 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
-"Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
+"Last-Translator: Zsolt <maxigaz@protonmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
@@ -173,10 +174,9 @@ msgstr "Felhasználói fiókod törlése"
 
 #: [account]delete_text
 msgid "You will delete your XMPP account and all the relative information linked to it (profile, contacts and publications)."
-msgstr "Törölni fogod az XMPP felhasználód és minden vele kapcsolatos információt (profil, kapcsolatok, és megosztások)."
+msgstr "Törölni fogod az XMPP fiókodat és minden vele kapcsolatos információt (profil, kapcsolatok és közzétételek)."
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
 msgstr "Biztosan törölni akarod?"
 
@@ -186,15 +186,15 @@ msgstr "Átjáró"
 
 #: [account]clear
 msgid "Leave this instance"
-msgstr ""
+msgstr "Ennek az instanciának elhagyása"
 
 #: [account]clear_text
 msgid "You will delete all the relative information linked to your account on this Movim instance (profile, contacts and publications)."
-msgstr ""
+msgstr "Törölni fogod az összes a fiókoddal kapcsolatos információt ezen a Movim instancián (profil, kapcsolatok és közzétételek)."
 
 #: [account]clear_text_confirm
 msgid "This action will not delete your account but will disconnect you from this instance."
-msgstr ""
+msgstr "Ez a művelet nem törli a fiókodat, hanem leválaszt erről az instanciáról."
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
@@ -230,7 +230,7 @@ msgstr "A szerver regisztrációs rendszere jelenleg nem elérhető."
 
 #: [error]forbidden
 msgid "Registration forbidden"
-msgstr ""
+msgstr "Regisztáció tiltva"
 
 #: [adhoc]title
 msgid "Actions"
@@ -238,7 +238,7 @@ msgstr "Akciók"
 
 #: [adhoc]completed
 msgid "Action completed"
-msgstr ""
+msgstr "A művelet befejeződött"
 
 #: [admin]general
 msgid "General Settings"
@@ -254,19 +254,19 @@ msgstr "Alapértelmezett nyelv"
 
 #: [general]log_verbosity
 msgid "Log verbosity"
-msgstr ""
+msgstr "Naplórészletesség"
 
 #: [restrictsuggestions]title
 msgid "Restrict suggestions"
-msgstr ""
+msgstr "Javaslatok korlátozása"
 
 #: [restrictsuggestions]text
 msgid "Only suggest chatrooms, Communities and other contents that are available on the user XMPP server and related services"
-msgstr ""
+msgstr "Csak olyan chatszobák, közösségek és más tartalmak ajánlása, amely elérhető a felhasználó XMPP szerverén és kapcsolódó szolgáltatásokon"
 
 #: [credentials]title
 msgid "Administration Credential"
-msgstr ""
+msgstr "Adminisztációs tanúsítvány"
 
 #: [credentials]username [input]username
 msgid "Username"
@@ -306,9 +306,8 @@ msgid "This message will be displayed on the login page"
 msgstr "Ez az üzenet a bejelentkező képernyőn fog megjelenni"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "Hagyd ezt a mezőt üresen ha nem akarsz megjeleníteni semmilyen üzenetet."
+msgstr "Hagyd üresen ezt a mezőt, ha nem akarsz megjeleníteni semmilyen üzenetet!"
 
 #: [information]label
 msgctxt "[information]label"
@@ -333,7 +332,7 @@ msgstr "Fő XMPP szerver országa"
 
 #: [xmpp]country_pick
 msgid "Pick a country in the list"
-msgstr ""
+msgstr "Válassz egy országot a listában"
 
 #: [log]empty
 msgid "Empty"
@@ -353,7 +352,7 @@ msgstr "Általános Áttekintés"
 
 #: [compatibility]rights
 msgid "Read and write rights for the webserver in Movim’s %s directory"
-msgstr ""
+msgstr "Olvasási és írási jogok a webszervernek a Movim %sgyökérmappájában"
 
 #: [compatibility]websocket
 msgid "WebSocket connection error, check if the Movim Daemon is running and is reachable"
@@ -420,9 +419,8 @@ msgid "Webcam"
 msgstr "Webkam"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "Sajt!"
+msgstr "Mosolyogj!"
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -441,7 +439,6 @@ msgid "No avatar defined yet"
 msgstr "Még nincs megadva avatar"
 
 #: [blog]title [feed]title
-#, fuzzy
 msgid "%s’s feed"
 msgstr "%s hírfolyama"
 
@@ -459,21 +456,19 @@ msgstr "Üzenet közzétéve"
 
 #: [message]error
 msgid "Your message could not be sent, please try again later"
-msgstr ""
+msgstr "Az üzenetedet nem lehetett elküldeni, kérlek, próbáld újra!"
 
 #: [message]encrypted
 msgid "Encrypted message"
 msgstr "Titkosított üzenet"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "Ír..."
+msgstr "Ír…"
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "Megállt..."
+msgstr "Megállt…"
 
 #: [message]gone
 msgid "Contact gone"
@@ -485,16 +480,15 @@ msgstr "%s üzenet betöltve"
 
 #: [message]edit_help
 msgid "You can use the up arrow ↑ to edit your previous message"
-msgstr ""
+msgstr "Használhatod a felfelé mutató nyilat ↑ az előző üzeneted szerkesztéséhez"
 
 #: [chat]attention
 msgid "%s needs your attention"
 msgstr "%snek a figyelmedre van szüksége"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "Ide írd az üzenetet..."
+msgstr "Ide írd az üzeneted…"
 
 #: [chat]smileys
 msgid "Smileys"
@@ -506,35 +500,35 @@ msgstr "Gyakori kapcsolatok"
 
 #: [chat]new_title
 msgid "Nothing here yet…"
-msgstr ""
+msgstr "Még nincs itt semmi…"
 
 #: [chat]new_text
 msgid "Don’t be shy, send a first message to start the discussion"
-msgstr ""
+msgstr "Ne légy szégyellős, küldd el az első üzenetet az üzenetváltás megkezdéséhez!"
 
 #: [chat]invitation
 msgid "You received an invitation to join a chatroom"
-msgstr ""
+msgstr "Meghívást kaptál, hogy csatlakozz egy chatszobához"
 
 #: [chat]invitation_join
 msgid "Join %s"
-msgstr ""
+msgstr "Csatlakozás a következőhöz: %s"
 
 #: [chat]profile
 msgid "See the profile"
-msgstr ""
+msgstr "A profil megtekintése"
 
 #: [chat]clear
 msgid "Clear the history"
-msgstr ""
+msgstr "Az előzmények törlése"
 
 #: [chat]edit_previous
 msgid "Edit last message"
-msgstr ""
+msgstr "Az utolsó üzenet szerkesztése"
 
 #: [chat]report_abuse
 msgid "Report abuse"
-msgstr ""
+msgstr "Visszaélés jelentése"
 
 #: [chatroom]members
 msgid "Members"
@@ -569,13 +563,12 @@ msgid "Administration"
 msgstr "Adminisztráció"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "Nincsenek még beszélgetések..."
+msgstr "Még nincsenek csevegések…"
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
-msgstr ""
+msgstr "Indíts új üzenetváltást a %sgombra való kattintással"
 
 #: [chats]add
 msgid "Chat with a contact"
@@ -595,7 +588,7 @@ msgstr "Fedezd fel, kövesd és oszd meg"
 
 #: [communities]counter
 msgid "%s communities"
-msgstr ""
+msgstr "%s közösség"
 
 #: [communities]search_server
 msgid "Search for a new server"
@@ -606,9 +599,8 @@ msgid "Communities servers"
 msgstr ""
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "Ez a szerver nem létezik"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -685,7 +677,7 @@ msgstr ""
 
 #: [communityconfig]publication
 msgid "Publication"
-msgstr ""
+msgstr "Közzétételek"
 
 #: [communityconfig]publish_model_open_title
 msgid "Open"
@@ -784,9 +776,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr "Itt kezelheted a feliratkozásaidat."
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "Még nem iratkoztál fel egy csoportra sem."
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1218,7 +1209,7 @@ msgstr "Mind"
 
 #: [menu]mine
 msgid "My publications"
-msgstr ""
+msgstr "Közzétételeim"
 
 #: [menu]contacts [page]contacts
 msgid "Contacts"
@@ -1289,9 +1280,8 @@ msgid "Post deleted"
 msgstr "Poszt törölve"
 
 #: [post]hot
-#, fuzzy
 msgid "What’s Hot"
-msgstr "Újdonságok"
+msgstr ""
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1382,9 +1372,8 @@ msgid "Oh! Hello!"
 msgstr "Ó! Szia!"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "Úgy tűnik új vagy itt! Üdv a Movimon!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -1475,9 +1464,8 @@ msgid "Edit a chatroom"
 msgstr "Chatszoba szerkesztése"
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "Még nincs chatszobád."
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1592,9 +1580,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "A Movim egy decentralizált közösségi hálózat. Mielőtt létrehozod a fiókod válassz egy szervert a regisztrációhoz."
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "Itt van a szervered ?"
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1653,9 +1640,8 @@ msgid "Privacy Level"
 msgstr "Magánszféra szintje"
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "Nyilvános ez a profil?"
+msgstr ""
 
 #: [privacy]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -1706,14 +1692,12 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-#, fuzzy
 msgid "You don’t have Javascript enabled. Good luck with that."
-msgstr "Nincs bakapcsolva a javascripted. Sok sikert hozzá."
+msgstr ""
 
 #: [global]description
-#, fuzzy
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr "A Movim egy zsírkirály megosztott közösségi háló platformja, amely védi a magánszférádat és nagyszerű funkciókkal érkezik"
+msgstr ""
 
 #: [global]loading
 msgid "Loading…"
@@ -1809,9 +1793,8 @@ msgid "Cannot load file '%s'"
 msgstr "'%s' fájl nem tölthető be"
 
 #: [error]widget_load_error
-#, fuzzy
 msgid "Requested widget '%s' doesn’t exist."
-msgstr "A keresett '%s' widget nem létezik."
+msgstr ""
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
@@ -2472,7 +2455,7 @@ msgstr "%s új elem"
 
 #: [post]comment_error
 msgid "Comment publication error"
-msgstr "Hozzászólás megosztási hiba"
+msgstr "Hozzászólás publikálási hiba"
 
 #: [post]comments_get
 msgid "Get the comments"
@@ -2500,7 +2483,7 @@ msgstr "Tartalom nem található"
 
 #: [post]default_title
 msgid "Contact publication"
-msgstr ""
+msgstr "Kapcsolati közzététel"
 
 #: [post]comments
 msgid "Comments"
@@ -2517,24 +2500,3 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
-
-#~ msgid "Are you sure ?"
-#~ msgstr "Biztos vagy benne ?"
-
-#~ msgid "I'm "
-#~ msgstr "Én"
-
-#~ msgid "Server Timezone"
-#~ msgstr "Szerver Időzóna"
-
-#~ msgid "Movim has found some issues or things that need to be fixed or improved"
-#~ msgstr "A Movim talált néhány problémát, amelyet helyre kell hozni vagy amelyen javítani kell"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "Az adatbázis frissítésre szorul."
-
-#~ msgid "XMPP Websocket connection error, please check the validity of the URL given in the General Configuration"
-#~ msgstr "XMPP WebSocket kapcsolódási hiba, ellenőrizd az URL érvényességét, amelyet az Általános beállításokban adtál meg"
-
-#~ msgid "Load more contacts"
-#~ msgstr "További kapcsolatok betöltése"

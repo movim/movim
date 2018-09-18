@@ -95,7 +95,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-08-23 23:23+0200\n"
-"PO-Revision-Date: 2018-08-17 08:31+0000\n"
+"PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Hebrew (http://www.transifex.com/movim/movim/language/he/)\n"
 "Language: he\n"
@@ -174,9 +174,8 @@ msgid "You will delete your XMPP account and all the relative information linked
 msgstr "אתה תמחק את חשבון XMPP שלך ואת כל המידע היחסי אשר קשור אליו (דיוקן, אנשי קשר ופרסומים)."
 
 #: [account]delete_text_confirm
-#, fuzzy
 msgid "Are you sure that you want to delete it?"
-msgstr "האם אתה בטוח כי ברצונך למחוק אותו ?"
+msgstr ""
 
 #: [account]gateway_title
 msgid "Gateway"
@@ -304,9 +303,8 @@ msgid "This message will be displayed on the login page"
 msgstr "הודעה זו תוצג בעמוד הכניסה"
 
 #: [information]info2
-#, fuzzy
 msgid "Leave this field blank if you don’t want to show any message."
-msgstr "הותר את שדה זה ריק אם אין ברצונך להציג הודעה."
+msgstr ""
 
 #: [information]label
 msgctxt "[information]label"
@@ -418,9 +416,8 @@ msgid "Webcam"
 msgstr "מצלמת רשת"
 
 #: [avatar]cheese
-#, fuzzy
 msgid "Cheese!"
-msgstr "חייכו !"
+msgstr ""
 
 #: [avatar]snapshot
 msgid "Take a webcam snapshot"
@@ -439,9 +436,8 @@ msgid "No avatar defined yet"
 msgstr "לא הוגדר אווטאר עדיין"
 
 #: [blog]title [feed]title
-#, fuzzy
 msgid "%s’s feed"
-msgstr "הערוץ של %s"
+msgstr ""
 
 #: [blog]empty
 msgid "This user has not posted anything right now"
@@ -464,14 +460,12 @@ msgid "Encrypted message"
 msgstr "הודעה מוצפנת"
 
 #: [message]composing [chats]composing
-#, fuzzy
 msgid "Composing…"
-msgstr "מלחין כעת..."
+msgstr ""
 
 #: [message]paused [chats]paused
-#, fuzzy
 msgid "Paused…"
-msgstr "מושהה..."
+msgstr ""
 
 #: [message]gone
 msgid "Contact gone"
@@ -490,9 +484,8 @@ msgid "%s needs your attention"
 msgstr "%s רוצה את צומת ליבך"
 
 #: [chat]placeholder
-#, fuzzy
 msgid "Your message here…"
-msgstr "הודעתך כאן..."
+msgstr ""
 
 #: [chat]smileys
 msgid "Smileys"
@@ -567,9 +560,8 @@ msgid "Administration"
 msgstr "ניהול"
 
 #: [chats]empty_title
-#, fuzzy
 msgid "No chats yet…"
-msgstr "אין שיחות עדיין..."
+msgstr ""
 
 #: [chats]empty
 msgid "Start a new conversation by clicking on the %s button."
@@ -604,9 +596,8 @@ msgid "Communities servers"
 msgstr ""
 
 #: [communities]disco_error
-#, fuzzy
 msgid "This server doesn’t exists"
-msgstr "שרת זה לא קיים"
+msgstr ""
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -782,9 +773,8 @@ msgid "Here you will be able to manage all your subscriptions."
 msgstr ""
 
 #: [communitysubscriptions]empty_text2
-#, fuzzy
 msgid "You don’t have any group subscriptions yet."
-msgstr "אין לך חדר שיחה עדיין."
+msgstr ""
 
 #: [config]general
 msgid "General"
@@ -1287,9 +1277,8 @@ msgid "Post deleted"
 msgstr "פרסום נמחק"
 
 #: [post]hot
-#, fuzzy
 msgid "What’s Hot"
-msgstr "מה חם"
+msgstr ""
 
 #: [post]hot_text
 msgid "Posts recently published in communities that you are not subscribed (yet)"
@@ -1380,9 +1369,8 @@ msgid "Oh! Hello!"
 msgstr "שלום!"
 
 #: [hello]enter_paragraph
-#, fuzzy
 msgid "It seems that you’re new there! Welcome on Movim!"
-msgstr "נראה כי את/ה חדש/ה פה! ברוכים הבאים לפרויקט Movim!"
+msgstr ""
 
 #: [hello]menu_title
 msgid "Check the Menu"
@@ -1473,9 +1461,8 @@ msgid "Edit a chatroom"
 msgstr ""
 
 #: [rooms]empty_text1
-#, fuzzy
 msgid "You don’t have any chatroom yet."
-msgstr "אין לך חדר שיחה עדיין."
+msgstr ""
 
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
@@ -1534,9 +1521,8 @@ msgid "Please provide a room address"
 msgstr "אנא ספק כתובת חדר"
 
 #: [room]anonymous_text1
-#, fuzzy
 msgid "You are currently logged as an anonymous user."
-msgstr "אתה כעת מחובר בתור משתמש אלמוני."
+msgstr ""
 
 #: [room]anonymous_text2
 msgid "You can join using your own account or create one on the login page by loging out using the cross in the top-right corner."
@@ -1591,9 +1577,8 @@ msgid "Movim is a decentralized social network, before creating a new account yo
 msgstr "Movim הינה רשת חברתית מבוזרת (א-ריכוזית), טרם יצירת חשבון חדש עליך לבחור שרת להירשם אליו."
 
 #: [subscribe]server_question
-#, fuzzy
 msgid "Your server here?"
-msgstr "שרתך כאן ?"
+msgstr ""
 
 #: [subscribe]server_contact
 msgid "Contact us to add yours to the officially supported servers list"
@@ -1652,9 +1637,8 @@ msgid "Privacy Level"
 msgstr "רמת פרטיות"
 
 #: [privacy]privacy_question
-#, fuzzy
 msgid "Is this profile public?"
-msgstr "האם דיוקן זה הינו פומבי ?"
+msgstr ""
 
 #: [privacy]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
@@ -1705,14 +1689,12 @@ msgid "…connecting"
 msgstr ""
 
 #: [global]no_js
-#, fuzzy
 msgid "You don’t have Javascript enabled. Good luck with that."
-msgstr "אין לך Javascript מאופשר.  עליך לאפשר Javascript בכדי להשתמש באתר זה."
+msgstr ""
 
 #: [global]description
-#, fuzzy
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
-msgstr "Movim היא פלטפורמת רשת חברתית מבוזרת אשר שומרת על הפרטיות שלך ומגיעה עם סט של תכונות נהדרות."
+msgstr ""
 
 #: [global]loading
 msgid "Loading…"
@@ -1808,9 +1790,8 @@ msgid "Cannot load file '%s'"
 msgstr "לא ניתן לטעון קובץ '%s'"
 
 #: [error]widget_load_error
-#, fuzzy
 msgid "Requested widget '%s' doesn’t exist."
-msgstr "וידג׳ט מבוקש '%s' לא קיים."
+msgstr ""
 
 #: [error]widget_call_error
 msgid "Requested event '%s' not registered."
@@ -2516,18 +2497,3 @@ msgstr "API אינו נגיש, נסה שוב מאוחר יותר"
 #: [field]type_here
 msgid "Type here"
 msgstr "הקלד כאן"
-
-#~ msgid "Are you sure ?"
-#~ msgstr "האם אתה בטוח ?"
-
-#~ msgid "I'm "
-#~ msgstr "אני "
-
-#~ msgid "Server Timezone"
-#~ msgstr "אזור זמן שרת"
-
-#~ msgid "The database need to be updated"
-#~ msgstr "על מסד נתונים להתעדכן"
-
-#~ msgid "Load more contacts"
-#~ msgstr "טען עוד אנשי קשר"
