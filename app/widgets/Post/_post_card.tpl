@@ -44,7 +44,6 @@
                         {else}
                             href="{$c->route('contact', $post->aid)}"
                         {/if}
-                        class="on_desktop"
                     >
                         {$post->truename}
                     </a> –
