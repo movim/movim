@@ -23,6 +23,8 @@
   white-space: nowrap;
   direction: ltr;
   vertical-align: bottom;
+  user-select: none;
+  -moz-user-select: none;
 
   /* Support for all WebKit browsers. */
   -webkit-font-smoothing: antialiased;
