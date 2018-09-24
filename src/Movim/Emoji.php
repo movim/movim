@@ -79,7 +79,8 @@ class Emoji
             $dom = new \DOMDocument('1.0', 'UTF-8');
             $dom->appendChild($img = $dom->createElement('img'));
             $img->setAttribute('class', 'emoji');
-            $img->setAttribute('alt', $this->_emoji[$astext]);
+            $img->setAttribute('alt', $matches[0]);
+            $img->setAttribute('title', $this->_emoji[$astext]);
             $img->setAttribute('src', BASE_URI . 'themes/' .
                 \App\Configuration::get()->theme .
                 '/img/emojis/svg/' . $astext . '.svg');
