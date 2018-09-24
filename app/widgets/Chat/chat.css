@@ -14,6 +14,10 @@
     overflow: hidden;
 }
 
+main:not(.enabled) #chat_widget {
+    overflow-y: auto;
+}
+
 #chat_widget > div,
 #chat_widget > header {
     max-width: 100%;
