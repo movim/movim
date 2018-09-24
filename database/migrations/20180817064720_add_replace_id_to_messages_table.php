@@ -15,9 +15,9 @@ class AddReplaceIdToMessagesTable extends Migration
 
     public function down()
     {
-        $this->schema->table('infos', function(Blueprint $table) {
-            $table->dropColumn('replaceid');
+        $this->schema->table('messages', function(Blueprint $table) {
             $table->dropIndex('messages_replaceid_index');
+            $table->dropColumn('replaceid');
         });
     }
 }
