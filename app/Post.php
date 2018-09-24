@@ -50,7 +50,6 @@ class Post extends Model
 
     public function openlink()
     {
-        //if (!$this->open) return;
         return $this->hasOne('App\Attachment')
                     ->where('category', 'open');
     }
@@ -448,7 +447,7 @@ class Post extends Model
         }
 
         $this->like = $this->isLike();
-
+        $this->open = false;
         $this->setAttachments($entry->entry->link, $extra);
 
         if ($this->isComment()) {

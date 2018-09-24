@@ -2,7 +2,6 @@ var PublishBrief = {
     timeout: 0,
     togglePrivacy: function() {
         var checked = document.querySelector('#publishbrief form #open');
-
         var button = document.querySelector('#publishbrief span.privacy i');
         button.innerText = '';
 

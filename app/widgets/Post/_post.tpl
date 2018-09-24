@@ -35,7 +35,7 @@
         </ul>
     {/if}
 
-    {if="($public && $post->open) || !$public"}
+    {if="($public && $post->openlink) || !$public"}
     <ul class="list thick">
         <li>
             {if="$repost"}
@@ -224,7 +224,7 @@
         {/loop}
         </ul>
     {/if}
-    {if="$post->open && !$public"}
+    {if="$post->openlink && !$public"}
         <ul class="list active thick">
             <li>
                 <span class="primary icon gray">

@@ -76,7 +76,9 @@
                     type="checkbox"
                     id="open"
                     name="open"
-                    checked
+                    {if="$post && $post->openlink"}
+                        checked
+                    {/if}
                     style="display: none;"
                 >
                 <input type="hidden"
@@ -104,7 +106,13 @@
             <span class="primary icon gray bubble active privacy"
                   title="{$c->__('post.public')}"
                   onclick="PublishBrief.togglePrivacy()">
-                <i class="material-icons">wifi_tethering</i>
+                <i class="material-icons">
+                    {if="$post && $post->openlink"}
+                        wifi_tethering
+                    {else}
+                        lock
+                    {/if}
+                </i>
             </span>
             {if="$extended"}
                 <span class="control icon active gray"

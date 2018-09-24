@@ -179,7 +179,7 @@
                     href="{$c->route('publish', [$post->server, $post->node, $post->nodeid, 'share'])}">
                     <i class="material-icons">share</i>
                 </a>
-                    {if="$post->open && $post->openlink"}
+                    {if="$post->openlink"}
                         <a  title="{$c->__('post.public_yes')}"
                             class="button icon flat gray on_desktop"
                             target="_blank"
