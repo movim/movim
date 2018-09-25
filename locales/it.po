@@ -19,6 +19,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdminSessions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Api/locales.ini
@@ -100,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-23 23:23+0200\n"
+"POT-Creation-Date: 2018-09-25 08:22+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Italian (http://www.transifex.com/movim/movim/language/it/)\n"
@@ -305,8 +307,8 @@ msgid "Description"
 msgstr "Descrizione"
 
 #: [information]info1
-msgid "This message will be displayed on the login page"
-msgstr "Questo messaggio verrà visualizzato nella pagina di login"
+msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
+msgstr ""
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
@@ -348,6 +350,10 @@ msgstr "Syslog"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "Syslog e file"
+
+#: [adminsessions]title
+msgid "Sessions"
+msgstr "Sessioni"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -1566,14 +1572,6 @@ msgstr "Aprimi usando Ctrl + M"
 msgid "Statistics"
 msgstr "Statistiche"
 
-#: [statistics]since
-msgid "Since"
-msgstr "Da"
-
-#: [statistics]sessions
-msgid "Sessions"
-msgstr "Sessioni"
-
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
 msgstr "è stato inviato uno sticker tramite Movim"
@@ -1693,6 +1691,10 @@ msgstr "fallita"
 #: [visio]connecting
 msgid "…connecting"
 msgstr "... in collegamento ..."
+
+#: [visio]ended
+msgid "call ended"
+msgstr ""
 
 #: [global]no_js
 msgid "You don’t have Javascript enabled. Good luck with that."
@@ -2503,3 +2505,9 @@ msgstr "L'API non è raggiungibile, riprovare più tardi"
 #: [field]type_here
 msgid "Type here"
 msgstr "Digita qui"
+
+#~ msgid "This message will be displayed on the login page"
+#~ msgstr "Questo messaggio verrà visualizzato nella pagina di login"
+
+#~ msgid "Since"
+#~ msgstr "Da"

@@ -1,6 +1,6 @@
 #
 # Translators:
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
+# Sinyeol An <soundlake@gmail.com>, 2018
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/About/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
@@ -98,12 +98,12 @@ msgstr ""
 "POT-Creation-Date: 2018-09-25 08:22+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
-"Language-Team: Nepali (http://www.transifex.com/movim/movim/language/ne/)\n"
-"Language: ne\n"
+"Language-Team: Korean (http://www.transifex.com/movim/movim/language/ko/)\n"
+"Language: ko\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Translate Toolkit 2.3.0\n"
 
 #: [about]thanks
@@ -112,11 +112,11 @@ msgstr ""
 
 #: [about]developers
 msgid "Developers"
-msgstr ""
+msgstr "개발자"
 
 #: [about]translators
 msgid "Translators"
-msgstr ""
+msgstr "번역자"
 
 #: [about]translators_text
 msgid "Thanks to all the translators"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: [about]software
 msgid "Software"
-msgstr ""
+msgstr "소프트웨어"
 
 #: [about]resources
 msgid "Resources"
@@ -144,27 +144,27 @@ msgstr ""
 
 #: [account]password_change_title
 msgid "Change my password"
-msgstr ""
+msgstr "내 비밀번호 바꾸기"
 
 #: [account]password [credentials]password [form]password [input]password
 msgid "Password"
-msgstr ""
+msgstr "비밀번호"
 
 #: [account]password_confirmation
 msgid "Password confirmation"
-msgstr ""
+msgstr "비밀번호 확인"
 
 #: [account]password_changed
 msgid "The password has been updated"
-msgstr ""
+msgstr "비밀번호가 바뀌었습니다"
 
 #: [account]password_not_valid
 msgid "Please provide a valid password (6 characters minimum)"
-msgstr ""
+msgstr "알맞은 비밀번호를 입력해주세요 (최소 6글자 이상)"
 
 #: [account]password_not_same
 msgid "The provided passwords are not the same"
-msgstr ""
+msgstr "입력하신 비밀번호가 다릅니다"
 
 #: [account]delete
 msgid "Delete your account"
@@ -196,7 +196,7 @@ msgstr ""
 
 #: [create]title [subscribe]title
 msgid "Create a new account"
-msgstr ""
+msgstr "새 계정 만들기"
 
 #: [create]notfound
 msgid "No account creation form found on the server"
@@ -244,7 +244,7 @@ msgstr ""
 
 #: [general]theme
 msgid "Theme"
-msgstr ""
+msgstr "테마"
 
 #: [general]language
 msgid "Default language"
@@ -374,7 +374,7 @@ msgstr ""
 
 #: [schema]database
 msgid "Database"
-msgstr ""
+msgstr "데이터베이스"
 
 #: [schema]xmpp
 msgid "XMPP"
@@ -1784,7 +1784,7 @@ msgstr ""
 
 #: [error]error
 msgid "Error: %s"
-msgstr "त्रुटि: %s"
+msgstr "에러: %s"
 
 #: [error]cannot_load_file
 msgid "Cannot load file '%s'"
@@ -1880,11 +1880,11 @@ msgstr ""
 
 #: [button]bool_yes
 msgid "Yes"
-msgstr ""
+msgstr "네"
 
 #: [button]bool_no
 msgid "No"
-msgstr ""
+msgstr "아니요"
 
 #: [button]return
 msgid "Return"
@@ -1917,7 +1917,7 @@ msgstr ""
 
 #: [button]like
 msgid "Like"
-msgstr ""
+msgstr "좋아요"
 
 #: [button]not_now
 msgid "Not Now"
@@ -1933,35 +1933,35 @@ msgstr ""
 
 #: [day]title
 msgid "Day"
-msgstr "दिन"
+msgstr ""
 
 #: [day]monday
 msgid "Monday"
-msgstr "सोमबार"
+msgstr "월요일"
 
 #: [day]tuesday
 msgid "Tuesday"
-msgstr "मंगलबार"
+msgstr "화요일"
 
 #: [day]wednesday
 msgid "Wednesday"
-msgstr "बुधबार"
+msgstr "수요일"
 
 #: [day]thursday
 msgid "Thursday"
-msgstr "बिहिबार"
+msgstr "목요일"
 
 #: [day]friday
 msgid "Friday"
-msgstr "शुक्रबार"
+msgstr "금요일"
 
 #: [day]saturday
 msgid "Saturday"
-msgstr "शनीबार"
+msgstr "토요일"
 
 #: [day]sunday
 msgid "Sunday"
-msgstr ""
+msgstr "일요일"
 
 #: [client]bot
 msgid "Bot"
@@ -1985,7 +1985,7 @@ msgstr ""
 
 #: [presence]online
 msgid "Online"
-msgstr ""
+msgstr "온라인"
 
 #: [presence]away
 msgid "Away"
@@ -2001,11 +2001,11 @@ msgstr ""
 
 #: [presence]offline
 msgid "Offline"
-msgstr ""
+msgstr "오프라인"
 
 #: [presence]error
 msgid "Error"
-msgstr ""
+msgstr "에러"
 
 #: [mood]afraid
 msgid "afraid"
@@ -2341,71 +2341,71 @@ msgstr ""
 
 #: [month]title
 msgid "Month"
-msgstr "महिना"
+msgstr ""
 
 #: [month]january
 msgid "January"
-msgstr ""
+msgstr "1월"
 
 #: [month]february
 msgid "February"
-msgstr ""
+msgstr "2월"
 
 #: [month]march
 msgid "March"
-msgstr ""
+msgstr "3월"
 
 #: [month]april
 msgid "April"
-msgstr ""
+msgstr "4월"
 
 #: [month]may
 msgid "May"
-msgstr ""
+msgstr "5월"
 
 #: [month]june
 msgid "June"
-msgstr ""
+msgstr "6월"
 
 #: [month]july
 msgid "July"
-msgstr ""
+msgstr "7월"
 
 #: [month]august
 msgid "August"
-msgstr ""
+msgstr "8월"
 
 #: [month]september
 msgid "September"
-msgstr ""
+msgstr "9월"
 
 #: [month]october
 msgid "October"
-msgstr ""
+msgstr "10월"
 
 #: [month]november
 msgid "November"
-msgstr ""
+msgstr "11월"
 
 #: [month]december
 msgid "December"
-msgstr ""
+msgstr "12월"
 
 #: [year]title
 msgid "Year"
-msgstr "वर्ष"
+msgstr ""
 
 #: [date]today
 msgid "Today"
-msgstr "आज"
+msgstr "오늘"
 
 #: [date]tomorrow
 msgid "Tomorrow"
-msgstr "भोली"
+msgstr "내일"
 
 #: [date]yesterday
 msgid "Yesterday"
-msgstr "हिजो"
+msgstr "어제"
 
 #: [date]ago
 msgid "%d days ago"
@@ -2413,11 +2413,11 @@ msgstr ""
 
 #: [date]day
 msgid "day"
-msgstr "दिन"
+msgstr ""
 
 #: [post]title
 msgid "Title"
-msgstr ""
+msgstr "제목"
 
 #: [post]place
 msgid "Place"
@@ -2433,15 +2433,15 @@ msgstr ""
 
 #: [post]email
 msgid "email"
-msgstr ""
+msgstr "이메일"
 
 #: [post]empty
 msgid "No content"
-msgstr ""
+msgstr "내용이 없습니다"
 
 #: [post]no_comments
 msgid "No comments yet"
-msgstr ""
+msgstr "아직 댓글이 없습니다"
 
 #: [post]older
 msgid "Get older posts"

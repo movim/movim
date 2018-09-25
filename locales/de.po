@@ -27,6 +27,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdminSessions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Api/locales.ini
@@ -108,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-23 23:23+0200\n"
+"POT-Creation-Date: 2018-09-25 08:22+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Thomas Thomas <fix@kippenbergs.de>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -313,8 +315,8 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #: [information]info1
-msgid "This message will be displayed on the login page"
-msgstr "Diese Nachricht wird auf der Anmeldeseite angezeigt"
+msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
+msgstr ""
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
@@ -356,6 +358,10 @@ msgstr "Systemprotokoll"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "Systemprotokoll und Dateien"
+
+#: [adminsessions]title
+msgid "Sessions"
+msgstr "Sitzungen"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -1574,14 +1580,6 @@ msgstr "Mit Ctrl+M zu öffnen"
 msgid "Statistics"
 msgstr "Statistiken"
 
-#: [statistics]since
-msgid "Since"
-msgstr "Seit"
-
-#: [statistics]sessions
-msgid "Sessions"
-msgstr "Sitzungen"
-
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
 msgstr "Ein Sticker wurde versendet"
@@ -1701,6 +1699,10 @@ msgstr "fehlgeschlagen"
 #: [visio]connecting
 msgid "…connecting"
 msgstr "…verbinden"
+
+#: [visio]ended
+msgid "call ended"
+msgstr ""
 
 #: [global]no_js
 msgid "You don’t have Javascript enabled. Good luck with that."
@@ -2511,3 +2513,9 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "This message will be displayed on the login page"
+#~ msgstr "Diese Nachricht wird auf der Anmeldeseite angezeigt"
+
+#~ msgid "Since"
+#~ msgstr "Seit"

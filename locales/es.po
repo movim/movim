@@ -18,6 +18,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdminSessions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Api/locales.ini
@@ -99,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-23 23:23+0200\n"
+"POT-Creation-Date: 2018-09-25 08:22+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
@@ -304,8 +306,8 @@ msgid "Description"
 msgstr "Descripción"
 
 #: [information]info1
-msgid "This message will be displayed on the login page"
-msgstr "Este mensaje se mostrará en la página de inicio"
+msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
+msgstr ""
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
@@ -347,6 +349,10 @@ msgstr "Syslog"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "Syslog y archivos"
+
+#: [adminsessions]title
+msgid "Sessions"
+msgstr "Sesiones"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -1565,14 +1571,6 @@ msgstr "Abreme usando Ctrl + M"
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#: [statistics]since
-msgid "Since"
-msgstr "Desde"
-
-#: [statistics]sessions
-msgid "Sessions"
-msgstr "Sesiones"
-
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
 msgstr ""
@@ -1691,6 +1689,10 @@ msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
+msgstr ""
+
+#: [visio]ended
+msgid "call ended"
 msgstr ""
 
 #: [global]no_js
@@ -2502,3 +2504,9 @@ msgstr "La API no se puede alcanzar, inténtalo de nuevo más tarde"
 #: [field]type_here
 msgid "Type here"
 msgstr "Escribe aquí"
+
+#~ msgid "This message will be displayed on the login page"
+#~ msgstr "Este mensaje se mostrará en la página de inicio"
+
+#~ msgid "Since"
+#~ msgstr "Desde"

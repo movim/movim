@@ -19,6 +19,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminMain/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/AdminSessions/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/AdminTest/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Api/locales.ini
@@ -100,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-23 23:23+0200\n"
+"POT-Creation-Date: 2018-09-25 08:22+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -305,8 +307,8 @@ msgid "Description"
 msgstr "Beschrijving"
 
 #: [information]info1
-msgid "This message will be displayed on the login page"
-msgstr "Dit bericht zal worden vertoond op de loginpagina."
+msgid "This message will be displayed on the login page. It can be used to link the Terms and Conditions of your Movim instance for example."
+msgstr ""
 
 #: [information]info2
 msgid "Leave this field blank if you don’t want to show any message."
@@ -348,6 +350,10 @@ msgstr "Syslog"
 #: [log]syslog_files
 msgid "Syslog and files"
 msgstr "Syslog en bestanden"
+
+#: [adminsessions]title
+msgid "Sessions"
+msgstr "Sessies"
 
 #: [admin]compatibility
 msgid "General Overview"
@@ -1566,14 +1572,6 @@ msgstr "Start me met CTRL + M"
 msgid "Statistics"
 msgstr "Statistieken"
 
-#: [statistics]since
-msgid "Since"
-msgstr "Sinds"
-
-#: [statistics]sessions
-msgid "Sessions"
-msgstr "Sessies"
-
 #: [sticker]sent
 msgid "A sticker has been sent using Movim"
 msgstr "Er is je een sticker toegezonden door Movim"
@@ -1692,6 +1690,10 @@ msgstr ""
 
 #: [visio]connecting
 msgid "…connecting"
+msgstr ""
+
+#: [visio]ended
+msgid "call ended"
 msgstr ""
 
 #: [global]no_js
@@ -2503,3 +2505,9 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "This message will be displayed on the login page"
+#~ msgstr "Dit bericht zal worden vertoond op de loginpagina."
+
+#~ msgid "Since"
+#~ msgstr "Sinds"
