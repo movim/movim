@@ -93,6 +93,7 @@ class Blog extends \Movim\Widget\Base
             $this->_messages = \App\Post::where('server', $this->_from)
                     ->where('node', $this->_node)
                     ->where('nodeid', $this->_id)
+                    ->where('open', true)
                     ->get();
 
             if ($this->_messages->isNotEmpty()) {
