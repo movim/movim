@@ -18,31 +18,22 @@
                     {$info->created|strtotime|prepareDate:true,true}
                 </p>
             {/if}
-        </li>
-
-        <li>
-            <span class="primary icon gray">
-                <i class="material-icons">people</i>
-            </span>
-            <p class="normal">{$c->__('communitydata.sub', $info->occupants)}</p>
-        </li>
-
-        <li>
-            <span class="primary icon gray">
-                <i class="material-icons">receipt</i>
-            </span>
-            <p class="normal">{$c->__('communitydata.num', $num)}</p>
+            <p class="center">
+                <i class="material-icons">people</i> {$c->__('communitydata.sub', $info->occupants)}
+                –
+                <i class="material-icons">receipt</i> {$c->__('communitydata.num', $num)}
+            </p>
         </li>
 
         {if="$info->related"}
             {$related = $info->related}
             <li onclick="MovimUtils.redirect('{$c->route('chat', [$related->server,'room'])}')"
                 class="block large active">
-                <span class="primary icon bubble">
+                <span class="primary icon bubble gray">
                     <i class="material-icons">forum</i>
                 </span>
 
-                <span class="control icon">
+                <span class="control icon gray">
                     <i class="material-icons">chevron_right</i>
                 </span>
 

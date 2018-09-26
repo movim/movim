@@ -9,14 +9,15 @@
     <?php $this->widget('Navigation');?>
 </nav>
 
+<?php $this->widget('BottomNavigation');?>
+
 <main>
     <div>
         <header>
             <ul class="list middle">
                 <li>
                     <span id="menu" class="primary icon active gray" >
-                        <i class="material-icons on_desktop">settings</i>
-                        <i class="material-icons on_mobile" onclick="MovimTpl.toggleMenu()">menu</i>
+                        <i class="material-icons">settings</i>
                     </span>
                     <p><?php echo __('page.configuration'); ?></p>
                 </li>
