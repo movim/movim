@@ -179,6 +179,7 @@ class CommunityPosts extends \Movim\Widget\Base
                             $query->where('nsfw', $this->user->nsfw)
                                   ->orWhere('nsfw', false);
                        })
+                       ->where('open', true)
                        ->orderBy('published', 'desc')
                        ->skip($page * $this->_paging)
                        ->take($this->_paging)
