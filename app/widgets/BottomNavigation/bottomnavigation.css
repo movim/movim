@@ -46,4 +46,8 @@ ul#bottomnavigation li span:not(.counter) {
     ul#bottomnavigation.hidden ~ main {
         height: 100%;
     }
+
+    ul#bottomnavigation ~ main .button.action {
+        bottom: 8.5rem;
+    }
 }

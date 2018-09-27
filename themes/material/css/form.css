@@ -386,25 +386,18 @@ li.action div.action .button {
     display: block;
 }
 
-header.big ~ .button.action {
-    bottom: auto;
-    position: relative;
-    float: right;
-    top: -6rem;
-}
-
 .button:not(.action) i {
     font-size: 2.5rem;
     margin: 0 0.25rem;
 }
 
 @media screen and (min-width: 1025px) {
-    main > section > div:first-child:nth-last-child(2) .button.action {
-        right: calc(70% + 3rem);
+    main > div:first-child:nth-last-child(2) + div .button.action {
+        right: calc(70% - 2rem);
     }
 
     aside ~ * .button.action {
-        right: calc(50% - 18rem);
+        right: calc(50% - 20rem);
     }
 }
 
