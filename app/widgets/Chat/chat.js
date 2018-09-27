@@ -84,6 +84,20 @@ var Chat = {
 
         textarea.focus();
     },
+    insertAtCursor: function(textToInsert)
+    {
+        textarea = Chat.getTextarea();
+
+        const value = textarea.value;
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+
+        textarea.value = value.slice(0, start) + textToInsert + value.slice(end);
+        textarea.selectionStart = textarea.selectionEnd = start + textToInsert.length;
+
+        textarea.focus();
+        Chat.toggleAction();
+    },
     sendMessage: function()
     {
         var textarea = Chat.getTextarea();
@@ -218,8 +232,9 @@ var Chat = {
             Chat.toggleAction();
         };
 
-        textarea.oninput = function() {
+        textarea.onchange = function() {
             MovimUtils.textareaAutoheight(this);
+            Chat.toggleAction();
         };
 
         if (document.documentElement.clientWidth > 1024) {

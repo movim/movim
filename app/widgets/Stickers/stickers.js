@@ -1,8 +1,6 @@
 var Stickers = {
     addSmiley: function(element) {
-        var n = document.querySelector('#chat_textarea');
-        n.value = n.value + element.dataset.emoji;
-        n.focus();
+        Chat.insertAtCursor(element.dataset.emoji);
         Drawer.clear();
     },
     zoom: function(element, jid, pack, value) {

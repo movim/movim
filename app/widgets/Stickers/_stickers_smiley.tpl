@@ -10,6 +10,22 @@
                 <td onclick="Stickers.addSmiley(this);" data-emoji="😅"><img class="emoji large" src="{$c->getSmileyPath('1f605')}"></td>
             </tr>
             <tr class="active">
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤭"><img class="emoji large" src="{$c->getSmileyPath('1f92d')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🧐"><img class="emoji large" src="{$c->getSmileyPath('1f9d0')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤯"><img class="emoji large" src="{$c->getSmileyPath('1f92f')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤑"><img class="emoji large" src="{$c->getSmileyPath('1f911')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤤"><img class="emoji large" src="{$c->getSmileyPath('1f924')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🙄"><img class="emoji large" src="{$c->getSmileyPath('1f644')}"></td>
+            </tr>
+            <tr class="active">
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤔"><img class="emoji large" src="{$c->getSmileyPath('1f914')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤗"><img class="emoji large" src="{$c->getSmileyPath('1f917')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤩"><img class="emoji large" src="{$c->getSmileyPath('1f929')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤨"><img class="emoji large" src="{$c->getSmileyPath('1f928')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤪"><img class="emoji large" src="{$c->getSmileyPath('1f92a')}"></td>
+                <td onclick="Stickers.addSmiley(this);" data-emoji="🤢"><img class="emoji large" src="{$c->getSmileyPath('1f922')}"></td>
+            </tr>
+            <tr class="active">
                 <td onclick="Stickers.addSmiley(this);" data-emoji="😆"><img class="emoji large" src="{$c->getSmileyPath('1f606')}"></td>
                 <td onclick="Stickers.addSmiley(this);" data-emoji="😇"><img class="emoji large" src="{$c->getSmileyPath('1f607')}"></td>
                 <td onclick="Stickers.addSmiley(this);" data-emoji="😈"><img class="emoji large" src="{$c->getSmileyPath('1f608')}"></td>

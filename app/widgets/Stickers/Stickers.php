@@ -85,10 +85,12 @@ class Stickers extends \Movim\Widget\Base
         $m->save();
 
         // Sending it to Chat
-        $packet = new Moxl\Xec\Payload\Packet;
-        $packet->content = $m;
-        $c = new Chat;
-        $c->onMessage($packet/*, true*/);
+        if (!$p->getMuc()) {
+            $packet = new Moxl\Xec\Payload\Packet;
+            $packet->content = $m;
+            $c = new Chat;
+            $c->onMessage($packet);
+        }
     }
 
     function ajaxShow($to, $pack = null)

@@ -289,6 +289,8 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
+        $message = trim($message);
+
         if (filter_var($message, FILTER_VALIDATE_URL)) {
             $headers = requestHeaders($message);
 
@@ -305,7 +307,7 @@ class Chat extends \Movim\Widget\Base
 
         $body = ($file != false)
             ? $file->uri
-            : (string)htmlentities(trim($message), ENT_XML1, 'UTF-8');
+            : (string)htmlentities($message, ENT_XML1, 'UTF-8');
 
         if ($body == '' || $body == '/me') {
             return;

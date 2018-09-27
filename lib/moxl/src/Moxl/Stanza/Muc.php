@@ -10,7 +10,7 @@ class Muc
 {
     static function message($to, $content, $html = false, $id = false, $file = false)
     {
-        Message::maker($to, $content, false, 'groupchat', false, false, $id, false, $file);
+        Message::maker($to, $content, $html, 'groupchat', false, false, $id, false, $file);
     }
 
     static function setSubject($to, $subject)
