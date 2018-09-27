@@ -181,10 +181,15 @@
                 </a>
                     {if="$post->openlink"}
                         <a  title="{$c->__('post.public_yes')}"
-                            class="button icon flat gray on_desktop"
+                            class="button icon flat gray on_desktop oppose"
                             target="_blank"
                             href="{$post->openlink->href}">
-                            <i title="{$c->__('menu.public')}" class="material-icons">wifi_tethering</i>
+                            <i class="material-icons">wifi_tethering</i>
+                        </a>
+                    {else}
+                        <a  class="button icon flat gray oppose"
+                            title="{$c->__('post.public_no')}">
+                            <i class="material-icons">lock</i>
                         </a>
                     {/if}
                 {/if}
