@@ -348,7 +348,7 @@ hr:not(.clear) {
         display: inherit !important;
     }
 
-    .on_mobile.zmdi {
+    .on_mobile.material-icons {
         display: inline !important;
     }
 

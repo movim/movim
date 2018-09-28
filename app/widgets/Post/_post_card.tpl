@@ -65,6 +65,11 @@
                          edit
                     </i>
                 {/if}
+                {if="!$post->openlink"}
+                    <i class="material-icons on_mobile" title="{$c->__('post.public_no')}">
+                        lock
+                    </i>
+                {/if}
             </p>
             {if="$post->isBrief()"}
                 <p class="normal">
