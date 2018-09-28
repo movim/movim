@@ -308,6 +308,7 @@ class Message extends Model
     {
         return (empty($this->body)
             && empty($this->picture)
+            && empty($this->file)
             && empty($this->sticker)
         );
     }
