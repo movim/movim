@@ -287,7 +287,7 @@ form > div > input:disabled + label {
 .button,
 input[type=button] {
     -webkit-appearance:none; /* iOS */
-    min-width: 5rem; /* 8rem ? */
+    min-width: 5rem;
     text-align: center;
     display: inline-block;
     box-sizing: border-box;
@@ -297,17 +297,19 @@ input[type=button] {
     line-height: 4.5rem;
     height: 4.5rem;
     margin: 0.75rem 0.5rem;
-
     border-radius: 0.25rem;
     padding: 0 1rem;
-
     border: 0;
-
     transition: background 0.3s ease, box-shadow 0.3s ease;
-
     box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
-
     background-image: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .button,
+    input[type=button] {
+        margin: 0.75rem 0.15rem;
+    }
 }
 
 .button:not(.color),

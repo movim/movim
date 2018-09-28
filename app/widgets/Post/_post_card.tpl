@@ -146,7 +146,7 @@
                 {else}
                     href="{$c->route('post', [$post->server, $post->node, $post->nodeid])}"
                 {/if}>
-                    <i class="material-icons">add</i> {$c->__('post.more')}
+                    <i class="material-icons on_desktop">add</i> {$c->__('post.more')}
                 </a>
                 {if="$post->hasCommentsNode()"}
                     {$liked = $post->isLiked()}
@@ -187,7 +187,7 @@
                             <i class="material-icons">wifi_tethering</i>
                         </a>
                     {else}
-                        <a  class="button icon flat gray oppose"
+                        <a  class="button icon flat gray on_desktop oppose"
                             title="{$c->__('post.public_no')}">
                             <i class="material-icons">lock</i>
                         </a>
