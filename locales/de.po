@@ -110,7 +110,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Thomas Thomas <fix@kippenbergs.de>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -667,17 +667,9 @@ msgstr "Sie werden die folgende Gemeinschaft löschen. Bitte bestätigen Sie Ihr
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Anscheinend existiert diese Gemeinschaft nicht mehr. Möchten Sie das Abonnement löschen?"
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr "Besitzer"
-
 #: [communityaffiliation]owners
 msgid "Owners"
 msgstr "Besitzer"
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
-msgstr "Herausgeber"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
@@ -1200,25 +1192,9 @@ msgstr "Ungültiger Spitzname (zwischen 4 und 40 Zeichen)"
 msgid "No news yet…"
 msgstr "Nichts Neues bisher ..."
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr "Kontaktnachricht"
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Willkommen auf unserem neuen Newsfeed. Hier siehst du alle Posts, die von deinen Kontakten oder den Gemeinschaften, die du abonniert hast, veröffentlicht wurden."
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr "Entdecken"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Alle Daten auffrischen"
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
-msgstr "Dieser Beitrag ist öffentlich"
 
 #: [menu]all
 msgid "All"
@@ -1324,6 +1300,10 @@ msgstr "Öffentliche Postings von Benutzern"
 msgid "Publish this post publicly?"
 msgstr "Diesen Beitrag öffentlich zeigen?"
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr "Dieser Beitrag ist öffentlich"
+
 #: [post]public_no
 msgid "This post is private"
 msgstr "Dieses Posting ist privat"
@@ -1371,6 +1351,10 @@ msgstr "Ihren öffentlichen Blog besuchen"
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
 msgstr "Ihre öffentlichen Beiträge ansehen und diese allen Ihren Kontakten freigeben"
+
+#: [hello]contact_post
+msgid "Contact post"
+msgstr "Kontaktnachricht"
 
 #: [hello]share_title
 msgid "Universal share button"
@@ -1929,6 +1913,10 @@ msgstr "Suche"
 msgctxt "[button]share"
 msgid "Share"
 msgstr "Teilen"
+
+#: [button]discover
+msgid "Discover"
+msgstr "Entdecken"
 
 #: [button]like
 msgid "Like"
@@ -2506,6 +2494,33 @@ msgstr "Kommentare"
 msgid "Original post deleted"
 msgstr "Ursprünglicher Beitrag gelöscht"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Besitzer"
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr "Herausgeber"
+
+#: [affiliation]publish-only
+#, fuzzy
+msgid "Publish only"
+msgstr "Veröffentlichen"
+
+#: [affiliation]member
+#, fuzzy
+msgid "Member"
+msgstr "Mitglieder"
+
+#: [affiliation]no-aff
+#, fuzzy
+msgid "No affiliation"
+msgstr "Benachrichtigungen"
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
@@ -2513,6 +2528,9 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "Refresh all the streams"
+#~ msgstr "Alle Daten auffrischen"
 
 #~ msgid "This message will be displayed on the login page"
 #~ msgstr "Diese Nachricht wird auf der Anmeldeseite angezeigt"

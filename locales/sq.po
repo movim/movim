@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -652,17 +652,9 @@ msgstr "Ju ndan një hap nga fshirja e bashkësisë vijuese. Ju lutemi, ripohoni
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr "Duket se ajo bashkësi s’ekziston më. Doni të hiqet nga pajtimet tuaja?"
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr "Pronar"
-
 #: [communityaffiliation]owners
 msgid "Owners"
 msgstr "Pronarë"
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
-msgstr "Botues"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
@@ -1185,25 +1177,9 @@ msgstr "Nofkë e gabuar (mes 4 dhe 40 shenjash)"
 msgid "No news yet…"
 msgstr "Ende pa lajme…"
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr ""
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Mirë se vini te prurja juaj e lajmeve, këtu do të shihni krejt postimet e botuara nga kontaktet tuaj dhe në bashkësi te të cilat jeni pajtuar."
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr "Zbuloni"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Rifreskoji krejt rrjedhat"
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
-msgstr "Ky postim është publik"
 
 #: [menu]all
 msgid "All"
@@ -1309,6 +1285,10 @@ msgstr "Postime publike nga përdorues"
 msgid "Publish this post publicly?"
 msgstr "Të botohet ky postim publikisht?"
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr "Ky postim është publik"
+
 #: [post]public_no
 msgid "This post is private"
 msgstr "Ky postim është privat"
@@ -1356,6 +1336,10 @@ msgstr "Vizitoni blogun tuaj publik"
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
 msgstr "Shihni postimet tuaja publike dhe ndajini ato me kontaktet tuajA"
+
+#: [hello]contact_post
+msgid "Contact post"
+msgstr ""
 
 #: [hello]share_title
 msgid "Universal share button"
@@ -1914,6 +1898,10 @@ msgstr "Kërkoni"
 msgctxt "[button]share"
 msgid "Share"
 msgstr "Ndajeni me të tjerët"
+
+#: [button]discover
+msgid "Discover"
+msgstr "Zbuloni"
 
 #: [button]like
 msgid "Like"
@@ -2491,6 +2479,33 @@ msgstr "Komente"
 msgid "Original post deleted"
 msgstr "Postimi origjinal u fshi"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Pronar"
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr "Botues"
+
+#: [affiliation]publish-only
+#, fuzzy
+msgid "Publish only"
+msgstr "Botoje"
+
+#: [affiliation]member
+#, fuzzy
+msgid "Member"
+msgstr "Anëtarë"
+
+#: [affiliation]no-aff
+#, fuzzy
+msgid "No affiliation"
+msgstr "Njoftime"
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "API nuk kapet dot, riprovoni më vonë"
@@ -2498,6 +2513,9 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgid "Refresh all the streams"
+#~ msgstr "Rifreskoji krejt rrjedhat"
 
 #~ msgid "This message will be displayed on the login page"
 #~ msgstr "Ky mesazh do të shfaqet te faqja e hyrjeve"

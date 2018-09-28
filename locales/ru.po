@@ -106,7 +106,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Russian (http://www.transifex.com/movim/movim/language/ru/)\n"
@@ -663,17 +663,9 @@ msgstr "Вы собираетесь удалить это сообщество. 
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr "Владелец"
-
 #: [communityaffiliation]owners
 msgid "Owners"
 msgstr "Владельцы"
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
-msgstr "Автор"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
@@ -1196,25 +1188,9 @@ msgstr "Неподходящий псевдоним (от 4 до 40 символ
 msgid "No news yet…"
 msgstr "Пока нет новостей"
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr "Для связи"
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Добро пожаловать в Вашу новостную ленту. Здесь Вы будете видеть посты, опубликованные Вашими контактами и те сообщества, на которые Вы подписаны"
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr "Открывай"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Обновить все потоки"
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
-msgstr "Эта публикация общедоступна"
 
 #: [menu]all
 msgid "All"
@@ -1320,6 +1296,10 @@ msgstr "Публичные записи от пользователей"
 msgid "Publish this post publicly?"
 msgstr "Сделать пост доступным всем?"
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr "Эта публикация общедоступна"
+
 #: [post]public_no
 msgid "This post is private"
 msgstr "Это приватный пост"
@@ -1367,6 +1347,10 @@ msgstr "Посетите ваш блог"
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
 msgstr "Просмотрите свои посты и поделитесь ими с контактами"
+
+#: [hello]contact_post
+msgid "Contact post"
+msgstr "Для связи"
 
 #: [hello]share_title
 msgid "Universal share button"
@@ -1925,6 +1909,10 @@ msgstr "Поиск"
 msgctxt "[button]share"
 msgid "Share"
 msgstr "Поделиться"
+
+#: [button]discover
+msgid "Discover"
+msgstr "Открывай"
 
 #: [button]like
 msgid "Like"
@@ -2502,6 +2490,33 @@ msgstr "Комментарии"
 msgid "Original post deleted"
 msgstr "Первичный пост удален"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Владелец"
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr "Автор"
+
+#: [affiliation]publish-only
+#, fuzzy
+msgid "Publish only"
+msgstr "Опубликовать"
+
+#: [affiliation]member
+#, fuzzy
+msgid "Member"
+msgstr "Участники"
+
+#: [affiliation]no-aff
+#, fuzzy
+msgid "No affiliation"
+msgstr "Уведомления"
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "API недоступен, попробуйте позже"
@@ -2509,6 +2524,9 @@ msgstr "API недоступен, попробуйте позже"
 #: [field]type_here
 msgid "Type here"
 msgstr "Введите здесь"
+
+#~ msgid "Refresh all the streams"
+#~ msgstr "Обновить все потоки"
 
 #~ msgid "This message will be displayed on the login page"
 #~ msgstr "Это сообщение будет отображаться на странице входа"

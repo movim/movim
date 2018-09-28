@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -659,17 +659,9 @@ msgstr ""
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr "Beheerder"
-
 #: [communityaffiliation]owners
 msgid "Owners"
 msgstr "Beheerders"
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
-msgstr ""
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
@@ -1192,25 +1184,9 @@ msgstr "Roepnaam niet mogelijk (moet tussen 4 en 40 tekens zijn)"
 msgid "No news yet…"
 msgstr "Nog geen nieuws"
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr ""
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Dit is je nieuwsfeed. Hier vind je alle berichten van je contactpersonen en de groepen waar je lid van bent"
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr "Verkennen"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Vernieuw alle streams"
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
-msgstr "Dit bericht is openbaar"
 
 #: [menu]all
 msgid "All"
@@ -1316,6 +1292,10 @@ msgstr "Openbare berichten van gebruikers"
 msgid "Publish this post publicly?"
 msgstr "Post dit bericht openbaar?"
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr "Dit bericht is openbaar"
+
 #: [post]public_no
 msgid "This post is private"
 msgstr "Dit bericht is niet openbaar"
@@ -1362,6 +1342,10 @@ msgstr "Bezoek je openbare blog"
 
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]contact_post
+msgid "Contact post"
 msgstr ""
 
 #: [hello]share_title
@@ -1921,6 +1905,10 @@ msgstr "Zoeken"
 msgctxt "[button]share"
 msgid "Share"
 msgstr "Delen"
+
+#: [button]discover
+msgid "Discover"
+msgstr "Verkennen"
 
 #: [button]like
 msgid "Like"
@@ -2498,6 +2486,33 @@ msgstr "Reacties"
 msgid "Original post deleted"
 msgstr "Originele bericht verwijderd"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Beheerder"
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr ""
+
+#: [affiliation]publish-only
+#, fuzzy
+msgid "Publish only"
+msgstr "Publiceer"
+
+#: [affiliation]member
+#, fuzzy
+msgid "Member"
+msgstr "Leden"
+
+#: [affiliation]no-aff
+#, fuzzy
+msgid "No affiliation"
+msgstr "Meldingen"
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "De API is niet bereikbaar, probeer later nog eens"
@@ -2505,6 +2520,9 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "Refresh all the streams"
+#~ msgstr "Vernieuw alle streams"
 
 #~ msgid "This message will be displayed on the login page"
 #~ msgstr "Dit bericht zal worden vertoond op de loginpagina."

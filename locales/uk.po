@@ -95,7 +95,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/movim/movim/language/uk/)\n"
@@ -652,16 +652,8 @@ msgstr ""
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr ""
-
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
 msgstr ""
 
 #: [communityaffiliation]publishers
@@ -1185,24 +1177,8 @@ msgstr ""
 msgid "No news yet…"
 msgstr ""
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr ""
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
-msgstr ""
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr ""
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr ""
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
 msgstr ""
 
 #: [menu]all
@@ -1309,6 +1285,10 @@ msgstr ""
 msgid "Publish this post publicly?"
 msgstr ""
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr ""
+
 #: [post]public_no
 msgid "This post is private"
 msgstr ""
@@ -1355,6 +1335,10 @@ msgstr ""
 
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]contact_post
+msgid "Contact post"
 msgstr ""
 
 #: [hello]share_title
@@ -1913,6 +1897,10 @@ msgstr ""
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
+msgstr ""
+
+#: [button]discover
+msgid "Discover"
 msgstr ""
 
 #: [button]like
@@ -2489,6 +2477,30 @@ msgstr ""
 
 #: [post]original_deleted
 msgid "Original post deleted"
+msgstr ""
+
+#: [affiliation]owner
+msgid "Owner"
+msgstr ""
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr ""
+
+#: [affiliation]publish-only
+msgid "Publish only"
+msgstr ""
+
+#: [affiliation]member
+msgid "Member"
+msgstr ""
+
+#: [affiliation]no-aff
+msgid "No affiliation"
+msgstr ""
+
+#: [affiliation]outcast
+msgid "Outcast"
 msgstr ""
 
 #: [api]error

@@ -99,7 +99,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Norwegian Bokmål (Norway) (http://www.transifex.com/movim/movim/language/nb_NO/)\n"
@@ -656,17 +656,9 @@ msgstr "Du er igang med å slette følgende fellesskap.  Vær så snill å bekre
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr "Eier"
-
 #: [communityaffiliation]owners
 msgid "Owners"
 msgstr "Eiere"
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
-msgstr "Utgiver"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
@@ -1189,25 +1181,9 @@ msgstr "Ugyldig kallenavn (må være mellom 4 og 40 tegn)"
 msgid "No news yet…"
 msgstr "Ingen nyheter enda…"
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr "Kontaktpost"
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Velkommen til nyhetsstrømmen din, her vil du se alle innlegg som publiserer av kontakter og samfunn du abonnerer på."
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr "Oppdag"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Oppdater alle strømmer"
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
-msgstr "Denne posten er offentlig"
 
 #: [menu]all
 msgid "All"
@@ -1313,6 +1289,10 @@ msgstr "Offentlige poster fra brukere"
 msgid "Publish this post publicly?"
 msgstr "Publiser dette innlegget offentlig?"
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr "Denne posten er offentlig"
+
 #: [post]public_no
 msgid "This post is private"
 msgstr "Dette innlegget er privat"
@@ -1360,6 +1340,10 @@ msgstr "Besøk din offentlige blogg"
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
 msgstr "Se dine offentlige innlegg og del dem med alle dine kontakter"
+
+#: [hello]contact_post
+msgid "Contact post"
+msgstr "Kontaktpost"
 
 #: [hello]share_title
 msgid "Universal share button"
@@ -1918,6 +1902,10 @@ msgstr "Søk"
 msgctxt "[button]share"
 msgid "Share"
 msgstr "Del"
+
+#: [button]discover
+msgid "Discover"
+msgstr "Oppdag"
 
 #: [button]like
 msgid "Like"
@@ -2495,6 +2483,33 @@ msgstr "Kommentarer"
 msgid "Original post deleted"
 msgstr "Opprinnelig post slettet"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Eier"
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr "Utgiver"
+
+#: [affiliation]publish-only
+#, fuzzy
+msgid "Publish only"
+msgstr "Publiser"
+
+#: [affiliation]member
+#, fuzzy
+msgid "Member"
+msgstr "Medlemer"
+
+#: [affiliation]no-aff
+#, fuzzy
+msgid "No affiliation"
+msgstr "Varsel"
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "API-et kan ikke nås, prøv igjen senere"
@@ -2502,6 +2517,9 @@ msgstr "API-et kan ikke nås, prøv igjen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "Refresh all the streams"
+#~ msgstr "Oppdater alle strømmer"
 
 #~ msgid "This message will be displayed on the login page"
 #~ msgstr "Denne meldingen vil vises på påloggingssiden"

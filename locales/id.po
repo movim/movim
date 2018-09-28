@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Indonesian (http://www.transifex.com/movim/movim/language/id/)\n"
@@ -654,17 +654,9 @@ msgstr ""
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr "Pemilik"
-
 #: [communityaffiliation]owners
 msgid "Owners"
 msgstr "Pemilik"
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
-msgstr "Penerbit"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
@@ -1187,25 +1179,9 @@ msgstr "Nama panggilan buruk (diantara 4 dan 40 karakter)"
 msgid "No news yet…"
 msgstr "Belum ada berita..."
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr "Post kontak"
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "Selamat datang di beranda anda, disini anda dapat melihat semua postingan dari kontak anda dan dari komunitas anda berlangganan."
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr "Jelajahi"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Segarkan semua aliran"
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
-msgstr "Post ini publik"
 
 #: [menu]all
 msgid "All"
@@ -1311,6 +1287,10 @@ msgstr "Post publik dari pengguna"
 msgid "Publish this post publicly?"
 msgstr "Terbitkan post ini secara publik?"
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr "Post ini publik"
+
 #: [post]public_no
 msgid "This post is private"
 msgstr "Post ini bersifat pribadi"
@@ -1358,6 +1338,10 @@ msgstr "Kunjungi blog publik anda"
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
 msgstr "Lihat post publik anda dan bagikan ke semua kontak anda"
+
+#: [hello]contact_post
+msgid "Contact post"
+msgstr "Post kontak"
 
 #: [hello]share_title
 msgid "Universal share button"
@@ -1916,6 +1900,10 @@ msgstr ""
 msgctxt "[button]share"
 msgid "Share"
 msgstr ""
+
+#: [button]discover
+msgid "Discover"
+msgstr "Jelajahi"
 
 #: [button]like
 msgid "Like"
@@ -2493,6 +2481,33 @@ msgstr ""
 msgid "Original post deleted"
 msgstr ""
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "Pemilik"
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr "Penerbit"
+
+#: [affiliation]publish-only
+#, fuzzy
+msgid "Publish only"
+msgstr "Penerbit"
+
+#: [affiliation]member
+#, fuzzy
+msgid "Member"
+msgstr "Anggota"
+
+#: [affiliation]no-aff
+#, fuzzy
+msgid "No affiliation"
+msgstr "Notifikasi"
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr ""
@@ -2500,6 +2515,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "Refresh all the streams"
+#~ msgstr "Segarkan semua aliran"
 
 #~ msgid "This message will be displayed on the login page"
 #~ msgstr "Pesan ini akan ditampilkan didalam halaman masuk"

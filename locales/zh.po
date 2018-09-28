@@ -102,7 +102,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -659,17 +659,9 @@ msgstr "你将要删除下列的社群。请确认你的操作。"
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr "所有者"
-
 #: [communityaffiliation]owners
 msgid "Owners"
 msgstr "所有者"
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
-msgstr "发布者"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
@@ -1192,25 +1184,9 @@ msgstr "无效昵称（需在 4 到 40 字符之间）"
 msgid "No news yet…"
 msgstr "尚无新闻"
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr "联系人帖子"
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr "欢迎来到你的消息流，你将在此处看到你的联系人和你订阅的社群中所发布的帖子。"
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr "发现"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "刷新所有流"
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
-msgstr "这个帖子是公开"
 
 #: [menu]all
 msgid "All"
@@ -1316,6 +1292,10 @@ msgstr "用户的公开帖"
 msgid "Publish this post publicly?"
 msgstr "公开发布该贴？"
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr "这个帖子是公开"
+
 #: [post]public_no
 msgid "This post is private"
 msgstr "该帖是私密的"
@@ -1363,6 +1343,10 @@ msgstr "访问你的公开博客"
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
 msgstr "查看你的公开帖并与你所有联系人分享"
+
+#: [hello]contact_post
+msgid "Contact post"
+msgstr "联系人帖子"
 
 #: [hello]share_title
 msgid "Universal share button"
@@ -1921,6 +1905,10 @@ msgstr "搜索"
 msgctxt "[button]share"
 msgid "Share"
 msgstr "分享"
+
+#: [button]discover
+msgid "Discover"
+msgstr "发现"
 
 #: [button]like
 msgid "Like"
@@ -2498,6 +2486,33 @@ msgstr "评论"
 msgid "Original post deleted"
 msgstr "原帖子已被删除"
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr "所有者"
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr "发布者"
+
+#: [affiliation]publish-only
+#, fuzzy
+msgid "Publish only"
+msgstr "发布"
+
+#: [affiliation]member
+#, fuzzy
+msgid "Member"
+msgstr "成员"
+
+#: [affiliation]no-aff
+#, fuzzy
+msgid "No affiliation"
+msgstr "提醒"
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "API 无法连接，请稍后重试"
@@ -2505,6 +2520,9 @@ msgstr "API 无法连接，请稍后重试"
 #: [field]type_here
 msgid "Type here"
 msgstr "在此输入"
+
+#~ msgid "Refresh all the streams"
+#~ msgstr "刷新所有流"
 
 #~ msgid "This message will be displayed on the login page"
 #~ msgstr "这条信息将显示在登录页面"

@@ -99,7 +99,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Zsolt <maxigaz@protonmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -656,16 +656,8 @@ msgstr ""
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr ""
-
 #: [communityaffiliation]owners
 msgid "Owners"
-msgstr ""
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
 msgstr ""
 
 #: [communityaffiliation]publishers
@@ -1189,25 +1181,9 @@ msgstr "Rossz becenév (4-40 karakter)"
 msgid "No news yet…"
 msgstr ""
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr ""
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr ""
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr ""
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr "Adatfolyamok frissítése"
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
-msgstr "Ez a megosztás nyílvános"
 
 #: [menu]all
 msgid "All"
@@ -1313,6 +1289,10 @@ msgstr ""
 msgid "Publish this post publicly?"
 msgstr "Nyilvánosan közzéteszed a bejegyzést?"
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr "Ez a megosztás nyílvános"
+
 #: [post]public_no
 msgid "This post is private"
 msgstr "Ez a bejegyzés nem nyilvános"
@@ -1359,6 +1339,10 @@ msgstr "Látogasd meg a nyilvános blogod."
 
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]contact_post
+msgid "Contact post"
 msgstr ""
 
 #: [hello]share_title
@@ -1917,6 +1901,10 @@ msgstr "Keresés"
 #: [button]share
 msgctxt "[button]share"
 msgid "Share"
+msgstr ""
+
+#: [button]discover
+msgid "Discover"
 msgstr ""
 
 #: [button]like
@@ -2495,6 +2483,32 @@ msgstr "Kommentek"
 msgid "Original post deleted"
 msgstr ""
 
+#: [affiliation]owner
+msgid "Owner"
+msgstr ""
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr ""
+
+#: [affiliation]publish-only
+#, fuzzy
+msgid "Publish only"
+msgstr "Közzétesz"
+
+#: [affiliation]member
+#, fuzzy
+msgid "Member"
+msgstr "Tagok"
+
+#: [affiliation]no-aff
+msgid "No affiliation"
+msgstr ""
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
+
 #: [api]error
 msgid "The API is not reachable, try again later"
 msgstr "Az API nem elérhető, próbáld újra később"
@@ -2502,6 +2516,9 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "Refresh all the streams"
+#~ msgstr "Adatfolyamok frissítése"
 
 #~ msgid "This message will be displayed on the login page"
 #~ msgstr "Ez az üzenet a bejelentkező képernyőn fog megjelenni"

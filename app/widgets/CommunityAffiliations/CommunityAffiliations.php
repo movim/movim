@@ -185,7 +185,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
-        if (Validator::in(\App\Capability::find($origin)->getPubsubRoles())->validate($form->role->value)
+        if (Validator::in(array_keys(\App\Capability::find($origin)->getPubsubRoles()))->validate($form->role->value)
         && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {
             $sa = new SetAffiliations;
             $sa->setTo($origin)

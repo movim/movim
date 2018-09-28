@@ -21,19 +21,19 @@
                     <input type="hidden" name="jid" value="{$contact->jid}"/>
                     <div>
                         {if="$role == 'owner' && $contact->jid == $me"}
-                            <input type="text" disabled value="{$c->__('communityaffiliation.owner')}"/>
+                            <input type="text" disabled value="{$c->__('affiliation.owner')}"/>
                         {else}
                         <div class="select">
                             <select name="role" id="role" onchange="CommunityAffiliations.update('{$contact->jid}')">
                                 {loop="$roles"}
-                                    {if="$value == $role"}
+                                    {if="$key == $role"}
                                         <option
-                                            value="{$value}"
+                                            value="{$key}"
                                             selected="selected">
                                             {$value}
                                         </option>
                                     {else}
-                                        <option value="{$value}">
+                                        <option value="{$key}">
                                             {$value}
                                         </option>
                                     {/if}
@@ -67,14 +67,14 @@
                 <div class="select">
                     <select name="role" id="role" onchange="">
                         {loop="$roles"}
-                            {if="$value == 'none'"}
+                            {if="$key == 'none'"}
                                 <option
-                                    value="{$value}"
+                                    value="{$key}"
                                     selected="selected">
                                     {$value}
                                 </option>
                             {else}
-                                <option value="{$value}">
+                                <option value="{$key}">
                                     {$value}
                                 </option>
                             {/if}

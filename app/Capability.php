@@ -52,12 +52,12 @@ class Capability extends Model
 
     public function getPubsubRoles()
     {
-        $roles = ['owner', 'none'];
+        $roles = ['owner' => __('affiliation.owner'), 'none' =>  __('affiliation.no-aff')];
 
         foreach ($this->getFeaturesAttribute() as $feature) {
             preg_match("/http:\/\/jabber.org\/protocol\/pubsub#(.*)-affiliation$/", $feature, $matches);
             if (!empty($matches)){
-                array_push($roles, $matches[1]);
+                $roles[$matches[1]] = __('affiliation.' . $matches[1]);
             }
         }
 

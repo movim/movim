@@ -96,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-25 08:22+0200\n"
+"POT-Creation-Date: 2018-09-28 11:16+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
@@ -653,17 +653,9 @@ msgstr ""
 msgid "It seems that this community doesn’t exists anymore. Do you want to remove it from your subscriptions?"
 msgstr ""
 
-#: [communityaffiliation]owner
-msgid "Owner"
-msgstr "مالک"
-
 #: [communityaffiliation]owners
 msgid "Owners"
 msgstr "مالک ها"
-
-#: [communityaffiliation]publisher
-msgid "Publisher"
-msgstr "منتشر کننده"
 
 #: [communityaffiliation]publishers
 #: [communityconfig]publish_model_publishers_title
@@ -1186,25 +1178,9 @@ msgstr ""
 msgid "No news yet…"
 msgstr ""
 
-#: [menu]contact_post [hello]contact_post
-msgid "Contact post"
-msgstr ""
-
 #: [menu]empty
 msgid "Welcome on your news feed, here you will see all the posts published by your contacts and in the communities you have subscribed."
 msgstr ""
-
-#: [menu]discover [button]discover
-msgid "Discover"
-msgstr "کشف کردن"
-
-#: [menu]refresh
-msgid "Refresh all the streams"
-msgstr ""
-
-#: [menu]public [post]public_yes
-msgid "This post is public"
-msgstr "این نوشته عمومی است"
 
 #: [menu]all
 msgid "All"
@@ -1310,6 +1286,10 @@ msgstr "نوشته های عمومی از کاربر"
 msgid "Publish this post publicly?"
 msgstr "این نوشته به صورت عمومی منتشر شود ؟"
 
+#: [post]public_yes
+msgid "This post is public"
+msgstr "این نوشته عمومی است"
+
 #: [post]public_no
 msgid "This post is private"
 msgstr "این نوشته خصوصی است"
@@ -1356,6 +1336,10 @@ msgstr ""
 
 #: [hello]blog_text
 msgid "See your public posts and share them with all your contacts"
+msgstr ""
+
+#: [hello]contact_post
+msgid "Contact post"
 msgstr ""
 
 #: [hello]share_title
@@ -1915,6 +1899,10 @@ msgstr ""
 msgctxt "[button]share"
 msgid "Share"
 msgstr ""
+
+#: [button]discover
+msgid "Discover"
+msgstr "کشف کردن"
 
 #: [button]like
 msgid "Like"
@@ -2491,6 +2479,33 @@ msgstr "نظرها"
 #: [post]original_deleted
 msgid "Original post deleted"
 msgstr "نوشته اصلی حذف شده است"
+
+#: [affiliation]owner
+msgid "Owner"
+msgstr "مالک"
+
+#: [affiliation]publisher
+msgid "Publisher"
+msgstr "منتشر کننده"
+
+#: [affiliation]publish-only
+#, fuzzy
+msgid "Publish only"
+msgstr "منتشر کردن"
+
+#: [affiliation]member
+#, fuzzy
+msgid "Member"
+msgstr "اعض"
+
+#: [affiliation]no-aff
+#, fuzzy
+msgid "No affiliation"
+msgstr "اعلان ها"
+
+#: [affiliation]outcast
+msgid "Outcast"
+msgstr ""
 
 #: [api]error
 msgid "The API is not reachable, try again later"
