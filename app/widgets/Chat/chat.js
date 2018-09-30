@@ -232,8 +232,11 @@ var Chat = {
             Chat.toggleAction();
         };
 
-        textarea.onchange = function() {
+        textarea.oninput = function() {
             MovimUtils.textareaAutoheight(this);
+        }
+
+        textarea.onchange = function() {
             Chat.toggleAction();
         };
 
