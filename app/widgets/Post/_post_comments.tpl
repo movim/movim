@@ -106,7 +106,7 @@
 
     {if="!$public"}
     <li class="hide" id="comment_add">
-        <span class="primary icon small gray">
+        <span class="primary icon gray">
             <i class="material-icons">comment</i>
         </span>
         <span class="control icon gray active" onclick="Post_ajaxPublishComment(MovimUtils.formToJson('comment'),'{$post->server}', '{$post->node}', '{$post->nodeid}')">
