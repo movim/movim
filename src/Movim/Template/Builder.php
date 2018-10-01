@@ -205,7 +205,7 @@ class Builder
 
         $meta = $dom->createElement('meta');
         $meta->setAttribute('property', 'twitter:card');
-        $meta->setAttribute('content', 'summary_large_image');
+        $meta->setAttribute('content', 'summary');
         $metas->appendChild($meta);
 
         $meta = $dom->createElement('meta');
