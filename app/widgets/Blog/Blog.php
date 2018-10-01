@@ -70,6 +70,11 @@ class Blog extends \Movim\Widget\Base
             $this->title = __('blog.title', $this->_contact->truename);
             $this->description = $this->_contact->description;
 
+            $avatar = $this->_contact->getPhoto('l');
+            if ($avatar) {
+                $this->image = $avatar;
+            }
+
             $this->_mode = 'blog';
 
             $this->url = $this->route('blog', $this->_from);
@@ -99,6 +104,10 @@ class Blog extends \Movim\Widget\Base
             if ($this->_messages->isNotEmpty()) {
                 $this->title = $this->_messages->first()->title;
                 $this->description = $this->_messages->first()->contentcleaned;
+
+                if ($this->_messages->first()->picture) {
+                    $this->image = $this->_messages->first()->picture->href;
+                }
             }
 
             if ($this->_view == 'node') {

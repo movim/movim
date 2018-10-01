@@ -2124,16 +2124,16 @@
         },
         {
             "name": "react/socket",
-            "version": "v1.0.0",
+            "version": "v1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/socket.git",
-                "reference": "476e2644a634c6301b8111e6d22a61679e6e6bd0"
+                "reference": "34381d9282d12670eb56b45981aad82e033ed58f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/socket/zipball/476e2644a634c6301b8111e6d22a61679e6e6bd0",
-                "reference": "476e2644a634c6301b8111e6d22a61679e6e6bd0",
+                "url": "https://api.github.com/repos/reactphp/socket/zipball/34381d9282d12670eb56b45981aad82e033ed58f",
+                "reference": "34381d9282d12670eb56b45981aad82e033ed58f",
                 "shasum": ""
             },
             "require": {
@@ -2167,7 +2167,7 @@
                 "reactphp",
                 "stream"
             ],
-            "time": "2018-07-11T14:38:22+00:00"
+            "time": "2018-10-01T12:20:53+00:00"
         },
         {
             "name": "react/stream",
