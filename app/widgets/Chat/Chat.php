@@ -676,8 +676,8 @@ class Chat extends \Movim\Widget\Base
         if (isset($message->html)) {
             $message->body = $message->html;
         } else {
-            $message->convertEmojis();
             $message->addUrls();
+            $message->convertEmojis();
         }
 
         if (isset($message->subject) && $message->type == 'headline') {
