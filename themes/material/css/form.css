@@ -179,7 +179,7 @@ form > div .radio > input[type="radio"] {
 form > div .checkbox {
     position: relative;
     width: 4.5rem;
-    height: 5rem;
+    height: 2.25rem;
     margin-top: calc(50% - 0.9rem);
     direction: ltr;
 }
@@ -189,8 +189,8 @@ form > div .checkbox:after {
     content: '';
     display: block;
     position: absolute;
-    height: 2.25rem;
-    width: 2.25rem;
+    height: 100%;
+    width: 50%;
 }
 
 form > div .checkbox:before {
@@ -217,8 +217,15 @@ form > div .checkbox > input[type="checkbox"] + label {
     position: relative;
     font-size: 2rem;
     text-align: center;
+    line-height: normal;
 
     transition: left 0.3s ease, box-shadow 0.1s ease;
+}
+
+form > div .checkbox > input[type="checkbox"] + label i {
+    vertical-align: middle;
+    color: rgba(var(--movim-font), 0.6);
+    line-height: 1.75em;
 }
 
 form > div .checkbox > input[type="checkbox"] + label:hover,
@@ -228,8 +235,11 @@ form > div .checkbox > input[type="checkbox"]:checked + label:hover {
 }
 
 form > div .checkbox > input[type="checkbox"]:checked + label {
-    background-color: #009587;
     left: 0.8em;
+}
+
+form > div .checkbox > input[type="checkbox"]:checked + label i {
+    color: white;
 }
 
 /* Radio */

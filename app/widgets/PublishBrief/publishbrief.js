@@ -2,16 +2,18 @@ var PublishBrief = {
     timeout: 0,
     togglePrivacy: function() {
         var checked = document.querySelector('#publishbrief form #open');
-        var button = document.querySelector('#publishbrief span.privacy i');
-        button.innerText = '';
+        var button = document.querySelector('#publishbrief span.privacy input');
+        var buttonIcon = document.querySelector('#publishbrief span.privacy label i');
 
         // Public
         if (checked.checked) {
             checked.checked = false;
-            button.innerText = 'lock';
+            button.checked = false;
+            buttonIcon.innerText = 'lock';
         } else {
             checked.checked = true;
-            button.innerText = 'wifi_tethering';
+            button.check = true;
+            buttonIcon.innerText = 'wifi_tethering';
         }
 
         PublishBrief_ajaxDisplayPrivacy(checked.checked);

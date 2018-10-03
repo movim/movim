@@ -103,16 +103,31 @@
 
     <ul class="list middle">
         <li>
-            <span class="primary icon gray bubble active privacy"
-                  title="{$c->__('post.public')}"
-                  onclick="PublishBrief.togglePrivacy()">
-                <i class="material-icons">
-                    {if="$post && $post->openlink"}
-                        wifi_tethering
-                    {else}
-                        lock
-                    {/if}
-                </i>
+            <span class="primary privacy"
+                  title="{$c->__('post.public')}">
+                <form>
+                    <div class="control action">
+                        <div class="checkbox">
+                            <input
+                                id="public"
+                                name="public"
+                                onchange="PublishBrief.togglePrivacy()"
+                                {if="$post && $post->openlink"}
+                                    checked
+                                {/if}
+                                type="checkbox">
+                            <label for="public">
+                                <i class="material-icons">
+                                    {if="$post && $post->openlink"}
+                                        wifi_tethering
+                                    {else}
+                                        lock
+                                    {/if}
+                                </i>
+                            </label>
+                        </div>
+                    </div>
+                </form>
             </span>
             {if="$extended"}
                 <span class="control icon active gray"
