@@ -224,7 +224,7 @@ form > div .checkbox > input[type="checkbox"] + label {
 
 form > div .checkbox > input[type="checkbox"] + label i {
     vertical-align: middle;
-    color: rgba(var(--movim-font), 0.6);
+    color: #555;
     line-height: 1.75em;
 }
 
