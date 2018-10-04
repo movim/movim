@@ -63,7 +63,7 @@ main:not(.enabled) #chat_widget {
     margin-top: 3rem;
     margin-bottom: -0.5rem;
     max-height: 50vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 #chat_widget .chat_box span.primary,
