@@ -62,6 +62,8 @@ main:not(.enabled) #chat_widget {
     padding: 0 0 1rem;
     margin-top: 3rem;
     margin-bottom: -0.5rem;
+    max-height: 50vh;
+    overflow-y: scroll;
 }
 
 #chat_widget .chat_box span.primary,
