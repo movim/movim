@@ -87,13 +87,21 @@ class Chat extends \Movim\Widget\Base
 
         if ($message->isEmpty()) return;
 
-        if ($message->user_id == $message->jidto && !$history
+        if ($message->user_id == $message->jidto
+        && !$history
         && $message->jidfrom != $message->jidto) {
             $from = $message->jidfrom;
             $roster = $this->user->session->contacts()->where('jid', $from)->first();
             $contact = App\Contact::firstOrNew(['id' => $from]);
 
-            if ($contact != null
+            // If the message was displayed by another of my clients
+            if ($message->user_id == $message->jidto
+            && $message->displayed) {
+                $n = new Notification;
+                $n->ajaxClear('chat|'.$message->jidfrom);
+            }
+            // If the message is for me
+            elseif ($contact != null
             //&& $message->isTrusted()
             && !$message->isOTR()
             && $message->type != 'groupchat'
@@ -106,7 +114,9 @@ class Chat extends \Movim\Widget\Base
                     4,
                     $this->route('chat', $contact->jid)
                 );
-            } elseif ($message->type == 'groupchat'
+            }
+            // If it's a groupchat message
+            elseif ($message->type == 'groupchat'
                    && $message->quoted
                    && !$receipt) {
                 $conference = $this->user->session
@@ -126,9 +136,8 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('MovimTpl.fill', '#' . cleanupId($from.'_state'), $contact->jid);
         } else {
             // If the message is from me we reset the notif counter
-            $from = $message->jidto;
             $n = new Notification;
-            $n->ajaxClear('chat|'.$from);
+            $n->ajaxClear('chat|'.$message->jidto);
         }
 
         if (!$message->isOTR()) {
@@ -324,11 +333,13 @@ class Chat extends \Movim\Widget\Base
 
             \App\Message::where('id', $oldid)->update([
                 'id' => $m->id,
+                'replaceid' => $m->id,
                 'edited' => true
             ]);
         } else {
             $m = new \App\Message;
             $m->id          = generateUUID();
+            $m->replaceid   = $m->id;
             $m->user_id     = $this->user->id;
             $m->jidto       = echapJid($to);
             $m->jidfrom     = $this->user->id;
@@ -378,8 +389,8 @@ class Chat extends \Movim\Widget\Base
 
         /* Is it really clean ? */
         if (!$p->getMuc()) {
-            $m->save();
             $m->oldid = $oldid;
+            $m->save();
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
@@ -537,7 +548,7 @@ class Chat extends \Movim\Widget\Base
             $message->displayed = gmdate('Y-m-d H:i:s');
             $message->save();
 
-            \Moxl\Stanza\Message::displayed($jid, $id);
+            \Moxl\Stanza\Message::displayed($jid, $message->replaceid);
         }
     }
 

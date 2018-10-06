@@ -11,15 +11,20 @@ class Carbons extends Payload
         $parentfrom = current(explode('/', (string)$parent->attributes()->from));
         $message = $stanza->forwarded->message;
 
-        if ($parentfrom == \App\User::me()->id
-        && ($message->body || $message->subject)) {
-            $m = \App\Message::findByStanza($message);
-            $m->set($message, $stanza->forwarded);
+        if ($parentfrom == \App\User::me()->id) {
+            if ($message->body || $message->subject) {
+                $m = \App\Message::findByStanza($message);
+                $m->set($message, $stanza->forwarded);
 
-            if (!$m->isOTR()) {
-                $m->save();
-                $this->pack($m);
-                $this->deliver();
+                if (!$m->isOTR()) {
+                    $m->save();
+                    $this->pack($m);
+                    $this->deliver();
+                }
+            } else if ($message->displayed) {
+                // Another client just displayed the message
+                $displayed = new Displayed;
+                $displayed->handle($message->displayed, $message);
             }
         }
     }
