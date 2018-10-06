@@ -4,10 +4,7 @@
         <li>
             <span id="back" class="primary icon active"
                 {if="!$anon"}
-                    onclick="
-                        MovimTpl.hidePanel();
-                        Notification.current('chat');
-                        Chat_ajaxGet();"
+                    onclick="Chat_ajaxGet()"
                 {/if}>
 
                 {if="!$anon"}
@@ -115,11 +112,7 @@
     {else}
     <ul class="list middle">
         <li id="chat_header">
-            <span onclick="
-            MovimTpl.hidePanel();
-            Notification.current('chat');
-            Chat_ajaxGet();"
-            id="back" class="primary icon active">
+            <span onclick="Chat_ajaxGet()" id="back" class="primary icon active">
                 <i class="material-icons">arrow_back</i>
             </span>
 

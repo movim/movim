@@ -230,6 +230,7 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('Notification.current', 'chat');
             $this->rpc('MovimUtils.pushState', $this->route('chat'));
             $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
+            $this->rpc('MovimTpl.hidePanel');
         } else {
             $notif = new Notification;
             $notif->ajaxClear('chat|'.$jid);
