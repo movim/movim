@@ -471,7 +471,7 @@ var Chat = {
             p.appendChild(Chat.getFileHtml(data.file, data.sticker));
         }
 
-        if (data.edited) {
+        if (data.oldid) {
             span.appendChild(Chat.getEditedIcoHtml());
         }
 

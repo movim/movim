@@ -105,7 +105,7 @@ class Chat extends \Movim\Widget\Base
             //&& $message->isTrusted()
             && !$message->isOTR()
             && $message->type != 'groupchat'
-            && !$message->edited) {
+            && !$message->oldid) {
                 Notification::append(
                     'chat|'.$from,
                     $roster ? $roster->truename : $contact->truename,
@@ -333,8 +333,7 @@ class Chat extends \Movim\Widget\Base
 
             \App\Message::where('id', $oldid)->update([
                 'id' => $m->id,
-                'replaceid' => $m->id,
-                'edited' => true
+                'replaceid' => $m->id
             ]);
         } else {
             $m = new \App\Message;

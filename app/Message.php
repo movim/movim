@@ -18,7 +18,6 @@ class Message extends Model
     ];
 
     protected $casts = [
-        'edited'   => 'boolean',
         'quoted'   => 'boolean',
         'markable' => 'boolean'
     ];
@@ -259,7 +258,6 @@ class Message extends Model
                                 ->where('replaceid', (string)$stanza->replace->attributes()->id)
                                 ->first();
                 $this->oldid = $message->id;
-                $this->edited = true;
 
                 /**
                  * We prepare the existing message to be edited in the DB
