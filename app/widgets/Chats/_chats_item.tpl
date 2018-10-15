@@ -19,7 +19,11 @@
         </span>
     {else}
         <span class="primary icon bubble color {$contact->jid|stringToColor} {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}">
-            {$contact->truename|firstLetterCapitalize}
+            {if="$roster"}
+                {$roster->truename|firstLetterCapitalize}
+            {else}
+                {$contact->truename|firstLetterCapitalize}
+            {/if}
             <span data-key="chat|{$contact->jid}" class="counter"></span>
         </span>
     {/if}
