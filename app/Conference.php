@@ -36,6 +36,7 @@ class Conference extends Model
         return $this->hasMany('App\Presence', 'jid', 'conference')
                     ->where('session_id', $this->session_id)
                     ->where('resource', '!=', '')
+                    ->where('value', '<', 5)
                     ->orderBy('mucaffiliation', 'desc')
                     ->orderBy('value');
     }
