@@ -69,7 +69,7 @@ class Menu extends \Movim\Widget\Base
         } elseif ($count > 0
         && (strtotime($post->published) > strtotime($since))) {
             if ($post->isMicroblog()) {
-                $contact = \App\Contact::firstOrNew(['id' => $post->origin]);
+                $contact = \App\Contact::firstOrNew(['id' => $post->server]);
 
                 $title = ($post->title == null)
                     ? __('post.default_title')
@@ -82,8 +82,8 @@ class Menu extends \Movim\Widget\Base
                         $title,
                         $contact->getPhoto(),
                         2,
-                        $this->route('post', [$post->origin, $post->node, $post->nodeid]),
-                        $this->route('contact', $post->origin)
+                        $this->route('post', [$post->server, $post->node, $post->nodeid]),
+                        $this->route('contact', $post->server)
                     );
                 }
             } else {
@@ -95,8 +95,8 @@ class Menu extends \Movim\Widget\Base
                     $post->node,
                     $logo,
                     2,
-                    $this->route('post', [$post->origin, $post->node, $post->nodeid]),
-                    $this->route('community', [$post->origin, $post->node])
+                    $this->route('post', [$post->server, $post->node, $post->nodeid]),
+                    $this->route('community', [$post->server, $post->node])
                 );
             }
 
