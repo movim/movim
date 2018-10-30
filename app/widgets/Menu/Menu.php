@@ -62,7 +62,7 @@ class Menu extends \Movim\Widget\Base
             Notification::append(
                 'news',
                 $contact->truename,
-                $post->title,
+                ($post->isLike()) ? __('post.liked') : $post->title,
                 $contact->getPhoto(),
                 2
             );
