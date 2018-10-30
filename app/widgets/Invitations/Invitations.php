@@ -12,9 +12,6 @@ class Invitations extends \Movim\Widget\Base
 {
     function load()
     {
-        $this->addcss('invitations.css');
-        $this->addjs('invitations.js');
-
         $this->registerEvent('subscribe', 'onInvitations');
         $this->registerEvent('roster_additem_handle', 'onInvitations');
         $this->registerEvent('roster_updateitem_handle', 'onInvitations');
@@ -24,8 +21,6 @@ class Invitations extends \Movim\Widget\Base
 
     function onInvitations($from = false)
     {
-        $this->rpc('MovimTpl.fill', '#invitations_widget', $this->prepareInvitations());
-
         if (is_string($from)) {
             $contact = App\Contact::find($from);
             if (!$contact) $contact = new App\Contact(['id' => $from]);
@@ -37,12 +32,6 @@ class Invitations extends \Movim\Widget\Base
                 4);
         }
     }
-
-    function ajaxGet()
-    {
-        $this->onInvitations();
-    }
-
 
     function ajaxRequest()
     {
