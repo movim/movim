@@ -451,13 +451,13 @@ class Post extends Model
         $this->setAttachments($entry->entry->link, $extra);
 
         if ($this->isComment()) {
-            /*
-            $p = $pd->getParent($this->server, substr($this->node, 30));
+            $p = \App\Post::where('commentserver', $this->server)
+                          ->where('commentnodeid', substr($this->node, 30))
+                          ->first();
+
             if ($p) {
-                $this->parentserver = $p->server;
-                $this->parentnode   = $p->node;
-                $this->parentnodeid = $p->nodeid;
-            }*/
+                $this->parent_id = $p->id;
+            }
         }
     }
 

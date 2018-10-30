@@ -40,14 +40,14 @@ class Post extends Payload
         } elseif ($stanza->items->retract) {
             \App\Post::where('nodeid', $stanza->items->retract->attributes()->id)
                 ->where('server', $from)
-                ->where('node', $stanza->attributes()->node)
+                ->where('node', $stanza->items->attributes()->node)
                 ->delete();
 
             $this->method('retract');
 
             $this->pack([
                     'server' => $from,
-                    'node' => $stanza->attributes()->node
+                    'node' => $stanza->items->attributes()->node
                 ]);
             $this->deliver();
         } elseif ($stanza->items->item && isset($stanza->items->item->attributes()->id)

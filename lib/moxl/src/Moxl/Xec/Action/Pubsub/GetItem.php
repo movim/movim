@@ -38,7 +38,7 @@ class GetItem extends Errors
                         $p->parent_id    = $this->_parentid;
                     }
 
-                    if ($p->isComment() && !isset($this->_parentid)) return;
+                    if ($p->isComment() && !isset($p->parent_id)) return;
 
                     $p->save();
 
