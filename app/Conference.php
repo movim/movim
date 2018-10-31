@@ -37,8 +37,9 @@ class Conference extends Model
                     ->where('session_id', $this->session_id)
                     ->where('resource', '!=', '')
                     ->where('value', '<', 5)
-                    ->orderBy('mucaffiliation', 'desc')
-                    ->orderBy('value');
+                    ->orderBy('mucrole')
+                    ->orderBy('value')
+                    ->orderBy('resource');
     }
 
     public function presence()
