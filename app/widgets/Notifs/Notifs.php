@@ -5,6 +5,7 @@ class Notifs extends \Movim\Widget\Base
     function load()
     {
         $this->registerEvent('post', 'onNotifs', 'news');
+        $this->registerEvent('pubsub_getitem_handle', 'onNotifs', 'news');
     }
 
     function onNotifs()
@@ -31,9 +32,9 @@ class Notifs extends \Movim\Widget\Base
         $notifs = \App\Post::whereIn('parent_id', function ($query) use ($since) {
             $query->select('id')
                   ->from('posts')
-                  ->where('aid', $this->user->id)
-                  ->where('published', '>', $since);
+                  ->where('aid', $this->user->id);
         })
+        ->where('published', '>', $since)
         ->orderBy('published', 'desc')
         ->limit(10)
         ->get();
