@@ -21,10 +21,10 @@
                         <i class="material-icons">person</i>
                     </span>
                 {/if}
-                <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Invitations_ajaxAccept('{$value->jid}');">
+                <span class="control icon green active" title="{$c->__('button.accept')}" onclick="Notifications_ajaxAccept('{$value->jid}');">
                     <i class="material-icons">check</i>
                 </span>
-                <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Invitations_ajaxRefuse('{$value->jid}');">
+                <span class="control icon red active" title="{$c->__('button.refuse')}" onclick="Notifications_ajaxRefuse('{$value->jid}');">
                     <i class="material-icons">close</i>
                 </span>
                 <span class="control icon gray active" onclick="MovimUtils.redirect('{$c->route('contact', $value->jid)}')">
