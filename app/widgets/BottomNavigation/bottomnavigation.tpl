@@ -1,8 +1,7 @@
 <ul id="bottomnavigation" class="navigation color dark">
     <li onclick="MovimTpl.toggleMenu()">
         <span class="primary icon">
-            <i class="material-icons">menu</i>
-            <span data-key="invite" class="counter"></span>
+            <i class="material-icons">more_vert</i>
         </span>
     </li>
     {if="$c->getUser()->hasPubsub()"}
@@ -29,6 +28,14 @@
         <span class="primary icon">
             <i class="material-icons">forum</i>
             <span data-key="chat" class="counter"></span>
+        </span>
+    </li>
+    <li onclick="Notifications_ajaxRequest()"
+        title="{$c->__('notifs.title')}"
+    >
+        <span class="primary icon">
+            <i class="material-icons">notifications</i>
+            <span class="counter notifications"></span>
         </span>
     </li>
     <li onclick="Search_ajaxRequest()"

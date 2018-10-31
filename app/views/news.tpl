@@ -4,7 +4,7 @@
 <?php $this->widget('Upload');?>
 <?php $this->widget('Search');?>
 <?php $this->widget('Onboarding');?>
-<?php $this->widget('Invitations');?>
+<?php $this->widget('Notifications');?>
 
 <?php $this->widget('PostActions');?>
 
@@ -17,7 +17,6 @@
 
 <main style="background-color: var(--movim-background);">
     <aside>
-        <?php $this->widget('Notifs');?>
         <?php $this->widget('NewsNav');?>
     </aside>
     <div>

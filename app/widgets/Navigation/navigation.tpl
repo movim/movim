@@ -35,12 +35,12 @@
 <ul class="list divided oppose active" dir="ltr">
     <a class="classic"
        href="#">
-        <li onclick="Invitations_ajaxRequest()"
+        <li onclick="Notifications_ajaxRequest()"
             title="{$c->__('notifs.title')}"
         >
             <span class="primary icon">
                 <i class="material-icons">notifications</i>
-                <span data-key="invite" class="counter"></span>
+                <span class="counter notifications"></span>
             </span>
             <p class="normal">{$c->__('notifs.title')}</p>
         </li>

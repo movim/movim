@@ -2,7 +2,7 @@
 <?php $this->widget('Notification');?>
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('Upload'); ?>
-<?php $this->widget('Invitations');?>
+<?php $this->widget('Notifications');?>
 
 <?php $this->widget('PostActions');?>
 

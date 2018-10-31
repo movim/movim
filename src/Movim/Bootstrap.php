@@ -295,8 +295,8 @@ class Bootstrap
         'Communities','CommunityAffiliations','CommunityConfig','CommunityData',
         'CommunityHeader','CommunityPosts','CommunitiesServer','CommunitiesServers',
         'Confirm','ContactActions','Chat','Chats','Config','ContactData','ContactHeader',
-        'Dialog','Drawer','Header','Init','Login','LoginAnonymous','Menu','Notifs',
-        'Invitations','Post','PostActions','Presence','PublishBrief','Rooms',
+        'Dialog','Drawer','Header','Init','Login','LoginAnonymous','Menu','Notifications',
+        'Post','PostActions','Presence','PublishBrief','Rooms',
         'Stickers','Upload','Vcard4','Visio','VisioLink'];
     }
 

@@ -3,7 +3,7 @@
 <?php $this->widget('VisioLink');?>
 <?php $this->widget('PostActions');?>
 <?php $this->widget('ContactActions');?>
-<?php $this->widget('Invitations');?>
+<?php $this->widget('Notifications');?>
 
 <nav class="color dark">
     <?php $this->widget('Presence');?>

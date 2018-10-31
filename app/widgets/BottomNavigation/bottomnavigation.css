@@ -14,8 +14,10 @@ ul#bottomnavigation li {
     padding: 0.5rem;
 }
 
-ul#bottomnavigation li:last-child {
-    border-left: 1px solid rgba(255, 255, 255, 0.1);
+ul#bottomnavigation li:first-child {
+    flex: 0.25;
+    padding: 0.5rem 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 ul#bottomnavigation li span:not(.counter) {
