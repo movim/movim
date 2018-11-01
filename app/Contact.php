@@ -248,6 +248,6 @@ class Contact extends Model
 
     function isMe()
     {
-        return ($this->id == (new \App\User)->id);
+        return ($this->id == \App\User::me()->id);
     }
 }
