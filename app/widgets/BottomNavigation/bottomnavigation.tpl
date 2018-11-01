@@ -21,13 +21,11 @@
     >
         <span class="primary icon"><i class="material-icons">group_work</i></span>
     </li>
-    <li {if="$page == 'chat'"}class="active"{/if}
-        onclick="MovimUtils.reload('{$c->route('chat')}')"
-        title="{$c->__('page.chats')}"
+    <li onclick="Search_ajaxRequest()"
+        title="{$c->__('button.search')}"
     >
         <span class="primary icon">
-            <i class="material-icons">forum</i>
-            <span data-key="chat" class="counter"></span>
+            <i class="material-icons">search</i>
         </span>
     </li>
     <li onclick="Notifications_ajaxRequest()"
@@ -38,11 +36,13 @@
             <span class="counter notifications"></span>
         </span>
     </li>
-    <li onclick="Search_ajaxRequest()"
-        title="{$c->__('button.search')}"
+    <li {if="$page == 'chat'"}class="active"{/if}
+        onclick="MovimUtils.reload('{$c->route('chat')}')"
+        title="{$c->__('page.chats')}"
     >
         <span class="primary icon">
-            <i class="material-icons">search</i>
+            <i class="material-icons">forum</i>
+            <span data-key="chat" class="counter"></span>
         </span>
     </li>
 </ul>
