@@ -52,6 +52,7 @@ class Notifications extends \Movim\Widget\Base
         Drawer::fill($this->prepareNotifications());
         \App\Cache::c('notifs_since', date(SQL_DATE));
         $this->ajaxSetCounter();
+        Notification::ajaxClear('comments');
     }
 
     public function ajaxSetCounter()

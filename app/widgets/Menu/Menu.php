@@ -60,7 +60,7 @@ class Menu extends \Movim\Widget\Base
         && !$post->isMine()) {
             $contact = \App\Contact::firstOrNew(['id' => $post->aid]);
             Notification::append(
-                'news',
+                'comments',
                 $contact->truename,
                 ($post->isLike()) ? __('post.liked') : $post->title,
                 $contact->getPhoto(),
