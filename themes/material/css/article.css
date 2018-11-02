@@ -145,6 +145,7 @@ article input[type=checkbox].spoiler:not(:checked) + section {
 article input[type=checkbox].spoiler:not(:checked) + section content > * {
     opacity: 0.05;
     pointer-events: none;
+    filter: blur(1rem);
 }
 
 article section label.spoiler,
