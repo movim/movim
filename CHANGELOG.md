@@ -12,7 +12,6 @@ v0.14 (trunk)
  * Enhancements on Visio and CSS improvements
  * Fix date display in Chat on instable connectivity
  * Add a Preview widget to allow previsualisation of pictures in Movim
- * Fix compatibility with PHP 5.6
  * Code cleanup
  * Add support of XEP-0070: Verifying HTTP Requests via XMPP
  * Use longer varchar for some columns in the database (Roster and Posts)
@@ -42,7 +41,7 @@ v0.14 (trunk)
  * Replace the placeholders with the default icon font
  * Improve the search feature
  * Remove the main Contacts page and related widgets (Roster, ContactDisco…)
- * Move the invitations to the sidebar
+ * Move the invitations and like/comments notifications to the sidebar
  * Add support for SQLite (JKingweb)
  * Use higher resolution images to have proper avatars in hi-def screens
  * Handle the MUC self-presences using a session state during the join
