@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.14 (trunk)
+v0.15 (trunk)
+---------------------------
+
+v0.14
 ---------------------------
  * Add a picture picker when sharing a URL in a post
  * Merge Publish in PublishBrief

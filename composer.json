@@ -22,7 +22,7 @@
         "rain/raintpl": "^3.1.0",
         "michelf/php-markdown": "^1.8",
 
-        "embed/embed": "^v3.3",
+        "embed/embed": "^v3.3.6",
 
         "respect/validation": "^1.1",
         "ezyang/htmlpurifier": "^4.9",
