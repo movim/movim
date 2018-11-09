@@ -10,7 +10,10 @@ class Upload extends \Movim\Widget\Base
         $this->addcss('upload.css');
 
         $this->registerEvent('upload_request_handle', 'onRequested');
-        $this->registerEvent('upload_request_errornotacceptable', 'onErrorNotAcceptable');
+        $this->registerEvent('upload_request_error', 'onError');
+        $this->registerEvent('upload_request_errornotallowed', 'onErrorNotAllowed');
+        $this->registerEvent('upload_request_errorfiletoolarge', 'onErrorFileTooLarge');
+        $this->registerEvent('upload_request_errorresourceconstraint', 'onErrorResourceConstraint');
 
         if (php_sapi_name() != 'cli') {
             header('Access-Control-Allow-Origin: *');
@@ -23,9 +26,24 @@ class Upload extends \Movim\Widget\Base
         $this->rpc('Upload.request', $get, $put);
     }
 
-    function onErrorNotAcceptable()
+    function onError()
+    {
+        Notification::append(null, $this->__('upload.error_failed'));
+    }
+
+    function onErrorFileTooLarge()
     {
         Notification::append(null, $this->__('upload.error_filesize'));
+    }
+
+    function onErrorResourceConstraint()
+    {
+        Notification::append(null, $this->__('upload.error_resource_constraint'));
+    }
+
+    function onErrorNotAllowed()
+    {
+        Notification::append(null, $this->__('upload.error_not_allowed'));
     }
 
     function ajaxRequest()

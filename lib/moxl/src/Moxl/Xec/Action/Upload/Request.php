@@ -29,13 +29,14 @@ class Request extends Action
         }
     }
 
-    public function error($error) {
+    public function error($error)
+    {
         $this->pack($this->_to);
         $this->deliver();
     }
 
     // the file size was too large
-    public function errorNotAcceptable($error)
+    public function errorFileTooLarge($error)
     {
         $this->pack($this->_to);
         $this->deliver();

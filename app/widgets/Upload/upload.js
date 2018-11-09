@@ -168,4 +168,3 @@ var Upload = {
         if (Upload.xhr) Upload.xhr.abort();
     }
 }
-
