@@ -84,6 +84,7 @@ class Chat extends \Movim\Widget\Base
     function onMessage($packet, $history = false, $receipt = false)
     {
         $message = $packet->content;
+        $from = null;
 
         if ($message->isEmpty()) return;
 
