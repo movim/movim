@@ -702,9 +702,9 @@ MovimWebsocket.attach(function() {
         MovimTpl.showPanel();
 
         if (room) {
-            Chat_ajaxGetRoom(jid);
+            Chat_ajaxGetRoom(jid, Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')));
         } else {
-            Chat_ajaxGet(jid);
+            Chat_ajaxGet(jid, Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')));
         }
     }
 });

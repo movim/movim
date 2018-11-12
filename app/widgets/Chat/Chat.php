@@ -225,7 +225,7 @@ class Chat extends \Movim\Widget\Base
      * @brief Get a discussion
      * @param string $jid
      */
-    function ajaxGet($jid = null)
+    function ajaxGet($jid = null, $light = false)
     {
         if ($jid == null) {
             $this->rpc('Notification.current', 'chat');
@@ -237,13 +237,12 @@ class Chat extends \Movim\Widget\Base
             $notif->ajaxClear('chat|'.$jid);
             $this->rpc('Notification.current', 'chat|'.$jid);
 
-            $html = $this->prepareChat($jid);
-
-            $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));
-
-            $this->rpc('MovimTpl.fill', '#chat_widget', $html);
-            $this->rpc('MovimTpl.showPanel');
-            $this->rpc('Chat.focus');
+            if ($light == false) {
+                $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));
+                $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($jid));
+                $this->rpc('MovimTpl.showPanel');
+                $this->rpc('Chat.focus');
+            }
 
             $this->prepareMessages($jid);
         }
@@ -253,7 +252,7 @@ class Chat extends \Movim\Widget\Base
      * @brief Get a chatroom
      * @param string $jid
      */
-    function ajaxGetRoom($room)
+    function ajaxGetRoom($room, $light = false)
     {
         if (!$this->validateJid($room)) return;
 
@@ -264,19 +263,18 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Rooms_ajaxJoin', $r->conference, $r->nick);
             }
 
-            $html = $this->prepareChat($room, true);
-
-            $this->rpc('MovimUtils.pushState', $this->route('chat', [$room, 'room']));
-
-            $this->rpc('MovimTpl.fill', '#chat_widget', $html);
-            $this->rpc('MovimTpl.showPanel');
-            $this->rpc('Chat.focus');
-
-            $this->prepareMessages($room, true);
-
             $notif = new Notification;
             $notif->ajaxClear('chat|'.$room);
             $this->rpc('Notification.current', 'chat|'.$room);
+
+            if ($light == false) {
+                $this->rpc('MovimUtils.pushState', $this->route('chat', [$room, 'room']));
+                $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($room, true));
+                $this->rpc('MovimTpl.showPanel');
+                $this->rpc('Chat.focus');
+            }
+
+            $this->prepareMessages($room, true);
         } else {
             $this->rpc('Rooms_ajaxAdd', $room);
         }
