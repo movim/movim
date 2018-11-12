@@ -242,10 +242,8 @@ class Post extends \Movim\Widget\Base
 
     function display()
     {
-        $validate_nodeid = Validator::stringType()->length(10, 100);
-
         $this->view->assign('nodeid', false);
-        if ($validate_nodeid->validate($this->get('i'))) {
+        if (Validator::stringType()->length(10, 256)->validate($this->get('i'))) {
             $this->view->assign('nodeid', $this->get('i'));
         }
     }
