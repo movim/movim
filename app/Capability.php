@@ -71,7 +71,7 @@ class Capability extends Model
 
     public function isJingle()
     {
-        return (in_array('http://jabber.org/protocol/jingle', $this->getFeaturesAttribute()));
+        return (in_array('urn:xmpp:jingle:1', $this->getFeaturesAttribute()));
     }
 
     public function isMAM()
