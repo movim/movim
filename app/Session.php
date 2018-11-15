@@ -40,6 +40,7 @@ class Session extends Model
             from messages
             where published >= \''.date('Y-m-d', strtotime('-4 week')).'\'
             and type = \'chat\'
+            and user_id = \''.$this->user_id.'\'
             group by jidfrom) as top
             '), 'top.id', '=', 'rosters.jid', 'left outer')
             /*->join(DB::raw('(
