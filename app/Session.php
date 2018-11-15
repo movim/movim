@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Movim\Session as MemorySession;
+use Illuminate\Database\Capsule\Manager as DB;
 
 class Session extends Model
 {
@@ -30,6 +31,28 @@ class Session extends Model
     public function contacts()
     {
         return $this->hasMany('App\Roster');
+    }
+
+    public function topContacts()
+    {
+        return $this->contacts()->join(DB::raw('(
+            select jidfrom as id, count(*) as number
+            from messages
+            where published >= \''.date('Y-m-d', strtotime('-4 week')).'\'
+            and type = \'chat\'
+            group by jidfrom) as top
+            '), 'top.id', '=', 'rosters.jid', 'left outer')
+            /*->join(DB::raw('(
+            select min(value) as value, jid as pjid
+            from presences
+            group by jid) as presences
+            '), 'presences.pjid', '=', 'rosters.jid', 'left outer')*/
+            ->orderByRaw(
+                DB::connection()->getDriverName() == 'sqlite'
+                    ? '(top.number is null), top.number desc'
+                    : '-top.number'
+            )
+            ->orderBy('jid');
     }
 
     public function conferences()

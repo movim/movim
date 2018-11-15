@@ -807,20 +807,8 @@ class Chat extends \Movim\Widget\Base
         if ($chats == null) $chats = [];
         $chats[$this->user->id] = true;
 
-        $top = $this->user->session->contacts()->join(DB::raw('(
-            select jidfrom as id, count(*) as number
-            from messages
-            where published >= \''.date('Y-m-d', strtotime('-4 week')).'\'
-            group by jidfrom) as top
-            '), 'top.id', '=', 'rosters.jid')
-            ->join(DB::raw('(
-            select min(value) as value, jid
-            from presences
-            group by jid) as presences
-            '), 'presences.jid', '=', 'rosters.jid')
+        $top = $this->user->session->topContacts()
             ->whereNotIn('rosters.jid', array_keys($chats))
-            ->orderBy('presences.value')
-            ->orderBy('top.number', 'desc')
             ->with('presence.capability')
             ->take(8)
             ->get();

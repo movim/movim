@@ -24,7 +24,7 @@
                     {if="$value->presence"}
                         status {$value->presence->presencekey}
                     {/if}">
-                    <i class="material-icons">people</i>
+                    <i class="material-icons">person</i>
                 </span>
             {/if}
             <p class="line">
