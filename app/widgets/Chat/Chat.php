@@ -808,6 +808,12 @@ class Chat extends \Movim\Widget\Base
         $chats[$this->user->id] = true;
 
         $top = $this->user->session->topContacts()
+            ->join(DB::raw('(
+                select min(value) as value, jid as pjid
+                from presences
+                group by jid) as presences
+            '), 'presences.pjid', '=', 'rosters.jid')
+            ->where('value', '<', 5)
             ->whereNotIn('rosters.jid', array_keys($chats))
             ->with('presence.capability')
             ->take(8)

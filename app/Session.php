@@ -43,11 +43,6 @@ class Session extends Model
             and user_id = \''.$this->user_id.'\'
             group by jidfrom) as top
             '), 'top.id', '=', 'rosters.jid', 'left outer')
-            /*->join(DB::raw('(
-            select min(value) as value, jid as pjid
-            from presences
-            group by jid) as presences
-            '), 'presences.pjid', '=', 'rosters.jid', 'left outer')*/
             ->orderByRaw(
                 DB::connection()->getDriverName() == 'sqlite'
                     ? '(top.number is null), top.number desc'
