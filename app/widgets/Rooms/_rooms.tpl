@@ -92,8 +92,8 @@
 
     <ul class="list thick spaced active {if="$edit"}disabled{/if}">
         <li onclick="Rooms_ajaxAdd()">
-            <span class="primary icon bubble color orange">
-                <i class="material-icons">add</i>
+            <span class="primary icon bubble color green">
+                <i class="material-icons">group_add</i>
             </span>
             <p class="normal">{$c->__('rooms.add')}</p>
         </li>
