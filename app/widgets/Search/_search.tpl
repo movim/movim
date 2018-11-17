@@ -38,7 +38,7 @@
                     <i class="material-icons">comment</i>
                 </span>
                 {if="$value->presence && $value->presence->capability && $value->presence->capability->isJingle()"}
-                    <span title="{$c->__('button.call')}" class="control icon active gray on_desktop"
+                    <span title="{$c->__('button.call')}" class="control icon active gray"
                           onclick="VisioLink.openVisio('{$value->presence->jid . '/' . $value->presence->resource}');">
                         <i class="material-icons">phone</i>
                     </span>

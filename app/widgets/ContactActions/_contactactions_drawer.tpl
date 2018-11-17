@@ -33,7 +33,7 @@
                     </span>
                 {/if}
                 {if="$roster && $roster->presence && $roster->presence->capability && $roster->presence->capability->isJingle()"}
-                    <span title="{$c->__('button.call')}" class="control icon active on_desktop"
+                    <span title="{$c->__('button.call')}" class="control icon active"
                           onclick="VisioLink.openVisio('{$roster->presence->jid . '/' . $roster->presence->resource}');">
                         <i class="material-icons">phone</i>
                     </span>
