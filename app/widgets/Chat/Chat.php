@@ -233,10 +233,6 @@ class Chat extends \Movim\Widget\Base
             $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareEmpty());
             $this->rpc('MovimTpl.hidePanel');
         } else {
-            $notif = new Notification;
-            $notif->ajaxClear('chat|'.$jid);
-            $this->rpc('Notification.current', 'chat|'.$jid);
-
             if ($light == false) {
                 $this->rpc('MovimUtils.pushState', $this->route('chat', $jid));
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($jid));
@@ -245,6 +241,10 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->prepareMessages($jid);
+
+            $notif = new Notification;
+            $notif->ajaxClear('chat|'.$jid);
+            $this->rpc('Notification.current', 'chat|'.$jid);
         }
     }
 
