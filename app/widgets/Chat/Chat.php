@@ -263,10 +263,6 @@ class Chat extends \Movim\Widget\Base
                 $this->rpc('Rooms_ajaxJoin', $r->conference, $r->nick);
             }
 
-            $notif = new Notification;
-            $notif->ajaxClear('chat|'.$room);
-            $this->rpc('Notification.current', 'chat|'.$room);
-
             if ($light == false) {
                 $this->rpc('MovimUtils.pushState', $this->route('chat', [$room, 'room']));
                 $this->rpc('MovimTpl.fill', '#chat_widget', $this->prepareChat($room, true));
@@ -275,6 +271,10 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->prepareMessages($room, true);
+
+            $notif = new Notification;
+            $notif->ajaxClear('chat|'.$room);
+            $this->rpc('Notification.current', 'chat|'.$room);
         } else {
             $this->rpc('Rooms_ajaxAdd', $room);
         }
