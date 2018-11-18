@@ -170,7 +170,7 @@ class Picture
 
         // If the file exist we replace it
         if (file_exists($path) && $this->_bin) {
-            unlink($path);
+            @unlink($path);
 
             // And destroy all the thumbnails
             foreach (
@@ -180,7 +180,7 @@ class Picture
                     '*'.$this->_formats[$format],
                     GLOB_NOSORT
                 ) as $path_thumb) {
-                unlink($path_thumb);
+                @unlink($path_thumb);
             }
         }
 
