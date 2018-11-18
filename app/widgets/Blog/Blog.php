@@ -102,6 +102,7 @@ class Blog extends \Movim\Widget\Base
                     ->get();
 
             if ($this->_messages->isNotEmpty()) {
+                $this->title = $this->_messages->first()->title;
                 $this->description = !empty($this->_messages->first()->contentcleaned)
                     ? $this->_messages->first()->contentcleaned
                     : $this->_messages->first()->title;
