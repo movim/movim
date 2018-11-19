@@ -189,6 +189,7 @@ class Core implements MessageComponentInterface
 
     private function cleanupIPCs()
     {
+        unlink(CACHE_PATH . 'socketapi.sock');
         foreach (glob(CACHE_PATH . 'movim_feeds_*') as $ipc) {
             unlink($ipc);
         }

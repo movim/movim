@@ -532,7 +532,7 @@ define('DEFAULT_HTTP_USER_AGENT', 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:31.0) 
 /*
  * @desc Request a simple url
  */
-function requestURL($url, $timeout = 10, $post = false, $json = false)
+function requestURL(string $url, int $timeout = 10, $post = false, bool $json = false)
 {
     $ch = curl_init($url);
 
@@ -552,25 +552,14 @@ function requestURL($url, $timeout = 10, $post = false, $json = false)
         curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
     }
 
-    $rs = [];
-
     $content = curl_exec($ch);
-
-    $rs['content'] = $content;
-    $rs['errno'] = curl_errno($ch);
-    $rs['errmsg'] = curl_error($ch);
-    $rs['header'] = curl_getinfo($ch);
-
-    if ($rs['errno'] == 0) {
-        return $rs['content'];
-    }
-    return false;
+    return curl_errno($ch) == 0 ? $content : false;
 }
 
 /*
  * Request the headers of a URL
  */
-function requestHeaders($url, $timeout = 2)
+function requestHeaders(string $url, $timeout = 2)
 {
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
@@ -582,11 +571,29 @@ function requestHeaders($url, $timeout = 2)
     curl_setopt($ch, CURLOPT_NOBODY, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
 
-    $rs = [];
-
     curl_exec($ch);
 
     return curl_getinfo($ch);
+}
+
+/**
+ * Request the internal API
+ */
+function requestAPI(string $action, int $timeout = 2, $post = false)
+{
+    $ch = curl_init('http:/'.$action);
+    curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+    curl_setopt($ch, CURLOPT_UNIX_SOCKET_PATH, API_SOCKET);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+    if (is_array($post)) {
+        curl_setopt ($ch, CURLOPT_POST, 1);
+        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
+    }
+
+    $content = curl_exec($ch);
+    return curl_errno($ch) == 0 ? $content : false;
 }
 
 /*

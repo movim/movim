@@ -21,11 +21,9 @@ class Api
         $api = &$this;
 
         $handler = function (ServerRequestInterface $request) use ($api) {
-            $url = explode('/', $request->getUri()->getPath());
-
             $response = '';
 
-            switch($url[1]) {
+            switch($request->getUri()->getHost()) {
                 case 'ajax':
                     $api->handleAjax($request->getParsedBody());
                     break;
@@ -45,7 +43,7 @@ class Api
                     $response = $api->sessionDisconnect($request->getParsedBody());
                     break;
                 case 'session':
-                    $response = $api->getSession($request->getParsedBody());
+                    $response = $api->getSession();
                     break;
             }
 

@@ -119,6 +119,8 @@ class Bootstrap
         define('WIDGETS_PATH',  DOCUMENT_ROOT . '/app/widgets/');
         define('SQL_DATE',      'Y-m-d H:i:s');
 
+        define('API_SOCKET',    CACHE_PATH . 'socketapi.sock');
+
         define('MOVIM_API',     'https://api.movim.eu/');
 
         if (!defined('DOCTYPE')) {
@@ -268,7 +270,7 @@ class Bootstrap
     private function startingSession()
     {
         if (SESSION_ID !== null) {
-            $process = (bool)requestURL('http://localhost:1560/exists/', 2, ['sid' => SESSION_ID]);
+            $process = (bool)requestAPI('exists', 2, ['sid' => SESSION_ID]);
             $session = DBSession::find(SESSION_ID);
 
             if ($session) {
@@ -281,7 +283,7 @@ class Bootstrap
                 $session->loadMemory();
             } elseif ($process) {
                 // A process but no session in the db
-                requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);
+                requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
             }
         }
 

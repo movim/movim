@@ -9,7 +9,7 @@ class Infos extends Base
     function display()
     {
         $configuration = Configuration::get();
-        $connected = (int)requestURL('http://localhost:1560/started/', 2);
+        $connected = (int)requestAPI('started');
 
         $infos = [
             'url'           => BASE_URI,
@@ -20,7 +20,7 @@ class Infos extends Base
             'php_version'   => phpversion(),
             'version'       => APP_VERSION,
             'population'    => User::count(),
-            'linked'        => (int)requestURL('http://localhost:1560/linked/', 2),
+            'linked'        => (int)requestAPI('linked'),
             'started'       => $connected,
             'connected'     => $connected
         ];

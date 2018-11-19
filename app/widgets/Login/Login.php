@@ -80,7 +80,7 @@ class Login extends Base
         }
 
         $this->view->assign('pop', User::count());
-        $this->view->assign('connected', (int)requestURL('http://localhost:1560/started/', 2));
+        $this->view->assign('connected', (int)requestAPI('started', 2));
         $this->view->assign('error', $this->prepareError());
 
         if (isset($_SERVER['PHP_AUTH_USER'])

@@ -14,7 +14,7 @@ class DisconnectController extends Base
     function dispatch()
     {
         // Just in case
-        requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);
+        requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
         Session::dispose();
 
         // Fresh cookie

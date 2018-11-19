@@ -99,7 +99,7 @@ class AccountNext extends \Movim\Widget\Base
     {
         Notification::append(null, $this->__('error.service_unavailable'));
 
-        requestURL('http://localhost:1560/disconnect/', 2, ['sid' => SESSION_ID]);
+        requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
 
         $this->rpc('MovimUtils.redirect', $this->route('account'));
     }
