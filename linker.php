@@ -55,23 +55,14 @@ $loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
     }
 });
 
-$zmq = new \React\ZMQ\Context($loop, new \ZMQContext(2, false));
-$file = CACHE_PATH . 'movim_feeds_' . getenv('sid') . '.ipc';
-
-$pullSocket = $zmq->getSocket(ZMQ::SOCKET_PUSH);
-$pullSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
-$pullSocket->connect('ipc://' . $file . '_pull', true);
-
-$pushSocket = $zmq->getSocket(ZMQ::SOCKET_PULL);
-$pushSocket->getWrappedSocket()->setSockOpt(\ZMQ::SOCKOPT_LINGER, 0);
-$pushSocket->connect('ipc://'.$file . '_push', true);
+$wsSocket = null;
 
 function writeOut($msg = null)
 {
-    global $pullSocket;
+    global $wsSocket;
 
     if(!empty($msg)) {
-        $pullSocket->send(json_encode($msg));
+        $wsSocket->send(json_encode($msg));
     }
 }
 
@@ -90,19 +81,16 @@ function writeXMPP($xml)
 
 function shutdown()
 {
-    global $pullSocket;
-    global $pushSocket;
     global $loop;
+    global $wsSocket;
 
-    $pullSocket->close();
-    $pushSocket->close();
-
+    $wsSocket->close();
     $loop->stop();
 }
 
-$pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, &$xmppBehaviour, &$dns)
+$wsSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, &$xmppBehaviour, &$dns, &$wsSocket)
 {
-    global $pullSocket;
+    global $wsSocket;
 
     $msg = json_decode($msg);
 
@@ -116,7 +104,7 @@ $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector
                 // And we say that we are ready !
                 $obj = new \StdClass;
                 $obj->func = 'pong';
-                $pullSocket->send(json_encode($obj));
+                $wsSocket->send(json_encode($obj));
                 break;
 
             case 'down':
@@ -183,14 +171,14 @@ $pushSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector
     return;
 };
 
-$xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, &$stdin, $pushSocketBehaviour, $parser, &$timestamp)
+$xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, &$stdin, $parser, &$timestamp)
 {
-    global $pullSocket;
+    global $wsSocket;
 
     $conn = $stream;
 
     if(getenv('verbose')) {
-        fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('linker launched', 'blue')."\n");
+        fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('XMPP socket launched', 'blue')."\n");
         fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
     }
 
@@ -269,11 +257,15 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
     $obj->func = 'registered';
 
     fwrite(STDERR, 'registered');
-
-    $pullSocket->send(json_encode($obj));
+    $wsSocket->send(json_encode($obj));
 };
 
-$pushSocket->on('message', $pushSocketBehaviour);
+$wsConnector = new \Ratchet\Client\Connector($loop);
+$wsConnector('ws://localhost:8080', [], ['MOVIM_SESSION_ID' => getenv('sid')])
+->then(function($conn) use (&$wsSocket, $wsSocketBehaviour) {
+    $wsSocket = $conn;
+    $wsSocket->on('message', $wsSocketBehaviour);
+});
 
 $stdin->on('error', function() use($loop) { shutdown(); } );
 $stdin->on('close', function() use($loop) { shutdown(); } );

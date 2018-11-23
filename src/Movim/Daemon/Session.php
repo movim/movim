@@ -15,6 +15,7 @@ class Session
     public      $process;
     public      $pullSocket;
     public      $pushSocket;
+    public      $internalSocket;
 
     public      $registered;
     public      $started;
@@ -24,12 +25,10 @@ class Session
     private     $verbose;
     private     $debug;
 
-    private     $context;
-
     private     $language;
     private     $offset;
 
-    public function __construct($loop, $sid, $context, $baseuri,
+    public function __construct($loop, $sid, $baseuri,
         $language = false, $offset = 0, $verbose = false, $debug = false)
     {
         $this->sid     = $sid;
@@ -41,12 +40,12 @@ class Session
         $this->debug = $debug;
 
         $this->clients = new \SplObjectStorage;
-        $this->register($loop, $this, $context);
+        $this->register($loop, $this);
 
         $this->timestamp = time();
     }
 
-    public function attach($loop, ConnectionInterface $conn)
+    public function attach(ConnectionInterface $conn)
     {
         $this->clients->attach($conn);
 
@@ -56,6 +55,15 @@ class Session
 
         if ($this->countClients() > 0) {
             $this->stateOut('up');
+        }
+    }
+
+    public function attachInternal(ConnectionInterface $conn)
+    {
+        $this->internalSocket = $conn;
+
+        if ($this->verbose) {
+            echo colorize($this->sid, 'yellow'). " : ".colorize($conn->resourceId." internal connected\n", 'green');
         }
     }
 
@@ -82,21 +90,8 @@ class Session
         return $this->clients->count();
     }
 
-    private function register($loop, $me, $context)
+    private function register($loop, $me)
     {
-        $file = CACHE_PATH . 'movim_feeds_' . $this->sid . '.ipc';
-
-        $this->pullSocket = $context->getSocket(\ZMQ::SOCKET_PULL);
-        $this->pushSocket = $context->getSocket(\ZMQ::SOCKET_PUSH);
-
-        // Communication sockets with the linker
-        $this->pullSocket->bind('ipc://' . $file . '_pull', true);
-        $this->pushSocket->bind('ipc://' . $file . '_push', true);
-
-        $this->pullSocket->on('message', function($msg) use ($me) {
-            $me->messageOut($msg);
-        });
-
         // Launching the linker
         $this->process = new \React\ChildProcess\Process(
                             'exec php linker.php ' . $this->sid,
@@ -113,18 +108,13 @@ class Session
         $this->process->start($loop);
 
         // The linker died, we close properly the session
-        $this->process->on('exit', function($output) use ($file) {
+        $this->process->on('exit', function($output) {
             if ($this->verbose) {
                 echo colorize($this->sid, 'yellow'). " : ".colorize("linker killed \n", 'red');
             }
 
             $this->process = null;
             $this->closeAll();
-
-            $this->pullSocket->unbind('ipc://' . $file . '_pull');
-            $this->pushSocket->unbind('ipc://' . $file . '_push');
-            $this->pullSocket->close();
-            $this->pushSocket->close();
 
             $session = DBSession::find($this->sid);
             if ($session) $session->delete();
@@ -164,17 +154,20 @@ class Session
 
         if (isset($this->process)) {
             $this->state = $state;
-            $msg = new \stdClass;
-            $msg->func = $this->state;
-            $msg = json_encode($msg);
-            $this->pushSocket->send($msg);
+
+            if ($this->internalSocket) {
+                $msg = new \stdClass;
+                $msg->func = $this->state;
+                $msg = json_encode($msg);
+                $this->internalSocket->send($msg);
+            }
         }
     }
 
     public function messageIn($msg)
     {
         $this->timestamp = time();
-        $this->pushSocket->send($msg);
+        $this->internalSocket->send($msg);
         unset($msg);
     }
 

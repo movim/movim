@@ -48,12 +48,12 @@
     <body dir="<?php $this->dir();?>"
           class="<?php if (!$this->public && \App\User::me()->nightmode) { ?>nightmode<?php } ?>">
         <noscript>
-            <style type="text/css">
-                nav {display:none;} #content {display: none;}
-            </style>
-            <div class="warning" style="width: 500px; margin: 0 auto;">
-            <?php echo __('global.no_js'); ?>
-            </div>
+            <style type="text/css">main {display: none;}</style>
+            <ul class="list" style="color: white;">
+                <li>
+                    <p class="center"><?php echo __('global.no_js'); ?></p>
+                </li>
+            </ul>
         </noscript>
         <div id="hiddendiv"></div>
         <div id="snackbar" class="snackbar"></div>

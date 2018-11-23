@@ -17,8 +17,6 @@ class Core implements MessageComponentInterface
     public $loop;
     public $baseuri;
 
-    public $context;
-
     public $single = ['visio'];
     public $singlelocks = [];
 
@@ -30,8 +28,6 @@ class Core implements MessageComponentInterface
 
         $this->loop    = $loop;
         $this->baseuri = $baseuri;
-
-        $this->context = new \React\ZMQ\Context($loop, new \ZMQContext(2, false));
 
         DBSession::whereNotNull('id')->delete();
 
@@ -88,6 +84,7 @@ class Core implements MessageComponentInterface
 
     public function onOpen(ConnectionInterface $conn)
     {
+        // WebSockets from the Browser
         $sid = $this->getSid($conn);
         if ($sid != null) {
             $path = $this->getPath($conn);
@@ -109,7 +106,6 @@ class Core implements MessageComponentInterface
                 $this->sessions[$sid] = new Session(
                     $this->loop,
                     $sid,
-                    $this->context,
                     $this->baseuri,
                     $language,
                     $offset,
@@ -118,7 +114,13 @@ class Core implements MessageComponentInterface
                 );
             }
 
-            $this->sessions[$sid]->attach($this->loop, $conn);
+            $this->sessions[$sid]->attach($conn);
+        } else {
+            // WebSocket from the internal subprocess
+            $sid = $this->getHeaderSid($conn);
+            if ($sid != null) {
+                $this->sessions[$sid]->attachInternal($conn);
+            }
         }
     }
 
@@ -127,6 +129,11 @@ class Core implements MessageComponentInterface
         $sid = $this->getSid($from);
         if ($sid != null && isset($this->sessions[$sid])) {
             $this->sessions[$sid]->messageIn($msg);
+        } else {
+            $sid = $this->getHeaderSid($from);
+            if ($sid != null) {
+                $this->sessions[$sid]->messageOut($msg);
+            }
         }
     }
 
@@ -238,6 +245,13 @@ class Core implements MessageComponentInterface
 
         return $cookies->get('MOVIM_SESSION_ID')
             ? $cookies->get('MOVIM_SESSION_ID')->getValue()
+            : null;
+    }
+
+    private function getHeaderSid(ConnectionInterface $conn)
+    {
+        return $conn->httpRequest->hasHeader('MOVIM_SESSION_ID')
+            ? $conn->httpRequest->getHeader('MOVIM_SESSION_ID')[0]
             : null;
     }
 }
