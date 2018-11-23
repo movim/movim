@@ -167,7 +167,9 @@ class Session
     public function messageIn($msg)
     {
         $this->timestamp = time();
-        $this->internalSocket->send($msg);
+        if ($this->internalSocket) {
+            $this->internalSocket->send($msg);
+        }
         unset($msg);
     }
 

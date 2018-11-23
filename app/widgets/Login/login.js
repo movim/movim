@@ -81,11 +81,11 @@ MovimWebsocket.register(function()
             localStorage.getItem('quickLogin'),
             localStorage.getItem('quickKey')
         );
-    }
-
-    form = document.querySelector('form[name="login"]');
-    if (Login.submitted) {
-        Login_ajaxLogin(MovimUtils.formToJson('login'));
+    } else {
+        form = document.querySelector('form[name="login"]');
+        if (Login.submitted) {
+            Login_ajaxLogin(MovimUtils.formToJson('login'));
+        }
     }
 });
 
