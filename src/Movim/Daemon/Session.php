@@ -8,14 +8,15 @@ use App\Session as DBSession;
 
 class Session
 {
-    protected   $clients;
+    protected   $clients;       // Browser Websockets
     public      $timestamp;
-    protected   $sid;
+    protected   $sid;           // Session id
     protected   $baseuri;
-    public      $process;
-    public      $pullSocket;
-    public      $pushSocket;
-    public      $internalSocket;
+    public      $process;       // Linker
+    public      $internalSocket;// Linker to Session Websocket
+
+    private      $port;         // Daemon Websocket port
+    private      $key;          // Daemon secure key
 
     public      $registered;
     public      $started;
@@ -28,7 +29,7 @@ class Session
     private     $language;
     private     $offset;
 
-    public function __construct($loop, $sid, $baseuri,
+    public function __construct($loop, $sid, $baseuri, $port, $key,
         $language = false, $offset = 0, $verbose = false, $debug = false)
     {
         $this->sid     = $sid;
@@ -36,11 +37,14 @@ class Session
         $this->language = $language;
         $this->offset = $offset;
 
+        $this->port = $port;
+        $this->key = $key;
+
         $this->verbose = $verbose;
         $this->debug = $debug;
 
         $this->clients = new \SplObjectStorage;
-        $this->register($loop, $this);
+        $this->register($loop);
 
         $this->timestamp = time();
     }
@@ -90,7 +94,7 @@ class Session
         return $this->clients->count();
     }
 
-    private function register($loop, $me)
+    private function register($loop)
     {
         // Launching the linker
         $this->process = new \React\ChildProcess\Process(
@@ -102,7 +106,9 @@ class Session
                                 'language'  => $this->language,
                                 'offset'    => $this->offset,
                                 'verbose'   => $this->verbose,
-                                'debug'     => $this->debug
+                                'debug'     => $this->debug,
+                                'key'       => $this->key,
+                                'port'      => $this->port
                             ]
                         );
         $this->process->start($loop);

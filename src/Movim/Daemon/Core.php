@@ -13,6 +13,7 @@ class Core implements MessageComponentInterface
 {
     public $sessions = [];
     private $input;
+    private $key; // Random key generate by the daemon to authenticate the internal Websockets
 
     public $loop;
     public $baseuri;
@@ -23,6 +24,7 @@ class Core implements MessageComponentInterface
     public function __construct($loop, $baseuri, InputInterface $input)
     {
         $this->input = $input;
+        $this->key = \generateKey(32);
 
         $this->setWebsocket($baseuri, $this->input->getOption('port'));
 
@@ -107,6 +109,8 @@ class Core implements MessageComponentInterface
                     $this->loop,
                     $sid,
                     $this->baseuri,
+                    $this->input->getOption('port'),
+                    $this->key,
                     $language,
                     $offset,
                     $this->input->getOption('verbose'),
@@ -250,7 +254,8 @@ class Core implements MessageComponentInterface
 
     private function getHeaderSid(ConnectionInterface $conn)
     {
-        return $conn->httpRequest->hasHeader('MOVIM_SESSION_ID')
+        return ($conn->httpRequest->hasHeader('MOVIM_SESSION_ID')
+            && $conn->httpRequest->getHeader('MOVIM_DAEMON_KEY')[0] === $this->key)
             ? $conn->httpRequest->getHeader('MOVIM_SESSION_ID')[0]
             : null;
     }

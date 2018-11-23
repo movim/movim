@@ -13,7 +13,6 @@ $bootstrap->boot();
 $loop = React\EventLoop\Factory::create();
 
 $connector = new React\Socket\TcpConnector($loop);
-$stdin = new React\Stream\ReadableResourceStream(STDIN, $loop);
 
 // DNS
 $config = React\Dns\Config\Config::loadSystemConfigBlocking();
@@ -26,13 +25,11 @@ $dns = $factory->createCached($server, $loop);
 $wrapper = \Movim\Widget\Wrapper::getInstance();
 $wrapper->registerAll($bootstrap->getWidgets());
 
-$conn = null;
+$xmppSocket = null;
 
 $parser = new \Moxl\Parser(function ($node) {
     \Moxl\Xec\Handler::handle($node);
 });
-
-$buffer = '';
 
 $timestamp = time();
 
@@ -48,10 +45,10 @@ function handleSSLErrors($errno, $errstr) {
 }
 
 // Temporary linker killer
-$loop->addPeriodicTimer(5, function() use(&$conn, &$timestamp) {
+$loop->addPeriodicTimer(5, function() use(&$xmppSocket, &$timestamp) {
     if($timestamp < time() - 3600*4
-    && isset($conn)) {
-        $conn->close();
+    && isset($xmppSocket)) {
+        $xmppSocket->close();
     }
 });
 
@@ -68,10 +65,10 @@ function writeOut($msg = null)
 
 function writeXMPP($xml)
 {
-    global $conn;
+    global $xmppSocket;
 
-    if(!empty($xml) && $conn) {
-        $conn->write(trim($xml));
+    if(!empty($xml) && $xmppSocket) {
+        $xmppSocket->write(trim($xml));
 
         if(getenv('debug')) {
             fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
@@ -88,7 +85,7 @@ function shutdown()
     $loop->stop();
 }
 
-$wsSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, &$xmppBehaviour, &$dns, &$wsSocket)
+$wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehaviour, &$dns)
 {
     global $wsSocket;
 
@@ -108,16 +105,16 @@ $wsSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, 
                 break;
 
             case 'down':
-                if(isset($conn)
-                && is_resource($conn->stream)) {
+                if(isset($xmppSocket)
+                && is_resource($xmppSocket->stream)) {
                     $evt = new Movim\Widget\Event;
                     $evt->run('session_down');
                 }
                 break;
 
             case 'up':
-                if(isset($conn)
-                && is_resource($conn->stream)) {
+                if(isset($xmppSocket)
+                && is_resource($xmppSocket->stream)) {
                     $evt = new Movim\Widget\Event;
                     $evt->run('session_up');
                 }
@@ -125,7 +122,7 @@ $wsSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, 
 
             case 'unregister':
                 \Moxl\Stanza\Stream::end();
-                if(isset($conn)) $conn->close();
+                if(isset($xmppSocket)) $xmppSocket->close();
                 shutdown();
                 break;
 
@@ -171,11 +168,11 @@ $wsSocketBehaviour = function ($msg) use (&$conn, $loop, &$buffer, &$connector, 
     return;
 };
 
-$xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, &$stdin, $parser, &$timestamp)
+$xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $parser, &$timestamp)
 {
     global $wsSocket;
 
-    $conn = $stream;
+    $xmppSocket = $stream;
 
     if(getenv('verbose')) {
         fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('XMPP socket launched', 'blue')."\n");
@@ -183,7 +180,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
     }
 
     // We define a huge buffer to prevent issues with SSL streams, see https://bugs.php.net/bug.php?id=65137
-    $conn->on('data', function($message) use (&$conn, $loop, $parser, &$timestamp) {
+    $xmppSocket->on('data', function($message) use (&$xmppSocket, $parser, &$timestamp) {
         if(!empty($message)) {
             $restart = false;
 
@@ -192,15 +189,15 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
             }
 
             if($message == '</stream:stream>') {
-                $conn->close();
+                $xmppSocket->close();
                 shutdown();
             } elseif($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
                 $session = Session::start();
-                stream_set_blocking($conn->stream, 1);
-                stream_context_set_option($conn->stream, 'ssl', 'SNI_enabled', false);
-                stream_context_set_option($conn->stream, 'ssl', 'peer_name', $session->get('host'));
-                stream_context_set_option($conn->stream, 'ssl', 'allow_self_signed', true);
+                stream_set_blocking($xmppSocket->stream, 1);
+                stream_context_set_option($xmppSocket->stream, 'ssl', 'SNI_enabled', false);
+                stream_context_set_option($xmppSocket->stream, 'ssl', 'peer_name', $session->get('host'));
+                stream_context_set_option($xmppSocket->stream, 'ssl', 'allow_self_signed', true);
 
                 // See http://php.net/manual/en/function.stream-socket-enable-crypto.php#119122
                 $crypto_method = STREAM_CRYPTO_METHOD_TLS_CLIENT;
@@ -211,7 +208,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
                 }
 
                 set_error_handler('handleSSLErrors');
-                $out = stream_socket_enable_crypto($conn->stream, 1, $crypto_method);
+                $out = stream_socket_enable_crypto($xmppSocket->stream, 1, $crypto_method);
                 restore_error_handler();
 
                 if($out !== true) {
@@ -234,7 +231,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
             if($restart) {
                 $session = Session::start();
                 \Moxl\Stanza\Stream::init($session->get('host'));
-                stream_set_blocking($conn->stream, 0);
+                stream_set_blocking($xmppSocket->stream, 0);
                 $restart = false;
             }
 
@@ -244,13 +241,8 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
         }
     });
 
-    $conn->on('error', function() use ($conn, $loop) {
-        shutdown();
-    });
-
-    $conn->on('close', function() use ($conn, $loop) {
-        shutdown();
-    });
+    $xmppSocket->on('error', function() { shutdown(); });
+    $xmppSocket->on('close', function() { shutdown(); });
 
     // And we say that we are ready !
     $obj = new \StdClass;
@@ -261,13 +253,12 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$conn, $loop, 
 };
 
 $wsConnector = new \Ratchet\Client\Connector($loop);
-$wsConnector('ws://localhost:8080', [], ['MOVIM_SESSION_ID' => getenv('sid')])
-->then(function($conn) use (&$wsSocket, $wsSocketBehaviour) {
-    $wsSocket = $conn;
+$wsConnector('ws://localhost:' . getenv('port'), [], [
+    'MOVIM_SESSION_ID' => getenv('sid'),
+    'MOVIM_DAEMON_KEY' => getenv('key')
+])->then(function(Ratchet\Client\WebSocket $socket) use (&$wsSocket, $wsSocketBehaviour) {
+    $wsSocket = $socket;
     $wsSocket->on('message', $wsSocketBehaviour);
 });
-
-$stdin->on('error', function() use($loop) { shutdown(); } );
-$stdin->on('close', function() use($loop) { shutdown(); } );
 
 $loop->run();
