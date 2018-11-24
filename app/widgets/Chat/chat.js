@@ -254,17 +254,6 @@ var Chat = {
         MovimUtils.textareaAutoheight(textarea);
         textarea.focus();
     },
-    notify : function(title, body, image)
-    {
-        if (document_focus == false) {
-            movim_title_inc();
-            movim_desktop_notification(title, body, image);
-        }
-    },
-    empty : function()
-    {
-        Chat_ajaxGet();
-    },
     setBubbles : function(left, right, date, separator) {
         var div = document.createElement('div');
 
@@ -278,8 +267,6 @@ var Chat = {
         Chat.date = div.firstChild.cloneNode(true);
         div.innerHTML = separator;
         Chat.separator = div.firstChild.cloneNode(true);
-
-        Chat.setScrollBehaviour();
     },
     setScrollBehaviour : function() {
         var discussion = document.querySelector('#chat_widget div.contained');
@@ -289,7 +276,8 @@ var Chat = {
                 Chat_ajaxGetHistory(
                     Chat.getTextarea().dataset.jid,
                     Chat.currentDate,
-                    Chat.getTextarea().dataset.muc);
+                    Chat.getTextarea().dataset.muc,
+                    true);
             }
 
             Chat.lastHeight = this.clientHeight;
@@ -372,6 +360,8 @@ var Chat = {
                 discussion.querySelector('.placeholder').classList.add('show');
             }
         }
+
+        Chat.setScrollBehaviour();
     },
     appendMessage : function(idjidtime, data, prepend) {
         if (data.body == null) return;
@@ -697,14 +687,18 @@ var Chat = {
 
 MovimWebsocket.attach(function() {
     var jid = MovimUtils.urlParts().params[0];
-    var room = MovimUtils.urlParts().params[1];
+    var room = (MovimUtils.urlParts().params[1] === 'room');
     if (jid) {
-        MovimTpl.showPanel();
-
-        if (room) {
-            Chat_ajaxGetRoom(jid, Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')));
+        if (Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation'))) {
+            Chat_ajaxGetHistory(jid, Chat.currentDate, room, false);
         } else {
-            Chat_ajaxGet(jid, Boolean(document.getElementById(MovimUtils.cleanupId(jid) + '-conversation')));
+            MovimTpl.showPanel();
+
+            if (room) {
+                Chat_ajaxGetRoom(jid);
+            } else {
+                Chat_ajaxGet(jid);
+            }
         }
     }
 });

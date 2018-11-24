@@ -406,13 +406,13 @@ class Chat extends \Movim\Widget\Base
      */
     function ajaxHttpCorrect($to, $message)
     {
-        $m = $this->user->messages()
+        $replace = $this->user->messages()
                         ->where('jidto', $to)
                         ->orderBy('published', 'desc')
                         ->first();
 
-        if ($m) {
-            $this->ajaxHttpSendMessage($to, $message, false, false, $m);
+        if ($replace) {
+            $this->ajaxHttpSendMessage($to, $message, false, false, $replace);
         }
     }
 
@@ -469,7 +469,7 @@ class Chat extends \Movim\Widget\Base
      * @param string jid
      * @param string time
      */
-    function ajaxGetHistory($jid, $date, $muc = false)
+    function ajaxGetHistory($jid, $date, $muc = false, $prepend = true)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -478,7 +478,7 @@ class Chat extends \Movim\Widget\Base
                                 $query->where('jidfrom', $jid)
                                       ->orWhere('jidto', $jid);
                          })
-                         ->where('published', '<', date(SQL_DATE, strtotime($date)));
+                         ->where('published', $prepend ? '<' : '>', date(SQL_DATE, strtotime($date)));
 
 
         $messages = $muc
@@ -490,7 +490,11 @@ class Chat extends \Movim\Widget\Base
                              ->get();
 
         if ($messages->count() > 0) {
-            Notification::append(false, $this->__('message.history', $messages->count()));
+            if ($prepend) {
+                Notification::append(false, $this->__('message.history', $messages->count()));
+            } else {
+                $messages = $messages->reverse();
+            }
 
             foreach($messages as $message) {
                 if (!$message->isOTR()) {
@@ -498,7 +502,7 @@ class Chat extends \Movim\Widget\Base
                 }
             }
 
-            $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, true);
+            $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, $prepend);
             $this->_wrapper = [];
         }
     }
