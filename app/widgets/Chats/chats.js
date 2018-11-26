@@ -47,6 +47,7 @@ var Chats = {
                     move = Math.abs(parseInt(event.changedTouches[0].pageX - Chats.startX));
 
                     if (move > this.offsetWidth/2) {
+                        this.style.display = 'none';
                         Chats_ajaxClose(this.dataset.jid, (MovimUtils.urlParts().params[0] === this.dataset.jid));
                     }
 
