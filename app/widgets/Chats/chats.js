@@ -36,6 +36,8 @@ var Chats = {
 
                     if (move > this.offsetWidth/2) {
                         this.classList.add('close');
+                    } else {
+                        this.classList.remove('close');
                     }
 
                     this.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
