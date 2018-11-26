@@ -44,7 +44,7 @@ var Chats = {
                 }, true);
 
                 items[i].addEventListener('touchend', function(event) {
-                    move = Math.abs(parseInt(event.targetTouches[0].pageX - Chats.startX));
+                    move = Math.abs(parseInt(event.changedTouches[0].pageX - Chats.startX));
 
                     if (move > this.offsetWidth/2) {
                         Chats_ajaxClose(this.dataset.jid, (MovimUtils.urlParts().params[0] === this.dataset.jid));
