@@ -32,6 +32,16 @@ var Search = {
         }
     },
 
+    chat : function(jid) {
+        if (MovimUtils.urlParts().page === 'chat') {
+            Drawer_ajaxClear();
+            Chats_ajaxOpen(jid);
+            Chat_ajaxGet(jid);
+        } else {
+            Search_ajaxChat(jid);
+        }
+    },
+
     searchSomething : function(value) {
         clearTimeout(Search.timer);
 

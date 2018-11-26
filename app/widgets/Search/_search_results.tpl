@@ -38,7 +38,7 @@
             <span class="control icon active gray" onclick="MovimUtils.reload('{$c->route('contact', $value->jid)}')">
                 <i class="material-icons">person</i>
             </span>
-            <span class="control icon active gray" onclick="Search_ajaxChat('{$value->jid}')">
+            <span class="control icon active gray" onclick="Search.chat('{$value->jid}')">
                 <i class="material-icons">comment</i>
             </span>
             <p class="normal line">{$value->truename}</p>
