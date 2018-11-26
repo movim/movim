@@ -140,7 +140,7 @@
             <span
                 title="{$c->__('button.close')}"
                 class="control icon active"
-                onclick="Chats_ajaxClose('{$jid|echapJS}'); MovimTpl.hidePanel();">
+                onclick="Chats_ajaxClose('{$jid|echapJS}');">
                 <i class="material-icons">close</i>
             </span>
             <p class="line">

@@ -138,7 +138,7 @@ class Chats extends \Movim\Widget\Base
         }
     }
 
-    function ajaxClose($jid)
+    function ajaxClose($jid, $closeDiscussion = false)
     {
         $notif = new Notification;
         $notif->ajaxClear('chat|'.$jid);
@@ -150,10 +150,11 @@ class Chats extends \Movim\Widget\Base
         \App\Cache::c('chats', $chats);
 
         $this->rpc('MovimTpl.remove', '#' . cleanupId($jid . '_chat_item'));
-
         $this->rpc('Chats.refresh');
-        $this->rpc('Chat.empty');
-        $this->rpc('MovimTpl.hidePanel');
+
+        if ($closeDiscussion) {
+            $this->rpc('Chat_ajaxGet');
+        }
     }
 
     function prepareChats($emptyItems = false)

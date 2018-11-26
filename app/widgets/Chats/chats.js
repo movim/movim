@@ -1,4 +1,6 @@
 var Chats = {
+    startX: 0,
+
     refresh: function() {
         var list = document.querySelector('#chats_widget_list');
         list.innerHTML = list.innerHTML.trim();
@@ -20,14 +22,38 @@ var Chats = {
 
                 items[i].onmousedown = function(e) {
                     if (e.which == 2) {
-                        Notification_ajaxClear('chat|' + this.dataset.jid);
-                        Notification.current('chat');
-                        Chats_ajaxClose(this.dataset.jid);
-                        delete document.querySelector('#chat_widget').dataset.jid;
-                        MovimTpl.hidePanel();
+                        Chats_ajaxClose(this.dataset.jid, (MovimUtils.urlParts().params[0] === this.dataset.jid));
                         e.preventDefault();
                     }
                 }
+
+                items[i].addEventListener('touchstart', function(event) {
+                    Chats.startX = event.targetTouches[0].pageX;
+                }, true);
+
+                items[i].addEventListener('touchmove', function(event) {
+                    move = Math.abs(parseInt(event.targetTouches[0].pageX - Chats.startX));
+
+                    if (move > this.offsetWidth/2) {
+                        this.classList.add('close');
+                    }
+
+                    this.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
+                        + parseInt(event.targetTouches[0].pageX - Chats.startX)
+                        +', 0, 0, 1)';
+                }, true);
+
+                items[i].addEventListener('touchend', function(event) {
+                    move = Math.abs(parseInt(event.targetTouches[0].pageX - Chats.startX));
+
+                    if (move > this.offsetWidth/2) {
+                        Chats_ajaxClose(this.dataset.jid, (MovimUtils.urlParts().params[0] === this.dataset.jid));
+                    }
+
+                    this.style.transform = '';
+                    this.classList.remove('close');
+                    Chats.startX = 0;
+                }, true);
             }
 
             items[i].classList.remove('active');
@@ -46,5 +72,4 @@ var Chats = {
 
 MovimWebsocket.attach(function() {
     Chats_ajaxGet();
-    Notification.current('chat');
 });
