@@ -124,6 +124,10 @@ class Core implements MessageComponentInterface
             $sid = $this->getHeaderSid($conn);
             if ($sid != null) {
                 $this->sessions[$sid]->attachInternal($conn);
+
+                $obj = new \StdClass;
+                $obj->func = 'started';
+                $this->sessions[$sid]->messageOut(json_encode($obj));
             }
         }
     }

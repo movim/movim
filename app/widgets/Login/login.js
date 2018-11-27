@@ -62,7 +62,6 @@ var Login = {
 
 MovimWebsocket.attach(function()
 {
-    Login.quickLogin();
     Login.init();
 
     // We enable the form
@@ -71,6 +70,10 @@ MovimWebsocket.attach(function()
     {
         inputs[i].disabled = false;
     }
+});
+
+MovimWebsocket.start(function() {
+    Login.quickLogin();
 });
 
 MovimWebsocket.register(function()

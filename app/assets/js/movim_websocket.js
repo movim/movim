@@ -19,8 +19,9 @@ WebSocket.prototype.register = function(host) {
 
 var MovimWebsocket = {
     connection: null,
-    attached: [],
-    registered: [],
+    attached: [], // Launched when the socket is connected to the daemon
+    started: [], // Launched when the linker is started
+    registered: [], // Launched when the linker is connected to XMPP
     attempts: 1,
     pong: false,
     closed: false,
@@ -37,6 +38,12 @@ var MovimWebsocket = {
     launchRegistered : function() {
         for(var i = 0; i < MovimWebsocket.registered.length; i++) {
             MovimWebsocket.registered[i]();
+        }
+    },
+
+    launchStarted : function() {
+        for(var i = 0; i < MovimWebsocket.started.length; i++) {
+            MovimWebsocket.started[i]();
         }
     },
 
@@ -74,6 +81,15 @@ var MovimWebsocket = {
             if (obj != null) {
                 if (obj.func == 'registered') {
                     MovimWebsocket.launchRegistered();
+                }
+
+                if (obj.func == 'started') {
+                    // If the linker was started but we're not on the login page
+                    if (MovimUtils.urlParts().page !== 'login') {
+                        MovimUtils.disconnect();
+                    } else {
+                        MovimWebsocket.launchStarted();
+                    }
                 }
 
                 if (obj.func == 'disconnected') {
@@ -184,6 +200,12 @@ var MovimWebsocket = {
     register : function(func) {
         if (typeof(func) === "function") {
             this.registered.push(func);
+        }
+    },
+
+    start : function(func) {
+        if (typeof(func) === "function") {
+            this.started.push(func);
         }
     },
 
