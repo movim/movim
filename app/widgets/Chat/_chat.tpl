@@ -54,7 +54,9 @@
             {/if}
 
             {if="$conference && $conference->name"}
-                <p class="line" title="{$room}">{$conference->name}</p>
+                <p class="line" title="{$room}">
+                    {$conference->name}
+                </p>
             {else}
                 <p class="line">{$room}</p>
             {/if}
@@ -63,10 +65,24 @@
                 <p>{$c->__('button.connecting')}…</p>
             {elseif="$conference && $conference->subject"}
                 <p class="line" title="{$conference->subject}">
+                    {if="$conference->info && !$conference->info->mucsemianonymous"}
+                        <span title="{$c->__('room.public_muc_text')}">
+                            {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
+                        </span>
+                        –
+                    {/if}
                     {$conference->subject}
                 </p>
             {else}
-                <p class="line">{$room}</p>
+                <p class="line">
+                    {if="$conference->info && !$conference->info->mucsemianonymous"}
+                        <span title="{$c->__('room.public_muc_text')}">
+                            {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
+                        </span>
+                        –
+                    {/if}
+                    {$room}
+                </p>
             {/if}
         </li>
     </ul>

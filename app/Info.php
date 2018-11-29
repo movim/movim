@@ -156,6 +156,9 @@ class Info extends Model
                     case 'muc_moderated':
                         $this->mucmoderated = true;
                         break;
+                    case 'muc_semianonymous':
+                        $this->mucsemianonymous = true;
+                        break;
                 }
             }
 

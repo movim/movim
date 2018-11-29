@@ -60,6 +60,9 @@
                                 class="moderator"
                             {/if}>
                             {$count} <i class="material-icons">people</i>
+                            {if="$value->info && !$value->info->mucsemianonymous"}
+                                <i class="material-icons">wifi_tethering</i>
+                            {/if}
                         </span>  –
                     {elseif="isset($info) && $info->occupants > 0"}
                         <span title="{$c->__('communitydata.sub', $info->occupants)}"
@@ -67,6 +70,9 @@
                                 class="moderator"
                             {/if}>
                             {$info->occupants} <i class="material-icons">people</i>
+                            {if="$value->info && !$value->info->mucsemianonymous"}
+                                <i class="material-icons">wifi_tethering</i>
+                            {/if}
                         </span>  –
                     {/if}
                     {if="isset($info) && $info->description"}
