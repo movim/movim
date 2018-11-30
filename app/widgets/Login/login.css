@@ -53,7 +53,7 @@ body main {
 #login_widget li.info p {
     text-align: center;
     max-height: 100%;
-    padding: 0 2rem;
+    padding: 0;
 }
 
 #login_widget span.info {
