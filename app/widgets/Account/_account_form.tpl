@@ -1,6 +1,8 @@
 <section class="scroll">
     <form name="register" data-sessionid="{$attributes->sessionid}" data-node="{$attributes->node}">
-        {$form}
+        {autoescape="off"}
+            {$form}
+        {/autoescape}
     </form>
 </section>
 <div>
