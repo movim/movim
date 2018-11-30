@@ -85,7 +85,7 @@ var MovimWebsocket = {
 
                 if (obj.func == 'started') {
                     // If the linker was started but we're not on the login page
-                    if (MovimUtils.urlParts().page !== 'login') {
+                    if (!['login', 'account', 'accountnext'].includes(MovimUtils.urlParts().page)) {
                         MovimUtils.disconnect();
                     } else {
                         MovimWebsocket.launchStarted();
