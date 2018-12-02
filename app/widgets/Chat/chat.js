@@ -111,7 +111,7 @@ var Chat = {
         if (!Chat.sended) {
             Chat.sended = true;
 
-            document.querySelector(".chat_box span.send").classList.add('sending');
+            document.querySelector('.chat_box span.send').classList.add('sending');
 
             let xhr;
 
@@ -139,7 +139,7 @@ var Chat = {
     {
         Chat.sended = false;
 
-        document.querySelector(".chat_box span.send").classList.remove('sending');
+        document.querySelector('.chat_box span.send').classList.remove('sending');
 
         var textarea = Chat.getTextarea();
         localStorage.removeItem(textarea.dataset.jid + '_message');
@@ -150,7 +150,7 @@ var Chat = {
     {
         Notification.toast(Chat.delivery_error);
         Chat.sended = false;
-        document.querySelector(".chat_box span.send").classList.remove('sending');
+        document.querySelector('.chat_box span.send').classList.remove('sending');
     },
     clearReplace: function()
     {
@@ -196,8 +196,8 @@ var Chat = {
 
         textarea.onkeypress = function(event) {
             if (event.keyCode == 13) {
-                if ((window.matchMedia("(max-width: 1024px)").matches && !event.shiftKey)
-                || (window.matchMedia("(min-width: 1025px)").matches && event.shiftKey)) {
+                if ((window.matchMedia('(max-width: 1024px)').matches && !event.shiftKey)
+                || (window.matchMedia('(min-width: 1025px)').matches && event.shiftKey)) {
                     return;
                 }
 
@@ -375,7 +375,7 @@ var Chat = {
         var jidtime = idjidtime.substring(idjidtime.indexOf('<') + 1);
 
         if (prepend) {
-            refBubble = document.querySelector("#chat_widget .contained li:first-child");
+            refBubble = document.querySelector('#chat_widget .contained li:first-child');
             msgStack = document.querySelector("[data-bubble='" + jidtime + "']");
         } else {
             refBubble = document.querySelector("#chat_widget .contained li:last-child");
@@ -419,9 +419,9 @@ var Chat = {
         // If there is already a msg in this bubble, create another div (next msg or replacement)
         if (bubble.querySelector('div.bubble p')
         && bubble.querySelector('div.bubble p').innerHTML != '') {
-            msg = document.createElement("div");
-            p = document.createElement("p");
-            span = document.createElement("span");
+            msg = document.createElement('div');
+            p = document.createElement('p');
+            span = document.createElement('span');
             span.className = 'info';
         }
 
@@ -440,9 +440,9 @@ var Chat = {
         }
 
         if (data.id != null) {
-            msg.setAttribute("id", data.id);
+            msg.setAttribute('id', data.id);
             /*if (data.newid != null) {
-                msg.setAttribute("id", data.newid);
+                msg.setAttribute('id', data.newid);
             }*/
         }
 
@@ -509,8 +509,8 @@ var Chat = {
 
             if (icon.querySelector('img') == undefined) {
                 if (data.icon_url) {
-                    var img = document.createElement("img");
-                    img.setAttribute("src", data.icon_url);
+                    var img = document.createElement('img');
+                    img.setAttribute('src', data.icon_url);
 
                     icon.appendChild(img);
                 } else {
@@ -538,11 +538,11 @@ var Chat = {
 
             // We prepend
             if (!mergeMsg) {
-                MovimTpl.prepend("#" + id, bubble.outerHTML);
+                MovimTpl.prepend('#' + id, bubble.outerHTML);
             }
         } else {
             if (!mergeMsg) {
-                MovimTpl.append("#" + id, bubble.outerHTML);
+                MovimTpl.append('#' + id, bubble.outerHTML);
             }
         }
     },
@@ -590,19 +590,19 @@ var Chat = {
         }
     },
     getStickerHtml: function(sticker) {
-        var img = document.createElement("img");
+        var img = document.createElement('img');
         if (sticker.url) {
             if (sticker.thumb) {
-                img.setAttribute("src", sticker.thumb);
+                img.setAttribute('src', sticker.thumb);
             } else {
-                img.setAttribute("src", sticker.url);
+                img.setAttribute('src', sticker.url);
             }
 
-            if (sticker.width)  img.setAttribute("width", sticker.width);
+            if (sticker.width)  img.setAttribute('width', sticker.width);
             if (sticker.height)
-                img.setAttribute("height", sticker.height);
+                img.setAttribute('height', sticker.height);
             else {
-                img.setAttribute("height", "170");
+                img.setAttribute('height', '170');
             }
         }
 
@@ -614,33 +614,33 @@ var Chat = {
         return img;
     },
     getAudioHtml: function(file) {
-        var audio = document.createElement("audio");
-        audio.setAttribute("controls", true);
+        var audio = document.createElement('audio');
+        audio.setAttribute('controls', true);
 
-        var source = document.createElement("source");
-        source.setAttribute("src", file.uri);
-        source.setAttribute("type", file.type);
+        var source = document.createElement('source');
+        source.setAttribute('src', file.uri);
+        source.setAttribute('type', file.type);
 
         audio.appendChild(source);
 
         return audio;
     },
     getFileHtml: function(file, sticker) {
-        var div = document.createElement("div");
-        div.setAttribute("class", "file");
+        var div = document.createElement('div');
+        div.setAttribute('class', 'file');
 
-        var a = document.createElement("a");
+        var a = document.createElement('a');
         if (sticker == null) {
             a.innerHTML = file.name;
         }
-        a.setAttribute("href", file.uri);
-        a.setAttribute("target", "_blank");
+        a.setAttribute('href', file.uri);
+        a.setAttribute('target', '_blank');
 
         div.appendChild(a);
 
-        var span = document.createElement("span");
+        var span = document.createElement('span');
         span.innerHTML = file.cleansize;
-        span.setAttribute("class", "size");
+        span.setAttribute('class', 'size');
 
         a.appendChild(span);
 
@@ -667,8 +667,8 @@ var Chat = {
         return i;
     },
     toggleAction: function() {
-        var send_button = document.querySelector(".chat_box span.send");
-        var attachment_button = document.querySelector(".chat_box span.upload");
+        var send_button = document.querySelector('.chat_box span.send');
+        var attachment_button = document.querySelector('.chat_box span.upload');
         if (send_button && attachment_button) {
             if (Chat.getTextarea().value.length > 0){
                 MovimUtils.showElement(send_button);
