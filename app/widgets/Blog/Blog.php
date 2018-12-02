@@ -35,8 +35,10 @@ class Blog extends \Movim\Widget\Base
                                     ->first();
             $this->_mode = 'group';
 
-            $this->title = $this->_item->name;
-            $this->description = $this->_item->description;
+            if ($this->_item) {
+                $this->title = $this->_item->name;
+                $this->description = $this->_item->description;
+            }
 
             $this->url = $this->route('node', [$this->_from, $this->_node]);
 

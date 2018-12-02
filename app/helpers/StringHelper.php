@@ -409,8 +409,8 @@ function truncate($str, $width)
  */
 function urilize($path, $notime = false)
 {
-    if ($notime) {
+    if ($notime || !file_exists(DOCUMENT_ROOT . '/' . $path)) {
         return BASE_URI . $path;
     }
-    return BASE_URI . $path . '?t='.filemtime(DOCUMENT_ROOT . '/'.$path);
+    return BASE_URI . $path . '?t=' . filemtime(DOCUMENT_ROOT . '/' . $path);
 }
