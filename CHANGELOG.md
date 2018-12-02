@@ -1,8 +1,15 @@
 Movim Changelog
 ================
 
-v0.15 (trunk)
+v0.14.1 (trunk)
 ---------------------------
+ * Replace ZeroMQ sockets with WebSockets, remove reactphp/zmq and php-zmq dependency
+ * Make Movim compatible with PHP 7.3
+ * Display icon + infobox when the chatroom is public
+ * Display the Git HEAD commit hash in ?infos if available
+ * Don't reload the page when opening chat from Search
+ * Don't reload the discussion when the WS is reconnecting but only append the new messages
+ * Add slide-to-close feature in Chats to quickly close one-to-one discussions on touch devices
 
 v0.14
 ---------------------------
