@@ -1,11 +1,15 @@
-#chats_widget_list ~ .placeholder {
+ul#chats_widget_list {
+    overflow-x: hidden;
+}
+
+ul#chats_widget_list ~ .placeholder {
     display: none;
 }
 
-#chats_widget_list li.close {
+ul#chats_widget_list li.close {
     opacity: 0.5;
 }
 
-#chats_widget_list:empty ~ .placeholder {
+ul#chats_widget_list:empty ~ .placeholder {
     display: block;
 }

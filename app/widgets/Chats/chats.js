@@ -1,5 +1,6 @@
 var Chats = {
     startX: 0,
+    startY: 0,
 
     refresh: function() {
         var list = document.querySelector('#chats_widget_list');
@@ -29,20 +30,24 @@ var Chats = {
 
                 items[i].addEventListener('touchstart', function(event) {
                     Chats.startX = event.targetTouches[0].pageX;
+                    Chats.startY = event.targetTouches[0].pageY;
                 }, true);
 
                 items[i].addEventListener('touchmove', function(event) {
-                    move = Math.abs(parseInt(event.targetTouches[0].pageX - Chats.startX));
+                    moveX = Math.abs(parseInt(event.targetTouches[0].pageX - Chats.startX));
+                    moveY = Math.abs(parseInt(event.targetTouches[0].pageY - Chats.startY));
 
-                    if (move > this.offsetWidth/2) {
-                        this.classList.add('close');
-                    } else {
-                        this.classList.remove('close');
+                    if (moveX > 15 && moveX > moveY && moveY < 15) {
+                        if (moveX > this.offsetWidth/2) {
+                            this.classList.add('close');
+                        } else {
+                            this.classList.remove('close');
+                        }
+
+                        this.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
+                            + parseInt(event.targetTouches[0].pageX - Chats.startX)
+                            +', 0, 0, 1)';
                     }
-
-                    this.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
-                        + parseInt(event.targetTouches[0].pageX - Chats.startX)
-                        +', 0, 0, 1)';
                 }, true);
 
                 items[i].addEventListener('touchend', function(event) {
@@ -55,7 +60,7 @@ var Chats = {
 
                     this.style.transform = '';
                     this.classList.remove('close');
-                    Chats.startX = 0;
+                    Chats.startX = Chats.startY = 0;
                 }, true);
             }
 
