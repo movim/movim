@@ -39,7 +39,9 @@ class Message
         }
 
         if($content != false) {
-            $body = $dom->createElement('body', $content);
+            $body = $dom->createElement('body');
+            $bodyContent = $dom->createTextNode($content);
+            $body->appendChild($bodyContent);
             $root->appendChild($body);
         }
 
