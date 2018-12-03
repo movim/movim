@@ -1,5 +1,5 @@
 ul#chats_widget_list {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 ul#chats_widget_list ~ .placeholder {
