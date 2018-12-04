@@ -6,6 +6,10 @@ ul#chats_widget_list ~ .placeholder {
     display: none;
 }
 
+ul#chats_widget_list li {
+    transition: opacity 0.2s ease-in-out;
+}
+
 ul#chats_widget_list li.close {
     opacity: 0.5;
 }

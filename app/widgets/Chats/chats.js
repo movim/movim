@@ -37,7 +37,7 @@ var Chats = {
                     moveX = Math.abs(parseInt(event.targetTouches[0].pageX - Chats.startX));
                     moveY = Math.abs(parseInt(event.targetTouches[0].pageY - Chats.startY));
 
-                    if (moveX > 15 && moveX > moveY && moveY < 15) {
+                    if (moveX > 15 && moveX > moveY && moveY < this.offsetHeight) {
                         if (moveX > this.offsetWidth/2) {
                             this.classList.add('close');
                         } else {
@@ -47,13 +47,17 @@ var Chats = {
                         this.style.transform = 'matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, '
                             + parseInt(event.targetTouches[0].pageX - Chats.startX)
                             +', 0, 0, 1)';
+                    } else {
+                        this.style.transform = '';
+                        this.classList.remove('close');
                     }
                 }, true);
 
                 items[i].addEventListener('touchend', function(event) {
-                    move = Math.abs(parseInt(event.changedTouches[0].pageX - Chats.startX));
+                    moveX = Math.abs(parseInt(event.changedTouches[0].pageX - Chats.startX));
+                    moveY = Math.abs(parseInt(event.changedTouches[0].pageY - Chats.startY));
 
-                    if (move > this.offsetWidth/2) {
+                    if (moveX > this.offsetWidth/2 && moveY < this.offsetHeight) {
                         this.style.display = 'none';
                         Chats_ajaxClose(this.dataset.jid, (MovimUtils.urlParts().params[0] === this.dataset.jid));
                     }
