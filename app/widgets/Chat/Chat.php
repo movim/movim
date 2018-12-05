@@ -387,6 +387,7 @@ class Chat extends \Movim\Widget\Base
         /* Is it really clean ? */
         if (!$p->getMuc()) {
             $m->oldid = $oldid;
+            $m->body = htmlentities(trim($m->body), ENT_XML1, 'UTF-8');
             $m->save();
 
             $packet = new \Moxl\Xec\Payload\Packet;
