@@ -4,6 +4,8 @@
     </a>
 {/if}
 
+{$previousConnected = true}
+
 {if="!$c->supported('anonymous') && $c->getView() != 'room'"}
     <ul class="list divided spaced middle {if="!$edit"}active{/if}">
         <li class="subheader" title="{$c->__('page.configuration')}">
@@ -19,6 +21,11 @@
         </li>
         {loop="$conferences"}
             {$connected = $value->presence}
+            {if="!$connected && $previousConnected"}
+                </ul>
+                <ul class="list divided thin spaced {if="!$edit"}active{/if}">
+            {/if}
+            {$previousConnected = $connected}
             <li {if="!$edit"} data-jid="{$value->conference}" {/if}
                 {if="$value->nick != null"} data-nick="{$value->nick}" {/if}
                 class="room {if="$connected"}online{/if}"
@@ -26,17 +33,21 @@
                 {$url = $value->getPhoto()}
                 {if="$url"}
                     <span class="primary
-                        {if="!$connected"}disabled{/if} icon bubble color
+                        {if="!$connected"}disabled small{/if} icon bubble color
                         {$value->name|stringToColor}"
                         style="background-image: url({$url});">
                         <span data-key="chat|{$value->conference}" class="counter"></span>
                     </span>
                 {else}
                     <span class="primary
-                        {if="!$connected"}disabled{/if} icon bubble color
+                        {if="!$connected"}disabled small{/if} icon bubble color
                         {$value->name|stringToColor}">
                         <span data-key="chat|{$value->conference}" class="counter"></span>
-                        {$value->name|firstLetterCapitalize}
+                        {if="$connected"}
+                            {$value->name|firstLetterCapitalize}
+                        {else}
+                        {$value->name|firstLetterCapitalize:true}
+                        {/if}
                     </span>
                 {/if}
 
@@ -50,9 +61,18 @@
                     </span>
                 {/if}
 
-                <p class="normal line">{$value->name} <span class="second">{$value->conference}</span></p>
+                <p class="normal line">
+                    {$value->name}
+                    {if="$connected"}
+                        <span class="second">{$value->conference}</span>
+                    {else}
+                        –
+                    {/if}
+                {if="$connected"}
+                </p>
                 <p class="line"
                     {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
+                {/if}
                     {if="$connected"}
                         {$count = $value->presences()->count()}
                         <span title="{$c->__('communitydata.sub', $count)}"
@@ -75,10 +95,14 @@
                             {/if}
                         </span>  –
                     {/if}
-                    {if="isset($info) && $info->description"}
-                        {$info->description}
+                    {if="$connected"}
+                        {if="isset($info) && $info->description"}
+                            {$info->description}
+                        {else}
+                            {$value->conference}
+                        {/if}
                     {else}
-                        {$value->conference}
+                        <span class="second">{$value->conference}</span>
                     {/if}
                 </p>
             </li>
