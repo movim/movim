@@ -176,6 +176,8 @@ class Login extends Base
                 if ($ciphertext) {
                     $password = Crypto::decrypt($ciphertext->data, $key);
                     $this->doLogin($login, $password, $deviceId);
+                } else {
+                    $this->rpc('Login.clearQuick');
                 }
             }
         } catch(Exception $e) {
