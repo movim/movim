@@ -125,6 +125,7 @@ main {
     transition: opacity 0.3s ease-in-out;
     overflow-y: auto;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch; /* Hack to have a non-blocking scrolling in iOS… */
 
     display: flex;
     justify-content: center;

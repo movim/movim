@@ -17,6 +17,7 @@
 .drawer > section {
     height: 100%;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Hack to have a non-blocking scrolling in iOS… */
     position: relative;
 }
 
@@ -36,7 +37,7 @@
     padding: 2rem;
 }
 
-@media screen and (min-width: 35rem) {
+@media screen and (min-width: 570px) {
     .drawer {
         border-radius: 0.5rem 0.5rem 0 0;
         width: 70rem;
