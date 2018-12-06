@@ -1,8 +1,7 @@
 <section id="search">
+    {if="$contacts->isNotEmpty()"}
     <ul id="roster" class="list thin">
-        {if="$contacts"}
-            <li class="subheader"><p>{$c->__('page.contacts')}</p></li>
-        {/if}
+        <li class="subheader"><p>{$c->__('page.contacts')}</p></li>
         {loop="$contacts"}
             <li
                 id="{$value->jid|cleanupId}"
@@ -73,11 +72,22 @@
             </li>
         {/loop}
     </ul>
+    {/if}
 
     <div id="results">
         {autoescape="off"}{$empty}{/autoescape}
     </div>
-
+    {if="$contacts->isEmpty()"}
+        <ul class="list thick">
+            <li>
+                <span class="primary icon blue">
+                    <i class="material-icons">help</i>
+                </span>
+                <p>{$c->__('search.no_contacts_title')}</p>
+                <p>{$c->__('search.no_contacts_text')}</p>
+            </li>
+        </ul>
+    {/if}
     <br />
 </section>
 <div id="searchbar">
@@ -89,7 +99,8 @@
             <form name="search" onsubmit="return false;">
                 <div>
                     <input name="keyword" autocomplete="off"
-                        placeholder="{$c->__('search.keyword')}"
+                        title="{$c->__('search.keyword')}"
+                        placeholder="{$c->__('search.placeholder')}"
                         oninput="Search.searchSomething(this.value)"
                         type="text">
                 </div>

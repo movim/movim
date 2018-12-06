@@ -15,8 +15,6 @@ var Onboarding = {
                 DesktopNotification.permission = status;
             }
         });
-
-        //Onboarding.check();
     },
 
     setNotifications: function() {
@@ -36,4 +34,3 @@ var Onboarding = {
 MovimWebsocket.attach(function() {
     Onboarding.check();
 });
-
