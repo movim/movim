@@ -217,6 +217,10 @@ table.emojis td:hover {
     padding: 1rem 0;
 }
 
+#chat_widget div.file:not(.bubble) span.size {
+    display: block;
+}
+
 #chat_widget audio {
     border-radius: 0.5rem;
     width: 100%;
