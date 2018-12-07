@@ -1,5 +1,9 @@
 var Onboarding = {
     check: function() {
+        if (typeof DesktopNotification === 'undefined') {
+            Onboarding.setNotifications();
+        }
+
         if (localStorage.getItem('onboardingPublic') === null) {
             Onboarding_ajaxAskPublic();
         } else if (localStorage.getItem('onboardingNotifications') === null) {
