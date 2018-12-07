@@ -37,4 +37,10 @@ class Onboarding extends \Movim\Widget\Base
         $this->user->setPublic();
         Notification::append(null, $this->__('vcard.public'));
     }
+
+    public function ajaxEnableRestricted()
+    {
+        $this->user->setPrivate();
+        Notification::append(null, $this->__('vcard.restricted'));
+    }
 }

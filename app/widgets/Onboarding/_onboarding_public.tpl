@@ -6,7 +6,7 @@
     </div>
 </section>
 <div>
-    <button onclick="Dialog_ajaxClear(); Onboarding.check();" class="button flat">
+    <button onclick="Onboarding_ajaxEnableRestricted(); Dialog_ajaxClear(); Onboarding.check();" class="button flat">
         {$c->__('button.refuse')}
     </button>
     <button onclick="Onboarding_ajaxEnablePublic(); Dialog_ajaxClear(); Onboarding.check();" class="button flat">
