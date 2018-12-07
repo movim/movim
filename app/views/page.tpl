@@ -47,6 +47,7 @@
     </head>
     <body dir="<?php $this->dir();?>"
           class="<?php if (!$this->public && \App\User::me()->nightmode) { ?>nightmode<?php } ?>">
+        <?php if ($this->js_check) { ?>
         <noscript>
             <style type="text/css">main {display: none;}</style>
             <ul class="list" style="color: white;">
@@ -55,6 +56,7 @@
                 </li>
             </ul>
         </noscript>
+        <?php } ?>
         <div id="hiddendiv"></div>
         <div id="snackbar" class="snackbar"></div>
         <div id="error_websocket" class="snackbar hide">

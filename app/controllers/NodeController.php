@@ -13,5 +13,6 @@ class NodeController extends Base
     function dispatch()
     {
         $this->page->setTitle(__('page.communities'));
+        $this->page->disableJavascriptCheck();
     }
 }

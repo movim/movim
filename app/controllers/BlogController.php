@@ -12,5 +12,6 @@ class BlogController extends Base
     function dispatch()
     {
         $this->page->setTitle(__('page.blog'));
+        $this->page->disableJavascriptCheck();
     }
 }

@@ -12,5 +12,6 @@ class TagController extends Base
     function dispatch()
     {
         $this->page->setTitle(__('page.tag'));
+        $this->page->disableJavascriptCheck();
     }
 }

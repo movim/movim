@@ -16,6 +16,7 @@ class Builder
     private $dir = 'ltr';
     private $public;
     private $user;
+    private $js_check = true;
 
     /**
      * Constructor. Determines whether to show the login page to the user or the
@@ -27,7 +28,7 @@ class Builder
         $this->user = \App\User::me();
     }
 
-    function viewsPath($file)
+    function viewsPath(string $file)
     {
         return VIEWS_PATH . '/' . $file;
     }
@@ -37,21 +38,21 @@ class Builder
      * @param file is the path to the file relative to the theme's root
      * @param return optionally returns the link instead of printing it if set to true
      */
-    function linkFile($file, $return = false)
+    function linkFile(string $file, $return = false)
     {
         $path = urilize('themes/' . $this->theme . '/' . $file);
 
         if ($return) {
             return $path;
-        } else {
-            echo $path;
         }
+
+        echo $path;
     }
 
     /**
      * Inserts the link tag for a css file.
      */
-    function themeCss($file)
+    function themeCss(string $file)
     {
         echo '<link rel="stylesheet" href="'
             . $this->linkFile($file, true) .
@@ -61,7 +62,7 @@ class Builder
     /**
      * Actually generates the page from templates.
      */
-    function build($view, $public = false)
+    function build(string $view, $public = false)
     {
         $this->_view = $view;
         $this->public = $public;
@@ -87,9 +88,17 @@ class Builder
     /**
      * Sets the page's title.
      */
-    function setTitle($name)
+    function setTitle(string $name)
     {
         $this->title = APP_TITLE . ' – ' . $name;
+    }
+
+    /**
+     * Disable Javascript check
+     */
+    function disableJavascriptCheck()
+    {
+        $this->js_check = false;
     }
 
     /**
@@ -216,7 +225,7 @@ class Builder
         echo strip_tags($dom->saveXML($dom->documentElement), '<meta><link>');
     }
 
-    function addScript($script)
+    function addScript(string $script)
     {
         $this->scripts[] = urilize('app/assets/js/' . $script);
     }
@@ -224,7 +233,7 @@ class Builder
     /**
      * Inserts the link tag for a css file.
      */
-    function addCss($file)
+    function addCss(string $file)
     {
         $this->css[] = $this->linkFile('css/' . $file, true);
     }
@@ -264,7 +273,7 @@ class Builder
         return $out;
     }
 
-    function setContent($data)
+    function setContent(string $data)
     {
         $this->content .= $data;
     }
@@ -277,7 +286,7 @@ class Builder
     /**
      * Loads up a widget and prints it at the current place.
      */
-    function widget($name)
+    function widget(string $name)
     {
         $widgets = Wrapper::getInstance();
         $widgets->setView($this->_view);

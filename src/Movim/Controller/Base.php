@@ -13,6 +13,7 @@ class Base
     protected $session_only = false;// The page is protected by a session ?
     protected $raw = false;         // Display only the content ?
     protected $public = false;      // It's a public page
+    protected $js_check = true;     // Check is Javascript is enabled
     protected $page;
 
     public function __construct()

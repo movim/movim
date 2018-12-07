@@ -39,7 +39,7 @@
             </span>
             {else}
             <span class="primary icon gray">
-                <i class="material-icons">category</i>
+                <i class="material-icons">label</i>
             </span>
             {/if}
             <p>

@@ -10,6 +10,8 @@ v0.14.1 (trunk)
  * Don't reload the page when opening chat from Search
  * Don't reload the discussion when the WS is reconnecting but only append the new messages
  * Add slide-to-close feature in Chats to quickly close one-to-one discussions on touch devices
+ * Fix Onboarding issues on some devices
+ * Fix scrolling on iOS
 
 v0.14
 ---------------------------
