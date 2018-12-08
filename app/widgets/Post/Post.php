@@ -15,6 +15,7 @@ class Post extends \Movim\Widget\Base
         $this->addcss('post.css');
         $this->registerEvent('microblog_commentsget_handle', 'onComments', 'post');
         $this->registerEvent('microblog_commentpublish_handle', 'onCommentPublished');
+        $this->registerEvent('microblog_commentpublish_error', 'onCommentPublishError');
         $this->registerEvent('microblog_commentsget_error', 'onCommentsError');
         $this->registerEvent('pubsub_getitem_handle', 'onHandle', 'post');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
@@ -41,6 +42,11 @@ class Post extends \Movim\Widget\Base
     function onCommentPublished($packet)
     {
         Notification::append(false, $this->__('post.comment_published'));
+    }
+
+    function onCommentPublishError($packet)
+    {
+        Notification::append(false, $this->__('post.comment_publish_error'));
     }
 
     function onComments($packet)

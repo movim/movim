@@ -95,13 +95,12 @@ class Handler
 
                 Utils::log('Handler : '.get_class($action).' '.$id.' - '.$errorid);
 
-                /* If the action has defined a special handler
-                 * for this error
-                 */
+                // If the action has defined a special handler for this error
                 if (method_exists($action, $errorid)) {
                     $action->method($errorid);
                     $action->$errorid($errorid, $message);
                 }
+
                 // We also call a global error handler
                 if (method_exists($action, 'error')) {
                     Utils::log('Handler : Global error - '.$id.' - '.$errorid);

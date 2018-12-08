@@ -22,4 +22,9 @@ class Unavailable extends Action
     {
         $this->deliver();
     }
+
+    public function error($stanza, $parent)
+    {
+        $this->handle($stanza, $parent);
+    }
 }

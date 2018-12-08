@@ -35,7 +35,7 @@ class Presence extends Payload
                 foreach ($stanza->x as $x) {
                     if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
                     && isset($stanza->x->status)
-                    && (string)$stanza->x->status->attributes()->code == '110') {
+                    && \in_array((int)$stanza->x->status->attributes()->code, [110, 332, 307, 301])) {
                         if($presence->value != 5 && $presence->value != 6) {
                             $this->method('muc_handle');
                             $this->pack($presence);

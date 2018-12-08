@@ -40,7 +40,7 @@
                 title="{$c->__('button.close')}"
                 class="control icon active"
                 onclick="Rooms_ajaxExit('{$room}'); MovimTpl.hidePanel(); {if="$anon"}Presence_ajaxLogout(){/if}">
-                <i class="material-icons">close</i>
+                <i class="material-icons">exit_to_app</i>
             </span>
 
             {if="$conference && $conference->info && $conference->info->related"}

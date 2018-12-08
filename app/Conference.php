@@ -46,6 +46,7 @@ class Conference extends Model
     {
         return $this->hasOne('App\Presence', 'jid', 'conference')
                     ->where('session_id', $this->session_id)
+                    ->where('value', '<', 5)
                     ->where('mucjid', \App\User::me()->id);
     }
 

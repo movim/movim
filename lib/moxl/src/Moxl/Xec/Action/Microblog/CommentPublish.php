@@ -80,23 +80,9 @@ class CommentPublish extends Errors
         $this->deliver();
     }
 
-    public function errorFeatureNotImplemented($stanza)
+    public function error()
     {
-        $this->event('commentpublisherror');
-    }
-
-    public function errorNotAuthorized($stanza)
-    {
-        $this->event('commentpublisherror');
-    }
-
-    public function errorServiceUnavailable($stanza)
-    {
-        $this->event('commentpublisherror');
-    }
-
-    public function errorItemNotFound($stanza)
-    {
-        $this->event('commentpublisherror');
+        $this->pack($this->_id);
+        $this->deliver();
     }
 }
