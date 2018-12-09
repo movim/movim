@@ -667,25 +667,6 @@ class Chat extends \Movim\Widget\Base
         $message->jidto = echapJS($message->jidto);
         $message->jidfrom = echapJS($message->jidfrom);
 
-        // Attached file
-        if (isset($message->file)) {
-            if ($message->body == $message->file['uri']) {
-                $message->body = null;
-            }
-
-            // We proxify pictures links even if they are advertized as small ones
-            if (typeIsPicture($message->file['type'])
-            && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
-                $message->thumb   = $this->route('picture', urlencode($message->file['uri']));
-                $message->picture = $message->file['uri'];
-            }
-
-            if (typeIsAudio($message->file['type'])
-            && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
-                $message->audio = $message->file['uri'];
-            }
-        }
-
         if (isset($message->html)) {
             $message->body = $message->html;
         } else {
@@ -719,12 +700,44 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
-        if (isset($message->picture)) {
-            $message->sticker = [
-                'thumb' => $message->thumb,
-                'url' => $message->picture,
-                'picture' => true
-            ];
+        // Attached file
+        if (isset($message->file)) {
+            if ($message->body == $message->file['uri']) {
+                $message->body = null;
+            }
+
+            // We proxify pictures links even if they are advertized as small ones
+            if (typeIsPicture($message->file['type'])
+            && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
+                $message->sticker = [
+                    'thumb' => $this->route('picture', urlencode($message->file['uri'])),
+                    'url' => $message->file['uri'],
+                    'picture' => true
+                ];
+            }
+
+            if (typeIsAudio($message->file['type'])
+            && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
+                $message->audio = $message->file['uri'];
+            }
+
+            // Other image websites
+            $url = parse_url($message->file['uri']);
+
+            switch ($url['host']) {
+                case 'i.imgur.com':
+                    $matches = [];
+                    preg_match('/https:\/\/i.imgur.com\/([a-zA-Z0-9]{7})(.*)/', $message->file['uri'], $matches);
+
+                    if (!empty($matches)) {
+                        $message->sticker = [
+                            'url' => $message->file['uri'],
+                            'thumb' => 'https://i.imgur.com/' . $matches[1] . 'g' . $matches[2],
+                            'picture' => true
+                        ];
+                    }
+                    break;
+            }
         }
 
         $message->rtl = isRTL($message->body);

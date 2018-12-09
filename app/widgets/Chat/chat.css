@@ -209,7 +209,6 @@ table.emojis td:hover {
 
 /* File preview */
 #chat_widget div.file:not(.bubble) {
-    display: inline-block;
     word-break: break-all;
 }
 
