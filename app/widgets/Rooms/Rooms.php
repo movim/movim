@@ -97,6 +97,7 @@ class Rooms extends \Movim\Widget\Base
 
     function onDisconnected()
     {
+        $this->refreshRooms();
         Notification::append(null, $this->__('chatrooms.disconnected'));
     }
 
@@ -349,8 +350,7 @@ class Rooms extends \Movim\Widget\Base
         if (!$this->validateRoom($room)) return;
 
         // We reset the Chat view
-        $c = new Chat;
-        $c->ajaxGet();
+        $this->rpc('Chat_ajaxGet');
 
         // We properly exit
         $resource = $this->user->session->conferences()
