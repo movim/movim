@@ -364,7 +364,7 @@ var Chat = {
         Chat.setScrollBehaviour();
     },
     appendMessage : function(idjidtime, data, prepend) {
-        if (data.body == null) return;
+        if (data.body === null) return;
 
         var bubble = null,
             mergeMsg = false,
@@ -441,9 +441,6 @@ var Chat = {
 
         if (data.id != null) {
             msg.setAttribute('id', data.id);
-            /*if (data.newid != null) {
-                msg.setAttribute('id', data.newid);
-            }*/
         }
 
         if (data.sticker != null) {
@@ -453,10 +450,7 @@ var Chat = {
             p.innerHTML = data.body;
         }
 
-        if (data.audio != null) {
-            bubble.querySelector('div.bubble').classList.add('file');
-            p.appendChild(Chat.getAudioHtml(data.file));
-        } else if (data.file != null) {
+        if (data.file != null) {
             bubble.querySelector('div.bubble').classList.add('file');
             p.appendChild(Chat.getFileHtml(data.file, data.sticker));
         }
@@ -525,12 +519,6 @@ var Chat = {
             if (data.quoted) {
                 bubble.querySelector('div.bubble').classList.add('quoted');
             }
-
-            /*icon.onclick = function(n) {
-                var textarea = document.querySelector('#chat_textarea');
-                textarea.value = this.dataset.resource + ', ' + textarea.value;
-                textarea.focus();
-            };*/
         }
 
         if (prepend){
@@ -599,9 +587,9 @@ var Chat = {
             }
 
             if (sticker.width)  img.setAttribute('width', sticker.width);
-            if (sticker.height)
+            if (sticker.height) {
                 img.setAttribute('height', sticker.height);
-            else {
+            } else {
                 img.setAttribute('height', '170');
             }
         }
@@ -613,18 +601,6 @@ var Chat = {
 
         return img;
     },
-    getAudioHtml: function(file) {
-        var audio = document.createElement('audio');
-        audio.setAttribute('controls', true);
-
-        var source = document.createElement('source');
-        source.setAttribute('src', file.uri);
-        source.setAttribute('type', file.type);
-
-        audio.appendChild(source);
-
-        return audio;
-    },
     getFileHtml: function(file, sticker) {
         var div = document.createElement('div');
         div.setAttribute('class', 'file');
@@ -635,6 +611,7 @@ var Chat = {
         }
         a.setAttribute('href', file.uri);
         a.setAttribute('target', '_blank');
+        a.setAttribute('rel', 'noopener');
 
         div.appendChild(a);
 

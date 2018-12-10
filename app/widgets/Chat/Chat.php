@@ -675,7 +675,7 @@ class Chat extends \Movim\Widget\Base
         }
 
         if (isset($message->subject) && $message->type == 'headline') {
-            $message->body = $message->subject.': '.$message->body;
+            $message->body = $message->subject .': '. $message->body;
         }
 
         // Sticker message
@@ -702,10 +702,6 @@ class Chat extends \Movim\Widget\Base
 
         // Attached file
         if (isset($message->file)) {
-            if ($message->body == $message->file['uri']) {
-                $message->body = null;
-            }
-
             // We proxify pictures links even if they are advertized as small ones
             if (typeIsPicture($message->file['type'])
             && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
@@ -714,11 +710,6 @@ class Chat extends \Movim\Widget\Base
                     'url' => $message->file['uri'],
                     'picture' => true
                 ];
-            }
-
-            if (typeIsAudio($message->file['type'])
-            && $message->file['size'] <= SMALL_PICTURE_LIMIT) {
-                $message->audio = $message->file['uri'];
             }
 
             // Other image websites
