@@ -233,7 +233,11 @@ var Chat = {
         };
 
         textarea.oninput = function() {
+            var discussion = Chat.getDiscussion();
+            var scrolled = (discussion.scrollHeight - discussion.scrollTop === discussion.clientHeight);
             MovimUtils.textareaAutoheight(this);
+
+            if (scrolled) discussion.scrollTop = discussion.scrollHeight;
         }
 
         textarea.onchange = function() {
@@ -269,7 +273,7 @@ var Chat = {
         Chat.separator = div.firstChild.cloneNode(true);
     },
     setScrollBehaviour : function() {
-        var discussion = document.querySelector('#chat_widget div.contained');
+        var discussion = Chat.getDiscussion();
         discussion.onscroll = function() {
             if (this.scrollTop < 1
             && discussion.querySelectorAll('ul li div.bubble p').length >= Chat.pagination) {
@@ -301,7 +305,7 @@ var Chat = {
         return true;
     },
     appendMessagesWrapper : function(page, prepend) {
-        var discussion = document.querySelector('#chat_widget div.contained');
+        var discussion = Chat.getDiscussion();
 
         if (page && Chat.checkDiscussion(page)) {
             var scrolled = MovimTpl.isPanelScrolled();
@@ -659,6 +663,9 @@ var Chat = {
     getTextarea: function() {
         var textarea = document.querySelector('#chat_textarea');
         if (textarea) return textarea;
+    },
+    getDiscussion: function() {
+        return document.querySelector('#chat_widget div.contained');
     }
 };
 
@@ -692,7 +699,7 @@ document.addEventListener('focus', function() {
 });
 
 window.addEventListener('resize', function() {
-    var discussion = document.querySelector('#chat_widget div.contained');
+    var discussion = Chat.getDiscussion();
     if (discussion) {
         discussion.scrollTop += Chat.lastHeight - discussion.clientHeight;
         Chat.lastHeight = discussion.clientHeight;
