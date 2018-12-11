@@ -105,7 +105,7 @@ msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-11 18:53+0200\n"
-"PO-Revision-Date: 2018-09-28 09:19+0000\n"
+"PO-Revision-Date: 2018-12-11 18:00+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -113,7 +113,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Translate Toolkit 2.3.0\n"
+"X-Generator: Translate Toolkit 2.3.1\n"
 
 #: [about]thanks
 msgid "Thanks"
@@ -1335,18 +1335,16 @@ msgid "Comment published"
 msgstr "Commentaire publié"
 
 #: [post]comment_publish_error
-#, fuzzy
 msgid "The comment cannot be published"
-msgstr "Commentaire publié"
+msgstr "Le commentaire ne peut être publié"
 
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Commentaire supprimé"
 
 #: [post]liked
-#, fuzzy
 msgid "Liked your publication"
-msgstr "Mes publications"
+msgstr "Aime votre publication"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1557,13 +1555,12 @@ msgid "Send this link to your contacts"
 msgstr "Envoyer ce lien à vos contacts"
 
 #: [room]public_muc
-#, fuzzy
 msgid "Public"
-msgstr "Publier"
+msgstr "Publique"
 
 #: [room]public_muc_text
 msgid "The participants of this chatroom can see each other's profile"
-msgstr ""
+msgstr "Les participants de ce salon peuvent voir leurs profiles réciproquement"
 
 #: [search]keyword
 msgid "What are you looking for?"
@@ -1575,16 +1572,15 @@ msgstr "Ouvrez moi en faisant Ctrl + M"
 
 #: [search]placeholder
 msgid "#cats, username@server.com, John…"
-msgstr ""
+msgstr "#chat, pseudonyme@serveur.com, Marc…"
 
 #: [search]no_contacts_title
-#, fuzzy
 msgid "No contacts yet?"
-msgstr "Pas de commentaires pour le moment"
+msgstr "Pas encore de contacts ?"
 
 #: [search]no_contacts_text
 msgid "Find one by searching for his name or id"
-msgstr ""
+msgstr "Trouvez-en un en saisissant son nom ou son identifiant"
 
 #: [statistics]title
 msgid "Statistics"
@@ -1636,11 +1632,11 @@ msgstr "Le téléversement a échoué"
 
 #: [upload]error_not_allowed
 msgid "You are not allowed to upload a file"
-msgstr ""
+msgstr "Vous n'êtes pas autorisé à téléverser un fichier"
 
 #: [upload]error_resource_constraint
 msgid "You exceeded the quota"
-msgstr ""
+msgstr "Vous avez dépassé le quota"
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1724,7 +1720,7 @@ msgstr "appel terminé"
 
 #: [global]no_js
 msgid "Movim requires Javascript to be enabled to work properly."
-msgstr ""
+msgstr "Movim nécessite JavaScript pour fonctionner correctement."
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
@@ -1787,9 +1783,8 @@ msgid "Login"
 msgstr "Connexion"
 
 #: [page]not_found
-#, fuzzy
 msgid "Not Found"
-msgstr "Pas maintenant"
+msgstr "Non trouvé"
 
 #: [page]feed
 msgid "Feed"
@@ -2564,6 +2559,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "You don’t have Javascript enabled. Good luck with that."
-#~ msgstr "JavaScript est désactivé sur votre navigateur."
