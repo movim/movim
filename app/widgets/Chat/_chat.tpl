@@ -214,7 +214,7 @@
     <ul class="list">
         <li class="{if="$muc && !$conference->connected"}disabled{/if}">
             <span class="primary icon gray emojis_open" onclick="Stickers_ajaxShow('{$jid}')">
-                <img alt="☺" class="emoji large" src="{$c->getSmileyPath('1f603')}">
+                <i class="material-icons">mood</i>
             </span>
             {if="$c->getUser()->hasUpload()"}
                 <span class="upload control icon"
