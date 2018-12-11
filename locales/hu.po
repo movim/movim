@@ -64,6 +64,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notifications/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
@@ -99,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 11:16+0200\n"
+"POT-Creation-Date: 2018-12-11 18:53+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Zsolt <maxigaz@protonmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -1329,9 +1331,19 @@ msgstr "Kommentek letiltva"
 msgid "Comment published"
 msgstr "Komment közzétéve"
 
+#: [post]comment_publish_error
+#, fuzzy
+msgid "The comment cannot be published"
+msgstr "Komment közzétéve"
+
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr ""
+
+#: [post]liked
+#, fuzzy
+msgid "Liked your publication"
+msgstr "Közzétételeim"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1541,6 +1553,15 @@ msgstr ""
 msgid "Send this link to your contacts"
 msgstr ""
 
+#: [room]public_muc
+#, fuzzy
+msgid "Public"
+msgstr "Közzétesz"
+
+#: [room]public_muc_text
+msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "Mit keresel?"
@@ -1548,6 +1569,19 @@ msgstr "Mit keresel?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "A Ctrl + M gombbal nyithatsz meg"
+
+#: [search]placeholder
+msgid "#cats, username@server.com, John…"
+msgstr ""
+
+#: [search]no_contacts_title
+#, fuzzy
+msgid "No contacts yet?"
+msgstr "Még nincs hozzászólás"
+
+#: [search]no_contacts_text
+msgid "Find one by searching for his name or id"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1595,6 +1629,14 @@ msgstr ""
 
 #: [upload]error_failed
 msgid "Upload failed"
+msgstr ""
+
+#: [upload]error_not_allowed
+msgid "You are not allowed to upload a file"
+msgstr ""
+
+#: [upload]error_resource_constraint
+msgid "You exceeded the quota"
 msgstr ""
 
 #: [vcard]title [page]profile
@@ -1678,7 +1720,7 @@ msgid "call ended"
 msgstr ""
 
 #: [global]no_js
-msgid "You don’t have Javascript enabled. Good luck with that."
+msgid "Movim requires Javascript to be enabled to work properly."
 msgstr ""
 
 #: [global]description
@@ -1740,6 +1782,10 @@ msgstr "Névjegy"
 #: [page]login
 msgid "Login"
 msgstr "Bejelentkezés"
+
+#: [page]not_found
+msgid "Not Found"
+msgstr ""
 
 #: [page]feed
 msgid "Feed"

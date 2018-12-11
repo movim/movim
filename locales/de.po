@@ -75,6 +75,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notifications/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
@@ -110,7 +112,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 11:16+0200\n"
+"POT-Creation-Date: 2018-12-11 18:53+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Thomas Thomas <fix@kippenbergs.de>\n"
 "Language-Team: German (http://www.transifex.com/movim/movim/language/de/)\n"
@@ -1340,9 +1342,19 @@ msgstr "Kommentare deaktiviert"
 msgid "Comment published"
 msgstr "Kommentar veröffentlicht"
 
+#: [post]comment_publish_error
+#, fuzzy
+msgid "The comment cannot be published"
+msgstr "Kommentar veröffentlicht"
+
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Kommentar gelöscht"
+
+#: [post]liked
+#, fuzzy
+msgid "Liked your publication"
+msgstr "Meine Veröffentlichungen"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1552,6 +1564,15 @@ msgstr "Einladung versendet"
 msgid "Send this link to your contacts"
 msgstr "Senden Sie diesen Link an Ihre Kontakte"
 
+#: [room]public_muc
+#, fuzzy
+msgid "Public"
+msgstr "Veröffentlichen"
+
+#: [room]public_muc_text
+msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "Was suchen Sie?"
@@ -1559,6 +1580,19 @@ msgstr "Was suchen Sie?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Mit Ctrl+M zu öffnen"
+
+#: [search]placeholder
+msgid "#cats, username@server.com, John…"
+msgstr ""
+
+#: [search]no_contacts_title
+#, fuzzy
+msgid "No contacts yet?"
+msgstr "Noch keine Kommentare"
+
+#: [search]no_contacts_text
+msgid "Find one by searching for his name or id"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1607,6 +1641,14 @@ msgstr "Datei zu groß"
 #: [upload]error_failed
 msgid "Upload failed"
 msgstr "Heraufladen gescheitert"
+
+#: [upload]error_not_allowed
+msgid "You are not allowed to upload a file"
+msgstr ""
+
+#: [upload]error_resource_constraint
+msgid "You exceeded the quota"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1689,8 +1731,8 @@ msgid "call ended"
 msgstr ""
 
 #: [global]no_js
-msgid "You don’t have Javascript enabled. Good luck with that."
-msgstr "Sie haben Javascript nicht aktiviert. Viel Glück damit."
+msgid "Movim requires Javascript to be enabled to work properly."
+msgstr ""
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
@@ -1751,6 +1793,11 @@ msgstr "Info"
 #: [page]login
 msgid "Login"
 msgstr "Anmelden"
+
+#: [page]not_found
+#, fuzzy
+msgid "Not Found"
+msgstr "Nicht jetzt"
 
 #: [page]feed
 msgid "Feed"
@@ -2528,6 +2575,9 @@ msgstr "Die API ist nicht erreichbar, bitte später erneut versuchen"
 #: [field]type_here
 msgid "Type here"
 msgstr "Hier schreiben"
+
+#~ msgid "You don’t have Javascript enabled. Good luck with that."
+#~ msgstr "Sie haben Javascript nicht aktiviert. Viel Glück damit."
 
 #~ msgid "Refresh all the streams"
 #~ msgstr "Alle Daten auffrischen"

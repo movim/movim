@@ -61,6 +61,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notifications/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
@@ -96,7 +98,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 11:16+0200\n"
+"POT-Creation-Date: 2018-12-11 18:53+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Persian (http://www.transifex.com/movim/movim/language/fa/)\n"
@@ -1326,9 +1328,18 @@ msgstr "نظر دادن خاموش است"
 msgid "Comment published"
 msgstr "نظر منتشر شد"
 
+#: [post]comment_publish_error
+#, fuzzy
+msgid "The comment cannot be published"
+msgstr "نظر منتشر شد"
+
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "نظر حذف شد"
+
+#: [post]liked
+msgid "Liked your publication"
+msgstr ""
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1538,12 +1549,34 @@ msgstr ""
 msgid "Send this link to your contacts"
 msgstr ""
 
+#: [room]public_muc
+#, fuzzy
+msgid "Public"
+msgstr "منتشر کردن"
+
+#: [room]public_muc_text
+msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "دنبال چی میگردی؟"
 
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
+msgstr ""
+
+#: [search]placeholder
+msgid "#cats, username@server.com, John…"
+msgstr ""
+
+#: [search]no_contacts_title
+#, fuzzy
+msgid "No contacts yet?"
+msgstr "هنوز نظری ثبت نشده است."
+
+#: [search]no_contacts_text
+msgid "Find one by searching for his name or id"
 msgstr ""
 
 #: [statistics]title
@@ -1593,6 +1626,14 @@ msgstr "فایل بیش از حد بزرگ است"
 #: [upload]error_failed
 msgid "Upload failed"
 msgstr "آپلود ناموفق بود"
+
+#: [upload]error_not_allowed
+msgid "You are not allowed to upload a file"
+msgstr ""
+
+#: [upload]error_resource_constraint
+msgid "You exceeded the quota"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1675,7 +1716,7 @@ msgid "call ended"
 msgstr ""
 
 #: [global]no_js
-msgid "You don’t have Javascript enabled. Good luck with that."
+msgid "Movim requires Javascript to be enabled to work properly."
 msgstr ""
 
 #: [global]description
@@ -1736,6 +1777,10 @@ msgstr ""
 
 #: [page]login
 msgid "Login"
+msgstr ""
+
+#: [page]not_found
+msgid "Not Found"
 msgstr ""
 
 #: [page]feed

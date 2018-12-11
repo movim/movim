@@ -11,6 +11,6 @@ class NotfoundController extends Base
 
     function dispatch()
     {
-        $this->page->setTitle(__('title.not_found', APP_TITLE));
+        $this->page->setTitle(__('page.not_found'));
     }
 }

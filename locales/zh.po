@@ -67,6 +67,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notifications/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
@@ -102,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 11:16+0200\n"
+"POT-Creation-Date: 2018-12-11 18:53+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/movim/movim/language/zh_CN/)\n"
@@ -1332,9 +1334,19 @@ msgstr "评论已禁用"
 msgid "Comment published"
 msgstr "评论已发布"
 
+#: [post]comment_publish_error
+#, fuzzy
+msgid "The comment cannot be published"
+msgstr "评论已发布"
+
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "评论已删除"
+
+#: [post]liked
+#, fuzzy
+msgid "Liked your publication"
+msgstr "我的发布"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1544,6 +1556,15 @@ msgstr "邀请已发送"
 msgid "Send this link to your contacts"
 msgstr "将此链接发送给你的联系人"
 
+#: [room]public_muc
+#, fuzzy
+msgid "Public"
+msgstr "发布"
+
+#: [room]public_muc_text
+msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "想找什么？"
@@ -1551,6 +1572,19 @@ msgstr "想找什么？"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "使用 Ctrl + M 打开我"
+
+#: [search]placeholder
+msgid "#cats, username@server.com, John…"
+msgstr ""
+
+#: [search]no_contacts_title
+#, fuzzy
+msgid "No contacts yet?"
+msgstr "尚无评论"
+
+#: [search]no_contacts_text
+msgid "Find one by searching for his name or id"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1599,6 +1633,14 @@ msgstr "文件太大"
 #: [upload]error_failed
 msgid "Upload failed"
 msgstr "上传失败"
+
+#: [upload]error_not_allowed
+msgid "You are not allowed to upload a file"
+msgstr ""
+
+#: [upload]error_resource_constraint
+msgid "You exceeded the quota"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1681,7 +1723,7 @@ msgid "call ended"
 msgstr ""
 
 #: [global]no_js
-msgid "You don’t have Javascript enabled. Good luck with that."
+msgid "Movim requires Javascript to be enabled to work properly."
 msgstr ""
 
 #: [global]description
@@ -1743,6 +1785,11 @@ msgstr "关于"
 #: [page]login
 msgid "Login"
 msgstr "登录"
+
+#: [page]not_found
+#, fuzzy
+msgid "Not Found"
+msgstr "稍后"
 
 #: [page]feed
 msgid "Feed"

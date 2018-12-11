@@ -60,6 +60,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notifications/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
@@ -95,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 11:16+0200\n"
+"POT-Creation-Date: 2018-12-11 18:53+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -1325,9 +1327,19 @@ msgstr "Komentet janë çaktivizuar"
 msgid "Comment published"
 msgstr "Komenti u botua"
 
+#: [post]comment_publish_error
+#, fuzzy
+msgid "The comment cannot be published"
+msgstr "Komenti u botua"
+
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Komenti u fshi"
+
+#: [post]liked
+#, fuzzy
+msgid "Liked your publication"
+msgstr "Publikimet e mia"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1537,6 +1549,15 @@ msgstr "Ftesa u dërgua"
 msgid "Send this link to your contacts"
 msgstr "Dërgojani këtë lidhje kontakteve tuaja"
 
+#: [room]public_muc
+#, fuzzy
+msgid "Public"
+msgstr "Botoje"
+
+#: [room]public_muc_text
+msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "Ç’po kërkoni?"
@@ -1544,6 +1565,19 @@ msgstr "Ç’po kërkoni?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Hapmë duke përdorur Ctrl + M"
+
+#: [search]placeholder
+msgid "#cats, username@server.com, John…"
+msgstr ""
+
+#: [search]no_contacts_title
+#, fuzzy
+msgid "No contacts yet?"
+msgstr "Ende pa komente"
+
+#: [search]no_contacts_text
+msgid "Find one by searching for his name or id"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1592,6 +1626,14 @@ msgstr "Kartelë shumë e madhe"
 #: [upload]error_failed
 msgid "Upload failed"
 msgstr "Ngarkimi dështoi"
+
+#: [upload]error_not_allowed
+msgid "You are not allowed to upload a file"
+msgstr ""
+
+#: [upload]error_resource_constraint
+msgid "You exceeded the quota"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1674,8 +1716,8 @@ msgid "call ended"
 msgstr ""
 
 #: [global]no_js
-msgid "You don’t have Javascript enabled. Good luck with that."
-msgstr "S’e keni të aktivizuar Javascript-in. Shihni e bëni."
+msgid "Movim requires Javascript to be enabled to work properly."
+msgstr ""
 
 #: [global]description
 msgid "Movim is a kickass distributed social networking platform that protect your privacy and comes with a set of awesome features."
@@ -1736,6 +1778,11 @@ msgstr "Rreth"
 #: [page]login
 msgid "Login"
 msgstr "Hyrje"
+
+#: [page]not_found
+#, fuzzy
+msgid "Not Found"
+msgstr "Jo Tani"
 
 #: [page]feed
 msgid "Feed"
@@ -2513,6 +2560,9 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgid "You don’t have Javascript enabled. Good luck with that."
+#~ msgstr "S’e keni të aktivizuar Javascript-in. Shihni e bëni."
 
 #~ msgid "Refresh all the streams"
 #~ msgstr "Rifreskoji krejt rrjedhat"

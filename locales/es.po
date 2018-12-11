@@ -66,6 +66,8 @@
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Menu/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
+#. extracted from ../app/widgets/Notifications/locales.ini
+#. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Notifs/locales.ini
 #. #-#-#-#-#  locales.po (PACKAGE VERSION)  #-#-#-#-#
 #. extracted from ../app/widgets/Onboarding/locales.ini
@@ -101,7 +103,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-28 11:16+0200\n"
+"POT-Creation-Date: 2018-12-11 18:53+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Spanish (http://www.transifex.com/movim/movim/language/es/)\n"
@@ -1331,9 +1333,19 @@ msgstr "Comentarios deshabilitados"
 msgid "Comment published"
 msgstr "Comentario publicado"
 
+#: [post]comment_publish_error
+#, fuzzy
+msgid "The comment cannot be published"
+msgstr "Comentario publicado"
+
 #: [post]comment_deleted
 msgid "Comment deleted"
 msgstr "Comentario borrado"
+
+#: [post]liked
+#, fuzzy
+msgid "Liked your publication"
+msgstr "Mis publicaciones"
 
 #: [hello]blog_title
 msgid "Visit your public blog"
@@ -1543,6 +1555,15 @@ msgstr "Invitación enviada"
 msgid "Send this link to your contacts"
 msgstr ""
 
+#: [room]public_muc
+#, fuzzy
+msgid "Public"
+msgstr "Publicar"
+
+#: [room]public_muc_text
+msgid "The participants of this chatroom can see each other's profile"
+msgstr ""
+
 #: [search]keyword
 msgid "What are you looking for?"
 msgstr "¿Qué es lo que buscas?"
@@ -1550,6 +1571,19 @@ msgstr "¿Qué es lo que buscas?"
 #: [search]subtitle
 msgid "Open me using Ctrl + M"
 msgstr "Abreme usando Ctrl + M"
+
+#: [search]placeholder
+msgid "#cats, username@server.com, John…"
+msgstr ""
+
+#: [search]no_contacts_title
+#, fuzzy
+msgid "No contacts yet?"
+msgstr "Sin comentarios"
+
+#: [search]no_contacts_text
+msgid "Find one by searching for his name or id"
+msgstr ""
 
 #: [statistics]title
 msgid "Statistics"
@@ -1598,6 +1632,14 @@ msgstr "Archivo demasiado grande"
 #: [upload]error_failed
 msgid "Upload failed"
 msgstr "Subida fallida"
+
+#: [upload]error_not_allowed
+msgid "You are not allowed to upload a file"
+msgstr ""
+
+#: [upload]error_resource_constraint
+msgid "You exceeded the quota"
+msgstr ""
 
 #: [vcard]title [page]profile
 msgid "Profile"
@@ -1680,7 +1722,7 @@ msgid "call ended"
 msgstr ""
 
 #: [global]no_js
-msgid "You don’t have Javascript enabled. Good luck with that."
+msgid "Movim requires Javascript to be enabled to work properly."
 msgstr ""
 
 #: [global]description
@@ -1742,6 +1784,10 @@ msgstr "Acerca de"
 #: [page]login
 msgid "Login"
 msgstr "Inicio de sesión"
+
+#: [page]not_found
+msgid "Not Found"
+msgstr ""
 
 #: [page]feed
 msgid "Feed"
