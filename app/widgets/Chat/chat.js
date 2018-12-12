@@ -142,6 +142,8 @@ var Chat = {
         document.querySelector('.chat_box span.send').classList.remove('sending');
 
         var textarea = Chat.getTextarea();
+        var discussion = Chat.getDiscussion();
+        discussion.scrollTop = discussion.scrollHeight;
         localStorage.removeItem(textarea.dataset.jid + '_message');
         Chat.clearReplace();
         Chat.toggleAction();

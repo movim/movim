@@ -11,7 +11,10 @@
         <li class="subheader" title="{$c->__('page.configuration')}">
             {if="$conferences->isNotEmpty() && !$edit"}
             <span class="control icon active gray" onclick="Rooms_ajaxDisplay(true);">
-                <i class="material-icons">settings</i>
+                <i class="material-icons">edit</i>
+            </span>
+            <span class="control icon active gray" onclick="Rooms_ajaxAdd()">
+                <i class="material-icons">add</i>
             </span>
             {/if}
             <p>
