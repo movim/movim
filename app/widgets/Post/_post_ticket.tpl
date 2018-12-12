@@ -1,9 +1,6 @@
 <li class="block" onclick="MovimUtils.redirect('{$c->route('post', [$post->server, $post->node, $post->nodeid])}')">
     {if="$big && $post->picture != null"}
-        <img class="icon thumb" src="{$post->picture->href|protectPicture}"
-             srcset="{$post->picture->href} 1280w, {$post->picture->href|protectPicture} 800w"
-             sizes="(min-width: 1280px), 800w"
-        >
+        <img class="icon thumb" src="{$post->picture->href|protectPicture}">
     {elseif="!$big"}
     <span class="primary icon thumb color
         {if="$post->contact"}
