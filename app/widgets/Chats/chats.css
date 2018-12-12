@@ -8,6 +8,11 @@ ul#chats_widget_list ~ .placeholder {
 
 ul#chats_widget_list li {
     transition: opacity 0.2s ease-in-out;
+    width: calc(100% + 200rem);
+    margin-left: -100rem;
+    border-right: 100rem #222 solid;
+    border-left: 100rem #222 solid;
+    box-sizing: border-box;
 }
 
 ul#chats_widget_list li.close {
