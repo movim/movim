@@ -247,6 +247,9 @@ class Login extends Base
             $s->loadMemory();
             $s->save();
 
+            // Force reload the User to link the new session
+            \App\User::me(true);
+
             // We launch the XMPP socket
             $this->rpc('register', $host);
 
