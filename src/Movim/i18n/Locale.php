@@ -1,7 +1,9 @@
 <?php
+
 namespace Movim\i18n;
 
-class Locale {
+class Locale
+{
     private static $_instance;
     public $translations;
     public $language;
@@ -27,7 +29,7 @@ class Locale {
      * @desc Load a locales ini file and merge it with hash attribute
      * @param $file The path of the fie
      */
-    private function loadIni($file)
+    private function loadIni(string $file)
     {
         $this->hash = array_merge_recursive(
             $this->hash,
@@ -77,7 +79,7 @@ class Locale {
      * @param $key The key to translate
      * @param $args Arguments to pass to sprintf
      */
-    public function translate($key, $args = false)
+    public function translate(string $key, $args = false)
     {
         if (empty($key)) return $key;
 
@@ -167,7 +169,7 @@ class Locale {
      * @desc Load a specific language
      * @param $language The language key to load
      */
-    public function load($language)
+    public function load(string $language)
     {
         $this->language = $language;
         $this->loadPo();
@@ -178,9 +180,9 @@ class Locale {
      */
     public function loadPo()
     {
-        $pofile = LOCALES_PATH.$this->language.'.po';
+        $pofile = LOCALES_PATH . $this->language . '.po';
 
-        if (!file_exists($pofile)) {
+        if (!file_exists($pofile) || !is_readable($pofile)) {
             return false;
         }
 
@@ -223,7 +225,7 @@ class Locale {
         fclose($handle);
     }
 
-    private function getQuotedString($string)
+    private function getQuotedString(string $string)
     {
         $matches = [];
         preg_match('#"(.+)"#', $string, $matches);

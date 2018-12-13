@@ -45,26 +45,20 @@ class Bootstrap
 
     private function checkSystem()
     {
-        if (!file_exists(CACHE_PATH) && !@mkdir(CACHE_PATH)) {
-            throw new \Exception('Couldn’t create cache directory');
-        }
-
-        if (!empty($errors) && !is_writable(DOCUMENT_ROOT)) {
+        if (!is_writable(DOCUMENT_ROOT)) {
             throw new \Exception('Unable to write to directory ' . DOCUMENT_ROOT);
         }
 
-        $listWritableFile = [
-            LOG_PATH . 'logger.log',
-            LOG_PATH . 'php.log',
-            CACHE_PATH . 'test.tmp',
-        ];
+        if (!file_exists(CACHE_PATH) && !@mkdir(CACHE_PATH)) {
+            throw new \Exception('Couldn’t create cache directory');
+        } else {
+            touch(CACHE_PATH . 'test.tmp');
+        }
 
-        foreach($listWritableFile as $fileName) {
-            if (!file_exists($fileName)
-            || touch($fileName) !== true
-            || is_writable($fileName) !== true) {
-                throw new \Exception('Unable to write to ' . $fileName);
-            }
+        if (!file_exists(LOG_PATH) && !@mkdir(LOG_PATH)) {
+            throw new \Exception('Couldn’t create log directory');
+        } elseif (!touch(LOG_PATH . 'logger.log') || !touch(LOG_PATH . 'php.log')) {
+            throw new \Exception('Couldn’t create the log files');
         }
     }
 
@@ -242,9 +236,10 @@ class Bootstrap
     private function setLogs()
     {
         ini_set('display_errors', 0);
-        ini_set('error_log', DOCUMENT_ROOT.'/log/php.log');
+        ini_set('error_log', LOG_PATH . 'php.log');
 
         set_error_handler([$this, 'systemErrorHandler'], E_ALL);
+        set_exception_handler([$this, 'exceptionHandler']);
         register_shutdown_function([$this, 'fatalErrorShutdownHandler']);
     }
 
@@ -305,12 +300,24 @@ class Bootstrap
     /**
      * Error Handler...
      */
-    function systemErrorHandler($errno, $errstr, $errfile, $errline, $errcontext = null)
+    function systemErrorHandler($errno, $errstr, $errfile = '', $errline = 0)
     {
+        echo 'An error occured, check syslog for more information'."\n";
+
         $log = new Logger('movim');
         $log->pushHandler(new SyslogHandler('movim'));
-        $log->addError($errstr);
+        $log->addError($errstr . " in " . $errfile . ' (line ' . $errline . ")\n");
         return false;
+    }
+
+    function exceptionHandler(\Exception $exception)
+    {
+        $this->systemErrorHandler(
+            E_ERROR,
+            $exception->getMessage(),
+            $exception->getFile(),
+            $exception->getLine()
+        );
     }
 
     function fatalErrorShutdownHandler()
@@ -322,13 +329,6 @@ class Bootstrap
                 $last_error['message'],
                 $last_error['file'],
                 $last_error['line']);
-
-            if (ob_get_contents()) ob_clean();
-
-            echo "Oops... something went wrong.\n";
-            echo $last_error['message'] . "\n";
-            echo 'in ' . $last_error['file'] . ' (line ' . $last_error['line'] . ")\n";
-            if (ob_get_contents()) ob_end_clean();
         }
     }
 }
