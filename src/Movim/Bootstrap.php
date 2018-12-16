@@ -310,7 +310,7 @@ class Bootstrap
         return false;
     }
 
-    function exceptionHandler(\Exception $exception)
+    function exceptionHandler($exception)
     {
         $this->systemErrorHandler(
             E_ERROR,
