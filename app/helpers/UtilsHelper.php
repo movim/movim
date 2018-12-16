@@ -553,6 +553,9 @@ function requestURL(string $url, int $timeout = 10, $post = false, bool $json = 
     }
 
     $content = curl_exec($ch);
+    if (curl_errno($ch) == 0) {
+        error_log("URL request for " . $url . " returned error: " . $content);
+    }
     return curl_errno($ch) == 0 ? $content : false;
 }
 
@@ -571,7 +574,10 @@ function requestHeaders(string $url, $timeout = 2)
     curl_setopt($ch, CURLOPT_NOBODY, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, DEFAULT_HTTP_USER_AGENT);
 
-    curl_exec($ch);
+    $content = curl_exec($ch);
+    if (curl_errno($ch) == 0) {
+        error_log("Headers request for " . $url . " returned error: " . $content);
+    }
 
     return curl_getinfo($ch);
 }
@@ -593,6 +599,9 @@ function requestAPI(string $action, int $timeout = 2, $post = false)
     }
 
     $content = curl_exec($ch);
+    if (curl_errno($ch) == 0) {
+        error_log("API request for " . $action . " returned error: " . $content);
+    }
     return curl_errno($ch) == 0 ? $content : false;
 }
 
