@@ -33,7 +33,8 @@ class FromModlToEloquent extends AbstractSeed
                                                 ? $config->xmppcountry : null;
             $configuration->xmppwhitelist   = !empty($config->xmppwhitelist)
                                                 ? $config->xmppwhitelist : null;
-            $configuration->restrictsuggestions = $config->restrictsuggestions;
+            $configuration->restrictsuggestions = !empty($config->restrictsuggestions)
+                                                ? $config->restrictsuggestions : false;
 
             $configuration->save();
         }
