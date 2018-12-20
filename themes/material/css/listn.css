@@ -439,6 +439,7 @@ ul li.oppose div.bubble:not(.sticker):not(.file):before {
 }
 
 /* Date separator */
+
 ul li.date {
     min-height: 0;
     text-align: center;

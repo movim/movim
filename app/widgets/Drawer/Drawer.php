@@ -7,6 +7,7 @@ class Drawer extends \Movim\Widget\Base
     function load()
     {
         $this->addjs('drawer.js');
+        $this->addcss('drawer.css');
     }
 
     static function fill($html = '', $actions = false)

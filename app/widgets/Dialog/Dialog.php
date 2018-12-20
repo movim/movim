@@ -7,6 +7,7 @@ class Dialog extends \Movim\Widget\Base
     function load()
     {
         $this->addjs('dialog.js');
+        $this->addjs('dialog.css');
     }
 
     static function fill($html = '', $scroll = false)
