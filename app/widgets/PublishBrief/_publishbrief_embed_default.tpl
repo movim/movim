@@ -11,7 +11,6 @@
     href="#"
     title="{$c->__('publishbrief.attach')}"
     onclick="Upload_ajaxRequest()">
-    <i class="material-icons">attach_file</i>
+    <i class="material-icons">image</i>
 </a>
 {/if}
-

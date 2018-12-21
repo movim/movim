@@ -169,8 +169,8 @@ class Bootstrap
           'database' => $conf['database'],
           'username' => $conf['username'],
           'password' => $conf['password'],
-          'charset' => 'utf8',
-          'collation' => 'utf8_unicode_ci',
+          'charset' => ($conf['type'] == 'mysql') ? 'utf8mb4' : 'utf8',
+          'collation' => ($conf['type'] == 'mysql') ? 'utf8mb4_unicode_ci' : 'utf8_unicode_ci',
         ]);
 
         $capsule->bootEloquent();
@@ -300,7 +300,7 @@ class Bootstrap
     /**
      * Error Handler...
      */
-    function systemErrorHandler($errno, $errstr, $errfile = '', $errline = 0)
+    function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0)
     {
         echo 'An error occured, check syslog for more information'."\n";
 
@@ -314,7 +314,7 @@ class Bootstrap
     {
         $this->systemErrorHandler(
             E_ERROR,
-            $exception->getMessage(),
+            truncate($exception->getMessage(), 400),
             $exception->getFile(),
             $exception->getLine()
         );

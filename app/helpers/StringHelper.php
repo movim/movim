@@ -3,7 +3,7 @@
 use Movim\Route;
 use App\Configuration;
 
-function addUrls($string, $preview = false)
+function addUrls(string $string, bool $preview = false): string
 {
     // Add missing links
     return preg_replace_callback("/<a[^>]*>[^<]*<\/a|\".*?\"|((?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’])))/", function ($match) use ($preview) {
@@ -66,7 +66,7 @@ function addUrls($string, $preview = false)
 
 }
 
-function addHashtagsLinks($string)
+function addHashtagsLinks(string $string): string
 {
     return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function($match) {
         return
@@ -77,7 +77,7 @@ function addHashtagsLinks($string)
     }, $string);
 }
 
-function addHFR($string)
+function addHFR(string $string): string
 {
     // HFR EasterEgg
     return preg_replace_callback(
@@ -97,28 +97,21 @@ function addEmojis($string)
 }
 
 /**
- * @desc Prepare the string (add the a to the links and show the smileys)
- *
- * @param string $string
- * @param boolean display large emojis
- * @param check the links and convert them to pictures (heavy)
- * @return string
+ * Prepare the string (add the a to the links and show the smileys)
  */
-function prepareString($string, $preview = false)
+function prepareString(string $string, bool $preview = false): string
 {
     return addEmojis(addUrls($string, $preview));
 }
 
 /**
- * @desc Return the tags in a string
- *
- * @param string $string
- * @return array
+ * Return the tags in a string
  */
-function getHashtags($string)
+function getHashtags(string $string): array
 {
     $hashtags = [];
     preg_match_all("/(#\w+)/u", $string, $matches);
+
     if ($matches) {
         $hashtagsArray = array_count_values($matches[0]);
         $hashtags = array_map(function($tag) {
@@ -132,7 +125,7 @@ function getHashtags($string)
 /*
  * Echap the JID
  */
-function echapJid($jid)
+function echapJid(string $jid): string
 {
     return str_replace(' ', '\40', $jid);
 }
@@ -140,24 +133,24 @@ function echapJid($jid)
 /*
  * Echap the anti-slashs for Javascript
  */
-function echapJS($string)
+function echapJS(string $string): string
 {
     return str_replace(["\\", "'"], ["\\\\", "\\'"], $string);
 }
 
-/*
+/**
  * Clean the resource of a jid
  */
-function cleanJid($jid)
+function cleanJid(string $jid): string
 {
     $explode = explode('/', $jid);
     return reset($explode);
 }
 
-/*
+/**
  * Extract the CID
  */
-function getCid($string)
+function getCid(string $string)
 {
     preg_match("/(\w+)\@/", $string, $matches);
     if (is_array($matches)) {
@@ -165,10 +158,10 @@ function getCid($string)
     }
 }
 
-/*
+/**
  * Explose query parameters into an array
  */
-function explodeQueryParams($query)
+function explodeQueryParams(string $query): array
 {
     $params = [];
 
@@ -182,17 +175,15 @@ function explodeQueryParams($query)
     return $params;
 }
 
-/*
+/**
  *  Explode JID
  */
-function explodeJid($jid)
+function explodeJid(string $jid): array
 {
     $arr = explode('/', $jid);
     $jid = $arr[0];
 
-    if (isset($arr[1])) $resource = $arr[1];
-    else $resource = null;
-
+    $resource = isset($arr[1]) ? $arr[1] : null;
     $server = '';
 
     $arr = explode('@', $jid);
@@ -209,10 +200,8 @@ function explodeJid($jid)
 
 /**
  * Return a human readable filesize
- * @param string size in bytes
- * @return string
  */
-function sizeToCleanSize($bytes, $precision = 2)
+function sizeToCleanSize($bytes, int $precision = 2): string
 {
     $units = array('B', 'KB', 'MB', 'GB', 'TB');
 
@@ -226,11 +215,8 @@ function sizeToCleanSize($bytes, $precision = 2)
 
 /**
  * Return a colored string in the console
- * @param string
- * @param color
- * @return string
  */
-function colorize($string, $color)
+function colorize(string $string, string $color): string
 {
     $colors = [
         'black'     => 30,
@@ -243,25 +229,21 @@ function colorize($string, $color)
         'white'     => 37
     ];
 
-    return "\033[".$colors[$color]."m".$string."\033[0m";
+    return "\033[" . $colors[$color] . "m" . $string . "\033[0m";
 }
 
 /**
  * Check if the mimetype is a picture
- * @param string
- * @return bool
  */
-function typeIsPicture($type)
+function typeIsPicture(string $type): bool
 {
     return in_array($type, ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']);
 }
 
 /**
  * Check if the mimetype is an audio file
- * @param string
- * @return bool
  */
-function typeIsAudio($type)
+function typeIsAudio(string $type): bool
 {
     return in_array($type, [
         'audio/aac', 'audio/ogg', 'video/ogg', 'audio/opus',
@@ -271,10 +253,8 @@ function typeIsAudio($type)
 
 /**
  * Return a color generated from the string
- * @param string
- * @return string
  */
-function stringToColor($string)
+function stringToColor(string $string): string
 {
     $colors = [
         0 => 'red',
@@ -301,20 +281,16 @@ function stringToColor($string)
 
 /**
  * Strip tags and add a whitespace
- * @param string
- * @return string
  */
-function stripTags($string)
+function stripTags(string $string): string
 {
     return strip_tags(preg_replace('/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2', $string));
 }
 
 /**
  * Purify a string
- * @param string
- * @return string
  */
-function purifyHTML($string)
+function purifyHTML(string $string): string
 {
     $config = \HTMLPurifier_Config::createDefault();
     $config->set('HTML.Doctype', 'XHTML 1.1');
@@ -351,18 +327,14 @@ function purifyHTML($string)
 
 /**
  * Check if a string is RTL
- * @param string
- * @return string
  */
-function isRTL($string)
+function isRTL($string): bool
 {
     return preg_match('/\p{Arabic}|\p{Hebrew}/u', $string);
 }
 
 /**
  * Invert a number
- * @param num
- * @return num
  */
 function invertSign($num)
 {
@@ -371,46 +343,36 @@ function invertSign($num)
 
 /**
  * Return the first two letters of a string
- * @param string
- * @return string
  */
-function firstLetterCapitalize($string, $firstOnly = false)
+function firstLetterCapitalize(string $string, bool $firstOnly = false): string
 {
     $size = ($firstOnly) ? 1 : 2;
     return mb_convert_case(mb_substr($string, 0, $size), MB_CASE_TITLE);
 }
 
 /** Return a clean string that can be used for HTML ids
- * @param string
- * @return string
  */
-function cleanupId($string)
+function cleanupId(string $string)
 {
     return "id-" . strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
 }
 
 /**
  * Truncates the given string at the specified length.
- *
- * @param string $str The input string.
- * @param int $width The number of chars at which the string will be truncated.
- * @return string
  */
-function truncate($str, $width)
+function truncate(string $str, int $width): string
 {
     return strtok(wordwrap($str, $width, "…\n"), "\n");
 }
 
 /**
  * Return the URI of a path with a timestamp
- *
- * @param string $path
- * @return string
  */
-function urilize($path, $notime = false)
+function urilize(string $path, bool $noTime = false): string
 {
-    if ($notime || !file_exists(DOCUMENT_ROOT . '/' . $path)) {
+    if ($noTime || !file_exists(DOCUMENT_ROOT . '/' . $path)) {
         return BASE_URI . $path;
     }
+
     return BASE_URI . $path . '?t=' . filemtime(DOCUMENT_ROOT . '/' . $path);
 }
