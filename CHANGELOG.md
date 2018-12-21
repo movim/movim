@@ -12,6 +12,9 @@ v0.14.1 (trunk)
  * Add slide-to-close feature in Chats to quickly close one-to-one discussions on touch devices
  * Fix Onboarding issues on some devices
  * Fix scrolling on iOS
+ * Add a close button to the Drawer widget
+ * Errors and Exceptions handling improvements
+ * Fix connection using utf8mb4 on MySQL
 
 v0.14
 ---------------------------
