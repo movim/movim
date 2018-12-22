@@ -314,7 +314,7 @@ class Bootstrap
     {
         $this->systemErrorHandler(
             E_ERROR,
-            truncate($exception->getMessage(), 400),
+            function_exists('truncate') ? truncate($exception->getMessage(), 400) : $exception->getMessage(),
             $exception->getFile(),
             $exception->getLine()
         );
