@@ -1,5 +1,7 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Pubsub\GetItem;
 use Moxl\Xec\Action\Microblog\CommentsGet;
@@ -7,9 +9,9 @@ use Moxl\Xec\Action\Microblog\CommentPublish;
 
 use Respect\Validation\Validator;
 
-class Post extends \Movim\Widget\Base
+class Post extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('post.js');
         $this->addcss('post.css');
@@ -21,7 +23,7 @@ class Post extends \Movim\Widget\Base
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete', 'post');
     }
 
-    function onHandle($packet)
+    public function onHandle($packet)
     {
         $post = $packet->content;
 
@@ -39,41 +41,41 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function onCommentPublished($packet)
+    public function onCommentPublished($packet)
     {
         Notification::append(false, $this->__('post.comment_published'));
     }
 
-    function onCommentPublishError($packet)
+    public function onCommentPublishError($packet)
     {
         Notification::append(false, $this->__('post.comment_publish_error'));
     }
 
-    function onComments($packet)
+    public function onComments($packet)
     {
         $post = \App\Post::find($packet->content);
         $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($post));
     }
 
-    function onCommentsError($packet)
+    public function onCommentsError($packet)
     {
         $view = $this->tpl();
         $html = $view->draw('_post_comments_error');
         $this->rpc('MovimTpl.fill', '#comments', $html);
     }
 
-    function onDelete($packet)
+    public function onDelete($packet)
     {
         $this->rpc('Post.refreshComments');
     }
 
-    function ajaxGetContact($jid)
+    public function ajaxGetContact($jid)
     {
         $c = new ContactActions;
         $c->ajaxGetDrawer($jid);
     }
 
-    function ajaxGetPost($server, $node, $nodeid)
+    public function ajaxGetPost($server, $node, $nodeid)
     {
         $p = \App\Post::where('server', $server)
                       ->where('node', $node)
@@ -106,7 +108,7 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function ajaxGetPostComments($server, $node, $id)
+    public function ajaxGetPostComments($server, $node, $id)
     {
         $post = \App\Post::where('server', $server)
                          ->where('node', $node)
@@ -118,12 +120,12 @@ class Post extends \Movim\Widget\Base
         }
     }
 
-    function ajaxShare($server, $node, $id)
+    public function ajaxShare($server, $node, $id)
     {
         $this->rpc('MovimUtils.redirect', $this->route('publish', [$server, $node, $id, 'share']));
     }
 
-    function requestComments(\App\Post $post)
+    public function requestComments(\App\Post $post)
     {
         if ($post->id == null) return;
 
@@ -179,13 +181,13 @@ class Post extends \Movim\Widget\Base
         return $view->draw('_post_comments');
     }
 
-    function prepareNotFound()
+    public function prepareNotFound()
     {
         $view = $this->tpl();
         return $view->draw('_post_not_found');
     }
 
-    function preparePost(\App\Post $p, $public = false, $card = false)
+    public function preparePost(\App\Post $p, $public = false, $card = false)
     {
         if (isset($p)) {
             $view = $this->tpl();
@@ -214,7 +216,7 @@ class Post extends \Movim\Widget\Base
         return $this->prepareNotFound();
     }
 
-    function prepareTicket(\App\Post $post, $big = false)
+    public function prepareTicket(\App\Post $post, $big = false)
     {
         $view = $this->tpl();
         $view->assign('post', $post);
@@ -246,7 +248,7 @@ class Post extends \Movim\Widget\Base
         return $view->draw('_post_prevnext');
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('nodeid', false);
         if (Validator::stringType()->length(10, 256)->validate($this->get('i'))) {

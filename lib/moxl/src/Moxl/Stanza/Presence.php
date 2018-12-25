@@ -9,7 +9,7 @@ class Presence
     /*
      * The presence builder
      */
-    static function maker($to = false, $status = false, $show = false, $priority = 0, $type = false)
+    public static function maker($to = false, $status = false, $show = false, $priority = 0, $type = false)
     {
         $session = Session::start();
 
@@ -22,25 +22,25 @@ class Presence
         $root->setAttribute('from', $me->id.'/'.$me->session->resource);
         $root->setAttribute('id', $session->get('id'));
 
-        if($to != false) {
+        if ($to != false) {
             $root->setAttribute('to', $to);
         }
 
-        if($type != false) {
+        if ($type != false) {
             $root->setAttribute('type', $type);
         }
 
-        if($status != false) {
+        if ($status != false) {
             $status = $dom->createElement('status', $status);
             $root->appendChild($status);
         }
 
-        if($show != false) {
+        if ($show != false) {
             $show = $dom->createElement('show', $show);
             $root->appendChild($show);
         }
 
-        if($priority != 0) {
+        if ($priority != 0) {
             $priority = $dom->createElement('priority', $priority);
             $root->appendChild($priority);
         }
@@ -58,7 +58,7 @@ class Presence
     /*
      * Simple presence without parameters
      */
-    static function simple()
+    public static function simple()
     {
         $xml = self::maker(false, false, false, false, false);
         \Moxl\API::request($xml);
@@ -67,7 +67,7 @@ class Presence
     /*
      * Subscribe to someone presence
      */
-    static function unavailable($to = false, $status = false, $type = false)
+    public static function unavailable($to = false, $status = false, $type = false)
     {
         $xml = self::maker($to, $status, false, false, 'unavailable');
         \Moxl\API::request($xml, $type);
@@ -76,7 +76,7 @@ class Presence
     /*
      * Subscribe to someone presence
      */
-    static function subscribe($to, $status)
+    public static function subscribe($to, $status)
     {
         $xml = self::maker($to, $status, false, false, 'subscribe');
         \Moxl\API::request($xml);
@@ -85,7 +85,7 @@ class Presence
     /*
      * Unsubscribe to someone presence
      */
-    static function unsubscribe($to, $status)
+    public static function unsubscribe($to, $status)
     {
         $xml = self::maker($to, $status, false, false, 'unsubscribe');
         \Moxl\API::request($xml);
@@ -94,7 +94,7 @@ class Presence
     /*
      * Accept someone presence \Moxl\API::request
      */
-    static function subscribed($to)
+    public static function subscribed($to)
     {
         $xml = self::maker($to, false, false, false, 'subscribed');
         \Moxl\API::request($xml);
@@ -103,7 +103,7 @@ class Presence
     /*
      * Refuse someone presence \Moxl\API::request
      */
-    static function unsubscribed($to)
+    public static function unsubscribed($to)
     {
         $xml = self::maker($to, false, false, false, 'unsubscribed');
         \Moxl\API::request($xml);
@@ -112,7 +112,7 @@ class Presence
     /*
      * Enter a chat room
      */
-    static function muc($to, $nickname = false, $mam = false)
+    public static function muc($to, $nickname = false, $mam = false)
     {
         $session = Session::start();
 
@@ -128,7 +128,7 @@ class Presence
 
         $x = $dom->createElementNS('http://jabber.org/protocol/muc', 'x');
 
-        if($mam) {
+        if ($mam) {
             $history = $dom->createElement('history');
             $history->setAttribute('maxchars', 0);
             $x->appendChild($history);
@@ -142,7 +142,7 @@ class Presence
     /*
      * Go away
      */
-    static function away($status = false)
+    public static function away($status = false)
     {
         $xml = self::maker(false, $status, 'away', false, false);
         \Moxl\API::request($xml);
@@ -151,7 +151,7 @@ class Presence
     /*
      * Go chatting
      */
-    static function chat($status = false)
+    public static function chat($status = false)
     {
         $xml = self::maker(false, $status, 'chat', false, false);
         \Moxl\API::request($xml);
@@ -160,7 +160,7 @@ class Presence
     /*
      * Do not disturb
      */
-    static function DND($status = false)
+    public static function DND($status = false)
     {
         $xml = self::maker(false, $status, 'dnd', false, false);
         \Moxl\API::request($xml);
@@ -169,7 +169,7 @@ class Presence
     /*
      * eXtended Away
      */
-    static function XA($status = false)
+    public static function XA($status = false)
     {
         $xml = self::maker(false, $status, 'xa', false, false);
         \Moxl\API::request($xml);

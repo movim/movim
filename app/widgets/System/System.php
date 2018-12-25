@@ -1,8 +1,10 @@
 <?php
 
-class System extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class System extends Base
 {
-    function display()
+    public function display()
     {
         header('Cache-Control:public, max-age=31536000');
         header('Content-Type: application/javascript');

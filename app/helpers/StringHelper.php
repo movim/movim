@@ -165,7 +165,7 @@ function explodeQueryParams(string $query): array
 {
     $params = [];
 
-    foreach(explode(';', $query) as $param) {
+    foreach (explode(';', $query) as $param) {
         $result = explode('=', $param);
         if (count($result) == 2) {
             $params[$result[0]] = $result[1];

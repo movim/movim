@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Roster
 {
-    static function get()
+    public static function get()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:roster', 'query');
@@ -15,7 +15,7 @@ class Roster
     /*
      * Add contact
      */
-    static function add($to, $name, $group)
+    public static function add($to, $name, $group)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $roster = $dom->createElementNS('jabber:iq:roster', 'query');
@@ -25,7 +25,7 @@ class Roster
         $item->setAttribute('name', $name);
         $roster->appendChild($item);
 
-        if(!empty($group)) {
+        if (!empty($group)) {
             $group = $dom->createElement('group', $group);
             $item->appendChild($group);
         }
@@ -34,7 +34,7 @@ class Roster
         \Moxl\API::request($xml);
     }
 
-    static function update($to, $name, $group)
+    public static function update($to, $name, $group)
     {
         $xml = self::add($to, $name, $group);
         \Moxl\API::request($xml);
@@ -43,7 +43,7 @@ class Roster
     /*
      * Remove a contact
      */
-    static function remove($to)
+    public static function remove($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $roster = $dom->createElementNS('jabber:iq:roster', 'query');

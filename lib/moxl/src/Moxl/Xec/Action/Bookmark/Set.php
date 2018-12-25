@@ -19,8 +19,8 @@ class Set extends Action
     {
         \App\User::me()->session->conferences()->delete();
 
-        foreach($this->_arr as $c) {
-            if($c['type'] == 'conference') {
+        foreach ($this->_arr as $c) {
+            if ($c['type'] == 'conference') {
                 $conference = new \App\Conference;
 
                 $conference->conference     = (string)$c['jid'];

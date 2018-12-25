@@ -20,10 +20,10 @@ class GetAffiliations extends Errors
     public function handle($stanza, $parent = false)
     {
         $tab = [];
-        foreach($stanza->pubsub->affiliations->children() as $i) {
+        foreach ($stanza->pubsub->affiliations->children() as $i) {
             $affiliation = (string)$i['affiliation'];
 
-            if(!array_key_exists($affiliation, $tab)) {
+            if (!array_key_exists($affiliation, $tab)) {
                 $tab[$affiliation] = [];
             }
 

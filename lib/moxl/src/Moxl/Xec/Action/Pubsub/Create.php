@@ -20,7 +20,7 @@ class Create extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        if($stanza["type"] == "result"){
+        if ($stanza["type"] == "result") {
             $this->pack(['server' => $this->_to, 'node' => $this->_node]);
             $this->deliver();
         }

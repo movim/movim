@@ -1,18 +1,20 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Respect\Validation\Validator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Capsule\Manager as DB;
 
-class Search extends \Movim\Widget\Base
+class Search extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('search.js');
         $this->addcss('search.css');
     }
 
-    function ajaxRequest()
+    public function ajaxRequest()
     {
         $view = $this->tpl();
 
@@ -26,7 +28,7 @@ class Search extends \Movim\Widget\Base
         $this->rpc('Search.init');
     }
 
-    function prepareSearch($key)
+    public function prepareSearch($key)
     {
         $view = $this->tpl();
 
@@ -109,13 +111,13 @@ class Search extends \Movim\Widget\Base
         return $view->draw('_search_results_empty');
     }
 
-    function ajaxSearch($key)
+    public function ajaxSearch($key)
     {
         $this->rpc('MovimTpl.fill', '#results', $this->prepareSearch($key));
         $this->rpc('Search.searchClear');
     }
 
-    function ajaxChat($jid)
+    public function ajaxChat($jid)
     {
         $contact = new ContactActions;
         $contact->ajaxChat($jid);

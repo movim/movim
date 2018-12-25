@@ -2,16 +2,17 @@
 
 use Respect\Validation\Validator;
 
+use Movim\Widget\Base;
 use Movim\Session;
 
-class Share extends \Movim\Widget\Base
+class Share extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('share.js');
     }
 
-    function ajaxGet($link)
+    public function ajaxGet($link)
     {
         $validate_url = Validator::url();
 

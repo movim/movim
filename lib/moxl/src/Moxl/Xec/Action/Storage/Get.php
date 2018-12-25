@@ -19,10 +19,10 @@ class Get extends Action
 
     public function handle($stanza, $parent = false)
     {
-        if($stanza->query->data) {
+        if ($stanza->query->data) {
             $data = unserialize(trim((string)$stanza->query->data));
 
-            if(is_array($data)) {
+            if (is_array($data)) {
                 $me = User::me();
                 $me->setConfig($data);
                 $me->save();

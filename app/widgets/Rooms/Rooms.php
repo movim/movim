@@ -12,12 +12,13 @@ use Moxl\Xec\Action\Vcard\Set as VcardSet;
 use Respect\Validation\Validator;
 use Illuminate\Support\Collection;
 
+use Movim\Widget\Base;
 use Movim\Picture;
 use Movim\Session;
 
-class Rooms extends \Movim\Widget\Base
+class Rooms extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('rooms.js');
         $this->addcss('rooms.css');
@@ -32,7 +33,7 @@ class Rooms extends \Movim\Widget\Base
         $this->registerEvent('presence_muc_errorremoteservernotfound', 'onRemoteServerNotFound');
     }
 
-    function onMessage($packet)
+    public function onMessage($packet)
     {
         $message = $packet->content;
 
@@ -50,27 +51,27 @@ class Rooms extends \Movim\Widget\Base
         }
     }
 
-    function onAvatarSet($packet)
+    public function onAvatarSet($packet)
     {
         $this->rpc('Dialog_ajaxClear');
         Notification::append(null, $this->__('avatar.updated'));
     }
 
-    function onRegistrationRequired($packet)
+    public function onRegistrationRequired($packet)
     {
         Notification::append(null, $this->__('chatrooms.registrationrequired'));
         $this->ajaxExit($packet->content);
     }
 
-    function onRemoteServerNotFound($packet)
+    public function onRemoteServerNotFound($packet)
     {
         Notification::append(null, $this->__('chatrooms.remoteservernotfound'));
         $this->ajaxExit($packet->content);
     }
 
-    function onGetBookmark()
+    public function onGetBookmark()
     {
-        foreach($this->user->session->conferences as $room) {
+        foreach ($this->user->session->conferences as $room) {
             if ($room->autojoin && !$room->connected) {
                 $this->ajaxJoin($room->conference, $room->nick);
             }
@@ -79,23 +80,23 @@ class Rooms extends \Movim\Widget\Base
         $this->refreshRooms();
     }
 
-    function onBookmark()
+    public function onBookmark()
     {
         $this->refreshRooms();
         $this->rpc('MovimTpl.hidePanel');
     }
 
-    function onConnected($packet)
+    public function onConnected($packet)
     {
         $this->refreshRooms();
     }
 
-    function onConflict()
+    public function onConflict()
     {
         Notification::append(null, $this->__('chatrooms.conflict'));
     }
 
-    function onDisconnected()
+    public function onDisconnected()
     {
         $this->refreshRooms();
         Notification::append(null, $this->__('chatrooms.disconnected'));
@@ -118,7 +119,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Display the add room form
      */
-    function ajaxAdd($room = false)
+    public function ajaxAdd($room = false)
     {
         $view = $this->tpl();
 
@@ -139,7 +140,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Get the avatar form
      */
-    function ajaxGetAvatar($room)
+    public function ajaxGetAvatar($room)
     {
         if (!$this->validateRoom($room)) return;
 
@@ -154,7 +155,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Set the avatar
      */
-    function ajaxSetAvatar($room, $form)
+    public function ajaxSetAvatar($room, $form)
     {
         if (!$this->validateRoom($room)) return;
 
@@ -179,7 +180,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Get the subject form of a chatroom
      */
-    function ajaxGetSubject($room)
+    public function ajaxGetSubject($room)
     {
         if (!$this->validateRoom($room)) return;
 
@@ -194,7 +195,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Change the subject of a chatroom
      */
-    function ajaxSetSubject($room, $form)
+    public function ajaxSetSubject($room, $form)
     {
         if (!$this->validateRoom($room)
         || !Validator::stringType()->length(0, 200)->validate($form->subject->value)) {
@@ -211,7 +212,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Display the add room form
      */
-    function ajaxAskInvite($room = false)
+    public function ajaxAskInvite($room = false)
     {
         $view = $this->tpl();
 
@@ -226,7 +227,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Invite someone to a room
      */
-    function ajaxInvite($form)
+    public function ajaxInvite($form)
     {
         if (!$this->validateRoom($form->to->value)) return;
 
@@ -245,7 +246,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Display the remove room confirmation
      */
-    function ajaxRemoveConfirm($room)
+    public function ajaxRemoveConfirm($room)
     {
         if (!$this->validateRoom($room)) return;
 
@@ -259,7 +260,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Display the room list
      */
-    function ajaxList($room)
+    public function ajaxList($room)
     {
         if (!$this->validateRoom($room)) return;
 
@@ -279,7 +280,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Autocomplete users in MUC
      */
-    function ajaxMucUsersAutocomplete($room)
+    public function ajaxMucUsersAutocomplete($room)
     {
         $this->rpc("Chat.onAutocomplete", $this->user->session->conferences()
                                                ->where('conference', $room)
@@ -290,7 +291,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Remove a room
      */
-    function ajaxRemove($room)
+    public function ajaxRemove($room)
     {
         if (!$this->validateRoom($room)) return;
 
@@ -302,7 +303,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Join a chatroom
      */
-    function ajaxJoin($room, $nickname = false)
+    public function ajaxJoin($room, $nickname = false)
     {
         if (!$this->validateRoom($room)) return;
 
@@ -345,7 +346,7 @@ class Rooms extends \Movim\Widget\Base
      *
      * @param string $room
      */
-    function ajaxExit($room)
+    public function ajaxExit($room)
     {
         if (!$this->validateRoom($room)) return;
 
@@ -385,7 +386,7 @@ class Rooms extends \Movim\Widget\Base
     /**
      * @brief Confirm the room add
      */
-    function ajaxChatroomAdd($form)
+    public function ajaxChatroomAdd($form)
     {
         if (!filter_var($form->jid->value, FILTER_VALIDATE_EMAIL)) {
             Notification::append(null, $this->__('chatrooms.bad_id'));
@@ -436,7 +437,7 @@ class Rooms extends \Movim\Widget\Base
           ->request();
     }
 
-    function prepareRooms($edit = false)
+    public function prepareRooms($edit = false)
     {
         if (!$this->user->session) return '';
 

@@ -5,12 +5,12 @@ use Movim\User;
 
 class NewsController extends Base
 {
-    function load()
+    public function load()
     {
         $this->session_only = true;
     }
 
-    function dispatch()
+    public function dispatch()
     {
         $this->page->setTitle(__('page.news'));
 

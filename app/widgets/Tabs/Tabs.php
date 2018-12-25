@@ -1,8 +1,10 @@
 <?php
 
-class Tabs extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class Tabs extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('tabs.js');
     }

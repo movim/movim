@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Pubsub
 {
-    static function create($to, $node, $name)
+    public static function create($to, $node, $name)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -74,7 +74,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function delete($to, $node)
+    public static function delete($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -86,7 +86,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function createPersistentStorage($to, $node)
+    public static function createPersistentStorage($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -130,7 +130,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function configurePersistentStorage($to, $node, $access_model = 'whitelist', $max_items = false)
+    public static function configurePersistentStorage($to, $node, $access_model = 'whitelist', $max_items = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -160,7 +160,7 @@ class Pubsub
         $value = $dom->createElement('value', 'true');
         $field->appendChild($value);
 
-        if($max_items) {
+        if ($max_items) {
             $field = $dom->createElement('field');
             $field->setAttribute('var', 'pubsub#max_items');
             $x->appendChild($field);
@@ -169,7 +169,7 @@ class Pubsub
             $field->appendChild($value);
         }
 
-        if(empty($access_model)) $access_model = 'whitelist';
+        if (empty($access_model)) $access_model = 'whitelist';
 
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#access_model');
@@ -182,7 +182,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function createCommentNode($to, $node)
+    public static function createCommentNode($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -261,7 +261,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function subscribe($to, $from, $node)
+    public static function subscribe($to, $from, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -274,7 +274,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function unsubscribe($to, $from, $node, $subid)
+    public static function unsubscribe($to, $from, $node, $subid)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -282,7 +282,7 @@ class Pubsub
         $unsubscribe->setAttribute('node', $node);
         $unsubscribe->setAttribute('jid', $from);
 
-        if(!empty($subid)) {
+        if (!empty($subid)) {
             $unsubscribe->setAttribute('subid', $subid);
         }
 
@@ -292,7 +292,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function getSubscriptions($to, $node)
+    public static function getSubscriptions($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -304,15 +304,15 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function setSubscriptions($to, $node, $data)
+    public static function setSubscriptions($to, $node, $data)
     {
         $subscriptions = "";
-        foreach($data as $jid_subid => $subscription){
+        foreach ($data as $jid_subid => $subscription) {
             list($jid, $subid) = split("_", $jid_subid);
             $subscriptions .= '
                 <subscription
                     jid="'.$jid.'" ';
-                if($subid != null)
+                if ($subid != null)
                     $subscriptions .=
                         'subid="'.$subid.'" ';
                 $subscriptions .= '
@@ -330,7 +330,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function getItems($to, $node, $paging = 10, $after = false, $before = null, $skip = 0)
+    public static function getItems($to, $node, $paging = 10, $after = false, $before = null, $skip = 0)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -368,7 +368,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function getItem($to, $node, $id)
+    public static function getItem($to, $node, $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -384,7 +384,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function postPublish($to, $node, $atom)
+    public static function postPublish($to, $node, $atom)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
@@ -405,7 +405,7 @@ class Pubsub
     }
 
 
-    static function testPostPublish($to, $node, $id)
+    public static function testPostPublish($to, $node, $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -424,7 +424,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function postDelete($to, $node, $id)
+    public static function postDelete($to, $node, $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -441,7 +441,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function getConfig($to, $node)
+    public static function getConfig($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -453,7 +453,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function setConfig($to, $node, $data)
+    public static function setConfig($to, $node, $data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -476,7 +476,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function getAffiliations($to, $node)
+    public static function getAffiliations($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -488,7 +488,7 @@ class Pubsub
         \Moxl\API::request($xml);
     }
 
-    static function setAffiliations($to, $node, $data)
+    public static function setAffiliations($to, $node, $data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub#owner', 'pubsub');
@@ -496,7 +496,7 @@ class Pubsub
         $affiliations->setAttribute('node', $node);
         $pubsub->appendChild($affiliations);
 
-        foreach($data as $jid => $role) {
+        foreach ($data as $jid => $role) {
             $affiliation = $dom->createElement('affiliation');
             $affiliation->setAttribute('jid', $jid);
             $affiliation->setAttribute('affiliation', $role);

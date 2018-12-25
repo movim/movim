@@ -25,7 +25,7 @@ class SessionTerminate extends Action
 
     public function setReason($reason)
     {
-        if(in_array($reason,
+        if (in_array($reason,
             [
                 'success',
                 'busy',
@@ -41,4 +41,3 @@ class SessionTerminate extends Action
         return $this;
     }
 }
-

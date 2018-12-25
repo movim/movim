@@ -23,7 +23,7 @@ class Get extends Errors
                        ->where('public', ($this->_pepnode == 'urn:xmpp:pubsub:subscription'))
                        ->delete();
 
-        foreach($stanza->pubsub->items->children() as $i) {
+        foreach ($stanza->pubsub->items->children() as $i) {
             $subscription = \App\Subscription::firstOrNew([
                 'jid' => $this->_to,
                 'server' => (string)$i->subscription->attributes()->server,
@@ -50,4 +50,3 @@ class Get extends Errors
         $this->deliver();
     }
 }
-

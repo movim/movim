@@ -59,8 +59,7 @@ class Session
             self::$instance = null;
             return true;
         }
+
         return false;
     }
 }
-
-?>

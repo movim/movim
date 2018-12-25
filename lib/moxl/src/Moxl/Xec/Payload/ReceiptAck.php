@@ -12,7 +12,7 @@ class ReceiptAck extends Payload
                                   ->where('jidfrom', current(explode('/', (string)$parent->attributes()->to)))
                                   ->first();
 
-        if($message) {
+        if ($message) {
             $message->delivered = gmdate('Y-m-d H:i:s');
             $message->save();
 

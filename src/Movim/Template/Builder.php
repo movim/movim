@@ -22,13 +22,13 @@ class Builder
      * Constructor. Determines whether to show the login page to the user or the
      * Movim interface.
      */
-    function __construct()
+    public function __construct()
     {
         $this->theme = Configuration::get()->theme;
         $this->user = \App\User::me();
     }
 
-    function viewsPath(string $file)
+    public function viewsPath(string $file)
     {
         return VIEWS_PATH . '/' . $file;
     }
@@ -38,7 +38,7 @@ class Builder
      * @param file is the path to the file relative to the theme's root
      * @param return optionally returns the link instead of printing it if set to true
      */
-    function linkFile(string $file, $return = false)
+    public function linkFile(string $file, $return = false)
     {
         $path = urilize('themes/' . $this->theme . '/' . $file);
 
@@ -50,19 +50,9 @@ class Builder
     }
 
     /**
-     * Inserts the link tag for a css file.
-     */
-    function themeCss(string $file)
-    {
-        echo '<link rel="stylesheet" href="'
-            . $this->linkFile($file, true) .
-            "\" type=\"text/css\" />\n";
-    }
-
-    /**
      * Actually generates the page from templates.
      */
-    function build(string $view, $public = false)
+    public function build(string $view, $public = false)
     {
         $this->_view = $view;
         $this->public = $public;
@@ -73,7 +63,7 @@ class Builder
         require($this->viewsPath($template));
         $outp = ob_get_clean();
 
-        $scripts = $this->printCss();
+        $scripts = $this->printCSS();
         if (!$public) {
             $scripts .= $this->printScripts();
         }
@@ -86,9 +76,9 @@ class Builder
     }
 
     /**
-     * Sets the page's title.
+     * Sets the page's title
      */
-    function setTitle(string $name)
+    public function setTitle(string $name)
     {
         $this->title = APP_TITLE . ' – ' . $name;
     }
@@ -96,15 +86,15 @@ class Builder
     /**
      * Disable Javascript check
      */
-    function disableJavascriptCheck()
+    public function disableJavascriptCheck()
     {
         $this->js_check = false;
     }
 
     /**
-     * Displays the current title.
+     * Displays the current title
      */
-    function title()
+    public function title()
     {
         $widgets = Wrapper::getInstance();
 
@@ -114,9 +104,9 @@ class Builder
     }
 
     /**
-     * Displays the current title.
+     * Displays the current font direction
      */
-    function dir()
+    public function dir()
     {
         $lang = \App\User::me()->language;
 
@@ -130,7 +120,7 @@ class Builder
     /**
      * Display some meta tag defined in the widgets using Facebook OpenGraph
      */
-    function meta()
+    public function meta()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;
@@ -198,7 +188,7 @@ class Builder
         }
 
         if (isset($widgets->links)) {
-            foreach($widgets->links as $l) {
+            foreach ($widgets->links as $l) {
                 $link = $dom->createElement('link');
                 $link->setAttribute('rel',  $l['rel']);
                 $link->setAttribute('type', $l['type']);
@@ -225,30 +215,37 @@ class Builder
         echo strip_tags($dom->saveXML($dom->documentElement), '<meta><link>');
     }
 
-    function addScript(string $script)
+    public function addScript(string $script)
     {
         $this->scripts[] = urilize('app/assets/js/' . $script);
     }
 
-    /**
-     * Inserts the link tag for a css file.
-     */
-    function addCss(string $file)
+    public function addCSS(string $file)
     {
         $this->css[] = $this->linkFile('css/' . $file, true);
     }
 
-    function scripts()
+    public function scripts()
     {
         echo '<%scripts%>';
     }
 
-    function printScripts()
+    public function setContent(string $data)
+    {
+        $this->content .= $data;
+    }
+
+    public function content()
+    {
+        echo $this->content;
+    }
+
+    private function printScripts(): string
     {
         $out = '';
         $widgets = Wrapper::getInstance();
         $scripts = array_merge($this->scripts, $widgets->loadjs());
-        foreach($scripts as $script) {
+        foreach ($scripts as $script) {
              $out .= '<script type="text/javascript" src="'
                  . $script .
                  '"></script>'."\n";
@@ -260,12 +257,12 @@ class Builder
         return $out;
     }
 
-    function printCss()
+    private function printCSS()
     {
         $out = '';
         $widgets = Wrapper::getInstance();
         $csss = array_merge($this->css, $widgets->loadcss()); // Note the 3rd s, there are many.
-        foreach($csss as $css_path) {
+        foreach ($csss as $css_path) {
             $out .= '<link rel="stylesheet" href="'
                 . $css_path .
                 "\" type=\"text/css\" />\n";
@@ -273,20 +270,10 @@ class Builder
         return $out;
     }
 
-    function setContent(string $data)
-    {
-        $this->content .= $data;
-    }
-
-    function content()
-    {
-        echo $this->content;
-    }
-
     /**
      * Loads up a widget and prints it at the current place.
      */
-    function widget(string $name)
+    public function widget(string $name)
     {
         $widgets = Wrapper::getInstance();
         $widgets->setView($this->_view);

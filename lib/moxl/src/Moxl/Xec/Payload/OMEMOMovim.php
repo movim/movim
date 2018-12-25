@@ -11,7 +11,7 @@ class OMEMOMovim extends Payload
         $bd = new \Modl\Bundle;
         $bd->set($stanza->items->item, $from);
 
-        if($bd->id) {
+        if ($bd->id) {
             $this->pack($bd);
             $this->deliver();
         }

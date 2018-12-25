@@ -25,7 +25,7 @@ class Presence extends Payload
             $presence->save();
 
             $refreshable = $presence->refreshable;
-            if($refreshable) {
+            if ($refreshable) {
                 $r = new Get;
                 $r->setTo((string)$refreshable)->request();
             }
@@ -36,10 +36,10 @@ class Presence extends Payload
                     if ($x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
                     && isset($stanza->x->status)
                     && \in_array((int)$stanza->x->status->attributes()->code, [110, 332, 307, 301])) {
-                        if($presence->value != 5 && $presence->value != 6) {
+                        if ($presence->value != 5 && $presence->value != 6) {
                             $this->method('muc_handle');
                             $this->pack($presence);
-                        } elseif($presence->value == 5) {
+                        } elseif ($presence->value == 5) {
                             $this->method('unavailable_handle');
                             $this->pack($presence);
                         }

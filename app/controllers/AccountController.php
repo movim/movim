@@ -3,12 +3,12 @@ use Movim\Controller\Base;
 
 class AccountController extends Base
 {
-    function load()
+    public function load()
     {
         $this->session_only = false;
     }
 
-    function dispatch()
+    public function dispatch()
     {
         requestAPI('disconnect', 2, ['sid' => SESSION_ID]);
 

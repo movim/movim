@@ -6,7 +6,7 @@ var Tabs = {
 
         // We create the list
         var html = '';
-        for (var i=0; i<tabs.length; i++){
+        for (var i=0; i<tabs.length; i++) {
             if (window.location.hash == '#' + tabs[i].id + '_tab') {
                 current = tabs[i].id;
             }
@@ -22,7 +22,7 @@ var Tabs = {
         // We insert the list
         document.querySelector('#navtabs').innerHTML = html;
 
-        if (current != null){
+        if (current != null) {
             tab = current;
             menuTab = document.querySelector('li.' + current);
         }
@@ -43,7 +43,7 @@ var Tabs = {
         }
     },
 
-    change : function(current){
+    change : function(current) {
         // We grab the tabs list
         var navtabs = document.querySelectorAll('#navtabs li');
         // We clean the class of the li
@@ -57,7 +57,7 @@ var Tabs = {
 
         // We hide all the div
         var tabs = document.querySelectorAll('.tabelem');
-        for (var i = 0; i < tabs.length; i++){
+        for (var i = 0; i < tabs.length; i++) {
             tabs[i].classList.add('hide');
         }
 
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     Tabs.create();
 });
 
-function actDifferent(e){
+function actDifferent(e) {
     e.preventDefault();
     return false;
 }

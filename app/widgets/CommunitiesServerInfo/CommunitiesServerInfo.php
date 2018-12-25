@@ -1,12 +1,13 @@
 <?php
 
-class CommunitiesServerInfo extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class CommunitiesServerInfo extends Base
 {
-    function display()
+    public function display()
     {
         $this->view->assign('info', \App\Info::where('server', $this->get('s'))
                                              ->where('node', '')
                                              ->first());
     }
 }
-

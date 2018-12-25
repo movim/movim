@@ -5,17 +5,17 @@ use Movim\Widget\Base;
 
 class Subscribe extends Base
 {
-    function flagPath($country)
+    public function flagPath($country)
     {
         return BASE_URI.'themes/material/img/flags/'.strtolower($country).'.png';
     }
 
-    function accountNext($server)
+    public function accountNext($server)
     {
         return $this->route('accountnext', [$server]);
     }
 
-    function display()
+    public function display()
     {
         $json = requestURL(MOVIM_API.'servers', 3, false, true);
         $json = json_decode($json);

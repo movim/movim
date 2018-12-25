@@ -7,6 +7,7 @@ define('DOCUMENT_ROOT', dirname(__FILE__, 3));
 use App\Configuration;
 use Monolog\Logger;
 use Monolog\Handler\SyslogHandler;
+use Monolog\Handler\StreamHandler;
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 use App\Session as DBSession;
@@ -14,7 +15,7 @@ use App\User as DBUser;
 
 class Bootstrap
 {
-    function boot($dbOnly = false)
+    public function boot($dbOnly = false)
     {
         if (!defined('APP_TITLE')) {
             $this->setConstants();
@@ -300,17 +301,22 @@ class Bootstrap
     /**
      * Error Handler...
      */
-    function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0)
+    public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0)
     {
         echo 'An error occured, check syslog for more information'."\n";
 
         $log = new Logger('movim');
         $log->pushHandler(new SyslogHandler('movim'));
+
+        if (LOG_LEVEL > 1) {
+            $log->pushHandler(new StreamHandler(LOG_PATH.'/php.log', Logger::ERROR));
+        }
+
         $log->addError($errstr . " in " . $errfile . ' (line ' . $errline . ")\n");
         return false;
     }
 
-    function exceptionHandler($exception)
+    public function exceptionHandler($exception)
     {
         $this->systemErrorHandler(
             E_ERROR,
@@ -320,7 +326,7 @@ class Bootstrap
         );
     }
 
-    function fatalErrorShutdownHandler()
+    public function fatalErrorShutdownHandler()
     {
         $last_error = error_get_last();
         if ($last_error['type'] === E_ERROR) {

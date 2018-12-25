@@ -19,7 +19,7 @@ class Delete extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        if($stanza['type'] == 'result'){
+        if ($stanza['type'] == 'result') {
             //delete from bookmark
             \App\Subscription::where('server', $this->_to)
                              ->where('node', $this->_node)

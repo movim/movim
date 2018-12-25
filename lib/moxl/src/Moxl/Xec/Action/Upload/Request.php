@@ -20,7 +20,7 @@ class Request extends Action
 
     public function handle($stanza, $parent = false)
     {
-        if($stanza->slot) {
+        if ($stanza->slot) {
             $this->pack([
                 'get' => (string)$stanza->slot->get,
                 'put' => (string)$stanza->slot->put

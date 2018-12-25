@@ -10,7 +10,7 @@ class Nickname extends Payload
     {
         $from = current(explode('/',(string)$parent->attributes()->from));
 
-        if($stanza->items->item->nick) {
+        if ($stanza->items->item->nick) {
             $contact = Contact::firstOrNew(['id' => $from]);
             $contact->nickname = (string)$stanza->items->item->nick;
             $contact->save();

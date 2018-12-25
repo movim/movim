@@ -24,7 +24,7 @@ class GetItem extends Errors
     public function handle($stanza, $parent = false)
     {
         if ($stanza->pubsub->items->item) {
-            foreach($stanza->pubsub->items->item as $item) {
+            foreach ($stanza->pubsub->items->item as $item) {
                 if (isset($item->entry)
                 &&(string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
                     $p = \App\Post::firstOrNew([

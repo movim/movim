@@ -8,7 +8,7 @@ use Respect\Validation\Validator;
 
 class Account extends \Movim\Widget\Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('account.js');
         $this->registerEvent('register_changepassword_handle', 'onPasswordChanged');
@@ -17,20 +17,20 @@ class Account extends \Movim\Widget\Base
         $this->registerEvent('register_get_errorfeaturenotimplemented', 'onRegisterError', 'account');
     }
 
-    function onPasswordChanged()
+    public function onPasswordChanged()
     {
         $this->rpc('Account.resetPassword');
         Notification::append(null, $this->__('account.password_changed'));
     }
 
-    function onRemoved()
+    public function onRemoved()
     {
         $this->user->messages()->delete();
         \App\Post::restrictToMicroblog()->where('server', $this->user->id)->delete();
         $this->rpc('Presence_ajaxLogout');
     }
 
-    function onRegister($package)
+    public function onRegister($package)
     {
         $content = $package->content;
 
@@ -52,12 +52,12 @@ class Account extends \Movim\Widget\Base
         }
     }
 
-    function onRegisterError()
+    public function onRegisterError()
     {
         Notification::append(null, $this->__('error.oops'));
     }
 
-    function ajaxChangePassword($form)
+    public function ajaxChangePassword($form)
     {
         $validate = Validator::stringType()->length(6, 40);
         $p1 = $form->password->value;
@@ -83,7 +83,7 @@ class Account extends \Movim\Widget\Base
         }
     }
 
-    function ajaxRemoveAccount()
+    public function ajaxRemoveAccount()
     {
         $this->rpc('Presence.clearQuick');
         $view = $this->tpl();
@@ -91,25 +91,25 @@ class Account extends \Movim\Widget\Base
         Dialog::fill($view->draw('_account_remove'));
     }
 
-    function ajaxClearAccount()
+    public function ajaxClearAccount()
     {
         $view = $this->tpl();
         $view->assign('jid', $this->user->id);
         Dialog::fill($view->draw('_account_clear'));
     }
 
-    function ajaxClearAccountConfirm()
+    public function ajaxClearAccountConfirm()
     {
         $this->onRemoved();
     }
 
-    function ajaxRemoveAccountConfirm()
+    public function ajaxRemoveAccountConfirm()
     {
         $da = new Remove;
         $da->request();
     }
 
-    function ajaxGetRegistration($server)
+    public function ajaxGetRegistration($server)
     {
         if (!$this->validateServer($server)) return;
 
@@ -118,7 +118,7 @@ class Account extends \Movim\Widget\Base
            ->request();
     }
 
-    function ajaxRegister($server, $form)
+    public function ajaxRegister($server, $form)
     {
         if (!$this->validateServer($server)) return;
         $s = new Set;
@@ -132,7 +132,7 @@ class Account extends \Movim\Widget\Base
         return (Validator::stringType()->noWhitespace()->length(6, 80)->validate($server));
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('gateways',
             \App\Info::where('server', 'like', '%' . $this->user->session->host)

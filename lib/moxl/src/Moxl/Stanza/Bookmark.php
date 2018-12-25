@@ -35,7 +35,7 @@ class Bookmark
         $publish->setAttribute('node', 'storage:bookmarks');
         $item->setAttribute('id', 'current');
 
-        foreach($arr as $elt) {
+        foreach ($arr as $elt) {
             switch ($elt['type']) {
                 case 'conference':
                     $conference = $dom->createElement('conference');

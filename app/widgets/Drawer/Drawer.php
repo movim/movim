@@ -1,16 +1,17 @@
 <?php
 
+use Movim\Widget\Base;
 use Movim\RPC;
 
-class Drawer extends \Movim\Widget\Base
+class Drawer extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('drawer.js');
         $this->addcss('drawer.css');
     }
 
-    static function fill($html = '', $actions = false)
+    public static function fill($html = '', $actions = false)
     {
         RPC::call('MovimTpl.fill', '#drawer', $html);
         RPC::call('MovimTpl.hideMenu');

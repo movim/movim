@@ -58,9 +58,9 @@ class Handler
 
             Handler::handleNode($child);
 
-            foreach($child->children() as $s1) {
+            foreach ($child->children() as $s1) {
                 Handler::handleNode($s1, $child);
-                foreach($s1->children() as $s2) {
+                foreach ($s1->children() as $s2) {
                     Handler::handleNode($s2, $child);
                 }
             }
@@ -122,7 +122,7 @@ class Handler
         $name = $s->getName();
         $ns = '';
 
-        foreach($s->attributes() as $key => $value) {
+        foreach ($s->attributes() as $key => $value) {
             if (($key == 'xmlns' && $ns == '')
             || 'xmlns:' === substr($key, 0, 6)) {
                 $ns = $value;
@@ -222,7 +222,7 @@ class Handler
         $words = explode('-', $string);
         $f = 'error';
 
-        foreach($words as $word) {
+        foreach ($words as $word) {
             $f .= ucfirst($word);
         }
 

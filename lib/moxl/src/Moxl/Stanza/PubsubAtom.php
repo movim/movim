@@ -52,7 +52,7 @@ class PubsubAtom
         $dom->appendChild($entry);
         $entry->appendChild($dom->createElement('id', $this->id));
 
-        if($this->title) {
+        if ($this->title) {
             $entry->appendChild($dom->createElement('title', $this->title));
         }
 
@@ -72,14 +72,14 @@ class PubsubAtom
         $link->setAttribute('href', 'xmpp:'.$this->to.'?;node='.$this->node.';item='.$this->id);
         $entry->appendChild($link);
 
-        if($this->comments) {
+        if ($this->comments) {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'replies');
             $link->setAttribute('title', 'comments');
 
-            if($this->repost) {
+            if ($this->repost) {
                 $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node=urn:xmpp:microblog:0:comments/'.$this->repost[2]);
-            } elseif($this->comments === true) {
+            } elseif ($this->comments === true) {
                 $link->setAttribute('href', 'xmpp:'.$this->to.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
             } else {
                 $link->setAttribute('href', 'xmpp:'.$this->comments.'?;node=urn:xmpp:microblog:0:comments/'.$this->id);
@@ -88,14 +88,14 @@ class PubsubAtom
             $entry->appendChild($link);
         }
 
-        if($this->open) {
+        if ($this->open) {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'alternate');
             $link->setAttribute('type', 'text/html');
             $link->setAttribute('title', $this->title);
 
             // Not very elegant
-            if($this->node == 'urn:xmpp:microblog:0') {
+            if ($this->node == 'urn:xmpp:microblog:0') {
                 $link->setAttribute('href', \Movim\Route::urlize('blog', [$this->to, $this->id]));
             } else {
                 $link->setAttribute('href', \Movim\Route::urlize('node', [$this->to, $this->node, $this->id]));
@@ -104,52 +104,52 @@ class PubsubAtom
             $entry->appendChild($link);
         }
 
-        if($this->link && is_array($this->link)) {
+        if ($this->link && is_array($this->link)) {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'related');
             $link->setAttribute('href', $this->link['href']);
-            if($this->link['type'] != null) {
+            if ($this->link['type'] != null) {
                 $link->setAttribute('type', $this->link['type']);
             }
-            if($this->link['title'] != null) {
+            if ($this->link['title'] != null) {
                 $link->setAttribute('title', $this->link['title']);
             }
-            if($this->link['description'] != null) {
+            if ($this->link['description'] != null) {
                 $link->setAttribute('description', $this->link['description']);
             }
-            if($this->link['logo'] != null) {
+            if ($this->link['logo'] != null) {
                 $link->setAttribute('logo', $this->link['logo']);
             }
             $entry->appendChild($link);
         }
 
-        if($this->repost) {
+        if ($this->repost) {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'via');
             $link->setAttribute('href', 'xmpp:'.$this->repost[0].'?;node='.$this->repost[1].';item='.$this->repost[2]);
             $entry->appendChild($link);
         }
 
-        if($this->reply) {
+        if ($this->reply) {
             $thr = $dom->createElement('thr:in-reply-to');
             $thr->setAttribute('href', $this->reply);
             $entry->appendChild($thr);
         }
 
-        if($this->image && is_array($this->image)) {
+        if ($this->image && is_array($this->image)) {
             $link = $dom->createElement('link');
             $link->setAttribute('rel', 'enclosure');
             $link->setAttribute('href', $this->image['href']);
-            if($this->image['type'] != null) {
+            if ($this->image['type'] != null) {
                 $link->setAttribute('type', $this->image['type']);
             }
-            if($this->image['title'] != null) {
+            if ($this->image['title'] != null) {
                 $link->setAttribute('title', $this->image['title']);
             }
             $entry->appendChild($link);
         }
 
-        /*if($this->geo) {
+        /*if ($this->geo) {
             $xml .= '
                     <geoloc xmlns="http://jabber.org/protocol/geoloc">
                         <lat>'.$this->geo['latitude'].'</lat>
@@ -168,13 +168,13 @@ class PubsubAtom
                     </geoloc>';
         }*/
 
-        if($this->content) {
+        if ($this->content) {
             $content_raw = $dom->createElement('content', $this->content);
             $content_raw->setAttribute('type', 'text');
             $entry->appendChild($content_raw);
         }
 
-        if($this->contentxhtml) {
+        if ($this->contentxhtml) {
             $content = $dom->createElement('content');
             $div = $dom->createElement('div');
             $content->appendChild($div);
@@ -187,14 +187,14 @@ class PubsubAtom
             $div->setAttribute('xmlns', 'http://www.w3.org/1999/xhtml');
         }
 
-        if($this->published != false) {
+        if ($this->published != false) {
             $entry->appendChild($dom->createElement('published', date(DATE_ISO8601, $this->published)));
         } else {
             $entry->appendChild($dom->createElement('published', gmdate(DATE_ISO8601)));
         }
 
-        if(is_array($this->tags)) {
-            foreach($this->tags as $tag) {
+        if (is_array($this->tags)) {
+            foreach ($this->tags as $tag) {
                 $category = $dom->createElement('category');
                 $entry->appendChild($category);
                 $category->setAttribute('term', $tag);
@@ -202,7 +202,7 @@ class PubsubAtom
         }
 
         $entry->setAttribute('xmlns', 'http://www.w3.org/2005/Atom');
-        if($this->reply) {
+        if ($this->reply) {
             $entry->setAttribute('xmlns:thr', 'http://purl.org/syndication/thread/1.0');
         }
         $entry->appendChild($dom->createElement('updated', gmdate(DATE_ISO8601)));

@@ -13,13 +13,13 @@ class Mood extends Payload
         if (isset($stanza->items->item->mood)
         && $stanza->items->item->mood->count() > 0) {
             $arrmood = [];
-            foreach($stanza->items->item->mood->children() as $mood) {
-                if($mood->getName() != 'text') {
+            foreach ($stanza->items->item->mood->children() as $mood) {
+                if ($mood->getName() != 'text') {
                     array_push($arrmood, $mood->getName());
                 }
             }
 
-            if(count($arrmood) > 0) {
+            if (count($arrmood) > 0) {
                 $contact = Contact::firstOrNew(['id' => $from]);
                 $contact->mood = serialize($arrmood);
                 $contact->save();

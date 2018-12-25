@@ -4,6 +4,7 @@ use Moxl\Xec\Action\Pubsub\PostPublish;
 use Moxl\Xec\Action\Microblog\CommentCreateNode;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 
+use Movim\Widget\Base;
 use Movim\Session;
 use App\Cache;
 
@@ -11,9 +12,9 @@ use Respect\Validation\Validator;
 use Michelf\MarkdownExtra;
 use Cocur\Slugify\Slugify;
 
-class PublishBrief extends \Movim\Widget\Base
+class PublishBrief extends Base
 {
-    function load()
+    public function load()
     {
         $this->registerEvent('pubsub_postpublish_handle', 'onPublish');
         $this->registerEvent('microblog_commentcreatenode_handle', 'onCommentNodeCreated');
@@ -22,7 +23,7 @@ class PublishBrief extends \Movim\Widget\Base
         $this->addcss('publishbrief.css');
     }
 
-    function onPublish($packet)
+    public function onPublish($packet)
     {
         Notification::append(false, $this->__('post.published'));
 
@@ -39,7 +40,7 @@ class PublishBrief extends \Movim\Widget\Base
         }
     }
 
-    function onCommentNodeCreated($packet)
+    public function onCommentNodeCreated($packet)
     {
         list($server, $parentid) = array_values($packet->content);
 
@@ -50,7 +51,7 @@ class PublishBrief extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxCreateComments($server, $id)
+    public function ajaxCreateComments($server, $id)
     {
         if (!$this->validateServerNode($server, $id)) return;
 
@@ -60,7 +61,7 @@ class PublishBrief extends \Movim\Widget\Base
            ->request();
     }
 
-    function ajaxGet(
+    public function ajaxGet(
         $server = false,
         $node = false,
         $id = false,
@@ -75,7 +76,7 @@ class PublishBrief extends \Movim\Widget\Base
         $this->rpc('PublishBrief.checkEmbed');
     }
 
-    function ajaxHttpSaveDraft($form)
+    public function ajaxHttpSaveDraft($form)
     {
         $p = new \App\Post;
         $p->title = $form->title->value;
@@ -88,7 +89,7 @@ class PublishBrief extends \Movim\Widget\Base
         Cache::c('draft', $p);
     }
 
-    function ajaxPreview($form)
+    public function ajaxPreview($form)
     {
         if ($form->content->value != '') {
             $view = $this->tpl();
@@ -107,7 +108,7 @@ class PublishBrief extends \Movim\Widget\Base
         }
     }
 
-    function ajaxHttpPublish($form)
+    public function ajaxHttpPublish($form)
     {
         $this->rpc('PublishBrief.disableSend');
 
@@ -221,7 +222,7 @@ class PublishBrief extends \Movim\Widget\Base
         }
     }
 
-    function ajaxEmbedLoading()
+    public function ajaxEmbedLoading()
     {
         $this->rpc(
             'MovimTpl.fill',
@@ -229,7 +230,7 @@ class PublishBrief extends \Movim\Widget\Base
             '<li><p class="normal">' . $this->__('global.loading') . '</p></li>');
     }
 
-    function ajaxEmbedTest($url, $imagenumber = 0)
+    public function ajaxEmbedTest($url, $imagenumber = 0)
     {
         if ($url == '') {
             return;
@@ -255,7 +256,7 @@ class PublishBrief extends \Movim\Widget\Base
         }
     }
 
-    function ajaxEmbedChooseImage($url)
+    public function ajaxEmbedChooseImage($url)
     {
         try {
             $view = $this->tpl();
@@ -266,7 +267,7 @@ class PublishBrief extends \Movim\Widget\Base
         }
     }
 
-    function ajaxClearEmbed()
+    public function ajaxClearEmbed()
     {
         $session = Session::start();
         $session->remove('share_url');
@@ -280,13 +281,13 @@ class PublishBrief extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#publishbrief ul.embed', $this->prepareEmbedDefault());
     }
 
-    function prepareEmbedDefault()
+    public function prepareEmbedDefault()
     {
         $view = $this->tpl();
         return $view->draw('_publishbrief_embed_default');
     }
 
-    function prepareEmbed($embed, $imagenumber = 0)
+    public function prepareEmbed($embed, $imagenumber = 0)
     {
         $view = $this->tpl();
         $view->assign('embed', $embed);
@@ -294,7 +295,7 @@ class PublishBrief extends \Movim\Widget\Base
         return $view->draw('_publishbrief_embed');
     }
 
-    function preparePublishBrief(
+    public function preparePublishBrief(
         $server = false,
         $node = false,
         $id = false,
@@ -351,13 +352,13 @@ class PublishBrief extends \Movim\Widget\Base
         return $view->draw('_publishbrief');
     }
 
-    function ajaxLink()
+    public function ajaxLink()
     {
         $view = $this->tpl();
         Dialog::fill($view->draw('_publishbrief_link'));
     }
 
-    function ajaxDisplayPrivacy($open)
+    public function ajaxDisplayPrivacy($open)
     {
         Notification::append(false, ($open)
             ? $this->__('post.public_yes')

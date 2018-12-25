@@ -1,8 +1,10 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Respect\Validation\Validator;
 
-class ContactData extends \Movim\Widget\Base
+class ContactData extends Base
 {
     public function load()
     {
@@ -56,7 +58,7 @@ class ContactData extends \Movim\Widget\Base
         }
     }
 
-    function ajaxAccept($jid)
+    public function ajaxAccept($jid)
     {
         $i = new Invitations;
         $i->ajaxAccept($jid);

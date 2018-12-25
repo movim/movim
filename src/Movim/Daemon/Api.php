@@ -88,7 +88,7 @@ class Api
     public function sessionsStarted()
     {
         $started = 0;
-        foreach($this->_core->getSessions() as $s) {
+        foreach ($this->_core->getSessions() as $s) {
             if ($s == true) $started++;
         }
         return $started;

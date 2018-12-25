@@ -1,10 +1,12 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Respect\Validation\Validator;
 
-class Preview extends \Movim\Widget\Base
+class Preview extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('preview.css');
         $this->addjs('preview.js');

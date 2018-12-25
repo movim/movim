@@ -18,11 +18,11 @@ class MAMResult extends Payload
             $message = \App\Message::findByStanza($stanza->forwarded->message);
             $message->set($stanza->forwarded->message, $stanza->forwarded);
 
-            if($message->type == 'groupchat') {
+            if ($message->type == 'groupchat') {
                 $message->jidfrom = current(explode('/',($message->jidfrom)));
             }
 
-            if(!empty($to) && empty($message->jidto)) {
+            if (!empty($to) && empty($message->jidto)) {
                 $message->jidto = $to;
             }
 

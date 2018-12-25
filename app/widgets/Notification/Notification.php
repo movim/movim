@@ -1,11 +1,12 @@
 <?php
 
+use Movim\Widget\Base;
 use Movim\RPC;
 use Movim\Session;
 
-class Notification extends \Movim\Widget\Base
+class Notification extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('notification.js');
     }
@@ -21,7 +22,7 @@ class Notification extends \Movim\Widget\Base
      * @param integer $action An action
      * @return void
      */
-    static function append(
+    public static function append(
         $key = null,
         $title = null,
         $body = null,
@@ -98,7 +99,7 @@ class Notification extends \Movim\Widget\Base
      * @param string $key The key to group the notifications
      * @return void
      */
-    function ajaxClear($key)
+    public function ajaxClear($key)
     {
         $session = Session::start();
         $notifs = $session->get('notifs');
@@ -131,7 +132,7 @@ class Notification extends \Movim\Widget\Base
      * @brief Get all the keys
      * @return void
      */
-    function ajaxGet()
+    public function ajaxGet()
     {
         $session = Session::start();
         $notifs = $session->get('notifs');
@@ -142,7 +143,7 @@ class Notification extends \Movim\Widget\Base
      * @brief Get all the keys
      * @return void
      */
-    function getCounter($key)
+    public function getCounter($key)
     {
         $session = Session::start();
         $notifs = $session->get('notifs');
@@ -159,13 +160,13 @@ class Notification extends \Movim\Widget\Base
      * @param string $key
      * @return void
      */
-    function ajaxCurrent($key)
+    public function ajaxCurrent($key)
     {
         $session = Session::start();
         $session->set('notifs_key', $key);
     }
 
-    function prepareSnackbar($title, $body = null, $picture = null, $action = null, $execute = null)
+    public function prepareSnackbar($title, $body = null, $picture = null, $action = null, $execute = null)
     {
         $view = $this->tpl();
 

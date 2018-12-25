@@ -41,7 +41,7 @@ var Visio = {
 
         microphone.connect(javascriptNode);
         javascriptNode.connect(Visio.audioContext.destination);
-        javascriptNode.onaudioprocess = function(event){
+        javascriptNode.onaudioprocess = function(event) {
             var inpt_L = event.inputBuffer.getChannelData(0);
             var instant_L = 0.0;
 

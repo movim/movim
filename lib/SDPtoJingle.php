@@ -46,22 +46,20 @@ class SDPtoJingle
       'media'           => "/^m=(audio|video|application|data)/i"
     ];
 
-    function __construct($sdp, $initiator, $responder = false, $action = false, $mid = false, $mlineindex = false)
+    public function __construct($sdp, $initiator, $responder = false, $action = false, $mid = false, $mlineindex = false)
     {
         $this->sdp = $sdp;
         $this->arr = explode("\n", $this->sdp);
 
-        if($mid) $this->mid = $mid;
-        if($mlineindex) $this->mlineindex = $mlineindex;
+        if ($mid) $this->mid = $mid;
+        if ($mlineindex) $this->mlineindex = $mlineindex;
 
         $this->jingle = new SimpleXMLElement('<jingle></jingle>');
         $this->jingle->addAttribute('xmlns', 'urn:xmpp:jingle:1');
         $this->jingle->addAttribute('initiator',$initiator);
 
-        if($action)
-            $this->jingle->addAttribute('action',$action);
-        if($responder)
-            $this->jingle->addAttribute('responder',$responder);
+        if ($action) $this->jingle->addAttribute('action',$action);
+        if ($responder) $this->jingle->addAttribute('responder',$responder);
 
         $this->action = $action;
     }
@@ -69,10 +67,10 @@ class SDPtoJingle
     private function getSessionId()
     {
         $s = Session::start();
-        if($sid = $s->get('jingleSid')){
+
+        if ($sid = $s->get('jingleSid')) {
             return $sid;
-        }
-        else{
+        } else {
             $o = $this->arr[1];
             $sid = explode(" ", $o);
             return substr(base_convert($sid[1], 30, 10), 0, 6);
@@ -81,7 +79,7 @@ class SDPtoJingle
 
     private function initContent($force = false)
     {
-        if($this->content == null
+        if ($this->content == null
         || $force) {
             $this->content      = $this->jingle->addChild('content');
             $this->transport    = $this->content->addChild('transport');
@@ -92,11 +90,12 @@ class SDPtoJingle
 
     private function addFmtpParameters($payloadtype, $params)
     {
-        foreach($params as $value) {
+        foreach ($params as $value) {
             $p = explode('=', trim($value));
 
             $parameter = $payloadtype->addChild('parameter');
-            if(count($p) == 1) {
+
+            if (count($p) == 1) {
                 $parameter->addAttribute('value', $p[0]);
             } else {
                 $parameter->addAttribute('name', $p[0]);
@@ -107,31 +106,32 @@ class SDPtoJingle
 
     private function addRtcpFbParameters($payloadtype, $params)
     {
-        foreach($params as $matches) {
+        foreach ($params as $matches) {
             $rtcpfp = $payloadtype->addChild('rtcp-fb');
             $rtcpfp->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:rtcp-fb:0");
             $rtcpfp->addAttribute('id',        $matches[1]);
             $rtcpfp->addAttribute('type',      $matches[2]);
 
-            if(isset($matches[4]))
+            if (isset($matches[4])) {
                 $rtcpfp->addAttribute('subtype',   $matches[4]);
+            }
         }
     }
 
     public function addName($name = false)
     {
-        if($name) {
+        if ($name) {
             $this->content->addAttribute('name', $name);
-        } elseif($this->mid) {
+        } elseif ($this->mid) {
             $this->content->addAttribute('name', $this->mid);
         }
     }
 
-    function generate()
+    public function generate()
     {
-        foreach($this->arr as $l) {
-            foreach($this->regex as $key => $r) {
-                if(preg_match($r, $l, $matches)) {
+        foreach ($this->arr as $l) {
+            foreach ($this->regex as $key => $r) {
+                if (preg_match($r, $l, $matches)) {
                     switch($key) {
                         case 'sess_id':
                             $this->jingle->addAttribute('sid', $this->getSessionId());
@@ -140,13 +140,13 @@ class SDPtoJingle
                             $this->initContent(true);
 
                             // The description node
-                            if($this->action != 'transport-info') {
+                            if ($this->action != 'transport-info') {
                                 $description = $this->content->addChild('description');
                                 $description->addAttribute('xmlns', "urn:xmpp:jingle:apps:rtp:1");
                                 $description->addAttribute('media', $matches[1]);
                             }
 
-                            if(!empty($this->global_fingerprint)) {
+                            if (!empty($this->global_fingerprint)) {
                                 $fingerprint = $this->transport->addChild('fingerprint', $this->global_fingerprint['fingerprint']);
                                 //$this->transport->addAttribute('pwd', $this->global_fingerprint['pwd']);
                                 //$this->transport->addAttribute('ufrag', $this->global_fingerprint['ufrag']);
@@ -170,18 +170,18 @@ class SDPtoJingle
                             $payloadtype = $description->addChild('payload-type');
                             $payloadtype->addAttribute('id',        $matches[1]);
                             $payloadtype->addAttribute('name',      $matches[3]);
-                            if(isset($matches[4]))
+                            if (isset($matches[4]))
                                 $payloadtype->addAttribute('clockrate', $matches[5]);
 
-                            if(isset($matches[7]))
+                            if (isset($matches[7]))
                                 $payloadtype->addAttribute('channels',   $matches[7]);
 
-                            if(isset($this->fmtp_cache[$matches[1]])) {
+                            if (isset($this->fmtp_cache[$matches[1]])) {
                                 $this->addFmtpParameters($payloadtype, $this->fmtp_cache[$matches[1]]);
                                 unset($this->fmtp_cache[$matches[1]]);
                             }
 
-                            if(isset($this->rtcp_fb_cache[$matches[1]])) {
+                            if (isset($this->rtcp_fb_cache[$matches[1]])) {
                                 $this->addRtcpFbParameters($payloadtype, $this->rtcp_fb_cache[$matches[1]]);
                                 unset($this->rtcp_fb_cache[$matches[1]]);
                             }
@@ -194,7 +194,7 @@ class SDPtoJingle
                             // If fmtp is added just after the correspondant rtpmap
                             $params = explode(';', $matches[2]);
 
-                            if(isset($payloadtype)
+                            if (isset($payloadtype)
                             && $matches[1] == $payloadtype->attributes()->id) {
                                 $this->addFmtpParameters($payloadtype, $params);
                             // If not we cache it
@@ -205,14 +205,14 @@ class SDPtoJingle
 
                         // http://xmpp.org/extensions/xep-0293.html
                         case 'rtcp_fb':
-                            if($matches[1] == '*') {
+                            if ($matches[1] == '*') {
                                 $this->addRtcpFbParameters($description, [$matches]);
                             } else {
-                                if(isset($payloadtype)
+                                if (isset($payloadtype)
                                 && $matches[1] == $payloadtype->attributes()->id) {
                                     $this->addRtcpFbParameters($payloadtype, [$matches]);
                                 } else {
-                                    if(!isset($this->rtcp_fb_cache[$matches[1]])) {
+                                    if (!isset($this->rtcp_fb_cache[$matches[1]])) {
                                         $this->rtcp_fb_cache[$matches[1]] = [];
                                     }
 
@@ -236,7 +236,7 @@ class SDPtoJingle
                             $crypto->addAttribute('crypto-suite',   $matches[2]);
                             $crypto->addAttribute('key-params',     $matches[3]);
                             $crypto->addAttribute('tag',            $matches[1]);
-                            if(isset($matches[5]))
+                            if (isset($matches[5]))
                                 $crypto->addAttribute('session-params', $matches[5]);
                             break;
 
@@ -257,13 +257,13 @@ class SDPtoJingle
                             $rtphdrext->addAttribute('xmlns',   "urn:xmpp:jingle:apps:rtp:rtp-hdrext:0");
                             $rtphdrext->addAttribute('id',      $matches[1]);
                             $rtphdrext->addAttribute('uri',     $matches[4]);
-                            if(isset($matches[3]) && $matches[3] != '')
+                            if (isset($matches[3]) && $matches[3] != '')
                                 $rtphdrext->addAttribute('senders', $matches[3]);
                             break;
 
                         // http://xmpp.org/extensions/xep-0339.html
                         case 'ssrc':
-                            if(!$description->source) {
+                            if (!$description->source) {
                                 $ssrc = $description->addChild('source');
                                 $ssrc->addAttribute('xmlns',   "urn:xmpp:jingle:apps:rtp:ssma:0");
                                 $ssrc->addAttribute('id',   $matches[1]);
@@ -290,7 +290,7 @@ class SDPtoJingle
 
                             $params = explode(' ', $matches[2]);
 
-                            foreach($params as $value) {
+                            foreach ($params as $value) {
                                 $content = $group->addChild('content');
                                 $content->addAttribute('name', trim($value));
                             }
@@ -298,7 +298,7 @@ class SDPtoJingle
 
                         // http://xmpp.org/extensions/xep-0320.html
                         case 'fingerprint':
-                            if($this->content == null) {
+                            if ($this->content == null) {
                                 $this->global_fingerprint['fingerprint'] = $matches[2];
                                 $this->global_fingerprint['hash']        = $matches[1];
                             } else {
@@ -320,7 +320,7 @@ class SDPtoJingle
 
                         // http://xmpp.org/extensions/xep-0320.html
                         case 'setup':
-                            if($this->content != null) {
+                            if ($this->content != null) {
                                 $fingerprint->addAttribute('setup', $matches[1]);
                             }
 
@@ -342,16 +342,16 @@ class SDPtoJingle
 
                             $generation = $network = $id = $networkid = false;
 
-                            if($key = array_search("generation", $matches))
+                            if ($key = array_search("generation", $matches))
                                 $generation = $matches[($key+1)];
-                            if($key = array_search("network", $matches))
+                            if ($key = array_search("network", $matches))
                                 $network = $matches[($key+1)];
-                            if($key = array_search("id", $matches))
+                            if ($key = array_search("id", $matches))
                                 $id = $matches[($key+1)];
-                            if($key = array_search("network-id", $matches))
+                            if ($key = array_search("network-id", $matches))
                                 $networkid = $matches[($key+1)];
 
-                            if(isset($matches[11]) && isset($matches[13])) {
+                            if (isset($matches[11]) && isset($matches[13])) {
                                 $reladdr = $matches[11];
                                 $relport = $matches[13];
                             } else {
@@ -363,13 +363,13 @@ class SDPtoJingle
                             $candidate->addAttribute('component' , $matches[2]);
                             $candidate->addAttribute('foundation', $matches[1]);
 
-                            if($generation)
+                            if ($generation)
                                 $candidate->addAttribute('generation', $generation);
-                            if($id)
+                            if ($id)
                                 $candidate->addAttribute('id'        , $id);
-                            if($network)
+                            if ($network)
                                 $candidate->addAttribute('network'   , $network);
-                            if($networkid)
+                            if ($networkid)
                                 $candidate->addAttribute('network-id', $networkid);
 
                             $candidate->addAttribute('ip'        , $matches[5]);
@@ -378,7 +378,7 @@ class SDPtoJingle
                             $candidate->addAttribute('protocol'  , $matches[3]);
                             $candidate->addAttribute('type'      , $matches[8]);
 
-                            if($reladdr) {
+                            if ($reladdr) {
                                 $candidate->addAttribute('rel-addr'  , $reladdr);
                                 $candidate->addAttribute('rel-port'  , $relport);
                             }

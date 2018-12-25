@@ -4,11 +4,11 @@ use Movim\Controller\Base;
 
 class RoomController extends Base
 {
-    function load()
+    public function load()
     {
     }
 
-    function dispatch()
+    public function dispatch()
     {
         $this->page->setTitle(__('page.room'));
     }

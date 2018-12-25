@@ -1,13 +1,15 @@
 <?php
- 
-class NotFound extends \Movim\Widget\Base
+
+use Movim\Widget\Base;
+
+class NotFound extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('notfound.css');
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('base_uri', BASE_URI);
     }

@@ -1,12 +1,14 @@
 <?php
 
+use Movim\Widget\Base;
+
 include_once WIDGETS_PATH.'Post/Post.php';
 
-class Menu extends \Movim\Widget\Base
+class Menu extends Base
 {
     private $_paging = 10;
 
-    function load()
+    public function load()
     {
         $this->registerEvent('post', 'onPost');
         $this->registerEvent('post_retract', 'onRetract', 'news');
@@ -15,12 +17,12 @@ class Menu extends \Movim\Widget\Base
         $this->addjs('menu.js');
     }
 
-    function onRetract($packet)
+    public function onRetract($packet)
     {
         $this->ajaxGetAll();
     }
 
-    function onStream($count)
+    public function onStream($count)
     {
         $view = $this->tpl();
         $view->assign('count', $count);
@@ -30,7 +32,7 @@ class Menu extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#menu_refresh', $view->draw('_menu_refresh'));
     }
 
-    function onPost($packet)
+    public function onPost($packet)
     {
         $since = \App\Cache::c('since');
 
@@ -104,32 +106,32 @@ class Menu extends \Movim\Widget\Base
         }
     }
 
-    function ajaxGetAll($page = 0)
+    public function ajaxGetAll($page = 0)
     {
         $this->ajaxGet('all', null, null, $page);
     }
 
-    function ajaxGetNews($page = 0)
+    public function ajaxGetNews($page = 0)
     {
         $this->ajaxGet('news', null, null, $page);
     }
 
-    function ajaxGetFeed($page = 0)
+    public function ajaxGetFeed($page = 0)
     {
         $this->ajaxGet('feed', null, null, $page);
     }
 
-    function ajaxGetNode($server = null, $node = null, $page = 0)
+    public function ajaxGetNode($server = null, $node = null, $page = 0)
     {
         $this->ajaxGet('node', $server, $node, $page);
     }
 
-    function ajaxGetMe($page = 0)
+    public function ajaxGetMe($page = 0)
     {
         $this->ajaxGet('me', null, null, $page);
     }
 
-    function ajaxGet($type = 'all', $server = null, $node = null, $page = 0)
+    public function ajaxGet($type = 'all', $server = null, $node = null, $page = 0)
     {
         $html = $this->prepareList($type, $server, $node, $page);
 
@@ -138,7 +140,7 @@ class Menu extends \Movim\Widget\Base
         $this->rpc('Menu.refresh');
     }
 
-    function prepareList($type = 'all', $server = null, $node = null, $page = 0)
+    public function prepareList($type = 'all', $server = null, $node = null, $page = 0)
     {
         $view = $this->tpl();
 
@@ -156,7 +158,7 @@ class Menu extends \Movim\Widget\Base
             : 0;
 
         // getting newer, not older
-        if ($page == 0){
+        if ($page == 0) {
             $count = 0;
             $last = $posts->orderBy('published', 'desc')->first();
             \App\Cache::c('since', ($last) ? $last->published : date(SQL_DATE));
@@ -198,7 +200,7 @@ class Menu extends \Movim\Widget\Base
         return $view->draw('_menu_list');
     }
 
-    function preparePost($post)
+    public function preparePost($post)
     {
         return (new \Post)->preparePost($post, false, true);
     }

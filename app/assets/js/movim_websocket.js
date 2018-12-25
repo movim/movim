@@ -70,7 +70,7 @@ var MovimWebsocket = {
             console.log("Connection established!");
             MovimWebsocket.attempts = 1;
             MovimWebsocket.launchAttached();
-            setTimeout(function(){
+            setTimeout(function() {
                 MovimWebsocket.ping();
             }, 10000);
         };
@@ -180,7 +180,7 @@ var MovimWebsocket = {
                 )
             );
 
-            setTimeout(function(){
+            setTimeout(function() {
                 if (MovimWebsocket.pong == false) {
                     MovimWebsocket.connection.onerror();
                 } else {

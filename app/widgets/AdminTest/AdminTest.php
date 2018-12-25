@@ -2,7 +2,7 @@
 
 class AdminTest extends \Movim\Widget\Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('admintest.js');
         $this->addcss('admintest.css');
@@ -18,7 +18,7 @@ class AdminTest extends \Movim\Widget\Base
         return (file_exists($file) && is_writable($file));
     }
 
-    function display()
+    public function display()
     {
         // Check with Eloquent or delete
         $this->view->assign('dbconnected', true);

@@ -1,14 +1,15 @@
 <?php
 
-use Moxl\Xec\Action\Pubsub\Delete;
+use Movim\Widget\Base;
 
+use Moxl\Xec\Action\Pubsub\Delete;
 use Moxl\Xec\Action\Pubsub\GetAffiliations;
 use Moxl\Xec\Action\Pubsub\SetAffiliations;
 use Moxl\Xec\Action\Pubsub\GetSubscriptions;
 
 use Respect\Validation\Validator;
 
-class CommunityAffiliations extends \Movim\Widget\Base
+class CommunityAffiliations extends Base
 {
     public function load()
     {
@@ -23,13 +24,13 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $this->addjs('communityaffiliations.js');
     }
 
-    function onAffiliations($packet)
+    public function onAffiliations($packet)
     {
         list($affiliations, $origin, $node) = array_values($packet->content);
 
         $role = null;
 
-        foreach($affiliations['owner'] as $r) {
+        foreach ($affiliations['owner'] as $r) {
             if ($r['jid'] == $this->user->id) {
                 $role = 'owner';
             }
@@ -73,12 +74,12 @@ class CommunityAffiliations extends \Movim\Widget\Base
         );
     }
 
-    function onAffiliationsSet($packet)
+    public function onAffiliationsSet($packet)
     {
         Notification::append(null, $this->__('communityaffiliation.role_set'));
     }
 
-    function onSubscriptions($packet)
+    public function onSubscriptions($packet)
     {
         list($subscriptions, $origin, $node) = array_values($packet->content);
 
@@ -107,14 +108,14 @@ class CommunityAffiliations extends \Movim\Widget\Base
         }
     }
 
-    function onDelete($packet)
+    public function onDelete($packet)
     {
         Notification::append(null, $this->__('communityaffiliation.deleted'));
 
         $this->deleted($packet);
     }
 
-    function onDeleteError($packet)
+    public function onDeleteError($packet)
     {
         $m = new Rooms;
         $m->setBookmark();
@@ -122,12 +123,12 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $this->deleted($packet);
     }
 
-    function getContact($jid)
+    public function getContact($jid)
     {
         return \App\Contact::firstOrNew(['id' => $jid]);
     }
 
-    function ajaxGetAffiliations($origin, $node)
+    public function ajaxGetAffiliations($origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -136,7 +137,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxGetSubscriptions($origin, $node, $notify = true)
+    public function ajaxGetSubscriptions($origin, $node, $notify = true)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -147,7 +148,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxDelete($origin, $node, $clean = false)
+    public function ajaxDelete($origin, $node, $clean = false)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -159,7 +160,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         Dialog::fill($view->draw('_communityaffiliations_delete'));
     }
 
-    function ajaxDeleteConfirm($origin, $node)
+    public function ajaxDeleteConfirm($origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -170,7 +171,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxAffiliations($origin, $node)
+    public function ajaxAffiliations($origin, $node)
     {
         $view = $this->tpl();
         $view->assign('server', $origin);
@@ -181,7 +182,7 @@ class CommunityAffiliations extends \Movim\Widget\Base
         $this->ajaxGetAffiliations($origin, $node);
     }
 
-    function ajaxChangeAffiliation($origin, $node, $form)
+    public function ajaxChangeAffiliation($origin, $node, $form)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 

@@ -4,7 +4,7 @@ use App\Configuration;
 
 class AdminMain extends \Movim\Widget\Base
 {
-    function load()
+    public function load()
     {
         $form = $_POST;
 
@@ -32,12 +32,7 @@ class AdminMain extends \Movim\Widget\Base
         }
     }
 
-    public function testBosh($url)
-    {
-        return requestURL($url, 1);
-    }
-
-    function display()
+    public function display()
     {
         $l = Movim\i18n\Locale::start();
 

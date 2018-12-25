@@ -7,7 +7,7 @@ use Moxl\Utils;
 
 class Message
 {
-    static function maker(
+    public static function maker(
         $to,
         $content = false,
         $html = false,
@@ -26,32 +26,32 @@ class Message
         $dom->appendChild($root);
         $root->setAttribute('to', str_replace(' ', '\40', $to));
 
-        if($type != false) {
+        if ($type != false) {
             $root->setAttribute('type', $type);
         }
 
-        if(in_array($receipts, ['received', 'displayed'])) {
+        if (in_array($receipts, ['received', 'displayed'])) {
             $root->setAttribute('id', generateUUID());
-        } elseif($id != false) {
+        } elseif ($id != false) {
             $root->setAttribute('id', $id);
         } else {
             $root->setAttribute('id', $session->get('id'));
         }
 
-        if($content != false) {
+        if ($content != false) {
             $body = $dom->createElement('body');
             $bodyContent = $dom->createTextNode($content);
             $body->appendChild($bodyContent);
             $root->appendChild($body);
         }
 
-        if($replace != false) {
+        if ($replace != false) {
             $rep = $dom->createElementNS('urn:xmpp:message-correct:0', 'replace');
             $rep->setAttribute('id', $replace);
             $root->appendChild($rep);
         }
 
-        if($html != false) {
+        if ($html != false) {
             $xhtml = $dom->createElementNS('http://jabber.org/protocol/xhtml-im', 'html');
             $body = $dom->createElementNS('http://www.w3.org/1999/xhtml', 'body');
 
@@ -64,20 +64,20 @@ class Message
             $root->appendChild($xhtml);
         }
 
-        if($chatstates != false) {
+        if ($chatstates != false) {
             $chatstate = $dom->createElementNS('http://jabber.org/protocol/chatstates', $chatstates);
             $root->appendChild($chatstate);
         }
 
-        if($receipts != false) {
-            if($receipts == 'request') {
+        if ($receipts != false) {
+            if ($receipts == 'request') {
                 $request = $dom->createElementNS('urn:xmpp:receipts', 'request');
-            } elseif($receipts == 'received') {
+            } elseif ($receipts == 'received') {
                 $request = $dom->createElement('received');
                 $request->setAttribute('id', $id);
                 $request->setAttribute('xmlns', 'urn:xmpp:receipts');
                 $root->appendChild($request);
-            } elseif($receipts == 'displayed') {
+            } elseif ($receipts == 'displayed') {
                 $request = $dom->createElement('displayed');
                 $request->setAttribute('id', $id);
                 $request->setAttribute('xmlns', 'urn:xmpp:chat-markers:0');
@@ -85,7 +85,7 @@ class Message
 
             $root->appendChild($request);
 
-            if($receipts != 'request') {
+            if ($receipts != 'request') {
                 $nostore = $dom->createElementNS('urn:xmpp:hints', 'no-store');
                 $root->appendChild($nostore);
 
@@ -94,13 +94,13 @@ class Message
             }
         }
 
-        if(!in_array($receipts, ['received', 'displayed'])
+        if (!in_array($receipts, ['received', 'displayed'])
         && $chatstates == 'active') {
             $markable = $dom->createElementNS('urn:xmpp:chat-markers:0', 'markable');
             $root->appendChild($markable);
         }
 
-        if($file != false) {
+        if ($file != false) {
             // SIMS
             $reference = $dom->createElement('reference');
             $reference->setAttribute('xmlns', 'urn:xmpp:reference:0');
@@ -137,7 +137,7 @@ class Message
             $root->appendChild($x);
         }
 
-        if($invite != false) {
+        if ($invite != false) {
             $x = $dom->createElement('x');
             $x->setAttribute('xmlns', 'http://jabber.org/protocol/muc#user');
             $root->appendChild($x);
@@ -150,32 +150,32 @@ class Message
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    static function message($to, $content, $html = false, $id = false, $replace = false, $file = false)
+    public static function message($to, $content, $html = false, $id = false, $replace = false, $file = false)
     {
         self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file);
     }
 
-    static function composing($to)
+    public static function composing($to)
     {
         self::maker($to, false, false, 'chat', 'composing');
     }
 
-    static function paused($to)
+    public static function paused($to)
     {
         self::maker($to, false, false, 'chat', 'paused');
     }
 
-    static function receipt($to, $id)
+    public static function receipt($to, $id)
     {
         self::maker($to, false, false, 'chat', false, 'received', $id);
     }
 
-    static function displayed($to, $id)
+    public static function displayed($to, $id)
     {
         self::maker($to, false, false, 'chat', false, 'displayed', $id);
     }
 
-    static function invite($to, $id, $invite)
+    public static function invite($to, $id, $invite)
     {
         self::maker($to, false, false, false, false, false, $id, false, false, $invite);
     }

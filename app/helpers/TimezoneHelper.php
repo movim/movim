@@ -39,7 +39,7 @@ function generateTimezoneList()
     ];
 
     $timezones = [];
-    foreach($regions as $region)
+    foreach ($regions as $region)
     {
         $timezones = array_merge( $timezones, DateTimeZone::listIdentifiers( $region ) );
     }
@@ -47,7 +47,7 @@ function generateTimezoneList()
     $timezone_offsets_summer = [];
     $timezone_offsets_winter = [];
 
-    foreach($timezones as $timezone)
+    foreach ($timezones as $timezone)
     {
         $tz = new DateTimeZone($timezone);
         $utc = new DateTimeZone('UTC');
@@ -61,7 +61,7 @@ function generateTimezoneList()
 
     $timezone_list = [];
 
-    foreach($timezone_offsets_summer as $timezone => $offset)
+    foreach ($timezone_offsets_summer as $timezone => $offset)
     {
         $pretty_summer_offset = getPrettyOffset($offset);
         $pretty_winter_offset = getPrettyOffset($timezone_offsets_winter[$timezone]);
@@ -75,4 +75,3 @@ function generateTimezoneList()
 
     return $timezone_list;
 }
-

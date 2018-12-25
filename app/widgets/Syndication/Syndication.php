@@ -1,8 +1,10 @@
 <?php
 
-class Syndication extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class Syndication extends Base
 {
-    function display()
+    public function display()
     {
         ob_clean();
 

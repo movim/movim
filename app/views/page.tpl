@@ -5,7 +5,6 @@
     <title><?php $this->title(); ?></title>
 
     <meta name="theme-color" content="#1C1D5B" />
-    <!--<meta http-equiv="Content-Security-Policy" content="font-src <?php echo BASE_HOST; ?>; frame-src *.youtube.com; script-src <?php echo BASE_HOST; ?> 'unsafe-inline' 'unsafe-eval'">-->
     <?php $this->meta(); ?>
     <meta name="application-name" content="Movim">
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
@@ -22,24 +21,24 @@
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
     <?php
-        $this->addCss('style.css');
-        $this->addCss('notification.css');
-        $this->addCss('header.css');
-        $this->addCss('listn.css');
-        $this->addCss('grid.css');
-        $this->addCss('article.css');
-        $this->addCss('form.css');
-        $this->addCss('icon.css');
-        $this->addCss('dialog.css');
-        $this->addCss('card.css');
-        $this->addCss('table.css');
-        $this->addCss('color.css');
-        $this->addCss('block.css');
-        $this->addCss('menu.css');
-        $this->addCss('fonts.css');
-        $this->addCss('title.css');
-        $this->addCss('typo.css');
-        $this->addCss('scrollbar.css');
+        $this->addCSS('style.css');
+        $this->addCSS('notification.css');
+        $this->addCSS('header.css');
+        $this->addCSS('listn.css');
+        $this->addCSS('grid.css');
+        $this->addCSS('article.css');
+        $this->addCSS('form.css');
+        $this->addCSS('icon.css');
+        $this->addCSS('dialog.css');
+        $this->addCSS('card.css');
+        $this->addCSS('table.css');
+        $this->addCSS('color.css');
+        $this->addCSS('block.css');
+        $this->addCSS('menu.css');
+        $this->addCSS('fonts.css');
+        $this->addCSS('title.css');
+        $this->addCSS('typo.css');
+        $this->addCSS('scrollbar.css');
 
         $this->scripts();
     ?>

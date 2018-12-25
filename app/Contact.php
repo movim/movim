@@ -141,13 +141,13 @@ class Contact extends Model
         $this->description = trim((string)$vcard->note->text);
     }
 
-    public function getPlace()
+    public function getPlace(): string
     {
-        $place = null;
+        $place = '';
 
-        if ($this->loctext != '')
+        if ($this->loctext != '') {
             $place .= $this->loctext.' ';
-        else {
+        } else {
             if ($this->locbuilding != '')
                 $place .= $this->locbuilding.' ';
             if ($this->locstreet != '')
@@ -165,7 +165,7 @@ class Contact extends Model
         return $place;
     }
 
-    public function getTruenameAttribute()
+    public function getTruenameAttribute(): string
     {
         if ($this->fn) return $this->fn;
         if ($this->nickname) return $this->nickname;
@@ -174,12 +174,12 @@ class Contact extends Model
         return explodeJid($this->id)['username'];
     }
 
-    public function getJidAttribute()
+    public function getJidAttribute(): string
     {
         return $this->id;
     }
 
-    function getAge()
+    public function getAge()
     {
         if ($this->isValidDate()) {
             $age = intval(substr(date('Ymd') - date('Ymd', strtotime($this->date)), 0, -4));
@@ -203,7 +203,7 @@ class Contact extends Model
             cleanupId($this->groupname);
     }
 
-    function isEmpty()
+    public function isEmpty(): bool
     {
         $this->isValidDate();
 
@@ -215,7 +215,7 @@ class Contact extends Model
             && $this->description == null);
     }
 
-    function isValidDate()
+    public function isValidDate(): bool
     {
         if (isset($this->date)
             && $this->date != '0000-00-00T00:00:00+0000'
@@ -228,12 +228,12 @@ class Contact extends Model
         return false;
     }
 
-    function isFromMuc()
+    public function isFromMuc(): bool
     {
         return strpos($this->jid, '/') !== false;
     }
 
-    function isOld()
+    public function isOld(): bool
     {
         return (strtotime($this->updated) < mktime( // We update the 1 day old vcards
                                     gmdate("H"),
@@ -246,7 +246,7 @@ class Contact extends Model
         );
     }
 
-    function isMe()
+    public function isMe(): bool
     {
         return ($this->id == \App\User::me()->id);
     }

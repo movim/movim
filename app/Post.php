@@ -259,7 +259,7 @@ class Post extends Model
     {
         $content = '';
 
-        foreach($contents as $c) {
+        foreach ($contents as $c) {
             switch($c->attributes()->type) {
                 case 'html':
                 case 'xhtml':
@@ -289,7 +289,7 @@ class Post extends Model
     private function extractTitle($titles)
     {
         $title = '';
-        foreach($titles as $t) {
+        foreach ($titles as $t) {
             switch($t->attributes()->type) {
                 case 'html':
                 case 'xhtml':
@@ -372,7 +372,7 @@ class Post extends Model
 
                 if ($tag->name == 'nsfw') $this->nsfw = true;
             } else {
-                foreach($entry->entry->category as $cat) {
+                foreach ($entry->entry->category as $cat) {
                     $tag = \App\Tag::firstOrCreateSafe([
                         'name' => strtolower((string)$cat->attributes()->term)
                     ]);
@@ -387,7 +387,7 @@ class Post extends Model
         // Extract more tags if possible
         $tagsContent = getHashtags(htmlspecialchars($this->title))
                      + getHashtags(htmlspecialchars($this->contentraw));
-        foreach($tagsContent as $tag) {
+        foreach ($tagsContent as $tag) {
             $tag = \App\Tag::firstOrCreateSafe([
                 'name' => strtolower((string)$tag)
             ]);
@@ -440,7 +440,7 @@ class Post extends Model
 
             $results = $xml->xpath('//a');
             if (is_array($results) && !empty($results)) {
-                foreach($results as $link) {
+                foreach ($results as $link) {
                     $link->addAttribute('target', '_blank');
                 }
             }
@@ -465,7 +465,7 @@ class Post extends Model
     {
         $picture = false;
 
-        foreach($links as $attachment) {
+        foreach ($links as $attachment) {
             $enc = (array)$attachment->attributes();
             $enc = $enc['@attributes'];
 

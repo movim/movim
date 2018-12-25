@@ -29,8 +29,8 @@ class CommentsGet extends Action
     {
         $node = (string)$stanza->pubsub->items->attributes()->node;
 
-        if($stanza->pubsub->items->item) {
-            foreach($stanza->pubsub->items->item as $item) {
+        if ($stanza->pubsub->items->item) {
+            foreach ($stanza->pubsub->items->item as $item) {
                 $p = \App\Post::firstOrNew([
                     'server' => $this->_to,
                     'node' => $this->_node,

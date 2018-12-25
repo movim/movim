@@ -1,23 +1,21 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Presence\Chat;
 use Moxl\Xec\Action\Presence\Away;
 use Moxl\Xec\Action\Presence\DND;
 use Moxl\Xec\Action\Presence\XA;
 use Moxl\Xec\Action\Presence\Unavailable;
-
 use Moxl\Xec\Action\Roster\GetList;
-
 use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Storage\Get;
-
 use Moxl\Xec\Action\PubsubSubscription\Get as GetPubsubSubscriptions;
-
 use Moxl\Stanza\Stream;
 
-class Presence extends \Movim\Widget\Base
+class Presence extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('presence.css');
         $this->addjs('presence.js');
@@ -27,25 +25,25 @@ class Presence extends \Movim\Widget\Base
         $this->registerEvent('session_down', 'onSessionDown');
     }
 
-    function onSessionUp()
+    public function onSessionUp()
     {
         $p = new Chat;
         $p->request();
     }
 
-    function onSessionDown()
+    public function onSessionDown()
     {
         $p = new Away;
         $p->request();
     }
 
-    function onMyPresence($packet)
+    public function onMyPresence($packet)
     {
         $this->rpc('MovimTpl.fill', '#presence_widget', $this->preparePresence());
         Notification::append(null, $this->__('status.updated'));
     }
 
-    function start()
+    public function start()
     {
         $this->rpc('Notification.inhibit', 15);
 
@@ -68,7 +66,7 @@ class Presence extends \Movim\Widget\Base
         $this->ajaxProfileRefresh();
     }
 
-    function ajaxLogout()
+    public function ajaxLogout()
     {
         $this->rpc('Presence.clearQuick');
 
@@ -83,20 +81,20 @@ class Presence extends \Movim\Widget\Base
         Stream::end();
     }
 
-    function ajaxGetPresence()
+    public function ajaxGetPresence()
     {
         $html = $this->preparePresence();
         if ($html) $this->rpc('MovimTpl.fill', '#presence_widget', $html);
     }
 
-    function ajaxConfigGet()
+    public function ajaxConfigGet()
     {
         $s = new Get;
         $s->setXmlns('movim:prefs')
           ->request();
     }
 
-    function ajaxPubsubSubscriptionsGet()
+    public function ajaxPubsubSubscriptionsGet()
     {
         // Private Subscritions
         $ps = new GetPubsubSubscriptions;
@@ -111,7 +109,7 @@ class Presence extends \Movim\Widget\Base
     }
 
     // We get the server capabilities
-    function ajaxServerCapsGet()
+    public function ajaxServerCapsGet()
     {
         $c = new \Moxl\Xec\Action\Disco\Request;
         $c->setTo($this->user->session->host)
@@ -122,7 +120,7 @@ class Presence extends \Movim\Widget\Base
     }
 
     // We discover the server services
-    function ajaxServerDisco()
+    public function ajaxServerDisco()
     {
         $c = new \Moxl\Xec\Action\Disco\Items;
         $c->setTo($this->user->session->host)
@@ -130,7 +128,7 @@ class Presence extends \Movim\Widget\Base
     }
 
     // We refresh the profile
-    function ajaxProfileRefresh()
+    public function ajaxProfileRefresh()
     {
         $a = new \Moxl\Xec\Action\Avatar\Get;
         $a->setTo($this->user->id)
@@ -142,7 +140,7 @@ class Presence extends \Movim\Widget\Base
     }
 
     // We refresh the bookmarks
-    function ajaxBookmarksGet()
+    public function ajaxBookmarksGet()
     {
         $b = new \Moxl\Xec\Action\Bookmark\Get;
         $b->setTo($this->user->id)
@@ -150,7 +148,7 @@ class Presence extends \Movim\Widget\Base
     }
 
     // We refresh our personnal feed
-    function ajaxFeedRefresh()
+    public function ajaxFeedRefresh()
     {
         $r = new GetItemsId;
         $r->setTo($this->user->id)
@@ -158,7 +156,7 @@ class Presence extends \Movim\Widget\Base
           ->request();
     }
 
-    function preparePresence()
+    public function preparePresence()
     {
         // If the user is still on a logued-in page after a daemon restart
         if ($this->user->id == false) {
@@ -181,11 +179,9 @@ class Presence extends \Movim\Widget\Base
         return $presencetpl->draw('_presence', true);
     }
 
-    function display()
+    public function display()
     {
         $contact = $this->user->contact;
         $this->view->assign('me', ($contact == null) ? new App\Contact : $contact);
     }
 }
-
-?>

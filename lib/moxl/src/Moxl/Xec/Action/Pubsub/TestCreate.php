@@ -19,7 +19,7 @@ class TestCreate extends Errors
 
     public function handle($stanza, $parent = false)
     {
-        if($stanza['type'] == 'result'){
+        if ($stanza['type'] == 'result') {
             // We delete the test node we just created
             Pubsub::delete($this->_to, $this->_node);
 

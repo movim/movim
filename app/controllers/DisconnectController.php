@@ -6,12 +6,12 @@ use Movim\Session;
 
 class DisconnectController extends Base
 {
-    function load()
+    public function load()
     {
         $this->session_only = false;
     }
 
-    function dispatch()
+    public function dispatch()
     {
         // Just in case
         requestAPI('disconnect', 2, ['sid' => SESSION_ID]);

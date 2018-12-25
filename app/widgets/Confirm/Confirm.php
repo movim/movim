@@ -1,17 +1,19 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Confirm\Accept;
 use Moxl\Xec\Action\Confirm\Refuse;
 
-class Confirm extends \Movim\Widget\Base
+class Confirm extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('confirm.css');
         $this->registerEvent('confirm', 'onConfirm');
     }
 
-    function onConfirm($package)
+    public function onConfirm($package)
     {
         $view = $this->tpl();
 
@@ -23,7 +25,7 @@ class Confirm extends \Movim\Widget\Base
         Dialog::fill($view->draw('_confirm'));
     }
 
-    function ajaxAccept($to, $id, $url, $method)
+    public function ajaxAccept($to, $id, $url, $method)
     {
         $accept = new Accept;
         $accept->setTo($to)
@@ -33,7 +35,7 @@ class Confirm extends \Movim\Widget\Base
                ->request();
     }
 
-    function ajaxRefuse($to, $id, $url, $method)
+    public function ajaxRefuse($to, $id, $url, $method)
     {
         $refuse = new Refuse;
         $refuse->setTo($to)

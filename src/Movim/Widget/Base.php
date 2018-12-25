@@ -28,10 +28,7 @@ class Base
     public $image;
     public $description;
 
-    /**
-     * Initialises Widget stuff.
-     */
-    function __construct(bool $light = false, string $view = null)
+    public function __construct(bool $light = false, string $view = null)
     {
         if ($view != null) $this->_view = $view;
 
@@ -52,11 +49,11 @@ class Base
             $refl = new \ReflectionClass($this->name);
             $meths = $refl->getMethods();
 
-            foreach($meths as $method) {
+            foreach ($meths as $method) {
                 if (preg_match('#^ajax#', $method->name)) {
                     $pars = $method->getParameters();
                     $params = [];
-                    foreach($pars as $param) {
+                    foreach ($pars as $param) {
                         $params[] = $param->name;
                     }
 
@@ -88,7 +85,7 @@ class Base
         }
     }
 
-    function __destruct()
+    public function __destruct()
     {
         unset($this->view);
         unset($this->ajax);
@@ -96,37 +93,37 @@ class Base
         unset($this->_view);
     }
 
-    function __(...$args)
+    public function __(...$args)
     {
         return __(...$args);
     }
 
-    function ___(...$args)
+    public function ___(...$args)
     {
         echo call_user_func_array([&$this, '__'], $args);
     }
 
-    function supported($key): bool
+    public function supported($key): bool
     {
         return false;
     }
 
-    function route(...$args): string
+    public function route(...$args): string
     {
         return \Movim\Route::urlize(...$args);
     }
 
-    function rpc(...$args)
+    public function rpc(...$args)
     {
         \Movim\RPC::call(...$args);
     }
 
-    function load() {}
+    public function load() {}
 
     /**
      * Generates the widget's HTML code.
      */
-    function build(): string
+    public function build(): string
     {
         return $this->draw();
     }
@@ -134,7 +131,7 @@ class Base
     /**
      * Get the current view name
      */
-    function getView()
+    public function getView()
     {
         return $this->_view;
     }
@@ -142,7 +139,7 @@ class Base
     /**
      * Get the current user
      */
-    function getUser()
+    public function getUser()
     {
         return $this->user;
     }
@@ -150,19 +147,18 @@ class Base
     /*
      * @desc Preload some sourcecode for the draw method
      */
-    function display() {}
+    public function display() {}
 
     /**
      *  @desc Return the template's HTML code
      */
-    function draw(): string
+    public function draw(): string
     {
         $this->display();
-        if (file_exists($this->respath(strtolower($this->name).'.tpl', true))) {
-            return trim($this->view->draw(strtolower($this->name), true));
-        }
 
-        return '';
+        return (file_exists($this->respath(strtolower($this->name).'.tpl', true)))
+            ? trim($this->view->draw(strtolower($this->name), true))
+            : '';
     }
 
     protected function tpl(): Tpl
@@ -292,5 +288,3 @@ class Base
         }
     }
 }
-
-?>

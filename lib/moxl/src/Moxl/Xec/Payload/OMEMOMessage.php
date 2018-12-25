@@ -9,7 +9,7 @@ class OMEMOMessage extends Payload
         $jid = explode('/',(string)$parent->attributes()->from);
 
         $keys = [];
-        foreach($stanza->header->key as $key) {
+        foreach ($stanza->header->key as $key) {
             $keys[(string)$key->attributes()->rid] = [
                 'key'       => (string)$key,
                 'isprekey'  => (bool)$key->attributes()->prekey

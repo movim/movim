@@ -48,7 +48,7 @@ class Get extends Action
         $this->pack($this->_to);
         $this->deliver();
 
-        if(isset($stanza->fin)
+        if (isset($stanza->fin)
         && (!isset($stanza->fin->attributes()->complete) || $stanza->fin->attributes()->complete != 'true')
         && isset($stanza->fin->set) && $stanza->fin->set->attributes()->xmlns == 'http://jabber.org/protocol/rsm'
         && isset($stanza->fin->set->last)) {

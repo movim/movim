@@ -1,11 +1,13 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig;
 
 use Respect\Validation\Validator;
 
-class CommunityConfig extends \Movim\Widget\Base
+class CommunityConfig extends Base
 {
     public function load()
     {
@@ -13,7 +15,7 @@ class CommunityConfig extends \Movim\Widget\Base
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
     }
 
-    function onConfig($packet)
+    public function onConfig($packet)
     {
         list($config, $origin, $node, $advanced) = array_values($packet->content);
 
@@ -31,12 +33,12 @@ class CommunityConfig extends \Movim\Widget\Base
         Dialog::fill($view->draw('_communityconfig'), true);
     }
 
-    function onConfigSaved()
+    public function onConfigSaved()
     {
         Notification::append(false, $this->__('communityaffiliation.config_saved'));
     }
 
-    function ajaxGetConfig($origin, $node, $advanced = false)
+    public function ajaxGetConfig($origin, $node, $advanced = false)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -51,7 +53,7 @@ class CommunityConfig extends \Movim\Widget\Base
         $r->request();
     }
 
-    function ajaxSetConfig($data, $origin, $node)
+    public function ajaxSetConfig($data, $origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 

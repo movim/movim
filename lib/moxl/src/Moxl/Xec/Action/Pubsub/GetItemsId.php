@@ -22,7 +22,7 @@ class GetItemsId extends Errors
     {
         $ids = [];
 
-        foreach($stanza->query->xpath('item') as $item) {
+        foreach ($stanza->query->xpath('item') as $item) {
             $id = (string)$item->attributes()->name;
             if (!\App\Post::where('server', $this->_to)
                           ->where('node', $this->_node)

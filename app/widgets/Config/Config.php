@@ -1,14 +1,17 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Storage\Set;
 use Moxl\Xec\Action\MAM\GetConfig;
 use Moxl\Xec\Action\MAM\SetConfig;
+
 use Respect\Validation\Validator;
 use App\User;
 
-class Config extends \Movim\Widget\Base
+class Config extends Base
 {
-    function load()
+    public function load()
     {
         $this->registerEvent('storage_set_handle', 'onConfig');
         $this->registerEvent('mam_getconfig_handle', 'onMAMConfig');
@@ -17,7 +20,7 @@ class Config extends \Movim\Widget\Base
         $this->addjs('config.js');
     }
 
-    function prepareConfigForm()
+    public function prepareConfigForm()
     {
         $view = $this->tpl();
 
@@ -38,7 +41,7 @@ class Config extends \Movim\Widget\Base
         return $view->draw('_config_form');
     }
 
-    function onConfig($package)
+    public function onConfig($package)
     {
         $this->user->setConfig($package->content);
         $this->user->save();
@@ -48,33 +51,33 @@ class Config extends \Movim\Widget\Base
         Notification::append(null, $this->__('config.updated'));
     }
 
-    function onMAMConfig($package)
+    public function onMAMConfig($package)
     {
         $view = $this->tpl();
         $view->assign('default', $package->content);
         $this->rpc('MovimTpl.fill', '#config_widget_mam', $view->draw('_config_mam'));
     }
 
-    function onMAMConfigSaved()
+    public function onMAMConfigSaved()
     {
         Notification::append(null, $this->__('config.mam_saved'));
     }
 
-    function ajaxMAMGetConfig()
+    public function ajaxMAMGetConfig()
     {
         if ($this->user->hasMAM()) {
             (new GetConfig)->request();
         }
     }
 
-    function ajaxMAMSetConfig($value)
+    public function ajaxMAMSetConfig($value)
     {
         $s = new SetConfig;
         $s->setDefault($value)
           ->request();
     }
 
-    function ajaxSubmit($data)
+    public function ajaxSubmit($data)
     {
         if (!$this->validateForm($data)) {
             $this->refreshConfig();
@@ -106,7 +109,7 @@ class Config extends \Movim\Widget\Base
             && ($data->cssurl->value == '' || Validator::url()->validate($data->cssurl->value)));
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('form', $this->prepareConfigForm());
     }

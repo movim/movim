@@ -49,7 +49,7 @@ class GetItems extends Errors
     {
         $ids = [];
 
-        foreach($stanza->pubsub->items->item as $item) {
+        foreach ($stanza->pubsub->items->item as $item) {
             if (isset($item->entry)
             && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
                 if ($this->_since == null

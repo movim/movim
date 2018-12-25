@@ -22,7 +22,7 @@ class PostPublish extends Errors
 
     public function request()
     {
-        if($this->_to == '')
+        if ($this->_to == '')
             $this->_to = $this->_atom->jid;
 
         $this->store();

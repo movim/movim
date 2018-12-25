@@ -1,11 +1,13 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Pubsub\PostDelete;
 use Moxl\Xec\Action\Pubsub\Delete;
 
-class PostActions extends \Movim\Widget\Base
+class PostActions extends Base
 {
-    function load()
+    public function load()
     {
         $this->registerEvent('pubsub_getitem_handle', 'onItem');
         $this->registerEvent('pubsub_postdelete_handle', 'onDelete');
@@ -13,7 +15,7 @@ class PostActions extends \Movim\Widget\Base
         $this->addjs('postactions.js');
     }
 
-    function onItem($packet)
+    public function onItem($packet)
     {
         $post = $packet->content;
 
@@ -24,7 +26,7 @@ class PostActions extends \Movim\Widget\Base
         }
     }
 
-    function onDelete($packet)
+    public function onDelete($packet)
     {
         list($server, $node, $id) = array_values($packet->content);
 
@@ -43,7 +45,7 @@ class PostActions extends \Movim\Widget\Base
         $this->rpc('MovimTpl.remove', '#'.cleanupId($id));
     }
 
-    function ajaxLike($to, $node, $id)
+    public function ajaxLike($to, $node, $id)
     {
         $p = \App\Post::where('server', $to)
                       ->where('node', $node)
@@ -56,7 +58,7 @@ class PostActions extends \Movim\Widget\Base
         $post->publishComment('♥', $p->server, $p->node, $p->nodeid);
     }
 
-    function ajaxDelete($to, $node, $id)
+    public function ajaxDelete($to, $node, $id)
     {
         $post = \App\Post::where('server', $to)
                          ->where('node', $node)
@@ -75,7 +77,7 @@ class PostActions extends \Movim\Widget\Base
         }
     }
 
-    function ajaxDeleteConfirm($to, $node, $id)
+    public function ajaxDeleteConfirm($to, $node, $id)
     {
         $post = \App\Post::where('server', $to)
                          ->where('node', $node)

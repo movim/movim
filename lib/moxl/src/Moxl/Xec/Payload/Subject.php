@@ -9,14 +9,14 @@ class Subject extends Payload
         $jid = explode('/',(string)$parent->attributes()->from);
         $to = current(explode('/',(string)$parent->attributes()->to));
 
-        if($parent->subject) {
+        if ($parent->subject) {
             $message = new \App\Message;
 
             $message->user_id    = $to;
             $message->jidto      = $to;
             $message->jidfrom    = $jid[0];
 
-            if(isset($jid[1])) {
+            if (isset($jid[1])) {
                 $message->resource = $jid[1];
             }
 

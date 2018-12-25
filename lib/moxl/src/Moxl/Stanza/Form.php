@@ -13,19 +13,19 @@ class Form
         $this->_type = $type;
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         $xml = '<x xmlns="jabber:x:data" type="submit"></x>';
         $node = new \SimpleXMLElement($xml);
 
-        foreach($this->_data as $key => $value) {
+        foreach ($this->_data as $key => $value) {
             $field = $node->addChild('field');
-            if($value == 'true')
-                $value = '1';
-            if($value == 'false')
-                $value = '0';
+
+            if ($value == 'true') $value = '1';
+            if ($value == 'false') $value = '0';
 
             $field->addChild('value', trim($value->value));
-            /*if(isset($value->attributes->required))
+            /*if (isset($value->attributes->required))
                 $field->addChild('required', '');*/
             $field->addAttribute('var', $value->attributes->name);
             //$field->addAttribute('type', $value->attributes->type);

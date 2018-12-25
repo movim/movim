@@ -6,7 +6,7 @@ use Moxl\Stanza\Form;
 
 class Register
 {
-    static function get($to = false)
+    public static function get($to = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:register', 'query');
@@ -14,11 +14,11 @@ class Register
         \Moxl\API::request(\Moxl\API::iqWrapper($query, $to, 'get'));
     }
 
-    static function set($to = false, $data)
+    public static function set($to = false, $data)
     {
         $form = new Form($data);
 
-        if(isset($data->generic_username)) {
+        if (isset($data->generic_username)) {
             $dom = new \DOMDocument('1.0', 'UTF-8');
             $query = $dom->createElementNS('jabber:iq:register', 'query');
             $query->appendChild($dom->createElement('username', $data->generic_username->value));
@@ -37,7 +37,7 @@ class Register
         \Moxl\API::request($xml);
     }
 
-    static function remove()
+    public static function remove()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:register', 'query');
@@ -47,7 +47,7 @@ class Register
         \Moxl\API::request($xml);
     }
 
-    static function changePassword($to, $username, $password)
+    public static function changePassword($to, $username, $password)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:register', 'query');

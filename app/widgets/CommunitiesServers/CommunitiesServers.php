@@ -1,9 +1,11 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Disco\Items;
 use Respect\Validation\Validator;
 
-class CommunitiesServers extends \Movim\Widget\Base
+class CommunitiesServers extends Base
 {
     public function load()
     {
@@ -11,12 +13,12 @@ class CommunitiesServers extends \Movim\Widget\Base
         $this->addjs('communitiesservers.js');
     }
 
-    function onDisco($packet)
+    public function onDisco($packet)
     {
         $this->ajaxGet();
     }
 
-    function ajaxDisco($origin)
+    public function ajaxDisco($origin)
     {
         if (!$this->validateServer($origin)) {
             Notification::append(null, $this->__('communities.disco_error'));
@@ -27,7 +29,7 @@ class CommunitiesServers extends \Movim\Widget\Base
         $r->setTo($origin)->request();
     }
 
-    function ajaxGet()
+    public function ajaxGet()
     {
         $this->rpc('MovimTpl.fill', '#communities_servers', $this->prepareCommunities());
     }
@@ -43,7 +45,7 @@ class CommunitiesServers extends \Movim\Widget\Base
         return ($validate_server->validate($origin));
     }
 
-    function prepareCommunities()
+    public function prepareCommunities()
     {
         $servers = \App\Info::where('category', 'pubsub')
                             ->where('type', 'service')

@@ -1,12 +1,13 @@
 <?php
 
-use App\Configuration;
 use Movim\Widget\Base;
+
+use App\Configuration;
 use App\User;
 
 class Infos extends Base
 {
-    function display()
+    public function display()
     {
         $configuration = Configuration::get();
         $connected = (int)requestAPI('started');

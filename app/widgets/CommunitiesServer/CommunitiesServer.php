@@ -21,7 +21,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         $this->addjs('communitiesserver.js');
     }
 
-    function onCreate($packet)
+    public function onCreate($packet)
     {
         Notification::append(null, $this->__('communitiesserver.created'));
 
@@ -30,14 +30,14 @@ class CommunitiesServer extends \Movim\Widget\Base
         $this->rpc('MovimUtils.reload', $this->route('community', [$origin, $node]));
     }
 
-    function onDisco($packet)
+    public function onDisco($packet)
     {
         $origin = $packet->content;
 
         $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($origin));
     }
 
-    function onDiscoError($packet)
+    public function onDiscoError($packet)
     {
         $origin = $packet->content;
 
@@ -48,7 +48,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         Notification::append(null, $this->__('communitiesserver.disco_error'));
     }
 
-    function onTestCreate($packet)
+    public function onTestCreate($packet)
     {
         $origin = $packet->content;
 
@@ -58,12 +58,12 @@ class CommunitiesServer extends \Movim\Widget\Base
         Dialog::fill($view->draw('_communitiesserver_add'));
     }
 
-    function onTestCreateError($packet)
+    public function onTestCreateError($packet)
     {
         Notification::append(null, $this->__('communitiesserver.no_creation'));
     }
 
-    function ajaxDisco($origin)
+    public function ajaxDisco($origin)
     {
         if (!$this->validateServer($origin)) {
             Notification::append(null, $this->__('communitiesserver.disco_error'));
@@ -79,7 +79,7 @@ class CommunitiesServer extends \Movim\Widget\Base
     /*
      * Seriously ? We need to put this hack because of buggy XEP-0060...
      */
-    function ajaxTestAdd($origin)
+    public function ajaxTestAdd($origin)
     {
         if (!$this->validateServer($origin)) return;
 
@@ -88,7 +88,7 @@ class CommunitiesServer extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxAddConfirm($origin, $form)
+    public function ajaxAddConfirm($origin, $form)
     {
         if (!$this->validateServer($origin)) return;
 

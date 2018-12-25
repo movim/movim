@@ -1,5 +1,7 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Pubsub\GetItemsId;
 use Moxl\Xec\Action\Pubsub\GetItems;
 use Moxl\Xec\Action\Pubsub\Delete;
@@ -10,11 +12,11 @@ use App\User;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
-class CommunityPosts extends \Movim\Widget\Base
+class CommunityPosts extends Base
 {
     private $_paging = 10;
 
-    function load()
+    public function load()
     {
         //$this->registerEvent('pubsub_getitemsid_handle', 'onItemsId');
         $this->registerEvent('pubsub_getitems_handle', 'onItemsId');
@@ -24,7 +26,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $this->addjs('communityposts.js');
     }
 
-    function onItemsId($packet)
+    public function onItemsId($packet)
     {
         list($origin, $node, $ids, $first, $last, $count, $paginated, $before)
             = array_values($packet->content);
@@ -32,7 +34,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $this->displayItems($origin, $node, $ids, $first, $last, $count, $paginated, $before);
     }
 
-    function onItemsError($packet)
+    public function onItemsError($packet)
     {
         list($origin, $node) = array_values($packet->content);
 
@@ -74,13 +76,13 @@ class CommunityPosts extends \Movim\Widget\Base
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
-    function ajaxGetContact($jid)
+    public function ajaxGetContact($jid)
     {
         $c = new Contact;
         $c->ajaxGetDrawer($jid);
     }
 
-    function ajaxGetItems($origin, $node, $before = 'empty')
+    public function ajaxGetItems($origin, $node, $before = 'empty')
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -92,13 +94,13 @@ class CommunityPosts extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxClear()
+    public function ajaxClear()
     {
         $html = $this->prepareEmpty();
         $this->rpc('MovimTpl.fill', '#communityposts', $html);
     }
 
-    function prepareEmpty()
+    public function prepareEmpty()
     {
         $view = $this->tpl();
         return $view->draw('_communityposts_empty');
@@ -120,7 +122,7 @@ class CommunityPosts extends \Movim\Widget\Base
         $before = null)
     {
         $ids = is_array($ids) ? $ids : [];
-        foreach($ids as $key => $id) {
+        foreach ($ids as $key => $id) {
             if (empty($id)) {
                 unset($ids[$key]);
             }
@@ -209,7 +211,7 @@ class CommunityPosts extends \Movim\Widget\Base
              && $validate_node->validate($node));
     }
 
-    function display()
+    public function display()
     {
         $slugify = new Slugify;
 

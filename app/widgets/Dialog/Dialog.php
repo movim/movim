@@ -1,15 +1,16 @@
 <?php
 
+use Movim\Widget\Base;
 use Movim\RPC;
 
-class Dialog extends \Movim\Widget\Base
+class Dialog extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('dialog.js');
     }
 
-    static function fill($html = '', $scroll = false)
+    public static function fill($html = '', $scroll = false)
     {
         RPC::call('MovimTpl.fill', '#dialog', $html);
 

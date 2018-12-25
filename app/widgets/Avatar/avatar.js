@@ -3,7 +3,7 @@ MovimWebsocket.attach(function() {
 });
 
 /*
-function showVideo(){
+function showVideo() {
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     navigator.getUserMedia({video:true, audio:false}, successCallback, errorCallback);
 
@@ -17,7 +17,7 @@ function successCallback(stream) {
   document.getElementById("shoot").addEventListener('click', snapshot, false);
 }
 
-function errorCallback(error){
+function errorCallback(error) {
   console.log("navigator.getUserMedia error: ", error);
 }
 

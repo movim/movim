@@ -1,20 +1,22 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Vcard4\Get;
 use Moxl\Xec\Action\Vcard4\Set;
 use Moxl\Xec\Action\Nickname\Set as Nickname;
 
 use Respect\Validation\Validator;
 
-class Vcard4 extends \Movim\Widget\Base
+class Vcard4 extends Base
 {
-    function load()
+    public function load()
     {
         $this->registerEvent('vcard4_get_handle', 'onMyVcard4');
         $this->registerEvent('vcard4_set_handle', 'onMyVcard4');
     }
 
-    function prepareForm($contact)
+    public function prepareForm($contact)
     {
         $vcardform = $this->tpl();
 
@@ -33,7 +35,7 @@ class Vcard4 extends \Movim\Widget\Base
         return $vcardform->draw('_vcard4_form');
     }
 
-    function onMyVcard4($packet)
+    public function onMyVcard4($packet)
     {
         $html = $this->prepareForm($packet->content);
 
@@ -42,24 +44,24 @@ class Vcard4 extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#vcard_form', $html);
     }
 
-    function onMyVcard4Received()
+    public function onMyVcard4Received()
     {
         Notification::append(null, $this->__('vcard.updated'));
     }
 
-    function onMyVcard4NotReceived()
+    public function onMyVcard4NotReceived()
     {
         Notification::append(null, $this->__('vcard.not_updated'));
     }
 
-    function ajaxGetVcard()
+    public function ajaxGetVcard()
     {
         $r = new Get;
         $r->setTo($this->user->id)
           ->request();
     }
 
-    function ajaxVcardSubmit($vcard)
+    public function ajaxVcardSubmit($vcard)
     {
         $c = $this->user->contact;
 
@@ -106,7 +108,7 @@ class Vcard4 extends \Movim\Widget\Base
         $r->setData($vcard)->request();
     }
 
-    function ajaxChangePrivacy($value)
+    public function ajaxChangePrivacy($value)
     {
         if ($value == true) {
             $this->user->setPublic();
@@ -117,7 +119,7 @@ class Vcard4 extends \Movim\Widget\Base
         }
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('getvcard', $this->call('ajaxGetVcard'));
         $this->view->assign('form', $this->prepareForm($this->user->contact));

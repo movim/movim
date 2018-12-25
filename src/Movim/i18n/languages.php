@@ -206,5 +206,3 @@ function get_lang_list() {
 
   return $lang_list;
 }
-
-?>

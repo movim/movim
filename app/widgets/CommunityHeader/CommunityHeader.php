@@ -1,18 +1,17 @@
 <?php
 
-use Moxl\Xec\Action\Disco\Request;
+use Movim\Widget\Base;
 
+use Moxl\Xec\Action\Disco\Request;
 use Moxl\Xec\Action\Pubsub\Subscribe;
 use Moxl\Xec\Action\Pubsub\Unsubscribe;
-
 use Moxl\Xec\Action\PubsubSubscription\Add as SubscriptionAdd;
 use Moxl\Xec\Action\PubsubSubscription\Remove as SubscriptionRemove;
-
 use Moxl\Xec\Action\Pubsub\TestPostPublish;
 
 use Respect\Validation\Validator;
 
-class CommunityHeader extends \Movim\Widget\Base
+class CommunityHeader extends Base
 {
     public function load()
     {
@@ -26,7 +25,7 @@ class CommunityHeader extends \Movim\Widget\Base
         $this->addjs('communityheader.js');
     }
 
-    function onDiscoRequest($packet)
+    public function onDiscoRequest($packet)
     {
         list($origin, $node) = $packet->content;
 
@@ -35,18 +34,18 @@ class CommunityHeader extends \Movim\Widget\Base
         }
     }
 
-    function onTestPublish($packet)
+    public function onTestPublish($packet)
     {
         list($origin, $node) = array_values($packet->content);
         $this->rpc('MovimUtils.redirect', $this->route('publish', [$origin, $node]));
     }
 
-    function onTestPublishError($packet)
+    public function onTestPublishError($packet)
     {
         Notification::append(null, $this->__('publishbrief.no_publication'));
     }
 
-    function onSubscribed($packet)
+    public function onSubscribed($packet)
     {
         list($origin, $node) = array_values($packet->content);
 
@@ -55,12 +54,12 @@ class CommunityHeader extends \Movim\Widget\Base
         Notification::append(null, $this->__('communityheader.subscribed'));
     }
 
-    function onSubscriptionUnsupported($packet)
+    public function onSubscriptionUnsupported($packet)
     {
         Notification::append(null, $this->__('communityheader.subscription_unsupported'));
     }
 
-    function onUnsubscribed($packet)
+    public function onUnsubscribed($packet)
     {
         list($origin, $node) = array_values($packet->content);
 
@@ -69,7 +68,7 @@ class CommunityHeader extends \Movim\Widget\Base
         Notification::append(null, $this->__('communityheader.unsubscribed'));
     }
 
-    function ajaxGetMetadata($origin, $node)
+    public function ajaxGetMetadata($origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -78,7 +77,7 @@ class CommunityHeader extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxAskSubscribe($origin, $node)
+    public function ajaxAskSubscribe($origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -93,7 +92,7 @@ class CommunityHeader extends \Movim\Widget\Base
         Dialog::fill($view->draw('_communityheader_subscribe'));
     }
 
-    function ajaxSubscribe($form, $origin, $node)
+    public function ajaxSubscribe($form, $origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -113,7 +112,7 @@ class CommunityHeader extends \Movim\Widget\Base
         }
     }
 
-    function ajaxAskUnsubscribe($origin, $node)
+    public function ajaxAskUnsubscribe($origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -128,7 +127,7 @@ class CommunityHeader extends \Movim\Widget\Base
         Dialog::fill($view->draw('_communityheader_unsubscribe'));
     }
 
-    function ajaxUnsubscribe($origin, $node)
+    public function ajaxUnsubscribe($origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 
@@ -156,7 +155,7 @@ class CommunityHeader extends \Movim\Widget\Base
     /*
      * Sic, doing this hack and wait to have a proper way to test it in the standard
      */
-    function ajaxTestPublish($origin, $node)
+    public function ajaxTestPublish($origin, $node)
     {
         if (!$this->validateServerNode($origin, $node)) return;
 

@@ -1,8 +1,10 @@
 <?php
 
-class AdminLogin extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class AdminLogin extends Base
 {
-    function load()
+    public function load()
     {
     }
 }

@@ -1,16 +1,18 @@
 <?php
 
-class Caps extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class Caps extends Base
 {
     private $_table = [];
     private $_nslist;
 
-    function load()
+    public function load()
     {
         $this->addcss('caps.css');
     }
 
-    function isImplemented($client, $key)
+    public function isImplemented($client, $key)
     {
         $class = in_array($this->_nslist[$key]['ns'], $client) ? 'yes' : 'no';
 
@@ -22,7 +24,7 @@ class Caps extends \Movim\Widget\Base
             </td>';
     }
 
-    function display()
+    public function display()
     {
         $clients = App\Capability::where('category', 'client')->orderBy('name')->get();
         $oldname = '';

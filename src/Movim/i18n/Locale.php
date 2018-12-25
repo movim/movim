@@ -17,7 +17,7 @@ class Locale
             INI_SCANNER_RAW);
 
         $dir = scandir(WIDGETS_PATH);
-        foreach($dir as $widget) {
+        foreach ($dir as $widget) {
             $path = WIDGETS_PATH . $widget . '/locales.ini';
             if (file_exists($path)) {
                 $this->loadIni($path);
@@ -61,7 +61,7 @@ class Locale
         $lang_list = get_lang_list();
         $dir = scandir(LOCALES_PATH);
         $po = [];
-        foreach($dir as $files) {
+        foreach ($dir as $files) {
             $explode = explode('.', $files);
             if (end($explode) == 'po'
             && array_key_exists($explode[0], $lang_list)) {

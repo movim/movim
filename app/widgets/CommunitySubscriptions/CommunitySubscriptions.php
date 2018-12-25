@@ -1,12 +1,14 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Respect\Validation\Validator;
 
-class CommunitySubscriptions extends \Movim\Widget\Base
+class CommunitySubscriptions extends Base
 {
     private $_list_server;
 
-    function checkNewServer($node)
+    public function checkNewServer($node)
     {
         $r = ($this->_list_server != $node->server);
         $this->_list_server = $node->server;

@@ -1,8 +1,10 @@
 <?php
 
-class Help extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class Help extends Base
 {
-    function ajaxAddChatroom()
+    public function ajaxAddChatroom()
     {
         $this->rpc(
             'MovimUtils.redirect',
@@ -10,7 +12,7 @@ class Help extends \Movim\Widget\Base
         );
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('info',
             \App\Info::where('server', $this->user->session->host)

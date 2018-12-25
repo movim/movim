@@ -1,10 +1,12 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Upload\Request;
 
-class Upload extends \Movim\Widget\Base
+class Upload extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('upload.js');
         $this->addcss('upload.css');
@@ -20,39 +22,39 @@ class Upload extends \Movim\Widget\Base
         }
     }
 
-    function onRequested($package)
+    public function onRequested($package)
     {
         list($get, $put) = array_values($package->content);
         $this->rpc('Upload.request', $get, $put);
     }
 
-    function onError()
+    public function onError()
     {
         Notification::append(null, $this->__('upload.error_failed'));
     }
 
-    function onErrorFileTooLarge()
+    public function onErrorFileTooLarge()
     {
         Notification::append(null, $this->__('upload.error_filesize'));
     }
 
-    function onErrorResourceConstraint()
+    public function onErrorResourceConstraint()
     {
         Notification::append(null, $this->__('upload.error_resource_constraint'));
     }
 
-    function onErrorNotAllowed()
+    public function onErrorNotAllowed()
     {
         Notification::append(null, $this->__('upload.error_not_allowed'));
     }
 
-    function ajaxRequest()
+    public function ajaxRequest()
     {
         $view = $this->tpl();
         Dialog::fill($view->draw('_upload'));
     }
 
-    function ajaxSend($file)
+    public function ajaxSend($file)
     {
         $upload = $this->user->session->getUploadService();
 
@@ -66,7 +68,7 @@ class Upload extends \Movim\Widget\Base
         }
     }
 
-    function ajaxFailed()
+    public function ajaxFailed()
     {
         Notification::append(null, $this->__('upload.error_failed'));
     }

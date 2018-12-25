@@ -5,7 +5,7 @@ use Movim\Widget\Base;
 
 class Api extends Base
 {
-    function ajaxRegister()
+    public function ajaxRegister()
     {
         $json = requestURL(
             MOVIM_API.'pods/register',
@@ -20,7 +20,7 @@ class Api extends Base
         }
     }
 
-    function ajaxUnregister()
+    public function ajaxUnregister()
     {
         $configuration = Configuration::get();
 
@@ -30,7 +30,7 @@ class Api extends Base
         $this->rpc('MovimUtils.reloadThis');
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign(
             'infos',

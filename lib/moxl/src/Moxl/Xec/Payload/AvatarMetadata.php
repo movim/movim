@@ -12,10 +12,10 @@ class AvatarMetadata extends Payload
 
         $c = \App\Contact::firstOrNew(['id' => $jid]);
 
-        if(isset($stanza->items->item->metadata->info)) {
+        if (isset($stanza->items->item->metadata->info)) {
             $info = $stanza->items->item->metadata->info->attributes();
 
-            if($info->id != $c->avatarhash) {
+            if ($info->id != $c->avatarhash) {
                 $c->avatarhash = $info->id;
                 $c->save();
 

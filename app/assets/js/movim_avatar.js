@@ -21,7 +21,7 @@ var MovimAvatar = {
 
         var image = new Image();
         image.src = src;
-        image.onload = function(){
+        image.onload = function() {
             ctx = canvas.getContext("2d");
 
             switch (orientation) {

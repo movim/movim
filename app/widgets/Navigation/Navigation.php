@@ -1,8 +1,10 @@
 <?php
 
-class Navigation extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class Navigation extends Base
 {
-    function display()
+    public function display()
     {
         $this->view->assign('page', $this->_view);
     }

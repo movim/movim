@@ -4,12 +4,12 @@ use Movim\Controller\Base;
 
 class TagController extends Base
 {
-    function load()
+    public function load()
     {
         $this->session_only = false;
     }
 
-    function dispatch()
+    public function dispatch()
     {
         $this->page->setTitle(__('page.tag'));
         $this->page->disableJavascriptCheck();

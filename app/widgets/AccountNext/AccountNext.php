@@ -7,7 +7,7 @@ use Movim\Session;
 
 class AccountNext extends \Movim\Widget\Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('accountnext.js');
         $this->addcss('accountnext.css');
@@ -20,7 +20,7 @@ class AccountNext extends \Movim\Widget\Base
         $this->registerEvent('register_get_errorserviceunavailable', 'onServiceUnavailable', 'accountnext');
     }
 
-    function display()
+    public function display()
     {
         $host = $this->get('s');
 
@@ -29,13 +29,13 @@ class AccountNext extends \Movim\Widget\Base
         $this->view->assign('host', $host);
     }
 
-    function onForm($package)
+    public function onForm($package)
     {
         $form = $package->content;
 
         $xtf = new \XMPPtoForm;
         $html = '';
-        if (!empty($form->x)){
+        if (!empty($form->x)) {
             switch($form->x->attributes()->xmlns) {
                 case 'jabber:x:data' :
                     $formview = $this->tpl();
@@ -63,7 +63,7 @@ class AccountNext extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#subscription_form', $html);
     }
 
-    function onRegistered($packet)
+    public function onRegistered($packet)
     {
         $data = $packet->content;
 
@@ -74,28 +74,28 @@ class AccountNext extends \Movim\Widget\Base
         $this->rpc('setUsername', $data->username->value);
     }
 
-    function onError()
+    public function onError()
     {
         Notification::append(null, $this->__('error.service_unavailable'));
     }
 
-    function onRegisterError($package)
+    public function onRegisterError($package)
     {
         $error = $package->content;
         Notification::append(null, $error);
     }
 
-    function onForbidden()
+    public function onForbidden()
     {
         Notification::append(null, $this->__('error.forbidden'));
     }
 
-    function onRegisterNotAcceptable()
+    public function onRegisterNotAcceptable()
     {
         Notification::append(null, $this->__('error.not_acceptable'));
     }
 
-    function onServiceUnavailable()
+    public function onServiceUnavailable()
     {
         Notification::append(null, $this->__('error.service_unavailable'));
 
@@ -104,7 +104,7 @@ class AccountNext extends \Movim\Widget\Base
         $this->rpc('MovimUtils.redirect', $this->route('account'));
     }
 
-    function ajaxGetForm($host)
+    public function ajaxGetForm($host)
     {
         global $dns;
         $domain = $host;
@@ -122,7 +122,7 @@ class AccountNext extends \Movim\Widget\Base
         });
     }
 
-    function ajaxRegister($form)
+    public function ajaxRegister($form)
     {
         if (isset($form->re_password)
         && $form->re_password->value != $form->password->value) {

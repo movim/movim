@@ -1,14 +1,16 @@
 <?php
 
-class VisioLink extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class VisioLink extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('visiolink.js');
         $this->addcss('visiolink.css');
     }
 
-    function ajaxDecline($to)
+    public function ajaxDecline($to)
     {
         $visio = new Visio;
         $visio->ajaxTerminate($to, 'decline');

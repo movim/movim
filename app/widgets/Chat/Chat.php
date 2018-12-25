@@ -25,7 +25,7 @@ class Chat extends \Movim\Widget\Base
     private $_wrapper = [];
     private $_mucPresences = [];
 
-    function load()
+    public function load()
     {
         $this->addjs('chat.js');
         $this->addcss('chat.css');
@@ -53,10 +53,10 @@ class Chat extends \Movim\Widget\Base
 
     /*
      * Disabled for the moment, it SPAM a bit too much the user
-    function onPresence($packet)
+    public function onPresence($packet)
     {
         $contacts = $packet->content;
-        if ($contacts != null){
+        if ($contacts != null) {
             $contact = $contacts[0];
 
             if ($contact->value < 5) {
@@ -71,17 +71,17 @@ class Chat extends \Movim\Widget\Base
         }
     }*/
 
-    function onMessageHistory($packet)
+    public function onMessageHistory($packet)
     {
         $this->onMessage($packet, true);
     }
 
-    function onMessageReceipt($packet)
+    public function onMessageReceipt($packet)
     {
         $this->onMessage($packet, false, true);
     }
 
-    function onMessage($packet, $history = false, $receipt = false)
+    public function onMessage($packet, $history = false, $receipt = false)
     {
         $message = $packet->content;
         $from = null;
@@ -146,48 +146,48 @@ class Chat extends \Movim\Widget\Base
         }
     }
 
-    function onSticker($packet)
+    public function onSticker($packet)
     {
         list($to, $cid) = array_values($packet->content);
         $this->ajaxGet($to);
     }
 
-    function onComposing($array)
+    public function onComposing($array)
     {
         $this->setState($array, $this->__('message.composing'));
     }
 
-    function onPaused($array)
+    public function onPaused($array)
     {
         $this->setState($array, $this->__('message.paused'));
     }
 
-    function onGone($array)
+    public function onGone($array)
     {
         $this->setState($array, $this->__('message.gone'));
     }
 
-    function onConferenceSubject($packet)
+    public function onConferenceSubject($packet)
     {
         $this->ajaxGetRoom($packet->content->jidfrom);
     }
 
-    function onMAMRetrieved($packet)
+    public function onMAMRetrieved($packet)
     {
         $this->ajaxGetRoom($packet->content);
     }
 
-    function onMucConnected($packet)
+    public function onMucConnected($packet)
     {
         $this->ajaxGetRoom($packet->content->jid);
     }
 
-    function onRoomConfigError($packet)
+    public function onRoomConfigError($packet)
     {
         Notification::append(false, $packet->content);
     }
 
-    function onRoomConfig($packet)
+    public function onRoomConfig($packet)
     {
         list($config, $room) = array_values($packet->content);
 
@@ -202,7 +202,7 @@ class Chat extends \Movim\Widget\Base
         Dialog::fill($view->draw('_chat_config_room'), true);
     }
 
-    function onRoomConfigSaved($packet)
+    public function onRoomConfigSaved($packet)
     {
         Notification::append(false, $this->__('chatroom.config_saved'));
     }
@@ -225,7 +225,7 @@ class Chat extends \Movim\Widget\Base
      * @brief Get a discussion
      * @param string $jid
      */
-    function ajaxGet($jid = null, $light = false)
+    public function ajaxGet($jid = null, $light = false)
     {
         if ($jid == null) {
             $this->rpc('Notification.current', 'chat');
@@ -252,7 +252,7 @@ class Chat extends \Movim\Widget\Base
      * @brief Get a chatroom
      * @param string $jid
      */
-    function ajaxGetRoom($room, $light = false)
+    public function ajaxGetRoom($room, $light = false)
     {
         if (!$this->validateJid($room)) return;
 
@@ -283,7 +283,7 @@ class Chat extends \Movim\Widget\Base
     /**
      * @brief Get a Drawer view of a contact
      */
-    function ajaxGetContact($jid)
+    public function ajaxGetContact($jid)
     {
         $c = new ContactActions;
         $c->ajaxGetDrawer($jid);
@@ -296,7 +296,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
+    public function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
     {
         $message = trim($message);
         if (filter_var($message, FILTER_VALIDATE_URL)) {
@@ -403,7 +403,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    function ajaxHttpCorrect($to, $message)
+    public function ajaxHttpCorrect($to, $message)
     {
         $replace = $this->user->messages()
                         ->where('jidto', $to)
@@ -421,7 +421,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    function ajaxLast($to)
+    public function ajaxLast($to)
     {
         $m = $this->user->messages()
                         ->where('jidto', $to)
@@ -440,7 +440,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    function ajaxSendComposing($to)
+    public function ajaxSendComposing($to)
     {
         if (!$this->validateJid($to)) return;
 
@@ -454,7 +454,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    function ajaxSendPaused($to)
+    public function ajaxSendPaused($to)
     {
         if (!$this->validateJid($to)) return;
 
@@ -468,7 +468,7 @@ class Chat extends \Movim\Widget\Base
      * @param string jid
      * @param string time
      */
-    function ajaxGetHistory($jid, $date, $muc = false, $prepend = true)
+    public function ajaxGetHistory($jid, $date, $muc = false, $prepend = true)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -495,7 +495,7 @@ class Chat extends \Movim\Widget\Base
                 $messages = $messages->reverse();
             }
 
-            foreach($messages as $message) {
+            foreach ($messages as $message) {
                 if (!$message->isOTR()) {
                     $this->prepareMessage($message);
                 }
@@ -511,7 +511,7 @@ class Chat extends \Movim\Widget\Base
      *
      * @param string $room
      */
-    function ajaxGetRoomConfig($room)
+    public function ajaxGetRoomConfig($room)
     {
         if (!$this->validateJid($room)) return;
 
@@ -525,7 +525,7 @@ class Chat extends \Movim\Widget\Base
      *
      * @param string $room
      */
-    function ajaxSetRoomConfig($data, $room)
+    public function ajaxSetRoomConfig($data, $room)
     {
         if (!$this->validateJid($room)) return;
 
@@ -538,7 +538,7 @@ class Chat extends \Movim\Widget\Base
     /**
      * @brief Set last displayed message
      */
-    function ajaxDisplayed($jid, $id)
+    public function ajaxDisplayed($jid, $id)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -559,7 +559,7 @@ class Chat extends \Movim\Widget\Base
      *
      * @param string $room
      */
-    function ajaxClearHistory($jid)
+    public function ajaxClearHistory($jid)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -571,7 +571,7 @@ class Chat extends \Movim\Widget\Base
         $this->ajaxGet($jid);
     }
 
-    function prepareChat($jid, $muc = false)
+    public function prepareChat($jid, $muc = false)
     {
         $view = $this->tpl();
 
@@ -609,7 +609,7 @@ class Chat extends \Movim\Widget\Base
         return $view->draw('_chat');
     }
 
-    function prepareMessages($jid, $muc = false)
+    public function prepareMessages($jid, $muc = false)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -658,7 +658,7 @@ class Chat extends \Movim\Widget\Base
         $this->rpc('MovimTpl.scrollPanel');
     }
 
-    function prepareMessage(&$message, $jid = null)
+    public function prepareMessage(&$message, $jid = null)
     {
         if ($jid != $message->jidto && $jid != $message->jidfrom && $jid != null) {
             return $this->_wrapper;
@@ -795,7 +795,7 @@ class Chat extends \Movim\Widget\Base
         return $this->_wrapper;
     }
 
-    function prepareEmpty()
+    public function prepareEmpty()
     {
         $view = $this->tpl();
 
@@ -842,12 +842,12 @@ class Chat extends \Movim\Widget\Base
         return (Validator::stringType()->noWhitespace()->length(6, 60)->validate($jid));
     }
 
-    function getSmileyPath($id)
+    public function getSmileyPath($id)
     {
         return getSmileyPath($id);
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('pagination', $this->_pagination);
     }

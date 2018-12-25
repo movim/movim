@@ -1,5 +1,7 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Roster\RemoveItem;
 use Moxl\Xec\Action\Presence\Unsubscribe;
@@ -7,7 +9,7 @@ use Moxl\Xec\Action\Presence\Unsubscribe;
 use Respect\Validation\Validator;
 use App\Roster as DBRoster;
 
-class ContactHeader extends \Movim\Widget\Base
+class ContactHeader extends Base
 {
     public function load()
     {
@@ -16,12 +18,12 @@ class ContactHeader extends \Movim\Widget\Base
         $this->registerEvent('roster_removeitem_handle', 'onUpdate');
     }
 
-    function onUpdate($packet)
+    public function onUpdate($packet)
     {
         $this->rpc('MovimTpl.fill', '#contact_header', $this->prepareHeader($packet->content));
     }
 
-    function ajaxEditContact($jid)
+    public function ajaxEditContact($jid)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -33,7 +35,7 @@ class ContactHeader extends \Movim\Widget\Base
         Dialog::fill($view->draw('_contactheader_edit'));
     }
 
-    function ajaxEditSubmit($form)
+    public function ajaxEditSubmit($form)
     {
         $rd = new UpdateItem;
         $rd->setTo(echapJid($form->jid->value))
@@ -42,7 +44,7 @@ class ContactHeader extends \Movim\Widget\Base
            ->request();
     }
 
-    function ajaxDeleteContact($jid)
+    public function ajaxDeleteContact($jid)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -55,7 +57,7 @@ class ContactHeader extends \Movim\Widget\Base
     /**
      * @brief Remove a contact to the roster and unsubscribe
      */
-    function ajaxDelete($jid)
+    public function ajaxDelete($jid)
     {
         $r = new RemoveItem;
         $r->setTo($jid)
@@ -66,7 +68,7 @@ class ContactHeader extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxChat($jid)
+    public function ajaxChat($jid)
     {
         if (!$this->validateJid($jid)) return;
 

@@ -1,13 +1,15 @@
 <?php
 
-class Statistics extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class Statistics extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('statistics.css');
     }
 
-    function getCapabilityName($node)
+    public function getCapabilityName($node)
     {
         $capability = App\Capability::where('node', 'like', '%' . $node . '%')->first();
 
@@ -19,7 +21,7 @@ class Statistics extends \Movim\Widget\Base
         return $node;
     }
 
-    function display()
+    public function display()
     {
         $presences = App\Presence::select('jid', 'resource', 'node')
                                  ->where('node', '!=', '')

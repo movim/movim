@@ -18,7 +18,7 @@ class Get extends Action
 
     protected function saveItem($c)
     {
-        if($c->getName() == 'subscription') {
+        if ($c->getName() == 'subscription') {
             /*
              * Old deprecated method, moving the subscriptions to
              * another PEP node
@@ -29,7 +29,7 @@ class Get extends Action
               ->setFrom($this->_to)
               ->setPEPNode('urn:xmpp:pubsub:movim-public-subscription')
               ->request();
-        } elseif($c->getName() == 'conference') {
+        } elseif ($c->getName() == 'conference') {
             $conference = new \App\Conference;
 
             $conference->conference     = (string)$c->attributes()->jid;
@@ -43,18 +43,18 @@ class Get extends Action
 
     public function handle($stanza, $parent = false)
     {
-        if($stanza->pubsub->items->item->storage) {
+        if ($stanza->pubsub->items->item->storage) {
             \App\User::me()->session->conferences()->delete();
 
-            if($stanza->pubsub->items->item->count() == 1) {
+            if ($stanza->pubsub->items->item->count() == 1) {
                 // We save the bookmarks as Subscriptions in the database
-                foreach($stanza->pubsub->items->item->storage->children() as $c) {
+                foreach ($stanza->pubsub->items->item->storage->children() as $c) {
                     $this->saveItem($c);
                 }
             } else {
                 // We parse non-standard XML where the items are in many <item>
-                foreach($stanza->pubsub->items->children() as $c) {
-                    foreach($c->storage->children() as $s) {
+                foreach ($stanza->pubsub->items->children() as $c) {
+                    foreach ($c->storage->children() as $s) {
                         $this->saveItem($s);
                     }
                 }

@@ -6,7 +6,7 @@ use Movim\Session;
 
 class OMEMO
 {
-    static function setDeviceList($ids)
+    public static function setDeviceList($ids)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -24,7 +24,7 @@ class OMEMO
         $list->setAttribute('xmlns', 'eu.siacs.conversations.axolotl');
         $item->appendChild($list);
 
-        foreach($ids as $id) {
+        foreach ($ids as $id) {
             $device = $dom->createElement('device');
             $device->setAttribute('id', $id);
             $list->appendChild($device);
@@ -34,7 +34,7 @@ class OMEMO
         \Moxl\API::request($xml);
     }
 
-    static function getBundle($to, $id)
+    public static function getBundle($to, $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -48,7 +48,7 @@ class OMEMO
         \Moxl\API::request($xml);
     }
 
-    static function announceBundle(
+    public static function announceBundle(
         $id,
         $signedPreKeyPublic,
         $signedPreKeySignature,
@@ -88,7 +88,7 @@ class OMEMO
 
         $i = 1;
 
-        foreach($preKeys as $i => $key) {
+        foreach ($preKeys as $i => $key) {
             $pkp = $dom->createElement('preKeyPublic', $key);
             $pkp->setAttribute('preKeyId', $i);
             $pks->appendChild($pkp);
@@ -99,7 +99,7 @@ class OMEMO
         \Moxl\API::request($xml);
     }
 
-    static function message(
+    public static function message(
         $to,
         $sid,
         $key,
@@ -128,7 +128,7 @@ class OMEMO
 
         $key = $dom->createElement('key', $key);
 
-        if($isprekey) {
+        if ($isprekey) {
             $key->setAttribute('prekey', 'true');
         }
 

@@ -1,4 +1,5 @@
 <?php
+
 namespace Movim\Daemon;
 
 use Ratchet\MessageComponentInterface;
@@ -180,7 +181,7 @@ class Core implements MessageComponentInterface
     private function registerCleaner()
     {
         $this->loop->addPeriodicTimer(5, function() {
-            foreach($this->sessions as $sid => $session) {
+            foreach ($this->sessions as $sid => $session) {
                 if ($session->countClients() == 0
                 && $session->registered == null) {
                     $session->killLinker();

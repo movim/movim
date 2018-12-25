@@ -1,8 +1,10 @@
 <?php
 
-class Onboarding extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class Onboarding extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('onboarding.css');
         $this->addjs('onboarding.js');

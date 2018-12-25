@@ -1,15 +1,17 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Respect\Validation\Validator;
 
-class CommunityData extends \Movim\Widget\Base
+class CommunityData extends Base
 {
     public function load()
     {
         $this->registerEvent('disco_request_handle', 'onDiscoRequest', 'community');
     }
 
-    function onDiscoRequest($packet)
+    public function onDiscoRequest($packet)
     {
         list($origin, $node) = $packet->content;
 

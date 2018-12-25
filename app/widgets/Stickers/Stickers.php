@@ -9,14 +9,14 @@ use Movim\Picture;
 
 class Stickers extends \Movim\Widget\Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('stickers.css');
         $this->addjs('stickers.js');
         $this->registerEvent('bob', 'onRequest');
     }
 
-    function onRequest($packet)
+    public function onRequest($packet)
     {
         $content = $packet->content;
 
@@ -38,7 +38,7 @@ class Stickers extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxSend($to, $pack, $file, $muc = false)
+    public function ajaxSend($to, $pack, $file, $muc = false)
     {
         if (!$this->validateJid($to)) return;
 
@@ -93,7 +93,7 @@ class Stickers extends \Movim\Widget\Base
         }
     }
 
-    function ajaxShow($to, $pack = null)
+    public function ajaxShow($to, $pack = null)
     {
         if (!$this->validateJid($to)) return;
 
@@ -122,7 +122,7 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Show the smiley list
      */
-    function ajaxSmiley($to)
+    public function ajaxSmiley($to)
     {
         if (!$this->validateJid($to)) return;
 
@@ -136,7 +136,7 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Show the smiley list
      */
-    function ajaxSmileyTwo($to)
+    public function ajaxSmileyTwo($to)
     {
         if (!$this->validateJid($to)) return;
 
@@ -150,7 +150,7 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Get the path of an emoji
      */
-    function ajaxSmileyGet($string)
+    public function ajaxSmileyGet($string)
     {
         return prepareString($string);
     }
@@ -158,7 +158,7 @@ class Stickers extends \Movim\Widget\Base
     /**
      * @brief Get a list of stickers packs
      */
-    function getPacks()
+    public function getPacks()
     {
         $dirs = scandir(dirname(__FILE__).'/stickers/');
 
@@ -168,7 +168,7 @@ class Stickers extends \Movim\Widget\Base
         array_shift($dirs);
 
         // Get the packs
-        foreach($dirs as $dir) {
+        foreach ($dirs as $dir) {
             if (is_dir(dirname(__FILE__).'/stickers/'.$dir)) {
                 array_push($packs, $dir);
             }
@@ -188,7 +188,7 @@ class Stickers extends \Movim\Widget\Base
                         ->length(6, 60)->validate($jid);
     }
 
-    function getSmileyPath($id)
+    public function getSmileyPath($id)
     {
         return getSmileyPath($id);
     }

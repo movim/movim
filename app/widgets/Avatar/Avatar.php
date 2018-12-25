@@ -7,7 +7,7 @@ use Movim\Picture;
 
 class Avatar extends \Movim\Widget\Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('avatar.css');
         $this->addjs('avatar.js');
@@ -19,24 +19,24 @@ class Avatar extends \Movim\Widget\Base
         $this->registerEvent('avatar_set_errornotallowed', 'onMyAvatarError');
     }
 
-    function onSetAvatar($packet)
+    public function onSetAvatar($packet)
     {
         $this->ajaxGetAvatar();
     }
 
-    function onGetAvatar($packet)
+    public function onGetAvatar($packet)
     {
         $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
         Notification::append(null, $this->__('avatar.updated'));
     }
 
-    function onMyAvatarError()
+    public function onMyAvatarError()
     {
         $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
         Notification::append(null, $this->__('avatar.not_updated'));
     }
 
-    function prepareForm()
+    public function prepareForm()
     {
         $avatarform = $this->tpl();
 
@@ -53,19 +53,19 @@ class Avatar extends \Movim\Widget\Base
         return $avatarform->draw('_avatar_form');
     }
 
-    function ajaxGetAvatar()
+    public function ajaxGetAvatar()
     {
         $r = new Get;
         $r->setTo($this->user->id)
           ->request();
     }
 
-    function ajaxDisplay()
+    public function ajaxDisplay()
     {
         $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
     }
 
-    function ajaxSubmit($avatar)
+    public function ajaxSubmit($avatar)
     {
         $p = new Picture;
         $p->fromBase($avatar->photobin->value);

@@ -17,7 +17,7 @@ class ReceiptRequest extends Payload
                                   ->where('jidfrom', current(explode('/', $from)))
                                   ->first();
 
-        if($message) {
+        if ($message) {
             $message->delivered = gmdate('Y-m-d H:i:s');
             $message->save();
         }

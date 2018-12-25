@@ -11,7 +11,7 @@ class Displayed extends Payload
                                   ->where('jidfrom', current(explode('/', (string)$parent->attributes()->to)))
                                   ->first();
 
-        if($message) {
+        if ($message) {
             $message->displayed = gmdate('Y-m-d H:i:s');
             $message->save();
 

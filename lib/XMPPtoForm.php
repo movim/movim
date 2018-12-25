@@ -1,4 +1,5 @@
 <?php
+
 class XMPPtoForm
 {
     private $fieldset;
@@ -40,8 +41,8 @@ class XMPPtoForm
         $this->xmpp = str_replace('xmlns=', 'ns=', $this->xmpp);
         $x = new SimpleXMLElement($this->xmpp);
 
-        foreach($x->children() as $element){
-            switch($element->getName()){
+        foreach ($x->children() as $element) {
+            switch($element->getName()) {
                 case "title":
                     $this->outTitle($element);
                     break;
@@ -49,9 +50,7 @@ class XMPPtoForm
                     $this->outP($element);
                     break;
                 case "field":
-                    //if($element['type'] != 'hidden' && $element['type'] != 'fixed')
-                    //    $this->html .='<div>';
-                    switch($element['type']){
+                    switch($element['type']) {
                         case "boolean":
                             $this->outCheckbox($element);
                             break;
@@ -89,8 +88,6 @@ class XMPPtoForm
                             $this->outInput($element, "text");
                             break;
                     }
-                    //if($element['type'] != 'hidden')
-                    //    $this->html .='</div>';
                     break;
                 case 'url':
 
@@ -99,17 +96,12 @@ class XMPPtoForm
                 case 'username':
                 case 'email':
                 case 'password':
-                    //$this->html .='<div class="element">';
                         $this->outGeneric($element->getName());
-                    //$this->html .='</div>';
                     break;
                 default:
                     //$this->html .= "";
             }
         }
-        /*if($this->fieldset>0){
-            $this->html .= '</fieldset>';
-        }*/
     }
 
     private function outGeneric($s)
@@ -130,6 +122,7 @@ class XMPPtoForm
         $label->setAttribute('for', $s);
         $div->appendChild($label);
     }
+
     private function outTitle($s)
     {
         $title = $this->html->createElement('h3', $s);
@@ -149,8 +142,8 @@ class XMPPtoForm
         $this->html->appendChild($a);
     }
     /*
-    private function outBold($s){
-        if($this->fieldset > 0){
+    private function outBold($s) {
+        if ($this->fieldset > 0) {
             $this->html .= '</fieldset>';
         }
         $this->html .= '<fieldset><legend>'.$s->value.'</legend><br />';
@@ -172,21 +165,28 @@ class XMPPtoForm
         $select->setAttribute('id', $s['var']);
         $select->setAttribute('name', $s['var']);
 
-        if ($s->required)
+        if ($s->required) {
             $select->setAttribute('required', 'required');
+        }
 
         $div->appendChild($select);
 
         $option = $this->html->createElement('option', __('button.bool_yes'));
         $option->setAttribute('value', 'true');
-        if (isset($s->value) || $s->value == "true" || $s->value == "1")
+
+        if (isset($s->value) || $s->value == "true" || $s->value == "1") {
             $option->setAttribute('selected', 'selected');
+        }
+
         $select->appendChild($option);
 
         $option = $this->html->createElement('option', __('button.bool_no'));
         $option->setAttribute('value', 'false');
-        if (!isset($s->value) || $s->value == "false" || $s->value == "0")
+
+        if (!isset($s->value) || $s->value == "false" || $s->value == "0") {
             $option->setAttribute('selected', 'selected');
+        }
+
         $select->appendChild($option);
 
         $label = $this->html->createElement('label', $s['label']);
@@ -206,11 +206,12 @@ class XMPPtoForm
         $textarea->setAttribute('id', $s['var']);
         $textarea->setAttribute('name', $s['var']);
 
-        if ($s->required)
+        if ($s->required) {
             $textarea->setAttribute('required', 'required');
+        }
 
-        foreach ($s->children() as $value){
-            if($value->getName() == "value"){
+        foreach ($s->children() as $value) {
+            if ($value->getName() == "value") {
                 $textarea->nodeValue .= $value . "\n";
             }
         }
@@ -227,7 +228,8 @@ class XMPPtoForm
         $container->appendChild($label);
     }
 
-    private function outInput($s, $type = false){
+    private function outInput($s, $type = false)
+    {
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
 
@@ -237,24 +239,25 @@ class XMPPtoForm
         $input->setAttribute('type', $type);
         $input->setAttribute('title', $s->desc);
 
-        if($type) {
+        if ($type) {
             $input->setAttribute('type', $type);
         } else {
             $input->setAttribute('type', $s['type']);
         }
+
         $input->setAttribute('label', $s['label']);
 
-        if($s->required) {
+        if ($s->required) {
             $input->setAttribute('required', 'required');
         }
 
-        foreach($s->children() as $value){
-            if($value->getName() == "value"){
+        foreach ($s->children() as $value) {
+            if ($value->getName() == "value") {
                 $input->setAttribute('value', $value);
             }
         }
 
-        if($s['var'] == 'username') {
+        if ($s['var'] == 'username') {
             $input->setAttribute('pattern', '[a-z0-9_-]*');
         }
 
@@ -266,7 +269,8 @@ class XMPPtoForm
         $container->appendChild($label);
     }
 
-    private function outHiddeninput($s){
+    private function outHiddeninput($s)
+    {
         $input = $this->html->createElement('input');
         $input->setAttribute('name', $s['var']);
         $input->setAttribute('type', 'hidden');
@@ -275,7 +279,8 @@ class XMPPtoForm
         $this->html->appendChild($input);
     }
 
-    private function outList($s){
+    private function outList($s)
+    {
         $container = $this->html->createElement('div');
         $this->html->appendChild($container);
 
@@ -289,25 +294,26 @@ class XMPPtoForm
         $select->setAttribute('id', $s['var']);
         $select->setAttribute('name', $s['var']);
 
-        if($s->required)
+        if ($s->required) {
             $select->setAttribute('required', 'required');
+        }
 
         $div->appendChild($select);
 
-        if(count($s->xpath('option')) > 0){
-            foreach($s->option as $option){
-                if(isset($option->attributes()->label)) {
+        if (count($s->xpath('option')) > 0) {
+            foreach ($s->option as $option) {
+                if (isset($option->attributes()->label)) {
                     $opt = $this->html->createElement('option', $option->attributes()->label);
                 } else {
                     $opt = $this->html->createElement('option', $option->value);
                 }
 
                 $opt->setAttribute('value', $option->value);
-                if(
+                if (
                     in_array(
                         (string)$option->value,
                         array_map(
-                            function($sxml) {
+                            function ($sxml) {
                                 return (string)$sxml;
                             },
                             $s->xpath('value')
@@ -318,9 +324,8 @@ class XMPPtoForm
                 }
                 $select->appendChild($opt);
             }
-        }
-        else{
-            foreach($s->value as $option){
+        } else {
+            foreach ($s->value as $option) {
                 $label = $option['label'];
                 $option = $this->html->createElement('option', $option);
                 $option->setAttribute('value', $label);
@@ -360,7 +365,7 @@ class FormtoXMPP
 
     public function create()
     {
-        foreach($this->_inputs as $key => $value) {
+        foreach ($this->_inputs as $key => $value) {
             $container = $this->_form->createElement('container');
             $this->_form->appendChild($container);
 
@@ -394,4 +399,3 @@ class FormtoXMPP
         return $this->_form->saveXML();
     }
 }
-?>

@@ -34,7 +34,7 @@ class GetSubscriptions extends Errors
     {
         $tab = [];
 
-        foreach($stanza->pubsub->subscriptions->children() as $s) {
+        foreach ($stanza->pubsub->subscriptions->children() as $s) {
             $subscription = \App\Subscription::firstOrNew([
                 'jid' => (string)$s->attributes()->jid,
                 'server' => $this->_to,
@@ -66,7 +66,7 @@ class GetSubscriptions extends Errors
             'to' => $this->_to,
             'node' => $this->_node]);
 
-        if($this->_notify) {
+        if ($this->_notify) {
             $this->deliver();
         }
     }

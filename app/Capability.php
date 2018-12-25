@@ -56,7 +56,7 @@ class Capability extends Model
 
         foreach ($this->getFeaturesAttribute() as $feature) {
             preg_match("/http:\/\/jabber.org\/protocol\/pubsub#(.*)-affiliation$/", $feature, $matches);
-            if (!empty($matches)){
+            if (!empty($matches)) {
                 $roles[$matches[1]] = __('affiliation.' . $matches[1]);
             }
         }

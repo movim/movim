@@ -20,9 +20,9 @@ class Publish extends Action
     public function request()
     {
         $this->store();
-        if($this->_muc) {
+        if ($this->_muc) {
             Muc::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_file);
-        } elseif($this->_encrypted) {
+        } elseif ($this->_encrypted) {
             Message::encrypted($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace);
         } else {
             Message::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace, $this->_file);
@@ -42,7 +42,7 @@ class Publish extends Action
 
     public function handle($stanza, $parent = false)
     {
-        if($this->_muc) {
+        if ($this->_muc) {
             $m = new \Moxl\Xec\Payload\Message;
             $m->handle($stanza, $parent);
         }

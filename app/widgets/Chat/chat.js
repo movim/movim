@@ -395,7 +395,7 @@ var Chat = {
             && (data.sticker === undefined || data.sticker === null)
             && !refBubble.querySelector('div.bubble').classList.contains('sticker')
             && !refBubble.querySelector('div.bubble').classList.contains('file')
-        ){
+        ) {
             bubble = msgStack.parentNode;
             mergeMsg = true;
         } else {
@@ -527,7 +527,7 @@ var Chat = {
             }
         }
 
-        if (prepend){
+        if (prepend) {
             Chat.currentDate = data.published;
 
             // We prepend
@@ -653,7 +653,7 @@ var Chat = {
         var send_button = document.querySelector('.chat_box span.send');
         var attachment_button = document.querySelector('.chat_box span.upload');
         if (send_button && attachment_button) {
-            if (Chat.getTextarea().value.length > 0){
+            if (Chat.getTextarea().value.length > 0) {
                 MovimUtils.showElement(send_button);
                 MovimUtils.hideElement(attachment_button);
             } else {

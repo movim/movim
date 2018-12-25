@@ -9,13 +9,14 @@ use Michelf\MarkdownExtra;
 
 use App\Configuration;
 use App\User;
+
 use Movim\Widget\Base;
 
 use Movim\Cookie;
 
 class Login extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('login.css');
         $this->addjs('login.js');
@@ -27,7 +28,7 @@ class Login extends Base
         $this->registerEvent('ssl_error', 'onSSLError');
     }
 
-    function onStart($packet)
+    public function onStart($packet)
     {
         //$session = Session::start();
 
@@ -39,7 +40,7 @@ class Login extends Base
         //}
     }
 
-    function onConfig($packet)
+    public function onConfig($packet)
     {
         $this->rpc('MovimUtils.reloadThis');
 
@@ -47,7 +48,7 @@ class Login extends Base
         $p->start();
     }
 
-    function display()
+    public function display()
     {
         $configuration = Configuration::get();
 
@@ -93,7 +94,7 @@ class Login extends Base
         }
     }
 
-    function showErrorBlock($error)
+    public function showErrorBlock($error)
     {
         $this->user->encryptedPasswords()->delete();
 
@@ -102,7 +103,7 @@ class Login extends Base
         $this->rpc('MovimUtils.addClass', '#login_widget', 'error');
     }
 
-    function prepareError($error = 'default')
+    public function prepareError($error = 'default')
     {
         $view = $this->tpl();
 
@@ -118,12 +119,12 @@ class Login extends Base
         return $view->draw('_login_error');
     }
 
-    function onSSLError()
+    public function onSSLError()
     {
         $this->showErrorBlock('fail_auth');
     }
 
-    function onSASLFailure($packet)
+    public function onSASLFailure($packet)
     {
         switch($packet->content) {
             case 'invalid-mechanism':
@@ -143,7 +144,7 @@ class Login extends Base
         $this->showErrorBlock($error);
     }
 
-    function ajaxLogin($form)
+    public function ajaxLogin($form)
     {
         $username = strtolower($form->username->value);
         $password = $form->password->value;
@@ -151,12 +152,12 @@ class Login extends Base
         $this->doLogin($username, $password);
     }
 
-    function ajaxHTTPLogin($login, $password)
+    public function ajaxHTTPLogin($login, $password)
     {
         $this->doLogin($login, $password);
     }
 
-    function ajaxQuickLogin($deviceId, $login, $key)
+    public function ajaxQuickLogin($deviceId, $login, $key)
     {
         $validate_login = Validator::stringType()->length(1, 254);
 

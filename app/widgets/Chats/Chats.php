@@ -1,14 +1,16 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Presence\Muc;
 use Moxl\Xec\Action\Bookmark\Get;
 use Moxl\Xec\Action\Bookmark\Set;
 
 use Respect\Validation\Validator;
 
-class Chats extends \Movim\Widget\Base
+class Chats extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('chats.css');
         $this->addjs('chats.js');
@@ -20,7 +22,7 @@ class Chats extends \Movim\Widget\Base
         $this->registerEvent('paused', 'onPaused', 'chat');
     }
 
-    function onMessage($packet)
+    public function onMessage($packet)
     {
         $message = $packet->content;
 
@@ -37,9 +39,9 @@ class Chats extends \Movim\Widget\Base
         }
     }
 
-    function onPresence($packet)
+    public function onPresence($packet)
     {
-        if ($packet->content != null){
+        if ($packet->content != null) {
             $chats = \App\Cache::c('chats');
             if (is_array($chats) &&  array_key_exists($packet->content->jid, $chats)) {
                 $this->rpc(
@@ -54,12 +56,12 @@ class Chats extends \Movim\Widget\Base
         }
     }
 
-    function onComposing($array)
+    public function onComposing($array)
     {
         $this->setState($array, $this->__('chats.composing'));
     }
 
-    function onPaused($array)
+    public function onPaused($array)
     {
         $this->setState($array, $this->__('chats.paused'));
     }
@@ -77,7 +79,7 @@ class Chats extends \Movim\Widget\Base
         $this->rpc('Chats.refresh');
     }
 
-    function ajaxGet()
+    public function ajaxGet()
     {
         $this->rpc('MovimTpl.fill', '#chats_widget_list', $this->prepareChats());
         $this->rpc('Chats.refresh');
@@ -86,7 +88,7 @@ class Chats extends \Movim\Widget\Base
     /**
      * @brief Get history
      */
-    function ajaxGetHistory($jid = false)
+    public function ajaxGetHistory($jid = false)
     {
         $g = new \Moxl\Xec\Action\MAM\Get;
 
@@ -118,7 +120,7 @@ class Chats extends \Movim\Widget\Base
         }
     }
 
-    function ajaxOpen($jid, $history = true)
+    public function ajaxOpen($jid, $history = true)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -138,7 +140,7 @@ class Chats extends \Movim\Widget\Base
         }
     }
 
-    function ajaxClose($jid, $closeDiscussion = false)
+    public function ajaxClose($jid, $closeDiscussion = false)
     {
         $notif = new Notification;
         $notif->ajaxClear('chat|'.$jid);
@@ -157,7 +159,7 @@ class Chats extends \Movim\Widget\Base
         }
     }
 
-    function prepareChats($emptyItems = false)
+    public function prepareChats($emptyItems = false)
     {
         $chats = \App\Cache::c('chats');
 
@@ -173,14 +175,14 @@ class Chats extends \Movim\Widget\Base
         return $view->draw('_chats');
     }
 
-    function prepareEmptyChat($jid)
+    public function prepareEmptyChat($jid)
     {
         $view = $this->tpl();
         $view->assign('jid', $jid);
         return $view->draw('_chats_empty_item');
     }
 
-    function prepareChat($jid, $status = null)
+    public function prepareChat($jid, $status = null)
     {
         if (!$this->validateJid($jid)) return;
 

@@ -75,7 +75,7 @@ class Request extends Action
         $owners = $stanza->query->xpath("//field[@var='pubsub#owner']/value/text()");
         if (!empty($owners)) {
             $affiliations['owner'] = [];
-            foreach($owners as $owner) {
+            foreach ($owners as $owner) {
                 array_push($affiliations['owner'], ['jid' => (string)$owner]);
             }
         }
@@ -83,7 +83,7 @@ class Request extends Action
         $publishers = $stanza->query->xpath("//field[@var='pubsub#publisher']/value/text()");
         if (!empty($publishers)) {
             $affiliations['publisher'] = [];
-            foreach($publishers as $publisher) {
+            foreach ($publishers as $publisher) {
                 array_push($affiliations['publisher'], ['jid' => (string)$publisher]);
             }
         }

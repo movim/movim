@@ -6,7 +6,7 @@ use Movim\Session;
 
 class API
 {
-    static function iqWrapper($xml = false, $to = false, $type = false, $id = false)
+    public static function iqWrapper($xml = false, $to = false, $type = false, $id = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $iq = $dom->createElementNS('jabber:client', 'iq');
@@ -20,26 +20,26 @@ class API
                 $me->id.'/'.$me->session->resource);
         }
 
-        if($to != false) {
+        if ($to != false) {
             $iq->setAttribute('to', $to);
         }
 
-        if($type != false) {
+        if ($type != false) {
             $iq->setAttribute('type', $type);
         }
 
         global $language;
 
         $session = Session::start();
-        if($id == false) $id = $session->get('id');
+        if ($id == false) $id = $session->get('id');
         $iq->setAttribute('id', $id);
 
-        if(isset($language)) {
+        if (isset($language)) {
             $iq->setAttribute('xml:lang', $language);
         }
 
-        if($xml != false) {
-            if(is_string($xml)) {
+        if ($xml != false) {
+            if (is_string($xml)) {
                 $f = $dom->createDocumentFragment();
                 $f->appendXML($xml);
                 $iq->appendChild($f);
@@ -55,7 +55,7 @@ class API
     /*
      *  Call the request class with the correct XML
      */
-    static function request($xml)
+    public static function request($xml)
     {
         writeXMPP($xml);
     }

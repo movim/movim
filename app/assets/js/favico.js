@@ -18,7 +18,7 @@
  *    position : 'down',
  *    type : 'circle',
  *    animation : 'slide',
- *    dataUrl: function(url){},
+ *    dataUrl: function(url) {},
  *    win: top
  * });
  */
@@ -355,7 +355,7 @@
 					var newImg = document.createElement('img');
 					var ratio = (w / _w < h / _h) ? (w / _w) : (h / _h);
 					newImg.setAttribute('crossOrigin', 'anonymous');
-					newImg.onload=function(){
+					newImg.onload=function() {
 						_context.clearRect(0, 0, _w, _h);
 						_context.drawImage(newImg, 0, 0, _w, _h);
 						link.setIcon(_canvas);
@@ -857,4 +857,3 @@
 	}
 
 })();
-

@@ -1,13 +1,15 @@
 <?php
 
-class BottomNavigation extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class BottomNavigation extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('bottomnavigation.css');
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('page', $this->_view);
     }

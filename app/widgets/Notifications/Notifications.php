@@ -6,11 +6,12 @@ use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Roster\UpdateItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
+use Movim\Widget\Base;
 use Movim\Session;
 
-class Notifications extends \Movim\Widget\Base
+class Notifications extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('notifications.js');
 
@@ -142,7 +143,7 @@ class Notifications extends \Movim\Widget\Base
         $session = Session::start();
         $notifs = $session->get('activenotifs');
         if (is_array($notifs)) {
-            foreach($notifs as $key => $value) {
+            foreach ($notifs as $key => $value) {
                 array_push($invitations, \App\Contact::firstOrNew(['id' =>$key]));
             }
         }

@@ -8,7 +8,7 @@ use Movim\Session;
 
 class AdHoc extends \Movim\Widget\Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('adhoc.js');
         $this->registerEvent('adhoc_get_handle', 'onList');
@@ -18,7 +18,7 @@ class AdHoc extends \Movim\Widget\Base
         $this->registerEvent('adhoc_submit_error', 'onCommandError');
     }
 
-    function onList($package)
+    public function onList($package)
     {
         $list = $package->content;
         $html = $this->prepareList($list);
@@ -26,7 +26,7 @@ class AdHoc extends \Movim\Widget\Base
         $this->rpc('AdHoc.refresh');
     }
 
-    function onCommand($package)
+    public function onCommand($package)
     {
         $command = $package->content;
         $attributes = (array)$command->attributes();
@@ -58,14 +58,14 @@ class AdHoc extends \Movim\Widget\Base
         }
     }
 
-    function prepareList($list)
+    public function prepareList($list)
     {
         $view = $this->tpl();
         $view->assign('list', $list);
         return $view->draw('_adhoc_list');
     }
 
-    function onCommandError($package)
+    public function onCommandError($package)
     {
         $view = $this->tpl();
 
@@ -78,7 +78,7 @@ class AdHoc extends \Movim\Widget\Base
         Dialog::fill($view->draw('_adhoc_note'), true);
     }
 
-    function ajaxGet($jid)
+    public function ajaxGet($jid)
     {
         if (!$jid) {
             $session = Session::start();
@@ -89,7 +89,7 @@ class AdHoc extends \Movim\Widget\Base
         $g->setTo($jid)->request();
     }
 
-    function ajaxCommand($jid, $node)
+    public function ajaxCommand($jid, $node)
     {
         $c = new Command;
         $c->setTo($jid)
@@ -97,7 +97,7 @@ class AdHoc extends \Movim\Widget\Base
           ->request();
     }
 
-    function ajaxSubmit($jid, $data, $node, $sessionid)
+    public function ajaxSubmit($jid, $data, $node, $sessionid)
     {
         if (!$jid) {
             $session = Session::start();
@@ -112,7 +112,7 @@ class AdHoc extends \Movim\Widget\Base
           ->request();
     }
 
-    function getIcon($command)
+    public function getIcon($command)
     {
         $icons = [
             'http://jabber.org/protocol/admin#delete-user' => 'delete',

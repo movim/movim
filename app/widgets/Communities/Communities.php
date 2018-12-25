@@ -1,23 +1,25 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Respect\Validation\Validator;
 use App\Configuration;
 
 include_once WIDGETS_PATH . 'Post/Post.php';
 
-class Communities extends \Movim\Widget\Base
+class Communities extends Base
 {
     public function load()
     {
         $this->addjs('communities.js');
     }
 
-    function ajaxGet()
+    public function ajaxGet()
     {
         $this->rpc('MovimTpl.fill', '#communities', $this->prepareCommunities());
     }
 
-    function prepareCommunities()
+    public function prepareCommunities()
     {
         $view = $this->tpl();
 

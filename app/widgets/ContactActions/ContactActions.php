@@ -1,35 +1,37 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Moxl\Xec\Action\Roster\AddItem;
 use Moxl\Xec\Action\Presence\Subscribe;
 
 use Respect\Validation\Validator;
 
-class ContactActions extends \Movim\Widget\Base
+class ContactActions extends Base
 {
-    function load()
+    public function load()
     {
         $this->registerEvent('roster_additem_handle', 'onAdd', 'contact');
         $this->registerEvent('roster_removeitem_handle', 'onDelete');
         $this->registerEvent('roster_updateitem_handle', 'onUpdate');
     }
 
-    function onDelete($packet)
+    public function onDelete($packet)
     {
         Notification::append(null, $this->__('roster.deleted'));
     }
 
-    function onAdd($packet)
+    public function onAdd($packet)
     {
         Notification::append(null, $this->__('roster.added'));
     }
 
-    function onUpdate($packet = false)
+    public function onUpdate($packet = false)
     {
         Notification::append(null, $this->__('roster.updated'));
     }
 
-    function ajaxAddAsk($jid)
+    public function ajaxAddAsk($jid)
     {
         $view = $this->tpl();
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
@@ -38,7 +40,7 @@ class ContactActions extends \Movim\Widget\Base
         Dialog::fill($view->draw('_contactactions_add'));
     }
 
-    function ajaxGetDrawer($jid)
+    public function ajaxGetDrawer($jid)
     {
         if (!$this->validateJid($jid)) return;
 
@@ -50,7 +52,7 @@ class ContactActions extends \Movim\Widget\Base
         Drawer::fill($tpl->draw('_contactactions_drawer'));
     }
 
-    function ajaxAdd($form)
+    public function ajaxAdd($form)
     {
         $r = new AddItem;
         $r->setTo((string)$form->searchjid->value)
@@ -65,7 +67,7 @@ class ContactActions extends \Movim\Widget\Base
         Dialog::ajaxClear();
     }
 
-    function ajaxChat($jid)
+    public function ajaxChat($jid)
     {
         if (!$this->validateJid($jid)) return;
 

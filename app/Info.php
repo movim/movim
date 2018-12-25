@@ -163,7 +163,7 @@ class Info extends Model
             }
 
             if (isset($query->query->x)) {
-                foreach($query->query->x->field as $field) {
+                foreach ($query->query->x->field as $field) {
                     $key = (string)$field->attributes()->var;
                     switch ($key) {
                         case 'pubsub#title':
@@ -190,42 +190,42 @@ class Info extends Model
 
                         case 'abuse-addresses':
                             $arr = [];
-                            foreach($field->children() as $value) {
+                            foreach ($field->children() as $value) {
                                 $arr[] = (string)$value;
                             }
                             $this->abuseaddresses = $arr;
                             break;
                         case 'admin-addresses':
                             $arr = [];
-                            foreach($field->children() as $value) {
+                            foreach ($field->children() as $value) {
                                 $arr[] = (string)$value;
                             }
                             $this->adminaddresses = $arr;
                             break;
                         case 'feedback-addresses':
                             $arr = [];
-                            foreach($field->children() as $value) {
+                            foreach ($field->children() as $value) {
                                 $arr[] = (string)$value;
                             }
                             $this->feedbackaddresses = $arr;
                             break;
                         case 'sales-addresses':
                             $arr = [];
-                            foreach($field->children() as $value) {
+                            foreach ($field->children() as $value) {
                                 $arr[] = (string)$value;
                             }
                             $this->salesaddresses = $arr;
                             break;
                         case 'security-addresses':
                             $arr = [];
-                            foreach($field->children() as $value) {
+                            foreach ($field->children() as $value) {
                                 $arr[] = (string)$value;
                             }
                             $this->securityaddresses = $arr;
                             break;
                         case 'support-addresses':
                             $arr = [];
-                            foreach($field->children() as $value) {
+                            foreach ($field->children() as $value) {
                                 $arr[] = (string)$value;
                             }
                             $this->supportaddresses = $arr;

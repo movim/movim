@@ -12,8 +12,8 @@ class OMEMODevices extends Payload
 
         $list = $stanza->items->item->list;
 
-        foreach($list as $devices) {
-            foreach($devices as $device) {
+        foreach ($list as $devices) {
+            foreach ($devices as $device) {
                 //$first = $devices->children();
 
                 $gb = new GetBundle;

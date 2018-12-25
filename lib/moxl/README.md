@@ -220,7 +220,7 @@ $name = $s->getName();
 $ns = $s->getNamespaces();
 $node = (string)$s->attributes()->node;
 
-if(is_array($ns))
+if (is_array($ns))
     $ns = current($ns);
 
 $hash = md5($name.$ns.$node);

@@ -2,17 +2,18 @@
 
 use Respect\Validation\Validator;
 
+use Movim\Widget\Base;
 use Movim\Session;
 
-class LoginAnonymous extends \Movim\Widget\Base
+class LoginAnonymous extends Base
 {
-    function load()
+    public function load()
     {
         $this->addjs('loginanonymous.js');
         $this->registerEvent('session_start_handle', 'onStart');
     }
 
-    function onStart($packet)
+    public function onStart($packet)
     {
         $session = Session::start();
         if ($session->get('mechanism') == 'ANONYMOUS') {
@@ -20,7 +21,7 @@ class LoginAnonymous extends \Movim\Widget\Base
         }
     }
 
-    function ajaxLogin($username)
+    public function ajaxLogin($username)
     {
         $validate_user = Validator::stringType()->length(4, 40);
         if (!$validate_user->validate($username)) {

@@ -19,7 +19,7 @@ class GetList extends Action
     {
         $rosters = [];
 
-        foreach($stanza->query->item as $item) {
+        foreach ($stanza->query->item as $item) {
             $roster = new DBRoster;
             $roster->set($item);
             array_push($rosters, $roster->toArray());

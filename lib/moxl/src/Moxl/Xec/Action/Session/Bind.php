@@ -27,7 +27,7 @@ class Bind extends Action
         $session->username = $username;
         $session->host = $host;
 
-        if($resource) {
+        if ($resource) {
             $session->resource = $resource;
         }
 

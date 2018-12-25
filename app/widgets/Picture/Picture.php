@@ -1,11 +1,13 @@
 <?php
 
 use Respect\Validation\Validator;
+
+use Movim\Widget\Base;
 use Movim\Picture as PictureManager;
 
-class Picture extends \Movim\Widget\Base
+class Picture extends Base
 {
-    function display()
+    public function display()
     {
         $url = urldecode($this->get('url'));
 

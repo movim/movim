@@ -3,11 +3,12 @@
 use Moxl\Xec\Action\Jingle\SessionInitiate;
 use Moxl\Xec\Action\Jingle\SessionTerminate;
 
+use Movim\Widget\Base;
 use Movim\Session;
 
-class Visio extends \Movim\Widget\Base
+class Visio extends Base
 {
-    function load()
+    public function load()
     {
         $this->addcss('visio.css');
         $this->addjs('visio.js');
@@ -18,7 +19,7 @@ class Visio extends \Movim\Widget\Base
         $this->registerEvent('jingle_sessionterminate', 'onTerminate');
     }
 
-    function onSDP($data)
+    public function onSDP($data)
     {
         list($stanza, $from) = $data;
         $jts = new JingletoSDP($stanza);
@@ -43,7 +44,7 @@ class Visio extends \Movim\Widget\Base
         );
     }
 
-    function ajaxAskInit()
+    public function ajaxAskInit()
     {
         $s = Session::start();
         if ($s->get('sdp')) {
@@ -54,13 +55,13 @@ class Visio extends \Movim\Widget\Base
         }
     }
 
-    function onAccept($stanza)
+    public function onAccept($stanza)
     {
         $jts = new JingletoSDP($stanza);
         $this->rpc('Visio.onSDP', $jts->generate(), 'answer');
     }
 
-    function onCandidate($stanza)
+    public function onCandidate($stanza)
     {
         $jts = new JingletoSDP($stanza);
         $sdp = $jts->generate();
@@ -77,7 +78,7 @@ class Visio extends \Movim\Widget\Base
         $this->rpc('Visio.onCandidate', $sdp, $jts->name, substr($jts->name, -1, 1));
     }
 
-    function ajaxGetCandidates()
+    public function ajaxGetCandidates()
     {
         $s = Session::start();
         $candidates = $s->get('candidates');
@@ -91,12 +92,12 @@ class Visio extends \Movim\Widget\Base
         $s->remove('candidates');
     }
 
-    function onTerminate($stanza)
+    public function onTerminate($stanza)
     {
         $this->rpc('Visio.onTerminate');
     }
 
-    function ajaxInitiate($sdp, $to)
+    public function ajaxInitiate($sdp, $to)
     {
         $stj = new SDPtoJingle(
             $sdp->sdp,
@@ -110,7 +111,7 @@ class Visio extends \Movim\Widget\Base
            ->request();
     }
 
-    function ajaxAccept($sdp, $to)
+    public function ajaxAccept($sdp, $to)
     {
         $stj = new SDPtoJingle(
             $sdp->sdp,
@@ -124,7 +125,7 @@ class Visio extends \Movim\Widget\Base
            ->request();
     }
 
-    function ajaxCandidate($sdp, $to)
+    public function ajaxCandidate($sdp, $to)
     {
         $stj = new SDPtoJingle(
             'a='.$sdp->candidate,
@@ -140,7 +141,7 @@ class Visio extends \Movim\Widget\Base
            ->request();
     }
 
-    function ajaxTerminate($to, $reason = 'success')
+    public function ajaxTerminate($to, $reason = 'success')
     {
         $s = Session::start();
 
@@ -151,7 +152,7 @@ class Visio extends \Movim\Widget\Base
            ->request();
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('contact', \App\Contact::firstOrNew(['id' => $this->get('f')]));
     }

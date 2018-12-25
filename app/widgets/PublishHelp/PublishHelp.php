@@ -1,8 +1,10 @@
 <?php
 
-class PublishHelp extends \Movim\Widget\Base
+use Movim\Widget\Base;
+
+class PublishHelp extends Base
 {
-    function load()
+    public function load()
     {
     }
 }

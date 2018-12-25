@@ -35,8 +35,8 @@ abstract class Action extends Payload
     private function clean($instances)
     {
         $t = time();
-        foreach($instances as $key => $i) {
-            if($i['time'] < (int)$t-30) {
+        foreach ($instances as $key => $i) {
+            if ($i['time'] < (int)$t-30) {
                 Utils::log('Action : Clean this request after 30 sec of no feedback '.$i['type']);
                 unset($instances[$key]);
             }

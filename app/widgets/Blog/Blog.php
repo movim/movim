@@ -20,7 +20,7 @@ class Blog extends \Movim\Widget\Base
     private $_next;
     private $_tag;
 
-    function load()
+    public function load()
     {
         $this->links = [];
 
@@ -179,7 +179,7 @@ class Blog extends \Movim\Widget\Base
         return (new Post)->preparePost($post, true);
     }
 
-    function display()
+    public function display()
     {
         $this->view->assign('server', $this->_from);
         $this->view->assign('node', $this->_node);
