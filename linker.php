@@ -46,7 +46,7 @@ function handleSSLErrors($errno, $errstr) {
 
 // Temporary linker killer
 $loop->addPeriodicTimer(5, function() use(&$xmppSocket, &$timestamp) {
-    if($timestamp < time() - 3600*4
+    if ($timestamp < time() - 3600*4
     && isset($xmppSocket)) {
         $xmppSocket->close();
     }
@@ -58,7 +58,7 @@ function writeOut($msg = null)
 {
     global $wsSocket;
 
-    if(!empty($msg)) {
+    if (!empty($msg)) {
         $wsSocket->send(json_encode($msg));
     }
 }
@@ -67,10 +67,10 @@ function writeXMPP($xml)
 {
     global $xmppSocket;
 
-    if(!empty($xml) && $xmppSocket) {
+    if (!empty($xml) && $xmppSocket) {
         $xmppSocket->write(trim($xml));
 
-        if(getenv('debug')) {
+        if (getenv('debug')) {
             fwrite(STDERR, colorize(trim($xml), 'yellow')." : ".colorize('sent to XMPP', 'green')."\n");
         }
     }
@@ -91,7 +91,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
 
     $msg = json_decode($msg);
 
-    if(isset($msg)) {
+    if (isset($msg)) {
         switch ($msg->func) {
             case 'message':
                 (new RPC)->handleJSON($msg->body);
@@ -105,7 +105,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                 break;
 
             case 'down':
-                if(isset($xmppSocket)
+                if (isset($xmppSocket)
                 && is_resource($xmppSocket->stream)) {
                     $evt = new Movim\Widget\Event;
                     $evt->run('session_down');
@@ -113,7 +113,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                 break;
 
             case 'up':
-                if(isset($xmppSocket)
+                if (isset($xmppSocket)
                 && is_resource($xmppSocket->stream)) {
                     $evt = new Movim\Widget\Event;
                     $evt->run('session_up');
@@ -122,7 +122,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
 
             case 'unregister':
                 \Moxl\Stanza\Stream::end();
-                if(isset($xmppSocket)) $xmppSocket->close();
+                if (isset($xmppSocket)) $xmppSocket->close();
                 shutdown();
                 break;
 
@@ -135,7 +135,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                         $host = $resolved[0]['target'];
                         $port = $resolved[0]['port'];
 
-                        if(getenv('verbose')) {
+                        if (getenv('verbose')) {
                             fwrite(
                                 STDERR,
                                 colorize(
@@ -147,18 +147,18 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                 )->always(function () use (&$connector, &$xmppBehaviour, &$dns, &$host, &$port) {
                     $dns->resolve($host, React\Dns\Model\Message::TYPE_AAAA)
                         ->then(function ($ip) use (&$connector, &$xmppBehaviour, $host, $port) {
+                            if (getenv('verbose')) {
+                                fwrite(
+                                    STDERR,
+                                    colorize(
+                                        getenv('sid'), 'yellow')." : ".
+                                        colorize('Connection to '.$host.' ('.$ip.')', 'blue').
+                                        "\n");
+                            }
 
-                        if(getenv('verbose')) {
-                            fwrite(
-                                STDERR,
-                                colorize(
-                                    getenv('sid'), 'yellow')." : ".
-                                    colorize('Connection to '.$host.' ('.$ip.')', 'blue').
-                                    "\n");
+                            $connector->connect('['.$ip.']:'. $port)->then($xmppBehaviour);
                         }
-
-                        $connector->connect('['.$ip.']:'. $port)->then($xmppBehaviour);
-                    });
+                    );
                 });
 
                 break;
@@ -174,24 +174,24 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 
     $xmppSocket = $stream;
 
-    if(getenv('verbose')) {
+    if (getenv('verbose')) {
         fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('XMPP socket launched', 'blue')."\n");
         fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
     }
 
     // We define a huge buffer to prevent issues with SSL streams, see https://bugs.php.net/bug.php?id=65137
     $xmppSocket->on('data', function($message) use (&$xmppSocket, $parser, &$timestamp) {
-        if(!empty($message)) {
+        if (!empty($message)) {
             $restart = false;
 
-            if(getenv('debug')) {
+            if (getenv('debug')) {
                 fwrite(STDERR, colorize($message, 'yellow')." : ".colorize('received', 'green')."\n");
             }
 
-            if($message == '</stream:stream>') {
+            if ($message == '</stream:stream>') {
                 $xmppSocket->close();
                 shutdown();
-            } elseif($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
+            } elseif ($message == "<proceed xmlns='urn:ietf:params:xml:ns:xmpp-tls'/>"
                   || $message == '<proceed xmlns="urn:ietf:params:xml:ns:xmpp-tls"/>') {
                 $session = Session::start();
                 stream_set_blocking($xmppSocket->stream, 1);
@@ -211,7 +211,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
                 $out = stream_socket_enable_crypto($xmppSocket->stream, 1, $crypto_method);
                 restore_error_handler();
 
-                if($out !== true) {
+                if ($out !== true) {
                     $evt = new Movim\Widget\Event;
                     $evt->run('ssl_error');
 
@@ -219,7 +219,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
                     return;
                 }
 
-                if(getenv('verbose')) {
+                if (getenv('verbose')) {
                     fwrite(STDERR, colorize(getenv('sid'), 'yellow')." : ".colorize('TLS enabled', 'blue')."\n");
                 }
 
@@ -228,14 +228,14 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
 
             $timestamp = time();
 
-            if($restart) {
+            if ($restart) {
                 $session = Session::start();
                 \Moxl\Stanza\Stream::init($session->get('host'));
                 stream_set_blocking($xmppSocket->stream, 0);
                 $restart = false;
             }
 
-            if(!$parser->parse($message)) {
+            if (!$parser->parse($message)) {
                 fwrite(STDERR, colorize(getenv('sid'), 'yellow')." ".$parser->getError()."\n");
             }
         }
