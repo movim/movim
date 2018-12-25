@@ -79,8 +79,10 @@ xmp {
     margin: 1rem 0;
     border-left: 0.75rem solid gray;
     background-color: #333;
-    white-space:pre-wrap; word-wrap:break-word;
+    white-space:pre;
+    word-wrap:break-word;
     direction: ltr;
+    overflow-x: auto;
 }
 
 pre code {
@@ -96,6 +98,11 @@ xmp::before {
     float: right;
     background-color: rgba(255, 255, 255, 0.3);
     padding: 0 1rem;
+}
+
+pre:not([class])::before,
+xmp:not([class])::before {
+    content: none;
 }
 
 q {
@@ -152,4 +159,3 @@ dl dd {
 *[dir="rtl"] dl dd {
     text-align: right;
 }
-
