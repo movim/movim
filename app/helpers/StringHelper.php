@@ -350,9 +350,10 @@ function firstLetterCapitalize(string $string, bool $firstOnly = false): string
     return mb_convert_case(mb_substr($string, 0, $size), MB_CASE_TITLE);
 }
 
-/** Return a clean string that can be used for HTML ids
+/**
+ * Return a clean string that can be used for HTML ids
  */
-function cleanupId(string $string)
+function cleanupId($string)
 {
     return "id-" . strtolower(preg_replace('/([^a-z0-9]+)/i', '-', $string));
 }
