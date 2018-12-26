@@ -1,11 +1,13 @@
 <?php
 
+use Movim\Widget\Base;
+
 use Respect\Validation\Validator;
 use App\User;
 
 include_once WIDGETS_PATH.'Post/Post.php';
 
-class Blog extends \Movim\Widget\Base
+class Blog extends Base
 {
     public $_paging = 8;
 
@@ -176,7 +178,9 @@ class Blog extends \Movim\Widget\Base
 
     public function preparePost(\App\Post $post)
     {
-        return (new Post)->preparePost($post, true);
+        return ($this->_view == 'tag' && $this->user->isLogged())
+            ? (new Post)->preparePost($post, false, true)
+            : (new Post)->preparePost($post, true);
     }
 
     public function display()
