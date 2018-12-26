@@ -323,6 +323,8 @@ class Message extends Model
 
     public function addUrls()
     {
-        $this->body = addUrls($this->body);
+        if (is_string($this->body)) {
+            $this->body = addUrls($this->body);
+        }
     }
 }
