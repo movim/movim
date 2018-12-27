@@ -46,10 +46,6 @@ class Bootstrap
 
     private function checkSystem()
     {
-        if (!is_writable(DOCUMENT_ROOT)) {
-            throw new \Exception('Unable to write to directory ' . DOCUMENT_ROOT);
-        }
-
         if (!file_exists(CACHE_PATH) && !@mkdir(CACHE_PATH)) {
             throw new \Exception('Couldn’t create cache directory');
         } else {
@@ -307,11 +303,6 @@ class Bootstrap
 
         $log = new Logger('movim');
         $log->pushHandler(new SyslogHandler('movim'));
-
-        if (LOG_LEVEL > 1) {
-            $log->pushHandler(new StreamHandler(LOG_PATH.'/php.log', Logger::ERROR));
-        }
-
         $log->addError($errstr . " in " . $errfile . ' (line ' . $errline . ")\n");
         return false;
     }
