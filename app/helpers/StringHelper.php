@@ -282,7 +282,7 @@ function stringToColor(string $string): string
 /**
  * Strip tags and add a whitespace
  */
-function stripTags(string $string): string
+function stripTags($string): string
 {
     return strip_tags(preg_replace('/(<\/[^>]+?>)(<[^>\/][^>]*?>)/', '$1 $2', $string));
 }
