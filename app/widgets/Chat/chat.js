@@ -323,7 +323,7 @@ var Chat = {
             Chat.lastScroll = discussion.scrollHeight;
 
             for(date in page) {
-                if (prepend === undefined) {
+                if (prepend === undefined || prepend === false) {
                     Chat.appendDate(date, prepend);
                 }
 
