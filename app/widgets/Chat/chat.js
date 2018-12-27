@@ -260,7 +260,17 @@ var Chat = {
         MovimUtils.textareaAutoheight(textarea);
         textarea.focus();
     },
-    setBubbles : function(left, right, date, separator) {
+    setGeneralElements(date, separator) {
+        var div = document.createElement('div');
+
+        Chat.currentDate = null;
+
+        div.innerHTML = date;
+        Chat.date = div.firstChild.cloneNode(true);
+        div.innerHTML = separator;
+        Chat.separator = div.firstChild.cloneNode(true);
+    },
+    setSpecificElements : function(left, right, date, separator) {
         var div = document.createElement('div');
 
         Chat.currentDate = null;
@@ -269,10 +279,6 @@ var Chat = {
         Chat.left = div.firstChild.cloneNode(true);
         div.innerHTML = right;
         Chat.right = div.firstChild.cloneNode(true);
-        div.innerHTML = date;
-        Chat.date = div.firstChild.cloneNode(true);
-        div.innerHTML = separator;
-        Chat.separator = div.firstChild.cloneNode(true);
     },
     setScrollBehaviour : function() {
         var discussion = Chat.getDiscussion();
@@ -306,7 +312,7 @@ var Chat = {
 
         return true;
     },
-    appendMessagesWrapper : function(page, prepend) {
+    appendMessagesWrapper : function(page, prepend, scroll) {
         var discussion = Chat.getDiscussion();
 
         if (page && Chat.checkDiscussion(page)) {
@@ -368,6 +374,10 @@ var Chat = {
         }
 
         Chat.setScrollBehaviour();
+
+        if (scroll) {
+            MovimTpl.scrollPanel();
+        }
     },
     appendMessage : function(idjidtime, data, prepend) {
         if (data.body === null) return;
@@ -672,6 +682,8 @@ var Chat = {
 };
 
 MovimWebsocket.attach(function() {
+    Chat_ajaxInit();
+
     var jid = MovimUtils.urlParts().params[0];
     var room = (MovimUtils.urlParts().params[1] === 'room');
     if (jid) {

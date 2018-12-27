@@ -221,6 +221,15 @@ class Chat extends \Movim\Widget\Base
         $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_state'), $html);
     }
 
+    public function ajaxInit()
+    {
+        $view = $this->tpl();
+        $date = $view->draw('_chat_date');
+        $separator = $view->draw('_chat_separator');
+
+        $this->rpc('Chat.setGeneralElements', $date, $separator);
+    }
+
     /**
      * @brief Get a discussion
      * @param string $jid
@@ -241,9 +250,6 @@ class Chat extends \Movim\Widget\Base
             }
 
             $this->prepareMessages($jid);
-
-            $notif = new Notification;
-            $notif->ajaxClear('chat|'.$jid);
             $this->rpc('Notification.current', 'chat|'.$jid);
         }
     }
@@ -644,18 +650,12 @@ class Chat extends \Movim\Widget\Base
         $view->assign('muc', $muc);
         $right = $view->draw('_chat_bubble');
 
-        $date = $view->draw('_chat_date');
-
-        $separator = $view->draw('_chat_separator');
-
-        $this->rpc('Chat.setBubbles', $left, $right, $date, $separator);
-        $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper);
+        $this->rpc('Chat.setSpecificElements', $left, $right);
+        $this->rpc('Chat.appendMessagesWrapper', $this->_wrapper, false, true);
 
         $notif = new Notification;
         $this->rpc('Chat.insertSeparator', $notif->getCounter('chat|'.$jid));
         $notif->ajaxClear('chat|'.$jid);
-
-        $this->rpc('MovimTpl.scrollPanel');
     }
 
     public function prepareMessage(&$message, $jid = null)
