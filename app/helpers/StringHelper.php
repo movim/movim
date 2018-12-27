@@ -3,7 +3,7 @@
 use Movim\Route;
 use App\Configuration;
 
-function addUrls($string, bool $preview = false): string
+function addUrls($string, bool $preview = false)
 {
     // Add missing links
     return preg_replace_callback("/<a[^>]*>[^<]*<\/a|\".*?\"|((?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’])))/", function ($match) use ($preview) {
@@ -66,7 +66,7 @@ function addUrls($string, bool $preview = false): string
 
 }
 
-function addHashtagsLinks($string): string
+function addHashtagsLinks($string)
 {
     return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function($match) {
         return
@@ -77,7 +77,7 @@ function addHashtagsLinks($string): string
     }, $string);
 }
 
-function addHFR(string $string): string
+function addHFR($string)
 {
     // HFR EasterEgg
     return preg_replace_callback(
@@ -99,7 +99,7 @@ function addEmojis($string)
 /**
  * Prepare the string (add the a to the links and show the smileys)
  */
-function prepareString($string, bool $preview = false): string
+function prepareString($string, bool $preview = false)
 {
     return addEmojis(addUrls($string, $preview));
 }
@@ -107,7 +107,7 @@ function prepareString($string, bool $preview = false): string
 /**
  * Return the tags in a string
  */
-function getHashtags(string $string): array
+function getHashtags($string): array
 {
     $hashtags = [];
     preg_match_all("/(#\w+)/u", $string, $matches);
@@ -125,7 +125,7 @@ function getHashtags(string $string): array
 /*
  * Echap the JID
  */
-function echapJid(string $jid): string
+function echapJid($jid): string
 {
     return str_replace(' ', '\40', $jid);
 }
@@ -133,7 +133,7 @@ function echapJid(string $jid): string
 /*
  * Echap the anti-slashs for Javascript
  */
-function echapJS(string $string): string
+function echapJS($string): string
 {
     return str_replace(["\\", "'"], ["\\\\", "\\'"], $string);
 }
@@ -141,7 +141,7 @@ function echapJS(string $string): string
 /**
  * Clean the resource of a jid
  */
-function cleanJid(string $jid): string
+function cleanJid($jid): string
 {
     $explode = explode('/', $jid);
     return reset($explode);
@@ -150,7 +150,7 @@ function cleanJid(string $jid): string
 /**
  * Extract the CID
  */
-function getCid(string $string)
+function getCid($string)
 {
     preg_match("/(\w+)\@/", $string, $matches);
     if (is_array($matches)) {

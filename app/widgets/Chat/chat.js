@@ -270,7 +270,7 @@ var Chat = {
         div.innerHTML = separator;
         Chat.separator = div.firstChild.cloneNode(true);
     },
-    setSpecificElements : function(left, right, date, separator) {
+    setSpecificElements : function(left, right) {
         var div = document.createElement('div');
 
         Chat.currentDate = null;
