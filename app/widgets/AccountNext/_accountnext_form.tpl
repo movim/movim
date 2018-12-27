@@ -1,5 +1,7 @@
 <form name="data">
-    {$formh}
+    {autoescape="off"}
+        {$formh}
+    {/autoescape}
     <button
         type="button"
         class="button color oppose"
