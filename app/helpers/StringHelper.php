@@ -3,7 +3,7 @@
 use Movim\Route;
 use App\Configuration;
 
-function addUrls(string $string, bool $preview = false): string
+function addUrls($string, bool $preview = false): string
 {
     // Add missing links
     return preg_replace_callback("/<a[^>]*>[^<]*<\/a|\".*?\"|((?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’])))/", function ($match) use ($preview) {
@@ -66,7 +66,7 @@ function addUrls(string $string, bool $preview = false): string
 
 }
 
-function addHashtagsLinks(string $string): string
+function addHashtagsLinks($string): string
 {
     return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function($match) {
         return
@@ -99,7 +99,7 @@ function addEmojis($string)
 /**
  * Prepare the string (add the a to the links and show the smileys)
  */
-function prepareString(string $string, bool $preview = false): string
+function prepareString($string, bool $preview = false): string
 {
     return addEmojis(addUrls($string, $preview));
 }
@@ -216,7 +216,7 @@ function sizeToCleanSize($bytes, int $precision = 2): string
 /**
  * Return a colored string in the console
  */
-function colorize(string $string, string $color): string
+function colorize($string, string $color): string
 {
     $colors = [
         'black'     => 30,
@@ -254,7 +254,7 @@ function typeIsAudio(string $type): bool
 /**
  * Return a color generated from the string
  */
-function stringToColor(string $string): string
+function stringToColor($string): string
 {
     $colors = [
         0 => 'red',
@@ -290,7 +290,7 @@ function stripTags($string): string
 /**
  * Purify a string
  */
-function purifyHTML(string $string): string
+function purifyHTML($string): string
 {
     $config = \HTMLPurifier_Config::createDefault();
     $config->set('HTML.Doctype', 'XHTML 1.1');
@@ -344,7 +344,7 @@ function invertSign($num)
 /**
  * Return the first two letters of a string
  */
-function firstLetterCapitalize(string $string, bool $firstOnly = false): string
+function firstLetterCapitalize($string, bool $firstOnly = false): string
 {
     $size = ($firstOnly) ? 1 : 2;
     return mb_convert_case(mb_substr($string, 0, $size), MB_CASE_TITLE);
@@ -361,7 +361,7 @@ function cleanupId($string)
 /**
  * Truncates the given string at the specified length.
  */
-function truncate(string $str, int $width): string
+function truncate($str, int $width): string
 {
     return strtok(wordwrap($str, $width, "…\n"), "\n");
 }
@@ -369,7 +369,7 @@ function truncate(string $str, int $width): string
 /**
  * Return the URI of a path with a timestamp
  */
-function urilize(string $path, bool $noTime = false): string
+function urilize($path, bool $noTime = false): string
 {
     if ($noTime || !file_exists(DOCUMENT_ROOT . '/' . $path)) {
         return BASE_URI . $path;
