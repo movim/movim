@@ -101,12 +101,12 @@ class Locale
                 $string = $this->translations[$skey];
             } else {
                 if ($this->language != 'en') {
-                    \Utils::log('Locale: Translation not found in ['.$this->language.'] for "'.$key.'" : "'.$skey.'"');
+                    \Utils::info('Locale: Translation not found in ['.$this->language.'] for "'.$key.'" : "'.$skey.'"');
                 }
                 if (is_string($skey)) {
                     $string = $skey;
                 } else {
-                    \Utils::log('Locale: Double definition for "'.$key.'" got '.serialize($skey));
+                    \Utils::info('Locale: Double definition for "'.$key.'" got '.serialize($skey));
                     $string = $skey[0];
                 }
             }
@@ -118,7 +118,7 @@ class Locale
 
             return $string;
         } else {
-            \Utils::log('Locale: Translation key "'.$key.'" not found');
+            \Utils::info('Locale: Translation key "'.$key.'" not found');
         }
     }
 

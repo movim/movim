@@ -27,7 +27,7 @@ class Start extends Action
         $session->active = true;
         $session->save();
 
-        Utils::log('/// AUTH SUCCESSFULL');
+        \Utils::info('/// AUTH SUCCESSFULL');
         fwrite(STDERR, 'started');
         $this->deliver();
     }

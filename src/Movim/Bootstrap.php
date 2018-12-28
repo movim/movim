@@ -17,18 +17,17 @@ class Bootstrap
 {
     public function boot($dbOnly = false)
     {
+        $this->setLogs();
+
         if (!defined('APP_TITLE')) {
             $this->setConstants();
         }
 
-        mb_internal_encoding("UTF-8");
+        mb_internal_encoding('UTF-8');
 
         $this->loadCapsule();
 
         if ($dbOnly) return;
-
-        //First thing to do, define error management (in case of error forward)
-        $this->setLogs();
 
         //Check if vital system need is OK
         $this->checkSystem();
@@ -39,7 +38,6 @@ class Bootstrap
 
         $this->setTimezone();
         $this->setLogLevel();
-
         $this->startingSession();
         $this->loadLanguage();
     }
@@ -48,14 +46,10 @@ class Bootstrap
     {
         if (!file_exists(CACHE_PATH) && !@mkdir(CACHE_PATH)) {
             throw new \Exception('Couldn’t create cache directory');
-        } else {
-            touch(CACHE_PATH . 'test.tmp');
         }
 
         if (!file_exists(LOG_PATH) && !@mkdir(LOG_PATH)) {
             throw new \Exception('Couldn’t create log directory');
-        } elseif (!touch(LOG_PATH . 'logger.log') || !touch(LOG_PATH . 'php.log')) {
-            throw new \Exception('Couldn’t create the log files');
         }
     }
 
@@ -232,9 +226,6 @@ class Bootstrap
 
     private function setLogs()
     {
-        ini_set('display_errors', 0);
-        ini_set('error_log', LOG_PATH . 'php.log');
-
         set_error_handler([$this, 'systemErrorHandler'], E_ALL);
         set_exception_handler([$this, 'exceptionHandler']);
         register_shutdown_function([$this, 'fatalErrorShutdownHandler']);
@@ -295,14 +286,20 @@ class Bootstrap
     }
 
     /**
-     * Error Handler...
+     * Error Handlers…
      */
+
     public function systemErrorHandler($errno, string $errstr, string $errfile = '', int $errline = 0)
     {
         echo 'An error occured, check syslog for more information'."\n";
 
         $log = new Logger('movim');
         $log->pushHandler(new SyslogHandler('movim'));
+
+        if (defined('LOG_LEVEL') && LOG_LEVEL > 1) {
+            $log->pushHandler(new StreamHandler(LOG_PATH . '/errors.log'));
+        }
+
         $log->addError($errstr . " in " . $errfile . ' (line ' . $errline . ")\n");
         return false;
     }
@@ -311,7 +308,7 @@ class Bootstrap
     {
         $this->systemErrorHandler(
             E_ERROR,
-            function_exists('truncate') ? truncate($exception->getMessage(), 400) : $exception->getMessage(),
+            get_class($exception) . ': '. $exception->getMessage(),
             $exception->getFile(),
             $exception->getLine()
         );

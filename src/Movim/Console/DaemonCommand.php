@@ -93,6 +93,10 @@ class DaemonCommand extends Command
         $output->writeln('<info>Movim daemon launched</info>');
         $output->writeln('<info>Base URL: '.$baseuri.'</info>');
 
+        if ($input->getOption('debug')) {
+            $output->writeln("\n".'<comment>Debug is enabled, check the logs in syslog or '.DOCUMENT_ROOT.'/logs/</comment>');
+        }
+
         $core = new Core($loop, $baseuri, $input);
         $app  = new HttpServer(new WsServer($core));
 

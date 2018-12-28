@@ -93,24 +93,6 @@ class Utils
         return base64_encode(sha1(utf8_encode($s),true));
     }
 
-    public static function log($message, $priority = '')
-    {
-        if (LOG_LEVEL != null && LOG_LEVEL > 0) {
-            $log = new Logger('moxl');
-
-            $handler = new SyslogHandler('moxl');
-
-            if (LOG_LEVEL > 1) {
-                $log->pushHandler(new StreamHandler(LOG_PATH.'/xmpp.log', Logger::DEBUG));
-            }
-
-            $log->pushHandler($handler, Logger::DEBUG);
-
-            $errlines = explode("\n",$message);
-            foreach ($errlines as $txt) { $log->addDebug($txt); }
-        }
-    }
-
     // XEP-0106: JID Escaping
     public static function escapeJidLocalpart($s)
     {

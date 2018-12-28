@@ -8,23 +8,39 @@ use Movim\Picture;
 
 class Utils
 {
-    public static function log($message, $priority = '')
+    public static function info($message)
     {
-        if (LOG_LEVEL != null && LOG_LEVEL > 0) {
+        if (LOG_LEVEL != null && LOG_LEVEL > 0 && getenv('debug')) {
             $log = new Logger('movim');
 
             $handler = new SyslogHandler('movim');
 
-            if (LOG_LEVEL > 1)
-                $log->pushHandler(new StreamHandler(LOG_PATH.'/movim.log', Logger::DEBUG));
+            if (LOG_LEVEL > 1) {
+                $log->pushHandler(new StreamHandler(LOG_PATH . '/info.log'));
+            }
 
-            $log->pushHandler($handler, Logger::DEBUG);
+            $log->pushHandler($handler);
 
-            $errlines = explode("\n",$message);
-            foreach ($errlines as $txt) { $log->addDebug($txt); }
+            $errlines = explode("\n", $message);
+            foreach ($errlines as $txt) { $log->addInfo($txt); }
+        }
+    }
+
+    /**
+     * Log a string, only used for debug purposes
+     */
+    public static function debug($logs)
+    {
+        $log = new Logger('movim');
+        $log->pushHandler(new StreamHandler(LOG_PATH . '/debug.log'));
+        if (is_array($logs)) {
+            $log->addDebug('', $logs);
+        } else {
+            $log->addDebug($logs);
         }
     }
 }
+
 
 /**
  * Return the list of client types
@@ -485,7 +501,7 @@ function getMood()
     ];
 }
 
-/*
+/**
  * Generate a standard UUID
  */
 function generateUUID($string = false)
@@ -498,19 +514,7 @@ function generateUUID($string = false)
     return vsprintf('%s%s-%s-%s-%s-%s%s%s', str_split(bin2hex($data), 4));
 }
 
-function movim_log($logs)
-{
-    $log = new Logger('movim');
-    $log->pushHandler(new SyslogHandler('movim'));
-
-    $log->pushHandler(new StreamHandler(LOG_PATH.'/logger.log', Logger::DEBUG));
-    if (is_array($logs))
-        $log->addInfo('', $logs);
-    else
-        $log->addInfo($logs);
-}
-
-/*
+/**
  * @desc Generate a simple random key
  * @params The size of the key
  */

@@ -1,33 +1,7 @@
 <?php
-/*
- * @file Handler.php
- *
- * @brief Handle incoming XMPP request and dispatch them to the correct
- * XECElement
- *
- * Copyright 2012 edhelas <edhelas@edhelas-laptop>
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- *
- *
- */
 
 namespace Moxl\Xec;
 
-use Moxl\Utils;
 use Movim\Session;
 
 class Handler
@@ -53,8 +27,8 @@ class Handler
 
         if (($id != '' && $sess->get($id) == false)
         || $id == '') {
-            Utils::log("Handler : Memory instance not found for {$id}");
-            Utils::log('Handler : Not an XMPP ACK');
+            \Utils::info("Handler : Memory instance not found for {$id}");
+            \Utils::info('Handler : Not an XMPP ACK');
 
             Handler::handleNode($child);
 
@@ -67,7 +41,7 @@ class Handler
         } elseif ($id != ''
         && $sess->get($id) != false) {
             // We search an existent instance
-            Utils::log("Handler : Memory instance found for {$id}");
+            \Utils::info("Handler : Memory instance found for {$id}");
             $instance = $sess->get($id);
 
             $action = $instance->object;
@@ -93,7 +67,7 @@ class Handler
                     $message = (string)$error->text;
                 }
 
-                Utils::log('Handler : '.get_class($action).' '.$id.' - '.$errorid);
+                \Utils::info('Handler : '.get_class($action).' '.$id.' - '.$errorid);
 
                 // If the action has defined a special handler for this error
                 if (method_exists($action, $errorid)) {
@@ -103,7 +77,7 @@ class Handler
 
                 // We also call a global error handler
                 if (method_exists($action, 'error')) {
-                    Utils::log('Handler : Global error - '.$id.' - '.$errorid);
+                    \Utils::info('Handler : Global error - '.$id.' - '.$errorid);
                     $action->method('error');
                     $action->error($errorid, $message);
                 }
@@ -132,12 +106,12 @@ class Handler
         if ($s->items && $s->items->attributes()->node) {
             $node = (string)$s->items->attributes()->node;
             $hash = md5($name.$ns.$node);
-            Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . ' [' . $node . ']", "'.$hash.'"');
+            \Utils::info('Handler : Searching a payload for "'.$name . ':' . $ns . ' [' . $node . ']", "'.$hash.'"');
             Handler::searchPayload($hash, $s, $sparent);
         }
 
         $hash = md5($name.$ns);
-        Utils::log('Handler : Searching a payload for "'.$name . ':' . $ns . '", "'.$hash.'"');
+        \Utils::info('Handler : Searching a payload for "'.$name . ':' . $ns . '", "'.$hash.'"');
         Handler::searchPayload($hash, $s, $sparent);
     }
 
@@ -208,7 +182,7 @@ class Handler
             $payload_class->prepare($s, $sparent);
             $payload_class->handle($s, $sparent);
         } else {
-            Utils::log('Handler : This event is not listed');
+            \Utils::info('Handler : This event is not listed');
             return true;
         }
     }

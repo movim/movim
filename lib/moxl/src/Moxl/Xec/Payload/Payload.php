@@ -83,9 +83,9 @@ abstract class Payload
         }
 
         if (!empty($this->packet->from)) {
-            Utils::log('Package : "'.$key.'" from "'.$this->packet->from.'" fired');
+            \Utils::info('Package : "'.$key.'" from "'.$this->packet->from.'" fired');
         } else {
-            Utils::log('Package : "'.$key);
+            \Utils::info('Package : "'.$key);
         }
 
         $this->event($key, $this->packet);
