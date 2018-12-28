@@ -34,7 +34,7 @@ class Core implements MessageComponentInterface
 
         DBSession::whereNotNull('id')->delete();
 
-        $this->cleanupIPCs();
+        unlink(CACHE_PATH . 'socketapi.sock');
         $this->registerCleaner();
     }
 
@@ -201,14 +201,6 @@ class Core implements MessageComponentInterface
         DBSession::where('active', false)
             ->where('created_at', date(SQL_DATE, time()-60))
             ->delete();
-    }
-
-    private function cleanupIPCs()
-    {
-        unlink(CACHE_PATH . 'socketapi.sock');
-        foreach (glob(CACHE_PATH . 'movim_feeds_*') as $ipc) {
-            unlink($ipc);
-        }
     }
 
     public function onError(ConnectionInterface $conn, \Exception $e)
