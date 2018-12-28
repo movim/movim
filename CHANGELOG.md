@@ -15,6 +15,7 @@ v0.14.1 (trunk)
  * Add a close button to the Drawer widget
  * Errors and Exceptions handling improvements
  * Fix connection using utf8mb4 on MySQL
+ * Update the log system for a simpler one
 
 v0.14
 ---------------------------
