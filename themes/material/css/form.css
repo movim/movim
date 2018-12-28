@@ -55,8 +55,8 @@ form > div > .select:after {
     font-size: 4rem;
     color: #999;
     position: absolute;
-    right: 1.25rem;
-    bottom: 0.25rem;
+    right: 0rem;
+    bottom: 0rem;
     pointer-events: none;
 }
 
@@ -76,7 +76,8 @@ form > div > .select select {
     width: 100%;
     background-color: transparent;
     background-image: none;
-    padding: 0.75rem 0;
+    padding: 0.5rem 0;
+    padding-bottom: 0.75rem;
 }
 
 main > header form > div:not(.clear):not(.control) {

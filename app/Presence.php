@@ -117,7 +117,8 @@ class Presence extends Model
 
         if ((string)$stanza->attributes()->type == 'error') {
             $this->value = 6;
-        } elseif ((string)$stanza->attributes()->type == 'unavailable') {
+        } elseif ((string)$stanza->attributes()->type == 'unavailable'
+               || (string)$stanza->attributes()->type == 'unsubscribed') {
             $this->value = 5;
         } elseif ((string)$stanza->show == 'away') {
             $this->value = 2;

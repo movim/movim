@@ -16,6 +16,9 @@ v0.14.1 (trunk)
  * Errors and Exceptions handling improvements
  * Fix connection using utf8mb4 on MySQL
  * Update the log system for a simpler one
+ * Display Gateway connection status
+ * CSS fixes in Forms
+ * Disable the dropdown in Form if there is only one choice
 
 v0.14
 ---------------------------

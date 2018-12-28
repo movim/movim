@@ -111,6 +111,16 @@ class Info extends Model
         }
     }
 
+    /**
+     * Only for gateways
+     */
+    public function getPresenceAttribute()
+    {
+        return \App\User::me()->session->presences
+                    ->where('jid', $this->attributes['server'])
+                    ->first();
+    }
+
     public function set($query)
     {
         $from = (string)$query->attributes()->from;

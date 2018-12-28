@@ -301,6 +301,10 @@ class XMPPtoForm
         $div->appendChild($select);
 
         if (count($s->xpath('option')) > 0) {
+            if (count($s->xpath('option')) == 1) {
+                $select->setAttribute('disabled', 'disabled');
+            }
+
             foreach ($s->option as $option) {
                 if (isset($option->attributes()->label)) {
                     $opt = $this->html->createElement('option', $option->attributes()->label);
