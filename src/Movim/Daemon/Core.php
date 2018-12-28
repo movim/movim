@@ -34,7 +34,7 @@ class Core implements MessageComponentInterface
 
         DBSession::whereNotNull('id')->delete();
 
-        unlink(CACHE_PATH . 'socketapi.sock');
+        if (file_exists(CACHE_PATH . 'socketapi.sock')) unlink(CACHE_PATH . 'socketapi.sock');
         $this->registerCleaner();
     }
 
