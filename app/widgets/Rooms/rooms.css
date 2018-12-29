@@ -6,6 +6,14 @@
     white-space: nowrap;
 }
 
+#gateway_rooms:empty {
+    min-height: 0;
+}
+
+#gateway_rooms:not(:empty) + div {
+    display: none;
+}
+
 form[name=avatarroom] img {
     margin: 0 auto;
     display: block;

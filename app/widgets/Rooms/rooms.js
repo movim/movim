@@ -45,6 +45,11 @@ var Rooms = {
         Notification_ajaxGet();
     },
 
+    selectGatewayRoom : function(room, name) {
+        document.querySelector('form[name="bookmarkmucadd"] input[name=jid]').value = room;
+        document.querySelector('form[name="bookmarkmucadd"] input[name=name]').value = name;
+    },
+
     /**
      * @brief Connect to an anonymous server
      * @param The jid to remember

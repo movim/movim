@@ -27,7 +27,7 @@
             <span class="primary icon gray">
                 <i class="material-icons">vpn_key</i>
             </span>
-            <form name="password" class="">
+            <form name="password">
                 <div>
                     <input type="password" placeholder="Choose a nice password" name="password"/>
                     <label>{$c->__('account.password')}</label>

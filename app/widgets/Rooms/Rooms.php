@@ -6,6 +6,7 @@ use Moxl\Xec\Action\Bookmark\Set;
 use Moxl\Xec\Action\Presence\Unavailable;
 use Moxl\Xec\Action\Message\Invite;
 use Moxl\Xec\Action\Disco\Request;
+use Moxl\Xec\Action\Disco\Items;
 use Moxl\Xec\Action\Muc\SetSubject;
 use Moxl\Xec\Action\Vcard\Set as VcardSet;
 
@@ -25,6 +26,7 @@ class Rooms extends Base
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('bookmark_get_handle', 'onGetBookmark');
         $this->registerEvent('bookmark_set_handle', 'onBookmark');
+        $this->registerEvent('disco_items_nosave_handle', 'onDiscoGateway');
         $this->registerEvent('vcard_set_handle', 'onAvatarSet', 'chat');
         $this->registerEvent('presence_muc_handle', 'onConnected', 'chat');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected', 'chat');
@@ -49,6 +51,13 @@ class Rooms extends Base
                 null
             );
         }
+    }
+
+    public function onDiscoGateway($packet)
+    {
+        $view = $this->tpl();
+        $view->assign('rooms', $packet->content);
+        $this->rpc('MovimTpl.fill', '#gateway_rooms', $view->draw('_rooms_gateway_rooms'));
     }
 
     public function onAvatarSet($packet)
@@ -131,10 +140,28 @@ class Rooms extends Base
             $this->user->session->conferences()
             ->where('conference', $room)->first());
         $view->assign('username', $this->user->session->username);
+        $view->assign('gateways',
+            \App\Info::whereIn('server', function($query) {
+                            $query->select('jid')->from('presences');
+                        })
+                     ->where('category', 'gateway')
+                     ->get()
+        );
 
         $this->rpc('Rooms.setDefaultServices', $this->user->session->getChatroomsServices());
 
         Dialog::fill($view->draw('_rooms_add'));
+    }
+
+    /**
+     * @brief Discover rooms for a gateway
+     */
+    public function ajaxDiscoGateway(string $server)
+    {
+        $r = new Items;
+        $r->setTo($server)
+          ->disableSave()
+          ->request();
     }
 
     /**

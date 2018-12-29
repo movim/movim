@@ -6,6 +6,24 @@
             <h3>{$c->__('rooms.add')}</h3>
         {/if}
 
+        {if="$gateways->isNotEmpty() && !isset($conference)"}
+            <div>
+                <div class="select">
+                    <select onchange="Rooms_ajaxDiscoGateway(this.value)">
+                        <option>{$c->__('rooms.default_room')}</option>
+                        {loop="$gateways"}
+                            <option value="{$value->server}">
+                                {$value->name} ({$value->type})
+                            </option>
+                        {/loop}
+                    </select>
+                </div>
+                <label>{$c->__('rooms.type_room')}</label>
+            </div>
+        {/if}
+
+        <div id="gateway_rooms"></div>
+
         <div>
             <input
                 {if="isset($conference)"}
