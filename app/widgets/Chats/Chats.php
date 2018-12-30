@@ -47,7 +47,12 @@ class Chats extends Base
                 $this->rpc(
                     'MovimTpl.replace',
                     '#' . cleanupId($packet->content->jid.'_chat_item'),
-                    $this->prepareChat($packet->content->jid));
+                    $this->prepareChat(
+                        $packet->content->jid,
+                        $this->resolveContactFromJid($packet->content->jid),
+                        $this->resolveRosterFromJid($packet->content->jid)
+                    )
+                );
                 $this->rpc('Chats.refresh');
 
                 $n = new Notification;
@@ -136,7 +141,15 @@ class Chats extends Base
             if ($history) $this->ajaxGetHistory($jid);
 
             \App\Cache::c('chats', $chats);
-            $this->rpc('Chats.prepend', $jid, $this->prepareChat($jid));
+            $this->rpc(
+                'Chats.prepend',
+                $jid,
+                $this->prepareChat(
+                    $jid,
+                    $this->resolveContactFromJid($jid),
+                    $this->resolveRosterFromJid($jid)
+                )
+            );
         }
     }
 
@@ -169,6 +182,16 @@ class Chats extends Base
             return '';
         }
 
+        $contacts = App\Contact::whereIn('id', array_keys($chats))->get()->keyBy('jid');
+        foreach (array_keys($chats) as $jid) {
+            if (!array_key_exists($jid, $contacts)) {
+                $contacts[$jid] = new App\Contact(['id' => $jid]);
+            }
+        }
+
+        $view->assign('rosters', $this->user->session->contacts()->whereIn('jid', array_keys($chats))
+                                      ->with('presence.capability')->get()->keyBy('jid'));
+        $view->assign('contacts', $contacts);
         $view->assign('chats', array_reverse($chats));
         $view->assign('emptyItems', $emptyItems);
 
@@ -182,17 +205,15 @@ class Chats extends Base
         return $view->draw('_chats_empty_item');
     }
 
-    public function prepareChat($jid, $status = null)
+    public function prepareChat($jid, $contact, $roster, $status = null)
     {
         if (!$this->validateJid($jid)) return;
 
         $view = $this->tpl();
 
-        $contact = App\Contact::find($jid);
         $view->assign('status', $status);
-        $view->assign('contact', $contact ? $contact : new App\Contact(['id' => $jid]));
-        $view->assign('roster', $this->user->session->contacts()->where('jid', $jid)
-                                     ->with('presence.capability')->first());
+        $view->assign('contact', $contact);
+        $view->assign('roster', $roster);
 
         if ($status == null) {
             $view->assign('message', $this->user->messages()
@@ -205,6 +226,18 @@ class Chats extends Base
         }
 
         return $view->draw('_chats_item');
+    }
+
+    public function resolveContactFromJid($jid)
+    {
+        $contact = App\Contact::find($jid);
+        return $contact ? $contact : new App\Contact(['id' => $jid]);
+    }
+
+    public function resolveRosterFromJid($jid)
+    {
+        return $this->user->session->contacts()->where('jid', $jid)
+                    ->with('presence.capability')->first();
     }
 
     private function validateJid($jid)

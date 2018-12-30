@@ -134,12 +134,15 @@
 
             {$url = $contact->getPhoto()}
             {if="$url"}
-                <span class="primary icon bubble active {if="$roster->presence"}status {$roster->presence->presencekey}{/if}"
+                <span class="primary icon bubble active
+                    {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
                     onclick="Chat_ajaxGetContact('{$contact->jid}')">
                     <img src="{$url}">
                 </span>
             {else}
-                <span class="primary icon bubble active color {$contact->jid|stringToColor} {if="$roster->presence"}status {$roster->presence->presencekey}{/if}"
+                <span class="primary icon bubble active color
+                    {$contact->jid|stringToColor}
+                    {if="$roster && $roster->presence"}status {$roster->presence->presencekey}{/if}"
                     onclick="Chat_ajaxGetContact('{$contact->jid}')">
                     {if="$roster"}
                         {$roster->truename|firstLetterCapitalize}

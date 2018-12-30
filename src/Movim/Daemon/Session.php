@@ -15,8 +15,8 @@ class Session
     public      $process;       // Linker
     public      $internalSocket;// Linker to Session Websocket
 
-    private      $port;         // Daemon Websocket port
-    private      $key;          // Daemon secure key
+    private     $port;         // Daemon Websocket port
+    private     $key;          // Daemon secure key
 
     public      $registered;
     public      $started;

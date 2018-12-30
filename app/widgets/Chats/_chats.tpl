@@ -5,7 +5,7 @@
         {/autoescape}
     {else}
         {autoescape="off"}
-            {$c->prepareChat($key)}
+            {$c->prepareChat($key, $contacts[$key], $rosters[$key])}
         {/autoescape}
     {/if}
 {/loop}

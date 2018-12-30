@@ -100,11 +100,6 @@ var MovimWebsocket = {
                     MovimWebsocket.pong = true;
                 }
 
-                if (obj.func == 'block') {
-                    MovimWebsocket.clearAttached();
-                    document.body.classList.add('disabled');
-                }
-
                 MovimWebsocket.handle(obj);
             }
         };
