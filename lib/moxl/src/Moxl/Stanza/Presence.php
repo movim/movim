@@ -19,7 +19,10 @@ class Presence
 
         $me = \App\User::me();
 
-        $root->setAttribute('from', $me->id.'/'.$me->session->resource);
+        if ($me && $me->session) {
+            $root->setAttribute('from', $me->id.'/'.$me->session->resource);
+        }
+
         $root->setAttribute('id', $session->get('id'));
 
         if ($to != false) {
