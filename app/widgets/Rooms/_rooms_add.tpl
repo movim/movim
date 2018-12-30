@@ -10,7 +10,7 @@
             <div>
                 <div class="select">
                     <select onchange="Rooms_ajaxDiscoGateway(this.value)">
-                        <option>{$c->__('rooms.default_room')}</option>
+                        <option value="">{$c->__('rooms.default_room')}</option>
                         {loop="$gateways"}
                             <option value="{$value->server}">
                                 {$value->name} ({$value->type})

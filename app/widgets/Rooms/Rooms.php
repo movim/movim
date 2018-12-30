@@ -27,6 +27,7 @@ class Rooms extends Base
         $this->registerEvent('bookmark_get_handle', 'onGetBookmark');
         $this->registerEvent('bookmark_set_handle', 'onBookmark');
         $this->registerEvent('disco_items_nosave_handle', 'onDiscoGateway');
+        $this->registerEvent('disco_items_nosave_error', 'onDiscoGatewayError');
         $this->registerEvent('vcard_set_handle', 'onAvatarSet', 'chat');
         $this->registerEvent('presence_muc_handle', 'onConnected', 'chat');
         $this->registerEvent('presence_unavailable_handle', 'onDisconnected', 'chat');
@@ -58,6 +59,11 @@ class Rooms extends Base
         $view = $this->tpl();
         $view->assign('rooms', $packet->content);
         $this->rpc('MovimTpl.fill', '#gateway_rooms', $view->draw('_rooms_gateway_rooms'));
+    }
+
+    public function onDiscoGatewayError($packet)
+    {
+        $this->ajaxResetGatewayRooms();
     }
 
     public function onAvatarSet($packet)
@@ -117,6 +123,11 @@ class Rooms extends Base
         $this->rpc('Rooms.refresh');
     }
 
+    public function ajaxResetGatewayRooms()
+    {
+        $this->rpc('MovimTpl.fill', '#gateway_rooms', '');
+    }
+
     /**
      * @brief Get the Rooms
      */
@@ -158,10 +169,15 @@ class Rooms extends Base
      */
     public function ajaxDiscoGateway(string $server)
     {
-        $r = new Items;
-        $r->setTo($server)
-          ->disableSave()
-          ->request();
+        if (empty($server)) {
+            $this->ajaxResetGatewayRooms();
+            $this->rpc('Rooms.selectGatewayRoom', '', '');
+        } else {
+            $r = new Items;
+            $r->setTo($server)
+              ->disableSave()
+              ->request();
+        }
     }
 
     /**

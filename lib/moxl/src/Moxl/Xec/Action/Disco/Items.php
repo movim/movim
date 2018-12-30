@@ -96,9 +96,14 @@ class Items extends Action
                 $list[(string)$item->attributes()->jid] = (string)$item->attributes()->name;
             }
 
-            $this->pack($list);
-            $this->method('nosave_handle');
-            $this->deliver();
+            if (count($list) > 0) {
+                $this->pack($list);
+                $this->method('nosave_handle');
+                $this->deliver();
+            } else {
+                $this->method('nosave_error');
+                $this->deliver();
+            }
         }
     }
 
