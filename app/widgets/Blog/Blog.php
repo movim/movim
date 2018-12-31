@@ -71,12 +71,14 @@ class Blog extends Base
                 return;
             }
 
-            $this->title = __('blog.title', $this->_contact->truename);
-            $this->description = $this->_contact->description;
+            if ($this->_contact) {
+                $this->title = __('blog.title', $this->_contact->truename);
+                $this->description = $this->_contact->description;
 
-            $avatar = $this->_contact->getPhoto('l');
-            if ($avatar) {
-                $this->image = $avatar;
+                $avatar = $this->_contact->getPhoto('l');
+                if ($avatar) {
+                    $this->image = $avatar;
+                }
             }
 
             $this->_mode = 'blog';
