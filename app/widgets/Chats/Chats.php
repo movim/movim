@@ -182,7 +182,7 @@ class Chats extends Base
             return '';
         }
 
-        $contacts = App\Contact::whereIn('id', array_keys($chats))->get()->keyBy('jid');
+        $contacts = App\Contact::whereIn('id', array_keys($chats))->get()->keyBy('id');
         foreach (array_keys($chats) as $jid) {
             if (!$contacts->has($jid)) {
                 $contacts->put($jid, new App\Contact(['id' => $jid]));
