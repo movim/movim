@@ -80,7 +80,15 @@ class Chats extends Base
             $jid = $from;
         }
 
-        $this->rpc('MovimTpl.replace', '#' . cleanupId($jid.'_chat_item'), $this->prepareChat($jid, $message));
+        $this->rpc(
+            'MovimTpl.replace', '#' . cleanupId($jid.'_chat_item'),
+            $this->prepareChat(
+                $jid,
+                $this->resolveContactFromJid($jid),
+                $this->resolveRosterFromJid($jid),
+                $message
+            )
+        );
         $this->rpc('Chats.refresh');
     }
 
@@ -205,7 +213,7 @@ class Chats extends Base
         return $view->draw('_chats_empty_item');
     }
 
-    public function prepareChat($jid, $contact, $roster, $status = null)
+    public function prepareChat(string $jid, App\Contact $contact, App\Roster $roster = null, $status = null)
     {
         if (!$this->validateJid($jid)) return;
 
