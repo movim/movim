@@ -38,7 +38,7 @@ class Account extends \Movim\Widget\Base
 
         if (isset($content->x)) {
             $xml = new \XMPPtoForm;
-            $form = $xml->getHTML($content->x->asXML());
+            $form = $xml->getHTML($content->x);
 
             $view->assign('form', $form);
             $view->assign('from', $package->from);

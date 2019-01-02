@@ -194,7 +194,7 @@ class Chat extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $xml = new \XMPPtoForm;
-        $form = $xml->getHTML($config->x->asXML());
+        $form = $xml->getHTML($config->x);
 
         $view->assign('form', $form);
         $view->assign('room', $room);

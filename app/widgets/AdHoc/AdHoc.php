@@ -40,7 +40,7 @@ class AdHoc extends \Movim\Widget\Base
             $this->rpc('AdHoc.initForm');
         } elseif (isset($command->x)) {
             $xml = new \XMPPtoForm();
-            $form = $xml->getHTML($command->x->asXML());
+            $form = $xml->getHTML($command->x);
 
             $view->assign('form', $form);
             $view->assign('attributes', $command->attributes());

@@ -4,6 +4,7 @@ class XMPPtoForm
 {
     private $fieldset;
     private $xmpp;
+    private $stanza;
     private $html;
 
     public function __construct()
@@ -13,11 +14,12 @@ class XMPPtoForm
         $this->xmpp = '';
     }
 
-    public function getHTML($xmpp)
+    public function getHTML(\SimpleXMLElement $xmpp, $stanza = false)
     {
-        $this->setXMPP($xmpp);
+        $this->xmpp = $xmpp;
+        $this->stanza = $stanza;
         $this->create();
-        return $this->html->saveXML();
+        return $this->html->saveHTML();
     }
 
     public function getArray($xmpp)
@@ -31,75 +33,85 @@ class XMPPtoForm
         return $array;
     }
 
-    public function setXMPP($xmpp)
-    {
-        $this->xmpp = $xmpp;
-    }
-
     public function create()
     {
-        $this->xmpp = str_replace('xmlns=', 'ns=', $this->xmpp);
-        $x = new SimpleXMLElement($this->xmpp);
+        //$this->xmpp = str_replace('xmlns=', 'ns=', $this->xmpp);
+        //$x = new SimpleXMLElement($this->xmpp);
 
-        foreach ($x->children() as $element) {
+        foreach ($this->xmpp->children() as $element) {
+            \Utils::debug($element->getName());
             switch($element->getName()) {
-                case "title":
+                case 'title':
                     $this->outTitle($element);
                     break;
-                case "instructions":
+                case 'instructions':
                     $this->outP($element);
                     break;
-                case "field":
-                    switch($element['type']) {
-                        case "boolean":
-                            $this->outCheckbox($element);
-                            break;
-                        //case "fixed":
-                        //    $this->outBold($element);
-                        //    break;
-                        case "text-single":
-                            $this->outInput($element, "");
-                            break;
-                        case "text-multi":
-                            $this->outTextarea($element);
-                            break;
-                        case "text-private":
-                            $this->outInput($element, "password");
-                            break;
-                        case "hidden":
-                            $this->outHiddeninput($element);
-                            break;
-                        case "list-multi":
-                            //$this->outList($element);
-                            break;
-                        case "list-single":
-                            $this->outList($element);
-                            break;
-                        case "jid-multi":
-                            $this->outInput($element, "email");
-                            break;
-                        case "jid-single":
-                            $this->outInput($element, "email");
-                            break;
-                        case "fixed":
-                            $this->outP((string)$element->value);
-                            break;
-                        default:
-                            $this->outInput($element, "text");
-                            break;
+                case 'field':
+                    if (isset($element->media)
+                    && (string)$element->media->attributes()->xmlns == 'urn:xmpp:media-element'
+                    && isset($element->media->uri)) {
+                        $uri = parse_url($element->media->uri);
+                        switch ($uri['scheme']) {
+                            case 'cid':
+                                foreach($this->stanza->xpath('//data[@cid=\''.$uri['path'].'\']') as $data) {
+                                    $this->outImage('data:'.$data->attributes()->type.';base64,'.(string)$data);
+                                }
+                                break;
+                            case 'http':
+                            case 'https':
+                                $this->outImage($uri);
+                                break;
+                        }
+                    }
+
+                    if(isset($element->attributes()->type)) {
+                        switch($element->attributes()->type) {
+                            case 'boolean':
+                                $this->outCheckbox($element);
+                                break;
+                            case 'text-single':
+                                $this->outInput($element, '');
+                                break;
+                            case 'text-multi':
+                                $this->outTextarea($element);
+                                break;
+                            case 'text-private':
+                                $this->outInput($element, 'password');
+                                break;
+                            case 'hidden':
+                                $this->outHiddeninput($element);
+                                break;
+                            case 'list-multi':
+                                //$this->outList($element);
+                                break;
+                            case 'list-single':
+                                $this->outList($element);
+                                break;
+                            case 'jid-multi':
+                                $this->outInput($element, 'email');
+                                break;
+                            case 'jid-single':
+                                $this->outInput($element, 'email');
+                                break;
+                            case 'fixed':
+                                $this->outP((string)$element->value);
+                                break;
+                            default:
+                                $this->outInput($element, 'text');
+                                break;
+                        }
                     }
                     break;
                 case 'url':
-
                     break;
-                /*XML without <x> element*/
                 case 'username':
                 case 'email':
                 case 'password':
                         $this->outGeneric($element->getName());
                     break;
                 default:
-                    //$this->html .= "";
+                    //$this->html .= '';
             }
         }
     }
@@ -129,10 +141,21 @@ class XMPPtoForm
         $this->html->appendChild($title);
     }
 
+    private function outImage(string $src)
+    {
+        $div = $this->html->createElement('div');
+        $img = $this->html->createElement('img');
+        $img->setAttribute('src', $src);
+        $div->appendChild($img);
+        $this->html->appendChild($div);
+    }
+
     private function outP($s)
     {
-        $title = $this->html->createElement('p', $s);
-        $this->html->appendChild($title);
+        $div = $this->html->createElement('div');
+        $p = $this->html->createElement('p', $s);
+        $div->appendChild($p);
+        $this->html->appendChild($div);
     }
 
     private function outUrl($s)
@@ -141,15 +164,7 @@ class XMPPtoForm
         $a->setAttribute('href', $s->getName());
         $this->html->appendChild($a);
     }
-    /*
-    private function outBold($s) {
-        if ($this->fieldset > 0) {
-            $this->html .= '</fieldset>';
-        }
-        $this->html .= '<fieldset><legend>'.$s->value.'</legend><br />';
-        $this->fieldset ++;
-    }
-    */
+
     private function outCheckbox($s)
     {
         $container = $this->html->createElement('div');
@@ -174,7 +189,7 @@ class XMPPtoForm
         $option = $this->html->createElement('option', __('button.bool_yes'));
         $option->setAttribute('value', 'true');
 
-        if (isset($s->value) || $s->value == "true" || $s->value == "1") {
+        if (isset($s->value) || $s->value == 'true' || $s->value == '1') {
             $option->setAttribute('selected', 'selected');
         }
 
@@ -183,7 +198,7 @@ class XMPPtoForm
         $option = $this->html->createElement('option', __('button.bool_no'));
         $option->setAttribute('value', 'false');
 
-        if (!isset($s->value) || $s->value == "false" || $s->value == "0") {
+        if (!isset($s->value) || $s->value == 'false' || $s->value == '0') {
             $option->setAttribute('selected', 'selected');
         }
 
@@ -211,7 +226,7 @@ class XMPPtoForm
         }
 
         foreach ($s->children() as $value) {
-            if ($value->getName() == "value") {
+            if ($value->getName() == 'value') {
                 $textarea->nodeValue .= $value . "\n";
             }
         }
@@ -252,7 +267,7 @@ class XMPPtoForm
         }
 
         foreach ($s->children() as $value) {
-            if ($value->getName() == "value") {
+            if ($value->getName() == 'value') {
                 $input->setAttribute('value', $value);
             }
         }

@@ -39,11 +39,8 @@ class AccountNext extends \Movim\Widget\Base
             switch($form->x->attributes()->xmlns) {
                 case 'jabber:x:data' :
                     $formview = $this->tpl();
-
-                    $formh = $xtf->getHTML($form->x->asXML());
                     $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
-
-                    $formview->assign('formh', $formh);
+                    $formview->assign('formh', $xtf->getHTML($form->x, $form));
                     $html = $formview->draw('_accountnext_form');
                     break;
                 case 'jabber:x:oob' :
@@ -52,11 +49,8 @@ class AccountNext extends \Movim\Widget\Base
             }
         } else {
             $formview = $this->tpl();
-
-            $formh = $xtf->getHTML($form->asXML());
             $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
-
-            $formview->assign('formh', $formh);
+            $formview->assign('formh', $xtf->getHTML($form));
             $html = $formview->draw('_accountnext_form');
         }
 
