@@ -19,6 +19,7 @@ v0.14.1 (trunk)
  * Display Gateway connection status
  * CSS fixes in Forms
  * Disable the dropdown in Form if there is only one choice
+ * Add support for embeded images in Forms (for CAPTCHA)
 
 v0.14
 ---------------------------
