@@ -10,7 +10,7 @@ class AdminMain extends \Movim\Widget\Base
 
         $configuration = Configuration::get();
 
-        if (isset($form) && !empty($form)) {
+        if (isset($form) && !empty($form) && isset($form['adminform'])) {
             if (isset($form['password'])
             && isset($form['repassword'])
             && $form['password'] != '' && $form['repassword'] != ''
@@ -23,6 +23,7 @@ class AdminMain extends \Movim\Widget\Base
             unset($form['password']);
             unset($form['repassword']);
             unset($form['submit']);
+            unset($form['adminform']);
 
             foreach ($form as $key => $value) {
                 $configuration->$key = $value;
