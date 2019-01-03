@@ -15,11 +15,11 @@ class Info extends Model
         $this->attributes['adminaddresses'] = serialize($arr);
     }
 
-    public function getAdminaddressesAttribute()
+    public function getAdminaddressesAttribute(): array
     {
         return (isset($this->attributes['adminaddresses']))
             ? unserialize($this->attributes['adminaddresses'])
-            : null;
+            : [];
     }
 
     public function setAbuseaddressesAttribute(array $arr)
@@ -27,11 +27,11 @@ class Info extends Model
         $this->attributes['abuseaddresses'] = serialize($arr);
     }
 
-    public function getAbuseaddressesAttribute()
+    public function getAbuseaddressesAttribute(): array
     {
         return (isset($this->attributes['abuseaddresses']))
             ? unserialize($this->attributes['abuseaddresses'])
-            : null;
+            : [];
     }
 
     public function setFeedbackaddressesAttribute(array $arr)
@@ -39,11 +39,11 @@ class Info extends Model
         $this->attributes['feedbackaddresses'] = serialize($arr);
     }
 
-    public function getFeedbackaddressesAttribute()
+    public function getFeedbackaddressesAttribute(): array
     {
         return (isset($this->attributes['feedbackaddresses']))
             ? unserialize($this->attributes['feedbackaddresses'])
-            : null;
+            : [];
     }
 
     public function setSalesaddressesAttribute(array $arr)
@@ -51,22 +51,22 @@ class Info extends Model
         $this->attributes['salesaddresses'] = serialize($arr);
     }
 
-    public function getSalesaddressesAttribute()
+    public function getSalesaddressesAttribute(): array
     {
         return (isset($this->attributes['salesaddresses']))
             ? unserialize($this->attributes['salesaddresses'])
-            : null;
+            : [];
     }
     public function setSecurityaddressesAttribute(array $arr)
     {
         $this->attributes['securityaddresses'] = serialize($arr);
     }
 
-    public function getSecurityaddressesAttribute()
+    public function getSecurityaddressesAttribute(): array
     {
         return (isset($this->attributes['securityaddresses']))
             ? unserialize($this->attributes['securityaddresses'])
-            : null;
+            : [];
     }
 
     public function setSupportaddressesAttribute(array $arr)
@@ -74,11 +74,11 @@ class Info extends Model
         $this->attributes['supportaddresses'] = serialize($arr);
     }
 
-    public function getSupportaddressesAttribute()
+    public function getSupportaddressesAttribute(): array
     {
         return (isset($this->attributes['supportaddresses']))
             ? unserialize($this->attributes['supportaddresses'])
-            : null;
+            : [];
     }
 
     public function getNameAttribute()
