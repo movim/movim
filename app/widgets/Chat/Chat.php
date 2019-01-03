@@ -41,7 +41,6 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('gone', 'onGone', 'chat');
         $this->registerEvent('subject', 'onConferenceSubject', 'chat');
         $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
-
         $this->registerEvent('muc_getconfig_handle', 'onRoomConfig', 'chat');
         $this->registerEvent('muc_setconfig_handle', 'onRoomConfigSaved', 'chat');
         $this->registerEvent('muc_setconfig_error', 'onRoomConfigError', 'chat');
@@ -179,7 +178,7 @@ class Chat extends \Movim\Widget\Base
 
     public function onMucConnected($packet)
     {
-        $this->ajaxGetRoom($packet->content->jid);
+        $this->ajaxGetRoom($packet->content->jid, false, true);
     }
 
     public function onRoomConfigError($packet)
@@ -258,14 +257,14 @@ class Chat extends \Movim\Widget\Base
      * @brief Get a chatroom
      * @param string $jid
      */
-    public function ajaxGetRoom($room, $light = false)
+    public function ajaxGetRoom($room, $light = false, $noConnect = false)
     {
         if (!$this->validateJid($room)) return;
 
         $r = $this->user->session->conferences()->where('conference', $room)->first();
 
         if ($r) {
-            if (!$r->connected) {
+            if (!$r->connected && !$noConnect) {
                 $this->rpc('Rooms_ajaxJoin', $r->conference, $r->nick);
             }
 
@@ -582,8 +581,6 @@ class Chat extends \Movim\Widget\Base
         $view = $this->tpl();
 
         $view->assign('jid', $jid);
-
-        $jid = echapJS($jid);
 
         $view->assign('smiley', $this->call('ajaxSmiley'));
         $view->assign('emoji', prepareString('😀'));
