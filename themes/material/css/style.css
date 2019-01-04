@@ -132,6 +132,13 @@ main {
     flex-direction: row-reverse;
 }
 
+@media print {
+    main {
+        display: block;
+        height: auto;
+    }
+}
+
 nav ~ main {
     width: calc(100% - 7rem);
 }

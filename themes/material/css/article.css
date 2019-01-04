@@ -12,6 +12,12 @@ article footer {
     padding-bottom: 1rem;
 }
 
+@media print {
+    article footer {
+        display: none;
+    }
+}
+
 article section {
     font-size: 2rem;
     line-height: 3rem;

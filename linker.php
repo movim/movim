@@ -179,7 +179,6 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
         fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
     }
 
-    // We define a huge buffer to prevent issues with SSL streams, see https://bugs.php.net/bug.php?id=65137
     $xmppSocket->on('data', function($message) use (&$xmppSocket, $parser, &$timestamp) {
         if (!empty($message)) {
             $restart = false;

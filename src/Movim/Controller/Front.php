@@ -68,11 +68,7 @@ class Front extends Base
             // We display the page !
             $c->display();
         } else {
-            $log = new Logger('movim');
-            $log->pushHandler(new SyslogHandler('movim'));
-            $log->addError(
-                t("Could not call the load method on the current controller")
-            );
+            \Utils::info('Could not call the load method on the current controller');
         }
     }
 }
