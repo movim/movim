@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-11 18:53+0200\n"
+"POT-Creation-Date: 2019-01-04 20:54+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/movim/movim/language/zh_TW/)\n"
@@ -181,7 +181,8 @@ msgid "Are you sure that you want to delete it?"
 msgstr ""
 
 #: [account]gateway_title
-msgid "Gateway"
+#, fuzzy
+msgid "Gateways"
 msgstr "通道"
 
 #: [account]clear
@@ -445,10 +446,6 @@ msgstr "未定義圖示"
 #: [blog]title [feed]title
 msgid "%s’s feed"
 msgstr ""
-
-#: [blog]empty
-msgid "This user has not posted anything right now"
-msgstr "這個使用者目前沒有發表任何文章"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -1466,6 +1463,19 @@ msgstr ""
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr ""
+
+#: [rooms]type_room
+msgid "Type of room"
+msgstr ""
+
+#: [rooms]default_room
+msgid "Standard room"
+msgstr ""
+
+#: [rooms]gateway_room
+#, fuzzy
+msgid "Gateway room"
+msgstr "通道"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2553,6 +2563,9 @@ msgstr ""
 #: [field]type_here
 msgid "Type here"
 msgstr ""
+
+#~ msgid "This user has not posted anything right now"
+#~ msgstr "這個使用者目前沒有發表任何文章"
 
 #~ msgid "This message will be displayed on the login page"
 #~ msgstr "這個訊息會顯示在登入頁面"

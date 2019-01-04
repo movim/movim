@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-11 18:53+0200\n"
+"POT-Creation-Date: 2019-01-04 20:54+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -188,7 +188,8 @@ msgid "Are you sure that you want to delete it?"
 msgstr ""
 
 #: [account]gateway_title
-msgid "Gateway"
+#, fuzzy
+msgid "Gateways"
 msgstr "Gateway"
 
 #: [account]clear
@@ -452,10 +453,6 @@ msgstr "Nog geen avatar gekozen"
 #: [blog]title [feed]title
 msgid "%s’s feed"
 msgstr ""
-
-#: [blog]empty
-msgid "This user has not posted anything right now"
-msgstr "Deze gebruiker heeft momenteel niets gepost"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -1475,6 +1472,19 @@ msgstr ""
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr "Klik op toevoegen om er een toe te voegen."
+
+#: [rooms]type_room
+msgid "Type of room"
+msgstr ""
+
+#: [rooms]default_room
+msgid "Standard room"
+msgstr ""
+
+#: [rooms]gateway_room
+#, fuzzy
+msgid "Gateway room"
+msgstr "Gateway"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2567,6 +2577,9 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "This user has not posted anything right now"
+#~ msgstr "Deze gebruiker heeft momenteel niets gepost"
 
 #~ msgid "Refresh all the streams"
 #~ msgstr "Vernieuw alle streams"

@@ -101,7 +101,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-11 18:53+0200\n"
+"POT-Creation-Date: 2019-01-04 20:54+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Zsolt <maxigaz@protonmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/movim/movim/language/hu/)\n"
@@ -185,7 +185,8 @@ msgid "Are you sure that you want to delete it?"
 msgstr "Biztosan törölni akarod?"
 
 #: [account]gateway_title
-msgid "Gateway"
+#, fuzzy
+msgid "Gateways"
 msgstr "Átjáró"
 
 #: [account]clear
@@ -449,10 +450,6 @@ msgstr "Még nincs megadva avatar"
 #: [blog]title [feed]title
 msgid "%s’s feed"
 msgstr "%s hírfolyama"
-
-#: [blog]empty
-msgid "This user has not posted anything right now"
-msgstr "Ez a felhasználó nem osztott meg semmit sem eddig."
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -1472,6 +1469,19 @@ msgstr ""
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr "Vegyél fel egyet a hozzáadás gombra kattintva."
+
+#: [rooms]type_room
+msgid "Type of room"
+msgstr ""
+
+#: [rooms]default_room
+msgid "Standard room"
+msgstr ""
+
+#: [rooms]gateway_room
+#, fuzzy
+msgid "Gateway room"
+msgstr "Átjáró"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2562,6 +2572,9 @@ msgstr "Az API nem elérhető, próbáld újra később"
 #: [field]type_here
 msgid "Type here"
 msgstr "Ide írj"
+
+#~ msgid "This user has not posted anything right now"
+#~ msgstr "Ez a felhasználó nem osztott meg semmit sem eddig."
 
 #~ msgid "Refresh all the streams"
 #~ msgstr "Adatfolyamok frissítése"

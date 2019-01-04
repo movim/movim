@@ -93,7 +93,7 @@
                     <span class="primary icon gray">
                         <i class="material-icons">comment</i>
                     </span>
-                    <p class="normal">{$c->__('blog.empty')}</p>
+                    <p class="normal">{$c->__('post.empty')}</p>
                 </li>
             </ul>
         </article>

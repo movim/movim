@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-11 18:53+0200\n"
+"POT-Creation-Date: 2019-01-04 20:54+0200\n"
 "PO-Revision-Date: 2018-12-11 18:00+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
@@ -188,7 +188,8 @@ msgid "Are you sure that you want to delete it?"
 msgstr "Êtes-vous sûr de vouloir le supprimer ?"
 
 #: [account]gateway_title
-msgid "Gateway"
+#, fuzzy
+msgid "Gateways"
 msgstr "Passerelle"
 
 #: [account]clear
@@ -452,10 +453,6 @@ msgstr "Aucun avatar définit pour le moment"
 #: [blog]title [feed]title
 msgid "%s’s feed"
 msgstr "Flux de %s"
-
-#: [blog]empty
-msgid "This user has not posted anything right now"
-msgstr "Cet utilisateur n’a rien publié pour le moment"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -1473,6 +1470,19 @@ msgstr "Vous n'avez pas encore de salon de discussions."
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr "Ajoutez en un en cliquant sur le bouton ajouter."
+
+#: [rooms]type_room
+msgid "Type of room"
+msgstr ""
+
+#: [rooms]default_room
+msgid "Standard room"
+msgstr ""
+
+#: [rooms]gateway_room
+#, fuzzy
+msgid "Gateway room"
+msgstr "Passerelle"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2559,3 +2569,6 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
+
+#~ msgid "This user has not posted anything right now"
+#~ msgstr "Cet utilisateur n’a rien publié pour le moment"

@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-11 18:53+0200\n"
+"POT-Creation-Date: 2019-01-04 20:54+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Besnik <besnik@programeshqip.org>\n"
 "Language-Team: Albanian (http://www.transifex.com/movim/movim/language/sq/)\n"
@@ -181,7 +181,7 @@ msgid "Are you sure that you want to delete it?"
 msgstr "Jeni i sigurt se doni të fshihet?"
 
 #: [account]gateway_title
-msgid "Gateway"
+msgid "Gateways"
 msgstr ""
 
 #: [account]clear
@@ -445,10 +445,6 @@ msgstr "S’ka ende avatar të përcaktuar"
 #: [blog]title [feed]title
 msgid "%s’s feed"
 msgstr "Prurje për %s"
-
-#: [blog]empty
-msgid "This user has not posted anything right now"
-msgstr "Ky postues s’ka postuar ende gjë deri këtu"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -1468,6 +1464,18 @@ msgstr "Ende s’keni ndonjë dhomë bisedash."
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr "Shtoni një duke klikuar mbi butonin e shtimeve."
+
+#: [rooms]type_room
+msgid "Type of room"
+msgstr ""
+
+#: [rooms]default_room
+msgid "Standard room"
+msgstr ""
+
+#: [rooms]gateway_room
+msgid "Gateway room"
+msgstr ""
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2560,6 +2568,9 @@ msgstr "API nuk kapet dot, riprovoni më vonë"
 #: [field]type_here
 msgid "Type here"
 msgstr "Shtypni këtu"
+
+#~ msgid "This user has not posted anything right now"
+#~ msgstr "Ky postues s’ka postuar ende gjë deri këtu"
 
 #~ msgid "You don’t have Javascript enabled. Good luck with that."
 #~ msgstr "S’e keni të aktivizuar Javascript-in. Shihni e bëni."

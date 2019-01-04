@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-11 18:53+0200\n"
+"POT-Creation-Date: 2019-01-04 20:54+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Danish (http://www.transifex.com/movim/movim/language/da/)\n"
@@ -181,7 +181,8 @@ msgid "Are you sure that you want to delete it?"
 msgstr ""
 
 #: [account]gateway_title
-msgid "Gateway"
+#, fuzzy
+msgid "Gateways"
 msgstr "Gateway"
 
 #: [account]clear
@@ -445,10 +446,6 @@ msgstr "Intet profilbillede defineret endnu"
 #: [blog]title [feed]title
 msgid "%s’s feed"
 msgstr ""
-
-#: [blog]empty
-msgid "This user has not posted anything right now"
-msgstr "Denne bruger har ikke delt noget endnu"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -1468,6 +1465,19 @@ msgstr ""
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr "Tilføj ved at klikke på tilføj-knappen"
+
+#: [rooms]type_room
+msgid "Type of room"
+msgstr ""
+
+#: [rooms]default_room
+msgid "Standard room"
+msgstr ""
+
+#: [rooms]gateway_room
+#, fuzzy
+msgid "Gateway room"
+msgstr "Gateway"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2559,6 +2569,9 @@ msgstr "API'et kan ikke nåes, prøv igen senere"
 #: [field]type_here
 msgid "Type here"
 msgstr "Skriv her"
+
+#~ msgid "This user has not posted anything right now"
+#~ msgstr "Denne bruger har ikke delt noget endnu"
 
 #~ msgid "Refresh all the streams"
 #~ msgstr "Genopfrisk alle strømmene"

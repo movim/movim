@@ -96,7 +96,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-11 18:53+0200\n"
+"POT-Creation-Date: 2019-01-04 20:54+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: English (http://www.transifex.com/movim/movim/language/en/)\n"
@@ -180,7 +180,8 @@ msgid "Are you sure that you want to delete it?"
 msgstr "Are you sure that you want to delete it?"
 
 #: [account]gateway_title
-msgid "Gateway"
+#, fuzzy
+msgid "Gateways"
 msgstr "Gateway"
 
 #: [account]clear
@@ -444,10 +445,6 @@ msgstr "No avatar defined yet"
 #: [blog]title [feed]title
 msgid "%s’s feed"
 msgstr "%s’s feed"
-
-#: [blog]empty
-msgid "This user has not posted anything right now"
-msgstr "This user has not posted anything right now"
 
 #: [blog]private
 msgid "This content is private, please login to see it"
@@ -1467,6 +1464,19 @@ msgstr "You don’t have any chatroom yet."
 #: [rooms]empty_text2
 msgid "Add one by clicking on the add button."
 msgstr "Add one by clicking on the add button."
+
+#: [rooms]type_room
+msgid "Type of room"
+msgstr ""
+
+#: [rooms]default_room
+msgid "Standard room"
+msgstr ""
+
+#: [rooms]gateway_room
+#, fuzzy
+msgid "Gateway room"
+msgstr "Gateway"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -2559,6 +2569,9 @@ msgstr "The API is not reachable, try again later"
 #: [field]type_here
 msgid "Type here"
 msgstr "Type here"
+
+#~ msgid "This user has not posted anything right now"
+#~ msgstr "This user has not posted anything right now"
 
 #~ msgid "You don’t have Javascript enabled. Good luck with that."
 #~ msgstr "You don’t have Javascript enabled. Good luck with that."
