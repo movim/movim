@@ -25,15 +25,18 @@ class Emoji
 {
     protected static $instance = null;
     private $_emoji;
+    private $_string;
+    private $_emojisCount = 0;
+    private $_lastEmojiURL = null;
     private $_regex = [
-        /* some easy cases first */
+        // Some easy cases first
         '/[#*0-9]\x{20E3}
          |\x{1F3F3}(?:\x{FE0F}\x{200D}\x{1F308})?
          |\x{1F3F4}(?:\x{200D}\x{2620}\x{FE0F}|\x{E0067}\x{E0062}
           (?:\x{E0065}\x{E006E}\x{E0067}|\x{E0073}\x{E0063}\x{E0074}|\x{E0077}\x{E006C}\x{E0073})\x{E007F})?
          |\x{1F441}(?:\x{200D}\x{1F5E8})?
          /ux',
-        /* everything starting with 1F468 or 1F469 */
+        // Everything starting with 1F468 or 1F469
         '/[\x{1F468}\x{1F469}]
           (?:\x{200D}\x{2764}\x{FE0F}\x{200D}(?:\x{1F48B}\x{200D})?[\x{1F468}\x{1F469}]
             |(?:\x{200D}[\x{1F468}\x{1F469}])?
@@ -44,14 +47,14 @@ class Emoji
                |[\x{1F33E}\x{1F373}\x{1F393}\x{1F3A4}\x{1F3A8}\x{1F3EB}\x{1F3ED}\x{1F4BB}\x{1F4BC}\x{1F527}\x{1F52C}\x{1F680}\x{1F692}]
              )
           )/ux',
-        /* some more combinations (order is important!) */
+        // Some more combinations (order is important!)
         '/[\x{26F9}\x{1F3C3}-\x{1F3CC}\x{1F46E}\x{1F46F}\x{1F461}-\x{1F477}\x{1F481}-\x{1F487}\x{1F575}\x{1F645}-\x{1F64E}\x{1F6A3}\x{1F6B4}-\x{1F6B6}\x{1F926}\x{1F937}-\x{1F93E}\x{1F9D6}-\x{1F9DF}]
           [\x{FE0F}\x{1F3FB}-\x{1F3FF}]?
           \x{200D}[\x{2640}\x{2642}]\x{FE0F}
          /ux',
         '/[\x{261D}\x{26F7}-\x{270D}\x{1F1E6}-\x{1F1FF}\x{1F385}\x{1F3C2}-\x{1F3CC}\x{1F442}-\x{1F487}\x{1F4AA}\x{1F574}-\x{1F596}\x{1F645}-\x{1F6CC}\x{1F918}-\x{1F9DD}]
           [\x{1F1E6}-\x{1F1FF}\x{1F3FB}-\x{1F3FF}]/ux',
-        /* individual codepoints last */
+        // Individual codepoints last
         '/[\x{203C}\x{2049}\x{2139}-\x{21AA}\x{231A}-\x{23FA}\x{24C2}\x{25AA}-\x{27BF}\x{2934}-\x{2B55}\x{3030}-\x{3299}\x{1F004}-\x{1F9E6}]/u'
     ];
 
@@ -60,8 +63,10 @@ class Emoji
         $this->_emoji = require('Emoji/CompiledEmoji.php');
     }
 
-    public function replace($string)
+    public function replace($string): string
     {
+        $this->_string = $string;
+
         return preg_replace_callback($this->_regex, function ($matches) {
             $astext = implode('-',
                 array_map('dechex',
@@ -69,24 +74,39 @@ class Emoji
                 )
             );
 
-            /* Do we know this character? */
             if (!isset($this->_emoji[$astext])) {
-                /* No, return match unchanged */
                 return $matches[0];
             }
 
-            /* Yes, replace */
+            $this->_emojisCount++;
+            $this->_lastEmojiURL = BASE_URI . 'themes/' .
+                    \App\Configuration::get()->theme .
+                    '/img/emojis/svg/' . $astext . '.svg';
+
             $dom = new \DOMDocument('1.0', 'UTF-8');
             $dom->appendChild($img = $dom->createElement('img'));
             $img->setAttribute('class', 'emoji');
             $img->setAttribute('alt', $this->_emoji[$astext]);
             $img->setAttribute('title', $this->_emoji[$astext]);
-            $img->setAttribute('src', BASE_URI . 'themes/' .
-                \App\Configuration::get()->theme .
-                '/img/emojis/svg/' . $astext . '.svg');
+            $img->setAttribute('src', $this->_lastEmojiURL);
 
             return $dom->saveXML($dom->documentElement);
         }, $string);
+    }
+
+    public function isSingleEmoji(): bool
+    {
+        // grapheme_strlen is more accurate and takes into account joined emojis
+        $stringLength = extension_loaded('intl')
+            ? grapheme_strlen($this->_string)
+            : mb_strlen($this->_string);
+
+        return $this->_emojisCount === 1 && $stringLength === 1;
+    }
+
+    public function getLastSingleEmojiURL()
+    {
+        return $this->_lastEmojiURL;
     }
 
     public static function getInstance()
@@ -94,6 +114,9 @@ class Emoji
         if (!isset(static::$instance)) {
             static::$instance = new Emoji;
         }
+        static::$instance->_emojisCount = 0;
+        static::$instance->_string = null;
+        static::$instance->_lastEmojiUrl = null;
 
         return static::$instance;
     }

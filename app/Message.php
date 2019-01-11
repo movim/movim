@@ -283,12 +283,6 @@ class Message extends Model
         }
     }
 
-    public function convertEmojis()
-    {
-        $emoji = \Movim\Emoji::getInstance();
-        $this->body = addHFR($emoji->replace($this->body));
-    }
-
     public function isTrusted()
     {
         /*$rd = new \Modl\RosterLinkDAO;

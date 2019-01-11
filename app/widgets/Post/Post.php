@@ -172,11 +172,10 @@ class Post extends Base
 
     public function prepareComments(\App\Post $post, $public = false)
     {
-        $emoji = \Movim\Emoji::getInstance();
         $view = $this->tpl();
         $view->assign('post', $post);
         $view->assign('public', $public);
-        $view->assign('hearth', $emoji->replace('♥'));
+        $view->assign('hearth', addEmojis('♥'));
 
         return $view->draw('_post_comments');
     }

@@ -399,22 +399,8 @@ ul li div.bubble span.info {
 
 ul li div.bubble:after {
     content: attr(data-publishedprepared);
-    clear: both;
     line-height: 3rem;
     text-align: left;
-}
-
-ul li div.bubble.sticker:after {
-    padding-top: 0.5rem;
-}
-
-ul li.oppose div.bubble:after {
-    right: 9rem;
-    text-align: right;
-}
-
-ul li:not(.oppose) div.bubble:after {
-    left: 0;
 }
 
 ul li .quote {

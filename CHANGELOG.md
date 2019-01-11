@@ -20,6 +20,8 @@ v0.14.1 (trunk)
  * CSS fixes in Forms
  * Disable the dropdown in Form if there is only one choice
  * Add support for embeded images in Forms (for CAPTCHA)
+ * Chat bubbles a bit more compact
+ * Display single emojis as small stickers
 
 v0.14
 ---------------------------

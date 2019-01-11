@@ -148,7 +148,6 @@ class Notifications extends Base
             }
         }
 
-        $emoji = \Movim\Emoji::getInstance();
         $notifs = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
                   ->from('posts')
@@ -161,7 +160,7 @@ class Notifications extends Base
         if (!$since) $since = date(SQL_DATE, 0);
 
         $view = $this->tpl();
-        $view->assign('hearth',  $emoji->replace('♥'));
+        $view->assign('hearth',  addEmojis('♥'));
         $view->assign('notifs', $notifs);
         $view->assign('since', $since);
         $view->assign('invitations', $invitations);

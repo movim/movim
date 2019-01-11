@@ -664,11 +664,14 @@ class Chat extends \Movim\Widget\Base
         $message->jidto = echapJS($message->jidto);
         $message->jidfrom = echapJS($message->jidfrom);
 
+        $emoji = \Movim\Emoji::getInstance();
+
         if (isset($message->html)) {
             $message->body = $message->html;
         } else {
             $message->addUrls();
-            $message->convertEmojis();
+            $message->body = $emoji->replace($message->body);
+            $message->body = addHFR($message->body);
         }
 
         if (isset($message->subject) && $message->type == 'headline') {
@@ -695,6 +698,14 @@ class Chat extends \Movim\Widget\Base
                     'height' => $stickerSize['height']
                 ];
             }
+        }
+
+        // Jumbo emoji
+        if ($emoji->isSingleEmoji()) {
+            $message->sticker = [
+                'url' => $emoji->getLastSingleEmojiURL(),
+                'height' => 60
+            ];
         }
 
         // Attached file
