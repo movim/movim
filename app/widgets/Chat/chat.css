@@ -24,6 +24,10 @@ main:not(.enabled) #chat_widget {
     width: 100%;
 }
 
+#chat_widget p.compose:not(:empty) + p {
+    display: none;
+}
+
 #chat_widget .contained {
     overflow-y: scroll;
     height: 100%;

@@ -55,6 +55,7 @@
             <p><i class="material-icons">lock</i> {$c->__('message.encrypted')}</p>
         {elseif="stripTags($message->body) != ''"}
             <p class="line">
+                <span id="{$contact->jid|cleanupId}-chat-state"></span>
                 {autoescape="off"}
                     {$message->body|stripTags|addEmojis}
                 {/autoescape}

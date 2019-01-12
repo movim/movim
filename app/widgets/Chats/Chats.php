@@ -63,27 +63,18 @@ class Chats extends Base
 
     public function onComposing(array $array)
     {
-        $this->setState($array[0], $this->__('chats.composing'));
+        $view = $this->tpl();
+        $this->setState($array[0], $view->draw('_chats_compose'));
     }
 
     public function onPaused(array $array)
     {
-        $this->setState($array[0]);
+        $this->setState($array[0], '');
     }
 
     private function setState(string $jid, $message = null)
     {
-        $this->rpc(
-            'MovimTpl.replace', '#' . cleanupId($jid.'_chat_item'),
-            $this->prepareChat(
-                $jid,
-                $this->resolveContactFromJid($jid),
-                $this->resolveRosterFromJid($jid),
-                $message
-            )
-        );
-
-        $this->rpc('Chats.refresh');
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_chat_state'), $message);
     }
 
     public function ajaxGet()

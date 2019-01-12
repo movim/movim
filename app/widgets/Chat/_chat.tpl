@@ -56,15 +56,14 @@
             {if="$conference && $conference->name"}
                 <p class="line" title="{$room}">
                     {$conference->name}
-                    <span class="second" id="{$jid|cleanupId}-state"></span>
                 </p>
             {else}
                 <p class="line">
                     {$room}
-                    <span class="second" id="{$jid|cleanupId}-state"></span>
                 </p>
             {/if}
 
+            <p class="compose" id="{$jid|cleanupId}-state"></p>
             {if="$conference && !$conference->connected"}
                 <p>{$c->__('button.connecting')}…</p>
             {elseif="$conference && $conference->subject"}
@@ -166,14 +165,15 @@
                 onclick="Chats_ajaxClose('{$jid|echapJS}', true);">
                 <i class="material-icons">close</i>
             </span>
+
             <p class="line">
                 {if="$roster"}
                     {$roster->truename}
                 {else}
                     {$contact->truename}
                 {/if}
-                <span class="second" id="{$jid|cleanupId}-state"></span>
             </p>
+            <p class="compose" id="{$jid|cleanupId}-state"></p>
             <p class="line">{$contact->jid}</p>
         </li>
     </ul>

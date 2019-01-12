@@ -163,7 +163,7 @@ class Chat extends \Movim\Widget\Base
         $this->setState(
             $array[0],
             is_array($array[1]) && !empty($array[1])
-                ? '…' . implode(', ', array_keys($array[1]))
+                ? $this->prepareComposeList(array_keys($array[1]))
                 : $this->__('message.composing')
         );
     }
@@ -173,7 +173,7 @@ class Chat extends \Movim\Widget\Base
         $this->setState(
             $array[0],
             is_array($array[1]) && !empty($array[1])
-                ? '…' . implode(', ', array_keys($array[1]))
+                ? $this->prepareComposeList(array_keys($array[1]))
                 : ''
         );
     }
@@ -851,6 +851,13 @@ class Chat extends \Movim\Widget\Base
         $view->assign('top', $top);
 
         return $view->draw('_chat_empty');
+    }
+
+    private function prepareComposeList(array $list)
+    {
+        $view = $this->tpl();
+        $view->assign('list', implode(', ', $list));
+        return $view->draw('_chat_compose_list');
     }
 
     /**
