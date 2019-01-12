@@ -11,7 +11,7 @@ use React\EventLoop\Timer\Timer;
  */
 class ChatStates
 {
-    protected static $instance; // Singleton to keep state at all time
+    protected static $instance;
     private $_composing = [];
     private $_timeout = 30;
 
@@ -73,22 +73,10 @@ class ChatStates
                 $this->_composing[$jid] = [];
             }
 
-            /*if (array_key_exists($explodedFrom['resource'], $this->_composing[$jid])
-            && $this->_composing[$jid][$explodedFrom['resource']] instanceof Timer) {
-                $loop->cancelTimer($this->_composing[$jid][$explodedFrom['resource']]);
-                unset($this->_composing[$jid][$explodedFrom['resource']]);
-            }*/
             $this->clearState($jid, $explodedFrom['resource']);
-
             $this->_composing[$jid][$explodedFrom['resource']] = $timer;
         } else {
-            /*if (array_key_exists($jid, $this->_composing)
-            && $this->_composing[$jid] instanceof Timer) {
-                $loop->cancelTimer($this->_composing[$jid]);
-                unset($this->_composing[$jid]);
-            }*/
             $this->clearState($jid);
-
             $this->_composing[$jid] = $timer;
         }
 
@@ -103,30 +91,15 @@ class ChatStates
         $explodedFrom = explodeJid($from);
         $jid = $this->resolveJid($explodedFrom['jid'], $to);
 
-        //if (array_key_exists($jid, $this->_composing)) {
-            /*if (isset($explodedFrom['resource'])
-            && array_key_exists($explodedFrom['resource'], $this->_composing[$jid])) {
-                $loop->cancelTimer($this->_composing[$jid][$explodedFrom['resource']]);
-                unset($this->_composing[$jid][$explodedFrom['resource']]);
+        $this->clearState($jid, $explodedFrom['resource']);
 
-                if (empty($this->_composing[$jid])) {
-                    unset($this->_composing[$jid]);
-                }
-            } elseif($this->_composing[$jid] instanceof Timer) {
-                $loop->cancelTimer($this->_composing[$jid]);
-                unset($this->_composing[$jid]);
-            }*/
-
-            $this->clearState($jid, $explodedFrom['resource']);
-
-            $wrapper = Wrapper::getInstance();
-            $wrapper->iterate('paused', [
-                $jid,
-                array_key_exists($jid, $this->_composing)
-                    ? $this->_composing[$jid]
-                    : null
-            ]);
-        //}
+        $wrapper = Wrapper::getInstance();
+        $wrapper->iterate('paused', [
+            $jid,
+            array_key_exists($jid, $this->_composing)
+                ? $this->_composing[$jid]
+                : null
+        ]);
     }
 
     private function resolveJid(string $from, string $to)
