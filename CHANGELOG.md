@@ -22,6 +22,7 @@ v0.14.1 (trunk)
  * Add support for embeded images in Forms (for CAPTCHA)
  * Chat bubbles a bit more compact
  * Display single emojis as small stickers
+ * Display chat states in MUC, handle the chat states with a new ChatStates class
 
 v0.14
 ---------------------------

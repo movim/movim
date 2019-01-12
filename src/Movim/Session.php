@@ -28,6 +28,7 @@ class Session
         if (array_key_exists($varname, $this->values)) {
             return unserialize(base64_decode($this->values[$varname]));
         }
+
         return false;
     }
 

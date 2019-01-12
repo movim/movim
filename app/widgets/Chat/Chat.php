@@ -16,6 +16,8 @@ use Respect\Validation\Validator;
 use Illuminate\Database\Capsule\Manager as DB;
 
 use Movim\Picture;
+use Movim\Session;
+use Movim\ChatStates;
 
 include_once WIDGETS_PATH.'ContactActions/ContactActions.php';
 
@@ -38,7 +40,6 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('mam_get_handle', 'onMAMRetrieved', 'chat');
         $this->registerEvent('composing', 'onComposing', 'chat');
         $this->registerEvent('paused', 'onPaused', 'chat');
-        $this->registerEvent('gone', 'onGone', 'chat');
         $this->registerEvent('subject', 'onConferenceSubject', 'chat');
         $this->registerEvent('muc_setsubject_handle', 'onConferenceSubject', 'chat');
         $this->registerEvent('muc_getconfig_handle', 'onRoomConfig', 'chat');
@@ -84,6 +85,7 @@ class Chat extends \Movim\Widget\Base
     {
         $message = $packet->content;
         $from = null;
+        $chatStates = ChatStates::getInstance();
 
         if ($message->isEmpty()) return;
 
@@ -106,6 +108,8 @@ class Chat extends \Movim\Widget\Base
             && !$message->isOTR()
             && $message->type != 'groupchat'
             && !$message->oldid) {
+                $chatStates->clearState($from);
+
                 Notification::append(
                     'chat|'.$from,
                     $roster ? $roster->truename : $contact->truename,
@@ -119,6 +123,7 @@ class Chat extends \Movim\Widget\Base
             elseif ($message->type == 'groupchat'
                    && $message->quoted
                    && !$receipt) {
+
                 $conference = $this->user->session
                                    ->conferences()->where('conference', $from)
                                    ->first();
@@ -131,9 +136,11 @@ class Chat extends \Movim\Widget\Base
                     $message->resource.': '.$message->body,
                     false,
                     4);
+            } elseif ($message->type == 'groupchat') {
+                $chatStates->clearState($from, $message->resource);
             }
 
-            $this->rpc('MovimTpl.fill', '#' . cleanupId($from.'_state'), $contact->jid);
+            $this->onPaused($chatStates->getState($from));
         } else {
             // If the message is from me we reset the notif counter
             $n = new Notification;
@@ -151,19 +158,24 @@ class Chat extends \Movim\Widget\Base
         $this->ajaxGet($to);
     }
 
-    public function onComposing($array)
+    public function onComposing(array $array)
     {
-        $this->setState($array, $this->__('message.composing'));
+        $this->setState(
+            $array[0],
+            is_array($array[1]) && !empty($array[1])
+                ? '…' . implode(', ', array_keys($array[1]))
+                : $this->__('message.composing')
+        );
     }
 
-    public function onPaused($array)
+    public function onPaused(array $array)
     {
-        $this->setState($array, $this->__('message.paused'));
-    }
-
-    public function onGone($array)
-    {
-        $this->setState($array, $this->__('message.gone'));
+        $this->setState(
+            $array[0],
+            is_array($array[1]) && !empty($array[1])
+                ? '…' . implode(', ', array_keys($array[1]))
+                : ''
+        );
     }
 
     public function onConferenceSubject($packet)
@@ -206,18 +218,9 @@ class Chat extends \Movim\Widget\Base
         Notification::append(false, $this->__('chatroom.config_saved'));
     }
 
-    private function setState($array, $message)
+    private function setState(string $jid, string $message)
     {
-        list($from, $to) = $array;
-
-        $jid = ($from == $this->user->id) ? $to : $from;
-
-        $view = $this->tpl();
-        $view->assign('message', $message);
-
-        $html = $view->draw('_chat_state');
-
-        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_state'), $html);
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_state'), $message);
     }
 
     public function ajaxInit()
@@ -445,11 +448,16 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    public function ajaxSendComposing($to)
+    public function ajaxSendComposing($to, $muc = false)
     {
         if (!$this->validateJid($to)) return;
 
         $mc = new Composing;
+
+        if ($muc) {
+            $mc->setMuc();
+        }
+
         $mc->setTo($to)->request();
     }
 
@@ -459,11 +467,16 @@ class Chat extends \Movim\Widget\Base
      * @param string $to
      * @return void
      */
-    public function ajaxSendPaused($to)
+    public function ajaxSendPaused($to, $muc = false)
     {
         if (!$this->validateJid($to)) return;
 
         $mp = new Paused;
+
+        if ($muc) {
+            $mp->setMuc();
+        }
+
         $mp->setTo($to)->request();
     }
 

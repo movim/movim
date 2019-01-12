@@ -2,11 +2,15 @@
 
 namespace Moxl\Xec\Payload;
 
+use Movim\ChatStates;
+
 class Message extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $jid = explode('/',(string)$stanza->attributes()->from);
+        $from = (string)$stanza->attributes()->type == 'groupchat'
+            ? (string)$stanza->attributes()->from
+            : current(explode('/',(string)$stanza->attributes()->from));
         $to = current(explode('/',(string)$stanza->attributes()->to));
 
         if ($stanza->confirm
@@ -15,15 +19,11 @@ class Message extends Payload
         }
 
         if ($stanza->composing) {
-            $this->event('composing', [$jid[0], $to]);
+            (ChatStates::getInstance())->composing($from, $to);
         }
 
         if ($stanza->paused) {
-            $this->event('paused', [$jid[0], $to]);
-        }
-
-        if ($stanza->gone) {
-            $this->event('gone', [$jid[0], $to]);
+            (ChatStates::getInstance())->paused($from, $to);
         }
 
         $message = \App\Message::findByStanza($stanza);

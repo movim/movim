@@ -207,10 +207,10 @@ var Chat = {
                 Chat.sendMessage();
 
                 return false;
-            } else if (!Boolean(this.dataset.muc)) {
+            } else {
                 if (Chat.state == 0 || Chat.state == 2) {
                     Chat.state = 1;
-                    Chat_ajaxSendComposing(this.dataset.jid);
+                    Chat_ajaxSendComposing(this.dataset.jid, Boolean(this.dataset.muc));
                     Chat.since = new Date().getTime();
                 }
             }
@@ -223,11 +223,10 @@ var Chat = {
                 var textarea = document.querySelector('#chat_textarea');
 
                 if (textarea
-                && !Boolean(textarea.dataset.muc)
                 && Chat.state == 1
                 && Chat.since + 5000 < new Date().getTime()) {
                     Chat.state = 2;
-                    Chat_ajaxSendPaused(textarea.dataset.jid);
+                    Chat_ajaxSendPaused(textarea.dataset.jid, Boolean(textarea.dataset.muc));
                 }
             },5000);
 

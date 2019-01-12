@@ -61,25 +61,18 @@ class Chats extends Base
         }
     }
 
-    public function onComposing($array)
+    public function onComposing(array $array)
     {
-        $this->setState($array, $this->__('chats.composing'));
+        $this->setState($array[0], $this->__('chats.composing'));
     }
 
-    public function onPaused($array)
+    public function onPaused(array $array)
     {
-        $this->setState($array, $this->__('chats.paused'));
+        $this->setState($array[0]);
     }
 
-    private function setState($array, $message)
+    private function setState(string $jid, $message = null)
     {
-        list($from, $to) = $array;
-        if ($from == $this->user->id) {
-            $jid = $to;
-        } else {
-            $jid = $from;
-        }
-
         $this->rpc(
             'MovimTpl.replace', '#' . cleanupId($jid.'_chat_item'),
             $this->prepareChat(
@@ -89,6 +82,7 @@ class Chats extends Base
                 $message
             )
         );
+
         $this->rpc('Chats.refresh');
     }
 

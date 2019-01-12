@@ -56,9 +56,13 @@
             {if="$conference && $conference->name"}
                 <p class="line" title="{$room}">
                     {$conference->name}
+                    <span class="second" id="{$jid|cleanupId}-state"></span>
                 </p>
             {else}
-                <p class="line">{$room}</p>
+                <p class="line">
+                    {$room}
+                    <span class="second" id="{$jid|cleanupId}-state"></span>
+                </p>
             {/if}
 
             {if="$conference && !$conference->connected"}
@@ -74,7 +78,7 @@
                     {$conference->subject}
                 </p>
             {else}
-                <p class="line">
+                <p class="line" id="{$jid|cleanupId}-state">
                     {if="$conference->info && !$conference->info->mucsemianonymous"}
                         <span title="{$c->__('room.public_muc_text')}">
                             {$c->__('room.public_muc')} <i class="material-icons">wifi_tethering</i>
@@ -168,8 +172,9 @@
                 {else}
                     {$contact->truename}
                 {/if}
+                <span class="second" id="{$jid|cleanupId}-state"></span>
             </p>
-            <p class="line" id="{$jid|cleanupId}-state">{$contact->jid}</p>
+            <p class="line">{$contact->jid}</p>
         </li>
     </ul>
     <ul class="list context_menu active">
