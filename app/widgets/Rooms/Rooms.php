@@ -34,6 +34,8 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errorconflict', 'onConflict');
         $this->registerEvent('presence_muc_errorregistrationrequired', 'onRegistrationRequired');
         $this->registerEvent('presence_muc_errorremoteservernotfound', 'onRemoteServerNotFound');
+        $this->registerEvent('composing', 'onComposing', 'chat');
+        $this->registerEvent('paused', 'onPaused', 'chat');
     }
 
     public function onMessage($packet)
@@ -64,6 +66,17 @@ class Rooms extends Base
     public function onDiscoGatewayError($packet)
     {
         $this->ajaxResetGatewayRooms();
+    }
+
+    public function onComposing(array $array)
+    {
+        $view = $this->tpl();
+        $this->setState($array[0], $view->draw('_rooms_compose'));
+    }
+
+    public function onPaused(array $array)
+    {
+        $this->setState($array[0], '');
     }
 
     public function onAvatarSet($packet)
@@ -115,6 +128,11 @@ class Rooms extends Base
     {
         $this->refreshRooms();
         Notification::append(null, $this->__('chatrooms.disconnected'));
+    }
+
+    private function setState(string $room, $message = null)
+    {
+        $this->rpc('MovimTpl.fill', '#' . cleanupId($room.'_rooms_state'), $message);
     }
 
     private function refreshRooms($edit = false)

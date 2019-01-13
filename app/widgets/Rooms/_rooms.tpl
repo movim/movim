@@ -76,6 +76,7 @@
                 <p class="line"
                     {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
                 {/if}
+                    <span id="{$value->conference|cleanupId}-rooms-state"></span>
                     {if="$connected"}
                         {$count = $value->presences()->count()}
                         <span title="{$c->__('communitydata.sub', $count)}"

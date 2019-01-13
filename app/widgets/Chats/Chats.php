@@ -74,7 +74,10 @@ class Chats extends Base
 
     private function setState(string $jid, $message = null)
     {
-        $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_chat_state'), $message);
+        $chats = \App\Cache::c('chats');
+        if (is_array($chats) &&  array_key_exists($jid, $chats)) {
+            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_chat_state'), $message);
+        }
     }
 
     public function ajaxGet()

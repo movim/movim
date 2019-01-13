@@ -142,7 +142,8 @@ main > header {
     border-color: var(--movim-accent);
 }
 
-header.fixed ul.list li > p:nth-last-of-type(2) + p,
+body:not(.nightmode) header.fixed ul.list li > p:nth-last-of-type(3) + p,
+body:not(.nightmode) header.fixed ul.list li > p:nth-last-of-type(2) + p,
 .snackbar ul.list li > p,
 .snackbar ul.list li > p:nth-last-of-type(2) + p,
 main > header ul.list li > p:nth-last-of-type(2) + p,
