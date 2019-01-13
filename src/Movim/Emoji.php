@@ -26,7 +26,7 @@ class Emoji
     protected static $instance = null;
     private $_emoji;
     private $_string;
-    private $_emojisCount = 0;
+    private $_lastEmoji = null;
     private $_lastEmojiURL = null;
     private $_regex = [
         // Some easy cases first
@@ -68,6 +68,8 @@ class Emoji
         $this->_string = $string;
 
         return preg_replace_callback($this->_regex, function ($matches) {
+            $this->_lastEmoji = $matches[0];
+
             $astext = implode('-',
                 array_map('dechex',
                     unpack('N*', mb_convert_encoding($matches[0], 'UCS-4BE', 'UTF-8'))
@@ -78,7 +80,6 @@ class Emoji
                 return $matches[0];
             }
 
-            $this->_emojisCount++;
             $this->_lastEmojiURL = BASE_URI . 'themes/' .
                     \App\Configuration::get()->theme .
                     '/img/emojis/svg/' . $astext . '.svg';
@@ -96,12 +97,7 @@ class Emoji
 
     public function isSingleEmoji(): bool
     {
-        // grapheme_strlen is more accurate and takes into account joined emojis
-        $stringLength = extension_loaded('intl')
-            ? grapheme_strlen($this->_string)
-            : mb_strlen($this->_string);
-
-        return $this->_emojisCount === 1 && $stringLength === 1;
+        return $this->_string === $this->_lastEmoji;
     }
 
     public function getLastSingleEmojiURL()
