@@ -16,6 +16,7 @@ use Illuminate\Support\Collection;
 use Movim\Widget\Base;
 use Movim\Picture;
 use Movim\Session;
+use Movim\ChatStates;
 
 class Rooms extends Base
 {
@@ -54,6 +55,10 @@ class Rooms extends Base
                 null
             );
         }
+
+        $chatStates = ChatStates::getInstance();
+        $chatStates->clearState($message->jidfrom, $message->resource);
+        $this->onPaused($chatStates->getState($message->jidfrom));
     }
 
     public function onDiscoGateway($packet)
