@@ -119,6 +119,7 @@ span.icon.small.bubble i {
 }
 
 span.icon span.counter,
+span.icon.composing:after,
 span.icon.status:after {
     content: '';
     display: block;
@@ -143,6 +144,7 @@ span.icon span.counter:empty {
     display: none;
 }
 
+span.icon.composing:after,
 span.icon span.counter {
     z-index: 1;
     font-size: 1.5rem;
@@ -153,4 +155,16 @@ span.icon span.counter {
     padding: 0 0.25rem;
     height: auto;
     box-shadow: -0.1rem -0.1rem 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+/* Composing */
+
+span.icon.composing:after {
+    content: '…';
+    line-height: 1rem;
+    z-index: 1;
+    font-size: 2rem;
+    height: 2rem;
+    font-weight: bold;
+    animation: fadein 0.2s, fadetext 1.5s infinite;
 }

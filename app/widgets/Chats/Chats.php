@@ -63,20 +63,24 @@ class Chats extends Base
 
     public function onComposing(array $array)
     {
-        $view = $this->tpl();
-        $this->setState($array[0], $view->draw('_chats_compose'));
+        $this->setState($array[0], true);
     }
 
     public function onPaused(array $array)
     {
-        $this->setState($array[0], '');
+        $this->setState($array[0], false);
     }
 
-    private function setState(string $jid, $message = null)
+    private function setState(string $jid, bool $composing)
     {
         $chats = \App\Cache::c('chats');
         if (is_array($chats) &&  array_key_exists($jid, $chats)) {
-            $this->rpc('MovimTpl.fill', '#' . cleanupId($jid.'_chat_state'), $message);
+            $this->rpc(
+                $composing
+                    ? 'MovimUtils.addClass'
+                    : 'MovimUtils.removeClass',
+                '#' . cleanupId($jid.'_chat_item') . ' span.primary',
+                'composing');
         }
     }
 

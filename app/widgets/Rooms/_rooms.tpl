@@ -38,13 +38,15 @@
                     <span class="primary
                         {if="!$connected"}disabled small{/if} icon bubble color
                         {$value->name|stringToColor}"
+                        id="{$value->conference|cleanupId}-rooms-primary"
                         style="background-image: url({$url});">
                         <span data-key="chat|{$value->conference}" class="counter"></span>
                     </span>
                 {else}
                     <span class="primary
                         {if="!$connected"}disabled small{/if} icon bubble color
-                        {$value->name|stringToColor}">
+                        {$value->name|stringToColor}"
+                        id="{$value->conference|cleanupId}-rooms-primary">
                         <span data-key="chat|{$value->conference}" class="counter"></span>
                         {if="$connected"}
                             {$value->name|firstLetterCapitalize}
@@ -76,7 +78,6 @@
                 <p class="line"
                     {if="isset($info) && $info->description"}title="{$info->description}"{/if}>
                 {/if}
-                    <span id="{$value->conference|cleanupId}-rooms-state"></span>
                     {if="$connected"}
                         {$count = $value->presences()->count()}
                         <span title="{$c->__('communitydata.sub', $count)}"

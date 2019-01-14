@@ -75,13 +75,12 @@ class Rooms extends Base
 
     public function onComposing(array $array)
     {
-        $view = $this->tpl();
-        $this->setState($array[0], $view->draw('_rooms_compose'));
+        $this->setState($array[0], true);
     }
 
     public function onPaused(array $array)
     {
-        $this->setState($array[0], '');
+        $this->setState($array[0], false);
     }
 
     public function onAvatarSet($packet)
@@ -135,9 +134,14 @@ class Rooms extends Base
         Notification::append(null, $this->__('chatrooms.disconnected'));
     }
 
-    private function setState(string $room, $message = null)
+    private function setState(string $room, bool $composing)
     {
-        $this->rpc('MovimTpl.fill', '#' . cleanupId($room.'_rooms_state'), $message);
+        $this->rpc(
+            $composing
+                ? 'MovimUtils.addClass'
+                : 'MovimUtils.removeClass',
+            '#' . cleanupId($room.'_rooms_primary'),
+            'composing');
     }
 
     private function refreshRooms($edit = false)

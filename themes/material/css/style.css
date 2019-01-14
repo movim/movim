@@ -413,6 +413,11 @@ div#spinner{
     to   { opacity: 1; }
 }
 
+@keyframes fadetext {
+    0%,100% { color: transparent; }
+    25%,75% { color: inherit; }
+}
+
 @keyframes spin {
     100% { transform:rotate(360deg); }
 }
