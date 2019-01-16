@@ -173,6 +173,11 @@ class Rooms extends Base
         $view->assign('info', \App\Info::where('server', $room)
                                        ->where('category', 'conference')
                                        ->first());
+        $view->assign('mucservice', \App\Info::where('server', 'like', '%'. $this->user->session->host)
+                                             ->where('server', 'not like', '%@%')
+                                             ->where('category', 'conference')
+                                             ->where('type', 'text')
+                                             ->first());
         $view->assign('id', $room);
         $view->assign('conference',
             $this->user->session->conferences()

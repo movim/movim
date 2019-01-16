@@ -32,8 +32,8 @@
                     value="{$id}" disabled
                 {/if}
                 name="jid"
-                {if="isset($info)"}
-                    placeholder="chatroom@{$info->server}"
+                {if="isset($mucservice)"}
+                    placeholder="chatroom@{$mucservice->server}"
                 {else}
                     placeholder="chatroom@server.com"
                 {/if}
