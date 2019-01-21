@@ -1,4 +1,74 @@
 <div class="tabelem" title="{$c->__('page.help')}" id="help_widget">
+    <ul class="list divided middle">
+        <li class="subheader">
+            <p>{$c->__('help.faq')}</p>
+        </li>
+	<li class="block">
+            <span class="primary icon gray">
+                <i class="material-icons">help_outline</i>
+            </span>
+	    <p>{$c->__('help.faq1')}</p>
+	    <p class="all">
+		{$c->__('help.faa1_1')}<br/>
+		{$c->__('help.faa1_2')}: https://{$info->server}/?blog/<b>{$c->__('help.username')}</b>@{$info->server}<br/>
+	    </p>
+	</li>
+	<li class="block">
+            <span class="primary icon gray">
+                <i class="material-icons">help_outline</i>
+            </span>
+	    <p>{$c->__('help.faq2')}</p>
+	    <p class="all">
+		{$c->__('help.faa2_1')}<br/>
+		{$c->__('help.faa2_2')}
+	    </p>
+	</li>
+	<li class="block">
+            <span class="primary icon gray">
+                <i class="material-icons">help_outline</i>
+            </span>
+	    <p>{$c->__('help.faq3')}</p>
+	    <p class="all">
+		{$c->__('help.faa3')} <a href="https://search.jabber.network">search.jabber.network</a>
+	    </p>
+	</li>
+	<li class="block">
+            <span class="primary icon gray">
+                <i class="material-icons">help_outline</i>
+            </span>
+	    <p>{$c->__('help.faq4')}</p>
+	    <p class="all">
+		{$c->__('help.faa4_1')} <b>pubsub.{$info->server}</b> {$c->__('help.faa4_2')}, <b>pubsub.movim.eu</b>, {$c->__('help.faa4_3')} <b>news.movim.eu</b>.
+	    </p>
+	</li>
+	<li class="block">
+            <span class="primary icon gray">
+                <i class="material-icons">help_outline</i>
+            </span>
+	    <p>{$c->__('help.faq5')}</p>
+	    <p class="all">
+		{$c->__('help.faa5')}
+	    </p>
+	</li>
+    </ul>
+    <hr />
+    <ul class="list divided middle">
+        <li class="subheader">
+            <p>{$c->__('page.help')}</p>
+        </li>
+        <li class="block">
+            <span class="primary icon gray">
+                <i class="material-icons">comment</i>
+            </span>
+            <p>{$c->__('chatroom.question')}</p>
+            <p class="all">
+                <a href="#" onclick="Help_ajaxAddChatroom()">
+                    {$c->__('chatroom.button')} movim@conference.movim.eu
+                </a>
+            </p>
+        </li>
+    </ul>
+    <hr />
     <ul class="list thick block divided">
         <li class="subheader">
             <p>{$c->__('apps.question')}</p>
@@ -85,21 +155,4 @@
             {/loop}
         </ul>
     {/if}
-    <hr />
-    <ul class="list divided middle">
-        <li class="subheader">
-            <p>{$c->__('page.help')}</p>
-        </li>
-        <li class="block">
-            <span class="primary icon gray">
-                <i class="material-icons">comment</i>
-            </span>
-            <p>{$c->__('chatroom.question')}</p>
-            <p class="all">
-                <a href="#" onclick="Help_ajaxAddChatroom()">
-                    {$c->__('chatroom.button')} movim@conference.movim.eu
-                </a>
-            </p>
-        </li>
-    </ul>
 </div>
