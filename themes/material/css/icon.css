@@ -46,10 +46,6 @@ img.icon.thumb {
 }
 
 @media screen and (min-width: 800px) {
-    img.icon.thumb {
-        min-height: 5rem;
-    }
-
     img.icon.thumb:before {
         position: absolute;
         width: 100%;
