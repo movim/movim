@@ -6,6 +6,8 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action\Pubsub\Errors;
 
+use Movim\Picture;
+
 class GetItems extends Errors
 {
     protected $_to;
@@ -63,6 +65,22 @@ class GetItems extends Errors
                     $p->save();
 
                     array_push($ids, $p->nodeid);
+                }
+            } elseif (isset($item->metadata)
+            && (string)$item->metadata->attributes()->xmlns == 'urn:xmpp:avatar:metadata'
+            && isset($item->metadata->info->attributes()->url)) {
+                $i = \App\Info::firstOrNew([
+                    'server' => $this->_to,
+                    'node' => $this->_node
+                ]);
+
+                if ($i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
+                    $p = new Picture;
+                    $p->fromURL((string)$item->metadata->info->attributes()->url);
+                    $p->set((string)$item->metadata->info->attributes()->id);
+
+                    $i->avatarhash = (string)$item->metadata->info->attributes()->id;
+                    $i->save();
                 }
             }
         }

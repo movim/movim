@@ -6,6 +6,8 @@ use Moxl\Xec\Action;
 use Moxl\Stanza\Pubsub;
 use Moxl\Xec\Action\Pubsub\Errors;
 
+use Movim\Picture;
+
 class GetItem extends Errors
 {
     protected $_to;
@@ -26,7 +28,7 @@ class GetItem extends Errors
         if ($stanza->pubsub->items->item) {
             foreach ($stanza->pubsub->items->item as $item) {
                 if (isset($item->entry)
-                &&(string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
+                && (string)$item->entry->attributes()->xmlns == 'http://www.w3.org/2005/Atom') {
                     $p = \App\Post::firstOrNew([
                         'server' => $this->_to,
                         'node' => $this->_node,
@@ -52,6 +54,29 @@ class GetItem extends Errors
 
                     $this->pack($p);
                     $this->deliver();
+                } elseif (isset($item->metadata)
+                && (string)$item->metadata->attributes()->xmlns == 'urn:xmpp:avatar:metadata'
+                && isset($item->metadata->info->attributes()->url)) {
+                    $i = \App\Info::firstOrNew([
+                        'server' => $this->_to,
+                        'node' => $this->_node
+                    ]);
+
+                    if ($i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
+                        $p = new Picture;
+                        $p->fromURL((string)$item->metadata->info->attributes()->url);
+                        $p->set((string)$item->metadata->info->attributes()->id);
+
+                        $i->avatarhash = (string)$item->metadata->info->attributes()->id;
+                        $i->save();
+
+                        $this->method('avatar');
+                        $this->pack([
+                            'server' => $this->_to,
+                            'node' => $this->_node
+                        ]);
+                        $this->deliver();
+                    }
                 }
             }
         } else {

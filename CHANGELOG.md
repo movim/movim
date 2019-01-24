@@ -23,6 +23,7 @@ v0.14.1 (trunk)
  * Chat bubbles a bit more compact
  * Display single emojis as small stickers
  * Display chat states in MUC, handle the chat states with a new ChatStates class
+ * Allow setting Avatars on Communities by combining XEP-0084 (metadata + url) and XEP-0060
 
 v0.14
 ---------------------------

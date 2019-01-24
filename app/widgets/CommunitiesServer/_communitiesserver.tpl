@@ -45,9 +45,10 @@
                 </span>
             {/if}
 
-            {if="$value->logo"}
+            {$url = $value->getPhoto('m')}
+            {if="$url"}
                 <span class="primary icon bubble">
-                    <img src="{$value->getLogo(50)}">
+                    <img src="{$url}"/>
                 </span>
             {else}
                 <span class="primary icon bubble color {$value->node|stringToColor}">

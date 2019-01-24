@@ -17,29 +17,29 @@ class Avatar
         \Moxl\API::request($xml);
     }
 
-    static function set($data)
+    static function set($data, $to = false, $node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', 'urn:xmpp:avatar:data');
+        $publish->setAttribute('node', $node ? $node : 'urn:xmpp:avatar:data');
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        $item->setAttribute('id', sha1(base64_decode($data)));
+        $item->setAttribute('id', $node ? 'urn:xmpp:avatar:data' : sha1(base64_decode($data)));
         $publish->appendChild($item);
 
         $data = $dom->createElement('data', $data);
         $data->setAttribute('xmlns', 'urn:xmpp:avatar:data');
         $item->appendChild($data);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 
-    static function setMetadata($data)
+    static function setMetadata($data, $url = false, $to = false, $node = false)
     {
         $decoded = base64_decode($data);
 
@@ -48,11 +48,11 @@ class Avatar
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
 
         $publish = $dom->createElement('publish');
-        $publish->setAttribute('node', 'urn:xmpp:avatar:metadata');
+        $publish->setAttribute('node', $node ? $node : 'urn:xmpp:avatar:metadata');
         $pubsub->appendChild($publish);
 
         $item = $dom->createElement('item');
-        $item->setAttribute('id', sha1($decoded));
+        $item->setAttribute('id', $node ? 'urn:xmpp:avatar:metadata' : sha1($decoded));
         $publish->appendChild($item);
 
         $metadata = $dom->createElement('metadata');
@@ -60,6 +60,11 @@ class Avatar
         $item->appendChild($metadata);
 
         $info = $dom->createElement('info');
+
+        if ($url) {
+            $info->setAttribute('url', $url);
+        }
+
         $info->setAttribute('height', '410');
         $info->setAttribute('width', '410');
         $info->setAttribute('type', 'image/jpeg');
@@ -67,7 +72,7 @@ class Avatar
         $info->setAttribute('bytes', strlen($decoded));
         $metadata->appendChild($info);
 
-        $xml = \Moxl\API::iqWrapper($pubsub, false, 'set');
+        $xml = \Moxl\API::iqWrapper($pubsub, $to, 'set');
         \Moxl\API::request($xml);
     }
 }

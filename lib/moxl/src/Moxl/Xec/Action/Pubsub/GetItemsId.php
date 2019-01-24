@@ -11,6 +11,10 @@ class GetItemsId extends Errors
 {
     protected $_to;
     protected $_node;
+    private $_forbidenIds = [
+        'urn:xmpp:avatar:data',
+        'urn:xmpp:avatar:metadata'
+    ];
 
     public function request()
     {
@@ -28,7 +32,8 @@ class GetItemsId extends Errors
                           ->where('node', $this->_node)
                           ->where('nodeid', $id)
                           ->count() > 0
-            && !empty($id)) {
+            && !empty($id)
+            && !in_array($id, $this->_forbidenIds)) {
                 $gi = new GetItem;
                 $gi->setTo($this->_to)
                    ->setNode($this->_node)

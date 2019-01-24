@@ -1,10 +1,11 @@
 <br />
 {if="$info"}
     <ul class="list block middle flex">
-        {if="$info->logo"}
+        {$url = $info->getPhoto('l')}
+        {if="$url"}
             <li class="block large">
                 <p class="center">
-                    <img src="{$info->getLogo()}" style="max-width: 100%"/>
+                    <img src="{$url}" style="max-width: 100%"/>
                 </p>
             </li>
         {/if}
