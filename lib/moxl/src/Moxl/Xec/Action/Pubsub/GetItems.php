@@ -69,12 +69,11 @@ class GetItems extends Errors
             } elseif (isset($item->metadata)
             && (string)$item->metadata->attributes()->xmlns == 'urn:xmpp:avatar:metadata'
             && isset($item->metadata->info->attributes()->url)) {
-                $i = \App\Info::firstOrNew([
-                    'server' => $this->_to,
-                    'node' => $this->_node
-                ]);
+                $i = \App\Info::where('server', $this->_to)
+                ->where('node', $this->_node)
+                ->first();
 
-                if ($i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
+                if ($i && $i->avatarhash !== (string)$item->metadata->info->attributes()->id) {
                     $p = new Picture;
                     $p->fromURL((string)$item->metadata->info->attributes()->url);
                     $p->set((string)$item->metadata->info->attributes()->id);

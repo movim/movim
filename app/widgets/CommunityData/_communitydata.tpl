@@ -1,14 +1,18 @@
 <br />
+
 {if="$info"}
-    <ul class="list block middle flex">
-        {$url = $info->getPhoto('l')}
-        {if="$url"}
+    {$url = $info->getPhoto('l')}
+    {if="$url"}
+        <ul class="list">
             <li class="block large">
                 <p class="center">
                     <img src="{$url}" style="max-width: 100%"/>
                 </p>
             </li>
-        {/if}
+        </ul>
+    {/if}
+
+    <ul class="list block middle flex">
         <li class="block large">
             <p class="normal center line" title="{$info->name}">{$info->name}</p>
             {if="$info->description != null && trim($info->description) != ''"}
