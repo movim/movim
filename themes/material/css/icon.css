@@ -88,7 +88,7 @@ span.icon.bubble {
     -moz-user-select: none;
 }
 
-span.icon.bubble img {
+span.icon.bubble img:not(.emoji) {
     border-radius: 5rem;
 }
 
