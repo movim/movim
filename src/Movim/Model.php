@@ -40,6 +40,20 @@ class Model extends EloquentModel
     }
 
     /**
+     * Catch the save Exceptions to log them properly
+     *
+     * @param array $options
+     */
+    public function save(array $options = [])
+    {
+        try {
+            parent::save($options);
+        } catch (\Exception $e) {
+            (new Bootstrap)->exceptionHandler($e);
+        }
+    }
+
+    /**
      * Execute a query for a single record by ID.
      *
      * @param  array $ids Array of keys, like [column => value].
