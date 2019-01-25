@@ -105,6 +105,10 @@ ul.list li span.icon.small {
     font-size: 1.5rem;
 }
 
+ul.list li span.icon.small img.emoji {
+    width: 1.75rem;
+}
+
 ul.list li span.icon.small:not(.bubble) i {
     padding: 1rem 0;
 }
