@@ -1,5 +1,5 @@
 .contact_data li:first-child img {
     height: 25rem;
-    border-radius: 0.25rem;
     margin-left: 5rem;
+    display: inline-block;
 }

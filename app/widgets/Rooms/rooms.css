@@ -13,9 +13,3 @@
 #gateway_rooms:not(:empty) + div {
     display: none;
 }
-
-form[name=avatarroom] img {
-    margin: 0 auto;
-    display: block;
-    max-width: 100%;
-}

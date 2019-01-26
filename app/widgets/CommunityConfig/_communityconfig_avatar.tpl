@@ -1,6 +1,10 @@
 <section class="scroll">
     <form name="avatarcommunity">
-        <img src="{$info->getPhoto('o')}">
+        <img class="avatar" src="{$info->getPhoto('o')}">
+        <div class="placeholder">
+            <i class="material-icons">image</i>
+            <h1>{$c->__('avatar.missing')}</h1>
+        </div>
         <input type="hidden" name="photobin"/>
     </form>
     <ul class="list thick divided">

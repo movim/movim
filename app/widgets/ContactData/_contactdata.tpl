@@ -8,7 +8,7 @@
             <i class="material-icons">more_horiz</i>
         </span>
         <p class="center">
-            <img src="{$url}">
+            <img class="avatar" src="{$url}">
         </p>
     </li>
 </ul>

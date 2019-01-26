@@ -6,7 +6,7 @@
         <ul class="list">
             <li class="block large">
                 <p class="center">
-                    <img src="{$url}" style="max-width: 100%"/>
+                    <img class="avatar" src="{$url}"/>
                 </p>
             </li>
         </ul>
