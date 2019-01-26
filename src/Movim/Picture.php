@@ -83,13 +83,22 @@ class Picture
     }
 
     /**
+     * @desc Get the original picture URL, without timestamp
+     * @param $key The key of the picture
+     */
+    public function getOriginal($key)
+    {
+        return $this->get($key, false, false, DEFAULT_PICTURE_FORMAT, true);
+    }
+
+    /**
      * @desc Get a picture of the current size
      * @param $key The key of the picture
      * @param $width The width requested
      * @param $height The height requested
      * @return The url of the picture
      */
-    public function get($key, $width = false, $height = false, $format = DEFAULT_PICTURE_FORMAT)
+    public function get($key, $width = false, $height = false, $format = DEFAULT_PICTURE_FORMAT, bool $noTime = false)
     {
         if (!in_array($format, array_keys($this->_formats))) {
             $format = DEFAULT_PICTURE_FORMAT;
@@ -104,7 +113,8 @@ class Picture
             if (file_exists($original)) {
                 $this->fromPath($original);
                 return urilize(
-                    $this->_folder . md5($this->_key) . $this->_formats[$format]
+                    $this->_folder . md5($this->_key) . $this->_formats[$format],
+                    $noTime
                 );
             }
         }
@@ -113,7 +123,7 @@ class Picture
         if (file_exists(
             $this->_path.md5($this->_key) .
             '_' . $width.$this->_formats[$format]
-        )
+            )
         ) {
             $this->fromPath(
                 $this->_path.md5($this->_key) .
@@ -122,16 +132,19 @@ class Picture
 
             return urilize(
                 $this->_folder.md5($this->_key) .
-                '_' . $width.$this->_formats[$format]
+                '_' . $width.$this->_formats[$format],
+                $noTime
             );
         }
+
         if (file_exists($original)) {
             $this->fromPath($original);
             $this->_createThumbnail($width, $height);
 
             return urilize(
                 $this->_folder.md5($this->_key) .
-                '_' . $width . $this->_formats[$format]
+                '_' . $width . $this->_formats[$format],
+                $noTime
             );
         }
     }

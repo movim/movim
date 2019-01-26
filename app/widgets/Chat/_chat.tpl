@@ -28,7 +28,9 @@
                 <span class="primary icon bubble color active {$conference->name|stringToColor}
                     {if="!$conference->connected"}disabled{/if}"
                     onclick="Rooms_ajaxList('{$jid|echapJS}')">
-                    {$conference->name|firstLetterCapitalize}
+                    {autoescape="off"}
+                        {$conference->name|firstLetterCapitalize|addEmojis}
+                    {/autoescape}
                 </span>
             {/if}
 

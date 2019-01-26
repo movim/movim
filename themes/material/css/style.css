@@ -295,6 +295,20 @@ hr:not(.clear) {
     min-height: 80%;
 }
 
+/* Avatar */
+
+img.avatar {
+    margin: 0 auto;
+    max-height: 34rem;
+    border-radius: 0.25rem;
+    display: block;
+    max-width: 100%;
+}
+
+img.avatar:not([src=""]) + .placeholder {
+    display: none;
+}
+
 /* Placeholder */
 
 .placeholder {

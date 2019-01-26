@@ -5,7 +5,7 @@
     {if="!empty($embed->images)"}
         <span class="primary icon thumb active color gray"
             onclick="PublishBrief_ajaxEmbedChooseImage('{$embed->url}')"
-            style="background-image: url({$embed->images[$imagenumber]['url']})"
+            style="background-image: url({$embed->images[$imagenumber]['url']|protectPicture})"
             {if="$imagenumber != 'none'"}
                 title="{$embed->images[$imagenumber]['width']} x {$embed->images[$imagenumber]['height']} - {$embed->images[$imagenumber]['size']|sizeToCleanSize}"
             {/if}

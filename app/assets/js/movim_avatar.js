@@ -3,6 +3,7 @@ var MovimAvatar = {
         var f = files[0];
         if (!f.type.match(/image.*/)) {
           console.log("Not a picture !");
+          MovimAvatar.clear(formname);
         } else {
             var reader = new FileReader();
             reader.readAsDataURL(f);
@@ -14,8 +15,11 @@ var MovimAvatar = {
             };
         };
     },
+    clear : function(formname) {
+        document.querySelector('form[name=' + formname + '] img').src = '';
+        document.querySelector('form[name=' + formname + '] input[name="photobin"]').value = '';
+    },
     preview : function(src, orientation, formname) {
-        console.log(formname);
         var canvas = document.createElement('canvas');
         width = height = canvas.width = canvas.height = 350;
 

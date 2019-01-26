@@ -1,18 +1,21 @@
 <br />
 
 {$url = $contact->getPhoto('l')}
+{if="$url"}
+<ul class="list middle">
+    <li>
+        <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id}')">
+            <i class="material-icons">more_horiz</i>
+        </span>
+        <p class="center">
+            <img class="avatar" src="{$url}">
+        </p>
+    </li>
+</ul>
+{/if}
+
 <div class="block">
     <ul class="list middle">
-        {if="$url"}
-            <li>
-                <span class="control active icon gray" onclick="ContactActions_ajaxGetDrawer('{$contact->id}')">
-                    <i class="material-icons">more_horiz</i>
-                </span>
-                <p class="center">
-                    <img src="{$url}">
-                </p>
-            </li>
-        {/if}
         <li>
             <p class="normal center	">
                 {$contact->truename}

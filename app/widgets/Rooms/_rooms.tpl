@@ -48,11 +48,13 @@
                         {$value->name|stringToColor}"
                         id="{$value->conference|cleanupId}-rooms-primary">
                         <span data-key="chat|{$value->conference}" class="counter"></span>
-                        {if="$connected"}
-                            {$value->name|firstLetterCapitalize}
-                        {else}
-                        {$value->name|firstLetterCapitalize:true}
-                        {/if}
+                        {autoescape="off"}
+                            {if="$connected"}
+                                {$value->name|firstLetterCapitalize|addEmojis}
+                            {else}
+                                {$value->name|firstLetterCapitalize:true|addEmojis}
+                            {/if}
+                        {/autoescape}
                     </span>
                 {/if}
 

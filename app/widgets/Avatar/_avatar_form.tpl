@@ -7,18 +7,14 @@
         <div>
             <form name="avatarform" id="avatarform">
                 {if="isset($photobin) && $photobin != ''"}
-                    <img src="data:image/jpeg;base64,{$photobin}">
+                    <img class="avatar" src="data:image/jpeg;base64,{$photobin}">
                 {else}
-                    <img src="#" class="error">
-                    <ul class="list thick">
-                        <li>
-                            <span class="primary icon bubble color {$me->jid|stringToColor}">
-                                <i class="material-icons">person</i>
-                            </span>
-                            <p class="normal line">{$c->__('avatar.missing')}</p>
-                        </li>
-                    </ul>
+                    <img class="avatar" src="">
                 {/if}
+                <div class="placeholder">
+                    <i class="material-icons">image</i>
+                    <h1>{$c->__('avatar.missing')}</h1>
+                </div>
                 <input type="hidden" name="photobin" value="{$photobin}"/>
             </form>
         </div>

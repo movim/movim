@@ -52,9 +52,19 @@
     {else}
     <ul class="list thick">
         <li>
-            <span class="primary icon gray">
-                <i class="material-icons">group_work</i>
-            </span>
+            {$url = null}
+            {if="$item != null"}
+                {$url = $item->getPhoto('m')}
+            {/if}
+            {if="$url"}
+                <span class="primary icon bubble">
+                    <img src="{$url}"/>
+                </span>
+            {else}
+                <span class="primary icon gray">
+                    <i class="material-icons">group_work</i>
+                </span>
+            {/if}
             <span class="control icon active">
                 <a
                     href="{$c->route('feed', [$server, $node])}"
@@ -74,10 +84,14 @@
             {if="$item != null"}
                 {if="$item->description"}
                     <p title="{$item->description|stripTags}">
+                        <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} –
                         {$item->description|stripTags}
                     </p>
                 {else}
-                    <p>{$item->server}</p>
+                    <p>
+                        <i class="material-icons">people</i> {$c->__('communitydata.sub', $item->occupants)} –
+                        {$item->server}
+                    </p>
                 {/if}
             {/if}
         </li>

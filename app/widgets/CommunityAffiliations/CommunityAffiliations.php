@@ -18,7 +18,6 @@ class CommunityAffiliations extends Base
         $this->registerEvent('pubsub_setaffiliations_handle', 'onAffiliationsSet');
         $this->registerEvent('pubsub_delete_handle', 'onDelete');
         $this->registerEvent('pubsub_delete_error', 'onDeleteError');
-
         $this->registerEvent('pubsub_getsubscriptions_handle', 'onSubscriptions');
 
         $this->addjs('communityaffiliations.js');

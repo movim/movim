@@ -4,8 +4,12 @@ use Movim\Widget\Base;
 
 use Moxl\Xec\Action\Pubsub\GetConfig;
 use Moxl\Xec\Action\Pubsub\SetConfig;
+use Moxl\Xec\Action\Avatar\Get as AvatarGet;
+use Moxl\Xec\Action\Avatar\Set as AvatarSet;
 
 use Respect\Validation\Validator;
+
+use Movim\Picture;
 
 class CommunityConfig extends Base
 {
@@ -13,6 +17,7 @@ class CommunityConfig extends Base
     {
         $this->registerEvent('pubsub_getconfig_handle', 'onConfig');
         $this->registerEvent('pubsub_setconfig_handle', 'onConfigSaved');
+        $this->registerEvent('avatar_set_pubsub', 'onAvatarSet');
     }
 
     public function onConfig($packet)
@@ -33,9 +38,44 @@ class CommunityConfig extends Base
         Dialog::fill($view->draw('_communityconfig'), true);
     }
 
+    public function onAvatarSet($packet)
+    {
+        $this->rpc('Dialog_ajaxClear');
+        Notification::append(null, $this->__('avatar.updated'));
+    }
+
     public function onConfigSaved()
     {
         Notification::append(false, $this->__('communityaffiliation.config_saved'));
+    }
+
+    public function ajaxGetAvatar($origin, $node)
+    {
+        if (!$this->validateServerNode($origin, $node)) return;
+
+        $view = $this->tpl();
+        $view->assign('info', \App\Info::where('server', $origin)
+                                       ->where('node', $node)
+                                       ->first());
+
+        Dialog::fill($view->draw('_communityconfig_avatar'));
+    }
+
+    public function ajaxSetAvatar($origin, $node, $form)
+    {
+        if (!$this->validateServerNode($origin, $node)) return;
+
+        $key = $origin.$node.'avatar';
+
+        $p = new Picture;
+        $p->fromBase($form->photobin->value);
+        $p->set($key, 'jpeg', 60);
+
+        $r = new AvatarSet;
+        $r->setTo($origin)
+          ->setNode($node)
+          ->setUrl($p->getOriginal($key))
+          ->setData($p->toBase())->request();
     }
 
     public function ajaxGetConfig($origin, $node, $advanced = false)

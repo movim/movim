@@ -22,15 +22,6 @@ class Message extends Model
         'markable' => 'boolean'
     ];
 
-    public function save(array $options = [])
-    {
-        try {
-            parent::save($options);
-        } catch (\Exception $e) {
-            // Race condition
-        }
-    }
-
     public function user()
     {
         return $this->belongsTo('App\User');

@@ -8,7 +8,7 @@ class Info extends Model
 {
     protected $primaryKey = ['server', 'node'];
     public $incrementing = false;
-    protected $fillable = ['server', 'node'];
+    protected $fillable = ['server', 'node', 'avatarhash'];
 
     public function setAdminaddressesAttribute(array $arr)
     {
@@ -119,6 +119,13 @@ class Info extends Model
         return \App\User::me()->session->presences
                     ->where('jid', $this->attributes['server'])
                     ->first();
+    }
+
+    public function getPhoto($size = 'm')
+    {
+        return isset($this->attributes['avatarhash'])
+            ? getPhoto($this->attributes['avatarhash'], $size)
+            : null;
     }
 
     public function set($query)

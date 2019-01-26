@@ -3,14 +3,3 @@
     text-align: center;
     padding-top: 2rem;
 }
-
-#avatar_form div#avatar_preview > div,
-#avatar_form div#avatar_preview img {
-    max-width: 250px;
-    border-radius: 0.25rem;
-    margin: 0 auto;
-}
-
-#avatar_form div#avatar_preview img.error {
-    display: none;
-}

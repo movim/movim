@@ -1,6 +1,6 @@
 <section class="scroll">
-    <form name="avatarroom">
-        <img class="avatar" src="{$room->getPhoto('o')}">
+    <form name="avatarcommunity">
+        <img class="avatar" src="{$info->getPhoto('o')}">
         <div class="placeholder">
             <i class="material-icons">image</i>
             <h1>{$c->__('avatar.missing')}</h1>
@@ -13,7 +13,7 @@
                 <i class="material-icons">attach_file</i>
             </span>
             <p>{$c->__('avatar.file')}</p>
-            <p><input type="file" onchange="MovimAvatar.file(this.files, 'avatarroom');"></p>
+            <p><input type="file" onchange="MovimAvatar.file(this.files, 'avatarcommunity');"></p>
         </li>
     </ul>
 </section>
@@ -24,7 +24,7 @@
     <button
         type="button"
         onclick="
-            Rooms_ajaxSetAvatar('{$room->conference}', MovimUtils.formToJson('avatarroom'));
+            CommunityConfig_ajaxSetAvatar('{$info->server}', '{$info->node}', MovimUtils.formToJson('avatarcommunity'));
             this.value = '{$c->__('button.submitting')}';
             this.className='button flat inactive';"
         class="button flat"

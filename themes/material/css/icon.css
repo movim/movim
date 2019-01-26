@@ -8,6 +8,7 @@ span.icon {
     background-position: center;
     position: relative;
     width: 5rem;
+    word-break: keep-all;
 }
 
 span.icon.spin,
@@ -45,10 +46,6 @@ img.icon.thumb {
 }
 
 @media screen and (min-width: 800px) {
-    img.icon.thumb {
-        min-height: 5rem;
-    }
-
     img.icon.thumb:before {
         position: absolute;
         width: 100%;
@@ -91,7 +88,7 @@ span.icon.bubble {
     -moz-user-select: none;
 }
 
-span.icon.bubble img {
+span.icon.bubble img:not(.emoji) {
     border-radius: 5rem;
 }
 
@@ -106,6 +103,10 @@ ul.list li span.icon.small {
     line-height: 3rem;
     margin-top: -1.5rem;
     font-size: 1.5rem;
+}
+
+ul.list li span.icon.small img.emoji {
+    width: 1.75rem;
 }
 
 ul.list li span.icon.small:not(.bubble) i {

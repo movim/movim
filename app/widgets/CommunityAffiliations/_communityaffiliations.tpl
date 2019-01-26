@@ -1,5 +1,11 @@
 {if="$role == 'owner'"}
     <ul class="list active">
+        <li onclick="CommunityConfig_ajaxGetAvatar('{$info->server|echapJS}', '{$info->node|echapJS}')">
+            <span class="primary icon gray">
+                <i class="material-icons">image</i>
+            </span>
+            <p class="normal">{$c->__('page.avatar')}</p>
+        </li>
         <li onclick="CommunityConfig_ajaxGetConfig('{$info->server|echapJS}', '{$info->node|echapJS}')">
             <span class="primary icon gray">
                 <i class="material-icons">settings</i>
@@ -109,4 +115,3 @@
     {/loop}
 </ul>
 {/if}
-

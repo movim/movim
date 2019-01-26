@@ -1,4 +1,4 @@
-<ul class="list middle">
+<ul class="list thick">
     <li class="">
         {if="$in_roster"}
             <span class="control icon active gray" onclick="ContactHeader_ajaxEditContact('{$contact->id|echapJS}')"

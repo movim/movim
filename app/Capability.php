@@ -10,15 +10,6 @@ class Capability extends Model
     protected $fillable = ['features'];
     public $incrementing = false;
 
-    public function save(array $options = [])
-    {
-        try {
-            parent::save($options);
-        } catch (\Exception $e) {
-            // Race condition
-        }
-    }
-
     public function set($query, $node = false)
     {
         if (!$node) {
