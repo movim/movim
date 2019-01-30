@@ -2,6 +2,8 @@
 
 namespace Movim\Daemon;
 
+use Movim\Bootstrap;
+
 use Psr\Http\Message\ServerRequestInterface;
 use React\Socket\Server as Reactor;
 
@@ -54,7 +56,11 @@ class Api
             );
         };
 
-        (new Server($handler))->listen($socket);
+        $server = new Server($handler);
+        $server->on('error', function (\Throwable $e) {
+            (new Bootstrap)->exceptionHandler($e);
+        });
+        $server->listen($socket);
     }
 
     public function handleAjax($post)
