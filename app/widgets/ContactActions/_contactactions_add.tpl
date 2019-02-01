@@ -26,6 +26,18 @@
                     value="{$contact->id}"
                 />
                 <div>
+                    <input
+                        name="alias"
+                        id="alias"
+                        placeholder="{$c->__('edit.alias')}"
+                        {if="$contact->name"}
+                            value="{$contact->name}"
+                        {else}
+                            value="{$contact->truename}"
+                        {/if}"/>
+                    <label for="alias">{$c->__('edit.alias')}</label>
+                </div>
+                <div>
                     <datalist id="group_list" style="display: none;">
                         {if="is_array($groups)"}
                             {loop="$groups"}
@@ -37,7 +49,6 @@
                         name="group"
                         list="group_list"
                         id="group"
-                        class="tiny"
                         placeholder="{$c->__('edit.group')}"
                         value="{$contact->groupname}"/>
                     <label for="group">{$c->__('edit.group')}</label>

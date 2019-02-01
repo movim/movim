@@ -50,7 +50,7 @@
                         </span>
                     {/if}
 
-                    {if="$value->subscription != 'both'"}
+                    {if="!in_array($value->subscription, ['', 'both'])"}
                         <span class="second">
                             {if="$value->subscription == 'to'"}
                                 <i class="material-icons">arrow_upward</i>

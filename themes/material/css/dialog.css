@@ -33,7 +33,7 @@
     margin-top: 2rem;
 }
 
-.dialog > section > *:last-child {
+.dialog > section > *:not(ul.list):last-child {
     margin-bottom: 2rem;
 }
 

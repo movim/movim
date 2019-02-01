@@ -5,12 +5,11 @@
             <input
                 name="alias"
                 id="alias"
-                class="tiny"
                 placeholder="{$c->__('edit.alias')}"
                 {if="$contact->name"}
                     value="{$contact->name}"
                 {else}
-                    value="{$contact->jid}"
+                    value="{$contact->truename}"
                 {/if}"/>
             <label for="alias">{$c->__('edit.alias')}</label>
         </div>
@@ -26,7 +25,6 @@
                 name="group"
                 list="group_list"
                 id="group"
-                class="tiny"
                 placeholder="{$c->__('edit.group')}"
                 value="{$contact->group}"/>
             <label for="group">{$c->__('edit.group')}</label>
@@ -34,7 +32,7 @@
         <input type="hidden" name="jid" value="{$contact->jid}"/>
     </form>
 </section>
-<div>
+<div class="no_bar">
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>

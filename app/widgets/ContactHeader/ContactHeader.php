@@ -81,7 +81,7 @@ class ContactHeader extends Base
     public function prepareHeader($jid)
     {
         $view = $this->tpl();
-        $view->assign('in_roster', ($this->user->session->contacts()->where('jid', $jid)->count() > 0));
+        $view->assign('roster', ($this->user->session->contacts()->where('jid', $jid)->first()));
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
 
         return $view->draw('_contactheader');

@@ -106,19 +106,7 @@
                 {/if}
             </li>
         {/if}
-        <a href="{$c->route('blog', $contact->jid)}" target="_blank" class="block large simple">
-            <li>
-                <span class="primary icon">
-                    <i class="material-icons">wifi_tethering</i>
-                </span>
-                <span class="control icon">
-                    <i class="material-icons">chevron_right</i>
-                </span>
-                <p></p>
-                <p class="normal">{$c->__('blog.visit')}</p>
-            </li>
-        </a>
-        {if="$roster && $roster->subscription != 'both'"}
+        {if="$roster && !in_array($roster->subscription, ['', 'both'])"}
             <li>
                 {if="$roster->subscription == 'to'"}
                     <span class="primary icon gray">
@@ -127,7 +115,7 @@
                     <p>{$c->__('subscription.to')}</p>
                     <p>{$c->__('subscription.to_text')}</p>
                     <p>
-                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contact->id}')">
+                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id}')">
                             {$c->__('subscription.to_button')}
                         </button>
                     </p>
@@ -139,7 +127,7 @@
                     <p>{$c->__('subscription.from')}</p>
                     <p>{$c->__('subscription.from_text')}</p>
                     <p>
-                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contact->id}')">
+                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id}')">
                             {$c->__('subscription.from_button')}
                         </button>
                     </p>
@@ -152,13 +140,25 @@
                     <p>{$c->__('subscription.nil')}</p>
                     <p>{$c->__('subscription.nil_text')}</p>
                     <p>
-                        <button class="button flat" onclick="ContactData_ajaxAccept('{$contact->id}')">
+                        <button class="button flat" onclick="ContactActions_ajaxAddAsk('{$contact->id}')">
                             {$c->__('subscription.nil_button')}
                         </button>
                     </p>
                 {/if}
             </li>
         {/if}
+        <a href="{$c->route('blog', $contact->jid)}" target="_blank" class="block large simple">
+            <li>
+                <span class="primary icon">
+                    <i class="material-icons">wifi_tethering</i>
+                </span>
+                <span class="control icon">
+                    <i class="material-icons">chevron_right</i>
+                </span>
+                <p></p>
+                <p class="normal">{$c->__('blog.visit')}</p>
+            </li>
+        </a>
     </ul>
 </div>
 

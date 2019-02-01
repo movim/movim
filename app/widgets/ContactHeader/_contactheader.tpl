@@ -1,6 +1,6 @@
 <ul class="list thick">
     <li class="">
-        {if="$in_roster"}
+        {if="$roster"}
             <span class="control icon active gray" onclick="ContactHeader_ajaxEditContact('{$contact->id|echapJS}')"
                 title="{$c->__('button.edit')}">
                 <i class="material-icons">edit</i>
@@ -31,8 +31,13 @@
 
         <p class="line">
             {$contact->truename}
+            {if="$roster && $roster->group"}
+                <span class="tag color {$roster->group|stringToColor}">{$roster->group}</span>
+            {/if}
         </p>
-        <p class="line">{$contact->id}</p>
+        <p class="line">
+            {$contact->id}
+        </p>
     </li>
 
     {if="$contact->description != null && trim($contact->description) != ''"}

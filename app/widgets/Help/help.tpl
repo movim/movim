@@ -110,7 +110,7 @@
             </p>
         </li>
     </ul>
-    {if="!empty($info->adminaddresses) || !empty($info->abuseaddresses) || !empty($info->supportaddresses)  || !empty($info->securityaddresses)"}
+    {if="$info && (!empty($info->adminaddresses) || !empty($info->abuseaddresses) || !empty($info->supportaddresses)  || !empty($info->securityaddresses))"}
         <hr />
         <ul class="list thin flex">
             <li class="subheader block large">
