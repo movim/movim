@@ -11,7 +11,7 @@
         <div>
             <textarea id="pubsub#description" name="pubsub#description"
                       onkeyup="MovimUtils.textareaAutoheight(this);"
-                      placeholder="{$c->__('communityconfig.description')}">{$config['pubsub#description']}</textarea>
+                      placeholder="{$c->__('communityconfig.description')}">{if="isset($config['pubsub#description'])"}{$config['pubsub#description']}{/if}</textarea>
             <label for="pubsub#description">{$c->__('communityconfig.description')}</label>
         </div>
         <div>

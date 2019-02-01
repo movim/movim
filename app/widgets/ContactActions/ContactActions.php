@@ -64,7 +64,7 @@ class ContactActions extends Base
         $p->setTo((string)$form->searchjid->value)
           ->request();
 
-        Dialog::ajaxClear();
+        (new Dialog)->ajaxClear();
     }
 
     public function ajaxChat($jid)

@@ -1,6 +1,6 @@
 var AdHoc = {
     refresh: function() {
-        var items = document.querySelectorAll('#adhoc_widget li');
+        var items = document.querySelectorAll('#adhoc_widget li:not(.subheader)');
         var i = 0;
 
         while(i < items.length)

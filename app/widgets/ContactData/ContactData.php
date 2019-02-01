@@ -58,12 +58,6 @@ class ContactData extends Base
         }
     }
 
-    public function ajaxAccept($jid)
-    {
-        $i = new Invitations;
-        $i->ajaxAccept($jid);
-    }
-
     /**
      * @brief Validate the jid
      *
