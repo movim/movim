@@ -11,16 +11,43 @@ var Tabs = {
                 current = tabs[i].id;
             }
 
-            html += '<li class="' + tabs[i].id + '" onclick="Tabs.change(this);">';
-            html += '    <a href="#" onclick="actDifferent(event);">' + tabs[i].title + '</a>';
-            html += '</li>';
+            var li = document.createElement('li');
+            li.setAttribute('class', tabs[i].id);
+            li.onclick = function() { Tabs.change(this) };
+
+
+            var a = document.createElement('a');
+            a.href = '#';
+            a.onclick = function(e) {
+                e.preventDefault();
+                return false;
+            };
+
+            if (tabs[i].dataset.mobileicon) {
+                aMobile = a.cloneNode(true);
+                a.classList.add('on_desktop');
+                aMobile.classList.add('on_mobile');
+
+                var icon = document.createElement('i');
+                icon.classList.add('material-icons');
+                icon.innerText = tabs[i].dataset.mobileicon;
+                aMobile.appendChild(icon);
+
+                li.appendChild(aMobile);
+            }
+
+            a.appendChild(document.createTextNode(tabs[i].title));
+            li.appendChild(a);
+
+            document.querySelector('#navtabs').appendChild(li);
         }
 
         // We show the first tab
         tabs[0].classList.remove('hide');
 
-        // We insert the list
-        document.querySelector('#navtabs').innerHTML = html;
+        if (tabs.length == 3) {
+            document.querySelector('#navtabs').classList.add('wide');
+        }
 
         if (current != null) {
             tab = current;
@@ -81,8 +108,3 @@ var Tabs = {
 document.addEventListener("DOMContentLoaded", function(event) {
     Tabs.create();
 });
-
-function actDifferent(e) {
-    e.preventDefault();
-    return false;
-}
