@@ -1,6 +1,14 @@
 #upload img.preview_picture {
-    max-height: 25rem;
+    max-height: 35rem;
     max-width: calc(100% - 4rem);
     margin: 0 auto;
     display: block;
+}
+
+#upload img.preview_picture[src] {
+    padding-bottom: 2rem;
+}
+
+#upload img.preview_picture[src] + li {
+    display: none;
 }
