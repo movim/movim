@@ -83,9 +83,10 @@ body main {
     color: gray;
 }
 
-ul.admin {
-    position: relative;
-    text-align: center;
-    color: white;
-    max-width: 45rem;
+#login_widget ul.invite span.primary + span.primary {
+    left: 5rem;
+}
+
+#login_widget ul.invite span.primary + span.primary ~ p {
+    padding-left: 12rem;
 }

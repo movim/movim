@@ -23,7 +23,7 @@
             <h3>{$c->__('page.login')}</h3>
             {if="$invitation != null"}
                 <br />
-                <ul class="list middle">
+                <ul class="list middle invite">
                     <li>
                         {$url = $contact->getPhoto('m')}
                         {if="$url"}
@@ -34,8 +34,12 @@
                                 {$contact->truename|firstLetterCapitalize}
                             </span>
                         {/if}
+                        {if="$invitation->room && $invitation->room->getPhoto('m')"}
+                            <span class="primary icon bubble" style="background-image: url({$invitation->room->getPhoto('m')});">
+                            </span>
+                        {/if}
                         <p></p>
-                        <p class="all">{$c->__('form.invite_chatroom', $contact->truename)} - {$invitation->resource}</p>
+                        <p class="all">{$c->__('form.invite_chatroom', $contact->truename)}: {$invitation->resource}</p>
                     </li>
                 </ul>
             {/if}
