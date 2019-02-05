@@ -25,6 +25,7 @@
 
 .dialog > section {
     max-height: calc(90vh - 7.5rem);
+    height: 100%;
     overflow-y: auto;
     position: relative;
 }

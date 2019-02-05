@@ -26,7 +26,7 @@
             <label>{$c->__('roster.add_contact_info1')}</label>
         </div>
     </section>
-    <div>
+    <div class="no_bar">
         <button class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.cancel')}
         </button>
