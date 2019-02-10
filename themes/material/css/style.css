@@ -154,7 +154,8 @@ main > div > * {
 }
 
 main > div.large {
-    width: 130rem;
+    max-width: 1920px;
+    width: calc(100% - 2rem);
 }
 
 main > div.large > * {

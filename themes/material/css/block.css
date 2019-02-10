@@ -26,8 +26,8 @@
 }
 
 .flex.third .block:not(.large) {
-    flex: 0 1 calc(33.33% - 1.5rem);
-    max-width: calc(33.33% - 1.5rem);
+    flex: 0 1 33.33%;
+    max-width: 33.33%;
 }
 
 
@@ -37,7 +37,7 @@
 }
 
 .column {
-    column-count: 3;
+    column-count: 4;
     margin: 1rem 0;
     line-height: 0;
 }
@@ -66,15 +66,21 @@
     }
 }
 
-@media screen and (min-width: 613px) and (max-width: 1024px) {
+@media screen and (min-width: 613px) and (max-width: 900px) {
     .flex.card .block:not(.subheader),
     .flex .block:not(.subheader),
     .flex.third .block:not(.subheader) {
-        flex: 0 1 calc(50% - 1.5rem);
+        flex: 0 1 50%;
         max-width: 100%;
     }
 
     .column {
         column-count: 2;
+    }
+}
+
+@media screen and (min-width: 901px) and (max-width: 1280px) {
+    .column {
+        column-count: 3 ;
     }
 }
