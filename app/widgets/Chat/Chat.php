@@ -36,7 +36,6 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('message', 'onMessage');
         $this->registerEvent('receiptack', 'onMessageReceipt');
         $this->registerEvent('displayed', 'onMessage', 'chat');
-        //$this->registerEvent('mamresult', 'onMessageHistory', 'chat');
         $this->registerEvent('mam_get_handle', 'onMAMRetrieved', 'chat');
         $this->registerEvent('composing', 'onComposing', 'chat');
         $this->registerEvent('paused', 'onPaused', 'chat');
@@ -48,32 +47,6 @@ class Chat extends \Movim\Widget\Base
         $this->registerEvent('presence_muc_handle', 'onMucConnected', 'chat');
 
         $this->registerEvent('bob_request_handle', 'onSticker');
-        //$this->registerEvent('presence', 'onPresence');
-    }
-
-    /*
-     * Disabled for the moment, it SPAM a bit too much the user
-    public function onPresence($packet)
-    {
-        $contacts = $packet->content;
-        if ($contacts != null) {
-            $contact = $contacts[0];
-
-            if ($contact->value < 5) {
-                $avatar = $contact->getPhoto();
-                if ($avatar == false) $avatar = null;
-
-                $presences = getPresences();
-                $presence = $presences[$contact->value];
-
-                Notification::append('presence', $contact->truename, $presence, $avatar, 4);
-            }
-        }
-    }*/
-
-    public function onMessageHistory($packet)
-    {
-        $this->onMessage($packet, true);
     }
 
     public function onMessageReceipt($packet)
