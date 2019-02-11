@@ -7,7 +7,7 @@
         </li>
     </ul>
 {else}
-    <ul class="list middle flex active all">
+    <ul class="list middle flex third active all">
         {loop="$subscriptions"}
             {if="$c->checkNewServer($value)"}
                 <li class="subheader block large"

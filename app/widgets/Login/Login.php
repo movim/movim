@@ -25,7 +25,8 @@ class Login extends Base
         $this->registerEvent('storage_get_handle', 'onConfig');
         $this->registerEvent('storage_get_errorfeaturenotimplemented', 'onConfig');
         $this->registerEvent('storage_get_errorserviceunavailable', 'onConfig');
-        $this->registerEvent('ssl_error', 'onSSLError');
+        $this->registerEvent('ssl_error', 'onFailAuth');
+        $this->registerEvent('streamerror', 'onFailAuth');
     }
 
     public function onStart($packet)
@@ -119,7 +120,7 @@ class Login extends Base
         return $view->draw('_login_error');
     }
 
-    public function onSSLError()
+    public function onFailAuth()
     {
         $this->showErrorBlock('fail_auth');
     }

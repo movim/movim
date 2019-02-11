@@ -27,7 +27,7 @@ class Notifications extends Base
     public function onPost($packet)
     {
         $post = $packet->content;
-        if ($post->isComment()) {
+        if ($post->isComment() && !$post->isMine()) {
             $this->ajaxSetCounter();
         }
     }
@@ -65,7 +65,8 @@ class Notifications extends Base
             $query->select('id')
                   ->from('posts')
                   ->where('aid', $this->user->id);
-        })->where('published', '>', $since)->count();
+        })->where('published', '>', $since)
+        ->where('aid', '!=', $this->user->id)->count();
 
         $session = Session::start();
         $notifs = $session->get('activenotifs');

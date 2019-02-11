@@ -91,7 +91,7 @@
             </ul>
         </div>
     </section>
-    <div>
+    <div class="no_bar">
         <button class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.cancel')}
         </button>

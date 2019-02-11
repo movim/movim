@@ -16,7 +16,7 @@ class Blog extends Base
     private $_item;
     private $_id;
     private $_contact;
-    private $_messages = null;
+    private $_posts = null;
     private $_page = 0;
     private $_mode;
     private $_next;
@@ -101,20 +101,20 @@ class Blog extends Base
         }
 
         if ($this->_id = $this->get('i')) {
-            $this->_messages = \App\Post::where('server', $this->_from)
+            $this->_posts = \App\Post::where('server', $this->_from)
                     ->where('node', $this->_node)
                     ->where('nodeid', $this->_id)
                     ->where('open', true)
                     ->get();
 
-            if ($this->_messages->isNotEmpty()) {
-                $this->title = $this->_messages->first()->title;
-                $this->description = !empty($this->_messages->first()->contentcleaned)
-                    ? $this->_messages->first()->contentcleaned
-                    : $this->_messages->first()->title;
+            if ($this->_posts->isNotEmpty()) {
+                $this->title = $this->_posts->first()->title;
+                $this->description = !empty($this->_posts->first()->contentcleaned)
+                    ? $this->_posts->first()->contentcleaned
+                    : $this->_posts->first()->title;
 
-                if ($this->_messages->first()->picture) {
-                    $this->image = $this->_messages->first()->picture->href;
+                if ($this->_posts->first()->picture) {
+                    $this->image = $this->_posts->first()->picture->href;
                 }
             }
 
@@ -139,13 +139,14 @@ class Blog extends Base
             if (isset($this->_tag)) {
                 $tag = \App\Tag::where('name', $this->_tag)->first();
                 if ($tag) {
-                    $this->_messages = $tag->posts()
+                    $this->_posts = $tag->posts()
                          ->orderBy('published', 'desc')
                          ->take($this->_paging + 1)
+                         ->where('open', true)
                          ->skip($this->_page * $this->_paging)->get();
                 }
             } else {
-                $this->_messages = \App\Post::where('server', $this->_from)
+                $this->_posts = \App\Post::where('server', $this->_from)
                         ->where('node', $this->_node)
                         ->where('open', true)
                         ->orderBy('published', 'desc')
@@ -155,9 +156,9 @@ class Blog extends Base
             }
         }
 
-        if ($this->_messages !== null
-        && $this->_messages->count() == $this->_paging + 1) {
-            $this->_messages->pop();
+        if ($this->_posts !== null
+        && $this->_posts->count() == $this->_paging + 1) {
+            $this->_posts->pop();
             if ($this->_mode == 'blog') {
                 $this->_next = $this->route('blog', $this->_from, ['page' => $this->_page + 1]);
             } elseif ($this->_mode == 'tag') {
@@ -194,7 +195,7 @@ class Blog extends Base
         $this->view->assign('contact', $this->_contact);
         $this->view->assign('mode', $this->_mode);
         $this->view->assign('next', $this->_next);
-        $this->view->assign('posts', $this->_messages);
+        $this->view->assign('posts', $this->_posts);
 
         $this->view->assign('tag', $this->_tag);
     }

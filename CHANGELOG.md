@@ -1,7 +1,10 @@
 Movim Changelog
 ================
 
-v0.14.1 (trunk)
+v0.15 (trunk)
+---------------------------
+
+v0.14.1
 ---------------------------
  * Replace ZeroMQ sockets with WebSockets, remove reactphp/zmq and php-zmq dependency
  * Make Movim compatible with PHP 7.3
@@ -24,6 +27,7 @@ v0.14.1 (trunk)
  * Display single emojis as small stickers
  * Display chat states in MUC, handle the chat states with a new ChatStates class
  * Allow setting Avatars on Communities by combining XEP-0084 (metadata + url) and XEP-0060
+ * UI fixes for mobile (tabs)
 
 v0.14
 ---------------------------

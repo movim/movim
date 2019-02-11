@@ -15,6 +15,11 @@ class Invite extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function room()
+    {
+        return $this->hasOne('App\Contact', 'id', 'resource');
+    }
+
     public static function set($jid, $resource)
     {
         $invitation = \App\Invite::where('user_id', $jid)

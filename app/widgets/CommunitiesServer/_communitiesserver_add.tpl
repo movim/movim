@@ -7,7 +7,7 @@
             <label for="name">{$c->__('communitiesserver.name')}</label>
         </div>
     </section>
-    <div>
+    <div class="no_bar">
         <button class="button flat" onclick="Dialog_ajaxClear()">
             {$c->__('button.close')}
         </button>
