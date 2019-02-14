@@ -12,6 +12,10 @@
         <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/48.png');?>" sizes="48x48">
         <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/96.png');?>" sizes="96x96">
         <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/128.png');?>" sizes="128x128">
+        <link rel="apple-touch-icon" href="<?php $this->linkFile('img/app/48.png'); ?>">
+        <link rel="apple-touch-icon" href="<?php $this->linkFile('img/app/96.png'); ?>" sizes="96x96">
+        <link rel="apple-touch-icon" href="<?php $this->linkFile('img/app/128.png'); ?>" sizes="128x128">
+        <link rel="apple-touch-icon" href="<?php $this->linkFile('img/app/512.png'); ?>" sizes="512x512">
         <script src="<?php echo BASE_URI; ?>scripts/favico.js"></script>
         <script src="<?php echo
             \Movim\Route::urlize('system') .
