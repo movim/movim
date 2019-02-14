@@ -18,7 +18,6 @@ class FromModlToEloquent extends AbstractSeed
             $configuration->info            = !empty($config->info)
                                                 ? $config->info : null;
             $configuration->unregister      = $config->unregister;
-            $configuration->theme           = $config->theme;
             $configuration->locale          = $config->locale;
             $configuration->loglevel        = $config->loglevel;
             $configuration->username        = !empty($config->username)

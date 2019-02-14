@@ -15,7 +15,6 @@ class Configuration extends Model
         'info',
         'unregister',
         'restrictsuggestions',
-        'theme',
         'locale',
         'loglevel',
         'username',
@@ -29,7 +28,6 @@ class Configuration extends Model
     protected $attributes = [
         'id'                    => 1,
         'unregister'            => false,
-        'theme'                 => 'material',
         'restrictsuggestions'   => false,
         'loglevel'              => 0,
         'locale'                => 'en',

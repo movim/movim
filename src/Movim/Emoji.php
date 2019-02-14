@@ -80,9 +80,7 @@ class Emoji
                 return $matches[0];
             }
 
-            $this->_lastEmojiURL = BASE_URI . 'themes/' .
-                    \App\Configuration::get()->theme .
-                    '/img/emojis/svg/' . $astext . '.svg';
+            $this->_lastEmojiURL = BASE_URI . 'theme/img/emojis/svg/' . $astext . '.svg';
 
             $dom = new \DOMDocument('1.0', 'UTF-8');
             $dom->appendChild($img = $dom->createElement('img'));

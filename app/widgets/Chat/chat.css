@@ -214,6 +214,10 @@ table.emojis td:hover {
     border-right: 4px solid rgb(var(--movim-main));
 }
 
+#chat_widget div.call {
+    background-color: red;
+}
+
 /* File preview */
 #chat_widget div.file:not(.bubble) {
     word-break: break-all;

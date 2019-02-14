@@ -39,7 +39,7 @@ class Notification extends Base
         }
 
         if ($picture == null) {
-            $picture = BASE_URI . '/themes/material/img/app/128.png';
+            $picture = BASE_URI . '/theme/img/app/128.png';
         }
 
         $session = Session::start();

@@ -605,7 +605,7 @@ function requestAPI(string $action, int $timeout = 2, $post = false)
  */
 function getSmileyPath($id)
 {
-    return BASE_URI.'/themes/material/img/emojis/svg/'.$id.'.svg';
+    return BASE_URI . 'theme/img/emojis/svg/'.$id.'.svg';
 }
 
 /*

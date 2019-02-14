@@ -43,17 +43,31 @@ class Jingle extends Payload
             ->setId($id)
             ->request();
 
+        $userid = \App\User::me()->id;
+        $message = new \App\Message;
+        $message->user_id = $userid;
+        $message->id = 'm_' . generateUUID();
+        $message->jidto = $userid;
+        $message->jidfrom = current(explode('/',(string)$from));
+        $message->published = gmdate('Y-m-d H:i:s');
+
         switch($action) {
             case 'session-initiate' :
+                $message->type = 'jingle_start';
+                $message->save();
                 $this->event('jingle_sessioninitiate' , [$stanza, $from]);
                 break;
             case 'transport-info' :
                 $this->event('jingle_transportinfo'   , $stanza);
                 break;
             case 'session-terminate' :
+                $message->type = 'jingle_end';
+                $message->save();
                 $this->event('jingle_sessionterminate', $stanza);
                 break;
             case 'session-accept' :
+                $message->type = 'jingle_start';
+                $message->save();
                 $this->event('jingle_sessionaccept'   , $stanza);
                 break;
         }

@@ -1,2 +1,1 @@
-<li class="separator">
-</li>
+<li class="separator"></li>

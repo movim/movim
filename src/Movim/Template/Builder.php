@@ -7,7 +7,6 @@ use Movim\Widget\Wrapper;
 
 class Builder
 {
-    private $theme = 'movim';
     private $_view = '';
     private $title = '';
     private $content = '';
@@ -24,7 +23,6 @@ class Builder
      */
     public function __construct()
     {
-        $this->theme = Configuration::get()->theme;
         $this->user = \App\User::me();
     }
 
@@ -35,12 +33,12 @@ class Builder
 
     /**
      * Returns or prints the link to a file.
-     * @param file is the path to the file relative to the theme's root
+     * @param file is the path to the file
      * @param return optionally returns the link instead of printing it if set to true
      */
     public function linkFile(string $file, $return = false)
     {
-        $path = urilize('themes/' . $this->theme . '/' . $file);
+        $path = urilize('theme/' . $file);
 
         if ($return) {
             return $path;

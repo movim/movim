@@ -378,7 +378,7 @@ var Chat = {
     },
     appendMessage : function(idjidtime, data, prepend) {
         if (data.body === null) return;
-
+console.log(data);
         var bubble = null,
             mergeMsg = false,
             msgStack,
@@ -402,6 +402,7 @@ var Chat = {
             && (data.sticker === undefined || data.sticker === null)
             && !refBubble.querySelector('div.bubble').classList.contains('sticker')
             && !refBubble.querySelector('div.bubble').classList.contains('file')
+            && ['jingle_start'].indexOf(data.type) < 0
         ) {
             bubble = msgStack.parentNode;
             mergeMsg = true;
@@ -423,6 +424,10 @@ var Chat = {
 
             bubble.querySelector('div.bubble').dataset.bubble = jidtime;
             bubble.querySelector('div.bubble').dataset.publishedprepared = data.publishedPrepared;
+        }
+
+        if (['jingle_start'].indexOf(data.type) >= 0) {
+            bubble.querySelector('div.bubble').classList.add('call');
         }
 
         var msg = bubble.querySelector('div.bubble > div');

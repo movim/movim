@@ -26,6 +26,7 @@ class Chat extends \Movim\Widget\Base
     private $_pagination = 50;
     private $_wrapper = [];
     private $_mucPresences = [];
+    private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_start'];
 
     public function load()
     {
@@ -473,7 +474,7 @@ class Chat extends \Movim\Widget\Base
 
         $messages = $muc
             ? $messages->where('type', 'groupchat')->whereNull('subject')
-            : $messages->whereIn('type', ['chat', 'headline', 'invitation']);
+            : $messages->whereIn('type', $this->_messageTypes);
 
         $messages = $messages->orderBy('published', 'desc')
                              ->take($this->_pagination)
@@ -611,7 +612,7 @@ class Chat extends \Movim\Widget\Base
 
         $messages = $muc
             ? $messages->where('type', 'groupchat')->whereNull('subject')
-            : $messages->whereIn('type', ['chat', 'headline', 'invitation']);
+            : $messages->whereIn('type',$this->_messageTypes);
 
         $messages = $messages->orderBy('published', 'desc')->take($this->_pagination)->get();
         $messages = $messages->reverse();
@@ -784,6 +785,12 @@ class Chat extends \Movim\Widget\Base
             $view = $this->tpl();
             $view->assign('message', $message);
             $message->body = $view->draw('_chat_invitation');
+        }
+
+        if ($message->type == 'jingle_start') {
+            $view = $this->tpl();
+            $view->assign('message', $message);
+            $message->body = $view->draw('_chat_jinglestart');
         }
 
         return $this->_wrapper;

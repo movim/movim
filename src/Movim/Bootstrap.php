@@ -90,7 +90,7 @@ class Bootstrap
         define('DB_PORT',       $conf['port']);
         define('DB_DATABASE',   $conf['database']);
 
-        define('THEMES_PATH',   DOCUMENT_ROOT . '/themes/');
+        define('THEME_PATH',    DOCUMENT_ROOT . '/theme/');
         define('APP_PATH',      DOCUMENT_ROOT . '/app/');
         define('SYSTEM_PATH',   DOCUMENT_ROOT . '/system/');
         define('LIB_PATH',      DOCUMENT_ROOT . '/lib/');

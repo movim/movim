@@ -6,7 +6,8 @@
 
     <meta name="theme-color" content="#1C1D5B" />
     <?php $this->meta(); ?>
-    <meta name="application-name" content="Movim">
+    <meta name="application-name" content="<?php echo APP_TITLE; ?>">
+    <link rel="manifest" href="<?php echo \Movim\Route::urlize('manifest'); ?>" />
     <link rel="shortcut icon" href="<?php $this->linkFile('img/favicon.ico');?>" />
     <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/48.png');?>" sizes="48x48">
     <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/96.png');?>" sizes="96x96">

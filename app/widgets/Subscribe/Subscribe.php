@@ -7,7 +7,7 @@ class Subscribe extends Base
 {
     public function flagPath($country)
     {
-        return BASE_URI.'themes/material/img/flags/'.strtolower($country).'.png';
+        return BASE_URI.'theme/img/flags/'.strtolower($country).'.png';
     }
 
     public function accountNext($server)
