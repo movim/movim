@@ -77,6 +77,7 @@ class CommentPublish extends Errors
           ->setParentId($this->_parentid)
           ->request();
 
+        $this->pack(($this->_atom->title === '♥'));
         $this->deliver();
     }
 

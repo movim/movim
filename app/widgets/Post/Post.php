@@ -43,7 +43,10 @@ class Post extends Base
 
     public function onCommentPublished($packet)
     {
-        Notification::append(false, $this->__('post.comment_published'));
+        $isLike = $packet->content;
+        Notification::append(false, $isLike
+            ? $this->__('post.comment_like_published')
+            : $this->__('post.comment_published'));
     }
 
     public function onCommentPublishError($packet)
