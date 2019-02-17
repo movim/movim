@@ -430,7 +430,7 @@ div#spinner{
 
 @keyframes fadetext {
     0%,100% { color: transparent; }
-    25%,75% { color: inherit; }
+    25%,75% { color: white; } /* Enforce white for now as inherit is not applied correctly */
 }
 
 @keyframes spin {
