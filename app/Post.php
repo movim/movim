@@ -232,6 +232,7 @@ class Post extends Model
         return \App\Post::where('server', $this->server)
                        ->where('node', $this->node)
                        ->where('published', '<', $this->published)
+                       ->where('open', true)
                        ->orderBy('published', 'desc')
                        ->first();
     }
@@ -242,6 +243,7 @@ class Post extends Model
                        ->where('node', $this->node)
                        ->where('published', '>', $this->published)
                        ->orderBy('published')
+                       ->where('open', true)
                        ->first();
     }
 
