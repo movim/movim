@@ -192,6 +192,7 @@ var Chat = {
                 Chat.editPrevious();
             } else if (event.keyCode == 40
             && (this.value == '' || Chat.edit == true)) {
+                localStorage.removeItem(textarea.dataset.jid + '_message');
                 Chat.clearReplace();
             }
         };
@@ -378,7 +379,7 @@ var Chat = {
     },
     appendMessage : function(idjidtime, data, prepend) {
         if (data.body === null) return;
-console.log(data);
+
         var bubble = null,
             mergeMsg = false,
             msgStack,
