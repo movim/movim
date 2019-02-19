@@ -32,7 +32,7 @@
         </div>
     </form>
 </section>
-<div>
+<div class="no_bar">
     <button onclick="Dialog_ajaxClear()" class="button flat">
         {$c->__('button.cancel')}
     </button>
