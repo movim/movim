@@ -1,56 +1,40 @@
 <div class="tabelem" title="{$c->__('page.help')}" id="help_widget">
-    <ul class="list divided middle">
+    <ul class="list middle">
         <li class="subheader">
-            <p>{$c->__('help.faq')}</p>
+            <p>{$c->__('faq.title')}</p>
         </li>
-	<li class="block">
+        <li class="block">
             <span class="primary icon gray">
-                <i class="material-icons">help_outline</i>
+                <i class="material-icons">wifi_tethering</i>
             </span>
-	    <p>{$c->__('help.faq1')}</p>
-	    <p class="all">
-		{$c->__('help.faa1_1')}<br/>
-		{$c->__('help.faa1_2')}: https://{$info->server}/?blog/<b>{$c->__('help.username')}</b>@{$info->server}<br/>
-	    </p>
-	</li>
-	<li class="block">
+            <p>{$c->__('faq.permission_title')}</p>
+            <p class="all">{$c->__('faq.permission_text')}</p>
+        </li>
+        <li class="block">
             <span class="primary icon gray">
-                <i class="material-icons">help_outline</i>
+                <i class="material-icons">group_work</i>
             </span>
-	    <p>{$c->__('help.faq2')}</p>
-	    <p class="all">
-		{$c->__('help.faa2_1')}<br/>
-		{$c->__('help.faa2_2')}
-	    </p>
-	</li>
-	<li class="block">
+            <p>{$c->__('faq.permission_community_title')}</p>
+            <p class="all">{$c->__('faq.permission_community_text')}</p>
+        </li>
+        <li class="block">
             <span class="primary icon gray">
-                <i class="material-icons">help_outline</i>
+                <i class="material-icons">forum</i>
             </span>
-	    <p>{$c->__('help.faq3')}</p>
-	    <p class="all">
-		{$c->__('help.faa3')} <a href="https://search.jabber.network">search.jabber.network</a>
-	    </p>
-	</li>
-	<li class="block">
+            <p>{$c->__('faq.chatrooms_title')}</p>
+            <p class="all">
+                <a href="https://search.jabber.network" target="_blank">search.jabber.network</a>
+            </p>
+        </li>
+        <li class="block">
             <span class="primary icon gray">
-                <i class="material-icons">help_outline</i>
+                <i class="material-icons">search</i>
             </span>
-	    <p>{$c->__('help.faq4')}</p>
-	    <p class="all">
-		{$c->__('help.faa4_1')} <b>pubsub.{$info->server}</b> {$c->__('help.faa4_2')}, <b>pubsub.movim.eu</b>, {$c->__('help.faa4_3')} <b>news.movim.eu</b>.
-	    </p>
-	</li>
-	<li class="block">
-            <span class="primary icon gray">
-                <i class="material-icons">help_outline</i>
-            </span>
-	    <p>{$c->__('help.faq5')}</p>
-	    <p class="all">
-		{$c->__('help.faa5')}
-	    </p>
-	</li>
+            <p>{$c->__('faq.find_contacts_title')}</p>
+            <p class="all">{$c->__('faq.find_contacts_text')}</p>
+        </li>
     </ul>
+    <br />
     <hr />
     <ul class="list divided middle">
         <li class="subheader">
@@ -68,6 +52,7 @@
             </p>
         </li>
     </ul>
+    <br />
     <hr />
     <ul class="list thick block divided">
         <li class="subheader">
@@ -81,9 +66,9 @@
             <p class="all">
                 {$c->__('apps.android')}
                 <br />
-                <a class="button flat" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
+                <!--<a class="button flat" href="https://play.google.com/store/apps/details?id=com.movim.movim" target="_blank">
                     <i class="material-icons">android</i> Play Store
-                </a>
+                </a>-->
                 <a class="button flat" href="https://f-droid.org/packages/com.movim.movim/" target="_blank">
                     <i class="material-icons">adb</i> F-Droid
                 </a>
