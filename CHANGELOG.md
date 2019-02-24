@@ -7,6 +7,7 @@ v0.14.2 (trunk)
  * Center verticaly the content of cards when they are displayed as flexbox
  * Give feedback when a new Communities Server is explored (#804)
  * Fix Undefined variable: url in _communitysubscriptions.tpl (#802)
+ * Fix short columns length in SQL database (#801)
 
 v0.14.1
 ---------------------------
