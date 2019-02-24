@@ -1,8 +1,12 @@
 Movim Changelog
 ================
 
-v0.15 (trunk)
+v0.14.2 (trunk)
 ---------------------------
+ * Redesign the Communities page
+ * Center verticaly the content of cards when they are displayed as flexbox
+ * Give feedback when a new Communities Server is explored (#804)
+ * Fix Undefined variable: url in _communitysubscriptions.tpl (#802)
 
 v0.14.1
 ---------------------------

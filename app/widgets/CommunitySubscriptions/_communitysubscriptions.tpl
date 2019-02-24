@@ -25,6 +25,8 @@
                 onclick="MovimUtils.redirect('{$c->route('community', [$value->server, $value->node])}')"
                 title="{$value->server} - {$value->node}"
             >
+                {$url = false}
+
                 {if="$value->info"}
                     {$url = $value->info->getPhoto('m')}
                 {/if}
