@@ -12,7 +12,7 @@
     border-radius: 0.5rem;
     z-index: 4;
     box-sizing: border-box;
-    animation: zoom .2s;
+    animation: zoom .25s ease-in-out;
 }
 
 .dialog:empty {

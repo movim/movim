@@ -91,7 +91,7 @@ body > nav li { /* Little hack for the navbar */
     }
 
     body > nav:not(.moving) {
-        transition: transform .3s cubic-bezier(.4,0,.2,1);
+        transition: transform .25s var(--standard-easing);
     }
 
     body > nav.active:not(.moving) {
@@ -440,4 +440,10 @@ div#spinner{
 @keyframes top-right {
     from { transform: translate(15%, -25%); }
     to   { transform: translate(0, 0); }
+}
+
+body {
+    --standard-easing: cubic-bezier(0.4, 0.0, 0.2, 1);
+    --accelerate-easing: cubic-bezier(0.0, 0.0, 0.2, 1);
+    --decelerate-easing: cubic-bezier(0.4, 0.0, 1, 1);
 }
