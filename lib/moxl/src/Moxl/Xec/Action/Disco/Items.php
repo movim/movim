@@ -10,6 +10,7 @@ class Items extends Action
 {
     protected $_to;
     protected $_save = true;
+    protected $_manual = false;
 
     public function request()
     {
@@ -23,6 +24,12 @@ class Items extends Action
         return $this;
     }
 
+    public function enableManual()
+    {
+        $this->_manual = true;
+        return $this;
+    }
+
     public function disableSave()
     {
         $this->_save = false;
@@ -32,6 +39,10 @@ class Items extends Action
     public function handle($stanza, $parent = false)
     {
         if ($this->_save) {
+            if ($this->_manual) {
+                $this->method('manual');
+            }
+
             $jid = null;
 
             $parent = \App\Info::where('server', $this->_to)
@@ -109,6 +120,10 @@ class Items extends Action
 
     public function error($error)
     {
+        if ($this->_manual) {
+            $this->method('manual_error');
+        }
+
         $this->pack($this->_to);
         $this->deliver();
     }

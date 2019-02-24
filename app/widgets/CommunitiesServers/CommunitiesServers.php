@@ -9,13 +9,20 @@ class CommunitiesServers extends Base
 {
     public function load()
     {
-        $this->registerEvent('disco_items_handle', 'onDisco', 'community');
+        $this->registerEvent('disco_items_manual', 'onDisco', 'community');
+        $this->registerEvent('disco_items_manual_error', 'onDiscoError', 'community');
         $this->addjs('communitiesservers.js');
     }
 
     public function onDisco($packet)
     {
+        Notification::append(null, $this->__('communities.disco'));
         $this->ajaxGet();
+    }
+
+    public function onDiscoError($packet)
+    {
+        Notification::append(null, $this->__('communities.disco_error'));
     }
 
     public function ajaxDisco($origin)
@@ -26,7 +33,9 @@ class CommunitiesServers extends Base
         }
 
         $r = new Items;
-        $r->setTo($origin)->request();
+        $r->enableManual()
+          ->setTo($origin)
+          ->request();
     }
 
     public function ajaxGet()
