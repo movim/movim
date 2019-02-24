@@ -1,14 +1,7 @@
 var Login = {
     domain : '@movim.eu',
     submitted : false,
-    fillExample : function(login, pass) {
-        document.querySelector('input#username').value = login;
-        document.querySelector('input#password').value = pass;
-    },
 
-    /**
-     * @brief Init the main form behaviour
-     */
     init : function() {
         // The form submission event
         document.body.addEventListener('submit', function(e) {
@@ -31,9 +24,6 @@ var Login = {
         }, false);
     },
 
-    /**
-     * @brief Set the Movim cookie
-     */
     setCookie : function(key, value, expires) {
         document.cookie = key + '=' + value + '; expires=' + expires + '; path=/';
     },

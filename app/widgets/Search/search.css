@@ -1,5 +1,10 @@
-#search #results {
-    padding: 0;
+#search ul#search_posts > li:not(.subheader) {
+    margin: 1rem;
+    margin-top: 0;
+}
+
+#search ul#search_posts > li:not(.subheader):last-child {
+    margin-bottom: 0;
 }
 
 #search form > div:not(.clear):not(.control) {

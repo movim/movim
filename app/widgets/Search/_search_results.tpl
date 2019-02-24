@@ -5,8 +5,13 @@
 {/if}
 
 {if="$posts->isNotEmpty()"}
-<ul class="list active divided middle">
-    <li class="subheader"><p>{$c->__('page.news')}</p></li>
+<ul id="search_posts" class="list card active middle">
+    <li class="subheader">
+        <p>
+            <span class="info">{$posts|count}</span>
+            {$c->__('page.news')}
+        </p>
+    </li>
     {loop="$posts"}
         {autoescape="off"}
             {$c->prepareTicket($value)}

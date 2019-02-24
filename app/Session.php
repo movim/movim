@@ -51,6 +51,26 @@ class Session extends Model
             ->orderBy('jid');
     }
 
+    /**
+     * @brief Communities subscribed by my contacts that the session is not part of
+     */
+    public function interestingCommunities()
+    {
+        return Info::whereRaw('(server, node) in (
+            select server, node from (
+                select count(*) as count, server, node
+                from subscriptions
+                where public = true
+                and jid in (
+                    select jid from rosters where session_id = \''. $this->id .'\'
+                )
+                and (server, node) not in (select server, node from subscriptions where jid = \''.$this->user_id.'\')
+                group by server, node
+                order by count desc
+            ) as sub
+        )');
+    }
+
     public function conferences()
     {
         return $this->hasMany('App\Conference')->orderBy('conference');

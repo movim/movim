@@ -250,6 +250,16 @@ class Post extends Base
         return $view->draw('_post_prevnext');
     }
 
+    public function preparePreviousNextBack(\App\Post $post)
+    {
+        $view = $this->tpl();
+        $view->assign('post', $post);
+        $view->assign('info', \App\Info::where('server', $post->server)
+                                            ->where('node', $post->node)
+                                            ->first());
+        return $view->draw('_post_prevnext_back');
+    }
+
     public function display()
     {
         $this->view->assign('nodeid', false);

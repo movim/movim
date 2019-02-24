@@ -154,8 +154,8 @@ main > div > * {
 }
 
 main > div.large {
-    max-width: 1920px;
-    width: calc(100% - 2rem);
+    max-width: 130rem;
+    width: 100%;
 }
 
 main > div.large > * {
@@ -346,11 +346,6 @@ img.avatar:not([src=""]) + .placeholder {
 @media screen and (max-width: 800px) {
     .padded {
         padding: 2rem;
-        box-sizing: border-box;
-    }
-
-    .padded_right {
-        padding-right: 2rem;
         box-sizing: border-box;
     }
 

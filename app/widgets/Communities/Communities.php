@@ -29,16 +29,19 @@ class Communities extends Base
             ->recents()
             ->orderBy('posts.published', 'desc')
             ->where('open', true)
-            ->take(50)
+            ->take(30)
             ->get();
 
         $view->assign('posts', $posts);
+        $view->assign('communities', $this->user->session->interestingCommunities()
+            ->take(6)
+            ->get());
 
         return $view->draw('_communities');
     }
 
     public function prepareTicket(\App\Post $post)
     {
-        return (new \Post)->prepareTicket($post, true);
+        return (new \Post)->prepareTicket($post);
     }
 }

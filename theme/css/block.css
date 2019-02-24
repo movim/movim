@@ -1,28 +1,31 @@
 .flex {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-between;
+}
+
+ul.flex li.block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .flex .block:not(.subheader) {
     flex: 0 1 50%;
     overflow: hidden;
-    padding: 0;
+}
+
+.flex.card {
+    margin: 0 0.75rem;
 }
 
 .flex.card .block:not(.subheader) {
-    margin: 0.75rem;
-    flex: 0 1 calc(50% - 1.5rem);
+    flex: 0 1 calc(50% - 0.5rem);
     min-height: 5rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
 }
 
 .flex.stacked .block:not(.subheader) {
     margin-bottom: 0;
-}
-
-.flex.third {
-    flex-flow: row wrap;
 }
 
 .flex.third .block:not(.large) {
@@ -30,6 +33,9 @@
     max-width: 33.33%;
 }
 
+.flex.third.card .block:not(.large) {
+    max-width: calc(33.33% - 0.5rem);
+}
 
 .flex .block.large,
 .flex.card .block.large {
@@ -37,13 +43,9 @@
 }
 
 .column {
-    column-count: 4;
+    column-count: 3;
     margin: 1rem 0;
     line-height: 0;
-}
-
-.column.half {
-    column-count: 2;
 }
 
 .column > * {
@@ -51,27 +53,15 @@
     width: 100%;
 }
 
-@media screen and (max-width: 612px) {
-    .flex.card .block:not(.subheader),
-    .flex .block:not(.subheader),
-    .flex.third .block:not(.subheader) {
-        margin-bottom: 0;
-        flex: 0 1 100%;
-        max-width: 100%;
-    }
-
-    .column,
-    .column.half {
-        column-count: 1;
-    }
-}
-
 @media screen and (min-width: 613px) and (max-width: 900px) {
-    .flex.card .block:not(.subheader),
     .flex .block:not(.subheader),
     .flex.third .block:not(.subheader) {
         flex: 0 1 50%;
-        max-width: 100%;
+        max-width: 50%;
+    }
+
+    .flex.third.card .block:not(.subheader) {
+        max-width: calc(50% - 0.5rem);
     }
 
     .column {
@@ -79,8 +69,16 @@
     }
 }
 
-@media screen and (min-width: 901px) and (max-width: 1280px) {
+@media screen and (max-width: 612px) {
+    .flex .block:not(.subheader),
+    .flex.card .block:not(.subheader),
+    .flex.third .block:not(.subheader),
+    .flex.third.card .block:not(.subheader) {
+        flex: 0 1 100%;
+        max-width: 100%;
+    }
+
     .column {
-        column-count: 3 ;
+        column-count: 1;
     }
 }
