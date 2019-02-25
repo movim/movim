@@ -35,7 +35,7 @@ class Get extends Action
             $conference->conference     = (string)$c->attributes()->jid;
             $conference->name           = (string)$c->attributes()->name;
             $conference->nick           = (string)$c->nick;
-            $conference->autojoin       = (int)$c->attributes()->autojoin;
+            $conference->autojoin       = (boolean)$c->attributes()->autojoin;
 
             $conference->save();
         }

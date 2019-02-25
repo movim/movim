@@ -3,7 +3,7 @@
     <br />
     <h4 class="gray">{$error}</h4>
 </section>
-<div>
+<div class="no_bar">
     <span
         class="button flat oppose"
         onclick="MovimUtils.redirect('{$c->route('disconnect')}');">
