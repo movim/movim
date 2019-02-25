@@ -6,7 +6,7 @@
         </li>
     </ul>
 
-    <ul class="list card shadow active flex">
+    <ul class="list card active flex thick">
         {if="!empty($config->xmppdomain)"}
             <li
                 class="block large"
