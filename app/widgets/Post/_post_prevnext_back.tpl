@@ -1,5 +1,10 @@
 <li class="block"
-    onclick="MovimUtils.redirect('{$c->route('community', [$post->server, $post->node])}')">
+    {if="$post->isMicroblog()"}
+        onclick="MovimUtils.redirect('{$c->route('contact', $post->server)}')"
+    {else}
+        onclick="MovimUtils.redirect('{$c->route('community', [$post->server, $post->node])}')"
+    {/if}
+    >
     <span class="control icon gray">
         <i class="material-icons">expand_less</i>
     </span>

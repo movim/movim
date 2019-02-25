@@ -39,8 +39,10 @@
             {$contact->id}
         </p>
     </li>
+</ul>
 
-    {if="$contact->description != null && trim($contact->description) != ''"}
+{if="$contact->description != null && trim($contact->description) != ''"}
+<ul class="list">
     <li class="on_mobile">
         {$url = $contact->getPhoto('m')}
         {if="$url"}
@@ -56,5 +58,6 @@
         </p>
         <p></p>
     </li>
-    {/if}
 </ul>
+<br />
+{/if}
