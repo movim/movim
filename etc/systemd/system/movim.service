@@ -13,6 +13,8 @@ WorkingDirectory=/usr/share/movim/
 StandardOutput=syslog
 SyslogIdentifier=movim
 PIDFile=/run/movim.pid
+Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
