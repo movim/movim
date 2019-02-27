@@ -123,13 +123,15 @@ class Syndication extends Base
             foreach ($post->links as $value) {
                 $entry->appendChild($link = $dom->createElement('link'));
                 $link->setAttribute('rel', 'alternate');
-                $link->setAttribute('href', $value->href);
+                $link->setAttribute('href', (string)$value->href);
             }
 
-            $entry->appendChild($link = $dom->createElement('link'));
-            $link->setAttribute('rel', 'alternate');
-            $link->setAttribute('type', 'text/html');
-            $link->setAttribute('href', $post->openlink);
+            if ($post->openlink) {
+                $entry->appendChild($link = $dom->createElement('link'));
+                $link->setAttribute('rel', 'alternate');
+                $link->setAttribute('type', 'text/html');
+                $link->setAttribute('href', $post->openlink->href);
+            }
         }
 
         echo $dom->saveXML();
