@@ -35,7 +35,7 @@ v0.14.1
  * Allow setting Avatars on Communities by combining XEP-0084 (metadata + url) and XEP-0060
  * UI fixes for mobile (tabs)
 
-v0.14
+v0.14 – Scotty
 ---------------------------
  * Add a picture picker when sharing a URL in a post
  * Merge Publish in PublishBrief
@@ -87,7 +87,7 @@ v0.14
  * Improve video call and terminate flows
  * Allow the usage of Markdown for the Login page information
 
-v0.13
+v0.13 – Coggia
 ---------------------------
  * Update ReactPHP
  * Use PHP ZeroMQ to manage the communications between the processes

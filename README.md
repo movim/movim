@@ -9,13 +9,14 @@ Installation
 ------------
 Please refer to the installation instructions that are available on the GitHub Wiki: https://github.com/movim/movim/wiki
 
+Movim is also available as a [Docker image](https://github.com/movim/movim_docker) or as a [Debian package](https://packages.debian.org/sid/movim).
+
 Support Us
 ----------
 You can help Movim by:
 * Doing a one time donation using Paypal: [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=8QHPJDAQXT9UC)
 * Helping us covering our monthly costs on our official Patreon page: [![Donate](https://img.shields.io/badge/Patreon-Become%20a%20Patron-orange.svg)](https://www.patreon.com/movim)
 * …or on Liberapay [![Donate](https://img.shields.io/liberapay/receives/movim.svg)](https://liberapay.com/movim/donate)
-
 
 You can also support us on:
 * Flattr: https://flattr.com/thing/568092/Movim
@@ -30,9 +31,9 @@ Links
 ### Pods
 You can also use Movim on our official Pods:
 
-* https://fr.movim.eu/ server hosted in France
 * https://nl.movim.eu/ server hosted in The Netherlands
-* https://de.movim.eu/ server hosted in Germany
+* https://fi.movim.eu/ server hosted in Finland
+* https://jp.mov.im/ server hosted in Japan
 
 Translations
 ------------
