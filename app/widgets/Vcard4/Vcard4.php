@@ -118,7 +118,7 @@ class Vcard4 extends Base
 
     public function ajaxSaveNickname(string $nickname)
     {
-        if (Validator::regex('/^[a-z_\-\d]{5,64}$/i')->validate($nickname)) {
+        if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->validate($nickname)) {
 
             if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->user->id)->first()) {
                 Notification::append(null, $this->__('profile.nickname_conflict'));
