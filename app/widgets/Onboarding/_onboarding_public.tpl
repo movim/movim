@@ -5,7 +5,7 @@
         <h4>{$c->__('onboarding.public_text_second')}</h4>
     </div>
 </section>
-<div>
+<div class="no_bar">
     <button onclick="Onboarding_ajaxEnableRestricted(); Dialog_ajaxClear(); Onboarding.check();" class="button flat">
         {$c->__('button.refuse')}
     </button>
