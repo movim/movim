@@ -9,6 +9,7 @@ v0.14.2 (trunk)
  * Fix Undefined variable: url in _communitysubscriptions.tpl (#802)
  * Fix short columns length in SQL database (#801)
  * Fix XMPP whitelist also filter XMPP servers on registration page (#773)
+ * Allow users to set a local nickname and handle blog urls with this nickname
 
 v0.14.1
 ---------------------------

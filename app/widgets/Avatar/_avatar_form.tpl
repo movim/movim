@@ -1,7 +1,3 @@
-<br />
-
-<h3 class="block large">{$c->__('page.avatar')}</h3>
-
 <div class="flex">
     <div id="avatar_preview" class="block">
         <div>

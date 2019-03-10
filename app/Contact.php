@@ -193,7 +193,7 @@ class Contact extends Model
         if ($this->date == null) return null;
 
         $dt = new \DateTime($this->date);
-        return $dt->format('d-m-Y');
+        return $dt->format('Y-m-d');
     }
 
     public function getSearchTerms()
@@ -201,6 +201,15 @@ class Contact extends Model
         return cleanupId($this->id).'-'.
             cleanupId($this->truename).'-'.
             cleanupId($this->groupname);
+    }
+
+    public function getBlogUrl()
+    {
+        return \Movim\Route::urlize('blog',
+            ($this->user && isset($this->user->nickname))
+                ? $this->user->nickname
+                : $this->id
+        );
     }
 
     public function isEmpty(): bool

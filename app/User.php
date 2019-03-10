@@ -8,7 +8,7 @@ use App\Contact;
 
 class User extends Model
 {
-    protected $fillable = ['id', 'language', 'nightmode', 'nsfw', 'cssurl'];
+    protected $fillable = ['id', 'language', 'nightmode', 'nsfw', 'cssurl', 'nickname'];
     public $with = ['session', 'capability'];
     public $incrementing = false;
     private static $me = null;

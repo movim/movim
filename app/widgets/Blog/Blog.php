@@ -63,6 +63,12 @@ class Blog extends Base
             $this->title = '#'.$this->_tag;
         } else {
             $this->_from = $this->get('f');
+
+            $user = \App\User::where('nickname', $this->_from)->first();
+            if ($user) {
+                $this->_from = $user->id;
+            }
+
             $this->_contact = \App\Contact::find($this->_from);
 
             if (filter_var($this->_from, FILTER_VALIDATE_EMAIL)) {

@@ -12,6 +12,7 @@ class Vcard4 extends Base
 {
     public function load()
     {
+        $this->addcss('vcard4.css');
         $this->registerEvent('vcard4_get_handle', 'onMyVcard4');
         $this->registerEvent('vcard4_set_handle', 'onMyVcard4');
     }
@@ -72,7 +73,7 @@ class Vcard4 extends Base
               ->request();
         }
 
-        if (Validator::date('d-m-Y')->validate($vcard->date->value)) {
+        if (Validator::date('Y-m-d')->validate($vcard->date->value)) {
             $c->date    = $vcard->date->value;
         }
 
@@ -106,6 +107,33 @@ class Vcard4 extends Base
 
         $r = new Moxl\Xec\Action\Vcard\Set;
         $r->setData($vcard)->request();
+    }
+
+    public function ajaxEditNickname()
+    {
+        $view = $this->tpl();
+        $view->assign('me',       $this->user);
+        Dialog::fill($view->draw('_vcard4_nickname'));
+    }
+
+    public function ajaxSaveNickname(string $nickname)
+    {
+        if (Validator::regex('/^[a-z_\-\d]{5,64}$/i')->validate($nickname)) {
+
+            if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->user->id)->first()) {
+                Notification::append(null, $this->__('profile.nickname_conflict'));
+                return;
+            }
+
+            $this->user->nickname = $nickname;
+            $this->user->save();
+            $this->ajaxGetVcard();
+
+            (new Dialog)->ajaxClear();
+            Notification::append(null, $this->__('profile.nickname_saved'));
+        } else {
+            Notification::append(null, $this->__('profile.nickname_error'));
+        }
     }
 
     public function ajaxChangePrivacy($value)

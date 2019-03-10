@@ -16,7 +16,7 @@
                 </a>
             </span>
             <p>
-                <a href="{$c->route('blog', $contact->jid)}">
+                <a href="{$contact->getBlogUrl()}">
                     {$c->__('blog.title', $contact->truename)}
                 </a>
             </p>

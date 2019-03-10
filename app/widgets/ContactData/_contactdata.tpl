@@ -147,7 +147,7 @@
                 {/if}
             </li>
         {/if}
-        <a href="{$c->route('blog', $contact->jid)}" target="_blank" class="block large simple">
+        <a href="{$contact->getBlogUrl()}" target="_blank" class="block large simple">
             <li>
                 <span class="primary icon">
                     <i class="material-icons">wifi_tethering</i>
