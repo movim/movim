@@ -8,6 +8,7 @@ use Moxl\Xec\Action\Muc\GetConfig;
 use Moxl\Xec\Action\Muc\SetConfig;
 
 use App\Configuration;
+use App\Message;
 
 use Moxl\Xec\Action\BOB\Request;
 
@@ -26,7 +27,7 @@ class Chat extends \Movim\Widget\Base
     private $_pagination = 50;
     private $_wrapper = [];
     private $_mucPresences = [];
-    private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_start'];
+    private $_messageTypes = ['chat', 'headline', 'invitation', 'jingle_start', 'jingle_end'];
 
     public function load()
     {
@@ -791,7 +792,26 @@ class Chat extends \Movim\Widget\Base
         if ($message->type == 'jingle_start') {
             $view = $this->tpl();
             $view->assign('message', $message);
-            $message->body = $view->draw('_chat_jinglestart');
+            $message->body = $view->draw('_chat_jingle_start');
+        }
+
+        if ($message->type == 'jingle_end') {
+            $view = $this->tpl();
+            $view->assign('message', $message);
+
+            $start = Message::where(
+                ['type' =>'jingle_start',
+                 'thread'=> $message->thread
+                ])->first();
+
+            if ($start) {
+                $diff = (new DateTime($start->created_at))
+                  ->diff(new DateTime($message->created_at));
+
+                $view->assign('diff', $diff);
+            }
+
+            $message->body = $view->draw('_chat_jingle_end');
         }
 
         return $this->_wrapper;

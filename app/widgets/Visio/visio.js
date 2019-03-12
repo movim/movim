@@ -180,7 +180,7 @@ var Visio = {
 
         Visio.constraints = window.constraints = {
             audio: true,
-            video: true
+            video: { facingMode: "user" }
         };
 
         Visio.toggleMainButton();

@@ -50,6 +50,7 @@ class Jingle extends Payload
         $message->jidto = $userid;
         $message->jidfrom = current(explode('/',(string)$from));
         $message->published = gmdate('Y-m-d H:i:s');
+        $message->thread = (string)$stanza->attributes()->sid;
 
         switch($action) {
             case 'session-initiate' :
