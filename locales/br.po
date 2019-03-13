@@ -97,7 +97,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-04 20:54+0200\n"
+"POT-Creation-Date: 2019-03-13 07:53+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Breton (http://www.transifex.com/movim/movim/language/br/)\n"
@@ -463,11 +463,11 @@ msgstr ""
 msgid "Encrypted message"
 msgstr ""
 
-#: [message]composing [chats]composing
+#: [message]composing
 msgid "Composing…"
 msgstr ""
 
-#: [message]paused [chats]paused
+#: [message]paused
 msgid "Paused…"
 msgstr ""
 
@@ -529,6 +529,14 @@ msgstr ""
 
 #: [chat]report_abuse
 msgid "Report abuse"
+msgstr ""
+
+#: [chat]jingle_start
+msgid "Call started"
+msgstr ""
+
+#: [chat]jingle_end
+msgid "Call ended"
 msgstr ""
 
 #: [chatroom]members
@@ -599,8 +607,16 @@ msgstr ""
 msgid "Communities servers"
 msgstr ""
 
+#: [communities]disco
+msgid "Communities server discovered"
+msgstr ""
+
 #: [communities]disco_error
 msgid "This server doesn’t exists"
+msgstr ""
+
+#: [communities]interesting
+msgid "Communities you might like"
 msgstr ""
 
 #: [communitiesserver]created
@@ -1028,8 +1044,36 @@ msgstr ""
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr ""
 
-#: [help]faq
+#: [faq]title
 msgid "Frequently Asked Questions"
+msgstr ""
+
+#: [faq]permission_title
+msgid "What does the permission setting do?"
+msgstr ""
+
+#: [faq]permission_text
+msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
+msgstr ""
+
+#: [faq]permission_community_title
+msgid "How does it applies on Communities posts?"
+msgstr ""
+
+#: [faq]permission_community_text
+msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
+msgstr ""
+
+#: [faq]chatrooms_title
+msgid "Where can I find a list of chatrooms?"
+msgstr ""
+
+#: [faq]find_contacts_title
+msgid "Where can I find my contacts?"
+msgstr ""
+
+#: [faq]find_contacts_text
+msgid "By opening the search panel."
 msgstr ""
 
 #: [apps]question
@@ -1322,6 +1366,10 @@ msgstr ""
 
 #: [post]comment_published
 msgid "Comment published"
+msgstr ""
+
+#: [post]comment_like_published
+msgid "Liked"
 msgstr ""
 
 #: [post]comment_publish_error
@@ -1661,17 +1709,42 @@ msgstr ""
 msgid "Your profile is now restricted"
 msgstr ""
 
-#: [privacy]privacy_title
-msgid "Privacy Level"
+#: [profile]info
+msgid "Configure your instance nickname"
 msgstr ""
 
-#: [privacy]privacy_question
+#: [profile]privacy_question
 msgid "Is this profile public?"
 msgstr ""
 
-#: [privacy]privacy_info
+#: [profile]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
+
+#: [profile]nickname_info
+msgid "Set a local nickname to allow the other users of the instance to find you easily."
+msgstr ""
+
+#: [profile]nickname_set
+msgid "Your nickname is %s."
+msgstr ""
+
+#: [profile]nickname_placeholder
+msgid "John_Bob96"
+msgstr ""
+
+#: [profile]nickname_error
+msgid "Your nickname should only contains letters, numbers, - and _"
+msgstr ""
+
+#: [profile]nickname_conflict
+msgid "The nickname is already registered"
+msgstr ""
+
+#: [profile]nickname_saved
+#, fuzzy
+msgid "Nickname saved"
+msgstr "Lezanv"
 
 #: [save]submit [button]submit
 msgid "Submit"

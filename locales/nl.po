@@ -104,7 +104,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-01-04 20:54+0200\n"
+"POT-Creation-Date: 2019-03-13 07:53+0200\n"
 "PO-Revision-Date: 2018-09-18 06:12+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: Dutch (http://www.transifex.com/movim/movim/language/nl/)\n"
@@ -470,11 +470,11 @@ msgstr "Je bericht kon niet worden verzonden. probeer het a.u.b. later nog eens"
 msgid "Encrypted message"
 msgstr "Geëncrypteerd bericht"
 
-#: [message]composing [chats]composing
+#: [message]composing
 msgid "Composing…"
 msgstr ""
 
-#: [message]paused [chats]paused
+#: [message]paused
 msgid "Paused…"
 msgstr ""
 
@@ -537,6 +537,14 @@ msgstr "Bewerk laatste bericht"
 #: [chat]report_abuse
 msgid "Report abuse"
 msgstr "Meld misbruik"
+
+#: [chat]jingle_start
+msgid "Call started"
+msgstr ""
+
+#: [chat]jingle_end
+msgid "Call ended"
+msgstr ""
 
 #: [chatroom]members
 msgid "Members"
@@ -606,8 +614,16 @@ msgstr "Zoek een nieuwe server"
 msgid "Communities servers"
 msgstr ""
 
+#: [communities]disco
+msgid "Communities server discovered"
+msgstr ""
+
 #: [communities]disco_error
 msgid "This server doesn’t exists"
+msgstr ""
+
+#: [communities]interesting
+msgid "Communities you might like"
 msgstr ""
 
 #: [communitiesserver]created
@@ -1035,9 +1051,37 @@ msgstr "Uitnodigen"
 msgid "This contact is in your contact list but there is no subscription between the two accounts"
 msgstr ""
 
-#: [help]faq
+#: [faq]title
 msgid "Frequently Asked Questions"
 msgstr "Veelgestelde vragen"
+
+#: [faq]permission_title
+msgid "What does the permission setting do?"
+msgstr ""
+
+#: [faq]permission_text
+msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
+msgstr ""
+
+#: [faq]permission_community_title
+msgid "How does it applies on Communities posts?"
+msgstr ""
+
+#: [faq]permission_community_text
+msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
+msgstr ""
+
+#: [faq]chatrooms_title
+msgid "Where can I find a list of chatrooms?"
+msgstr ""
+
+#: [faq]find_contacts_title
+msgid "Where can I find my contacts?"
+msgstr ""
+
+#: [faq]find_contacts_text
+msgid "By opening the search panel."
+msgstr ""
 
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
@@ -1330,6 +1374,11 @@ msgstr "Reacties uitgeschakeld"
 #: [post]comment_published
 msgid "Comment published"
 msgstr "Reactie gepubliceerd"
+
+#: [post]comment_like_published
+#, fuzzy
+msgid "Liked"
+msgstr "Vind ik leuk"
 
 #: [post]comment_publish_error
 #, fuzzy
@@ -1672,17 +1721,43 @@ msgstr "Je profiel is nu openbaar"
 msgid "Your profile is now restricted"
 msgstr "Je profiel is nu afgeschermd"
 
-#: [privacy]privacy_title
-msgid "Privacy Level"
-msgstr "Privacy-Niveau"
+#: [profile]info
+msgid "Configure your instance nickname"
+msgstr ""
 
-#: [privacy]privacy_question
+#: [profile]privacy_question
 msgid "Is this profile public?"
 msgstr ""
 
-#: [privacy]privacy_info
+#: [profile]privacy_info
 msgid "Please pay attention! By making your profile public, all the information listed below will be available for all the Movim users and on the whole Internet."
 msgstr ""
+
+#: [profile]nickname_info
+msgid "Set a local nickname to allow the other users of the instance to find you easily."
+msgstr ""
+
+#: [profile]nickname_set
+#, fuzzy
+msgid "Your nickname is %s."
+msgstr "Jouw nickname"
+
+#: [profile]nickname_placeholder
+msgid "John_Bob96"
+msgstr ""
+
+#: [profile]nickname_error
+msgid "Your nickname should only contains letters, numbers, - and _"
+msgstr ""
+
+#: [profile]nickname_conflict
+msgid "The nickname is already registered"
+msgstr ""
+
+#: [profile]nickname_saved
+#, fuzzy
+msgid "Nickname saved"
+msgstr "bijnaam"
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2577,6 +2652,9 @@ msgstr "De API is niet bereikbaar, probeer later nog eens"
 #: [field]type_here
 msgid "Type here"
 msgstr "Typ hier"
+
+#~ msgid "Privacy Level"
+#~ msgstr "Privacy-Niveau"
 
 #~ msgid "This user has not posted anything right now"
 #~ msgstr "Deze gebruiker heeft momenteel niets gepost"
