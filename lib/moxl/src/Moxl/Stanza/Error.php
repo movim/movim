@@ -6,7 +6,7 @@ use Moxl\Utils;
 
 class Error
 {
-    static function notImplemented($to, $id)
+    public static function notImplemented($to, $id)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $error = $dom->createElement('error');

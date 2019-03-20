@@ -25,7 +25,7 @@ class AddUniquePostIdHashToAttachmentsTable extends Migration
             )
         ');
 
-        $this->schema->table('attachments', function(Blueprint $table) {
+        $this->schema->table('attachments', function (Blueprint $table) {
             $table->unique(['post_id', 'href', 'category', 'rel']);
         });
 
@@ -36,7 +36,7 @@ class AddUniquePostIdHashToAttachmentsTable extends Migration
     {
         $this->disableForeignKeyCheck();
 
-        $this->schema->table('attachments', function(Blueprint $table) {
+        $this->schema->table('attachments', function (Blueprint $table) {
             $table->dropUnique('attachments_post_id_href_category_rel_unique');
         });
 

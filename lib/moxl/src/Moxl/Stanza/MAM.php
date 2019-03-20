@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class MAM
 {
-    static function getConfig()
+    public static function getConfig()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $prefs = $dom->createElementNS('urn:xmpp:mam:2', 'prefs');
@@ -13,7 +13,7 @@ class MAM
         \Moxl\API::request($xml);
     }
 
-    static function setConfig($default)
+    public static function setConfig($default)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $prefs = $dom->createElementNS('urn:xmpp:mam:2', 'prefs');
@@ -24,11 +24,17 @@ class MAM
         \Moxl\API::request($xml);
     }
 
-    static function get(
-        $to = null, $id, $jid = false,
-        $start = false, $end = false,
-        $limit = false, $after = false, $before = false, $version = '1')
-    {
+    public static function get(
+        $to = null,
+        $id,
+        $jid = false,
+        $start = false,
+        $end = false,
+        $limit = false,
+        $after = false,
+        $before = false,
+        $version = '1'
+    ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('urn:xmpp:mam:'.$version, 'query');
         $query->setAttribute('queryid', $id);

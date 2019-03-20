@@ -69,7 +69,7 @@ class FromModlToEloquent extends AbstractSeed
 
             try {
                 $cache->save();
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 // Best effort
             }
         }
@@ -82,7 +82,7 @@ class FromModlToEloquent extends AbstractSeed
 
             try {
                 $invite->save();
-            } catch(\Exception $e) {
+            } catch (\Exception $e) {
                 // Best effort
             }
         }

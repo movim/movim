@@ -42,7 +42,9 @@ class ContactData extends Base
 
     public function ajaxRefresh($jid)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $contact = \App\Contact::find($jid);
 

@@ -208,7 +208,7 @@ class Picture
                     && array_key_exists('WebP Support', \gd_info())
                 ) {
                     $temp = tmpfile();
-                    fwrite($temp , $this->_bin);
+                    fwrite($temp, $this->_bin);
                     $resource = \imagecreatefromwebp(stream_get_meta_data($temp)['uri']);
                     fclose($temp);
 

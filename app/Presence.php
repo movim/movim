@@ -56,7 +56,9 @@ class Presence extends Model
 
     public function getRefreshableAttribute()
     {
-        if (!$this->avatarhash) return false;
+        if (!$this->avatarhash) {
+            return false;
+        }
 
         $jid = ($this->muc)
                 ? ($this->mucjid)
@@ -84,7 +86,7 @@ class Presence extends Model
 
     public static function findByStanza($stanza)
     {
-        $jid = explode('/',(string)$stanza->attributes()->from);
+        $jid = explode('/', (string)$stanza->attributes()->from);
         return self::firstOrNew([
             'session_id' => SESSION_ID,
             'jid' => $jid[0],
@@ -95,7 +97,7 @@ class Presence extends Model
     public function set($stanza)
     {
         $this->session_id = SESSION_ID;
-        $jid = explode('/',(string)$stanza->attributes()->from);
+        $jid = explode('/', (string)$stanza->attributes()->from);
         $this->jid = $jid[0];
 
         if (isset($jid[1])) {
@@ -137,8 +139,10 @@ class Presence extends Model
                     /*case 'jabber:x:signed' :
                         $this->publickey = (string)$c;
                         break;*/
-                    case 'http://jabber.org/protocol/muc#user' :
-                        if (!isset($c->item)) break;
+                    case 'http://jabber.org/protocol/muc#user':
+                        if (!isset($c->item)) {
+                            break;
+                        }
 
                         $session = Session::start();
 
@@ -163,7 +167,7 @@ class Presence extends Model
                             $this->mucaffiliation = (string)$c->item->attributes()->affiliation;
                         }
                         break;
-                    case 'vcard-temp:x:update' :
+                    case 'vcard-temp:x:update':
                         $this->avatarhash = (string)$c->photo;
                         break;
                 }

@@ -114,8 +114,9 @@ class Route extends Base
 
     private function fix(&$target, $source, $discard = true)
     {
-        if ($discard)
+        if ($discard) {
             $target = [];
+        }
 
         $source = preg_replace_callback(
             '/(^|(?<=&))[^=[&]+/',

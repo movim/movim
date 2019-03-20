@@ -19,7 +19,9 @@ class RPC
      */
     public function handleJSON($request)
     {
-        if (!isset($request->widget)) return;
+        if (!isset($request->widget)) {
+            return;
+        }
 
         (new Wrapper)->runWidget(
             (string)$request->widget,

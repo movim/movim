@@ -76,7 +76,8 @@ class Cache extends Model
     private function _writeCache($key, $object)
     {
         $data = str_replace(
-            "'", "\\'",
+            "'",
+            "\\'",
             base64_encode(gzcompress(serialize($object)))
         );
 

@@ -70,8 +70,10 @@ class Emoji
         return preg_replace_callback($this->_regex, function ($matches) {
             $this->_lastEmoji = $matches[0];
 
-            $astext = implode('-',
-                array_map('dechex',
+            $astext = implode(
+                '-',
+                array_map(
+                    'dechex',
                     unpack('N*', mb_convert_encoding($matches[0], 'UCS-4BE', 'UTF-8'))
                 )
             );

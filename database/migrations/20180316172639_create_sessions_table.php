@@ -7,7 +7,7 @@ class CreateSessionsTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('sessions', function(Blueprint $table) {
+        $this->schema->create('sessions', function (Blueprint $table) {
             $table->string('id', 32);
             $table->string('user_id', 64);
             $table->string('username', 64);

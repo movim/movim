@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Version
 {
-    static function send($to, $id, $name, $version, $os)
+    public static function send($to, $id, $name, $version, $os)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:version', 'query');

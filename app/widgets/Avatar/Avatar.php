@@ -44,7 +44,7 @@ class Avatar extends \Movim\Widget\Base
         $p->get($this->user->id);
 
         $avatarform->assign('photobin', $p->toBase());
-        $avatarform->assign('me',       \App\Contact::firstOrNew(['id' => $this->user->id]));
+        $avatarform->assign('me', \App\Contact::firstOrNew(['id' => $this->user->id]));
         $avatarform->assign(
             'submit',
             $this->call('ajaxSubmit', "MovimUtils.formToJson('avatarform')")

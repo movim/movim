@@ -7,7 +7,7 @@ class CreatePostsTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('posts', function(Blueprint $table) {
+        $this->schema->create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('server', 64);
             $table->string('node', 256);
@@ -42,7 +42,7 @@ class CreatePostsTable extends Migration
             $table->unique(['server', 'node', 'nodeid']);
         });
 
-        $this->schema->create('attachments', function(Blueprint $table) {
+        $this->schema->create('attachments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('post_id')->unsigned();
             $table->string('category', 16);

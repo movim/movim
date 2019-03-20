@@ -17,8 +17,8 @@ class Message
         $id = false,
         $replace = false,
         $file = false,
-        $invite = false)
-    {
+        $invite = false
+    ) {
         $session = Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');
@@ -58,7 +58,7 @@ class Message
             $dom2 = new \DOMDocument('1.0', 'UTF-8');
             $dom2->loadXml('<root>'.$html.'</root>');
             $bar = $dom2->documentElement->firstChild; // we want to import the bar tree
-            $body->appendChild($dom->importNode($bar, TRUE));
+            $body->appendChild($dom->importNode($bar, true));
 
             $xhtml->appendChild($body);
             $root->appendChild($xhtml);

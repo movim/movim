@@ -19,9 +19,9 @@ function prepareDate($time = false, $hours = true, $compact = false, $dateOnly =
     if (-7 < $reldays && $reldays <= 2) {
         if ($reldays > 1) {
             $date = '';
-        } else if (-1 < $reldays && $reldays <= 0) {
+        } elseif (-1 < $reldays && $reldays <= 0) {
             $date = __('date.yesterday');
-        } else if (0 < $reldays && $reldays <= 1) {
+        } elseif (0 < $reldays && $reldays <= 1) {
             // Today
         } else {
             $date = __('date.ago', ceil(-$reldays));
@@ -38,10 +38,14 @@ function prepareDate($time = false, $hours = true, $compact = false, $dateOnly =
             $date .= gmdate(', Y', $t);
         }
 
-        if ($compact) return $date;
+        if ($compact) {
+            return $date;
+        }
     }
 
-    if ($dateOnly) return $date;
+    if ($dateOnly) {
+        return $date;
+    }
 
     //if $hours option print the time
     if ($hours) {

@@ -7,7 +7,7 @@ class CreateTagsTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('tags', function(Blueprint $table) {
+        $this->schema->create('tags', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 64);
 
@@ -16,7 +16,7 @@ class CreateTagsTable extends Migration
             $table->unique('name');
         });
 
-        $this->schema->create('post_tag', function(Blueprint $table) {
+        $this->schema->create('post_tag', function (Blueprint $table) {
             $table->integer('post_id')->unsigned();
             $table->integer('tag_id')->unsigned();
 

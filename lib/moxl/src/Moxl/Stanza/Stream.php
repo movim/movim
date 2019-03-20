@@ -4,19 +4,19 @@ namespace Moxl\Stanza;
 
 class Stream
 {
-    static function init($to)
+    public static function init($to)
     {
         $xml = '<stream:stream xmlns:stream="http://etherx.jabber.org/streams" version="1.0" xmlns="jabber:client" to="'.$to.'">';
         \Moxl\API::request($xml);
     }
 
-    static function end()
+    public static function end()
     {
         $xml = '</stream:stream>';
         \Moxl\API::request($xml);
     }
 
-    static function startTLS()
+    public static function startTLS()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $starttls = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-tls', 'starttls');
@@ -25,7 +25,7 @@ class Stream
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    static function bindSet($resource)
+    public static function bindSet($resource)
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
         $bind = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-bind', 'bind');
@@ -35,7 +35,7 @@ class Stream
         \Moxl\API::request($xml);
     }
 
-    static function sessionStart($to)
+    public static function sessionStart($to)
     {
         $dom = new \DOMDocument('1.0', 'utf-8');
         $session = $dom->createElementNS('urn:ietf:params:xml:ns:xmpp-session', 'session');

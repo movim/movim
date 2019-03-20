@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Vcard4
 {
-    static function get($to)
+    public static function get($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -16,7 +16,7 @@ class Vcard4
         \Moxl\API::request($xml);
     }
 
-    static function set($data)
+    public static function set($data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');

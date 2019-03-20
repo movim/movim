@@ -58,7 +58,8 @@ class Contact extends Model
 
         if (filter_var((string)$vcard->vCard->PHOTO, FILTER_VALIDATE_URL)) {
             $this->photobin = base64_encode(
-                requestUrl((string)$vcard->vCard->PHOTO, 1));
+                requestUrl((string)$vcard->vCard->PHOTO, 1)
+            );
         } elseif ($vcard->vCard->PHOTO) {
             $this->photobin = (string)$vcard->vCard->PHOTO->BINVAL;
             $this->avatarhash = sha1(base64_decode($this->photobin));
@@ -71,7 +72,9 @@ class Contact extends Model
 
     public function createThumbnails()
     {
-        if (!$this->photobin) return;
+        if (!$this->photobin) {
+            return;
+        }
 
         $p = new Picture;
         $p->fromBase($this->photobin);
@@ -100,8 +103,9 @@ class Contact extends Model
         $this->loctext          = (string)$stanza->items->item->geoloc->text;
         $this->locuri           = (string)$stanza->items->item->geoloc->uri;
         $this->loctimestamp = date(
-                            'Y-m-d H:i:s',
-                            strtotime((string)$stanza->items->item->geoloc->timestamp));
+            'Y-m-d H:i:s',
+            strtotime((string)$stanza->items->item->geoloc->timestamp)
+        );
     }
 
     public function setTune($stanza)
@@ -148,18 +152,24 @@ class Contact extends Model
         if ($this->loctext != '') {
             $place .= $this->loctext.' ';
         } else {
-            if ($this->locbuilding != '')
+            if ($this->locbuilding != '') {
                 $place .= $this->locbuilding.' ';
-            if ($this->locstreet != '')
+            }
+            if ($this->locstreet != '') {
                 $place .= $this->locstreet.'<br />';
-            if ($this->locpostalcode != '')
+            }
+            if ($this->locpostalcode != '') {
                 $place .= $this->locpostalcode.' ';
-            if ($this->loclocality != '')
+            }
+            if ($this->loclocality != '') {
                 $place .= $this->loclocality.'<br />';
-            if ($this->locregion != '')
+            }
+            if ($this->locregion != '') {
                 $place .= $this->locregion.' - ';
-            if ($this->loccountry != '')
+            }
+            if ($this->loccountry != '') {
                 $place .= $this->loccountry;
+            }
         }
 
         return $place;
@@ -167,9 +177,15 @@ class Contact extends Model
 
     public function getTruenameAttribute(): string
     {
-        if ($this->fn) return $this->fn;
-        if ($this->nickname) return $this->nickname;
-        if ($this->name) return $this->name;
+        if ($this->fn) {
+            return $this->fn;
+        }
+        if ($this->nickname) {
+            return $this->nickname;
+        }
+        if ($this->name) {
+            return $this->name;
+        }
 
         return explodeJid($this->id)['username'];
     }
@@ -183,14 +199,17 @@ class Contact extends Model
     {
         if ($this->isValidDate()) {
             $age = intval(substr(date('Ymd') - date('Ymd', strtotime($this->date)), 0, -4));
-            if ($age != 0)
+            if ($age != 0) {
                 return $age;
+            }
         }
     }
 
     public function getDate()
     {
-        if ($this->date == null) return null;
+        if ($this->date == null) {
+            return null;
+        }
 
         $dt = new \DateTime($this->date);
         return $dt->format('Y-m-d');
@@ -205,7 +224,8 @@ class Contact extends Model
 
     public function getBlogUrl()
     {
-        return \Movim\Route::urlize('blog',
+        return \Movim\Route::urlize(
+            'blog',
             ($this->user && isset($this->user->nickname))
                 ? $this->user->nickname
                 : $this->id
@@ -246,11 +266,11 @@ class Contact extends Model
     {
         return (strtotime($this->updated) < mktime( // We update the 1 day old vcards
                                     gmdate("H"),
-                                    gmdate("i")-10,
-                                    gmdate("s"),
-                                    gmdate("m"),
-                                    gmdate("d"),
-                                    gmdate("Y")
+            gmdate("i")-10,
+            gmdate("s"),
+            gmdate("m"),
+            gmdate("d"),
+            gmdate("Y")
                                 )
         );
     }

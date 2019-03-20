@@ -111,7 +111,9 @@ class Account extends \Movim\Widget\Base
 
     public function ajaxGetRegistration($server)
     {
-        if (!$this->validateServer($server)) return;
+        if (!$this->validateServer($server)) {
+            return;
+        }
 
         $da = new Get;
         $da->setTo($server)
@@ -120,7 +122,9 @@ class Account extends \Movim\Widget\Base
 
     public function ajaxRegister($server, $form)
     {
-        if (!$this->validateServer($server)) return;
+        if (!$this->validateServer($server)) {
+            return;
+        }
         $s = new Set;
         $s->setTo($server)
           ->setData($form)
@@ -134,9 +138,11 @@ class Account extends \Movim\Widget\Base
 
     public function display()
     {
-        $this->view->assign('gateways',
+        $this->view->assign(
+            'gateways',
             \App\Info::where('server', 'like', '%' . $this->user->session->host)
                      ->where('category', 'gateway')
-                     ->get());
+                     ->get()
+        );
     }
 }

@@ -53,7 +53,9 @@ class PublishBrief extends Base
 
     public function ajaxCreateComments($server, $id)
     {
-        if (!$this->validateServerNode($server, $id)) return;
+        if (!$this->validateServerNode($server, $id)) {
+            return;
+        }
 
         $cn = new CommentCreateNode;
         $cn->setTo($server)
@@ -125,7 +127,9 @@ class PublishBrief extends Base
 
             $tags = [];
             $tagsTitle = getHashtags(htmlspecialchars($form->title->value));
-            if (is_array($tagsTitle)) array_merge($tags, $tagsTitle);
+            if (is_array($tagsTitle)) {
+                array_merge($tags, $tagsTitle);
+            }
 
             if (Validator::stringType()->notEmpty()->validate(trim($form->content->value))) {
                 $content = $form->content->value;
@@ -135,7 +139,9 @@ class PublishBrief extends Base
                 $content_xhtml = addHFR($parser->transform($content));
 
                 $tagsContent = getHashtags(htmlspecialchars($form->content->value));
-                if (is_array($tagsContent)) $tags = array_merge($tags, $tagsContent);
+                if (is_array($tagsContent)) {
+                    $tags = array_merge($tags, $tagsContent);
+                }
 
                 if (!empty($content)) {
                     $p->setContent(htmlspecialchars($content));
@@ -199,17 +205,21 @@ class PublishBrief extends Base
 
                     if (($embed->type == 'photo' || isset($embed->images))
                     && $imagenumber != 'none') {
-                        $p->setImage($embed->images[$imagenumber]['url'],
-                                     $embed->title,
-                                     $embed->images[$imagenumber]['mime']);
+                        $p->setImage(
+                            $embed->images[$imagenumber]['url'],
+                            $embed->title,
+                            $embed->images[$imagenumber]['mime']
+                        );
                     }
 
-                    $p->setLink($form->embed->value,
-                                $embed->title,
-                                'text/html',
-                                $embed->description,
-                                $embed->providerIcon);
-                } catch(Exception $e) {
+                    $p->setLink(
+                        $form->embed->value,
+                        $embed->title,
+                        'text/html',
+                        $embed->description,
+                        $embed->providerIcon
+                    );
+                } catch (Exception $e) {
                     error_log($e->getMessage());
                 }
             }
@@ -227,7 +237,8 @@ class PublishBrief extends Base
         $this->rpc(
             'MovimTpl.fill',
             '#publishbrief ul.embed',
-            '<li><p class="normal">' . $this->__('global.loading') . '</p></li>');
+            '<li><p class="normal">' . $this->__('global.loading') . '</p></li>'
+        );
     }
 
     public function ajaxEmbedTest($url, $imagenumber = 0)
@@ -250,7 +261,7 @@ class PublishBrief extends Base
             if ($embed->type == 'link') {
                 $this->rpc('PublishBrief.setTitle', $embed->title);
             }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             $this->ajaxClearEmbed();
             error_log($e->getMessage());
         }
@@ -262,7 +273,7 @@ class PublishBrief extends Base
             $view = $this->tpl();
             $view->assign('embed', \App\Url::resolve($url));
             Drawer::fill($view->draw('_publishbrief_images'), true);
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             error_log($e->getMessage());
         }
     }

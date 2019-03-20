@@ -36,14 +36,14 @@ class AccountNext extends \Movim\Widget\Base
         $xtf = new \XMPPtoForm;
         $html = '';
         if (!empty($form->x)) {
-            switch($form->x->attributes()->xmlns) {
-                case 'jabber:x:data' :
+            switch ($form->x->attributes()->xmlns) {
+                case 'jabber:x:data':
                     $formview = $this->tpl();
                     $formview->assign('submitdata', $this->call('ajaxRegister', "MovimUtils.formToJson('data')"));
                     $formview->assign('formh', $xtf->getHTML($form->x, $form));
                     $html = $formview->draw('_accountnext_form');
                     break;
-                case 'jabber:x:oob' :
+                case 'jabber:x:oob':
                     $this->rpc('MovimUtils.redirect', (string)$form->x->url);
                     break;
             }

@@ -7,7 +7,7 @@ class CreateContactsTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('contacts', function(Blueprint $table) {
+        $this->schema->create('contacts', function (Blueprint $table) {
             $table->string('id', 64);
             $table->string('fn', 64)->nullable();
             $table->string('name')->nullable();

@@ -36,7 +36,9 @@ class Statistics extends Base
             list($client, $version) = explode('#', $presence->node);
             $parts = explode('/', $client);
             $part = isset($parts[2]) ? $parts[2] : $client;
-            if (!isset($stats[$part])) $stats[$part] = 0;
+            if (!isset($stats[$part])) {
+                $stats[$part] = 0;
+            }
 
             $stats[$part]++;
             $total++;

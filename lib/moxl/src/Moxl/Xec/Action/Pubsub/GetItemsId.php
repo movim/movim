@@ -53,5 +53,4 @@ class GetItemsId extends Errors
         $this->pack(['server' => $this->_to, 'node' => $this->_node]);
         $this->deliver();
     }
-
 }

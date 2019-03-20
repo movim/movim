@@ -53,8 +53,8 @@ class OMEMO
         $signedPreKeyPublic,
         $signedPreKeySignature,
         $identityKey,
-        $preKeys)
-    {
+        $preKeys
+    ) {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
         $pubsub->setAttribute('xmlns', 'http://jabber.org/protocol/pubsub');
@@ -106,8 +106,8 @@ class OMEMO
         $rid,
         $iv,
         $payload,
-        $isprekey)
-    {
+        $isprekey
+    ) {
         $session = Session::start();
 
         $dom = new \DOMDocument('1.0', 'UTF-8');

@@ -30,7 +30,9 @@ class Base
 
     public function __construct(bool $light = false, string $view = null)
     {
-        if ($view != null) $this->_view = $view;
+        if ($view != null) {
+            $this->_view = $view;
+        }
 
         //$this->user = new User;
         $this->load();
@@ -39,7 +41,9 @@ class Base
         $this->name = get_class($this);
 
         // If light loading enabled, we stop here
-        if ($light) return;
+        if ($light) {
+            return;
+        }
 
         // Put default widget init here.
         $this->ajax = Ajax::getInstance();
@@ -118,7 +122,9 @@ class Base
         \Movim\RPC::call(...$args);
     }
 
-    public function load() {}
+    public function load()
+    {
+    }
 
     /**
      * Generates the widget's HTML code.
@@ -147,7 +153,9 @@ class Base
     /*
      * @desc Preload some sourcecode for the draw method
      */
-    public function display() {}
+    public function display()
+    {
+    }
 
     /**
      *  @desc Return the template's HTML code
@@ -171,10 +179,12 @@ class Base
      * @param file is the file's name to make up the path for.
      * @param fspath is optional, returns the OS path if true, the URL by default.
      */
-    protected function respath(string $file,
-        bool $fspath = false, bool $parent = false,
-        bool $notime = false): string
-    {
+    protected function respath(
+        string $file,
+        bool $fspath = false,
+        bool $parent = false,
+        bool $notime = false
+    ): string {
         $folder = ($parent == false)
             ? get_class($this)
             : get_parent_class($this);

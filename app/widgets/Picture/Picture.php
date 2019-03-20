@@ -37,13 +37,13 @@ class Picture extends Base
                 curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 4);
                 curl_setopt($ch, CURLOPT_BUFFERSIZE, 12800);
                 curl_setopt($ch, CURLOPT_NOPROGRESS, false);
-                curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, function($downloadSize, $downloaded, $uploadSize, $uploaded) {
+                curl_setopt($ch, CURLOPT_PROGRESSFUNCTION, function ($downloadSize, $downloaded, $uploadSize, $uploaded) {
                     return ($downloaded > SMALL_PICTURE_LIMIT) ? 1 : 0;
                 });
 
                 $response = curl_exec($ch);
                 $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-                curl_close ($ch);
+                curl_close($ch);
 
                 $headers = preg_split('/[\r\n]+/', substr($response, 0, $header_size));
                 $body = substr($response, $header_size);

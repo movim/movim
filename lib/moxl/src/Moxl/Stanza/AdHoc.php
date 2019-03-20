@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class AdHoc
 {
-    static function get($to)
+    public static function get($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/disco#items', 'query');
@@ -14,7 +14,7 @@ class AdHoc
         \Moxl\API::request($xml);
     }
 
-    static function command($to, $node)
+    public static function command($to, $node)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/commands', 'command');
@@ -25,7 +25,7 @@ class AdHoc
         \Moxl\API::request($xml);
     }
 
-    static function submit($to, $node, $data, $sessionid)
+    public static function submit($to, $node, $data, $sessionid)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $command = $dom->createElementNS('http://jabber.org/protocol/commands', 'command');

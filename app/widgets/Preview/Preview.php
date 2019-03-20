@@ -14,7 +14,9 @@ class Preview extends Base
 
     public function ajaxShow($url)
     {
-        if (!Validator::url($url)->validate($url)) return;
+        if (!Validator::url($url)->validate($url)) {
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('url', $url);

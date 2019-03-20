@@ -6,7 +6,9 @@ use App\Configuration;
 function addUrls($string, bool $preview = false)
 {
     // Add missing links
-    return preg_replace_callback("/<a[^>]*>[^<]*<\/a|\".*?\"|((?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’])))/", function ($match) use ($preview) {
+    return preg_replace_callback(
+        "/<a[^>]*>[^<]*<\/a|\".*?\"|((?i)\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'\".,<>?«»“”‘’])))/",
+        function ($match) use ($preview) {
             if (isset($match[1])) {
                 $content = $match[1];
 
@@ -26,7 +28,7 @@ function addUrls($string, bool $preview = false)
                         } elseif ($embed->type == 'link') {
                             $content .= ' - '. $embed->title . ' - ' . $embed->providerName;
                         }
-                    } catch(Exception $e) {
+                    } catch (Exception $e) {
                         error_log($e->getMessage());
                     }
                 }
@@ -60,15 +62,14 @@ function addUrls($string, bool $preview = false)
                 return $content;
             }
             return $match[0];
-
-        }, $string
+        },
+        $string
     );
-
 }
 
 function addHashtagsLinks($string)
 {
-    return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function($match) {
+    return preg_replace_callback("/([\n\r\s>]|^)#(\w+)/u", function ($match) {
         return
             $match[1].
             '<a class="innertag" href="'.\Movim\Route::urlize('tag', $match[2]).'">'.
@@ -81,12 +82,15 @@ function addHFR($string)
 {
     // HFR EasterEgg
     return preg_replace_callback(
-            '/\[:([\w\s-]+)([:\d])*\]/', function ($match) {
-                $num = '';
-                if (count($match) == 3)
-                    $num = $match[2].'/';
-                return '<img class="hfr" title="'.$match[0].'" alt="'.$match[0].'" src="http://forum-images.hardware.fr/images/perso/'.$num.$match[1].'.gif"/>';
-            }, $string
+        '/\[:([\w\s-]+)([:\d])*\]/',
+        function ($match) {
+            $num = '';
+            if (count($match) == 3) {
+                $num = $match[2].'/';
+            }
+            return '<img class="hfr" title="'.$match[0].'" alt="'.$match[0].'" src="http://forum-images.hardware.fr/images/perso/'.$num.$match[1].'.gif"/>';
+        },
+        $string
     );
 }
 
@@ -114,9 +118,9 @@ function getHashtags($string): array
 
     if ($matches) {
         $hashtagsArray = array_count_values($matches[0]);
-        $hashtags = array_map(function($tag) {
+        $hashtags = array_map(function ($tag) {
             return substr($tag, 1);
-        } ,array_keys($hashtagsArray));
+        }, array_keys($hashtagsArray));
     }
 
     return $hashtags;
@@ -188,7 +192,9 @@ function explodeJid(string $jid): array
 
     $arr = explode('@', $jid);
     $username = $arr[0];
-    if (isset($arr[1])) $server = $arr[1];
+    if (isset($arr[1])) {
+        $server = $arr[1];
+    }
 
     return [
         'username'  => $username,
@@ -245,7 +251,9 @@ function typeIsPicture(string $type): bool
  */
 function typeIsAudio(string $type): bool
 {
-    return in_array($type, [
+    return in_array(
+        $type,
+        [
         'audio/aac', 'audio/ogg', 'video/ogg', 'audio/opus',
         'audio/vorbis', 'audio/speex', 'audio/mpeg']
     );

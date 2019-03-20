@@ -3,8 +3,8 @@
  * Return an array containing all the presents languages in i18n/
  *
  */
-function get_lang_list() {
-
+function get_lang_list()
+{
     $lang_list = array(
         'aa' => "Afar",
         'ab' => "Abkhazian",
@@ -204,5 +204,5 @@ function get_lang_list() {
 
     );
 
-  return $lang_list;
+    return $lang_list;
 }

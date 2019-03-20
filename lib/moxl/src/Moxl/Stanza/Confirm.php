@@ -6,7 +6,7 @@ use Moxl\Utils;
 
 class Confirm
 {
-    static function answer($to, $id, $url, $method, $refuse = false)
+    public static function answer($to, $id, $url, $method, $refuse = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $message = $dom->createElementNS('jabber:client', 'message');
@@ -33,5 +33,4 @@ class Confirm
 
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
-
 }

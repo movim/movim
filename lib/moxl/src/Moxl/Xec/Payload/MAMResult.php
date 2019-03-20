@@ -9,7 +9,7 @@ class MAMResult extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $to = current(explode('/',(string)$parent->attributes()->to));
+        $to = current(explode('/', (string)$parent->attributes()->to));
         $session = Session::start();
 
         if ($stanza->forwarded->delay
@@ -19,7 +19,7 @@ class MAMResult extends Payload
             $message->set($stanza->forwarded->message, $stanza->forwarded);
 
             if ($message->type == 'groupchat') {
-                $message->jidfrom = current(explode('/',($message->jidfrom)));
+                $message->jidfrom = current(explode('/', ($message->jidfrom)));
             }
 
             if (!empty($to) && empty($message->jidto)) {

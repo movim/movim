@@ -7,7 +7,7 @@ class CreateInvitesTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('invites', function(Blueprint $table) {
+        $this->schema->create('invites', function (Blueprint $table) {
             $table->string('code', 8);
             $table->string('user_id', 64);
             $table->string('resource', 128);

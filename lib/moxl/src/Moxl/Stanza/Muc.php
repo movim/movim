@@ -8,7 +8,7 @@ use Movim\Session;
 
 class Muc
 {
-    static function message($to, $content, $html = false, $id = false, $file = false)
+    public static function message($to, $content, $html = false, $id = false, $file = false)
     {
         Message::maker($to, $content, $html, 'groupchat', false, false, $id, false, $file);
     }
@@ -23,7 +23,7 @@ class Muc
         Message::maker($to, false, false, 'groupchat', 'paused');
     }
 
-    static function setSubject($to, $subject)
+    public static function setSubject($to, $subject)
     {
         $session = Session::start();
 
@@ -39,7 +39,7 @@ class Muc
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    static function getConfig($to)
+    public static function getConfig($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');
@@ -48,7 +48,7 @@ class Muc
         \Moxl\API::request($xml);
     }
 
-    static function setConfig($to, $data)
+    public static function setConfig($to, $data)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('http://jabber.org/protocol/muc#owner', 'query');

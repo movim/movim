@@ -19,7 +19,9 @@ class PostActions extends Base
     {
         $post = $packet->content;
 
-        if ($post && $post->isComment()) $post = $post->getParent();
+        if ($post && $post->isComment()) {
+            $post = $post->getParent();
+        }
 
         if ($post) {
             $this->rpc('MovimTpl.fill', '#'.cleanupId($post->nodeid), $this->preparePost($post));
@@ -35,7 +37,8 @@ class PostActions extends Base
         } else {
             Notification::append(false, $this->__('post.deleted'));
 
-            $this->rpc('PostActions.handleDelete',
+            $this->rpc(
+                'PostActions.handleDelete',
                 ($node == 'urn:xmpp:microblog:0') ?
                 $this->route('news') :
                 $this->route('community', [$server, $node])
@@ -52,7 +55,9 @@ class PostActions extends Base
                       ->where('nodeid', $id)
                       ->first();
 
-        if (!isset($p) || $p->isLiked()) return;
+        if (!isset($p) || $p->isLiked()) {
+            return;
+        }
 
         $post = new Post;
         $post->publishComment('♥', $p->server, $p->node, $p->nodeid);

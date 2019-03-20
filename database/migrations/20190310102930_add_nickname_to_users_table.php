@@ -7,7 +7,7 @@ class AddNicknameToUsersTable extends Migration
 {
     public function up()
     {
-        $this->schema->table('users', function(Blueprint $table) {
+        $this->schema->table('users', function (Blueprint $table) {
             $table->string('nickname', 64)->nullable();
             $table->unique('nickname');
         });
@@ -15,7 +15,7 @@ class AddNicknameToUsersTable extends Migration
 
     public function down()
     {
-        $this->schema->table('users', function(Blueprint $table) {
+        $this->schema->table('users', function (Blueprint $table) {
             $table->dropUnique('users_nickname_unique');
             $table->dropColumn('nickname');
         });

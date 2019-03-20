@@ -20,16 +20,15 @@ class Storage
         return $query;
     }
 
-    static function set($xmlns, $data)
+    public static function set($xmlns, $data)
     {
         $xml = \Moxl\API::iqWrapper(self::prepareQuery($xmlns, $data), false, 'set');
         \Moxl\API::request($xml);
     }
 
-    static function get($xmlns)
+    public static function get($xmlns)
     {
         $xml = \Moxl\API::iqWrapper(self::prepareQuery($xmlns), false, 'get');
         \Moxl\API::request($xml);
     }
-
 }

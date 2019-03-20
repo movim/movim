@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Nickname
 {
-    static function set($nickname)
+    public static function set($nickname)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');

@@ -22,7 +22,9 @@ class Utils
             $log->pushHandler($handler);
 
             $errlines = explode("\n", $message);
-            foreach ($errlines as $txt) { $log->addInfo($txt); }
+            foreach ($errlines as $txt) {
+                $log->addInfo($txt);
+            }
         }
     }
 
@@ -387,7 +389,8 @@ function getCountries()
     ];
 }
 
-function getPresences() {
+function getPresences()
+{
     return [
             1 => __('presence.online'),
             2 => __('presence.away'),
@@ -396,7 +399,6 @@ function getPresences() {
             5 => __('presence.offline'),
             6 => __('presence.error')
         ];
-
 }
 
 function getPresencesTxt()
@@ -524,7 +526,7 @@ function generateKey($size)
     $hash_chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     $hash = "";
 
-    for($i = 0; $i < $size; $i++) {
+    for ($i = 0; $i < $size; $i++) {
         $r = mt_rand(0, strlen($hash_chars) - 1);
         $hash.= $hash_chars[$r];
     }
@@ -552,8 +554,8 @@ function requestURL(string $url, int $timeout = 10, $post = false, bool $json = 
     }
 
     if (is_array($post)) {
-        curl_setopt ($ch, CURLOPT_POST, 1);
-        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     }
 
     $content = curl_exec($ch);
@@ -592,8 +594,8 @@ function requestAPI(string $action, int $timeout = 2, $post = false)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
     if (is_array($post)) {
-        curl_setopt ($ch, CURLOPT_POST, 1);
-        curl_setopt ($ch, CURLOPT_POSTFIELDS, $post);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     }
 
     $content = curl_exec($ch);

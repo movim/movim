@@ -66,9 +66,11 @@ class Builder
             $scripts .= $this->printScripts();
         }
 
-        $outp = str_replace('<%scripts%>',
-                            $scripts,
-                            $outp);
+        $outp = str_replace(
+            '<%scripts%>',
+            $scripts,
+            $outp
+        );
 
         return $outp;
     }
@@ -188,7 +190,7 @@ class Builder
         if (isset($widgets->links)) {
             foreach ($widgets->links as $l) {
                 $link = $dom->createElement('link');
-                $link->setAttribute('rel',  $l['rel']);
+                $link->setAttribute('rel', $l['rel']);
                 $link->setAttribute('type', $l['type']);
                 $link->setAttribute('href', $l['href']);
                 $metas->appendChild($link);
@@ -244,7 +246,7 @@ class Builder
         $widgets = Wrapper::getInstance();
         $scripts = array_merge($this->scripts, $widgets->loadjs());
         foreach ($scripts as $script) {
-             $out .= '<script type="text/javascript" src="'
+            $out .= '<script type="text/javascript" src="'
                  . $script .
                  '"></script>'."\n";
         }

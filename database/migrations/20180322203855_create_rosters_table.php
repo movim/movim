@@ -7,7 +7,7 @@ class CreateRostersTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('rosters', function(Blueprint $table) {
+        $this->schema->create('rosters', function (Blueprint $table) {
             $table->string('session_id', 64);
             $table->string('jid', 64);
             $table->string('name', 128)->nullable();

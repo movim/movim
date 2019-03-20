@@ -7,7 +7,7 @@ class CreateMessagesTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('messages', function(Blueprint $table) {
+        $this->schema->create('messages', function (Blueprint $table) {
             $table->string('user_id', 64);
             $table->string('id', 64);
             $table->string('oldid', 64)->nullable();

@@ -7,7 +7,7 @@ class CreateSubscriptionsTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('subscriptions', function(Blueprint $table) {
+        $this->schema->create('subscriptions', function (Blueprint $table) {
             $table->string('jid', 64);
             $table->string('server', 64);
             $table->string('node', 192);

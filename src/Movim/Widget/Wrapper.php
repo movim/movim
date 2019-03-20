@@ -31,7 +31,6 @@ class Wrapper
             if (is_dir(APP_PATH ."widgets/".$widget_dir) &&
                 $widget_dir != '..' &&
                 $widget_dir != '.') {
-
                 if (in_array($widget_dir, $load)) {
                     $this->loadWidget($widget_dir, true);
                 }
@@ -41,7 +40,7 @@ class Wrapper
         }
     }
 
-    static public function getInstance()
+    public static function getInstance()
     {
         if (!is_object(self::$instance)) {
             self::$instance = new Wrapper;
@@ -50,7 +49,7 @@ class Wrapper
         return self::$instance;
     }
 
-    static public function destroyInstance()
+    public static function destroyInstance()
     {
         if (isset(self::$instance)) {
             self::$instance = null;
@@ -75,10 +74,10 @@ class Wrapper
     {
         if (file_exists(APP_PATH . "widgets/$name/$name.php")) {
             $path = APP_PATH . "widgets/$name/$name.php";
-        }
-        else {
+        } else {
             throw new \Exception(
-                __('error.widget_load_error', $name));
+                __('error.widget_load_error', $name)
+            );
         }
 
         require_once($path);
@@ -112,11 +111,21 @@ class Wrapper
                 $this->css = array_merge($this->css, $widget->loadcss());
                 $this->js = array_merge($this->js, $widget->loadjs());
 
-                if (isset($widget->title)) $this->title = $widget->title;
-                if (isset($widget->image)) $this->image = $widget->image;
-                if (isset($widget->description)) $this->description = $widget->description;
-                if (isset($widget->url)) $this->url = $widget->url;
-                if (isset($widget->links)) $this->links += $widget->links;
+                if (isset($widget->title)) {
+                    $this->title = $widget->title;
+                }
+                if (isset($widget->image)) {
+                    $this->image = $widget->image;
+                }
+                if (isset($widget->description)) {
+                    $this->description = $widget->description;
+                }
+                if (isset($widget->url)) {
+                    $this->url = $widget->url;
+                }
+                if (isset($widget->links)) {
+                    $this->links += $widget->links;
+                }
             }
 
             return $widget;

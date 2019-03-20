@@ -36,13 +36,17 @@ class Notifications extends Base
     {
         if (is_string($from)) {
             $contact = App\Contact::find($from);
-            if (!$contact) $contact = new App\Contact(['id' => $from]);
+            if (!$contact) {
+                $contact = new App\Contact(['id' => $from]);
+            }
 
             Notification::append(
-                'invite|'.$from, $contact->truename,
+                'invite|'.$from,
+                $contact->truename,
                 $this->__('invitations.wants_to_talk', $contact->truename),
                 $contact->getPhoto(),
-                4);
+                4
+            );
         }
 
         $this->ajaxSetCounter();
@@ -59,7 +63,9 @@ class Notifications extends Base
     public function ajaxSetCounter()
     {
         $since = \App\Cache::c('notifs_since');
-        if (!$since) $since = date(SQL_DATE, 0);
+        if (!$since) {
+            $since = date(SQL_DATE, 0);
+        }
 
         $count = \App\Post::whereIn('parent_id', function ($query) {
             $query->select('id')
@@ -158,10 +164,12 @@ class Notifications extends Base
         ->limit(30)
         ->get();
         $since = \App\Cache::c('notifs_since');
-        if (!$since) $since = date(SQL_DATE, 0);
+        if (!$since) {
+            $since = date(SQL_DATE, 0);
+        }
 
         $view = $this->tpl();
-        $view->assign('hearth',  addEmojis('♥'));
+        $view->assign('hearth', addEmojis('♥'));
         $view->assign('notifs', $notifs);
         $view->assign('since', $since);
         $view->assign('invitations', $invitations);

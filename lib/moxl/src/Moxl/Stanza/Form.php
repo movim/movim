@@ -21,8 +21,12 @@ class Form
         foreach ($this->_data as $key => $value) {
             $field = $node->addChild('field');
 
-            if ($value == 'true') $value = '1';
-            if ($value == 'false') $value = '0';
+            if ($value == 'true') {
+                $value = '1';
+            }
+            if ($value == 'false') {
+                $value = '0';
+            }
 
             $field->addChild('value', trim($value->value));
             /*if (isset($value->attributes->required))
@@ -37,6 +41,6 @@ class Form
         $doc->loadXML($xml);
         $doc->formatOutput = true;
 
-        return substr($doc->saveXML() , strpos($doc->saveXML(), "\n")+1 );
+        return substr($doc->saveXML(), strpos($doc->saveXML(), "\n")+1);
     }
 }

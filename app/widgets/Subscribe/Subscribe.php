@@ -23,10 +23,12 @@ class Subscribe extends Base
         $this->view->assign('config', $config);
 
         if (is_object($json) && $json->status == 200) {
-            $this->view->assign('servers', array_filter((array)$json->servers,
-            function ($server) use ($config) {
-                return empty($config->xmppwhitelist) || in_array($server->domain, $config->xmppwhitelist);
-            }));
+            $this->view->assign('servers', array_filter(
+                (array)$json->servers,
+                function ($server) use ($config) {
+                    return empty($config->xmppwhitelist) || in_array($server->domain, $config->xmppwhitelist);
+                }
+            ));
         }
     }
 }

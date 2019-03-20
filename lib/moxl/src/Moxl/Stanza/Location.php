@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Location
 {
-    static function publish($to, $geo)
+    public static function publish($to, $geo)
     {
         $xml = '
             <pubsub xmlns="http://jabber.org/protocol/pubsub">

@@ -1,6 +1,7 @@
 <?php
 
 namespace Moxl\Xec\Payload;
+
 use App\Session;
 
 class SASLFailure extends Payload

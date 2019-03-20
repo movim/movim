@@ -10,7 +10,8 @@ class Api extends Base
         $json = requestURL(
             MOVIM_API.'pods/register',
             3,
-            ['url' => BASE_URI]);
+            ['url' => BASE_URI]
+        );
 
         $json = json_decode($json);
 
@@ -37,7 +38,9 @@ class Api extends Base
             $this->__(
                 'api.info',
                 '<a href="http://api.movim.eu/" target="_blank">',
-                '</a>'));
+                '</a>'
+            )
+        );
 
         $json = requestURL(MOVIM_API.'pods/status', 2, ['url' => BASE_URI]);
         $json = json_decode($json);

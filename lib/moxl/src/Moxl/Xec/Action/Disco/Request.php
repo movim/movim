@@ -44,7 +44,9 @@ class Request extends Action
         if ($capability->features != null
         && $capability->category != null) {
             $found = \App\Capability::find($capability->node);
-            if ($found) $found->delete();
+            if ($found) {
+                $found->delete();
+            }
 
             $capability->save();
         }
@@ -60,7 +62,7 @@ class Request extends Action
         if ($found) {
             $found->set($stanza);
             $found->save();
-        } else if (!empty($info->category)
+        } elseif (!empty($info->category)
         && $info->category !== 'account'
         && $info->category !== 'client') {
             $info->save();

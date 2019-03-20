@@ -169,7 +169,9 @@ class Pubsub
             $field->appendChild($value);
         }
 
-        if (empty($access_model)) $access_model = 'whitelist';
+        if (empty($access_model)) {
+            $access_model = 'whitelist';
+        }
 
         $field = $dom->createElement('field');
         $field->setAttribute('var', 'pubsub#access_model');
@@ -312,10 +314,11 @@ class Pubsub
             $subscriptions .= '
                 <subscription
                     jid="'.$jid.'" ';
-                if ($subid != null)
-                    $subscriptions .=
+            if ($subid != null) {
+                $subscriptions .=
                         'subid="'.$subid.'" ';
-                $subscriptions .= '
+            }
+            $subscriptions .= '
                     subscription="'.$subscription.'" />';
         }
 

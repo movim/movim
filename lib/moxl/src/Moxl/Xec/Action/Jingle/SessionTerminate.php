@@ -25,7 +25,8 @@ class SessionTerminate extends Action
 
     public function setReason($reason)
     {
-        if (in_array($reason,
+        if (in_array(
+            $reason,
             [
                 'success',
                 'busy',
@@ -35,8 +36,10 @@ class SessionTerminate extends Action
                 'unsupported-applications',
                 'failed-application',
                 'incompatible-parameters'
-            ]))
+            ]
+        )) {
             $this->_reason = $reason;
+        }
 
         return $this;
     }

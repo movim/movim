@@ -30,7 +30,9 @@ class Blog extends Base
             $this->_from = $this->get('s');
             $this->_node = $this->get('n');
 
-            if (!$this->validateServerNode($this->_from, $this->_node)) return;
+            if (!$this->validateServerNode($this->_from, $this->_node)) {
+                return;
+            }
 
             $this->_item = \App\Info::where('server', $this->_from)
                                     ->where('node', $this->_node)

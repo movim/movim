@@ -7,7 +7,7 @@ class CreateCapabilitiesTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('capabilities', function(Blueprint $table) {
+        $this->schema->create('capabilities', function (Blueprint $table) {
             $table->string('node', 256);
             $table->string('category', 16);
             $table->string('type', 16);

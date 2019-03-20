@@ -40,7 +40,7 @@ class XMPPtoForm
 
         foreach ($this->xmpp->children() as $element) {
             \Utils::debug($element->getName());
-            switch($element->getName()) {
+            switch ($element->getName()) {
                 case 'title':
                     $this->outTitle($element);
                     break;
@@ -54,7 +54,7 @@ class XMPPtoForm
                         $uri = parse_url($element->media->uri);
                         switch ($uri['scheme']) {
                             case 'cid':
-                                foreach($this->stanza->xpath('//data[@cid=\''.$uri['path'].'\']') as $data) {
+                                foreach ($this->stanza->xpath('//data[@cid=\''.$uri['path'].'\']') as $data) {
                                     $this->outImage('data:'.$data->attributes()->type.';base64,'.(string)$data);
                                 }
                                 break;
@@ -65,8 +65,8 @@ class XMPPtoForm
                         }
                     }
 
-                    if(isset($element->attributes()->type)) {
-                        switch($element->attributes()->type) {
+                    if (isset($element->attributes()->type)) {
+                        switch ($element->attributes()->type) {
                             case 'boolean':
                                 $this->outCheckbox($element);
                                 break;

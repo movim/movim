@@ -28,10 +28,17 @@ class Get extends Action
         $sess->set('mamid'.$this->_queryid, true);
         $this->store();
 
-        MAM::get($this->_to, $this->_queryid, $this->_jid,
-            $this->_start, $this->_end,
-            $this->_limit, $this->_after, $this->_before,
-            $this->_version);
+        MAM::get(
+            $this->_to,
+            $this->_queryid,
+            $this->_jid,
+            $this->_start,
+            $this->_end,
+            $this->_limit,
+            $this->_after,
+            $this->_before,
+            $this->_version
+        );
     }
 
     public function setBefore($before = true)

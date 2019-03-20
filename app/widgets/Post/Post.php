@@ -34,9 +34,11 @@ class Post extends Base
                 $this->prepareComments($post->getParent())
             );
         } else {
-            $this->rpc('MovimTpl.fill',
+            $this->rpc(
+                'MovimTpl.fill',
                 '#post_widget.'.cleanupId($post->nodeid),
-                $this->preparePost($post));
+                $this->preparePost($post)
+            );
             $this->rpc('MovimUtils.enhanceArticlesContent');
         }
     }
@@ -130,7 +132,9 @@ class Post extends Base
 
     public function requestComments(\App\Post $post)
     {
-        if ($post->id == null) return;
+        if ($post->id == null) {
+            return;
+        }
 
         \App\Post::whereNotNull('parent_id')
                  ->where('parent_id', $post->id)
@@ -146,7 +150,9 @@ class Post extends Base
     public function publishComment($comment, $to, $node, $id)
     {
         if (!Validator::stringType()->notEmpty()->validate($comment)
-        || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)) return;
+        || !Validator::stringType()->length(6, 128)->noWhitespace()->validate($id)) {
+            return;
+        }
 
         $p = \App\Post::where('server', $to)
                       ->where('node', $node)
@@ -236,7 +242,9 @@ class Post extends Base
 
     public function preparePostReply(\App\Post $post)
     {
-        if (!$post->isReply()) return '';
+        if (!$post->isReply()) {
+            return '';
+        }
 
         $view = $this->tpl();
         $view->assign('reply', $post->getReply());

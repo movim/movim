@@ -7,7 +7,7 @@ class CreateUrlsTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('urls', function(Blueprint $table) {
+        $this->schema->create('urls', function (Blueprint $table) {
             $table->string('hash');
             $table->text('cache');
             $table->primary('hash');

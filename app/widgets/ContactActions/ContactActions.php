@@ -42,7 +42,9 @@ class ContactActions extends Base
 
     public function ajaxGetDrawer($jid)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $tpl = $this->tpl();
         $tpl->assign('contact', App\Contact::firstOrNew(['id' => $jid]));
@@ -69,7 +71,9 @@ class ContactActions extends Base
 
     public function ajaxChat($jid)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $c = new Chats;
         $c->ajaxOpen($jid);

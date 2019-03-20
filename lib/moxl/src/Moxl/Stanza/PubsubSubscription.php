@@ -14,7 +14,7 @@ class PubsubSubscription
         return sha1($id);
     }
 
-    static function listAdd($server, $jid, $node, $title, $pepnode = 'urn:xmpp:pubsub:subscription')
+    public static function listAdd($server, $jid, $node, $title, $pepnode = 'urn:xmpp:pubsub:subscription')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 
@@ -41,7 +41,7 @@ class PubsubSubscription
         \Moxl\API::request($xml);
     }
 
-    static function listRemove($server, $jid, $node, $pepnode = 'urn:xmpp:pubsub:subscription')
+    public static function listRemove($server, $jid, $node, $pepnode = 'urn:xmpp:pubsub:subscription')
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
 

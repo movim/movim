@@ -21,7 +21,7 @@ class Carbons extends Payload
                     $this->pack($m);
                     $this->deliver();
                 }
-            } else if ($message->displayed) {
+            } elseif ($message->displayed) {
                 // Another client just displayed the message
                 $displayed = new Displayed;
                 $displayed->handle($message->displayed, $message);

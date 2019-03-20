@@ -7,7 +7,7 @@ class CreateCachesTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('caches', function(Blueprint $table) {
+        $this->schema->create('caches', function (Blueprint $table) {
             $table->string('user_id', 64);
             $table->string('name', 64);
             $table->text('data');

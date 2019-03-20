@@ -8,7 +8,7 @@ class Location extends Payload
 {
     public function handle($stanza, $parent = false)
     {
-        $from = current(explode('/',(string)$parent->attributes()->from));
+        $from = current(explode('/', (string)$parent->attributes()->from));
 
         if (isset($stanza->items->item->geoloc)
         && $stanza->items->item->geoloc->count() > 0) {

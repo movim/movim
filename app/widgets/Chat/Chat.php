@@ -62,7 +62,9 @@ class Chat extends \Movim\Widget\Base
         $from = null;
         $chatStates = ChatStates::getInstance();
 
-        if ($message->isEmpty()) return;
+        if ($message->isEmpty()) {
+            return;
+        }
 
         if ($message->user_id == $message->jidto
         && !$history
@@ -98,7 +100,6 @@ class Chat extends \Movim\Widget\Base
             elseif ($message->type == 'groupchat'
                    && $message->quoted
                    && !$receipt) {
-
                 $conference = $this->user->session
                                    ->conferences()->where('conference', $from)
                                    ->first();
@@ -110,7 +111,8 @@ class Chat extends \Movim\Widget\Base
                         : $from,
                     $message->resource.': '.$message->body,
                     false,
-                    4);
+                    4
+                );
             } elseif ($message->type == 'groupchat') {
                 $chatStates->clearState($from, $message->resource);
             }
@@ -237,7 +239,9 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetRoom($room, $light = false, $noConnect = false)
     {
-        if (!$this->validateJid($room)) return;
+        if (!$this->validateJid($room)) {
+            return;
+        }
 
         $r = $this->user->session->conferences()->where('conference', $room)->first();
 
@@ -426,7 +430,9 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxSendComposing($to, $muc = false)
     {
-        if (!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) {
+            return;
+        }
 
         $mc = new Composing;
 
@@ -445,7 +451,9 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxSendPaused($to, $muc = false)
     {
-        if (!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) {
+            return;
+        }
 
         $mp = new Paused;
 
@@ -464,11 +472,13 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetHistory($jid, $date, $muc = false, $prepend = true)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $messages = $this->user->messages()
                          ->where(function ($query) use ($jid) {
-                                $query->where('jidfrom', $jid)
+                             $query->where('jidfrom', $jid)
                                       ->orWhere('jidto', $jid);
                          })
                          ->where('published', $prepend ? '<' : '>', date(SQL_DATE, strtotime($date)));
@@ -507,7 +517,9 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxGetRoomConfig($room)
     {
-        if (!$this->validateJid($room)) return;
+        if (!$this->validateJid($room)) {
+            return;
+        }
 
         $gc = new GetConfig;
         $gc->setTo($room)
@@ -521,7 +533,9 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxSetRoomConfig($data, $room)
     {
-        if (!$this->validateJid($room)) return;
+        if (!$this->validateJid($room)) {
+            return;
+        }
 
         $sc = new SetConfig;
         $sc->setTo($room)
@@ -534,7 +548,9 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxDisplayed($jid, $id)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $message = $this->user->messages()->where('id', $id)->first();
 
@@ -555,7 +571,9 @@ class Chat extends \Movim\Widget\Base
      */
     public function ajaxClearHistory($jid)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $this->user->messages()->where(function ($query) use ($jid) {
             $query->where('jidfrom', $jid)
@@ -575,10 +593,12 @@ class Chat extends \Movim\Widget\Base
         $view->assign('emoji', prepareString('😀'));
         $view->assign('muc', $muc);
         $view->assign('anon', false);
-        $view->assign('info',
+        $view->assign(
+            'info',
             \App\Info::where('server', $this->user->session->host)
                      ->where('node', '')
-                     ->first());
+                     ->first()
+        );
 
         if ($muc) {
             $view->assign('room', $jid);
@@ -603,7 +623,9 @@ class Chat extends \Movim\Widget\Base
 
     public function prepareMessages($jid, $muc = false)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $jid = echapJid($jid);
 
@@ -614,7 +636,7 @@ class Chat extends \Movim\Widget\Base
 
         $messages = $muc
             ? $messages->where('type', 'groupchat')->whereNull('subject')
-            : $messages->whereIn('type',$this->_messageTypes);
+            : $messages->whereIn('type', $this->_messageTypes);
 
         $messages = $messages->orderBy('published', 'desc')->take($this->_pagination)->get();
         $messages = $messages->reverse();
@@ -741,7 +763,9 @@ class Chat extends \Movim\Widget\Base
 
         $date = prepareDate(strtotime($message->published), false, false, true);
 
-        if (empty($date)) $date = $this->__('date.today');
+        if (empty($date)) {
+            $date = $this->__('date.today');
+        }
 
         // We create the date wrapper
         if (!array_key_exists($date, $this->_wrapper)) {
@@ -802,7 +826,8 @@ class Chat extends \Movim\Widget\Base
             $start = Message::where(
                 ['type' =>'jingle_start',
                  'thread'=> $message->thread
-                ])->first();
+                ]
+            )->first();
 
             if ($start) {
                 $diff = (new DateTime($start->created_at))
@@ -833,7 +858,9 @@ class Chat extends \Movim\Widget\Base
         $conferences = $conferences->orderBy('occupants', 'desc')->take(8)->get();
 
         $chats = \App\Cache::c('chats');
-        if ($chats == null) $chats = [];
+        if ($chats == null) {
+            $chats = [];
+        }
         $chats[$this->user->id] = true;
 
         $top = $this->user->session->topContacts()

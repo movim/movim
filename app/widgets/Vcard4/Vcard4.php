@@ -21,10 +21,10 @@ class Vcard4 extends Base
     {
         $vcardform = $this->tpl();
 
-        $vcardform->assign('me',       $this->user);
-        $vcardform->assign('contact',  $contact);
-        $vcardform->assign('desc',     trim($contact->description));
-        $vcardform->assign('countries',getCountries());
+        $vcardform->assign('me', $this->user);
+        $vcardform->assign('contact', $contact);
+        $vcardform->assign('desc', trim($contact->description));
+        $vcardform->assign('countries', getCountries());
 
         $contact->isValidDate();
 
@@ -112,14 +112,13 @@ class Vcard4 extends Base
     public function ajaxEditNickname()
     {
         $view = $this->tpl();
-        $view->assign('me',       $this->user);
+        $view->assign('me', $this->user);
         Dialog::fill($view->draw('_vcard4_nickname'));
     }
 
     public function ajaxSaveNickname(string $nickname)
     {
         if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->validate($nickname)) {
-
             if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->user->id)->first()) {
                 Notification::append(null, $this->__('profile.nickname_conflict'));
                 return;

@@ -49,14 +49,18 @@ class Menu extends Base
 
         $post = $packet->content;
 
-        if (!is_object($post)) return;
+        if (!is_object($post)) {
+            return;
+        }
 
         $post = \App\Post::where('server', $post->server)
                          ->where('node', $post->node)
                          ->where('nodeid', $post->nodeid)
                          ->first();
 
-        if ($post === null) return;
+        if ($post === null) {
+            return;
+        }
 
         if ($post->isComment()
         && !$post->isMine()) {

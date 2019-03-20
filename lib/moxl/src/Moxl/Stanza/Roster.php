@@ -56,5 +56,4 @@ class Roster
         $xml = \Moxl\API::iqWrapper($roster, false, 'set');
         \Moxl\API::request($xml);
     }
-
 }

@@ -7,7 +7,7 @@ class CreateUsersTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('users', function(Blueprint $table) {
+        $this->schema->create('users', function (Blueprint $table) {
             $table->string('id', 64);
             $table->text('configuration')->nullable();
             $table->string('language', 6)->nullable();

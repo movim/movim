@@ -51,7 +51,9 @@ class CommunityConfig extends Base
 
     public function ajaxGetAvatar($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('info', \App\Info::where('server', $origin)
@@ -63,7 +65,9 @@ class CommunityConfig extends Base
 
     public function ajaxSetAvatar($origin, $node, $form)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $key = $origin.$node.'avatar';
 
@@ -80,7 +84,9 @@ class CommunityConfig extends Base
 
     public function ajaxGetConfig($origin, $node, $advanced = false)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $r = new GetConfig;
         $r->setTo($origin)
@@ -95,7 +101,9 @@ class CommunityConfig extends Base
 
     public function ajaxSetConfig($data, $origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $r = new SetConfig;
         $r->setTo($origin)

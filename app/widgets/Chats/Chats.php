@@ -80,7 +80,8 @@ class Chats extends Base
                     ? 'MovimUtils.addClass'
                     : 'MovimUtils.removeClass',
                 '#' . cleanupId($jid.'_chat_item') . ' span.primary',
-                'composing');
+                'composing'
+            );
         }
     }
 
@@ -127,10 +128,14 @@ class Chats extends Base
 
     public function ajaxOpen($jid, $history = true)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $chats = \App\Cache::c('chats');
-        if ($chats == null) $chats = [];
+        if ($chats == null) {
+            $chats = [];
+        }
 
         unset($chats[$jid]);
 
@@ -138,7 +143,9 @@ class Chats extends Base
                 && */$jid != $this->user->id) {
             $chats[$jid] = 1;
 
-            if ($history) $this->ajaxGetHistory($jid);
+            if ($history) {
+                $this->ajaxGetHistory($jid);
+            }
 
             \App\Cache::c('chats', $chats);
             $this->rpc(
@@ -158,7 +165,9 @@ class Chats extends Base
         $notif = new Notification;
         $notif->ajaxClear('chat|'.$jid);
 
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $chats = \App\Cache::c('chats');
         unset($chats[$jid]);
@@ -207,7 +216,9 @@ class Chats extends Base
 
     public function prepareChat(string $jid, App\Contact $contact, App\Roster $roster = null, $status = null)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $view = $this->tpl();
 

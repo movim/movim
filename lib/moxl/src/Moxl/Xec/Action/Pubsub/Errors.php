@@ -6,8 +6,12 @@ use Moxl\Xec\Action;
 
 class Errors extends Action
 {
-    public function request() {}
-    public function handle($stanza, $parent = false) {}
+    public function request()
+    {
+    }
+    public function handle($stanza, $parent = false)
+    {
+    }
 
     // Generic Pubsub errors handlers
     public function errorItemNotFound($error)

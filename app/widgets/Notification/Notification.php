@@ -30,8 +30,8 @@ class Notification extends Base
         $time = 2,
         $action = null,
         $group = null,
-        $execute = null)
-    {
+        $execute = null
+    ) {
         // In this case we have an action confirmation
         if ($key == null && $title != null) {
             RPC::call('Notification.toast', $title);
@@ -51,14 +51,18 @@ class Notification extends Base
 
         $notifs_key = $session->get('notifs_key');
 
-        if ($notifs == null) $notifs = [];
+        if ($notifs == null) {
+            $notifs = [];
+        }
 
         $explode = explode('|', $key);
         $first = reset($explode);
 
         // What we receive is not what it's on the screen on Android
         if ($key != null && $key != $notifs_key && $title != null) {
-            if ($group != null) $action = $group;
+            if ($group != null) {
+                $action = $group;
+            }
             RPC::call('Notification.android', $title, $body, $picture, $action);
         }
 
@@ -68,7 +72,9 @@ class Notification extends Base
             $notifs[$first] = 1;
         }
 
-        if ($notifs_key != null && $key == $notifs_key) return;
+        if ($notifs_key != null && $key == $notifs_key) {
+            return;
+        }
 
         RPC::call('Notification.counter', $first, $notifs[$first]);
 
@@ -87,7 +93,8 @@ class Notification extends Base
             RPC::call(
                 'Notification.snackbar',
                 $n->prepareSnackbar($title, $body, $picture, $action, $execute),
-                $time);
+                $time
+            );
         }
 
         $session->set('notifs', $notifs);
@@ -136,7 +143,9 @@ class Notification extends Base
     {
         $session = Session::start();
         $notifs = $session->get('notifs');
-        if ($notifs != null) RPC::call('Notification.refresh', $notifs);
+        if ($notifs != null) {
+            RPC::call('Notification.refresh', $notifs);
+        }
     }
 
     /**

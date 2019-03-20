@@ -22,7 +22,9 @@ class RemoveItem extends Action
               ->contacts()
               ->where('jid', $this->_to)
               ->first();
-        if ($contact) $contact->delete();
+        if ($contact) {
+            $contact->delete();
+        }
 
         $this->pack($this->_to);
         $this->deliver();

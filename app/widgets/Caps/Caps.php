@@ -34,7 +34,9 @@ class Caps extends Base
             $parts = explode('#', reset($parts));
             $clientname = reset($parts);
 
-            if ($oldname == $clientname) continue;
+            if ($oldname == $clientname) {
+                continue;
+            }
 
             if (!isset($this->_table[$c->name])) {
                 $this->_table[$c->name] = [];

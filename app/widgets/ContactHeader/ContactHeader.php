@@ -25,7 +25,9 @@ class ContactHeader extends Base
 
     public function ajaxEditContact($jid)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $view = $this->tpl();
 
@@ -46,7 +48,9 @@ class ContactHeader extends Base
 
     public function ajaxDeleteContact($jid)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('jid', $jid);
@@ -70,7 +74,9 @@ class ContactHeader extends Base
 
     public function ajaxChat($jid)
     {
-        if (!$this->validateJid($jid)) return;
+        if (!$this->validateJid($jid)) {
+            return;
+        }
 
         $c = new Chats;
         $c->ajaxOpen($jid);

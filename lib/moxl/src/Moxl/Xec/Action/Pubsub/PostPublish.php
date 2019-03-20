@@ -15,15 +15,17 @@ class PostPublish extends Errors
     private $_atom;
     private $_repost;
 
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
         $this->_atom = new PubsubAtom;
     }
 
     public function request()
     {
-        if ($this->_to == '')
+        if ($this->_to == '') {
             $this->_to = $this->_atom->jid;
+        }
 
         $this->store();
 
@@ -67,8 +69,8 @@ class PostPublish extends Errors
         $title = null,
         $type = 'text/html',
         $description = null,
-        $logo = null)
-    {
+        $logo = null
+    ) {
         $this->_atom->link = [
             'href'  => $href,
             'title' => $title,

@@ -7,7 +7,7 @@ class CreateConferencesTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('conferences', function(Blueprint $table) {
+        $this->schema->create('conferences', function (Blueprint $table) {
             $table->string('session_id', 64);
             $table->string('conference', 128);
             $table->string('name', 128);

@@ -7,7 +7,7 @@ class UpdateUniqueConstraintSessions extends Migration
 {
     public function up()
     {
-        $this->schema->table('sessions', function(Blueprint $table) {
+        $this->schema->table('sessions', function (Blueprint $table) {
             $table->dropUnique('host');
             $table->unique('user_id');
         });
@@ -15,7 +15,7 @@ class UpdateUniqueConstraintSessions extends Migration
 
     public function down()
     {
-        $this->schema->table('sessions', function(Blueprint $table) {
+        $this->schema->table('sessions', function (Blueprint $table) {
             $table->dropUnique('sessions_user_id_unique');
             $table->unique('username', 'host');
         });

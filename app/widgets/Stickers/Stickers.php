@@ -40,13 +40,17 @@ class Stickers extends \Movim\Widget\Base
 
     public function ajaxSend($to, $pack, $file, $muc = false)
     {
-        if (!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) {
+            return;
+        }
 
         list($key, $ext) = explode('.', $file);
 
         $filepath = dirname(__FILE__).'/stickers/'.$pack.'/'.$key.'.png';
 
-        if (!file_exists($filepath)) return;
+        if (!file_exists($filepath)) {
+            return;
+        }
 
         // Caching the picture
         if (!file_exists(CACHE_PATH.md5($key).'.png')) {
@@ -95,7 +99,9 @@ class Stickers extends \Movim\Widget\Base
 
     public function ajaxShow($to, $pack = null)
     {
-        if (!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) {
+            return;
+        }
 
         $packs = $this->getPacks();
 
@@ -124,7 +130,9 @@ class Stickers extends \Movim\Widget\Base
      */
     public function ajaxSmiley($to)
     {
-        if (!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) {
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('jid', $to);
@@ -138,7 +146,9 @@ class Stickers extends \Movim\Widget\Base
      */
     public function ajaxSmileyTwo($to)
     {
-        if (!$this->validateJid($to)) return;
+        if (!$this->validateJid($to)) {
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('jid', $to);

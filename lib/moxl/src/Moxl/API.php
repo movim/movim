@@ -17,7 +17,8 @@ class API
         if ($me->id && $me->session->resource) {
             $iq->setAttribute(
                 'from',
-                $me->id.'/'.$me->session->resource);
+                $me->id.'/'.$me->session->resource
+            );
         }
 
         if ($to != false) {
@@ -31,7 +32,9 @@ class API
         global $language;
 
         $session = Session::start();
-        if ($id == false) $id = $session->get('id');
+        if ($id == false) {
+            $id = $session->get('id');
+        }
         $iq->setAttribute('id', $id);
 
         if (isset($language)) {

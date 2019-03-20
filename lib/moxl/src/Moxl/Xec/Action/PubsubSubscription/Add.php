@@ -18,8 +18,11 @@ class Add extends Errors
     {
         $this->store();
         PubsubSubscription::listAdd(
-            $this->_server, $this->_from, $this->_node,
-            $this->_data['title'], $this->_pepnode
+            $this->_server,
+            $this->_from,
+            $this->_node,
+            $this->_data['title'],
+            $this->_pepnode
         );
     }
 

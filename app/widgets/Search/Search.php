@@ -38,16 +38,16 @@ class Search extends Base
             $view->assign('posts', new Collection);
 
             if ($this->user->hasPubsub()) {
-                $posts = \App\Post::whereIn('id', function($query) use ($key) {
+                $posts = \App\Post::whereIn('id', function ($query) use ($key) {
                     $query->select('post_id')
                           ->from('post_tag')
-                          ->whereIn('tag_id', function($query) use ($key) {
-                            $query->select('id')
+                          ->whereIn('tag_id', function ($query) use ($key) {
+                              $query->select('id')
                                   ->from('tags')
                                   ->where('name', 'like', '%' . strtolower($key) . '%');
                           });
                 })
-                ->whereIn('id', function($query) {
+                ->whereIn('id', function ($query) {
                     $query = $query->select('id')->from('posts');
 
                     $query = \App\Post::withContactsScope($query);

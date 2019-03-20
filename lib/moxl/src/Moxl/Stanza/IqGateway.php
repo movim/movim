@@ -6,7 +6,7 @@ use Moxl\Utils;
 
 class IqGateway
 {
-    static function get($to)
+    public static function get($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:gateway', 'query');
@@ -14,7 +14,7 @@ class IqGateway
         \Moxl\API::request($xml);
     }
 
-    static function set($to, $prompt)
+    public static function set($to, $prompt)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $query = $dom->createElementNS('jabber:iq:gateway', 'query');

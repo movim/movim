@@ -30,7 +30,8 @@ class Share extends Base
                         $this->rpc(
                             'MovimUtils.redirect',
                             $this->route(
-                                'chat', [$uri['path'], 'room']
+                                'chat',
+                                [$uri['path'], 'room']
                             )
                         );
 
@@ -43,7 +44,8 @@ class Share extends Base
                         $this->rpc(
                             'MovimUtils.redirect',
                             $this->route(
-                                'post', [$uri['path'], $params['node'], $params['item']]
+                                'post',
+                                [$uri['path'], $params['node'], $params['item']]
                             )
                         );
                     }
@@ -52,7 +54,8 @@ class Share extends Base
                         $this->rpc(
                             'MovimUtils.redirect',
                             $this->route(
-                                'community', [$uri['path'], $params['node']]
+                                'community',
+                                [$uri['path'], $params['node']]
                             )
                         );
                     }
@@ -60,7 +63,8 @@ class Share extends Base
                     $this->rpc(
                         'MovimUtils.redirect',
                         $this->route(
-                            'contact', $uri['path']
+                            'contact',
+                            $uri['path']
                         )
                     );
                 }

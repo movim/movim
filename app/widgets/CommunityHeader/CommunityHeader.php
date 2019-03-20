@@ -70,7 +70,9 @@ class CommunityHeader extends Base
 
     public function ajaxGetMetadata($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $r = new Request;
         $r->setTo($origin)->setNode($node)
@@ -79,7 +81,9 @@ class CommunityHeader extends Base
 
     public function ajaxAskSubscribe($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $view = $this->tpl();
 
@@ -94,7 +98,9 @@ class CommunityHeader extends Base
 
     public function ajaxSubscribe($form, $origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $g = new Subscribe;
         $g->setTo($origin)
@@ -114,7 +120,9 @@ class CommunityHeader extends Base
 
     public function ajaxAskUnsubscribe($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $view = $this->tpl();
 
@@ -129,7 +137,9 @@ class CommunityHeader extends Base
 
     public function ajaxUnsubscribe($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $subscriptions = $this->user->subscriptions()
                               ->where('server', $origin)
@@ -157,7 +167,9 @@ class CommunityHeader extends Base
      */
     public function ajaxTestPublish($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $t = new TestPostPublish;
         $t->setTo($origin)

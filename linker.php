@@ -33,7 +33,8 @@ $parser = new \Moxl\Parser(function ($node) {
 
 $timestamp = time();
 
-function handleSSLErrors($errno, $errstr) {
+function handleSSLErrors($errno, $errstr)
+{
     fwrite(
         STDERR,
         colorize(getenv('sid'), 'yellow').
@@ -45,7 +46,7 @@ function handleSSLErrors($errno, $errstr) {
 }
 
 // Temporary linker killer
-$loop->addPeriodicTimer(5, function() use(&$xmppSocket, &$timestamp) {
+$loop->addPeriodicTimer(5, function () use (&$xmppSocket, &$timestamp) {
     if ($timestamp < time() - 3600*4
     && isset($xmppSocket)) {
         $xmppSocket->close();
@@ -85,8 +86,7 @@ function shutdown()
     $loop->stop();
 }
 
-$wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehaviour, &$dns)
-{
+$wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehaviour, &$dns) {
     global $wsSocket;
 
     $msg = json_decode($msg);
@@ -122,7 +122,9 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
 
             case 'unregister':
                 \Moxl\Stanza\Stream::end();
-                if (isset($xmppSocket)) $xmppSocket->close();
+                if (isset($xmppSocket)) {
+                    $xmppSocket->close();
+                }
                 shutdown();
                 break;
 
@@ -131,33 +133,41 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                 $host = $msg->host;
 
                 $dns->resolveAll('_xmpp-client._tcp.' . $msg->host, React\Dns\Model\Message::TYPE_SRV)
-                    ->then(function ($resolved) use (&$host, &$port, &$msg) {
-                        $host = $resolved[0]['target'];
-                        $port = $resolved[0]['port'];
+                    ->then(
+                        function ($resolved) use (&$host, &$port, &$msg) {
+                            $host = $resolved[0]['target'];
+                            $port = $resolved[0]['port'];
 
-                        if (getenv('verbose')) {
-                            fwrite(
-                                STDERR,
-                                colorize(
-                                    getenv('sid'), 'yellow')." : ".
-                                    colorize('Resolved target '.$host.' from '.$msg->host, 'blue').
-                                    "\n");
-                        }
-                    }
-                )->always(function () use (&$connector, &$xmppBehaviour, &$dns, &$host, &$port) {
-                    $dns->resolve($host, React\Dns\Model\Message::TYPE_AAAA)
-                        ->then(function ($ip) use (&$connector, &$xmppBehaviour, $host, $port) {
                             if (getenv('verbose')) {
                                 fwrite(
+                                STDERR,
+                                colorize(
+                                    getenv('sid'),
+                                    'yellow'
+                                )." : ".
+                                    colorize('Resolved target '.$host.' from '.$msg->host, 'blue').
+                                    "\n"
+                            );
+                            }
+                        }
+                )->always(function () use (&$connector, &$xmppBehaviour, &$dns, &$host, &$port) {
+                    $dns->resolve($host, React\Dns\Model\Message::TYPE_AAAA)
+                        ->then(
+                            function ($ip) use (&$connector, &$xmppBehaviour, $host, $port) {
+                                if (getenv('verbose')) {
+                                    fwrite(
                                     STDERR,
                                     colorize(
-                                        getenv('sid'), 'yellow')." : ".
+                                        getenv('sid'),
+                                        'yellow'
+                                    )." : ".
                                         colorize('Connection to '.$host.' ('.$ip.')', 'blue').
-                                        "\n");
-                            }
+                                        "\n"
+                                );
+                                }
 
-                            $connector->connect('['.$ip.']:'. $port)->then($xmppBehaviour);
-                        }
+                                $connector->connect('['.$ip.']:'. $port)->then($xmppBehaviour);
+                            }
                     );
                 });
 
@@ -168,8 +178,7 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
     return;
 };
 
-$xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $parser, &$timestamp)
-{
+$xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $parser, &$timestamp) {
     global $wsSocket;
 
     $xmppSocket = $stream;
@@ -179,7 +188,7 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
         fwrite(STDERR, colorize(getenv('sid'), 'yellow')." launched : ".\sizeToCleanSize(memory_get_usage())."\n");
     }
 
-    $xmppSocket->on('data', function($message) use (&$xmppSocket, $parser, &$timestamp) {
+    $xmppSocket->on('data', function ($message) use (&$xmppSocket, $parser, &$timestamp) {
         if (!empty($message)) {
             $restart = false;
 
@@ -240,8 +249,12 @@ $xmppBehaviour = function (React\Socket\Connection $stream) use (&$xmppSocket, $
         }
     });
 
-    $xmppSocket->on('error', function() { shutdown(); });
-    $xmppSocket->on('close', function() { shutdown(); });
+    $xmppSocket->on('error', function () {
+        shutdown();
+    });
+    $xmppSocket->on('close', function () {
+        shutdown();
+    });
 
     // And we say that we are ready !
     $obj = new \StdClass;
@@ -255,7 +268,7 @@ $wsConnector = new \Ratchet\Client\Connector($loop);
 $wsConnector('ws://localhost:' . getenv('port'), [], [
     'MOVIM_SESSION_ID' => getenv('sid'),
     'MOVIM_DAEMON_KEY' => getenv('key')
-])->then(function(Ratchet\Client\WebSocket $socket) use (&$wsSocket, $wsSocketBehaviour) {
+])->then(function (Ratchet\Client\WebSocket $socket) use (&$wsSocket, $wsSocketBehaviour) {
     $wsSocket = $socket;
     $wsSocket->on('message', $wsSocketBehaviour);
 });

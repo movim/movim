@@ -7,7 +7,7 @@ class CreateInfosTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('infos', function(Blueprint $table) {
+        $this->schema->create('infos', function (Blueprint $table) {
             $table->string('server', 64);
             $table->string('node', 96);
             $table->string('category', 16);

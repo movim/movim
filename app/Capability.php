@@ -77,9 +77,15 @@ class Capability extends Model
 
     public function getDeviceIcon()
     {
-        if (in_array($this->type, ['handheld', 'phone'])) return 'smartphone';
-        if ($this->type == 'bot') return 'memory';
-        if ($this->type == 'console') return 'video_label';
+        if (in_array($this->type, ['handheld', 'phone'])) {
+            return 'smartphone';
+        }
+        if ($this->type == 'bot') {
+            return 'memory';
+        }
+        if ($this->type == 'console') {
+            return 'video_label';
+        }
         if ($this->type == 'web') {
             if ($this->name == 'Movim') {
                 return 'cloud_queue';

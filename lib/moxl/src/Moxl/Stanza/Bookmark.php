@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Bookmark
 {
-    static function get()
+    public static function get()
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -17,7 +17,7 @@ class Bookmark
         \Moxl\API::request($xml);
     }
 
-    static function set($arr)
+    public static function set($arr)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');

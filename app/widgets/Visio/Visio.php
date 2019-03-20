@@ -69,7 +69,9 @@ class Visio extends Base
         $s = Session::start();
         $candidates = $s->get('candidates');
 
-        if (!$candidates) $candidates = [];
+        if (!$candidates) {
+            $candidates = [];
+        }
 
         array_push($candidates, [$sdp, $jts->name, substr($jts->name, -1, 1)]);
 
@@ -103,7 +105,8 @@ class Visio extends Base
             $sdp->sdp,
             $this->user->id,
             $to,
-            'session-initiate');
+            'session-initiate'
+        );
 
         $si = new SessionInitiate;
         $si->setTo($to)
@@ -117,7 +120,8 @@ class Visio extends Base
             $sdp->sdp,
             $this->user->id,
             $to,
-            'session-accept');
+            'session-accept'
+        );
 
         $si = new SessionInitiate;
         $si->setTo($to)
@@ -133,7 +137,8 @@ class Visio extends Base
             $to,
             'transport-info',
             $sdp->sdpMid,
-            $sdp->sdpMLineIndex);
+            $sdp->sdpMLineIndex
+        );
 
         $si = new SessionInitiate;
         $si->setTo($to)

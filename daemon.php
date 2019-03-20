@@ -16,4 +16,3 @@ $application = new Application;
 $application->add(new ConfigCommand);
 $application->add(new DaemonCommand);
 $application->run();
-

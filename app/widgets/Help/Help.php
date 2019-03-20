@@ -14,11 +14,13 @@ class Help extends Base
 
     public function display()
     {
-        $this->view->assign('info',
+        $this->view->assign(
+            'info',
             ($this->user->isLogged())
                 ? \App\Info::where('server', $this->user->session->host)
                          ->where('node', '')
                          ->first()
-                : null);
+                : null
+        );
     }
 }

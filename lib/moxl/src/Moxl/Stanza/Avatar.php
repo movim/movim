@@ -4,7 +4,7 @@ namespace Moxl\Stanza;
 
 class Avatar
 {
-    static function get($to)
+    public static function get($to)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElementNS('http://jabber.org/protocol/pubsub', 'pubsub');
@@ -17,7 +17,7 @@ class Avatar
         \Moxl\API::request($xml);
     }
 
-    static function set($data, $to = false, $node = false)
+    public static function set($data, $to = false, $node = false)
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $pubsub = $dom->createElement('pubsub');
@@ -39,7 +39,7 @@ class Avatar
         \Moxl\API::request($xml);
     }
 
-    static function setMetadata($data, $url = false, $to = false, $node = false)
+    public static function setMetadata($data, $url = false, $to = false, $node = false)
     {
         $decoded = base64_decode($data);
 

@@ -34,9 +34,9 @@ class Login extends Base
         //$session = Session::start();
 
         //if ($session->get('mechanism') != 'ANONYMOUS') {
-            // We get the configuration
-            $s = new Get;
-            $s->setXmlns('movim:prefs')
+        // We get the configuration
+        $s = new Get;
+        $s->setXmlns('movim:prefs')
               ->request();
         //}
     }
@@ -57,10 +57,10 @@ class Login extends Base
             $parser = new MarkdownExtra;
             $parser->hashtag_protection = true;
 
-            $this->view->assign('info',     $parser->transform($configuration->info));
+            $this->view->assign('info', $parser->transform($configuration->info));
         }
 
-        $this->view->assign('whitelist',$configuration->xmppwhitelist);
+        $this->view->assign('whitelist', $configuration->xmppwhitelist);
 
         if (isset($configuration->xmppdomain)
         && !empty($configuration->xmppdomain)) {
@@ -127,7 +127,7 @@ class Login extends Base
 
     public function onSASLFailure($packet)
     {
-        switch($packet->content) {
+        switch ($packet->content) {
             case 'invalid-mechanism':
             case 'malformed-request':
                 $error = 'mechanism';
@@ -137,7 +137,7 @@ class Login extends Base
                 $error = 'wrong_account';
                 break;
             case 'bad-protocol':
-            default :
+            default:
                 $error = 'fail_auth';
                 break;
         }
@@ -182,7 +182,7 @@ class Login extends Base
                     $this->rpc('Login.clearQuick');
                 }
             }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             $this->rpc('Login.clearQuick');
         }
     }
@@ -243,7 +243,8 @@ class Login extends Base
         } elseif (App\Session::where('username', $username)->where('host', $host)->exists()) {
             $this->showErrorBlock('wrong_password');
             return;
-        } {
+        }
+        {
             $s = new App\Session;
             $s->init($username, $password, $host);
             $s->loadMemory();

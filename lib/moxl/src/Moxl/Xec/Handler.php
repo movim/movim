@@ -11,7 +11,7 @@ class Handler
      *
      * @return void
      */
-    static public function handle($child)
+    public static function handle($child)
     {
         $_instances = 'empty';
 
@@ -91,7 +91,7 @@ class Handler
         }
     }
 
-    static public function handleNode($s, $sparent = false)
+    public static function handleNode($s, $sparent = false)
     {
         $name = $s->getName();
         $ns = '';
@@ -115,7 +115,7 @@ class Handler
         Handler::searchPayload($hash, $s, $sparent);
     }
 
-    static public function searchPayload($hash, $s, $sparent = false)
+    public static function searchPayload($hash, $s, $sparent = false)
     {
         $hashToClass = [
             '9a534a8b4d6324e23f4187123e406729' => 'Message',
@@ -193,7 +193,7 @@ class Handler
      * A simple function to format a error-string-text to a
      * camelTypeText
      */
-    static public function formatError($string)
+    public static function formatError($string)
     {
         $words = explode('-', $string);
         $f = 'error';

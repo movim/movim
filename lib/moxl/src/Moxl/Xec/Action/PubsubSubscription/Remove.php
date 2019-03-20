@@ -17,7 +17,10 @@ class Remove extends Errors
     {
         $this->store();
         PubsubSubscription::listRemove(
-            $this->_server, $this->_from, $this->_node, $this->_pepnode
+            $this->_server,
+            $this->_from,
+            $this->_node,
+            $this->_pepnode
         );
     }
 

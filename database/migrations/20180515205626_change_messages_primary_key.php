@@ -7,7 +7,7 @@ class ChangeMessagesPrimaryKey extends Migration
 {
     public function up()
     {
-        $this->schema->table('messages', function(Blueprint $table) {
+        $this->schema->table('messages', function (Blueprint $table) {
             if ($this->schema->getConnection()->getDriverName() !== 'sqlite') {
                 $table->dropForeign(['user_id']);
             }
@@ -22,7 +22,7 @@ class ChangeMessagesPrimaryKey extends Migration
 
     public function down()
     {
-        $this->schema->table('messages', function(Blueprint $table) {
+        $this->schema->table('messages', function (Blueprint $table) {
             if ($this->schema->getConnection()->getDriverName() !== 'sqlite') {
                 $table->dropForeign(['user_id']);
             }

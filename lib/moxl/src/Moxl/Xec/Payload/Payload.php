@@ -53,7 +53,7 @@ abstract class Payload
     {
         $this->packet->from = ($parent === false)
             ? current(explode('/', (string)$stanza->attributes()->from))
-            : current(explode('/',(string)$parent->attributes()->from));
+            : current(explode('/', (string)$parent->attributes()->from));
     }
 
     /**
@@ -125,5 +125,7 @@ abstract class Payload
         }
     }
 
-    public function handle($stanza, $parent = false) {}
+    public function handle($stanza, $parent = false)
+    {
+    }
 }

@@ -52,7 +52,7 @@ class Muc extends Action
         $presence->set($stanza);
 
         if ($stanza->attributes()->to) {
-            $presence->mucjid = current(explode('/',(string)$stanza->attributes()->to));
+            $presence->mucjid = current(explode('/', (string)$stanza->attributes()->to));
         }
 
         $presence->save();

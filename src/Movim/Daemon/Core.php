@@ -34,7 +34,9 @@ class Core implements MessageComponentInterface
 
         DBSession::whereNotNull('id')->delete();
 
-        if (file_exists(CACHE_PATH . 'socketapi.sock')) unlink(CACHE_PATH . 'socketapi.sock');
+        if (file_exists(CACHE_PATH . 'socketapi.sock')) {
+            unlink(CACHE_PATH . 'socketapi.sock');
+        }
         $this->registerCleaner();
     }
 
@@ -180,7 +182,7 @@ class Core implements MessageComponentInterface
 
     private function registerCleaner()
     {
-        $this->loop->addPeriodicTimer(5, function() {
+        $this->loop->addPeriodicTimer(5, function () {
             foreach ($this->sessions as $sid => $session) {
                 if ($session->countClients() == 0
                 && $session->registered == null) {
@@ -211,8 +213,11 @@ class Core implements MessageComponentInterface
     public function getSessions()
     {
         return array_map(
-            function($session) { return $session->started; },
-            $this->sessions);
+            function ($session) {
+                return $session->started;
+            },
+            $this->sessions
+        );
     }
 
     public function getSession($sid)

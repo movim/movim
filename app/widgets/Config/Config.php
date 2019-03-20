@@ -27,9 +27,10 @@ class Config extends Base
         $l = Movim\i18n\Locale::start();
 
         $view->assign('languages', $l->getList());
-        $view->assign('conf',      User::me());
+        $view->assign('conf', User::me());
 
-        $view->assign('submit',
+        $view->assign(
+            'submit',
             $this->call(
                 'ajaxSubmit',
                 "MovimUtils.formToJson('general')"

@@ -84,7 +84,9 @@ class Presence extends Base
     public function ajaxGetPresence()
     {
         $html = $this->preparePresence();
-        if ($html) $this->rpc('MovimTpl.fill', '#presence_widget', $html);
+        if ($html) {
+            $this->rpc('MovimTpl.fill', '#presence_widget', $html);
+        }
     }
 
     public function ajaxConfigGet()

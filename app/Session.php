@@ -119,8 +119,8 @@ class Session extends Model
     public function loadMemory()
     {
         $s = MemorySession::start();
-        $s->set('jid',      $this->user_id);
-        $s->set('host',     $this->host);
+        $s->set('jid', $this->user_id);
+        $s->set('host', $this->host);
         $s->set('username', $this->username);
     }
 }

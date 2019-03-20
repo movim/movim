@@ -64,7 +64,7 @@ class Post extends Model
     {
         return $this->hasMany('App\Attachment')
                     ->where('category', 'link')
-                    ->whereNotIn('href', function($query) {
+                    ->whereNotIn('href', function ($query) {
                         $query->select('href')
                               ->from('attachments')
                               ->where('post_id', $this->id)
@@ -141,7 +141,7 @@ class Post extends Model
         $configuration = Configuration::get();
 
         if ($configuration->restrictsuggestions) {
-            $query->whereIn('id', function($query) {
+            $query->whereIn('id', function ($query) {
                 $host = \App\User::me()->session->host;
                 $query->select('id')
                         ->from('posts')
@@ -162,12 +162,13 @@ class Post extends Model
 
     public function scopeRecents($query)
     {
-        $query->join(DB::raw('(
+        $query->join(
+            DB::raw('(
             select max(published) as published, server, node
             from posts
             group by server, node) as recents
-            '), function($join)
-            {
+            '),
+            function ($join) {
                 $join->on('posts.node', '=', 'recents.node');
                 $join->on('posts.published', '=', 'recents.published');
             }
@@ -176,7 +177,7 @@ class Post extends Model
 
     protected function withContactsScope($query)
     {
-        return $query->orWhereIn('posts.server', function($query) {
+        return $query->orWhereIn('posts.server', function ($query) {
             $query->from('rosters')
                   ->select('jid')
                   ->where('session_id', SESSION_ID)
@@ -191,7 +192,7 @@ class Post extends Model
 
     protected function withMineScope($query)
     {
-        return $query->orWhereIn('id', function($query) {
+        return $query->orWhereIn('id', function ($query) {
             $query->select('id')
                   ->from('posts')
                   ->where('node', 'urn:xmpp:microblog:0')
@@ -206,16 +207,16 @@ class Post extends Model
 
     protected function withSubscriptionsScope($query)
     {
-        return $query->orWhereIn('id', function($query) {
+        return $query->orWhereIn('id', function ($query) {
             $query->select('id')
                   ->from('posts')
-                  ->whereIn('server', function($query) {
-                    $query->select('server')
+                  ->whereIn('server', function ($query) {
+                      $query->select('server')
                           ->from('subscriptions')
                           ->where('jid', \App\User::me()->id);
                   })
-                  ->whereIn('node', function($query) {
-                    $query->select('node')
+                  ->whereIn('node', function ($query) {
+                      $query->select('node')
                           ->from('subscriptions')
                           ->where('jid', \App\User::me()->id);
                   });
@@ -262,7 +263,7 @@ class Post extends Model
         $content = '';
 
         foreach ($contents as $c) {
-            switch($c->attributes()->type) {
+            switch ($c->attributes()->type) {
                 case 'html':
                 case 'xhtml':
                     $dom = new \DOMDocument('1.0', 'utf-8');
@@ -279,7 +280,7 @@ class Post extends Model
                         $this->contentraw = trim($c);
                     }
                     break;
-                default :
+                default:
                     $content = (string)$c;
                     break;
             }
@@ -292,7 +293,7 @@ class Post extends Model
     {
         $title = '';
         foreach ($titles as $t) {
-            switch($t->attributes()->type) {
+            switch ($t->attributes()->type) {
                 case 'html':
                 case 'xhtml':
                     $title = strip_tags((string)$t->children()->asXML());
@@ -302,7 +303,7 @@ class Post extends Model
                         $title = trim($t);
                     }
                     break;
-                default :
+                default:
                     $title = (string)$t;
                     break;
             }
@@ -316,20 +317,27 @@ class Post extends Model
         $this->nodeid = (string)$entry->attributes()->id;
 
         // Get some informations on the author
-        if ($entry->entry->author->name)
+        if ($entry->entry->author->name) {
             $this->aname = (string)$entry->entry->author->name;
-        if ($entry->entry->author->uri)
+        }
+        if ($entry->entry->author->uri) {
             $this->aid = substr((string)$entry->entry->author->uri, 5);
-        if ($entry->entry->author->email)
+        }
+        if ($entry->entry->author->email) {
             $this->aemail = (string)$entry->entry->author->email;
+        }
 
         // Non standard support
-        if ($entry->entry->source && $entry->entry->source->author->name)
+        if ($entry->entry->source && $entry->entry->source->author->name) {
             $this->aname = (string)$entry->entry->source->author->name;
-        if ($entry->entry->source && $entry->entry->source->author->uri)
+        }
+        if ($entry->entry->source && $entry->entry->source->author->uri) {
             $this->aid = substr((string)$entry->entry->source->author->uri, 5);
+        }
 
-        if (empty($this->aname)) $this->aname = null;
+        if (empty($this->aname)) {
+            $this->aname = null;
+        }
 
         $this->title = $this->extractTitle($entry->entry->title);
 
@@ -360,7 +368,9 @@ class Post extends Model
             $this->published = gmdate(SQL_DATE);
         }
 
-        if ($delay) $this->delay = $delay;
+        if ($delay) {
+            $this->delay = $delay;
+        }
 
         // Tags parsing
         if ($entry->entry->category) {
@@ -372,7 +382,9 @@ class Post extends Model
 
                 $this->tags[] = $tag->id;
 
-                if ($tag->name == 'nsfw') $this->nsfw = true;
+                if ($tag->name == 'nsfw') {
+                    $this->nsfw = true;
+                }
             } else {
                 foreach ($entry->entry->category as $cat) {
                     $tag = \App\Tag::firstOrCreateSafe([
@@ -381,7 +393,9 @@ class Post extends Model
 
                     $this->tags[] = $tag->id;
 
-                    if ($tag->tag == 'nsfw') $this->nsfw = true;
+                    if ($tag->tag == 'nsfw') {
+                        $this->nsfw = true;
+                    }
                 }
             }
         }
@@ -397,7 +411,9 @@ class Post extends Model
             $this->tags[] = $tag->id;
         }
 
-        if (current(explode('.', $this->server)) == 'nsfw') $this->nsfw = true;
+        if (current(explode('.', $this->server)) == 'nsfw') {
+            $this->nsfw = true;
+        }
 
         if (!isset($this->commentserver)) {
             $this->commentserver = $this->server;
@@ -481,8 +497,12 @@ class Post extends Model
             $att->href = $enc['href'];
             $att->category = 'other';
 
-            if (isset($enc['title'])) $att->title = $enc['title'];
-            if (isset($enc['description'])) $att->description = $enc['description'];
+            if (isset($enc['title'])) {
+                $att->title = $enc['title'];
+            }
+            if (isset($enc['description'])) {
+                $att->description = $enc['description'];
+            }
 
             switch ($enc['rel']) {
                 case 'enclosure':
@@ -640,7 +660,9 @@ class Post extends Model
 
     public function getReply()
     {
-        if (!$this->replynodeid) return;
+        if (!$this->replynodeid) {
+            return;
+        }
 
         return \App\Post::where('server', $this->replyserver)
                         ->where('node', $this->replynode)

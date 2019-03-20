@@ -99,8 +99,10 @@ class CommunityAffiliations extends Base
         && substr($packet->content['node'], 0, 29) != 'urn:xmpp:microblog:0:comments') {
             Notification::append(null, $this->__('communityaffiliation.deleted'));
 
-            $this->rpc('MovimUtils.redirect',
-                $this->route('community',
+            $this->rpc(
+                'MovimUtils.redirect',
+                $this->route(
+                    'community',
                     [$packet->content['server']]
                 )
             );
@@ -129,7 +131,9 @@ class CommunityAffiliations extends Base
 
     public function ajaxGetAffiliations($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $r = new GetAffiliations;
         $r->setTo($origin)->setNode($node)
@@ -138,7 +142,9 @@ class CommunityAffiliations extends Base
 
     public function ajaxGetSubscriptions($origin, $node, $notify = true)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $r = new GetSubscriptions;
         $r->setTo($origin)
@@ -149,7 +155,9 @@ class CommunityAffiliations extends Base
 
     public function ajaxDelete($origin, $node, $clean = false)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('server', $origin);
@@ -161,7 +169,9 @@ class CommunityAffiliations extends Base
 
     public function ajaxDeleteConfirm($origin, $node)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         (new CommunityHeader)->ajaxUnsubscribe($origin, $node);
 
@@ -183,7 +193,9 @@ class CommunityAffiliations extends Base
 
     public function ajaxChangeAffiliation($origin, $node, $form)
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         if (Validator::in(array_keys(\App\Capability::find($origin)->getPubsubRoles()))->validate($form->role->value)
         && Validator::stringType()->length(3, 100)->validate($form->jid->value)) {

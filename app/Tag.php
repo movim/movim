@@ -8,7 +8,7 @@ class Tag extends Model
 {
     protected $fillable = ['name'];
 
-    static public function firstOrCreateSafe(array $attributes, array $values = [])
+    public static function firstOrCreateSafe(array $attributes, array $values = [])
     {
         try {
             return static::firstOrCreate($attributes, $values);

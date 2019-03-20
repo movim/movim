@@ -25,7 +25,7 @@ class Api
         $handler = function (ServerRequestInterface $request) use ($api) {
             $response = '';
 
-            switch($request->getUri()->getHost()) {
+            switch ($request->getUri()->getHost()) {
                 case 'ajax':
                     $api->handleAjax($request->getParsedBody());
                     break;
@@ -41,7 +41,7 @@ class Api
                 case 'unregister':
                     $response = $api->sessionUnregister($request->getParsedBody());
                     break;
-                case 'disconnect';
+                case 'disconnect':
                     $response = $api->sessionDisconnect($request->getParsedBody());
                     break;
                 case 'session':
@@ -95,7 +95,9 @@ class Api
     {
         $started = 0;
         foreach ($this->_core->getSessions() as $s) {
-            if ($s == true) $started++;
+            if ($s == true) {
+                $started++;
+            }
         }
         return $started;
     }

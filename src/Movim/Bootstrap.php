@@ -27,7 +27,9 @@ class Bootstrap
 
         $this->loadCapsule();
 
-        if ($dbOnly) return;
+        if ($dbOnly) {
+            return;
+        }
 
         //Check if vital system need is OK
         $this->checkSystem();
@@ -55,9 +57,9 @@ class Bootstrap
 
     private function setConstants()
     {
-        define('APP_TITLE',     'Movim');
-        define('APP_NAME',      'movim');
-        define('APP_VERSION',   $this->getVersion());
+        define('APP_TITLE', 'Movim');
+        define('APP_NAME', 'movim');
+        define('APP_VERSION', $this->getVersion());
         define('SMALL_PICTURE_LIMIT', 512000);
 
         if (file_exists(DOCUMENT_ROOT.'/config/db.inc.php')) {
@@ -67,49 +69,49 @@ class Bootstrap
         }
 
         if (isset($_SERVER['HTTP_HOST'])) {
-            define('BASE_HOST',     $_SERVER['HTTP_HOST']);
+            define('BASE_HOST', $_SERVER['HTTP_HOST']);
         }
 
         if (isset($_SERVER['SERVER_NAME'])) {
-            define('BASE_DOMAIN',   $_SERVER["SERVER_NAME"]);
+            define('BASE_DOMAIN', $_SERVER["SERVER_NAME"]);
         }
 
-        define('BASE_URI',      $this->getBaseUri());
-        define('CACHE_URI',     $this->getBaseUri() . 'cache/');
+        define('BASE_URI', $this->getBaseUri());
+        define('CACHE_URI', $this->getBaseUri() . 'cache/');
 
         if (isset($_COOKIE['MOVIM_SESSION_ID'])) {
-            define('SESSION_ID',    $_COOKIE['MOVIM_SESSION_ID']);
+            define('SESSION_ID', $_COOKIE['MOVIM_SESSION_ID']);
         } else {
-            define('SESSION_ID',    getenv('sid'));
+            define('SESSION_ID', getenv('sid'));
         }
 
-        define('DB_TYPE',       $conf['type']);
-        define('DB_HOST',       $conf['host']);
-        define('DB_USERNAME',   $conf['username']);
-        define('DB_PASSWORD',   $conf['password']);
-        define('DB_PORT',       $conf['port']);
-        define('DB_DATABASE',   $conf['database']);
+        define('DB_TYPE', $conf['type']);
+        define('DB_HOST', $conf['host']);
+        define('DB_USERNAME', $conf['username']);
+        define('DB_PASSWORD', $conf['password']);
+        define('DB_PORT', $conf['port']);
+        define('DB_DATABASE', $conf['database']);
 
-        define('THEME_PATH',    DOCUMENT_ROOT . '/theme/');
-        define('APP_PATH',      DOCUMENT_ROOT . '/app/');
-        define('SYSTEM_PATH',   DOCUMENT_ROOT . '/system/');
-        define('LIB_PATH',      DOCUMENT_ROOT . '/lib/');
-        define('LOCALES_PATH',  DOCUMENT_ROOT . '/locales/');
-        define('CACHE_PATH',    DOCUMENT_ROOT . '/cache/');
-        define('LOG_PATH',      DOCUMENT_ROOT . '/log/');
-        define('CONFIG_PATH',   DOCUMENT_ROOT . '/config/');
+        define('THEME_PATH', DOCUMENT_ROOT . '/theme/');
+        define('APP_PATH', DOCUMENT_ROOT . '/app/');
+        define('SYSTEM_PATH', DOCUMENT_ROOT . '/system/');
+        define('LIB_PATH', DOCUMENT_ROOT . '/lib/');
+        define('LOCALES_PATH', DOCUMENT_ROOT . '/locales/');
+        define('CACHE_PATH', DOCUMENT_ROOT . '/cache/');
+        define('LOG_PATH', DOCUMENT_ROOT . '/log/');
+        define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
 
-        define('VIEWS_PATH',    DOCUMENT_ROOT . '/app/views/');
-        define('HELPERS_PATH',  DOCUMENT_ROOT . '/app/helpers/');
-        define('WIDGETS_PATH',  DOCUMENT_ROOT . '/app/widgets/');
-        define('SQL_DATE',      'Y-m-d H:i:s');
+        define('VIEWS_PATH', DOCUMENT_ROOT . '/app/views/');
+        define('HELPERS_PATH', DOCUMENT_ROOT . '/app/helpers/');
+        define('WIDGETS_PATH', DOCUMENT_ROOT . '/app/widgets/');
+        define('SQL_DATE', 'Y-m-d H:i:s');
 
-        define('API_SOCKET',    CACHE_PATH . 'socketapi.sock');
+        define('API_SOCKET', CACHE_PATH . 'socketapi.sock');
 
-        define('MOVIM_API',     'https://api.movim.eu/');
+        define('MOVIM_API', 'https://api.movim.eu/');
 
         if (!defined('DOCTYPE')) {
-            define('DOCTYPE','text/html');
+            define('DOCTYPE', 'text/html');
         }
     }
 
@@ -322,7 +324,8 @@ class Bootstrap
                 E_ERROR,
                 $last_error['message'],
                 $last_error['file'],
-                $last_error['line']);
+                $last_error['line']
+            );
         }
     }
 }

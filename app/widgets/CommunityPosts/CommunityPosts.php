@@ -42,8 +42,7 @@ class CommunityPosts extends Base
             if ($this->user->subscriptions()
                            ->where('server', $origin)
                            ->where('node', $node)
-                           ->first())
-            {
+                           ->first()) {
                 $this->rpc('CommunityAffiliations_ajaxDelete', $origin, $node, true);
                 $this->rpc('CommunityAffiliations_ajaxGetAffiliations', $origin, $node);
             } else {
@@ -63,16 +62,20 @@ class CommunityPosts extends Base
         $last = false,
         $count = false,
         $paginated = false,
-        $before = null)
-    {
-        if (!$this->validateServerNode($origin, $node)) return;
+        $before = null
+    ) {
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $html = $this->prepareCommunity($origin, $node, 0, $ids, $first, $last, $count, $before);
 
         $slugify = new Slugify;
         $this->rpc(
             'MovimTpl.fill',
-            '#communityposts.'.$slugify->slugify('c'.$origin.'_'.$node), $html);
+            '#communityposts.'.$slugify->slugify('c'.$origin.'_'.$node),
+            $html
+        );
         $this->rpc('MovimUtils.enhanceArticlesContent');
     }
 
@@ -84,7 +87,9 @@ class CommunityPosts extends Base
 
     public function ajaxGetItems($origin, $node, $before = 'empty')
     {
-        if (!$this->validateServerNode($origin, $node)) return;
+        if (!$this->validateServerNode($origin, $node)) {
+            return;
+        }
 
         $r = new GetItems;
         $r->setTo($origin)
@@ -119,8 +124,8 @@ class CommunityPosts extends Base
         $first = false,
         $last = false,
         $count = false,
-        $before = null)
-    {
+        $before = null
+    ) {
         $ids = is_array($ids) ? $ids : [];
         foreach ($ids as $key => $id) {
             if (empty($id)) {
@@ -178,7 +183,7 @@ class CommunityPosts extends Base
             ? \App\Post::where('server', $origin)
                        ->where('node', $node)
                        ->where(function ($query) {
-                            $query->where('nsfw', $this->user->nsfw)
+                           $query->where('nsfw', $this->user->nsfw)
                                   ->orWhere('nsfw', false);
                        })
                        ->where('open', true)

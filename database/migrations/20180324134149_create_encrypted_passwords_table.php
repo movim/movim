@@ -7,7 +7,7 @@ class CreateEncryptedPasswordsTable extends Migration
 {
     public function up()
     {
-        $this->schema->create('encrypted_passwords', function(Blueprint $table) {
+        $this->schema->create('encrypted_passwords', function (Blueprint $table) {
             $table->string('user_id', 64);
             $table->string('id', 64);
             $table->text('data');

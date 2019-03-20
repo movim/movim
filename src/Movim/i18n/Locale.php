@@ -14,7 +14,8 @@ class Locale
         $this->loadIni(
             LOCALES_PATH . 'locales.ini',
             true,
-            INI_SCANNER_RAW);
+            INI_SCANNER_RAW
+        );
 
         $dir = scandir(WIDGETS_PATH);
         foreach ($dir as $widget) {
@@ -81,7 +82,9 @@ class Locale
      */
     public function translate(string $key, $args = false)
     {
-        if (empty($key)) return $key;
+        if (empty($key)) {
+            return $key;
+        }
 
         $arr = explode('.', $key);
         if (is_array($this->hash)
@@ -134,13 +137,16 @@ class Locale
         preg_match_all(
             '/([a-z]{1,8}(-[a-z]{1,8})?)\s*(;\s*q\s*=\s*(1|0\.[0-9]+))?/i',
             $languages,
-            $lang_parse);
+            $lang_parse
+        );
 
         if (count($lang_parse[1])) {
             $langs = array_combine($lang_parse[1], $lang_parse[4]);
 
             foreach ($langs as $lang => $val) {
-                if ($val === '') $langs[$lang] = 1;
+                if ($val === '') {
+                    $langs[$lang] = 1;
+                }
             }
             arsort($langs, SORT_NUMERIC);
         }
@@ -196,7 +202,7 @@ class Locale
 
         $last_token = "";
 
-        while($line = fgets($handle)) {
+        while ($line = fgets($handle)) {
             if ($line[0] == "#"
             || trim(rtrim($line)) == ""
             || preg_match('#^msgctxt#', $line)) {
@@ -209,12 +215,10 @@ class Locale
                 }
                 $last_token = "msgid";
                 $msgid = $this->getQuotedString($line);
-            }
-            else if (preg_match('#^msgstr#', $line)) {
+            } elseif (preg_match('#^msgstr#', $line)) {
                 $last_token = "msgstr";
                 $msgstr = $this->getQuotedString($line);
-            }
-            else {
+            } else {
                 $last_token .= $this->getQuotedString($line);
             }
         }
@@ -230,7 +234,8 @@ class Locale
         $matches = [];
         preg_match('#"(.+)"#', $string, $matches);
 
-        if (isset($matches[1]))
+        if (isset($matches[1])) {
             return $matches[1];
+        }
     }
 }

@@ -52,7 +52,7 @@ class Message extends Model
             return self::firstOrNew([
                 'user_id' => \App\User::me()->id,
                 'replaceid' => (string)$stanza->replace->attributes()->id,
-                'jidfrom' => current(explode('/',(string)$stanza->attributes()->from))
+                'jidfrom' => current(explode('/', (string)$stanza->attributes()->from))
             ]);
         }
 
@@ -66,7 +66,7 @@ class Message extends Model
         return self::firstOrNew([
             'user_id' => \App\User::me()->id,
             'id' => $id,
-            'jidfrom' => current(explode('/',(string)$stanza->attributes()->from))
+            'jidfrom' => current(explode('/', (string)$stanza->attributes()->from))
         ]);
     }
 
@@ -80,8 +80,8 @@ class Message extends Model
             $this->replaceid = $stanza->attributes()->id;
         }
 
-        $jid = explode('/',(string)$stanza->attributes()->from);
-        $to = current(explode('/',(string)$stanza->attributes()->to));
+        $jid = explode('/', (string)$stanza->attributes()->from);
+        $to = current(explode('/', (string)$stanza->attributes()->to));
 
         $this->user_id    = \App\User::me()->id;
 
@@ -262,7 +262,7 @@ class Message extends Model
             if (isset($stanza->x->invite)) {
                 $this->type = 'invitation';
                 $this->subject = $this->jidfrom;
-                $this->jidfrom = current(explode('/',(string)$stanza->x->invite->attributes()->from));
+                $this->jidfrom = current(explode('/', (string)$stanza->x->invite->attributes()->from));
             }
 
             //return $this->checkPicture();

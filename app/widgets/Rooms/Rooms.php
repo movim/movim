@@ -141,7 +141,8 @@ class Rooms extends Base
                 ? 'MovimUtils.addClass'
                 : 'MovimUtils.removeClass',
             '#' . cleanupId($room.'_rooms_primary'),
-            'composing');
+            'composing'
+        );
     }
 
     private function refreshRooms($edit = false)
@@ -179,14 +180,17 @@ class Rooms extends Base
                                              ->where('type', 'text')
                                              ->first());
         $view->assign('id', $room);
-        $view->assign('conference',
+        $view->assign(
+            'conference',
             $this->user->session->conferences()
-            ->where('conference', $room)->first());
+            ->where('conference', $room)->first()
+        );
         $view->assign('username', $this->user->session->username);
-        $view->assign('gateways',
-            \App\Info::whereIn('server', function($query) {
-                            $query->select('jid')->from('presences');
-                        })
+        $view->assign(
+            'gateways',
+            \App\Info::whereIn('server', function ($query) {
+                $query->select('jid')->from('presences');
+            })
                      ->where('category', 'gateway')
                      ->get()
         );
@@ -217,7 +221,9 @@ class Rooms extends Base
      */
     public function ajaxGetAvatar($room)
     {
-        if (!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) {
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('room', $this->user->session->conferences()
@@ -232,7 +238,9 @@ class Rooms extends Base
      */
     public function ajaxSetAvatar($room, $form)
     {
-        if (!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) {
+            return;
+        }
 
         $p = new Picture;
         $p->fromBase($form->photobin->value);
@@ -257,7 +265,9 @@ class Rooms extends Base
      */
     public function ajaxGetSubject($room)
     {
-        if (!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) {
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('room', $this->user->session->conferences()
@@ -304,7 +314,9 @@ class Rooms extends Base
      */
     public function ajaxInvite($form)
     {
-        if (!$this->validateRoom($form->to->value)) return;
+        if (!$this->validateRoom($form->to->value)) {
+            return;
+        }
 
         if (!empty($form->invite->value)) {
             $i = new Invite;
@@ -323,7 +335,9 @@ class Rooms extends Base
      */
     public function ajaxRemoveConfirm($room)
     {
-        if (!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) {
+            return;
+        }
 
         $view = $this->tpl();
 
@@ -337,7 +351,9 @@ class Rooms extends Base
      */
     public function ajaxList($room)
     {
-        if (!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) {
+            return;
+        }
 
         $view = $this->tpl();
         $view->assign('list', $this->user->session->conferences()
@@ -368,7 +384,9 @@ class Rooms extends Base
      */
     public function ajaxRemove($room)
     {
-        if (!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) {
+            return;
+        }
 
         $this->user->session->conferences()->where('conference', $room)->delete();
 
@@ -380,7 +398,9 @@ class Rooms extends Base
      */
     public function ajaxJoin($room, $nickname = false)
     {
-        if (!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) {
+            return;
+        }
 
         $r = new Request;
         $r->setTo($room)
@@ -423,7 +443,9 @@ class Rooms extends Base
      */
     public function ajaxExit($room)
     {
-        if (!$this->validateRoom($room)) return;
+        if (!$this->validateRoom($room)) {
+            return;
+        }
 
         // We reset the Chat view
         $this->rpc('Chat_ajaxGet');
@@ -495,7 +517,8 @@ class Rooms extends Base
         $conferences = $this->user->session->conferences()->get();
         if ($conferences) {
             foreach ($conferences as $c) {
-                array_push($arr,
+                array_push(
+                    $arr,
                     [
                         'type'      => 'conference',
                         'name'      => $c->name,
@@ -514,7 +537,9 @@ class Rooms extends Base
 
     public function prepareRooms($edit = false)
     {
-        if (!$this->user->session) return '';
+        if (!$this->user->session) {
+            return '';
+        }
 
         $conferences = $this->user->session->conferences()
                                            ->with('info', 'contact', 'presence')

@@ -81,7 +81,9 @@ class CommunitiesServer extends \Movim\Widget\Base
      */
     public function ajaxTestAdd($origin)
     {
-        if (!$this->validateServer($origin)) return;
+        if (!$this->validateServer($origin)) {
+            return;
+        }
 
         $t = new TestCreate;
         $t->setTo($origin)
@@ -90,7 +92,9 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function ajaxAddConfirm($origin, $form)
     {
-        if (!$this->validateServer($origin)) return;
+        if (!$this->validateServer($origin)) {
+            return;
+        }
 
         $validate_name = Validator::stringType()->length(4, 80);
         if (!$validate_name->validate($form->name->value)) {

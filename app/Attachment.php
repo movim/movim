@@ -19,4 +19,3 @@ class Attachment extends Model
         return parse_url($this->href);
     }
 }
-

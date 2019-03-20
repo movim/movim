@@ -22,7 +22,7 @@ class Bind extends Action
 
         list($jid, $resource) = explode('/', (string)$stanza->bind->jid);
 
-        list($username, $host) = explode('@',$jid);
+        list($username, $host) = explode('@', $jid);
 
         $session->username = $username;
         $session->host = $host;

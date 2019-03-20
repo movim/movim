@@ -86,11 +86,11 @@ class Utils
         $support = Utils::getSupportedServices();
 
         asort($support);
-        foreach ($support as $sup ) {
+        foreach ($support as $sup) {
             $s = $s.$sup.'<';
         }
 
-        return base64_encode(sha1(utf8_encode($s),true));
+        return base64_encode(sha1(utf8_encode($s), true));
     }
 
     // XEP-0106: JID Escaping
@@ -108,7 +108,7 @@ class Utils
                 } else {
                     $result .= $s{$i};
                 }
-            } else if (in_array($s{$i}, $chars)) {
+            } elseif (in_array($s{$i}, $chars)) {
                 $result .= '\\'.dechex(ord($s{$i}));
             } else {
                 $result .= $s{$i};
