@@ -35,11 +35,7 @@ class XMPPtoForm
 
     public function create()
     {
-        //$this->xmpp = str_replace('xmlns=', 'ns=', $this->xmpp);
-        //$x = new SimpleXMLElement($this->xmpp);
-
         foreach ($this->xmpp->children() as $element) {
-            \Utils::debug($element->getName());
             switch ($element->getName()) {
                 case 'title':
                     $this->outTitle($element);

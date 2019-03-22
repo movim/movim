@@ -13,6 +13,7 @@ class Paused extends Action
 
     public function request()
     {
+        $this->store();
         if ($this->_muc) {
             Muc::paused($this->_to);
         } else {

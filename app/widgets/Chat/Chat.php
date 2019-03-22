@@ -1,7 +1,5 @@
 <?php
 
-use Moxl\Xec\Action\Message\Composing;
-use Moxl\Xec\Action\Message\Paused;
 use Moxl\Xec\Action\Message\Publish;
 
 use Moxl\Xec\Action\Muc\GetConfig;
@@ -19,6 +17,7 @@ use Illuminate\Database\Capsule\Manager as DB;
 use Movim\Picture;
 use Movim\Session;
 use Movim\ChatStates;
+use Movim\ChatOwnState;
 
 include_once WIDGETS_PATH.'ContactActions/ContactActions.php';
 
@@ -434,34 +433,7 @@ class Chat extends \Movim\Widget\Base
             return;
         }
 
-        $mc = new Composing;
-
-        if ($muc) {
-            $mc->setMuc();
-        }
-
-        $mc->setTo($to)->request();
-    }
-
-    /**
-     * @brief Send a "paused" message
-     *
-     * @param string $to
-     * @return void
-     */
-    public function ajaxSendPaused($to, $muc = false)
-    {
-        if (!$this->validateJid($to)) {
-            return;
-        }
-
-        $mp = new Paused;
-
-        if ($muc) {
-            $mp->setMuc();
-        }
-
-        $mp->setTo($to)->request();
+        (ChatOwnState::getInstance())->composing($to, $muc);
     }
 
     /**

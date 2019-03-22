@@ -18,6 +18,10 @@ class Message extends Payload
             return;
         }
 
+        if ($stanza->attributes()->type == 'error') {
+            return;
+        }
+
         if ($stanza->composing) {
             (ChatStates::getInstance())->composing($from, $to);
         }

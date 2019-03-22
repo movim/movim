@@ -30,10 +30,8 @@ class ChatStates
 
         if (array_key_exists($jid, $this->_composing)) {
             if ($resource !== null) {
-                \Utils::debug($resource);
                 if (array_key_exists($resource, $this->_composing[$jid])
                 && $this->_composing[$jid][$resource] instanceof Timer) {
-                    \Utils::debug('clear '.$resource);
                     $loop->cancelTimer($this->_composing[$jid][$resource]);
                     unset($this->_composing[$jid][$resource]);
 

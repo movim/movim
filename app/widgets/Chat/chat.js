@@ -9,7 +9,7 @@ var Chat = {
     edit: false,
 
     // Chat state
-    state: 0,
+    composing: false,
     since: null,
     sended: false,
 
@@ -172,6 +172,7 @@ var Chat = {
     focus: function()
     {
         Chat.sended = false;
+        Chat.composing = false;
         Chat.clearReplace();
         Chat.toggleAction();
 
@@ -204,12 +205,12 @@ var Chat = {
                     return;
                 }
 
-                Chat.state = 0;
+                Chat.composing = false;
                 Chat.sendMessage();
 
                 return false;
-            } else if (Chat.state == 0 || Chat.state == 2) {
-                Chat.state = 1;
+            } else if (Chat.composing === false) {
+                Chat.composing = true;
                 Chat_ajaxSendComposing(this.dataset.jid, Boolean(this.dataset.muc));
                 Chat.since = new Date().getTime();
             }
@@ -217,17 +218,14 @@ var Chat = {
 
         textarea.onkeyup = function(event) {
             localStorage.setItem(this.dataset.jid + '_message', this.value);
+
+            // A little timeout to not spam the server with composing states
             setTimeout(function()
             {
-                var textarea = document.querySelector('#chat_textarea');
-
-                if (textarea
-                && Chat.state == 1
-                && Chat.since + 5000 < new Date().getTime()) {
-                    Chat.state = 2;
-                    Chat_ajaxSendPaused(textarea.dataset.jid, Boolean(textarea.dataset.muc));
+                if (Chat.since + 3000 < new Date().getTime()) {
+                    Chat.composing = false;
                 }
-            },5000);
+            }, 3000);
 
             Chat.toggleAction();
         };
