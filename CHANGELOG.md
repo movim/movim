@@ -10,6 +10,7 @@ v0.14.2 (trunk)
  * Fix short columns length in SQL database (#801)
  * Fix XMPP whitelist also filter XMPP servers on registration page (#773)
  * Allow users to set a local nickname and handle blog urls with this nickname
+ * Fix "Forever composing" (#130) + ids for composing/paused states
 
 v0.14.1
 ---------------------------
