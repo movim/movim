@@ -341,7 +341,7 @@ ul li div.bubble {
     box-sizing: border-box;
     display: block;
     font-size: 1.75rem;
-    max-width: calc(100% - 11rem);
+    max-width: calc(100% - 12rem);
     float: left;
 
     left: 9rem;
@@ -354,11 +354,15 @@ ul li div.bubble[dir="rtl"] {
 }
 
 ul li div.bubble:not(.sticker):not(.file) {
-    padding: 1rem 1.75rem 0.5rem;
+    padding: 1rem 1rem 0.5rem 1.75rem;
     border-radius: 0 0.5rem 0.5rem;
     line-height: 2.75rem;
     border-color: rgb(var(--movim-background-main));
     margin-bottom: 0.75rem;
+}
+
+ul li div.bubble > div {
+    padding-right: 0.75rem;
 }
 
 ul li div.bubble p {
@@ -368,6 +372,7 @@ ul li div.bubble p {
     font-size: 1.75rem;
     word-wrap: break-word;
     white-space: pre-wrap;
+    position: relative;
 }
 
 ul li div.bubble p.code {

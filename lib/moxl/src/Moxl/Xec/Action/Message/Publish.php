@@ -16,16 +16,17 @@ class Publish extends Action
     protected $_id = false;
     protected $_replace = false;
     protected $_file = false;
+    protected $_attachid = false;
 
     public function request()
     {
         $this->store();
         if ($this->_muc) {
-            Muc::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_file);
+            Muc::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_file, $this->_attachid);
         } elseif ($this->_encrypted) {
             Message::encrypted($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace);
         } else {
-            Message::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace, $this->_file);
+            Message::message($this->_to, $this->_content, $this->_html, $this->_id, $this->_replace, $this->_file, $this->_attachid);
         }
     }
 

@@ -144,7 +144,7 @@ class Post extends Model
             $query->whereIn('id', function ($query) {
                 $host = \App\User::me()->session->host;
                 $query->select('id')
-                        ->from('posts')
+                      ->from('posts')
                       ->where('server', 'like', '%.' . $host)
                       ->orWhere('server', 'like', '@' . $host);
             });

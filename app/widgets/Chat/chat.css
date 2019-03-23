@@ -145,7 +145,7 @@ main:not(.enabled) #chat_widget {
     object-fit: cover;
 }
 
-#chat_widget ul:after {
+#chat_widget ul.list:after {
     content: " ";
     display: block;
     clear: both;
@@ -235,4 +235,56 @@ table.emojis td:hover {
     border-radius: 0.5rem;
     width: 100%;
     min-width: 23rem;
+}
+
+/* Emojis */
+
+#chat_widget .bubble ul.reactions {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+#chat_widget .bubble div span.reaction,
+#chat_widget .bubble ul.reactions li {
+    list-style-type: none;
+    background-color: rgba(var(--movim-font), 0.1);
+    padding: 0 0.5rem;
+    border-radius: 0.5rem;
+    line-height: 3rem;
+    font-size: 1.75rem;
+    margin: 0;
+    margin-top: 0.25rem;
+    display: inline-flex;
+    z-index: 1;
+}
+
+#chat_widget .bubble div span.reaction,
+#chat_widget .bubble ul.reactions:empty {
+    display: none;
+}
+
+#chat_widget li:not(.oppose) .bubble div:hover ul.reactions:empty + span.reaction {
+    display: inline-flex;
+    position: absolute;
+    left: 100%;
+    transform: translate(-1.25rem, -0.25rem);
+}
+
+#chat_widget .bubble ul.reactions li:not(:last-child) {
+    margin-right: 0.5rem;
+}
+
+#chat_widget .bubble div span.reaction:hover,
+#chat_widget .bubble ul.reactions li:hover {
+    cursor: pointer;
+    background-color: rgba(var(--movim-font), 0.4);
+}
+
+#chat_widget .bubble ul.reactions li img {
+    width: 2.25rem;
+    height: 3rem;
+    margin: 0;
+    padding: 0;
+    margin-right: 0.5rem;
 }

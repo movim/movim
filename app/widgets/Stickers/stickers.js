@@ -14,12 +14,28 @@ var Stickers = {
         }
 
         var i = 0;
-        while(i < zoomed.length)
-        {
+        while(i < zoomed.length) {
             zoomed[i].classList.remove('zoomed');
             i++;
         }
 
         element.classList.add('zoomed');
+    },
+    setEmojisEvent(mid) {
+        let tds = document.querySelectorAll('table.emojis td');
+        let i = 0;
+
+        while (i < tds.length) {
+            tds[i].onclick = function() {
+                if (mid) {
+                    Chat_ajaxHttpSendReaction(mid, this.dataset.emoji);
+                    Dialog_ajaxClear();
+                } else {
+                    Stickers.addSmiley(this);
+                }
+            }
+
+            i++;
+        }
     }
 }
