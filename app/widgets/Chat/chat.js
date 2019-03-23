@@ -291,6 +291,18 @@ var Chat = {
             Chat.lastHeight = this.clientHeight;
         };
     },
+    setReactionButtonBehaviour : function() {
+        let reactions = document.querySelectorAll('#chat_widget span.reaction');
+        let i = 0;
+
+        while (i < reactions.length) {
+            reactions[i].onclick = function() {
+                Stickers_ajaxReaction(this.dataset.mid);
+            }
+
+            i++;
+        }
+    },
     checkDiscussion : function(page) {
         for (var firstKey in page) break;
         if (page[firstKey] == null) return false;
@@ -362,7 +374,6 @@ var Chat = {
                 );
             }
         } else if (discussion !== null) {
-            let messages = document.querySelector('#chat_widget .contained');
             if (discussion.querySelector('ul').innerHTML === '') {
                 discussion.querySelector('ul').classList.remove('spin');
                 discussion.querySelector('.placeholder').classList.add('show');
@@ -370,6 +381,7 @@ var Chat = {
         }
 
         Chat.setScrollBehaviour();
+        Chat.setReactionButtonBehaviour();
 
         if (scroll) {
             MovimTpl.scrollPanel();
@@ -430,16 +442,20 @@ var Chat = {
         }
 
         var msg = bubble.querySelector('div.bubble > div');
-        var span = msg.getElementsByTagName('span')[0];
+        var span = msg.querySelector('span:not(.reaction)');
         var p = msg.getElementsByTagName('p')[0];
+        var reaction = msg.querySelector('span.reaction');
+        var reactions = msg.querySelector('ul.reactions');
 
         // If there is already a msg in this bubble, create another div (next msg or replacement)
         if (bubble.querySelector('div.bubble p')
         && bubble.querySelector('div.bubble p').innerHTML != '') {
             msg = document.createElement('div');
-            p = document.createElement('p');
             span = document.createElement('span');
             span.className = 'info';
+            p = document.createElement('p');
+            reaction = reaction.cloneNode(true);
+            reactions = reactions.cloneNode(true);
         }
 
         if (data.rtl) {
@@ -484,8 +500,16 @@ var Chat = {
             }
         }
 
+        if (data.reactionsHtml !== undefined) {
+            reactions.innerHTML = data.reactionsHtml;
+        }
+
         msg.appendChild(p);
         msg.appendChild(span);
+        msg.appendChild(reactions);
+
+        reaction.dataset.mid = data.mid;
+        msg.appendChild(reaction);
 
         var elem = document.getElementById(data.oldid);
         if (!elem) {

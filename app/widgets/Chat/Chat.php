@@ -7,6 +7,7 @@ use Moxl\Xec\Action\Muc\SetConfig;
 
 use App\Configuration;
 use App\Message;
+use App\Reaction;
 
 use Moxl\Xec\Action\BOB\Request;
 
@@ -282,7 +283,7 @@ class Chat extends \Movim\Widget\Base
      * @param string $message
      * @return void
      */
-    public function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false)
+    public function ajaxHttpSendMessage($to, $message = false, $muc = false, $resource = false, $replace = false, $file = false, $attachId = false)
     {
         $message = trim($message);
         if (filter_var($message, FILTER_VALIDATE_URL)) {
@@ -369,13 +370,33 @@ class Chat extends \Movim\Widget\Base
             $p->setFile($file);
         }
 
+        if ($attachId) {
+            $parentMessage = $this->user->messages()
+                            ->where('replaceid', $attachId)
+                            ->first();
+
+            if ($parentMessage) {
+                $reaction = new Reaction;
+                $reaction->message_mid = $parentMessage->mid;
+                $reaction->jidfrom = $this->user->id;
+                $reaction->emoji = $body;
+                $reaction->save();
+
+                $p->setAttachId($attachId);
+
+                $m = $parentMessage;
+            }
+        }
+
         $p->request();
 
         /* Is it really clean ? */
         if (!$p->getMuc()) {
-            $m->oldid = $oldid;
-            $m->body = htmlentities(trim($m->body), ENT_XML1, 'UTF-8');
-            $m->save();
+            if ($attachId == false) {
+                $m->oldid = $oldid;
+                $m->body = htmlentities(trim($m->body), ENT_XML1, 'UTF-8');
+                $m->save();
+            }
 
             $packet = new \Moxl\Xec\Payload\Packet;
             $packet->content = $m;
@@ -399,6 +420,32 @@ class Chat extends \Movim\Widget\Base
 
         if ($replace) {
             $this->ajaxHttpSendMessage($to, $message, false, false, $replace);
+        }
+    }
+
+    /**
+     * @brief Send a reaction
+     *
+     * @
+     */
+    public function ajaxHttpSendReaction(string $mid, string $emoji)
+    {
+        $message = $this->user->messages()
+                        ->where('mid', $mid)
+                        ->first();
+
+        if ($message
+        && $message->reactions()
+                   ->where('emoji', $emoji)
+                   ->where('jidfrom', $this->user->id)
+                   ->count() == 0) {
+            $this->ajaxHttpSendMessage(
+                $message->jidfrom != $message->user_id
+                    ? $message->jidfrom
+                    : $message->jidto,
+                $emoji, $message->type == 'groupchat',
+                false, false, false, $message->replaceid
+            );
         }
     }
 
@@ -722,6 +769,11 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
+        // Reactions
+        if ($message->reactions()->count()) {
+            $message->reactionsHtml = $this->prepareReactions($message);
+        }
+
         $message->rtl = isRTL($message->body);
         $message->publishedPrepared = prepareTime(strtotime($message->published));
 
@@ -777,8 +829,6 @@ class Chat extends \Movim\Widget\Base
 
         $counter = count($this->_wrapper[$date]);
 
-        $this->_wrapper[$date][$counter.$msgkey] = $message;
-
         if ($message->type == 'invitation') {
             $view = $this->tpl();
             $view->assign('message', $message);
@@ -811,7 +861,33 @@ class Chat extends \Movim\Widget\Base
             $message->body = $view->draw('_chat_jingle_end');
         }
 
+        $this->_wrapper[$date][$counter.$msgkey] = $message;
+
         return $this->_wrapper;
+    }
+
+    public function prepareReactions(Message $message)
+    {
+        $view = $this->tpl();
+        $merged = [];
+
+        $reactions = $message
+            ->reactions()
+            ->orderBy('emoji')
+            ->get();
+
+        foreach ($reactions as $reaction) {
+            if (!array_key_exists($reaction->emoji, $merged)) {
+                $merged[$reaction->emoji] = [];
+            }
+
+            $merged[$reaction->emoji][] = $reaction->jidfrom;
+        }
+
+        $view->assign('message', $message);
+        $view->assign('reactions', $merged);
+
+        return $view->draw('_chat_reactions');
     }
 
     public function prepareEmpty()

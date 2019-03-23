@@ -25,8 +25,12 @@
 
     <div class="bubble">
         <div>
-            <p></p>
             <span class="info"></span>
+            <p></p>
+            <ul class="reactions"></ul>
+            <span class="reaction">
+                +<i class="material-icons">mood</i>
+            </span>
         </div>
     </div>
 </li>

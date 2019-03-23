@@ -32,8 +32,5 @@
         <li onclick="Stickers_ajaxSmiley('{$jid}')">
             <a href="#"><img alt=":smiley:" class="emoji medium" src="{$c->getSmileyPath('1f603')}"></a>
         </li>
-        <li onclick="Stickers_ajaxSmileyTwo('{$jid}')">
-            <a href="#"><img alt=":smiley:" class="emoji medium" src="{$c->getSmileyPath('1f44d')}"></a>
-        </li>
     </ul>
 </div>

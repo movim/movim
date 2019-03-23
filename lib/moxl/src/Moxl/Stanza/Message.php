@@ -17,7 +17,8 @@ class Message
         $id = false,
         $replace = false,
         $file = false,
-        $invite = false
+        $invite = false,
+        $attachId = false
     ) {
         $session = Session::start();
 
@@ -147,12 +148,19 @@ class Message
             $x->appendChild($xinvite);
         }
 
+        if ($attachId != false) {
+            $attach = $dom->createElement('attach-to');
+            $attach->setAttribute('xmlns', 'urn:xmpp:message-attaching:1');
+            $attach->setAttribute('id', $attachId);
+            $root->appendChild($attach);
+        }
+
         \Moxl\API::request($dom->saveXML($dom->documentElement));
     }
 
-    public static function message($to, $content, $html = false, $id = false, $replace = false, $file = false)
+    public static function message($to, $content, $html = false, $id = false, $replace = false, $file = false, $attachId = false)
     {
-        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file);
+        self::maker($to, $content, $html, 'chat', 'active', 'request', $id, $replace, $file, false, $attachId);
     }
 
     public static function composing($to)

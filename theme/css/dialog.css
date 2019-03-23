@@ -34,6 +34,11 @@
     margin-top: 2rem;
 }
 
+.dialog > section > table {
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
 .dialog > section > *:not(ul.list):last-child {
     margin-bottom: 2rem;
 }
