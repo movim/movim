@@ -11,6 +11,7 @@ v0.14.2 (trunk)
  * Fix XMPP whitelist also filter XMPP servers on registration page (#773)
  * Allow users to set a local nickname and handle blog urls with this nickname
  * Fix "Forever composing" (#130) + ids for composing/paused states
+ * Add support of XEP-0367: Message Attaching, add Reactions feature in Movim
 
 v0.14.1
 ---------------------------
