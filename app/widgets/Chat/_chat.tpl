@@ -2,7 +2,7 @@
     {if="$muc"}
     <ul class="list middle">
         <li>
-            <span id="back" class="primary icon active"
+            <span class="primary icon active"
                 {if="!$anon"}
                     onclick="Chat_ajaxGet()"
                 {/if}>
@@ -133,7 +133,7 @@
     {else}
     <ul class="list middle">
         <li id="chat_header">
-            <span onclick="Chat_ajaxGet()" id="back" class="primary icon active">
+            <span onclick="Chat_ajaxGet()" class="primary icon active">
                 <i class="material-icons">arrow_back</i>
             </span>
 

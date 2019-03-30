@@ -665,11 +665,11 @@ var Chat = {
         var attachment_button = document.querySelector('.chat_box span.upload');
         if (send_button && attachment_button) {
             if (Chat.getTextarea().value.length > 0) {
-                MovimUtils.showElement(send_button);
-                MovimUtils.hideElement(attachment_button);
+                send_button.classList.remove('hide');
+                attachment_button.classList.add('hide');
             } else {
-                MovimUtils.showElement(attachment_button);
-                MovimUtils.hideElement(send_button);
+                send_button.classList.add('hide');
+                attachment_button.classList.remove('hide');
             }
         }
     },

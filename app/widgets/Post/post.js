@@ -1,6 +1,6 @@
 var Post = {
     comment: function() {
-        MovimUtils.showElement(document.querySelector('#comment_add'));
+        document.querySelector('#comment_add').classList.remove('hide');
     },
     share : function() {
         var parts = MovimUtils.urlParts();

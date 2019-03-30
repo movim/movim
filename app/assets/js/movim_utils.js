@@ -77,25 +77,6 @@ var MovimUtils = {
 
         return str;
     },
-    hasClass: function(element, classname) {
-        var node = element;
-        if (typeof node == 'string')
-            node = MovimUtils.getNode(node);
-        if (!node) return false;
-        return node.classList.contains(classname);
-    },
-    showElement: function(element) {
-        if (!MovimUtils.hasClass(element, 'show'))
-            MovimUtils.addClass(element, 'show');
-        if (MovimUtils.hasClass(element, 'hide'))
-            MovimUtils.removeClass(element, 'hide');
-    },
-    hideElement: function(element) {
-        if (!MovimUtils.hasClass(element, 'hide'))
-            MovimUtils.addClass(element, 'hide');
-        if (MovimUtils.hasClass(element, 'show'))
-            MovimUtils.removeClass(element, 'show');
-    },
     pushState: function(url) {
         window.history.pushState(null, '', url);
     },
@@ -109,16 +90,12 @@ var MovimUtils = {
         window.location.reload();
     },
     addClass: function(element, classname) {
-        if (!MovimUtils.hasClass(element, classname)) {
-            element = MovimUtils.getNode(element);
-            element.classList.add(classname);
-        }
+        let element = document.querySelector(element);
+        if (element) element.classList.add(classname);
     },
     removeClass: function(element, classname) {
-        if (MovimUtils.hasClass(element, classname)) {
-            element = MovimUtils.getNode(element);
-            element.classList.remove(classname);
-        }
+        let element = document.querySelector(element);
+        if (element) element.classList.remove(classname);
     },
     textareaAutoheight: function(textbox) {
         if (textbox != null) {
