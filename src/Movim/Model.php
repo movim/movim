@@ -47,7 +47,7 @@ class Model extends EloquentModel
     public function save(array $options = [])
     {
         try {
-            parent::save($options);
+            return parent::save($options);
         } catch (\Exception $e) {
             (new Bootstrap)->exceptionHandler($e);
         }
@@ -70,5 +70,28 @@ class Model extends EloquentModel
         }
 
         return $query->first($columns);
+    }
+
+    /**
+     * Reload a fresh model instance from the database.
+     *
+     * @param  array|string  $with
+     * @return static|null
+     */
+    public function fresh($with = [])
+    {
+        if (! $this->exists) {
+            return;
+        }
+
+        $primaryKey = $this->getKeyName();
+        $query = static::newQueryWithoutScopes()
+            ->with(is_string($with) ? func_get_args() : $with);
+
+        foreach (is_array($primaryKey) ? $primaryKey : [] as $key) {
+            $query->where($key, '=', $this->$key);
+        }
+
+        return $query->first();
     }
 }

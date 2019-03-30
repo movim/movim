@@ -37,6 +37,7 @@ class Message extends Payload
         if (!$message->isOTR()
         && (!$message->isEmpty() || $message->isSubject())) {
             $message->save();
+            $message = $message->fresh();
 
             if ($message->body || $message->subject) {
                 $this->pack($message);

@@ -400,6 +400,7 @@ class Chat extends \Movim\Widget\Base
                 $m->oldid = $oldid;
                 $m->body = htmlentities(trim($m->body), ENT_XML1, 'UTF-8');
                 $m->save();
+                $m = $m->fresh();
             }
 
             $packet = new \Moxl\Xec\Payload\Packet;
