@@ -55,7 +55,7 @@ var MovimAvatar = {
             var preview = document.querySelector('form[name=' + formname + '] img');
 
             var list = document.querySelector('form[name=' + formname + '] ul');
-            if (list) MovimUtils.hideElement(list);
+            if (list) list.classList.add('hide');
 
             var input = document.querySelector('form[name=' + formname + '] input[name="photobin"]');
 

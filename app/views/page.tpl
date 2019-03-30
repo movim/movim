@@ -58,7 +58,7 @@
         <?php } ?>
         <div id="hiddendiv"></div>
         <div id="snackbar" class="snackbar"></div>
-        <div id="error_websocket" class="snackbar hide">
+        <div id="error_websocket" class="snackbar hide" onclick="MovimUtils.reloadThis()">
             <ul class="list">
                 <li>
                     <span class="control icon gray">

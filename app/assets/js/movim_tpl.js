@@ -8,10 +8,6 @@ var MovimTpl = {
     dragged : false,
     moving : false,
     percent : false,
-    init : function() {
-        if (document.getElementById('back') != null)
-            MovimUtils.hideElement(document.getElementById('back'));
-    },
     append : function(selector, html) {
         target = document.querySelector(selector);
         if (target) {
@@ -30,10 +26,10 @@ var MovimTpl = {
         } else if (Dialog.filled()) {
             Dialog.clear();
             // If the menu is shown
-        } else if (MovimUtils.hasClass('body > nav', 'active')) {
-            MovimUtils.removeClass('body > nav', 'active');
+        } else if (document.querySelector('body > nav').classList.contains('active')) {
+            document.querySelector('body > nav').classList.remove('active');
             // If the panel is shown
-        } else if (MovimTpl.isPanel()) {
+        } else if (document.querySelector('main').classList.contains('enabled')) {
             MovimTpl.hidePanel();
             window.history.back();
         } else {
@@ -60,9 +56,6 @@ var MovimTpl = {
     hidePanel: function() {
         MovimUtils.removeClass('main', 'enabled');
         MovimUtils.removeClass('ul#bottomnavigation', 'hidden');
-    },
-    isPanel: function() {
-        return MovimUtils.hasClass('main', 'enabled');
     },
     isPanelScrolled: function() {
         var selector = document.querySelector('main > div:first-child:nth-last-child(2) > div');
@@ -104,9 +97,6 @@ var MovimTpl = {
             var element = div.firstChild;
             replacedNode = target.parentNode.replaceChild(element, target);
         }
-    },
-    toggleActionButton : function() {
-        document.querySelector('.button.action').classList.toggle('active');
     },
     toggleContextMenu : function(e) {
         var contextMenu = document.querySelector('ul.context_menu');
@@ -176,7 +166,6 @@ var MovimTpl = {
 };
 
 movim_add_onload(function() {
-    MovimTpl.init();
     MovimTpl.touchEvents();
     document.body.addEventListener('click', MovimTpl.toggleContextMenu, false);
 });

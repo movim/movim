@@ -22,7 +22,7 @@ var AdminTest = {
         MovimUtils.addClass('figure #browser-daemon', 'success');
         MovimUtils.addClass('div #xmpp-daemon', 'success');
 
-        MovimUtils.hideElement(MovimUtils.getNode('#websocket_error'));
+        document.querySelector('#websocket_error').classList.add('hide');
     },
 
     enableAPI : function() {
