@@ -90,12 +90,12 @@ var MovimUtils = {
         window.location.reload();
     },
     addClass: function(element, classname) {
-        let element = document.querySelector(element);
-        if (element) element.classList.add(classname);
+        let el = document.querySelector(element);
+        if (el) el.classList.add(classname);
     },
     removeClass: function(element, classname) {
-        let element = document.querySelector(element);
-        if (element) element.classList.remove(classname);
+        let el = document.querySelector(element);
+        if (el) el.classList.remove(classname);
     },
     textareaAutoheight: function(textbox) {
         if (textbox != null) {
