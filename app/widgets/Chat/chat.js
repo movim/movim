@@ -399,10 +399,10 @@ var Chat = {
         var jidtime = idjidtime.substring(idjidtime.indexOf('<') + 1);
 
         if (prepend) {
-            refBubble = document.querySelector('#chat_widget .contained li:first-child');
+            refBubble = document.querySelector('#chat_widget .contained section > ul > li:first-child');
             msgStack = document.querySelector("[data-bubble='" + jidtime + "']");
         } else {
-            refBubble = document.querySelector("#chat_widget .contained li:last-child");
+            refBubble = document.querySelector("#chat_widget .contained section > ul > li:last-child");
             var stack = document.querySelectorAll("[data-bubble='" + jidtime + "']");
             msgStack = stack[stack.length-1];
         }
@@ -455,7 +455,8 @@ var Chat = {
             span.className = 'info';
             p = document.createElement('p');
             reaction = reaction.cloneNode(true);
-            reactions = reactions.cloneNode(true);
+            reactions = document.createElement('ul');
+            reactions.className = 'reactions';
         }
 
         if (data.rtl) {

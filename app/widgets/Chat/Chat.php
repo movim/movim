@@ -442,7 +442,9 @@ class Chat extends \Movim\Widget\Base
         if ($message
         && $message->reactions()
                    ->where('emoji', $emoji)
-                   ->where('jidfrom', $this->user->id)
+                   ->where('jidfrom', ($message->type == 'groupchat')
+                        ? $this->user->session->username
+                        : $this->user->id)
                    ->count() == 0) {
             $this->ajaxHttpSendMessage(
                 $message->jidfrom != $message->user_id
@@ -834,6 +836,8 @@ class Chat extends \Movim\Widget\Base
 
         $counter = count($this->_wrapper[$date]);
 
+        $this->_wrapper[$date][$counter.$msgkey] = $message;
+
         if ($message->type == 'invitation') {
             $view = $this->tpl();
             $view->assign('message', $message);
@@ -865,8 +869,6 @@ class Chat extends \Movim\Widget\Base
 
             $message->body = $view->draw('_chat_jingle_end');
         }
-
-        $this->_wrapper[$date][$counter.$msgkey] = $message;
 
         return $this->_wrapper;
     }

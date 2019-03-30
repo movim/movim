@@ -169,7 +169,7 @@ main:not(.enabled) #chat_widget {
     background-image: url('img/chat.svg');
 }*/
 
-#chat_widget .contained ul li {
+#chat_widget .contained section > ul > li {
     animation: fadein 0.2s;
 }
 
@@ -243,6 +243,7 @@ table.emojis td:hover {
     display: flex;
     flex: 1;
     flex-wrap: wrap;
+    padding: 0.1rem 0 0.3rem;
 }
 
 #chat_widget .bubble div span.reaction,
