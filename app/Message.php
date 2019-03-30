@@ -124,12 +124,6 @@ class Message extends Model
                 $this->id = (string)$stanza->attributes()->id;
             }*/
 
-            if ($stanza->x
-            && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
-            && isset($jid[1])) {
-                $this->jidfrom = $jid[0].'/'.$jid[1];
-            }
-
             if ($stanza->body) {
                 $this->body = (string)$stanza->body;
             }
@@ -140,13 +134,13 @@ class Message extends Model
                 $reaction = new Reaction;
 
                 $parentMessage = $this->user
-                              ->messages()
-                              ->where('replaceid', $stanza->{'attach-to'}->attributes()->id)
-                              ->where(function ($query)  {
+                                ->messages()
+                                ->where('replaceid', $stanza->{'attach-to'}->attributes()->id)
+                                ->where(function ($query)  {
                                     $query->where('jidfrom', $this->jidfrom)
                                         ->orWhere('jidto', $this->jidfrom);
-                              })
-                              ->first();
+                                })
+                                ->first();
 
                 $emoji = \Movim\Emoji::getInstance();
                 $emoji->replace($this->body);
@@ -166,6 +160,12 @@ class Message extends Model
 
                     return $parentMessage;
                 }
+            }
+
+            if ($stanza->x
+            && (string)$stanza->x->attributes()->xmlns == 'http://jabber.org/protocol/muc#user'
+            && isset($jid[1])) {
+                $this->jidfrom = $jid[0].'/'.$jid[1];
             }
 
             # HipChat MUC specific cards
