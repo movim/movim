@@ -63,11 +63,11 @@ class Emoji
         $this->_emoji = require('Emoji/CompiledEmoji.php');
     }
 
-    public function replace($string): string
+    public function replace($string, bool $noTitle = false): string
     {
         $this->_string = $string;
 
-        return preg_replace_callback($this->_regex, function ($matches) {
+        return preg_replace_callback($this->_regex, function ($matches) use ($noTitle) {
             $this->_lastEmoji = $matches[0];
 
             $astext = implode(
@@ -88,7 +88,9 @@ class Emoji
             $dom->appendChild($img = $dom->createElement('img'));
             $img->setAttribute('class', 'emoji');
             $img->setAttribute('alt', $this->_emoji[$astext]);
-            $img->setAttribute('title', $this->_emoji[$astext]);
+            if (!$noTitle) {
+                $img->setAttribute('title', \strtolower($this->_emoji[$astext]));
+            }
             $img->setAttribute('src', $this->_lastEmojiURL);
 
             return $dom->saveXML($dom->documentElement);

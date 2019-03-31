@@ -94,10 +94,10 @@ function addHFR($string)
     );
 }
 
-function addEmojis($string)
+function addEmojis($string, bool $noTitle = false)
 {
     $emoji = \Movim\Emoji::getInstance();
-    return $emoji->replace($string);
+    return $emoji->replace($string, $noTitle);
 }
 
 /**

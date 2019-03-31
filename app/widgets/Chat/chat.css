@@ -228,7 +228,7 @@ table.emojis td:hover {
 }
 
 #chat_widget div.file:not(.bubble) span.size {
-    display: block;
+    display: inline-block;
 }
 
 #chat_widget audio {
@@ -249,7 +249,7 @@ table.emojis td:hover {
 #chat_widget .bubble div span.reaction,
 #chat_widget .bubble ul.reactions li {
     list-style-type: none;
-    background-color: rgba(var(--movim-font), 0.1);
+    background-color: rgba(var(--movim-font), 0.05);
     padding: 0 0.5rem;
     border-radius: 0.5rem;
     line-height: 3rem;
@@ -272,6 +272,10 @@ table.emojis td:hover {
     transform: translate(-1.25rem, -0.25rem);
 }
 
+#chat_widget li:not(.oppose) .bubble.sticker div:hover ul.reactions:empty + span.reaction {
+    transform: translate(-1.25rem, -3.25rem);
+}
+
 #chat_widget .bubble ul.reactions li:not(:last-child) {
     margin-right: 0.5rem;
 }
@@ -279,7 +283,7 @@ table.emojis td:hover {
 #chat_widget .bubble div span.reaction:hover,
 #chat_widget .bubble ul.reactions li:hover {
     cursor: pointer;
-    background-color: rgba(var(--movim-font), 0.4);
+    background-color: rgba(var(--movim-font), 0.2);
 }
 
 #chat_widget .bubble ul.reactions li img {

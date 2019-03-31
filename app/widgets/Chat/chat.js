@@ -649,7 +649,7 @@ var Chat = {
 
         var a = document.createElement('a');
         if (sticker == null) {
-            a.innerHTML = file.name;
+            a.textContent = file.name;
         }
         a.setAttribute('href', file.uri);
         a.setAttribute('target', '_blank');

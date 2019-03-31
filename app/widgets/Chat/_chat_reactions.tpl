@@ -1,8 +1,8 @@
 {loop="$reactions"}
-    <li title="{$value|implode:','}"
+    <li title="{$value|implode:', '}"
         onclick="Chat_ajaxHttpSendReaction('{$message->mid}', '{$key}')">
         {autoescape="off"}
-            {$key|addEmojis}
+            {$key|addEmojis:true}
         {/autoescape}
         {$value|count}
     </li>
