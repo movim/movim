@@ -1931,21 +1931,21 @@
         },
         {
             "name": "react/dns",
-            "version": "v0.4.16",
+            "version": "v0.4.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/dns.git",
-                "reference": "0a0bedfec72b38406413c6ea01e1c015bd0bf72b"
+                "reference": "0f30c6ceb71504d359d51132a97e1703051f1589"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/dns/zipball/0a0bedfec72b38406413c6ea01e1c015bd0bf72b",
-                "reference": "0a0bedfec72b38406413c6ea01e1c015bd0bf72b",
+                "url": "https://api.github.com/repos/reactphp/dns/zipball/0f30c6ceb71504d359d51132a97e1703051f1589",
+                "reference": "0f30c6ceb71504d359d51132a97e1703051f1589",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0",
-                "react/cache": "^0.5 || ^0.4 || ^0.3",
+                "react/cache": "^1.0 || ^0.6 || ^0.5 || ^0.4 || ^0.3",
                 "react/event-loop": "^1.0 || ^0.5 || ^0.4 || ^0.3.5",
                 "react/promise": "^2.1 || ^1.2.1",
                 "react/promise-timer": "^1.2",
@@ -1953,7 +1953,7 @@
             },
             "require-dev": {
                 "clue/block-react": "^1.2",
-                "phpunit/phpunit": "^6.4 || ^5.7 || ^4.8.35"
+                "phpunit/phpunit": "^7.0 || ^6.4 || ^5.7 || ^4.8.35"
             },
             "type": "library",
             "autoload": {
@@ -1972,7 +1972,7 @@
                 "dns-resolver",
                 "reactphp"
             ],
-            "time": "2018-11-11T11:21:13+00:00"
+            "time": "2019-04-01T07:31:55+00:00"
         },
         {
             "name": "react/event-loop",
@@ -2314,16 +2314,16 @@
         },
         {
             "name": "respect/validation",
-            "version": "1.1.29",
+            "version": "1.1.30",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Respect/Validation.git",
-                "reference": "f8c90fa36859ca41c766efcf0c476d58913a7767"
+                "reference": "9bafee191d9c560827105a849e2b29d8446f0f6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Respect/Validation/zipball/f8c90fa36859ca41c766efcf0c476d58913a7767",
-                "reference": "f8c90fa36859ca41c766efcf0c476d58913a7767",
+                "url": "https://api.github.com/repos/Respect/Validation/zipball/9bafee191d9c560827105a849e2b29d8446f0f6f",
+                "reference": "9bafee191d9c560827105a849e2b29d8446f0f6f",
                 "shasum": ""
             },
             "require": {
@@ -2333,7 +2333,7 @@
             "require-dev": {
                 "egulias/email-validator": "~1.2 || ~2.1",
                 "mikey179/vfsstream": "^1.5",
-                "phpunit/phpunit": "~4.0",
+                "phpunit/phpunit": "~4.0 || ~5.0",
                 "symfony/validator": "~2.6.9",
                 "zendframework/zend-validator": "~2.3"
             },
@@ -2373,7 +2373,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2018-11-04T21:58:45+00:00"
+            "time": "2019-03-31T13:27:49+00:00"
         },
         {
             "name": "ringcentral/psr7",
