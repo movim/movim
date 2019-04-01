@@ -3,7 +3,7 @@
 # Baudouin Feildel <baudouin_transifex@feildel.fr>, 2018
 # Cypouz, 2015
 # Éfrit, 2015
-# Jaussoin Timothée <edhelas@movim.eu>, 2015-2018
+# Jaussoin Timothée <edhelas@movim.eu>, 2015-2019
 # Maxime Buquet <tidusx62@gmail.com>, 2015
 # Raphael J <contact@raphael-jolivet.name>, 2018
 # Thirty Thirds <thirtythirds@gmail.com>, 2015-2017
@@ -104,8 +104,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: movim\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-03-13 07:53+0200\n"
-"PO-Revision-Date: 2018-12-11 18:00+0000\n"
+"POT-Creation-Date: 2019-04-01 23:17+0200\n"
+"PO-Revision-Date: 2019-04-01 21:16+0000\n"
 "Last-Translator: Jaussoin Timothée <edhelas@movim.eu>\n"
 "Language-Team: French (France) (http://www.transifex.com/movim/movim/language/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -188,9 +188,8 @@ msgid "Are you sure that you want to delete it?"
 msgstr "Êtes-vous sûr de vouloir le supprimer ?"
 
 #: [account]gateway_title
-#, fuzzy
 msgid "Gateways"
-msgstr "Passerelle"
+msgstr "Passerelles"
 
 #: [account]clear
 msgid "Leave this instance"
@@ -540,12 +539,11 @@ msgstr "Rapporter un abus"
 
 #: [chat]jingle_start
 msgid "Call started"
-msgstr ""
+msgstr "Appel entrant"
 
 #: [chat]jingle_end
-#, fuzzy
 msgid "Call ended"
-msgstr "appel terminé"
+msgstr "Fin de l'appel"
 
 #: [chatroom]members
 msgid "Members"
@@ -616,18 +614,16 @@ msgid "Communities servers"
 msgstr "Serveurs de Communautés"
 
 #: [communities]disco
-#, fuzzy
 msgid "Communities server discovered"
-msgstr "Serveurs de Communautés"
+msgstr "Serveur de communautés découvert"
 
 #: [communities]disco_error
 msgid "This server doesn’t exists"
 msgstr "Ce serveur n'existe pas"
 
 #: [communities]interesting
-#, fuzzy
 msgid "Communities you might like"
-msgstr "Nom de la Communauté"
+msgstr "Communautés qui pourraient vous intéresser"
 
 #: [communitiesserver]created
 msgid "Community created successfully"
@@ -1060,31 +1056,31 @@ msgstr "Foire aux questions"
 
 #: [faq]permission_title
 msgid "What does the permission setting do?"
-msgstr ""
+msgstr "Quel est l'utilité du paramètre de permission ?"
 
 #: [faq]permission_text
 msgid "By default the content is only available to your contacts. You can make your profile and publications public by enabling the related setting."
-msgstr ""
+msgstr "Le contenu que vous publiez et, par défaut, uniquement disponible pour vos contacts. Vous pouvez choisir de partager publiquement votre profil et vos publications en activant ce paramètre."
 
 #: [faq]permission_community_title
 msgid "How does it applies on Communities posts?"
-msgstr ""
+msgstr "Comment ce paramètre s'applique t'il aux publications dans les Communautés ?"
 
 #: [faq]permission_community_text
 msgid "Similary to your blog publications except that, by default, the posts are only available to the members or subscribers of the Community (except if you explicitly open all the Community content)"
-msgstr ""
+msgstr "Le comportement est similaire aux articles publiés sur votre blog à l'exception que les articles publiés sont accessibles aux membres ou souscrit de la Communauté en question (sauf si vous souhaitez ouvrir totalement le contenu de la Communauté)."
 
 #: [faq]chatrooms_title
 msgid "Where can I find a list of chatrooms?"
-msgstr ""
+msgstr "Où puis-je trouver une liste de salons de discussion ?"
 
 #: [faq]find_contacts_title
 msgid "Where can I find my contacts?"
-msgstr ""
+msgstr "Où puis-je trouver mes contacts ?"
 
 #: [faq]find_contacts_text
 msgid "By opening the search panel."
-msgstr ""
+msgstr "En ouvrant le panneau de recherche."
 
 #: [apps]question
 msgid "Have you already tried Movim on other platforms?"
@@ -1379,9 +1375,8 @@ msgid "Comment published"
 msgstr "Commentaire publié"
 
 #: [post]comment_like_published
-#, fuzzy
 msgid "Liked"
-msgstr "Like"
+msgstr "Aimé"
 
 #: [post]comment_publish_error
 msgid "The comment cannot be published"
@@ -1525,16 +1520,15 @@ msgstr "Ajoutez en un en cliquant sur le bouton ajouter."
 
 #: [rooms]type_room
 msgid "Type of room"
-msgstr ""
+msgstr "Type de salon"
 
 #: [rooms]default_room
 msgid "Standard room"
-msgstr ""
+msgstr "Salon standard"
 
 #: [rooms]gateway_room
-#, fuzzy
 msgid "Gateway room"
-msgstr "Passerelle"
+msgstr "Salon de passerelle"
 
 #: [chatrooms]title
 msgid "Chatrooms"
@@ -1722,7 +1716,7 @@ msgstr "Votre profil est maintenant restreint"
 
 #: [profile]info
 msgid "Configure your instance nickname"
-msgstr ""
+msgstr "Configurer votre pseudonyme sur cette instance"
 
 #: [profile]privacy_question
 msgid "Is this profile public?"
@@ -1734,29 +1728,27 @@ msgstr "Faites attention ! En rendant votre profil public, toutes les informatio
 
 #: [profile]nickname_info
 msgid "Set a local nickname to allow the other users of the instance to find you easily."
-msgstr ""
+msgstr "Déclarez un pseudonyme sur l'instance locale pour permettre aux autres utilisateurs de vous trouver aisément."
 
 #: [profile]nickname_set
-#, fuzzy
 msgid "Your nickname is %s."
-msgstr "Votre surnom"
+msgstr "Votre pseudonyme est %s"
 
 #: [profile]nickname_placeholder
 msgid "John_Bob96"
-msgstr ""
+msgstr "Pierre_96"
 
 #: [profile]nickname_error
 msgid "Your nickname should only contains letters, numbers, - and _"
-msgstr ""
+msgstr "Votre pseudonyme ne peut uniquement contenir des lettres, chiffres, - et _"
 
 #: [profile]nickname_conflict
 msgid "The nickname is already registered"
-msgstr ""
+msgstr "Le pseudonyme est déjà utilisé"
 
 #: [profile]nickname_saved
-#, fuzzy
 msgid "Nickname saved"
-msgstr "Pseudonyme"
+msgstr "Pseudonyme sauvegardé"
 
 #: [save]submit [button]submit
 msgid "Submit"
@@ -2647,9 +2639,3 @@ msgstr "L’API est indisponible pour le moment, réessayez plus tard."
 #: [field]type_here
 msgid "Type here"
 msgstr "Rédigez votre message ici"
-
-#~ msgid "Privacy Level"
-#~ msgstr "Niveau de confidentialité"
-
-#~ msgid "This user has not posted anything right now"
-#~ msgstr "Cet utilisateur n’a rien publié pour le moment"
