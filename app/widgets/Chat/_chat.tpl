@@ -65,7 +65,7 @@
                 </p>
             {/if}
 
-            <p class="compose" id="{$jid|cleanupId}-state"></p>
+            <p class="compose line" id="{$jid|cleanupId}-state"></p>
             {if="$conference && !$conference->connected"}
                 <p>{$c->__('button.connecting')}…</p>
             {elseif="$conference && $conference->subject"}
@@ -175,7 +175,7 @@
                     {$contact->truename}
                 {/if}
             </p>
-            <p class="compose" id="{$jid|cleanupId}-state"></p>
+            <p class="compose line" id="{$jid|cleanupId}-state"></p>
             <p class="line">{$contact->jid}</p>
         </li>
     </ul>
