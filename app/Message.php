@@ -110,7 +110,7 @@ class Message extends Model
             $this->published = gmdate('Y-m-d H:i:s', strtotime($stanza->delay->attributes()->stamp));
         } elseif ($parent && $parent->delay) {
             $this->published = gmdate('Y-m-d H:i:s', strtotime($parent->delay->attributes()->stamp));
-        } elseif (!isset($stanza->replace)) {
+        } elseif (!isset($stanza->replace) || $this->published === null) {
             $this->published = gmdate('Y-m-d H:i:s');
         }
 
