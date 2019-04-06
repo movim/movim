@@ -11,6 +11,7 @@ class CommunitiesServers extends Base
     {
         $this->registerEvent('disco_items_manual', 'onDisco', 'community');
         $this->registerEvent('disco_items_manual_error', 'onDiscoError', 'community');
+        $this->registerEvent('disco_request_handle', 'onDiscoInfo', 'community');
         $this->addjs('communitiesservers.js');
     }
 
@@ -18,6 +19,18 @@ class CommunitiesServers extends Base
     {
         Notification::append(null, $this->__('communities.disco'));
         $this->ajaxGet();
+    }
+
+    public function onDiscoInfo($packet)
+    {
+        $info = \App\Info::where('category', 'pubsub')
+                 ->where('type', 'service')
+                 ->where('server', $packet->content[0])
+                 ->first();
+
+        if ($info) {
+            $this->ajaxGet();
+        }
     }
 
     public function onDiscoError($packet)
