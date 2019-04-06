@@ -880,7 +880,7 @@ class Chat extends \Movim\Widget\Base
 
         $reactions = $message
             ->reactions()
-            ->orderBy('emoji')
+            ->orderBy('created_at')
             ->get();
 
         foreach ($reactions as $reaction) {
