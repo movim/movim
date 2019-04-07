@@ -145,6 +145,22 @@ var MovimUtils = {
 
         return {'page': page, 'params': str, 'hash': window.location.hash.substr(1)};
     },
+    arrayBufferToString : function (buffer) {
+        var bufView = new Uint16Array(buffer);
+        var length = bufView.length;
+        var result = '';
+        var addition = Math.pow(2,16)-1;
+
+        for(var i = 0;i<length;i+=addition){
+
+            if(i + addition > length){
+                addition = length - i;
+            }
+            result += String.fromCharCode.apply(null, bufView.subarray(i,i+addition));
+        }
+
+        return result;
+    },
     getOrientation : function(file, callback) {
         var reader = new FileReader();
 

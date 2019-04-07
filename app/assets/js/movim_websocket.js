@@ -76,7 +76,16 @@ var MovimWebsocket = {
         };
 
         this.connection.onmessage = function(e) {
-            var obj = JSON.parse(e.data);
+            compressData = atob(e.data);
+            compressData = compressData.split('').map(function(e) {
+                return e.charCodeAt(0);
+            });
+            binData = new Uint8Array(compressData);
+            data = pako.inflate(binData);
+
+            data = MovimUtils.arrayBufferToString(new Uint16Array(data));
+
+            var obj = JSON.parse(data);
 
             if (obj != null) {
                 if (obj.func == 'registered') {

@@ -12,6 +12,7 @@ v0.14.2 (trunk)
  * Allow users to set a local nickname and handle blog urls with this nickname
  * Fix "Forever composing" (#130) + ids for composing/paused states
  * Add support of XEP-0367: Message Attaching, add Reactions feature in Movim
+ * Add zlib compression in the websocket (using pako.js for the decompression)
 
 v0.14.1
 ---------------------------
