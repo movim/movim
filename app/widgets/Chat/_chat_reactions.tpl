@@ -1,5 +1,6 @@
 {loop="$reactions"}
     <li title="{$value|implode:', '}"
+        {if="in_array($me, $value)"}class="reacted"{/if}
         onclick="Chat_ajaxHttpSendReaction('{$message->mid}', '{$key}')">
         {autoescape="off"}
             {$key|addEmojis:true}

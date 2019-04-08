@@ -286,6 +286,11 @@ table.emojis td:hover {
     background-color: rgba(var(--movim-font), 0.2);
 }
 
+#chat_widget .bubble ul.reactions li.reacted {
+    border: 1px solid rgba(var(--movim-font), 0.3);
+    box-sizing: border-box;
+}
+
 #chat_widget .bubble ul.reactions li img {
     width: 2.25rem;
     height: 3rem;

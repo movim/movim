@@ -439,20 +439,33 @@ class Chat extends \Movim\Widget\Base
                         ->where('mid', $mid)
                         ->first();
 
-        if ($message
-        && $message->reactions()
-                   ->where('emoji', $emoji)
-                   ->where('jidfrom', ($message->type == 'groupchat')
-                        ? $this->user->session->username
-                        : $this->user->id)
-                   ->count() == 0) {
-            $this->ajaxHttpSendMessage(
-                $message->jidfrom != $message->user_id
-                    ? $message->jidfrom
-                    : $message->jidto,
-                $emoji, $message->type == 'groupchat',
-                false, false, false, $message->replaceid
-            );
+        if ($message) {
+            // Try to load the MUC presence and resolve the resource
+            $mucPresence = null;
+            if ($message->type == 'groupchat') {
+                $mucPresence = $this->user->session->presences()
+                                    ->where('jid', $message->jidfrom)
+                                    ->where('mucjid', $this->user->id)
+                                    ->where('muc', true)
+                                    ->first();
+
+                if (!$mucPresence) return;
+            }
+
+            if ($message->reactions()
+                        ->where('emoji', $emoji)
+                        ->where('jidfrom', ($message->type == 'groupchat')
+                            ? $mucPresence->resource
+                            : $this->user->id)
+                        ->count() == 0) {
+                $this->ajaxHttpSendMessage(
+                    $message->jidfrom != $message->user_id
+                        ? $message->jidfrom
+                        : $message->jidto,
+                    $emoji, $message->type == 'groupchat',
+                    false, false, false, $message->replaceid
+                );
+            }
         }
     }
 
@@ -855,8 +868,9 @@ class Chat extends \Movim\Widget\Base
             $view->assign('message', $message);
 
             $start = Message::where(
-                ['type' =>'jingle_start',
-                 'thread'=> $message->thread
+                [
+                    'type' =>'jingle_start',
+                    'thread'=> $message->thread
                 ]
             )->first();
 
