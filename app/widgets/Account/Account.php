@@ -103,10 +103,14 @@ class Account extends \Movim\Widget\Base
         $this->onRemoved();
     }
 
-    public function ajaxRemoveAccountConfirm()
+    public function ajaxRemoveAccountConfirm($form)
     {
-        $da = new Remove;
-        $da->request();
+        if ($form->jid->value == $this->user->id) {
+            $da = new Remove;
+            $da->request();
+        } else {
+            Notification::append(null, $this->__('account.delete_text_error'));
+        }
     }
 
     public function ajaxGetRegistration($server)
