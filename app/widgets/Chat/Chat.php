@@ -907,6 +907,7 @@ class Chat extends \Movim\Widget\Base
 
         $view->assign('message', $message);
         $view->assign('reactions', $merged);
+        $view->assign('me', $this->user->id);
 
         return $view->draw('_chat_reactions');
     }
