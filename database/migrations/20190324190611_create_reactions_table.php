@@ -95,7 +95,10 @@ class CreateReactionsTable extends Migration
         $this->schema->drop('reactions');
 
         $this->schema->table('messages', function (Blueprint $table) {
-            $table->dropPrimary('messages_pkey');
+            if ($this->schema->getConnection()->getDriverName() == 'pgsql') {
+                $table->dropPrimary('messages_pkey');
+            }
+
             $table->dropColumn('mid');
             $table->primary(['user_id', 'jidfrom', 'id']);
             $table->dropUnique('messages_user_id_jidfrom_id_unique');
