@@ -2,6 +2,7 @@
 /log
 /users
 /cache
+/node_modules
 *~
 /config/db.inc.php
 /composer.phar

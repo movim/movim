@@ -41,7 +41,9 @@
         "react/http": "^0.8.3",
         "react/dns": "^0.4.15",
         "monolog/monolog": "^1.23",
-        "ratchet/pawl": "^0.3.2"
+        "ratchet/pawl": "^0.3.2",
+
+        "foxy/foxy": "^1.0.0"
     },
     "config": {
         "platform": {
