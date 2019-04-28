@@ -1,5 +1,5 @@
 {loop="$reactions"}
-    <li title="{$value|implode:', '}"
+    <li title="{$value|implodeCsv}"
         {if="in_array($me, $value)"}class="reacted"{/if}
         onclick="Chat_ajaxHttpSendReaction('{$message->mid}', '{$key}')">
         {autoescape="off"}
