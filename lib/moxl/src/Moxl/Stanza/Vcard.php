@@ -38,9 +38,19 @@ class Vcard
 
         if (isset($data->country) || isset($data->locality) || isset($data->postalcode)) {
             $adr = $dom->createElement('ADR');
-            $adr->appendChild($dom->createElement('LOCALITY', $data->locality->value));
-            $adr->appendChild($dom->createElement('PCODE', $data->postalcode->value));
-            $adr->appendChild($dom->createElement('CTRY', $data->country->value));
+
+            if (isset($data->locality)) {
+                $adr->appendChild($dom->createElement('LOCALITY', $data->locality->value));
+            }
+
+            if (isset($data->postalcode)) {
+                $adr->appendChild($dom->createElement('PCODE', $data->postalcode->value));
+            }
+
+            if (isset($data->country)) {
+                $adr->appendChild($dom->createElement('CTRY', $data->country->value));
+            }
+
             $vcard->appendChild($adr);
         }
 
