@@ -385,3 +385,10 @@ function urilize($path, bool $noTime = false): string
 
     return BASE_URI . $path . '?t=' . filemtime(DOCUMENT_ROOT . '/' . $path);
 }
+
+/**
+ * Return a comma-separated list of joined array elements
+ */
+function implodeCsv($value) {
+    return implode(', ', $value);
+}
