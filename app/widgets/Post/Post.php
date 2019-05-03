@@ -59,7 +59,10 @@ class Post extends Base
     public function onComments($packet)
     {
         $post = \App\Post::find($packet->content);
-        $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($post));
+
+        if ($post) {
+            $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($post));
+        }
     }
 
     public function onCommentsError($packet)

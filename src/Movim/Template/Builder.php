@@ -67,8 +67,8 @@ class Builder
         }
 
         $outp = str_replace(
-            '<%scripts%>',
-            $scripts,
+            ['<%scripts%>', '<%meta%>', '<%content%>', '<%title%>', '<%dir%>'],
+            [$scripts, $this->meta(), $this->content, $this->title(), $this->dir()],
             $outp
         );
 
@@ -94,11 +94,11 @@ class Builder
     /**
      * Displays the current title
      */
-    public function title()
+    public function title(): string
     {
         $widgets = Wrapper::getInstance();
 
-        echo isset($widgets->title)
+        return isset($widgets->title)
             ? $this->title . ' – ' . $widgets->title
             : $this->title;
     }
@@ -114,13 +114,13 @@ class Builder
             $this->dir = 'rtl';
         }
 
-        echo $this->dir;
+        return $this->dir;
     }
 
     /**
      * Display some meta tag defined in the widgets using Facebook OpenGraph
      */
-    public function meta()
+    public function meta(): string
     {
         $dom = new \DOMDocument('1.0', 'UTF-8');
         $dom->formatOutput = true;
@@ -212,12 +212,12 @@ class Builder
         $meta->setAttribute('content', 'MovimNetwork');
         $metas->appendChild($meta);
 
-        echo strip_tags($dom->saveXML($dom->documentElement), '<meta><link>');
+        return strip_tags($dom->saveXML($dom->documentElement), '<meta><link>');
     }
 
     public function addScript(string $script)
     {
-        $this->scripts[] = urilize('app/assets/js/' . $script);
+        $this->scripts[] = urilize('scripts/' . $script);
     }
 
     public function addCSS(string $file)
@@ -225,30 +225,24 @@ class Builder
         $this->css[] = $this->linkFile('css/' . $file, true);
     }
 
-    public function scripts()
-    {
-        echo '<%scripts%>';
-    }
-
     public function setContent(string $data)
     {
         $this->content .= $data;
-    }
-
-    public function content()
-    {
-        echo $this->content;
     }
 
     private function printScripts(): string
     {
         $out = '';
         $widgets = Wrapper::getInstance();
-        $scripts = array_merge($this->scripts, $widgets->loadjs());
-        foreach ($scripts as $script) {
-            $out .= '<script type="text/javascript" src="'
-                 . $script .
-                 '"></script>'."\n";
+
+        foreach (array_merge($this->scripts, $widgets->loadjs()) as $script) {
+            $dom = new \DOMDocument('1.0', 'UTF-8');
+            $s = $dom->createElement('script');
+            $s->setAttribute('type', 'text/javascript');
+            $s->setAttribute('src', $script);
+            $dom->appendChild($s);
+
+            $out .= $dom->saveHTML($dom->documentElement);
         }
 
         $ajaxer = Ajax::getInstance();
@@ -261,12 +255,17 @@ class Builder
     {
         $out = '';
         $widgets = Wrapper::getInstance();
-        $csss = array_merge($this->css, $widgets->loadcss()); // Note the 3rd s, there are many.
-        foreach ($csss as $css_path) {
-            $out .= '<link rel="stylesheet" href="'
-                . $css_path .
-                "\" type=\"text/css\" />\n";
+
+        foreach (array_merge($this->css, $widgets->loadcss()) as $css) {
+            $dom = new \DOMDocument('1.0', 'UTF-8');
+            $s = $dom->createElement('link');
+            $s->setAttribute('rel', 'stylesheet');
+            $s->setAttribute('href', $css);
+            $dom->appendChild($s);
+
+            $out .= $dom->saveHTML($dom->documentElement);
         }
+
         return $out;
     }
 

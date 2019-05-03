@@ -77,7 +77,6 @@ class Bootstrap
         }
 
         define('BASE_URI', $this->getBaseUri());
-        define('CACHE_URI', $this->getBaseUri() . 'cache/');
 
         if (isset($_COOKIE['MOVIM_SESSION_ID'])) {
             define('SESSION_ID', $_COOKIE['MOVIM_SESSION_ID']);
@@ -94,10 +93,11 @@ class Bootstrap
 
         define('THEME_PATH', DOCUMENT_ROOT . '/theme/');
         define('APP_PATH', DOCUMENT_ROOT . '/app/');
-        define('SYSTEM_PATH', DOCUMENT_ROOT . '/system/');
         define('LIB_PATH', DOCUMENT_ROOT . '/lib/');
         define('LOCALES_PATH', DOCUMENT_ROOT . '/locales/');
         define('CACHE_PATH', DOCUMENT_ROOT . '/cache/');
+        define('PUBLIC_PATH', DOCUMENT_ROOT . '/public/');
+        define('PUBLIC_CACHE_PATH', DOCUMENT_ROOT . '/public/cache/');
         define('LOG_PATH', DOCUMENT_ROOT . '/log/');
         define('CONFIG_PATH', DOCUMENT_ROOT . '/config/');
 

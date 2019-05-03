@@ -34,7 +34,6 @@ class Base
             $this->_view = $view;
         }
 
-        //$this->user = new User;
         $this->load();
 
         $this->user = \App\User::me();
@@ -226,14 +225,6 @@ class Base
     }
 
     /**
-     * @brief Adds a javascript file to this widget.
-     */
-    protected function addjs(string $filename)
-    {
-        $this->js[] = $this->respath($filename);
-    }
-
-    /**
      * @brief returns the list of javascript files to be loaded for the widget.
      */
     public function loadjs(): array
@@ -246,7 +237,31 @@ class Base
      */
     protected function addcss(string $filename)
     {
-        $this->css[] = $this->respath($filename);
+        $this->css[] = $this->cacheFile($filename);
+    }
+
+    /**
+     * @brief Adds a javascript file to this widget.
+     */
+    protected function addjs(string $filename)
+    {
+        $this->js[] = $this->cacheFile($filename);
+    }
+
+    /**
+     * @brief Cache and return the publicly cached file
+     */
+    private function cacheFile(string $filename)
+    {
+        $local = WIDGETS_PATH . get_class($this) . '/' . $filename;
+        $cache = PUBLIC_CACHE_PATH . get_class($this) . '_' . $filename;
+        $path = 'cache/' . get_class($this) . '_' . $filename;
+
+        if (!\file_exists($cache)) {
+            \symlink($local, $cache);
+        }
+
+        return $path;
     }
 
     /**

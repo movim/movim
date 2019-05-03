@@ -6,13 +6,13 @@
 }
 
 #onboarding.notifications .placeholder {
-    background-image: url(img/notifications.svg);
+    background-image: url(/theme/img/notifications.svg);
 }
 
 #onboarding.public .placeholder {
-    background-image: url(img/public.svg);
+    background-image: url(/theme/img/public.svg);
 }
 
 #onboarding.popups .placeholder {
-    background-image: url(img/popups.svg);
+    background-image: url(/theme/img/popups.svg);
 }

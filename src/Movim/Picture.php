@@ -8,8 +8,7 @@ define('DEFAULT_PICTURE_EXPIRATION_HOURS', 12);
 
 class Picture
 {
-    private $_path = CACHE_PATH;
-    private $_uri  = CACHE_URI;
+    private $_path = PUBLIC_CACHE_PATH;
     private $_folder = 'cache/';
     private $_key;
     private $_bin  = false;

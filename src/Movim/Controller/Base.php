@@ -67,6 +67,25 @@ class Base
 
     public function display()
     {
+        $this->page->addCSS('style.css');
+        $this->page->addCSS('notification.css');
+        $this->page->addCSS('header.css');
+        $this->page->addCSS('listn.css');
+        $this->page->addCSS('grid.css');
+        $this->page->addCSS('article.css');
+        $this->page->addCSS('form.css');
+        $this->page->addCSS('icon.css');
+        $this->page->addCSS('dialog.css');
+        $this->page->addCSS('card.css');
+        $this->page->addCSS('table.css');
+        $this->page->addCSS('color.css');
+        $this->page->addCSS('block.css');
+        $this->page->addCSS('menu.css');
+        $this->page->addCSS('fonts.css');
+        $this->page->addCSS('title.css');
+        $this->page->addCSS('typo.css');
+        $this->page->addCSS('scrollbar.css');
+
         $this->page->addScript('movim_utils.js');
         $this->page->addScript('movim_base.js');
         $this->page->addScript('movim_electron.js');

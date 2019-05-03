@@ -37,6 +37,7 @@ class Core implements MessageComponentInterface
         if (file_exists(CACHE_PATH . 'socketapi.sock')) {
             unlink(CACHE_PATH . 'socketapi.sock');
         }
+        array_map('unlink', glob(PUBLIC_CACHE_PATH . '*'));
         $this->registerCleaner();
     }
 

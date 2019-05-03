@@ -37,8 +37,8 @@ class Ajax extends Base
             $buffer .= 'function ' . $funcdef['object'] . '_'
                 . $funcdef['funcname'] . "(${parlist}) {";
             $buffer .= ($funcdef['http'] ? " return MovimWebsocket.sendAjax('" : "MovimWebsocket.send('") .
-                $funcdef['object'] . "', '" .
-                $funcdef['funcname'] . "', [${parlist}]);}\n";
+                $funcdef['object'] . "','" .
+                $funcdef['funcname'] . "',[${parlist}]);}";
         }
 
         return $buffer . "</script>\n";

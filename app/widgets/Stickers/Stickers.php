@@ -27,7 +27,7 @@ class Stickers extends \Movim\Widget\Base
         list($c, $ext) = explode('@', $cid);
         list($sh, $key) = explode('+', $c);
 
-        $base64 = base64_encode(file_get_contents(CACHE_PATH.md5($key).'.png'));
+        $base64 = base64_encode(file_get_contents(PUBLIC_CACHE_PATH.md5($key).'.png'));
 
         $a = new Answer;
         $a->setTo($to)
@@ -46,15 +46,15 @@ class Stickers extends \Movim\Widget\Base
 
         list($key, $ext) = explode('.', $file);
 
-        $filepath = dirname(__FILE__).'/stickers/'.$pack.'/'.$key.'.png';
+        $filepath = PUBLIC_PATH.'/stickers/'.$pack.'/'.$key.'.png';
 
         if (!file_exists($filepath)) {
             return;
         }
 
         // Caching the picture
-        if (!file_exists(CACHE_PATH.md5($key).'.png')) {
-            copy($filepath, CACHE_PATH.md5($key).'.png');
+        if (!file_exists(PUBLIC_CACHE_PATH.md5($key).'.png')) {
+            copy($filepath, PUBLIC_CACHE_PATH.md5($key).'.png');
         }
 
         // Creating a message
@@ -108,7 +108,7 @@ class Stickers extends \Movim\Widget\Base
         $pack = isset($pack) ? $pack : current($packs);
 
         if (in_array($pack, $packs)) {
-            $files = scandir(dirname(__FILE__).'/stickers/'.$pack);
+            $files = scandir(PUBLIC_PATH.'/stickers/'.$pack);
 
             array_shift($files);
             array_shift($files);
@@ -118,7 +118,7 @@ class Stickers extends \Movim\Widget\Base
             $view->assign('stickers', $files);
             $view->assign('packs', $packs);
             $view->assign('pack', $pack);
-            $view->assign('info', parse_ini_file(dirname(__FILE__).'/stickers/'.$pack.'/info.ini'));
+            $view->assign('info', parse_ini_file(PUBLIC_PATH.'/stickers/'.$pack.'/info.ini'));
             $view->assign('path', $this->respath('stickers', false, false, true));
 
             Drawer::fill($view->draw('_stickers'), true);
@@ -169,7 +169,7 @@ class Stickers extends \Movim\Widget\Base
      */
     public function getPacks()
     {
-        $dirs = scandir(dirname(__FILE__).'/stickers/');
+        $dirs = scandir(PUBLIC_PATH.'/stickers/');
 
         $packs = [];
 
@@ -178,7 +178,7 @@ class Stickers extends \Movim\Widget\Base
 
         // Get the packs
         foreach ($dirs as $dir) {
-            if (is_dir(dirname(__FILE__).'/stickers/'.$dir)) {
+            if (is_dir(PUBLIC_PATH.'/stickers/'.$dir)) {
                 array_push($packs, $dir);
             }
         }

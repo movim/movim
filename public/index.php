@@ -37,7 +37,7 @@
  * events-based API.
  */
 
-require 'vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use Movim\Bootstrap;
 use Movim\Controller\Front;
