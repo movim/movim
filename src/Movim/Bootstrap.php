@@ -50,6 +50,10 @@ class Bootstrap
             throw new \Exception('Couldn’t create cache directory');
         }
 
+        if (!file_exists(PUBLIC_CACHE_PATH) && !@mkdir(PUBLIC_CACHE_PATH)) {
+            throw new \Exception('Couldn’t create public cache directory');
+        }
+
         if (!file_exists(LOG_PATH) && !@mkdir(LOG_PATH)) {
             throw new \Exception('Couldn’t create log directory');
         }
