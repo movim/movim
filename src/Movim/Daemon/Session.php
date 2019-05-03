@@ -193,7 +193,6 @@ class Session
 
     public function messageOut($msg)
     {
-        $msg = base64_encode(\zlib_encode($msg, ZLIB_ENCODING_DEFLATE));
         $this->timestamp = time();
         if (!empty($msg)) {
             foreach ($this->clients as $client) {

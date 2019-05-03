@@ -13,7 +13,6 @@
         <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/96.png');?>" sizes="96x96">
         <link rel="icon" type="image/png" href="<?php $this->linkFile('img/app/128.png');?>" sizes="128x128">
         <script src="<?php echo BASE_URI; ?>scripts/favico.js"></script>
-        <script src="<?php echo BASE_URI; ?>scripts/pako.js"></script>
         <script src="<?php echo
             \Movim\Route::urlize('system') .
             '&t=' .
