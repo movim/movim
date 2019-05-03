@@ -408,10 +408,6 @@ ul li div.bubble:after {
     text-align: left;
 }
 
-ul li .quote {
-    font-style: italic;
-}
-
 ul li div.bubble:not(.sticker):not(.file):before {
     content: "";
     position: absolute;

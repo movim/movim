@@ -28,9 +28,11 @@ class Post extends Base
         $post = $packet->content;
 
         if ($post->isComment()) {
+            $parent = $post->getParent();
+
             $this->rpc(
                 'MovimTpl.fill',
-                '#comments',
+                '#post_widget.'.cleanupId($parent->nodeid).' #comments',
                 $this->prepareComments($post->getParent())
             );
         } else {
@@ -61,7 +63,11 @@ class Post extends Base
         $post = \App\Post::find($packet->content);
 
         if ($post) {
-            $this->rpc('MovimTpl.fill', '#comments', $this->prepareComments($post));
+            $this->rpc(
+                'MovimTpl.fill',
+                '#post_widget.'.cleanupId($post->nodeid).' #comments',
+                $this->prepareComments($post)
+            );
         }
     }
 
