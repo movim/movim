@@ -10,19 +10,23 @@ class ContactData extends Base
     {
         $this->addjs('contactdata.js');
         $this->addcss('contactdata.css');
-        $this->registerEvent('vcard_get_handle', 'onVcardReceived');
-        $this->registerEvent('vcard4_get_handle', 'onVcardReceived');
+        $this->registerEvent('vcard_get_handle', 'onVcardReceived', 'contact');
+        $this->registerEvent('vcard4_get_handle', 'onVcardReceived', 'contact');
     }
 
     public function onVcardReceived($packet)
     {
         $contact = $packet->content;
-        $this->rpc('MovimTpl.fill', '#'.cleanupId($contact->jid) . '_contact_data', $this->prepareData($contact->jid));
+        $this->rpc('MovimTpl.fill', '#'.cleanupId($contact->id) . '_contact_data', $this->prepareData($contact->id));
         $this->rpc('Notification_ajaxGet');
     }
 
     public function prepareData($jid)
     {
+        if (!$this->validateJid($jid)) {
+            return;
+        }
+
         $view = $this->tpl();
 
         $view->assign('message', $this->user->messages()

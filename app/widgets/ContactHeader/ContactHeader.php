@@ -14,8 +14,8 @@ class ContactHeader extends Base
     public function load()
     {
         $this->registerEvent('roster_additem_handle', 'onUpdate');
-        $this->registerEvent('roster_updateitem_handle', 'onUpdate');
-        $this->registerEvent('roster_removeitem_handle', 'onUpdate');
+        $this->registerEvent('roster_updateitem_handle', 'onUpdate', 'contact');
+        $this->registerEvent('roster_removeitem_handle', 'onUpdate', 'contact');
     }
 
     public function onUpdate($packet)
@@ -86,6 +86,10 @@ class ContactHeader extends Base
 
     public function prepareHeader($jid)
     {
+        if (!$this->validateJid($jid)) {
+            return;
+        }
+
         $view = $this->tpl();
         $view->assign('roster', ($this->user->session->contacts()->where('jid', $jid)->first()));
         $view->assign('contact', App\Contact::firstOrNew(['id' => $jid]));

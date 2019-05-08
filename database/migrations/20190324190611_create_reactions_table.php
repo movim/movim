@@ -80,7 +80,7 @@ class CreateReactionsTable extends Migration
             $table->timestamps();
 
             $table->foreign('message_mid')->references('mid')
-            ->on('messages')->onDelete('cascade');
+                  ->on('messages')->onDelete('cascade');
 
             $table->unique(['message_mid', 'jidfrom', 'emoji']);
         });

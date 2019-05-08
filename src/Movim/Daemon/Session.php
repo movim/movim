@@ -109,16 +109,16 @@ class Session
             'exec php linker.php ' . $this->sid,
             null,
             [
-                                'sid'       => $this->sid,
-                                'baseuri'   => $this->baseuri,
-                                'language'  => $this->language,
-                                'offset'    => $this->offset,
-                                'verbose'   => $this->verbose,
-                                'debug'     => $this->debug,
-                                'key'       => $this->key,
-                                'port'      => $this->port
-                            ]
-                        );
+                'sid'       => $this->sid,
+                'baseuri'   => $this->baseuri,
+                'language'  => $this->language,
+                'offset'    => $this->offset,
+                'verbose'   => $this->verbose,
+                'debug'     => $this->debug,
+                'key'       => $this->key,
+                'port'      => $this->port
+            ]
+        );
         $this->process->start($loop);
 
         // The linker died, we close properly the session

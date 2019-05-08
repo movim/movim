@@ -35,10 +35,7 @@ class Notifications extends Base
     public function onInvitations($from = false)
     {
         if (is_string($from)) {
-            $contact = App\Contact::find($from);
-            if (!$contact) {
-                $contact = new App\Contact(['id' => $from]);
-            }
+            $contact = App\Contact::firstOrNew(['id' => $from]);
 
             Notification::append(
                 'invite|'.$from,
