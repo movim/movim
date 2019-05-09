@@ -23,25 +23,25 @@
         "rain/raintpl": "^3.1.0",
         "michelf/php-markdown": "^1.8",
 
-        "embed/embed": "^v3.3.6",
+        "embed/embed": "^v3.3.9",
 
         "respect/validation": "^1.1",
-        "ezyang/htmlpurifier": "^4.9",
+        "ezyang/htmlpurifier": "^4.10",
         "symfony/console": "^3.3",
-        "cocur/slugify": "^3.0",
+        "cocur/slugify": "^3.2",
         "dflydev/fig-cookies": "^1.0",
-        "defuse/php-encryption": "^2.1",
+        "defuse/php-encryption": "^2.2",
 
-        "robmorgan/phinx": "^0.9.2",
-        "illuminate/database": "^5.2",
+        "robmorgan/phinx": "^0.10.7",
+        "illuminate/database": "^5.5",
         "doctrine/dbal": "^2.5",
 
-        "cboden/ratchet": "^0.4.0",
-        "react/child-process": "^0.5.0",
-        "react/http": "^0.8.3",
-        "react/dns": "^0.4.15",
-        "monolog/monolog": "^1.23",
-        "ratchet/pawl": "^0.3.2"
+        "cboden/ratchet": "^0.4.1",
+        "react/child-process": "^0.6.1",
+        "react/http": "^0.8.4",
+        "react/dns": "^0.4.17",
+        "monolog/monolog": "^1.24",
+        "ratchet/pawl": "^0.3.4"
     },
     "config": {
         "platform": {
