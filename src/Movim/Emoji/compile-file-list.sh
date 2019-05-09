@@ -21,7 +21,7 @@
 # Needs the Debian packages mksh and unicode-data installed.
 
 cd "$(dirname "$0")"
-srcpath=../../../theme/img/emojis/svg
+srcpath=../../../public/theme/img/emojis/svg
 
 cd "$srcpath"
 set -A files -- *.svg

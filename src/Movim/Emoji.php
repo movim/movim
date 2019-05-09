@@ -1,7 +1,7 @@
 <?php
 /*-
- * Copyright © 2018
- * mirabilos <thorsten.glaser@teckids.org>
+ * Copyright © 2018, 2019
+ *	mirabilos <thorsten.glaser@teckids.org>
  *
  * Provided that these terms and disclaimer and all copyright notices
  * are retained or reproduced in an accompanying document, permission
@@ -66,10 +66,9 @@ class Emoji
     public function replace($string, bool $noTitle = false): string
     {
         $this->_string = $string;
+        $this->_lastEmoji = null;
 
         return preg_replace_callback($this->_regex, function ($matches) use ($noTitle) {
-            $this->_lastEmoji = $matches[0];
-
             $astext = implode(
                 '-',
                 array_map(
@@ -82,6 +81,7 @@ class Emoji
                 return $matches[0];
             }
 
+            $this->_lastEmoji = $matches[0];
             $this->_lastEmojiURL = BASE_URI . 'theme/img/emojis/svg/' . $astext . '.svg';
 
             $dom = new \DOMDocument('1.0', 'UTF-8');
