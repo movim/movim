@@ -58,16 +58,21 @@ class ChatOwnState
         });
     }
 
-    private function paused(string $to, bool $muc = false)
+    public function halt()
     {
         global $loop;
-
-        $mp = new Paused;
 
         $this->_to = null;
         $this->_muc = false;
 
         $loop->cancelTimer($this->_timer);
+    }
+
+    private function paused(string $to, bool $muc = false)
+    {
+        $this->halt();
+
+        $mp = new Paused;
 
         if ($muc) {
             $mp->setMuc();

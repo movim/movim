@@ -392,6 +392,8 @@ class Chat extends \Movim\Widget\Base
             }
         }
 
+        (ChatOwnState::getInstance())->halt();
+
         $p->request();
 
         /* Is it really clean ? */
