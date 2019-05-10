@@ -25,13 +25,6 @@ var MovimUtils = {
     cleanupId: function(string) {
         return 'id-' + string.replace(/([^a-z0-9]+)/gi, '-').toLowerCase();
     },
-    checkString: function(str) {
-        if (typeof str == 'object') {
-            return str instanceof String;
-        }
-
-        return typeof str == 'string';
-    },
     disconnect: function() {
         window.location.replace(ERROR_URI);
     },
@@ -69,13 +62,6 @@ var MovimUtils = {
         }
 
         return json;
-    },
-    getNode: function(str) {
-        if (MovimUtils.checkString(str)) {
-            return document.querySelector(str);
-        }
-
-        return str;
     },
     pushState: function(url) {
         window.history.pushState(null, '', url);
@@ -144,22 +130,6 @@ var MovimUtils = {
         var str = str.map(param => decodeURIComponent(param));
 
         return {'page': page, 'params': str, 'hash': window.location.hash.substr(1)};
-    },
-    arrayBufferToString : function (buffer) {
-        var bufView = new Uint16Array(buffer);
-        var length = bufView.length;
-        var result = '';
-        var addition = Math.pow(2,16)-1;
-
-        for(var i = 0;i<length;i+=addition){
-
-            if(i + addition > length){
-                addition = length - i;
-            }
-            result += String.fromCharCode.apply(null, bufView.subarray(i,i+addition));
-        }
-
-        return result;
     },
     getOrientation : function(file, callback) {
         var reader = new FileReader();

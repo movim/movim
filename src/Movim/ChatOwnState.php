@@ -65,7 +65,9 @@ class ChatOwnState
         $this->_to = null;
         $this->_muc = false;
 
-        $loop->cancelTimer($this->_timer);
+        if ($this->_timer) {
+            $loop->cancelTimer($this->_timer);
+        }
     }
 
     private function paused(string $to, bool $muc = false)

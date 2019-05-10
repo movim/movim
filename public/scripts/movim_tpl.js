@@ -42,9 +42,6 @@ var MovimTpl = {
             target.innerHTML = html;
         }
     },
-    hideContextMenu : function() {
-        MovimUtils.removeClass('ul.context_menu', 'shown');
-    },
     hideMenu: function() {
         MovimUtils.removeClass('body > nav', 'active');
     },
