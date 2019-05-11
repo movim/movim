@@ -379,11 +379,11 @@ function truncate($str, int $width): string
  */
 function urilize($path, bool $noTime = false): string
 {
-    if ($noTime || !file_exists(DOCUMENT_ROOT . '/' . $path)) {
+    if ($noTime || !file_exists(PUBLIC_PATH . '/' . $path)) {
         return BASE_URI . $path;
     }
 
-    return BASE_URI . $path . '?t=' . filemtime(DOCUMENT_ROOT . '/' . $path);
+    return BASE_URI . $path . '?t=' . filemtime(PUBLIC_PATH . '/' . $path);
 }
 
 /**
