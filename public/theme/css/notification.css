@@ -71,7 +71,7 @@
 .snackbar#error_websocket:not(.hide) ~ div.dialog {
     opacity: 0.5;
     pointer-events: none;
-    filter: grayscale(1) blur(1px);
+    filter: grayscale(1);
 }
 
 @media screen and (max-width: 1024px) {
