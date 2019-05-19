@@ -40,7 +40,7 @@
 }
 
 .snackbar {
-    left: 3rem;
+    right: 2.2rem;
     border-radius: 0.25rem;
     opacity: 1;
     padding: 2rem 1rem;
@@ -67,10 +67,11 @@
 }
 
 .snackbar#error_websocket:not(.hide) ~ main,
-.snackbar#error_websocket:not(.hide) ~ nav,
-.snackbar#error_websocket:not(.hide) ~ div:not(.toast) {
+.snackbar#error_websocket:not(.hide) ~ div.drawer,
+.snackbar#error_websocket:not(.hide) ~ div.dialog {
     opacity: 0.5;
     pointer-events: none;
+    filter: grayscale(1) blur(1px);
 }
 
 @media screen and (max-width: 1024px) {
@@ -81,4 +82,3 @@
         bottom: 6.5rem;
     }
 }
-
