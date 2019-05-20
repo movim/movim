@@ -17,7 +17,6 @@ class Contact extends Model
         return $this->belongsTo('App\User', 'id');
     }
 
-
     public function save(array $options = [])
     {
         unset($this->photobin);

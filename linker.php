@@ -104,19 +104,12 @@ $wsSocketBehaviour = function ($msg) use (&$xmppSocket, &$connector, &$xmppBehav
                 $wsSocket->send(json_encode($obj));
                 break;
 
+            case 'up':
             case 'down':
                 if (isset($xmppSocket)
                 && is_resource($xmppSocket->stream)) {
                     $evt = new Movim\Widget\Event;
-                    $evt->run('session_down');
-                }
-                break;
-
-            case 'up':
-                if (isset($xmppSocket)
-                && is_resource($xmppSocket->stream)) {
-                    $evt = new Movim\Widget\Event;
-                    $evt->run('session_up');
+                    $evt->run('session_'.$msg->func);
                 }
                 break;
 

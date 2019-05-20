@@ -18,6 +18,8 @@ use Movim\Picture;
 use Movim\Session;
 use Movim\ChatStates;
 
+use App\Conference;
+
 class Rooms extends Base
 {
     public function load()
@@ -37,6 +39,8 @@ class Rooms extends Base
         $this->registerEvent('presence_muc_errorremoteservernotfound', 'onRemoteServerNotFound');
         $this->registerEvent('composing', 'onComposing', 'chat');
         $this->registerEvent('paused', 'onPaused', 'chat');
+
+        $this->registerEvent('chat_open_room', 'onChatOpen', 'chat');
     }
 
     public function onMessage($packet)
@@ -59,6 +63,13 @@ class Rooms extends Base
         $chatStates = ChatStates::getInstance();
         $chatStates->clearState($message->jidfrom, $message->resource);
         $this->onPaused($chatStates->getState($message->jidfrom));
+
+        $this->setCounter($message->jidfrom);
+    }
+
+    public function onChatOpen(string $room)
+    {
+        $this->setCounter($room);
     }
 
     public function onDiscoGateway($packet)
@@ -86,18 +97,18 @@ class Rooms extends Base
     public function onAvatarSet($packet)
     {
         $this->rpc('Dialog_ajaxClear');
-        Notification::append(null, $this->__('avatar.updated'));
+        Notification::toast($this->__('avatar.updated'));
     }
 
     public function onRegistrationRequired($packet)
     {
-        Notification::append(null, $this->__('chatrooms.registrationrequired'));
+        Notification::toast($this->__('chatrooms.registrationrequired'));
         $this->ajaxExit($packet->content);
     }
 
     public function onRemoteServerNotFound($packet)
     {
-        Notification::append(null, $this->__('chatrooms.remoteservernotfound'));
+        Notification::toast($this->__('chatrooms.remoteservernotfound'));
         $this->ajaxExit($packet->content);
     }
 
@@ -125,13 +136,13 @@ class Rooms extends Base
 
     public function onConflict()
     {
-        Notification::append(null, $this->__('chatrooms.conflict'));
+        Notification::toast($this->__('chatrooms.conflict'));
     }
 
     public function onDisconnected()
     {
         $this->refreshRooms();
-        Notification::append(null, $this->__('chatrooms.disconnected'));
+        Notification::toast($this->__('chatrooms.disconnected'));
     }
 
     private function setState(string $room, bool $composing)
@@ -143,6 +154,23 @@ class Rooms extends Base
             '#' . cleanupId($room.'_rooms_primary'),
             'composing'
         );
+    }
+
+    private function setCounter(string $room)
+    {
+        $conference = $this->user->session
+                           ->conferences()
+                           ->where('conference', $room)
+                           ->withCount('unreads')
+                           ->first();
+
+        if ($conference) {
+            $this->rpc(
+                'MovimTpl.fill',
+                '#' . cleanupId($room.'_rooms_primary'),
+                $this->prepareRoomCounter($conference)
+            );
+        }
     }
 
     private function refreshRooms($edit = false)
@@ -325,7 +353,7 @@ class Rooms extends Base
               ->setInvite($form->invite->value)
               ->request();
 
-            Notification::append(null, $this->__('room.invited'));
+            Notification::toast($this->__('room.invited'));
             $this->rpc('Dialog_ajaxClear');
         }
     }
@@ -486,9 +514,9 @@ class Rooms extends Base
     public function ajaxChatroomAdd($form)
     {
         if (!filter_var($form->jid->value, FILTER_VALIDATE_EMAIL)) {
-            Notification::append(null, $this->__('chatrooms.bad_id'));
+            Notification::toast($this->__('chatrooms.bad_id'));
         } elseif (trim($form->name->value) == '') {
-            Notification::append(null, $this->__('chatrooms.empty_name'));
+            Notification::toast($this->__('chatrooms.empty_name'));
         } else {
             $this->user->session->conferences()
                  ->where('conference', strtolower($form->jid->value))
@@ -543,6 +571,7 @@ class Rooms extends Base
 
         $conferences = $this->user->session->conferences()
                                            ->with('info', 'contact', 'presence')
+                                           ->withCount('unreads')
                                            ->get();
         $connected = new Collection;
 
@@ -560,6 +589,14 @@ class Rooms extends Base
         $view->assign('room', $this->get('r'));
 
         return $view->draw('_rooms');
+    }
+
+    public function prepareRoomCounter(Conference $conference)
+    {
+        $view = $this->tpl();
+        $view->assign('counter', $conference->unreads_count);
+
+        return $view->draw('_rooms_counter');
     }
 
     /**

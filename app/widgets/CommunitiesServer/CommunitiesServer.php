@@ -23,7 +23,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function onCreate($packet)
     {
-        Notification::append(null, $this->__('communitiesserver.created'));
+        Notification::toast($this->__('communitiesserver.created'));
 
         list($origin, $node) = array_values($packet->content);
         $this->ajaxDisco($origin);
@@ -45,7 +45,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
         $this->rpc('MovimTpl.fill', '#communities_server', $this->prepareCommunitiesServer($origin));
 
-        Notification::append(null, $this->__('communitiesserver.disco_error'));
+        Notification::toast($this->__('communitiesserver.disco_error'));
     }
 
     public function onTestCreate($packet)
@@ -60,13 +60,13 @@ class CommunitiesServer extends \Movim\Widget\Base
 
     public function onTestCreateError($packet)
     {
-        Notification::append(null, $this->__('communitiesserver.no_creation'));
+        Notification::toast($this->__('communitiesserver.no_creation'));
     }
 
     public function ajaxDisco($origin)
     {
         if (!$this->validateServer($origin)) {
-            Notification::append(null, $this->__('communitiesserver.disco_error'));
+            Notification::toast($this->__('communitiesserver.disco_error'));
             return;
         }
 
@@ -98,7 +98,7 @@ class CommunitiesServer extends \Movim\Widget\Base
 
         $validate_name = Validator::stringType()->length(4, 80);
         if (!$validate_name->validate($form->name->value)) {
-            Notification::append(null, $this->__('communitiesserver.name_error'));
+            Notification::toast($this->__('communitiesserver.name_error'));
             return;
         }
 
@@ -106,7 +106,7 @@ class CommunitiesServer extends \Movim\Widget\Base
         $uri = $slugify->slugify($form->name->value);
 
         if ($uri == '') {
-            Notification::append(null, $this->__('communitiesserver.name_error'));
+            Notification::toast($this->__('communitiesserver.name_error'));
             return;
         }
 

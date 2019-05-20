@@ -18,17 +18,17 @@ class ContactActions extends Base
 
     public function onDelete($packet)
     {
-        Notification::append(null, $this->__('roster.deleted'));
+        Notification::toast($this->__('roster.deleted'));
     }
 
     public function onAdd($packet)
     {
-        Notification::append(null, $this->__('roster.added'));
+        Notification::toast($this->__('roster.added'));
     }
 
     public function onUpdate($packet = false)
     {
-        Notification::append(null, $this->__('roster.updated'));
+        Notification::toast($this->__('roster.updated'));
     }
 
     public function ajaxAddAsk($jid)

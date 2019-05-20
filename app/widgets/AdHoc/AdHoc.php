@@ -53,7 +53,7 @@ class AdHoc extends \Movim\Widget\Base
             $this->rpc('AdHoc.initForm');
         } elseif ((string)$command->attributes()->status === 'completed') {
             $this->rpc('Dialog.clear');
-            Notification::append(false, $this->__('adhoc.completed'));
+            Notification::toast($this->__('adhoc.completed'));
             return;
         }
     }

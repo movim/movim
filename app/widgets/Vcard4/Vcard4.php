@@ -40,19 +40,19 @@ class Vcard4 extends Base
     {
         $html = $this->prepareForm($packet->content);
 
-        Notification::append(null, $this->__('vcard.updated'));
+        Notification::toast($this->__('vcard.updated'));
 
         $this->rpc('MovimTpl.fill', '#vcard_form', $html);
     }
 
     public function onMyVcard4Received()
     {
-        Notification::append(null, $this->__('vcard.updated'));
+        Notification::toast($this->__('vcard.updated'));
     }
 
     public function onMyVcard4NotReceived()
     {
-        Notification::append(null, $this->__('vcard.not_updated'));
+        Notification::toast($this->__('vcard.not_updated'));
     }
 
     public function ajaxGetVcard()
@@ -120,7 +120,7 @@ class Vcard4 extends Base
     {
         if (Validator::regex('/^[a-z_\-\d]{3,64}$/i')->validate($nickname)) {
             if (\App\User::where('nickname', $nickname)->where('id', '!=', $this->user->id)->first()) {
-                Notification::append(null, $this->__('profile.nickname_conflict'));
+                Notification::toast($this->__('profile.nickname_conflict'));
                 return;
             }
 
@@ -129,9 +129,9 @@ class Vcard4 extends Base
             $this->ajaxGetVcard();
 
             (new Dialog)->ajaxClear();
-            Notification::append(null, $this->__('profile.nickname_saved'));
+            Notification::toast($this->__('profile.nickname_saved'));
         } else {
-            Notification::append(null, $this->__('profile.nickname_error'));
+            Notification::toast($this->__('profile.nickname_error'));
         }
     }
 
@@ -139,10 +139,10 @@ class Vcard4 extends Base
     {
         if ($value == true) {
             $this->user->setPublic();
-            Notification::append(null, $this->__('vcard.public'));
+            Notification::toast($this->__('vcard.public'));
         } else {
             $this->user->setPrivate();
-            Notification::append(null, $this->__('vcard.restricted'));
+            Notification::toast($this->__('vcard.restricted'));
         }
     }
 

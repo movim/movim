@@ -17,7 +17,7 @@ class CommunitiesServers extends Base
 
     public function onDisco($packet)
     {
-        Notification::append(null, $this->__('communities.disco'));
+        Notification::toast($this->__('communities.disco'));
         $this->ajaxGet();
     }
 
@@ -35,13 +35,13 @@ class CommunitiesServers extends Base
 
     public function onDiscoError($packet)
     {
-        Notification::append(null, $this->__('communities.disco_error'));
+        Notification::toast($this->__('communities.disco_error'));
     }
 
     public function ajaxDisco($origin)
     {
         if (!$this->validateServer($origin)) {
-            Notification::append(null, $this->__('communities.disco_error'));
+            Notification::toast($this->__('communities.disco_error'));
             return;
         }
 

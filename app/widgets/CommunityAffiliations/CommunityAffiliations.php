@@ -75,7 +75,7 @@ class CommunityAffiliations extends Base
 
     public function onAffiliationsSet($packet)
     {
-        Notification::append(null, $this->__('communityaffiliation.role_set'));
+        Notification::toast($this->__('communityaffiliation.role_set'));
     }
 
     public function onSubscriptions($packet)
@@ -97,7 +97,7 @@ class CommunityAffiliations extends Base
     {
         if ($packet->content['server'] != $this->user->id
         && substr($packet->content['node'], 0, 29) != 'urn:xmpp:microblog:0:comments') {
-            Notification::append(null, $this->__('communityaffiliation.deleted'));
+            Notification::toast($this->__('communityaffiliation.deleted'));
 
             $this->rpc(
                 'MovimUtils.redirect',
@@ -111,7 +111,7 @@ class CommunityAffiliations extends Base
 
     public function onDelete($packet)
     {
-        Notification::append(null, $this->__('communityaffiliation.deleted'));
+        Notification::toast($this->__('communityaffiliation.deleted'));
 
         $this->deleted($packet);
     }

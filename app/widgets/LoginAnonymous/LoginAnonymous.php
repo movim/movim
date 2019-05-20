@@ -25,7 +25,7 @@ class LoginAnonymous extends Base
     {
         $validate_user = Validator::stringType()->length(4, 40);
         if (!$validate_user->validate($username)) {
-            Notification::append(null, $this->__('login_anonymous.bad_username'));
+            Notification::toast($this->__('login_anonymous.bad_username'));
             return;
         }
 

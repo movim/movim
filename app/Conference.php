@@ -31,6 +31,14 @@ class Conference extends Model
                     ->orderBy('resource');
     }
 
+    public function unreads()
+    {
+        return $this->hasMany('App\Message', 'jidfrom', 'conference')
+                    ->where('user_id', \App\User::me()->id)
+                    ->where('type', 'groupchat')
+                    ->where('seen', false);
+    }
+
     public function presence()
     {
         return $this->hasOne('App\Presence', 'jid', 'conference')

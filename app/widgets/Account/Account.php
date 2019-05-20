@@ -20,7 +20,7 @@ class Account extends \Movim\Widget\Base
     public function onPasswordChanged()
     {
         $this->rpc('Account.resetPassword');
-        Notification::append(null, $this->__('account.password_changed'));
+        Notification::toast($this->__('account.password_changed'));
     }
 
     public function onRemoved()
@@ -54,7 +54,7 @@ class Account extends \Movim\Widget\Base
 
     public function onRegisterError()
     {
-        Notification::append(null, $this->__('error.oops'));
+        Notification::toast($this->__('error.oops'));
     }
 
     public function ajaxChangePassword($form)
@@ -75,11 +75,11 @@ class Account extends \Movim\Widget\Base
                    ->request();
             } else {
                 $this->rpc('Account.resetPassword');
-                Notification::append(null, $this->__('account.password_not_same'));
+                Notification::toast($this->__('account.password_not_same'));
             }
         } else {
             $this->rpc('Account.resetPassword');
-            Notification::append(null, $this->__('account.password_not_valid'));
+            Notification::toast($this->__('account.password_not_valid'));
         }
     }
 
@@ -109,7 +109,7 @@ class Account extends \Movim\Widget\Base
             $da = new Remove;
             $da->request();
         } else {
-            Notification::append(null, $this->__('account.delete_text_error'));
+            Notification::toast($this->__('account.delete_text_error'));
         }
     }
 

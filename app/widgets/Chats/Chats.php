@@ -20,6 +20,7 @@ class Chats extends Base
         $this->registerEvent('presence', 'onPresence', 'chat');
         $this->registerEvent('composing', 'onComposing', 'chat');
         $this->registerEvent('paused', 'onPaused', 'chat');
+        $this->registerEvent('chat_open', 'onChatOpen', 'chat');
     }
 
     public function onMessage($packet)
@@ -37,6 +38,26 @@ class Chats extends Base
 
             $this->ajaxOpen($from, false);
         }
+    }
+
+    public function onChatOpen($jid)
+    {
+        if (!$this->validateJid($jid)) {
+            return;
+        }
+
+        $this->rpc('Chats.refresh');
+        $this->rpc(
+            'MovimTpl.replace',
+            '#' . cleanupId($jid . '_chat_item'),
+            $this->prepareChat(
+                $jid,
+                $this->resolveContactFromJid($jid),
+                $this->resolveRosterFromJid($jid),
+                null,
+                true
+            )
+        );
     }
 
     public function onPresence($packet)
@@ -214,7 +235,7 @@ class Chats extends Base
         return $view->draw('_chats_empty_item');
     }
 
-    public function prepareChat(string $jid, App\Contact $contact, App\Roster $roster = null, $status = null)
+    public function prepareChat(string $jid, App\Contact $contact, App\Roster $roster = null, $status = null, $active = false)
     {
         if (!$this->validateJid($jid)) {
             return;
@@ -225,6 +246,8 @@ class Chats extends Base
         $view->assign('status', $status);
         $view->assign('contact', $contact);
         $view->assign('roster', $roster);
+        $view->assign('active', $active);
+        $view->assign('count', $this->user->unreads($jid));
 
         if ($status == null) {
             $view->assign('message', $this->user->messages()

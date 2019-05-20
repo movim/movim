@@ -134,6 +134,15 @@ class Base
     }
 
     /**
+     * Send an event to the Widgets
+     */
+    public function event(string $key, $data = null)
+    {
+        $e = new Event;
+        $e->run($key, $data);
+    }
+
+    /**
      * Get the current view name
      */
     public function getView()

@@ -27,13 +27,13 @@ class Avatar extends \Movim\Widget\Base
     public function onGetAvatar($packet)
     {
         $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
-        Notification::append(null, $this->__('avatar.updated'));
+        Notification::toast($this->__('avatar.updated'));
     }
 
     public function onMyAvatarError()
     {
         $this->rpc('MovimTpl.fill', '#avatar_form', $this->prepareForm());
-        Notification::append(null, $this->__('avatar.not_updated'));
+        Notification::toast($this->__('avatar.not_updated'));
     }
 
     public function prepareForm()
