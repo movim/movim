@@ -693,7 +693,9 @@ class Chat extends \Movim\Widget\Base
         $messages = $messagesQuery->orderBy('published', 'desc')->take($this->_pagination)->get();
         $unreadsCount = $messages->where('seen', false)->count();
 
-        $messagesQuery->update(['seen' => true]);
+        if ($unreadsCount > 0) {
+            $messagesQuery->where('seen', false)->update(['seen' => true]);
+        }
 
         $messages = $messages->reverse();
 
@@ -835,6 +837,9 @@ class Chat extends \Movim\Widget\Base
             $this->_wrapper[$date] = [];
         }
 
+        $messageDBSeen = $message->seen;
+        $n = new Notification;
+
         if ($message->type == 'groupchat') {
             $message->color = stringToColor($message->session_id . $message->resource . $message->type);
 
@@ -861,12 +866,16 @@ class Chat extends \Movim\Widget\Base
             }
 
             $message->icon = firstLetterCapitalize($message->resource);
+
+            if ($message->seen === false) {
+                $message->seen = ('chat|'.$message->jidfrom.'|room' == $n->getCurrent());
+            }
         } else {
-            $n = new Notification;
             $message->seen = ('chat|'.$message->jidfrom == $n->getCurrent());
         }
 
-        if ($message->seen) {
+        if ($message->seen === true
+        && $messageDBSeen === false) {
             $this->user->messages()
                  ->where('id', $message->id)
                  ->update(['seen' => true]);

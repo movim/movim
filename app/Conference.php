@@ -10,6 +10,7 @@ class Conference extends Model
     public $incrementing = false;
     protected $primaryKey = ['session_id', 'conference'];
     protected $fillable = ['conference', 'name', 'nick', 'autojoin'];
+    protected $with = ['contact'];
 
     protected $attributes = [
         'session_id'    => SESSION_ID

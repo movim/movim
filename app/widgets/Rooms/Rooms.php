@@ -168,7 +168,7 @@ class Rooms extends Base
             $this->rpc(
                 'MovimTpl.fill',
                 '#' . cleanupId($room.'_rooms_primary'),
-                $this->prepareRoomCounter($conference)
+                $this->prepareRoomCounter($conference, $conference->getPhoto())
             );
         }
     }
@@ -591,10 +591,11 @@ class Rooms extends Base
         return $view->draw('_rooms');
     }
 
-    public function prepareRoomCounter(Conference $conference)
+    public function prepareRoomCounter(Conference $conference, $withAvatar = false)
     {
         $view = $this->tpl();
-        $view->assign('counter', $conference->unreads_count);
+        $view->assign('conference', $conference);
+        $view->assign('withAvatar', $withAvatar);
 
         return $view->draw('_rooms_counter');
     }

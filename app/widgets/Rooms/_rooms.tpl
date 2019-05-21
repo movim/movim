@@ -41,7 +41,7 @@
                         id="{$value->conference|cleanupId}-rooms-primary"
                         style="background-image: url({$url});">
                         {autoescape="off"}
-                            {$c->prepareRoomCounter($value)}
+                            {$c->prepareRoomCounter($value, true)}
                         {/autoescape}
                     </span>
                 {else}
@@ -49,15 +49,8 @@
                         {if="!$connected"}disabled small{/if} icon bubble color
                         {$value->name|stringToColor}"
                         id="{$value->conference|cleanupId}-rooms-primary">
-                        {if="$value->unreads_count > 0"}
-                            <span class="counter">{$value->unreads_count}</span>
-                        {/if}
                         {autoescape="off"}
-                            {if="$connected"}
-                                {$value->name|firstLetterCapitalize|addEmojis}
-                            {else}
-                                {$value->name|firstLetterCapitalize:true|addEmojis}
-                            {/if}
+                            {$c->prepareRoomCounter($value, false)}
                         {/autoescape}
                     </span>
                 {/if}

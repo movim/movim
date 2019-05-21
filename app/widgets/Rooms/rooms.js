@@ -41,8 +41,6 @@ var Rooms = {
 
             i++;
         }
-
-        Notification_ajaxGet();
     },
 
     selectGatewayRoom : function(room, name) {
