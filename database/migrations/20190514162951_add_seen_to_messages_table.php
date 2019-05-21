@@ -9,11 +9,13 @@ class AddSeenToMessagesTable extends Migration
 {
     public function up()
     {
-         $this->schema->table('messages', function (Blueprint $table) {
-            $table->boolean('seen')->default(false);
+        $this->schema->table('messages', function (Blueprint $table) {
+            $table->boolean('seen')->default(true);
         });
 
-        Message::query()->update(['seen' => true]);
+        $this->schema->table('messages', function (Blueprint $table) {
+            $table->boolean('seen')->default(false)->change();
+        });
     }
 
     public function down()
