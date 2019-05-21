@@ -6,7 +6,7 @@ var Chats = {
         var list = document.querySelector('#chats_widget_list');
         var trim = list.innerHTML.trim();
 
-        if (trim != list.innerHTML) list.innerHTML = trim;
+        if (trim === '') list.innerHTML = trim;
 
         var items = document.querySelectorAll('ul#chats_widget_list li:not(.subheader)');
         var i = 0;
